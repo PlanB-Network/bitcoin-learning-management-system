@@ -71,7 +71,6 @@ function Conferences() {
       maxWidth="1360"
       className="mx-0 px-0"
     >
-      {/* Latest and Plan B Conferences */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-white gap-3 md:gap-7 mx-4">
         <div className="flex flex-col gap-1 md:gap-4 md:col-span-1 xl:col-span-2">
           <h3 className="md:text-xl font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-015px max-md:text-center">

@@ -371,7 +371,7 @@ const RemoveTeacherDialog = ({ onConfirm }: { onConfirm: () => void }) => {
 
         <img
           src={PlanBLogoBlack}
-          alt="Logo Plan B Network"
+          alt="Logo Plan ₿ Network"
           className="w-36 md:w-60 mx-auto"
         />
 

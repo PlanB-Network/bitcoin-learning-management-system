@@ -422,7 +422,7 @@ function Home() {
             <div className="mt-4 flex flex-row justify-center gap-8 px-6 md:mt-12 xl:px-20">
               <div className="flex flex-col gap-8 lg:max-w-sm">
                 <TwitterCard
-                  text="Bullish on Plan B Network: they centralize #bitcoin education, so we can decentralize it"
+                  text="Bullish on Plan ₿ Network: they centralize #bitcoin education, so we can decentralize it"
                   name="Mire"
                   handle="@mir_btc"
                   image={TwitterMirBtc}

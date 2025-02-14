@@ -17,7 +17,7 @@ export const FeaturedSchool = ({ course }: { course: JoinedCourse }) => {
         <img
           className="w-[116px] md:w-[215px] shrink-0"
           src={PlanbSchoolLogo}
-          alt="Plan B School Logo"
+          alt="Plan ₿ School Logo"
         />
         <div className="flex items-center gap-5">
           <div className="max-md:hidden w-0.5 h-11 bg-newGray-1" />

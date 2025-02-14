@@ -30,7 +30,7 @@ interface Metadata {
 const DEFAULT_IMAGE = '/share-default.jpg';
 
 const DEFAULT: Metadata = {
-  title: 'Plan B Network',
+  title: 'Plan ₿ Network',
   description: "Let's build together the Bitcoin educational layer",
   image: DEFAULT_IMAGE,
   lang: 'en',

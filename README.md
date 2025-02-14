@@ -1,4 +1,4 @@
-# Plan B Network
+# Plan ₿ Network
 
 This is the repository for the PlanB Network website. The goal of this project is to create a free, open-source, and community-driven platform to learn about Bitcoin.
 

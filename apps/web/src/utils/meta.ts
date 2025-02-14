@@ -1,1 +1,1 @@
-export const SITE_NAME = 'Plan B Network';
+export const SITE_NAME = 'Plan ₿ Network';

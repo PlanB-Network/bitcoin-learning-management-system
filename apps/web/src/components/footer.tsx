@@ -42,7 +42,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               <div className="flex flex-col gap-5 md:gap-8">
                 <img
                   src={variant === 'light' ? PlanBLogoWhite : PlanBLogoBlack}
-                  alt="Logo Plan B Network"
+                  alt="Logo Plan ₿ Network"
                   className="w-36 md:w-60 self-start"
                 />
                 <SocialNetworks variant={variant} />

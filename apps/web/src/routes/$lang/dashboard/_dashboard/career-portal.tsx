@@ -1290,7 +1290,7 @@ const DeleteProfileDialog = ({ onConfirm }: { onConfirm: () => void }) => {
 
         <img
           src={PlanBLogoBlack}
-          alt="Logo Plan B Network"
+          alt="Logo Plan ₿ Network"
           className="w-[186px] md:w-[266px] mx-auto"
         />
 
