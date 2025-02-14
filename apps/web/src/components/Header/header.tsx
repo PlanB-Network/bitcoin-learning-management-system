@@ -131,7 +131,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               description: t('menu.socialStudiesDescription'),
               path: '/courses',
               search: {
-                topics: 'social-studies',
+                topics: 'social studies',
               },
             },
           ],
