@@ -1,4 +1,4 @@
-import { useNavigate, useSearch } from '@tanstack/react-router';
+import { useSearch } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
@@ -12,8 +12,6 @@ import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
-  const navigate = useNavigate();
-
   const uniqueTopics = Array.from(
     new Set(courses.map((course) => course.topic)),
   ).sort((a, b) => a.localeCompare(b));
@@ -74,21 +72,24 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
     getDefaultValues(levels, searchedLevels),
   );
 
-  useEffect(() => {
-    const search = new URLSearchParams(window.location.search);
+  // Commented out until issue https://github.com/TanStack/router/issues/3408 is resolved
+  // const navigate = useNavigate();
 
-    const topicsArray = Array.from(activeTopics);
-    search.set('topics', topicsArray.join(','));
+  // useEffect(() => {
+  //   const search = new URLSearchParams(window.location.search);
 
-    const levelsArray = Array.from(activeLevels);
-    search.set('levels', levelsArray.join(','));
+  //   const topicsArray = Array.from(activeTopics);
+  //   search.set('topics', topicsArray.join(','));
 
-    navigate({
-      to: '.',
-      search: Object.fromEntries(search),
-      resetScroll: false,
-    });
-  }, [activeTopics, activeLevels]);
+  //   const levelsArray = Array.from(activeLevels);
+  //   search.set('levels', levelsArray.join(','));
+
+  //   navigate({
+  //     to: '.',
+  //     search: Object.fromEntries(search),
+  //     resetScroll: false,
+  //   });
+  // }, [activeTopics, activeLevels]);
 
   useEffect(() => {
     const reorderedCourses = [
