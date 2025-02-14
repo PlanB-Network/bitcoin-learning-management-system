@@ -105,7 +105,7 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
           (activeTopics.has('all') || activeTopics.has(course.topic)) &&
           (activeLevels.has('all') || activeLevels.has(course.level)) &&
           course.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          course.language === i18n.language,
+          course.language.toLowerCase() === i18n.language.toLowerCase(),
       ),
     );
   }, [courses, activeTopics, activeLevels, searchQuery]);

@@ -27,7 +27,7 @@ function DashboardCourses() {
         );
         return (
           (course.isArchived === false || inProgress) &&
-          course.language === i18n.language
+          course.language.toLowerCase() === i18n.language.toLowerCase()
         );
       })
     : [];
