@@ -184,7 +184,7 @@ export const FilterDropdown = ({
                     : 'text-newBlack-4 no-underline',
                 )}
               >
-                {category}
+                {t(`filters.${category.toLowerCase()}`)}
               </button>
             ))}
           </div>

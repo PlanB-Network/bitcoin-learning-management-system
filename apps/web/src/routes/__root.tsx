@@ -48,7 +48,7 @@ export const Route = createRootRouteWithContext<{
     // If no language in the path, redirect to language
     if (!pathLanguage || (pathLanguage && !LANGUAGES.includes(pathLanguage))) {
       router.navigate({
-        to: `/${i18n.language}/${location.pathname}${location.hash}`,
+        to: `/${i18n.language}/${location.pathname}${location.hash}${location.search}`,
         replace: true,
       });
     }
