@@ -14,7 +14,7 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/courses')({
 });
 
 function DashboardCourses() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { session, courses } = useContext(AppContext);
 
@@ -25,7 +25,10 @@ function DashboardCourses() {
         const inProgress = (progress ?? []).some(
           (p) => p.courseId === course.id,
         );
-        return course.isArchived === false || inProgress;
+        return (
+          (course.isArchived === false || inProgress) &&
+          course.language === i18n.language
+        );
       })
     : [];
 
