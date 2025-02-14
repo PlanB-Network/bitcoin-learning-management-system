@@ -1,5 +1,4 @@
 import { useSearch } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 
 import type { JoinedCourse } from '@blms/types';
@@ -8,10 +7,13 @@ import { Button } from '@blms/ui';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 
+import { useTranslation } from 'react-i18next';
 import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
+  const { t, i18n } = useTranslation();
+
   const uniqueTopics = Array.from(
     new Set(courses.map((course) => course.topic)),
   ).sort((a, b) => a.localeCompare(b));
@@ -102,7 +104,8 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
         (course) =>
           (activeTopics.has('all') || activeTopics.has(course.topic)) &&
           (activeLevels.has('all') || activeLevels.has(course.level)) &&
-          course.name.toLowerCase().includes(searchQuery.toLowerCase()),
+          course.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          course.language === i18n.language,
       ),
     );
   }, [courses, activeTopics, activeLevels, searchQuery]);
