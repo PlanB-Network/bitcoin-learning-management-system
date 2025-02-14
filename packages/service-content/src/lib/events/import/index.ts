@@ -13,9 +13,7 @@ interface EventDetails {
   fullPath: string;
 }
 
-export interface ChangedEvent extends ChangedContent {
-  id: string;
-}
+export type ChangedEvent = ChangedContent;
 
 const parseDetailsFromPath = (path: string): EventDetails => {
   const pathElements = path.split('/');
@@ -41,11 +39,10 @@ export const groupByEvent = (files: ChangedFile[], errors: string[]) => {
 
   for (const file of eventsFiles) {
     try {
-      const { id, path: eventPath } = parseDetailsFromPath(file.path);
+      const { path: eventPath } = parseDetailsFromPath(file.path);
 
       const event: ChangedEvent = groupedEvents.get(eventPath) || {
         type: 'events',
-        id: id,
         path: eventPath,
         fullPath: eventPath,
         files: [],

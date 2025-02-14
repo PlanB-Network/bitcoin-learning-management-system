@@ -7,6 +7,7 @@ import { yamlToObject } from '../../utils.js';
 import type { ChangedEvent } from './index.js';
 
 interface EventMain {
+  id: string;
   project_id?: string;
   name: string;
   description: string;
@@ -76,7 +77,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
             last_sync
           )
         VALUES (
-          ${`${event.id}-${parsedEvent.name.replaceAll(/\W/g, '')}`},
+          ${parsedEvent.id},
           ${parsedEvent.project_id},
           ${event.path},
           ${parsedEvent.name},
