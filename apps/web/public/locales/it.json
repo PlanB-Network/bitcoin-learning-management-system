@@ -136,7 +136,8 @@
       "thanksTipping": "Puoi dire grazie lasciando una mancia al professore.",
       "hasNotBeenProofread": "Questo corso non è stato ancora revisionato",
       "ledBy": "Questo corso è tenuto da",
-      "pastEditionsRatings": "Valutazioni delle Edizioni Precedenti"
+      "pastEditionsRatings": "Valutazioni delle Edizioni Precedenti",
+      "teacherLed": "Guidato dall'insegnante"
     },
     "explorer": {
       "pageDescription": "La Plan ₿ Academy è dedicata a semplificare l'educazione Bitcoin nel mondo. Curata da esperti di molti campi, la nostra accademia fornisce un ventaglio esaustivo di corsi progettati per chiarificare ogni aspetto di Bitcoin. Dal principiante all'esperto, seguendo il tuo ritmo o insieme a un professore, speriamo che l'accademia possa aiutarti a comprendere meglio il vasto tema di Bitcoin. Una larga parte dei nostri corsi sono interamente gratuiti in modo che chiunque, da qualsiasi luogo, possa avere accesso all'educazione.",
@@ -144,7 +145,9 @@
       "exploreCourses": "Esplora i corsi di Plan ₿ Network",
       "findCourses": "Trova il corso perfetto per le tue necessità grazie al selettore corsi",
       "journey": "Bitcoin è un viaggio, non una meta",
-      "seeCourse": "Guarda il corso"
+      "seeCourse": "Guarda il corso",
+      "planbSchoolHeadline": "La Plan ₿ School, guidata da Giacomo Zucco, offre programmi educativi intensivi di tre mesi progettati per colmare il divario tra l'apprendimento e le applicazioni reali. Oltre alle classi tradizionali, gli studenti si impegnano in progetti pratici guidati dalle aziende e in un bootcamp di prima classe dedicato ai migliori performer. Solo i migliori talenti avanzano dopo due round di selezione competitivi, garantendo che i migliori studenti finali siano completamente attrezzati per lanciare la loro carriera nell'industria del Bitcoin.",
+      "comingSoon": "presto in arrivo"
     },
     "part": {
       "count": "Parte n°{{count}}/{{total}}"
@@ -678,7 +681,9 @@
       "welcome": "Benvenuto nel tuo Portale Carriera",
       "yourLanguages": "Le tue lingue",
       "applicationStatus": "La tua domanda è",
-      "lookingForJob": "Stiamo attualmente cercando opportunità di lavoro per te."
+      "lookingForJob": "Stiamo attualmente cercando opportunità di lavoro per te.",
+      "chooseFile": "Scegli file",
+      "noFileSelected": "Nessun file selezionato"
     }
   },
   "events": {
@@ -843,7 +848,8 @@
     "socialStudiesDescription": "Studia l'impatto di Bitcoin sulla società.",
     "protocolDescription": "Scopri le regole fondamentali che alimentano la rete Bitcoin.",
     "lecturesDescription": "Rivedi delle presentazioni registrate dagli esperti di Bitcoin",
-    "moviesDescription": "Scopri delle interessanti storie e degli approfondimenti sull'evoluzione e sull'impatto di Bitcoin"
+    "moviesDescription": "Scopri delle interessanti storie e degli approfondimenti sull'evoluzione e sull'impatto di Bitcoin",
+    "projectsDescription": "Scopri le imprese e i progetti che contribuiscono al miglioramento di Bitcoin e ad incrementare la sua adozione"
   },
   "nodeNetwork": {
     "apply": "Fai richiesta per diventare trader",
@@ -1365,5 +1371,13 @@
     "newsletters": "Newsletter",
     "event": "Evento",
     "glossary_words": "Glossario"
+  },
+  "projects": {
+    "languages": "Lingue",
+    "networkStrength": "La forza di una rete risiede nei suoi membri",
+    "noRelatedEvents": "Non ci sono eventi programmati di questo educatore al momento.",
+    "otherCommunities": "Esplora le comunità Plan ₿",
+    "pageTitle": "Progetti Bitcoin",
+    "relatedEvents": "Eventi futuri correlati"
   }
 }
