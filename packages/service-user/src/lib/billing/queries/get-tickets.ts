@@ -43,7 +43,7 @@ export const getTicketsQuery = (uid: string /*, language: string*/) => {
     UNION ALL
 
     SELECT
-      uc.chapter_id::text as event_id,
+      uc.chapter_id as event_id,
       COALESCE(cc.start_date, current_date + interval '30 days') as date,
       COALESCE(cc.address_line_1, '') as location,
       COALESCE(cc.address_line_1, '') as address_line_1,

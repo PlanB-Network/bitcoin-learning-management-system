@@ -470,6 +470,20 @@
       "when": 1739463417653,
       "tag": "0066_safe_carlie_cooper",
       "breakpoints": true
+    },
+    {
+      "idx": 67,
+      "version": "7",
+      "when": 1739547876656,
+      "tag": "0067_abandoned_killraven",
+      "breakpoints": true
+    },
+    {
+      "idx": 68,
+      "version": "7",
+      "when": 1739549118707,
+      "tag": "0068_right_santa_claus",
+      "breakpoints": true
     }
   ]
 }

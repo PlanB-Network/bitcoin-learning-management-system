@@ -7,7 +7,7 @@ export const getCalendarEventsQuery = (
 ) => {
   return sql<CalendarEvent[]>`
   SELECT
-    e.id as id,
+    e.id::text as id,
     '' as sub_id,
     e.type,
     e.name,
@@ -32,7 +32,7 @@ export const getCalendarEventsQuery = (
   UNION
 
   SELECT
-    e.id,
+    e.id::text,
     '' as sub_id,
     e.type,
     e.name,

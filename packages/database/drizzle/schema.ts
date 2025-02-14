@@ -1116,7 +1116,6 @@ export const usersCoursePayment = users.table(
       .varchar({ length: 20 })
       .notNull()
       .references(() => contentCourses.id, {
-        onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
     format: coursePaymentFormatEnum('format').default('inperson').notNull(),
@@ -1256,7 +1255,7 @@ export const eventTypeEnum = pgEnum('event_type', [
 ]);
 
 export const contentEvents = content.table('events', (t) => ({
-  id: t.varchar({ length: 100 }).primaryKey().notNull(),
+  id: t.uuid().primaryKey(),
   projectId: t
     .uuid()
     .references(() => contentProjects.id, { onDelete: 'set null' }),
@@ -1292,7 +1291,7 @@ export const contentEventTags = content.table(
   'event_tags',
   (t) => ({
     eventId: t
-      .varchar({ length: 100 })
+      .uuid()
       .notNull()
       .references(() => contentEvents.id, {
         onDelete: 'cascade',
@@ -1314,7 +1313,7 @@ export const contentEventLanguages = content.table(
   'event_languages',
   (t) => ({
     eventId: t
-      .varchar({ length: 100 })
+      .uuid()
       .notNull()
       .references(() => contentEvents.id, {
         onDelete: 'cascade',
@@ -1337,7 +1336,7 @@ export const usersUserEvent = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     eventId: t
-      .varchar({ length: 100 })
+      .uuid()
       .notNull()
       .references(() => contentEvents.id, {
         onDelete: 'cascade',
@@ -1363,7 +1362,7 @@ export const usersEventPayment = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     eventId: t
-      .varchar({ length: 100 })
+      .uuid()
       .notNull()
       .references(() => contentEvents.id, {
         onUpdate: 'cascade',

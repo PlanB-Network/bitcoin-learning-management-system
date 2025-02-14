@@ -24,7 +24,7 @@ export const getEventParticipants = () => {
         ua.username,
         ua.display_name,
         COALESCE(ua.email, '') AS email,
-        uc.chapter_id::text AS id
+        uc.chapter_id AS id
     FROM
       users.course_user_chapter uc
     LEFT JOIN
