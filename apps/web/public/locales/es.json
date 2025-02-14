@@ -134,7 +134,10 @@
       "otherCoursesInterest": "Otros cursos que te pueden interesar",
       "premiumContentNeedsLogin": "Debes iniciar sesión para acceder a este curso.",
       "thanksTipping": "Puedes mostrar tu agradecimiento dándole una propina al profesor.",
-      "hasNotBeenProofread": "Este curso aún no ha sido revisado"
+      "hasNotBeenProofread": "Este curso aún no ha sido revisado",
+      "ledBy": "Este curso está dirigido por",
+      "pastEditionsRatings": "Calificaciones de Ediciones Pasadas",
+      "teacherLed": "Dirigido por el profesor"
     },
     "explorer": {
       "pageDescription": "La Academia Plan ₿ tiene como objetivo simplificar la educación sobre Bitcoin a nivel mundial. Curada por expertos de diversos campos, nuestra academia ofrece una amplia gama de cursos diseñados para aclarar cada aspecto de Bitcoin.\nDesde principiante hasta experto, ya sea a tu propio ritmo o seguido semanalmente por un profesor, esperamos que la academia pueda ayudarte a obtener una comprensión más profunda del extenso mundo de Bitcoin. Muchos de nuestros cursos son completamente gratuitos para que cualquier persona, en cualquier lugar, pueda acceder a una educación de calidad.",
@@ -142,7 +145,10 @@
       "buildPath": "Construye tu propio camino a través de la madriguera del conejo",
       "exploreCourses": "Explora todos los cursos de Plan ₿",
       "journey": "Bitcoin es un viaje, no un destino",
-      "seeCourse": "Descubre el Curso"
+      "seeCourse": "Descubre el Curso",
+      "comingSoon": "próximamente",
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "planbSchoolHeadline": "La Plan ₿ School, dirigida por Giacomo Zucco, ofrece programas educativos intensivos de tres meses diseñados para cerrar la brecha entre el aprendizaje y las aplicaciones del mundo real. Más allá de las clases tradicionales, los estudiantes participan en proyectos prácticos dirigidos por empresas y un bootcamp de primera clase dedicado a los mejores intérpretes. Solo los mejores talentos avanzan después de dos rondas de selección competitivas, asegurando que los estudiantes finales más destacados estén completamente equipados para lanzar sus carreras en la industria de Bitcoin."
     },
     "part": {
       "count": "Parte {{count}}"
@@ -224,7 +230,8 @@
       "feedback": "Retroalimentación",
       "feedbackDescription1": "Por favor califica tu experiencia con el curso.",
       "feedbackDescription2": "Ten en cuenta que los profesores no tendrán acceso a las evaluaciones individuales.",
-      "thankYou": "¡Gracias por tu reseña! Se tiene en consideración"
+      "thankYou": "¡Gracias por tu reseña! Se tiene en consideración",
+      "whatStudentsSayPasEdition": "Lo que los estudiantes dicen sobre las ediciones anteriores"
     },
     "exam": {
       "skipExam": "Omitir examen",
@@ -284,7 +291,10 @@
       "dontWorryRetake": "No te preocupes, podrás volver a realizar el examen después de 24 horas.",
       "examCertificateCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber logrado recibir el diploma del curso “{{courseName}}”.",
       "courseDiploma": "Diploma del curso",
-      "courseNotFound": "Curso no encontrado"
+      "courseNotFound": "Curso no encontrado",
+      "bCertCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber sido galardonado con el Certificado ₿.",
+      "buttonTextBCert": "Aprende más",
+      "certificatePageOtherCourses": "Otros cursos relacionados"
     },
     "conclusion": {
       "completedChaptersHeadline": "¡Haz completado todos los capítulos!",
@@ -347,7 +357,10 @@
       "noTicket": "Actualmente no tienes boletos.",
       "pastTicketTitle": "Reservas pasadas",
       "upcomingTicketTitle": "Próximas reservas",
-      "upcomingTicketSubtitle": "Descarga tu boleto aquí para asistir a tu próximo evento. Por favor recuerda llevarlo contigo para entrar."
+      "upcomingTicketSubtitle": "Descarga tu boleto aquí para asistir a tu próximo evento. Por favor recuerda llevarlo contigo para entrar.",
+      "cancelBookingTitle": "¿Estás seguro de que quieres cancelar esta reserva?",
+      "noGoBack": "No, regresar",
+      "yesCancel": "Sí, cancelar"
     },
     "bCert": {
       "grade": "Calificación",
@@ -481,10 +494,109 @@
       "selectProfessor": "Seleccionar profesor",
       "tutorialAnalytics": "Análisis de tutoriales",
       "tutorialAnalyticsDescription": "Aquí podrás consultar y comparar todos los tutoriales de la plataforma.",
-      "userRolesAllocation": "Asignación de roles de usuario"
+      "userRolesAllocation": "Asignación de roles de usuario",
+      "careers": {
+        "careersSubtitle": "Aquí puedes ver la lista de participantes que han completado sus aplicaciones. Puedes encontrar toda la información de las aplicaciones dentro de la hoja de cálculo.",
+        "resultsRemaining": "Quedan {{results}} resultados",
+        "careers": "Carreras",
+        "cv": "CV",
+        "downloadProfiles": "Descargar hoja de cálculo",
+        "downloadSpreadsheet": "Descargar hoja de cálculo",
+        "lastUpdate": "Última actualización",
+        "lastUpdated": "Actualizado por última vez",
+        "profession": "Profesión",
+        "seeMore": "Ver más",
+        "viewCV": "Ver CV"
+      }
     },
     "backToDashboard": "Volver al panel de control",
-    "studentDashboard": "Panel de control del estudiante"
+    "studentDashboard": "Panel de control del estudiante",
+    "careerPortal": {
+      "acceptTermsAndConditions": "He leído y acepto los términos y condiciones",
+      "allowReceivingEmails": "Acepto recibir correos electrónicos de Plan ₿ Network sobre posibles oportunidades laborales",
+      "applicationSaved": "¡Tu aplicación ha sido guardada!",
+      "companySizePreference": "¿Qué tamaño de empresa prefieres?",
+      "companySizePreferenceSubLabel": "Puedes seleccionar multiples respuestas.",
+      "jobSearchSubtitle": "Define tus preferencias laborales para ayudarnos a adaptar las mejores oportunidades a tu perfil.",
+      "jobTitles": {
+        "businessAnalyst": "Analista de Negocios",
+        "dataEngineer": "Ingeniero de Datos",
+        "amlKycSpecialist": "Especialista en AML/KYC",
+        "accountingManager": "Gerente de Contabilidad",
+        "backendEngineer": "Ingeniero de Backend",
+        "bitcoinInvestmentAnalyst": "Analista de Inversiones en Bitcoin",
+        "brandStrategist": "Estratega de Marca",
+        "businessDevelopmentManager": "Gerente de Desarrollo de Negocios",
+        "cloudInfrastructureEngineer": "Ingeniero de Infraestructura en la Nube",
+        "communityManager": "Administrador de Comunidades",
+        "complianceOfficer": "Oficial de Cumplimiento",
+        "contentWriter": "Escritor de contenido",
+        "cryptographer": "Criptógrafo",
+        "cybersecurity": "Ciberseguridad",
+        "customerSuccessManager": "Gerente de Éxito del Cliente",
+        "customerSupportSpecialist": "Especialista en Atención al Cliente"
+      },
+      "applicationStatus": "Tu aplicación es",
+      "availability": "Tu disponibilidad",
+      "availabilityStart": "¿Cuándo puedes iniciar?",
+      "availabilityStartPlaceholder": "Fecha",
+      "beAware": "Ten en cuenta que Plan ₿ Network recopilará y almacenará tus datos solo para fines de reclutamiento. Los datos se procesan y comparten con nuestros socios comerciales de acuerdo con las disposiciones del Reglamento General de Protección de Datos de la UE (RGPD). Haz clic <0>aquí</0> para saber más sobre nuestro Aviso de Privacidad para Candidatos.",
+      "bitcoinCommunityParticipant": "¿Eres parte de una comunidad local de Bitcoin?",
+      "bitcoinCommunityText": "¿Si es así, cuál y cuál es tu nivel de participación?\n¿Esta comunidad es parte de Plan ₿ Network?",
+      "bitcoinProjectParticipant": "¿Has contribuido activamente en algún proyecto de Bitcoin? \n(en el pasado o actualmente)",
+      "bitcoinProjectPlaceholder": "Ejemplos: Proyecto comunitario, proyecto de código abierto, etc...",
+      "bitcoinRelatedExperienceSubtitle": "Por favor, comparte algo de información sobre tu participación en iniciativas de Bitcoin.",
+      "companySizes": {
+        "100More": "100 y más empleados",
+        "11To40": "11 a 40 empleados",
+        "noPreference": "Sin preferencia",
+        "1To10": "1 a 10 empleados",
+        "41To100": "41 a 100 empleados"
+      },
+      "completeApplication": "Completar aplicación",
+      "cvRequired": "Se requiere subir tu CV.",
+      "cvUpload": "Sube tu CV",
+      "expectedSalary": "Expectativa salarial",
+      "emailAddress": "Dirección de correo electrónico",
+      "emailPlaceholder": "mail@mail.com",
+      "followProcess": "Sigue este proceso paso a paso para enviar tu CV e información laboral.",
+      "fullTime": "Tiempo completo",
+      "acceptedFormat": "Formato de archivo aceptado: pdf / Tamaño máximo de archivo: 10 MB.",
+      "chooseFile": "Elige el archivo",
+      "companySizeRequired": "Selecciona al menos un tamaño de empresa.",
+      "add": "Añadir",
+      "confirmDelete": "Confirmar eliminación",
+      "contactInformation": "Información de contacto",
+      "contactInformationSubtitle": "Por favor proporciona tu dirección de correo electrónico y otros métodos de contacto.",
+      "countryResidence": "País de residencia",
+      "deleteCareerProfileTitle": "¿Estás seguro de que quieres eliminar tu perfil profesional?",
+      "description": "Como estudiante de Plan ₿ Nerwork, eres parte de una amplia comunidad que puede apoyar tu crecimiento profesional. En esta sección, puedes enviar tu CV y compartir tus aspiraciones laborales. Trabajaremos estrechamente con nuestros socios de la industria para hacer coincidir tu perfil con posibles oportunidades laborales, ayudándote a dar el siguiente paso en tu trayectoria profesional.",
+      "expectedSalarySubLabel": "Dependiendo de su perfil, indíquenos su tarifa por hora o expectativas de salario mensual. Por favor especifique si es neto o bruto.",
+      "fileUploadError": "Hubo un error al subir tu archivo. Por favor, inténtalo de nuevo.",
+      "fileUploaded": "¡CV subido con éxito!",
+      "firstName": "Nombre(s) (o seudónimo)",
+      "invalidFile": "Formato de archivo no válido",
+      "jobCategories": {
+        "businessRoles": "Roles de Negocio",
+        "financeCompliance": "Finanzas y Cumplimiento",
+        "marketingCommunity": "Marketing y Comunidad",
+        "more": "Más",
+        "operationsSupport": "Operaciones y Soporte",
+        "productDesign": "Producto y Diseño",
+        "researchEducation": "Investigación y Educación",
+        "technicalRoles": "Roles Técnicos"
+      },
+      "jobSearch": "Búsqueda de empleo",
+      "bitcoinProjectSubLabel": "Describe tu proyecto a continuación.",
+      "bitcoinProjectText": "¿Cuál?",
+      "bitcoinRelatedExperience": "Experiencia relacionada con Bitcoin",
+      "cannotUndo": "Esta acción no puede deshacerse.",
+      "cvUploadLabel": "Subida de CV",
+      "cvUploadSubtitle": "Sube tu CV para mostrar tus habilidades y experiencias a posibles empleadores.",
+      "deleteCareerProfile": "Eliminar perfil profesional",
+      "expectedSalaryPlaceholder": "Salario mensual: 2.5mil neto",
+      "fileTooLarge": "El archivo seleccionado es demasiado grande"
+    }
   },
   "events": {
     "main": {

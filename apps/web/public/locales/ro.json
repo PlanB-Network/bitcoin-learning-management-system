@@ -267,7 +267,8 @@
       "feedbackDescription2": "Rețineți că profesorii nu vor avea acces la evaluările individuale.",
       "saveReview": "Salvează recenzia",
       "thankYou": "Mulțumesc pentru recenzia ta! A fost luată în considerare.",
-      "feedback": "Feedback"
+      "feedback": "Feedback",
+      "whatStudentsSayPasEdition": "Ce spun studenții despre edițiile anterioare"
     },
     "exam": {
       "dontGiveUpTryAgain": "Nu renunța!\nPoți încerca din nou după 24 de ore.",
@@ -364,7 +365,10 @@
       "noTicket": "În prezent nu aveți bilete.",
       "pastTicketTitle": "Rezervări anterioare",
       "upcomingTicketTitle": "Rezervări viitoare",
-      "upcomingTicketSubtitle": "Descărcați biletul dvs. aici pentru a participa la evenimentul viitor. Vă rugăm să nu uitați să îl aduceți cu dvs. pentru intrare."
+      "upcomingTicketSubtitle": "Descărcați biletul dvs. aici pentru a participa la evenimentul viitor. Vă rugăm să nu uitați să îl aduceți cu dvs. pentru intrare.",
+      "cancelBookingTitle": "Ești sigur că vrei să anulezi această rezervare?",
+      "noGoBack": "Nu, întoarce-te înapoi",
+      "yesCancel": "Da, anulează"
     },
     "calendar": {
       "calendar": "Calendar",
@@ -504,8 +508,35 @@
       "tutorialsManagementPanel": "Panoul de administrare al tutorialelor",
       "type": "Tip",
       "upcomingBookings": "Rezervările viitoare",
-      "upcomingBookingsSubtitle": "Aici puteți descărca lista de participanți pentru toate evenimentele în persoană."
-    }
+      "upcomingBookingsSubtitle": "Aici puteți descărca lista de participanți pentru toate evenimentele în persoană.",
+      "careers": {
+        "careers": "Cariere",
+        "profession": "Profesie",
+        "seeMore": "Vezi mai mult",
+        "cv": "CV",
+        "lastUpdate": "Ultimul update",
+        "resultsRemaining": "Au mai rămas {{results}} rezultate",
+        "lastUpdated": "Ultimul actualizat",
+        "viewCV": "Vizualizează CV"
+      },
+      "userRolesAllocation": "Alocarea rolurilor utilizatorilor"
+    },
+    "careerPortal": {
+      "beAware": "Fiți conștienți că Plan ₿ Network va colecta și stoca datele dumneavoastră numai în scopuri de recrutare. Datele sunt procesate și împărțite cu partenerii noștri de afaceri în conformitate cu prevederile Regulamentului General al UE privind Protecția Datelor (GDPR). Faceți clic <0>aici</0> pentru a afla mai multe despre Politica noastră de Confidențialitate pentru Candidați.",
+      "bitcoinCommunityParticipant": "Faceți parte dintr-o comunitate locală Bitcoin?",
+      "applicationStatus": "Aplicația ta este",
+      "availabilityStart": "Când poți începe?",
+      "acceptedFormat": "Format de file acceptat: pdf / Dimensiunea maximă a fișierului: 10 MB.",
+      "add": "Adaugă",
+      "bitcoinCommunityText": "Dacă răspunsul este da, care dintre acestea și care este nivelul tău de implicare? \nAceastă comunitate face parte din Rețeaua Plan ₿?",
+      "bitcoinProjectParticipant": "Ați contribuit activ la vreun proiect Bitcoin? \n(în trecut sau în prezent)",
+      "allowReceivingEmails": "Sunt de acord să primesc emailuri de la Plan ₿ Network despre potențiale oportunități de muncă",
+      "acceptTermsAndConditions": "Am citit și accept termenii și condițiile",
+      "availabilityStartPlaceholder": "Dată",
+      "applicationSaved": "Aplicația dumneavoastră a fost salvată!",
+      "availability": "Disponibilitatea ta"
+    },
+    "backToDashboard": "Înapoi la dashboard"
   },
   "events": {
     "card": {

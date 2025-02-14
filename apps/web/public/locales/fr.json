@@ -129,7 +129,7 @@
       "premiumContentNeedsPaymentAction": "Accédez à la page d'accueil du cours",
       "premiumContentNeedsLogin": "Vous devez être connecté pour accéder à ce cours.",
       "courseAddedToDashboard": "Ce cours a été ajouté à votre tableau de bord étudiant",
-      "collaborativeEffort": "Ce cours est le résultat d'un effort collaboratif : chaque leçon, traduction et révision est rendue possible grâce au travail des contributeurs. Pour cette raison, nous sommes toujours à la recherche de correcteurs qui peuvent réviser notre contenu dans de nombreuses langues. Si vous souhaitez participer au processus de correction, veuillez nous contacter dans notre groupe Telegram et lire notre tutoriel.\n\nNous vous rappelons que ce contenu est open-source - sous licence <0>CC BY-SA</0> - il peut donc être librement partagé et utilisé, tant que la source originale est créditée.\n\nUne reconnaissance spéciale pour leur travail sur ce cours va aux correcteurs suivants : ",
+      "collaborativeEffort": "Ce cours est le résultat d'un effort collaboratif : chaque leçon, traduction et relecture est rendue possible grâce au travail des contributeurs. Pour cette raison, nous sommes toujours à la recherche de correcteurs qui peuvent réviser notre contenu dans de nombreuses langues. Si vous souhaitez participer au processus de correction, veuillez nous contacter dans notre groupe Telegram et lire notre tutoriel.\n\nNous vous rappelons que ce contenu est open-source - sous licence <0>CC BY-SA</0> - il peut donc être librement partagé et utilisé, tant que la source originale est créditée.\n\nUne reconnaissance spéciale pour leur travail sur ce cours va aux correcteurs suivants :",
       "hasBeenProofreadBy": "Ce cours a été relu par",
       "otherCourses": "Autres cours",
       "otherCoursesInterest": "D'autres cours qui pourraient vous intéresser",
@@ -191,7 +191,7 @@
       "resultPerfect": "Tout est parfait ! Félicitations !"
     },
     "exam": {
-      "answersReview": "Révision des réponses",
+      "answersReview": "Relecture des réponses",
       "availableDashboard": "Il sera disponible dans votre tableau de bord dans environ 10 heures.",
       "certificateGeneration": "Votre certificat est en cours de génération ",
       "congratulationsPassed": "Félicitations, vous avez <0>réussi</0> l'examen final !",
@@ -1352,13 +1352,13 @@
     "pageTitle": "Glossaire Bitcoin"
   },
   "proofreading": {
-    "description": "Le contenu original a été traduit par IA, mais une révision humaine est nécessaire pour garantir son exactitude.",
+    "description": "Le contenu original a été traduit par IA, mais une relecture humaine est nécessaire pour garantir son exactitude.",
     "completed": "Correction terminée",
     "inProgress": "Relecture en cours",
-    "reviewEarn": "Examinez et gagnez des sats",
+    "reviewEarn": "Relisez et gagnez des sats",
     "status": "Statut de relecture",
-    "thanks": "Un grand merci à nos incroyables examinateurs !",
-    "descriptionOriginalLanguage": "Même si cette page est dans sa langue d'origine, une révision humaine est toujours nécessaire pour garantir son exactitude.",
+    "thanks": "Un grand merci à nos incroyables relecteurs !",
+    "descriptionOriginalLanguage": "Même si cette page est dans sa langue d'origine, une relecture humaine est toujours nécessaire pour garantir son exactitude.",
     "rewardsText": "*Les récompenses peuvent varier en fonction du taux de change $"
   },
   "youtubeChannels": {

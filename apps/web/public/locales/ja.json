@@ -345,7 +345,10 @@
       "noTicket": "現在、チケットはありません。",
       "pastTicketTitle": "過去の予約",
       "upcomingTicketTitle": "今後の予約状況",
-      "upcomingTicketSubtitle": "チケットのダウンロードはこちらから。 入場の際は忘れずにお持ちください。"
+      "upcomingTicketSubtitle": "チケットのダウンロードはこちらから。 入場の際は忘れずにお持ちください。",
+      "cancelBookingTitle": "本当に予約をキャンセルしますか？",
+      "noGoBack": "いいえ、戻ります",
+      "yesCancel": "はい、キャンセルします"
     },
     "bCert": {
       "noResults": "このアカウントに関連する成績認定証はまだありません。.\n試験に合格したにも関わらず、長期間経っても結果が反映されない場合は、私たちに<0>ご連絡</0>ください。",
@@ -518,9 +521,26 @@
         "educator": "教育者",
         "eventCoordinator": "イベントコーディネーター",
         "frontendEngineer": "フロントエンドエンジニア",
-        "fullStackDeveloper": "フルスタックデベロッパー",
+        "fullStackDeveloper": "フルスタック開発者",
         "legalContractSpecialist": "法律契約スペシャリスト",
-        "logisticManager": "物流マネージャー"
+        "logisticManager": "物流マネージャー",
+        "miningOperationsManager": "マイニングオペレーションマネージャー",
+        "mobileAppDeveloper": "モバイルアプリ開発者",
+        "seoSpecialist": "SEOスペシャリスト",
+        "sales": "営業",
+        "operationsManager": "オペレーションマネージャー",
+        "productManager": "プロダクトマネージャー",
+        "protocolEngineer": "プロトコルエンジニア",
+        "publicRelationsManager": "PRマネージャー",
+        "researcher": "リサーチャー",
+        "revenueManager": "レベニューマネージャー",
+        "riskAnalyst": "リスクアナリスト",
+        "technicalProductManager": "テクニカルプロダクトマネージャー",
+        "technicalSupportEngineer": "テクニカルサポートエンジニア",
+        "technicalWriter": "テクニカルライター",
+        "uiUxDesigner": "UI/UXデザイナー",
+        "uxResearcher": "UXリサーチャー",
+        "socialMediaManager": "ソーシャルメディアマネージャー"
       },
       "fileUploadError": "ファイルのアップロード中にエラーが発生しました。 もう一度トライしてください。",
       "chooseFile": "ファイルを選択する",
@@ -554,7 +574,45 @@
       "steps": {
         "step3": "履歴書のアップロード"
       },
-      "uploadCV": "履歴書をアップロードする"
+      "uploadCV": "履歴書をアップロードする",
+      "languageLevel": "熟練度",
+      "languageLevels": {
+        "elementary": "初級（基本的な会話とライティング）",
+        "advanced": "上級者（自信と正確さ）",
+        "beginner": "初心者（理解が浅い）",
+        "fluent": "流暢（ネイティブレベル）",
+        "intermediate": "中級（快適なコミュニケーション）"
+      },
+      "languageSkillsSubtitle": "あなたの話せる言語、書ける言語とそのレベルをお知らせください。",
+      "languageLevelSubLabel": "ご自身のスキルに合ったレベルをお選びください。",
+      "languageSkills": "言語レベル",
+      "yourLanguages": "あなたの言語",
+      "lastName": "姓",
+      "legalInformation": "法的情報",
+      "legalInformationSubtitle": "あなたのスキルや経験をビジネス  パートナーからの求人とマッチングさせるために、以下の条件に同意してください。",
+      "legalTerms": "法律用語",
+      "lookingForJob": "私たちは現在、あなたのための求人情報を探しています。",
+      "noFileSelected": "ファイルが選択されていません",
+      "maxCharacters": "{{characters}} 最大文字数",
+      "maxRoles": "職種は最大3つまで選択できます。",
+      "motivation": "モチベーション",
+      "motivationLetter": "モチベーションレター",
+      "motivationLetterPlaceholder": "あなたのモチベーションは何ですか？",
+      "motivationLetterSubLabel": "あなたの経験やモチベーションについて、以下に一言書いてください。",
+      "motivationSubtitle": "プレゼンテーションレターを添えて応募書類を充実させ、あなた自身や求職活動についての背景をより詳しく説明することができます。",
+      "other": "その他",
+      "partTime": "パートタイム",
+      "personalInformationSubtitle": "氏名と居住地をご記入ください。",
+      "provideValidEmail": "有効なメールアドレスをご記入ください。",
+      "remoteWorkPreference": "リモートでも働けますか？",
+      "remoteWorkPreferences": {
+        "no": "私はそれを望みません",
+        "sometimes": "何時から何時、希望理由",
+        "yes": "はい、喜んで"
+      },
+      "roleLevel": "経験レベル",
+      "roleLevelSubLabel": "ご自身のスキルに合ったレベルをお選びください。",
+      "selectLanguage": "言語を選択する"
     },
     "adminPanel": {
       "upcomingBookingsSubtitle": "ここでは、すべての会場イベントの参加者リストをダウンロードできます。",
@@ -642,7 +700,7 @@
       "description_free_physical": "",
       "download_ticket": "",
       "enjoy": "",
-      "language": "",
+      "language": "言語",
       "limitation": "",
       "max_capacity": "",
       "payment_successful": "",
@@ -668,25 +726,25 @@
       "link2": ""
     },
     "aboutUsSection": {
-      "title": "私たちについて?",
+      "title": "Plan ₿ Networkとは？",
       "subtitle": "私たちについて少しだけ",
-      "content": "Plan ₿ Network は、世界中のビットコイン教育を支援するイニシアチブです。 教育、オープンソースソフトウェア、ピアツーピアネットワーク、共同体意識などを持ったさまざまな情熱的なビットコイン企業の集合体です。 ビットコイン・エコシステムの成長に不可欠なツールを提供することを目的に、このイニシアチブをともに立ち上げました。",
-      "bitcoinFocusTitle": "ビットコイン・ファースト",
+      "content": "Plan ₿ Network は、世界中のビットコイン教育を支援するイニシアチブです。 教育、オープンソースソフトウェア、ピアツーピアネットワーク、共同体意識などを持ったさまざまな情熱的なビットコイン企業の集合体です。 ビットコインエコシステムの成長に不可欠なツールを提供することを目的に、このイニシアチブをともに立ち上げました。",
+      "bitcoinFocusTitle": "ビットコインオンリー",
       "bitcoinFocusContent": "ビットコイン革命をベースレイヤーから周囲のピアツーピア通信まで探ります。",
       "openSourceTitle": "オープンソース",
-      "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソース・ソリューションの構築サポートを目指します",
+      "openSourceContent": "私たちは、知識の自由な流れを促進し、より多くのオープンソースソリューションをサポートします",
       "communityTitle": "コミュニティ",
-      "communityContent": "私たちは、何よりもまず、ビットコインの旅をお互に助け合うファン・コミュニティです",
+      "communityContent": "私たちは何よりもまず、ビットコインの旅で互いに助け合う愛好家コミュニティです",
       "privacyTitle": "プライバシー",
       "privacyContent": "プライバシーは最も基本的な人権のひとつであり、進歩のために不可欠なものです"
     },
     "languageSection": {
       "title": "言語の壁はありません。",
       "subtitle": "すべてが日本語をはじめ各言語に翻訳されています！",
-      "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。これを達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています！",
+      "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億人もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。この目標を達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています！",
       "link": "アカデミーの翻訳にご協力ください",
-      "availableLanguages": "",
-      "availableLanguagesVariation": ""
+      "availableLanguages": "対応言語",
+      "availableLanguagesVariation": "対応言語： "
     },
     "patreonSection": {
       "title": "Together let's make Bitcoin education better !",
