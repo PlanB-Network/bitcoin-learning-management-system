@@ -217,7 +217,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
     const { signature, ots, hash } = await timestamp({ text });
 
-    const otfBuffer = new Uint8Array(ots.buffer);
+    const otfBuffer = ots;
 
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`
