@@ -6,6 +6,7 @@ import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp';
 import { PaymentRow } from '#src/components/payment-row.js';
+import { getDateString } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
 
 const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
@@ -101,12 +102,21 @@ export const ModalPaymentSummary = ({
           <PaymentRow
             label={
               course.professors?.length > 1
-                ? t('courses.payment.teachers')
-                : t('courses.payment.teacher')
+                ? t('words.professors')
+                : t('words.professor')
             }
             value={professorNames}
           />
           <Separator />
+          {course.startDate && course.endDate ? (
+            <>
+              <PaymentRow
+                label={t('courses.payment.date')}
+                value={`${getDateString(course.startDate!, course.endDate!)}`}
+              />
+              <Separator />
+            </>
+          ) : null}
           <PaymentRow
             label={t('courses.payment.numberOfChapters')}
             value={course.chaptersCount?.toString() || '-'}
@@ -117,11 +127,6 @@ export const ModalPaymentSummary = ({
             value={t('courses.details.mobile.hours', {
               hours: course.hours.toString(),
             })}
-          />
-          <Separator />
-          <PaymentRow
-            label={t('courses.payment.accessibility')}
-            value={t('courses.payment.accessibility_forever')}
           />
         </div>
         <DescriptionWithBreaks />
