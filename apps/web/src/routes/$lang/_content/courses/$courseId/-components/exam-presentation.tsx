@@ -172,7 +172,7 @@ export const ExamPresentation = ({
           {t('courses.exam.startExam')}
         </ButtonWithArrow>
 
-        <Button
+        <ButtonWithArrow
           className="w-full max-md:max-w-[290px] md:w-fit"
           variant="outline"
           size={window.innerWidth < 768 ? 'm' : 'l'}
@@ -183,7 +183,7 @@ export const ExamPresentation = ({
               ? t('courses.exam.skipExam')
               : t('courses.exam.skipExamGoConclusion')}
           </span>
-        </Button>
+        </ButtonWithArrow>
       </div>
 
       {isAuthModalOpen && (

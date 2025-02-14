@@ -19,9 +19,25 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
       getLatestExamAttemptIdQuery(options),
     );
 
-    return postgres
-      .exec(getExamResultsQuery({ examId: lastExamId[0].id }))
-      .then((result) => result[0]);
+    const examResult = await postgres.exec(
+      getExamResultsQuery({ examId: lastExamId[0].id }),
+    );
+
+    const examTimestamps = await postgres.exec(
+      sql<UserExamTimestamp[]>`
+          SELECT * FROM users.exam_timestamps
+          WHERE exam_attempt_id = ${lastExamId[0].id};
+        `,
+    );
+
+    const timestamp = examTimestamps[0];
+
+    return {
+      ...examResult[0],
+      isTimestamped: !!timestamp?.confirmed || false,
+      pdfKey: timestamp?.pdfKey || undefined,
+      imgKey: timestamp?.imgKey || undefined,
+    };
   };
 };
 

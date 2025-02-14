@@ -474,7 +474,7 @@ const CourseExamsTable = ({
                           />
                         )}
 
-                        <div className="flex justify-between w-full mt-7 md:mt-5">
+                        <div className="flex max-md:flex-col max-md:items-center md:justify-between w-full mt-7 md:mt-5">
                           <a
                             href={`/api/files/zip/diplomas/${exam.id}`}
                             download
@@ -491,30 +491,31 @@ const CourseExamsTable = ({
                             </Button>
                           </a>
 
-                          <div className="flex items-center gap-4">
-                            <span className="text-xs italic font-light text-black max-md:hidden">
-                              {t('dashboard.course.shareOnSocials')}
-                            </span>
-                            <div className="flex items-center gap-2.5">
-                              <Link
-                                to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                                  t('dashboard.course.tweetText', {
-                                    courseId: courseId.toUpperCase(),
-                                    certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
-                                    score: `${exam.score}`,
-                                    emoji:
-                                      exam.score && exam.score >= 90
-                                        ? '🏆'
-                                        : '💪',
-                                  }),
-                                )}`}
-                                target="_blank"
+                          <div className="flex items-center gap-4 max-md:hidden ">
+                            <Link
+                              to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                                t('dashboard.course.tweetText', {
+                                  courseId: courseId.toUpperCase(),
+                                  certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
+                                  score: `${exam.score}`,
+                                  emoji:
+                                    exam.score && exam.score >= 90
+                                      ? '🏆'
+                                      : '💪',
+                                }),
+                              )}`}
+                              target="_blank"
+                              className="w-fit"
+                            >
+                              <Button
+                                variant="outline"
+                                size="m"
+                                className="flex gap-2.5 !font-normal"
                               >
-                                <Button variant="tertiary" size="s">
-                                  <BsTwitterX size={18} />
-                                </Button>
-                              </Link>
-                            </div>
+                                {t('dashboard.myCourses.shareOn')}
+                                <BsTwitterX size={24} />
+                              </Button>
+                            </Link>
                           </div>
                         </div>
                         <Link
@@ -522,10 +523,27 @@ const CourseExamsTable = ({
                             '/tutorials/others/other/pbn-certificate-timestamping-dd16f8c0-00c1-45fd-8792-920612bed18f'
                           }
                           target="_blank"
-                          className="mt-4 self-start flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
+                          className="mt-2.5 md:mt-1 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
                         >
                           <ApprovedIcon className="size-4" />
                           <span>{t('dashboard.myCourses.verify')}</span>
+                        </Link>
+                        <Link
+                          to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                            t('dashboard.course.tweetText', {
+                              courseId: courseId.toUpperCase(),
+                              certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
+                              score: `${exam.score}`,
+                              emoji:
+                                exam.score && exam.score >= 90 ? '🏆' : '💪',
+                            }),
+                          )}`}
+                          target="_blank"
+                          className="w-fit md:hidden mt-2.5"
+                        >
+                          <Button variant="tertiary" size="s">
+                            <BsTwitterX size={18} />
+                          </Button>
                         </Link>
                       </div>
                     ) : (

@@ -123,42 +123,64 @@ export const ExamResults = ({
                   )}
 
                   {examResults.succeeded ? (
-                    <>
+                    <div>
                       <div className="max-md:text-center md:flex flex-col items-center md:gap-4 body-14px">
-                        <span className="text-newBlack-1 md:title-large-sb-24px text-center">
-                          {t('courses.exam.certificateGeneration')}
+                        {!examResults.isTimestamped && (
+                          <span className="text-newBlack-1 md:title-large-sb-24px text-center">
+                            {t('courses.exam.certificateGeneration')}
 
-                          <TimeStampDialog />
-                        </span>
+                            <TimeStampDialog />
+                          </span>
+                        )}
                         <span className="text-newBlack-1 md:title-large-24px text-center max-md:pl-1">
-                          {t('courses.exam.availableDashboard')}
+                          {!examResults.isTimestamped
+                            ? t('courses.exam.availableDashboard')
+                            : t('courses.exam.availableDashboardTimestamped')}
                         </span>
                       </div>
-
-                      {/* TODO: ensure that certificate is generated before showing the button */}
-                      <Link
-                        to={`/dashboard/course/${chapter.courseId}#exam`}
-                        className="w-fit"
-                      >
-                        <ButtonWithArrow
-                          className="w-fit"
-                          size={isMobile ? 's' : 'l'}
-                          variant="primary"
-                        >
-                          {t('courses.exam.getCertificate')}
-                        </ButtonWithArrow>
-                      </Link>
-                    </>
+                      <div className="flex justify-center gap-4 items-center max-md:hidden mt-10">
+                        {examResults.isTimestamped && (
+                          <Link
+                            to={`/dashboard/course/${chapter.courseId}#exam`}
+                            className="w-fit"
+                          >
+                            <ButtonWithArrow
+                              className="w-fit"
+                              size={isMobile ? 's' : 'l'}
+                              variant="primary"
+                            >
+                              {t('courses.exam.getCertificate')}
+                            </ButtonWithArrow>
+                          </Link>
+                        )}
+                        <ConcludeButton
+                          chapter={chapter}
+                          succeeded={examResults.succeeded}
+                          variant={
+                            examResults.isTimestamped ? 'outline' : 'primary'
+                          }
+                        />
+                      </div>
+                    </div>
                   ) : (
                     <>
                       <p className="text-newBlack-1 body-14px md:title-large-24px text-center">
                         {t('courses.exam.wishTryAgain')}
                       </p>
 
-                      <TryAgainDialog
-                        examResults={examResults}
-                        onStart={onStart}
-                      />
+                      <div className="flex gap-4 items-center justify-center">
+                        <TryAgainDialog
+                          examResults={examResults}
+                          onStart={onStart}
+                        />
+                        <ConcludeButton
+                          chapter={chapter}
+                          succeeded={examResults.succeeded}
+                          variant="outline"
+                          hideOnMobile
+                          hasSkipText
+                        />
+                      </div>
                     </>
                   )}
                 </>
@@ -204,15 +226,26 @@ export const ExamResults = ({
   );
 };
 
-export const TimeStampDialog = () => {
+export const TimeStampDialog = ({
+  triggerText,
+  onHoverAddColor,
+}: {
+  triggerText?: string;
+  onHoverAddColor?: boolean;
+}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <button
           type="button"
-          className="group relative justify-center text-darkOrange-5 underline decoration-darkOrange-5 text-nowrap max-md:font-medium"
+          className={cn(
+            'group relative justify-center text-nowrap',
+            onHoverAddColor
+              ? 'text-newBlack-1 md:hover:text-darkOrange-5 md:hover:underline md:hover:decoration-darkOrange-5 font-medium'
+              : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
+          )}
         >
-          {t('courses.exam.timeStamped')}
+          {triggerText ?? t('courses.exam.timeStamped')}
           <img
             src={QuestionBelow}
             alt="Question"
@@ -445,9 +478,19 @@ export const AnswersReviewPanel = ({
 const ConcludeButton = ({
   chapter,
   succeeded,
+  variant = 'primary',
+  alignRight,
+  hideOnMobile,
+  addMarginTop,
+  hasSkipText,
 }: {
   chapter: CourseChapterResponse;
   succeeded: boolean;
+  variant?: 'primary' | 'outline';
+  alignRight?: boolean;
+  hideOnMobile?: boolean;
+  addMarginTop?: boolean;
+  hasSkipText?: boolean;
 }) => {
   const completeChapterMutation =
     trpc.user.courses.completeChapter.useMutation();
@@ -468,18 +511,27 @@ const ConcludeButton = ({
 
   return (
     <Link
-      className="flex w-fit !mt-8 md:!mt-16 max-md:mx-auto md:ml-auto"
+      className={cn(
+        'flex w-fit max-md:mx-auto',
+        addMarginTop && '!mt-8 md:!mt-16',
+        alignRight ? 'md:ml-auto' : 'md:mx-auto',
+        hideOnMobile && 'max-md:hidden',
+      )}
       to={
         isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
       }
       params={goToChapterParameters(chapter, 'next')}
     >
       <ButtonWithArrow
-        variant="primary"
+        variant={variant}
         size={window.innerWidth < 768 ? 'm' : 'l'}
         onClick={completeChapter}
       >
-        <span>{t('courses.exam.letsConclude')}</span>
+        <span>
+          {hasSkipText
+            ? t('courses.exam.skipGoConclusion')
+            : t('courses.exam.goConclusion')}
+        </span>
       </ButtonWithArrow>
     </Link>
   );

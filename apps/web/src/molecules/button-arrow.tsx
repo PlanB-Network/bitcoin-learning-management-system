@@ -14,13 +14,15 @@ export const ButtonWithArrow = React.forwardRef<
 >(({ children, ...props }, ref) => {
   return (
     <Button {...props} ref={ref}>
-      {children}
-      <FaArrowRightLong
-        className={cn(
-          'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 lg:group-hover/arrow:max-w-96 lg:group-hover/arrow:opacity-100',
-          'lg:group-hover/arrow:ml-3',
-        )}
-      />
+      <span className={cn('flex items-center')}>
+        {children}
+        <FaArrowRightLong
+          className={cn(
+            'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 lg:group-hover/arrow:max-w-96 lg:group-hover/arrow:opacity-100',
+            'lg:group-hover/arrow:ml-3',
+          )}
+        />
+      </span>
     </Button>
   );
 });
