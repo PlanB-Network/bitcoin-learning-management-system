@@ -137,12 +137,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     function fetchCourses() {
-      if (
-        courses &&
-        courses.length > 0 &&
-        courses[0].index &&
-        courses[0].index !== ''
-      ) {
+      if (courses && courses.length > 0 && courses[0].index == null) {
         console.log('DO FETCH courses!');
         trpcClient.content.getCourses
           .query({
@@ -155,7 +150,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     }
 
     fetchCourses();
-    const interval = setInterval(fetchCourses, 2 * 60 * 1000); // 2 minutes
+    const interval = setInterval(fetchCourses, 60 * 1000); // 2 minutes
 
     return () => clearInterval(interval);
   }, []);
