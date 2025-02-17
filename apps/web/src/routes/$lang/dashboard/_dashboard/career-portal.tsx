@@ -53,6 +53,7 @@ import {
 
 import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 import { AppContext } from '#src/providers/context.tsx';
+import { BTC402ID } from '#src/utils/courses.ts';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/career-portal',
@@ -331,7 +332,7 @@ function CareerPortal() {
   });
 
   useEffect(() => {
-    if (user !== undefined && !user?.boughtCourses.includes('btc402')) {
+    if (user !== undefined && !user?.boughtCourses.includes(BTC402ID)) {
       navigate({ to: '/' });
     }
   }, [user]);

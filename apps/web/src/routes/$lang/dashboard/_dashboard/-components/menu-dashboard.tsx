@@ -19,7 +19,7 @@ import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
-import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
+import { BTC402ID, addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -162,7 +162,7 @@ export const MenuDashboard = ({
           />
         </Link>
         {isTestnetOrDevelopmentEnvironment() &&
-        user?.boughtCourses.includes('btc402') ? (
+        user?.boughtCourses.includes(BTC402ID) ? (
           <Link to={careerPortalPath}>
             <MenuItem
               text={t('dashboard.adminPanel.careers.careers')}
