@@ -9,7 +9,7 @@ import { Divider, Tabs, TabsContent } from '@blms/ui';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
-import { addSpaceToCourseId } from '#src/utils/courses.ts';
+import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { CourseExams, CourseRatings } from './$courseId.tsx';
@@ -35,7 +35,7 @@ function DashboardCompletedCourses() {
         ? completedCourses.map((course) => ({
             value: course.courseId,
             key: course.courseId,
-            text: addSpaceToCourseId(course.courseId).toUpperCase(),
+            text: addSpaceToCourseIndex(course.courseIndex).toUpperCase(),
           }))
         : [],
     [completedCourses],
@@ -143,7 +143,8 @@ const CompletedCourseDetails = ({
         <>
           <div className="flex flex-col gap-4 mt-6 md:mt-10">
             <h3 className="title-small-med-16px md:title-large-sb-24px text-newBlack-1">
-              {course.name} - {addSpaceToCourseId(courseId).toUpperCase()}
+              {course.name} -{' '}
+              {addSpaceToCourseIndex(course.index).toUpperCase()}
             </h3>
             <p className="body-16px text-dashboardSectionText/75">
               {t('dashboard.course.checkDetailsCompleted')}

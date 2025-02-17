@@ -40,6 +40,7 @@ export const getProfessorCoursesQuery = ({
   return sql<JoinedCourseWithProfessorsContributorIds[]>`
     SELECT DISTINCT ON (c.id)
       c.id,
+      c.index,
       c.is_archived,
       cl.language,
       c.level,

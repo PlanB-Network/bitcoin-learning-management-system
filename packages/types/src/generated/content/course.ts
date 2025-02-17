@@ -5,6 +5,7 @@ import { Level } from './resource.js';
 import { FormattedProfessor } from './professor.js';
 export interface Course {
   id: string;
+  index: string | null;
   isArchived: boolean;
   level: string;
   hours: number;
@@ -131,6 +132,7 @@ export interface JoinedCourseChapter {
 
 export interface MinimalJoinedCourse {
   id: string;
+  index: string | null;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -167,6 +169,7 @@ export interface MinimalJoinedCourse {
 
 export interface JoinedCourse {
   id: string;
+  index: string | null;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -204,6 +207,7 @@ export interface JoinedCourse {
 
 export interface JoinedCourseWithProfessorsContributorIds {
   id: string;
+  index: string | null;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -241,6 +245,7 @@ export interface JoinedCourseWithProfessorsContributorIds {
 
 export interface JoinedCourseWithAll {
   id: string;
+  index: string | null;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -326,6 +331,7 @@ export interface PartWithChapters {
 
 export interface CourseResponse {
   id: string;
+  index: string | null;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -416,6 +422,7 @@ export interface CourseReviewsExtended {
 
 export interface CourseMeta {
   id: string;
+  index: string | null;
   topic: string;
   subtopic: string;
   contact: string | null;
@@ -424,4 +431,18 @@ export interface CourseMeta {
   name: string;
   goal: string;
   objectives: string[];
+}
+
+export interface CourseChapterMeta {
+  partId: string;
+  chapterId: string;
+  language: string;
+  title: string;
+  sections: string[];
+  releasePlace: string | null;
+  rawContent: string;
+  liveLanguage: string | null;
+  courseId: string;
+  courseIndex: string;
+  lastCommit: string;
 }

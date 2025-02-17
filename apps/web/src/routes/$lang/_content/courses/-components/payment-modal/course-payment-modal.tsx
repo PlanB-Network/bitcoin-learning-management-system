@@ -24,7 +24,7 @@ import {
 
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
-import { addSpaceToCourseId } from '#src/utils/courses.js';
+import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
@@ -176,7 +176,7 @@ export const CoursePaymentModal = ({
     }
   }, [isPaymentSuccess]);
 
-  const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
+  const courseName = `${addSpaceToCourseIndex(course?.index)} - ${course?.name}`;
 
   return (
     <div className="p-4">

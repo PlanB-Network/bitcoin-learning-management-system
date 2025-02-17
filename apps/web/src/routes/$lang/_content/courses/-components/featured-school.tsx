@@ -53,7 +53,7 @@ const SchoolCard = ({ course }: { course: JoinedCourse }) => {
         {t('courses.explorer.planbSchool')}
       </span>
       <img
-        src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
+        src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
         alt={course.name}
         className="rounded-lg object-cover object-center [overflow-clip-margin:_unset] md:max-w-[490px] md:max-h-[288px] w-full mx-auto max-md:aspect-[270/203]"
       />

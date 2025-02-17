@@ -44,7 +44,7 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   const [filteredCourses, setFilteredCourses] = useState<JoinedCourse[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const featuredCourseId = 'btc101';
+  const featuredCourseIndex = 'btc101';
 
   const {
     topics: searchedTopics = 'all',
@@ -95,8 +95,8 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
 
   useEffect(() => {
     const reorderedCourses = [
-      ...courses.filter((course) => course.id === featuredCourseId),
-      ...courses.filter((course) => course.id !== featuredCourseId),
+      ...courses.filter((course) => course.index === featuredCourseIndex),
+      ...courses.filter((course) => course.index !== featuredCourseIndex),
     ];
 
     setFilteredCourses(
@@ -119,10 +119,10 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   };
 
   const featuredCourse = filteredCourses.find(
-    (course) => course.id === featuredCourseId,
+    (course) => course.index === featuredCourseIndex,
   );
   const otherCourses = filteredCourses.filter(
-    (course) => course.id !== featuredCourseId,
+    (course) => course.index !== featuredCourseIndex,
   );
 
   return (

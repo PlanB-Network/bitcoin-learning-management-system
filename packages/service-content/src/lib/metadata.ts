@@ -91,7 +91,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         chapter.rawContent,
         cdn(
           chapter.lastCommit,
-          `courses/${chapter.courseId}`,
+          `courses/${chapter.courseIndex}`,
           'thumbnail.webp',
         ),
         lang,
@@ -102,7 +102,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     return meta(
       course.name,
       course.goal,
-      cdn(course.lastCommit, `courses/${course.id}`, 'thumbnail.webp'),
+      cdn(course.lastCommit, `courses/${course.index}`, 'thumbnail.webp'),
       course.language,
     );
   };

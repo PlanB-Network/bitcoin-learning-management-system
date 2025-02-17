@@ -5,6 +5,7 @@ export const getCourseMetaQuery = (id: string, language?: string) => {
   return sql<CourseMeta[]>`
     SELECT
       c.id,
+      c.index,
       cl.language,
       c.topic,
       c.subtopic,

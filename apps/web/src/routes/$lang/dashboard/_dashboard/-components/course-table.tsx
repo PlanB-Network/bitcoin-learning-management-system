@@ -16,6 +16,7 @@ import {
   TooltipTrigger,
 } from '@blms/ui';
 
+import { BTC101ID } from '#src/utils/courses.ts';
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 
 export const courseCategoriesDashboard = [
@@ -173,9 +174,9 @@ export const CourseTable = ({
                                   >
                                     {course && (
                                       <span className="w-[30px] subtitle-small-med-14px break-normal leading-none text-center uppercase">
-                                        {course.id.slice(0, 3)}
+                                        {course.index!.slice(0, 3)}
                                         <br />
-                                        {course.id.slice(3)}
+                                        {course.index!.slice(3)}
                                       </span>
                                     )}
                                   </button>
@@ -225,10 +226,10 @@ export const CourseTable = ({
         </div>
       ) : (
         <div className="2xl:max-w-[280px] w-full">
-          {combinedMap.get('btc101')?.course ? (
+          {combinedMap.get(BTC101ID)?.course ? (
             <CourseDashboardCard
-              course={combinedMap.get('btc101')!.course}
-              progress={combinedMap.get('btc101')!.progress ?? null}
+              course={combinedMap.get(BTC101ID)!.course}
+              progress={combinedMap.get(BTC101ID)!.progress ?? null}
             />
           ) : null}
         </div>

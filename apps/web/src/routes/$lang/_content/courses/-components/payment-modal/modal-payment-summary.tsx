@@ -94,7 +94,7 @@ export const ModalPaymentSummary = ({
         </span>
         <div className={cn('rounded-2xl w-full mb-5 lg:mb-8', borderClassName)}>
           <img
-            src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
+            src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
             alt={courseName}
           />
         </div>

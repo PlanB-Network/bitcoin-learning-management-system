@@ -38,7 +38,7 @@ import {
   AnswersReviewPanel,
   TimeStampDialog,
 } from '#src/routes/$lang/_content/courses/$courseId/-components/exam-results.tsx';
-import { addSpaceToCourseId } from '#src/utils/courses.ts';
+import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -123,7 +123,7 @@ function DashboardStudentCourse() {
         <div className="flex flex-col gap-4 md:gap-8">
           <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
             <TextTag size="small" className="uppercase w-fit max-md:hidden">
-              {addSpaceToCourseId(course.id)}
+              {addSpaceToCourseIndex(course.index)}
             </TextTag>
             <h3 className="display-small-32px">{course.name}</h3>
           </div>

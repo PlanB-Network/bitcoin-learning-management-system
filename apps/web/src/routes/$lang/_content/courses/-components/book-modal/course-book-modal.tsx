@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@blms/ui';
 
-import { addSpaceToCourseId } from '#src/utils/courses.js';
+import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ModalBookDescription } from './modal-book-description.tsx';
@@ -47,7 +47,7 @@ export const CourseBookModal = ({
     setIsCourseBooked(true);
   }, [chapter.chapterId, course.id, saveUserChapterRequest]);
 
-  const courseName = `${addSpaceToCourseId(course?.id)} - ${course?.name}`;
+  const courseName = `${addSpaceToCourseIndex(course?.index)} - ${course?.name}`;
 
   function closeModal() {
     onClose();

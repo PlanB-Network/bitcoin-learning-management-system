@@ -26,7 +26,6 @@ export const createGetProgress = ({ postgres }: Dependencies) => {
         .filter((chapter) => chapter.courseId === course.courseId)
         .map(({ chapterId, completedAt }) => ({
           chapterId,
-
           completedAt,
         }));
 

@@ -36,7 +36,7 @@ export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
     />
     <ListItem
       leftText={t('words.courseId')}
-      rightText={course.id.toUpperCase()}
+      rightText={course.index!.toUpperCase()}
       isDesktopOnly
       className="lg:py-[3px]"
     />

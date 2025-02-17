@@ -68,7 +68,7 @@ export const CourseDashboardCard = ({
         <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
           <div className="flex flex-wrap gap-2 max-2xl:order-2 max-md:hidden">
             <TextTag size={'verySmall'} variant="grey" className="uppercase">
-              {course.id}
+              {course.index}
             </TextTag>
             <TextTag size={'verySmall'} variant="orange" className="uppercase">
               {course.requiresPayment
@@ -78,7 +78,7 @@ export const CourseDashboardCard = ({
             <TextTag size={'verySmall'} className="uppercase">
               {t(`words.${course.format}`)}
             </TextTag>
-            {beginnerFriendlyCourses.has(course.id) && (
+            {beginnerFriendlyCourses.has(course.index!) && (
               <TextTag size={'verySmall'} variant="green" className="uppercase">
                 {t('words.level.beginner')}
               </TextTag>
@@ -93,7 +93,7 @@ export const CourseDashboardCard = ({
         </div>
         <div className=" w-full flex flex-row 2xl:flex-col gap-4">
           <img
-            src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
+            src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
             alt={course.name}
             className="max-md:hidden rounded-md object-cover [overflow-clip-margin:_unset] object-center max-h-[183px] max-w-[255px]"
           />

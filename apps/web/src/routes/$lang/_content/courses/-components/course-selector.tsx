@@ -115,7 +115,7 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                 </span>
                 <div className="flex items-center flex-wrap gap-2.5">
                   <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
-                    {activeCourse.id === 'btc101'
+                    {activeCourse.index === 'btc101'
                       ? t('words.start')
                       : t(`words.level.${activeCourse.level}`)}
                   </span>
@@ -130,7 +130,10 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
               <h4 className="desktop-h4 mb-6">{activeCourse.name}</h4>
 
               <img
-                src={assetUrl(`courses/${activeCourse.id}`, 'thumbnail.webp')}
+                src={assetUrl(
+                  `courses/${activeCourse.index}`,
+                  'thumbnail.webp',
+                )}
                 alt={activeCourse.name}
                 className="rounded-md mb-6"
               />
@@ -202,7 +205,7 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                       <article className="flex flex-col gap-4 mt-2.5">
                         <img
                           src={assetUrl(
-                            `courses/${course.id}`,
+                            `courses/${course.index}`,
                             'thumbnail.webp',
                           )}
                           alt={course.name}

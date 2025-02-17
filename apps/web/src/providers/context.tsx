@@ -135,6 +135,31 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       .catch(() => {});
   }, [i18n.language]);
 
+  useEffect(() => {
+    function fetchCourses() {
+      if (
+        courses &&
+        courses.length > 0 &&
+        courses[0].index &&
+        courses[0].index !== ''
+      ) {
+        console.log('DO FETCH courses!');
+        trpcClient.content.getCourses
+          .query({
+            language: i18n.language,
+          })
+          .then((data) => data ?? null)
+          .then(setCourses)
+          .catch(() => null);
+      }
+    }
+
+    fetchCourses();
+    const interval = setInterval(fetchCourses, 2 * 60 * 1000); // 2 minutes
+
+    return () => clearInterval(interval);
+  }, []);
+
   const appContext: AppContext = {
     user,
     setUser,

@@ -63,13 +63,13 @@ export const CourseCard = ({
         )}
 
         <img
-          src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
+          src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
           alt={course.name}
           className="max-md:hidden rounded-md mb-2.5 object-cover [overflow-clip-margin:_unset] object-center max-h-72 group-hover:max-h-44 transition-[max-height] duration-300 ease-linear"
         />
         <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">
           <img
-            src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
+            src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
             alt={course.name}
             className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
           />
@@ -85,7 +85,7 @@ export const CourseCard = ({
                   mode={mode}
                   className="uppercase"
                 >
-                  {course.id === 'btc101'
+                  {course.index === 'btc101'
                     ? t('words.start')
                     : t(`words.level.${course.level}`)}
                 </TextTag>
