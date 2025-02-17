@@ -243,7 +243,7 @@ const CourseProgress = ({
       <div className="flex max-md:flex-col md:items-center md:justify-between md:gap-4 p-2 md:p-3 xl:p-5">
         <div className="flex justify-between items-center w-full md:w-[105px] md:shrink-0 max-md:mb-5">
           <span className="mobile-subtitle1 md:hidden">
-            {courseProgress.courseId.toUpperCase()}
+            {courseProgress.courseIndex.toUpperCase()}
           </span>
           <span className="max-md:hidden text-xl">{t('words.progress')}</span>
           <span className="mobile-subtitle1 text-darkOrange-5 md:hidden">
