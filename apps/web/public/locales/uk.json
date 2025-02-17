@@ -369,7 +369,10 @@
       "noTicket": "Наразі у вас немає квитків.",
       "pastTicketTitle": "Попередні бронювання",
       "upcomingTicketTitle": "Майбутні бронювання",
-      "upcomingTicketSubtitle": "Завантажте свій квиток тут, щоб відвідати майбутній захід. Будь ласка, не забудьте взяти його з собою для входу."
+      "upcomingTicketSubtitle": "Завантажте свій квиток тут, щоб відвідати майбутній захід. Будь ласка, не забудьте взяти його з собою для входу.",
+      "cancelBookingTitle": "Ви впевнені, що хочете скасувати це бронювання?",
+      "noGoBack": "Ні, поверніться назад",
+      "yesCancel": "Так, скасувати"
     },
     "calendar": {
       "calendar": "Календар",
@@ -1286,7 +1289,8 @@
     "terms": "Дивіться наші <0>загальні умови</0> та умови повернення коштів для отримання деталей",
     "total": "Всього",
     "payByCard": "Оплата карткою",
-    "payWithBitcoin": "Платіть біткоїнами"
+    "payWithBitcoin": "Платіть біткоїнами",
+    "haveReductionCode": "Маєте код знижки?"
   },
   "podcasts": {
     "pageTitle": "Подкасти про Біткоїн"
@@ -1358,7 +1362,15 @@
     "course": "Курс",
     "course_chapter": "Розділ курсу",
     "course_part": "Частина курсу",
-    "courses": "Курси"
+    "courses": "Курси",
+    "youtube_channel": "Канал Youtube",
+    "youtube_channels": "Канали YouTube",
+    "conference_replay": "Запис конференції",
+    "conference_replays": "Повтори конференцій",
+    "lecture_replay": "Повтор лекції",
+    "lecture_replays": "Записи лекцій",
+    "project": "Проєкт",
+    "projects": "Проєкти"
   },
   "lectures": {
     "buyVideoToUnlock": "Придбайте відео, щоб розблокувати його",
@@ -1380,5 +1392,11 @@
     "pageTitle": "Канали YouTube",
     "view": "Переглянути канал Youtube",
     "watchTrailer": "Дивитися трейлер"
+  },
+  "filters": {
+    "categories": "Категорії",
+    "levels": "Рівні",
+    "resources": "Ресурси",
+    "topics": "Теми"
   }
 }
