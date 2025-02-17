@@ -48,8 +48,6 @@ export const createSearch = ({ typesense }: Dependencies) => {
       filter += map && ` && (${map})`;
     }
 
-    console.log('Searching for:', { language, categories, filter });
-
     return typesense.collections<Searchable>('searchable').documents().search({
       q: search.query,
       query_by: 'title,body',
@@ -65,8 +63,6 @@ export const createSearch = ({ typesense }: Dependencies) => {
   };
 
   return async (search: SearchInput): Promise<SearchResult<Searchable>> => {
-    console.log('searching for:', search);
-
     const searchResult: SearchResult<Searchable> = {
       remaining: 0,
       nextCursor: 0,
