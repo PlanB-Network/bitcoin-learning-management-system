@@ -47,10 +47,9 @@ import type {
   JoinedYoutubeChannel,
 } from '@blms/types';
 
+import { publicProcedure } from '#src/procedures/public.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
-
-import { publicProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
 
 const createGetResourcesProcedure = () => {
   return publicProcedure.input(

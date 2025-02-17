@@ -11,10 +11,10 @@ import {
 } from '@blms/service-content';
 import type { JoinedEvent } from '@blms/types';
 
+import { adminProcedure } from '#src/procedures/protected.js';
+import { publicProcedure } from '#src/procedures/public.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
-
-import { adminProcedure, publicProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
 
 const getUpcomingEventsBookingsProcedure = adminProcedure
   .input(z.object({ language: z.string().optional() }).optional())

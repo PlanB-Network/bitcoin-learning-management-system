@@ -30,10 +30,10 @@ import type {
   JoinedQuizQuestion,
 } from '@blms/types';
 
+import { professorProcedure } from '#src/procedures/protected.js';
+import { publicProcedure } from '#src/procedures/public.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
-
-import { professorProcedure, publicProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
 
 const getCoursesProcedure = publicProcedure
   .input(

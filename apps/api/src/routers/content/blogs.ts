@@ -1,9 +1,8 @@
 import { z } from 'zod';
 
 import { createGetBlog, createGetBlogs } from '@blms/service-content';
-
-import { publicProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
+import { publicProcedure } from '#src/procedures/public.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 
 const getBlogsProcedure = publicProcedure
   .input(

@@ -48,10 +48,10 @@ import type {
   PartialExamQuestion,
 } from '@blms/types';
 
+import { studentProcedure } from '#src/procedures/protected.js';
+import { publicProcedure } from '#src/procedures/public.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
-
-import { publicProcedure, studentProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
 
 const completeChapterProcedure = studentProcedure
   .input(
@@ -216,6 +216,7 @@ const saveCoursePaymentProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
+      courseIndex: z.string(),
       satsPrice: z.number(),
       dollarPrice: z.number(),
       couponCode: z.string().optional(),
@@ -228,6 +229,7 @@ const saveCoursePaymentProcedure = studentProcedure
     createSaveCoursePayment(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      courseIndex: input.courseIndex,
       satsPrice: input.satsPrice,
       dollarPrice: input.dollarPrice,
       method: input.method,

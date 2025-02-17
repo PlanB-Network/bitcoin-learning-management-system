@@ -9,10 +9,9 @@ import {
 } from '@blms/service-user';
 import type { Invoice, Ticket } from '@blms/types';
 
+import { studentProcedure } from '#src/procedures/protected.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
-
-import { studentProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
 
 const getInvoicesProcedure = studentProcedure
   .input(

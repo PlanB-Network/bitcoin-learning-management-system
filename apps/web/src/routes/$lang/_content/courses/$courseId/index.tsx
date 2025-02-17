@@ -106,6 +106,8 @@ function CourseDetails() {
     },
   );
 
+  console.log('AA', course?.index);
+
   const { data: userCourseProgress } = trpc.user.courses.getProgress.useQuery(
     {
       courseId,
@@ -249,7 +251,9 @@ function CourseDetails() {
             rightText={course.professors.map((professor, index) => (
               <React.Fragment key={professor.id}>
                 <Link
-                  to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+                  to={`/professor/${formatNameForURL(professor.name || '')}-${
+                    professor.id
+                  }`}
                   className="hover:text-darkOrange-5"
                 >
                   {professor.name}
@@ -476,7 +480,9 @@ function CourseDetails() {
             {course.professors.map((professor, index) => (
               <React.Fragment key={professor.id}>
                 <Link
-                  to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
+                  to={`/professor/${formatNameForURL(professor.name || '')}-${
+                    professor.id
+                  }`}
                   className="hover:text-darkOrange-5"
                 >
                   {professor.name}
@@ -545,7 +551,11 @@ function CourseDetails() {
             starSize={isMobile ? 41 : 45}
             className="mt-2.5 md:mt-5"
           />
-          <span className="lowercase body-16px text-dashboardSectionTitle mt-2.5 md:mt-5">{`${averageRating}/${maxRating} (${numberOfReviews} ${numberOfReviews > 1 ? t('dashboard.teacher.reviews.reviews') : t('dashboard.teacher.reviews.review')})`}</span>
+          <span className="lowercase body-16px text-dashboardSectionTitle mt-2.5 md:mt-5">{`${averageRating}/${maxRating} (${numberOfReviews} ${
+            numberOfReviews > 1
+              ? t('dashboard.teacher.reviews.reviews')
+              : t('dashboard.teacher.reviews.review')
+          })`}</span>
         </div>
         <Divider
           width="w-4/5 max-w-[850px]"

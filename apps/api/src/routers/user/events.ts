@@ -26,11 +26,10 @@ import type {
   UserEvent,
 } from '@blms/types';
 
+import { adminProcedure, studentProcedure } from '#src/procedures/protected.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
-
-import { adminProcedure, studentProcedure } from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
-import { formatDate, formatTime } from '../../utils/date.js';
+import { formatDate, formatTime } from '#src/utils/date.js';
 
 const downloadEventTicketProcedure = studentProcedure
   .input(
@@ -50,7 +49,10 @@ const downloadEventTicketProcedure = studentProcedure
       : '';
     const formattedTime =
       event.startDate && event.endDate
-        ? `${formatTime(event.startDate, timezone)} to ${formatTime(event.endDate, timezone)}`
+        ? `${formatTime(event.startDate, timezone)} to ${formatTime(
+            event.endDate,
+            timezone,
+          )}`
         : '';
 
     return generateEventTicket({

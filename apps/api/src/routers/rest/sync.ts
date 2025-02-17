@@ -5,8 +5,7 @@ import {
   createApiKeyMiddleware,
   noopMiddleware,
 } from '#src/middlewares/auth.js';
-
-import { createSyncGithubRepositories } from '../../services/github/sync.js';
+import { createSyncGithubRepositories } from '#src/services/github/sync.js';
 
 export const createRestSyncRoutes = (
   dependencies: Dependencies,

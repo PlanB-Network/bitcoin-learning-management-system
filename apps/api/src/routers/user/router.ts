@@ -21,12 +21,11 @@ import type { Parser } from '#src/trpc/types.js';
 
 import {
   adminProcedure,
-  publicProcedure,
   studentProcedure,
   superadminProcedure,
-} from '../../procedures/index.js';
-import { createTRPCRouter } from '../../trpc/index.js';
-
+} from '#src/procedures/protected.js';
+import { publicProcedure } from '#src/procedures/public.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import { userBCertRouter } from './bcert.js';
 import { userBillingRouter } from './billing.js';
 import { userCalendarRouter } from './calendar.js';

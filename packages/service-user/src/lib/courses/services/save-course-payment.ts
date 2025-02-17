@@ -16,6 +16,7 @@ import { updateCoursePaymentQuery } from '../queries/update-payment.js';
 interface Options {
   uid: string;
   courseId: string;
+  courseIndex: string;
   satsPrice: number;
   dollarPrice: number;
   method: string;
@@ -32,6 +33,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
   return async ({
     uid,
     courseId,
+    courseIndex,
     satsPrice,
     dollarPrice,
     method,
@@ -142,7 +144,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
     if (method === 'stripe') {
       const paymentId = uuidv4();
       const session = await stripePayment(
-        `${courseId}: ${format} course`,
+        `${courseIndex}:${format} course`,
         'course',
         dollarPrice,
         paymentId,
