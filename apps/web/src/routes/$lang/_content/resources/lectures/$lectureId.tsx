@@ -23,7 +23,7 @@ import Flag from '#src/molecules/Flag/index.tsx';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
-import { addSpaceToCourseId } from '#src/utils/courses.ts';
+import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 
@@ -216,7 +216,9 @@ function Lecture() {
                           variant="darkMaroon"
                           mode="dark"
                         >
-                          {addSpaceToCourseId(relatedCourse.id).toUpperCase()}
+                          {addSpaceToCourseIndex(
+                            relatedCourse.index,
+                          ).toUpperCase()}
                         </TextTag>
                         <Link
                           to={`/courses/${relatedCourse.id}`}

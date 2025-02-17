@@ -24,6 +24,7 @@ import securitySvg from '#src/assets/icons/padlock-black.svg';
 import protocolSvg from '#src/assets/icons/protocol-black.svg';
 import socialStudiesSvg from '#src/assets/icons/world-black.svg';
 
+import { BTC101ID } from '#src/utils/courses.ts';
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 import { courseCategoriesDashboard } from './course-table.tsx';
 
@@ -121,7 +122,7 @@ export const CourseTableMobile = ({
     }
 
     if (!highestProgressCourse) {
-      return 'btc101';
+      return BTC101ID;
     }
 
     return highestProgressCourse.courseId;

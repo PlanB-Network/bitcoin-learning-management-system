@@ -18,14 +18,14 @@ import {
 } from '../../utils.js';
 
 interface CourseDetails {
-  id: string;
+  index: string;
   path: string;
   fullPath: string;
   language?: Language;
 }
 
 export interface ChangedCourse extends ChangedContent {
-  id: string;
+  index: string;
 }
 
 /**
@@ -43,7 +43,7 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   }
 
   return {
-    id: pathElements[1],
+    index: pathElements[1],
     path: pathElements.slice(0, 2).join('/'),
     fullPath: pathElements.join('/'),
     language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
@@ -60,7 +60,7 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
   for (const file of coursesFiles) {
     try {
       const {
-        id,
+        index,
         path: coursePath,
         fullPath,
         language,
@@ -68,7 +68,7 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
 
       const course: ChangedCourse = groupedCourses.get(coursePath) || {
         type: 'courses',
-        id,
+        index,
         path: coursePath,
         fullPath,
         files: [],
@@ -90,6 +90,7 @@ export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
 };
 
 interface CourseMain {
+  id: string;
   is_archived: boolean;
   level: string;
   hours: number;
@@ -316,16 +317,19 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
       schoolMarkdown = header.content.trim();
     }
 
+    let courseId: string;
+
     return postgres
       .begin(async (transaction) => {
         try {
           const parsedCourse = await yamlToObject<CourseMain>(main);
+          courseId = parsedCourse.id;
 
           if (
             parsedCourse.test_only === true &&
             process.env.PLANB_ENVIRONMENT === 'mainnet'
           ) {
-            console.log('-- Sync: Ignore course', course.id);
+            console.log('-- Sync: Ignore course', course.index);
             return;
           }
 
@@ -366,22 +370,23 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
           // Remove all professors, reinsert them just after
           await transaction`
                     DELETE FROM content.course_professors
-                    WHERE course_id = ${course.id}
+                    WHERE course_id = ${parsedCourse.id}
                   `;
 
           await transaction`
                     DELETE FROM content.course_chapters_localized_professors
-                    WHERE course_id = ${course.id}
+                    WHERE course_id = ${parsedCourse.id}
                   `;
 
           const result = await transaction<Course[]>`
                 INSERT INTO content.courses
-                  (id, is_archived, level, hours, topic, subtopic, original_language, requires_payment,
+                  (id, index, is_archived, level, hours, topic, subtopic, original_language, requires_payment,
                   payment_expiration_date, published_at, format, online_price_dollars, inperson_price_dollars,
                   paid_description, paid_video_link, start_date, end_date, contact, available_seats,
                   remaining_seats, is_planb_school, planb_school_markdown, last_updated, last_commit, last_sync)
                 VALUES (
-                  ${course.id},
+                  ${parsedCourse.id},
+                  ${course.index},
                   ${parsedCourse.is_archived === true},
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
@@ -407,7 +412,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${lastUpdated.commit},
                   NOW()
                 )
-                ON CONFLICT (id) DO UPDATE SET
+                ON CONFLICT (index) DO UPDATE SET
+                  id = EXCLUDED.id,
                   is_archived = EXCLUDED.is_archived,
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,
@@ -483,7 +489,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             for (const p of parsedCourse.proofreading) {
               const proofreadResult = await transaction<Proofreading[]>`
                   INSERT INTO content.proofreading (course_id, language, last_contribution_date, urgency, reward)
-                  VALUES (${course.id}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${Math.round(p.reward * 100)})
+                  VALUES (${courseId}, ${p.language.toLowerCase()}, ${p.last_contribution_date}, ${p.urgency}, ${Math.round(p.reward * 100)})
                   RETURNING *;
                 `.then(firstRow);
 
@@ -499,9 +505,10 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             }
           }
         } catch (error) {
-          errors.push(
-            `Error processing file(courses1) ${course?.fullPath}: ${error}`,
-          );
+          console.log('OOOO');
+          const err = `Error processing file(courses1) ${course?.fullPath}: ${error}`;
+          console.error(err);
+          errors.push(err);
           return;
         }
 
@@ -536,7 +543,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 course_id, language, name, goal, objectives, raw_description
               )
               VALUES (
-                ${course.id},
+                ${courseId},
                 ${file.language},
                 ${data.name},
                 ${data.goal?.trim()},
@@ -560,7 +567,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                       );
                     }
                     return {
-                      course_id: course.id,
+                      course_id: courseId,
                       part_index: index + 1,
                       part_id: p.partId,
                     };
@@ -575,7 +582,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
               await transaction`
                 INSERT INTO content.course_parts_localized ${transaction(
                   parts.map((part) => ({
-                    course_id: course.id,
+                    course_id: courseId,
                     part_id: part.partId,
                     language: file.language,
                     title: part.title,
@@ -603,7 +610,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                         );
                       }
                       return {
-                        course_id: course.id,
+                        course_id: courseId,
                         part_id: part.partId,
                         chapter_index: chapterIndex + 1,
                         chapter_id: c.chapterId,
@@ -622,7 +629,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 const formattedChapters = parts.flatMap((part) =>
                   part.chapters.map((chapter) => {
                     return {
-                      course_id: course.id,
+                      course_id: courseId,
                       chapter_id: chapter.chapterId,
                       language: file.language,
                       title: chapter.title,
@@ -676,7 +683,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
                 const formatedChapters2 = parts.flatMap((part, partIndex) =>
                   part.chapters.map((chapter, chapterIndex) => ({
-                    course_id: course.id,
+                    course_id: courseId,
                     chapter_id: chapter.chapterId,
                     part: partIndex + 1,
                     chapter: chapterIndex + 1,
@@ -693,14 +700,14 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     await transaction`INSERT INTO content.contributors (id) VALUES (${professor}) ON CONFLICT DO NOTHING`;
                     await transaction`
                         INSERT INTO content.course_chapters_localized_professors (course_id, chapter_id, language, contributor_id)
-                        VALUES (${course.id}, ${chapter.chapter_id}, ${chapter.language}, ${professor})
+                        VALUES (${courseId}, ${chapter.chapter_id}, ${chapter.language}, ${professor})
                         ON CONFLICT DO NOTHING
                   `;
                   }
                 }
               } else {
                 console.warn(
-                  `Course file ${course.id} ${file.path} does not have any chapters, skipping...`,
+                  `Course file ${course.index} ${file.path} does not have any chapters, skipping...`,
                 );
               }
             }

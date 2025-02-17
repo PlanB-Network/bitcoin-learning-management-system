@@ -10,7 +10,7 @@ import {
   cn,
 } from '@blms/ui';
 
-import { addSpaceToCourseId } from '#src/utils/courses.js';
+import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 
 interface Chapter {
   title: string;
@@ -65,7 +65,7 @@ export const NavigationPanel: React.FC<Props> = ({
         className="w-fit cursor-default"
       >
         <h2 className="desktop-h4 uppercase text-darkOrange-5 text-center hover:font-medium w-fit mx-auto hover:cursor-pointer">
-          {addSpaceToCourseId(course.id)}
+          {addSpaceToCourseIndex(course.index)}
         </h2>
       </Link>
       <hr className="mb-4 mt-1 border-darkOrange-5" />

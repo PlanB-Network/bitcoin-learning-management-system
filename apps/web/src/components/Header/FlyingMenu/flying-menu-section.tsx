@@ -11,6 +11,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { MenuElement } from '../menu-elements.tsx';
 import type { NavigationSection } from '../props.ts';
 
+import { BTC101ID } from '#src/utils/courses.ts';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
 export interface FlyingMenuProps {
@@ -82,7 +83,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
   const { data: highlightedCourse } = trpc.content.getCourse.useQuery(
     {
       language: i18n.language ?? 'en',
-      id: 'btc101',
+      id: BTC101ID,
     },
     {
       staleTime: 300_000, // 5 minutes
@@ -162,7 +163,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                 <article className="w-full px-3 py-2 flex flex-col">
                   <img
                     src={assetUrl(
-                      `courses/${highlightedCourse.id}`,
+                      `courses/${highlightedCourse.index}`,
                       'thumbnail.webp',
                     )}
                     alt={highlightedCourse.name}

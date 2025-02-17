@@ -90,6 +90,7 @@ export interface CourseProgressExtended {
   completedChaptersCount: number;
   lastUpdated: Date;
   progressPercentage: number;
+  courseIndex: string;
   totalChapters: number;
   chapters: {
     chapterId: string;

@@ -1,19 +1,5 @@
 import { sql } from '@blms/database';
-import type { JoinedCourseChapterWithContent } from '@blms/types';
-
-type CourseChapterMeta = Pick<
-  JoinedCourseChapterWithContent,
-  | 'courseId'
-  | 'partId'
-  | 'chapterId'
-  | 'language'
-  | 'title'
-  | 'sections'
-  | 'releasePlace'
-  | 'rawContent'
-  | 'liveLanguage'
-  | 'lastCommit'
->;
+import type { CourseChapterMeta } from '@blms/types';
 
 export const getCourseChapterMetaQuery = (
   chapterId: string,
@@ -22,6 +8,7 @@ export const getCourseChapterMetaQuery = (
   return sql<CourseChapterMeta[]>`
     SELECT
       cl.course_id,
+      c.index as course_index,
       cl.chapter_id,
       language,
       title,

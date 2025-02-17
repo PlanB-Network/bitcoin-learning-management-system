@@ -35,6 +35,7 @@ export const coursePaymentLightSchema = coursePaymentSchema.pick({
 
 export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({
+    courseIndex: z.string(),
     totalChapters: z.number(),
     chapters: z.array(
       courseUserChapterSchema.pick({

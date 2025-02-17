@@ -1,6 +1,6 @@
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type { ChangedFile, Level, QuizQuestion } from '@blms/types';
+import type { ChangedFile, Course, Level, QuizQuestion } from '@blms/types';
 
 import { yamlToObject } from '../../../utils.js';
 
@@ -23,12 +23,24 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const lastUpdated = quizQuestion.files.sort((a, b) => b.time - a.time)[0];
 
+    const courseIndex = file.fullPath?.split('/')[1];
+
+    const courseId = await transaction<Course[]>`
+        SELECT id FROM content.courses WHERE index = ${courseIndex}
+      `
+      .then(firstRow)
+      .then((row) => row?.id);
+
+    if (!courseId) {
+      throw new Error(`Course not found for path ${file.path}`);
+    }
+
     const result = await transaction<QuizQuestion[]>`
         INSERT INTO content.quiz_questions
         (id, course_id, chapter_id, difficulty, author, duration, disabled, last_updated, last_commit, last_sync)
         VALUES (
           ${parsedQuizQuestion.id},
-          ${file.fullPath?.split('/')[1]},
+          ${courseId},
           ${parsedQuizQuestion.chapterId},
           ${parsedQuizQuestion.difficulty},
           ${parsedQuizQuestion.author},

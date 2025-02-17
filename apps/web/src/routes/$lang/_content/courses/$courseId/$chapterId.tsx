@@ -28,7 +28,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
 import {
   COURSES_WITH_INLINE_LATEX_SUPPORT,
-  addSpaceToCourseId,
+  addSpaceToCourseIndex,
   goToChapterParameters,
 } from '#src/utils/courses.js';
 import { formatDate } from '#src/utils/date.ts';
@@ -218,7 +218,7 @@ const TimelineBig = ({
     <div className="mb-0 w-full max-w-[1102px] max-sm:hidden mt-10 px-5 md:px-2">
       <h1 className="flex items-center gap-5">
         <TextTag size="small" variant="grey" mode="light" className="uppercase">
-          {addSpaceToCourseId(chapter.course.id)}
+          {addSpaceToCourseIndex(chapter.course.index)}
         </TextTag>
         <Link
           to={'/courses/$courseId'}
@@ -458,7 +458,7 @@ const MarkdownContent = ({ chapter }: { chapter: CourseChapterResponse }) => {
       <Suspense fallback={<Loader size={'s'} />}>
         <CoursesMarkdownBody
           content={chapter.rawContent}
-          assetPrefix={cdnUrl(`courses/${chapter.course.id}`)}
+          assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
           tutorials={tutorials || []}
           courses={courses || []}
           supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
@@ -672,7 +672,7 @@ function CourseChapter() {
         description={chapter?.course.objectives?.join(',')}
         imageSrc={
           chapter
-            ? assetUrl(`courses/${chapter.course.id}`, 'thumbnail.webp')
+            ? assetUrl(`courses/${chapter.course.index}`, 'thumbnail.webp')
             : ''
         }
       />

@@ -24,11 +24,12 @@ function CoursesExplorer() {
 
   const filteredCourses = courses
     ? courses.filter(
-        (course) => course.isArchived === false && course.id !== selectedSchool,
+        (course) =>
+          course.isArchived === false && course.index !== selectedSchool,
       )
     : [];
   const selectedSchoolCourse = courses?.find(
-    (course) => course.id === selectedSchool,
+    (course) => course.index === selectedSchool,
   );
 
   return (

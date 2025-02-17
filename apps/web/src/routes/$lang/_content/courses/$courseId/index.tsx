@@ -217,7 +217,7 @@ function CourseDetails() {
           >
             {t(`words.${course.format}`)}
           </TextTag>
-          {beginnerFriendlyCourses.includes(course.id) && (
+          {beginnerFriendlyCourses.includes(course.index!) && (
             <TextTag
               size={isMobile ? 'verySmall' : 'small'}
               variant="green"
@@ -239,7 +239,7 @@ function CourseDetails() {
     return (
       <section className="flex max-lg:flex-col lg:py-2.5 mt-6 lg:mt-7 w-full gap-5 lg:gap-10">
         <img
-          src={assetUrl(`courses/${course.id}`, 'thumbnail.webp')}
+          src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
           alt={course.name}
           className="rounded-[20px] w-full lg:max-w-[550px] shrink-1"
         />
@@ -340,7 +340,7 @@ function CourseDetails() {
           )}
           <ListItem
             leftText={t('words.courseId')}
-            rightText={course.id.toUpperCase()}
+            rightText={course.index!.toUpperCase()}
             variant="light"
             hasIncreasedPadding
           />
@@ -403,7 +403,7 @@ function CourseDetails() {
             <Suspense fallback={<Loader size={'s'} />}>
               <PresentationMarkdownBody
                 content={course.planbSchoolMarkdown}
-                assetPrefix={cdnUrl(`courses/${course.id}`)}
+                assetPrefix={cdnUrl(`courses/${course.index}`)}
               />
             </Suspense>
           </section>
@@ -809,7 +809,7 @@ function CourseDetails() {
         title={`${SITE_NAME} - ${course?.name}`}
         description={course?.goal}
         imageSrc={
-          course ? assetUrl(`courses/${course.id}`, 'thumbnail.webp') : ''
+          course ? assetUrl(`courses/${course.index}`, 'thumbnail.webp') : ''
         }
       />
       <div className="text-newBlack-1">

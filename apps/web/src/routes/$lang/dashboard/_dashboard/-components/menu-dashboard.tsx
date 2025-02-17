@@ -19,7 +19,7 @@ import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
-import { addSpaceToCourseId } from '#src/utils/courses.ts';
+import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -46,7 +46,7 @@ export const MenuDashboard = ({
     ?.filter((course) => course.progressPercentage < 100)
     .map((course) => {
       return {
-        text: `${addSpaceToCourseId(course.courseId.toLocaleUpperCase())} - ${
+        text: `${addSpaceToCourseIndex(course.courseIndex.toLocaleUpperCase())} - ${
           allCourses?.find((c) => c.id === course.courseId)?.name
         }`,
         to: `/dashboard/course/${course.courseId}`,

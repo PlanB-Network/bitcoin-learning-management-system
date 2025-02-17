@@ -85,6 +85,7 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
 export const minimalJoinedCourseSchema = courseSchema
   .pick({
     id: true,
+    index: true,
     isArchived: true,
     hours: true,
     topic: true,
@@ -258,6 +259,7 @@ export const courseReviewsExtendedSchema = z.object({
 
 export const courseMetaSchema = minimalJoinedCourseSchema.pick({
   id: true,
+  index: true,
   topic: true,
   subtopic: true,
   contact: true,
@@ -267,3 +269,22 @@ export const courseMetaSchema = minimalJoinedCourseSchema.pick({
   goal: true,
   objectives: true,
 });
+
+export const courseChapterMetaSchema = joinedCourseChapterSchema
+  .pick({
+    partId: true,
+    chapterId: true,
+    language: true,
+    title: true,
+    sections: true,
+    releasePlace: true,
+    rawContent: true,
+    liveLanguage: true,
+  })
+  .merge(
+    z.object({
+      courseId: z.string(),
+      courseIndex: z.string(),
+      lastCommit: z.string(),
+    }),
+  );

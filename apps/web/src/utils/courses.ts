@@ -1,12 +1,14 @@
 import type { CourseChapterResponse } from '@blms/types';
 
-export function addSpaceToCourseId(courseId?: string) {
-  if (!courseId) return '';
+export function addSpaceToCourseIndex(courseIndex?: string | null) {
+  if (!courseIndex) return '';
 
-  return `${courseId.match(/\D+/)?.[0] || ''} ${
-    courseId.match(/\d+/)?.[0] || ''
+  return `${courseIndex.match(/\D+/)?.[0] || ''} ${
+    courseIndex.match(/\d+/)?.[0] || ''
   }`;
 }
+
+export const BTC101ID = '2b7dc507-81e3-4b70-88e6-41ed44239966';
 
 export const goToChapterParameters = (
   chapter: CourseChapterResponse,
