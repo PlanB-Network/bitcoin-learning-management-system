@@ -135,6 +135,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       .catch(() => {});
   }, [i18n.language]);
 
+  // To remove after a week
   useEffect(() => {
     function fetchCourses() {
       if (courses && courses.length > 0 && courses[0].index == null) {
