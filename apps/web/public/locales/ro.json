@@ -154,7 +154,8 @@
       "otherCourses": "Alte cursuri",
       "courseAddedToDashboard": "Acest curs a fost adăugat la dashboardul al studentului dumneavoastră",
       "pastEditionsRatings": "Evaluările edițiilor anterioare",
-      "ledBy": "Acest curs este condus de"
+      "ledBy": "Acest curs este condus de",
+      "collaborativeEffort": "Fiecare conținut de pe platformă este rezultatul unui efort de colaborare: fiecare lecție, traducere și revizuire este posibilă prin munca colaboratorilor. Din acest motiv, suntem mereu în căutare de corectori care pot revizui conținutul nostru în mai multe limbi. Dacă dorești să participi la procesul de corectare, te rugăm să ne contactezi în grupul nostru <0>Telegram</0> și să citești <1>tutorialul nostru</1>.\n\nVă reamintim că acest conținut este open-source - licențiat sub <2>CC BY-SA</2> - deci poate fi partajat și utilizat liber, atâta timp cât sursa originală este creditată."
     },
     "chapter": {
       "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș.",
@@ -185,7 +186,8 @@
       "seeCourse": "Vezi cursul",
       "buildPath": "Construiește-ți propriul drum în \"gaura iepurelui\"",
       "comingSoon": "în curând",
-      "planbSchool": "ȘCOALA PLAN ₿"
+      "planbSchool": "ȘCOALA PLAN ₿",
+      "planbSchoolHeadline": "Școala Plan ₿, condusă de Giacomo Zucco, oferă programe educaționale intensive de trei luni concepute pentru a umple golul dintre învățare și aplicațiile din lumea reală. Dincolo de clasele tradiționale, studenții se implică în proiecte practice conduse de companii și un bootcamp de primă clasă dedicat celor mai buni performeri. Doar cele mai bune talente avansează după două runde de selecție competitive, asigurându-se că studenții finali de top sunt complet echipați pentru a-și lansa carierele în industria Bitcoin."
     },
     "payment": {
       "access_invoice": "Puteți accesa factura dvs. prin intermediul dashboard-ului",
@@ -330,7 +332,8 @@
       "certificatePageOtherCourses": "Alte cursuri conexe",
       "courseDiploma": "Diplomă de curs",
       "courseNotFound": "Cursul nu a fost găsit",
-      "dontWorryRetake": "Nu-ți face griji, poți da din nou examenul după 24 de ore."
+      "dontWorryRetake": "Nu-ți face griji, poți da din nou examenul după 24 de ore.",
+      "examCertificateCompletionText": "Plan ₿ Network are plăcerea de a-l felicita pe {{username}} pentru obținerea diplomei cursului \"{{courseName}}”."
     },
     "conclusion": {
       "completedFeedbackHeadline": "Vă mulțumim pentru feedback!\nEste foarte important pentru noi, așa că îl apreciem cu adevărat.",
@@ -389,7 +392,22 @@
       "whereYouAre": "Să vedem unde te afli!",
       "viewDetails": "Vezi detalii",
       "yourCertificate": "Certificatul tău",
-      "done": "Terminat"
+      "done": "Terminat",
+      "newCourses": "Noi cursuri sunt adăugate în fiecare lună",
+      "completeAll": "Finalizează tot",
+      "noCoursesAvailable": "Nu sunt cursuri disponibile.",
+      "notStarted": "Nu a început",
+      "notValidated": "Nevalidat",
+      "price": "Preț :",
+      "professor": "Profesor :",
+      "seeDetails": "Vezi detalii",
+      "seeTheCourse": "Vezi cursul",
+      "verify": "Verificați autenticitatea diplomei dvs.",
+      "yourProgress": "Progresul tău :",
+      "courseDashboard": "Dashboardul cursului",
+      "detailsAndCertificate": "Detalii și certificat",
+      "download": "Descarcă diploma",
+      "duration": "Durată :"
     },
     "profile": {
       "change": "Schimba",
@@ -460,6 +478,10 @@
         "seeStatistics": "Vezi statistici",
         "viewDetails": "Vezi detalii",
         "writtenFeedbacks": "Feedback-uri scrise"
+      },
+      "tutorials": {
+        "tutorialAnalyticsDescription": "Aici poți găsi analize privind tutorialele pe care le-ai creat și publicat pe platformă.",
+        "yourTutorials": "Tutorialele tale"
       }
     },
     "course": {
@@ -470,7 +492,9 @@
       "feedbacks": "Un capitol la sfârșitul cursului este dedicat feedback-urilor. Dacă doriți să vă dați feedback-ul acum, puteți să o faceți aici.",
       "ratingsAndFeedbacks": "Evaluări și feedback-uri",
       "shareOnSocials": "Share pe rețelele sociale:",
-      "tweetText": "Bucuros că am finalizat cursul {{courseId}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}"
+      "tweetText": "Bucuros că am finalizat cursul {{courseId}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
+      "conclusionHeadline": "Iată un rezumat a ceea ce ai învățat. Dacă unele capitole au fost omise sau nu au fost validate corespunzător, acum este momentul să o faci, fie întorcându-te să înveți, fie apăsând pe butonul de completare.",
+      "submitReviewInfo": "Trebuie să trimiți o recenzie pentru a avea acces la această funcție."
     },
     "credentials": {
       "bCertSubtitle": "Aici puteți găsi detalii referitoare la rezervările și notele dumneavoastră pentru Certificatele ₿ trecute și viitoare.\nCertificatul ₿ este un examen organizat de Plan ₿ Network pentru a confirma cunoștințele dumneavoastră în Bitcoin și subiectele sale conexe.",
@@ -517,7 +541,9 @@
         "lastUpdate": "Ultimul update",
         "resultsRemaining": "Au mai rămas {{results}} rezultate",
         "lastUpdated": "Ultimul actualizat",
-        "viewCV": "Vizualizează CV"
+        "viewCV": "Vizualizează CV",
+        "downloadProfiles": "Descarcă spreadsheet-ul",
+        "downloadSpreadsheet": "Descarcă spreadsheet-ul"
       },
       "userRolesAllocation": "Alocarea rolurilor utilizatorilor"
     },
@@ -534,9 +560,137 @@
       "acceptTermsAndConditions": "Am citit și accept termenii și condițiile",
       "availabilityStartPlaceholder": "Dată",
       "applicationSaved": "Aplicația dumneavoastră a fost salvată!",
-      "availability": "Disponibilitatea ta"
+      "availability": "Disponibilitatea ta",
+      "jobTitles": {
+        "researcher": "Cercetător",
+        "accountingManager": "Manager Contabilitate",
+        "publicRelationsManager": "Manager Relații Publice",
+        "backendEngineer": "Inginer Backend",
+        "bitcoinInvestmentAnalyst": "Analist de Investiții Bitcoin",
+        "cloudInfrastructureEngineer": "Inginer Infrastructură Cloud",
+        "communityManager": "Manager de Comunitate",
+        "complianceOfficer": "Responsabil de conformitate",
+        "dataEngineer": "Inginer de date",
+        "devOpsEngineer": "Inginer DevOps",
+        "graphicDesigner": "Designer Grafic",
+        "legalContractSpecialist": "Specialist în Contracte Juridice",
+        "miningOperationsManager": "Manager Operațiuni de Mining",
+        "mobileAppDeveloper": "Dezvoltator de aplicații mobile",
+        "operationsManager": "Manager de operațiuni",
+        "productManager": "Manager de produs",
+        "protocolEngineer": "Inginer de protocol",
+        "revenueManager": "Manager de venituri",
+        "riskAnalyst": "Analist de risc",
+        "sales": "Vânzări",
+        "seoSpecialist": "Specialist SEO",
+        "technicalSupportEngineer": "Inginer de suport tehnic",
+        "technicalWriter": "Scriitor tehnic",
+        "uxResearcher": "Cercetător UX",
+        "amlKycSpecialist": "Specialist AML/KYC",
+        "businessDevelopmentManager": "Manager Dezvoltare Afaceri",
+        "brandStrategist": "Strateg de brand",
+        "businessAnalyst": "Analist de afaceri",
+        "contentWriter": "Scriitor de conținut",
+        "cryptographer": "Criptograf",
+        "customerSuccessManager": "Manager de Customer Success",
+        "customerSupportSpecialist": "Specialist în Suport pentru Clienți",
+        "cybersecurity": "Cybersecurity",
+        "economicAnalyst": "Analist economic",
+        "educator": "Educator",
+        "eventCoordinator": "Coordonator de evenimente",
+        "frontendEngineer": "Inginer Frontend",
+        "fullStackDeveloper": "Programator Full Stack",
+        "logisticManager": "Manager Logistic",
+        "marketingManager": "Manager de Marketing",
+        "miningEngineer": "Inginer Mining",
+        "socialMediaManager": "Manager de Social Media",
+        "technicalProductManager": "Manager de Produs Tehnic",
+        "uiUxDesigner": "Designer UI/UX",
+        "hrSpecialist": "Specialist în resurse umane"
+      },
+      "languageLevelSubLabel": "Selectați nivelul care corespunde cel mai bine abilităților dvs.",
+      "legalInformationSubtitle": "Vă rugăm să acceptați termenii și condițiile de mai jos, astfel încât să putem potrivi abilitățile și experiența dvs. cu oportunitățile de muncă oferite de partenerii noștri.",
+      "jobCategories": {
+        "financeCompliance": "Finanțe și Conformitate",
+        "businessRoles": "Roluri în afaceri",
+        "marketingCommunity": "Marketing și Comunitate",
+        "more": "Mai multe",
+        "operationsSupport": "Operațiuni și Suport",
+        "productDesign": "Produs și Design",
+        "researchEducation": "Cercetare și Educație",
+        "technicalRoles": "Roluri tehnice"
+      },
+      "emailAddress": "Adresă de email",
+      "expectedSalaryPlaceholder": "Salariu lunar: 2.5K net",
+      "expectedSalarySubLabel": "În funcție de profilul dvs., spuneți-ne care sunt așteptările dvs. salariale pe oră sau pe lună. Vă rugăm să specificați dacă este net sau brut.",
+      "fileUploaded": "CV încărcat cu succes!",
+      "followProcess": "Urmați acest proces pas cu pas pentru a trimite CV-ul și informațiile despre locul de muncă.",
+      "fullTime": "Full time",
+      "invalidFile": "Format de file invalid",
+      "languageLevel": "Nivel de competență",
+      "languageLevels": {
+        "advanced": "Avansat (încredere și precizie)",
+        "beginner": "Începător (Înțelegere limitată)",
+        "elementary": "Elementar (Conversație și scriere de bază)",
+        "fluent": "Fluent (Nivel nativ)",
+        "intermediate": "Intermediar (Comunicare confortabilă)"
+      },
+      "languageRequired": "Adăugați cel puțin o limbă.",
+      "languageSkills": "Abilități lingvistice",
+      "languageSkillsSubtitle": "Spuneți-ne ce limbi vorbiți și scrieți, precum și nivelul corespunzător de competență.",
+      "lastName": "Nume de familie",
+      "legalInformation": "Informații juridice",
+      "emailPlaceholder": "mail@mail.com",
+      "expectedSalary": "Salariu estimat",
+      "fileTooLarge": "File-ul selectat este prea mare",
+      "fileUploadError": "A apărut o eroare în timpul încărcării fișierului dvs. Vă rugăm să încercați din nou.",
+      "firstName": "Prenume (sau pseudonim)",
+      "jobSearch": "Căutare de locuri de muncă",
+      "jobSearchSubtitle": "Definiți preferințele dvs. de muncă pentru a ne ajuta să oferim cele mai bune oportunități la profilul dvs.",
+      "legalTerms": "Termeni legali",
+      "lookingForJob": "Căutăm oportunități de muncă pentru tine.",
+      "maxCharacters": "Maxim {{characters}} caractere",
+      "maxRoles": "Puteți selecta până la maxim 3 titluri de joburi.",
+      "chooseFile": "Alege fișierul",
+      "bitcoinProjectText": "Care dintre ele?",
+      "companySizePreference": "Ce dimensiune a companiei preferi?",
+      "companySizes": {
+        "1To10": "De la 1 la 10 de angajați",
+        "41To100": "De la 41 la 100 de angajați",
+        "noPreference": "Fără preferințe",
+        "100More": "100 sau mai mulți angajați",
+        "11To40": "De la 11 la 40 de angajați"
+      },
+      "bitcoinProjectPlaceholder": "Exemple: Proiect comunitar, proiect open source, etc...",
+      "confirmDelete": "Confirmați ștergerea",
+      "bitcoinProjectSubLabel": "Descrieți proiectul dvs. mai jos.",
+      "completeApplication": "Aplicație completă",
+      "contactInformation": "Informații de contact",
+      "contactInformationSubtitle": "Te rugăm să furnizezi adresa ta de e-mail și alte metode de contact.",
+      "countryResidence": "Țara de reședință",
+      "cvRequired": "Este necesară încărcarea CV-ului.",
+      "cvUploadLabel": "Încărcare CV",
+      "cvUploadSubtitle": "Încarcă CV-ul pentru a-ți prezenta abilitățile și experiențele potențialilor angajatori.",
+      "deleteCareerProfile": "Șterge profilul carierei",
+      "companySizePreferenceSubLabel": "Poți selecta mai multe răspunsuri.",
+      "companySizeRequired": "Alege cel puțin o dimensiune a companiei.",
+      "deleteCareerProfileTitle": "Ești sigur că vrei să îți ștergi profilul profesional?",
+      "bitcoinRelatedExperience": "Experiență legată de Bitcoin",
+      "bitcoinRelatedExperienceSubtitle": "Te rugăm să ne împărtășești câteva informații despre implicarea ta în inițiativele Bitcoin.",
+      "cannotUndo": "Această acțiune nu poate fi anulată.",
+      "termsAndConditions": "Termeni și Condiții",
+      "yourLanguages": "Limbile tale",
+      "steps": {
+        "step3": "Încărca CV",
+        "step4": "Termeni legali"
+      },
+      "uploadCV": "Încarcă-ți CV-ul",
+      "uploadCVSubLabel": "Încarcă CV-ul pentru a-ți prezenta abilitățile și experiențele potențialilor angajatori.",
+      "welcome": "Bine ai venit pe portalul carierei tale",
+      "yourRoles": "Posturile tale de muncă"
     },
-    "backToDashboard": "Înapoi la dashboard"
+    "backToDashboard": "Înapoi la dashboard",
+    "studentDashboard": "Dashboardul studentului"
   },
   "events": {
     "card": {
@@ -552,7 +706,9 @@
       "bookSeat": "Rezervați un loc",
       "eventFull": "Evenimentul este plin",
       "seatBooked": "Loc rezervat",
-      "visitWebsite": "Vizitează site-ul web"
+      "visitWebsite": "Vizitează site-ul web",
+      "purchased": "Cumpărat",
+      "buyVideo": "Cumpără video"
     },
     "main": {
       "upcomingEvents": "Evenimente viitoare",
@@ -587,9 +743,20 @@
       "book_seat": "Rezervați locul",
       "callout_physical": "Sunteți pe cale să rezervați accesul fizic la acest eveniment.",
       "date": "Data",
-      "time": "Timp"
+      "time": "Timp",
+      "access_online_successful": "Când începe evenimentul, conectează-te la platformă pentru a avea acces la transmisia în direct pe pagina evenimentului.",
+      "description_physical": "Te rugăm să verifici detaliile furnizate cu privire la locație.\nOdată ce rezervarea ta este confirmată, îți vom elibera un bilet pe care să îl prezinți la eveniment. Acest bilet îți va oferi, de asemenea, acces la transmisia live și la reluarea video, dacă este disponibilă.",
+      "callout_online": "Ești pe cale să rezervi accesul online la acest eveniment.",
+      "callout_replay": "Ești pe cale să rezervi accesul la reluarea video a acestui eveniment.",
+      "description_online": "Te rugăm să verifici data și ora evenimentului furnizate.\nCând va fi momentul, conectează-te la platformă pentru a accesa transmisia live prin intermediul paginii evenimentului.",
+      "access_physical_successful": "Îți poți descărca biletul aici sau îl poți descărca mai târziu din dashboard-ul tău."
     },
-    "pageDescription": "Vrei să discuți despre Bitcoin în real time? Aici, poți găsi toate evenimentele susținute de comunitățile Plan B Network. Indiferent dacă vrei să asculți un curs, să discuți despre Bitcoin la un drink sau să dai un examen pentru a-ți evalua cunoștințele,aici vei găsi evenimentul potrivit prin intermediul Plan B Network."
+    "pageDescription": "Vrei să discuți despre Bitcoin în real time? Aici, poți găsi toate evenimentele susținute de comunitățile Plan B Network. Indiferent dacă vrei să asculți un curs, să discuți despre Bitcoin la un drink sau să dai un examen pentru a-ți evalua cunoștințele,aici vei găsi evenimentul potrivit prin intermediul Plan B Network.",
+    "errors": {
+      "premiumContentNeedsLogin": "Trebuie să fii logat pentru a accesa acest eveniment.",
+      "premiumContentNeedsPayment": "Acest eveniment face parte dintr-un program premium.",
+      "premiumContentNeedsPaymentAction": "Mergi la pagina de evenimente"
+    }
   },
   "home": {
     "header": {
@@ -635,6 +802,23 @@
     "wallOfLoveSection": {
       "title": "Zidul iubirii",
       "subtitle": "Ce spun Bitcoinerii despre noi"
+    },
+    "blogSection": {
+      "blogTitle": "Ce este nou la Plan ₿ Network",
+      "seeAll": "Vezi tot",
+      "noBlogsAvailable": "Nu sunt bloguri disponibile.",
+      "noDateAvailable": "Nicio dată disponibilă",
+      "description": "Continuăm să îmbunătățim platforma, conținutul și rețeaua - verifică!"
+    },
+    "courseSection": {
+      "upcomingCourseDescription": "Descoperă cele mai recente cursuri lansate pe platformă. Învățarea nu se oprește niciodată!",
+      "checkAllCourses": "Vezi toate cursurile",
+      "upcomingCourseTitle": "Cursuri noi și viitoare"
+    },
+    "eventSection": {
+      "checkEvents": "Verifică toate evenimentele",
+      "eventTitle": "O rețea globală de educatori Bitcoin",
+      "hottestEvent": "Cel mai fierbinte eveniment Bitcoin"
     }
   },
   "glossary": {
@@ -662,7 +846,14 @@
     "libraryDescription": "Descoperă multe cărți pentru a-ți îmbunătăți cunoștințele",
     "login": "Autentificare",
     "publicDescription": "Explorați articolele de comunicare publică",
-    "teachersDescription": "Cunoașteți profesorii noștri de la academie"
+    "teachersDescription": "Cunoașteți profesorii noștri de la academie",
+    "bitcoinDescription": "Învață Bitcoin de la fundamentale la aplicații avansate.",
+    "miningCourseDescription": "Înțelege care sunt procesele, instrumentele și industria din spatele procesului de mining Bitcoin.",
+    "moviesDescription": "Descoperă povești captivante și explorări profunde ale evoluției și impactului Bitcoin",
+    "businessDescription": "Dezvăluie utilizarea Bitcoin în comerț.",
+    "chooseLanguage": "Alege o limbă",
+    "channelsDescription": "Accesează selecția noastră exclusivă de canale Youtube pentru a învăța despre Bitcoin",
+    "lecturesDescription": "Revedeți înregistrările de la experții în Bitcoin"
   },
   "professors": {
     "tips": {
@@ -976,5 +1167,19 @@
     "pageTitle": "Oops.",
     "itemNotFound": "{{item}} nu a fost găsit",
     "itemNotFoundOrTranslated": "{{item}} nu a fost găsit sau nu a fost tradus în limba dumneavoastră"
+  },
+  "filters": {
+    "categories": "Categorii",
+    "levels": "Niveluri",
+    "resources": "Resurse",
+    "topics": "Subiecte"
+  },
+  "lectures": {
+    "checkFullCourse": "Verifică cursul complet",
+    "lecturePartCourse": "Această reluare a prelegerii face parte din cursul <0>{{courseTitle}}</0>.\nDescoperă cursul complet pentru a stăpâni întregul concept și pentru a-ți debloca întregul potențial!",
+    "partCourse": "Această prelegere face parte din cursul:",
+    "watchLecture": "Urmărește reluarea prelegerii",
+    "buyVideoToUnlock": "Cumpără videoclipul pentru a-l debloca",
+    "pageTitle": "Reluarea cursurilor"
   }
 }

@@ -2,30 +2,30 @@
   "about": {
     "activeContributors": "活動的な貢献メンバー",
     "missionTitle": "私たちのミッション",
-    "missionContent1": "私たちのミッションは、オープンソースの教育とネットワーキングを通じて、地域のビットコインコミュニティをサポートすることです。 私たちは、ビットコイン業界が発展するために必要なリソース（コース、書籍、ポスター、チラシ、ビデオ）を収集、整理、作成します。",
+    "missionContent1": "私たちのミッションは、オープンソースの教育とネットワーキングを通じて、地域のビットコインコミュニティをサポートすることです。 私たちは、ビットコイン業界が発展するために必要なリソース（コース、書籍、ポスター、チラシ、動画）を収集、整理、作成します。",
     "missionContent2": "私たちは、多言語対応のシンプルなGitHubリポジトリとEラーニング・プラットフォームを通じて、可能な限り最善の方法で知識を共有できるよう、知識を一元化しています。才能ある人材が成長するための適切なツールを用いて、地域のビットコインハブの発展を支援しています。",
     "commitmentTitle": "私たちのお約束ごと",
     "commitmentContent": "ビットコインコミュニティに対する私たちのお約束ごと（コミットメント）： \n • オープンソースであり続ける \n • 質の高い教育コンテンツを提供する \n • できるだけ多くの言語でコンテンツを翻訳する \n • ビットコインに貢献するみなさんの旅を支援する",
     "coreTeamTitle": "コアメンバー",
-    "coreTeamContent": "Plan ₿ Networkは、何百人もの貢献者、講師、コミュニティリーダー、デザイナー、開発者、主催者の集まりです。 Plan ₿を実現させ、日々、努力している数多くのみなさんに感謝します (貢献者の壁が間もなく登場します）。",
+    "coreTeamContent": "Plan ₿ Network は、何百人もの貢献者、講師、コミュニティリーダー、デザイナー、開発者、主催者の集まりです。 Plan ₿を実現させ、日々、努力している数多くのみなさんに感謝します (貢献者の壁が間もなく登場します）。",
     "coreTeamGiacomoRole": "取締役兼共同創設者",
     "coreTeamRogzyRole": "プロダクトマネージャー兼共同創業者",
     "coreTeamAsioRole": "教育コーディネーター",
     "coreTeamAjelexRole": "ノードコーディネーター",
     "corporateTitle": "プロジェクトを支える企業のみなさま",
-    "corporateContent": "Plan ₿ Networkは、ビットコインの開発に焦点を当てた3つの団体が参加するプロジェクトです。 ビットコイン教育を拡大と、Plan ₿ Networkの創造ためにともに手を取り合うことを決めました。 また、ビットコイン教育を世界に広めるという私たちの目標を成功させるために、多くの他団体が貢献し、力を合わせることに同意してくれました。 彼らの貢献に心より感謝申し上げます。",
+    "corporateContent": "Plan ₿ Network は、ビットコインの開発に焦点を当てた3つの団体が参加するプロジェクトです。 ビットコイン教育の拡大と Plan ₿ Network 創造のために、ともに手を取り合うことを決めました。 また、ビットコイン教育を世界に広めるという私たちの目標を成功させるために、多くの他団体が貢献し、力を合わせることに同意してくれました。 彼らの貢献に心より感謝申し上げます。",
     "coportateContact": "連絡先：",
     "storyTitle": "私たちのストーリー",
-    "storyContent": "Plan ₿ Networkは、世界中のビットコイン教育を支援するイニシアチブです。 教育、オープンソースソフトウェア、ピアツーピアネットワーク、共同体意識などを持ったさまざまな情熱的なビットコイン企業の集合体です。 彼らはともにPlan ₿ Networkを構築し、ビットコインエコシステムが成長するための最適なツールを提供することを決定しました。 私たちが2023年にリリースしたプレゼンテーションはこちらからご覧いただけます。",
-    "title": "Plan ₿ Networkについて",
-    "subtitle": "世界中にビットコインを広めたい（オレンジピル）したい？ Plan ₿ ネットワークにぜひご参加ください。",
+    "storyContent": "Plan ₿ Network は、世界中のビットコイン教育を支援するイニシアチブです。 教育、オープンソースソフトウェア、ピアツーピアネットワーク、共同体意識などを持ったさまざまな情熱的なビットコイン企業の集合体です。 彼らはともに Plan ₿ Networkを構築し、ビットコインエコシステムが成長するための最適なツールを提供することを決定しました。 私たちが2023年にリリースしたプレゼンテーションはこちらからご覧いただけます。",
+    "title": "Plan ₿ Network について",
+    "subtitle": "世界中をオレンジピルしたいですか？ Plan ₿ Network にぜひご参加ください。",
     "manifesto": "私たちは、ビットコインが提供する分散型の未来を信じています。\n\n私たちの使命は、10年以内に10億人の人々にビットコインを紹介することです。そのために必要なツールは教育と情報です。\n\n私たちは、オープンソースの教育コンテンツを提供し、ビットコイン・メンターのネットワークを提供することで、ビットコイナーたちの地域コミュニティをサポートします。\n\n私たちの哲学は、サイファーパンクのマニフェストに影響を受けています。彼らがプライバシーを支持したように、私たちは教育を支持します。私たちは、知識こそが自由と変革の基盤であると信じています。\n\n私たちは、ビットコインオンリーです。\n\n私たちは、個人の責任と、自分自身の鍵を所有することによってもたらされる独立性を提唱します。\n\n私たちは、盲目的な信頼ではなく、検証を促します。\n\n私たちは、お金を変えることで、世界を変えることができると信じています。\n\n私たちは、分散型かつオープンソースであり、単一障害点を嫌います。\n\n私たちは、コンテンツの自由な普及を奨励しています。\n\n私たちは、個人が中心となり、ボトムアップで運営される世界を目指しています。\n\n私たちは、シンプルさを促し、教育し、共有します。\n\n「ビットコインを世界中に広める（オレンジピル）」という私たちのミッションにぜひご参加ください。\n",
-    "description": "Plan ₿ Networkは、より良い教育を提供するために、世界中のコミュニティがまとまるための手助けをしています。 このプラットフォームでは、オンラインアカデミー、チュートリアルポータル、ビットコイン教育ツールキット、リソースポータルなど を通じて、私たちが掲げる目標に向けて必要なツールを開発しています。"
+    "description": "Plan ₿ Network は、より良い教育を提供するために、世界中のコミュニティがまとまるための手助けをしています。 このプラットフォームでは、オンラインアカデミー、チュートリアルポータル、ビットコイン教育ツールキット、リソースポータルなど を通じて、私たちが掲げる目標に向けて必要なツールを開発しています。"
   },
   "auth": {
     "accountCreated": "{{userName}}さんのアカウントが作成されました！",
     "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
-    "canSaveProgress": "ビットコインアカデミーではあなたの学習状況を保存できるようになりました",
+    "canSaveProgress": "ビットコインアカデミーではあなたの進捗状況を保存できるようになりました",
     "createAccount": "登録する",
     "createOne": "ここから登録！",
     "emailAddress": "メールアドレス",
@@ -40,7 +40,7 @@
     "forgottenPassword": "パスワードをお忘れですか？",
     "headerAccountCreated": "アカウントが作成されました",
     "lnurlAuthDescription": "ライトニングウォレットでQRコードをスキャンしてログインしてください！",
-    "noAccountNeeded": "Plan ₿ Networkで学ぶためにアカウント登録は必要ありません！",
+    "noAccountNeeded": "Plan ₿ Network で学ぶためにアカウント登録は必要ありません！",
     "noAccountYet": "アカウントをお持ちではありませんか？",
     "resetPassword": "パスワードをリセットする",
     "passwordRequired": "パスワードは必須です",
@@ -105,7 +105,7 @@
         "ticketDownload": "チケットをダウンロードする"
       },
       "live": {
-        "title": "ライブ",
+        "title": "ライブ動画",
         "stayTuned": "ライブセッションはクラス開始の30分前に始まります。 ご期待ください！"
       },
       "nextLesson": "次のレッスンは"
@@ -134,13 +134,13 @@
       "premiumContentNeedsLogin": "このコースにアクセスするにはログインが必要です。",
       "premiumContentNeedsPayment": "このコースはプレミアムプログラムの一部です。",
       "premiumContentNeedsPaymentAction": "コースのホームページへ",
-      "thanksTipping": "教授にチップを渡すことで、感謝の気持ちを伝えることができます。",
+      "thanksTipping": "講師にチップを渡すことで、感謝の気持ちを伝えることができます。",
       "ledBy": "本コースの講師",
       "pastEditionsRatings": "過去の評価",
       "teacherLed": "講師主導"
     },
     "explorer": {
-      "pageDescription": "Plan ₿ アカデミーは、世界中のビットコイン教育をシンプルにすることを目的としています。 様々な分野の専門家にキュレーションされた当アカデミーは、ビットコインのあらゆる側面を解明するための包括的なコースを提供しています。\n初心者から専門家まで、ご自身のペースで、あるいは毎週教授がフォローする形で、当アカデミーがビットコインの広大な世界をより深く理解する一助となれば幸いです。 私たちのコースの多くは、誰もが、どこにいても、質の高い教育にアクセスできるように無料で提供されています。",
+      "pageDescription": "Plan ₿ アカデミーは、世界中のビットコイン教育をシンプルにすることを目的としています。 様々な分野の専門家にキュレーションされた当アカデミーは、ビットコインのあらゆる側面を解明するための包括的なコースを提供しています。\n初心者から専門家まで、ご自身のペースで、あるいは毎週講師がフォローする形で、当アカデミーがビットコインの広大な世界をより深く理解する一助となれば幸いです。 私たちのコースの多くは、誰もが、どこにいても、質の高い教育にアクセスできるように無料で提供されています。",
       "findCourses": "コース選択ツールであなたのニーズにぴったりのコースを見つけよう",
       "seeCourse": "コースを探す",
       "buildPath": "ラビットホールで自分だけの道を作ろう",
@@ -171,9 +171,9 @@
       "book_description": "会場の詳細をご確認ください。\nご予約が完了しましたら、確認チケットと当日ご提示いただくQRコードをお送りいたします。",
       "qr_unified": "このQRコードは、ライトニング決済とオンチェーン決済に対応しています。",
       "time": "時間",
-      "inPersonCallout": "会場コースへの<strong>アクセスチケット</strong>を購入しようとしています。",
+      "inPersonCallout": "あなたは<strong>会場アクセスチケット</strong>を購入しようとしています。",
       "onlineCallout": "このコースへの<strong>オンラインアクセス</strong>チケットを購入しようとしています。",
-      "onlineDescription": "各クラスセッションは、プラットフォーム上でライブストリーミングされます。\nご購入により、ライブストリームとリプレイビデオにアクセスできるようになります。",
+      "onlineDescription": "各クラスセッションは、プラットフォーム上でライブストリーミングされます。\nご購入により、ライブストリームとリプレイ動画にアクセスできるようになります。",
       "inPersonDescription": "各クラスのセッションは、指定された日時に指定された会場で開催され、またプラットフォーム上もライブストリーミングされます。 \n\nこの購入により、会場とオンラインクラスの両方にアクセスできるようになります。\n会場で直接参加する場合は、座席の予約をお忘れなく。",
       "checkoutError": "チェックアウトの処理中にエラーが発生しました。\nもう一度やり直してください。"
     },
@@ -252,7 +252,7 @@
       "finalExam": "最終試験",
       "findInformationChapter": "詳しくはこの章をご覧ください：",
       "futureProof": "将来証明： あなたの学位は永久に保護され、常に有効です。",
-      "getCertificate": "証明書の取得",
+      "getCertificate": "認定証を取得する",
       "globallyRecognized": "世界的認知： ブロックチェーンに裏付けされたクレデンシャルは世界中で信頼されています。",
       "instantVerification": "即時検証： 雇用主は、あなたの学位が真正であることや発行日を簡単に確認することができます。",
       "instructions": "指示：",
@@ -263,7 +263,7 @@
       "oopsFailed": "おっと、最終試験は<0>不合格<0>だったようです。",
       "passed": "合格",
       "passRate": "合格率80％です。",
-      "planBTimeStamp": "Plan ₿ Networkでは、ブロックチェーンに裏打ちされたタイムスタンプ技術を用いて、あなたの学位を保護します。",
+      "planBTimeStamp": "Plan ₿ Network では、ブロックチェーンに裏打ちされたタイムスタンプ技術を用いて、あなたの学位を保護します。",
       "quitWithoutSubmitting": "おっと、あなたは答えを提出せずにページを去ったようです。 テストはキャンセルされます。",
       "retakeExam": "再トライ",
       "retakeInstructions": "20分間で40問の問題に答えなければなりません。 問題は何度でも表示でき、最後に答えを提出することができます。",
@@ -288,8 +288,8 @@
       "timeStamped": "タイムスタンプが押されました。",
       "timeStampHow": "仕組み：",
       "timerStart": "「開始する」をクリックすると、20分間のタイマーが始まります。",
-      "examCertificateCompletionText": "Plan ₿ Networkは、{{username}}が「{{courseName}}」コースの修了証書を授与されたことを祝福いたします。",
-      "bCertCompletionText": "Plan ₿ Networkは、{{username}}が₿ 認定証を授与されたことを祝福します。",
+      "examCertificateCompletionText": "Plan ₿ Network は、{{username}}が「{{courseName}}」コース認定証を授与されたことを祝福いたします。",
+      "bCertCompletionText": "Plan ₿ Network は、{{username}}が₿ 認定証を授与されたことを祝福します。",
       "buttonTextBCert": "さらに詳しく知る",
       "certificatePageOtherCourses": "その他の関連コース",
       "courseDiploma": "コース修了証書",
@@ -312,24 +312,36 @@
     "myCourses": {
       "resumeLesson": "Resume the lesson",
       "completed": "完了しました",
-      "inprogress": "",
-      "inprogressCoursesDescription": "",
-      "whereYouAre": "",
+      "inprogress": "進行中",
+      "inprogressCoursesDescription": "ここでは、開始したコースの進捗状況を確認することができます。",
+      "whereYouAre": "あなたがどこにいるのか見てみましょう！",
       "completedCoursesDescription": "ここでは、完了したコースを確認することができます。",
-      "done": "",
-      "inprogressCoursesTitle": "",
-      "seeProgress": "",
-      "startCourse": "コースの開始または完了",
-      "viewDetails": "",
-      "yourCertificate": "",
+      "done": "完了",
+      "inprogressCoursesTitle": "進行中のコース",
+      "seeProgress": "進捗状況はコチラ。",
+      "startCourse": "コースの開始または完了する",
+      "viewDetails": "詳細を見る",
+      "yourCertificate": "認定証",
       "completedCoursesTitle": "完了したコース",
       "download": "修了証書をダウンロードする",
       "verify": "修了証書の真正性を確認する",
-      "completeAll": "すべてを完了する"
+      "completeAll": "すべてを完了する",
+      "yourProgress": "あなたの進捗：",
+      "detailsAndCertificate": "詳細と認定証",
+      "courseDashboard": "コースダッシュボード",
+      "seeDetails": "詳細を見る",
+      "seeTheCourse": "コースを見る",
+      "professor": "講師：",
+      "duration": "期間：",
+      "newCourses": "毎月新しいコースが追加されます",
+      "noCoursesAvailable": "コースはありません。",
+      "notStarted": "未着手",
+      "notValidated": "未検証",
+      "price": "価格："
     },
     "account": "アカウント",
     "courses": "コース",
-    "logout": "",
+    "logout": "ログアウト",
     "booking": {
       "accessLive": "ライブストリーミングにアクセスする",
       "billingTitle": "請求履歴",
@@ -351,41 +363,41 @@
       "yesCancel": "はい、キャンセルします"
     },
     "bCert": {
-      "noResults": "このアカウントに関連する成績認定証はまだありません。.\n試験に合格したにも関わらず、長期間経っても結果が反映されない場合は、私たちに<0>ご連絡</0>ください。",
+      "noResults": "このアカウントに関連する認定証はまだありません。.\n試験に合格したにも関わらず、長期間経っても結果が反映されない場合は、私たちに<0>ご連絡</0>ください。",
       "grade": "成績"
     },
     "profile": {
-      "emailChangeConfirmation": "",
-      "saving": "",
-      "change": "",
-      "edit": "",
-      "cancel": "",
-      "save": "",
-      "crop": "",
-      "preview": "",
-      "displayName": "",
-      "email": "Eメール",
-      "password": "",
+      "emailChangeConfirmation": "メールアドレス変更の確認メールが送信されましたので、受信トレイをご確認ください。",
+      "saving": "保存中…",
+      "change": "変更",
+      "edit": "編集",
+      "cancel": "キャンセル",
+      "save": "保存",
+      "crop": "切り取る",
+      "preview": "プレビュー",
+      "displayName": "表示名",
+      "email": "メールアドレス",
+      "password": "パスワード",
       "personalInformation": "個人情報",
-      "profile": "",
-      "profileInformation": "",
-      "profilePicture": "",
-      "security": "",
-      "username": ""
+      "profile": "プロフィール",
+      "profileInformation": "プロフィール情報",
+      "profilePicture": "プロフィール写真",
+      "security": "セキュリティ",
+      "username": "ユーザー名"
     },
     "teacher": {
       "reviews": {
-        "publicComment": "",
-        "checkComments": "",
+        "publicComment": "公開コメント",
+        "checkComments": "ここでは、学生たちが寄せたコメントを読むことができます。 コメントは日付順に並んでいます。",
         "checkReviews": "ここでは、あなたが受けたのコースの成績とレビューを確認できます。",
         "noReviewsYet": "このコースにはまだレビューと成績がありません。",
-        "privateComment": "",
-        "review": "",
-        "reviews": "",
-        "reviewsAndGrading": "",
-        "seeStatistics": "",
-        "viewDetails": "",
-        "writtenFeedbacks": ""
+        "privateComment": "非公開コメント",
+        "review": "レビュー",
+        "reviews": "レビュー",
+        "reviewsAndGrading": "レビューと採点",
+        "seeStatistics": "統計を見る",
+        "viewDetails": "詳細を見る",
+        "writtenFeedbacks": "フィードバック"
       },
       "profile": {
         "billingInformations": "請求情報",
@@ -393,17 +405,17 @@
         "lightningAddress": "ライトニングアドレス",
         "makeModifications": "編集が必要ですか？",
         "noLightningAddress": "ライトニングアドレスはまだ追加されていません。",
-        "noShortBio": "",
-        "noTags": "",
-        "notifications": "",
-        "publicDescription": "",
-        "publicProfile": "",
-        "publicProfileDescription": "ここでは、Plan ₿ ネットワークでの教師としての活動に関連するすべての情報を入力または編集することができます。",
-        "teacherProfile": "",
-        "tutorialModification": "",
+        "noShortBio": "このアカウントにリンクされた略歴はまだありません。GitHubで自由に追加してください。",
+        "noTags": "このアカウントにリンクされているタグはまだありません。",
+        "notifications": "お知らせ",
+        "publicDescription": "この説明文は、プラットフォーム上の講師情報カードに表示されます。",
+        "publicProfile": "公開プロフィール",
+        "publicProfileDescription": "ここでは、Plan ₿ Network での講師活動に関連するすべての情報を入力または編集することができます。",
+        "teacherProfile": "講師プロフィール",
+        "tutorialModification": "何かを編集する際にヘルプが必要な場合は、こちらの<0>チュートリアル</0>をご覧ください。",
         "description": "あなたについて",
-        "enterTipsInformations": "Plan ₿ ネットワークは、利用者による講師陣へのチップを奨励します。 希望者がチップを提供できるように、あなたの情報を入力してください。",
-        "teacher": ""
+        "enterTipsInformations": "Plan ₿ Network は、利用者による講師陣へのチップを奨励します。 希望者がチップを提供できるように、あなたの情報を入力してください。",
+        "teacher": "講師"
       },
       "courses": {
         "analytics": "分析",
@@ -423,41 +435,47 @@
         "reviewInfos": "ここでは、あなたがコーディネートした各コースに関するすべての情報を管理し、確認することができます。",
         "reviews": "レビュー"
       },
-      "menu": "講師用メニュー"
+      "menu": "講師用メニュー",
+      "tutorials": {
+        "tutorialAnalyticsDescription": "ここでは、あなたが作成し、プラットフォーム上で公開したチュートリアル分析を見つけることができます。",
+        "yourTutorials": "あなたのチュートリアル"
+      }
     },
     "calendar": {
       "calendar": "カレンダー",
       "personalCalendar": "個人カレンダー"
     },
     "course": {
-      "checkDetailsCompleted": "",
+      "checkDetailsCompleted": "ここでは、修了したコースに関するすべての詳細を確認することができます。",
       "completionDiploma": "修了証書",
-      "completionExamInfo": "",
-      "coursesCompleted": "",
-      "feedbacks": "",
-      "ratingsAndFeedbacks": "",
-      "shareOnSocials": "",
-      "tweetText": "@planb_network の{{courseId}}コースを完了し、最終試験で{{score}}/100点を獲得。修了証書をもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "completionExamInfo": "この機能を利用するには、試験を完了する必要があります。",
+      "coursesCompleted": "完了したコース",
+      "feedbacks": "ここでは、あなたがこのコースにつけた評価やフィードバックを確認・編集することができます。",
+      "ratingsAndFeedbacks": "評価とフィードバック",
+      "shareOnSocials": "SNSで共有する：",
+      "tweetText": "@planb_network の{{courseId}}コースを完了し、最終試験で{{score}}/100点を獲得。認定証をもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "conclusionHeadline": "以下は、あなたが学んだことの要約です。 もし見逃してしまったチャプターがあったり、正しく検証されていないチャプターがある場合は、今すぐ戻って学習するか、完了ボタンを押してください。",
+      "submitReviewInfo": "この機能を利用するには、レビューを投稿する必要があります。"
     },
     "credentials": {
       "bCert": "₿ 認定証",
-      "bCertSubtitle": "ここでは、あなたの₿ 認定証の予約状況および成績状況に関する詳細をご覧いただけます。\n₿ 認定証とは、Plan ₿ Networkが主催するビットコインとその関連トピックに関するレベルを証明するための試験です。",
+      "bCertSubtitle": "ここでは、あなたの₿ 認定証の予約状況および成績状況に関する詳細をご覧いただけます。\n₿ 認定証とは、Plan ₿ Network が主催するビットコインとその関連トピックに関するレベルを証明するための試験です。",
       "beingGraded": "あなたの試験は採点中です。 結果は1～2週間後にアナウンスします。",
       "courseDiplomas": "コース修了証書",
       "courseDiplomasSubtitle": "ここでは、プラットフォーム上のコースを完了した後に受験したすべての試験の詳細を見ることができます。",
       "completionDiplomas": "修了証書",
-      "downloadTicket": "",
+      "downloadTicket": "チケットをダウンロードする",
       "globalCertifications": "グローバル認証",
-      "retakeExam": "",
-      "seatBooked": "",
-      "takePlaceAt": "",
-      "yourCertificate": ""
+      "retakeExam": "再試験を受ける",
+      "seatBooked": "試験会場の座席は予約済みです",
+      "takePlaceAt": "セッション会場",
+      "yourCertificate": "認定証"
     },
     "careerPortal": {
-      "description": "Plan ₿ Networkの学生は、あなたのキャリア成長をサポートする幅広いコミュニティの一員です。 このセクションでは、履歴書を提出し、キャリアの希望を共有することができます。 業界パートナーとの緊密な連携により、あなたのプロフィールを潜在的な就職先とマッチングさせ、プロとしての次のステップに進むお手伝いをします。",
-      "allowReceivingEmails": "Plan ₿ Networkから求人に関するEメールを受け取ることに同意します",
-      "beAware": "Plan ₿ Networkは、採用目的でのみ候補者のデータを収集・保存することにご留意ください。 データはEU一般データ保護規則（GDPR）の規定に従って処理され、当社のビジネスパートナーと共有されます。 <0>こちら</0>をクリックすると、候補者のプライバシーに関するお知らせの詳細をご覧いただけます。",
-      "bitcoinCommunityText": "もしそうなら、どの団体にどの程度関与していますか？ \nそのコミュニティはPlan ₿ Networkの一部ですか？",
+      "description": "Plan ₿ Network の学生は、あなたのキャリア成長をサポートする幅広いコミュニティの一員です。 このセクションでは、履歴書を提出し、キャリアの希望を共有することができます。 業界パートナーとの緊密な連携により、あなたのプロフィールを潜在的な就職先とマッチングさせ、プロとしての次のステップに進むお手伝いをします。",
+      "allowReceivingEmails": "Plan ₿ Network から求人に関するメール連絡を受け取ることに同意します",
+      "beAware": "Plan ₿ Network は、採用目的でのみ候補者のデータを収集・保存することにご留意ください。 データはEU一般データ保護規則（GDPR）の規定に従って処理され、当社のビジネスパートナーと共有されます。 <0>こちら</0>をクリックすると、候補者のプライバシーに関するお知らせの詳細をご覧いただけます。",
+      "bitcoinCommunityText": "もしそうなら、どの団体にどの程度関与していますか？ \nそのコミュニティは Plan ₿ Network の一部ですか？",
       "expectedSalary": "想定給与",
       "expectedSalaryPlaceholder": "月給：2,500（手取り額）",
       "expectedSalarySubLabel": "あなたのプロフィールに応じて、時給または月給の希望をお聞かせください。 手取り額か額面かを明記してください。",
@@ -572,7 +590,10 @@
       "contactInformationSubtitle": "メールアドレス、その他の連絡方法をご記入ください。",
       "countryResidence": "居住国",
       "steps": {
-        "step3": "履歴書のアップロード"
+        "step3": "履歴書のアップロード",
+        "step1": "個人情報",
+        "step2": "仕事を探す",
+        "step4": "法律用語"
       },
       "uploadCV": "履歴書をアップロードする",
       "languageLevel": "熟練度",
@@ -612,11 +633,25 @@
       },
       "roleLevel": "経験レベル",
       "roleLevelSubLabel": "ご自身のスキルに合ったレベルをお選びください。",
-      "selectLanguage": "言語を選択する"
+      "selectLanguage": "言語を選択する",
+      "welcome": "キャリアポータルへようこそ",
+      "yourRoles": "職種",
+      "roleLevels": {
+        "mid": "中級レベル（3～5年）",
+        "junior": "初級レベル（1～3年）",
+        "senior": "上級レベル（5年以上）",
+        "student": "学生（0年）"
+      },
+      "seeOrEditProfile": "プロフィールを見る・編集する",
+      "selectJobTitle": "職種を選択する",
+      "selectRole": "どのようなポジションをお探しですか？",
+      "selectRoleSubLabel": "ご希望の職種をお選びください。",
+      "startApplication": "申し込む",
+      "termsAndConditions": "利用規約"
     },
     "adminPanel": {
       "upcomingBookingsSubtitle": "ここでは、すべての会場イベントの参加者リストをダウンロードできます。",
-      "removeTeacherDescription": "本当にこの講師をカットしたいのですか？",
+      "removeTeacherDescription": "この講師を本当に削除しますか？",
       "careers": {
         "cv": "履歴書",
         "careers": "採用情報",
@@ -637,7 +672,7 @@
       "coursesIds": "コースID",
       "downloadList": "ダウンロードリスト",
       "githubLink": "Githubリンク",
-      "makeProfessor": "講師作成",
+      "makeProfessor": "講師として登録する",
       "date": "日付",
       "type": "タイプ",
       "upcomingBookings": "今後の予約状況",
@@ -652,7 +687,8 @@
       "tutorialAnalyticsDescription": "ここでは、プラットフォーム上のすべてのチュートリアルをチェックし、比較することができます。",
       "tutorialsManagementPanel": "チュートリアル管理パネル"
     },
-    "backToDashboard": "ダッシュボードに戻る"
+    "backToDashboard": "ダッシュボードに戻る",
+    "studentDashboard": "学生ダッシュボード"
   },
   "events": {
     "main": {
@@ -673,40 +709,51 @@
       "watchLive": "ライブストリーミングを視聴する",
       "watchReplay": "リプレイを見る",
       "bookLive": "ライブストリーミングを予約する",
-      "bookSeat": "Book your seat",
-      "visitWebsite": "ウェブサイトを見る",
+      "bookSeat": "座席を予約する",
+      "visitWebsite": "ウェブサイト",
       "buyReplay": "リプレイを購入する",
-      "eventFull": "",
-      "seatBooked": ""
+      "eventFull": "満席です",
+      "seatBooked": "座席の予約済み",
+      "buyVideo": "動画を購入する",
+      "purchased": "購入済み"
     },
     "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "10億人をオレンジピルするのは容易ではない",
-      "title": ""
+      "button": "イベントを追加する",
+      "description": "もちろんです！すべてのビットコインイベントはここで広めることができるますので、新しいイベントの追加するのは大歓迎です : )",
+      "subtitle": "世界中の人々にビットコインを広めよう",
+      "title": "イベントを追加しますか？"
     },
-    "pageDescription": "ビットコインについてリアルタイムで話したいですか？ ここでは、Plan ₿ Network コミュニティがサポートする全てのイベントを見つけることができます。 講義を聴きたい、飲みながらビットコインについて議論したい、自分の知識を評価するための試験を受けたいなど、Plan B ネットワークを通じて最適なイベントをここで見つけてください。",
-    "pageSubtitle": "",
-    "pageTitle": "",
+    "pageDescription": "ビットコインについてリアルタイムで話したいですか？ ここでは、Plan ₿ Network コミュニティがサポートする全てのイベントを見つけることができます。 講義を聴きたい、飲みながらビットコインについて議論したい、自分の知識を評価するための試験を受けたいなど、Plan ₿ Network を通じて最適なイベントをここで見つけてください。",
+    "pageSubtitle": "強力なネットワークによるビットコインアダプション",
+    "pageTitle": "ビットコインイベントをお探しですか？",
     "payment": {
-      "access_invoice": "",
-      "access_type": "",
-      "address": "",
-      "additional_free_description": "",
-      "back_events": "",
-      "book_seat": "",
-      "callout_physical": "",
+      "access_invoice": "ダッシュボードからインボイスにアクセスできます。",
+      "access_type": "アクセスの種類",
+      "address": "住所",
+      "additional_free_description": "このイベントは無料です。 ただし、席数には限りがありますので、予約後は必ずご参加ください。",
+      "back_events": "イベントに戻る",
+      "book_seat": "座席を予約する",
+      "callout_physical": "このイベントへの会場アクセスチケットを予約しようとしています。",
       "date": "日付",
-      "description_free_physical": "",
-      "download_ticket": "",
-      "enjoy": "",
+      "description_free_physical": "会場の詳細をご確認ください。\nご予約確定後、確認チケットとイベント会場で提示するQRコードを発行いたします。",
+      "download_ticket": "チケットをダウンロードする",
+      "enjoy": "ぜひお楽しみください : )",
       "language": "言語",
-      "limitation": "",
-      "max_capacity": "",
-      "payment_successful": "",
-      "time": "",
-      "description_physical": "会場の詳細をご確認ください。\nご予約が確認されましたら、当日ご提示いただくチケットを発行いたします。 このチケットにより、ライブストリームおよびリプレイ（視聴可能な場合）へのアクセスが可能になります。",
-      "callout_replay": "このイベントをリプレイするためのアクセス権を予約しようとしています。"
+      "limitation": "制限",
+      "max_capacity": "最大座席数",
+      "payment_successful": "無事に予約できました！",
+      "time": "時間",
+      "description_physical": "会場の詳細をご確認ください。\nご予約が確認されましたら、当日ご提示いただくチケットを発行いたします。 このチケットにより、ライブストリームおよびリプレイ動画（視聴可能な場合）へのアクセスが可能になります。",
+      "callout_replay": "このイベント動画をリプレイするためのアクセス権を予約しようとしています。",
+      "access_online_successful": "イベントが始まったら、プラットフォームにログインし、イベントページのライブストリームにアクセスしてください。",
+      "access_physical_successful": "チケットはこちらからダウンロードするか、あとでダッシュボードからダウンロードしてください。",
+      "description_online": "開催日時をご確認ください。\n時間になりましたら、プラットフォームにログインし、イベントページからライブストリームにアクセスしてください。",
+      "callout_online": "このイベントへのオンラインアクセスチケットを予約しようとしています。"
+    },
+    "errors": {
+      "premiumContentNeedsLogin": "このイベントにアクセスするにはログインが必要です。",
+      "premiumContentNeedsPayment": "このイベントはプレミアムプログラムの一部です。",
+      "premiumContentNeedsPaymentAction": "イベントページへ"
     }
   },
   "home": {
@@ -726,7 +773,7 @@
       "link2": ""
     },
     "aboutUsSection": {
-      "title": "Plan ₿ Networkとは？",
+      "title": "Plan ₿ Network とは？",
       "subtitle": "私たちについて少しだけ",
       "content": "Plan ₿ Network は、世界中のビットコイン教育を支援するイニシアチブです。 教育、オープンソースソフトウェア、ピアツーピアネットワーク、共同体意識などを持ったさまざまな情熱的なビットコイン企業の集合体です。 ビットコインエコシステムの成長に不可欠なツールを提供することを目的に、このイニシアチブをともに立ち上げました。",
       "bitcoinFocusTitle": "ビットコインオンリー",
@@ -741,14 +788,14 @@
     "languageSection": {
       "title": "言語の壁はありません。",
       "subtitle": "すべてが日本語をはじめ各言語に翻訳されています！",
-      "content1": "PlanBでは、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億人もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。この目標を達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています！",
+      "content1": "Plan ₿ では、ビットコインはすべての人に関わる国際的な革命であると考えています。何十億人もの人々に力を与えるために、私たちはこのプラットフォームを多言語化し、すべての人がアクセスできるように設計しています。プラットフォームは現在7つの言語をサポートしており、毎月さらに追加されています。この目標を達成するために、私たちはAIと世界中のビットコイナーたちの情熱を組み合わせています！",
       "link": "アカデミーの翻訳にご協力ください",
       "availableLanguages": "対応言語",
       "availableLanguagesVariation": "対応言語： "
     },
     "patreonSection": {
       "title": "Together let's make Bitcoin education better !",
-      "content": "PlanBネットワークは、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
+      "content": "Plan ₿ Network は、可能な限り最高の教育リソースを提供するために、世界中の多くのビットコイン企業と提携しています！"
     },
     "wallOfLoveSection": {
       "subtitle": "",
@@ -756,6 +803,12 @@
     },
     "eventSection": {
       "eventTitle": "教育者のグローバルビットコインネットワーク"
+    },
+    "blogSection": {
+      "description": "私たちはプラットフォーム、コンテンツ、ネットワークを改善し続けています！",
+      "noDateAvailable": "日付がありません",
+      "noBlogsAvailable": "ブログがありません。",
+      "blogTitle": "Plan ₿ Network 新着情報"
     }
   },
   "imagesAlt": {
@@ -777,16 +830,16 @@
     "podcastsDescription": "ポッドキャストをとおしてビットコイン・エコシステムについて探求する",
     "teachersDescription": "私たちの講師陣は情熱的なビットコイナーです",
     "conferencesDescription": "",
-    "bCertDescription": "ビットコイン・レベルを評価する ₿ 認定証 試験に合格しよう",
+    "bCertDescription": "ビットコイン・レベルを評価する₿ 認定証試験に合格しよう",
     "glossaryDescription": "",
     "login": "",
     "publicDescription": ""
   },
   "nodeNetwork": {
     "apply": "ノードを申請する",
-    "description1": "私たちは、教育はオンラインだけでなく、物理的なスペースでも行われるべきだと考えています。 これを実現するために、Plan ₿ Networkは、ビットコインとフリーダム・テクノロジーの発展を促進する思想家、起業家、教育者を歓迎する世界各地のハブ・ネットワークを管理しています。",
-    "pageSubtitle": "世界中をオレンジピルしたい？ Plan ₿ ネットワークにぜひご参加ください。",
-    "pageTitle": "Node Map",
+    "description1": "私たちは、教育はオンラインだけでなく、物理的なスペースでも行われるべきだと考えています。 これを実現するために、Plan ₿ Network はビットコインとフリーダムテクノロジーの発展を促進する思想家、起業家、教育者を歓迎する世界各地のハブネットワークを管理しています。",
+    "pageSubtitle": "世界中をオレンジピルしたいですか？ Plan ₿ Network にぜひご参加ください。",
+    "pageTitle": "ノードマップ",
     "applyhelp": "※ノードのエリアを選択",
     "descriptionextend": ""
   },
@@ -799,19 +852,19 @@
     "pageTitle": "ポッドキャスト・ポータル"
   },
   "professors": {
-    "pageSubtitle": "私たちの教授陣はすべてボランティアであり、情熱的なビットコイナーです。",
+    "pageSubtitle": "私たちの講師陣はすべてボランティアであり、情熱的なビットコイナーです。",
     "pageTitle": "講師陣",
     "tips": {
-      "noTipsYet": "この教授は、現在チップを受け付けていません。",
+      "noTipsYet": "この講師は、現在チップを受け付けていません。",
       "thanks": "{{name}}をサポートしてくれてありがとう！",
       "thanksNoName": "私をサポートしてくれてありがとう！",
       "authorSupport": "チップで著者をサポートする"
     },
     "navigationTitles": {
-      "all": "",
-      "lecturers": "",
-      "teachers": "",
-      "tutorialCreators": ""
+      "all": "すべて",
+      "lecturers": "レクチャー",
+      "teachers": "授業",
+      "tutorialCreators": "クリエーターチュートリアル"
     }
   },
   "resources": {
@@ -837,7 +890,7 @@
     "changePassword": "パスワードを変更する",
     "changeDisplayName": "",
     "changeProfilePicture": "",
-    "changeEmail": "Eメールを変更する"
+    "changeEmail": "メールアドレスを変更する"
   },
   "tutorials": {
     "details": {
@@ -848,7 +901,7 @@
     },
     "exchange": {
       "centralized": {
-        "description": "中央集権的な取引所は通常、銀行システムとビットコイン・エコシステムの仲介役として機能する規制された組織や機関です。これらの取引所では、大量のビットコインを売買したり、ウォレットや銀行口座に引き出したりすることができます。彼らは通常KYCを必要とするため、あなたの活動を監視し、現地の法律を尊重するために金融監視機関に報告します。"
+        "description": "中央集権的な取引所は通常、銀行システムとビットコインエコシステムの仲介役を行う規制された組織や機関です。これらの取引所では、大量のビットコインを売買したり、ウォレットや銀行口座に引き出したりすることができます。彼らは通常KYCを必要とするため、あなたの金融活動を監視し、現地の法律に基づき監査機関に報告します。"
       },
       "description": "取引所は、従来の通貨（ユーロ、ドル）とビットコインの世界の出入口の一つです。取引所は、規制され、KYC（Know Your Customer）に準拠している場合もあれば、ピアツーピアをとおして匿名の場合もあります。各取引所は、異なる機能、手数料体系、流動性、顧客サポートを提供します。各ビットコイナーは、それぞれのニーズと信念に基づいて自分に合ったもの使いましょう。",
       "peer-to-peer": {
@@ -869,12 +922,12 @@
     },
     "mining": {
       "description": "マイニング業界は、ラビットホールの中でも複雑なトピックの1つです。ここでは、ハードウェアとソフトウェアを駆使して、あなたの旅に私たちも同行します。それは、S9を家庭用ヒーターに改造することから、ナードマイナー（nerd miner）で宝くじに挑戦することまでを含みます。",
-      "shortDescription": "ビットコイン・マイニング・ソリューション",
-      "title": "マイニング（採掘）"
+      "shortDescription": "ビットコインマイニング・ソリューション",
+      "title": "マイニング"
     },
     "node": {
       "bitcoin": {
-        "description": "ビットコインコア・ノード（Bitcoin Core node）は、ビットコインをとおして自己主権を手に入れるための最初の一歩です。ビットコイン・ソフトウェアを実行し、ネットワークに参加することができます。ブロックとトランザクションを検証し、ネットワーク内で適用したいルールを決定することで、取引に関わる一切の第三者機関を排除することができます。ビットコイン・ノードを実行するには多くの方法があり、中にはよりユーザー・フレンドリーな方法もあります。"
+        "description": "ビットコインコア・ノード（Bitcoin Core node）は、ビットコインをとおして自己主権を手に入れるための最初の一歩です。ビットコインソフトウェアを実行し、ネットワークに参加することができます。ブロックとトランザクションを検証し、ネットワーク内で適用したいルールを決定することで、取引に関わる一切の第三者機関を排除することができます。ビットコインノードを実行するには多くの方法があり、中にはよりユーザーフレンドリーな方法もあります。"
       },
       "description": "ノードはあなたの個人的なサーバーのようなものです。 ビットコインでは、ネットワークを運営し、トランザクションを収集し、ルールを検証し、真の主権者になることを可能にするソフトウェアです。 私たちのエコシステム内には、Bitcoin Coreからライトニング実装、RGB、またはその他の高度なプライバシーソリューションまで、さまざまなノードが存在します。",
       "lightning-network": {
@@ -907,7 +960,7 @@
         "description": "デスクトップ・ウォレットは、通常、ハードウェア・デバイスとデスクトップ・ウォレット・ソフトウェアを組み合わせて使用するため、より上級者ユーザー向けです。ハードウェア・デバイスを使用するための、よりカスタム性と機能性の高い新しいインターフェイスを持ちます。このようなウォレットは、マルチシグ（マルチ・シグネチャ）オプション、プライバシー機能、継承統合メカニズムなどを提供します。"
       },
       "hardware": {
-        "description": "ハードウェア・ウォレットは、通常、長期的なビットコインの貯蓄を保管するために使用されます。インターネットに接続されていない物理的なデバイスで（しばしば「コールド・ウォレット」と呼ばれる）、一般的に非常に安全です。これらのデバイスは、ソフトウェア自体はオープンソースであることが多いにもかかわらず、ハードウェアには50～300ユーロ程度のコストがかかります。これらのデバイスは、時々使用する多額の貯蓄のための銀行口座のようなものだと考えてください。"
+        "description": "ハードウェア・ウォレットは、通常、長期的なビットコインの貯蓄を保管するために使用されます。インターネットに接続されていない物理的なデバイスで（しばしば「コールドウォレット」と呼ばれる）、一般的に非常に安全です。これらのデバイスは、ソフトウェア自体はオープンソースであることが多いにもかかわらず、ハードウェアは50～300ユーロ程度のコストがかかります。これらのデバイスは、時々使用する多額の貯蓄のための銀行口座のようなものだと考えてください。"
       },
       "mobile": {
         "description": "モバイル・ウォレットは、通常、日常的な支出に使用されます。モバイル・ウォレットはライトニング・ネットワークを統合しており、低手数料で即時トランザクションが可能です。モバイル・ウォレットは、通常、インターネットに接続されているため（しばしば「ホット・ウォレット」と呼ばれる）、ハードウェア・ウォレットよりも安全性は高くありません。少量のビットコインを保管するためにのみ使用されるべきで、ポケットの中の日常的な財布として考えてください。"
@@ -972,7 +1025,7 @@
     "library": "ライブラリ",
     "lnurlAuth": "LNURL認証",
     "members": " メンバー",
-    "mining": "マイニング（採掘）",
+    "mining": "マイニング",
     "network": "ネットワーク",
     "newsletter": "ニュースレター",
     "nodeNetwork": "ノード・ネットワーク",
@@ -1029,8 +1082,8 @@
     "part": "",
     "passed": "",
     "price": "",
-    "professor": "教授",
-    "progress": "",
+    "professor": "講師",
+    "progress": "進捗",
     "publicationDate": "",
     "public": "",
     "ratings": "",
@@ -1050,10 +1103,10 @@
   "conferences": {
     "details": {
       "findReplay": "リプレイ",
-      "nextVideo": "次のビデオ",
-      "previousVideo": "前のビデオ",
+      "nextVideo": "次の動画",
+      "previousVideo": "前の動画",
       "selectStage": "ステージを選ぶ",
-      "selectVideo": "ビデオを選ぶ",
+      "selectVideo": "動画を選ぶ",
       "watchReplay": "リプレイを見る"
     },
     "addConferences": "この<0>Github</0>リポジトリから、不足するカンファレンスを自由に追加してください。",
@@ -1070,7 +1123,7 @@
     "topics": "トピックス"
   },
   "payment": {
-    "terms": "",
+    "terms": "払い戻しの詳細については、<0>利用規約</0>をご覧ください",
     "total": "合計"
   },
   "bCert": {
@@ -1079,38 +1132,38 @@
     "organizeDescription": "問題ありません！ あなたのコミュニティがネットワークの一部であれば、あなたの地域で試験セッションを開催することができます。 規約をお読みいただき、試験を主催するための必須条件を満たしていることをご確認ください。 条件を満たすことができれば、セッションのスケジュールを組み、プラットフォームに追加することができます。",
     "challengeYourself": "自分に挑戦し、自分のレベルを見極めよう！",
     "bookExam": "試験セッションを予約する",
-    "checkout": "₿ 証明書を確認する",
+    "checkout": "₿ 認定証を確認する",
     "knowledgeableBitcoin": "ビットコインに詳しいですか？",
     "noBookExam": "まだ試験セッションの予定はありません。",
     "organizeExam": "試験を実施する",
-    "organizeSubtitle": "10億人をオレンジピルするのは容易ではない",
+    "organizeSubtitle": "世界中の人々にビットコインを広めよう",
     "pageSubtitle": "一元化されたオープンソース教育によるマスアダプション",
     "organizeTitle": "あなたの地域で₿ 認定証 試験を開催したいですか？",
-    "pageTitle": "₿ 認定証 試験合格",
+    "pageTitle": "合格した₿ 認定証",
     "tweetText": "Plan ₿ Network (@planb_network) の₿ 認定証に {{score}}/100! のスコアで合格できて、とてもうれしいです{{emoji}}\n\n{{certificateUrl}}",
     "verify": "認定証の信頼性を確認する",
     "download": "認定証をダウンロードする"
   },
   "glossary": {
-    "creditsLoic": "",
-    "needHelp": "",
-    "keepLooking": "",
-    "notTranslated": "",
-    "placeHolder": "",
-    "relatedWords": "",
-    "filterBar": "",
-    "anotherWord": "",
-    "definition": "",
-    "pageTitle": "",
-    "randomSearch": "",
-    "term": "",
-    "loadMoreWords": ""
+    "creditsLoic": "<0>クレジット</0>：Bitcoin Dictionaryは <1>Loïc Morel (Pandul)</1> によって作成されました。詳細は <2>Githubリポジトリ</2> で確認できます。",
+    "needHelp": "専門用語の定義にお困りですか？",
+    "keepLooking": "さらに検索しますか？",
+    "notTranslated": "この用語はまだ翻訳されていません。\nご協力いただける方は、お気軽に下記までご連絡ください",
+    "placeHolder": "どんな用語をお探しですか？",
+    "relatedWords": "関連用語：",
+    "filterBar": "知りたい用語をここで見つけよう",
+    "anotherWord": "他の用語を検索する",
+    "definition": "説明",
+    "pageTitle": "ビットコイン用語集",
+    "randomSearch": "ランダム検索",
+    "term": "用語",
+    "loadMoreWords": "用語をさらに見る"
   },
   "proofreading": {
     "thanks": "",
     "completed": "校正が完了しました",
     "description": "",
-    "inProgress": "",
+    "inProgress": "校正中",
     "reviewEarn": "",
     "status": ""
   },
@@ -1126,7 +1179,7 @@
       "contact": "",
       "legalNotice": "",
       "privacyPolicy": "",
-      "termsOfSale": ""
+      "termsOfSale": "販売規約"
     },
     "goBackButtons": {
       "simpleGoBack": ""
@@ -1148,5 +1201,15 @@
     "lecturePartCourse": "このレクチャーは<0>{{courseTitle}}</0>コースの一部です。\n全コンセプトをマスターし、あなたの潜在能力を最大限に引き出すために、全コースにトライしてください！",
     "pageTitle": "レクチャーのリプレイ",
     "watchLecture": "レクチャーのリプレイを見る"
+  },
+  "search": {
+    "professor": "講師",
+    "professors": "講師陣"
+  },
+  "filters": {
+    "resources": "リソース",
+    "categories": "カテゴリー",
+    "levels": "レベル",
+    "topics": "トピック"
   }
 }
