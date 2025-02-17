@@ -28,7 +28,7 @@ export const courseCategoriesDashboard = [
   'social studies',
 ];
 
-const levels = ['beginner', 'intermediate', 'advanced', 'wizard'];
+const levels = ['beginner', 'intermediate', 'advanced', 'expert'];
 
 export const CourseTable = ({
   courses,

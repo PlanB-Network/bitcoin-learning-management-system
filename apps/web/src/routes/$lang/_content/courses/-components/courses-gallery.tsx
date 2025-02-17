@@ -31,14 +31,14 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
     { name: 'beginner', translation: t('words.level.beginner') },
     { name: 'intermediate', translation: t('words.level.intermediate') },
     { name: 'advanced', translation: t('words.level.advanced') },
-    { name: 'wizard', translation: t('words.level.wizard') },
+    { name: 'expert', translation: t('words.level.expert') },
   ];
 
   const mobileLevels = [
     { name: 'all', translation: t('words.all') },
     { name: 'advanced', translation: t('words.level.advanced') },
     { name: 'beginner', translation: t('words.level.beginner') },
-    { name: 'wizard', translation: t('words.level.wizard') },
+    { name: 'expert', translation: t('words.level.expert') },
     { name: 'intermediate', translation: t('words.level.intermediate') },
   ];
 

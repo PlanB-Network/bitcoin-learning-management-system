@@ -412,8 +412,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${lastUpdated.commit},
                   NOW()
                 )
-                ON CONFLICT (index) DO UPDATE SET
-                  id = EXCLUDED.id,
+                ON CONFLICT (id) DO UPDATE SET
+                  index = EXCLUDED.index,
                   is_archived = EXCLUDED.is_archived,
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,

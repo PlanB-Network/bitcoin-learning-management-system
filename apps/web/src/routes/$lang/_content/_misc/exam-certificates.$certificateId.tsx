@@ -163,7 +163,7 @@ export const filterAndRandomizeCourses = (
 
   const otherCourses = allCourses.filter((c) => c.id !== currentCourse.id);
 
-  const courseLevels = ['beginner', 'intermediate', 'advanced', 'wizard'];
+  const courseLevels = ['beginner', 'intermediate', 'advanced', 'expert'];
 
   const sameTopicSameLevel = otherCourses.filter(
     (c) => c.topic === currentCourse.topic && c.level === currentCourse.level,
