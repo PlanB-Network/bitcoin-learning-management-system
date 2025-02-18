@@ -17,6 +17,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
+    "@blms/constants": "workspace:*",
     "@blms/crons": "workspace:*",
     "@blms/database": "workspace:*",
     "@blms/github": "workspace:*",

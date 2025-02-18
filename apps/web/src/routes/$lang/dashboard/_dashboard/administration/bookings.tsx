@@ -6,6 +6,7 @@ import { Loader, TextTag } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.tsx';
 
+import { UserRole } from '@blms/constants';
 import BookingTable from '../-components/booking-table.tsx';
 
 export const Route = createFileRoute(
@@ -26,8 +27,8 @@ function AdminBookings() {
       navigate({ to: '/' });
     } else if (
       session &&
-      session?.user.role !== 'admin' &&
-      session?.user.role !== 'superadmin'
+      session?.user.role !== UserRole.Admin &&
+      session?.user.role !== UserRole.Superadmin
     ) {
       navigate({ to: '/dashboard/courses' });
     }

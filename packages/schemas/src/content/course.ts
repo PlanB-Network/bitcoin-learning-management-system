@@ -12,7 +12,7 @@ import {
 
 import { formattedProfessorSchema } from './professor.js';
 
-import { levelSchema } from './index.js';
+import { courseLevelSchema } from './index.js';
 
 export const courseSchema = createSelectSchema(contentCourses);
 export const courseLocalizedSchema = createSelectSchema(
@@ -122,7 +122,7 @@ export const minimalJoinedCourseSchema = courseSchema
   )
   .merge(
     z.object({
-      level: levelSchema,
+      level: courseLevelSchema,
       chaptersCount: z.number().optional(),
     }),
   )

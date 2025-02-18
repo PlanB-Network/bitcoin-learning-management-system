@@ -14,6 +14,7 @@ import {
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 
+import { UserRole } from '@blms/constants';
 import { RoleAllocationTable } from '../-components/role-allocation-table.tsx';
 
 export const Route = createFileRoute(
@@ -36,8 +37,8 @@ function DashboardAdministrationRole() {
       navigate({ to: '/' });
     } else if (
       session &&
-      session?.user.role !== 'admin' &&
-      session?.user.role !== 'superadmin'
+      session?.user.role !== UserRole.Admin &&
+      session?.user.role !== UserRole.Superadmin
     ) {
       navigate({ to: '/dashboard/courses' });
     }
@@ -83,13 +84,13 @@ function DashboardAdministrationRole() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="students">
-          <RoleAllocationTable userRole="student" />
+          <RoleAllocationTable userRole={UserRole.Student} />
         </TabsContent>
         <TabsContent value="professors">
-          <RoleAllocationTable userRole="professor" />
+          <RoleAllocationTable userRole={UserRole.Professor} />
         </TabsContent>
         <TabsContent value="admins">
-          <RoleAllocationTable userRole="admin" />
+          <RoleAllocationTable userRole={UserRole.Admin} />
         </TabsContent>
       </Tabs>
     </div>

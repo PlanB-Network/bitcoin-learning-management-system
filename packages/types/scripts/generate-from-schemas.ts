@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import ts from 'typescript';
+import numberConverter from 'number-to-words';
+import { SyntaxKind } from 'typescript';
 import type { ZodEnumDef, ZodTypeAny } from 'zod';
 import { type GetType, printNode, zodToTs } from 'zod-to-ts';
 
@@ -80,7 +81,7 @@ const processIndexFile = (sourcePath: string, relativePath: string) => {
     const modifiedContent =
       generatedHeader +
       fileContent
-        .replace(/export \*/g, 'export type *')
+        .replace(/export \*/g, 'export *')
         .replace(
           /export type \* from 'drizzle-orm\/pg-core';/g,
           "//export type * from 'drizzle-orm/pg-core';",
@@ -120,7 +121,11 @@ const enumsMap = new Map<string, string>();
 
 let currentlyProcessedType = '';
 let currentlyProcessedFile = '';
+// String array of imports for the current file
 let currentImportSet: Set<string>;
+// List of constants variables to import from @blms/constants
+const nativeEnumImports = new Set<string>();
+let currentNativeEnumImports: Set<string>;
 
 const generateFileContent = (
   schemaNames: string[],
@@ -130,20 +135,30 @@ const generateFileContent = (
   currentlyProcessedFile = filePath;
   currentImportSet = new Set();
 
+  currentNativeEnumImports = new Set<string>();
+
   for (const name of schemaNames) {
     const schema = (schemas as any)[name] as ZodTypeAny & GetType;
 
     const typeName = typeNameFromSchema(name);
     currentlyProcessedType = typeName;
 
-    console.debug(`Processing schema "${typeName}"`);
-
     const zodType = schema._def?.typeName;
+
+    console.debug(`Processing schema "${typeName}" (${zodType})`);
 
     // Register enum
     if (zodType === 'ZodEnum') {
-      const values = (schema._def as ZodEnumDef).values;
+      throw new Error('Please use native enums instead of ZodEnum');
+    }
+
+    if (zodType === 'ZodNativeEnum') {
+      const enumValue = (schema._def as ZodEnumDef).values;
+      console.debug(`Processing native enum "${typeName}"`, enumValue);
+      const values = Object.values(enumValue);
       enumsMap.set(values.map((v) => `"${v}"`).join(' | '), typeName);
+      currentNativeEnumImports.add(typeName);
+      nativeEnumImports.add(typeName);
     }
 
     const { node } = zodToTs(schema);
@@ -163,17 +178,33 @@ const generateFileContent = (
           `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
         );
 
-        // TODO: This is a bit hacky, but it works for now
-        const importName = `${/.*\/(.+)\.ts$/.exec(filePath)?.[1]}.js`;
-        currentImportSet.add(
-          `import { ${typeName} } from './${importName}';\n`,
-        );
+        // Import from @blms/constants
+        if (nativeEnumImports.has(typeName)) {
+          currentImportSet.add(
+            `import { ${typeName} } from '@blms/constants';\n`,
+          );
+        }
+
+        // Import from an other type file
+        else {
+          // TODO: This is a bit hacky, but it works for now
+          const importName = `${/.*\/(.+)\.ts$/.exec(filePath)?.[1]}.js`;
+          currentImportSet.add(
+            `import { ${typeName} } from './${importName}';\n`,
+          );
+        }
       }
 
+      console.log('createIdentifier for', typeName, 'in file', filePath);
       return ts.factory.createIdentifier(typeName);
     };
 
     let output = printNode(node);
+
+    if (zodType === 'ZodEnum') {
+      fileContent += generateEnum(typeName, output);
+      continue;
+    }
 
     // Look for enum values in the output and replace them with the corresponding type name
     // Tip: search ('.+' \| )+'.+' to find all enum values left in the output
@@ -187,22 +218,84 @@ const generateFileContent = (
     }
 
     switch (node.kind) {
-      // @ts-ignore TODO align ts version between zod-to-ts and workspace
-      case ts.SyntaxKind.TypeLiteral:
+      case SyntaxKind.TypeLiteral:
         fileContent += `export interface ${typeName} ${output};\n\n`;
         break;
-      default:
+      default: {
+        if (zodType === 'ZodNativeEnum') {
+          break;
+        }
+
+        const kind = findKindName(node.kind) ?? 'Unknown';
+        fileContent += `// Default export for ${typeName} (${node.kind}:${kind}|${zodType})\n`;
         fileContent += `export type ${typeName} = ${output};\n\n`;
+      }
     }
   }
 
-  return generatedHeader + Array.from(currentImportSet).join('') + fileContent;
+  return [
+    generatedHeader,
+    currentNativeEnumImports.size
+      ? `import { ${Array.from(currentNativeEnumImports).join(', ')} } from '@blms/constants';`
+      : '',
+    Array.from(currentImportSet).join(''),
+    fileContent,
+  ].join('\n');
 };
 
 // Convert a schema name to a type name (capitalized and without the 'Schema' suffix)
 const typeNameFromSchema = (schemaName: string): string => {
   const nameWithoutSchema = schemaName.replace(/Schema$/, '');
   return nameWithoutSchema.charAt(0).toUpperCase() + nameWithoutSchema.slice(1);
+};
+
+const findKindName = (kind: SyntaxKind) => {
+  return Object.entries(SyntaxKind).find(([, v]) => v === kind)?.[0];
+};
+
+const generateEnum = (typeName: string, output: string) => {
+  const items = output
+    .split('|')
+    .map((item) => item.trim()) // Remove leading/trailing whitespace
+    .map((item) => item.replace(/['"]/g, '')) // Remove quotes
+    .map((item) => `${toEnumKey(item)} = '${item}'`);
+
+  return `export enum ${typeName} { \n  ${items.join(',\n  ')}\n}\n\n`;
+};
+
+const toEnumKey = (str: string) => {
+  return toCamelCaseCapitalized(transformNumberPrefixToWord(str));
+};
+
+/**
+ * Transforms a string to camel case and capitalizes the first letter
+ * so it can be used as a valid enum key. Ex: "one to ten" -> "OneToTen"
+ */
+const toCamelCaseCapitalized = (str: string) => {
+  return (
+    str
+      // Replace spaces, dashes and underscores with nothing and capitalize next letter
+      .replace(/[\ \-\_]([a-z])/g, (_, letter) => letter.toUpperCase())
+      // Capitalize first letter
+      .replace(/^[a-z]/, (letter) => letter.toUpperCase())
+  );
+};
+
+/**
+ * Transforms a string with a number prefix to a string with the number as a word
+ * so it can be used as a valid enum key. Ex: "1To10" -> "OneTo10"
+ */
+const transformNumberPrefixToWord = (str: string) => {
+  if (!/^\d/.test(str)) {
+    return str;
+  }
+
+  const worded = str
+    // Replace prefix number with its word representation
+    .replace(/(^\d+)/, (_, num) => numberConverter.toWords(num));
+
+  // Capitalize
+  return toCamelCaseCapitalized(`${worded}`);
 };
 
 processDirectory(schemasDirectory);

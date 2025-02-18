@@ -6,7 +6,7 @@ import { FiTrash2 } from 'react-icons/fi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TbArrowsSort } from 'react-icons/tb';
 
-import type { UserRole } from '@blms/types';
+import { SortDirection, UserRole } from '@blms/constants';
 import {
   Button,
   Dialog,
@@ -43,10 +43,10 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
 
   const [sortConfig, setSortConfig] = useState<{
     key: 'username' | 'displayName';
-    direction: 'asc' | 'desc';
+    direction: SortDirection;
   }>({
     key: 'username',
-    direction: 'asc',
+    direction: SortDirection.Asc,
   });
 
   const {
@@ -113,7 +113,10 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   const handleSorting = (key: typeof sortConfig.key) => {
     setSortConfig((prev) => ({
       key,
-      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
+      direction:
+        prev.key === key && prev.direction === SortDirection.Asc
+          ? SortDirection.Desc
+          : SortDirection.Asc,
     }));
   };
 
@@ -172,7 +175,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                 <TableHead
                   className={cn(
                     'w-[163px]',
-                    ['admin', 'superadmin'].includes(userRole)
+                    [UserRole.Admin, UserRole.Superadmin].includes(userRole)
                       ? ''
                       : 'max-md:hidden',
                   )}
@@ -233,7 +236,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                   <TableCell>{user.username}</TableCell>
                   <TableCell
                     className={cn(
-                      ['admin', 'superadmin'].includes(userRole)
+                      [UserRole.Admin, UserRole.Superadmin].includes(userRole)
                         ? ''
                         : 'max-md:hidden',
                     )}
@@ -241,7 +244,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                     {user.displayName}
                   </TableCell>
 
-                  {userRole === 'student' && (
+                  {userRole === UserRole.Student && (
                     <TableCell>
                       <select
                         value={selectedProfessors[user.uid] || ''}
@@ -273,7 +276,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                     </TableCell>
                   )}
 
-                  {userRole === 'professor' && (
+                  {userRole === UserRole.Professor && (
                     <>
                       <TableCell>{user.professorName}</TableCell>
                       <TableCell>
@@ -288,18 +291,20 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                     </>
                   )}
 
-                  {userRole === 'admin' && (
+                  {userRole === UserRole.Admin && (
                     <TableCell
                       className={cn(
                         'capitalize',
-                        user.role === 'superadmin' && 'font-medium',
+                        user.role === UserRole.Superadmin && 'font-medium',
                       )}
                     >
-                      {user.role === 'superadmin' ? 'Super admin' : user.role}
+                      {user.role === UserRole.Superadmin
+                        ? 'Super admin'
+                        : user.role}
                     </TableCell>
                   )}
 
-                  {userRole === 'student' && (
+                  {userRole === UserRole.Student && (
                     <TableCell>
                       <Button
                         size={isMobile ? 'xs' : 's'}
@@ -321,13 +326,13 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                     </TableCell>
                   )}
 
-                  {userRole === 'professor' && (
+                  {userRole === UserRole.Professor && (
                     <TableCell>
                       <RemoveTeacherDialog
                         onConfirm={() => {
                           mutateChangeRoleToProfessor({
                             uid: user.uid,
-                            role: 'student',
+                            role: UserRole.Student,
                             professorId: null,
                           });
                         }}

@@ -2,11 +2,28 @@ import {
   customType,
   foreignKey,
   index,
-  pgEnum,
   pgSchema,
   primaryKey,
   unique,
 } from 'drizzle-orm/pg-core';
+
+import {
+  BetType,
+  CareerCompanySize,
+  CareerLanguageLevel,
+  CareerRemote,
+  CareerRoleLevel,
+  CourseFormat,
+  CoursePaymentFormat,
+  CoursePaymentMethod,
+  EventType,
+  JobCategory,
+  JobName,
+  TokenType,
+  UserRole,
+} from '@blms/constants';
+
+import { pgNativeEnum } from './util.js';
 
 const blob = customType<{ data: Buffer; notNull: false; default: false }>({
   dataType() {
@@ -19,13 +36,7 @@ export const content = pgSchema('content');
 
 // ACCOUNTS
 
-export const userRoleEnum = pgEnum('user_role', [
-  'student',
-  'professor',
-  'community',
-  'admin',
-  'superadmin',
-]);
+export const userRoleEnum = pgNativeEnum('user_role', UserRole);
 
 export const usersAccounts = users.table('accounts', (t) => ({
   uid: t.uuid().defaultRandom().primaryKey().notNull(),
@@ -34,7 +45,7 @@ export const usersAccounts = users.table('accounts', (t) => ({
   certificateName: t.varchar({ length: 255 }),
   picture: t.uuid(),
   email: t.varchar({ length: 255 }).unique(),
-  role: userRoleEnum().default('student').notNull(),
+  role: userRoleEnum().default(UserRole.Student).notNull(),
   lastEmailChangeRequest: t.timestamp({ withTimezone: true }),
   currentEmailChecked: t.boolean().default(false).notNull(),
   passwordHash: t.varchar({ length: 255 }),
@@ -49,92 +60,26 @@ export const usersAccounts = users.table('accounts', (t) => ({
 
 // CAREER
 
-export const careerLanguageLevelEnum = pgEnum('career_language_level', [
-  'beginner',
-  'elementary',
-  'intermediate',
-  'advanced',
-  'fluent',
-]);
+export const careerLanguageLevelEnum = pgNativeEnum(
+  'career_language_level',
+  CareerLanguageLevel,
+);
 
-export const careerRoleLevelEnum = pgEnum('career_role_level', [
-  'student',
-  'junior',
-  'mid',
-  'senior',
-]);
+export const careerRoleLevelEnum = pgNativeEnum(
+  'career_role_level',
+  CareerRoleLevel,
+);
 
-export const careerCompanySizeEnum = pgEnum('career_company_size', [
-  '1To10',
-  '11To40',
-  '41To100',
-  '100More',
-]);
+export const careerCompanySizeEnum = pgNativeEnum(
+  'career_company_size',
+  CareerCompanySize,
+);
 
-export const careerRemoteEnum = pgEnum('career_remote', [
-  'yes',
-  'sometimes',
-  'no',
-]);
+export const careerRemoteEnum = pgNativeEnum('career_remote', CareerRemote);
 
-export const jobNameEnum = pgEnum('job_name', [
-  'fullStackDeveloper',
-  'backendEngineer',
-  'frontendEngineer',
-  'mobileAppDeveloper',
-  'devOpsEngineer',
-  'cloudInfrastructureEngineer',
-  'dataEngineer',
-  'protocolEngineer',
-  'technicalProductManager',
-  'technicalSupportEngineer',
-  'cybersecurity',
-  'cryptographer',
-  'businessDevelopmentManager',
-  'sales',
-  'businessAnalyst',
-  'revenueManager',
-  'productManager',
-  'uiUxDesigner',
-  'uxResearcher',
-  'brandStrategist',
-  'graphicDesigner',
-  'marketingManager',
-  'socialMediaManager',
-  'communityManager',
-  'publicRelationsManager',
-  'eventCoordinator',
-  'seoSpecialist',
-  'operationsManager',
-  'customerSupportSpecialist',
-  'customerSuccessManager',
-  'logisticManager',
-  'researcher',
-  'economicAnalyst',
-  'educator',
-  'contentWriter',
-  'technicalWriter',
-  'complianceOfficer',
-  'amlKycSpecialist',
-  'riskAnalyst',
-  'accountingManager',
-  'bitcoinInvestmentAnalyst',
-  'hrSpecialist',
-  'legalContractSpecialist',
-  'miningEngineer',
-  'miningOperationsManager',
-]);
+export const jobNameEnum = pgNativeEnum('job_name', JobName);
 
-export const jobCategoryEnum = pgEnum('job_category', [
-  'technicalRoles',
-  'businessRoles',
-  'productDesign',
-  'marketingCommunity',
-  'operationsSupport',
-  'researchEducation',
-  'financeCompliance',
-  'more',
-]);
+export const jobCategoryEnum = pgNativeEnum('job_category', JobCategory);
 
 export const usersCareerProfiles = users.table('career_profiles', (t) => ({
   uid: t
@@ -167,7 +112,7 @@ export const usersCareerProfiles = users.table('career_profiles', (t) => ({
 
   // Job preferences
   isAvailableFullTime: t.boolean().default(true).notNull(),
-  remoteWorkPreference: careerRemoteEnum().default('yes').notNull(),
+  remoteWorkPreference: careerRemoteEnum().default(CareerRemote.Yes).notNull(),
   expectedSalary: t.text(),
   availabilityStart: t.text(),
 
@@ -491,10 +436,7 @@ export const contentResourceTags = content.table(
 
 // BET
 
-export const betTypeEnum = pgEnum('bet_type', [
-  'visual content',
-  'educational content',
-]);
+export const betTypeEnum = pgNativeEnum('bet_type', BetType);
 
 export const contentBet = content.table('bet', (t) => ({
   resourceId: t
@@ -905,11 +847,7 @@ export const contentYoutubeChannels = content.table(
 
 // COURSES
 
-export const courseFormatEnum = pgEnum('course_format', [
-  'online',
-  'inperson',
-  'hybrid',
-]);
+export const courseFormatEnum = pgNativeEnum('course_format', CourseFormat);
 
 export const contentCourses = content.table('courses', (t) => ({
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
@@ -926,7 +864,7 @@ export const contentCourses = content.table('courses', (t) => ({
   requiresPayment: t.boolean().default(false).notNull(),
   paymentExpirationDate: t.timestamp(),
   publishedAt: t.timestamp(),
-  format: courseFormatEnum().default('online').notNull(),
+  format: courseFormatEnum().default(CourseFormat.Online).notNull(),
   onlinePriceDollars: t.integer(),
   inpersonPriceDollars: t.integer(),
   paidDescription: t.text(),
@@ -1138,16 +1076,15 @@ export const contentCourseTags = content.table(
 );
 
 // COURSE PAYMENTS
-export const coursePaymentFormatEnum = pgEnum('course_payment_format', [
-  'online',
-  'inperson',
-]);
+export const coursePaymentFormatEnum = pgNativeEnum(
+  'course_payment_format',
+  CoursePaymentFormat,
+);
 
-export const coursePaymentMethodEnum = pgEnum('course_payment_method', [
-  'sbp',
-  'stripe',
-  'free',
-]);
+export const coursePaymentMethodEnum = pgNativeEnum(
+  'course_payment_method',
+  CoursePaymentMethod,
+);
 
 export const usersCoursePayment = users.table(
   'course_payment',
@@ -1162,7 +1099,9 @@ export const usersCoursePayment = users.table(
       .references(() => contentCourses.id, {
         onUpdate: 'cascade',
       }),
-    format: coursePaymentFormatEnum('format').default('inperson').notNull(),
+    format: coursePaymentFormatEnum('format')
+      .default(CoursePaymentFormat.InPerson)
+      .notNull(),
     paymentStatus: t.varchar({ length: 30 }).notNull(),
     amount: t.integer().notNull(),
     paymentId: t.varchar({ length: 255 }).notNull(),
@@ -1289,14 +1228,7 @@ export const usersCourseReview = users.table(
 
 // EVENTS
 
-export const eventTypeEnum = pgEnum('event_type', [
-  'conference',
-  'workshop',
-  'course',
-  'lecture',
-  'exam',
-  'meetup',
-]);
+export const eventTypeEnum = pgNativeEnum('event_type', EventType);
 
 export const contentEvents = content.table('events', (t) => ({
   id: t.uuid().primaryKey(),
@@ -1933,11 +1865,7 @@ export const couponCode = content.table('coupon_code', (t) => ({
  * Custom drizzle type for bytea columns.
  */
 
-export const tokenTypeEnum = pgEnum('token_type', [
-  'validate_email',
-  'reset_password',
-  'login',
-]);
+export const tokenTypeEnum = pgNativeEnum('token_type', TokenType);
 
 export const token = users.table('tokens', (t) => ({
   id: t.uuid().primaryKey().defaultRandom(),

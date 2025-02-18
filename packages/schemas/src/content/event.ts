@@ -4,11 +4,12 @@ import { z } from 'zod';
 import {
   contentEventLocation,
   contentEvents,
-  eventTypeEnum,
   usersEventPayment,
 } from '@blms/database';
 
-export const eventTypeSchema = z.enum(eventTypeEnum.enumValues);
+import { EventType } from '@blms/constants';
+
+export const eventTypeSchema = z.nativeEnum(EventType);
 
 export const eventSchema = createSelectSchema(contentEvents);
 

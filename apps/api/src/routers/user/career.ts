@@ -3,12 +3,12 @@ import { adminProcedure, studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 
 import {
-  careerCompanySizeEnum,
-  careerLanguageLevelEnum,
-  careerRemoteEnum,
-  careerRoleLevelEnum,
-} from '@blms/database';
+  CareerLanguageLevel,
+  CareerRemote,
+  CareerRoleLevel,
+} from '@blms/constants';
 import {
+  careerCompanySizeSchema,
   jobTitleSchema,
   joinedCareerProfileSchema,
   languageSchema,
@@ -87,7 +87,7 @@ const updateCareerProfileProcedure = studentProcedure
       isBitcoinProjectParticipant: z.boolean(),
       bitcoinProjectText: z.string().optional(),
       isAvailableFullTime: z.boolean(),
-      remoteWorkPreference: z.enum(careerRemoteEnum.enumValues),
+      remoteWorkPreference: z.nativeEnum(CareerRemote),
       expectedSalary: z.string().optional(),
       availabilityStart: z.string().optional(),
       cvUrl: z.string().optional(),
@@ -97,16 +97,16 @@ const updateCareerProfileProcedure = studentProcedure
       languages: z.array(
         z.object({
           languageCode: z.string(),
-          level: z.enum(careerLanguageLevelEnum.enumValues),
+          level: z.nativeEnum(CareerLanguageLevel),
         }),
       ),
       roles: z.array(
         z.object({
           roleId: z.string(),
-          level: z.enum(careerRoleLevelEnum.enumValues),
+          level: z.nativeEnum(CareerRoleLevel),
         }),
       ),
-      companySizes: z.array(z.enum(careerCompanySizeEnum.enumValues)),
+      companySizes: careerCompanySizeSchema.array(),
     }),
   )
   .output<Parser<void>>(z.void())

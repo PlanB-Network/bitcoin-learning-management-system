@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'react';
 
 import { AppContext } from '#src/providers/context.js';
 
+import { UserRole } from '@blms/constants';
 import { Loader } from '@blms/ui';
 import { DashboardTutorialsPanel } from '../-components/tutorials-panel.tsx';
 
@@ -22,8 +23,8 @@ function DashboardAdministrationTutorials() {
       navigate({ to: '/' });
     } else if (
       session &&
-      session?.user.role !== 'admin' &&
-      session?.user.role !== 'superadmin'
+      session?.user.role !== UserRole.Admin &&
+      session?.user.role !== UserRole.Superadmin
     ) {
       navigate({ to: '/dashboard/courses' });
     }

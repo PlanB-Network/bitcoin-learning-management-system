@@ -1,5 +1,6 @@
+import type { TokenType } from '@blms/constants';
 import { sql } from '@blms/database';
-import type { Token, TokenType } from '@blms/types';
+import type { Token } from '@blms/types';
 
 export const createTokenQuery = (
   uid: string,

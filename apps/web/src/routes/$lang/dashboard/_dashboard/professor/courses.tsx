@@ -9,6 +9,9 @@ import type {
   JoinedCourse,
   JoinedCourseWithAll,
 } from '@blms/types';
+
+import { UserRole } from '@blms/constants';
+
 import {
   Button,
   Loader,
@@ -62,9 +65,9 @@ function DashboardProfessorCourses() {
       navigate({ to: '/' });
     } else if (
       session &&
-      session?.user.role !== 'admin' &&
-      session?.user.role !== 'superadmin' &&
-      session?.user.role !== 'professor'
+      session?.user.role !== UserRole.Admin &&
+      session?.user.role !== UserRole.Superadmin &&
+      session?.user.role !== UserRole.Professor
     ) {
       navigate({ to: '/dashboard/courses' });
     }

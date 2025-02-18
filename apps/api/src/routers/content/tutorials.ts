@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import { SortDirection } from '@blms/constants';
+
 import {
   getTutorialResponseSchema,
   joinedTutorialLightSchema,
@@ -60,7 +62,10 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
         ])
         .optional()
         .default('likeCount'),
-      orderDirection: z.enum(['asc', 'desc']).optional().default('asc'),
+      orderDirection: z
+        .nativeEnum(SortDirection)
+        .optional()
+        .default(SortDirection.Asc),
       limit: z.number(),
       cursor: z
         .object({

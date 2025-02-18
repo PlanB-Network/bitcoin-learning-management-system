@@ -1,23 +1,24 @@
+import { UserRole } from '@blms/constants';
 import { enforceAuthenticatedUserMiddleware } from '#src/middlewares/auth.js';
 
 import { publicProcedure } from './public.js';
 
 export const studentProcedure = publicProcedure.use(
-  enforceAuthenticatedUserMiddleware('student'),
+  enforceAuthenticatedUserMiddleware(UserRole.Student),
 );
 
 export const professorProcedure = publicProcedure.use(
-  enforceAuthenticatedUserMiddleware('professor'),
+  enforceAuthenticatedUserMiddleware(UserRole.Professor),
 );
 
 export const communityProcedure = publicProcedure.use(
-  enforceAuthenticatedUserMiddleware('community'),
+  enforceAuthenticatedUserMiddleware(UserRole.Community),
 );
 
 export const adminProcedure = publicProcedure.use(
-  enforceAuthenticatedUserMiddleware('admin'),
+  enforceAuthenticatedUserMiddleware(UserRole.Admin),
 );
 
 export const superadminProcedure = publicProcedure.use(
-  enforceAuthenticatedUserMiddleware('superadmin'),
+  enforceAuthenticatedUserMiddleware(UserRole.Superadmin),
 );

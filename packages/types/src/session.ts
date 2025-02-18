@@ -1,4 +1,4 @@
-import type { UserRole } from './index.js';
+import type { UserRole } from '@blms/constants';
 
 export interface SessionData {
   uid: string;

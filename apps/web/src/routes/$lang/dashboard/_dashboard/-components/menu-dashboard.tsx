@@ -23,6 +23,7 @@ import { BTC402ID, addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { UserRole } from '@blms/constants';
 import { TbBriefcase2 } from 'react-icons/tb';
 import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { MenuItem } from './menu-item.tsx';
@@ -182,8 +183,8 @@ export const MenuDashboard = ({
         </Link>
 
         {user &&
-          (user.role === 'professor' ||
-            (['admin', 'superadmin'].includes(user.role) &&
+          (user.role === UserRole.Professor ||
+            ([UserRole.Admin, UserRole.Superadmin].includes(user.role) &&
               user.professorId)) && (
             <>
               <Separator />
@@ -221,48 +222,50 @@ export const MenuDashboard = ({
             </>
           )}
 
-        {user && (user.role === 'admin' || user.role === 'superadmin') && (
-          <>
-            <Separator />
+        {user &&
+          (user.role === UserRole.Admin ||
+            user.role === UserRole.Superadmin) && (
+            <>
+              <Separator />
 
-            <p className="uppercase text-white italic pl-12 text-sm leading-snug py-[5px] truncate">
-              Admin menu
-            </p>
+              <p className="uppercase text-white italic pl-12 text-sm leading-snug py-[5px] truncate">
+                Admin menu
+              </p>
 
-            <Link to={adminRolePath}>
-              <MenuItem
-                text={t('dashboard.adminPanel.userRolesAllocation')}
-                icon={<LuShieldAlert size={24} />}
-                active={pathname.includes(adminRolePath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
-            <Link to={adminTutorialsPath}>
-              <MenuItem
-                text={t('words.tutorials')}
-                icon={<LuPencilRuler size={24} />}
-                active={pathname.includes(adminTutorialsPath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
-            <Link to={adminBookingsPath}>
-              <MenuItem
-                text={t('dashboard.adminPanel.bookings')}
-                icon={<IoTicketOutline size={24} />}
-                active={pathname.includes(adminBookingsPath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
-            <Link to={adminCareersPath}>
-              <MenuItem
-                text={t('dashboard.adminPanel.careers.careers')}
-                icon={<TbBriefcase2 size={24} />}
-                active={pathname.includes(adminCareersPath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
-          </>
-        )}
+              <Link to={adminRolePath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.userRolesAllocation')}
+                  icon={<LuShieldAlert size={24} />}
+                  active={pathname.includes(adminRolePath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+              <Link to={adminTutorialsPath}>
+                <MenuItem
+                  text={t('words.tutorials')}
+                  icon={<LuPencilRuler size={24} />}
+                  active={pathname.includes(adminTutorialsPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+              <Link to={adminBookingsPath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.bookings')}
+                  icon={<IoTicketOutline size={24} />}
+                  active={pathname.includes(adminBookingsPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+              <Link to={adminCareersPath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.careers.careers')}
+                  icon={<TbBriefcase2 size={24} />}
+                  active={pathname.includes(adminCareersPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+            </>
+          )}
 
         <Separator />
 

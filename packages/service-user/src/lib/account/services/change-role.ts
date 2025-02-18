@@ -3,6 +3,7 @@ import { TRPCError } from '@trpc/server';
 
 import { firstRow } from '@blms/database';
 
+import type { UserRole } from '@blms/constants';
 import type { Dependencies } from '../../../dependencies.js';
 import {
   changeRoleQuery,
@@ -12,7 +13,7 @@ import { getUserByIdQuery } from '../queries/get-user.js';
 
 interface ChangeRoleOptions {
   uid: string;
-  role: string;
+  role: UserRole;
 }
 
 export const createChangeRole = ({ postgres }: Dependencies) => {
@@ -32,7 +33,7 @@ export const createChangeRole = ({ postgres }: Dependencies) => {
 
 interface ChangeRoleToProfessorOptions {
   uid: string;
-  role: string;
+  role: UserRole;
   professorId?: number | null;
 }
 

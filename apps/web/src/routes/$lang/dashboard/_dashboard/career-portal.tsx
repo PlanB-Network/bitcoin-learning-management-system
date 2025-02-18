@@ -51,6 +51,12 @@ import {
   jobCategoryEnum,
 } from '../../../../../../../packages/database/dist/drizzle/schema.js';
 
+import {
+  CareerCompanySize,
+  CareerLanguageLevel,
+  CareerRemote,
+  CareerRoleLevel,
+} from '@blms/constants';
 import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 import { AppContext } from '#src/providers/context.tsx';
 import { BTC402ID } from '#src/utils/courses.ts';
@@ -109,7 +115,7 @@ function CareerPortal() {
       .array(
         z.object({
           languageCode: z.string(),
-          level: z.enum(careerLanguageLevelEnum.enumValues),
+          level: z.nativeEnum(CareerLanguageLevel),
         }),
       )
       .min(1, { message: t('dashboard.careerPortal.languageRequired') }),
@@ -117,20 +123,20 @@ function CareerPortal() {
 
   const Step2FormSchema = z.object({
     isAvailableFullTime: z.boolean().default(true),
-    remoteWorkPreference: z.enum(careerRemoteEnum.enumValues).default('yes'),
+    remoteWorkPreference: z.nativeEnum(CareerRemote).default(CareerRemote.Yes),
     expectedSalary: z.string().optional(),
     availabilityStart: z.string().optional(),
     roles: z
       .array(
         z.object({
           roleId: z.string(),
-          level: z.enum(careerRoleLevelEnum.enumValues),
+          level: z.nativeEnum(CareerRoleLevel),
         }),
       )
       .min(1, { message: t('dashboard.careerPortal.roleRequired') })
       .max(3, { message: t('dashboard.careerPortal.maxRoles') }),
     companySizes: z
-      .array(z.enum(careerCompanySizeEnum.enumValues))
+      .array(z.nativeEnum(CareerCompanySize))
       .min(1, { message: t('dashboard.careerPortal.companySizeRequired') }),
   });
 
@@ -299,7 +305,7 @@ function CareerPortal() {
       isBitcoinProjectParticipant: false,
       bitcoinProjectText: '',
       isAvailableFullTime: true,
-      remoteWorkPreference: 'yes',
+      remoteWorkPreference: CareerRemote.Yes,
       expectedSalary: '',
       availabilityStart: '',
       cvUrl: '',
@@ -354,7 +360,8 @@ function CareerPortal() {
         careerProfile?.isBitcoinProjectParticipant ?? false,
       bitcoinProjectText: careerProfile?.bitcoinProjectText ?? '',
       isAvailableFullTime: careerProfile?.isAvailableFullTime ?? true,
-      remoteWorkPreference: careerProfile?.remoteWorkPreference ?? 'yes',
+      remoteWorkPreference:
+        careerProfile?.remoteWorkPreference ?? CareerRemote.Yes,
       expectedSalary: careerProfile?.expectedSalary ?? '',
       availabilityStart: careerProfile?.availabilityStart ?? '',
       cvUrl: careerProfile?.cvUrl ?? '',
@@ -363,7 +370,7 @@ function CareerPortal() {
       allowReceivingEmails: careerProfile?.allowReceivingEmails ?? false,
       languages: careerProfile?.languages ?? [],
       roles: careerProfile?.roles ?? [],
-      companySizes: careerProfile?.companySizes ?? [],
+      companySizes: careerProfile?.companySizes ?? ([] as CareerCompanySize[]),
     });
     setValidatedSteps(getValidatedSteps());
   }, [careerProfile, form.reset]);
@@ -623,7 +630,7 @@ function CareerPortal() {
                     onClick={() => {
                       languageSkillsAppend({
                         languageCode: selectedLanguage,
-                        level: 'beginner',
+                        level: CareerLanguageLevel.Beginner,
                       });
                     }}
                     disabled={
@@ -821,7 +828,7 @@ function CareerPortal() {
                     onClick={() => {
                       rolesAppend({
                         roleId: selectedRole,
-                        level: 'student',
+                        level: CareerRoleLevel.Student,
                       });
                     }}
                     disabled={
