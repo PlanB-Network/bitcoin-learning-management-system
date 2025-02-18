@@ -129,9 +129,6 @@ export const EventCard = ({
               : t('events.card.unlimited')}
           </span>
         )}
-        <span className="max-md:hidden capitalize text-[10px] font-medium max-sm:leading-normal">
-          {event.type}
-        </span>
       </div>
     );
   };
