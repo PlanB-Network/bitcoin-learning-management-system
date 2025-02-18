@@ -102,7 +102,7 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
 
   return (
     <Tabs
-      defaultValue={courses?.at(0)?.index!}
+      defaultValue={courses?.at(0)?.index}
       value={currentTab}
       onValueChange={onTabChange}
       className="flex flex-col gap-4"
@@ -110,8 +110,8 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
       <TabsListSegmented
         tabs={courses.map((course) => ({
           value: course.id,
-          key: course.index!,
-          text: `${course.index!.toLocaleUpperCase()} - ${course.name}`,
+          key: course.index,
+          text: `${course.index.toLocaleUpperCase()} - ${course.name}`,
           active: course.id === currentTab,
         }))}
         slice={6}
@@ -241,7 +241,7 @@ const CourseDetails = ({ course }: { course: JoinedCourse }) => {
       (course.inpersonPriceDollars && course.inpersonPriceDollars > 0)
         ? `$${course.inpersonPriceDollars} (in-person) \n $${course.onlinePriceDollars} (online)`
         : t('words.free'),
-    'Course ID': course.index!.toUpperCase(),
+    'Course ID': course.index.toUpperCase(),
   };
 
   const { data: courseWithDetails, isFetched } =

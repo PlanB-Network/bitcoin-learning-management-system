@@ -874,7 +874,7 @@ function CourseChapter() {
                             Quiz
                           </span>
                           <QuizzCard
-                            name={chapter.course.index!}
+                            name={chapter.course.index}
                             chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
                             questions={questionsArray}
                           />

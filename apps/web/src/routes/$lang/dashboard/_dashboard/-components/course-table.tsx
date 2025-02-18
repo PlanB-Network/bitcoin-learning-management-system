@@ -174,9 +174,9 @@ export const CourseTable = ({
                                   >
                                     {course && (
                                       <span className="w-[30px] subtitle-small-med-14px break-normal leading-none text-center uppercase">
-                                        {course.index!.slice(0, 3)}
+                                        {course.index.slice(0, 3)}
                                         <br />
-                                        {course.index!.slice(3)}
+                                        {course.index.slice(3)}
                                       </span>
                                     )}
                                   </button>

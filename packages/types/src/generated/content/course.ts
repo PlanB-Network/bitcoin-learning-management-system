@@ -5,7 +5,7 @@ import { Level } from './resource.js';
 import { FormattedProfessor } from './professor.js';
 export interface Course {
   id: string;
-  index: string | null;
+  index: string;
   isArchived: boolean;
   level: string;
   hours: number;
@@ -132,7 +132,7 @@ export interface JoinedCourseChapter {
 
 export interface MinimalJoinedCourse {
   id: string;
-  index: string | null;
+  index: string;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -169,7 +169,7 @@ export interface MinimalJoinedCourse {
 
 export interface JoinedCourse {
   id: string;
-  index: string | null;
+  index: string;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -207,7 +207,7 @@ export interface JoinedCourse {
 
 export interface JoinedCourseWithProfessorsContributorIds {
   id: string;
-  index: string | null;
+  index: string;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -245,7 +245,7 @@ export interface JoinedCourseWithProfessorsContributorIds {
 
 export interface JoinedCourseWithAll {
   id: string;
-  index: string | null;
+  index: string;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -331,7 +331,7 @@ export interface PartWithChapters {
 
 export interface CourseResponse {
   id: string;
-  index: string | null;
+  index: string;
   isArchived: boolean;
   hours: number;
   topic: string;
@@ -422,7 +422,7 @@ export interface CourseReviewsExtended {
 
 export interface CourseMeta {
   id: string;
-  index: string | null;
+  index: string;
   topic: string;
   subtopic: string;
   contact: string | null;

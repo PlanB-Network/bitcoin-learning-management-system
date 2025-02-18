@@ -235,7 +235,7 @@ function CourseDetails() {
           >
             {t(`words.${course.format}`)}
           </TextTag>
-          {beginnerFriendlyCourses.includes(course.index!) && (
+          {beginnerFriendlyCourses.includes(course.index) && (
             <TextTag
               size={isMobile ? 'verySmall' : 'small'}
               variant="green"
@@ -360,7 +360,7 @@ function CourseDetails() {
           )}
           <ListItem
             leftText={t('words.courseId')}
-            rightText={course.index!.toUpperCase()}
+            rightText={course.index.toUpperCase()}
             variant="light"
             hasIncreasedPadding
           />

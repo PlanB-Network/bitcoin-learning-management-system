@@ -78,7 +78,7 @@ export const CourseDashboardCard = ({
             <TextTag size={'verySmall'} className="uppercase">
               {t(`words.${course.format}`)}
             </TextTag>
-            {beginnerFriendlyCourses.has(course.index!) && (
+            {beginnerFriendlyCourses.has(course.index) && (
               <TextTag size={'verySmall'} variant="green" className="uppercase">
                 {t('words.level.beginner')}
               </TextTag>

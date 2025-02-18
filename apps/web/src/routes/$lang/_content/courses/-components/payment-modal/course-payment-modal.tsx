@@ -84,7 +84,7 @@ export const CoursePaymentModal = ({
       if (method) {
         const serverCheckoutData = await savePaymentRequest.mutateAsync({
           courseId: course.id,
-          courseIndex: course.index!,
+          courseIndex: course.index,
           satsPrice: satsPriceReduced,
           dollarPrice: dollarPriceReduced,
           couponCode: validatedCoupon?.code,

@@ -228,9 +228,9 @@ export const CourseTableMobile = ({
                             }}
                           >
                             <span className="text-center text-brightGreen-11 body-medium-12px uppercase !leading-[110%]">
-                              {course.index!.slice(0, 3)}
+                              {course.index.slice(0, 3)}
                               <br />
-                              {course.index!.slice(3)}
+                              {course.index.slice(3)}
                             </span>
                           </button>
                         );
