@@ -113,7 +113,7 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
         )}
 
       <div className="flex flex-col">
-        <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-9">
+        <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-14">
           {t('bCert.bookExam')}
         </h3>
         {sortedEvents.length > 0 && (
