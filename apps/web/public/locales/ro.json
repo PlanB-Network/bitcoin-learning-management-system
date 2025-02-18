@@ -67,7 +67,7 @@
     "signIn": "Înregistrează-te",
     "confirmation": "Confirmare",
     "displayName": "Numele afișat",
-    "emailTip": "E-mailul nu este obligatoriu, dar poate fi util în cazul unei parole uitate :)",
+    "emailTip": "E-mailul nu este obligatoriu, dar poate fi util în cazul unei parole uitate!",
     "trackProgress": "Creează un cont sau autentifică-te pentru a urmări progresul tău",
     "dashboardUnlocked": "Dashboard-ul tău de student este deblocat!",
     "didYouKnow": "Știai?",
@@ -89,7 +89,7 @@
     "readChart": "Citește statutul",
     "tweetText": "Bucuros că ai obținut Certificatul B @planb_network cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
     "download": "Descarcă certificatul",
-    "verify": "Verificați autenticitatea certificatului dvs."
+    "verify": "Verifică autenticitatea certificatului tău"
   },
   "bet": {
     "pageDescription": "Adoptarea în masă nu este ușoară. Pentru a ne apropia mai rapid și mai eficient de acest obiectiv, am dezvoltat o bază de date extensibilă cu conținut educațional. Aici, educatorii Bitcoin pot accesa și adăuga conținutul după cum este necesar. Să nu reinventăm roata de fiecare dată și să lucrăm împreună pentru a centraliza resursele utile într-un singur toolkit!",
@@ -155,7 +155,8 @@
       "courseAddedToDashboard": "Acest curs a fost adăugat la dashboardul al studentului dumneavoastră",
       "pastEditionsRatings": "Evaluările edițiilor anterioare",
       "ledBy": "Acest curs este condus de",
-      "collaborativeEffort": "Fiecare conținut de pe platformă este rezultatul unui efort de colaborare: fiecare lecție, traducere și revizuire este posibilă prin munca colaboratorilor. Din acest motiv, suntem mereu în căutare de corectori care pot revizui conținutul nostru în mai multe limbi. Dacă dorești să participi la procesul de corectare, te rugăm să ne contactezi în grupul nostru <0>Telegram</0> și să citești <1>tutorialul nostru</1>.\n\nVă reamintim că acest conținut este open-source - licențiat sub <2>CC BY-SA</2> - deci poate fi partajat și utilizat liber, atâta timp cât sursa originală este creditată."
+      "collaborativeEffort": "Fiecare conținut de pe platformă este rezultatul unui efort de colaborare: fiecare lecție, traducere și revizuire este posibilă prin munca colaboratorilor. Din acest motiv, suntem mereu în căutare de corectori care pot revizui conținutul nostru în mai multe limbi. Dacă dorești să participi la procesul de corectare, te rugăm să ne contactezi în grupul nostru <0>Telegram</0> și să citești <1>tutorialul nostru</1>.\n\nVă reamintim că acest conținut este open-source - licențiat sub <2>CC BY-SA</2> - deci poate fi partajat și utilizat liber, atâta timp cât sursa originală este creditată.",
+      "teacherLed": "condus de profesor"
     },
     "chapter": {
       "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș.",
@@ -182,7 +183,7 @@
       "exploreCourses": "Explorați toate cursurile Plan B",
       "findCourses": "Găsește cursul perfect pentru nevoile tale datorită selectorului de cursuri",
       "journey": "Bitcoin este o călătorie, nu o destinație",
-      "pageDescription": "Academia Plan B este dedicată simplificării educației Bitcoin la nivel mondial. Curată de experți din diverse domenii, academia noastră oferă o gamă completă de cursuri concepute pentru a clarifica fiecare aspect al Bitcoin. De la începător la expert, fie în ritmul propriu, fie urmat săptămânal de un profesor, sperăm că academia poate ajuta la înțelegerea mai bună a subiectului vast care este Bitcoin. O mare parte din cursurile noastre sunt complet gratuite, astfel încât oricine, oriunde, să aibă acces la educație.",
+      "pageDescription": "Academia Plan B este dedicată simplificării educației Bitcoin la nivel mondial. Curată de experți din diverse domenii, academia noastră oferă o gamă completă de cursuri concepute pentru a clarifica fiecare aspect al Bitcoin.\nDe la începător la expert, fie în ritmul propriu, fie urmat săptămânal de un profesor, sperăm că academia poate ajuta la înțelegerea mai bună a subiectului vast care este Bitcoin. O mare parte din cursurile noastre sunt complet gratuite, astfel încât oricine, oriunde, să aibă acces la educație.",
       "seeCourse": "Vezi cursul",
       "buildPath": "Construiește-ți propriul drum în \"gaura iepurelui\"",
       "comingSoon": "în curând",
@@ -253,7 +254,7 @@
       "yesOfCourse": "da, desigur",
       "yesVeryMuch": "da, foarte mult",
       "commentAdmin": "Comentariu pentru echipa de administrare (privat)",
-      "feedbackSessionTitle": "Sesiune de feedback",
+      "feedbackSessionTitle": "Te rugăm să ne ajuți să ne îmbunătățim cursurile prin feedbackul tău.",
       "tooLong": "prea lung",
       "whatStudentsSay": "Ce spun studenții despre acest curs",
       "displayOutOf": "afisat din",
@@ -263,12 +264,12 @@
       "skip": "Sari peste recenzie",
       "commentAdminMobile": "Comentariu privat pentru echipa de administrare",
       "commentTeacherMobile": "Comentariu privat pentru profesor",
-      "feedbackDescription1": "Vă rugăm să evaluați experiența dumneavoastră cu acest curs..\nAceastă sesiune de feedback este obligatorie pentru a avea acces la examenul final și pentru a valida cursul.",
+      "feedbackDescription1": "Te rugăm să evaluezi experiența ta cu acest curs mai jos.",
       "commentPublicMobile": "Comentariu public",
       "editReview": "Recenzie de editare",
       "feedbackDescription2": "Rețineți că profesorii nu vor avea acces la evaluările individuale.",
       "saveReview": "Salvează recenzia",
-      "thankYou": "Mulțumesc pentru recenzia ta! A fost luată în considerare.",
+      "thankYou": "Mulțumesc pentru recenzia ta! A fost luată în considerare",
       "feedback": "Feedback",
       "whatStudentsSayPasEdition": "Ce spun studenții despre edițiile anterioare"
     },
@@ -543,7 +544,8 @@
         "lastUpdated": "Ultimul actualizat",
         "viewCV": "Vizualizează CV",
         "downloadProfiles": "Descarcă spreadsheet-ul",
-        "downloadSpreadsheet": "Descarcă spreadsheet-ul"
+        "downloadSpreadsheet": "Descarcă spreadsheet-ul",
+        "careersSubtitle": "Aici poți vedea lista participanților care și-au completat cererile. Poți găsi toate informațiile despre cereri în interiorul spreadsheetului."
       },
       "userRolesAllocation": "Alocarea rolurilor utilizatorilor"
     },
@@ -682,12 +684,48 @@
       "yourLanguages": "Limbile tale",
       "steps": {
         "step3": "Încărca CV",
-        "step4": "Termeni legali"
+        "step4": "Termeni legali",
+        "step1": "Informații personale",
+        "step2": "Căuta locuri de muncă"
       },
       "uploadCV": "Încarcă-ți CV-ul",
       "uploadCVSubLabel": "Încarcă CV-ul pentru a-ți prezenta abilitățile și experiențele potențialilor angajatori.",
       "welcome": "Bine ai venit pe portalul carierei tale",
-      "yourRoles": "Posturile tale de muncă"
+      "yourRoles": "Posturile tale de muncă",
+      "selectLanguage": "Selectează o limbă",
+      "selectRoleSubLabel": "Te rugăm să selectezi titlul e job care corespunde cel mai bine căutării tale.",
+      "description": "În calitate de student Plan ₿ Network, faci parte dintr-o mare comunitate care îți poate susține creșterea profesională. În această secțiune, poți trimite CV-ul tău și îți poți împărtăși aspirațiile de carieră. Vom colabora îndeaproape cu partenerii noștri din industrie pentru a-ți potrivi profilul cu potențialele oportunități de angajare, ajutându-te să faci următorul pas în călătoria ta profesională.",
+      "provideValidEmail": "Te rugam sa furnizezi un email valid.",
+      "noFileSelected": "Niciun file selectat",
+      "personalInformationSubtitle": "Te rugăm să adaugi numele tău complet și domiciliul.",
+      "remoteWorkPreference": "Ești dispus să lucrezi de la distanță?",
+      "remoteWorkPreferences": {
+        "no": "Aș prefera să nu",
+        "sometimes": "Din când în când, de ce nu",
+        "yes": "Da, cu plăcere"
+      },
+      "roleLevel": "Nivel de experiență",
+      "roleLevelSubLabel": "Selectează nivelul care corespunde cel mai bine competențelor tale.",
+      "roleLevels": {
+        "student": "Student (0 ani)",
+        "junior": "Junior (de la 1 până la 3 ani)",
+        "mid": "Nivel mediu (de la 3 până la 5 ani)",
+        "senior": "Senior (peste 5 ani)"
+      },
+      "roleRequired": "Adaugă cel puțin un rol.",
+      "seeOrEditProfile": "Vezi sau editează profilul",
+      "selectJobTitle": "Selectează un titlu de job",
+      "selectRole": "Ce poziție(i) căuți?",
+      "startApplication": "Începe aplicația",
+      "cvUpload": "Încarcă-ți CV-ul",
+      "motivationSubtitle": "Îți poți îmbogăți candidatura cu o scrisoare de prezentare, pentru a ne oferi mai multe detalii despre tine și despre căutarea unui loc de muncă.",
+      "other": "Altul",
+      "partTime": "Part-time",
+      "personalInformation": "Informații personale",
+      "motivation": "Motivație",
+      "motivationLetter": "Scrisoare de motivare",
+      "motivationLetterPlaceholder": "Cât de motivat ești?",
+      "motivationLetterSubLabel": "Poți scrie câteva cuvinte mai jos pentru a-ți descrie experiența și motivația."
     },
     "backToDashboard": "Înapoi la dashboard",
     "studentDashboard": "Dashboardul studentului"
@@ -853,7 +891,12 @@
     "businessDescription": "Dezvăluie utilizarea Bitcoin în comerț.",
     "chooseLanguage": "Alege o limbă",
     "channelsDescription": "Accesează selecția noastră exclusivă de canale Youtube pentru a învăța despre Bitcoin",
-    "lecturesDescription": "Revedeți înregistrările de la experții în Bitcoin"
+    "lecturesDescription": "Revedeți înregistrările de la experții în Bitcoin",
+    "projectsDescription": "Află despre companiile și proiectele care contribuie la îmbunătățirea Bitcoin și la creșterea adoptării sale",
+    "securityDescription": "Stăpânește tehnicile de protejare a averii tale în Bitcoin.",
+    "protocolDescription": "Descoperă regulile de bază care alimentează rețeaua Bitcoin.",
+    "socialStudiesDescription": "Studiază impactul Bitcoin asupra societății.",
+    "newsletterDescription": "Colecție de conținuturi pe care îl poți folosi pentru proiectele tale educaționale"
   },
   "professors": {
     "tips": {
@@ -875,7 +918,7 @@
     "blogPageStrings": {
       "noArticlesText": "Nu există postări pe blog în acest moment.",
       "errorMessageNotFound": "Blogul nu a fost găsit.",
-      "blogSidebarTitle": "Postări anterioare în Network",
+      "blogSidebarTitle": "Postări {{category}} din trecut",
       "blogListButtonText": "Citește",
       "filterText": "Filtrează după subiect:",
       "featuredArticleTitleText": "Cel mai recent articol publicat",
@@ -903,26 +946,72 @@
   },
   "resources": {
     "podcasts": {
-      "title": "Podcasturi"
+      "title": "Podcasturi",
+      "noPodcasts": "În prezent, nu există podcasturi pentru limba selectată."
     },
     "pageDescription": "Încercarea de a înțelege Bitcoin este ca și cum ai explora un labirint care continuă să crească. Pentru a te ajuta în călătoria ta, am compilat o gamă vastă de resurse, inclusiv cărți, podcasturi, videoclipuri și reluări de conferințe. Acest portal adună toate informațiile într-un singur repository Github pentru a te ajuta să înțelegi mai bine ecosistemul Bitcoin.",
     "newsletters": {
-      "title": "newslettere"
+      "title": "newslettere",
+      "level": "Nivel :",
+      "noNewsletters": "În prezent nu există newsletter pentru limba selectată.",
+      "subtitle": "<0>Alte newsletter</0> care ți-ar putea plăcea",
+      "author": "Autor : "
     },
     "pageSubtitle": "Centralizează cunoștințele pentru a le distribui mai bine",
     "github": "Toate aceste date sunt gestionate printr-un repository <0>Github</0> open-source. Simțiți-vă liber să contribuiți și să adăugați orice conținut lipsă.",
     "pageTitle": "Bine ați venit la Portalul de Resurse",
     "searchFilterName": "Căutare după nume",
-    "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": ""
+    "pageSubtitleBooks": "<0>Alte cărți</0> care s-ar putea să îți placă",
+    "pageSubtitlePodcast": "<0>Alte podcasturi</0> care s-ar putea să îți placă",
+    "conferences": {
+      "title": "Reluări de conferințe"
+    },
+    "channels": {
+      "noYoutubeChannels": "În prezent, nu există canale Youtube pentru limba selectată.",
+      "title": "Canale de Youtube"
+    },
+    "glossary": {
+      "title": "Glosar"
+    },
+    "projects": {
+      "title": "Proiecte"
+    },
+    "pageSubtitleChannels": "<0>Alte canale de Youtube</0> care s-ar putea să îți placă",
+    "pageSubtitleLectures": "<0>Repetări ale altor prelegeri</0> care s-ar putea să îți placă",
+    "toggleLabelAll": "Totul",
+    "articles": {
+      "title": "Articole"
+    },
+    "bet": {
+      "title": "Instrumente educaționale"
+    },
+    "books": {
+      "author": "Autor : ",
+      "title": "Bibliotecă"
+    },
+    "lectures": {
+      "noLectures": "În prezent nu există reluări de prelegeri pentru limba selectată.",
+      "title": "Reluarea cursurilor"
+    },
+    "movies": {
+      "noMovies": "În prezent nu există filme sau documentare pentru limba selectată.",
+      "title": "Filme & Documentare"
+    },
+    "newsletter": {
+      "check": "Verifică newsletterul"
+    },
+    "toggleFreeOnly": "Doar gratis",
+    "toggleLabelSelectedLanguage": "Limba selectată"
   },
   "tutorials": {
     "backTutorials": "Înapoi la toate tutorialele",
     "details": {
-      "author": "Autor : ",
+      "author": "Autor:",
       "didHelp": "A fost de ajutor?",
       "source": "Sursa originală :",
-      "writtenBy": "Acest tutorial a fost scris de :"
+      "writtenBy": "Acest tutorial a fost scris de :",
+      "ratingSuccess": "Mulțumesc pentru evaluarea ta!",
+      "tutorialName": "Numele tutorialului"
     },
     "exchange": {
       "title": "Exchange",
@@ -1010,7 +1099,10 @@
     },
     "pageDescription": "Bitcoin este o industrie vastă, care se extinde tot mai mult în fiecare zi. Pentru a vă ajuta să o explorați, am adunat și selectat un număr mare de tutoriale care descriu diverse soluții în toate domeniile legate de Bitcoin.",
     "pageSubtitle": "Descoperiți misterele Bitcoin prin explorarea ecosistemului său vast",
-    "pageTitle": "Descoperă tutorialele noastre"
+    "pageTitle": "Descoperă tutorialele noastre",
+    "hasBeenProofreadBy": "Acest tutorial a fost corectat de",
+    "hasNotBeenProofread": "Acest tutorial încă nu a fost corectat",
+    "writtenBy": "Acest tutorial a fost scris de"
   },
   "nodeNetwork": {
     "description1": "Credem că educația nu ar trebui să se limiteze doar la mediul online, ci să se extindă și în spațiile fizice. Pentru a atinge acest obiectiv, Plan ₿ Network coordonează o rețea de hub-uri la nivel global pentru a aduna gânditori, constructori și educatori care susțin progresul Bitcoin și al tehnologiilor libertății.",
@@ -1022,7 +1114,10 @@
   },
   "payment": {
     "terms": "Consultați <0>termenii și condițiile</0> noastre generale pentru detalii despre rambursare",
-    "total": "Total"
+    "total": "Total",
+    "payByCard": "Plătește cu cardul",
+    "payWithBitcoin": "Plătește cu Bitcoin",
+    "haveReductionCode": "Ai un cod de reducere ?"
   },
   "proofreading": {
     "description": "Conținutul original a fost tradus de AI, dar este necesară revizuirea umană pentru a asigura acuratețea acestuia.",
@@ -1030,7 +1125,9 @@
     "inProgress": "Corectură în curs",
     "reviewEarn": "Revizuiește și câștigă sats",
     "status": "Starea de corectare",
-    "thanks": "Mulțumim mult recenzorilor noștri extraordinari!"
+    "thanks": "Mulțumim mult recenzorilor noștri extraordinari!",
+    "descriptionOriginalLanguage": "Chiar dacă această pagină este în limba sa originală, revizuirea umană este încă necesară pentru a asigura acuratețea sa.",
+    "rewardsText": "Recompensele pot varia în funcție de cursul de schimb al dolarului"
   },
   "imagesAlt": {
     "bookCover": "coperta unei cărți",
@@ -1158,7 +1255,61 @@
     "required": "Necesar",
     "status": "Status",
     "teacher": "Profesor",
-    "total": "Total"
+    "total": "Total",
+    "chapters": "Capitole",
+    "admin": "Administrator",
+    "careerPortal": "Portalul carierei",
+    "credits": "Credite",
+    "exam": "Examen",
+    "inperson": "În persoană",
+    "movie": "Film",
+    "next": "Următorul",
+    "previous": "Anterior",
+    "producer": "Producător",
+    "telegram": "Telegram",
+    "likes": "Like-uri",
+    "category": "Categorie",
+    "channel": "Canal",
+    "channels": "Canale",
+    "close": "Închide",
+    "complete": "Complet",
+    "congrats": "Felicitări!",
+    "country": "Țară",
+    "delete": "Șterge",
+    "dislikes": "Neplăceri",
+    "displayName": "Numele afișat",
+    "github": "Github",
+    "hybrid": "Hibrid",
+    "incomplete": "Incomplet",
+    "language": "Limbă",
+    "lecture": "Prelegere",
+    "name": "Nume",
+    "no": "Nu",
+    "unavailable": "Indisponibil",
+    "finish": "Finalizează",
+    "abstract": "Rezumat",
+    "access": "Acces",
+    "action": "Acțiune",
+    "author": "Autor",
+    "bitcoin": "Bitcoin",
+    "business": "Business",
+    "cancel": "Anulează",
+    "linkedin": "Linkedin",
+    "project": "Proiect",
+    "projects": "Proiecte",
+    "protocol": "Protocol",
+    "security": "Securitate",
+    "socialStudies": "Studii sociale",
+    "startHere": "Începe aici!",
+    "student": "Student",
+    "submit": "Trimite",
+    "user": "Utilizator",
+    "username": "Username",
+    "viewMore": "Vezi mai mult",
+    "yes": "Da",
+    "role": "Rol",
+    "search": "Caută",
+    "skip": "Sări"
   },
   "underConstruction": {
     "p1": "Un iepure a căzut într-o groapă. Din cauza acestei aventuri neașteptate, această pagină este într-o oarecare construcție în acest moment. Ne cerem scuze pentru orice inconvenient. Echipa noastră lucrează din greu pentru a finaliza această pagină. Dacă sunteți interesat să dați o mână de ajutor, nu ezitați să verificați",
@@ -1181,5 +1332,71 @@
     "watchLecture": "Urmărește reluarea prelegerii",
     "buyVideoToUnlock": "Cumpără videoclipul pentru a-l debloca",
     "pageTitle": "Reluarea cursurilor"
+  },
+  "projects": {
+    "networkStrength": "Forța unei rețele constă în membrii săi",
+    "languages": "Limbi",
+    "noRelatedEvents": "Nu există evenimente viitoare legate de acest educator în acest moment.",
+    "otherCommunities": "Explorează Comunitățile Plan ₿",
+    "pageTitle": "Proiecte Bitcoin",
+    "relatedEvents": "Evenimente viitoare conexe"
+  },
+  "search": {
+    "youtube_channel": "Canal Youtube",
+    "searchResult": "Rezultatele căutării",
+    "glossary_words": "Cuvinte din glosar",
+    "youtube_channels": "Canale Youtube",
+    "languageSelected": "Limba selectată: {{language}}",
+    "loadMoreResults": "Vezi mai multe rezultate",
+    "podcast": "Podcast",
+    "podcasts": "Podcasturi",
+    "project": "Proiect",
+    "projects": "Proiecte",
+    "conference_replays": "Reluări de conferințe",
+    "conference_replay": "Reluarea conferinței",
+    "event": "Eveniment",
+    "events": "Evenimente",
+    "lecture_replay": "Reluarea prelegerii",
+    "lecture_replays": "Reluări de prelegeri",
+    "newsletter": "newsletter",
+    "newsletters": "newslettere",
+    "professors": "Profesori",
+    "resultEmpty": "Oops! Nu am putut găsi nimic care să se potrivească cu căutarea ta. Verifică dacă ai scris corect, încearcă cuvinte cheie diferite sau selectează o altă categorie.",
+    "resultError": "Ceva nu a funcționat. Te rugăm să încerci din nou.",
+    "resultInfo": "Găsite {{count}} rezultate în {{time}}ms",
+    "results": "Rezultate",
+    "resultsRemaining": "Au mai rămas {{count}} rezultate",
+    "search": "Caută",
+    "tutorial": "Tutorial",
+    "startSearch": "Începe căutarea pentru a vedea rezultatele aici",
+    "tutorials": "Tutoriale",
+    "professor": "Profesor",
+    "all": "Totul",
+    "book": "Carte",
+    "books": "Cărți",
+    "categories": "Categorii",
+    "course_chapter": "Capitolul cursului",
+    "course_part": "Partea cursului",
+    "courses": "Cursuri",
+    "course": "Curs",
+    "explorer": {
+      "subtitle": "Ce cauți?",
+      "title": "Portal de căutare"
+    },
+    "filterByType": "Filtrează după tip",
+    "glossary_word": "Cuvânt din glosar"
+  },
+  "movies": {
+    "watchTrailer": "Urmărește trailerul",
+    "goToMovie": "Mergi la film",
+    "pageTitle": "Filme & Documentare"
+  },
+  "podcast": {
+    "check": "Verifică podcastul"
+  },
+  "youtubeChannels": {
+    "pageTitle": "Canale Youtube",
+    "view": "Vezi canalul Youtube",
+    "watchTrailer": "Vizionează trailerul"
   }
 }
