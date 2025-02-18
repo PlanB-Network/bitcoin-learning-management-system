@@ -88,7 +88,10 @@ function ProfessorDetail() {
         <div className="flex flex-col gap-1 items-start text-white">
           <BackLink to={getBacklinkUrl()} label={t('professors.pageTitle')} />
           <div className="flex w-full flex-col items-start">
-            <AuthorCardFull professor={professor} className="mx-auto" />
+            <AuthorCardFull
+              professor={professor}
+              className="max-md:mx-auto md:w-full"
+            />
           </div>
           {professor.courses.length > 0 && (
             <div className="mt-6 lg:mt-12 flex flex-row items-center gap-4 text-2xl font-medium">
