@@ -17,7 +17,7 @@ interface PdfCertificateOptions {
   fullName: string;
   courseName: string;
   date: string;
-  courseId: string;
+  courseIndex: string;
   duration: string;
   hash: string;
   txid: string;
@@ -109,7 +109,11 @@ export async function createPdf(options: PdfCertificateOptions) {
   }
 
   // Course ID
-  textLeft(page, options.courseId, { x: margin, y: 104, ...conf.rubikWhite });
+  textLeft(page, options.courseIndex.toUpperCase(), {
+    x: margin,
+    y: 104,
+    ...conf.rubikWhite,
+  });
   textRight(page, options.duration, {
     x: margin,
     y: 104,

@@ -76,6 +76,7 @@ interface ExamAttemptWithUser {
   };
   course: {
     id: string;
+    index: string;
     level: string;
     goal: string;
     name: string;
@@ -117,6 +118,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
             WHERE u.uid = a.uid) AS user,
             (SELECT jsonb_build_object(
               'id', c.id,
+              'index', c.index,
               'level', c.level,
               'goal', cl.goal,
               'name', cl.name,
@@ -241,7 +243,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     const pdf = await createPdf({
       fullName: exam.user.displayName,
       courseName: exam.course.name,
-      courseId: exam.course.id,
+      courseIndex: exam.course.index,
       duration: `${exam.course.hours} hours`,
       date: formatDate(exam.startedAt),
       hash: timestamp.hash,
