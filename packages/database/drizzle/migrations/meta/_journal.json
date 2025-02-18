@@ -519,6 +519,13 @@
       "when": 1739886786757,
       "tag": "0073_slippery_talos",
       "breakpoints": true
+    },
+    {
+      "idx": 74,
+      "version": "7",
+      "when": 1739891241800,
+      "tag": "0074_early_metal_master",
+      "breakpoints": true
     }
   ]
 }
