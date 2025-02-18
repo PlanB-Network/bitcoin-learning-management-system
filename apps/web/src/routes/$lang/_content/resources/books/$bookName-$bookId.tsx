@@ -21,6 +21,7 @@ import { assetUrl, trpc } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
@@ -30,17 +31,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const bookNameId = params['bookName-$bookId'];
-      const bookId = bookNameId.split('-').pop();
-      const bookName = bookNameId.slice(
-        0,
-        Math.max(0, bookNameId.lastIndexOf('-')),
-      );
+      const { id, name } = getNameAndIdFromUrlForNumbers(bookNameId);
 
       return {
         lang: z.string().parse(params.lang),
-        'bookName-$bookId': `${bookName}-${bookId}`,
-        bookName: z.string().parse(bookName),
-        bookId: z.number().int().parse(Number(bookId)),
+        'bookName-$bookId': `${name}-${id}`,
+        bookName: z.string().parse(name),
+        bookId: z.number().int().parse(Number(id)),
       };
     },
     stringify: ({ lang, bookName, bookId }) => ({

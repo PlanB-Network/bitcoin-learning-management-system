@@ -40,18 +40,28 @@ import { trpc } from '#src/utils/trpc.js';
 import PlanbSchoolLogo from '#src/assets/courses/planb_school_logo.svg';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
-import { CourseLayout } from '../-components/course-layout.tsx';
-import { CoursePaymentModal } from '../-components/payment-modal/course-payment-modal.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { CourseLayout } from './-components/course-layout.tsx';
+import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
 
-export const Route = createFileRoute('/$lang/_content/courses/$courseId/')({
+export const Route = createFileRoute(
+  '/$lang/_content/courses/$courseName-$courseId',
+)({
   params: {
-    parse: (params) => ({
-      lang: z.string().parse(params.lang),
-      courseId: z.string().parse(params.courseId),
-    }),
-    stringify: ({ lang, courseId }) => ({
+    parse: (params) => {
+      const paramNameId = params['courseName-$courseId'];
+      const { id, name } = getNameAndIdFromUrl(paramNameId);
+
+      return {
+        lang: z.string().parse(params.lang),
+        'courseName-$courseId': `${name}-${id}`,
+        courseName: z.string().parse(name),
+        courseId: z.string().parse(id),
+      };
+    },
+    stringify: ({ lang, courseName, courseId }) => ({
       lang: lang,
-      courseId: `${courseId}`,
+      'courseName-$courseId': `${courseName}-${courseId}`,
     }),
   },
   component: CourseDetails,
@@ -105,8 +115,6 @@ function CourseDetails() {
       staleTime: 300_000, // 5 minutes
     },
   );
-
-  console.log('AA', course?.index);
 
   const { data: userCourseProgress } = trpc.user.courses.getProgress.useQuery(
     {
@@ -189,6 +197,14 @@ function CourseDetails() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (course && params.courseName !== formatNameForURL(course.name)) {
+      navigate({
+        to: `/courses/${formatNameForURL(course.name)}-${course.id}`,
+      });
+    }
+  }, [course, isFetched, navigate, params.bookName]);
 
   const Header = ({ course }: { course: JoinedCourseWithAll }) => {
     const beginnerFriendlyCourses = ['btc101', 'btc102', 'scu101'];

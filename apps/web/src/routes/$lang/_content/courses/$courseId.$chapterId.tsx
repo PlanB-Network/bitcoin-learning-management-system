@@ -36,16 +36,14 @@ import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
 
-import { ClassDetails } from '../-components/class-details.tsx';
-import { CourseLayout } from '../-components/course-layout.tsx';
-import { LiveVideo } from '../-components/live-video.tsx';
-import { NavigationPanel } from '../-components/navigation-panel.tsx';
-import type { Question } from '../-components/quizz/quizz-card.tsx';
-import QuizzCard from '../-components/quizz/quizz-card.tsx';
-
-import { CourseConclusion } from './-components/course-conclusion.tsx';
-import { CourseExam } from './-components/course-exam.tsx';
-import { CourseReviewComponent } from './-components/course-review.tsx';
+import { CourseConclusion } from './$courseId/-components/course-conclusion.tsx';
+import { CourseExam } from './$courseId/-components/course-exam.tsx';
+import { CourseReviewComponent } from './$courseId/-components/course-review.tsx';
+import { ClassDetails } from './-components/class-details.tsx';
+import { CourseLayout } from './-components/course-layout.tsx';
+import { LiveVideo } from './-components/live-video.tsx';
+import { NavigationPanel } from './-components/navigation-panel.tsx';
+import QuizzCard, { type Question } from './-components/quizz/quizz-card.tsx';
 
 const CoursesMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/courses-markdown-body.js'),
@@ -138,8 +136,7 @@ const TimelineSmall = ({
   return (
     <div className="mb-0 w-full max-w-5xl px-[15px] sm:hidden mt-[15px]">
       <Link
-        to={'/courses/$courseId'}
-        params={{ courseId: chapter.course.id }}
+        to={`/courses/${chapter.course.name}-${chapter.course.id}`}
         className="w-full flex justify-center items-center mb-4"
       >
         <h1 className="px-[22px] title-medium-sb-18px text-black max-md:text-center">
@@ -165,6 +162,7 @@ const TimelineSmall = ({
             'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-[5px] shadow-course-navigation-sm mt-2.5 mb-3 gap-4',
           )}
         >
+          {/* TODO */}
           <Link
             to={
               chapter.part.partIndex === 1 && chapter.chapterIndex === 1
@@ -180,6 +178,7 @@ const TimelineSmall = ({
             {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
           </h2>
 
+          {/* TODO */}
           <Link
             to={
               chapter.part.partIndex === chapter.course.parts.length &&
@@ -221,8 +220,7 @@ const TimelineBig = ({
           {addSpaceToCourseIndex(chapter.course.index)}
         </TextTag>
         <Link
-          to={'/courses/$courseId'}
-          params={{ courseId: chapter.course.id }}
+          to={`/courses/${chapter.course.name}-${chapter.course.id}`}
           className="text-black hover:text-darkOrange-5 display-small-32px"
         >
           {chapter.course.name}

@@ -24,6 +24,7 @@ import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
@@ -33,17 +34,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const newsletterNameId = params['newsletterName-$newsletterId'];
-      const newsletterId = newsletterNameId.split('-').pop();
-      const newsletterName = newsletterNameId.slice(
-        0,
-        Math.max(0, newsletterNameId.lastIndexOf('-')),
-      );
+      const { id, name } = getNameAndIdFromUrlForNumbers(newsletterNameId);
 
       return {
         lang: z.string().parse(params.lang),
-        'newsletterName-$newsletterId': `${newsletterName}-${newsletterId}`,
-        newsletterName: z.string().parse(newsletterName),
-        newsletterId: z.number().int().parse(Number(newsletterId)),
+        'newsletterName-$newsletterId': `${name}-${id}`,
+        newsletterName: z.string().parse(name),
+        newsletterId: z.number().int().parse(Number(id)),
       };
     },
     stringify: ({ lang, newsletterName, newsletterId }) => ({

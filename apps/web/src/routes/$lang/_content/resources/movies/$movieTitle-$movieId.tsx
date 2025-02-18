@@ -24,6 +24,7 @@ import { assetUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
@@ -33,17 +34,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const movieTitleId = params['movieTitle-$movieId'];
-      const movieId = movieTitleId.split('-').pop();
-      const movieTitle = movieTitleId.slice(
-        0,
-        Math.max(0, movieTitleId.lastIndexOf('-')),
-      );
+      const { id, name } = getNameAndIdFromUrlForNumbers(movieTitleId);
 
       return {
         lang: z.string().parse(params.lang),
-        'movieTitle-$movieId': `${movieTitle}-${movieId}`,
-        movieTitle: z.string().parse(movieTitle),
-        movieId: z.number().int().parse(Number(movieId)),
+        'movieTitle-$movieId': `${name}-${id}`,
+        movieTitle: z.string().parse(name),
+        movieId: z.number().int().parse(Number(id)),
       };
     },
     stringify: ({ lang, movieTitle, movieId }) => ({

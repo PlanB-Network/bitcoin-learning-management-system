@@ -12,6 +12,7 @@ import { BackLink } from '#src/molecules/backlink.tsx';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
 import { CourseCard } from '../../../../organisms/course-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 
@@ -20,18 +21,14 @@ export const Route = createFileRoute(
 )({
   params: {
     parse: (params) => {
-      const professorNameId = params['professorName-$professorId'];
-      const professorId = professorNameId.split('-').pop();
-      const professorName = professorNameId.slice(
-        0,
-        Math.max(0, professorNameId.lastIndexOf('-')),
-      );
+      const paramNameId = params['professorName-$professorId'];
+      const { id, name } = getNameAndIdFromUrlForNumbers(paramNameId);
 
       return {
         lang: z.string().parse(params.lang),
-        'professorName-$professorId': `${professorName}-${professorId}`,
-        professorName: z.string().parse(professorName),
-        professorId: z.number().int().parse(Number(professorId)),
+        'professorName-$professorId': `${name}-${id}`,
+        professorName: z.string().parse(name),
+        professorId: z.number().int().parse(Number(id)),
       };
     },
     stringify: ({ lang, professorName, professorId }) => ({

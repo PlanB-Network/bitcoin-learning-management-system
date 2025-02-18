@@ -9,6 +9,7 @@ import { Button, TextTag, cn } from '@blms/ui';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
 import { assetUrl } from '#src/utils/index.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
   variants: {
@@ -45,8 +46,7 @@ export const CourseCard = ({
   return (
     <Link
       key={course.id}
-      to="/courses/$courseId"
-      params={{ courseId: course.id }}
+      to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
       className="flex w-full max-md:max-w-[500px] max-md:mx-auto md:w-[340px]"
     >
       <article

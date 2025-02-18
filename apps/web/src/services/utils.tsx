@@ -138,6 +138,26 @@ export const extractSubCategories = (tutorials: JoinedTutorialLight[]) => {
   return extractedSubCategories;
 };
 
+export function getNameAndIdFromUrl(param: string) {
+  const objectId = param.slice(-36);
+  const objectName = param.slice(0, -37);
+
+  return {
+    id: objectId,
+    name: objectName,
+  };
+}
+
+export function getNameAndIdFromUrlForNumbers(param: string) {
+  const objectId = param.split('-').pop();
+  const objectName = param.slice(0, Math.max(0, param.lastIndexOf('-')));
+
+  return {
+    id: objectId,
+    name: objectName,
+  };
+}
+
 export interface PaymentModalDataModel {
   eventId: string | null;
   satsPrice: number | null;

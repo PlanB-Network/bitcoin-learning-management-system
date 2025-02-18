@@ -29,6 +29,7 @@ import { type TRPCRouterOutput, trpc } from '#src/utils/trpc.js';
 
 import type { JoinedProofreading } from '@blms/types';
 import { AuthorCard } from '#src/components/author-card.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 
@@ -42,8 +43,7 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const nameId = params['name-$id'];
-      const id = nameId.slice(-36);
-      const name = nameId.slice(0, -37);
+      const { id, name } = getNameAndIdFromUrl(nameId);
 
       return {
         lang: z.string().parse(params.lang),

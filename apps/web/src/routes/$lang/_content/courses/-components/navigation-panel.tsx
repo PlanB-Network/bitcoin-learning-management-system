@@ -11,6 +11,7 @@ import {
 } from '@blms/ui';
 
 import { addSpaceToCourseIndex } from '#src/utils/courses.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 interface Chapter {
   title: string;
@@ -60,8 +61,7 @@ export const NavigationPanel: React.FC<Props> = ({
       style={style}
     >
       <Link
-        to={'/courses/$courseId'}
-        params={{ courseId: course.id }}
+        to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
         className="w-fit cursor-default"
       >
         <h2 className="desktop-h4 uppercase text-darkOrange-5 text-center hover:font-medium w-fit mx-auto hover:cursor-pointer">

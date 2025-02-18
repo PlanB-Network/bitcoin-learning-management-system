@@ -13,6 +13,7 @@ import { assetUrl } from '#src/utils/index.ts';
 
 import { levels, sortCoursesByLevel } from '../-utils/course-utils.tsx';
 
+import { formatNameForURL } from '#src/utils/string.ts';
 import { CourseInfoSection } from './course-info-section.tsx';
 
 export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
@@ -144,10 +145,7 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
 
               <CourseInfoSection course={activeCourse} />
 
-              <Link
-                to="/courses/$courseId"
-                params={{ courseId: activeCourse.id }}
-              >
+              <Link to={`/courses/${activeCourse.name}-${activeCourse.id}`}>
                 <Button variant="primary" size="l" className="w-full">
                   {t('courses.explorer.seeCourse')}
                   <FaArrowRightLong
@@ -213,8 +211,7 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                         />
                         <CourseInfoSection course={course} />
                         <Link
-                          to="/courses/$courseId"
-                          params={{ courseId: course.id }}
+                          to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
                         >
                           <Button variant="primary" size="m" className="w-full">
                             {t('courses.explorer.seeCourse')}

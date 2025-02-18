@@ -11,6 +11,7 @@ import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { FeaturedCard } from '#src/organisms/featured-card.js';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 import BlogSidebar from '../../../-components/public-communication/blog-sidebar.tsx';
 import Breadcrumbs from '../../../-components/public-communication/breadcrumbs.tsx';
@@ -24,16 +25,14 @@ export const Route = createFileRoute(
 )({
   params: {
     parse: (params) => {
-      const blogNameId = params['blogName-$blogId'];
-
-      const blogId = blogNameId.slice(-36);
-      const blogName = blogNameId.slice(0, -37);
+      const paramNameId = params['blogName-$blogId'];
+      const { id, name } = getNameAndIdFromUrl(paramNameId);
 
       return {
         lang: z.string().parse(params.lang),
-        'blogName-$blogId': `${blogName}-${blogId}`,
-        blogName: z.string().parse(blogName),
-        blogId: z.string().parse(blogId),
+        'blogName-$blogId': `${name}-${id}`,
+        blogName: z.string().parse(name),
+        blogId: z.string().parse(id),
       };
     },
     stringify: ({ lang, blogName, blogId }) => ({
