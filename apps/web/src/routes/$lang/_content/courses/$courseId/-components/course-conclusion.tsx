@@ -25,6 +25,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { oneDayInMs } from '#src/utils/date.ts';
 import { ConclusionFinish } from './course-conclusion/conclusion-finish.tsx';
 import { StepMessage } from './course-conclusion/step-message.tsx';
 import { CourseReviewComponent } from './course-review.tsx';
@@ -527,17 +528,31 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                 actionButton={
                   previousExamResults?.succeeded ? undefined : (
                     <div className="flex max-md:flex-col gap-4">
-                      <Link
-                        to="/courses/$courseId/$chapterId"
-                        params={{
-                          courseId: course?.id,
-                          chapterId: examChapterId,
-                        }}
+                      <Button
+                        disabled={
+                          previousExamResults
+                            ? previousExamResults.succeeded
+                              ? false
+                              : new Date(
+                                  previousExamResults.startedAt,
+                                ).getTime() +
+                                  oneDayInMs >
+                                Date.now()
+                            : false
+                        }
                       >
-                        <Button>
-                          {previousExamResults ? 'Try again' : 'Pass the exam'}
-                        </Button>
-                      </Link>
+                        <Link
+                          to="/courses/$courseId/$chapterId"
+                          params={{
+                            courseId: course?.id,
+                            chapterId: examChapterId,
+                          }}
+                        >
+                          {previousExamResults
+                            ? t('courses.exam.tryAgain')
+                            : t('courses.exam.takeExam')}
+                        </Link>
+                      </Button>
                       <Button
                         variant="outline"
                         className="w-fit mx-auto"
@@ -584,7 +599,12 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               </div>
             )}
 
-            {step === 6 && course ? <ConclusionFinish course={course} /> : null}
+            {step === 6 && course ? (
+              <ConclusionFinish
+                course={course}
+                examResults={previousExamResults}
+              />
+            ) : null}
           </div>
         </>
       ) : course ? (

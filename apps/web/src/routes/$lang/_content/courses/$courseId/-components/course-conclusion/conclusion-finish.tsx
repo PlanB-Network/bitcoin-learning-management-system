@@ -3,7 +3,10 @@ import { t } from 'i18next';
 import React, { useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import type { JoinedCourseWithAll } from '@blms/types';
+import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp';
+import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp';
+
+import type { CourseExamResults, JoinedCourseWithAll } from '@blms/types';
 import { DividerSimple } from '@blms/ui';
 
 import { AuthorCard } from '#src/components/author-card.tsx';
@@ -12,20 +15,27 @@ import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { filterAndRandomizeCourses } from '#src/routes/$lang/_content/_misc/exam-certificates.$certificateId.tsx';
+import { oneDayInMs } from '#src/utils/date.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { TimeStampDialog } from '../exam-results.tsx';
 
 interface ConclusionFinishProps {
   course: JoinedCourseWithAll;
+  examResults?: CourseExamResults;
 }
 
-export const ConclusionFinish = ({ course }: ConclusionFinishProps) => {
+export const ConclusionFinish = ({
+  course,
+  examResults,
+}: ConclusionFinishProps) => {
   const { session } = useContext(AppContext);
 
   return (
     <>
       <Professor course={course} addThanksTipping />
       <Credits course={course} />
+      <Diploma examResults={examResults} course={course} />
       <OtherCourses course={course} />
       {session?.user && (
         <Link
@@ -172,6 +182,105 @@ const Credits = ({ course }: { course: JoinedCourseWithAll }) => {
               </a>
             </Trans>
           </p>
+        </div>
+      </section>
+    </>
+  );
+};
+
+const Diploma = ({
+  examResults,
+  course,
+}: {
+  examResults?: CourseExamResults;
+  course: JoinedCourseWithAll;
+}) => {
+  const examChapterId = course.parts
+    .flatMap((part) => part.chapters)
+    .find((chapter) => chapter?.isCourseExam)?.chapterId;
+
+  return (
+    <>
+      <DividerSimple className="my-5 md:mt-3 md:mb-8" />
+      <section className="w-full flex flex-col">
+        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+          {t('words.diploma')}
+        </h4>
+
+        <p className="mt-1 md:mt-6 label-large-20px md:display-small-32px text-black">
+          {t('courses.exam.receiveDiploma')}
+        </p>
+
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+          <div className="max-md:mx-auto shrink-0">
+            <img
+              src={
+                examResults?.succeeded
+                  ? CertificateSatoshiImage
+                  : CertificateLockImage
+              }
+              alt="Diploma"
+            />
+          </div>
+          <div className="flex flex-col justify-between gap-4 grow md:pb-2">
+            <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+              {!examResults || examResults.succeeded ? (
+                <Trans
+                  i18nKey={
+                    examResults?.succeeded
+                      ? examResults?.isTimestamped
+                        ? 'courses.exam.successDiploma'
+                        : 'courses.exam.successDiplomaTimeStamped'
+                      : 'courses.exam.examNotPassed'
+                  }
+                >
+                  <TimeStampDialog
+                    triggerText={
+                      examResults?.succeeded && !examResults?.isTimestamped
+                        ? t('courses.exam.timeStamping')
+                        : t('courses.exam.timeStampedNoDot')
+                    }
+                    onHoverAddColor
+                  />
+                </Trans>
+              ) : null}
+
+              {examResults &&
+                !examResults.succeeded &&
+                t('courses.exam.failedDiploma')}
+            </p>
+
+            <ButtonWithArrow
+              disabled={
+                examResults
+                  ? examResults.succeeded
+                    ? false
+                    : new Date(examResults.startedAt).getTime() + oneDayInMs >
+                      Date.now()
+                  : false
+              }
+              className="w-fit max-md:mx-auto"
+            >
+              <Link
+                to={
+                  examResults?.succeeded
+                    ? '/dashboard/course/$courseId'
+                    : '/courses/$courseId/$chapterId'
+                }
+                hash={examResults?.succeeded ? 'exam' : ''}
+                params={{
+                  courseId: course?.id,
+                  chapterId: examChapterId,
+                }}
+              >
+                {examResults
+                  ? examResults.succeeded
+                    ? t('courses.exam.getCertificate')
+                    : t('courses.exam.retakeExam')
+                  : t('courses.exam.takeExam')}
+              </Link>
+            </ButtonWithArrow>
+          </div>
         </div>
       </section>
     </>
