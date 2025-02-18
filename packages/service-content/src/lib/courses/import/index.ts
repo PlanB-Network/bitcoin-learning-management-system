@@ -100,15 +100,15 @@ interface CourseMain {
   professors: string[];
   tags?: string[];
   requires_payment: boolean;
-  payment_expiration_date?: string;
+  payment_expiration_date?: number;
   published_at?: string;
   format: string;
   online_price_dollars?: number;
   inperson_price_dollars?: number;
   paid_description?: string;
   paid_video_link?: string;
-  start_date?: string;
-  end_date?: string;
+  start_date?: number;
+  end_date?: number;
   contact?: string;
   available_seats: number;
   proofreading: ProofreadingEntry[];
@@ -344,11 +344,11 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
           }
 
           const startDateTimestamp = parsedCourse.start_date
-            ? convertStringToTimestamp(parsedCourse.start_date)
+            ? convertStringToTimestamp(parsedCourse.start_date.toString())
             : null;
 
           const endDateTimestamp = parsedCourse.end_date
-            ? convertStringToTimestamp(parsedCourse.end_date)
+            ? convertStringToTimestamp(parsedCourse.end_date.toString())
             : null;
 
           const paymentExpirationDate = parsedCourse.payment_expiration_date
@@ -502,7 +502,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
           }
         } catch (error) {
           const err = `Error processing file(courses1) ${course?.fullPath}: ${error}`;
-          console.error(err);
+          console.error(error);
           errors.push(err);
           return;
         }
