@@ -33,6 +33,6 @@
   "devDependencies": {
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.30.4",
-    "pg": "^8.13.1"
+    "pg": "^8.13.3"
   }
 }

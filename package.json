@@ -37,11 +37,11 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.4",
     "dotenv-cli": "^8.0.0",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
-    "knip": "^5.44.0",
+    "knip": "^5.44.1",
     "lint-staged": "^15.4.3",
     "mocha": "^11.1.0",
     "tsx": "^4.19.2",
