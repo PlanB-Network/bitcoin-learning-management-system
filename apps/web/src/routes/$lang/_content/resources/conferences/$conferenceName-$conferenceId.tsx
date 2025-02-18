@@ -16,7 +16,7 @@ import { BackLink } from '#src/molecules/backlink.tsx';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
 
-import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 const ConferencesMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/conference-markdown-body.js'),
@@ -28,13 +28,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const conferenceNameId = params['conferenceName-$conferenceId'];
-      const { id, name } = getNameAndIdFromUrlForNumbers(conferenceNameId);
+      const { id, name } = getNameAndIdFromUrl(conferenceNameId);
 
       return {
         lang: z.string().parse(params.lang),
         'conferenceName-$conferenceId': `${name}-${id}`,
         conferenceName: z.string().parse(name),
-        conferenceId: z.number().int().parse(Number(id)),
+        conferenceId: z.string().parse(id),
       };
     },
     stringify: ({ lang, conferenceName, conferenceId }) => ({

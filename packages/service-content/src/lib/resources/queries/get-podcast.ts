@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedPodcast } from '@blms/types';
 
-export const getPodcastQuery = (id: number) => {
+export const getPodcastQuery = (id: string) => {
   return sql<JoinedPodcast[]>`
     SELECT
       r.id, r.path, p.language, p.name, p.host, p.description, p.website_url,

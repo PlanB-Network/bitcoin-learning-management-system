@@ -3,7 +3,7 @@
 
 import { Level } from './resource.js';
 export interface Book {
-  resourceId: number;
+  resourceId: string;
   level: string | null;
   author: string;
   websiteUrl: string | null;
@@ -11,7 +11,7 @@ export interface Book {
 }
 
 export interface BookLocalized {
-  bookId: number;
+  bookId: string;
   language: string;
   original: boolean;
   title: string;
@@ -27,7 +27,7 @@ export interface BookLocalized {
 }
 
 export interface JoinedBook {
-  id: number;
+  id: string;
   path: string;
   lastUpdated: Date;
   lastCommit: string;

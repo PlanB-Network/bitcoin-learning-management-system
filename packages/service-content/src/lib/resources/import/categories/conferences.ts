@@ -41,7 +41,7 @@ interface Video {
   raw_content: string;
 }
 
-const extractStages = (markdown: string, id: number): Stage[] => {
+const extractStages = (markdown: string, id: string): Stage[] => {
   const tokens = marked.lexer(markdown);
   const stages: Stage[] = [];
 

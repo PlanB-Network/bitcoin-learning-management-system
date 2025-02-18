@@ -1,0 +1,2 @@
+-- ALTER TABLE "content"."resources" DROP CONSTRAINT "resources_pkey";--> statement-breakpoint
+-- ALTER TABLE "content"."resources" ADD PRIMARY KEY ("id");

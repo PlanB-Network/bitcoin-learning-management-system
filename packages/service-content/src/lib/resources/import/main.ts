@@ -12,13 +12,16 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const parsedResource = await yamlToObject<{
       tags?: string[];
+      id: string;
     }>(file);
 
     const lastUpdated = resource.files.sort((a, b) => b.time - a.time)[0];
 
+    // ADD ID parsedResource.id
     const result = await transaction<Resource[]>`
-        INSERT INTO content.resources (category, path, last_updated, last_commit, last_sync)
+        INSERT INTO content.resources (id, category, path, last_updated, last_commit, last_sync)
         VALUES (
+          ${parsedResource.id},
           ${resource.category},
           ${resource.path},
           ${lastUpdated.time},
@@ -26,6 +29,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           NOW()
         )
         ON CONFLICT (category, path) DO UPDATE SET
+          id = ${parsedResource.id},
           last_updated = ${lastUpdated.time},
           last_commit = ${lastUpdated.commit},
           last_sync = NOW()

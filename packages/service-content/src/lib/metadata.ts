@@ -120,7 +120,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
 
     switch (resourceType) {
       case 'books': {
-        const book = await getBook(+resourceId, lang);
+        const book = await getBook(resourceId, lang);
         return meta(
           book.title,
           book.description,
@@ -129,7 +129,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         );
       }
       case 'podcasts': {
-        const podcast = await getPodcast(+resourceId);
+        const podcast = await getPodcast(resourceId);
         return meta(
           podcast.name,
           podcast.description,

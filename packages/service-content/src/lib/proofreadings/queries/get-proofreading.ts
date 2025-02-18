@@ -10,7 +10,7 @@ export const getProofreadingQuery = ({
   language: string;
   courseId?: string;
   tutorialId?: string;
-  resourceId?: number;
+  resourceId?: string;
 }) => {
   if (!courseId && !tutorialId && !resourceId) {
     throw new Error('One argument required');

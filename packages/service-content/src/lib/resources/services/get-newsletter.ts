@@ -5,7 +5,7 @@ import type { Dependencies } from '../../dependencies.js';
 import { getNewsletterQuery } from '../queries/get-newsletter.js';
 
 export const createGetNewsletter = ({ postgres }: Dependencies) => {
-  return async (id: number): Promise<JoinedNewsletter> => {
+  return async (id: string): Promise<JoinedNewsletter> => {
     const newsletter = await postgres
       .exec(getNewsletterQuery(id))
       .then(firstRow);

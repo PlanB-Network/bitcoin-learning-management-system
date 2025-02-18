@@ -17,7 +17,7 @@ import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
-import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';
 import { ProjectEvents } from '../-components/project-events.js';
 import { ResourceLayout } from '../-components/resource-layout.js';
@@ -28,13 +28,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const projectNameId = params['projectName-$projectId'];
-      const { id, name } = getNameAndIdFromUrlForNumbers(projectNameId);
+      const { id, name } = getNameAndIdFromUrl(projectNameId);
 
       return {
         lang: z.string().parse(params.lang),
         'projectName-$projectId': `${name}-${id}`,
         projectName: z.string().parse(name),
-        projectId: z.number().int().parse(Number(id)),
+        projectId: z.string().parse(id),
       };
     },
     stringify: ({ lang, projectName, projectId }) => ({

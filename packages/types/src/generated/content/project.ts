@@ -10,7 +10,7 @@ export interface ProjectLocation {
 
 export interface Project {
   id: string;
-  resourceId: number;
+  resourceId: string;
   name: string;
   category: string;
   languages: string[];
@@ -31,7 +31,7 @@ export interface ProjectLocalized {
 }
 
 export interface JoinedProject {
-  id: number;
+  id: string;
   path: string;
   lastCommit: string;
   name: string;

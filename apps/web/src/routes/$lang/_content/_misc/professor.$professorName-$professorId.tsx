@@ -28,7 +28,7 @@ export const Route = createFileRoute(
         lang: z.string().parse(params.lang),
         'professorName-$professorId': `${name}-${id}`,
         professorName: z.string().parse(name),
-        professorId: z.number().int().parse(Number(id)),
+        professorId: z.string().parse(id),
       };
     },
     stringify: ({ lang, professorName, professorId }) => ({

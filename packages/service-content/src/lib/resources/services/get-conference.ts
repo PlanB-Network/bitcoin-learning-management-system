@@ -5,7 +5,7 @@ import type { Dependencies } from '../../dependencies.js';
 import { getConferenceQuery } from '../queries/get-conference.js';
 
 export const createGetConference = ({ postgres }: Dependencies) => {
-  return async (id: number): Promise<JoinedConference> => {
+  return async (id: string): Promise<JoinedConference> => {
     const conference = await postgres
       .exec(getConferenceQuery(id))
       .then(firstRow);

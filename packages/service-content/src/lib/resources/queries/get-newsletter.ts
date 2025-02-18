@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedNewsletter } from '@blms/types';
 
-export const getNewsletterQuery = (id: number) => {
+export const getNewsletterQuery = (id: string) => {
   return sql<JoinedNewsletter[]>`
     SELECT
       r.id, r.path, n.id AS uuid, n.language, n.level, n.title, n.author, n.description,

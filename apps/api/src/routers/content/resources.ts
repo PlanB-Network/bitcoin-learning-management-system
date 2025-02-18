@@ -59,7 +59,7 @@ const createGetResourcesProcedure = () => {
 
 const createGetResourceProcedure = () => {
   return publicProcedure.input(
-    z.object({ id: z.number(), language: z.string() }),
+    z.object({ id: z.string(), language: z.string() }),
   );
 };
 

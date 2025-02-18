@@ -56,7 +56,7 @@ function GlossaryWord() {
   const { data: proofreading } = trpc.content.getProofreading.useQuery(
     {
       language: i18n.language,
-      resourceId: glossaryWord ? +glossaryWord.id : -1,
+      resourceId: glossaryWord?.id,
     },
     {
       enabled: isFetched,
