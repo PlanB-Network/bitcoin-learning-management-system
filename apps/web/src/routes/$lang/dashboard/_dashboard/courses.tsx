@@ -26,8 +26,9 @@ function DashboardCourses() {
           (p) => p.courseId === course.id,
         );
         return (
-          (course.isArchived === false || inProgress) &&
-          course.language.toLowerCase() === i18n.language.toLowerCase()
+          (!course.isArchived || inProgress) &&
+          (course.language.toLowerCase() === i18n.language.toLowerCase() ||
+            inProgress)
         );
       })
     : [];
