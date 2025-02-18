@@ -82,7 +82,6 @@ export const CoursePaymentModal = ({
   const initCoursePayment = useCallback(
     async (method: 'sbp' | 'stripe' | null) => {
       if (method) {
-        console.log('OOOO', course.index);
         const serverCheckoutData = await savePaymentRequest.mutateAsync({
           courseId: course.id,
           courseIndex: course.index!,

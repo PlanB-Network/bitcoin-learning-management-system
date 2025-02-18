@@ -54,7 +54,6 @@ function BlogsCategory() {
       t(blogTabs.find((tab) => tab.id === selectedMainTab)?.label ?? ''),
   );
 
-  console.log('oooo');
   return (
     <Layout>
       <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">

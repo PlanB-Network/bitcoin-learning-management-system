@@ -501,7 +501,6 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             }
           }
         } catch (error) {
-          console.log('OOOO');
           const err = `Error processing file(courses1) ${course?.fullPath}: ${error}`;
           console.error(err);
           errors.push(err);
