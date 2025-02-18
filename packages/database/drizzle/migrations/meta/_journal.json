@@ -526,6 +526,13 @@
       "when": 1739891241800,
       "tag": "0074_early_metal_master",
       "breakpoints": true
+    },
+    {
+      "idx": 75,
+      "version": "7",
+      "when": 1739897654297,
+      "tag": "0075_loving_jackal",
+      "breakpoints": true
     }
   ]
 }

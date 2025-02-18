@@ -913,7 +913,7 @@ export const courseFormatEnum = pgEnum('course_format', [
 
 export const contentCourses = content.table('courses', (t) => ({
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
-  index: t.varchar({ length: 20 }).unique(), // TODO not null
+  index: t.varchar({ length: 20 }).unique().notNull(),
 
   isArchived: t.boolean().default(false).notNull(),
 

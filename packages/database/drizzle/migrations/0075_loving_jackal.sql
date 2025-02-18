@@ -1,0 +1,1 @@
+ALTER TABLE "content"."courses" ALTER COLUMN "index" SET NOT NULL;
