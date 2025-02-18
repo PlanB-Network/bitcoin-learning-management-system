@@ -719,7 +719,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
         }
       })
       .catch((error) => {
-        console.error('Error during transaction:', error);
+        errors.push(`Error during transaction: ${error}`);
       });
   };
 };

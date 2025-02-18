@@ -21,13 +21,15 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
   const getNow = createGetNow(dependencies);
   const syncRepositories = createSyncRepositories(config);
-  const syncCdnRepository = createSyncCdnRepository(config.cdnPath);
+  const processContentFiles = createProcessContentFiles(dependencies);
+
   const calculateCourseChapterSeats =
     createCalculateCourseChapterSeats(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
   const syncEventsLocations = createSyncEventsLocations(dependencies);
   const syncProjectsLocations = createSyncProjectsLocations(dependencies);
-  const processContentFiles = createProcessContentFiles(dependencies);
+
+  const syncCdnRepository = createSyncCdnRepository(config.cdnPath);
   const processDeleteOldEntities = createProcessDeleteOldEntities(dependencies);
   const processDisableOldEntities =
     createProcessDisableOldEntities(dependencies);
