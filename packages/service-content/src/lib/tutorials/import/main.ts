@@ -8,7 +8,7 @@ import { yamlToObject } from '../../utils.js';
 
 import type { ChangedTutorial } from './index.js';
 
-interface TutorialMain {
+export interface TutorialMain {
   id: string;
   project_id?: string;
   level: string;

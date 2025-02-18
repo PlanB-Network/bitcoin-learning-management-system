@@ -10,9 +10,10 @@ import {
   getContentType,
   getRelativePath,
   separateContentFiles,
+  yamlToObject,
 } from '../../utils.js';
 
-import { createProcessMainFile } from './main.js';
+import { type TutorialMain, createProcessMainFile } from './main.js';
 
 interface TutorialDetails {
   category: string;
@@ -125,6 +126,17 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
             `Error processing file(tutorials 1) ${tutorial?.path}: ${error}`,
           );
           return;
+        }
+
+        if (main) {
+          const parsedTutorial = await yamlToObject<TutorialMain>(main);
+          if (
+            parsedTutorial.test_only === true &&
+            process.env.PLANB_ENVIRONMENT === 'mainnet'
+          ) {
+            console.log('-- Sync: Ignore tutorial', parsedTutorial.id);
+            return;
+          }
         }
 
         const id = await transaction<Tutorial[]>`
