@@ -445,7 +445,7 @@ export const usersBCertificateTimestamps = users.table(
 export const contentResources = content.table(
   'resources',
   (t) => ({
-    id: t.integer().primaryKey().generatedAlwaysAsIdentity().notNull(),
+    id: t.varchar({ length: 100 }).notNull().primaryKey(),
     category: t.varchar({ length: 255 }).notNull(),
     path: t.varchar({ length: 255 }).notNull(),
     lastUpdated: t
@@ -471,9 +471,12 @@ export const contentResourceTags = content.table(
   'resource_tags',
   (t) => ({
     resourceId: t
-      .integer()
+      .varchar({ length: 100 })
       .notNull()
-      .references(() => contentResources.id, { onDelete: 'cascade' }),
+      .references(() => contentResources.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     tagId: t
       .integer()
       .notNull()
@@ -495,10 +498,13 @@ export const betTypeEnum = pgEnum('bet_type', [
 
 export const contentBet = content.table('bet', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   projectId: t
     .uuid()
     .references(() => contentProjects.id, { onDelete: 'set null' }),
@@ -511,9 +517,12 @@ export const contentBetViewUrl = content.table(
   'bet_view_url',
   (t) => ({
     betId: t
-      .integer()
+      .varchar({ length: 100 })
       .notNull()
-      .references(() => contentBet.resourceId, { onDelete: 'cascade' }),
+      .references(() => contentBet.resourceId, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: t.text().notNull(),
     viewUrl: t.text().notNull(),
   }),
@@ -528,9 +537,12 @@ export const contentBetLocalized = content.table(
   'bet_localized',
   (t) => ({
     betId: t
-      .integer()
+      .varchar({ length: 100 })
       .notNull()
-      .references(() => contentBet.resourceId, { onDelete: 'cascade' }),
+      .references(() => contentBet.resourceId, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: t.varchar({ length: 10 }).notNull(),
 
     // Per translation
@@ -548,10 +560,13 @@ export const contentBetLocalized = content.table(
 
 export const contentBooks = content.table('books', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   level: t.varchar({ length: 255 }),
   author: t.text().notNull(),
   websiteUrl: t.text(),
@@ -562,9 +577,12 @@ export const contentBooksLocalized = content.table(
   'books_localized',
   (t) => ({
     bookId: t
-      .integer()
+      .varchar({ length: 100 })
       .notNull()
-      .references(() => contentBooks.resourceId, { onDelete: 'cascade' }),
+      .references(() => contentBooks.resourceId, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: t.varchar({ length: 10 }).notNull(),
     original: t.boolean().notNull(),
 
@@ -594,9 +612,12 @@ export const contentBooksLocalized = content.table(
 export const contentProjects = content.table('projects', (t) => ({
   id: t.uuid().primaryKey().unique(),
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   name: t.text().notNull(),
   category: t.varchar({ length: 255 }).notNull(),
   languages: t.varchar({ length: 255 }).array(),
@@ -648,10 +669,13 @@ export const contentProjectLocation = content.table(
 
 export const contentConferences = content.table('conferences', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   projectId: t
     .uuid()
     .references(() => contentProjects.id, { onDelete: 'set null' }),
@@ -672,9 +696,12 @@ export const contentConferencesStages = content.table(
   (t) => ({
     stageId: t.varchar().primaryKey().notNull(),
     conferenceId: t
-      .integer()
+      .varchar({ length: 100 })
       .notNull()
-      .references(() => contentConferences.resourceId, { onDelete: 'cascade' }),
+      .references(() => contentConferences.resourceId, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     name: t.text().notNull(),
   }),
 );
@@ -740,10 +767,13 @@ export const contentLegalsLocalized = content.table(
 
 export const contentMovies = content.table('movies', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   id: t.uuid().unique().notNull(),
 
   language: t.varchar({ length: 10 }).notNull(),
@@ -764,11 +794,13 @@ export const contentMovies = content.table('movies', (t) => ({
 
 export const contentNewsletters = content.table('newsletters', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
-
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   id: t.uuid().unique().notNull(),
   level: t.varchar({ length: 255 }),
   author: t.text().notNull(),
@@ -785,10 +817,13 @@ export const contentNewsletters = content.table('newsletters', (t) => ({
 
 export const contentPodcasts = content.table('podcasts', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   language: t.varchar({ length: 10 }).notNull(),
 
   name: t.text().notNull(),
@@ -806,10 +841,13 @@ export const contentPodcasts = content.table('podcasts', (t) => ({
 
 export const contentGlossaryWords = content.table('glossary_words', (t) => ({
   resourceId: t
-    .integer()
+    .varchar({ length: 100 })
     .primaryKey()
     .notNull()
-    .references(() => contentResources.id, { onDelete: 'cascade' }),
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
   originalWord: t.text().notNull(),
   fileName: t.text().notNull(),
   relatedWords: t.varchar({ length: 255 }).array(),
@@ -820,10 +858,11 @@ export const contentGlossaryWordsLocalized = content.table(
   'glossary_words_localized',
   (t) => ({
     glossaryWordId: t
-      .integer()
+      .varchar({ length: 100 })
       .notNull()
       .references(() => contentGlossaryWords.resourceId, {
         onDelete: 'cascade',
+        onUpdate: 'cascade',
       }),
     language: t.varchar({ length: 10 }).notNull(),
 
@@ -844,10 +883,13 @@ export const contentYoutubeChannels = content.table(
   'youtube_channels',
   (t) => ({
     resourceId: t
-      .integer()
+      .varchar({ length: 100 })
       .primaryKey()
       .notNull()
-      .references(() => contentResources.id, { onDelete: 'cascade' }),
+      .references(() => contentResources.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     id: t.uuid().unique().notNull(),
 
     language: t.varchar({ length: 10 }).notNull(),
@@ -1935,9 +1977,12 @@ export const contentProofreading = content.table(
     tutorialId: t.uuid().references(() => contentTutorials.id, {
       onDelete: 'cascade',
     }),
-    resourceId: t.integer().references(() => contentResources.id, {
-      onDelete: 'cascade',
-    }),
+    resourceId: t
+      .varchar({ length: 100 })
+      .references(() => contentResources.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
 
     language: t.varchar({ length: 10 }).notNull(),
     lastContributionDate: t.timestamp({

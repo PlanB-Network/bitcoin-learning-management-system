@@ -24,7 +24,7 @@ import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
-import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
@@ -34,13 +34,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const newsletterNameId = params['newsletterName-$newsletterId'];
-      const { id, name } = getNameAndIdFromUrlForNumbers(newsletterNameId);
+      const { id, name } = getNameAndIdFromUrl(newsletterNameId);
 
       return {
         lang: z.string().parse(params.lang),
         'newsletterName-$newsletterId': `${name}-${id}`,
         newsletterName: z.string().parse(name),
-        newsletterId: z.number().int().parse(Number(id)),
+        newsletterId: z.string().parse(id),
       };
     },
     stringify: ({ lang, newsletterName, newsletterId }) => ({
@@ -60,7 +60,7 @@ function NewsletterDetail() {
   const isScreenMd = useGreater('sm');
 
   const { data: newsletter, isFetched } = trpc.content.getNewsletter.useQuery({
-    id: Number(params.newsletterId),
+    id: params.newsletterId,
     language: i18n.language,
   });
 

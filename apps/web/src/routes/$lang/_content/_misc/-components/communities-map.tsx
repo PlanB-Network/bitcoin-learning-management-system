@@ -18,7 +18,7 @@ import { formatNameForURL } from '#src/utils/string.ts';
 
 interface CommunitiesMapProps {
   communities: Array<{
-    id: number;
+    id: string;
     name: string;
     lat: number;
     lng: number;

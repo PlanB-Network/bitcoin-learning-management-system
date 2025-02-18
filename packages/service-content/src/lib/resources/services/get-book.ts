@@ -5,7 +5,7 @@ import type { Dependencies } from '../../dependencies.js';
 import { getBookQuery } from '../queries/get-book.js';
 
 export const createGetBook = ({ postgres }: Dependencies) => {
-  return async (id: number, language?: string): Promise<JoinedBook> => {
+  return async (id: string, language?: string): Promise<JoinedBook> => {
     const book = await postgres.exec(getBookQuery(id, language)).then(firstRow);
 
     if (!book) {

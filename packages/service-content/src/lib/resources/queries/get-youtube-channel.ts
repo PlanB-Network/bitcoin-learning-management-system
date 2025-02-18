@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedYoutubeChannel } from '@blms/types';
 
-export const getYoutubeChannelQuery = (id: number) => {
+export const getYoutubeChannelQuery = (id: string) => {
   return sql<JoinedYoutubeChannel[]>`
     SELECT
       r.id, r.path, yc.id as uuid, yc.language, yc.name, yc.description, yc.channel, yc.trailer, r.last_updated, r.last_commit,

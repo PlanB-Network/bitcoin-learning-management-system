@@ -14,7 +14,7 @@ const getProofreadingProcedure = publicProcedure
       language: z.string(),
       courseId: z.string().optional(),
       tutorialId: z.string().optional(),
-      resourceId: z.number().optional(),
+      resourceId: z.string().optional(),
     }),
   )
   .output<Parser<JoinedProofreading | null>>(

@@ -5,7 +5,7 @@ import type { Dependencies } from '../../dependencies.js';
 import { getYoutubeChannelQuery } from '../queries/get-youtube-channel.js';
 
 export const createGetYoutubeChannel = ({ postgres }: Dependencies) => {
-  return async (id: number): Promise<JoinedYoutubeChannel> => {
+  return async (id: string): Promise<JoinedYoutubeChannel> => {
     const channel = await postgres
       .exec(getYoutubeChannelQuery(id))
       .then(firstRow);

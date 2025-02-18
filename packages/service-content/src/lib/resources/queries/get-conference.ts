@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedConference } from '@blms/types';
 
-export const getConferenceQuery = (resourceId: number) => {
+export const getConferenceQuery = (resourceId: string) => {
   return sql<JoinedConference[]>`
     SELECT
       r.id,

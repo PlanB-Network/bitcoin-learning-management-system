@@ -5,7 +5,7 @@ import type { Dependencies } from '../../dependencies.js';
 import { getPodcastQuery } from '../queries/get-podcast.js';
 
 export const createGetPodcast = ({ postgres }: Dependencies) => {
-  return async (id: number): Promise<JoinedPodcast> => {
+  return async (id: string): Promise<JoinedPodcast> => {
     const podcast = await postgres.exec(getPodcastQuery(id)).then(firstRow);
 
     if (!podcast) {

@@ -24,7 +24,7 @@ import { assetUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
-import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
@@ -34,13 +34,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const channelNameId = params['channelName-$channelId'];
-      const { id, name } = getNameAndIdFromUrlForNumbers(channelNameId);
+      const { id, name } = getNameAndIdFromUrl(channelNameId);
 
       return {
         lang: z.string().parse(params.lang),
         'channelName-$channelId': `${name}-${id}`,
         channelName: z.string().parse(name),
-        channelId: z.number().int().parse(Number(id)),
+        channelId: z.string().parse(id),
       };
     },
     stringify: ({ lang, channelName, channelId }) => ({

@@ -4,7 +4,7 @@
 export type BetType = 'visual content' | 'educational content';
 
 export interface Bet {
-  resourceId: number;
+  resourceId: string;
   projectId: string | null;
   type: BetType;
   downloadUrl: string;
@@ -12,20 +12,20 @@ export interface Bet {
 }
 
 export interface BetViewUrl {
-  betId: number;
+  betId: string;
   language: string;
   viewUrl: string;
 }
 
 export interface BetLocalized {
-  betId: number;
+  betId: string;
   language: string;
   name: string;
   description: string;
 }
 
 export interface JoinedBet {
-  id: number;
+  id: string;
   path: string;
   lastUpdated: Date;
   lastCommit: string;

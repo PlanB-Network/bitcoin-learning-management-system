@@ -23,7 +23,7 @@ import { assetUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
-import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
@@ -33,13 +33,13 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const podcastNameId = params['podcastName-$podcastId'];
-      const { id, name } = getNameAndIdFromUrlForNumbers(podcastNameId);
+      const { id, name } = getNameAndIdFromUrl(podcastNameId);
 
       return {
         lang: z.string().parse(params.lang),
         'podcastName-$podcastId': `${name}-${id}`,
         podcastName: z.string().parse(name),
-        podcastId: z.number().int().parse(Number(id)),
+        podcastId: z.string().parse(id),
       };
     },
     stringify: ({ lang, podcastName, podcastId }) => ({

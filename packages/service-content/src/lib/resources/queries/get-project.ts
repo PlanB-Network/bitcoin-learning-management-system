@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedProject } from '@blms/types';
 
-export const getProjectQuery = (id: number, language?: string) => {
+export const getProjectQuery = (id: string, language?: string) => {
   return sql<JoinedProject[]>`
     SELECT
       r.id,

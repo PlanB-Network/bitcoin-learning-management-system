@@ -9,7 +9,7 @@ export const createGetProofreading = ({ postgres }: Dependencies) => {
     language: string,
     courseId: string | undefined,
     tutorialId: string | undefined,
-    resourceId: number | undefined,
+    resourceId: string | undefined,
   ): Promise<JoinedProofreading | null> => {
     try {
       const result = await postgres
