@@ -343,17 +343,13 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             parsedCourse.is_planb_school = false;
           }
 
-          const startDateTimestamp = convertStringToTimestamp(
-            parsedCourse.start_date
-              ? parsedCourse.start_date.toString()
-              : '20000101',
-          );
+          const startDateTimestamp = parsedCourse.start_date
+            ? convertStringToTimestamp(parsedCourse.start_date)
+            : null;
 
-          const endDateTimestamp = convertStringToTimestamp(
-            parsedCourse.end_date
-              ? parsedCourse.end_date.toString()
-              : '20000101',
-          );
+          const endDateTimestamp = parsedCourse.end_date
+            ? convertStringToTimestamp(parsedCourse.end_date)
+            : null;
 
           const paymentExpirationDate = parsedCourse.payment_expiration_date
             ? convertStringToTimestamp(
@@ -719,7 +715,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
         }
       })
       .catch((error) => {
-        errors.push(`Error during transaction: ${error}`);
+        console.error('Error during transaction:', error);
       });
   };
 };
