@@ -756,7 +756,8 @@
           "uses": "",
           "value": ""
         },
-        "selectEvent": ""
+        "selectEvent": "",
+        "discountValueExplanation": ""
       },
       "discountCodes": ""
     },
@@ -1012,7 +1013,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "Necesitas iniciar sesión para acceder a este evento.",
@@ -1271,7 +1273,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     },
     "subCategories": {
       "hardware": "",
