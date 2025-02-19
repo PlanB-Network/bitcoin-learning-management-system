@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { z } from 'zod';
@@ -28,26 +28,31 @@ import { assetUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 
 import type { JoinedEvent } from '@blms/types';
-import { LectureCard } from '../-components/cards/lecture-card.tsx';
-import { LectureBuy } from '../-components/lecture-buy.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
-import { SuggestedHeader } from '../-components/suggested-header.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { formatNameForURL } from '#src/utils/string.ts';
+import { LectureCard } from '../-components/cards/lecture-card.js';
+import { LectureBuy } from '../-components/lecture-buy.js';
+import { ResourceLayout } from '../-components/resource-layout.js';
+import { SuggestedHeader } from '../-components/suggested-header.js';
 
 export const Route = createFileRoute(
-  '/$lang/_content/resources/lectures/$lectureId',
+  '/$lang/_content/resources/lectures/$lectureName-$lectureId',
 )({
   params: {
     parse: (params) => {
-      const lectureId = params.lectureId;
+      const lectureNameId = params['lectureName-$lectureId'];
+      const { id, name } = getNameAndIdFromUrl(lectureNameId);
 
       return {
         lang: z.string().parse(params.lang),
-        lectureId: z.string().parse(lectureId),
+        'lectureName-$lectureId': `${name}-${id}`,
+        lectureName: z.string().parse(name),
+        lectureId: z.string().parse(id),
       };
     },
-    stringify: ({ lang, lectureId }) => ({
+    stringify: ({ lang, lectureName, lectureId }) => ({
       lang: lang,
-      lectureId: `${lectureId}`,
+      'lectureName-$lectureId': `${lectureName}-${lectureId}`,
     }),
   },
   component: Lecture,
@@ -85,6 +90,10 @@ function Lecture() {
   const { data: suggestedLectures, isFetched: isFetchedSuggested } =
     trpc.content.getLectures.useQuery({});
 
+  const navigate = useNavigate();
+
+  const isMobile = useSmaller('md');
+
   const shuffledSuggestedLectures = useShuffleSuggestedContent(
     suggestedLectures ?? [],
     lecture,
@@ -99,8 +108,14 @@ function Lecture() {
     if (eventPayment) refetchLecture();
   }, [refetchLecture, eventPayment]);
 
-  const isMobile = useSmaller('md');
-
+  useEffect(() => {
+    if (lecture && params.lectureName !== formatNameForURL(lecture.name!)) {
+      navigate({
+        to: `/resources/lectures/${formatNameForURL(lecture.name!)}-${lecture.id}`,
+        replace: true,
+      });
+    }
+  }, [lecture, isFetched, navigate, params.bookName]);
   return (
     <ResourceLayout
       link={'/resources/lectures'}

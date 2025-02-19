@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, {
   Suspense,
@@ -40,6 +40,7 @@ import {
   joinWords,
 } from '#src/utils/string.js';
 
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { CourseConclusion } from './$courseId/-components/course-conclusion.tsx';
 import { CourseExam } from './$courseId/-components/course-exam.tsx';
 import { CourseReviewComponent } from './$courseId/-components/course-review.tsx';
@@ -54,20 +55,39 @@ const CoursesMarkdownBody = React.lazy(
 );
 
 export const Route = createFileRoute(
-  '/$lang/_content/courses/$courseId/$chapterId',
+  '/$lang/_content/courses/$courseId/$chapterName-$chapterId',
 )({
   params: {
-    parse: (params) => ({
-      lang: z.string().parse(params.lang),
-      courseId: z.string().parse(params.courseId),
-      chapterId: z.string().parse(params.chapterId),
-    }),
-    stringify: ({ lang, courseId, chapterId }) => ({
+    parse: (params) => {
+      const paramNameId = params['chapterName-$chapterId'];
+      const { id, name } = getNameAndIdFromUrl(paramNameId);
+
+      return {
+        lang: z.string().parse(params.lang),
+        courseId: z.string().parse(params.courseId),
+        'chapterName-$chapterId': `${name}-${id}`,
+        chapterName: z.string().parse(name),
+        chapterId: z.string().parse(id),
+      };
+    },
+    stringify: ({ lang, courseId, chapterName, chapterId }) => ({
       lang: lang,
       courseId: `${courseId}`,
-      chapterId: `${chapterId}`,
+      'chapterName-$chapterId': `${chapterName}-${chapterId}`,
     }),
   },
+  // params: {
+  //   parse: (params) => ({
+  //     lang: z.string().parse(params.lang),
+  //     courseId: z.string().parse(params.courseId),
+  //     chapterId: z.string().parse(params.chapterId),
+  //   }),
+  //   stringify: ({ lang, courseId, chapterId }) => ({
+  //     lang: lang,
+  //     courseId: `${courseId}`,
+  //     chapterId: `${chapterId}`,
+  //   }),
+  // },
   component: CourseChapter,
 });
 
@@ -513,7 +533,7 @@ function shuffleArray<T>(array: T[]): T[] {
 function CourseChapter() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
-
+  console.log('PARAMS', params);
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
   const { user } = useContext(AppContext);
@@ -525,6 +545,8 @@ function CourseChapter() {
     isOpen: isAuthModalOpen,
     close: closeAuthModal,
   } = useDisclosure();
+
+  const navigate = useNavigate();
 
   const { data: chapters } = trpc.content.getCourseChapters.useQuery({
     id: params.courseId,
@@ -649,11 +671,25 @@ function CourseChapter() {
 
   const isScreenSm = useGreater('sm');
 
+  const isOriginalLanguage =
+    i18n.language === chapter?.course?.originalLanguage;
+
   useEffect(() => {
     setIsContentExpanded(isScreenSm ? isScreenSm : false);
   }, [isScreenSm]);
-  const isOriginalLanguage =
-    i18n.language === chapter?.course?.originalLanguage;
+
+  useEffect(() => {
+    if (
+      chapter?.course &&
+      params.chapterName !== formatNameForURL(chapter.title)
+    ) {
+      navigate({
+        to: `/courses/${chapter.courseId}/${formatNameForURL(chapter.title)}-${chapter.chapterId}`,
+        replace: true,
+      });
+    }
+  }, [chapter, isFetched, navigate, params.chapterName]);
+
   return (
     <CourseLayout>
       {proofreading ? (

@@ -60,12 +60,12 @@ import { Route as LangContentResourcesProjectsProjectNameProjectIdImport } from 
 import { Route as LangContentResourcesPodcastsPodcastNamePodcastIdImport } from './routes/$lang/_content/resources/podcasts/$podcastName-$podcastId';
 import { Route as LangContentResourcesNewslettersNewsletterNameNewsletterIdImport } from './routes/$lang/_content/resources/newsletters/$newsletterName-$newsletterId';
 import { Route as LangContentResourcesMoviesMovieTitleMovieIdImport } from './routes/$lang/_content/resources/movies/$movieTitle-$movieId';
-import { Route as LangContentResourcesLecturesLectureIdImport } from './routes/$lang/_content/resources/lectures/$lectureId';
+import { Route as LangContentResourcesLecturesLectureNameLectureIdImport } from './routes/$lang/_content/resources/lectures/$lectureName-$lectureId';
 import { Route as LangContentResourcesGlossaryWordIdImport } from './routes/$lang/_content/resources/glossary/$wordId';
 import { Route as LangContentResourcesConferencesConferenceNameConferenceIdImport } from './routes/$lang/_content/resources/conferences/$conferenceName-$conferenceId';
 import { Route as LangContentResourcesChannelsChannelNameChannelIdImport } from './routes/$lang/_content/resources/channels/$channelName-$channelId';
 import { Route as LangContentResourcesBooksBookNameBookIdImport } from './routes/$lang/_content/resources/books/$bookName-$bookId';
-import { Route as LangContentCoursesCourseIdChapterIdImport } from './routes/$lang/_content/courses/$courseId.$chapterId';
+import { Route as LangContentCoursesCourseIdChapterNameChapterIdImport } from './routes/$lang/_content/courses/$courseId.$chapterName-$chapterId';
 import { Route as LangContentMiscValidateEmailTokenImport } from './routes/$lang/_content/_misc/validate-email.$token';
 import { Route as LangContentMiscResetPasswordTokenImport } from './routes/$lang/_content/_misc/reset-password.$token';
 import { Route as LangContentMiscPublicCommunicationLegalsImport } from './routes/$lang/_content/_misc/public-communication/legals';
@@ -410,10 +410,10 @@ const LangContentResourcesMoviesMovieTitleMovieIdRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
-const LangContentResourcesLecturesLectureIdRoute =
-  LangContentResourcesLecturesLectureIdImport.update({
-    id: '/$lang/_content/resources/lectures/$lectureId',
-    path: '/$lang/resources/lectures/$lectureId',
+const LangContentResourcesLecturesLectureNameLectureIdRoute =
+  LangContentResourcesLecturesLectureNameLectureIdImport.update({
+    id: '/$lang/_content/resources/lectures/$lectureName-$lectureId',
+    path: '/$lang/resources/lectures/$lectureName-$lectureId',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -445,10 +445,10 @@ const LangContentResourcesBooksBookNameBookIdRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
-const LangContentCoursesCourseIdChapterIdRoute =
-  LangContentCoursesCourseIdChapterIdImport.update({
-    id: '/$lang/_content/courses/$courseId/$chapterId',
-    path: '/$lang/courses/$courseId/$chapterId',
+const LangContentCoursesCourseIdChapterNameChapterIdRoute =
+  LangContentCoursesCourseIdChapterNameChapterIdImport.update({
+    id: '/$lang/_content/courses/$courseId/$chapterName-$chapterId',
+    path: '/$lang/courses/$courseId/$chapterName-$chapterId',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -745,11 +745,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscValidateEmailTokenImport;
       parentRoute: typeof rootRoute;
     };
-    '/$lang/_content/courses/$courseId/$chapterId': {
-      id: '/$lang/_content/courses/$courseId/$chapterId';
-      path: '/$lang/courses/$courseId/$chapterId';
-      fullPath: '/$lang/courses/$courseId/$chapterId';
-      preLoaderRoute: typeof LangContentCoursesCourseIdChapterIdImport;
+    '/$lang/_content/courses/$courseId/$chapterName-$chapterId': {
+      id: '/$lang/_content/courses/$courseId/$chapterName-$chapterId';
+      path: '/$lang/courses/$courseId/$chapterName-$chapterId';
+      fullPath: '/$lang/courses/$courseId/$chapterName-$chapterId';
+      preLoaderRoute: typeof LangContentCoursesCourseIdChapterNameChapterIdImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/resources/books/$bookName-$bookId': {
@@ -780,11 +780,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentResourcesGlossaryWordIdImport;
       parentRoute: typeof rootRoute;
     };
-    '/$lang/_content/resources/lectures/$lectureId': {
-      id: '/$lang/_content/resources/lectures/$lectureId';
-      path: '/$lang/resources/lectures/$lectureId';
-      fullPath: '/$lang/resources/lectures/$lectureId';
-      preLoaderRoute: typeof LangContentResourcesLecturesLectureIdImport;
+    '/$lang/_content/resources/lectures/$lectureName-$lectureId': {
+      id: '/$lang/_content/resources/lectures/$lectureName-$lectureId';
+      path: '/$lang/resources/lectures/$lectureName-$lectureId';
+      fullPath: '/$lang/resources/lectures/$lectureName-$lectureId';
+      preLoaderRoute: typeof LangContentResourcesLecturesLectureNameLectureIdImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/resources/movies/$movieTitle-$movieId': {
@@ -1134,12 +1134,12 @@ export interface FileRoutesByFullPath {
   '/$lang/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
-  '/$lang/courses/$courseId/$chapterId': typeof LangContentCoursesCourseIdChapterIdRoute;
+  '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   '/$lang/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
   '/$lang/resources/channels/$channelName-$channelId': typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   '/$lang/resources/conferences/$conferenceName-$conferenceId': typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
   '/$lang/resources/glossary/$wordId': typeof LangContentResourcesGlossaryWordIdRoute;
-  '/$lang/resources/lectures/$lectureId': typeof LangContentResourcesLecturesLectureIdRoute;
+  '/$lang/resources/lectures/$lectureName-$lectureId': typeof LangContentResourcesLecturesLectureNameLectureIdRoute;
   '/$lang/resources/movies/$movieTitle-$movieId': typeof LangContentResourcesMoviesMovieTitleMovieIdRoute;
   '/$lang/resources/newsletters/$newsletterName-$newsletterId': typeof LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/$lang/resources/podcasts/$podcastName-$podcastId': typeof LangContentResourcesPodcastsPodcastNamePodcastIdRoute;
@@ -1202,12 +1202,12 @@ export interface FileRoutesByTo {
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
-  '/$lang/courses/$courseId/$chapterId': typeof LangContentCoursesCourseIdChapterIdRoute;
+  '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   '/$lang/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
   '/$lang/resources/channels/$channelName-$channelId': typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   '/$lang/resources/conferences/$conferenceName-$conferenceId': typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
   '/$lang/resources/glossary/$wordId': typeof LangContentResourcesGlossaryWordIdRoute;
-  '/$lang/resources/lectures/$lectureId': typeof LangContentResourcesLecturesLectureIdRoute;
+  '/$lang/resources/lectures/$lectureName-$lectureId': typeof LangContentResourcesLecturesLectureNameLectureIdRoute;
   '/$lang/resources/movies/$movieTitle-$movieId': typeof LangContentResourcesMoviesMovieTitleMovieIdRoute;
   '/$lang/resources/newsletters/$newsletterName-$newsletterId': typeof LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/$lang/resources/podcasts/$podcastName-$podcastId': typeof LangContentResourcesPodcastsPodcastNamePodcastIdRoute;
@@ -1273,12 +1273,12 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   '/$lang/_content/_misc/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/_content/_misc/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
-  '/$lang/_content/courses/$courseId/$chapterId': typeof LangContentCoursesCourseIdChapterIdRoute;
+  '/$lang/_content/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   '/$lang/_content/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
   '/$lang/_content/resources/channels/$channelName-$channelId': typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   '/$lang/_content/resources/conferences/$conferenceName-$conferenceId': typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
   '/$lang/_content/resources/glossary/$wordId': typeof LangContentResourcesGlossaryWordIdRoute;
-  '/$lang/_content/resources/lectures/$lectureId': typeof LangContentResourcesLecturesLectureIdRoute;
+  '/$lang/_content/resources/lectures/$lectureName-$lectureId': typeof LangContentResourcesLecturesLectureNameLectureIdRoute;
   '/$lang/_content/resources/movies/$movieTitle-$movieId': typeof LangContentResourcesMoviesMovieTitleMovieIdRoute;
   '/$lang/_content/resources/newsletters/$newsletterName-$newsletterId': typeof LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   '/$lang/_content/resources/podcasts/$podcastName-$podcastId': typeof LangContentResourcesPodcastsPodcastNamePodcastIdRoute;
@@ -1344,12 +1344,12 @@ export interface FileRouteTypes {
     | '/$lang/public-communication/legals'
     | '/$lang/reset-password/$token'
     | '/$lang/validate-email/$token'
-    | '/$lang/courses/$courseId/$chapterId'
+    | '/$lang/courses/$courseId/$chapterName-$chapterId'
     | '/$lang/resources/books/$bookName-$bookId'
     | '/$lang/resources/channels/$channelName-$channelId'
     | '/$lang/resources/conferences/$conferenceName-$conferenceId'
     | '/$lang/resources/glossary/$wordId'
-    | '/$lang/resources/lectures/$lectureId'
+    | '/$lang/resources/lectures/$lectureName-$lectureId'
     | '/$lang/resources/movies/$movieTitle-$movieId'
     | '/$lang/resources/newsletters/$newsletterName-$newsletterId'
     | '/$lang/resources/podcasts/$podcastName-$podcastId'
@@ -1411,12 +1411,12 @@ export interface FileRouteTypes {
     | '/$lang/professor/$professorName-$professorId'
     | '/$lang/reset-password/$token'
     | '/$lang/validate-email/$token'
-    | '/$lang/courses/$courseId/$chapterId'
+    | '/$lang/courses/$courseId/$chapterName-$chapterId'
     | '/$lang/resources/books/$bookName-$bookId'
     | '/$lang/resources/channels/$channelName-$channelId'
     | '/$lang/resources/conferences/$conferenceName-$conferenceId'
     | '/$lang/resources/glossary/$wordId'
-    | '/$lang/resources/lectures/$lectureId'
+    | '/$lang/resources/lectures/$lectureName-$lectureId'
     | '/$lang/resources/movies/$movieTitle-$movieId'
     | '/$lang/resources/newsletters/$newsletterName-$newsletterId'
     | '/$lang/resources/podcasts/$podcastName-$podcastId'
@@ -1480,12 +1480,12 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/public-communication/legals'
     | '/$lang/_content/_misc/reset-password/$token'
     | '/$lang/_content/_misc/validate-email/$token'
-    | '/$lang/_content/courses/$courseId/$chapterId'
+    | '/$lang/_content/courses/$courseId/$chapterName-$chapterId'
     | '/$lang/_content/resources/books/$bookName-$bookId'
     | '/$lang/_content/resources/channels/$channelName-$channelId'
     | '/$lang/_content/resources/conferences/$conferenceName-$conferenceId'
     | '/$lang/_content/resources/glossary/$wordId'
-    | '/$lang/_content/resources/lectures/$lectureId'
+    | '/$lang/_content/resources/lectures/$lectureName-$lectureId'
     | '/$lang/_content/resources/movies/$movieTitle-$movieId'
     | '/$lang/_content/resources/newsletters/$newsletterName-$newsletterId'
     | '/$lang/_content/resources/podcasts/$podcastName-$podcastId'
@@ -1544,12 +1544,12 @@ export interface RootRouteChildren {
   LangContentMiscPublicCommunicationLegalsRoute: typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   LangContentMiscResetPasswordTokenRoute: typeof LangContentMiscResetPasswordTokenRoute;
   LangContentMiscValidateEmailTokenRoute: typeof LangContentMiscValidateEmailTokenRoute;
-  LangContentCoursesCourseIdChapterIdRoute: typeof LangContentCoursesCourseIdChapterIdRoute;
+  LangContentCoursesCourseIdChapterNameChapterIdRoute: typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   LangContentResourcesBooksBookNameBookIdRoute: typeof LangContentResourcesBooksBookNameBookIdRoute;
   LangContentResourcesChannelsChannelNameChannelIdRoute: typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   LangContentResourcesConferencesConferenceNameConferenceIdRoute: typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
   LangContentResourcesGlossaryWordIdRoute: typeof LangContentResourcesGlossaryWordIdRoute;
-  LangContentResourcesLecturesLectureIdRoute: typeof LangContentResourcesLecturesLectureIdRoute;
+  LangContentResourcesLecturesLectureNameLectureIdRoute: typeof LangContentResourcesLecturesLectureNameLectureIdRoute;
   LangContentResourcesMoviesMovieTitleMovieIdRoute: typeof LangContentResourcesMoviesMovieTitleMovieIdRoute;
   LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute: typeof LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   LangContentResourcesPodcastsPodcastNamePodcastIdRoute: typeof LangContentResourcesPodcastsPodcastNamePodcastIdRoute;
@@ -1604,8 +1604,8 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscResetPasswordTokenRoute,
   LangContentMiscValidateEmailTokenRoute:
     LangContentMiscValidateEmailTokenRoute,
-  LangContentCoursesCourseIdChapterIdRoute:
-    LangContentCoursesCourseIdChapterIdRoute,
+  LangContentCoursesCourseIdChapterNameChapterIdRoute:
+    LangContentCoursesCourseIdChapterNameChapterIdRoute,
   LangContentResourcesBooksBookNameBookIdRoute:
     LangContentResourcesBooksBookNameBookIdRoute,
   LangContentResourcesChannelsChannelNameChannelIdRoute:
@@ -1614,8 +1614,8 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentResourcesConferencesConferenceNameConferenceIdRoute,
   LangContentResourcesGlossaryWordIdRoute:
     LangContentResourcesGlossaryWordIdRoute,
-  LangContentResourcesLecturesLectureIdRoute:
-    LangContentResourcesLecturesLectureIdRoute,
+  LangContentResourcesLecturesLectureNameLectureIdRoute:
+    LangContentResourcesLecturesLectureNameLectureIdRoute,
   LangContentResourcesMoviesMovieTitleMovieIdRoute:
     LangContentResourcesMoviesMovieTitleMovieIdRoute,
   LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute:
@@ -1689,12 +1689,12 @@ export const routeTree = rootRoute
         "/$lang/_content/_misc/public-communication/legals",
         "/$lang/_content/_misc/reset-password/$token",
         "/$lang/_content/_misc/validate-email/$token",
-        "/$lang/_content/courses/$courseId/$chapterId",
+        "/$lang/_content/courses/$courseId/$chapterName-$chapterId",
         "/$lang/_content/resources/books/$bookName-$bookId",
         "/$lang/_content/resources/channels/$channelName-$channelId",
         "/$lang/_content/resources/conferences/$conferenceName-$conferenceId",
         "/$lang/_content/resources/glossary/$wordId",
-        "/$lang/_content/resources/lectures/$lectureId",
+        "/$lang/_content/resources/lectures/$lectureName-$lectureId",
         "/$lang/_content/resources/movies/$movieTitle-$movieId",
         "/$lang/_content/resources/newsletters/$newsletterName-$newsletterId",
         "/$lang/_content/resources/podcasts/$podcastName-$podcastId",
@@ -1834,8 +1834,8 @@ export const routeTree = rootRoute
     "/$lang/_content/_misc/validate-email/$token": {
       "filePath": "$lang/_content/_misc/validate-email.$token.tsx"
     },
-    "/$lang/_content/courses/$courseId/$chapterId": {
-      "filePath": "$lang/_content/courses/$courseId.$chapterId.tsx"
+    "/$lang/_content/courses/$courseId/$chapterName-$chapterId": {
+      "filePath": "$lang/_content/courses/$courseId.$chapterName-$chapterId.tsx"
     },
     "/$lang/_content/resources/books/$bookName-$bookId": {
       "filePath": "$lang/_content/resources/books/$bookName-$bookId.tsx"
@@ -1849,8 +1849,8 @@ export const routeTree = rootRoute
     "/$lang/_content/resources/glossary/$wordId": {
       "filePath": "$lang/_content/resources/glossary/$wordId.tsx"
     },
-    "/$lang/_content/resources/lectures/$lectureId": {
-      "filePath": "$lang/_content/resources/lectures/$lectureId.tsx"
+    "/$lang/_content/resources/lectures/$lectureName-$lectureId": {
+      "filePath": "$lang/_content/resources/lectures/$lectureName-$lectureId.tsx"
     },
     "/$lang/_content/resources/movies/$movieTitle-$movieId": {
       "filePath": "$lang/_content/resources/movies/$movieTitle-$movieId.tsx"
