@@ -118,6 +118,7 @@ function Conference() {
     ) {
       navigate({
         to: `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}`,
+        replace: true,
       });
     }
   }, [conference, isFetched, navigateTo404, navigate, params.conferenceName]);

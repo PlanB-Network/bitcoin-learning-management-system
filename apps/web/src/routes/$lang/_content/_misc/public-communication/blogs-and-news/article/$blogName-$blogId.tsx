@@ -60,6 +60,7 @@ function SingleBlogDetail() {
     if (blog && params.blogName !== formatNameForURL(blog.title)) {
       navigate({
         to: `/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`,
+        replace: true,
       });
     }
   }, [blog, isFetched, navigate, params.bookName]);

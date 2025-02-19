@@ -12,6 +12,7 @@ import {
 
 import { AppContext } from '#src/providers/context.js';
 
+import { formatNameForURL } from '#src/utils/string.ts';
 import {
   TUTORIALS_CATEGORIES,
   extractSubCategories,
@@ -132,7 +133,7 @@ export const TutorialLayout = ({
                                           )}
                                         />
                                         <Link
-                                          to={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
+                                          to={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${formatNameForURL(tutorial.name)}-${tutorial.id}`}
                                           className={cn(
                                             'text-xs group-hover:text-darkOrange-5 font-poppins',
                                             tutorial.id === currentTutorialId

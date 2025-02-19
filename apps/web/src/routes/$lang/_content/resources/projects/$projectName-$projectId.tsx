@@ -99,6 +99,7 @@ function Project() {
     if (project && params.projectName !== formatNameForURL(project.name)) {
       navigate({
         to: `/resources/projects/${formatNameForURL(project.name)}-${project.id}`,
+        replace: true,
       });
     }
   }, [project, isFetched, navigateTo404, navigate, params.projectName]);

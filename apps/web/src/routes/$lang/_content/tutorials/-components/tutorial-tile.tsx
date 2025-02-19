@@ -32,12 +32,10 @@ export const TutorialTile = ({
         </p>
       </Link>
       <Link
-        to={'/tutorials/$category/$subcategory/$name-$id'}
+        to={`/tutorials/$category/$subcategory/${tutorial.name}-${tutorial.id}`}
         params={{
           category: tutorial.category,
           subcategory: tutorial.subcategory,
-          name: tutorial.name,
-          id: tutorial.id,
         }}
         key={tutorial.id}
         className="text-xs font-bold text-white max-md:hidden text-center line-clamp-2"

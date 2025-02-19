@@ -226,14 +226,14 @@ const Credits = ({
               >
                 telegram
               </a>
-              <a
+              <Link
+                to="/tutorials/others/contribution/content-review-tutorial-1ee068ca-ddaf-4bec-b44e-b41a9abfdef6"
                 className="hover:text-darkOrange-5 font-medium"
-                href="/tutorials/others/contribution/content-review-tutorial-1ee068ca-ddaf-4bec-b44e-b41a9abfdef6"
                 target="_blank"
                 rel="noreferrer"
               >
                 tutorial
-              </a>
+              </Link>
               <a
                 className="hover:text-darkOrange-5 font-medium"
                 href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"
@@ -292,6 +292,7 @@ function TutorialDetails() {
     ) {
       navigate({
         to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}-${tutorial.id}`,
+        replace: true,
       });
     }
   }, [

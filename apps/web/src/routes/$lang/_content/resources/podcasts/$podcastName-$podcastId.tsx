@@ -70,6 +70,7 @@ function Podcast() {
     if (podcast && params.podcastName !== formatNameForURL(podcast.name)) {
       navigate({
         to: `/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`,
+        replace: true,
       });
     }
   }, [podcast, isFetched, navigateTo404, navigate, params.podcastName]);

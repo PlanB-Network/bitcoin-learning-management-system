@@ -34,7 +34,11 @@ import {
 import { formatDate } from '#src/utils/date.ts';
 import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
-import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
+import {
+  capitalizeFirstWord,
+  formatNameForURL,
+  joinWords,
+} from '#src/utils/string.js';
 
 import { CourseConclusion } from './$courseId/-components/course-conclusion.tsx';
 import { CourseExam } from './$courseId/-components/course-exam.tsx';
@@ -220,7 +224,7 @@ const TimelineBig = ({
           {addSpaceToCourseIndex(chapter.course.index)}
         </TextTag>
         <Link
-          to={`/courses/${chapter.course.name}-${chapter.course.id}`}
+          to={`/courses/${formatNameForURL(chapter.course.name)}-${chapter.course.id}`}
           className="text-black hover:text-darkOrange-5 display-small-32px"
         >
           {chapter.course.name}

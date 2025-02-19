@@ -80,6 +80,7 @@ function NewsletterDetail() {
         to: `/resources/newsletters/${formatNameForURL(newsletter.title)}-${
           newsletter.id
         }`,
+        replace: true,
       });
     }
   }, [newsletter, isFetched, navigateTo404, params.newsletterName, navigate]);

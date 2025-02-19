@@ -5,6 +5,7 @@ import { AiOutlineCopy } from 'react-icons/ai';
 import type { CheckoutData } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 
+import { Link } from '@tanstack/react-router';
 import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
 
 interface PaymentQrProps extends React.HTMLProps<HTMLDivElement> {
@@ -142,14 +143,14 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
       <div className="text-center uppercase md:text-xs justify-self-end mt-auto  mb-2">
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
-            <a
+            <Link
+              to="/terms-and-conditions"
               className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
-              href="/terms-and-conditions"
               target="_blank"
               rel="noreferrer"
             >
               Payment terms
-            </a>
+            </Link>
           </Trans>
         </div>
       </div>

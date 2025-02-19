@@ -114,7 +114,7 @@ function Home() {
               {t('home.header.content')}
             </p>
             <div className="mt-6 flex flex-row flex-wrap justify-center gap-4 lg:mt-9">
-              <a href="/courses" rel="noopener noreferrer">
+              <Link to="/courses" rel="noopener noreferrer">
                 <Button
                   variant="primary"
                   rounded={true}
@@ -123,12 +123,8 @@ function Home() {
                 >
                   {t('home.header.startLink')}
                 </Button>
-              </a>
-              <a
-                href="/node-network"
-                rel="noopener noreferrer"
-                className="darky"
-              >
+              </Link>
+              <Link to="/node-network" className="darky">
                 <Button
                   variant="secondary"
                   rounded={true}
@@ -136,7 +132,7 @@ function Home() {
                 >
                   {t('home.header.link')}
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="relative col-span-3 hidden items-start lg:flex">

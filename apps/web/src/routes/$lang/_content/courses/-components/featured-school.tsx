@@ -9,6 +9,7 @@ import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { getTimeStringWithOnlyMonths } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 export const FeaturedSchool = ({ course }: { course: JoinedCourse }) => {
   return (
@@ -96,7 +97,10 @@ const SchoolCard = ({ course }: { course: JoinedCourse }) => {
             className="border-y"
           />
         </div>
-        <Link to={`/courses/${course.id}`} className="w-full">
+        <Link
+          to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
+          className="w-full"
+        >
           <ButtonWithArrow
             mode="dark"
             variant="primary"

@@ -72,6 +72,7 @@ function Book() {
     if (book && params.bookName !== formatNameForURL(book.title)) {
       navigate({
         to: `/resources/books/${formatNameForURL(book.title)}-${book.id}`,
+        replace: true,
       });
     }
   }, [book, isFetched, navigate, params.bookName]);

@@ -67,6 +67,7 @@ function ProfessorDetail() {
     ) {
       navigate({
         to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
+        replace: true,
       });
     }
   }, [professor, isFetched, navigateTo404, navigate, params.professorName]);

@@ -145,7 +145,9 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
 
               <CourseInfoSection course={activeCourse} />
 
-              <Link to={`/courses/${activeCourse.name}-${activeCourse.id}`}>
+              <Link
+                to={`/courses/${formatNameForURL(activeCourse.name)}-${activeCourse.id}`}
+              >
                 <Button variant="primary" size="l" className="w-full">
                   {t('courses.explorer.seeCourse')}
                   <FaArrowRightLong

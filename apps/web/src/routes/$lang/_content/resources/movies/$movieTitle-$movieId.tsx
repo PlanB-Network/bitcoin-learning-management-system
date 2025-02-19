@@ -71,6 +71,7 @@ function Movie() {
     if (movie && params.movieTitle !== formatNameForURL(movie.title)) {
       navigate({
         to: `/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`,
+        replace: true,
       });
     }
   }, [movie, isFetched, navigateTo404, navigate, params.movieTitle]);

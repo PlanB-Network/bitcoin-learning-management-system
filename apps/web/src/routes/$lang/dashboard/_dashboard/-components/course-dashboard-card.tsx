@@ -8,6 +8,7 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { assetUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 export const CourseDashboardCard = ({
   course,
@@ -171,7 +172,10 @@ export const CourseDashboardCard = ({
             <div className="w-full order-3">
               {renderStartButton && (
                 <div className="w-full">
-                  <Link className="w-full" to={`/courses/${course.id}`}>
+                  <Link
+                    className="w-full"
+                    to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
+                  >
                     <ButtonWithArrow
                       variant="primary"
                       className="w-full"

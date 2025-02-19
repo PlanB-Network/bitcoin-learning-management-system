@@ -4,6 +4,7 @@ import { Trans } from 'react-i18next';
 import type { CheckoutData } from '@blms/types';
 import { Button } from '@blms/ui';
 
+import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { formatDate } from '#src/utils/date.js';
@@ -69,14 +70,14 @@ export const ModalPaymentSuccess = ({
       <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
-            <a
+            <Link
+              to="/terms-and-conditions"
               className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
-              href="/terms-and-conditions"
               target="_blank"
               rel="noreferrer"
             >
               Payment terms
-            </a>
+            </Link>
           </Trans>
         </div>
       </div>

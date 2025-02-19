@@ -71,6 +71,7 @@ function Channel() {
     if (channel && params.channelName !== formatNameForURL(channel.name)) {
       navigate({
         to: `/resources/channels/${formatNameForURL(channel.name)}-${channel.id}`,
+        replace: true,
       });
     }
   }, [channel, isFetched, navigateTo404, navigate, params.channelName]);

@@ -202,6 +202,7 @@ function CourseDetails() {
     if (course && params.courseName !== formatNameForURL(course.name)) {
       navigate({
         to: `/courses/${formatNameForURL(course.name)}-${course.id}`,
+        replace: true,
       });
     }
   }, [course, isFetched, navigate, params.bookName]);

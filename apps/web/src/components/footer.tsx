@@ -138,23 +138,6 @@ const SocialNetworks = ({ variant }: { variant: FooterProps['variant'] }) => {
       >
         <BsYoutube size={iconSize} className={iconClasses} />
       </a>
-      {/* <a
-        href="https://www.facebook.com/profile.php?id=61556543067522"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <BsFacebook size={iconSize} className={iconClasses} />{' '}
-      </a>
-      <a href="https://discord.gg/CHvZAhJCBh" target="_blank" rel="noreferrer">
-        <BsDiscord size={iconSize} className={iconClasses} />{' '}
-      </a>
-      <a
-        href="https://www.linkedin.com/company/planb-network/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <BsLinkedin size={iconSize} className={iconClasses} />{' '}
-      </a> */}
     </div>
   );
 };
