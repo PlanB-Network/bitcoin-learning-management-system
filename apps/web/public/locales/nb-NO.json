@@ -234,7 +234,8 @@
       "inPersonDescription": "Hver klasseøkt finner sted fysisk på de angitte datoene og stedene, og blir også direktesendt på plattformen. \nDette kjøpet vil gi deg tilgang til både personlig tilstede og online klasser.\nIkke glem å reservere plassen din for klasser du ønsker å delta på personlig tilstede.",
       "inPersonCallout": "Du er i ferd med å kjøpe <strong>personlig tilstede</strong> tilgang til dette kurset.",
       "checkoutError": "En feil oppstod under utsjekkingsprosessen.\nVennligst prøv igjen.",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "quizz": {
       "quizz": "Quiz",
@@ -969,7 +970,8 @@
         "productCourse": "",
         "productEvent": "",
         "selectCourse": "",
-        "selectEvent": ""
+        "selectEvent": "",
+        "discountValueExplanation": ""
       },
       "discountCodes": ""
     },
@@ -1224,7 +1226,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "pageDescription": "Vil du snakke om Bitcoin i nåtid? Her, kan du finne alle arrangementene som støttes av Plan B Network-samfunnene. Enten du vil lytte til et foredrag, diskutere Bitcoin over en drink, eller ta en eksamen for å vurdere kunnskapen din, du vil finne det rette arrangementet her gjennom Plan B Network.",
     "errors": {
@@ -1558,7 +1561,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     }
   },
   "payment": {
