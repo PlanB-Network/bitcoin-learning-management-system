@@ -16,6 +16,7 @@ import {
   cn,
 } from '@blms/ui';
 
+import { SortDirection } from '@blms/constants';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -31,10 +32,10 @@ export const DashboardTutorialsTable = ({
 
   const [sortConfig, setSortConfig] = useState<{
     key: 'category' | 'professorName' | 'title' | 'likeCount' | 'dislikeCount';
-    direction: 'asc' | 'desc';
+    direction: SortDirection;
   }>({
     key: 'title',
-    direction: 'asc',
+    direction: SortDirection.Asc,
   });
 
   const {
@@ -118,7 +119,10 @@ export const DashboardTutorialsTable = ({
   const handleSorting = (key: typeof sortConfig.key) => {
     setSortConfig((prev) => ({
       key,
-      direction: prev.key === key && prev.direction === 'asc' ? 'desc' : 'asc',
+      direction:
+        prev.key === key && prev.direction === SortDirection.Asc
+          ? SortDirection.Desc
+          : SortDirection.Asc,
     }));
   };
 

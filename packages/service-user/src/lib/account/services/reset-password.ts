@@ -8,6 +8,7 @@ import { changePasswordQuery } from '../queries/change-password.js';
 import { getUserByEmailQuery } from '../queries/get-user.js';
 import { consumeTokenQuery, createTokenQuery } from '../queries/token.js';
 
+import { TokenType } from '@blms/constants';
 import { createSendEmail } from './email.js';
 
 export const createPasswordResetToken = (deps: Dependencies) => {
@@ -32,7 +33,9 @@ export const createPasswordResetToken = (deps: Dependencies) => {
         //   ),
         // )
         .then(({ uid, email }) =>
-          deps.postgres.exec(createTokenQuery(uid, 'reset_password', email)),
+          deps.postgres.exec(
+            createTokenQuery(uid, TokenType.ResetPassword, email),
+          ),
         )
         .then(firstRow)
         .then(rejectOnEmpty)
@@ -73,7 +76,7 @@ export const createPasswordReset = ({ postgres }: Dependencies) => {
   return (tokenId: string, newPassword: string) => {
     return Promise.all([
       postgres
-        .exec(consumeTokenQuery(tokenId, 'reset_password'))
+        .exec(consumeTokenQuery(tokenId, TokenType.ResetPassword))
         .then(firstRow)
         .then(rejectOnEmpty),
       hash(newPassword),

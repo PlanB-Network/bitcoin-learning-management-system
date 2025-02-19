@@ -1,8 +1,8 @@
 import { TRPCError } from '@trpc/server';
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
+import { UserRole } from '@blms/constants';
 import { createGetActiveApiKey } from '@blms/service-user';
-import type { UserRole } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { Unauthorized } from '#src/errors.js';
@@ -37,24 +37,24 @@ export const enforceAuthenticatedUserMiddleware = (requiredRole: UserRole) => {
     const { role, uid } = ctx.user;
 
     // Super admin case
-    if (requiredRole === 'superadmin' && role !== 'superadmin') {
+    if (requiredRole === UserRole.Superadmin && role !== UserRole.Superadmin) {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
     }
 
     // Current user is not an admin
-    if (role !== 'superadmin' && role !== 'admin') {
+    if (role !== UserRole.Superadmin && role !== UserRole.Admin) {
       // Admin case
-      if (requiredRole === 'admin') {
+      if (requiredRole === UserRole.Admin) {
         throw new TRPCError({ code: 'UNAUTHORIZED' });
       }
 
       // Professor case
-      if (requiredRole === 'professor' && role !== 'professor') {
+      if (requiredRole === UserRole.Professor && role !== UserRole.Professor) {
         throw new TRPCError({ code: 'UNAUTHORIZED' });
       }
 
       // Community case
-      if (requiredRole === 'community' && role !== 'community') {
+      if (requiredRole === UserRole.Community && role !== UserRole.Community) {
         throw new TRPCError({ code: 'UNAUTHORIZED' });
       }
     }

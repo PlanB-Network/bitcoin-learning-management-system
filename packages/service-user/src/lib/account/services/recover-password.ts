@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 
+import { TokenType } from '@blms/constants';
 import { firstRow, rejectOnEmpty } from '@blms/database';
-import type { TokenType } from '@blms/types';
 
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -27,7 +27,7 @@ export const createPasswordRecoveryToken = (deps: Dependencies) => {
       .then(rejectOnEmpty)
       .then(({ uid, email }) =>
         deps.postgres.exec(
-          createTokenQuery(uid, 'reset_password' satisfies TokenType, email),
+          createTokenQuery(uid, TokenType.ResetPassword, email),
         ),
       )
       .then(firstRow)

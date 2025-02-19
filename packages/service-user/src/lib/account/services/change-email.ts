@@ -8,6 +8,7 @@ import type { Dependencies } from '#src/dependencies.js';
 import { changeEmailWithTokenQuery } from '../queries/change-email.js';
 import { createTokenQuery } from '../queries/token.js';
 
+import { TokenType } from '@blms/constants';
 import { createSendEmail } from './email.js';
 
 /**
@@ -73,7 +74,7 @@ export const createEmailValidationToken = (deps: Dependencies) => {
     );
 
     return postgres
-      .getOneOrReject(createTokenQuery(uid, 'validate_email', email))
+      .getOneOrReject(createTokenQuery(uid, TokenType.ValidateEmail, email))
       .then((token) =>
         sendEmail({
           email,

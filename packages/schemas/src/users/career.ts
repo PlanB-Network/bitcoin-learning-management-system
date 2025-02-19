@@ -2,12 +2,6 @@ import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 import {
-  careerCompanySizeEnum,
-  careerLanguageLevelEnum,
-  careerRemoteEnum,
-  careerRoleLevelEnum,
-  jobCategoryEnum,
-  jobNameEnum,
   usersCareerLanguages,
   usersCareerProfiles,
   usersCareerRoles,
@@ -15,14 +9,22 @@ import {
   usersLanguages,
 } from '@blms/database';
 
-export const careerLanguageLevelSchema = z.enum(
-  careerLanguageLevelEnum.enumValues,
-);
-export const careerRoleLevelSchema = z.enum(careerRoleLevelEnum.enumValues);
-export const careerCompanySizeSchema = z.enum(careerCompanySizeEnum.enumValues);
-export const careerRemoteSchema = z.enum(careerRemoteEnum.enumValues); //
-export const jobNameSchema = z.enum(jobNameEnum.enumValues);
-export const jobCategorySchema = z.enum(jobCategoryEnum.enumValues);
+import {
+  CareerCompanySize,
+  CareerLanguageLevel,
+  CareerRemote,
+  CareerRoleLevel,
+  JobCategory,
+  JobName,
+} from '@blms/constants';
+
+export const careerLanguageLevelSchema = z.nativeEnum(CareerLanguageLevel);
+
+export const careerRoleLevelSchema = z.nativeEnum(CareerRoleLevel);
+export const careerCompanySizeSchema = z.nativeEnum(CareerCompanySize);
+export const careerRemoteSchema = z.nativeEnum(CareerRemote); //
+export const jobNameSchema = z.nativeEnum(JobName);
+export const jobCategorySchema = z.nativeEnum(JobCategory);
 
 export const careerLanguageSchema = createSelectSchema(usersCareerLanguages);
 export const careerProfileSchema = createSelectSchema(usersCareerProfiles);

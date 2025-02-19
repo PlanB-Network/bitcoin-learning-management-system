@@ -1,8 +1,9 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import { token, tokenTypeEnum } from '@blms/database';
+import { TokenType } from '@blms/constants';
+import { token } from '@blms/database';
 
-export const tokenTypeSchema = z.enum(tokenTypeEnum.enumValues);
+export const tokenTypeSchema = z.nativeEnum(TokenType);
 
 export const tokenSchema = createSelectSchema(token);

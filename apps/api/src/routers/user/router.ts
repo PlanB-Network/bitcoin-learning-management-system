@@ -1,5 +1,4 @@
-import { z } from 'zod';
-
+import { SortDirection, UserRole } from '@blms/constants';
 import { userDetailsSchema, userRolesSchema } from '@blms/schemas';
 import {
   createChangeCertificateName,
@@ -16,6 +15,7 @@ import {
   createPasswordResetToken,
 } from '@blms/service-user';
 import type { SessionData, UserDetails, UserRoles } from '@blms/types';
+import { z } from 'zod';
 
 import type { Parser } from '#src/trpc/types.js';
 
@@ -65,7 +65,10 @@ export const userRouter = createTRPCRouter({
           .enum(['displayName', 'username'])
           .optional()
           .default('username'),
-        orderDirection: z.enum(['asc', 'desc']).optional().default('asc'),
+        orderDirection: z
+          .nativeEnum(SortDirection)
+          .optional()
+          .default(SortDirection.Asc),
         limit: z.number(),
         cursor: z.string().optional(),
       }),
@@ -97,7 +100,7 @@ export const userRouter = createTRPCRouter({
     .mutation(({ ctx, input }) =>
       createChangeRole(ctx.dependencies)({
         uid: input.uid,
-        role: 'admin',
+        role: UserRole.Admin,
       }),
     ),
 
@@ -105,7 +108,7 @@ export const userRouter = createTRPCRouter({
     .input(
       z.object({
         uid: z.string(),
-        role: z.string().optional(),
+        role: z.nativeEnum(UserRole).optional(),
         professorId: z.number().nullable(),
       }),
     )
@@ -113,7 +116,7 @@ export const userRouter = createTRPCRouter({
     .mutation(({ ctx, input }) =>
       createChangeRoleToProfessor(ctx.dependencies)({
         uid: input.uid,
-        role: input.role ?? 'professor',
+        role: input.role ?? UserRole.Professor,
         professorId: input.professorId,
       }),
     ),

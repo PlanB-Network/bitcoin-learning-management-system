@@ -3,7 +3,7 @@ import type {
   CareerLanguageLevel,
   CareerRemote,
   CareerRoleLevel,
-} from '@blms/types';
+} from '@blms/constants';
 
 import { firstRow } from '@blms/database';
 import { TRPCError } from '@trpc/server';

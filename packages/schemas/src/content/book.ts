@@ -5,7 +5,7 @@ import { contentBooks, contentBooksLocalized } from '@blms/database';
 
 import { resourceSchema } from './resource.js';
 
-import { levelSchema } from './index.js';
+import { courseLevelSchema } from './index.js';
 
 export const bookSchema = createSelectSchema(contentBooks);
 export const bookLocalizedSchema = createSelectSchema(contentBooksLocalized);
@@ -41,7 +41,7 @@ export const joinedBookSchema = resourceSchema
   )
   .merge(
     z.object({
-      level: levelSchema,
+      level: courseLevelSchema,
       tags: z.array(z.string()),
     }),
   );

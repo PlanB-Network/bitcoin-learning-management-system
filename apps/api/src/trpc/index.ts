@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import superjson from 'superjson';
 import { ZodError } from 'zod';
 
-import type { UserRole } from '@blms/types';
+import type { UserRole } from '@blms/constants';
 
 import type { Dependencies } from '../dependencies.js';
 

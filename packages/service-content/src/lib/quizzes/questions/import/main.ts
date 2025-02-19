@@ -1,6 +1,7 @@
+import type { CourseLevel } from '@blms/constants';
 import type { TransactionSql } from '@blms/database';
 import { firstRow } from '@blms/database';
-import type { ChangedFile, Course, Level, QuizQuestion } from '@blms/types';
+import type { ChangedFile, Course, QuizQuestion } from '@blms/types';
 
 import { yamlToObject } from '../../../utils.js';
 
@@ -9,7 +10,7 @@ import type { ChangedQuizQuestion } from './index.js';
 interface QuizQuestionMain {
   id: string;
   chapterId: string;
-  difficulty: Level;
+  difficulty: CourseLevel;
   author?: string;
   duration?: number;
   tags?: string[];

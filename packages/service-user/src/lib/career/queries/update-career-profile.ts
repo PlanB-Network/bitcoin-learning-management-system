@@ -1,10 +1,10 @@
-import { sql } from '@blms/database';
 import type {
   CareerCompanySize,
   CareerLanguageLevel,
   CareerRemote,
   CareerRoleLevel,
-} from '@blms/types';
+} from '@blms/constants';
+import { sql } from '@blms/database';
 
 interface UpdateCareerProfileOptions {
   careerProfileId: string;

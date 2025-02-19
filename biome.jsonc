@@ -27,7 +27,8 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "useExhaustiveDependencies": "info"
+        "useExhaustiveDependencies": "info",
+        "noUnusedImports": "error"
       },
       "style": {
         "noNonNullAssertion": "off",

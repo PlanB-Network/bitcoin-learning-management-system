@@ -1,5 +1,5 @@
 {
-  "name": "@blms/service-content",
+  "name": "@blms/constants",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -18,21 +18,6 @@
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
-  "dependencies": {
-    "@blms/constants": "workspace:*",
-    "@blms/database": "workspace:*",
-    "@blms/s3": "workspace:*",
-    "@blms/service-common": "workspace:*",
-    "gray-matter": "^4.0.3",
-    "js-yaml": "^4.1.0",
-    "marked": "^15.0.7",
-    "uuid": "^11.0.5",
-    "zod": "^3.24.2"
-  },
-  "devDependencies": {
-    "@blms/types": "workspace:*",
-    "@types/js-yaml": "^4.0.9",
-    "@types/uuid": "^10.0.0",
-    "typesense": "^1.8.2"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
