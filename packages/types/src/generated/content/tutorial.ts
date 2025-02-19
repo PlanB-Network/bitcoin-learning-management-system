@@ -108,7 +108,7 @@ export interface TutorialWithProfessorName {
   likeCount: number;
   dislikeCount: number;
   professorName: string | null;
-  professorId: number | null;
+  professorId: string | null;
 }
 
 export interface GetTutorialResponse {

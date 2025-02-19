@@ -83,7 +83,7 @@ export const tutorialWithProfessorNameSchema = tutorialSchema
       likeCount: z.number(),
       dislikeCount: z.number(),
       professorName: z.string().nullable(),
-      professorId: z.number().nullable(),
+      professorId: z.string().nullable(),
     }),
   );
 

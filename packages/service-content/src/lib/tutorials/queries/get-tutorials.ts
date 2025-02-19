@@ -128,7 +128,7 @@ export const getSortedTutorialsWithProfessorNameQuery = (
         COALESCE(likes_agg.like_count, 0) AS like_count,
         COALESCE(likes_agg.dislike_count, 0) AS dislike_count,
         COALESCE(professor.name, '') AS professor_name,
-        COALESCE(professor.id, 0) AS professor_id
+        COALESCE(professor.id, null) AS professor_id
       FROM content.tutorials t
       JOIN content.tutorials_localized tl ON t.id = tl.tutorial_id
 
