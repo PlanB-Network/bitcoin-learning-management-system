@@ -386,7 +386,8 @@
       "onlineDescription": "Каждая сессия транслируется в прямом эфире на платформе.\nПриобретая эту покупку, вы получаете доступ к прямым трансляциям и видеоповторам.",
       "inPersonDescription": "Каждое занятие проводится лично в указанные даты и в указанном месте, а также транслируется в прямом эфире на платформе. \nПриобретая этот курс, вы получаете доступ как к очным, так и к онлайн-занятиям.\nНе забудьте забронировать место на занятиях, которые вы хотите посетить лично.",
       "checkoutError": "В процессе оформления заказа произошла ошибка.\nПожалуйста, попробуйте еще раз.",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "quizz": {
       "clickOnPie": "Нажмите на круговую диаграмму, чтобы проверить правильный ответ",
@@ -949,7 +950,8 @@
           "type": "",
           "uses": "",
           "value": ""
-        }
+        },
+        "discountValueExplanation": ""
       },
       "discountCodes": ""
     },
@@ -1384,7 +1386,8 @@
       "title": ""
     },
     "books": {
-      "title": ""
+      "title": "",
+      "author": ""
     },
     "channels": {
       "noYoutubeChannels": "",
@@ -1474,7 +1477,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     },
     "hasNotBeenProofread": "",
     "subCategories": {
@@ -1581,7 +1585,8 @@
     "inProgress": "",
     "reviewEarn": "",
     "status": "",
-    "rewardsText": ""
+    "rewardsText": "",
+    "descriptionOriginalLanguage": ""
   },
   "filters": {
     "categories": "Категории",
