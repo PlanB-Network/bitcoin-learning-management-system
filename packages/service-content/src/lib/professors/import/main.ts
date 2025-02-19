@@ -42,7 +42,6 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         ON CONFLICT DO NOTHING
       `;
 
-    // TODO put id in on conflict
     const result = await transaction<Professor[]>`
         INSERT INTO content.professors (
           id, path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url,
@@ -69,8 +68,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${lastUpdated.commit},
           NOW()
         )
-        ON CONFLICT (path) DO UPDATE SET
-          id = EXCLUDED.id,
+        ON CONFLICT (id) DO UPDATE SET
+          path = EXCLUDED.path,
           name = EXCLUDED.name,
           contributor_id = EXCLUDED.contributor_id,
           company = EXCLUDED.company,
