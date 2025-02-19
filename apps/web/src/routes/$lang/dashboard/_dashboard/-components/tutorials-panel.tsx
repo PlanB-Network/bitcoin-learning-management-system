@@ -9,7 +9,7 @@ import { DashboardTutorialsTable } from './tutorials-table.tsx';
 export const DashboardTutorialsPanel = ({
   professorId,
 }: {
-  professorId?: number;
+  professorId?: string;
 }) => {
   const { t } = useTranslation();
 

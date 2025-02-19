@@ -12,7 +12,7 @@ import { BackLink } from '#src/molecules/backlink.tsx';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { getNameAndIdFromUrlForNumbers } from '#src/services/utils.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { CourseCard } from '../../../../organisms/course-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 
@@ -22,7 +22,7 @@ export const Route = createFileRoute(
   params: {
     parse: (params) => {
       const paramNameId = params['professorName-$professorId'];
-      const { id, name } = getNameAndIdFromUrlForNumbers(paramNameId);
+      const { id, name } = getNameAndIdFromUrl(paramNameId);
 
       return {
         lang: z.string().parse(params.lang),
@@ -46,7 +46,7 @@ function ProfessorDetail() {
   const params = Route.useParams();
 
   const { data: professor, isFetched } = trpc.content.getProfessor.useQuery({
-    professorId: Number(params.professorId),
+    professorId: params.professorId,
     language: i18n.language,
   });
 

@@ -533,6 +533,13 @@
       "when": 1739897654297,
       "tag": "0075_loving_jackal",
       "breakpoints": true
+    },
+    {
+      "idx": 76,
+      "version": "7",
+      "when": 1739971943372,
+      "tag": "0076_volatile_blacklash",
+      "breakpoints": true
     }
   ]
 }

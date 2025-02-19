@@ -7,6 +7,7 @@ import { yamlToObject } from '../../utils.js';
 import type { ChangedProfessor } from './index.js';
 
 interface ProfessorMain {
+  id: string;
   name: string;
   contributor_id: string;
   company?: string;
@@ -41,13 +42,15 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         ON CONFLICT DO NOTHING
       `;
 
+    // TODO put id in on conflict
     const result = await transaction<Professor[]>`
         INSERT INTO content.professors (
-          path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url,
+          id, path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url,
           nostr, lightning_address, lnurl_pay, paynym, silent_payment, tips_url,
           last_updated, last_commit, last_sync
         )
         VALUES (
+          ${parsedProfessor.id},
           ${professor.path},
           ${parsedProfessor.name},
           ${parsedProfessor.contributor_id},
@@ -67,6 +70,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           NOW()
         )
         ON CONFLICT (path) DO UPDATE SET
+          id = EXCLUDED.id,
           name = EXCLUDED.name,
           contributor_id = EXCLUDED.contributor_id,
           company = EXCLUDED.company,

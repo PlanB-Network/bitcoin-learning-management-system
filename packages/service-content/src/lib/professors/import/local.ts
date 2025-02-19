@@ -9,7 +9,7 @@ interface ProfessorLocal {
 }
 
 export const createProcessLocalFile = (transaction: TransactionSql) => {
-  return async (id: number, file: ChangedFileWithLanguage) => {
+  return async (id: string, file: ChangedFileWithLanguage) => {
     const parsed = await yamlToObject<ProfessorLocal>(file);
 
     await transaction`

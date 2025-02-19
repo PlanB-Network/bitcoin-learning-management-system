@@ -24,7 +24,7 @@ interface Options {
     id: string;
     value: string | number;
   };
-  professorId?: number;
+  professorId?: string;
 }
 
 export const createGetTutorials = ({ postgres }: Dependencies) => {

@@ -24,7 +24,7 @@ const getProfessorsProcedure = publicProcedure
 const getProfessorProcedure = publicProcedure
   .input(
     z.object({
-      professorId: z.number(),
+      professorId: z.string(),
       language: z.string(),
     }),
   )

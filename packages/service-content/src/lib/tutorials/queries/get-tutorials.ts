@@ -89,7 +89,7 @@ export const getSortedTutorialsWithProfessorNameQuery = (
   orderDirection: 'asc' | 'desc',
   limit?: number,
   cursor?: Cursor,
-  professorId?: number,
+  professorId?: string,
 ) => {
   const searchPattern = `%${search}%`;
   const orderFieldCamelCased = camelToSnakeCase(orderField);

@@ -68,7 +68,7 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
           value: z.union([z.string(), z.number()]),
         })
         .optional(),
-      professorId: z.number().optional(),
+      professorId: z.string().optional(),
     }),
   )
   .output<

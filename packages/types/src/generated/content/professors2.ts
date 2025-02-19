@@ -4,7 +4,7 @@
 import { JoinedCourse } from './course.js';
 import { JoinedTutorialLight } from './tutorial.js';
 export interface FullProfessor {
-  id: number;
+  id: string;
   path: string;
   name: string;
   company: string | null;

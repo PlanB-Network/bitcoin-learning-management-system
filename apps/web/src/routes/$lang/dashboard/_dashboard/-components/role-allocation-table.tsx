@@ -259,7 +259,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                           {t('dashboard.adminPanel.selectProfessor')}
                         </option>
                         {professors?.map(
-                          (option: { id: number; name: string }) => (
+                          (option: { id: string; name: string }) => (
                             <option
                               key={option.id}
                               value={option.id}

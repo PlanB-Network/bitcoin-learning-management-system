@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedProfessor } from '@blms/types';
 
-export const getProfessorQuery = (id: number, language?: string) => {
+export const getProfessorQuery = (id: string, language?: string) => {
   return sql<JoinedProfessor[]>`
     SELECT
       p.*,

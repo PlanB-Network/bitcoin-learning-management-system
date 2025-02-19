@@ -28,7 +28,7 @@ function DashboardProfessorProfile() {
 
   const { data: professor, isFetched } = trpc.content.getProfessor.useQuery(
     {
-      professorId: user?.professorId ?? 0,
+      professorId: user?.professorId ?? '',
       language: i18n.language,
     },
     {

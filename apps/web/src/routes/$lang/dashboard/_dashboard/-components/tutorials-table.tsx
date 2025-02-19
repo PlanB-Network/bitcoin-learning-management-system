@@ -22,7 +22,7 @@ import { trpc } from '#src/utils/trpc.ts';
 export const DashboardTutorialsTable = ({
   professorId,
 }: {
-  professorId?: number;
+  professorId?: string;
 }) => {
   const { i18n } = useTranslation();
 
