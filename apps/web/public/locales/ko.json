@@ -181,7 +181,18 @@
     "submit": "제출",
     "telegram": "텔레그램",
     "calendar": "캘린더",
-    "mode": "모드"
+    "mode": "모드",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "notApplicable": "",
+    "password": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": "",
+    "company": ""
   },
   "auth": {
     "accountCreated": "{{userName}}님의 계정이 생성되었습니다!",
@@ -232,7 +243,21 @@
     "dashboardUnlocked": "학생 대시보드가 잠금 해제되었습니다!",
     "didYouKnow": "알고 계셨나요?",
     "passwordChangedSuccess": "비밀번호가 성공적으로 변경되었습니다",
-    "trackProgress": "계정을 생성하거나 로그인하여 진행 상황을 확인하세요."
+    "trackProgress": "계정을 생성하거나 로그인하여 진행 상황을 확인하세요.",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -447,7 +472,28 @@
       "successDiplomaTimeStamped": "축하합니다! 시험에 성공적으로 통과했습니다.\n당신의 디플로마는 시험 시작 시간 기준 10시간 후 학습 대시보드에서 확인할 수 있습니다. 이 지연은 <0>타임스탬핑</0> 기술 때문이며, 디플로마의 진위성을 보장하기 위한 것입니다.",
       "takeExam": "시험 보기",
       "timeStampedNoDot": "타임스탬프가 찍혔습니다",
-      "timeStamping": "타임스탬프 진행 중"
+      "timeStamping": "타임스탬프 진행 중",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "viewExam": "",
+      "weight": "",
+      "completed": "",
+      "examAvailabilityDetails": ""
     },
     "review": {
       "yesOfCourse": "네, 당연하죠",
@@ -581,7 +627,30 @@
       "profileInformation": "프로필 정보",
       "profilePicture": "프로필 사진",
       "security": "보안",
-      "username": "사용자 이름"
+      "username": "사용자 이름",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": "",
+      "settings": ""
     },
     "bCert": {
       "noResults": "이 계정에는 아직 성적이나 증명서가 없습니다.\n시험에 합격했지만 결과가 오랜 시간 동안 반영되지 않는다면, <0>저희에게 연락해 주세요</0>.",
@@ -589,7 +658,11 @@
     },
     "calendar": {
       "calendar": "캘린더",
-      "personalCalendar": "개인 캘린더"
+      "personalCalendar": "개인 캘린더",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "course": {
       "checkDetailsCompleted": "이 코스에 대한 모든 세부 정보를 확인할 수 있습니다.",
@@ -602,7 +675,60 @@
       "tweetText": "@planb_network에서 {{courseIndex}} 코스를 완료하고 디플로마를 받게 되어 기쁩니다! 기말 시험 점수: {{score}}/100! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "학습한 내용을 요약한 페이지입니다. 일부 챕터를 놓쳤거나 올바르게 확인되지 않았다면, 지금 복습하거나 ‘완료’ 버튼을 눌러 마무리하세요.",
       "submitReviewInfo": "이 기능을 사용하려면 리뷰를 제출해야 합니다.",
-      "coordinator": "코스 코디네이터"
+      "coordinator": "코스 코디네이터",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "surePreferenceList": "",
+      "summerSchool": "",
+      "confirmList": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "exams": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "courseCalendar": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "generalInformation": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -635,7 +761,52 @@
         "quickRecap": "여기에서 이 코스에 대한 모든 일반 정보를 찾을 수 있습니다.",
         "reviewInfos": "여기에서 구성한 각 코스에 대한 정보를 관리하고 확인할 수 있습니다.",
         "reviews": "리뷰",
-        "goal": "목표"
+        "goal": "목표",
+        "announcements": "",
+        "announcementModal": {
+          "create": "",
+          "dateLabel": "",
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "allStudents": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "menu": "강사 메뉴",
       "profile": {
@@ -772,7 +943,15 @@
         "maximumNumberOfUse": "사용 가능한 최대 횟수",
         "discountCodeCopied": "할인 코드 복사됨",
         "downloadImage": "이미지 다운로드",
-        "downloadImages": "이미지 다운로드"
+        "downloadImages": "이미지 다운로드",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "할인 코드"
     },
@@ -956,7 +1135,18 @@
       "yourRoles": "지원한 직무"
     },
     "backToDashboard": "대시보드 돌아가기",
-    "studentDashboard": "학생 대시보드"
+    "studentDashboard": "학생 대시보드",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "card": {
@@ -1143,7 +1333,8 @@
     "payWithBitcoin": "비트코인으로 결제하기",
     "haveReductionCode": "할인 코드 있나요?",
     "payByCard": "카드로 결제하기",
-    "insertReductionCode": "할인 코드를 입력하세요"
+    "insertReductionCode": "할인 코드를 입력하세요",
+    "taxesMayApply": ""
   },
   "podcasts": {
     "pageTitle": "비트코인 팟캐스트"
@@ -1496,5 +1687,47 @@
     "online": "온라인",
     "replay": "재생",
     "hybrid": "대면 및 온라인"
+  },
+  "notifications": {
+    "yearsAgo": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "yesterday": "",
+    "bCertResults": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
   }
 }
