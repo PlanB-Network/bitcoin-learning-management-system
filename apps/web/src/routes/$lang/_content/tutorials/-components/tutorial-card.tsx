@@ -24,7 +24,7 @@ export const TutorialCard = ({
       className={cn(
         'flex items-center w-full rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 max-md:w-[290px] overflow-hidden',
         dark
-          ? 'bg-darkOrange-10 text-white md:hover:shadow-sm-card-dark'
+          ? 'bg-tertiary-10 text-white md:hover:shadow-sm-card-dark'
           : 'bg-newGray-6 text-newBlack-3 md:shadow-course-navigation shadow-course-navigation-sm md:border md:hover:shadow-sm-card-light',
         addMargin && 'my-2',
       )}
@@ -35,13 +35,18 @@ export const TutorialCard = ({
         className="size-[60px] md:size-20 rounded-full shrink-0"
       />
       <div className="flex flex-col overflow-hidden w-full">
-        <span className="max-md:mobile-subtitle1 capitalize text-xl font-semibold text-darkOrange-5 md:mb-1">
+        <span
+          className={cn(
+            'max-md:mobile-subtitle1 capitalize text-xl font-semibold  md:mb-1 line-clamp-2',
+            dark ? 'text-white' : 'text-darkOrange-5',
+          )}
+        >
           {tutorial.title}
         </span>
         <span
           className={cn(
             'text-xs font-light mb-2 max-md:hidden',
-            dark ? 'text-white' : 'text-newBlack-3',
+            dark ? 'text-tertiary-4' : 'text-newBlack-3',
           )}
         >
           {tutorial.description}
@@ -49,7 +54,10 @@ export const TutorialCard = ({
         <div className="md:hidden">
           <span className="flex gap-1 md:gap-3 items-center my-1">
             <span
-              className={`text-${dark ? 'white' : 'black'} text-base md:label-large-20px`}
+              className={cn(
+                'text-base md:label-large-20px',
+                dark ? 'text-white' : 'text-black',
+              )}
             >
               {tutorial.likeCount}
             </span>
@@ -87,8 +95,8 @@ export const TutorialCard = ({
             <TextTag
               key={tag}
               size="verySmall"
-              variant="grey"
-              mode="light"
+              variant={dark ? 'lightMaroon' : 'grey'}
+              mode={dark ? 'dark' : 'light'}
               className="text-nowrap"
             >
               {tag}

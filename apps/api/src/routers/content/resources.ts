@@ -114,8 +114,11 @@ export const resourcesRouter = createTRPCRouter({
     }),
   // Conferences
   getConferences: createGetResourcesProcedure()
+    .input(z.object({ projectId: z.string().optional() }).optional())
     .output<Parser<JoinedConference[]>>(joinedConferenceSchema.array())
-    .query(({ ctx }) => createGetConferences(ctx.dependencies)()),
+    .query(({ ctx, input }) =>
+      createGetConferences(ctx.dependencies)(input?.projectId),
+    ),
   getConference: createGetResourceProcedure()
     .output<Parser<JoinedConference>>(joinedConferenceSchema)
     .query(({ ctx, input }) => createGetConference(ctx.dependencies)(input.id)),
