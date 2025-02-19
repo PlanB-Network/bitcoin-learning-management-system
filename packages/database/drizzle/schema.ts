@@ -39,10 +39,12 @@ export const usersAccounts = users.table('accounts', (t) => ({
   currentEmailChecked: t.boolean().default(false).notNull(),
   passwordHash: t.varchar({ length: 255 }),
   contributorId: t.varchar({ length: 20 }).unique().notNull(),
-  professorId: t.varchar().unique(),
-  // .references(() => contentProfessors.id, {
-  //   onUpdate: 'cascade',
-  // }),
+  professorId: t
+    .uuid()
+    .unique()
+    .references(() => contentProfessors.id, {
+      onUpdate: 'cascade',
+    }),
   createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
@@ -1758,7 +1760,7 @@ export const contentContributors = content.table('contributors', (t) => ({
 }));
 
 export const contentProfessors = content.table('professors', (t) => ({
-  id: t.varchar().primaryKey().notNull(),
+  id: t.uuid().primaryKey().notNull(),
   path: t.varchar({ length: 255 }).unique().notNull(),
 
   name: t.varchar({ length: 255 }).unique().notNull(),
@@ -1797,11 +1799,13 @@ export const contentProfessors = content.table('professors', (t) => ({
 export const contentProfessorsLocalized = content.table(
   'professors_localized',
   (t) => ({
-    professorId: t.varchar().notNull(),
-    // .references(() => contentProfessors.id, {
-    //   onDelete: 'cascade',
-    //   onUpdate: 'cascade',
-    // }),
+    professorId: t
+      .uuid()
+      .notNull()
+      .references(() => contentProfessors.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: t.varchar({ length: 10 }).notNull(),
 
     // Per translation
@@ -1818,11 +1822,13 @@ export const contentProfessorsLocalized = content.table(
 export const contentProfessorTags = content.table(
   'professor_tags',
   (t) => ({
-    professorId: t.varchar().notNull(),
-    // .references(() => contentProfessors.id, {
-    //   onDelete: 'cascade',
-    //   onUpdate: 'cascade',
-    // }),
+    professorId: t
+      .uuid()
+      .notNull()
+      .references(() => contentProfessors.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     tagId: t
       .integer()
       .notNull()

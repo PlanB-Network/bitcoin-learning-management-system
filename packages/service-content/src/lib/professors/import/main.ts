@@ -90,6 +90,14 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         RETURNING *
       `.then(firstRow);
 
+    // Remove tags related to the resource before inserting the new one
+    if (result) {
+      await transaction`
+        DELETE FROM content.professor_tags
+        WHERE professor_id = ${result.id}
+      `;
+    }
+
     // If the professor has tags, insert them into the tags table and link them to the professor
     if (result && parsedProfessor.tags && parsedProfessor.tags?.length > 0) {
       await transaction`

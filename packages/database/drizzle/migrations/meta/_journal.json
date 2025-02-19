@@ -540,6 +540,13 @@
       "when": 1739971943372,
       "tag": "0076_volatile_blacklash",
       "breakpoints": true
+    },
+    {
+      "idx": 77,
+      "version": "7",
+      "when": 1739974195026,
+      "tag": "0077_dapper_colonel_america",
+      "breakpoints": true
     }
   ]
 }
