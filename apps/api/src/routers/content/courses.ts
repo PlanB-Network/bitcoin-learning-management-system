@@ -124,7 +124,6 @@ const getCourseChapterProcedure = publicProcedure
   .query(async ({ ctx, input }) => {
     const uid = ctx.user?.uid || null;
 
-    console.log('ooo');
     const status = await createCheckChapterAccess(ctx.dependencies)(
       input.chapterId,
       uid,
