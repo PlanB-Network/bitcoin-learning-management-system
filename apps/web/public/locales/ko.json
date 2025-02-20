@@ -2,25 +2,25 @@
   "about": {
     "activeContributors": "적극적인 기여자",
     "missionTitle": "우리의 사명",
-    "missionContent1": "",
-    "missionContent2": "",
+    "missionContent1": "우리의 임무는 오픈 소스 교육과 네트워킹을 통해 지역 비트코인 커뮤니티를 지원하는 것입니다. 이를 위해, 우리는 필요한 자원(코스, 책, 포스터, 전단지, 비디오)을 수집, 조직하고 만들어 비트코인 산업의 발전을 돕습니다.",
+    "missionContent2": "우리는 지식을 중앙화하여 가장 효과적인 방법으로 공유할 수 있도록 하며, 간단한 다국어 GitHub 리포지토리와 E-러닝 플랫폼을 사용합니다. 또한, 지역 비트코인 허브의 발전을 돕기 위해 그들의 재능이 성장할 수 있는 적절한 도구를 제공합니다.",
     "commitmentTitle": "우리의 약속",
     "commitmentContent": "비트코인 커뮤니테에 대한 우리의 약속:\n • 오픈소스를 유지\n • 고품질의 교육 콘텐츠 제공\n • 가능한 많은 언어로 콘텐츠 번역\n • 비트코인 기업가들의 여정 지원",
-    "coreTeamTitle": "",
-    "coreTeamContent": "",
+    "coreTeamTitle": "코어 팀",
+    "coreTeamContent": "Plan ₿ 네트워크는 수백 명의 기여자, 교사, 커뮤니티 리더, 디자이너, 개발자, 그리고 조직자들의 집단입니다. Plan ₿을 현실로 만들어 주고, 지금도 함께 만들어가는 많은 분들께 진심으로 감사드립니다! (기여자 명단은 곧 공개될 예정입니다)",
     "coreTeamGiacomoRole": "국장 겸 공동 창업자",
-    "coreTeamRogzyRole": "",
+    "coreTeamRogzyRole": "제품 매니저 및 공동 창업자",
     "coreTeamAsioRole": "교육 코디네이터",
     "coreTeamAjelexRole": "노드 코디네이터",
-    "corporateTitle": "",
-    "corporateContent": "",
+    "corporateTitle": "프로젝트를 지원하는 기업들",
+    "corporateContent": "Plan ₿ Network는 비트코인 개발에 집중하는 세 개의 조직과 개인이 공동으로 진행하는 프로젝트입니다. 비트코인 교육의 확장을 위해 협력하여 Plan ₿ Network를 설립하기로 결정했습니다. 그 이후, 많은 다른 단체와 전문가들이 힘을 합쳐 비트코인 교육을 전 세계로 확산하는 데 기여하기로 했습니다. 이러한 노력에 깊이 감사드립니다.",
     "coportateContact": "연락처 정보:",
     "storyTitle": "우리의 이야기",
-    "storyContent": "",
-    "description": "",
-    "subtitle": "",
-    "title": "",
-    "manifesto": ""
+    "storyContent": "Plan ₿ Network는 전 세계적으로 비트코인 교육을 지원하는 프로젝트입니다. 교육, 오픈 소스 소프트웨어, P2P 네트워크, 그리고 커뮤니티의 감각에 초점을 맞춘 다양한 열정적인 비트코인 기업들의 교차점입니다. 이들은 함께 Plan ₿ Network를 구축하고 비트코인 생태계의 성장을 위한 적절한 도구를 제공하기로 결정했습니다. 우리의 2023 릴리즈 프레젠테이션은 여기에서 확인 가능합니다.",
+    "description": "Plan ₿ Network는 전 세계 커뮤니티가 조직적으로 더 나은 교육을 제공할 수 있도록 돕습니다. 이 플랫폼은 온라인 아카데미, 리소스 & 튜토리얼 포털, 비트코인 교육 툴킷을 통해 목표를 달성하는 데 필요한 도구를 개발합니다.",
+    "subtitle": "세계를 오렌지 필링하고 싶나요? Plan ₿ Network에 꼭 참여하세요.",
+    "title": "플랜 ₿ 네트워크 소개",
+    "manifesto": "Plan ₿ Network는 비트코인이 가져올 탈중앙화된 미래를 믿습니다.\n\n우리의 사명은 10년 안에 10억 명에게 비트코인을 소개하는 것.\n우리는 교육과 정보로 그 길을 엽니다.\n\n우리는 오픈소스 교육 콘텐츠를 제공하고,\n비트코인 멘토십 네트워크를 통해 지역 비트코인 커뮤니티를 지원합니다.\n\n우리의 철학은 사이퍼펑크 매니페스토에서 영감을 받았습니다.\n그들이 프라이버시를 지켰듯, 우리는 교육을 지킵니다.\n자유와 변화의 기반은 지식이라고 우리는 믿습니다.\n\n우리는 비트코인 하나만을 믿습니다.\n\n우리는 자기 책임과 자산의 주권을 존중하며, 독립성을 옹호합니다.\n\n우리는 맹목적인 신뢰가 아닌 검증을 추구합니다.\n\n우리는 돈을 바로잡으면 세상도 바로잡을 수 있다고 믿습니다.\n\n우리는 중앙화에서 벗어나 오픈소스로, 어떤 단일 실패 지점도 피하고자 합니다.\n\n우리는 자유로운 콘텐츠 확산을 장려합니다.\n\n우리는 개인이 중심이 되고, 아래에서 위로 운영되는 세상을 향해 나아갑니다.\n\n우리는 단순하게, 교육하고, 공유합니다.\n\n한 사람씩 오렌지 필링하며, 비트코인을 전 세계에 퍼뜨리는 우리의 미션을 함께합시다!\n"
   },
   "words": {
     "about": "",
@@ -125,51 +125,55 @@
     "view": ""
   },
   "auth": {
-    "accountCreated": "",
-    "alreadyHaveAccount": "",
-    "canSaveProgress": "",
-    "createAccount": "",
-    "createOne": "",
-    "emailAddress": "",
+    "accountCreated": "{{userName}}님의 계정이 생성되었습니다!",
+    "alreadyHaveAccount": "이미 계정이 있으신가요?",
+    "canSaveProgress": "이제 비트코인 아카데미에서 진행 상황을 저장할 수 있습니다",
+    "createAccount": "등록",
+    "createOne": "여기서 등록하세요!",
+    "emailAddress": "이메일 주소",
     "errors": {
-      "usernameRegex": "",
-      "usernameRequired": "",
-      "usernameTooShort": "",
-      "invalidCredentials": "",
-      "displayNameTooShort": "",
-      "emailInvalid": ""
+      "usernameRegex": "사용자 이름에는 문자, 숫자, 밑줄 (_), 마침표 (.), 하이픈 (-)만 사용할 수 있습니다.",
+      "usernameRequired": "사용자 이름이 필요합니다.",
+      "usernameTooShort": "사용자 이름은 최소 5자 이상 포함해야 합니다.",
+      "invalidCredentials": "입력한 로그인 정보가 올바르지 않습니다",
+      "displayNameTooShort": "디스플레이 이름은 최소 2자 이상 포함해야 합니다.",
+      "emailInvalid": "잘못된 이메일"
     },
-    "forgottenPassword": "",
-    "headerAccountCreated": "",
-    "lnurlAuthDescription": "",
-    "noAccountNeeded": "",
-    "noAccountYet": "",
-    "resetPassword": "",
-    "passwordRequired": "",
-    "passwordsDontMatch": "",
-    "sendLink": "",
-    "signIn": "",
-    "checkingTokenExplain": "",
-    "passwordResetSent": "",
-    "confirmation": "",
-    "displayName": "",
-    "checkingToken": "",
+    "forgottenPassword": "비밀번호를 잊으셨나요?",
+    "headerAccountCreated": "계정이 생성되었습니다",
+    "lnurlAuthDescription": "라이트닝 지갑으로 QR 코드를 스캔하여 로그인하세요!",
+    "noAccountNeeded": "Plan ₿ Network에서 학습하려면 계정이 필요하지 않습니다!",
+    "noAccountYet": "계정이 없으신가요?",
+    "resetPassword": "비밀번호를 재설정하세요",
+    "passwordRequired": "비밀번호가 필요합니다",
+    "passwordsDontMatch": "비밀번호가 일치하지 않습니다",
+    "sendLink": "링크를 보내주세요.",
+    "signIn": "로그인",
+    "checkingTokenExplain": "토큰이 유효한지 확인 중입니다…",
+    "passwordResetSent": "비밀번호 재설정 안내가 이메일로 전송되었습니다. (이메일 주소가 우리 데이터베이스에 존재하는 경우).",
+    "confirmation": "검증",
+    "displayName": "디스플레이 이름",
+    "checkingToken": "토큰 확인 중",
     "invalidTokenExplain": {
-      "expired": "",
-      "consumed": "",
-      "invalid": "",
-      "notFound": ""
+      "expired": "토큰이 만료되었습니다",
+      "consumed": "이미 사용된 토큰입니다",
+      "invalid": "잘못된 토큰입니다",
+      "notFound": "토큰을 찾을 수 없습니다"
     },
-    "newPassword": "",
-    "passwordMinLength": "",
-    "passwordChanged": "",
-    "backToLogin": "",
-    "backToHome": "",
-    "invalidToken": "",
-    "passwordResetError": "",
-    "tryAgain": "",
-    "emailTip": "",
-    "passwordSuccessfullyChanged": ""
+    "newPassword": "새 비밀번호",
+    "passwordMinLength": "비밀번호는 최소 {{len}}자 이상이어야 합니다",
+    "passwordChanged": "비밀번호가 변경되었습니다",
+    "backToLogin": "로그인으로 돌아가기",
+    "backToHome": "홈으로 돌아가기",
+    "invalidToken": "잘못된 토큰",
+    "passwordResetError": "비밀번호 재설정 오류",
+    "tryAgain": "다시 시도해보세요",
+    "emailTip": "이메일은 필수가 아니지만, 비밀번호를 잊어버린 경우에 유용할 수 있습니다!",
+    "passwordSuccessfullyChanged": "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인할 수 있습니다.",
+    "dashboardUnlocked": "학생 대시보드가 잠금 해제되었습니다!",
+    "didYouKnow": "알고 계셨나요?",
+    "passwordChangedSuccess": "비밀번호가 성공적으로 변경되었습니다",
+    "trackProgress": "계정을 생성하거나 로그인하여 진행 상황을 확인하세요."
   },
   "bet": {
     "educationalContent": {
@@ -200,9 +204,9 @@
       "selectVideo": "",
       "watchReplay": ""
     },
-    "language": "",
+    "language": "언어",
     "latestConferences": "",
-    "location": "",
+    "location": "위치",
     "noConferences": "",
     "pageTitle": "",
     "planBConferences": "",
@@ -232,7 +236,7 @@
     },
     "details": {
       "buyCourse": "",
-      "curriculum": "",
+      "curriculum": "커리큘럼",
       "description": "",
       "mobile": {
         "hours": ""
@@ -244,10 +248,11 @@
       "inPersonAccess": "",
       "buyOnlineCourse": "",
       "buyInPersonCourse": "",
-      "paidCourse": ""
+      "paidCourse": "",
+      "collaborativeEffort": "플랫폼의 모든 콘텐츠는 협업의 결과입니다. 각각의 수업, 번역, 수정은 기여자들의 작업에 의해 가능해집니다. 이러한 이유로, PlanB Network는 항상 다양한 언어로 우리의 콘텐츠를 검토할 수 있는 교정자를 찾고 있습니다. 교정 과정에 참여하고 싶다면, PlanB Network의 <0>Telegram</0> 그룹에 연락하고 <1>튜토리얼</1>을 읽어 주세요.\n\n이 콘텐츠는 오픈소스이며 <2>CC BY-SA</2> 라이선스 하에 있으므로, 원본 출처를 인정하는 한 자유롭게 공유하고 사용할 수 있습니다."
     },
     "explorer": {
-      "pageDescription": "",
+      "pageDescription": "Plan ₿ 아카데미는 전 세계적으로 비트코인 교육을 단순화하고자 합니다. 다양한 분야의 전문가들이 선별한 강의들이 Plan ₿ 아카데미에서 제공됩니다.\n초보자부터 전문가까지 스스로 학습하거나 교수님의 주간 강의를 따라갈 수 있습니다. 비트코인의 광대한 세계에 대한 더 깊은 이해를 얻는 데 도움을 줄 수 있기를 바랍니다. 이 강의 중 많은 것은 완전히 무료로, 어디에 있든 누구나 양질의 교육에 접근할 수 있도록 설계되었습니다.",
       "findCourses": "",
       "seeCourse": "",
       "buildPath": "",
@@ -609,7 +614,7 @@
       "availableLanguages": "",
       "title": "",
       "subtitle": "",
-      "content1": "",
+      "content1": "Plan ₿에서는 비트코인이 전 세계 모든 사람에게 중요한 국제적 혁신이라고 믿습니다. 수십억 명의 사람들에게 힘을 실어주기 위해, 이 플랫폼은 다언어로 제공되며 모든 이에게 접근 가능하도록 설계되었습니다. 현재 7개 언어를 지원하며, 매달 더 많은 언어가 추가되고 있습니다. 이를 위해 AI와 전 세계 비트코인 열정가들의 열정을 결합하여 사용하고 있습니다. 여러분도 자신의 국가에서 지역 네트워크를 구축하기 시작할 수 있습니다!",
       "link": "",
       "availableLanguagesVariation": ""
     },
@@ -727,7 +732,7 @@
       "exploreAllTutorials": ""
     },
     "merchant": {
-      "description": "",
+      "description": "사업을 운영하면서 비트코인을 쉽게 받아들이는 방법이 궁금하신가요? 저희의 다양한 솔루션을 탐색해 전문가가 되고, 주변 가게를 위한 머천트 솔루션을 간편하게 설정해 보세요. POS 솔루션은 오프라인 혹은 온라인 판매자의 니즈, 거래 규모, 그리고 업무 복잡성에 따라 달라집니다. 일반적으로는 기본 라이트닝 (LN) 지갑으로 시작하여 간단하고 효율적인 솔루션(예: 모바일 POS)으로 전환한 뒤, 마지막으로 더욱 고급스럽고 복잡하며 전문적인 솔루션을 위해 BTC Pay Server를 검토하는 방식을 권장합니다.",
       "shortDescription": "",
       "title": ""
     },
@@ -788,7 +793,7 @@
         "description": ""
       },
       "hardware": {
-        "description": ""
+        "description": "하드웨어 지갑은 보통 장기간 비트코인 저축을 저장하는 데 사용됩니다. 이들은 인터넷에 연결되지 않은 물리적 장치로, 흔히 \"콜드 월렛\"이라고 불립니다. 이러한 장치는 보안성이 매우 뛰어나지만, 소프트웨어는 오픈소스로 공개되더라도 하드웨어 비용은 약 50~300달러 정도입니다. 이 장치를 대략 500달러 상당의 장기 저축 비트코인을 저장할 목적으로 사용하는 것을 고려할 수 있습니다. 이러한 장치를 은행 계좌처럼, 큰 금액의 저축을 위해 가끔 사용하는 것으로 여겨질 수 있습니다."
       },
       "mobile": {
         "description": ""
@@ -808,20 +813,23 @@
     "itemNotFoundOrTranslated": ""
   },
   "bCert": {
-    "challengeYourself": "",
-    "organizeDescription": "",
-    "bCertDescription": "",
+    "challengeYourself": "자신에게 도전하고 레벨을 확인해보세요!",
+    "organizeDescription": "좋습니다! 만약 당신의 커뮤니티가 네트워크의 일부라면, 당신의 허브에서 시험 세션을 조직할 수 있습니다. 시험을 주최할 수 있는 필수 조건을 준수할 수 있는지 확인하기 위해 헌장을 읽어주세요. 만약 당신이 그것들을 이행할 수 있다면, 그때 당신의 세션을 예약하고 플랫폼에 추가할 수 있습니다.",
+    "bCertDescription": "₿-인증서는 비트코인 및 관련 주제에 대한 이해 수준을 평가하는 국제적으로 인정받은 시험입니다. 이 인증서를 취득하면 비트코인 산업에서의 기술과 지식을 입증할 수 있습니다.",
     "readChart": "",
     "pageSubtitle": "",
-    "bookExam": "",
-    "checkout": "",
-    "knowledgeableBitcoin": "",
-    "noBookExam": "",
-    "organizeExam": "",
-    "organizeSubtitle": "",
-    "organizeTitle": "",
+    "bookExam": "시험 세션 예약하기",
+    "checkout": "₿-CERT (플랜B 네트워크 공식 증명서)를 알아보기",
+    "knowledgeableBitcoin": "비트코인에 대해 잘 아시나요?",
+    "noBookExam": "아직 시험 세션 계획이 없습니다.",
+    "organizeExam": "세션 구성",
+    "organizeSubtitle": "10억 명에게 오렌지 필링은 쉽지 않습니다.",
+    "organizeTitle": "허브에서 ₿-CERT 시험 세션을 구성하고 싶으신가요?",
     "pageTitle": "",
-    "tweetText": ""
+    "tweetText": "",
+    "download": "₿-CERT 다운로드",
+    "organizeSessionConditions": "테스트를 조직하기 위한 필수 조건을 충족하는지 확인하기 위해 <0>헌장</0>을 읽어주시기 바랍니다.\n자격이 되시면, 당신과 함께 귀하의 지역 커뮤니티를 위한 세션을 기쁘게 계획하겠습니다.\n선호하는 방법으로 저희에게 연락해 주시기 바랍니다.",
+    "organizeSessionHub": "당신의 지역 허브에서 ₿-CERT (플랜B 네트워크 공식 증명서) 시험을 조직해보세요"
   },
   "glossary": {
     "filterBar": "",

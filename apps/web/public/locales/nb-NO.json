@@ -74,22 +74,24 @@
     "passwordChangedSuccess": "Passordet ble endret"
   },
   "bCert": {
-    "checkout": "Sjekk ut ₿-sertifikatet",
-    "knowledgeableBitcoin": "Kunnskapsrik i Bitcoin?",
+    "checkout": "Sjekk ut ₿-CERT",
+    "knowledgeableBitcoin": "Hvor mye vet du om Bitcoin?",
     "noBookExam": "Det er ingen eksamener planlagt ennå.",
-    "organizeExam": "Organiser en eksamen",
+    "organizeExam": "Organiser en økt",
     "organizeSubtitle": "Å overbevise en milliard mennesker er ikke lett",
-    "organizeTitle": "Ønsker du å organisere en ₿ sertifikateksamen på ditt knutepunkt?",
+    "organizeTitle": "Ønsker du å organisere en ₿-CERT på ditt knutepunkt?",
     "pageSubtitle": "Masseadopsjon gjennom sentralisert åpen kildekode-utdanning",
-    "pageTitle": "Bestå ₿-sertifikatet",
+    "pageTitle": "Bestå ₿-CERT",
     "readChart": "Les charteret",
-    "bCertDescription": "₿-sertifikatet er en internasjonalt anerkjent eksamen for å vurdere din forberedelse på Bitcoin og relaterte emner. Dette sertifikatet vil gjøre det mulig for deg å bevise dine ferdigheter og kunnskaper i Bitcoin-industrien, og gir deg tilgang til selskaper og stillinger i den industrien.",
+    "bCertDescription": "₿-CERT er en internasjonalt anerkjent eksamen for å vurdere din forberedelse på Bitcoin og relaterte emner. Dette sertifikatet vil gjøre det mulig for deg å bevise dine ferdigheter og kunnskaper i Bitcoin-industrien, og gir deg tilgang til selskaper og stillinger i den industrien.",
     "bookExam": "Bestill eksamen",
     "challengeYourself": "Utfordre deg selv og bekreft ditt nivå!",
     "organizeDescription": "Ingen problem! Hvis fellesskapet ditt er en del av nettverket, kan du organisere en eksamensøkt på ditt knutepunkt. Vennligst les charteret for å forsikre deg om at du kan overholde de obligatoriske vilkårene for å være vert for en eksamen. Hvis du kan oppfylle dem, kan du planlegge økten din og legge den til på plattformen.",
-    "tweetText": "Gleder meg over å ha bestått B-sertifikatet hos @planb_network med en score på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
+    "tweetText": "Gleder meg over å ha bestått ₿-CERT hos @planb_network med en score på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
     "download": "Last ned sertifikat",
-    "verify": "Bekreft ektheten av sertifikatet ditt"
+    "verify": "Bekreft ektheten av sertifikatet ditt",
+    "organizeSessionConditions": "Vennligst les <0>vedtektene</0> for å sikre at du oppfyller de obligatoriske vilkårene for å være vert for testen.\nHvis du kvalifiserer, vil vi gjerne planlegge en økt for ditt lokale samfunn sammen med deg.\nVennligst kontakt oss ved å bruke din foretrukne metode.",
+    "organizeSessionHub": "Organiser en ₿-CERT testøkt på ditt lokale hub"
   },
   "bet": {
     "contributeButton": "Hjelp & Bidra",
@@ -174,7 +176,10 @@
       "otherCourses": "Andre kurs",
       "otherCoursesInterest": "Andre kurs du kan være interessert i",
       "thanksTipping": "Du kan si takk ved å gi professoren et tips.",
-      "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå"
+      "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå",
+      "ledBy": "Dette kurset ledes av",
+      "pastEditionsRatings": "Tidligere utgavers rangeringer",
+      "teacherLed": "Lærerledet"
     },
     "explorer": {
       "buildPath": "Lag din egen sti ned i kaninhullet",
@@ -182,7 +187,10 @@
       "findCourses": "Finn det perfekte kurset for dine behov takket være verktøyet for kursvalg",
       "journey": "Bitcoin er en reise, ikke en destinasjon",
       "seeCourse": "Oppdag kurset",
-      "pageDescription": "Plan ₿ Academy har som mål å forenkle Bitcoin-utdanning over hele verden. Kuratert av eksperter fra forskjellige felt, tilbyr akademiet vårt et omfattende utvalg av kurs designet for å klargjøre alle aspekter ved Bitcoin.\nFra nybegynner til ekspert, enten i ditt eget tempo eller fulgt ukentlig av en professor, håper vi at akademiet kan hjelpe deg med å få en dypere forståelse av den omfattende verdenen av Bitcoin. Mange av kursene våre er helt gratis, slik at alle, hvor som helst, kan få tilgang til kvalitetsutdanning."
+      "pageDescription": "Plan ₿ Academy har som mål å forenkle Bitcoin-utdanning over hele verden. Kuratert av eksperter fra forskjellige felt, tilbyr akademiet vårt et omfattende utvalg av kurs designet for å klargjøre alle aspekter ved Bitcoin.\nFra nybegynner til ekspert, enten i ditt eget tempo eller fulgt ukentlig av en professor, håper vi at akademiet kan hjelpe deg med å få en dypere forståelse av den omfattende verdenen av Bitcoin. Mange av kursene våre er helt gratis, slik at alle, hvor som helst, kan få tilgang til kvalitetsutdanning.",
+      "planbSchoolHeadline": "Plan ₿ Skolen, ledet av Giacomo Zucco, tilbyr intensive tre måneders utdanningsprogrammer designet for å bygge bro mellom læring og praktiske anvendelser. Utover tradisjonelle klasser, engasjerer studentene seg i bedriftsledede praktiske prosjekter og en førsteklasses bootcamp dedikert til topputøvere. Bare de beste talentene går videre etter to konkurransepregete utvelgelsesrunder, noe som sikrer at de endelige toppstudentene er fullt utrustet til å starte karrierene sine i Bitcoin-industrien.",
+      "comingSoon": "kommer snart",
+      "planbSchool": "PLAN ₿ SKOLE"
     },
     "part": {
       "count": "Del {{count}}"
@@ -264,7 +272,8 @@
       "feedback": "Tilbakemelding",
       "feedbackDescription1": "Vennligst vurder din opplevelse med kurset nedenfor.",
       "feedbackDescription2": "Merk at lærere ikke vil ha tilgang til individuelle evalueringer.",
-      "thankYou": "Takk for din anmeldelse! Den er tatt i betraktning"
+      "thankYou": "Takk for din anmeldelse! Den er tatt i betraktning",
+      "whatStudentsSayPasEdition": "Hva studenter sier om tidligere utgaver"
     },
     "exam": {
       "certificateAvailable": "Det vil være tilgjengelig omtrent 8 timer etter innsending.",
@@ -325,9 +334,21 @@
       "courseDiploma": "Kursdiplom",
       "courseNotFound": "Kurset ble ikke funnet",
       "examCertificateCompletionText": "Plan ₿ Network gratulerer {{username}} med å ha blitt tildelt kursdiplomet \"{{courseName}}\".",
-      "bCertCompletionText": "Plan ₿ Network er glad for å gratulere {{username}} med å ha mottatt ₿-sertifikatet.",
+      "bCertCompletionText": "Plan ₿ Network er glad for å gratulere {{username}} med å ha mottatt ₿-CERT.",
       "buttonTextBCert": "Lær mer",
-      "certificatePageOtherCourses": "Andre relaterte kurs"
+      "certificatePageOtherCourses": "Andre relaterte kurs",
+      "successDiploma": "Gratulerer! Du har bestått eksamen. \nDitt diplom er tilgjengelig i studentdashbordet ditt. Det har blitt <0>tidsstemplet</0> for å sikre dets autentisitet.",
+      "availableDashboardTimestamped": "Diplomet ditt er tilgjengelig på dashbordet ditt.",
+      "examNotPassed": "Du må ta den endelige eksamenen og oppnå over 80% for å få vitnemålet ditt og fullføre kurset helt. Dette vitnemålet vil bli <0>tidsstemplet</0> for å sikre dets autentisitet.",
+      "failedDiploma": "Du må score over 80% på slutteksamen for å få vitnemålet ditt og fullføre kurset helt. Du kan ta eksamen på nytt etter 24 timer.",
+      "goConclusion": "Gå til konklusjonen",
+      "successDiplomaTimeStamped": "Gratulerer! Du har bestått eksamen. \nDitt diplom vil være tilgjengelig i studentdashbordet ditt omtrent 10 timer etter at du tok eksamen. Denne forsinkelsen skyldes <0>tidsstempling</0> teknologi, som sikrer dens autentisitet.",
+      "takeExam": "Ta eksamen",
+      "timeStampedNoDot": "tidsstemplet",
+      "timeStamping": "tidsstempling",
+      "passExam": "Bestå eksamen",
+      "receiveDiploma": "Motta ditt diplom",
+      "skipGoConclusion": "Hopp over, gå til konklusjonen"
     },
     "conclusion": {
       "completedChaptersHeadline": "Alle kapitler er nå fullført!",
@@ -345,7 +366,7 @@
     "wallets": "Lommebøker",
     "view": "Visning",
     "about-us": "Om Oss",
-    "bCert": "₿ Sertifikat",
+    "bCert": "₿-CERT",
     "level": {
       "advanced": "Avansert",
       "beginner": "Nybegynner",
@@ -354,7 +375,8 @@
       "intermediate": "Mellomliggende",
       "level": "Nivå",
       "levels": "Nivåer",
-      "beginnerFriendly": "Nybegynnervennlig"
+      "beginnerFriendly": "Nybegynnervennlig",
+      "expert": "Ekspert"
     },
     "library": "Bibliotek",
     "podcasts": "Podcaster",
@@ -478,7 +500,25 @@
     "skip": "Hopp over",
     "movie": "Film",
     "producer": "Produsent",
-    "channels": "Kanaler"
+    "channels": "Kanaler",
+    "next": "Neste",
+    "no": "Nei",
+    "submit": "Send inn",
+    "telegram": "Telegram",
+    "linkedin": "LinkedIn",
+    "delete": "Slett",
+    "careerPortal": "Karriereportal",
+    "complete": "Fullfør",
+    "country": "Land",
+    "email": "Epost",
+    "github": "Github",
+    "incomplete": "Ufullstendig",
+    "language": "Språk",
+    "name": "Navn",
+    "project": "Prosjekt",
+    "projects": "Prosjekter",
+    "previous": "Forrige",
+    "yes": "Ja"
   },
   "dashboard": {
     "account": "Konto",
@@ -501,7 +541,10 @@
       "noTicket": "Du har for øyeblikket ingen billetter.",
       "pastTicketTitle": "Tidligere bestillinger",
       "upcomingTicketTitle": "Kommende bestillinger",
-      "upcomingTicketSubtitle": "Last ned billetten din her for å delta på kommende arrangement. Husk å ta med billetten din for å få inngang til arrangementet."
+      "upcomingTicketSubtitle": "Last ned billetten din her for å delta på kommende arrangement. Husk å ta med billetten din for å få inngang til arrangementet.",
+      "noGoBack": "Nei, gå tilbake",
+      "yesCancel": "Ja, avbryt",
+      "cancelBookingTitle": "Er du sikker på at du vil avbestille denne bookingen?"
     },
     "calendar": {
       "calendar": "Kalender",
@@ -537,7 +580,8 @@
       "professor": "Professor :",
       "seeDetails": "Se detaljer",
       "seeTheCourse": "Se kurset",
-      "yourProgress": "Din fremgang :"
+      "yourProgress": "Din fremgang :",
+      "shareOn": "Del på"
     },
     "profile": {
       "change": "Endre",
@@ -627,8 +671,8 @@
       "submitReviewInfo": "Du må sende inn en anmeldelse for å få tilgang til denne funksjonen."
     },
     "credentials": {
-      "bCert": "₿ Sertifikat",
-      "bCertSubtitle": "Her kan du finne detaljene angående dine bestillinger og karakterer fra dine tidligere og fremtidige ₿ Sertifikater.\n₿ Sertifikatet er en tabell-eksamen organisert av Plan ₿ Network for å bekrefte ditt nivå i Bitcoin og relaterte emner.",
+      "bCert": "₿-CERT",
+      "bCertSubtitle": "Her kan du finne detaljene angående dine bestillinger og karakterer fra dine tidligere og fremtidige ₿-CERT.\n₿-CERT er en tabell-eksamen organisert av Plan ₿ Network for å bekrefte ditt nivå i Bitcoin og relaterte emner.",
       "courseDiplomas": "Kursdiplomer",
       "globalCertifications": "Globale sertifiseringer",
       "retakeExam": "Ta eksamen på nytt",
@@ -719,7 +763,144 @@
       "cvUpload": "Last opp CV-en din",
       "cvUploadLabel": "Last opp CV",
       "cvUploadSubtitle": "Last opp CV-en din for å vise frem ferdighetene og erfaringene dine til potensielle arbeidsgivere.",
-      "deleteCareerProfile": "Slett karriereprofil"
+      "deleteCareerProfile": "Slett karriereprofil",
+      "jobCategories": {
+        "more": "Mer",
+        "technicalRoles": "Tekniske Roller",
+        "marketingCommunity": "Markedsføring og samfunn",
+        "productDesign": "Produkt og Design",
+        "operationsSupport": "Drift og støtte",
+        "researchEducation": "Forskning og utdanning",
+        "businessRoles": "Forretningsroller",
+        "financeCompliance": "Finans og Overholdelse"
+      },
+      "jobSearch": "Jobbsøk",
+      "jobSearchSubtitle": "Definer jobbpreferansene dine for å hjelpe oss med å tilpasse de beste mulighetene til profilen din.",
+      "jobTitles": {
+        "contentWriter": "Innholdsforfatter",
+        "cryptographer": "Kryptograf",
+        "customerSuccessManager": "Kundesuksessleder",
+        "customerSupportSpecialist": "Kundestøttespesialist",
+        "frontendEngineer": "Frontend-ingeniør",
+        "educator": "Utdanner",
+        "eventCoordinator": "Arrangementskoordinator",
+        "fullStackDeveloper": "Full Stack-utvikler",
+        "graphicDesigner": "Grafisk designer",
+        "logisticManager": "Logistikkleder",
+        "researcher": "Forsker",
+        "revenueManager": "Inntektssjef",
+        "miningOperationsManager": "Sjef for Mining",
+        "mobileAppDeveloper": "Mobilapputvikler",
+        "uiUxDesigner": "UI/UX Designer",
+        "businessDevelopmentManager": "Forretningsutviklingsleder",
+        "miningEngineer": "Mining-ingeniør",
+        "cybersecurity": "Nettsikkerhet",
+        "accountingManager": "Regnskapsfører",
+        "amlKycSpecialist": "AML/KYC-spesialist",
+        "backendEngineer": "Backend-ingeniør",
+        "bitcoinInvestmentAnalyst": "Bitcoin Investeringsanalytiker",
+        "brandStrategist": "Merkevarestrateg",
+        "businessAnalyst": "Forretningsanalytiker",
+        "cloudInfrastructureEngineer": "Skyinfrastruktur Ingeniør",
+        "communityManager": "Samfunnsleder",
+        "complianceOfficer": "Compliance Officer",
+        "dataEngineer": "Dataingeniør",
+        "devOpsEngineer": "DevOps-ingeniør",
+        "economicAnalyst": "Økonomisk analytiker",
+        "hrSpecialist": "HR-spesialist",
+        "legalContractSpecialist": "Juridisk kontraktsspesialist",
+        "marketingManager": "Markedsføringssjef",
+        "riskAnalyst": "Risikoanalytiker",
+        "sales": "Salg",
+        "seoSpecialist": "SEO-spesialist",
+        "socialMediaManager": "Sosiale Medier Manager",
+        "technicalProductManager": "Teknisk produktsjef",
+        "technicalSupportEngineer": "Teknisk støtteingeniør",
+        "technicalWriter": "Teknisk forfatter",
+        "uxResearcher": "UX-forsker",
+        "operationsManager": "Driftsleder",
+        "productManager": "Produktleder",
+        "protocolEngineer": "Protokollingeniør",
+        "publicRelationsManager": "Public Relations Manager"
+      },
+      "languageLevels": {
+        "fluent": "Flytende (På morsmålsnivå)",
+        "advanced": "Avansert (Tillit og nøyaktighet)",
+        "beginner": "Begynner (Begrenset forståelse)",
+        "elementary": "Grunnleggende (Enkel samtale & skriving)",
+        "intermediate": "Mellomnivå (Komfortabel kommunikasjon)"
+      },
+      "lastName": "Etternavn",
+      "legalInformation": "Juridisk informasjon",
+      "remoteWorkPreference": "Er du villig til å jobbe på fjernbasis?",
+      "remoteWorkPreferences": {
+        "no": "Jeg vil heller ikke",
+        "sometimes": "Fra tid til annen, hvorfor ikke",
+        "yes": "Ja, med glede"
+      },
+      "roleLevels": {
+        "junior": "Junior (1 til 3 år)",
+        "mid": "Mellomnivå (3 til 5 år)",
+        "senior": "Senior (5+ år)",
+        "student": "Student (0 år)"
+      },
+      "selectLanguage": "Velg et språk",
+      "selectRole": "Hvilke stilling(er) søker du etter?",
+      "selectRoleSubLabel": "Vennligst velg stillingstittelen som best samsvarer med jobbsøket ditt.",
+      "applicationStatus": "Din søknad er",
+      "legalTerms": "Juridiske vilkår",
+      "lookingForJob": "Vi leter for tiden etter jobbmuligheter for deg.",
+      "noFileSelected": "Ingen fil valgt",
+      "personalInformation": "Personlig informasjon",
+      "personalInformationSubtitle": "Vennligst legg til ditt fulle navn og bosted.",
+      "chooseFile": "Velg fil",
+      "roleLevel": "Erfaringsnivå",
+      "roleLevelSubLabel": "Velg nivået som best samsvarer med dine ferdigheter.",
+      "roleRequired": "Legg til minst én rolle.",
+      "seeOrEditProfile": "Se eller rediger profil",
+      "selectJobTitle": "Velg en jobbtittel",
+      "startApplication": "Start søknad",
+      "steps": {
+        "step1": "Personlig informasjon",
+        "step2": "Jobbsøk",
+        "step3": "Last opp CV",
+        "step4": "Juridiske vilkår"
+      },
+      "termsAndConditions": "Vilkår og betingelser",
+      "languageLevel": "Kompetansenivå",
+      "languageLevelSubLabel": "Velg nivået som best samsvarer med dine ferdigheter.",
+      "languageRequired": "Legg til minst ett språk.",
+      "languageSkills": "Språkferdigheter",
+      "languageSkillsSubtitle": "La oss vite hvilke språk du snakker og skriver, og deres tilsvarende ferdighetsnivå.",
+      "legalInformationSubtitle": "Vennligst godta vilkårene og betingelsene nedenfor, slik at vi kan matche dine ferdigheter og erfaringer med jobbmuligheter fra våre forretningspartnere.",
+      "provideValidEmail": "Vennligst oppgi en gyldig e-post.",
+      "uploadCV": "Last opp CV-en din",
+      "uploadCVSubLabel": "Last opp CV-en din for å vise frem ferdighetene og erfaringene dine til potensielle arbeidsgivere.",
+      "welcome": "Velkommen til din karriereportal",
+      "yourLanguages": "Dine språk",
+      "yourRoles": "Dine jobbposisjoner",
+      "description": "Som en Plan ₿ Network-student, er du en del av et bredt fellesskap som kan støtte din karrierevekst. I denne delen kan du sende inn din CV og dele dine karriereambisjoner. Vi vil jobbe tett med våre bransjepartnere for å matche profilen din med potensielle jobbmuligheter, og hjelpe deg med å ta det neste steget i din profesjonelle reise.",
+      "emailAddress": "E-postadresse",
+      "emailPlaceholder": "mail@mail.com",
+      "expectedSalary": "Forventet lønn",
+      "expectedSalaryPlaceholder": "Månedslønn: 2,5K netto",
+      "expectedSalarySubLabel": "Avhengig av profilen din, fortell oss timeprisen eller månedslønnen du forventer. Vennligst spesifiser om det er netto eller brutto.",
+      "fileTooLarge": "Valgt fil er for stor",
+      "fileUploadError": "Det oppstod en feil under opplastingen av filen din. Vennligst prøv igjen.",
+      "fileUploaded": "CV lastet opp vellykket!",
+      "firstName": "Fornavn (eller pseudonym)",
+      "followProcess": "Følg denne trinn-for-trinn-prosessen for å sende inn din CV og jobbinformasjon.",
+      "fullTime": "Heltid",
+      "invalidFile": "Ugyldig filformat",
+      "maxCharacters": "Maksimalt {{characters}} tegn",
+      "maxRoles": "Du kan velge opptil maks 3 jobbtitler.",
+      "motivation": "Motivasjon",
+      "motivationLetter": "Motivasjonsbrev",
+      "motivationLetterPlaceholder": "Hva er motivasjonen din?",
+      "motivationLetterSubLabel": "Du kan skrive noen ord nedenfor for å beskrive din erfaring og motivasjon.",
+      "motivationSubtitle": "Du kan berike søknaden din med et presentasjonsbrev, for å gi oss mer kontekst om deg selv og jobbsøket ditt.",
+      "other": "Annet",
+      "partTime": "Deltid"
     }
   },
   "events": {
@@ -777,7 +958,9 @@
       "callout_online": "Du er i ferd med å bestille online tilgang til dette arrangementet.",
       "callout_replay": "Du er i ferd med å bestille tilgang til opptaket av dette arrangementet.",
       "description_online": "Vennligst sjekk dato og tid for arrangementet som er oppgitt.\nNår tiden kommer, logg inn på plattformen for å få tilgang til direktesendingen via arrangementsiden.",
-      "description_physical": "Vennligst gjennomgå de oppgitte detaljene for stedet.\nNår bookingen din er bekreftet, vil vi utstede en billett som du kan presentere på arrangementet. Denne billetten vil også gi deg tilgang til direktesendingen og opptaket av videoen, hvis tilgjengelig."
+      "description_physical": "Vennligst gjennomgå de oppgitte detaljene for stedet.\nNår bookingen din er bekreftet, vil vi utstede en billett som du kan presentere på arrangementet. Denne billetten vil også gi deg tilgang til direktesendingen og opptaket av videoen, hvis tilgjengelig.",
+      "access_online_successful": "Når arrangementet starter, logg inn på plattformen for å få tilgang til direktesendingen på arrangementsiden.",
+      "access_physical_successful": "Du kan laste ned billetten din her, eller laste den ned senere i dashbordet ditt."
     },
     "pageDescription": "Vil du snakke om Bitcoin i nåtid? Her, kan du finne alle arrangementene som støttes av Plan B Network-samfunnene. Enten du vil lytte til et foredrag, diskutere Bitcoin over en drink, eller ta en eksamen for å vurdere kunnskapen din, du vil finne det rette arrangementet her gjennom Plan B Network.",
     "errors": {
@@ -849,7 +1032,9 @@
     "blogSection": {
       "blogTitle": "Hva er nytt hos Plan ₿ Network",
       "description": "Vi fortsetter å forbedre plattformen, innholdet og nettverket - sjekk det ut!",
-      "seeAll": "Se alt"
+      "seeAll": "Se alt",
+      "noBlogsAvailable": "Ingen blogger tilgjengelige.",
+      "noDateAvailable": "Ingen dato tilgjengelig"
     },
     "courseSection": {
       "checkAllCourses": "Sjekk alle kurs",
@@ -858,7 +1043,8 @@
     },
     "eventSection": {
       "checkEvents": "Sjekk alle arrangementer",
-      "eventTitle": "Et globalt nettverk av Bitcoin-utdannere"
+      "eventTitle": "Et globalt nettverk av Bitcoin-utdannere",
+      "hottestEvent": "Heteste bitcoin-arrangementer"
     }
   },
   "imagesAlt": {
@@ -874,7 +1060,7 @@
     "pageTitle": "Bitcoin-biblioteket"
   },
   "menu": {
-    "bCertDescription": "Bestå ₿-sertifikateksamen for å bekrefte ditt Bitcoin-nivå",
+    "bCertDescription": "Bestå ₿-CERT for å bekrefte ditt Bitcoin-nivå",
     "podcastsDescription": "Utforsk bitcoin-økosystemet gjennom podcaster",
     "betDescription": "Samling av innhold som du kan bruke til dine pedagogiske prosjekter",
     "conferencesDescription": "Samling av opptak fra Bitcoin-konferanser siden Genesis-blokken",
@@ -894,7 +1080,8 @@
     "securityDescription": "Behersk teknikkene for å beskytte dine Bitcoin-eiendeler.",
     "socialStudiesDescription": "Studer virkningen av Bitcoin på samfunnet.",
     "moviesDescription": "Oppdag fengslende historier og grundige utforskninger av Bitcoins utvikling og innvirkning",
-    "lecturesDescription": "Se på opptak av forelesninger fra Bitcoin-eksperter på nytt"
+    "lecturesDescription": "Se på opptak av forelesninger fra Bitcoin-eksperter på nytt",
+    "projectsDescription": "Lær om selskapene og prosjektene som bidrar til å forbedre Bitcoin og øke adopsjonen av det"
   },
   "professors": {
     "tips": {
@@ -918,7 +1105,9 @@
     "inProgress": "Korrekturlesing pågår",
     "reviewEarn": "Gjennomgå og tjen sats",
     "status": "Korrekturlesingsstatus",
-    "thanks": "En stor takk til våre hjelpere!"
+    "thanks": "En stor takk til våre hjelpere!",
+    "descriptionOriginalLanguage": "Selv om denne siden er på sitt opprinnelige språk, er menneskelig gjennomgang fortsatt nødvendig for å sikre nøyaktigheten.",
+    "rewardsText": "*Belønninger kan variere basert på $ vekslingskurs"
   },
   "publicCommunication": {
     "description": "Hos Plan B Network er vi stolte av å følge åpne kildekode-standarder og opprettholde gjennomsiktighet gjennom hele vår reise",
@@ -1003,7 +1192,11 @@
     "lectures": {
       "noLectures": "Det er for øyeblikket ingen forelesningsopptak for valgt språk.",
       "title": "Forelesningsopptak"
-    }
+    },
+    "projects": {
+      "title": "Prosjekter"
+    },
+    "toggleFreeOnly": "Gratis"
   },
   "nodeNetwork": {
     "description1": "Plan B Network støtter utdanningsinitiativer over hele verden. Vi samarbeider for å skape de beste verktøyene for disse prosjektene, både gjennom plattformen vår og i den fysiske verden. Vi er alltid på utkikk etter nye noder som kan bli med oss. Hvis du vil jobbe sammen for å skape et desentralisert globalt utdanningsnettverk for Bitcoin, ta kontakt!",
@@ -1117,13 +1310,17 @@
       },
       "shortDescription": "Sikkerhetsløsninger og bruk av dine bitcoins",
       "title": "Lommebok"
-    }
+    },
+    "hasBeenProofreadBy": "Dette kurset har blitt korrekturlest av",
+    "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå",
+    "writtenBy": "Dette kurset er skrevet av"
   },
   "payment": {
     "terms": "Se våre <0>generelle vilkår</0> og betingelser for detaljer om refusjon",
     "total": "Totalt",
     "payWithBitcoin": "Betal med Bitcoin",
-    "payByCard": "Betal med kort"
+    "payByCard": "Betal med kort",
+    "haveReductionCode": "Har du en rabattkode?"
   },
   "podcast": {
     "check": "Sjekk podcasten"
@@ -1159,5 +1356,64 @@
     "checkFullCourse": "Sjekk ut hele kurset",
     "lecturePartCourse": "Dette forelesningsopptaket er en del av <0>{{courseTitle}}</0> kurset.\nDykk inn i hele kurset for å mestre hele konseptet og låse opp ditt fulle potensial!",
     "pageTitle": "Forelesningsopptak"
+  },
+  "filters": {
+    "categories": "Kategorier",
+    "levels": "Nivåer",
+    "resources": "Ressurser",
+    "topics": "Emner"
+  },
+  "projects": {
+    "pageTitle": "Bitcoin-prosjekter",
+    "relatedEvents": "Relaterte kommende arrangementer",
+    "languages": "Språk",
+    "networkStrength": "Nettverkets styrke ligger i dets medlemmer",
+    "noRelatedEvents": "Det er ingen kommende arrangementer relatert til denne læreren for øyeblikket.",
+    "otherCommunities": "Utforsk Plan ₿ Samfunn"
+  },
+  "search": {
+    "conference_replay": "Konferanseopptak",
+    "conference_replays": "Konferanseopptak",
+    "event": "Arrangementer",
+    "glossary_words": "Ordlisteord",
+    "lecture_replay": "Forelesningsopptak",
+    "lecture_replays": "Forelesningsopptak",
+    "newsletter": "Nyhetsbrev",
+    "newsletters": "Nyhetsbrev",
+    "project": "Prosjekt",
+    "projects": "Prosjekter",
+    "resultsRemaining": "{{count}} resultater gjenstår",
+    "search": "Søk",
+    "searchResult": "Søkeresultater",
+    "startSearch": "Start søket ditt for å se resultater her",
+    "tutorial": "Veiledning",
+    "tutorials": "Veiledninger",
+    "youtube_channel": "Youtube-kanal",
+    "youtube_channels": "Youtube-kanaler",
+    "all": "Alle",
+    "book": "Bok",
+    "books": "Bøker",
+    "categories": "Kategorier",
+    "course": "Kurs",
+    "course_chapter": "Kurskapittel",
+    "course_part": "Kursdel",
+    "courses": "Kurs",
+    "events": "Arrangementer",
+    "explorer": {
+      "subtitle": "Hva leter du etter?",
+      "title": "Søkeportal"
+    },
+    "filterByType": "Filtrer etter type",
+    "glossary_word": "Ordlisteord",
+    "languageSelected": "Språk valgt: {{language}}",
+    "loadMoreResults": "Se flere resultater",
+    "podcast": "Podkast",
+    "podcasts": "Podcaster",
+    "professor": "Professor",
+    "professors": "Professorer",
+    "resultEmpty": "Oops! Vi kunne ikke finne noe som matchet søket ditt. Sjekk stavingen din, prøv forskjellige nøkkelord, eller velg en annen kategori.",
+    "resultError": "Noe gikk galt. Vennligst prøv igjen.",
+    "resultInfo": "Fant {{count}} resultater på {{time}}ms",
+    "results": "Resultater"
   }
 }

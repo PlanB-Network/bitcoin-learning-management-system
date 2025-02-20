@@ -74,22 +74,24 @@
     "passwordChangedSuccess": "已成功更改密码"
   },
   "bCert": {
-    "bCertDescription": "₿-证书是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。这个证书将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
+    "bCertDescription": "₿-CERT是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。如果您的得分大于80%，您会获得₿-CERT证书，它将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
     "bookExam": "预约考试时间",
-    "checkout": "查看₿证书",
+    "checkout": "查看₿-CERT证书",
     "knowledgeableBitcoin": "熟悉比特币吗？",
     "challengeYourself": "让我们挑战自己并证明您的水平！",
-    "noBookExam": "目前还没有已排程的考试期。",
-    "organizeDescription": "没问题！如果您的社区是网络的一部分，那么在您可以在您的中心组织考试。请阅读图表，确保您满足举办考试的必要条件。如果您能满足这些条件，您就可以安排考试并将其添加到平台上。",
+    "noBookExam": "目前未有已排程的考试。",
+    "organizeDescription": "没问题！如果您的社区是网络的一部分，那么在您可以在您的中心组织₿-CERT考试。请阅读图表，确保您满足举办考试的必要条件。如果您能满足这些条件，您就可以安排考试并将其添加到平台上。",
     "organizeExam": "组织一场考试",
     "organizeSubtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
-    "organizeTitle": "想在您的中心组织₿证书考试吗？",
+    "organizeTitle": "想在您的中心组织₿-CERT考试吗？",
     "pageSubtitle": "通过集中的开源教育实现大规模应用",
-    "readChart": "阅读图表",
-    "pageTitle": "通过₿证书",
-    "tweetText": "很高兴成功通过了在@planb_network的₿-Certificate考试，得分为{{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
+    "readChart": "阅读章程",
+    "pageTitle": "参加₿-CERT考试",
+    "tweetText": "很高兴成功通过了在@planb_network的₿-CERT考试，得分为{{score}}/100! {{emoji}} #₿-CERT证书\n\n{{certificateUrl}}",
     "download": "下载证书",
-    "verify": "验证您的证书的真实性"
+    "verify": "验证您的证书的真实性",
+    "organizeSessionHub": "在您的当地中心组织₿-CERT考试",
+    "organizeSessionConditions": "请阅读<0>章程</0>，以确保您符合举办测试的强制性条件。若您符合要求，我们很乐意与您一起为您的本地社区举行一场测试。请通过您方便的方式联系我们。"
   },
   "bet": {
     "contributeTitle": "想要贡献一份力量吗？",
@@ -118,7 +120,7 @@
     "all": "所有",
     "amount": "金额",
     "back": "返回",
-    "bCert": "₿ 证书",
+    "bCert": "₿-CERT",
     "beginner": "初学者",
     "billing": "计费",
     "book": "书籍",
@@ -146,7 +148,8 @@
       "intermediate": "中级",
       "level": "级别",
       "levels": "级别",
-      "beginnerFriendly": "适合初学者"
+      "beginnerFriendly": "适合初学者",
+      "expert": "专家"
     },
     "library": "图书馆",
     "lightningInvoice": "闪电发票",
@@ -260,7 +263,8 @@
     "no": "否",
     "project": "项目",
     "projects": "项目",
-    "submit": "提交"
+    "submit": "提交",
+    "email": "电子邮箱"
   },
   "conferences": {
     "description": "会议是比特币行业的关键元素。它们是每个比特币用户教育旅程的一部分。我们构建了这个工具，帮助您在数百个会议中浏览。",
@@ -484,13 +488,25 @@
       "whyTimeStamp": "为您的学位进行时间戳：\n为何这很重要",
       "wishTryAgain": "24小时后，您可以重新参加考试。",
       "yesSubmit": "是，提交",
-      "bCertCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得₿证书。",
+      "bCertCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得₿-CERT证书。",
       "buttonTextBCert": "进一步学习",
       "certificatePageOtherCourses": "其他相关课程",
       "dontWorryRetake": "不要担心，24小时后，您可以重新参加考试。",
       "examCertificateCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得“{{courseName}}”的课程文凭。",
       "courseDiploma": "课程文凭",
-      "courseNotFound": "未找到课程"
+      "courseNotFound": "未找到课程",
+      "failedDiploma": "您必须参加期末考试并取得80%以上的分数，也需要完成课程，才能获得文凭。您可以在24小时后重新参加考试。",
+      "successDiploma": "恭喜！您成功通过了本考试。\n您可以在学生仪表板上查看您的文凭。您的文凭已附带<0>时间戳</0>以确保其真实性。",
+      "availableDashboardTimestamped": "您可以在您的仪表板上查看您的文凭。",
+      "examNotPassed": "您必须参加期末考试并取得80%以上的分数，也需要完成课程，才能获得文凭。该文凭将附带<0>时间戳</0>以确保其真实性。",
+      "timeStamping": "正在附上时间戳",
+      "goConclusion": "前往结论",
+      "passExam": "通过考试",
+      "receiveDiploma": "获取您的文凭",
+      "skipGoConclusion": "跳过，前往结论",
+      "successDiplomaTimeStamped": "恭喜！您成功通过了本考试。\n您可以在完成考试10小时后在学生仪表板上查看您的文凭。您的文凭已附带<0>时间戳</0>以确保其真实性。此延迟是由于<0>时间戳</0>技术，该技术可确保其真实性。",
+      "takeExam": "参加考试",
+      "timeStampedNoDot": "已附带时间戳"
     },
     "conclusion": {
       "completedFeedbackSubHeadline": "您可以在您的仪表板上随时编辑您的评价和评论。",
@@ -555,7 +571,10 @@
       "noTicket": "您还没有票据。",
       "pastTicketTitle": "过去的预训",
       "upcomingTicketTitle": "即将到来的预订",
-      "upcomingTicketSubtitle": "在此处下载您的票据，以参加您的下次活动。请确保带上票据，以便能进入活动现场。"
+      "upcomingTicketSubtitle": "在此处下载您的票据，以参加您的下次活动。请确保带上票据，以便能进入活动现场。",
+      "cancelBookingTitle": "您确定要取消此预订吗？",
+      "noGoBack": "否，返回",
+      "yesCancel": "是，取消"
     },
     "calendar": {
       "calendar": "日历",
@@ -591,7 +610,8 @@
       "newCourses": "每月将有新的课程",
       "noCoursesAvailable": "无可用的课程。",
       "notStarted": "尚未开始",
-      "notValidated": "尚未验证"
+      "notValidated": "尚未验证",
+      "shareOn": "分享到"
     },
     "bCert": {
       "grade": "成绩",
@@ -666,8 +686,8 @@
       "submitReviewInfo": "您必须提交评论以访问此功能。"
     },
     "credentials": {
-      "bCert": "₿证书",
-      "bCertSubtitle": "在这里，您可以找到关于您的过去和未来₿证书的预订和成绩细节。\n₿证书是一个由Plan ₿网络组织的考试，用于证明您在比特币与其相关题目的知识水平。",
+      "bCert": "₿-CERT",
+      "bCertSubtitle": "在这里，您可以找到关于您的过去和未来₿-CERT考试的预订和成绩细节。\n₿-CERT是一个由Plan ₿网络组织的考试，用于证明您在比特币与其相关题目的知识水平。",
       "beingGraded": "您的考试正在被评分。结果将在1到2周内公布。",
       "courseDiplomas": "课程文凭",
       "courseDiplomasSubtitle": "在这里，您可以查看自己在平台上完成课程后参加的所有考试的相关详情。",
@@ -893,7 +913,9 @@
       "termsAndConditions": "条款与条件",
       "uploadCV": "上传您的简历",
       "yourLanguages": "您的语言",
-      "yourRoles": "您的职位"
+      "yourRoles": "您的职位",
+      "noFileSelected": "未选择文件",
+      "chooseFile": "选择文件"
     }
   },
   "events": {
@@ -1039,7 +1061,7 @@
     "conferencesDescription": "自创世区块以来的比特币会议重播集锦",
     "nodeNetworkDescription": "加入Plan ₿的全球社区网络",
     "login": "登录",
-    "bCertDescription": "通过₿证书考试来证明您的比特币水平",
+    "bCertDescription": "通过₿-CERT考试来证明您的比特币水平",
     "glossaryDescription": "理解比特币的语言",
     "libraryDescription": "发现大量的书籍来提升你的知识",
     "podcastsDescription": "通过播客探索比特币生态系统",
@@ -1055,7 +1077,8 @@
     "securityDescription": "掌握保护您的比特币资产的技术。",
     "socialStudiesDescription": "了解比特币对社会的影响。",
     "businessDescription": "发现比特币在商业中的用途。",
-    "channelsDescription": "访问我们专门选出的YouTube频道以学习关于比特币的内容"
+    "channelsDescription": "访问我们专门选出的YouTube频道以学习关于比特币的内容",
+    "projectsDescription": "了解关于为比特币和其采用做出贡献的公司和项目"
   },
   "resources": {
     "newsletters": {
@@ -1238,7 +1261,8 @@
     "terms": "查看我们的<0>通用条款</0>以获取退款详情",
     "total": "总计",
     "payByCard": "使用卡片支付",
-    "payWithBitcoin": "使用比特币支付"
+    "payWithBitcoin": "使用比特币支付",
+    "haveReductionCode": "有折扣码吗？"
   },
   "professors": {
     "pageSubtitle": "我们所有的教授都是志愿者和热衷于比特币的人。你可以打赏以表示感谢。",
@@ -1368,6 +1392,28 @@
     "searchResult": "搜索结果",
     "startSearch": "开始搜索以在这里查看结果",
     "tutorial": "教程",
-    "tutorials": "教程"
+    "tutorials": "教程",
+    "conference_replay": "会议回放",
+    "conference_replays": "会议回放",
+    "lecture_replay": "讲座回放",
+    "lecture_replays": "讲座回放",
+    "project": "项目",
+    "projects": "项目",
+    "youtube_channel": "YouTube频道",
+    "youtube_channels": "YouTube频道"
+  },
+  "filters": {
+    "categories": "类型",
+    "resources": "资料",
+    "levels": "水平",
+    "topics": "主题"
+  },
+  "projects": {
+    "languages": "语言",
+    "noRelatedEvents": "目前没有与该教育家相关的即将举行的活动。",
+    "networkStrength": "网络的力量在于它的会员",
+    "otherCommunities": "探索Plan ₿的社区",
+    "pageTitle": "比特币项目",
+    "relatedEvents": "即将举行的相关活动"
   }
 }
