@@ -7,7 +7,7 @@ import { cn } from '@blms/ui';
 import { DropdownMenu } from '../-components/public-communication/dropdown-menu.tsx';
 import { legalTabs } from '../-components/utils/public-communication-utils.tsx';
 
-import Layout from './-layout.tsx';
+import BlogsAndNewsLayout from './-layout.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/public-communication/legals',
@@ -34,7 +34,7 @@ function LegalsLayout() {
   }, [name]);
 
   return (
-    <Layout>
+    <BlogsAndNewsLayout>
       <LegalInformation
         activeSubTab={activeSubTab}
         setActiveSubTab={setActiveSubTab}
@@ -42,7 +42,7 @@ function LegalsLayout() {
       <div className="max-w-[1140px] flex flex-col lg:justify-start text-start">
         <Outlet />
       </div>
-    </Layout>
+    </BlogsAndNewsLayout>
   );
 }
 

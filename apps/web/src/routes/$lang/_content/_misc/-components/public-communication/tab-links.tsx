@@ -1,3 +1,4 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -35,14 +36,12 @@ export const TabLinks: React.FC = () => {
           <Link
             key={tab.id}
             to={tab.href}
-            activeProps={{
-              className: 'bg-darkOrange-5 text-white scale-95',
-            }}
-            inactiveProps={{
-              className:
-                'text-darkOrange-5 border bg-transparent border-darkOrange-5',
-            }}
-            className="lg:px-4 lg:py-3.5 lg:text-xl font-normal lg:!font-medium rounded-2xl text-base py-2 px-2.5 transition-colors duration-150"
+            className={cn(
+              'lg:px-4 lg:py-3.5 lg:text-xl font-normal lg:!font-medium rounded-2xl text-base py-2 px-2.5 transition-colors duration-150',
+              window.location.href.includes(tab.href)
+                ? 'bg-darkOrange-5 text-white scale-95'
+                : 'text-darkOrange-5 border bg-transparent border-darkOrange-5',
+            )}
           >
             {t(tab.label)}
           </Link>

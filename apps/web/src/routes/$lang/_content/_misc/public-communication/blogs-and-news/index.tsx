@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Layout from '../-layout.tsx';
+import BlogsAndNewsLayout from '../-layout.tsx';
 import { BlogList } from '../../-components/public-communication/blog-list.tsx';
 import { DropdownMenu } from '../../-components/public-communication/dropdown-menu.tsx';
 import { blogTabs } from '../../-components/utils/public-communication-utils.tsx';
@@ -34,7 +34,7 @@ function BlogsNews() {
   );
 
   return (
-    <Layout>
+    <BlogsAndNewsLayout>
       <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">
         {/* Desktop view */}
         <div className="hidden lg:flex space-x-5">
@@ -67,6 +67,6 @@ function BlogsNews() {
       <div className="flex flex-row text-center lg:justify-start lg:text-start space-x-5 mt-5">
         <BlogList category={selectedMainTab} />
       </div>
-    </Layout>
+    </BlogsAndNewsLayout>
   );
 }

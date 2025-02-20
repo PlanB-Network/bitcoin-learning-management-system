@@ -5,11 +5,11 @@ import { PageLayout } from '#src/components/page-layout.js';
 
 import { TabLinks } from '../-components/public-communication/tab-links.tsx';
 
-interface LayoutProps {
+interface BlogsAndNewsLayoutProps {
   children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const BlogsAndNewsLayout = ({ children }: BlogsAndNewsLayoutProps) => {
   const { t } = useTranslation();
 
   return (
@@ -25,4 +25,4 @@ const Layout = ({ children }: LayoutProps) => {
   );
 };
 
-export default Layout;
+export default BlogsAndNewsLayout;
