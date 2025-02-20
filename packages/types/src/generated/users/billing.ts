@@ -22,5 +22,5 @@ export interface Ticket {
   date: Date;
   isInPerson: boolean;
   isOnline: boolean;
-  isPaid?: boolean | undefined;
+  isPaid: boolean;
 }

@@ -53,7 +53,6 @@ export interface JoinedTutorialLight {
   level: string;
   category: string;
   subcategory: string | null;
-  projectId: string | null;
   originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;
@@ -73,7 +72,6 @@ export interface JoinedTutorial {
   level: string;
   category: string;
   subcategory: string | null;
-  projectId: string | null;
   originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;
@@ -111,7 +109,7 @@ export interface TutorialWithProfessorName {
   likeCount: number;
   dislikeCount: number;
   professorName: string | null;
-  professorId: string | null;
+  professorId: number | null;
 }
 
 export interface GetTutorialResponse {
@@ -122,7 +120,6 @@ export interface GetTutorialResponse {
   level: string;
   category: string;
   subcategory: string | null;
-  projectId: string | null;
   originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;

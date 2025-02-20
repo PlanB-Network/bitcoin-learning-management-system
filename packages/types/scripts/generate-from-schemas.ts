@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import numberConverter from 'number-to-words';
 import { SyntaxKind } from 'typescript';
 import type { ZodEnumDef, ZodTypeAny } from 'zod';
 import { type GetType, printNode, zodToTs } from 'zod-to-ts';
@@ -202,8 +201,7 @@ const generateFileContent = (
     let output = printNode(node);
 
     if (zodType === 'ZodEnum') {
-      fileContent += generateEnum(typeName, output);
-      continue;
+      throw new Error('Please use native enums instead of ZodEnum');
     }
 
     // Look for enum values in the output and replace them with the corresponding type name
@@ -251,51 +249,6 @@ const typeNameFromSchema = (schemaName: string): string => {
 
 const findKindName = (kind: SyntaxKind) => {
   return Object.entries(SyntaxKind).find(([, v]) => v === kind)?.[0];
-};
-
-const generateEnum = (typeName: string, output: string) => {
-  const items = output
-    .split('|')
-    .map((item) => item.trim()) // Remove leading/trailing whitespace
-    .map((item) => item.replace(/['"]/g, '')) // Remove quotes
-    .map((item) => `${toEnumKey(item)} = '${item}'`);
-
-  return `export enum ${typeName} { \n  ${items.join(',\n  ')}\n}\n\n`;
-};
-
-const toEnumKey = (str: string) => {
-  return toCamelCaseCapitalized(transformNumberPrefixToWord(str));
-};
-
-/**
- * Transforms a string to camel case and capitalizes the first letter
- * so it can be used as a valid enum key. Ex: "one to ten" -> "OneToTen"
- */
-const toCamelCaseCapitalized = (str: string) => {
-  return (
-    str
-      // Replace spaces, dashes and underscores with nothing and capitalize next letter
-      .replace(/[\ \-\_]([a-z])/g, (_, letter) => letter.toUpperCase())
-      // Capitalize first letter
-      .replace(/^[a-z]/, (letter) => letter.toUpperCase())
-  );
-};
-
-/**
- * Transforms a string with a number prefix to a string with the number as a word
- * so it can be used as a valid enum key. Ex: "1To10" -> "OneTo10"
- */
-const transformNumberPrefixToWord = (str: string) => {
-  if (!/^\d/.test(str)) {
-    return str;
-  }
-
-  const worded = str
-    // Replace prefix number with its word representation
-    .replace(/(^\d+)/, (_, num) => numberConverter.toWords(num));
-
-  // Capitalize
-  return toCamelCaseCapitalized(`${worded}`);
 };
 
 processDirectory(schemasDirectory);
