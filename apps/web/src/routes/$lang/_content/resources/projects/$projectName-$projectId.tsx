@@ -1,9 +1,12 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { SlGlobe } from 'react-icons/sl';
 import { z } from 'zod';
+
+import conferenceSvg from '#src/assets/resources/conference.svg';
+import tutorialsSvg from '#src/assets/tutorials/other.svg';
 
 import { Button, Loader, cn } from '@blms/ui';
 
@@ -17,10 +20,13 @@ import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { VerticalCard } from '#src/molecules/vertical-card.tsx';
+import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';
 import { ProjectEvents } from '../-components/project-events.js';
 import { ResourceLayout } from '../-components/resource-layout.js';
+import { TutorialCard } from '../../tutorials/-components/tutorial-card.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/projects/$projectName-$projectId',
@@ -52,6 +58,9 @@ function Project() {
   const { navigateTo404 } = useNavigateMisc();
 
   const isScreenMd = useGreater('sm');
+
+  const { tutorials } = useContext(AppContext);
+
   const { data: project, isFetched } = trpc.content.getProject.useQuery(
     {
       id: params.projectId,
@@ -73,6 +82,10 @@ function Project() {
 
   const { data: events } = trpc.content.getRecentEvents.useQuery();
 
+  const { data: conferenceReplays } = trpc.content.getConferences.useQuery({
+    projectId: params.projectId,
+  });
+
   const { data: proofreading } = trpc.content.getProofreading.useQuery({
     language: i18n.language,
     resourceId: params.projectId,
@@ -93,6 +106,10 @@ function Project() {
         (event) =>
           event.projectName === project?.name && event.startDate > new Date(),
       )
+    : [];
+
+  const filteredTutorials = tutorials
+    ? tutorials.filter((tutorial) => tutorial.projectId === project?.id)
     : [];
 
   useEffect(() => {
@@ -123,7 +140,7 @@ function Project() {
       {project && (
         <>
           <BackLink to={'/resources/projects'} label={t('words.projects')} />
-          <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-24">
+          <article className="w-full border-2 border-darkOrange-5 bg-darkOrange-10 rounded-[1.25rem] mb-7 md:mb-20">
             {proofreading ? (
               <ProofreadingProgress
                 isOriginalLanguage={isOriginalLanguage}
@@ -247,6 +264,66 @@ function Project() {
           </article>
           {project.category === 'communities' && (
             <ProjectEvents events={filteredEvents} />
+          )}
+          {filteredTutorials.length > 0 && (
+            <div className="flex flex-col items-center gap-4 md:gap-10 mb-7 md:mb-14">
+              <h3 className="flex items-center text-center title-small-med-16px text-white md:title-large-24px">
+                <img
+                  className="mr-3 size-5 md:size-8"
+                  src={tutorialsSvg}
+                  alt="Tutorials"
+                />
+                {t('projects.related')}{' '}
+                <span className="ml-1 text-darkOrange-5">
+                  {t('words.tutorials')}
+                </span>
+              </h3>
+              <div className="flex flex-wrap gap-2 md:gap-x-0 md:gap-y-6 justify-center max-w-[840px]">
+                {filteredTutorials.map((tutorial) => (
+                  <TutorialCard
+                    href={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
+                    dark
+                    tutorial={tutorial}
+                    key={tutorial.id}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          {conferenceReplays && conferenceReplays.length > 0 && (
+            <div className="flex flex-col items-center gap-4 md:gap-10 mb-7 md:mb-14">
+              <h3 className="flex items-center text-center title-small-med-16px text-white md:title-large-24px">
+                <img
+                  className="mr-3 size-5 md:size-8"
+                  src={conferenceSvg}
+                  alt="Conferences replays"
+                />
+                {t('projects.related')}{' '}
+                <span className="ml-1 text-darkOrange-5">
+                  {t('resources.conferences.title')}
+                </span>
+              </h3>
+              <div className="flex flex-wrap gap-2 md:gap-5 justify-center w-full">
+                {conferenceReplays.map((conference) => (
+                  <VerticalCard
+                    key={conference.id}
+                    imageSrc={assetUrl(conference.path, 'thumbnail.webp')}
+                    imgClassName="w-full mb-1 rounded-lg md:rounded-2xl"
+                    title={conference.name}
+                    subtitle={conference.location}
+                    buttonText={t('events.card.watchReplay')}
+                    buttonVariant="primary"
+                    buttonLink={
+                      conference.stages.length > 0
+                        ? `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}`
+                        : ''
+                    }
+                    languages={conference.languages}
+                    className="max-w-[137px] md:max-w-[317px]"
+                  />
+                ))}
+              </div>
+            </div>
           )}
         </>
       )}

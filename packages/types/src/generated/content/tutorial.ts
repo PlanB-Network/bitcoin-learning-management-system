@@ -53,6 +53,7 @@ export interface JoinedTutorialLight {
   level: string;
   category: string;
   subcategory: string | null;
+  projectId: string | null;
   originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;
@@ -72,6 +73,7 @@ export interface JoinedTutorial {
   level: string;
   category: string;
   subcategory: string | null;
+  projectId: string | null;
   originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;
@@ -120,6 +122,7 @@ export interface GetTutorialResponse {
   level: string;
   category: string;
   subcategory: string | null;
+  projectId: string | null;
   originalLanguage: string;
   lastUpdated: Date;
   lastCommit: string;

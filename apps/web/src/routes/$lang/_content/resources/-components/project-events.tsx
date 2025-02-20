@@ -74,7 +74,7 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
 
   // TODO refactor prop drilling
   return (
-    <div className="text-white mb-7 md:mb-32">
+    <div className="text-white mb-7 md:mb-14">
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
         paymentModalData.dollarPrice &&

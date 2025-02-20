@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedConference } from '@blms/types';
 
-export const getConferencesQuery = () => {
+export const getConferencesQuery = (projectId?: string) => {
   return sql<JoinedConference[]>`
     SELECT
       r.id,
@@ -41,6 +41,8 @@ export const getConferencesQuery = () => {
     FROM content.conferences c
     JOIN content.resources r ON r.id = c.resource_id
     JOIN content.conferences_stages cs ON cs.conference_id = c.resource_id
+    ${projectId ? sql`WHERE c.project_id = ${projectId}` : sql``}
+
     GROUP BY
       r.id,
       c.name,
