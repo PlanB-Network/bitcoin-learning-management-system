@@ -5,7 +5,7 @@ import type { JoinedCourse } from './course.js';
 import type { JoinedTutorialLight } from './tutorial.js';
 
 export interface FullProfessor {
-  id: number;
+  id: string;
   path: string;
   name: string;
   company: string | null;

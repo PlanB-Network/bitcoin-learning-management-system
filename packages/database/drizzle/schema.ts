@@ -1,7 +1,9 @@
 import {
+  type PgEnum,
   customType,
   foreignKey,
   index,
+  pgEnum,
   pgSchema,
   primaryKey,
   unique,
@@ -23,7 +25,16 @@ import {
   UserRole,
 } from '@blms/constants';
 
-import { pgNativeEnum } from './util.js';
+type StringEnum = Record<string, string>;
+
+interface PgNativeEnum<E extends StringEnum>
+  extends PgEnum<[E[keyof E], ...E[keyof E][]]> {}
+
+const pgNativeEnum = <N extends string, E extends StringEnum>(name: N, e: E) =>
+  pgEnum(
+    name,
+    Object.values(e) as [E[keyof E], ...E[keyof E][]],
+  ) as PgNativeEnum<E>;
 
 const blob = customType<{ data: Buffer; notNull: false; default: false }>({
   dataType() {

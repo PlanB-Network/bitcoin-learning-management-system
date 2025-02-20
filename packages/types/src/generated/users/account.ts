@@ -15,7 +15,7 @@ export interface UserAccount {
   currentEmailChecked: boolean;
   passwordHash: string | null;
   contributorId: string;
-  professorId: number | null;
+  professorId: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -28,7 +28,7 @@ export interface UserDetails {
   username: string;
   displayName: string | null;
   certificateName: string | null;
-  professorId: number | null;
+  professorId: string | null;
   contributorId: string;
   professorCourses: string[];
   professorTutorials: string[];
@@ -42,7 +42,7 @@ export interface UserRoles {
   email: string | null;
   contributorId: string;
   role: UserRole;
-  professorId: number | null;
+  professorId: string | null;
   professorName?: string | undefined;
 }
 

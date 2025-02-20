@@ -200,18 +200,12 @@ const generateFileContent = (
 
     let output = printNode(node);
 
-    if (zodType === 'ZodEnum') {
-      throw new Error('Please use native enums instead of ZodEnum');
-    }
-
     // Look for enum values in the output and replace them with the corresponding type name
     // Tip: search ('.+' \| )+'.+' to find all enum values left in the output
-    if (zodType !== 'ZodEnum') {
-      for (const [values, type] of enumsMap) {
-        if (output.includes(values)) {
-          console.debug('Replacing', values, 'with', type);
-          output = output.replace(values, type);
-        }
+    for (const [values, type] of enumsMap) {
+      if (output.includes(values)) {
+        console.debug('Replacing', values, 'with', type);
+        output = output.replace(values, type);
       }
     }
 
