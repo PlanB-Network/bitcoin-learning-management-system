@@ -16,7 +16,7 @@ const RowText = ({
 
 interface PaymentRowProps {
   label: string;
-  value: string;
+  value: string | JSX.Element[];
   isBlack?: boolean;
   isLabelBold?: boolean;
 }
@@ -27,7 +27,8 @@ export const PaymentRow = ({
   isBlack,
   isLabelBold,
 }: PaymentRowProps) => {
-  const splitValue = value.includes('\n') && value.split('\n');
+  const splitValue =
+    typeof value === 'string' && value.includes('\n') && value.split('\n');
 
   return (
     <div className="flex items-center justify-between w-full leading-relaxed">
@@ -44,6 +45,7 @@ export const PaymentRow = ({
         className={cn(
           'text-sm lg:text-base text-end text-wrap max-w-[70%] truncate',
           isBlack ? 'text-slate-950' : 'text-black lg:text-white',
+          typeof value !== 'string' && 'flex flex-wrap gap-2',
         )}
       >
         {splitValue

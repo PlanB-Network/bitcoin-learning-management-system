@@ -6,6 +6,7 @@ import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp';
 import { PaymentRow } from '#src/components/payment-row.js';
+import Flag from '#src/molecules/Flag/index.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';
 import { assetUrl } from '#src/utils/index.ts';
 
@@ -79,9 +80,9 @@ export const ModalBookSummary = ({
             )}
           <PaymentRow
             label={t('events.payment.language')}
-            value={event.languages
-              .map((language) => capitalize(language))
-              .join(', ')}
+            value={event.languages.map((language) => (
+              <Flag key={language} code={language} />
+            ))}
           />
           <Separator />
           <PaymentRow
