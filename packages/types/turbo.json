@@ -13,7 +13,6 @@
       "outputs": ["dist/**"]
     },
     "build": {
-      "dependsOn": ["generate-types"],
       "outputs": ["dist/**"]
     }
   }
