@@ -171,7 +171,7 @@ function Project() {
                 </div>
               </div>
               <div className="flex flex-col md:gap-6 ml-4 md:ml-10">
-                <h2 className="text-2xl md:text-5xl md:font-medium leading-none md:leading-[116%] text-white">
+                <h2 className="title-large-24px lg:display-small-med-32px text-white">
                   {project.name}
                 </h2>
 

@@ -148,7 +148,7 @@ function Book() {
 
                 <div className="w-full max-w-2xl flex flex-col md:mt-0">
                   <div>
-                    <h2 className="title-large-sb-24px md:display-large-med-48px text-white mb-5 lg:mb-[30px] text-center md:text-start">
+                    <h2 className="title-large-24px lg:display-small-med-32px text-white mb-5 lg:mb-[30px] text-center md:text-start">
                       {book?.title}
                     </h2>
 
