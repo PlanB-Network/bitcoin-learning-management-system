@@ -174,7 +174,7 @@ function Conference() {
                 />
               </div>
               <div className="lg:max-w-[560px] lg:order-1 text-white w-full">
-                <h2 className="text-white body-medium-16px md:display-medium-40px">
+                <h2 className="title-large-24px lg:display-small-med-32px text-white">
                   {conference.name}
                 </h2>
                 <span className="text-newGray-4 label-medium-16px sm:desktop-h8">

@@ -174,7 +174,8 @@ function Lecture() {
                       </h2>
                       <Flag
                         code={lecture.languages[0]}
-                        className="shrink-0 max-md:hidden self-start md:!w-[41px] xl:!w-[80px] !h-auto !aspect-[41/31] max-xl:mt-3"
+                        size="xl"
+                        className="shrink-0 max-md:hidden"
                       />
                     </div>
 

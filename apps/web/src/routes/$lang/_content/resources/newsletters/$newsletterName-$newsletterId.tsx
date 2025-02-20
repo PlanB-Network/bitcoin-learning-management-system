@@ -175,7 +175,7 @@ function NewsletterDetail() {
 
               <div className="w-full max-w-2xl flex flex-col md:mt-0">
                 <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-[30px]">
-                  <h2 className="title-large-24px md:display-large-med-48px text-white">
+                  <h2 className="title-large-24px lg:display-small-med-32px text-white">
                     {newsletter.title}
                   </h2>
                   <Flag
