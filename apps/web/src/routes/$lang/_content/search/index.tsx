@@ -170,48 +170,71 @@ function SearchPage() {
                         {Object.entries({
                           Categories: availableCategories,
                           Resources: availableResources,
-                        }).map(([groupname, group], index) => (
-                          <div
-                            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                            key={`group-${index}`}
-                            className="flex flex-wrap gap-2"
-                          >
-                            {group.map((cat) => {
-                              const target =
-                                groupname === 'Categories'
-                                  ? {
-                                      value: categories,
-                                      dispatch: setCategories,
-                                    }
-                                  : {
-                                      value: resources,
-                                      dispatch: setResources,
-                                    };
+                        }).map(([groupname, group], index) => {
+                          const target =
+                            groupname === 'Categories'
+                              ? {
+                                  value: categories,
+                                  dispatch: setCategories,
+                                }
+                              : {
+                                  value: resources,
+                                  dispatch: setResources,
+                                };
 
-                              return (
-                                <Button
-                                  key={cat}
-                                  variant={
-                                    target.value.has(cat)
-                                      ? 'primary'
-                                      : 'outlineWhite'
-                                  }
-                                  size="s"
-                                  onClick={() => {
-                                    toggleSelection(
-                                      cat,
-                                      target.value,
-                                      target.dispatch,
-                                    );
-                                  }}
-                                  className="focus-visible:border-newOrange-1"
-                                >
-                                  {`${t(`search.${cat}`)}`}
-                                </Button>
-                              );
-                            })}
-                          </div>
-                        ))}
+                          return (
+                            <div
+                              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                              key={`group-${index}`}
+                              className="flex flex-wrap gap-2"
+                            >
+                              <Button
+                                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                                key={`group-${index}-all`}
+                                variant={
+                                  target.value.has('all')
+                                    ? 'primary'
+                                    : 'outlineWhite'
+                                }
+                                size="s"
+                                onClick={() =>
+                                  toggleSelection(
+                                    'all',
+                                    target.value,
+                                    target.dispatch,
+                                  )
+                                }
+                                className="focus-visible:border-newOrange-1"
+                              >
+                                {`${t('search.all')}`}
+                              </Button>
+
+                              {group.map((category) => {
+                                return (
+                                  <Button
+                                    key={category}
+                                    variant={
+                                      target.value.has(category)
+                                        ? 'primary'
+                                        : 'outlineWhite'
+                                    }
+                                    size="s"
+                                    onClick={() => {
+                                      toggleSelection(
+                                        category,
+                                        target.value,
+                                        target.dispatch,
+                                      );
+                                    }}
+                                    className="focus-visible:border-newOrange-1"
+                                  >
+                                    {`${t(`search.${category}`)}`}
+                                  </Button>
+                                );
+                              })}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
