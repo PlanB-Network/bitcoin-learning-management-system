@@ -286,9 +286,9 @@ function TutorialDetails() {
   useEffect(() => {
     if (
       tutorial &&
-      (params.name !== tutorial.name ||
-        params.category !== tutorial.category ||
-        params.subcategory !== tutorial.subcategory)
+      (params.name !== formatNameForURL(tutorial.name) ||
+        params.category !== formatNameForURL(tutorial.category) ||
+        params.subcategory !== formatNameForURL(tutorial.subcategory ?? ''))
     ) {
       navigate({
         to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}-${tutorial.id}`,
