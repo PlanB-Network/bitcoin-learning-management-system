@@ -147,7 +147,8 @@
       "journey": "Bitcoin è un viaggio, non una meta",
       "seeCourse": "Guarda il corso",
       "planbSchoolHeadline": "La Plan ₿ School, guidata da Giacomo Zucco, offre programmi educativi intensivi di tre mesi progettati per colmare il divario tra l'apprendimento e le applicazioni reali. Oltre alle classi tradizionali, gli studenti si impegnano in progetti pratici guidati dalle aziende e in un bootcamp di prima classe dedicato ai migliori performer. Solo i migliori talenti avanzano dopo due round di selezione competitivi, garantendo che i migliori studenti finali siano completamente attrezzati per lanciare la loro carriera nell'industria del Bitcoin.",
-      "comingSoon": "presto in arrivo"
+      "comingSoon": "presto in arrivo",
+      "planbSchool": "PLAN ₿ SCHOOL"
     },
     "part": {
       "count": "Parte n°{{count}}/{{total}}"
@@ -290,10 +291,22 @@
       "dontWorryRetake": "Non preoccuparti, puoi rifare l'esame dopo 24 ore.",
       "certificatePageOtherCourses": "Altri corsi correlati",
       "examCertificateCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ottenuto il certificato del corso \"{{courseName}}\".",
-      "bCertCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ricevuto il ₿-Certificate.",
+      "bCertCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ricevuto il certificato del ₿-CERT.",
       "courseDiploma": "Certificato",
       "courseNotFound": "Corso non trovato",
-      "buttonTextBCert": "Ulteriori informazioni"
+      "buttonTextBCert": "Ulteriori informazioni",
+      "availableDashboardTimestamped": "Il tuo certificato è disponibile nella tua dashboard..",
+      "examNotPassed": "Devi sostenere l'esame finale e ottenere un punteggio superiore all'80% per ottenere il tuo diploma e completare completamente il corso. Questo diploma sarà <0>timbrato</0> per garantirne l'autenticità.",
+      "failedDiploma": "Devi ottenere più dell'80% all'esame finale per ottenere il tuo diploma e completare interamente il corso. Puoi ripetere l'esame dopo 24 ore.",
+      "goConclusion": "Vai alla conclusione",
+      "passExam": "Supera l'esame",
+      "receiveDiploma": "Ricevi il tuo certificato",
+      "skipGoConclusion": "Salta, vai alla conclusione",
+      "successDiploma": "Congratulazioni! Hai superato l'esame con successo. \nIl tuo certificato è disponibile nel tuo pannello studenti. È stato <0>timbrato</0> per garantirne l'autenticità.",
+      "successDiplomaTimeStamped": "Congratulazioni! Hai superato l'esame con successo.\nIl tuo diploma sarà disponibile nel tuo pannello studenti circa 10 ore dopo aver sostenuto l'esame. Questo ritardo è dovuto alla tecnologia di <0>timestamp</0>, che ne garantisce l'autenticità.",
+      "takeExam": "Fai l'esame",
+      "timeStampedNoDot": "provvisto di timestamp.",
+      "timeStamping": "time-stamp"
     },
     "conclusion": {
       "completedChaptersHeadline": "Tutti i capitoli sono ora completati!",
@@ -325,7 +338,7 @@
       "yourProgress": "I tuoi progressi:",
       "completeAll": "Completa tutto",
       "courseDashboard": "Pannello dei corsi",
-      "detailsAndCertificate": "Dettagli & certificato",
+      "detailsAndCertificate": "Dettagli & certificati",
       "duration": "Durata:",
       "newCourses": "Ogni mese vengono aggiunti nuovi corsi",
       "noCoursesAvailable": "Nessun corso disponibile.",
@@ -336,7 +349,8 @@
       "seeDetails": "Vedi dettagli",
       "seeTheCourse": "Vai al corso",
       "verify": "Verifica l'autenticità del tuo diploma",
-      "download": "Scarica il diploma"
+      "download": "Scarica il diploma",
+      "shareOn": "Condividi su"
     },
     "account": "Account",
     "courses": "Corsi",
@@ -356,7 +370,10 @@
       "noTicket": "Non hai ancora biglietti.",
       "pastTicketTitle": "Prenotazione passate",
       "upcomingTicketTitle": "Prenotazioni future",
-      "upcomingTicketSubtitle": "Qui puoi scaricare il tuo biglietto per partecipare al prossimo evento. Assicurati di portare il biglietto con te per avere accesso all'evento."
+      "upcomingTicketSubtitle": "Qui puoi scaricare il tuo biglietto per partecipare al prossimo evento. Assicurati di portare il biglietto con te per avere accesso all'evento.",
+      "cancelBookingTitle": "Sei sicuro di voler annullare questa prenotazione?",
+      "noGoBack": "No, torna indietro",
+      "yesCancel": "Sì, annulla"
     },
     "bCert": {
       "grade": "Voto",
@@ -454,8 +471,8 @@
       "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione."
     },
     "credentials": {
-      "bCert": "₿ Certificate",
-      "bCertSubtitle": "Qui puoi trovare i dettagli relativi alle tue prenotazioni e ai voti dei tuoi ₿-Certificate passati e futuri.\nIl ₿-Certificate è un esame in presenza organizzato da Plan ₿ Network per attestare il tuo livello di conoscenza su Bitcoin e i relativi argomenti.",
+      "bCert": "₿-CERT",
+      "bCertSubtitle": "Qui puoi trovare i dettagli relativi alle tue prenotazioni e ai voti dei tuoi ₿-CERT passati e futuri.\nIl ₿-CERT è un test in presenza organizzato da Plan ₿ Network per attestare il tuo livello di conoscenza su Bitcoin e gli argomenti correlati.",
       "beingGraded": "Il tuo esame è in fase di correzione. I risultati dovrebbero essere disponibili tra 1 o 2 settimane.",
       "courseDiplomas": "Diplomi dei corsi",
       "courseDiplomasSubtitle": "Qui puoi trovare i dettagli relativi a tutti gli esami che hai sostenuto dopo aver completato un corso sulla piattaforma.",
@@ -835,7 +852,7 @@
     "teachersDescription": "Conosci i nostri insegnanti universitari, bitcoiner apassionati",
     "conferencesDescription": "Collezione di registrazioni di conferenze Bitcoin dal Blocco Genesi",
     "login": "Accedi",
-    "bCertDescription": "Supera l'esame del ₿ Certificate per dimostrare il tuo livello Bitcoin",
+    "bCertDescription": "Supera l'esame del ₿-CERT per capire quanto sai su Bitcoin",
     "glossaryDescription": "Comprendere il linguaggio di Bitcoin",
     "publicDescription": "Esplora gli articoli di comunicazione pubblica",
     "miningCourseDescription": "Comprendi i processi, gli strumenti e l'industria dietro il mining di Bitcoin.",
@@ -1084,7 +1101,8 @@
       "wizard": "Esperto",
       "level": "Livello",
       "levels": "Livelli",
-      "beginnerFriendly": "Per principianti"
+      "beginnerFriendly": "Per principianti",
+      "expert": "Esperto"
     },
     "library": "Libreria",
     "lnurlAuth": "LNURL Auth",
@@ -1118,7 +1136,7 @@
     "price": "Prezzo",
     "professor": "Professore",
     "all": "Tutti",
-    "bCert": "₿ Certificate",
+    "bCert": "₿-CERT",
     "courseId": "ID corso",
     "duration": "Durata",
     "edit": "Modifica",
@@ -1214,7 +1232,8 @@
     "complete": "Completo",
     "incomplete": "Incompleto",
     "name": "Nome",
-    "project": "Progetto"
+    "project": "Progetto",
+    "email": "Email"
   },
   "conferences": {
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",
@@ -1242,25 +1261,28 @@
     "terms": "Leggi le nostre <0>condizioni generali</0> per i dettagli sul rimborso",
     "total": "Totale",
     "payWithBitcoin": "Paga in Bitcoin",
-    "payByCard": "Paga con carta"
+    "payByCard": "Paga con carta",
+    "haveReductionCode": "Hai un codice sconto?"
   },
   "bCert": {
-    "bookExam": "Prenota una sessione di esame",
+    "bookExam": "Prenota una sessione di test",
     "challengeYourself": "Sfida te stesso e dimostra il tuo livello!",
     "knowledgeableBitcoin": "Quanto sai su Bitcoin?",
-    "noBookExam": "Nessuna sessione di esame in programma.",
-    "organizeDescription": "Nessun problema! Se la tua comunità è parte del Network, è possibile organizzare una sessione di esame presso il tuo hub. Leggi il regolamento per assicurarti che tu possa soddisfare tutte le condizioni obbligatorie per ospitare un esame. Se puoi soddisfare le condizioni, puoi pianificare una sessione e aggiungerla alla piattaforma.",
-    "organizeExam": "Organizza un esame",
-    "organizeSubtitle": "Orangepillare un miliardo di persone non è facile",
-    "pageSubtitle": "Adozione di massa attraverso un'educazione centralizzata open source",
-    "bCertDescription": "Il ₿ Certificate è un esame riconosciuto a livello internazionale che valuta il tuo livello di istruzione su Bitcoin e i relativi argomenti. Questo certificato ti permetterà di dimostrare le tue capacità e la tua conoscenza nel settore Bitcoin, dandoti accesso ad aziende e posizioni in questo settore.",
-    "checkout": "Accedi al ₿ Certificate",
-    "organizeTitle": "Vuoi organizzare un esame ₿ Certificate nel tuo hub?",
-    "pageTitle": "Supera il ₿ Certificate",
+    "noBookExam": "Nessuna sessione di test in programma.",
+    "organizeDescription": "Grande idea! Se la tua comunità fa parte di Plan ₿ Network, è possibile organizzare una sessione di ₿-CERT presso il tuo hub. Leggi il regolamento per assicurarti che tu possa soddisfare tutte le condizioni obbligatorie per ospitare un test. Nel caso positivo, puoi pianificare una sessione e aggiungere l'evento alla piattaforma di Plan ₿ Network.",
+    "organizeExam": "Organizza una sessione",
+    "organizeSubtitle": "Orange-pillare un miliardo di persone non è facile",
+    "pageSubtitle": "Adozione globale attraverso un'educazione centralizzata open-source",
+    "bCertDescription": "Il ₿-CERT è il massimo test su Bitcoin creato per valutare il livello di conoscenze su Bitcoin e i relativi argomenti. Se superi l'80% di risposte esatte, otterrai un certificato ₿-CERT che può provare le tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
+    "checkout": "Accedi al ₿-CERT",
+    "organizeTitle": "Vuoi organizzare un test ₿-CERT nel tuo hub?",
+    "pageTitle": "Fai il test ₿-CERT",
     "readChart": "Leggi il regolamento",
-    "tweetText": "Entusiasta di aver ottenuto il ₿-Certificate su @planb_network con un punteggio di {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
+    "tweetText": "Felice di aver passato il test ₿-CERT su @planb_network con un punteggio di {{score}}/100! {{emoji}} #₿CERT\n\n{{certificateUrl}}",
     "download": "Scarica il certificato",
-    "verify": "Verifica l'autenticità del tuo certificato"
+    "verify": "Verifica l'autenticità del tuo certificato",
+    "organizeSessionConditions": "Leggi lo <0>statuto</0> per assicurarsi di soddisfare le condizioni obbligatorie per ospitare il test.\nNel caso positivo, saremo felici di pianificare una sessione con te per la tua community locale.\nContattaci tramite uno dei seguenti canali.",
+    "organizeSessionHub": "Organizza una sessione di test ₿-CERT nel tuo hub locale"
   },
   "glossary": {
     "anotherWord": "Cerca un'altra parola",
@@ -1370,7 +1392,15 @@
     "newsletter": "Newsletter",
     "newsletters": "Newsletter",
     "event": "Evento",
-    "glossary_words": "Glossario"
+    "glossary_words": "Glossario",
+    "lecture_replays": "Replay delle Lezioni",
+    "project": "Progetto",
+    "youtube_channel": "Canale Youtube",
+    "youtube_channels": "Canali Youtube",
+    "conference_replay": "Replay di conferenze",
+    "conference_replays": "Replay di conferenze",
+    "lecture_replay": "Replay della lezione",
+    "projects": "Progetti"
   },
   "projects": {
     "languages": "Lingue",
@@ -1379,5 +1409,11 @@
     "otherCommunities": "Esplora le comunità Plan ₿",
     "pageTitle": "Progetti Bitcoin",
     "relatedEvents": "Eventi futuri correlati"
+  },
+  "filters": {
+    "topics": "Argomenti",
+    "categories": "Categorie",
+    "levels": "Livelli",
+    "resources": "Risorse"
   }
 }

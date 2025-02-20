@@ -74,22 +74,24 @@
     "trackProgress": "Buat akun atau masuk untuk tetap mengikuti progres anda"
   },
   "bCert": {
-    "bCertDescription": "Sertifikat ₿ merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Sertifikat ini dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
-    "organizeDescription": "Tak masalah! Apabila komunitas Anda adalah bagian dari Network, Anda dapat mengadakan ujian di hub Anda. Silakan baca diagram untuk memastikan bahwa Anda dapat memenuhi persyaratan wajib untuk menyelenggarakan ujian. Apabila Anda dapat memenuhi syarat-syarat ini, Anda dapat menjadwalkan sesi ujian Anda dan menambahkannya ke platform.",
+    "bCertDescription": "₿-CERT merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Bila Anda lulus dengan skor di atas 80%, Anda akan mendapat sertifikat ₿-CERT, yang dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
+    "organizeDescription": "Tak masalah! Apabila komunitas Anda adalah bagian dari Plan ₿ Network, Anda dapat mengadakan ujian ₿-CERT di hub Anda. Silakan baca diagram untuk memastikan bahwa Anda dapat memenuhi persyaratan wajib untuk menyelenggarakan ujian. Apabila Anda dapat memenuhi syarat-syarat ini, Anda dapat menjadwalkan sesi ujian Anda dan menambahkannya ke platform.",
     "bookExam": "Jadwalkan sesi ujian",
     "challengeYourself": "Mari tantang diri Anda & buktikan tingkat kemampuanmu!",
-    "checkout": "Lihat sertifikat ₿",
+    "checkout": "Lihat ₿-CERT",
     "knowledgeableBitcoin": "Apakah Anda mengerti Bitcoin?",
     "noBookExam": "Belum ada sesi ujian yang dijadwalkan sekarang.",
     "organizeExam": "Selenggarakan ujian",
     "organizeSubtitle": "Memberi pil oranye alias memperkenalkan Bitcoin kepada satu miliar orang tidaklah mudah",
-    "organizeTitle": "Ingin menyelenggarakan ujian sertifikasi ₿ di hub Anda?",
+    "organizeTitle": "Ingin menyelenggarakan ujian ₿-CERT di hub Anda?",
     "pageSubtitle": "Adopsi skala besar melalui edukasi bersumber terbuka yang tersentralisasi",
-    "pageTitle": "Lulus sertifikasi ₿",
-    "readChart": "Silakan baca diagram",
-    "tweetText": "Senang sekali bisa lulus ₿-Sertifikat di @planb_network dengan skor {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
+    "pageTitle": "Ikuti ujian ₿-CERT",
+    "readChart": "Silakan baca piagam",
+    "tweetText": "Senang sekali bisa lulus ₿-CERT di @planb_network dengan skor {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
     "download": "Unduh sertifikat",
-    "verify": "Verifikasi keaslian sertifikat Anda"
+    "verify": "Verifikasi keaslian sertifikat Anda",
+    "organizeSessionHub": "Selenggarakan sesi ujian ₿-CERT di hub lokal Anda",
+    "organizeSessionConditions": "Silakan baca <0>piagam</0> untuk memastikan bahwa Anda memenuhi syarat wajib untuk menyelenggarakan tes.\nJika Anda memenuhi syarat, kami dengan senang hati akan merencanakan sesi ujian untuk komunitas lokal Anda bersama Anda.\nSilakan hubungi kami melalui metode yang Anda pilih."
   },
   "bet": {
     "contributeButton": "Bantu & kontribusi",
@@ -285,13 +287,25 @@
       "whyTimeStamp": "Cap Waktu pada Gelar Anda:\nMengapa Ini Penting",
       "wishTryAgain": "Anda dapat mengikuti ujian ulang setelah 24 jam.",
       "yesSubmit": "Ya, kirimkan",
-      "bCertCompletionText": "Plan ₿ Network dengan bangga mengucapkan selamat kepada {{username}} karena telah dianugerahi ₿-Sertifikat.",
+      "bCertCompletionText": "Plan ₿ Network dengan bangga mengucapkan selamat kepada {{username}} karena telah dianugerahi sertifikat ₿-CERT.",
       "buttonTextBCert": "Pelajari lebih lanjut",
       "certificatePageOtherCourses": "Mata kuliah terkait lainnya",
       "courseDiploma": "Kursus diploma",
       "courseNotFound": "Kursus tidak ditemukan",
       "dontWorryRetake": "Jangan khawatir, Anda dapat mengikuti ujian ulang setelah 24 jam.",
-      "examCertificateCompletionText": "Plan ₿ Network dengan senang hati mengucapkan selamat kepada {{username}} karena telah mendapatkan ijazah kursus \"{{courseName}}\"."
+      "examCertificateCompletionText": "Plan ₿ Network dengan senang hati mengucapkan selamat kepada {{username}} karena telah mendapatkan ijazah kursus \"{{courseName}}\".",
+      "availableDashboardTimestamped": "Diploma Anda dapat diakses di dasbor Anda.",
+      "goConclusion": "Pergi ke kesimpulan",
+      "timeStampedNoDot": "Sudah diberi stempel waktu",
+      "timeStamping": "Sedang diberi stempel waktu",
+      "examNotPassed": "Untuk mendapatkan diploma Anda, Anda perlu mengikuti ujian akhir dan mendapatkan skor lebih dari 80% serta menyelesaikan kursus. Diploma ini akan diberi <0>stempel waktu</0> untuk memastikan keasliannya.",
+      "failedDiploma": "Untuk mendapatkan diploma Anda, Anda perlu mengikuti ujian akhir dan mendapatkan skor lebih dari 80% serta menyelesaikan kursus. Anda dapat mengikuti tes ini lagi setelah 24 jam.",
+      "passExam": "Ikuti ujian",
+      "receiveDiploma": "Dapatkan diploma Anda",
+      "skipGoConclusion": "Lewati, pergi ke kesimpulan",
+      "successDiploma": "Selamat! Anda telah sukses lulus ujian.\nDiploma Anda dapat diakses di dasbor pelajar Anda. Diploma sudah diberi <0>stempel waktu</0> untuk memastikan keasliannya.",
+      "successDiplomaTimeStamped": "Selamat! Anda telah sukses lulus ujian.\nDiploma Anda dapat diakses di dasbor pelajar Anda 10 jam setelah Anda mengikuti ujian. Hal ini dikarenakan teknologi <0>stempel waktu</0> yang digunakan untuk memastikan keasliannya.",
+      "takeExam": "Ikuti ujian"
     },
     "review": {
       "asExpected": "seperti yang diharapkan",
@@ -377,7 +391,8 @@
       "seeDetails": "Lihat detailnya",
       "seeTheCourse": "Lihat kursus",
       "verify": "Verifikasi keaslian ijazah Anda",
-      "yourProgress": "Kemajuanmu:"
+      "yourProgress": "Kemajuanmu:",
+      "shareOn": "Bagikan di"
     },
     "booking": {
       "invoiceDate": "Tanggal",
@@ -442,8 +457,8 @@
       "submitReviewInfo": "Anda harus mengirimkan ulasan untuk dapat mengakses fitur ini."
     },
     "credentials": {
-      "bCert": "₿-Sertifikat",
-      "bCertSubtitle": "Di sini Anda dapat menemukan detail mengenai pemesanan dan nilai ujian ₿-Sertifikat Anda di masa lalu dan yang akan datang.\nSertifikat ₿ adalah ujian yang diselenggarakan oleh Plan ₿ Network untuk menilai level anda dalam Bitcoin dan topik-topik terkait.",
+      "bCert": "₿-CERT",
+      "bCertSubtitle": "Di sini Anda dapat menemukan detail mengenai pemesanan dan nilai ujian ₿-CERT Anda di masa lalu dan yang akan datang.\n₿-TEST adalah ujian yang diselenggarakan oleh Plan ₿ Network untuk menilai level anda dalam Bitcoin dan topik-topik terkait.",
       "beingGraded": "Ujian Anda sedang dinilai. Hasilnya akan tersedia dalam 1 atau 2 minggu.",
       "courseDiplomas": "Ijazah kursus",
       "courseDiplomasSubtitle": "Di sini Anda dapat menemukan detail mengenai semua ujian yang telah Anda ikuti setelah menyelesaikan kursus di platform.",
@@ -986,7 +1001,8 @@
       "wizard": "Panduan interaktif",
       "level": "Tingkatan",
       "levels": "Tingkatan",
-      "beginnerFriendly": "Ramah pemula"
+      "beginnerFriendly": "Ramah pemula",
+      "expert": "Ahli"
     },
     "members": " Anggota",
     "onChainAddress": "Alamat jaringan on chain",
@@ -1037,7 +1053,7 @@
     "unified": "Terpadu",
     "update": "Pembaharuan",
     "back": "Kembali",
-    "bCert": "Sertifikat ₿",
+    "bCert": "₿-CERT",
     "beginner": "Pemula",
     "billing": "Penagihan",
     "book": "Buku",
@@ -1124,7 +1140,8 @@
     "category": "Kategori",
     "channel": "Saluran",
     "channels": "Saluran",
-    "chapters": "Bab"
+    "chapters": "Bab",
+    "email": "Email"
   },
   "home": {
     "header": {
@@ -1216,7 +1233,7 @@
   "menu": {
     "betDescription": "Koleksi konten yang dapat Anda gunakan untuk proyek pendidikan Anda",
     "teachersDescription": "Kenali pengajar di akademi kami",
-    "bCertDescription": "Lulus ujian sertifikat ₿ untuk membuktikan tingkat pemahaman Anda tentang Bitcoin",
+    "bCertDescription": "Ikuti ujian ₿-CERT untuk membuktikan tingkat pemahaman Anda tentang Bitcoin",
     "conferencesDescription": "Koleksi tayangan ulang konferensi Bitcoin sejak Genesis Block",
     "glossaryDescription": "Memahami bahasa Bitcoin",
     "libraryDescription": "Temukan berbagai buku untuk meningkatkan pengetahuan Anda",
@@ -1392,5 +1409,11 @@
     "otherCommunities": "Jelajahi Komunitas Plan ₿",
     "pageTitle": "Proyek Bitcoin",
     "relatedEvents": "Acara terkait yang akan datang"
+  },
+  "filters": {
+    "categories": "Kategori",
+    "levels": "Tingkatan",
+    "topics": "Topik",
+    "resources": "Materi"
   }
 }

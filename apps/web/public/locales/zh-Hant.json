@@ -70,13 +70,14 @@
     "displayName": "顯示名稱",
     "trackProgress": "建立帳號或登入以追蹤您的進度",
     "dashboardUnlocked": "您的學員儀表板已解鎖！",
-    "didYouKnow": "你知道嗎？"
+    "didYouKnow": "你知道嗎？",
+    "passwordChangedSuccess": "密碼更改成功"
   },
   "bCert": {
     "bCertDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
     "bookExam": "預約考試時段",
     "challengeYourself": "挑戰自己並展現你的實力！",
-    "checkout": "查看比特幣證書",
+    "checkout": "查看₿-CERT",
     "knowledgeableBitcoin": "對比特幣有所了解？",
     "noBookExam": "尚未安排考試時段。",
     "organizeDescription": "沒問題！如果您的社群是該網絡的一部分，您可以在您的中心組織考試。請閱讀規章，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。",
@@ -88,7 +89,8 @@
     "readChart": "閱讀這張圖表",
     "tweetText": "很高興你在@planb_network通過了₿-證書，得分為{{score}}/100！{{emoji}} #BCert\n\n{{certificateUrl}}",
     "verify": "驗證您的證書真實性",
-    "download": "下載證書"
+    "download": "下載證書",
+    "organizeSessionConditions": "請閱讀<0>章程</0>以確保您符合主辦測試的強制條件。\n如果您符合資格，我們將很高興與您一起為您的當地社區規劃一場考試。\n請使用您方便的方式與我們聯繫。"
   },
   "bet": {
     "contributeButton": "幫助與貢獻",

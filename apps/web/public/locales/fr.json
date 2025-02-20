@@ -244,11 +244,11 @@
       "tamperProof": "Inviolable : la blockchain garantit que personne ne peut modifier ou falsifier vos informations d'identification.",
       "timeStampHowDescription": "Lors de la délivrance de votre diplôme, une « empreinte digitale » numérique unique est créée et stockée sur la blockchain. Cela rend l'enregistrement permanent et inviolable. Toute tentative de modification de votre diplôme rompra le lien, révélant ainsi le changement.",
       "tryAgain": "Réessayer",
-      "certificateAvailable": "Il sera disponible environ 8 heures après la soumission.",
+      "certificateAvailable": "Il sera disponible environ 10 heures après la soumission.",
       "examCertificateCompletionText": "Plan ₿ Network a le plaisir de féliciter {{username}} pour avoir obtenu le diplôme du cours \"{{courseName}}\".",
       "courseNotFound": "Cours non trouvé",
       "dontWorryRetake": "Ne vous en faites pas, vous pouvez repasser l'examen après 24 heures.",
-      "bCertCompletionText": "Plan ₿ Network a le plaisir de féliciter {{username}} pour avoir reçu le certificat ₿.",
+      "bCertCompletionText": "Plan ₿ Network a le plaisir de féliciter {{username}} pour avoir obtenu le ₿-CERT.",
       "buttonTextBCert": "En apprendre plus",
       "certificatePageOtherCourses": "Autres cours connexes",
       "courseDiploma": "Diplôme de cours"
@@ -455,7 +455,7 @@
       "conclusionHeadline": "Voici un résumé de ce que vous avez appris. Si certains chapitres sont manquants ou n'ont pas été validés correctement, c'est maintenant le moment de le faire, soit en revenant pour apprendre, soit en appuyant sur le bouton terminer."
     },
     "credentials": {
-      "bCert": "₿-Certificate",
+      "bCert": "₿-CERT",
       "beingGraded": "Votre examen est en cours de correction. Les résultats devraient être disponibles dans 1 ou 2 semaines.",
       "courseDiplomas": "Diplômes de cours",
       "courseDiplomasSubtitle": "Ici vous pouvez trouver les détails concernant tous les examens que vous avez passés après avoir terminé un cours sur la plateforme.",
@@ -464,7 +464,7 @@
       "retakeExam": "Repasser l'examen",
       "seatBooked": "Votre place à la session d'examen est réservée",
       "yourCertificate": "Votre certificat",
-      "bCertSubtitle": "Ici vous pouvez trouver les détails concernant vos réservations et les notes de vos ₿-Certificates passés et futurs.\nLe ₿-Certificate est un examen sur table organisé par Plan ₿ Network pour affirmer votre niveau en Bitcoin et ses sujets connexes.",
+      "bCertSubtitle": "Ici vous pouvez trouver les détails concernant vos réservations et les notes de vos ₿-CERT passés et futurs.\nLe ₿-CERT est un examen sur table organisé par Plan ₿ Network pour évaluer votre niveau sur Bitcoin et ses sujets connexes.",
       "takePlaceAt": "La session aura lieu à",
       "downloadTicket": "Télécharger le billet"
     },
@@ -834,7 +834,7 @@
     "teachersDescription": "Apprenez à connaître nos professeurs universitaires, nos bitcoiners passionnés",
     "conferencesDescription": "Collection de rediffusions de conférences Bitcoin depuis le Bloc Genesis",
     "publicDescription": "Explorez les articles sur la communication publique",
-    "bCertDescription": "Passez l'examen pour le ₿-Certificate pour verifier votre niveau de Bitcoin",
+    "bCertDescription": "Passez l'examen du ₿-CERT pour évaluer votre niveau sur Bitcoin",
     "glossaryDescription": "Comprendre le langage du Bitcoin",
     "login": "Se connecter",
     "bitcoinDescription": "Apprenez le Bitcoin des fondamentaux aux applications avancées.",
@@ -1158,7 +1158,7 @@
     "online": "En ligne",
     "ticket": "Billet",
     "tickets": "Billets",
-    "bCert": "₿-Certificate",
+    "bCert": "₿-CERT",
     "glossary": "Glossaire",
     "public": "Communication publique",
     "ratings": "Évaluations",
@@ -1289,22 +1289,24 @@
     "payByCard": "Payer par carte"
   },
   "bCert": {
-    "bCertDescription": "Le ₿-Certificate est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
+    "bCertDescription": "Le ₿-CERT est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
     "noBookExam": "Il n'y a pas encore de session d'examen prévue.",
-    "organizeDescription": "Pas de problème ! Si votre communauté fait partie de Plan ₿ Network, il est possible d'organiser une session d'examen dans votre hub. Veuillez lire la charte pour vous assurer que vous pouvez respecter les conditions obligatoires pour accueillir un examen. Si vous remplissez ces conditions, vous pouvez planifier votre session et l'ajouter sur la plateforme.",
+    "organizeDescription": "Pas de problème ! Si votre communauté fait partie de Plan ₿ Network, il est possible d'organiser une session d'examen ₿-CERT dans votre hub. Veuillez lire la charte pour vous assurer que vous pouvez respecter les conditions obligatoires pour accueillir un examen. Si vous remplissez ces conditions, vous pouvez planifier votre session et l'ajouter sur la plateforme.",
     "bookExam": "Réservez une session d'examen",
     "challengeYourself": "Mettez-vous au défi et évaluez votre niveau !",
-    "checkout": "Consultez le ₿-Certificate",
+    "checkout": "Consultez le ₿-CERT",
     "knowledgeableBitcoin": "Connaisseur à propos de Bitcoin ?",
     "organizeExam": "Organiser un examen",
     "organizeSubtitle": "Orangepill un milliard de personnes n'est pas facile",
-    "organizeTitle": "Voulez-vous organiser un examen du ₿-Certificate dans votre Hub ?",
+    "organizeTitle": "Voulez-vous organiser un examen ₿-CERT dans votre Hub ?",
     "readChart": "Lire la charte",
     "pageSubtitle": "Adoption de masse grâce à une éducation centralisée open-source",
-    "pageTitle": "Passer le ₿-Certificate",
-    "tweetText": "Fier d'avoir réussi le ₿-Certificate au @planb_network avec un score de {{score}}/100 ! {{emoji}}\n\n{{certificateUrl}}",
+    "pageTitle": "Passer le ₿-CERT",
+    "tweetText": "Fier d'avoir réussi le ₿-CERT de @planb_network avec un score de {{score}}/100 ! {{emoji}}\n\n{{certificateUrl}}",
     "download": "Télécharger le certificat",
-    "verify": "Vérifiez l'authenticité de votre certificat"
+    "verify": "Vérifiez l'authenticité de votre certificat",
+    "organizeSessionHub": "Organisez une session du ₿-CERT dans votre hub local",
+    "organizeSessionConditions": "Veuillez lire la <0>charte</0> pour vous assurer que vous remplissez les conditions obligatoires pour organiser le test.\nSi vous êtes éligible, nous serons ravis de planifier une session pour votre communauté locale avec vous.\nVeuillez nous contacter en utilisant votre méthode préférée."
   },
   "publicCommunication": {
     "blogPageStrings": {

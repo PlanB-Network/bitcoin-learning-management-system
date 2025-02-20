@@ -292,7 +292,7 @@
       "examCertificateCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber logrado recibir el diploma del curso “{{courseName}}”.",
       "courseDiploma": "Diploma del curso",
       "courseNotFound": "Curso no encontrado",
-      "bCertCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber sido galardonado con el Certificado ₿.",
+      "bCertCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber sido galardonado con el Certificado ₿-CERT.",
       "buttonTextBCert": "Aprende más",
       "certificatePageOtherCourses": "Otros cursos relacionados"
     },
@@ -458,7 +458,7 @@
       "submitReviewInfo": "Debes compartirnos una reseña para poder habilitar el acceso a esta función."
     },
     "credentials": {
-      "bCertSubtitle": "Aquí puedes encontrar los detalles sobre tus reservas y calificaciones de tus Certificados ₿ pasados y futuros.\nEl Certificado ₿ es un examen de mesa organizado por la Plan ₿ Network para que puedas afirmar tu nivel en Bitcoin y sus temas relacionados.",
+      "bCertSubtitle": "Aquí puedes encontrar los detalles sobre tus reservas y calificaciones de tus ₿-CERT pasados y futuros.\nEl ₿-CERT es un examen de mesa organizado por la Plan ₿ Network para que puedas afirmar tu nivel en Bitcoin y sus temas relacionados.",
       "beingGraded": "Tu examen está siendo calificado. Los resultados deberían estar disponibles en 1 o 2 semanas.",
       "courseDiplomas": "Diplomas de curso",
       "courseDiplomasSubtitle": "Aquí puedes encontrar los detalles sobre todos los exámenes que has realizado después de completar un curso en la plataforma.",
@@ -469,7 +469,7 @@
       "seatBooked": "Tu asiento en la sesión de examen está reservado",
       "takePlaceAt": "La sesión se llevará a cabo en",
       "yourCertificate": "Tu certificado",
-      "bCert": "Certificado ₿"
+      "bCert": "₿-CERT"
     },
     "adminPanel": {
       "bookings": "Reservas",
@@ -736,7 +736,7 @@
     "podcastsDescription": "Explora el ecosistema Bitcoin a través de podcasts",
     "teachersDescription": "Conoce a nuestros profesores de la academia",
     "conferencesDescription": "Colección de repeticiones de conferencias de Bitcoin desde el Bloque Génesis",
-    "bCertDescription": "Aprueba el examen el Certificado ₿ para demostrar tu nivel de Bitcoin",
+    "bCertDescription": "Aprueba el examen el ₿-CERT para demostrar tu nivel de Bitcoin",
     "glossaryDescription": "Entiende el lenguaje de Bitcoin",
     "login": "Iniciar Sesión",
     "publicDescription": "Explora artículos de comunicación pública",
@@ -974,7 +974,7 @@
     "view": "Ver",
     "admins": "Administradores",
     "amount": "Monto",
-    "bCert": "Certificado ₿",
+    "bCert": "₿-CERT",
     "edit": "Editar",
     "free": "Gratuito",
     "glossary": "Glosario",
@@ -1060,20 +1060,20 @@
     "total": "Total"
   },
   "bCert": {
-    "pageTitle": "Consigue el Certificado ₿",
+    "pageTitle": "Consigue el ₿-CERT",
     "readChart": "Lee el estatuto",
-    "organizeDescription": "¡No hay problema! Si tu comunidad es parte de la Red, puedes organizar una sesión de examen en tu centro. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
-    "bCertDescription": "El Certificado ₿ es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a empresas y puestos en esa industria.",
-    "checkout": "Echa un vistazo al Certificado ₿",
-    "organizeTitle": "¿Quieres organizar un examen del Certificado ₿ en tu centro?",
+    "organizeDescription": "¡No hay problema! Si tu comunidad es parte de Plan ₿ Network, puedes organizar una sesión de examen en tu centro. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
+    "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a empresas y puestos en esa industria.",
+    "checkout": "Echa un vistazo al ₿-CERT",
+    "organizeTitle": "¿Quieres organizar un examen del ₿-CERT en tu centro?",
     "bookExam": "Reserva una sesión de examen",
     "challengeYourself": "¡Desafíate a ti mismo y afirma tu nivel!",
     "noBookExam": "Aún no se ha planificado ninguna sesión de examen.",
     "organizeExam": "Organiza un examen",
     "organizeSubtitle": "Dar la píldora naranja a mil millones de personas no es fácil",
-    "pageSubtitle": "Adopción masiva a través de educación centralizada de código abierto",
-    "knowledgeableBitcoin": "¿Experto en Bitcoin?",
-    "tweetText": "¡Emocionado de haber aprobado el Certificado B en @planb_network con una puntuación de {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
+    "pageSubtitle": "Adopción global a través de educación centralizada de código abierto",
+    "knowledgeableBitcoin": "¿Cuánto sabes sobre Bitcoin?",
+    "tweetText": "¡Emocionado de haber aprobado el ₿-CERT en @planb_network con una puntuación de {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
     "download": "Descargar certificado",
     "verify": "Verifica la autenticidad de tu certificado"
   },
