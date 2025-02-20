@@ -8,6 +8,7 @@ import { cn } from '@blms/ui';
 
 import profileLogInBlack from '#src/assets/icons/profile_log_in_black.svg';
 import profileLogInWhite from '#src/assets/icons/profile_log_in_white.svg';
+import searchMobileSvg from '#src/assets/icons/search-mobile.svg';
 import eventsSvg from '#src/assets/resources/conference.svg';
 import glossarySvg from '#src/assets/resources/glossary.svg';
 import lecturesSvg from '#src/assets/resources/lecture.svg';
@@ -344,6 +345,12 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
           icon: <LuMessageSquareMore size={20} className="shrink-0" />,
         },
       ],
+    },
+    {
+      id: 'search',
+      title: t('words.search'),
+      path: '/search',
+      mobileIcon: searchMobileSvg,
     },
     isLoggedIn
       ? {
