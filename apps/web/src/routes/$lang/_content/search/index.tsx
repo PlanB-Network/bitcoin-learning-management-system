@@ -36,7 +36,7 @@ function SearchPage() {
       query: debouncedQuery,
       language: i18n.language,
       categories: [...categories, ...resources],
-      limit: 10,
+      limit: 20,
     },
     {
       initialCursor: 1,

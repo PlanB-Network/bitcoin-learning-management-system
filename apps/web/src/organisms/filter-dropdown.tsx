@@ -110,8 +110,8 @@ export const FilterDropdown = ({
           className={cn(
             'relative w-full flex items-center gap-2.5 border border-tertiary-10 overflow-x-scroll bg-tertiary-10 no-scrollbar',
             isFocused && 'border-darkOrange-7',
-            isOpen ? 'rounded-b-0 rounded-t-lg' : 'rounded-lg',
-            filters && 'pr-14',
+            isOpen ? 'rounded-b-0 rounded-t-lg md:rounded-b-lg' : 'rounded-lg',
+            filters && 'pr-12 md:pr-0',
           )}
         >
           <img src={SearchIcon} alt="search" className="absolute size-6 mx-2" />
@@ -142,7 +142,7 @@ export const FilterDropdown = ({
               document.querySelector<HTMLInputElement>('#searchInput')?.focus();
             }}
             className={cn(
-              'text-darkOrange-0 flex items-center shrink-0',
+              'text-darkOrange-0 flex items-center shrink-0 p-3 border-2 border-transparent',
               !searchQuery && 'hidden',
             )}
           >
@@ -155,11 +155,11 @@ export const FilterDropdown = ({
             type="button"
             onClick={toggleDropdown}
             className={cn(
-              'absolute text-darkOrange-0 inset-y-0 right-0 flex items-center rounded-tr-lg border border-l-0 border-darkOrange-6',
+              'absolute md:hidden text-darkOrange-0 inset-y-0 right-0 flex items-center rounded-tr-lg border border-l-0 border-darkOrange-6',
               isFocused
                 ? 'bg-tertiary-8 border-darkOrange-7'
                 : 'bg-darkOrange-6 ',
-              isOpen ? 'rounded-br-0' : 'rounded-br-lg',
+              isOpen ? 'rounded-br-0 md:rounded-br-lg' : 'rounded-br-lg',
             )}
           >
             <span>
@@ -170,7 +170,7 @@ export const FilterDropdown = ({
       </div>
 
       {filters && isOpen && (
-        <div className="bg-tertiary-10 p-2.5 rounded-b-lg border-t border-tertiary-9">
+        <div className="bg-tertiary-10 p-2.5 rounded-b-lg border-t border-tertiary-9 md:hidden">
           <div className="flex gap-1 mb-[15px]">
             {Object.keys(filters).map((category) => (
               <button
