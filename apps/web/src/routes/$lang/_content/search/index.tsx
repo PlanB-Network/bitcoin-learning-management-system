@@ -133,7 +133,9 @@ function SearchPage() {
               <div
                 className={cn(
                   'mb-4 ps-2',
-                  lastPage.results.length === 0 && categories.has('all')
+                  lastPage.results.length === 0 &&
+                    categories.has('all') &&
+                    resources.has('all')
                     ? 'hidden'
                     : '',
                 )}
@@ -158,7 +160,6 @@ function SearchPage() {
                       )}
                     </Button>
                   </div>
-
                   <div
                     className={cn(
                       'flex items-center gap-8 font-medium',
@@ -239,13 +240,11 @@ function SearchPage() {
                     </div>
                   </div>
                 </div>
-
                 <p className="text-gray-300 font-light text-sm mb-6">
                   {t('search.languageSelected', {
                     language: getLanguageName(i18n.language),
                   })}
                 </p>
-
                 {lastPage.found > 0 && (
                   <>
                     <p className="mb-1">{t('search.searchResult')}</p>
@@ -259,7 +258,6 @@ function SearchPage() {
                   </>
                 )}
               </div>
-
               <ul className="search-results">
                 {search.data?.pages
                   .flatMap((page) => page.results)
@@ -270,7 +268,6 @@ function SearchPage() {
                     </li>
                   ))}
               </ul>
-
               {lastPage && search.data?.pages?.[0].found === 0 && (
                 <div className="flex flex-col items-center space-y-8 mt-12 max-w-xl mx-auto text-center">
                   <img src={SearchErrorIcon} alt="search error" />
@@ -278,7 +275,6 @@ function SearchPage() {
                   <p>{t('search.resultEmpty')}</p>
                 </div>
               )}
-
               {lastPage.remaining > 0 && (
                 <div className="flex flex-col justify-center items-center gap-4 mt-16">
                   <Button
