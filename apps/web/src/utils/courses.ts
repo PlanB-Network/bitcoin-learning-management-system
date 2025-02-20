@@ -46,4 +46,8 @@ export const goToChapterParameters = (
   };
 };
 
-export const COURSES_WITH_INLINE_LATEX_SUPPORT = ['btc204', 'cyp201', 'cyp302'];
+export const COURSES_WITH_INLINE_LATEX_SUPPORT = [
+  '65c138b0-4161-4958-bbe3-c12916bc959c',
+  '46b0ced2-9028-4a61-8fbc-3b005ee8d70f',
+  'd2fd9fc0-d9ed-4a87-9fa3-0fdbb3937e28',
+];
