@@ -48,6 +48,8 @@ function DashboardAdministrationRole() {
     return <Loader />;
   }
 
+  const isMobile = useSmaller('md');
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
@@ -63,23 +65,14 @@ function DashboardAdministrationRole() {
       </div>
 
       <Tabs defaultValue="students" className="w-full max-w-[900px]">
-        <TabsList>
-          <TabsTrigger
-            value="students"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
+        <TabsList size={isMobile ? 's' : 'm'}>
+          <TabsTrigger value="students" size={isMobile ? 's' : 'm'}>
             {t('words.students')}
           </TabsTrigger>
-          <TabsTrigger
-            value="professors"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
+          <TabsTrigger value="professors" size={isMobile ? 's' : 'm'}>
             {t('words.professors')}
           </TabsTrigger>
-          <TabsTrigger
-            value="admins"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
+          <TabsTrigger value="admins" size={isMobile ? 's' : 'm'}>
             {t('words.admins')}
           </TabsTrigger>
         </TabsList>

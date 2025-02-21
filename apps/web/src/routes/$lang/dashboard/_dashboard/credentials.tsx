@@ -7,6 +7,7 @@ import { Loader, Tabs, TabsContent } from '@blms/ui';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseDiplomas } from './-components/course-diplomas.tsx';
 import { GlobalCertifications } from './-components/global-certifications.tsx';
 
@@ -39,6 +40,8 @@ function DashboardCredentials() {
     return <Loader />;
   }
 
+  const isMobile = useSmaller('md');
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">{t('words.credentials')}</div>
@@ -62,6 +65,7 @@ function DashboardCredentials() {
               active: 'diplomas' === currentTab,
             },
           ]}
+          size={isMobile ? 's' : 'm'}
         />
         <TabsContent value="certifications">
           <GlobalCertifications />

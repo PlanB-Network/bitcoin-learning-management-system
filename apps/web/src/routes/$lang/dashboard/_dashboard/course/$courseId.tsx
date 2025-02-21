@@ -117,6 +117,8 @@ function DashboardStudentCourse() {
     window.location.hash = value;
   };
 
+  const isMobile = useSmaller('md');
+
   return (
     <>
       {isFetched && course && (
@@ -138,6 +140,7 @@ function DashboardStudentCourse() {
                 ...tab,
                 active: currentTab === tab.value,
               }))}
+              size={isMobile ? 's' : 'm'}
             />
 
             <TabsContent value="overview">

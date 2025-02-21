@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-import { Loader } from '@blms/ui';
+import { Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
 
 import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.js';
 import { PageLayout } from '#src/components/page-layout.js';
@@ -92,34 +92,31 @@ export function ProfessorCategoryPage() {
           className="lg:hidden"
         />
       </div>
-      <div
-        className="hidden lg:flex flex-row justify-center mx-auto max-w-2xl lg:mt-7 space-x-5 transition-all duration-300"
-        aria-label="Professor navigation"
-        role="tablist"
+      <Tabs
+        defaultValue={activeItem.label}
+        className="w-full hidden lg:flex justify-center mt-7"
       >
-        {professorTabs.map((tab) => (
-          <Link
-            to={tab.href}
-            key={tab.id}
-            className="lg:py-3.5 lg:text-xl font-normal text-base rounded-[3px] text-white py-2 transition-all duration-300 relative"
-            activeProps={{
-              className:
-                'text-black font-bold before:bg-darkOrange-5 before:rounded-full before:w-full before:h-1 before:absolute before:bottom-0 before:left-0',
-            }}
-            inactiveProps={{
-              className:
-                'hover:before:bg-[#333333] hover:before:rounded-full  hover:before:w-full  hover:before:h-1  hover:before:absolute  before:bottom-0 before:left-0 text-[#050A14]',
-            }}
-            value={tab.label}
-            role="tab"
-          >
-            {t(tab.label)}
-          </Link>
-        ))}
-      </div>
+        <TabsList size="l" mode="dark">
+          {professorTabs.map((tab) => (
+            <TabsTrigger
+              value={tab.label}
+              key={tab.id}
+              size="l"
+              role="tab"
+              onClick={() => {
+                if (activeItem.href !== tab.href) {
+                  window.location.href = tab.href;
+                }
+              }}
+            >
+              {t(tab.label)}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </Tabs>
 
       <div className="bg-black items-center justify-center">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-[60px] lg:grid-cols-3  max-w-[300px] sm:max-w-[500px] md:max-w-[760px] lg:max-w-[1020px] mx-auto py-4 lg:py-32">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-[60px] lg:grid-cols-3  max-w-[300px] sm:max-w-[500px] md:max-w-[760px] lg:max-w-[1020px] mx-auto mt-4 lg:mt-32">
           {!isFetched && <Loader size={'s'} />}
           {sortedProfessors?.map((professor) => (
             <Link

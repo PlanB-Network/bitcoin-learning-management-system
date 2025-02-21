@@ -8,6 +8,7 @@ import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BillingSection } from './-components/billing-section.tsx';
 import { BookingPart } from './-components/booking-part.tsx';
 
@@ -53,6 +54,8 @@ function DashboardBookings() {
     return <Loader />;
   }
 
+  const isMobile = useSmaller('md');
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">{t('words.bookings')}</div>
@@ -77,6 +80,7 @@ function DashboardBookings() {
               active: 'billings' === currentTab,
             },
           ]}
+          size={isMobile ? 's' : 'm'}
         />
         <TabsContent value="tickets">
           {tickets && (
