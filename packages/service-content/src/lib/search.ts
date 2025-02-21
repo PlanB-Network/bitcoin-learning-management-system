@@ -222,6 +222,8 @@ const getLectureReplaysQuery = () => sql<Searchable<Language>[]>`
     description as body,
     CONCAT('/', 'en', '/resources/lectures/', id) as link
   FROM content.events
+    WHERE e.type = 'lecture'
+    AND e.end_date < NOW() - INTERVAL '30 days'
 `;
 
 const createInitIndexes = (client: TypesenseClient) => () => {
