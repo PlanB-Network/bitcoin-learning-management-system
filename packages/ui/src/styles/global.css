@@ -335,10 +335,6 @@
     @apply text-base leading-tight font-normal tracking-[0.1px];
   }
 
-  .label-medium-16px {
-    @apply text-base leading-tight font-normal tracking-[0.1px];
-  }
-
   .label-medium-med-16px {
     @apply text-base leading-tight font-medium tracking-[0.1px];
   }
