@@ -172,7 +172,7 @@ const OrganizeDialog = () => {
         </div>
 
         <div className="!flex gap-4 md:!gap-[30px] pb-[30px]">
-          <Button variant="primary" size={isMobile ? 's' : 'l'} asChild>
+          <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
             <a
               href="mailto:bcert@planb.network"
               className="w-fit flex items-center gap-2.5"
@@ -181,7 +181,7 @@ const OrganizeDialog = () => {
               {t('words.email')}
             </a>
           </Button>
-          <Button variant="primary" size={isMobile ? 's' : 'l'} asChild>
+          <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
             <a
               href="https://t.me/B_CERT_test"
               target="_blank"
