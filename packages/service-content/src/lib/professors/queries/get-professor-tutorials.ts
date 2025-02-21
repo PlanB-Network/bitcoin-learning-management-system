@@ -36,6 +36,7 @@ export const getProfessorTutorialsQuery = ({
   return sql<Array<Omit<JoinedTutorial, 'raw_content'>>>`
     SELECT
       t.id,
+      t.project_id,
       t.path,
       t.logo_url,
       t.name,
@@ -78,6 +79,7 @@ export const getProfessorTutorialsQuery = ({
 
     GROUP BY
       t.id,
+      t.project_id,
       t.logo_url,
       tl.language,
       t.level,
