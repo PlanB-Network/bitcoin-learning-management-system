@@ -34,6 +34,7 @@ import { AppContext } from '#src/providers/context.js';
 import { assetUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MakeModificationBlock } from './-components/make-modification.tsx';
 
 export const Route = createFileRoute(
@@ -177,6 +178,8 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
     setCurrentTab(value);
   };
 
+  const isMobile = useSmaller('md');
+
   return (
     <TabsContent value={course.id}>
       <Tabs
@@ -213,6 +216,7 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
               disabled: true,
             },
           ]}
+          size={isMobile ? 's' : 'm'}
         />
         <TabsContent value="details">
           <CourseDetails course={course} />

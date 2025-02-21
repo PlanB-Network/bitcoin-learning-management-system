@@ -11,6 +11,7 @@ import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ChangeDisplayNameModal } from './-components/change-display-name-modal.tsx';
 import { ChangeEmailModal } from './-components/change-email-modal.tsx';
 import { ChangePasswordModal } from './-components/change-password-modal.tsx';
@@ -76,6 +77,8 @@ function DashboardProfile() {
     return <Loader />;
   }
 
+  const isMobile = useSmaller('md');
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="text-2xl">
@@ -102,6 +105,7 @@ function DashboardProfile() {
               active: 'security' === currentTab,
             },
           ]}
+          size={isMobile ? 's' : 'm'}
         />
         <TabsContent value="info">
           <div className="flex w-full flex-col">

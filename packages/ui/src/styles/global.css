@@ -327,6 +327,14 @@
     @apply text-xl leading-normal font-medium tracking-[0.1px];
   }
 
+  .label-18px {
+    @apply text-lg leading-normal font-normal tracking-[0.1px];
+  }
+
+  .label-medium-16px {
+    @apply text-base leading-tight font-normal tracking-[0.1px];
+  }
+
   .label-medium-16px {
     @apply text-base leading-tight font-normal tracking-[0.1px];
   }

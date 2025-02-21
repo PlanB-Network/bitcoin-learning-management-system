@@ -11,6 +11,7 @@ import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MakeModificationBlock } from './-components/make-modification.tsx';
 
 export const Route = createFileRoute(
@@ -71,6 +72,8 @@ function DashboardProfessorProfile() {
     return <Loader />;
   }
 
+  const isMobile = useSmaller('md');
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
       <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
@@ -92,7 +95,7 @@ function DashboardProfessorProfile() {
           onValueChange={onTabChange}
           className="w-full"
         >
-          <TabsListUnderlined tabs={tabs} />
+          <TabsListUnderlined tabs={tabs} size={isMobile ? 's' : 'm'} />
           <TabsContent value="profile" className="flex flex-col mt-4 lg:mt-10">
             <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
               {t('dashboard.teacher.profile.teacherProfile')}

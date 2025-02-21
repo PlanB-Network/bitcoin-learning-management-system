@@ -12,6 +12,7 @@ import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseExams, CourseRatings } from './$courseId.tsx';
 
 export const Route = createFileRoute(
@@ -69,6 +70,8 @@ function DashboardCompletedCourses() {
     window.location.hash = value;
   };
 
+  const isMobile = useSmaller('md');
+
   return (
     <>
       <div className="flex flex-col gap-4 md:gap-8">
@@ -88,6 +91,7 @@ function DashboardCompletedCourses() {
               ...tab,
               active: currentTab === tab.value,
             }))}
+            size={isMobile ? 's' : 'm'}
           />
 
           {tabs.map((tab) => (
