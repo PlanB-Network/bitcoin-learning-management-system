@@ -24,6 +24,7 @@ export const Route = createFileRoute(
 });
 
 function DashboardAdministrationRole() {
+  const isMobile = useSmaller('md');
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -47,8 +48,6 @@ function DashboardAdministrationRole() {
   if (!session) {
     return <Loader />;
   }
-
-  const isMobile = useSmaller('md');
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">

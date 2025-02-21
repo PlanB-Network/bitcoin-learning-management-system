@@ -18,6 +18,7 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/bookings')({
 
 function DashboardBookings() {
   const { t, i18n } = useTranslation();
+  const isMobile = useSmaller('md');
 
   const navigate = useNavigate();
 
@@ -53,8 +54,6 @@ function DashboardBookings() {
   if (!session) {
     return <Loader />;
   }
-
-  const isMobile = useSmaller('md');
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">

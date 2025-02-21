@@ -21,6 +21,7 @@ export const Route = createFileRoute(
 });
 
 function DashboardProfessorProfile() {
+  const isMobile = useSmaller('md');
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
@@ -71,8 +72,6 @@ function DashboardProfessorProfile() {
   if (!user) {
     return <Loader />;
   }
-
-  const isMobile = useSmaller('md');
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">

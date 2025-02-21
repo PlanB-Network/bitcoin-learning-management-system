@@ -170,6 +170,7 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
 };
 
 const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
+  const isMobile = useSmaller('md');
   const { t } = useTranslation();
 
   const [currentTab, setCurrentTab] = useState('details');
@@ -177,8 +178,6 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
   const onTabChange = (value: string) => {
     setCurrentTab(value);
   };
-
-  const isMobile = useSmaller('md');
 
   return (
     <TabsContent value={course.id}>

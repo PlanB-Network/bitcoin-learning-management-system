@@ -22,6 +22,7 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/profile')({
 });
 
 function DashboardProfile() {
+  const isMobile = useSmaller('md');
   const navigate = useNavigate();
   const { user, setUser, session } = useContext(AppContext);
 
@@ -76,8 +77,6 @@ function DashboardProfile() {
   if (!session) {
     return <Loader />;
   }
-
-  const isMobile = useSmaller('md');
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">

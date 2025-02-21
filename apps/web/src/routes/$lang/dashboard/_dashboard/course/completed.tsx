@@ -22,6 +22,7 @@ export const Route = createFileRoute(
 });
 
 function DashboardCompletedCourses() {
+  const isMobile = useSmaller('md');
   const location = useLocation();
 
   const { data: courses } = trpc.user.courses.getProgress.useQuery();
@@ -69,8 +70,6 @@ function DashboardCompletedCourses() {
     setCurrentTab(value);
     window.location.hash = value;
   };
-
-  const isMobile = useSmaller('md');
 
   return (
     <>
