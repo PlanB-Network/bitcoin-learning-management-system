@@ -66,14 +66,14 @@ export const BookingPart = ({
                   <span className="w-[150px] flex-none text-dashboardSectionText/75">
                     {formatDate(ticket.date)}
                   </span>
-                  <span className="w-[150px] flex-none capitalize text-dashboardSectionText/75">
+                  <span className="w-[150px] flex-none capitalize text-dashboardSectionText/75 line-clamp-1">
                     {location}
                   </span>
                   <span className="w-[100px] flex-none capitalize">
                     {ticket.type}
                   </span>
                   <div className="min-w-[100px] grow h-fit">
-                    <span className="w-fit bg-newGray-5 pl-4 pr-2 py-1 rounded-lg font-medium line-clamp-1">
+                    <span className="w-fit font-medium line-clamp-1 p-2 text-dashboardSectionTitle">
                       {ticket.title}
                     </span>
                   </div>
@@ -81,7 +81,7 @@ export const BookingPart = ({
                     ticket={ticket}
                     refetchTickets={refetchTickets}
                     userName={user?.displayName as string}
-                    buttonSize="m"
+                    buttonSize="s"
                   />
                 </div>
 
@@ -180,7 +180,7 @@ const Buttons = ({
 
   return (
     <div className="md:w-[260px] md:flex-none md:ml-auto">
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row gap-5">
         {ticket.isInPerson && (
           <Button
             variant="primary"
