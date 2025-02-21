@@ -32,6 +32,7 @@ import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
 
 import { AppContext } from '#src/providers/context.js';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { FlyingMenu } from './FlyingMenu/flying-menu.tsx';
 import { MobileMenu } from './MobileMenu/mobile-menu.tsx';
 import type { NavigationSection, NavigationSectionMobile } from './props.ts';
@@ -346,12 +347,6 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
         },
       ],
     },
-    {
-      id: 'search',
-      title: t('words.search'),
-      path: '/search',
-      mobileIcon: searchMobileSvg,
-    },
     isLoggedIn
       ? {
           id: 'dashboard',
@@ -377,6 +372,15 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
           removeFilterOnIcon: true,
         },
   ];
+
+  if (isTestnetOrDevelopmentEnvironment()) {
+    mobileSections.push({
+      id: 'search',
+      title: t('words.search'),
+      path: '/search',
+      mobileIcon: searchMobileSvg,
+    });
+  }
 
   return (
     <header
