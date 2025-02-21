@@ -68,6 +68,8 @@ export const Route = createFileRoute(
 });
 
 function CareerPortal() {
+  const isMobile = useSmaller('md');
+
   const [step, setStep] = useState(0);
   const [validatedSteps, setValidatedSteps] = useState(0);
   const [selectedLanguage, setSelectedLanguage] = useState('');
@@ -382,8 +384,6 @@ function CareerPortal() {
 
   const inputRowFlexClasses = 'flex max-md:flex-col gap-5 md:gap-[70px]';
   const inputRowMarginClasses = 'mb-5 md:mb-4';
-
-  const isMobile = useSmaller('md');
 
   return (
     <div className="max-w-[1066px] flex flex-col">

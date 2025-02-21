@@ -57,6 +57,7 @@ export const Route = createFileRoute(
 });
 
 function DashboardStudentCourse() {
+  const isMobile = useSmaller('md');
   const { i18n } = useTranslation();
   const params = Route.useParams();
 
@@ -116,8 +117,6 @@ function DashboardStudentCourse() {
     setCurrentTab(value);
     window.location.hash = value;
   };
-
-  const isMobile = useSmaller('md');
 
   return (
     <>

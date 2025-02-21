@@ -32,6 +32,7 @@ import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
+  const isMobile = useSmaller('md');
   const { i18n } = useTranslation();
 
   const [search, setSearch] = useState('');
@@ -126,8 +127,6 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
       [userId]: +professorId,
     }));
   };
-
-  const isMobile = useSmaller('md');
 
   return (
     <>

@@ -18,6 +18,7 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/credentials')(
 );
 
 function DashboardCredentials() {
+  const isMobile = useSmaller('md');
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -39,8 +40,6 @@ function DashboardCredentials() {
   if (!session) {
     return <Loader />;
   }
-
-  const isMobile = useSmaller('md');
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8">
