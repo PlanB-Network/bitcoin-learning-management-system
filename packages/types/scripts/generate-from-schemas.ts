@@ -80,7 +80,7 @@ const processIndexFile = (sourcePath: string, relativePath: string) => {
     const modifiedContent =
       generatedHeader +
       fileContent
-        .replace(/export \*/g, 'export *')
+        .replace(/export \*/g, 'export type *')
         .replace(
           /export type \* from 'drizzle-orm\/pg-core';/g,
           "//export type * from 'drizzle-orm/pg-core';",

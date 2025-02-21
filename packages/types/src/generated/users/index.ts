@@ -4,13 +4,13 @@
 // (should) allow type-check to be done in web, do not remove
 //export type * from 'drizzle-orm/pg-core';
 
-export * from './account.js';
-export * from './billing.js';
-export * from './calendar.js';
-export * from './career.js';
-export * from './config.js';
-export * from './course.js';
-export * from './event.js';
-export * from './token.js';
-export * from './payment.js';
-export * from './timestamps.js';
+export type * from './account.js';
+export type * from './billing.js';
+export type * from './calendar.js';
+export type * from './career.js';
+export type * from './config.js';
+export type * from './course.js';
+export type * from './event.js';
+export type * from './token.js';
+export type * from './payment.js';
+export type * from './timestamps.js';

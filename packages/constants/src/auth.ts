@@ -11,3 +11,16 @@ export enum UserRole {
   Admin = 'admin',
   Superadmin = 'superadmin',
 }
+
+/**
+ * Fine-grained access control over
+ *  resources for admin users.
+ */
+export enum ResourceAccess {
+  Bookings = 'bookings',
+  Career = 'career',
+  Courses = 'courses',
+  Quizzes = 'quizzes',
+  Coupons = 'coupons',
+  Tutorials = 'tutorials',
+}
