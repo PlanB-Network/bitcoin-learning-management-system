@@ -138,9 +138,10 @@ export const resourcesRouter = createTRPCRouter({
     }),
   // Lectures
   getLectures: createGetResourcesProcedure()
+    .input(z.object({ professorId: z.string().optional() }).optional())
     .output<Parser<JoinedEvent[]>>(joinedEventSchema.array())
-    .query(({ ctx }) => {
-      return createGetLectures(ctx.dependencies)();
+    .query(({ ctx, input }) => {
+      return createGetLectures(ctx.dependencies)(input?.professorId);
     }),
   getLecture: createGetResourceProcedureWithStrId()
     .output<Parser<JoinedEvent>>(joinedEventSchema)

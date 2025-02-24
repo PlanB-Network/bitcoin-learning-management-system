@@ -37,7 +37,7 @@ export const AuthorCardFull = ({
     <div {...props}>
       <article className="flex flex-col md:p-0 gap-5">
         <div className="flex max-md:flex-col max-md:gap-4 md:items-top gap-7">
-          <div className="rounded-[20px] bg-white p-2 shrink-0 w-[280px]">
+          <div className="rounded-[20px] bg-white p-2 shrink-0 w-[280px] h-fit">
             <Link
               to={`/professor/${formatNameForURL(professor?.name || '')}-${professor?.id}`}
               className="rounded-[20px] flex flex-col items-center  bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[250px] p-2.5 relative overflow-hidden"

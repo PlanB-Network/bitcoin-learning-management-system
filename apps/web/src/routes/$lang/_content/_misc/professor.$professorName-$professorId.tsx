@@ -14,6 +14,7 @@ import { trpc } from '#src/utils/trpc.js';
 
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { CourseCard } from '../../../../organisms/course-card.tsx';
+import { LectureCard } from '../resources/-components/cards/lecture-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 
 export const Route = createFileRoute(
@@ -50,6 +51,11 @@ function ProfessorDetail() {
     language: i18n.language,
   });
 
+  const { data: lectures } = trpc.content.getLectures.useQuery(
+    { professorId: professor?.contributorId },
+    { enabled: !!professor, staleTime: 300_000 },
+  );
+
   const categoryHash = window.location.hash.replace('#', '') || 'all';
 
   const getBacklinkUrl = () => {
@@ -73,7 +79,7 @@ function ProfessorDetail() {
   }, [professor, isFetched, navigateTo404, navigate, params.professorName]);
 
   return (
-    <PageLayout className="max-w-[980px] mx-auto">
+    <PageLayout className="max-w-[1060px] mx-auto">
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !professor && (
         <div className="w-[850px] mx-auto text-white">
@@ -83,7 +89,7 @@ function ProfessorDetail() {
         </div>
       )}
       {professor && (
-        <div className="flex flex-col gap-1 items-start text-white">
+        <div className="flex flex-col items-start text-white">
           <BackLink to={getBacklinkUrl()} label={t('professors.pageTitle')} />
           <div className="flex w-full flex-col items-start">
             <AuthorCardFull
@@ -92,35 +98,54 @@ function ProfessorDetail() {
             />
           </div>
           {professor.courses.length > 0 && (
-            <div className="mt-6 lg:mt-12 flex flex-row items-center gap-4 text-2xl font-medium">
-              <span>{t('words.courses')}</span>
-            </div>
-          )}
-          {professor.courses.length > 0 && (
-            <section className="flex justify-start gap-5 md:gap-10 flex-wrap mt-6">
-              {professor.courses.map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
-            </section>
+            <>
+              <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
+                <span>{t('words.courses')}</span>
+              </div>
+
+              {professor.courses.length > 0 && (
+                <section className="flex justify-start gap-5 md:gap-10 flex-wrap mt-6">
+                  {professor.courses.map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+                </section>
+              )}
+            </>
           )}
 
           {professor.tutorials.length > 0 && (
-            <div className="mt-6 lg:mt-12 flex flex-row items-center gap-4 text-2xl font-medium">
-              <span>{t('words.tutorials')}</span>
-            </div>
+            <>
+              <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
+                <span>{t('words.tutorials')}</span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap justify-start gap-6 w-full">
+                {professor.tutorials.map((tutorial) => {
+                  return (
+                    <TutorialCard
+                      tutorial={tutorial}
+                      key={tutorial.id}
+                      href={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
+                      dark={true}
+                    />
+                  );
+                })}
+              </div>
+            </>
           )}
-          <div className="mt-6 flex flex-wrap justify-start gap-6 lg:pr-8 w-full">
-            {professor.tutorials.map((tutorial) => {
-              return (
-                <TutorialCard
-                  tutorial={tutorial}
-                  key={tutorial.id}
-                  href={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
-                  dark={true}
-                />
-              );
-            })}
-          </div>
+
+          {lectures && lectures?.length > 0 && (
+            <>
+              <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
+                <span>{t('words.lectures')}</span>
+              </div>
+              <div className="mt-6 flex flex-wrap justify-start gap-3 md:gap-6 w-full">
+                {lectures?.map((lecture) => {
+                  return <LectureCard key={lecture.id} lecture={lecture} />;
+                })}
+              </div>
+            </>
+          )}
         </div>
       )}
     </PageLayout>
