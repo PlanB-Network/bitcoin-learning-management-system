@@ -51,7 +51,10 @@
       "exploreCourses": "Khám phá tất các khoá học của Plan B",
       "findCourses": "Tìm khoá học hoàn hảo cho nhu cầu của bạn nhớ vào bộ chọn lựa khoá học",
       "journey": "Bitcoin là một hành trình, không phải là một đích đến",
-      "seeCourse": "Xem khoá học"
+      "seeCourse": "Xem khoá học",
+      "planbSchoolHeadline": "Plan ₿ School, được lãnh đạo bởi Giacomo Zucco, cung cấp các chương trình đào tạo chuyên sâu kéo dài 3 tháng được thiết kế để khoả lấp khoảng trống giữa học tập và ứng dụng thực tế. Vượt lên trên các lớp học truyền thống, các sinh viên sẽ được tham gia vào các dự án thực tế của các công ty và một chương trình bootcamp hàng đầu dành cho những người có thành tích xuất sắc. Chỉ những tài năng xuất sắc mới vượt qua được 2 vòng lựa chọn cạnh tranh, đảm bảo rằng những sinh viên hàng đầu sẽ được trang bị đây đủ để xây dựng sự nghiệp của mình trong ngành Bitcoin.",
+      "comingSoon": "sẽ có sớm",
+      "planbSchool": "PLAN ₿ SCHOOL"
     },
     "payment": {
       "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển",
@@ -124,7 +127,8 @@
       "collaborativeEffort": "Tất cả nội dung trên nền tảng là kết quả của sự phối hợp: mỗi bài học, bài dịch và duyệt lại được tạo ra nhờ các đóng góp viên. Vì lý do này, chúng tôi luôn tìm kiếm những người hiệu đính để duyệt lại các nội dung ở nhiều ngôn ngữ khác nhau. Nếu bạn muốn tham gia vào quá trình hiệu đính, vui lòng liên hệ với chúng tôi qua nhóm <0>Telegram</0> và đọc <1>hướng dẫn</1> của chúng tôi.\n\nChúng tôi xin được nhắc lại rằng nội dung này là mã nguồn mở theo giấy phép <2>CC BY-SA</2>  - do đó nó có thể được chia sẻ, sử dụng thoải mái, chỉ cần bạn trích dẫn đầy đủ nguồn.",
       "courseAddedToDashboard": "Khoá học này đã được thêm vào bảng điều khiển học viên của bạn",
       "hasBeenProofreadBy": "Khoá học này đã được hiệu đính bởi",
-      "hasNotBeenProofread": "Khoá học này vẫn chưa được hiệu đính"
+      "hasNotBeenProofread": "Khoá học này vẫn chưa được hiệu đính",
+      "teacherLed": "Do giáo viên hướng dẫn"
     },
     "preview": {
       "letsgo": "Đi nào"
@@ -242,11 +246,23 @@
       "tryOneMoreTime": "Hãy thử thêm một lần nữa!",
       "courseDiploma": "Chứng chỉ khoá học",
       "examCertificateCompletionText": "Plan ₿ Network rất vinh hạnh được chúc mừng {{username}} vì đã nhận được chứng chỉ của khoá học “{{courseName}}”.",
-      "bCertCompletionText": "Plan ₿ Network rất vinh hạnh được chúng mừng {{username}} vì đã nhận được Chứng chỉ - ₿.",
+      "bCertCompletionText": "Plan ₿ Network rất vinh hạnh được chúng mừng {{username}} vì đã nhận được Chứng chỉ ₿-CERT.",
       "buttonTextBCert": "Tìm hiểu thêm",
       "certificatePageOtherCourses": "Các khoá học liên quan khác",
       "courseNotFound": "Không tìm thấy khoá học",
-      "dontWorryRetake": "Đừng lo lắng, bạn có thể thực hiện lại bài kiểm tra sau 24 giờ."
+      "dontWorryRetake": "Đừng lo lắng, bạn có thể thực hiện lại bài kiểm tra sau 24 giờ.",
+      "examNotPassed": "Bạn cần tham gia bài kiểm tra cuối khoá và đạt trên 80% để nhận được bằng tốt nghiệp và hoàn thành khoá học. Bằng tốt nghiệp này sẽ <0>được gán nhãn thời gian</0> để đảm bảo tính xác thực.",
+      "receiveDiploma": "Nhận bằng tốt nghiệp của bạn",
+      "successDiploma": "Chúc mừng! Bạn đã vượt qua bài kiểm tra thành công.\nBằng tốt nghiệp của bạn đang có sẵn trên bảng điều khiển học viên. Nó đã được <0>gán nhãn thời gian</0> để đảm bảo tính xác thực.",
+      "successDiplomaTimeStamped": "Chúc mừng! Bạn đã vượt qua bài kiểm tra thành công.\nBằng tốt nghiệp của bạn sẽ có sẵn trên bảng điều khiển học viên trong khoảng 10 giờ sau khi bạn hoàn thành bài kiểm tra. Việc chậm trễ này là công nghệ <0>gán nhãn thời gian</0> nhằm đảm bảo tính xác thực của bằng tốt nghiệp.",
+      "availableDashboardTimestamped": "Bằng cấp của bạn đang có sẵn trên bảng điều khiển.",
+      "passExam": "Vượt qua bài kiểm tra",
+      "skipGoConclusion": "Bỏ qua, đi tới phần kết luận",
+      "takeExam": "Làm bài kiểm tra",
+      "timeStampedNoDot": "đã gán nhãn thời gian",
+      "timeStamping": "đang gán nhãn thời gian",
+      "failedDiploma": "Bạn cần đạt trên 80% điểm của bài kiểm tra cuối khoá để nhận được bằng tốt nghiệp và hoàn thành khoá học. Bạn có thể làm lại bài kiểm tra sau 24 giờ.",
+      "goConclusion": "Đi tới phần kết luận"
     },
     "conclusion": {
       "completedFeedbackHeadline": "Cảm ơn phản hồi của bạn!\nĐiều đó rất quan trọng với chúng tôi, do đó chúng tôi rất trân trọng.",
@@ -424,7 +440,8 @@
       "seeTheCourse": "Xem khoá học",
       "verify": "Xác minh tính xác thực chứng chỉ của bạn",
       "yourProgress": "Tiến độ của bạn:",
-      "courseDashboard": "Bảng điều khiển khoá học"
+      "courseDashboard": "Bảng điều khiển khoá học",
+      "shareOn": "Chia sẻ trên"
     },
     "booking": {
       "invoiceTitle": "Tiêu đề",
@@ -441,7 +458,10 @@
       "noTicket": "Hiện tại bạn không có vé nào cả.",
       "pastTicketTitle": "Đặt chỗ trong quá khứ",
       "upcomingTicketTitle": "Đặt chỗ sắp tới",
-      "upcomingTicketSubtitle": "Tải xuống vé của bạn ở đây để tham dự sự kiện sắp tới. Vui lòng mang theo vé ở cổng vào."
+      "upcomingTicketSubtitle": "Tải xuống vé của bạn ở đây để tham dự sự kiện sắp tới. Vui lòng mang theo vé ở cổng vào.",
+      "cancelBookingTitle": "Bạn có chắc là muốn huỷ đặt chỗ không?",
+      "noGoBack": "Không, quay trở lại",
+      "yesCancel": "Vâng, huỷ"
     },
     "bCert": {
       "grade": "Điểm",
@@ -539,8 +559,8 @@
       "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này."
     },
     "credentials": {
-      "bCert": "Chứng chỉ - ₿",
-      "bCertSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới đặt chỗ và điểm số trong quá khứ cũng như tương lai của bài kiểm tra cấp Chứng chỉ - ₿.\nChứng chỉ - ₿ là một bài kiểm tra được tổ chức bởi Plan ₿ Network để đánh giá trình độ của bạn về Bitcoin và các chủ đề liên quan.",
+      "bCert": "Chứng chỉ ₿-CERT",
+      "bCertSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới đặt chỗ và điểm số trong quá khứ cũng như tương lai của bài kiểm tra cấp Chứng chỉ ₿-CERT.\nChứng chỉ - ₿ là một bài kiểm tra được tổ chức bởi Plan ₿ Network để đánh giá trình độ của bạn về Bitcoin và các chủ đề liên quan.",
       "beingGraded": "Bài kiểm tra của bạn đang được chấm điểm. Các kết quả sẽ có trong khoảng 1 hoặc 2 tuần.",
       "courseDiplomas": "Các chứng chỉ khoá học",
       "courseDiplomasSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới tất cả các bài kiểm tra mà bạn đã tham gia sau khi hoàn thành một khoá học trên nền tảng.",
@@ -764,7 +784,9 @@
       "provideValidEmail": "Vui lòng cung cấp email hợp lệ.",
       "remoteWorkPreference": "Bạn có sẵn sàng làm việc từ xa?",
       "roleLevel": "Cấp độ kinh nghiệm",
-      "roleLevelSubLabel": "Lựa chọn cấp độ tương ứng với kỹ năng của bạn."
+      "roleLevelSubLabel": "Lựa chọn cấp độ tương ứng với kỹ năng của bạn.",
+      "noFileSelected": "Chưa có tệp nào được chọn",
+      "chooseFile": "Chọn tệp"
     },
     "backToDashboard": "Quay lại bảng điều khiển",
     "studentDashboard": "Bảng điều khiển học viên"
@@ -851,7 +873,7 @@
     "teachersDescription": "Làm quen với các giáo viên của chúng tôi, những Bitcoiner đầy đam mê",
     "betDescription": "Tập hợp các nội dung mà bạn có thể sử dụng vào các dự án giáo dục của bạn",
     "conferencesDescription": "Tập hợp các bản phát lại của các hội nghị Bitcoin kể từ Genesis Block",
-    "bCertDescription": "Vượt qua kỳ thi Chứng chỉ ₿ để khẳng định đẳng cấp của bạn về Bitcoin",
+    "bCertDescription": "Vượt qua kỳ thi Chứng chỉ ₿-CERT để khẳng định đẳng cấp của bạn về Bitcoin",
     "glossaryDescription": "Hiểu về ngôn ngữ của Bitcoin",
     "login": "Đăng nhập",
     "publicDescription": "Khám phá các bài viết truyền thông công khai",
@@ -865,7 +887,8 @@
     "moviesDescription": "Khám phá những câu chuyện hấp dẫn và phân tích chuyên sâu về sự phát triển và tác động của Bitcoin",
     "newsletterDescription": "Bộ sưu tập các nội dung mà bạn có thể sử dụng cho các dự án giáo dục của bạn",
     "securityDescription": "Làm chủ các kỹ thuật bảo vệ tài sản Bitcoin của bạn.",
-    "socialStudiesDescription": "Nghiên cứu về ảnh hưởng của Bitcoin đối với xã hội."
+    "socialStudiesDescription": "Nghiên cứu về ảnh hưởng của Bitcoin đối với xã hội.",
+    "projectsDescription": "Tìm hiểu thêm về các công ty và các dự án có đóng góp vào việc cải thiện và thúc đấy sự áp dụng Bitcoin"
   },
   "nodeNetwork": {
     "apply": "Ứng tuyển để trở thành một nút",
@@ -884,7 +907,8 @@
     "terms": "Xem <0>điều khoản chung</0> của chúng tôi và chi tiết về điều kiện hoàn trả",
     "total": "Tổng cộng",
     "payWithBitcoin": "Thanh toán bằng Bitcoin",
-    "payByCard": "Thanh toán bằng thẻ"
+    "payByCard": "Thanh toán bằng thẻ",
+    "haveReductionCode": "Bạn có mã giảm giá?"
   },
   "podcasts": {
     "pageTitle": "Các podcast về Bitcoin"
@@ -1103,7 +1127,8 @@
       "wizard": "Phù thuỷ",
       "level": "Trình độ",
       "levels": "Các trình độ",
-      "beginnerFriendly": "Phù hợp với người bắt đầu"
+      "beginnerFriendly": "Phù hợp với người bắt đầu",
+      "expert": "Chuyên gia"
     },
     "library": "Thư viện",
     "lnurlAuth": "Xác thực LNURL",
@@ -1158,7 +1183,7 @@
     "admins": "Quản trị viên",
     "all": "Tất cả",
     "amount": "Số lượng",
-    "bCert": "Chứng chỉ ₿",
+    "bCert": "Chứng chỉ ₿-CERT",
     "chapter": "Chương",
     "bookings": "Đặt chỗ",
     "filter": "Lọc",
@@ -1233,13 +1258,14 @@
     "user": "Người dùng",
     "username": "Username",
     "viewMore": "Xem thêm",
-    "yes": "Vâng"
+    "yes": "Vâng",
+    "email": "Email"
   },
   "bCert": {
-    "bCertDescription": "Chứng chỉ ₿ là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
-    "checkout": "Kiểm tra chứng chỉ ₿",
-    "organizeTitle": "Muốn tổ chức một kỳ thi cấp chứng chỉ ₿ ở trung tâm của bạn?",
-    "pageTitle": "Đạt chứng chỉ ₿",
+    "bCertDescription": "Chứng chỉ ₿-CERT là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
+    "checkout": "Kiểm tra Chứng chỉ ₿-CERT",
+    "organizeTitle": "Muốn tổ chức một kỳ thi cấp Chứng chỉ ₿-CERT ở trung tâm của bạn?",
+    "pageTitle": "Đạt Chứng chỉ ₿-CERT",
     "organizeDescription": "Không vấn đề gì! Nếu cộng đồng của bạn là một phần của Mạng lưới, bạn có thể tổ chức kỳ thi tại trung tâm của mình. Vui lòng đọc điều lệ để đảm bảo rằng bạn có thể tuân thủ các điều kiện bắt buộc để tổ chức kỳ thi. Nếu bạn đáp ứng được chúng, thì bạn có thể lên lịch cho kỳ thi của bạn và thêm nó vào nền tảng.",
     "challengeYourself": "Thử thách bản thân & khẳng định trình độ của bạn!",
     "bookExam": "Đặt lịch thi",
@@ -1249,9 +1275,11 @@
     "organizeSubtitle": "Giúp một tỷ người hiểu và tin Bitcoin (Orange Pill) không phải là chuyện dễ dàng",
     "pageSubtitle": "Mở rộng sự áp dụng rộng rãi thông qua giáo dục mã nguồn mở tập trung",
     "readChart": "Đọc điều lệ",
-    "tweetText": "Rất tuyệt vì đã đạt được Chứng chỉ - ₿-Certificate tại @planb_network với số điểm {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
+    "tweetText": "Rất tuyệt vì đã đạt được Chứng chỉ ₿-CERT tại @planb_network với số điểm {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
     "download": "Tải chứng chỉ về",
-    "verify": "Xác minh tính xác thực đối với chứng chỉ của bạn"
+    "verify": "Xác minh tính xác thực đối với chứng chỉ của bạn",
+    "organizeSessionConditions": "Vui lòng đòng <0>điều lệ</0> để đảm bảo bạn đáp ứng các điều kiện bắt buộc để tổ chức kỳ thi.\nNếu bạn đạt yêu cầu, chúng tôi rất vui lòng được lên kế hoạch với bạn về một kỳ thi cho công đồng địa phương của bạn.\nVui lòng liên hệ với chúng tôi theo phương pháp mà bạn ưa thích.",
+    "organizeSessionHub": "Tổ chức một kỳ thi cấp chứng chỉ ₿-CERT tại địa điểm địa phương của bạn"
   },
   "glossary": {
     "keepLooking": "Bạn muốn tiếp tục tìm kiếm?",
@@ -1351,7 +1379,15 @@
     "languageSelected": "Ngôn ngữ được chọn: {{language}}",
     "loadMoreResults": "Xem thêm kết quả",
     "podcast": "Podcast",
-    "podcasts": "Các podcast"
+    "podcasts": "Các podcast",
+    "lecture_replay": "Bản xem lại bài giảng",
+    "conference_replays": "Bản xem lại các hội nghị",
+    "youtube_channel": "Kênh Youtube",
+    "youtube_channels": "Các kênh Youtube",
+    "conference_replay": "Xem lại hội nghị",
+    "lecture_replays": "Bản xem lại các bài giảng",
+    "projects": "Các dự án",
+    "project": "Dự án"
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
@@ -1365,5 +1401,20 @@
   },
   "podcast": {
     "check": "Kiểm tra podcast"
+  },
+  "filters": {
+    "levels": "Các cấp độ",
+    "categories": "Các chuyên mục",
+    "resources": "Các nguồn",
+    "topics": "Các chủ đề"
+  },
+  "projects": {
+    "networkStrength": "Sức mạnh của mạng lưới nằm ở các thành viên của nó",
+    "noRelatedEvents": "Không có sự kiện nào sắp tới liên quan tới nhà đào tạo này ở thời điểm hiện tại.",
+    "otherCommunities": "Khám phá các cộng đồng Plan ₿",
+    "pageTitle": "Các dự án Bitcoin",
+    "relatedEvents": "Các sự kiện liên quan sắp tới",
+    "related": "Liên quan",
+    "languages": "Các ngôn ngữ"
   }
 }

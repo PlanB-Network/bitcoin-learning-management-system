@@ -4,8 +4,8 @@
     "missionTitle": "私たちのミッション",
     "missionContent1": "私たちのミッションは、オープンソースの教育とネットワーキングを通じて、地域のビットコインコミュニティをサポートすることです。 私たちは、ビットコイン業界が発展するために必要なリソース（コース、書籍、ポスター、チラシ、動画）を収集、整理、作成します。",
     "missionContent2": "私たちは、多言語対応のシンプルなGitHubリポジトリとEラーニング・プラットフォームを通じて、可能な限り最善の方法で知識を共有できるよう、知識を一元化しています。才能ある人材が成長するための適切なツールを用いて、地域のビットコインハブの発展を支援しています。",
-    "commitmentTitle": "私たちのお約束ごと",
-    "commitmentContent": "ビットコインコミュニティに対する私たちのお約束ごと（コミットメント）： \n • オープンソースであり続ける \n • 質の高い教育コンテンツを提供する \n • できるだけ多くの言語でコンテンツを翻訳する \n • ビットコインに貢献するみなさんの旅を支援する",
+    "commitmentTitle": "私たちのコミットメント",
+    "commitmentContent": "ビットコインコミュニティに対する私たちのコミットメント： \n • オープンソースであり続ける \n • 質の高い教育コンテンツを提供する \n • コンテンツをできるだけ多くの言語に翻訳する \n • ビットコイン起業家の旅をサポートする",
     "coreTeamTitle": "コアメンバー",
     "coreTeamContent": "Plan ₿ Network は、何百人もの貢献者、講師、コミュニティリーダー、デザイナー、開発者、主催者の集まりです。 Plan ₿ を実現させ、日々、努力している数多くのみなさんに感謝します (貢献者の壁が間もなく登場します）。",
     "coreTeamGiacomoRole": "取締役兼共同創設者",
@@ -311,7 +311,7 @@
     "conclusion": {
       "congratulationsEnd": "おめでとうございます。このコースの最後まで完了しました",
       "stepsToComplete": "これらは、ダッシュボードでこのコースを完了としてマークし、旅を続ける前のステップです！",
-      "completedChaptersHeadline": "これで全ての章が完了しました！",
+      "completedChaptersHeadline": "すべての章が完了しました！",
       "completedFeedbackHeadline": "ご意見ありがとうございました！\n私たちとって非常に重要なことですから、とても感謝しています。",
       "completedFeedbackSubHeadline": "ダッシュボードでいつでも評価やコメントを編集できます。",
       "finalStep": "これは、旅を続ける前に、ダッシュボードでこのコースを完了とマークするための最終ステップです！",
@@ -771,17 +771,17 @@
   },
   "home": {
     "header": {
-      "content": "Plan ₿ Network プラットフォームは、最高のツールと教育コンテンツを世界中に提供し、人々が主権を取り戻せるようにすることを目的としています。 個人からコミュニティまで、私たちはあなたのビットコインの旅のお手伝いをします。",
-      "forEducators": "すべての教育関係者と開発者のために",
+      "content": "Plan ₿ Network プラットフォームは、最高のツールと教育コンテンツを世界中に提供し、人々が主権を取り戻す力を与えることが目的です。 個人からコミュニティまで、ビットコインの旅のお手伝いをいたします。",
+      "forEducators": "すべての教育者と開発者へ",
       "globalNetwork": "グローバルビットコインネットワーク",
       "welcome": "Plan ₿ Network へようこそ",
       "link": "ネットワークに参加する",
       "startLink": "学習を始める"
     },
     "tutorialSection": {
-      "title": "私たちの目標はビットコイン教育をシンプルにすること",
-      "subtitle1": "さまざまなチュートリアルでテクノロジー習得のお手伝いをします。",
-      "content1": "ビットコインは常に進化しており、新しい参加者、ソリューション、プロトコル、技術的ブレークスルーが現れては消えていく世界です。そのため、優れた最新のチュートリアルの正確なデータベースを維持する作業はとても簡単ではありません。しかし、Plan ₿ ではこれを実現しました。初心者から上級者まで、何百ものチュートリアルをナビゲートし、あなたのニーズに合わせて、この世界を探求することができます。",
+      "title": "知識を一元化し、よりよく提供させる",
+      "subtitle1": "ビットコイン教育をシンプルに。",
+      "content1": "ビットコインは常に進化しており、新しい参加者、ソリューション、プロトコル、技術的ブレークスルーが現れては消えていく世界です。そのため、最新の優れたチュートリアルの正確なデータベースを維持する作業は簡単ではありません。Plan ₿ では、まさにそれを実現しました。 初心者でも上級者でも、ニーズに合わせて何百ものチュートリアルをナビゲートし、この業界を探求することができます。",
       "link": "すべてのチュートリアルを見る",
       "link2": "すべてのリソースを見る"
     },
@@ -816,7 +816,7 @@
     },
     "eventSection": {
       "eventTitle": "教育者のグローバルビットコインネットワーク",
-      "hottestEvent": "人気なビットコインイベント",
+      "hottestEvent": "人気のビットコインイベント",
       "checkEvents": "すべてのイベントをチェック"
     },
     "blogSection": {
@@ -828,7 +828,7 @@
     },
     "courseSection": {
       "checkAllCourses": "すべてのコースをチェック",
-      "upcomingCourseDescription": "このプラットフォームにリリースされた最新のコースをご覧ください。 学習は決して止まることはありません！",
+      "upcomingCourseDescription": "プラットフォームにリリースされた最新のコースをご覧ください。 学ぶことは誰も止められません！",
       "upcomingCourseTitle": "今後の予定と新しいコース"
     }
   },
@@ -854,7 +854,7 @@
     "bCertDescription": "ビットコインへの理解度を評価する ₿-CERT 試験に合格しよう",
     "glossaryDescription": "ビットコイン用語を理解する",
     "login": "ログイン",
-    "publicDescription": "",
+    "publicDescription": "パブリックコミュニケーションに関する記事を探す",
     "businessDescription": "ビットコインの商用利用について明らかにする。",
     "channelsDescription": "ビットコインについて学べるYoutubeチャンネルをご用意しています",
     "bitcoinDescription": "ビットコインの基礎から高度な応用までを学ぶ。",
@@ -863,7 +863,10 @@
     "newsletterDescription": "教育プロジェクトに使えるコンテンツ集",
     "projectsDescription": "ビットコインの改善と普及に貢献する企業やプロジェクトについて学ぶ",
     "miningCourseDescription": "ビットコインマイニングの背後にあるプロセス、ツール、業界を理解する。",
-    "moviesDescription": "ビットコインの進化と影響に関する魅力的なストーリーと詳細な調査を発見する"
+    "moviesDescription": "ビットコインの進化と影響に関する魅力的なストーリーと詳細な調査を発見する",
+    "protocolDescription": "ビットコインネットワークを動かすコアルールを探求する。",
+    "securityDescription": "ビットコインアセット（資産）を守るテクニックをマスターする。",
+    "socialStudiesDescription": "ビットコインが社会に与える影響を学ぶ。"
   },
   "nodeNetwork": {
     "apply": "ノードを申請する",
@@ -871,7 +874,7 @@
     "pageSubtitle": "世界中をオレンジピルしたいですか？ Plan ₿ Network にぜひご参加ください。",
     "pageTitle": "Plan ₿ ノードネットワークを探求しよう",
     "applyhelp": "※ノードエリアの選択",
-    "descriptionextend": ""
+    "descriptionextend": "私たちの最初のステップは、物理的なスペースを持つコミュニティ（私たちはこれをネットワークの「フルノード」と呼んでいる）の参加を呼びかけることです。 将来的には、ネットワークが強化されるにつれて、世界中のより多くのイニシアティブへこの招待状を広げていく予定です。 私たちの価値観に共感していただける方は、ぜひ私たちまでご連絡いただき、私たちのネットワークに参加し、最高のビットコイン教育の構築にご協力ください。"
   },
   "notFound": {
     "here": "こちら",
@@ -900,25 +903,61 @@
   "resources": {
     "newsletters": {
       "title": "ニュースレター",
-      "author": "著者 : "
+      "author": "著者 : ",
+      "level": "レベル：",
+      "noNewsletters": "現在、選択された言語のニュースレターはありません。",
+      "subtitle": "<0>他のニュースレター</0>を見る"
     },
-    "pageDescription": "ビットコインを理解しようとすることは、成長し続ける迷路を探検するようなものです。 あなたの旅を助けるために、書籍、ポッドキャスト、動画、カンファレンスのリプレイなど、膨大なリソースをまとめました。 このポータルでは、ビットコインエコシステムをよりよく理解するために、すべての情報を1つのGithubリポジトリに集約しています。",
+    "pageDescription": "ビットコインを理解しようとすることは、成長し続ける迷路を探検するようなものです。 あなたの旅を助けるために、書籍、ポッドキャスト、動画、カンファレンス集など、膨大なリソースをまとめました。 このポータルでは、ビットコインエコシステムをよりよく理解するために、すべての情報を1つのGithubリポジトリに集約しています。",
     "pageSubtitle": "知識を一元化し、よりよく流通させる",
     "pageTitle": "リソース",
     "podcasts": {
-      "title": "ポッドキャスト"
+      "title": "ポッドキャスト",
+      "noPodcasts": "現在、選択した言語のポッドキャストはありません。"
     },
-    "github": "これらのデータはすべて、オープンソースの<0>Github</0>リポジトリで管理されています。 不足しているコンテンツがあれば、ぜひ追加して貢献してください。",
-    "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": "",
-    "searchFilterName": "",
+    "github": "これらのデータは、すべてオープンソースの<0>Github</0>リポジトリで管理されています。 不足しているコンテンツがあれば、ぜひ追加して貢献してください。",
+    "pageSubtitleBooks": "<0>他の本</0>を見る",
+    "pageSubtitlePodcast": "<0>他のポッドキャスト</0>を見る",
+    "searchFilterName": "名前で検索する",
     "books": {
       "author": "著者: ",
       "title": "ライブラリー"
     },
     "newsletter": {
       "check": "ニュースレターをチェック"
-    }
+    },
+    "pageSubtitleChannels": "<0>Youtubeチャンネル</0>を見る",
+    "pageSubtitleLectures": "<0>他のレクチャー</0>を見る",
+    "projects": {
+      "title": "プロジェクト"
+    },
+    "articles": {
+      "title": "記事"
+    },
+    "bet": {
+      "title": "教育用ツールキット"
+    },
+    "channels": {
+      "noYoutubeChannels": "現在、選択した言語のYoutubeチャンネルはありません。",
+      "title": "Youtubeチャンネル"
+    },
+    "conferences": {
+      "title": "カンファレンス集"
+    },
+    "glossary": {
+      "title": "用語集"
+    },
+    "lectures": {
+      "noLectures": "現在、選択した言語のレクチャー集はありません。",
+      "title": "レクチャー集"
+    },
+    "movies": {
+      "noMovies": "現在、選択した言語の映画やドキュメンタリーはありません。",
+      "title": "映画とドキュメンタリー"
+    },
+    "toggleFreeOnly": "無料のみ",
+    "toggleLabelAll": "すべて",
+    "toggleLabelSelectedLanguage": "選択された言語"
   },
   "settings": {
     "changePassword": "パスワードを変更する",
@@ -947,7 +986,7 @@
     "explorer": {
       "description": "これらのチュートリアルのすべては、世界中にビットコイン教育を広めたいと願う情熱的で熱心なビットコイナーによって書かれています。いいね、レビュー、チップをお忘れなく！",
       "didYouKnow": "ご存知でしたか？",
-      "exploreAllTutorials": ""
+      "exploreAllTutorials": "すべてのチュートリアルを見る"
     },
     "merchant": {
       "description": "ご自分のビジネスでビットコインを簡単に受け入れる方法を知りたいと思ったことはありませんか？私たちの様々なソリューションを探求し、専門家になって、あなたの周りのお店のためのマーチャントソリューションを簡単にセットアップしてください。POS ソリューションは、販売者のニーズ (オフラインまたはオンライン)、販売量、業務の複雑さに応じて異なります。一般的に優れたプロキシは、単純に基本的な LNウォレットから開始し、簡単で効率的なソリューション (モバイルPoS など) に移行し、最後に高度で複雑な専門的なソリューションを求めてBTC Pay Serverを検討することです。",
@@ -1085,7 +1124,7 @@
     "ticket": "",
     "tickets": "",
     "admins": "",
-    "all": "",
+    "all": "すべて",
     "amount": "",
     "bCert": "₿-CERT",
     "booked": "",
@@ -1159,7 +1198,10 @@
   },
   "payment": {
     "terms": "払い戻しの詳細については、<0>利用規約</0>をご覧ください",
-    "total": "合計"
+    "total": "合計",
+    "haveReductionCode": "割引コードをお持ちですか？",
+    "payWithBitcoin": "ビットコインで支払う",
+    "payByCard": "クレジットカードで支払う"
   },
   "bCert": {
     "bCertDescription": "₿-CERT は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 ₿-CERT 認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
@@ -1182,7 +1224,7 @@
     "organizeSessionHub": "あなたの地域で ₿-CERT 試験セッションを開催する"
   },
   "glossary": {
-    "creditsLoic": "<0>クレジット</0>：Bitcoin Dictionaryは <1>Loïc Morel (Pandul)</1> によって作成されました。詳細は <2>Githubリポジトリ</2> で確認できます。",
+    "creditsLoic": "<0>クレジット</0>：ビットコイン用語集は <1>Loïc Morel (Pandul)</1> によって作成されました。詳細は <2>Githubリポジトリ</2> で確認できます。",
     "needHelp": "専門用語の定義にお困りですか？",
     "keepLooking": "さらに検索しますか？",
     "notTranslated": "この用語はまだ翻訳されていません。\nご協力いただける方は、お気軽に下記までご連絡ください",
@@ -1197,42 +1239,44 @@
     "loadMoreWords": "用語をさらに見る"
   },
   "proofreading": {
-    "thanks": "",
+    "thanks": "素晴らしいレビュアーの方々に心から感謝します！",
     "completed": "校正が完了しました",
-    "description": "",
+    "description": "オリジナルコンテンツは AI によって翻訳されていますが、正確性を確保するには人間によるレビューが必要です。",
     "inProgress": "校正中",
-    "reviewEarn": "",
-    "status": ""
+    "reviewEarn": "レビューでsats獲得",
+    "status": "校正状況",
+    "rewardsText": "*報酬は為替レートによって変動する可能性があります",
+    "descriptionOriginalLanguage": "このページがオリジナルの言語で書かれていたとしても、正確性を確保するには人間によるレビューが必要です。"
   },
   "publicCommunication": {
     "description": "Plan ₿ Network は、オープンソース標準を遵守し、その全過程において透明性を維持することに誇りを持っています。",
     "blogCategories": {
-      "all": "",
-      "content": "",
-      "feature": "",
-      "network": ""
+      "all": "すべて",
+      "content": "コンテンツ",
+      "feature": "注目",
+      "network": "ネットワーク"
     },
     "legalSections": {
-      "contact": "",
-      "legalNotice": "",
-      "privacyPolicy": "",
+      "contact": "お問い合わせ",
+      "legalNotice": "法的通知",
+      "privacyPolicy": "プライバシーとポリシー",
       "termsOfSale": "販売規約"
     },
     "goBackButtons": {
-      "simpleGoBack": ""
+      "simpleGoBack": "すべての記事に戻る"
     },
     "blogPageStrings": {
-      "featuredArticleTitleText": "",
-      "pastArticleSubtitleText": "",
-      "noArticlesText": "",
-      "errorMessageNotFound": "",
-      "blogSidebarTitle": "",
-      "blogListButtonText": "",
-      "filterText": ""
+      "featuredArticleTitleText": "最新記事",
+      "pastArticleSubtitleText": "過去記事",
+      "noArticlesText": "現在、ブログ記事はありません。",
+      "errorMessageNotFound": "記事は見つかりませんでした。",
+      "blogSidebarTitle": "過去の{{category}}記事",
+      "blogListButtonText": "記事を読む",
+      "filterText": "トピックでフィルタ ："
     },
-    "title": "",
-    "blogPost": "",
-    "legal": ""
+    "title": "パブリックコミュニケーション",
+    "blogPost": "ブログとニュース",
+    "legal": "法的情報"
   },
   "lectures": {
     "lecturePartCourse": "このレクチャーは<0>{{courseTitle}}</0>コースの一部です。\n全コンセプトをマスターし、あなたの潜在能力を最大限に引き出すために、全コースにトライしてください！",
@@ -1245,7 +1289,10 @@
   "search": {
     "professor": "講師",
     "professors": "講師陣",
-    "resultEmpty": "おっと！検索条件に一致するものが見つかりませんでした。 スペルを確認するか、他のキーワードを試すか、別のカテゴリーを選択してください。"
+    "resultEmpty": "おっと！検索条件に一致するものが見つかりませんでした。 スペルを確認するか、他のキーワードを試すか、別のカテゴリーを選択してください。",
+    "conference_replay": "カンファレンス集",
+    "conference_replays": "カンファレンス集",
+    "all": "すべて"
   },
   "filters": {
     "resources": "リソース",
@@ -1257,6 +1304,17 @@
     "check": "ポッドキャストをチェック"
   },
   "projects": {
-    "otherCommunities": "Plan ₿ コミュニティを探求しよう"
+    "otherCommunities": "Plan ₿ コミュニティを探求しよう",
+    "related": "関連",
+    "languages": "言語",
+    "networkStrength": "ネットワークの強さはメンバーにあります",
+    "noRelatedEvents": "現在、この教育者に関連する今後のイベントはありません。",
+    "pageTitle": "ビットコインプロジェクト",
+    "relatedEvents": "関連イベント"
+  },
+  "movies": {
+    "pageTitle": "映画とドキュメンタリー",
+    "watchTrailer": "予告編を見る",
+    "goToMovie": "映画を見る"
   }
 }

@@ -65,7 +65,7 @@
     "createOne": "在此註冊！",
     "emailAddress": "電子郵件地址",
     "lnurlAuthDescription": "使用您的Lightning錢包掃描此QR碼登入！",
-    "emailTip": "如果你願意，可以將使用者電子郵件添加到你的帳戶中。在忘記密碼的情況下，這會很有用 ;)",
+    "emailTip": "電子郵件非必填項，但如果忘記密碼時，它會很有用！",
     "confirmation": "確認",
     "displayName": "顯示名稱",
     "trackProgress": "建立帳號或登入以追蹤您的進度",
@@ -76,11 +76,11 @@
   "bCert": {
     "bCertDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
     "bookExam": "預約考試時段",
-    "challengeYourself": "挑戰自己並展現你的實力！",
+    "challengeYourself": "挑戰自己並展現你的實力",
     "checkout": "查看₿-CERT",
     "knowledgeableBitcoin": "對比特幣有所了解？",
     "noBookExam": "尚未安排考試時段。",
-    "organizeDescription": "沒問題！如果您的社群是該網絡的一部分，您可以在您的中心組織考試。請閱讀規章，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。",
+    "organizeDescription": "沒問題！如果您的社群是 Plan ₿ Network 的一部分，您可以在您的所在地舉辦考試。\n請閱讀<0>charter</0> t，以確保您能夠遵守舉辦考試的必要條件。如果您能滿足這些條件，您就可以安排考試並將其添加到平台上。",
     "organizeExam": "舉辦考試",
     "organizeSubtitle": "讓十億人接受比特幣並不容易",
     "organizeTitle": "想在您的中心舉辦比特幣證書考試嗎？",
@@ -90,7 +90,8 @@
     "tweetText": "很高興你在@planb_network通過了₿-證書，得分為{{score}}/100！{{emoji}} #BCert\n\n{{certificateUrl}}",
     "verify": "驗證您的證書真實性",
     "download": "下載證書",
-    "organizeSessionConditions": "請閱讀<0>章程</0>以確保您符合主辦測試的強制條件。\n如果您符合資格，我們將很高興與您一起為您的當地社區規劃一場考試。\n請使用您方便的方式與我們聯繫。"
+    "organizeSessionConditions": "請閱讀<0>章程</0>以確保您符合主辦測試的強制條件。\n如果您符合資格，我們將很高興與您一起為您的當地社區規劃一場考試。\n請使用您方便的方式與我們聯繫。",
+    "organizeSessionHub": "在您的所在地組織一個 ₿-CERT 測試場次"
   },
   "bet": {
     "contributeButton": "幫助與貢獻",
@@ -169,7 +170,16 @@
       "premiumContentNeedsPayment": "這門課程是高級方案的一部分。",
       "premiumContentNeedsPaymentAction": "前往課程首頁",
       "courseAddedToDashboard": "這門課程已加入您的學員儀表板",
-      "premiumContentNeedsLogin": "您需要登入才能取得這門課程。"
+      "premiumContentNeedsLogin": "您需要登入才能取得這門課程。",
+      "collaborativeEffort": "平台上的每一項內容都是協作的結果：每一課程、翻譯和修訂都離不開貢獻者的辛勤工作。因此，我們一直在尋找能夠幫助我們審核多種語言內容的校對者。如果您想參與校對過程，請在我們的<0>Telegram</0>群組中聯繫我們，並閱讀我們的 <1>教學</1>。\n\n我們提醒您，這個內容是開源的 - 在<2>CC BY-SA</2>下獲得許可 - 所以它可以自由地分享和使用，只要標明資料來源就可以。",
+      "hasNotBeenProofread": "這門課程尚未校對",
+      "hasBeenProofreadBy": "此課程已由以下人員進行校對",
+      "ledBy": "這門課程由",
+      "pastEditionsRatings": "過去版本評分",
+      "teacherLed": "教師主導",
+      "otherCourses": "其他課程",
+      "otherCoursesInterest": "您可能會感興趣的其他課程",
+      "thanksTipping": "您可以透過給予小費來感謝教授。"
     },
     "explorer": {
       "buildPath": "打造屬於你自己的探索之路",
@@ -177,7 +187,10 @@
       "exploreCourses": "探索所有 Plan ₿ 的課程",
       "findCourses": "藉由課程篩選器，找到最適合您需求的課程",
       "journey": "比特幣是一場旅程，而非終點",
-      "seeCourse": "查看課程"
+      "seeCourse": "查看課程",
+      "planbSchoolHeadline": "Plan ₿ School，由 Giacomo Zucco 主導，提供為期三個月的密集型教育課程，目標在彌合學習與現實世界應用之間的差距。除了傳統課程外，學生還會參與由公司主導的實踐項目以及專為頂尖表現者設計的一流訓練營。經過兩輪競爭激烈的選拔，只有最優秀的人才能晉級，確保最終的優秀學生能夠充分準備，開啟他們在比特幣產業的職業生涯。",
+      "comingSoon": "即將來臨",
+      "planbSchool": "PLAN ₿ SCHOOL"
     },
     "payment": {
       "downloadCurriculum": "下載課程表",
@@ -243,7 +256,8 @@
       "feedback": "回饋",
       "feedbackDescription1": "請在下方為您的課程體驗評分。",
       "feedbackDescription2": "請注意，教師無法查看個別評分。",
-      "saveReview": "保存評論"
+      "saveReview": "保存評論",
+      "whatStudentsSayPasEdition": "學生對歷屆版本的評價"
     },
     "part": {
       "count": "第 {{count}} 部分"
@@ -315,7 +329,37 @@
       "yesSubmit": "是的，提交",
       "oopsFailed": "哎呀，看起來你<0>沒有通過</0>期末考試。",
       "passRate": "通過率為80%。",
-      "planBTimeStamp": "在 Plan ₿ Network，我們利用區塊鏈支持的時間戳技術來保護你的學位。"
+      "planBTimeStamp": "在 Plan ₿ Network，我們利用區塊鏈支持的時間戳技術來保護你的學位。",
+      "successDiploma": "恭喜！您已成功通過考試。\n您的證書已經在您的學生儀表板中。它已被 <0>time-stamped</0> 以確保其真實性。",
+      "availableDashboardTimestamped": "您的證書已經在您的儀表板上。",
+      "bCertCompletionText": "Plan ₿ Network 很高興恭喜 {{username}} 獲得 ₿-CERT 測試證書。",
+      "passExam": "通過考試",
+      "timeStampedNoDot": "時間戳記",
+      "takeExam": "參加考試",
+      "timeStamping": "時間戳記",
+      "buttonTextBCert": "了解更多",
+      "courseDiploma": "課程證書",
+      "examNotPassed": "您需要參加期末考試，並且得分超過 80％ 才能獲得您的證書並完成課程。此證書將會被 <0>time-stamped</0> 以確保其真實性。",
+      "failedDiploma": "您必須在期末考試中得分超過 80% 才能獲得證書並完全完成課程。您可以在 24 小時後重新參加考試。",
+      "goConclusion": "前往結論",
+      "receiveDiploma": "領取你的證書",
+      "skipGoConclusion": "跳過，直接進入結論",
+      "successDiplomaTimeStamped": "恭喜！您已成功通過考試。\n您的畢業證書將在您完成考試後約 10 小時內顯示於您的學生儀表板。這個延遲是因為 <0>time-stamping</0> 技術，目標在確保證書的真實性。",
+      "courseNotFound": "找不到課程",
+      "dontWorryRetake": "別擔心，你可以在24小時後重新考試。",
+      "examCertificateCompletionText": "Plan ₿ Network 很高興恭喜 {{username}} 獲得 “{{courseName}}” 的課程證書。",
+      "certificatePageOtherCourses": "其他相關課程"
+    },
+    "conclusion": {
+      "unlockFeatures2": "請注意，我們不會收集任何個人資料，也不使用 cookies。",
+      "completedChaptersHeadline": "所有章節都已完成！",
+      "completedFeedbackHeadline": "感謝您的回饋！\n這對我們非常重要，我們由衷感謝您的支持。",
+      "completedFeedbackSubHeadline": "您可以隨時在儀表板中編輯您的評分和評論。",
+      "congratulationsEnd": "恭喜，你已經完成了這門課程",
+      "finalStep": "這是您在儀表板上標記課程完成的最後一步，完成後即可繼續您的學習旅程！",
+      "stepsToComplete": "在繼續您的學習旅程之前，請按照以下步驟在儀表板中標記此課程為已完成！",
+      "takeFinalExam": "現在您已完成所有章節，是時候進行最終考試來測試您的知識了。",
+      "unlockFeatures1": "為了解鎖所有功能並追蹤您的進度，您需要擁有一個帳號。"
     }
   },
   "dashboard": {
@@ -338,7 +382,10 @@
       "ticketType": "類型",
       "noInvoice": "您目前沒有任何收據。",
       "pastTicketTitle": "過去的訂單",
-      "upcomingTicketTitle": "即將到來的訂單"
+      "upcomingTicketTitle": "即將到來的訂單",
+      "cancelBookingTitle": "您確定要取消這個預約嗎？",
+      "noGoBack": "不，返回",
+      "yesCancel": "是的，取消"
     },
     "profile": {
       "emailChangeConfirmation": "已向您發送了確認更改電子郵件的確認郵件，請檢查您的收件箱以確認。",
@@ -450,7 +497,8 @@
       "seeDetails": "查看詳情",
       "seeTheCourse": "查看課程",
       "verify": "驗證您的文憑真實性",
-      "yourProgress": "你的進度："
+      "yourProgress": "你的進度：",
+      "shareOn": "分享到"
     },
     "course": {
       "checkDetailsCompleted": "在這裡，你可以查看有關你完成課程的所有詳細資訊。",
@@ -501,9 +549,201 @@
       "tutorialsManagementPanel": "課程管理面板",
       "type": "類型",
       "upcomingBookings": "即將到來的訂單",
-      "upcomingBookingsSubtitle": "您可以在此下載所有實體活動的參與者名單。"
+      "upcomingBookingsSubtitle": "您可以在此下載所有實體活動的參與者名單。",
+      "careers": {
+        "lastUpdate": "最後更新",
+        "lastUpdated": "最後更新",
+        "careers": "職業",
+        "careersSubtitle": "在這裡，您可以查看已完成申請的參與者名單。所有申請資訊都可以在試算表中找到。",
+        "cv": "履歷表",
+        "downloadProfiles": "下載試算表",
+        "downloadSpreadsheet": "下載試算表",
+        "profession": "專業",
+        "resultsRemaining": "剩餘 {{results}} 個結果",
+        "seeMore": "查看更多",
+        "viewCV": "查看履歷表"
+      }
     },
-    "studentDashboard": "學員儀表板"
+    "studentDashboard": "學員儀表板",
+    "backToDashboard": "返回儀表板",
+    "careerPortal": {
+      "bitcoinRelatedExperience": "與比特幣相關的經驗",
+      "bitcoinRelatedExperienceSubtitle": "請分享您在比特幣相關計畫中的參與經歷。",
+      "add": "添加",
+      "acceptTermsAndConditions": "我已閱讀並接受條款和條件",
+      "acceptedFormat": "接受的文件格式：pdf / 最大文件大小：10 MB。",
+      "allowReceivingEmails": "我同意接收來自 Plan ₿ Network 潛在就業機會的電子郵件",
+      "applicationStatus": "您的申請是",
+      "availabilityStartPlaceholder": "日期",
+      "beAware": "請注意，Plan ₿ Network 將僅為招聘目的收集和儲存您的資料。資料將根據歐盟一般資料保護規範（GDPR）進行處理並與我們的商業夥伴共享。點擊<0>here</0>了解更多有關我們候選人隱私通知的資訊。",
+      "bitcoinCommunityParticipant": "您是比特幣當地社群的一員嗎？",
+      "bitcoinCommunityText": "如果是，請問是哪一個社群，您在其中的參與程度如何？\n這個社群是否屬於 Plan ₿ Network？",
+      "bitcoinProjectParticipant": "您是否曾積極參與過任何比特幣項目？\n（無論是過去還是現在）",
+      "bitcoinProjectPlaceholder": "例如：社群項目、開源項目等…",
+      "bitcoinProjectSubLabel": "在下方描述您的項目。",
+      "cannotUndo": "此操作無法撤銷。",
+      "companySizePreference": "您偏好哪種類型的公司規模？",
+      "companySizePreferenceSubLabel": "您可以選擇多個答案。",
+      "chooseFile": "選擇文件",
+      "bitcoinProjectText": "哪一個？",
+      "applicationSaved": "您的申請已保存！",
+      "availability": "您的可用時間",
+      "availabilityStart": "您何時可以開始？",
+      "description": "作為 Plan ₿ Network 的學生，您是廣大社群的一部分，這個社群可以支持您的職業成長。在這個部分，您可以提交您的履歷並分享您的職業抱負。我們將與業界合作夥伴密切合作，將您的個人資料與潛在的工作機會匹配，幫助您邁出職業生涯的下一步。",
+      "fileUploadError": "上傳檔案時發生錯誤，請再試一次。",
+      "firstName": "名字（或暱稱）",
+      "contactInformationSubtitle": "請提供您的電子郵件地址和其他聯繫方式。",
+      "countryResidence": "居住國家",
+      "cvRequired": "您必須上傳您的履歷。",
+      "cvUpload": "上傳你的履歷表",
+      "companySizes": {
+        "41To100": "41至100名員工",
+        "noPreference": "沒有偏好",
+        "100More": "100名以上的員工",
+        "11To40": "11至40名員工",
+        "1To10": "1至10名員工"
+      },
+      "completeApplication": "完成申請",
+      "confirmDelete": "確認刪除",
+      "contactInformation": "聯絡資訊",
+      "deleteCareerProfileTitle": "您確定要刪除您的職業資料嗎？",
+      "emailAddress": "電子郵件地址",
+      "emailPlaceholder": "mail@mail.com",
+      "expectedSalaryPlaceholder": "月薪：2,500 元淨收入",
+      "expectedSalarySubLabel": "根據您的個人資料，請告訴我們您的時薪或月薪預期。請明確說明是淨收入還是總收入。",
+      "fileTooLarge": "所選的檔案太大",
+      "expectedSalary": "期望薪資",
+      "cvUploadLabel": "上傳履歷表",
+      "cvUploadSubtitle": "請上傳您的履歷，以展示您的技能和經歷給潛在雇主。",
+      "deleteCareerProfile": "刪除職業檔案",
+      "fileUploaded": "成功上傳履歷！",
+      "companySizeRequired": "請至少選擇一種公司規模。",
+      "followProcess": "請按照以下步驟提交您的履歷和職位資訊。",
+      "jobTitles": {
+        "legalContractSpecialist": "法律合約專員",
+        "technicalProductManager": "技術產品經理",
+        "amlKycSpecialist": "AML/KYC 專家",
+        "backendEngineer": "後端工程師",
+        "bitcoinInvestmentAnalyst": "比特幣投資分析師",
+        "contentWriter": "內容撰寫者",
+        "cryptographer": "密碼學家",
+        "hrSpecialist": "人力資源專員",
+        "businessDevelopmentManager": "業務發展經理",
+        "cloudInfrastructureEngineer": "雲端架構工程師",
+        "communityManager": "社群經理",
+        "fullStackDeveloper": "全端開發者",
+        "graphicDesigner": "平面設計師",
+        "logisticManager": "物流經理",
+        "researcher": "研究員",
+        "revenueManager": "營收經理",
+        "riskAnalyst": "風險分析師",
+        "sales": "銷售業務",
+        "seoSpecialist": "SEO專家",
+        "socialMediaManager": "社群媒體經理",
+        "brandStrategist": "品牌策略師",
+        "businessAnalyst": "商業分析師",
+        "customerSuccessManager": "客戶成功經理",
+        "customerSupportSpecialist": "客戶支援專員",
+        "cybersecurity": "網路安全",
+        "dataEngineer": "數據工程師",
+        "devOpsEngineer": "DevOps 工程師",
+        "economicAnalyst": "經濟分析師",
+        "educator": "教育者",
+        "eventCoordinator": "活動協調員",
+        "frontendEngineer": "前端工程師",
+        "technicalSupportEngineer": "技術支援工程師",
+        "technicalWriter": "技術寫作員",
+        "marketingManager": "行銷經理",
+        "miningEngineer": "挖礦工程師",
+        "publicRelationsManager": "公共關係經理",
+        "accountingManager": "會計經理",
+        "uiUxDesigner": "UI/UX設計師",
+        "uxResearcher": "使用者體驗研究員",
+        "complianceOfficer": "合規專員",
+        "miningOperationsManager": "挖礦營運經理",
+        "mobileAppDeveloper": "手機應用程式開發者",
+        "operationsManager": "營運經理",
+        "productManager": "產品經理",
+        "protocolEngineer": "協議工程師"
+      },
+      "legalInformationSubtitle": "請接受以下的條款和條件，這樣我們就可以將您的技能和經驗與我們商業夥伴的工作機會配對。",
+      "invalidFile": "無效的檔案格式",
+      "jobCategories": {
+        "businessRoles": "商業角色",
+        "financeCompliance": "財務和合規",
+        "marketingCommunity": "行銷與社群",
+        "more": "更多",
+        "operationsSupport": "營運與支援",
+        "technicalRoles": "技術角色",
+        "productDesign": "產品和設計",
+        "researchEducation": "研究與教育"
+      },
+      "languageSkillsSubtitle": "請告訴我們您能夠聽說讀寫的語言，以及相對應的語言能力等級。",
+      "remoteWorkPreferences": {
+        "sometimes": "偶爾，為什麼不呢",
+        "yes": "是的，很樂意",
+        "no": "我寧願不要"
+      },
+      "jobSearch": "求職",
+      "jobSearchSubtitle": "請設定您的職位偏好，幫助我們根據您的個人資料提供最適合您的機會。",
+      "steps": {
+        "step1": "個人資訊",
+        "step2": "求職",
+        "step3": "上傳履歷表",
+        "step4": "法律條款"
+      },
+      "seeOrEditProfile": "查看或編輯個人資料",
+      "selectJobTitle": "選擇一個職位名稱",
+      "selectLanguage": "選擇一種語言",
+      "selectRole": "您正在尋找哪些職位？",
+      "selectRoleSubLabel": "請選擇最符合您工作搜尋條件的職位名稱。",
+      "startApplication": "開始申請",
+      "languageLevels": {
+        "elementary": "初級（基本對話與寫作）",
+        "fluent": "流利（母語水平）",
+        "beginner": "初學者（理解有限）",
+        "advanced": "進階（有信心與準確性）",
+        "intermediate": "中等（舒適的溝通）"
+      },
+      "lastName": "姓氏",
+      "legalInformation": "法律資訊",
+      "legalTerms": "法律條款",
+      "lookingForJob": "我們目前正在為您尋找工作機會。",
+      "motivationLetterSubLabel": "您可以在下方寫幾句話來描述您的經驗和動機。",
+      "motivationSubtitle": "您可以附上一封自我介紹信來豐富您的申請，讓我們更了解您自己以及您的求職情況。",
+      "noFileSelected": "未選擇任何檔案",
+      "other": "其他",
+      "partTime": "兼職",
+      "personalInformation": "個人資訊",
+      "personalInformationSubtitle": "請添加您的全名和居住地。",
+      "provideValidEmail": "請提供有效的電子郵件。",
+      "roleLevel": "經驗程度",
+      "roleLevelSubLabel": "請選擇最符合您技能的級別。",
+      "roleLevels": {
+        "junior": "初級（1至3年）",
+        "mid": "中等水平（3至5年）",
+        "senior": "資深（5年以上）",
+        "student": "學生 (0 年)"
+      },
+      "roleRequired": "添加至少一個角色。",
+      "remoteWorkPreference": "您願意遠程工作嗎？",
+      "fullTime": "全職",
+      "languageLevel": "熟練程度",
+      "languageLevelSubLabel": "請選擇最符合您技能的級別。",
+      "languageRequired": "添加至少一種語言。",
+      "languageSkills": "語言技能",
+      "yourLanguages": "你的語言",
+      "yourRoles": "您的工作職位",
+      "termsAndConditions": "條款和條件",
+      "uploadCV": "上傳你的履歷表",
+      "uploadCVSubLabel": "請上傳您的履歷，以展示您的技能和經歷給潛在雇主。",
+      "welcome": "歡迎來到您的職業入口網站",
+      "maxCharacters": "最多 {{characters}} 個字符",
+      "maxRoles": "您最多可以選擇3個職位名稱。",
+      "motivation": "動機",
+      "motivationLetter": "動機信",
+      "motivationLetterPlaceholder": "你的動機是什麼？"
+    }
   },
   "glossary": {
     "filterBar": "在這裡找到你需要的詞彙",
@@ -568,7 +808,9 @@
     "blogSection": {
       "blogTitle": "Plan ₿ Network 有什麼新消息",
       "description": "我們持續改進平台、內容和網絡—快來看看！",
-      "seeAll": "查看全部"
+      "seeAll": "查看全部",
+      "noBlogsAvailable": "沒有可用的部落格。",
+      "noDateAvailable": "沒有可用的日期"
     },
     "courseSection": {
       "checkAllCourses": "檢查所有課程",
@@ -577,7 +819,8 @@
     },
     "eventSection": {
       "checkEvents": "檢查所有活動",
-      "eventTitle": "全球比特幣教育者網絡"
+      "eventTitle": "全球比特幣教育者網絡",
+      "hottestEvent": "最熱門的比特幣活動"
     }
   },
   "menu": {
@@ -599,7 +842,10 @@
     "newsletterDescription": "您可以用於教育專案的內容合集",
     "socialStudiesDescription": "研究比特幣對社會的影響。",
     "bitcoinDescription": "從基礎到進階應用，學習比特幣。",
-    "businessDescription": "展示比特幣在商業中的應用。"
+    "businessDescription": "展示比特幣在商業中的應用。",
+    "moviesDescription": "探索引人入勝的故事和比特幣演變及影響的深入分析",
+    "projectsDescription": "了解那些致力於改善比特幣並推動其普及的公司和專案",
+    "lecturesDescription": "重新觀看比特幣專家的講座錄影"
   },
   "events": {
     "card": {
@@ -615,7 +861,9 @@
       "bookSeat": "預約座位",
       "eventFull": "活動已額滿",
       "seatBooked": "已預約座位",
-      "visitWebsite": "造訪網站"
+      "visitWebsite": "造訪網站",
+      "purchased": "已購買",
+      "buyVideo": "購買影片"
     },
     "main": {
       "upcomingEvents": "即將開始的活動",
@@ -651,7 +899,13 @@
       "limitation": "限制",
       "max_capacity": "最大容量為",
       "payment_successful": "預約成功！",
-      "time": "時間"
+      "time": "時間",
+      "access_physical_successful": "您可以在這裡下載您的票券，或者稍後在您的儀表板中下載。",
+      "callout_online": "您即將預訂此活動的線上參與資格。",
+      "access_online_successful": "活動開始時，請登入平台，您將能夠透過活動頁面觀看直播。",
+      "description_online": "請檢查活動的日期和時間。\n當活動開始時，請登入平台，並透過活動頁面觀看直播。",
+      "description_physical": "請確認以下的場地詳情。\n當您的預訂確認後，我們將發送一張票券以便於活動當日出示。此票券還將讓您獲得直播和重播影片的觀看權限（如有提供）。",
+      "callout_replay": "您即將預訂此活動重播影片的觀看權限。"
     },
     "errors": {
       "premiumContentNeedsPayment": "這個活動是高級方案的一部分。",
@@ -683,7 +937,8 @@
     "terms": "請查看我們的<0>一般條款</0>以取得退款明細",
     "total": "總計",
     "payWithBitcoin": "用比特幣支付",
-    "payByCard": "刷卡付款"
+    "payByCard": "刷卡付款",
+    "haveReductionCode": "有折扣碼嗎？"
   },
   "publicCommunication": {
     "description": "Plan ₿ Network 以遵循開源標準為傲，並在整個過程中保持透明",
@@ -699,7 +954,7 @@
       "pastArticleSubtitleText": "過去的文章",
       "noArticlesText": "目前沒有任何部落格文章。",
       "errorMessageNotFound": "找不到部落格。",
-      "blogSidebarTitle": "網路中的過去文章",
+      "blogSidebarTitle": "{{category}}的過去文章",
       "blogListButtonText": "閱讀"
     },
     "title": "公開交流",
@@ -718,14 +973,15 @@
   "resources": {
     "github": "這裡的所有資料都透過開源的 <0>Github</0> 倉庫進行管理。歡迎隨時貢獻並添加任何缺失的內容。",
     "books": {
-      "author": "作者： "
+      "author": "作者： ",
+      "title": "資料庫"
     },
     "newsletters": {
       "title": "電子報",
       "author": "作者： ",
       "level": "等級：",
       "noNewsletters": "目前沒有該語言的電子報。",
-      "subtitle": "<0>其他電子報</0>你可能會喜歡： "
+      "subtitle": "你可能會喜歡<0>Other newsletters</0>"
     },
     "pageDescription": "試圖理解比特幣就像在探索一個不斷延伸的迷宮。為了幫助您在這段旅程中，我們收集了大量資源，包括書籍、Podcasts、影片和研討會重播等。這個入口網站將所有資訊集中在一個 GitHub 資料庫中，幫助您更好地了解比特幣生態系統。",
     "pageSubtitle": "集中知識以更好地分配它",
@@ -738,23 +994,48 @@
     "newsletter": {
       "check": "查看電子報"
     },
-    "pageSubtitleBooks": "<0>其他書籍</0>你可能會喜歡：",
-    "pageSubtitlePodcast": "<0>其他 podcasts</0>你可能會喜歡：",
+    "pageSubtitleBooks": "你可能會喜歡<0>Other books</0>",
+    "pageSubtitlePodcast": "你可能會喜歡<0>Other podcasts</0>",
     "channels": {
       "title": "Youtube 頻道",
       "noYoutubeChannels": "目前沒有該語言的Youtube頻道。"
     },
-    "pageSubtitleChannels": "<0>其他Youtube頻道</0>您可能會喜歡：",
+    "pageSubtitleChannels": "您可能會喜歡<0>Other Youtube Channels</0>",
     "toggleLabelAll": "所有",
-    "toggleLabelSelectedLanguage": "選擇的語言"
+    "toggleLabelSelectedLanguage": "選擇的語言",
+    "bet": {
+      "title": "教育工具包"
+    },
+    "conferences": {
+      "title": "會議重播"
+    },
+    "glossary": {
+      "title": "詞彙表"
+    },
+    "projects": {
+      "title": "專案"
+    },
+    "pageSubtitleLectures": "你可能會喜歡<0>Other Lecture Replays</0>",
+    "articles": {
+      "title": "文章"
+    },
+    "lectures": {
+      "noLectures": "目前沒有選定語言的課程重播。",
+      "title": "課程重播"
+    },
+    "movies": {
+      "noMovies": "目前沒有選定語言的電影或紀錄片。",
+      "title": "電影與紀錄片"
+    },
+    "toggleFreeOnly": "僅免費"
   },
   "tutorials": {
     "details": {
       "didHelp": "這有幫助嗎？",
-      "author": "作者： ",
+      "author": "作者：",
       "source": "原始來源：",
       "writtenBy": "這個教學資源是由以下人士撰寫的：",
-      "ratingSuccess": "感謝您的評分！我們已經將其納入考慮",
+      "ratingSuccess": "感謝您的評分！",
       "tutorialName": "課程名稱"
     },
     "exchange": {
@@ -844,7 +1125,10 @@
       "exploreAllTutorials": "探索所有教學資源"
     },
     "pageSubtitle": "透過探索比特幣龐大的生態系統，揭開其神秘面紗",
-    "pageTitle": "探索我們的課程"
+    "pageTitle": "探索我們的課程",
+    "writtenBy": "本課程由以下人員撰寫",
+    "hasBeenProofreadBy": "此課程已由以下人員進行校對",
+    "hasNotBeenProofread": "這門課程尚未校對"
   },
   "words": {
     "nodeNetwork": "節點網絡",
@@ -890,7 +1174,8 @@
       "wizard": "專家",
       "intermediate": "中級",
       "level": "等級",
-      "levels": "等級"
+      "levels": "等級",
+      "expert": "專家"
     },
     "lectures": "講座",
     "library": "圖書館",
@@ -975,7 +1260,33 @@
     "viewMore": "查看更多",
     "unavailable": "不可用",
     "user": "使用者",
-    "username": "使用者名稱"
+    "username": "使用者名稱",
+    "channels": "頻道",
+    "careerPortal": "職業入口網站",
+    "no": "否",
+    "credits": "學分",
+    "yes": "是",
+    "delete": "刪除",
+    "skip": "跳過",
+    "congrats": "恭喜！",
+    "email": "電子郵件",
+    "complete": "完成",
+    "language": "語言",
+    "lecture": "講座",
+    "linkedin": "Linkedin",
+    "exam": "考試",
+    "github": "Github",
+    "incomplete": "未完成",
+    "movie": "電影",
+    "name": "名字",
+    "next": "下一個",
+    "previous": "前一個",
+    "submit": "提交",
+    "telegram": "Telegram",
+    "producer": "製作人",
+    "project": "專案",
+    "projects": "專案",
+    "country": "國家"
   },
   "notFound": {
     "here": "這裡",
@@ -1010,7 +1321,9 @@
     "inProgress": "正在進行校對",
     "reviewEarn": "評論並賺取sats",
     "status": "校對狀態",
-    "thanks": "特別感謝我們的優秀審核者！"
+    "thanks": "特別感謝我們的優秀審核者！",
+    "rewardsText": "*獎勵可能會根據$匯率而有所不同",
+    "descriptionOriginalLanguage": "即使此頁面是原始語言，仍需要人工審查以確保其準確性。"
   },
   "settings": {
     "changeDisplayName": "更改顯示名稱",
@@ -1029,6 +1342,79 @@
   "youtubeChannels": {
     "pageTitle": "Youtube 頻道",
     "view": "查看Youtube頻道",
+    "watchTrailer": "觀看預告片"
+  },
+  "projects": {
+    "languages": "語言",
+    "otherCommunities": "探索 Plan B 社群",
+    "noRelatedEvents": "目前沒有與這位教育者相關的即將舉行的活動。",
+    "pageTitle": "比特幣專案",
+    "relatedEvents": "即將來臨的相關活動",
+    "related": "相關的",
+    "networkStrength": "網絡的力量在於其成員"
+  },
+  "search": {
+    "glossary_words": "單字表詞彙",
+    "newsletter": "電子報",
+    "glossary_word": "單字表詞彙",
+    "results": "結果",
+    "resultsRemaining": "剩餘{{count}}個結果",
+    "resultInfo": "在{{time}}毫秒內找到{{count}}個結果",
+    "search": "搜尋",
+    "conference_replay": "會議重播",
+    "conference_replays": "會議重播",
+    "event": "活動",
+    "explorer": {
+      "subtitle": "你在找什麼？",
+      "title": "搜尋入口網站"
+    },
+    "filterByType": "按類型篩選",
+    "lecture_replay": "課程重播",
+    "lecture_replays": "課程重播",
+    "newsletters": "電子報",
+    "resultEmpty": "哎呀！我們無法找到與您搜尋內容相符的結果。請檢查拼寫、嘗試不同的關鍵字，或選擇其他分類。",
+    "searchResult": "搜尋結果",
+    "startSearch": "開始您的搜尋並在這裡查看結果",
+    "tutorial": "教學",
+    "youtube_channel": "Youtube 頻道",
+    "youtube_channels": "Youtube 頻道",
+    "project": "專案",
+    "projects": "專案",
+    "tutorials": "教學",
+    "all": "所有",
+    "book": "書籍",
+    "books": "書籍",
+    "categories": "類別",
+    "course": "課程",
+    "course_chapter": "課程章節",
+    "course_part": "課程部分",
+    "courses": "課程",
+    "events": "活動",
+    "languageSelected": "選擇的語言：{{language}}",
+    "loadMoreResults": "查看更多結果",
+    "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "professor": "教授",
+    "professors": "教授",
+    "resultError": "發生了一些錯誤。請再試一次。"
+  },
+  "lectures": {
+    "buyVideoToUnlock": "購買該影片來解鎖它",
+    "lecturePartCourse": "這場講座的重播是 <0>{{courseTitle}}</0> 課程的一部分。\n深入學習完整課程，掌握整體概念，發揮您的全部潛力！",
+    "pageTitle": "課程重播",
+    "partCourse": "這場講座是課程的一部分：",
+    "watchLecture": "觀看講座重播",
+    "checkFullCourse": "查看完整課程"
+  },
+  "filters": {
+    "categories": "類別",
+    "levels": "等級",
+    "resources": "資源",
+    "topics": "主題"
+  },
+  "movies": {
+    "goToMovie": "去看電影",
+    "pageTitle": "電影與紀錄片",
     "watchTrailer": "觀看預告片"
   }
 }

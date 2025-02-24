@@ -177,79 +177,91 @@
   },
   "bet": {
     "educationalContent": {
-      "description": "",
-      "title": ""
+      "description": "아래 항목들은 교육 행사 및 목적으로 사용할 수 있습니다.",
+      "title": "교육 컨텐츠"
     },
-    "pageDescription": "",
-    "pageTitle": "",
+    "pageDescription": "대량 채택은 쉽지 않습니다. 그 목표에 더 가까이 그리고 더 빠르게 다가가기 위해, 우리는 확장 가능한 데이터베이스를 개발하여 교육 콘텐츠를 호스팅했습니다. 여기에서 비트코인 교육자들은 필요에 따라 콘텐츠를 자유롭게 추가하고 접근할 수 있습니다. 매번 바퀴를 새로 만들 필요가 없으니, 유용한 자원을 하나의 도구로 중앙화하기 위해 함께 일합시다!",
+    "pageTitle": "비트코인 교육 툴킷",
     "visualContent": {
-      "description": "",
-      "title": ""
+      "description": "아래 이미지를 여러분의 창작물에 사용해 보세요.",
+      "title": "비주얼 콘텐츠"
     },
-    "contributeButton": "",
-    "contributeDescription": "",
-    "contributeTitle": ""
+    "contributeButton": "도움 & 기여",
+    "contributeDescription": "컨텐츠를 추가, 편집 또는 번역하고 싶다면, 당신의 도움에 환영합니다!",
+    "contributeTitle": "기여하고 싶으신가요?"
   },
   "conferences": {
-    "addConferences": "",
-    "backConferences": "",
-    "conferenceName": "",
-    "conferencesSinceGenesis": "",
-    "description": "",
+    "addConferences": "누락된 컨퍼런스를 <0>GitHub</0> 리포지토리를 통해 자유롭게 추가하세요.",
+    "backConferences": "컨퍼런스 돌아가기",
+    "conferenceName": "컨퍼런스 이름",
+    "conferencesSinceGenesis": "제네시스 블록 이후의 비트코인 컨퍼런스 아카이브",
+    "description": "비트코인 컨퍼런스는 비트코인 산업에서 중요한 역할을 하며, 모든 비트코인 사용자의 교육 여정에서 필수적인 부분을 형성합니다. 이를 이유로, Plan ₿ Network는 여러분이 수백 개의 비트코인 이벤트를 쉽게 탐색할 수 있도록 이 도구를 만들었습니다.",
     "details": {
-      "findReplay": "",
-      "nextVideo": "",
-      "previousVideo": "",
-      "selectStage": "",
-      "selectVideo": "",
-      "watchReplay": ""
+      "findReplay": "컨퍼런스 리플레이를 찾기",
+      "nextVideo": "다음 영상",
+      "previousVideo": "이전 영상",
+      "selectStage": "컨퍼런스 스테이지 선택하세요",
+      "selectVideo": "영상을 선택하세요",
+      "watchReplay": "컨퍼런스 다시 보기"
     },
     "language": "언어",
-    "latestConferences": "",
+    "latestConferences": "최근의 컨퍼런스",
     "location": "위치",
-    "noConferences": "",
-    "pageTitle": "",
-    "planBConferences": "",
-    "topics": ""
+    "noConferences": "아직 {{year}}에 대한 컨퍼런스가 추가되지 않았습니다.",
+    "pageTitle": "컨퍼런스 리플레이",
+    "planBConferences": "플랜 ₿ 컨퍼런스들",
+    "topics": "주제들"
   },
   "courses": {
     "chapter": {
-      "finishCourse": "",
-      "next": "",
-      "thanksTip": "",
+      "finishCourse": "코스를 완료하기",
+      "next": "챕터 완료하기",
+      "thanksTip": "이 수업을 좋아하셨습니까?\n강사에게 팁으로 지원하세요.",
       "detail": {
-        "title": "",
-        "p1heading": "",
-        "p1content": "",
-        "p2heading": "",
-        "p2content": "",
-        "bookSeat": "",
-        "classIsFull": "",
-        "cancelBooking": "",
-        "ticketDownload": ""
+        "title": "수업 세부정보",
+        "p1heading": "이 수업을 대면으로 참석하실 계획이 있으십니까?",
+        "p1content": "반드시 자리를 예약하세요",
+        "p2heading": "대면 수업에 참석하실 수 없으십니까?",
+        "p2content": "문제없습니다! 이 수업은 이 페이지에서 라이브 스트리밍되며, 이후에 리플레이로 제공됩니다.",
+        "bookSeat": "자리를 예약하기",
+        "classIsFull": "수업이 이미 꽉 찼습니다",
+        "cancelBooking": "예약을 최소하기",
+        "ticketDownload": "티켓 다운로드하기"
       },
-      "nextLesson": "",
+      "nextLesson": "다음 수업",
       "live": {
-        "title": "",
-        "stayTuned": ""
+        "title": "라이브 비디오",
+        "stayTuned": "라이브 세션이 수업 시작 30분 전에 시작됩니다. 계속 주목하세요!"
       }
     },
     "details": {
-      "buyCourse": "",
+      "buyCourse": "코스 구매하기",
       "curriculum": "커리큘럼",
-      "description": "",
+      "description": "설명",
       "mobile": {
-        "hours": ""
+        "hours": "{{hours}} 시간"
       },
-      "objectives": "",
-      "objectivesTitle": "",
-      "startCourse": "",
-      "taughtBy": "",
-      "inPersonAccess": "",
-      "buyOnlineCourse": "",
-      "buyInPersonCourse": "",
-      "paidCourse": "",
-      "collaborativeEffort": "플랫폼의 모든 콘텐츠는 협업의 결과입니다. 각각의 수업, 번역, 수정은 기여자들의 작업에 의해 가능해집니다. 이러한 이유로, PlanB Network는 항상 다양한 언어로 우리의 콘텐츠를 검토할 수 있는 교정자를 찾고 있습니다. 교정 과정에 참여하고 싶다면, PlanB Network의 <0>Telegram</0> 그룹에 연락하고 <1>튜토리얼</1>을 읽어 주세요.\n\n이 콘텐츠는 오픈소스이며 <2>CC BY-SA</2> 라이선스 하에 있으므로, 원본 출처를 인정하는 한 자유롭게 공유하고 사용할 수 있습니다."
+      "objectives": "목표",
+      "objectivesTitle": "배울 내용:",
+      "startCourse": "코스 시작하기",
+      "taughtBy": "이 코스는 [instructor name here?]가 강의하고 있습니다.",
+      "inPersonAccess": "대면 수업에 접근하기 위해 티켓을 다운로드해야 합니다.",
+      "buyOnlineCourse": "온라인 코스 구매하기",
+      "buyInPersonCourse": "대면 코스 구매하기",
+      "paidCourse": "프리미엄 코스",
+      "collaborativeEffort": "플랫폼의 모든 콘텐츠는 협업의 결과입니다. 각각의 수업, 번역, 수정은 기여자들의 작업에 의해 가능해집니다. 이러한 이유로, PlanB Network는 항상 다양한 언어로 우리의 콘텐츠를 검토할 수 있는 교정자를 찾고 있습니다. 교정 과정에 참여하고 싶다면, PlanB Network의 <0>Telegram</0> 그룹에 연락하고 <1>튜토리얼</1>을 읽어 주세요.\n\n이 콘텐츠는 오픈소스이며 <2>CC BY-SA</2> 라이선스 하에 있으므로, 원본 출처를 인정하는 한 자유롭게 공유하고 사용할 수 있습니다.",
+      "courseAddedToDashboard": "이 코스가 학습 대시보드에 추가되었습니다",
+      "hasBeenProofreadBy": "이 코스는 교정외었습니다",
+      "hasNotBeenProofread": "이 코스는 아직 교정되지 않았습니다",
+      "ledBy": "이 코스의 강사는 [interopol placeholder?]입니다",
+      "pastEditionsRatings": "이전 코스 평점",
+      "premiumContentNeedsLogin": "이 코스에 접근하려면 로그인하셔야 합니다.",
+      "premiumContentNeedsPayment": "이 코스는 프리미엄 프로그램의 일부입니다.",
+      "premiumContentNeedsPaymentAction": "코스 홈페이지로 이동하기",
+      "otherCourses": "기타 코스",
+      "otherCoursesInterest": "관심 가질 만한 코스",
+      "teacherLed": "강사 주도",
+      "thanksTipping": "강사에게 팁을 주며 감사의 뜻을 전할 수 있습니다."
     },
     "explorer": {
       "pageDescription": "Plan ₿ 아카데미는 전 세계적으로 비트코인 교육을 단순화하고자 합니다. 다양한 분야의 전문가들이 선별한 강의들이 Plan ₿ 아카데미에서 제공됩니다.\n초보자부터 전문가까지 스스로 학습하거나 교수님의 주간 강의를 따라갈 수 있습니다. 비트코인의 광대한 세계에 대한 더 깊은 이해를 얻는 데 도움을 줄 수 있기를 바랍니다. 이 강의 중 많은 것은 완전히 무료로, 어디에 있든 누구나 양질의 교육에 접근할 수 있도록 설계되었습니다.",
@@ -299,15 +311,15 @@
       "resultPerfect": ""
     },
     "exam": {
-      "congratulationsPassed": "",
+      "congratulationsPassed": "축하드립니다. 최종 시험에 <0>합격</0>하셨습니다!",
       "goodLuck": "",
       "tryOneMoreTime": "",
-      "dontGiveUpTryAgain": "",
-      "answersReview": "",
-      "availableDashboard": "",
-      "certificateAvailable": "",
-      "certificateGeneration": "",
-      "congratulations": "",
+      "dontGiveUpTryAgain": "포기하지 마세요!\n24시간 후에 다시 시도할 수 있습니다.",
+      "answersReview": "답변 검토",
+      "availableDashboard": "시험이 약 10시간 후에 대시보드에서 이용 가능합니다.",
+      "certificateAvailable": "시험 인증서는 제출 후 약 10시간 뒤에 이용 가능합니다.",
+      "certificateGeneration": "당신의 졸업장이 생성 중입니다 ",
+      "congratulations": "이 코스의 끝에 도달하셨습니다! 기쁘게 축하드립니다!",
       "dontWorry": "",
       "examAndDiploma": "",
       "examDetails": "",
@@ -352,7 +364,13 @@
       "wishTryAgain": "",
       "yesSubmit": "",
       "goBack": "",
-      "instructions": ""
+      "instructions": "",
+      "availableDashboardTimestamped": "졸업장을 대시보드에서 찾을 수 있습니다.",
+      "bCertCompletionText": "플랜₿ 네트워크는 {{username}}이 ₿-CERT 시험 인증서를 수상한 것을 기쁘게 축하합니다.",
+      "certificatePageOtherCourses": "기타 관련 코스",
+      "buttonTextBCert": "더 알아보기",
+      "courseDiploma": "코스 디플로마",
+      "courseNotFound": "코스 찾을 수 없음"
     },
     "review": {
       "yesOfCourse": "",
@@ -386,6 +404,17 @@
       "whatStudentsSay": "",
       "writeThoughts": "",
       "yesVeryMuch": ""
+    },
+    "conclusion": {
+      "takeFinalExam": "이제 모든 장을 완료했으니, 지식을 확인하기 위해 최종 시험을 봐보세요!",
+      "unlockFeatures1": "모든 기능을 해제하고 진행 상황을 확인하려면 계정을 만들어 보세요!",
+      "unlockFeatures2": "플랜 ₿는 개인 데이터를 수집하지 않으며 쿠키를 사용하지 않습니다.",
+      "congratulationsEnd": "축하합니다! 당신이 과정의 끝에 도달했습니다",
+      "finalStep": "이것이 이 코스를 대시보드에서 완료로 표시하는 마지막 단계였습니다, 여러분의 여정을 계속하기 전에!",
+      "stepsToComplete": "이것이 코스를 대시보드에서 완료로 표시하는 마지막 단계였습니다. 이제 여러분의 여정을 계속해 보세요!",
+      "completedChaptersHeadline": "모든 챕터 완료되었습니다!",
+      "completedFeedbackHeadline": "피드백 감사합니다!\n저희에게 매우 중요해서 정말 감사드립니다.",
+      "completedFeedbackSubHeadline": "평점과 댓글을 대시보드에서 언제든지 수정할 수 있습니다."
     }
   },
   "dashboard": {
@@ -816,8 +845,8 @@
     "challengeYourself": "자신에게 도전하고 레벨을 확인해보세요!",
     "organizeDescription": "좋습니다! 만약 당신의 커뮤니티가 네트워크의 일부라면, 당신의 허브에서 시험 세션을 조직할 수 있습니다. 시험을 주최할 수 있는 필수 조건을 준수할 수 있는지 확인하기 위해 헌장을 읽어주세요. 만약 당신이 그것들을 이행할 수 있다면, 그때 당신의 세션을 예약하고 플랫폼에 추가할 수 있습니다.",
     "bCertDescription": "₿-인증서는 비트코인 및 관련 주제에 대한 이해 수준을 평가하는 국제적으로 인정받은 시험입니다. 이 인증서를 취득하면 비트코인 산업에서의 기술과 지식을 입증할 수 있습니다.",
-    "readChart": "",
-    "pageSubtitle": "",
+    "readChart": "헌장을 읽어보세요",
+    "pageSubtitle": "중앙 집중식 오픈소스 교육을 통해 전 세계적인 비트코인 도입을 촉진합니다",
     "bookExam": "시험 세션 예약하기",
     "checkout": "₿-CERT (플랜B 네트워크 공식 증명서)를 알아보기",
     "knowledgeableBitcoin": "비트코인에 대해 잘 아시나요?",
@@ -825,11 +854,12 @@
     "organizeExam": "세션 구성",
     "organizeSubtitle": "10억 명에게 오렌지 필링은 쉽지 않습니다.",
     "organizeTitle": "허브에서 ₿-CERT 시험 세션을 구성하고 싶으신가요?",
-    "pageTitle": "",
-    "tweetText": "",
+    "pageTitle": "₿-CERT 시험을 보세요",
+    "tweetText": "플랜 ₿ 네트워크(@planb_network)의 ₿-CERT 시험에서 {{score}}/100점으로 합격하여 정말 기쁩니다! {{emoji}} #BCERT\n\n{{certificateUrl}}",
     "download": "₿-CERT 다운로드",
     "organizeSessionConditions": "테스트를 조직하기 위한 필수 조건을 충족하는지 확인하기 위해 <0>헌장</0>을 읽어주시기 바랍니다.\n자격이 되시면, 당신과 함께 귀하의 지역 커뮤니티를 위한 세션을 기쁘게 계획하겠습니다.\n선호하는 방법으로 저희에게 연락해 주시기 바랍니다.",
-    "organizeSessionHub": "당신의 지역 허브에서 ₿-CERT (플랜B 네트워크 공식 증명서) 시험을 조직해보세요"
+    "organizeSessionHub": "당신의 지역 허브에서 ₿-CERT (플랜B 네트워크 공식 증명서) 시험을 조직해보세요",
+    "verify": "₿-CERT 인증서의 진위성을 확인하세요"
   },
   "glossary": {
     "filterBar": "",
