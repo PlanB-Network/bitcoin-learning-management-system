@@ -159,6 +159,9 @@ importers:
       '@blms/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@blms/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@blms/ui':
         specifier: workspace:*
         version: link:../../packages/ui

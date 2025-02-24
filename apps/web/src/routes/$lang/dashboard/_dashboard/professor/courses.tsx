@@ -34,6 +34,7 @@ import { AppContext } from '#src/providers/context.js';
 import { assetUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { canAccess } from '@blms/shared/auth';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MakeModificationBlock } from './-components/make-modification.tsx';
 
@@ -62,14 +63,9 @@ function DashboardProfessorCourses() {
     );
 
   useEffect(() => {
-    if (session === null) {
+    if (!session) {
       navigate({ to: '/' });
-    } else if (
-      session &&
-      session?.user.role !== UserRole.Admin &&
-      session?.user.role !== UserRole.Superadmin &&
-      session?.user.role !== UserRole.Professor
-    ) {
+    } else if (canAccess(UserRole.Professor)(session?.user)) {
       navigate({ to: '/dashboard/courses' });
     }
   }, [session]);

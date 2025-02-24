@@ -5,7 +5,7 @@ interface ObjectWithRole {
 }
 
 export const canAccess = (requiredRole: UserRole) => {
-  return (user: ObjectWithRole) => {
+  return (user?: ObjectWithRole | null) => {
     if (!user || !user.role) {
       return false;
     }
