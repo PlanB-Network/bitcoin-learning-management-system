@@ -279,7 +279,7 @@ export const TimeStampDialog = ({
               <span className="title-small-med-16px">
                 {t('courses.exam.timeStampHow')}
               </span>
-              <p className="subtitle-medium-med-16px">
+              <p className="subtitle-medium-16px">
                 {t('courses.exam.timeStampHowDescription')}
               </p>
             </div>
@@ -288,7 +288,7 @@ export const TimeStampDialog = ({
               <span className="title-small-med-16px">
                 {t('courses.exam.timeStampBenefits')}
               </span>
-              <ul className="subtitle-medium-med-16px text-justify flex flex-col list-disc list-outside pl-6">
+              <ul className="subtitle-medium-16px flex flex-col list-disc list-outside pl-6">
                 <li>{t('courses.exam.instantVerification')}</li>
                 <li>{t('courses.exam.tamperProof')}</li>
                 <li>{t('courses.exam.globallyRecognized')}</li>
