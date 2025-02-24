@@ -1408,7 +1408,8 @@
     "noRelatedEvents": "Tidak ada acara mendatang yang berkaitan dengan pengajar ini saat ini.",
     "otherCommunities": "Jelajahi Komunitas Plan ₿",
     "pageTitle": "Proyek Bitcoin",
-    "relatedEvents": "Acara terkait yang akan datang"
+    "relatedEvents": "Acara terkait yang akan datang",
+    "related": "Terkait"
   },
   "filters": {
     "categories": "Kategori",
