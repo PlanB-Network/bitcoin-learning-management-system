@@ -207,11 +207,16 @@ function Home() {
   };
 
   const CourseSection = () => {
+    const { i18n } = useTranslation();
+    const language = i18n.language;
+
     const { courses } = useContext(AppContext);
 
     const latestCourses = courses
       ? courses
-          .filter((course) => !course.isArchived)
+          .filter(
+            (course) => !course.isArchived && course.language === language,
+          )
           .sort(
             (a, b) =>
               new Date(b.publishedAt ?? 0).getTime() -
