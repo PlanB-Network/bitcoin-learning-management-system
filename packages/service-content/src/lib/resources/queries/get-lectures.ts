@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedEvent } from '@blms/types';
 
-export const getLecturesQuery = () => {
+export const getLecturesQuery = (professorId?: string) => {
   return sql<JoinedEvent[]>`
     SELECT
       e.*,
@@ -34,6 +34,7 @@ export const getLecturesQuery = () => {
 
     WHERE e.type = 'lecture'
       AND e.end_date < NOW() - INTERVAL '30 days'
+      ${professorId ? sql`AND e.professor = ${professorId}` : sql``}
 
     ORDER BY e.start_date DESC
   `;
