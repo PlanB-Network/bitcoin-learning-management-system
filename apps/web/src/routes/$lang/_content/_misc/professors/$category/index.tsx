@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
@@ -32,6 +32,8 @@ export function ProfessorCategoryPage() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
+  const navigate = useNavigate();
+
   const activeItem =
     professorTabs.find((tab) => tab.href.includes(params.category)) ||
     professorTabs[0];
@@ -39,7 +41,7 @@ export function ProfessorCategoryPage() {
   const dropdownItems = professorTabs.map((tab) => ({
     name: t(tab.label),
     onClick: () => {
-      window.location.href = tab.href;
+      navigate({ to: tab.href });
     },
   }));
 
@@ -105,7 +107,7 @@ export function ProfessorCategoryPage() {
               role="tab"
               onClick={() => {
                 if (activeItem.href !== tab.href) {
-                  window.location.href = tab.href;
+                  navigate({ to: tab.href });
                 }
               }}
             >
