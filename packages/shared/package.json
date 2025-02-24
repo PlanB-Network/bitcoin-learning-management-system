@@ -3,15 +3,25 @@
   "version": "0.0.1",
   "type": "module",
   "exports": {
-    "development": "./src/index.ts",
-    "import": "./dist/src/index.js",
-    "types": "./src/index.ts"
+    ".": {
+      "development": "./src/index.ts",
+      "import": "./dist/src/index.js",
+      "types": "./src/index.ts"
+    },
+    "./*": {
+      "development": "./src/*.ts",
+      "import": "./dist/src/*.js",
+      "types": "./src/*.ts"
+    }
   },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "lint": "biome check .",
+    "test": "mocha src/**/*.test.ts",
+    "test:bun": "bun test",
+    "test:bun:coverage": "bun test --coverage",
     "type-check": "tsc --build",
     "check-types": "tsc --noEmit",
     "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",

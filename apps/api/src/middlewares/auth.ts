@@ -1,8 +1,9 @@
 import { TRPCError } from '@trpc/server';
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import { UserRole } from '@blms/constants';
+import type { UserRole } from '@blms/constants';
 import { createGetActiveApiKey } from '@blms/service-user';
+import { canAccess } from '@blms/shared/auth';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { Unauthorized } from '#src/errors.js';
@@ -37,26 +38,8 @@ export const enforceAuthenticatedUserMiddleware = (requiredRole: UserRole) => {
     const { role, uid } = ctx.user;
 
     // Super admin case
-    if (requiredRole === UserRole.Superadmin && role !== UserRole.Superadmin) {
+    if (!canAccess(requiredRole)({ role })) {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
-    }
-
-    // Current user is not an admin
-    if (role !== UserRole.Superadmin && role !== UserRole.Admin) {
-      // Admin case
-      if (requiredRole === UserRole.Admin) {
-        throw new TRPCError({ code: 'UNAUTHORIZED' });
-      }
-
-      // Professor case
-      if (requiredRole === UserRole.Professor && role !== UserRole.Professor) {
-        throw new TRPCError({ code: 'UNAUTHORIZED' });
-      }
-
-      // Community case
-      if (requiredRole === UserRole.Community && role !== UserRole.Community) {
-        throw new TRPCError({ code: 'UNAUTHORIZED' });
-      }
     }
 
     return next({ ctx: { user: { role, uid } } });

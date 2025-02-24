@@ -13,6 +13,8 @@
     "build": "tsc --build tsconfig.json",
     "lint": "biome check .",
     "test": "mocha src/**/*.test.ts",
+    "test:bun": "bun test",
+    "test:bun:coverage": "bun test --coverage",
     "type-check": "tsc --build",
     "check-types": "tsc --noEmit",
     "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
