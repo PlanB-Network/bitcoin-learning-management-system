@@ -220,6 +220,7 @@ const Diploma = ({
                   : CertificateLockImage
               }
               alt="Diploma"
+              className="w-full max-w-[403px]"
             />
           </div>
           <div className="flex flex-col justify-between gap-4 grow md:pb-2">
@@ -307,7 +308,7 @@ const OtherCourses = ({ course }: { course: JoinedCourseWithAll }) => {
           {t('courses.details.otherCoursesInterest')}
         </p>
       </section>
-      <section className="flex max-md:flex-col gap-6 md:gap-5 items-center mt-1 md:mt-8">
+      <section className="flex max-md:flex-col gap-3 md:gap-5 items-center mt-5 md:mt-8">
         {selectedCourses.map((course) => (
           <CourseCard key={course.id} course={course} mode="light" />
         ))}

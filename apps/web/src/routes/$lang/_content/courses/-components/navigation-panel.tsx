@@ -92,8 +92,8 @@ export const NavigationPanel: React.FC<Props> = ({
                         size={10}
                         className="group-data-[state=open]:rotate-180 group-data-[state=closed]:rotate-90 shrink-0 transition-transform ease-in-out"
                       />
-                      <span className="capitalize font-poppins">
-                        {chapterOne.partTitle.toLowerCase()}
+                      <span className="font-poppins">
+                        {chapterOne.partTitle}
                       </span>
                     </li>
                   </CollapsibleTrigger>
