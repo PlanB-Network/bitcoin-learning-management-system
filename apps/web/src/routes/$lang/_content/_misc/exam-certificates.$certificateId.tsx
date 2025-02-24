@@ -157,11 +157,16 @@ export const filterAndRandomizeCourses = (
   currentCourse: JoinedCourse,
   allCourses: JoinedCourse[],
 ): JoinedCourse[] => {
+  const { i18n } = useTranslation();
+  const language = i18n.language;
+
   if (!allCourses || allCourses.length === 0) {
     return [];
   }
 
-  const otherCourses = allCourses.filter((c) => c.id !== currentCourse.id);
+  const otherCourses = allCourses.filter(
+    (c) => c.id !== currentCourse.id && c.language === language,
+  );
 
   const courseLevels = ['beginner', 'intermediate', 'advanced', 'expert'];
 
