@@ -153,7 +153,8 @@
       "associatedProfessors": "",
       "coordinatedBy": "",
       "attendInPersonWarning": "",
-      "pastEditionsRatings": ""
+      "pastEditionsRatings": "",
+      "teacherLed": ""
     },
     "explorer": {
       "pageDescription": "Plan ₿ Academy strävar efter att förenkla Bitcoin-utbildning världen över. Skapad av experter från olika områden, vår akademi erbjuder ett omfattande utbud av kurser utformade för att skapa klarhet kring alla delar av Bitcoin.\nFrån nybörjare till expert, oavsett i din egen takt eller följt veckovis av en lärare, vi hoppas att akademin kan hjälpa dig att få en djupare förståelse för den expansiva världen av Bitcoin. Många av våra kurser är helt gratis så att vem som helst, var som helst, kan få tillgång till kvalitetsutbildning.",
@@ -191,7 +192,8 @@
       "onlineDescription": "Varje föreläsnings-session sänds live på plattformen.\nDetta köp ger dig tillgång till live-sändningar och inspelade videor.",
       "inPersonDescription": "Varje föreläsnings-session äger rum på plats på de angivna datumen och lokalerna och sänds även live på plattformen. \nDetta köp ger dig tillgång till lektioner både online och på plats.\nGlöm inte att reservera din plats för de lektioner du vill delta i fysiskt.",
       "checkoutError": "Ett fel inträffade under betalningsprocessen.\nVänligen försök igen.",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "quizz": {
       "clickOnPie": "Klicka på cirkeldiagrammet för att kontrollera det rätta svaret",
@@ -749,7 +751,8 @@
           "type": "",
           "uses": "",
           "value": ""
-        }
+        },
+        "discountValueExplanation": ""
       },
       "coursesIndexes": "",
       "deleteRole": "",
@@ -1001,7 +1004,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "newEvent": {
       "button": "Lägg till mitt event",
@@ -1293,7 +1297,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     }
   },
   "underConstruction": {
