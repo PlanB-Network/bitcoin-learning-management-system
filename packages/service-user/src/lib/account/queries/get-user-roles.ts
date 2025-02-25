@@ -2,19 +2,20 @@ import { sql } from '@blms/database';
 import type { UserRoles } from '@blms/types';
 
 export const getUserRolesQuery = (
-  role: string,
   name: string,
-  orderField: 'displayName' | 'username',
+  orderField: 'displayName' | 'username' | 'role',
   orderDirection: 'asc' | 'desc',
+  role?: string,
   limit?: number,
   cursor?: string,
 ) => {
-  const rolePattern = `%${role}`;
+  const rolePattern = role ? `%${role}%` : null;
   const searchPattern = `%${name}%`;
   const orderFieldPattern =
     orderField === 'displayName' ? 'display_name' : 'username';
 
   const comparisonOperator = orderDirection === 'asc' ? sql`>=` : sql`<=`;
+
   const cursorCondition = cursor
     ? sql`AND a.${sql(orderFieldPattern)} ${comparisonOperator} ${cursor}`
     : sql``;
@@ -33,8 +34,8 @@ export const getUserRolesQuery = (
     FROM users.accounts a
     LEFT JOIN content.professors p ON p.id = a.professor_id
     WHERE
-      role::text ILIKE ${rolePattern}
-      AND (username ILIKE ${searchPattern}
+      ${rolePattern ? sql`role::text ILIKE ${rolePattern} AND` : sql``}
+      (username ILIKE ${searchPattern}
         OR display_name ILIKE ${searchPattern})
       ${cursorCondition}
     ORDER BY a.${sql(orderFieldPattern)} ${orderDirectionKeyword}

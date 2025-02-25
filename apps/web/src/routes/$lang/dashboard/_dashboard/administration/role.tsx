@@ -37,7 +37,7 @@ function DashboardAdministrationRole() {
   useEffect(() => {
     if (!session) {
       navigate({ to: '/' });
-    } else if (!canAccess(UserRole.Admin)(session?.user)) {
+    } else if (!canAccess(UserRole.Superadmin)(session?.user)) {
       navigate({ to: '/dashboard/courses' });
     }
   }, [session]);
@@ -60,10 +60,10 @@ function DashboardAdministrationRole() {
         </TextTag>
       </div>
 
-      <Tabs defaultValue="students" className="w-full max-w-[900px]">
+      <Tabs defaultValue="users" className="w-full max-w-[900px]">
         <TabsList size={isMobile ? 's' : 'm'}>
-          <TabsTrigger value="students" size={isMobile ? 's' : 'm'}>
-            {t('words.students')}
+          <TabsTrigger value="users" size={isMobile ? 's' : 'm'}>
+            {t('words.users')}
           </TabsTrigger>
           <TabsTrigger value="professors" size={isMobile ? 's' : 'm'}>
             {t('words.professors')}
@@ -72,7 +72,7 @@ function DashboardAdministrationRole() {
             {t('words.admins')}
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="students">
+        <TabsContent value="users">
           <RoleAllocationTable userRole={UserRole.Student} />
         </TabsContent>
         <TabsContent value="professors">

@@ -225,15 +225,16 @@ export const MenuDashboard = ({
             <p className="uppercase text-white italic pl-12 text-sm leading-snug py-[5px] truncate">
               Admin menu
             </p>
-
-            <Link to={adminRolePath}>
-              <MenuItem
-                text={t('dashboard.adminPanel.userRolesAllocation')}
-                icon={<LuShieldAlert size={24} />}
-                active={pathname.includes(adminRolePath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
+            {canAccess(UserRole.Superadmin)(user) && (
+              <Link to={adminRolePath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.userRolesAllocation')}
+                  icon={<LuShieldAlert size={24} />}
+                  active={pathname.includes(adminRolePath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+            )}
             <Link to={adminTutorialsPath}>
               <MenuItem
                 text={t('words.tutorials')}
