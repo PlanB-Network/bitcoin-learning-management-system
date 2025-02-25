@@ -25,7 +25,7 @@ interface EventMain {
   professor: string;
   course_related: string;
   type: string;
-  links: {
+  links?: {
     website: string;
     replay_url: string;
     live_url: string;
@@ -96,10 +96,10 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedEvent.professor},
           ${parsedEvent.course_related},
           ${parsedEvent.type.toLowerCase()},
-          ${parsedEvent.links.website},
-          ${parsedEvent.links.replay_url},
-          ${parsedEvent.links.live_url},
-          ${parsedEvent.links.chat_url},
+          ${parsedEvent.links?.website},
+          ${parsedEvent.links?.replay_url},
+          ${parsedEvent.links?.live_url},
+          ${parsedEvent.links?.chat_url},
           ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
