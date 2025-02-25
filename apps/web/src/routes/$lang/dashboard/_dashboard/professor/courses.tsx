@@ -65,7 +65,7 @@ function DashboardProfessorCourses() {
   useEffect(() => {
     if (!session) {
       navigate({ to: '/' });
-    } else if (canAccess(UserRole.Professor)(session?.user)) {
+    } else if (!canAccess(UserRole.Professor)(session?.user)) {
       navigate({ to: '/dashboard/courses' });
     }
   }, [session]);
