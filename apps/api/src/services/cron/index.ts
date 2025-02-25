@@ -19,12 +19,12 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
   const refreshCoursesRatings = createRefreshCoursesRatings(ctx);
 
-  // One time exec - index content in the search engine 10 seconds after the server starts
+  // One time exec - index content in the search engine 30 seconds after the server starts
   {
     const indexContent = createIndexContent(ctx);
     setTimeout(
       () => indexContent([]).catch((error) => console.error(error)),
-      10_000,
+      30_000,
     );
   }
 
