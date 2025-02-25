@@ -90,7 +90,7 @@ function SearchPage() {
           {t('search.explorer.subtitle')}
         </h2>
 
-        <div className="mx-2 sm:mb-16 my-8">
+        <div className="mx-2 mt-8 mb-2 md:mb-16">
           <FilterDropdown
             searchQuery={query}
             setSearchQuery={setQuery}
