@@ -38,7 +38,6 @@ export const DashboardTutorialsTable = ({
     direction: SortDirection.Asc,
   });
 
-  console.log('OOO', professorId);
   const {
     data: tutorialsPages,
     hasNextPage,
