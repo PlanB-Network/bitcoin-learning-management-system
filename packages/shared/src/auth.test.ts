@@ -11,7 +11,8 @@ describe('Shared hasRole function', () => {
 
   it('should be able to check an object with invalid role property', () => {
     const user = { role: 'Invalid' } as any;
-    assert.equal(false, canAccess(UserRole.Student)(user));
+    assert.equal(true, canAccess(UserRole.Student)(user));
+    assert.equal(false, canAccess(UserRole.Professor)(user));
   });
 
   it('should be able to check an object with valid role property', () => {
@@ -51,17 +52,26 @@ describe('Shared hasRole function', () => {
     assert.equal(false, canAccess(UserRole.Superadmin)(student));
 
     const community = { role: UserRole.Community };
-    assert.equal(false, canAccess(UserRole.Student)(community));
+    assert.equal(true, canAccess(UserRole.Student)(community));
     assert.equal(true, canAccess(UserRole.Community)(community));
     assert.equal(false, canAccess(UserRole.Professor)(community));
     assert.equal(false, canAccess(UserRole.Admin)(community));
     assert.equal(false, canAccess(UserRole.Superadmin)(community));
 
     const professor = { role: UserRole.Professor };
-    assert.equal(false, canAccess(UserRole.Student)(professor));
+    assert.equal(true, canAccess(UserRole.Student)(professor));
     assert.equal(false, canAccess(UserRole.Community)(professor));
     assert.equal(true, canAccess(UserRole.Professor)(professor));
     assert.equal(false, canAccess(UserRole.Admin)(professor));
     assert.equal(false, canAccess(UserRole.Superadmin)(professor));
+  });
+
+  it('every role can access student resources', () => {
+    const canAccessStudent = canAccess(UserRole.Student);
+    assert.equal(true, canAccessStudent({ role: UserRole.Student }));
+    assert.equal(true, canAccessStudent({ role: UserRole.Community }));
+    assert.equal(true, canAccessStudent({ role: UserRole.Professor }));
+    assert.equal(true, canAccessStudent({ role: UserRole.Admin }));
+    assert.equal(true, canAccessStudent({ role: UserRole.Superadmin }));
   });
 });

@@ -23,7 +23,7 @@ export const canAccess = (requiredRole: UserRole) => {
       return requiredRole !== UserRole.Superadmin;
     }
 
-    // Other roles can only access their own resources
-    return role === requiredRole;
+    // Other roles can only access their own resources or student resources
+    return role === requiredRole || requiredRole === UserRole.Student;
   };
 };
