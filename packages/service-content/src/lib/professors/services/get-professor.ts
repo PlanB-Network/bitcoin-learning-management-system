@@ -12,6 +12,7 @@ import { formatProfessor } from './utils.js';
 
 export const createGetProfessor = ({ postgres }: Dependencies) => {
   return async (id: string, language?: string): Promise<FullProfessor> => {
+    console.log('IDDDDD', id, '--', language);
     const professor = await postgres
       .exec(getProfessorQuery(id, language))
       .then(firstRow);

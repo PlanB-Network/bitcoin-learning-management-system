@@ -34,7 +34,7 @@ function DashboardProfessorProfile() {
       language: i18n.language,
     },
     {
-      enabled: user ? typeof user.professorId === 'number' : false,
+      enabled: user ? typeof user.professorId === 'string' : false,
     },
   );
 
