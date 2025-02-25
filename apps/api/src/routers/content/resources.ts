@@ -79,6 +79,7 @@ export const resourcesRouter = createTRPCRouter({
         categories: z.string().array().optional(),
         cursor: z.number().optional().default(1),
         limit: z.number().optional().default(10),
+        surroundingWords: z.number().optional().default(20),
       }),
     )
     .query(({ ctx, input }) => {

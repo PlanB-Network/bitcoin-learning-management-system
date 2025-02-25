@@ -181,7 +181,7 @@ export const FilterDropdown = ({
                   'px-2.5 py-1.5 body-16px',
                   category === activeCategory
                     ? 'text-white underline'
-                    : 'text-newBlack-4 no-underline',
+                    : 'text-tertiary-6 no-underline',
                 )}
               >
                 {t(`filters.${category.toLowerCase()}`)}

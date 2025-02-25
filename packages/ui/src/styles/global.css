@@ -1298,5 +1298,5 @@
 
 /* Search result highlight */
 .search-results mark {
-  @apply bg-newOrange-1 text-black;
+  @apply bg-darkOrange-8 text-white;
 }

@@ -11,6 +11,7 @@ import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import SearchErrorIcon from '#src/assets/icons/search-error.svg';
 
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { useDebounce } from '#src/utils/search.ts';
@@ -29,6 +30,8 @@ function SearchPage() {
   const [categories, setCategories] = useState<Set<string>>(new Set(['all']));
   const [resources, setResources] = useState<Set<string>>(new Set(['all']));
 
+  const isMobile = useSmaller('md');
+
   const [query, setQuery] = useState('');
   const debouncedQuery = useDebounce(query, 200);
   const search = trpc.content.search.useInfiniteQuery(
@@ -36,6 +39,7 @@ function SearchPage() {
       query: debouncedQuery,
       language: i18n.language,
       categories: [...categories, ...resources],
+      surroundingWords: isMobile ? 15 : 20,
       limit: 20,
     },
     {
@@ -82,7 +86,7 @@ function SearchPage() {
       subtitle={' '}
     >
       <div className="max-w-6xl pb-8 text-white sm:mx-auto min-h-80">
-        <h2 className="text-orange-500 text-center text-xl mt-16">
+        <h2 className="text-orange-500 text-center text-xl mt-5 lg:mt-16">
           {t('search.explorer.subtitle')}
         </h2>
 

@@ -7,6 +7,9 @@ interface SearchInput {
   categories?: string[];
   language: string;
   query: string;
+
+  surroundingWords: number;
+
   // Pagination
   limit: number;
   cursor: number;
@@ -53,7 +56,7 @@ export const createSearch = ({ typesense }: Dependencies) => {
       query_by: 'title,body',
       query_by_weights: '3,1',
       sort_by: '_text_match:desc',
-      highlight_affix_num_tokens: 20,
+      highlight_affix_num_tokens: search.surroundingWords,
       search_cutoff_ms: 500, // search for 500ms max
       prioritize_exact_match: true,
       filter_by: filter,
