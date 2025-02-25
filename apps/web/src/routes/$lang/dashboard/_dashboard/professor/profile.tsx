@@ -9,7 +9,7 @@ import { Loader, Tabs, TabsContent, TextTag, cn } from '@blms/ui';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
-import { assetUrl, trpc } from '#src/utils/index.ts';
+import { assetUrl, isUUID, trpc } from '#src/utils/index.ts';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MakeModificationBlock } from './-components/make-modification.tsx';
@@ -34,7 +34,7 @@ function DashboardProfessorProfile() {
       language: i18n.language,
     },
     {
-      enabled: user ? typeof user.professorId === 'string' : false,
+      enabled: isUUID(user?.professorId),
     },
   );
 

@@ -13,6 +13,7 @@ import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { isUUID } from '#src/utils/index.ts';
 import { CourseCard } from '../../../../organisms/course-card.tsx';
 import { LectureCard } from '../resources/-components/cards/lecture-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
@@ -46,10 +47,15 @@ function ProfessorDetail() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: professor, isFetched } = trpc.content.getProfessor.useQuery({
-    professorId: params.professorId,
-    language: i18n.language,
-  });
+  const { data: professor, isFetched } = trpc.content.getProfessor.useQuery(
+    {
+      professorId: params.professorId,
+      language: i18n.language,
+    },
+    {
+      enabled: isUUID(params.professorId),
+    },
+  );
 
   const { data: lectures } = trpc.content.getLectures.useQuery(
     { professorId: professor?.contributorId },

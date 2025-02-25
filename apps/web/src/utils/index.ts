@@ -21,3 +21,7 @@ export const assetUrl = (contentPath: string, assetPath: string | null) => {
 };
 
 export const compose = (...args: string[]) => args.join(' ');
+
+export const isUUID = (value: unknown) =>
+  typeof value === 'string' &&
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(value);
