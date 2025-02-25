@@ -26,7 +26,6 @@ import { trpc } from '#src/utils/trpc.ts';
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { TbBriefcase2 } from 'react-icons/tb';
-import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDashboard = ({
@@ -163,8 +162,7 @@ export const MenuDashboard = ({
             onClick={toggleMobileMenu}
           />
         </Link>
-        {isTestnetOrDevelopmentEnvironment() &&
-        user?.boughtCourses.includes(BTC402ID) ? (
+        {user?.boughtCourses.includes(BTC402ID) ? (
           <Link to={careerPortalPath}>
             <MenuItem
               text={t('dashboard.adminPanel.careers.careers')}
