@@ -4,6 +4,7 @@ import { useContext, useEffect } from 'react';
 import { AppContext } from '#src/providers/context.js';
 
 import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared/auth';
 import { Loader } from '@blms/ui';
 import { DashboardTutorialsPanel } from '../-components/tutorials-panel.tsx';
 
@@ -19,13 +20,9 @@ function DashboardAdministrationTutorials() {
   const { session } = useContext(AppContext);
 
   useEffect(() => {
-    if (session === null) {
+    if (!session) {
       navigate({ to: '/' });
-    } else if (
-      session &&
-      session?.user.role !== UserRole.Admin &&
-      session?.user.role !== UserRole.Superadmin
-    ) {
+    } else if (!canAccess(UserRole.Admin)(session?.user)) {
       navigate({ to: '/dashboard/courses' });
     }
   }, [session]);

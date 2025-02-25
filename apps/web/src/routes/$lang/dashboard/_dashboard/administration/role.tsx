@@ -15,6 +15,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 
 import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared/auth';
 import { RoleAllocationTable } from '../-components/role-allocation-table.tsx';
 
 export const Route = createFileRoute(
@@ -34,13 +35,9 @@ function DashboardAdministrationRole() {
   const isTablet = useSmaller('lg');
 
   useEffect(() => {
-    if (session === null) {
+    if (!session) {
       navigate({ to: '/' });
-    } else if (
-      session &&
-      session?.user.role !== UserRole.Admin &&
-      session?.user.role !== UserRole.Superadmin
-    ) {
+    } else if (!canAccess(UserRole.Admin)(session?.user)) {
       navigate({ to: '/dashboard/courses' });
     }
   }, [session]);

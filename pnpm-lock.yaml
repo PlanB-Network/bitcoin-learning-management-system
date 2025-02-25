@@ -77,6 +77,9 @@ importers:
       '@blms/service-user':
         specifier: workspace:*
         version: link:../../packages/service-user
+      '@blms/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@trpc/server':
         specifier: 11.0.0-rc.730
         version: 11.0.0-rc.730(typescript@5.7.3)
@@ -156,6 +159,9 @@ importers:
       '@blms/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@blms/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@blms/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -533,6 +539,12 @@ importers:
       '@types/uuid':
         specifier: ^10.0.0
         version: 10.0.0
+
+  packages/shared:
+    dependencies:
+      '@blms/constants':
+        specifier: workspace:*
+        version: link:../constants
 
   packages/types:
     devDependencies:

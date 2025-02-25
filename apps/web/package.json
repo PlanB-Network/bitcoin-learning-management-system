@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@blms/constants": "workspace:*",
+    "@blms/shared": "workspace:*",
     "@blms/ui": "workspace:*",
     "@hookform/resolvers": "^3.10.0",
     "@react-hooks-library/core": "^0.6.2",
