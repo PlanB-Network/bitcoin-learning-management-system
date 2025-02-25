@@ -27,6 +27,7 @@ import { Route as LangDashboardDashboardCareerPortalImport } from './routes/$lan
 import { Route as LangDashboardDashboardCalendarImport } from './routes/$lang/dashboard/_dashboard/calendar';
 import { Route as LangDashboardDashboardBookingsImport } from './routes/$lang/dashboard/_dashboard/bookings';
 import { Route as LangContentEventsEventIdImport } from './routes/$lang/_content/events/$eventId';
+import { Route as LangContentCoursesBtc105Import } from './routes/$lang/_content/courses/btc105';
 import { Route as LangContentCoursesCourseNameCourseIdImport } from './routes/$lang/_content/courses/$courseName-$courseId';
 import { Route as LangContentMiscUnderConstructionImport } from './routes/$lang/_content/_misc/under-construction';
 import { Route as LangContentMiscTermsAndConditionsImport } from './routes/$lang/_content/_misc/terms-and-conditions';
@@ -178,6 +179,12 @@ const LangDashboardDashboardBookingsRoute =
 const LangContentEventsEventIdRoute = LangContentEventsEventIdImport.update({
   id: '/$lang/_content/events/$eventId',
   path: '/$lang/events/$eventId',
+  getParentRoute: () => rootRoute,
+} as any);
+
+const LangContentCoursesBtc105Route = LangContentCoursesBtc105Import.update({
+  id: '/$lang/_content/courses/btc105',
+  path: '/$lang/courses/btc105',
   getParentRoute: () => rootRoute,
 } as any);
 
@@ -617,6 +624,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/courses/$courseName-$courseId';
       fullPath: '/$lang/courses/$courseName-$courseId';
       preLoaderRoute: typeof LangContentCoursesCourseNameCourseIdImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/$lang/_content/courses/btc105': {
+      id: '/$lang/_content/courses/btc105';
+      path: '/$lang/courses/btc105';
+      fullPath: '/$lang/courses/btc105';
+      preLoaderRoute: typeof LangContentCoursesBtc105Import;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/events/$eventId': {
@@ -1116,6 +1130,7 @@ export interface FileRoutesByFullPath {
   '/$lang/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
+  '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
@@ -1185,6 +1200,7 @@ export interface FileRoutesByTo {
   '/$lang/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
+  '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
@@ -1255,6 +1271,7 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
   '/$lang/_content/_misc/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/_content/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
+  '/$lang/_content/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/_content/events/$eventId': typeof LangContentEventsEventIdRoute;
   '/$lang/dashboard/_dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/_dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
@@ -1326,6 +1343,7 @@ export interface FileRouteTypes {
     | '/$lang/terms-and-conditions'
     | '/$lang/under-construction'
     | '/$lang/courses/$courseName-$courseId'
+    | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
@@ -1394,6 +1412,7 @@ export interface FileRouteTypes {
     | '/$lang/terms-and-conditions'
     | '/$lang/under-construction'
     | '/$lang/courses/$courseName-$courseId'
+    | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
@@ -1462,6 +1481,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/terms-and-conditions'
     | '/$lang/_content/_misc/under-construction'
     | '/$lang/_content/courses/$courseName-$courseId'
+    | '/$lang/_content/courses/btc105'
     | '/$lang/_content/events/$eventId'
     | '/$lang/dashboard/_dashboard/bookings'
     | '/$lang/dashboard/_dashboard/calendar'
@@ -1532,6 +1552,7 @@ export interface RootRouteChildren {
   LangContentMiscTermsAndConditionsRoute: typeof LangContentMiscTermsAndConditionsRoute;
   LangContentMiscUnderConstructionRoute: typeof LangContentMiscUnderConstructionRoute;
   LangContentCoursesCourseNameCourseIdRoute: typeof LangContentCoursesCourseNameCourseIdRoute;
+  LangContentCoursesBtc105Route: typeof LangContentCoursesBtc105Route;
   LangContentEventsEventIdRoute: typeof LangContentEventsEventIdRoute;
   LangContentCoursesIndexRoute: typeof LangContentCoursesIndexRoute;
   LangContentEventsIndexRoute: typeof LangContentEventsIndexRoute;
@@ -1586,6 +1607,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangContentMiscUnderConstructionRoute: LangContentMiscUnderConstructionRoute,
   LangContentCoursesCourseNameCourseIdRoute:
     LangContentCoursesCourseNameCourseIdRoute,
+  LangContentCoursesBtc105Route: LangContentCoursesBtc105Route,
   LangContentEventsEventIdRoute: LangContentEventsEventIdRoute,
   LangContentCoursesIndexRoute: LangContentCoursesIndexRoute,
   LangContentEventsIndexRoute: LangContentEventsIndexRoute,
@@ -1677,6 +1699,7 @@ export const routeTree = rootRoute
         "/$lang/_content/_misc/terms-and-conditions",
         "/$lang/_content/_misc/under-construction",
         "/$lang/_content/courses/$courseName-$courseId",
+        "/$lang/_content/courses/btc105",
         "/$lang/_content/events/$eventId",
         "/$lang/_content/courses/",
         "/$lang/_content/events/",
@@ -1769,6 +1792,9 @@ export const routeTree = rootRoute
     },
     "/$lang/_content/courses/$courseName-$courseId": {
       "filePath": "$lang/_content/courses/$courseName-$courseId.tsx"
+    },
+    "/$lang/_content/courses/btc105": {
+      "filePath": "$lang/_content/courses/btc105.tsx"
     },
     "/$lang/_content/events/$eventId": {
       "filePath": "$lang/_content/events/$eventId.tsx"
