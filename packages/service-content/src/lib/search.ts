@@ -200,7 +200,7 @@ const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
   UNNEST(conferences.languages) as language
 `;
 
-// Resource - Projects  // TODO Add body
+// Resource - Projects
 const getProjectsQuery = () => sql<Searchable<Language>[]>`
   SELECT
     'project' as type,
