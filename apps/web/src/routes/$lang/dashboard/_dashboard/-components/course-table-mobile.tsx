@@ -203,8 +203,13 @@ export const CourseTableMobile = ({
                   className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
                 >
                   <div className="flex flex-col gap-[5px] min-[650px]:gap-2.5">
-                    {(coursesByCategory[category.toLowerCase()] || []).map(
-                      ({ course, progress }) => {
+                    {(coursesByCategory[category.toLowerCase()] || [])
+                      .sort((a, b) =>
+                        a.course.index
+                          .slice(3)
+                          .localeCompare(b.course.index.slice(3)),
+                      )
+                      .map(({ course, progress }) => {
                         const { bgColor } = getStatusStyles(
                           progress,
                           selectedCourse === course.id,
@@ -234,8 +239,7 @@ export const CourseTableMobile = ({
                             </span>
                           </button>
                         );
-                      },
-                    )}
+                      })}
                   </div>
                 </TableCell>
               ))}
