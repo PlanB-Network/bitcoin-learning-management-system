@@ -37,15 +37,15 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "dotenv-cli": "^8.0.0",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
-    "knip": "^5.44.1",
+    "knip": "^5.45.0",
     "lint-staged": "^15.4.3",
     "mocha": "^11.1.0",
-    "tsx": "^4.19.2",
-    "turbo": "^2.4.2",
+    "tsx": "^4.19.3",
+    "turbo": "^2.4.4",
     "typescript": "5.7.3"
   },
   "lint-staged": {
@@ -53,5 +53,5 @@
       "biome check --no-errors-on-unmatched --files-ignore-unknown=true --diagnostic-level=warn"
     ]
   },
-  "packageManager": "pnpm@10.2.1"
+  "packageManager": "pnpm@10.5.1"
 }
