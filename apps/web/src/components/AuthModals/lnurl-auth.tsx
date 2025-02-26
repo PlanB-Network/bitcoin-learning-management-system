@@ -26,12 +26,12 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
   useEffect(() => {
     const poll = async () => {
       // TODO fix lnurl
-      const me = await trpcClient.auth.lud4.poll.query(undefined, {
-        context: {
-          // Skip batching for this request so it doesn't block the LNURL fetch
-          skipBatch: true,
-        },
-      });
+      // const me = await trpcClient.auth.lud4.poll.query(undefined, {
+      //   context: {
+      //     // Skip batching for this request so it doesn't block the LNURL fetch
+      //     skipBatch: true,
+      //   },
+      // });
 
       // dispatch(
       //   userSlice.actions.login({
