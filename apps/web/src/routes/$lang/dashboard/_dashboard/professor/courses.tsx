@@ -345,19 +345,20 @@ const CourseDetails = ({ course }: { course: JoinedCourse }) => {
               <span className={labelClasses}>
                 {t('dashboard.teacher.courses.courseLongDescription')}
               </span>
-              <ReactMarkdown
-                components={{
-                  h1: ({ children }) => (
-                    <h3 className="title-small-med-16px">{children}</h3>
-                  ),
-                  p: ({ children }) => (
-                    <div className="body-14px">{children}</div>
-                  ),
-                }}
-                className={cn('gap-2 w-full', infoTextClasses)}
-              >
-                {course.rawDescription}
-              </ReactMarkdown>
+              <div className={cn('gap-2 w-full', infoTextClasses)}>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ children }) => (
+                      <h3 className="title-small-med-16px">{children}</h3>
+                    ),
+                    p: ({ children }) => (
+                      <div className="body-14px">{children}</div>
+                    ),
+                  }}
+                >
+                  {course.rawDescription}
+                </ReactMarkdown>
+              </div>
             </div>
           </div>
         </div>

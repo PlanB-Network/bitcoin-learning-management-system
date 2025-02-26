@@ -31,7 +31,7 @@ interface RegisterFormData {
   username: string;
   password: string;
   confirmation: string;
-  email: string;
+  email: string | null;
 }
 
 interface RegisterProps {
@@ -217,6 +217,7 @@ export const Register = ({
                               placeholder="email"
                               type="email"
                               {...field}
+                              value={field.value ?? ''}
                               error={fieldState.error?.message || null}
                             />
                           </FormControl>

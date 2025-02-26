@@ -18,7 +18,7 @@
     "@blms/constants": "workspace:*",
     "@blms/shared": "workspace:*",
     "@blms/ui": "workspace:*",
-    "@hookform/resolvers": "^4.1.2",
+    "@hookform/resolvers": "^3.10.0",
     "@react-hooks-library/core": "^0.6.2",
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.7.0",
