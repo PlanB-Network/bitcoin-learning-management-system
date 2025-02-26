@@ -2,7 +2,7 @@
   "about": {
     "missionTitle": "Vårt mål",
     "activeContributors": "Aktive bidragsytere",
-    "missionContent1": "Vårt mål er å støtte lokale bitcoin fellesskap gjennom åpen-kildekode utdanning og nettverksbygging. Får å kunne gjøre det, samler vi, organiserer og skaper det nødvendige ressursene (kurs, bøker, plakater, flygeblad,videoer) for at Bitcoin industrien skal ha fremgang.",
+    "missionContent1": "Vårt mål er å støtte lokale bitcoinfellesskap gjennom åpen-kildekode utdanning og nettverksbygging. Får å kunne gjøre det, samler vi, organiserer og skaper de nødvendige ressursene (kurs, bøker, plakater, flygeblad, videoer) for at Bitcoin industrien skal ha fremgang.",
     "coreTeamTitle": "Kjerneteamet",
     "coreTeamGiacomoRole": "Direktør og medgrunnlegger",
     "coreTeamRogzyRole": "Produktleder & Medgrunnlegger",
@@ -18,8 +18,8 @@
     "missionContent2": "Vi sentraliserer kunnskap slik at vi kan dele den på best mulig måte, ved å bruke et enkelt, flerspråklig GitHub-repositorium og en E-læringsplattform. Vi bistår også lokale Bitcoin-huber i deres utvikling ved å tilby de riktige verktøyene for at talentene deres skal vokse.",
     "commitmentTitle": "Våre forpliktelser",
     "commitmentContent": "Vi har følgende forpliktelser overfor bitcoin-samfunnet:\n • Forbli åpen kildekode\n • Levere høykvalitets pedagogisk innhold\n • Oversette innholdet vårt til så mange språk som mulig\n • Støtte Bitcoin-byggere på deres entreprenørreise",
-    "coreTeamContent": "Plan ₿ Network er en samling av hundrevis av bidragsytere, lærere, samfunnsledere, designere, utviklere og arrangører. En spesiell takk går til de mange menneskene som har gjort PlanB til en realitet og fortsetter å gjøre det hver dag. (Vegg av bidragsytere kommer snart)",
-    "corporateContent": "PlanB Network er et fellesprosjekt av tre enheter som fokuserer på Bitcoin-utvikling. I et forsøk på å få Bitcoin-utdannelse til å skalere, bestemte de seg for å samarbeide for å danne PlanB Network. Siden da har mange andre enheter bestemt seg for å bidra og slå seg sammen med oss for å hjelpe med å bringe Bitcoin-utdanning til verden. Av denne grunn skylder vi dem en stor takk.",
+    "coreTeamContent": "Plan ₿ Network er en samling av hundrevis av bidragsytere, lærere, samfunnsledere, designere, utviklere og arrangører. En spesiell takk går til de mange menneskene som har gjort Plan ₿ til en realitet og fortsetter å gjøre det hver dag. (Vegg av bidragsytere kommer snart)",
+    "corporateContent": "Plan ₿ Network er et fellesprosjekt bestående av tre enheter som fokuserer på Bitcoin-utvikling. I et forsøk på å få Bitcoin-utdannelse til å skalere, bestemte de seg for å samarbeide for å danne Plan ₿ Network. Siden da har mange andre enheter bestemt seg for å bidra og slå seg sammen med oss for å hjelpe med å bringe Bitcoin-utdanning til verden. Med bakgrunn i dette skylder vi dem en stor takk.",
     "manifesto": "Vi tror på den desentraliserte fremtiden som Bitcoin tilbyr.\n\nVår misjon er å introdusere Bitcoin for en milliard mennesker innen et tiårs tid. Våre verktøy er utdanning og informasjon.\n\nVi støtter lokale samfunn av Bitcoin-brukere ved å tilby åpen kildekode pedagogisk innhold og tilby et nettverk av Bitcoin-mentorer.\n\nVår filosofi er inspirert av cypherpunk-manifestet. Akkurat som de forsvarte personvern, forsvarer vi utdanning. Faktisk tror vi at kunnskap er grunnlaget for frihet og endring.\n\nVi er kun Bitcoin.\n\nVi taler for individuelt ansvar og uavhengigheten som tilbys ved å eie dine egne nøkler.\n\nVi oppfordrer til verifisering, ikke blind tillit.\n\nVi tror at ved å fikse pengene, kan vi fikse verden.\n\nVi er desentraliserte og åpen kildekode, unngår ethvert enkelt feilpunkt.\n\nVi oppmuntrer til fri spredning av vårt innhold.\n\nVi aspirerer til en verden som opererer nedenfra og opp, der individet er i sentrum.\n\nVi forenkler, vi utdanner, vi deler.\n\nBli med oss i vår misjon om å orange-pille verden.\n"
   },
   "auth": {
@@ -179,7 +179,7 @@
       "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå",
       "ledBy": "Dette kurset ledes av",
       "pastEditionsRatings": "Tidligere utgavers rangeringer",
-      "teacherLed": "Lærerledet"
+      "teacherLed": "Professor-ledet"
     },
     "explorer": {
       "buildPath": "Lag din egen sti ned i kaninhullet",
@@ -1369,7 +1369,8 @@
     "languages": "Språk",
     "networkStrength": "Nettverkets styrke ligger i dets medlemmer",
     "noRelatedEvents": "Det er ingen kommende arrangementer relatert til denne læreren for øyeblikket.",
-    "otherCommunities": "Utforsk Plan ₿ Samfunn"
+    "otherCommunities": "Utforsk Plan ₿ Samfunn",
+    "related": "Relatert"
   },
   "search": {
     "conference_replay": "Konferanseopptak",

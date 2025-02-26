@@ -176,7 +176,7 @@
       "hasBeenProofreadBy": "此課程已由以下人員進行校對",
       "ledBy": "這門課程由",
       "pastEditionsRatings": "過去版本評分",
-      "teacherLed": "教師主導",
+      "teacherLed": "由教授領導的",
       "otherCourses": "其他課程",
       "otherCoursesInterest": "您可能會感興趣的其他課程",
       "thanksTipping": "您可以透過給予小費來感謝教授。"
@@ -1273,7 +1273,7 @@
     "complete": "完成",
     "language": "語言",
     "lecture": "講座",
-    "linkedin": "Linkedin",
+    "linkedin": "Linkedin(領英)",
     "exam": "考試",
     "github": "Github",
     "incomplete": "未完成",
