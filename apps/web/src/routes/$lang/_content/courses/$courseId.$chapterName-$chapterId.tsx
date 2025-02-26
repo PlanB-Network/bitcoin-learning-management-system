@@ -533,7 +533,6 @@ function shuffleArray<T>(array: T[]): T[] {
 function CourseChapter() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
-  console.log('PARAMS', params);
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
   const { user } = useContext(AppContext);

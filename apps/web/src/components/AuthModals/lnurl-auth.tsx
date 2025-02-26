@@ -33,7 +33,6 @@ export const LnurlAuth = ({ isOpen, onClose }: LnurlAuthModalProps) => {
         },
       });
 
-      console.log(me);
       // dispatch(
       //   userSlice.actions.login({
       //     uid: me.uid,
