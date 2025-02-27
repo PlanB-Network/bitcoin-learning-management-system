@@ -63,6 +63,8 @@ const formatDate = (date: Date) => {
   return `${month} ${day}, ${year}`;
 };
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 interface ExamAttemptWithUser {
   succeeded: boolean;
   finalized: boolean;
@@ -368,6 +370,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       for (const { id } of exams) {
         try {
           await timestampExamAttempt({ examAttemptId: id });
+          await sleep(1000); // Avoid rate limiting
         } catch (err) {
           console.error('Failed to timestamp exam', id, err);
         }
@@ -381,6 +384,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         for (const { examAttemptId } of timestamps) {
           try {
             await upgradeExamTimestamp(examAttemptId);
+            await sleep(1000); // Avoid rate limiting
           } catch (err) {
             console.error('Failed to upgrade timestamp', examAttemptId, err);
           }
@@ -395,6 +399,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         for (const { examAttemptId } of timestamps) {
           try {
             await validateExamTimestamp(examAttemptId);
+            await sleep(1000); // Avoid rate limiting
           } catch (err) {
             console.error('Failed to validate timestamp', examAttemptId, err);
           }
