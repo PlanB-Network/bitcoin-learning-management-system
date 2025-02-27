@@ -219,12 +219,10 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
     const { signature, ots, hash } = await timestamp({ text });
 
-    const otfBuffer = ots;
-
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`
         INSERT INTO users.exam_timestamps (exam_attempt_id, txt, sig, hash, ots)
-        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${otfBuffer})
+        VALUES (${examAttemptId}, ${text}, ${signature}, ${hash}, ${ots})
         RETURNING *;
       `,
     );
@@ -368,7 +366,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       console.log('[Cron] Timestamp all exams', exams);
 
       for (const { id } of exams) {
-        await timestampExamAttempt({ examAttemptId: id });
+        try {
+          await timestampExamAttempt({ examAttemptId: id });
+        } catch (err) {
+          console.error('Failed to timestamp exam', id, err);
+        }
       }
     },
     upgradeAllTimeStamps: async () => {
@@ -377,7 +379,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         console.log('[Cron] Upgrade all timestamps', timestamps);
 
         for (const { examAttemptId } of timestamps) {
-          await upgradeExamTimestamp(examAttemptId);
+          try {
+            await upgradeExamTimestamp(examAttemptId);
+          } catch (err) {
+            console.error('Failed to upgrade timestamp', examAttemptId, err);
+          }
         }
       }
     },
@@ -387,7 +393,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         console.log('[Cron] Validate all timestamps', timestamps);
 
         for (const { examAttemptId } of timestamps) {
-          await validateExamTimestamp(examAttemptId);
+          try {
+            await validateExamTimestamp(examAttemptId);
+          } catch (err) {
+            console.error('Failed to validate timestamp', examAttemptId, err);
+          }
         }
       }
     },
@@ -404,7 +414,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         console.log('[Cron] Generate all certificates', timestamps);
 
         for (const { examAttemptId } of timestamps) {
-          await generatePdfCertificate(examAttemptId);
+          try {
+            await generatePdfCertificate(examAttemptId);
+          } catch (err) {
+            console.error('Failed to generate certificate', examAttemptId, err);
+          }
         }
       }
     },
@@ -421,7 +435,15 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         console.log('[Cron] Generate all certificates thumbnails', docs);
 
         for (const { examAttemptId, pdfKey } of docs) {
-          await generateCertificateThumbnail(examAttemptId, pdfKey);
+          try {
+            await generateCertificateThumbnail(examAttemptId, pdfKey);
+          } catch (err) {
+            console.error(
+              'Failed to generate certificate thumbnail',
+              examAttemptId,
+              err,
+            );
+          }
         }
       }
     },
