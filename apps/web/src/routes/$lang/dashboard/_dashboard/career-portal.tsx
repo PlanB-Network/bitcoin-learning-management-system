@@ -43,19 +43,13 @@ import { z } from 'zod';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { trpc } from '#src/utils/trpc.ts';
-import {
-  careerCompanySizeEnum,
-  careerLanguageLevelEnum,
-  careerRemoteEnum,
-  careerRoleLevelEnum,
-  jobCategoryEnum,
-} from '../../../../../../../packages/database/dist/drizzle/schema.js';
 
 import {
   CareerCompanySize,
   CareerLanguageLevel,
   CareerRemote,
   CareerRoleLevel,
+  JobCategory,
 } from '@blms/constants';
 import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 import { AppContext } from '#src/providers/context.tsx';
@@ -282,7 +276,7 @@ function CareerPortal() {
       })
     : [];
 
-  const sortedJobsByCategory = jobCategoryEnum.enumValues.reduce<
+  const sortedJobsByCategory = Object.values(JobCategory).reduce<
     Record<string, JobTitle[]>
   >((acc, category) => {
     acc[category] =
@@ -677,11 +671,11 @@ function CareerPortal() {
                           subLabel={t(
                             'dashboard.careerPortal.languageLevelSubLabel',
                           )}
-                          options={careerLanguageLevelEnum.enumValues.map(
-                            (value) => ({
-                              value,
+                          options={Object.values(CareerLanguageLevel).map(
+                            (level) => ({
+                              value: level,
                               label: t(
-                                `dashboard.careerPortal.languageLevels.${value}`,
+                                `dashboard.careerPortal.languageLevels.${level}`,
                               ),
                             }),
                           )}
@@ -882,11 +876,11 @@ function CareerPortal() {
                           subLabel={t(
                             'dashboard.careerPortal.roleLevelSubLabel',
                           )}
-                          options={careerRoleLevelEnum.enumValues.map(
-                            (value) => ({
-                              value,
+                          options={Object.values(CareerRoleLevel).map(
+                            (roleLevel) => ({
+                              value: roleLevel,
                               label: t(
-                                `dashboard.careerPortal.roleLevels.${value}`,
+                                `dashboard.careerPortal.roleLevels.${roleLevel}`,
                               ),
                             }),
                           )}
@@ -920,10 +914,14 @@ function CareerPortal() {
                 subLabel={t(
                   'dashboard.careerPortal.companySizePreferenceSubLabel',
                 )}
-                options={careerCompanySizeEnum.enumValues.map((value) => ({
-                  value,
-                  label: t(`dashboard.careerPortal.companySizes.${value}`),
-                }))}
+                options={Object.values(CareerCompanySize).map(
+                  (companySize) => ({
+                    value: companySize,
+                    label: t(
+                      `dashboard.careerPortal.companySizes.${companySize}`,
+                    ),
+                  }),
+                )}
                 mandatory
                 addNoPreferenceButton
               />
@@ -950,10 +948,10 @@ function CareerPortal() {
                   id="remoteWorkPreference"
                   control={form.control}
                   label={t('dashboard.careerPortal.remoteWorkPreference')}
-                  options={careerRemoteEnum.enumValues.map((value) => ({
-                    value,
+                  options={Object.values(CareerRemote).map((remote) => ({
+                    value: remote,
                     label: t(
-                      `dashboard.careerPortal.remoteWorkPreferences.${value}`,
+                      `dashboard.careerPortal.remoteWorkPreferences.${remote}`,
                     ),
                   }))}
                   mandatory
