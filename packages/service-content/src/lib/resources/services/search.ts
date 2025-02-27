@@ -32,6 +32,58 @@ const searchCategoryMap: Record<string, string[] | null> = {
   '': null,
 };
 
+const CategoryWeight: Record<string, number> = {
+  // Course category
+  course: 6,
+  course_part: 6,
+  course_chapter: 6,
+  // Tutorials category
+  tutorial: 5,
+  // Events category
+  event: 4,
+  // Projects
+  project: 3,
+  // Professors
+  professor: 2,
+  // Everything else with a weight of 1
+  default: 1,
+};
+
+// https://typesense.org/docs/guide/ranking-and-relevance.html#boosting-burying-sets-of-records
+// Weight syntax is: _eval([<expression>]):<asc|desc> where <expression> is a valid Typesense expression
+const SORT_RULES = [
+  // First sort by weighted category
+  `_eval([${[
+    // Category - Course
+    'course',
+    'course_part',
+    'course_chapter',
+    // Category - Tutorial
+    'tutorial',
+    // Category - Events
+    'event',
+    // Resource - Projects
+    'project',
+    // Category - Professor
+    'professor',
+    // Other resources
+    'book',
+    'glossary_word',
+    'podcast',
+    'newsletter',
+    'youtube_channel',
+    'conference_replay',
+    'lecture_replay',
+  ]
+    .map(
+      (field) =>
+        `(type:${field}):${CategoryWeight[field] ?? CategoryWeight.default}`,
+    )
+    .join(',')}]):desc`,
+  // Then sort by text match
+  '_text_match:desc',
+].join(',');
+
 export const createSearch = ({ typesense }: Dependencies) => {
   const searchContent = (search: SearchInput) => {
     const categories = (search.categories ?? ['all'])
@@ -55,10 +107,10 @@ export const createSearch = ({ typesense }: Dependencies) => {
       q: search.query,
       query_by: 'title,body',
       query_by_weights: '3,1',
-      sort_by: '_text_match:desc',
+      sort_by: SORT_RULES,
+      prioritize_exact_match: true,
       highlight_affix_num_tokens: search.surroundingWords,
       search_cutoff_ms: 500, // search for 500ms max
-      prioritize_exact_match: true,
       filter_by: filter,
       limit: search.limit,
       page: search.cursor,
