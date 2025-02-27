@@ -522,7 +522,7 @@ const CourseExamsTable = ({
                         </div>
                         <Link
                           to={
-                            '/tutorials/others/other/pbn-certificate-timestamping-dd16f8c0-00c1-45fd-8792-920612bed18f'
+                            '/tutorials/others/other/dd16f8c0-00c1-45fd-8792-920612bed18f'
                           }
                           target="_blank"
                           className="mt-2.5 md:mt-1 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
