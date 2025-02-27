@@ -20,7 +20,6 @@ import { z } from 'zod';
 import type { Parser } from '#src/trpc/types.js';
 
 import {
-  adminProcedure,
   studentProcedure,
   superadminProcedure,
 } from '#src/procedures/protected.js';
@@ -56,13 +55,13 @@ export const userRouter = createTRPCRouter({
       });
     }),
 
-  getUsersRoles: adminProcedure
+  getUsersRoles: superadminProcedure
     .input(
       z.object({
-        role: z.string(),
+        role: z.string().optional(),
         name: z.string(),
         orderField: z
-          .enum(['displayName', 'username'])
+          .enum(['displayName', 'username', 'role'])
           .optional()
           .default('username'),
         orderDirection: z
@@ -81,8 +80,8 @@ export const userRouter = createTRPCRouter({
     )
     .query(({ ctx, input }) =>
       createGetUsersRoles(ctx.dependencies)({
-        role: input.role,
         name: input.name,
+        role: input.role,
         orderField: input.orderField,
         orderDirection: input.orderDirection,
         limit: input.limit,
@@ -104,12 +103,12 @@ export const userRouter = createTRPCRouter({
       }),
     ),
 
-  changeRoleToProfessor: adminProcedure
+  changeRoleToProfessor: superadminProcedure
     .input(
       z.object({
         uid: z.string(),
         role: z.nativeEnum(UserRole).optional(),
-        professorId: z.number().nullable(),
+        professorId: z.string().nullable(),
       }),
     )
     .output<Parser<void>>(z.void())

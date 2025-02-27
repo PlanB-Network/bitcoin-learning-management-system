@@ -365,6 +365,7 @@
   "dashboard": {
     "account": "Account",
     "adminPanel": {
+      "accessGranted": "Access granted",
       "bookings": "Bookings",
       "bookingsPanel": "Bookings panel",
       "careers": {
@@ -381,10 +382,13 @@
         "viewCV": "View CV"
       },
       "confirmRemoval": "Confirm removal",
-      "coursesIds": "Courses IDs",
+      "coursesIndexes": "Courses indexes",
       "date": "Date",
+      "deleteRole": "Delete role",
       "downloadList": "Download list",
+      "editRole": "Edit role",
       "githubLink": "Github link",
+      "hasAccessTo": "Has access to:",
       "listOfParticipants": "List of participants",
       "makeProfessor": "Make professor",
       "nameOfEvent": "Name of Event",
@@ -394,6 +398,7 @@
       "searchByNameOrCategory": "Search by name or category",
       "seeOrEdit": "See or edit",
       "selectProfessor": "Select professor",
+      "selectRole": "Select role",
       "tutorialAnalytics": "Tutorial analytics",
       "tutorialAnalyticsDescription": "Here you can check and compare all tutorials on the platform.",
       "tutorialsManagementPanel": "Tutorials management panel",
@@ -1380,6 +1385,7 @@
     "required": "Required",
     "resources": "Resources",
     "role": "Role",
+    "save": "Save",
     "search": "Search",
     "security": "Security",
     "skip": "Skip",

@@ -34,7 +34,7 @@ export const createChangeRole = ({ postgres }: Dependencies) => {
 interface ChangeRoleToProfessorOptions {
   uid: string;
   role: UserRole;
-  professorId?: number | null;
+  professorId?: string | null;
 }
 
 export const createChangeRoleToProfessor = ({ postgres }: Dependencies) => {

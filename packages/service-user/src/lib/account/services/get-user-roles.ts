@@ -4,9 +4,9 @@ import type { Dependencies } from '../../../dependencies.js';
 import { getUserRolesQuery } from '../queries/get-user-roles.js';
 
 interface Options {
-  role: string;
   name: string;
-  orderField?: 'displayName' | 'username';
+  role?: string;
+  orderField?: 'displayName' | 'username' | 'role';
   orderDirection?: 'asc' | 'desc';
   limit?: number;
   cursor?: string;
@@ -23,10 +23,10 @@ export const createGetUsersRoles = ({ postgres }: Dependencies) => {
   }: Options): Promise<{ users: UserRoles[]; nextCursor: string | null }> => {
     const data = await postgres.exec(
       getUserRolesQuery(
-        role,
         name,
         orderField,
         orderDirection,
+        role,
         limit + 1,
         cursor,
       ),
