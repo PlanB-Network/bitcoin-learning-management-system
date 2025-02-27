@@ -31,6 +31,7 @@ export interface UserDetails {
   certificateName: string | null;
   professorId: string | null;
   contributorId: string;
+  permissions: UserPermission[] | null;
   professorCourses: string[];
   professorTutorials: string[];
   boughtCourses: string[];
@@ -44,6 +45,7 @@ export interface UserRoles {
   contributorId: string;
   role: UserRole;
   professorId: string | null;
+  permissions: UserPermission[] | null;
   professorName?: string | undefined;
 }
 

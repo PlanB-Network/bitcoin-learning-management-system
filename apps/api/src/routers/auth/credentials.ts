@@ -31,6 +31,7 @@ const loginCredentialsSchema = z.object({
 const setSession = (req: Request, user: SessionData) => {
   req.session.uid = user.uid;
   req.session.role = user.role;
+  req.session.permissions = user.permissions ?? null;
 };
 
 export const credentialsAuthRouter = createTRPCRouter({

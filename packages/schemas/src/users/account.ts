@@ -24,6 +24,7 @@ export const userDetailsSchema = userAccountSchema
     certificateName: true,
     professorId: true,
     contributorId: true,
+    permissions: true,
   })
   .merge(
     z.object({
@@ -42,6 +43,7 @@ export const userRolesSchema = userAccountSchema
     contributorId: true,
     role: true,
     professorId: true,
+    permissions: true,
   })
   .merge(
     z.object({

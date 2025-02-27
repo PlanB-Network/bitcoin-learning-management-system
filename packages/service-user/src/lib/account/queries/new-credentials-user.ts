@@ -36,7 +36,8 @@ export const newCredentialsUserQuery = ({
       certificate_name,
       contributor_id,
       email,
-      role
+      role,
+      permissions
       ;
   `;
 };
