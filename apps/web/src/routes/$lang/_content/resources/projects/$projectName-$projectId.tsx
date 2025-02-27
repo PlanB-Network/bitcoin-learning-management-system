@@ -165,6 +165,7 @@ function Project() {
                     <Flag
                       code={language}
                       key={language}
+                      size="m"
                       className="!w-[26px] !h-[18px] shadow-card-items-dark"
                     />
                   ))}
@@ -241,20 +242,16 @@ function Project() {
               </div>
               <div className="ml-auto flex flex-col gap-3 max-md:hidden">
                 {project.category === 'communities' && (
-                  <>
-                    <span className="text-xs font-medium text-white text-center mb-1">
-                      {t('projects.languages')}
-                    </span>
-                    <div className="flex justify-center flex-col gap-2.5 ">
-                      {project.languages?.slice(0, 3).map((language) => (
-                        <Flag
-                          code={language}
-                          key={language}
-                          className="!w-[70px] !h-[49px] shadow-card-items-dark"
-                        />
-                      ))}
-                    </div>
-                  </>
+                  <div className="flex justify-center flex-col gap-2.5 ">
+                    {project.languages?.slice(0, 3).map((language) => (
+                      <Flag
+                        code={language}
+                        key={language}
+                        size="xl"
+                        className="shrink-0 max-md:hidden"
+                      />
+                    ))}
+                  </div>
                 )}
               </div>
             </section>
