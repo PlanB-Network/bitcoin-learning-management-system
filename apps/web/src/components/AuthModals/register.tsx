@@ -79,7 +79,7 @@ export const Register = ({
       path: ['confirmation'],
     });
 
-  const methods = useForm<RegisterFormData>({
+  const methods = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       username: '',

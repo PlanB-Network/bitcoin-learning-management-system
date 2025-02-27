@@ -58,7 +58,7 @@ export const ChangeEmailModal = ({
     },
   });
 
-  const form = useForm<ChangeEmailForm>({
+  const form = useForm({
     resolver: zodResolver(changeEmailSchema),
     defaultValues: { email },
   });

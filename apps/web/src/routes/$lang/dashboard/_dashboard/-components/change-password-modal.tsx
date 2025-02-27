@@ -70,7 +70,7 @@ export const ChangePasswordModal = ({
 
   type ChangePasswordForm = z.infer<typeof changePasswordSchema>;
 
-  const form = useForm<z.infer<typeof changePasswordSchema>>({
+  const form = useForm({
     resolver: zodResolver(changePasswordSchema),
     defaultValues: {
       oldPassword: '',

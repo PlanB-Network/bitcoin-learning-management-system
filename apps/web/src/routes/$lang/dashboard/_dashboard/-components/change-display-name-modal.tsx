@@ -48,7 +48,7 @@ export const ChangeDisplayNameModal = ({
     onSuccess: onClose,
   });
 
-  const form = useForm<ChangeDisplayNameForm>({
+  const form = useForm({
     resolver: zodResolver(changeDisplayNameSchema),
     defaultValues: {
       displayName: '',

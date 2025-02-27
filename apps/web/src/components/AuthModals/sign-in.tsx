@@ -45,7 +45,7 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
     password: z.string().min(1, { message: passwordRequired }),
   });
 
-  const methods = useForm<SignInFormData>({
+  const methods = useForm({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       username: '',

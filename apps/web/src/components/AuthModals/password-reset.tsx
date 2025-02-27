@@ -20,6 +20,8 @@ import {
 
 import { trpc } from '#src/utils/index.js';
 
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { AuthModalState } from './props.ts';
 
 interface LoginModalProps {
@@ -51,7 +53,12 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
     },
   });
 
-  const methods = useForm<{ email: string }>({
+  const passwordResetSchema = z.object({
+    email: z.string(),
+  });
+
+  const form = useForm({
+    resolver: zodResolver(passwordResetSchema),
     defaultValues: { email: '' },
   });
 
@@ -67,9 +74,9 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const modalContent = {
     [ResetPasswordState.Initial]: (
       <>
-        <Form {...methods}>
+        <Form {...form}>
           <form
-            onSubmit={methods.handleSubmit(handlePasswordReset)}
+            onSubmit={form.handleSubmit(handlePasswordReset)}
             className="flex w-full flex-col items-center"
           >
             <FormItem className="space-y-2 my-2 w-4/5">
@@ -88,7 +95,7 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
               variant="primary"
               type="submit"
               className="mb-5 mt-2"
-              disabled={!methods.watch('email')}
+              disabled={!form.watch('email')}
             >
               {t('auth.sendLink')}
             </Button>
