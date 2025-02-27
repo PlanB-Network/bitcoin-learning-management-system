@@ -332,7 +332,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                       {t('dashboard.adminPanel.professorName')}
                     </TableHead>
                     <TableHead className="w-60">
-                      {t('dashboard.adminPanel.coursesIds')}
+                      {t('dashboard.adminPanel.coursesIndexes')}
                     </TableHead>
                     <TableHead
                       className={cn(
@@ -530,7 +530,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                         <TableCell>
                           {professors
                             ?.find((p) => p.id === user.professorId)
-                            ?.coursesIds.map((courseId) => (
+                            ?.coursesIndexes.map((courseId) => (
                               <span className="block uppercase" key={courseId}>
                                 {courseId}
                               </span>

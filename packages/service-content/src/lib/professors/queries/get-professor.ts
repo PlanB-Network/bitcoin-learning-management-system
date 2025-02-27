@@ -9,7 +9,7 @@ export const getProfessorQuery = (id: string, language?: string) => {
       pl.short_bio,
       pl.language,
       COALESCE(ca.courses_count, 0) AS courses_count,
-      COALESCE(ca.courses_ids, ARRAY[]::text[]) AS courses_ids,
+      COALESCE(ca.courses_indexes, ARRAY[]::text[]) AS courses_indexes,
       COALESCE(tca.tutorials_count, 0) AS tutorials_count,
       COALESCE(lca.lectures_count, 0) AS lectures_count,
       COALESCE(ta.tags, ARRAY[]::text[]) AS tags
@@ -28,7 +28,7 @@ export const getProfessorQuery = (id: string, language?: string) => {
     LEFT JOIN LATERAL (
       SELECT
         COUNT(cp.*) AS courses_count,
-        ARRAY_AGG(cp.course_id) AS courses_ids
+        ARRAY_AGG(c.index) AS courses_indexes
       FROM content.course_professors cp
       JOIN content.courses c ON c.id = cp.course_id
       WHERE cp.contributor_id = p.contributor_id
@@ -53,6 +53,6 @@ export const getProfessorQuery = (id: string, language?: string) => {
 
     WHERE p.id = ${id}
     ${language ? sql`AND pl.language = LOWER(${language})` : sql``}
-    GROUP BY p.id, pl.language, pl.bio, pl.short_bio, ca.courses_count, ca.courses_ids, tca.tutorials_count, lca.lectures_count, ta.tags
+    GROUP BY p.id, pl.language, pl.bio, pl.short_bio, ca.courses_count, ca.courses_indexes, tca.tutorials_count, lca.lectures_count, ta.tags
   `;
 };

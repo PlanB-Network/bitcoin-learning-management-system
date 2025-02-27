@@ -382,7 +382,7 @@
         "viewCV": "View CV"
       },
       "confirmRemoval": "Confirm removal",
-      "coursesIds": "Courses IDs",
+      "coursesIndexes": "Courses indexes",
       "date": "Date",
       "deleteRole": "Delete role",
       "downloadList": "Download list",
