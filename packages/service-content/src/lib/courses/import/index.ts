@@ -462,22 +462,24 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
           // If the resource has tags, insert them into the tags table and link them to the resource
           if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
-            await transaction`
-                  INSERT INTO content.tags ${transaction(
-                    parsedCourse.tags.map((tag) => ({
-                      name: tag.toLowerCase(),
-                    })),
-                  )}
-                  ON CONFLICT (name) DO NOTHING
-                `;
+            const lowercaseTags = parsedCourse.tags.map((tag) =>
+              tag.toLowerCase(),
+            );
 
             await transaction`
-                  INSERT INTO content.course_tags (course_id, tag_id)
-                  SELECT
-                    ${result.id},
-                    id FROM content.tags WHERE name = ANY(${parsedCourse.tags})
-                  ON CONFLICT DO NOTHING
-                `;
+              INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
+              ON CONFLICT (name) DO NOTHING
+            `;
+
+            await transaction`
+              INSERT INTO content.course_tags (course_id, tag_id)
+              SELECT
+                ${result.id},
+                id
+                FROM content.tags
+                WHERE name = ANY(${lowercaseTags})
+              ON CONFLICT DO NOTHING
+            `;
           }
 
           // If the resource has proofreads

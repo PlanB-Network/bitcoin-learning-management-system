@@ -99,18 +99,22 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     // If the professor has tags, insert them into the tags table and link them to the professor
     if (result && parsedProfessor.tags && parsedProfessor.tags?.length > 0) {
+      const lowercaseTags = parsedProfessor.tags.map((tag) =>
+        tag.toLowerCase(),
+      );
+
       await transaction`
-          INSERT INTO content.tags ${transaction(
-            parsedProfessor.tags.map((tag) => ({ name: tag.toLowerCase() })),
-          )}
-          ON CONFLICT (name) DO NOTHING
-        `;
+        INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
+        ON CONFLICT (name) DO NOTHING
+      `;
 
       await transaction`
           INSERT INTO content.professor_tags (professor_id, tag_id)
           SELECT
             ${result.id},
-            id FROM content.tags WHERE name = ANY(${parsedProfessor.tags})
+            id
+            FROM content.tags
+            WHERE name = ANY(${lowercaseTags})
           ON CONFLICT DO NOTHING
         `;
     }

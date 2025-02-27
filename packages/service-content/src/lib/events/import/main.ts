@@ -138,18 +138,20 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     }
 
     if (result && parsedEvent.tags && parsedEvent.tags?.length > 0) {
+      const lowercaseTags = parsedEvent.tags.map((tag) => tag.toLowerCase());
+
       await transaction`
-          INSERT INTO content.tags ${transaction(
-            parsedEvent.tags.map((tag) => ({ name: tag.toLowerCase() })),
-          )}
-          ON CONFLICT (name) DO NOTHING
-        `;
+        INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
+        ON CONFLICT (name) DO NOTHING
+      `;
 
       await transaction`
           INSERT INTO content.event_tags (event_id, tag_id)
           SELECT
             ${result.id},
-            id FROM content.tags WHERE name = ANY(${parsedEvent.tags})
+            id
+            FROM content.tags
+            WHERE name = ANY(${lowercaseTags})
           ON CONFLICT DO NOTHING
         `;
     }

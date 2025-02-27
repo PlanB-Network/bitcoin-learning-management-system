@@ -49,17 +49,17 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       const lowercaseTags = parsedResource.tags.map((tag) => tag.toLowerCase());
 
       await transaction`
-          INSERT INTO content.tags ${transaction(
-            lowercaseTags.map((tag) => ({ name: tag })),
-          )}
-          ON CONFLICT (name) DO NOTHING
-        `;
+        INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
+        ON CONFLICT (name) DO NOTHING
+      `;
 
       await transaction`
           INSERT INTO content.resource_tags (resource_id, tag_id)
           SELECT
             ${result.id},
-            id FROM content.tags WHERE name = ANY(${lowercaseTags})
+            id
+            FROM content.tags
+            WHERE name = ANY(${lowercaseTags})
           ON CONFLICT DO NOTHING
         `;
     }
