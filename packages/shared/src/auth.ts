@@ -22,7 +22,6 @@ export const canAccess = (
     }
 
     // Admin can access everything except superadmin
-    // // TODO Apply fine-grained access control
     if (role === UserRole.Admin) {
       // Admin can't access superadmin resources
       if (requiredRole === UserRole.Superadmin) {
