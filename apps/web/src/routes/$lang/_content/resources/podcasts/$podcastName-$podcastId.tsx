@@ -163,6 +163,7 @@ function Podcast() {
                         className="shrink-0 max-md:hidden"
                       />
                     </div>
+
                     <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
                       {podcast?.tags
                         ?.filter((tag) => tag && tag.toLowerCase() !== 'null')

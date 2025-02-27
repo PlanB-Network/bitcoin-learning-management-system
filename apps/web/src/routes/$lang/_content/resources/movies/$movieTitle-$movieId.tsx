@@ -126,11 +126,18 @@ function Movie() {
               >
                 <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-10">
                   <div className="flex flex-col items-center gap-5 md:gap-[30px] relative">
-                    <img
-                      className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset]  lg:max-w-[347px] md:mx-0 shadow-course-navigation"
-                      alt={'Movie thumbnail'}
-                      src={assetUrl(movie.path, 'thumbnail.webp')}
-                    />
+                    <div className="relative">
+                      <img
+                        className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] lg:max-w-[347px] md:mx-0 shadow-course-navigation"
+                        alt={'Movie thumbnail'}
+                        src={assetUrl(movie.path, 'thumbnail.webp')}
+                      />
+                      <Flag
+                        code={movie.language}
+                        size="m"
+                        className="shrink-0 md:hidden absolute top-[13px] right-[12px]"
+                      />
+                    </div>
                     <div className="flex flex-row justify-evenly md:flex-col lg:flex-row">
                       {movie?.platform && (
                         <Link to={movie.platform} target="_blank">
@@ -144,21 +151,18 @@ function Movie() {
                         </Link>
                       )}
                     </div>
-                    <div className="h-6 shrink-0 md:hidden absolute top-[7px] right-2 p-[3px] bg-newBlack-3 rounded-sm">
-                      <Flag code={movie.language} size="m" />
-                    </div>
                   </div>
 
-                  <div className="w-full max-w-2xl flex flex-col">
-                    <div className="flex flex-col gap-5 lg:gap-[30px] mb-5 lg:mb-[30px]">
-                      <div className="flex justify-between gap-[30px] w-full">
-                        <h2 className="max-w-[575px] title-large-24px lg:display-small-med-32px text-white">
+                  <div className="w-full max-w-2xl flex flex-col md:mt-0">
+                    <div className="flex flex-col">
+                      <div className="flex justify-between items-center gap-2 w-full lg:mb-5">
+                        <h2 className="title-large-24px lg:display-small-med-32px text-white max-md:mb-4">
                           {movie.title}
                         </h2>
                         <Flag
                           code={movie.language}
                           size="xl"
-                          className="shrink-0 max-md:hidden mt-4"
+                          className="shrink-0 max-md:hidden"
                         />
                       </div>
 
@@ -181,7 +185,7 @@ function Movie() {
                         </div>
                       )}
 
-                      <div className="flex flex-wrap gap-[10px]">
+                      <div className="flex flex-wrap gap-3 my-4">
                         {movie.tags
                           ?.filter(
                             (tag: string) =>
