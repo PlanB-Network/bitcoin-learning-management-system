@@ -29,6 +29,7 @@ export const getUserRolesQuery = (
       a.email,
       a.contributor_id,
       a.role,
+      a.permissions,
       a.professor_id,
       COALESCE(p.name, '') as professor_name
     FROM users.accounts a

@@ -1,7 +1,7 @@
 /// <reference types="mocha" />
 
 import assert from 'node:assert';
-import { UserRole } from '@blms/constants';
+import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from './auth.js';
 
 describe('Shared hasRole function', () => {
@@ -73,5 +73,35 @@ describe('Shared hasRole function', () => {
     assert.equal(true, canAccessStudent({ role: UserRole.Professor }));
     assert.equal(true, canAccessStudent({ role: UserRole.Admin }));
     assert.equal(true, canAccessStudent({ role: UserRole.Superadmin }));
+  });
+
+  it('admin can access everything if no specific permissions are required', () => {
+    const admin = { role: UserRole.Admin, permissions: [] };
+    assert.equal(true, canAccess(UserRole.Student)(admin));
+    assert.equal(true, canAccess(UserRole.Community)(admin));
+    assert.equal(true, canAccess(UserRole.Professor)(admin));
+    assert.equal(true, canAccess(UserRole.Admin)(admin));
+    assert.equal(false, canAccess(UserRole.Superadmin)(admin));
+  });
+
+  it('admin can access everything if user has required permissions', () => {
+    const admin = {
+      role: UserRole.Admin,
+      permissions: [UserPermission.Coupons, UserPermission.Career],
+    };
+
+    assert(canAccess(UserRole.Student, UserPermission.Coupons)(admin));
+    assert(canAccess(UserRole.Student, [UserPermission.Coupons])(admin));
+
+    assert(!canAccess(UserRole.Student, UserPermission.Bookings)(admin));
+    assert(!canAccess(UserRole.Student, [UserPermission.Bookings])(admin));
+
+    assert.equal(
+      false,
+      canAccess(UserRole.Student, [
+        UserPermission.Bookings,
+        UserPermission.Career,
+      ])(admin),
+    );
   });
 });

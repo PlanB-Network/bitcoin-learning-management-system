@@ -1,10 +1,14 @@
-import { UserRole } from '@blms/constants';
+import { type UserPermission, UserRole } from '@blms/constants';
 
 interface ObjectWithRole {
   role: UserRole; // Student, Community, Professor, Admin, Superadmin
+  permissions?: UserPermission[] | null;
 }
 
-export const canAccess = (requiredRole: UserRole) => {
+export const canAccess = (
+  requiredRole: UserRole,
+  requiredPermissions?: UserPermission | UserPermission[] | null,
+) => {
   return (user?: ObjectWithRole | null) => {
     if (!user || !user.role) {
       return false;
@@ -18,9 +22,36 @@ export const canAccess = (requiredRole: UserRole) => {
     }
 
     // Admin can access everything except superadmin
-    // // TODO Apply fine-grained access control
     if (role === UserRole.Admin) {
-      return requiredRole !== UserRole.Superadmin;
+      // Admin can't access superadmin resources
+      if (requiredRole === UserRole.Superadmin) {
+        return false;
+      }
+
+      // If no specific permissions are required, then admin can access everything except superadmin
+      if (
+        !requiredPermissions ||
+        (typeof requiredPermissions === 'string'
+          ? !requiredPermissions
+          : !requiredPermissions.length)
+      ) {
+        return true;
+      }
+
+      // Reject if user has no permissions
+      if (!user.permissions?.length) {
+        return false;
+      }
+
+      // Check if user has required permission (string)
+      if (typeof requiredPermissions === 'string') {
+        return user.permissions.includes(requiredPermissions);
+      }
+
+      // Check if user has required permissions (array)
+      return requiredPermissions.every((permission) =>
+        user.permissions!.includes(permission),
+      );
     }
 
     // Other roles can only access their own resources or student resources

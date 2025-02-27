@@ -43,6 +43,7 @@ export const userRouter = createTRPCRouter({
     return {
       uid: session.uid,
       role: session.role,
+      permissions: session.permissions ?? null,
     };
   }),
 

@@ -22,6 +22,7 @@ import {
   JobCategory,
   JobName,
   TokenType,
+  UserPermission,
   UserRole,
 } from '@blms/constants';
 
@@ -48,6 +49,10 @@ export const content = pgSchema('content');
 // ACCOUNTS
 
 export const userRoleEnum = pgNativeEnum('user_role', UserRole);
+export const userPermissionsEnum = pgNativeEnum(
+  'user_permission',
+  UserPermission,
+);
 
 export const usersAccounts = users.table('accounts', (t) => ({
   uid: t.uuid().defaultRandom().primaryKey().notNull(),
@@ -57,6 +62,7 @@ export const usersAccounts = users.table('accounts', (t) => ({
   picture: t.uuid(),
   email: t.varchar({ length: 255 }).unique(),
   role: userRoleEnum().default(UserRole.Student).notNull(),
+  permissions: userPermissionsEnum().array().default([]),
   lastEmailChangeRequest: t.timestamp({ withTimezone: true }),
   currentEmailChecked: t.boolean().default(false).notNull(),
   passwordHash: t.varchar({ length: 255 }),

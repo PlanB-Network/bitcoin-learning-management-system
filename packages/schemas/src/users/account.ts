@@ -1,7 +1,7 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import { UserRole } from '@blms/constants';
+import { UserPermission, UserRole } from '@blms/constants';
 import {
   usersAccounts,
   usersApiKeys,
@@ -9,6 +9,7 @@ import {
 } from '@blms/database';
 
 export const userRoleSchema = z.nativeEnum(UserRole);
+export const userPermissionSchema = z.nativeEnum(UserPermission);
 
 export const userAccountSchema = createSelectSchema(usersAccounts);
 
@@ -23,6 +24,7 @@ export const userDetailsSchema = userAccountSchema
     certificateName: true,
     professorId: true,
     contributorId: true,
+    permissions: true,
   })
   .merge(
     z.object({
@@ -41,6 +43,7 @@ export const userRolesSchema = userAccountSchema
     contributorId: true,
     role: true,
     professorId: true,
+    permissions: true,
   })
   .merge(
     z.object({

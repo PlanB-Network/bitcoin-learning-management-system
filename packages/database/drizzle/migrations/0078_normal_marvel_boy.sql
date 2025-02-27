@@ -1,0 +1,2 @@
+CREATE TYPE "public"."user_permission" AS ENUM('admin:bookings', 'admin:career', 'admin:courses', 'admin:quizzes', 'admin:coupons', 'admin:tutorials');--> statement-breakpoint
+ALTER TABLE "users"."accounts" ADD COLUMN "permissions" "user_permission"[] DEFAULT '{}';
