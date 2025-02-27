@@ -13,14 +13,13 @@ export enum UserRole {
 }
 
 /**
- * Fine-grained access control over
- *  resources for admin users.
+ * Fine-grained access control over resources for admin users.
  */
-export enum ResourceAccess {
-  Bookings = 'bookings',
-  Career = 'career',
-  Courses = 'courses',
-  Quizzes = 'quizzes',
-  Coupons = 'coupons',
-  Tutorials = 'tutorials',
+export enum UserPermission {
+  Bookings = 'admin:bookings',
+  Career = 'admin:career',
+  Courses = 'admin:courses',
+  Quizzes = 'admin:quizzes',
+  Coupons = 'admin:coupons',
+  Tutorials = 'admin:tutorials',
 }

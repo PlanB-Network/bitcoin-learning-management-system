@@ -1,7 +1,7 @@
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-import { UserRole } from '@blms/constants';
+import { UserPermission, UserRole } from '@blms/constants';
 import {
   usersAccounts,
   usersApiKeys,
@@ -9,6 +9,7 @@ import {
 } from '@blms/database';
 
 export const userRoleSchema = z.nativeEnum(UserRole);
+export const userPermissionSchema = z.nativeEnum(UserPermission);
 
 export const userAccountSchema = createSelectSchema(usersAccounts);
 
