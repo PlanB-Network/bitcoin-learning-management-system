@@ -241,7 +241,7 @@ function DashboardProfessorProfile() {
               title={t('dashboard.teacher.profile.makeModifications')}
               titleLink="https://github.com/PlanB-Network/bitcoin-educational-content"
               text="dashboard.teacher.profile.tutorialModification"
-              textLink="/tutorials/others/create-teacher-profile"
+              textLink="/tutorials/others/contribution/8ba9ba49-8fac-437a-a435-c38eebc8f8a4"
             />
           </TabsContent>
 
