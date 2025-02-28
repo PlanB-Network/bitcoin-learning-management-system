@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, cn } from '@blms/ui';
+import { Button, Loader, cn } from '@blms/ui';
 
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -11,9 +11,11 @@ import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import SearchErrorIcon from '#src/assets/icons/search-error.svg';
 
+import GlossaryMarkdownBody from '#src/components/Markdown/glossary-markdown-body.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { cdnUrl } from '#src/utils/index.ts';
 import { useDebounce } from '#src/utils/search.ts';
 import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
@@ -47,6 +49,15 @@ function SearchPage() {
       getNextPageParam: (lastPage) => lastPage.nextCursor,
       enabled: debouncedQuery.length > 0, // Only fetch when query has input
     },
+  );
+
+  const { data: glossaryWords } = trpc.content.getGlossaryWords.useQuery({
+    language: i18n.language ?? 'en',
+  });
+
+  // Get glossary word if exact match from query
+  const glossaryWord = glossaryWords?.find(
+    (word) => word.term.toLowerCase() === query.toLowerCase(),
   );
 
   const lastPage = search.data?.pages[search.data.pages.length - 1];
@@ -124,6 +135,20 @@ function SearchPage() {
             <p className="text-center text-xl mt-16">
               {t('search.startSearch')}
             </p>
+          </div>
+        )}
+
+        {query.length > 0 && glossaryWord && (
+          <div className="flex flex-col items-center justify-center w-full mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-8 md:mb-16 px-2">
+            <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-2 md:mb-5">
+              {glossaryWord?.term}
+            </h2>
+            <Suspense fallback={<Loader size={'s'} />}>
+              <GlossaryMarkdownBody
+                content={glossaryWord?.definition || ''}
+                assetPrefix={cdnUrl(glossaryWord?.path || '')}
+              />
+            </Suspense>
           </div>
         )}
 
