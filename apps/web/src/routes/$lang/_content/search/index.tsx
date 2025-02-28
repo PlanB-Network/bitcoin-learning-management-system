@@ -139,7 +139,7 @@ function SearchPage() {
         )}
 
         {query.length > 0 && glossaryWord && (
-          <div className="flex flex-col items-center justify-center w-full mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-8 md:mb-16 px-2">
+          <div className="mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-8 md:mb-16 px-2">
             <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-2 md:mb-5">
               {glossaryWord?.term}
             </h2>
