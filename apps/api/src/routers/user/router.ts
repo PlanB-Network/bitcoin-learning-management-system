@@ -1,12 +1,12 @@
-import { SortDirection, UserRole } from '@blms/constants';
+import { SortDirection, UserPermission, UserRole } from '@blms/constants';
 import { userDetailsSchema, userRolesSchema } from '@blms/schemas';
 import {
   createChangeCertificateName,
   createChangeDisplayName,
   createChangeEmailConfirmation,
   createChangePassword,
+  createChangePermission,
   createChangeRole,
-  createChangeRoleToProfessor,
   createEmailValidationToken,
   createGetTokenInfo,
   createGetUserDetails,
@@ -90,21 +90,22 @@ export const userRouter = createTRPCRouter({
       }),
     ),
 
-  changeRoleToAdmin: superadminProcedure
+  changePermission: superadminProcedure
     .input(
       z.object({
         uid: z.string(),
+        permissions: z.nativeEnum(UserPermission).array(),
       }),
     )
     .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
-      createChangeRole(ctx.dependencies)({
+      createChangePermission(ctx.dependencies)({
         uid: input.uid,
-        role: UserRole.Admin,
+        permissions: input.permissions,
       }),
     ),
 
-  changeRoleToProfessor: superadminProcedure
+  changeRole: superadminProcedure
     .input(
       z.object({
         uid: z.string(),
@@ -114,7 +115,7 @@ export const userRouter = createTRPCRouter({
     )
     .output<Parser<void>>(z.void())
     .mutation(({ ctx, input }) =>
-      createChangeRoleToProfessor(ctx.dependencies)({
+      createChangeRole(ctx.dependencies)({
         uid: input.uid,
         role: input.role ?? UserRole.Professor,
         professorId: input.professorId,

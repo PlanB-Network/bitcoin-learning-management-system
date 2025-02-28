@@ -6,7 +6,7 @@ import { FiTrash2 } from 'react-icons/fi';
 import { MdCheck, MdKeyboardArrowDown } from 'react-icons/md';
 import { TbArrowsSort } from 'react-icons/tb';
 
-import { SortDirection, UserRole } from '@blms/constants';
+import { SortDirection, UserPermission, UserRole } from '@blms/constants';
 import {
   Button,
   Dialog,
@@ -39,14 +39,6 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-type Permission =
-  | 'bookings'
-  | 'careers'
-  | 'courses'
-  | 'quizzes'
-  | 'reduction codes'
-  | 'tutorials';
-
 export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   const isMobile = useSmaller('md');
   const { i18n } = useTranslation();
@@ -63,8 +55,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   }>({});
 
   const [selectedPermissions, setSelectedPermissions] = useState<{
-    // TODO: replace with permissions enum when available
-    [userId: string]: Permission[];
+    [userId: string]: UserPermission[];
   }>({});
 
   const [editingUsers, setEditingUsers] = useState<{
@@ -105,8 +96,18 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
     language: i18n.language,
   });
 
-  const { mutate: mutateChangeRoleToProfessor, isPending } =
-    trpc.user.changeRoleToProfessor.useMutation({
+  const { mutate: mutateChangeRole, isPending: isPendingRole } =
+    trpc.user.changeRole.useMutation({
+      onSuccess: () => {
+        refetch();
+      },
+      onError(error) {
+        console.log(error.message);
+      },
+    });
+
+  const { mutate: mutateChangePermission, isPending: isPendingPermission } =
+    trpc.user.changePermission.useMutation({
       onSuccess: () => {
         refetch();
       },
@@ -165,7 +166,10 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
     }));
   };
 
-  const handleSelectedPermission = (userId: string, permission: Permission) => {
+  const handleSelectedPermission = (
+    userId: string,
+    permission: UserPermission,
+  ) => {
     setSelectedPermissions((prev) => {
       const userPermissions = prev[userId] || [];
       const newPermissions = userPermissions.includes(permission)
@@ -192,7 +196,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
         selectedRole ||
         (user.role === UserRole.Professor && selectedProfessors[user.uid])
       ) {
-        mutateChangeRoleToProfessor({
+        mutateChangeRole({
           uid: user.uid,
           role: newRole,
           professorId: shouldAssignProfessor
@@ -213,6 +217,33 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   };
 
   const toggleUserEditMode = (userId: string) => {
+    if (!editingUsers[userId]) {
+      for (const currentUser of users) {
+        if (currentUser.uid === userId) {
+          setSelectedPermissions((prev) => {
+            const newPermissions = currentUser.permissions
+              ? currentUser.permissions
+              : [];
+
+            return {
+              ...prev,
+              [userId]: newPermissions,
+            };
+          });
+        }
+      }
+    }
+
+    if (editingUsers[userId]) {
+      mutateChangePermission({
+        uid: userId,
+        permissions: selectedPermissions[userId]
+          ? selectedPermissions[userId]
+          : [],
+      });
+      refetch();
+    }
+
     setEditingUsers((prev) => ({
       ...prev,
       [userId]: !prev[userId],
@@ -221,8 +252,8 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
 
   return (
     <>
-      {isPending && <Loader size={'s'} />}
-      {!isPending && (
+      {(isPendingRole || isPendingPermission) && <Loader size={'s'} />}
+      {!(isPendingRole || isPendingPermission) && (
         <>
           <div className="relative w-full max-w-[600px] mt-10 mb-5">
             <input
@@ -506,7 +537,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                             size={isMobile ? 'xs' : 's'}
                             variant={'outline'}
                             onClick={() => {
-                              mutateChangeRoleToProfessor({
+                              mutateChangeRole({
                                 uid: user.uid,
                                 role: UserRole.Student,
                                 professorId: null,
@@ -550,47 +581,49 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                                 {t('dashboard.adminPanel.hasAccessTo')}
                               </span>
                               <div className="flex flex-col">
-                                {[
-                                  'bookings',
-                                  'careers',
-                                  'courses',
-                                  'quizzes',
-                                  'reduction codes',
-                                  'tutorials',
-                                ].map((permission) => (
-                                  <label
-                                    key={permission}
-                                    className="flex items-center gap-2"
-                                  >
-                                    <div className="grid place-items-center">
-                                      <input
-                                        type="checkbox"
-                                        checked={
-                                          selectedPermissions[
-                                            user.uid
-                                          ]?.includes(
-                                            permission as Permission,
-                                          ) ?? false
-                                        }
-                                        onChange={() =>
-                                          handleSelectedPermission(
-                                            user.uid,
-                                            permission as Permission,
-                                          )
-                                        }
-                                        disabled={!editingUsers[user.uid]}
-                                        className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
-                                      />
-                                      <MdCheck
-                                        size={12}
-                                        className="col-start-1 row-start-1 text-transparent peer-checked:text-white shrink-0 pointer-events-none"
-                                      />
-                                    </div>
-                                    <span className="text-black capitalize">
-                                      {permission}
-                                    </span>
-                                  </label>
-                                ))}
+                                {Object.values(UserPermission).map(
+                                  (permission) => (
+                                    <label
+                                      key={permission}
+                                      className="flex items-center gap-2"
+                                    >
+                                      <div className="grid place-items-center">
+                                        <input
+                                          type="checkbox"
+                                          checked={
+                                            editingUsers[user.uid]
+                                              ? selectedPermissions[
+                                                  user.uid
+                                                ] !== undefined &&
+                                                selectedPermissions[
+                                                  user.uid
+                                                ].includes(
+                                                  permission as UserPermission,
+                                                )
+                                              : user.permissions?.includes(
+                                                  permission as UserPermission,
+                                                )
+                                          }
+                                          onChange={() =>
+                                            handleSelectedPermission(
+                                              user.uid,
+                                              permission as UserPermission,
+                                            )
+                                          }
+                                          disabled={!editingUsers[user.uid]}
+                                          className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
+                                        />
+                                        <MdCheck
+                                          size={12}
+                                          className="col-start-1 row-start-1 text-transparent peer-checked:text-white shrink-0 pointer-events-none"
+                                        />
+                                      </div>
+                                      <span className="text-black capitalize">
+                                        {permission.split(':').pop()}
+                                      </span>
+                                    </label>
+                                  ),
+                                )}
                               </div>
                             </div>
                           )}
@@ -602,10 +635,6 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                               editingUsers[user.uid] ? 'primary' : 'outline'
                             }
                             onClick={() => {
-                              // TODO: save permissions
-                              // if (editingUsers[user.uid]) {
-                              // }
-
                               toggleUserEditMode(user.uid);
                             }}
                             className={cn(
@@ -635,7 +664,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                       <TableCell>
                         <RemoveTeacherDialog
                           onConfirm={() => {
-                            mutateChangeRoleToProfessor({
+                            mutateChangeRole({
                               uid: user.uid,
                               role: UserRole.Student,
                               professorId: null,
@@ -671,7 +700,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                       handleSelectedRole={handleSelectedRole}
                       handleSelectedProfessor={handleSelectedProfessor}
                       handleUserRoleChange={handleUserRoleChange}
-                      mutateChangeRoleToProfessor={mutateChangeRoleToProfessor}
+                      mutateChangeRole={mutateChangeRole}
                       refetch={refetch}
                     />
                   ) : (
@@ -702,7 +731,7 @@ const StudentMobileCard = ({
   handleSelectedRole,
   handleSelectedProfessor,
   handleUserRoleChange,
-  mutateChangeRoleToProfessor,
+  mutateChangeRole,
   refetch,
 }: {
   user: UserRoles;
@@ -713,7 +742,7 @@ const StudentMobileCard = ({
   handleSelectedRole: (userId: string, role: UserRole) => void;
   handleSelectedProfessor: (userId: string, professorId: string) => void;
   handleUserRoleChange: (user: UserRoles) => void;
-  mutateChangeRoleToProfessor: (options: {
+  mutateChangeRole: (options: {
     uid: string;
     role: UserRole;
     professorId: string | null;
@@ -818,7 +847,7 @@ const StudentMobileCard = ({
         <Button
           variant="outline"
           onClick={() => {
-            mutateChangeRoleToProfessor({
+            mutateChangeRole({
               uid: user.uid,
               role: UserRole.Student,
               professorId: null,
@@ -845,7 +874,10 @@ const AdminMobileCard = ({
   user: UserRoles;
   editingUsers: { [userId: string]: boolean };
   selectedPermissions: { [userId: string]: string[] };
-  handleSelectedPermission: (userId: string, permission: Permission) => void;
+  handleSelectedPermission: (
+    userId: string,
+    permission: UserPermission,
+  ) => void;
   toggleUserEditMode: (userId: string) => void;
 }) => {
   return (
@@ -864,27 +896,25 @@ const AdminMobileCard = ({
       ) : (
         <div className="flex flex-col gap-2">
           <div className="flex flex-col pl-2 gap-2">
-            {[
-              'bookings',
-              'careers',
-              'courses',
-              'quizzes',
-              'reduction codes',
-              'tutorials',
-            ].map((permission) => (
+            {Object.values(UserPermission).map((permission) => (
               <label key={permission} className="flex items-center gap-2">
                 <div className="grid place-items-center">
                   <input
                     type="checkbox"
                     checked={
-                      selectedPermissions[user.uid]?.includes(
-                        permission as Permission,
-                      ) ?? false
+                      editingUsers[user.uid]
+                        ? selectedPermissions[user.uid] !== undefined &&
+                          selectedPermissions[user.uid].includes(
+                            permission as UserPermission,
+                          )
+                        : user.permissions?.includes(
+                            permission as UserPermission,
+                          )
                     }
                     onChange={() =>
                       handleSelectedPermission(
                         user.uid,
-                        permission as Permission,
+                        permission as UserPermission,
                       )
                     }
                     disabled={!editingUsers[user.uid]}
@@ -896,7 +926,7 @@ const AdminMobileCard = ({
                   />
                 </div>
                 <span className="text-black capitalize font-normal">
-                  {permission}
+                  {permission.split(':').pop()}
                 </span>
               </label>
             ))}
@@ -908,7 +938,9 @@ const AdminMobileCard = ({
         {user.role !== UserRole.Superadmin && (
           <Button
             variant={editingUsers[user.uid] ? 'primary' : 'outline'}
-            onClick={() => toggleUserEditMode(user.uid)}
+            onClick={() => {
+              toggleUserEditMode(user.uid);
+            }}
             className="flex items-center gap-2.5"
           >
             {editingUsers[user.uid] ? (

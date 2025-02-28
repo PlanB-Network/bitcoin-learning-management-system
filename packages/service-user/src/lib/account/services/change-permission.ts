@@ -2,20 +2,17 @@
 import { TRPCError } from '@trpc/server';
 
 import { firstRow } from '@blms/database';
-
-import type { UserRole } from '@blms/constants';
 import type { Dependencies } from '../../../dependencies.js';
-import { changeRoleQuery } from '../queries/change-role.js';
+import { changePermissionQuery } from '../queries/change-permission.js';
 import { getUserByIdQuery } from '../queries/get-user.js';
 
-interface ChangeRoleOptions {
+interface ChangePermissionOptions {
   uid: string;
-  role: UserRole;
-  professorId?: string | null;
+  permissions: string[];
 }
 
-export const createChangeRole = ({ postgres }: Dependencies) => {
-  return async ({ uid, role, professorId = null }: ChangeRoleOptions) => {
+export const createChangePermission = ({ postgres }: Dependencies) => {
+  return async ({ uid, permissions }: ChangePermissionOptions) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -25,6 +22,6 @@ export const createChangeRole = ({ postgres }: Dependencies) => {
       });
     }
 
-    await postgres.exec(changeRoleQuery(uid, role, professorId));
+    await postgres.exec(changePermissionQuery(uid, permissions));
   };
 };
