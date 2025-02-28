@@ -25,7 +25,7 @@ const searchCategoryMap: Record<string, string[] | null> = {
   professors: ['professor'],
   newsletters: ['newsletter'],
   youtube_channels: ['youtube_channel'],
-  conference_replays: ['conference_replay'],
+  conference_replays: ['conference', 'conference_replay'],
   lecture_replays: ['lecture_replay'],
   projects: ['project'],
   all: null,

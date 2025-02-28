@@ -187,10 +187,10 @@ const getYoutubeChannelsQuery = () => sql<Searchable<Language>[]>`
     JOIN content.resources r ON r.id = resource_id
 `;
 
-// Resource - Conference Replays
-const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
+// Resource - Conference
+const getConferenceQuery = () => sql<Searchable<Language>[]>`
   SELECT
-    'conference_replay' as type,
+    'conference' as type,
     LOWER(language) as language,
     conferences.name as title,
     conferences.description as body,
@@ -198,6 +198,25 @@ const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
   FROM content.conferences as conferences
     JOIN content.resources as r ON r.id = conferences.resource_id,
   UNNEST(conferences.languages) as language
+`;
+
+// Resource - Conference Replays
+const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'conference_replay' as type,
+    LOWER(language) as language,
+    c.name as conferenceName,
+    c.resource_id as conferenceId,
+    cs.name as stageName,
+    cs.stage_id as stageId,
+    CONCAT(c.name, ' - ', csv.name) as title,
+    regexp_replace(csv.raw_content, '!\\[video\\]\\(.*\\)\\n?', '') as body,
+    CONCAT('/', LOWER(language), '/', r.path, '-', c.resource_id) as link
+  FROM content.conferences_stages_videos csv
+    JOIN content.conferences_stages cs ON cs.stage_id = csv.stage_id
+    JOIN content.conferences c ON c.resource_id = cs.conference_id
+    JOIN content.resources r ON r.id = c.resource_id,
+  UNNEST(c.languages) as language
 `;
 
 // Resource - Projects
@@ -298,6 +317,7 @@ export const createIndexContent = ({ postgres, typesense }: Dependencies) => {
       ...(await postgres.exec(getNewslettersQuery())),
       ...(await postgres.exec(getEventsQuery())),
       ...(await postgres.exec(getYoutubeChannelsQuery())),
+      ...(await postgres.exec(getConferenceQuery())),
       ...(await postgres.exec(getConferenceReplaysQuery())),
       ...(await postgres.exec(getProjectsQuery())),
       ...(await postgres.exec(getLectureReplaysQuery())),
