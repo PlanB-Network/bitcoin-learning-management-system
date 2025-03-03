@@ -697,7 +697,13 @@
       "selectProfessor": "講師を選ぶ",
       "tutorialAnalytics": "チュートリアル分析",
       "tutorialAnalyticsDescription": "ここでは、プラットフォーム上のすべてのチュートリアルをチェックし、比較することができます。",
-      "tutorialsManagementPanel": "チュートリアル管理パネル"
+      "tutorialsManagementPanel": "チュートリアル管理パネル",
+      "accessGranted": "アクセス許可",
+      "coursesIndexes": "コース索引",
+      "deleteRole": "役割の削除",
+      "editRole": "役割の編集",
+      "hasAccessTo": "以下へのアクセス：",
+      "selectRole": "役割を選択"
     },
     "backToDashboard": "ダッシュボードに戻る",
     "studentDashboard": "学生ダッシュボード"
@@ -1229,7 +1235,8 @@
     "user": "ユーザー",
     "username": "ユーザー名",
     "viewMore": "もっと見る",
-    "yes": "はい"
+    "yes": "はい",
+    "save": "保存"
   },
   "conferences": {
     "details": {
@@ -1386,7 +1393,8 @@
     "resultInfo": "{{time}}㎳の間に{{count}}個の結果が見つかりました",
     "results": "結果",
     "resultsRemaining": "{{count}}の残り結果",
-    "searchResult": "検索結果"
+    "searchResult": "検索結果",
+    "conference": "カンファレンス"
   },
   "filters": {
     "resources": "リソース",

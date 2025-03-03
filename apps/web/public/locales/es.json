@@ -568,7 +568,12 @@
         "devOpsEngineer": "Ingeniero DevOps",
         "frontendEngineer": "Ingeniero frontend",
         "eventCoordinator": "Coordinador de eventos",
-        "fullStackDeveloper": "Desarrollador Full Stack"
+        "fullStackDeveloper": "Desarrollador Full Stack",
+        "publicRelationsManager": "Gerente de Relaciones Públicas",
+        "researcher": "Investigador",
+        "sales": "Ventas",
+        "riskAnalyst": "Analista de Riesgos",
+        "socialMediaManager": "Administrador de Redes Sociales"
       },
       "applicationStatus": "Tu aplicación es",
       "availability": "Tu disponibilidad",
@@ -629,7 +634,26 @@
       "cvUploadSubtitle": "Sube tu CV para mostrar tus habilidades y experiencias a posibles empleadores.",
       "deleteCareerProfile": "Eliminar perfil profesional",
       "expectedSalaryPlaceholder": "Salario mensual: 2.5mil neto",
-      "fileTooLarge": "El archivo seleccionado es demasiado grande"
+      "fileTooLarge": "El archivo seleccionado es demasiado grande",
+      "personalInformation": "Información personal",
+      "roleLevelSubLabel": "Selecciona el nivel que mejor corresponda a tus habilidades.",
+      "roleLevels": {
+        "student": "Estudiante (0 años)",
+        "junior": "Junior (1 a 3 años)",
+        "mid": "Nivel medio (3 a 5 años)",
+        "senior": "Senior (5+ años)"
+      },
+      "personalInformationSubtitle": "Por favor añade tu nombre completo y lugar de residencia.",
+      "provideValidEmail": "Por favor proporciona un email valido.",
+      "remoteWorkPreference": "Existe la posibilidad de trabajar de manera remota?",
+      "remoteWorkPreferences": {
+        "no": "Preferiría no hacerlo",
+        "sometimes": "De vez en cuando, por qué no",
+        "yes": "Sí, con gusto"
+      },
+      "roleRequired": "Añade al menos un rol.",
+      "seeOrEditProfile": "Ver o editar perfil",
+      "roleLevel": "Nivel de experiencia"
     }
   },
   "events": {
@@ -1065,7 +1089,12 @@
     "unavailable": "No disponible",
     "user": "Usuario",
     "viewMore": "Ver más",
-    "socialStudies": "Estudios sociales"
+    "socialStudies": "Estudios sociales",
+    "telegram": "Telegram",
+    "save": "Guardar",
+    "submit": "Enviar",
+    "search": "Buscar",
+    "yes": "Sí"
   },
   "conferences": {
     "addConferences": "Siéntete de agregar cualquier conferencia faltante a través de este repositorio de <0>Github</0>.",
