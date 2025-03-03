@@ -52,7 +52,7 @@
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
     "backToLogin": "",
-    "backToHome": "",
+    "backToHome": "Zpět domů",
     "tryAgain": "",
     "invalidToken": "",
     "checkingToken": "",
