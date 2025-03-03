@@ -170,7 +170,7 @@ const getEventsQuery = () => sql<Searchable<Language>[]>`
     'event' as type,
     'en' as language,
     name as title,
-    description as body,
+    COALESCE(description, '') as body,
     website_url as link
   FROM content.events
 `;
@@ -209,9 +209,11 @@ const getConferenceReplaysQuery = () => sql<Searchable<Language>[]>`
     c.resource_id as conferenceId,
     cs.name as stageName,
     cs.stage_id as stageId,
+    csv.name as videoName,
+    csv.video_id as videoId,
     CONCAT(c.name, ' - ', csv.name) as title,
     regexp_replace(csv.raw_content, '!\\[video\\]\\(.*\\)\\n?', '') as body,
-    CONCAT('/', LOWER(language), '/', r.path, '-', c.resource_id) as link
+    CONCAT('/', LOWER(language), '/', r.path, '-', c.resource_id, '?stage=', cs.stage_id, '&video=', csv.video_id) as link
   FROM content.conferences_stages_videos csv
     JOIN content.conferences_stages cs ON cs.stage_id = csv.stage_id
     JOIN content.conferences c ON c.resource_id = cs.conference_id
@@ -238,7 +240,7 @@ const getLectureReplaysQuery = () => sql<Searchable<Language>[]>`
     'lecture_replay' as type,
     'en' as language,
     name as title,
-    description as body,
+    COALESCE(description, '')  as body,
     CONCAT('/', 'en', '/resources/lectures/', id) as link
   FROM content.events
     WHERE events.type = 'lecture'
@@ -288,7 +290,13 @@ const createIngestData =
           locale: ISO_639_LANGUAGES[part.language],
         })),
       )
-      .catch((error) => console.error('[SEARCH] Import failed:', error));
+      .catch((error) => {
+        console.error('[SEARCH] Import failed:', error.message);
+        console.error(
+          '[SEARCH] Import result:',
+          error.importResults.filter((r: any) => !r.success),
+        );
+      });
   };
 
 export const createIndexContent = ({ postgres, typesense }: Dependencies) => {
