@@ -23,7 +23,7 @@ import { BTC402ID, addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
 
-import { UserRole } from '@blms/constants';
+import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { TbBriefcase2 } from 'react-icons/tb';
 import { MenuItem } from './menu-item.tsx';
@@ -235,30 +235,36 @@ export const MenuDashboard = ({
                 />
               </Link>
             )}
-            <Link to={adminTutorialsPath}>
-              <MenuItem
-                text={t('words.tutorials')}
-                icon={<LuPencilRuler size={24} />}
-                active={pathname.includes(adminTutorialsPath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
-            <Link to={adminBookingsPath}>
-              <MenuItem
-                text={t('dashboard.adminPanel.bookings')}
-                icon={<IoTicketOutline size={24} />}
-                active={pathname.includes(adminBookingsPath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
-            <Link to={adminCareersPath}>
-              <MenuItem
-                text={t('dashboard.adminPanel.careers.careers')}
-                icon={<TbBriefcase2 size={24} />}
-                active={pathname.includes(adminCareersPath)}
-                onClick={toggleMobileMenu}
-              />
-            </Link>
+            {canAccess(UserRole.Admin, UserPermission.Tutorials)(user) && (
+              <Link to={adminTutorialsPath}>
+                <MenuItem
+                  text={t('words.tutorials')}
+                  icon={<LuPencilRuler size={24} />}
+                  active={pathname.includes(adminTutorialsPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+            )}
+            {canAccess(UserRole.Admin, UserPermission.Bookings)(user) && (
+              <Link to={adminBookingsPath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.bookings')}
+                  icon={<IoTicketOutline size={24} />}
+                  active={pathname.includes(adminBookingsPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+            )}
+            {canAccess(UserRole.Admin, UserPermission.Career)(user) && (
+              <Link to={adminCareersPath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.careers.careers')}
+                  icon={<TbBriefcase2 size={24} />}
+                  active={pathname.includes(adminCareersPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+            )}
           </>
         )}
 
