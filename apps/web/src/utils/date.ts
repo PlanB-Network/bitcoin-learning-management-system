@@ -66,6 +66,7 @@ export function formatTime(date: Date, timezone?: string): string {
 
   return timeFormatter.format(date);
 }
+
 export function addMinutesToDate(originalDate: Date, minutes: number) {
   const newDate = new Date(originalDate);
   newDate.setTime(newDate.getTime() + minutes * 60 * 1000);
@@ -81,9 +82,9 @@ export const getDateString = (
     return '';
   }
 
-  const sameDay = startDate.toDateString() === endDate.toDateString();
-  const sameMonth = startDate.getMonth() === endDate.getMonth();
-  const sameYear = startDate.getFullYear() === endDate.getFullYear();
+  const sameDay = isSameDay(startDate, endDate, timezone);
+  const sameMonth = isSameMonth(startDate, endDate, timezone);
+  const sameYear = isSameYear(startDate, endDate, timezone);
 
   if (sameDay) return formatDate(startDate, timezone, true, true);
 
@@ -181,4 +182,52 @@ export const getYear = (date: Date, locale = 'en-US'): string => {
   return new Intl.DateTimeFormat(locale, {
     year: 'numeric',
   }).format(date);
+};
+
+export const isSameDay = (
+  startDate: Date,
+  endDate: Date,
+  timezone?: string,
+) => {
+  function formatDate(date: Date): string {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(date);
+  }
+
+  return formatDate(startDate) === formatDate(endDate);
+};
+
+export const isSameMonth = (
+  startDate: Date,
+  endDate: Date,
+  timezone?: string,
+) => {
+  function formatDate(date: Date): string {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+      year: 'numeric',
+      month: '2-digit',
+    }).format(date);
+  }
+
+  return formatDate(startDate) === formatDate(endDate);
+};
+
+export const isSameYear = (
+  startDate: Date,
+  endDate: Date,
+  timezone?: string,
+) => {
+  function formatDate(date: Date): string {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+      year: 'numeric',
+    }).format(date);
+  }
+
+  return formatDate(startDate) === formatDate(endDate);
 };
