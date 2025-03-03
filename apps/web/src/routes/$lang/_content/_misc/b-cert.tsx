@@ -183,7 +183,7 @@ const OrganizeDialog = () => {
           </Button>
           <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
             <a
-              href="https://t.me/B_CERT_test"
+              href="https://t.me/+PViWTu5CctQ1ZTc8"
               target="_blank"
               rel="noopener noreferrer"
               className="w-fit flex items-center gap-2.5"
