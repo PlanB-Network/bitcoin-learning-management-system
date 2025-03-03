@@ -35,7 +35,7 @@
       "usernameTooShort": "Nazwa użytkownika musi zawierać co najmniej 5 znaków.",
       "displayNameTooShort": "Nazwa użytkownika musi zawierać co najmniej 2 znaki.",
       "invalidCredentials": "Nieprawidłowe dane uwierzytelniające",
-      "emailInvalid": ""
+      "emailInvalid": "Nieważny adres email"
     },
     "forgottenPassword": "Nie pamiętasz hasła?",
     "headerAccountCreated": "Konto zostało stworzone",
@@ -67,7 +67,11 @@
     "tryAgain": "Spróbuj ponownie",
     "confirmation": "Potwierdzenie",
     "displayName": "Nazwa użytkownika",
-    "emailTip": ""
+    "emailTip": "Podanie adresu email nie jest obowiązkowe, ale może się przydać, jeśli zapomnisz swoje hasło!",
+    "dashboardUnlocked": "Twój panel kursanta jest odblokowany!",
+    "didYouKnow": "Wiedziałeś o tym?",
+    "passwordChangedSuccess": "Hasło zostało zmienione pomyślnie",
+    "trackProgress": "Stwórz konto lub login, aby śledzić swoje postępy"
   },
   "bet": {
     "educationalContent": {
@@ -120,7 +124,14 @@
       "buyOnlineCourse": "Kup kurs online",
       "inPersonAccess": "Musisz pobrać swój bilet, aby uzyskać dostęp do zajęć stacjonarnych.",
       "buyInPersonCourse": "Kup kurs stacjonarny",
-      "paidCourse": ""
+      "paidCourse": "Premium",
+      "otherCoursesInterest": "Inne kursy, które mogą cię zainteresować",
+      "pastEditionsRatings": "Oceny poprzednich edycji",
+      "premiumContentNeedsLogin": "Musisz być zalogowany, aby mieć dostęp do tego kursu.",
+      "otherCourses": "Inne kursy",
+      "ledBy": "Ten kurs jest prowadzony przez",
+      "premiumContentNeedsPayment": "Ten kurs jest częścią programu premium.",
+      "premiumContentNeedsPaymentAction": "Przejdź do strony startowej kursu"
     },
     "explorer": {
       "pageDescription": "Akademia Plan B ma na celu uproszczenie edukacji na temat Bitcoina na całym świecie. Oferujemy szeroki zakres kursów zaprojektowanych przez ekspertów z różnych dziedzin, aby wyjaśnić każdy aspekt Bitcoina – w formacie, który najlepiej pomoże Ci zrozumieć to obszerne zagadnienie – nauka we własnym tempie lub w formie cotygodniowych spotkań z prowadzącycm, poziomy od początkującego do eksperta. Duża część naszych kursów jest całkowicie darmowa, aby każdy, gdziekolwiek jest, mógł mieć dostęp do edukacji.",
@@ -257,6 +268,17 @@
       "tryOneMoreTime": "",
       "dontGiveUpTryAgain": "",
       "goodLuck": ""
+    },
+    "conclusion": {
+      "completedChaptersHeadline": "Wszystkie rozdziały są teraz ukończone!",
+      "completedFeedbackHeadline": "Dziękujemy za twoją opinię!\nJest dla nas bardzo ważna, więc naprawdę jesteśmy wdzięczni.",
+      "completedFeedbackSubHeadline": "Możesz edytować swoje oceny i komentarze w dowolnym momencie na swoim pulpicie.",
+      "congratulationsEnd": "Gratulacje, dotarłeś do końca kursu",
+      "finalStep": "To był ostatni krok do tego, aby na swoim pulpicie oznaczyć ten kurs jako ukończony, możesz kontynuować swoją podróż!",
+      "stepsToComplete": "Oto kroki potrzebne do tego, aby na swoim pulpicie oznaczyć ten kurs jako ukończony i móc kontynuować swoją podróż!",
+      "takeFinalExam": "Teraz, kiedy zakończyłeś wszystkie rozdziały, nadszedł czas na podejście do egzaminu końcowego, aby sprawdzić swoją wiedzę.",
+      "unlockFeatures1": "Aby odblokować wszystkie funkcje i śledzić swoje postępy, potrzebujesz konta.",
+      "unlockFeatures2": "Prosimy mieć na uwadze, że nie zbieramy żadnych danych osobowych ani nie używamy plików cookie."
     }
   },
   "dashboard": {
@@ -577,7 +599,7 @@
   },
   "tutorials": {
     "details": {
-      "source": "Original source :",
+      "source": "Źródło oryginalne:",
       "author": "Autor: ",
       "didHelp": "Czy to było pomocne?",
       "writtenBy": "Ten tutorial został napisany przez:"
@@ -821,7 +843,11 @@
     "checkout": "Dowiedz się więcej o Certyfikacie",
     "organizeSubtitle": "Nie jest łatwo sprawić, aby miliard ludzi wziął pomarańczową pigułkę",
     "readChart": "Przeczytaj statut",
-    "tweetText": ""
+    "tweetText": "Cieszę się ze zdobycia certyfikatu ₿-CERT w @planb_network z wynikiem {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
+    "download": "Ściągnij Certyfikat",
+    "organizeSessionHub": "Zorganizuj sesję testową ₿-CERT w swoim lokalnym centrum",
+    "verify": "Sprawdź autentyczność swojego certyfikatu",
+    "organizeSessionConditions": "Przeczytaj <0>statut</0>, aby upewnić się, że spełniasz obowiązkowe warunki, żeby zorganizować test.\nJeśli tak, to z przyjemnością zaplanujemy z tobą sesję egzaminacyjną dla twojej lokalnej społeczności.\nSkontaktuj się z nami w najdogodniejszy dla siebie sposób."
   },
   "glossary": {
     "randomSearch": "Wyszukiwanie losowe",

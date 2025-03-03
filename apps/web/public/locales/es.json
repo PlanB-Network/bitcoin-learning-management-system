@@ -294,7 +294,19 @@
       "courseNotFound": "Curso no encontrado",
       "bCertCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber sido galardonado con el Certificado ₿-CERT.",
       "buttonTextBCert": "Aprende más",
-      "certificatePageOtherCourses": "Otros cursos relacionados"
+      "certificatePageOtherCourses": "Otros cursos relacionados",
+      "successDiplomaTimeStamped": "¡Felicidades! Has aprobado el examen con éxito.\nTu diploma estará disponible en tu panel de control aproximadamente 10 horas después del momento en que hayas realizado el examen. Este retraso se debe a la tecnología de <0>marca de tiempo</0>, que garantiza su autenticidad.",
+      "availableDashboardTimestamped": "Tu diploma está disponible en tu panel de control.",
+      "examNotPassed": "Para obtener el diploma y completar el curso en su totalidad, deberás realizar el examen final y obtener una puntuación superior al 80%. Este diploma tendrá una <0>marca de tiempo</0> para garantizar su autenticidad.",
+      "failedDiploma": "Para obtener el diploma y completar el curso en su totalidad, debes obtener una puntuación superior al 80 % en el examen final. Puedes volver a realizar el examen después de 24 horas.",
+      "skipGoConclusion": "Saltar, ir a la conclusión",
+      "successDiploma": "¡Felicidades! Has aprobado el examen con éxito.\nTu diploma está disponible en tu panel de control estudiantil. Tiene una <0>marca de tiempo</0> para garantizar su autenticidad.",
+      "goConclusion": "Ir a la conclusión",
+      "passExam": "Aprobar el examen",
+      "receiveDiploma": "Recibe tu diploma",
+      "takeExam": "Tomar el examen",
+      "timeStampedNoDot": "marca de tiempo",
+      "timeStamping": "marcado de tiempo"
     },
     "conclusion": {
       "completedChaptersHeadline": "¡Haz completado todos los capítulos!",
@@ -475,7 +487,6 @@
       "bookings": "Reservas",
       "bookingsPanel": "Panel de reservas",
       "confirmRemoval": "Confirmar eliminación",
-      "coursesIds": "Identificaciones de cursos",
       "githubLink": "Enlace de Github",
       "date": "Fecha",
       "downloadList": "Lista de descargas",
@@ -507,7 +518,13 @@
         "profession": "Profesión",
         "seeMore": "Ver más",
         "viewCV": "Ver CV"
-      }
+      },
+      "accessGranted": "Accesso concedido",
+      "coursesIndexes": "Índices de cursos",
+      "deleteRole": "Eliminar rol",
+      "editRole": "Editar rol",
+      "hasAccessTo": "Tiene acceso a:",
+      "selectRole": "Seleccionar rol"
     },
     "backToDashboard": "Volver al panel de control",
     "studentDashboard": "Panel de control del estudiante",
@@ -534,7 +551,24 @@
         "cryptographer": "Criptógrafo",
         "cybersecurity": "Ciberseguridad",
         "customerSuccessManager": "Gerente de Éxito del Cliente",
-        "customerSupportSpecialist": "Especialista en Atención al Cliente"
+        "customerSupportSpecialist": "Especialista en Atención al Cliente",
+        "operationsManager": "Gerente de Operaciones",
+        "protocolEngineer": "Ingeniero de Protocolo",
+        "mobileAppDeveloper": "Desarrollador de Aplicaciones Móviles",
+        "productManager": "Gerente de Producto",
+        "miningEngineer": "Ingeniero de minería",
+        "graphicDesigner": "Diseñador Gráfico",
+        "hrSpecialist": "Especialista en RH",
+        "legalContractSpecialist": "Especialista en Contratos Jurídicos",
+        "logisticManager": "Gerente de Logística",
+        "marketingManager": "Gerente de Marketing",
+        "miningOperationsManager": "Gerente de Operaciones de Minería",
+        "economicAnalyst": "Analista economico",
+        "educator": "Educador",
+        "devOpsEngineer": "Ingeniero DevOps",
+        "frontendEngineer": "Ingeniero frontend",
+        "eventCoordinator": "Coordinador de eventos",
+        "fullStackDeveloper": "Desarrollador Full Stack"
       },
       "applicationStatus": "Tu aplicación es",
       "availability": "Tu disponibilidad",
@@ -1075,7 +1109,9 @@
     "knowledgeableBitcoin": "¿Cuánto sabes sobre Bitcoin?",
     "tweetText": "¡Emocionado de haber aprobado el ₿-CERT en @planb_network con una puntuación de {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
     "download": "Descargar certificado",
-    "verify": "Verifica la autenticidad de tu certificado"
+    "verify": "Verifica la autenticidad de tu certificado",
+    "organizeSessionConditions": "Por favor, lee <0>guía</0> para asegurarte de que cumples con las condiciones obligatorias para albergar la prueba.\nSi calificas, con gusto planificaremos contigo una sesión contigo tu comunidad local.\nPor favor, contáctanos usando el método que prefieras.",
+    "organizeSessionHub": "Organiza una sesión de prueba ₿-CERT en tu centro local"
   },
   "glossary": {
     "anotherWord": "Busca otra palabra",
