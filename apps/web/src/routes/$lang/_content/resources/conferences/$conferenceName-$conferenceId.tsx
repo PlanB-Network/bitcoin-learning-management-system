@@ -95,6 +95,36 @@ function Conference() {
     resourceId: params.conferenceId,
   });
 
+  // Get stage and video from URL
+  useEffect(() => {
+    if (!conference?.stages?.length) {
+      return;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const stageId = urlParams.get('stage');
+    const videoId = urlParams.get('video');
+
+    if (!videoId || !videoId) {
+      return;
+    }
+
+    const stageIndex = conference.stages.findIndex(
+      (s) => s.stageId === stageId,
+    );
+
+    if (stageIndex !== -1) {
+      const videoIndex = conference.stages[stageIndex].videos.findIndex(
+        (v) => v.videoId === videoId,
+      );
+
+      if (videoIndex !== -1) {
+        setActiveStage(stageIndex);
+        setActiveVideo(videoIndex);
+      }
+    }
+  }, [conference]);
+
   const handleKeyDownVideo = (
     event: React.KeyboardEvent<HTMLDivElement>,
   ): void => {
@@ -117,7 +147,7 @@ function Conference() {
       params.conferenceName !== formatNameForURL(conference.name)
     ) {
       navigate({
-        to: `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}`,
+        to: `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}${location.hash}${location.search}`,
         replace: true,
       });
     }
