@@ -43,7 +43,7 @@ export const LanguageSelector = ({
 
   const changeLanguage = (lang: string) => {
     const pathWithoutLang = location.pathname.replace(/^\/[^/]+/, '');
-    const newPath = `/${lang}${pathWithoutLang}${location.hash}`;
+    const newPath = `/${lang}${pathWithoutLang}${location.hash}${location.search}`;
     router.navigate({
       to: newPath,
       replace: true,
@@ -151,7 +151,7 @@ export const LanguageSelectorMobile = ({
 
   const changeLanguage = (lang: string) => {
     const pathWithoutLang = location.pathname.replace(/^\/[^/]+/, '');
-    const newPath = `/${lang}${pathWithoutLang}${location.hash}`;
+    const newPath = `/${lang}${pathWithoutLang}${location.hash}${location.search}`;
     router.navigate({
       to: newPath,
       replace: true,

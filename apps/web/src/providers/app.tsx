@@ -72,7 +72,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
     if (path === '/') {
       router.navigate({
-        to: `/${newLanguage}`,
+        to: `/${newLanguage}${location.hash}${location.search}`,
         replace: true,
       });
     }
@@ -81,7 +81,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
     if (pathLanguage && !LANGUAGES.includes(pathLanguage)) {
       router.navigate({
-        to: `/${newLanguage}/${location.pathname}`,
+        to: `/${newLanguage}${location.pathname}${location.hash}${location.search}`,
         replace: true,
       });
     }
@@ -100,7 +100,10 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
     cleanUpdateLanguage(newLanguage);
 
     if (newLanguage && (!currentLanguage || currentLanguage !== newLanguage)) {
-      updateCurrentLanguage(newLanguage, location.pathname + location.hash);
+      updateCurrentLanguage(
+        newLanguage,
+        `${location.pathname}${location.hash}${location.search}`,
+      );
     }
   }, [currentLanguage, locationLanguage]);
 
@@ -112,7 +115,10 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
       const pathWithoutLang = location.pathname.replace(/^\/[^/]+/, '');
 
       if (LANGUAGES.includes(newLanguage)) {
-        updateCurrentLanguage(newLanguage, pathWithoutLang);
+        updateCurrentLanguage(
+          newLanguage,
+          `${pathWithoutLang}${location.hash}${location.search}`,
+        );
       }
     };
 

@@ -26,7 +26,7 @@ export const LanguageSelectorHomepage = ({
 
   const changeLanguage = (lang: string) => {
     const pathWithoutLang = location.pathname.replace(/^\/[^/]+/, '');
-    const newPath = `/${lang}${pathWithoutLang}${location.hash}`;
+    const newPath = `/${lang}${pathWithoutLang}${location.hash}${location.search}`;
     router.navigate({
       to: newPath,
       replace: true,
