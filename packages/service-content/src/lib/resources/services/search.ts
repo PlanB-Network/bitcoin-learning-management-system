@@ -32,6 +32,15 @@ const searchCategoryMap: Record<string, string[] | null> = {
   '': null,
 };
 
+const notEmptyNotAll = (value: string) => value && value !== 'all';
+
+const CATEGORIES = Object.keys(searchCategoryMap)
+  .reduce(
+    (categories, key) => categories.concat(searchCategoryMap[key] ?? []),
+    [] as string[],
+  )
+  .filter(notEmptyNotAll);
+
 const CategoryWeight: Record<string, number> = {
   // Course category
   course: 6,
@@ -84,19 +93,34 @@ const SORT_RULES = [
   '_text_match:desc',
 ].join(',');
 
+const getCategories = (categories: string[]): string[] => {
+  if (!categories.length) {
+    return CATEGORIES;
+  }
+
+  return categories;
+};
+
 export const createSearch = ({ typesense }: Dependencies) => {
   const searchContent = (search: SearchInput) => {
-    const categories = (search.categories ?? ['all'])
-      .map((category) => searchCategoryMap[category])
-      .filter(Boolean)
-      .flat();
+    const categories = getCategories(
+      (search.categories ?? [])
+        .map((category) => searchCategoryMap[category])
+        .filter((category): category is string[] => !!category)
+        .flat()
+        .filter(notEmptyNotAll),
+    );
 
     const language = search.language.toLowerCase();
 
     let filter = `language:${language}`;
     if (categories) {
       const map = categories
-        .map((category) => `type:${category}`)
+        .map((category) =>
+          category === 'event'
+            ? `type:event && endDate:>${~~(Date.now() / 1000)}`
+            : `type:${category}`,
+        )
         .filter(Boolean)
         .join(' || ');
 

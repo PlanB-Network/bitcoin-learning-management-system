@@ -171,8 +171,11 @@ const getEventsQuery = () => sql<Searchable<Language>[]>`
     'en' as language,
     name as title,
     COALESCE(description, '') as body,
-    website_url as link
+    website_url as link,
+    EXTRACT(EPOCH FROM start_date)::int as "startDate",
+    EXTRACT(EPOCH FROM end_date)::int as "endDate"
   FROM content.events
+    WHERE website_url != ''
 `;
 
 // Resource - Youtube Channels
@@ -255,6 +258,7 @@ const createInitIndexes = (client: TypesenseClient) => () => {
       { name: 'language', type: 'string', facet: true },
       { name: 'title', type: 'string', facet: false },
       { name: 'body', type: 'string', facet: false },
+      { name: 'endDate', type: 'int64', facet: false, optional: true },
     ],
   };
 
