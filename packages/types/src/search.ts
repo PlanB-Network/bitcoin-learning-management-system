@@ -5,6 +5,7 @@ import type {
 
 export interface Searchable<L = string> extends Record<string, unknown> {
   language: L;
+  endDate?: number;
   premium?: boolean;
   title: string;
   body: string;

@@ -34,13 +34,29 @@ function SearchPage() {
 
   const isMobile = useSmaller('md');
 
+  const availableCategories = ['courses', 'events', 'tutorials', 'professors'];
+
+  const availableResources = [
+    'books',
+    'newsletters',
+    'podcasts',
+    'youtube_channels',
+    'conference_replays',
+    'glossary_words',
+    'projects',
+    'lecture_replays',
+  ];
+
   const [query, setQuery] = useState('');
   const debouncedQuery = useDebounce(query, 200);
   const search = trpc.content.search.useInfiniteQuery(
     {
       query: debouncedQuery,
       language: i18n.language,
-      categories: [...categories, ...resources],
+      categories: [
+        ...(categories.has('all') ? availableCategories : categories),
+        ...(resources.has('all') ? availableResources : resources),
+      ],
       surroundingWords: isMobile ? 15 : 20,
       limit: 20,
     },
@@ -75,19 +91,6 @@ function SearchPage() {
       toggleSelection(option, resources, setResources);
     }
   };
-
-  const availableCategories = ['courses', 'events', 'tutorials', 'professors'];
-
-  const availableResources = [
-    'books',
-    'newsletters',
-    'podcasts',
-    'youtube_channels',
-    'conference_replays',
-    'glossary_words',
-    'projects',
-    'lecture_replays',
-  ];
 
   return (
     <PageLayout
