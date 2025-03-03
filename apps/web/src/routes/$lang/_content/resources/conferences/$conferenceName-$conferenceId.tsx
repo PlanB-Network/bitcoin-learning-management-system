@@ -105,7 +105,7 @@ function Conference() {
     const stageId = urlParams.get('stage');
     const videoId = urlParams.get('video');
 
-    if (!videoId || !videoId) {
+    if (!videoId || !stageId) {
       return;
     }
 
