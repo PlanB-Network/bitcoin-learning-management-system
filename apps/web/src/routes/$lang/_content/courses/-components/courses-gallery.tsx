@@ -12,7 +12,7 @@ import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const uniqueTopics = Array.from(
     new Set(courses.map((course) => course.topic)),
@@ -104,8 +104,7 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
         (course) =>
           (activeTopics.has('all') || activeTopics.has(course.topic)) &&
           (activeLevels.has('all') || activeLevels.has(course.level)) &&
-          course.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          course.language.toLowerCase() === i18n.language.toLowerCase(),
+          course.name.toLowerCase().includes(searchQuery.toLowerCase()),
       ),
     );
   }, [courses, activeTopics, activeLevels, searchQuery]);

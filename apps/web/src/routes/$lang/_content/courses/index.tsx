@@ -7,6 +7,7 @@ import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
 
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.tsx';
 import { CourseSelector } from './-components/course-selector.tsx';
 import { CoursesGallery } from './-components/courses-gallery.tsx';
@@ -19,13 +20,16 @@ export const Route = createFileRoute('/$lang/_content/courses/')({
 
 function CoursesExplorer() {
   const { courses } = useContext(AppContext);
+  const { i18n } = useTranslation();
 
   const selectedSchool = 'biz225';
 
   const filteredCourses = courses
     ? courses.filter(
         (course) =>
-          course.isArchived === false && course.index !== selectedSchool,
+          course.isArchived === false &&
+          course.index !== selectedSchool &&
+          course.language.toLowerCase() === i18n.language.toLowerCase(),
       )
     : [];
   const selectedSchoolCourse = courses?.find(
