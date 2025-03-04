@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
-import type { UserRole } from '@blms/constants';
+import { type UserPermission, UserRole } from '@blms/constants';
 import { createGetActiveApiKey } from '@blms/service-user';
 import { canAccess } from '@blms/shared/auth';
 
@@ -35,14 +35,30 @@ export const enforceAuthenticatedUserMiddleware = (requiredRole: UserRole) => {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
     }
 
-    const { role, uid } = ctx.user;
-
-    // Super admin case
-    if (!canAccess(requiredRole)({ role })) {
+    if (!canAccess(requiredRole)(ctx.user)) {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
     }
 
-    return next({ ctx: { user: { role, uid } } });
+    return next({ ctx: { user: ctx.user } });
+  });
+};
+
+/**
+ * TRPC middleware that checks if the user has the required permissions (Admin only).
+ */
+export const checkPermissions = (
+  permissions: UserPermission | UserPermission[],
+) => {
+  return createMiddleware(({ ctx, next }) => {
+    if (!ctx.user?.permissions) {
+      throw new TRPCError({ code: 'UNAUTHORIZED' });
+    }
+
+    if (!canAccess(UserRole.Admin, permissions)(ctx.user)) {
+      throw new TRPCError({ code: 'UNAUTHORIZED' });
+    }
+
+    return next({ ctx: { user: ctx.user } });
   });
 };
 

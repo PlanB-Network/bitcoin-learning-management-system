@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import superjson from 'superjson';
 import { ZodError } from 'zod';
 
-import type { UserRole } from '@blms/constants';
+import type { UserPermission, UserRole } from '@blms/constants';
 
 import type { Dependencies } from '../dependencies.js';
 
@@ -42,6 +42,7 @@ interface UserContext {
   user?: {
     uid: string;
     role: UserRole;
+    permissions?: UserPermission[];
   };
 }
 

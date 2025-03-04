@@ -26,6 +26,8 @@ import type {
   UserEvent,
 } from '@blms/types';
 
+import { UserPermission } from '@blms/constants';
+import { checkPermissions } from '#src/middlewares/auth.js';
 import { adminProcedure, studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
@@ -142,6 +144,7 @@ const saveUserEventProcedure = studentProcedure
   });
 
 const getParticipantsForEventProcedure = adminProcedure
+  .use(checkPermissions(UserPermission.Bookings))
   .output<Parser<CalendarEventParticipant[]>>(
     z.array(
       z.object({
