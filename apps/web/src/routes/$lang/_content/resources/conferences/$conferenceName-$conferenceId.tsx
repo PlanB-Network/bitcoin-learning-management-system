@@ -97,7 +97,7 @@ function Conference() {
 
   // Get stage and video from URL
   useEffect(() => {
-    if (!conference?.stages?.length) {
+    if (!isFetched || !conference?.stages?.length) {
       return;
     }
 
@@ -121,9 +121,14 @@ function Conference() {
       if (videoIndex !== -1) {
         setActiveStage(stageIndex);
         setActiveVideo(videoIndex);
+
+        // Scroll to video player
+        document
+          .getElementById('video')
+          ?.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [conference]);
+  }, [isFetched, conference]);
 
   const handleKeyDownVideo = (
     event: React.KeyboardEvent<HTMLDivElement>,
@@ -285,7 +290,7 @@ function Conference() {
                 })}
               </div>
             </div>
-            <div className="flex flex-col gap-5">
+            <div id="video" className="flex flex-col gap-5">
               <span className="desktop-h7 text-white">
                 {t('conferences.details.selectVideo')}
               </span>

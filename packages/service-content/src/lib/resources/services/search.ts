@@ -127,6 +127,8 @@ export const createSearch = ({ typesense }: Dependencies) => {
       filter += map && ` && (${map})`;
     }
 
+    console.log('Search filter:', filter);
+
     return typesense.collections<Searchable>('searchable').documents().search({
       q: search.query,
       query_by: 'title,body',

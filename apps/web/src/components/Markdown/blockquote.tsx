@@ -42,7 +42,7 @@ export const Blockquote = ({
     : children;
 
   return (
-    <section>
+    <section className="max-w-[calc(736px+80px)]">
       <ImQuotesLeft size={35} className={quoteVariants({ mode })} />
       <div>
         <blockquote className={blockQuoteVariants({ mode })}>
