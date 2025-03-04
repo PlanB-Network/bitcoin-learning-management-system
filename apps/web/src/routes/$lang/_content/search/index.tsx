@@ -104,7 +104,7 @@ function SearchPage() {
           {t('search.explorer.subtitle')}
         </h2>
 
-        <div className="mx-2 mt-8 mb-2 md:mb-16">
+        <div className="mx-2 mt-8 mb-2 md:mb-8">
           <FilterDropdown
             searchQuery={query}
             setSearchQuery={setQuery}
@@ -142,7 +142,7 @@ function SearchPage() {
         )}
 
         {query.length > 0 && glossaryWord && (
-          <div className="mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-8 md:mb-16 px-2">
+          <div className="mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-8 px-2">
             <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-2 md:mb-5">
               {glossaryWord?.term}
             </h2>
