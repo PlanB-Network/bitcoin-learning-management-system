@@ -21,18 +21,6 @@ const dividerVariant = cva('w-full border-t', {
   },
 });
 
-const dividerSimpleVariant = cva('w-full h-px', {
-  variants: {
-    mode: {
-      dark: 'bg-newGray-1',
-      light: 'bg-newGray-4',
-    },
-  },
-  defaultVariants: {
-    mode: 'dark',
-  },
-});
-
 export const Divider = ({
   children,
   className = 'mx-4',
@@ -58,6 +46,18 @@ export const Divider = ({
   );
 };
 
+const dividerSimpleVariant = cva('w-full h-px', {
+  variants: {
+    mode: {
+      dark: 'bg-newGray-1',
+      light: 'bg-newGray-4',
+    },
+  },
+  defaultVariants: {
+    mode: 'dark',
+  },
+});
+
 export const DividerSimple = ({
   className,
   mode = 'dark',
@@ -66,4 +66,26 @@ export const DividerSimple = ({
   mode?: 'dark' | 'light';
 }) => {
   return <div className={cn(dividerSimpleVariant({ mode }), className)} />;
+};
+
+const dividerVerticalVariant = cva('h-full w-px', {
+  variants: {
+    mode: {
+      dark: 'bg-newGray-1',
+      light: 'bg-newGray-1',
+    },
+  },
+  defaultVariants: {
+    mode: 'dark',
+  },
+});
+
+export const DividerVertical = ({
+  className,
+  mode = 'dark',
+}: {
+  className?: string;
+  mode?: 'dark' | 'light';
+}) => {
+  return <div className={cn(dividerVerticalVariant({ mode }), className)} />;
 };

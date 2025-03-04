@@ -920,6 +920,12 @@
   "library": {
     "pageTitle": "Bitcoin Library"
   },
+  "labs": {
+    "description1": "Plan ₿ Labs are study groups designed to provide students with regular practical and interactive classes. Through these study groups, students and professors engage in discussions, debating the latest research, solving real-world challenges, and applying theoretical concepts.",
+    "description2": "Join the Lab that aligns with your field of study and enhance your learning experience!",
+    "planBLabs": "Plan ₿ Labs",
+    "title": "Practical and interactive classes for continuous learning"
+  },
   "menu": {
     "bCertDescription": "Pass the ₿-CERT test to assess your Bitcoin level",
     "betDescription": "Collection of content that you can use for your educational projects",
@@ -936,6 +942,7 @@
     "moviesDescription": "Discover captivating stories and in-depth explorations of Bitcoin evolution and impact",
     "newsletterDescription": "Collection of content that you can use for your educational projects",
     "nodeNetworkDescription": "Join the Plan ₿ global community network",
+    "planBLabsDescription": "Join a study group to continue learning on Lightning, Mining and Privacy",
     "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
     "projectsDescription": "Learn about the companies and projects that contribute to improving Bitcoin and increasing its adoption",
     "protocolDescription": "Discover the core rules that power the Bitcoin network.",

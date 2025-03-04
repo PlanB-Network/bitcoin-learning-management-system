@@ -154,15 +154,6 @@ function TutorialCategory() {
                   {subCategories.map((subCategory) => (
                     <TabsContent value={subCategory} key={subCategory}>
                       <div className="flex flex-col px-2 py-5 md:px-7 md:py-8">
-                        {/* {i18n.exists(
-                        `tutorials.${category}.${subCategory}.description`,
-                      ) && (
-                        <div className="hidden text-sm font-light italic text-blue-900 ">
-                          {t(
-                            `tutorials.${category}.${subCategory}.description`,
-                          )}
-                        </div>
-                      )} */}
                         <div className="flex flex-wrap gap-4 md:gap-x-0 md:gap-y-6 justify-center">
                           {[...tutorials]
                             .filter(

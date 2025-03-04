@@ -10,10 +10,10 @@ import { ProfessorCard } from '#src/components/professor-card.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { professorTabs } from '../../-utils/professor-utils.tsx';
+import { professorTabs } from '../-utils/professor-utils.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_content/_misc/professors/$category/',
+  '/$lang/_content/_misc/professors/$category',
 )({
   params: {
     parse: (params) => ({

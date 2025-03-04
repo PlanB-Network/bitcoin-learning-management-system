@@ -1702,6 +1702,48 @@ export const usersQuizAttempts = users.table(
   }),
 );
 
+// LABS
+
+export const contentLabs = content.table('labs', (t) => ({
+  id: t.uuid().primaryKey().defaultRandom().notNull(),
+  path: t.varchar({ length: 255 }).unique().notNull(),
+  studyGroup: t.varchar({ length: 20 }),
+  professorId: t
+    .uuid()
+    .notNull()
+    .references(() => contentProfessors.id, {
+      onUpdate: 'cascade',
+    }),
+  studentCount: t.integer().default(0).notNull(),
+  telegramUrl: t.varchar({ length: 100 }),
+
+  lastUpdated: t
+    .timestamp({
+      withTimezone: true,
+    })
+    .defaultNow()
+    .notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
+export const contentLabSession = content.table('labs_sessions', (t) => ({
+  id: t.uuid().primaryKey().defaultRandom().notNull(),
+  labId: t
+    .uuid()
+    .notNull()
+    .references(() => contentLabs.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
+  startDate: t.timestamp().notNull(),
+  endDate: t.timestamp().notNull(),
+  liveUrl: t.varchar({ length: 255 }),
+  rawContent: t.text().notNull(),
+
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
 // PROFESSORS
 
 export const contentContributors = content.table('contributors', (t) => ({

@@ -48,6 +48,7 @@ import { Route as LangContentResourcesBooksIndexImport } from './routes/$lang/_c
 import { Route as LangContentResourcesBetIndexImport } from './routes/$lang/_content/resources/bet/index';
 import { Route as LangContentMiscPublicCommunicationIndexImport } from './routes/$lang/_content/_misc/public-communication/index';
 import { Route as LangContentMiscProfessorsIndexImport } from './routes/$lang/_content/_misc/professors/index';
+import { Route as LangContentMiscPlanBLabsIndexImport } from './routes/$lang/_content/_misc/plan-b-labs/index';
 import { Route as LangDashboardDashboardProfessorTutorialsImport } from './routes/$lang/dashboard/_dashboard/professor/tutorials';
 import { Route as LangDashboardDashboardProfessorProfileImport } from './routes/$lang/dashboard/_dashboard/professor/profile';
 import { Route as LangDashboardDashboardProfessorCoursesImport } from './routes/$lang/dashboard/_dashboard/professor/courses';
@@ -70,12 +71,13 @@ import { Route as LangContentCoursesCourseIdChapterNameChapterIdImport } from '.
 import { Route as LangContentMiscValidateEmailTokenImport } from './routes/$lang/_content/_misc/validate-email.$token';
 import { Route as LangContentMiscResetPasswordTokenImport } from './routes/$lang/_content/_misc/reset-password.$token';
 import { Route as LangContentMiscPublicCommunicationLegalsImport } from './routes/$lang/_content/_misc/public-communication/legals';
+import { Route as LangContentMiscProfessorsCategoryImport } from './routes/$lang/_content/_misc/professors/$category';
 import { Route as LangContentMiscProfessorProfessorNameProfessorIdImport } from './routes/$lang/_content/_misc/professor.$professorName-$professorId';
+import { Route as LangContentMiscPlanBLabsGroupImport } from './routes/$lang/_content/_misc/plan-b-labs/$group';
 import { Route as LangContentMiscExamCertificatesCertificateIdImport } from './routes/$lang/_content/_misc/exam-certificates.$certificateId';
 import { Route as LangContentMiscBcertCertificatesCertificateIdImport } from './routes/$lang/_content/_misc/bcert-certificates.$certificateId';
 import { Route as LangContentMiscPublicCommunicationLegalsIndexImport } from './routes/$lang/_content/_misc/public-communication/legals/index';
 import { Route as LangContentMiscPublicCommunicationBlogsAndNewsIndexImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/index';
-import { Route as LangContentMiscProfessorsCategoryIndexImport } from './routes/$lang/_content/_misc/professors/$category/index';
 import { Route as LangContentTutorialsCategorySubcategoryNameIdImport } from './routes/$lang/_content/tutorials/$category/$subcategory.$name-$id';
 import { Route as LangContentMiscPublicCommunicationLegalsNameImport } from './routes/$lang/_content/_misc/public-communication/legals/$name';
 import { Route as LangContentMiscPublicCommunicationBlogsAndNewsCategoryImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/$category';
@@ -326,6 +328,13 @@ const LangContentMiscProfessorsIndexRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
+const LangContentMiscPlanBLabsIndexRoute =
+  LangContentMiscPlanBLabsIndexImport.update({
+    id: '/$lang/_content/_misc/plan-b-labs/',
+    path: '/$lang/plan-b-labs/',
+    getParentRoute: () => rootRoute,
+  } as any);
+
 const LangDashboardDashboardProfessorTutorialsRoute =
   LangDashboardDashboardProfessorTutorialsImport.update({
     id: '/professor/tutorials',
@@ -480,10 +489,24 @@ const LangContentMiscPublicCommunicationLegalsRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
+const LangContentMiscProfessorsCategoryRoute =
+  LangContentMiscProfessorsCategoryImport.update({
+    id: '/$lang/_content/_misc/professors/$category',
+    path: '/$lang/professors/$category',
+    getParentRoute: () => rootRoute,
+  } as any);
+
 const LangContentMiscProfessorProfessorNameProfessorIdRoute =
   LangContentMiscProfessorProfessorNameProfessorIdImport.update({
     id: '/$lang/_content/_misc/professor/$professorName-$professorId',
     path: '/$lang/professor/$professorName-$professorId',
+    getParentRoute: () => rootRoute,
+  } as any);
+
+const LangContentMiscPlanBLabsGroupRoute =
+  LangContentMiscPlanBLabsGroupImport.update({
+    id: '/$lang/_content/_misc/plan-b-labs/$group',
+    path: '/$lang/plan-b-labs/$group',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -512,13 +535,6 @@ const LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute =
   LangContentMiscPublicCommunicationBlogsAndNewsIndexImport.update({
     id: '/$lang/_content/_misc/public-communication/blogs-and-news/',
     path: '/$lang/public-communication/blogs-and-news/',
-    getParentRoute: () => rootRoute,
-  } as any);
-
-const LangContentMiscProfessorsCategoryIndexRoute =
-  LangContentMiscProfessorsCategoryIndexImport.update({
-    id: '/$lang/_content/_misc/professors/$category/',
-    path: '/$lang/professors/$category/',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -731,11 +747,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscExamCertificatesCertificateIdImport;
       parentRoute: typeof rootRoute;
     };
+    '/$lang/_content/_misc/plan-b-labs/$group': {
+      id: '/$lang/_content/_misc/plan-b-labs/$group';
+      path: '/$lang/plan-b-labs/$group';
+      fullPath: '/$lang/plan-b-labs/$group';
+      preLoaderRoute: typeof LangContentMiscPlanBLabsGroupImport;
+      parentRoute: typeof rootRoute;
+    };
     '/$lang/_content/_misc/professor/$professorName-$professorId': {
       id: '/$lang/_content/_misc/professor/$professorName-$professorId';
       path: '/$lang/professor/$professorName-$professorId';
       fullPath: '/$lang/professor/$professorName-$professorId';
       preLoaderRoute: typeof LangContentMiscProfessorProfessorNameProfessorIdImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/$lang/_content/_misc/professors/$category': {
+      id: '/$lang/_content/_misc/professors/$category';
+      path: '/$lang/professors/$category';
+      fullPath: '/$lang/professors/$category';
+      preLoaderRoute: typeof LangContentMiscProfessorsCategoryImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/_misc/public-communication/legals': {
@@ -892,6 +922,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardProfessorTutorialsImport;
       parentRoute: typeof LangDashboardDashboardImport;
     };
+    '/$lang/_content/_misc/plan-b-labs/': {
+      id: '/$lang/_content/_misc/plan-b-labs/';
+      path: '/$lang/plan-b-labs';
+      fullPath: '/$lang/plan-b-labs';
+      preLoaderRoute: typeof LangContentMiscPlanBLabsIndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/$lang/_content/_misc/professors/': {
       id: '/$lang/_content/_misc/professors/';
       path: '/$lang/professors';
@@ -1002,13 +1039,6 @@ declare module '@tanstack/react-router' {
       path: '/$lang/tutorials/$category/$subcategory/$name-$id';
       fullPath: '/$lang/tutorials/$category/$subcategory/$name-$id';
       preLoaderRoute: typeof LangContentTutorialsCategorySubcategoryNameIdImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/$lang/_content/_misc/professors/$category/': {
-      id: '/$lang/_content/_misc/professors/$category/';
-      path: '/$lang/professors/$category';
-      fullPath: '/$lang/professors/$category';
-      preLoaderRoute: typeof LangContentMiscProfessorsCategoryIndexImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/_misc/public-communication/blogs-and-news/': {
@@ -1145,7 +1175,9 @@ export interface FileRoutesByFullPath {
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
   '/$lang/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
+  '/$lang/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
+  '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
   '/$lang/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
@@ -1168,6 +1200,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/professor/courses': typeof LangDashboardDashboardProfessorCoursesRoute;
   '/$lang/dashboard/professor/profile': typeof LangDashboardDashboardProfessorProfileRoute;
   '/$lang/dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
+  '/$lang/plan-b-labs': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/professors': typeof LangContentMiscProfessorsIndexRoute;
   '/$lang/public-communication': typeof LangContentMiscPublicCommunicationIndexRoute;
   '/$lang/resources/bet': typeof LangContentResourcesBetIndexRoute;
@@ -1184,7 +1217,6 @@ export interface FileRoutesByFullPath {
   '/$lang/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   '/$lang/public-communication/legals/$name': typeof LangContentMiscPublicCommunicationLegalsNameRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
-  '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryIndexRoute;
   '/$lang/public-communication/blogs-and-news': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/public-communication/legals/': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
   '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
@@ -1215,7 +1247,9 @@ export interface FileRoutesByTo {
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
   '/$lang/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
+  '/$lang/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
+  '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
   '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
@@ -1237,6 +1271,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/professor/courses': typeof LangDashboardDashboardProfessorCoursesRoute;
   '/$lang/dashboard/professor/profile': typeof LangDashboardDashboardProfessorProfileRoute;
   '/$lang/dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
+  '/$lang/plan-b-labs': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/professors': typeof LangContentMiscProfessorsIndexRoute;
   '/$lang/public-communication': typeof LangContentMiscPublicCommunicationIndexRoute;
   '/$lang/resources/bet': typeof LangContentResourcesBetIndexRoute;
@@ -1253,7 +1288,6 @@ export interface FileRoutesByTo {
   '/$lang/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   '/$lang/public-communication/legals/$name': typeof LangContentMiscPublicCommunicationLegalsNameRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
-  '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryIndexRoute;
   '/$lang/public-communication/blogs-and-news': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
   '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
@@ -1286,7 +1320,9 @@ export interface FileRoutesById {
   '/$lang/_content/tutorials/': typeof LangContentTutorialsIndexRoute;
   '/$lang/_content/_misc/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/_content/_misc/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
+  '/$lang/_content/_misc/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/_content/_misc/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
+  '/$lang/_content/_misc/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
   '/$lang/_content/_misc/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   '/$lang/_content/_misc/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/_content/_misc/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
@@ -1309,6 +1345,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/professor/courses': typeof LangDashboardDashboardProfessorCoursesRoute;
   '/$lang/dashboard/_dashboard/professor/profile': typeof LangDashboardDashboardProfessorProfileRoute;
   '/$lang/dashboard/_dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
+  '/$lang/_content/_misc/plan-b-labs/': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/_content/_misc/professors/': typeof LangContentMiscProfessorsIndexRoute;
   '/$lang/_content/_misc/public-communication/': typeof LangContentMiscPublicCommunicationIndexRoute;
   '/$lang/_content/resources/bet/': typeof LangContentResourcesBetIndexRoute;
@@ -1325,7 +1362,6 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/public-communication/blogs-and-news/$category': typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   '/$lang/_content/_misc/public-communication/legals/$name': typeof LangContentMiscPublicCommunicationLegalsNameRoute;
   '/$lang/_content/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
-  '/$lang/_content/_misc/professors/$category/': typeof LangContentMiscProfessorsCategoryIndexRoute;
   '/$lang/_content/_misc/public-communication/blogs-and-news/': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/_content/_misc/public-communication/legals/': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
   '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
@@ -1358,7 +1394,9 @@ export interface FileRouteTypes {
     | '/$lang/tutorials'
     | '/$lang/bcert-certificates/$certificateId'
     | '/$lang/exam-certificates/$certificateId'
+    | '/$lang/plan-b-labs/$group'
     | '/$lang/professor/$professorName-$professorId'
+    | '/$lang/professors/$category'
     | '/$lang/public-communication/legals'
     | '/$lang/reset-password/$token'
     | '/$lang/validate-email/$token'
@@ -1381,6 +1419,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/professor/courses'
     | '/$lang/dashboard/professor/profile'
     | '/$lang/dashboard/professor/tutorials'
+    | '/$lang/plan-b-labs'
     | '/$lang/professors'
     | '/$lang/public-communication'
     | '/$lang/resources/bet'
@@ -1397,7 +1436,6 @@ export interface FileRouteTypes {
     | '/$lang/public-communication/blogs-and-news/$category'
     | '/$lang/public-communication/legals/$name'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
-    | '/$lang/professors/$category'
     | '/$lang/public-communication/blogs-and-news'
     | '/$lang/public-communication/legals/'
     | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
@@ -1427,7 +1465,9 @@ export interface FileRouteTypes {
     | '/$lang/tutorials'
     | '/$lang/bcert-certificates/$certificateId'
     | '/$lang/exam-certificates/$certificateId'
+    | '/$lang/plan-b-labs/$group'
     | '/$lang/professor/$professorName-$professorId'
+    | '/$lang/professors/$category'
     | '/$lang/reset-password/$token'
     | '/$lang/validate-email/$token'
     | '/$lang/courses/$courseId/$chapterName-$chapterId'
@@ -1449,6 +1489,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/professor/courses'
     | '/$lang/dashboard/professor/profile'
     | '/$lang/dashboard/professor/tutorials'
+    | '/$lang/plan-b-labs'
     | '/$lang/professors'
     | '/$lang/public-communication'
     | '/$lang/resources/bet'
@@ -1465,7 +1506,6 @@ export interface FileRouteTypes {
     | '/$lang/public-communication/blogs-and-news/$category'
     | '/$lang/public-communication/legals/$name'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
-    | '/$lang/professors/$category'
     | '/$lang/public-communication/blogs-and-news'
     | '/$lang/public-communication/legals'
     | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
@@ -1496,7 +1536,9 @@ export interface FileRouteTypes {
     | '/$lang/_content/tutorials/'
     | '/$lang/_content/_misc/bcert-certificates/$certificateId'
     | '/$lang/_content/_misc/exam-certificates/$certificateId'
+    | '/$lang/_content/_misc/plan-b-labs/$group'
     | '/$lang/_content/_misc/professor/$professorName-$professorId'
+    | '/$lang/_content/_misc/professors/$category'
     | '/$lang/_content/_misc/public-communication/legals'
     | '/$lang/_content/_misc/reset-password/$token'
     | '/$lang/_content/_misc/validate-email/$token'
@@ -1519,6 +1561,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/professor/courses'
     | '/$lang/dashboard/_dashboard/professor/profile'
     | '/$lang/dashboard/_dashboard/professor/tutorials'
+    | '/$lang/_content/_misc/plan-b-labs/'
     | '/$lang/_content/_misc/professors/'
     | '/$lang/_content/_misc/public-communication/'
     | '/$lang/_content/resources/bet/'
@@ -1535,7 +1578,6 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/public-communication/blogs-and-news/$category'
     | '/$lang/_content/_misc/public-communication/legals/$name'
     | '/$lang/_content/tutorials/$category/$subcategory/$name-$id'
-    | '/$lang/_content/_misc/professors/$category/'
     | '/$lang/_content/_misc/public-communication/blogs-and-news/'
     | '/$lang/_content/_misc/public-communication/legals/'
     | '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
@@ -1561,7 +1603,9 @@ export interface RootRouteChildren {
   LangContentTutorialsIndexRoute: typeof LangContentTutorialsIndexRoute;
   LangContentMiscBcertCertificatesCertificateIdRoute: typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   LangContentMiscExamCertificatesCertificateIdRoute: typeof LangContentMiscExamCertificatesCertificateIdRoute;
+  LangContentMiscPlanBLabsGroupRoute: typeof LangContentMiscPlanBLabsGroupRoute;
   LangContentMiscProfessorProfessorNameProfessorIdRoute: typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
+  LangContentMiscProfessorsCategoryRoute: typeof LangContentMiscProfessorsCategoryRoute;
   LangContentMiscPublicCommunicationLegalsRoute: typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   LangContentMiscResetPasswordTokenRoute: typeof LangContentMiscResetPasswordTokenRoute;
   LangContentMiscValidateEmailTokenRoute: typeof LangContentMiscValidateEmailTokenRoute;
@@ -1575,6 +1619,7 @@ export interface RootRouteChildren {
   LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute: typeof LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   LangContentResourcesPodcastsPodcastNamePodcastIdRoute: typeof LangContentResourcesPodcastsPodcastNamePodcastIdRoute;
   LangContentResourcesProjectsProjectNameProjectIdRoute: typeof LangContentResourcesProjectsProjectNameProjectIdRoute;
+  LangContentMiscPlanBLabsIndexRoute: typeof LangContentMiscPlanBLabsIndexRoute;
   LangContentMiscProfessorsIndexRoute: typeof LangContentMiscProfessorsIndexRoute;
   LangContentMiscPublicCommunicationIndexRoute: typeof LangContentMiscPublicCommunicationIndexRoute;
   LangContentResourcesBetIndexRoute: typeof LangContentResourcesBetIndexRoute;
@@ -1590,7 +1635,6 @@ export interface RootRouteChildren {
   LangContentTutorialsCategoryIndexRoute: typeof LangContentTutorialsCategoryIndexRoute;
   LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute;
   LangContentTutorialsCategorySubcategoryNameIdRoute: typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
-  LangContentMiscProfessorsCategoryIndexRoute: typeof LangContentMiscProfessorsCategoryIndexRoute;
   LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
 }
@@ -1618,8 +1662,11 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscBcertCertificatesCertificateIdRoute,
   LangContentMiscExamCertificatesCertificateIdRoute:
     LangContentMiscExamCertificatesCertificateIdRoute,
+  LangContentMiscPlanBLabsGroupRoute: LangContentMiscPlanBLabsGroupRoute,
   LangContentMiscProfessorProfessorNameProfessorIdRoute:
     LangContentMiscProfessorProfessorNameProfessorIdRoute,
+  LangContentMiscProfessorsCategoryRoute:
+    LangContentMiscProfessorsCategoryRoute,
   LangContentMiscPublicCommunicationLegalsRoute:
     LangContentMiscPublicCommunicationLegalsRouteWithChildren,
   LangContentMiscResetPasswordTokenRoute:
@@ -1646,6 +1693,7 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentResourcesPodcastsPodcastNamePodcastIdRoute,
   LangContentResourcesProjectsProjectNameProjectIdRoute:
     LangContentResourcesProjectsProjectNameProjectIdRoute,
+  LangContentMiscPlanBLabsIndexRoute: LangContentMiscPlanBLabsIndexRoute,
   LangContentMiscProfessorsIndexRoute: LangContentMiscProfessorsIndexRoute,
   LangContentMiscPublicCommunicationIndexRoute:
     LangContentMiscPublicCommunicationIndexRoute,
@@ -1672,8 +1720,6 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute,
   LangContentTutorialsCategorySubcategoryNameIdRoute:
     LangContentTutorialsCategorySubcategoryNameIdRoute,
-  LangContentMiscProfessorsCategoryIndexRoute:
-    LangContentMiscProfessorsCategoryIndexRoute,
   LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute:
     LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute,
   LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute:
@@ -1708,7 +1754,9 @@ export const routeTree = rootRoute
         "/$lang/_content/tutorials/",
         "/$lang/_content/_misc/bcert-certificates/$certificateId",
         "/$lang/_content/_misc/exam-certificates/$certificateId",
+        "/$lang/_content/_misc/plan-b-labs/$group",
         "/$lang/_content/_misc/professor/$professorName-$professorId",
+        "/$lang/_content/_misc/professors/$category",
         "/$lang/_content/_misc/public-communication/legals",
         "/$lang/_content/_misc/reset-password/$token",
         "/$lang/_content/_misc/validate-email/$token",
@@ -1722,6 +1770,7 @@ export const routeTree = rootRoute
         "/$lang/_content/resources/newsletters/$newsletterName-$newsletterId",
         "/$lang/_content/resources/podcasts/$podcastName-$podcastId",
         "/$lang/_content/resources/projects/$projectName-$projectId",
+        "/$lang/_content/_misc/plan-b-labs/",
         "/$lang/_content/_misc/professors/",
         "/$lang/_content/_misc/public-communication/",
         "/$lang/_content/resources/bet/",
@@ -1737,7 +1786,6 @@ export const routeTree = rootRoute
         "/$lang/_content/tutorials/$category/",
         "/$lang/_content/_misc/public-communication/blogs-and-news/$category",
         "/$lang/_content/tutorials/$category/$subcategory/$name-$id",
-        "/$lang/_content/_misc/professors/$category/",
         "/$lang/_content/_misc/public-communication/blogs-and-news/",
         "/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId"
       ]
@@ -1844,8 +1892,14 @@ export const routeTree = rootRoute
     "/$lang/_content/_misc/exam-certificates/$certificateId": {
       "filePath": "$lang/_content/_misc/exam-certificates.$certificateId.tsx"
     },
+    "/$lang/_content/_misc/plan-b-labs/$group": {
+      "filePath": "$lang/_content/_misc/plan-b-labs/$group.tsx"
+    },
     "/$lang/_content/_misc/professor/$professorName-$professorId": {
       "filePath": "$lang/_content/_misc/professor.$professorName-$professorId.tsx"
+    },
+    "/$lang/_content/_misc/professors/$category": {
+      "filePath": "$lang/_content/_misc/professors/$category.tsx"
     },
     "/$lang/_content/_misc/public-communication/legals": {
       "filePath": "$lang/_content/_misc/public-communication/legals.tsx",
@@ -1926,6 +1980,9 @@ export const routeTree = rootRoute
       "filePath": "$lang/dashboard/_dashboard/professor/tutorials.tsx",
       "parent": "/$lang/dashboard/_dashboard"
     },
+    "/$lang/_content/_misc/plan-b-labs/": {
+      "filePath": "$lang/_content/_misc/plan-b-labs/index.tsx"
+    },
     "/$lang/_content/_misc/professors/": {
       "filePath": "$lang/_content/_misc/professors/index.tsx"
     },
@@ -1974,9 +2031,6 @@ export const routeTree = rootRoute
     },
     "/$lang/_content/tutorials/$category/$subcategory/$name-$id": {
       "filePath": "$lang/_content/tutorials/$category/$subcategory.$name-$id.tsx"
-    },
-    "/$lang/_content/_misc/professors/$category/": {
-      "filePath": "$lang/_content/_misc/professors/$category/index.tsx"
     },
     "/$lang/_content/_misc/public-communication/blogs-and-news/": {
       "filePath": "$lang/_content/_misc/public-communication/blogs-and-news/index.tsx"

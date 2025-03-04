@@ -31,6 +31,7 @@ import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
 import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
 
+import { RiFlaskLine } from 'react-icons/ri';
 import { AppContext } from '#src/providers/context.js';
 import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { FlyingMenu } from './FlyingMenu/flying-menu.tsx';
@@ -275,6 +276,16 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
               description: t('menu.bCertDescription'),
               path: '/b-cert',
             },
+            ...(isTestnetOrDevelopmentEnvironment()
+              ? [
+                  {
+                    id: 'plan-b-labs',
+                    title: t('labs.planBLabs'),
+                    description: t('menu.planBLabsDescription'),
+                    path: '/plan-b-labs',
+                  },
+                ]
+              : []),
             {
               id: 'public-release',
               title: t('words.public'),
@@ -338,6 +349,17 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
           path: '/b-cert',
           icon: <MdOutlineSchool size={20} className="shrink-0" />,
         },
+        ...(isTestnetOrDevelopmentEnvironment()
+          ? [
+              {
+                id: 'plan-b-labs',
+                title: t('labs.planBLabs'),
+                description: t('menu.planBLabsDescription'),
+                path: '/plan-b-labs',
+                icon: <RiFlaskLine size={20} className="shrink-0" />,
+              },
+            ]
+          : []),
         {
           id: 'public-release',
           title: t('words.public'),
