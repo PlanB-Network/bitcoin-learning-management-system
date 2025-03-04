@@ -118,7 +118,7 @@ export const createSearch = ({ typesense }: Dependencies) => {
       const map = categories
         .map((category) =>
           category === 'event'
-            ? `type:event && endDate:>${~~(Date.now() / 1000)}`
+            ? `(type:event && endDate:>${~~(Date.now() / 1000)})`
             : `type:${category}`,
         )
         .filter(Boolean)
