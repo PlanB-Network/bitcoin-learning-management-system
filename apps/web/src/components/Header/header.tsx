@@ -393,16 +393,13 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             variant === 'light' ? profileLogInBlack : profileLogInWhite,
           removeFilterOnIcon: true,
         },
-  ];
-
-  if (isTestnetOrDevelopmentEnvironment()) {
-    mobileSections.push({
+    {
       id: 'search',
       title: t('words.search'),
       path: '/search',
       mobileIcon: searchMobileSvg,
-    });
-  }
+    },
+  ];
 
   return (
     <header
