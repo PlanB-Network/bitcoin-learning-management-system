@@ -338,7 +338,8 @@
       "book_description": "කරුණාකර ලබා දුන් ස්ථාන විස්තර සමාලෝචනය කරන්න.\nඔබගේ වෙන්කරවා ගැනීම ක්‍රියාවට නැංවූ පසු, අපි ඔබට උත්සවයට ඉදිරිපත් කිරීමට තහවුරු කිරීමේ ටිකට් පතක් සහ QR කේතයක් එවන්නෙමු.",
       "payment_details": "ගෙවීම් විස්තර",
       "payment_successful": "ගෙවීම සාර්ථකයි!",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "quizz": {
       "quizz": "ප්‍රශ්නාවලිය",
@@ -508,7 +509,8 @@
           "type": "",
           "uses": "",
           "value": ""
-        }
+        },
+        "discountValueExplanation": ""
       },
       "discountCodes": ""
     },
@@ -1049,7 +1051,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "newEvent": {
       "subtitle": "බිලියනයක පිරිසකට ඔරේන්ජ් පිල් කිරීම පහසු නොවේ.",
