@@ -231,7 +231,8 @@
       "onlineCallout": "Ви збираєтеся придбати <strong>онлайн</strong> доступ до цього курсу.",
       "onlineDescription": "Кожне заняття транслюється в прямому ефірі на платформі.\nЦя покупка надасть вам доступ до прямих трансляцій та відео для перегляду.",
       "checkoutError": "Під час оформлення замовлення сталася помилка.\nБудь ласка, спробуйте ще раз.",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "quizz": {
       "quizz": "Тест",
@@ -792,7 +793,8 @@
           "type": "",
           "uses": "",
           "value": ""
-        }
+        },
+        "discountValueExplanation": ""
       },
       "coursesIndexes": "",
       "deleteRole": "",
@@ -1052,7 +1054,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "pageDescription": "Хочете обговорити Біткоїн в реальному часі? Тут ви можете знайти всі заходи, які підтримуються спільнотами мережі Plan B. Незалежно від того, чи хочете ви послухати лекцію, обговорити Біткоїн за чашкою кави, чи скласти іспит для оцінки своїх знань, ви знайдете відповідний захід тут через мережу Plan B.",
     "errors": {
@@ -1368,7 +1371,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     }
   },
   "words": {
