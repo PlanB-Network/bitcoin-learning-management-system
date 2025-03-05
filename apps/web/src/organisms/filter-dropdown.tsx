@@ -100,6 +100,12 @@ export const FilterDropdown = ({
     }
   };
 
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
+
   return (
     <section
       className="mx-auto max-w-2xl rounded-lg bg-tertiary-11"
@@ -117,6 +123,7 @@ export const FilterDropdown = ({
           <img src={SearchIcon} alt="search" className="absolute size-6 mx-2" />
 
           <input
+            ref={searchInputRef}
             id="searchInput"
             type="text"
             value={searchQuery}
