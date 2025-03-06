@@ -139,7 +139,9 @@
       "findCourses": "Znajdź kurs idealny dla swoich potrzeb dzięki przeglądarce kursów",
       "journey": "Bitcoin to podróż, nie cel",
       "seeCourse": "Zobacz kurs",
-      "buildPath": "Zbuduj własną ścieżkę w głąb króliczej nory"
+      "buildPath": "Zbuduj własną ścieżkę w głąb króliczej nory",
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "planbSchoolHeadline": "Plan ₿ School, prowadzona przez Giacomo Zucco, oferuje intensywne trzymiesięczne programy edukacyjne mające na celu zniwelowanie różnicy między nauką a praktycznymi zastosowaniami. Poza tradycyjnymi zajęciami, studenci angażują się w praktyczne projekty prowadzone przez firmy oraz pierwszorzędny bootcamp dedykowany najlepszym uczestnikom. Tylko najlepsze talenty awansują po dwóch konkurencyjnych rundach selekcji, co gwarantuje, że ostateczni najlepsi studenci są w pełni przygotowani do rozpoczęcia swojej kariery w branży Bitcoin."
     },
     "part": {
       "count": "Część {{count}}"

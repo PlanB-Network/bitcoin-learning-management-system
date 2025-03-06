@@ -132,7 +132,9 @@
       "buildPath": "Construa seu próprio caminho no buraco do coelho",
       "findCourses": "Encontre o curso perfeito para suas necessidades na seleção de cursos",
       "journey": "Bitcoin é o caminho, não o destino",
-      "seeCourse": "Veja o curso"
+      "seeCourse": "Veja o curso",
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "planbSchoolHeadline": "A Plan ₿ School, liderada por Giacomo Zucco, oferece programas educacionais intensivos de três meses projetados para preencher a lacuna entre o aprendizado e as aplicações do mundo real. Além das aulas tradicionais, os alunos participam de projetos práticos liderados por empresas e um bootcamp de primeira classe dedicado aos melhores desempenhos. Apenas os melhores talentos avançam após duas rodadas de seleção competitivas, garantindo que os melhores alunos finais estejam totalmente equipados para lançar suas carreiras na indústria do Bitcoin."
     },
     "part": {
       "count": "Parte n°{{count}}/{{total}}"
