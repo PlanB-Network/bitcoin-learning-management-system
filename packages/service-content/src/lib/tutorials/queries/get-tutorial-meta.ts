@@ -14,11 +14,7 @@ type TutorialMeta = Pick<
   | 'lastCommit'
 >;
 
-export const getTutorialMetaQuery = (
-  category: string,
-  name: string,
-  language: string,
-) => {
+export const getTutorialMetaQuery = (id: string, language: string) => {
   return sql<TutorialMeta[]>`
       SELECT
           t.id,
@@ -32,8 +28,7 @@ export const getTutorialMetaQuery = (
           t.last_commit
       FROM content.tutorials t
       JOIN content.tutorials_localized tl ON t.id = tl.tutorial_id
-      WHERE t.category = ${category}
-        AND name = ${name}
+      WHERE id = ${id}
         AND tl.language = LOWER(${language})
   `;
 };

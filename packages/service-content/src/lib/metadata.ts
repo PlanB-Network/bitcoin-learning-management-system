@@ -4,20 +4,26 @@ import type { Dependencies } from './dependencies.js';
 import { createGetBook } from './resources/services/get-book.js';
 import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
 import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
+import { createGetNewsletterMeta } from './resources/services/get-newsletter-meta.js';
 import { createGetPodcast } from './resources/services/get-podcast.js';
 import { createGetProjectMeta } from './resources/services/get-project-meta.js';
 import { createGetTutorialMeta } from './tutorials/services/get-tutorial-meta.js';
 
-const cdn = (
-  commit: string,
-  contentPath: string,
-  assetPath?: string | null,
-) => {
+const cdn = (contentPath: string, assetPath?: string | null) => {
   if (!assetPath) {
     return DEFAULT_IMAGE;
   }
 
-  return `/cdn/${commit}/${contentPath}/assets/${assetPath}`;
+  return `/cdn/${contentPath}/assets/${assetPath}`;
+};
+
+// Extract an uuid from a uuid-terminated URL
+const extractUUID = (url: string) => {
+  return (
+    /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.exec(
+      url,
+    )?.[0] ?? url
+  );
 };
 
 interface Metadata {
@@ -70,6 +76,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   const getProject = createGetProjectMeta(dependencies);
   const getGlossaryWord = createGetGlossaryWord(dependencies);
   const getConferenceMeta = createGetConferenceMeta(dependencies);
+  const getNewsletterMeta = createGetNewsletterMeta(dependencies);
 
   // Tutorials
   const getTutorialMeta = createGetTutorialMeta(dependencies);
@@ -85,24 +92,20 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     }
 
     if (chapterId) {
-      const chapter = await getChapterMeta(chapterId, lang);
+      const chapter = await getChapterMeta(extractUUID(chapterId), lang);
       return meta(
         chapter.title,
         chapter.rawContent,
-        cdn(
-          chapter.lastCommit,
-          `courses/${chapter.courseIndex}`,
-          'thumbnail.webp',
-        ),
+        cdn(`courses/${chapter.courseIndex}`, 'thumbnail.webp'),
         lang,
       );
     }
 
-    const course = await getCourseMeta(courseId, lang);
+    const course = await getCourseMeta(extractUUID(courseId), lang);
     return meta(
       course.name,
       course.goal,
-      cdn(course.lastCommit, `courses/${course.index}`, 'thumbnail.webp'),
+      cdn(`courses/${course.index}`, 'thumbnail.webp'),
       course.language,
     );
   };
@@ -112,7 +115,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     parts: string[],
   ): Promise<Metadata> => {
     const resourceType = parts.shift();
-    const resourceId = parts.shift();
+    const resourceId = extractUUID(parts.shift() || '');
 
     if (!resourceType || !resourceId) {
       return defaultMeta(lang);
@@ -124,7 +127,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         return meta(
           book.title,
           book.description,
-          cdn(book.lastCommit, book.path, book.cover),
+          cdn(book.path, book.cover),
           lang,
         );
       }
@@ -133,30 +136,41 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         return meta(
           podcast.name,
           podcast.description,
-          cdn(podcast.lastCommit, podcast.path, 'logo.webp'),
+          cdn(podcast.path, 'logo.webp'),
           lang,
         );
       }
       case 'conferences': {
-        const conf = await getConferenceMeta(+resourceId);
+        const conf = await getConferenceMeta(resourceId);
         return meta(
           conf.name,
           conf.description,
-          cdn(conf.lastCommit, conf.path, 'thumbnail.webp'),
+          cdn(conf.path, 'thumbnail.webp'),
         );
       }
       case 'projects': {
-        const project = await getProject(+resourceId, lang);
+        const project = await getProject(resourceId, lang);
         return meta(
           project.name,
           project.description,
-          cdn(project.lastCommit, project.path, 'logo.webp'),
+          cdn(project.path, 'logo.webp'),
           project.language,
         );
       }
+
       case 'glossary': {
         const word = await getGlossaryWord(resourceId, lang);
         return meta(word.term, word.definition, DEFAULT_IMAGE, lang);
+      }
+
+      case 'newsletters': {
+        const newsletter = await getNewsletterMeta(resourceId);
+        return meta(
+          newsletter.title,
+          newsletter.description?.replaceAll(/\n/g, ' ').trim(),
+          cdn(newsletter.path, 'thumbnail.webp'),
+          newsletter.language,
+        );
       }
       default: {
         return defaultMeta(lang);
@@ -169,13 +183,14 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     parts: string[],
   ): Promise<Metadata> => {
     const category = parts.shift();
-    const name = parts.shift();
+    const subcategory = parts.shift();
+    const id = extractUUID(parts.shift() || '');
 
-    if (!category || !name) {
+    if (!category || !subcategory || !id) {
       return defaultMeta(language);
     }
 
-    const tutorial = await getTutorialMeta({ category, name, language });
+    const tutorial = await getTutorialMeta({ id, language });
     return meta(tutorial.title, tutorial.description, DEFAULT_IMAGE, language);
   };
 
@@ -184,7 +199,6 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     parts: string[],
   ): Metadata => {
     const [examId] = parts;
-
     if (!examId) {
       return defaultMeta(lang);
     }
@@ -203,7 +217,6 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   ): Metadata => {
     const examUrl = parts.join('/');
     const apiUrl = `/api/files/${examUrl}.png`;
-
     if (!examUrl) {
       return defaultMeta(lang);
     }

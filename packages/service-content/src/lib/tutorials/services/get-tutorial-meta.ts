@@ -4,16 +4,15 @@ import type { Dependencies } from '../../dependencies.js';
 import { getTutorialMetaQuery } from '../queries/get-tutorial-meta.js';
 
 interface Options {
-  category: string;
-  name: string;
+  id: string;
   language: string;
 }
 
 export const createGetTutorialMeta = ({ postgres }: Dependencies) => {
   // TODO: Add output type
-  return ({ category, name, language }: Options) => {
+  return ({ id, language }: Options) => {
     return postgres
-      .exec(getTutorialMetaQuery(category, name, language))
+      .exec(getTutorialMetaQuery(id, language))
       .then(firstRow)
       .then(rejectOnEmpty);
   };

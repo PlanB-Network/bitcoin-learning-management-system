@@ -4,9 +4,9 @@ import type { Dependencies } from '../../dependencies.js';
 import { getProjectMetaQuery } from '../queries/get-project-meta.js';
 
 export const createGetProjectMeta = ({ postgres }: Dependencies) => {
-  return async (id: number, language?: string) => {
+  return async (resourceId: string, language?: string) => {
     const project = await postgres
-      .exec(getProjectMetaQuery(id, language))
+      .exec(getProjectMetaQuery(resourceId, language))
       .then(firstRow);
 
     if (!project) {
