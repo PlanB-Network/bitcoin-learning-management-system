@@ -1736,6 +1736,7 @@ export const contentLabSession = content.table('labs_sessions', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
+  title: t.varchar({ length: 100 }),
   startDate: t.timestamp().notNull(),
   endDate: t.timestamp().notNull(),
   liveUrl: t.varchar({ length: 255 }),

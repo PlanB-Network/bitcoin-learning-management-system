@@ -22,119 +22,6 @@ interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   mobileSize?: 'small' | 'medium';
 }
 
-const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
-  const { t } = useTranslation();
-
-  return (
-    <section className="flex content-center items-center gap-2 lg:gap-x-6 text-white">
-      {professor.coursesCount > 0 && (
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-normal text-2xl lg:text-6xl">
-            {professor.coursesCount}
-          </span>
-          <span className="font-semibold text-xs lg:text-base text-center">
-            {t('words.courses')}
-          </span>
-        </div>
-      )}
-      {professor.tutorialsCount > 0 && (
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-normal text-2xl lg:text-6xl">
-            {professor.tutorialsCount}
-          </span>
-          <span className="font-semibold text-xs lg:text-base text-center">
-            {t('words.tutorials')}
-          </span>
-        </div>
-      )}
-      {professor.lecturesCount > 0 && (
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-normal text-2xl lg:text-6xl">
-            {professor.lecturesCount}
-          </span>
-          <span className="font-semibold text-xs lg:text-base text-center">
-            {t('words.lectures')}
-          </span>
-        </div>
-      )}
-    </section>
-  );
-};
-
-export const TopicTags = ({ professor }: ProfessorCardProps) => {
-  return (
-    <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs text-white">
-      {professor.tags?.map((tag) => (
-        <span
-          key={tag}
-          className="flex items-center desktop-typo1  px-2 py-1 rounded-lg bg-[#FFFFFF40] capitalize"
-        >
-          {tag}
-        </span>
-      ))}
-    </div>
-  );
-};
-
-export const SocialLinks = ({ professor }: ProfessorCardProps) => {
-  return (
-    <div className="mt-4 md:mt-5 flex w-full justify-center px-1 text-primary gap-x-6">
-      {professor.links.twitter && (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open(
-              professor.links.twitter as string,
-              '_blank',
-              'noopener noreferrer',
-            );
-          }}
-        >
-          <img src={TwitterIcon} alt="Twitter" className="block" />
-        </button>
-      )}
-      {professor.links.nostr && (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const baseUrl = 'https://primal.net/p/';
-            const nostrLink = professor.links.nostr as string;
-            const fullUrl =
-              nostrLink.startsWith('http://') ||
-              nostrLink.startsWith('https://')
-                ? nostrLink
-                : baseUrl + nostrLink;
-            window.open(fullUrl, '_blank', 'noopener noreferrer');
-          }}
-        >
-          <img src={NostrIcon} alt="Nostr" className="block" />
-        </button>
-      )}
-
-      {professor.links.website && (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open(
-              professor.links.website as string,
-              '_blank',
-              'noopener noreferrer',
-            );
-          }}
-        >
-          <img src={WebIcon} alt="Website" className="block" />
-        </button>
-      )}
-    </div>
-  );
-};
-
 export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
   return (
     <section
@@ -283,6 +170,119 @@ export const ProfessorCardReduced = ({
           lightningAddress={professor.tips.lightningAddress as string}
           userName={professor.name}
         />
+      )}
+    </div>
+  );
+};
+
+const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <section className="flex content-center items-center gap-2 lg:gap-x-6 text-white">
+      {professor.coursesCount > 0 && (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-normal text-2xl lg:text-6xl">
+            {professor.coursesCount}
+          </span>
+          <span className="font-semibold text-xs lg:text-base text-center">
+            {t('words.courses')}
+          </span>
+        </div>
+      )}
+      {professor.tutorialsCount > 0 && (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-normal text-2xl lg:text-6xl">
+            {professor.tutorialsCount}
+          </span>
+          <span className="font-semibold text-xs lg:text-base text-center">
+            {t('words.tutorials')}
+          </span>
+        </div>
+      )}
+      {professor.lecturesCount > 0 && (
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-normal text-2xl lg:text-6xl">
+            {professor.lecturesCount}
+          </span>
+          <span className="font-semibold text-xs lg:text-base text-center">
+            {t('words.lectures')}
+          </span>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export const TopicTags = ({ professor }: ProfessorCardProps) => {
+  return (
+    <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs text-white">
+      {professor.tags?.map((tag) => (
+        <span
+          key={tag}
+          className="flex items-center desktop-typo1  px-2 py-1 rounded-lg bg-[#FFFFFF40] capitalize"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+export const SocialLinks = ({ professor }: ProfessorCardProps) => {
+  return (
+    <div className="mt-4 md:mt-5 flex w-full justify-center px-1 text-primary gap-x-6">
+      {professor.links.twitter && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(
+              professor.links.twitter as string,
+              '_blank',
+              'noopener noreferrer',
+            );
+          }}
+        >
+          <img src={TwitterIcon} alt="Twitter" className="block" />
+        </button>
+      )}
+      {professor.links.nostr && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const baseUrl = 'https://primal.net/p/';
+            const nostrLink = professor.links.nostr as string;
+            const fullUrl =
+              nostrLink.startsWith('http://') ||
+              nostrLink.startsWith('https://')
+                ? nostrLink
+                : baseUrl + nostrLink;
+            window.open(fullUrl, '_blank', 'noopener noreferrer');
+          }}
+        >
+          <img src={NostrIcon} alt="Nostr" className="block" />
+        </button>
+      )}
+
+      {professor.links.website && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(
+              professor.links.website as string,
+              '_blank',
+              'noopener noreferrer',
+            );
+          }}
+        >
+          <img src={WebIcon} alt="Website" className="block" />
+        </button>
       )}
     </div>
   );

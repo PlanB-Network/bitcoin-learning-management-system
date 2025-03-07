@@ -25,7 +25,7 @@ const getProfessorProcedure = publicProcedure
   .input(
     z.object({
       professorId: z.string(),
-      language: z.string(),
+      language: z.string().optional(),
     }),
   )
   .output<Parser<FullProfessor>>(fullProfessorSchema)

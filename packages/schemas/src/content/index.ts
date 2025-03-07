@@ -8,6 +8,7 @@ export * from './coupon.js';
 export * from './course.js';
 export * from './event.js';
 export * from './glossary.js';
+export * from './lab.js';
 export * from './movie.js';
 export * from './podcast.js';
 export * from './professor.js';

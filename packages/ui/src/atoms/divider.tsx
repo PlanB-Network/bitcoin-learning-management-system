@@ -68,7 +68,7 @@ export const DividerSimple = ({
   return <div className={cn(dividerSimpleVariant({ mode }), className)} />;
 };
 
-const dividerVerticalVariant = cva('h-full w-px', {
+const dividerVerticalVariant = cva('w-px', {
   variants: {
     mode: {
       dark: 'bg-newGray-1',

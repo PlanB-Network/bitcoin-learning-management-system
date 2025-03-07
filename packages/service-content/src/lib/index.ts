@@ -23,6 +23,11 @@ import {
   groupByEvent,
 } from './events/import/index.js';
 import {
+  createDeleteLabs,
+  createUpdateLabs,
+  groupByLab,
+} from './labs/import/index.js';
+import {
   createDeleteLegals,
   createUpdateLegals,
   groupByLegal,
@@ -70,6 +75,7 @@ interface SyncResult {
  */
 export const createProcessContentFiles = (dependencies: Dependencies) => {
   const deleteProofreadings = createDeleteProofreadings(dependencies);
+  const updateLabs = createUpdateLabs(dependencies);
   const updateResources = createUpdateResources(dependencies);
   const updateCourses = createUpdateCourses(dependencies);
   const updateTutorials = createUpdateTutorials(dependencies);
@@ -96,6 +102,16 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     const warnings: string[] = [];
     console.log('-- Sync: Deleting proofreadings');
     await deleteProofreadings(errors);
+
+    // Sync labs
+    {
+      const labs = groupByLab(filteredFiles, errors);
+      const time = timeLog(labs.length, 'resource');
+      for (const lab of labs) {
+        await updateLabs(lab, errors);
+      }
+      time();
+    }
 
     // Sync resources
     {
@@ -196,6 +212,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
 };
 
 export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
+  const deleteLabs = createDeleteLabs(dependencies);
   const deleteProfessors = createDeleteProfessors(dependencies);
   const deleteCourses = createDeleteCourses(dependencies);
   const deleteTutorials = createDeleteTutorials(dependencies);
@@ -210,6 +227,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     console.log(`${timeKey}...`);
     console.time(timeKey);
 
+    await deleteLabs(sync_date, errors);
     await deleteProfessors(sync_date, errors);
     await deleteCourses(sync_date, errors);
     await deleteTutorials(sync_date, errors);

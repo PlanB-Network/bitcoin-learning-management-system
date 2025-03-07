@@ -1,3 +1,5 @@
+export const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 export const formatSecondsToMinutes = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
@@ -64,7 +66,10 @@ export function formatTime(date: Date, timezone?: string): string {
     timeZone: timezone,
   });
 
-  return timeFormatter.format(date);
+  const formattedTime = timeFormatter.format(date);
+
+  // If the minutes are zero, remove the ":00" (only if it appears before a space and AM/PM)
+  return formattedTime.replace(/:00(?=\s[AP]M)/, '');
 }
 
 export function addMinutesToDate(originalDate: Date, minutes: number) {
@@ -99,7 +104,7 @@ export const getDateString = (
 export const getTimeString = (
   startDate: Date,
   endDate: Date,
-  timezone: string | undefined,
+  timezone?: string,
 ) => {
   const timezoneText = timezone
     ? ` (${startDate.toLocaleTimeString('en-us', { timeZone: timezone, timeZoneName: 'short' }).split(' ')[2]})`
