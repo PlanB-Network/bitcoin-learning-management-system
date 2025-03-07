@@ -150,7 +150,9 @@
       "findCourses": "",
       "journey": "",
       "buildPath": "",
-      "exploreCourses": ""
+      "exploreCourses": "",
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "planbSchoolHeadline": "Plan ₿ School, vedená Giacomem Zuccem, nabízí intenzivní tříměsíční vzdělávací programy navržené tak, aby překlenuly propast mezi učením a reálnými aplikacemi. Mimo tradiční třídy se studenti zapojují do praktických projektů vedených společnostmi a prvotřídního bootcampu věnovaného nejlepším výkonům. Pouze nejlepší talenty postupují po dvou konkurenčních výběrových kolech, což zajišťuje, že koneční top studenti jsou plně vybaveni k zahájení své kariéry v průmyslu Bitcoinu."
     },
     "part": {
       "count": "Část {{count}}"

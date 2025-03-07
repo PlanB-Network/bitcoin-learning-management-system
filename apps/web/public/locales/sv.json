@@ -142,7 +142,9 @@
       "findCourses": "Hitta den perfekta kursen för dina behov tack vare verktyget för kursval",
       "buildPath": "Skapa din egen väg ner i kaninhålet",
       "exploreCourses": "Utforska alla Plan ₿-kurser",
-      "journey": "Bitcoin är en resa, inte en destination"
+      "journey": "Bitcoin är en resa, inte en destination",
+      "planbSchoolHeadline": "Plan ₿ School, ledd av Giacomo Zucco, erbjuder intensiva tre månaders utbildningsprogram designade för att överbrygga klyftan mellan inlärning och verkliga tillämpningar. Utöver traditionella klasser engagerar sig studenter i företagsledda praktiska projekt och en förstklassig bootcamp dedikerad till topprestatörer. Endast de bästa talangerna avancerar efter två konkurrenskraftiga urvalsrundor, vilket säkerställer att de slutliga toppstudenterna blir fullt utrustade för att lansera sina karriärer inom Bitcoin-industrin.",
+      "planbSchool": "PLAN ₿ SCHOOL"
     },
     "part": {
       "count": "Del {{count}}"

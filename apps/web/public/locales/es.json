@@ -708,7 +708,10 @@
       "limitation": "Limitación",
       "max_capacity": "Capacidad máxima de",
       "payment_successful": "¡Reservación exitosa!",
-      "time": "Hora"
+      "time": "Hora",
+      "description_online": "Por favor revisa la fecha y hora del evento proporcionada.\nCuando llegue el momento, inicia sesión en la plataforma para acceder a la transmisión en vivo a través de la página del evento.",
+      "callout_replay": "Estás a punto de reservar el acceso al vídeo de repetición de este evento.",
+      "description_physical": "Por favor revisa los detalles del lugar proporcionados.\nUna vez confirmada tu reserva, emitiremos un ticket para presentar en el evento. Este boleto también te otorgará acceso a la transmisión en vivo y a la repetición del video, si está disponible."
     },
     "errors": {
       "premiumContentNeedsLogin": "Necesitas iniciar sesión para acceder a este evento.",
@@ -763,7 +766,10 @@
     },
     "blogSection": {
       "description": "Seguimos mejorando la plataforma, el contenido y la red. ¡Échale un vistazo!",
-      "seeAll": "Ver todo"
+      "seeAll": "Ver todo",
+      "noBlogsAvailable": "No hay blogs disponibles.",
+      "noDateAvailable": "No hay fechas disponibles",
+      "blogTitle": "Novedades en Plan ₿ Network"
     },
     "courseSection": {
       "checkAllCourses": "Ver todos los cursos",
@@ -772,7 +778,8 @@
     },
     "eventSection": {
       "checkEvents": "Ver todos los eventos",
-      "eventTitle": "Una Red Global de Educadores de Bitcoin"
+      "eventTitle": "Una Red Global de Educadores de Bitcoin",
+      "hottestEvent": "El evento de Bitcoin más destacado"
     }
   },
   "imagesAlt": {
@@ -1197,11 +1204,21 @@
   },
   "lectures": {
     "checkFullCourse": "Explora el curso completo",
-    "buyVideoToUnlock": "Compra el video para desbloquearlo"
+    "buyVideoToUnlock": "Compra el video para desbloquearlo",
+    "lecturePartCourse": "Esta repetición de la lección es parte del curso <0>{{courseTitle}}</0>.\n¡Sumérgete en el curso completo para dominar todo el concepto y liberar todo tu potencial!",
+    "pageTitle": "Reproducciones de Conferencias",
+    "partCourse": "Esta conferencia es parte del curso:",
+    "watchLecture": "Ver la repetición de la conferencia"
   },
   "youtubeChannels": {
     "pageTitle": "Canales de Youtube",
     "view": "Ver Canal de Youtube",
     "watchTrailer": "Ver el tráiler"
+  },
+  "filters": {
+    "categories": "Categorías",
+    "levels": "Niveles",
+    "resources": "Recursos",
+    "topics": "Temas"
   }
 }

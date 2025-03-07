@@ -128,7 +128,9 @@
       "exploreCourses": "",
       "journey": "",
       "findCourses": "",
-      "seeCourse": ""
+      "seeCourse": "",
+      "planbSchoolHeadline": "Plan ₿ School, jota johtaa Giacomo Zucco, tarjoaa intensiivisiä kolmen kuukauden koulutusohjelmia, jotka on suunniteltu kaventamaan kuilua oppimisen ja todellisen maailman sovellusten välillä. Perinteisten luokkien lisäksi opiskelijat osallistuvat yritysten johtamiin käytännön projekteihin ja ensiluokkaiseen bootcampiin, joka on omistettu parhaille suorittajille. Vain parhaat lahjakkuudet etenevät kahden kilpailukykyisen valintakierroksen jälkeen, varmistaen, että lopulliset huippuopiskelijat varustetaan täysin aloittamaan uransa Bitcoin-teollisuudessa.",
+      "planbSchool": "PLAN ₿ SCHOOL"
     },
     "part": {
       "count": "Jakso {{count}}"

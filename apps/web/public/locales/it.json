@@ -7,7 +7,7 @@
     "commitmentTitle": "I nostri impegni",
     "commitmentContent": "I nostri impegni nei confronti della comunità bitcoin sono i seguenti: \n • Rimanere open-source \n • Fornire contenuti educativi di alta qualità \n • Tradurre i nostri contenuti in quante più lingue possibili \n • Supportare i \"creators\" del mondo Bitcoin nel loro viaggio di imprenditorialità",
     "coreTeamTitle": "Il team principale",
-    "coreTeamContent": "Plan ₿ Network è un collettivo di centinaia di collaboratori, insegnanti, leader della comunità, designer, sviluppatori e organizzatori. Un grazie ringraziamento va alle diverse persone che hanno reso \nPlan ₿ Network una realtà e continuano a farlo ogni giorno",
+    "coreTeamContent": "Plan ₿ Network è una rete di centinaia di collaboratori, insegnanti, community leader, designer, sviluppatori e organizzatori. Un grazie ringraziamento va alle diverse persone che hanno reso Plan ₿ Network una realtà e continuano a farlo ogni giorno",
     "coreTeamGiacomoRole": "Direttore e cofondatore",
     "coreTeamRogzyRole": "Product manager & Co-fondatore",
     "coreTeamAsioRole": "Coordinatore educativo",
@@ -30,7 +30,7 @@
     "createOne": "Registrati qui!",
     "emailAddress": "Indirizzo e-mail",
     "errors": {
-      "usernameRegex": "Il nome utente può contenere solo lettere, cifre, \"_\" , e \"-\"",
+      "usernameRegex": "Il nome utente può contenere solo lettere, cifre, trattini bassi(_), punti (.) , e trattini (-)",
       "usernameRequired": "È richiesto il nome utente.",
       "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri.",
       "displayNameTooShort": "Lo username deve contenere almeno due caratteri.",
@@ -67,7 +67,7 @@
     "tryAgain": "Prova ancora",
     "confirmation": "Conferma",
     "displayName": "Nome visualizzato",
-    "emailTip": "L'email non è obbligatoria, ma può essere utile in caso in cui la password venga dimenticata",
+    "emailTip": "L'email non è obbligatoria, ma può essere utile in caso in cui la password venga dimenticata!",
     "dashboardUnlocked": "La tua bacheca studente è sbloccata!",
     "trackProgress": "Crea un account o accedi per tenere traccia dei tuoi progressi",
     "didYouKnow": "Lo sapevi?",
@@ -78,7 +78,7 @@
       "description": "Questo contenuto è destinato ad essere pronto all'uso per eventi ed uso didattico.",
       "title": "Contenuto Educativo"
     },
-    "pageDescription": "The Sovereign University  supporta gli educatori bitcoin e le comunità locali di tutto il mondo, per aiutare a diffondere l'adozione bitcoin. Verso questo obiettivo, raccogliamo e rendiamo accessibile un grande database, sia contenuti educativi (creati da noi e da altri), così come dati visivi.",
+    "pageDescription": "Non è semplice arrivare all'adozione globale. Per raggiungere questo obiettivo più velocemente, abbiamo creato un database di contenuti educativi. Qui, gli educatori possono aggiungere o accedere ai contenuti liberamente. Non bisogna rifare tutto da capo ogni volta, per cui è importante lavorare insieme per centralizzare le risorse più utili in un unico toolkit!",
     "pageTitle": "Kit Educativo Bitcoin",
     "visualContent": {
       "description": "Le immagini seguenti possono essere usate per le tue creazioni.",
@@ -91,7 +91,7 @@
   "courses": {
     "chapter": {
       "finishCourse": "Termina il corso",
-      "next": "Fatto, andiamo al prossimo capitolo!",
+      "next": "Completa il capitolo",
       "thanksTip": "Vuoi mostrare il tuo apprezzamento?\nPuoi supportare l'autore con una mancia.",
       "detail": {
         "title": "Dettagli della lezione",
@@ -106,7 +106,7 @@
       },
       "live": {
         "title": "Video in diretta",
-        "stayTuned": "La diretta inizierà mezz'ora prima dell'inizio della lezione. Rimanete sintonizzati."
+        "stayTuned": "La diretta inizierà mezz'ora prima dell'inizio della lezione. Rimani sintonizzato!"
       },
       "nextLesson": "La prossima lezione sarà"
     },
@@ -519,7 +519,13 @@
         "lastUpdated": "Ultimo aggiornamento",
         "resultsRemaining": "{{results}} risultati rimasti",
         "careersSubtitle": "Qui puoi visualizzare l'elenco dei partecipanti che hanno completato le loro domande. Puoi trovare tutte le informazioni sulle domande all'interno del foglio di calcolo."
-      }
+      },
+      "accessGranted": "Accesso concesso",
+      "coursesIndexes": "Indice dei corsi",
+      "deleteRole": "Elimina ruolo",
+      "editRole": "Modifica ruolo",
+      "hasAccessTo": "Ha accesso a:",
+      "selectRole": "Seleziona ruolo"
     },
     "studentDashboard": "Pannello dello studente",
     "backToDashboard": "Torna alla dashboard",
@@ -865,7 +871,8 @@
     "protocolDescription": "Scopri le regole fondamentali che alimentano la rete Bitcoin.",
     "lecturesDescription": "Rivedi delle presentazioni registrate dagli esperti di Bitcoin",
     "moviesDescription": "Scopri delle interessanti storie e degli approfondimenti sull'evoluzione e sull'impatto di Bitcoin",
-    "projectsDescription": "Scopri le imprese e i progetti che contribuiscono al miglioramento di Bitcoin e ad incrementare la sua adozione"
+    "projectsDescription": "Scopri le imprese e i progetti che contribuiscono al miglioramento di Bitcoin e ad incrementare la sua adozione",
+    "planBLabsDescription": "Unisciti a un gruppo di studio per continuare a studiare Lightning, Mining e Privacy"
   },
   "nodeNetwork": {
     "apply": "Fai richiesta per diventare trader",
@@ -1232,7 +1239,8 @@
     "incomplete": "Incompleto",
     "name": "Nome",
     "project": "Progetto",
-    "email": "Email"
+    "email": "Email",
+    "save": "Salva"
   },
   "conferences": {
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",
@@ -1265,10 +1273,10 @@
   },
   "bCert": {
     "bookExam": "Prenota una sessione di test",
-    "challengeYourself": "Sfida te stesso e dimostra il tuo livello!",
+    "challengeYourself": "Sfida te stesso e dimostra il tuo livello",
     "knowledgeableBitcoin": "Quanto sai su Bitcoin?",
     "noBookExam": "Nessuna sessione di test in programma.",
-    "organizeDescription": "Grande idea! Se la tua comunità fa parte di Plan ₿ Network, è possibile organizzare una sessione di ₿-CERT presso il tuo hub. Leggi il regolamento per assicurarti che tu possa soddisfare tutte le condizioni obbligatorie per ospitare un test. Nel caso positivo, puoi pianificare una sessione e aggiungere l'evento alla piattaforma di Plan ₿ Network.",
+    "organizeDescription": "Grande idea! Se la tua community fa parte di Plan ₿ Network, puoi organizzare una sessione di ₿-CERT presso il tuo hub. \nLeggi il regolamento per assicurarti che tu possa soddisfare tutte le condizioni obbligatorie per ospitare un test. Nel caso positivo, puoi pianificare una sessione e aggiungere l'evento alla piattaforma di Plan ₿ Network.",
     "organizeExam": "Organizza una sessione",
     "organizeSubtitle": "Orange-pillare un miliardo di persone non è facile",
     "pageSubtitle": "Adozione globale attraverso un'educazione centralizzata open-source",
@@ -1399,7 +1407,8 @@
     "conference_replay": "Replay di conferenze",
     "conference_replays": "Replay di conferenze",
     "lecture_replay": "Replay della lezione",
-    "projects": "Progetti"
+    "projects": "Progetti",
+    "conference": "Conferenza"
   },
   "projects": {
     "languages": "Lingue",
@@ -1407,12 +1416,19 @@
     "noRelatedEvents": "Non ci sono eventi programmati di questo educatore al momento.",
     "otherCommunities": "Esplora le comunità Plan ₿",
     "pageTitle": "Progetti Bitcoin",
-    "relatedEvents": "Eventi futuri correlati"
+    "relatedEvents": "Eventi futuri correlati",
+    "related": "Correlato"
   },
   "filters": {
     "topics": "Argomenti",
     "categories": "Categorie",
     "levels": "Livelli",
     "resources": "Risorse"
+  },
+  "labs": {
+    "description1": "I Plan ₿ Labs sono gruppi di studio progettati per offrire periodicamente classi pratiche e interattive. Attraverso questi gruppi di studio, studenti e professori si portano avanti discussioni e dibattiti sulle ultime ricerche, risolvendo delle sfide legate al mondo reale, e applicandovi anche concetti teorici.",
+    "description2": "Unisciti al Plan ₿ Lab che si allinea con il tuo campo di studio. Migliora la tua esperienza di apprendimento!",
+    "planBLabs": "Plan ₿ Labs",
+    "title": "Lezioni pratiche e interattive per un apprendimento continuo"
   }
 }
