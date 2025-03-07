@@ -12,7 +12,7 @@ type ConferenceMeta = Pick<
   | 'lastCommit'
 >;
 
-export const getConferenceMetaQuery = (resourceId: number) => {
+export const getConferenceMetaQuery = (resourceId: string) => {
   return sql<ConferenceMeta[]>`
     SELECT
       r.id,

@@ -6,7 +6,7 @@ type ProjectMeta = Pick<
   'id' | 'path' | 'name' | 'language' | 'description' | 'lastCommit'
 >;
 
-export const getProjectMetaQuery = (id: number, language?: string) => {
+export const getProjectMetaQuery = (resourceId: string, language?: string) => {
   return sql<ProjectMeta[]>`
     SELECT
       r.id,
@@ -18,7 +18,7 @@ export const getProjectMetaQuery = (id: number, language?: string) => {
     FROM content.projects b
     JOIN content.resources r ON r.id = b.resource_id
     JOIN content.projects_localized bl ON bl.id = b.id
-    WHERE r.id = ${id}
+    WHERE r.id = ${resourceId}
     ${language ? sql`AND bl.language = LOWER(${language})` : sql``}
   `;
 };
