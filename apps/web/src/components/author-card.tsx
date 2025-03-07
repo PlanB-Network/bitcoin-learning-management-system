@@ -37,7 +37,7 @@ export const AuthorCard = ({
             centeredContent && 'items-center',
           )}
         >
-          <p className="body-16px text-newBlack-1 md:max-w-[596px] w-full text-justify">
+          <p className="body-16px md:max-w-[596px] w-full text-justify">
             {professor.bio}
           </p>
           <div className="mt-[18px] md:mt-4 flex flex-wrap gap-2.5 items-center">

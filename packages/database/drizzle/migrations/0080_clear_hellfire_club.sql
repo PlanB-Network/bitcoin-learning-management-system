@@ -1,0 +1,1 @@
+ALTER TABLE "content"."labs_sessions" ADD COLUMN "title" varchar(100);

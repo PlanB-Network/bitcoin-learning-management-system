@@ -1,20 +1,11 @@
 import { z } from 'zod';
 
-import { createGetLegal, createGetLegals } from '@blms/service-content';
+import { joinedLegalSchema } from '@blms/schemas';
+import { createGetLegal } from '@blms/service-content';
+import type { JoinedLegal } from '@blms/types';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
-
-const getLegalsProcedure = publicProcedure
-  .input(
-    z
-      .object({
-        language: z.string().optional(),
-      })
-      .optional(),
-  )
-  .query(({ ctx, input }) =>
-    createGetLegals(ctx.dependencies)(input?.language),
-  );
+import type { Parser } from '#src/trpc/types.js';
 
 const getLegalProcedure = publicProcedure
   .input(
@@ -23,6 +14,7 @@ const getLegalProcedure = publicProcedure
       language: z.string(),
     }),
   )
+  .output<Parser<JoinedLegal>>(joinedLegalSchema)
   .query(({ ctx, input }) =>
     createGetLegal(ctx.dependencies)({
       name: input.name,
@@ -31,6 +23,5 @@ const getLegalProcedure = publicProcedure
   );
 
 export const legalsRouter = createTRPCRouter({
-  getLegals: getLegalsProcedure,
   getLegal: getLegalProcedure,
 });

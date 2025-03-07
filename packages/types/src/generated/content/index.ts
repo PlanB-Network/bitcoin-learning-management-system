@@ -11,6 +11,7 @@ export type * from './coupon.js';
 export type * from './course.js';
 export type * from './event.js';
 export type * from './glossary.js';
+export type * from './lab.js';
 export type * from './movie.js';
 export type * from './podcast.js';
 export type * from './professor.js';

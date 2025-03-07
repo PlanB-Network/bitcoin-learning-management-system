@@ -916,6 +916,7 @@
     "pageTitle": "Bitcoin Library"
   },
   "labs": {
+    "coordinatedBy": "This lab is coordinated by",
     "description1": "Plan ₿ Labs are study groups designed to provide students with regular practical and interactive classes. Through these study groups, students and professors engage in discussions, debating the latest research, solving real-world challenges, and applying theoretical concepts.",
     "description2": "Join the Lab that aligns with your field of study and enhance your learning experience!",
     "planBLabs": "Plan ₿ Labs",
