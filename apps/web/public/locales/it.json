@@ -466,7 +466,7 @@
       "feedbacks": "Qui puoi rivedere e modificare le valutazioni e i feedback che hai dato a questo corso.",
       "ratingsAndFeedbacks": "Valutazioni e feedback",
       "shareOnSocials": "Condividi sui social:",
-      "tweetText": "Felice di aver completato il corso {{courseId}} su @planb_network e aver ottenuto la certificazione con un punteggio di {{score}}/100 all'esame finale! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "Felice di aver completato il corso {{courseIndex}} su @planb_network e aver ottenuto la certificazione con un punteggio di {{score}}/100 all'esame finale! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Ecco un riassunto di ciò che hai appreso. Se hai tralasciato alcuni capitoli o non li hai validati correttamente, ora è il momento di farlo. Puoi tornare indietro per rivedere il contenuto, o puoi premere il pulsante di completamento.",
       "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione."
     },

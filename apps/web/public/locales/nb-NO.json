@@ -664,7 +664,7 @@
       "feedbacks": "Et kapittel mot slutten av kurset er dedikert til tilbakemeldinger. Hvis du ønsker å gi din tilbakemelding nå, kan du gjøre det her.",
       "ratingsAndFeedbacks": "Vurderinger & Tilbakemeldinger",
       "checkDetailsCompleted": "Her kan du sjekke alle detaljene angående dette kurset du fullførte.",
-      "tweetText": "Begeistret for å ha fullført {{courseId}} kurs på @planb_network og tjent sertifikatet mitt med en score på {{score}}/100 på slutteksamen! {{emoji}}\n\n{{certificateUrl}}",
+      "tweetText": "Begeistret for å ha fullført {{courseIndex}} kurs på @planb_network og tjent sertifikatet mitt med en score på {{score}}/100 på slutteksamen! {{emoji}}\n\n{{certificateUrl}}",
       "coursesCompleted": "Fullførte kurs",
       "shareOnSocials": "Del på sosiale medier:",
       "conclusionHeadline": "Her er en oppsummering av det du har lært. Hvis noen kapitler er blitt oversett eller ikke er blitt validert ordentlig, er det nå tid for å gjøre det, enten ved å gå tilbake for å lære, eller ved å trykke på fullfør-knappen.",

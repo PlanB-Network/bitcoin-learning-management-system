@@ -554,7 +554,7 @@
       "feedbacks": "Tại đây, bạn có thể kiểm tra và chỉnh sửa các xếp hạng và phản hồi mà bạn đã đưa ra cho khoá học này.",
       "ratingsAndFeedbacks": "Các xếp hạng và phản hồi",
       "shareOnSocials": "Chia sẻ trên mạng xã hội:",
-      "tweetText": "Vui mừng vì đã hoàn thành khoá học {{courseId}} tại @planb_network và nhận được chứng chỉ của tôi với điểm số {{score}}/100 ở bài kiểm tra cuối khoá! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "Vui mừng vì đã hoàn thành khoá học {{courseIndex}} tại @planb_network và nhận được chứng chỉ của tôi với điểm số {{score}}/100 ở bài kiểm tra cuối khoá! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Đây là bản tòm tắt của những gì bạn đã học được. Nếu một số chương bị bỏ sót hoặc không được xác thực đúng cách, bây giờ là lúc để làm điều đó, hoặc là quay lại để học, hoặc là nhấp vào nút hoàn thành.",
       "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này."
     },

@@ -35,7 +35,7 @@ function DashboardCompletedCourses() {
     () =>
       completedCourses
         ? completedCourses.map((course) => ({
-            value: course.courseId,
+            value: course.courseIndex,
             key: course.courseId,
             text: addSpaceToCourseIndex(course.courseIndex).toUpperCase(),
           }))
@@ -96,7 +96,8 @@ function DashboardCompletedCourses() {
           {tabs.map((tab) => (
             <TabsContent key={tab.value} value={tab.value}>
               <CompletedCourseDetails
-                courseId={tab.value}
+                courseId={tab.key}
+                courseIndex={tab.value}
                 courseProgress={
                   completedCourses?.find(
                     (course) => course.courseId === tab.value,
@@ -113,9 +114,11 @@ function DashboardCompletedCourses() {
 
 const CompletedCourseDetails = ({
   courseId,
+  courseIndex,
   courseProgress,
 }: {
   courseId: string;
+  courseIndex: string;
   courseProgress: CourseProgressExtended;
 }) => {
   const { i18n } = useTranslation();
@@ -176,6 +179,7 @@ const CompletedCourseDetails = ({
               />
               <CourseExams
                 courseId={courseId}
+                courseIndex={courseIndex}
                 examLink={`/courses/${courseId}/${
                   course.parts
                     .find((part) =>

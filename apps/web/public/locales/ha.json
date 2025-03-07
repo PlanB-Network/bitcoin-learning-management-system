@@ -419,7 +419,7 @@
       "completionDiploma": "Takardun kammala kwas",
       "completionExamInfo": "A nan zaka/ki iya samun bayanan da suka shafi jarabawar ƙarhse a ƙarshen wannan kwas ɗin.",
       "coursesCompleted": "Kwasa-kwasan da aka kammala",
-      "tweetText": "Ina farin cikin kammala kwas din {{courseId}} a @planb_network da kuma samun takardar shaida ta tare da maki {{score}}/100 a jarabawar ƙarshe! {{emoji}}\n\n{{certificateUrl}}",
+      "tweetText": "Ina farin cikin kammala kwas din {{courseIndex}} a @planb_network da kuma samun takardar shaida ta tare da maki {{score}}/100 a jarabawar ƙarshe! {{emoji}}\n\n{{certificateUrl}}",
       "feedbacks": "Akwai wani babi a ƙarshen kwas ɗinnan da aka keɓe don ra'ayoyi. Idan kuna son ba da ra'ayinku yanzu, za ku iya yin hakan anan.",
       "ratingsAndFeedbacks": "Bayanai da Ra'ayoyi",
       "shareOnSocials": "Yada akan kafofin sada zumunta:"

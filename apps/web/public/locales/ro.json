@@ -493,7 +493,7 @@
       "feedbacks": "Un capitol la sfârșitul cursului este dedicat feedback-urilor. Dacă doriți să vă dați feedback-ul acum, puteți să o faceți aici.",
       "ratingsAndFeedbacks": "Evaluări și feedback-uri",
       "shareOnSocials": "Share pe rețelele sociale:",
-      "tweetText": "Bucuros că am finalizat cursul {{courseId}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
+      "tweetText": "Bucuros că am finalizat cursul {{courseIndex}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
       "conclusionHeadline": "Iată un rezumat a ceea ce ai învățat. Dacă unele capitole au fost omise sau nu au fost validate corespunzător, acum este momentul să o faci, fie întorcându-te să înveți, fie apăsând pe butonul de completare.",
       "submitReviewInfo": "Trebuie să trimiți o recenzie pentru a avea acces la această funcție."
     },

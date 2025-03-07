@@ -681,7 +681,7 @@
       "feedbacks": "在这里，您可以查看并编辑您为此课程的评价和反馈。",
       "ratingsAndFeedbacks": "评价与反馈",
       "shareOnSocials": "在社交媒体上分享：",
-      "tweetText": "很高兴完成了在@planb_network的{{courseId}} 课程并获得了文凭，期末考试得分为{{score}}/100！{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "很高兴完成了在@planb_network的{{courseIndex}} 课程并获得了文凭，期末考试得分为{{score}}/100！{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "这是您所学内容的总结。如果还有您错过或为未验证的一些章节，您可以现在通过返回学习或点击完成按钮来处理。",
       "submitReviewInfo": "您必须提交评论以访问此功能。"
     },

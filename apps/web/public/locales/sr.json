@@ -390,7 +390,7 @@
     "course": {
       "completionDiploma": "Diploma o završenom kursu",
       "completionExamInfo": "Ovde možete pronaći informacije o završnom ispitu na kraju ovog kursa.",
-      "tweetText": "Oduševljen/a sam što sam završio/la {{courseId}} kurs na @planb_network i stekao/la diplomu sa osvojenih {{score}}/100 poena na završnom ispitu! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "Oduševljen/a sam što sam završio/la {{courseIndex}} kurs na @planb_network i stekao/la diplomu sa osvojenih {{score}}/100 poena na završnom ispitu! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "feedbacks": "Poglavlje na kraju kursa je posvećeno davanju povratnih informacija. Ako želite da date svoje mišljenje sada, možete to učiniti ovde.",
       "ratingsAndFeedbacks": "Ocene i povratne informacije",
       "shareOnSocials": "Podelite na društvenim mrežama:",

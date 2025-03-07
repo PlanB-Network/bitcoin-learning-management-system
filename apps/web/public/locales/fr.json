@@ -449,7 +449,7 @@
       "ratingsAndFeedbacks": "Évaluations et commentaires",
       "coursesCompleted": "Cours terminés",
       "checkDetailsCompleted": "Ici vous pouvez vérifier tous les détails concernant le parcours que vous avez complété.",
-      "tweetText": "Fier d'avoir terminé le cours {{courseId}} chez @planb_network et d'avoir obtenu mon certificat avec un score de {{score}}/100 à l'examen final ! {{emoji}}\n\n{{certificateUrl}}",
+      "tweetText": "Fier d'avoir terminé le cours {{courseIndex}} chez @planb_network et d'avoir obtenu mon certificat avec un score de {{score}}/100 à l'examen final ! {{emoji}}\n\n{{certificateUrl}}",
       "shareOnSocials": "Partager sur les réseaux :",
       "submitReviewInfo": "Vous devez soumettre un avis pour avoir accès à cette fonctionnalité.",
       "conclusionHeadline": "Voici un résumé de ce que vous avez appris. Si certains chapitres sont manquants ou n'ont pas été validés correctement, c'est maintenant le moment de le faire, soit en revenant pour apprendre, soit en appuyant sur le bouton terminer."

@@ -445,7 +445,7 @@
       "feedbacks": "Ett kapitel i slutet av kursen är ägnat åt feedback. Om du vill ge din feedback nu kan du göra det här.",
       "ratingsAndFeedbacks": "Betyg och återkoppling",
       "shareOnSocials": "Dela på sociala medier:",
-      "tweetText": "Överlycklig över att ha slutfört {{courseId}} kursen på @planb_network och tjänat mitt certifikat med ett resultat på {{score}}/100 på slutprovet! {{emoji}}\n\n{{certificateUrl}}",
+      "tweetText": "Överlycklig över att ha slutfört {{courseIndex}} kursen på @planb_network och tjänat mitt certifikat med ett resultat på {{score}}/100 på slutprovet! {{emoji}}\n\n{{certificateUrl}}",
       "conclusionHeadline": "Här är en sammanfattning av vad du har lärt dig. Om vissa kapitel har missats eller inte har validerats ordentligt, är det nu dags att göra det, antingen genom att gå tillbaka för att lära dig, eller genom att klicka på slutför-knappen.",
       "submitReviewInfo": "Du måste skicka in en recension för att få tillgång till denna funktion."
     },

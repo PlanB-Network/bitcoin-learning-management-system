@@ -462,7 +462,7 @@
       "completionDiploma": "Abschlussdiplom",
       "completionExamInfo": "Sie müssen die Prüfung ablegen, um Zugang zu dieser Funktion zu erhalten.",
       "shareOnSocials": "Auf sozialen Netzwerken teilen:",
-      "tweetText": "Ich freue mich, den {{courseId}} Kurs bei @planb_network abgeschlossen zu haben und mein Diplom mit einer Punktzahl von {{score}}/100 in der Abschlussprüfung zu erhalten! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "Ich freue mich, den {{courseIndex}} Kurs bei @planb_network abgeschlossen zu haben und mein Diplom mit einer Punktzahl von {{score}}/100 in der Abschlussprüfung zu erhalten! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "feedbacks": "Hier können Sie die Bewertungen und das Feedback, das Sie zu diesem Kurs abgegeben haben, überprüfen und bearbeiten.",
       "ratingsAndFeedbacks": "Bewertungen & Rückmeldungen",
       "checkDetailsCompleted": "Hier können Sie alle Details zu dem von Ihnen absolvierten Kurs überprüfen.",

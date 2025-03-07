@@ -466,7 +466,7 @@
       "feedbacks": "ここでは、あなたがこのコースにつけた評価やフィードバックを確認・編集することができます。",
       "ratingsAndFeedbacks": "評価とフィードバック",
       "shareOnSocials": "SNSで共有する：",
-      "tweetText": "@planb_network の{{courseId}}コースを完了し、最終試験で100点中{{score}}点を獲得。修了証書がもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "@planb_network の{{courseIndex}}コースを完了し、最終試験で100点中{{score}}点を獲得。修了証書がもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "以下は、あなたが学んだことの要約です。 もし見逃してしまった章があったり、正しく検証されていない章がある場合は、今すぐ戻って学習するか、完了ボタンを押してください。",
       "submitReviewInfo": "この機能を利用するには、レビューを投稿する必要があります。"
     },

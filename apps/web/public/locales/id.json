@@ -452,7 +452,7 @@
       "feedbacks": "Di sini anda dapat memeriksa dan mengedit penilaian dan umpan balik yang telah anda berikan untuk kursus ini.",
       "ratingsAndFeedbacks": "Penilaian & Umpan Balik",
       "shareOnSocials": "Bagikan di media sosial:",
-      "tweetText": "Senang sekali telah menyelesaikan {{courseId}} di @planb_network dan mendapatkan ijazah dengan nilai {{score}}/100 pada ujian akhir!{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "Senang sekali telah menyelesaikan {{courseIndex}} di @planb_network dan mendapatkan ijazah dengan nilai {{score}}/100 pada ujian akhir!{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Berikut ini adalah ringkasan dari apa yang telah anda pelajari. Jika ada beberapa bab yang terlewatkan atau belum divalidasi dengan benar, sekaranglah waktunya untuk melakukannya, baik dengan kembali belajar, atau dengan menekan tombol selesaikan.",
       "submitReviewInfo": "Anda harus mengirimkan ulasan untuk dapat mengakses fitur ini."
     },

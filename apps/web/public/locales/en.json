@@ -624,7 +624,7 @@
       "ratingsAndFeedbacks": "Ratings & Feedbacks",
       "shareOnSocials": "Share on socials:",
       "submitReviewInfo": "You have to submit a review to have access to this feature.",
-      "tweetText": "Thrilled to have completed {{courseId}} course at @planb_network and earned my diploma with a score of {{score}}/100 on the final exam! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "tweetText": "Thrilled to have completed {{courseIndex}} course at @planb_network and earned my diploma with a score of {{score}}/100 on the final exam! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
     },
     "courses": "Courses",
     "credentials": {

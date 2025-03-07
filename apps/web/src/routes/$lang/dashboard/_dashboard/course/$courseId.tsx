@@ -149,6 +149,7 @@ function DashboardStudentCourse() {
               <TabsContent value="exam">
                 <CourseExams
                   courseId={params.courseId}
+                  courseIndex={course.index}
                   examLink={`/courses/${params.courseId}/${
                     course.parts
                       .find((part) =>
@@ -284,10 +285,12 @@ const CourseProgress = ({
 
 export const CourseExams = ({
   courseId,
+  courseIndex,
   examLink,
   openLastExam = true,
 }: {
   courseId: string;
+  courseIndex: string;
   examLink: string;
   openLastExam?: boolean;
 }) => {
@@ -324,6 +327,7 @@ export const CourseExams = ({
         <CourseExamsTable
           examResults={examResults}
           courseId={courseId}
+          courseIndex={courseIndex}
           examLink={examLink}
           openLastExam={openLastExam}
         />
@@ -335,11 +339,13 @@ export const CourseExams = ({
 const CourseExamsTable = ({
   examResults,
   courseId,
+  courseIndex,
   examLink,
   openLastExam,
 }: {
   examResults: CourseExamResults[];
   courseId: string;
+  courseIndex: string;
   examLink: string;
   openLastExam?: boolean;
 }) => {
@@ -497,7 +503,7 @@ const CourseExamsTable = ({
                             <Link
                               to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                                 t('dashboard.course.tweetText', {
-                                  courseId: courseId.toUpperCase(),
+                                  courseIndex: courseIndex.toUpperCase(),
                                   certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
                                   score: `${exam.score}`,
                                   emoji:
@@ -533,7 +539,7 @@ const CourseExamsTable = ({
                         <Link
                           to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             t('dashboard.course.tweetText', {
-                              courseId: courseId.toUpperCase(),
+                              courseIndex: courseIndex.toUpperCase(),
                               certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
                               score: `${exam.score}`,
                               emoji:

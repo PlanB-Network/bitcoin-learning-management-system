@@ -41,6 +41,7 @@ import PlanbSchoolLogo from '#src/assets/courses/planb_school_logo.svg';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
 
@@ -684,13 +685,17 @@ function CourseDetails() {
           if (!pdf) {
             pdf = await downloadTicketMutateAsync({
               title: course.name,
-              addressLine1: '',
-              addressLine2: '',
-              addressLine3: '',
+              addressLine1: '', // TODO ADD
+              addressLine2: '', // TODO ADD
+              addressLine3: '', // TODO ADD
               formattedStartDate: `Start date: ${formatDate(course.startDate)}`,
               formattedTime: `End date: ${formatDate(course.endDate)}`,
-              liveLanguage: '',
-              availableSeats: null,
+              liveLanguage:
+                LANGUAGES_MAP[
+                  course.originalLanguage.toLowerCase().replaceAll('-', '')
+                ],
+              organizer: 'Plan ₿ Network', // TODO or projectId if any
+              availableSeats: course.availableSeats,
               userName: user ? user.username : '',
             });
             setDownloadedPdf(pdf);

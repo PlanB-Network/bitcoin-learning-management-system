@@ -341,6 +341,7 @@ const downloadChapterTicketProcedure = studentProcedure
       liveLanguage: z.string().nullable(),
       availableSeats: z.number().nullable(),
       userName: z.string(),
+      organizer: z.string().optional(),
     }),
   )
   .output<Parser<string>>(z.string())

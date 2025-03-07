@@ -508,7 +508,7 @@
       "ratingsAndFeedbacks": "評分與回饋",
       "completionExamInfo": "您可以在這裡找到有關課程結業考試的相關資訊。",
       "shareOnSocials": "在社群媒體上分享：",
-      "tweetText": "很高興您完成了 @planb_network 的 {{courseId}} 課程，並且在期末考中獲得了 {{score}}/100 的成績，順利取得我的文憑！{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "很高興您完成了 @planb_network 的 {{courseIndex}} 課程，並且在期末考中獲得了 {{score}}/100 的成績，順利取得我的文憑！{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "這是您所學習內容的摘要。如果有些章節未學習或未正確完成，您可以現在進行補充，也可以回頭學習或直接按下完成按鈕。",
       "submitReviewInfo": "您必須提交評論才能使用此功能。"
     },

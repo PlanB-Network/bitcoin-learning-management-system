@@ -463,7 +463,7 @@
       "feedbacks": "Un capítulo al final del curso está dedicado a las reseñas. Si deseas dar tu reseña ahora, puedes hacerlo aquí.",
       "ratingsAndFeedbacks": "Calificaciones y Reseñas",
       "shareOnSocials": "Compartir en redes sociales:",
-      "tweetText": "Emocionado de haber completado el curso {{courseId}} en @planb_network y obtenido mi certificado con una puntuación de {{score}}/100 en el examen final! {{emoji}}\n\n{{certificateUrl}}",
+      "tweetText": "Emocionado de haber completado el curso {{courseIndex}} en @planb_network y obtenido mi certificado con una puntuación de {{score}}/100 en el examen final! {{emoji}}\n\n{{certificateUrl}}",
       "checkDetailsCompleted": "Aquí puedes revisar todos los detalles relacionados con este curso que completaste.",
       "completionDiploma": "Diploma de finalización",
       "conclusionHeadline": "A continuación te mostramos un resumen de lo que has aprendido. Si te has saltado alguno de los capítulos o no los has validado correctamente, ahora es el momento de hacerlo, ya sea volviendo a aprender o presionando el botón de completar.",
