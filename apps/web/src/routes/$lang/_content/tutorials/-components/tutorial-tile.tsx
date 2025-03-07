@@ -24,7 +24,7 @@ export const TutorialTile = ({
       >
         <img
           className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/project:blur-sm group-focus/project:blur-sm group-focus/project:brightness-[30%] transition-all bg-white/20"
-          src={assetUrl(tutorial.logoUrl, 'logo.webp')}
+          src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
           alt={tutorial.title}
         />
         <p className="absolute flex justify-center items-center size-full p-1 rounded-full text-center text-xs font-bold text-white group-hover/project:bg-black/60 opacity-0 group-hover/project:opacity-100 group-focus/project:opacity-100 transition-all">

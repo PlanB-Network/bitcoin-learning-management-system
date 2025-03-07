@@ -304,7 +304,11 @@ const CourseDetails = ({ course }: { course: JoinedCourse }) => {
             {/* Course image section */}
             <div className="w-full max-w-[406px] flex justify-center items-center max-lg:-order-1">
               <img
-                src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
+                src={assetUrl(
+                  `courses/${course.index}`,
+                  'thumbnail.webp',
+                  course.lastCommit,
+                )}
                 alt={course.name}
                 className="rounded-[20px] shadow-course-navigation"
               />

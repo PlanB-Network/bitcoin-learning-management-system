@@ -7,7 +7,7 @@ import { Loader, Switch } from '@blms/ui';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -85,7 +85,7 @@ function Podcasts() {
                 <ResourceCard
                   name={podcast.name}
                   author={podcast.host}
-                  imageSrc={assetUrl(podcast.path, 'logo.webp')}
+                  imageSrc={resourceImgUrl(podcast, 'logo.webp')}
                   language={podcast.language}
                 />
               </Link>
@@ -122,7 +122,7 @@ function Podcasts() {
                   <ResourceCard
                     name={podcast.name}
                     author={podcast.host}
-                    imageSrc={assetUrl(podcast.path, 'logo.webp')}
+                    imageSrc={resourceImgUrl(podcast, 'logo.webp')}
                     language={podcast.language}
                   />
                 </Link>

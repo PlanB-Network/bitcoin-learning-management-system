@@ -5,7 +5,7 @@ import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import type { JoinedBlogLight } from '@blms/types';
 
 import { ReactPlayer } from '#src/components/react-player.js';
-import { assetUrl } from '#src/utils/index.js';
+import { resourceImgUrl } from '#src/utils/index.js';
 
 const getBlog = (url: string, blogs: JoinedBlogLight[]) => {
   const pattern = /^https:\/\/planb\.network\/blogs\/(\d+)$/;
@@ -111,7 +111,7 @@ const BlogMarkdownBody = ({
                 className="flex max-md:flex-col items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
               >
                 <img
-                  src={assetUrl(blog.path, 'thumbnail.webp')}
+                  src={resourceImgUrl(blog)}
                   alt={blog.category}
                   className="size-20 rounded-full"
                 />

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { FeaturedCard } from '#src/organisms/featured-card.tsx';
 import { AppContext } from '#src/providers/context.js';
-import { assetUrl } from '#src/utils/index.js';
+import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 interface BlogListProps {
@@ -54,7 +54,7 @@ export const BlogList = ({ category }: BlogListProps) => {
             {sortedBlogs.slice(1).map((blog, index) => (
               <VerticalCard
                 key={blog.id}
-                imageSrc={assetUrl(blog.path, 'thumbnail.webp')}
+                imageSrc={resourceImgUrl(blog)}
                 imgClassName="w-full !rounded-b-0 rounded-t-[10px] lg:rounded-[10px] mb-1"
                 title={blog.title}
                 languages={[]}

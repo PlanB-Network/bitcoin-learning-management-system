@@ -259,7 +259,11 @@ function CourseDetails() {
     return (
       <section className="flex max-lg:flex-col lg:py-2.5 mt-6 lg:mt-7 w-full gap-5 lg:gap-10">
         <img
-          src={assetUrl(`courses/${course.index}`, 'thumbnail.webp')}
+          src={assetUrl(
+            `courses/${course.index}`,
+            'thumbnail.webp',
+            course.lastCommit,
+          )}
           alt={course.name}
           className="rounded-[20px] w-full lg:max-w-[550px] shrink-1"
         />
@@ -841,7 +845,13 @@ function CourseDetails() {
         title={`${SITE_NAME} - ${course?.name}`}
         description={course?.goal}
         imageSrc={
-          course ? assetUrl(`courses/${course.index}`, 'thumbnail.webp') : ''
+          course
+            ? assetUrl(
+                `courses/${course.index}`,
+                'thumbnail.webp',
+                course.lastCommit,
+              )
+            : ''
         }
       />
       <div className="text-newBlack-1">

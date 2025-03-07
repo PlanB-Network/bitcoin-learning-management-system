@@ -8,7 +8,7 @@ import { TextTag } from '@blms/ui';
 import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.js';
-import { assetUrl } from '#src/utils/index.js';
+import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 interface FeaturedCardProps {
@@ -113,7 +113,7 @@ export const FeaturedCard = ({
         >
           <img
             className="rounded-sm lg:rounded-[20px] lg:max-w-[404px]"
-            src={assetUrl(latestBlog.path, 'thumbnail.webp')}
+            src={resourceImgUrl(latestBlog)}
             alt={latestBlog.title}
           />
         </Link>

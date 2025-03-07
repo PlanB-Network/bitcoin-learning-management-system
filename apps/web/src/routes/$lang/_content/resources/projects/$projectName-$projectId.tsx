@@ -16,7 +16,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import Flag from '#src/molecules/Flag/index.js';
 import { BackLink } from '#src/molecules/backlink.tsx';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -156,7 +156,7 @@ function Project() {
             <section className="flex p-2 md:p-[30px]">
               <div className="flex flex-col gap-3">
                 <img
-                  src={assetUrl(project.path, 'logo.webp')}
+                  src={resourceImgUrl(project, 'logo.webp')}
                   className="rounded-2xl md:rounded-3xl size-[84px] md:size-[276px] shadow-card-items-dark"
                   alt={t('imagesAlt.sthRepresentingCompany')}
                 />
@@ -304,7 +304,7 @@ function Project() {
                 {conferenceReplays.map((conference) => (
                   <VerticalCard
                     key={conference.id}
-                    imageSrc={assetUrl(conference.path, 'thumbnail.webp')}
+                    imageSrc={resourceImgUrl(conference)}
                     imgClassName="w-full mb-1 rounded-lg md:rounded-2xl"
                     title={conference.name}
                     subtitle={conference.location}
@@ -343,7 +343,7 @@ function Project() {
               >
                 <ProjectCard
                   name={community.name}
-                  logo={assetUrl(community.path, 'logo.webp')}
+                  logo={resourceImgUrl(community, 'logo.webp')}
                   cardWidth="w-[50px] md:w-[90px]"
                 />
               </Link>

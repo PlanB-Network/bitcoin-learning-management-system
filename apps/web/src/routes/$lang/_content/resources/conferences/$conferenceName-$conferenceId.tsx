@@ -13,7 +13,7 @@ import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { BackLink } from '#src/molecules/backlink.tsx';
-import { assetUrl, trpc } from '#src/utils/index.ts';
+import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
 
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
@@ -203,7 +203,7 @@ function Conference() {
             <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-5 lg:gap-10">
               <div className="lg:order-2 w-full max-w-full">
                 <img
-                  src={assetUrl(conference.path, 'thumbnail.webp')}
+                  src={resourceImgUrl(conference)}
                   alt={conference.name}
                   className="w-full object-cover aspect-[915/388] rounded-2xl"
                 />
