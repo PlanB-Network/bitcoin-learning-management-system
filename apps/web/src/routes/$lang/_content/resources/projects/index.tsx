@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { Loader } from '@blms/ui';
 
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -88,7 +88,7 @@ function Projects() {
                   >
                     <ProjectCard
                       name={project.name}
-                      logo={assetUrl(project.path, 'logo.webp')}
+                      logo={resourceImgUrl(project, 'logo.webp')}
                     />
                   </Link>
                 ))}

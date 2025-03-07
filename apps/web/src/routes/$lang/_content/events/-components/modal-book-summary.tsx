@@ -8,7 +8,7 @@ import leftBackgroundImg from '#src/assets/courses/left-background.webp';
 import { PaymentRow } from '#src/components/payment-row.js';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
@@ -51,7 +51,7 @@ export const ModalBookSummary = ({
         )}
       >
         <img
-          src={assetUrl(event.path, 'thumbnail.webp')}
+          src={resourceImgUrl(event)}
           alt={event.name ? event.name : ''}
           className="rounded-2xl mb-4 object-cover aspect-[432/308] w-full"
         />

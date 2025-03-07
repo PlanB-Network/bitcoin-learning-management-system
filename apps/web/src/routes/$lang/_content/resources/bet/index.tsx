@@ -10,7 +10,7 @@ import { Button, Loader, cn } from '@blms/ui';
 import { useGreater } from '#src/hooks/use-greater.js';
 import type { VerticalCardProps } from '#src/molecules/vertical-card.js';
 import { VerticalCard } from '#src/molecules/vertical-card.js';
-import { assetUrl, trpc } from '#src/utils/index.ts';
+import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
@@ -63,7 +63,7 @@ function BET() {
                       projectName: bet.projectName || '',
                       downloadUrl: bet.downloadUrl,
                       viewurls: bet.viewurls,
-                      logo: assetUrl(bet.path, 'logo.webp'),
+                      logo: resourceImgUrl(bet, 'logo.webp'),
                     };
                   }) || []
               }
@@ -90,7 +90,7 @@ function BET() {
                       projectName: bet.projectName || '',
                       downloadUrl: bet.downloadUrl,
                       viewurls: bet.viewurls,
-                      logo: assetUrl(bet.path, 'logo.webp'),
+                      logo: resourceImgUrl(bet, 'logo.webp'),
                     };
                   }) || []
               }

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import type { FullProfessor } from '@blms/types';
 
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
 
 import DonateLightning from '../assets/icons/tips-icon.svg';
@@ -47,7 +47,7 @@ export const AuthorCardFull = ({
               </span>
 
               <img
-                src={assetUrl(professor.path, 'profile.webp')}
+                src={resourceImgUrl(professor, 'profile.webp')}
                 alt={professor?.name}
                 className="size-32 rounded-full z-10  object-cover [overflow-clip-margin:_unset]"
               />

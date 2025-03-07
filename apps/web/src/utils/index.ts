@@ -16,8 +16,25 @@ export const cdnUrl = (path: string) => {
 /**
  * Content asset URL
  */
-export const assetUrl = (contentPath: string, assetPath: string | null) => {
-  return cdnUrl(`${contentPath}/assets/${assetPath}`);
+export const assetUrl = (
+  contentPath: string,
+  assetPath: string | null,
+  // invalidate cache by passing a cacheKey (usually the last commit sha)
+  cacheKey?: string,
+) => {
+  return cdnUrl(
+    `${contentPath}/assets/${assetPath}${cacheKey ? `?c=${cacheKey}` : ''}`,
+  );
+};
+
+/**
+ * Content asset URL
+ */
+export const resourceImgUrl = (
+  resource: { path: string; lastCommit: string },
+  assetPath = 'thumbnail.webp',
+) => {
+  return assetUrl(resource.path, assetPath, resource.lastCommit);
 };
 
 export const compose = (...args: string[]) => args.join(' ');

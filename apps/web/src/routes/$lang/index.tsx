@@ -25,7 +25,7 @@ import CategoryItemList from '#src/organisms/category-item.tsx';
 import { LanguageSelectorHomepage } from '#src/organisms/language-selector-homepage.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 import SponsorMobile from '#src/assets/home/mobile-logos.webp';
@@ -748,7 +748,7 @@ function Home() {
                     className="basis 1/2 md:basis-1/3 max-w-[137px] !pl-[10px]"
                   >
                     <VerticalCard
-                      imageSrc={assetUrl(blog.path, 'thumbnail.webp')}
+                      imageSrc={resourceImgUrl(blog)}
                       imgClassName="w-full !rounded-b-0 rounded-t-[10px] lg:rounded-[10px] mb-1"
                       title={blog.title}
                       languages={[]}
@@ -775,7 +775,7 @@ function Home() {
             {latestBlogsByCategory.map((blog) => (
               <VerticalCard
                 key={blog.id}
-                imageSrc={assetUrl(blog.path, 'thumbnail.webp')}
+                imageSrc={resourceImgUrl(blog)}
                 imgClassName="w-full !rounded-b-0 rounded-t-[10px] lg:rounded-[10px] mb-1"
                 title={blog.title}
                 languages={[]}

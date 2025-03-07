@@ -7,7 +7,7 @@ import { Loader, Switch } from '@blms/ui';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
-import { assetUrl } from '#src/utils/index.js';
+import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -94,7 +94,7 @@ function Newsletter() {
                   <ResourceCard
                     name={newsletter.title}
                     author={newsletter.author}
-                    imageSrc={assetUrl(newsletter.path, 'thumbnail.webp')}
+                    imageSrc={resourceImgUrl(newsletter)}
                     language={newsletter.language}
                     level={newsletter?.level ? newsletter.level : undefined}
                   />
@@ -137,7 +137,7 @@ function Newsletter() {
                     <ResourceCard
                       name={newsletter.title}
                       author={newsletter.author}
-                      imageSrc={assetUrl(newsletter.path, 'thumbnail.webp')}
+                      imageSrc={resourceImgUrl(newsletter)}
                       language={newsletter.language}
                       level={newsletter?.level ? newsletter.level : undefined}
                     />

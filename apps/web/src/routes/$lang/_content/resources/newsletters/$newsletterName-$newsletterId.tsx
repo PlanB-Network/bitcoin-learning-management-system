@@ -19,7 +19,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { BackLink } from '#src/molecules/backlink.js';
-import { assetUrl } from '#src/utils/index.js';
+import { resourceImgUrl } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
@@ -149,7 +149,7 @@ function NewsletterDetail() {
                   <img
                     className="max-md:max-w-[219px] md:w-[367px] mx-auto object-cover rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-5 lg:mb-[30px]"
                     alt={newsletter.title}
-                    src={assetUrl(newsletter.path, 'thumbnail.webp')}
+                    src={resourceImgUrl(newsletter)}
                   />
                   <Flag
                     code={newsletter.language}
@@ -247,10 +247,7 @@ function NewsletterDetail() {
                         <img
                           className="size-full min-h-[203px] max-h-[198px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
                           alt={suggestedNewsletter.title}
-                          src={assetUrl(
-                            suggestedNewsletter.path,
-                            'thumbnail.webp',
-                          )}
+                          src={resourceImgUrl(suggestedNewsletter)}
                         />
                         <div
                           className="absolute inset-0 -bottom-px rounded-[10px]"

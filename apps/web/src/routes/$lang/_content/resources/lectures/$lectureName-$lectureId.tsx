@@ -24,7 +24,7 @@ import { BackLink } from '#src/molecules/backlink.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
-import { assetUrl, trpc } from '#src/utils/index.ts';
+import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 
 import type { JoinedEvent } from '@blms/types';
@@ -150,7 +150,7 @@ function Lecture() {
                   <img
                     className="w-full max-w-[256px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:rounded-[20px] lg:max-w-[457px]"
                     alt={t('imagesAlt.bookCover')}
-                    src={assetUrl(lecture.path, 'thumbnail.webp')}
+                    src={resourceImgUrl(lecture)}
                   />
                   <div className="shrink-0 md:hidden absolute top-[13px] right-[12px] flex flex-col gap-1 p-1 bg-white rounded-sm">
                     {lecture.languages.map((language) => (

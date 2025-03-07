@@ -20,7 +20,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { BackLink } from '#src/molecules/backlink.tsx';
-import { assetUrl, trpc } from '#src/utils/index.ts';
+import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -128,7 +128,7 @@ function Channel() {
                   <img
                     className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none mb-5 lg:mb-[30px]"
                     alt={'Channel thumbnail'}
-                    src={assetUrl(channel.path, 'thumbnail.webp')}
+                    src={resourceImgUrl(channel)}
                   />
                   <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
                     {channel?.channel && (
@@ -227,10 +227,7 @@ function Channel() {
                           <img
                             className="size-full min-h-[198px] max-h-[198px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
                             alt={suggestedChannel.name || ''}
-                            src={assetUrl(
-                              suggestedChannel.path,
-                              'thumbnail.webp',
-                            )}
+                            src={resourceImgUrl(suggestedChannel)}
                           />
                           <div
                             className="absolute inset-0 -bottom-px rounded-[10px]"

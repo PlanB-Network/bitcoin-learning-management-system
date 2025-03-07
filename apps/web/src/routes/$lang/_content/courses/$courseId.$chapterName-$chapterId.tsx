@@ -709,7 +709,11 @@ function CourseChapter() {
         description={chapter?.course.objectives?.join(',')}
         imageSrc={
           chapter
-            ? assetUrl(`courses/${chapter.course.index}`, 'thumbnail.webp')
+            ? assetUrl(
+                `courses/${chapter.course.index}`,
+                'thumbnail.webp',
+                chapter.lastCommit,
+              )
             : ''
         }
       />

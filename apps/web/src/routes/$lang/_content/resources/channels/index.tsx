@@ -8,7 +8,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { VerticalCard } from '#src/molecules/vertical-card.tsx';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -90,12 +90,12 @@ function YoutubeChannels() {
                 >
                   <ResourceCard
                     name={youtubeChannel.name}
-                    imageSrc={assetUrl(youtubeChannel.path, 'thumbnail.webp')}
+                    imageSrc={resourceImgUrl(youtubeChannel)}
                     language={youtubeChannel.language}
                   />
                 </Link>
                 <VerticalCard
-                  imageSrc={assetUrl(youtubeChannel.path, 'thumbnail.webp')}
+                  imageSrc={resourceImgUrl(youtubeChannel)}
                   title={youtubeChannel.name}
                   buttonVariant="primary"
                   buttonLink={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
@@ -140,15 +140,12 @@ function YoutubeChannels() {
                     >
                       <ResourceCard
                         name={youtubeChannel.name}
-                        imageSrc={assetUrl(
-                          youtubeChannel.path,
-                          'thumbnail.webp',
-                        )}
+                        imageSrc={resourceImgUrl(youtubeChannel)}
                         language={youtubeChannel.language}
                       />
                     </Link>
                     <VerticalCard
-                      imageSrc={assetUrl(youtubeChannel.path, 'thumbnail.webp')}
+                      imageSrc={resourceImgUrl(youtubeChannel)}
                       title={youtubeChannel.name}
                       buttonVariant="primary"
                       buttonLink={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}

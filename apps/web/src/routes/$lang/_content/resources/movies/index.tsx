@@ -8,7 +8,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { VerticalCard } from '#src/molecules/vertical-card.tsx';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -86,7 +86,7 @@ function Movies() {
                   <ResourceCard
                     name={movie.title}
                     author={movie.author}
-                    imageSrc={assetUrl(movie.path, 'thumbnail.webp')}
+                    imageSrc={resourceImgUrl(movie)}
                     language={movie.language}
                   />
                 </Link>
@@ -125,12 +125,12 @@ function Movies() {
                     <ResourceCard
                       name={movie.title}
                       author={movie.author}
-                      imageSrc={assetUrl(movie.path, 'thumbnail.webp')}
+                      imageSrc={resourceImgUrl(movie)}
                       language={movie.language}
                     />
                   </Link>
                   <VerticalCard
-                    imageSrc={assetUrl(movie.path, 'thumbnail.webp')}
+                    imageSrc={resourceImgUrl(movie)}
                     title={movie.title}
                     subtitle={movie.author}
                     buttonVariant="primary"

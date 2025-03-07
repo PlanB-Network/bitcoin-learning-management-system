@@ -9,7 +9,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import Flag from '#src/molecules/Flag/index.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';
-import { assetUrl } from '#src/utils/index.ts';
+import { resourceImgUrl } from '#src/utils/index.ts';
 
 interface EventCardProps {
   event: JoinedEvent;
@@ -396,7 +396,7 @@ export const EventCard = ({
           {/* Image */}
           <div className="w-[126px] sm:w-full overflow-hidden sm:rounded-2xl relative sm:mb-2 lg:mb-4 max-sm:shrink-0">
             <img
-              src={assetUrl(event.path, 'thumbnail.webp')}
+              src={resourceImgUrl(event)}
               alt={event.name ? event.name : ''}
               className="object-cover [overflow-clip-margin:_unset] sm:aspect-[432/308] w-full max-sm:h-[113px] sm:rounded-2xl"
             />

@@ -30,7 +30,7 @@ export const TutorialCard = ({
       )}
     >
       <img
-        src={assetUrl(tutorial.logoUrl, 'logo.webp')}
+        src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
         alt={tutorial.name}
         className="size-[60px] md:size-20 rounded-full shrink-0"
       />
