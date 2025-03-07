@@ -113,27 +113,6 @@ function Home() {
             <p className={cn(paragraphCss, 'mt-2 lg:mt-9')}>
               {t('home.header.content')}
             </p>
-            <div className="mt-6 flex flex-row flex-wrap justify-center gap-4 lg:mt-9">
-              <Link to="/courses" rel="noopener noreferrer">
-                <Button
-                  variant="primary"
-                  rounded={true}
-                  className="!text-black"
-                  glowing={true}
-                >
-                  {t('home.header.startLink')}
-                </Button>
-              </Link>
-              <Link to="/node-network" className="darky">
-                <Button
-                  variant="secondary"
-                  rounded={true}
-                  className="!text-black"
-                >
-                  {t('home.header.link')}
-                </Button>
-              </Link>
-            </div>
           </div>
           <div className="relative col-span-3 hidden items-start lg:flex">
             <img
@@ -161,7 +140,7 @@ function Home() {
       'text-xs font-semibold md:text-base lg:text-xl font-mono';
 
     return (
-      <div className={cn(sectionClass, 'relative')}>
+      <div className={cn(sectionClass, 'relative md:py-0 py-0')}>
         <div className="flex flex-col gap-3 md:flex-col md:gap-12 ">
           <div className="flex flex-row justify-center gap-3 md:gap-10">
             <div className="flex flex-col text-center">
