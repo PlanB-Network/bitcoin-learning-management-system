@@ -690,9 +690,9 @@
       "enjoy": "Loodame, et naudite seda! :)"
     },
     "missed": {
-      "missedh1": "Möödunud sündmused taasesitamiseks",
-      "missedp1": "Jäid mõnest üritusest ilma ?",
-      "missedp2": "Siin säilitame kõiki meie võrgustikus toimunud sündmuste kordusi, nii et kõik saavad vabalt järele jõuda vastavalt sellele, millest ilma jäi."
+      "missedH1": "Möödunud sündmused taasesitamiseks",
+      "missedP1": "Jäid mõnest üritusest ilma ?",
+      "missedP2": "Siin säilitame kõiki meie võrgustikus toimunud sündmuste kordusi, nii et kõik saavad vabalt järele jõuda vastavalt sellele, millest ilma jäi."
     },
     "pageSubtitle": "Tugeva võrgustiku poolt soodustatud alt-üles omaksvõtt",
     "pageTitle": "Otsid Bitcoini üritust, kuhu minna ?",
@@ -837,7 +837,7 @@
     "apply": "Kandideerige, et saada Sõlmeks",
     "pageSubtitle": "Soovid maailmale oranži pilli pakkuda? Liitu PlanB võrgustikuga.",
     "pageTitle": "Avastage Plan B sõlmevõrku",
-    "descriptionextend": "",
+    "descriptionExtend": "",
     "applyhelp": ""
   },
   "proofreading": {

@@ -413,9 +413,9 @@
       "currentEvents": "Eventos acontecendo agora"
     },
     "missed": {
-      "missedh1": "Eventos passados para assistir",
-      "missedp1": "Você perdeu um evento ?",
-      "missedp2": "Aqui guardamos todas gravações de eventos passados que aconteceram na Rede, para que todos possam se atualizar com o que perderam."
+      "missedH1": "Eventos passados para assistir",
+      "missedP1": "Você perdeu um evento ?",
+      "missedP2": "Aqui guardamos todas gravações de eventos passados que aconteceram na Rede, para que todos possam se atualizar com o que perderam."
     },
     "card": {
       "free": "grátis",
@@ -536,7 +536,7 @@
     "pageSubtitle": "Quer dar a pílula laranja para o mundo? Junte-se a nós.",
     "pageTitle": "Node Map",
     "applyhelp": "",
-    "descriptionextend": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "Aqui",

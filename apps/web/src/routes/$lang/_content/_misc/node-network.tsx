@@ -10,7 +10,6 @@ import { formatNameForURL } from '#src/utils/string.ts';
 import { ProjectCard } from '../resources/-components/cards/project-card.js';
 
 import { CommunitiesMap } from './-components/communities-map.tsx';
-import { NodeLocationSelector } from './-components/node-buttons.tsx';
 
 export const Route = createFileRoute('/$lang/_content/_misc/node-network')({
   component: NodeNetwork,
@@ -67,7 +66,7 @@ function NodeNetwork() {
     >
       <div className="flex flex-col items-center text-white px-4 sm:px-10">
         <p className="px-2 max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px]  mt-1 md:mt-0 max-md:hidden">
-          {t('nodeNetwork.descriptionextend')}
+          {t('nodeNetwork.descriptionExtend')}
         </p>
 
         <div className="w-full  mt-10">
@@ -76,7 +75,7 @@ function NodeNetwork() {
 
         <div>
           <p className="block md:hidden max-w-4xl mx-auto px-2 text-center text-lg desktop-subtitle1 text-white leading-[1.66] tracking-[0.4px] mt-4 md:mt-0">
-            {t('nodeNetwork.descriptionextend')}
+            {t('nodeNetwork.descriptionExtend')}
           </p>
         </div>
 
@@ -100,15 +99,6 @@ function NodeNetwork() {
               </Link>
             );
           })}
-        </div>
-
-        <div className="relative flex flex-col justify-center items-center mt-7 pb-10 sm:pb-40 lg:pb-10">
-          <p className="text-xl font-medium mb-4"> {t('nodeNetwork.apply')}</p>
-          <NodeLocationSelector />
-          <p className="text-lg mt-3 text-orange-400 font-medium ">
-            {' '}
-            {t('nodeNetwork.applyhelp')}
-          </p>
         </div>
       </div>
     </PageLayout>

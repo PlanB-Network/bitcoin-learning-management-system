@@ -65,14 +65,14 @@ export const EventsPassed = ({
         <div className="h-px w-2/5 bg-newBlack-5 mb-6 md:mb-[60px] mx-auto sm:w-full" />
         <div className="max-w-[704px] mx-auto">
           <p className="text-2xl text-center mb-6 md:text-[40px] md:tracking-[0.25px]">
-            {t('events.missed.missedp1')}
+            {t('events.missed.missedP1')}
           </p>
           <p className="text-sm text-center text-newGray-1 mb-6 tracking-015px md:text-base md:mb-[60px]">
-            {t('events.missed.missedp2')}
+            {t('events.missed.missedP2')}
           </p>
         </div>
         <h2 className="text-lg text-center font-medium mb-4 sm:text-xl sm:text-left md:mb-[60px]">
-          {t('events.missed.missedh1')}
+          {t('events.missed.missedH1')}
         </h2>
       </section>
       <EventsCarousel

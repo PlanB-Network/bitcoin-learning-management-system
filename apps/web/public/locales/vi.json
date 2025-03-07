@@ -299,9 +299,9 @@
       "currentEvents": "Những sự kiện đang diễn ra hiện tại"
     },
     "missed": {
-      "missedh1": "Những sự kiện đã diễn ra để xem lại",
-      "missedp1": "Bạn đã bỏ lỡ một sự kiện?",
-      "missedp2": "Ở đây chúng tôi lưu trữ tất cả các bản xem lại của các sự kiện trong quá khứ được tổ chức trong mạng lưới, do đó mọi người có thể theo dõi miễn phí những sự kiện mà họ đã bỏ lỡ."
+      "missedH1": "Những sự kiện đã diễn ra để xem lại",
+      "missedP1": "Bạn đã bỏ lỡ một sự kiện?",
+      "missedP2": "Ở đây chúng tôi lưu trữ tất cả các bản xem lại của các sự kiện trong quá khứ được tổ chức trong mạng lưới, do đó mọi người có thể theo dõi miễn phí những sự kiện mà họ đã bỏ lỡ."
     },
     "newEvent": {
       "button": "Thêm vào sự kiện của tôi",
@@ -895,7 +895,7 @@
     "pageSubtitle": "Sức mạnh của chúng ta là cộng đồng của mình. Hãy tập hợp với nhau thành một mạng lưới Bitcoin toàn cầu.",
     "pageTitle": "Bản đồ nút",
     "applyhelp": "*Lựa chọn vị trí node",
-    "descriptionextend": "Bước đầu tiên của chúng tôi là mới các cộng đồng với không gian vật lý, điều mà chúng tôi gọi là \"full node\" trong mạng lưới của mình, tham gia với chúng tôi. Trong tương lại, khi mạng lưới mạnh mẽ hơn, chúng tôi sẽ mở rộng lời mời tới các sáng kiến toàn cầu. Nếu bạn chia sẻ các giá trị với chúng tôi, vui lòng liên hệ tới các đại diện của chúng tôi để tham gia vào mạng lưới và giúp đỡ chúng tôi xây dựng nên một mạng lưới giáo dục về Bitcoin tốt nhất có thể."
+    "descriptionExtend": "Bước đầu tiên của chúng tôi là mới các cộng đồng với không gian vật lý, điều mà chúng tôi gọi là \"full node\" trong mạng lưới của mình, tham gia với chúng tôi. Trong tương lại, khi mạng lưới mạnh mẽ hơn, chúng tôi sẽ mở rộng lời mời tới các sáng kiến toàn cầu. Nếu bạn chia sẻ các giá trị với chúng tôi, vui lòng liên hệ tới các đại diện của chúng tôi để tham gia vào mạng lưới và giúp đỡ chúng tôi xây dựng nên một mạng lưới giáo dục về Bitcoin tốt nhất có thể."
   },
   "notFound": {
     "here": "Tại đây",

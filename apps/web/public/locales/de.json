@@ -714,9 +714,9 @@
       "currentEvents": "Veranstaltungen im Moment"
     },
     "missed": {
-      "missedh1": "Vergangene Veranstaltungen zu wiederholen",
-      "missedp1": "Haben Sie eine Veranstaltung verpasst?",
-      "missedp2": "Keine Sorge! Wir speichern alle Wiederholungen von vergangenen Ereignissen, die im Netzwerk stattgefunden haben, so dass jeder frei nachholen kann, was er verpasst hat."
+      "missedH1": "Vergangene Veranstaltungen zu wiederholen",
+      "missedP1": "Haben Sie eine Veranstaltung verpasst?",
+      "missedP2": "Keine Sorge! Wir speichern alle Wiederholungen von vergangenen Ereignissen, die im Netzwerk stattgefunden haben, so dass jeder frei nachholen kann, was er verpasst hat."
     },
     "card": {
       "free": "frei",
@@ -879,7 +879,7 @@
     "pageSubtitle": "Möchten Sie die Welt orange pillen? Treten Sie dem PlanB-Netzwerk bei.",
     "pageTitle": "Erkunden Sie das Plan B Node Netzwerk",
     "applyhelp": "*Wählen Sie den Knoten Standort",
-    "descriptionextend": "Unser erster Schritt besteht darin, Gemeinden mit physischen Räumen, die wir als „volle Knotenpunkte“ unseres Netzes bezeichnen, einzuladen, sich uns anzuschließen. In der Zukunft, wenn unser Netzwerk stärker wird, werden wir diese Einladung auf weitere Initiativen weltweit ausweiten. Wenn Sie unsere Werte teilen, wenden Sie sich bitte an unsere Vertreter, um unserem Netzwerk beizutreten und dabei zu helfen, die bestmögliche Bitcoin-Ausbildung aufzubauen."
+    "descriptionExtend": "Unser erster Schritt besteht darin, Gemeinden mit physischen Räumen, die wir als „volle Knotenpunkte“ unseres Netzes bezeichnen, einzuladen, sich uns anzuschließen. In der Zukunft, wenn unser Netzwerk stärker wird, werden wir diese Einladung auf weitere Initiativen weltweit ausweiten. Wenn Sie unsere Werte teilen, wenden Sie sich bitte an unsere Vertreter, um unserem Netzwerk beizutreten und dabei zu helfen, die bestmögliche Bitcoin-Ausbildung aufzubauen."
   },
   "notFound": {
     "here": "Hier",

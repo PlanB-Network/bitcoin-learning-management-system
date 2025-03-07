@@ -444,9 +444,9 @@
       "currentEvents": "Právě probíhající události"
     },
     "missed": {
-      "missedh1": "Proběhlé události k přehrání",
-      "missedp1": "Nestihli jste událost?",
-      "missedp2": "Zde ukládáme všechny záznamy z minulých událostí, které se odehrály na síti, aby každý mohl bez omezení dohnat, co zmeškal."
+      "missedH1": "Proběhlé události k přehrání",
+      "missedP1": "Nestihli jste událost?",
+      "missedP2": "Zde ukládáme všechny záznamy z minulých událostí, které se odehrály na síti, aby každý mohl bez omezení dohnat, co zmeškal."
     },
     "newEvent": {
       "button": "Přidat vlastní událost",
@@ -551,7 +551,7 @@
     "pageSubtitle": "Naší silnou stránkou je naše komunita. Pojďme se sdružit do světové bitcoinové sítě.",
     "pageTitle": "Mapa uzlů",
     "description1": "Náš finanční systém se hroutí, naše potraviny jsou otrávené, naše svoboda je odňata. Nemůžeme čekat na zázrak, musíme vytvořit bezpečné místo pro život. Musíme si vytvořit vlastní PlanB!",
-    "descriptionextend": "",
+    "descriptionExtend": "",
     "applyhelp": ""
   },
   "notFound": {

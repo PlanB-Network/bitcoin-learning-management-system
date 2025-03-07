@@ -305,9 +305,6 @@
       "teachers": "Teachers",
       "time": "Time"
     },
-    "preview": {
-      "letsgo": "Let's go"
-    },
     "quizz": {
       "clickOnPie": "Click on the pie chart to check the right answer",
       "quizz": "Quiz",
@@ -778,9 +775,9 @@
       "upcomingEvents": "Upcoming events"
     },
     "missed": {
-      "missedh1": "Past events to replay",
-      "missedp1": "Did you miss an event?",
-      "missedp2": "No worries! We store all the replays of past events that took place in the Network, allowing everyone can catch up freely on what they missed."
+      "missedH1": "Past events to replay",
+      "missedP1": "Did you miss an event?",
+      "missedP2": "No worries! We store all the replays of past events that took place in the Network, allowing everyone can catch up freely on what they missed."
     },
     "newEvent": {
       "button": "Add my event",
@@ -957,10 +954,8 @@
     "watchTrailer": "Watch the trailer"
   },
   "nodeNetwork": {
-    "apply": "Apply to become a Node",
-    "applyhelp": "*Select the node Location",
     "description1": "We believe that education should not only take place online but also in physical spaces. To achieve this, Plan ₿ Network manages a network of hubs around the world to welcome thinkers, entrepreneurs and educators fostering the advancement of Bitcoin and freedom technologies.",
-    "descriptionextend": "Our first step is to invite communities with physical spaces, which we refer to as the “full nodes” of our network, to join us. In the future, as our network strengthens, we will extend this invitation to more initiatives worldwide. If you share our values, please reach out to our representatives to join our network and help build the best Bitcoin education possible.",
+    "descriptionExtend": "Our first step is to invite communities with physical spaces, which we refer to as the “full nodes” of our network, to join us. In the future, as our network strengthens, we will extend this invitation to more initiatives worldwide. If you share our values, please reach out to our representatives to join our network and help build the best Bitcoin education possible.",
     "pageSubtitle": "Want to orange pill the world? Join Plan ₿ Network.",
     "pageTitle": "Explore Plan ₿ Node Network"
   },
@@ -1139,7 +1134,7 @@
     "professors": "Professors",
     "project": "Project",
     "projects": "Projects",
-    "resultEmpty": "Oops! We couldn’t find anything matching your search. Check your spelling, try different keywords, or select another category.",
+    "resultEmpty": "Oops! We couldn't find anything matching your search. Check your spelling, try different keywords, or select another category.",
     "resultError": "Something went wrong. Please try again.",
     "resultInfo": "Found {{count}} results in {{time}}ms",
     "results": "Results",
@@ -1229,7 +1224,7 @@
       "shortDescription": "Explore diverse tutorials on closely related topics of bitcoin",
       "title": "Others"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
+    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we've gathered and curated a large number of tutorials that describe various solutions in all domains related to Bitcoin.",
     "pageSubtitle": "Unlock the mysteries of Bitcoin by exploring its vast ecosystem",
     "pageTitle": "Discover our tutorials",
     "privacy": {

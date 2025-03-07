@@ -720,9 +720,9 @@
       "currentEvents": ""
     },
     "missed": {
-      "missedh1": "",
-      "missedp1": "",
-      "missedp2": ""
+      "missedH1": "",
+      "missedP1": "",
+      "missedP2": ""
     },
     "newEvent": {
       "button": "",
@@ -828,7 +828,7 @@
     "pageSubtitle": "",
     "pageTitle": "",
     "applyhelp": "",
-    "descriptionextend": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "",

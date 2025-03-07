@@ -918,9 +918,9 @@
       "currentEvents": "Acara-acara yang sedang berlangsung saat ini"
     },
     "missed": {
-      "missedp2": "Di sini kami menyimpan semua tayangan ulang dari acara-acara sebelumnya yang berlangsung di jaringan, sehingga semua orang dapat dengan bebas mengejar ketertinggalan dari apa yang telah mereka lewatkan.",
-      "missedh1": "Acara sebelumnya untuk diputar ulang",
-      "missedp1": "Apakah Anda melewatkan sebuah acara?"
+      "missedP2": "Di sini kami menyimpan semua tayangan ulang dari acara-acara sebelumnya yang berlangsung di jaringan, sehingga semua orang dapat dengan bebas mengejar ketertinggalan dari apa yang telah mereka lewatkan.",
+      "missedH1": "Acara sebelumnya untuk diputar ulang",
+      "missedP1": "Apakah Anda melewatkan sebuah acara?"
     },
     "newEvent": {
       "subtitle": "Memberi pil oranye alias mengajarkan satu miliar orang tentang Bitcoin tidaklah mudah",
@@ -1265,7 +1265,7 @@
     "pageSubtitle": "Ingin memberi pil oranye alias mengedukasi dunia tentang Bitcoin? Bergabunglah dengan Plan ₿ Network.",
     "pageTitle": "Jelajahi Jaringan Node Plan ₿",
     "applyhelp": "*Pilih Lokasi node",
-    "descriptionextend": "Langkah pertama kami adalah mengundang komunitas-komunitas yang memiliki ruang fisik, yang kami sebut sebagai \"full nodes\" dari jaringan kami, untuk bergabung dengan kami. Di masa depan, seiring dengan semakin kuatnya jaringan kami, kami akan memperluas undangan ini ke lebih banyak inisiatif di seluruh dunia. Jika Anda memiliki nilai-nilai yang sama dengan kami, silakan hubungi perwakilan kami untuk bergabung dengan jaringan kami dan membantu membangun edukasi Bitcoin yang terbaik."
+    "descriptionExtend": "Langkah pertama kami adalah mengundang komunitas-komunitas yang memiliki ruang fisik, yang kami sebut sebagai \"full nodes\" dari jaringan kami, untuk bergabung dengan kami. Di masa depan, seiring dengan semakin kuatnya jaringan kami, kami akan memperluas undangan ini ke lebih banyak inisiatif di seluruh dunia. Jika Anda memiliki nilai-nilai yang sama dengan kami, silakan hubungi perwakilan kami untuk bergabung dengan jaringan kami dan membantu membangun edukasi Bitcoin yang terbaik."
   },
   "notFound": {
     "here": "Disini",

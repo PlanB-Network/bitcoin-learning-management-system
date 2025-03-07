@@ -405,9 +405,9 @@
       "currentEvents": "Events happening right now"
     },
     "missed": {
-      "missedh1": "Past events to replay",
-      "missedp1": "Did you miss an event ?",
-      "missedp2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+      "missedH1": "Past events to replay",
+      "missedP1": "Did you miss an event ?",
+      "missedP2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
     },
     "card": {
       "free": "free",
@@ -528,7 +528,7 @@
     "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
     "pageTitle": "Node Map",
     "applyhelp": "",
-    "descriptionextend": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "Here",

@@ -714,9 +714,9 @@
       "currentEvents": "Eventi in corso ora"
     },
     "missed": {
-      "missedh1": "Eventi passati da rivedere",
-      "missedp1": "Ti sei perso un evento?",
-      "missedp2": "Non c'è problema! Teniamo tutte le registrazioni degli eventi passati della nostra rete, consentendo a tutti di recuperarle liberamente."
+      "missedH1": "Eventi passati da rivedere",
+      "missedP1": "Ti sei perso un evento?",
+      "missedP2": "Non c'è problema! Teniamo tutte le registrazioni degli eventi passati della nostra rete, consentendo a tutti di recuperarle liberamente."
     },
     "card": {
       "free": "gratuito",
@@ -879,7 +879,7 @@
     "description1": "Riteniamo che l'educazione non debba essere confinata esclusivamente al mondo online, ma debba trovare spazio anche in contesti fisici. Per questo motivo, Plan ₿ Network gestisce una rete di hub distribuiti in tutto il mondo, destinati ad accogliere pensatori, imprenditori ed educatori impegnati a favorire il progresso di Bitcoin e delle tecnologie della libertà.",
     "pageSubtitle": "Vuoi orenge-pillare il mondo? Unisciti a Plan ₿ Network.",
     "pageTitle": "Naviga sulla rete dei nodi di Plan ₿ Network",
-    "descriptionextend": "Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo \"full node\" della rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin.",
+    "descriptionExtend": "Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo \"full node\" della rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin.",
     "applyhelp": "*Seleziona la posizione del nodo"
   },
   "notFound": {

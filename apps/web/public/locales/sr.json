@@ -763,9 +763,9 @@
       "buyVideo": "Kupi video"
     },
     "missed": {
-      "missedp2": "Bez brige! Čuvamo sve snimke prošlih događaja koji su se odigrali na Mreži, omogućavajući svima da slobodno nadoknade ono što su propustili.",
-      "missedh1": "Snimci prethodnih događaja",
-      "missedp1": "Da li ste propustili događaj?"
+      "missedP2": "Bez brige! Čuvamo sve snimke prošlih događaja koji su se odigrali na Mreži, omogućavajući svima da slobodno nadoknade ono što su propustili.",
+      "missedH1": "Snimci prethodnih događaja",
+      "missedP1": "Da li ste propustili događaj?"
     },
     "pageDescription": "Želite da razgovarate o Bitcoinu u realnom vremenu? Ovde možete pronaći sve događaje podržane od strane zajednica Plan ₿ Mreže. Bilo da želite da slušate predavanje, razgovarate o Bitcoinu uz piće, ili polažete ispit da procenite svoje znanje, ovde ćete pronaći pravi događaj koristeći Plan ₿ Mrežu.",
     "payment": {
@@ -917,7 +917,7 @@
     "apply": "Prijavite se da postanete Čvor",
     "applyhelp": "*Izaberite lokaciju čvora",
     "pageSubtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se Plan ₿ Mreži.",
-    "descriptionextend": "Naš prvi korak je da pozovemo zajednice koje imaju fizički prostor, koje nazivamo \"potpunim čvorovima\" naše mreže, da nam se pridruže. U budućnosti, kako naša mreža bude jačala, proširićemo ovu pozivnicu na više inicijativa širom sveta. Ako delite naše vrednosti, molimo Vas da se obratite našim predstavnicima da se pridružite našoj mreži i pomognete u izgradnji najbolje moguće edukacije o Bitcoinu.",
+    "descriptionExtend": "Naš prvi korak je da pozovemo zajednice koje imaju fizički prostor, koje nazivamo \"potpunim čvorovima\" naše mreže, da nam se pridruže. U budućnosti, kako naša mreža bude jačala, proširićemo ovu pozivnicu na više inicijativa širom sveta. Ako delite naše vrednosti, molimo Vas da se obratite našim predstavnicima da se pridružite našoj mreži i pomognete u izgradnji najbolje moguće edukacije o Bitcoinu.",
     "pageTitle": "Istražite Plan ₿ Čvor mrežu"
   },
   "imagesAlt": {

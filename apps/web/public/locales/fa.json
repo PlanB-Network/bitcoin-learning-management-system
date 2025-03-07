@@ -702,9 +702,9 @@
   },
   "events": {
     "missed": {
-      "missedp2": "",
-      "missedh1": "",
-      "missedp1": ""
+      "missedP2": "",
+      "missedH1": "",
+      "missedP1": ""
     },
     "newEvent": {
       "title": "",
@@ -792,7 +792,7 @@
   "nodeNetwork": {
     "apply": "",
     "applyhelp": "",
-    "descriptionextend": "",
+    "descriptionExtend": "",
     "pageSubtitle": "",
     "pageTitle": "",
     "description1": ""

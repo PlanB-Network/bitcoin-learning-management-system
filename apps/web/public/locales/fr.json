@@ -690,9 +690,9 @@
       "currentEvents": "Événements qui se déroulent en ce moment"
     },
     "missed": {
-      "missedh1": "Événements passés à rejouer",
-      "missedp1": "Vous avez manqué un événement ?",
-      "missedp2": "Pas de souci ! Nous stockons toutes les rediffusions des événements passés qui ont eu lieu sur le réseau, permettant à chacun de rattraper librement ce qu'il a manqué."
+      "missedH1": "Événements passés à rejouer",
+      "missedP1": "Vous avez manqué un événement ?",
+      "missedP2": "Pas de souci ! Nous stockons toutes les rediffusions des événements passés qui ont eu lieu sur le réseau, permettant à chacun de rattraper librement ce qu'il a manqué."
     },
     "card": {
       "free": "gratuit",
@@ -855,7 +855,7 @@
     "pageSubtitle": "Vous voulez orange pill le monde ? Rejoignez le réseau Plan ₿.",
     "pageTitle": "Node Map",
     "applyhelp": "*Sélectionnez l'emplacement du nœud",
-    "descriptionextend": "Notre première étape consiste à inviter les communautés disposant d’espaces physiques, que nous appelons les « nœuds complets » de notre réseau, à nous rejoindre. À l’avenir, à mesure que notre réseau se renforcera, nous étendrons cette invitation à davantage d’initiatives dans le monde entier. Si vous partagez nos valeurs, n’hésitez pas à contacter nos représentants pour rejoindre notre réseau et contribuer à créer la meilleure éducation possible sur le Bitcoin."
+    "descriptionExtend": "Notre première étape consiste à inviter les communautés disposant d’espaces physiques, que nous appelons les « nœuds complets » de notre réseau, à nous rejoindre. À l’avenir, à mesure que notre réseau se renforcera, nous étendrons cette invitation à davantage d’initiatives dans le monde entier. Si vous partagez nos valeurs, n’hésitez pas à contacter nos représentants pour rejoindre notre réseau et contribuer à créer la meilleure éducation possible sur le Bitcoin."
   },
   "notFound": {
     "here": "Ici",

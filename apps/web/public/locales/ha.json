@@ -456,9 +456,9 @@
       "visitWebsite": "Ziyarci shafin yanar gizo"
     },
     "missed": {
-      "missedp1": "An rasa wannan taron?",
-      "missedp2": "Kada a damu! Muna adana duk taron da ya gabata da aka gudanar a cikin Network, wanda ke ba kowa damar sake kallo kyauta kan abin da suka rasa.",
-      "missedh1": "Tarurrukan da suka gabata don sake kallo"
+      "missedP1": "An rasa wannan taron?",
+      "missedP2": "Kada a damu! Muna adana duk taron da ya gabata da aka gudanar a cikin Network, wanda ke ba kowa damar sake kallo kyauta kan abin da suka rasa.",
+      "missedH1": "Tarurrukan da suka gabata don sake kallo"
     },
     "newEvent": {
       "description": "Tabbas! Duk taron Bitcoin na iya ƙara fitowar su anan, don haka kowanne ƙoƙari don ƙirƙirar sabon taro yana maraba da shi :)",
@@ -536,7 +536,7 @@
     "description1": "Plan B Network na goyon bayan shirye-shiryen ilimi a duniya baki ɗaya. Muna haɗin gwiwa don ƙirƙirar mafi kyawun kayan aiki don waɗannan ayyukan, ta hanyar dandamalinmu da kuma a zahiri. Ko yaushe muna neman sababbin nodes don shiga cikinmu. Idan kuna son yin aiki tare don ƙirƙirar hanyar sadarwa ta ilimi ta duniya mai rarrabuwa don Bitcoin, tuntuɓe mu!",
     "pageSubtitle": "Kuna son kawo canji ga duniya da Bitcoin? Shiga cikin PlanB Network.",
     "pageTitle": "Bincika Hanyar Node ta Plan B",
-    "descriptionextend": "Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu da taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu.",
+    "descriptionExtend": "Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu da taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu.",
     "applyhelp": "*Zaɓi Wurin Node"
   },
   "resources": {

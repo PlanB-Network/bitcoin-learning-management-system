@@ -925,9 +925,9 @@
       "currentEvents": "Arrangement som skjer akkurat nå"
     },
     "missed": {
-      "missedh1": "Tidligere arrangement å se igjen",
-      "missedp1": "Gikk du glipp av et arrangement?",
-      "missedp2": "Ingen bekymringer! Vi lagrer alle opptak av tidligere arrangement som har funnet sted i nettverket, slik at alle fritt kan ta igjen det de gikk glipp av."
+      "missedH1": "Tidligere arrangement å se igjen",
+      "missedP1": "Gikk du glipp av et arrangement?",
+      "missedP2": "Ingen bekymringer! Vi lagrer alle opptak av tidligere arrangement som har funnet sted i nettverket, slik at alle fritt kan ta igjen det de gikk glipp av."
     },
     "newEvent": {
       "button": "Legg til arrangementet mitt",
@@ -1202,7 +1202,7 @@
     "apply": "Søk om å bli en Node",
     "pageSubtitle": "Vil du gi verden den oransje pillen? Bli med i PlanB-nettverket.",
     "pageTitle": "Utforsk Plan B Node-nettverk",
-    "descriptionextend": "Vårt første skritt er å invitere samfunn med fysiske rom, som vi refererer til som \"full nodes\" i nettverket vårt, til å bli med oss. I fremtiden, når nettverket vårt styrkes, vil vi utvide denne invitasjonen til flere initiativer over hele verden. Hvis du deler våre verdier, vennligst ta kontakt med våre representanter for å bli med i nettverket vårt og hjelpe til med å bygge den beste Bitcoin-utdanningen som er mulig.",
+    "descriptionExtend": "Vårt første skritt er å invitere samfunn med fysiske rom, som vi refererer til som \"full nodes\" i nettverket vårt, til å bli med oss. I fremtiden, når nettverket vårt styrkes, vil vi utvide denne invitasjonen til flere initiativer over hele verden. Hvis du deler våre verdier, vennligst ta kontakt med våre representanter for å bli med i nettverket vårt og hjelpe til med å bygge den beste Bitcoin-utdanningen som er mulig.",
     "applyhelp": "*Velg node Plassering"
   },
   "notFound": {

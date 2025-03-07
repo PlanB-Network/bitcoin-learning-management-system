@@ -683,9 +683,9 @@
       "currentEvents": "Events som pågår just nu"
     },
     "missed": {
-      "missedh1": "Tidigare event att spela upp",
-      "missedp1": "Missade du ett event?",
-      "missedp2": "Oroa dig inte! Vi sparar alla inspelningar av tidigare events som har skett inom nätverket, vilket betyder att man enkelt kan ta igen det som man missade."
+      "missedH1": "Tidigare event att spela upp",
+      "missedP1": "Missade du ett event?",
+      "missedP2": "Oroa dig inte! Vi sparar alla inspelningar av tidigare events som har skett inom nätverket, vilket betyder att man enkelt kan ta igen det som man missade."
     },
     "card": {
       "free": "gratis",
@@ -847,7 +847,7 @@
     "pageSubtitle": "Vill du orange-pilla världen? Gå med i Plan ₿ Network.",
     "pageTitle": "Utforska Plan ₿ Nodnätverk",
     "applyhelp": "*Välj nodens plats",
-    "descriptionextend": "Vårt första steg är att bjuda in communities som har fysiska platser, vilka vi refererar till som \"fulla noder\" i vårt nätverk, att ansluta till oss. I framtiden, när vårt nätverk stärks, kommer vi att utöka denna inbjudan till fler initiativ världen över. Om du delar våra värderingar, vänligen kontakta våra representanter för att ansluta till vårt nätverk och hjälpa till att bygga den bästa möjliga Bitcoin-utbildningen."
+    "descriptionExtend": "Vårt första steg är att bjuda in communities som har fysiska platser, vilka vi refererar till som \"fulla noder\" i vårt nätverk, att ansluta till oss. I framtiden, när vårt nätverk stärks, kommer vi att utöka denna inbjudan till fler initiativ världen över. Om du delar våra värderingar, vänligen kontakta våra representanter för att ansluta till vårt nätverk och hjälpa till att bygga den bästa möjliga Bitcoin-utbildningen."
   },
   "notFound": {
     "here": "Här",

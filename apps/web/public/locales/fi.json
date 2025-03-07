@@ -407,9 +407,9 @@
       "currentEvents": "Käynnissä olevat tapahtumat"
     },
     "missed": {
-      "missedh1": "Tallenteet tapahtumista",
-      "missedp1": "Jäikö tapahtuma väliin?",
-      "missedp2": "Täältä löydät Network-alustamme tallenteet menneistä tapahtumista."
+      "missedH1": "Tallenteet tapahtumista",
+      "missedP1": "Jäikö tapahtuma väliin?",
+      "missedP2": "Täältä löydät Network-alustamme tallenteet menneistä tapahtumista."
     },
     "card": {
       "free": "Ilmainen",
@@ -530,7 +530,7 @@
     "pageSubtitle": "Yhteisömme on vahvuutemme. Meidän tulee yhdistyä globaaliksi bitcoin-yhteisöverkostoksi.",
     "pageTitle": "Node Kartta",
     "applyhelp": "",
-    "descriptionextend": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "Tässä",

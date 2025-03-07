@@ -429,9 +429,9 @@
       "currentEvents": "Aktualnie odbywające się wydarzenia"
     },
     "missed": {
-      "missedh1": "Poprzednie wydarzenia do obejrzenia",
-      "missedp1": "Czy przegapiłeś jakieś wydarzenie?",
-      "missedp2": "Bez obaw! Przechowujemy wszystkie powtórki z poprzednich wdarzeń w Sieci, dzięki czemu każdy może swobodnie nadrobić zaległości."
+      "missedH1": "Poprzednie wydarzenia do obejrzenia",
+      "missedP1": "Czy przegapiłeś jakieś wydarzenie?",
+      "missedP2": "Bez obaw! Przechowujemy wszystkie powtórki z poprzednich wdarzeń w Sieci, dzięki czemu każdy może swobodnie nadrobić zaległości."
     },
     "card": {
       "free": "darmowe",
@@ -552,7 +552,7 @@
     "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
     "pageTitle": "Node Map",
     "applyhelp": "",
-    "descriptionextend": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "Tutaj",

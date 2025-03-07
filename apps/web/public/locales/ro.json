@@ -752,9 +752,9 @@
       "currentEvents": "Evenimente care au loc chiar acum"
     },
     "missed": {
-      "missedp1": "Ai ratat un eveniment?",
-      "missedh1": "Reluare de venimente trecute",
-      "missedp2": "Fără griji! Stocăm toate reluările evenimentelor trecute care au avut loc în Network, permițând tuturor să se pună la curent cu ceea ce au ratat."
+      "missedP1": "Ai ratat un eveniment?",
+      "missedH1": "Reluare de venimente trecute",
+      "missedP2": "Fără griji! Stocăm toate reluările evenimentelor trecute care au avut loc în Network, permițând tuturor să se pună la curent cu ceea ce au ratat."
     },
     "newEvent": {
       "button": "Adaugă evenimentul meu",
@@ -1108,7 +1108,7 @@
     "apply": "Aplicați pentru a deveni un Nod",
     "pageSubtitle": "Vrei să \"orange pill\"-ezi lumea? Alătură-te de Plan ₿ Network.",
     "pageTitle": "Explorează rețeaua de noduri Plan ₿",
-    "descriptionextend": "Primul nostru pas este să invităm să se alăture nouă comunitățile cu spații fizice, pe care le numim \"nodurile complete\" ale rețelei noastre. În viitor, pe măsură ce rețeaua noastră se întărește, vom extinde această invitație către mai multe inițiative la nivel mondial. Dacă împărtășiți valorile noastre, vă rugăm să luați legătura cu reprezentanții noștri pentru a vă alătura rețelei noastre și a ajuta la construirea celei mai bune educații posibile despre Bitcoin.",
+    "descriptionExtend": "Primul nostru pas este să invităm să se alăture nouă comunitățile cu spații fizice, pe care le numim \"nodurile complete\" ale rețelei noastre. În viitor, pe măsură ce rețeaua noastră se întărește, vom extinde această invitație către mai multe inițiative la nivel mondial. Dacă împărtășiți valorile noastre, vă rugăm să luați legătura cu reprezentanții noștri pentru a vă alătura rețelei noastre și a ajuta la construirea celei mai bune educații posibile despre Bitcoin.",
     "applyhelp": "*Selectați locația nodului"
   },
   "payment": {

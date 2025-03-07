@@ -662,9 +662,9 @@
       "currentEvents": "Eventos que están sucediendo ahora mismo"
     },
     "missed": {
-      "missedh1": "Eventos pasados para reproducir",
-      "missedp1": "¿Te perdiste un evento?",
-      "missedp2": "¡No te preocupes! Almacenamos todas las repeticiones de eventos pasados que tuvieron lugar en la comunidad, permitiendo que todos puedan ponerse al día libremente sobre lo que se perdieron."
+      "missedH1": "Eventos pasados para reproducir",
+      "missedP1": "¿Te perdiste un evento?",
+      "missedP2": "¡No te preocupes! Almacenamos todas las repeticiones de eventos pasados que tuvieron lugar en la comunidad, permitiendo que todos puedan ponerse al día libremente sobre lo que se perdieron."
     },
     "card": {
       "free": "gratis",
@@ -810,7 +810,7 @@
   "nodeNetwork": {
     "apply": "Aplicar para ser un nodo",
     "description1": "Creemos que la educación no solo debe llevarse a cabo en línea, sino también en espacios físicos. Para lograr esto, Plan ₿ Network gestiona una red de centros alrededor del mundo para dar la bienvenida a pensadores, emprendedores y educadores que fomentan el avance de Bitcoin y las tecnologías de la libertad.",
-    "descriptionextend": "Nuestro primer paso es invitar a comunidades con espacios físicos, a las que nos referimos como los “nodos completos” de nuestra red, a unirse a nosotros. En el futuro, a medida que nuestra red se fortalezca, ampliaremos esta invitación a más iniciativas en todo el mundo. Si compartes nuestros valores, por favor, contacta a nuestros representantes para unirte a nuestra red y ayudar a construir la mejor educación sobre Bitcoin posible.",
+    "descriptionExtend": "Nuestro primer paso es invitar a comunidades con espacios físicos, a las que nos referimos como los “nodos completos” de nuestra red, a unirse a nosotros. En el futuro, a medida que nuestra red se fortalezca, ampliaremos esta invitación a más iniciativas en todo el mundo. Si compartes nuestros valores, por favor, contacta a nuestros representantes para unirte a nuestra red y ayudar a construir la mejor educación sobre Bitcoin posible.",
     "pageSubtitle": "¿Quieres llevar la adopción de Bitcoin al mundo? Únete a Plan ₿ Network.",
     "pageTitle": "Explora La Red de Nodos de Plan ₿",
     "applyhelp": "*Selecciona la ubicación del nodo"
