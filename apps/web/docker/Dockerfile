@@ -24,8 +24,6 @@ RUN turbo prune "@blms/web" --docker
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
 
-ENV VITE_GITHUB_SHA=$GITHUB_SHA
-
 RUN apk update
 RUN apk add --no-cache -U \
     libc6-compat \
@@ -48,6 +46,9 @@ RUN pnpm install --frozen-lockfile
 # Build the project and its dependencies
 COPY --from=builder /app/out/full/ .
 COPY turbo.json tsconfig.json ./
+
+RUN echo "VITE_GITHUB_SHA=$GITHUB_SHA" > /app/out/full/apps/web/.env
+
 RUN pnpm turbo build
 
 # Final image
