@@ -130,6 +130,8 @@ jobs:
             ./docker-bake.hcl
             cwd://${{ steps.meta-web.outputs.bake-file }}
           targets: web
+        env:
+          GITHUB_SHA: ${{ github.sha }}
 
       - name: Prepare compose file with environment variables
         run: |
