@@ -102,18 +102,18 @@ function PlanBLabs() {
   return (
     <MainLayout variant="dark" footerVariant="dark">
       <div className="flex flex-col items-center mt-12 text-center gap-6 self-center">
-        <div className="flex flex-col items-center lg:gap-6 lg:flex-row lg:w-[800px]">
+        <div className="flex flex-col items-center md:gap-6 md:flex-row md:w-[800px]">
           <img
             src={PlanBLabsLogo}
             alt="Logo Plan ₿ Labs"
-            className="w-36 lg:w-60"
+            className="w-36 md:w-60"
           />
-          <DividerVertical className="h-16 max-lg:hidden" />
-          <h1 className="display-small-med-32px text-center lg:text-left">
+          <DividerVertical className="h-16 max-md:hidden" />
+          <h1 className="display-small-med-32px text-center md:text-left">
             {t('labs.title')}
           </h1>
         </div>
-        <div className="lg:w-[950px] ">
+        <div className="md:w-[950px] px-4 ">
           <p>{t('labs.description1')}</p>
           <p>{t('labs.description2')}</p>
         </div>
@@ -124,10 +124,14 @@ function PlanBLabs() {
         <>
           <Tabs
             defaultValue={activeItem.label}
-            className="pt-7 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-[max(20px,calc((100vw-1200px)/2))]"
+            className="pt-7 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
           >
             <TabsList size="l" mode="dark2">
-              <img src={LabIcon} alt="Lab logo" className="w-10" />
+              <img
+                src={LabIcon}
+                alt="Lab logo"
+                className="w-10 max-md:hidden"
+              />
               {labsTabs.map((tab) => (
                 <TabsTrigger
                   value={tab.label}
@@ -141,7 +145,11 @@ function PlanBLabs() {
                     }
                   }}
                 >
-                  <img src={tab.icon} alt="Lab logo" className="w-6 mr-3" />
+                  <img
+                    src={tab.icon}
+                    alt="Lab logo"
+                    className="w-6 mr-3 max-md:hidden"
+                  />
                   {t(tab.label)}
                 </TabsTrigger>
               ))}
@@ -152,8 +160,8 @@ function PlanBLabs() {
           {lastSession ? (
             <>
               <div className="flex flex-col lg:flex-row self-center pt-6 gap-6">
-                <div className="w-[800px] flex flex-col gap-6 mt-7 ">
-                  <div className="flex flex-row gap-2">
+                <div className="max-w-[800px] flex flex-col gap-6 mt-7 px-4">
+                  <div className="flex flex-row max-lg:justify-center gap-2">
                     <TextTag
                       mode={'dark'}
                       variant={'darkMaroon'}
@@ -169,7 +177,7 @@ function PlanBLabs() {
                       {lab?.sessions.length} sessions <MdLiveTv />
                     </TextTag>
                   </div>
-                  <div className="flex flex-col gap-6 subtitle-large-18px">
+                  <div className="flex flex-col max-lg:text-center gap-6 subtitle-large-18px">
                     {activeItem.id === 'lightning' ? (
                       <>
                         <div>
@@ -192,7 +200,7 @@ function PlanBLabs() {
                     ) : null}
                   </div>
                 </div>
-                <div className="w-[350px] self-center flex flex-col gap-5">
+                <div className="w-[350px] self-center flex flex-row lg:flex-col gap-2 lg:gap-5">
                   {lab?.lab?.telegramUrl ? (
                     <a
                       href={lab?.lab?.telegramUrl}
@@ -217,13 +225,14 @@ function PlanBLabs() {
               </div>
 
               {/* Study group main content */}
-              <div className="flex flex-col lg:flex-row self-center mt-14 pt-6 gap-6">
-                <div className="relative w-[750px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
-                  <div className="absolute -mt-8 bg-black px-4 text-4xl italic text-darkOrange-6">
+              <div className="flex flex-col max-w-[1200px] w-full md:flex-row px-4 self-center mt-14 pt-6 gap-6">
+                {/* Next session */}
+                <div className="relative w-full max-w-[750px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
+                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-4xl italic text-darkOrange-6">
                     Next session
                   </div>
                   <>
-                    <div className="flex flex-row absolute -mt-10 mr-5 right-0 py-2 px-4  bg-darkOrange-5 font-normal  text-xl text-black rounded-2xl max-w-[450px] whitespace-nowrap overflow-hidden">
+                    <div className="flex flex-row lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
                       <span>
                         {getDateString(
                           lastSession.startDate,
@@ -240,23 +249,21 @@ function PlanBLabs() {
                         )}
                       </span>
                     </div>
-                    <div className="mt-6">
+                    <div className="mt-6 w-full">
                       <span className="text-newGray-1 uppercase">
                         {'> TOPIC OF DISCUSSION'}
                       </span>
-                      <div className="mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
+                      <div className="mx-auto lg:max-w-2x max-md:w-full lg:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
                         {lastSession ? (
                           <Suspense fallback={<Loader size={'s'} />}>
                             <GlossaryMarkdownBody
                               content={lastSession.rawContent}
                               assetPrefix={cdnUrl(lab?.lab?.path || '')}
                             />
-                            <p>{}</p>
                             {lastSession.liveUrl ? (
                               <ReactPlayer
                                 width={'100%'}
-                                style={{ top: 0, left: 0 }}
-                                className="mx-auto mb-2 rounded-lg"
+                                className="mx-auto top-0 left-0 mb-2 rounded-lg"
                                 controls={true}
                                 url={lastSession.liveUrl}
                                 src="Session video"
@@ -274,13 +281,15 @@ function PlanBLabs() {
                     </div>
                   </>
                 </div>
-                <div className="relative w-[400px] border-l-2 border-newBlack-5 p-4">
+
+                {/* Previous session */}
+                <div className="relative md:w-[400px] border-l-2 border-newBlack-5 p-4">
                   {/* Top border */}
                   <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
-                  <div className="absolute -mt-8 bg-black px-4 text-4xl italic text-newGray-2 font-light">
+                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-4xl italic text-newGray-2 font-light">
                     Previous sessions
                   </div>
-                  <div className="mt-8 flex flex-col gap-4">
+                  <div className="mt-2 lg:mt-8 flex flex-col gap-4">
                     {lab?.sessions.slice(1, 9).map((session) => (
                       <div className="flex flex-col" key={session.id}>
                         <span className="text-newGray-1 uppercase">
@@ -299,8 +308,8 @@ function PlanBLabs() {
           ) : null}
 
           {!lastSession ? (
-            <div className="flex flex-col mt-12 gap-6 self-center">
-              <div className=" lg:w-[1200px]">
+            <div className="flex flex-col mt-12 gap-6 self-center px-4">
+              <div className=" md:w-[1200px]">
                 {activeItem.id === 'mining' ? (
                   <div>
                     <p>The Mining study group is looking for a coordinator.</p>
@@ -334,7 +343,7 @@ const Professor = ({
   professor: FullProfessor;
 }) => {
   return (
-    <section className="w-[1150px] self-center flex flex-col mt-5 md:mt-16 text-white">
+    <section className="max-w-[1150px] px-4 self-center flex flex-col mt-5 md:mt-16 text-white">
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
         {t('words.professor')}
       </h4>
