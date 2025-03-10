@@ -3,6 +3,7 @@ import Detector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import type { HttpBackendOptions } from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
+import { build } from './cache.ts';
 
 export const LANGUAGES = [
   'cs',
@@ -50,7 +51,7 @@ void i18n
   .init<HttpBackendOptions>({
     load: 'all',
     backend: {
-      loadPath: '/locales/{{lng}}.json',
+      loadPath: `/locales/{{lng}}.json${build ? `?c=${build}` : ''}`,
       requestOptions: {
         cache: 'no-store',
       },

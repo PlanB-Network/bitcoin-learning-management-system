@@ -5,11 +5,16 @@ variable "NODE_VERSION" {
   default = "22.13.0-alpine3.20"
 }
 
+VARIABLE "GITHUB_SHA" {
+  default = ""
+}
+
 target "api" {
   inherits = ["docker-metadata-action"]
   dockerfile = "./apps/api/docker/Dockerfile"
   args = {
     NODE_VERSION = "${NODE_VERSION}"
+    GITHUB_SHA = "${GITHUB_SHA}"
   }
 }
 
@@ -18,5 +23,6 @@ target "web" {
   dockerfile = "./apps/web/docker/Dockerfile"
   args = {
     NODE_VERSION = "${NODE_VERSION}"
+    GITHUB_SHA = "${GITHUB_SHA}"
   }
 }
