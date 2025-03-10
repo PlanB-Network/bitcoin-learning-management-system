@@ -106,7 +106,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     // Sync labs
     {
       const labs = groupByLab(filteredFiles, errors);
-      const time = timeLog(labs.length, 'resource');
+      const time = timeLog(labs.length, 'Plan B Labs');
       for (const lab of labs) {
         await updateLabs(lab, errors);
       }

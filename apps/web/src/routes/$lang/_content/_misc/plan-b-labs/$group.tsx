@@ -10,6 +10,10 @@ import {
 } from '@blms/ui';
 import { t } from 'i18next';
 import { z } from 'zod';
+import LabIcon from '#src/assets/icons/lab.svg';
+import LightningIcon from '#src/assets/icons/lightning.svg';
+import MiningIcon from '#src/assets/icons/mining_white.svg';
+import PrivacyIcon from '#src/assets/icons/privacy.svg';
 import PlanBLabsLogo from '#src/assets/logo/plan_b_labs_logo_horizontal.svg';
 
 import type { FullProfessor } from '@blms/types';
@@ -19,8 +23,14 @@ import { useTranslation } from 'react-i18next';
 import { MdLiveTv, MdPerson } from 'react-icons/md';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { MainLayout } from '#src/components/main-layout.js';
+import { ReactPlayer } from '#src/components/react-player.tsx';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
-import { formatDate, getTimeString, userTimeZone } from '#src/utils/date.ts';
+import {
+  formatDate,
+  getDateString,
+  getTimeString,
+  userTimeZone,
+} from '#src/utils/date.ts';
 import { cdnUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -49,16 +59,19 @@ export const labsTabs = [
     id: 'lightning',
     label: 'Lightning',
     href: '/plan-b-labs/lightning',
+    icon: LightningIcon,
   },
   {
     id: 'mining',
     label: 'Mining',
     href: '/plan-b-labs/mining',
+    icon: MiningIcon,
   },
   {
     id: 'privacy',
     label: 'Privacy',
     href: '/plan-b-labs/privacy',
+    icon: PrivacyIcon,
   },
 ];
 
@@ -111,14 +124,16 @@ function PlanBLabs() {
         <>
           <Tabs
             defaultValue={activeItem.label}
-            className="flex pt-7 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-[max(20px,calc((100vw-1000px)/2))]"
+            className="pt-7 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-[max(20px,calc((100vw-1200px)/2))]"
           >
-            <TabsList size="l" mode="dark">
+            <TabsList size="l" mode="dark2">
+              <img src={LabIcon} alt="Lab logo" className="w-10" />
               {labsTabs.map((tab) => (
                 <TabsTrigger
                   value={tab.label}
                   key={tab.id}
                   size="l"
+                  mode="dark2"
                   role="tab"
                   onClick={() => {
                     if (activeItem.href !== tab.href) {
@@ -126,6 +141,7 @@ function PlanBLabs() {
                     }
                   }}
                 >
+                  <img src={tab.icon} alt="Lab logo" className="w-6 mr-3" />
                   {t(tab.label)}
                 </TabsTrigger>
               ))}
@@ -134,7 +150,7 @@ function PlanBLabs() {
 
           {/* Study group presentation section */}
           <div className="flex flex-col lg:flex-row self-center pt-6 gap-6">
-            <div className="w-[800px] flex flex-col gap-6 ">
+            <div className="w-[800px] flex flex-col gap-6 mt-7 ">
               <div className="flex flex-row gap-2">
                 <TextTag mode={'dark'} variant={'darkMaroon'} className="w-fit">
                   {lab?.lab?.studentCount ?? '0'} Students <MdPerson />
@@ -193,8 +209,14 @@ function PlanBLabs() {
               </div>
               <>
                 {lastSession ? (
-                  <div className="flex flex-row absolute -mt-10 mr-5 right-0 py-2 bg-darkOrange-5 px-4 text-xl text-black rounded-2xl max-w-[450px] whitespace-nowrap overflow-hidden">
-                    <span>{lastSession.title}</span>
+                  <div className="flex flex-row absolute -mt-10 mr-5 right-0 py-2 px-4  bg-darkOrange-5 font-normal  text-xl text-black rounded-2xl max-w-[450px] whitespace-nowrap overflow-hidden">
+                    <span>
+                      {getDateString(
+                        lastSession.startDate,
+                        lastSession.endDate,
+                        userTimeZone,
+                      )}
+                    </span>
                     <DividerVertical className="my-1 mx-2 bg-black" />
                     <span className="font-semibold uppercase">
                       {getTimeString(
@@ -216,6 +238,17 @@ function PlanBLabs() {
                           content={lastSession.rawContent}
                           assetPrefix={cdnUrl(lab?.lab?.path || '')}
                         />
+                        <p>{}</p>
+                        {lastSession.liveUrl ? (
+                          <ReactPlayer
+                            width={'100%'}
+                            style={{ top: 0, left: 0 }}
+                            className="mx-auto mb-2 rounded-lg"
+                            controls={true}
+                            url={lastSession.liveUrl}
+                            src="Session video"
+                          />
+                        ) : null}
                       </Suspense>
                     ) : (
                       <p>

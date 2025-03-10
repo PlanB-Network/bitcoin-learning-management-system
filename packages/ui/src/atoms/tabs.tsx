@@ -18,6 +18,7 @@ const tabsListVariants = cva(
       mode: {
         light: '',
         dark: 'dark',
+        dark2: 'dark',
       },
     },
     defaultVariants: {
@@ -36,9 +37,15 @@ const tabsTriggerVariants = cva(
         m: 'label-18px pb-2.5',
         l: 'label-large-20px pb-3',
       },
+      mode: {
+        dark: '',
+        dark2:
+          'data-[state=active]:bg-darkOrange-5 border-t-[1px] border-x-[1px] rounded-t-2xl px-4 pt-3 bg-black',
+      },
     },
     defaultVariants: {
       size: 'm',
+      mode: 'dark',
     },
   },
 );
@@ -48,7 +55,7 @@ const TabsList = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & {
     removeClasses?: boolean;
     size?: 's' | 'm' | 'l';
-    mode?: 'dark' | 'light';
+    mode?: 'dark' | 'dark2' | 'light';
   }
 >(({ className, removeClasses, size, mode, ...props }, ref) => (
   <TabsPrimitive.List
@@ -64,12 +71,13 @@ const TabsTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & {
     removeClasses?: boolean;
     size?: 's' | 'm' | 'l';
+    mode?: 'dark' | 'dark2';
   }
->(({ className, removeClasses, size, ...props }, ref) => (
+>(({ className, removeClasses, size, mode, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      removeClasses ? '' : tabsTriggerVariants({ size }),
+      removeClasses ? '' : tabsTriggerVariants({ mode, size }),
       className,
     )}
     {...props}
