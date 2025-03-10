@@ -48,6 +48,8 @@ jobs:
 
       - name: Build Project
         run: pnpm build
+        env:
+          VITE_GITHUB_SHA: ${{ github.sha }}
 
       - name: Lint Code
         run: pnpm lint
