@@ -5,7 +5,7 @@ variable "NODE_VERSION" {
   default = "22.13.0-alpine3.20"
 }
 
-VARIABLE "GITHUB_SHA" {
+variable "GITHUB_SHA" {
   default = ""
 }
 
