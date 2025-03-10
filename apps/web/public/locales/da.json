@@ -83,7 +83,9 @@
       "validatingEmailChange": "",
       "wontTakeLong": ""
     },
-    "trackProgress": ""
+    "trackProgress": "",
+    "didYouKnow": "",
+    "dashboardUnlocked": ""
   },
   "bet": {
     "educationalContent": {
@@ -150,7 +152,9 @@
       "otherCoursesInterest": "",
       "pastEditionsRatings": "",
       "premiumContentNeedsLogin": "",
-      "thanksTipping": ""
+      "thanksTipping": "",
+      "teacherLed": "",
+      "premiumContentNeedsPayment": ""
     },
     "explorer": {
       "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
@@ -188,7 +192,8 @@
       "inPersonCallout": "",
       "onlineCallout": "",
       "checkoutError": "",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
@@ -240,7 +245,8 @@
       "commentTeacherMobile": "",
       "editReview": "",
       "saveReview": "",
-      "thankYou": ""
+      "thankYou": "",
+      "feedbackDescription1": ""
     },
     "exam": {
       "finalExam": "",
@@ -335,7 +341,8 @@
       "passExam": "",
       "takeExam": "",
       "timeStampedNoDot": "",
-      "viewExam": ""
+      "viewExam": "",
+      "bCertCompletionText": ""
     },
     "format": {
       "hybrid": "",
@@ -383,7 +390,8 @@
       "seeTheCourse": "",
       "shareOn": "",
       "verify": "",
-      "yourProgress": ""
+      "yourProgress": "",
+      "professor": ""
     },
     "account": "",
     "courses": "",
@@ -819,7 +827,8 @@
       "uploadCVSubLabel": "",
       "welcome": "",
       "yourLanguages": "",
-      "yourRoles": ""
+      "yourRoles": "",
+      "emailAddress": ""
     },
     "adminPanel": {
       "accessGranted": "",
@@ -888,7 +897,8 @@
         "productEvent": "",
         "selectCourse": "",
         "selectEvent": "",
-        "explanation": ""
+        "explanation": "",
+        "discountValueExplanation": ""
       },
       "coursesIndexes": "",
       "editRole": "",
@@ -926,7 +936,9 @@
       "seeOrEdit": "",
       "selectProfessor": "",
       "selectRole": "",
-      "type": ""
+      "type": "",
+      "makeProfessor": "",
+      "downloadList": ""
     },
     "announcements": {
       "groups": {
@@ -1001,11 +1013,13 @@
       "callout_purchase_physical": "",
       "callout_purchase_replay": "",
       "description_online": "",
-      "description_physical": ""
+      "description_physical": "",
+      "limitedSeats": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "",
-      "premiumContentNeedsPaymentAction": ""
+      "premiumContentNeedsPaymentAction": "",
+      "premiumContentNeedsPayment": ""
     },
     "tcDisclaimer": "",
     "tcMustBeAccepted": ""
@@ -1062,7 +1076,8 @@
     },
     "courseSection": {
       "checkAllCourses": "",
-      "upcomingCourseTitle": ""
+      "upcomingCourseTitle": "",
+      "upcomingCourseDescription": ""
     },
     "eventSection": {
       "checkEvents": "",
@@ -1172,7 +1187,8 @@
       "title": ""
     },
     "books": {
-      "title": ""
+      "title": "",
+      "author": ""
     },
     "conferences": {
       "title": ""
@@ -1269,7 +1285,8 @@
     "writtenBy": "",
     "contribution": {
       "title": "",
-      "shortDescription": ""
+      "shortDescription": "",
+      "description": ""
     },
     "business": {
       "description": "",
@@ -1522,7 +1539,8 @@
     "inProgress": "",
     "reviewEarn": "",
     "thanks": "",
-    "rewardsText": ""
+    "rewardsText": "",
+    "descriptionOriginalLanguage": ""
   },
   "publicCommunication": {
     "legal": "",
