@@ -47,6 +47,8 @@ RUN pnpm install --frozen-lockfile
 COPY --from=builder /app/out/full/ .
 COPY turbo.json tsconfig.json ./
 
+RUN echo "VITE_GITHUB_SHA=$GITHUB_SHA" > .env
+
 RUN pnpm turbo build
 
 # Final image
