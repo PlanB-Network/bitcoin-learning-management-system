@@ -149,139 +149,179 @@ function PlanBLabs() {
           </Tabs>
 
           {/* Study group presentation section */}
-          <div className="flex flex-col lg:flex-row self-center pt-6 gap-6">
-            <div className="w-[800px] flex flex-col gap-6 mt-7 ">
-              <div className="flex flex-row gap-2">
-                <TextTag mode={'dark'} variant={'darkMaroon'} className="w-fit">
-                  {lab?.lab?.studentCount ?? '0'} Students <MdPerson />
-                </TextTag>
-                <TextTag mode={'dark'} variant={'darkMaroon'} className="w-fit">
-                  {lab?.sessions.length} sessions <MdLiveTv />
-                </TextTag>
-              </div>
-              <div className="flex flex-col gap-6 subtitle-large-18px">
-                <div>
-                  <p>
-                    The Lightning study group is coordinated by Fanis
-                    Michalakis.
-                  </p>
-                  <p>
-                    To get involved and connect with the other students, join
-                    the Telegram group.
-                  </p>
+          {lastSession ? (
+            <>
+              <div className="flex flex-col lg:flex-row self-center pt-6 gap-6">
+                <div className="w-[800px] flex flex-col gap-6 mt-7 ">
+                  <div className="flex flex-row gap-2">
+                    <TextTag
+                      mode={'dark'}
+                      variant={'darkMaroon'}
+                      className="w-fit"
+                    >
+                      {lab?.lab?.studentCount ?? '0'} Students <MdPerson />
+                    </TextTag>
+                    <TextTag
+                      mode={'dark'}
+                      variant={'darkMaroon'}
+                      className="w-fit"
+                    >
+                      {lab?.sessions.length} sessions <MdLiveTv />
+                    </TextTag>
+                  </div>
+                  <div className="flex flex-col gap-6 subtitle-large-18px">
+                    {activeItem.id === 'lightning' ? (
+                      <>
+                        <div>
+                          <p>
+                            The Lightning study group is coordinated by Fanis
+                            Michalakis.
+                          </p>
+                          <p>
+                            To get involved and connect with the other students,
+                            join the Telegram group.
+                          </p>
+                        </div>
+                        <p>
+                          Sessions are interactive live-stream on Youtube every
+                          2 weeks on Tuesdays at 4pm (CET). Student
+                          participation is expected. Sessions are recorded and
+                          available below for replay.
+                        </p>
+                      </>
+                    ) : null}
+                  </div>
                 </div>
-                <p>
-                  Sessions are interactive live-stream on Youtube every 2 weeks
-                  on Tuesdays at 4pm (CET). Student participation is expected.
-                  Sessions are recorded and available below for replay.
-                </p>
+                <div className="w-[350px] self-center flex flex-col gap-5">
+                  {lab?.lab?.telegramUrl ? (
+                    <a
+                      href={lab?.lab?.telegramUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ButtonWithArrow className="w-fit">
+                        Telegram group
+                      </ButtonWithArrow>
+                    </a>
+                  ) : null}
+                  <a
+                    href="https://www.youtube.com/@PlanBNetwork"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ButtonWithArrow className="w-fit" variant={'secondary'}>
+                      Youtube
+                    </ButtonWithArrow>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="w-[350px] self-center flex flex-col gap-5">
-              {lab?.lab?.telegramUrl ? (
-                <a
-                  href={lab?.lab?.telegramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <ButtonWithArrow className="w-fit">
-                    Telegram group
-                  </ButtonWithArrow>
-                </a>
-              ) : null}
-              <a
-                href="https://www.youtube.com/@PlanBNetwork"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ButtonWithArrow className="w-fit" variant={'secondary'}>
-                  Youtube
-                </ButtonWithArrow>
-              </a>
-            </div>
-          </div>
 
-          {/* Study group main content */}
-          <div className="flex flex-col lg:flex-row self-center mt-14 pt-6 gap-6">
-            <div className="relative w-[750px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
-              <div className="absolute -mt-8 bg-black px-4 text-4xl italic text-darkOrange-6">
-                Next session
+              {/* Study group main content */}
+              <div className="flex flex-col lg:flex-row self-center mt-14 pt-6 gap-6">
+                <div className="relative w-[750px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
+                  <div className="absolute -mt-8 bg-black px-4 text-4xl italic text-darkOrange-6">
+                    Next session
+                  </div>
+                  <>
+                    <div className="flex flex-row absolute -mt-10 mr-5 right-0 py-2 px-4  bg-darkOrange-5 font-normal  text-xl text-black rounded-2xl max-w-[450px] whitespace-nowrap overflow-hidden">
+                      <span>
+                        {getDateString(
+                          lastSession.startDate,
+                          lastSession.endDate,
+                          userTimeZone,
+                        )}
+                      </span>
+                      <DividerVertical className="my-1 mx-2 bg-black" />
+                      <span className="font-semibold uppercase">
+                        {getTimeString(
+                          lastSession.startDate,
+                          lastSession.endDate,
+                          userTimeZone,
+                        )}
+                      </span>
+                    </div>
+                    <div className="mt-6">
+                      <span className="text-newGray-1 uppercase">
+                        {'> TOPIC OF DISCUSSION'}
+                      </span>
+                      <div className="mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
+                        {lastSession ? (
+                          <Suspense fallback={<Loader size={'s'} />}>
+                            <GlossaryMarkdownBody
+                              content={lastSession.rawContent}
+                              assetPrefix={cdnUrl(lab?.lab?.path || '')}
+                            />
+                            <p>{}</p>
+                            {lastSession.liveUrl ? (
+                              <ReactPlayer
+                                width={'100%'}
+                                style={{ top: 0, left: 0 }}
+                                className="mx-auto mb-2 rounded-lg"
+                                controls={true}
+                                url={lastSession.liveUrl}
+                                src="Session video"
+                              />
+                            ) : null}
+                          </Suspense>
+                        ) : (
+                          <p>
+                            The next session details are being prepared and will
+                            be displayed here soon. You can join the telegram
+                            group to be the first informed.
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                </div>
+                <div className="relative w-[400px] border-l-2 border-newBlack-5 p-4">
+                  {/* Top border */}
+                  <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
+                  <div className="absolute -mt-8 bg-black px-4 text-4xl italic text-newGray-2 font-light">
+                    Previous sessions
+                  </div>
+                  <div className="mt-8 flex flex-col gap-4">
+                    {lab?.sessions.slice(1, 9).map((session) => (
+                      <div className="flex flex-col" key={session.id}>
+                        <span className="text-newGray-1 uppercase">
+                          {'> '}
+                          {formatDate(session.startDate)}
+                        </span>
+                        <span>{session.title}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <>
-                {lastSession ? (
-                  <div className="flex flex-row absolute -mt-10 mr-5 right-0 py-2 px-4  bg-darkOrange-5 font-normal  text-xl text-black rounded-2xl max-w-[450px] whitespace-nowrap overflow-hidden">
-                    <span>
-                      {getDateString(
-                        lastSession.startDate,
-                        lastSession.endDate,
-                        userTimeZone,
-                      )}
-                    </span>
-                    <DividerVertical className="my-1 mx-2 bg-black" />
-                    <span className="font-semibold uppercase">
-                      {getTimeString(
-                        lastSession.startDate,
-                        lastSession.endDate,
-                        userTimeZone,
-                      )}
-                    </span>
+
+              {professor ? <Professor professor={professor} /> : <div> </div>}
+            </>
+          ) : null}
+
+          {!lastSession ? (
+            <div className="flex flex-col mt-12 gap-6 self-center">
+              <div className=" lg:w-[1200px]">
+                {activeItem.id === 'mining' ? (
+                  <div>
+                    <p>The Mining study group is looking for a coordinator.</p>
+                    <p>
+                      If you're interested to do it, please reach at
+                      contact@planb.network.
+                    </p>
                   </div>
                 ) : null}
-                <div className="mt-6">
-                  <span className="text-newGray-1 uppercase">
-                    {'> TOPIC OF DISCUSSION'}
-                  </span>
-                  <div className="mx-auto max-w-2xl md:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
-                    {lastSession ? (
-                      <Suspense fallback={<Loader size={'s'} />}>
-                        <GlossaryMarkdownBody
-                          content={lastSession.rawContent}
-                          assetPrefix={cdnUrl(lab?.lab?.path || '')}
-                        />
-                        <p>{}</p>
-                        {lastSession.liveUrl ? (
-                          <ReactPlayer
-                            width={'100%'}
-                            style={{ top: 0, left: 0 }}
-                            className="mx-auto mb-2 rounded-lg"
-                            controls={true}
-                            url={lastSession.liveUrl}
-                            src="Session video"
-                          />
-                        ) : null}
-                      </Suspense>
-                    ) : (
-                      <p>
-                        The next session details are being prepared and will be
-                        displayed here soon. You can join the telegram group to
-                        be the first informed.
-                      </p>
-                    )}
+                {activeItem.id === 'privacy' ? (
+                  <div>
+                    <p>The Privacy study group is looking for a coordinator.</p>
+                    <p>
+                      If you're interested to do it, please reach at
+                      contact@planb.network.
+                    </p>
                   </div>
-                </div>
-              </>
-            </div>
-            <div className="relative w-[400px] border-l-2 border-newBlack-5 p-4">
-              {/* Top border */}
-              <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
-              <div className="absolute -mt-8 bg-black px-4 text-4xl italic text-newGray-2 font-light">
-                Previous sessions
-              </div>
-              <div className="mt-8 flex flex-col gap-4">
-                {lab?.sessions.slice(1, 9).map((session) => (
-                  <div className="flex flex-col" key={session.id}>
-                    <span className="text-newGray-1 uppercase">
-                      {'> '}
-                      {formatDate(session.startDate)}
-                    </span>
-                    <span>{session.title}</span>
-                  </div>
-                ))}
+                ) : null}
               </div>
             </div>
-          </div>
-
-          {professor ? <Professor professor={professor} /> : <div> </div>}
+          ) : null}
         </>
       )}
     </MainLayout>
