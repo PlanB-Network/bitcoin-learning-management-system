@@ -9,7 +9,15 @@ variable "GITHUB_SHA" {
   default = ""
 }
 
+target "base" {
+  inherits = ["docker-metadata-action"]
+  dockerfile = "./docker/Dockerfile.base"
+}
+
 target "api" {
+  contexts = {
+    blms-base = "target:base"
+  }
   inherits = ["docker-metadata-action"]
   dockerfile = "./apps/api/docker/Dockerfile"
   args = {
@@ -19,6 +27,9 @@ target "api" {
 }
 
 target "web" {
+  contexts = {
+    blms-base = "target:base"
+  }
   inherits = ["docker-metadata-action"]
   dockerfile = "./apps/web/docker/Dockerfile"
   args = {

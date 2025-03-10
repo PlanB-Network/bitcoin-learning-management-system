@@ -1,53 +1,53 @@
-ARG NODE_VERSION
-ARG GITHUB_SHA
+ARG NODE_VERSION=22.13.0-alpine3.20
 
 FROM node:$NODE_VERSION AS base
 
-FROM base AS builder
-
-RUN apk update
-RUN apk add --no-cache libc6-compat
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-
-# Set working directory
-WORKDIR /app
+#
+# pnpm
+#
+FROM base AS pnpm
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 RUN npm install --location=global pnpm@10
-RUN pnpm add --global turbo@2
-
-COPY . .
-RUN turbo prune "@blms/api" --docker
-
-# Add lockfile and package.json's of isolated subworkspace
-FROM base AS installer
 
 RUN apk update
-RUN apk add --no-cache -U \
-    libc6-compat \
-    python3 \
-    g++ \
-    make \
-    cmake \
-    findutils \
-    cairo-dev \
-    pango-dev \
-    shadow
-RUN npm install --location=global pnpm@10
+RUN apk add --no-cache libc6-compat
+
+#
+#
+#
+FROM blms-base AS prune
+
+RUN pnpm turbo prune "@blms/api" --docker
+
+
+#
+#
+#
+FROM pnpm AS installer
+
 WORKDIR /app
 
-# First install dependencies (as they change less often)
-COPY .gitignore .gitignore
-COPY --from=builder /app/out/json/ .
-RUN pnpm install --frozen-lockfile
+COPY --from=prune /app/out/json/ .
 
-# Build the project and its dependencies
-COPY --from=builder /app/out/full/ .
-COPY turbo.json tsconfig.json ./
-RUN pnpm turbo build
+RUN --mount=type=cache,id=pnpm,sharing=locked,target=/pnpm,ro \
+  pnpm install --frozen-lockfile
 
+## Copy pruned sources
+COPY --from=prune /app/out/full/ .
+COPY turbo.json tsconfig.json .
+
+## Build the pruned project and its dependencies
+RUN --mount=type=cache,id=turbo,sharing=locked,target=.turbo,ro \
+  pnpm turbo build
+
+RUN --mount=type=cache,id=pnpm,sharing=locked,target=/pnpm,ro \
+  pnpm install --frozen-lockfile --production --ignore-scripts
+
+#
+#
 # Final image
 FROM base AS runner
 
@@ -81,4 +81,5 @@ RUN  mkdir -p /usr/share/fonts/ibm-plex \
 USER node
 
 COPY --from=installer /app .
+
 CMD node apps/api/dist/src/index.js

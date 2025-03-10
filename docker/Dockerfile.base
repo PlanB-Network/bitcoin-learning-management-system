@@ -1,0 +1,38 @@
+ARG NODE_VERSION=22.13.0-alpine3.20
+ARG GITHUB_SHA
+
+FROM node:$NODE_VERSION AS base
+
+#
+# PNPM
+#
+FROM base AS pnpm
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+RUN npm install --location=global pnpm@10
+
+RUN apk update
+RUN apk add --no-cache libc6-compat
+
+#
+# Warmup
+#
+FROM pnpm
+
+# Set working directory
+WORKDIR /app
+
+COPY . .
+
+## Reinstall with the full source code
+RUN --mount=type=cache,id=pnpm,sharing=locked,target=/pnpm,rw \
+  pnpm install --frozen-lockfile
+
+## Build the project and its dependencies
+RUN --mount=type=cache,id=turbo,sharing=locked,target=.turbo,rw \
+  pnpm turbo build
+
+RUN pnpm turbo test
+RUN pnpm turbo lint
