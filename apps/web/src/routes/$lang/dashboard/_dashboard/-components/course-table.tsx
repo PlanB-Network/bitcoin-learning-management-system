@@ -132,11 +132,15 @@ export const CourseTable = ({
 
                 {/* Course Cells */}
                 {courseCategoriesDashboard.map((category, categoryIndex) => {
-                  const coursesForCell = courses.filter(
-                    (c) =>
-                      c.level?.toLowerCase() === level.toLowerCase() &&
-                      c.topic?.toLowerCase() === category.toLowerCase(),
-                  );
+                  const coursesForCell = courses
+                    .filter(
+                      (c) =>
+                        c.level?.toLowerCase() === level.toLowerCase() &&
+                        c.topic?.toLowerCase() === category.toLowerCase(),
+                    )
+                    .sort((a, b) =>
+                      a.index.slice(3).localeCompare(b.index.slice(3)),
+                    );
 
                   return (
                     <TableCell
