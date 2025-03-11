@@ -19,7 +19,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "ioredis": "^5.5.0"
+    "ioredis": "^5.6.0"
   },
   "devDependencies": {
     "@blms/types": "workspace:*"
