@@ -5,3 +5,8 @@
 **/.github
 **/.turbo
 **/.vite
+**/.asc
+**/.*
+!**/.mocharc.json
+.*
+/docker

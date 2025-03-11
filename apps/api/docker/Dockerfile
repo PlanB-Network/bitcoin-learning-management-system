@@ -1,54 +1,50 @@
+ARG BASE_IMAGE=blms-base
 ARG NODE_VERSION=22.13.0-alpine3.20
 
 FROM node:$NODE_VERSION AS base
+FROM $BASE_IMAGE AS blms-base
 
+################################################
 #
-# pnpm
-#
-FROM base AS pnpm
-
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-
-RUN npm install --location=global pnpm@10
-
-RUN apk update
-RUN apk add --no-cache libc6-compat
-
-#
-#
+#          prune
 #
 FROM blms-base AS prune
 
+## Prune the base build to only include the API
 RUN pnpm turbo prune "@blms/api" --docker
 
-
+################################################
 #
+#          installer
 #
-#
-FROM pnpm AS installer
+FROM blms-base AS installer
 
 WORKDIR /app
 
-COPY --from=prune /app/out/json/ .
+## Copy pruned install resources
+COPY --from=prune /prepare/out/json/ .
 
-RUN --mount=type=cache,id=pnpm,sharing=locked,target=/pnpm,ro \
-  pnpm install --frozen-lockfile
+### Log for troubleshooting. There should be files in the directory when there's a cache hit
+RUN echo -e "PNPM contents before install:\n$(du -h -d2 ${PNPM_HOME})"
+
+RUN pnpm install --frozen-lockfile
 
 ## Copy pruned sources
-COPY --from=prune /app/out/full/ .
-COPY turbo.json tsconfig.json .
+COPY --from=prune /prepare/out/full/ .
+COPY --from=blms-base /prepare/turbo.json /prepare/tsconfig.json .
+
+### Log for troubleshooting. There should be files in the directory when there's a cache hit
+RUN echo -e "Turbo local cache before build:\n$(du -h -d2 .turbo)"
 
 ## Build the pruned project and its dependencies
-RUN --mount=type=cache,id=turbo,sharing=locked,target=.turbo,ro \
-  pnpm turbo build
+RUN --mount=type=cache,id=turbo-api,target=.turbo,sharing=locked pnpm turbo build
 
-RUN --mount=type=cache,id=pnpm,sharing=locked,target=/pnpm,ro \
-  pnpm install --frozen-lockfile --production --ignore-scripts
+RUN pnpm install --frozen-lockfile --production
 
+################################################
 #
+#          runner (final image for api)
 #
-# Final image
 FROM base AS runner
 
 ENV HOST=0.0.0.0

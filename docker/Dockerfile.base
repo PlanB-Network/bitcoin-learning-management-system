@@ -3,36 +3,59 @@ ARG GITHUB_SHA
 
 FROM node:$NODE_VERSION AS base
 
+################################################
 #
-# PNPM
+#          pnpm
 #
 FROM base AS pnpm
 
+ENV CI=1
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV TURBO_TELEMETRY_DISABLED=1
 
 RUN npm install --location=global pnpm@10
 
-RUN apk update
-RUN apk add --no-cache libc6-compat
-
+################################################
 #
-# Warmup
+#          blms-base
 #
 FROM pnpm
 
 # Set working directory
-WORKDIR /app
+WORKDIR /prepare
 
 COPY . .
 
-## Reinstall with the full source code
-RUN --mount=type=cache,id=pnpm,sharing=locked,target=/pnpm,rw \
-  pnpm install --frozen-lockfile
+ENV PNPM_CACHE="/pnpm-cache"
+
+### Log for troubleshooting. There should be files in the directory when there's a cache hit
+RUN --mount=type=cache,id=pnpm,target=${PNPM_CACHE},sharing=locked \
+  echo -e "PNPM cache contents before install:\n$(du -h -d2 ${PNPM_CACHE})"
+
+## Install the project dependencies (https://dev.to/henryjw/caching-pnpm-modules-in-docker-builds-in-github-actions-mj7)
+RUN  --mount=type=cache,id=pnpm,target=${PNPM_CACHE},sharing=locked \
+  ### Set the cache directory to the mounted cache
+  pnpm config set store-dir ${PNPM_CACHE} && \
+  ### Install the project dependencies
+  pnpm install --frozen-lockfile --prefer-offline && \
+  ### Copy the cache to the mounted cache (to be used in the next build)
+  cp -r ${PNPM_CACHE}/* ${PNPM_HOME}/ && \
+  ### Set the cache directory back to the default
+  pnpm config set store-dir ${PNPM_HOME}
+
+### Another log for troubleshooting. This should never be empty since the NPM modules were installed before running this line
+RUN echo -e "PNPM home contents after install:\n$(du -h -d2 ${PNPM_HOME})"
+RUN --mount=type=cache,id=pnpm,target=${PNPM_CACHE},sharing=locked \
+  echo -e "PNPM cache contents after install:\n$(du -h -d2 ${PNPM_CACHE})"
 
 ## Build the project and its dependencies
-RUN --mount=type=cache,id=turbo,sharing=locked,target=.turbo,rw \
+RUN --mount=type=cache,id=turbo,target=.turbo,sharing=locked \
   pnpm turbo build
+
+### Log for troubleshooting. There should be files in the directory when there's a cache hit
+RUN --mount=type=cache,id=turbo,target=.turbo,sharing=locked \
+  echo -e "Turbo remote cache contents after build:\n$(du -h -d2 .turbo)"
 
 RUN pnpm turbo test
 RUN pnpm turbo lint

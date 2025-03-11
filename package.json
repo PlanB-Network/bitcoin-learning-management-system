@@ -23,7 +23,7 @@
     "lint": "biome check . --diagnostic-level=warn",
     "lint:fix": "biome check . --write --diagnostic-level=warn",
     "nuke": "pnpm clear && rm -r .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm install && pnpm build:packages",
-    "prepare": "husky",
+    "prepare": "[ -z \"$CI\" ] && husky || echo 'Skipping husky in CI'",
     "knip": "knip",
     "sync-ts-references": "./scripts/sync-ts-references.ts && biome format --write .",
     "type-check": "turbo run type-check",
