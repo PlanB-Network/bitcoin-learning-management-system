@@ -144,7 +144,7 @@ function TutorialCategory() {
                       )}
                     >
                       {t([
-                        `tutorials.${category}.${subCategory}.name`,
+                        `tutorials.subCategories.${subCategory}`,
                         subCategory,
                       ])}
                     </TabsTrigger>

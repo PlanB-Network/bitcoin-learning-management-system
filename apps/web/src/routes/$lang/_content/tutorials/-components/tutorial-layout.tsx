@@ -99,7 +99,7 @@ export const TutorialLayout = ({
                                   )}
                                 >
                                   {t([
-                                    `tutorials.${tutorialCategory.name}.${subCategory}.name`,
+                                    `tutorials.subCategories.${subCategory}`,
                                     subCategory,
                                   ])}
                                 </span>
