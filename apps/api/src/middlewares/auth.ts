@@ -18,10 +18,13 @@ export const loadContextMiddleware = createMiddleware(({ ctx, next }) => {
   const { req } = ctx;
 
   const userRole = req.session.role;
+  const userPermissions = req.session.permissions;
   const userId = req.session.uid;
 
   return next({
-    ctx: { user: { uid: userId, role: userRole } },
+    ctx: {
+      user: { uid: userId, role: userRole, permissions: userPermissions },
+    },
   });
 });
 
@@ -50,6 +53,7 @@ export const checkPermissions = (
   permissions: UserPermission | UserPermission[],
 ) => {
   return createMiddleware(({ ctx, next }) => {
+    console.log('user permission', ctx.user);
     if (!ctx.user?.permissions) {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
     }
