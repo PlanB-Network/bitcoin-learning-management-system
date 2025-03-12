@@ -74,13 +74,13 @@ function TutorialCategory() {
 
   useEffect(() => {
     if (tutorials) {
-      setSubCategories(extractSubCategories(tutorials));
-    }
-  }, [tutorials]);
-
-  useEffect(() => {
-    if (tutorials) {
-      const subCats = extractSubCategories(tutorials);
+      const filteredTutorials = tutorials.filter(
+        (tutorial) => tutorial.category === tutorialCategory?.name,
+      );
+      const subCats = extractSubCategories(
+        filteredTutorials,
+        tutorialCategory?.name ?? '',
+      );
       setSubCategories(subCats);
       if (subCats.length > 0) {
         setCurrentSubCategory(subCats[0]);

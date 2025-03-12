@@ -70,7 +70,7 @@ export const TUTORIALS_CATEGORIES = [
   {
     name: 'contribution',
     image: contributionSvg,
-    subcategories: ['resource', 'tutorial', 'others'],
+    subcategories: ['resources', 'content', 'others'],
     route: '/tutorials/contribution',
   },
 ] as const;
@@ -128,33 +128,24 @@ export const RESOURCES_CATEGORIES = [
   },
 ] as const;
 
-export const extractSubCategories = (tutorials: JoinedTutorialLight[]) => {
+export const extractSubCategories = (
+  tutorials: JoinedTutorialLight[],
+  currentCategory: string,
+) => {
   const extractedSubCategories = [
     ...new Set(
       tutorials.map((t) => t.subcategory).filter((sub): sub is string => !!sub),
     ),
   ];
+  const subcategoriesInOrder = TUTORIALS_CATEGORIES.find(
+    (c) => c.name === currentCategory,
+  )?.subcategories as readonly string[];
 
-  const allSubcategoriesInOrder = TUTORIALS_CATEGORIES.flatMap(
-    (category) => category.subcategories,
+  const filteredSubcategoriesInOrder = subcategoriesInOrder.filter(
+    (subcategory) => extractedSubCategories.includes(subcategory),
   );
 
-  extractedSubCategories.sort((a, b) => {
-    // Find the index of each subcategory in the predefined order
-    const indexA = allSubcategoriesInOrder.indexOf(
-      a as (typeof allSubcategoriesInOrder)[number],
-    );
-    const indexB = allSubcategoriesInOrder.indexOf(
-      b as (typeof allSubcategoriesInOrder)[number],
-    );
-    return (
-      // Sort by index in allSubcategoriesInOrder -> Hack with max safe integer so that if it's not found it goes to the end
-      (indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA) -
-      (indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB)
-    );
-  });
-
-  return extractedSubCategories;
+  return filteredSubcategoriesInOrder;
 };
 
 export function getNameAndIdFromUrl(param: string) {

@@ -81,6 +81,7 @@ export const TutorialLayout = ({
                             (tutorial) =>
                               tutorial.category === tutorialCategory.name,
                           ),
+                          tutorialCategory?.name,
                         ).map((subCategory) => (
                           <Collapsible
                             key={subCategory}
