@@ -70,7 +70,7 @@ export const TUTORIALS_CATEGORIES = [
   {
     name: 'contribution',
     image: contributionSvg,
-    subcategories: ['resources', 'content', 'others'],
+    subcategories: ['resource', 'content', 'others'],
     route: '/tutorials/contribution',
   },
 ] as const;
