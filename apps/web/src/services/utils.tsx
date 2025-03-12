@@ -29,13 +29,13 @@ export const TUTORIALS_CATEGORIES = [
   {
     name: 'node',
     image: nodeSvg,
-    subcategories: ['bitcoin', 'lightning-network', 'rgb', 'others'],
+    subcategories: ['bitcoin', 'lightning-network', 'others'],
     route: '/tutorials/node',
   },
   {
     name: 'mining',
     image: miningSvg,
-    subcategories: ['hardware', 'pools'],
+    subcategories: ['hardware', 'pool'],
     route: '/tutorials/mining',
   },
   {
