@@ -153,6 +153,10 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       const lowercaseTags = parsedTutorial.tags.map((tag) => tag.toLowerCase());
 
       await transaction`
+        DELETE FROM content.tutorial_tags WHERE tutorial_id = ${result.id}
+      `;
+
+      await transaction`
         INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
         ON CONFLICT (name) DO NOTHING
       `;

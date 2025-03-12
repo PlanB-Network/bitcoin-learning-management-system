@@ -100,9 +100,17 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       parsedQuizQuestion.tags &&
       parsedQuizQuestion.tags?.length > 0
     ) {
+      const lowercaseTags = parsedQuizQuestion.tags.map((tag) =>
+        tag.toLowerCase(),
+      );
+
+      await transaction`
+        DELETE FROM content.quiz_question_tags WHERE quiz_question_id = ${result.id}
+      `;
+
       await transaction`
           INSERT INTO content.tags ${transaction(
-            parsedQuizQuestion.tags.map((tag) => ({ name: tag.toLowerCase() })),
+            lowercaseTags.map((tag) => ({ name: tag })),
           )}
           ON CONFLICT (name) DO NOTHING
         `;
@@ -111,7 +119,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           INSERT INTO content.quiz_question_tags (quiz_question_id, tag_id)
           SELECT
             ${result.id},
-            id FROM content.tags WHERE name = ANY(${parsedQuizQuestion.tags})
+            id FROM content.tags WHERE name = ANY(${lowercaseTags})
           ON CONFLICT DO NOTHING
         `;
     }

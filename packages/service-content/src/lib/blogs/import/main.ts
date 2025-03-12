@@ -53,13 +53,15 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     const blogId = result.id;
 
     if (parsedBlog.tags && parsedBlog.tags.length > 0) {
+      const lowercaseTags = parsedBlog.tags.map((tag) => tag.toLowerCase());
+
       await transaction`
         DELETE FROM content.blog_tags WHERE blog_id = ${blogId}
      `;
 
       await transaction`
         INSERT INTO content.tags ${transaction(
-          parsedBlog.tags.map((tag) => ({ name: tag.toLowerCase() })),
+          lowercaseTags.map((tag) => ({ name: tag })),
         )}
         ON CONFLICT (name) DO NOTHING
       `;
@@ -68,7 +70,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         INSERT INTO content.blog_tags (blog_id, tag_id)
           SELECT ${blogId},  id
           FROM content.tags
-          WHERE name = ANY(${parsedBlog.tags.map((tag) => tag.toLowerCase())})
+          WHERE name = ANY(${lowercaseTags})
         ON CONFLICT DO NOTHING
       `;
     }

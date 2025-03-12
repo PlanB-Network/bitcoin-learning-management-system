@@ -104,6 +104,10 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       );
 
       await transaction`
+        DELETE FROM content.professor_tags WHERE professor_id = ${result.id}
+      `;
+
+      await transaction`
         INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
         ON CONFLICT (name) DO NOTHING
       `;

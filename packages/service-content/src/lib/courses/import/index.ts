@@ -467,6 +467,10 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             );
 
             await transaction`
+              DELETE FROM content.course_tags WHERE course_id = ${result.id}
+             `;
+
+            await transaction`
               INSERT INTO content.tags ${transaction(lowercaseTags.map((tag) => ({ name: tag })))}
               ON CONFLICT (name) DO NOTHING
             `;
