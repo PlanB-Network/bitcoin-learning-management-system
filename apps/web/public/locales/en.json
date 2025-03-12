@@ -1155,6 +1155,21 @@
   "tutorials": {
     "approvedByCreator": "Approved by the creator",
     "backTutorials": "Back to all tutorials",
+    "business": {
+      "description": "Want to integrate Bitcoin into your business? This category gathers all tutorials designed for professionals. Whether it's setting up a point-of-sale system to easily accept Bitcoin payments or adding and managing bitcoins in your company's treasury, you'll find essential technical and practical information here.",
+      "shortDescription": "Accepting Bitcoin payments and managing it in your treasury",
+      "title": "Business"
+    },
+    "contribution": {
+      "description": "Want to contribute to our open-source platform Plan ₿ Network? In this category, you will learn how to write and publish a new tutorial, perform translations, review content, or add new resources useful to the community. These tutorials will help you easily participate in Bitcoin education and enrich our shared knowledge base.",
+      "shortDescription": "Contribute to the Plan ₿ Network open-source platform",
+      "title": "Contribution"
+    },
+    "computer-security": {
+      "description": "Computer security is essential for every Bitcoiner. In this category, you will find tutorials on essential tools and general practices to protect your digital environment. Operating systems, secure browsers, password managers, authentication systems, VPNs, and encrypted communication solutions, all the resources presented here aim to enhance your security and privacy.",
+      "shortDescription": "Essential tools to protect your digital security and privacy",
+      "title": "Computer security"
+    },
     "details": {
       "author": "Author:",
       "didHelp": "Did this help ?",

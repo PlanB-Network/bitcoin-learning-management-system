@@ -5,8 +5,10 @@ import type React from 'react';
 import { cn } from '@blms/ui';
 
 import { CategoryIcon } from '#src/components/category-icon.tsx';
-import { RESOURCES_CATEGORIES } from '#src/services/utils.tsx';
-import { TUTORIALS_CATEGORIES } from '#src/utils/tutorials.ts';
+import {
+  RESOURCES_CATEGORIES,
+  TUTORIALS_CATEGORIES,
+} from '#src/services/utils.tsx';
 
 interface Category {
   name: string;
@@ -28,17 +30,6 @@ interface CategoryItemListProps {
 
 const itemStyles = cva(
   'flex flex-col justify-center items-center gap-3 transition-all bg-darkOrange-10 rounded-[15px]',
-  {
-    variants: {
-      unreleased: {
-        true: 'opacity-50 cursor-not-allowed',
-        false: 'opacity-100',
-      },
-    },
-    defaultVariants: {
-      unreleased: false,
-    },
-  },
 );
 
 const CategoryItem: React.FC<CategoryItemProps> = ({
@@ -47,22 +38,8 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
   title,
 }) => {
   return (
-    <Link
-      to={`${baseUrl}/${category.name}`}
-      onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
-        category.unreleased && event.preventDefault()
-      }
-      className={cn(
-        'group capitalize',
-        category.unreleased ? 'cursor-not-allowed' : '',
-      )}
-    >
-      <div
-        className={cn(
-          itemStyles({ unreleased: category.unreleased }),
-          'size-[135px] flex-none',
-        )}
-      >
+    <Link to={`${baseUrl}/${category.name}`} className={cn('group capitalize')}>
+      <div className={cn(itemStyles(), 'size-[135px] flex-none')}>
         <CategoryIcon
           src={category.image}
           variant="resources"

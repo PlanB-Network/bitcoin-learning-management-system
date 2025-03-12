@@ -21,12 +21,12 @@ import { MainLayout } from '#src/components/main-layout.tsx';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { TutorialCard } from '../-components/tutorial-card.tsx';
-import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 import {
   TUTORIALS_CATEGORIES,
   extractSubCategories,
-} from '../../../../../services/utils.tsx';
+} from '#src/services/utils.tsx';
+import { TutorialCard } from '../-components/tutorial-card.tsx';
+import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 
 export const Route = createFileRoute('/$lang/_content/tutorials/$category/')({
   params: {
