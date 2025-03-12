@@ -217,9 +217,6 @@
     "part": {
       "count": "Partea {{count}}"
     },
-    "preview": {
-      "letsgo": "Să mergem"
-    },
     "quizz": {
       "quizz": "Quiz",
       "quizzResults": "Rezultatele testului",
@@ -800,9 +797,7 @@
       "content": "Platforma Plan ₿ network își propune să ofere cele mai bune instrumente și conținut educațional la nivel mondial, împuternicind oamenii să-și recâștige suveranitatea. De la indivizi la comunități, suntem aici pentru a vă ajuta pe parcursul călătoriei dvs. cu Bitcoin.",
       "forEducators": "Pentru educatori și constructori",
       "globalNetwork": "O rețea globală Bitcoin",
-      "welcome": "Bine ați venit în Plan ₿ Network",
-      "link": "Fii parte a rețelei",
-      "startLink": "Începe să înveți"
+      "welcome": "Bine ați venit în Plan ₿ Network"
     },
     "tutorialSection": {
       "content1": "Bitcoin este în continuă evoluție, cu apariția unor noi actori, soluții, protocoale și progrese tehnologice. Astfel, poate fi dificil să menții o bază de date precisă și actualizată cu tutoriale de calitate. Aici, la Plan ₿, am reușit exact asta. Indiferent dacă ești un începător sau un utilizator avansat, poți naviga prin sute de tutoriale pentru a explora industria noastră în funcție de nevoile tale.",
@@ -1105,11 +1100,9 @@
   },
   "nodeNetwork": {
     "description1": "Credem că educația nu ar trebui să se limiteze doar la mediul online, ci să se extindă și în spațiile fizice. Pentru a atinge acest obiectiv, Plan ₿ Network coordonează o rețea de hub-uri la nivel global pentru a aduna gânditori, constructori și educatori care susțin progresul Bitcoin și al tehnologiilor libertății.",
-    "apply": "Aplicați pentru a deveni un Nod",
     "pageSubtitle": "Vrei să \"orange pill\"-ezi lumea? Alătură-te de Plan ₿ Network.",
     "pageTitle": "Explorează rețeaua de noduri Plan ₿",
-    "descriptionExtend": "Primul nostru pas este să invităm să se alăture nouă comunitățile cu spații fizice, pe care le numim \"nodurile complete\" ale rețelei noastre. În viitor, pe măsură ce rețeaua noastră se întărește, vom extinde această invitație către mai multe inițiative la nivel mondial. Dacă împărtășiți valorile noastre, vă rugăm să luați legătura cu reprezentanții noștri pentru a vă alătura rețelei noastre și a ajuta la construirea celei mai bune educații posibile despre Bitcoin.",
-    "applyhelp": "*Selectați locația nodului"
+    "descriptionExtend": "Primul nostru pas este să invităm să se alăture nouă comunitățile cu spații fizice, pe care le numim \"nodurile complete\" ale rețelei noastre. În viitor, pe măsură ce rețeaua noastră se întărește, vom extinde această invitație către mai multe inițiative la nivel mondial. Dacă împărtășiți valorile noastre, vă rugăm să luați legătura cu reprezentanții noștri pentru a vă alătura rețelei noastre și a ajuta la construirea celei mai bune educații posibile despre Bitcoin."
   },
   "payment": {
     "terms": "Consultați <0>termenii și condițiile</0> noastre generale pentru detalii despre rambursare",

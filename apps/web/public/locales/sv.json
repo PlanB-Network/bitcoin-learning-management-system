@@ -173,9 +173,6 @@
       "inPersonDescription": "Varje föreläsnings-session äger rum på plats på de angivna datumen och lokalerna och sänds även live på plattformen. \nDetta köp ger dig tillgång till lektioner både online och på plats.\nGlöm inte att reservera din plats för de lektioner du vill delta i fysiskt.",
       "checkoutError": "Ett fel inträffade under betalningsprocessen.\nVänligen försök igen."
     },
-    "preview": {
-      "letsgo": "Nu kör vi"
-    },
     "quizz": {
       "clickOnPie": "Klicka på cirkeldiagrammet för att kontrollera det rätta svaret",
       "quizz": "Quiz",
@@ -748,9 +745,7 @@
       "content": "Plan ₿ Networks plattform strävar efter att erbjuda de bästa verktygen och utbildningsinnehållet globalt, vilket ger människor möjlighet att återta sin suveränitet. Från individer till communities, vi är här för att hjälpa dig genom din Bitcoin-resa.",
       "forEducators": "För utbildare och entreprenörer",
       "globalNetwork": "Ett globalt Bitcoin-nätverk",
-      "welcome": "Välkommen till Plan ₿ Network",
-      "link": "Bli en del av nätverket",
-      "startLink": "Börja lära dig"
+      "welcome": "Välkommen till Plan ₿ Network"
     },
     "tutorialSection": {
       "title": "Centralisera kunskap för att bättre förmedla den",
@@ -842,11 +837,9 @@
     "socialStudiesDescription": "Studera Bitcoins effekt på samhället."
   },
   "nodeNetwork": {
-    "apply": "Ansök om att starta en nod",
     "description1": "Vi tror på att utbildning inte enbart borde ske online utan också i fysiska utrymmen. För att uppnå detta hanterar Plan ₿ Network ett nätverk av hubbar runt om i världen för att välkomna tänkare, entreprenörer och utbildare som främjar utvecklingen av Bitcoin och frihetsteknologier.",
     "pageSubtitle": "Vill du orange-pilla världen? Gå med i Plan ₿ Network.",
     "pageTitle": "Utforska Plan ₿ Nodnätverk",
-    "applyhelp": "*Välj nodens plats",
     "descriptionExtend": "Vårt första steg är att bjuda in communities som har fysiska platser, vilka vi refererar till som \"fulla noder\" i vårt nätverk, att ansluta till oss. I framtiden, när vårt nätverk stärks, kommer vi att utöka denna inbjudan till fler initiativ världen över. Om du delar våra värderingar, vänligen kontakta våra representanter för att ansluta till vårt nätverk och hjälpa till att bygga den bästa möjliga Bitcoin-utbildningen."
   },
   "notFound": {

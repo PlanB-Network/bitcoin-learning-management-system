@@ -160,9 +160,6 @@
       "inPersonAccess": "Dole ne ka sauke tikitinka don samun damar shiga ajin gani-gaka.",
       "paidCourse": "An biya"
     },
-    "preview": {
-      "letsgo": "Mu je"
-    },
     "quizz": {
       "clickOnPie": "Danna kan da’irar zanen chat don duba kurakuranka da ganin bayanin su",
       "quizz": "Wasa kwakwalwa",
@@ -532,12 +529,10 @@
     "pageTitle": "Dakin Karatun Bitcoin"
   },
   "nodeNetwork": {
-    "apply": "Nemo hanyar zama Node",
     "description1": "Plan B Network na goyon bayan shirye-shiryen ilimi a duniya baki ɗaya. Muna haɗin gwiwa don ƙirƙirar mafi kyawun kayan aiki don waɗannan ayyukan, ta hanyar dandamalinmu da kuma a zahiri. Ko yaushe muna neman sababbin nodes don shiga cikinmu. Idan kuna son yin aiki tare don ƙirƙirar hanyar sadarwa ta ilimi ta duniya mai rarrabuwa don Bitcoin, tuntuɓe mu!",
     "pageSubtitle": "Kuna son kawo canji ga duniya da Bitcoin? Shiga cikin PlanB Network.",
     "pageTitle": "Bincika Hanyar Node ta Plan B",
-    "descriptionExtend": "Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu da taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu.",
-    "applyhelp": "*Zaɓi Wurin Node"
+    "descriptionExtend": "Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu da taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu."
   },
   "resources": {
     "github": "Dukkan wannan bayanin ana sarrafa shi ta hanyar wani rumbun ajiya na tushe na bude a <0>Github</0>. Za'a iya bada gudummawa da ƙara duk wani abu da bai bayyana ba.",
@@ -624,8 +619,6 @@
     "header": {
       "forEducators": "Don samar da koyarwa da masu kirkira",
       "welcome": "Barka da zuwa Plan ₿ Network",
-      "link": "Kazama cikin mutanen mu",
-      "startLink": "Fara koyo",
       "globalNetwork": "Bitcoin Network na Duniya",
       "content": "Manufar dandamalin Plan ₿ Network ita ce samar da mafi kyawun kayan aiki da ilimi a fadin duniya, domin ba wa mutane damar sake samun 'yancinsu. Daga matakin mutum ɗaya har zuwa al'ummomi, muna nan don taimaka muku a tafiyarku ta Bitcoin."
     },

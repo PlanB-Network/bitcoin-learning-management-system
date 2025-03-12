@@ -158,9 +158,6 @@
       "onlineDescription": "",
       "inPersonCallout": ""
     },
-    "preview": {
-      "letsgo": "Aloitetaan"
-    },
     "quizz": {
       "clickOnPie": "Klikkaa piirakka-kaaviota, josta näet virheesi selityksineen",
       "quizz": "Koe",
@@ -459,9 +456,7 @@
       "content": "PlanB-alustan tavoitteena on tarjota parhaat työkalut ja koulutussisällöt ympäri maailmaa auttaakseen ihmisiä palauttamaan itsemääräämisoikeutensa. Yksilöistä yhteisöihin, olemme täällä auttamassa sinua Bitcoin-matkallasi.",
       "forEducators": "Kouluttajille ja kehittäjille",
       "globalNetwork": "Global Bitcoin Network",
-      "welcome": "Tervetuloa PlanB Network:iin",
-      "link": "Ole osa verkostoa",
-      "startLink": "Aloita oppiminen"
+      "welcome": "Tervetuloa PlanB Network:iin"
     },
     "tutorialSection": {
       "title": "Bitcoin-kouluttautumisen teko helpoksi on tavoitteemme.",
@@ -525,11 +520,9 @@
     "publicDescription": ""
   },
   "nodeNetwork": {
-    "apply": "Hae PlanB Nodeksi",
     "description1": "Rahoitusjärjestelmämme on romahtamassa, ruokamme myrkytetään ja vapautemme viedään. Emme voi odottaa ihmettä, vaan meidän täytyy luoda turvallinen paikka elää. Meidän täytyy luoda oma PlanB!",
     "pageSubtitle": "Yhteisömme on vahvuutemme. Meidän tulee yhdistyä globaaliksi bitcoin-yhteisöverkostoksi.",
     "pageTitle": "Node Kartta",
-    "applyhelp": "",
     "descriptionExtend": ""
   },
   "notFound": {

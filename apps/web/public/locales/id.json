@@ -219,9 +219,6 @@
     "part": {
       "count": "Bagian {{count}}"
     },
-    "preview": {
-      "letsgo": "Ayo"
-    },
     "quizz": {
       "clickOnPie": "Klik grafik pie untuk memeriksa kesalahan anda dan melihat penjelasannya",
       "quizz": "Kuis",
@@ -1147,9 +1144,7 @@
       "content": "Platform Plan ₿ bertujuan untuk menyediakan alat-alat dan konten edukasi terbaik di seluruh dunia dengan tujuan membantu orang mendapatkan kembali kendali mereka. Dari individu hingga komunitas, kami di sini untuk membantu dalam perjalanan Bitcoin Anda.",
       "forEducators": "Untuk pendidik dan pembangun",
       "globalNetwork": "Jaringan Bitcoin Global",
-      "welcome": "Selamat datang di Plan ₿ Network",
-      "link": "Jadi bagian dari network",
-      "startLink": "Mulai Belajar"
+      "welcome": "Selamat datang di Plan ₿ Network"
     },
     "tutorialSection": {
       "content1": "Bitcoin terus berkembang dengan munculnya aktor, solusi, protokol, dan terobosan teknologi baru. Seringkali sulit untuk menjaga database yang akurat dan terkini dari tutorial yang baik. Di sini di Plan ₿, kami telah mencapai hal tersebut. Dari pemula hingga pengguna berpengalaman, Anda dapat menjelajahi ratusan tutorial untuk mengeksplorasi industri kami sesuai kebutuhan Anda.",
@@ -1260,11 +1255,9 @@
     "pageTitle": "Podcast Bitcoin"
   },
   "nodeNetwork": {
-    "apply": "Ajukan permohonan untuk menjadi Node",
     "description1": "Kami percaya bahwa pendidikan seharusnya tidak hanya dilakukan secara online, tetapi juga di ruang-ruang fisik. Untuk mencapai hal ini, Plan ₿ Network mengelola hub jaringan di seluruh dunia untuk menyambut para pemikir, pengusaha, dan pendidik yang mendorong kemajuan teknologi Bitcoin dan kebebasan.",
     "pageSubtitle": "Ingin memberi pil oranye alias mengedukasi dunia tentang Bitcoin? Bergabunglah dengan Plan ₿ Network.",
     "pageTitle": "Jelajahi Jaringan Node Plan ₿",
-    "applyhelp": "*Pilih Lokasi node",
     "descriptionExtend": "Langkah pertama kami adalah mengundang komunitas-komunitas yang memiliki ruang fisik, yang kami sebut sebagai \"full nodes\" dari jaringan kami, untuk bergabung dengan kami. Di masa depan, seiring dengan semakin kuatnya jaringan kami, kami akan memperluas undangan ini ke lebih banyak inisiatif di seluruh dunia. Jika Anda memiliki nilai-nilai yang sama dengan kami, silakan hubungi perwakilan kami untuk bergabung dengan jaringan kami dan membantu membangun edukasi Bitcoin yang terbaik."
   },
   "notFound": {

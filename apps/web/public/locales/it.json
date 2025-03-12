@@ -177,9 +177,6 @@
       "onlineCallout": "Stai per acquistare l'accesso <strong>online</strong> a questo corso.",
       "checkoutError": "Si è verificato un errore durante il processo di pagamento. Per favore, riprova."
     },
-    "preview": {
-      "letsgo": "Andiamo"
-    },
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e leggi le spiegazioni",
       "quizz": "Quiz",
@@ -368,7 +365,7 @@
       "ticketType": "Tipo",
       "noInvoice": "Non hai ancora fatture.",
       "noTicket": "Non hai ancora biglietti.",
-      "pastTicketTitle": "Prenotazione passate",
+      "pastTicketTitle": "Prenotazioni passate",
       "upcomingTicketTitle": "Prenotazioni future",
       "upcomingTicketSubtitle": "Qui puoi scaricare il tuo biglietto per partecipare al prossimo evento. Assicurati di portare il biglietto con te per avere accesso all'evento.",
       "cancelBookingTitle": "Sei sicuro di voler annullare questa prenotazione?",
@@ -377,7 +374,7 @@
     },
     "bCert": {
       "grade": "Voto",
-      "noResults": "Non ci sono ancora voti o certificati associati a questo account.\nSe hai superato un esame e i tuoi risultati non sono ancora visibili dopo un lungo periodo di tempo, ti preghiamo di contattarci per assistenza."
+      "noResults": "Non ci sono ancora certificati associati a questo account.\nSe hai superato un esame e i tuoi risultati non sono ancora visibili dopo un lungo periodo di tempo, ti preghiamo di contattarci per assistenza."
     },
     "calendar": {
       "calendar": "Calendario",
@@ -478,7 +475,7 @@
       "courseDiplomasSubtitle": "Qui puoi trovare i dettagli relativi a tutti gli esami che hai sostenuto dopo aver completato un corso sulla piattaforma.",
       "completionDiplomas": "Diplomi",
       "downloadTicket": "Scarica biglietto",
-      "globalCertifications": "Certificazioni di livello globale",
+      "globalCertifications": "Certificati",
       "retakeExam": "Ripeti l'esame",
       "seatBooked": "Il tuo posto alla sessione d'esame è prenotato",
       "takePlaceAt": "La sessione si svolgerà a",
@@ -779,9 +776,7 @@
       "content": "La piattaforma di Plan ₿ Network mira a fornire i migliori strumenti e contenuti educativi in tutto il mondo per aiutare le persone a recuperare la loro sovranità. Dagli individui alle comunità, siamo qui per aiutarvi lungo il vostro viaggio Bitcoin.",
       "forEducators": "Per educatori e imprenditori",
       "globalNetwork": "Rete Globale Bitcoin",
-      "welcome": "Benvenuto su Plan ₿ Network",
-      "link": "Entra a far parte della rete",
-      "startLink": "Inizia a imparare"
+      "welcome": "Benvenuto su Plan ₿ Network"
     },
     "tutorialSection": {
       "title": "Rendere semplice l'istruzione su Bitcoin è il nostro obiettivo.",
@@ -875,12 +870,10 @@
     "planBLabsDescription": "Unisciti a un gruppo di studio per continuare a studiare Lightning, Mining e Privacy"
   },
   "nodeNetwork": {
-    "apply": "Fai richiesta per diventare trader",
     "description1": "Riteniamo che l'educazione non debba essere confinata esclusivamente al mondo online, ma debba trovare spazio anche in contesti fisici. Per questo motivo, Plan ₿ Network gestisce una rete di hub distribuiti in tutto il mondo, destinati ad accogliere pensatori, imprenditori ed educatori impegnati a favorire il progresso di Bitcoin e delle tecnologie della libertà.",
     "pageSubtitle": "Vuoi orenge-pillare il mondo? Unisciti a Plan ₿ Network.",
     "pageTitle": "Naviga sulla rete dei nodi di Plan ₿ Network",
-    "descriptionExtend": "Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo \"full node\" della rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin.",
-    "applyhelp": "*Seleziona la posizione del nodo"
+    "descriptionExtend": "Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo \"full node\" della rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin."
   },
   "notFound": {
     "here": "Qui",
@@ -1047,7 +1040,7 @@
         "description": "Gli hardware wallet vengono solitamente utilizzati per conservare i tuoi risparmi in bitcoin a lungo termine. Sono dispositivi fisici che non sono connessi a internet (spesso chiamati \"cold wallet\") e sono solitamente molto sicuri. Anche se questi dispositivi sono spesso open source per quanto riguarda il loro software, l'hardware ha un costo che varia da 50 a 300 euro. Considera questi dispositivi come un conto bancario per importi di risparmio più elevati che useresti di tanto in tanto."
       },
       "mobile": {
-        "description": "I wallet su mobile vengono solitamente utilizzati per le spese quotidiane. Integrano Lightning Network per transazioni istantanee ed a basso costo. Sono di solito connessi a internet (spesso chiamati \"Hot walet\") e quindi sono meno sicuri rispetto a i wallet hardware. Dovrebbero essere utilizzati solo per conservare piccole quantità di bitcoin, considerali come il tuo portafoglio quotidiano che tieni in tasca."
+        "description": "I wallet su mobile vengono solitamente utilizzati per le spese quotidiane. Integrano Lightning Network per transazioni istantanee ed a basso costo. Sono di solito connessi a internet (spesso chiamati \"Hot wallet\") e quindi sono meno sicuri rispetto a i wallet hardware. Dovrebbero essere utilizzati solo per conservare piccole quantità di bitcoin, considerali come il tuo portafoglio quotidiano che tieni in tasca."
       },
       "shortDescription": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
       "title": "Wallet"
@@ -1169,7 +1162,7 @@
     "view": "Vista",
     "booked": "Prenotato",
     "bookings": "Prenotazioni",
-    "credentials": "Credenziali",
+    "credentials": "Certificati",
     "diploma": "Diploma",
     "filter": "Filtro",
     "failed": "Non superato",
@@ -1429,6 +1422,7 @@
     "description1": "I Plan ₿ Labs sono gruppi di studio progettati per offrire periodicamente classi pratiche e interattive. Attraverso questi gruppi di studio, studenti e professori si portano avanti discussioni e dibattiti sulle ultime ricerche, risolvendo delle sfide legate al mondo reale, e applicandovi anche concetti teorici.",
     "description2": "Unisciti al Plan ₿ Lab che si allinea con il tuo campo di studio. Migliora la tua esperienza di apprendimento!",
     "planBLabs": "Plan ₿ Labs",
-    "title": "Lezioni pratiche e interattive per un apprendimento continuo"
+    "title": "Lezioni pratiche e interattive per un apprendimento continuo",
+    "coordinatedBy": "Questo Lab è coordinato da"
   }
 }

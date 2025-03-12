@@ -130,9 +130,6 @@
       "hasNotBeenProofread": "Khoá học này vẫn chưa được hiệu đính",
       "teacherLed": "Do giáo viên hướng dẫn"
     },
-    "preview": {
-      "letsgo": "Đi nào"
-    },
     "quizz": {
       "quizz": "Câu hỏi kiểm tra",
       "quizzResults": "Kết quả kiểm tra",
@@ -795,8 +792,6 @@
       "forEducators": "Dành cho các nhà giáo dục và các nhà phát triển",
       "globalNetwork": "Mạng lưới Bitcoin toàn cầu",
       "welcome": "Chào mừng bạn đến với PlanB Network",
-      "link": "Hãy trở thành một phần của mạng lưới",
-      "startLink": "Bắt đầu học tập",
       "content": "Nền tảng Plan B mong muốn cung cấp các công cụ và nội dung giáo dục tốt nhất trên thế giới để giúp mọi người lấy lại chủ quyền của mình. Từ các cá nhân cho tới các cộng đồng, chúng tôi ở đây để hỗ trợ bạn trên hành trình Bitcoin của mình."
     },
     "tutorialSection": {
@@ -890,11 +885,9 @@
     "projectsDescription": "Tìm hiểu thêm về các công ty và các dự án có đóng góp vào việc cải thiện và thúc đấy sự áp dụng Bitcoin"
   },
   "nodeNetwork": {
-    "apply": "Ứng tuyển để trở thành một nút",
     "description1": "Hệ thống tài chính của chúng ta đang sụp đổ, thức ăn của chúng ta đang bị nhiễm độc, sự tự do của chúng ta đang bị cướp đi. Chúng ta không thể ngồi chờ một phép màu sẽ xảy ra, chúng ta sẽ phải tạo ra một nơi an toàn để sinh sống. Chúng ta cần tạo ra một kế hoạch B (PlanB) cho chính mình!",
     "pageSubtitle": "Sức mạnh của chúng ta là cộng đồng của mình. Hãy tập hợp với nhau thành một mạng lưới Bitcoin toàn cầu.",
     "pageTitle": "Bản đồ nút",
-    "applyhelp": "*Lựa chọn vị trí node",
     "descriptionExtend": "Bước đầu tiên của chúng tôi là mới các cộng đồng với không gian vật lý, điều mà chúng tôi gọi là \"full node\" trong mạng lưới của mình, tham gia với chúng tôi. Trong tương lại, khi mạng lưới mạnh mẽ hơn, chúng tôi sẽ mở rộng lời mời tới các sáng kiến toàn cầu. Nếu bạn chia sẻ các giá trị với chúng tôi, vui lòng liên hệ tới các đại diện của chúng tôi để tham gia vào mạng lưới và giúp đỡ chúng tôi xây dựng nên một mạng lưới giáo dục về Bitcoin tốt nhất có thể."
   },
   "notFound": {

@@ -180,9 +180,6 @@
       "onlineDescription": "",
       "inPersonDescription": ""
     },
-    "preview": {
-      "letsgo": "Jdeme na to"
-    },
     "quizz": {
       "clickOnPie": "Klikněte na kruhový graf, zkontrolujte si své chyby a podívejte se na vysvětlení",
       "quizz": "Kvíz",
@@ -481,8 +478,6 @@
       "forEducators": "Pro pedagogy a stavitele",
       "globalNetwork": "Celosvětová síť Bitcoin",
       "welcome": "Vítejte v síti PlanB Network",
-      "link": "Staňte se součástí sítě",
-      "startLink": "Začněte se vzdělávat",
       "content": "Platforma Plan B si klade za cíl poskytovat nejlepší nástroje a vzdělávací obsah po celém světě, aby pomohla lidem získat zpět jejich suverenitu. Jsme tu, abychom vám pomohli na vaší cestě za Bitcoinem, a to od jednotlivců až po komunity."
     },
     "tutorialSection": {
@@ -547,12 +542,10 @@
     "publicDescription": ""
   },
   "nodeNetwork": {
-    "apply": "Podejte žádost a staňte se Nodem (Uzlem)",
     "pageSubtitle": "Naší silnou stránkou je naše komunita. Pojďme se sdružit do světové bitcoinové sítě.",
     "pageTitle": "Mapa uzlů",
     "description1": "Náš finanční systém se hroutí, naše potraviny jsou otrávené, naše svoboda je odňata. Nemůžeme čekat na zázrak, musíme vytvořit bezpečné místo pro život. Musíme si vytvořit vlastní PlanB!",
-    "descriptionExtend": "",
-    "applyhelp": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "Zde",
