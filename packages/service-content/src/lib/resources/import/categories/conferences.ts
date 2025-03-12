@@ -101,7 +101,7 @@ export const createProcessChangedConference = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(conferences) ${resource?.fullPath}: ${error}`,
+            `Error processing file(conferences2) ${resource?.fullPath}: ${error}`,
           );
           return;
         }
@@ -120,7 +120,6 @@ export const createProcessChangedConference = (
 
         try {
           parsedConference = await yamlToObject<ConferenceMain>(main);
-
           const result = await transaction<Conference[]>`
               INSERT INTO content.conferences (
                 resource_id, project_id, languages, name, year, location, original_language, description, website_url, twitter_url
@@ -165,7 +164,7 @@ export const createProcessChangedConference = (
           }
         } catch (error) {
           errors.push(
-            `Error processing file(conferences), ${resource.path} - ${main?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(conferences1), ${resource.path} - ${main?.path} (${resource.fullPath}): ${error}`,
           );
         }
 

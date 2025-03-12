@@ -28,8 +28,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${lastUpdated.commit},
           NOW()
         )
-        ON CONFLICT (category, path) DO UPDATE SET
-          id = ${parsedResource.id},
+        ON CONFLICT (id) DO UPDATE SET
+          category = ${resource.category},
+          path = ${resource.path},
           last_updated = ${lastUpdated.time},
           last_commit = ${lastUpdated.commit},
           last_sync = NOW()
