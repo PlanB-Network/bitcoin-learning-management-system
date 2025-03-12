@@ -219,9 +219,6 @@
       "inPersonCallout": "Du er i ferd med å kjøpe <strong>personlig tilstede</strong> tilgang til dette kurset.",
       "checkoutError": "En feil oppstod under utsjekkingsprosessen.\nVennligst prøv igjen."
     },
-    "preview": {
-      "letsgo": "La oss starte"
-    },
     "quizz": {
       "quizz": "Quiz",
       "quizzResults": "Quizresultater",
@@ -518,7 +515,8 @@
     "project": "Prosjekt",
     "projects": "Prosjekter",
     "previous": "Forrige",
-    "yes": "Ja"
+    "yes": "Ja",
+    "save": "Lagre"
   },
   "dashboard": {
     "account": "Konto",
@@ -719,7 +717,13 @@
         "resultsRemaining": "{{results}} resultater gjenstår",
         "seeMore": "Se mer",
         "viewCV": "Se CV"
-      }
+      },
+      "selectRole": "Velg rolle",
+      "accessGranted": "Tilgang innvilget",
+      "coursesIndexes": "Kursindekser",
+      "deleteRole": "Slett rolle",
+      "editRole": "Rediger rolle",
+      "hasAccessTo": "Har tilgang til:"
     },
     "studentDashboard": "Studentdashbord",
     "backToDashboard": "Tilbake til dashbordet",
@@ -988,9 +992,7 @@
       "content": "Plan ₿ nettverksplattformen har som mål å tilby de beste verktøyene og læringsinnholdet globalt, for å gi folk muligheten til å gjenvinne sin suverenitet. Fra enkeltpersoner til samfunn, vi er her for å hjelpe deg på din Bitcoin-reise.",
       "forEducators": "For pedagoger og byggere",
       "globalNetwork": "Et globalt Bitcoin-nettverk",
-      "welcome": "Velkommen til PlanB Network",
-      "link": "Bli en del av nettverket",
-      "startLink": "Start læring"
+      "welcome": "Velkommen til PlanB Network"
     },
     "tutorialSection": {
       "title": "Samle kunnskap for å distribuere den mer effektivt",
@@ -1080,7 +1082,8 @@
     "socialStudiesDescription": "Studer virkningen av Bitcoin på samfunnet.",
     "moviesDescription": "Oppdag fengslende historier og grundige utforskninger av Bitcoins utvikling og innvirkning",
     "lecturesDescription": "Se på opptak av forelesninger fra Bitcoin-eksperter på nytt",
-    "projectsDescription": "Lær om selskapene og prosjektene som bidrar til å forbedre Bitcoin og øke adopsjonen av det"
+    "projectsDescription": "Lær om selskapene og prosjektene som bidrar til å forbedre Bitcoin og øke adopsjonen av det",
+    "planBLabsDescription": "Bli med i en studiegruppe for å fortsette å lære om Lightning, Mining og Personvern"
   },
   "professors": {
     "tips": {
@@ -1199,11 +1202,9 @@
   },
   "nodeNetwork": {
     "description1": "Plan B Network støtter utdanningsinitiativer over hele verden. Vi samarbeider for å skape de beste verktøyene for disse prosjektene, både gjennom plattformen vår og i den fysiske verden. Vi er alltid på utkikk etter nye noder som kan bli med oss. Hvis du vil jobbe sammen for å skape et desentralisert globalt utdanningsnettverk for Bitcoin, ta kontakt!",
-    "apply": "Søk om å bli en Node",
     "pageSubtitle": "Vil du gi verden den oransje pillen? Bli med i PlanB-nettverket.",
     "pageTitle": "Utforsk Plan B Node-nettverk",
-    "descriptionExtend": "Vårt første skritt er å invitere samfunn med fysiske rom, som vi refererer til som \"full nodes\" i nettverket vårt, til å bli med oss. I fremtiden, når nettverket vårt styrkes, vil vi utvide denne invitasjonen til flere initiativer over hele verden. Hvis du deler våre verdier, vennligst ta kontakt med våre representanter for å bli med i nettverket vårt og hjelpe til med å bygge den beste Bitcoin-utdanningen som er mulig.",
-    "applyhelp": "*Velg node Plassering"
+    "descriptionExtend": "Vårt første skritt er å invitere samfunn med fysiske rom, som vi refererer til som \"full nodes\" i nettverket vårt, til å bli med oss. I fremtiden, når nettverket vårt styrkes, vil vi utvide denne invitasjonen til flere initiativer over hele verden. Hvis du deler våre verdier, vennligst ta kontakt med våre representanter for å bli med i nettverket vårt og hjelpe til med å bygge den beste Bitcoin-utdanningen som er mulig."
   },
   "notFound": {
     "pageSubtitle": "Det ser ut som om noen falt for dypt ned i kaninhullet og ble borte. For å komme tilbake til overflaten, klikk",
@@ -1414,6 +1415,14 @@
     "resultEmpty": "Oops! Vi kunne ikke finne noe som matchet søket ditt. Sjekk stavingen din, prøv forskjellige nøkkelord, eller velg en annen kategori.",
     "resultError": "Noe gikk galt. Vennligst prøv igjen.",
     "resultInfo": "Fant {{count}} resultater på {{time}}ms",
-    "results": "Resultater"
+    "results": "Resultater",
+    "conference": "Konferanse"
+  },
+  "labs": {
+    "coordinatedBy": "Denne labben koordineres av",
+    "description1": "Plan ₿ Labs er studiegrupper designet for å gi studenter regelmessige praktiske og interaktive klasser. Gjennom disse studiegruppene engasjerer studenter og professorer seg i diskusjoner, debatterer den siste forskningen, løser virkelige utfordringer, og anvender teoretiske konsepter.",
+    "description2": "Bli med i labben som samsvarer med studiefeltet ditt og forbedre læringsopplevelsen din!",
+    "planBLabs": "Plan ₿ Labs",
+    "title": "Praktiske og interaktive klasser for kontinuerlig læring"
   }
 }

@@ -294,9 +294,6 @@
       "timeStampedNoDot": "označen vremenskim pečetom",
       "timeStamping": "označavanje vremenskim pečetom"
     },
-    "preview": {
-      "letsgo": "Krenimo"
-    },
     "quizz": {
       "clickOnPie": "Kliknite na grafikon u obliku pite da biste proverili tačan odgovor",
       "quizzResults": "Rezultati kviza",
@@ -830,9 +827,7 @@
       "content": "Plan ₿ Network platforma ima za cilj da pruži najbolje alate i obrazovni sadržaj širom sveta, osnažujući ljude da povrate svoj suverenitet. Od pojedinaca do zajednica, ovde smo da Vam pomognemo na Vašem Bitcoin putovanju.",
       "forEducators": "Za nastavnike i preduzetnike",
       "globalNetwork": "Globalna Bitcoin mreža",
-      "welcome": "Dobrodošli u Plan ₿ mrežu",
-      "link": "Budite deo mreže",
-      "startLink": "Počnite da učite"
+      "welcome": "Dobrodošli u Plan ₿ mrežu"
     },
     "languageSection": {
       "content1": "U Plan ₿, verujemo da je Bitcoin međunarodna revolucija koja se tiče svih. Da bismo osnažili milijarde ljudi, dizajniramo ovu platformu da bude višejezična i dostupna svima. Platforma trenutno podržava 7 jezika, a svakog meseca se dodaju novi. Da bismo to postigli, koristimo kombinaciju veštačke inteligencije i strastvenih Bitcoinera širom sveta. I Vi možete početi da pokrećete svoju lokalnu mrežu u svojoj zemlji!",
@@ -914,8 +909,6 @@
   },
   "nodeNetwork": {
     "description1": "Verujemo da obrazovanje ne bi trebalo da se odvija samo na internetu, već i u fizičkom prostoru. Da bi se to postiglo, Plan B Mreža upravlja mrežom centara širom sveta kako bi dočekao mislioce, kreatore i edukatore koji podstiču napredak Bitcoina i tehnologija slobode.",
-    "apply": "Prijavite se da postanete Čvor",
-    "applyhelp": "*Izaberite lokaciju čvora",
     "pageSubtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se Plan ₿ Mreži.",
     "descriptionExtend": "Naš prvi korak je da pozovemo zajednice koje imaju fizički prostor, koje nazivamo \"potpunim čvorovima\" naše mreže, da nam se pridruže. U budućnosti, kako naša mreža bude jačala, proširićemo ovu pozivnicu na više inicijativa širom sveta. Ako delite naše vrednosti, molimo Vas da se obratite našim predstavnicima da se pridružite našoj mreži i pomognete u izgradnji najbolje moguće edukacije o Bitcoinu.",
     "pageTitle": "Istražite Plan ₿ Čvor mrežu"

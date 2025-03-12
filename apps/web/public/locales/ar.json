@@ -157,9 +157,6 @@
       "inPersonCallout": "",
       "onlineCallout": ""
     },
-    "preview": {
-      "letsgo": "Los geht's"
-    },
     "quizz": {
       "clickOnPie": "Klicke auf das Tortendiagramm, überprüfe deine Fehler und sehe dir die Lösung an",
       "quizz": "Quizz",
@@ -458,9 +455,7 @@
       "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "Für Educators und Schaffer",
       "globalNetwork": "Globales Bitcoin-Netzwerk",
-      "welcome": "Welcome to PlanB Network",
-      "link": "Werde Teil des Netzwerks",
-      "startLink": "Start Learning"
+      "welcome": "Welcome to PlanB Network"
     },
     "tutorialSection": {
       "title": "Making Bitcoin education simple is our objective.",
@@ -524,12 +519,10 @@
     "publicDescription": ""
   },
   "nodeNetwork": {
-    "apply": "Apply to become a Node",
     "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
     "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
     "pageTitle": "Node Map",
-    "descriptionExtend": "",
-    "applyhelp": ""
+    "descriptionExtend": ""
   },
   "notFound": {
     "here": "Hier",

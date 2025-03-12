@@ -301,9 +301,6 @@
       "inPersonDescription": "각 수업 세션은 지정된 날짜와 장소에서 대면으로 진행되며, 플랫폼에서 실시간 스트리밍됩니다.\n이 구매를 통해 대면 및 온라인 수업 모두에 참여할 수 있는 권한이 부여됩니다.\n대면 수업을 듣고자 한다면, 좌석을 예약하는 것을 잊지 마세요!",
       "checkoutError": "결제 과정 중 오류가 발생했습니다.\n다시 시도해 주세요."
     },
-    "preview": {
-      "letsgo": "Let's go"
-    },
     "quizz": {
       "clickOnPie": "파이 차트를 클릭해서 정답을 체크하세요",
       "quizz": "퀴즈",
@@ -695,7 +692,63 @@
       "firstName": "이름 (또는 닉네임)",
       "followProcess": "단계별 과정을 따라 이력서와 직업 정보를 제출하세요.",
       "fullTime": "풀타임",
-      "description": "Plan ₿ Network 학생으로, 경력 성장을 지원하는 넓은 커뮤니티의 일원입니다. 이 섹션에서 이력서를 제출하고 경력 희망을 공유할 수 있습니다. 산업 파트너와 협력해 프로필을 잠재적 직업 기회와 매칭하며, 전문 경로의 다음 단계로 나아가는 데 도움을 드립니다."
+      "description": "Plan ₿ Network 학생으로, 경력 성장을 지원하는 넓은 커뮤니티의 일원입니다. 이 섹션에서 이력서를 제출하고 경력 희망을 공유할 수 있습니다. 산업 파트너와 협력해 프로필을 잠재적 직업 기회와 매칭하며, 전문 경로의 다음 단계로 나아가는 데 도움을 드립니다.",
+      "jobTitles": {
+        "complianceOfficer": "컴플라이언스 담당자",
+        "accountingManager": "회계 관리자",
+        "amlKycSpecialist": "AML/KYC 스페셜리스트",
+        "backendEngineer": "백엔드 엔지니어",
+        "bitcoinInvestmentAnalyst": "비트코인 투자 분석가",
+        "brandStrategist": "브랜드 전략가",
+        "businessAnalyst": "비즈니스 분석가",
+        "businessDevelopmentManager": "비즈니스 개발 매니저",
+        "cloudInfrastructureEngineer": "클라우드 인프라 엔지니어",
+        "communityManager": "커뮤니티 매니저",
+        "contentWriter": "콘텐츠 라이터",
+        "cryptographer": "암호학자",
+        "customerSuccessManager": "고객 성공 매니저",
+        "customerSupportSpecialist": "고객 지원 스페셜리스트",
+        "cybersecurity": "사이버 보안",
+        "fullStackDeveloper": "풀 스택 개발자",
+        "graphicDesigner": "그래픽 디자이너",
+        "hrSpecialist": "인사 스페셜리스트",
+        "legalContractSpecialist": "법률 계약 전문가",
+        "logisticManager": "로지스틱스 물류 관리자",
+        "marketingManager": "마케팅 매니저",
+        "miningEngineer": "채굴 엔지니어",
+        "protocolEngineer": "프로토콜 엔지니어",
+        "publicRelationsManager": "PR 매니저",
+        "researcher": "연구원",
+        "seoSpecialist": "SEO 스페셜리스트",
+        "socialMediaManager": "소셜 미디어 매니저",
+        "technicalProductManager": "기술 제품 매니저",
+        "technicalSupportEngineer": "기술 지원 엔지니어",
+        "miningOperationsManager": "채굴 운영 매니저",
+        "mobileAppDeveloper": "모바일 앱 개발자",
+        "operationsManager": "운영 매니저",
+        "productManager": "제품 매니저",
+        "revenueManager": "매출 매니저",
+        "riskAnalyst": "리스크 분석가",
+        "sales": "판매원",
+        "technicalWriter": "테크니컬 라이터",
+        "uiUxDesigner": "UI/UX 디자이너",
+        "uxResearcher": "UX 연구원",
+        "dataEngineer": "데이터 엔지니어",
+        "devOpsEngineer": "DevOps 엔지니어",
+        "economicAnalyst": "경제 분석가",
+        "educator": "교육자",
+        "eventCoordinator": "이벤트 코디네이터",
+        "frontendEngineer": "프론트엔드 개발자"
+      },
+      "languageLevel": "언어 숙련도",
+      "languageLevelSubLabel": "언어 능력에 가장 적합한 레벨을 선택해 주세요.",
+      "languageLevels": {
+        "advanced": "고급 (자신감 있고 정확함)",
+        "beginner": "초급 (제한적 이해)",
+        "elementary": "기초 (기본 대화 및 글쓰기)",
+        "fluent": "유창 (원어민 수준)",
+        "intermediate": "중급 (편안한 의사소통)"
+      }
     },
     "backToDashboard": "대시보드 돌아가기"
   },
@@ -757,9 +810,7 @@
       "content": "",
       "forEducators": "",
       "globalNetwork": "",
-      "welcome": "",
-      "link": "",
-      "startLink": ""
+      "welcome": ""
     },
     "tutorialSection": {
       "title": "",
@@ -823,11 +874,9 @@
     "login": ""
   },
   "nodeNetwork": {
-    "apply": "",
     "description1": "",
     "pageSubtitle": "",
     "pageTitle": "",
-    "applyhelp": "",
     "descriptionExtend": ""
   },
   "notFound": {

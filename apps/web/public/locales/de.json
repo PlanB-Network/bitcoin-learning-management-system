@@ -177,9 +177,6 @@
       "inPersonDescription": "Jeder Kurs findet persönlich zu den angegebenen Terminen und an den angegebenen Orten statt und wird außerdem per Live-Stream auf der Plattform übertragen. \nMit dem Kauf erhalten Sie Zugang zu den Präsenz- und Online-Kursen.\nVergessen Sie nicht, Ihren Platz für die Kurse zu reservieren, die Sie persönlich besuchen möchten.",
       "checkoutError": "Während des Bezahlvorgangs ist ein Fehler aufgetreten.\nBitte versuchen Sie es erneut."
     },
-    "preview": {
-      "letsgo": "Los geht's"
-    },
     "quizz": {
       "clickOnPie": "Klicken Sie auf das Kreisdiagramm, um Ihre Fehler zu überprüfen, und schauen Sie sich die Erklärungen an",
       "quizz": "Quiz",
@@ -779,9 +776,7 @@
       "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Gemeinschaften, wir sind hier, um Sie auf Ihrer Bitcoin-Reise zu unterstützen.",
       "forEducators": "Für Erzieher *innen und Entwickler*innen",
       "globalNetwork": "Weltweites Bitcoin-Netzwerk",
-      "welcome": "Willkommen im Plan ₿ Netzwerk",
-      "link": "Seien Sie ein Teil des Netzwerks",
-      "startLink": "Fangen Sie an zu lernen"
+      "welcome": "Willkommen im Plan ₿ Netzwerk"
     },
     "tutorialSection": {
       "title": "Bitcoin-Bildung leicht gemacht",
@@ -874,11 +869,9 @@
     "projectsDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die dazu beitragen, Bitcoin zu verbessern und seine Akzeptanz zu erhöhen"
   },
   "nodeNetwork": {
-    "apply": "Bewerben Sie sich, um ein Node zu werden",
     "description1": "Wir glauben, dass Bildung nicht nur online stattfinden sollte, sondern auch in physischen Räumen. Um dies zu erreichen, verwaltet das Plan ₿ Network ein Netzwerk von Hubs auf der ganzen Welt, um Denker, Unternehmer und Pädagogen zu empfangen, die den Fortschritt von Bitcoin und Freiheitstechnologien fördern.",
     "pageSubtitle": "Möchten Sie die Welt orange pillen? Treten Sie dem PlanB-Netzwerk bei.",
     "pageTitle": "Erkunden Sie das Plan B Node Netzwerk",
-    "applyhelp": "*Wählen Sie den Knoten Standort",
     "descriptionExtend": "Unser erster Schritt besteht darin, Gemeinden mit physischen Räumen, die wir als „volle Knotenpunkte“ unseres Netzes bezeichnen, einzuladen, sich uns anzuschließen. In der Zukunft, wenn unser Netzwerk stärker wird, werden wir diese Einladung auf weitere Initiativen weltweit ausweiten. Wenn Sie unsere Werte teilen, wenden Sie sich bitte an unsere Vertreter, um unserem Netzwerk beizutreten und dabei zu helfen, die bestmögliche Bitcoin-Ausbildung aufzubauen."
   },
   "notFound": {

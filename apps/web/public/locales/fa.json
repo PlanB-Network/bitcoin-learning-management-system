@@ -208,9 +208,6 @@
     "part": {
       "count": "قسمت {{count}}"
     },
-    "preview": {
-      "letsgo": "به پیش"
-    },
     "review": {
       "asExpected": "همانطور که انتظار می‌رفت",
       "faithful": "به هدف وفادار هستید؟",
@@ -450,9 +447,7 @@
       "content": "",
       "forEducators": "",
       "globalNetwork": "",
-      "welcome": "",
-      "link": "",
-      "startLink": ""
+      "welcome": ""
     },
     "tutorialSection": {
       "title": "",
@@ -790,8 +785,6 @@
     "conferencesDescription": ""
   },
   "nodeNetwork": {
-    "apply": "",
-    "applyhelp": "",
     "descriptionExtend": "",
     "pageSubtitle": "",
     "pageTitle": "",

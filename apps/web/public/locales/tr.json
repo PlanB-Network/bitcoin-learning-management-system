@@ -428,9 +428,6 @@
       "onlineDescription": "",
       "inPersonDescription": ""
     },
-    "preview": {
-      "letsgo": ""
-    },
     "quizz": {
       "clickOnPie": "",
       "quizz": "",
@@ -536,11 +533,9 @@
     }
   },
   "nodeNetwork": {
-    "apply": "",
     "description1": "",
     "pageSubtitle": "",
     "pageTitle": "",
-    "applyhelp": "",
     "descriptionExtend": ""
   },
   "tutorials": {
@@ -697,9 +692,7 @@
       "content": "",
       "forEducators": "",
       "globalNetwork": "",
-      "welcome": "",
-      "link": "",
-      "startLink": ""
+      "welcome": ""
     },
     "tutorialSection": {
       "title": "",

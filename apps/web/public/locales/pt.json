@@ -162,9 +162,6 @@
       "onlineDescription": "",
       "inPersonDescription": ""
     },
-    "preview": {
-      "letsgo": "Vamos a isso"
-    },
     "quizz": {
       "clickOnPie": "Clica no gráfico de pizza para verificar a resposta correta",
       "quizz": "Questionário",
@@ -465,9 +462,7 @@
       "content": "A plataforma PlanB visa fornecer as melhores ferramentas e conteúdos educativos de todo o mundo para ajudar as pessoas a recuperarem a sua soberania. De indivíduos para as comunidades, estamos aqui para ajudá-lo ao longo de sua jornada Bitcoin.",
       "forEducators": "Para educadores e construtores",
       "globalNetwork": "Global Bitcoin Network",
-      "welcome": "Bem-vindo a PlanB Network",
-      "link": "Participa da network",
-      "startLink": "Começar a Aprender"
+      "welcome": "Bem-vindo a PlanB Network"
     },
     "tutorialSection": {
       "title": "Tornar a educação em Bitcoin simples é o nosso objetivo.",
@@ -531,11 +526,9 @@
     "publicDescription": ""
   },
   "nodeNetwork": {
-    "apply": "Candidate-se para fazer parte da rede",
     "description1": "O nosso sistema financeiro está a desmoronar-se, os nossos alimentos estão a ser envenenados, a nossa liberdade está a ser retirada. Mal podemos esperar por um milagre, temos que criar um lugar seguro para viver. Precisamos criar nosso próprio Plano!",
     "pageSubtitle": "Quer dar a pílula laranja para o mundo? Junte-se a nós.",
     "pageTitle": "Node Map",
-    "applyhelp": "",
     "descriptionExtend": ""
   },
   "notFound": {

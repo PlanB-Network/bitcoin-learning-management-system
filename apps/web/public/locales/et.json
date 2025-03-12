@@ -412,9 +412,6 @@
       "resultNotBad": "Pole paha !",
       "resultPerfect": "Täiuslik sooritus ! Õnnitlused !"
     },
-    "preview": {
-      "letsgo": "Hakkame pihta"
-    },
     "exam": {
       "answersReview": "",
       "availableDashboard": "",
@@ -715,12 +712,10 @@
   },
   "home": {
     "header": {
-      "startLink": "Alusta õppimist",
       "globalNetwork": "Globaalne Bitcoini võrgustik",
       "content": "PlanB platvormi eesmärk on pakkuda parimaid tööriistu ja hariduslikku sisu üle kogu maailma, et aidata inimestel taastada oma suveräänsus. Alates üksikisikutest kuni kogukondadeni, oleme siin, et aidata teid teie Bitcoini teekonnal.",
       "forEducators": "Haridustöötajatele ja ehitajatele",
-      "welcome": "Tere tulemast PlanB Võrgustikku",
-      "link": "Ole osa võrgustikust"
+      "welcome": "Tere tulemast PlanB Võrgustikku"
     },
     "aboutUsSection": {
       "privacyTitle": "Privaatsus",
@@ -834,11 +829,9 @@
   },
   "nodeNetwork": {
     "description1": "Plan B Võrgustik toetab haridusalaseid algatusi üle maailma. Teeme koostööd, et luua parimad tööriistad nendele projektidele, nii meie platvormi kaudu kui ka reaalses maailmas. Me otsime alati uusi sõlmpunkte, kes sooviksid meiega liituda. Kui soovid koostööd teha, et luua detsentraliseeritud globaalne haridusvõrk Bitcoinile, siis võta meiega ühendust!",
-    "apply": "Kandideerige, et saada Sõlmeks",
     "pageSubtitle": "Soovid maailmale oranži pilli pakkuda? Liitu PlanB võrgustikuga.",
     "pageTitle": "Avastage Plan B sõlmevõrku",
-    "descriptionExtend": "",
-    "applyhelp": ""
+    "descriptionExtend": ""
   },
   "proofreading": {
     "completed": "",

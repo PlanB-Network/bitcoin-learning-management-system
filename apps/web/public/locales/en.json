@@ -12,7 +12,7 @@
     "coreTeamTitle": "The core team",
     "corporateContent": "Plan ₿ Network is the joint project of three entities focused on Bitcoin development. In an effort to make the Bitcoin education layers scale, they decided to collaborate to form Plan ₿ Network. Since then,  many other entities have decided to contribute and join forces to help us bring Bitcoin education to the world. For this reason, a huge thank-you is due to them.",
     "corporateTitle": "Corporations behind the project",
-    "description": "Plan ₿ Network helps communities worldwide to get organized in order to provide better education. The platform develops the  necessary tools towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
+    "description": "Plan ₿ Network helps communities worldwide to get organized in order to provide better education. The platform develops the necessary tools towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. In fact, we believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we can fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. In order to do it, we collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
     "missionContent2": "We centralize knowledge so we can share it in the best possible way, using a simple, multilingual GitHub repository and an E-learning platform. We also assist local Bitcoin hubs in their development by providing the right tools for their talents to grow.",
@@ -33,11 +33,11 @@
     "confirmation": "Confirmation",
     "createAccount": "Register",
     "createOne": "Register here!",
-    "dashboardUnlocked": "Your student dashboard is unlocked !",
-    "didYouKnow": "Did you know ?",
+    "dashboardUnlocked": "Your student dashboard is now accessible!",
+    "didYouKnow": "Did you know?",
     "displayName": "Display Name",
     "emailAddress": "Email address",
-    "emailTip": "Email is not mandatory, but it can be useful in case of a forgotten password!",
+    "emailTip": "The email is not mandatory: it can be useful in case you forget your password!",
     "errors": {
       "displayNameTooShort": "Display name must contain at least 2 characters.",
       "emailInvalid": "Invalid email",
@@ -46,7 +46,7 @@
       "usernameRequired": "Username is required.",
       "usernameTooShort": "Username must contain at least 5 characters."
     },
-    "forgottenPassword": "Forgot your password?",
+    "forgottenPassword": "Did you forget your password?",
     "headerAccountCreated": "Account created",
     "invalidToken": "Invalid token",
     "invalidTokenExplain": {
@@ -101,7 +101,7 @@
       "description": "The items below can be used for educational events and purposes.",
       "title": "Educational Content"
     },
-    "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards  that goal, we’ve developed an extendible database to host educational content. Here, Bitcoin educators can freely drop and access content as needed. We don't need to reinvent the wheel every time, so let's work together to centralize the useful resources is one toolkit!",
+    "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards that goal, we’ve developed an extendible database to host educational content. Here, Bitcoin educators can freely drop and access content as needed. We don't need to reinvent the wheel every time, so let's work together to centralize the useful resources is one toolkit!",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
       "description": "The images below can be used for your own creations.",
@@ -326,7 +326,7 @@
       "difficulty": "Difficulty",
       "displayOutOf": "displayed out of",
       "editReview": "Edit review",
-      "faithful": "Aligned with objective?",
+      "faithful": "Aligned with objectives?",
       "feedback": "Feedback",
       "feedbackDescription1": "Please rate your experience with the course below.",
       "feedbackDescription2": "Note that teachers will not have access to individual evaluations.",
@@ -711,7 +711,7 @@
       },
       "menu": "Teacher menu",
       "profile": {
-        "account": "Teacher account",
+        "account": "Professor account",
         "billingInformations": "Billing informations",
         "description": "Your description",
         "enterTipsInformations": "Plan ₿ Network encourages users to tip teachers. Please enter your information so that people can tip you when they wish to.",
@@ -857,7 +857,7 @@
     },
     "courseSection": {
       "checkAllCourses": "Check all courses",
-      "upcomingCourseDescription": "Find out the latest courses released onto the platform. Learning never stops !",
+      "upcomingCourseDescription": "Find out the latest courses released onto the platform. Learning never stops!",
       "upcomingCourseTitle": "Upcoming & new courses"
     },
     "eventSection": {
@@ -866,7 +866,7 @@
       "hottestEvent": "Hottest bitcoin event"
     },
     "header": {
-      "content": "The Plan ₿ Network platform aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
+      "content": "Plan ₿ Network aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
       "forEducators": "For learners and educators",
       "globalNetwork": "A Global Bitcoin Network",
       "welcome": "Welcome to Plan ₿ Network"
@@ -1180,7 +1180,7 @@
     },
     "exchange": {
       "centralized": {
-        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw it to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to respect local laws."
+        "description": "Centralized exchanges are usually regulated entities that act as intermediaries between the banking system and the bitcoin ecosystem. They allow you to buy and sell large amounts of bitcoin and withdraw them to your wallet or bank account. They usually require KYC, and therefore monitor your activity, reporting it to financial surveillance institutions to follow local laws."
       },
       "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
       "peer-to-peer": {
@@ -1191,7 +1191,7 @@
     },
     "explorer": {
       "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know ?",
+      "didYouKnow": "Did you know?",
       "exploreAllTutorials": "Explore all tutorials"
     },
     "hasBeenProofreadBy": "This tutorial has been proofread by",
@@ -1258,7 +1258,7 @@
         "description": "Desktop wallets are usually for more advanced users as they combine the use of hardware devices and the desktop wallet software. It's like having a new, more custom, and functionality-intensive interface for your hardware device to use. Such wallets offer multi-signature options, privacy features, inheritance integration mechanisms, and more."
       },
       "hardware": {
-        "description": "Hardware wallets are usually used to store your long-term bitcoin savings. They are physical devices that aren't connected to the internet (often called \"cold wallets\") and are usually highly secure. Even though these devices are often open-source regarding their software, the hardware costs around 50 to 300 euros. Consider these devices like a bank account for larger amounts of savings that you would use once in a while."
+        "description": "Hardware wallets are typically used for storing your long-term Bitcoin savings. These physical devices, often referred to as \"cold wallets,\" are not connected to the internet, which makes them highly secure. While the software for these devices is often open-source, the hardware itself usually costs between 50 to 300 euros. Think of these wallets as a bank account for larger savings that you access occasionally."
       },
       "mobile": {
         "description": "Mobile wallets are usually used for daily spending. They integrate the Lightning Network for low-fee, instant transactions. They are usually connected to the internet (often called \"hot wallets\") and are therefore less secure than hardware wallets. They should be used only to store small amounts of bitcoin, consider them as your everyday wallet in your pocket."

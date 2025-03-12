@@ -177,9 +177,6 @@
       "inPersonDescription": "Chaque séance de cours a lieu en personne aux dates et lieux spécifiés et est également diffusée en direct sur la plateforme.\nCet achat vous donnera accès aux cours en personne et en ligne.\nN'oubliez pas de réserver votre place pour les cours auxquels vous souhaitez assister en personne.",
       "checkoutError": "Une erreur s'est produite lors du processus de paiement.\nVeuillez réessayer."
     },
-    "preview": {
-      "letsgo": "Allons-y"
-    },
     "quizz": {
       "clickOnPie": "Cliquez sur le camembert pour vérifier la bonne réponse",
       "quizz": "Quiz",
@@ -755,9 +752,7 @@
       "content": "La plateforme Plan ₿ Network vise à fournir les meilleurs outils et le meilleur contenu éducatif au monde pour aider les gens à retrouver leur souveraineté. De personnes à communautés, nous sommes là pour vous aider tout au long de votre voyage à travers Bitcoin.",
       "forEducators": "Pour les éducateurs et les créateurs",
       "globalNetwork": "Réseau mondial Bitcoin",
-      "welcome": "Bienvenue sur Plan ₿ Network",
-      "link": "Participez au réseau",
-      "startLink": "Commencez votre apprentissage"
+      "welcome": "Bienvenue sur Plan ₿ Network"
     },
     "tutorialSection": {
       "title": "Centraliser les connaissances pour mieux les diffuser",
@@ -850,11 +845,9 @@
     "projectsDescription": "Apprenez à connaître les entreprises et les projets qui contribuent à améliorer Bitcoin et à augmenter son adoption"
   },
   "nodeNetwork": {
-    "apply": "Postuler pour devenir un Nœud",
     "description1": "Nous pensons que l'éducation ne doit pas seulement se dérouler en ligne, mais également dans des espaces physiques. Pour y parvenir, Plan ₿ Network gère un réseau de centres dans le monde entier pour accueillir des penseurs, des constructeurs et des éducateurs favorisant l'avancement du Bitcoin et des technologies de la liberté.",
     "pageSubtitle": "Vous voulez orange pill le monde ? Rejoignez le réseau Plan ₿.",
     "pageTitle": "Node Map",
-    "applyhelp": "*Sélectionnez l'emplacement du nœud",
     "descriptionExtend": "Notre première étape consiste à inviter les communautés disposant d’espaces physiques, que nous appelons les « nœuds complets » de notre réseau, à nous rejoindre. À l’avenir, à mesure que notre réseau se renforcera, nous étendrons cette invitation à davantage d’initiatives dans le monde entier. Si vous partagez nos valeurs, n’hésitez pas à contacter nos représentants pour rejoindre notre réseau et contribuer à créer la meilleure éducation possible sur le Bitcoin."
   },
   "notFound": {
