@@ -1,14 +1,19 @@
+import { cn } from '@blms/ui';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LuMessageSquareMore } from 'react-icons/lu';
 import { MdOutlineSchool, MdPeopleAlt } from 'react-icons/md';
+import { RiFlaskLine } from 'react-icons/ri';
 import { TbWorld } from 'react-icons/tb';
-
-import { cn } from '@blms/ui';
-
+import miningSvg from '#src/assets/courses/mining.svg';
+import bitcoinSvg from '#src/assets/icons/bitcoin.svg';
+import businessSvg from '#src/assets/icons/business.svg';
 import profileLogInBlack from '#src/assets/icons/profile_log_in_black.svg';
 import profileLogInWhite from '#src/assets/icons/profile_log_in_white.svg';
+import protocolSvg from '#src/assets/icons/protocol.svg';
 import searchMobileSvg from '#src/assets/icons/search-mobile.svg';
+import securitySvg from '#src/assets/icons/security.svg';
+import socialStudiesSvg from '#src/assets/icons/world-pixelated.svg';
 import eventsSvg from '#src/assets/resources/conference.svg';
 import glossarySvg from '#src/assets/resources/glossary.svg';
 import lecturesSvg from '#src/assets/resources/lecture.svg';
@@ -19,21 +24,12 @@ import projectSvg from '#src/assets/resources/project.svg';
 import tutorialsSvg from '#src/assets/resources/toolkit.svg';
 import aboutSvg from '#src/assets/resources/world.svg';
 import youtubeChannelsSvg from '#src/assets/resources/youtube.svg';
-
-import bitcoinSvg from '../../assets/icons/bitcoin.svg';
-import businessSvg from '../../assets/icons/business.svg';
-import protocolSvg from '../../assets/icons/protocol.svg';
-import securitySvg from '../../assets/icons/security.svg';
-import socialStudiesSvg from '../../assets/icons/world-pixelated.svg';
-import miningSvg from '../../assets/tutorials/mining.svg';
-import { useDisclosure } from '../../hooks/use-disclosure.ts';
-import { TUTORIALS_CATEGORIES } from '../../utils/tutorials.ts';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { AppContext } from '#src/providers/context.js';
+import { TUTORIALS_CATEGORIES } from '#src/services/utils.tsx';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
-
-import { RiFlaskLine } from 'react-icons/ri';
-import { AppContext } from '#src/providers/context.js';
-import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { FlyingMenu } from './FlyingMenu/flying-menu.tsx';
 import { MobileMenu } from './MobileMenu/mobile-menu.tsx';
 import type { NavigationSection, NavigationSectionMobile } from './props.ts';
@@ -245,7 +241,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
             title: t(`tutorials.${category.name}.title`),
             path: category.route,
             description: t(`tutorials.${category.name}.shortDescription`),
-            icon: category.icon,
+            icon: category.image,
           })),
         },
       ],

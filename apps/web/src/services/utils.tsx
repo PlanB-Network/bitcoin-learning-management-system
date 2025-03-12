@@ -10,11 +10,12 @@ import podcastSvg from '#src/assets/resources/podcast.svg';
 import projectSvg from '#src/assets/resources/project.svg';
 import toolkitSvg from '#src/assets/resources/toolkit.svg';
 import youtubeSvg from '#src/assets/resources/youtube.svg';
+import businessSvg from '#src/assets/tutorials/business.svg';
+import computerSecuritySvg from '#src/assets/tutorials/computer-security.svg';
+import contributionSvg from '#src/assets/tutorials/contribution.svg';
 import exchangeSvg from '#src/assets/tutorials/exchange.svg';
-import merchantSvg from '#src/assets/tutorials/merchant.svg';
 import miningSvg from '#src/assets/tutorials/mining.svg';
 import nodeSvg from '#src/assets/tutorials/node.svg';
-import otherSvg from '#src/assets/tutorials/other.svg';
 import privacySvg from '#src/assets/tutorials/privacy.svg';
 import walletSvg from '#src/assets/tutorials/wallet.svg';
 
@@ -23,36 +24,54 @@ export const TUTORIALS_CATEGORIES = [
     name: 'wallet',
     image: walletSvg,
     subcategories: ['mobile', 'desktop', 'hardware', 'backup'],
+    route: '/tutorials/wallet',
   },
   {
     name: 'node',
     image: nodeSvg,
-    subcategories: ['bitcoin', 'lightning-network', 'rgb'],
+    subcategories: ['bitcoin', 'lightning-network', 'rgb', 'others'],
+    route: '/tutorials/node',
   },
   {
     name: 'mining',
     image: miningSvg,
     subcategories: ['hardware', 'pools'],
-  },
-  {
-    name: 'merchant',
-    image: merchantSvg,
-    subcategories: ['merchant'],
+    route: '/tutorials/mining',
   },
   {
     name: 'exchange',
     image: exchangeSvg,
     subcategories: ['centralized', 'peer-to-peer'],
+    route: '/tutorials/exchange',
+  },
+  {
+    name: 'business',
+    image: businessSvg,
+    subcategories: ['point-of-sale', 'others'],
+    route: '/tutorials/business',
   },
   {
     name: 'privacy',
     image: privacySvg,
     subcategories: ['on-chain', 'analysis'],
+    route: '/tutorials/privacy',
   },
   {
-    name: 'others',
-    image: otherSvg,
-    subcategories: ['general', 'contribution', 'other'],
+    name: 'computer-security',
+    image: computerSecuritySvg,
+    subcategories: [
+      'authentication',
+      'communication',
+      'data',
+      'operating system',
+    ],
+    route: '/tutorials/computer-security',
+  },
+  {
+    name: 'contribution',
+    image: contributionSvg,
+    subcategories: ['resource', 'tutorial', 'others'],
+    route: '/tutorials/contribution',
   },
 ] as const;
 

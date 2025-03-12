@@ -162,18 +162,10 @@ function PlanBLabs() {
               <div className="flex flex-col lg:flex-row self-center pt-6 gap-6">
                 <div className="max-w-[800px] flex flex-col gap-6 mt-7 px-4">
                   <div className="flex flex-row max-lg:justify-center gap-2">
-                    <TextTag
-                      mode={'dark'}
-                      variant={'darkMaroon'}
-                      className="w-fit"
-                    >
+                    <TextTag mode={'dark'} variant={'orange'} className="w-fit">
                       {lab?.lab?.studentCount ?? '0'} Students <MdPerson />
                     </TextTag>
-                    <TextTag
-                      mode={'dark'}
-                      variant={'darkMaroon'}
-                      className="w-fit"
-                    >
+                    <TextTag mode={'dark'} variant={'orange'} className="w-fit">
                       {lab?.sessions.length} sessions <MdLiveTv />
                     </TextTag>
                   </div>
