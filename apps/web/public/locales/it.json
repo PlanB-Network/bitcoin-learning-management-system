@@ -327,7 +327,22 @@
       "singleAttempt": "Esame a tentativo unico",
       "singleAttemptPrecaution": "Prima di iniziare, assicurati che la tua connessione sia stabile. Poiché questo è un esame a tentativo unico, se vieni disconnesso, non sarai in grado di riprovare.",
       "singleAttemptAvailability": "Questo esame è disponibile online il: {{date}}",
-      "weight": "Peso: {{weight}}%"
+      "weight": "Peso: {{weight}}%",
+      "finalScore": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "nextChapter": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "viewExam": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "Tutti i capitoli sono ora completati!",
@@ -430,7 +445,30 @@
       "profilePicture": "Immagine profilo",
       "security": "Sicurezza",
       "username": "Nome utente",
-      "profile": "Profilo"
+      "profile": "Profilo",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailTitle": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "settings": "",
+      "securitySettings": ""
     },
     "teacher": {
       "courses": {
@@ -449,7 +487,52 @@
         "proposeNewCourse": "Proponi un nuovo corso",
         "quickRecap": "Qui puoi trovare tutte le informazioni riguardanti questo corso.",
         "reviewInfos": "Qui puoi rivedere tutte le informazioni relative a ogni corso che hai coordinato.",
-        "goal": "Obiettivo"
+        "goal": "Obiettivo",
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "studentDisplayName": "",
+          "title": "",
+          "publishAllGrades": "",
+          "alertDescription2": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "assignment": ""
       },
       "profile": {
         "teacher": "Insegnante",
@@ -506,7 +589,53 @@
       "conclusionNotReleased": "La conclusione sarà sbloccata il giorno dell'ultima lezione.",
       "courseCalendar": "Calendario del corso",
       "exams": "Esami",
-      "generalInformation": "Informazioni generali"
+      "generalInformation": "Informazioni generali",
+      "assignmentDescription": "",
+      "confirmNoEditableFile": "",
+      "examScore": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "summerSchool": "",
+      "yourProject": "",
+      "confirmList": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "confirmNoEditable": "",
+      "confirmSubmission": "",
+      "assignmentTitle": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -620,7 +749,15 @@
         "selectEvent": "Seleziona evento",
         "discountCodeCopied": "Codice sconto copiato",
         "downloadImage": "Scarica immagine",
-        "downloadImages": "Scarica immagini"
+        "downloadImages": "Scarica immagini",
+        "mobileSort": {
+          "sortBy": "",
+          "za": "",
+          "az": "",
+          "highLow": "",
+          "lowHigh": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "Codici sconto"
     },
@@ -808,11 +945,14 @@
     "announcements": {
       "groups": {
         "active": "Studenti selezionati per l'assegnazione del progetto",
-        "all": "Tutti gli studenti registrati"
+        "all": "Tutti gli studenti registrati",
+        "summer": ""
       },
       "pickADate": "Scegli una data",
       "publicationDate": "Data di pubblicazione"
-    }
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "main": {
@@ -1329,7 +1469,20 @@
     "name": "Nome",
     "project": "Progetto",
     "email": "Email",
-    "save": "Salva"
+    "save": "Salva",
+    "password": "",
+    "continue": "",
+    "calendar": "",
+    "company": "",
+    "day": "",
+    "mentor": "",
+    "notApplicable": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": "",
+    "mode": ""
   },
   "conferences": {
     "addConferences": "Aggiungi pure qualsiasi conferenza mancante tramite questo repository <0>Github</0>.",
@@ -1359,7 +1512,8 @@
     "payWithBitcoin": "Paga in Bitcoin",
     "payByCard": "Paga con carta",
     "haveReductionCode": "Hai un codice sconto?",
-    "insertReductionCode": "Inserisci il tuo codice sconto"
+    "insertReductionCode": "Inserisci il tuo codice sconto",
+    "taxesMayApply": ""
   },
   "bCert": {
     "bookExam": "Prenota una sessione di test",
@@ -1411,7 +1565,8 @@
       "blogSidebarTitle": "Post nella categoria {{category}}",
       "filterText": "Filtro per argomento:",
       "blogListButtonText": "Leggi",
-      "featuredArticleTitleText": "Ultimi articoli pubblicati"
+      "featuredArticleTitleText": "Ultimi articoli pubblicati",
+      "blogSidebarTitleForAll": ""
     },
     "legal": "Informazioni legali",
     "blogCategories": {
@@ -1532,5 +1687,47 @@
     "online": "Online",
     "replay": "Replay",
     "hybrid": "Di persona & online"
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "dashboardDescription": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "daysAgo": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
