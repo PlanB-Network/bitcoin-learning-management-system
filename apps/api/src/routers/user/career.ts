@@ -6,7 +6,6 @@ import {
   CareerLanguageLevel,
   CareerRemote,
   CareerRoleLevel,
-  UserPermission,
 } from '@blms/constants';
 import {
   careerCompanySizeSchema,
@@ -24,7 +23,6 @@ import {
   createUpdateCareerProfile,
 } from '@blms/service-user';
 import type { JobTitle, JoinedCareerProfile, Language } from '@blms/types';
-import { checkPermissions } from '#src/middlewares/auth.js';
 import type { Parser } from '#src/trpc/types.js';
 
 const deleteCareerProfileProcedure = studentProcedure
@@ -48,7 +46,7 @@ const getCareerProfileProcedure = studentProcedure
   );
 
 const getCareerProfilesProcedure = adminProcedure
-  .use(checkPermissions(UserPermission.Career))
+  // .use(checkPermissions(UserPermission.Career))
   .input(z.void())
   .output<Parser<JoinedCareerProfile[] | null>>(
     joinedCareerProfileSchema.array().nullable(),
