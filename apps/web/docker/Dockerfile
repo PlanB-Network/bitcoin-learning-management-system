@@ -1,5 +1,4 @@
 ARG NODE_VERSION
-ARG GITHUB_SHA
 
 FROM node:$NODE_VERSION AS base
 
@@ -23,6 +22,7 @@ RUN turbo prune "@blms/web" --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
+ARG GITHUB_SHA
 
 RUN apk update
 RUN apk add --no-cache -U \
@@ -47,7 +47,6 @@ RUN pnpm install --frozen-lockfile
 COPY --from=builder /app/out/full/ .
 COPY turbo.json tsconfig.json ./
 
-RUN echo "VITE_GITHUB_SHA=$GITHUB_SHA" > .env
 ENV VITE_GITHUB_SHA=$GITHUB_SHA
 
 RUN pnpm turbo build
