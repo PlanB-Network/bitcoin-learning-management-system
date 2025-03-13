@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedEvent } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 
+import { Image } from '#src/components/image.tsx';
 import Flag from '#src/molecules/Flag/index.js';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
-import { Image } from '#src/components/image.tsx';
 
 interface LectureCardProps {
   lecture: JoinedEvent;
@@ -72,7 +72,7 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
             breakpoints={{ default: 140, md: 290 }}
             width="432"
             height="308"
-            loading='lazy'
+            loading="lazy"
             src={resourceImgUrl(lecture)}
             alt={lecture.name ? lecture.name : ''}
             className="object-cover [overflow-clip-margin:_unset] aspect-[432/308] w-full rounded-[5px] md:rounded-2xl"
