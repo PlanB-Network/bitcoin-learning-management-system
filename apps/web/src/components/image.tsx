@@ -19,12 +19,13 @@ interface ImageProps extends Omit<ReactImageProps, 'sizes'> {
 export const Image = ({ src, breakpoints, ...props }: ImageProps) => {
   const srcHasQuery = src?.includes('?');
 
-  const sortedBreakpoints = Object.entries(breakpoints).sort(
-    ([a, va], [b, vb]) =>
-      b === 'default' ? -1 : a === 'default' ? 1 : va - vb,
+  const breakpointsEntries = Object.entries(breakpoints);
+
+  const sortedBreakpoints = breakpointsEntries.sort(([a, va], [b, vb]) =>
+    b === 'default' ? -1 : a === 'default' ? 1 : va - vb,
   );
 
-  const availableSizes = sortedBreakpoints
+  const availableSizes = breakpointsEntries
     .map(([, size]) => size)
     .sort((a, b) => a - b);
 

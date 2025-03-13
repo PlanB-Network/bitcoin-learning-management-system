@@ -96,7 +96,7 @@ export const ProfessorCardReduced = ({
           alt={professor.name}
           width={128}
           height={128}
-          breakpoints={{ default: 69, md: 128, lg: 160 }}
+          breakpoints={{ default: 69, md: 128 }}
           className={cn(
             'size-32 rounded-full z-10 object-cover [overflow-clip-margin:_unset]',
             mobileSize === 'small' && 'max-md:size-[69px]',
