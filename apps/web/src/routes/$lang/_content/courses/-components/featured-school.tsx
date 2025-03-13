@@ -6,11 +6,11 @@ import { t } from 'i18next';
 import Business from '#src/assets/courses/business.svg?react';
 import PlanbSchoolLogo from '#src/assets/courses/planb_school_logo_white.svg';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
+import { Image } from '#src/components/image.tsx';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { getTimeStringWithOnlyMonths } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-import { Image } from '#src/components/image.tsx';
 
 export const FeaturedSchool = ({ course }: { course: JoinedCourse }) => {
   return (
@@ -65,7 +65,6 @@ const SchoolCard = ({ course }: { course: JoinedCourse }) => {
         alt={course.name}
         className="rounded-lg object-cover object-center [overflow-clip-margin:_unset] md:max-w-[490px] md:max-h-[288px] w-full mx-auto max-md:aspect-[270/203]"
       />
-
 
       <section className="flex flex-col gap-2.5 w-full shrink">
         <span className="text-white truncate subtitle-large-med-20px md:title-large-sb-24px">

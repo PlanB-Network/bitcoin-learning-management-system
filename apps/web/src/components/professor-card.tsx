@@ -14,8 +14,8 @@ import DonateLightning from '../assets/icons/tips-icon.svg';
 import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
 
-import { TipModal } from './tip-modal.tsx';
 import { Image } from './image.tsx';
+import { TipModal } from './tip-modal.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: FormattedProfessor;

@@ -8,9 +8,9 @@ import { Button, TextTag, cn } from '@blms/ui';
 
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
+import { Image } from '#src/components/image.tsx';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
-import { Image } from '#src/components/image.tsx';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
   variants: {

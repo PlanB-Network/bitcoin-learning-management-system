@@ -8,7 +8,7 @@ const secp256k1 = {
   signatureImport: (...args: any[]) => {
     throw new Error('Not implemented');
   },
-}
+};
 
 import {
   createGetUserByLud4PublicKey,

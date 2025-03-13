@@ -39,12 +39,12 @@ import { trpc } from '#src/utils/trpc.js';
 
 import PlanbSchoolLogo from '#src/assets/courses/planb_school_logo.svg';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
+import { Image } from '#src/components/image.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
-import { Image } from '#src/components/image.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/courses/$courseName-$courseId',
