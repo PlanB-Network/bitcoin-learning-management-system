@@ -5,6 +5,7 @@ import { HiVideoCamera } from 'react-icons/hi2';
 import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 
+import { Image } from '#src/components/image.tsx';
 import { useGreater } from '#src/hooks/use-greater.js';
 import Flag from '#src/molecules/Flag/index.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
@@ -395,7 +396,11 @@ export const EventCard = ({
         <div className="max-sm:flex">
           {/* Image */}
           <div className="w-[126px] sm:w-full overflow-hidden sm:rounded-2xl relative sm:mb-2 lg:mb-4 max-sm:shrink-0">
-            <img
+            <Image
+              breakpoints={{ default: 140, sm: 320 }}
+              width="432"
+              height="308"
+              loading="lazy"
               src={resourceImgUrl(event)}
               alt={event.name ? event.name : ''}
               className="object-cover [overflow-clip-margin:_unset] sm:aspect-[432/308] w-full max-sm:h-[113px] sm:rounded-2xl"

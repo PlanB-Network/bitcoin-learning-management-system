@@ -11,6 +11,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { MenuElement } from '../menu-elements.tsx';
 import type { NavigationSection } from '../props.ts';
 
+import { Image } from '#src/components/image.tsx';
 import { BTC101ID } from '#src/utils/courses.ts';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
@@ -161,7 +162,8 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                   {t('words.startHere')}
                 </span>
                 <article className="w-full px-3 py-2 flex flex-col">
-                  <img
+                  <Image
+                    breakpoints={{ default: 256 }}
                     src={assetUrl(
                       `courses/${highlightedCourse.index}`,
                       'thumbnail.webp',
