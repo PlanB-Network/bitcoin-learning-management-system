@@ -66,7 +66,7 @@ export const CourseCard = ({
         <Image
           width={320}
           height={224}
-          loading='lazy'
+          loading="lazy"
           src={assetUrl(
             `courses/${course.index}`,
             'thumbnail.webp',
@@ -81,7 +81,7 @@ export const CourseCard = ({
           <Image
             width={124}
             height={98}
-            loading='lazy'
+            loading="lazy"
             src={assetUrl(
               `courses/${course.index}`,
               'thumbnail.webp',
