@@ -15,6 +15,7 @@ import { levels, sortCoursesByLevel } from '../-utils/course-utils.tsx';
 
 import { formatNameForURL } from '#src/utils/string.ts';
 import { CourseInfoSection } from './course-info-section.tsx';
+import { Image } from '#src/components/image.tsx';
 
 export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
   const [topics, setTopics] = useState<string[]>([]);
@@ -130,7 +131,8 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
 
               <h4 className="desktop-h4 mb-6">{activeCourse.name}</h4>
 
-              <img
+              <Image
+                availableSizes={[512]}
                 src={assetUrl(
                   `courses/${activeCourse.index}`,
                   'thumbnail.webp',

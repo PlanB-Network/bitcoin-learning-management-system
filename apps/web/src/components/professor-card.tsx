@@ -15,6 +15,7 @@ import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
 
 import { TipModal } from './tip-modal.tsx';
+import { Image } from './image.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: FormattedProfessor;
@@ -89,9 +90,14 @@ export const ProfessorCardReduced = ({
         <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
           {professor.name}
         </span>
-        <img
+
+        <Image
           src={resourceImgUrl(professor, 'profile.webp')}
           alt={professor.name}
+          width={128}
+          height={128}
+          availableSizes={[69, 128]}
+          tailwindSizes={{ default: 69, '3xl': 128 }}
           className={cn(
             'size-32 rounded-full z-10 object-cover [overflow-clip-margin:_unset]',
             mobileSize === 'small' && 'max-md:size-[69px]',

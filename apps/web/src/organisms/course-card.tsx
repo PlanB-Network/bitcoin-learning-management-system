@@ -10,6 +10,7 @@ import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
+import { Image } from '#src/components/image.tsx';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
   variants: {
@@ -62,23 +63,26 @@ export const CourseCard = ({
           </span>
         )}
 
-        <img
+        <Image
           src={assetUrl(
             `courses/${course.index}`,
             'thumbnail.webp',
             course.lastCommit,
           )}
           alt={course.name}
+          availableSizes={[340]}
           className="max-md:hidden rounded-md mb-2.5 object-cover [overflow-clip-margin:_unset] object-center max-h-72 group-hover:max-h-44 transition-[max-height] duration-300 ease-linear"
         />
+
         <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">
-          <img
+          <Image
             src={assetUrl(
               `courses/${course.index}`,
               'thumbnail.webp',
               course.lastCommit,
             )}
             alt={course.name}
+            availableSizes={[124]}
             className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">

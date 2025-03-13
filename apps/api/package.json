@@ -38,7 +38,6 @@
     "express-session": "^1.18.1",
     "formidable": "^3.5.2",
     "jszip": "^3.10.1",
-    "secp256k1": "^5.0.1",
     "sharp": "^0.33.5",
     "stripe": "^17.7.0",
     "superjson": "^2.2.2",
@@ -52,7 +51,6 @@
     "@types/express-session": "^1.18.1",
     "@types/formidable": "^3.4.5",
     "@types/qs": "^6.9.18",
-    "@types/secp256k1": "^4.0.6",
     "dotenv": "^16.4.7"
   }
 }

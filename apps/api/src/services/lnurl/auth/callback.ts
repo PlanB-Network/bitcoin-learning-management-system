@@ -1,6 +1,14 @@
 import { createHmac } from 'node:crypto';
 
-import * as secp256k1 from 'secp256k1';
+// import * as secp256k1 from 'secp256k1';
+const secp256k1 = {
+  ecdsaVerify: (...args: any[]) => {
+    throw new Error('Not implemented');
+  },
+  signatureImport: (...args: any[]) => {
+    throw new Error('Not implemented');
+  },
+}
 
 import {
   createGetUserByLud4PublicKey,

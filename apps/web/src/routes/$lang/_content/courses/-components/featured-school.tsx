@@ -10,6 +10,7 @@ import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { getTimeStringWithOnlyMonths } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
+import { Image } from '#src/components/image.tsx';
 
 export const FeaturedSchool = ({ course }: { course: JoinedCourse }) => {
   return (
@@ -53,7 +54,9 @@ const SchoolCard = ({ course }: { course: JoinedCourse }) => {
       <span className="absolute uppercase -top-px -left-px bg-white border border-white text-black body-semibold-12px md:title-medium-sb-18px rounded-br-[10px] py-[5px] px-2.5 md:py-2.5 md:px-[15px] md:rounded-br-[20px] z-10">
         {t('courses.explorer.planbSchool')}
       </span>
-      <img
+
+      <Image
+        availableSizes={[512]}
         src={assetUrl(
           `courses/${course.index}`,
           'thumbnail.webp',
@@ -62,6 +65,8 @@ const SchoolCard = ({ course }: { course: JoinedCourse }) => {
         alt={course.name}
         className="rounded-lg object-cover object-center [overflow-clip-margin:_unset] md:max-w-[490px] md:max-h-[288px] w-full mx-auto max-md:aspect-[270/203]"
       />
+
+
       <section className="flex flex-col gap-2.5 w-full shrink">
         <span className="text-white truncate subtitle-large-med-20px md:title-large-sb-24px">
           {course.name}
