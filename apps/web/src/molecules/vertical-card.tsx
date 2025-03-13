@@ -124,7 +124,10 @@ export const VerticalCard = ({
         <Image
           src={imageSrc}
           alt={title}
+          width={320}
+          height={240}
           breakpoints={{ default: 140, md: 320 }}
+          loading="lazy"
           className={cn(
             'h-[105px] md:h-[241px] object-cover [overflow-clip-margin:_unset] lg:mb-[17px]',
             imgClassName

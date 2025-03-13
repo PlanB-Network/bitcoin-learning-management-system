@@ -1,4 +1,4 @@
-type ReactImageProps = React.HTMLProps<HTMLImageElement>;
+type ReactImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
 type TailwindSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
@@ -14,6 +14,7 @@ const breakpointsMap: Record<TailwindSizes, number> = {
 
 interface ImageProps extends Omit<ReactImageProps, 'sizes'> {
   breakpoints: { [key in TailwindSizes]?: number } & { default: number };
+  loading?: 'lazy' | 'eager';
 }
 
 export const Image = ({ src, breakpoints, ...props }: ImageProps) => {

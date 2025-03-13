@@ -23,9 +23,12 @@ export const ResourceCard = (props: ResourceCardProps) => {
     >
       <Image
         breakpoints={{ default: 84, md: 256 }}
+        width="256"
+        height="256"
         className="aspect-square object-contain w-[84px] md:w-full md:group-hover:blur-[10px] md:group-hover:brightness-[0.2] transition-all"
         src={props.imageSrc ? props.imageSrc : ''}
         alt={props.name}
+        loading="lazy"
       />
       <div className="md:absolute w-full flex md:justify-center md:items-center flex-col gap-[10px] md:gap-4 md:px-4 md:text-center md:size-full md:group-hover:bg-darkOrange-9/20 md:opacity-0 md:group-hover:opacity-100 transition-all">
         <span className="text-white leading-[160%] text-sm font-medium md:subtitle-large-med-20px line-clamp-3 md:line-clamp-2">
