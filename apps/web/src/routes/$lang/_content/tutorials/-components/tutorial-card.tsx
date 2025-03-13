@@ -4,6 +4,7 @@ import { MdThumbDown, MdThumbUp } from 'react-icons/md';
 import type { JoinedTutorialLight } from '@blms/types';
 import { TextTag, cn } from '@blms/ui';
 
+import { Image } from '#src/components/image.tsx';
 import { assetUrl } from '#src/utils/index.js';
 
 export const TutorialCard = ({
@@ -29,7 +30,8 @@ export const TutorialCard = ({
         addMargin && 'my-2',
       )}
     >
-      <img
+      <Image
+        breakpoints={{ default: 60, md: 80 }}
         src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
         alt={tutorial.name}
         className="size-[60px] md:size-20 rounded-full shrink-0"

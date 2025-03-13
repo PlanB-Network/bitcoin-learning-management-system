@@ -1,5 +1,6 @@
 import { cn } from '@blms/ui';
 
+import { Image } from '#src/components/image.tsx';
 import Flag from '#src/molecules/Flag/index.tsx';
 
 interface ResourceCardProps {
@@ -20,7 +21,8 @@ export const ResourceCard = (props: ResourceCardProps) => {
         props.className,
       )}
     >
-      <img
+      <Image
+        breakpoints={{ default: 84, md: 256 }}
         className="aspect-square object-contain w-[84px] md:w-full md:group-hover:blur-[10px] md:group-hover:brightness-[0.2] transition-all"
         src={props.imageSrc ? props.imageSrc : ''}
         alt={props.name}

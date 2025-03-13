@@ -56,7 +56,7 @@ const SchoolCard = ({ course }: { course: JoinedCourse }) => {
       </span>
 
       <Image
-        availableSizes={[512]}
+        breakpoints={{ default: 512 }}
         src={assetUrl(
           `courses/${course.index}`,
           'thumbnail.webp',

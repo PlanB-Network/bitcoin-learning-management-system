@@ -132,13 +132,13 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
               <h4 className="desktop-h4 mb-6">{activeCourse.name}</h4>
 
               <Image
-                availableSizes={[512]}
                 src={assetUrl(
                   `courses/${activeCourse.index}`,
                   'thumbnail.webp',
                 )}
                 alt={activeCourse.name}
                 className="rounded-md mb-6"
+                breakpoints={{ default: 512 }}
               />
 
               <span className="text-justify leading-normal tracking-015px text-newGray-6 whitespace-break-spaces mb-5">

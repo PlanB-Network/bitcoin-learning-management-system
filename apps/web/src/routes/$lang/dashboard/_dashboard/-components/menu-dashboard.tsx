@@ -26,6 +26,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { TbBriefcase2 } from 'react-icons/tb';
+import { Image } from '#src/components/image.tsx';
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDashboard = ({
@@ -99,7 +100,8 @@ export const MenuDashboard = ({
         width={48}
       />
       <div className="bg-gradient-to-b from-darkOrange-5 to-[#99370000] flex items-center gap-3 py-2 lg:py-8 px-[17px] lg:px-5">
-        <img
+        <Image
+          breakpoints={{ default: 35, lg: 60 }}
           src={pictureUrl ?? SignInIconLight}
           alt="avatar"
           className="rounded-full size-[35px] lg:size-[60px]"

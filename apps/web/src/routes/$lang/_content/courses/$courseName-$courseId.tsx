@@ -267,7 +267,7 @@ function CourseDetails() {
           )}
           alt={course.name}
           className="rounded-[20px] w-full lg:max-w-[550px] shrink-1"
-          availableSizes={[320, 576]}
+          breakpoints={{ default: 320, lg: 576 }}
         />
 
         <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">

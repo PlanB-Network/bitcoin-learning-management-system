@@ -70,7 +70,7 @@ export const CourseCard = ({
             course.lastCommit,
           )}
           alt={course.name}
-          availableSizes={[340]}
+          breakpoints={{ default: 340 }}
           className="max-md:hidden rounded-md mb-2.5 object-cover [overflow-clip-margin:_unset] object-center max-h-72 group-hover:max-h-44 transition-[max-height] duration-300 ease-linear"
         />
 
@@ -82,7 +82,7 @@ export const CourseCard = ({
               course.lastCommit,
             )}
             alt={course.name}
-            availableSizes={[124]}
+            breakpoints={{ default: 124 }}
             className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">

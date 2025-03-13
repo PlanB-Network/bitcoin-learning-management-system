@@ -8,6 +8,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import Flag from '#src/molecules/Flag/index.js';
 
 import type { JSX } from 'react';
+import { Image } from '#src/components/image.tsx';
 
 export interface VerticalCardProps {
   imageSrc: string;
@@ -120,9 +121,10 @@ export const VerticalCard = ({
           imgClassName,
         )}
       >
-        <img
+        <Image
           src={imageSrc}
           alt={title}
+          breakpoints={{ default: 140, md: 320 }}
           className={cn(
             'h-[105px] md:h-[241px] object-cover [overflow-clip-margin:_unset] lg:mb-[17px]',
             imgClassName
