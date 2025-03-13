@@ -76,7 +76,7 @@ const getProfessorsQuery = () => sql<Searchable<Language>[]>`
     p.name as title,
     LOWER(language) as language,
     bio,
-    short_bio as body,
+    COALESCE(short_bio, '') as body,
     CONCAT(
       '/',
       language,
