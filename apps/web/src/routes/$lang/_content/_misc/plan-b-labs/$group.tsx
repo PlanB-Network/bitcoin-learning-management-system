@@ -11,7 +11,7 @@ import {
 import { t } from 'i18next';
 import { z } from 'zod';
 import LabIcon from '#src/assets/icons/lab.svg';
-import LightningIcon from '#src/assets/icons/lightning.svg';
+import LightningWhiteIcon from '#src/assets/icons/lightning_white.svg';
 import MiningIcon from '#src/assets/icons/mining_white.svg';
 import PrivacyIcon from '#src/assets/icons/privacy.svg';
 import PlanBLabsLogo from '#src/assets/logo/plan_b_labs_logo_horizontal.svg';
@@ -59,7 +59,7 @@ export const labsTabs = [
     id: 'lightning',
     label: 'Lightning',
     href: '/plan-b-labs/lightning',
-    icon: LightningIcon,
+    icon: LightningWhiteIcon,
   },
   {
     id: 'mining',
@@ -101,32 +101,34 @@ function PlanBLabs() {
 
   return (
     <MainLayout variant="dark" footerVariant="dark">
+      {/* Header */}
       <div className="flex flex-col items-center mt-12 text-center gap-6 self-center">
-        <div className="flex flex-col items-center md:gap-6 md:flex-row md:w-[800px]">
+        <div className="flex flex-col items-center md:gap-6 md:flex-row lg:w-[800px] px-4">
           <img
             src={PlanBLabsLogo}
             alt="Logo Plan ₿ Labs"
             className="w-36 md:w-60"
           />
           <DividerVertical className="h-16 max-md:hidden" />
-          <h1 className="display-small-med-32px text-center md:text-left">
+          <h1 className="text-lg max-md:font-semibold md:display-small-med-32px text-center md:text-left">
             {t('labs.title')}
           </h1>
         </div>
-        <div className="md:w-[950px] px-4 ">
+        <div className="lg:w-[950px] px-4 ">
           <p>{t('labs.description1')}</p>
           <p>{t('labs.description2')}</p>
         </div>
       </div>
+
       {!isFetched ? (
         <Loader size={'s'} />
       ) : (
         <>
           <Tabs
             defaultValue={activeItem.label}
-            className="pt-7 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
+            className="pt-9 md:pt-12 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
           >
-            <TabsList size="l" mode="dark2">
+            <TabsList size="l" mode="dark2" className="max-md:gap-3">
               <img
                 src={LabIcon}
                 alt="Lab logo"
@@ -219,8 +221,8 @@ function PlanBLabs() {
               {/* Study group main content */}
               <div className="flex flex-col max-w-[1200px] w-full md:flex-row px-4 self-center mt-14 pt-6 gap-6">
                 {/* Next session */}
-                <div className="relative w-full max-w-[750px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
-                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-4xl italic text-darkOrange-6">
+                <div className="relative w-full max-w-[800px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
+                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-3xl xl:text-4xl italic text-darkOrange-6">
                     Next session
                   </div>
                   <>
@@ -278,17 +280,24 @@ function PlanBLabs() {
                 <div className="relative md:w-[400px] border-l-2 border-newBlack-5 p-4">
                   {/* Top border */}
                   <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
-                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-4xl italic text-newGray-2 font-light">
+                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-2xl xl:text-4xl italic text-newGray-2 font-light">
                     Previous sessions
                   </div>
                   <div className="mt-2 lg:mt-8 flex flex-col gap-4">
                     {lab?.sessions.slice(1, 9).map((session) => (
                       <div className="flex flex-col" key={session.id}>
-                        <span className="text-newGray-1 uppercase">
+                        <span className="text-white uppercase">
                           {'> '}
                           {formatDate(session.startDate)}
                         </span>
-                        <span>{session.title}</span>
+                        <a
+                          href={session.liveUrl ?? ''}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-darkOrange-5 underline hover:font-medium"
+                        >
+                          {session.title}
+                        </a>
                       </div>
                     ))}
                   </div>
@@ -335,7 +344,7 @@ const Professor = ({
   professor: FullProfessor;
 }) => {
   return (
-    <section className="max-w-[1150px] px-4 self-center flex flex-col mt-5 md:mt-16 text-white">
+    <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-5 md:mt-16 text-white">
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
         {t('words.professor')}
       </h4>

@@ -8,7 +8,7 @@ import type { ChangedLab } from './index.js';
 
 interface LabMain {
   professor_id: string;
-  students_count?: number;
+  student_count?: number;
   telegram_url?: string;
 }
 
@@ -35,7 +35,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${lab.path},
           ${lab.path.split('/')[1]},
           ${parsedLab.professor_id},
-          ${parsedLab.students_count ?? 0},
+          ${parsedLab.student_count ?? 0},
           ${parsedLab.telegram_url},
           ${lastUpdated.time},
           ${lastUpdated.commit},
