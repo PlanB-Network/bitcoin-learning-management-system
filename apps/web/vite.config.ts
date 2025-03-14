@@ -14,7 +14,9 @@ export default defineConfig({
     tsconfigPaths({
       root: './',
     }),
-    TanStackRouterVite(),
+    TanStackRouterVite({
+      autoCodeSplitting: true,
+    }),
     viteReact(),
   ],
 
