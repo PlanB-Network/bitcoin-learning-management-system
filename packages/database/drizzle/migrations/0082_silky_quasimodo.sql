@@ -1,0 +1,1 @@
+ALTER TABLE "content"."events" ALTER COLUMN "is_gdpr_compliance" SET NOT NULL;

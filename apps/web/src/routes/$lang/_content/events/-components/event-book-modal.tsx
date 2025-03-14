@@ -72,6 +72,8 @@ export const EventBookModal = ({
               <ModalBookDescription
                 accessType={accessType}
                 onBooked={saveAndDisplaySuccess}
+                isGdprCompliance={event.isGdprCompliance}
+                gdprTerms={event.customTcDisclaimer ?? t('events.tcDisclaimer')}
                 description={
                   accessType === 'physical'
                     ? t('events.payment.description_free_physical')

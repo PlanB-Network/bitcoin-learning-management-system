@@ -568,6 +568,20 @@
       "when": 1741186048321,
       "tag": "0080_clear_hellfire_club",
       "breakpoints": true
+    },
+    {
+      "idx": 81,
+      "version": "7",
+      "when": 1741871698622,
+      "tag": "0081_lowly_robin_chapel",
+      "breakpoints": true
+    },
+    {
+      "idx": 82,
+      "version": "7",
+      "when": 1741872176890,
+      "tag": "0082_silky_quasimodo",
+      "breakpoints": true
     }
   ]
 }
