@@ -15,7 +15,8 @@ export default defineConfig({
       root: './',
     }),
     TanStackRouterVite({
-      autoCodeSplitting: true,
+      // TODO: Enable when https://github.com/TanStack/router/issues/2317 is fixed
+      autoCodeSplitting: false,
     }),
     viteReact(),
   ],
