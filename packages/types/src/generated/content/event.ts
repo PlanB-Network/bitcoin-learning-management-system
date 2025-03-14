@@ -18,6 +18,8 @@ export interface Event {
   remainingSeats: number | null;
   bookOnline: boolean | null;
   bookInPerson: boolean | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;
@@ -49,6 +51,8 @@ export interface JoinedEvent {
   remainingSeats: number | null;
   bookOnline: boolean | null;
   bookInPerson: boolean | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;

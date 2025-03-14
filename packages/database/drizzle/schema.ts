@@ -1266,6 +1266,8 @@ export const contentEvents = content.table('events', (t) => ({
   remainingSeats: t.integer(),
   bookOnline: t.boolean().default(false),
   bookInPerson: t.boolean().default(false),
+  isGdprCompliance: t.boolean().notNull().default(false),
+  customTcDisclaimer: t.text(),
   addressLine1: t.text('address_line_1'),
   addressLine2: t.text('address_line_2'),
   addressLine3: t.text('address_line_3'),

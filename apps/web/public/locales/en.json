@@ -811,7 +811,9 @@
       "max_capacity": "Max capacity of",
       "payment_successful": "Booking successful.",
       "time": "Time"
-    }
+    },
+    "tcDisclaimer": "I agree that my information may be shared with organizers for venue access purposes.",
+    "tcMustBeAccepter": "You must accept the terms to proceed with the purchase"
   },
   "filters": {
     "categories": "Categories",

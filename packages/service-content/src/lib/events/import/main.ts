@@ -19,6 +19,8 @@ interface EventMain {
   remaining_seats: number;
   book_online: boolean;
   book_in_person: boolean;
+  is_gdpr_compliance: boolean;
+  custom_tc_disclaimer: string;
   address_city_country: string;
   address_line_2: string;
   address_line_3: string;
@@ -47,6 +49,10 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       ? parsedEvent.book_online
       : false;
 
+    parsedEvent.is_gdpr_compliance = parsedEvent.is_gdpr_compliance
+      ? parsedEvent.is_gdpr_compliance
+      : false;
+
     const result = await transaction<Event[]>`
         INSERT INTO content.events
           ( id,
@@ -62,6 +68,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
             remaining_seats,
             book_online,
             book_in_person,
+            is_gdpr_compliance,
+            custom_tc_disclaimer,
             address_line_1,
             address_line_2,
             address_line_3,
@@ -90,6 +98,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedEvent.available_seats},
           ${parsedEvent.book_online},
           ${parsedEvent.book_in_person},
+          ${parsedEvent.is_gdpr_compliance},
+          ${parsedEvent.custom_tc_disclaimer},
           ${parsedEvent.address_city_country},
           ${parsedEvent.address_line_2},
           ${parsedEvent.address_line_3},
@@ -116,6 +126,8 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           available_seats = EXCLUDED.available_seats,
           book_online = EXCLUDED.book_online,
           book_in_person = EXCLUDED.book_in_person,
+          is_gdpr_compliance = EXCLUDED.is_gdpr_compliance,
+          custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
           address_line_1 = EXCLUDED.address_line_1,
           address_line_2 = EXCLUDED.address_line_2,
           address_line_3 = EXCLUDED.address_line_3,
