@@ -93,8 +93,8 @@ export const createProcessChangedBet = (
                   RETURNING *;
                 `.then(firstRow);
 
-              if (p.contributors_id) {
-                for (const [index, contrib] of p.contributors_id.entries()) {
+              if (p.contributor_names) {
+                for (const [index, contrib] of p.contributor_names.entries()) {
                   await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
                   await transaction`
                       INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")

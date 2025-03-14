@@ -108,7 +108,7 @@ function GlossaryWord() {
               isOriginalLanguage={isOriginalLanguage}
               mode="dark"
               proofreadingData={{
-                contributors: proofreading.contributorsId,
+                contributors: proofreading.contributorNames,
                 reward: proofreading.reward,
               }}
             />

@@ -26,7 +26,7 @@ interface ResourceDetails {
 }
 
 export interface BaseResource {
-  contributors?: string[];
+  contributor_names?: string[];
 }
 
 export interface ChangedResource extends ChangedContent {

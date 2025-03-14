@@ -696,7 +696,7 @@ function CourseChapter() {
           isOriginalLanguage={isOriginalLanguage}
           mode="light"
           proofreadingData={{
-            contributors: proofreading.contributorsId,
+            contributors: proofreading.contributorNames,
             reward: proofreading.reward,
           }}
         />

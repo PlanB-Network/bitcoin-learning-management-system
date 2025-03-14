@@ -12,6 +12,6 @@ export const proofreadingContributorSchema = createSelectSchema(
 );
 export const joinedProofreadingSchema = proofreadingSchema.merge(
   z.object({
-    contributorsId: z.string().array(),
+    contributorNames: z.string().array(),
   }),
 );

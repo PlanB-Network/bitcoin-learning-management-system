@@ -120,7 +120,7 @@ function Book() {
               isOriginalLanguage={true}
               mode="dark"
               proofreadingData={{
-                contributors: proofreading.contributorsId,
+                contributors: proofreading.contributorNames,
                 reward: proofreading.reward,
               }}
             />

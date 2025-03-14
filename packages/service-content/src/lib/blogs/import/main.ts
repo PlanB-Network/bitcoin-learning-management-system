@@ -9,7 +9,7 @@ import type { ChangedBlog } from './index.js';
 interface BlogMain {
   id: string;
   date?: string;
-  builder?: string;
+  author?: string;
   tags?: string[];
 }
 
@@ -29,7 +29,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedBlog.id},
           ${blog.path},
           ${blog.category},
-          ${parsedBlog.builder},
+          ${parsedBlog.author},
           ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW(),

@@ -44,11 +44,11 @@ export const getProofreadingQuery = ({
       p.last_contribution_date,
       p.urgency,
       p.reward,
-      COALESCE(c.contributors_id, ARRAY[]::text[]) AS contributors_id
+      COALESCE(c.contributor_names, ARRAY[]::text[]) AS contributor_names
     FROM content.proofreading p
 
     LEFT JOIN LATERAL (
-      SELECT COALESCE(ARRAY_AGG(pc.contributor_id), ARRAY[]::text[]) AS contributors_id
+      SELECT COALESCE(ARRAY_AGG(pc.contributor_id), ARRAY[]::text[]) AS contributor_names
       FROM content.proofreading_contributor pc
       WHERE p.id = pc.proofreading_id
     ) c ON TRUE

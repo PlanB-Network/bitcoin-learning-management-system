@@ -18,6 +18,6 @@ export interface ProofreadingEntry {
   language: string;
   last_contribution_date: string | null;
   urgency: number;
-  contributors_id?: string[];
+  contributor_names?: string[];
   reward: number;
 }

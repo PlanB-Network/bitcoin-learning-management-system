@@ -121,18 +121,18 @@ const Credits = ({ course }: { course: JoinedCourseWithAll }) => {
         </h4>
 
         <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
-          {proofreading?.contributorsId?.length > 0
+          {proofreading?.contributorNames?.length > 0
             ? t('courses.details.hasBeenProofreadBy')
             : t('courses.details.hasNotBeenProofread')}
           <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
             {' '}
-            {proofreading?.contributorsId?.length > 0
-              ? proofreading.contributorsId.map((proofreader, index) => (
+            {proofreading?.contributorNames?.length > 0
+              ? proofreading.contributorNames.map((proofreader, index) => (
                   <React.Fragment key={proofreader}>
                     <span>{proofreader}</span>
-                    {index < proofreading.contributorsId.length - 2
+                    {index < proofreading.contributorNames.length - 2
                       ? ', '
-                      : index === proofreading.contributorsId.length - 2
+                      : index === proofreading.contributorNames.length - 2
                         ? ' & '
                         : ''}
                   </React.Fragment>
@@ -147,7 +147,7 @@ const Credits = ({ course }: { course: JoinedCourseWithAll }) => {
               isOriginalLanguage={isOriginalLanguage}
               mode="light"
               proofreadingData={{
-                contributors: proofreading?.contributorsId || [],
+                contributors: proofreading?.contributorNames || [],
                 reward: proofreading?.reward,
               }}
               standalone

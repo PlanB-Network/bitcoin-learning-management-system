@@ -14,7 +14,7 @@ interface NewsletterMain {
   link?: Array<{ website?: string }>;
   publication_date: string;
   tags?: string[];
-  contributors?: string[];
+  contributor_names?: string[];
   language?: string;
   description?: string;
 }
@@ -67,7 +67,7 @@ export const createProcessChangedNewsletter = (
               ${parsed.title || ''},
               ${parsed.description || ''},
               ${parsed.tags || []},
-              ${parsed.contributors || []},
+              ${parsed.contributor_names || []},
               ${parsed.language || 'en'}
             )
             ON CONFLICT (resource_id) DO UPDATE SET

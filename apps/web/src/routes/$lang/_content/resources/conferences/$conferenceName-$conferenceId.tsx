@@ -180,7 +180,7 @@ function Conference() {
             <ProofreadingProgress
               mode="dark"
               proofreadingData={{
-                contributors: proofreading.contributorsId,
+                contributors: proofreading.contributorNames,
                 reward: proofreading.reward,
               }}
               isOriginalLanguage={false}

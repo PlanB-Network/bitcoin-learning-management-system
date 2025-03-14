@@ -27,5 +27,5 @@ export interface JoinedProofreading {
   lastContributionDate: Date | null;
   urgency: number | null;
   reward: number | null;
-  contributorsId: string[];
+  contributorNames: string[];
 }
