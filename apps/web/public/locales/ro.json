@@ -1009,14 +1009,8 @@
     },
     "exchange": {
       "title": "Exchange",
-      "centralized": {
-        "description": "Exchange-urile centralizate sunt de obicei entități reglementate care acționează ca intermediari între sistemul bancar și ecosistemul bitcoin. Acestea vă permit să cumpărați și să vindeți cantități mari de bitcoin și să-i retrageți în walletul dvs. sau în contul bancar. De obicei, acestea necesită KYC și, prin urmare, monitorarea activității dvs., raportând-o instituțiilor de supraveghere financiară pentru a respecta legile locale."
-      },
       "description": "Exchange-urile sunt una dintre ușile de intrare și ieșire între moneda ta tradițională (euro, dolari) și lumea bitcoin. Acestea pot fi: reglementate prin KYC (Know Your Customer), sau peer-to-peer și anonime. Fiecare exchange va avea caracteristici diferite, structuri de taxe, lichiditate și suport pentru clienți. Fiecare bitcoiner va folosi unul diferit în funcție de nevoile și convingerile sale.",
-      "shortDescription": "Soluții de cumpărare-vânzare Bitcoin, KYC și non-KYC",
-      "peer-to-peer": {
-        "description": "Exchange-urile peer-to-peer sunt piețe unde indivizii schimbă bitcoin pentru alte monede între ei. Aceste exchange-uri pot fi reglementate sau nu și, de obicei, nu solicită prea multe informații (dacă solicită vreuna) despre tine. Ele pur și simplu facilitează relația între utilizatori. Comisioanele lor ar putea fi mai mari decât cele tradiționale și lichiditatea lor puțin mai mică. Este opțiunea preferată pentru bitcoineri care încearcă să evite KYC."
-      }
+      "shortDescription": "Soluții de cumpărare-vânzare Bitcoin, KYC și non-KYC"
     },
     "approvedByCreator": "Aprobat de creator",
     "explorer": {
@@ -1030,66 +1024,19 @@
       "shortDescription": "Soluții pentru minarea Bitcoin"
     },
     "node": {
-      "bitcoin": {
-        "description": "Un nod Bitcoin Core este punctul de plecare pentru suveranitatea ta Bitcoin. Îți permite să rulezi software-ul Bitcoin și să faci parte din rețea. Vei valida blocuri și tranzacții, vei decide care reguli vrei să aplici în cadrul rețelei și vei înceta să folosești intermediari pentru a-ți propaga tranzacțiile. Există multe modalități de a rula un nod Bitcoin, unele mai user-friendly decât altele."
-      },
-      "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Un nod Lightning vă permite să participați la protocolul Bitcoin de nivel 2 numit Lightning. Veți putea deschide canale, gestiona lichiditatea acestora, participa la grafic și deveni non-custodial în ceea ce privește portofelul dvs. Lightning."
-      },
       "title": "Nod",
       "description": "Nodurile sunt ca serverele personale. În Bitcoin, este software-ul care îți permite să rulezi rețeaua, să colectezi tranzacții, să verifici regulile și să fii cu adevărat suveran. În cadrul ecosistemului nostru, există diverse noduri, de la Bitcoin Core, la implementări Lightning, RGB sau alte soluții de privacy mai avansate.",
-      "shortDescription": "Soluții pentru a opera un nod bitcoin și a te alătura rețelei",
-      "rgb": {
-        "description": "RGB este un sistem scalabil și confidențial de smart contracts pentru Bitcoin și rețeaua lightning. Este un strat de programare Bitcoin care reprezintă \"post-blockchain\". Cuprinde concepte de proprietate privată și reciprocă, abstractizare și separare a problemelor."
-      }
-    },
-    "others": {
-      "general": {
-        "description": "Consultați tutorialele noastre generale pentru a vă îmbogăți cunoștințele în informatică și al altor subiecte legate de suveranitatea individuală!"
-      },
-      "title": "Altele",
-      "shortDescription": "Explorează diverse tutoriale pe teme strâns legate de bitcoin",
-      "description": "Descoperă o vastă colecție de tutoriale care sunt strâns legate de ethosul Bitcoin. De la DIY la tutoriale open-source, descoperă noi domenii de cunoștință pentru a deveni și mai suveran.",
-      "DIY": {
-        "description": "Descoperă tutorialele noastre DIY pentru a învăța cum să creezi singur lucruri legate de Bitcoin, informatică și suveranitate individuală!"
-      },
-      "OpenSource": {
-        "description": "Explorați tutorialele noastre dedicate utilizării instrumentelor open-source!"
-      },
-      "contribution": {
-        "description": "Învață cum să contribui la Plan B Network și să stăpânești instrumentele open-source pe care le folosim prin tutorialele noastre detaliate!"
-      }
+      "shortDescription": "Soluții pentru a opera un nod bitcoin și a te alătura rețelei"
     },
     "wallet": {
       "shortDescription": "Soluții de securitate și utilizarea bitcoinilor dvs",
       "title": "Portofel",
-      "desktop": {
-        "description": "Portofelele desktop sunt de obicei pentru utilizatorii mai avansați, deoarece combină utilizarea dispozitivelor hardware și a software-ului pentru portofelul desktop. Este ca și cum ai avea o interfață nouă, mai personalizată și cu mai multe funcționalități pentru dispozitivul tău hardware. Astfel de portofele oferă opțiuni multi-semnătură, funcționalități de privacy, mecanisme de integrare a moștenirii și multe altele."
-      },
-      "hardware": {
-        "description": "Portofelele hardware sunt de obicei utilizate pentru a stoca economiile tale în bitcoin pe termen lung. Acestea sunt dispozitive fizice care nu sunt conectate la internet (adesea numite \"cold wallets\") și sunt de obicei foarte sigure. Chiar dacă aceste dispozitive sunt adesea open-source în ceea ce privește software-ul lor, hardware-ul costă între 50 și 300 de euro. Consideră aceste dispozitive ca un cont bancar pentru sume mai mari de bani pe care le-ai folosi din când în când."
-      },
-      "mobile": {
-        "description": "Portofelele mobile sunt de obicei utilizate pentru cheltuieli zilnice. Acestea integrează Lightning Network pentru tranzacții instantanee cu taxe reduse. De obicei, sunt conectate la internet (adesea numite \"hot wallets\") și, prin urmare, sunt mai puțin sigure decât portofelele hardware. Acestea ar trebui să fie utilizate doar pentru a stoca cantități mici de bitcoin, considerați-le ca portofelul dvs. de zi cu zi din buzunar."
-      },
       "description": "Un portofel Bitcoin este ca și brelocul tău. Îți permite să cheltuiești și să primești bitcoin. Există multe tipuri diferite de portofele, toate cu diferite cazuri de utilizare, funcții, costuri și experiențe ale utilizatorilor. Fiecare bitcoiner va folosi un dispozitiv diferit în funcție de nevoile, nivelul de exigență și experiența sa."
     },
     "privacy": {
-      "general": {
-        "description": "În era supravegherii în masă, recuperarea unui anumit nivel de privacy în viața de zi cu zi este esențială. Având în vedere că fiecare utilizator va avea un anumit grad de paranoia și cunoștințe tehnologice, este perfect normal să folosești anumite instrumente și să le adaptezi nevoilor tale. Aici, vom explora diferite soluții de protecție, cum ar fi VPN-urile, Tor, Tails OS, PGP, mesaje criptate și multe altele."
-      },
       "description": "Confidențialitatea este un drept fundamental. Deși aspirăm la o lume în care confidențialitatea este implicită, nu este realitatea în care trăim. Vom încerca să vă explicăm cele mai bune practici, să vă ajutăm cu tutoriale și să vă îndrumăm pe cel mai bun drum în ceea ce privește suveranitatea datelor dumneavoastră.",
       "shortDescription": "Instrumente pentru backup și menținerea confidențialității",
-      "title": "Privacy",
-      "bitcoin": {
-        "description": "Bitcoin nu este privat în mod implicit, este conceput intențional să fie pseudonim, iar fiecare tranzacție este publică și stocată pentru totdeauna. Pentru a recâștiga o anumită confidențialitate, trebuie să utilizăm cele mai bune practici de utilizare și instrumente specifice integrate în software-ul nostru. De la evitarea reutilizării adresei până la CoinJoin, trecând prin mixarea monedelor tale și conectarea la propriul tău nod, te vom ajuta în călătoria ta către privacy."
-      }
-    },
-    "merchant": {
-      "description": "V-ați întrebat vreodată cum să acceptați cu ușurință bitcoin pentru o afacere? Explorează diversele noastre soluții pentru a deveni expert și pentru a configura cu ușurință o soluție comercială pentru magazinele din jurul tău. Soluția Point of Sale variază în funcție de nevoile comerciantului (fizic sau online), volumul lor și complexitatea operațiunilor lor. Un bun proxy în general este să începeți pur și simplu cu un portofel LN de bază, să treceți la o soluție ușoară, eficientă (cum ar fi PoS mobil) și, în cele din urmă, să explorați BTC Pay Server pentru soluții avansate, complexe, profesionale.",
-      "shortDescription": "Soluții pentru afaceri pentru a accepta Bitcoin",
-      "title": "Comerciant"
+      "title": "Privacy"
     },
     "pageDescription": "Bitcoin este o industrie vastă, care se extinde tot mai mult în fiecare zi. Pentru a vă ajuta să o explorați, am adunat și selectat un număr mare de tutoriale care descriu diverse soluții în toate domeniile legate de Bitcoin.",
     "pageSubtitle": "Descoperiți misterele Bitcoin prin explorarea ecosistemului său vast",

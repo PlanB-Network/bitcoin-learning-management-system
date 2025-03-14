@@ -578,13 +578,7 @@
       "writtenBy": ""
     },
     "exchange": {
-      "centralized": {
-        "description": "Keskitetyt pörssit ovat yleensä säänneltyjä toimijoita, jotka toimivat välittäjinä pankkijärjestelmän ja Bitcoin-ekosysteemin välillä. Ne mahdollistavat suurten määrien bitcoinien ostamisen ja myymisen ja niiden nostamisen lompakkoosi tai pankkitilillesi. Ne yleensä vaativat KYC-tunnistautumisen (Know Your Customer) ja valvovat siksi toimintaasi, raportoiden rahoitustarkkailulaitoksille paikallisten lakien noudattamiseksi."
-      },
       "description": "Pörssit ovat yksi sisään- ja uloskäyntiporteista perinteisen valuutan (euro, dollari) ja bitcoin-maailman välillä. Pörssit voivat olla säänneltyjä ja noudattaa KYC (\"Know Your Customer\", Tunne Asiakkaasi) -periaatetta tai vertaisverkkoon perustuvia ja anonyymejä. Jokainen pörssi tarjoaa erilaisia ominaisuuksia, maksurakenteita, likviditeettiä ja asiakastukea. Jokainen bitcoin-harrastaja käyttää erilaista pörssiä tarpeidensa ja vakaumustensa mukaan.",
-      "peer-to-peer": {
-        "description": "Vertaisverkkoon perustuvat pörssit ovat markkinapaikkoja, joissa yksilöt vaihtavat bitcoineja muiden valuuttojen kanssa keskenään. Nämä pörssit voivat olla säänneltyjä tai ei, ja ne eivät yleensä pyydä paljon tietoja sinusta (jos lainkaan). Ne yksinkertaisesti helpottavat suhteiden muodostamista käyttäjien välillä. Niiden palkkiot voivat olla korkeammat kuin perinteisillä pörsseillä, ja niiden likviditeetti voi olla hieman alhaisempi. Se on suosittu vaihtoehto bitcoin-harrastajille jotka tahtovat vaihtaa tai hankkia bitcoinia tai käydä sillä kauppaa eri valuuttojen kesken varjellen yksityisyyttään."
-      },
       "shortDescription": "Bitcoin osto/myynti-ratkaisut, KYC and non-KYC",
       "title": "Pörssi"
     },
@@ -593,28 +587,13 @@
       "didYouKnow": "Tiesitkö?",
       "exploreAllTutorials": ""
     },
-    "merchant": {
-      "description": "Oletko koskaan miettinyt kuinka helppoa on hyväksyä bitcoin-maksutapaa yrityskäytössä? Tutustu moniin ratkaisuihimme ja kehity pian asiantuntijaksi. Opeta paikalliset yritykset käyttämään bitcoinia liiketoimintansa tehostamiseen. Kassapääteratkaisut (Point of Sale (POS) solutions) vaihtelevat kauppiaan tarpeiden mukaisesti (esimerkiksi onko kaupankäynti verkkokauppatoimintaa, vai fyysistä kaupankäyntiä), mukautuen kaupankäynnin määrään tai monimutkaisiin tilaus-/maksu-järjestelmiin. Eräs helppo tapa aloittaa, on ottaa käyttöön LN-lompakko (Lightning Network wallet) ja siirtyä helppoon, tehokkaaseen maksutapa-ratkaisuun (Esimerkiksi \"mobile PoS\"). Ja kun olet valmis, voit alkaa tutkimaan esimerkiksi BTC Pay Server-palvelua soveltaaksesi kehittyneempiä, monipuolisempia ja ammattikäyttöön soveltuvampia ratkaisuja yrityksessäsi ja ympäristössäsi.",
-      "shortDescription": "Yritysratkaisut Bitcoinin käyttöönottoon",
-      "title": "Yritystoiminta"
-    },
     "mining": {
       "description": "Louhintateollisuus on yksi monimutkaisimmista kaninkolojen aiheista. Sen vuoksi, olemme koonneet monipuolisen valikoiman oppaita ja oppimateriaaleja siivittämään polkuasi louhintalaitteistojen ja -ohjelmistojen polulla. Aina modifioiduista S9-louhintalaitteista kotia lämmittäviin, vaikeita laskutoimituksia laskeviin bitcoin-louhintalämmittimiin.",
       "shortDescription": "Bitcoin-louhintaratkaisut",
       "title": "Louhiminen"
     },
     "node": {
-      "bitcoin": {
-        "description": "Bitcoin Core solmu (Bitcoin Core node) on kaiken Bitcoin-yksityisyytesi pohja. Se mahdollistaa sinun itse ylläpitää Bitcoinin ohjelmistoa ja lohkoketjua, ollen siten osa Bitcoin-vertaisverkostoa. Osallistuessasi verkon ylläpitoon (Louhintaan), voit itse osallistua tilikirjan lohkojen ja transaktioiden validointiin, näin varmistaen osaltasi bitcoin-tilikirjan turvallisuuden ja verifioinnin. Näin voit vähentää keskitettyjen tahojen valtaa omaisuudestasi. On monia tapoja ylläpitää Bitcoin nodea, toiset ovat käyttäjäystävällisempiä ja turvallisempia kuin toiset, joten ota selvää eri vaihtoehdoista. Lisätietoa löydät louhinta-oppaistamme."
-      },
       "description": "Nodet ovat kuin bitcoin-tilikirjan hajautettuja servereitä joita sinäkin voit ylläpitää. Bitcoin Core node on ohjelmisto, joka mahdollistaa sinun ylläpitää bitcoin-verkkoa, vahvistaa transaktioita, varmistaa yhteisiä pelisääntöjä, ja saavuttaa taloudellinen itsemääräämisoikeus. Ekosysteemimme sisältää valikoiman erilaisia node-palveluita, Bitcoin Core:sta erilaisiin Lightning-ratkaisuihin ja -palveluihin, RGP-älysopimukset (Smart contracts), tai vaikka paranneltuja yksityisyys-ominaisuuksia.",
-      "lightning-network": {
-        "description": "Lightning node mahdollistaa sinun ottaa osaa Bitcoinin Layer 2-protokollatasoon nimeltä \"Lightning\". Voit avata Lightning-maksukanavia (Channels), hallita niiden likvidointia, osallistua ylläpitoon ja säilyttää itse bitcoinejasi omassa lompakossasi (non-custodial).",
-        "name": "Lightning-verkko"
-      },
-      "rgb": {
-        "description": "RGB on skaalautuva ja luotettava älysopimus-järjestelmä Bitcoinille & Lightning networkille. Se on ohjelmointikerros bitcoin-lohkoketjulle, konsepteina yksityisyys ja omaisuuserien omistusoikeus, abstraktiivinen ominaisuus omaisuuserien tokenisoinnin tarpeelle."
-      },
       "shortDescription": "Eri tapoja ylläpitää Bitcoin nodea ja liittyä verkostoon",
       "title": "Solmu (node)"
     },
@@ -622,46 +601,14 @@
     "pageSubtitle": "Paljastetaan Bitcoinin ekosysteemin laajuutta ja rikkautta",
     "pageTitle": "Tutustu oppaisiimme",
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin ei ole oletuksena yksityinen, vaan se on tarkoituksella suunniteltu pseudonyymiseksi, ja jokainen tapahtuma on julkinen ja tallennetaan pysyvästi. Jotta saisimme takaisin hieman luottamuksellisuutta, meidän on noudatettava parhaita käytäntöjä ja käytettävä tiettyjä työkaluja, jotka on integroitu ohjelmistoomme. Näihin kuuluu osoitteen uudelleenkäytön välttäminen, CoinJoinin käyttö, kolikoiden sekoittaminen ja yhteyden muodostaminen omaan solmuun. Matkallasi kohti yksityisyyttä autamme sinua mielellämme."
-      },
       "description": "Yksityisyys on ihmisen perusoikeus. Samaan aikaan kun kehitämme maailmaa, missä yksityisyyden tulisi olla lähtökohta, todellisuus, missä elämme ei ole niin. Pyrimme selittämään tätä asiaa parhaamme mukaan parhailla oppaillamme asian tiimoilta, ja siten saada sinut palauttamaan datasi omiin käsiisi ja palauttamaan sinulle takaisin digitaalisen ja taloudellisen itsemääräämisoikeutesi.",
-      "general": {
-        "description": "Massavalvonnan aikakaudella, yksityisyyden jokapäiväinen vaatiminen ja turvaaminen on välttämätöntä. Valvonnan ja esimerkiksi vakoilun yleistyessä, on suotavaa käyttää erilaisia työkaluja ja soveltaa niitä päivittäisiin tietoturva-tarpeisiin. Täältä voit selata erilaisia tietoturva-ratkaisuja kuten VPN-palveluita, Tor-verkon työkaluja, löydät Tails OS-käyttöjärjestelmän, Salatut messenger-palvelut ja paljon muuta."
-      },
       "shortDescription": "Työkalut varmuuskopiointiin ja yksityisyyden turvaamiseen",
       "title": "Yksityisyys"
     },
     "wallet": {
       "description": "Elektroninen hardware-lompakko eli kylmälompakko (Hardware-wallet, cold wallet) on kuin digitaalinen avaimenperä-lompakko. Se mahdollistaa sinun vastaanottaa, säilyttää ja lähettää bitcoinejasi. On monenlaisia lompakoita ja lompakkopalveluita tarjoavia laitevalmistajia, joista löytyy erilaisia toimintoja eri käyttötapauksiin. Jokaisen bitcoinerin tulisi tutkia eri vaihtoehtoja tarkkaan ja valita niistä sopivin omiin tarkoituksiinsa ja tarpeisiinsa (esimerkiksi onko laite pitkäaikais-säilytystä vai päivittäisostoja varten).",
-      "desktop": {
-        "description": "Desktop-lompakot ovat yleensä tarkoitettu edistyneemmille käyttäjille, koska ne yhdistävät laitteistolaitteiden ja työpöytälompakko-ohjelmiston käytön. Voit ajatella niitä uudenlaisena, räätälöitynä ja toiminnallisesti monipuolisena lompakko- tai verkkopankki-käyttöliittymänä laitteistollesi ja työpöydällesi. Tällaiset lompakot tarjoavat \"multi-signature\"-vaihtoehtoja ja -ominaisuuksia, yksityisyysominaisuuksia, integraatiomekanismeja ja paljon muuta."
-      },
-      "hardware": {
-        "description": "Elektroniset lompakot (Hardware-wallets) ovat usein tarkoitettuja pitkäaikaisien bitcoin-varojen turvaamiseen ja salasanojen säilytykseen. Ne ovat fyysisiä laitteita, jotka eivät ole yhteydessä internettiin, siksi niitä kutsutaan kylmälompakoiksi (\"Cold wallet\") ja ovat erittäin tietoturvallisia. Vaikkakin laitteiden ohjelmistot ovat usein avointa lähdekoodia ja kaikkien saatavilla, riippuen laitevalmistajasta, laitteita myydään hintaluokassa 50€-300€. Sinun on helppo ajatella näitä laitteita kuin sinulla olisi oma, digitaalinen palkkiholvi laitteessasi, josta voit tarvittaessa käyttää varojasi."
-      },
-      "mobile": {
-        "description": "Mobiililaitteiden Lompakkosovellukset ovat usein tarkoitettu päivittäiseen kaupankäyntiin tai arvon siirtoon. Ne integroituvat Lightning Networkin kanssa mahdollistaen halvat ja välittömät transaktiot. Ne ovat normaalisti yhdistettynä internettiin, siksi niitä kutsutaankin usein \"Hot-walleteiksi\", kuumiksi lompakoiksi. Siten niiden tietoturva on hieman kylmälompakkoa heikompi. Näitä lompakoita tulisi käyttää pienten bitcoin-määrien säilytykseen ja käyttöön, pidä niitä kuin taskulompakkoina päivittäisostoksia ja -maksuja varten."
-      },
       "shortDescription": "Turvallisuusratkaisut ja bitcoiniesi käyttäminen",
       "title": "Lompakko"
-    },
-    "others": {
-      "title": "Muut tavat",
-      "shortDescription": "Selaa monipuolisia, Bitcoin-aiheisia oppaitamme",
-      "description": "Sukella Bitcoin-aiheisten oppaidemme tulvaan. Tee-Se-Itse (DYI) oppaista avoimen lähdekoodin koulutuksiin, löydä uusia kiinnostuksen alueita tullaksesi entistä paremmaksi ja monipuolisemmaksi, alan taitajaksi.",
-      "contribution": {
-        "description": "Tutki ja opi kuinka voit alkaa PlanB Network-kehittäjäksi ja opi käyttämään avoimen lähdekoodin (open source) kehitystyökalujamme, yksityiskohtaisten ohje-oppaidemme avulla!"
-      },
-      "DIY": {
-        "description": "Tutki ja löydä Tee-Se-Itse-oppaitamme ja opi miten voit itse kasata laitteistoja, ja muuta Bitcoiniin liittyvää, ja varmistaa omaa taloudellista itsenäisyyttäsi!"
-      },
-      "OpenSource": {
-        "description": "Tutki Open source-oppaitamme, jotta voit oppia kuinka otat avoimen lähdekoodin työkalut käyttöösi!"
-      },
-      "general": {
-        "description": "Selaa yleis-aiheisia oppaitamme kerryttääksesi osaamistasi tietokoneiden käytöstä ja muista aiheista. Esimerkiksi oppaita liittyen yksilönvapauteen!"
-      }
     },
     "approvedByCreator": "",
     "backTutorials": ""

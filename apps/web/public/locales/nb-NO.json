@@ -1216,33 +1216,12 @@
   },
   "tutorials": {
     "exchange": {
-      "centralized": {
-        "description": "Sentraliserte børser er vanligvis regulerte enheter som fungerer som mellommenn mellom banksystemet og bitcoin-økosystemet. De lar deg kjøpe og selge store mengder bitcoin og ta det ut til lommeboken eller bankkontoen din. De krever vanligvis KYC, og overvåker derfor aktiviteten din, rapporterer den til finansielle overvåkningsinstitusjoner for å overholde lokale lover."
-      },
       "description": "Børser er en av inngangs- og utgangsdørene mellom din tradisjonelle valuta (euro, dollar, kroner) og bitcoin-verdenen. Børser kan være regulerte og KYC (Know Your Customer) kompatible, eller peer-to-peer og anonyme. Hver børs vil tilby forskjellige funksjoner, gebyrstrukturer, likviditet og kundestøtte. Hver bitcoiner vil bruke forskjellige børser basert på deres behov og overbevisninger.",
-      "peer-to-peer": {
-        "description": "Peer-to-peer-vekslingstjenester er markedsplasser der enkeltpersoner bytter bitcoin mot andre valutaer seg imellom. Disse tjenestene kan være regulert eller ikke, og ber vanligvis ikke om mye informasjon (om noen) om deg. De letter bare forholdet mellom brukerne. Gebyrene deres kan være høyere enn tradisjonelle vekslingstjenester og deres likviditet litt lavere. Det er det foretrukne alternativet for bitcoinere som prøver å unngå KYC."
-      },
       "shortDescription": "Løsninger for kjøp og salg av Bitcoin, KYC og ikke-KYC",
       "title": "Vekslingstjenester"
     },
-    "merchant": {
-      "description": "Noen gang lurt på hvordan du enkelt kan akseptere bitcoin for en bedrift? Utforsk våre forskjellige løsninger for å bli en ekspert og enkelt sette opp en handelsløsning for butikkene rundt deg. Salgspunkt-løsningen varierer basert på handelens behov (fysisk eller online), deres volum, og kompleksiteten av deres operasjoner. En generelt god proxy er å rett og slett starte med en grunnleggende LN-lommebok, gå over til en enkel, effektiv løsning (som mobil PoS), og til slutt utforske BTC Pay Server for avanserte, komplekse, profesjonelle løsninger.",
-      "shortDescription": "Løsninger for bedrifter for å akseptere Bitcoin",
-      "title": "Kjøpmann"
-    },
     "node": {
-      "bitcoin": {
-        "description": "En Bitcoin Core-node er grunnlaget for din Bitcoin-suverenitetsstabel. Den lar deg kjøre Bitcoin-programvaren og være en del av nettverket. Du vil validere blokker og transaksjoner, bestemme hvilke regler du vil bruke innen nettverket, og slutte å bruke mellommenn for å formidle transaksjonene dine. Det er mange måter å kjøre en Bitcoin-node på, noen er mer brukervennlige enn andre."
-      },
       "description": "Noder er som dine personlige servere. I Bitcoin er det programvaren som lar deg kjøre nettverket, samle transaksjoner, verifisere reglene, og være virkelig suveren. Innenfor vårt økosystem finnes det forskjellige noder, fra Bitcoin Core, til Lightning-implementeringer, RGB, eller andre mer avanserte personvernløsninger.",
-      "lightning-network": {
-        "description": "En Lightning-node lar deg delta i Bitcoins lag 2-protokoll, kalt Lightning. Du vil kunne åpne kanaler, administrere deres likviditet, delta i grafen, og bli ansvarlig med hensyn til din Lightning-lommebok.",
-        "name": "Lightning-nettverket"
-      },
-      "rgb": {
-        "description": "RGB er et skalerbart og konfidensielt system for smarte kontrakter for Bitcoin og lynnettverket. Det er et programmeringslag for Bitcoin, med konsepter om privat og felles eierskap, abstraksjon og separasjon av bekymringer, og representerer \"post-blockchain\"."
-      },
       "shortDescription": "Løsninger for å operere en bitcoin-node og bli med i nettverket",
       "title": "Node"
     },
@@ -1267,47 +1246,15 @@
       "title": "Mining"
     },
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin er ikke privat som standard, den er bevisst designet for å være pseudonym, og hver transaksjon er offentlig og lagret for alltid. For å gjenvinne noe konfidensialitet, må vi bruke beste brukerpraksis og spesifikke verktøy integrert i vår programvare. Fra å unngå gjenbruk av adresser til CoinJoin, gjennom å blande myntene dine og koble til din egen node, vil vi hjelpe deg på din reise mot personvern."
-      },
-      "general": {
-        "description": "I en tid med masseovervåkning er det essensielt å gjenvinne et visst nivå av personvern i hverdagen din. Gitt at hver bruker vil ha en viss grad av paranoia og teknologisk kunnskap, er det helt normalt å bruke visse verktøy og tilpasse dem til dine behov. Her vil vi utforske forskjellige beskyttelsesløsninger som VPN-er, Tor, Tails OS, PGP, krypterte meldinger, og mye mer."
-      },
       "description": "Personvern er en grunnleggende rettighet. Selv om vi ønsker en verden der personvern er standard, er det ikke virkeligheten vi lever i. Vi vil prøve å forklare deg de beste praksisene, hjelpe deg med veiledninger, og sette deg på en mer suveren sti når det gjelder dataene dine.",
       "shortDescription": "Verktøy for sikkerhetskopi og vedlikehold av personvern",
       "title": "Personvern"
-    },
-    "others": {
-      "title": "Andre",
-      "shortDescription": "Utforsk varierte veiledninger om nært beslektede emner av bitcoin",
-      "description": "Dykk ned i en stor samling av veiledninger som er tett knyttet til Bitcoin-ethos. Fra DIY til open-source veiledning, oppdag nye kunnskapsområder for å bli enda mer suveren.",
-      "DIY": {
-        "description": "Oppdag våre DIY-veiledninger for å lære hvordan du kan lage ting relatert til Bitcoin, databehandling og individuell suverenitet selv!"
-      },
-      "OpenSource": {
-        "description": "Utforsk våre veiledninger dedikert til bruk av åpen kildekode-verktøy!"
-      },
-      "contribution": {
-        "description": "Lær hvordan du kan bidra til PlanB Network og mestre de åpen kildekode-verktøyene vi bruker internt gjennom våre detaljerte veiledninger!"
-      },
-      "general": {
-        "description": "Bla gjennom våre generelle opplæringsprogrammer for å berike kunnskapen din innen databehandling og andre emner relatert til individuell suverenitet!"
-      }
     },
     "pageDescription": "Bitcoin er en bred industri, som blir bredere og bredere hver dag. For å hjelpe deg med å utforske den, har vi samlet og kuratert et stort antall veiledninger som beskriver forskjellige løsninger i alle domener relatert til Bitcoin.",
     "pageSubtitle": "Lås opp mysteriene med Bitcoin ved å utforske det store økosystemet",
     "pageTitle": "Oppdag våre veiledninger",
     "wallet": {
-      "hardware": {
-        "description": "Maskinvarelommebøker brukes vanligvis til å lagre dine langsiktige bitcoin-sparinger. De er fysiske enheter som ikke er koblet til internett (ofte kalt \"kalde lommebøker\") og er vanligvis svært sikre. Selv om disse enhetene ofte er åpen kildekode når det gjelder programvaren deres, koster maskinvaren rundt 50 til 300 euro. Tenk på disse enhetene som en bankkonto for større sparebeløp som du ville bruke en gang i blant."
-      },
       "description": "En Bitcoin-lommebok er som nøkkelknippet ditt. Den lar deg bruke og motta bitcoin. Det finnes mange forskjellige typer lommebøker, alle med forskjellige bruksområder, funksjoner, kostnader og brukeropplevelser. Hver bitcoiner vil bruke forskjellige enheter basert på deres behov, nivå av krav og erfaring.",
-      "desktop": {
-        "description": "Skrivebordslommebøker er vanligvis for mer avanserte brukere ettersom de kombinerer bruk av maskinvareenheter og skrivebordslommebokprogramvaren. Det er som å ha et nytt, mer tilpasset og funksjonsrikt grensesnitt for maskinvareenheten din å bruke. Slike lommebøker tilbyr alternativer for flersignatur, personvernfunksjoner, integrasjonsmekanismer for arv og mer."
-      },
-      "mobile": {
-        "description": "Mobile lommebøker brukes vanligvis til daglig bruk. De integrerer Lightning Network for transaksjoner med lav avgift og umiddelbar overføring. De er vanligvis koblet til internett (ofte kalt \"hot wallets\") og er derfor mindre sikre enn maskinvarelommebøker. De bør bare brukes til å lagre små mengder bitcoin, tenk på dem som lommeboken du bruker hver dag i lommen din."
-      },
       "shortDescription": "Sikkerhetsløsninger og bruk av dine bitcoins",
       "title": "Lommebok"
     },

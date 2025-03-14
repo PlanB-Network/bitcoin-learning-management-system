@@ -504,11 +504,6 @@
       "didHelp": "",
       "writtenBy": ""
     },
-    "merchant": {
-      "shortDescription": "",
-      "description": "",
-      "title": ""
-    },
     "mining": {
       "shortDescription": "",
       "description": "",
@@ -517,13 +512,7 @@
     "approvedByCreator": "",
     "backTutorials": "",
     "exchange": {
-      "centralized": {
-        "description": ""
-      },
       "description": "",
-      "peer-to-peer": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },
@@ -533,63 +522,21 @@
       "exploreAllTutorials": ""
     },
     "node": {
-      "bitcoin": {
-        "description": ""
-      },
       "description": "",
-      "lightning-network": {
-        "description": "",
-        "name": ""
-      },
-      "rgb": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
-    },
-    "others": {
-      "title": "",
-      "shortDescription": "",
-      "description": "",
-      "DIY": {
-        "description": ""
-      },
-      "OpenSource": {
-        "description": ""
-      },
-      "contribution": {
-        "description": ""
-      },
-      "general": {
-        "description": ""
-      }
     },
     "pageDescription": "",
     "pageSubtitle": "",
     "pageTitle": "",
     "privacy": {
-      "bitcoin": {
-        "description": ""
-      },
       "description": "",
-      "general": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },
     "wallet": {
-      "hardware": {
-        "description": ""
-      },
-      "mobile": {
-        "description": ""
-      },
       "title": "",
       "description": "",
-      "desktop": {
-        "description": ""
-      },
       "shortDescription": ""
     }
   },

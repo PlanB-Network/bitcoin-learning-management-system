@@ -748,7 +748,58 @@
         "elementary": "기초 (기본 대화 및 글쓰기)",
         "fluent": "유창 (원어민 수준)",
         "intermediate": "중급 (편안한 의사소통)"
-      }
+      },
+      "other": "기타",
+      "motivationLetterSubLabel": "경험과 동기에 대해 아래에 한 마디 써 주세요.",
+      "noFileSelected": "선택된 파일이 없습니다.",
+      "partTime": "파트타임",
+      "lookingForJob": "현재 당신을 위한 채용 정보를 찾고 있습니다.",
+      "maxRoles": "직종은 최대 3개까지 선택할 수 있습니다.",
+      "personalInformation": "개인 정보",
+      "motivation": "동기 부여",
+      "motivationLetter": "동기 부여서",
+      "motivationLetterPlaceholder": "동기가 무엇인가요?",
+      "motivationSubtitle": "자기 소개서를 첨부해 지원서를 풍성하게 하고, 자신과 구직 활동에 대한 배경을 더 자세히 설명할 수 있습니다.",
+      "personalInformationSubtitle": "이름과 거주지를 입력해 주세요.",
+      "provideValidEmail": "유효한 이메일 주소를 입력해 주세요.",
+      "remoteWorkPreference": "리모트로도 일할 수 있나요?",
+      "remoteWorkPreferences": {
+        "no": "저는 그것을 원하지 않음",
+        "sometimes": "가끔만 가능함",
+        "yes": "네, 아주 좋습니다"
+      },
+      "roleLevel": "경험 수준",
+      "roleLevelSubLabel": "능력에 맞는 레벨을 선택해 주세요.",
+      "roleLevels": {
+        "junior": "주니어 (1~3년)",
+        "mid": "미드레벨 (mid-level) (3~5년)",
+        "senior": "시니어 (5년 이상)",
+        "student": "학생 (0년)"
+      },
+      "selectRole": "어떤 포지션을 찾고 계신가요?",
+      "selectRoleSubLabel": "희망 직종을 선택해 주세요.",
+      "startApplication": "지원 프로세스 시작하기",
+      "steps": {
+        "step1": "개인 정보",
+        "step2": "채용 검색하기",
+        "step3": "이력서 업로드하기",
+        "step4": "법적 조건"
+      },
+      "termsAndConditions": "이용 약관",
+      "uploadCV": "이력서 업로드하기",
+      "uploadCVSubLabel": "이력서를 업로드해 능력와 경험을 잠재적 고용주에게 어필 해보세요.",
+      "languageRequired": "적어도 하나의 언어를 추가하세요.",
+      "languageSkills": "언어 능력",
+      "languageSkillsSubtitle": "말할 수 있는 언어, 쓸 수 있는 언어, 그리고 그 수준을 알려주세요.",
+      "lastName": "성",
+      "legalInformation": "법적 정보",
+      "legalInformationSubtitle": "스킬과 경험을 비즈니스 파트너의 채용과 매칭하기 위해 아래 조건에 동의해 주세요.",
+      "maxCharacters": "{{characters}} 최대 글자 수",
+      "legalTerms": "법적 조건",
+      "roleRequired": "최소 한 개 역할 추가 해주세요.",
+      "seeOrEditProfile": "프로필 보기 또는 수정",
+      "selectJobTitle": "직종 선택하기",
+      "selectLanguage": "언어 선택하기"
     },
     "backToDashboard": "대시보드 돌아가기"
   },
@@ -936,13 +987,7 @@
       "writtenBy": ""
     },
     "exchange": {
-      "centralized": {
-        "description": ""
-      },
       "description": "",
-      "peer-to-peer": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },
@@ -951,73 +996,26 @@
       "didYouKnow": "",
       "exploreAllTutorials": ""
     },
-    "merchant": {
-      "description": "사업을 운영하면서 비트코인을 쉽게 받아들이는 방법이 궁금하신가요? 저희의 다양한 솔루션을 탐색해 전문가가 되고, 주변 가게를 위한 머천트 솔루션을 간편하게 설정해 보세요. POS 솔루션은 오프라인 혹은 온라인 판매자의 니즈, 거래 규모, 그리고 업무 복잡성에 따라 달라집니다. 일반적으로는 기본 라이트닝 (LN) 지갑으로 시작하여 간단하고 효율적인 솔루션(예: 모바일 POS)으로 전환한 뒤, 마지막으로 더욱 고급스럽고 복잡하며 전문적인 솔루션을 위해 BTC Pay Server를 검토하는 방식을 권장합니다.",
-      "shortDescription": "",
-      "title": ""
-    },
     "mining": {
       "description": "",
       "shortDescription": "",
       "title": ""
     },
     "node": {
-      "bitcoin": {
-        "description": ""
-      },
       "description": "",
-      "lightning-network": {
-        "description": "",
-        "name": ""
-      },
-      "rgb": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
-    },
-    "others": {
-      "title": "",
-      "shortDescription": "",
-      "description": "",
-      "DIY": {
-        "description": ""
-      },
-      "OpenSource": {
-        "description": ""
-      },
-      "contribution": {
-        "description": ""
-      },
-      "general": {
-        "description": ""
-      }
     },
     "pageDescription": "",
     "pageSubtitle": "",
     "pageTitle": "",
     "privacy": {
-      "bitcoin": {
-        "description": ""
-      },
       "description": "",
-      "general": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },
     "wallet": {
       "description": "",
-      "desktop": {
-        "description": ""
-      },
-      "hardware": {
-        "description": "하드웨어 지갑은 보통 장기간 비트코인 저축을 저장하는 데 사용됩니다. 이들은 인터넷에 연결되지 않은 물리적 장치로, 흔히 \"콜드 월렛\"이라고 불립니다. 이러한 장치는 보안성이 매우 뛰어나지만, 소프트웨어는 오픈소스로 공개되더라도 하드웨어 비용은 약 50~300달러 정도입니다. 이 장치를 대략 500달러 상당의 장기 저축 비트코인을 저장할 목적으로 사용하는 것을 고려할 수 있습니다. 이러한 장치를 은행 계좌처럼, 큰 금액의 저축을 위해 가끔 사용하는 것으로 여겨질 수 있습니다."
-      },
-      "mobile": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },

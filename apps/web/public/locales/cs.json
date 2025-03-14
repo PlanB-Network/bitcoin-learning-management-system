@@ -606,12 +606,6 @@
     "exchange": {
       "description": "Směnárny jsou jednou ze vstupních a výstupních bran mezi vaší tradiční měnou (eura, dolary) a světem bitcoinu. Burzy mohou být regulované a vyhovující pravidlům KYC (Know Your Customer) nebo peer-to-peer a anonymní. Každá burza bude nabízet jiné funkce, strukturu poplatků, likviditu a zákaznickou podporu. Každý bitcoiner bude používat jinou na základě svých potřeb a přesvědčení.",
       "shortDescription": "Řešení pro nákup a prodej bitcoinů, KYC a non-KYC",
-      "centralized": {
-        "description": "Centralizované burzy jsou obvykle regulované subjekty, které fungují jako prostředníci mezi bankovním systémem a bitcoinovým ekosystémem. Umožňují nakupovat a prodávat velké množství bitcoinů a vybírat je do peněženky nebo na bankovní účet. Obvykle vyžadují KYC, a proto monitorují vaši aktivitu a hlásí ji institucím finančního dohledu, aby respektovaly místní zákony."
-      },
-      "peer-to-peer": {
-        "description": "Peer-to-peer burzy jsou tržiště, kde si jednotlivci mezi sebou směňují bitcoiny za jiné měny. Tyto burzy mohou být regulované i neregulované a obvykle o vás nepožadují mnoho informací (pokud vůbec nějaké). Jednoduše zprostředkovávají vztahy mezi uživateli. Jejich poplatky mohou být vyšší než u tradičních burz a jejich likvidita o něco nižší. Jedná se o preferovanou možnost pro bitcoinery, kteří se snaží vyhnout KYC."
-      },
       "title": "Směnárna"
     },
     "explorer": {
@@ -619,47 +613,15 @@
       "description": "Všechny tyto výukové programy byly napsány nadšenými a oddanými bitcoinery, kteří chtějí šířit bitcoinové vzdělání po celém světě. Nezapomeňte je lajkovat, recenzovat a přispět jim saty!",
       "exploreAllTutorials": ""
     },
-    "merchant": {
-      "shortDescription": "Řešení pro podniky akceptující Bitcoin",
-      "title": "Obchodník",
-      "description": "Zajímalo vás někdy, jak snadno přijímat bitcoiny v podnikání? Prozkoumejte naše různá řešení, abyste se stali odborníkem a snadno nastavili obchodní řešení pro obchody ve vašem okolí. Řešení pro prodejní místa se liší podle potřeb obchodníka (fyzického nebo online), jeho objemu a složitosti jeho operací. Obecně dobrým zástupcem je jednoduše začít se základní peněženkou LN, přejít na jednoduché, efektivní řešení (například mobilní PoS) a nakonec prozkoumat BTC Pay Server pro pokročilá, komplexní, profesionální řešení."
-    },
     "mining": {
       "description": "Těžební průmysl je složité téma plné králičích děr. Zde se vás pokusíme doprovodit na vaší cestě pomocí hardwaru a softwaru. Od implementace S9 do domácího topení až po pokus o výhru v loterii s těžařem.",
       "shortDescription": "Řešení pro těžbu bitcoinů",
       "title": "Těžba"
     },
     "node": {
-      "bitcoin": {
-        "description": "Uzel Bitcoin Core je základním kamenem vaší bitcoinové nezávislosti. Umožňuje vám spouštět bitcoin software a být součástí sítě. Budete ověřovat bloky a transakce, rozhodovat o tom, jaká pravidla chcete v síti uplatňovat, a nebudete používat zprostředkovatele pro své transakce. Existuje mnoho způsobů, jak spustit bitcoinový uzel, některé jsou uživatelsky přívětivější než jiné."
-      },
       "description": "Uzly jsou jako vaše osobní servery. V Bitcoinu je to software, který vám umožňuje provozovat síť, shromažďovat transakce, ověřovat pravidla a být skutečně nezávislý. V rámci našeho ekosystému existují různé uzly, od jádra Bitcoinu po implementace Lightning, RGB nebo jiná pokročilejší řešení ochrany soukromí.",
-      "lightning-network": {
-        "description": "Lightning uzel vám umožňuje zapojit se do sítě druhé vrstvy bitcoinu, s názvem Lightning. Budete moci otevírat kanály, spravovat jejich likviditu a stát se nezávislým na své peněžence Lightning.",
-        "name": "Lightning síť"
-      },
-      "rgb": {
-        "description": "RGB je škálovatelný a diskrétní systém chytrých smluv pro Bitcoin & lightning network. Je to programovatelná vrstva pro Bitcoin s konceptem soukromého a vzájemného vlastnictví, abstrakce a oddělení zájmů a reprezentující „post-blockchain“."
-      },
       "shortDescription": "Řešení pro provozování bitcoinového uzlu a připojení k síti",
       "title": "Uzel"
-    },
-    "others": {
-      "title": "Ostatní",
-      "shortDescription": "Prozkoumejte různé výukové programy související s bitcoinem",
-      "description": "Ponořte se do rozsáhlé sbírky výukových programů, které úzce souvisejí s étosem Bitcoinu. Od DIY po open-source návody, objevujte nové oblasti znalostí, abyste se stali ještě nezávislejšími.",
-      "DIY": {
-        "description": "Objevte naše DIY návody a naučte se, jak si sami vytvořit projekty založené na Bitcoinu, výpočetní technice a individuální nezávislostí!"
-      },
-      "OpenSource": {
-        "description": "Prozkoumejte naše výukové programy věnované používání nástrojů s otevřeným zdrojovým kódem!"
-      },
-      "contribution": {
-        "description": "Zjistěte, jak přispívat do sítě PlanB Network, a osvojte si open-source nástroje, které sami používáme, prostřednictvím našich podrobných návodů!"
-      },
-      "general": {
-        "description": "Prohlédněte si naše obecné výukové programy a prohlubte své znalosti v oblasti výpočetní techniky a dalších témat souvisejících s individuální nezávislostí!"
-      }
     },
     "pageDescription": "Bitcoin je širokým odvětvím, které se každým dnem rozrůstá. Abychom vám ho pomohli prozkoumat, shromáždili jsme a sestavili velké množství výukových materiálů, které popisují různá řešení ve všech oblastech souvisejících s Bitcoinem.",
     "pageSubtitle": "Pojďme demystifikovat Bitcoin tím, že budeme ukazovat rozmanitost a bohatství jeho ekosystému",
@@ -667,27 +629,12 @@
     "privacy": {
       "description": "Soukromí je základní právo. Ačkoli usilujeme o svět, kde je soukromí standardem, není to realita, ve které žijeme. Vysvětlíme vám ověřené postupy, poskytneme vám návody a nasměrujeme vás na nezávislejší cestu, pokud jde o vaše údaje.",
       "shortDescription": "Nástroje pro zálohování a zachování soukromí",
-      "title": "Soukromí",
-      "bitcoin": {
-        "description": "Bitcoin není primárně soukromý, je záměrně navržen jako pseudonymní a každá transakce je veřejná a navždy uložená. Abychom znovu získali určitou diskrétnost, musíme používat osvědčené uživatelské postupy a specifické nástroje integrované do našeho softwaru. Na cestě k soukromí vám pomůžeme od zamezení opakovaného používání adres přes CoinJoin, mísení „mincí“, až po připojení k vlastnímu uzlu."
-      },
-      "general": {
-        "description": "V době plošného dohledu je nezbytné získat zpět určitou úroveň soukromí v každodenním životě. Vzhledem k tomu, že každý uživatel bude mít určitou míru paranoie a technologických znalostí, je zcela normální používat určité nástroje a přizpůsobit je svým potřebám. Zde se budeme zabývat různými řešeními ochrany, jako jsou sítě VPN, Tor, operační systém Tails, PGP, šifrované zprávy a mnoho dalších."
-      }
+      "title": "Soukromí"
     },
     "wallet": {
       "description": "Bitcoinová peněženka je jako vaše klíčenka. Umožňuje vám utrácet a přijímat bitcoiny. Existuje mnoho různých typů peněženek, všechny s různými způsoby užití, funkcemi, cenou a uživatelskými zkušenostmi. Každý bitcoiner bude používat jiné zařízení na základě svých potřeb, úrovně náročnosti a zkušeností.",
-      "hardware": {
-        "description": "Hardwarové peněženky se obvykle používají k ukládání dlouhodobých úspor bitcoinu. Jedná se o fyzická zařízení, která nejsou připojena k internetu (často se jim říká „cold wallet\") a jsou obvykle vysoce bezpečné. I když jsou tato zařízení často open-source, pokud jde o jejich software, hardware stojí kolem 50 až 300 eur. Považujte tato zařízení za bankovní účet pro větší částky úspor, které byste použili jednou za čas."
-      },
       "shortDescription": "Bezpečnostní řešení a používání vašich bitcoinů",
-      "title": "Peněženka",
-      "desktop": {
-        "description": "Desktopové peněženky jsou obvykle určeny pro pokročilejší uživatele, protože kombinují použití hardwarových zařízení a softwaru desktopové peněženky. Je to jako mít k dispozici nové, vlastní a funkčně náročnější rozhraní pro používání hardwarového zařízení. Takové peněženky nabízejí možnosti více podpisů, funkce ochrany soukromí, mechanismy integrace dědictví a další."
-      },
-      "mobile": {
-        "description": "Mobilní peněženky se obvykle používají ke každodenním výdajům. Integrují síť Lightning Network pro okamžité transakce s nízkými poplatky. Obvykle jsou připojeny k internetu (často se jim říká „hot wallets“), a proto jsou méně bezpečné než hardwarové peněženky. Měly by se používat pouze k ukládání malých částek bitcoinů, považujte je za každodenní peněženku v kapse."
-      }
+      "title": "Peněženka"
     },
     "approvedByCreator": "",
     "backTutorials": ""

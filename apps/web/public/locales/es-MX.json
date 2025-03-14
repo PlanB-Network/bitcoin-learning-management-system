@@ -353,13 +353,7 @@
       "source": ""
     },
     "exchange": {
-      "centralized": {
-        "description": ""
-      },
       "description": "",
-      "peer-to-peer": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },
@@ -368,65 +362,18 @@
       "didYouKnow": "",
       "exploreAllTutorials": ""
     },
-    "merchant": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
-    },
     "node": {
-      "bitcoin": {
-        "description": ""
-      },
       "description": "",
-      "lightning-network": {
-        "name": "",
-        "description": ""
-      },
-      "rgb": {
-        "description": ""
-      },
       "title": "",
       "shortDescription": ""
     },
-    "others": {
-      "title": "",
-      "shortDescription": "",
-      "description": "",
-      "DIY": {
-        "description": ""
-      },
-      "OpenSource": {
-        "description": ""
-      },
-      "contribution": {
-        "description": ""
-      },
-      "general": {
-        "description": ""
-      }
-    },
     "privacy": {
-      "bitcoin": {
-        "description": ""
-      },
       "description": "",
-      "general": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },
     "wallet": {
       "description": "",
-      "desktop": {
-        "description": ""
-      },
-      "hardware": {
-        "description": ""
-      },
-      "mobile": {
-        "description": ""
-      },
       "shortDescription": "",
       "title": ""
     },

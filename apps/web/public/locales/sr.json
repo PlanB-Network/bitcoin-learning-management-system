@@ -1032,20 +1032,9 @@
   },
   "tutorials": {
     "exchange": {
-      "centralized": {
-        "description": "Centralizovane menjačnice su obično regulisani entiteti koje deluju kao posrednici između bankarskog sistema i bitkoin ekosistema. Omogućavaju Vam da kupujete i prodajete velike količine bitkoina i povlačite ga na Vaš novčanik ili bankovni račun. Obično zahtevaju KYC proveru, i stoga prate Vašu aktivnost, prijavljujući je finansijskim institucijama za nadzor u skladu sa lokalnim zakonima."
-      },
       "description": "Menjačnice su jedna od ulaznih i izlaznih vrata između vaše tradicionalne valute (evro, dolari) i sveta bitkoina. One mogu biti regulisane i u skladu sa KYC (Upoznajte svog klijenta) pravilima, ili peer-to-peer i samim tim anonimne. Svaka menjačnica će nuditi različite karakteristike, strukture naknada, likvidnost i podršku korisnicima. Svaki bitkoiner će koristiti drugačiju menjačnicu na osnovu svojih potreba i uverenja.",
       "title": "Menjačnica",
-      "peer-to-peer": {
-        "description": "Menjačnice koje omogućavaju direktnu razmenu između korisnika predstavljaju tržište na kojem pojedinci razmenjuju Bitcoin za druge valute među sobom. Ove menjačnice mogu biti regulisane ili ne i obično ne traže mnogo informacija (ili uopšte ne traže) o Vama. Oni jednostavno olakšavaju odnos između korisnika. Njihove provizije mogu biti veće od tradicionalnih menjačnica i njihova likvidnost je malo niža. To je preferirana opcija za bitcoinere koji pokušavaju da izbegnu KYC."
-      },
       "shortDescription": "Rešenja za prodaju-kupovinu Botcoina, KYC i ne-KYC"
-    },
-    "merchant": {
-      "description": "Da li ste se ikada pitali koliko je lako preduzećima da prihvate bitcoin? Istražite naša različita rešenja da biste postali stručnjak i lako postavili trgovinsko rešenje za prodavnice oko vas. Rešenje za prodajno mesto (POS terminal) varira na osnovu potreba trgovca (fizički ili online), njihovog obima i složenosti njihovih operacija. Generalno dobar pristup je jednostavno početi sa osnovnim LN novčanikom, preći na lako, efikasno rešenje (kao što je mobilno prodajno mesto POS), i na kraju istražiti BTC Pay Server za napredna, složena, profesionalna rešenja.",
-      "shortDescription": "Rešenja za preduzeća da prihvate Bitcoin",
-      "title": "Trgovac"
     },
     "approvedByCreator": "Odobreno od strane kreatora",
     "backTutorials": "Nazad na sve tutorijale",
@@ -1067,61 +1056,19 @@
       "shortDescription": "Rešenja za rudarenje Bitcoina",
       "title": "Rudarenje"
     },
-    "others": {
-      "description": "Zaronite u veliku kolekciju tutorijala koji su usko povezani sa Bitcoin etosom. Od \"uradi sam\" do tutorijala otvorenog koda, otkrijte nove oblasti znanja kako biste postali još suvereniji.",
-      "title": "Drugi",
-      "shortDescription": "Istražite raznovrsne tutorijale o usko povezanim bitkoin temama",
-      "DIY": {
-        "description": "Otkrijte naše \"uradi sam\" tutorijale kako biste naučili kako da sami kreirate stvari vezane za Bitcoin, računarstvo i individualni suverenitet!"
-      },
-      "OpenSource": {
-        "description": "Istražite naše tutorijale posvećene upotrebi alata otvorenog koda!"
-      },
-      "contribution": {
-        "description": "Naučite kako da doprinesete Plan B mreži i ovladajte alatima otvorenog koda koje koristimo interno kroz naše detaljne tutorijale!"
-      },
-      "general": {
-        "description": "Pregledajte naše opšte tutorijale kako biste obogatili svoje znanje iz računarstva i drugih predmeta povezanih sa individualnim suverenitetom!"
-      }
-    },
     "pageDescription": "Bitcoin je obimna industrija, koja svakodnevno postaje sve obimnija. Da bismo Vam pomogli da je istražite, sakupili smo i pripremili veliki broj tutorijala koji opisuju razna rešenja u svim domenima povezanim sa Bitcoinom.",
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin nije podrazumevano privatan, namerno je dizajniran da bude pseudoanoniman, a svaka transakcija je javna i čuva se zauvek. Da bismo povratili neku poverljivost, moramo koristiti najbolje prakse korisnika i specifične alate integrisane u naš softver. Od izbegavanja ponovne upotrebe adrese do CoinJoin-a, preko mešanja Vaših novčića i povezivanja sa Vašim sopstvenim čvorom, pomoći ćemo Vam na putu ka privatnosti."
-      },
-      "general": {
-        "description": "U eri masovnog nadzora, povratak određenog nivoa privatnosti u svakodnevnom životu je esencijalan. S obzirom da će svaki korisnik imati određeni stepen paranoje i tehnološkog znanja, sasvim je normalno koristiti određene alate i prilagoditi ih svojim potrebama. Ovde ćemo istražiti različita rešenja za zaštitu kao što su VPN, Tor, Tails OS, PGP, šifrovane poruke, i mnogo više."
-      },
       "description": "Privatnost je osnovno pravo. Iako težimo svetu u kojem je privatnost podrazumevana, to nije realnost u kojoj živimo. Pokušaćemo da Vam objasnimo najbolje prakse, pomognemo vam kroz tutorijale i usmerimo Vas na suvereniji put u vezi sa Vašim podacima.",
       "shortDescription": "Alati za rezervnu kopiju i održavanje privatnosti",
       "title": "Privatnost"
     },
     "wallet": {
       "description": "Bitcoin novčanik je kao Vaš privezak za ključeve. Omogućava Vam da trošite i prihvatate bitcoin. Postoji mnogo različitih vrsta novčanika, sve sa različitim upotrebama, funkcijama, troškovima i korisničkim iskustvima. Svaki korisnik bitcoina koristiće različiti uređaj na osnovu svojih potreba, nivoa zahtevnosti i iskustva.",
-      "hardware": {
-        "description": "Hardverski novčanici se obično koriste za čuvanje Vaše dugoročne ušteđevine u bitkoinima. To su fizički uređaji koji nisu povezani sa internetom (često se nazivaju \"hladni novčanici\") i obično su vrlo sigurni. Iako je softver ovih uređaja često otvorenog koda, hardver košta oko 50 do 300 evra. Smatrajte ove uređaje kao bankovni račun za veće količine ušteđevine koje biste koristili povremeno."
-      },
-      "desktop": {
-        "description": "Desktop novčanici su obično namenjeni naprednijim korisnicima jer kombinuju upotrebu hardverskih uređaja i softvera za desktop novčanik. To je kao da imate novi, prilagođeniji i funkcionalniji interfejs za upotrebu vašeg hardverskog uređaja. Takvi novčanici nude opcije sa više potpisa, funkcije privatnosti, mehanizme za integraciju nasleđivanja i još mnogo toga."
-      },
-      "mobile": {
-        "description": "Mobilni novčanici se obično koriste za svakodnevne troškove. Oni integrišu Lightning Network za transakcije sa niskim provizijama, koje se odmah izvršavaju. Obično su povezani sa internetom (često se nazivaju \"vrući novčanici\") i stoga su manje sigurni od hardverskih novčanika. Trebalo bi da se koriste samo za čuvanje malih količina bitkoina, smatrajte ih kao svoj svakodnevni novčanik u džepu."
-      },
       "shortDescription": "Rešenja za bezbednost i upotreba vaših bitkoina",
       "title": "Novčanik"
     },
     "node": {
-      "rgb": {
-        "description": "RGB je skalabilni i poverljivi sistem pametnih ugovora za Bitcoin i Lightning mrežu. To je sloj za programabilnost na Bitcoinu, sa konceptima privatnog i uzajamnog vlasništva, apstrakcije i razdvajanja odgovornosti i predstavlja \"post-blokchain\"."
-      },
-      "bitcoin": {
-        "description": "Bitcoin Core čvor je početna tačka Vašeg Bitcoin suvereniteta. Omogućava Vam da pokrenete Bitcoin softver i budete deo mreže. Validiraćete blokove i transakcije, odlučiti koje pravila želite da primenite unutar mreže i prestati da koristite posrednike za propagiranje vaših transakcija. Postoji mnogo načina da pokrenete Bitcoin čvor, neki su korisnički jednostavniji od drugih."
-      },
       "description": "Čvorovi su poput Vaših ličnih servera. U Bitcoinu, to je softver koji vam omogućava da pokrećete mrežu, prikupljate transakcije, proveravate pravila i budete zaista suvereni. Unutar našeg ekosistema, postoje različiti čvorovi, od Bitcoin Core, do Lightning implementacija, RGB, ili drugih naprednijih rešenja za privatnost.",
-      "lightning-network": {
-        "description": "Lightning čvor Vam omogućava da učestvujete u Bitcoin protokolu sloja 2 pod nazivom Lightning. Bićete u mogućnosti da otvarate kanale, upravljate njihovom likvidnošću, učestvujete u mreži i postanete samostalni (nekastodijalni) u vezi sa Vašim Lightning novčanikom.",
-        "name": "\"Lightning\" Mreža"
-      },
       "shortDescription": "Rešenja za pokretanje bitkoin čvora i pridruživanje mreži",
       "title": "Čvor"
     },
