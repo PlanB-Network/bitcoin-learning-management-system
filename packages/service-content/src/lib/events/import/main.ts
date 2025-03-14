@@ -19,7 +19,7 @@ interface EventMain {
   remaining_seats: number;
   book_online: boolean;
   book_in_person: boolean;
-  address_line_1: string;
+  address_city_country: string;
   address_line_2: string;
   address_line_3: string;
   professor: string;
@@ -90,7 +90,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedEvent.available_seats},
           ${parsedEvent.book_online},
           ${parsedEvent.book_in_person},
-          ${parsedEvent.address_line_1},
+          ${parsedEvent.address_city_country},
           ${parsedEvent.address_line_2},
           ${parsedEvent.address_line_3},
           ${parsedEvent.professor},
