@@ -35,7 +35,8 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
             <span className="max-w-48 mb-8 w-full text-center text-base lg:title-large-sb-24px text-white lg:uppercase z-10 absolute">
               {professor.name}
             </span>
-            <img
+            <Image
+              breakpoints={{ default: 64, lg: 128 }}
               src={resourceImgUrl(professor, 'profile.webp')}
               alt={professor.name}
               className="size-16 lg:size-32 rounded-full z-10 mt-12 lg:mt-20 object-cover [overflow-clip-margin:_unset]"

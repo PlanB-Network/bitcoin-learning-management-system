@@ -9,6 +9,7 @@ import { formatNameForURL } from '#src/utils/string.js';
 import DonateLightning from '../assets/icons/tips-icon.svg';
 import { useDisclosure } from '../hooks/index.ts';
 
+import { Image } from './image.tsx';
 import { SocialLinks, TopicTags } from './professor-card.tsx';
 import { TipModal } from './tip-modal.tsx';
 
@@ -46,7 +47,10 @@ export const AuthorCardFull = ({
                 {professor?.name}
               </span>
 
-              <img
+              <Image
+                breakpoints={{ default: 128 }}
+                width={128}
+                height={128}
                 src={resourceImgUrl(professor, 'profile.webp')}
                 alt={professor?.name}
                 className="size-32 rounded-full z-10  object-cover [overflow-clip-margin:_unset]"
