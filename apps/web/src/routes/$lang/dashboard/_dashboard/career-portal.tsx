@@ -419,12 +419,16 @@ function CareerPortal() {
               {existingCareerProfile ? (
                 <>
                   <p className="bg-newGray-6 text-center text-lg font-medium text-newBlack-1 px-4 py-2 md:px-8 md:py-4 rounded-[16px] border-b border-b-newGray-4 uppercase w-fit mx-auto mb-2">
-                    {t('dashboard.careerPortal.applicationStatus')}{' '}
-                    <span className="text-darkOrange-5">
-                      {validatedSteps === 4
-                        ? t('words.complete')
-                        : t('words.incomplete')}
-                    </span>
+                    <Trans
+                      i18nKey={
+                        validatedSteps === 4
+                          ? 'dashboard.careerPortal.applicationComplete'
+                          : 'dashboard.careerPortal.applicationIncomplete'
+                      }
+                      components={{
+                        highlight: <span className="text-darkOrange-5" />,
+                      }}
+                    />
                   </p>
                   <p className="w-full text-center text-newBlack-5 body-16px md:label-medium-16px mb-[25px] md:mb-[60px] whitespace-pre-line">
                     {validatedSteps === 4
