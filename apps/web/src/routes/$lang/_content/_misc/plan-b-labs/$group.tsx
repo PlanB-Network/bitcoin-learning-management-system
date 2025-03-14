@@ -194,7 +194,7 @@ function PlanBLabs() {
                     ) : null}
                   </div>
                 </div>
-                <div className="w-[350px] self-center flex flex-row lg:flex-col gap-2 lg:gap-5">
+                <div className="lg:w-[350px] self-center flex flex-row lg:flex-col gap-2 lg:gap-5">
                   {lab?.lab?.telegramUrl ? (
                     <a
                       href={lab?.lab?.telegramUrl}
