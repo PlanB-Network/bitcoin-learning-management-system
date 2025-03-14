@@ -11,9 +11,9 @@ import { IoReload } from 'react-icons/io5';
 import type { JoinedBCertResults, Ticket } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
-import DummyBCert from '#src/assets/about/dummy-bcert.webp';
+import DummyBCert from '#src/assets/about/dummy-bcert.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
-import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
+import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { AppContext } from '#src/providers/context.js';

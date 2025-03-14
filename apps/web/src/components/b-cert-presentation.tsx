@@ -6,7 +6,7 @@ import { Button, cn } from '@blms/ui';
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import { useTranslation } from 'react-i18next';
-import BCertImage from '../assets/about/bcert-presentation.webp';
+import BCertImage from '../assets/about/bcert-presentation.webp?no-inline';
 
 interface BCertPresentationProps {
   marginClasses?: string;

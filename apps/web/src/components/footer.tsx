@@ -13,7 +13,7 @@ import { cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.ts';
 
-import OrangePill from '../assets/icons/footer_pill.webp';
+import OrangePill from '../assets/icons/footer_pill.webp?no-inline';
 import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 import PlanBLogoWhite from '../assets/logo/planb_logo_horizontal_white_orangepill_gradient.svg';
 

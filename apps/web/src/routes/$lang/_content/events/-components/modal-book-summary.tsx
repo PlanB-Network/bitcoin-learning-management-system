@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedEvent } from '@blms/types';
 import { cn } from '@blms/ui';
 
-import leftBackgroundImg from '#src/assets/courses/left-background.webp';
+import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';

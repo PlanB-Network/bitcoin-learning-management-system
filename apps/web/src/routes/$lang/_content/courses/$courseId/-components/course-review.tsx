@@ -24,7 +24,7 @@ import {
   customToast,
 } from '@blms/ui';
 
-import LockGif from '#src/assets/icons/lock.gif';
+import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';

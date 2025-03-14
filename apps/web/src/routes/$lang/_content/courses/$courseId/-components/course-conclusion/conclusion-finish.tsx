@@ -3,8 +3,8 @@ import { t } from 'i18next';
 import React, { useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp';
-import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp';
+import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
+import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
 
 import type { CourseExamResults, JoinedCourseWithAll } from '@blms/types';
 import { DividerSimple } from '@blms/ui';

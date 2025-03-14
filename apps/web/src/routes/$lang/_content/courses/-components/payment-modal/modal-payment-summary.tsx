@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedCourseWithAll } from '@blms/types';
 import { cn } from '@blms/ui';
 
-import leftBackgroundImg from '#src/assets/courses/left-background.webp';
+import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { getDateString } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';

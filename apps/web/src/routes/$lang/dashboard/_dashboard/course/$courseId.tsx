@@ -23,11 +23,11 @@ import {
   cn,
 } from '@blms/ui';
 
-import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp';
-import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp';
+import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
+import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
-import LockGif from '#src/assets/icons/lock.gif';
-import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif';
+import LockGif from '#src/assets/icons/lock.gif?no-inline';
+import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';

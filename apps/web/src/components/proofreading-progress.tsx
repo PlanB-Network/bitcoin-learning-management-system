@@ -16,14 +16,14 @@ import {
 } from '@blms/ui';
 
 import { useContext } from 'react';
-import largeCircleProgress0 from '#src/assets/proofreading/large_circle_progress_0.webp';
-import largeCircleProgress1 from '#src/assets/proofreading/large_circle_progress_1.webp';
-import largeCircleProgress2 from '#src/assets/proofreading/large_circle_progress_2.webp';
-import largeCircleProgress3 from '#src/assets/proofreading/large_circle_progress_3.webp';
-import smallCircleProgress0 from '#src/assets/proofreading/small_circle_progress_0.webp';
-import smallCircleProgress1 from '#src/assets/proofreading/small_circle_progress_1.webp';
-import smallCircleProgress2 from '#src/assets/proofreading/small_circle_progress_2.webp';
-import smallCircleProgress3 from '#src/assets/proofreading/small_circle_progress_3.webp';
+import largeCircleProgress0 from '#src/assets/proofreading/large_circle_progress_0.webp?no-inline';
+import largeCircleProgress1 from '#src/assets/proofreading/large_circle_progress_1.webp?no-inline';
+import largeCircleProgress2 from '#src/assets/proofreading/large_circle_progress_2.webp?no-inline';
+import largeCircleProgress3 from '#src/assets/proofreading/large_circle_progress_3.webp?no-inline';
+import smallCircleProgress0 from '#src/assets/proofreading/small_circle_progress_0.webp?no-inline';
+import smallCircleProgress1 from '#src/assets/proofreading/small_circle_progress_1.webp?no-inline';
+import smallCircleProgress2 from '#src/assets/proofreading/small_circle_progress_2.webp?no-inline';
+import smallCircleProgress3 from '#src/assets/proofreading/small_circle_progress_3.webp?no-inline';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 
 const SmallProgressImage = ({ progress }: { progress: number }) => {

@@ -14,7 +14,7 @@ import {
   cn,
 } from '@blms/ui';
 
-import bCertsImage from '#src/assets/about/bcert-image.webp';
+import bCertsImage from '#src/assets/about/bcert-image.webp?no-inline';
 import { PageLayout } from '#src/components/page-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
