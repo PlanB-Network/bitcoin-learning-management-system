@@ -44,10 +44,9 @@ export const getProfessorQuery = (id: string, language?: string) => {
 
     -- Lateral join for lectures
     LEFT JOIN LATERAL (
-      SELECT COUNT(clp.chapter_id) AS lectures_count
-      FROM content.course_chapters_localized_professors clp
-      WHERE clp.contributor_id = p.contributor_id
-       AND clp.language = LOWER(${language})
+      SELECT COUNT(ev) AS lectures_count
+      FROM content.events ev
+      WHERE ev.professor = p.contributor_id
     ) lca ON TRUE
 
 
