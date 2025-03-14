@@ -675,14 +675,8 @@
     },
     "approvedByCreator": "Wanda ya hada shi ya karba",
     "exchange": {
-      "centralized": {
-        "description": "Cibiyoyin musayar tsakiya yawanci kungiyoyi ne da ake tsara su waɗanda ke aiki a matsayin masu shiga tsakanin tsarin banki da tsarin Bitcoin. Suna ba ka damar siye da siyar da adadi mai yawa na Bitcoin kuma ka cire shi zuwa walat ɗinka ko asusun banki. Su kan buƙaci KYC, wanda ke nufin suna lura da ayyukanka, suna ba da rahoto ga hukumomin bincike na kuɗi domin bin doka na cikin gida."
-      },
       "description": "Cibiyoyin musayar kuɗi su ne ɗaya daga cikin ƙofofin shiga da fita tsakanin kuɗin gargajiya (euro, daloli) da duniya ta Bitcoin. Cibiyoyin musayar kuɗi na iya zama waɗanda aka tsara su da bin KYC (Sanin Abokin Ciniki), ko kuma na musayar juna da ba a san wanda ke amfani da su ba. Kowanne cibiyar musayar kuɗi za ta bayar da siffofi daban-daban, tsarin kuɗi, ruwa, da tallafin abokin ciniki. Kowanne mai amfani da Bitcoin zai zaɓi daban-daban bisa ga bukatunsa da ra'ayinsa.",
       "title": "Musaya",
-      "peer-to-peer": {
-        "description": "Kasuwannin musayar juna suna kasancewa inda mutane ke musayar bitcoin don sauran kuɗaɗe a tsakaninsu. Wadannan kasuwannin na iya zama masu tsari ko kuma a'a, kuma yawanci ba sa neman bayanai da yawa (idan akwai) game da ku. Suna sauƙaƙe haɗin gwiwar tsakanin masu amfani. Kudin su na iya kasancewa mafi girma fiye da kasuwannin gargajiya, kuma ruwansu kaɗan ne. Wannan yana zama zaɓin da aka fi so ga masu amfani da bitcoin da ke ƙoƙarin guje wa KYC."
-      },
       "shortDescription": "Hanyoyin saye-da-sayar da Bitcoin, KYC da ba KYC"
     },
     "mining": {
@@ -695,42 +689,10 @@
       "didYouKnow": "Shin ko kun san ?",
       "exploreAllTutorials": "Bincika dukkan koyarwa"
     },
-    "merchant": {
-      "shortDescription": "Hanyoyi don kasuwanci su karɓi Bitcoin",
-      "title": "Mai sayarwa",
-      "description": "Shin kuna tunanin yadda za ku sauƙaƙe karɓar bitcoin don kasuwanci? Bincika hanyoyinmu daban-daban don zama kwararre da samun sauƙin kafa hanyar karɓa ga shagunan da ke kewaye da ku. Hanyar Karɓar Kudi tana bambanta bisa ga bukatun mai sayarwa (na zahiri ko na yanar gizo), yawan su, da wahalar ayyukansu. Kyakkyawan misali shine farawa da dan karamin asusun LN, daga nan ku koma zuwa hanyar da ta dace da sauƙi (kamar PoS na wayar hannu), sannan ku bincika BTC Pay Server don hanyoyin ci gaba, masu dan tsauri, da hanyoyi na ƙwararru."
-    },
     "node": {
-      "bitcoin": {
-        "description": "Node na Bitcoin Core shine tushen iko na zamantakewar Bitcoin dinku. Yana ba ku damar gudanar da software na Bitcoin kuma ku zama ɓangare na hanyar sadarwa. Za ku tabbatar da ƙananan ginshiƙai da mu'amaloli, ku yanke shawarar waɗanne dokoki kuke son amfani da su a cikin hanyar sadarwa, kuma ku dakatar da masu shiga tsakani don yada mu'amalolinku. Akwai hanyoyi da yawa don gudanar da node na Bitcoin, wasu suna da sauƙin amfani fiye da wasu."
-      },
       "description": "Nodes suna kama da sabobin ku na kanku. A cikin Bitcoin, shine software da ke ba ku damar gudanar da hanyar sadarwa, tara mu'amaloli, tabbatar da dokoki, da zama ainihin mai iko. A cikin tsarin mu, akwai nodes daban-daban, daga Bitcoin Core, zuwa aiwatar da Lightning, RGB, ko wasu hanyoyin kariya na ci musamman.",
-      "lightning-network": {
-        "description": "Node na Lightning yana ba ku damar shiga cikin tsarin Bitcoin layer 2 da ake kira Lightning. Za ku iya bude tashoshi, sarrafa ruwa, shiga cikin zane, da zama marar tsaro game da walat ɗin ku na Lightning.",
-        "name": "Hanyar Lightning"
-      },
       "shortDescription": "Hanyoyi don gudanar da node na Bitcoin da shiga cikin hanyar sadarwa",
-      "title": "Node",
-      "rgb": {
-        "description": "RGB tsarin smart contracts ne mai iya girma da sirri don Bitcoin da hanyar Lightning. Wannan shine matakin shirye-shiryen Bitcoin, tare da ra'ayoyin mallaka na sirri da na juna, rarrabewa da ware abubuwa, kuma yana wakiltar \"bayan blockchain\"."
-      }
-    },
-    "others": {
-      "shortDescription": "Bincika koyarwa daban-daban kan batutuwa masu alaƙa da Bitcoin",
-      "description": "Tsunduma cikin babban tarin koyarwar da ke da alaƙa da tunanin Bitcoin. Daga DIY zuwa koyarwar tushen bude, gano sabbin fannonin ilimi don zama mai iko fiye da yadda kuke.",
-      "DIY": {
-        "description": "Gano koyarwarmu ta DIY don koyon yadda za ku ƙirƙiri abubuwa da suka shafi Bitcoin, kwamfuta, da ikon kai da kanku!"
-      },
-      "OpenSource": {
-        "description": "Bincika koyarwarmu da aka sadaukar don amfani da kayan aikin tushen bude!"
-      },
-      "contribution": {
-        "description": "Koyi yadda za ku ba da gudummawa ga PlanB Network da kuma mallakar kayan aikin tushen bude da muke amfani da su a cikin gida ta hanyar koyarwarmu masu cikakken bayani!"
-      },
-      "general": {
-        "description": "Duba koyarwarmu na gabaɗaya don ƙara ilimin ku a fannin kwamfuta da sauran batutuwa da suka shafi ikon kai!"
-      },
-      "title": "Sauran"
+      "title": "Node"
     },
     "pageDescription": "Bitcoin masana'antu ce mai faɗi, wacce ke ƙara faɗi kowace rana. Don taimaka muku bincike a kanta, mun tattara da tsara babban adadin koyarwar da ke bayyana hanyoyi daban-daban a duk fannonin da suka shafi Bitcoin.",
     "pageSubtitle": "Buɗe sirrin Bitcoin ta hanyar bincika tsarinsa mai faɗi",
@@ -738,27 +700,12 @@
     "privacy": {
       "description": "Sirri hakki ne na asali. Duk da cewa muna fatan samun duniya inda sirri shine na asali, ba haka bane ainihin gaskiyar da muke rayuwa a ciki. Za mu yi ƙoƙarin bayyana muku kyawawan hanyoyin amfani, taimaka muku da koyarwa, da kuma sa ku kan hanya mai iko dangane da bayanan ku.",
       "shortDescription": "Kayan aikin ajiyar bayanai da kula da sirri",
-      "title": "Sirri",
-      "bitcoin": {
-        "description": "Bitcoin ba a gina shi don zama mallakin wasu tsiraru ba, an tsara shi da niyya don zama na pseudonymous (wanda ba a sani ba), kuma kowace mu'amala tana bayyane a fili kuma tana adane har abada. Don dawo da wasu sirrin, dole ne mu yi amfani da kyawawan hanyoyin amfani da kayan aiki na musamman da aka haɗa cikin software ɗinmu. Daga kauce wa sake amfani da adireshi zuwa CoinJoin, ta hanyar haɗa kuɗin ku da haɗawa da node ɗin ku, za mu taimaka muku a cikin tafiyarku zuwa sirri."
-      },
-      "general": {
-        "description": "A zamanin sa ido na taron jama'a, dawo da wani matakin sirri a rayuwarku ta yau da kullum yana da matuƙar muhimmanci. Tunda kowanne mai amfani zai kasance da wani matakin fargaba da ilimin fasaha, yana da kyau sosai a yi amfani da wasu kayan aiki da kuma daidaita su da bukatunku. A nan, za mu bincika hanyoyi daban-daban na kariya kamar VPNs, Tor, Tails OS, PGP, rufaffun saƙonni, da sauransu."
-      }
+      "title": "Sirri"
     },
     "wallet": {
       "description": "Walat na Bitcoin kamar makullin ku ne. Yana ba ku damar kashewa da karɓar bitcoin. Akwai nau'ikan walat da yawa, kowanne na da banbancin amfani, ayyuka, farashi, da ƙwarewar mai amfani. Kowanne mai amfani da Bitcoin zai yi amfani da na'ura daban bisa ga bukatunsu, matakin gaggawa, da ƙwarewa.",
-      "mobile": {
-        "description": "Walatin wayar hannu yawanci ana amfani da su don kashe kuɗi na yau da kullum. Suna haɗewa da Hanyar Lightning don mu'amaloli da ke da ƙananan kuɗi da sauri. Yawanci suna haɗe da intanet (yawanci ana kiran su \"walat masu zafi\") kuma saboda haka suna da ƙarancin tsaro fiye da walatin kayan hannu. Ya kamata a yi amfani da su don adana ƙananan adadin bitcoin, ku yi la'akari da su a matsayin walat ɗin ku na yau da kullum a aljihunku."
-      },
       "shortDescription": "Hanyoyin tsaro da amfani da bitcoins ɗinku",
-      "title": "Walat",
-      "desktop": {
-        "description": "Walatin tebur yawanci suna kasancewa ga masu amfani da suka fi ƙwarewa, yayin da suke haɗa amfani da na'urorin kayan aiki da software na walat na tebur. Kamar samun sabuwar fuska mai al'ada da ke da ayyuka masu yawa don na'urar ku ta kayan aiki. Irin waɗannan walat suna ba da zaɓuɓɓukan sa hannu da yawa, siffofin sirri, hanyoyin haɗawa na gado, da sauransu."
-      },
-      "hardware": {
-        "description": "Walatin hannu yawanci ana amfani da su don ajiye kuɗin bitcoin na dogon lokaci. Na'urori ne na zahiri da ba su haɗe da intanet (yawanci ana kiran su \"walat masu sanyi\") kuma yawanci suna da tsaro sosai. Kodayake waɗannan na'urorin yawanci suna da tushen bude game da software ɗin su, farashin kayan aikin yana tsakanin euro 50 zuwa 300. Yi la’akari da waɗannan na’urorin a matsayin asusun banki don manyan adadin ajiyar da za ku yi amfani da su lokaci-lokaci."
-      }
+      "title": "Walat"
     }
   },
   "underConstruction": {

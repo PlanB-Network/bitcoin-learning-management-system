@@ -977,13 +977,7 @@
       "tutorialName": "Nome del tutorial"
     },
     "exchange": {
-      "centralized": {
-        "description": "Gli exchange centralizzati sono solitamente entità regolamentate che agiscono come intermediari tra il sistema bancario e l'ecosistema di bitcoin. Ti permettono di acquistare e vendere grandi quantità di bitcoin e ritirarli nel tuo wallet o conto bancario. Di solito richiedono KYC e, pertanto, monitorano la tua attività, segnalandola alle istituzioni di sorveglianza finanziaria per rispettare le leggi locali."
-      },
       "description": "I mercati sono una delle porte di entrata ed uscita tra la tua valuta tradizionale (euro, dollari) e il mondo bitcoin. I mercati possono essere regolati e KYC (Conoscere il Tuo Cliente), o peer-to-peer e anonimi. Ciasucno offrirà diverse funzionalità, commissioni, liquidità e supporto clienti. Ogni bitcoiner ne utilizzerà uno diverso in base alle sue esigenze e convinzioni.",
-      "peer-to-peer": {
-        "description": "I mercati peer-to-peer sono mercati dove gli individui scambiano tra di loro bitcoin per altre valute. Questi mercati potrebbero essere regolamentati o meno e di solito non chiedono molte informazioni (se ne chiedono) su di te. Semplicemente facilitano le interazioni tra gli utenti. Le loro commissioni potrebbero essere più alte rispetto agli scambi tradizionali e la loro liquidità leggermente inferiore. È l'opzione preferita per i bitcoiners che cercano di evitare il KYC."
-      },
       "shortDescription": "Soluzioni di compravendita Bitcoin, KYC e non-KYC",
       "title": "Exchange"
     },
@@ -992,28 +986,13 @@
       "didYouKnow": "Lo sapevi?",
       "exploreAllTutorials": "Esplora tutti i tutorial"
     },
-    "merchant": {
-      "description": "Ti sei mai chiesto come accettare facilmente bitcoin per un'attività? Esplora le nostre diverse soluzioni per diventare un esperto e configurare facilmente una soluzione commerciale per i negozi intorno a te. La soluzione del Punto Vendita (PoS) varia in base alle esigenze del commerciante (fisico o online), al loro volume e alla complessità delle loro operazioni. Una buona indicazione generale è semplicemente iniziare con un wallet LN di base, passare a una soluzione facile ed efficiente (come il PoS mobile) e infine esplorare BTC Pay Server per soluzioni avanzate, complesse e professionali.",
-      "shortDescription": "Soluzioni per le aziende che vogliono accettare Bitcoin",
-      "title": "Commercio"
-    },
     "mining": {
       "description": "L'industria del mining è un argomento complesso pieno di approfondimenti da scoprire. Qui, cercheremo di accompagnarti nel tuo viaggio parlando di hardware e software. Dal modificare un S9 per trasformarlo in un riscaldatore domestico, al tentativo di vincere alla lotteria con un nerd miner.",
       "shortDescription": "Soluzioni di mining Bitcoin",
       "title": "Mining"
     },
     "node": {
-      "bitcoin": {
-        "description": "Un nodo Bitcoin Core è il punto di partenza per la sovranità in Bitcoin. Ti permette di eseguire il software Bitcoin Core e di far parte della rete. Validerai blocchi e transazioni, deciderai quali regole vuoi applicare all'interno della rete e smetterai di usare intermediari per propagare le tue transazioni. Ci sono molti modi per utilizzare un nodo Bitcoin, alcuni più user-friendly di altri."
-      },
       "description": "I nodi sono come i tuoi server personali. In Bitcoin, è il software che consente di partecipare alla rete, raccogliere transazioni, verificarne le regole, ed essere veramente sovrani. All'interno del nostro ecosistema, esistono vari nodi, da Bitcoin Core, alle implementazioni Lightning, RGB, o altre soluzioni più avanzate per la privacy.",
-      "lightning-network": {
-        "description": "Un nodo Lightning ti permette di prendere parte al protocollo di secondo livello di Bitcoin chiamato Lightning. Sarai in grado di aprire canali, gestire la loro liquidità, partecipare al grafico, gestendo in maniera non custodial il wallet Lightning.",
-        "name": "Lightning Network"
-      },
-      "rgb": {
-        "description": "RGB è un sistema di smart contract scalabile e riservato per Bitcoin e Lightning. È un layer programmabile per Bitcoin, con concetti di proprietà privata e reciproca, astrazione e separazione delle preoccupazioni e rappresenta \"post-blockchain\"."
-      },
       "shortDescription": "Soluzioni per gestire un nodo bitcoin e unirsi alla rete",
       "title": "Nodi"
     },
@@ -1021,46 +1000,14 @@
     "pageSubtitle": "Svela i misteri di Bitcoin esplorando il suo vasto ecosistema",
     "pageTitle": "Tutorial",
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin non è privato per impostazione predefinita, è stato progettato intenzionalmente per essere pseudonimo; ogni transazione è pubblica e viene conservata per sempre. Per recuperare una certa riservatezza, dobbiamo seguire i migliori approcci, utilizzando gli strumenti specifici integrati nel nostro software. Dall'evitare il riutilizzo degli indirizzi, al CoinJoin, passando per i mix fino al collegamento al tuo nodo, ti aiuteremo nel tuo percorso verso la privacy."
-      },
       "description": "La privacy è un diritto fondamentale. Aspiriamo ad un mondo in cui la privacy è lo standard, ma non è la realtà in cui viviamo. Cercheremo di spiegarti le migliori pratiche, di aiutarti con i tutorial e di indirizzarti verso un percorso più sovrano per quanto riguarda i tuoi dati.",
-      "general": {
-        "description": "Nell'era della sorveglianza di massa, riacquistare un certo livello di privacy nella vita quotidiana è essenziale. Dato che ogni utente avrà un certo grado di paranoia e conoscenza tecnologica, è perfettamente normale utilizzare determinati strumenti ed adattarli alle proprie esigenze. Qui, esploreremo diverse soluzioni di protezione come VPN, Tor, Tails OS, PGP, messaggi criptati e molto altro."
-      },
       "shortDescription": "Strumenti per il backup e il mantenimento della privacy",
       "title": "Privacy"
     },
     "wallet": {
       "description": "Un wallet Bitcoin è come il tuo portachiavi. Ti permette di spendere e ricevere bitcoin. Ci sono un sacco di diversi tipi di wallet, tutti con diversi casi di utilizzo, funzioni, costi ed esperienze utente. Ogni bitcoiner userà un dispositivo diverso in base alle proprie necessità, livello di esigenza, ed esperienza.",
-      "desktop": {
-        "description": "I wallet desktop sono di solito per utenti più avanzati in quanto combinano l'utilizzo di dispositivi hardware con il software del wallet su desktop. È come avere una nuova interfaccia più personalizzata e ricca in termini di funzionalità per il tuo dispositivo hardware da utilizzare. Tali wallet offrono opzioni di firma multipla, funzionalità di privacy, meccanismi di integrazione di eredità e altro ancora."
-      },
-      "hardware": {
-        "description": "Gli hardware wallet vengono solitamente utilizzati per conservare i tuoi risparmi in bitcoin a lungo termine. Sono dispositivi fisici che non sono connessi a internet (spesso chiamati \"cold wallet\") e sono solitamente molto sicuri. Anche se questi dispositivi sono spesso open source per quanto riguarda il loro software, l'hardware ha un costo che varia da 50 a 300 euro. Considera questi dispositivi come un conto bancario per importi di risparmio più elevati che useresti di tanto in tanto."
-      },
-      "mobile": {
-        "description": "I wallet su mobile vengono solitamente utilizzati per le spese quotidiane. Integrano Lightning Network per transazioni istantanee ed a basso costo. Sono di solito connessi a internet (spesso chiamati \"Hot wallet\") e quindi sono meno sicuri rispetto a i wallet hardware. Dovrebbero essere utilizzati solo per conservare piccole quantità di bitcoin, considerali come il tuo portafoglio quotidiano che tieni in tasca."
-      },
       "shortDescription": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
       "title": "Wallet"
-    },
-    "others": {
-      "shortDescription": "Esplora diversi tutorial sugli argomenti strettamente correlati a Bitcoin",
-      "title": "Altri",
-      "description": "Immergiti in una vasta raccolta di tutorial strettamente legati all'ethos di Bitcoin. Dai tutorial fai-da-te all'open source, scopri nuove aree di conoscenza per diventare ancora più sovrano.",
-      "DIY": {
-        "description": "Scopri i nostri tutorial fai-da-te per imparare come creare da solo cose correlate a Bitcoin, all'informatica alla sovranità individuale!"
-      },
-      "OpenSource": {
-        "description": "Esplora i nostri tutorial dedicati all'uso di strumenti open source!"
-      },
-      "contribution": {
-        "description": "Impara come aggiungere contenuti su Plan ₿ Network e padroneggia gli strumenti open-source che usiamo internamente tramite i nostri tutorial dettagliati!"
-      },
-      "general": {
-        "description": "Sfoglia i nostri tutorial generali per arricchire la tua conoscenza di informatica e di altre materie relate alla sovranità individuale!"
-      }
     },
     "approvedByCreator": "Approvato dal creatore",
     "backTutorials": "Torna a tutti i tutorial",

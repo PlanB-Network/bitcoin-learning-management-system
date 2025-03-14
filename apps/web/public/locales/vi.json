@@ -996,14 +996,8 @@
       "tutorialName": "Tên hướng dẫn"
     },
     "exchange": {
-      "peer-to-peer": {
-        "description": "Sàn giao dịch ngang hàng là những chợ mà các cá nhân trao đổi bitcoin để lấy các đồng tiền khác với nhau. Những sàn này có thể được quản lý hoặc không, và thường không dòi hỏi nhiều thông tin (nếu có) về bạn. Họ chỉ đơn giản kết nối các người dùng với nhau. Phí của những sản này có thể cao hơn các sàn giao dịch truyền thống và thanh khoản của họ thấp hơn. Đây là lựa chọn yêu thích của những người dùng muốn tránh việc phải xác minh danh tính (KYC)."
-      },
       "shortDescription": "Các giải pháp mua - bán bitcoin, KYC và không KYC",
       "title": "Sàn giao dịch",
-      "centralized": {
-        "description": "Các sàn giao dịch tập trung thường là các thực thế được quản lý, họ hoạt động như là bên trung gian giữa hệ thống ngân hàng và hệ sinh thái Bitcoin. Họ có phép bạn mua và bán lượng lớn bitcoin và rút chúng về ví hoặc tài khoản ngân hàng của mình. Họ thường yêu cầu người dùng xác minh danh tính (KYC), do đó có thể theo dõi các hoạt động của bạn, báo cáo với các tổ chức giám sát tài chính theo luật địa phương."
-      },
       "description": "Các sàn giao dịch là những cánh cửa vào và ra giữa tiền tệ truyền thống (euro, đô-la) và thế giới bitcoin. Các sàn giao dịch có thể được quản lý và tuân thủ việc xác minh danh tính người dùng (KYC), hoặc giao dịch ngang hàng ẩn danh. Mỗi sàn giao dịch sẽ cung cấp những tính năng, cơ cấu phí, mức độ thanh khoản và dịch vụ hỗ trợ người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng các sàn giao dịch khác nhau dựa trên nhu cầu và nhận định của họ."
     },
     "explorer": {
@@ -1011,74 +1005,27 @@
       "description": "Tất cả các hướng dẫn được viết bởi nhưng bitcoiner đầy đam mê và tận tâm, những người mong muốn mở rộng việc giáo dục về bitcoin ra toàn thế giới. Hãy nhớ thích, xem lại và típ satoshi cho họ!",
       "exploreAllTutorials": "Khám phá tất cả hướng dẫn"
     },
-    "merchant": {
-      "shortDescription": "Các giải pháp để các doanh nghiệp chấp nhận Bitcoin",
-      "title": "Người bán",
-      "description": "Đã bao giờ bạn tự hỏi làm thế nào để dễ dàng chấp nhận bitcoin cho một doanh nghiệp? Khám phá các giải pháp khác nhau của chúng tôi để trở thành một chuyên gia và dễ dàng thiết lập một giải pháp thương mại cho các cửa hàng xung quanh bạn. Giải pháp các điểm bán (POS) thay đổi dựa trên nhu cầu của người bán (vật lý hoặc trực tuyến), khối lượng giao dịch của họ, và độ phức tạp trong vận hành của họ. Một giải pháp tốt đơn giản là bắt đầu với ví LN cơ bản, chuyển sang giải pháp dễ dàng, hiểu quả (như PoS trên di động), và cuối cùng khám phá BTC Pay cho các giải pháp nâng cao, phức tạp và chuyên nghiệp."
-    },
     "mining": {
       "description": "Ngành công nghiệp đào bitcoin là một chủ đề phức tạp với rất nhiều hang thỏ trong đó. Ở đây, chúng tôi sẽ cố gắng để đồng hành cùng bạn trên hành trình sử dụng phần cứng và phần mềm. Từ việc điều chỉnh một máy đào S9 trở thành một máy sưởi tại gia cho đến việc cố gắng thắng xổ số với một thợ đào mọt sách.",
       "shortDescription": "Các giải pháp đào bitcoin",
       "title": "Đào"
     },
     "node": {
-      "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Một nút Lightning cho phép bạn thạm gia vào giao thức lớp thứ hai của Bitcoin, được gọi là Lightning Network. Bạn sẽ có thể mở các kệnh, quản lý thanh khoản của chúng, và trở nên không cần nhờ lưu ký hộ với ví Lightning của bạn."
-      },
-      "rgb": {
-        "description": "RGB là một hệ thống cho phép vận hành hợp đồng thông minh và mở rộng quy mô trên Bitcoin và Lightning Network. Nó là một lớp có thể được lập trình, với các khái niệm về quyền sở hữu chung và riêng, sự trừu tượng hoá và phân tách các mối quan tâm và đại diện cho \"hậu blockchain\"."
-      },
       "shortDescription": "Các giải pháp để vận hành một nút Bitcoin và tham gia vào mạng lưới",
       "title": "Nút",
-      "bitcoin": {
-        "description": "Một nut Bitcoin Core là nền tảng cho các ngăn xếp chủ quyền Bitcoin của bạn. Nó cho phép bạn vận hành phần mềm Bitcoin và trở thành một phần của mạng lưới. Bạn sẽ xác thực các khối và các giao dịch, quyết định xem những quy tắc nào mà bạn muốn áp dụng cho mạng lưới, và dừng việc sử dụng một bên trung gian để lan truyền giao dịch của bạn. Có rất nhiều cách để vận hành một nút Bitcoin Core, một số thân thiện hơn một số cách khác."
-      },
       "description": "Các nút giống như một máy chủ của cá nhân bạn. Trong Bitcoin, đó là phần mềm cho phép bạn vận hàng mạng lưới, tập hợp các giao dịch, xác thực các quy tắc và thực sự bảo vệ chủ quyền của mình. Trong hệ sinh thái của chúng ta, có rất nhiều nút, từ Bitcoin Core, đến nút vận hàng Lightning, RGB, hoặc các giải pháp riêng tư nâng cao khác."
-    },
-    "others": {
-      "title": "Khác",
-      "shortDescription": "Khám phá nhiều hướng dẫn khác nhau về các chủ đề liên quan chặt chẽ tới Bitcoin",
-      "description": "Khám phá bộ sưu tập rộng lớn các hướng dẫn có liên quan đến các đặc tính của Bitcoin. Từ hướng dẫn tự làm cho đến các hướng dẫn mã nguồn mở, hãy khám phá các lĩnh vực kiến thức mới để trở nên có chủ quyền hơn.",
-      "DIY": {
-        "description": "Khám phá các hướng dẫn tự làm - DIY - của chúng tôi để học cách tạo ra những thứ liên quan tới Bitcoin, máy tính và chủ quyền cá nhân cho chính bạn!"
-      },
-      "OpenSource": {
-        "description": "Khám phá các hướng dẫn dành riêng cho việc sử dụng các công cụ mã nguồn mở của chúng tôi!"
-      },
-      "contribution": {
-        "description": "Tìm hiểu cách đóng góp cho Plan B Network và làm chủ các công cụ mã nguồn mở mà chúng tôi sử dụng trong nội bộ thông qua các hướng dẫn chi tiết của chúng tôi!"
-      },
-      "general": {
-        "description": "Khám phá các hướng dẫn chung của chúng tôi để nâng cao kiến thức của bạn về máy tính và các chủ đề khác liên quan tới chủ quyền cá nhân!"
-      }
     },
     "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
     "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
     "privacy": {
       "shortDescription": "Các công cụ để sao lưu và bảo đảm riêng tư",
       "title": "Riêng tư",
-      "bitcoin": {
-        "description": "Bitcoin không mặc định đảm bảo sự riêng tư, nó được thiết kế để hoạt động bán ẩn danh, mỗi giao dịch đều là công khai và được lưu trữ mãi mãi. Để duy trì sự riêng tư, chúng ta cần phải có những hành vi đúng cùng với những công cụ đặc biệt được tích hợp vào phần mềm của mình. Từ việc tránh dùng lại địa chỉ, tới sử dụng CoinJoin, thông qua việc trộn coin và kết nối với nút của chính mình, chúng tôi sẽ giúp bạn trên hành trình bảo vệ sự riêng tư."
-      },
-      "description": "Quyền riêng tư là một quyền cơ bản. Trong khi chúng tôi mong muốn xây dựng một thế giới mà quyền riêng tư được mặc định bảo đảm, điều đó không phải là thực tế mà chúng ta đang có. Chúng tôi sẽ cố gắng để giải thích cho bạn những thực hành đúng, hỗ trợ bạn với các hướng dẫn và giúp bạn trở nên có chủ quyền vững chãi hơn liên quan tới thông tin cá nhân.",
-      "general": {
-        "description": "Trong thời đại của giám sát hàng loạt, trên diện rộng, lấy lại quyền riêng tư của mình trong cuộc sống thường ngày là một điều cần thiết. Vì mỗi người dùng sẽ có mức độ thành thạo và kiến thức công nghệ khác nhau, việc sử dụng một số công cụ nhất định và điều chỉnh chúng cho phù hợp với nhu cầu của bạn là một điều hoàn toàn bình thường. Ở đây, chúng ta sẽ khám phá các giải pháp bảo vệ khác nhau như VPN, Tor, Tails OS, GPG, tin nhắn mã hoá và nhiều hơn."
-      }
+      "description": "Quyền riêng tư là một quyền cơ bản. Trong khi chúng tôi mong muốn xây dựng một thế giới mà quyền riêng tư được mặc định bảo đảm, điều đó không phải là thực tế mà chúng ta đang có. Chúng tôi sẽ cố gắng để giải thích cho bạn những thực hành đúng, hỗ trợ bạn với các hướng dẫn và giúp bạn trở nên có chủ quyền vững chãi hơn liên quan tới thông tin cá nhân."
     },
     "wallet": {
       "description": "Một chiếc ví Bitcoin giống như là một chùm chìa khoá của bạn vậy. Nó cho phép bạn chi tiêu và nhận bitcoin. Có rất nhiều loại ví khác nhau, với các trường hợp ứng dụng, chức năng, chi phí và trải nghiệm người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng một thiết bị khác nhau dựa trên nhu cầu, mức độ cấp thiết và kinh nghiệm của họ.",
-      "desktop": {
-        "description": "Ví trên máy tính là ví thường dùng cho những người dùng nâng cao bởi vì chúng là sự kết hợp giữa thiết bị phần cứng và phần mềm ví trên máy tính. Nó giống như có một giao diện người dùng mới, được tuỳ biến và có nhiều chức năng cho thiết bị phần cứng của bạn. Những ví kiểu như vậy cung cấp tuỳ chọn đa chữ ký, các tính năng riêng tư, cơ chế thừa kế và nhiều hơn nữa."
-      },
-      "mobile": {
-        "description": "Ví trên thiết bị di động thường được dùng để phục vụ cho chi tiêu hàng ngày. Chúng được tích hợp với Lightning Network để thực hiện các giao dịch phí thấp và ngay lập tức. Chúng thường được kết nối với internet (thường gọi là \"ví nóng\") và mức độ bảo mật thấp hơn so với các ví phần cứng. Chúng chỉ nên được sử để lưu trữ một lượng nhỏ bitcoin, được dùng cho các giao dịch hàng ngày giống tiền mặt trong ví của bạn vậy."
-      },
       "shortDescription": "Các giải pháp bảo mật và sử dụng bitcoin của bạn",
-      "title": "Ví",
-      "hardware": {
-        "description": "Các ví phần cứng thường được dùng để lưu trữ bitcoin dài hạn. Chúng là những thiết bị vật lý không được kết nối với internet (được gọi là ví lạnh) và thường rất an toàn. Mặc dù phần mềm được dùng trên các thiết bị này là mã nguồn mở, giá để mua phần cứng khoảng từ 50 đến 300 euro. Hãy xem những thiết bị này giống như một tài khoản ngân hàng dành cho việc lưu trữ khoản tiền tiết kiệm lớn mà thi thoảng bạn mới sử dụng."
-      }
+      "title": "Ví"
     },
     "pageDescription": "Bitcoin là một ngành rộng, và đang trở nên rộng hơn mỗi ngày. Nhằm giúp bạn khám phá nó, chúng tôi đã tập hợp và lựa chọn một lượng lớn các hướng dẫn mô tả về các giải pháp khác nhau trên tất cả các mảng liên quan tới Bitcoin.",
     "backTutorials": "Quay lại tất cả hướng dẫn",

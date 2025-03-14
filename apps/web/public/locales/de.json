@@ -973,13 +973,7 @@
       "ratingSuccess": "Vielen Dank für Ihre Bewertung!"
     },
     "exchange": {
-      "centralized": {
-        "description": "Zentralisierte Börsen sind in der Regel regulierte Einrichtungen, die als Vermittler zwischen dem Bankensystem und dem Bitcoin-Ökosystem fungieren. Sie ermöglichen es Ihnen, große Mengen an Bitcoin zu kaufen und zu verkaufen und sie auf Ihr Wallet oder Bankkonto abzuheben. Sie verlangen in der Regel eine KYC-Prüfung und überwachen daher Ihre Aktivitäten und melden sie an die Finanzaufsichtsbehörden, um die lokalen Gesetze einzuhalten."
-      },
       "description": "Börsen sind eine der Eingangs- und Ausgangstüren zwischen Ihrer traditionellen Währung (Euro, Dollar) und der Bitcoin-Welt. Börsen können reguliert und KYC (Know Your Customer) konform sein, oder Peer-to-Peer und anonym. Jede Börse bietet unterschiedliche Funktionen, Gebührenstrukturen, Liquidität und Kundenbetreuung. Jeder Bitcoiner wird je nach seinen Bedürfnissen und Überzeugungen eine andere Plattform nutzen.",
-      "peer-to-peer": {
-        "description": "Peer-to-Peer-Börsen sind Marktplätze, auf denen Personen untereinander Bitcoin gegen andere Währungen tauschen. Diese Austausch können reguliert oder nicht reguliert sein und fragen in der Regel nicht nach vielen Informationen (wenn überhaupt) über Sie. Sie erleichtern lediglich die Beziehung zwischen den Nutzern. Ihre Gebühren können höher sein als bei traditionellen Börsen und ihre Liquidität ist etwas geringer. Sie sind die bevorzugte Option für Bitcoiner, die eine KYC vermeiden wollen."
-      },
       "shortDescription": "Bitcoin-Kauf-Verkaufslösungen, KYC und Nicht-KYC",
       "title": "Austausch"
     },
@@ -988,28 +982,13 @@
       "didYouKnow": "Wussten Sie schon?",
       "exploreAllTutorials": "Erkunden Sie alle Tutorials"
     },
-    "merchant": {
-      "description": "Haben Sie sich schon einmal gefragt, wie Sie Bitcoin in Ihrem Geschäft akzeptieren können? Entdecken Sie unsere verschiedenen Lösungen, um ein Experte zu werden und eine Händlerlösung für die Geschäfte in Ihrer Umgebung einzurichten. Die Point-of-Sale-Lösung variiert je nach den Bedürfnissen des Händlers (physisch oder online), seinem Volumen und der Komplexität seiner Geschäfte. Im Allgemeinen empfiehlt es sich, mit einer einfachen LN-Wallet zu beginnen, zu einer einfachen, effizienten Lösung überzugehen (z. B. Mobile PoS) und schließlich den BTC Pay Server für fortgeschrittene, komplexe, professionelle Lösungen zu erkunden.",
-      "shortDescription": "Lösungen für Unternehmen, die Bitcoin akzeptieren",
-      "title": "Verkäufer"
-    },
     "mining": {
       "description": "Die Minenindustrie ist ein komplexes Thema, in dem es viele Kaninchenlöcher gibt. Hier werden wir versuchen, Sie mit Hilfe von Hardware und Software auf Ihrer Reise zu begleiten. Vom Umbau eines S9 in einen Heizlüfter bis hin zum Versuch, mit einem Nerd-Miner im Lotto zu gewinnen.",
       "shortDescription": "Bitcoin Mining Lösungen",
       "title": "Mining"
     },
     "node": {
-      "bitcoin": {
-        "description": "Ein Bitcoin Core Node ist die Basis Ihres Bitcoin-Souveränität. Er ermöglicht es Ihnen, die Bitcoin-Software auszuführen und Teil des Netzwerks zu sein. Sie validieren Blöcke und Transaktionen, entscheiden, welche Regeln Sie innerhalb des Netzwerks anwenden wollen, und hören auf, Vermittler für die Weitergabe Ihrer Transaktionen zu nutzen. Es gibt viele Möglichkeiten, einen Bitcoin-Knoten zu betreiben, einige sind benutzerfreundlicher als andere."
-      },
       "description": "Knoten (\"Nodes\") sind wie Ihre persönlichen Server. In Bitcoin ist es die Software, die es Ihnen erlaubt, das Netzwerk zu betreiben, Transaktionen zu sammeln, die Regeln zu verifizieren und wirklich souverän zu sein. Innerhalb unseres Ökosystems gibt es verschiedene Nodes, von Bitcoin Core über Lightning-Implementierungen bis hin zu RGB und anderen fortschrittlicheren Datenschutzlösungen.",
-      "lightning-network": {
-        "description": "Ein Lightning-Knoten (node) ermöglicht Ihnen die Teilnahme am Bitcoin-Layer-2-Protokoll genannt Lightning. Sie können Kanäle öffnen, ihre Liquidität verwalten, am Graphen teilnehmen und Ihre Lightning-Wallet als non-custodial Wallet betrachten.",
-        "name": "Lightning Netzwerk"
-      },
-      "rgb": {
-        "description": "RGB ist ein skalierbares und vertrauliches Smart-Contracts-System für Bitcoin und das Lightning-Netzwerk. Es ist eine Programmierbarkeitsschicht für Bitcoin, mit Konzepten von privatem und gegenseitigem Eigentum, Abstraktion und Trennung von Belangen und repräsentiert \"post-blockchain\"."
-      },
       "shortDescription": "Lösungen für den Betrieb eines Bitcoin-Nodes und den Beitritt zum Netzwerk",
       "title": "Node"
     },
@@ -1017,46 +996,14 @@
     "pageSubtitle": "Entschlüsseln Sie die Geheimnisse von Bitcoin, indem Sie sein riesiges Ökosystem erforschen",
     "pageTitle": "Entdecken Sie unsere Tutorials",
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin ist standardmäßig nicht privat, sondern absichtlich pseudonym, und jede Transaktion ist öffentlich und wird für immer gespeichert. Um ein gewisses Maß an Vertraulichkeit wiederzuerlangen, müssen wir bewährte Benutzerpraktiken und spezielle, in unsere Software integrierte Tools verwenden. Von der Vermeidung der Wiederverwendung von Adressen bis hin zu CoinJoin, dem Mischen Ihrer Coins und der Verbindung zu Ihrem eigenen Node - wir helfen Ihnen auf Ihrem Weg zur Privatsphäre."
-      },
       "description": "Die Privatsphäre ist ein Grundrecht. Obwohl wir eine Welt anstreben, in der der Datenschutz Standard ist, ist dies nicht die Realität, in der wir leben. Wir werden versuchen, Ihnen die besten Praktiken zu erklären, Sie mit Anleitungen zu unterstützen und Sie auf einen souveränen Weg im Umgang mit Ihren Daten zu bringen.",
-      "general": {
-        "description": "Im Zeitalter der Massenüberwachung ist die Wiedererlangung eines gewissen Maßes an Privatsphäre im täglichen Leben unerlässlich. Da jeder Nutzer über ein gewisses Maß an Paranoia und technologischem Wissen verfügt, ist es völlig normal, bestimmte Tools zu verwenden und sie an die eigenen Bedürfnisse anzupassen. Hier werden wir verschiedene Schutzlösungen wie VPNs, Tor, Tails OS, PGP, verschlüsselte Nachrichten und vieles mehr untersuchen."
-      },
       "shortDescription": "Werkzeuge zur Sicherung und Wahrung der Privatsphäre",
       "title": "Privatsphäre"
     },
     "wallet": {
       "description": "Eine Bitcoin-Wallet ist wie Ihr Schlüsselbund. Es ermöglicht Ihnen, Bitcoin auszugeben und zu empfangen. Es gibt viele verschiedene Arten von Wallets, alle mit unterschiedlichen Anwendungsfällen, Funktionen, Kosten und Benutzererfahrungen. Jeder Bitcoiner wird ein anderes Gerät verwenden, je nach seinen Bedürfnissen, seinem Anspruchsniveau und seiner Erfahrung.",
-      "desktop": {
-        "description": "Desktop-Wallets sind in der Regel für fortgeschrittene Nutzer gedacht, da sie die Verwendung von Hardware-Geräten und der Desktop-Wallet-Software kombinieren. Es ist, als hätte man eine neue, individuellere und funktionsintensivere Schnittstelle für sein Hardware-Gerät. Solche Wallets bieten Optionen für Mehrfachsignaturen, Datenschutzfunktionen, Mechanismen zur Integration von Erbschaften und mehr."
-      },
-      "hardware": {
-        "description": "Hardware-Wallets werden in der Regel verwendet, um Ihre langfristigen Bitcoin-Ersparnisse zu speichern. Es handelt sich um physische Geräte, die nicht mit dem Internet verbunden sind (oft als \"Cold Wallets\" bezeichnet) und in der Regel sehr sicher sind. Auch wenn die Software dieser Geräte oft Open-Source ist, kostet die Hardware zwischen 50 und 300 Euro. Betrachten Sie diese Geräte wie ein Sparkonto für größere Beträge, die Sie nur ab und zu brauchen."
-      },
-      "mobile": {
-        "description": "Mobile Wallets werden in der Regel für tägliche Ausgaben verwendet. Sie integrieren das Lightning Network für kostengünstige, sofortige Transaktionen. Sie sind in der Regel mit dem Internet verbunden (oft als \"Hot Wallets\" bezeichnet) und sind daher weniger sicher als Hardware-Wallets. Sie sollten nur verwendet werden, um kleine Bitcoin-Beträge zu speichern, betrachten Sie sie als Ihre tägliche Geldbörse in Ihrer Tasche."
-      },
       "shortDescription": "Sicherheitslösungen und Nutzung Ihrer Bitcoins",
       "title": "Wallet"
-    },
-    "others": {
-      "title": "Andere",
-      "shortDescription": "Erkunden Sie vielfältige Tutorials zu eng verwandten Themen von Bitcoin",
-      "description": "Tauchen Sie ein in eine große Sammlung von Tutorials, die eng mit der Bitcoin-Ethos verbunden sind. Von Heimwerker- bis Open-Source-Tutorials, entdecken Sie neue Wissensbereiche, um noch souveräner zu werden.",
-      "DIY": {
-        "description": "Entdecken Sie unsere DIY-Anleitungen, um zu lernen, wie Sie Dinge im Zusammenhang mit Bitcoin, Informatik und individueller Souveränität selbst erstellen können!"
-      },
-      "OpenSource": {
-        "description": "Erkunden Sie unsere Tutorials, die sich der Verwendung von Open-Source-Tools widmen!"
-      },
-      "contribution": {
-        "description": "Lernen Sie, wie Sie zum PlanB-Netzwerk beitragen und die Open-Source-Tools, die wir intern verwenden, durch unsere detaillierten Tutorials meistern können!"
-      },
-      "general": {
-        "description": "Durchsuchen Sie unsere allgemeinen Tutorials, um Ihr Wissen in der Informatik und anderen Themen im Zusammenhang mit individueller Souveränität zu bereichern!"
-      }
     },
     "backTutorials": "Zurück zu allen Tutorials",
     "approvedByCreator": "Vom Ersteller genehmigt",

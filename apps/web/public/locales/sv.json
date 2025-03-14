@@ -941,13 +941,7 @@
       "tutorialName": "Namn på tutorial"
     },
     "exchange": {
-      "centralized": {
-        "description": "Centraliserade börser är vanligtvis reglerade enheter som fungerar som mellanhänder mellan banksystemet och bitcoin-ekosystemet. De låter dig köpa och sälja stora belopp av bitcoins och sedan sätta in det på din digitala plånbok eller bankkonto. De kräver vanligtvis KYC, och övervakar därför din aktivitet och rapporterar till finansiella övervakninginstitutioner för att följa lokala lagar."
-      },
       "description": "Börser är en av ingångs- och utgångsvägarna mellan din traditionella valuta (euro, dollar) och bitcoin-världen. Börser kan vara reglerade och följa KYC (Know Your Customer), eller vara peer-to-peer och anonyma. Varje börs kommer att erbjuda olika funktioner, avgifter, likviditet och kundsupport. Varje bitcoiner kommer att använda olika börser baserat på sina behov och preferenser.",
-      "peer-to-peer": {
-        "description": "Peer-to-peer börser är marknadsplatser där individer växlar bitcoin mot andra valutor mellan varandra. Dessa börser kan vara reglerade eller inte och de frågar vanligtvis inte efter mycket information (om något alls) om dig. De underlättar helt enkelt relationen mellan användare. Deras avgifter kan vara högre än traditionella börser och deras likviditet något lägre. Det här alternativet föredras av bitcoiners som försöker undvika KYC."
-      },
       "shortDescription": "Lösningar för köp och sälj av bitcoin, KYC och icke-KYC",
       "title": "Börser"
     },
@@ -956,28 +950,13 @@
       "didYouKnow": "Visste du?",
       "exploreAllTutorials": "Utforska alla tutorials"
     },
-    "merchant": {
-      "description": "Någonsin undrat hur man enkelt kan acceptera bitcoin som ett företag? Utforska våra olika lösningar för att bli expert och enkelt implementera en lösning för butikerna runt dig. Point of Sale-lösningen varierar beroende på handlarens behov (fysiskt eller online), deras volym och komplexiteten i deras verksamhet. En generellt bra startpunkt är att helt enkelt börja med en simpel LN-plånbok, för att sedan övergå till en enkel, effektiv lösning (som mobilt PoS) och slutligen utforska BTC Pay Server för mer avancerade, komplexa och professionella lösningar.",
-      "shortDescription": "Lösningar för företag att acceptera Bitcoin",
-      "title": "Handlare"
-    },
     "mining": {
       "description": "Mining-industrin är ett komplicerat ämne fullt med kaninhål. Här kommer vi att försöka guida dig på din resa genom att använda hårdvara och mjukvara. Från att modifiera en S9 till ett hemvärmesystem till att försöka vinna lotteriet med en nerd miner.",
       "shortDescription": "Lösningar för Bitcoin-mining",
       "title": "Mining"
     },
     "node": {
-      "bitcoin": {
-        "description": "En Bitcoin Core-nod är grunden för din suveräna Bitcoin-stack. Den låter dig köra Bitcoin-programvaran och vara en del av nätverket. Du kommer att validera block och transaktioner, bestämma vilka regler du vill tillämpa inom nätverket, och inte längre behöva använda mellanhänder för att skapa dina transaktioner. Det finns många sätt att köra en Bitcoin-nod, vissa mer användarvänliga än andra."
-      },
       "description": "Noder fungerar som dina personliga servrar. I Bitcoin är det programvaran som gör att du kan köra nätverket, inhämta transaktioner, verifiera reglerna och vara fullständigt suverän. Inom vårt ekosystem existerar olika noder, från Bitcoin Core till Lightning-implementeringar, RGB eller andra mer avancerade lösningar för integritet.",
-      "lightning-network": {
-        "description": "En Lightning-nod ger dig möjlighet att delta i Bitcoin-protokollet på layer 2, kallat Lightning. Du kommer att kunna öppna kanaler, hantera dess likviditet, delta i nätverket och bli non-custodial gällande din Lightning-plånbok.",
-        "name": "Lightning Network"
-      },
-      "rgb": {
-        "description": "RGB är ett skalbart och konfidentiellt system av smarta kontrakt för Bitcoin och Lightning Network. Det är ett programmeringslager för Bitcoin, med koncept av privat och ömsesidig äganderätt, abstraktion och uppdelning av ansvar och representerar \"post-blockchain\"."
-      },
       "shortDescription": "Lösningar för att köra en bitcoin-nod och ansluta till nätverket",
       "title": "Nod"
     },
@@ -985,46 +964,14 @@
     "pageSubtitle": "Avslöja Bitcoins mysterier genom att utforska dess omfattande ekosystem",
     "pageTitle": "Utforska våra tutorials",
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin är inte sekretesslagt från början, utan det är avsiktligt designat för att vara pseudonymt, och varje transaktion är offentlig och lagras permanent. För att återfå en viss grad av integritet, måste vi använda bästa praxis för användning samt specifika verktyg som är integrerade i vår mjukvara. Från att undvika återanvändning av adresser till CoinJoin, genom att mixa dina coins och ansluta till din egen nod; vi kommer att stödja dig på din väg till integritet."
-      },
       "description": "Integritet är en grundläggande rättighet. Även om vi hoppas på en värld där integritet är standard, är det inte den verklighet vi lever i. Vi kommer att försöka förklara bästa praxis för dig, assistera dig med tutorials och leda dig in på en mer suverän bana angående din information.",
-      "general": {
-        "description": "I eran av massövervakning är det nödvändigt att återfå en viss nivå av integritet i ditt dagliga liv. Med tanke på att varje användare kommer att ha en viss grad av paranoia och teknisk kunskap, är det helt normalt att använda vissa verktyg och anpassa dem till dina behov. Här kommer vi att utforska olika skyddslösningar som VPN:er, Tor, Tails OS, PGP, krypterade meddelanden och mycket mer."
-      },
       "shortDescription": "Verktyg för backup och för att behålla integritet",
       "title": "Integritet"
     },
     "wallet": {
       "description": "En Bitcoin-plånbok är som din nyckelknippa. Den möjliggör för dig att spendera och ta emot bitcoin. Det finns ett stort antal olika plånböcker, alla med olika användningsområden, funktioner, kostnader och användarupplevelser. Varje bitcoiner kommer att välja en plånbok baserat på sina behov, krav och erfarenhet.",
-      "desktop": {
-        "description": "Desktop-plånböcker brukar vara för mer avancerade användare då de kombinerar användandet av hårdvaruenheter och mjukvaran av desktop-plånboken. Det är som att ha ett nytt, mer skräddarsytt och funktionsrikt gränssnitt för din hårdvaruenhet att använda. Dessa plånböcker erbjuder multisig-alternativ, integritetsfunktioner, integrationer för arv och mycket mer."
-      },
-      "hardware": {
-        "description": "Hårdvaruplånböcker används vanligen för att förvara ditt långsiktiga bitcoin-sparande. Dessa är fysiska enheter som inte är anslutna till internet (ofta kallade \"kalla plånböcker\") och är oftast mycket säkra. Även om dessa enheter vanligtvis är open source gällande dess programvara, kostar hårdvaran mellan 50 till 300 euro. Tänk på dessa enheter som ett bankkonto för större sparbelopp som du skulle använda då och då."
-      },
-      "mobile": {
-        "description": "Mobila plånböcker brukar användas för dagliga transaktioner. De integrerar Lightning Network för snabba transaktioner med låga avgifter. De är vanligtvis uppkopplade till internet (ofta benämnda som \"varma plånböcker\") och är därför mindre säkra än hårdvaruplånböcker. De bör endast användas för att förvara små mängder bitcoin, tänk på dem som din vardagliga plånbok i fickan."
-      },
       "shortDescription": "Säkerhetslösningar och användning av dina bitcoins",
       "title": "Plånbok"
-    },
-    "others": {
-      "title": "Andra",
-      "shortDescription": "Utforska diverse lektioner om Bitcoins nära relaterade ämnen",
-      "description": "Dyk ner i en expansiv samling av tutorials som är nära relaterade till Bitcoin-etos. Från DIY till open source-tutorials, upptäck nya kunskapsområden för att bli ännu mer suverän.",
-      "DIY": {
-        "description": "Upptäck våra DIY-tutorials för att lära dig hur du själv skapar saker relaterade till Bitcoin, datorer och individuell suveränitet!"
-      },
-      "OpenSource": {
-        "description": "Utforska våra tutorials angående användning av open source-verktyg!"
-      },
-      "contribution": {
-        "description": "Lär dig hur du kan bidra till Plan ₿ Network och bemästra de open source-verktyg vi använder internt genom våra detaljerade tutorials!"
-      },
-      "general": {
-        "description": "Bläddra bland våra allmänna tutorials för att berika din kunskap inom datateknik och andra ämnen relaterade till individuell suveränitet!"
-      }
     },
     "approvedByCreator": "Godkänd av skaparen",
     "backTutorials": "Tillbaka till alla tutorials",

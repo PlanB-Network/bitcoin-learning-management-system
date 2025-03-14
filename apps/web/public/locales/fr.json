@@ -445,7 +445,7 @@
       "feedbacks": "Un chapitre à la fin du cours est consacré aux retours. Si vous souhaitez donner votre avis maintenant, vous pouvez le faire ici.",
       "ratingsAndFeedbacks": "Évaluations et commentaires",
       "coursesCompleted": "Cours terminés",
-      "checkDetailsCompleted": "Ici vous pouvez vérifier tous les détails concernant le parcours que vous avez complété.",
+      "checkDetailsCompleted": "Ici, vous pouvez vérifier tous les détails concernant le cours que vous avez terminé.",
       "tweetText": "Fier d'avoir terminé le cours {{courseIndex}} chez @planb_network et d'avoir obtenu mon certificat avec un score de {{score}}/100 à l'examen final ! {{emoji}}\n\n{{certificateUrl}}",
       "shareOnSocials": "Partager sur les réseaux :",
       "submitReviewInfo": "Vous devez soumettre un avis pour avoir accès à cette fonctionnalité.",
@@ -489,7 +489,7 @@
       "professorName": "Nom du professeur",
       "participants": "Participants",
       "careers": {
-        "careersSubtitle": "Ici, vous pouvez consulter la liste des participants qui ont terminé leurs candidatures. Vous pouvez trouver toutes les informations sur les candidatures à l'intérieur du tableur.",
+        "careersSubtitle": "Ici, vous pouvez consulter la liste des participants qui ont enregistré leurs candidatures. Vous pouvez trouver toutes les informations sur les candidatures à l'intérieur du tableur.",
         "careers": "Carrières",
         "cv": "CV",
         "downloadProfiles": "Télécharger le tableau (spreadsheet)",
@@ -564,7 +564,7 @@
       },
       "acceptTermsAndConditions": "J'ai lu et j'accepte les termes et conditions",
       "allowReceivingEmails": "Je suis d'accord pour recevoir des emails de Plan ₿ Network concernant des opportunités d'emploi potentielles.",
-      "applicationStatus": "Votre application est",
+      "applicationStatus": "Votre candidature est",
       "beAware": "Sachez que Plan ₿ Network collectera et stockera vos données uniquement à des fins de recrutement. Les données sont traitées et partagées avec nos partenaires commerciaux conformément aux dispositions du Règlement général sur la protection des données de l'UE (RGPD). Cliquez <0>ici</0> pour en savoir plus sur notre Avis de confidentialité des candidats.",
       "description": "En tant qu'étudiant du Plan ₿ Network, vous faites partie d'une vaste communauté qui peut soutenir votre croissance professionnelle. Dans cette section, vous pouvez soumettre votre CV et partager vos aspirations de carrière. Nous travaillerons en étroite collaboration avec nos partenaires industriels pour faire correspondre votre profil avec des opportunités d'emploi potentielles, vous aidant à franchir la prochaine étape de votre parcours professionnel.",
       "expectedSalarySubLabel": "Selon votre profil, indiquez-nous vos attentes en matière de taux horaire ou de salaire mensuel. Veuillez préciser s'il s'agit d'un montant net ou brut.",
@@ -589,7 +589,7 @@
       },
       "acceptedFormat": "Format de fichier accepté : pdf / Taille maximale du fichier : 10 Mo.",
       "add": "Ajouter",
-      "applicationSaved": "Votre application est enregistrée !",
+      "applicationSaved": "Votre candidature est enregistrée !",
       "availability": "Votre disponibilité",
       "availabilityStart": "Quand pouvez-vous commencer ?",
       "bitcoinRelatedExperience": "Expérience liée au Bitcoin",
@@ -623,7 +623,7 @@
         "41To100": "41 à 100 employés",
         "noPreference": "Aucune préférence"
       },
-      "completeApplication": "Complètes l'application",
+      "completeApplication": "Terminer la candidature",
       "confirmDelete": "Confirmer la suppression",
       "contactInformation": "Informations de contact",
       "expectedSalaryPlaceholder": "Salaire mensuel : 2,5K net",
@@ -952,13 +952,7 @@
       "ratingSuccess": "Merci pour votre avis ! Il sera pris en compte"
     },
     "exchange": {
-      "centralized": {
-        "description": "Les échanges centralisés sont généralement des entités régulées qui agissent comme intermédiaires entre le système bancaire et l'écosystème bitcoin. Ils vous permettent d'acheter et de vendre de grandes quantités de bitcoin et de le retirer dans votre portefeuille ou compte bancaire. Ils exigent généralement une vérification KYC, et surveillent donc votre activité, la signalant aux institutions de surveillance financière pour respecter les lois locales."
-      },
       "description": "Les échanges sont une des portes d'entrée et de sortie entre votre devise traditionnelle (euro, dollars) et le monde de Bitcoin. Les échanges peuvent être réglementés et KYC (Know Your Client), ou peer-to-peer et anonymes. Chaque échange offrira des fonctionnalités différentes, des structures de frais, de la liquidité et du soutien à la clientèle. Chaque bitcoiner utilisera un différent en fonction de ses besoins et de ses convictions.",
-      "peer-to-peer": {
-        "description": "Les échanges de pair à pair sont des marchés où les individus échangent des bitcoins contre d'autres monnaies entre eux. Ces échanges peuvent être réglementés ou non et ne demandent généralement pas beaucoup d'informations (voir aucune) sur vous. Ils facilitent simplement la relation entre les utilisateurs. Leurs frais peuvent être plus élevés que ceux des plateformes d'échanges traditionnelles et leur liquidité un peu plus basse. C'est l'option préférée pour les bitcoiners cherchant à éviter le KYC."
-      },
       "shortDescription": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
       "title": "Échanger"
     },
@@ -967,28 +961,13 @@
       "didYouKnow": "Saviez-vous ?",
       "exploreAllTutorials": "Explorez tous les tutoriels"
     },
-    "merchant": {
-      "description": "Vous êtes-vous déjà demandé comment accepter facilement des bitcoins pour une entreprise ? Explorez nos différentes solutions pour devenir un expert et mettre en place facilement une solution marchande pour les boutiques autour de vous. La solution pour la vente varie en fonction des besoins du commerçant (physique ou en ligne), de leur volume et de la complexité de leurs opérations. Une bonne approche en général est de simplement commencer avec un portefeuille LN basique, puis passer à une solution facile et efficace (comme un PoS mobile), et enfin explorer BTC Pay Server pour des solutions avancées, complexes et professionnelles.",
-      "shortDescription": "Solutions pour entreprises d'acceptation du Bitcoin",
-      "title": "Marchand"
-    },
     "mining": {
       "description": "L'industrie minière est un sujet complexe composé de nombreux terriers du lapin. Ici, nous essaierons de vous accompagner dans votre voyage concernant l'utilisation de votre matériel et logiciels. De la modification d'un S9 en chauffage domestique à la tentative de gagner à la loterie avec un NerdMiner.",
       "shortDescription": "Solutions de minage de bitcoins",
       "title": "Minage"
     },
     "node": {
-      "bitcoin": {
-        "description": "Un nœud Bitcoin Core est le point de départ de votre souveraineté dans Bitcoin. Il vous permet d'exécuter le logiciel Bitcoin et de faire partie du réseau. Vous validerez des blocs et des transactions, déciderez quelles règles vous souhaitez appliquer au sein du réseau, et arrêterez d'utiliser des intermédiaires pour diffuser vos transactions. Il existe de nombreuses façons d'exécuter un nœud Bitcoin, certaines plus simples à utiliser que d'autres."
-      },
       "description": "Les nœuds sont comme vos serveurs personnels. En Bitcoin, c'est le logiciel qui vous permet de rejoindre le réseau, d'archiver les transactions, de vérifier les règles, et d'être vraiment souverain. Dans notre écosystème, il existe différents nœuds, de Bitcoin Core, aux implémentations Lightning, RGB, et d'autres solutions de confidentialité plus avancées.",
-      "lightning-network": {
-        "description": "Un nœud Lightning vous permet de participer au protocole de couche 2 de Bitcoin appelé Lightning. Vous pourrez ouvrir des canaux, gérer leur liquidité, faire partie du graphe et devenir non-custodial concernant votre portefeuille Lightning.",
-        "name": "Réseau Lightning"
-      },
-      "rgb": {
-        "description": "RGB est un système de contrats intelligents confidentiel et de mise à l'échelle pour Bitcoin et le réseau Lightning. C'est une couche de programmabilité pour Bitcoin, avec des concepts de propriété privée et mutuelle, d'abstraction et de séparation des préoccupations et qui représente le \"post-blockchain\"."
-      },
       "shortDescription": "Solutions pour faire tourner un nœud bitcoin et intégrer le réseau",
       "title": "Noeud"
     },
@@ -996,52 +975,51 @@
     "pageSubtitle": "Découvrez les mystères du Bitcoin en explorant son vaste écosystème",
     "pageTitle": "Tutoriels",
     "privacy": {
-      "bitcoin": {
-        "description": "Bitcoin n'est pas privé par défaut, il est intentionnellement conçu pour être pseudonyme, et chaque transaction est publique et conservée pour toujours. Afin de retrouver une certaine confidentialité, nous devons utiliser les meilleures pratiques des utilisateurs et des outils spécifiques intégrés dans notre logiciel. De l'évitement de la réutilisation d'adresses à CoinJoin, en passant par le mélange de vos pièces et la connexion à votre propre nœud, nous vous aiderons dans votre voyage vers la confidentialité."
-      },
       "description": "La vie privée est un droit fondamental. Alors que nous aspirons à un monde où la vie privée est par défaut, ce n'est pas la réalité dans laquelle nous vivons. Nous essaierons de vous expliquer les meilleures pratiques, de vous aider avec des tutoriels et de vous mettre sur un chemin plus souverain concernant vos données.",
-      "general": {
-        "description": "À l'ère de la surveillance de masse, retrouver un certain niveau de confidentialité dans votre vie quotidienne est essentiel. Étant donné que chaque utilisateur aura un certain degré de paranoïa et de connaissance technologique, il est tout à fait normal d'utiliser certains outils et de les adapter à vos besoins. Ici, nous explorerons différentes solutions de protection telles que les VPN, Tor, Tails OS, PGP, les messages chiffrés, et bien plus encore."
-      },
       "shortDescription": "Outils de sauvegarde et de maintien de la vie privée",
       "title": "Confidentialité"
     },
     "wallet": {
       "description": "Un portefeuille Bitcoin est comme votre trousseau de clés. Il vous permet de dépenser et de recevoir des bitcoins. Il y a beaucoup de différents types de portefeuilles, tous avec différents cas d'utilisation, fonctions, coûts et expériences d'utilisation. Chaque bitcoiner utilisera un portefeuille différent en fonction de ses besoins, de son niveau d'exigence et de son expérience.",
-      "desktop": {
-        "description": "Les portefeuilles sur PC sont généralement destinés aux utilisateurs plus avancés car ils combinent l'utilisation de portefeuilles physiques et du logiciel des portefeuilles sur PC. C'est comme avoir une nouvelle interface plus personnalisée et plus de fonctionnalités que votre portefeuille physique. De tels portefeuilles offrent des options de signature multiple, des fonctionnalités de confidentialité, des mécanismes pour l'héritage et bien plus encore."
-      },
-      "hardware": {
-        "description": "Les portefeuilles physiques sont généralement utilisés pour stocker vos économies bitcoin à long terme. Ce sont des dispositifs physiques qui ne sont pas connectés à internet (souvent appelés \"portefeuilles froids\") et sont généralement très sécurisés. Bien que ces dispositifs soient souvent open-source en ce qui concerne leur logiciel, le matériel coûte entre 50 et 300 euros. Considérez ces dispositifs comme un compte bancaire pour des montants d'épargne plus importants que vous utiliseriez de temps en temps."
-      },
-      "mobile": {
-        "description": "Les portefeuilles mobiles sont généralement utilisés pour les dépenses quotidiennes. Ils intègrent le Lightning Network pour des transactions instantanées et à faible coût. Ils sont généralement connectés à internet (souvent appelés \"portefeuilles chauds\") et sont donc moins sécurisés que les portefeuilles matériels. Ils ne devraient être utilisés que pour stocker de petites quantités de bitcoin, considérez-les comme votre portefeuille de tous les jours dans votre poche."
-      },
       "shortDescription": "Solutions de sécurisation et d'utilisation de vos bitcoins",
       "title": "Portefeuille"
-    },
-    "others": {
-      "title": "Autres",
-      "shortDescription": "Explorez divers tutoriels sur des sujets étroitement liés au bitcoin",
-      "description": "Plongez dans une large collection de tutoriels étroitement liés à l'éthique Bitcoin. Du tutoriel DIY au tutoriel open source, découvrez de nouveaux domaines de connaissances pour devenir encore plus souverain.",
-      "DIY": {
-        "description": "Découvrez nos tutoriels DIY pour apprendre à créer vous-même des choses liées à Bitcoin, à l'informatique et à la souveraineté individuelle !"
-      },
-      "OpenSource": {
-        "description": "Explorez nos tutoriels dédiés à l'utilisation d'outils open-source !"
-      },
-      "contribution": {
-        "description": "Apprenez comment contribuer à Plan ₿ Network et à maîtriser les outils open-source que nous utilisons en interne grâce à nos tutoriels détaillés !"
-      },
-      "general": {
-        "description": "Parcourez nos tutoriels généraux pour enrichir vos connaissances en informatique et dans d'autres sujets liés à la souveraineté individuelle !"
-      }
     },
     "approvedByCreator": "Approuvé par le créateur",
     "backTutorials": "Retour à tous les tutoriels",
     "writtenBy": "Ce tutoriel a été écrit par",
     "hasNotBeenProofread": "Ce tutoriel n'a pas encore été relu",
-    "hasBeenProofreadBy": "Ce tutoriel a été relu par"
+    "hasBeenProofreadBy": "Ce tutoriel a été relu par",
+    "business": {
+      "title": "Entreprise",
+      "shortDescription": "Accepter les paiements en Bitcoin et le gérer dans votre trésorerie",
+      "description": "Vous souhaitez intégrer Bitcoin à votre entreprise ? Cette catégorie rassemble tous les tutoriels destinés aux professionnels. Qu’il s’agisse de mettre en place un point de vente pour accepter facilement les paiements en bitcoins, ou bien d'ajouter et de gérer du bitcoin dans la trésorerie de votre entreprise, vous y trouverez les informations techniques et pratiques essentielles."
+    },
+    "computer-security": {
+      "shortDescription": "Les outils essentiels pour votre sécurité numérique et votre vie privée",
+      "description": "La sécurité informatique est essentielle à tout Bitcoiner. Dans cette catégorie, vous trouverez des tutoriels sur des outils et pratiques généralistes indispensables pour protéger votre environnement numérique. Systèmes d'exploitation, navigateurs sécurisés, gestionnaires de mots de passe, systèmes d'authentification, VPN ou encore solutions de communication chiffrées : toutes les ressources présentées ici visent à renforcer votre sécurité et votre confidentialité.",
+      "title": "Sécurité informatique"
+    },
+    "contribution": {
+      "shortDescription": "Contribuez sur la plateforme open-source Plan ₿ Network",
+      "title": "Contribution",
+      "description": "Vous souhaitez contribuer sur notre plateforme open-source Plan ₿ Network ? Dans cette catégorie, vous découvrirez comment rédiger et publier un nouveau tutoriel, effectuer des traductions, assurer la relecture des contenus, ou encore ajouter de nouvelles ressources utiles à la communauté. Grâce à ces tutoriels, vous pourrez facilement participer à l’éducation sur Bitcoin et enrichir notre base de connaissances partagée."
+    },
+    "subCategories": {
+      "authentication": "Authentification",
+      "peer-to-peer": "Pair-à-pair",
+      "backup": "Sauvegarde",
+      "analysis": "Analyse",
+      "communication": "Communication",
+      "operating system": "Système d'exploitation",
+      "data": "Données",
+      "content": "Contenu",
+      "desktop": "Ordinateur",
+      "lightning-network": "Lightning Network",
+      "others": "Autres",
+      "centralized": "Centralisé",
+      "point-of-sale": "Terminal de paiement",
+      "resource": "Ressource"
+    }
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1381,5 +1359,8 @@
     "otherCommunities": "Explorez les communautés de Plan ₿ Network",
     "pageTitle": "Projets Bitcoin",
     "relatedEvents": "Événements à venir liés"
+  },
+  "filters": {
+    "resources": "Ressources"
   }
 }

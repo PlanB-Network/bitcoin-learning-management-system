@@ -743,27 +743,12 @@
   },
   "tutorials": {
     "wallet": {
-      "desktop": {
-        "description": "Dompet desktop biasanya lebih canggih karena jenis dompet ini menggabungkan penggunaan perangkat keras dan perangkat lunak dompet desktop. Dengan ini, perangkat keras Anda seakan memiliki sebuah antarmuka (interface), yang baru, lebih disesuaikan dan memiliki banyak fungsi, untuk digunakan. Dompet seperti itu menawarkan opsi tanda tangan ganda, fitur privasi, mekanisme integrasi warisan, dan masih banyak lagi."
-      },
-      "hardware": {
-        "description": "Dompet perangkat keras biasanya digunakan untuk menyimpan simpanan bitcoin jangka panjang Anda. Dompet jenis ini adalah perangkat fisik yang tidak terhubung ke internet (sering disebut \"dompet dingin) dan biasanya sangat aman. Meskipun perangkat ini seringkali bersifat open-source dari segi perangkat lunaknya, perangkat kerasnya memiliki harga sekitar 50 hingga 300 euro. Anda dapat melihat perangkat ini seperti rekening bank untuk simpanan dengan jumlah yang lebih besar, yang Anda akan gunakan sesekali."
-      },
       "description": "Sebuah dompet Bitcoin mirip dengan gantungan kunci Anda. Dengan ini, Anda dapat menggunakan dan menerima bitcoin. Ada banyak tipe dompet yang berbeda dengan kegunaan, fungsi, biaya, dan pengalaman pengguna (user experience, UX) yang tidak sama. Tiap bitcoiner dapat menggunakan perangkat yang berbeda sesuai dengan tingkat kebutuhan dan pengalaman masing-masing.",
-      "mobile": {
-        "description": "Dompet seluler atau dompet bergerak biasanya digunakan untuk kebutuhan sehari-hari. Dompet ini mengintegrasikan Lightning Network untuk transaksi instan dengan biaya rendah. Biasanya, dompet seluler terhubung dengan internet (seringkali disebut \"dompet panas\") dan oleh karena itu tidak seaman dompet perangkat keras. Penggunaan dompet ini sebaiknya hanya untuk menyimpan bitcoin dalam jumlah kecil, dan Anda dapat menganggapnya sebagai dompet di kantong Anda."
-      },
       "shortDescription": "Solusi keamanan dan penggunaan bitcoin Anda",
       "title": "Dompet"
     },
     "exchange": {
-      "centralized": {
-        "description": "Bursa pertukaran tersentralisasi biasanya merupakan entitas yang diatur dan memiliki peran sebagai perantara antara sistem perbankan dan ekosistem bitcoin. Keberadaannya memungkinkan Anda membeli dan menjual bitcoin dalam jumlah besar dan menariknya ke dompet atau rekening bank Anda. Biasanya, bursa ini memerlukan KYC sehingga memonitor aktivitas Anda, dan melaporkannya ke institusi-institusi pengawasan keuangan sesuai dengan hukum setempat."
-      },
       "description": "Bursa pertukaran adalah salah satu dari pintu masuk dan keluar antara mata uang trandisional Anda (euro, dolar) dan dunia bitcoin. Bursa pertukaran dapat diatur untuk memenuhi kebijakan KYC (Know Your Customer) atau dapat bersifat peer-to-peer dan anonim. Setiap bursa pertukaran mempunyai fitur, struktur biaya, likuiditas, dan dukungan pelanggan yang berbeda-beda. Tiap bitcoiner dapat menggunakan bursa yang berbeda sesuai dengan kebutuhan dan keyakinan mereka.",
-      "peer-to-peer": {
-        "description": "Bursa pertukaran peer-to-peer adalah lokapasar dimana tiap individu dapat saling menukarkan bitcoin menjadi mata uang lainnya satu sama lain. Bursa ini dapat diatur atau tidak dan biasanya tidak meminta banyak informasi (bila ada) tentang Anda. Sederhananya, mereka memfasilitasi hubungan antar pengguna. Dibandingkan bursa pertukaran tradisional, biaya bursa peer-to-peer bisa lebih tinggi dan likuiditasnya juga lebih rendah. Bitcoiner yang ingin menghindari kebijakan KYC lebih suka memilih bursa jenis ini."
-      },
       "shortDescription": "Solusi jual beli Bitcoin, KYC dan non-KYC",
       "title": "Bursa pertukaran"
     },
@@ -778,33 +763,12 @@
     "privacy": {
       "title": "Privasi",
       "shortDescription": "Alat untuk pencadangan dan menjaga privasi",
-      "bitcoin": {
-        "description": "Bitcoin tidak bersifat pribadi secara pengaturan dasar; ia sengaja dirancang untuk bersifat pseudonim, dan setiap transaksi bersifat publik serta disimpan selamanya. Untuk mendapatkan kembali beberapa tingkat kerahasiaan, kita harus menggunakan praktik terbaik dan alat tertentu yang terintegrasi dalam perangkat lunak kita. Mulai dari menghindari penggunaan ulang alamat hingga CoinJoin, melalui pencampuran koin Anda dan terhubung ke node Anda sendiri, kami akan membantu Anda dalam perjalanan menuju privasi."
-      },
-      "description": "Privasi adalah hak dasar. Meskipun kami menginginkan dunia di mana privasi menjadi pengaturan dasar, kenyataannya tidak demikian. Kami akan mencoba menjelaskan praktik terbaik, membantu Anda dengan tutorial, dan memandu Anda menuju jalur yang lebih mandiri terkait data Anda.",
-      "general": {
-        "description": "Di era pengawasan massal, mendapatkan kembali tingkat privasi tertentu dalam kehidupan sehari-hari sangat penting. Mengingat setiap pengguna akan memiliki tingkat paranoia dan pengetahuan teknologi yang berbeda, sangat wajar untuk menggunakan berbagai alat dan menyesuaikannya dengan kebutuhan Anda. Di sini, kami akan mengeksplorasi berbagai solusi perlindungan seperti VPN, Tor, Tails OS, PGP, pesan terenkripsi, dan banyak lagi."
-      }
-    },
-    "merchant": {
-      "description": "Pernahkah Anda bertanya-tanya bagaimana cara untuk mengadopsi bitcoin untuk bisnis? Jelajahi bermacam-macam solusi dari kami untuk menjadi seorang ahli dan siapkan solusi untuk toko-toko di sekitarmu dengan mudah. Solusi The Point of Sale bervariasi berdasarkan kebutuhan pedagang (fisik atau daring), volume penjualan, dan kompleksitas operasional mereka. Solusi yang umumnya sesuai adalah dengan memulai dari dompet LN dasar, beralih ke solusi yang efisien dan mudah (seperti mobile PoS), dan akhirnya menjelajahi BTC Pay Server untuk solusi yang maju, kompleks, dan profesional.",
-      "shortDescription": "Solusi agar bisnis dapat menerima Bitcoin",
-      "title": "Penjual"
+      "description": "Privasi adalah hak dasar. Meskipun kami menginginkan dunia di mana privasi menjadi pengaturan dasar, kenyataannya tidak demikian. Kami akan mencoba menjelaskan praktik terbaik, membantu Anda dengan tutorial, dan memandu Anda menuju jalur yang lebih mandiri terkait data Anda."
     },
     "node": {
-      "bitcoin": {
-        "description": "Node Bitcoin Core adalah titik awal untuk sistem kedaulatan Bitcoin Anda. Node ini memungkinkan Anda untuk mengoperasikan perangkat lunak Bitcoin dan menjadi bagian dari jaringan. Anda akan melakukan validasi blok dan transaksi, memilih sendiri aturan apa yang berlaku di dalam jaringan, dan tak lagi menggunakan pihak perantara untuk menyebarluaskan transaksi Anda. Ada banyak cara untuk mengoperasikan Bitcoin node, dan beberapa lebih ramah pengguna daripada yang lain."
-      },
       "description": "Node bagaikan server pribadi Anda. Di dalam Bitcoin, perangkat lunaklah yang memungkinkan Anda untuk mengoperasikan jaringan, mengumpulkan transaksi, verifikasi kepatuhan peraturan, dan menjadi independen. Dalam ekosistem kami, ada berbagai macam node, dari Bitcoin Core hingga implementasi Lightning, RGB, atau solusi privasi lainnya yang lebih canggih.",
-      "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Sebuah node Lightning memungkinkan Anda untuk berpartisipasi dalam protokol layer 2 Bitcoin yang disebut Lightning. Anda akan dapat membuka saluran, mengelola likuiditasnya, berpartisipasi dalam grafik jaringan, dan menjadi non-kustodial terkait dompet Lightning Anda."
-      },
       "shortDescription": "Solusi untuk pengoperasian node bitcoin dan bergabung dengan jaringan",
-      "title": "Node",
-      "rgb": {
-        "description": "RGB adalah sistem kontrak pintar yang skalabel dan rahasia untuk Bitcoin dan jaringan lightning. Ini merupakan lapisan pemrograman untuk Bitcoin, dengan konsep kepemilikan pribadi dan mutual, abstraksi, dan pemisahan kepentingan, serta mewakili \"post-blockchain\"."
-      }
+      "title": "Node"
     },
     "explorer": {
       "description": "Seluruh tutorial ini telah ditulis oleh para bitcoiner yang berdedikasi dan antusias, dan mereka berharap untuk menyebarkan edukasi bitcoin ke seluruh dunia. Jangan lupa untuk memberi like, memberi ulasan, dan memberi tip berupa sat!",
@@ -815,23 +779,6 @@
       "description": "Industri penambangan (mining) adalah sebuah topik kompleks dengan banyak aspek yang dapat dipelajari di dalamnya. Di sini, kami akan berusaha untuk menemani perjalanan Anda dengan menggunakan perangkat keras dan lunak. Dari modifikasi S9 menjadi pemanas rumah, hingga mencoba untuk memenangkan lotere dengan penambang kutubuku.",
       "shortDescription": "Solusi penambangan Bitcoin",
       "title": "Penambangan (Mining)"
-    },
-    "others": {
-      "contribution": {
-        "description": "Pelajari bagaimana cara berkontribusi ke Plan ₿ Network dan kuasai toolkit sumber terbuka yang kami gunakan secara internal melalui tutorial mendetail kami!"
-      },
-      "general": {
-        "description": "Jelajahi tutorial umum kami untuk memperkaya pengetahuan komputasi Anda dan bidang lain yang berhubungan dengan kemerdekaan individual!"
-      },
-      "title": "Lainnya",
-      "shortDescription": "Jelajahi berbagai macam tutorial untuk topik-topik yang berkaitan erat dengan Bitcoin",
-      "description": "Jelajahi koleksi besar tutorial yang erat kaitannya dengan etos Bitcoin. Dari tutorial untuk melakukan sendiri hingga sumber terbuka, temukan bidang pengetahuan baru untuk menjadi lebih merdeka.",
-      "DIY": {
-        "description": "Temukan tutorial lakukan sendiri kami untuk belajar cara membuat hal-hal terkait Bitcoin, komputasi, dan kemandirian individu sendiri!"
-      },
-      "OpenSource": {
-        "description": "Jelajahi tutorial kami yang didedikasikan untuk penggunaan alat sumber terbuka!"
-      }
     },
     "pageDescription": "Bitcoin adalah industri yang luas, dan terus bertambah luas tiap harinya. Untuk membantu Anda mengekspolasinya, kami telah mengumpulkan dan menyusun banyak tutorial yang mendeskripsikan berbagai macam solusi di semua bidang terkait Bitcoin.",
     "pageTitle": "Jelajahi tutorial kami",

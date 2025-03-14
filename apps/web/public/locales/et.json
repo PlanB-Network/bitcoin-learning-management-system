@@ -136,43 +136,17 @@
     "wallet": {
       "title": "Rahakott",
       "shortDescription": "Turvalahendused ning teie bitcoinide kasutamine",
-      "hardware": {
-        "description": "Riistvara rahakotte kasutatakse tavaliselt pikaajaliste bitcoinide säästude hoidmiseks. Need on füüsilised seadmed, mis pole internetiga ühendatud (sageli nimetatakse neid \"külmadeks rahakottideks\") ja on tavaliselt väga turvalised. Kuigi nende seadmete tarkvara on sageli avatud lähtekoodiga, maksab riistvara umbes 50 kuni 300 eurot. Võtke neid seadmeid nagu pangakontosid suuremate säästusummade jaoks, mida aeg-ajalt kasutaksite."
-      },
-      "mobile": {
-        "description": "Mobiilsed rahakotid on tavaliselt igapäevaste kulutuste tegemiseks. Need integreerivad Lightning Networki madalate tasude ning silmapilksete tehingute jaoks. Need on tavaliselt ühendatud internetiga (sageli nimetatakse neid \"kuumadeks rahakottideks\") ja on seetõttu vähem turvalised kui riistvara rahakotid. Neid tuleks kasutada ainult väikestes kogustes bitcoinide hoiustamiseks, mõelge neile kui oma igapäevasele rahakotile taskus."
-      },
-      "desktop": {
-        "description": "Töölaua rahakotid on tavaliselt mõeldud edasijõudnutele, kuna need ühendavad riistvara seadmete kasutamise töölaua rahakoti tarkvaraga. See on nagu uue, kohandatuma ja funktsionaalsus-intensiivsema liidese omamine teie riistvaraseadme kasutamiseks. Sellised rahakotid pakuvad mitme allkirja võimalusi, privaatsusfunktsioone, pärimise integreerimise mehhanisme ja palju muud."
-      },
       "description": "Bitcoini rahakott on nagu teie võtmehoidja. See võimaldab teil bitcoini kulutada ja vastu võtta. Rahakotte on palju erinevaid tüüpe, kõigil erinevad kasutusjuhud, funktsioonid, kulud ja kasutajakogemused. Iga bitcoini kasutaja kasutab erinevat seadet vastavalt oma vajadustele, nõudlikkuse tasemele ja kogemustele."
     },
     "privacy": {
       "title": "Privaatsus",
       "shortDescription": "Varundamise ja privaatsuse säilitamise tööriistad",
-      "general": {
-        "description": "Massijälgimise ajastul on igapäevaelus teatud privaatsuse määra taastamine hädavajalik. Arvestades, et igal kasutajal on teatud määral paranoiat ja tehnoloogilisi teadmisi, on täiesti normaalne kasutada teatud tööriistu ja kohandada neid oma vajadustele. Siin uurime erinevaid kaitsevõimalusi, nagu VPN-id, Tor, Tails OS, PGP, krüpteeritud sõnumid ja palju muud."
-      },
-      "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele.",
-      "bitcoin": {
-        "description": "Bitcoin ei ole vaikimisi privaatne, see on tahtlikult loodud pseudonüümseks ning iga tehing on avalik ja salvestatud igaveseks. Et taastada teatav konfidentsiaalsus, peame kasutama meie tarkvarasse integreeritud parimaid kasutajatavasid ja spetsiifilisi tööriistu. Vältides aadressi uuesti kasutamist kuni CoinJoinini, segades oma münte ja ühendudes oma sõlme, aitame teid teie privaatsuse teekonnal."
-      }
+      "description": "Privaatsus on põhiõigus. Kuigi me püüdleme maailma poole, kus privaatsus leiab aset vaikimisi, ei ole see siiski reaalsus, milles me elame. Me püüame teile selgitada parimaid tavasid, aidata teid õpetustega ja suunata teid oma andmetega seoses suveräänsemale teele."
     },
     "exchange": {
       "title": "Valuutavahetusettevõtted",
       "shortDescription": "Bitcoinide ostu-müügi lahendused, KYC ning mitte-KYC",
-      "peer-to-peer": {
-        "description": "Peer-to-peer valuutavahetused on turud, kus üksikisikud vahetavad omavahel bitcoini teiste valuutade vastu. Need vahetused võivad olla reguleeritud või reguleerimata ning tavaliselt ei küsi need turud teie kohta palju teavet (kui üldse). Nad lihtsalt hõlbustavad kasutajatevahelist suhet. Nende tasud võivad olla kõrgemad kui traditsioonilistel vahetustel ja nende likviidsus veidi madalam. See on eelistatud valik bitcoinide kasutajatele, kes üritavad vältida KYC-d."
-      },
-      "centralized": {
-        "description": "Tsentraliseeritud valuutavahetus platvormid on tavaliselt reguleeritud asutused, mis käituvad vahendajatena pangandussüsteemi ja bitcoini ökosüsteemi vahel. Nad võimaldavad teil osta ja müüa suuri koguseid bitcoini ning väljastada see oma rahakotti või pangakontole. Tavaliselt nõuavad nad KYC-d, seega jälgivad nad teie tegevusi, teatades sellest finantsjärelevalve asutustele, et austada kohalikke seadusi."
-      },
       "description": "Vahetusplatvormid on üks sisse- ja väljapääsuteid teie traditsioonilise valuuta (euro, dollarid) ja bitcoini maailma vahel. Vahetusplatvormid võivad olla reguleeritud ja KYC (Tunne Oma Klienti) nõuetele vastavad või hoopis peer-to-peer ja anonüümsed. Iga vahetusplatvorm pakub erinevaid funktsioone, tasustruktuure, likviidsust ja kliendituge. Iga bitcoiner kasutab erinevat platvormi, vastavalt oma vajadustele ja veendumustele."
-    },
-    "merchant": {
-      "title": "Kaupmees",
-      "shortDescription": "Lahendused ettevõtetele Bitcoini vastuvõtmiseks",
-      "description": "Oled kunagi mõelnud, kuidas ärina bitcoini lihtsasti vastu võtta? Uurige meie erinevaid lahendusi, et saada eksperdiks, et seejärel hõlpsasti seadistada kaupmeestele sobivaid lahendusi teie ümber olevatele poodidele. Müügikoha (Point of Sale) lahendus varieerub sõltuvalt kaupmehe vajadustest (füüsiline või veebipõhine), nende mahust ja nende tegevuse keerukusest. Üldiselt hea lähenemisviis on alustada lihtsa LN rahakotiga, liikudes lihtsa, tõhusa lahenduse juurde (näiteks mobiilne PoS) ja lõpuks uurida BTC Pay Serverit keerukate, professionaalsete lahenduste jaoks."
     },
     "mining": {
       "title": "Kaevandamine",
@@ -181,35 +155,8 @@
     },
     "node": {
       "title": "Sõlmed",
-      "lightning-network": {
-        "name": "Lightning Network",
-        "description": "Lightning võimaldab teil osaleda Bitcoini 2. kihi protokollis nimega Lightning. Saate avada kanaleid, hallata nende likviidsust, osaleda graafikus ja omada täielikku kontrolli oma Lightning rahakoti üle tänu ainult sulle kuuluva võtmega."
-      },
       "description": "Sõlmed on nagu teie isiklikud serverid. Bitcoini puhul on see tarkvara, mis võimaldab teil võrku käitada, tehinguid koguda, reegleid kontrollida ja olla tõeliselt suveräänne. Meie ökosüsteemis on erinevaid sõlmi, alates Bitcoin Core'ist kuni Lightning'i rakenduste, RGB ja muude arenenumate privaatsuslahendusteni.",
-      "bitcoin": {
-        "description": "Bitcoin Core'i sõlm on teie Bitcoini iseseisvuse riida nullpunkt. See võimaldab teil käivitada Bitcoini tarkvara ning olla osa võrgust. Kinnitate plokke ja tehinguid, otsustate, milliseid reegleid soovite võrgus rakendada ning lõpetate vahendajate kasutamise tehingute levitamiseks. Bitcoini sõlme käitamiseks on palju võimalusi, millest mõned on kasutajasõbralikumad kui teised."
-      },
-      "rgb": {
-        "description": "RGB on Bitcoini ja Lightning võrgu jaoks mõeldud skaleeritav ning konfidentsiaalne nutikate lepingute süsteem. See on programmeerimiskiht Bitcoinile, mis hõlmab endas privaatse ja vastastikuse omandiõiguse, abstraktsiooni ja murede eraldamise kontseptsioone ning esindab \"plokiahela-järgset\"."
-      },
       "shortDescription": "Lahendused Bitcoini sõlme käitamiseks ja võrguga liitumiseks"
-    },
-    "others": {
-      "title": "Teised",
-      "general": {
-        "description": "Tutvuge meie üldiste juhenditega, et suurendada oma teadmisi arvutiteaduses ja muudes isikliku sõltumatusega seotud valdkondades!"
-      },
-      "contribution": {
-        "description": "Õppige, kuidas panustada PlanB võrgustikku ning omanadage meie sisemiselt kasutatavaid avatud lähtekoodiga tööriistu läbi meie detailsete õpetuste!"
-      },
-      "OpenSource": {
-        "description": "Avastage meie õpetusi, mis on pühendatud avatud lähtekoodiga tööriistade kasutamisele!"
-      },
-      "DIY": {
-        "description": "Avastage meie \"Tee ise\" õpetusi, et õppida iseseisvalt looma asju, mis on seotud Bitcoiniga, arvutiga töötamise ja individuaalse suveräänsusega!"
-      },
-      "description": "Sukelduge suurde õpetuste kogusse, mis on Bitcoini eetosega tihedalt seotud. Alates ise tegemisest kuni avatud lähtekoodiga õpetusteni, avastage uusi teadmiste valdkondi, et saada veelgi iseseisvamaks.",
-      "shortDescription": "Avastage erinevaid õpetusi Bitcoiniga tihedalt seotud teemadel"
     },
     "pageTitle": "Avastage meie õpetusi",
     "pageSubtitle": "Kergita Bitcoini saladuseloori, avastades selle laiahaardelist ökosüsteemi",
