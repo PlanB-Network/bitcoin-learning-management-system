@@ -74,7 +74,7 @@ export const getCalendarEventsQuery = (
   LEFT JOIN LATERAL (
     SELECT ARRAY_AGG(pr.name) as professors
     FROM content.course_professors cp
-    JOIN content.professors pr on cp.contributor_id = pr.contributor_id
+    JOIN content.professors pr on cp.professor_id = pr.id
     WHERE cp.course_id = cl.course_id
   ) AS cp_agg ON TRUE
   ${uid ? sql`WHERE cp.uid = ${uid} AND cp.payment_status = 'paid'` : sql`WHERE cp.payment_status = 'paid'`}
