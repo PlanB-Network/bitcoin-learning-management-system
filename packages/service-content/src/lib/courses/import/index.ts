@@ -10,7 +10,6 @@ import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent, ProofreadingEntry } from '../../types.js';
 import {
-  convertStringToTimestamp,
   getContentType,
   getRelativePath,
   separateContentFiles,
@@ -343,20 +342,6 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             parsedCourse.is_planb_school = false;
           }
 
-          const startDateTimestamp = parsedCourse.start_date
-            ? convertStringToTimestamp(parsedCourse.start_date.toString())
-            : null;
-
-          const endDateTimestamp = parsedCourse.end_date
-            ? convertStringToTimestamp(parsedCourse.end_date.toString())
-            : null;
-
-          const paymentExpirationDate = parsedCourse.payment_expiration_date
-            ? convertStringToTimestamp(
-                parsedCourse.payment_expiration_date.toString(),
-              )
-            : null;
-
           const lastUpdated = course.files.sort((a, b) => b.time - a.time)[0];
 
           if (!parsedCourse.format) {
@@ -390,15 +375,15 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.subtopic},
                   ${parsedCourse.original_language},
                   ${parsedCourse.requires_payment === true},
-                  ${paymentExpirationDate},
+                  ${parsedCourse.payment_expiration_date},
                   ${parsedCourse.published_at},
                   ${parsedCourse.format},
                   ${parsedCourse.online_price_dollars},
                   ${parsedCourse.inperson_price_dollars},
                   ${parsedCourse.paid_description},
                   ${parsedCourse.paid_video_link},
-                  ${startDateTimestamp},
-                  ${endDateTimestamp},
+                  ${parsedCourse.start_date},
+                  ${parsedCourse.end_date},
                   ${parsedCourse.contact},
                   ${parsedCourse.available_seats},
                   ${parsedCourse.available_seats},
