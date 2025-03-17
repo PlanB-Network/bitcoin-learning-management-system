@@ -22,7 +22,7 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
 
     const courses = await postgres.exec(
       getProfessorCoursesQuery({
-        contributorId: professor.contributorId,
+        professorId: professor.id,
         language,
       }),
     );
@@ -30,7 +30,7 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
     const professors = await postgres
       .exec(
         getProfessorsQuery({
-          contributorIds: courses.flatMap((course) => course.professors),
+          professorIds: courses.flatMap((course) => course.professors),
           language,
         }),
       )
@@ -40,26 +40,26 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
 
     const tutorials = await postgres.exec(
       getProfessorTutorialsQuery({
-        contributorId: professor.contributorId,
+        professorId: professor.id,
         language,
       }),
     );
 
-    const professorsMap = indexBy(professors, 'contributorId');
+    const professorsMap = indexBy(professors, 'id');
 
     return {
       ...formatProfessor(professor),
       courses: courses.map((course) => {
         const sortedProfessors = course.professors
-          .map((contributorId) => professorsMap.get(contributorId))
+          .map((id) => professorsMap.get(id))
           .filter((p) => p !== undefined);
 
         return {
           ...course,
           professors: sortedProfessors.filter(
             (professor) =>
-              professor.contributorId !== undefined &&
-              course.professors.includes(professor.contributorId),
+              professor.id !== undefined &&
+              course.professors.includes(professor.id),
           ),
         };
       }),

@@ -18,6 +18,7 @@ export const joinedEventSchema = eventSchema.merge(
     .object({
       tags: z.array(z.string()),
       languages: z.array(z.string()),
+      professorName: z.string().optional(),
     })
     .merge(
       z.object({

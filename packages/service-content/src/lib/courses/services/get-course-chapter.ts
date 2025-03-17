@@ -29,7 +29,7 @@ export const createGetCourseChapter = (dependencies: Dependencies) => {
     const part = course.parts.find((part) => part.partId === chapter?.partId);
 
     const professors = await postgres.exec(
-      getProfessorsQuery({ contributorIds: chapter?.professors, language }),
+      getProfessorsQuery({ professorIds: chapter?.professors, language }),
     );
 
     // Should never happen if a chapter was found

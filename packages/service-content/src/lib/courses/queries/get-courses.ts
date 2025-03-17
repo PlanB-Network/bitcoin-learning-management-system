@@ -37,13 +37,13 @@ export const getCoursesQuery = (language?: string) => {
       cl.raw_description,
       c.last_updated,
       c.last_commit,
-      COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) as professors
+      COALESCE(cp_agg.professors, ARRAY[]::uuid[]) as professors
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
 
     -- Lateral join for aggregating professors
     LEFT JOIN LATERAL (
-      SELECT ARRAY_AGG(cp.contributor_id) as professors
+      SELECT ARRAY_AGG(cp.professor_id) as professors
       FROM content.course_professors cp
       WHERE cp.course_id = c.id
     ) AS cp_agg ON TRUE
@@ -99,13 +99,13 @@ export const getProfessorCoursesQuery = (
       cl.raw_description,
       c.last_updated,
       c.last_commit,
-      COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) as professors
+      COALESCE(cp_agg.professors, ARRAY[]::uuid[]) as professors
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
 
     -- Lateral join for aggregating professors
     LEFT JOIN LATERAL (
-      SELECT ARRAY_AGG(cp.contributor_id) as professors
+      SELECT ARRAY_AGG(cp.professor_id) as professors
       FROM content.course_professors cp
       WHERE cp.course_id = c.id
     ) AS cp_agg ON TRUE

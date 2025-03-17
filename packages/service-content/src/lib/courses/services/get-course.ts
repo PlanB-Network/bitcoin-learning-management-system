@@ -25,13 +25,13 @@ export const createGetCourse = ({ postgres }: Dependencies) => {
     );
 
     const professors = await postgres.exec(
-      getProfessorsQuery({ contributorIds: course.professors, language }),
+      getProfessorsQuery({ professorIds: course.professors, language }),
     );
 
-    const professorsMap = indexBy(professors, 'contributorId');
+    const professorsMap = indexBy(professors, 'id');
 
     const sortedProfessors = course.professors
-      .map((contributorId) => professorsMap.get(contributorId))
+      .map((id) => professorsMap.get(id))
       .filter((p) => p !== undefined);
 
     const partsWithChapters = parts.map((part) => ({

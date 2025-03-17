@@ -1,10 +1,9 @@
 import { firstRow } from '@blms/database';
-import type { GetTutorialResponse } from '@blms/types';
 
+import type { GetTutorialResponse } from '@blms/types';
 import type { Dependencies } from '../../dependencies.js';
+import { getProfessorQuery } from '../../professors/queries/get-professor.js';
 import { formatProfessor } from '../../professors/services/utils.js';
-import { omit } from '../../utils.js';
-import { getCreditsQuery } from '../queries/get-credits.js';
 import { getTutorialQuery } from '../queries/get-tutorial.js';
 
 export const createGetTutorial = ({ postgres }: Dependencies) => {
@@ -22,40 +21,15 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
       throw new Error('Tutorial not found');
     }
 
-    const credits = await postgres
-      .exec(getCreditsQuery(tutorial.id, language))
-      .then(firstRow);
-
-    if (!credits) {
-      return {
-        ...tutorial,
-        credits: undefined,
-      };
-    }
+    const professor = tutorial.professorId
+      ? await postgres
+          .exec(getProfessorQuery(tutorial.professorId, language))
+          .then(firstRow)
+      : null;
 
     return {
       ...tutorial,
-      credits: {
-        ...omit(credits, [
-          'tutorialId',
-          'contributorId',
-          'lightningAddress',
-          'lnurlPay',
-          'paynym',
-          'silentPayment',
-          'tipsUrl',
-        ]),
-        professor: credits.professor
-          ? formatProfessor(credits.professor)
-          : undefined,
-        tips: {
-          lightningAddress: credits.lightningAddress,
-          lnurlPay: credits.lnurlPay,
-          paynym: credits.paynym,
-          silentPayment: credits.silentPayment,
-          url: credits.tipsUrl,
-        },
-      },
+      professor: professor ? formatProfessor(professor) : undefined,
     };
   };
 };

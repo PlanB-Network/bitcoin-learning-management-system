@@ -2,22 +2,16 @@ import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 import {
-  contentTutorialCredits,
   contentTutorialLikesDislikes,
   contentTutorials,
   contentTutorialsLocalized,
 } from '@blms/database';
-
-import {
-  formattedProfessorSchema,
-  joinedProfessorSchema,
-} from './professor.js';
+import { formattedProfessorSchema } from './professor.js';
 
 export const tutorialSchema = createSelectSchema(contentTutorials);
 export const tutorialLocalizedSchema = createSelectSchema(
   contentTutorialsLocalized,
 );
-export const tutorialCreditSchema = createSelectSchema(contentTutorialCredits);
 
 export const tutorialLikeDislikeSchema = createSelectSchema(
   contentTutorialLikesDislikes,
@@ -33,6 +27,8 @@ export const joinedTutorialLightSchema = tutorialSchema
     category: true,
     subcategory: true,
     projectId: true,
+    professorId: true,
+    creditLink: true,
     originalLanguage: true,
     lastUpdated: true,
     lastCommit: true,
@@ -55,12 +51,6 @@ export const joinedTutorialLightSchema = tutorialSchema
 export const joinedTutorialSchema = joinedTutorialLightSchema.merge(
   tutorialLocalizedSchema.pick({
     rawContent: true,
-  }),
-);
-
-export const joinedTutorialCreditSchema = tutorialCreditSchema.merge(
-  z.object({
-    professor: joinedProfessorSchema.optional(),
   }),
 );
 
@@ -90,28 +80,6 @@ export const tutorialWithProfessorNameSchema = tutorialSchema
 
 export const getTutorialResponseSchema = joinedTutorialSchema.merge(
   z.object({
-    credits: joinedTutorialCreditSchema
-      .omit({
-        tutorialId: true,
-        contributorId: true,
-        lightningAddress: true,
-        lnurlPay: true,
-        paynym: true,
-        silentPayment: true,
-        tipsUrl: true,
-      })
-      .merge(
-        z.object({
-          professor: formattedProfessorSchema.optional(),
-          tips: z.object({
-            lightningAddress: joinedTutorialCreditSchema.shape.lightningAddress,
-            lnurlPay: joinedTutorialCreditSchema.shape.lnurlPay,
-            paynym: joinedTutorialCreditSchema.shape.paynym,
-            silentPayment: joinedTutorialCreditSchema.shape.silentPayment,
-            url: joinedTutorialCreditSchema.shape.tipsUrl,
-          }),
-        }),
-      )
-      .optional(),
+    professor: formattedProfessorSchema.optional(),
   }),
 );

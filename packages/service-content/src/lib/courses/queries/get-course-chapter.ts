@@ -32,7 +32,7 @@ export const getCourseChapterQuery = (chapterId: string, language?: string) => {
       live_language,
       c.last_updated,
       c.last_commit,
-      COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) AS professors
+      COALESCE(cp_agg.professors, ARRAY[]::uuid[]) AS professors
     FROM content.course_chapters_localized cl
     JOIN content.courses c ON c.id = cl.course_id
     LEFT JOIN content.course_chapters ch
@@ -40,7 +40,7 @@ export const getCourseChapterQuery = (chapterId: string, language?: string) => {
     LEFT JOIN content.course_parts cpa
       ON ch.part_id = cpa.part_id
     LEFT JOIN LATERAL (
-      SELECT ARRAY_AGG(cp.contributor_id) AS professors
+      SELECT ARRAY_AGG(cp.professor_id) AS professors
       FROM content.course_chapters_localized_professors cp
       WHERE cp.chapter_id = ${chapterId}
         AND ${

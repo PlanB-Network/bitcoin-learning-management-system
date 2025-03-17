@@ -582,6 +582,20 @@
       "when": 1741872176890,
       "tag": "0082_silky_quasimodo",
       "breakpoints": true
+    },
+    {
+      "idx": 83,
+      "version": "7",
+      "when": 1742206283919,
+      "tag": "0083_lethal_sandman",
+      "breakpoints": true
+    },
+    {
+      "idx": 84,
+      "version": "7",
+      "when": 1742209749045,
+      "tag": "0084_faithful_marauders",
+      "breakpoints": true
     }
   ]
 }

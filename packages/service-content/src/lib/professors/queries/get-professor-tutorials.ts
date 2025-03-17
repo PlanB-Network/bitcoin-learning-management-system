@@ -3,27 +3,27 @@ import type { JoinedTutorial } from '@blms/types';
 
 export const getProfessorTutorialsQuery = ({
   id,
-  contributorId,
+  professorId,
   language,
 }: {
   language?: string;
 } & (
   | {
       id?: undefined;
-      contributorId: string;
+      professorId: string;
     }
   | {
       id: string;
-      contributorId?: undefined;
+      professorId?: undefined;
     }
 )) => {
   const whereClauses = [];
 
   if (id !== undefined) {
-    whereClauses.push(sql`tc.tutorial_id = ${id}`);
+    whereClauses.push(sql`t.id = ${id}`);
   }
-  if (contributorId !== undefined) {
-    whereClauses.push(sql`tc.contributor_id = ${contributorId}`);
+  if (professorId !== undefined) {
+    whereClauses.push(sql`t.professor_id = ${professorId}`);
   }
   if (language !== undefined) {
     whereClauses.push(sql`tl.language = LOWER(${language})`);
@@ -37,6 +37,8 @@ export const getProfessorTutorialsQuery = ({
     SELECT
       t.id,
       t.project_id,
+      t.professor_id,
+      t.credit_link,
       t.path,
       t.logo_url,
       t.name,
@@ -54,9 +56,6 @@ export const getProfessorTutorialsQuery = ({
       COALESCE(likes_agg.dislike_count, 0) AS dislike_count
     FROM content.tutorials t
     JOIN content.tutorials_localized tl ON t.id = tl.tutorial_id
-
-    -- Join to get the tutorial credits
-    JOIN content.tutorial_credits tc ON tc.tutorial_id = t.id
 
     -- Lateral join for aggregating tags
     LEFT JOIN LATERAL (
@@ -80,6 +79,8 @@ export const getProfessorTutorialsQuery = ({
     GROUP BY
       t.id,
       t.project_id,
+      t.professor_id,
+      t.credit_link,
       t.logo_url,
       tl.language,
       t.level,

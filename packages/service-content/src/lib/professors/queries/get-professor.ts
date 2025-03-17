@@ -31,24 +31,23 @@ export const getProfessorQuery = (id: string, language?: string) => {
         ARRAY_AGG(c.index) AS courses_indexes
       FROM content.course_professors cp
       JOIN content.courses c ON c.id = cp.course_id
-      WHERE cp.contributor_id = p.contributor_id
+      WHERE cp.professor_id = p.id
         AND c.is_archived = false
     ) ca ON TRUE
 
     -- Lateral join for tutorials
     LEFT JOIN LATERAL (
-      SELECT COUNT(tc) AS tutorials_count
-      FROM content.tutorial_credits tc
-      WHERE tc.contributor_id = p.contributor_id
+      SELECT COUNT(tu) AS tutorials_count
+      FROM content.tutorials tu
+      WHERE tu.professor_id = p.id
     ) tca ON TRUE
 
     -- Lateral join for lectures
     LEFT JOIN LATERAL (
       SELECT COUNT(ev) AS lectures_count
       FROM content.events ev
-      WHERE ev.professor = p.contributor_id
+      WHERE ev.professor = p.id
     ) lca ON TRUE
-
 
     WHERE p.id = ${id}
     ${language ? sql`AND pl.language = LOWER(${language})` : sql``}

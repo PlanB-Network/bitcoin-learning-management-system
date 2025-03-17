@@ -23,6 +23,8 @@ export const getTutorialsQuery = (category?: string, language?: string) => {
           t.category,
           t.subcategory,
           t.project_id,
+          t.professor_id,
+          t.credit_link,
           t.original_language,
           tl.title,
           tl.description,
@@ -69,6 +71,8 @@ export const getTutorialsQuery = (category?: string, language?: string) => {
           t.subcategory,
           t.original_language,
           t.project_id,
+          t.professor_id,
+          t.credit_link,
           tl.title,
           tl.description,
           t.last_updated,
@@ -149,8 +153,7 @@ export const getSortedTutorialsWithProfessorNameQuery = (
               p.name,
               p.id
           FROM content.professors p
-          JOIN content.tutorial_credits tc ON tc.contributor_id = p.contributor_id
-          WHERE tc.tutorial_id = t.id
+          WHERE t.professor_id = p.id
           LIMIT 1
       ) AS professor ON TRUE
 

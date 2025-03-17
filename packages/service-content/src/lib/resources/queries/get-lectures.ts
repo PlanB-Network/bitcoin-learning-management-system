@@ -5,7 +5,7 @@ export const getLecturesQuery = (professorId?: string) => {
   return sql<JoinedEvent[]>`
     SELECT
       e.*,
-      COALESCE(p.name, '') AS professor,
+      COALESCE(p.name, '') AS professor_name,
       COALESCE(ta.tags, ARRAY[]::text[]) AS tags,
       COALESCE(la.languages, ARRAY[]::text[]) AS languages
     FROM content.events e
@@ -14,7 +14,7 @@ export const getLecturesQuery = (professorId?: string) => {
     LEFT JOIN LATERAL (
       SELECT pr.name as name
       FROM content.professors pr
-      WHERE pr.contributor_id = e.professor
+      WHERE pr.id = e.professor
     ) p ON TRUE
 
     -- Lateral join for tags

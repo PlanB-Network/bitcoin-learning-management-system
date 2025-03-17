@@ -3,18 +3,18 @@ import type { JoinedCourseWithProfessorsContributorIds } from '@blms/types';
 
 export const getProfessorCoursesQuery = ({
   id,
-  contributorId,
+  professorId,
   language,
 }: {
   language?: string;
 } & (
   | {
       id?: undefined;
-      contributorId: string;
+      professorId: string;
     }
   | {
       id: number;
-      contributorId?: undefined;
+      professorId?: undefined;
     }
 )) => {
   const whereClauses = [];
@@ -22,9 +22,10 @@ export const getProfessorCoursesQuery = ({
   if (id !== undefined) {
     whereClauses.push(sql`p.id = ${id}`);
   }
-  if (contributorId !== undefined) {
-    whereClauses.push(sql`p.contributor_id = ${contributorId}`);
+  if (professorId !== undefined) {
+    whereClauses.push(sql`p.id = ${professorId}`);
   }
+
   if (language !== undefined) {
     whereClauses.push(
       sql`(cl.language = LOWER(${language}) OR cl.language = c.original_language)`,
@@ -72,11 +73,11 @@ export const getProfessorCoursesQuery = ({
       cl.raw_description,
       c.last_updated,
       c.last_commit,
-      COALESCE(cp_agg.professors, ARRAY[]::varchar[20]) as professors
+      COALESCE(cp_agg.professors, ARRAY[]::uuid[]) as professors
     FROM content.professors p
 
     -- Join to get the course_professors
-    JOIN content.course_professors cp ON p.contributor_id = cp.contributor_id
+    JOIN content.course_professors cp ON p.id = cp.professor_id
 
     -- Join to get the actual course details
     JOIN content.courses c ON cp.course_id = c.id
@@ -86,7 +87,7 @@ export const getProfessorCoursesQuery = ({
 
     -- Lateral join for aggregating professors
     LEFT JOIN LATERAL (
-      SELECT ARRAY_AGG(cp.contributor_id) as professors
+      SELECT ARRAY_AGG(cp.professor_id) as professors
       FROM content.course_professors cp
       WHERE cp.course_id = c.id
     ) AS cp_agg ON TRUE

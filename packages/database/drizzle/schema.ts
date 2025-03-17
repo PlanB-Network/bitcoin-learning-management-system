@@ -1271,7 +1271,7 @@ export const contentEvents = content.table('events', (t) => ({
   addressLine1: t.text('address_line_1'),
   addressLine2: t.text('address_line_2'),
   addressLine3: t.text('address_line_3'),
-  professor: t.text(),
+  professor: t.uuid(),
   courseRelated: t.text(),
   websiteUrl: t.text(),
   replayUrl: t.text(),
@@ -1396,6 +1396,9 @@ export const contentTutorials = content.table(
     projectId: t
       .uuid()
       .references(() => contentProjects.id, { onDelete: 'set null' }),
+    professorId: t.uuid().references(() => contentProfessors.id, {
+      onUpdate: 'cascade',
+    }),
     path: t.varchar({ length: 255 }).unique().notNull(),
     logoUrl: t.text().notNull().default(''),
 
@@ -1405,6 +1408,7 @@ export const contentTutorials = content.table(
     originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
 
     level: t.varchar({ length: 255 }).notNull(),
+    creditLink: t.text(),
 
     lastUpdated: t
       .timestamp({
@@ -1845,14 +1849,13 @@ export const contentCourseProfessors = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    contributorId: t
-      .varchar({ length: 20 })
-      .notNull()
-      .references(() => contentContributors.id, { onDelete: 'cascade' }),
+    professorId: t.uuid().references(() => contentProfessors.id, {
+      onUpdate: 'cascade',
+    }),
   }),
   (table) => ({
     pk: primaryKey({
-      columns: [table.courseId, table.contributorId],
+      columns: [table.courseId, table.professorId],
     }),
   }),
 );
@@ -1874,46 +1877,19 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
         onDelete: 'cascade',
       }),
     language: t.varchar({ length: 10 }).notNull(),
-    contributorId: t
-      .varchar({ length: 20 })
-      .notNull()
-      .references(() => contentContributors.id, { onDelete: 'cascade' }),
+    professorId: t.uuid().references(() => contentProfessors.id, {
+      onUpdate: 'cascade',
+    }),
   }),
   (table) => ({
     pk: primaryKey({
       columns: [
-        table.contributorId,
+        table.professorId,
         table.courseId,
         table.chapterId,
         table.language,
       ],
     }),
-  }),
-);
-
-export const contentTutorialCredits = content.table(
-  'tutorial_credits',
-  (t) => ({
-    tutorialId: t
-      .uuid()
-      .primaryKey()
-      .notNull()
-      .references(() => contentTutorials.id, {
-        onDelete: 'cascade',
-      }),
-    contributorId: t
-      .varchar({ length: 20 })
-      .references(() => contentContributors.id, { onDelete: 'cascade' }),
-
-    name: t.varchar({ length: 255 }),
-    link: t.text(),
-
-    // Tips
-    lightningAddress: t.text(),
-    lnurlPay: t.text(),
-    paynym: t.text(),
-    silentPayment: t.text(),
-    tipsUrl: t.text(),
   }),
 );
 

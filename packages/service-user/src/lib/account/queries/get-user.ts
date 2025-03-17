@@ -22,15 +22,15 @@ export const getUserByIdWithDetailsQuery = (uid: string) => {
     SELECT
       ua.*,
       COALESCE(array_agg(DISTINCT cp.course_id), '{}') AS professor_courses,
-      COALESCE(array_agg(DISTINCT tp.tutorial_id), '{}') AS professor_tutorials,
+      COALESCE(array_agg(DISTINCT tu.id), '{}') AS professor_tutorials,
       COALESCE(array_agg(DISTINCT bc.course_id), '{}') AS bought_courses
     FROM users.accounts ua
     LEFT JOIN content.professors p ON ua.professor_id = p.id
-    LEFT JOIN content.course_professors cp ON p.contributor_id = cp.contributor_id AND cp.course_id IS NOT NULL
-    LEFT JOIN content.tutorial_credits tp ON p.contributor_id = tp.contributor_id AND tp.tutorial_id IS NOT NULL
+    LEFT JOIN content.course_professors cp ON p.id = cp.professor_id AND cp.course_id IS NOT NULL
+    LEFT JOIN content.tutorials tu ON p.id = tu.professor_id AND tu.id IS NOT NULL
     LEFT JOIN users.course_payment bc on ua.uid = bc.uid AND bc.payment_status = 'paid'
     WHERE ua.uid = ${uid}
-    GROUP BY ua.uid, p.contributor_id;
+    GROUP BY ua.uid, p.id;
   `;
 };
 

@@ -69,6 +69,7 @@ export interface JoinedEvent {
   lastSync: Date;
   tags: string[];
   languages: string[];
+  professorName?: string | undefined;
   projectName?: string | undefined;
 }
 

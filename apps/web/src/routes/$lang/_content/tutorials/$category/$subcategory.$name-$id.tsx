@@ -79,31 +79,31 @@ const Header = ({
       </section>
 
       <section className="flex justify-between items-center w-full mt-1 md:mt-5 gap-4">
-        {tutorial.credits?.link && (
+        {tutorial.creditLink && (
           <span className="flex items-center gap-1.5 subtitle-small-14px text-newBlack-5 max-md:hidden w-full">
             <span className="shrink-0">
               {t('tutorials.details.source').toUpperCase()}
             </span>
             <a
-              href={tutorial.credits.link}
+              href={tutorial.creditLink}
               target="_blank"
               rel="noreferrer"
               className="max-w-[350px] leading-snug tracking-015px underline text-newBlue-1 truncate lowercase"
             >
-              {tutorial.credits.link}
+              {tutorial.creditLink}
             </a>
           </span>
         )}
-        {tutorial.credits?.professor?.name && (
+        {tutorial.professor?.name && (
           <span className="flex items-center gap-1.5 text-newBlack-5 shrink-0">
             <span className="max-md:hidden subtitle-small-caps-14px">
               {t('tutorials.details.author').toUpperCase()}
             </span>
             <a
-              href={`/professor/${formatNameForURL(tutorial.credits.professor.name)}-${tutorial.credits.professor.id}`}
+              href={`/professor/${formatNameForURL(tutorial.professor?.name)}-${tutorial.professor?.id}`}
               className="text-newBlack-1 subtitle-medium-16px md:title-small-med-16px hover:underline"
             >
-              {tutorial.credits.professor.name}
+              {tutorial.professor?.name}
             </a>
           </span>
         )}
@@ -121,7 +121,7 @@ const AuthorDetails = ({
 }: {
   tutorial: NonNullable<TRPCRouterOutput['content']['getTutorial']>;
 }) => {
-  const author = tutorial?.credits?.professor;
+  const author = tutorial?.professor;
 
   return (
     <>
@@ -504,20 +504,20 @@ function TutorialDetails() {
                     </Suspense>
                   </div>
                   <LikeDislikeButtons />
-                  {tutorial.credits?.link && (
+                  {tutorial.creditLink && (
                     <span className="w-full flex flex-col gap-4 subtitle-medium-caps-18px subtitle-small-caps-14px text-darkOrange-5 mx-auto">
                       {t('tutorials.details.source')}
                       <a
-                        href={tutorial.credits.link}
+                        href={tutorial.creditLink}
                         target="_blank"
                         rel="noreferrer"
                         className="leading-snug tracking-015px underline text-newBlue-1 break-words lowercase max-w-full truncate"
                       >
-                        {tutorial.credits.link}
+                        {tutorial.creditLink}
                       </a>
                     </span>
                   )}
-                  {tutorial.credits?.professor?.id && (
+                  {tutorial.professor?.id && (
                     <AuthorDetails tutorial={tutorial} />
                   )}
                   <Credits tutorial={tutorial} proofreading={proofreading} />

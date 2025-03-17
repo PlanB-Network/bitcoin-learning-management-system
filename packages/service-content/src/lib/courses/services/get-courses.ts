@@ -16,7 +16,7 @@ export const createGetCourses = ({ postgres }: Dependencies) => {
     const professors = await postgres
       .exec(
         getProfessorsQuery({
-          contributorIds: courses.flatMap((course) => course.professors),
+          professorIds: courses.flatMap((course) => course.professors),
           language,
         }),
       )
@@ -24,21 +24,19 @@ export const createGetCourses = ({ postgres }: Dependencies) => {
         professors.map((element) => formatProfessor(element)),
       );
 
-    const professorsMap = indexBy(professors, 'contributorId');
+    const professorsMap = indexBy(professors, 'id');
 
     return courses.map((course) => {
       const sortedProfessors = course.professors
-        .map((contributorId) => professorsMap.get(contributorId))
+        .map((id) => professorsMap.get(id))
         .filter((p) => p !== undefined);
 
       return {
         ...course,
         professors: sortedProfessors.filter(
           (professor) =>
-            professor?.contributorId !== undefined &&
-            course.professors.some(
-              (p) => String(p) === professor.contributorId,
-            ),
+            professor?.id !== undefined &&
+            course.professors.some((p) => String(p) === professor.id),
         ),
       };
     });
@@ -57,7 +55,7 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
     const professors = await postgres
       .exec(
         getProfessorsQuery({
-          contributorIds: courses.flatMap((course) => course.professors),
+          professorIds: courses.flatMap((course) => course.professors),
           language,
         }),
       )
@@ -65,19 +63,19 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
         professors.map((element) => formatProfessor(element)),
       );
 
-    const professorsMap = indexBy(professors, 'contributorId');
+    const professorsMap = indexBy(professors, 'id');
 
     return courses.map((course) => {
       const sortedProfessors = course.professors
-        .map((contributorId) => professorsMap.get(contributorId))
+        .map((id) => professorsMap.get(id))
         .filter((p) => p !== undefined);
 
       return {
         ...course,
         professors: sortedProfessors.filter(
           (professor) =>
-            professor?.contributorId !== undefined &&
-            course.professors.includes(professor.contributorId),
+            professor?.id !== undefined &&
+            course.professors.includes(professor.id),
         ),
       };
     });

@@ -97,7 +97,7 @@ interface CourseMain {
   topic: string;
   subtopic: string;
   original_language: string;
-  professors: string[];
+  professors_id: string[];
   tags?: string[];
   requires_payment: boolean;
   payment_expiration_date?: number;
@@ -134,7 +134,7 @@ interface Chapter {
   title: string;
   sections: string[];
   raw_content: string;
-  professors: string[];
+  professorIds: string[];
   releasePlace: string | null;
   isOnline: boolean;
   isInPerson: boolean;
@@ -205,7 +205,7 @@ const extractParts = (markdown: string): Part[] => {
           title: token.text as string,
           sections: [],
           raw_content: '',
-          professors: [],
+          professorIds: [],
           releasePlace: '',
           isOnline: false,
           isInPerson: false,
@@ -262,9 +262,9 @@ const extractParts = (markdown: string): Part[] => {
           }
           currentChapter.liveLanguage = extractData(token, 'liveLanguage');
 
-          const professor = extractData(token, 'professor');
-          if (professor) {
-            currentChapter.professors.push(professor);
+          const chapterProfessorId = extractData(token, 'professorId');
+          if (chapterProfessorId) {
+            currentChapter.professorIds.push(chapterProfessorId);
           }
 
           const tagsToRemove = [
@@ -441,18 +441,9 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             throw new Error('Could not insert course');
           }
 
-          await transaction`
-                INSERT INTO content.contributors ${transaction(
-                  parsedCourse.professors.map((professor) => ({
-                    id: professor,
-                  })),
-                )}
-                ON CONFLICT DO NOTHING
-              `;
-
-          for (const prof of parsedCourse.professors) {
+          for (const prof of parsedCourse.professors_id) {
             await transaction`
-            INSERT INTO content.course_professors (course_id, contributor_id)
+            INSERT INTO content.course_professors (course_id, professor_id)
             VALUES(
               ${result.id},
               ${prof})
@@ -682,7 +673,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     last_sync = NOW()
                 `;
 
-                const formatedChapters2 = parts.flatMap((part, partIndex) =>
+                const formattedChapters2 = parts.flatMap((part, partIndex) =>
                   part.chapters.map((chapter, chapterIndex) => ({
                     course_id: courseId,
                     chapter_id: chapter.chapterId,
@@ -692,17 +683,16 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     title: chapter.title,
                     sections: chapter.sections,
                     raw_content: chapter.raw_content.trim(),
-                    professors: chapter.professors,
+                    professorIds: chapter.professorIds,
                   })),
                 );
 
-                for (const chapter of formatedChapters2) {
-                  for (const professor of chapter.professors) {
-                    await transaction`INSERT INTO content.contributors (id) VALUES (${professor}) ON CONFLICT DO NOTHING`;
+                for (const chapter of formattedChapters2) {
+                  for (const professorId of chapter.professorIds) {
                     await transaction`
-                        INSERT INTO content.course_chapters_localized_professors (course_id, chapter_id, language, contributor_id)
-                        VALUES (${courseId}, ${chapter.chapter_id}, ${chapter.language}, ${professor})
-                        ON CONFLICT DO NOTHING
+                      INSERT INTO content.course_chapters_localized_professors (course_id, chapter_id, language, professor_id)
+                      VALUES (${courseId}, ${chapter.chapter_id}, ${chapter.language}, ${professorId})
+                      ON CONFLICT DO NOTHING
                   `;
                   }
                 }

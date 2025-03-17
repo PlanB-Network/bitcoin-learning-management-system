@@ -58,7 +58,7 @@ function ProfessorDetail() {
   );
 
   const { data: lectures } = trpc.content.getLectures.useQuery(
-    { professorId: professor?.contributorId },
+    { professorId: professor?.id },
     { enabled: !!professor, staleTime: 300_000 },
   );
 

@@ -14,22 +14,8 @@ export interface TutorialMain {
   level: string;
   category?: string;
   original_language: string;
-  credits?:
-    | {
-        professor: string;
-        link: string;
-      }
-    | {
-        name: string;
-        link: string;
-        tips?: {
-          lightning_address?: string;
-          lnurl_pay?: string;
-          paynym?: string;
-          silent_payment?: string;
-          url?: string;
-        };
-      };
+  professor_id: string;
+  credit_link: string;
   tags?: string[];
   proofreading: ProofreadingEntry[];
   test_only?: boolean;
@@ -65,10 +51,11 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     }
 
     const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (id, project_id, path, logo_url, name, category, subcategory, original_language, level, last_updated, last_commit, last_sync)
+        INSERT INTO content.tutorials (id, project_id, professor_id, path, logo_url, name, category, subcategory, original_language, level, credit_link, last_updated, last_commit, last_sync)
         VALUES (
           ${parsedTutorial.id},
           ${parsedTutorial.project_id},
+          ${parsedTutorial.professor_id},
           ${tutorial.path},
           ${logoUrl},
           ${tutorial.name},
@@ -76,12 +63,14 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedTutorial.category},
           ${parsedTutorial.original_language},
           ${parsedTutorial.level},
+          ${parsedTutorial.credit_link},
           ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
         )
         ON CONFLICT (id) DO UPDATE SET
           project_id = EXCLUDED.project_id,
+          professor_id = EXCLUDED.professor_id,
           path = EXCLUDED.path,
           logo_url = EXCLUDED.logo_url,
           name = EXCLUDED.name,
@@ -89,6 +78,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           subcategory = EXCLUDED.subcategory,
           original_language = EXCLUDED.original_language,
           level = EXCLUDED.level,
+          credit_link = EXCLUDED.credit_link,
           last_updated = EXCLUDED.last_updated,
           last_commit = EXCLUDED.last_commit,
           last_sync = NOW()
@@ -97,55 +87,6 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     if (!result) {
       throw new Error('Could not insert tutorial');
-    }
-
-    if (parsedTutorial.credits) {
-      if ('professor' in parsedTutorial.credits) {
-        await transaction`
-            INSERT INTO content.contributors (id)
-            VALUES (${parsedTutorial.credits.professor})
-            ON CONFLICT DO NOTHING
-          `;
-
-        await transaction`
-            INSERT INTO content.tutorial_credits (tutorial_id, contributor_id, link)
-            VALUES (${result.id}, ${parsedTutorial.credits.professor}, ${parsedTutorial.credits.link})
-            ON CONFLICT (tutorial_id) DO UPDATE SET
-              contributor_id = EXCLUDED.contributor_id,
-              link = EXCLUDED.link,
-              name = NULL,
-              lightning_address = NULL,
-              lnurl_pay = NULL,
-              paynym = NULL,
-              silent_payment = NULL,
-              tips_url = NULL
-          `;
-      } else {
-        await transaction`
-            INSERT INTO content.tutorial_credits (
-              tutorial_id, name, link, lightning_address,
-              lnurl_pay, paynym, silent_payment, tips_url
-            ) VALUES (
-              ${result.id},
-              ${parsedTutorial.credits.name},
-              ${parsedTutorial.credits.link},
-              ${parsedTutorial.credits.tips?.lightning_address},
-              ${parsedTutorial.credits.tips?.lnurl_pay},
-              ${parsedTutorial.credits.tips?.paynym},
-              ${parsedTutorial.credits.tips?.silent_payment},
-              ${parsedTutorial.credits.tips?.url}
-            )
-            ON CONFLICT (tutorial_id) DO UPDATE SET
-              contributor_id = NULL,
-              name = EXCLUDED.name,
-              link = EXCLUDED.link,
-              lightning_address = EXCLUDED.lightning_address,
-              lnurl_pay = EXCLUDED.lnurl_pay,
-              paynym = EXCLUDED.paynym,
-              silent_payment = EXCLUDED.silent_payment,
-              tips_url = EXCLUDED.tips_url
-          `;
-      }
     }
 
     // If the resource has tags, insert them into the tags table and link them to the resource
