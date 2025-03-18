@@ -195,7 +195,7 @@ function PlanBLabs() {
                     ) : null}
                   </div>
                 </div>
-                <div className="lg:w-[350px] self-center flex flex-row lg:flex-col gap-2 lg:gap-5">
+                <div className="lg:w-[350px] self-center flex flex-col gap-2 lg:gap-5 max-lg:items-center">
                   {lab?.lab?.telegramUrl ? (
                     <a
                       href={lab?.lab?.telegramUrl}
@@ -207,15 +207,26 @@ function PlanBLabs() {
                       </ButtonWithArrow>
                     </a>
                   ) : null}
-                  <a
-                    href="https://www.youtube.com/@PlanBNetwork"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <ButtonWithArrow className="w-fit" variant={'secondary'}>
-                      Youtube
-                    </ButtonWithArrow>
-                  </a>
+                  <div className="flex flex-row gap-3">
+                    <a
+                      href="https://rumble.com/user/planb_network"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ButtonWithArrow className="w-fit" variant={'secondary'}>
+                        Rumble
+                      </ButtonWithArrow>
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@PlanBNetwork"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ButtonWithArrow className="w-fit" variant={'secondary'}>
+                        Youtube
+                      </ButtonWithArrow>
+                    </a>
+                  </div>
                 </div>
               </div>
 
