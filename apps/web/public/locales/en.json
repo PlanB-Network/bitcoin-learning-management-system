@@ -278,6 +278,11 @@
       "planbSchoolHeadline": "The Plan ₿ School, led by Giacomo Zucco, offers intensive three-month educational programs designed to bridge the gap between learning and real-world applications. Beyond traditional classes, students engage in company-led practical projects and a first-class bootcamp dedicated to top performers. Only the best talents advance after two competitive selection rounds, ensuring that the final top students get fully equipped to launch their careers in the Bitcoin industry.",
       "seeCourse": "Discover the course"
     },
+    "format": {
+      "hybrid": "In-person/online",
+      "inperson": "In-person",
+      "online": "Online"
+    },
     "part": {
       "count": "Part {{count}}"
     },

@@ -236,7 +236,7 @@ function CourseDetails() {
             size={isMobile ? 'verySmall' : 'small'}
             className="uppercase"
           >
-            {t(`words.${course.format}`)}
+            {t(`courses.format.${course.format}`)}
           </TextTag>
           {beginnerFriendlyCourses.includes(course.index) && (
             <TextTag
