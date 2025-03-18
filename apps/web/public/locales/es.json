@@ -572,7 +572,6 @@
         "riskAnalyst": "Analista de Riesgos",
         "socialMediaManager": "Administrador de Redes Sociales"
       },
-      "applicationStatus": "Tu aplicación es",
       "availability": "Tu disponibilidad",
       "availabilityStart": "¿Cuándo puedes iniciar?",
       "availabilityStartPlaceholder": "Fecha",
@@ -800,7 +799,12 @@
     "glossaryDescription": "Entiende el lenguaje de Bitcoin",
     "login": "Iniciar Sesión",
     "publicDescription": "Explora artículos de comunicación pública",
-    "newsletterDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos"
+    "newsletterDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
+    "planBLabsDescription": "Únete al grupo de estudio para continuar aprendiendo sobre Lightning, Minería y Privacidad",
+    "socialStudiesDescription": "Estudia el impacto de Bitcoin en la sociedad.",
+    "projectsDescription": "Aprende sobre las empresas y proyectos que contribuyen a mejorar e incrementar la adopción de Bitcoin",
+    "protocolDescription": "Descubre las reglas fundamentales que impulsan la red de Bitcoin.",
+    "securityDescription": "Domina las técnicas para proteger tus activos en Bitcoin."
   },
   "nodeNetwork": {
     "description1": "Creemos que la educación no solo debe llevarse a cabo en línea, sino también en espacios físicos. Para lograr esto, Plan ₿ Network gestiona una red de centros alrededor del mundo para dar la bienvenida a pensadores, emprendedores y educadores que fomentan el avance de Bitcoin y las tecnologías de la libertad.",
@@ -836,7 +840,9 @@
     "newsletters": {
       "title": "Boletines informativos",
       "subtitle": "<0>Otros newsletters</0> que te pueden interesar",
-      "level": "Nivel:"
+      "level": "Nivel:",
+      "author": "Autor : ",
+      "noNewsletters": "Actualmente no hay boletines disponibles para el idioma seleccionado."
     },
     "pageDescription": "Tratar de entender Bitcoin es como explorar un laberinto que no deja de crecer. Para ayudarte en tu camino, hemos recopilado una amplia colección de recursos que abordan una multitud de temas.",
     "pageSubtitle": "Centraliza el conocimiento para distribuirlo mejor",
@@ -852,7 +858,42 @@
     "toggleLabelAll": "Todo",
     "toggleLabelSelectedLanguage": "Idioma seleccionado",
     "pageSubtitleLectures": "<0>Otras repeticiones de clases</0> que te pueden interesar",
-    "pageSubtitleChannels": "<0>Otros canales de Youtube</0> que te pueden interesar"
+    "pageSubtitleChannels": "<0>Otros canales de Youtube</0> que te pueden interesar",
+    "glossary": {
+      "title": "Glosario"
+    },
+    "movies": {
+      "noMovies": "Actualmente no hay Películas ni Documentales disponibles para el idioma seleccionado.",
+      "title": "Películas y Documentales"
+    },
+    "projects": {
+      "title": "Proyectos"
+    },
+    "newsletter": {
+      "check": "Revisa el boletín"
+    },
+    "books": {
+      "author": "Autor : ",
+      "title": "Librería"
+    },
+    "channels": {
+      "title": "Canales de Youtube",
+      "noYoutubeChannels": "Actualmente no hay canales de YouTube para el idioma seleccionado."
+    },
+    "bet": {
+      "title": "Kit de herramientas educativas"
+    },
+    "lectures": {
+      "title": "Repeticiones de Clases",
+      "noLectures": "Actualmente no hay Repeticiones de Clases disponibles para el idioma seleccionado."
+    },
+    "articles": {
+      "title": "Artículos"
+    },
+    "conferences": {
+      "title": "Repeticiones de conferencias"
+    },
+    "toggleFreeOnly": "Gratis"
   },
   "settings": {
     "changePassword": "Cambiar contraseña",
@@ -1001,14 +1042,14 @@
     "filter": "",
     "failed": "",
     "grade": "",
-    "required": "",
+    "required": "Requerido",
     "status": "Estado",
     "teacher": "Profesor",
     "total": "Total",
     "credentials": "Credenciales",
     "diploma": "Diploma",
     "progress": "",
-    "publicationDate": "",
+    "publicationDate": "Fecha de publicación:",
     "id": "",
     "inReview": "",
     "location": "",
@@ -1041,7 +1082,10 @@
     "save": "Guardar",
     "submit": "Enviar",
     "search": "Buscar",
-    "yes": "Sí"
+    "yes": "Sí",
+    "role": "Rol",
+    "projects": "Proyectos",
+    "protocol": "Protocolo"
   },
   "conferences": {
     "addConferences": "Siéntete de agregar cualquier conferencia faltante a través de este repositorio de <0>Github</0>.",
@@ -1067,7 +1111,10 @@
   },
   "payment": {
     "terms": "Consulta nuestros <0>términos generales</0> y condiciones para obtener detalles sobre reembolsos",
-    "total": "Total"
+    "total": "Total",
+    "payWithBitcoin": "Paga con Bitcoin",
+    "payByCard": "Paga con tarjeta",
+    "haveReductionCode": "¿Tienes un código de descuento?"
   },
   "bCert": {
     "pageTitle": "Consigue el ₿-CERT",
@@ -1140,7 +1187,9 @@
     "inProgress": "Proofreading en progreso",
     "reviewEarn": "Revisa y gana sats",
     "status": "Estado del proofreading",
-    "thanks": "¡Un gran agradecimiento a nuestros revisores!"
+    "thanks": "¡Un gran agradecimiento a nuestros revisores!",
+    "descriptionOriginalLanguage": "Incluso si la página está en su idioma original, es importante que una persona la revise para garantizar su precisión.",
+    "rewardsText": "*Las recompensas pueden variar según el tipo de cambio en dólares"
   },
   "lectures": {
     "checkFullCourse": "Explora el curso completo",
@@ -1160,5 +1209,61 @@
     "levels": "Niveles",
     "resources": "Recursos",
     "topics": "Temas"
+  },
+  "movies": {
+    "pageTitle": "Películas y Documentales",
+    "watchTrailer": "Ver el trailer",
+    "goToMovie": "Ve a la película"
+  },
+  "search": {
+    "glossary_words": "Palabras del glosario",
+    "languageSelected": "Idioma seleccionado: {{language}}",
+    "resultEmpty": "¡Ups! No encontramos nada que coincida con tu búsqueda. Revisa la ortografía, prueba con diferentes palabras clave o selecciona otra categoría.",
+    "resultInfo": "Se encontraron {{count}} resultados en {{time}}ms.",
+    "results": "Resultados",
+    "resultsRemaining": "{{count}} resultados restantes",
+    "conference": "Conferencia",
+    "conference_replays": "Repeticiones de conferencias",
+    "course": "Curso",
+    "course_chapter": "Capítulo del curso",
+    "course_part": "Parte del curso",
+    "courses": "Cursos",
+    "event": "Evento",
+    "events": "Eventos",
+    "explorer": {
+      "subtitle": "¿Qué estás buscando?",
+      "title": "Portal de búsqueda"
+    },
+    "filterByType": "Filtrar por tipo",
+    "glossary_word": "Palabra del glosario",
+    "lecture_replay": "Repetición de clase",
+    "lecture_replays": "Repetición de clases",
+    "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "professor": "Profesor",
+    "professors": "Profesores",
+    "resultError": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "all": "Todos",
+    "book": "Libro",
+    "books": "Libros",
+    "categories": "Categorías",
+    "conference_replay": "Repetición de conferencia",
+    "loadMoreResults": "Ver más resultados",
+    "newsletter": "Boletín",
+    "newsletters": "Boletines",
+    "project": "Proyecto",
+    "projects": "Proyectos"
+  },
+  "podcast": {
+    "check": "Revisa el podcast"
+  },
+  "projects": {
+    "networkStrength": "La fortaleza de una red reside en sus miembros",
+    "noRelatedEvents": "Por el momento, no hay eventos próximos vinculados a este educador.",
+    "otherCommunities": "Explora las Comunidades de Plan ₿",
+    "pageTitle": "Proyectos de Bitcoin",
+    "related": "Relacionado",
+    "relatedEvents": "Próximos eventos relacionados",
+    "languages": "Idiomas"
   }
 }

@@ -524,7 +524,6 @@
     "courses": "Kursevi",
     "logout": "Odjava",
     "careerPortal": {
-      "applicationStatus": "Vaša prijava je",
       "availabilityStartPlaceholder": "Datum",
       "beAware": "Budite svesni da će Plan ₿ Network prikupljati i čuvati vaše podatke samo u svrhu regrutacije. Podaci se obrađuju i dele sa našim poslovnim partnerima u skladu sa odredbama Opšte uredbe o zaštiti podataka EU (GDPR). Kliknite <0>ovde</0> da biste saznali više o našem Obaveštenju o privatnosti kandidata.",
       "acceptTermsAndConditions": "Pročitao sam i prihvatam uslove i odredbe",

@@ -18,7 +18,7 @@
     "storyTitle": "La nostra storia",
     "storyContent": "Plan ₿ Network è un'iniziativa per supportare l'educazione Bitcoin in tutto il mondo. È l'insieme di varie aziende appassionate di Bitcoin focalizzate sull'istruzione, software open-source, reti peer-to-peer e sull'appartenenza alla comunità. Insieme, hanno deciso di costruire Plan ₿ Network e offrire all'ecosistema Bitcoin gli strumenti giusti per crescere.",
     "title": "Su Plan ₿ Network",
-    "subtitle": "Vuoi orange-pillare il mondo? Unisciti a Plan ₿ Network",
+    "subtitle": "Vuoi orange-pillare il mondo? Unisciti a Plan ₿ Network.",
     "manifesto": "Crediamo nel futuro decentralizzato offerto da Bitcoin.\n\nLa nostra missione è introdurre Bitcoin a un miliardo di persone in un decennio. I nostri strumenti sono educazione e informazione.\n\nSosteniamo le comunità locali di Bitcoiners fornendo contenuti educativi open-source e offrendo una rete di mentori Bitcoin.\n\nLa nostra filosofia è ispirata dal manifesto cypherpunk. Così come hanno difeso la privacy, noi difendiamo l'educazione. Crediamo che la conoscenza sia la base della libertà e del cambiamento.\n\nSiamo solo Bitcoin.\n\nSosteniamo la responsabilità individuale e l'indipendenza offerta dal possesso delle proprie chiavi.\n\nUrgiamo la verifica, non la fiducia cieca.\n\nCrediamo che sistemando il denaro, sistemiamo il mondo.\n\nSiamo decentralizzati e open-source, evitando qualsiasi singolo punto di guasto.\n\nIncoraggiamo la libera diffusione dei nostri contenuti.\n\nAspiriamo a un mondo che opera dal basso verso l'alto, dove l'individuo è al centro.\n\nSemplifichiamo, educiamo, condividiamo.\n\nUnisciti a noi nella nostra missione di \"orange-pill\" il mondo.\n",
     "description": "Plan ₿ Network aiuta le comunità di tutto il mondo ad organizzarsi per fornire una educazione migliore. La piattaforma sviluppa gli strumenti necessari per raggiungere questo obiettivo, attraverso l'accademia online, il portale tutorial, il kit educativo Bitcoin e il portale risorse."
   },
@@ -30,7 +30,7 @@
     "createOne": "Registrati qui!",
     "emailAddress": "Indirizzo e-mail",
     "errors": {
-      "usernameRegex": "Il nome utente può contenere solo lettere, cifre, trattini bassi(_), punti (.) , e trattini (-)",
+      "usernameRegex": "Il nome utente può contenere solo lettere, cifre, trattini bassi(_), punti (.) , e trattini (-).",
       "usernameRequired": "È richiesto il nome utente.",
       "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri.",
       "displayNameTooShort": "Lo username deve contenere almeno due caratteri.",
@@ -120,7 +120,7 @@
       "objectives": "Obiettivi",
       "objectivesTitle": "Cosa imparerai:",
       "startCourse": "Inizia il corso",
-      "taughtBy": "Questo corso è tenuto da:",
+      "taughtBy": "Questo corso è tenuto da",
       "buyOnlineCourse": "Acquista corso online",
       "inPersonAccess": "È necessario scaricare il biglietto per accedere alla lezione in presenza.",
       "buyInPersonCourse": "Acquista corso in presenza",
@@ -151,7 +151,7 @@
       "planbSchool": "PLAN ₿ SCHOOL"
     },
     "part": {
-      "count": "Parte n°{{count}}/{{total}}"
+      "count": "Parte n°{{count}}"
     },
     "payment": {
       "access_invoice": "Puoi accedere all'invoice dalla dashboard",
@@ -175,7 +175,7 @@
       "onlineDescription": "Ogni lezione viene trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle dirette e ai video di replay.",
       "inPersonDescription": "Ogni lezione si svolge di persona nelle date e nei luoghi specificati, ed è anche trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle lezioni sia in presenza che online.\nNon dimenticare di prenotare il tuo posto per le lezioni a cui vuoi partecipare di persona.",
       "onlineCallout": "Stai per acquistare l'accesso <strong>online</strong> a questo corso.",
-      "checkoutError": "Si è verificato un errore durante il processo di pagamento. Per favore, riprova."
+      "checkoutError": "Si è verificato un errore durante il processo di pagamento.\nPer favore, riprova."
     },
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e leggi le spiegazioni",
@@ -193,7 +193,7 @@
       "commentPublic": "Commento (pubblico)",
       "commentTeacher": "Commento per l'insegnante (privato)",
       "difficulty": "Difficoltà",
-      "feedbackSessionTitle": "Sessione di feedback",
+      "feedbackSessionTitle": "Aiutaci a migliorare i nostri corsi inviandoci il tuo feedback.",
       "generalGrade": "Valutazione generale",
       "length": "Lunghezza",
       "neutral": "neutrale",
@@ -264,7 +264,7 @@
       "submit": "Invia",
       "sureSubmit": "Sei sicuro di inviare il tuo esame?",
       "tamperProof": "A prova di manomissione: La blockchain garantisce che nessuno possa alterare o falsificare le tue credenziali.",
-      "testKnowledge": "Ora che hai completato questo corso, perché non testare le tue conoscenze?",
+      "testKnowledge": "Ora che hai completato questo corso, metti alla prova cosa hai imparato.",
       "testResults": "Risultati del test",
       "timeStampBenefits": "Perché è importante:",
       "timeStamped": "provvisto di timestamp.",
@@ -302,7 +302,7 @@
       "successDiploma": "Congratulazioni! Hai superato l'esame con successo. \nIl tuo certificato è disponibile nel tuo pannello studenti. È stato <0>timbrato</0> per garantirne l'autenticità.",
       "successDiplomaTimeStamped": "Congratulazioni! Hai superato l'esame con successo.\nIl tuo diploma sarà disponibile nel tuo pannello studenti circa 10 ore dopo aver sostenuto l'esame. Questo ritardo è dovuto alla tecnologia di <0>timestamp</0>, che ne garantisce l'autenticità.",
       "takeExam": "Fai l'esame",
-      "timeStampedNoDot": "provvisto di timestamp.",
+      "timeStampedNoDot": "con timestamp",
       "timeStamping": "time-stamp"
     },
     "conclusion": {
@@ -342,7 +342,7 @@
       "notStarted": "Non iniziato",
       "notValidated": "Non convalidato",
       "price": "Prezzo:",
-      "professor": "Professori",
+      "professor": "Professore:",
       "seeDetails": "Vedi dettagli",
       "seeTheCourse": "Vai al corso",
       "verify": "Verifica l'autenticità del tuo diploma",
@@ -699,10 +699,11 @@
       "uploadCVSubLabel": "Carica il tuo CV per mostrare le tue competenze ed esperienze alle aziende.",
       "welcome": "Benvenuto nel tuo Portale Carriera",
       "yourLanguages": "Le tue lingue",
-      "applicationStatus": "La tua domanda è",
       "lookingForJob": "Stiamo attualmente cercando opportunità di lavoro per te.",
       "chooseFile": "Scegli file",
-      "noFileSelected": "Nessun file selezionato"
+      "noFileSelected": "Nessun file selezionato",
+      "applicationComplete": "La tua candidatura è <highlight>Completa</highlight>",
+      "applicationIncomplete": "La tua candidatura è <highlight>Incompleta</highlight>"
     }
   },
   "events": {
@@ -769,7 +770,9 @@
       "premiumContentNeedsPayment": "Questo evento fa parte di un programma premium.",
       "premiumContentNeedsLogin": "È necessario accedere per visualizzare questo corso.",
       "premiumContentNeedsPaymentAction": "Vai alla pagina degli eventi"
-    }
+    },
+    "tcMustBeAccepter": "Devi accettare i termini per procedere con l'acquisto",
+    "tcDisclaimer": "Accetto che le mie informazioni possano essere condivise con gli organizzatori per facilitare l'accesso all'evento."
   },
   "home": {
     "header": {
@@ -1013,7 +1016,43 @@
     "backTutorials": "Torna a tutti i tutorial",
     "hasNotBeenProofread": "Questo tutorial non è stato ancora revisionato",
     "hasBeenProofreadBy": "Questo tutorial è stato revisionato da",
-    "writtenBy": "Questo tutorial è stato realizzato da"
+    "writtenBy": "Questo tutorial è stato realizzato da",
+    "contribution": {
+      "title": "Collaborazioni",
+      "shortDescription": "Dai il tuo contributo sulla piattaforma open-source di Plan ₿ Network",
+      "description": "Vuoi offrire il tuo contributo alla piattaforma open-source di Plan ₿ Network? In questa categoria, imparerai come scrivere e pubblicare un nuovo tutorial, rivedere e correggere contenuti, o aggiungere nuove risorse utili per la comunità. Con questi tutorial potrai lavorare attivamente sull'insegnamento di Bitcoin e sull'accrescimento delle risorse open-source."
+    },
+    "computer-security": {
+      "shortDescription": "Strumenti essenziali per proteggere la tua sicurezza digitale e la tua privacy",
+      "title": "Sicurezza informatica",
+      "description": "La sicurezza informatica è essenziale per ogni bitcoiner. In questa categoria, troverai tutorial su strumenti essenziali e pratiche generali per proteggere il tuo ambiente digitale. Sistemi operativi, browser sicuri, gestori di password, sistemi di autenticazione, VPN e soluzioni di comunicazione crittografate: tutte le risorse presentate qui mirano a migliorare la tua sicurezza e privacy."
+    },
+    "business": {
+      "shortDescription": "Accettare pagamenti in Bitcoin e gestirne la contabilità",
+      "title": "Business",
+      "description": "Desideri accettare Bitcoin nella tua azienda? In questa sezione troverai una raccolta di tutorial dedicati ai professionisti. Che tu debba configurare un sistema POS per facilitare i pagamenti in Bitcoin o gestire Bitcoin nel bilancio della tua azienda, qui troverai tutte le informazioni tecniche e pratiche indispensabili."
+    },
+    "subCategories": {
+      "centralized": "Centralizzati",
+      "operating system": "Sistemi operativi",
+      "analysis": "Chain Analisys",
+      "backup": "Backup",
+      "bitcoin": "Bitcoin",
+      "authentication": "Autenticazione",
+      "communication": "Comunicazione sicura",
+      "content": "Contenuti",
+      "data": "Dati",
+      "desktop": "Desktop",
+      "hardware": "Hardware",
+      "lightning-network": "Lightning Network",
+      "mobile": "Mobile",
+      "on-chain": "On chain",
+      "others": "Altri",
+      "peer-to-peer": "Peer-to-peer",
+      "point-of-sale": "Point of sale",
+      "pool": "Pool",
+      "resource": "Risorse"
+    }
   },
   "underConstruction": {
     "github": "GitHub",

@@ -517,7 +517,6 @@
         "noPreference": "特になし"
       },
       "uploadCVSubLabel": "履歴書をアップロードして、あなたのスキルや経験を潜在的な雇用者にアピールしましょう。",
-      "applicationStatus": "あなたの申請書は",
       "bitcoinRelatedExperience": "ビットコイン関連の経験",
       "bitcoinRelatedExperienceSubtitle": "ビットコインへの取り組みについて教えてください。",
       "cannotUndo": "このアクションは取り消すことができません。",
@@ -657,7 +656,9 @@
       "selectRole": "どのようなポジションをお探しですか？",
       "selectRoleSubLabel": "ご希望の職種をお選びください。",
       "startApplication": "申し込む",
-      "termsAndConditions": "利用規約"
+      "termsAndConditions": "利用規約",
+      "applicationIncomplete": "あなたの申請は<highlight>未完了</highlight>です",
+      "applicationComplete": "あなたの申請は<highlight>完了</highlight>しました"
     },
     "adminPanel": {
       "upcomingBookingsSubtitle": "ここでは、すべての会場イベントの参加者リストをダウンロードできます。",
@@ -769,7 +770,9 @@
       "premiumContentNeedsLogin": "このイベントにアクセスするにはログインが必要です。",
       "premiumContentNeedsPayment": "このイベントはプレミアムプログラムの一部です。",
       "premiumContentNeedsPaymentAction": "イベントページへ"
-    }
+    },
+    "tcMustBeAccepter": "購入に進むには、条件に同意する必要があります",
+    "tcDisclaimer": "会場へのアクセス目的で、私の情報が主催者と共有されることに同意します。"
   },
   "home": {
     "header": {

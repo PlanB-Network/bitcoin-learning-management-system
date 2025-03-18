@@ -20,7 +20,7 @@
     "title": "About the planB network",
     "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
     "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
-    "description": ""
+    "description": "Plan ₿ Network inasaidiya jamii kote ulimwenguni kujiandaa ili kutoa elimu bora. Jukwaa hili linatengeneza zana muhimu kuelekea lengo hilo, kupitia chuo kikuu cha mtandaoni, portal ya mafunzo, seti ya vifaa vya elimu ya Bitcoin na portal ya rasilimali."
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
@@ -47,11 +47,11 @@
     "passwordsDontMatch": "Passwords don't match",
     "sendLink": "Envoyer un lien",
     "signIn": "Sign In",
-    "checkingTokenExplain": "",
+    "checkingTokenExplain": "Tunachunguza ikiwa tokeni ni halali",
     "passwordResetSent": "",
-    "checkingToken": "",
+    "checkingToken": "kukagua tokeni",
     "emailTip": "",
-    "backToLogin": "",
+    "backToLogin": "Rudi kwenye kuingia",
     "newPassword": "",
     "passwordMinLength": "",
     "invalidToken": "",
@@ -67,7 +67,7 @@
     "tryAgain": "",
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
-    "backToHome": ""
+    "backToHome": "Rudi nyumbani"
   },
   "bet": {
     "educationalContent": {
