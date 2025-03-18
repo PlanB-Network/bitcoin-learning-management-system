@@ -1,9 +1,8 @@
+import { cn } from '@blms/ui';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { JoinedCourseWithAll } from '@blms/types';
-import { cn } from '@blms/ui';
-
+import type { CourseResponse } from '@blms/types';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { getDateString } from '#src/utils/date.ts';
@@ -37,7 +36,7 @@ const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 interface ModalPaymentSummaryProps {
   courseName: string;
   professorNames: string;
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   mobileDisplay: boolean;
   paidPriceDollars?: number | null;
   satsPrice?: number;
@@ -105,7 +104,7 @@ export const ModalPaymentSummary = ({
         <div className="flex flex-col gap-1 lg:gap-2 mt-1 lg:mt-4 mb-5 lg:mb-8">
           <PaymentRow
             label={
-              course.professors?.length > 1
+              course.mainProfessors?.length > 1
                 ? t('words.professors')
                 : t('words.professor')
             }

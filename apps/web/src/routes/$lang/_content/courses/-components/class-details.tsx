@@ -2,7 +2,7 @@ import { useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 
-import type { CourseChapterResponse, JoinedCourseWithAll } from '@blms/types';
+import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import { Button, Card } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
@@ -13,7 +13,7 @@ import { trpc } from '#src/utils/trpc.js';
 import { CourseBookModal } from './book-modal/course-book-modal.tsx';
 
 interface ClassDetailsProps {
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   chapter: CourseChapterResponse;
   professor: string;
 }

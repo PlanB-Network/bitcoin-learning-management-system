@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
-import type { JoinedCourseChapter, JoinedCourseWithAll } from '@blms/types';
+import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
 import {
   Collapsible,
   CollapsibleContent,
@@ -21,7 +21,7 @@ interface Chapter {
 }
 
 interface Props {
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   chapters: JoinedCourseChapter[];
   currentChapter: Chapter;
   style?: CSSProperties;

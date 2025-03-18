@@ -15,7 +15,7 @@ import { IoCheckmark } from 'react-icons/io5';
 import ReactMarkdown from 'react-markdown';
 import { z } from 'zod';
 
-import type { CourseReviewsExtended, JoinedCourseWithAll } from '@blms/types';
+import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
 import { Button, Divider, Loader, TextTag, customToast } from '@blms/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
@@ -166,7 +166,7 @@ function CourseDetails() {
     },
   );
 
-  let professorNames = course?.professors
+  let professorNames = course?.mainProfessors
     .map((professor) => professor.name)
     .join(', ');
   if (!professorNames) {
@@ -209,7 +209,7 @@ function CourseDetails() {
     }
   }, [course, isFetched, navigate, params.bookName]);
 
-  const Header = ({ course }: { course: JoinedCourseWithAll }) => {
+  const Header = ({ course }: { course: CourseResponse }) => {
     const beginnerFriendlyCourses = ['btc101', 'btc102', 'scu101'];
 
     return (
@@ -256,7 +256,7 @@ function CourseDetails() {
     );
   };
 
-  const CourseInfo = ({ course }: { course: JoinedCourseWithAll }) => {
+  const CourseInfo = ({ course }: { course: CourseResponse }) => {
     return (
       <section className="flex max-lg:flex-col lg:py-2.5 mt-6 lg:mt-7 w-full gap-5 lg:gap-10">
         <Image
@@ -273,7 +273,7 @@ function CourseDetails() {
         <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
           <ListItem
             leftText={t('words.professor')}
-            rightText={course.professors.map((professor, index) => (
+            rightText={course.mainProfessors.map((professor, index) => (
               <React.Fragment key={professor.id}>
                 <Link
                   to={`/professor/${formatNameForURL(professor.name || '')}-${
@@ -283,7 +283,7 @@ function CourseDetails() {
                 >
                   {professor.name}
                 </Link>
-                {index < course.professors.length - 1 && ', '}
+                {index < course.mainProfessors.length - 1 && ', '}
               </React.Fragment>
             ))}
             variant="light"
@@ -423,7 +423,7 @@ function CourseDetails() {
   const DescriptionAndObjectives = ({
     course,
   }: {
-    course: JoinedCourseWithAll;
+    course: CourseResponse;
   }) => {
     return (
       <>
@@ -488,7 +488,7 @@ function CourseDetails() {
     );
   };
 
-  const Professors = ({ course }: { course: JoinedCourseWithAll }) => {
+  const Professors = ({ course }: { course: CourseResponse }) => {
     return (
       <section className="max-lg:mx-auto w-full flex flex-col">
         <span className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
@@ -496,13 +496,13 @@ function CourseDetails() {
         </span>
         <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
           <span>
-            {course.isPlanbSchool
-              ? t('courses.details.ledBy')
+            {course.associatedProfessors.length > 0
+              ? t('courses.details.coordinatedBy')
               : t('courses.details.taughtBy')}{' '}
           </span>
 
           <span className="text-darkOrange-5 label-large-20px md:display-small-32px hover:!font-medium">
-            {course.professors.map((professor, index) => (
+            {course.mainProfessors.map((professor, index) => (
               <React.Fragment key={professor.id}>
                 <Link
                   to={`/professor/${formatNameForURL(professor.name || '')}-${
@@ -512,13 +512,13 @@ function CourseDetails() {
                 >
                   {professor.name}
                 </Link>
-                {index < course.professors.length - 1 && ', '}
+                {index < course.mainProfessors.length - 1 && ', '}
               </React.Fragment>
             ))}
           </span>
         </h4>
         <div className="flex h-fit flex-col max-md:gap-4">
-          {course.professors.map((professor) => (
+          {course.mainProfessors.map((professor) => (
             <AuthorCard
               key={professor.id}
               className="sm:mt-4"
@@ -526,6 +526,22 @@ function CourseDetails() {
             />
           ))}
         </div>
+        {course.associatedProfessors.length > 0 ? (
+          <>
+            <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
+              <span>{t('courses.details.associatedProfessors')}</span>
+            </h4>
+            <div className="flex h-fit flex-col max-md:gap-4">
+              {course.associatedProfessors.map((professor) => (
+                <AuthorCard
+                  key={professor.id}
+                  className="sm:mt-4"
+                  professor={professor}
+                />
+              ))}
+            </div>
+          </>
+        ) : null}
       </section>
     );
   };
@@ -679,7 +695,7 @@ function CourseDetails() {
   const DownloadTicketButton = ({
     course,
   }: {
-    course: JoinedCourseWithAll;
+    course: CourseResponse;
   }) => {
     return (
       <Button

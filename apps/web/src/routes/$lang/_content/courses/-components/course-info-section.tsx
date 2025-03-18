@@ -8,7 +8,7 @@ export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
   <section className="flex flex-col md:border-t border-white/10 md:mb-8">
     <ListItem
       leftText={t('words.professor')}
-      rightText={course.professors
+      rightText={course.mainProfessors
         .map((professor) => professor.name)
         .join(', ')}
       className="lg:py-[3px]"

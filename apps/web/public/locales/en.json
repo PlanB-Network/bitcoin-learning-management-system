@@ -164,17 +164,18 @@
       "unlockFeatures2": "Please be aware that we do not collect any personal data nor use cookies."
     },
     "details": {
+      "associatedProfessors": "Associated professors",
       "buyCourse": "Buy the course",
       "buyInPersonCourse": "Buy in-person course",
       "buyOnlineCourse": "Buy online course",
       "collaborativeEffort": "Every content on the platform is the result of a collaborative effort: each lesson, translation, and revision is made possible by the work of contributors. For this reason, we are always looking for proofreaders who can review our content in many languages. If you want to participate in the proofreading process, please reach out in our <0>Telegram</0> group and read our <1>tutorial</1>.\n\nWe remind you that this content is open-source - licensed under <2>CC BY-SA</2>  - so it can be freely shared and used, as long as the original source is credited.",
+      "coordinatedBy": "This course is coordinated by",
       "courseAddedToDashboard": "This course has been added to your student dashboard",
       "curriculum": "Curriculum",
       "description": "Description",
       "hasBeenProofreadBy": "This course has been proofread by",
       "hasNotBeenProofread": "This course has not been proofread yet",
       "inPersonAccess": "You need to download your ticket to access the in-person class.",
-      "ledBy": "This course is led by",
       "mobile": {
         "hours": "{{hours}} hours"
       },

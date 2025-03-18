@@ -3,10 +3,10 @@ import { z } from 'zod';
 
 import {
   courseChapterResponseSchema,
+  courseResponseSchema,
   courseReviewsExtendedSchema,
   joinedCourseChapterSchema,
   joinedCourseSchema,
-  joinedCourseWithAllSchema,
   joinedQuizQuestionSchema,
 } from '@blms/schemas';
 import {
@@ -23,10 +23,10 @@ import {
 } from '@blms/service-content';
 import type {
   CourseChapterResponse,
+  CourseResponse,
   CourseReviewsExtended,
   JoinedCourse,
   JoinedCourseChapter,
-  JoinedCourseWithAll,
   JoinedQuizQuestion,
 } from '@blms/types';
 
@@ -96,7 +96,7 @@ const getCourseProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output<Parser<JoinedCourseWithAll>>(joinedCourseWithAllSchema)
+  .output<Parser<CourseResponse>>(courseResponseSchema)
   .query(({ ctx, input }) => {
     return createGetCourse(ctx.dependencies)(input.id, input.language);
   });

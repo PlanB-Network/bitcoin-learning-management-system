@@ -22,6 +22,12 @@ export const coursePartSchema = createSelectSchema(contentCourseParts);
 export const coursePartLocalizedSchema = createSelectSchema(
   contentCoursePartsLocalized,
 );
+
+export const courseChapterSchema = createSelectSchema(contentCourseChapters);
+export const courseChapterLocalizedSchema = createSelectSchema(
+  contentCourseChaptersLocalized,
+);
+
 export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema
   .pick({
     courseId: true,
@@ -34,11 +40,6 @@ export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema
       partIndex: true,
     }),
   );
-
-export const courseChapterSchema = createSelectSchema(contentCourseChapters);
-export const courseChapterLocalizedSchema = createSelectSchema(
-  contentCourseChaptersLocalized,
-);
 
 export const joinedCourseChapterSchema = courseChapterLocalizedSchema
   .pick({
@@ -132,36 +133,19 @@ export const minimalJoinedCourseSchema = courseSchema
     }),
   );
 
-export const joinedCourseSchema = minimalJoinedCourseSchema.merge(
+export const joinedCourseProfessorIdSchema = minimalJoinedCourseSchema.merge(
   z.object({
-    professors: formattedProfessorSchema.array(),
+    mainProfessorIds: z.string().array(),
+    associatedProfessorIds: z.string().array(),
     averageRating: z.number(),
   }),
 );
 
-export const joinedCourseWithProfessorsContributorIdsSchema = joinedCourseSchema
-  .omit({
-    professors: true,
-  })
-  .merge(
-    z.object({
-      professors: z.string().array(),
-    }),
-  );
-
-export const joinedCourseWithAllSchema = minimalJoinedCourseSchema.merge(
+export const joinedCourseSchema = minimalJoinedCourseSchema.merge(
   z.object({
-    professors: formattedProfessorSchema.array(),
-    parts: z
-      .object({
-        part: z.number().optional(),
-        language: z.string().optional(),
-        title: z.string().optional(),
-        chapters: joinedCourseChapterSchema.optional().array(),
-      })
-      .array(),
-    partsCount: z.number(),
-    chaptersCount: z.number(),
+    mainProfessors: formattedProfessorSchema.array(),
+    associatedProfessors: formattedProfessorSchema.array(),
+    averageRating: z.number(),
   }),
 );
 
@@ -220,14 +204,34 @@ export const partWithChaptersSchema = joinedCoursePartLocalizedSchema.merge(
   }),
 );
 
-export const courseResponseSchema = joinedCourseWithAllSchema.merge(
-  z.object({
-    professors: formattedProfessorSchema.array(),
-    parts: partWithChaptersSchema.array(),
-    partsCount: z.number(),
-    chaptersCount: z.number(),
-  }),
-);
+export const courseResponseSchema = minimalJoinedCourseSchema
+  .merge(
+    z.object({
+      professors: formattedProfessorSchema.array(),
+      parts: z
+        .object({
+          part: z.number().optional(),
+          language: z.string().optional(),
+          title: z.string().optional(),
+          chapters: joinedCourseChapterSchema.optional().array(),
+        })
+        .array(),
+      partsCount: z.number(),
+      chaptersCount: z.number(),
+    }),
+  )
+  .omit({
+    professors: true,
+  })
+  .merge(
+    z.object({
+      mainProfessors: formattedProfessorSchema.array(),
+      associatedProfessors: formattedProfessorSchema.array(),
+      parts: partWithChaptersSchema.array(),
+      partsCount: z.number(),
+      chaptersCount: z.number(),
+    }),
+  );
 
 export const courseChapterResponseSchema =
   joinedCourseChapterWithContentSchema.merge(

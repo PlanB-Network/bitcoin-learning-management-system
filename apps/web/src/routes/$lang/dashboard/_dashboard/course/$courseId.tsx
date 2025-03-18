@@ -11,7 +11,7 @@ import { z } from 'zod';
 import type {
   CourseExamResults,
   CourseProgressExtended,
-  JoinedCourseWithAll,
+  CourseResponse,
 } from '@blms/types';
 import {
   Button,
@@ -177,7 +177,7 @@ function DashboardStudentCourse() {
   );
 }
 
-const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
+const CourseOverview = ({ course }: { course: CourseResponse }) => {
   const { data: courseProgress } = trpc.user.courses.getProgress.useQuery({
     courseId: course.id,
   });
@@ -220,7 +220,7 @@ const CourseOverview = ({ course }: { course: JoinedCourseWithAll }) => {
           {t('words.teacher')}
         </h4>
         <div className="flex h-fit flex-col max-md:gap-4">
-          {course.professors.map((professor) => (
+          {course.mainProfessors.map((professor) => (
             <AuthorCard
               key={professor.id}
               professor={professor}

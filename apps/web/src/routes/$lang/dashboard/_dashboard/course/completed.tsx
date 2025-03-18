@@ -217,7 +217,7 @@ const CompletedCourseDetails = ({
               {t('words.teacher')}
             </h4>
             <div className="flex h-fit flex-col max-md:gap-4">
-              {course.professors.map((professor) => (
+              {course.mainProfessors.map((professor) => (
                 <AuthorCard
                   key={professor.id}
                   professor={professor}

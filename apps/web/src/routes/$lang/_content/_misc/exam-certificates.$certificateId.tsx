@@ -153,10 +153,12 @@ const CourseSection = ({ course }: { course: JoinedCourse }) => {
   );
 };
 
-export const filterAndRandomizeCourses = (
-  currentCourse: JoinedCourse,
-  allCourses: JoinedCourse[],
-): JoinedCourse[] => {
+export const filterAndRandomizeCourses = <
+  T extends { id: string; language: string; topic: string; level: string },
+>(
+  currentCourse: T,
+  allCourses: T[],
+): T[] => {
   const { i18n } = useTranslation();
   const language = i18n.language;
 
@@ -187,7 +189,7 @@ export const filterAndRandomizeCourses = (
       courseLevels.indexOf(c.level) > courseLevels.indexOf(currentCourse.level),
   );
 
-  const getRandomCourse = (courses: JoinedCourse[]): JoinedCourse =>
+  const getRandomCourse = (courses: T[]): T =>
     courses[Math.floor(Math.random() * courses.length)];
 
   return [

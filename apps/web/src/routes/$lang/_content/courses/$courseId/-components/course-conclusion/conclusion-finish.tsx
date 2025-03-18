@@ -6,7 +6,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
 
-import type { CourseExamResults, JoinedCourseWithAll } from '@blms/types';
+import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { DividerSimple } from '@blms/ui';
 
 import { AuthorCard } from '#src/components/author-card.tsx';
@@ -21,7 +21,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { TimeStampDialog } from '../exam-results.tsx';
 
 interface ConclusionFinishProps {
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   examResults?: CourseExamResults;
 }
 
@@ -55,7 +55,7 @@ export const ConclusionFinish = ({
 const Professor = ({
   course,
 }: {
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   addThanksTipping?: boolean;
 }) => {
   return (
@@ -66,7 +66,7 @@ const Professor = ({
       <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
         {t('courses.details.taughtBy')}{' '}
         <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
-          {course.professors.map((professor, index) => (
+          {course.mainProfessors.map((professor, index) => (
             <React.Fragment key={professor.id}>
               <Link
                 to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
@@ -74,9 +74,9 @@ const Professor = ({
               >
                 {professor.name}
               </Link>
-              {index < course.professors.length - 2
+              {index < course.mainProfessors.length - 2
                 ? ', '
-                : index === course.professors.length - 2
+                : index === course.mainProfessors.length - 2
                   ? ' & '
                   : ''}
             </React.Fragment>
@@ -87,7 +87,7 @@ const Professor = ({
         {t('courses.details.thanksTipping')}
       </p>
       <div className="flex h-fit flex-col max-md:gap-4">
-        {course.professors.map((professor) => (
+        {course.mainProfessors.map((professor) => (
           <AuthorCard
             key={professor.id}
             professor={professor}
@@ -101,7 +101,7 @@ const Professor = ({
   );
 };
 
-const Credits = ({ course }: { course: JoinedCourseWithAll }) => {
+const Credits = ({ course }: { course: CourseResponse }) => {
   const { i18n } = useTranslation();
 
   const { data: proofreading } = trpc.content.getProofreading.useQuery({
@@ -194,7 +194,7 @@ const Diploma = ({
   course,
 }: {
   examResults?: CourseExamResults;
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
 }) => {
   const examChapterId = course.parts
     .flatMap((part) => part.chapters)
@@ -322,7 +322,7 @@ const Labs = () => {
   );
 };
 
-const OtherCourses = ({ course }: { course: JoinedCourseWithAll }) => {
+const OtherCourses = ({ course }: { course: CourseResponse }) => {
   const { courses: allCourses } = useContext(AppContext);
 
   if (!allCourses || allCourses.length === 0) {

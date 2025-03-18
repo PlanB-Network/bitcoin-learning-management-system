@@ -655,7 +655,7 @@ function CourseChapter() {
     (() => {
       // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
       let professors;
-      professors = chapter.course.professors;
+      professors = chapter.course.mainProfessors;
       if (chapter.professors && chapter.professors.length > 0) {
         professors = chapter.professors;
       }
