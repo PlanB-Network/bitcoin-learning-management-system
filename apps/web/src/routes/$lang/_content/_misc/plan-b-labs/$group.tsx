@@ -231,14 +231,14 @@ function PlanBLabs() {
               </div>
 
               {/* Study group main content */}
-              <div className="flex flex-col max-w-[1200px] w-full md:flex-row px-4 self-center mt-14 pt-6 gap-6">
+              <div className="flex flex-col max-w-[1200px] w-full md:flex-row px-4 self-center mt-7 lg:mt-14 pt-6 gap-6">
                 {/* Next session */}
                 <div className="relative w-full max-w-[800px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
                   <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-3xl xl:text-4xl italic text-darkOrange-6">
                     Next session
                   </div>
                   <>
-                    <div className="flex flex-row lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
+                    <div className="flex flex-col lg:flex-row max-lg:items-center lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
                       <span>
                         {getDateString(
                           lastSession.startDate,
@@ -289,10 +289,10 @@ function PlanBLabs() {
                 </div>
 
                 {/* Previous session */}
-                <div className="relative md:w-[400px] border-l-2 border-newBlack-5 p-4">
+                <div className="relative md:w-[400px] border-l-2 border-newBlack-5 p-4 max-lg:mt-7">
                   {/* Top border */}
                   <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
-                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-2xl xl:text-4xl italic text-newGray-2 font-light">
+                  <div className="absolute -mt-8 bg-black px-4 text-xl lg:text-2xl xl:text-4xl italic text-newGray-2 font-light">
                     Previous sessions
                   </div>
                   <div className="mt-2 lg:mt-8 flex flex-col gap-4">
@@ -356,7 +356,7 @@ const Professor = ({
   professor: FullProfessor;
 }) => {
   return (
-    <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-5 md:mt-16 text-white">
+    <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-7 md:mt-16 text-white">
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
         {t('words.professor')}
       </h4>
