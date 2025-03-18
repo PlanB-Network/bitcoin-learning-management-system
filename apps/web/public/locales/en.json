@@ -663,7 +663,7 @@
       "notStarted": "Not started",
       "notValidated": "Not validated",
       "price": "Price :",
-      "professor": "Professor :",
+      "professor": "Professor:",
       "resumeLesson": "Resume",
       "seeDetails": "See details",
       "seeProgress": "to see your progress here.",
@@ -787,7 +787,7 @@
     },
     "newEvent": {
       "button": "Add my event",
-      "description": "Of course! All Bitcoin events can increase their visibility here, so every initiative to create a new event is more than welcome :)",
+      "description": "Of course! All Bitcoin events can increase their visibility here, so every initiative to create a new event is more than welcome!",
       "subtitle": "Orange pilling a billion people is not easy",
       "title": "Want to add your event?"
     },
