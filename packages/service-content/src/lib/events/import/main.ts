@@ -35,6 +35,7 @@ interface EventMain {
   };
   language?: string[];
   tags?: string[];
+  test_only?: boolean;
 }
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
@@ -42,6 +43,14 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     if (!file) return;
 
     const parsedEvent = await yamlToObject<EventMain>(file);
+
+    if (
+      parsedEvent.test_only === true &&
+      process.env.PLANB_ENVIRONMENT === 'mainnet'
+    ) {
+      console.log('-- Sync: Ignore event', parsedEvent.name);
+      return;
+    }
 
     const lastUpdated = event.files.sort((a, b) => b.time - a.time)[0];
 

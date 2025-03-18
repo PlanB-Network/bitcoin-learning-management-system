@@ -322,7 +322,6 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
       .begin(async (transaction) => {
         try {
           const parsedCourse = await yamlToObject<CourseMain>(main);
-          courseId = parsedCourse.id;
 
           if (
             parsedCourse.test_only === true &&
@@ -331,6 +330,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             console.log('-- Sync: Ignore course', course.index);
             return;
           }
+
+          courseId = parsedCourse.id;
 
           if (parsedCourse.requires_payment === null) {
             parsedCourse.requires_payment = false;
