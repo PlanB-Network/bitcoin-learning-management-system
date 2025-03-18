@@ -293,22 +293,26 @@ const Labs = () => {
   return (
     <>
       <DividerSimple className="my-5 md:mt-3 md:mb-8" />
-      <section className="w-full flex flex-col gap-4">
+      <section className="w-full flex flex-col gap-4 md:gap-5">
         <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
           {t('labs.planBLabs')}
         </h4>
 
-        <p className="md:mt-6 label-large-20px md:display-small-32px text-black">
+        <p className="label-large-20px md:display-small-32px text-black">
           {t('labs.presentation.subtitle')}
         </p>
 
         <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
-          {t('labs.description1')} {t('labs.description2')}
+          {t('labs.description1')}
+        </p>
+
+        <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+          {t('labs.description2')}
         </p>
 
         <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px]">
           <Link to="/plan-b-labs">
-            <ButtonWithArrow variant="primary" size="l">
+            <ButtonWithArrow variant="primary">
               {t('labs.presentation.link')}
             </ButtonWithArrow>
           </Link>
