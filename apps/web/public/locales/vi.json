@@ -54,7 +54,8 @@
       "seeCourse": "Xem khoá học",
       "planbSchoolHeadline": "Plan ₿ School, được lãnh đạo bởi Giacomo Zucco, cung cấp các chương trình đào tạo chuyên sâu kéo dài 3 tháng được thiết kế để khoả lấp khoảng trống giữa học tập và ứng dụng thực tế. Vượt lên trên các lớp học truyền thống, các sinh viên sẽ được tham gia vào các dự án thực tế của các công ty và một chương trình bootcamp hàng đầu dành cho những người có thành tích xuất sắc. Chỉ những tài năng xuất sắc mới vượt qua được 2 vòng lựa chọn cạnh tranh, đảm bảo rằng những sinh viên hàng đầu sẽ được trang bị đây đủ để xây dựng sự nghiệp của mình trong ngành Bitcoin.",
       "comingSoon": "sẽ có sớm",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "goal": ""
     },
     "payment": {
       "accessibility": "Quyền truy cập",
@@ -76,7 +77,8 @@
       "onlineCallout": "Bạn đang chuẩn bị thanh toán quyền truy cập <strong>trực tuyến</strong> khoá học này.",
       "onlineDescription": "Mỗi phần học đều được phát trực tuyến trên nền tảng.\nViệc thanh toán này sẽ mang lại quyền truy cập vào các video phát trực tuyến và chiếu lại.",
       "inPersonDescription": "Mỗi phần học trực tiếp sẽ diễn ra vào thời gian và địa điểm cụ thể và nội dung cũng được phát trực tuyến trên nền tảng.\nViệc thanh toán này sẽ cấp quyền truy cập cho bạn vào cả các lớp học trực tiếp và trực tuyến.\nĐừng quên đặt trước chỗ ngồi cho các lớp học mà bạn muốn tham dự trực tiếp.",
-      "checkoutError": "Một lỗi đã xảy ra trong quá trình thanh toán.\nVui lòng thử lại."
+      "checkoutError": "Một lỗi đã xảy ra trong quá trình thanh toán.\nVui lòng thử lại.",
+      "courseType": ""
     },
     "chapter": {
       "finishCourse": "Hoàn thành khoá học",
@@ -125,7 +127,11 @@
       "courseAddedToDashboard": "Khoá học này đã được thêm vào bảng điều khiển học viên của bạn",
       "hasBeenProofreadBy": "Khoá học này đã được hiệu đính bởi",
       "hasNotBeenProofread": "Khoá học này vẫn chưa được hiệu đính",
-      "teacherLed": "Do giáo viên hướng dẫn"
+      "teacherLed": "Do giáo viên hướng dẫn",
+      "associatedProfessors": "",
+      "coordinatedBy": "",
+      "learning": "",
+      "attendInPersonWarning": ""
     },
     "quizz": {
       "quizz": "Câu hỏi kiểm tra",
@@ -256,7 +262,28 @@
       "timeStampedNoDot": "đã gán nhãn thời gian",
       "timeStamping": "đang gán nhãn thời gian",
       "failedDiploma": "Bạn cần đạt trên 80% điểm của bài kiểm tra cuối khoá để nhận được bằng tốt nghiệp và hoàn thành khoá học. Bạn có thể làm lại bài kiểm tra sau 24 giờ.",
-      "goConclusion": "Đi tới phần kết luận"
+      "goConclusion": "Đi tới phần kết luận",
+      "viewExam": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": ""
     },
     "conclusion": {
       "completedFeedbackHeadline": "Cảm ơn phản hồi của bạn!\nĐiều đó rất quan trọng với chúng tôi, do đó chúng tôi rất trân trọng.",
@@ -268,6 +295,11 @@
       "stepsToComplete": "Đây là những bước để đánh dấu khoá học này đã hoàn thành trên bảng điều khiển của bạn, trước khi tiếp tục hành trình của bạn!",
       "takeFinalExam": "Bây giờ, bạn đã hoàn thành tất cả các chương, đây là lúc để thực hiện bài kiểm tra cuối để đánh giá kiến thức của bạn.",
       "unlockFeatures2": "Vui lòng chú ý rằng chúng tôi không thu thập bất kỳ thông tin cá nhân nào, cũng như sử dụng cookies."
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "events": {
@@ -321,7 +353,13 @@
       "access_online_successful": "Khi các sự kiện bắt đầu, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
       "access_physical_successful": "Bạn có thể tải vé của mình về tại đây, hoặc tải về sau trên bảng điều khiển của mình.",
       "description_physical": "Vui lòng xem lại chi tiết về địa điểm.\nMột khi đặt chỗ của bạn được xác nhận, chúng tôi sẽ phát hành vé để xuất trình tại sự kiện. Vé này cũng sẽ cấp quyền truy cập vào các buổi phát trực tuyến và xem lại video, nếu có sẵn.",
-      "description_online": "Vui lòng xem lại ngày và giờ của sự kiện.\nKhi thời gian đến, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện."
+      "description_online": "Vui lòng xem lại ngày và giờ của sự kiện.\nKhi thời gian đến, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "pageDescription": "Bạn muốn nói về Bitcoin trong thời gian thực? Ở đây, bạn có thể tìm thấy tất cả các sự kiện được hỗ trợ bởi cộng đồng Plan B Network. Cho dù bạn muốn nghe một bài giảng, thảo luận về Bitcoin quanh bàn trà, hoặc làm bài kiểm tra đánh giá kiến thực của bạn, bạn sẽ có thể tìm thấy sự kiện phù hợp tại đây thông qua Plan B Network.",
     "pageTitle": "Bạn đang tìm kiếm một sự kiện Bitcoin để tham dự?",
@@ -329,7 +367,9 @@
       "premiumContentNeedsLogin": "Bạn cần đăng nhập để truy cập vào sự kiện này.",
       "premiumContentNeedsPayment": "Sự kiện này là một phần của chương trình chất lượng cao.",
       "premiumContentNeedsPaymentAction": "Đi tới trang các sự kiện"
-    }
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "auth": {
     "accountCreated": "Tài khoản của bạn đã được tạo, {{userName}}!",
@@ -380,7 +420,21 @@
     "dashboardUnlocked": "Bảng điều khiển học viên của bạn đã được mở khoá!",
     "didYouKnow": "Bạn đã biết?",
     "passwordChangedSuccess": "Thay đổi mật khẩu thành công",
-    "trackProgress": "Tạo tài khoản hoặc đăng nhập để theo dõi tiến độ của bạn"
+    "trackProgress": "Tạo tài khoản hoặc đăng nhập để theo dõi tiến độ của bạn",
+    "emailValidation": {
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": "",
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -473,7 +527,30 @@
       "profileInformation": "Thông tin hồ sơ",
       "profilePicture": "Ảnh hồ sơ",
       "security": "Bảo mật",
-      "username": "Tên người dùng"
+      "username": "Tên người dùng",
+      "notificationSettings": {
+        "eventsOption": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "settings": "",
+      "emailChangeRateLimitError": "",
+      "securitySettings": ""
     },
     "teacher": {
       "courses": {
@@ -491,7 +568,53 @@
         "proposeNewCourse": "Đề xuất một khoá mới",
         "quickRecap": "Bạn có thẻ tìm thấy tất cả thông tin chung về khoá học này tại đây.",
         "reviewInfos": "Bạn có thể kiểm soát và xem lại tất cả các thông tin liên quan tới mỗi khoá học mà bạn hợp tác tại đây.",
-        "reviews": "Duyệt lại"
+        "reviews": "Duyệt lại",
+        "announcementModal": {
+          "contentPlaceholder": "",
+          "create": "",
+          "contentLabel": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "deleteAnnouncementTitle": "",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationTitle": "",
+          "publishAllGrades": "",
+          "confirmPublicationDescription": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "allStudents": "",
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "menu": "Menu dành cho giáo viên",
       "profile": {
@@ -532,7 +655,11 @@
     },
     "calendar": {
       "calendar": "Lịch",
-      "personalCalendar": "Lịch cá nhân"
+      "personalCalendar": "Lịch cá nhân",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "course": {
       "checkDetailsCompleted": "Tại đây, bạn có thể kiểm tra tất cả các chi tiết liên quan tới khoá học mà bạn đã hoàn thành.",
@@ -544,7 +671,61 @@
       "shareOnSocials": "Chia sẻ trên mạng xã hội:",
       "tweetText": "Vui mừng vì đã hoàn thành khoá học {{courseIndex}} tại @planb_network và nhận được chứng chỉ của tôi với điểm số {{score}}/100 ở bài kiểm tra cuối khoá! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Đây là bản tòm tắt của những gì bạn đã học được. Nếu một số chương bị bỏ sót hoặc không được xác thực đúng cách, bây giờ là lúc để làm điều đó, hoặc là quay lại để học, hoặc là nhấp vào nút hoàn thành.",
-      "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này."
+      "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này.",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "coordinator": "",
+      "courseCalendar": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "viewFinalGrade": "",
+      "assignmentDescription": "",
+      "summerSchool": "",
+      "yourProject": "",
+      "assignmentCompletedTitle": "",
+      "submitYourWork": "",
+      "fileUploaded": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "assignmentInformation": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "exams": "",
+      "fileUploadError": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "surePreferenceList": "",
+      "thresholdToPass": ""
     },
     "credentials": {
       "bCert": "Chứng chỉ ₿-CERT",
@@ -595,7 +776,79 @@
       "type": "Loại",
       "upcomingBookings": "Các đặt chỗ sắp tới",
       "upcomingBookingsSubtitle": "Bạn có thể tải về danh sách những người tham dự tất cả các sự kiện trực tiếp tại đây.",
-      "userRolesAllocation": "Phân bổ vai trò người dùng"
+      "userRolesAllocation": "Phân bổ vai trò người dùng",
+      "coupons": {
+        "mobileSort": {
+          "za": "",
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": ""
+        },
+        "tableHead": {
+          "total": "",
+          "uses": "",
+          "value": "",
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "type": ""
+        },
+        "productCourse": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "noCouponsFound": ""
+      },
+      "coursesIndexes": "",
+      "deleteRole": "",
+      "accessGranted": "",
+      "discountCodes": "",
+      "editRole": "",
+      "hasAccessTo": "",
+      "selectRole": ""
     },
     "careerPortal": {
       "availabilityStart": "Khi nào bạn có thể bắt đầu?",
@@ -772,10 +1025,23 @@
       "roleLevel": "Cấp độ kinh nghiệm",
       "roleLevelSubLabel": "Lựa chọn cấp độ tương ứng với kỹ năng của bạn.",
       "noFileSelected": "Chưa có tệp nào được chọn",
-      "chooseFile": "Chọn tệp"
+      "chooseFile": "Chọn tệp",
+      "applicationComplete": "",
+      "applicationIncomplete": ""
     },
     "backToDashboard": "Quay lại bảng điều khiển",
-    "studentDashboard": "Bảng điều khiển học viên"
+    "studentDashboard": "Bảng điều khiển học viên",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "home": {
     "header": {
@@ -872,7 +1138,8 @@
     "newsletterDescription": "Bộ sưu tập các nội dung mà bạn có thể sử dụng cho các dự án giáo dục của bạn",
     "securityDescription": "Làm chủ các kỹ thuật bảo vệ tài sản Bitcoin của bạn.",
     "socialStudiesDescription": "Nghiên cứu về ảnh hưởng của Bitcoin đối với xã hội.",
-    "projectsDescription": "Tìm hiểu thêm về các công ty và các dự án có đóng góp vào việc cải thiện và thúc đấy sự áp dụng Bitcoin"
+    "projectsDescription": "Tìm hiểu thêm về các công ty và các dự án có đóng góp vào việc cải thiện và thúc đấy sự áp dụng Bitcoin",
+    "planBLabsDescription": ""
   },
   "nodeNetwork": {
     "description1": "Hệ thống tài chính của chúng ta đang sụp đổ, thức ăn của chúng ta đang bị nhiễm độc, sự tự do của chúng ta đang bị cướp đi. Chúng ta không thể ngồi chờ một phép màu sẽ xảy ra, chúng ta sẽ phải tạo ra một nơi an toàn để sinh sống. Chúng ta cần tạo ra một kế hoạch B (PlanB) cho chính mình!",
@@ -890,7 +1157,9 @@
     "total": "Tổng cộng",
     "payWithBitcoin": "Thanh toán bằng Bitcoin",
     "payByCard": "Thanh toán bằng thẻ",
-    "haveReductionCode": "Bạn có mã giảm giá?"
+    "haveReductionCode": "Bạn có mã giảm giá?",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "podcasts": {
     "pageTitle": "Các podcast về Bitcoin"
@@ -1022,7 +1291,42 @@
     "approvedByCreator": "Được chấp thuận bởi nhà sáng tạo",
     "writtenBy": "Hướng dẫn này đã được viết bởi",
     "hasBeenProofreadBy": "Hướng dẫn này đã được hiệu đính bởi",
-    "hasNotBeenProofread": "Hướng dẫn này chưa được hiệu đính"
+    "hasNotBeenProofread": "Hướng dẫn này chưa được hiệu đính",
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "subCategories": {
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    }
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1188,7 +1492,21 @@
     "username": "Username",
     "viewMore": "Xem thêm",
     "yes": "Vâng",
-    "email": "Email"
+    "email": "Email",
+    "company": "",
+    "mentor": "",
+    "password": "",
+    "calendar": "",
+    "continue": "",
+    "day": "",
+    "mode": "",
+    "notApplicable": "",
+    "save": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "bCert": {
     "bCertDescription": "Chứng chỉ ₿-CERT là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
@@ -1243,7 +1561,8 @@
       "errorMessageNotFound": "Không tìm thấy blog.",
       "blogSidebarTitle": "Bài đăng trước đó trên mạng lưới",
       "blogListButtonText": "Đọc",
-      "filterText": "Lọc theo chủ đề:"
+      "filterText": "Lọc theo chủ đề:",
+      "blogSidebarTitleForAll": ""
     },
     "legalSections": {
       "termsOfSale": "Điều khoản bán hàng",
@@ -1316,7 +1635,8 @@
     "conference_replay": "Xem lại hội nghị",
     "lecture_replays": "Bản xem lại các bài giảng",
     "projects": "Các dự án",
-    "project": "Dự án"
+    "project": "Dự án",
+    "conference": ""
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
@@ -1345,5 +1665,65 @@
     "relatedEvents": "Các sự kiện liên quan sắp tới",
     "related": "Liên quan",
     "languages": "Các ngôn ngữ"
+  },
+  "accessType": {
+    "physical": "",
+    "replay": "",
+    "online": "",
+    "hybrid": ""
+  },
+  "labs": {
+    "planBLabs": "",
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
