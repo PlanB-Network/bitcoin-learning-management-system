@@ -450,7 +450,7 @@ export const AnswersReviewPanel = ({
           <h5 className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1">
             {t('courses.exam.explanations')}
           </h5>
-          <p className="whitespace-pre-line text-newBlack-1 body-12px md:body-16px text-justify">
+          <p className="text-newBlack-1 body-12px md:body-16px text-justify">
             {examResults.questions[selectedQuestion].explanation}
           </p>
         </section>
@@ -526,6 +526,7 @@ const ConcludeButton = ({
         variant={variant}
         size={window.innerWidth < 768 ? 'm' : 'l'}
         onClick={completeChapter}
+        className={cn(!hasSkipText ? 'mt-4' : '')}
       >
         <span>
           {hasSkipText
