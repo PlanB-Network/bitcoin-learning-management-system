@@ -320,9 +320,7 @@ const CourseDetails = ({ course }: { course: JoinedCourse }) => {
               ref={goalAndObjectivesRef}
             >
               <div className="flex flex-col gap-3 w-full">
-                <span className={labelClasses}>
-                  {t('dashboard.teacher.courses.courseShortDescription')}
-                </span>
+                <span className={labelClasses}>{t('words.goal')}</span>
                 <p className={infoTextClasses}>{course.goal}</p>
               </div>
               <div className="flex flex-col gap-3 w-full">

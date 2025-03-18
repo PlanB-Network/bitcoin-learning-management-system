@@ -249,7 +249,7 @@ function CourseDetails() {
           )}
         </div>
         <div className="mt-4 md:mt-7 max-md:flex max-md:flex-col gap-1 label-medium-16px md:label-large-20px text-newBlack-1 border-l border-newBlack-5 pl-2.5">
-          <span className="!font-medium">{t('words.goal')} : </span>
+          <span className="!font-medium">{t('courses.explorer.goal')} </span>
           <span>{course.goal}</span>
         </div>
       </section>
