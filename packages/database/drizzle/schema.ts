@@ -1763,7 +1763,7 @@ export const contentProfessors = content.table('professors', (t) => ({
 
   name: t.varchar({ length: 255 }).unique().notNull(),
   company: t.varchar({ length: 255 }),
-  affiliations: t.varchar({ length: 255 }).array(),
+  affiliations: t.uuid().array(),
 
   contributorId: t
     .varchar({ length: 20 })

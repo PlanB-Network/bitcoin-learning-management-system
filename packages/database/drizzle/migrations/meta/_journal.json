@@ -596,6 +596,13 @@
       "when": 1742209749045,
       "tag": "0084_faithful_marauders",
       "breakpoints": true
+    },
+    {
+      "idx": 85,
+      "version": "7",
+      "when": 1742286162218,
+      "tag": "0085_perpetual_sentinels",
+      "breakpoints": true
     }
   ]
 }
