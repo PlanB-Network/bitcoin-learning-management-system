@@ -928,6 +928,12 @@
     "description1": "Plan ₿ Labs are study groups designed to provide students with regular practical and interactive classes. Through these study groups, students and professors engage in discussions, debating the latest research, solving real-world challenges, and applying theoretical concepts.",
     "description2": "Join the Lab that aligns with your field of study and enhance your learning experience!",
     "planBLabs": "Plan ₿ Labs",
+    "presentation": {
+      "content": "Plan ₿ Labs are study groups designed to provide students with regular practical and interactive classes. Through these study groups, students and professors engage in discussions, debating the latest research, solving real-world challenges, and applying theoretical concepts. Join the Lab that aligns with your field of study and enhance your learning experience!",
+      "link": "Discover Plan ₿ Labs",
+      "subtitle": "Join a lab to learn, discuss and grow!",
+      "title": "Level up your Bitcoin skills!"
+    },
     "title": "Practical and interactive classes for continuous learning"
   },
   "menu": {
