@@ -67,7 +67,7 @@ const GlossaryMarkdownBody = ({
           <a
             href={href}
             target="_blank"
-            className="underline text-darkOrange-5"
+            className="underline text-darkOrange-5 hover:font-medium"
             rel="noreferrer"
           >
             {children}

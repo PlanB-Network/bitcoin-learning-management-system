@@ -110,13 +110,14 @@ function PlanBLabs() {
             className="w-36 md:w-60"
           />
           <DividerVertical className="h-16 max-md:hidden" />
-          <h1 className="text-lg max-md:font-semibold md:display-small-med-32px text-center md:text-left">
+          <h1 className="text-lg lg:min-w-[500px] max-md:font-semibold md:display-small-med-32px text-center md:text-left">
             {t('labs.title')}
           </h1>
         </div>
-        <div className="lg:w-[950px] px-4 ">
-          <p>{t('labs.description1')}</p>
-          <p>{t('labs.description2')}</p>
+        <div className="lg:w-[950px] px-4 max-lg:body-16px lg:subtitle-large-18px">
+          <p>
+            {t('labs.description1')} {t('labs.description2')}
+          </p>
         </div>
       </div>
 
@@ -171,7 +172,7 @@ function PlanBLabs() {
                       {lab?.sessions.length} sessions <MdLiveTv />
                     </TextTag>
                   </div>
-                  <div className="flex flex-col max-lg:text-center gap-6 subtitle-large-18px">
+                  <div className="flex flex-col max-lg:text-center gap-6 max-lg:body-16px lg:subtitle-large-18px">
                     {activeItem.id === 'lightning' ? (
                       <>
                         <div>
@@ -365,6 +366,7 @@ const Professor = ({
           professor={professor}
           centeredContent={true}
           mobileSize="medium"
+          mode="dark"
         />
       </div>
     </section>

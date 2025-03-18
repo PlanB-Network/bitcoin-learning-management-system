@@ -8,6 +8,7 @@ interface AuthorCardProps extends React.HTMLProps<HTMLDivElement> {
   centeredContent?: boolean;
   hasDonateButton?: boolean;
   mobileSize?: 'small' | 'medium';
+  mode?: 'dark';
 }
 
 export const AuthorCard = ({
@@ -15,6 +16,7 @@ export const AuthorCard = ({
   hasDonateButton,
   centeredContent = true,
   mobileSize = 'small',
+  mode,
   ...props
 }: AuthorCardProps) => {
   return (
@@ -42,7 +44,9 @@ export const AuthorCard = ({
           </p>
           <div className="mt-[18px] md:mt-4 flex flex-wrap gap-2.5 items-center">
             {professor.tags?.map((tag) => (
-              <TextTag key={tag}>{tag}</TextTag>
+              <TextTag key={tag} mode={mode ? mode : undefined}>
+                {tag}
+              </TextTag>
             ))}
           </div>
           <div className="md:mt-1 w-fit">
