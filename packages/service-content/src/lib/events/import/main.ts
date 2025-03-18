@@ -54,13 +54,13 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const lastUpdated = event.files.sort((a, b) => b.time - a.time)[0];
 
-    parsedEvent.book_online = parsedEvent.book_online
-      ? parsedEvent.book_online
-      : false;
+    if (parsedEvent.book_online == null) {
+      parsedEvent.book_online = false;
+    }
 
-    parsedEvent.is_gdpr_compliance = parsedEvent.is_gdpr_compliance
-      ? parsedEvent.is_gdpr_compliance
-      : false;
+    if (parsedEvent.is_gdpr_compliance == null) {
+      parsedEvent.is_gdpr_compliance = false;
+    }
 
     const result = await transaction<Event[]>`
         INSERT INTO content.events

@@ -112,6 +112,8 @@ interface CourseMain {
   available_seats: number;
   proofreading: ProofreadingEntry[];
   is_planb_school?: boolean;
+  is_gdpr_compliance: boolean;
+  custom_tc_disclaimer: string;
   test_only?: boolean;
 }
 
@@ -343,6 +345,10 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             parsedCourse.is_planb_school = false;
           }
 
+          if (parsedCourse.is_gdpr_compliance == null) {
+            parsedCourse.is_gdpr_compliance = false;
+          }
+
           const lastUpdated = course.files.sort((a, b) => b.time - a.time)[0];
 
           if (!parsedCourse.format) {
@@ -362,10 +368,35 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
           const result = await transaction<Course[]>`
                 INSERT INTO content.courses
-                  (id, index, is_archived, level, hours, topic, subtopic, original_language, requires_payment,
-                  payment_expiration_date, published_at, format, online_price_dollars, inperson_price_dollars,
-                  paid_description, paid_video_link, start_date, end_date, contact, available_seats,
-                  remaining_seats, is_planb_school, planb_school_markdown, last_updated, last_commit, last_sync)
+                  ( id,
+                   index,
+                   is_archived,
+                   level,
+                   hours,
+                   topic,
+                   subtopic,
+                   original_language,
+                   requires_payment,
+                   payment_expiration_date,
+                   published_at,
+                   format,
+                   online_price_dollars,
+                   inperson_price_dollars,
+                   paid_description,
+                   paid_video_link,
+                   start_date,
+                   end_date,
+                   contact,
+                   available_seats,
+                   remaining_seats,
+                   is_planb_school,
+                   planb_school_markdown,
+                   is_gdpr_compliance,
+                   custom_tc_disclaimer,
+                   last_updated,
+                   last_commit,
+                   last_sync
+                  )
                 VALUES (
                   ${parsedCourse.id},
                   ${course.index},
@@ -390,6 +421,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.available_seats},
                   ${parsedCourse.is_planb_school},
                   ${schoolMarkdown},
+                  ${parsedCourse.is_gdpr_compliance},
+                  ${parsedCourse.custom_tc_disclaimer},
                   ${lastUpdated.time},
                   ${lastUpdated.commit},
                   NOW()
@@ -417,6 +450,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   remaining_seats = EXCLUDED.remaining_seats,
                   is_planb_school = EXCLUDED.is_planb_school,
                   planb_school_markdown = EXCLUDED.planb_school_markdown,
+                  is_gdpr_compliance = EXCLUDED.is_gdpr_compliance,
+                  custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()

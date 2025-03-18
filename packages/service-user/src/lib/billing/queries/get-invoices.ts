@@ -9,7 +9,7 @@ export const getInvoicesQuery = (uid: string, language?: string) => {
       ce.type::text as type,
       ep.amount as amount,
       ep.method as payment_method,
-      ep.invoice_url as url
+      COALESCE(ep.invoice_url, '') as url
     FROM  users.event_payment ep
     JOIN content.events ce ON ep.event_id = ce.id
     WHERE ep.uid = ${uid}
@@ -23,7 +23,7 @@ export const getInvoicesQuery = (uid: string, language?: string) => {
       'course' as type,
       cp.amount as amount,
       cp.method as payment_method,
-      cp.invoice_url as url
+      COALESCE(cp.invoice_url, '') as url
     FROM users.course_payment cp
     JOIN content.courses c ON cp.course_id = c.id
     JOIN content.courses_localized cl ON c.id = cl.course_id

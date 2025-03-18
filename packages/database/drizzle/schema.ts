@@ -897,6 +897,9 @@ export const contentCourses = content.table('courses', (t) => ({
   isPlanbSchool: t.boolean().default(false).notNull(),
   planbSchoolMarkdown: t.varchar(),
 
+  isGdprCompliance: t.boolean().notNull().default(false),
+  customTcDisclaimer: t.text(),
+
   lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   lastCommit: t.varchar({ length: 40 }).notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),

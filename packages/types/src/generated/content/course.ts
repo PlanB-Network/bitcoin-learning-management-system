@@ -28,6 +28,8 @@ export interface Course {
   remainingSeats: number | null;
   isPlanbSchool: boolean;
   planbSchoolMarkdown: string | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
