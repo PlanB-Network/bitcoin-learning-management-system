@@ -1,11 +1,12 @@
 import { Link } from '@tanstack/react-router';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { Button, cn } from '@blms/ui';
+import { cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import { useTranslation } from 'react-i18next';
+import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import BCertImage from '../assets/about/bcert-presentation.webp?no-inline';
 
 interface BCertPresentationProps {
@@ -38,7 +39,7 @@ export const BCertPresentation = ({
           {t('bCert.bCertDescription')}
         </p>
         <Link to="/b-cert" className="max-lg:w-full mt-11">
-          <Button
+          <ButtonWithArrow
             variant="primary"
             size={isScreenMd ? 'l' : 'm'}
             className="max-lg:w-full"
@@ -50,7 +51,7 @@ export const BCertPresentation = ({
                 'group-hover:ml-3',
               )}
             />
-          </Button>
+          </ButtonWithArrow>
         </Link>
       </div>
     </section>
