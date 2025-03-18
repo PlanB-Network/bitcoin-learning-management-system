@@ -35,7 +35,7 @@ export const LabsPresentation = ({
           {t('labs.presentation.subtitle')}
         </span>
         <p className="md:desktop-h8 mobile-body1">
-          {t('labs.presentation.content')}
+          {t('labs.description1')} {t('labs.description2')}
         </p>
         <Link to="/plan-b-labs" className="max-lg:w-full mt-11">
           <Button
