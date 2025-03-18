@@ -27,10 +27,23 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
       }),
     );
 
-    const professors = await postgres
+    const mainProfessors = await postgres
       .exec(
         getProfessorsQuery({
-          professorIds: courses.flatMap((course) => course.professors),
+          professorIds: courses.flatMap((course) => course.mainProfessorIds),
+          language,
+        }),
+      )
+      .then((professors) =>
+        professors.map((element) => formatProfessor(element)),
+      );
+
+    const associatedProfessors = await postgres
+      .exec(
+        getProfessorsQuery({
+          professorIds: courses.flatMap(
+            (course) => course.associatedProfessorIds,
+          ),
           language,
         }),
       )
@@ -45,21 +58,28 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
       }),
     );
 
-    const professorsMap = indexBy(professors, 'id');
+    const associatedProfessorsMap = indexBy(associatedProfessors, 'id');
 
     return {
       ...formatProfessor(professor),
       courses: courses.map((course) => {
-        const sortedProfessors = course.professors
-          .map((id) => professorsMap.get(id))
+        const sortedAssociatedProfessors = course.associatedProfessorIds
+          .map((id) => associatedProfessorsMap.get(id))
           .filter((p) => p !== undefined);
 
         return {
           ...course,
-          professors: sortedProfessors.filter(
+          mainProfessors: mainProfessors.filter(
             (professor) =>
-              professor.id !== undefined &&
-              course.professors.includes(professor.id),
+              professor !== undefined &&
+              course.mainProfessorIds.some((p) => String(p) === professor.id),
+          ),
+          associatedProfessors: sortedAssociatedProfessors.filter(
+            (professor) =>
+              professor?.id !== undefined &&
+              course.associatedProfessorIds.some(
+                (p) => String(p) === professor.id,
+              ),
           ),
         };
       }),

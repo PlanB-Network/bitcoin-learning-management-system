@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import type { JoinedCourse } from '@blms/types';
+import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, TextTag, cn } from '@blms/ui';
 
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
@@ -38,7 +38,7 @@ export const CourseCard = ({
   featured = false,
   mode = 'dark',
 }: {
-  course: JoinedCourse;
+  course: JoinedCourse | CourseResponse;
   featured?: boolean;
   mode?: 'light' | 'dark';
 }) => {
@@ -138,7 +138,7 @@ export const CourseCard = ({
           <div className="flex flex-col transition-opacity opacity-0 md:group-hover:opacity-100 absolute md:group-hover:static duration-0 md:group-hover:duration-150">
             <ListItem
               leftText={t('words.professor')}
-              rightText={course.professors
+              rightText={course.mainProfessors
                 .map((professor) => professor.name)
                 .join(', ')}
               className="border-none"

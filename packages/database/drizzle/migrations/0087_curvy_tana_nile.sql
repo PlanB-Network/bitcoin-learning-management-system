@@ -1,0 +1,1 @@
+ALTER TABLE "content"."course_professors" ADD COLUMN "is_coordinator" boolean DEFAULT true NOT NULL;

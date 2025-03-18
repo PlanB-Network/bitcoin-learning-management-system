@@ -1,8 +1,8 @@
 import { sql } from '@blms/database';
-import type { JoinedCourseWithProfessorsContributorIds } from '@blms/types';
+import type { JoinedCourseProfessorId } from '@blms/types';
 
 export const getCoursesQuery = (language?: string) => {
-  return sql<JoinedCourseWithProfessorsContributorIds[]>`
+  return sql<JoinedCourseProfessorId[]>`
     SELECT DISTINCT ON (c.id)
       c.id,
       c.index,
@@ -39,16 +39,24 @@ export const getCoursesQuery = (language?: string) => {
       cl.raw_description,
       c.last_updated,
       c.last_commit,
-      COALESCE(cp_agg.professors, ARRAY[]::uuid[]) as professors
+      COALESCE(cp_main_agg.professors, ARRAY[]::uuid[]) as main_professor_ids,
+      COALESCE(cp_assoc_agg.professors, ARRAY[]::uuid[]) as associated_professor_ids
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
 
-    -- Lateral join for aggregating professors
+    -- Lateral join for aggregating main_professors
     LEFT JOIN LATERAL (
       SELECT ARRAY_AGG(cp.professor_id) as professors
       FROM content.course_professors cp
-      WHERE cp.course_id = c.id
-    ) AS cp_agg ON TRUE
+      WHERE cp.course_id = c.id AND cp.is_coordinator = true
+    ) AS cp_main_agg ON TRUE
+
+    -- Lateral join for aggregating associated professors
+    LEFT JOIN LATERAL (
+      SELECT ARRAY_AGG(cp.professor_id) as professors
+      FROM content.course_professors cp
+      WHERE cp.course_id = c.id AND cp.is_coordinator = false
+    ) AS cp_assoc_agg ON TRUE
 
     ${language ? sql`WHERE (cl.language = LOWER(${language}) OR cl.language = c.original_language)` : sql``}
 
@@ -66,7 +74,7 @@ export const getProfessorCoursesQuery = (
   courseIds: string[],
   language?: string,
 ) => {
-  return sql<JoinedCourseWithProfessorsContributorIds[]>`
+  return sql<JoinedCourseProfessorId[]>`
     SELECT DISTINCT ON (c.id)
       c.id,
       c.index,
@@ -103,16 +111,24 @@ export const getProfessorCoursesQuery = (
       cl.raw_description,
       c.last_updated,
       c.last_commit,
-      COALESCE(cp_agg.professors, ARRAY[]::uuid[]) as professors
+      COALESCE(cp_main_agg.professors, ARRAY[]::uuid[]) as main_professor_ids,
+      COALESCE(cp_assoc_agg.professors, ARRAY[]::uuid[]) as associated_professor_ids
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
 
-    -- Lateral join for aggregating professors
+    -- Lateral join for aggregating main_professors
     LEFT JOIN LATERAL (
       SELECT ARRAY_AGG(cp.professor_id) as professors
       FROM content.course_professors cp
-      WHERE cp.course_id = c.id
-    ) AS cp_agg ON TRUE
+      WHERE cp.course_id = c.id AND cp.is_coordinator = true
+    ) AS cp_main_agg ON TRUE
+
+    -- Lateral join for aggregating associated professors
+    LEFT JOIN LATERAL (
+      SELECT ARRAY_AGG(cp.professor_id) as professors
+      FROM content.course_professors cp
+      WHERE cp.course_id = c.id AND cp.is_coordinator = false
+    ) AS cp_assoc_agg ON TRUE
 
     WHERE c.id = ANY(${courseIds})
     ${language ? sql`AND (cl.language = LOWER(${language}) OR cl.language = c.original_language)` : sql``}

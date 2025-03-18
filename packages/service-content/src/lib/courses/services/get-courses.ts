@@ -13,10 +13,10 @@ export const createGetCourses = ({ postgres }: Dependencies) => {
   return async (language?: string): Promise<JoinedCourse[]> => {
     const courses = await postgres.exec(getCoursesQuery(language));
 
-    const professors = await postgres
+    const mainProfessors = await postgres
       .exec(
         getProfessorsQuery({
-          professorIds: courses.flatMap((course) => course.professors),
+          professorIds: courses.flatMap((course) => course.mainProfessorIds),
           language,
         }),
       )
@@ -24,19 +24,39 @@ export const createGetCourses = ({ postgres }: Dependencies) => {
         professors.map((element) => formatProfessor(element)),
       );
 
-    const professorsMap = indexBy(professors, 'id');
+    const associatedProfessors = await postgres
+      .exec(
+        getProfessorsQuery({
+          professorIds: courses.flatMap(
+            (course) => course.associatedProfessorIds,
+          ),
+          language,
+        }),
+      )
+      .then((professors) =>
+        professors.map((element) => formatProfessor(element)),
+      );
+
+    const associatedProfessorsMap = indexBy(associatedProfessors, 'id');
 
     return courses.map((course) => {
-      const sortedProfessors = course.professors
-        .map((id) => professorsMap.get(id))
+      const sortedAssociatedProfessors = course.associatedProfessorIds
+        .map((id) => associatedProfessorsMap.get(id))
         .filter((p) => p !== undefined);
 
       return {
         ...course,
-        professors: sortedProfessors.filter(
+        mainProfessors: mainProfessors.filter(
+          (professor) =>
+            professor !== undefined &&
+            course.mainProfessorIds.some((p) => String(p) === professor.id),
+        ),
+        associatedProfessors: sortedAssociatedProfessors.filter(
           (professor) =>
             professor?.id !== undefined &&
-            course.professors.some((p) => String(p) === professor.id),
+            course.associatedProfessorIds.some(
+              (p) => String(p) === professor.id,
+            ),
         ),
       };
     });
@@ -52,10 +72,10 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
       getProfessorCoursesQuery(coursesId, language),
     );
 
-    const professors = await postgres
+    const mainProfessors = await postgres
       .exec(
         getProfessorsQuery({
-          professorIds: courses.flatMap((course) => course.professors),
+          professorIds: courses.flatMap((course) => course.mainProfessorIds),
           language,
         }),
       )
@@ -63,19 +83,39 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
         professors.map((element) => formatProfessor(element)),
       );
 
-    const professorsMap = indexBy(professors, 'id');
+    const associatedProfessors = await postgres
+      .exec(
+        getProfessorsQuery({
+          professorIds: courses.flatMap(
+            (course) => course.associatedProfessorIds,
+          ),
+          language,
+        }),
+      )
+      .then((professors) =>
+        professors.map((element) => formatProfessor(element)),
+      );
+
+    const associatedProfessorsMap = indexBy(associatedProfessors, 'id');
 
     return courses.map((course) => {
-      const sortedProfessors = course.professors
-        .map((id) => professorsMap.get(id))
+      const sortedAssociatedProfessors = course.associatedProfessorIds
+        .map((id) => associatedProfessorsMap.get(id))
         .filter((p) => p !== undefined);
 
       return {
         ...course,
-        professors: sortedProfessors.filter(
+        mainProfessors: mainProfessors.filter(
+          (professor) =>
+            professor !== undefined &&
+            course.mainProfessorIds.some((p) => String(p) === professor.id),
+        ),
+        associatedProfessors: sortedAssociatedProfessors.filter(
           (professor) =>
             professor?.id !== undefined &&
-            course.professors.includes(professor.id),
+            course.associatedProfessorIds.some(
+              (p) => String(p) === professor.id,
+            ),
         ),
       };
     });

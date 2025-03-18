@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { CourseChapterResponse, JoinedCourseWithAll } from '@blms/types';
+import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import {
   Dialog,
   DialogContent,
@@ -17,7 +17,7 @@ import { ModalBookSuccess } from './modal-book-success.tsx';
 import { ModalBookSummary } from './modal-book-summary.tsx';
 
 interface CourseBookModalProps {
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   chapter: CourseChapterResponse;
   professorNames: string;
   isOpen: boolean;

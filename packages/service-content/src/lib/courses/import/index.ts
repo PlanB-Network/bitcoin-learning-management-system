@@ -462,14 +462,17 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             throw new Error('Could not insert course');
           }
 
-          for (const prof of parsedCourse.professors_id) {
+          for (let i = 0; i < parsedCourse.professors_id.length; i++) {
+            const prof = parsedCourse.professors_id[i];
             await transaction`
-            INSERT INTO content.course_professors (course_id, professor_id)
-            VALUES(
-              ${result.id},
-              ${prof})
-            ON CONFLICT DO NOTHING
-          `;
+              INSERT INTO content.course_professors (course_id, professor_id, is_coordinator)
+              VALUES(
+                ${result.id},
+                ${prof},
+                ${i === 0}
+              )
+              ON CONFLICT DO NOTHING
+            `;
           }
 
           // If the resource has tags, insert them into the tags table and link them to the resource

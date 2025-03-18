@@ -1,7 +1,7 @@
 import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 
-import type { CourseChapterResponse, JoinedCourseWithAll } from '@blms/types';
+import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
@@ -13,7 +13,7 @@ const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 interface ModalBookSummaryProps {
   courseName: string;
   professorNames: string;
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   chapter: CourseChapterResponse;
   mobileDisplay: boolean;
 }
@@ -55,7 +55,7 @@ export const ModalBookSummary = ({
         <div className="flex flex-col gap-1 lg:gap-2">
           <PaymentRow
             label={
-              course.professors?.length > 1
+              course.mainProfessors?.length > 1
                 ? t('courses.payment.teachers')
                 : t('courses.payment.teacher')
             }

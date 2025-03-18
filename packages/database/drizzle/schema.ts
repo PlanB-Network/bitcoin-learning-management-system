@@ -1855,6 +1855,7 @@ export const contentCourseProfessors = content.table(
     professorId: t.uuid().references(() => contentProfessors.id, {
       onUpdate: 'cascade',
     }),
+    isCoordinator: t.boolean().notNull().default(true),
   }),
   (table) => ({
     pk: primaryKey({

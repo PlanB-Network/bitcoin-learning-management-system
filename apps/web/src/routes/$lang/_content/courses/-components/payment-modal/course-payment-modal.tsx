@@ -8,11 +8,7 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 
-import type {
-  CheckoutData,
-  CouponCode,
-  JoinedCourseWithAll,
-} from '@blms/types';
+import type { CheckoutData, CouponCode, CourseResponse } from '@blms/types';
 import {
   Button,
   Dialog,
@@ -35,7 +31,7 @@ interface WebSocketMessage {
 }
 
 interface CoursePaymentModalProps {
-  course: JoinedCourseWithAll;
+  course: CourseResponse;
   professorNames: string;
   satsPrice: number;
   dollarPrice: number;

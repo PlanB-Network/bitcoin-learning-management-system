@@ -61,14 +61,6 @@ export interface CoursePartLocalized {
   lastSync: Date;
 }
 
-export interface JoinedCoursePartLocalized {
-  courseId: string;
-  language: string;
-  partId: string;
-  title: string;
-  partIndex: number;
-}
-
 export interface CourseChapter {
   courseId: string;
   chapterIndex: number;
@@ -102,6 +94,14 @@ export interface CourseChapterLocalized {
   sections: string[];
   rawContent: string;
   lastSync: Date;
+}
+
+export interface JoinedCoursePartLocalized {
+  courseId: string;
+  language: string;
+  partId: string;
+  title: string;
+  partIndex: number;
 }
 
 export interface JoinedCourseChapter {
@@ -170,6 +170,45 @@ export interface MinimalJoinedCourse {
   averageRating: number;
 }
 
+export interface JoinedCourseProfessorId {
+  id: string;
+  index: string;
+  isArchived: boolean;
+  hours: number;
+  topic: string;
+  subtopic: string;
+  originalLanguage: string;
+  requiresPayment: boolean;
+  paymentExpirationDate: Date | null;
+  publishedAt: Date | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
+  paidDescription: string | null;
+  paidVideoLink: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
+  contact: string | null;
+  lastUpdated: Date;
+  lastCommit: string;
+  numberOfRating: number;
+  sumOfAllRating: number;
+  isPlanbSchool: boolean;
+  planbSchoolMarkdown: string | null;
+  language: string;
+  name: string;
+  goal: string;
+  objectives: string[];
+  rawDescription: string;
+  level: CourseLevel;
+  chaptersCount?: number | undefined;
+  averageRating: number;
+  mainProfessorIds: string[];
+  associatedProfessorIds: string[];
+}
+
 export interface JoinedCourse {
   id: string;
   index: string;
@@ -205,90 +244,8 @@ export interface JoinedCourse {
   level: CourseLevel;
   chaptersCount?: number | undefined;
   averageRating: number;
-  professors: FormattedProfessor[];
-}
-
-export interface JoinedCourseWithProfessorsContributorIds {
-  id: string;
-  index: string;
-  isArchived: boolean;
-  hours: number;
-  topic: string;
-  subtopic: string;
-  originalLanguage: string;
-  requiresPayment: boolean;
-  paymentExpirationDate: Date | null;
-  publishedAt: Date | null;
-  format: 'online' | 'inperson' | 'hybrid';
-  onlinePriceDollars: number | null;
-  inpersonPriceDollars: number | null;
-  paidDescription: string | null;
-  paidVideoLink: string | null;
-  startDate: Date | null;
-  endDate: Date | null;
-  availableSeats: number | null;
-  remainingSeats: number | null;
-  contact: string | null;
-  lastUpdated: Date;
-  lastCommit: string;
-  numberOfRating: number;
-  sumOfAllRating: number;
-  isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
-  language: string;
-  name: string;
-  goal: string;
-  objectives: string[];
-  rawDescription: string;
-  level: CourseLevel;
-  chaptersCount?: number | undefined;
-  averageRating: number;
-  professors: string[];
-}
-
-export interface JoinedCourseWithAll {
-  id: string;
-  index: string;
-  isArchived: boolean;
-  hours: number;
-  topic: string;
-  subtopic: string;
-  originalLanguage: string;
-  requiresPayment: boolean;
-  paymentExpirationDate: Date | null;
-  publishedAt: Date | null;
-  format: 'online' | 'inperson' | 'hybrid';
-  onlinePriceDollars: number | null;
-  inpersonPriceDollars: number | null;
-  paidDescription: string | null;
-  paidVideoLink: string | null;
-  startDate: Date | null;
-  endDate: Date | null;
-  availableSeats: number | null;
-  remainingSeats: number | null;
-  contact: string | null;
-  lastUpdated: Date;
-  lastCommit: string;
-  numberOfRating: number;
-  sumOfAllRating: number;
-  isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
-  language: string;
-  name: string;
-  goal: string;
-  objectives: string[];
-  rawDescription: string;
-  level: CourseLevel;
-  chaptersCount: number;
-  averageRating: number;
-  professors: FormattedProfessor[];
-  parts: {
-    part?: number | undefined;
-    language?: string | undefined;
-    title?: string | undefined;
-    chapters: (JoinedCourseChapter | undefined)[];
-  }[];
-  partsCount: number;
+  mainProfessors: FormattedProfessor[];
+  associatedProfessors: FormattedProfessor[];
 }
 
 export interface JoinedCourseChapterWithContent {
@@ -367,9 +324,10 @@ export interface CourseResponse {
   level: CourseLevel;
   chaptersCount: number;
   averageRating: number;
-  professors: FormattedProfessor[];
   parts: PartWithChapters[];
   partsCount: number;
+  mainProfessors: FormattedProfessor[];
+  associatedProfessors: FormattedProfessor[];
 }
 
 export interface CourseChapterResponse {

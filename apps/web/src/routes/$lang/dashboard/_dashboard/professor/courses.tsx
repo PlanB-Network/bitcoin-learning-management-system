@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
 import type {
+  CourseResponse,
   CourseReviewsExtended,
   JoinedCourse,
-  JoinedCourseWithAll,
 } from '@blms/types';
 
 import { UserRole } from '@blms/constants';
@@ -94,7 +94,7 @@ function DashboardProfessorCourses() {
 }
 
 const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
-  const [currentTab, setCurrentTab] = useState(courses?.at(0)?.id);
+  const [currentTab, setCurrentTab] = useState(courses?.at(0)?.index);
 
   const onTabChange = (value: string) => {
     setCurrentTab(value);
@@ -109,10 +109,10 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
     >
       <TabsListSegmented
         tabs={courses.map((course) => ({
-          value: course.id,
+          value: course.index,
           key: course.index,
           text: `${course.index.toLocaleUpperCase()} - ${course.name}`,
-          active: course.id === currentTab,
+          active: course.index === currentTab,
         }))}
         slice={6}
         className="max-md:hidden"
@@ -141,8 +141,8 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
         id="coursesSelector"
         itemsList={[
           ...courses.map((course) => ({
-            name: `${course.id.toLocaleUpperCase()} - ${course.name}`,
-            onClick: () => setCurrentTab(course.id),
+            name: `${course.index.toLocaleUpperCase()} - ${course.name}`,
+            onClick: () => setCurrentTab(course.index),
           })),
           {
             name: 'Propose new course',
@@ -151,8 +151,8 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
           },
         ]}
         activeItem={
-          `${currentTab?.toUpperCase()} - ${courses.find((course) => course.id === currentTab)?.name}` ||
-          `${courses[0].id.toLocaleUpperCase()} - ${courses[0].name}`
+          `${currentTab?.toUpperCase()} - ${courses.find((course) => course.index === currentTab)?.name}` ||
+          `${courses[0].index.toLocaleUpperCase()} - ${courses[0].name}`
         }
         variant="light"
         className="md:hidden"
@@ -176,7 +176,7 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
   };
 
   return (
-    <TabsContent value={course.id}>
+    <TabsContent value={course.index}>
       <Tabs
         defaultValue="details"
         value={currentTab}
@@ -235,7 +235,9 @@ const CourseDetails = ({ course }: { course: JoinedCourse }) => {
 
   const courseItems = {
     'Course Name': course.name,
-    Professor: course.professors.map((professor) => professor.name).join(', '),
+    Professor: course.mainProfessors
+      .map((professor) => professor.name)
+      .join(', '),
     Level: t(`words.level.${course.level}`),
     Duration: `${course.hours} ${t('words.hours')}`,
     Price:
@@ -368,7 +370,7 @@ const CourseDetails = ({ course }: { course: JoinedCourse }) => {
 
       {/* TODO: check why we need type */}
       {isFetched && (
-        <CourseCurriculum course={courseWithDetails as JoinedCourseWithAll}>
+        <CourseCurriculum course={courseWithDetails as CourseResponse}>
           <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
             {t('dashboard.teacher.courses.curriculum')}
           </h4>

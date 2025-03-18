@@ -610,6 +610,13 @@
       "when": 1742302678988,
       "tag": "0086_young_nebula",
       "breakpoints": true
+    },
+    {
+      "idx": 87,
+      "version": "7",
+      "when": 1742309519011,
+      "tag": "0087_curvy_tana_nile",
+      "breakpoints": true
     }
   ]
 }

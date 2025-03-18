@@ -110,7 +110,7 @@ export const CourseDashboardCard = ({
                     {t('dashboard.myCourses.professor')} {''}
                   </span>
                   <span className="body-14px font-normal text-newBlack-4  line-clamp-1 md:text-black md:label-medium-med-16px">
-                    {course.professors
+                    {course.mainProfessors
                       .map((professor) => professor.name)
                       .join(', ')}
                   </span>
