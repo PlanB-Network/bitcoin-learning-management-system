@@ -488,7 +488,7 @@ function Home() {
 
   const TutorialSection = () => {
     return (
-      <div className={cn('mt-5 lg:mt-[60px]', sectionClass)}>
+      <div className={cn('mt-5 lg:mt-[60px] ', sectionClass)}>
         <div
           className={cn(
             'flex flex-col md:text-center md:items-center',
@@ -509,74 +509,41 @@ function Home() {
             {t('home.tutorialSection.content1')}
           </p>
         </div>
-        <CategoryItemList
-          baseUrl="/tutorials"
-          categoryType="tutorials"
-          title={(category) => t(`tutorials.${category.name}.title`)}
-        />
-        <Link to={'/tutorials'} className="mt-[30px] lg:hidden">
-          <Button
-            variant="outlineWhite"
-            rounded={false}
-            glowing={false}
-            size={tutorialButtonSize}
-          >
-            {t('home.tutorialSection.link')}
-            <span className="ml-3">
-              <AiOutlineRight />
-            </span>
-          </Button>
-        </Link>
-        <CategoryItemList
-          baseUrl="/resources"
-          categoryType="resources"
-          title={(category) => t(`resources.${category.name}.title`)}
-        />
-        <Link to={'/resources'} className="mt-[30px] lg:hidden">
-          <Button
-            variant="outlineWhite"
-            rounded={false}
-            glowing={false}
-            size={tutorialButtonSize}
-          >
-            {t('home.tutorialSection.link2')}
-            <span className="ml-3">
-              <AiOutlineRight />
-            </span>
-          </Button>
-        </Link>
-
-        <div className="flex gap-10 mt-10 max-lg:hidden">
-          <Link to={'/tutorials'}>
+        <div className="flex flex-col items-center max-w-[920px]">
+          <CategoryItemList
+            baseUrl="/tutorials"
+            categoryType="tutorials"
+            title={(category) => t(`tutorials.${category.name}.title`)}
+          />
+          <Link to={'/tutorials'} className="mt-[30px]">
             <Button
               variant="outlineWhite"
               rounded={false}
-              className=""
               glowing={false}
-              size="l"
+              size={tutorialButtonSize}
             >
               {t('home.tutorialSection.link')}
-              {isScreenMd ? (
-                <span className="ml-3">
-                  <AiOutlineRight />
-                </span>
-              ) : null}
+              <span className="ml-3">
+                <AiOutlineRight />
+              </span>
             </Button>
           </Link>
-          <Link to={'/resources'}>
+          <CategoryItemList
+            baseUrl="/resources"
+            categoryType="resources"
+            title={(category) => t(`resources.${category.name}.title`)}
+          />
+          <Link to={'/resources'} className="mt-[30px]">
             <Button
               variant="outlineWhite"
               rounded={false}
-              className=""
               glowing={false}
-              size="l"
+              size={tutorialButtonSize}
             >
               {t('home.tutorialSection.link2')}
-              {isScreenMd ? (
-                <span className="ml-3">
-                  <AiOutlineRight />
-                </span>
-              ) : null}
+              <span className="ml-3">
+                <AiOutlineRight />
+              </span>
             </Button>
           </Link>
         </div>
