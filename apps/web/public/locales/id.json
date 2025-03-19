@@ -178,7 +178,6 @@
       "premiumContentNeedsPaymentAction": "Pergi ke beranda kursus",
       "thanksTipping": "Anda dapat mengucapkan terima kasih dengan memberikan tip kepada profesor.",
       "teacherLed": "Dipimpin oleh-guru",
-      "ledBy": "Kursus ini dipimpin oleh",
       "pastEditionsRatings": "Peringkat Edisi Sebelumnya"
     },
     "explorer": {
@@ -479,7 +478,6 @@
         "analytics": "Analisis",
         "courseDetails": "Detail kursus",
         "courseModification": "Jika Anda memerlukan bantuan untuk mengedit sesuatu dalam kursus ini, silakan lihat <0>tutorial</0> ini.",
-        "courseShortDescription": "Tujuan",
         "coursesManagementPanel": "Panel kursus",
         "curriculum": "Kurikulum kursus",
         "curriculumDescription": "Berikut adalah kurikulum terkini dari kursus ini.",

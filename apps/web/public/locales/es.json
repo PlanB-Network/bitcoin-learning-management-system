@@ -135,7 +135,6 @@
       "premiumContentNeedsLogin": "Debes iniciar sesión para acceder a este curso.",
       "thanksTipping": "Puedes mostrar tu agradecimiento dándole una propina al profesor.",
       "hasNotBeenProofread": "Este curso aún no ha sido revisado",
-      "ledBy": "Este curso está dirigido por",
       "pastEditionsRatings": "Calificaciones de Ediciones Pasadas",
       "teacherLed": "Dirigido por el profesor"
     },
@@ -405,7 +404,6 @@
         "analytics": "Estadísticas",
         "courseDetails": "Detalles del curso",
         "courseModification": "Si necesitas ayuda para editar algo en el curso, por favor revisa este <0>tutorial</0>.",
-        "courseShortDescription": "Meta",
         "coursesManagementPanel": "Panel de cursos",
         "curriculum": "Currículo del curso",
         "editOnGithub": "Editar en Github",

@@ -177,7 +177,6 @@
       "otherCoursesInterest": "Andre kurs du kan være interessert i",
       "thanksTipping": "Du kan si takk ved å gi professoren et tips.",
       "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå",
-      "ledBy": "Dette kurset ledes av",
       "pastEditionsRatings": "Tidligere utgavers rangeringer",
       "teacherLed": "Professor-ledet"
     },
@@ -606,7 +605,6 @@
         "courseDetails": "Kursdetaljer",
         "courseLongDescription": "Innledende beskrivelse",
         "reviewInfos": "Her kan du kontrollere og gjennomgå all informasjon om hvert kurs du har koordinert.",
-        "courseShortDescription": "Mål",
         "coursesManagementPanel": "Kurskontrollpanel",
         "curriculum": "Kursstudieplan",
         "curriculumDescription": "Her er det nåværende studieplan for dette kurset.",

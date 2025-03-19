@@ -135,7 +135,6 @@
       "otherCoursesInterest": "Altri corsi che potrebbero interessarti",
       "thanksTipping": "Puoi dire grazie lasciando una mancia al professore.",
       "hasNotBeenProofread": "Questo corso non è stato ancora revisionato",
-      "ledBy": "Questo corso è tenuto da",
       "pastEditionsRatings": "Valutazioni delle Edizioni Precedenti",
       "teacherLed": "Guidato dall'insegnante"
     },
@@ -404,7 +403,6 @@
         "courseDetails": "Dettagli del corso",
         "courseLongDescription": "Descrizione introduttiva",
         "courseModification": "Se hai bisogno di aiuto per modificare il corso, leggi questo <0>tutorial</0>.",
-        "courseShortDescription": "Obiettivi",
         "coursesManagementPanel": "Elenco dei corsi",
         "analytics": "Analisi",
         "curriculum": "Programma del corso",
