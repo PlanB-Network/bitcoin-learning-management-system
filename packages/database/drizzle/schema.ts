@@ -234,7 +234,7 @@ export const usersJobTitles = users.table('job_titles', (t) => ({
 
 export const contentBlogs = content.table('blogs', (t) => ({
   id: t.uuid().primaryKey(),
-  path: t.varchar({ length: 255 }).unique().notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
 
   category: t.varchar({ length: 255 }).notNull(),
 
@@ -322,7 +322,7 @@ export const contentBCertificateExam = content.table(
   'b_certificate_exam',
   (t) => ({
     id: t.uuid().primaryKey().notNull(),
-    path: t.varchar({ length: 255 }).unique().notNull(),
+    path: t.varchar({ length: 255 }).notNull(),
 
     date: t.timestamp().notNull(),
     location: t.text().notNull(),
@@ -1257,7 +1257,7 @@ export const contentEvents = content.table('events', (t) => ({
   projectId: t
     .uuid()
     .references(() => contentProjects.id, { onDelete: 'set null' }),
-  path: t.varchar({ length: 255 }).unique().notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
   type: eventTypeEnum(),
   name: t.text(),
   description: t.text(),
@@ -1392,40 +1392,34 @@ export const usersEventPayment = users.table(
 
 // TUTORIALS
 
-export const contentTutorials = content.table(
-  'tutorials',
-  (t) => ({
-    id: t.uuid().primaryKey().notNull(),
-    projectId: t
-      .uuid()
-      .references(() => contentProjects.id, { onDelete: 'set null' }),
-    professorId: t.uuid().references(() => contentProfessors.id, {
-      onUpdate: 'cascade',
-    }),
-    path: t.varchar({ length: 255 }).unique().notNull(),
-    logoUrl: t.text().notNull().default(''),
-
-    name: t.varchar({ length: 255 }).notNull(),
-    category: t.varchar({ length: 255 }).notNull(),
-    subcategory: t.varchar({ length: 255 }),
-    originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
-
-    level: t.varchar({ length: 255 }).notNull(),
-    creditLink: t.text(),
-
-    lastUpdated: t
-      .timestamp({
-        withTimezone: true,
-      })
-      .defaultNow()
-      .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+export const contentTutorials = content.table('tutorials', (t) => ({
+  id: t.uuid().primaryKey().notNull(),
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
+  professorId: t.uuid().references(() => contentProfessors.id, {
+    onUpdate: 'cascade',
   }),
-  (table) => ({
-    unqNameCategory: unique().on(table.name, table.category),
-  }),
-);
+  path: t.varchar({ length: 255 }).notNull(),
+  logoUrl: t.text().notNull().default(''),
+
+  name: t.varchar({ length: 255 }).notNull(),
+  category: t.varchar({ length: 255 }).notNull(),
+  subcategory: t.varchar({ length: 255 }),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+
+  level: t.varchar({ length: 255 }).notNull(),
+  creditLink: t.text(),
+
+  lastUpdated: t
+    .timestamp({
+      withTimezone: true,
+    })
+    .defaultNow()
+    .notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
 
 export const contentTutorialsLocalized = content.table(
   'tutorials_localized',
@@ -1762,7 +1756,7 @@ export const contentContributors = content.table('contributors', (t) => ({
 
 export const contentProfessors = content.table('professors', (t) => ({
   id: t.uuid().primaryKey().notNull(),
-  path: t.varchar({ length: 255 }).unique().notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
 
   name: t.varchar({ length: 255 }).unique().notNull(),
   company: t.varchar({ length: 255 }),
