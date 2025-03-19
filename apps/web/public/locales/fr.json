@@ -136,7 +136,6 @@
       "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur.",
       "hasNotBeenProofread": "Ce cours n'a pas encore été relu",
       "teacherLed": "Dirigé par l'enseignant",
-      "ledBy": "Ce cours est dirigé par",
       "pastEditionsRatings": "Évaluations des Éditions Précédentes"
     },
     "explorer": {
@@ -394,7 +393,6 @@
         "courseDetails": "Détails du cours",
         "courseLongDescription": "Description introductive",
         "courseModification": "Si vous avez besoin d'aide pour modifier quelque chose dans le cours, veuillez consulter ce <0>tutoriel</0>.",
-        "courseShortDescription": "But",
         "coursesManagementPanel": "Panneau de cours",
         "curriculum": "Programme de cours",
         "curriculumDescription": "Voici le programme actuel de ce cours.",

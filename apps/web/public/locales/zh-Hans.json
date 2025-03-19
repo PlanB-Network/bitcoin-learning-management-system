@@ -336,7 +336,6 @@
       "premiumContentNeedsPaymentAction": "前往课程主页",
       "hasNotBeenProofread": "此课程尚未校对",
       "teacherLed": "由教授指导",
-      "ledBy": "课程领导者：",
       "pastEditionsRatings": "往前版本评价"
     },
     "explorer": {
@@ -633,7 +632,6 @@
         "courseDetails": "课程细节",
         "courseLongDescription": "介绍描述",
         "courseModification": "如果您需要帮助来编辑课程中的内容，请查看这个<0>教程</0>。",
-        "courseShortDescription": "目标",
         "coursesManagementPanel": "课程面板",
         "curriculum": "课程计划",
         "curriculumDescription": "以下是本课程的当前计划。",

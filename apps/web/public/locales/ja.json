@@ -135,9 +135,10 @@
       "premiumContentNeedsPayment": "このコースはプレミアムプログラムの一部です。",
       "premiumContentNeedsPaymentAction": "コースのホームページへ",
       "thanksTipping": "講師にチップを渡すことで、感謝の気持ちを伝えることができます。",
-      "ledBy": "本コースの講師",
       "pastEditionsRatings": "過去の評価",
-      "teacherLed": "講師主導"
+      "teacherLed": "講師主導",
+      "associatedProfessors": "サポート講師陣",
+      "coordinatedBy": "このコースは以下のメンバーによって作成されました："
     },
     "explorer": {
       "pageDescription": "Plan ₿ アカデミーは、世界中のビットコイン教育をシンプルにすることを目的としています。 様々な分野の専門家にキュレーションされた当アカデミーは、ビットコインのあらゆる側面を解明するための包括的なコースを提供しています。\n初心者から専門家まで、ご自身のペースで、あるいは毎週講師がフォローする形で、当アカデミーがビットコインの広大な世界をより深く理解する一助となれば幸いです。 私たちのコースの多くは、誰もが、どこにいても、質の高い教育にアクセスできるように無料で提供されています。",
@@ -148,7 +149,8 @@
       "journey": "ビットコインは旅であり、目的地ではありません",
       "planbSchoolHeadline": "Giacomo Zucco氏が主導する Plan ₿ Schoolは、学習と実社会での応用のギャップを埋めるためにデザインされた3ヶ月の集中教育プログラムを提供しています。 伝統的な授業だけでなく、学生たちは企業主導の実践的プロジェクトや、トップパフォーマー専用のファーストクラスブートキャンプに取り組みます。 2回の競争的な選考を経て優秀な人材だけが進級し、最終的にトップクラスの学生がビットコイン業界でのキャリアをスタートさせるための完全装備を手に入れられます。",
       "comingSoon": "近日公開予定",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "goal": "ゴール："
     },
     "part": {
       "count": "{{count}}節"
@@ -315,6 +317,11 @@
       "takeFinalExam": "すべての章を完了した今、あなたの知識を試す最終試験の時間です。",
       "unlockFeatures1": "すべての機能をアンロックし、進捗状況を追跡するには、アカウントが必要です。",
       "unlockFeatures2": "個人情報の収集やクッキーの使用は一切行っておりません。"
+    },
+    "format": {
+      "hybrid": "会場／オンライン",
+      "inperson": "会場",
+      "online": "オンライン"
     }
   },
   "dashboard": {
@@ -432,7 +439,6 @@
         "courseDetails": "コース詳細",
         "courseLongDescription": "序文",
         "courseModification": "コースの編集にヘルプが必要な場合は、こちらの<0>チュートリアル</0>をご覧ください。",
-        "courseShortDescription": "ゴール",
         "coursesManagementPanel": "コースパネル",
         "curriculum": "コースカリキュラム",
         "curriculumDescription": "このコースの現在のカリキュラムは以下の通りです。",
@@ -443,7 +449,8 @@
         "proposeNewCourse": "新しいコースを提案する",
         "quickRecap": "ここでは、このコースに関する一般的な情報をご覧いただけます。",
         "reviewInfos": "ここでは、あなたがコーディネートした各コースに関するすべての情報を管理し、確認することができます。",
-        "reviews": "レビュー"
+        "reviews": "レビュー",
+        "goal": "ゴール"
       },
       "menu": "講師用メニュー",
       "tutorials": {

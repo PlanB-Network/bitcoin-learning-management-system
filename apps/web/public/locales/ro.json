@@ -154,7 +154,6 @@
       "otherCourses": "Alte cursuri",
       "courseAddedToDashboard": "Acest curs a fost adăugat la dashboardul al studentului dumneavoastră",
       "pastEditionsRatings": "Evaluările edițiilor anterioare",
-      "ledBy": "Acest curs este condus de",
       "collaborativeEffort": "Fiecare conținut de pe platformă este rezultatul unui efort de colaborare: fiecare lecție, traducere și revizuire este posibilă prin munca colaboratorilor. Din acest motiv, suntem mereu în căutare de corectori care pot revizui conținutul nostru în mai multe limbi. Dacă dorești să participi la procesul de corectare, te rugăm să ne contactezi în grupul nostru <0>Telegram</0> și să citești <1>tutorialul nostru</1>.\n\nVă reamintim că acest conținut este open-source - licențiat sub <2>CC BY-SA</2> - deci poate fi partajat și utilizat liber, atâta timp cât sursa originală este creditată.",
       "teacherLed": "condus de profesor"
     },
@@ -430,7 +429,6 @@
       "courses": {
         "analytics": "Analitice",
         "courseLongDescription": "Descriere introductivă",
-        "courseShortDescription": "Obiectiv",
         "coursesManagementPanel": "Panou de cursuri",
         "curriculum": "Program de cursuri",
         "curriculumDescription": "Iată programul actual al acestui curs.",
