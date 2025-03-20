@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
-    "@types/express": "^5.0.0",
+    "@types/express": "^5.0.1",
     "@types/express-serve-static-core": "^5.0.6",
     "@types/express-session": "^1.18.1",
     "@types/formidable": "^3.4.5",

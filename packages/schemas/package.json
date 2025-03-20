@@ -22,7 +22,7 @@
   "dependencies": {
     "@blms/constants": "workspace:*",
     "@blms/database": "workspace:*",
-    "drizzle-orm": "^0.40.0",
+    "drizzle-orm": "^0.40.1",
     "drizzle-zod": "~0.7.0",
     "zod": "^3.24.2"
   }
