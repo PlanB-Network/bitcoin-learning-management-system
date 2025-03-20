@@ -30,20 +30,23 @@ function SearchPage() {
 
   const [filtersOpen, setFiltersOpen] = useState(true);
   const [categories, setCategories] = useState<Set<string>>(new Set(['all']));
-  const [resources, setResources] = useState<Set<string>>(new Set(['all']));
 
   const isMobile = useSmaller('md');
 
-  const availableCategories = ['courses', 'events', 'tutorials', 'professors'];
-
-  const availableResources = [
+  const availableCategories = [
+    // Main categories
+    'courses',
+    'events',
+    'tutorials',
+    'professors',
+    // Resources
     'books',
     'newsletters',
     'podcasts',
+    'projects',
     'youtube_channels',
     'conference_replays',
     'glossary_words',
-    'projects',
     'lecture_replays',
   ];
 
@@ -55,7 +58,6 @@ function SearchPage() {
       language: i18n.language,
       categories: [
         ...(categories.has('all') ? availableCategories : categories),
-        ...(resources.has('all') ? availableResources : resources),
       ],
       surroundingWords: isMobile ? 15 : 20,
       limit: 20,
@@ -81,15 +83,10 @@ function SearchPage() {
   const clearSearch = () => {
     setQuery('');
     setCategories(new Set(['all']));
-    setResources(new Set(['all']));
   };
 
-  const handleFilterChange = (category: string, option: string) => {
-    if (category === 'Categories') {
-      toggleSelection(option, categories, setCategories);
-    } else if (category === 'Resources') {
-      toggleSelection(option, resources, setResources);
-    }
+  const handleFilterChange = (_category: string, option: string) => {
+    toggleSelection(option, categories, setCategories);
   };
 
   return (
@@ -118,18 +115,8 @@ function SearchPage() {
                     ? t(`search.${toCamelCase(category)}`)
                     : t('search.all'),
               })),
-              Resources: availableResources.map((resource) => ({
-                name: resource,
-                translation:
-                  resource !== 'all'
-                    ? t(`search.${toCamelCase(resource)}`)
-                    : t('search.all'),
-              })),
             }}
-            selectedFilters={{
-              Categories: categories,
-              Resources: resources,
-            }}
+            selectedFilters={{ Categories: categories }}
           />
         </div>
 
@@ -156,7 +143,11 @@ function SearchPage() {
         )}
 
         <div>
-          {search.isLoading && <p>Loading...</p>}
+          {search.isLoading && (
+            <div className="mt-40 h-screen">
+              <Loader size={'s'} />
+            </div>
+          )}
           {search.isError && (
             <p className="text-red-500">{t('search.resultError')}</p>
           )}
@@ -165,9 +156,7 @@ function SearchPage() {
               <div
                 className={cn(
                   'mb-4 ps-2',
-                  lastPage.results.length === 0 &&
-                    categories.has('all') &&
-                    resources.has('all')
+                  lastPage.results.length === 0 && categories.has('all')
                     ? 'hidden'
                     : '',
                 )}
@@ -202,18 +191,11 @@ function SearchPage() {
                       <div className="flex flex-col gap-2">
                         {Object.entries({
                           Categories: availableCategories,
-                          Resources: availableResources,
                         }).map(([groupname, group], index) => {
-                          const target =
-                            groupname === 'Categories'
-                              ? {
-                                  value: categories,
-                                  dispatch: setCategories,
-                                }
-                              : {
-                                  value: resources,
-                                  dispatch: setResources,
-                                };
+                          const target = {
+                            value: categories,
+                            dispatch: setCategories,
+                          };
 
                           return (
                             <div
