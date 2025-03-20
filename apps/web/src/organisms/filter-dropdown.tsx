@@ -35,14 +35,15 @@ export const FilterDropdown = ({
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isFocused, setIsFocused] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const filterKeys = Object.keys(filters || {});
 
   if (filters) {
     useEffect(() => {
       if (!activeCategory) {
-        const firstCategory = Object.keys(filters)[0] || null;
+        const firstCategory = filterKeys[0] || null;
         setActiveCategory(firstCategory);
       }
-    }, [filters, activeCategory]);
+    }, [filterKeys, activeCategory]);
   }
 
   useEffect(() => {
@@ -178,23 +179,25 @@ export const FilterDropdown = ({
 
       {filters && isOpen && (
         <div className="bg-tertiary-10 p-2.5 rounded-b-lg border-t border-tertiary-9 md:hidden">
-          <div className="flex gap-1 mb-[15px]">
-            {Object.keys(filters).map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => selectCategory(category)}
-                className={cn(
-                  'px-2.5 py-1.5 body-16px',
-                  category === activeCategory
-                    ? 'text-white underline'
-                    : 'text-tertiary-6 no-underline',
-                )}
-              >
-                {t(`filters.${category.toLowerCase()}`)}
-              </button>
-            ))}
-          </div>
+          {filterKeys.length > 1 && (
+            <div className="flex gap-1 mb-[15px]">
+              {filterKeys.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => selectCategory(category)}
+                  className={cn(
+                    'px-2.5 py-1.5 body-16px',
+                    category === activeCategory
+                      ? 'text-white underline'
+                      : 'text-tertiary-6 no-underline',
+                  )}
+                >
+                  {t(`filters.${category.toLowerCase()}`)}
+                </button>
+              ))}
+            </div>
+          )}
 
           {activeCategory && (
             <div className="grid grid-cols-2 gap-x-7 gap-y-5">
