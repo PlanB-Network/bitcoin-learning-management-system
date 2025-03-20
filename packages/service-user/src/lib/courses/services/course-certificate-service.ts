@@ -251,7 +251,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     });
 
     const fileKey = `certificates/${examAttemptId}.pdf`;
-    await ctx.s3.put(fileKey, pdf, 'application/pdf');
+    await ctx.s3.put(fileKey, pdf, { contentType: 'application/pdf' });
 
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`
@@ -281,7 +281,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       return null;
     }
 
-    await ctx.s3.put(fileKey, thumbnail, 'image/png');
+    await ctx.s3.put(fileKey, thumbnail, { contentType: 'image/png' });
 
     await ctx.postgres.exec(
       sql<UserExamTimestamp[]>`

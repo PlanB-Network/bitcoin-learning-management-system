@@ -145,7 +145,7 @@ export const createRestFilesRoutes = async (
           const id = randomUUID();
 
           return dependencies.s3
-            .upload(`user-files/${id}`, stream, 'image/webp')
+            .upload(`user-files/${id}`, stream, { contentType: 'image/webp' })
             .then(() => id);
         })
         .then((fileId) => setProfilePicture(uid, fileId))
@@ -167,7 +167,9 @@ export const createRestFilesRoutes = async (
 
     receivePdf(req)
       .then((stream) => {
-        return dependencies.s3.upload(`cvs/${key}`, stream, 'application/pdf');
+        return dependencies.s3.upload(`cvs/${key}`, stream, {
+          contentType: 'application/pdf',
+        });
       })
       .then(() => res.json())
       .catch(next);

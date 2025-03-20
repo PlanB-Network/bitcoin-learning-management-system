@@ -16,14 +16,20 @@ import type { S3Config } from '@blms/types';
 export { NoSuchKey } from '@aws-sdk/client-s3';
 
 type Data = string | Uint8Array | Buffer;
+type Metadata = Record<string, string>;
+interface PutOptions {
+  contentType?: string;
+  metadata?: Metadata;
+}
 
 export interface S3Service {
   getBlob(key: string): Promise<Uint8Array | null>;
   getStream(key: string): Promise<Readable | null>;
-  put(key: string, body: Data, contentType?: string): Promise<void>;
-  upload(key: string, stream: Readable, contentType?: string): Promise<void>;
+  put(key: string, body: Data, opts?: PutOptions): Promise<void>;
+  upload(key: string, stream: Readable, opts?: PutOptions): Promise<void>;
   head(key: string): Promise<S3Head>;
   delete(key: string): Promise<void>;
+  metadata(key: string): Promise<Metadata | null>;
 }
 
 export interface S3Head {
@@ -52,6 +58,10 @@ export const createS3Service = (config: S3Config): S3Service => {
     return s3.send(new GetObjectCommand({ Bucket, Key: base(key) }));
   };
 
+  const head = (key: string) => {
+    return s3.send(new HeadObjectCommand({ Bucket, Key: base(key) }));
+  };
+
   return {
     // Return the requested file as a blob
     getBlob(key: string) {
@@ -70,8 +80,7 @@ export const createS3Service = (config: S3Config): S3Service => {
         });
     },
     // Upload a file to the bucket
-    put(key: string, body: Data, contentType?: string) {
-      // biome-ignore lint/style/noParameterAssign: <explanation>
+    put(key: string, body: Data, { contentType, metadata }: PutOptions = {}) {
       contentType ??=
         typeof body === 'string' ? 'text/plain' : 'application/octet-stream';
 
@@ -80,13 +89,17 @@ export const createS3Service = (config: S3Config): S3Service => {
         Key: base(key),
         Body: body,
         ContentType: contentType,
+        Metadata: metadata,
       });
 
       return s3.send(cmd).then(() => void 0);
     },
     // Upload a stream to the bucket
-    async upload(key: string, stream: Readable, contentType?: string) {
-      // biome-ignore lint/style/noParameterAssign: <explanation>
+    async upload(
+      key: string,
+      stream: Readable,
+      { contentType, metadata }: PutOptions = {},
+    ) {
       contentType ??= 'application/octet-stream';
 
       const upload = new Upload({
@@ -96,6 +109,7 @@ export const createS3Service = (config: S3Config): S3Service => {
           Key: base(key),
           ContentType: contentType,
           Body: stream,
+          Metadata: metadata,
         },
       });
 
@@ -103,12 +117,11 @@ export const createS3Service = (config: S3Config): S3Service => {
     },
     // Return the metadata of the requested file
     head(key: string) {
-      const cmd = new HeadObjectCommand({ Bucket, Key: base(key) });
-
-      return s3.send(cmd).then((res) => ({
+      return head(key).then((res) => ({
         lastModified: res.LastModified,
         contentLength: res.ContentLength,
         contentType: res.ContentType,
+        metadata: res.Metadata,
       }));
     },
     // Delete the requested file
@@ -116,6 +129,10 @@ export const createS3Service = (config: S3Config): S3Service => {
       const cmd = new DeleteObjectCommand({ Bucket, Key: base(key) });
 
       return s3.send(cmd).then(() => void 0);
+    },
+    // Return the metadata of the requested file
+    metadata(key: string) {
+      return head(key).then((res) => res.Metadata ?? null);
     },
   };
 };
