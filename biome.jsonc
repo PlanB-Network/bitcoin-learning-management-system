@@ -12,7 +12,10 @@
       "**/routeTree.gen.ts",
       "**/.turbo/**",
       "packages/database/drizzle/migrations/*",
-      "packages/types/src/generated/*"
+      "packages/types/src/generated/*",
+      "node_modules/**",
+      "apps/**/node_modules/**",
+      "packages/**/node_modules/**"
     ]
   },
   "formatter": {
