@@ -136,7 +136,9 @@
       "thanksTipping": "Puoi dire grazie lasciando una mancia al professore.",
       "hasNotBeenProofread": "Questo corso non è stato ancora revisionato",
       "pastEditionsRatings": "Valutazioni delle Edizioni Precedenti",
-      "teacherLed": "Guidato dall'insegnante"
+      "teacherLed": "Guidato dall'insegnante",
+      "associatedProfessors": "Professori associati",
+      "coordinatedBy": "Questo corso è coordinato da"
     },
     "explorer": {
       "pageDescription": "La Plan ₿ Academy è dedicata a semplificare l'educazione Bitcoin nel mondo. Curata da esperti di molti campi, la nostra accademia fornisce un ventaglio esaustivo di corsi progettati per chiarificare ogni aspetto di Bitcoin. Dal principiante all'esperto, seguendo il tuo ritmo o insieme a un professore, speriamo che l'accademia possa aiutarti a comprendere meglio il vasto tema di Bitcoin. Una larga parte dei nostri corsi sono interamente gratuiti in modo che chiunque, da qualsiasi luogo, possa avere accesso all'educazione.",
@@ -147,7 +149,8 @@
       "seeCourse": "Guarda il corso",
       "planbSchoolHeadline": "La Plan ₿ School, guidata da Giacomo Zucco, offre programmi educativi intensivi di tre mesi progettati per colmare il divario tra l'apprendimento e le applicazioni reali. Oltre alle classi tradizionali, gli studenti si impegnano in progetti pratici guidati dalle aziende e in un bootcamp di prima classe dedicato ai migliori performer. Solo i migliori talenti avanzano dopo due round di selezione competitivi, garantendo che i migliori studenti finali siano completamente attrezzati per lanciare la loro carriera nell'industria del Bitcoin.",
       "comingSoon": "presto in arrivo",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "goal": "Obiettivo:"
     },
     "part": {
       "count": "Parte n°{{count}}"
@@ -314,6 +317,11 @@
       "takeFinalExam": "Ora che hai completato tutti i capitoli, è il momento di sostenere l'esame finale per testare le tue conoscenze.",
       "unlockFeatures1": "Per sbloccare tutte le funzionalità e tenere traccia dei tuoi progressi, hai bisogno di un account.",
       "unlockFeatures2": "Si prega di notare che non raccogliamo alcun dato personale né utilizziamo cookie."
+    },
+    "format": {
+      "hybrid": "Di persona/online",
+      "inperson": "In presenza",
+      "online": "Online"
     }
   },
   "dashboard": {
@@ -414,7 +422,8 @@
         "objectives": "Obiettivi",
         "proposeNewCourse": "Proponi un nuovo corso",
         "quickRecap": "Qui puoi trovare tutte le informazioni riguardanti questo corso.",
-        "reviewInfos": "Qui puoi rivedere tutte le informazioni relative a ogni corso che hai coordinato."
+        "reviewInfos": "Qui puoi rivedere tutte le informazioni relative a ogni corso che hai coordinato.",
+        "goal": "Obiettivo"
       },
       "profile": {
         "teacher": "Insegnante",
@@ -1407,6 +1416,11 @@
     "description2": "Unisciti al Plan ₿ Lab che si allinea con il tuo campo di studio. Migliora la tua esperienza di apprendimento!",
     "planBLabs": "Plan ₿ Labs",
     "title": "Lezioni pratiche e interattive per un apprendimento continuo",
-    "coordinatedBy": "Questo Lab è coordinato da"
+    "coordinatedBy": "Questo Lab è coordinato da",
+    "presentation": {
+      "link": "Accedi ai Plan ₿ Labs",
+      "subtitle": "Unisciti a un laboratorio per imparare, discutere e crescere!",
+      "title": "Migliora le tue conoscenze su Bitcoin!"
+    }
   }
 }

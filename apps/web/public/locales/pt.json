@@ -1,19 +1,19 @@
 {
   "about": {
-    "activeContributors": "Contribuidores ativos",
+    "activeContributors": "Colaboradores ativos",
     "missionTitle": "A nossa missão",
     "missionContent1": "A nossa missão é apoiar as comunidades Bitcoin locais através da educação. Nós coletamos, organizamos e criamos os recursos necessários (cursos, livros, posters, flyers, vídeos) para a indústria Bitcoin avançar.",
     "missionContent2": "Centralizamos o conhecimento para distribuí-lo melhor por meio de um repositório GitHub simples e multilíngue e de uma plataforma de e-learning. Nós ajudamos no desenvolvimento de centros de Bitcoin locais com as ferramentas certas para potenciar o seu talento.",
     "commitmentTitle": "Os nossos compromissos",
-    "commitmentContent": "Os nossos compromissos com a comunidade bitcoin são os seguintes: \n • Permanecer em código aberto \n • Fornecer conteúdo educacional \n • Traduzir o nosso conteúdo para o maior número de idiomas possível \n • Apoiar os construtores de Bitcoin em sua jornada de empreendedorismo",
+    "commitmentContent": "Os nossos compromissos para com a comunidade bitcoin são os seguites: \n • Permanecer em código aberto\n • Oferecer conteúdo educacional de alta qualidade \n • Traduzir nosso conteúdo para o máximo de idiomas possível \n • Apoiar os empreendedores de Bitcoin na sua trajetória",
     "coreTeamTitle": "A equipa principal",
-    "coreTeamContent": "Plan ₿ Network é uma coletiva de centenas de colaboradores, professores, líderes da comunidade, designers, programadores e organizadores. Muito obrigado às numerosas pessoas que tornaram o Plan ₿ uma realidade e continuam a fazê-lo todos os dias. (Mural dos contribuintes em breve)",
+    "coreTeamContent": "Plan ₿ Network é uma coletiva de centenas de colaboradores, professores, líderes da comunidade, designers, programadores e organizadores. Muito obrigado às numerosas pessoas que tornaram o Plan ₿ uma realidade e continuam a fazê-lo todos os dias. (Mural dos contribuidores em breve)",
     "coreTeamGiacomoRole": "Diretor e Co-fundador",
     "coreTeamRogzyRole": "Gestor de produto e co-fundador",
     "coreTeamAsioRole": "Coordenador educacional",
     "coreTeamAjelexRole": "Coordenador do nó",
     "corporateTitle": "Empresas responsáveis pelo projeto",
-    "corporateContent": "A Rede Plan ₿ é o resultado da colaboração de três entidades dedicadas ao desenvolvimento do Bitcoin. Em um esforço para fazer a camada educacional do Bitcoin crescer, decidiram colaborar para formar a Rede Plan ₿. Desde então, muitas outras entidades decidiram contribuir e se unir a nós para ajudar a levar a educação em Bitcoin para o mundo. Por isso, um grande obrigado é devido a eles.",
+    "corporateContent": "A Rede Plan ₿ é o projeto conjunto de três entidades focadas no desenvolvimento do Bitcoin. Com o objetivo de expandir a camada educacional do Bitcoin, decidiram unir forças e criar a Rede Plan ₿. Desde então, várias outras entidades decidiram contribuir e se juntar a nós para disseminar a educação sobre Bitcoin pelo mundo. Por essa razão, devemos a eles um enorme agradecimento.",
     "coportateContact": "Informação de contacto:",
     "storyTitle": "A nossa história",
     "storyContent": "A Rede Plan ₿ é uma iniciativa que suporta a educação Bitcoin à escala global. É a intersecção de várias empresas apaixonadas por Bitcoin, concentradas em educação, software de código aberto, redes peer-to-peer e no senso de comunidade. Coletivamente, decidiram estabelecer a Rede Plan ₿ e disponibilizar ao ecossistema Bitcoin as ferramentas necessárias para o seu desenvolvimento. A apresentação do nosso lançamento para 2023 está disponível aqui.",
@@ -578,7 +578,7 @@
   "tutorials": {
     "details": {
       "source": "Fonte original:",
-      "author": "Autor(a) : ",
+      "author": "Autor(a) :",
       "didHelp": "Isto ajudou?",
       "writtenBy": "Este tutorial foi escrito por :"
     },
