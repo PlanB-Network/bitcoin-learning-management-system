@@ -464,7 +464,7 @@
       "noInvoice": "현재 송장이 없습니다.",
       "noTicket": "현재 티켓이 없습니다.",
       "pastTicketTitle": "지난 예약",
-      "upcomingTicketTitle": "향후 예약",
+      "upcomingTicketTitle": "다가오는 예약",
       "upcomingTicketSubtitle": "티켓은 여기에서 다운로드하세요. 입장 시 잊지 말고 가져오세요.",
       "noGoBack": "뒤로 가기",
       "cancelBookingTitle": "이 예약을 취소하시겠습니까?",
@@ -651,7 +651,7 @@
       "tutorialAnalyticsDescription": "플랫폼의 모든 튜토리얼을 확인하고 비교할 수 있습니다.",
       "tutorialsManagementPanel": "튜토리얼 관리 패널",
       "type": "유형",
-      "upcomingBookings": "향후 예약",
+      "upcomingBookings": "다가오는 예약",
       "upcomingBookingsSubtitle": "모든 대면 이벤트 참가자 목록을 다운로드할 수 있습니다.",
       "userRolesAllocation": "사용자 역할 할당"
     },
@@ -907,56 +907,73 @@
   },
   "home": {
     "header": {
-      "content": "",
-      "forEducators": "",
-      "globalNetwork": "",
-      "welcome": ""
+      "content": "Plan ₿ Network는 세계 최고의 도구와 교육 콘텐츠를 제공해 사람들이 자율권을 되찾는 데 도움을 주는 것을 목표로 합니다. 개인부터 커뮤니티까지, 우리는 여러분의 비트코인 여정을 돕기 위해 여기 있습니다.",
+      "forEducators": "학습자와 교육자를 위해",
+      "globalNetwork": "글로벌 비트코인 네트워크",
+      "welcome": "Plan ₿ Network에 오신 것을 환영합니다"
     },
     "tutorialSection": {
-      "title": "",
-      "subtitle1": "",
-      "content1": "",
-      "link": "",
-      "link2": ""
+      "title": "지식을 더 잘 전달하기 위해 중앙화",
+      "subtitle1": "비트코인 교육을 간단하게.",
+      "content1": "비트코인은 끊임없이 진화하고 있으며, 새로운 참가자, 솔루션, 프로토콜, 기술적 돌파구가 나타나면 사라지는 세계입니다. 따라서 최신 뛰어난 튜토리얼의 정확한 데이터베이스를 유지하는 작업은 쉽지 않습니다. Plan ₿에서는 정확히 그것을 실현했습니다. 초보자이든 상급자이든 필요에 따라 수백 개의 튜토리얼을 탐색하여 이 업계를 탐구할 수 있습니다.",
+      "link": "모든 튜토리얼 보기",
+      "link2": "모든 자료 보기"
     },
     "aboutUsSection": {
-      "title": "",
-      "subtitle": "",
-      "content": "",
-      "bitcoinFocusTitle": "",
-      "bitcoinFocusContent": "",
-      "openSourceTitle": "",
-      "openSourceContent": "",
-      "communityTitle": "",
-      "communityContent": "",
-      "privacyTitle": "",
-      "privacyContent": ""
+      "title": "Plan ₿ Network란?",
+      "subtitle": "회사 소개",
+      "content": "Plan ₿ Network는 전 세계 비트코인 교육을 지원합니다. 이는 교육, 오픈소스 소프트웨어, 피어투피어 네트워크, 커뮤니티 구축에 초점을 맞춘 열정적인 비트코인 회사들의 협력입니다. 이들은 함께 비트코인 생태계에 성장에 필요한 필수 도구를 제공하기 위해 이 이니셔티브를 시작했습니다.",
+      "bitcoinFocusTitle": "비트코인 포커스",
+      "bitcoinFocusContent": "비트코인 혁명을 베이스 레이어에서 주변 피어 투 피어 통신까지 탐색합니다.",
+      "openSourceTitle": "오픈소스",
+      "openSourceContent": "우리는 지식의 자유로운 흐름과 오픈소스 솔루션을 지원합니다",
+      "communityTitle": "커뮤니티",
+      "communityContent": "우리는 비트코인 여정에서 서로를 돕는 열정적인 커뮤니티입니다",
+      "privacyTitle": "프라이버시",
+      "privacyContent": "프라이버시는 가장 기본적인 인권 중 하나이며 진보를 위해 필수적입니다"
     },
     "languageSection": {
-      "availableLanguages": "",
-      "title": "",
-      "subtitle": "",
+      "availableLanguages": "사용 가능한 언어",
+      "title": "이곳에는 언어 장벽이 없습니다.",
+      "subtitle": "모든 것이 현지 언어로 번역되었습니다!",
       "content1": "Plan ₿에서는 비트코인이 전 세계 모든 사람에게 중요한 국제적 혁신이라고 믿습니다. 수십억 명의 사람들에게 힘을 실어주기 위해, 이 플랫폼은 다언어로 제공되며 모든 이에게 접근 가능하도록 설계되었습니다. 현재 7개 언어를 지원하며, 매달 더 많은 언어가 추가되고 있습니다. 이를 위해 AI와 전 세계 비트코인 열정가들의 열정을 결합하여 사용하고 있습니다. 여러분도 자신의 국가에서 지역 네트워크를 구축하기 시작할 수 있습니다!",
-      "link": "",
-      "availableLanguagesVariation": ""
+      "link": "아카데미 번역을 도와주세요",
+      "availableLanguagesVariation": "사용 가능한 언어: "
     },
     "patreonSection": {
-      "title": "",
-      "content": ""
+      "title": "함께 비트코인 교육을 더 나은 방향으로 만들어 갑시다!",
+      "content": "Plan ₿ Network는 가능한 한 최상의 교육 리소스를 제공하기 위해 전세계의 많은 비트 코인 회사와 제휴하고 있습니다!"
     },
     "wallOfLoveSection": {
-      "title": "",
-      "subtitle": ""
+      "title": "사랑의 벽",
+      "subtitle": "비트코인 사용자들이 우리에 대해 말하는 것"
+    },
+    "blogSection": {
+      "noDateAvailable": "가능한 날짜가 없습니다",
+      "seeAll": "모두 보기",
+      "noBlogsAvailable": "가능한 블로그가 없습니다.",
+      "blogTitle": "Plan ₿ Network 최신 정보",
+      "description": "끊임없이 플랫폼, 콘텐츠, 네트워크를 개선해 나가고 있습니다. 꼭 확인해 보세요!"
+    },
+    "courseSection": {
+      "checkAllCourses": "모든 코스 보기",
+      "upcomingCourseDescription": "플랫폼에 출시된 최신 코스를 확인하세요. 배우는 것은 아무도 멈출 수 없습니다!",
+      "upcomingCourseTitle": "다가오는 및 신규 코스"
+    },
+    "eventSection": {
+      "checkEvents": "모든 이벤트 보기",
+      "eventTitle": "비트코인 교육자들의 글로벌 네트워크",
+      "hottestEvent": "가장 인기 있는 비트코인 이벤트"
     }
   },
   "imagesAlt": {
-    "bookCover": "",
-    "contributorHeart": "",
-    "orangePill": "",
-    "printedCircuits": "",
-    "rabbit404": "",
-    "sthRepresentingCompany": "",
-    "underConstructionImage": ""
+    "bookCover": "책 표지",
+    "contributorHeart": "훌륭한 기여자를 위한 마음",
+    "orangePill": "오렌지 필",
+    "printedCircuits": "인쇄 회로",
+    "rabbit404": "404 신호에 플래시를 비추는 토끼",
+    "sthRepresentingCompany": "회사를 대표하는 무언가",
+    "underConstructionImage": "건설 현장에서 일하는 여러 토끼의 일러스트"
   },
   "library": {
     "pageTitle": ""
@@ -1100,19 +1117,19 @@
     "verify": "₿-CERT 인증서의 진위성을 확인하세요"
   },
   "glossary": {
-    "filterBar": "",
-    "creditsLoic": "",
-    "needHelp": "",
-    "keepLooking": "",
-    "notTranslated": "",
-    "placeHolder": "",
-    "relatedWords": "",
+    "filterBar": "알고 싶은 용어를 찾아보세요",
+    "creditsLoic": "<0>크레딧</0>: 비트코인 용어집은 <1>Loïc Morel (Pandul)</1>에 의해 작성되었습니다. 자세한 내용은 <2>Github 리포지토리</2>에서 확인할 수 있습니다.",
+    "needHelp": "기술 용어 정의가 필요하나요?",
+    "keepLooking": "다른 단어를 검색하시겠습니까?",
+    "notTranslated": "용어집의 데이터는 아직 번역되지 않았습니다.\n도움을 주고 싶다면 자유롭게 기여해 주세요.",
+    "placeHolder": "어떤 용어를 찾고 계신나요?",
+    "relatedWords": "관련 단어:",
     "anotherWord": "다른 단어 검색하기",
-    "definition": "",
-    "loadMoreWords": "",
-    "pageTitle": "",
-    "randomSearch": "",
-    "term": ""
+    "definition": "정의",
+    "loadMoreWords": "더 보기",
+    "pageTitle": "비트코인 용어집",
+    "randomSearch": "랜덤 검색",
+    "term": "용어"
   },
   "proofreading": {
     "thanks": "",
@@ -1157,5 +1174,9 @@
     "levels": "수준",
     "resources": "자료",
     "topics": "주제"
+  },
+  "lectures": {
+    "buyVideoToUnlock": "동영상을 구입하여 잠금 해제",
+    "checkFullCourse": "전체 코스 보기"
   }
 }
