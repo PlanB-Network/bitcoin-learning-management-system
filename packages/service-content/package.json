@@ -33,6 +33,6 @@
     "@blms/types": "workspace:*",
     "@types/js-yaml": "^4.0.9",
     "@types/uuid": "^10.0.0",
-    "typesense": "^1.8.2"
+    "typesense": "^2.0.3"
   }
 }
