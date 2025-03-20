@@ -1,15 +1,18 @@
 import { t } from 'i18next';
 
-import { Button } from '@blms/ui';
+import { Button, Checkbox } from '@blms/ui';
 
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 
-import type { JSX } from 'react';
+import { type JSX, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 interface ModalBookDescriptionProps {
   callout: string;
   description: string;
+  isGdprCompliance: boolean;
+  gdprTerms: string;
   onBooked: () => void;
   children?: JSX.Element | JSX.Element[];
 }
@@ -17,9 +20,14 @@ interface ModalBookDescriptionProps {
 export const ModalBookDescription = ({
   callout,
   description,
+  isGdprCompliance,
+  gdprTerms,
   onBooked,
   children,
 }: ModalBookDescriptionProps) => {
+  const [isBookEnabled, setIsBookEnabled] = useState(!isGdprCompliance);
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
+
   const splitDescription =
     description.includes('\n') && description.split('\n');
 
@@ -39,7 +47,55 @@ export const ModalBookDescription = ({
         )}
       </div>
       {children}
-      <Button variant="primary" className="lg:w-full" onClick={onBooked}>
+
+      {isGdprCompliance ? (
+        <div className="flex self-start space-x-2">
+          <Checkbox
+            id="terms"
+            className="self-start mt-[2px]"
+            checked={isBookEnabled}
+            onCheckedChange={(e: boolean) => {
+              setIsBookEnabled(e);
+              console.log(e);
+            }}
+          />
+          <label htmlFor="terms" className="text-sm">
+            <ReactMarkdown
+              components={{
+                a: ({ children, href }) => (
+                  <a
+                    href={href}
+                    target="_blank"
+                    className=" text-darkOrange-5 "
+                    rel="noreferrer"
+                  >
+                    {children}
+                  </a>
+                ),
+              }}
+            >
+              {gdprTerms}
+            </ReactMarkdown>
+          </label>
+        </div>
+      ) : null}
+
+      {!isBookEnabled && isBtnClicked ? (
+        <p className="text-red-6 text-sm self-start">
+          {t('events.tcMustBeAccepter')}
+        </p>
+      ) : null}
+
+      <Button
+        variant="primary"
+        className="lg:w-full"
+        onClick={() => {
+          setIsBtnClicked(true);
+          if (isBookEnabled) {
+            onBooked();
+          }
+        }}
+      >
         {t('events.payment.book_seat')}
       </Button>
     </div>

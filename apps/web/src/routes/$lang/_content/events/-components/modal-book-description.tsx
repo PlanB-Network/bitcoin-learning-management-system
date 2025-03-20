@@ -27,11 +27,12 @@ export const ModalBookDescription = ({
   onBooked,
   children,
 }: ModalBookDescriptionProps) => {
+  const [isBookEnabled, setIsBookEnabled] = useState(!isGdprCompliance);
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
+
   const splitDescription =
     description.includes('\n') && description.split('\n');
 
-  const [isBookEnabled, setIsBookEnabled] = useState(!isGdprCompliance);
-  const [isBtnClicked, setIsBtnClicked] = useState(false);
   return (
     <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8">
       <PlanBLogo className="h-auto max-lg:hidden" width={240} />

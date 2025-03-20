@@ -27,6 +27,8 @@ export const getCourseChaptersQuery = ({
         c.is_course_review,
         c.is_course_exam,
         c.is_course_conclusion,
+        c.is_gdpr_compliance,
+        c.custom_tc_disclaimer,
         c.start_date,
         c.end_date,
         c.timezone,

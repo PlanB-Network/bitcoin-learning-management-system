@@ -228,6 +228,10 @@ export const EventPaymentModal = ({
                       ? ''
                       : t(`events.payment.description_${accessType}`)
                   }
+                  isGdprCompliance={event.isGdprCompliance}
+                  gdprTerms={
+                    event.customTcDisclaimer ?? t('events.tcDisclaimer')
+                  }
                   callout={t(`events.payment.callout_${accessType}`)}
                 >
                   <ModalPaymentSummary

@@ -142,6 +142,8 @@ interface Chapter {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   startDate: string | null;
   endDate: string | null;
   timeZone: string | null;
@@ -213,6 +215,8 @@ const extractParts = (markdown: string): Part[] => {
           isCourseReview: false,
           isCourseExam: false,
           isCourseConclusion: false,
+          isGdprCompliance: false,
+          customTcDisclaimer: '',
           startDate: null,
           endDate: null,
           addressLine1: '',
@@ -248,6 +252,13 @@ const extractParts = (markdown: string): Part[] => {
             extractData(token, 'isCourseExam') === 'true';
           currentChapter.isCourseConclusion =
             extractData(token, 'isCourseConclusion') === 'true';
+          currentChapter.isGdprCompliance =
+            extractData(token, 'isGdprCompliance') === 'true';
+          currentChapter.customTcDisclaimer = extractData(
+            token,
+            'customTcDisclaimer',
+          );
+
           currentChapter.startDate = extractData(token, 'startDate');
           currentChapter.endDate = extractData(token, 'endDate');
           currentChapter.timeZone = extractData(token, 'timeZone');
@@ -277,6 +288,8 @@ const extractParts = (markdown: string): Part[] => {
             'isCourseReview',
             'isCourseExam',
             'isCourseConclusion',
+            'isGdprCompliance',
+            'customTcDisclaimer',
             'startDate',
             'endDate',
             'timeZone',
@@ -657,6 +670,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                       is_course_review: chapter.isCourseReview,
                       is_course_exam: chapter.isCourseExam,
                       is_course_conclusion: chapter.isCourseConclusion,
+                      is_gdpr_compliance: chapter.isGdprCompliance,
+                      custom_tc_disclaimer: chapter.customTcDisclaimer,
                       start_date: chapter.startDate,
                       end_date: chapter.endDate,
                       timezone: chapter.timeZone,
@@ -684,6 +699,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     is_course_review = EXCLUDED.is_course_review,
                     is_course_exam = EXCLUDED.is_course_exam,
                     is_course_conclusion = EXCLUDED.is_course_conclusion,
+                    is_gdpr_compliance = EXCLUDED.is_gdpr_compliance,
+                    custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
                     start_date = EXCLUDED.start_date,
                     end_date = EXCLUDED.end_date,
                     timezone = EXCLUDED.timezone,

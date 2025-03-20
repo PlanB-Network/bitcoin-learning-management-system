@@ -248,6 +248,10 @@ export const CoursePaymentModal = ({
                       ? t('courses.payment.inPersonDescription')
                       : t('courses.payment.onlineDescription')
                   }
+                  isGdprCompliance={course.isGdprCompliance}
+                  gdprTerms={
+                    course.customTcDisclaimer ?? t('events.tcDisclaimer')
+                  }
                   callout={
                     coursePaymentFormat === 'inperson' ? (
                       <Trans i18nKey="courses.payment.inPersonCallout">

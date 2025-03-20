@@ -79,6 +79,8 @@ export interface CourseChapterLocalized {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;
@@ -115,6 +117,8 @@ export interface JoinedCourseChapter {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;
@@ -160,6 +164,8 @@ export interface MinimalJoinedCourse {
   sumOfAllRating: number;
   isPlanbSchool: boolean;
   planbSchoolMarkdown: string | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   language: string;
   name: string;
   goal: string;
@@ -197,6 +203,8 @@ export interface JoinedCourseProfessorId {
   sumOfAllRating: number;
   isPlanbSchool: boolean;
   planbSchoolMarkdown: string | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   language: string;
   name: string;
   goal: string;
@@ -236,6 +244,8 @@ export interface JoinedCourse {
   sumOfAllRating: number;
   isPlanbSchool: boolean;
   planbSchoolMarkdown: string | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   language: string;
   name: string;
   goal: string;
@@ -260,6 +270,8 @@ export interface JoinedCourseChapterWithContent {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;
@@ -316,6 +328,8 @@ export interface CourseResponse {
   sumOfAllRating: number;
   isPlanbSchool: boolean;
   planbSchoolMarkdown: string | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   language: string;
   name: string;
   goal: string;
@@ -342,6 +356,8 @@ export interface CourseChapterResponse {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
   startDate: Date | null;
   endDate: Date | null;
   timezone: string | null;

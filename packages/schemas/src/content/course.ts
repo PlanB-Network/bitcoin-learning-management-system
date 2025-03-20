@@ -53,6 +53,8 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     isCourseReview: true,
     isCourseExam: true,
     isCourseConclusion: true,
+    isGdprCompliance: true,
+    customTcDisclaimer: true,
     startDate: true,
     endDate: true,
     timezone: true,
@@ -111,6 +113,8 @@ export const minimalJoinedCourseSchema = courseSchema
     sumOfAllRating: true,
     isPlanbSchool: true,
     planbSchoolMarkdown: true,
+    isGdprCompliance: true,
+    customTcDisclaimer: true,
   })
   .merge(
     courseLocalizedSchema.pick({
@@ -162,6 +166,8 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
     isCourseReview: true,
     isCourseExam: true,
     isCourseConclusion: true,
+    isGdprCompliance: true,
+    customTcDisclaimer: true,
     startDate: true,
     endDate: true,
     timezone: true,

@@ -1044,6 +1044,8 @@ export const contentCourseChaptersLocalized = content.table(
     isCourseReview: t.boolean().default(false).notNull(),
     isCourseExam: t.boolean().default(false).notNull(),
     isCourseConclusion: t.boolean().default(false).notNull(),
+    isGdprCompliance: t.boolean().notNull().default(false),
+    customTcDisclaimer: t.text(),
     startDate: t.timestamp(),
     endDate: t.timestamp(),
     timezone: t.text(),

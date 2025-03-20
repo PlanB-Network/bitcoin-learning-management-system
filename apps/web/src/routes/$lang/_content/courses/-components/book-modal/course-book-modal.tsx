@@ -83,6 +83,10 @@ export const CourseBookModal = ({
                 }}
                 description={t('courses.payment.book_description')}
                 callout={t('events.payment.callout_physical')}
+                isGdprCompliance={chapter.isGdprCompliance}
+                gdprTerms={
+                  chapter.customTcDisclaimer ?? t('events.tcDisclaimer')
+                }
               >
                 <ModalBookSummary
                   course={course}

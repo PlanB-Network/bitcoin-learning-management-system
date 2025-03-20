@@ -2,9 +2,10 @@ import { type JSX, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { CouponCode, JoinedEvent } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, Checkbox } from '@blms/ui';
 
 import { Link } from '@tanstack/react-router';
+import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import crossRed from '#src/assets/icons/cross_red.svg';
 import spinner from '#src/assets/icons/spinner.svg';
@@ -42,6 +43,8 @@ interface PaymentDescriptionProps {
   satsPrice: number;
   callout: React.ReactNode;
   description: string;
+  isGdprCompliance: boolean;
+  gdprTerms: string;
   itemId: string;
   checkoutError: string | null;
   initPayment: (method: 'sbp' | 'stripe' | null) => Promise<void>;
@@ -54,6 +57,8 @@ export const PaymentDescription = ({
   satsPrice,
   callout,
   description,
+  isGdprCompliance,
+  gdprTerms,
   initPayment,
   updateCoupon,
   itemId,
@@ -65,6 +70,9 @@ export const PaymentDescription = ({
   const [inputCoupon, setInputCoupon] = useState('');
   const [queryEnabled, setQueryEnabled] = useState(false);
   const [isCouponValid, setIsCouponValid] = useState<boolean | null>(null);
+
+  const [isBookEnabled, setIsBookEnabled] = useState(!isGdprCompliance);
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
 
   const {
     data: coupon,
@@ -174,6 +182,45 @@ export const PaymentDescription = ({
         </div>
         {/* Todo : a generic component should not reference a specific one */}
         {children}
+
+        {isGdprCompliance ? (
+          <div className="flex self-start space-x-2">
+            <Checkbox
+              id="terms"
+              className="self-start mt-[2px]"
+              checked={isBookEnabled}
+              onCheckedChange={(e: boolean) => {
+                setIsBookEnabled(e);
+                console.log(e);
+              }}
+            />
+            <label htmlFor="terms" className="text-sm">
+              <ReactMarkdown
+                components={{
+                  a: ({ children, href }) => (
+                    <a
+                      href={href}
+                      target="_blank"
+                      className=" text-darkOrange-5 "
+                      rel="noreferrer"
+                    >
+                      {children}
+                    </a>
+                  ),
+                }}
+              >
+                {gdprTerms}
+              </ReactMarkdown>
+            </label>
+          </div>
+        ) : null}
+
+        {!isBookEnabled && isBtnClicked ? (
+          <p className="text-red-6 text-sm self-start">
+            {t('events.tcMustBeAccepter')}
+          </p>
+        ) : null}
+
         {checkoutError && (
           <span className="text-red-5 text-center whitespace-pre-line">
             {checkoutError}
@@ -183,7 +230,10 @@ export const PaymentDescription = ({
           variant="primary"
           className="w-full text-xs lg:text-sm"
           onClick={() => {
-            initPayment('sbp');
+            setIsBtnClicked(true);
+            if (isBookEnabled) {
+              initPayment('sbp');
+            }
           }}
         >
           {t('payment.payWithBitcoin')}
@@ -192,7 +242,10 @@ export const PaymentDescription = ({
           variant="primary"
           className="w-full text-xs lg:text-sm"
           onClick={() => {
-            initPayment('stripe');
+            setIsBtnClicked(true);
+            if (isBookEnabled) {
+              initPayment('stripe');
+            }
           }}
         >
           {t('payment.payByCard')}

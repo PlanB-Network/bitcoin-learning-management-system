@@ -624,6 +624,13 @@
       "when": 1742376530444,
       "tag": "0088_ambiguous_supreme_intelligence",
       "breakpoints": true
+    },
+    {
+      "idx": 89,
+      "version": "7",
+      "when": 1742479145830,
+      "tag": "0089_tearful_jack_flag",
+      "breakpoints": true
     }
   ]
 }

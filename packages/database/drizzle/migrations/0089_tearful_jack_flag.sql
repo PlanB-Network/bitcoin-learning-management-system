@@ -1,0 +1,2 @@
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "is_gdpr_compliance" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "custom_tc_disclaimer" text;
