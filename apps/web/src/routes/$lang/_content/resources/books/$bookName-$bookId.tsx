@@ -21,6 +21,7 @@ import { assetUrl, trpc } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { Image } from '#src/components/image.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
@@ -137,7 +138,8 @@ function Book() {
             >
               <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
                 <div className="flex flex-col">
-                  <img
+                  <Image
+                    breakpoints={{ default: 367 }}
                     className="md:w-[367px] max-h-[229px] md:max-h-max mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none"
                     alt={t('imagesAlt.bookCover')}
                     src={
@@ -214,7 +216,8 @@ function Book() {
                         to={`/resources/books/${formatNameForURL(suggestedBook.title)}-${suggestedBook.id}`}
                       >
                         <div className="relative h-full">
-                          <img
+                          <Image
+                            breakpoints={{ default: 300 }}
                             className="size-full h-[203px] max-h-[203px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
                             alt={suggestedBook.title}
                             src={assetUrl(
