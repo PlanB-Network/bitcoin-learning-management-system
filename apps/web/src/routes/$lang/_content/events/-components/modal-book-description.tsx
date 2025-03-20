@@ -55,7 +55,7 @@ export const ModalBookDescription = ({
       {children}
 
       {isGdprCompliance ? (
-        <div className="flex items-center space-x-2">
+        <div className="flex self-start space-x-2">
           <Checkbox
             id="terms"
             className="self-start mt-[2px]"
