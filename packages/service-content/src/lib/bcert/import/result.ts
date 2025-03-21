@@ -77,40 +77,59 @@ export const createProcessTimestampFile = (
       //throw new Error(`uid not found for username ${userName}`);
     }
 
-    const fileType = file.path.split('.').slice(-1).join('.');
+    // Check if the file is already synced on s3
+    const metadata = await s3.metadata(filePath);
 
-    let mimeType = '';
-    switch (fileType) {
-      case 'pdf': {
-        mimeType = 'application/pdf';
-        break;
-      }
-      case 'txt': {
-        mimeType = 'text/plain';
-        break;
-      }
-      case 'ots': {
-        mimeType = 'application/octet-stream';
-        break;
-      }
-      default: {
-        mimeType = 'application/octet-stream';
-      }
+    //// If the file is already synced, do nothing
+    if (metadata?.commit === file.commit) {
+      console.log(`-- Sync: Already processed file: ${filePath}`, metadata);
     }
 
-    const fileBufferCopy1 = Buffer.from(fileBuffer);
-    await s3.put(filePath, fileBufferCopy1, mimeType);
-    console.log('put on s3', filePath);
+    //// Else, upload the file to s3
+    else {
+      const fileType = file.path.split('.').slice(-1).join('.');
 
-    ////
-    if (fileType === 'pdf') {
-      const fileBufferCopy2 = Buffer.from(fileBuffer);
-      const thumbnail = await pdfThumbnail(fileBufferCopy2);
-      if (!thumbnail) {
-        console.warn('No thumbnail found for', filePath);
-        return null;
+      let mimeType = '';
+      switch (fileType) {
+        case 'pdf': {
+          mimeType = 'application/pdf';
+          break;
+        }
+        case 'txt': {
+          mimeType = 'text/plain';
+          break;
+        }
+        case 'ots': {
+          mimeType = 'application/octet-stream';
+          break;
+        }
+        default: {
+          mimeType = 'application/octet-stream';
+        }
       }
-      await s3.put(`${filePathWithoutExtension}.png`, thumbnail, 'image/png');
+
+      const metadata = { commit: file.commit };
+
+      const fileBufferCopy1 = Buffer.from(fileBuffer);
+      await s3.put(filePath, fileBufferCopy1, {
+        contentType: mimeType,
+        metadata,
+      });
+      console.log('put on s3', filePath);
+
+      //// Generate thumbnail for pdf files
+      if (fileType === 'pdf') {
+        const fileBufferCopy2 = Buffer.from(fileBuffer);
+        const thumbnail = await pdfThumbnail(fileBufferCopy2);
+        if (!thumbnail) {
+          console.warn('No thumbnail found for', filePath);
+          return null;
+        }
+        await s3.put(`${filePathWithoutExtension}.png`, thumbnail, {
+          contentType: 'image/png',
+          metadata,
+        });
+      }
     }
 
     await transaction`
