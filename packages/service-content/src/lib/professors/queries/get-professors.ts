@@ -65,5 +65,7 @@ export const getProfessorsQuery = ({
     }
 
     GROUP BY p.id, pl.language, pl.bio, pl.short_bio, ca.courses_count, ca.courses_indexes, tca.tutorials_count, lca.lectures_count, ta.tags
+
+    ORDER BY LOWER(p.name)
   `;
 };
