@@ -53,7 +53,6 @@ export const checkPermissions = (
   permissions: UserPermission | UserPermission[],
 ) => {
   return createMiddleware(({ ctx, next }) => {
-    console.log('user permission', ctx.user);
     if (!ctx.user?.permissions) {
       throw new TRPCError({ code: 'UNAUTHORIZED' });
     }

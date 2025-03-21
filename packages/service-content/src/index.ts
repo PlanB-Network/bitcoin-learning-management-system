@@ -1,6 +1,6 @@
 export * from './lib/bcert/services/index.js';
 export * from './lib/blogs/services/index.js';
-export * from './lib/coupon/services/index.js';
+export * from './lib/coupon/index.js';
 export * from './lib/courses/services/index.js';
 export * from './lib/events/services/index.js';
 export * from './lib/labs/services/index.js';

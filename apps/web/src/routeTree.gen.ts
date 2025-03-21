@@ -56,6 +56,7 @@ import { Route as LangDashboardDashboardCourseCompletedImport } from './routes/$
 import { Route as LangDashboardDashboardCourseCourseIdImport } from './routes/$lang/dashboard/_dashboard/course/$courseId';
 import { Route as LangDashboardDashboardAdministrationTutorialsImport } from './routes/$lang/dashboard/_dashboard/administration/tutorials';
 import { Route as LangDashboardDashboardAdministrationRoleImport } from './routes/$lang/dashboard/_dashboard/administration/role';
+import { Route as LangDashboardDashboardAdministrationCouponsImport } from './routes/$lang/dashboard/_dashboard/administration/coupons';
 import { Route as LangDashboardDashboardAdministrationCareersImport } from './routes/$lang/dashboard/_dashboard/administration/careers';
 import { Route as LangDashboardDashboardAdministrationBookingsImport } from './routes/$lang/dashboard/_dashboard/administration/bookings';
 import { Route as LangContentResourcesProjectsProjectNameProjectIdImport } from './routes/$lang/_content/resources/projects/$projectName-$projectId';
@@ -381,6 +382,13 @@ const LangDashboardDashboardAdministrationRoleRoute =
   LangDashboardDashboardAdministrationRoleImport.update({
     id: '/administration/role',
     path: '/administration/role',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
+
+const LangDashboardDashboardAdministrationCouponsRoute =
+  LangDashboardDashboardAdministrationCouponsImport.update({
+    id: '/administration/coupons',
+    path: '/administration/coupons',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
 
@@ -873,6 +881,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardAdministrationCareersImport;
       parentRoute: typeof LangDashboardDashboardImport;
     };
+    '/$lang/dashboard/_dashboard/administration/coupons': {
+      id: '/$lang/dashboard/_dashboard/administration/coupons';
+      path: '/administration/coupons';
+      fullPath: '/$lang/dashboard/administration/coupons';
+      preLoaderRoute: typeof LangDashboardDashboardAdministrationCouponsImport;
+      parentRoute: typeof LangDashboardDashboardImport;
+    };
     '/$lang/dashboard/_dashboard/administration/role': {
       id: '/$lang/dashboard/_dashboard/administration/role';
       path: '/administration/role';
@@ -1076,6 +1091,7 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardProfileRoute: typeof LangDashboardDashboardProfileRoute;
   LangDashboardDashboardAdministrationBookingsRoute: typeof LangDashboardDashboardAdministrationBookingsRoute;
   LangDashboardDashboardAdministrationCareersRoute: typeof LangDashboardDashboardAdministrationCareersRoute;
+  LangDashboardDashboardAdministrationCouponsRoute: typeof LangDashboardDashboardAdministrationCouponsRoute;
   LangDashboardDashboardAdministrationRoleRoute: typeof LangDashboardDashboardAdministrationRoleRoute;
   LangDashboardDashboardAdministrationTutorialsRoute: typeof LangDashboardDashboardAdministrationTutorialsRoute;
   LangDashboardDashboardCourseCourseIdRoute: typeof LangDashboardDashboardCourseCourseIdRoute;
@@ -1099,6 +1115,8 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
       LangDashboardDashboardAdministrationBookingsRoute,
     LangDashboardDashboardAdministrationCareersRoute:
       LangDashboardDashboardAdministrationCareersRoute,
+    LangDashboardDashboardAdministrationCouponsRoute:
+      LangDashboardDashboardAdministrationCouponsRoute,
     LangDashboardDashboardAdministrationRoleRoute:
       LangDashboardDashboardAdministrationRoleRoute,
     LangDashboardDashboardAdministrationTutorialsRoute:
@@ -1193,6 +1211,7 @@ export interface FileRoutesByFullPath {
   '/$lang/resources/projects/$projectName-$projectId': typeof LangContentResourcesProjectsProjectNameProjectIdRoute;
   '/$lang/dashboard/administration/bookings': typeof LangDashboardDashboardAdministrationBookingsRoute;
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
+  '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
@@ -1264,6 +1283,7 @@ export interface FileRoutesByTo {
   '/$lang/resources/projects/$projectName-$projectId': typeof LangContentResourcesProjectsProjectNameProjectIdRoute;
   '/$lang/dashboard/administration/bookings': typeof LangDashboardDashboardAdministrationBookingsRoute;
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
+  '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
@@ -1338,6 +1358,7 @@ export interface FileRoutesById {
   '/$lang/_content/resources/projects/$projectName-$projectId': typeof LangContentResourcesProjectsProjectNameProjectIdRoute;
   '/$lang/dashboard/_dashboard/administration/bookings': typeof LangDashboardDashboardAdministrationBookingsRoute;
   '/$lang/dashboard/_dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
+  '/$lang/dashboard/_dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/_dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
   '/$lang/dashboard/_dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/_dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
@@ -1412,6 +1433,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/projects/$projectName-$projectId'
     | '/$lang/dashboard/administration/bookings'
     | '/$lang/dashboard/administration/careers'
+    | '/$lang/dashboard/administration/coupons'
     | '/$lang/dashboard/administration/role'
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
@@ -1482,6 +1504,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/projects/$projectName-$projectId'
     | '/$lang/dashboard/administration/bookings'
     | '/$lang/dashboard/administration/careers'
+    | '/$lang/dashboard/administration/coupons'
     | '/$lang/dashboard/administration/role'
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
@@ -1554,6 +1577,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/resources/projects/$projectName-$projectId'
     | '/$lang/dashboard/_dashboard/administration/bookings'
     | '/$lang/dashboard/_dashboard/administration/careers'
+    | '/$lang/dashboard/_dashboard/administration/coupons'
     | '/$lang/dashboard/_dashboard/administration/role'
     | '/$lang/dashboard/_dashboard/administration/tutorials'
     | '/$lang/dashboard/_dashboard/course/$courseId'
@@ -1811,6 +1835,7 @@ export const routeTree = rootRoute
         "/$lang/dashboard/_dashboard/profile",
         "/$lang/dashboard/_dashboard/administration/bookings",
         "/$lang/dashboard/_dashboard/administration/careers",
+        "/$lang/dashboard/_dashboard/administration/coupons",
         "/$lang/dashboard/_dashboard/administration/role",
         "/$lang/dashboard/_dashboard/administration/tutorials",
         "/$lang/dashboard/_dashboard/course/$courseId",
@@ -1950,6 +1975,10 @@ export const routeTree = rootRoute
     },
     "/$lang/dashboard/_dashboard/administration/careers": {
       "filePath": "$lang/dashboard/_dashboard/administration/careers.tsx",
+      "parent": "/$lang/dashboard/_dashboard"
+    },
+    "/$lang/dashboard/_dashboard/administration/coupons": {
+      "filePath": "$lang/dashboard/_dashboard/administration/coupons.tsx",
       "parent": "/$lang/dashboard/_dashboard"
     },
     "/$lang/dashboard/_dashboard/administration/role": {

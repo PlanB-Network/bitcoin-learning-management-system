@@ -16,6 +16,7 @@
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "editor.defaultFormatter": "biomejs.biome",
   "editor.inlineSuggest.enabled": true,
   "editor.quickSuggestions": {
     "comments": true,
@@ -184,5 +185,11 @@
     "webp",
     "zoomable",
     "Zucco"
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

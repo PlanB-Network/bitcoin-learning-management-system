@@ -1898,13 +1898,10 @@ export const couponCode = content.table('coupon_code', (t) => ({
   code: t.varchar({ length: 20 }).primaryKey().notNull(),
   itemId: t.varchar({ length: 100 }).notNull(),
   reductionPercentage: t.integer(),
-  isUnique: t.boolean().notNull().default(true),
-  isUsed: t.boolean().notNull().default(false),
+  uses: t.integer().default(0).notNull(),
+  maxUses: t.integer().default(1).notNull(),
   uid: t.uuid().references(() => usersAccounts.uid, {
     onDelete: 'cascade',
-  }),
-  timeUsed: t.timestamp({
-    withTimezone: true,
   }),
 }));
 

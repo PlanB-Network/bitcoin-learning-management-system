@@ -2,6 +2,7 @@ export const toggleSelection = (
   item: string,
   activeItems: Set<string>,
   setActiveItems: React.Dispatch<React.SetStateAction<Set<string>>>,
+  availableItems?: string[],
 ) => {
   if (item === 'all') {
     setActiveItems(new Set(['all']));
@@ -16,5 +17,19 @@ export const toggleSelection = (
     }
 
     setActiveItems(newSelection);
+
+    if (availableItems && newSelection.size === availableItems.length) {
+      setActiveItems(new Set(['all']));
+    }
   }
 };
+
+export const createToggleSelection =
+  (
+    activeItems: Set<string>,
+    setActiveItems: React.Dispatch<React.SetStateAction<Set<string>>>,
+    availableItems?: string[],
+  ) =>
+  (item: string) => {
+    toggleSelection(item, activeItems, setActiveItems, availableItems);
+  };

@@ -5,8 +5,23 @@ export interface CouponCode {
   code: string;
   itemId: string;
   reductionPercentage: number | null;
-  isUnique: boolean;
-  isUsed: boolean;
+  uses: number;
+  maxUses: number;
   uid: string | null;
-  timeUsed: Date | null;
+}
+
+export interface CouponCodeWithOwner {
+  code: string;
+  itemId: string;
+  reductionPercentage: number | null;
+  uses: number;
+  maxUses: number;
+  uid: string | null;
+  owner?: (string | undefined) | null;
+}
+
+export interface CouponTarget {
+  id: string;
+  type: string;
+  name: string;
 }
