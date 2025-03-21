@@ -11,6 +11,7 @@ export const router = createRouter({
     i18n: undefined,
   },
   unmaskOnReload: true,
+  scrollRestoration: true,
   defaultNotFoundComponent: NotFound,
 });
 
