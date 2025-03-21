@@ -821,7 +821,7 @@
       "time": "Time"
     },
     "tcDisclaimer": "I agree that my information may be shared with organizers for venue access purposes.",
-    "tcMustBeAccepter": "You must accept the terms to proceed with the purchase"
+    "tcMustBeAccepted": "You must accept the terms and conditions to proceed"
   },
   "filters": {
     "categories": "Categories",

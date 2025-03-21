@@ -89,7 +89,7 @@ export const ModalBookDescription = ({
 
       {!isBookEnabled && isBtnClicked ? (
         <p className="text-red-6 text-sm self-start">
-          {t('events.tcMustBeAccepter')}
+          {t('events.tcMustBeAccepted')}
         </p>
       ) : null}
 

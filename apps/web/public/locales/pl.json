@@ -779,7 +779,7 @@
       "premiumContentNeedsLogin": "Musisz być zalogowany, aby uzyskać dostęp do tego wydarzenia."
     },
     "tcDisclaimer": "Zgadzam się na udostępnienie moich informacji organizatorom w celu uzyskania dostępu do miejsca wydarzenia.",
-    "tcMustBeAccepter": "Musisz zaakceptować warunki, aby kontynuować zakup."
+    "tcMustBeAccepted": "Musisz zaakceptować warunki, aby kontynuować zakup."
   },
   "home": {
     "header": {

@@ -778,7 +778,7 @@
       "premiumContentNeedsPayment": "このイベントはプレミアムプログラムの一部です。",
       "premiumContentNeedsPaymentAction": "イベントページへ"
     },
-    "tcMustBeAccepter": "購入に進むには、条件に同意する必要があります",
+    "tcMustBeAccepted": "購入に進むには、条件に同意する必要があります",
     "tcDisclaimer": "会場へのアクセス目的で、私の情報が主催者と共有されることに同意します。"
   },
   "home": {

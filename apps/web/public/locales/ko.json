@@ -903,7 +903,7 @@
       "premiumContentNeedsPayment": "이 이벤트는 프리미엄 프로그램의 일부입니다."
     },
     "tcDisclaimer": "장소에 액세스할 목적으로 내 정보가 주최자와 공유됨에 동의합니다.",
-    "tcMustBeAccepter": "구매를 진행하려면 약관에 동의해야 합니다."
+    "tcMustBeAccepted": "구매를 진행하려면 약관에 동의해야 합니다."
   },
   "home": {
     "header": {

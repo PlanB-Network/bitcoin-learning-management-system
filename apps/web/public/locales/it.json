@@ -778,7 +778,7 @@
       "premiumContentNeedsLogin": "È necessario accedere per visualizzare questo corso.",
       "premiumContentNeedsPaymentAction": "Vai alla pagina degli eventi"
     },
-    "tcMustBeAccepter": "Devi accettare i termini per procedere con l'acquisto",
+    "tcMustBeAccepted": "Devi accettare i termini per procedere con l'acquisto",
     "tcDisclaimer": "Accetto che le mie informazioni possano essere condivise con gli organizzatori per facilitare l'accesso all'evento."
   },
   "home": {
