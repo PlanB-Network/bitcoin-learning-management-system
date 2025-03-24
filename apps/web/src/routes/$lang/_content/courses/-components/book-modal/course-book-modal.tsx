@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import {
@@ -58,7 +58,7 @@ export const CourseBookModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={() => closeModal()}>
-      <DialogContent className="max-w-4xl p-6 w-[90%] lg:h-[50rem] lg:w-full lg:p-0 overflow-auto">
+      <DialogContent className="max-w-6xl p-6 w-[90%] lg:h-[50rem] lg:w-full lg:p-0 overflow-auto">
         <DialogTitle className="hidden">Booking Modal</DialogTitle>
         <DialogDescription className="hidden">Booking Modal</DialogDescription>
         <div className="grid grid-cols-1 lg:grid-cols-2 h-full gap-6 lg:gap-0">
@@ -82,7 +82,14 @@ export const CourseBookModal = ({
                   saveAndDisplaySuccess();
                 }}
                 description={t('courses.payment.book_description')}
-                callout={t('events.payment.callout_physical')}
+                callout={
+                  <Trans
+                    i18nKey={'events.payment.callout_book_physical'}
+                    components={{
+                      highlight: <span className="font-medium" />,
+                    }}
+                  />
+                }
                 isGdprCompliance={chapter.isGdprCompliance}
                 gdprTerms={
                   chapter.customTcDisclaimer ?? t('events.tcDisclaimer')

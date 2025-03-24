@@ -26,9 +26,6 @@ export const ModalPaymentSuccess = ({
           <span className="text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
             {t('courses.payment.payment_successful')}
           </span>
-          <span className="text-center text-xs lg:text-base">
-            {t('courses.payment.access_invoice')}
-          </span>
         </div>
         <span className="text-lg font-medium">
           {t('courses.payment.payment_details')}
@@ -72,7 +69,7 @@ export const ModalPaymentSuccess = ({
           <Trans i18nKey="payment.terms">
             <Link
               to="/terms-and-conditions"
-              className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
+              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
               target="_blank"
               rel="noreferrer"
             >

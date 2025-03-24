@@ -244,25 +244,30 @@ export const CoursePaymentModal = ({
                   updateCoupon={updateCoupon}
                   checkoutError={checkoutError}
                   description={
-                    coursePaymentFormat === 'inperson'
-                      ? t('courses.payment.inPersonDescription')
-                      : t('courses.payment.onlineDescription')
+                    course.format === 'hybrid'
+                      ? t('courses.payment.hybridDescription')
+                      : coursePaymentFormat === 'inperson'
+                        ? t('courses.payment.inPersonDescription')
+                        : t('courses.payment.onlineDescription')
                   }
                   isGdprCompliance={course.isGdprCompliance}
                   gdprTerms={
                     course.customTcDisclaimer ?? t('events.tcDisclaimer')
                   }
                   callout={
-                    coursePaymentFormat === 'inperson' ? (
+                    course.format === 'hybrid' ? null : coursePaymentFormat ===
+                      'inperson' ? (
                       <Trans i18nKey="courses.payment.inPersonCallout">
                         You are about to purchase <strong>in-person</strong>{' '}
                         access to this course.
                       </Trans>
                     ) : (
-                      <Trans i18nKey="courses.payment.onlineCallout">
-                        You are about to purchase <strong>online</strong> access
-                        to this course.
-                      </Trans>
+                      <>
+                        <Trans i18nKey="courses.payment.onlineCallout">
+                          You are about to purchase <strong>online</strong>{' '}
+                          access to this course.
+                        </Trans>
+                      </>
                     )
                   }
                 />

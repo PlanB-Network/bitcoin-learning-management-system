@@ -7,6 +7,7 @@ import { cn } from '@blms/ui';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { getDateString, getTimeString } from '#src/utils/date.js';
+import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
@@ -38,30 +39,24 @@ export const ModalBookSummary = ({
   return (
     <div
       className={cn(
-        'flex justify-center items-center lg:p-6 bg-cover bg-center max-lg:!bg-none',
+        'flex justify-center  lg:p-6 bg-cover bg-center max-lg:!bg-none',
         mobileDisplay ? 'lg:hidden' : 'max-lg:hidden',
       )}
       style={{ backgroundImage: `url(${leftBackgroundImg})` }}
     >
       <div
         className={cn(
-          'flex flex-col w-full max-w-[492px] p-2.5 lg:p-[30px] backdrop-blur-md bg-newGray-5 lg:bg-black/75',
+          'flex flex-col gap-4 w-full max-w-[492px] p-2.5 lg:p-[30px] backdrop-blur-md bg-newGray-5 lg:bg-black/75',
           borderClassName,
         )}
       >
-        <span className="text-lg lg:text-base text-black lg:text-white font-bold lg:font-medium leading-snug lg:leading-tight capitalize mb-5 lg:mb-6">
-          {courseName}
-        </span>
+        <div className="flex flex-col gap-2 text-black lg:text-white font-bold lg:font-medium leading-snug lg:leading-tight capitalize">
+          <span className="text-2xl">
+            {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
+          </span>
+          <span>{professorNames}</span>
+        </div>
         <div className="flex flex-col gap-1 lg:gap-2">
-          <PaymentRow
-            label={
-              course.mainProfessors?.length > 1
-                ? t('courses.payment.teachers')
-                : t('courses.payment.teacher')
-            }
-            value={professorNames}
-          />
-          <Separator />
           <PaymentRow
             label={t('courses.payment.date')}
             value={
@@ -91,6 +86,13 @@ export const ModalBookSummary = ({
               <Separator />
             </>
           )}
+          <PaymentRow
+            label={t('events.payment.language')}
+            value={
+              LANGUAGES_MAP[chapter.language.toLowerCase().replaceAll('-', '')]
+            }
+          />
+          <Separator />
           <PaymentRow
             label={t('events.payment.limitation')}
             value={

@@ -7,8 +7,8 @@ import { Button, Checkbox } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
-import crossRed from '#src/assets/icons/cross_red.svg';
 import spinner from '#src/assets/icons/spinner.svg';
+
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -126,50 +126,59 @@ export const PaymentDescription = ({
 
   return (
     <>
-      <div className="items-center justify-center w-full max-w-96 lg:w-96 md:w-72 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto pr-4">
+      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto pr-4">
         <PlanBLogo className="h-auto max-lg:hidden" width={240} />
-        <PaymentCallout description={callout} />
+        {callout ? <PaymentCallout description={callout} /> : null}
         <div className="w-full flex flex-col">
           {splitDescription?.map((desc) => (
-            <p className="text-sm max-lg:text-center mt-3" key={desc}>
+            <p className="text-sm mt-3" key={desc}>
               {desc}
             </p>
           ))}
         </div>
-        <div className="place-self-start flex flex-row place-items-center">
-          <span className="max-md:text-sm">
+        <div className="flex flex-col w-full gap-2">
+          <p className="font-medium max-md:text-sm">
             {t('payment.haveReductionCode')}
-          </span>
+          </p>
 
-          <input
-            id="emailId"
-            type="text"
-            value={inputCoupon}
-            onChange={(event) => {
-              setInputCoupon(event.target.value);
-              setIsCouponValid(null);
-            }}
-            className="border-2 w-24 ml-4 p-1 rounded-lg border-newGray-5 bg-newGray-6 text-newBlack-5"
-          />
-          <div className="mx-2">
-            {isLoading === true && (
-              <img src={spinner} alt="spinner" className="size-6" />
-            )}
-            {isCouponValid === true && (
-              <img src={checkGreen} alt="green check" className="size-6" />
-            )}
-            {isCouponValid === false && (
-              <img src={crossRed} alt="red cross" className="size-6" />
-            )}
+          <div className="flex flex-row gap-4 w-full justify-between">
+            <div className="relative w-full">
+              <input
+                id="emailId"
+                type="text"
+                value={inputCoupon}
+                onChange={(event) => {
+                  setInputCoupon(event.target.value);
+                  setIsCouponValid(null);
+                }}
+                className="border-2 px-2 py-1  rounded-lg border-newGray-5 text-newBlack-5 w-full placeholder-newGray-3"
+                placeholder={t('payment.insertReductionCode')}
+              />
+
+              {isLoading === true && (
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                  <img src={spinner} alt="spinner" className="size-6" />
+                </div>
+              )}
+              {isCouponValid === true && (
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                  <img src={checkGreen} alt="green check" className="size-6" />
+                </div>
+              )}
+            </div>
+
+            <Button
+              variant="tertiary"
+              size="s"
+              className="-ml-1"
+              onClick={applyCoupon}
+            >
+              Apply
+            </Button>
           </div>
-          <Button
-            variant="secondary"
-            size="s"
-            className="-ml-1"
-            onClick={applyCoupon}
-          >
-            Apply
-          </Button>
+          {isCouponValid === false && (
+            <div className="text-red-6">Invalid code</div>
+          )}
         </div>
         <div className="flex flex-row justify-between w-full">
           <span className="text-lg font-medium">{t('payment.total')}</span>
@@ -184,10 +193,10 @@ export const PaymentDescription = ({
         {children}
 
         {isGdprCompliance ? (
-          <div className="flex self-start space-x-2">
+          <div className="flex self-start space-x-2 w-full relative">
             <Checkbox
               id="terms"
-              className="self-start mt-[2px]"
+              className="self-start mt-[2px] border-black data-[state=checked]:bg-white"
               checked={isBookEnabled}
               onCheckedChange={(e: boolean) => {
                 setIsBookEnabled(e);
@@ -211,12 +220,15 @@ export const PaymentDescription = ({
               >
                 {gdprTerms}
               </ReactMarkdown>
+              <span className="absolute text-red-6 text-sm right-0 top-0">
+                *
+              </span>
             </label>
           </div>
         ) : null}
 
         {!isBookEnabled && isBtnClicked ? (
-          <p className="text-red-6 text-sm self-start">
+          <p className="text-red-6 text-sm self-start -mt-4">
             {t('events.tcMustBeAccepted')}
           </p>
         ) : null}
@@ -226,37 +238,39 @@ export const PaymentDescription = ({
             {checkoutError}
           </span>
         )}
-        <Button
-          variant="primary"
-          className="w-full text-xs lg:text-sm"
-          onClick={() => {
-            setIsBtnClicked(true);
-            if (isBookEnabled) {
-              initPayment('sbp');
-            }
-          }}
-        >
-          {t('payment.payWithBitcoin')}
-        </Button>
-        <Button
-          variant="primary"
-          className="w-full text-xs lg:text-sm"
-          onClick={() => {
-            setIsBtnClicked(true);
-            if (isBookEnabled) {
-              initPayment('stripe');
-            }
-          }}
-        >
-          {t('payment.payByCard')}
-        </Button>
+        <div className="flex flex-col-reverse md:flex-row md:w-full gap-4">
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => {
+              setIsBtnClicked(true);
+              if (isBookEnabled) {
+                initPayment('stripe');
+              }
+            }}
+          >
+            {t('payment.payByCard')}
+          </Button>
+          <Button
+            variant="primary"
+            className="w-full"
+            onClick={() => {
+              setIsBtnClicked(true);
+              if (isBookEnabled) {
+                initPayment('sbp');
+              }
+            }}
+          >
+            {t('payment.payWithBitcoin')}
+          </Button>
+        </div>
       </div>
       <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
             <Link
               to="/terms-and-conditions"
-              className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
+              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
               target="_blank"
               rel="noreferrer"
             >

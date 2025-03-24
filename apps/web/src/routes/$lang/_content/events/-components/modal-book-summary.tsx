@@ -6,8 +6,8 @@ import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
-import Flag from '#src/molecules/Flag/index.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';
+import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
@@ -80,14 +80,17 @@ export const ModalBookSummary = ({
             )}
           <PaymentRow
             label={t('events.payment.language')}
-            value={event.languages.map((language) => (
-              <Flag key={language} code={language} />
-            ))}
+            value={event.languages
+              .map(
+                (language) =>
+                  LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')],
+              )
+              .join(', ')}
           />
           <Separator />
           <PaymentRow
             label={t('events.payment.access_type')}
-            value={capitalize(accessType)}
+            value={capitalize(t(`accessType.${accessType}`))}
           />
           <Separator />
           <PaymentRow

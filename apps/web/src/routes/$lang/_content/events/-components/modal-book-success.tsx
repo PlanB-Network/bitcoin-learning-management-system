@@ -33,15 +33,18 @@ export const ModalBookSuccess = ({
           <span className="text-base text-center">
             {t('events.payment.payment_successful')}
           </span>
-          <span className="text-base text-center">
-            {t('events.payment.enjoy')}
-          </span>
         </div>
         {(accessType === 'physical' || accessType === 'online') && (
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-4">
             <span className="text-center text-xs lg:text-base">
               {t(`events.payment.access_${accessType}_successful`)}
             </span>
+
+            {event.priceDollars === 0 ? (
+              <span className="text-center text-xs lg:text-base">
+                {t('events.payment.limitedSeats')}
+              </span>
+            ) : null}
           </div>
         )}
       </div>

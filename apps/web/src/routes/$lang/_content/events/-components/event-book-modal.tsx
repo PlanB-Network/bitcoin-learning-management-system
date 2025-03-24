@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@blms/types';
 import {
@@ -79,7 +79,14 @@ export const EventBookModal = ({
                     ? t('events.payment.description_free_physical')
                     : ''
                 }
-                callout={t(`events.payment.callout_${accessType}`)}
+                callout={
+                  <Trans
+                    i18nKey={`events.payment.callout_book_${accessType}`}
+                    components={{
+                      highlight: <span className="font-medium" />,
+                    }}
+                  />
+                }
               >
                 <ModalBookSummary
                   event={event}

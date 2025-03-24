@@ -4,7 +4,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import type { CheckoutData, CouponCode, JoinedEvent } from '@blms/types';
 import {
@@ -232,7 +232,14 @@ export const EventPaymentModal = ({
                   gdprTerms={
                     event.customTcDisclaimer ?? t('events.tcDisclaimer')
                   }
-                  callout={t(`events.payment.callout_${accessType}`)}
+                  callout={
+                    <Trans
+                      i18nKey={`events.payment.callout_purchase_${accessType}`}
+                      components={{
+                        highlight: <span className="font-medium" />,
+                      }}
+                    />
+                  }
                 >
                   <ModalPaymentSummary
                     event={event}

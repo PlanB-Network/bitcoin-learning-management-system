@@ -40,17 +40,11 @@ export const ModalPaymentSuccess = ({
             <span className="text-base text-center">
               {t('events.payment.payment_successful')}
             </span>
-            <span className="text-base text-center">
-              {t('events.payment.enjoy')}
-            </span>
           </div>
           {(accessType === 'physical' || accessType === 'online') && (
             <div className="flex flex-col">
               <span className="text-center text-xs lg:text-base">
                 {t(`events.payment.access_${accessType}_successful`)}
-              </span>
-              <span className="text-center text-xs lg:text-base">
-                {t('events.payment.access_invoice')}
               </span>
             </div>
           )}
@@ -122,7 +116,7 @@ export const ModalPaymentSuccess = ({
           <Trans i18nKey="payment.terms">
             <Link
               to="/terms-and-conditions"
-              className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
+              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
               target="_blank"
               rel="noreferrer"
             >

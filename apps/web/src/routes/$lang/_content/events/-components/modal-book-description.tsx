@@ -10,7 +10,7 @@ import ReactMarkdown from 'react-markdown';
 
 interface ModalBookDescriptionProps {
   accessType: 'physical' | 'online' | 'replay';
-  callout: string;
+  callout: React.ReactNode;
   description: string;
   isGdprCompliance: boolean;
   gdprTerms: string;
@@ -40,26 +40,26 @@ export const ModalBookDescription = ({
       <div className="w-full flex flex-col">
         {splitDescription ? (
           splitDescription.map((desc) => (
-            <p className="text-sm max-lg:text-center" key={desc}>
+            <p className="text-sm" key={desc}>
               {desc}
             </p>
           ))
         ) : (
-          <p className="text-sm max-lg:text-center">{description}</p>
+          <p className="text-sm">{description}</p>
         )}
       </div>
       {accessType === 'physical' && (
-        <p className="w-full text-sm max-lg:text-center">
+        <p className="w-full text-sm">
           {t('events.payment.additional_free_description')}
         </p>
       )}
       {children}
 
       {isGdprCompliance ? (
-        <div className="flex self-start space-x-2">
+        <div className="flex self-start space-x-2 w-full relative">
           <Checkbox
             id="terms"
-            className="self-start mt-[2px]"
+            className="self-start mt-[2px] border-black data-[state=checked]:bg-white"
             checked={isBookEnabled}
             onCheckedChange={(e: boolean) => {
               setIsBookEnabled(e);
@@ -83,10 +83,10 @@ export const ModalBookDescription = ({
             >
               {gdprTerms}
             </ReactMarkdown>
+            <span className="absolute text-red-6 text-sm right-0 top-0">*</span>
           </label>
         </div>
       ) : null}
-
       {!isBookEnabled && isBtnClicked ? (
         <p className="text-red-6 text-sm self-start">
           {t('events.tcMustBeAccepted')}

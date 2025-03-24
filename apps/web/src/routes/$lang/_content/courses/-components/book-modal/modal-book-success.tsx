@@ -34,16 +34,24 @@ export const ModalBookSuccess = ({
       : '';
 
   return (
-    <div className="items-center justify-center w-60 lg:w-96 flex flex-col gap-6">
+    <div className="items-center justify-center w-60 lg:w-[450px] flex flex-col gap-6">
       <PlanBLogo className="h-auto" width={240} />
       <div className="items-center justify-center flex flex-col gap-6">
         <div className="flex flex-col text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
           <span className="text-base text-center">
             {t('events.payment.payment_successful')}
           </span>
-          <span className="text-base text-center">
-            {t('events.payment.enjoy')}
-          </span>
+        </div>
+
+        <div>
+          <div className="flex flex-col gap-4">
+            <span className="text-center text-xs lg:text-base">
+              {t('events.payment.access_physical_successful')}
+            </span>
+            <span className="text-center text-xs lg:text-base">
+              {t('events.payment.limitedSeats')}
+            </span>
+          </div>
         </div>
       </div>
 

@@ -29,7 +29,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 md:gap-8 max-lg:pb-6 max-lg:pt-8 mt-auto mb-4">
         <PlanBLogo className="h-auto" width={240} />
-        <span className="text-center text-xs lg:text-base">
+        <span className="text-center text-sm lg:text-base">
           {t('courses.payment.qr_unified')}
         </span>
         {/* Amount */}
@@ -145,7 +145,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
           <Trans i18nKey="payment.terms">
             <Link
               to="/terms-and-conditions"
-              className="underline underline-offset-2 hover:text-darkOrange-5 hover:no-underline"
+              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
               target="_blank"
               rel="noreferrer"
             >
