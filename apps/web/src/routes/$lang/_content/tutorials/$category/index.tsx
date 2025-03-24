@@ -58,6 +58,15 @@ function TutorialCategory() {
     string | undefined
   >();
 
+  useEffect(() => {
+    let hash = location.hash.replace('#', '');
+    hash = decodeURI(hash);
+    const validTabs = subCategories.map((tab) => tab);
+    setCurrentSubCategory(
+      validTabs.includes(hash) ? hash : subCategories.at(0),
+    );
+  }, [subCategories]);
+
   const { data: tutorials, isFetched } =
     trpc.content.getTutorialsByCategory.useQuery({
       category,
@@ -90,6 +99,7 @@ function TutorialCategory() {
 
   const handleTabChange = (value: string) => {
     setCurrentSubCategory(value);
+    window.location.hash = value;
   };
 
   return (

@@ -95,23 +95,14 @@ function DashboardStudentCourse() {
     tabs.push({ value: 'ratings', key: 'ratings', text: t('words.ratings') });
   }
 
-  const getDefaultTab = () => {
-    const hash = location.hash.replace('#', '');
-    const validTabs = tabs.map((tab) => tab.value);
-    return validTabs.includes(hash) ? hash : tabs[0].value;
-  };
+  const [currentTab, setCurrentTab] = useState<string>();
 
-  const [currentTab, setCurrentTab] = useState(getDefaultTab);
-
-  // Sync tab with URL hash changes
   useEffect(() => {
-    const hash = location.hash.replace('#', '');
-    if (tabs.some((tab) => tab.value === hash)) {
-      setCurrentTab(hash);
-    } else {
-      setCurrentTab('overview');
-    }
-  }, [location.hash]);
+    let hash = location.hash.replace('#', '');
+    hash = decodeURI(hash);
+    const validTabs = tabs.map((tab) => tab.value);
+    setCurrentTab(validTabs.includes(hash) ? hash : tabs[0].value);
+  }, [tabs]);
 
   const onTabChange = (value: string) => {
     setCurrentTab(value);
