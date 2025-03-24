@@ -52,27 +52,29 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   );
   const [currentLanguage, setCurrentLanguage] = useState(locationLanguage);
 
-  function cleanUpdateLanguage(newLanguage: string) {
+  function cleanUpdateLanguage(newLanguage: string): string {
     if (LANGUAGES.includes(newLanguage)) {
       i18n.changeLanguage(newLanguage);
+      return newLanguage;
     }
 
     for (const lan of i18n.languages) {
       if (LANGUAGES.includes(lan)) {
         i18n.changeLanguage(lan);
-        return;
+        return lan;
       }
     }
 
     i18n.changeLanguage('en');
+    return 'en';
   }
 
   async function updateCurrentLanguage(newLanguage: string, path: string) {
-    cleanUpdateLanguage(newLanguage);
+    const newLanguageUpdated = cleanUpdateLanguage(newLanguage);
 
     if (path === '/') {
       router.navigate({
-        to: `/${newLanguage}${location.hash}${location.search}`,
+        to: `/${newLanguageUpdated}${location.hash}${location.search}`,
         replace: true,
       });
     }
@@ -81,7 +83,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
     if (pathLanguage && !LANGUAGES.includes(pathLanguage)) {
       router.navigate({
-        to: `/${newLanguage}${location.pathname}${location.hash}${location.search}`,
+        to: `/${newLanguageUpdated}${location.pathname}${location.hash}${location.search}`,
         replace: true,
       });
     }
@@ -97,11 +99,14 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     const newLanguage = currentLanguage ? currentLanguage : i18n.language;
 
-    cleanUpdateLanguage(newLanguage);
+    const newLanguageUpdated = cleanUpdateLanguage(newLanguage);
 
-    if (newLanguage && (!currentLanguage || currentLanguage !== newLanguage)) {
+    if (
+      newLanguageUpdated &&
+      (!currentLanguage || currentLanguage !== newLanguageUpdated)
+    ) {
       updateCurrentLanguage(
-        newLanguage,
+        newLanguageUpdated,
         `${location.pathname}${location.hash}${location.search}`,
       );
     }
