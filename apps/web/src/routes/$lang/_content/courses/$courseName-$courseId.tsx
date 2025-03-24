@@ -320,7 +320,7 @@ function CourseDetails() {
             <ListItem
               leftText={t('words.price')}
               rightText={
-                course.onlinePriceDollars || course.inpersonPriceDollars ? (
+                course.onlinePriceDollars && course.inpersonPriceDollars ? (
                   <p>
                     <p>
                       ${course.inpersonPriceDollars}{' '}
@@ -336,7 +336,13 @@ function CourseDetails() {
                     </p>
                   </p>
                 ) : (
-                  t('words.free')
+                  <>
+                    {course.onlinePriceDollars || course.inpersonPriceDollars
+                      ? course.inpersonPriceDollars
+                        ? `${course.inpersonPriceDollars}$`
+                        : `${course.onlinePriceDollars}$`
+                      : t('words.free')}
+                  </>
                 )
               }
               variant="light"
@@ -652,7 +658,9 @@ function CourseDetails() {
   const BuyCourseButtons = () => {
     return courseHasToBePurchased ? (
       <>
-        {course.format === 'hybrid' ? (
+        {course.format === 'hybrid' &&
+        course.inpersonPriceDollars &&
+        course.onlinePriceDollars ? (
           <div className="flex flex-col lg:flex-row gap-0 lg:gap-3 lg:self-end">
             <BuyCourseButton format="inperson">
               <>
@@ -668,7 +676,7 @@ function CourseDetails() {
             </BuyCourseButton>
           </div>
         ) : (
-          <BuyCourseButton format={course.format}>
+          <BuyCourseButton format={'inperson'}>
             <>
               <FaLock className="mr-2" />
               {t('courses.details.buyCourse')}
