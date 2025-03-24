@@ -1,8 +1,4 @@
-import {
-  Outlet,
-  ScrollRestoration,
-  createRootRouteWithContext,
-} from '@tanstack/react-router';
+import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
 import type { i18n } from 'i18next';
 
 import { LANGUAGES } from '#src/utils/i18n.ts';
@@ -24,7 +20,6 @@ const Root = () => {
 
   return (
     <>
-      <ScrollRestoration />
       <Outlet />
       {/* <Suspense>
         <TanStackRouterDevtools />

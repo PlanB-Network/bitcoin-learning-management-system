@@ -33,7 +33,7 @@
     "date-fns": "^4.1.0",
     "dompurify": "^3.2.4",
     "embla-carousel-react": "^8.5.2",
-    "i18next": "^24.2.3",
+    "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
     "i18next-http-backend": "^3.0.2",
     "lodash-es": "^4.17.21",
