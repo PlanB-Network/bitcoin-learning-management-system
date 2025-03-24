@@ -53,7 +53,7 @@ export const Route = createRootRouteWithContext<{
     if (pathLanguage && !LANGUAGES.includes(pathLanguage)) {
       console.log('-- Redirect(2) to /');
       router.navigate({
-        to: '/',
+        to: `/${i18n.language}${location.pathname}${location.hash}${location.search}`,
         replace: true,
       });
     }
