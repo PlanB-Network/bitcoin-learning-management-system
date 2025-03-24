@@ -282,6 +282,7 @@ const extractParts = (markdown: string): Part[] => {
           const tagsToRemove = [
             'chapterId',
             'professor',
+            'professorId',
             'releasePlace',
             'isOnline',
             'isInPerson',
