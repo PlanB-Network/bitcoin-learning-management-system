@@ -40,20 +40,23 @@ export const Route = createRootRouteWithContext<{
     }
     const pathLanguage = location.pathname.split('/')[1];
 
+    const newUrl = `/${i18n.language}${location.pathname}${location.hash}${location.search}`;
+
     // If no language in the path, redirect to language
     if (!pathLanguage) {
-      console.log('-- Redirect(1) to ', i18n.language);
+      console.log('-- Redirect(1) to ', newUrl);
       router.navigate({
-        to: `/${i18n.language}${location.pathname}${location.hash}${location.search}`,
+        to: newUrl,
         replace: true,
       });
     }
 
-    // If language in the path is not available
+    // If language in the path is missing or wrong
     if (pathLanguage && !LANGUAGES.includes(pathLanguage)) {
-      console.log('-- Redirect(2) to /');
+      const newUrl = `/${i18n.language}${location.pathname}${location.hash}${location.search}`;
+      console.log('-- Redirect(2) to ', newUrl);
       router.navigate({
-        to: `/${i18n.language}${location.pathname}${location.hash}${location.search}`,
+        to: newUrl,
         replace: true,
       });
     }
