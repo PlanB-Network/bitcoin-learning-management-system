@@ -41,9 +41,19 @@ export const Route = createRootRouteWithContext<{
     const pathLanguage = location.pathname.split('/')[1];
 
     // If no language in the path, redirect to language
-    if (!pathLanguage || (pathLanguage && !LANGUAGES.includes(pathLanguage))) {
+    if (!pathLanguage) {
+      console.log('-- Redirect(1) to ', i18n.language);
       router.navigate({
         to: `/${i18n.language}${location.pathname}${location.hash}${location.search}`,
+        replace: true,
+      });
+    }
+
+    // If language in the path is not available
+    if (pathLanguage && !LANGUAGES.includes(pathLanguage)) {
+      console.log('-- Redirect(2) to /');
+      router.navigate({
+        to: '/',
         replace: true,
       });
     }
