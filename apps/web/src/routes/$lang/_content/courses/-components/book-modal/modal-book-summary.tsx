@@ -8,6 +8,7 @@ import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inlin
 import { PaymentRow } from '#src/components/payment-row.js';
 import { getDateString, getTimeString } from '#src/utils/date.js';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
+import { assetUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
@@ -55,6 +56,16 @@ export const ModalBookSummary = ({
             {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
           </span>
           <span>{professorNames}</span>
+        </div>
+        <div className={cn('rounded-2xl w-full mb-5 lg:mb-8', borderClassName)}>
+          <img
+            src={assetUrl(
+              `courses/${course.index}`,
+              'thumbnail.webp',
+              course.lastCommit,
+            )}
+            alt={courseName}
+          />
         </div>
         <div className="flex flex-col gap-1 lg:gap-2">
           <PaymentRow
