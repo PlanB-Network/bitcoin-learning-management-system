@@ -1,3 +1,5 @@
+import React from 'react';
+
 type ReactImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
 type TailwindSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -15,9 +17,19 @@ const breakpointsMap: Record<TailwindSizes, number> = {
 interface ImageProps extends Omit<ReactImageProps, 'sizes'> {
   breakpoints: { [key in TailwindSizes]?: number } & { default: number };
   loading?: 'lazy' | 'eager';
+  hideWhenError?: boolean;
 }
 
-export const Image = ({ src, breakpoints, ...props }: ImageProps) => {
+export const Image = ({
+  src,
+  breakpoints,
+  hideWhenError = false,
+  ...props
+}: ImageProps) => {
+  const [isError, setIsError] = React.useState(false);
+
+  if (!src || (hideWhenError && isError)) return null;
+
   const srcHasQuery = src?.includes('?');
 
   const breakpointsEntries = Object.entries(breakpoints);
@@ -48,6 +60,13 @@ export const Image = ({ src, breakpoints, ...props }: ImageProps) => {
 
   return (
     // biome-ignore lint/a11y/useAltText: Can be provided by the parent component
-    <img {...props} srcSet={srcSet} sizes={sizes} />
+    <img
+      {...props}
+      srcSet={srcSet}
+      sizes={sizes}
+      onError={() => {
+        setIsError(true);
+      }}
+    />
   );
 };

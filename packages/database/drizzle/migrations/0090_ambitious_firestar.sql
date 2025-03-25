@@ -1,0 +1,1 @@
+ALTER TABLE "content"."courses" RENAME COLUMN "planb_school_markdown" TO "presentation_markdown";

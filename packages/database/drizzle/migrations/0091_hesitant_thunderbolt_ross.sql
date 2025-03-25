@@ -1,0 +1,1 @@
+ALTER TABLE "content"."courses" ADD COLUMN "has_logo" boolean DEFAULT false NOT NULL;

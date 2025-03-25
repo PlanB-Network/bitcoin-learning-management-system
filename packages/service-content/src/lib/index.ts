@@ -126,10 +126,14 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     // Sync courses
     {
       const courses = groupByCourse(filteredFiles, errors);
+      const coursesAssets = groupByCourse(filteredAssets, errors);
       const time = timeLog(courses.length, 'course');
+
       for (const course of courses) {
-        await updateCourses(course, errors);
+        const courseAsset = coursesAssets.find((c) => c.index === course.index);
+        await updateCourses(course, courseAsset, errors);
       }
+
       time();
     }
 

@@ -27,7 +27,8 @@ export interface Course {
   availableSeats: number | null;
   remainingSeats: number | null;
   isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
+  presentationMarkdown: string | null;
+  hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   lastUpdated: Date;
@@ -163,7 +164,8 @@ export interface MinimalJoinedCourse {
   numberOfRating: number;
   sumOfAllRating: number;
   isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
+  presentationMarkdown: string | null;
+  hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   language: string;
@@ -202,7 +204,8 @@ export interface JoinedCourseProfessorId {
   numberOfRating: number;
   sumOfAllRating: number;
   isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
+  presentationMarkdown: string | null;
+  hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   language: string;
@@ -243,7 +246,8 @@ export interface JoinedCourse {
   numberOfRating: number;
   sumOfAllRating: number;
   isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
+  presentationMarkdown: string | null;
+  hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   language: string;
@@ -327,7 +331,8 @@ export interface CourseResponse {
   numberOfRating: number;
   sumOfAllRating: number;
   isPlanbSchool: boolean;
-  planbSchoolMarkdown: string | null;
+  presentationMarkdown: string | null;
+  hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   language: string;

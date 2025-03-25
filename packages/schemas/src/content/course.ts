@@ -112,7 +112,8 @@ export const minimalJoinedCourseSchema = courseSchema
     numberOfRating: true,
     sumOfAllRating: true,
     isPlanbSchool: true,
-    planbSchoolMarkdown: true,
+    presentationMarkdown: true,
+    hasLogo: true,
     isGdprCompliance: true,
     customTcDisclaimer: true,
   })

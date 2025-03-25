@@ -28,4 +28,6 @@ export interface ChangedAsset {
   commit: string;
   /** Commit timestamp */
   time: number;
+  /** Raw data */
+  load: LazyLoader;
 }

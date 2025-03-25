@@ -24,25 +24,23 @@ import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { PublicComment } from '#src/components/Comments/public-comment.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
+import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
+import { Image } from '#src/components/image.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { useAuthModal } from '#src/providers/auth.tsx';
 import { AppContext } from '#src/providers/context.js';
-import { formatDate, getTimeStringWithOnlyMonths } from '#src/utils/date.ts';
+import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { formatDate, getDateString } from '#src/utils/date.ts';
+import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
-
-import PlanbSchoolLogo from '#src/assets/courses/planb_school_logo.svg';
-import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
-import { Image } from '#src/components/image.tsx';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
 
@@ -218,8 +216,18 @@ function CourseDetails() {
           <h1 className="text-newBlack-1 max-md:text-center title-large-sb-24px md:display-large-med-48px">
             {course.name}
           </h1>
-          {course.isPlanbSchool ? (
-            <img className="max-md:hidden mr-9" src={PlanbSchoolLogo} alt="" />
+          {course.hasLogo ? (
+            <Image
+              src={assetUrl(
+                `courses/${course.index}`,
+                'logo.webp',
+                course.lastCommit,
+              )}
+              hideWhenError={true}
+              alt={course.name}
+              className="max-md:hidden mr-9"
+              breakpoints={{ default: 210 }}
+            />
           ) : null}
         </div>
         <div className="mt-6 md:mt-4 flex flex-wrap gap-2 items-center">
@@ -300,13 +308,10 @@ function CourseDetails() {
             rightText={
               <div className="flex flex-col md:flex-row">
                 <span>{`${course.hours} ${t('words.hours')}`}</span>
-                {course.isPlanbSchool ? (
+                {course.startDate && course.endDate ? (
                   <>
                     <span className="font-light mx-2 max-md:hidden"> | </span>
-                    {getTimeStringWithOnlyMonths(
-                      course.startDate,
-                      course.endDate,
-                    )}
+                    {getDateString(course.startDate, course.endDate)}
                   </>
                 ) : (
                   ''
@@ -433,63 +438,61 @@ function CourseDetails() {
   }) => {
     return (
       <>
-        {course.isPlanbSchool && course.planbSchoolMarkdown ? (
-          <section className="text-blue-1000 flex flex-col w-full gap-5 break-words px-[15px] md:px-2 md:mt-8 md:grow md:gap-[18px] md:overflow-hidden pb-2">
-            <Suspense fallback={<Loader size={'s'} />}>
-              <PresentationMarkdownBody
-                content={course.planbSchoolMarkdown}
-                assetPrefix={cdnUrl(`courses/${course.index}`)}
-              />
-            </Suspense>
-          </section>
-        ) : (
-          <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
-            <div className="flex flex-col gap-4 md:gap-6">
-              <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
-                {t('courses.details.description')}
-              </h4>
-              <ReactMarkdown
-                components={{
-                  h1: ({ children }) => (
-                    <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
-                      {children}
-                    </h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className="body-14px md:subtitle-medium-med-16px text-newBlack-1 text-justify">
-                      {children}
-                    </p>
-                  ),
-                }}
-              >
-                {course.rawDescription}
-              </ReactMarkdown>
-            </div>
+        <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
+          <div className="flex flex-col gap-4 md:gap-6">
+            <h4 className="subtitle-small-caps-14px max-md:mt-2 md:subtitle-medium-caps-18px text-darkOrange-5">
+              {t('courses.details.description')}
+            </h4>
+            <ReactMarkdown
+              components={{
+                h1: ({ children }) => (
+                  <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+                    {children}
+                  </h3>
+                ),
+                p: ({ children }) => (
+                  <p className="body-14px md:subtitle-large-18px text-newBlack-1 text-justify">
+                    {children}
+                  </p>
+                ),
+              }}
+            >
+              {course.rawDescription}
+            </ReactMarkdown>
+          </div>
 
-            <Divider width="w-full" className="md:hidden" />
-            <div className="flex w-full flex-col gap-4 md:gap-6">
-              <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
-                {t('courses.details.objectives')}
-              </h4>
-              <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
-                {t('courses.details.objectivesTitle')}
-              </h3>
-              <ul className="flex flex-col gap-4 md:gap-6">
-                {course.objectives?.map((goal) => (
-                  <li className="flex gap-2.5 text-newBlack-1" key={goal}>
-                    <IoCheckmark
-                      size={isMobile ? 18 : 24}
-                      className="shrink-0"
-                    />
-                    <span className="body-16px md:label-large-20px">
-                      {goal}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        )}
+          <Divider width="w-full" className="md:hidden" />
+          <div className="flex w-full flex-col gap-4 md:gap-6">
+            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
+              {t('courses.details.objectives')}
+            </h4>
+            <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+              {t('courses.details.objectivesTitle')}
+            </h3>
+            <ul className="flex flex-col gap-4 md:gap-6">
+              {course.objectives?.map((goal) => (
+                <li className="flex gap-2.5 text-newBlack-1" key={goal}>
+                  <IoCheckmark size={isMobile ? 18 : 24} className="shrink-0" />
+                  <span className="body-16px md:label-large-20px">{goal}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {course.presentationMarkdown ? (
+          <>
+            <Divider width="w-full" className="mt-9 max-md:mb-6" />
+            <section className="text-blue-1000 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-[18px] md:overflow-hidden pb-2">
+              <Suspense fallback={<Loader size={'s'} />}>
+                <PresentationMarkdownBody
+                  content={course.presentationMarkdown}
+                  assetPrefix={cdnUrl(`courses/${course.index}`)}
+                />
+              </Suspense>
+            </section>
+          </>
+        ) : null}
       </>
     );
   };

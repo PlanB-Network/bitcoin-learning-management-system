@@ -219,6 +219,7 @@ async function listRepoAssetFiles(
       path: asset.path,
       commit: asset.hash,
       time: statSync(assetPath).mtimeMs,
+      load: () => readFile(assetPath),
     };
   });
 

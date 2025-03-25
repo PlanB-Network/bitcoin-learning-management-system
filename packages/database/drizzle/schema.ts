@@ -895,7 +895,8 @@ export const contentCourses = content.table('courses', (t) => ({
   remainingSeats: t.integer(),
 
   isPlanbSchool: t.boolean().default(false).notNull(),
-  planbSchoolMarkdown: t.varchar(),
+  presentationMarkdown: t.varchar(),
+  hasLogo: t.boolean().notNull().default(false),
 
   isGdprCompliance: t.boolean().notNull().default(false),
   customTcDisclaimer: t.text(),

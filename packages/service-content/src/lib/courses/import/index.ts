@@ -4,7 +4,12 @@ import { marked } from 'marked';
 import { validate as uuidValidate } from 'uuid';
 
 import { firstRow, sql } from '@blms/database';
-import type { ChangedFile, Course, Proofreading } from '@blms/types';
+import type {
+  ChangedAsset,
+  ChangedFile,
+  Course,
+  Proofreading,
+} from '@blms/types';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
@@ -49,7 +54,10 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   };
 };
 
-export const groupByCourse = (files: ChangedFile[], errors: string[]) => {
+export const groupByCourse = (
+  files: ChangedFile[] | ChangedAsset[],
+  errors: string[],
+) => {
   const coursesFiles = files.filter(
     (item) =>
       getContentType(item.path) === 'courses' && !item.path.includes('quizz'),
@@ -320,17 +328,26 @@ const extractParts = (markdown: string): Part[] => {
 };
 
 export const createUpdateCourses = ({ postgres }: Dependencies) => {
-  return async (course: ChangedCourse, errors: string[]) => {
+  return async (
+    course: ChangedCourse,
+    assets: ChangedCourse | undefined,
+    errors: string[],
+  ) => {
     const { main, files } = separateContentFiles(course, 'course.yml');
     if (!main) return;
 
-    let schoolMarkdown = null;
-    const schoolIndex = files.findIndex((file) => file.language === 'school');
-    if (schoolIndex !== -1) {
-      const schoolFile = files.splice(schoolIndex, 1)[0];
-      const header = matter(await schoolFile.load(), { excerpt: false });
-      schoolMarkdown = header.content.trim();
+    let presentationMarkdown = null;
+    const presentationIndex = files.findIndex(
+      (file) => file.language === 'presentation',
+    );
+    if (presentationIndex !== -1) {
+      const presentationFile = files.splice(presentationIndex, 1)[0];
+      const header = matter(await presentationFile.load(), { excerpt: false });
+      presentationMarkdown = header.content.trim();
     }
+
+    const logo = assets?.files.find((f) => f.path === 'logo.webp');
+    const hasLogo = logo !== undefined;
 
     let courseId: string;
 
@@ -404,7 +421,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                    available_seats,
                    remaining_seats,
                    is_planb_school,
-                   planb_school_markdown,
+                   presentation_markdown,
+                   has_logo,
                    is_gdpr_compliance,
                    custom_tc_disclaimer,
                    last_updated,
@@ -434,7 +452,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.available_seats},
                   ${parsedCourse.available_seats},
                   ${parsedCourse.is_planb_school},
-                  ${schoolMarkdown},
+                  ${presentationMarkdown},
+                  ${hasLogo},
                   ${parsedCourse.is_gdpr_compliance},
                   ${parsedCourse.custom_tc_disclaimer},
                   ${lastUpdated.time},
@@ -463,7 +482,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   available_seats = EXCLUDED.available_seats,
                   remaining_seats = EXCLUDED.remaining_seats,
                   is_planb_school = EXCLUDED.is_planb_school,
-                  planb_school_markdown = EXCLUDED.planb_school_markdown,
+                  presentation_markdown = EXCLUDED.presentation_markdown,
+                  has_logo = EXCLUDED.has_logo,
                   is_gdpr_compliance = EXCLUDED.is_gdpr_compliance,
                   custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
                   last_updated = EXCLUDED.last_updated,
