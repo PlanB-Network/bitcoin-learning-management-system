@@ -153,7 +153,6 @@
       "count": "Parte {{count}}"
     },
     "payment": {
-      "access_invoice": "Puedes acceder a tu factura mediante tu dashboard",
       "accessibility": "Accesibilidad",
       "accessibility_forever": "Para siempre",
       "amount": "Monto",
@@ -687,24 +686,20 @@
     "pageSubtitle": "Adopción de abajo hacia arriba, potenciada por una red sólida",
     "pageTitle": "¿Buscas un evento de Bitcoin al cual asistir?",
     "payment": {
-      "access_invoice": "Puedes acceder a tu factura a través de tu panel de control.",
       "access_type": "Tipo de acceso",
       "address": "Dirección",
       "additional_free_description": "Este evento es gratuito, por lo que no hay costo por reservar este asiento. Sin embargo, por favor, asegúrate de asistir, ya que el número de asientos es limitado.",
       "back_events": "Regresar a eventos",
       "book_seat": "Reservar asiento",
-      "callout_physical": "Estás por reservar acceso físico a este evento.",
       "date": "Fecha",
       "description_free_physical": "Por favor revisa los detalles proporcionados del lugar.\nUna vez que la reserva esté confirmada, emitiremos un boleto de confirmación y un código QR para presentar en el evento.",
       "download_ticket": "Descarga tu boleto",
-      "enjoy": "Esperamos que lo disfrutes :)",
       "language": "Idioma",
       "limitation": "Limitación",
       "max_capacity": "Capacidad máxima de",
       "payment_successful": "¡Reservación exitosa!",
       "time": "Hora",
       "description_online": "Por favor revisa la fecha y hora del evento proporcionada.\nCuando llegue el momento, inicia sesión en la plataforma para acceder a la transmisión en vivo a través de la página del evento.",
-      "callout_replay": "Estás a punto de reservar el acceso al vídeo de repetición de este evento.",
       "description_physical": "Por favor revisa los detalles del lugar proporcionados.\nUna vez confirmada tu reserva, emitiremos un ticket para presentar en el evento. Este boleto también te otorgará acceso a la transmisión en vivo y a la repetición del video, si está disponible."
     },
     "errors": {

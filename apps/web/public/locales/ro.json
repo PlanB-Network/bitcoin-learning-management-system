@@ -190,7 +190,6 @@
       "planbSchoolHeadline": "Plan ₿ School, condusă de Giacomo Zucco, oferă programe educaționale intensive de trei luni concepute pentru a umple golul dintre învățare și aplicațiile din lumea reală. Dincolo de clasele tradiționale, studenții se implică în proiecte practice conduse de companii și un bootcamp de primă clasă dedicat celor mai buni performeri. Doar cele mai bune talente avansează după două runde de selecție competitive, asigurându-se că studenții finali de top sunt complet echipați pentru a-și lansa carierele în industria Bitcoin."
     },
     "payment": {
-      "access_invoice": "Puteți accesa factura dvs. prin intermediul dashboard-ului",
       "accessibility": "Accesibilitate",
       "accessibility_forever": "Pentru totdeauna",
       "amount": "Cantitate",
@@ -759,10 +758,8 @@
     "pageSubtitle": "Adoptare ascendentă consolidată de o rețea puternică",
     "pageTitle": "Cauți un eveniment Bitcoin la care să participi?",
     "payment": {
-      "access_invoice": "Puteți accesa factura dvs. prin intermediul dashboard-ului.",
       "description_free_physical": "Vă rugăm să revizuiți detaliile locației furnizate.\nOdată ce rezervarea este confirmată, vom emite un bilet de confirmare și un cod QR pentru a fi prezentat la eveniment.",
       "download_ticket": "Descărcați biletul dvs",
-      "enjoy": "Sperăm că vă va plăcea :)",
       "language": "Limbă",
       "limitation": "Limitare",
       "max_capacity": "Capacitate maximă de",
@@ -772,13 +769,10 @@
       "access_type": "Tip de acces",
       "back_events": "Înapoi la evenimente",
       "book_seat": "Rezervați locul",
-      "callout_physical": "Sunteți pe cale să rezervați accesul fizic la acest eveniment.",
       "date": "Data",
       "time": "Timp",
       "access_online_successful": "Când începe evenimentul, conectează-te la platformă pentru a avea acces la transmisia în direct pe pagina evenimentului.",
       "description_physical": "Te rugăm să verifici detaliile furnizate cu privire la locație.\nOdată ce rezervarea ta este confirmată, îți vom elibera un bilet pe care să îl prezinți la eveniment. Acest bilet îți va oferi, de asemenea, acces la transmisia live și la reluarea video, dacă este disponibilă.",
-      "callout_online": "Ești pe cale să rezervi accesul online la acest eveniment.",
-      "callout_replay": "Ești pe cale să rezervi accesul la reluarea video a acestui eveniment.",
       "description_online": "Te rugăm să verifici data și ora evenimentului furnizate.\nCând va fi momentul, conectează-te la platformă pentru a accesa transmisia live prin intermediul paginii evenimentului.",
       "access_physical_successful": "Îți poți descărca biletul aici sau îl poți descărca mai târziu din dashboard-ul tău."
     },

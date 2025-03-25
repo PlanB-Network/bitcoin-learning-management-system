@@ -150,7 +150,6 @@
       "count": "Del {{count}}"
     },
     "payment": {
-      "access_invoice": "Du kan få tillgång till din faktura via kontrollpanelen",
       "accessibility": "Tillgänglighet",
       "accessibility_forever": "Evigt",
       "amount": "Belopp",
@@ -702,17 +701,14 @@
     },
     "payment": {
       "limitation": "Begränsning",
-      "access_invoice": "Du kan få tillgång till din faktura via kontrollpanelen.",
       "access_type": "Typ av åtkomst",
       "address": "Adress",
       "additional_free_description": "Detta event är gratis, så det finns ingen kostnad för att boka denna plats. Men var snäll att se till att närvara, eftersom antalet platser är begränsade.",
       "back_events": "Tillbaka till events",
       "book_seat": "Boka en plats",
-      "callout_physical": "Du är på väg att boka fysisk tillgång till detta event.",
       "date": "Datum",
       "description_free_physical": "Vänligen granska de angivna detaljerna för lokalen.\nNär bokningen är bekräftad kommer vi att utfärda en bekräftelsebiljett och en QR-kod att presentera vid eventet.",
       "download_ticket": "Ladda ner din biljett",
-      "enjoy": "Vi hoppas att du kommer njuta av det :)",
       "language": "Språk",
       "max_capacity": "Maximal kapacitet av",
       "payment_successful": "Bokningen lyckades!",
@@ -720,8 +716,6 @@
       "access_online_successful": "När eventet startar, logga in på plattformen för att få tillgång till live-sändningen på eventsidan.",
       "description_online": "Vänligen granska datum och tid för eventet som hålls.\nNär det är dags, logga in på plattformen för att få tillgång till live-sändningen via eventsidan.",
       "access_physical_successful": "Du kan ladda ner din biljett här, eller ladda ner den senare i kontrollpanelen.",
-      "callout_online": "Du är på väg att boka online-åtkomst till detta event.",
-      "callout_replay": "Du är på väg att boka tillgång till den inspelade videon av detta event.",
       "description_physical": "Vänligen granska de angivna detaljerna för lokalen.\nNär din bokning är bekräftad kommer vi att utfärda en biljett att presentera vid eventet. Denna biljett ger dig också tillgång till live-sändningen och den inspelade videon, om tillgänglig."
     },
     "newEvent": {

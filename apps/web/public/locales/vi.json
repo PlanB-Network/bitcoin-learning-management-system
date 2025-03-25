@@ -57,7 +57,6 @@
       "planbSchool": "PLAN ₿ SCHOOL"
     },
     "payment": {
-      "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển",
       "accessibility": "Quyền truy cập",
       "accessibility_forever": "Mãi mãi",
       "amount": "Số lượng",
@@ -311,24 +310,19 @@
       "address": "Địa chỉ",
       "back_events": "Quan lại các sự kiện",
       "book_seat": "Đặt chỗ",
-      "callout_physical": "Bạn sắp đặt một vé tham dự trực tiếp sự kiện này.",
       "date": "Ngày",
       "language": "Ngôn ngữ được nói",
       "limitation": "Giới hạn",
       "max_capacity": "Sức chứa tối đa của",
       "payment_successful": "Đặt chỗ thành công !",
       "time": "Thời gian",
-      "access_invoice": "Bạn có thể truy cập vào hoá đơn của mình trên bảng điều khiển.",
       "additional_free_description": "Sự kiện này miễn phí, nên bạn sẽ không bị tính phí khi đặt chỗ. Dù sao đi nữa, hãy nhớ tham dự vì số lượng chỗ ngồi có hạn.",
       "description_free_physical": "Vui lòng xem lại chi tiết địa chỉ đã được cung cấp.\nMột khi việc đặt chỗ hoàn tất, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
       "download_ticket": "Tải về vé của bạn",
-      "enjoy": "Chúng tôi hy vọng rằng bạn sẽ thích nó :)",
       "access_online_successful": "Khi các sự kiện bắt đầu, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
       "access_physical_successful": "Bạn có thể tải vé của mình về tại đây, hoặc tải về sau trên bảng điều khiển của mình.",
       "description_physical": "Vui lòng xem lại chi tiết về địa điểm.\nMột khi đặt chỗ của bạn được xác nhận, chúng tôi sẽ phát hành vé để xuất trình tại sự kiện. Vé này cũng sẽ cấp quyền truy cập vào các buổi phát trực tuyến và xem lại video, nếu có sẵn.",
-      "description_online": "Vui lòng xem lại ngày và giờ của sự kiện.\nKhi thời gian đến, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
-      "callout_online": "Bạn chuẩn bị đặt chỗ truy cập online sự kiện này.",
-      "callout_replay": "Bạn chuẩn bị đặt chỗ để xem lại video của sự kiện này."
+      "description_online": "Vui lòng xem lại ngày và giờ của sự kiện.\nKhi thời gian đến, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện."
     },
     "pageDescription": "Bạn muốn nói về Bitcoin trong thời gian thực? Ở đây, bạn có thể tìm thấy tất cả các sự kiện được hỗ trợ bởi cộng đồng Plan B Network. Cho dù bạn muốn nghe một bài giảng, thảo luận về Bitcoin quanh bàn trà, hoặc làm bài kiểm tra đánh giá kiến thực của bạn, bạn sẽ có thể tìm thấy sự kiện phù hợp tại đây thông qua Plan B Network.",
     "pageTitle": "Bạn đang tìm kiếm một sự kiện Bitcoin để tham dự?",

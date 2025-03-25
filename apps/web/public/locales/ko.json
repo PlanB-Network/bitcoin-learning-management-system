@@ -23,106 +23,163 @@
     "manifesto": "Plan ₿ Network는 비트코인이 가져올 탈중앙화된 미래를 믿습니다.\n\n우리의 사명은 10년 안에 10억 명에게 비트코인을 소개하는 것.\n우리는 교육과 정보로 그 길을 엽니다.\n\n우리는 오픈소스 교육 콘텐츠를 제공하고,\n비트코인 멘토십 네트워크를 통해 지역 비트코인 커뮤니티를 지원합니다.\n\n우리의 철학은 사이퍼펑크 매니페스토에서 영감을 받았습니다.\n그들이 프라이버시를 지켰듯, 우리는 교육을 지킵니다.\n자유와 변화의 기반은 지식이라고 우리는 믿습니다.\n\n우리는 비트코인 하나만을 믿습니다.\n\n우리는 자기 책임과 자산의 주권을 존중하며, 독립성을 옹호합니다.\n\n우리는 맹목적인 신뢰가 아닌 검증을 추구합니다.\n\n우리는 돈을 바로잡으면 세상도 바로잡을 수 있다고 믿습니다.\n\n우리는 중앙화에서 벗어나 오픈소스로, 어떤 단일 실패 지점도 피하고자 합니다.\n\n우리는 자유로운 콘텐츠 확산을 장려합니다.\n\n우리는 개인이 중심이 되고, 아래에서 위로 운영되는 세상을 향해 나아갑니다.\n\n우리는 단순하게, 교육하고, 공유합니다.\n\n한 사람씩 오렌지 필링하며, 비트코인을 전 세계에 퍼뜨리는 우리의 미션을 함께합시다!\n"
   },
   "words": {
-    "about": "",
-    "about-us": "",
-    "advanced": "",
-    "back": "",
-    "beginner": "",
-    "billing": "",
-    "book": "",
-    "conference": "",
-    "content": "",
-    "course": "",
-    "courses": "",
+    "about": "소개",
+    "about-us": "회사 소개",
+    "advanced": "고급",
+    "back": "뒤로",
+    "beginner": "초보자",
+    "billing": "청구",
+    "book": "책",
+    "conference": "컨퍼런스",
+    "content": "콘텐츠",
+    "course": "코스",
+    "courses": "코스",
     "date": "날짜",
-    "dashboard": "",
-    "details": "",
-    "download": "",
-    "events": "",
+    "dashboard": "대시보드",
+    "details": "세부 사항",
+    "download": "다운로드",
+    "events": "이벤트",
     "home": "홈페이지",
-    "intermediate": "",
-    "invoice": "",
+    "intermediate": "중급",
+    "invoice": "청구서",
     "level": {
-      "advanced": "",
-      "beginner": "",
-      "developer": "",
-      "intermediate": "",
-      "beginnerFriendly": "",
-      "wizard": "",
-      "level": "",
-      "levels": ""
+      "advanced": "고급",
+      "beginner": "초보자",
+      "developer": "개발자",
+      "intermediate": "중급",
+      "beginnerFriendly": "초보자용",
+      "wizard": "전문가",
+      "level": "수준",
+      "levels": "수준",
+      "expert": "전문가"
     },
-    "library": "",
-    "lnurlAuth": "",
-    "members": "",
-    "mining": "",
-    "network": "",
-    "newsletter": "",
-    "nodeNetwork": "",
-    "on": "",
-    "online": "",
-    "ourStory": "",
-    "podcast": "",
-    "podcasts": "",
-    "professors": "",
-    "register": "",
-    "resources": "",
-    "termsAndConditions": "",
-    "ticket": "",
-    "tickets": "",
-    "time": "",
-    "to": "",
-    "tutorial": "",
-    "tutorials": "",
-    "update": "",
-    "wallets": "",
-    "lightningInvoice": "",
-    "admins": "",
-    "all": "",
-    "amount": "",
-    "bCert": "",
-    "booked": "",
-    "bookings": "",
-    "chapter": "",
-    "communities": "",
-    "courseId": "",
-    "credentials": "",
-    "description": "",
-    "diploma": "",
-    "duration": "",
-    "edit": "",
-    "filter": "",
-    "failed": "",
-    "free": "",
+    "library": "라이브러리",
+    "lnurlAuth": "LNURL 인증",
+    "members": " 회원",
+    "mining": "마이닝",
+    "network": "네트워크",
+    "newsletter": "뉴스레터",
+    "nodeNetwork": "노드 네트워크",
+    "on": "껴짐",
+    "online": "온라인",
+    "ourStory": "우리의 이야기",
+    "podcast": "팟캐스트",
+    "podcasts": "팟캐스트",
+    "professors": "교수",
+    "register": "등록",
+    "resources": "자료",
+    "termsAndConditions": "이용 약관",
+    "ticket": "티켓",
+    "tickets": "티켓",
+    "time": "시간",
+    "to": "에",
+    "tutorial": "튜토리얼",
+    "tutorials": "튜토리얼",
+    "update": "업데이트",
+    "wallets": "지갑",
+    "lightningInvoice": "라이트닝 청구서",
+    "admins": "관리자",
+    "all": "모두",
+    "amount": "금액",
+    "bCert": "₿-CERT",
+    "booked": "예약됨",
+    "bookings": "예약",
+    "chapter": "챕터",
+    "communities": "커뮤니티",
+    "courseId": "코스 ID",
+    "credentials": "자격 증명",
+    "description": "코스 설명",
+    "diploma": "수료증",
+    "duration": "기간",
+    "edit": "편집",
+    "filter": "필터",
+    "failed": "실폐",
+    "free": "무료",
     "glossary": "용어 사전",
     "goal": "목표",
     "grade": "성적",
     "hours": "시간",
-    "id": "",
-    "inReview": "",
-    "lectures": "",
-    "location": "",
-    "onChainAddress": "",
-    "overview": "",
-    "paid": "",
-    "part": "",
-    "passed": "",
-    "price": "",
-    "professor": "",
-    "progress": "",
-    "publicationDate": "",
-    "public": "",
-    "ratings": "",
-    "required": "",
-    "start": "",
-    "status": "",
-    "students": "",
-    "teacher": "",
-    "total": "",
-    "topics": "",
-    "unified": "",
-    "users": "",
-    "view": ""
+    "id": "ID",
+    "inReview": "검토 중",
+    "lectures": "강의",
+    "location": "위치",
+    "onChainAddress": "온체인 주소",
+    "overview": "개요",
+    "paid": "프리미엄",
+    "part": "부분",
+    "passed": "통과",
+    "price": "가격",
+    "professor": "교수",
+    "progress": "진행",
+    "publicationDate": "출판 날짜:",
+    "public": "공공 커뮤니케이션",
+    "ratings": "평가",
+    "required": "필수",
+    "start": "시작",
+    "status": "상태",
+    "students": "학생",
+    "teacher": "강사",
+    "total": "총액",
+    "topics": "주제",
+    "unified": "통합된",
+    "users": "사용자",
+    "view": "보기",
+    "complete": "완료",
+    "abstract": "요약",
+    "business": "비즈니스",
+    "cancel": "취소",
+    "careerPortal": "커리어 포털",
+    "access": "접근",
+    "action": "액션",
+    "category": "카테고리",
+    "admin": "관리자",
+    "author": "저자",
+    "bitcoin": "비트코인",
+    "channel": "채널",
+    "channels": "채널",
+    "chapters": "챕터",
+    "close": "닫기",
+    "congrats": "축하해요!",
+    "country": "국가",
+    "credits": "크레딧",
+    "delete": "삭제",
+    "language": "언어",
+    "hybrid": "하이브리드",
+    "previous": "이전",
+    "finish": "끝내다",
+    "github": "GitHub",
+    "email": "이메일",
+    "exam": "시험",
+    "lecture": "강의",
+    "movie": "영화",
+    "name": "이름",
+    "next": "다음",
+    "no": "아니요",
+    "likes": "좋아요",
+    "linkedin": "링크드인",
+    "producer": "프로듀서",
+    "incomplete": "미완성",
+    "inperson": "대면",
+    "project": "프로젝트",
+    "projects": "프로젝트",
+    "protocol": "프로토콜",
+    "dislikes": "싫어함",
+    "displayName": "디스플레이 이름",
+    "user": "사용자",
+    "security": "보안",
+    "save": "저장",
+    "search": "검색",
+    "viewMore": "더 보기",
+    "skip": "건너뛰기",
+    "socialStudies": "사회과학",
+    "startHere": "여기서 시작!",
+    "student": "학생",
+    "username": "사용자 이름",
+    "yes": "네",
+    "role": "역할",
+    "unavailable": "사용 불가능",
+    "submit": "제출",
+    "telegram": "텔레그램"
   },
   "auth": {
     "accountCreated": "{{userName}}님의 계정이 생성되었습니다!",
@@ -280,7 +337,6 @@
       "count": "Part {{count}}"
     },
     "payment": {
-      "access_invoice": "대시보드에서 송장을 확인할 수 있습니다",
       "accessibility": "접근성",
       "accessibility_forever": "영원히",
       "amount": "금액",
@@ -874,17 +930,14 @@
     "pageSubtitle": "강력한 네트워크로 바텀업 채택 강화",
     "pageTitle": "참석할 비트코인 이벤트를 찾으시나요?",
     "payment": {
-      "access_invoice": "대시보드를 통해 인보이스를 확인할 수 있습니다.",
       "access_type": "접근 유형",
       "address": "주소",
       "additional_free_description": "이 이벤트는 무료이므로, 예약한 자리에 대해 요금이 청구되지 않습니다. 그럼에도 불구하고, 자리가 제한되어 있으므로 꼭 참석하시기 바랍니다.",
       "back_events": "이벤트 돌아가기",
       "book_seat": "예약하기",
-      "callout_physical": "이 이벤트에 대한 대면 접근을 예약하려고 합니다.",
       "date": "날짜",
       "description_free_physical": "장소 세부 정보를 확인하세요.\n예약이 처리되면 확인 티켓과 QR 코드가 제공되며, 이를 이벤트에 제시하세요.",
       "download_ticket": "티켓 다운로드하기",
-      "enjoy": "이벤트를 즐기세요!",
       "language": "언어",
       "limitation": "제한",
       "max_capacity": "최대 좌석 수",
@@ -893,8 +946,6 @@
       "description_online": "해당 이벤트의 날짜와 시간을 확인해 주세요.\n이벤트가 시작되면 플랫폼에 로그인하여 이벤트 페이지를 통해 라이브 콘텐츠에 액세스하세요.",
       "access_physical_successful": "여기에서 티켓을 다운로드하거나 나중에 대시보드에서 다운로드할 수 있습니다.",
       "access_online_successful": "이벤트가 시작되면 플랫폼에 로그인하여 이벤트 페이지에서 라이브 스트림에 접근하세요.",
-      "callout_online": "이 이벤트에 대한 온라인 접근을 예약하려고 합니다.",
-      "callout_replay": "이 이벤트의 리플레이 비디오에 접근하려고 합니다.",
       "description_physical": "장소 세부 정보를 확인하세요.\n예약이 처리되면 이벤트에 제시할 수 있는 확인 티켓이 제공됩니다. 이 티켓을 사용하면 라이브 및 다시보기 콘텐츠에도 액세스할 수 있습니다(가능한 경우)."
     },
     "errors": {
@@ -976,125 +1027,226 @@
     "underConstructionImage": "건설 현장에서 일하는 여러 토끼의 일러스트"
   },
   "library": {
-    "pageTitle": ""
+    "pageTitle": "비트코인 라이브러리"
   },
   "menu": {
-    "betDescription": "",
-    "conferencesDescription": "",
-    "libraryDescription": "",
-    "nodeNetworkDescription": "",
-    "podcastsDescription": "",
-    "teachersDescription": "",
-    "bCertDescription": "",
-    "glossaryDescription": "",
-    "publicDescription": "",
-    "login": ""
+    "betDescription": "교육 프로젝트에 사용할 수 있는 콘텐츠 컬렉션",
+    "conferencesDescription": "제네시스 블록 이후의 비트코인 컨퍼런스 리플레이 컬렉션",
+    "libraryDescription": "지식을 향상시킬 수 있는 많은 책을 발견하세요",
+    "nodeNetworkDescription": "Plan B Network 글로벌 커뮤니티에 참여하세요",
+    "podcastsDescription": "팟캐스트를 통한 비트코인 생태계 탐색하세요",
+    "teachersDescription": "Plan ₿ Network 아카데미 강사 만나보기",
+    "bCertDescription": "₿-CERT 테스트를 통과하여 비트코인 레벨을 평가해 보세요",
+    "glossaryDescription": "비트코인 전문가들의 녹화된 강의를 다시 시청하세요",
+    "publicDescription": "공개 커뮤니케이션 기사 탐색해 보세요",
+    "login": "로그인",
+    "lecturesDescription": "비트코인 전문가들의 녹화된 강의를 다시 시청하세요",
+    "projectsDescription": "비트코인을 개선하고 채택을 늘리는 데 기여하는 회사와 프로젝트에 대해 알아보기",
+    "protocolDescription": "비트코인 네트워크를 강화하는 핵심 규칙 배우기.",
+    "securityDescription": "비트코인 자산을 보호하는 방법을 알아보세요.",
+    "socialStudiesDescription": "비트코인이 사회에 미치는 영향을 공부해 봅시다.",
+    "miningCourseDescription": "비트코인 채굴의 프로세스, 도구, 산업 이해.",
+    "moviesDescription": "비트코인의 진화와 영향에 대한 흥미로운 이야기와 심층적인 탐구를 배우기",
+    "planBLabsDescription": "라이트닝, 채굴, 프라이버시 학습을 계속하기 위해 스터디 그룹에 참여하세요",
+    "newsletterDescription": "교육 프로젝트에 사용할 수 있는 콘텐츠 컬렉션",
+    "bitcoinDescription": "기본부터 고급 응용까지 비트코인을 배우세요.",
+    "businessDescription": "사업 분야에서 비트코인이 어떻게 활용되는지 알아보세요.",
+    "channelsDescription": "비트코인에 대해 배우기 위해 독점적인 유튜브 채널에 접근하세요",
+    "chooseLanguage": "언어 선택하기"
   },
   "nodeNetwork": {
-    "description1": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
-    "descriptionExtend": ""
+    "description1": "우리는 교육이 온라인뿐만 아니라 오프라인 공간에서도 이루어져야 한다고 믿습니다. 이를 위해 Plan ₿ Network는 전 세계 허브 네트워크를 운영하며 사상가, 기업가, 교육자를 환영하고 비트코인과 자유 기술의 발전을 촉진합니다.",
+    "pageSubtitle": "세상을 오렌지 필로 물들이고 싶나요? Plan ₿ Network에 참가하세요.",
+    "pageTitle": "Plan ₿ Node Network 탐색하기",
+    "descriptionExtend": "첫 단계로, 물리적 공간을 가진 커뮤니티, 즉 우리 네트워크의 \"풀 노드\"를 초대합니다. 앞으로 네트워크가 더 강해지면 전 세계 더 많은 이니셔티브에 초대를 확장할 예정입니다. 우리의 가치를 공유한다면, 대표에게 연락해 네트워크에 가입하고 최고의 비트코인 교육을 함께 만들어 주세요."
   },
   "notFound": {
-    "here": "",
-    "pageSubtitle": "",
-    "pageTitle": ""
+    "here": "여기",
+    "pageSubtitle": "누군가 토끼굴에 너무 깊이 빠져 길을 잃은 것 같아요. 다시 올라오려면 클릭하세요",
+    "pageTitle": "이런."
   },
   "payment": {
-    "terms": "",
-    "total": ""
+    "terms": "환불 세부사항은 <0>일반 약관</0>을 확인하세요",
+    "total": "총액",
+    "payWithBitcoin": "비트코인으로 결제하기",
+    "haveReductionCode": "할인 코드 있나요?",
+    "payByCard": "카드로 결제하기"
   },
   "podcasts": {
-    "pageTitle": ""
+    "pageTitle": "비트코인 팟캐스트"
   },
   "professors": {
-    "pageSubtitle": "",
-    "pageTitle": "",
+    "pageSubtitle": "우리 교육자들은 모두 자원봉사자이자 열정적인 비트코인 지지자입니다. 감사의 마음을 담아 기부금을 보낼 수 있습니다.",
+    "pageTitle": "강사",
     "tips": {
-      "noTipsYet": "",
-      "thanks": "",
-      "thanksNoName": "",
-      "authorSupport": ""
+      "noTipsYet": "이 교수님은 현재 기부금을 받지 않습니다.",
+      "thanks": "{{name}}을 지원해 주셔서 감사합니다!",
+      "thanksNoName": "제 작업을 지원해 주셔서 감사합니다!",
+      "authorSupport": "팁으로 저자를 지원하기"
     },
     "navigationTitles": {
-      "all": "",
-      "lecturers": "",
-      "teachers": "",
-      "tutorialCreators": ""
+      "all": "모두",
+      "lecturers": "강의자",
+      "teachers": "강사",
+      "tutorialCreators": "튜토리얼 제작자"
     }
   },
   "resources": {
     "newsletters": {
-      "title": ""
+      "title": "뉴스레터",
+      "author": "저자: ",
+      "level": "수준:",
+      "noNewsletters": "현재 선택한 언어에 대한 뉴스레터가 없습니다.",
+      "subtitle": "<0>다른 뉴스레터</0> 추천"
     },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
-    "github": "",
+    "pageDescription": "비트코인을 이해하려는 것은 계속 커지는 미로를 탐험하는 것과 같습니다. 여러분의 여정을 돕기 위해 책, 팟캐스트, 비디오, 컨퍼런스 다시보기를 포함한 다양한 자료를 모았습니다. 이 포털은 모든 정보를 하나의 Github 저장소에 모아 비트코인 생태계를 더 잘 이해할 수 있도록 돕습니다.",
+    "pageSubtitle": "지식을 중앙화하여 더 잘 배포하기",
+    "pageTitle": "리소스 포털에 오신 것을 환영합니다",
+    "github": "모든 데이터는 단일 오픈소스 <0>Github</0> 저장소를 통해 관리됩니다. 자유롭게 기여하여 누락된 콘텐츠를 추가해 주세요.",
     "podcasts": {
-      "title": ""
+      "title": "팟캐스트",
+      "noPodcasts": "현재 선택한 언어에 대한 팟캐스트가 없습니다."
     },
-    "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": "",
-    "searchFilterName": ""
+    "pageSubtitleBooks": "<0>다른 책</0> 추천",
+    "pageSubtitlePodcast": "<0>다른 팟캐스트</0> 추천",
+    "searchFilterName": "이름으로 검색",
+    "books": {
+      "author": "저자: ",
+      "title": "라이브러리"
+    },
+    "bet": {
+      "title": "교육 툴킷"
+    },
+    "pageSubtitleLectures": "<0>다른 강의 다시보기</0> 추천",
+    "channels": {
+      "noYoutubeChannels": "현재 선택한 언어에 대한 유튜브 채널이 없습니다.",
+      "title": "유튜브 채널"
+    },
+    "conferences": {
+      "title": "컨퍼런스 다시보기"
+    },
+    "movies": {
+      "noMovies": "현재 선택한 언어에 대한 영화나 다큐멘터리가 없습니다.",
+      "title": "영화 & 다큐멘터리"
+    },
+    "newsletter": {
+      "check": "뉴스레터 보기"
+    },
+    "pageSubtitleChannels": "<0>다른 유튜브 채널</0> 추천",
+    "projects": {
+      "title": "프로젝트"
+    },
+    "articles": {
+      "title": "기사"
+    },
+    "glossary": {
+      "title": "용어집"
+    },
+    "lectures": {
+      "noLectures": "현재 선택한 언어에 대한 강의 다시보기가 없습니다.",
+      "title": "강의 다시보기"
+    },
+    "toggleFreeOnly": "무료만",
+    "toggleLabelAll": "모두",
+    "toggleLabelSelectedLanguage": "선택한 언어"
   },
   "settings": {
-    "changePassword": "",
-    "changeDisplayName": "",
-    "changeProfilePicture": "",
-    "changeEmail": ""
+    "changePassword": "비밀번호 변경",
+    "changeDisplayName": "디스플레이 이름 변경",
+    "changeProfilePicture": "프로필 사진 변경",
+    "changeEmail": "이메일 변경"
   },
   "tutorials": {
     "details": {
-      "source": "",
-      "author": "",
-      "didHelp": "",
-      "writtenBy": ""
+      "source": "원본 출처:",
+      "author": "저자:",
+      "didHelp": "도움이 되었나요?",
+      "writtenBy": "이 튜토리얼의 저자:",
+      "ratingSuccess": "평가해 주셔서 감사합니다!",
+      "tutorialName": "튜토리얼 이름"
     },
     "exchange": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "거래소는 유로, 달러와 같은 전통적인 통화를 비트코인과 교환할 수 있는 주요 관문 중 하나입니다. 거래소는 규제를 따르며 KYC(Know Your Customer) 절차를 요구할 수도 있고, P2P 방식으로 익명성을 유지할 수도 있습니다. 각 거래소는 서로 다른 기능, 수수료 구조, 유동성, 고객 지원을 제공합니다. 각 비트코인 사용자는 자신의 필요와 신념에 따라 적합한 거래소를 선택해야 합니다.",
+      "shortDescription": "비트 코인 구매 판매 솔루션, KYC 및 비 KYC",
+      "title": "거래소"
     },
     "explorer": {
-      "description": "",
-      "didYouKnow": "",
-      "exploreAllTutorials": ""
+      "description": "모든 튜토리얼은 열정적이고 헌신적인 비트코인 사용자들이 작성했으며, 그들은 비트코인 교육을 전 세계에 퍼뜨리고자 합니다. 좋아요, 리뷰, 그리고 사토시로 팁을 잊지 마세요!",
+      "didYouKnow": "알고 계셨나요?",
+      "exploreAllTutorials": "모든 튜토리얼 탐색하기"
     },
     "mining": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "비트코인 마이닝 업계는 래빗 홀 중에서도 복잡한 주제 중 하나입니다. 여기서는 하드웨어와 소프트웨어를 사용하여 여행에 우리도 동행합니다. 그것은 S9를 가정용 히터로 개조하는 것부터 나드 마이너 (nerd miner)로 복권에 도전하는 것까지 포함합니다.",
+      "shortDescription": "비트코인 마이닝 솔루션",
+      "title": "비트코인 마이닝"
     },
     "node": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "노드는 개인 서버와 같습니다. 비트코인의 경우 네트워크를 실행하고, 거래를 수집하고, 규칙을 검증하고, 진정한 주권을 행사할 수 있게 해주는 소프트웨어입니다. 저희 생태계에는 Bitcoin Core부터 Lightning Network 구현, RGB 또는 기타 보다 고급 개인 정보 보호 솔루션까지 다양한 노드가 있습니다.",
+      "shortDescription": "비트코인 노드를 운영하고 네트워크에 참여하는 솔루션",
+      "title": "노드"
     },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
+    "pageDescription": "비트코인은 빠르게 확장되는 광범위한 산업입니다. 여러분이 비트코인을 탐색하는 데 도움이 될 수 있도록, 우리는 비트코인과 관련된 다양한 분야에서 활용할 수 있는 솔루션을 설명하는 여러 튜토리얼을 정리하여 제공하고 있습니다.",
+    "pageSubtitle": "광대한 생태계를 탐험하며 비트코인의 신비를 밝혀보세요",
+    "pageTitle": "튜토리얼을 탐색해보세요",
     "privacy": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "개인 정보는 기본 권리입니다. 우리는 프라이버시가 디폴트인 세상을 원하지만, 불행히도 그렇게 멀지 않은 것이 현실입니다. 우리는 모범 사례를 설명하고 튜토리얼을 통해 지원하고 데이터에 대한 보다 자기주권적인 길을 걸을 수 있도록 지원합니다.",
+      "shortDescription": "백업 및 프라이버시 유지를 위한 도구",
+      "title": "프라이버시"
     },
     "wallet": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "비트코인 지갑은 키체인과 같습니다. 비트코인을 사용하거나 받을 수 있습니다. 월렛에는 다양한 유형이 있으며 사용 사례, 기능, 비용 및 사용자 환경이 각각 다릅니다. 각 비트 코이너는 필요, 요구 수준 및 경험에 따라 다른 장치를 사용합니다.",
+      "shortDescription": "보안 솔루션 및 비트코인 사용",
+      "title": "지갑"
     },
-    "approvedByCreator": "",
-    "backTutorials": ""
+    "approvedByCreator": "제작자가 승인함",
+    "backTutorials": "모든 튜토리얼로 돌아가기",
+    "business": {
+      "description": "비트코인을 비즈니스에 통합하고 싶나요? 이 카테고리는 전문가를 위해 설계된 모든 튜토리얼을 모았습니다. 판매 시점 시스템을 설정하여 비트코인 결제를 쉽게 받거나 회사 자금에 비트코인을 추가하고 관리하는 방법 등, 필수적인 기술적이고 실용적인 정보를 여기서 찾을 수 있습니다.",
+      "shortDescription": "비트코인 결제 수락 및 자금 관리",
+      "title": "비즈니스"
+    },
+    "contribution": {
+      "description": "Plan ₿ Network의 오픈소스 플랫폼에 기여하고 싶나요? 이 카테고리에서는 새로운 튜토리얼을 작성하고 게시하거나, 콘텐츠를 검토 및 교정하거나, 커뮤니티를 위한 새로운 유용한 리소스를 추가하는 방법을 배울 수 있습니다. 이 튜토리얼을 통해 비트코인 교육에 참여하고 우리의 공유 지식 기반을 풍부하게 할 기회를 얻을 수 있습니다.",
+      "shortDescription": "Plan ₿ Network 오픈소스 플랫폼에 기여하기",
+      "title": "기여자가 되어 보세요!"
+    },
+    "subCategories": {
+      "on-chain": "온체인",
+      "desktop": "데스크탑",
+      "point-of-sale": "POS",
+      "pool": "마이닝 풀",
+      "resource": "자료",
+      "analysis": "분석",
+      "authentication": "인증",
+      "backup": "백업",
+      "bitcoin": "비트코인",
+      "centralized": "중앙화",
+      "communication": "커뮤니케이션",
+      "content": "콘텐츠",
+      "data": "데이터",
+      "hardware": "하드웨어",
+      "lightning-network": "라이트닝 네트워크",
+      "mobile": "핫 월렛",
+      "operating system": "OS",
+      "others": "기타",
+      "peer-to-peer": "P2P"
+    },
+    "computer-security": {
+      "description": "컴퓨터 보안은 모든 비트코인 사용자에게 필수적입니다. 이 카테고리에서는 디지털 환경을 보호하기 위한 필수 도구와 일반적인 관행에 대한 튜토리얼을 찾을 수 있습니다. 운영 체제, 안전한 브라우저, 비밀번호 관리자, 인증 시스템, VPN, 암호화된 통신 솔루션 등 여기 제시된 모든 리소스는 보안과 프라이버시를 강화하는 것을 목표로 합니다.",
+      "shortDescription": "디지털 보안과 프라이버시를 보호하는 필수 도구",
+      "title": "컴퓨터 보안"
+    },
+    "hasBeenProofreadBy": "튜토리얼의 교정자:",
+    "hasNotBeenProofread": "이 튜토리얼은 아직 교정되지 않았습니다",
+    "writtenBy": "이 튜토리얼의 저자:"
   },
   "underConstruction": {
-    "github": "",
-    "p1": "",
-    "p2": "",
-    "pageTitle": "",
-    "itemNotFound": "",
-    "itemNotFoundOrTranslated": ""
+    "github": "GitHub",
+    "p1": "토끼 한 마리가 굴에 빠졌습니다. 예상치 못한 사건으로 인해 현재 이 페이지는 공사 중입니다. 불편을 끼쳐드려 죄송합니다. 저희 팀은 이 페이지를 완성하기 위해 열심히 노력하고 있습니다. 도움을 주고 싶으시다면 꼭 이쪽을 확인해 주세요:",
+    "p2": "그리고 꼭 우리 커뮤니티에 가입하세요!",
+    "pageTitle": "이런.",
+    "itemNotFound": "{{item}}을 찾을 수 없음",
+    "itemNotFoundOrTranslated": "{{item}}을 찾을 수 없거나 언어로 번역되지 않았습니다."
   },
   "bCert": {
     "challengeYourself": "자신에게 도전하고 레벨을 확인해보세요!",
@@ -1132,41 +1284,43 @@
     "term": "용어"
   },
   "proofreading": {
-    "thanks": "",
-    "completed": "",
-    "description": "",
-    "inProgress": "",
-    "reviewEarn": "",
-    "status": ""
+    "thanks": "멋진 검토자들에게 큰 감사를 드립니다!",
+    "completed": "교정 완료",
+    "description": "원본 콘텐츠는 AI로 번역되었지만, 정확성을 보장하기 위해 사람의 검토가 필요합니다.",
+    "inProgress": "교정 진행 중",
+    "reviewEarn": "검토하고 사토시를 벌어보세요",
+    "status": "교정 상태",
+    "descriptionOriginalLanguage": "이 페이지가 원래 언어로 되어 있더라도, 정확성을 보장하기 위해 사람의 검토가 여전히 필요합니다.",
+    "rewardsText": "*보상은 $ 환율에 따라 달라질 수 있습니다"
   },
   "publicCommunication": {
-    "description": "",
-    "title": "",
-    "blogPost": "",
-    "legal": "",
+    "description": "Plan ₿ Network는 오픈소스 표준을 준수하고 여정 동안 투명성을 유지하는 데 자부심을 느낍니다.",
+    "title": "공공 커뮤니케이션",
+    "blogPost": "블로그 & 뉴스",
+    "legal": "법률 정보",
     "blogCategories": {
-      "all": "",
-      "content": "",
-      "feature": "",
-      "network": ""
+      "all": "모두",
+      "content": "콘텐츠",
+      "feature": "특징",
+      "network": "네트워크"
     },
     "legalSections": {
-      "contact": "",
-      "legalNotice": "",
-      "privacyPolicy": "",
-      "termsOfSale": ""
+      "contact": "연락처 정보",
+      "legalNotice": "법적 고지",
+      "privacyPolicy": "개인정보 처리방침",
+      "termsOfSale": "판매 약관"
     },
     "goBackButtons": {
-      "simpleGoBack": ""
+      "simpleGoBack": "모든 기사로 돌아가기"
     },
     "blogPageStrings": {
-      "featuredArticleTitleText": "",
-      "pastArticleSubtitleText": "",
-      "noArticlesText": "",
-      "errorMessageNotFound": "",
-      "blogSidebarTitle": "",
-      "blogListButtonText": "",
-      "filterText": ""
+      "featuredArticleTitleText": "최신 기사 공개",
+      "pastArticleSubtitleText": "이전 기사",
+      "noArticlesText": "현재 블로그 포스트가 없습니다.",
+      "errorMessageNotFound": "블로그를 찾을 수 없습니다.",
+      "blogSidebarTitle": "이전 {{category}} 포스트",
+      "blogListButtonText": "기사 읽기",
+      "filterText": "주제별 필터:"
     }
   },
   "filters": {
@@ -1177,6 +1331,90 @@
   },
   "lectures": {
     "buyVideoToUnlock": "동영상을 구입하여 잠금 해제",
-    "checkFullCourse": "전체 코스 보기"
+    "checkFullCourse": "전체 코스 보기",
+    "lecturePartCourse": "이 강의 재생은 <0>{{courseTitle}}<0> 과정의 일부입니다.\n전체 커리큘럼을 탐색하여 전체 개념을 익히고 잠재력을 최대한 발휘하세요!",
+    "pageTitle": "강의 리플레이",
+    "partCourse": "이 강의는 다음 코스의 일부입니다:",
+    "watchLecture": "강의 리플레이 보기"
+  },
+  "labs": {
+    "coordinatedBy": "이 랩은 다음에 의해 운영됩니다:",
+    "description2": "당신의 전공에 맞는 랩에 참여하여 학습 경험을 향상시키세요!",
+    "presentation": {
+      "link": "Plan ₿ Labs를 만나보세요",
+      "subtitle": "랩에 참여하여 배우고, 토론하고, 성장하세요!",
+      "title": "비트코인 스킬을 레벨업해 봅시다!"
+    },
+    "title": "지속적인 학습을 위한 실습 및 대화형 수업",
+    "description1": "Plan ₿ Labs는 학생들에게 정기적인 실습 및 대화형 수업을 제공하기 위해 설계된 그룹입니다. 이 스터디 그룹을 통해 학생과 강사들은 토론에 참여하고, 최신 연구를 논의하며, 실제 문제를 해결하고, 이론적 개념을 적용합니다.",
+    "planBLabs": "Plan ₿ Labs"
+  },
+  "projects": {
+    "languages": "언어",
+    "networkStrength": "네트워크의 힘은 구성원에게 있습니다",
+    "related": "관련 프로젝트",
+    "relatedEvents": "관련 예정 이벤트",
+    "noRelatedEvents": "현재 이 교육자와 관련된 예정된 이벤트가 없습니다.",
+    "otherCommunities": "Plan ₿ Communities 탐색하기",
+    "pageTitle": "비트코인 프로젝트"
+  },
+  "podcast": {
+    "check": "팟캐스트 확인하기"
+  },
+  "movies": {
+    "goToMovie": "영화 보러 가기",
+    "pageTitle": "영화 & 다큐멘터리",
+    "watchTrailer": "예고편 보기"
+  },
+  "search": {
+    "book": "책",
+    "conference": "컨퍼런스",
+    "newsletter": "뉴스레터",
+    "podcast": "팟캐스트",
+    "podcasts": "팟캐스트",
+    "professor": "교수",
+    "professors": "교수",
+    "project": "프로젝트",
+    "projects": "프로젝트",
+    "resultEmpty": "앗! 검색 조건에 맞는 결과가 없습니다. 철자를 확인하고 다른 키워드를 시도하거나 다른 유형을 선택하세요.",
+    "resultError": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "youtube_channel": "유튜브 채널",
+    "youtube_channels": "유튜브 채널",
+    "filterByType": "유형별 필터",
+    "glossary_word": "용어",
+    "glossary_words": "용어",
+    "languageSelected": "선택한 언어:{{language}}",
+    "lecture_replay": "강의 다시보기",
+    "lecture_replays": "강의 다시보기",
+    "conference_replay": "컨퍼런스 다시보기",
+    "conference_replays": "컨퍼런스 다시보기",
+    "event": "이벤트",
+    "events": "이벤트",
+    "explorer": {
+      "subtitle": "무엇을 찾고 있나요?",
+      "title": "검색 포털"
+    },
+    "loadMoreResults": "결과 더 보기",
+    "newsletters": "뉴스레터",
+    "all": "모두",
+    "books": "책",
+    "categories": "카테고리",
+    "course": "코스",
+    "course_chapter": "코스 챕터",
+    "course_part": "코스 파트",
+    "courses": "코스",
+    "resultInfo": "{{time}}㎳ 사이에 {{count}}개의 검색결과를 발견했습니다.",
+    "results": "결과",
+    "resultsRemaining": "{{count}} 개의 결과가 남아 있습니다",
+    "search": "검색하기",
+    "searchResult": "검색 결과",
+    "startSearch": "검색을 시작하고 결과 보기",
+    "tutorial": "튜토리얼",
+    "tutorials": "튜토리얼"
+  },
+  "youtubeChannels": {
+    "view": "유튜브 채널 보기",
+    "watchTrailer": "예고편 보기",
+    "pageTitle": "유튜브 채널"
   }
 }

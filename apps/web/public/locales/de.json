@@ -153,7 +153,6 @@
       "count": "Teil {{count}}"
     },
     "payment": {
-      "access_invoice": "Sie können Ihre Rechnung über Ihr Dashboard abrufen",
       "accessibility": "Zugriff",
       "accessibility_forever": "Für immer",
       "amount": "Menge",
@@ -731,25 +730,20 @@
     },
     "payment": {
       "time": "Zeit",
-      "access_invoice": "Sie können Ihre Rechnung über Ihr Dashboard abrufen.",
       "access_type": "Art des Zugangs",
       "address": "Adresse",
       "additional_free_description": "Diese Veranstaltung ist kostenlos, daher fallen keine Gebühren für die Reservierung dieses Platzes an. Bitte stellen Sie jedoch sicher, dass Sie teilnehmen, da die Anzahl der Plätze begrenzt ist.",
       "back_events": "Zurück zu den Veranstaltungen",
       "book_seat": "Platz buchen",
-      "callout_physical": "Sie sind im Begriff, den physischen Zugang zu dieser Veranstaltung zu buchen.",
       "date": "Datum",
       "description_free_physical": "Bitte überprüfen Sie die bereitgestellten Angaben zum Veranstaltungsort.\nSobald die Buchung bestätigt ist, werden wir ein Bestätigungsticket und einen QR-Code ausstellen, den Sie bei der Veranstaltung vorlegen müssen.",
       "download_ticket": "Laden Sie Ihr Ticket herunter",
-      "enjoy": "Wir hoffen, es wird Ihnen gefallen :)",
       "language": "Sprache",
       "limitation": "Begrenzung",
       "max_capacity": "Maximale Kapazität von",
       "payment_successful": "Buchung erfolgreich!",
       "access_online_successful": "Wenn die Veranstaltung beginnt, loggen Sie sich auf der Plattform ein, um Zugang zum Live-Stream auf der Veranstaltungsseite zu erhalten.",
       "description_physical": "Bitte prüfen Sie die Angaben zum Veranstaltungsort.\nSobald Ihre Buchung bestätigt ist, stellen wir Ihnen ein Ticket aus, mit dem Sie an der Veranstaltung teilnehmen können. Mit diesem Ticket erhalten Sie auch Zugang zum Live-Stream und zur Videoaufzeichnung, sofern verfügbar.",
-      "callout_online": "Sie sind dabei, den Online-Zugang zu dieser Veranstaltung zu buchen.",
-      "callout_replay": "Sie sind dabei, den Zugang zum Replay-Video dieser Veranstaltung zu buchen.",
       "description_online": "Bitte überprüfen Sie das Datum und die Uhrzeit der Veranstaltung.\nWenn es soweit ist, melden Sie sich auf der Plattform an, um über die Veranstaltungsseite auf den Live-Stream zuzugreifen.",
       "access_physical_successful": "Sie können Ihr Ticket hier herunterladen oder es später in Ihrem Dashboard herunterladen."
     },

@@ -338,7 +338,6 @@
       "back_course": "Tagasi kursuse juurde",
       "numberOfChapters": "Peatükkide arv",
       "date": "Kuupäev",
-      "access_invoice": "Oma arvele pääsete juurde oma tegumiriba kaudu",
       "book_description": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile kinnituspileti ja QR-koodi, mida üritusel esitada.",
       "qr_unified": "Antud QR-kood on ühtne, seega see aktsepteerib nii lightning kui ka on-chain makseid.",
       "inPersonCallout": "",
@@ -626,11 +625,8 @@
       "payment_successful": "Broneering õnnestus !",
       "address": "Aadress",
       "access_type": "Juurdepääsu tüüp",
-      "access_invoice": "Oma arvele pääsete juurde oma tegumiriba kaudu.",
       "additional_free_description": "Antud üritus on tasuta, seega teilt ei võeta tasu antud koha broneerimise eest. Siiski, palun veenduge, et osalete üritusel, kuna kohtade arv on piiratud.",
-      "callout_physical": "Olete broneerimas füüsilist juurdepääsu antud üritusele.",
-      "description_free_physical": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile kinnituspileti ja QR-koodi, mida üritusel esitada.",
-      "enjoy": "Loodame, et naudite seda! :)"
+      "description_free_physical": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile kinnituspileti ja QR-koodi, mida üritusel esitada."
     },
     "missed": {
       "missedH1": "Möödunud sündmused taasesitamiseks",

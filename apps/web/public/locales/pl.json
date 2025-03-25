@@ -156,7 +156,6 @@
       "count": "Część {{count}}"
     },
     "payment": {
-      "access_invoice": "Możesz uzyskać dostęp do swojej faktury w swoim pulpicie",
       "accessibility": "Dostępność",
       "accessibility_forever": "Na zawsze",
       "amount": "Kwota",
@@ -742,25 +741,20 @@
     },
     "payment": {
       "limitation": "Ograniczenie",
-      "access_invoice": "Możesz uzyskać dostęp do swojej faktury w swoim pulpicie.",
       "access_type": "Rodzaj dostępu",
       "address": "Adres",
       "additional_free_description": "To wydarzenie jest darmowe, więc nie zostaniesz obciążony kosztami za rezerwację tego miejsca. Niemniej jednak, upewnij się, że możesz weziąć w nim udział, ponieważ liczba miejsc jest ograniczona.",
       "back_events": "Powrót do wydarzeń",
       "book_seat": "Zarezerwuj miejsce",
-      "callout_physical": "Za moment zarezerwujesz wstęp na to wydarzenie.",
       "date": "Termin",
       "description_free_physical": "Proszę przejrzeć podane szczegóły dotyczące miejsca wydarzenia. \nPo przetworzeniu rezerwacji wyślemy Ci bilet potwierdzający oraz kod QR, który należy pokazać na miejscu.",
       "download_ticket": "Pobierz swój bilet",
-      "enjoy": "Baw się dobrze!",
       "language": "Język mówiony",
       "max_capacity": "Maksymalna ilość",
       "payment_successful": "Rezerwacja dokonana!",
       "time": "Godzina",
       "access_online_successful": "Gdy wydarzenie się rozpocznie, zaloguj się na platformę, żeby uzyskać dostęp do transmisji na żywo przez stronę wydarzenia.",
       "access_physical_successful": "Możesz pobrać swój bilet tutaj lub pobrać go później z poziomu swojego panelu.",
-      "callout_online": "Za moment zarezerwujesz dostęp online do tego wydarzenia.",
-      "callout_replay": "Za chwilę zarezerwujesz dostęp do nagrania z tego wydarzenia.",
       "description_physical": "Proszę przejrzeć podane szczegóły dotyczące miejsca wydarzenia. \nPo potwierdzeniu rezerwacji wydany zostanie bilet, który należy przedstawić na wydarzeniu. Bilet ten umożliwia również dostęp do transmisji na żywo i powtórki wideo, jeśli będą dostępne.",
       "description_online": "Proszę sprawdzić podaną datę i godzinę wydarzenia. \nGdy nadejdzie czas, proszę zalogować się na platformę, aby uzyskać dostęp do transmisji na żywo przez stronę wydarzenia."
     },

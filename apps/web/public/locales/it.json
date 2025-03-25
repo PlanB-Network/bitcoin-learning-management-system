@@ -156,7 +156,6 @@
       "count": "Parte n°{{count}}"
     },
     "payment": {
-      "access_invoice": "Puoi accedere all'invoice dalla dashboard",
       "accessibility": "Accessibilità",
       "accessibility_forever": "Per sempre",
       "amount": "Cifra",
@@ -750,17 +749,14 @@
     "pageSubtitle": "Adozione dal basso migliorata da una rete forte",
     "pageTitle": "Stai cercando un evento su Bitcoin a cui partecipare?",
     "payment": {
-      "access_invoice": "Puoi accedere alle tue fatture dalla tua dashboard.",
       "access_type": "Tipo di accesso",
       "address": "Indirizzo",
       "additional_free_description": "Questo evento è gratuito quindi non dovrai pagare nulla per prenotare un posto. Ad ogni modo, assicurati di partecipare perché i posti sono limitati.",
       "back_events": "Torna agli eventi",
       "book_seat": "Prenota posto",
-      "callout_physical": "Stai per prenotare l'accesso fisico a questo evento.",
       "date": "Data",
       "description_free_physical": "Salva i dettagli sull'indirizzo.\nUna volta che la prenotazione sarà elaborata, ti forniremo un biglietto di conferma e un codice QR da presentare all'evento.",
       "download_ticket": "Scarica il tuo biglietto",
-      "enjoy": "Speriamo che ti piaccia!",
       "language": "Lingua",
       "limitation": "Limitazioni",
       "max_capacity": "Capacità massima di",
@@ -768,8 +764,6 @@
       "time": "Orario",
       "access_online_successful": "Quando l'evento inizia, accedi alla piattaforma per ottenere l'accesso alla live dalla pagina dell'evento.",
       "access_physical_successful": "Puoi scaricare qui il tuo biglietto, o scaricarlo dopo dalla tua dashboard.",
-      "callout_online": "Stai per prenotare l'accesso online a questo evento.",
-      "callout_replay": "Stai per prenotare l'accesso al video replay di questo evento.",
       "description_online": "Salva la data e l'ora di questo evento.\nQuando sarà il momento, accedi alla piattaforma e alla live dalla pagina dell'evento.",
       "description_physical": "Salva i dettagli dell'indirizzo.\nUna volta che la prenotazione sarà confermata, ti forniremo un biglietto da presentare all'evento, che ti darà anche accesso alla live streaming e al replay (se disponibili)."
     },
@@ -1046,7 +1040,7 @@
       "backup": "Backup",
       "bitcoin": "Bitcoin",
       "authentication": "Autenticazione",
-      "communication": "Comunicazione sicura",
+      "communication": "Comunicazione",
       "content": "Contenuti",
       "data": "Dati",
       "desktop": "Desktop",

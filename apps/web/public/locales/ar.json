@@ -135,7 +135,6 @@
       "count": "Teilenummer {{count}}/{{total}}"
     },
     "payment": {
-      "access_invoice": "You can access your invoice via your dashboard",
       "accessibility": "Accessibility",
       "accessibility_forever": "Forever",
       "amount": "Amount",
@@ -431,17 +430,14 @@
     "pageSubtitle": "",
     "pageTitle": "",
     "payment": {
-      "access_invoice": "",
       "access_type": "",
       "address": "",
       "additional_free_description": "",
       "back_events": "",
       "book_seat": "",
-      "callout_physical": "",
       "date": "",
       "description_free_physical": "",
       "download_ticket": "",
-      "enjoy": "",
       "language": "",
       "limitation": "",
       "max_capacity": "",

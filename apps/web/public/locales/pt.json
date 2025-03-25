@@ -140,7 +140,6 @@
       "count": "Parte n°{{count}}/{{total}}"
     },
     "payment": {
-      "access_invoice": "You can access your invoice via your dashboard",
       "accessibility": "Accessibility",
       "accessibility_forever": "Forever",
       "amount": "Amount",
@@ -438,17 +437,14 @@
     "pageSubtitle": "Adoção de baixo para cima robustecida por uma rede forte",
     "pageTitle": "Procurando um evento Bitcoin para ir?",
     "payment": {
-      "access_invoice": "Voce pode acessar sua fatura através do seu dashboard",
       "access_type": "Tipo de acesso",
       "address": "Endereço",
       "additional_free_description": "Este evento é gratuíto então você não será cobrado para reservar seu lugar. Porém, certifique-se por favor que você poderá participar pois o número de lugares é limitado.",
       "back_events": "Retorne aos eventos",
       "book_seat": "Reserve um lugar",
-      "callout_physical": "Você está prestes a reservar um acesso físico para este evento.",
       "date": "Data",
       "description_free_physical": "Favor rever os detalhes fornecidos do local,\nUma vez efetuada a reserva, forneceremos um ingresso de confirmação e um QR code para acesso ao evento.",
       "download_ticket": "Baixe seu ingresso",
-      "enjoy": "Esperamos que você curta :)",
       "language": "Idioma falado",
       "limitation": "Restrição",
       "max_capacity": "Capacidade máxima",
