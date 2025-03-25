@@ -464,10 +464,10 @@ function CourseDetails() {
           <Divider width="w-full" className="md:hidden" />
           <div className="flex w-full flex-col gap-4 md:gap-6">
             <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5">
-              {t('courses.details.objectives')}
+              {t('courses.details.learning')}
             </h4>
             <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
-              {t('courses.details.objectivesTitle')}
+              {t('courses.details.objectives')}
             </h3>
             <ul className="flex flex-col gap-4 md:gap-6">
               {course.objectives?.map((goal) => (
