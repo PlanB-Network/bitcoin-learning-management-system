@@ -166,6 +166,7 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
           )
           ON CONFLICT (tutorial_id, language) DO UPDATE SET
             title = EXCLUDED.title,
+            description = EXCLUDED.description,
             raw_content = EXCLUDED.raw_content
         `;
           } catch (error) {
