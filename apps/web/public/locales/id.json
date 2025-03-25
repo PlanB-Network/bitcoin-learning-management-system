@@ -193,7 +193,6 @@
     },
     "payment": {
       "back_course": "Kembali ke kursus",
-      "access_invoice": "Anda dapat mengakses tagihan Anda melalui dashboard Anda",
       "accessibility": "Aksesibilitas",
       "accessibility_forever": "Selamanya",
       "amount": "Jumlah",
@@ -890,8 +889,6 @@
     "pageSubtitle": "Adopsi dari bawah ke atas yang didorong oleh jaringan yang kuat",
     "pageTitle": "Mencari acara Bitcoin yang ingin Anda kunjungi?",
     "payment": {
-      "access_invoice": "Anda dapat mengakses faktur Anda melalui tampilan utama Anda.",
-      "callout_physical": "Anda akan memesan akses luring ke acara ini.",
       "description_free_physical": "Silakan periksa detail tempat acara yang tertera.\nSetelah pesanan diproses, kami akan memberikan Anda tiket konfirmasi dan kode QR untuk menghadiri acara.",
       "access_type": "Tipe akses",
       "address": "Alamat",
@@ -900,7 +897,6 @@
       "book_seat": "Pesan tempat",
       "date": "Tanggal",
       "download_ticket": "Unduh tiket Anda",
-      "enjoy": "Semoga Anda akan menyukainya :)",
       "language": "Bahasa yang digunakan",
       "limitation": "Keterbatasan",
       "max_capacity": "Kapasitas maksimum adalah",
@@ -908,8 +904,6 @@
       "time": "Waktu",
       "access_online_successful": "Saat acara dimulai, masuk ke platform untuk mendapatkan akses ke siaran langsung di halaman acara.",
       "access_physical_successful": "Anda dapat mengunduh tiket Anda di sini, atau mengunduhnya nanti di dasbor Anda.",
-      "callout_online": "Anda akan memesan akses online ke acara ini.",
-      "callout_replay": "Anda akan memesan akses ke video tayangan ulang acara ini.",
       "description_online": "Mohon tinjau kembali tanggal dan waktu acara yang disediakan.\nSaat waktunya tiba, masuklah ke platform untuk mengakses siaran langsung melalui halaman acara.",
       "description_physical": "Silakan tinjau detail tempat yang disediakan.\nSetelah pemesanan anda dikonfirmasi, kami akan mengeluarkan tiket untuk hadir di acara tersebut. Tiket ini juga akan memberi anda akses ke siaran langsung dan pemutaran ulang video, jika tersedia."
     },

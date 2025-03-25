@@ -156,7 +156,6 @@
       "count": "{{count}}節"
     },
     "payment": {
-      "access_invoice": "ダッシュボードからインボイスにアクセスできます",
       "accessibility": "アクセシビリティ",
       "accessibility_forever": "永遠に",
       "amount": "金額",
@@ -750,28 +749,23 @@
     "pageSubtitle": "強力なネットワークによるビットコインアダプション",
     "pageTitle": "ビットコインイベントをお探しですか？",
     "payment": {
-      "access_invoice": "ダッシュボードからインボイスにアクセスできます。",
       "access_type": "アクセスの種類",
       "address": "住所",
       "additional_free_description": "このイベントは無料です。 ただし、席数には限りがありますので、予約後は必ずご参加ください。",
       "back_events": "イベントに戻る",
       "book_seat": "座席を予約する",
-      "callout_physical": "このイベントへの会場アクセスチケットを予約しようとしています。",
       "date": "日付",
       "description_free_physical": "会場の詳細をご確認ください。\nご予約確定後、確認チケットとイベント会場で提示するQRコードを発行いたします。",
       "download_ticket": "チケットをダウンロードする",
-      "enjoy": "ぜひお楽しみください : )",
       "language": "言語",
       "limitation": "制限",
       "max_capacity": "最大座席数",
       "payment_successful": "無事に予約できました！",
       "time": "時間",
       "description_physical": "会場の詳細をご確認ください。\nご予約が確認されましたら、当日ご提示いただくチケットを発行いたします。 このチケットにより、ライブストリーミングおよびリプレイ動画（視聴可能な場合）へのアクセスが可能になります。",
-      "callout_replay": "このイベント動画をリプレイするためのアクセス権を予約しようとしています。",
       "access_online_successful": "イベントが始まったら、プラットフォームにログインし、イベントページのライブストリーミングにアクセスしてください。",
       "access_physical_successful": "チケットはこちらからダウンロードするか、あとでダッシュボードからダウンロードしてください。",
-      "description_online": "開催日時をご確認ください。\n時間になりましたら、プラットフォームにログインし、イベントページからライブストリーミングにアクセスしてください。",
-      "callout_online": "このイベントへのオンラインアクセスチケットを予約しようとしています。"
+      "description_online": "開催日時をご確認ください。\n時間になりましたら、プラットフォームにログインし、イベントページからライブストリーミングにアクセスしてください。"
     },
     "errors": {
       "premiumContentNeedsLogin": "このイベントにアクセスするにはログインが必要です。",

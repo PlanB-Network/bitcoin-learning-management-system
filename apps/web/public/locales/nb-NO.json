@@ -195,7 +195,6 @@
       "count": "Del {{count}}"
     },
     "payment": {
-      "access_invoice": "Du kan få tilgang til fakturaen din via dashbordet ditt",
       "accessibility": "Tilgjengelighet",
       "accessibility_forever": "For alltid",
       "amount": "Beløp",
@@ -939,15 +938,12 @@
     "pageSubtitle": "Adopsjon nedenfra og opp forbedret av et sterkt nettverk",
     "pageTitle": "Leter du etter et Bitcoin-arrangement delta på?",
     "payment": {
-      "access_invoice": "Du kan få tilgang til fakturaen din via dashbordet ditt.",
       "address": "Adresse",
       "back_events": "Tilbake til arrangementer",
       "book_seat": "Bestill plass",
-      "callout_physical": "Du er i ferd med å bestille fysisk tilgang til dette arrangementet.",
       "date": "Dato",
       "description_free_physical": "Vennligst gjennomgå de oppgitte detaljene for lokalet.\nNår bookingen er bekreftet, vil vi utstede en bekreftelsesbillett og en QR-kode som skal vises på arrangementet.",
       "download_ticket": "Last ned billetten din",
-      "enjoy": "Vi håper du vil nyte det :)",
       "language": "Språk",
       "limitation": "Begrensning",
       "max_capacity": "Maksimum kapasitet",
@@ -955,8 +951,6 @@
       "time": "Tid",
       "access_type": "Type tilgang",
       "additional_free_description": "Dette arrangementet er gratis, så det er ingen kostnad for å bestille denne plassen. Men vær snill å delta, siden antallet seter er begrenset.",
-      "callout_online": "Du er i ferd med å bestille online tilgang til dette arrangementet.",
-      "callout_replay": "Du er i ferd med å bestille tilgang til opptaket av dette arrangementet.",
       "description_online": "Vennligst sjekk dato og tid for arrangementet som er oppgitt.\nNår tiden kommer, logg inn på plattformen for å få tilgang til direktesendingen via arrangementsiden.",
       "description_physical": "Vennligst gjennomgå de oppgitte detaljene for stedet.\nNår bookingen din er bekreftet, vil vi utstede en billett som du kan presentere på arrangementet. Denne billetten vil også gi deg tilgang til direktesendingen og opptaket av videoen, hvis tilgjengelig.",
       "access_online_successful": "Når arrangementet starter, logg inn på plattformen for å få tilgang til direktesendingen på arrangementsiden.",

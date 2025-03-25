@@ -136,7 +136,6 @@
       "count": "Jakso {{count}}"
     },
     "payment": {
-      "access_invoice": "Löydät laskusi hallintapaneelistasi (Dashboard)",
       "accessibility": "Helppokäyttöisyys",
       "accessibility_forever": "Ikuisesti",
       "amount": "Määrä",
@@ -432,17 +431,14 @@
     "pageSubtitle": "Alhaalta ylöspäin tapahtuva omaksuminen tehostettuna vahvalla verkostolla",
     "pageTitle": "Etsitkö Bitcoin-tapahtumaa mihin osallistua?",
     "payment": {
-      "access_invoice": "Maksutapahtumat löydät hallintapaneelisi (dashboard) kautta.",
       "access_type": "Lipun tyyppi",
       "address": "Osoite",
       "additional_free_description": "Tapahtuma on ilmainen, eikä paikanvarauksesta koidu kustannuksia. Kuitenkin, varmistuthan osallistumisestasi tapahtumaan! Luennoilla on rajattu määrä istumapaikkoja.",
       "back_events": "Takaisin tapahtumat-sivulle",
       "book_seat": "Varaa istumapaikka",
-      "callout_physical": "Olet varaamassa fyysistä istumapaikkaa tapahtuman luennolle.",
       "date": "Päivämäärä",
       "description_free_physical": "Tarkista varauksen tiedot. \nKun varaus on käsitelty, toimitamme sinulle vahvistusviestissä pääsylipun ja QR-koodin, jotka tulee esittää tapahtumassa.",
       "download_ticket": "Lataa pääsylippusi",
-      "enjoy": "Toivomme että tulet nauttimaan siitä :)",
       "language": "Puhuttu kieli",
       "limitation": "Rajoitukset",
       "max_capacity": "Maksimi määrä",

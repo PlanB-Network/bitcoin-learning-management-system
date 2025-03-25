@@ -153,7 +153,6 @@
       "count": "Partie n°{{count}}"
     },
     "payment": {
-      "access_invoice": "Vous pouvez accéder à votre facture via votre tableau de bord",
       "accessibility": "Accessibilité",
       "accessibility_forever": "Pour toujours",
       "amount": "Montant",
@@ -715,17 +714,14 @@
     "pageSubtitle": "Adoption ascendante améliorée par un réseau solide",
     "pageTitle": "Vous cherchez un événement Bitcoin auquel assister ?",
     "payment": {
-      "access_invoice": "Vous pouvez accéder à votre facture via votre tableau de bord.",
       "access_type": "Type d'accès",
       "address": "Adresse",
       "additional_free_description": "Cet événement est gratuit, il n'y a donc aucun frais pour réserver cette place. Cependant, assurez-vous d'y assister, car le nombre de places est limité.",
       "back_events": "Retour aux événements",
       "book_seat": "Réservez une place",
-      "callout_physical": "Vous êtes sur le point de réserver un accès physique à cet événement.",
       "date": "Date",
       "description_free_physical": "Veuillez consulter les informations sur le lieu fournies.\nUne fois la réservation confirmée, nous vous délivrerons un billet de confirmation et un code QR à présenter lors de l'événement.",
       "download_ticket": "Téléchargez votre billet",
-      "enjoy": "Nous espérons que vous l'apprécierez :)",
       "language": "Langue",
       "limitation": "Limite",
       "max_capacity": "Capacité maximale de",
@@ -734,9 +730,7 @@
       "description_online": "Veuillez vérifier la date et l'heure de l'événement indiquées.\nLorsque le moment sera venu, connectez-vous à la plateforme pour accéder à la diffusion en direct via la page de l'événement.",
       "description_physical": "Veuillez examiner les détails du lieu fournis.\nUne fois votre réservation confirmée, nous émettrons un billet à présenter lors de l'événement. Ce billet vous donnera également accès à la diffusion en direct et à la rediffusion, si disponible.",
       "access_online_successful": "Lorsque l'événement commence, connectez-vous à la plateforme pour accéder à la diffusion en direct sur la page de l'événement.",
-      "access_physical_successful": "Vous pouvez télécharger votre billet ici, ou le télécharger plus tard dans votre tableau de bord.",
-      "callout_online": "Vous êtes sur le point de réserver un accès en ligne à cet événement.",
-      "callout_replay": "Vous êtes sur le point de réserver l'accès à la rediffusion de cet événement."
+      "access_physical_successful": "Vous pouvez télécharger votre billet ici, ou le télécharger plus tard dans votre tableau de bord."
     },
     "errors": {
       "premiumContentNeedsLogin": "Vous devez être connecté pour accéder à cet événement.",

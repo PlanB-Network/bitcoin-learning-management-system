@@ -158,7 +158,6 @@
       "count": "Část {{count}}"
     },
     "payment": {
-      "access_invoice": "Fakturu naleznete v administraci uživatelského účtu",
       "accessibility": "Přístupnost",
       "accessibility_forever": "Navždy",
       "amount": "Částka",
@@ -453,16 +452,13 @@
     "pageSubtitle": "Adopce „zdola nahoru“ podpořená silnou sítí",
     "pageTitle": "Hledáte bitcoinovou akci, na kterou zajít?",
     "payment": {
-      "access_invoice": "Fakturu naleznete v uživatelském účtu.",
       "access_type": "Typ přístupu",
       "address": "Adresa",
       "back_events": "Zpět na akce",
       "book_seat": "Rezervovat místo",
-      "callout_physical": "Hodláte si rezervovat účast na místě na tuto akci.",
       "date": "Datum",
       "description_free_physical": "Zkontrolujte si prosím podrobnosti o místě konání.\nPo zpracování rezervace vám zašleme potvrzovací vstupenku a QR kód, který předložíte na místě konání akce.",
       "download_ticket": "Stáhnout vstupenku",
-      "enjoy": "Věříme, že se vám bude líbit :)",
       "language": "Mluvený jazyk",
       "limitation": "Omezení",
       "max_capacity": "Maximální kapacita",

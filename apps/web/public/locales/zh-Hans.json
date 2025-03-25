@@ -351,7 +351,6 @@
     },
     "payment": {
       "accessibility_forever": "永远",
-      "access_invoice": "您可通过控制面板查看您的发票",
       "accessibility": "可访问性",
       "amount": "金额",
       "back_course": "回到课程",
@@ -936,17 +935,14 @@
     },
     "pageDescription": "想要实时讨论比特币吗？在这里，您可以找到Plan ₿网络社区支持的所有活动。无论您是想听讲座，手持饮料讨论比特币，还是想通过考试评估您的知识，您都能通过Plan ₿网络找到适合的活动。",
     "payment": {
-      "callout_physical": "您即将预订此活动的实体入场权限。",
       "description_free_physical": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票和二维码，以在活动现场出示。",
       "address": "地址",
-      "access_invoice": "您可通过控制面板查看您的发票。",
       "access_type": "访问类型",
       "additional_free_description": "此活动免费，因此您预订的这个位置不会被收费。无论如何，请您确保出席，因为位置数量有限。",
       "back_events": "回到活动",
       "book_seat": "预订位置",
       "date": "日期",
       "download_ticket": "下载您的票据",
-      "enjoy": "希望您喜欢它 :)",
       "language": "解说语言",
       "limitation": "限制",
       "max_capacity": "最大容量为",
@@ -955,9 +951,7 @@
       "description_online": "请检查所述活动的日期和时间。\n活动开始时，请登录平台并通过活动页面访问直播内容。",
       "description_physical": "请检查场地详情。\n一旦预订处理完毕，我们将为您提供确认票证以在活动现场出示。若有直播和回放视频，此票也将为您提供访问相关内容的权限。",
       "access_online_successful": "当活动开始时，请登录平台，使您能在活动页面中访问直播内容。",
-      "access_physical_successful": "您可以在此下载您的票证，也可以稍后在您的仪表板中下载。",
-      "callout_online": "您即将预订此活动的在线参与权限。",
-      "callout_replay": "您即将预订此活动回放的访问权限。"
+      "access_physical_successful": "您可以在此下载您的票证，也可以稍后在您的仪表板中下载。"
     },
     "main": {
       "upcomingEvents": "即将举办的活动",
