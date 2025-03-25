@@ -26,12 +26,14 @@ function CoursesExplorer() {
   const selectedSchool = 'biz225';
 
   const filteredCourses = courses
-    ? courses.filter(
-        (course) =>
-          course.isArchived === false &&
-          course.index !== selectedSchool &&
-          course.language.toLowerCase() === i18n.language.toLowerCase(),
-      )
+    ? courses
+        .filter(
+          (course) =>
+            course.isArchived === false &&
+            course.index !== selectedSchool &&
+            course.language.toLowerCase() === i18n.language.toLowerCase(),
+        )
+        .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)))
     : [];
   const selectedSchoolCourse = courses?.find(
     (course) => course.index === selectedSchool,
