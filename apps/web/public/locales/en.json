@@ -892,7 +892,7 @@
     "languageSection": {
       "availableLanguages": "Available languages",
       "availableLanguagesVariation": "Languages available: ",
-      "content1": "At Plan ₿, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world. You too can start bootstrapping your own local network in your country!",
+      "content1": "At Plan ₿, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports {{nb}} languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world. You too can start bootstrapping your own local network in your country!",
       "link": "Help us translate the academy",
       "subtitle": "Everything is translated into local languages!",
       "title": "No language barrier here."

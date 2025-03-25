@@ -36,6 +36,7 @@ import { AboutUs } from '../../molecules/about-us.tsx';
 import { CourseCard } from '../../organisms/course-card.tsx';
 
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import { LANGUAGES } from '#src/utils/i18n.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { CurrentEvents } from './_content/events/-components/current-events.tsx';
 import { EventBookModal } from './_content/events/-components/event-book-modal.tsx';
@@ -589,7 +590,7 @@ function Home() {
                   'mt-5 !text-newGray-5 max-w-[43rem] body-14px lg:subtitle-medium-med-16px text-center lg:text-start',
                 )}
               >
-                {t('home.languageSection.content1')}
+                {t('home.languageSection.content1', { nb: LANGUAGES.length })}
               </p>
 
               <span className="mt-[50px] subtitle-small-med-14px lg:title-large-sb-24px text-center lg:text-start">
