@@ -108,8 +108,8 @@ function BCert() {
           </p>
         </div>
       </div>
-      {!isFetched && <Loader size={'s'} />}
-      {isFetched && <BCertEvents events={filteredEvents} />}
+      {!isFetched ? <Loader size={'s'} /> : null}
+      {isFetched ? <BCertEvents events={filteredEvents} /> : null}
 
       <BCertOrganize />
     </PageLayout>
