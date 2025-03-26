@@ -78,7 +78,8 @@
       "onlineDescription": "Mỗi phần học đều được phát trực tuyến trên nền tảng.\nViệc thanh toán này sẽ mang lại quyền truy cập vào các video phát trực tuyến và chiếu lại.",
       "inPersonDescription": "Mỗi phần học trực tiếp sẽ diễn ra vào thời gian và địa điểm cụ thể và nội dung cũng được phát trực tuyến trên nền tảng.\nViệc thanh toán này sẽ cấp quyền truy cập cho bạn vào cả các lớp học trực tiếp và trực tuyến.\nĐừng quên đặt trước chỗ ngồi cho các lớp học mà bạn muốn tham dự trực tiếp.",
       "checkoutError": "Một lỗi đã xảy ra trong quá trình thanh toán.\nVui lòng thử lại.",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "chapter": {
       "finishCourse": "Hoàn thành khoá học",
@@ -359,7 +360,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "pageDescription": "Bạn muốn nói về Bitcoin trong thời gian thực? Ở đây, bạn có thể tìm thấy tất cả các sự kiện được hỗ trợ bởi cộng đồng Plan B Network. Cho dù bạn muốn nghe một bài giảng, thảo luận về Bitcoin quanh bàn trà, hoặc làm bài kiểm tra đánh giá kiến thực của bạn, bạn sẽ có thể tìm thấy sự kiện phù hợp tại đây thông qua Plan B Network.",
     "pageTitle": "Bạn đang tìm kiếm một sự kiện Bitcoin để tham dự?",
@@ -840,7 +842,8 @@
         "generatedCode": "",
         "generatedCodes": "",
         "maximumNumberOfUse": "",
-        "noCouponsFound": ""
+        "noCouponsFound": "",
+        "discountValueExplanation": ""
       },
       "coursesIndexes": "",
       "deleteRole": "",
@@ -1304,7 +1307,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     },
     "subCategories": {
       "analysis": "",
