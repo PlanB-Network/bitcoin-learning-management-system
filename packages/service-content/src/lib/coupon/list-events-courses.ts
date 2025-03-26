@@ -47,7 +47,7 @@ const listEventsAndCourses = () => {
       UNION
       SELECT id, type, name FROM events
     ) combined_results
-    ORDER BY type, id;
+    ORDER BY type, name;
   `;
 };
 

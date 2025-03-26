@@ -10,7 +10,7 @@ const getCouponCode = (code: string, itemId: string) => {
       WHERE
         LOWER(code) = LOWER(${code})
         AND item_id = ${itemId}
-        AND (single_use = false OR uses < max_uses)
+        AND uses < max_uses
         ;
   `;
 };
