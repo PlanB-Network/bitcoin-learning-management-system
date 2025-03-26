@@ -70,6 +70,7 @@ export const MenuDashboard = ({
   const careerPortalPath = '/dashboard/career-portal';
   const profilePath = '/dashboard/profile';
   const adminBookingsPath = '/dashboard/administration/bookings';
+  const adminCouponsPath = '/dashboard/administration/coupons';
   const adminCareersPath = '/dashboard/administration/careers';
   const adminRolePath = '/dashboard/administration/role';
   const adminTutorialsPath = '/dashboard/administration/tutorials';
@@ -253,6 +254,16 @@ export const MenuDashboard = ({
                   text={t('dashboard.adminPanel.bookings')}
                   icon={<IoTicketOutline size={24} />}
                   active={pathname.includes(adminBookingsPath)}
+                  onClick={toggleMobileMenu}
+                />
+              </Link>
+            )}
+            {canAccess(UserRole.Admin, UserPermission.Coupons)(user) && (
+              <Link to={adminCouponsPath}>
+                <MenuItem
+                  text={t('dashboard.adminPanel.discountCodes')}
+                  icon={<IoTicketOutline size={24} />}
+                  active={pathname.includes(adminCouponsPath)}
                   onClick={toggleMobileMenu}
                 />
               </Link>

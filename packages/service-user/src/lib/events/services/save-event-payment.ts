@@ -51,9 +51,9 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
     if (couponCode) {
       const coupon = await postgres
         .exec(
-          sql<
-            CouponCode[]
-          >`SELECT * FROM content.coupon_code WHERE code = ${couponCode} AND item_id = ${eventId} and (is_used = false OR is_unique = false)`,
+          sql<CouponCode[]>`SELECT * FROM content.coupon_code
+            WHERE code = ${couponCode}
+              AND item_id = ${eventId} AND (uses < max_uses)`,
         )
         .then(firstRow);
 
