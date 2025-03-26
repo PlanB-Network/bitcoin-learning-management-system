@@ -12,24 +12,26 @@ const listEventsAndCourses = () => {
   return sql<ListItem[]>`
     WITH courses AS (
       SELECT
-        course_id AS id,
+        cl.course_id AS id,
         'course' AS type,
-        name
-      FROM content.courses_localized
-      WHERE (course_id,
-        CASE
-          WHEN language = 'en' THEN 1
-          ELSE 2
-        END) IN (
-        SELECT course_id, MIN(
+        cl.name
+      FROM content.courses_localized cl
+      JOIN content.courses c ON c.id = cl.course_id
+      WHERE c.requires_payment = true
+        AND (cl.course_id,
           CASE
-            WHEN language = 'en' THEN 1
+            WHEN cl.language = 'en' THEN 1
             ELSE 2
-          END
+          END) IN (
+          SELECT course_id, MIN(
+            CASE
+              WHEN language = 'en' THEN 1
+              ELSE 2
+            END
+          )
+          FROM content.courses_localized
+          GROUP BY course_id
         )
-        FROM content.courses_localized
-        GROUP BY course_id
-      )
     ),
     events AS (
       SELECT
@@ -37,6 +39,7 @@ const listEventsAndCourses = () => {
         'event' AS type,
         name
       FROM content.events
+      WHERE price_dollars > 0
     )
     SELECT type, id, name
     FROM (

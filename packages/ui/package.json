@@ -44,7 +44,7 @@
     "react-hook-form": "^7.54.2",
     "react-toastify": "^11.0.5",
     "recharts": "^2.15.1",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
