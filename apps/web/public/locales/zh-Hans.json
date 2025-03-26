@@ -403,7 +403,8 @@
       "onlineDescription": "每节课将在平台上进行直播。\n购买此课程后，您将获得直播和视频回放的访问权限。",
       "inPersonDescription": "每节课会在指定的日期和地点进行面对面授课，并且将在平台上进行直播。\n购买此课程后，您将获得课程的当面和在线参与权限。\n如果您想要亲自参加当面课程，记得提前预定作为。",
       "checkoutError": "在结账过程中发生了错误。\n请再试一次。",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "part": {
       "count": "部分{{count}}"
@@ -979,7 +980,8 @@
           "type": "",
           "uses": "",
           "value": ""
-        }
+        },
+        "discountValueExplanation": ""
       },
       "coursesIndexes": "",
       "deleteRole": "",
@@ -1228,7 +1230,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "main": {
       "upcomingEvents": "即将举办的活动",
@@ -1484,7 +1487,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     }
   },
   "library": {
