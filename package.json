@@ -17,7 +17,7 @@
     "dev:types:generate": "cd ./packages/types && pnpm types:generate",
     "build": "turbo run build --cache-dir=.turbo",
     "build:packages": "turbo run build --filter='./packages/*'",
-    "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres redis && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
+    "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
     "format": "biome format --write .",
     "test": "turbo run test",
     "lint": "biome check . --diagnostic-level=warn",

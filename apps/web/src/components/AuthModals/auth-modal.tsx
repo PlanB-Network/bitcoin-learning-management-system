@@ -57,13 +57,6 @@ export const AuthModal = ({
         onClose={onClose}
         goTo={goTo}
       />
-
-      {/* LnurlAuth Dialog */}
-      {/* <LnurlAuth
-        isOpen={isOpen && currentState === AuthModalState.LnurlAuth}
-        onClose={onClose}
-        goTo={goTo}
-      /> */}
     </>
   );
 };

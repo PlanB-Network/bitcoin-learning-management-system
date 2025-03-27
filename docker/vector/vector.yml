@@ -25,7 +25,7 @@ transforms:
     source: |
       del(.stream)
       del(.source_type)
-      .service = del(.label."com.docker.compose.service") # api / web / redis / ...
+      .service = del(.label."com.docker.compose.service") # api / web / ...
       .project = del(.label."com.docker.compose.project") # mainnet / testnet
       .container_number = del(.label."com.docker.compose.container-number")
       .platform = "Docker"
@@ -151,29 +151,6 @@ transforms:
     source: | # Replace prepending iso date
       .message = replace!(.message, r'^ts=[\d-]+T[\d:.]+Z\s+', "")
 
-  # Redis logs
-  redis_filter:
-    inputs:
-      - docker_remap
-    type: 'filter'
-    condition: '.service == "redis"'
-
-  redis_remap:
-    inputs:
-      - redis_filter
-    type: 'remap'
-    source: | # Replace prepending iso date
-      .message = replace!(.message, r'^.*[*#]\s+', "")
-
-  redis_light_remap:
-    inputs:
-      - redis_remap
-    type: 'remap'
-    source: | # Keep only message and timestamp
-      .old = del(.)
-      .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
-      del(.old)
-
   # Postgres logs
   postgres_filter:
     inputs:
@@ -226,7 +203,6 @@ transforms:
       - web_remap
       - cdn_remap
       - api_remap
-      - redis_remap
       - postgres_remap
       - seed_remap
       - traefik_remap
@@ -327,23 +303,6 @@ sinks:
       - web_light_remap
     type: 'file'
     path: '/var/log/vector/%Y-%m-%d/light/web.log'
-    encoding:
-      codec: text
-
-  # Redis output
-  redis:
-    inputs:
-      - redis_remap
-    type: 'file'
-    path: '/var/log/vector/%Y-%m-%d/full/redis.log'
-    encoding:
-      codec: json
-
-  redis_light:
-    inputs:
-      - redis_light_remap
-    type: 'file'
-    path: '/var/log/vector/%Y-%m-%d/light/redis.log'
     encoding:
       codec: text
 
