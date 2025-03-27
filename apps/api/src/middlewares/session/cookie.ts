@@ -1,14 +1,11 @@
 import type { RequestHandler } from 'express';
-import session, { Store } from 'express-session';
+import session, { Store, type SessionData } from 'express-session';
 
 import type { SessionConfig } from '@blms/types';
 
 import type { PostgresClient } from '@blms/database';
+import { firstRow, sql } from '@blms/database';
 import type { Dependencies } from '../../dependencies.js';
-
-const ONE_HOUR = 1000 * 60 * 60;
-const ONE_DAY = ONE_HOUR * 24;
-const ONE_WEEK = ONE_DAY * 7;
 
 const getSessionConfig = (config: SessionConfig) => {
   return {
@@ -28,41 +25,69 @@ const getSessionConfig = (config: SessionConfig) => {
   };
 };
 
-interface StoreOptions {
-  ttl?: number;
-}
-
 class PostgresStore extends Store {
-  private mock = new Map<string, session.SessionData>();
-
-  constructor(
-    private readonly client: PostgresClient,
-    private readonly options?: StoreOptions,
-  ) {
+  constructor(private readonly client: PostgresClient) {
     super();
   }
 
   override get(
     sid: string,
-    callback: (err: any, session?: session.SessionData | null) => void,
+    callback: (err: any, session?: SessionData | null) => void,
   ): void {
-    callback(null, this.mock.get(sid) ?? null);
+    this.client
+      .exec(
+        sql<SessionData[]>`
+          SELECT
+            sessions.sid,
+            sessions.cookie,
+            sessions.expires,
+            accounts.uid,
+            accounts.role,
+            accounts.permissions
+          FROM users.sessions
+          LEFT JOIN users.accounts
+            ON sessions.uid = accounts.uid
+          WHERE sid = ${sid}
+            AND expires > NOW()
+          LIMIT 1;
+        `,
+      )
+      .then(firstRow)
+      .then((row) => callback(null, row ?? null))
+      .catch((error) => callback(error));
   }
 
   override set(
     sid: string,
-    session: session.SessionData,
+    session: SessionData,
     callback?: (err?: any) => void,
   ): void {
-    this.mock.set(sid, session);
+    if (!session.uid) {
+      callback?.();
+      return;
+    }
 
-    callback?.();
+    this.client
+      .exec(
+        sql`
+          INSERT INTO users.sessions (sid, uid, expires, cookie)
+          VALUES (${sid}, ${session.uid}, ${session.cookie.expires?.toISOString() || "NOW() + INTERVAL '1 week'"}, ${session.cookie as any}::jsonb)
+        `,
+      )
+      .then(() => callback?.())
+      .catch((error) => callback?.(error));
   }
 
   override destroy(sid: string, callback?: (err?: any) => void): void {
-    this.mock.delete(sid);
-
-    callback?.();
+    this.client
+      .exec(
+        sql`
+          DELETE FROM users.sessions
+          WHERE sid = ${sid}
+        `,
+      )
+      .then(() => callback?.())
+      .catch((error) => callback?.(error));
   }
 }
 
@@ -72,9 +97,7 @@ export const createCookieSessionMiddleware = ({
 }: Dependencies): RequestHandler => {
   const sessionConfig = getSessionConfig(config.session);
 
-  const store = new PostgresStore(postgres, {
-    ttl: ONE_WEEK,
-  });
+  const store = new PostgresStore(postgres);
 
   return session({
     ...sessionConfig,
