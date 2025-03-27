@@ -31,7 +31,7 @@ export const PaymentRow = ({
     typeof value === 'string' && value.includes('\n') && value.split('\n');
 
   return (
-    <div className="flex items-center justify-between w-full leading-relaxed">
+    <div className="flex items-center justify-between w-full leading-relaxed max-md:my-[1px]">
       <RowText
         className={cn(
           'text-sm lg:text-base tracking-[0.08px] self-start',

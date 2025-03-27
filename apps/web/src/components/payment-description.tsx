@@ -3,12 +3,11 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import type { CouponCode, JoinedEvent } from '@blms/types';
 import { Button, Checkbox } from '@blms/ui';
-
-import { Link } from '@tanstack/react-router';
 import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import spinner from '#src/assets/icons/spinner.svg';
 
+import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -124,6 +123,54 @@ export const PaymentDescription = ({
     setQueryEnabled(true);
   }
 
+  function displayReductionCode() {
+    return (
+      <div className="flex flex-col w-full gap-2">
+        <p className="font-medium max-md:text-sm">
+          {t('payment.haveReductionCode')}
+        </p>
+
+        <div className="flex flex-row gap-4 w-full justify-between">
+          <div className="relative w-full">
+            <input
+              id="emailId"
+              type="text"
+              value={inputCoupon}
+              onChange={(event) => {
+                setInputCoupon(event.target.value);
+                setIsCouponValid(null);
+              }}
+              className="border-2 px-2 py-1  rounded-lg border-newGray-5 text-newBlack-5 w-full placeholder-newGray-3"
+              placeholder={t('payment.insertReductionCode')}
+            />
+
+            {isLoading === true && (
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                <img src={spinner} alt="spinner" className="size-6" />
+              </div>
+            )}
+            {isCouponValid === true && (
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                <img src={checkGreen} alt="green check" className="size-6" />
+              </div>
+            )}
+          </div>
+
+          <Button
+            variant="tertiary"
+            size="s"
+            className="-ml-1"
+            onClick={applyCoupon}
+          >
+            Apply
+          </Button>
+        </div>
+        {isCouponValid === false && (
+          <div className="text-red-6">Invalid code</div>
+        )}
+      </div>
+    );
+  }
   return (
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto pr-4">
@@ -136,51 +183,10 @@ export const PaymentDescription = ({
             </p>
           ))}
         </div>
-        <div className="flex flex-col w-full gap-2">
-          <p className="font-medium max-md:text-sm">
-            {t('payment.haveReductionCode')}
-          </p>
 
-          <div className="flex flex-row gap-4 w-full justify-between">
-            <div className="relative w-full">
-              <input
-                id="emailId"
-                type="text"
-                value={inputCoupon}
-                onChange={(event) => {
-                  setInputCoupon(event.target.value);
-                  setIsCouponValid(null);
-                }}
-                className="border-2 px-2 py-1  rounded-lg border-newGray-5 text-newBlack-5 w-full placeholder-newGray-3"
-                placeholder={t('payment.insertReductionCode')}
-              />
+        <div className="w-full max-lg:hidden">{displayReductionCode()}</div>
 
-              {isLoading === true && (
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <img src={spinner} alt="spinner" className="size-6" />
-                </div>
-              )}
-              {isCouponValid === true && (
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <img src={checkGreen} alt="green check" className="size-6" />
-                </div>
-              )}
-            </div>
-
-            <Button
-              variant="tertiary"
-              size="s"
-              className="-ml-1"
-              onClick={applyCoupon}
-            >
-              Apply
-            </Button>
-          </div>
-          {isCouponValid === false && (
-            <div className="text-red-6">Invalid code</div>
-          )}
-        </div>
-        <div className="flex flex-row justify-between w-full">
+        <div className="max-lg:hidden flex flex-row justify-between w-full">
           <span className="text-lg font-medium">{t('payment.total')}</span>
           <div className="flex flex-col items-end">
             <span className="text-lg font-medium">
@@ -189,8 +195,11 @@ export const PaymentDescription = ({
             <span className="text-sm text-gray-400/50">{satsPrice} sats</span>
           </div>
         </div>
+
         {/* Todo : a generic component should not reference a specific one */}
         {children}
+
+        <div className="w-full lg:hidden">{displayReductionCode()}</div>
 
         {isGdprCompliance ? (
           <div className="flex self-start space-x-2 w-full relative">
@@ -226,18 +235,30 @@ export const PaymentDescription = ({
             </label>
           </div>
         ) : null}
-
         {!isBookEnabled && isBtnClicked ? (
           <p className="text-red-6 text-sm self-start -mt-4">
             {t('events.tcMustBeAccepted')}
           </p>
         ) : null}
-
         {checkoutError && (
           <span className="text-red-5 text-center whitespace-pre-line">
             {checkoutError}
           </span>
         )}
+        <div className="md:hidden text-center uppercase md:text-xs justify-self-end mt-auto mb-4">
+          <div className="text-[10px] md:text-xs">
+            <Trans i18nKey="payment.terms">
+              <Link
+                to="/terms-and-conditions"
+                className="hover:underline hover:underline-offset-2 text-darkOrange-5"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Payment terms
+              </Link>
+            </Trans>
+          </div>
+        </div>
         <div className="flex flex-col-reverse md:flex-row md:w-full gap-4">
           <Button
             variant="outline"
@@ -265,7 +286,7 @@ export const PaymentDescription = ({
           </Button>
         </div>
       </div>
-      <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
+      <div className="max-md:hidden text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
             <Link

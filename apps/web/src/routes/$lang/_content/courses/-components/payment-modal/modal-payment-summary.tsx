@@ -88,9 +88,12 @@ export const ModalPaymentSummary = ({
           borderClassName,
         )}
       >
-        <span className="text-lg lg:text-base text-black lg:text-white font-bold lg:font-medium leading-snug lg:leading-tight capitalize mb-5 lg:mb-6">
+        <span className=" text-black lg:text-white font-medium leading-tight mb-2 lg:mb-6">
           {courseName}
         </span>
+        {mobileDisplay ? (
+          <span className="text-sm">{professorNames}</span>
+        ) : null}
         <div className={cn('rounded-2xl w-full mb-5 lg:mb-8', borderClassName)}>
           <img
             src={assetUrl(
@@ -101,16 +104,20 @@ export const ModalPaymentSummary = ({
             alt={courseName}
           />
         </div>
-        <div className="flex flex-col gap-1 lg:gap-2 mt-1 lg:mt-4 mb-5 lg:mb-8">
-          <PaymentRow
-            label={
-              course.mainProfessors?.length > 1
-                ? t('words.professors')
-                : t('words.professor')
-            }
-            value={professorNames}
-          />
-          <Separator />
+        <div className="flex flex-col gap-1 lg:gap-2 mt-1 lg:mt-4 md:mb-5 lg:mb-8">
+          {!mobileDisplay ? (
+            <>
+              <PaymentRow
+                label={
+                  course.mainProfessors?.length > 1
+                    ? t('words.professors')
+                    : t('words.professor')
+                }
+                value={professorNames}
+              />
+              <Separator />
+            </>
+          ) : null}
           {course.startDate && course.endDate ? (
             <>
               <PaymentRow
@@ -120,20 +127,20 @@ export const ModalPaymentSummary = ({
               <Separator />
             </>
           ) : null}
-          <PaymentRow
-            label={t('courses.payment.numberOfChapters')}
-            value={course.chaptersCount?.toString() || '-'}
-          />
-          <Separator />
+
           <PaymentRow
             label={t('courses.payment.duration')}
             value={t('courses.details.mobile.hours', {
               hours: course.hours.toString(),
             })}
           />
+          <Separator />
+          <PaymentRow
+            label={t('courses.payment.courseType')}
+            value={t(`courses.format.${course.format}`)}
+          />
         </div>
         <DescriptionWithBreaks />
-
         {paidPriceDollars && satsPrice && (
           <div className="flex justify-center items-center w-full gap-1">
             <span className="font-semibold leading-normal text-darkOrange-5">
@@ -145,7 +152,6 @@ export const ModalPaymentSummary = ({
             </span>
           </div>
         )}
-
         {/* <a
           className="flex items-center justify-center w-full px-4 py-2 text-white text-xs lg:text-sm leading-none lg:leading-relaxed bg-newGray-3 lg:bg-white/25 lg:backdrop-blur-md rounded-lg"
           href={computeAssetCdnUrl(

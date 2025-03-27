@@ -20,7 +20,6 @@ import {
 
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
-import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
@@ -173,10 +172,6 @@ export const CoursePaymentModal = ({
     }
   }, [isPaymentSuccess]);
 
-  const courseName = `${addSpaceToCourseIndex(course?.index)} - ${
-    course?.name
-  }`;
-
   return (
     <div className="p-4">
       <Dialog
@@ -194,7 +189,7 @@ export const CoursePaymentModal = ({
           <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] h-full gap-6 lg:gap-0">
             <ModalPaymentSummary
               course={course}
-              courseName={courseName}
+              courseName={course?.name}
               professorNames={professorNames}
               mobileDisplay={false}
             />
@@ -270,7 +265,14 @@ export const CoursePaymentModal = ({
                       </>
                     )
                   }
-                />
+                >
+                  <ModalPaymentSummary
+                    course={course}
+                    courseName={course?.name}
+                    professorNames={professorNames}
+                    mobileDisplay={true}
+                  />
+                </PaymentDescription>
               )}
             </div>
           </div>
