@@ -166,7 +166,6 @@
       "downloadCurriculum": "Stáhnout osnovu",
       "duration": "Trvání",
       "invoiceId": "ID transakce",
-      "numberOfChapters": "Počet kapitol",
       "payment_details": "Detaily platby",
       "payment_successful": "Platba proběhla úspěšně!",
       "qr_unified": "Tento kód QR je sjednocený, takže přijímá lightning i on-chain platby.",

@@ -205,7 +205,6 @@
       "book_description": "請確認提供的場地詳情。\n當您的預訂完成後，我們將寄送確認票券及一組 QR code，請於活動當日出示。",
       "duration": "課程時間",
       "invoiceId": "交易ID",
-      "numberOfChapters": "章節數量",
       "payment_details": "付款詳情",
       "payment_successful": "付款成功！",
       "qr_unified": "此 QR code 為統一支付碼，可接受 Lightning 和鏈上付款。",

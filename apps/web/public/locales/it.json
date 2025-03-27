@@ -163,7 +163,6 @@
       "downloadCurriculum": "Scarica il curriculum",
       "duration": "Durata",
       "invoiceId": "Invoice ID",
-      "numberOfChapters": "Numero di capitoli",
       "payment_details": "Dettagli di pagamento",
       "payment_successful": "Pagamento avvenuto con successo!",
       "teacher": "Insegnante",
@@ -176,7 +175,8 @@
       "onlineDescription": "Ogni lezione viene trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle dirette e ai video di replay.",
       "inPersonDescription": "Ogni lezione si svolge di persona nelle date e nei luoghi specificati, ed è anche trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle lezioni sia in presenza che online.\nNon dimenticare di prenotare il tuo posto per le lezioni a cui vuoi partecipare di persona.",
       "onlineCallout": "Stai per acquistare l'accesso <strong>online</strong> a questo corso.",
-      "checkoutError": "Si è verificato un errore durante il processo di pagamento.\nPer favore, riprova."
+      "checkoutError": "Si è verificato un errore durante il processo di pagamento.\nPer favore, riprova.",
+      "hybridDescription": "Ti invitiamo a rivedere i dettagli del corso.\nOgni lezione si svolge in presenza nelle date e nei luoghi specificati, e viene sempre trasmessa in diretta e registrata per il successivo replay.\n\nLa partecipazione di persona è gestita per ogni lezione, quindi ti chiediamo gentilmente di prenotare il tuo posto ogni volta che desideri partecipare fisicamente."
     },
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e leggi le spiegazioni",
@@ -765,7 +765,14 @@
       "access_online_successful": "Quando l'evento inizia, accedi alla piattaforma per ottenere l'accesso alla live dalla pagina dell'evento.",
       "access_physical_successful": "Puoi scaricare qui il tuo biglietto, o scaricarlo dopo dalla tua dashboard.",
       "description_online": "Salva la data e l'ora di questo evento.\nQuando sarà il momento, accedi alla piattaforma e alla live dalla pagina dell'evento.",
-      "description_physical": "Salva i dettagli dell'indirizzo.\nUna volta che la prenotazione sarà confermata, ti forniremo un biglietto da presentare all'evento, che ti darà anche accesso alla live streaming e al replay (se disponibili)."
+      "description_physical": "Salva i dettagli dell'indirizzo.\nUna volta che la prenotazione sarà confermata, ti forniremo un biglietto da presentare all'evento, che ti darà anche accesso alla live streaming e al replay (se disponibili).",
+      "callout_book_online": "Stai per prenotare l'accesso online a questo evento.",
+      "callout_book_physical": "Stai per prenotare <highlight>accesso di persona</highlight> a questo evento.",
+      "callout_book_replay": "Stai per prenotare l'accesso al video replay di questo evento.",
+      "callout_purchase_online": "Stai per acquistare l'accesso online <highlight>a questo evento</highlight>.",
+      "callout_purchase_physical": "Stai per acquistare l'accesso online <highlight>a questo evento</highlight>.",
+      "callout_purchase_replay": "Stai per acquistare l'accesso al video replay di questo evento.",
+      "limitedSeats": "I posti sono limitati. Ti chiediamo di annullare la prenotazione nel caso di mancata partecipazione."
     },
     "errors": {
       "premiumContentNeedsPayment": "Questo evento fa parte di un programma premium.",
@@ -1249,7 +1256,8 @@
     "total": "Totale",
     "payWithBitcoin": "Paga in Bitcoin",
     "payByCard": "Paga con carta",
-    "haveReductionCode": "Hai un codice sconto?"
+    "haveReductionCode": "Hai un codice sconto?",
+    "insertReductionCode": "Inserisci il tuo codice sconto"
   },
   "bCert": {
     "bookExam": "Prenota una sessione di test",
@@ -1416,5 +1424,10 @@
       "subtitle": "Unisciti a un laboratorio per imparare, discutere e crescere!",
       "title": "Migliora le tue conoscenze su Bitcoin!"
     }
+  },
+  "accessType": {
+    "physical": "In presenza",
+    "online": "Online",
+    "replay": "Replay"
   }
 }

@@ -465,7 +465,6 @@
       "book_description": "Lütfen sağlanan mekan detaylarını gözden geçirin.\nRezervasyonunuz işleme alındıktan sonra, etkinlikte sunmanız için size bir onay bileti ve bir QR kodu göndereceğiz.",
       "duration": "Süre",
       "invoiceId": "İşlem Kimliği",
-      "numberOfChapters": "Bölüm sayısı",
       "payment_details": "Ödeme detayları",
       "payment_successful": "Ödeme başarılı!",
       "qr_unified": "Bu QR kodu birleştirilmiştir, bu yüzden hem lightning ve hem on-chain ödemeleri kabul eder.",

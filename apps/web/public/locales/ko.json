@@ -346,7 +346,6 @@
       "book_description": "예약 장소 정보를 꼭 확인하세요.\n예약이 완료되면, 행사 입장 시 제시할 확인 티켓과 QR 코드를 보내드립니다.",
       "duration": "기간",
       "invoiceId": "거래 ID",
-      "numberOfChapters": "챕터 수",
       "payment_details": "결제 세부 정보",
       "payment_successful": "결제 성공!",
       "qr_unified": "이 QR 코드는 통합되어 라이트닝 및 온체인 결제를 지원합니다.",

@@ -138,7 +138,8 @@
       "premiumContentNeedsPayment": "Kozi hii ni sehemu ya programu inayolipishwa.",
       "teacherLed": "Inayoongozwa na Profesa",
       "premiumContentNeedsPaymentAction": "Nenda kwenye ukurasa mkuu wa kozi",
-      "thanksTipping": "Unaweza kusema asante kwa kudokeza profesa."
+      "thanksTipping": "Unaweza kusema asante kwa kudokeza profesa.",
+      "learning": "Njia ya kujifunza"
     },
     "explorer": {
       "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
@@ -163,7 +164,6 @@
       "downloadCurriculum": "Pakua mtaala",
       "duration": "Muda",
       "invoiceId": "Invoice ID",
-      "numberOfChapters": "Idadi ya sura",
       "payment_details": "Maelezo ya malipo",
       "payment_successful": "Malipo yamefanikiwa!",
       "teacher": "Mwalimu",
@@ -1416,5 +1416,10 @@
     "resultError": "Hitilafu fulani imetokea. Tafadhali jaribu tena.",
     "results": "Matokeo",
     "tutorials": "Mafunzo"
+  },
+  "accessType": {
+    "physical": "Ana kwa ana",
+    "online": "Mtandaoni",
+    "replay": "Rudia"
   }
 }

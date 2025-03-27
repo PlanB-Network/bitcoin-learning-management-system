@@ -138,7 +138,8 @@
       "hasBeenProofreadBy": "Ten kurs został sprawdzony przez",
       "hasNotBeenProofread": "Ten kurs jeszcze nie został poddany korekcie",
       "associatedProfessors": "Współpracujący z nami nauczyciele",
-      "coordinatedBy": "Ten kurs jest koordynowany przez"
+      "coordinatedBy": "Ten kurs jest koordynowany przez",
+      "learning": "Ścieżka edukacyjna"
     },
     "explorer": {
       "pageDescription": "Akademia Plan B ma na celu uproszczenie edukacji na temat Bitcoina na całym świecie. Oferujemy szeroki zakres kursów zaprojektowanych przez ekspertów z różnych dziedzin, aby wyjaśnić każdy aspekt Bitcoina.\nWszystko w formacie, który najlepiej pomoże Ci zrozumieć to obszerne zagadnienie – nauka we własnym tempie lub w formie cotygodniowych spotkań z prowadzącycm, poziomy od początkującego do eksperta. Duża część naszych kursów jest całkowicie darmowa, aby każdy, gdziekolwiek jest, mógł mieć dostęp do edukacji.",
@@ -163,7 +164,6 @@
       "downloadCurriculum": "Pobierz sylabus",
       "duration": "Czas trwania",
       "invoiceId": "ID faktury",
-      "numberOfChapters": "Ilość rozdziałów",
       "payment_details": "Szczegóły płatności",
       "payment_successful": "Płatności dokonano pomyślnie!",
       "teacher": "Nauczyciel",
@@ -176,7 +176,9 @@
       "inPersonCallout": "Zamierzasz zakupić <strong>dostęp osobisty</strong> do tego kursu.",
       "onlineCallout": "Zamierzasz zakupić <strong>dostęp online</strong> do tego kursu.",
       "onlineDescription": "Każda lekcja jest transmitowana na żywo na platformie.\nTen zakup zapewni ci dostęp do transmisji na żywo i filmów do ponownego odtworzenia.",
-      "checkoutError": "Podczas zakupu wystąpił błąd.\nProszę spróbować ponownie."
+      "checkoutError": "Podczas zakupu wystąpił błąd.\nProszę spróbować ponownie.",
+      "hybridDescription": "Proszę zapoznać się ze szczegółami kursu.\nKażda lekcja odbywa się stacjonarnie w określonych miejscach i terminach. Wszystkie zajęcia są zawsze transmitowane na żywo i nagrywane do późniejszego odtworzenia.\n\nObecność na zajęciach jest rejestrowana co spotkanie, dlatego uprzejmie prosimy o rezerwację miejsca za każdym razem, gdy chcesz uczestniczyć osobiście.",
+      "courseType": "Rodzaj kursu"
     },
     "quizz": {
       "clickOnPie": "Kliknij, aby przejżeć wyniki",
@@ -707,7 +709,53 @@
       "makeProfessor": "Oznacz jako nauczyciela",
       "confirmRemoval": "Potwierdź usunięcie",
       "date": "Data",
-      "bookingsPanel": "Panel rezerwacji"
+      "bookingsPanel": "Panel rezerwacji",
+      "coupons": {
+        "explanation": "Generuj kody rabatowe na wydarzenia i kursy i zarządzaj nimi - kody mogą być jednorazowe (np. na stypendia) lub wielokrotnego użytku (na kampanie marketingowe).",
+        "forWhat": "Dla jakiego rodzaju produktu?",
+        "tableHead": {
+          "code": "Kod",
+          "type": "Typ",
+          "name": "Nazwa",
+          "discount": "Zniżka",
+          "value": "Wartość",
+          "uses": "Wykorzystany",
+          "total": "Suma",
+          "owner": "Właściciel"
+        },
+        "generateNew": "Wygeneruj nowy kod",
+        "generateDiscountCode": "Wygeneruj kod rabatowy",
+        "productEvent": "Wydarzenie",
+        "productCourse": "Kurs",
+        "forWhichEvent": "Na jakie wydarzenie?",
+        "forWhichCourse": "Na który kurs?",
+        "discountType": "Jaki rodzaj kodu rabatowego?",
+        "discountSingleUse": "Jednorazowy",
+        "discountMultiUse": "Wielokrotnego użytku",
+        "discountValue": "Zniżka",
+        "discountCode": "Kod rabatowy",
+        "discountCodeExplanation": "Uwaga, ten kod rozróżnia duże i małe litery.",
+        "discountCodePlaceholder": "Pozostaw puste do automatycznego wypełnienia",
+        "discountValueExplanation": "Wprowadź liczbę o różnicy wartości 5 (np. 5, 10, 15... do 100)",
+        "discountValuePlaceholder": "przykład: 20 dla 20%",
+        "numberOfCodes": "Ile kodów chcesz wygenerować?",
+        "numberOfCodesPlaceholder": "wpisz numer",
+        "maximumNumberOfUse": "Maksymalna liczba użyć",
+        "generateCode": "Generuj kod",
+        "generateCodes": "Wygeneruj kody",
+        "generatedCode": "Wygenerowany kod",
+        "generatedCodes": "Wygenerowane kody",
+        "selectCourse": "Wybierz kurs",
+        "selectEvent": "Wybierz wydarzenie",
+        "filters": {
+          "all": "Wszystko",
+          "singleUse": "Jednorazowy",
+          "multiUse": "Wielokrotnego użytku",
+          "events": "Wydarzenia",
+          "courses": "Kursy"
+        }
+      },
+      "discountCodes": "Kody rabatowe"
     },
     "backToDashboard": "Powrót do pulpitu ucznia",
     "studentDashboard": "Panel ucznia"
@@ -756,7 +804,14 @@
       "access_online_successful": "Gdy wydarzenie się rozpocznie, zaloguj się na platformę, żeby uzyskać dostęp do transmisji na żywo przez stronę wydarzenia.",
       "access_physical_successful": "Możesz pobrać swój bilet tutaj lub pobrać go później z poziomu swojego panelu.",
       "description_physical": "Proszę przejrzeć podane szczegóły dotyczące miejsca wydarzenia. \nPo potwierdzeniu rezerwacji wydany zostanie bilet, który należy przedstawić na wydarzeniu. Bilet ten umożliwia również dostęp do transmisji na żywo i powtórki wideo, jeśli będą dostępne.",
-      "description_online": "Proszę sprawdzić podaną datę i godzinę wydarzenia. \nGdy nadejdzie czas, proszę zalogować się na platformę, aby uzyskać dostęp do transmisji na żywo przez stronę wydarzenia."
+      "description_online": "Proszę sprawdzić podaną datę i godzinę wydarzenia. \nGdy nadejdzie czas, proszę zalogować się na platformę, aby uzyskać dostęp do transmisji na żywo przez stronę wydarzenia.",
+      "callout_purchase_replay": "Zamierzasz zakupić dostęp do nagrania z tego wydarzenia.",
+      "limitedSeats": "Miejsca są ograniczone. Proszę anuluj swoją rezerwację, jeśli nie możesz przyjść.",
+      "callout_book_online": "Za moment zarezerwujesz dostęp online do tego wydarzenia.",
+      "callout_book_replay": "Za chwilę zarezerwujesz dostęp do nagrania z tego wydarzenia.",
+      "callout_purchase_online": "Zamierzasz zakupić <highlight>dostęp online</highlight> do tego wydarzenia.",
+      "callout_purchase_physical": "Zamierzasz zakupić <highlight>dostęp na żywo</highlight> do tego wydarzenia.",
+      "callout_book_physical": "Zamierzasz zarezerwować <highlight>dostęp na żywo</highlight> do tego wydarzenia."
     },
     "newEvent": {
       "button": "Dodaj moje wydarzenie",
@@ -1246,7 +1301,8 @@
     "total": "Razem",
     "haveReductionCode": "Masz kod rabatowy?",
     "payByCard": "Zapłać kartą",
-    "payWithBitcoin": "Zapłać Bitcoinem"
+    "payWithBitcoin": "Zapłać Bitcoinem",
+    "insertReductionCode": "Wprowadź swój kod zniżkowy"
   },
   "bCert": {
     "bookExam": "Zarezerwuj termin egzaminu",
@@ -1416,5 +1472,10 @@
     "pageTitle": "Kanały na Youtube",
     "view": "Zobacz kanał na Youtube",
     "watchTrailer": "Obejrzyj zwiastun"
+  },
+  "accessType": {
+    "physical": "Stacjonarnie",
+    "online": "Online",
+    "replay": "Powtórka"
   }
 }

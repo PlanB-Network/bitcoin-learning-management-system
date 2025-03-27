@@ -203,7 +203,6 @@
       "downloadCurriculum": "Last ned pensum",
       "duration": "Varighet",
       "invoiceId": "Tx ID",
-      "numberOfChapters": "Antall kapitler",
       "payment_details": "Betalingsdetaljer",
       "payment_successful": "Betaling vellykket!",
       "qr_unified": "Denne QR-koden er forent, så den aksepterer lyn- og on-chain-betalinger.",

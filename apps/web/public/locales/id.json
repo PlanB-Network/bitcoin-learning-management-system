@@ -201,7 +201,6 @@
       "book_description": "Silakan tinjau rincian tempat yang diberikan.\nSetelah pemesananmu diproses, kami akan memberikan tiket konfirmasi dan kode QR, yang harus Anda tunjukkan saat acara.",
       "duration": "Durasi",
       "invoiceId": "Kode transaksi",
-      "numberOfChapters": "Jumlah bab",
       "payment_details": "Detail pembayaran",
       "payment_successful": "Pembayaran sukses!",
       "qr_unified": "Kode QR ini bersifat seragam, jadi dia dapat menerima pembayaran dengan metode jaringan lightning maupun jaringan on-chain.",
