@@ -728,7 +728,7 @@ function CourseDetails() {
                 LANGUAGES_MAP[
                   course.originalLanguage.toLowerCase().replaceAll('-', '')
                 ],
-              organizer: 'Plan ₿ Network', // TODO or projectId if any
+              organizer: course.projectName ?? 'Plan ₿ Network',
               availableSeats: course.availableSeats,
               userName: user ? user.username : '',
             });
