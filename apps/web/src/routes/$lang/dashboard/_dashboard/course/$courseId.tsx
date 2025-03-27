@@ -42,6 +42,7 @@ import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProgressBar } from '../-components/courses-progress-list.tsx';
 
 export const Route = createFileRoute(
@@ -208,9 +209,12 @@ const CourseOverview = ({ course }: { course: CourseResponse }) => {
 
       <section className="flex flex-col md:gap-5">
         <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
-          {t('words.teacher')}
+          {t('words.professors')}
         </h4>
         <div className="flex h-fit flex-col max-md:gap-4">
+          <span className="uppercase text-darkOrange-5 text-lg- ">
+            {t('dashboard.course.coordinator')}
+          </span>
           {course.mainProfessors.map((professor) => (
             <AuthorCard
               key={professor.id}
@@ -218,6 +222,20 @@ const CourseOverview = ({ course }: { course: CourseResponse }) => {
               hasDonateButton
             />
           ))}
+        </div>
+        <div className="flex h-fit flex-col max-md:gap-4">
+          <span className="uppercase text-darkOrange-5 text-lg- ">
+            {t('courses.details.associatedProfessors')}
+          </span>
+          <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
+            {course.associatedProfessors.map((professor) => (
+              <ProfessorCardReduced
+                key={professor.id}
+                professor={professor}
+                hasDonateButton
+              />
+            ))}
+          </div>
         </div>
       </section>
     </div>

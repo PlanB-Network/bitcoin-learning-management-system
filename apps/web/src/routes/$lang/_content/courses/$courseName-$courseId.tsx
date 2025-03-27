@@ -28,6 +28,7 @@ import PresentationMarkdownBody from '#src/components/Markdown/presentation-mark
 import { StarRating } from '#src/components/Stars/star-rating.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { Image } from '#src/components/image.tsx';
+import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
@@ -540,11 +541,10 @@ function CourseDetails() {
             <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
               <span>{t('courses.details.associatedProfessors')}</span>
             </h4>
-            <div className="flex h-fit flex-col max-md:gap-4">
+            <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
               {course.associatedProfessors.map((professor) => (
-                <AuthorCard
+                <ProfessorCardReduced
                   key={professor.id}
-                  className="sm:mt-4"
                   professor={professor}
                 />
               ))}

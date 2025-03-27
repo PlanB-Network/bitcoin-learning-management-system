@@ -10,6 +10,7 @@ import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { DividerSimple } from '@blms/ui';
 
 import { AuthorCard } from '#src/components/author-card.tsx';
+import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
@@ -64,7 +65,9 @@ const Professor = ({
         {t('words.professor')}
       </h4>
       <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
-        {t('courses.details.taughtBy')}{' '}
+        {course.associatedProfessors.length > 0
+          ? t('courses.details.coordinatedBy')
+          : t('courses.details.taughtBy')}{' '}
         <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
           {course.mainProfessors.map((professor, index) => (
             <React.Fragment key={professor.id}>
@@ -96,6 +99,21 @@ const Professor = ({
             mobileSize="medium"
           />
         ))}
+        {course.associatedProfessors.length > 0 ? (
+          <>
+            <h4 className="mt-4 md:mt-6 text-darkOrange-5 uppercase">
+              <span>{t('courses.details.associatedProfessors')}</span>
+            </h4>
+            <div className="my-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
+              {course.associatedProfessors.map((professor) => (
+                <ProfessorCardReduced
+                  key={professor.id}
+                  professor={professor}
+                />
+              ))}
+            </div>
+          </>
+        ) : null}
       </div>
     </section>
   );

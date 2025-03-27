@@ -5,31 +5,9 @@ import { useTranslation } from 'react-i18next';
 import type { CourseResponse } from '@blms/types';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
+import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
 import { getDateString } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
-
-const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
-  let prefix = '';
-  if (amount > 0 && amount < 0.01) {
-    // biome-ignore lint/style/noParameterAssign: <explanation>
-    amount = 0.01;
-    prefix = '< ';
-  }
-
-  if (unit === 'sats') {
-    return `${prefix}${amount} sats`;
-  }
-
-  return `${prefix}${Intl.NumberFormat(undefined, {
-    style: 'currency',
-    currency: unit,
-    currencyDisplay: 'narrowSymbol',
-    minimumFractionDigits: floating,
-    maximumFractionDigits: floating,
-  }).format(amount)}`;
-};
-
-const DEFAULT_CURRENCY = 'USD';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
@@ -143,7 +121,9 @@ export const ModalPaymentSummary = ({
         <DescriptionWithBreaks />
 
         <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
-          <span className="font-semibold">${paidPriceDollars}</span>
+          <span className="font-semibold">
+            {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
+          </span>
           <span>·</span>
           <span>{satsPrice} sats</span>
         </span>

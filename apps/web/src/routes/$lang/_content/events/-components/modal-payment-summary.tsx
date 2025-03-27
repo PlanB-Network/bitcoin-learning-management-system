@@ -6,6 +6,7 @@ import { cn } from '@blms/ui';
 
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
+import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
@@ -104,7 +105,9 @@ export const ModalPaymentSummary = ({
             }
           />
           <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
-            <span className="font-semibold">${event.priceDollars}</span>
+            <span className="font-semibold">
+              {getFormattedUnit(event.priceDollars || 0, DEFAULT_CURRENCY, 0)}
+            </span>
             <span>·</span>
             <span>{satsPrice} sats</span>
           </span>
