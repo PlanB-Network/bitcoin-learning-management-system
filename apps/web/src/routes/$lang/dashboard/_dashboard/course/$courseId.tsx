@@ -212,7 +212,7 @@ const CourseOverview = ({ course }: { course: CourseResponse }) => {
           {t('words.professors')}
         </h4>
         <div className="flex h-fit flex-col max-md:gap-4">
-          <span className="uppercase text-darkOrange-5 text-lg- ">
+          <span className="uppercase text-darkOrange-5 text-lg">
             {t('dashboard.course.coordinator')}
           </span>
           {course.mainProfessors.map((professor) => (
@@ -223,20 +223,22 @@ const CourseOverview = ({ course }: { course: CourseResponse }) => {
             />
           ))}
         </div>
-        <div className="flex h-fit flex-col max-md:gap-4">
-          <span className="uppercase text-darkOrange-5 text-lg- ">
-            {t('courses.details.associatedProfessors')}
-          </span>
-          <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
-            {course.associatedProfessors.map((professor) => (
-              <ProfessorCardReduced
-                key={professor.id}
-                professor={professor}
-                hasDonateButton
-              />
-            ))}
+        {course.associatedProfessors.length > 0 ? (
+          <div className="flex h-fit flex-col max-md:gap-4">
+            <span className="uppercase text-darkOrange-5 text-lg- ">
+              {t('courses.details.associatedProfessors')}
+            </span>
+            <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
+              {course.associatedProfessors.map((professor) => (
+                <ProfessorCardReduced
+                  key={professor.id}
+                  professor={professor}
+                  hasDonateButton
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </section>
     </div>
   );
