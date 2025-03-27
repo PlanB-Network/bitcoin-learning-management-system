@@ -3,6 +3,7 @@ import {
   customType,
   foreignKey,
   index,
+  jsonb,
   pgEnum,
   pgSchema,
   primaryKey,
@@ -75,6 +76,18 @@ export const usersAccounts = users.table('accounts', (t) => ({
     }),
   createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
+// SESSIONS
+
+export const usersSessions = users.table('sessions', (t) => ({
+  sid: t.varchar({ length: 255 }).primaryKey().notNull(),
+  uid: t
+    .uuid()
+    .notNull()
+    .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+  expires: t.timestamp({ withTimezone: true }).notNull(),
+  cookie: jsonb().notNull(),
 }));
 
 // CAREER

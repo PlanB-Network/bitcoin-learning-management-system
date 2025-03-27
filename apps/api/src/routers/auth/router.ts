@@ -9,7 +9,6 @@ import { publicProcedure, studentProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 
 import { credentialsAuthRouter } from './credentials.js';
-import { lud4AuthRouter } from './lud4.js';
 
 const logoutProcedure = studentProcedure
   .input(z.void())
@@ -47,7 +46,6 @@ const configProcedure = publicProcedure
 
 export const authRouter = createTRPCRouter({
   credentials: credentialsAuthRouter,
-  lud4: lud4AuthRouter,
   logout: logoutProcedure,
   config: configProcedure,
 });

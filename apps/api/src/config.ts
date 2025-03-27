@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import process from 'node:process';
 
 import type { PostgresClientConfig } from '@blms/database';
-import type { RedisClientConfig } from '@blms/redis';
 import type {
   GitHubSyncConfig,
   OpenTimestampsConfig,
@@ -79,14 +78,6 @@ export const postgres: PostgresClientConfig = {
   database: getenv('POSTGRES_DB'),
   username: getenv('POSTGRES_USER'),
   password: getenv('POSTGRES_PASSWORD'),
-};
-
-export const redis: RedisClientConfig = {
-  host: getenv('REDIS_HOST', 'localhost'),
-  port: getenv('REDIS_PORT', 6379),
-  database: getenv('REDIS_DB', 0),
-  password: process.env.REDIS_PASSWORD, // We do not use getenv here because
-  username: process.env.REDIS_USERNAME, // these values can be undefined
 };
 
 export const sync: GitHubSyncConfig = {

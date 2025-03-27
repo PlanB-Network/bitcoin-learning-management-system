@@ -56,7 +56,6 @@ You may want to run the project locally to test your changes. Here is how to do 
 
 - Node.js
 - PostgreSQL
-- Redis
 
 #### Install global dependencies
 
