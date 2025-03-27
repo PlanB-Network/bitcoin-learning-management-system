@@ -38,8 +38,8 @@ interface ModalPaymentSummaryProps {
   professorNames: string;
   course: CourseResponse;
   mobileDisplay: boolean;
-  paidPriceDollars?: number | null;
-  satsPrice?: number;
+  paidPriceDollars: number;
+  satsPrice: number;
 }
 
 export const ModalPaymentSummary = ({
@@ -141,28 +141,12 @@ export const ModalPaymentSummary = ({
           />
         </div>
         <DescriptionWithBreaks />
-        {paidPriceDollars && satsPrice && (
-          <div className="flex justify-center items-center w-full gap-1">
-            <span className="font-semibold leading-normal text-darkOrange-5">
-              {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
-            </span>
-            <span className="leading-normal text-darkOrange-5">·</span>
-            <span className="leading-normal text-darkOrange-5">
-              {satsPrice} sats
-            </span>
-          </div>
-        )}
-        {/* <a
-          className="flex items-center justify-center w-full px-4 py-2 text-white text-xs lg:text-sm leading-none lg:leading-relaxed bg-newGray-3 lg:bg-white/25 lg:backdrop-blur-md rounded-lg"
-          href={computeAssetCdnUrl(
-            `courses/${course.id}/assets/curriculum.pdf`,
-          )}
-          target="_blank"
-          download
-          rel="noreferrer"
-        >
-          {t('courses.payment.downloadCurriculum')}
-        </a> */}
+
+        <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
+          <span className="font-semibold">${paidPriceDollars}</span>
+          <span>·</span>
+          <span>{satsPrice} sats</span>
+        </span>
       </div>
     </div>
   );

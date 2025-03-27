@@ -191,6 +191,8 @@ export const CoursePaymentModal = ({
               course={course}
               courseName={course?.name}
               professorNames={professorNames}
+              paidPriceDollars={dollarPrice}
+              satsPrice={satsPriceReduced}
               mobileDisplay={false}
             />
             <div className="flex flex-col w-full items-center justify-center lg:m-6">
@@ -270,6 +272,8 @@ export const CoursePaymentModal = ({
                     course={course}
                     courseName={course?.name}
                     professorNames={professorNames}
+                    paidPriceDollars={dollarPrice}
+                    satsPrice={satsPriceReduced}
                     mobileDisplay={true}
                   />
                 </PaymentDescription>
