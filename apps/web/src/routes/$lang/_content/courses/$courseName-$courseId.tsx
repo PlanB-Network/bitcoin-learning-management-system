@@ -153,7 +153,7 @@ function CourseDetails() {
 
   const {
     mutateAsync: downloadTicketMutateAsync,
-    isPending: downloadTicketisPending,
+    isPending: downloadTicketIsPending,
   } = trpc.user.courses.downloadChapterTicket.useMutation();
 
   const { data: reviews } = trpc.content.getPublicCourseReviews.useQuery(
@@ -279,147 +279,150 @@ function CourseDetails() {
           breakpoints={{ default: 320, lg: 576 }}
         />
 
-        <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
-          <ListItem
-            leftText={t('words.professor')}
-            rightText={course.mainProfessors.map((professor, index) => (
-              <React.Fragment key={professor.id}>
-                <Link
-                  to={`/professor/${formatNameForURL(professor.name || '')}-${
-                    professor.id
-                  }`}
-                  className="hover:text-darkOrange-5"
-                >
-                  {professor.name}
-                </Link>
-                {index < course.mainProfessors.length - 1 && ', '}
-              </React.Fragment>
-            ))}
-            variant="light"
-            hasIncreasedPadding
-          />
-          <ListItem
-            leftText={t('words.level.level')}
-            rightText={t(`words.level.${course.level}`)}
-            variant="light"
-            hasIncreasedPadding
-          />
-          <ListItem
-            leftText={t('words.duration')}
-            rightText={
-              <div className="flex flex-col md:flex-row">
-                <span>{`${course.hours} ${t('words.hours')}`}</span>
-                {course.startDate && course.endDate ? (
-                  <>
-                    <span className="font-light mx-2 max-md:hidden"> | </span>
-                    {getDateString(course.startDate, course.endDate)}
-                  </>
-                ) : (
-                  ''
-                )}
-              </div>
-            }
-            variant="light"
-            hasIncreasedPadding
-          />
-          {course.format === 'hybrid' && (
+        <div className="w-full">
+          <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
             <ListItem
-              leftText={t('words.price')}
+              leftText={t('words.professor')}
+              rightText={course.mainProfessors.map((professor, index) => (
+                <React.Fragment key={professor.id}>
+                  <Link
+                    to={`/professor/${formatNameForURL(professor.name || '')}-${
+                      professor.id
+                    }`}
+                    className="hover:text-darkOrange-5"
+                  >
+                    {professor.name}
+                  </Link>
+                  {index < course.mainProfessors.length - 1 && ', '}
+                </React.Fragment>
+              ))}
+              variant="light"
+              hasIncreasedPadding
+            />
+            <ListItem
+              leftText={t('words.level.level')}
+              rightText={t(`words.level.${course.level}`)}
+              variant="light"
+              hasIncreasedPadding
+            />
+            <ListItem
+              leftText={t('words.duration')}
               rightText={
-                course.onlinePriceDollars && course.inpersonPriceDollars ? (
-                  <p>
+                <div className="flex flex-col md:flex-row">
+                  <span>{`${course.hours} ${t('words.hours')}`}</span>
+                  {course.startDate && course.endDate ? (
+                    <>
+                      <span className="font-light mx-2 max-md:hidden"> | </span>
+                      {getDateString(course.startDate, course.endDate)}
+                    </>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              }
+              variant="light"
+              hasIncreasedPadding
+            />
+            {course.format === 'hybrid' && (
+              <ListItem
+                leftText={t('words.price')}
+                rightText={
+                  course.onlinePriceDollars && course.inpersonPriceDollars ? (
                     <p>
-                      ${course.inpersonPriceDollars}{' '}
-                      <span className="font-normal lowercase">
-                        ({t('words.inperson')})
-                      </span>
+                      <p>
+                        ${course.inpersonPriceDollars}{' '}
+                        <span className="font-normal lowercase">
+                          ({t('words.inperson')})
+                        </span>
+                      </p>
+                      <p>
+                        ${course.onlinePriceDollars}{' '}
+                        <span className="font-normal lowercase">
+                          ({t('words.online')})
+                        </span>
+                      </p>
                     </p>
-                    <p>
-                      ${course.onlinePriceDollars}{' '}
-                      <span className="font-normal lowercase">
-                        ({t('words.online')})
-                      </span>
-                    </p>
-                  </p>
-                ) : (
-                  <>
-                    {course.onlinePriceDollars || course.inpersonPriceDollars
-                      ? course.inpersonPriceDollars
-                        ? `${course.inpersonPriceDollars}$`
-                        : `${course.onlinePriceDollars}$`
-                      : t('words.free')}
-                  </>
-                )
-              }
-              variant="light"
-              hasIncreasedPadding
-            />
-          )}
-          {course.format === 'online' && (
+                  ) : (
+                    <>
+                      {course.onlinePriceDollars || course.inpersonPriceDollars
+                        ? course.inpersonPriceDollars
+                          ? `${course.inpersonPriceDollars}$`
+                          : `${course.onlinePriceDollars}$`
+                        : t('words.free')}
+                    </>
+                  )
+                }
+                variant="light"
+                hasIncreasedPadding
+              />
+            )}
+            {course.format === 'online' && (
+              <ListItem
+                leftText={t('words.price')}
+                rightText={
+                  course.onlinePriceDollars
+                    ? `${course.onlinePriceDollars}$`
+                    : t('words.free')
+                }
+                variant="light"
+                hasIncreasedPadding
+              />
+            )}
+            {course.format === 'inperson' && (
+              <ListItem
+                leftText={t('words.price')}
+                rightText={
+                  course.inpersonPriceDollars
+                    ? `${course.inpersonPriceDollars}$`
+                    : t('words.free')
+                }
+                variant="light"
+                hasIncreasedPadding
+              />
+            )}
             <ListItem
-              leftText={t('words.price')}
-              rightText={
-                course.onlinePriceDollars
-                  ? `${course.onlinePriceDollars}$`
-                  : t('words.free')
-              }
+              leftText={t('words.courseId')}
+              rightText={course.index.toUpperCase()}
               variant="light"
               hasIncreasedPadding
             />
-          )}
-          {course.format === 'inperson' && (
             <ListItem
-              leftText={t('words.price')}
+              leftText={
+                course.isPlanbSchool
+                  ? t('courses.details.pastEditionsRatings')
+                  : t('words.ratings')
+              }
               rightText={
-                course.inpersonPriceDollars
-                  ? `${course.inpersonPriceDollars}$`
-                  : t('words.free')
+                <div className="flex gap-2.5 items-center">
+                  <StarRating
+                    rating={
+                      reviews?.general && reviews.general.length > 0
+                        ? Number(
+                            (
+                              reviews?.general.reduce(
+                                (acc, rating) => acc + rating,
+                                0,
+                              ) / reviews.general.length
+                            ).toFixed(1),
+                          )
+                        : 0
+                    }
+                    starSize={isMobile ? 35 : 30}
+                  />
+                  {reviews?.general && reviews.general.length > 0 && (
+                    <span>({reviews.general.length})</span>
+                  )}
+                </div>
               }
               variant="light"
+              wrapOnMobile
               hasIncreasedPadding
             />
-          )}
-          <ListItem
-            leftText={t('words.courseId')}
-            rightText={course.index.toUpperCase()}
-            variant="light"
-            hasIncreasedPadding
-          />
-          <ListItem
-            leftText={
-              course.isPlanbSchool
-                ? t('courses.details.pastEditionsRatings')
-                : t('words.ratings')
-            }
-            rightText={
-              <div className="flex gap-2.5 items-center">
-                <StarRating
-                  rating={
-                    reviews?.general && reviews.general.length > 0
-                      ? Number(
-                          (
-                            reviews?.general.reduce(
-                              (acc, rating) => acc + rating,
-                              0,
-                            ) / reviews.general.length
-                          ).toFixed(1),
-                        )
-                      : 0
-                  }
-                  starSize={isMobile ? 35 : 30}
-                />
-                {reviews?.general && reviews.general.length > 0 && (
-                  <span>({reviews.general.length})</span>
-                )}
-              </div>
-            }
-            variant="light"
-            wrapOnMobile
-            hasIncreasedPadding
-          />
-          <div className="lg:flex lg:w-full justify-end max-lg:my-2 lg:mt-5">
-            <BuyCourseButtons />
-          </div>
+            <div className="lg:flex lg:w-full justify-end max-lg:my-2 lg:mt-5">
+              <BuyCourseButtons />
+            </div>
+          </article>
+
           {displayDownloadTicket && (
             <div className="ml-2 max-lg:mb-4 max-lg:italic lg:mt-2 flex flex-col gap-4 w-fit">
               <p className="text-lg font-normal max-md:text-base">
@@ -427,7 +430,7 @@ function CourseDetails() {
               </p>
             </div>
           )}
-        </article>
+        </div>
       </section>
     );
   };
@@ -743,7 +746,7 @@ function CourseDetails() {
         }}
       >
         {t('courses.chapter.detail.ticketDownload')}
-        {downloadTicketisPending ? (
+        {downloadTicketIsPending ? (
           <span className="ml-3">
             <FiLoader />
           </span>
