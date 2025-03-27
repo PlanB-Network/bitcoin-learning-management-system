@@ -4,6 +4,7 @@
 export interface YoutubeChannel {
   resourceId: string;
   id: string;
+  projectId: string | null;
   language: string;
   name: string;
   description: string | null;
@@ -20,6 +21,7 @@ export interface JoinedYoutubeChannel {
   description: string | null;
   channel: string;
   trailer: string;
+  projectName?: string | undefined;
   id: string;
   uuid: string;
   tags: string[];

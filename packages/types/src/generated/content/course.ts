@@ -7,6 +7,7 @@ import type { FormattedProfessor } from './professor.js';
 export interface Course {
   id: string;
   index: string;
+  projectId: string | null;
   isArchived: boolean;
   level: string;
   hours: number;
@@ -168,6 +169,7 @@ export interface MinimalJoinedCourse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  projectName?: string | undefined;
   language: string;
   name: string;
   goal: string;
@@ -208,6 +210,7 @@ export interface JoinedCourseProfessorId {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  projectName?: string | undefined;
   language: string;
   name: string;
   goal: string;
@@ -250,6 +253,7 @@ export interface JoinedCourse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  projectName?: string | undefined;
   language: string;
   name: string;
   goal: string;
@@ -335,6 +339,7 @@ export interface CourseResponse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  projectName?: string | undefined;
   language: string;
   name: string;
   goal: string;

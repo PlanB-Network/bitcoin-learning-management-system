@@ -8,6 +8,7 @@ import { createProcessMainFile } from '../main.js';
 
 interface NewsletterMain {
   id: string;
+  project_id?: string;
   level: string;
   author: string;
   title: string;
@@ -55,11 +56,12 @@ export const createProcessChangedNewsletter = (
 
           await transaction`
             INSERT INTO content.newsletters (
-              resource_id, id, author, level, website_url, publication_date, title, description, tags, contributors, language
+              resource_id, id, project_id, author, level, website_url, publication_date, title, description, tags, contributors, language
             )
             VALUES (
               ${resourceId},
               ${parsed.id},
+              ${parsed.project_id},
               ${parsed.author},
               ${parsed.level},
               ${websiteUrl},
@@ -71,6 +73,7 @@ export const createProcessChangedNewsletter = (
               ${parsed.language || 'en'}
             )
             ON CONFLICT (resource_id) DO UPDATE SET
+              project_id = EXCLUDED.project_id,
               author = EXCLUDED.author,
               level = EXCLUDED.level,
               website_url = EXCLUDED.website_url,

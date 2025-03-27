@@ -776,6 +776,11 @@ export const contentNewsletters = content.table('newsletters', (t) => ({
       onUpdate: 'cascade',
     }),
   id: t.uuid().unique().notNull(),
+
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
+
   level: t.varchar({ length: 255 }),
   author: t.text().notNull(),
   websiteUrl: t.text(),
@@ -866,6 +871,10 @@ export const contentYoutubeChannels = content.table(
       }),
     id: t.uuid().unique().notNull(),
 
+    projectId: t
+      .uuid()
+      .references(() => contentProjects.id, { onDelete: 'set null' }),
+
     language: t.varchar({ length: 10 }).notNull(),
 
     name: t.text().notNull(),
@@ -884,6 +893,10 @@ export const courseFormatEnum = pgNativeEnum('course_format', CourseFormat);
 export const contentCourses = content.table('courses', (t) => ({
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
   index: t.varchar({ length: 20 }).unique().notNull(),
+
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
 
   isArchived: t.boolean().default(false).notNull(),
 

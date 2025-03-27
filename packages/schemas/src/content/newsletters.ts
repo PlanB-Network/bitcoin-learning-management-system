@@ -25,6 +25,11 @@ export const joinedNewsletterSchema = resourceSchema
   )
   .merge(
     z.object({
+      projectName: z.string().optional(),
+    }),
+  )
+  .merge(
+    z.object({
       uuid: z.string(),
       id: z.string(),
       tags: z.array(z.string()),

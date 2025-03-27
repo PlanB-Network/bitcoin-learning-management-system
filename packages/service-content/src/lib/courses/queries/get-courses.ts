@@ -34,6 +34,10 @@ export const getCoursesQuery = (language?: string) => {
       c.is_gdpr_compliance,
       c.custom_tc_disclaimer,
       COALESCE(NULLIF(c.sum_of_all_rating::float, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating,
+      COALESCE(
+        (SELECT pr.name FROM content.projects pr WHERE pr.id = c.project_id LIMIT 1),
+        ''
+        ) AS project_name,
       cl.name,
       cl.goal,
       cl.objectives,
@@ -107,6 +111,10 @@ export const getProfessorCoursesQuery = (
       c.is_gdpr_compliance,
       c.custom_tc_disclaimer,
       COALESCE(NULLIF(c.sum_of_all_rating::float, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating,
+      COALESCE(
+        (SELECT pr.name FROM content.projects pr WHERE pr.id = c.project_id LIMIT 1),
+        ''
+        ) AS project_name,
       cl.name,
       cl.goal,
       cl.objectives,

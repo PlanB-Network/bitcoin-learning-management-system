@@ -99,6 +99,7 @@ export const groupByCourse = (
 interface CourseMain {
   id: string;
   is_archived: boolean;
+  project_id?: string;
   level: string;
   hours: number;
   topic: string;
@@ -401,6 +402,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 INSERT INTO content.courses
                   ( id,
                    index,
+                   project_id,
                    is_archived,
                    level,
                    hours,
@@ -432,6 +434,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 VALUES (
                   ${parsedCourse.id},
                   ${course.index},
+                  ${parsedCourse.project_id},
                   ${parsedCourse.is_archived === true},
                   ${parsedCourse.level},
                   ${parsedCourse.hours},
@@ -462,6 +465,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 )
                 ON CONFLICT (id) DO UPDATE SET
                   index = EXCLUDED.index,
+                  project_id = EXCLUDED.project_id,
                   is_archived = EXCLUDED.is_archived,
                   level = EXCLUDED.level,
                   hours = EXCLUDED.hours,

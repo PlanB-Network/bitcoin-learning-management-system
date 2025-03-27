@@ -24,6 +24,11 @@ export const joinedYoutubeChannelSchema = resourceSchema
   )
   .merge(
     z.object({
+      projectName: z.string().optional(),
+    }),
+  )
+  .merge(
+    z.object({
       id: z.string(),
       uuid: z.string(),
       tags: z.array(z.string()),

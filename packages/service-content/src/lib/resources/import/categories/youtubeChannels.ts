@@ -8,6 +8,7 @@ import { createProcessMainFile } from '../main.js';
 
 interface YoutubeChannelMain {
   id: string;
+  project_id?: string;
   name: string;
   language: string;
   description?: string;
@@ -52,12 +53,13 @@ export const createProcessChangedYoutubeChannel = (
 
           await transaction`
               INSERT INTO content.youtube_channels (
-                resource_id, id, language, name, description, channel, trailer
+                resource_id, id, project_id, language, name, description, channel, trailer
               )
               VALUES (
-                ${resourceId}, ${parsed.id}, ${parsed.language}, ${parsed.name}, ${parsed.description?.trim()}, ${parsed.links?.channel}, ${parsed.links?.trailer}
+                ${resourceId}, ${parsed.id}, ${parsed.project_id}, ${parsed.language}, ${parsed.name}, ${parsed.description?.trim()}, ${parsed.links?.channel}, ${parsed.links?.trailer}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
+                project_id = EXCLUDED.project_id,
                 language = EXCLUDED.language,
                 name = EXCLUDED.name,
                 description = EXCLUDED.description,

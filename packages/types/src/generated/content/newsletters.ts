@@ -4,6 +4,7 @@
 export interface Newsletter {
   resourceId: string;
   id: string;
+  projectId: string | null;
   level: string | null;
   author: string;
   websiteUrl: string | null;
@@ -25,6 +26,7 @@ export interface JoinedNewsletter {
   language: string;
   description: string | null;
   title: string;
+  projectName?: string | undefined;
   uuid: string;
   id: string;
   tags: string[];

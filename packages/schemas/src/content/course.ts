@@ -118,6 +118,11 @@ export const minimalJoinedCourseSchema = courseSchema
     customTcDisclaimer: true,
   })
   .merge(
+    z.object({
+      projectName: z.string().optional(),
+    }),
+  )
+  .merge(
     courseLocalizedSchema.pick({
       language: true,
       name: true,
