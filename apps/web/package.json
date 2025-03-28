@@ -22,7 +22,7 @@
     "@react-hooks-library/core": "^0.6.2",
     "@stripe/react-stripe-js": "^3.5.1",
     "@stripe/stripe-js": "^6.1.0",
-    "@tanstack/react-query": "^5.69.2",
+    "@tanstack/react-query": "^5.69.3",
     "@tanstack/react-router": "1.112.0",
     "@trpc/client": "^11.0.0",
     "@trpc/react-query": "^11.0.0",
