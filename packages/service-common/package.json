@@ -22,7 +22,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "pdfjs-dist": "^4.10.38"
+    "pdfjs-dist": "^5.0.375"
   },
   "devDependencies": {
     "@blms/types": "workspace:*"
