@@ -30,7 +30,7 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import SponsorMobile from '#src/assets/home/mobile-logos.webp?no-inline';
 import Sponsor from '#src/assets/home/sponsor-images.webp?no-inline';
-import WorldMap from '#src/assets/home/world-map.webp?no-inline';
+import WorldMap from '#src/assets/home/world-map.png?no-inline';
 import { MainLayout } from '../../components/main-layout.tsx';
 import { AboutUs } from '../../molecules/about-us.tsx';
 import { CourseCard } from '../../organisms/course-card.tsx';
