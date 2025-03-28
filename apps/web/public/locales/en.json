@@ -401,6 +401,8 @@
         "deleteDiscountCodeSuccess": "Discount code successfully deleted",
         "delete": "Delete",
         "cancel": "Cancel",
+        "close": "Close",
+        "generateNewCodes": "Generate new codes",
         "forWhat": "For what kind of product?",
         "tableHead": {
           "code": "Code",
