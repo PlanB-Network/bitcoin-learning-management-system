@@ -11,11 +11,14 @@ import {
   DialogTitle,
   TextTag,
 } from '@blms/ui';
+import Warning from '#src/assets/icons/warning.svg';
 
 import { AppContext } from '#src/providers/context.tsx';
 
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
+import type { CouponCode } from '@blms/types';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -72,9 +75,14 @@ function AdminCoupons() {
     page,
   });
 
-  const modal = useDisclosure();
-  const onModalClose = () => {
-    modal.close();
+  // Delete modal state
+  const [couponToDelete, setCouponToDelete] = useState<CouponCode | null>(null);
+  const deleteModal = useDisclosure();
+
+  // Create modal state
+  const createModal = useDisclosure();
+  const onCreateModalClose = () => {
+    createModal.close();
     coupons.refetch();
   };
 
@@ -90,12 +98,19 @@ function AdminCoupons() {
 
   const [preventDoubleClick, setPreventDoubleClick] = useState(false);
 
-  // Mutation
+  // Mutation - create coupon code
   const createCouponCode = trpc.content.createCouponCode.useMutation({
     onSuccess: (response) => {
       console.log('Coupon code created', response);
-
       setGeneratedCodes(response.map((coupon) => coupon.code));
+    },
+  });
+
+  // Mutation - delete coupon code
+  const deleteCouponCode = trpc.content.deleteCouponCode.useMutation({
+    onSuccess: () => {
+      console.log('Coupon code deleted');
+      coupons.refetch();
     },
   });
 
@@ -136,7 +151,11 @@ function AdminCoupons() {
         <span>{t('dashboard.adminPanel.coupons.explanation')}</span>
       </div>
 
-      <Button className="w-fit" variant="primary" onClick={() => modal.open()}>
+      <Button
+        className="w-fit"
+        variant="primary"
+        onClick={() => createModal.open()}
+      >
         {t('dashboard.adminPanel.coupons.generateNew')}
       </Button>
 
@@ -175,6 +194,7 @@ function AdminCoupons() {
             <th>{t('dashboard.adminPanel.coupons.tableHead.uses')}</th>
             <th>{t('dashboard.adminPanel.coupons.tableHead.total')}</th>
             <th>{t('dashboard.adminPanel.coupons.tableHead.owner')}</th>
+            <th>{t('dashboard.adminPanel.coupons.tableHead.actions')}</th>
           </tr>
         </thead>
 
@@ -193,13 +213,73 @@ function AdminCoupons() {
                 <td> {coupon.uses} </td>
                 <td> {coupon.maxUses} </td>
                 <td> {coupon.owner ?? 'unknown'} </td>
+                <td>
+                  <Button
+                    variant="outline"
+                    size="s"
+                    onClick={() => {
+                      setCouponToDelete(coupon);
+                      deleteModal.open();
+                    }}
+                  >
+                    <FaRegTrashAlt />
+                  </Button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
 
-      <Dialog open={modal.isOpen} onOpenChange={onModalClose}>
+      <Dialog open={deleteModal.isOpen} onOpenChange={deleteModal.close}>
+        <DialogContent
+          showCloseButton={true}
+          className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
+        >
+          <DialogHeader className="hidden">
+            <DialogTitle>
+              {t('dashboard.adminPanel.coupons.deleteDiscountCode')}
+            </DialogTitle>
+            <DialogDescription> </DialogDescription>
+          </DialogHeader>
+
+          <h1 className="text-2xl text-center font-thin text-newOrange-1 my-4 ">
+            {t('dashboard.adminPanel.coupons.deleteDiscountCodeConfirm')}
+          </h1>
+
+          <img src={Warning} alt="Warning" className="size-16" />
+
+          <p className="text-center">
+            {t('dashboard.adminPanel.coupons.deleteDiscountCodeWarning')}
+          </p>
+
+          <div className="flex gap-4">
+            <Button
+              variant="primary"
+              onClick={() => {
+                if (couponToDelete) {
+                  deleteCouponCode.mutate(couponToDelete.code);
+                }
+
+                deleteModal.close();
+              }}
+              className="w-1/2"
+            >
+              {t('dashboard.adminPanel.coupons.delete')}
+            </Button>
+
+            <Button
+              variant="outline"
+              onClick={deleteModal.close}
+              className="w-1/2"
+            >
+              {t('dashboard.adminPanel.coupons.cancel')}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={createModal.isOpen} onOpenChange={onCreateModalClose}>
         <DialogContent
           showCloseButton={true}
           className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"

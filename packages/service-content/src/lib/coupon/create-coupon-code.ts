@@ -27,11 +27,11 @@ export const createCreateCouponCode = ({ postgres }: Dependencies) => {
 
       console.log('Generated codes', codes);
 
-      return sql<CouponCode[]>`
+      return postgres.exec(sql<CouponCode[]>`
         INSERT INTO content.coupon_code (code, item_id, uid, reduction_percentage, max_uses)
           VALUES ${sql(codes.map((code) => [code, options.itemId, uid, options.reductionPercentage, 1]))}
           RETURNING *;
-      `;
+      `);
     }
 
     // Cannot generate multiple multi-use codes
@@ -41,10 +41,10 @@ export const createCreateCouponCode = ({ postgres }: Dependencies) => {
 
     // Generate multi-use code
     const code = options.code?.trim() || nanoid();
-    return sql<CouponCode[]>`
+    return postgres.exec(sql<CouponCode[]>`
     INSERT INTO content.coupon_code (code, item_id, uid, reduction_percentage, max_uses)
       VALUES (${code}, ${options.itemId}, ${uid}, ${options.reductionPercentage}, ${options.maxUses})
       RETURNING *;
-    `;
+    `);
   };
 };

@@ -395,6 +395,12 @@
         "explanation": "Generate and manage discount codes for events and courses - either single-use for scholarships or similar cases, or multi-use for marketing campaigns.",
         "generateNew": "Generate new code",
         "generateDiscountCode": "Generate a discount code",
+        "deleteDiscountCode": "Delete discount code",
+        "deleteDiscountCodeConfirm": "Are you sure you want to delete this discount code?",
+        "deleteDiscountCodeWarning": "Once this code is deleted, it won’t be functional anymore. This change is irreversible",
+        "deleteDiscountCodeSuccess": "Discount code successfully deleted",
+        "delete": "Delete",
+        "cancel": "Cancel",
         "forWhat": "For what kind of product?",
         "tableHead": {
           "code": "Code",
@@ -404,7 +410,8 @@
           "value": "Value",
           "uses": "Used",
           "total": "Total",
-          "owner": "Owner"
+          "owner": "Owner",
+          "actions": "Actions"
         },
         "productEvent": "Event",
         "productCourse": "Course",

@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { couponCodeSchema, couponCodeWithOwnerSchema } from '@blms/schemas';
 import { couponTargetSchema } from '@blms/schemas';
 import { createCreateCouponCode } from '@blms/service-content';
+import { createDeleteCouponCode } from '@blms/service-content';
 import { createGetCouponCode } from '@blms/service-content';
 import { createListEventsAndCourses } from '@blms/service-content';
 import { createListCouponCodes } from '@blms/service-content';
@@ -65,6 +66,15 @@ const createCouponCode = adminProcedure
     createCreateCouponCode(ctx.dependencies)(input, ctx.user.uid),
   );
 
+// Admin
+const deleteCouponCode = adminProcedure
+  .use(checkPermissions(UserPermission.Coupons))
+  .input(z.string())
+  .output<Parser<CouponCode>>(couponCodeSchema)
+  .mutation(({ ctx, input }) =>
+    createDeleteCouponCode(ctx.dependencies)(input),
+  );
+
 // Router
 export const couponRouter = createTRPCRouter({
   // Public
@@ -73,4 +83,5 @@ export const couponRouter = createTRPCRouter({
   listCouponCodes,
   listEventsAndCourses,
   createCouponCode,
+  deleteCouponCode,
 });

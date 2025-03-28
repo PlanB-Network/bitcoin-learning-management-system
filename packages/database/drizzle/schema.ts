@@ -1929,6 +1929,8 @@ export const couponCode = content.table('coupon_code', (t) => ({
   uid: t.uuid().references(() => usersAccounts.uid, {
     onDelete: 'cascade',
   }),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  deletedAt: t.timestamp({ withTimezone: true }), // Paranoid delete
 }));
 
 /**
