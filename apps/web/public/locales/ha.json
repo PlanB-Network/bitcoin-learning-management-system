@@ -223,7 +223,6 @@
       "book_description": "Da fatan za a duba bayanan wurin da aka bayar.\nDa zarar an kammala tanadin ka/ki, za mu aika maka/ki da tikiti na tabbaci da QR code don nunawa a wurin taron.",
       "invoiceId": "ID ɗin Tx",
       "accessibility": "Samun dama",
-      "numberOfChapters": "Yawan shafuka",
       "payment_details": "Bayanan biyan kudi",
       "payment_successful": "Biyan kuɗi ya kammala!",
       "qr_unified": "Wannan lambar QR na gaba daya, don haka yana karɓar biyan kuɗin da ke lightning da on-chain.",

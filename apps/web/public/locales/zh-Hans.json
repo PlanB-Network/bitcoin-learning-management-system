@@ -359,7 +359,6 @@
       "book_description": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票据和二维码，以在活动现场出示。",
       "duration": "持续时间",
       "invoiceId": "交易ID",
-      "numberOfChapters": "章节数量",
       "payment_details": "付款详情",
       "payment_successful": "付款成功！",
       "qr_unified": "此二维码是统一的，因此它接受闪电和链上支付。",

@@ -158,7 +158,6 @@
       "book_description": "Molimo vas da pregledate detalje o mestu održavanja.\nKada se rezervacija obradi, poslaćemo Vam potvrdu o rezervaciji i QR kod, koji treba da pokažete na događaju.",
       "duration": "Trajanje",
       "invoiceId": "ID transakcije",
-      "numberOfChapters": "Broj poglavlja",
       "payment_details": "Detalji o plaćanju",
       "payment_successful": "Uplata uspešna!",
       "qr_unified": "Ovaj QR kod je ujednačen, tako da prihvata lightning i on-chain plaćanja.",

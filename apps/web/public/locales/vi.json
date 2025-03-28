@@ -65,7 +65,6 @@
       "book_description": "Vui long xem lại chi tiết địa điểm đã được cung cấp.\nMột khi quá trình đặt chỗ được xử lý, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
       "duration": "Thời lượng",
       "invoiceId": "Tx ID",
-      "numberOfChapters": "Số lượng chương",
       "payment_details": "Chi tiết thanh toán",
       "payment_successful": "Thanh toán thành công!",
       "qr_unified": "Mã QR này được hợp nhất, nên nó chấp nhận thanh toán Lightning và thanh toán on-chain.",

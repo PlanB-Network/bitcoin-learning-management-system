@@ -336,7 +336,6 @@
       "payment_details": "Makseandmed",
       "payment_successful": "Makse edukalt sooritatud!",
       "back_course": "Tagasi kursuse juurde",
-      "numberOfChapters": "Peatükkide arv",
       "date": "Kuupäev",
       "book_description": "Palun vaadake üle esitatud toimumiskoha andmed.\nKui broneering on töödeldud, anname teile kinnituspileti ja QR-koodi, mida üritusel esitada.",
       "qr_unified": "Antud QR-kood on ühtne, seega see aktsepteerib nii lightning kui ka on-chain makseid.",

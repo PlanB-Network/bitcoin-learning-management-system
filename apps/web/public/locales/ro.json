@@ -199,7 +199,6 @@
       "book_description": "Vă rugăm să verificați detaliile locației furnizate.\nOdată ce rezervarea dvs. este procesată, vă vom trimite un ticket de confirmare și un cod QR pentru a-l prezenta la eveniment.",
       "duration": "Durată",
       "invoiceId": "ID-ul tranzacției",
-      "numberOfChapters": "Numărul de capitole",
       "payment_details": "Detalii de plată",
       "payment_successful": "Plata efectuată cu succes!",
       "qr_unified": "Acest cod QR este unificat, deci acceptă plăți lightning și on-chain.",

@@ -307,7 +307,7 @@
       "duration": "Duration",
       "inPersonCallout": "You are about to purchase <strong>in-person</strong> access to this course.",
       "inPersonDescription": "Please review the course details provided. Once the booking is confirmed, you will receive a confirmation ticket and a QR code to present at the classroom.",
-      "hybridDescription": "Please review the course details provided.\nEach lesson takes place in person on the specified dates and locations. All lessons are always live-streamed and recorded for replay.\n\nIn-person attendance is managed per lesson, so we ask you to book your seat for each lesson you wish to attend in person.",
+      "hybridDescription": "Please review the course details provided.\nEach lesson takes place in person on the specified dates and locations. All classes are always live-streamed and recorded for replay.\n\nIn-person attendance is managed per lesson, so we kindly ask you to book your seat every time you wish to attend physically.",
       "invoiceId": "Tx ID",
       "onlineCallout": "You are about to purchase <strong>online</strong> access to this course.",
       "onlineDescription": "Each session is live-streamed on the platform.\nThis purchase will grant you access to live-streams and replay videos.",
@@ -870,7 +870,7 @@
       "download_ticket": "Download your ticket",
       "language": "Language spoken",
       "limitation": "Limitation",
-      "limitedSeats": "Seats are limited, so if you can’t attend, please cancel your booking.",
+      "limitedSeats": "Seats are limited. Please cancel your booking in case you cannot attend.",
       "max_capacity": "Max capacity of",
       "payment_successful": "Booking successful.",
       "time": "Time"
@@ -1074,8 +1074,8 @@
   },
   "proofreading": {
     "completed": "Proofreading completed",
-    "description": "The original content has been translated by AI, but human review is necessary to ensure its accuracy.",
-    "descriptionOriginalLanguage": "Even if this page is in its original language, human review is still necessary to ensure its accuracy.",
+    "description": "The original text was translated by AI, but it also needs human review to ensure language accuracy.",
+    "descriptionOriginalLanguage": "Even if this content is in its original language, it needs human review to ensure language accuracy.",
     "inProgress": "Proofreading in progress",
     "reviewEarn": "Review and earn sats",
     "rewardsText": "*Rewards may vary based on the $ exchange rate",
