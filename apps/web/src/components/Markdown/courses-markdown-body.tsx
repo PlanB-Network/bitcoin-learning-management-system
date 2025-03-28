@@ -15,8 +15,46 @@ import VideoSVG from '../../assets/resources/video.svg?react';
 import { CopyButton } from '../copy-button.tsx';
 import { ReactPlayer } from '../react-player.tsx';
 
+import { useEffect, useRef } from 'react';
 import { Blockquote } from './blockquote.tsx';
 import { getCourse, getTutorial } from './utils/link-preview.tsx';
+
+const TradingViewWidget = ({
+  symbol,
+  height,
+}: {
+  symbol: string;
+  height: number;
+}) => {
+  const container = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!container.current) return;
+
+    const currentContainer = container.current;
+    const script = document.createElement('script');
+    script.src =
+      'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+    script.type = 'text/javascript';
+    script.async = true;
+    script.innerHTML = `{
+      "autosize": true,
+      "height": "${height}",
+      "symbol": "${symbol}",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "allow_symbol_change": true,
+      "support_host": "https://www.tradingview.com"
+    }`;
+    currentContainer.innerHTML = '';
+    currentContainer.appendChild(script);
+  }, [symbol, height]);
+
+  return <div ref={container} />;
+};
 
 const CoursesMarkdownBody = ({
   content,
@@ -49,12 +87,31 @@ const CoursesMarkdownBody = ({
         ),
         p: ({ children }) => {
           if (
+            typeof children === 'string' &&
+            children.includes(':::tradingview')
+          ) {
+            const str = children
+              .replace(':::tradingview', '')
+              .replace(':::', '')
+              .trim();
+            const symbol = str.match(/SYMBOL=([A-Z]+)/)?.[1] ?? 'BTCUSD';
+            const height = Number.parseInt(
+              str.match(/HEIGHT=(\d+)/)?.[1] ?? '500',
+              10,
+            );
+            return (
+              <TradingViewWidget symbol={symbol} height={Number(height)} />
+            );
+          }
+
+          if (
             Array.isArray(children) &&
             children.length === 1 &&
             typeof children[0] === 'string'
           ) {
             return <p className="text-blue-1000 body-16px">{children}</p>;
           }
+
           return <div className="text-blue-1000 body-16px">{children}</div>;
         },
         a: ({ children, href = '' }) => {
