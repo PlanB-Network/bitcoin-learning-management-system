@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Button, cn } from '@blms/ui';
 
 import { useSmaller } from '#src/hooks/use-smaller.js';
-import Flag from '#src/molecules/Flag/index.js';
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
 
@@ -58,7 +57,6 @@ export const LanguageSelectorHomepage = ({
           }`}
           disabled={language === activeLanguage}
         >
-          <Flag code={language} size="l" />
           <span className="capitalize w-[75px] sm:w-auto lg:w-auto truncate">
             {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
               language}
