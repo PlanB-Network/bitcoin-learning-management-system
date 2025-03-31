@@ -11,6 +11,7 @@ const getCouponCode = (code: string, itemId: string) => {
         LOWER(code) = LOWER(${code})
         AND item_id = ${itemId}
         AND uses < max_uses
+        AND deleted_at IS NULL
         ;
   `;
 };

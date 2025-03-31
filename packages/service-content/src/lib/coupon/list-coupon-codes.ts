@@ -14,7 +14,8 @@ const getCouponCodes = (options: ListOptions) => {
     SELECT *, username as owner
       FROM content.coupon_code
       LEFT JOIN users.accounts ON accounts.uid = coupon_code.uid
-      ${options.singleUse === null ? sql`` : options.singleUse ? sql`WHERE max_uses = 1` : sql`WHERE max_uses > 1`}
+      WHERE deleted_at IS NULL
+      ${options.singleUse === null ? sql`` : options.singleUse ? sql`AND max_uses = 1` : sql`AND max_uses > 1`}
       LIMIT ${options.limit}
       OFFSET ${(options.page - 1) * options.limit}
       ;

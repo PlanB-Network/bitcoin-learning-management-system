@@ -64,6 +64,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
           sql<CouponCode[]>`
           SELECT * FROM content.coupon_code
           WHERE code = ${couponCode}
+            AND deleted_at IS NULL
             AND item_id = ${courseId} AND (uses < max_uses)`,
         )
         .then(firstRow);
