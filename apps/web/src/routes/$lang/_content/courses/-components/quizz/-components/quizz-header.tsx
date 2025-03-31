@@ -16,8 +16,8 @@ export const QuizzHeader = ({
   answersColors,
 }: QuizzHeaderProps) => {
   return (
-    <div className="border-newBlack-1 flex items-center justify-between border md:border-2 bg-darkOrange-5 py-2 md:py-3 pr-2.5 rounded-t-2xl">
-      <span className="px-4 text-white display-small-bold-caps-22px md:display-large-bold-caps-48px md:max-w-[378px]">
+    <div className="border-newBlack-1 flex items-center justify-between border md:border-2 bg-darkOrange-5 py-2 md:py-3 pr-2.5 rounded-t-2xl gap-4">
+      <span className="px-4 text-white display-small-bold-caps-22px md:display-large-bold-caps-48px">
         {title}
       </span>
       {/* Big screen */}
