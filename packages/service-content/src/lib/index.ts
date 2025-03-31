@@ -103,6 +103,16 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     console.log('-- Sync: Deleting proofreadings');
     await deleteProofreadings(errors);
 
+    // Sync professors
+    {
+      const professors = groupByProfessor(filteredFiles, errors);
+      const time = timeLog(professors.length, 'professor');
+      for (const professor of professors) {
+        await updateProfessors(professor, errors);
+      }
+      time();
+    }
+
     // Sync labs
     {
       const labs = groupByLab(filteredFiles, errors);
@@ -173,16 +183,6 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
       const time = timeLog(quizQuestions.length, 'quiz question');
       for (const quizQuestion of quizQuestions) {
         await updateQuizQuestions(quizQuestion, errors);
-      }
-      time();
-    }
-
-    // Sync professors
-    {
-      const professors = groupByProfessor(filteredFiles, errors);
-      const time = timeLog(professors.length, 'professor');
-      for (const professor of professors) {
-        await updateProfessors(professor, errors);
       }
       time();
     }
