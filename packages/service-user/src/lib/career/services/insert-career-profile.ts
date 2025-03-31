@@ -19,7 +19,7 @@ export const createInsertCareerProfile = ({ postgres }: Dependencies) => {
     const BTC402ID = '0b71eea1-4811-4601-a6ad-38d043b52dca';
 
     const userHasBoughtNecessaryCourses =
-      userDetails?.boughtCourses.includes(BTC402ID);
+      userDetails?.boughtCourses?.includes(BTC402ID);
 
     if (!userHasBoughtNecessaryCourses) {
       throw new Error('User has not bought necessary courses');
