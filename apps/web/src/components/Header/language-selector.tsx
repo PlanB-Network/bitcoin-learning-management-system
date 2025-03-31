@@ -1,14 +1,18 @@
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
+import {
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
+  MdOutlineCheck,
+} from 'react-icons/md';
 
 import { Button, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
 
-import Flag from '#src/molecules/Flag/index.js';
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
 
+import { CiGlobe } from 'react-icons/ci';
 import { LANGUAGES, LANGUAGES_MAP } from '../../utils/i18n.ts';
 
 interface LanguageSelectorProps {
@@ -57,9 +61,9 @@ export const LanguageSelector = ({
     }, 100);
   };
 
-  const filteredLanguages = LANGUAGES.filter(
-    (lng) => lng !== activeLanguage,
-  ).sort();
+  const sortedLanguages = LANGUAGES.sort((a, b) =>
+    a.toLowerCase() === activeLanguage.toLowerCase() ? -1 : 1,
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -73,7 +77,7 @@ export const LanguageSelector = ({
             className,
           )}
         >
-          <Flag code={activeLanguage} />
+          <CiGlobe size={24} />
           <MdKeyboardArrowDown
             size={32}
             className={cn(
@@ -97,18 +101,24 @@ export const LanguageSelector = ({
           {t('home.languageSection.availableLanguages')}
         </span>
         <div className="flex flex-wrap justify-center max-lg:w-24 gap-2 lg:gap-4">
-          {filteredLanguages.map((language) => (
+          {sortedLanguages.map((language) => (
             <button
               key={language}
               type="button"
-              className="flex items-center gap-4 lg:px-4 lg:py-2 rounded-md lg:hover:bg-white/10 w-fit lg:w-44"
+              className={cn(
+                'flex items-center lg:px-4 lg:py-2 rounded-md lg:hover:bg-white/10 w-fit lg:w-44',
+                activeLanguage.toLowerCase() === language.toLowerCase() &&
+                  'border rounded-lg border-darkOrange-5 dark gap-2 justify-between',
+              )}
               onClick={() => changeLanguage(language)}
             >
-              <Flag code={language} size="l" className="shrink-0" />
               <span className="capitalize leading-normal max-lg:hidden text-left">
                 {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
                   language}
               </span>
+              {activeLanguage.toLowerCase() === language.toLowerCase() && (
+                <MdOutlineCheck size={20} className="text-darkOrange-5" />
+              )}
             </button>
           ))}
         </div>
@@ -178,7 +188,6 @@ export const LanguageSelectorMobile = ({
           <span className="text-lg leading-normal font-medium text-wrap">
             {t('menu.chooseLanguage')}
           </span>
-          <Flag code={activeLanguage} size="m" className="shrink-0" />
           <MdKeyboardArrowUp
             size={24}
             className={cn(
@@ -190,30 +199,36 @@ export const LanguageSelectorMobile = ({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-[51px] left-1/2 -translate-x-1/2 gap-5 px-[14px] pt-[15px] max-h-[calc(100dvh-84px)]',
+          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-[51px] left-1/2 -translate-x-1/2 gap-3 px-[14px] pt-[15px] max-h-[calc(100dvh-84px)]',
           mode === 'dark' && 'dark',
         )}
         addAnimation={false}
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
       >
-        {LANGUAGES.filter(
-          (language) => language.toLowerCase() !== activeLanguage.toLowerCase(),
+        {LANGUAGES.sort((a, b) =>
+          a.toLowerCase() === activeLanguage.toLowerCase() ? 1 : -1,
         ).map((language) => (
           <button
             key={language}
             type="button"
             onClick={() => changeLanguage(language)}
-            className="flex items-center gap-4 w-full"
+            className={cn(
+              'flex items-center gap-4 w-[177px] mx-auto px-4 py-2',
+              activeLanguage.toLowerCase() === language.toLowerCase() &&
+                'border rounded-lg border-darkOrange-5 dark gap-2 justify-between',
+            )}
             aria-label={`Change language to ${
               LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
               language
             }`}
           >
-            <Flag code={language} size="m" className="shrink-0" />
             <span className="capitalize label-medium-med-16px text-darkOrange-11 dark:text-white">
               {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
                 language}
             </span>
+            {activeLanguage.toLowerCase() === language.toLowerCase() && (
+              <MdOutlineCheck size={20} className="text-darkOrange-5" />
+            )}
           </button>
         ))}
       </PopoverContent>
