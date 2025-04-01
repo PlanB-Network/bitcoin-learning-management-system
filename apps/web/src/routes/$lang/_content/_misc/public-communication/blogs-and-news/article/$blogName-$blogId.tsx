@@ -17,7 +17,7 @@ import BlogSidebar from '../../../-components/public-communication/blog-sidebar.
 import Breadcrumbs from '../../../-components/public-communication/breadcrumbs.tsx';
 
 const BlogMarkdownBody = React.lazy(
-  () => import('../../../-components/public-communication/blog-markdown.tsx'),
+  () => import('#src/components/Markdown/blog-markdown-body.js'),
 );
 
 export const Route = createFileRoute(

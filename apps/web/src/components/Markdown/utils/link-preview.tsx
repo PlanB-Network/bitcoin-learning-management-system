@@ -18,7 +18,7 @@ export const getCourse = (url: string, courses: JoinedCourse[]) => {
   const match = url.match(pattern);
 
   if (match) {
-    const courseId = match[1];
+    const courseId = match[1].slice(-36);
     return courses.find((course) => course.id === courseId) || null;
   }
 

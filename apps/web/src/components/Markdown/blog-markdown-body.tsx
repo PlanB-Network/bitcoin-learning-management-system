@@ -3,9 +3,17 @@ import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlig
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import type { JoinedBlogLight } from '@blms/types';
+import rehypeMathjax from 'rehype-mathjax/svg';
 
+import { useContext } from 'react';
+import rehypeUnwrapImages from 'rehype-unwrap-images';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import { ReactPlayer } from '#src/components/react-player.js';
+import { CourseCard } from '#src/organisms/course-card.tsx';
+import { AppContext } from '#src/providers/context.tsx';
 import { resourceImgUrl } from '#src/utils/index.js';
+import { getCourse } from './utils/link-preview.tsx';
 
 const getBlog = (url: string, blogs: JoinedBlogLight[]) => {
   const pattern = /^https:\/\/planb\.network\/blogs\/(\d+)$/;
@@ -28,6 +36,8 @@ const BlogMarkdownBody = ({
   assetPrefix: string;
   blogs: JoinedBlogLight[];
 }) => {
+  const { courses } = useContext(AppContext);
+
   return (
     <ReactMarkdown
       components={{
@@ -134,6 +144,15 @@ const BlogMarkdownBody = ({
             );
           }
 
+          const course = getCourse(href, courses ?? []);
+          if (course) {
+            return (
+              <div className="w-full max-w-[500px] md:max-w-[340px] max-md:mx-auto py-2 md:py-1 md:mx-2 md:inline-block md:overflow-hidden">
+                <CourseCard course={course} mode="light" />
+              </div>
+            );
+          }
+
           return (
             <a
               href={href}
@@ -217,6 +236,8 @@ const BlogMarkdownBody = ({
           );
         },
       }}
+      remarkPlugins={[remarkGfm, rehypeUnwrapImages, [remarkMath, {}]]}
+      rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
         src.startsWith('http') ? src : `${assetPrefix}/${src}`
       }
