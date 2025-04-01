@@ -21,6 +21,7 @@ import type { CouponCode } from '@blms/types';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import SortableTableHeader from '../-components/sortable-table-header.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/administration/coupons',
@@ -62,6 +63,9 @@ function AdminCoupons() {
 
   const itemsMap = new Map(items.data?.map((item) => [item.id, item]));
 
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  const [sortKey, setSortKey] = useState<string | null>(null);
+
   const coupons = trpc.content.listCouponCodes.useQuery({
     singleUse:
       filters.has('singleUse') && filters.has('multiUse')
@@ -71,6 +75,8 @@ function AdminCoupons() {
           : filters.has('multiUse')
             ? false
             : null,
+    sortBy: sortKey ?? 'createdAt',
+    sortDirection,
     limit: 10_000,
     page,
   });
@@ -199,16 +205,54 @@ function AdminCoupons() {
 
       <table>
         <thead className="text-left">
-          <tr>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.code')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.type')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.name')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.discount')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.uses')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.total')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.owner')}</th>
-            <th>{t('dashboard.adminPanel.coupons.tableHead.actions')}</th>
-          </tr>
+          <SortableTableHeader
+            onSort={({ key, direction }) => {
+              setSortKey(key);
+              setSortDirection(direction);
+            }}
+            items={[
+              {
+                key: 'code',
+                label: t('dashboard.adminPanel.coupons.tableHead.code'),
+                sortable: true,
+              },
+              {
+                key: 'type',
+                label: t('dashboard.adminPanel.coupons.tableHead.type'),
+                sortable: false,
+              },
+              {
+                key: 'name',
+                label: t('dashboard.adminPanel.coupons.tableHead.name'),
+                sortable: false,
+              },
+              {
+                key: 'reductionPercentage',
+                label: t('dashboard.adminPanel.coupons.tableHead.discount'),
+                sortable: true,
+              },
+              {
+                key: 'uses',
+                label: t('dashboard.adminPanel.coupons.tableHead.uses'),
+                sortable: true,
+              },
+              {
+                key: 'maxUses',
+                label: t('dashboard.adminPanel.coupons.tableHead.total'),
+                sortable: true,
+              },
+              {
+                key: 'username',
+                label: t('dashboard.adminPanel.coupons.tableHead.owner'),
+                sortable: true,
+              },
+              {
+                key: 'actions',
+                label: t('dashboard.adminPanel.coupons.tableHead.actions'),
+                sortable: false,
+              },
+            ]}
+          />
         </thead>
 
         <tbody>
@@ -221,8 +265,8 @@ function AdminCoupons() {
                     ? t('dashboard.adminPanel.coupons.productEvent')
                     : t('dashboard.adminPanel.coupons.productCourse')}
                 </td>
-                <td>{itemsMap.get(coupon.itemId)?.name ?? 'unknown'}</td>
-                <td>{coupon.reductionPercentage}%</td>
+                <td> {itemsMap.get(coupon.itemId)?.name ?? 'unknown'} </td>
+                <td> {coupon.reductionPercentage}% </td>
                 <td> {coupon.uses} </td>
                 <td> {coupon.maxUses} </td>
                 <td> {coupon.owner ?? 'unknown'} </td>

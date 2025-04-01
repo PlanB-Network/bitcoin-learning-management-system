@@ -43,6 +43,8 @@ const listCouponCodes = adminProcedure
       singleUse: z.boolean().nullable().default(null),
       limit: z.number().default(10),
       page: z.number().default(1),
+      sortBy: z.string().default('createdAt'),
+      sortDirection: z.enum(['asc', 'desc']).default('desc'),
     }),
   )
   .output<Parser<CouponCodeWithOwner[]>>(z.array(couponCodeWithOwnerSchema))
