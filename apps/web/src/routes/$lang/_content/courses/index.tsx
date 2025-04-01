@@ -12,7 +12,6 @@ import { LabsPresentation } from '#src/components/labs-presentation.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { CourseSelector } from './-components/course-selector.tsx';
 import { CoursesGallery } from './-components/courses-gallery.tsx';
-import { FeaturedSchool } from './-components/featured-school.tsx';
 
 export const Route = createFileRoute('/$lang/_content/courses/')({
   component: CoursesExplorer,
@@ -30,14 +29,13 @@ function CoursesExplorer() {
         .filter(
           (course) =>
             course.isArchived === false &&
-            course.index !== selectedSchool &&
             course.language.toLowerCase() === i18n.language.toLowerCase(),
         )
         .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)))
+        .sort((a, b) =>
+          a.index === selectedSchool ? -1 : b.index === selectedSchool ? 1 : 0,
+        )
     : [];
-  const selectedSchoolCourse = courses?.find(
-    (course) => course.index === selectedSchool,
-  );
 
   return (
     <PageLayout
@@ -46,17 +44,17 @@ function CoursesExplorer() {
       description={t('courses.explorer.pageDescription')}
       paddingXClasses="px-[15px]"
       maxWidth="max-w-[3000px]"
+      hideDescriptionOnMobile={false}
     >
-      {selectedSchoolCourse && (
-        <div className="max-w-[1227px] mx-auto mt-7 md:mt-14">
-          <FeaturedSchool course={selectedSchoolCourse} />
-        </div>
-      )}
-
       {!filteredCourses && <Loader size={'s'} />}
 
       <div className="max-w-[1227px] mx-auto max-md:mt-3">
-        {filteredCourses && <CoursesGallery courses={filteredCourses} />}
+        {filteredCourses && (
+          <CoursesGallery
+            courses={filteredCourses}
+            selectedSchool={selectedSchool}
+          />
+        )}
       </div>
       <div className="border-t border-newGray-1 max-w-[300px] md:max-w-[730px] xl:max-w-[1115px] w-full mx-auto" />
       <div className="py-5 lg:py-[60px]">

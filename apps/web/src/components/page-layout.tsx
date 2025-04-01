@@ -17,6 +17,7 @@ interface Props {
   className?: string;
   maxWidth?: string;
   paddingXClasses?: string;
+  hideDescriptionOnMobile?: boolean;
 }
 
 export const PageLayout = ({
@@ -30,6 +31,7 @@ export const PageLayout = ({
   className,
   maxWidth = 'max-w-6xl',
   paddingXClasses = 'px-2 md:px-10',
+  hideDescriptionOnMobile = true,
 }: Props) => {
   return (
     <MainLayout variant={variant} footerVariant={footerVariant}>
@@ -43,6 +45,7 @@ export const PageLayout = ({
               subtitle={subtitle}
               description={description}
               link={link}
+              hideDescriptionOnMobile={hideDescriptionOnMobile}
             />
           )}
           {children && <div className="my-4 sm:my-6">{children}</div>}

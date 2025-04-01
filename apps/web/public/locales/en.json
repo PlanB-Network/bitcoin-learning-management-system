@@ -23,8 +23,9 @@
     "title": "About Plan ₿ Network"
   },
   "accessType": {
-    "physical": "In-person",
+    "hybrid": "In-person & online",
     "online": "Online",
+    "physical": "In-person",
     "replay": "Replay"
   },
   "auth": {
@@ -277,11 +278,11 @@
     "explorer": {
       "buildPath": "Build your own journey",
       "comingSoon": "coming soon",
-      "exploreCourses": "Explore all Plan ₿ Courses",
+      "exploreCourses": "Explore Plan ₿ Courses",
       "findCourses": "Find the perfect course for your needs thanks to the Course Selection Tool",
       "goal": "Goal:",
       "journey": "Bitcoin is a journey, not a destination",
-      "pageDescription": "The Plan ₿ Academy aims at simplifying Bitcoin education worldwide. Curated by experts from various fields, our academy provides a comprehensive range of courses designed to clarify every aspect of Bitcoin.\nFrom beginner to expert, whether at your own pace or followed weekly by a professor, we hope the academy can help you gain a deeper understanding of the expansive world of Bitcoin. Many of our courses are completely free so that anyone, anywhere, can access quality education.",
+      "pageDescription": "Plan ₿ Academy offers a vast range of courses on Bitcoin, both free and premium, from beginner to expert. Led by experts or self-paced, they adapt to every learning style. Our mission is simple: to make Bitcoin knowledge clear, engaging, and accessible to all!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "The Plan ₿ School, led by Giacomo Zucco, offers intensive three-month educational programs designed to bridge the gap between learning and real-world applications. Beyond traditional classes, students engage in company-led practical projects and a first-class bootcamp dedicated to top performers. Only the best talents advance after two competitive selection rounds, ensuring that the final top students get fully equipped to launch their careers in the Bitcoin industry.",
       "seeCourse": "Discover the course"
@@ -305,9 +306,9 @@
       "date": "Date",
       "downloadCurriculum": "Download curriculum",
       "duration": "Duration",
+      "hybridDescription": "Please review the course details provided.\nEach lesson takes place in person on the specified dates and locations. All classes are always live-streamed and recorded for replay.\n\nIn-person attendance is managed per lesson, so we kindly ask you to book your seat every time you wish to attend physically.",
       "inPersonCallout": "You are about to purchase <strong>in-person</strong> access to this course.",
       "inPersonDescription": "Please review the course details provided. Once the booking is confirmed, you will receive a confirmation ticket and a QR code to present at the classroom.",
-      "hybridDescription": "Please review the course details provided.\nEach lesson takes place in person on the specified dates and locations. All classes are always live-streamed and recorded for replay.\n\nIn-person attendance is managed per lesson, so we kindly ask you to book your seat every time you wish to attend physically.",
       "invoiceId": "Tx ID",
       "onlineCallout": "You are about to purchase <strong>online</strong> access to this course.",
       "onlineDescription": "Each session is live-streamed on the platform.\nThis purchase will grant you access to live-streams and replay videos.",
@@ -391,65 +392,65 @@
         "seeMore": "See more",
         "viewCV": "View CV"
       },
+      "confirmRemoval": "Confirm removal",
       "coupons": {
-        "explanation": "Generate and manage discount codes for events and courses - either single-use for scholarships or similar cases, or multi-use for marketing campaigns.",
-        "generateNew": "Generate new code",
-        "generateDiscountCode": "Generate a discount code",
-        "deleteDiscountCode": "Delete discount code",
-        "deleteDiscountCodeConfirm": "Are you sure you want to delete this discount code?",
-        "deleteDiscountCodeWarning": "Once this code is deleted, it won’t be functional anymore. This change is irreversible",
-        "deleteDiscountCodeSuccess": "Discount code successfully deleted",
-        "delete": "Delete",
         "cancel": "Cancel",
         "close": "Close",
-        "generateNewCodes": "Generate new codes",
-        "forWhat": "For what kind of product?",
-        "tableHead": {
-          "code": "Code",
-          "type": "Type",
-          "name": "Name",
-          "discount": "Discount",
-          "value": "Value",
-          "uses": "Used",
-          "total": "Total",
-          "owner": "Owner",
-          "actions": "Actions"
-        },
-        "productEvent": "Event",
-        "productCourse": "Course",
-        "forWhichEvent": "For which event?",
-        "forWhichCourse": "For which course?",
-        "discountType": "What type of discount code?",
-        "discountSingleUse": "Single-use",
-        "discountMultiUse": "Multi-use",
-        "discountValue": "Percentage of reduction",
+        "delete": "Delete",
+        "deleteDiscountCode": "Delete discount code",
+        "deleteDiscountCodeConfirm": "Are you sure you want to delete this discount code?",
+        "deleteDiscountCodeSuccess": "Discount code successfully deleted",
+        "deleteDiscountCodeWarning": "Once this code is deleted, it won’t be functional anymore. This change is irreversible",
         "discountCode": "Discount code",
         "discountCodeExplanation": "Warning this code is case-sensitive.",
         "discountCodePlaceholder": "Leave empty for automatic generation",
+        "discountMultiUse": "Multi-use",
+        "discountSingleUse": "Single-use",
+        "discountType": "What type of discount code?",
+        "discountValue": "Percentage of reduction",
         "discountValueExplanation": "Enter a number in steps of 5 (e.g. 5, 10, 15... up to 100)",
         "discountValuePlaceholder": "example: 20 for 20%",
-        "numberOfCodes": "How many codes do you want to generate?",
-        "numberOfCodesPlaceholder": "type a number",
-        "maximumNumberOfUse": "Maximum number of use",
-        "generateCode": "Generate code",
-        "generateCodes": "Generate codes",
-        "generatedCode": "Generated code",
-        "generatedCodes": "Generated codes",
-        "selectCourse": "Select course",
-        "selectEvent": "Select event",
+        "explanation": "Generate and manage discount codes for events and courses - either single-use for scholarships or similar cases, or multi-use for marketing campaigns.",
         "filters": {
           "all": "All",
-          "singleUse": "Single-use",
-          "multiUse": "Multi-use",
+          "courses": "Courses",
           "events": "Events",
-          "courses": "Courses"
+          "multiUse": "Multi-use",
+          "singleUse": "Single-use"
+        },
+        "forWhat": "For what kind of product?",
+        "forWhichCourse": "For which course?",
+        "forWhichEvent": "For which event?",
+        "generateCode": "Generate code",
+        "generateCodes": "Generate codes",
+        "generateDiscountCode": "Generate a discount code",
+        "generateNew": "Generate new code",
+        "generateNewCodes": "Generate new codes",
+        "generatedCode": "Generated code",
+        "generatedCodes": "Generated codes",
+        "maximumNumberOfUse": "Maximum number of use",
+        "numberOfCodes": "How many codes do you want to generate?",
+        "numberOfCodesPlaceholder": "type a number",
+        "productCourse": "Course",
+        "productEvent": "Event",
+        "selectCourse": "Select course",
+        "selectEvent": "Select event",
+        "tableHead": {
+          "actions": "Actions",
+          "code": "Code",
+          "discount": "Discount",
+          "name": "Name",
+          "owner": "Owner",
+          "total": "Total",
+          "type": "Type",
+          "uses": "Used",
+          "value": "Value"
         }
       },
-      "confirmRemoval": "Confirm removal",
       "coursesIndexes": "Courses indexes",
       "date": "Date",
-      "discountCodes": "Discount codes",
       "deleteRole": "Delete role",
+      "discountCodes": "Discount codes",
       "downloadList": "Download list",
       "editRole": "Edit role",
       "githubLink": "Github link",
@@ -506,9 +507,9 @@
       "acceptedFormat": "File format accepted: pdf / Maximum file size: 10 MB.",
       "add": "Add",
       "allowReceivingEmails": "I agree to receive emails from Plan ₿ Network about potential job opportunities",
-      "applicationSaved": "Your application is saved!",
       "applicationComplete": "Your application is <highlight>Complete</highlight>",
       "applicationIncomplete": "Your application is <highlight>Incomplete</highlight>",
+      "applicationSaved": "Your application is saved!",
       "availability": "Your availability",
       "availabilityStart": "When can you start?",
       "availabilityStartPlaceholder": "Date",
@@ -978,17 +979,6 @@
     "sthRepresentingCompany": "something representing the company",
     "underConstructionImage": "Illustration of several rabbits working on a construction site"
   },
-  "lectures": {
-    "buyVideoToUnlock": "Buy the video to unlock it",
-    "checkFullCourse": "Check out the full course",
-    "lecturePartCourse": "This lecture replay is part of the <0>{{courseTitle}}</0> course.\nDive into the full course to master the entire concept and unlock your full potential!",
-    "pageTitle": "Lecture Replays",
-    "partCourse": "This lecture is part of the course:",
-    "watchLecture": "Watch the lecture replay"
-  },
-  "library": {
-    "pageTitle": "Bitcoin Library"
-  },
   "labs": {
     "coordinatedBy": "This lab is coordinated by",
     "description1": "Plan ₿ Labs are study groups designed to provide students with regular practical and interactive classes. Through these study groups, students and professors engage in discussions, debating the latest research, solving real-world challenges, and applying theoretical concepts.",
@@ -1000,6 +990,17 @@
       "title": "Level up your Bitcoin skills!"
     },
     "title": "Practical and interactive classes for continuous learning"
+  },
+  "lectures": {
+    "buyVideoToUnlock": "Buy the video to unlock it",
+    "checkFullCourse": "Check out the full course",
+    "lecturePartCourse": "This lecture replay is part of the <0>{{courseTitle}}</0> course.\nDive into the full course to master the entire concept and unlock your full potential!",
+    "pageTitle": "Lecture Replays",
+    "partCourse": "This lecture is part of the course:",
+    "watchLecture": "Watch the lecture replay"
+  },
+  "library": {
+    "pageTitle": "Bitcoin Library"
   },
   "menu": {
     "bCertDescription": "Pass the ₿-CERT test to assess your Bitcoin level",
@@ -1241,15 +1242,15 @@
       "shortDescription": "Accepting Bitcoin payments and managing it in your treasury",
       "title": "Business"
     },
-    "contribution": {
-      "description": "Want to contribute to the open-source platform of Plan ₿ Network? In this category, you will learn how to write and publish a new tutorial, review or proofread content, or add new useful resources for the community. These tutorials will give you the chance to engage in Bitcoin education and enrich our shared knowledge base.",
-      "shortDescription": "Contribute to the Plan ₿ Network open-source platform",
-      "title": "Contribution"
-    },
     "computer-security": {
       "description": "Computer security is essential for every Bitcoiner. In this category, you will find tutorials on essential tools and general practices to protect your digital environment. Operating systems, secure browsers, password managers, authentication systems, VPNs, and encrypted communication solutions, all the resources presented here aim to enhance your security and privacy.",
       "shortDescription": "Essential tools to protect your digital security and privacy",
       "title": "Computer security"
+    },
+    "contribution": {
+      "description": "Want to contribute to the open-source platform of Plan ₿ Network? In this category, you will learn how to write and publish a new tutorial, review or proofread content, or add new useful resources for the community. These tutorials will give you the chance to engage in Bitcoin education and enrich our shared knowledge base.",
+      "shortDescription": "Contribute to the Plan ₿ Network open-source platform",
+      "title": "Contribution"
     },
     "details": {
       "author": "Author:",
@@ -1346,6 +1347,7 @@
     "booked": "Booked",
     "bookings": "Bookings",
     "business": "Business",
+    "calendar": "Calendar",
     "cancel": "Cancel",
     "careerPortal": "Career Portal",
     "category": "Category",
@@ -1418,6 +1420,7 @@
     "location": "Location",
     "members": " Members",
     "mining": "Mining",
+    "mode": "Mode",
     "movie": "Movie",
     "name": "Name",
     "network": "Network",
