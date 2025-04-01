@@ -136,7 +136,10 @@
       "otherCoursesInterest": "Andere Kurse, die Sie interessieren könnten",
       "premiumContentNeedsPaymentAction": "Zur Kurs-Homepage",
       "thanksTipping": "Sie können sich bedanken, indem Sie dem Professor ein Trinkgeld geben.",
-      "hasBeenProofreadBy": "Dieser Kurs wurde Korrektur gelesen von"
+      "hasBeenProofreadBy": "Dieser Kurs wurde Korrektur gelesen von",
+      "coordinatedBy": "Dieser Kurs wird koordiniert von",
+      "learning": "Lernpfad",
+      "associatedProfessors": "Zugehörige Dozenten"
     },
     "explorer": {
       "pageDescription": "Die Plan ₿ Academy zielt darauf ab, die Bitcoin-Ausbildung weltweit zu vereinfachen. Kuratiert von Experten aus verschiedenen Bereichen, bietet unsere Akademie ein umfassendes Angebot an Kursen, die jeden Aspekt von Bitcoin klären sollen.\nVom Anfänger bis zum Experten, ob in Ihrem eigenen Tempo oder wöchentlich von einem Professor begleitet, hoffen wir, dass die Akademie Ihnen helfen kann, ein tieferes Verständnis für die weitreichende Welt des Bitcoin zu erlangen. Viele unserer Kurse sind völlig kostenlos, so dass jeder, überall, Zugang zu hochwertiger Bildung hat.",
@@ -147,7 +150,8 @@
       "seeCourse": "Entdecken Sie den Kurs",
       "planbSchoolHeadline": "Die Plan ₿ School unter der Leitung von Giacomo Zucco bietet dreimonatige Intensivprogramme, die eine Brücke zwischen Theorie und Praxis schlagen. Neben dem traditionellen Unterricht nehmen die Studierenden an unternehmensgesteuerten Praxisprojekten und einem erstklassigen Bootcamp für Führungskräfte teil. Nur die besten Talente kommen nach zwei wettbewerbsorientierten Auswahlrunden weiter, um sicherzustellen, dass die endgültigen Top-Studenten bestens für den Start ihrer Karriere in der Bitcoin-Branche gerüstet sind.",
       "planbSchool": "PLAN ₿ SCHOOL",
-      "comingSoon": "demnächst"
+      "comingSoon": "demnächst",
+      "goal": "Ziel:"
     },
     "part": {
       "count": "Teil {{count}}"
@@ -172,7 +176,9 @@
       "onlineCallout": "Sie sind dabei, einen <strong>Online</strong>-Zugang zu diesem Kurs zu erwerben.",
       "onlineDescription": "Jede Unterrichtssitzung wird auf der Plattform live gestreamt.\nMit dem Kauf erhalten Sie Zugang zu Live-Streams und Wiederholungsvideos.",
       "inPersonDescription": "Jeder Kurs findet persönlich zu den angegebenen Terminen und an den angegebenen Orten statt und wird außerdem per Live-Stream auf der Plattform übertragen. \nMit dem Kauf erhalten Sie Zugang zu den Präsenz- und Online-Kursen.\nVergessen Sie nicht, Ihren Platz für die Kurse zu reservieren, die Sie persönlich besuchen möchten.",
-      "checkoutError": "Während des Bezahlvorgangs ist ein Fehler aufgetreten.\nBitte versuchen Sie es erneut."
+      "checkoutError": "Während des Bezahlvorgangs ist ein Fehler aufgetreten.\nBitte versuchen Sie es erneut.",
+      "courseType": "Kursart",
+      "hybridDescription": "Bitte überprüfe die bereitgestellten Kursdetails.\nJede Lektion findet persönlich an den angegebenen Daten und Orten statt. Alle Klassen werden immer live gestreamt und aufgezeichnet, um eine Wiedergabe zu ermöglichen.\n\nDie Teilnahme vor Ort wird für jede Lektion separat verwaltet, daher bitten wir dich, dir jedes Mal einen Platz zu buchen, wenn du physisch teilnehmen möchtest."
     },
     "quizz": {
       "clickOnPie": "Klicken Sie auf das Kreisdiagramm, um Ihre Fehler zu überprüfen, und schauen Sie sich die Erklärungen an",
@@ -312,6 +318,11 @@
       "completedFeedbackSubHeadline": "Sie können Ihre Bewertungen und Kommentare jederzeit in Ihrem Dashboard bearbeiten.",
       "congratulationsEnd": "Herzlichen Glückwunsch, Sie haben das Ende des Kurses erreicht",
       "completedChaptersHeadline": "Alle Kapitel sind nun abgeschlossen!"
+    },
+    "format": {
+      "hybrid": "Persönlich/Online",
+      "inperson": "Persönlich",
+      "online": "Online"
     }
   },
   "dashboard": {
@@ -412,7 +423,8 @@
         "objectives": "Ziele",
         "proposeNewCourse": "Einen neuen Kurs vorschlagen",
         "quickRecap": "Hier finden Sie alle allgemeinen Informationen zu diesem Kurs.",
-        "reviews": "Bewertungen"
+        "reviews": "Bewertungen",
+        "goal": "Ziel"
       },
       "profile": {
         "noShortBio": "Bisher ist keine kurze Biografie mit diesem Konto verknüpft, fühlen Sie sich frei, sie auf GitHub hinzuzufügen.",
@@ -461,7 +473,8 @@
       "checkDetailsCompleted": "Hier können Sie alle Details zu dem von Ihnen absolvierten Kurs überprüfen.",
       "coursesCompleted": "Absolvierte Kurse",
       "conclusionHeadline": "Hier ist eine Zusammenfassung dessen, was Sie gelernt haben. Wenn Sie einige Kapitel verpasst oder nicht richtig validiert haben, können Sie dies jetzt nachholen, indem Sie entweder zurückgehen, um zu lernen, oder indem Sie auf die Schaltfläche „Vollständig“ drücken.",
-      "submitReviewInfo": "Sie müssen eine Bewertung abgeben, um Zugang zu dieser Funktion zu erhalten."
+      "submitReviewInfo": "Sie müssen eine Bewertung abgeben, um Zugang zu dieser Funktion zu erhalten.",
+      "coordinator": "Kurskoordinator"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -518,7 +531,62 @@
       "bookings": "Buchungen",
       "makeProfessor": "Professor machen",
       "nameOfEvent": "Name der Veranstaltung",
-      "participants": "Teilnehmer"
+      "participants": "Teilnehmer",
+      "coupons": {
+        "deleteDiscountCode": "Rabattcode löschen",
+        "deleteDiscountCodeConfirm": "Sind Sie sicher, dass Sie diesen Rabattcode löschen möchten?",
+        "deleteDiscountCodeSuccess": "Der Rabattcode wurde erfolgreich gelöscht",
+        "delete": "Löschen",
+        "cancel": "Abbrechen",
+        "close": "Schließen",
+        "generateNewCodes": "Neue Codes generieren",
+        "tableHead": {
+          "actions": "Aktionen",
+          "code": "Code",
+          "type": "Typ",
+          "name": "Name",
+          "discount": "Rabatt",
+          "value": "Wert",
+          "uses": "Gebraucht",
+          "total": "Gesamt",
+          "owner": "Eigentümer"
+        },
+        "discountType": "Welche Art von Rabattcode?",
+        "discountSingleUse": "Einweg",
+        "discountMultiUse": "Mehrweg",
+        "discountValue": "Prozentsatz der Reduzierung",
+        "discountCode": "Rabattcode",
+        "discountCodeExplanation": "Achtung, bei diesem Code ist die Groß- und Kleinschreibung zu beachten.",
+        "discountCodePlaceholder": "Zur automatischen Generierung freilassen",
+        "discountValueExplanation": "Gib eine Zahl in Abständen von 5 ein (z. B. 5, 10, 15... bis 100)",
+        "discountValuePlaceholder": "Beispiel: 20 für 20%",
+        "numberOfCodes": "Wie viele Codes möchtest du generieren?",
+        "numberOfCodesPlaceholder": "Gib eine Zahl ein",
+        "selectCourse": "Wähle einen Kurs aus",
+        "selectEvent": "Wähle eine Veranstaltung aus",
+        "filters": {
+          "all": "Alles",
+          "singleUse": "Einweg",
+          "multiUse": "Mehrweg",
+          "events": "Veranstaltungen",
+          "courses": "Kurse"
+        },
+        "deleteDiscountCodeWarning": "Sobald dieser Code gelöscht wurde, ist er nicht mehr funktionsfähig. Diese Änderung kann nicht rückgängig gemacht werden",
+        "explanation": "Erstelle und verwalte Rabattcodes für Veranstaltungen und Kurse – entweder für den einmaligen Gebrauch bei Stipendien und ähnlichen Fällen, oder für den mehrfachen Gebrauch bei Marketingkampagnen.",
+        "generateNew": "Generiere einen neuen Code",
+        "generateDiscountCode": "Generiere einen Rabattcode",
+        "forWhat": "Für welches Produkt?",
+        "productEvent": "Veranstaltung",
+        "productCourse": "Kurs",
+        "forWhichEvent": "Für welche Veranstaltung?",
+        "forWhichCourse": "Für welchen Kurs?",
+        "maximumNumberOfUse": "Maximale Anzahl der Verwendungen",
+        "generateCode": "Code generieren",
+        "generateCodes": "Codes generieren",
+        "generatedCode": "Generierter Code",
+        "generatedCodes": "Generierte Codes"
+      },
+      "discountCodes": "Rabattcodes"
     },
     "backToDashboard": "Zurück zum Armaturenbrett",
     "careerPortal": {
@@ -696,7 +764,9 @@
       "termsAndConditions": "Bedingungen und Konditionen",
       "uploadCV": "Laden Sie Ihren Lebenslauf hoch",
       "welcome": "Willkommen in Ihrem Karriereportal",
-      "yourRoles": "Ihre Stellenanzeigen"
+      "yourRoles": "Ihre Stellenanzeigen",
+      "applicationIncomplete": "Deine Anwendung ist <highlight>Abgeschlossen</highlight>",
+      "applicationComplete": "Deine Anwendung ist <highlight>Abgeschlossen</highlight>"
     },
     "studentDashboard": "Dashboard für Studenten"
   },
@@ -744,7 +814,14 @@
       "access_online_successful": "Wenn die Veranstaltung beginnt, loggen Sie sich auf der Plattform ein, um Zugang zum Live-Stream auf der Veranstaltungsseite zu erhalten.",
       "description_physical": "Bitte prüfen Sie die Angaben zum Veranstaltungsort.\nSobald Ihre Buchung bestätigt ist, stellen wir Ihnen ein Ticket aus, mit dem Sie an der Veranstaltung teilnehmen können. Mit diesem Ticket erhalten Sie auch Zugang zum Live-Stream und zur Videoaufzeichnung, sofern verfügbar.",
       "description_online": "Bitte überprüfen Sie das Datum und die Uhrzeit der Veranstaltung.\nWenn es soweit ist, melden Sie sich auf der Plattform an, um über die Veranstaltungsseite auf den Live-Stream zuzugreifen.",
-      "access_physical_successful": "Sie können Ihr Ticket hier herunterladen oder es später in Ihrem Dashboard herunterladen."
+      "access_physical_successful": "Sie können Ihr Ticket hier herunterladen oder es später in Ihrem Dashboard herunterladen.",
+      "callout_purchase_online": "Du bist dabei, den <highlight>Online-Zugang</highlight> zu dieser Veranstaltung zu kaufen.",
+      "callout_purchase_replay": "Du bist dabei, den Zugang zur Wiedergabe des Videos dieser Veranstaltung zu kaufen.",
+      "limitedSeats": "Die Plätze sind begrenzt. Bitte storniere deine Buchung, falls du nicht teilnehmen kannst.",
+      "callout_book_online": "Du bist dabei, den Online-Zugang zu dieser Veranstaltung zu buchen.",
+      "callout_book_physical": "Du bist dabei, den <highlight>persönlichen Zugang</highlight> zu dieser Veranstaltung zu buchen.",
+      "callout_book_replay": "Du bist dabei, den Zugang zur Wiedergabe des Videos dieser Veranstaltung zu buchen.",
+      "callout_purchase_physical": "Du bist dabei, den <highlight>persönlichen Zugang</highlight> zu dieser Veranstaltung zu kaufen."
     },
     "newEvent": {
       "button": "Füge mein Event hinzu",
@@ -759,7 +836,9 @@
       "premiumContentNeedsLogin": "Sie müssen eingeloggt sein, um auf diese Veranstaltung zugreifen zu können.",
       "premiumContentNeedsPayment": "Diese Veranstaltung ist Teil eines Premiumprogramms.",
       "premiumContentNeedsPaymentAction": "Zur Veranstaltungsseite gehen"
-    }
+    },
+    "tcMustBeAccepted": "Du musst die Geschäftsbedingungen akzeptieren, um fortzufahren",
+    "tcDisclaimer": "Ich stimme zu, dass meine Informationen mit den Organisatoren zum Zweck des Zugangs zum Veranstaltungsort geteilt werden dürfen."
   },
   "home": {
     "header": {
@@ -856,7 +935,8 @@
     "miningCourseDescription": "Verstehen Sie die Prozesse, Werkzeuge und die Industrie hinter dem Bitcoin-Mining.",
     "moviesDescription": "Entdecken Sie fesselnde Geschichten und eingehende Erkundungen der Entwicklung und der Auswirkungen von Bitcoin",
     "newsletterDescription": "Sammlung von Inhalten, die Sie für Ihre Bildungsprojekte verwenden können",
-    "projectsDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die dazu beitragen, Bitcoin zu verbessern und seine Akzeptanz zu erhöhen"
+    "projectsDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die dazu beitragen, Bitcoin zu verbessern und seine Akzeptanz zu erhöhen",
+    "planBLabsDescription": "Tritt einer Studiengruppe bei, um weiter über Lightning, Mining und Privatsphäre zu lernen"
   },
   "nodeNetwork": {
     "description1": "Wir glauben, dass Bildung nicht nur online stattfinden sollte, sondern auch in physischen Räumen. Um dies zu erreichen, verwaltet das Plan ₿ Network ein Netzwerk von Hubs auf der ganzen Welt, um Denker, Unternehmer und Pädagogen zu empfangen, die den Fortschritt von Bitcoin und Freiheitstechnologien fördern.",
@@ -999,7 +1079,43 @@
     "approvedByCreator": "Vom Ersteller genehmigt",
     "hasBeenProofreadBy": "Dieses Lernprogramm wurde Korrektur gelesen von",
     "hasNotBeenProofread": "Dieses Tutorial wurde noch nicht Korrektur gelesen",
-    "writtenBy": "Dieses Lernprogramm wurde geschrieben von"
+    "writtenBy": "Dieses Lernprogramm wurde geschrieben von",
+    "computer-security": {
+      "title": "Computersicherheit",
+      "shortDescription": "Wichtige Tools zum Schutz deiner digitalen Sicherheit und Privatsphäre",
+      "description": "Computersicherheit ist für jeden Bitcoiner essenziell. In dieser Kategorie findest du Tutorials zu wichtigen Tools und allgemeinen Praktiken, um dein digitales Umfeld zu schützen. Betriebssysteme, sichere Browser, Passwortmanager, Authentifizierungssysteme, VPNs und verschlüsselte Kommunikationslösungen – alle hier präsentierten Ressourcen zielen darauf ab, deine Sicherheit und Privatsphäre zu erhöhen."
+    },
+    "subCategories": {
+      "on-chain": "On-chain",
+      "operating system": "Betriebssystem",
+      "others": "Andere",
+      "peer-to-peer": "Peer-to-peer",
+      "point-of-sale": "Point of Sale",
+      "mobile": "Mobile",
+      "analysis": "Analyse",
+      "authentication": "Authentifizierung",
+      "backup": "Backup",
+      "centralized": "Zentralisiert",
+      "communication": "Kommunikation",
+      "content": "Inhalt",
+      "data": "Daten",
+      "desktop": "Desktop",
+      "hardware": "Hardware",
+      "lightning-network": "Lightning Netzwerk",
+      "bitcoin": "Bitcoin",
+      "pool": "Pool",
+      "resource": "Ressource"
+    },
+    "business": {
+      "shortDescription": "Bitcoin-Zahlungen akzeptieren und in deiner Kasse verwalten",
+      "description": "Möchtest du Bitcoin in dein Unternehmen integrieren? Diese Kategorie sammelt alle Tutorials, die für Fachleute entwickelt wurden. Egal, ob es darum geht, ein Point-of-Sale-System einzurichten, um Bitcoin-Zahlungen einfach zu akzeptieren, oder Bitcoin in der Kasse deines Unternehmens zu verwalten – hier findest du wichtige technische und praktische Informationen.",
+      "title": "Geschäft"
+    },
+    "contribution": {
+      "description": "Möchtest du zur Open-Source-Plattform des Plan ₿ Netzwerks beitragen? In dieser Kategorie lernst du, wie man ein neues Tutorial schreibt und veröffentlicht, Inhalte überprüft oder korrigiert oder neue nützliche Ressourcen für die Community hinzufügt. Diese Tutorials geben dir die Möglichkeit, dich in der Bitcoin-Bildung zu engagieren und unsere gemeinsame Wissensbasis zu bereichern.",
+      "shortDescription": "Trage zur Open-Source-Plattform des Plan ₿ Netzwerks bei",
+      "title": "Beitrag"
+    }
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1195,7 +1311,8 @@
     "total": "Gesamt",
     "payWithBitcoin": "Mit Bitcoin bezahlen",
     "haveReductionCode": "Haben Sie einen Ermäßigungscode?",
-    "payByCard": "Mit Karte bezahlen"
+    "payByCard": "Mit Karte bezahlen",
+    "insertReductionCode": "Gib deinen Rabattcode ein"
   },
   "bCert": {
     "bCertDescription": "Das ₿ Zertifikat ist eine international anerkannte Prüfung, die Ihre Beherrschung von Bitcoin und den davon abgeleiteten Themen bewertet. Dieses Zertifikat ermöglicht es Ihnen, Ihre Fähigkeiten und Kenntnisse in der Bitcoin-Branche nachzuweisen, und gibt Ihnen Zugang zu den besten Unternehmen und hervorragenden Arbeitsstelle.",
@@ -1353,5 +1470,22 @@
     "watchTrailer": "Sehen Sie sich den Trailer an",
     "pageTitle": "Youtube Kanäle",
     "view": "Youtube-Kanal ansehen"
+  },
+  "accessType": {
+    "physical": "Persönlich",
+    "online": "Online",
+    "replay": "Wiedergabe"
+  },
+  "labs": {
+    "coordinatedBy": "Dieses Labor wird koordiniert von",
+    "description1": "Plan ₿ Labs sind Studiengruppen, die darauf ausgelegt sind, den Teilnehmern regelmäßige praktische und interaktive Lektionen zu bieten. Durch diese Studiengruppen tauschen sich Studenten und Professoren aus, diskutieren die neuesten Forschungsergebnisse, lösen reale Herausforderungen und wenden theoretische Konzepte an.",
+    "description2": "Tritt dem Labor bei, das mit deinem Studienbereich übereinstimmt, und verbessere dein Lernerlebnis!",
+    "planBLabs": "Plan ₿ Labs",
+    "presentation": {
+      "link": "Entdecke Plan ₿ Labs",
+      "subtitle": "Tritt einem Labor bei, um zu lernen, zu diskutieren und zu wachsen!",
+      "title": "Verbessere deine Bitcoin-Fähigkeiten!"
+    },
+    "title": "Praktische und interaktive Unterrichtseinheiten für kontinuierliches Lernen"
   }
 }

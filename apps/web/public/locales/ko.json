@@ -319,7 +319,8 @@
       "teacherLed": "강사 주도",
       "thanksTipping": "강사에게 팁을 주며 감사의 뜻을 전할 수 있습니다.",
       "associatedProfessors": "지원 강사진",
-      "coordinatedBy": "이 코스는 다음에 의해 운영됩니다:"
+      "coordinatedBy": "이 코스는 다음에 의해 운영됩니다:",
+      "learning": "학습 경로"
     },
     "explorer": {
       "pageDescription": "Plan ₿ 아카데미는 전 세계적으로 비트코인 교육을 단순화하고자 합니다. 다양한 분야의 전문가들이 선별한 강의들이 Plan ₿ 아카데미에서 제공됩니다.\n초보자부터 전문가까지 스스로 학습하거나 교수님의 주간 강의를 따라갈 수 있습니다. 비트코인의 광대한 세계에 대한 더 깊은 이해를 얻는 데 도움을 줄 수 있기를 바랍니다. 이 강의 중 많은 것은 완전히 무료로, 어디에 있든 누구나 양질의 교육에 접근할 수 있도록 설계되었습니다.",
@@ -356,7 +357,9 @@
       "onlineCallout": "이 코스에 <strong>온라인</strong> 액세스 권한을 구매하려고 합니다.",
       "onlineDescription": "각 수업은 플랫폼에서 라이브 스트리밍됩니다.\n이 구매로 라이브 스트리밍과 리플레이 영상에 액세스할 수 있습니다.",
       "inPersonDescription": "각 수업 세션은 지정된 날짜와 장소에서 대면으로 진행되며, 플랫폼에서 실시간 스트리밍됩니다.\n이 구매를 통해 대면 및 온라인 수업 모두에 참여할 수 있는 권한이 부여됩니다.\n대면 수업을 듣고자 한다면, 좌석을 예약하는 것을 잊지 마세요!",
-      "checkoutError": "결제 과정 중 오류가 발생했습니다.\n다시 시도해 주세요."
+      "checkoutError": "결제 과정 중 오류가 발생했습니다.\n다시 시도해 주세요.",
+      "courseType": "코스 유형",
+      "hybridDescription": "제공된 코스 정보를 확인해 주세요.\n각 수업은 지정된 날짜와 장소에서 대면으로 진행됩니다. 모든 수업은 항상 실시간 스트리밍되며, 리플레이를 위해 녹화됩니다.\n\n대면으로 참여하고 싶을 때마다, 좌석 예약만 해주시면 됩니다!"
     },
     "quizz": {
       "clickOnPie": "파이 차트를 클릭해서 정답을 체크하세요",
@@ -708,7 +711,34 @@
       "type": "유형",
       "upcomingBookings": "다가오는 예약",
       "upcomingBookingsSubtitle": "모든 대면 이벤트 참가자 목록을 다운로드할 수 있습니다.",
-      "userRolesAllocation": "사용자 역할 할당"
+      "userRolesAllocation": "사용자 역할 할당",
+      "coupons": {
+        "tableHead": {
+          "code": "코드",
+          "type": "유형",
+          "name": "이름",
+          "discount": "할인",
+          "value": "값",
+          "uses": "사용된",
+          "total": "총합",
+          "owner": "소유자",
+          "actions": "액션"
+        },
+        "generateNew": "새 코드 생성하기",
+        "generateDiscountCode": "할인 코드 생성하기",
+        "forWhat": "어떤 종류의 상품에 사용할 코드인가요?",
+        "deleteDiscountCodeWarning": "이 코드를 삭제하면 더 이상 사용할 수 없습니다. 이 변경은 되돌릴 수 없습니다.",
+        "deleteDiscountCodeSuccess": "할인 코드가 성공적으로 삭제되었습니다.",
+        "close": "닫기",
+        "cancel": "취소",
+        "delete": "삭제",
+        "generateNewCodes": "새 코드 생성하기",
+        "productEvent": "이벤트",
+        "productCourse": "코스",
+        "explanation": "여기에서 이벤트와 코스를 위한 할인 코드를 생성하고 관리할 수 있습니다 — 한 번만 사용할 수 있는 코드부터, 여러 번 사용 가능한 코드까지 만들 수 있습니다.",
+        "deleteDiscountCode": "할인 코드 삭제하기",
+        "deleteDiscountCodeConfirm": "이 할인 코드를 삭제하시겠습니까?"
+      }
     },
     "careerPortal": {
       "bitcoinProjectParticipant": "비트코인 프로젝트에 적극적으로 기여한 경험이 있습니까?\n(과거 또는 현재)",
@@ -1415,5 +1445,10 @@
     "view": "유튜브 채널 보기",
     "watchTrailer": "예고편 보기",
     "pageTitle": "유튜브 채널"
+  },
+  "accessType": {
+    "physical": "대면",
+    "online": "온라인",
+    "replay": "재생"
   }
 }

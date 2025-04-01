@@ -426,7 +426,7 @@
         "discountCode": "Discount code",
         "discountCodeExplanation": "Warning this code is case-sensitive.",
         "discountCodePlaceholder": "Leave empty for automatic generation",
-        "discountValueExplanation": "Enter a number in steps of 5 (e.g. 5, 10, 15... up to 100)",
+        "discountValueExplanation": "Enter a number in increments of 5 (e.g. 5, 10, 15... up to 100)",
         "discountValuePlaceholder": "example: 20 for 20%",
         "numberOfCodes": "How many codes do you want to generate?",
         "numberOfCodesPlaceholder": "type a number",

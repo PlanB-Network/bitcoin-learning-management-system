@@ -176,7 +176,9 @@
       "onlineCallout": "Unakaribia kununua <strong>mtandaoni</strong> ufikiaji wa kozi hii.",
       "onlineDescription": "Kila kikao kinatangazwa moja kwa moja kwenye jukwaa.\nUnunuzi huu utakupa ufikiaji wa matangazo ya moja kwa moja na video za marudiano.",
       "inPersonDescription": "Kila kikao kinatokea ana kwa ana kwenye tarehe na maeneo yaliyoainishwa na pia kinaonyeshwa moja kwa moja kwenye jukwaa.\nUnunuzi huu utakupa ufikiaji wa madarasa ya ana kwa ana na ya mtandaoni.\nUsisahau kuhifadhi kiti chako kwa madarasa unayotaka kuhudhuria ana kwa ana.",
-      "checkoutError": "Kosa limetokea wakati wa mchakato wa kulipa.\nTafadhali jaribu tena."
+      "checkoutError": "Kosa limetokea wakati wa mchakato wa kulipa.\nTafadhali jaribu tena.",
+      "courseType": "Aina ya kozi",
+      "hybridDescription": "Tafadhali pitia maelezo ya kozi yaliyotolewa.Kila somo hufanyika ana kwa ana kwenye tarehe na maeneo yaliyoainishwa. Madarasa yote daima hurekodiwa na kupeperushwa moja kwa moja kwa ajili ya kurudiwa.Udhibitisho wa uwepo kwa ana kwa ana unasimamiwa kwa kila somo, kwa hivyo tunakuomba uweke nafasi yako kila wakati unapotaka kuhudhuria kwa mwili."
     },
     "quizz": {
       "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
@@ -415,7 +417,8 @@
       "shareOnSocials": "Shiriki kwenye mitandao ya kijamii:",
       "tweetText": "Nimefurahi kukamilisha kozi ya {{courseIndex}} katika @planb_network na kupata diploma yangu kwa alama ya {{score}}/100 kwenye mtihani wa mwisho! {{emoji}} #PBNDiploma\n  {{certificateUrl}}",
       "submitReviewInfo": "Unapaswa kuwasilisha ukaguzi ili kupata ufikiaji wa kipengele hiki.",
-      "conclusionHeadline": "Huu hapa ni muhtasari wa yale uliyojifunza. Ikiwa baadhi ya sura zimekosa au hazijathibitishwa ipasavyo, sasa ni wakati wa kufanya hivyo, ama kwa kurudi kujifunza, au kwa kubonyeza kitufe kamili."
+      "conclusionHeadline": "Huu hapa ni muhtasari wa yale uliyojifunza. Ikiwa baadhi ya sura zimekosa au hazijathibitishwa ipasavyo, sasa ni wakati wa kufanya hivyo, ama kwa kurudi kujifunza, au kwa kubonyeza kitufe kamili.",
+      "coordinator": "Mratibu wa kozi"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -528,7 +531,53 @@
       "downloadList": "Pakua orodha",
       "upcomingBookingsSubtitle": "Hapa unaweza kupakua orodha ya washiriki kwa matukio yote ya ana kwa ana.",
       "userRolesAllocation": "Mgao wa majukumu ya mtumiaji",
-      "hasAccessTo": "Inaweza kufikia:"
+      "hasAccessTo": "Inaweza kufikia:",
+      "coupons": {
+        "explanation": "Zalisha na usimamie nambari za punguzo kwa matukio na kozi - iwe ni matumizi ya mara moja kwa ajili ya ufadhili wa masomo au kesi zinazofanana, au matumizi ya mara nyingi kwa ajili ya kampeni za masoko.",
+        "generateNew": "Zalisha msimbo mpya",
+        "generateDiscountCode": "Toa nambari ya punguzo",
+        "discountValuePlaceholder": "mfano: 20 kwa 20%",
+        "selectCourse": "Chagua kozi",
+        "forWhat": "Kwa aina gani ya bidhaa?",
+        "tableHead": {
+          "code": "Kanuni",
+          "type": "Aina",
+          "name": "Jina",
+          "discount": "Punguzo",
+          "value": "Thamani",
+          "uses": "Imetumika",
+          "total": "Jumla",
+          "owner": "Mmiliki"
+        },
+        "productEvent": "Tukio",
+        "productCourse": "Kozi",
+        "forWhichEvent": "Kwa tukio gani?",
+        "forWhichCourse": "Kwa kozi gani?",
+        "discountType": "Aina gani ya msimbo wa punguzo?",
+        "discountSingleUse": "Matumizi ya mara moja",
+        "discountMultiUse": "Matumizi mengi",
+        "discountValue": "Asilimia ya kupunguza",
+        "discountCode": "Nambari ya punguzo",
+        "discountCodeExplanation": "Onyo, msimbo huu unatambua herufi kubwa na ndogo.",
+        "discountCodePlaceholder": "Acha wazi kwa uzalishaji wa otomatiki",
+        "discountValueExplanation": "Weka nambari katika hatua za 5 (k.m. 5, 10, 15... hadi 100)",
+        "numberOfCodes": "Unataka kuzalisha kodi ngapi?",
+        "numberOfCodesPlaceholder": "andika namba",
+        "maximumNumberOfUse": "Idadi kubwa ya matumizi",
+        "generateCode": "Zalisha kificho",
+        "generateCodes": "Tengeneza misimbo",
+        "generatedCode": "Msimbo uliozalishwa",
+        "generatedCodes": "Misimbo inayozalishwa",
+        "selectEvent": "Chagua tukio",
+        "filters": {
+          "all": "Zote",
+          "singleUse": "Matumizi ya mara moja",
+          "multiUse": "Matumizi mengi",
+          "events": "Matukio",
+          "courses": "Kozi"
+        }
+      },
+      "discountCodes": "Nambari za punguzo"
     },
     "careerPortal": {
       "applicationComplete": "Maombi yako ni <highlight>Kamili</highlight>",
@@ -765,7 +814,14 @@
       "description_online": "Tafadhali pitia tarehe na wakati wa tukio uliotolewa.\nWakati ukifika, ingia kwenye jukwaa ili ufikie mkondo wa moja kwa moja kupitia ukurasa wa tukio.",
       "description_physical": "Tafadhali pitia maelezo ya mahali yaliyotolewa.\nMara tu uthibitisho wa hifadhi yako utakapopatikana, tutatoa tiketi ya kuwasilisha kwenye tukio. Tiketi hii pia itakupa ruhusa ya kuingia kwenye matangazo ya moja kwa moja na video ya kurudia, ikiwa inapatikana.",
       "access_online_successful": "Wakati tukio linaanza, ingia kwenye jukwaa ili upate ufikiaji wa matangazo ya moja kwa moja kwenye ukurasa wa tukio.",
-      "access_physical_successful": "Unaweza kupakua tiketi yako hapa, au uipakue baadaye kwenye dashibodi yako."
+      "access_physical_successful": "Unaweza kupakua tiketi yako hapa, au uipakue baadaye kwenye dashibodi yako.",
+      "callout_book_physical": "Unakaribia kubooki <highlight>ufikiaji wa ana kwa ana</highlight> kwenye tukio hili.",
+      "callout_purchase_replay": "Unakaribia kununua ufikiaji wa video ya marudio ya tukio hili.",
+      "callout_book_online": "Unakaribia kuweka nafasi ya ufikiaji mtandaoni kwa tukio hili.",
+      "callout_book_replay": "Unakaribia kuweka nafasi ya kufikia video ya kucheza tena ya tukio hili.",
+      "callout_purchase_online": "Unakaribia kununua <highlight>ufikiaji mtandaoni</highlight> kwa tukio hili.",
+      "callout_purchase_physical": "Unakaribia kununua <highlight>idhini ya kibinafsi</highlight> kwa tukio hili.",
+      "limitedSeats": "Viti ni vichache. Tafadhali gharisha uhifadhi wako ikiwa huwezi kuhudhuria."
     },
     "errors": {
       "premiumContentNeedsLogin": "Unahitaji kuingia ili kufikia tukio hili.",
@@ -1246,7 +1302,8 @@
     "total": "Jumla",
     "haveReductionCode": "Je, una msimbo wa kupunguza?",
     "payByCard": "Lipa kwa Kadi",
-    "payWithBitcoin": "Lipa kwa Bitcoin"
+    "payWithBitcoin": "Lipa kwa Bitcoin",
+    "insertReductionCode": "Weka msimbo wako wa kupunguza"
   },
   "bCert": {
     "challengeYourself": "Jitahidi na upime kiwango chako",
