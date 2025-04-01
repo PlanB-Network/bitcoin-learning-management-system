@@ -12,14 +12,15 @@ interface ListOptions {
 }
 
 const getCouponCodes = (options: ListOptions) => {
-  console.log('getCouponCodes', options);
-
   // Important: this is a map of the database column names to the API sort keys
   // This is important to prevent SQL injection attacks thant we ensure that
   // the sortBy value is one of the keys in this map and not a user input
   const sortMap = {
-    createdAt: sql`created_at`,
-    updatedAt: sql`updated_at`,
+    createdAt: sql`coupon_code.created_at`,
+    updatedAt: sql`coupon_code.updated_at`,
+    // Note: it is not possible to sort by name, because it points to both
+    // content.courses_localized and content.events tables
+    name: sql`coupon_code.item_id`,
     code: sql`code`,
     uses: sql`uses`,
     maxUses: sql`max_uses`,

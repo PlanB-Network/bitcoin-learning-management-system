@@ -440,6 +440,7 @@
           "actions": "Actions",
           "code": "Code",
           "discount": "Discount",
+          "maxUses": "Max. uses",
           "name": "Name",
           "owner": "Owner",
           "total": "Total",

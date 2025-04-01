@@ -224,7 +224,7 @@ function AdminCoupons() {
               {
                 key: 'name',
                 label: t('dashboard.adminPanel.coupons.tableHead.name'),
-                sortable: false,
+                sortable: true,
               },
               {
                 key: 'reductionPercentage',
@@ -238,7 +238,7 @@ function AdminCoupons() {
               },
               {
                 key: 'maxUses',
-                label: t('dashboard.adminPanel.coupons.tableHead.total'),
+                label: t('dashboard.adminPanel.coupons.tableHead.maxUses'),
                 sortable: true,
               },
               {
@@ -258,7 +258,7 @@ function AdminCoupons() {
         <tbody>
           {coupons.data?.map((coupon) => {
             return (
-              <tr key={coupon.code}>
+              <tr key={coupon.code} className="*:pt-2">
                 <td>{coupon.code}</td>
                 <td>
                   {itemsMap.get(coupon.itemId)?.type === 'event'
@@ -271,16 +271,28 @@ function AdminCoupons() {
                 <td> {coupon.maxUses} </td>
                 <td> {coupon.owner ?? 'unknown'} </td>
                 <td>
-                  <Button
-                    variant="outline"
-                    size="s"
-                    onClick={() => {
-                      setCouponToDelete(coupon);
-                      deleteModal.open();
-                    }}
-                  >
-                    <FaRegTrashAlt />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="primary"
+                      size="s"
+                      onClick={() => {
+                        console.log('View coupon code', coupon);
+                      }}
+                    >
+                      View
+                    </Button>
+
+                    <Button
+                      variant="outline"
+                      size="s"
+                      onClick={() => {
+                        setCouponToDelete(coupon);
+                        deleteModal.open();
+                      }}
+                    >
+                      <FaRegTrashAlt />
+                    </Button>
+                  </div>
                 </td>
               </tr>
             );
