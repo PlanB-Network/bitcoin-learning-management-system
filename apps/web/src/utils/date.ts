@@ -131,6 +131,18 @@ export const getTimeStringWithOnlyMonths = (
   return `${getMonthName(startDate)} to ${getMonthName(endDate)} ${getYear(startDate)}`;
 };
 
+export const getDateStringWithDayAndMonth = (
+  startDate: Date | null,
+  endDate: Date | null,
+  timezone?: string,
+) => {
+  if (!startDate || !endDate) {
+    return '';
+  }
+
+  return `${formatDate(startDate, timezone, true, false)} to ${formatDate(endDate, timezone, true, false)}, ${getYear(endDate)}`;
+};
+
 export function formatFullDateWithDay(date: Date, timezone?: string): string {
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
     return '';
