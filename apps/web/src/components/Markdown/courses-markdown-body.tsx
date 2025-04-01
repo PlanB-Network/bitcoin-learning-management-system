@@ -6,8 +6,6 @@ import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-import type { JoinedCourse, JoinedTutorialLight } from '@blms/types';
-
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
 
@@ -15,7 +13,8 @@ import VideoSVG from '../../assets/resources/video.svg?react';
 import { CopyButton } from '../copy-button.tsx';
 import { ReactPlayer } from '../react-player.tsx';
 
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { AppContext } from '#src/providers/context.tsx';
 import { Blockquote } from './blockquote.tsx';
 import { getCourse, getTutorial } from './utils/link-preview.tsx';
 
@@ -59,16 +58,14 @@ const TradingViewWidget = ({
 const CoursesMarkdownBody = ({
   content,
   assetPrefix,
-  tutorials,
-  courses,
   supportInlineLatex = false,
 }: {
   content: string;
   assetPrefix: string;
-  tutorials: JoinedTutorialLight[];
-  courses: JoinedCourse[];
   supportInlineLatex: boolean;
 }) => {
+  const { courses, tutorials } = useContext(AppContext);
+
   return (
     <ReactMarkdown
       components={{
@@ -115,12 +112,12 @@ const CoursesMarkdownBody = ({
           return <div className="text-blue-1000 body-16px">{children}</div>;
         },
         a: ({ children, href = '' }) => {
-          const tutorial = getTutorial(href, tutorials);
+          const tutorial = getTutorial(href, tutorials ?? []);
           if (tutorial) {
             return <TutorialCard tutorial={tutorial} href={href} addMargin />;
           }
 
-          const course = getCourse(href, courses);
+          const course = getCourse(href, courses ?? []);
           if (course) {
             return (
               <div className="w-full max-w-[500px] md:max-w-[340px] max-md:mx-auto py-2 md:py-1 md:mx-2 md:inline-block md:overflow-hidden">

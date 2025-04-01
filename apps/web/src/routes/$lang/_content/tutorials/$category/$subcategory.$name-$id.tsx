@@ -272,7 +272,7 @@ function TutorialDetails() {
   } = useDisclosure();
 
   // Access global context
-  const { tutorials, courses, session } = useContext(AppContext);
+  const { session } = useContext(AppContext);
   const authMode = AuthModalState.SignIn;
   const isLoggedIn = !!session;
 
@@ -498,8 +498,6 @@ function TutorialDetails() {
                       <TutorialsMarkdownBody
                         content={tutorial.rawContent}
                         assetPrefix={cdnUrl(tutorial.path)}
-                        tutorials={tutorials || []}
-                        courses={courses || []}
                       />
                     </Suspense>
                   </div>

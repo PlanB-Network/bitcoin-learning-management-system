@@ -472,26 +472,17 @@ const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
 };
 
 const MarkdownContent = ({ chapter }: { chapter: CourseChapterResponse }) => {
-  const { tutorials, courses } = useContext(AppContext);
-  const isFetchedTutorials = tutorials && tutorials.length > 0;
-
-  if (isFetchedTutorials) {
-    return (
-      <Suspense fallback={<Loader size={'s'} />}>
-        <CoursesMarkdownBody
-          content={chapter.rawContent}
-          assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
-          tutorials={tutorials || []}
-          courses={courses || []}
-          supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
-            chapter.course.id,
-          )}
-        />
-      </Suspense>
-    );
-  }
-
-  return <Loader size={'xl'} />;
+  return (
+    <Suspense fallback={<Loader size={'s'} />}>
+      <CoursesMarkdownBody
+        content={chapter.rawContent}
+        assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
+        supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
+          chapter.course.id,
+        )}
+      />
+    </Suspense>
+  );
 };
 
 function getRandomQuestions(
