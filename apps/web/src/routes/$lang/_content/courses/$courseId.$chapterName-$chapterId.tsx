@@ -1,5 +1,4 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import React, {
   Suspense,
   useContext,
@@ -10,7 +9,6 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { FiLoader } from 'react-icons/fi';
 import { HiCheck } from 'react-icons/hi2';
 import { IoIosArrowForward } from 'react-icons/io';
 import { z } from 'zod';
@@ -31,7 +29,6 @@ import {
   addSpaceToCourseIndex,
   goToChapterParameters,
 } from '#src/utils/courses.js';
-import { formatDate } from '#src/utils/date.ts';
 import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import {
@@ -90,64 +87,6 @@ export const Route = createFileRoute(
   // },
   component: CourseChapter,
 });
-
-const NextLessonBanner = ({ chapter }: { chapter: CourseChapterResponse }) => {
-  const courseParts = chapter.course.parts;
-  const currentDate = new Date();
-
-  let closestChapter = null;
-
-  for (const part of courseParts) {
-    for (const currentChapter of part.chapters) {
-      let currentChapterStartDate = null;
-
-      if (currentChapter.startDate !== null) {
-        currentChapterStartDate = currentChapter.startDate;
-      }
-
-      if (
-        currentChapterStartDate &&
-        currentChapterStartDate > currentDate &&
-        (!closestChapter ||
-          (closestChapter.startDate !== null &&
-            closestChapter.startDate &&
-            currentChapterStartDate < closestChapter.startDate))
-      ) {
-        closestChapter = currentChapter;
-      }
-    }
-  }
-
-  if (closestChapter === null || closestChapter.startDate === null) {
-    return null;
-  }
-
-  return (
-    <div className="py-3 bg-newGray-6 shadow-course-navigation">
-      <p className="max-w-6xl text-darkOrange-5 md:text-[22px] text-sm leading-normal tracking-[1px] text-center mx-auto">
-        {t('courses.chapter.nextLesson')}{' '}
-        <Link
-          to={'/courses/$courseId/$chapterId'}
-          params={{
-            courseId: chapter.course.id,
-            chapterId: closestChapter.chapterId,
-          }}
-          className="uppercase font-medium underline"
-        >
-          {closestChapter.title}
-        </Link>{' '}
-        {t('words.on')}{' '}
-        <span className="uppercase font-medium underline">
-          {closestChapter.startDate.toLocaleDateString(undefined, {
-            weekday: 'long',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </span>
-      </p>
-    </div>
-  );
-};
 
 const TimelineSmall = ({
   chapter,
@@ -353,7 +292,7 @@ const TimelineBig = ({
           </Link>
         )}
 
-        <div className="flex gap-10 items-center text-darkOrange-5 font-medium">
+        <div className="flex gap-10 items-center text-newBlack-1 font-medium">
           {!isFirstChapter && (
             <Link
               to={
@@ -526,7 +465,6 @@ function CourseChapter() {
   const params = Route.useParams();
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
-  const { user } = useContext(AppContext);
 
   const [isContentExpanded, setIsContentExpanded] = useState(true);
 
@@ -564,25 +502,6 @@ function CourseChapter() {
       chapterId: params.chapterId,
     });
 
-  const ticketAvailable =
-    (chapter?.course?.availableSeats && chapter.course.availableSeats > 0) ||
-    false;
-
-  const { data: payments } = trpc.user.courses.getPayments.useQuery(undefined, {
-    enabled: isLoggedIn && ticketAvailable,
-  });
-
-  const isCoursePaidForInPerson = useMemo(
-    () =>
-      payments?.some(
-        (coursePayment) =>
-          coursePayment.paymentStatus === 'paid' &&
-          coursePayment.courseId === params.courseId &&
-          coursePayment.format === 'inperson',
-      ),
-    [params.courseId, payments],
-  );
-
   const questionsArray: Question[] = useMemo(() => {
     if (quizzArray === undefined) {
       return [];
@@ -609,12 +528,6 @@ function CourseChapter() {
 
     return sections;
   }, [chapter]);
-
-  const {
-    mutateAsync: downloadTicketMutateAsync,
-    isPending: downloadTicketisPending,
-  } = trpc.user.courses.downloadChapterTicket.useMutation();
-  const [downloadedPdf, setDownloadedPdf] = useState('');
 
   const isSpecialChapter =
     chapter?.isCourseReview ||
@@ -708,7 +621,6 @@ function CourseChapter() {
             : ''
         }
       />
-      {chapter ? <NextLessonBanner chapter={chapter} /> : <></>}
       <div className="text-black flex flex-col grow">
         {!isFetched && (
           <div className="flex flex-col flex-1 justify-center items-center size-full">
@@ -762,63 +674,18 @@ function CourseChapter() {
             {/* Mobile */}
             <TimelineSmall chapter={chapter} professor={computerProfessor} />
 
-            <div className="flex w-full flex-col items-center justify-center md:flex md:max-w-[1102px] md:flex-row md:items-stretch md:justify-stretch">
-              {displayClassDetails && (
-                <ClassDetails
-                  course={chapter.course}
-                  chapter={chapter}
-                  professor={computerProfessor}
-                />
-              )}
-              {ticketAvailable && isCoursePaidForInPerson && (
-                <div className="flex flex-col md:flex-row md:mt-4 gap-2 md:gap-4 text-xl leading-8 md:items-center">
-                  <Button
-                    size="l"
-                    mode="dark"
-                    className="max-md:my-6 !m-2 md:mt-5 w-full max-md:max-w-[290px] md:w-fit self-center md:self-end"
-                    variant="outline"
-                    onClick={async () => {
-                      let pdf = downloadedPdf;
-                      if (!pdf) {
-                        pdf = await downloadTicketMutateAsync({
-                          title: chapter.course.name,
-                          addressLine1: chapter.addressLine1,
-                          addressLine2: chapter.addressLine2,
-                          addressLine3: chapter.addressLine3,
-                          formattedStartDate: `Start date: ${formatDate(chapter.course.startDate)}`,
-                          formattedTime: `End date: ${formatDate(chapter.course.endDate)}`,
-                          liveLanguage: chapter.liveLanguage,
-                          availableSeats: null,
-                          userName: user?.username ?? '',
-                        });
-                        setDownloadedPdf(pdf);
-                      }
-                      const link = document.createElement('a');
-                      link.href = `data:application/pdf;base64,${pdf}`;
-                      link.download = 'ticket.pdf';
-                      document.body.append(link);
-                      link.click();
-                      link.remove();
-                    }}
-                  >
-                    {t('courses.chapter.detail.ticketDownload')}
-                    {downloadTicketisPending ? (
-                      <span className="ml-3">
-                        <FiLoader />
-                      </span>
-                    ) : null}
-                  </Button>
-                  <p className="text-lg font-normal max-md:text-base max-md:ml-3 max-md:italic">
-                    {t('courses.details.inPersonAccess')}
-                  </p>
-                </div>
-              )}
-            </div>
+            {displayClassDetails && (
+              <ClassDetails
+                course={chapter.course}
+                chapter={chapter}
+                professor={computerProfessor}
+              />
+            )}
 
             <div className="flex w-full flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
               {!chapter.isCourseExam && (
                 <div
-                  className="text-blue-1000 w-full space-y-5 break-words px-[15px] md:px-2 md:mt-8 md:grow md:space-y-[18px] md:overflow-hidden pb-2 md:pb-0"
+                  className="text-blue-1000 w-full space-y-5 break-words px-[15px] md:px-2 mt-3 md:mt-8 md:grow md:space-y-[18px] md:overflow-hidden pb-2 md:pb-0"
                   id="headerChapter"
                 >
                   <Header chapter={chapter} />
