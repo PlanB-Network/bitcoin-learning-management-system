@@ -1,16 +1,34 @@
 import { useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiLoader } from 'react-icons/fi';
+import { FiDownload, FiLoader } from 'react-icons/fi';
 
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
-import { Button, Card } from '@blms/ui';
+import {
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
-import { formatDate, formatTime } from '#src/utils/date.js';
-import { isDevelopmentEnvironment } from '#src/utils/misc.js';
+import { formatDate, formatTime, getTimeString } from '#src/utils/date.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import InformationIcon from '#src/assets/icons/warning_orange.svg';
+
+import {
+  MdAccessTime,
+  MdOutlineCalendarMonth,
+  MdOutlineLocationOn,
+} from 'react-icons/md';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseBookModal } from './book-modal/course-book-modal.tsx';
+
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 
 interface ClassDetailsProps {
   course: CourseResponse;
@@ -18,22 +36,12 @@ interface ClassDetailsProps {
   professor: string;
 }
 
-const TextLine = ({ label, text }: { label?: string; text?: string }) => {
-  return (
-    <div className="flex h-7 items-center">
-      <span className="text-sm w-24 md:w-32 text-newBlack-5 whitespace-nowrap">
-        {label}
-      </span>
-      <span className="text-sm whitespace-nowrap">{text}</span>
-    </div>
-  );
-};
-
 export const ClassDetails = ({
   course,
   chapter,
   professor,
 }: ClassDetailsProps) => {
+  const isMobile = useSmaller('md');
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
   const [downloadedPdf, setDownloadedPdf] = useState('');
 
@@ -77,128 +85,138 @@ export const ClassDetails = ({
       : '';
 
   return (
-    <div className="flex flex-col mt-6 px-4 md:px-0">
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/2">
-          <p className="font-medium text-sm ml-2">
-            {t('courses.chapter.detail.title')}
-          </p>
-          <Card
-            className="h-fit !bg-newGray-5 !shadow-course-card border-none"
-            color="gray"
-          >
-            {chapter.startDate && (
-              <TextLine
-                label={`${t('words.date')} :`}
-                text={formattedStartDate}
-              />
-            )}
-            {chapter.startDate && chapter.endDate && (
-              <TextLine label={`${t('words.time')} :`} text={formattedTime} />
-            )}
-            {chapter.addressLine1 && (
-              <TextLine label="Location :" text={chapter.addressLine1} />
-            )}
-            {chapter.addressLine2 && <TextLine text={chapter.addressLine2} />}
-            {chapter.addressLine3 && <TextLine text={chapter.addressLine3} />}
-            <TextLine label="Teacher :" text={professor} />
-            <TextLine
-              label="Capacity :"
-              text={`${chapter.availableSeats} students`}
-            />
-            {isDevelopmentEnvironment() && (
-              <TextLine
-                label="(Remaining) :"
-                text={`${chapter.remainingSeats}`}
-              />
-            )}
-          </Card>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <div className="text-xl leading-8">
-            <p className="font-medium max-md:text-base">
-              {t('courses.chapter.detail.p1heading')}
-            </p>
-            <p className="text-newBlack-5 max-md:text-sm">
-              {t('courses.chapter.detail.p1content')}
-            </p>
-          </div>
-          {chapter.isInPerson && (
-            <div>
-              {chapter.remainingSeats !== null &&
-                chapter.remainingSeats > 0 &&
-                !userChapter && (
-                  <Button
-                    variant="primary"
-                    onClick={() => {
-                      setIsBookModalOpen(true);
-                    }}
-                  >
-                    {t('courses.chapter.detail.bookSeat')}
-                  </Button>
-                )}
-              {chapter.remainingSeats !== null &&
-                chapter.remainingSeats <= 0 &&
-                !userChapter && (
-                  <Button variant="primary" disabled={true}>
-                    {t('courses.chapter.detail.classIsFull')}
-                  </Button>
-                )}
-              {userChapter && user && user.username !== null && (
-                <div className="flex flex-row gap-2">
-                  <Button
-                    variant="primary"
-                    onClick={async () => {
-                      let pdf = downloadedPdf;
-                      if (!pdf) {
-                        pdf = await mutateAsync({
-                          ...chapter,
-                          ...course,
-                          formattedStartDate,
-                          formattedTime,
-                          availableSeats: chapter.availableSeats,
-                          userName: user.username,
-                        });
-                        setDownloadedPdf(pdf);
-                      }
-                      const link = document.createElement('a');
-                      link.href = `data:application/pdf;base64,${pdf}`;
-                      link.download = 'ticket.pdf';
-                      document.body.append(link);
-                      link.click();
-                      link.remove();
-                    }}
-                  >
-                    {t('courses.chapter.detail.ticketDownload')}
-                    {isPending ? (
-                      <span className="ml-3">
-                        <FiLoader />
-                      </span>
-                    ) : null}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      cancelBooking();
-                    }}
-                  >
-                    {t('courses.chapter.detail.cancelBooking')}
-                  </Button>
-                </div>
-              )}
+    <section className="flex flex-col gap-4 w-full md:max-w-[1102px] mt-4 md:mt-8 px-5 md:px-2">
+      <span className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newBlack-1">
+        {t('courses.chapter.detail.title')}
+      </span>
+      <article className="flex flex-col justify-center p-4 gap-5 self-stretch rounded-[12px] bg-newGray-6 shadow-course-navigation-sm body-14px md:label-normal-16px">
+        <div className="w-full flex max-md:flex-col gap-4 md:gap-2.5 text-newBlack-1">
+          {chapter.startDate && (
+            <div className="flex max-md:flex-wrap md:flex-col w-full md:max-w-[282px] gap-4 md:gap-1">
+              <div className="flex gap-2">
+                <MdOutlineCalendarMonth size={18} className="shrink-0" />
+                <span>{formatDate(chapter.startDate)}</span>
+              </div>
+              <div className="flex gap-2">
+                <MdAccessTime size={18} className="shrink-0" />
+                <span>
+                  {getTimeString(
+                    chapter.startDate,
+                    chapter.endDate || undefined,
+                    chapter.timezone || undefined,
+                  )}
+                </span>
+              </div>
             </div>
           )}
-          <div className="text-xl leading-8">
-            <p className="font-medium max-md:text-base">
-              {t('courses.chapter.detail.p2heading')}
-            </p>
-            <p className="text-newBlack-5 max-md:text-sm">
-              {t('courses.chapter.detail.p2content')}
-            </p>
-          </div>
+          {(chapter.addressLine1 ||
+            chapter.addressLine2 ||
+            chapter.addressLine3) && (
+            <>
+              <div className="self-stretch w-px bg-newGray-3 max-md:hidden" />
+              <div className="flex gap-2">
+                <MdOutlineLocationOn size={18} className="shrink-0" />
+                <div className="flex flex-col">
+                  {[
+                    chapter.addressLine1,
+                    chapter.addressLine2,
+                    chapter.addressLine3,
+                  ].map((line, _) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
-      </div>
+        {chapter.isOnline && chapter.isInPerson && (
+          <div className="flex flex-col md:flex-row items-center gap-2.5 w-full md:justify-between">
+            <div className="flex items-center gap-4">
+              <img
+                src={InformationIcon}
+                alt="Information"
+                className="w-8 max-md:hidden"
+              />
+              <p className="w-full max-w-[650px]">
+                {t('courses.details.attendInPersonWarning')}
+              </p>
+            </div>
+
+            {chapter.isInPerson && (
+              <div className="flex items-center shrink-0">
+                {chapter.remainingSeats !== null &&
+                  chapter.remainingSeats > 0 &&
+                  !userChapter && (
+                    <Button
+                      variant="primary"
+                      size={isMobile ? 's' : 'm'}
+                      onClick={() => {
+                        setIsBookModalOpen(true);
+                      }}
+                    >
+                      {t('courses.chapter.detail.bookSeat')}
+                    </Button>
+                  )}
+                {chapter.remainingSeats !== null &&
+                  chapter.remainingSeats <= 0 &&
+                  !userChapter && (
+                    <Button
+                      variant="primary"
+                      size={isMobile ? 's' : 'm'}
+                      disabled={true}
+                    >
+                      {t('courses.chapter.detail.classIsFull')}
+                    </Button>
+                  )}
+                {userChapter && user && user.username !== null && (
+                  <div className="flex flex-row gap-2 max-md:flex-wrap max-md:justify-center">
+                    <Button
+                      variant="primary"
+                      size={isMobile ? 's' : 'm'}
+                      onClick={async () => {
+                        let pdf = downloadedPdf;
+                        if (!pdf) {
+                          pdf = await mutateAsync({
+                            ...chapter,
+                            ...course,
+                            formattedStartDate,
+                            formattedTime,
+                            availableSeats: chapter.availableSeats,
+                            userName: user.username,
+                          });
+                          setDownloadedPdf(pdf);
+                        }
+                        const link = document.createElement('a');
+                        link.href = `data:application/pdf;base64,${pdf}`;
+                        link.download = 'ticket.pdf';
+                        document.body.append(link);
+                        link.click();
+                        link.remove();
+                      }}
+                    >
+                      {t('courses.chapter.detail.ticketDownload')}
+                      {isPending ? (
+                        <span className="ml-1">
+                          <FiLoader />
+                        </span>
+                      ) : (
+                        <span className="ml-1">
+                          <FiDownload />
+                        </span>
+                      )}
+                    </Button>
+                    <CancelBookingDialog
+                      onConfirm={async () => {
+                        await cancelBooking();
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </article>
 
       <CourseBookModal
         course={course}
@@ -210,8 +228,68 @@ export const ClassDetails = ({
           refetchUserChapter();
         }}
       />
+    </section>
+  );
+};
 
-      <div className="mt-6 bg-newGray-1 h-px mx-2" />
-    </div>
+const CancelBookingDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+  const isMobile = useSmaller('md');
+  const { t } = useTranslation();
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" size={isMobile ? 's' : 'm'}>
+          {t('courses.chapter.detail.cancelBooking')}
+        </Button>
+      </DialogTrigger>
+      <DialogContent
+        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !px-[15px] !py-5 md:!p-6 gap-6 md:!gap-10 !items-center"
+        showCloseButton
+      >
+        <DialogHeader>
+          <DialogTitle className="hidden">
+            {t('dashboard.booking.cancelBookingTitle')}
+          </DialogTitle>
+          <DialogDescription className="hidden">
+            {t('dashboard.booking.cancelBookingTitle')}
+          </DialogDescription>
+        </DialogHeader>
+
+        <img
+          src={PlanBLogoBlack}
+          alt="Logo Plan ₿ Network"
+          className="w-[186px] md:w-[266px] mx-auto"
+        />
+
+        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-6 md:py-5">
+          <p className="text-darkOrange-5 title-medium-sb-18px md:title-large-24px text-center px-7">
+            {t('dashboard.booking.cancelBookingTitle')}
+          </p>
+        </div>
+
+        <div className="!flex gap-4 md:!gap-[30px] pb-[30px]">
+          <DialogClose asChild>
+            <Button
+              variant="primary"
+              size={isMobile ? 's' : 'l'}
+              className="!w-fit"
+              onClick={onConfirm}
+            >
+              {t('dashboard.booking.yesCancel')}
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button
+              variant="outline"
+              size={isMobile ? 's' : 'l'}
+              className="w-fit"
+            >
+              {t('dashboard.booking.noGoBack')}
+            </Button>
+          </DialogClose>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };

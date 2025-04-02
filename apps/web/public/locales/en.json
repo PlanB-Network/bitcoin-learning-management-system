@@ -140,13 +140,13 @@
     "chapter": {
       "detail": {
         "bookSeat": "Book your seat",
-        "cancelBooking": "Cancel your booking",
+        "cancelBooking": "Cancel booking",
         "classIsFull": "Class is already full",
         "p1content": "Make sure to book your seat",
         "p1heading": "Are you planning to attend this lesson in person?",
         "p2content": "No problem! The lesson will be live-streamed on this page and available for replay afterward.",
         "p2heading": "You can't make it in person?",
-        "ticketDownload": "Download your ticket",
+        "ticketDownload": "Download ticket",
         "title": "Class details"
       },
       "finishCourse": "Finish the course",
@@ -171,6 +171,7 @@
     },
     "details": {
       "associatedProfessors": "Associated professors",
+      "attendInPersonWarning": "If you intend to attend this class in person, make sure to book your seat. In any case, the lesson will be live-streamed and available for replay.",
       "buyCourse": "Buy the course",
       "buyInPersonCourse": "Buy in-person course",
       "buyOnlineCourse": "Buy online course",

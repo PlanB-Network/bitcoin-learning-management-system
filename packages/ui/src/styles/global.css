@@ -360,7 +360,7 @@
   }
 
   .subtitle-medium-caps-18px {
-    @apply text-base leading-normal font-normal tracking-normal uppercase;
+    @apply text-lg leading-normal font-medium tracking-normal uppercase;
   }
   .subtitle-medium-med-16px {
     @apply text-base leading-[160%] font-medium tracking-015px;
