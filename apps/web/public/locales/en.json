@@ -405,7 +405,6 @@
         "discountCode": "Discount code",
         "discountCodeExplanation": "Warning this code is case-sensitive.",
         "discountCodePlaceholder": "Leave empty for automatic generation",
-        "discountValueExplanation": "Enter a number in increments of 5 (e.g. 5, 10, 15... up to 100)",
         "discountMultiUse": "Multi-use",
         "discountSingleUse": "Single-use",
         "discountType": "What type of discount code?",
