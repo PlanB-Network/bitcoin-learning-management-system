@@ -299,13 +299,13 @@ const EventsMap = ({
       map.addLayer(createMarker(group));
     }
 
-    map.on('pointermove', (e: MapBrowserEvent<MouseEvent>) => {
+    map.on('pointermove', (e: MapBrowserEvent<PointerEvent>) => {
       const pixel = map.getEventPixel(e.originalEvent);
       const hit = map.hasFeatureAtPixel(pixel);
       map.getViewport().style.cursor = hit ? 'pointer' : '';
     });
 
-    map.on('click', (e: MapBrowserEvent<MouseEvent>) => {
+    map.on('click', (e: MapBrowserEvent<PointerEvent>) => {
       const pixel = map.getEventPixel(e.originalEvent);
       const feature = map.forEachFeatureAtPixel(pixel, (feature) => feature);
 

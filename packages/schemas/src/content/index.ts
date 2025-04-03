@@ -20,3 +20,4 @@ export * from './tutorial.js';
 export * from './blogs.js';
 export * from './legals.js';
 export * from './newsletters.js';
+export * from './video.js';
