@@ -26,6 +26,7 @@ import {
   TokenType,
   UserPermission,
   UserRole,
+  VideoProvider,
 } from '@blms/constants';
 
 type StringEnum = Record<string, string>;
@@ -1918,6 +1919,34 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
         table.chapterId,
         table.language,
       ],
+    }),
+  }),
+);
+
+export const contentVideos = content.table('videos', (t) => ({
+  id: t.uuid().primaryKey().notNull(),
+  courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
+    onUpdate: 'cascade',
+  }),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
+export const videoProviderEnum = pgNativeEnum('video_provider', VideoProvider);
+
+export const contentVideosLocalized = content.table(
+  'videos_localized',
+  (t) => ({
+    id: t
+      .uuid()
+      .references(() => contentVideos.id, { onDelete: 'cascade' })
+      .notNull(),
+    language: t.varchar({ length: 10 }).notNull(),
+    provider: videoProviderEnum().notNull(),
+    idFromProvider: t.varchar({ length: 40 }),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.id, table.language],
     }),
   }),
 );
