@@ -405,11 +405,12 @@
         "discountCode": "Discount code",
         "discountCodeExplanation": "Warning this code is case-sensitive.",
         "discountCodePlaceholder": "Leave empty for automatic generation",
+        "discountValueExplanation": "Enter a number in increments of 5 (e.g. 5, 10, 15... up to 100)",
         "discountMultiUse": "Multi-use",
         "discountSingleUse": "Single-use",
         "discountType": "What type of discount code?",
         "discountValue": "Percentage of reduction",
-        "discountValueExplanation": "Enter a number in steps of 5 (e.g. 5, 10, 15... up to 100)",
+        "discountValueExplanation": "Enter a number in increments of 5 (e.g. 5, 10, 15... up to 100)",
         "discountValuePlaceholder": "example: 20 for 20%",
         "explanation": "Generate and manage discount codes for events and courses - either single-use for scholarships or similar cases, or multi-use for marketing campaigns.",
         "filters": {

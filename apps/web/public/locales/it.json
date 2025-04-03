@@ -138,7 +138,8 @@
       "pastEditionsRatings": "Valutazioni delle Edizioni Precedenti",
       "teacherLed": "Guidato dall'insegnante",
       "associatedProfessors": "Professori associati",
-      "coordinatedBy": "Questo corso è coordinato da"
+      "coordinatedBy": "Questo corso è coordinato da",
+      "learning": "Percorso di studio"
     },
     "explorer": {
       "pageDescription": "La Plan ₿ Academy è dedicata a semplificare l'educazione Bitcoin nel mondo. Curata da esperti di molti campi, la nostra accademia fornisce un ventaglio esaustivo di corsi progettati per chiarificare ogni aspetto di Bitcoin. Dal principiante all'esperto, seguendo il tuo ritmo o insieme a un professore, speriamo che l'accademia possa aiutarti a comprendere meglio il vasto tema di Bitcoin. Una larga parte dei nostri corsi sono interamente gratuiti in modo che chiunque, da qualsiasi luogo, possa avere accesso all'educazione.",
@@ -168,15 +169,16 @@
       "teacher": "Insegnante",
       "teachers": "Insegnanti",
       "back_course": "Torna al corso",
-      "book_description": "Controlla i dettagli del luogo forniti.\nDopo che la prenotazione sarà elaborata, ti forniremo un ticket di conferma e un codice QR da presentare all'evento.",
+      "book_description": "Controlla l'indirizzo dove si svolgerà il corso. Dopo che la prenotazione sarà confermata, ti forniremo un ticket di conferma e un codice QR da presentare all'evento.",
       "qr_unified": "Questo codice QR è unificato, quindi accetta sia pagamenti lightning che on-chain.",
       "time": "Orario",
       "inPersonCallout": "Stai per acquistare l'accesso <strong>in presenza</strong> a questo corso.",
       "onlineDescription": "Ogni lezione viene trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle dirette e ai video di replay.",
-      "inPersonDescription": "Ogni lezione si svolge di persona nelle date e nei luoghi specificati, ed è anche trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle lezioni sia in presenza che online.\nNon dimenticare di prenotare il tuo posto per le lezioni a cui vuoi partecipare di persona.",
+      "inPersonDescription": "Ti chiediamo di rivedere i dettagli sul corso. Una volta confermata la prenotazione, riceverai un biglietto di conferma e un codice QR da presentare in aula.",
       "onlineCallout": "Stai per acquistare l'accesso <strong>online</strong> a questo corso.",
       "checkoutError": "Si è verificato un errore durante il processo di pagamento.\nPer favore, riprova.",
-      "hybridDescription": "Ti invitiamo a rivedere i dettagli del corso.\nOgni lezione si svolge in presenza nelle date e nei luoghi specificati, e viene sempre trasmessa in diretta e registrata per il successivo replay.\n\nLa partecipazione di persona è gestita per ogni lezione, quindi ti chiediamo gentilmente di prenotare il tuo posto ogni volta che desideri partecipare fisicamente."
+      "hybridDescription": "Ti invitiamo a rivedere i dettagli del corso.\nOgni lezione si svolge in presenza nelle date e nei luoghi specificati, e viene sempre trasmessa in diretta e registrata per il successivo replay.\n\nLa partecipazione di persona è gestita per ogni lezione, quindi ti chiediamo gentilmente di prenotare il tuo posto ogni volta che desideri partecipare fisicamente.",
+      "courseType": "Tipo di corso"
     },
     "quizz": {
       "clickOnPie": "Clicca sul grafico a torta, controlla i tuoi errori e leggi le spiegazioni",
@@ -471,7 +473,8 @@
       "shareOnSocials": "Condividi sui social:",
       "tweetText": "Felice di aver completato il corso {{courseIndex}} su @planb_network e aver ottenuto la certificazione con un punteggio di {{score}}/100 all'esame finale! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Ecco un riassunto di ciò che hai appreso. Se hai tralasciato alcuni capitoli o non li hai validati correttamente, ora è il momento di farlo. Puoi tornare indietro per rivedere il contenuto, o puoi premere il pulsante di completamento.",
-      "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione."
+      "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione.",
+      "coordinator": "Coordinatore del corso"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -528,7 +531,62 @@
       "deleteRole": "Elimina ruolo",
       "editRole": "Modifica ruolo",
       "hasAccessTo": "Ha accesso a:",
-      "selectRole": "Seleziona ruolo"
+      "selectRole": "Seleziona ruolo",
+      "coupons": {
+        "generateNew": "Genera nuovo codice",
+        "generateDiscountCode": "Genera un codice sconto",
+        "deleteDiscountCodeWarning": "Una volta eliminato questo codice, non sarà più funzionale. La modifica sarà irreversibile.",
+        "deleteDiscountCodeSuccess": "Codice sconto eliminato con successo",
+        "delete": "Elimina",
+        "explanation": "Genera e gestisci codici sconto per eventi e corsi - sia ad uso singolo per borse di studio o casi simili, sia ad uso multiplo per campagne di marketing.",
+        "deleteDiscountCode": "Elimina codice sconto",
+        "deleteDiscountCodeConfirm": "Sei sicuro di voler eliminare questo codice sconto?",
+        "discountCodePlaceholder": "Lascia vuoto se vuoi la generazione automatica",
+        "discountValueExplanation": "Inserisci un numero in incrementi di 5 (es. 5, 10, 15... fino a 100)",
+        "filters": {
+          "singleUse": "Monouso",
+          "all": "Tutti",
+          "multiUse": "Multiuso",
+          "events": "Eventi",
+          "courses": "Corsi"
+        },
+        "numberOfCodes": "Quanti codici sconto vuoi generare?",
+        "numberOfCodesPlaceholder": "digita un numero",
+        "maximumNumberOfUse": "Numero massimo di utilizzi",
+        "generateCodes": "Genera codici",
+        "generatedCode": "Nuovo codice",
+        "generateCode": "Genera codice",
+        "discountValuePlaceholder": "esempio: 20 per 20%",
+        "cancel": "Annulla",
+        "close": "Chiudi",
+        "forWhat": "Per quale tipo di prodotto?",
+        "tableHead": {
+          "code": "Codice",
+          "type": "Tipo",
+          "name": "Nome",
+          "discount": "Sconto",
+          "value": "Valore",
+          "uses": "Usati",
+          "total": "Total",
+          "owner": "Proprietario",
+          "actions": "Azioni"
+        },
+        "generateNewCodes": "Genera nuovi codici",
+        "productEvent": "Evento",
+        "productCourse": "Corso",
+        "forWhichEvent": "Per quale evento?",
+        "forWhichCourse": "Per quale corso?",
+        "discountType": "Che tipo di codice sconto?",
+        "discountSingleUse": "Monouso",
+        "discountMultiUse": "Multiuso",
+        "discountValue": "Percentuale di sconto",
+        "discountCode": "Codice sconto",
+        "discountCodeExplanation": "Attenzione, questo codice distingue tra maiuscole e minuscole.",
+        "generatedCodes": "Nuovi codici",
+        "selectCourse": "Seleziona corso",
+        "selectEvent": "Seleziona evento"
+      },
+      "discountCodes": "Codici sconto"
     },
     "studentDashboard": "Pannello dello studente",
     "backToDashboard": "Torna alla dashboard",
@@ -741,7 +799,7 @@
     },
     "newEvent": {
       "button": "Aggiungi un evento",
-      "description": "Certo! Tutti gli eventi su Bitcoin hanno maggiore visibilità sul nostro sito, quindi apprezziamo ogni iniziativa per crearne uno nuovo.",
+      "description": "Certo! Tutti gli eventi su Bitcoin hanno maggiore visibilità sul nostro sito, quindi apprezziamo ogni iniziativa per crearne uno nuovo!",
       "subtitle": "Orange-pillare un miliardo di persone non è facile",
       "title": "Vuoi aggiungere il tuo evento?"
     },
@@ -755,17 +813,17 @@
       "back_events": "Torna agli eventi",
       "book_seat": "Prenota posto",
       "date": "Data",
-      "description_free_physical": "Salva i dettagli sull'indirizzo.\nUna volta che la prenotazione sarà elaborata, ti forniremo un biglietto di conferma e un codice QR da presentare all'evento.",
+      "description_free_physical": "Salva i dettagli sull'indirizzo. Una volta che la prenotazione sarà elaborata, ti forniremo un biglietto di conferma e un codice QR da presentare all'evento. ",
       "download_ticket": "Scarica il tuo biglietto",
       "language": "Lingua",
       "limitation": "Limitazioni",
       "max_capacity": "Capacità massima di",
-      "payment_successful": "Prenotazione confermata!",
+      "payment_successful": "Prenotazione confermata.",
       "time": "Orario",
       "access_online_successful": "Quando l'evento inizia, accedi alla piattaforma per ottenere l'accesso alla live dalla pagina dell'evento.",
       "access_physical_successful": "Puoi scaricare qui il tuo biglietto, o scaricarlo dopo dalla tua dashboard.",
-      "description_online": "Salva la data e l'ora di questo evento.\nQuando sarà il momento, accedi alla piattaforma e alla live dalla pagina dell'evento.",
-      "description_physical": "Salva i dettagli dell'indirizzo.\nUna volta che la prenotazione sarà confermata, ti forniremo un biglietto da presentare all'evento, che ti darà anche accesso alla live streaming e al replay (se disponibili).",
+      "description_online": "Salva la data e l'ora di questo evento. Quando sarà il momento, accedi alla piattaforma e alla live dalla pagina dell'evento.",
+      "description_physical": "Salva i dettagli dell'indirizzo. Una volta che la prenotazione sarà confermata, ti forniremo un biglietto da presentare all'evento.\n\nIl biglietto ti darà anche accesso alla live streaming e al replay (se disponibili).",
       "callout_book_online": "Stai per prenotare l'accesso online a questo evento.",
       "callout_book_physical": "Stai per prenotare <highlight>accesso di persona</highlight> a questo evento.",
       "callout_book_replay": "Stai per prenotare l'accesso al video replay di questo evento.",
@@ -790,8 +848,8 @@
       "welcome": "Benvenuto su Plan ₿ Network"
     },
     "tutorialSection": {
-      "title": "Rendere semplice l'istruzione su Bitcoin è il nostro obiettivo.",
-      "subtitle1": "Ti aiutiamo a padroneggiare la tecnologia con numerosi tutorial approfonditi!",
+      "title": "Centralizzare la conoscenza per distribuirla al meglio",
+      "subtitle1": "L'educazione su Bitcoin resa semplice.",
       "content1": "Bitcoin è in continua evoluzione, con nuovi attori, soluzioni, protocolli e innovazioni tecnologiche in arrivo. Spesso è difficile mantenere un unico ed accurato database di buoni tutorial aggiornati. Qui a Plan ₿ Network, abbiamo raggiunto questo obiettivo. Che tu sia un principiante o un utente avanzato, puoi navigare tra centinaia di tutorial per esplorare il settore in base alle tue esigenze.",
       "link": "Visualizza tutti i tutorial",
       "link2": "Vedi tutte le risorse"
@@ -801,7 +859,7 @@
       "subtitle": "Un po' su di noi",
       "content": "Plan ₿ Network è un'iniziativa per supportare l'educazione Bitcoin in tutto il mondo. È l'insieme di varie aziende appassionate di Bitcoin focalizzate sull'istruzione, software open-source, reti peer-to-peer e l'appartenenza alla comunità. Insieme, hanno deciso di costruire Plan ₿ Network e offrire all'ecosistema Bitcoin gli strumenti giusti per crescere.",
       "bitcoinFocusTitle": "Focus su Bitcoin",
-      "bitcoinFocusContent": "Rivoluzione Bitcoin nel suo insieme, dal suo livello base a varie comunicazioni peer-to-peer intorno ad esso",
+      "bitcoinFocusContent": "Esploriamo la rivoluzione di Bitcoin, dal suo strato base alle comunicazioni nelle sue reti peer-to-peer.",
       "openSourceTitle": "Open source",
       "openSourceContent": "Il nostro obiettivo è promuovere il libero flusso di conoscenze e contribuire a costruire più soluzioni open source",
       "communityTitle": "Comunità",
@@ -811,7 +869,7 @@
     },
     "languageSection": {
       "title": "Nessuna barriera linguistica qui.",
-      "subtitle": "Tutto è tradotto in lingue locali",
+      "subtitle": "Tutto è tradotto in lingue locali!",
       "content1": "A Plan ₿ Network, crediamo che Bitcoin sia una rivoluzione internazionale che riguarda tutti. Per dare forza a miliardi di persone, stiamo progettando questa piattaforma per essere multilingua ed accessibile a tutti. La piattaforma attualmente supporta 7 lingue ed altre vengono aggiunte ogni mese. Per raggiungere questo obiettivo, utilizziamo un mix di IA e la passione dei Bitcoiner in tutto il mondo.",
       "link": "Aiutaci a tradurre l'accademia",
       "availableLanguages": "Lingue disponibili",
@@ -858,7 +916,7 @@
   "menu": {
     "betDescription": "Raccolta di contenuti che puoi utilizzare per i tuoi progetti educativi",
     "libraryDescription": "Scopri un sacco di libri per migliorare la tua conoscenza",
-    "nodeNetworkDescription": "Unisciti alla rete globale delle comunità Plan ₿!",
+    "nodeNetworkDescription": "Unisciti alla rete globale delle comunità Plan ₿",
     "podcastsDescription": "Esplora l'ecosistema bitcoin attraverso podcast",
     "teachersDescription": "Conosci i nostri insegnanti universitari, bitcoiner apassionati",
     "conferencesDescription": "Collezione di registrazioni di conferenze Bitcoin dal Blocco Genesi",
@@ -923,10 +981,10 @@
       "author": "Autore: ",
       "level": "Livello:",
       "noNewsletters": "Al momento non ci sono newsletter per la lingua selezionata.",
-      "subtitle": "<0>Altre newsletter</0> che potrebbero interessarti: "
+      "subtitle": "<0>Altre newsletter</0> che potrebbero interessarti"
     },
     "pageDescription": "Cercare di capire Bitcoin è come esplorare un labirinto che continua a crescere. Per aiutarti nel tuo viaggio, abbiamo curato una vasta collezione di risorse affrontando una miriade di argomenti.",
-    "pageSubtitle": "Benvenuto nella tana infinita del bianconiglio!",
+    "pageSubtitle": "Centralizzare la conoscenza per distribuirla al meglio",
     "pageTitle": "Risorse",
     "podcasts": {
       "title": "Podcast",
@@ -937,13 +995,13 @@
     "newsletter": {
       "check": "Leggi la newsletter"
     },
-    "pageSubtitlePodcast": "Altri podcast che potrebbero piacerti:",
-    "pageSubtitleBooks": "<0>Altri libri</0> che potrebbero piacerti:",
+    "pageSubtitlePodcast": "<0>Altri podcast<0> che potrebbero piacerti",
+    "pageSubtitleBooks": "<0>Altri libri</0> che potrebbero piacerti",
     "channels": {
       "noYoutubeChannels": "Al momento non ci sono canali Youtube per la lingua selezionata.",
       "title": "Canali Youtube"
     },
-    "pageSubtitleChannels": "<0>Altri canali Youtube</0> che potrebbero piacerti:",
+    "pageSubtitleChannels": "<0>Altri canali Youtube</0> che potrebbero piacerti",
     "toggleLabelAll": "Tutti",
     "toggleLabelSelectedLanguage": "Lingua selezionata",
     "lectures": {
@@ -981,10 +1039,10 @@
   "tutorials": {
     "details": {
       "source": "Fonte originale :",
-      "author": "Autore: ",
+      "author": "Autore:",
       "didHelp": "E' stato d'aiuto?",
       "writtenBy": "Questo tutorial è stato scritto da:",
-      "ratingSuccess": "Grazie per il tuo voto! È stato preso in considerazione",
+      "ratingSuccess": "Grazie per la valutazione!",
       "tutorialName": "Nome del tutorial"
     },
     "exchange": {
@@ -1306,7 +1364,7 @@
       "pastArticleSubtitleText": "Articoli passati",
       "noArticlesText": "Non ci sono post nel blog in questo momento.",
       "errorMessageNotFound": "Blog non trovato.",
-      "blogSidebarTitle": "Post precedenti in Rete",
+      "blogSidebarTitle": "Post nella categoria {{category}}",
       "filterText": "Filtro per argomento:",
       "blogListButtonText": "Leggi",
       "featuredArticleTitleText": "Ultimi articoli pubblicati"
