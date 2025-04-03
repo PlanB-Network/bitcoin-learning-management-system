@@ -2,6 +2,7 @@ import type { NextFunction, Request, Response, Router } from 'express';
 
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
+import JSZip from 'jszip';
 import type { Dependencies } from '#src/dependencies.js';
 import { Unauthorized } from '#src/errors.js';
 
@@ -14,15 +15,19 @@ import {
 import sharp from 'sharp';
 import { z } from 'zod';
 
-const expectedImageQuery = z.object({
-  code: z.string(),
-  itemId: z.string(),
-});
+const expectedImageQuery = z.object({ code: z.string() });
+const expectedImagesQuery = z.object({ codes: z.string() });
 
 interface ImageQuery {
   code: string;
-  itemId: string;
 }
+
+const zipStream = (zip: JSZip) => {
+  return zip.generateNodeStream({
+    type: 'nodebuffer',
+    streamFiles: true,
+  });
+};
 
 export const createRestCouponsRoutes = (
   dependencies: Dependencies,
@@ -49,8 +54,8 @@ export const createRestCouponsRoutes = (
 
   const getCouponCode = createGetCouponCode(dependencies);
   const listEventsAndCourses = createListEventsAndCourses(dependencies);
-  const getCouponCodeSvg = async ({ code, itemId }: ImageQuery) => {
-    const couponCode = await getCouponCode(code, itemId);
+  const getCouponCodeSvg = async ({ code }: ImageQuery) => {
+    const couponCode = await getCouponCode(code);
     if (!couponCode) {
       return null;
     }
@@ -91,7 +96,7 @@ export const createRestCouponsRoutes = (
     },
   );
 
-  router.get(
+  router.all(
     '/coupon-image.png',
     couponPermissionMiddleware,
     async (req, res) => {
@@ -111,14 +116,65 @@ export const createRestCouponsRoutes = (
       const png = await sharp(Buffer.from(svg)).png({}).toBuffer();
 
       res.setHeader('Content-Type', 'image/png');
+      res.setHeader('Content-Disposition', `attachment; filename="coupon.png"`);
       res.write(png);
       res.end();
     },
   );
 
-  router.post('/coupons-zip', couponPermissionMiddleware, async (req, res) => {
-    console.log('req.body', req.body);
+  router.post('/coupons.zip', couponPermissionMiddleware, async (req, res) => {
+    // Validate query
+    const parsedQuery = expectedImagesQuery.safeParse(req.query);
+    if (!parsedQuery.success) {
+      res.status(400).json({ error: 'Invalid query parameters' });
+      return;
+    }
 
-    res.json(null);
+    const eventsAndCourses = await listEventsAndCourses();
+
+    const codes = parsedQuery.data.codes.split(',');
+    const couponCodes = await Promise.all(
+      codes.map(async (code) => {
+        const couponCode = await getCouponCode(code);
+        if (!couponCode) {
+          return null;
+        }
+
+        // Find title from course
+        const eventOrCourse = eventsAndCourses.find(
+          (eventOrCourse) => eventOrCourse.id === couponCode.itemId,
+        );
+
+        return {
+          code: couponCode.code,
+          reductionPercentage: couponCode.reductionPercentage ?? 0,
+          title: eventOrCourse?.name || 'unknown',
+        };
+      }),
+    );
+
+    if (couponCodes.some((code) => code === null)) {
+      res.status(404).json({ error: 'Coupon code not found' });
+      return;
+    }
+
+    const zip = new JSZip();
+
+    for (const couponCode of couponCodes) {
+      const svg = generateCouponSvg({
+        reductionPercentage: couponCode!.reductionPercentage,
+        code: couponCode!.code,
+        title: couponCode!.title,
+      });
+
+      const png = await sharp(Buffer.from(svg)).png({}).toBuffer();
+
+      zip.file(`${couponCode!.code}.png`, png);
+    }
+
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', `attachment; filename="coupons.zip"`);
+
+    zipStream(zip).pipe(res);
   });
 };

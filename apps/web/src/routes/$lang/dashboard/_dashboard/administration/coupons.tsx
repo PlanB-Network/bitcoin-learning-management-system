@@ -86,7 +86,7 @@ function AdminCoupons() {
   const deleteModal = useDisclosure();
 
   // Create modal state
-  const createModal = useDisclosure();
+  const modal = useDisclosure();
   const resetForm = () => {
     // Reset form
     setFormIsEvent(false);
@@ -100,7 +100,7 @@ function AdminCoupons() {
   };
 
   const onCreateModalClose = () => {
-    createModal.close();
+    modal.close();
     coupons.refetch();
     resetForm();
   };
@@ -113,7 +113,8 @@ function AdminCoupons() {
   const [formNumberOfCodes, setFormNumberOfCodes] = useState<number>(1);
   const [formMaxUses, setFormMaxUses] = useState<number>(1);
 
-  const [generatedCodes, setGeneratedCodes] = useState<string[]>([]);
+  const [codeCopied, setCodeCopied] = useState(false);
+  const [generatedCodes, setGeneratedCodes] = useState<string[] | null>(null);
 
   const [preventDoubleClick, setPreventDoubleClick] = useState(false);
 
@@ -170,11 +171,7 @@ function AdminCoupons() {
         <span>{t('dashboard.adminPanel.coupons.explanation')}</span>
       </div>
 
-      <Button
-        className="w-fit"
-        variant="primary"
-        onClick={() => createModal.open()}
-      >
+      <Button className="w-fit" variant="primary" onClick={() => modal.open()}>
         {t('dashboard.adminPanel.coupons.generateNew')}
       </Button>
 
@@ -277,6 +274,8 @@ function AdminCoupons() {
                       size="s"
                       onClick={() => {
                         console.log('View coupon code', coupon);
+                        setGeneratedCodes([coupon.code]);
+                        modal.open();
                       }}
                     >
                       View
@@ -348,7 +347,7 @@ function AdminCoupons() {
         </DialogContent>
       </Dialog>
 
-      <Dialog open={createModal.isOpen} onOpenChange={onCreateModalClose}>
+      <Dialog open={modal.isOpen} onOpenChange={onCreateModalClose}>
         <DialogContent
           showCloseButton={true}
           className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
@@ -361,7 +360,9 @@ function AdminCoupons() {
           </DialogHeader>
 
           <h1 className="text-2xl font-thin text-newOrange-1 my-4 w-full min-w-96 text-center">
-            {t('dashboard.adminPanel.coupons.generateDiscountCode')}
+            {generatedCodes?.length
+              ? t('dashboard.adminPanel.coupons.generatedCodes')
+              : t('dashboard.adminPanel.coupons.generateDiscountCode')}
           </h1>
 
           {!generatedCodes?.length && (
@@ -530,37 +531,65 @@ function AdminCoupons() {
             </>
           )}
 
-          {generatedCodes.length > 0 && (
+          {generatedCodes && generatedCodes.length > 0 && (
             <div className="w-full">
-              <h3>
-                {t(
-                  `dashboard.adminPanel.coupons.generatedCode${generatedCodes.length > 1 ? 's' : ''}`,
-                )}
-                :
-              </h3>
+              <img
+                className="my-4 max-w-xl"
+                alt="Coupon code"
+                src={`/api/coupon-image.png?code=${generatedCodes[0]}`}
+              />
+
+              <div className="my-4">
+                <form
+                  action={
+                    generatedCodes.length > 1
+                      ? `/api/coupons.zip?codes=${generatedCodes.join(',')}`
+                      : `/api/coupon-image.png?code=${generatedCodes[0]}`
+                  }
+                  method="POST"
+                  target="_blank"
+                >
+                  <Button className="w-full" variant="primary" type="submit">
+                    {generatedCodes.length > 1
+                      ? t('dashboard.adminPanel.coupons.downloadImages')
+                      : t('dashboard.adminPanel.coupons.downloadImage')}
+                  </Button>
+                </form>
+              </div>
+
               <ul className="relative border rounded-lg p-2">
                 <li className="absolute top-0 right-0 text-newGray-3 p-1 rounded-md cursor-pointer">
-                  <button
-                    type="button"
-                    className="group"
-                    onClick={() => {
-                      navigator.clipboard.writeText(generatedCodes.join('\n'));
-                    }}
-                  >
-                    <svg
-                      role="img"
-                      aria-label="Copy"
-                      className="size-8"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                  {codeCopied ? (
+                    <div className="pt-1 pr-2 text-orange-400">
+                      {t('dashboard.adminPanel.coupons.discountCodeCopied')}
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className="group"
+                      onClick={() => {
+                        navigator.clipboard.writeText(
+                          generatedCodes.join('\n'),
+                        );
+                        setCodeCopied(true);
+                        setTimeout(() => setCodeCopied(false), 2000);
+                      }}
                     >
-                      <path
-                        d="M6.48926 12.2394C6.12259 12.2394 5.8087 12.1089 5.54759 11.8478C5.28648 11.5866 5.15592 11.2728 5.15592 10.9061V2.90609C5.15592 2.53942 5.28648 2.22553 5.54759 1.96442C5.8087 1.70331 6.12259 1.57275 6.48926 1.57275H12.4893C12.8559 1.57275 13.1698 1.70331 13.4309 1.96442C13.692 2.22553 13.8226 2.53942 13.8226 2.90609V10.9061C13.8226 11.2728 13.692 11.5866 13.4309 11.8478C13.1698 12.1089 12.8559 12.2394 12.4893 12.2394H6.48926ZM6.48926 10.9061H12.4893V2.90609H6.48926V10.9061ZM3.82259 14.9061C3.45592 14.9061 3.14204 14.7755 2.88092 14.5144C2.61981 14.2533 2.48926 13.9394 2.48926 13.5728V4.23942H3.82259V13.5728H11.1559V14.9061H3.82259Z"
-                        className="fill-black group-hover:fill-orange-500"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        role="img"
+                        aria-label="Copy"
+                        className="size-8"
+                        viewBox="0 0 16 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.48926 12.2394C6.12259 12.2394 5.8087 12.1089 5.54759 11.8478C5.28648 11.5866 5.15592 11.2728 5.15592 10.9061V2.90609C5.15592 2.53942 5.28648 2.22553 5.54759 1.96442C5.8087 1.70331 6.12259 1.57275 6.48926 1.57275H12.4893C12.8559 1.57275 13.1698 1.70331 13.4309 1.96442C13.692 2.22553 13.8226 2.53942 13.8226 2.90609V10.9061C13.8226 11.2728 13.692 11.5866 13.4309 11.8478C13.1698 12.1089 12.8559 12.2394 12.4893 12.2394H6.48926ZM6.48926 10.9061H12.4893V2.90609H6.48926V10.9061ZM3.82259 14.9061C3.45592 14.9061 3.14204 14.7755 2.88092 14.5144C2.61981 14.2533 2.48926 13.9394 2.48926 13.5728V4.23942H3.82259V13.5728H11.1559V14.9061H3.82259Z"
+                          className="fill-black group-hover:fill-orange-500"
+                        />
+                      </svg>
+                    </button>
+                  )}
                 </li>
                 {generatedCodes.map((code) => (
                   <li key={code}>{code}</li>

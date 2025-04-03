@@ -403,6 +403,7 @@
         "deleteDiscountCodeSuccess": "Discount code successfully deleted",
         "deleteDiscountCodeWarning": "Once this code is deleted, it won’t be functional anymore. This change is irreversible",
         "discountCode": "Discount code",
+        "discountCodeCopied": "Discount code copied",
         "discountCodeExplanation": "Warning this code is case-sensitive.",
         "discountCodePlaceholder": "Leave empty for automatic generation",
         "discountMultiUse": "Multi-use",
@@ -411,6 +412,8 @@
         "discountValue": "Percentage of reduction",
         "discountValueExplanation": "Enter a number in increments of 5 (e.g. 5, 10, 15... up to 100)",
         "discountValuePlaceholder": "example: 20 for 20%",
+        "downloadImage": "Download image",
+        "downloadImages": "Download images",
         "explanation": "Generate and manage discount codes for events and courses - either single-use for scholarships or similar cases, or multi-use for marketing campaigns.",
         "filters": {
           "all": "All",

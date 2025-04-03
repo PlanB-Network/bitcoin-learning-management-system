@@ -25,9 +25,7 @@ const getCouponCode = publicProcedure
     }),
   )
   .output<Parser<CouponCode | null>>(couponCodeSchema.nullable())
-  .query(({ ctx, input }) =>
-    createGetCouponCode(ctx.dependencies)(input.code, input.itemId),
-  );
+  .query(({ ctx, input }) => createGetCouponCode(ctx.dependencies)(input.code));
 
 // Admin
 const listEventsAndCourses = adminProcedure
