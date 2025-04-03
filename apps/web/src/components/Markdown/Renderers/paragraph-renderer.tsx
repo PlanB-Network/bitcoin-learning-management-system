@@ -44,7 +44,7 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
       return <TradingViewWidget symbol={symbol} height={height} />;
     }
     if (children.includes(':::video')) {
-      return <></>;
+      return null;
     }
   }
 
