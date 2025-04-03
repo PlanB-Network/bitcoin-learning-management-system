@@ -1,0 +1,2 @@
+CREATE TYPE "public"."teaching_format" AS ENUM('self_paced', 'professor_led');--> statement-breakpoint
+ALTER TABLE "content"."courses" ADD COLUMN "teaching_format" "teaching_format" DEFAULT 'self_paced' NOT NULL;

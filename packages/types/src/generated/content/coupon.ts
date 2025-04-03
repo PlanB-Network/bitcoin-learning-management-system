@@ -8,6 +8,8 @@ export interface CouponCode {
   uses: number;
   maxUses: number;
   uid: string | null;
+  createdAt: Date;
+  deletedAt: Date | null;
 }
 
 export interface CouponCodeWithOwner {
@@ -17,6 +19,8 @@ export interface CouponCodeWithOwner {
   uses: number;
   maxUses: number;
   uid: string | null;
+  createdAt: Date;
+  deletedAt: Date | null;
   owner?: (string | undefined) | null;
 }
 

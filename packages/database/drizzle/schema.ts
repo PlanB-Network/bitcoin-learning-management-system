@@ -22,6 +22,7 @@ import {
   EventType,
   JobCategory,
   JobName,
+  TeachingFormat,
   TokenType,
   UserPermission,
   UserRole,
@@ -883,6 +884,10 @@ export const contentYoutubeChannels = content.table(
 // COURSES
 
 export const courseFormatEnum = pgNativeEnum('course_format', CourseFormat);
+export const teachingFormatEnum = pgNativeEnum(
+  'teaching_format',
+  TeachingFormat,
+);
 
 export const contentCourses = content.table('courses', (t) => ({
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
@@ -904,6 +909,9 @@ export const contentCourses = content.table('courses', (t) => ({
   paymentExpirationDate: t.timestamp(),
   publishedAt: t.timestamp(),
   format: courseFormatEnum().default(CourseFormat.Online).notNull(),
+  teachingFormat: teachingFormatEnum()
+    .default(TeachingFormat.SelfPaced)
+    .notNull(),
   onlinePriceDollars: t.integer(),
   inpersonPriceDollars: t.integer(),
   paidDescription: t.text(),

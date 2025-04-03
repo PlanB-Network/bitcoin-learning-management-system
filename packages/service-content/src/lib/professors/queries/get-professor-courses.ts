@@ -53,6 +53,7 @@ export const getProfessorCoursesQuery = ({
       c.payment_expiration_date,
       c.published_at,
       c.format,
+      c.teaching_format,
       c.online_price_dollars,
       c.inperson_price_dollars,
       c.paid_description,

@@ -680,6 +680,13 @@
       "when": 1743669234839,
       "tag": "0096_bright_master_chief",
       "breakpoints": true
+    },
+    {
+      "idx": 97,
+      "version": "7",
+      "when": 1743670086419,
+      "tag": "0097_lumpy_lethal_legion",
+      "breakpoints": true
     }
   ]
 }
