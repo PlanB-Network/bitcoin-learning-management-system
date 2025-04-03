@@ -5,6 +5,15 @@ import { canAccess } from '@blms/shared/auth';
 import type { Dependencies } from '#src/dependencies.js';
 import { Unauthorized } from '#src/errors.js';
 
+import {
+  createGetCouponCode,
+  createListEventsAndCourses,
+  generateCouponSvg,
+} from '@blms/service-content';
+
+import sharp from 'sharp';
+import { z } from 'zod';
+
 const expectedImageQuery = z.object({
   code: z.string(),
   itemId: z.string(),
@@ -14,15 +23,6 @@ interface ImageQuery {
   code: string;
   itemId: string;
 }
-
-import {
-  createGetCouponCode,
-  createListEventsAndCourses,
-} from '@blms/service-content';
-
-import sharp from 'sharp';
-import { z } from 'zod';
-import { template } from './coupon-template.js';
 
 export const createRestCouponsRoutes = (
   dependencies: Dependencies,
@@ -61,7 +61,7 @@ export const createRestCouponsRoutes = (
       (eventOrCourse) => eventOrCourse.id === couponCode.itemId,
     );
 
-    return template({
+    return generateCouponSvg({
       reductionPercentage: couponCode.reductionPercentage ?? 0,
       code: couponCode.code,
       title: eventOrCourse?.name || 'unknown',
