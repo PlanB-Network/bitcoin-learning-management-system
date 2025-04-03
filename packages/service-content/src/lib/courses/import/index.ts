@@ -54,6 +54,7 @@ interface CourseMain {
   payment_expiration_date?: number;
   published_at?: string;
   format: string;
+  teaching_format: string;
   online_price_dollars?: number;
   inperson_price_dollars?: number;
   paid_description?: string;
@@ -416,6 +417,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                    payment_expiration_date,
                    published_at,
                    format,
+                   teaching_format,
                    online_price_dollars,
                    inperson_price_dollars,
                    paid_description,
@@ -448,6 +450,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.payment_expiration_date},
                   ${parsedCourse.published_at},
                   ${parsedCourse.format},
+                  ${parsedCourse.teaching_format},
                   ${parsedCourse.online_price_dollars},
                   ${parsedCourse.inperson_price_dollars},
                   ${parsedCourse.paid_description},
@@ -479,6 +482,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   payment_expiration_date = EXCLUDED.payment_expiration_date,
                   published_at = EXCLUDED.published_at,
                   format = EXCLUDED.format,
+                  teaching_format = EXCLUDED.teaching_format,
                   online_price_dollars = EXCLUDED.online_price_dollars,
                   inperson_price_dollars = EXCLUDED.inperson_price_dollars,
                   paid_description = EXCLUDED.paid_description,
