@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import type { JoinedNewsletter } from '@blms/types';
 
-export const getNewslettersQuery = () => {
+export const getNewslettersQuery = (projectId?: string) => {
   return sql<JoinedNewsletter[]>`
     SELECT
       r.id,
@@ -26,6 +26,8 @@ export const getNewslettersQuery = () => {
     JOIN content.resources r ON r.id = n.resource_id
     LEFT JOIN content.resource_tags rt ON rt.resource_id = r.id
     LEFT JOIN content.tags t ON t.id = rt.tag_id
+    ${projectId ? sql`WHERE n.project_id = ${projectId}` : sql``}
+
     GROUP BY
       r.id,
       r.path,

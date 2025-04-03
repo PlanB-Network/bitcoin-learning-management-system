@@ -167,9 +167,10 @@ export const resourcesRouter = createTRPCRouter({
 
   //Newsletters
   getNewsletters: createGetResourcesProcedure()
+    .input(z.object({ projectId: z.string().optional() }).optional())
     .output<Parser<JoinedNewsletter[]>>(joinedNewsletterSchema.array())
-    .query(({ ctx }) => {
-      return createGetNewsletters(ctx.dependencies)();
+    .query(({ ctx, input }) => {
+      return createGetNewsletters(ctx.dependencies)(input?.projectId);
     }),
   getNewsletter: createGetResourceProcedure()
     .output<Parser<JoinedNewsletter>>(joinedNewsletterSchema)
@@ -190,9 +191,10 @@ export const resourcesRouter = createTRPCRouter({
 
   // Youtube Channels
   getYoutubeChannels: createGetResourcesProcedure()
+    .input(z.object({ projectId: z.string().optional() }).optional())
     .output<Parser<JoinedYoutubeChannel[]>>(joinedYoutubeChannelSchema.array())
-    .query(({ ctx }) => {
-      return createGetYoutubeChannels(ctx.dependencies)();
+    .query(({ ctx, input }) => {
+      return createGetYoutubeChannels(ctx.dependencies)(input?.projectId);
     }),
   getYoutubeChannel: createGetResourceProcedure()
     .output<Parser<JoinedYoutubeChannel>>(joinedYoutubeChannelSchema)

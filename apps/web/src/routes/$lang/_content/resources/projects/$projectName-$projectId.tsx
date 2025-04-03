@@ -1,11 +1,14 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { SlGlobe } from 'react-icons/sl';
 import { z } from 'zod';
 
+import BookPixel from '#src/assets/icons/book-pixelated.svg?react';
+import newsletterSvg from '#src/assets/icons/world-pixelated.svg';
 import conferenceSvg from '#src/assets/resources/conference.svg';
+import youtubeSvg from '#src/assets/resources/youtube.svg';
 import tutorialsSvg from '#src/assets/tutorials/other.svg';
 
 import { Button, Loader, cn } from '@blms/ui';
@@ -21,9 +24,11 @@ import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 import { VerticalCard } from '#src/molecules/vertical-card.tsx';
+import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';
+import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ProjectEvents } from '../-components/project-events.js';
 import { ResourceLayout } from '../-components/resource-layout.js';
 import { TutorialCard } from '../../tutorials/-components/tutorial-card.tsx';
@@ -59,7 +64,7 @@ function Project() {
 
   const isScreenMd = useGreater('sm');
 
-  const { tutorials } = useContext(AppContext);
+  const { tutorials, courses } = useContext(AppContext);
 
   const { data: project, isFetched } = trpc.content.getProject.useQuery(
     {
@@ -83,6 +88,14 @@ function Project() {
   const { data: events } = trpc.content.getRecentEvents.useQuery();
 
   const { data: conferenceReplays } = trpc.content.getConferences.useQuery({
+    projectId: params.projectId,
+  });
+
+  const { data: newsletters } = trpc.content.getNewsletters.useQuery({
+    projectId: params.projectId,
+  });
+
+  const { data: youtubeChannels } = trpc.content.getYoutubeChannels.useQuery({
     projectId: params.projectId,
   });
 
@@ -110,6 +123,10 @@ function Project() {
 
   const filteredTutorials = tutorials
     ? tutorials.filter((tutorial) => tutorial.projectId === project?.id)
+    : [];
+
+  const filteredCourses = courses
+    ? courses.filter((course) => course.projectName === project?.name)
     : [];
 
   useEffect(() => {
@@ -262,6 +279,22 @@ function Project() {
           {project.category === 'communities' && (
             <ProjectEvents events={filteredEvents} />
           )}
+          {filteredCourses.length > 0 && (
+            <div className="flex flex-col items-center gap-4 md:gap-10 mb-7 md:mb-14">
+              <h3 className="flex items-center text-center title-small-med-16px text-white md:title-large-24px">
+                <BookPixel className="mr-3 size-5 md:size-8 fill-darkOrange-5" />
+                {t('projects.related')}{' '}
+                <span className="ml-1 text-darkOrange-5">
+                  {t('words.courses')}
+                </span>
+              </h3>
+              <div className="flex flex-wrap gap-2 md:gap-6 justify-center">
+                {filteredCourses.map((course) => (
+                  <CourseCard key={course.id} course={course} mode="dark" />
+                ))}
+              </div>
+            </div>
+          )}
           {filteredTutorials.length > 0 && (
             <div className="flex flex-col items-center gap-4 md:gap-10 mb-7 md:mb-14">
               <h3 className="flex items-center text-center title-small-med-16px text-white md:title-large-24px">
@@ -318,6 +351,87 @@ function Project() {
                     languages={conference.languages}
                     className="max-w-[137px] md:max-w-[317px]"
                   />
+                ))}
+              </div>
+            </div>
+          )}
+          {newsletters && newsletters.length > 0 && (
+            <div className="flex flex-col items-center gap-4 md:gap-10 mb-7 md:mb-14">
+              <h3 className="flex items-center text-center title-small-med-16px text-white md:title-large-24px">
+                <img
+                  className="mr-3 size-5 md:size-8"
+                  src={newsletterSvg}
+                  alt="Newsletters"
+                />
+                {t('projects.related')}{' '}
+                <span className="ml-1 text-darkOrange-5">
+                  {t('resources.newsletters.title')}
+                </span>
+              </h3>
+              <div className="flex flex-wrap gap-2 md:gap-5 justify-center w-full">
+                {newsletters.map((newsletter) => (
+                  <Link
+                    to={`/resources/newsletters/${formatNameForURL(
+                      newsletter.title,
+                    )}-${newsletter.id}`}
+                    params={{
+                      newsletterId: newsletter.id.toString(),
+                    }}
+                    key={`${newsletter.id}`}
+                    className="grow md:grow-0"
+                  >
+                    <ResourceCard
+                      name={newsletter.title}
+                      author={newsletter.author}
+                      imageSrc={resourceImgUrl(newsletter)}
+                      language={newsletter.language}
+                      level={newsletter?.level ? newsletter.level : undefined}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          {youtubeChannels && youtubeChannels.length > 0 && (
+            <div className="flex flex-col items-center gap-4 md:gap-10 mb-7 md:mb-14">
+              <h3 className="flex items-center text-center title-small-med-16px text-white md:title-large-24px">
+                <img
+                  className="mr-3 size-5 md:size-8"
+                  src={youtubeSvg}
+                  alt="Youtube channels"
+                />
+                {t('projects.related')}{' '}
+                <span className="ml-1 text-darkOrange-5">
+                  {t('resources.channels.title')}
+                </span>
+              </h3>
+              <div className="flex flex-wrap gap-2 md:gap-5 justify-center w-full">
+                {youtubeChannels.map((youtubeChannel) => (
+                  <Fragment key={youtubeChannel.id}>
+                    <Link
+                      to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
+                      params={{
+                        youtubeChannelId: youtubeChannel.id.toString(),
+                      }}
+                      className="grow md:grow-0 max-md:hidden"
+                    >
+                      <ResourceCard
+                        name={youtubeChannel.name}
+                        imageSrc={resourceImgUrl(youtubeChannel)}
+                        language={youtubeChannel.language}
+                      />
+                    </Link>
+                    <VerticalCard
+                      imageSrc={resourceImgUrl(youtubeChannel)}
+                      title={youtubeChannel.name}
+                      buttonVariant="primary"
+                      buttonLink={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
+                      buttonText={t('words.viewMore')}
+                      languages={[youtubeChannel.language]}
+                      className="md:hidden w-[137px]"
+                      flagsOnMobile
+                    />
+                  </Fragment>
                 ))}
               </div>
             </div>
