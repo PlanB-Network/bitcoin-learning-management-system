@@ -419,25 +419,19 @@ export const usersBCertificateTimestamps = users.table(
 
 // RESOURCES
 
-export const contentResources = content.table(
-  'resources',
-  (t) => ({
-    id: t.uuid().notNull().primaryKey(),
-    category: t.varchar({ length: 255 }).notNull(),
-    path: t.varchar({ length: 255 }).notNull(),
-    lastUpdated: t
-      .timestamp({
-        withTimezone: true,
-      })
-      .defaultNow()
-      .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  }),
-  (table) => ({
-    unq: unique().on(table.category, table.path),
-  }),
-);
+export const contentResources = content.table('resources', (t) => ({
+  id: t.uuid().notNull().primaryKey(),
+  category: t.varchar({ length: 255 }).notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
+  lastUpdated: t
+    .timestamp({
+      withTimezone: true,
+    })
+    .defaultNow()
+    .notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
 
 export const contentTags = content.table('tags', (t) => ({
   id: t.integer().primaryKey().generatedAlwaysAsIdentity().notNull(),

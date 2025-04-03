@@ -673,6 +673,13 @@
       "when": 1743159097474,
       "tag": "0095_purple_marrow",
       "breakpoints": true
+    },
+    {
+      "idx": 96,
+      "version": "7",
+      "when": 1743669234839,
+      "tag": "0096_bright_master_chief",
+      "breakpoints": true
     }
   ]
 }
