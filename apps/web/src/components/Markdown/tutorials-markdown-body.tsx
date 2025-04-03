@@ -8,14 +8,13 @@ import remarkMath from 'remark-math';
 
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
-
-import VideoSVG from '../../assets/resources/video.svg?react';
 import { CopyButton } from '../copy-button.tsx';
-import { ReactPlayer } from '../react-player.tsx';
 
 import { useContext } from 'react';
 import { AppContext } from '#src/providers/context.tsx';
-import { Blockquote } from './blockquote.tsx';
+import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
+import { ImageVideoRenderer } from './Renderers/image-video-renderer.tsx';
+import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
 import { getCourse, getTutorial } from './utils/link-preview.tsx';
 
 const remarkMathOptions = {
@@ -47,16 +46,7 @@ const TutorialsMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-lg font-medium text-black">{children}</h3>
         ),
-        p: ({ children }) => {
-          if (
-            Array.isArray(children) &&
-            children.length === 1 &&
-            typeof children[0] === 'string'
-          ) {
-            return <p className="text-newBlack-1 body-16px">{children}</p>;
-          }
-          return <div className="text-newBlack-1 body-16px">{children}</div>;
-        },
+        p: ParagraphRenderer,
         a: ({ children, href = '' }) => {
           const tutorial = getTutorial(href, tutorials ?? []);
           if (tutorial) {
@@ -111,36 +101,9 @@ const TutorialsMarkdownBody = ({
             {children}
           </td>
         ),
-        img: ({ src, alt }) =>
-          src?.includes('youtube.com') || src?.includes('youtu.be') ? (
-            <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
-              <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-14 size-10" />
-                <div className="ml-2">
-                  <p className="text-sm font-medium text-blue-900">Video</p>
-                </div>
-              </div>
-              <div className="relative pt-[56.25%]">
-                <ReactPlayer
-                  width={'100%'}
-                  height={'100%'}
-                  style={{ position: 'absolute', top: 0, left: 0 }}
-                  className="mx-auto mb-2 rounded-lg"
-                  controls={true}
-                  url={src}
-                  src={alt}
-                />
-              </div>
-            </div>
-          ) : (
-            <img
-              className="mx-auto flex justify-center rounded-lg py-6"
-              src={src}
-              alt={alt}
-            />
-          ),
+        img: ImageVideoRenderer,
         blockquote: ({ children }) => (
-          <Blockquote mode="light">{children}</Blockquote>
+          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');

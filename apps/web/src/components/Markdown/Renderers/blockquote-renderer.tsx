@@ -4,7 +4,7 @@ import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 
 import { cn } from '@blms/ui';
 
-const blockQuoteVariants = cva(
+const blockquoteRendererVariants = cva(
   'text-center subtitle-small-med-14px md:subtitle-medium-med-16px py-2.5 mx-4 md:mx-8 whitespace-pre-line break-words max-w-[736px]',
   {
     variants: {
@@ -25,7 +25,7 @@ const quoteVariants = cva('', {
   },
 });
 
-export const Blockquote = ({
+export const BlockquoteRenderer = ({
   children,
   mode,
 }: {
@@ -45,7 +45,7 @@ export const Blockquote = ({
     <section className="max-w-[calc(736px+80px)]">
       <ImQuotesLeft size={35} className={quoteVariants({ mode })} />
       <div>
-        <blockquote className={blockQuoteVariants({ mode })}>
+        <blockquote className={blockquoteRendererVariants({ mode })}>
           {filteredChildren}
         </blockquote>
       </div>

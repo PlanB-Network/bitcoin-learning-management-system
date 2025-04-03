@@ -9,7 +9,8 @@ import remarkMath from 'remark-math';
 import { CopyButton } from '../copy-button.js';
 import { ReactPlayer } from '../react-player.js';
 
-import { Blockquote } from './blockquote.js';
+import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
+import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
 
 const PresentationMarkdownBody = ({
   content,
@@ -37,16 +38,7 @@ const PresentationMarkdownBody = ({
             {children}
           </h3>
         ),
-        p: ({ children }) => {
-          if (
-            Array.isArray(children) &&
-            children.length === 1 &&
-            typeof children[0] === 'string'
-          ) {
-            return <p className="text-blue-1000 body-16px">{children}</p>;
-          }
-          return <div className="text-blue-1000 body-16px">{children}</div>;
-        },
+        p: ParagraphRenderer,
         a: ({ children, href = '' }) => {
           return (
             <a
@@ -124,7 +116,7 @@ const PresentationMarkdownBody = ({
             />
           ),
         blockquote: ({ children }) => (
-          <Blockquote mode={'light'}>{children}</Blockquote>
+          <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
         ),
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');

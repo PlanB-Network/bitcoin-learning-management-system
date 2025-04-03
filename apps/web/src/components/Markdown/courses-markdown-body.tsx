@@ -8,52 +8,14 @@ import remarkMath from 'remark-math';
 
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
-
-import VideoSVG from '../../assets/resources/video.svg?react';
 import { CopyButton } from '../copy-button.tsx';
-import { ReactPlayer } from '../react-player.tsx';
 
-import { useContext, useEffect, useRef } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '#src/providers/context.tsx';
-import { Blockquote } from './blockquote.tsx';
+import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
+import { ImageVideoRenderer } from './Renderers/image-video-renderer.tsx';
+import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
 import { getCourse, getTutorial } from './utils/link-preview.tsx';
-
-const TradingViewWidget = ({
-  symbol,
-  height,
-}: {
-  symbol: string;
-  height: number;
-}) => {
-  const container = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!container.current) return;
-
-    const currentContainer = container.current;
-    const script = document.createElement('script');
-    script.src =
-      'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-    script.type = 'text/javascript';
-    script.async = true;
-    script.innerHTML = `{
-      "autosize": true,
-      "height": "${height}",
-      "symbol": "${symbol}",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "dark",
-      "style": "1",
-      "locale": "en",
-      "allow_symbol_change": true,
-      "support_host": "https://www.tradingview.com"
-    }`;
-    currentContainer.innerHTML = '';
-    currentContainer.appendChild(script);
-  }, [symbol, height]);
-
-  return <div ref={container} />;
-};
 
 const CoursesMarkdownBody = ({
   content,
@@ -82,35 +44,7 @@ const CoursesMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
-        p: ({ children }) => {
-          if (
-            typeof children === 'string' &&
-            children.includes(':::tradingview')
-          ) {
-            const str = children
-              .replace(':::tradingview', '')
-              .replace(':::', '')
-              .trim();
-            const symbol = str.match(/SYMBOL=([A-Z]+)/)?.[1] ?? 'BTCUSD';
-            const height = Number.parseInt(
-              str.match(/HEIGHT=(\d+)/)?.[1] ?? '500',
-              10,
-            );
-            return (
-              <TradingViewWidget symbol={symbol} height={Number(height)} />
-            );
-          }
-
-          if (
-            Array.isArray(children) &&
-            children.length === 1 &&
-            typeof children[0] === 'string'
-          ) {
-            return <p className="text-blue-1000 body-16px">{children}</p>;
-          }
-
-          return <div className="text-blue-1000 body-16px">{children}</div>;
-        },
+        p: ParagraphRenderer,
         a: ({ children, href = '' }) => {
           const tutorial = getTutorial(href, tutorials ?? []);
           if (tutorial) {
@@ -165,50 +99,9 @@ const CoursesMarkdownBody = ({
             {children}
           </td>
         ),
-        img: ({ src, alt }) =>
-          src?.includes('youtube.com') ||
-          src?.includes('youtu.be') ||
-          src?.includes('rumble.com') ? (
-            <div className="mx-auto mb-2 max-w-full rounded-lg pb-6">
-              <div className="flex items-center">
-                <VideoSVG className="mb-2 ml-4 size-10" />
-                <div className="ml-2">
-                  <p className="text-lg font-medium text-blue-900">Video</p>
-                </div>
-              </div>
-              <div className="relative pt-[56.25%]">
-                {src?.includes('youtube.com') || src?.includes('youtu.be') ? (
-                  <ReactPlayer
-                    width={'100%'}
-                    height={'100%'}
-                    style={{ position: 'absolute', top: 0, left: 0 }}
-                    className="mx-auto mb-2 rounded-lg"
-                    controls={true}
-                    url={src}
-                    src={alt}
-                  />
-                ) : (
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    style={{ position: 'absolute', top: 0, left: 0 }}
-                    className="mx-auto mb-2 rounded-lg"
-                    src={src}
-                    title={alt}
-                    allowFullScreen
-                  />
-                )}
-              </div>
-            </div>
-          ) : (
-            <img
-              className="mx-auto flex justify-center rounded-lg pb-6"
-              src={src}
-              alt={alt}
-            />
-          ),
+        img: ImageVideoRenderer,
         blockquote: ({ children }) => (
-          <Blockquote mode={'light'}>{children}</Blockquote>
+          <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
         ),
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');

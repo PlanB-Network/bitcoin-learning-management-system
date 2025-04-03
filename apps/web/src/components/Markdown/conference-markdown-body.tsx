@@ -8,7 +8,7 @@ import remarkMath from 'remark-math';
 
 import { CopyButton } from '../copy-button.tsx';
 
-import { Blockquote } from './blockquote.tsx';
+import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
 
 const remarkMathOptions = {
   singleDollarTextMath: false,
@@ -133,7 +133,7 @@ const ConferencesMarkdownBody = ({
             />
           ),
         blockquote: ({ children }) => (
-          <Blockquote mode="dark">{children}</Blockquote>
+          <BlockquoteRenderer mode="dark">{children}</BlockquoteRenderer>
         ),
         code({ className, children }) {
           const childrenText = String(children).replace(/\n$/, '');

@@ -10,7 +10,7 @@ import YellowPen from '../../assets/courses/pencil.svg?react';
 import VideoSVG from '../../assets/resources/video.svg?react';
 import { ReactPlayer } from '../react-player.tsx';
 
-import { Blockquote } from './blockquote.tsx';
+import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
 
 const GeneralMarkdownBody = ({
   content,
@@ -114,7 +114,7 @@ const GeneralMarkdownBody = ({
             />
           ),
         blockquote: ({ children }) => (
-          <Blockquote mode="light">{children}</Blockquote>
+          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),
         code({ className, children }) {
           const match = /language-(\w+)/.exec(className || '');
