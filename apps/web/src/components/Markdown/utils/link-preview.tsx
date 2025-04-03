@@ -1,4 +1,8 @@
-import type { JoinedCourse, JoinedTutorialLight } from '@blms/types';
+import type {
+  JoinedBlogLight,
+  JoinedCourse,
+  JoinedTutorialLight,
+} from '@blms/types';
 
 export const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
   const pattern =
@@ -20,6 +24,20 @@ export const getCourse = (url: string, courses: JoinedCourse[]) => {
   if (match) {
     const courseId = match[1].slice(-36);
     return courses.find((course) => course.id === courseId) || null;
+  }
+
+  return null;
+};
+
+export const getBlog = (url: string, blogs?: JoinedBlogLight[]) => {
+  if (!blogs) return null;
+
+  const pattern = /^https:\/\/planb\.network\/blogs\/(\d+)$/;
+  const match = url.match(pattern);
+
+  if (match) {
+    const blogId = match[1];
+    return blogs.find((blog) => blog.id === blogId) || null;
   }
 
   return null;

@@ -1,16 +1,18 @@
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
 import YellowPen from '../../assets/courses/pencil.svg?react';
-import VideoSVG from '../../assets/resources/video.svg?react';
-import { ReactPlayer } from '../react-player.tsx';
 
 import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
+import { CodeRenderer } from './Renderers/code-renderer.tsx';
+import { ImageVideoRenderer } from './Renderers/image-video-renderer.tsx';
+import { LinkRenderer } from './Renderers/link-renderer.tsx';
+import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
+import { TableRenderer } from './Renderers/table-renderer.tsx';
+import { TdRenderer } from './Renderers/td-renderer.tsx';
 
 const GeneralMarkdownBody = ({
   content,
@@ -45,17 +47,12 @@ const GeneralMarkdownBody = ({
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
         p: ({ children }) => (
-          <p className=" text-blue-1000 text-base tracking-wide">{children}</p>
+          <ParagraphRenderer intent="general">{children}</ParagraphRenderer>
         ),
         a: ({ children, href }) => (
-          <a
-            href={href}
-            target="_blank"
-            className=" text-blue-500 "
-            rel="noreferrer"
-          >
+          <LinkRenderer href={href} intent="general">
             {children}
-          </a>
+          </LinkRenderer>
         ),
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide">
@@ -70,64 +67,18 @@ const GeneralMarkdownBody = ({
         li: ({ children }) => (
           <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
         ),
-        table: ({ children }) => (
-          <table className="w-full table-fixed border-collapse border border-blue-900">
-            {children}
-          </table>
+        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="logo" src={src} alt={alt} />
         ),
-        th: ({ children }) => (
-          <th className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
-            {children}
-          </th>
-        ),
-        td: ({ children }) => (
-          <td className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
-            {children}
-          </td>
-        ),
-        img: ({ src, alt }) =>
-          src?.includes('youtube.com') || src?.includes('youtu.be') ? (
-            <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
-              <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-4 size-10" />
-                <div className="ml-2">
-                  <p className="text-lg font-medium text-blue-900">Video</p>
-                </div>
-              </div>
-              <div className="relative pt-[56.25%]">
-                <ReactPlayer
-                  width={'100%'}
-                  height={'100%'}
-                  style={{ position: 'absolute', top: 0, left: 0 }}
-                  className="mx-auto mb-2 rounded-lg"
-                  controls={true}
-                  url={src}
-                  src={alt}
-                />
-              </div>
-            </div>
-          ) : (
-            <img
-              className="mx-auto flex justify-center rounded-lg py-6"
-              src={src}
-              alt={alt}
-            />
-          ),
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),
-        code({ className, children }) {
-          const match = /language-(\w+)/.exec(className || '');
-          return (
-            <SyntaxHighlighter
-              style={atomDark}
-              language={match ? match[1] : undefined}
-              PreTag="div"
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          );
-        },
+        code: ({ className, children }) => (
+          <CodeRenderer className={className}>{children}</CodeRenderer>
+        ),
       }}
       remarkPlugins={[remarkGfm, rehypeUnwrapImages, remarkMath]}
       rehypePlugins={[rehypeMathjax]}

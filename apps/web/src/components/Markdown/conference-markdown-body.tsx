@@ -1,14 +1,16 @@
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax/svg';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
-import { CopyButton } from '../copy-button.tsx';
-
 import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
+import { CodeRenderer } from './Renderers/code-renderer.tsx';
+import { ImageVideoRenderer } from './Renderers/image-video-renderer.tsx';
+import { LinkRenderer } from './Renderers/link-renderer.tsx';
+import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
+import { TableRenderer } from './Renderers/table-renderer.tsx';
+import { TdRenderer } from './Renderers/td-renderer.tsx';
 
 const remarkMathOptions = {
   singleDollarTextMath: false,
@@ -68,17 +70,10 @@ const ConferencesMarkdownBody = ({
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
         p: ({ children }) => (
-          <p className="desktop-subtitle1 text-newGray-1">{children}</p>
+          <ParagraphRenderer intent="conference">{children}</ParagraphRenderer>
         ),
         a: ({ children, href }) => (
-          <a
-            href={href}
-            target="_blank"
-            className="underline text-newBlue-1"
-            rel="noreferrer"
-          >
-            {children}
-          </a>
+          <LinkRenderer href={href}>{children}</LinkRenderer>
         ),
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide">
@@ -93,78 +88,18 @@ const ConferencesMarkdownBody = ({
         li: ({ children }) => (
           <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
         ),
-        table: ({ children }) => (
-          <table className="w-full table-fixed border-collapse border border-blue-900">
-            {children}
-          </table>
+        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="none" src={src} alt={alt} />
         ),
-        th: ({ children }) => (
-          <th className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
-            {children}
-          </th>
-        ),
-        td: ({ children }) => (
-          <td className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
-            {children}
-          </td>
-        ),
-        img: ({ src, alt }) =>
-          src?.includes('youtube.com') ||
-          src?.includes('youtu.be') ||
-          src?.includes('peertube') ||
-          src?.includes('makertube') ? (
-            <div className="mx-auto max-w-full mb-2.5 md:mb-5 w-full aspect-video">
-              <iframe
-                width={'100%'}
-                height={'100%'}
-                className="mx-auto mb-2 rounded-lg"
-                src={fixEmbedUrl(src)}
-                title="Conference Replay"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          ) : (
-            <img
-              className="mx-auto flex justify-center rounded-lg py-6"
-              src={src}
-              alt={alt}
-            />
-          ),
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode="dark">{children}</BlockquoteRenderer>
         ),
-        code({ className, children }) {
-          const childrenText = String(children).replace(/\n$/, '');
-
-          // Default to treating as inline code
-          let isCodeBlock = false;
-
-          if ((className || '').startsWith('language-')) {
-            isCodeBlock = true;
-          } else if (!className && children) {
-            // If it contains line breaks, treat as a code block
-            isCodeBlock = String(children).includes('\n');
-          }
-
-          return isCodeBlock ? (
-            <div className="relative">
-              <SyntaxHighlighter
-                style={atomDark}
-                language={/language-(\w+)/.exec(className || '')?.[1] || 'text'}
-                PreTag="div"
-              >
-                {String(children).replace(/\n$/, '')}
-              </SyntaxHighlighter>
-              <CopyButton text={childrenText} />
-            </div>
-          ) : (
-            <code className="bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm">
-              {children}
-            </code>
-          );
-        },
+        code: ({ className, children }) => (
+          <CodeRenderer className={className}>{children}</CodeRenderer>
+        ),
       }}
       remarkPlugins={[
         remarkGfm,
