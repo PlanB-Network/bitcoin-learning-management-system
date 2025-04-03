@@ -98,6 +98,7 @@ export const minimalJoinedCourseSchema = courseSchema
     paymentExpirationDate: true,
     publishedAt: true,
     format: true,
+    teachingFormat: true,
     onlinePriceDollars: true,
     inpersonPriceDollars: true,
     paidDescription: true,

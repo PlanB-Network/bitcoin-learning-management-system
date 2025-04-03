@@ -1,0 +1,1 @@
+ALTER TABLE "content"."resources" DROP CONSTRAINT "resources_category_path_unique";

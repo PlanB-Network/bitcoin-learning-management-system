@@ -6,9 +6,12 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, TextTag, cn } from '@blms/ui';
 
+import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
+
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
 import { Image } from '#src/components/image.tsx';
+import { getTimeStringWithDayAndMonth } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -37,10 +40,12 @@ export const CourseCard = ({
   course,
   featured = false,
   mode = 'dark',
+  className,
 }: {
   course: JoinedCourse | CourseResponse;
   featured?: boolean;
   mode?: 'light' | 'dark';
+  className?: string;
 }) => {
   const maxRating = 5;
 
@@ -48,7 +53,10 @@ export const CourseCard = ({
     <Link
       key={course.id}
       to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
-      className="flex w-full max-md:max-w-[500px] max-md:mx-auto md:w-[340px]"
+      className={cn(
+        'flex w-full max-md:max-w-[500px] max-md:mx-auto md:w-[340px]',
+        className,
+      )}
     >
       <article
         className={`overflow-hidden ${courseCardStyles({
@@ -166,6 +174,168 @@ export const CourseCard = ({
                 className={cn(
                   'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
                   'group-hover:ml-3',
+                )}
+              />
+            </Button>
+          </div>
+        </div>
+      </article>
+    </Link>
+  );
+};
+
+export const CourseCardExtended = ({
+  course,
+}: {
+  course: JoinedCourse | CourseResponse;
+}) => {
+  const maxRating = 5;
+
+  return (
+    <Link
+      key={course.id}
+      to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
+      className="flex w-full max-w-[730px] max-md:mx-auto"
+    >
+      <article
+        className={
+          'overflow-hidden group flex flex-col w-full max-md:max-w-[500px] max-md:mx-auto md:h-[472px] p-2.5 bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section rounded-[10px] md:rounded-[20px] relative'
+        }
+      >
+        <span className="absolute uppercase -top-px -left-px bg-white border border-white rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-[5px] px-2.5 md:py-2.5 md:px-[15px] md:rounded-br-[20px] z-10 shrink-0 max-md:w-[95px]">
+          <Image
+            src={PlanBSchoolLogo}
+            alt="Plan B School"
+            loading="lazy"
+            breakpoints={{ default: 320 }}
+          />
+        </span>
+
+        <div className="flex flex-col md:flex-row gap-2.5 md:gap-5 h-full md:max-h-[270px] md:group-hover:max-h-[250px] transition-[max-height] ease-linear overflow-hidden">
+          <Image
+            width={320}
+            height={224}
+            loading="lazy"
+            src={assetUrl(
+              `courses/${course.index}`,
+              'thumbnail.webp',
+              course.lastCommit,
+            )}
+            alt={course.name}
+            breakpoints={{ default: 320 }}
+            className="w-full rounded-md object-cover [overflow-clip-margin:_unset] object-center md:min-w-[358px]"
+          />
+
+          <div className="flex flex-col max-md:gap-1.5">
+            <span className="max-md:flex flex-col !line-clamp-2 subtitle-large-med-20px md:desktop-h6 text-white md:align-top">
+              {course.name}
+            </span>
+            <div className="flex flex-col flex-wrap gap-2.5 mt-3">
+              <div className="flex md:items-center gap-1.5 md:gap-2 order-2 md:order-1">
+                <TextTag
+                  size="verySmall"
+                  variant="lightMaroon"
+                  mode="dark"
+                  className="uppercase"
+                >
+                  {course.index === 'btc101'
+                    ? t('words.start')
+                    : t(`words.level.${course.level}`)}
+                </TextTag>
+                <TextTag
+                  size="verySmall"
+                  variant="lightMaroon"
+                  mode="dark"
+                  className="uppercase"
+                >
+                  {course.requiresPayment
+                    ? t('courses.details.paidCourse')
+                    : t('words.free')}
+                </TextTag>
+              </div>
+              <div className="flex order-1 md:order-2">
+                <StarRating
+                  rating={course.averageRating}
+                  totalStars={maxRating}
+                  starSize={20}
+                  className="gap-2"
+                />
+              </div>
+            </div>
+            <p className="text-tertiary-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-6 md:group-hover:line-clamp-5 mt-2.5 md:mt-3 max-md:desktop-typo1">
+              {course.goal}
+            </p>
+          </div>
+        </div>
+
+        <div className="md:relative md:mt-4">
+          <div className="flex flex-col md:absolute w-full">
+            <ListItem
+              leftText={t('words.professor')}
+              rightText={course.mainProfessors
+                .map((professor) => professor.name)
+                .join(', ')}
+              className="border-none max-md:hidden"
+              rightTextClassName="ml-2-5 line-clamp-1"
+              leftTextClassName="shrink-0"
+              variant="dark"
+            />
+            {course.startDate && course.endDate && (
+              <ListItem
+                leftText={t('dashboard.calendar.calendar')}
+                rightText={getTimeStringWithDayAndMonth(
+                  course.startDate,
+                  course.endDate,
+                )}
+                className="md:border-t"
+                variant="dark"
+              />
+            )}
+            <ListItem
+              leftText={t('words.duration')}
+              rightText={`${course.hours} hours`}
+              className="border-t md:group-hover:hidden max-md:hidden"
+              variant="dark"
+            />
+            <ListItem
+              leftText={t('words.mode')}
+              rightText={
+                course.format === 'online'
+                  ? t('accessType.online')
+                  : course.format === 'inperson'
+                    ? t('accessType.physical')
+                    : t('accessType.hybrid')
+              }
+              className="border-t"
+              rightTextClassName="lowercase"
+              variant="dark"
+            />
+            <ListItem
+              leftText={t('words.price')}
+              rightText={
+                course.requiresPayment
+                  ? course.inpersonPriceDollars
+                    ? `$${course.inpersonPriceDollars}`
+                    : t('words.free')
+                  : t('words.free')
+              }
+              className="border-t max-md:pb-0"
+              variant="dark"
+            />
+          </div>
+        </div>
+        <div className="max-md:hidden relative flex justify-center w-full mt-auto">
+          <div className="absolute w-full bottom-0">
+            <Button
+              variant="primary"
+              size="m"
+              className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-300"
+            >
+              {t('courses.explorer.seeCourse')}
+              <FaArrowRightLong
+                className={cn(
+                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 md:group-hover:max-w-96 md:group-hover:opacity-100',
+                  'md:group-hover:ml-3',
                 )}
               />
             </Button>

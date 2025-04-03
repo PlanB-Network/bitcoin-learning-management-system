@@ -18,6 +18,7 @@ export interface Course {
   paymentExpirationDate: Date | null;
   publishedAt: Date | null;
   format: 'online' | 'inperson' | 'hybrid';
+  teachingFormat: 'self_paced' | 'professor_led';
   onlinePriceDollars: number | null;
   inpersonPriceDollars: number | null;
   paidDescription: string | null;
@@ -151,6 +152,7 @@ export interface MinimalJoinedCourse {
   paymentExpirationDate: Date | null;
   publishedAt: Date | null;
   format: 'online' | 'inperson' | 'hybrid';
+  teachingFormat: 'self_paced' | 'professor_led';
   onlinePriceDollars: number | null;
   inpersonPriceDollars: number | null;
   paidDescription: string | null;
@@ -192,6 +194,7 @@ export interface JoinedCourseProfessorId {
   paymentExpirationDate: Date | null;
   publishedAt: Date | null;
   format: 'online' | 'inperson' | 'hybrid';
+  teachingFormat: 'self_paced' | 'professor_led';
   onlinePriceDollars: number | null;
   inpersonPriceDollars: number | null;
   paidDescription: string | null;
@@ -235,6 +238,7 @@ export interface JoinedCourse {
   paymentExpirationDate: Date | null;
   publishedAt: Date | null;
   format: 'online' | 'inperson' | 'hybrid';
+  teachingFormat: 'self_paced' | 'professor_led';
   onlinePriceDollars: number | null;
   inpersonPriceDollars: number | null;
   paidDescription: string | null;
@@ -321,6 +325,7 @@ export interface CourseResponse {
   paymentExpirationDate: Date | null;
   publishedAt: Date | null;
   format: 'online' | 'inperson' | 'hybrid';
+  teachingFormat: 'self_paced' | 'professor_led';
   onlinePriceDollars: number | null;
   inpersonPriceDollars: number | null;
   paidDescription: string | null;

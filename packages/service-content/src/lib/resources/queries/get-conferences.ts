@@ -23,15 +23,18 @@ export const getConferencesQuery = (projectId?: string) => {
         'stageId', cs.stage_id,
         'conferenceId', cs.conference_id,
         'name', cs.name,
-        'videos', (
-          SELECT json_agg(json_build_object(
-            'videoId', csv.video_id,
-            'stageId', csv.stage_id,
-            'name', csv.name,
-            'rawContent', csv.raw_content
-          ))
-          FROM content.conferences_stages_videos csv
-          WHERE csv.stage_id = cs.stage_id
+        'videos', COALESCE(
+          (
+            SELECT json_agg(json_build_object(
+              'videoId', csv.video_id,
+              'stageId', csv.stage_id,
+              'name', csv.name,
+              'rawContent', csv.raw_content
+            ))
+            FROM content.conferences_stages_videos csv
+            WHERE csv.stage_id = cs.stage_id
+          ),
+          '[]'
         )
       )) AS stages,
       COALESCE((SELECT ARRAY_AGG(DISTINCT t.name)

@@ -9,6 +9,7 @@ import type {
   ChangedFile,
   Course,
   Proofreading,
+  VideosLocalized,
 } from '@blms/types';
 
 import type { Language } from '../../const.js';
@@ -21,6 +22,12 @@ import {
   yamlToObject,
 } from '../../utils.js';
 
+// --- Constants ---
+const COURSE_MAIN_FILE = 'course.yml';
+const COURSE_LOGO_FILE = 'logo.webp';
+const PRESENTATION_FILE = 'presentation';
+const EXCERPT_SEPARATOR = '+++';
+
 interface CourseDetails {
   index: string;
   path: string;
@@ -31,70 +38,6 @@ interface CourseDetails {
 export interface ChangedCourse extends ChangedContent {
   index: string;
 }
-
-/**
- * Parse course details from path
- *
- * @param path - Path of the file
- * @returns Resource details
- */
-const parseDetailsFromPath = (path: string): CourseDetails => {
-  const pathElements = path.split('/');
-
-  // Validate that the path has at least 3 elements (courses/name)
-  if (pathElements.length < 2) {
-    throw new Error('Invalid resource path');
-  }
-
-  return {
-    index: pathElements[1],
-    path: pathElements.slice(0, 2).join('/'),
-    fullPath: pathElements.join('/'),
-    language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
-  };
-};
-
-export const groupByCourse = (
-  files: ChangedFile[] | ChangedAsset[],
-  errors: string[],
-) => {
-  const coursesFiles = files.filter(
-    (item) =>
-      getContentType(item.path) === 'courses' && !item.path.includes('quizz'),
-  );
-  const groupedCourses = new Map<string, ChangedCourse>();
-
-  for (const file of coursesFiles) {
-    try {
-      const {
-        index,
-        path: coursePath,
-        fullPath,
-        language,
-      } = parseDetailsFromPath(file.path);
-
-      const course: ChangedCourse = groupedCourses.get(coursePath) || {
-        type: 'courses',
-        index,
-        path: coursePath,
-        fullPath,
-        files: [],
-      };
-
-      course.files.push({
-        ...file,
-        path: getRelativePath(file.path, coursePath),
-        language,
-      });
-
-      groupedCourses.set(coursePath, course);
-    } catch {
-      errors.push(`Unsupported path ${file.path}, skipping file...`);
-    }
-  }
-
-  return [...groupedCourses.values()];
-};
 
 interface CourseMain {
   id: string;
@@ -111,6 +54,7 @@ interface CourseMain {
   payment_expiration_date?: number;
   published_at?: string;
   format: string;
+  teaching_format: string;
   online_price_dollars?: number;
   inperson_price_dollars?: number;
   paid_description?: string;
@@ -124,6 +68,10 @@ interface CourseMain {
   is_gdpr_compliance: boolean;
   custom_tc_disclaimer: string;
   test_only?: boolean;
+  videos?: {
+    id: string;
+    youtube?: { [key: string]: string };
+  }[];
 }
 
 interface CourseLocalized {
@@ -165,6 +113,69 @@ interface Chapter {
   remainingSeats: number | null;
   liveLanguage: string | null;
 }
+
+export const groupByCourse = (
+  files: ChangedFile[] | ChangedAsset[],
+  errors: string[],
+) => {
+  const groupedCourses = new Map<string, ChangedCourse>();
+
+  for (const file of files) {
+    if (
+      getContentType(file.path) !== 'courses' ||
+      file.path.includes('quizz')
+    ) {
+      continue;
+    }
+
+    try {
+      const {
+        index,
+        path: coursePath,
+        fullPath,
+        language,
+      } = parseDetailsFromPath(file.path);
+
+      const course: ChangedCourse = groupedCourses.get(coursePath) || {
+        type: 'courses',
+        index,
+        path: coursePath,
+        fullPath,
+        files: [],
+      };
+
+      course.files.push({
+        ...file,
+        path: getRelativePath(file.path, coursePath),
+        language,
+      });
+
+      groupedCourses.set(coursePath, course);
+    } catch {
+      errors.push(`Unsupported path ${file.path}, skipping file...`);
+    }
+  }
+
+  return [...groupedCourses.values()];
+};
+
+const parseDetailsFromPath = (path: string): CourseDetails => {
+  const pathElements = path.split('/');
+
+  // Expecting at least "courses/courseIndex/language.md" or "courses/courseIndex/course.yml"
+  if (pathElements.length < 3 || pathElements[0].toLowerCase() !== 'courses') {
+    throw new Error(
+      `Invalid course path structure: ${path}. Expected "courses/slug/..."`,
+    );
+  }
+
+  return {
+    index: pathElements[1],
+    path: pathElements.slice(0, 2).join('/'),
+    fullPath: path,
+    language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
+  };
+};
 
 const extractData = (token: Token, type: string) => {
   if (token.type === 'paragraph' && token.tokens) {
@@ -334,12 +345,12 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
     assets: ChangedCourse | undefined,
     errors: string[],
   ) => {
-    const { main, files } = separateContentFiles(course, 'course.yml');
+    const { main, files } = separateContentFiles(course, COURSE_MAIN_FILE);
     if (!main) return;
 
     let presentationMarkdown = null;
     const presentationIndex = files.findIndex(
-      (file) => file.language === 'presentation',
+      (file) => file.language === PRESENTATION_FILE,
     );
     if (presentationIndex !== -1) {
       const presentationFile = files.splice(presentationIndex, 1)[0];
@@ -347,7 +358,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
       presentationMarkdown = header.content.trim();
     }
 
-    const logo = assets?.files.find((f) => f.path === 'logo.webp');
+    const logo = assets?.files.find((f) => f.path === COURSE_LOGO_FILE);
     const hasLogo = logo !== undefined;
 
     let courseId: string;
@@ -355,7 +366,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
     return postgres
       .begin(async (transaction) => {
         try {
-          const parsedCourse = await yamlToObject<CourseMain>(main);
+          let parsedCourse = await yamlToObject<CourseMain>(main);
 
           if (
             parsedCourse.test_only === true &&
@@ -367,25 +378,18 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
           courseId = parsedCourse.id;
 
-          if (parsedCourse.requires_payment === null) {
-            parsedCourse.requires_payment = false;
-          }
-          if (parsedCourse.is_archived === null) {
-            parsedCourse.is_archived = false;
-          }
-          if (parsedCourse.is_planb_school == null) {
-            parsedCourse.is_planb_school = false;
-          }
+          const defaults = {
+            is_archived: false,
+            requires_payment: false,
+            is_planb_school: false,
+            is_gdpr_compliance: false,
+            format: 'online',
+            teaching_format: 'self_paced',
+          };
 
-          if (parsedCourse.is_gdpr_compliance == null) {
-            parsedCourse.is_gdpr_compliance = false;
-          }
+          parsedCourse = { ...defaults, ...parsedCourse };
 
           const lastUpdated = course.files.sort((a, b) => b.time - a.time)[0];
-
-          if (!parsedCourse.format) {
-            parsedCourse.format = 'online';
-          }
 
           // Remove all professors, reinsert them just after
           await transaction`
@@ -398,7 +402,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     WHERE course_id = ${parsedCourse.id}
                   `;
 
-          const result = await transaction<Course[]>`
+          const insertedCourse = await transaction<Course[]>`
                 INSERT INTO content.courses
                   ( id,
                    index,
@@ -413,6 +417,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                    payment_expiration_date,
                    published_at,
                    format,
+                   teaching_format,
                    online_price_dollars,
                    inperson_price_dollars,
                    paid_description,
@@ -445,6 +450,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   ${parsedCourse.payment_expiration_date},
                   ${parsedCourse.published_at},
                   ${parsedCourse.format},
+                  ${parsedCourse.teaching_format},
                   ${parsedCourse.online_price_dollars},
                   ${parsedCourse.inperson_price_dollars},
                   ${parsedCourse.paid_description},
@@ -476,6 +482,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   payment_expiration_date = EXCLUDED.payment_expiration_date,
                   published_at = EXCLUDED.published_at,
                   format = EXCLUDED.format,
+                  teaching_format = EXCLUDED.teaching_format,
                   online_price_dollars = EXCLUDED.online_price_dollars,
                   inperson_price_dollars = EXCLUDED.inperson_price_dollars,
                   paid_description = EXCLUDED.paid_description,
@@ -496,8 +503,45 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 RETURNING *
               `.then(firstRow);
 
-          if (!result) {
+          if (!insertedCourse) {
             throw new Error('Could not insert course');
+          }
+
+          if (parsedCourse.videos) {
+            for (let i = 0; i < parsedCourse.videos.length; i++) {
+              const currentVideo = parsedCourse.videos[i];
+
+              // Insert video
+              const insertedVideo = await transaction<VideosLocalized[]>`
+                INSERT INTO content.videos
+                  (
+                    id,
+                    course_id,
+                    last_sync
+                  )
+                VALUES (
+                  ${currentVideo.id},
+                  ${parsedCourse.id},
+                  NOW()
+                )
+                ON CONFLICT (id) DO UPDATE SET
+                  course_id = EXCLUDED.course_id,
+                  last_sync = NOW()
+                RETURNING *
+              `.then(firstRow);
+
+              if (insertedVideo && currentVideo.youtube) {
+                for (const key of Object.keys(currentVideo.youtube)) {
+                  await transaction`
+                  INSERT INTO content.videos_localized (id, language, provider, id_from_provider)
+                  VALUES (${insertedVideo.id}, ${key}, 'youtube', ${currentVideo.youtube[key]})
+                  ON CONFLICT (id, language) DO UPDATE SET
+                    provider = EXCLUDED.provider,
+                    id_from_provider = EXCLUDED.id_from_provider
+                  `;
+                }
+              }
+            }
           }
 
           for (let i = 0; i < parsedCourse.professors_id.length; i++) {
@@ -505,7 +549,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             await transaction`
               INSERT INTO content.course_professors (course_id, professor_id, is_coordinator)
               VALUES(
-                ${result.id},
+                ${insertedCourse.id},
                 ${prof},
                 ${i === 0}
               )
@@ -520,7 +564,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             );
 
             await transaction`
-              DELETE FROM content.course_tags WHERE course_id = ${result.id}
+              DELETE FROM content.course_tags WHERE course_id = ${insertedCourse.id}
              `;
 
             await transaction`
@@ -531,7 +575,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             await transaction`
               INSERT INTO content.course_tags (course_id, tag_id)
               SELECT
-                ${result.id},
+                ${insertedCourse.id},
                 id
                 FROM content.tags
                 WHERE name = ANY(${lowercaseTags})
@@ -577,7 +621,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
             const header = matter(await file.load(), {
               excerpt: true,
-              excerpt_separator: '+++',
+              excerpt_separator: EXCERPT_SEPARATOR,
             });
 
             const data = header.data as CourseLocalized;

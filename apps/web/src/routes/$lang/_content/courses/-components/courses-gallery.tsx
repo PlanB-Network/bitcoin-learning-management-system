@@ -4,14 +4,17 @@ import { useEffect, useState } from 'react';
 import type { JoinedCourse } from '@blms/types';
 import { Button } from '@blms/ui';
 
-import { CourseCard } from '#src/organisms/course-card.tsx';
+import { CourseCard, CourseCardExtended } from '#src/organisms/course-card.tsx';
 import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
 
 import { useTranslation } from 'react-i18next';
 import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
-export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
+export const CoursesGallery = ({
+  courses,
+  selectedSchool,
+}: { courses: JoinedCourse[]; selectedSchool: string }) => {
   const { t } = useTranslation();
 
   const uniqueTopics = Array.from(
@@ -100,12 +103,33 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
     ];
 
     setFilteredCourses(
-      reorderedCourses.filter(
-        (course) =>
-          (activeTopics.has('all') || activeTopics.has(course.topic)) &&
-          (activeLevels.has('all') || activeLevels.has(course.level)) &&
-          course.name.toLowerCase().includes(searchQuery.toLowerCase()),
-      ),
+      reorderedCourses.filter((course) => {
+        const nameMatchesSearch = course.name
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+
+        if (!nameMatchesSearch) {
+          return false;
+        }
+
+        const topicMatches =
+          activeTopics.has('all') || activeTopics.has(course.topic);
+        const levelMatches =
+          activeLevels.has('all') || activeLevels.has(course.level);
+
+        const passesStandardFilters = topicMatches && levelMatches;
+
+        const isSelectedSchool = course.index === selectedSchool;
+        let passesSchoolFilters = false;
+
+        if (isSelectedSchool) {
+          const schoolTopicMatches =
+            topicMatches || activeTopics.has('bitcoin');
+          passesSchoolFilters = schoolTopicMatches && levelMatches;
+        }
+
+        return passesStandardFilters || passesSchoolFilters;
+      }),
     );
   }, [courses, activeTopics, activeLevels, searchQuery]);
 
@@ -120,8 +144,12 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
   const featuredCourse = filteredCourses.find(
     (course) => course.index === featuredCourseIndex,
   );
+  const selectedSchoolCourse = filteredCourses.find(
+    (course) => course.index === selectedSchool,
+  );
   const otherCourses = filteredCourses.filter(
-    (course) => course.index !== featuredCourseIndex,
+    (course) =>
+      course.index !== featuredCourseIndex && course.index !== selectedSchool,
   );
 
   return (
@@ -209,7 +237,23 @@ export const CoursesGallery = ({ courses }: { courses: JoinedCourse[] }) => {
       </div>
 
       <section className="flex justify-center gap-5 md:gap-[50px] flex-wrap mt-8 md:mt-12 mb-5 lg:mb-[60px] max-w-[1226px] mx-auto">
-        {featuredCourse && <CourseCard course={featuredCourse} featured />}
+        {featuredCourse && (
+          <CourseCard
+            course={featuredCourse}
+            featured
+            className="md:hidden min-[1150px]:block"
+          />
+        )}
+        {selectedSchoolCourse && (
+          <CourseCardExtended course={selectedSchoolCourse} />
+        )}
+        {featuredCourse && (
+          <CourseCard
+            course={featuredCourse}
+            featured
+            className="max-md:hidden min-[1150px]:hidden"
+          />
+        )}
         {otherCourses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}

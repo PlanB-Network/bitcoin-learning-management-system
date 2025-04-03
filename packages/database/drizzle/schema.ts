@@ -22,9 +22,11 @@ import {
   EventType,
   JobCategory,
   JobName,
+  TeachingFormat,
   TokenType,
   UserPermission,
   UserRole,
+  VideoProvider,
 } from '@blms/constants';
 
 type StringEnum = Record<string, string>;
@@ -419,25 +421,19 @@ export const usersBCertificateTimestamps = users.table(
 
 // RESOURCES
 
-export const contentResources = content.table(
-  'resources',
-  (t) => ({
-    id: t.uuid().notNull().primaryKey(),
-    category: t.varchar({ length: 255 }).notNull(),
-    path: t.varchar({ length: 255 }).notNull(),
-    lastUpdated: t
-      .timestamp({
-        withTimezone: true,
-      })
-      .defaultNow()
-      .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  }),
-  (table) => ({
-    unq: unique().on(table.category, table.path),
-  }),
-);
+export const contentResources = content.table('resources', (t) => ({
+  id: t.uuid().notNull().primaryKey(),
+  category: t.varchar({ length: 255 }).notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
+  lastUpdated: t
+    .timestamp({
+      withTimezone: true,
+    })
+    .defaultNow()
+    .notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
 
 export const contentTags = content.table('tags', (t) => ({
   id: t.integer().primaryKey().generatedAlwaysAsIdentity().notNull(),
@@ -889,6 +885,10 @@ export const contentYoutubeChannels = content.table(
 // COURSES
 
 export const courseFormatEnum = pgNativeEnum('course_format', CourseFormat);
+export const teachingFormatEnum = pgNativeEnum(
+  'teaching_format',
+  TeachingFormat,
+);
 
 export const contentCourses = content.table('courses', (t) => ({
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
@@ -910,6 +910,9 @@ export const contentCourses = content.table('courses', (t) => ({
   paymentExpirationDate: t.timestamp(),
   publishedAt: t.timestamp(),
   format: courseFormatEnum().default(CourseFormat.Online).notNull(),
+  teachingFormat: teachingFormatEnum()
+    .default(TeachingFormat.SelfPaced)
+    .notNull(),
   onlinePriceDollars: t.integer(),
   inpersonPriceDollars: t.integer(),
   paidDescription: t.text(),
@@ -1916,6 +1919,34 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
         table.chapterId,
         table.language,
       ],
+    }),
+  }),
+);
+
+export const contentVideos = content.table('videos', (t) => ({
+  id: t.uuid().primaryKey().notNull(),
+  courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
+    onUpdate: 'cascade',
+  }),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
+export const videoProviderEnum = pgNativeEnum('video_provider', VideoProvider);
+
+export const contentVideosLocalized = content.table(
+  'videos_localized',
+  (t) => ({
+    id: t
+      .uuid()
+      .references(() => contentVideos.id, { onDelete: 'cascade' })
+      .notNull(),
+    language: t.varchar({ length: 10 }).notNull(),
+    provider: videoProviderEnum().notNull(),
+    idFromProvider: t.varchar({ length: 40 }),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.id, table.language],
     }),
   }),
 );

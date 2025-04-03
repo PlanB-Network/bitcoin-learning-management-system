@@ -5,7 +5,7 @@ export interface GlossaryWord {
   resourceId: string;
   originalWord: string;
   fileName: string;
-  relatedWords?: string[] | undefined;
+  relatedWords?: (string[] | undefined) | null;
   originalLanguage: string;
 }
 
@@ -23,7 +23,7 @@ export interface JoinedGlossaryWord {
   lastCommit: string;
   originalWord: string;
   fileName: string;
-  relatedWords?: string[] | undefined;
+  relatedWords?: (string[] | undefined) | null;
   originalLanguage: string;
   language: string;
   term: string;

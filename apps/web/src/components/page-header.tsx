@@ -11,6 +11,7 @@ export const PageHeader = ({
   hasGithubDescription = false,
   addedCredits = false,
   hideOnMobile,
+  hideDescriptionOnMobile = true,
   removeTopMargin,
   increaseHorizontalPadding,
 }: {
@@ -21,6 +22,7 @@ export const PageHeader = ({
   hasGithubDescription?: boolean;
   addedCredits?: boolean;
   hideOnMobile?: boolean;
+  hideDescriptionOnMobile?: boolean;
   removeTopMargin?: boolean;
   increaseHorizontalPadding?: boolean;
 }) => {
@@ -32,7 +34,11 @@ export const PageHeader = ({
         'flex flex-col',
         hideOnMobile && 'max-md:hidden',
         removeTopMargin ? '' : 'mt-5 md:mt-10',
-        increaseHorizontalPadding ? 'max-lg:px-6' : 'max-lg:px-4',
+        !hideDescriptionOnMobile
+          ? 'px-0'
+          : increaseHorizontalPadding
+            ? 'max-lg:px-6'
+            : 'max-lg:px-4',
       )}
     >
       {subtitle && (
@@ -88,7 +94,14 @@ export const PageHeader = ({
         </>
       ) : (
         description && (
-          <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px]  mt-1 md:mt-6 max-md:hidden">
+          <p
+            className={cn(
+              'max-w-4xl mx-auto text-center subtitle-medium-16px md:desktop-subtitle1 text-newGray-1 mt-1 md:mt-6',
+              hideDescriptionOnMobile
+                ? 'max-md:hidden'
+                : 'max-md:pb-12 max-md:border-b border-newGray-1 max-md:mt-5',
+            )}
+          >
             {description}
           </p>
         )

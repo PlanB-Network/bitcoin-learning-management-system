@@ -1,3 +1,5 @@
+import { t } from 'i18next';
+
 export const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 export const formatSecondsToMinutes = (seconds: number) => {
@@ -103,7 +105,7 @@ export const getDateString = (
 
 export const getTimeString = (
   startDate: Date,
-  endDate: Date,
+  endDate?: Date,
   timezone?: string,
 ) => {
   const timezoneText = timezone
@@ -113,8 +115,13 @@ export const getTimeString = (
   let timeString: string;
 
   timeString = formatTime(startDate, timezone);
+
+  if (!endDate) {
+    return timeString + timezoneText;
+  }
+
   if (endDate.getUTCHours() !== 0) {
-    timeString += ` to ${formatTime(endDate, timezone)}${timezoneText}`;
+    timeString += ` ${t('words.to')} ${formatTime(endDate, timezone)}${timezoneText}`;
   }
 
   return timeString;
@@ -128,7 +135,19 @@ export const getTimeStringWithOnlyMonths = (
     return '';
   }
 
-  return `${getMonthName(startDate)} to ${getMonthName(endDate)} ${getYear(startDate)}`;
+  return `${getMonthName(startDate)} ${t('words.to')} ${getMonthName(endDate)} ${getYear(startDate)}`;
+};
+
+export const getTimeStringWithDayAndMonth = (
+  startDate: Date | null,
+  endDate: Date | null,
+  timezone?: string,
+) => {
+  if (!startDate || !endDate) {
+    return '';
+  }
+
+  return `${formatDate(startDate, timezone, true, false)} to ${formatDate(endDate, timezone, true, false)}, ${getYear(endDate)}`;
 };
 
 export function formatFullDateWithDay(date: Date, timezone?: string): string {

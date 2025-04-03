@@ -26,7 +26,9 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
   }
 
   const filteredBlogs = blogs.filter(
-    (blog) => blog.id !== currentBlogId && blog.category === currentCategory,
+    (blog) =>
+      blog.id !== currentBlogId &&
+      (currentCategory === 'all' || blog.category === currentCategory),
   );
 
   return (
@@ -35,9 +37,17 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
         <img className="size-[35px] ml-2.5" src={MessageIcon} alt="" />
 
         <h3 className="text-black subtitle-large-18px capitalize">
-          {t('publicCommunication.blogPageStrings.blogSidebarTitle', {
-            category: currentCategory,
-          })}
+          {currentCategory === 'all' ? (
+            <>
+              {t('publicCommunication.blogPageStrings.blogSidebarTitleForAll')}
+            </>
+          ) : (
+            <>
+              {t('publicCommunication.blogPageStrings.blogSidebarTitle', {
+                category: currentCategory,
+              })}
+            </>
+          )}
         </h3>
       </div>
 
@@ -49,7 +59,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
               className="flex items-center justify-between py-3 text-start lg:px-2.5 w-full max-w-[354px]"
             >
               <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">
-                <p className="subtitle-medium-16px text-gray-600 min-w-[73px]">
+                <p className="subtitle-medium-16px text-gray-600 min-w-[77px]">
                   {formatMonthYear(new Date(blog.date))}
                 </p>
                 <IoIosArrowForward size={16} className="text-black mx-1" />

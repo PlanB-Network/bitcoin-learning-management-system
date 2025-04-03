@@ -673,6 +673,27 @@
       "when": 1743159097474,
       "tag": "0095_purple_marrow",
       "breakpoints": true
+    },
+    {
+      "idx": 96,
+      "version": "7",
+      "when": 1743669234839,
+      "tag": "0096_bright_master_chief",
+      "breakpoints": true
+    },
+    {
+      "idx": 97,
+      "version": "7",
+      "when": 1743670086419,
+      "tag": "0097_lumpy_lethal_legion",
+      "breakpoints": true
+    },
+    {
+      "idx": 98,
+      "version": "7",
+      "when": 1743670566259,
+      "tag": "0098_bent_nicolaos",
+      "breakpoints": true
     }
   ]
 }

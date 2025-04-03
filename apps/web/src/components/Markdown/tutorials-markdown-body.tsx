@@ -1,22 +1,15 @@
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeMathjax from 'rehype-mathjax/svg';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-
-import type { JoinedCourse, JoinedTutorialLight } from '@blms/types';
-
-import { CourseCard } from '#src/organisms/course-card.tsx';
-import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
-
-import VideoSVG from '../../assets/resources/video.svg?react';
-import { CopyButton } from '../copy-button.tsx';
-import { ReactPlayer } from '../react-player.tsx';
-
-import { Blockquote } from './blockquote.tsx';
-import { getCourse, getTutorial } from './utils/link-preview.tsx';
+import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
+import { CodeRenderer } from './Renderers/code-renderer.tsx';
+import { ImageVideoRenderer } from './Renderers/image-video-renderer.tsx';
+import { LinkRenderer } from './Renderers/link-renderer.tsx';
+import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
+import { TableRenderer } from './Renderers/table-renderer.tsx';
+import { TdRenderer } from './Renderers/td-renderer.tsx';
 
 const remarkMathOptions = {
   singleDollarTextMath: false,
@@ -25,13 +18,9 @@ const remarkMathOptions = {
 const TutorialsMarkdownBody = ({
   content,
   assetPrefix,
-  tutorials,
-  courses,
 }: {
   content: string;
   assetPrefix: string;
-  tutorials: JoinedTutorialLight[];
-  courses: JoinedCourse[];
 }) => {
   return (
     <ReactMarkdown
@@ -49,42 +38,12 @@ const TutorialsMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-lg font-medium text-black">{children}</h3>
         ),
-        p: ({ children }) => {
-          if (
-            Array.isArray(children) &&
-            children.length === 1 &&
-            typeof children[0] === 'string'
-          ) {
-            return <p className="text-newBlack-1 body-16px">{children}</p>;
-          }
-          return <div className="text-newBlack-1 body-16px">{children}</div>;
-        },
-        a: ({ children, href = '' }) => {
-          const tutorial = getTutorial(href, tutorials);
-          if (tutorial) {
-            return <TutorialCard tutorial={tutorial} href={href} addMargin />;
-          }
-
-          const course = getCourse(href, courses);
-          if (course) {
-            return (
-              <div className="w-full max-w-[500px] md:max-w-[340px] max-md:mx-auto py-2 md:py-1 md:mx-2 md:inline-block md:overflow-hidden">
-                <CourseCard course={course} mode="light" />
-              </div>
-            );
-          }
-
-          return (
-            <a
-              href={href}
-              target="_blank"
-              className="underline text-newBlue-1"
-              rel="noreferrer"
-            >
-              {children}
-            </a>
-          );
-        },
+        p: ({ children }) => <ParagraphRenderer>{children}</ParagraphRenderer>,
+        a: ({ children, href }) => (
+          <LinkRenderer href={href} intent="general">
+            {children}
+          </LinkRenderer>
+        ),
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide">
             {children}
@@ -98,93 +57,18 @@ const TutorialsMarkdownBody = ({
         li: ({ children }) => (
           <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
         ),
-        table: ({ children }) => (
-          <table className="w-full table-fixed border-collapse border border-blue-900">
-            {children}
-          </table>
+        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="logo" src={src} alt={alt} />
         ),
-        th: ({ children }) => (
-          <th className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
-            {children}
-          </th>
-        ),
-        td: ({ children }) => (
-          <td className="overflow-hidden text-ellipsis break-words border border-blue-900 px-2 py-1">
-            {children}
-          </td>
-        ),
-        img: ({ src, alt }) =>
-          src?.includes('youtube.com') || src?.includes('youtu.be') ? (
-            <div className="mx-auto mb-2 max-w-full rounded-lg py-6">
-              <div className=" flex items-center">
-                <VideoSVG className="mb-2 ml-14 size-10" />
-                <div className="ml-2">
-                  <p className="text-sm font-medium text-blue-900">Video</p>
-                </div>
-              </div>
-              <div className="relative pt-[56.25%]">
-                <ReactPlayer
-                  width={'100%'}
-                  height={'100%'}
-                  style={{ position: 'absolute', top: 0, left: 0 }}
-                  className="mx-auto mb-2 rounded-lg"
-                  controls={true}
-                  url={src}
-                  src={alt}
-                />
-              </div>
-            </div>
-          ) : (
-            <img
-              className="mx-auto flex justify-center rounded-lg py-6"
-              src={src}
-              alt={alt}
-            />
-          ),
         blockquote: ({ children }) => (
-          <Blockquote mode="light">{children}</Blockquote>
+          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),
-        code({ className, children }) {
-          const childrenText = String(children).replace(/\n$/, '');
-
-          // Default to treating as inline code
-          let isCodeBlock = false;
-
-          if ((className || '').startsWith('language-')) {
-            isCodeBlock = true;
-          } else if (!className && children) {
-            // If it contains line breaks, treat as a code block
-            isCodeBlock = String(children).includes('\n');
-          }
-
-          const languageMatch = /language-(\w+)/.exec(className || '');
-          const language = languageMatch
-            ? languageMatch[1] === 'text'
-              ? 'plaintext'
-              : languageMatch[1]
-            : 'plaintext';
-
-          const shouldWrapLines =
-            !languageMatch || ['text', 'plaintext'].includes(language);
-
-          return isCodeBlock ? (
-            <div className="relative">
-              <SyntaxHighlighter
-                style={atomDark}
-                language={language}
-                wrapLines={shouldWrapLines}
-                PreTag="div"
-              >
-                {childrenText}
-              </SyntaxHighlighter>
-              <CopyButton text={childrenText} />
-            </div>
-          ) : (
-            <code className="bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm">
-              {children}
-            </code>
-          );
-        },
+        code: ({ className, children }) => (
+          <CodeRenderer className={className}>{children}</CodeRenderer>
+        ),
       }}
       remarkPlugins={[
         remarkGfm,

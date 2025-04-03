@@ -23,3 +23,8 @@ export enum CourseLevel {
   Wizard = 'wizard',
   Developer = 'developer',
 }
+
+export enum TeachingFormat {
+  SelfPaced = 'self_paced',
+  ProfessorLed = 'professor_led',
+}

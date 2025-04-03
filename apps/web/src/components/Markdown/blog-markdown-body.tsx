@@ -1,12 +1,10 @@
 import ReactMarkdown from 'react-markdown';
-import rehypeMathjax from 'rehype-mathjax';
+
+import type { JoinedBlogLight } from '@blms/types';
+import rehypeMathjax from 'rehype-mathjax/svg';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-
-import YellowPen from '../../assets/courses/pencil.svg?react';
-
-import { BlockquoteRenderer } from './Renderers/blockquote-renderer.js';
 import { CodeRenderer } from './Renderers/code-renderer.tsx';
 import { ImageVideoRenderer } from './Renderers/image-video-renderer.tsx';
 import { LinkRenderer } from './Renderers/link-renderer.tsx';
@@ -14,73 +12,76 @@ import { ParagraphRenderer } from './Renderers/paragraph-renderer.tsx';
 import { TableRenderer } from './Renderers/table-renderer.tsx';
 import { TdRenderer } from './Renderers/td-renderer.tsx';
 
-const GeneralMarkdownBody = ({
+const BlogMarkdownBody = ({
   content,
   assetPrefix,
+  blogs,
 }: {
   content: string;
   assetPrefix: string;
+  blogs: JoinedBlogLight[];
 }) => {
   return (
     <ReactMarkdown
       components={{
         h1: ({ children }) => (
-          <h2 className="mt-6 text-2xl font-bold text-orange-600 sm:mt-10 sm:text-3xl ">
-            <div className="flex  w-auto items-center">
-              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
+          <h1 className="text-xl mb-4 text-black">
+            <div className="flex w-auto items-center text-start font-medium">
               {children}
             </div>
-          </h2>
+          </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="mt-6 text-3xl font-semibold text-orange-600 sm:mt-10 sm:text-2xl ">
-            <div className="flex w-auto items-center">
-              <YellowPen className="mr-2 size-6 bg-contain sm:hidden " />
+          <h2 className="text-xl mb-4 text-black font-medium">
+            <div className="flex w-auto items-center text-start">
               {children}
             </div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-3xl font-medium text-orange-500">{children}</h3>
+          <h3 className="text-xl mb-4 text-black font-medium text-start">
+            {children}
+          </h3>
         ),
         h4: ({ children }) => (
-          <h3 className="text-2xl font-medium">{children}</h3>
+          <h3 className="text-xl mb-4 text-black font-medium text-start">
+            {children}
+          </h3>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="general">{children}</ParagraphRenderer>
+          <ParagraphRenderer intent="blog">{children}</ParagraphRenderer>
+        ),
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="text" src={src} alt={alt} />
         ),
         a: ({ children, href }) => (
-          <LinkRenderer href={href} intent="general">
+          <LinkRenderer href={href} blogs={blogs}>
             {children}
           </LinkRenderer>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide">
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide">
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
+          <li className="leading-relaxed mb-5 text-start text-black">
+            {children}
+          </li>
         ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="logo" src={src} alt={alt} />
-        ),
-        blockquote: ({ children }) => (
-          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
-        ),
         code: ({ className, children }) => (
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
       }}
-      remarkPlugins={[remarkGfm, rehypeUnwrapImages, remarkMath]}
+      remarkPlugins={[remarkGfm, rehypeUnwrapImages, [remarkMath, {}]]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
         src.startsWith('http') ? src : `${assetPrefix}/${src}`
@@ -91,4 +92,4 @@ const GeneralMarkdownBody = ({
   );
 };
 
-export default GeneralMarkdownBody;
+export default BlogMarkdownBody;

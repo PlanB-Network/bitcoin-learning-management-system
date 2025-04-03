@@ -61,9 +61,14 @@ export const LanguageSelector = ({
     }, 100);
   };
 
-  const sortedLanguages = LANGUAGES.sort((a, b) =>
-    a.toLowerCase() === activeLanguage.toLowerCase() ? -1 : 1,
-  );
+  const sortedLanguages = [...LANGUAGES].sort((a, b) => {
+    if (a.toLowerCase() === activeLanguage.toLowerCase()) return -1;
+    if (b.toLowerCase() === activeLanguage.toLowerCase()) return 1;
+
+    const nameA = LANGUAGES_MAP[a.toLowerCase().replaceAll('-', '')] || a;
+    const nameB = LANGUAGES_MAP[b.toLowerCase().replaceAll('-', '')] || b;
+    return nameA.localeCompare(nameB);
+  });
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -175,13 +180,22 @@ export const LanguageSelectorMobile = ({
     }, 100);
   };
 
+  const sortedLanguages = [...LANGUAGES].sort((a, b) => {
+    if (a.toLowerCase() === activeLanguage.toLowerCase()) return 1;
+    if (b.toLowerCase() === activeLanguage.toLowerCase()) return -1;
+
+    const nameA = LANGUAGES_MAP[a.toLowerCase().replaceAll('-', '')] || a;
+    const nameB = LANGUAGES_MAP[b.toLowerCase().replaceAll('-', '')] || b;
+    return nameA.localeCompare(nameB);
+  });
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
           type="button"
           className={cn(
-            'group flex justify-center items-center gap-[15px] p-2.5 outline-none rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] dark:bg-[#5f5f5f] text-darkOrange-11 dark:text-white',
+            'group flex justify-between items-center gap-[15px] px-[14px] py-2.5 outline-none rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] dark:bg-[#5f5f5f] text-darkOrange-11 dark:text-white',
             open && 'rounded-t-none pt-[15px]',
           )}
         >
@@ -199,36 +213,36 @@ export const LanguageSelectorMobile = ({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-[51px] left-1/2 -translate-x-1/2 gap-3 px-[14px] pt-[15px] max-h-[calc(100dvh-84px)]',
+          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-[51px] left-1/2 -translate-x-1/2 gap-5 px-[14px] pt-[15px] max-h-[calc(100dvh-84px)]',
           mode === 'dark' && 'dark',
         )}
         addAnimation={false}
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
       >
-        {LANGUAGES.sort((a, b) =>
-          a.toLowerCase() === activeLanguage.toLowerCase() ? 1 : -1,
-        ).map((language) => (
+        {sortedLanguages.map((language) => (
           <button
             key={language}
             type="button"
             onClick={() => changeLanguage(language)}
-            className={cn(
-              'flex items-center gap-4 w-[177px] mx-auto px-4 py-2',
-              activeLanguage.toLowerCase() === language.toLowerCase() &&
-                'border rounded-lg border-darkOrange-5 dark gap-2 justify-between',
-            )}
+            className={cn('flex items-center gap-4 w-full')}
             aria-label={`Change language to ${
               LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
               language
             }`}
           >
-            <span className="capitalize label-medium-med-16px text-darkOrange-11 dark:text-white">
+            <span
+              className={cn(
+                'flex capitalize label-medium-med-16px text-darkOrange-11 dark:text-white w-fit',
+                activeLanguage.toLowerCase() === language.toLowerCase() &&
+                  'border rounded-lg border-darkOrange-5 gap-2 justify-between px-2.5 py-2',
+              )}
+            >
               {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
                 language}
+              {activeLanguage.toLowerCase() === language.toLowerCase() && (
+                <MdOutlineCheck size={20} className="text-darkOrange-5" />
+              )}
             </span>
-            {activeLanguage.toLowerCase() === language.toLowerCase() && (
-              <MdOutlineCheck size={20} className="text-darkOrange-5" />
-            )}
           </button>
         ))}
       </PopoverContent>
