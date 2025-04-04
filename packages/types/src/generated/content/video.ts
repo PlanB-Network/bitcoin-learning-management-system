@@ -13,3 +13,11 @@ export interface VideosLocalized {
   provider: 'peertube' | 'rumble' | 'youtube';
   idFromProvider: string | null;
 }
+
+export interface JoinedVideo {
+  id: string;
+  courseId: string | null;
+  language: string;
+  provider: 'peertube' | 'rumble' | 'youtube';
+  idFromProvider: string | null;
+}

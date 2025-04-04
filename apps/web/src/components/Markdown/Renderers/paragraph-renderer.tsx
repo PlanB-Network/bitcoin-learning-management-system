@@ -1,6 +1,8 @@
 import { cn } from '@blms/ui';
 import { type VariantProps, cva } from 'class-variance-authority';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { VideoPlayerWrapper } from '#src/components/video-player.tsx';
 import { TradingViewWidget } from './tradingview-widget.tsx';
 
 const paragraphStyles = cva('text-base tracking-wide', {
@@ -27,8 +29,9 @@ interface ParagraphRendererProps
 }
 export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
   const { children, intent } = props;
+  const { i18n } = useTranslation();
 
-  const renderChild = (child: React.ReactNode) => {
+  const renderChild = async (child: React.ReactNode) => {
     if (typeof child === 'string') {
       if (child.includes(':::tradingview')) {
         const str = child
@@ -45,12 +48,20 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
       }
 
       if (child.includes(':::video')) {
-        // const id = child.match(/id=([a-zA-Z0-9_-]+)/)?.[1] ?? null;
-        return null;
+        const planbVideoId = child.match(/id=([a-zA-Z0-9_-]+)/)?.[1] ?? '';
+        if (planbVideoId) {
+          return (
+            <VideoPlayerWrapper
+              key={planbVideoId}
+              videoId={planbVideoId}
+              language={i18n.language}
+            />
+          );
+        }
       }
-    }
 
-    return child;
+      return child;
+    }
   };
 
   if (Array.isArray(children)) {
