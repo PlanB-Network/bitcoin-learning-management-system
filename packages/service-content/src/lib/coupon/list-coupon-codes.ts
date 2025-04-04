@@ -32,7 +32,7 @@ const getCouponCodes = (options: ListOptions) => {
   const dir = sql.unsafe(options.sortDirection === 'asc' ? 'ASC' : 'DESC');
 
   return sql<CouponCodeWithOwner[]>`
-    SELECT *, username as owner
+    SELECT coupon_code.*, username as owner
       FROM content.coupon_code
       LEFT JOIN users.accounts ON accounts.uid = coupon_code.uid
       WHERE deleted_at IS NULL
