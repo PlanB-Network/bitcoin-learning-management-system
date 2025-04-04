@@ -18,6 +18,10 @@ import { z } from 'zod';
 const expectedImageQuery = z.object({ code: z.string() });
 const expectedImagesQuery = z.object({ codes: z.string() });
 
+const clearTitle = (title: string) => {
+  return title.replace(/₿/g, 'B');
+};
+
 interface ImageQuery {
   code: string;
 }
@@ -69,7 +73,7 @@ export const createRestCouponsRoutes = (
     return generateCouponSvg({
       reductionPercentage: couponCode.reductionPercentage ?? 0,
       code: couponCode.code,
-      title: eventOrCourse?.name || 'unknown',
+      title: clearTitle(eventOrCourse?.name || 'unknown'),
     });
   };
 
@@ -113,7 +117,8 @@ export const createRestCouponsRoutes = (
         return;
       }
 
-      const png = await sharp(Buffer.from(svg)).png({}).toBuffer();
+      // Convert SVG to PNG
+      const png = await sharp(Buffer.from(svg, 'utf-8')).png({}).toBuffer();
 
       res.setHeader('Content-Type', 'image/png');
       res.setHeader('Content-Disposition', `attachment; filename="coupon.png"`);
@@ -167,7 +172,8 @@ export const createRestCouponsRoutes = (
         title: couponCode!.title,
       });
 
-      const png = await sharp(Buffer.from(svg)).png({}).toBuffer();
+      // Convert SVG to PNG
+      const png = await sharp(Buffer.from(svg, 'utf-8')).png({}).toBuffer();
 
       zip.file(`${couponCode!.code}.png`, png);
     }
