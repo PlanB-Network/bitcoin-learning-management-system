@@ -1064,6 +1064,9 @@
     "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
     "pageTitle": "Oops."
   },
+  "notifications": {
+    "notifications": "Notifications"
+  },
   "payment": {
     "haveReductionCode": "Do you have a reduction code?",
     "insertReductionCode": "Insert your reduction code",

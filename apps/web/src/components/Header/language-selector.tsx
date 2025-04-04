@@ -76,7 +76,7 @@ export const LanguageSelector = ({
         <button
           type="button"
           className={cn(
-            'group z-50 flex place-items-center text-sm font-semibold gap-2 lg:gap-2.5 outline-none px-2.5 py-2 lg:pl-4 lg:pr-2.5 rounded-2xl max-lg:w-24 transition-all',
+            'group z-50 flex place-items-center text-sm font-semibold gap-2 lg:gap-2.5 outline-none px-2.5 py-2 lg:pr-0 rounded-2xl max-lg:w-24 transition-all',
             variantHeaderBackgroundMap[variant],
             open && 'max-lg:rounded-none max-lg:rounded-t-2xl',
             className,

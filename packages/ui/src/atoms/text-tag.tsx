@@ -14,14 +14,15 @@ const textTagVariants = cva(
           'px-[5px] py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
       },
       variant: {
-        withoutFill: 'bg-transparent text-newBlack-5 dark:text-newGray-3',
-        grey: 'bg-newGray-5 text-newBlack-4 dark:bg-newBlack-3 dark:text-newGray-4 [&.light100]:bg-newGray-4',
+        withoutFill:
+          'bg-transparent text-newBlack-5 dark:text-newGray-3 [&.dark100]:text-newGray-4',
+        grey: 'bg-newGray-5 text-newBlack-4 dark:bg-newBlack-3 dark:text-newGray-4 [&.light100]:bg-newGray-4 [&.dark100]:bg-newBlack-5 [&.dark100]:text-newGray-5',
         orange:
-          'bg-darkOrange-0 text-darkOrange-7 dark:bg-darkOrange-8 dark:text-darkOrange-2 [&.light100]:bg-darkOrange-1',
+          'bg-darkOrange-0 text-darkOrange-7 dark:bg-darkOrange-8 dark:text-darkOrange-2 [&.light100]:bg-darkOrange-1 [&.dark100]:bg-darkOrange-8 [&.dark100]:text-darkOrange-2',
         green:
-          'bg-brightGreen-1 text-brightGreen-8 dark:bg-brightGreen-9 dark:text-brightGreen-2 [&.light100]:bg-brightGreen-2',
+          'bg-brightGreen-1 text-brightGreen-8 dark:bg-brightGreen-9 dark:text-brightGreen-2 [&.light100]:bg-brightGreen-2 [&.dark100]:bg-brightGreen-9 [&.dark100]:text-brightGreen-2',
         lightMaroon:
-          'bg-tertiary-1 text-tertiary-8 dark:bg-tertiary-8 dark:text-white [&.light100]:bg-tertiary-2',
+          'bg-tertiary-1 text-tertiary-8 dark:bg-tertiary-8 dark:text-white [&.light100]:bg-tertiary-2 [&.dark100]:bg-tertiary-8 [&.dark100]:text-white',
         darkMaroon:
           'bg-tertiary-2 text-tertiary-8 dark:bg-tertiary-9 dark:text-white [&.light100]:bg-tertiary-3',
       },
@@ -29,6 +30,7 @@ const textTagVariants = cva(
         light: '',
         light100: 'light100',
         dark: 'dark',
+        dark100: 'dark100',
       },
     },
     defaultVariants: {

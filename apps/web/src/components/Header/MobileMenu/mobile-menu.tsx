@@ -11,12 +11,13 @@ import { getPictureUrl } from '#src/services/user.js';
 
 import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
 import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
+import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black_blackpill.svg?react';
 import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
-import PlanBLogoWhite from '../../../assets/logo/planb_logo_horizontal_white_whitepill.svg?react';
 import { LanguageSelectorMobile } from '../language-selector.tsx';
 import type { NavigationSectionMobile } from '../props.ts';
 
 import { MenuDashboard } from '#src/routes/$lang/dashboard/_dashboard/-components/menu-dashboard.tsx';
+import { NotificationsPanel } from '../notifications-panel.tsx';
 import { MobileMenuSection } from './mobile-menu-section.tsx';
 
 export interface MobileMenuProps {
@@ -87,66 +88,73 @@ export const MobileMenu = ({
   return (
     <>
       <div className="flex w-full items-center justify-between lg:hidden">
-        <div
-          className={cn('shrink-0 min-w-8', isMobileMenuOpen && 'opacity-0')}
-        >
-          <HiMiniBars3
-            className={cn(
-              'cursor-pointer text-white',
-              isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
+        <div className="flex items-center gap-2.5">
+          <div
+            className={cn('shrink-0 min-w-8', isMobileMenuOpen && 'opacity-0')}
+          >
+            <HiMiniBars3
+              className={cn(
+                'cursor-pointer text-white',
+                isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
+              )}
+              style={{
+                transition: 'transform 0.4s, color 0.2s',
+              }}
+              size={25}
+              color={variant === 'dark' ? '#fff' : '#000'}
+              onClick={toggleMobileMenu}
+            />
+          </div>
+
+          <Link to="/" className="w-fit">
+            {variant === 'light' ? (
+              <PlanBLogoBlack className="h-[25px] w-auto" />
+            ) : (
+              <PlanBLogoOrange className="h-[25px] w-auto" />
             )}
-            style={{
-              transition: 'transform 0.4s, color 0.2s',
-            }}
-            size={25}
-            color="#fff"
-            onClick={toggleMobileMenu}
-          />
+          </Link>
         </div>
 
-        <Link to="/" className="w-fit">
-          {variant === 'light' ? (
-            <PlanBLogoWhite className="h-[25px] w-auto" />
+        <div className="flex items-center gap-4">
+          {isLoggedIn ? (
+            <>
+              <NotificationsPanel variant={variant} />
+              <div className="text-sm font-semibold shrink-0 min-w-8">
+                <button
+                  type="button"
+                  onClick={toggleDashboardMenu}
+                  className="cursor-pointer text-white"
+                >
+                  <img
+                    src={
+                      pictureUrl
+                        ? pictureUrl
+                        : variant === 'light'
+                          ? SignInIconLight
+                          : SignInIconDark
+                    }
+                    alt={t('auth.signIn')}
+                    className="size-8 rounded-full"
+                  />
+                </button>
+              </div>
+            </>
           ) : (
-            <PlanBLogoOrange className="h-[25px] w-auto" />
+            <div className="text-sm font-semibold shrink-0 min-w-8">
+              <button
+                type="button"
+                onClick={onClickLogin}
+                className="cursor-pointer text-white"
+              >
+                <img
+                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
+                  alt={t('auth.signIn')}
+                  className="size-8"
+                />
+              </button>
+            </div>
           )}
-        </Link>
-
-        {isLoggedIn ? (
-          <div className="text-sm font-semibold shrink-0 min-w-8">
-            <button
-              type="button"
-              onClick={toggleDashboardMenu}
-              className="cursor-pointer text-white"
-            >
-              <img
-                src={
-                  pictureUrl
-                    ? pictureUrl
-                    : variant === 'light'
-                      ? SignInIconLight
-                      : SignInIconDark
-                }
-                alt={t('auth.signIn')}
-                className="size-8 rounded-full"
-              />
-            </button>
-          </div>
-        ) : (
-          <div className="text-sm font-semibold shrink-0 min-w-8">
-            <button
-              type="button"
-              onClick={onClickLogin}
-              className="cursor-pointer text-white"
-            >
-              <img
-                src={variant === 'light' ? SignInIconLight : SignInIconDark}
-                alt={t('auth.signIn')}
-                className="size-8"
-              />
-            </button>
-          </div>
-        )}
+        </div>
       </div>
 
       <nav

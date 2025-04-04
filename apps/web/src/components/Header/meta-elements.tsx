@@ -15,6 +15,7 @@ import SearchIconBlack from '#src/assets/icons/search-black.svg';
 import SearchIcon from '#src/assets/icons/search.svg';
 import SignInIconLight from '../../assets/icons/sing-in.svg';
 import { LanguageSelector } from './language-selector.tsx';
+import { NotificationsPanel } from './notifications-panel.tsx';
 
 export interface MetaElementsProps {
   onClickLogin: () => void;
@@ -40,7 +41,7 @@ export const MetaElements = ({
     .startsWith('dashboard');
 
   return (
-    <div className="flex flex-row place-items-center gap-6 md:gap-2 lg:gap-6 ml-auto max-lg:mx-auto">
+    <div className="flex flex-row place-items-center gap-6 md:gap-2 ml-auto max-lg:mx-auto">
       <Link className="cursor-pointer" to={`/${i18n.language}/search`}>
         <img
           className="size-6"
@@ -53,32 +54,35 @@ export const MetaElements = ({
         variant={variant}
       />
       {isLoggedIn && !isMobile && (
-        <Link className="flex" to="/dashboard/courses">
-          {isOnDashboard ? (
-            <button
-              type="button"
-              onClick={async () => {
-                await logout();
-                window.location.reload();
-              }}
-              className={`cursor-pointer rounded-[16px] py-[14px] px-[18px] ${
-                variant === 'light'
-                  ? 'bg-darkOrange-2 text-black hover:bg-darkOrange-1 active:bg-darkOrange-1 active:text-darkOrange-5'
-                  : 'bg-newBlack-3 text-white hover:bg-darkHover'
-              }`}
-            >
-              <IoLogOutOutline size={24} />
-            </button>
-          ) : (
-            <button type="button" className="cursor-pointer text-white">
-              <img
-                src={pictureUrl ? pictureUrl : SignInIconLight}
-                alt={t('auth.signIn')}
-                className={`rounded-full ${pictureUrl ? 'size-12' : 'size-14'}`}
-              />
-            </button>
-          )}
-        </Link>
+        <>
+          <NotificationsPanel variant={variant} />
+          <Link className="flex" to="/dashboard/courses">
+            {isOnDashboard ? (
+              <button
+                type="button"
+                onClick={async () => {
+                  await logout();
+                  window.location.reload();
+                }}
+                className={`cursor-pointer rounded-[16px] py-[14px] px-[18px] ${
+                  variant === 'light'
+                    ? 'bg-darkOrange-2 text-black hover:bg-darkOrange-1 active:bg-darkOrange-1 active:text-darkOrange-5'
+                    : 'bg-newBlack-3 text-white hover:bg-darkHover'
+                }`}
+              >
+                <IoLogOutOutline size={24} />
+              </button>
+            ) : (
+              <button type="button" className="cursor-pointer text-white">
+                <img
+                  src={pictureUrl ? pictureUrl : SignInIconLight}
+                  alt={t('auth.signIn')}
+                  className={`rounded-full ${pictureUrl ? 'size-12' : 'size-14'}`}
+                />
+              </button>
+            )}
+          </Link>
+        </>
       )}
 
       {!isLoggedIn && (
