@@ -55,6 +55,8 @@ ENV HOST=0.0.0.0
 ENV PORT=3000
 
 RUN apk add --no-cache -U \
+    fontconfig \
+    texmf-dist \
     python3 \
     git \
     cairo \
