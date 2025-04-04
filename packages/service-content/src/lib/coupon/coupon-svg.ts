@@ -1,5 +1,3 @@
-import { fontsBytes } from '@blms/service-common/fonts';
-
 const breakLine = (text: string) => {
   const arr = text.split(' ');
   const len1 = Math.floor(arr.length / 2);
@@ -15,8 +13,6 @@ interface Props {
   title: string;
   code: string;
 }
-
-const ibmPlexBase64 = Buffer.from(fontsBytes.ibmPlexMedium).toString('base64');
 
 export const generateCouponSvg = ({
   reductionPercentage,
@@ -152,13 +148,6 @@ export const generateCouponSvg = ({
     </g>
   </g>
   <defs>
-    <style type="text/css">
-      @font-face {
-        font-family: "IBM Plex Sans";
-        src: url("data:font/ttf;charset=utf-8;base64,${ibmPlexBase64}") format("truetype");
-      }
-    </style>
-
     <filter id="filter0_d_17671_40596" x="93.1769" y="358.826" width="1660.5" height="474.623" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>

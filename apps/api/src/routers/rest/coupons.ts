@@ -18,10 +18,6 @@ import { z } from 'zod';
 const expectedImageQuery = z.object({ code: z.string() });
 const expectedImagesQuery = z.object({ codes: z.string() });
 
-const clearTitle = (title: string) => {
-  return title.replace(/₿/g, 'B');
-};
-
 interface ImageQuery {
   code: string;
 }
@@ -73,7 +69,7 @@ export const createRestCouponsRoutes = (
     return generateCouponSvg({
       reductionPercentage: couponCode.reductionPercentage ?? 0,
       code: couponCode.code,
-      title: clearTitle(eventOrCourse?.name || 'unknown'),
+      title: eventOrCourse?.name || 'unknown',
     });
   };
 
