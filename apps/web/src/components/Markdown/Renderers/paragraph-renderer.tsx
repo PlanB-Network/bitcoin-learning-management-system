@@ -1,6 +1,6 @@
 import { cn } from '@blms/ui';
 import { type VariantProps, cva } from 'class-variance-authority';
-import type React from 'react';
+import React from 'react';
 import { TradingViewWidget } from './tradingview-widget.tsx';
 
 const paragraphStyles = cva('text-base tracking-wide', {
@@ -25,36 +25,51 @@ interface ParagraphRendererProps
   className?: string;
   intent?: 'default' | 'blog' | 'conference' | 'general' | 'glossary';
 }
-
 export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
   const { children, intent } = props;
 
-  if (typeof children === 'string') {
-    if (children.includes(':::tradingview')) {
-      const str = children
-        .replace(':::tradingview', '')
-        .replace(':::', '')
-        .trim();
-      const symbol = str.match(/SYMBOL=([A-Z]+)/)?.[1] ?? 'BTCUSD';
-      const height = Number.parseInt(
-        str.match(/HEIGHT=(\d+)/)?.[1] ?? '500',
-        10,
-      );
+  const renderChild = (child: React.ReactNode) => {
+    if (typeof child === 'string') {
+      if (child.includes(':::tradingview')) {
+        const str = child
+          .replace(':::tradingview', '')
+          .replace(':::', '')
+          .trim();
+        const symbol = str.match(/SYMBOL=([A-Z]+)/)?.[1] ?? 'BTCUSD';
+        const height = Number.parseInt(
+          str.match(/HEIGHT=(\d+)/)?.[1] ?? '500',
+          10,
+        );
 
-      return <TradingViewWidget symbol={symbol} height={height} />;
+        return <TradingViewWidget symbol={symbol} height={height} />;
+      }
+
+      if (child.includes(':::video')) {
+        // const id = child.match(/id=([a-zA-Z0-9_-]+)/)?.[1] ?? null;
+        return null;
+      }
     }
-    if (children.includes(':::video')) {
-      return null;
-    }
+
+    return child;
+  };
+
+  if (Array.isArray(children)) {
+    return (
+      <div className={cn(paragraphStyles({ intent }))}>
+        {children.map((child, index) => (
+          <React.Fragment
+            key={typeof child === 'string' ? child : `child-${index}`}
+          >
+            {renderChild(child)}
+          </React.Fragment>
+        ))}
+      </div>
+    );
   }
 
-  if (
-    Array.isArray(children) &&
-    children.length === 1 &&
-    typeof children[0] === 'string'
-  ) {
-    return <p className={cn(paragraphStyles({ intent }))}>{children}</p>;
-  }
-
-  return <div className={cn(paragraphStyles({ intent }))}>{children}</div>;
+  return (
+    <div className={cn(paragraphStyles({ intent }))}>
+      {renderChild(children)}
+    </div>
+  );
 };
