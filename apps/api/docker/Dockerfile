@@ -62,6 +62,7 @@ RUN apk add --no-cache -U \
     git \
     cairo \
     pango \
+    curl \
     shadow
 
 WORKDIR /app
