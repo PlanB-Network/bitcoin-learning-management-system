@@ -25,9 +25,7 @@ const getCouponCode = publicProcedure
     }),
   )
   .output<Parser<CouponCode | null>>(couponCodeSchema.nullable())
-  .query(({ ctx, input }) =>
-    createGetCouponCode(ctx.dependencies)(input.code, input.itemId),
-  );
+  .query(({ ctx, input }) => createGetCouponCode(ctx.dependencies)(input.code));
 
 // Admin
 const listEventsAndCourses = adminProcedure
@@ -43,6 +41,8 @@ const listCouponCodes = adminProcedure
       singleUse: z.boolean().nullable().default(null),
       limit: z.number().default(10),
       page: z.number().default(1),
+      sortBy: z.string().default('createdAt'),
+      sortDirection: z.enum(['asc', 'desc']).default('desc'),
     }),
   )
   .output<Parser<CouponCodeWithOwner[]>>(z.array(couponCodeWithOwnerSchema))

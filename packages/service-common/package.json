@@ -3,14 +3,22 @@
   "version": "0.0.1",
   "type": "module",
   "exports": {
-    "development": "./src/index.ts",
-    "import": "./dist/src/index.js",
-    "types": "./src/index.ts"
+    ".": {
+      "development": "./src/index.ts",
+      "import": "./dist/src/index.js",
+      "types": "./src/index.ts"
+    },
+    "./*": {
+      "development": "./src/*.ts",
+      "import": "./dist/src/*.js",
+      "types": "./src/*.ts"
+    }
   },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
     "build": "tsc --build tsconfig.json",
+    "postbuild": "cp -r src/fonts dist/src/fonts/",
     "lint": "biome check .",
     "test": "mocha src/**/*.test.ts",
     "test:bun": "bun test",

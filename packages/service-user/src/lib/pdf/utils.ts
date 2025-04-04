@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import { join } from 'node:path';
 
+import { fontsBytes } from '@blms/service-common/fonts';
 import fontkit from '@pdf-lib/fontkit';
 import type { PDFFont } from 'pdf-lib';
 import { PDFDocument } from 'pdf-lib';
@@ -13,26 +14,6 @@ export const loadPdfTemplate = (name: string) => {
 
 export const loadTxtTemplate = (name: string) => {
   return fs.readFileSync(join(dir, `./templates/${name}.txt`), 'utf8');
-};
-
-export const fontsBytes = {
-  mono: fs.readFileSync(join(dir, './fonts/mono/JetBrainsMono.ttf')),
-  ibmPlexLight: fs.readFileSync(
-    join(dir, './fonts/ibm-plex/IBMPlexSans-Light.ttf'),
-  ),
-  ibmPlexRegular: fs.readFileSync(
-    join(dir, './fonts/ibm-plex/IBMPlexSans-Regular.ttf'),
-  ),
-  ibmPlexMedium: fs.readFileSync(
-    join(dir, './fonts/ibm-plex/IBMPlexSans-Medium.ttf'),
-  ),
-  ibmPlexSemiBold: fs.readFileSync(
-    join(dir, './fonts/ibm-plex/IBMPlexSans-SemiBold.ttf'),
-  ),
-  ibmPlexBold: fs.readFileSync(
-    join(dir, './fonts/ibm-plex/IBMPlexSans-Bold.ttf'),
-  ),
-  styleScript: fs.readFileSync(join(dir, './fonts/StyleScript.otf')),
 };
 
 export const newDocumentFromTemplate = async (buf: Buffer) => {
