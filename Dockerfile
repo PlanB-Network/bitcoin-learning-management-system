@@ -35,6 +35,16 @@ RUN corepack enable \
 
 WORKDIR /home/node
 
+# Install custom fonts
+## https://github.com/jlandure/alpine-chrome/issues/155#issuecomment-771256273
+RUN  mkdir -p /usr/share/fonts/ibm-plex \
+  && curl https://raw.githubusercontent.com/IBM/plex/refs/heads/master/packages/plex-sans/fonts/complete/ttf/IBMPlexSans-Regular.ttf \
+      -o /usr/share/fonts/ibm-plex/IBMPlexSans-Regular.ttf \
+  && curl https://raw.githubusercontent.com/IBM/plex/refs/heads/master/packages/plex-sans/fonts/complete/ttf/IBMPlexSans-Medium.ttf \
+      -o /usr/share/fonts/ibm-plex/IBMPlexSans-Medium.ttf \
+  && curl https://raw.githubusercontent.com/IBM/plex/refs/heads/master/packages/plex-sans/fonts/complete/ttf/IBMPlexSans-SemiBold.ttf \
+      -o /usr/share/fonts/ibm-plex/IBMPlexSans-SemiBold.ttf
+
 USER node
 
 COPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json turbo.json .npmrc ./
