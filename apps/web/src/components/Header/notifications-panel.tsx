@@ -30,8 +30,7 @@ const NotificationItem = ({
   const tagMode = mode === 'dark' ? 'dark100' : 'light100';
 
   return (
-    <Link
-      to="/dashboard/notifications"
+    <div
       className={cn(
         'group flex w-full items-start self-stretch',
         isHovered &&
@@ -40,7 +39,10 @@ const NotificationItem = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex flex-1 flex-col items-start justify-start gap-2.5 p-4">
+      <Link
+        to={'/dashboard/notifications'}
+        className="flex flex-1 flex-col items-start justify-start gap-2.5 p-4"
+      >
         <div className="flex w-full items-center justify-between self-stretch">
           <div className="flex items-center justify-start gap-3">
             <div className="size-6">{icon}</div>
@@ -53,7 +55,7 @@ const NotificationItem = ({
         <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6">
           {message}
         </p>
-      </div>
+      </Link>
       {onClose && (
         <div className="flex items-center justify-center gap-2.5 px-4 py-4">
           <button
@@ -69,7 +71,7 @@ const NotificationItem = ({
           </button>
         </div>
       )}
-    </Link>
+    </div>
   );
 };
 
@@ -89,6 +91,17 @@ const NotificationsHeader = () => {
   );
 };
 
+const ViewMoreButton = () => {
+  return (
+    <Link
+      to="/dashboard/notifications"
+      className="flex w-full items-center px-4 py-3 text-base font-normal text-newBlack-5 dark:text-white hover:text-darkOrange-5 underline border-t border-newGray-4 dark:border-newGray-1"
+    >
+      {t('words.viewMore')}
+    </Link>
+  );
+};
+
 interface NotificationsPanelProps {
   className?: string;
   variant?: 'light' | 'dark' | 'darkOrange';
@@ -100,7 +113,7 @@ export const NotificationsPanel = ({
 }: NotificationsPanelProps) => {
   const [open, setOpen] = useState(false);
 
-  const unreadNotifications = [
+  const [notifications, setNotifications] = useState([
     {
       id: '1',
       tagLabel: 'Course',
@@ -120,31 +133,49 @@ export const NotificationsPanel = ({
       tagLabel: 'Reminder',
       message:
         "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: false,
+      isUnread: true,
     },
     {
       id: '4',
       tagLabel: 'Reminder 2',
       message:
         "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: false,
+      isUnread: true,
     },
     {
       id: '5',
       tagLabel: 'Reminder 3',
       message:
         "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: false,
+      isUnread: true,
     },
-  ];
+    {
+      id: '6',
+      tagLabel: 'Reminder 4',
+      message:
+        "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
+      isUnread: true,
+    },
+  ]);
 
   const handleCloseNotification = (id: string) => {
-    console.log(`Closing notification ${id}`);
+    setNotifications((prev) =>
+      prev.map((notification) =>
+        notification.id === id
+          ? { ...notification, isUnread: false }
+          : notification,
+      ),
+    );
   };
 
-  if (unreadNotifications.length === 0) {
+  if (notifications.length === 0) {
     return null;
   }
+
+  const unreadNotifications = notifications.filter(
+    (notification) => notification.isUnread,
+  );
+  const hasUnreadNotifications = unreadNotifications.length > 0;
 
   return (
     <>
@@ -165,7 +196,7 @@ export const NotificationsPanel = ({
         </PopoverTrigger>
         <PopoverContent
           className={cn(
-            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] max-h-[500px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 dark:bg-newBlack-3 border border-newGray-5 dark:border-newBlack-4 shadow-course-navigation-sm',
+            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 dark:bg-newBlack-3 border border-newGray-5 dark:border-newBlack-4 shadow-course-navigation-sm',
             variant === 'dark' && 'dark',
           )}
           onClick={(e) => e.stopPropagation()}
@@ -174,7 +205,7 @@ export const NotificationsPanel = ({
             <NotificationsHeader />
 
             <div className="no-scrollbar w-full flex-col self-stretch">
-              {unreadNotifications.slice(0, 3).map((notification, _) => (
+              {unreadNotifications.slice(0, 5).map((notification, _) => (
                 <NotificationItem
                   key={notification.id}
                   {...notification}
@@ -183,6 +214,14 @@ export const NotificationsPanel = ({
                 />
               ))}
             </div>
+
+            {unreadNotifications.length > 5 && <ViewMoreButton />}
+
+            {!hasUnreadNotifications && (
+              <p className="w-full p-4 text-center text-newBlack-1 dark:text-newGray-6 subtitle-small-caps-14px">
+                {t('notifications.noUnreadNotifications')}
+              </p>
+            )}
           </div>
         </PopoverContent>
       </Popover>

@@ -1065,6 +1065,7 @@
     "pageTitle": "Oops."
   },
   "notifications": {
+    "noUnreadNotifications": "No more unread notifications",
     "notifications": "Notifications"
   },
   "payment": {
