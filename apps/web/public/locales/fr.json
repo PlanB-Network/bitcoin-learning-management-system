@@ -139,10 +139,11 @@
       "pastEditionsRatings": "Évaluations des Éditions Précédentes",
       "associatedProfessors": "Professeurs associés",
       "coordinatedBy": "Ce cours est coordonné par",
-      "learning": "Chemin d'apprentissage"
+      "learning": "Chemin d'apprentissage",
+      "attendInPersonWarning": "Si vous prévoyez d'assister à ce cours en personne, assurez-vous de réserver votre place. Dans tous les cas, la leçon sera diffusée en direct et disponible pour rediffusion."
     },
     "explorer": {
-      "pageDescription": "L'Académie Plan ₿ vise à simplifier l'éducation sur Bitcoin à l'échelle mondiale. Curée par des experts de divers domaines, notre académie propose une gamme complète de cours conçus pour clarifier chaque aspect de Bitcoin.\nDu débutant à l'expert, que ce soit à votre propre rythme ou suivi chaque semaine par un professeur, nous espérons que l'Académie peut vous aider à acquérir une compréhension plus profonde du vaste monde de Bitcoin. Beaucoup de nos cours sont entièrement gratuits afin que quiconque, n'importe où, puisse accéder à une éducation de qualité.",
+      "pageDescription": "L'Académie Plan ₿ met à disposition une vaste sélection de cours sur Bitcoin, gratuits et premium, pour les débutants comme pour les experts. Que vous soyez guidé par des experts ou que vous appreniez à votre propre rythme, nos cours s'adaptent à tous les modes d'apprentissage. Notre mission est simple : rendre les connaissances sur Bitcoin claires, captivantes et accessibles à tous !",
       "journey": "Bitcoin est un voyage, pas une destination",
       "findCourses": "Trouvez le cours parfait pour vos besoins grâce au sélecteur de cours",
       "exploreCourses": "Explorez tous les cours Plan ₿",
@@ -545,7 +546,8 @@
           "value": "Valeur",
           "uses": "Utilisé",
           "total": "Total",
-          "owner": "Propriétaire"
+          "owner": "Propriétaire",
+          "maxUses": "Utilisations max"
         },
         "discountCodePlaceholder": "Laissez vide pour une génération automatique",
         "discountValueExplanation": "Entrez un nombre par incréments de 5 (par exemple 5, 10, 15... jusqu'à 100)",
@@ -578,7 +580,10 @@
         "discountSingleUse": "À usage unique",
         "discountMultiUse": "Usage multiple",
         "discountValue": "Pourcentage de réduction",
-        "discountCode": "Code de réduction"
+        "discountCode": "Code de réduction",
+        "discountCodeCopied": "Code de réduction copié",
+        "downloadImage": "Télécharger l'image",
+        "downloadImages": "Télécharger les images"
       },
       "discountCodes": "Codes de réduction",
       "accessGranted": "Accès accordé",
@@ -1331,7 +1336,9 @@
     "no": "Non",
     "yes": "Oui",
     "email": "Email",
-    "save": "Sauvegarder"
+    "save": "Sauvegarder",
+    "calendar": "Calendrier",
+    "mode": "Mode"
   },
   "conferences": {
     "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
@@ -1391,7 +1398,8 @@
       "blogListButtonText": "Lire",
       "filterText": "Filtrer par sujet :",
       "pastArticleSubtitleText": "Articles passés",
-      "noArticlesText": "Il n'y a pas de publications de blog à ce moment."
+      "noArticlesText": "Il n'y a pas de publications de blog à ce moment.",
+      "blogSidebarTitleForAll": "Publications précédentes"
     },
     "title": "Communication publique",
     "description": "Le réseau Plan ₿ est fier de respecter les normes open-source et de maintenir la transparence tout au long de son parcours",
@@ -1474,7 +1482,8 @@
   "accessType": {
     "physical": "En personne",
     "online": "En ligne",
-    "replay": "Rediffusion"
+    "replay": "Rediffusion",
+    "hybrid": "En personne & en ligne"
   },
   "labs": {
     "planBLabs": "Plan ₿ Labs",

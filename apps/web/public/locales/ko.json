@@ -598,7 +598,8 @@
       "shareOnSocials": "SNS에서 공유:",
       "tweetText": "@planb_network에서 {{courseIndex}} 코스를 완료하고 디플로마를 받게 되어 기쁩니다! 기말 시험 점수: {{score}}/100! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "학습한 내용을 요약한 페이지입니다. 일부 챕터를 놓쳤거나 올바르게 확인되지 않았다면, 지금 복습하거나 ‘완료’ 버튼을 눌러 마무리하세요.",
-      "submitReviewInfo": "이 기능을 사용하려면 리뷰를 제출해야 합니다."
+      "submitReviewInfo": "이 기능을 사용하려면 리뷰를 제출해야 합니다.",
+      "coordinator": "코스 코디네이터"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -737,8 +738,36 @@
         "productCourse": "코스",
         "explanation": "여기에서 이벤트와 코스를 위한 할인 코드를 생성하고 관리할 수 있습니다 — 한 번만 사용할 수 있는 코드부터, 여러 번 사용 가능한 코드까지 만들 수 있습니다.",
         "deleteDiscountCode": "할인 코드 삭제하기",
-        "deleteDiscountCodeConfirm": "이 할인 코드를 삭제하시겠습니까?"
-      }
+        "deleteDiscountCodeConfirm": "이 할인 코드를 삭제하시겠습니까?",
+        "generateCode": "코드 생성하기",
+        "generatedCode": "코드가 생성되었습니다.",
+        "generatedCodes": "생성된 코드",
+        "selectCourse": "코스 선택하기",
+        "selectEvent": "이벤트 선택하기",
+        "filters": {
+          "all": "전체 보기",
+          "singleUse": "1회용",
+          "multiUse": "다회용",
+          "events": "이벤트",
+          "courses": "코스"
+        },
+        "discountSingleUse": "1회용",
+        "discountCodeExplanation": "주의: 이 코드는 대소문자를 구분합니다.",
+        "generateCodes": "코드 생성하기",
+        "forWhichEvent": "어떤 이벤트에 사용할 할인 코드를 생성할까요?",
+        "forWhichCourse": "어떤 코스에 사용할 할인 코드를 생성할까요?",
+        "discountType": "어떤 종류의 코스에 사용할 할인 코드를 생성할까요?",
+        "discountMultiUse": "다회용",
+        "discountValue": "할인율",
+        "discountCode": "할인 코드",
+        "discountCodePlaceholder": "자동 생성하려면 비워 두세요.",
+        "discountValueExplanation": "숫자는 5단위로 입력하세요 (예: 5, 10, 15... 최대 100까지)",
+        "discountValuePlaceholder": "예: 20 → 20% 할인",
+        "numberOfCodes": "몇 개의 코드를 생성할까요?",
+        "numberOfCodesPlaceholder": "숫자를 입력하십시오.",
+        "maximumNumberOfUse": "사용 가능한 최대 횟수"
+      },
+      "discountCodes": "할인 코드"
     },
     "careerPortal": {
       "bitcoinProjectParticipant": "비트코인 프로젝트에 적극적으로 기여한 경험이 있습니까?\n(과거 또는 현재)",
@@ -975,7 +1004,12 @@
       "description_online": "해당 이벤트의 날짜와 시간을 확인해 주세요.\n이벤트가 시작되면 플랫폼에 로그인하여 이벤트 페이지를 통해 라이브 콘텐츠에 액세스하세요.",
       "access_physical_successful": "여기에서 티켓을 다운로드하거나 나중에 대시보드에서 다운로드할 수 있습니다.",
       "access_online_successful": "이벤트가 시작되면 플랫폼에 로그인하여 이벤트 페이지에서 라이브 스트림에 접근하세요.",
-      "description_physical": "장소 세부 정보를 확인하세요.\n예약이 처리되면 이벤트에 제시할 수 있는 확인 티켓이 제공됩니다. 이 티켓을 사용하면 라이브 및 다시보기 콘텐츠에도 액세스할 수 있습니다(가능한 경우)."
+      "description_physical": "장소 세부 정보를 확인하세요.\n예약이 처리되면 이벤트에 제시할 수 있는 확인 티켓이 제공됩니다. 이 티켓을 사용하면 라이브 및 다시보기 콘텐츠에도 액세스할 수 있습니다(가능한 경우).",
+      "callout_book_online": "이 이벤트의 온라인 참여를 예약하려고 합니다.",
+      "callout_book_replay": "이 이벤트의 리플레이 영상 시청을 예약하려고 합니다.",
+      "callout_book_physical": "이 이벤트의 <highlight>대면 참여</highlight>를 예약하려고 합니다.",
+      "callout_purchase_online": "이 이벤트의 <highlight>온라인 참여</highlight>를 구매하려고 합니다.",
+      "callout_purchase_physical": "이 이벤트의 <highlight>대면 참여</highlight>를 구매하려고 합니다."
     },
     "errors": {
       "premiumContentNeedsPaymentAction": "이벤트 페이지로 이동",
