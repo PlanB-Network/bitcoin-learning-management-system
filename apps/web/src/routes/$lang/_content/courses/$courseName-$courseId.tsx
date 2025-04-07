@@ -1,6 +1,7 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { last } from 'lodash-es';
 import React, {
+  memo,
   Suspense,
   useContext,
   useEffect,
@@ -103,7 +104,6 @@ function CourseDetails() {
   const [downloadedPdf, setDownloadedPdf] = useState('');
 
   const { user } = useContext(AppContext);
-  const { conversionRate } = useContext(ConversionRateContext);
 
   const navigate = useNavigate();
 
@@ -435,72 +435,6 @@ function CourseDetails() {
     );
   };
 
-  const DescriptionAndObjectives = ({
-    course,
-  }: {
-    course: CourseResponse;
-  }) => {
-    return (
-      <>
-        <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
-          <div className="flex flex-col gap-4 md:gap-6">
-            <h4 className="subtitle-small-caps-14px max-md:mt-2 md:subtitle-medium-caps-reg-18px text-darkOrange-5">
-              {t('courses.details.description')}
-            </h4>
-            <ReactMarkdown
-              components={{
-                h1: ({ children }) => (
-                  <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
-                    {children}
-                  </h3>
-                ),
-                p: ({ children }) => (
-                  <p className="body-14px md:subtitle-large-18px text-newBlack-1 text-justify">
-                    {children}
-                  </p>
-                ),
-              }}
-            >
-              {course.rawDescription}
-            </ReactMarkdown>
-          </div>
-
-          <Divider width="w-full" className="md:hidden" />
-          <div className="flex w-full flex-col gap-4 md:gap-6">
-            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-darkOrange-5">
-              {t('courses.details.learning')}
-            </h4>
-            <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
-              {t('courses.details.objectives')}
-            </h3>
-            <ul className="flex flex-col gap-4 md:gap-6">
-              {course.objectives?.map((goal) => (
-                <li className="flex gap-2.5 text-newBlack-1" key={goal}>
-                  <IoCheckmark size={isMobile ? 18 : 24} className="shrink-0" />
-                  <span className="body-16px md:label-large-20px">{goal}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {course.presentationMarkdown ? (
-          <>
-            <Divider width="w-full" className="mt-9 max-md:mb-6" />
-            <section className="text-blue-1000 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-[18px] md:overflow-hidden pb-2">
-              <Suspense fallback={<Loader size={'s'} />}>
-                <PresentationMarkdownBody
-                  content={course.presentationMarkdown}
-                  assetPrefix={cdnUrl(`courses/${course.index}`)}
-                />
-              </Suspense>
-            </section>
-          </>
-        ) : null}
-      </>
-    );
-  };
-
   const Professors = ({ course }: { course: CourseResponse }) => {
     return (
       <section className="max-lg:mx-auto w-full flex flex-col">
@@ -768,6 +702,8 @@ function CourseDetails() {
     format: 'online' | 'inperson';
     hasArrow?: boolean;
   }) => {
+    const { conversionRate } = useContext(ConversionRateContext);
+
     const onClick =
       course?.requiresPayment && !isCoursePaid
         ? () => {
@@ -903,7 +839,7 @@ function CourseDetails() {
             <Header course={course} />
             <CourseInfo course={course} />
             <Divider className="mt-6 mb-9 max-lg:hidden" width="w-full" />
-            <DescriptionAndObjectives course={course} />
+            <DescriptionAndObjectives course={course} isMobile={isMobile} />
             <Divider className="my-6 lg:my-9" width="w-full" />
             <CourseCurriculum
               course={course}
@@ -949,3 +885,75 @@ function CourseDetails() {
     </CourseLayout>
   );
 }
+
+const DescriptionAndObjectives = memo(
+  ({
+    course,
+    isMobile,
+  }: {
+    course: CourseResponse;
+    isMobile?: boolean;
+  }) => {
+    const { t } = useTranslation();
+
+    return (
+      <>
+        <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
+          <div className="flex flex-col gap-4 md:gap-6">
+            <h4 className="subtitle-small-caps-14px max-md:mt-2 md:subtitle-medium-caps-reg-18px text-darkOrange-5">
+              {t('courses.details.description')}
+            </h4>
+            <ReactMarkdown
+              components={{
+                h1: ({ children }) => (
+                  <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+                    {children}
+                  </h3>
+                ),
+                p: ({ children }) => (
+                  <p className="body-14px md:subtitle-large-18px text-newBlack-1 text-justify">
+                    {children}
+                  </p>
+                ),
+              }}
+            >
+              {course.rawDescription}
+            </ReactMarkdown>
+          </div>
+
+          <Divider width="w-full" className="md:hidden" />
+          <div className="flex w-full flex-col gap-4 md:gap-6">
+            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-darkOrange-5">
+              {t('courses.details.learning')}
+            </h4>
+            <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+              {t('courses.details.objectives')}
+            </h3>
+            <ul className="flex flex-col gap-4 md:gap-6">
+              {course.objectives?.map((goal) => (
+                <li className="flex gap-2.5 text-newBlack-1" key={goal}>
+                  <IoCheckmark size={isMobile ? 18 : 24} className="shrink-0" />
+                  <span className="body-16px md:label-large-20px">{goal}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {course.presentationMarkdown ? (
+          <>
+            <Divider width="w-full" className="mt-9 max-md:mb-6" />
+            <section className="text-blue-1000 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-[18px] md:overflow-hidden pb-2">
+              <Suspense fallback={<Loader size={'s'} />}>
+                <PresentationMarkdownBody
+                  content={course.presentationMarkdown}
+                  assetPrefix={cdnUrl(`courses/${course.index}`)}
+                />
+              </Suspense>
+            </section>
+          </>
+        ) : null}
+      </>
+    );
+  },
+);
