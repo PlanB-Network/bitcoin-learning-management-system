@@ -152,8 +152,7 @@ export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
             await processTimestampFile(file, bcertEdition, bcertId);
           } catch (error) {
             console.log(
-              'Error processing file(B Certificate OTS file) ${file?.path}',
-              error,
+              `Error processing file(B Certificate OTS file) ${file?.path}: ${error}`,
             );
 
             errors.push(
