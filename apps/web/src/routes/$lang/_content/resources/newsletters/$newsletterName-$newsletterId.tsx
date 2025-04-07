@@ -196,7 +196,7 @@ function NewsletterDetail() {
                     {t('resources.newsletters.level')}
                   </span>
                   <span className="capitalize text-white max-w-[140px] md:max-w-none subtitle-small-med-14px md:label-large-med-20px">
-                    {newsletter.level}
+                    {t(`words.level.${newsletter.level}`)}
                   </span>
                 </div>
 
