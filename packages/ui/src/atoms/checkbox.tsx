@@ -1,27 +1,63 @@
 'use client';
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { cva } from 'class-variance-authority';
 import { Check } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '#src/lib/utils.ts';
 
+const checkboxVariants = cva(
+  'peer shrink-0 border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:text-primary-foreground',
+  {
+    variants: {
+      variant: {
+        default:
+          'border-newGray-1 data-[state=checked]:bg-darkOrange-5 data-[state=checked]:border-darkOrange-5 data-[state=checked]:text-white',
+      },
+      size: {
+        s: 'size-2.5 rounded-[2px]',
+        m: 'size-4 rounded-sm',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'm',
+    },
+  },
+);
+
+const checkVariant = cva('', {
+  variants: {
+    size: {
+      s: 'size-2.5 rounded-[2px]',
+      m: 'size-4 rounded-sm',
+    },
+  },
+  defaultVariants: {
+    size: 'm',
+  },
+});
+
+interface CheckboxProps
+  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+  variant?: 'default';
+  size?: 's' | 'm';
+}
+
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
+  CheckboxProps
+>(({ className, variant = 'default', size = 'm', ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
-    className={cn(
-      'peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
-      className,
-    )}
+    className={cn(className, checkboxVariants({ variant, size }))}
     {...props}
   >
     <CheckboxPrimitive.Indicator
       className={cn('flex items-center justify-center text-current')}
     >
-      <Check className="h-4 w-4" />
+      <Check className={cn(checkVariant({ size }))} />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));

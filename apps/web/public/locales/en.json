@@ -1065,8 +1065,23 @@
     "pageTitle": "Oops."
   },
   "notifications": {
+    "dashboardDescription": "Here are your latest notifications. They are automatically removed one month after you’ve seen them.",
+    "daysAgo": "{{days}} days ago",
+    "hoursAgo": "{{hours}} hours ago",
+    "markAsRead": "Mark as read",
+    "monthsAgo": "{{months}} month{{s}} ago",
+    "noRecentNotifications": "You have no recent notifications at the moment.",
     "noUnreadNotifications": "No more unread notifications",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "read": "Read",
+    "select": "Select",
+    "selectAll": "Select all",
+    "stayUpToDate": "Stay up to date!",
+    "today": "Today",
+    "unread": "Unread",
+    "weeksAgo": "{{weeks}} week{{s}} ago",
+    "yearsAgo": "{{years}} year{{s}} ago",
+    "yesterday": "Yesterday"
   },
   "payment": {
     "haveReductionCode": "Do you have a reduction code?",
@@ -1482,6 +1497,7 @@
     "save": "Save",
     "search": "Search",
     "security": "Security",
+    "selectedAmount": "{{amount}} selected",
     "skip": "Skip",
     "socialStudies": "Social studies",
     "start": "Start",

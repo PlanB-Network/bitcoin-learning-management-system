@@ -25,7 +25,9 @@ function Dashboard() {
             'bg-white text-black',
             location.href.includes('calendar')
               ? 'px-0 py-6 md:p-6'
-              : 'px-4 py-6',
+              : location.href.includes('/dashboard/notifications')
+                ? 'md:px-4 py-6'
+                : 'px-4 py-6',
           )}
         >
           <Outlet />
