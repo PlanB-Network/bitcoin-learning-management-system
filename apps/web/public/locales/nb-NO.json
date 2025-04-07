@@ -178,7 +178,11 @@
       "thanksTipping": "Du kan si takk ved å gi professoren et tips.",
       "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå",
       "pastEditionsRatings": "Tidligere utgavers rangeringer",
-      "teacherLed": "Professor-ledet"
+      "teacherLed": "Professor-ledet",
+      "learning": "Læringssti",
+      "associatedProfessors": "Assosierte professorer",
+      "coordinatedBy": "Dette kurset er koordinert av",
+      "attendInPersonWarning": "Hvis du har tenkt å delta på denne klassen fysisk, må du sørge for å bestille plassen din. Uansett vil leksjonen bli strømmet direkte og tilgjengelig for avspilling."
     },
     "explorer": {
       "buildPath": "Lag din egen sti ned i kaninhullet",
@@ -189,7 +193,8 @@
       "pageDescription": "Plan ₿ Academy har som mål å forenkle Bitcoin-utdanning over hele verden. Kuratert av eksperter fra forskjellige felt, tilbyr akademiet vårt et omfattende utvalg av kurs designet for å klargjøre alle aspekter ved Bitcoin.\nFra nybegynner til ekspert, enten i ditt eget tempo eller fulgt ukentlig av en professor, håper vi at akademiet kan hjelpe deg med å få en dypere forståelse av den omfattende verdenen av Bitcoin. Mange av kursene våre er helt gratis, slik at alle, hvor som helst, kan få tilgang til kvalitetsutdanning.",
       "planbSchoolHeadline": "Plan ₿ School, ledet av Giacomo Zucco, tilbyr intensive tre måneders utdanningsprogrammer designet for å bygge bro mellom læring og praktiske anvendelser. Utover tradisjonelle klasser, engasjerer studentene seg i bedriftsledede praktiske prosjekter og en førsteklasses bootcamp dedikert til topputøvere. Bare de beste talentene går videre etter to konkurransepregete utvelgelsesrunder, noe som sikrer at de endelige toppstudentene er fullt utrustet til å starte karrierene sine i Bitcoin-industrien.",
       "comingSoon": "kommer snart",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "goal": "Mål:"
     },
     "part": {
       "count": "Del {{count}}"
@@ -1361,5 +1366,11 @@
     "description2": "Bli med i labben som samsvarer med studiefeltet ditt og forbedre læringsopplevelsen din!",
     "planBLabs": "Plan ₿ Labs",
     "title": "Praktiske og interaktive klasser for kontinuerlig læring"
+  },
+  "accessType": {
+    "hybrid": "Personlig tilstede og på nett",
+    "online": "På nett",
+    "physical": "Fysisk tilstede",
+    "replay": "Svar"
   }
 }
