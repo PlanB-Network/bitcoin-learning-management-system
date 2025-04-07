@@ -90,6 +90,12 @@ export const createGetSbpCheckout = (ctx: Dependencies) => {
       },
     });
 
+    // Check if the response is ok (status in the range 200-299).
+    if (!response.ok) {
+      console.log(`[Error] Network response was not ok: ${response.status}`);
+      throw new Error(`[sbp] Network response was not ok: ${response.status}`);
+    }
+
     return response.json() as Promise<SwissBitcoinPayCheckout>;
   };
 };
