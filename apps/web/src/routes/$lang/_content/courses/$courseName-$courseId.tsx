@@ -682,7 +682,9 @@ function CourseDetails() {
             </BuyCourseButton>
           </div>
         ) : (
-          <BuyCourseButton format={'inperson'}>
+          <BuyCourseButton
+            format={course.format === 'hybrid' ? 'inperson' : course.format}
+          >
             <>
               <FaLock className="mr-2" />
               {t('courses.details.buyCourse')}
