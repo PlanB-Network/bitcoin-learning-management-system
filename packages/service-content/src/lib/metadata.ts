@@ -1,3 +1,4 @@
+import { createGetBlog } from './blogs/services/get-blog.js';
 import { createGetCourseChapterMeta } from './courses/services/get-course-chapter-meta.js';
 import { createGetCourseMeta } from './courses/services/get-course-meta.js';
 import type { Dependencies } from './dependencies.js';
@@ -77,6 +78,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   const getGlossaryWord = createGetGlossaryWord(dependencies);
   const getConferenceMeta = createGetConferenceMeta(dependencies);
   const getNewsletterMeta = createGetNewsletterMeta(dependencies);
+  const getBlog = createGetBlog(dependencies);
 
   // Tutorials
   const getTutorialMeta = createGetTutorialMeta(dependencies);
@@ -224,6 +226,24 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     return meta(DEFAULT.title, DEFAULT.description, apiUrl, DEFAULT.lang);
   };
 
+  const getBlogMetadata = async (
+    language: string,
+    parts: string[],
+  ): Promise<Metadata> => {
+    const blogId = extractUUID(parts.join('/'));
+    if (!blogId) {
+      return defaultMeta(language);
+    }
+
+    const blog = await getBlog({ id: extractUUID(blogId), language });
+    return meta(
+      blog.title,
+      blog.description,
+      cdn(blog.path, 'thumbnail.webp'),
+      blog.language,
+    );
+  };
+
   return async (parts: string[]): Promise<Metadata> => {
     const lang = (parts[0]?.length === 2 && parts.shift()) || 'en';
 
@@ -247,6 +267,9 @@ export const createGetMetadata = (dependencies: Dependencies) => {
       }
       case 'bcert-certificates': {
         return getBcertCertificateMetadata(lang, rest); //
+      }
+      case 'public-communication': {
+        return getBlogMetadata(lang, rest); //
       }
       default: {
         return defaultMeta(lang);
