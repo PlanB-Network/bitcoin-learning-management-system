@@ -59,9 +59,8 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
           );
         }
       }
-
-      return child;
     }
+    return child;
   };
 
   if (Array.isArray(children)) {
