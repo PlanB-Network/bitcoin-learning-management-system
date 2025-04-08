@@ -38,13 +38,13 @@
     "@radix-ui/react-tooltip": "^1.1.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "embla-carousel-react": "^8.5.2",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "latest",
     "react": "~19.0.0",
     "react-hook-form": "^7.55.0",
     "react-toastify": "^11.0.5",
     "recharts": "^2.15.2",
-    "tailwind-merge": "^3.1.0"
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
