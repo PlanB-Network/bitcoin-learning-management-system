@@ -49,7 +49,7 @@ export interface CourseReview {
   difficulty: number;
   quality: number;
   faithful: number;
-  recommand: number;
+  recommend: number;
   publicComment: string | null;
   teacherComment: string | null;
   adminComment: string | null;

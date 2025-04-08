@@ -22,6 +22,7 @@ import {
   EventType,
   JobCategory,
   JobName,
+  NotificationType,
   TeachingFormat,
   TokenType,
   UserPermission,
@@ -1267,7 +1268,7 @@ export const usersCourseReview = users.table(
     difficulty: t.integer().default(0).notNull(),
     quality: t.integer().default(0).notNull(),
     faithful: t.integer().default(0).notNull(),
-    recommand: t.integer().default(0).notNull(),
+    recommend: t.integer().default(0).notNull(),
     publicComment: t.text(),
     teacherComment: t.text(),
     adminComment: t.text(),
@@ -2054,5 +2055,75 @@ export const contentProofreadingContributor = content.table(
     pk: primaryKey({
       columns: [table.proofreadingId, table.contributorId],
     }),
+  }),
+);
+
+export const notificationTypeEnum = pgNativeEnum(
+  'notification_type',
+  NotificationType,
+);
+
+export const usersNotifications = users.table('notifications', (t) => ({
+  id: t.uuid().primaryKey().defaultRandom(),
+  content: t.text().notNull(),
+  type: notificationTypeEnum().notNull(),
+  courseId: t
+    .varchar({ length: 100 })
+    .notNull()
+    .references(() => contentCourses.id, {
+      onDelete: 'set null',
+    }),
+  chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
+    onDelete: 'set null',
+  }),
+  eventId: t
+    .uuid()
+    .references(() => contentEvents.id, { onDelete: 'set null' }),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
+export const usersUserNotificationStatus = users.table(
+  'user_notification_status',
+  (t) => ({
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    notificationId: t
+      .uuid()
+      .notNull()
+      .references(() => usersNotifications.id, { onDelete: 'cascade' }),
+    readDate: t.timestamp({ withTimezone: true }),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => [primaryKey({ columns: [table.uid, table.notificationId] })],
+);
+
+export const usersScheduledCourseNotifications = users.table(
+  'scheduled_course_notifications',
+  (t) => ({
+    id: t.uuid().primaryKey().defaultRandom(),
+    notificationId: t
+      .uuid()
+      .notNull()
+      .references(() => usersNotifications.id, { onDelete: 'set null' }),
+    professorId: t
+      .uuid()
+      .notNull()
+      .references(() => contentProfessors.id, { onDelete: 'cascade' }),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+      }),
+    studentGroup: t.varchar({ length: 50 }).notNull(),
+    content: t.text().notNull(),
+    type: notificationTypeEnum().notNull(),
+    scheduledAt: t.timestamp({ withTimezone: true }).notNull(),
+    timezone: t.varchar({ length: 50 }).notNull(),
+    isPublished: t.boolean().default(false).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
 );

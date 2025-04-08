@@ -188,7 +188,7 @@ const saveCourseReviewProcedure = studentProcedure
       difficulty: z.number(),
       quality: z.number(),
       faithful: z.number(),
-      recommand: z.number(),
+      recommend: z.number(),
       publicComment: z.string(),
       teacherComment: z.string(),
       adminComment: z.string(),

@@ -400,7 +400,7 @@ export interface CourseReviewsExtended {
   difficulty: number[];
   length: number[];
   faithful: number[];
-  recommand: number[];
+  recommend: number[];
   quality: number[];
   feedbacks: {
     date: string;

@@ -230,7 +230,7 @@ export function CourseReviewComponent({
     difficulty: z.number().min(-5).max(5),
     quality: z.number().min(-5).max(5),
     faithful: z.number().min(-5).max(5),
-    recommand: z.number().min(-5).max(5),
+    recommend: z.number().min(-5).max(5),
     publicComment: z.string(),
     teacherComment: z.string(),
     adminComment: z.string(),
@@ -244,7 +244,7 @@ export function CourseReviewComponent({
       difficulty: 0,
       quality: 0,
       faithful: 0,
-      recommand: 0,
+      recommend: 0,
       publicComment: '',
       teacherComment: '',
       adminComment: '',
@@ -258,7 +258,7 @@ export function CourseReviewComponent({
       form.setValue('difficulty', previousCourseReview.difficulty);
       form.setValue('quality', previousCourseReview.quality);
       form.setValue('faithful', previousCourseReview.faithful);
-      form.setValue('recommand', previousCourseReview.recommand);
+      form.setValue('recommend', previousCourseReview.recommend);
       form.setValue('publicComment', previousCourseReview.publicComment ?? '');
       form.setValue(
         'teacherComment',
@@ -451,7 +451,7 @@ export function CourseReviewComponent({
                       />
 
                       <FormSlider
-                        id="recommand"
+                        id="recommend"
                         form={form}
                         label={t('courses.review.recommend')}
                         stepNames={[

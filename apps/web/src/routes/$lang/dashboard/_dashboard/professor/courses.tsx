@@ -713,7 +713,7 @@ const CourseReview = ({ courseId }: { courseId: string }) => {
                   t('courses.review.soAndSo'),
                   t('courses.review.yesOfCourse'),
                 ]}
-                ratings={reviews.recommand}
+                ratings={reviews.recommend}
               />
             </div>
           </div>

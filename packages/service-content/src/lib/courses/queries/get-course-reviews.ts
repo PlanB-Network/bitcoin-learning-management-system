@@ -8,7 +8,7 @@ export const getPublicCourseReviewsQuery = (courseId: string) => {
       json_agg(cr.difficulty) AS difficulty,
       json_agg(cr.length) AS length,
       json_agg(cr.faithful) AS faithful,
-      json_agg(cr.recommand) AS recommand,
+      json_agg(cr.recommend) AS recommend,
       json_agg(cr.quality) AS quality,
       json_agg(
         json_build_object(
@@ -34,7 +34,7 @@ export const getTeacherCourseReviewsQuery = (courseId: string) => {
       json_agg(cr.difficulty) AS difficulty,
       json_agg(cr.length) AS length,
       json_agg(cr.faithful) AS faithful,
-      json_agg(cr.recommand) AS recommand,
+      json_agg(cr.recommend) AS recommend,
       json_agg(cr.quality) AS quality,
       json_agg(
         json_build_object(

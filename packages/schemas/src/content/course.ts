@@ -260,7 +260,7 @@ export const courseReviewsExtendedSchema = z.object({
   difficulty: z.array(z.number()),
   length: z.array(z.number()),
   faithful: z.array(z.number()),
-  recommand: z.array(z.number()),
+  recommend: z.array(z.number()),
   quality: z.array(z.number()),
   feedbacks: z.array(
     z.object({

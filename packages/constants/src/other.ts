@@ -8,3 +8,11 @@ export enum VideoProvider {
   Rumble = 'rumble',
   Youtube = 'youtube',
 }
+
+export enum NotificationType {
+  Assignment = 'assignment',
+  Calendar = 'calendar',
+  Celebration = 'celebration',
+  General = 'general',
+  Warning = 'warning',
+}

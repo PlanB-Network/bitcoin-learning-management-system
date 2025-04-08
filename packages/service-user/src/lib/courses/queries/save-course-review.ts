@@ -10,7 +10,7 @@ export const saveCourseReview = (newReview: CourseReview) => {
     difficulty = EXCLUDED.difficulty,
     quality = EXCLUDED.quality,
     faithful = EXCLUDED.faithful,
-    recommand = EXCLUDED.recommand,
+    recommend = EXCLUDED.recommend,
     public_comment = EXCLUDED.public_comment,
     teacher_comment = EXCLUDED.teacher_comment,
     admin_comment = EXCLUDED.admin_comment,
