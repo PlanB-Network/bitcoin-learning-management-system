@@ -132,7 +132,9 @@ export const createS3Service = (config: S3Config): S3Service => {
     },
     // Return the metadata of the requested file
     metadata(key: string) {
-      return head(key).then((res) => res.Metadata ?? null);
+      return head(key)
+        .then((res) => res.Metadata ?? null)
+        .catch(() => null);
     },
   };
 };
