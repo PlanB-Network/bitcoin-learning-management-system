@@ -1,6 +1,6 @@
 import { t } from 'i18next';
-import { useMemo, useState } from 'react';
-import { Cropper } from 'react-cropper';
+import { useMemo, useRef, useState } from 'react';
+import { Cropper, type ReactCropperElement } from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 
 import {
@@ -30,11 +30,12 @@ enum Tabs {
 export const ChangePictureModal = (props: Props) => {
   const [image, setImage] = useState<string | undefined>();
   const [cropData, setCropData] = useState('');
-  const [cropper, setCropper] = useState<Cropper | null>(null);
+  const cropperRef = useRef<ReactCropperElement>(null);
   const [activeTab, setActiveTab] = useState<Tabs>(Tabs.CROP);
   const [loading, setLoading] = useState(false);
 
   const getCropData = () => {
+    const cropper = cropperRef.current?.cropper;
     if (cropper && image) {
       setCropData(cropper.getCroppedCanvas().toDataURL());
     }
@@ -63,8 +64,11 @@ export const ChangePictureModal = (props: Props) => {
     }
   };
 
-  const validateChange = () =>
-    cropper?.getCroppedCanvas().toBlob(sendBlobAsFile, 'image/png');
+  const validateChange = () => {
+    cropperRef.current?.cropper
+      ?.getCroppedCanvas()
+      .toBlob(sendBlobAsFile, 'image/png');
+  };
 
   return (
     <Dialog open={props.isOpen} onOpenChange={props.onClose}>
@@ -129,7 +133,7 @@ export const ChangePictureModal = (props: Props) => {
                 zoomable={false}
                 autoCropArea={1}
                 checkOrientation={false}
-                onInitialized={(instance: Cropper) => setCropper(instance)}
+                ref={cropperRef}
                 guides={true}
               />
             </div>
