@@ -41,7 +41,9 @@ function DashboardProfile() {
   // Called when the user has cropped his profile picture
   const onPictureChange = (file: File) => {
     setProfilePicture(file)
-      .then(setUser)
+      .then((update) => {
+        setUser({ ...user, ...update });
+      })
       .finally(profilePictureDisclosure.close)
       .catch((error) => console.error('Error:', error));
   };
