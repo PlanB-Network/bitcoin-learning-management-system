@@ -108,8 +108,8 @@ importers:
         specifier: ^0.34.1
         version: 0.34.1
       stripe:
-        specifier: ^17.7.0
-        version: 17.7.0
+        specifier: ^18.0.0
+        version: 18.0.0
       superjson:
         specifier: ^2.2.2
         version: 2.2.2
@@ -161,10 +161,10 @@ importers:
         version: 0.6.2(react@19.1.0)
       '@stripe/react-stripe-js':
         specifier: ^3.6.0
-        version: 3.6.0(@stripe/stripe-js@6.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 3.6.0(@stripe/stripe-js@7.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@stripe/stripe-js':
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^7.0.0
+        version: 7.0.0
       '@tanstack/react-query':
         specifier: ^5.72.0
         version: 5.72.0(react@19.1.0)
@@ -505,8 +505,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
       stripe:
-        specifier: ^17.7.0
-        version: 17.7.0
+        specifier: ^18.0.0
+        version: 18.0.0
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -2762,8 +2762,8 @@ packages:
       react: '>=16.8.0 <20.0.0'
       react-dom: '>=16.8.0 <20.0.0'
 
-  '@stripe/stripe-js@6.1.0':
-    resolution: {integrity: sha512-/5zxRol+MU4I7fjZXPxP2M6E1nuHOxAzoc0tOEC/TLnC31Gzc+5EE93mIjoAnu28O1Sqpl7/BkceDHwnGmn75A==}
+  '@stripe/stripe-js@7.0.0':
+    resolution: {integrity: sha512-0AWkP+hoIXB5O34FGY7jh687ZPlOqLqMkJDkiSXcp4TaWWidnxjsZSp0xkjyAWbIz4+j1BFXDAK01Rqb7ceBRA==}
     engines: {node: '>=12.16'}
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0':
@@ -6206,8 +6206,8 @@ packages:
     resolution: {integrity: sha512-0fk9zBqO67Nq5M/m45qHCJxylV/DhBlIOVExqgOMiCCrzrhU6tCibRXNqE3jwJLftzE9SNuZtYbpzcO+i9FiKw==}
     engines: {node: '>=14.16'}
 
-  stripe@17.7.0:
-    resolution: {integrity: sha512-aT2BU9KkizY9SATf14WhhYVv2uOapBWX0OFWF4xvcj1mPaNotlSc2CsxpS4DS46ZueSppmCF5BX1sNYBtwBvfw==}
+  stripe@18.0.0:
+    resolution: {integrity: sha512-3Fs33IzKUby//9kCkCa1uRpinAoTvj6rJgQ2jrBEysoxEvfsclvXdna1amyEYbA2EKkjynuB4+L/kleCCaWTpA==}
     engines: {node: '>=12.*'}
 
   strnum@1.1.2:
@@ -8982,14 +8982,14 @@ snapshots:
     dependencies:
       storybook: 8.6.12(prettier@3.5.3)
 
-  '@stripe/react-stripe-js@3.6.0(@stripe/stripe-js@6.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@stripe/react-stripe-js@3.6.0(@stripe/stripe-js@7.0.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@stripe/stripe-js': 6.1.0
+      '@stripe/stripe-js': 7.0.0
       prop-types: 15.8.1
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@stripe/stripe-js@6.1.0': {}
+  '@stripe/stripe-js@7.0.0': {}
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.26.10)':
     dependencies:
@@ -12875,7 +12875,7 @@ snapshots:
 
   strip-json-comments@5.0.1: {}
 
-  stripe@17.7.0:
+  stripe@18.0.0:
     dependencies:
       '@types/node': 22.14.0
       qs: 6.14.0

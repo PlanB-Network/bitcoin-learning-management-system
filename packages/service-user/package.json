@@ -32,7 +32,7 @@
     "bip39": "^3.1.0",
     "pdf-lib": "^1.17.1",
     "qr-image": "^3.2.0",
-    "stripe": "^17.7.0",
+    "stripe": "^18.0.0",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
