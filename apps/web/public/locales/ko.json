@@ -179,7 +179,9 @@
     "role": "역할",
     "unavailable": "사용 불가능",
     "submit": "제출",
-    "telegram": "텔레그램"
+    "telegram": "텔레그램",
+    "calendar": "캘린더",
+    "mode": "모드"
   },
   "auth": {
     "accountCreated": "{{userName}}님의 계정이 생성되었습니다!",
@@ -320,7 +322,8 @@
       "thanksTipping": "강사에게 팁을 주며 감사의 뜻을 전할 수 있습니다.",
       "associatedProfessors": "지원 강사진",
       "coordinatedBy": "이 코스는 다음에 의해 운영됩니다:",
-      "learning": "학습 경로"
+      "learning": "학습 경로",
+      "attendInPersonWarning": "이 수업에 대면으로 참석할 예정이라면, 꼭 좌석을 예약하세요. 모든 수업은 라이브 스트리밍되며, 리플레이로도 시청할 수 있습니다."
     },
     "explorer": {
       "pageDescription": "Plan ₿ 아카데미는 전 세계적으로 비트코인 교육을 단순화하고자 합니다. 다양한 분야의 전문가들이 선별한 강의들이 Plan ₿ 아카데미에서 제공됩니다.\n초보자부터 전문가까지 스스로 학습하거나 교수님의 주간 강의를 따라갈 수 있습니다. 비트코인의 광대한 세계에 대한 더 깊은 이해를 얻는 데 도움을 줄 수 있기를 바랍니다. 이 강의 중 많은 것은 완전히 무료로, 어디에 있든 누구나 양질의 교육에 접근할 수 있도록 설계되었습니다.",
@@ -723,7 +726,8 @@
           "uses": "사용된",
           "total": "총합",
           "owner": "소유자",
-          "actions": "액션"
+          "actions": "액션",
+          "maxUses": "최대 사용 횟수"
         },
         "generateNew": "새 코드 생성하기",
         "generateDiscountCode": "할인 코드 생성하기",
@@ -765,7 +769,10 @@
         "discountValuePlaceholder": "예: 20 → 20% 할인",
         "numberOfCodes": "몇 개의 코드를 생성할까요?",
         "numberOfCodesPlaceholder": "숫자를 입력하십시오.",
-        "maximumNumberOfUse": "사용 가능한 최대 횟수"
+        "maximumNumberOfUse": "사용 가능한 최대 횟수",
+        "discountCodeCopied": "할인 코드 복사됨",
+        "downloadImage": "이미지 다운로드",
+        "downloadImages": "이미지 다운로드"
       },
       "discountCodes": "할인 코드"
     },
@@ -994,7 +1001,7 @@
       "back_events": "이벤트 돌아가기",
       "book_seat": "예약하기",
       "date": "날짜",
-      "description_free_physical": "장소 세부 정보를 확인하세요.\n예약이 처리되면 확인 티켓과 QR 코드가 제공되며, 이를 이벤트에 제시하세요.",
+      "description_free_physical": "장소 세부 정보를 확인하세요. 예약이 처리되면 확인 티켓과 QR 코드가 제공되며, 이를 이벤트에 제시하세요. ",
       "download_ticket": "티켓 다운로드하기",
       "language": "언어",
       "limitation": "제한",
@@ -1009,7 +1016,9 @@
       "callout_book_replay": "이 이벤트의 리플레이 영상 시청을 예약하려고 합니다.",
       "callout_book_physical": "이 이벤트의 <highlight>대면 참여</highlight>를 예약하려고 합니다.",
       "callout_purchase_online": "이 이벤트의 <highlight>온라인 참여</highlight>를 구매하려고 합니다.",
-      "callout_purchase_physical": "이 이벤트의 <highlight>대면 참여</highlight>를 구매하려고 합니다."
+      "callout_purchase_physical": "이 이벤트의 <highlight>대면 참여</highlight>를 구매하려고 합니다.",
+      "callout_purchase_replay": "이 이벤트의 리플레이 영상 시청권을 구매하려고 합니다.",
+      "limitedSeats": "좌석이 한정되어 있습니다. 참석이 어려운 경우 예약을 취소해 주세요."
     },
     "errors": {
       "premiumContentNeedsPaymentAction": "이벤트 페이지로 이동",
@@ -1133,7 +1142,8 @@
     "total": "총액",
     "payWithBitcoin": "비트코인으로 결제하기",
     "haveReductionCode": "할인 코드 있나요?",
-    "payByCard": "카드로 결제하기"
+    "payByCard": "카드로 결제하기",
+    "insertReductionCode": "할인 코드를 입력하세요"
   },
   "podcasts": {
     "pageTitle": "비트코인 팟캐스트"
@@ -1383,7 +1393,8 @@
       "errorMessageNotFound": "블로그를 찾을 수 없습니다.",
       "blogSidebarTitle": "이전 {{category}} 포스트",
       "blogListButtonText": "기사 읽기",
-      "filterText": "주제별 필터:"
+      "filterText": "주제별 필터:",
+      "blogSidebarTitleForAll": "이전 포스팅"
     }
   },
   "filters": {
@@ -1483,6 +1494,7 @@
   "accessType": {
     "physical": "대면",
     "online": "온라인",
-    "replay": "재생"
+    "replay": "재생",
+    "hybrid": "대면 및 온라인"
   }
 }
