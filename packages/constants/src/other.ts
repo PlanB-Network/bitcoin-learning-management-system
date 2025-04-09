@@ -14,5 +14,7 @@ export enum NotificationType {
   Calendar = 'calendar',
   Celebration = 'celebration',
   General = 'general',
+  Planning = 'planning',
+  Results = 'results',
   Warning = 'warning',
 }

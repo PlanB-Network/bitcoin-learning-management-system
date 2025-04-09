@@ -11,6 +11,7 @@ export type * from './career.js';
 export type * from './config.js';
 export type * from './course.js';
 export type * from './event.js';
+export type * from './notification.js';
 export type * from './token.js';
 export type * from './payment.js';
 export type * from './timestamps.js';

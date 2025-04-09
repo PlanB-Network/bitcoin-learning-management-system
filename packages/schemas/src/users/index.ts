@@ -8,6 +8,7 @@ export * from './career.js';
 export * from './config.js';
 export * from './course.js';
 export * from './event.js';
+export * from './notification.js';
 export * from './token.js';
 export * from './payment.js';
 export * from './timestamps.js';
