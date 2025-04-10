@@ -7,7 +7,7 @@ export interface Notification {
   id: string;
   content: string;
   type: NotificationType;
-  courseId: string;
+  courseId: string | null;
   chapterId: string | null;
   eventId: string | null;
   createdAt: Date;
@@ -24,11 +24,9 @@ export interface JoinedUserNotification {
   id: string;
   content: string;
   type: NotificationType;
-  courseId: string;
+  courseId: string | null;
   chapterId: string | null;
   eventId: string | null;
-  status: {
-    createdAt: Date;
-    readDate: Date | null;
-  };
+  createdAt: Date;
+  readDate: Date | null;
 }

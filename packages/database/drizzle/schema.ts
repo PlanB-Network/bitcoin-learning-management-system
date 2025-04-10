@@ -2067,12 +2067,9 @@ export const usersNotifications = users.table('notifications', (t) => ({
   id: t.uuid().primaryKey().defaultRandom(),
   content: t.text().notNull(),
   type: notificationTypeEnum().notNull(),
-  courseId: t
-    .varchar({ length: 100 })
-    .notNull()
-    .references(() => contentCourses.id, {
-      onDelete: 'set null',
-    }),
+  courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
+    onDelete: 'set null',
+  }),
   chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
     onDelete: 'set null',
   }),

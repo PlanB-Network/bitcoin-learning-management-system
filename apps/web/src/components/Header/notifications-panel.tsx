@@ -1,27 +1,122 @@
+import type { JoinedUserNotification } from '@blms/types';
 import { Popover, PopoverContent, PopoverTrigger, TextTag, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-import { LuCalendarDays } from 'react-icons/lu';
+import { AppContext } from '#src/providers/context.tsx';
+import { getNotificationIcon } from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
+import { trpc } from '#src/utils/trpc.ts';
 
 interface NotificationItemProps {
-  icon?: React.ReactNode;
-  id: string;
-  tagLabel: string;
-  message: string;
-  isUnread: boolean;
+  notification: JoinedUserNotification;
   onClose?: () => void;
   mode?: 'dark' | 'light';
 }
 
+interface NotificationsPanelProps {
+  className?: string;
+  variant?: 'light' | 'dark' | 'darkOrange';
+}
+
+export const NotificationsPanel = ({
+  className,
+  variant = 'dark',
+}: NotificationsPanelProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { userNotifications, fetchUserNotifications } = useContext(AppContext);
+
+  const unreadNotifications =
+    userNotifications?.filter(
+      (notification) => notification.readDate === null,
+    ) || [];
+  const hasUnreadNotifications = unreadNotifications.length > 0;
+
+  const markNotificationsAsRead =
+    trpc.user.notifications.markUserNotificationsAsRead.useMutation({
+      onSuccess: () => {
+        fetchUserNotifications();
+      },
+    });
+
+  const handleCloseNotification = (id: string) => {
+    markNotificationsAsRead.mutate({ notificationIds: [id] });
+  };
+
+  if (!isOpen && unreadNotifications.length <= 0) {
+    return null;
+  }
+
+  return (
+    <>
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
+        <PopoverTrigger asChild>
+          <button
+            type="button"
+            className={cn(
+              'max-lg:hidden group z-50 flex size-[52px] items-center justify-center gap-2 rounded-2xl text-sm font-semibold outline-none transition-all md:hover:bg-darkOrange-4 md:hover:dark:bg-newBlack-3 lg:gap-2.5 relative',
+              className,
+              variant === 'dark' && 'dark',
+            )}
+            aria-label="Toggle notifications panel"
+          >
+            <FaBell className="text-newBlack-1 dark:text-white" size={20} />
+            <div className="absolute top-4 right-3 rounded-full size-3 bg-darkOrange-2 dark:bg-darkOrange-5" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent
+          className={cn(
+            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 dark:bg-newBlack-3 border border-newGray-5 dark:border-newBlack-4 shadow-course-navigation-sm',
+            variant === 'dark' && 'dark',
+          )}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex flex-col items-start justify-start">
+            <NotificationsHeader />
+
+            <div className="no-scrollbar w-full flex-col self-stretch">
+              {unreadNotifications.slice(0, 5).map((notification, _) => (
+                <NotificationItem
+                  key={notification.id}
+                  notification={notification}
+                  onClose={() => handleCloseNotification(notification.id)}
+                  mode={variant === 'dark' ? 'dark' : 'light'}
+                />
+              ))}
+            </div>
+
+            {unreadNotifications.length > 5 && <ViewMoreButton />}
+
+            {!hasUnreadNotifications && (
+              <p className="w-full p-4 text-center text-newBlack-1 dark:text-newGray-6 subtitle-small-caps-14px">
+                {t('notifications.noUnreadNotifications')}
+              </p>
+            )}
+          </div>
+        </PopoverContent>
+      </Popover>
+
+      {/* Mobile - Link only */}
+      <Link
+        to="/dashboard/notifications"
+        className={cn(
+          'lg:hidden flex items-center justify-center relative',
+          className,
+          variant === 'dark' && 'dark',
+        )}
+        aria-label="View notifications"
+      >
+        <FaBell className="text-newBlack-1 dark:text-white" size={24} />
+        <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2 dark:bg-darkOrange-5" />
+      </Link>
+    </>
+  );
+};
+
 const NotificationItem = ({
-  icon = (
-    <LuCalendarDays className="size-full text-newBlack-1 dark:text-newGray-4" />
-  ),
-  tagLabel,
-  message,
+  notification,
   onClose,
   mode = 'dark',
 }: NotificationItemProps) => {
@@ -45,15 +140,21 @@ const NotificationItem = ({
       >
         <div className="flex w-full items-center justify-between self-stretch">
           <div className="flex items-center justify-start gap-3">
-            <div className="size-6">{icon}</div>
+            <div className="size-6">
+              {getNotificationIcon(
+                notification.type,
+                'size-full text-newBlack-1 dark:text-newGray-4',
+              )}
+            </div>
             <TextTag variant={tagVariant} mode={tagMode} size="verySmall">
-              {tagLabel}
+              {/* TODO: create function to get notification title, depending on type + courseId,eventId,chapterId... */}
+              TODO
             </TextTag>
           </div>
           <div className="size-2 rounded-full bg-darkOrange-5" />
         </div>
         <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6">
-          {message}
+          {notification.content}
         </p>
       </Link>
       {onClose && (
@@ -99,146 +200,5 @@ const ViewMoreButton = () => {
     >
       {t('words.viewMore')}
     </Link>
-  );
-};
-
-interface NotificationsPanelProps {
-  className?: string;
-  variant?: 'light' | 'dark' | 'darkOrange';
-}
-
-export const NotificationsPanel = ({
-  className,
-  variant = 'dark',
-}: NotificationsPanelProps) => {
-  const [open, setOpen] = useState(false);
-
-  const [notifications, setNotifications] = useState([
-    {
-      id: '1',
-      tagLabel: 'Course',
-      message:
-        'The course will soon begin! The first lesson is planned on March 6th from 3pm to 5pm (CET). Make sure to have your ticket to attend the class!',
-      isUnread: true,
-    },
-    {
-      id: '2',
-      tagLabel: 'Update',
-      message:
-        'Your profile information has been successfully updated. Review changes?',
-      isUnread: true,
-    },
-    {
-      id: '3',
-      tagLabel: 'Reminder',
-      message:
-        "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: true,
-    },
-    {
-      id: '4',
-      tagLabel: 'Reminder 2',
-      message:
-        "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: true,
-    },
-    {
-      id: '5',
-      tagLabel: 'Reminder 3',
-      message:
-        "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: true,
-    },
-    {
-      id: '6',
-      tagLabel: 'Reminder 4',
-      message:
-        "Don't forget the community call tomorrow at 10 AM UTC. See you there!",
-      isUnread: true,
-    },
-  ]);
-
-  const handleCloseNotification = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((notification) =>
-        notification.id === id
-          ? { ...notification, isUnread: false }
-          : notification,
-      ),
-    );
-  };
-
-  if (notifications.length === 0) {
-    return null;
-  }
-
-  const unreadNotifications = notifications.filter(
-    (notification) => notification.isUnread,
-  );
-  const hasUnreadNotifications = unreadNotifications.length > 0;
-
-  return (
-    <>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <button
-            type="button"
-            className={cn(
-              'max-lg:hidden group z-50 flex size-[52px] items-center justify-center gap-2 rounded-2xl text-sm font-semibold outline-none transition-all md:hover:bg-darkOrange-4 md:hover:dark:bg-newBlack-3 lg:gap-2.5 relative',
-              className,
-              variant === 'dark' && 'dark',
-            )}
-            aria-label="Toggle notifications panel"
-          >
-            <FaBell className="text-newBlack-1 dark:text-white" size={20} />
-            <div className="absolute top-4 right-3 rounded-full size-3 bg-darkOrange-2 dark:bg-darkOrange-5" />
-          </button>
-        </PopoverTrigger>
-        <PopoverContent
-          className={cn(
-            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 dark:bg-newBlack-3 border border-newGray-5 dark:border-newBlack-4 shadow-course-navigation-sm',
-            variant === 'dark' && 'dark',
-          )}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex flex-col items-start justify-start">
-            <NotificationsHeader />
-
-            <div className="no-scrollbar w-full flex-col self-stretch">
-              {unreadNotifications.slice(0, 5).map((notification, _) => (
-                <NotificationItem
-                  key={notification.id}
-                  {...notification}
-                  onClose={() => handleCloseNotification(notification.id)}
-                  mode={variant === 'dark' ? 'dark' : 'light'}
-                />
-              ))}
-            </div>
-
-            {unreadNotifications.length > 5 && <ViewMoreButton />}
-
-            {!hasUnreadNotifications && (
-              <p className="w-full p-4 text-center text-newBlack-1 dark:text-newGray-6 subtitle-small-caps-14px">
-                {t('notifications.noUnreadNotifications')}
-              </p>
-            )}
-          </div>
-        </PopoverContent>
-      </Popover>
-
-      {/* Mobile - Link only */}
-      <Link
-        to="/dashboard/notifications"
-        className={cn(
-          'lg:hidden flex items-center justify-center relative',
-          className,
-          variant === 'dark' && 'dark',
-        )}
-        aria-label="View notifications"
-      >
-        <FaBell className="text-newBlack-1 dark:text-white" size={24} />
-        <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2 dark:bg-darkOrange-5" />
-      </Link>
-    </>
   );
 };

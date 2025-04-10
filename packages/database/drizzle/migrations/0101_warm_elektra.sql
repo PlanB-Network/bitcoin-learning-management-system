@@ -1,0 +1,1 @@
+ALTER TABLE "users"."notifications" ALTER COLUMN "course_id" DROP NOT NULL;

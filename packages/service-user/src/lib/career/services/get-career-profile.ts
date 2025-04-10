@@ -1,7 +1,7 @@
 import { firstRow } from '@blms/database';
 import type { JoinedCareerProfile } from '@blms/types';
 
-import type { Dependencies } from '../../../dependencies.js';
+import type { Dependencies } from '#src/dependencies.js';
 import {
   getCareerProfileIdQuery,
   getCareerProfileQuery,

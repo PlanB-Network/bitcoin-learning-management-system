@@ -25,10 +25,8 @@ export const joinedUserNotificationSchema = notificationSchema
     eventId: true,
   })
   .merge(
-    z.object({
-      status: userNotificationStatusSchema.pick({
-        createdAt: true,
-        readDate: true,
-      }),
+    userNotificationStatusSchema.pick({
+      createdAt: true,
+      readDate: true,
     }),
   );

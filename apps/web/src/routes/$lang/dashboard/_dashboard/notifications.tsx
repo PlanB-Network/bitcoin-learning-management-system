@@ -240,7 +240,7 @@ const NotificationsTable = () => {
             selectedAmount={selectedNotifications.length}
           />
         )}
-        <div className="flex gap-2.5 items-center">
+        <div className="flex gap-2 md:gap-2.5 items-center md:px-1">
           <span className="text-black body-14px md:label-medium-16px">
             {t('words.all')}
           </span>
@@ -520,8 +520,8 @@ const MultiSelectionTool = ({
   );
 };
 
-const getNotificationIcon = (type: string, className?: string) => {
-  const classes = cn('size-[18px] md:size-6', className);
+export const getNotificationIcon = (type: string, className?: string) => {
+  const classes = cn(className ? className : 'size-[18px] md:size-6');
 
   switch (type) {
     case 'planning':
