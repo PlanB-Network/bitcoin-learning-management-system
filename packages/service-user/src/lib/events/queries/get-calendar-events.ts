@@ -59,7 +59,7 @@ export const getCalendarEventsQuery = (
     cl.course_id as id,
     cl.chapter_id::text as sub_id,
     'course' as type,
-    CONCAT(UPPER(cl.course_id),' ',cl.title) as name,
+    CONCAT(UPPER(c.index),' ',cl.title) as name,
     COALESCE(array_to_string(cp_agg.professors, ', '), '') as organizer,
     cl.start_date,
     cl.end_date,
@@ -70,6 +70,7 @@ export const getCalendarEventsQuery = (
     cl.address_line_2,
     cl.address_line_3
   FROM content.course_chapters_localized cl
+  JOIN content.courses c ON c.id = cl.course_id
   JOIN users.course_payment cp on cl.course_id = cp.course_id
   LEFT JOIN LATERAL (
     SELECT ARRAY_AGG(pr.name) as professors
