@@ -227,7 +227,7 @@ const baseConfig: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        primary: ['Rubik'],
+        primary: ['IBMPlexSans'],
         body: ['SpaceMono'],
         mono: ['Manrope'],
         poppins: ['Poppins'],

@@ -66,7 +66,7 @@ export async function createPdf(options: PdfCertificateOptions) {
       font: fonts.mono,
       color: white,
     },
-    rubikWhite: {
+    ibmPlexWhite: {
       size: 16,
       font: fonts.ibmPlexRegular,
       color: white,
@@ -112,12 +112,12 @@ export async function createPdf(options: PdfCertificateOptions) {
   textLeft(page, options.courseIndex.toUpperCase(), {
     x: margin,
     y: 104,
-    ...conf.rubikWhite,
+    ...conf.ibmPlexWhite,
   });
   textRight(page, options.duration, {
     x: margin,
     y: 104,
-    ...conf.rubikWhite,
+    ...conf.ibmPlexWhite,
   });
 
   // Course Name
@@ -157,7 +157,7 @@ export async function createPdf(options: PdfCertificateOptions) {
   {
     const font = fonts.ibmPlexRegular;
     const x = width - margin - font.widthOfTextAtSize(options.date, 16);
-    textLeft(page, options.date, { x, y: 525, ...conf.rubikWhite });
+    textLeft(page, options.date, { x, y: 525, ...conf.ibmPlexWhite });
   }
 
   // Save the modified PDF

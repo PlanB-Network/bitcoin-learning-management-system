@@ -138,7 +138,7 @@ function createCounterStyle(count: number) {
     <g filter="url(#filter_1)">
       <rect x="8" y="38" width="32" height="32" rx="16" fill="white"/>
       <rect x="8.5" y="38.5" width="31" height="31" rx="15.5" stroke="#E5E7EB"/>
-      <text x="24" y="60" font-family="Rubik" font-size="18" text-anchor="middle" fill="#374151">${count}</text>
+      <text x="24" y="60" font-family="IBMPlexSans" font-size="18" text-anchor="middle" fill="#374151">${count}</text>
     </g>
 
     <g>

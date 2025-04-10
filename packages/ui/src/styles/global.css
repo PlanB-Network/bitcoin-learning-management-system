@@ -79,28 +79,17 @@
 }
 
 @font-face {
-  font-family: "SpaceMono";
-  src: url("../assets/fonts/space_mono/SpaceMono-Bold.ttf") format("truetype");
-  src: url("../assets/fonts/space_mono/SpaceMono-BoldItalic.ttf")
-    format("truetype");
-  src: url("../assets/fonts/space_mono/SpaceMono-Italic.ttf") format("truetype");
-  src: url("../assets/fonts/space_mono/SpaceMono-Regular.ttf")
-    format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rubik";
+  font-family: "IBMPlexSans";
   font-style: normal;
-  src: url("../assets/fonts/rubik/Rubik-VariableFont_wght.ttf")
+  src: url("../assets/fonts/ibm_plex_sans/IBMPlexSans-VariableFont_wght.ttf")
     format("truetype");
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Rubik";
+  font-family: "IBMPlexSans";
   font-style: italic;
-  src: url("../assets/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf")
+  src: url("../assets/fonts/ibm_plex_sans/IBMPlexSans-Italic-VariableFont_wdght.ttf")
     format("truetype");
   font-display: swap;
 }
@@ -149,7 +138,7 @@
   }
 
   * {
-    font-family: "Rubik", sans-serif;
+    font-family: "IBMPlexSans", sans-serif;
   }
 
   body {
@@ -593,7 +582,7 @@
   --toastify-toast-max-height: 800px;
   --toastify-toast-bd-radius: 10px;
   --toastify-toast-progress-bd-radius: 20px;
-  --toastify-font-family: "Rubik", sans-serif;
+  --toastify-font-family: "IBMPlexSans", sans-serif;
   --toastify-z-index: 9999;
   --toastify-text-color-light: #757575;
   --toastify-text-color-dark: #fff;
