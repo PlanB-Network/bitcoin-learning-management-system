@@ -1,13 +1,16 @@
-import { Button, Checkbox, Label, Switch, TextTag, cn } from '@blms/ui';
+import type { JoinedUserNotification } from '@blms/types';
+import { Button, Checkbox, Label, Loader, Switch, TextTag, cn } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiOutlineTrophy, AiOutlineWarning } from 'react-icons/ai';
 import { BiBookBookmark } from 'react-icons/bi';
 import { IoMailOpenSharp, IoMegaphoneOutline } from 'react-icons/io5';
 import { LuCalendarDays, LuStar } from 'react-icons/lu';
 import { MdAccessAlarm } from 'react-icons/md';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
+import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/notifications',
@@ -38,115 +41,17 @@ function NotificationsDashboard() {
 const NotificationsTable = () => {
   const isMobile = useSmaller('md');
 
-  // TODO: replace with real data
-  const today = new Date();
-  const getPastDate = (daysAgo: number) => {
-    const date = new Date(today);
-    date.setDate(date.getDate() - daysAgo);
-    return date;
-  };
+  const { userNotifications, fetchUserNotifications } = useContext(AppContext);
 
-  const receivedNotifications = [
-    {
-      id: '1',
-      title: 'Course',
-      type: 'calendar',
-      content:
-        'The course will soon begin! The first lesson is planned on March 6th from 3pm to 5pm (CET). Make sure to have your ticket to attend the class!',
-      createdAt: getPastDate(17),
-    },
-    {
-      id: '2',
-      title: 'Update',
-      type: 'general',
-      content:
-        'Your profile information has been successfully updated. Review changes?',
-      createdAt: getPastDate(5),
-    },
-    {
-      id: '3',
-      title: 'Assignment',
-      type: 'assignment',
-      content:
-        'Your assignment has been graded! Check your dashboard for the results.',
-      createdAt: getPastDate(30),
-    },
-    {
-      id: '4',
-      title: 'Reminder',
-      type: 'planning',
-      content: "Don't forget to submit your project by the end of this week!",
-      createdAt: getPastDate(2),
-    },
-    {
-      id: '5',
-      title: 'Celebration',
-      type: 'celebration',
-      content:
-        'Congratulations! You have completed the course. Celebrate your achievement!',
-      createdAt: getPastDate(120),
-    },
-    {
-      id: '6',
-      title: 'Warning',
-      type: 'warning',
-      content:
-        'Your account will be suspended if you do not update your payment information.',
-      createdAt: new Date(),
-    },
-    {
-      id: '7',
-      title: 'Results',
-      type: 'results',
-      content:
-        'Your results are available! Check your dashboard for more details.',
-      createdAt: getPastDate(380),
-    },
-    {
-      id: '8',
-      title: 'General',
-      type: 'general',
-      content:
-        'We have updated our terms of service. Please review the changes.',
-      createdAt: getPastDate(850),
-    },
-    {
-      id: '9',
-      title: 'General 2',
-      type: 'general',
-      content:
-        'We have updated our terms of service. Please review the changes.',
-      createdAt: getPastDate(40),
-    },
-    {
-      id: '10',
-      title: 'General 3',
-      type: 'general',
-      content:
-        'We have updated our terms of service. Please review the changes.',
-      createdAt: getPastDate(10),
-    },
-    {
-      id: '11',
-      title: 'General 4',
-      type: 'general',
-      content:
-        'We have updated our terms of service. Please review the changes.',
-      createdAt: getPastDate(1),
-    },
-  ];
-  // TODO: replace with real data
+  const markNotificationsAsRead =
+    trpc.user.notifications.markUserNotificationsAsRead.useMutation({
+      onSuccess: () => {
+        fetchUserNotifications();
+      },
+    });
 
-  const [notifications, setNotifications] = useState(
-    receivedNotifications
-      .map((notification) => ({
-        ...notification,
-        isUnread: true,
-      }))
-      .sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-      ),
+  const [notifications, setNotifications] = useState<JoinedUserNotification[]>(
+    [],
   );
 
   const [maxNotificationsShown, setMaxNotificationsShown] = useState(10);
@@ -182,37 +87,39 @@ const NotificationsTable = () => {
   };
 
   const handleMarkSelectedAsRead = () => {
-    setNotifications((prev) =>
-      prev.map((notification) => ({
-        ...notification,
-        isUnread: selectedNotifications.some(
-          (selected) => selected.id === notification.id,
-        )
-          ? false
-          : notification.isUnread,
-      })),
-    );
+    if (selectedNotifications.length > 0) {
+      markNotificationsAsRead.mutate({
+        notificationIds: selectedNotifications.map(
+          (notification) => notification.id,
+        ),
+      });
+    }
     setSelectedNotifications([]);
     setIsInSelectAllMode(false);
   };
 
   const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((notification) =>
-        notification.id === id
-          ? { ...notification, isUnread: false }
-          : notification,
-      ),
-    );
+    markNotificationsAsRead.mutate({ notificationIds: [id] });
   };
 
   const shownNotifications = notifications
-    .filter((notification) => !isUnreadOnly || notification.isUnread)
+    .filter((notification) => !isUnreadOnly || notification.readDate === null)
     .slice(0, maxNotificationsShown);
 
-  if (notifications.length === 0) {
+  useEffect(() => {
+    if (userNotifications) {
+      setNotifications(
+        [...userNotifications]?.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        ),
+      );
+    }
+  }, [userNotifications]);
+
+  if (userNotifications && userNotifications.length === 0) {
     return (
-      <p className="mt-8 subtitle-small-caps-14px text-darkOrange-5">
+      <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
         {t('notifications.noRecentNotifications')}
       </p>
     );
@@ -220,81 +127,88 @@ const NotificationsTable = () => {
 
   return (
     <div className="flex flex-col mt-5 md:mt-8 w-full max-w-[996px]">
-      <div className="flex max-md:flex-wrap w-full justify-between items-center gap-2.5 md:gap-4 max-md:px-4">
-        {isMobile && !isInSelectAllMode && (
-          <Button
-            variant="tertiary"
-            mode="light"
-            size={'xs'}
-            className="w-fit"
-            onClick={() => setIsInSelectAllMode(true)}
-          >
-            {t('notifications.select')}
-          </Button>
-        )}
-        {(!isMobile || isInSelectAllMode) && (
-          <MultiSelectionTool
-            selectedIds={selectedNotifications}
-            handleSelectAll={handleSelectAllNotifications}
-            handleAction={handleMarkSelectedAsRead}
-            selectedAmount={selectedNotifications.length}
-          />
-        )}
-        <div className="flex gap-2 md:gap-2.5 items-center md:px-1">
-          <span className="text-black body-14px md:label-medium-16px">
-            {t('words.all')}
-          </span>
-          <Switch
-            checked={isUnreadOnly}
-            onCheckedChange={() => {
-              setIsUnreadOnly((prev) => !prev);
-              setMaxNotificationsShown(10);
-            }}
-            size={isMobile ? 'xs' : 's'}
-            mode="light"
-          />
-          <span className="text-black body-14px md:label-medium-16px">
-            {t('notifications.unread')}
-          </span>
-        </div>
-      </div>
+      {!userNotifications ? (
+        <Loader size={'s'} />
+      ) : (
+        <>
+          <div className="flex max-md:flex-wrap w-full justify-between items-center gap-2.5 md:gap-4 max-md:px-4">
+            {isMobile && !isInSelectAllMode && (
+              <Button
+                variant="tertiary"
+                mode="light"
+                size={'xs'}
+                className="w-fit"
+                onClick={() => setIsInSelectAllMode(true)}
+              >
+                {t('notifications.select')}
+              </Button>
+            )}
+            {(!isMobile || isInSelectAllMode) && (
+              <MultiSelectionTool
+                selectedIds={selectedNotifications}
+                handleSelectAll={handleSelectAllNotifications}
+                handleAction={handleMarkSelectedAsRead}
+                selectedAmount={selectedNotifications.length}
+              />
+            )}
+            <div className="flex gap-2 md:gap-2.5 items-center md:px-1">
+              <span className="text-black body-14px md:label-medium-16px">
+                {t('words.all')}
+              </span>
+              <Switch
+                checked={isUnreadOnly}
+                onCheckedChange={() => {
+                  setIsUnreadOnly((prev) => !prev);
+                  setMaxNotificationsShown(10);
+                }}
+                size={isMobile ? 'xs' : 's'}
+                mode="light"
+              />
+              <span className="text-black body-14px md:label-medium-16px">
+                {t('notifications.unread')}
+              </span>
+            </div>
+          </div>
 
-      <section className="flex flex-col w-full md:rounded-[12px] border border-newGray-5 mt-5 overflow-hidden">
-        {shownNotifications.map(
-          (notification, index, filteredNotifications) => (
-            <NotificationItem
-              key={notification.id}
-              notification={notification}
-              index={index}
-              filteredNotifications={filteredNotifications}
-              selectedNotifications={selectedNotifications}
-              hoveredNotification={hoveredNotification}
-              setHoveredNotification={setHoveredNotification}
-              setSelectedNotifications={setSelectedNotifications}
-              handleSelectNotification={handleSelectNotification}
-              handleMarkAsRead={handleMarkAsRead}
-              isMobile={isMobile}
-              isInSelectAllMode={isInSelectAllMode}
-            />
-          ),
-        )}
-      </section>
+          <section className="flex flex-col w-full md:rounded-[12px] border border-newGray-5 mt-5 overflow-hidden">
+            {shownNotifications.map(
+              (notification, index, filteredNotifications) => (
+                <NotificationItem
+                  key={notification.id}
+                  notification={notification}
+                  index={index}
+                  filteredNotifications={filteredNotifications}
+                  selectedNotifications={selectedNotifications}
+                  hoveredNotification={hoveredNotification}
+                  setHoveredNotification={setHoveredNotification}
+                  setSelectedNotifications={setSelectedNotifications}
+                  handleSelectNotification={handleSelectNotification}
+                  handleMarkAsRead={handleMarkAsRead}
+                  isMobile={isMobile}
+                  isInSelectAllMode={isInSelectAllMode}
+                />
+              ),
+            )}
+          </section>
 
-      {shownNotifications.length <= maxNotificationsShown &&
-        shownNotifications.length <
-          notifications.filter(
-            (notification) => !isUnreadOnly || notification.isUnread,
-          ).length && (
-          <Button
-            variant="secondary"
-            mode="light"
-            size={isMobile ? 's' : 'm'}
-            className="mt-5 md:mt-8 w-fit max-md:mx-auto"
-            onClick={() => setMaxNotificationsShown((prev) => prev + 10)}
-          >
-            {t('words.viewMore')}
-          </Button>
-        )}
+          {shownNotifications.length <= maxNotificationsShown &&
+            shownNotifications.length <
+              notifications.filter(
+                (notification) =>
+                  !isUnreadOnly || notification.readDate === null,
+              ).length && (
+              <Button
+                variant="secondary"
+                mode="light"
+                size={isMobile ? 's' : 'm'}
+                className="mt-5 md:mt-8 w-fit max-md:mx-auto"
+                onClick={() => setMaxNotificationsShown((prev) => prev + 10)}
+              >
+                {t('words.viewMore')}
+              </Button>
+            )}
+        </>
+      )}
     </div>
   );
 };
@@ -311,23 +225,9 @@ const NotificationItem = ({
   isMobile,
   isInSelectAllMode,
 }: {
-  notification: {
-    id: string;
-    title: string;
-    type: string;
-    content: string;
-    createdAt: Date;
-    isUnread: boolean;
-  };
+  notification: JoinedUserNotification;
   index: number;
-  filteredNotifications: {
-    id: string;
-    title: string;
-    type: string;
-    content: string;
-    createdAt: Date;
-    isUnread: boolean;
-  }[];
+  filteredNotifications: JoinedUserNotification[];
   selectedNotifications: { id: string }[];
   hoveredNotification: string | null;
   setSelectedNotifications: React.Dispatch<
@@ -396,6 +296,8 @@ const NotificationItem = ({
     setHasDeterminedDirection(false);
   };
 
+  const isRead = notification.readDate !== null;
+
   return (
     <div
       key={notification.id}
@@ -415,7 +317,7 @@ const NotificationItem = ({
       <article
         className={cn(
           'group flex w-full md:hover:bg-darkOrange-0 hover:border-darkOrange-4 md:hover:border-l-2 py-1.5 px-4 md:p-4',
-          !notification.isUnread && 'bg-transparent/5',
+          isRead && 'bg-transparent/5',
         )}
         onTouchStart={isMobile ? handleTouchStart : undefined}
         onTouchMove={isMobile ? handleTouchMove : undefined}
@@ -424,7 +326,7 @@ const NotificationItem = ({
         onMouseLeave={() => setHoveredNotification(null)}
       >
         {(!isMobile || isInSelectAllMode) && (
-          <div className="flex items-start max-md:pt-3 max-md:px-1 p-1">
+          <div className="flex items-start max-md:pt-3 max-md:px-1 md:py-1">
             <Checkbox
               id={notification.id}
               checked={selectedNotifications.some(
@@ -438,7 +340,7 @@ const NotificationItem = ({
         <div className="flex flex-col gap-2.5 md:px-4 grow">
           <div className="flex justify-between items-center max-md:min-h-8">
             <div className="flex items-center gap-2 md:gap-3">
-              {notification.isUnread && (
+              {!isRead && (
                 <div className="rounded-full size-2 bg-darkOrange-5 md:hidden ml-1.5" />
               )}
               {getNotificationIcon(notification.type)}
@@ -455,10 +357,11 @@ const NotificationItem = ({
                     : 'light'
                 }
               >
-                {notification.title}
+                {/* TODO: create function to get notification title, depending on type + courseId,eventId,chapterId... */}
+                TODO
               </TextTag>
             </div>
-            {notification.isUnread && (
+            {!isRead && (
               <div className="rounded-full size-2 bg-darkOrange-5 max-md:hidden" />
             )}
             <span className="px-4 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 md:hidden">

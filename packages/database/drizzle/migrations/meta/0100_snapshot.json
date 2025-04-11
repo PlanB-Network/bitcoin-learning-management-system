@@ -1,5 +1,5 @@
 {
-  "id": "3fbbbfcd-a7f6-46cf-978d-b01a39a22828",
+  "id": "52c3e42b-53b6-4fca-b42b-2ee58646f4fc",
   "prevId": "38c90ee9-04d9-4927-af88-0de961eb1725",
   "version": "7",
   "dialect": "postgresql",
@@ -6749,7 +6749,7 @@
           "name": "course_id",
           "type": "varchar(100)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "chapter_id": {
           "name": "chapter_id",
@@ -7429,9 +7429,10 @@
       "values": [
         "assignment",
         "calendar",
+        "calendar_24h",
+        "calendar_5m",
         "celebration",
         "general",
-        "planning",
         "results",
         "warning"
       ]

@@ -12,9 +12,11 @@ export enum VideoProvider {
 export enum NotificationType {
   Assignment = 'assignment',
   Calendar = 'calendar',
+  Calendar48Hours = 'calendar_48h',
+  Calendar24Hours = 'calendar_24h',
+  Calendar5Minutes = 'calendar_5m',
   Celebration = 'celebration',
   General = 'general',
-  Planning = 'planning',
   Results = 'results',
   Warning = 'warning',
 }

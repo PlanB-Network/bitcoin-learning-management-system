@@ -1,5 +1,7 @@
 import {
   createCalculateEventSeats,
+  createGetCourseChapters,
+  createGetPlanBSchoolCoursesIds,
   createIndexContent,
   createRefreshCoursesRatings,
 } from '@blms/service-content';
@@ -8,15 +10,20 @@ import {
   createGetPendingCoursePayments,
   createGetPendingEventPayments,
   createGetSbpCheckout,
+  createInsertUserNotifications,
   createStartCourse,
   createUpdateCoursePayment,
   createUpdateEventPayment,
+  createUserNotificationsService,
 } from '@blms/service-user';
 
+import { NotificationType } from '@blms/constants';
 import type { Dependencies } from '#src/dependencies.js';
+import { formatTimeSimple } from '#src/utils/date.js';
 
 export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
+  const userNotificationsService = await createUserNotificationsService(ctx);
   const refreshCoursesRatings = createRefreshCoursesRatings(ctx);
 
   // One time exec - index content in the search engine 30 seconds after the server starts
@@ -26,6 +33,78 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       () => indexContent([]).catch((error) => console.error(error)),
       30_000,
     );
+  }
+
+  // Every minute, check before sending automated notifications to Plan B School students
+  {
+    const getPlanBSchoolCoursesIds = createGetPlanBSchoolCoursesIds(ctx);
+    const getCourseChapters = createGetCourseChapters(ctx);
+    const insertUserNotifications = createInsertUserNotifications(ctx);
+
+    ctx.crons.addTask('1m', async () => {
+      const planBSchoolCoursesIds = await getPlanBSchoolCoursesIds();
+      if (planBSchoolCoursesIds.length === 0) return;
+
+      const now = new Date();
+      const notificationStartDate = new Date(
+        now.getTime() + 20 * 60 * 60 * 1000,
+      );
+      const notificationEndDate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+      const startingSoonDate = new Date(now.getTime() + 5 * 60 * 1000);
+
+      for (const courseId of planBSchoolCoursesIds) {
+        const chapters = await getCourseChapters(courseId);
+        if (chapters.length === 0) continue;
+
+        const chaptersInNotificationWindow = chapters.filter((chapter) => {
+          if (!chapter.startDate) return false;
+          const startDate = new Date(chapter.startDate);
+          return (
+            startDate >= notificationStartDate &&
+            startDate <= notificationEndDate
+          );
+        });
+
+        const chaptersStartingSoon = chapters.filter((chapter) => {
+          if (!chapter.startDate) return false;
+          const startDate = new Date(chapter.startDate);
+          return startDate > now && startDate <= startingSoonDate;
+        });
+
+        if (chaptersInNotificationWindow.length > 0) {
+          const uids = await userNotificationsService.getUidsByCourse(courseId);
+          if (uids.length === 0) continue;
+
+          const chapter = chaptersInNotificationWindow[0];
+          if (!chapter.startDate || !chapter.endDate) continue;
+
+          await insertUserNotifications({
+            uids,
+            courseId,
+            chapterId: chapter.chapterId,
+            type: NotificationType.Calendar24Hours,
+            content: `Next class will be tomorrow from ${formatTimeSimple(chapter.startDate)} to ${formatTimeSimple(chapter.endDate)} (${chapter.timezone}). Book your seat if you want to attend in person!`,
+          });
+        }
+
+        if (chaptersStartingSoon.length > 0) {
+          const uids = await userNotificationsService.getUidsByCourse(courseId);
+          if (uids.length === 0) continue;
+
+          const chapter = chaptersStartingSoon[0];
+          if (!chapter.startDate || !chapter.endDate) continue;
+
+          await insertUserNotifications({
+            uids,
+            courseId,
+            chapterId: chapter.chapterId,
+            type: NotificationType.Calendar5Minutes,
+            content:
+              'The class is starting in 5 minutes. Click here to join now.',
+          });
+        }
+      }
+    });
   }
 
   if (timestampService) {

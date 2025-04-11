@@ -28,10 +28,12 @@ export const NotificationsPanel = ({
 
   const { userNotifications, fetchUserNotifications } = useContext(AppContext);
 
-  const unreadNotifications =
-    userNotifications?.filter(
-      (notification) => notification.readDate === null,
-    ) || [];
+  const unreadNotifications = (userNotifications ? [...userNotifications] : [])
+    .filter((notification) => notification.readDate === null)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    );
   const hasUnreadNotifications = unreadNotifications.length > 0;
 
   const markNotificationsAsRead =
@@ -45,7 +47,7 @@ export const NotificationsPanel = ({
     markNotificationsAsRead.mutate({ notificationIds: [id] });
   };
 
-  if (!isOpen && unreadNotifications.length <= 0) {
+  if (!isOpen && unreadNotifications.length === 0) {
     return null;
   }
 
