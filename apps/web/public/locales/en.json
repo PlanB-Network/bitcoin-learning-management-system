@@ -769,6 +769,21 @@
     "teacher": {
       "courses": {
         "analytics": "Analytics",
+        "announcementModal": {
+          "create": "Create announcement",
+          "contentLabel": "Text of the announcement",
+          "contentPlaceholder": "Text",
+          "dateLabel": "Date of publication",
+          "datePlaceholder": "Pick a date",
+          "groupLabel": "Select the group of students you want to address",
+          "title": "Write new announcement",
+          "typeLabel": "What type of announcement is it?",
+          "typePlaceholder": "Select one type"
+        },
+        "announcements": "Announcements",
+        "announcementsUpcoming": "Upcoming announcements",
+        "announcementsUpcomingDescription": "Here below are the future announcements you wrote and scheduled.",
+        "announcementsIntroduction": "In addition to the automatic notifications about class schedules, you have the option to write and schedule extra announcements for your students. For example, you can inform them about logistical changes or last-minute updates.\nStudents will receive these notifications on the platform, and also by email (if they activate this optional feature).",
         "courseDetails": "Course details",
         "courseLongDescription": "Introductive description",
         "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
@@ -781,14 +796,15 @@
         "makeModifications": "Need to make modifications?",
         "objectives": "Objectives",
         "proposeNewCourse": "Propose a new course",
-        "quickRecap": "Here you can find all the general informations regarding this course.",
+        "quickRecap": "Here you can find all the general information regarding this course.",
         "reviewInfos": "Here you can control and review all the information concerning each course you've coordinated.",
-        "reviews": "Reviews"
+        "reviews": "Reviews",
+        "writeAnnouncement": "Write an announcement"
       },
       "menu": "Teacher menu",
       "profile": {
         "account": "Professor account",
-        "billingInformations": "Billing informations",
+        "billingInformations": "Billing information",
         "description": "Your description",
         "enterTipsInformations": "Plan ₿ Network encourages users to tip teachers. Please enter your information so that people can tip you when they wish to.",
         "lightningAddress": "Lightning address",

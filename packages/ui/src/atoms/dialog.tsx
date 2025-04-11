@@ -96,8 +96,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, variant = 'orange', ...props }, ref) => {
   const baseClass = '';
   const variantStyles = {
-    orange:
-      'text-center mobile-h2 md:desktop-h4 text-darkOrange-5 px-0.5 sm:px-5',
+    orange: 'text-center mobile-h2 md:desktop-h5 text-darkOrange-5 lg:mt-4',
     black: 'text-black px-2 mb-4 text-center',
   };
   const variantClassName = variantStyles[variant] || variantStyles.orange;

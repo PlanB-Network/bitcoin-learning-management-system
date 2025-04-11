@@ -94,7 +94,7 @@ const FormLabel = React.forwardRef<
       className={cn(
         removeDefaultClasses
           ? ''
-          : 'text-center block max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText',
+          : 'text-center flex flex-row max-md:text-sm max-md:leading-[120%] md:desktop-h7 text-dashboardSectionText',
         error && 'text-destructive',
         className,
       )}
@@ -102,7 +102,7 @@ const FormLabel = React.forwardRef<
       {...props}
     >
       {props.children}
-      {required && <span className="text-red-5 font-thin ml-1">*</span>}
+      {required && <span className="text-red-5 text-xs mt-1 ml-1">*</span>}
     </Label>
   );
 });

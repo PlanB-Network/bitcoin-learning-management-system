@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@blms/constants": "workspace:*",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "drizzle-kit": "^0.30.6",
     "pg": "^8.14.1"
   }

@@ -1,6 +1,7 @@
 export * from './atoms/alert-dialog.tsx';
 export * from './atoms/avatar.tsx';
 export * from './atoms/button.tsx';
+export * from './atoms/calendar.tsx';
 export * from './atoms/card.tsx';
 export * from './atoms/carousel.tsx';
 export * from './atoms/charts.tsx';
