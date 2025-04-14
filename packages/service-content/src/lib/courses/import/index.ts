@@ -531,14 +531,18 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
               `.then(firstRow);
 
               if (insertedVideo && currentVideo.youtube) {
-                for (const key of Object.keys(currentVideo.youtube)) {
-                  await transaction`
-                  INSERT INTO content.videos_localized (id, language, provider, id_from_provider)
-                  VALUES (${insertedVideo.id}, ${key}, 'youtube', ${currentVideo.youtube[key]})
-                  ON CONFLICT (id, language) DO UPDATE SET
-                    provider = EXCLUDED.provider,
-                    id_from_provider = EXCLUDED.id_from_provider
-                  `;
+                for (const [_key, value] of Object.entries(
+                  currentVideo.youtube,
+                )) {
+                  for (const [lang, langVideoId] of Object.entries(value)) {
+                    await transaction`
+                    INSERT INTO content.videos_localized (id, language, provider, id_from_provider)
+                    VALUES (${insertedVideo.id}, ${lang}, 'youtube', ${langVideoId})
+                    ON CONFLICT (id, language) DO UPDATE SET
+                      provider = EXCLUDED.provider,
+                      id_from_provider = EXCLUDED.id_from_provider
+                    `;
+                  }
                 }
               }
             }
