@@ -1,7 +1,7 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
-import React, { Suspense, useContext, useEffect, useState } from 'react';
+import React, { memo, Suspense, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { IoCheckmark } from 'react-icons/io5';
 import { z } from 'zod';
@@ -494,12 +494,7 @@ function TutorialDetails() {
                     }}
                   />
                   <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
-                    <Suspense fallback={<Loader size={'s'} />}>
-                      <TutorialsMarkdownBody
-                        content={tutorial.rawContent}
-                        assetPrefix={cdnUrl(tutorial.path)}
-                      />
-                    </Suspense>
+                    <MarkdownContent tutorial={tutorial} />
                   </div>
                   <LikeDislikeButtons />
                   {tutorial.creditLink && (
@@ -536,3 +531,22 @@ function TutorialDetails() {
     </MainLayout>
   );
 }
+
+const MarkdownContent = memo(
+  ({
+    tutorial,
+  }: {
+    tutorial: NonNullable<TRPCRouterOutput['content']['getTutorial']>;
+  }) => {
+    return (
+      <Suspense fallback={<Loader size={'s'} />}>
+        {tutorial && (
+          <TutorialsMarkdownBody
+            content={tutorial.rawContent}
+            assetPrefix={cdnUrl(tutorial.path)}
+          />
+        )}
+      </Suspense>
+    );
+  },
+);

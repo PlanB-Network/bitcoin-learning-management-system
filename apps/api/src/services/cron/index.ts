@@ -19,7 +19,6 @@ import {
 
 import { NotificationType } from '@blms/constants';
 import type { Dependencies } from '#src/dependencies.js';
-import { formatTimeSimple } from '#src/utils/date.js';
 
 export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
@@ -76,14 +75,13 @@ export const registerCronTasks = async (ctx: Dependencies) => {
           if (uids.length === 0) continue;
 
           const chapter = chaptersInNotificationWindow[0];
-          if (!chapter.startDate || !chapter.endDate) continue;
+          if (!chapter.startDate) continue;
 
           await insertUserNotifications({
             uids,
             courseId,
             chapterId: chapter.chapterId,
-            type: NotificationType.Calendar24Hours,
-            content: `Next class will be tomorrow from ${formatTimeSimple(chapter.startDate)} to ${formatTimeSimple(chapter.endDate)} (${chapter.timezone}). Book your seat if you want to attend in person!`,
+            type: NotificationType.Calendar24HoursCourse,
           });
         }
 
@@ -92,15 +90,13 @@ export const registerCronTasks = async (ctx: Dependencies) => {
           if (uids.length === 0) continue;
 
           const chapter = chaptersStartingSoon[0];
-          if (!chapter.startDate || !chapter.endDate) continue;
+          if (!chapter.startDate) continue;
 
           await insertUserNotifications({
             uids,
             courseId,
             chapterId: chapter.chapterId,
-            type: NotificationType.Calendar5Minutes,
-            content:
-              'The class is starting in 5 minutes. Click here to join now.',
+            type: NotificationType.Calendar5MinutesCourse,
           });
         }
       }

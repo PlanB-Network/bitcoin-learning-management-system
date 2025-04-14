@@ -2065,7 +2065,7 @@ export const notificationTypeEnum = pgNativeEnum(
 
 export const usersNotifications = users.table('notifications', (t) => ({
   id: t.uuid().primaryKey().defaultRandom(),
-  content: t.text().notNull(),
+  content: t.text(),
   type: notificationTypeEnum().notNull(),
   courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
     onDelete: 'set null',

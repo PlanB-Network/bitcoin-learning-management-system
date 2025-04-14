@@ -3,6 +3,7 @@ import { Button, Checkbox, Label, Loader, Switch, TextTag, cn } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AiOutlineTrophy, AiOutlineWarning } from 'react-icons/ai';
 import { BiBookBookmark } from 'react-icons/bi';
 import { IoMailOpenSharp, IoMegaphoneOutline } from 'react-icons/io5';
@@ -10,6 +11,7 @@ import { LuCalendarDays, LuStar } from 'react-icons/lu';
 import { MdAccessAlarm } from 'react-icons/md';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
+import { getTimeString } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -368,7 +370,13 @@ const NotificationItem = ({
               {getNotificationDateString(new Date(notification.createdAt))}
             </span>
           </div>
-          <p className="body-14px text-newBlack-1">{notification.content}</p>
+          <p className="body-14px text-newBlack-1">
+            {notification.content ||
+              getNotificationContent(
+                notification.type,
+                notification.chapterId || undefined,
+              )}
+          </p>
         </div>
         <span className="px-4 w-[140px] shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
           {getNotificationDateString(new Date(notification.createdAt))}
@@ -423,13 +431,60 @@ const MultiSelectionTool = ({
   );
 };
 
+export const getNotificationContent = (type: string, chapterId?: string) => {
+  const { i18n } = useTranslation();
+
+  const { data: chapter } = trpc.content.getCourseChapter.useQuery(
+    chapterId
+      ? { language: i18n.language, chapterId }
+      : { language: i18n.language, chapterId: '' },
+    {
+      enabled: !!chapterId,
+    },
+  );
+
+  switch (type) {
+    case 'planning':
+      return t('notifications.planning');
+    case 'calendar':
+      return t('notifications.calendar');
+    case 'calendar_24h_course': {
+      return t('notifications.calendar_24h', {
+        formattedTime:
+          chapter?.startDate &&
+          getTimeString(
+            chapter?.startDate,
+            chapter?.endDate || undefined,
+            chapter?.timezone || undefined,
+          ),
+      });
+    }
+    case 'calendar_5m_course':
+      return t('notifications.calendar_5m');
+    case 'general':
+      return t('notifications.general');
+    case 'assignment':
+      return t('notifications.assignment');
+    case 'celebration':
+      return t('notifications.celebration');
+    case 'results':
+      return t('notifications.results');
+    case 'warning':
+      return t('notifications.warning');
+    default:
+      return null;
+  }
+};
+
 export const getNotificationIcon = (type: string, className?: string) => {
   const classes = cn(className ? className : 'size-[18px] md:size-6');
 
   switch (type) {
     case 'planning':
-      return <LuCalendarDays className={classes} />;
     case 'calendar':
+    case 'calendar_24h_course':
+      return <LuCalendarDays className={classes} />;
+    case 'calendar_5m_course':
       return <MdAccessAlarm className={classes} />;
     case 'general':
       return <IoMegaphoneOutline className={classes} />;

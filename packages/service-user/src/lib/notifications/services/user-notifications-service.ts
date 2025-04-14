@@ -3,13 +3,17 @@ import type { Dependencies } from '#src/dependencies.js';
 
 export const createUserNotificationsService = async (ctx: Dependencies) => {
   const getUidsByCourse = (courseId: string) => {
-    return ctx.postgres.exec(
-      sql`
+    return ctx.postgres
+      .exec(
+        sql`
         SELECT uid
         FROM users.course_progress
         WHERE course_id = ${courseId};
         `,
-    );
+      )
+      .then((result) => {
+        return result.map((row) => row.uid);
+      });
   };
 
   return {

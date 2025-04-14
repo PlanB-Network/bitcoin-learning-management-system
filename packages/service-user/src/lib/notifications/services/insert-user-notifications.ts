@@ -1,10 +1,11 @@
 import type { NotificationType } from '@blms/constants';
 import type { Dependencies } from '#src/dependencies.js';
+import { getExistingNotificationsQuery } from '../queries/get-existing-notifications.js';
 import { insertUserNotificationsQuery } from '../queries/insert-user-notifications.js';
 
 interface Options {
   type: NotificationType;
-  content: string;
+  content?: string;
   uids: string[];
   courseId?: string;
   chapterId?: string;
@@ -20,8 +21,12 @@ export const createInsertUserNotifications = ({ postgres }: Dependencies) => {
     chapterId,
     eventId,
   }: Options) => {
-    // NEED TO CHECK IF THE NOTIFICATION ALREADY EXISTS
-    // NEED TO HANDLE TRANSLATIONS...
+    const existingNotification = await postgres.exec(
+      getExistingNotificationsQuery(type, chapterId, eventId),
+    );
+    if (existingNotification.length > 0) {
+      return;
+    }
 
     await postgres.exec(
       insertUserNotificationsQuery({

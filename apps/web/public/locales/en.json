@@ -1065,6 +1065,8 @@
     "pageTitle": "Oops."
   },
   "notifications": {
+    "calendar_24h": "Next class will be tomorrow from {{ formattedTime }}. Book your seat if you want to attend in person!",
+    "calendar_5m": "The class is starting in 5 minutes! Click here to join now.",
     "dashboardDescription": "Here are your latest notifications. They are automatically removed one month after you’ve seen them.",
     "daysAgo": "{{days}} days ago",
     "hoursAgo": "{{hours}} hours ago",

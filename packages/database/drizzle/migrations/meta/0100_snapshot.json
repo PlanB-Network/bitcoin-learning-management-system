@@ -1,5 +1,5 @@
 {
-  "id": "52c3e42b-53b6-4fca-b42b-2ee58646f4fc",
+  "id": "5aaf9a50-9848-4d92-b1e2-07c6d495b886",
   "prevId": "38c90ee9-04d9-4927-af88-0de961eb1725",
   "version": "7",
   "dialect": "postgresql",
@@ -6736,7 +6736,7 @@
           "name": "content",
           "type": "text",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "type": {
           "name": "type",
@@ -7429,8 +7429,8 @@
       "values": [
         "assignment",
         "calendar",
-        "calendar_24h",
-        "calendar_5m",
+        "calendar_24h_course",
+        "calendar_5m_course",
         "celebration",
         "general",
         "results",

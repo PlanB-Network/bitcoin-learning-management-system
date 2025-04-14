@@ -5,7 +5,7 @@ import type { NotificationType } from '@blms/constants';
 
 export interface Notification {
   id: string;
-  content: string;
+  content: string | null;
   type: NotificationType;
   courseId: string | null;
   chapterId: string | null;
@@ -22,7 +22,7 @@ export interface UserNotificationStatus {
 
 export interface JoinedUserNotification {
   id: string;
-  content: string;
+  content: string | null;
   type: NotificationType;
   courseId: string | null;
   chapterId: string | null;

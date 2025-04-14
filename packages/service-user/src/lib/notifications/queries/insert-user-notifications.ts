@@ -4,13 +4,11 @@ import { sql } from '@blms/database';
 type Options = {
   uids: string[];
   type: NotificationType;
-  content: string;
+  content?: string;
   courseId?: string;
   chapterId?: string;
   eventId?: string;
 };
-
-// TODO: Check for error (probably in unnest)
 
 export const insertUserNotificationsQuery = ({
   uids,
@@ -23,7 +21,7 @@ export const insertUserNotificationsQuery = ({
   return sql`
     WITH inserted_notification AS (
       INSERT INTO users.notifications (content, type, course_id, chapter_id, event_id)
-      VALUES (${content}, ${type}, ${courseId || null}, ${chapterId || null}, ${eventId || null})
+      VALUES (${content || null}, ${type}, ${courseId || null}, ${chapterId || null}, ${eventId || null})
       RETURNING id
     )
     INSERT INTO users.user_notification_status (uid, notification_id, created_at)
@@ -31,6 +29,6 @@ export const insertUserNotificationsQuery = ({
       uid,
       (SELECT id FROM inserted_notification),
       NOW()
-    FROM unnest(${sql(uids)}) AS uid;
+    FROM unnest(${uids}::uuid[]) AS uid;
   `;
 };
