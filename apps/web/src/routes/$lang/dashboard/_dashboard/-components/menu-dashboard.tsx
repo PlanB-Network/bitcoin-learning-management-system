@@ -25,6 +25,7 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
+import { FaRegBell } from 'react-icons/fa6';
 import { TbBriefcase2 } from 'react-icons/tb';
 import { Image } from '#src/components/image.tsx';
 import { MenuItem } from './menu-item.tsx';
@@ -36,7 +37,11 @@ export const MenuDashboard = ({
   location: ParsedLocation;
   toggleMobileMenu?: () => void;
 }) => {
-  const { user, courses: allCourses } = useContext(AppContext);
+  const {
+    user,
+    courses: allCourses,
+    userNotifications,
+  } = useContext(AppContext);
   const [pathname, setPathname] = useState('');
 
   const { data: courses } = trpc.user.courses.getProgress.useQuery(undefined, {
@@ -60,6 +65,11 @@ export const MenuDashboard = ({
     (course) => course.progressPercentage >= 100,
   );
 
+  const unreadNotifications =
+    userNotifications?.filter(
+      (notification) => notification.readDate === null,
+    ) || [];
+
   const pictureUrl = getPictureUrl(user ? user : null);
 
   const navigate = useNavigate();
@@ -68,6 +78,7 @@ export const MenuDashboard = ({
   const bookingsPath = '/dashboard/bookings';
   const calendarPath = '/dashboard/calendar';
   const careerPortalPath = '/dashboard/career-portal';
+  const notificationsPath = '/dashboard/notifications';
   const profilePath = '/dashboard/profile';
   const adminBookingsPath = '/dashboard/administration/bookings';
   const adminCouponsPath = '/dashboard/administration/coupons';
@@ -175,6 +186,15 @@ export const MenuDashboard = ({
             />
           </Link>
         ) : null}
+        <Link to={notificationsPath}>
+          <MenuItem
+            text={t('notifications.notifications')}
+            icon={<FaRegBell size={24} />}
+            active={pathname.includes(notificationsPath)}
+            onClick={toggleMobileMenu}
+            unreadNotifications={unreadNotifications.length}
+          />
+        </Link>
         <Link to={profilePath}>
           <MenuItem
             text={t('dashboard.account')}

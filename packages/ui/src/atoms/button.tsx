@@ -12,9 +12,9 @@ const buttonVariants = cva(
         primary:
           'bg-primary text-white shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
         secondary:
-          'bg-secondary text-newBlack-1 shadow-button disabled:!bg-newGray-4 disabled:!text-newGray-2',
+          'bg-newGray-4 dark:bg-white text-newBlack-1 shadow-button dark:disabled:bg-newBlack-3 disabled:!text-newGray-2 dark:disabled:text-newGray-1',
         tertiary:
-          'bg-newGray-5 text-newBlack-1 border-newGray-3 shadow-button disabled:!bg-newGray-3 disabled:!text-newGray-2',
+          'shadow-button border bg-newGray-5 text-newGray-1 border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
         outline:
           'bg-transparent text-primary border border-primary disabled:!text-newGray-3 disabled:!border-newGray-3',
         outlineWhite:
@@ -30,7 +30,7 @@ const buttonVariants = cva(
         carouselDashboard: 'bg-darkOrange-5 text-white opacity-60',
       },
       size: {
-        xs: 'px-2 py-1 text-xs leading-[14px] !font-medium rounded-lg',
+        xs: 'px-2 py-1.5 text-xs leading-[14px] !font-medium rounded-lg',
         s: 'px-2.5 py-1.5 text-base leading-[19px] !font-medium rounded-lg',
         m: 'px-3.5 py-3 text-lg leading-[21px] !font-medium rounded-[10px]',
         l: 'px-[18px] py-[14px] text-xl leading-[24px] !font-medium rounded-2xl',

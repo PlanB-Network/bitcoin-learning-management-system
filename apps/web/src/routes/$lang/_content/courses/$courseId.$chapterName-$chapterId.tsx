@@ -1,5 +1,6 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import React, {
+  memo,
   Suspense,
   useContext,
   useEffect,
@@ -410,19 +411,21 @@ const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
   );
 };
 
-const MarkdownContent = ({ chapter }: { chapter: CourseChapterResponse }) => {
-  return (
-    <Suspense fallback={<Loader size={'s'} />}>
-      <CoursesMarkdownBody
-        content={chapter.rawContent}
-        assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
-        supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
-          chapter.course.id,
-        )}
-      />
-    </Suspense>
-  );
-};
+const MarkdownContent = memo(
+  ({ chapter }: { chapter: CourseChapterResponse }) => {
+    return (
+      <Suspense fallback={<Loader size={'s'} />}>
+        <CoursesMarkdownBody
+          content={chapter.rawContent}
+          assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
+          supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
+            chapter.course.id,
+          )}
+        />
+      </Suspense>
+    );
+  },
+);
 
 function getRandomQuestions(
   questionArray: Question[],

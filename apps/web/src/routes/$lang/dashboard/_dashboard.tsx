@@ -17,17 +17,24 @@ function Dashboard() {
   const isMobile = useSmaller('lg');
   const location = useLocation();
 
+  const pathname = location.href;
+  const paddingClasses = {
+    calendar: 'px-0 py-6 md:p-6',
+    notifications: 'md:px-4 py-6',
+    default: 'px-4 py-6',
+  };
+
+  let padding = paddingClasses.default;
+  if (pathname.includes('calendar')) {
+    padding = paddingClasses.calendar;
+  } else if (pathname.includes('/dashboard/notifications')) {
+    padding = paddingClasses.notifications;
+  }
+
   return isMobile ? (
     <MainLayout variant="light" showFooter={false} headerVariant="light">
       <div>
-        <div
-          className={cn(
-            'bg-white text-black',
-            location.href.includes('calendar')
-              ? 'px-0 py-6 md:p-6'
-              : 'px-4 py-6',
-          )}
-        >
+        <div className={cn('bg-white text-black', padding)}>
           <Outlet />
         </div>
       </div>

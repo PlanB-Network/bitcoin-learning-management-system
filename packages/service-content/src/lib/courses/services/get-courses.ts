@@ -6,6 +6,7 @@ import { formatProfessor } from '../../professors/services/utils.js';
 import { indexBy } from '../../utils.js';
 import {
   getCoursesQuery,
+  getPlanBSchoolCoursesIdsQuery,
   getProfessorCoursesQuery,
 } from '../queries/get-courses.js';
 
@@ -119,5 +120,13 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
         ),
       };
     });
+  };
+};
+
+export const createGetPlanBSchoolCoursesIds = ({ postgres }: Dependencies) => {
+  return async (): Promise<string[]> => {
+    const courses = await postgres.exec(getPlanBSchoolCoursesIdsQuery());
+
+    return courses.map((course) => course.id);
   };
 };

@@ -6,6 +6,7 @@ import type {
   JoinedBlogLight,
   JoinedCourse,
   JoinedTutorialLight,
+  JoinedUserNotification,
   SessionData,
   UserDetails,
 } from '@blms/types';
@@ -38,6 +39,11 @@ interface AppContext {
   blogs: JoinedBlogLight[] | null;
   setBlogs: (blogs: JoinedBlogLight[] | null) => void;
 
+  // Notifications
+  userNotifications: JoinedUserNotification[];
+  setUserNotifications: (userNotifications: JoinedUserNotification[]) => void;
+  fetchUserNotifications: () => Promise<void>;
+
   // Register Toast
   hasSeenRegisterToast: boolean;
   setHasSeenRegisterToast: (value: boolean) => void;
@@ -65,6 +71,11 @@ export const AppContext = createContext<AppContext>({
   blogs: null,
   setBlogs: () => {},
 
+  // Notifications
+  userNotifications: [],
+  setUserNotifications: () => {},
+  fetchUserNotifications: async () => {},
+
   // Register Toast
   hasSeenRegisterToast: false,
   setHasSeenRegisterToast: () => {},
@@ -80,6 +91,9 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   );
   const [courses, setCourses] = useState<JoinedCourse[] | null>(null);
   const [blogs, setBlogs] = useState<JoinedBlogLight[] | null>(null);
+  const [userNotifications, setUserNotifications] = useState<
+    JoinedUserNotification[]
+  >([]);
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
@@ -90,6 +104,17 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       setUser(data ?? null);
     } catch {
       setUser(null);
+    }
+  };
+
+  // Function to refetch user notifications
+  const fetchUserNotifications = async () => {
+    try {
+      const data =
+        await trpcClient.user.notifications.getUserNotifications.query();
+      setUserNotifications(data ?? []);
+    } catch {
+      setUserNotifications([]);
     }
   };
 
@@ -133,7 +158,23 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       })
       .then(setBlogs)
       .catch(() => {});
+
+    fetchUserNotifications();
   }, [i18n.language]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    fetchUserNotifications();
+
+    const intervalId = setInterval(
+      () => {
+        fetchUserNotifications();
+      },
+      1 * 60 * 1000,
+    ); // 1 minute
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const appContext: AppContext = {
     user,
@@ -147,6 +188,9 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     setCourses,
     blogs,
     setBlogs,
+    userNotifications,
+    setUserNotifications,
+    fetchUserNotifications,
     hasSeenRegisterToast,
     setHasSeenRegisterToast,
   };

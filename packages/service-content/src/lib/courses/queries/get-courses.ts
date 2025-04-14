@@ -154,3 +154,14 @@ export const getProfessorCoursesQuery = (
       END
   `;
 };
+
+export const getPlanBSchoolCoursesIdsQuery = () => {
+  return sql`
+    SELECT
+      c.id
+    FROM
+      content.courses c
+    WHERE
+      c.is_planb_school = TRUE
+  `;
+};

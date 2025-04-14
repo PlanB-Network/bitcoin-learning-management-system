@@ -2,7 +2,7 @@ import { Link, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { cn } from '@blms/ui';
+import { Badge, cn } from '@blms/ui';
 
 export const MenuItem = ({
   text,
@@ -12,6 +12,7 @@ export const MenuItem = ({
   dropdown,
   showOnMobileOnly,
   storageKey,
+  unreadNotifications,
 }: {
   text: string;
   icon: React.ReactNode;
@@ -20,6 +21,7 @@ export const MenuItem = ({
   dropdown?: Array<{ text: string; to: string; onClick?: () => void }>;
   showOnMobileOnly?: boolean;
   storageKey?: string;
+  unreadNotifications?: number;
 }) => {
   const [isOpen, setIsOpen] = useState(() => {
     if (storageKey) {
@@ -65,6 +67,11 @@ export const MenuItem = ({
         <span className="leading-normal text-lg font-medium lg:text-[15px] lg:font-normal lg:leading-relaxed truncate">
           {text}
         </span>
+        {unreadNotifications && unreadNotifications > 0 ? (
+          <Badge variant="darkOrange" size={'small'}>
+            {unreadNotifications}
+          </Badge>
+        ) : null}
         {dropdown && (
           <MdKeyboardArrowDown
             size={24}
