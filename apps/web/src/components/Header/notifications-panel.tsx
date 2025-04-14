@@ -6,7 +6,11 @@ import { useContext, useState } from 'react';
 import { FaBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
 import { AppContext } from '#src/providers/context.tsx';
-import { getNotificationIcon } from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
+import {
+  getNotificationContent,
+  getNotificationIcon,
+  getNotificationTitle,
+} from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 interface NotificationItemProps {
@@ -149,14 +153,19 @@ const NotificationItem = ({
               )}
             </div>
             <TextTag variant={tagVariant} mode={tagMode} size="verySmall">
-              {/* TODO: create function to get notification title, depending on type + courseId,eventId,chapterId... */}
-              TODO
+              {getNotificationTitle(
+                notification.type,
+                notification.courseId || undefined,
+              )}
             </TextTag>
           </div>
           <div className="size-2 rounded-full bg-darkOrange-5" />
         </div>
         <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6">
-          {notification.content}
+          {getNotificationContent(
+            notification.type,
+            notification.chapterId || undefined,
+          )}
         </p>
       </Link>
       {onClose && (

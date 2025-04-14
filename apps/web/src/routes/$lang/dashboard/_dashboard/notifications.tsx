@@ -359,8 +359,10 @@ const NotificationItem = ({
                     : 'light'
                 }
               >
-                {/* TODO: create function to get notification title, depending on type + courseId,eventId,chapterId... */}
-                TODO
+                {getNotificationTitle(
+                  notification.type,
+                  notification.courseId || undefined,
+                )}
               </TextTag>
             </div>
             {!isRead && (
@@ -429,6 +431,19 @@ const MultiSelectionTool = ({
       </Button>
     </div>
   );
+};
+
+export const getNotificationTitle = (type: string, courseId?: string) => {
+  const { courses } = useContext(AppContext);
+  const courseName = courses?.find((course) => course.id === courseId)?.name;
+
+  switch (type) {
+    case 'calendar_24h_course':
+    case 'calendar_5m_course':
+      return courseName;
+    default:
+      return 'Notification';
+  }
 };
 
 export const getNotificationContent = (type: string, chapterId?: string) => {
