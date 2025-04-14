@@ -86,18 +86,3 @@ export function formatMonthYear(date: Date): string {
 
   return `${month} ${year}`;
 }
-
-export function formatTimeSimple(date: Date): string {
-  if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
-    return '';
-  }
-
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-
-  return `${hours}${ampm}${minutes}`;
-}
