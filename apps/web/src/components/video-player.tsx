@@ -72,6 +72,21 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
           />
         );
       }
+      case 'peertube': {
+        const peertubeUrl = `https://peertube.planb.network/${video.idFromProvider}`;
+
+        return (
+          <iframe
+            width="100%"
+            height="100%"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+            className="mx-auto mb-2 rounded-lg"
+            src={fixEmbedUrl(peertubeUrl)}
+            title={video.id}
+            allowFullScreen
+          />
+        );
+      }
       default:
         return null;
     }
