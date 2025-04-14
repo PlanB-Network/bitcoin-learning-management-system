@@ -192,11 +192,7 @@ export const MenuDashboard = ({
             icon={<FaRegBell size={24} />}
             active={pathname.includes(notificationsPath)}
             onClick={toggleMobileMenu}
-            unreadNotifications={
-              unreadNotifications.length > 0
-                ? unreadNotifications.length
-                : undefined
-            }
+            unreadNotifications={unreadNotifications.length}
           />
         </Link>
         <Link to={profilePath}>

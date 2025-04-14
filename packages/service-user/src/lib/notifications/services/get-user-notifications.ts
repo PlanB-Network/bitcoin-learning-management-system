@@ -7,14 +7,10 @@ interface Options {
 }
 
 export const createGetUserNotifications = ({ postgres }: Dependencies) => {
-  return async ({ uid }: Options): Promise<JoinedUserNotification[] | null> => {
+  return async ({ uid }: Options): Promise<JoinedUserNotification[]> => {
     const userNotifications = await postgres.exec(
       getUserNotificationsQuery(uid),
     );
-
-    if (!userNotifications) {
-      return null;
-    }
 
     return userNotifications;
   };

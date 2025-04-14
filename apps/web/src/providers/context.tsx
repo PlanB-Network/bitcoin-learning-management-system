@@ -40,10 +40,8 @@ interface AppContext {
   setBlogs: (blogs: JoinedBlogLight[] | null) => void;
 
   // Notifications
-  userNotifications: JoinedUserNotification[] | null;
-  setUserNotifications: (
-    userNotifications: JoinedUserNotification[] | null,
-  ) => void;
+  userNotifications: JoinedUserNotification[];
+  setUserNotifications: (userNotifications: JoinedUserNotification[]) => void;
   fetchUserNotifications: () => Promise<void>;
 
   // Register Toast
@@ -74,7 +72,7 @@ export const AppContext = createContext<AppContext>({
   setBlogs: () => {},
 
   // Notifications
-  userNotifications: null,
+  userNotifications: [],
   setUserNotifications: () => {},
   fetchUserNotifications: async () => {},
 
@@ -94,8 +92,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const [courses, setCourses] = useState<JoinedCourse[] | null>(null);
   const [blogs, setBlogs] = useState<JoinedBlogLight[] | null>(null);
   const [userNotifications, setUserNotifications] = useState<
-    JoinedUserNotification[] | null
-  >(null);
+    JoinedUserNotification[]
+  >([]);
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
@@ -114,9 +112,9 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     try {
       const data =
         await trpcClient.user.notifications.getUserNotifications.query();
-      setUserNotifications(data ?? null);
+      setUserNotifications(data ?? []);
     } catch {
-      setUserNotifications(null);
+      setUserNotifications([]);
     }
   };
 

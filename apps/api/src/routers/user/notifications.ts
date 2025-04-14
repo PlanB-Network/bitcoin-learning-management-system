@@ -11,8 +11,8 @@ import type { Parser } from '#src/trpc/types.js';
 
 const getUserNotificationsProcedure = studentProcedure
   .input(z.void())
-  .output<Parser<JoinedUserNotification[] | null>>(
-    joinedUserNotificationSchema.array().nullable(),
+  .output<Parser<JoinedUserNotification[]>>(
+    joinedUserNotificationSchema.array(),
   )
   .query(({ ctx }) =>
     createGetUserNotifications(ctx.dependencies)({

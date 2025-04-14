@@ -67,11 +67,11 @@ export const MenuItem = ({
         <span className="leading-normal text-lg font-medium lg:text-[15px] lg:font-normal lg:leading-relaxed truncate">
           {text}
         </span>
-        {unreadNotifications && (
+        {unreadNotifications && unreadNotifications > 0 ? (
           <Badge variant="darkOrange" size={'small'}>
             {unreadNotifications}
           </Badge>
-        )}
+        ) : null}
         {dropdown && (
           <MdKeyboardArrowDown
             size={24}
