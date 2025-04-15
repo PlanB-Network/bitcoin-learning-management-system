@@ -44,17 +44,17 @@ const GlossaryMarkdownBody = ({
           </LinkRenderer>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-white py-1">
+          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-white py-1">
+          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-white">
+          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-white font-[450]">
             {children}
           </li>
         ),

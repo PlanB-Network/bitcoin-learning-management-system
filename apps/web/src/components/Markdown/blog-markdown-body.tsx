@@ -62,17 +62,17 @@ const BlogMarkdownBody = ({
           </LinkRenderer>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify">
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="leading-relaxed mb-5 text-start text-black">
+          <li className="leading-relaxed mb-5 text-start text-black font-[450]">
             {children}
           </li>
         ),

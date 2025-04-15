@@ -12,8 +12,8 @@ import { getBlog, getCourse, getTutorial } from '../utils/link-preview.tsx';
 const linkStyles = cva('text-base tracking-wide', {
   variants: {
     intent: {
-      default: 'underline text-newBlue-1',
-      general: 'text-blue-500',
+      default: 'underline text-newBlue-1 font-[450]',
+      general: 'text-blue-500 font-[450]',
       glossary: 'underline text-darkOrange-5 hover:font-medium',
     },
   },

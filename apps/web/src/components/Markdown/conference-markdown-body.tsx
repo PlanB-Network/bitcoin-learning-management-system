@@ -81,17 +81,19 @@ const ConferencesMarkdownBody = ({
           <LinkRenderer href={href}>{children}</LinkRenderer>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide">
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide font-[450]">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide">
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide font-[450]">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
+          <li className="my-1 text-base tracking-wide last:mb-0 font-[450]">
+            {children}
+          </li>
         ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,

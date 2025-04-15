@@ -46,17 +46,17 @@ const CoursesMarkdownBody = ({
           <LinkRenderer href={href}>{children}</LinkRenderer>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 body-16px">
+          <ol className="flex list-decimal flex-col pl-10 body-16px font-[450]">
             {children}
           </ol>
         ),
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 body-16px">
+          <ul className="flex list-disc flex-col pl-10 body-16px font-[450]">
             {children}
           </ul>
         ),
         li: ({ children }) => (
-          <li className="my-1 body-16px last:mb-0">{children}</li>
+          <li className="my-1 body-16px last:mb-0 font-[450]">{children}</li>
         ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
