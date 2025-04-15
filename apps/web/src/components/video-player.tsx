@@ -58,7 +58,7 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
         );
       }
       case 'rumble': {
-        const rumbleUrl = `https://rumble.com/${video.idFromProvider}`;
+        const rumbleUrl = `https://rumble.com/embed/${video.idFromProvider}`;
 
         return (
           <div className="relative pt-[56.25%]">
