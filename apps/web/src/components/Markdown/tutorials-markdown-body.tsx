@@ -38,7 +38,12 @@ const TutorialsMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-lg font-medium text-black">{children}</h3>
         ),
-        p: ({ children }) => <ParagraphRenderer>{children}</ParagraphRenderer>,
+        p: ({ children }) => (
+          <ParagraphRenderer header="logo">{children}</ParagraphRenderer>
+        ),
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="logo" src={src} alt={alt} />
+        ),
         a: ({ children, href }) => (
           <LinkRenderer href={href} intent="general">
             {children}
@@ -60,9 +65,6 @@ const TutorialsMarkdownBody = ({
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="logo" src={src} alt={alt} />
-        ),
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),

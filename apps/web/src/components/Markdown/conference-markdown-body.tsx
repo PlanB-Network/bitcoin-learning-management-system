@@ -70,7 +70,12 @@ const ConferencesMarkdownBody = ({
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="conference">{children}</ParagraphRenderer>
+          <ParagraphRenderer intent="conference" header="none">
+            {children}
+          </ParagraphRenderer>
+        ),
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="none" src={src} alt={alt} />
         ),
         a: ({ children, href }) => (
           <LinkRenderer href={href}>{children}</LinkRenderer>
@@ -91,9 +96,7 @@ const ConferencesMarkdownBody = ({
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="none" src={src} alt={alt} />
-        ),
+
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode="dark">{children}</BlockquoteRenderer>
         ),

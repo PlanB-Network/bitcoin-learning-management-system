@@ -38,7 +38,12 @@ const PresentationMarkdownBody = ({
             {children}
           </h3>
         ),
-        p: ({ children }) => <ParagraphRenderer>{children}</ParagraphRenderer>,
+        p: ({ children }) => (
+          <ParagraphRenderer header="none">{children}</ParagraphRenderer>
+        ),
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="none" src={src} alt={alt} />
+        ),
         a: ({ children, href }) => (
           <LinkRenderer href={href}>{children}</LinkRenderer>
         ),
@@ -58,9 +63,6 @@ const PresentationMarkdownBody = ({
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="none" src={src} alt={alt} />
-        ),
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
         ),

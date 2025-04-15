@@ -47,7 +47,12 @@ const GeneralMarkdownBody = ({
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="general">{children}</ParagraphRenderer>
+          <ParagraphRenderer intent="general" header="logo">
+            {children}
+          </ParagraphRenderer>
+        ),
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="logo" src={src} alt={alt} />
         ),
         a: ({ children, href }) => (
           <LinkRenderer href={href} intent="general">
@@ -70,9 +75,6 @@ const GeneralMarkdownBody = ({
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="logo" src={src} alt={alt} />
-        ),
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),

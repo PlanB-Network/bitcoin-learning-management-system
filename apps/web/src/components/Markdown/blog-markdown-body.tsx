@@ -49,7 +49,9 @@ const BlogMarkdownBody = ({
           </h3>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="blog">{children}</ParagraphRenderer>
+          <ParagraphRenderer intent="blog" header="text">
+            {children}
+          </ParagraphRenderer>
         ),
         img: ({ src, alt }) => (
           <ImageVideoRenderer header="text" src={src} alt={alt} />

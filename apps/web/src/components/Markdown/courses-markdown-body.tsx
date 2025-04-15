@@ -36,7 +36,12 @@ const CoursesMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
-        p: ({ children }) => <ParagraphRenderer>{children}</ParagraphRenderer>,
+        p: ({ children }) => (
+          <ParagraphRenderer header="logo">{children}</ParagraphRenderer>
+        ),
+        img: ({ src, alt }) => (
+          <ImageVideoRenderer header="logo" src={src} alt={alt} />
+        ),
         a: ({ children, href }) => (
           <LinkRenderer href={href}>{children}</LinkRenderer>
         ),
@@ -56,9 +61,6 @@ const CoursesMarkdownBody = ({
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="logo" src={src} alt={alt} />
-        ),
         blockquote: ({ children }) => (
           <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
         ),

@@ -1,7 +1,9 @@
 import { cn } from '@blms/ui';
 import { type VariantProps, cva } from 'class-variance-authority';
+import { t } from 'i18next';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import VideoSVG from '#src/assets/resources/video.svg?react';
 import { VideoPlayerWrapper } from '#src/components/video-player.tsx';
 import { TradingViewWidget } from './tradingview-widget.tsx';
 
@@ -26,9 +28,10 @@ interface ParagraphRendererProps
   children?: React.ReactNode;
   className?: string;
   intent?: 'default' | 'blog' | 'conference' | 'general' | 'glossary';
+  header: 'none' | 'logo' | 'text';
 }
 export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
-  const { children, intent } = props;
+  const { children, intent, header } = props;
   const { i18n } = useTranslation();
 
   const renderChild = async (child: React.ReactNode) => {
@@ -51,11 +54,33 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
         const planbVideoId = child.match(/id=([a-zA-Z0-9_-]+)/)?.[1] ?? '';
         if (planbVideoId) {
           return (
-            <VideoPlayerWrapper
-              key={planbVideoId}
-              videoId={planbVideoId}
-              language={i18n.language}
-            />
+            <div className="mb-8">
+              {header === 'logo' && (
+                <div className="flex items-center">
+                  <VideoSVG className="mb-2 ml-4 size-10" />
+                  <div className="ml-2">
+                    <p className="text-lg font-medium text-blue-900">
+                      {t('words.video')}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {header === 'text' && (
+                <div className=" flex items-center">
+                  <div className="ml-2">
+                    <p className="text-lg font-medium text-blue-900">
+                      {t('words.video')}
+                    </p>
+                  </div>
+                </div>
+              )}
+              <VideoPlayerWrapper
+                key={planbVideoId}
+                videoId={planbVideoId}
+                language={i18n.language}
+              />
+            </div>
           );
         }
       }

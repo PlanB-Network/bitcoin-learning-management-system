@@ -1,4 +1,5 @@
-import VideoSVG from '../../../assets/resources/video.svg?react';
+import { t } from 'i18next';
+import VideoSVG from '#src/assets/resources/video.svg?react';
 import { ReactPlayer } from '../../react-player.tsx';
 
 const fixEmbedUrl = (src: string) => {
@@ -35,7 +36,11 @@ export const ImageVideoRenderer = ({
   header,
   src,
   alt,
-}: { header: 'none' | 'logo' | 'text'; src?: string; alt?: string }) => {
+}: {
+  header: 'none' | 'logo' | 'text';
+  src?: string;
+  alt?: string;
+}) => {
   if (!src) return null;
 
   if (
@@ -49,7 +54,9 @@ export const ImageVideoRenderer = ({
           <div className="flex items-center">
             <VideoSVG className="mb-2 ml-4 size-10" />
             <div className="ml-2">
-              <p className="text-lg font-medium text-blue-900">Video</p>
+              <p className="text-lg font-medium text-blue-900">
+                {t('words.video')}
+              </p>
             </div>
           </div>
         )}
@@ -57,7 +64,9 @@ export const ImageVideoRenderer = ({
         {header === 'text' && (
           <div className=" flex items-center">
             <div className="ml-2">
-              <p className="text-lg font-medium text-blue-900">Video</p>
+              <p className="text-lg font-medium text-blue-900">
+                {t('words.video')}
+              </p>
             </div>
           </div>
         )}
