@@ -47,7 +47,7 @@ export const ClassDetails = ({
 
   const { t } = useTranslation();
 
-  const { mutateAsync, isPending } =
+  const { mutateAsync: downloadTicketMutateAsync, isPending } =
     trpc.user.courses.downloadChapterTicket.useMutation();
 
   const { data: userChapters, refetch: refetchUserChapter } =
@@ -176,7 +176,8 @@ export const ClassDetails = ({
                       onClick={async () => {
                         let pdf = downloadedPdf;
                         if (!pdf) {
-                          pdf = await mutateAsync({
+                          pdf = await downloadTicketMutateAsync({
+                            organizer: course.projectName ?? 'Plan ₿ Network',
                             ...chapter,
                             ...course,
                             formattedStartDate,

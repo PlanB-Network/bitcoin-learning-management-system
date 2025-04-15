@@ -19,7 +19,7 @@ export const ModalBookSuccess = ({
   chapter,
   onClose,
 }: ModalBookSuccessProps) => {
-  const { mutateAsync: downloadChapterAsync, isPending } =
+  const { mutateAsync: downloadTicketMutateAsync, isPending } =
     trpc.user.courses.downloadChapterTicket.useMutation();
 
   const { data: user } = trpc.user.getDetails.useQuery();
@@ -67,7 +67,8 @@ export const ModalBookSuccess = ({
         <Button
           variant="primary"
           onClick={async () => {
-            const base64 = await downloadChapterAsync({
+            const base64 = await downloadTicketMutateAsync({
+              organizer: course.projectName ?? 'Plan ₿ Network',
               ...chapter,
               ...course,
               formattedStartDate,

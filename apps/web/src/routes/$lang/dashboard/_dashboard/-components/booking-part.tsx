@@ -134,8 +134,10 @@ const Buttons = ({
   const { mutateAsync: downloadTicketAsync, isPending: isPendingTicket } =
     trpc.user.events.downloadEventTicket.useMutation();
 
-  const { mutateAsync: downloadChapterTicket, isPending: isPendingChapter } =
-    trpc.user.courses.downloadChapterTicket.useMutation();
+  const {
+    mutateAsync: downloadTicketMutateAsync,
+    isPending: isPendingChapter,
+  } = trpc.user.courses.downloadChapterTicket.useMutation();
 
   const { mutateAsync: cancelTicket } =
     trpc.user.billing.cancelTicket.useMutation();
@@ -191,7 +193,8 @@ const Buttons = ({
 
               if (ticket.type === 'course') {
                 if (course && chapter) {
-                  base64 = await downloadChapterTicket({
+                  base64 = await downloadTicketMutateAsync({
+                    organizer: course.projectName ?? 'Plan ₿ Network',
                     ...chapter,
                     ...course,
                     formattedStartDate,
