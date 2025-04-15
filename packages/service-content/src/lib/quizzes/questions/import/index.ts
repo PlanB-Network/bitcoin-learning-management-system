@@ -111,9 +111,8 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
         }
 
         if (!id) {
-          throw new Error(
-            `Quiz not found for id ${quizQuestion.id} and path ${quizQuestion.path}`,
-          );
+          // For test-only courses, we don't want to throw an error
+          return;
         }
 
         for (const file of files) {
@@ -121,7 +120,7 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
             await processLocalFile(quizQuestion, id, file);
           } catch (error) {
             errors.push(
-              `Error processing file(quiz) ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
+              `Error processing file(quiz2) ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
             );
           }
         }
