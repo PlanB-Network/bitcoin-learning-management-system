@@ -9,7 +9,6 @@ import type { ChangedProfessor } from './index.js';
 interface ProfessorMain {
   id: string;
   name: string;
-  contributor_id: string;
   company?: string;
   affiliations?: string[];
   links?: {
@@ -36,23 +35,30 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const lastUpdated = professor.files.sort((a, b) => b.time - a.time)[0];
 
-    await transaction`
-        INSERT INTO content.contributors (id)
-        VALUES (${parsedProfessor.contributor_id})
-        ON CONFLICT DO NOTHING
-      `;
-
     const result = await transaction<Professor[]>`
         INSERT INTO content.professors (
-          id, path, name, contributor_id, company, affiliations, website_url, twitter_url, github_url,
-          nostr, lightning_address, lnurl_pay, paynym, silent_payment, tips_url,
-          last_updated, last_commit, last_sync
+          id,
+          path,
+          name,
+          company,
+          affiliations,
+          website_url,
+          twitter_url,
+          github_url,
+          nostr,
+          lightning_address,
+          lnurl_pay,
+          paynym,
+          silent_payment,
+          tips_url,
+          last_updated,
+          last_commit,
+          last_sync
         )
         VALUES (
           ${parsedProfessor.id},
           ${professor.path},
           ${parsedProfessor.name},
-          ${parsedProfessor.contributor_id},
           ${parsedProfessor.company},
           ${parsedProfessor.affiliations},
           ${parsedProfessor.links?.website},
@@ -71,7 +77,6 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
         ON CONFLICT (id) DO UPDATE SET
           path = EXCLUDED.path,
           name = EXCLUDED.name,
-          contributor_id = EXCLUDED.contributor_id,
           company = EXCLUDED.company,
           affiliations = EXCLUDED.affiliations,
           website_url = EXCLUDED.website_url,

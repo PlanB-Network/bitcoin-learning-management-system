@@ -10,7 +10,6 @@ export interface FullProfessor {
   name: string;
   company: string | null;
   affiliations: string[] | null;
-  contributorId: string;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;

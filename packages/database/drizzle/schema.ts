@@ -1795,12 +1795,6 @@ export const contentProfessors = content.table('professors', (t) => ({
   company: t.varchar({ length: 255 }),
   affiliations: t.uuid().array(),
 
-  contributorId: t
-    .varchar({ length: 20 })
-    .unique()
-    .notNull()
-    .references(() => contentContributors.id, { onDelete: 'cascade' }),
-
   // Links
   websiteUrl: t.text(),
   twitterUrl: t.text(),

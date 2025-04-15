@@ -28,6 +28,7 @@ import { canAccess } from '@blms/shared/auth';
 import { FaRegBell } from 'react-icons/fa6';
 import { TbBriefcase2 } from 'react-icons/tb';
 import { Image } from '#src/components/image.tsx';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDashboard = ({
@@ -186,15 +187,17 @@ export const MenuDashboard = ({
             />
           </Link>
         ) : null}
-        <Link to={notificationsPath}>
-          <MenuItem
-            text={t('notifications.notifications')}
-            icon={<FaRegBell size={24} />}
-            active={pathname.includes(notificationsPath)}
-            onClick={toggleMobileMenu}
-            unreadNotifications={unreadNotifications.length}
-          />
-        </Link>
+        {isTestnetOrDevelopmentEnvironment() ? (
+          <Link to={notificationsPath}>
+            <MenuItem
+              text={t('notifications.notifications')}
+              icon={<FaRegBell size={24} />}
+              active={pathname.includes(notificationsPath)}
+              onClick={toggleMobileMenu}
+              unreadNotifications={unreadNotifications.length}
+            />
+          </Link>
+        ) : null}
         <Link to={profilePath}>
           <MenuItem
             text={t('dashboard.account')}
