@@ -93,11 +93,11 @@ export const ClassDetails = ({
         <div className="w-full flex max-md:flex-col gap-4 md:gap-2.5 text-newBlack-1">
           {chapter.startDate && (
             <div className="flex max-md:flex-wrap md:flex-col w-full md:max-w-[282px] gap-4 md:gap-1">
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <MdOutlineCalendarMonth size={18} className="shrink-0" />
                 <span>{formatDate(chapter.startDate)}</span>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <MdAccessTime size={18} className="shrink-0" />
                 <span>
                   {getTimeString(
@@ -114,7 +114,7 @@ export const ClassDetails = ({
             chapter.addressLine3) && (
             <>
               <div className="self-stretch w-px bg-newGray-3 max-md:hidden" />
-              <div className="flex gap-2">
+              <div className="flex gap-2 h-fit items-center">
                 <MdOutlineLocationOn size={18} className="shrink-0" />
                 <div className="flex flex-col">
                   {[
