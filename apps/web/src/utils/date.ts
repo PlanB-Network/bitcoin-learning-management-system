@@ -30,6 +30,8 @@ export function formatDate(
   addMonth = true,
   addYear = true,
 ) {
+  const effectiveTimezone = getEffectiveTimezone(timezone);
+
   if (typeof date?.getDate !== 'function') {
     return '';
   }
@@ -37,11 +39,13 @@ export function formatDate(
   const formatter = new Intl.DateTimeFormat('en-GB', {
     month: 'long',
     year: 'numeric',
-    timeZone: timezone,
+    timeZone: effectiveTimezone,
   });
 
-  const day = timezone
-    ? new Date(date.toLocaleString('en-US', { timeZone: timezone })).getDate()
+  const day = effectiveTimezone
+    ? new Date(
+        date.toLocaleString('en-US', { timeZone: effectiveTimezone }),
+      ).getDate()
     : date.getDate();
   if (Number.isNaN(day)) {
     return '';
@@ -65,7 +69,7 @@ export function formatTime(date: Date, timezone?: string): string {
     hour: 'numeric',
     minute: 'numeric',
     hour12: true,
-    timeZone: timezone,
+    timeZone: getEffectiveTimezone(timezone),
   });
 
   const formattedTime = timeFormatter.format(date);
@@ -85,19 +89,20 @@ export const getDateString = (
   endDate: Date,
   timezone?: string,
 ) => {
+  const effectiveTimezone = getEffectiveTimezone(timezone);
   if (!(startDate instanceof Date) || !(endDate instanceof Date)) {
     return '';
   }
 
-  const sameDay = isSameDay(startDate, endDate, timezone);
-  const sameMonth = isSameMonth(startDate, endDate, timezone);
-  const sameYear = isSameYear(startDate, endDate, timezone);
+  const sameDay = isSameDay(startDate, endDate, effectiveTimezone);
+  const sameMonth = isSameMonth(startDate, endDate, effectiveTimezone);
+  const sameYear = isSameYear(startDate, endDate, effectiveTimezone);
 
-  if (sameDay) return formatDate(startDate, timezone, true, true);
+  if (sameDay) return formatDate(startDate, effectiveTimezone, true, true);
 
-  return `${formatDate(startDate, timezone, !sameMonth, !sameYear)} to ${formatDate(
+  return `${formatDate(startDate, effectiveTimezone, !sameMonth, !sameYear)} to ${formatDate(
     endDate,
-    timezone,
+    effectiveTimezone,
     true,
     true,
   )}`;
@@ -108,20 +113,22 @@ export const getTimeString = (
   endDate?: Date,
   timezone?: string,
 ) => {
-  const timezoneText = timezone
-    ? ` (${startDate.toLocaleTimeString('en-us', { timeZone: timezone, timeZoneName: 'short' }).split(' ')[2]})`
+  const effectiveTimezone = getEffectiveTimezone(timezone);
+
+  const timezoneText = effectiveTimezone
+    ? ` (${startDate.toLocaleTimeString('en-us', { timeZone: effectiveTimezone, timeZoneName: 'short' }).split(' ')[2]})`
     : '';
 
   let timeString: string;
 
-  timeString = formatTime(startDate, timezone);
+  timeString = formatTime(startDate, effectiveTimezone);
 
   if (!endDate) {
     return timeString + timezoneText;
   }
 
   if (endDate.getUTCHours() !== 0) {
-    timeString += ` ${t('words.to')} ${formatTime(endDate, timezone)}${timezoneText}`;
+    timeString += ` ${t('words.to')} ${formatTime(endDate, effectiveTimezone)}${timezoneText}`;
   }
 
   return timeString;
@@ -147,7 +154,9 @@ export const getTimeStringWithDayAndMonth = (
     return '';
   }
 
-  return `${formatDate(startDate, timezone, true, false)} to ${formatDate(endDate, timezone, true, false)}, ${getYear(endDate)}`;
+  const effectiveTimezone = getEffectiveTimezone(timezone);
+
+  return `${formatDate(startDate, effectiveTimezone, true, false)} to ${formatDate(endDate, effectiveTimezone, true, false)}, ${getYear(endDate)}`;
 };
 
 export function formatFullDateWithDay(date: Date, timezone?: string): string {
@@ -160,7 +169,7 @@ export function formatFullDateWithDay(date: Date, timezone?: string): string {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    timeZone: timezone,
+    timeZone: getEffectiveTimezone(timezone),
   };
 
   return new Intl.DateTimeFormat('en-US', options).format(date);
@@ -177,7 +186,7 @@ export function formatDateWithoutTime(date: Date, timezone?: string): string {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
-    timeZone: timezone,
+    timeZone: getEffectiveTimezone(timezone),
   };
 
   return new Intl.DateTimeFormat(undefined, options).format(date);
@@ -194,7 +203,7 @@ export const getMonthName = (
 
   return new Intl.DateTimeFormat(locale, {
     month: 'long',
-    timeZone: timezone,
+    timeZone: getEffectiveTimezone(timezone),
   }).format(date);
 };
 
@@ -212,17 +221,18 @@ export const isSameDay = (
   startDate: Date,
   endDate: Date,
   timezone?: string,
-) => {
-  function formatDate(date: Date): string {
-    return new Intl.DateTimeFormat('en-US', {
-      timeZone: timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(date);
-  }
+): boolean => {
+  const formatOptions: Intl.DateTimeFormatOptions = {
+    timeZone: getEffectiveTimezone(timezone),
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  };
 
-  return formatDate(startDate) === formatDate(endDate);
+  const formatter = new Intl.DateTimeFormat('en-US', formatOptions);
+
+  // 4. Format both dates and compare
+  return formatter.format(startDate) === formatter.format(endDate);
 };
 
 export const isSameMonth = (
@@ -232,7 +242,7 @@ export const isSameMonth = (
 ) => {
   function formatDate(date: Date): string {
     return new Intl.DateTimeFormat('en-US', {
-      timeZone: timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+      timeZone: getEffectiveTimezone(timezone),
       year: 'numeric',
       month: '2-digit',
     }).format(date);
@@ -248,10 +258,32 @@ export const isSameYear = (
 ) => {
   function formatDate(date: Date): string {
     return new Intl.DateTimeFormat('en-US', {
-      timeZone: timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+      timeZone: getEffectiveTimezone(timezone),
       year: 'numeric',
     }).format(date);
   }
 
   return formatDate(startDate) === formatDate(endDate);
+};
+
+const getEffectiveTimezone = (timezone: string | undefined) => {
+  let effectiveTimezone: string;
+
+  if (timezone) {
+    try {
+      new Intl.DateTimeFormat(undefined, { timeZone: timezone }).format(
+        new Date(0),
+      );
+      effectiveTimezone = timezone;
+    } catch (error) {
+      console.warn(
+        `Invalid timezone "${timezone}" provided. Falling back to system default: ${Intl.DateTimeFormat().resolvedOptions().timeZone}`,
+      );
+      effectiveTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    }
+  } else {
+    effectiveTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+
+  return effectiveTimezone;
 };
