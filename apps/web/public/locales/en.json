@@ -770,9 +770,9 @@
       "courses": {
         "analytics": "Analytics",
         "announcementModal": {
-          "create": "Create announcement",
           "contentLabel": "Text of the announcement",
           "contentPlaceholder": "Text",
+          "create": "Create announcement",
           "dateLabel": "Date of publication",
           "datePlaceholder": "Pick a date",
           "groupLabel": "Select the group of students you want to address",
@@ -781,9 +781,9 @@
           "typePlaceholder": "Select one type"
         },
         "announcements": "Announcements",
+        "announcementsIntroduction": "In addition to the automatic notifications about class schedules, you have the option to write and schedule extra announcements for your students. For example, you can inform them about logistical changes or last-minute updates.\nStudents will receive these notifications on the platform, and also by email (if they activate this optional feature).",
         "announcementsUpcoming": "Upcoming announcements",
         "announcementsUpcomingDescription": "Here below are the future announcements you wrote and scheduled.",
-        "announcementsIntroduction": "In addition to the automatic notifications about class schedules, you have the option to write and schedule extra announcements for your students. For example, you can inform them about logistical changes or last-minute updates.\nStudents will receive these notifications on the platform, and also by email (if they activate this optional feature).",
         "courseDetails": "Course details",
         "courseLongDescription": "Introductive description",
         "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
@@ -1065,8 +1065,14 @@
     "pageTitle": "Oops."
   },
   "notifications": {
-    "calendar_24h": "Next class will be tomorrow from {{ formattedTime }}. Book your seat if you want to attend in person!",
+    "bCertResults": "Your ₿-CERT results are out!",
+    "blogNotTranslated": "Sorry, this new blog post is not yet translated in your current language.",
+    "bookYourSeat": "Book your seat if you want to attend in person!",
+    "calendar_24h": "Next class will be tomorrow from {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "The {{eventName}} will take place tomorrow, from {{formattedTime}} at {{adressLine}}. Make sure to download your ticket to attend!",
+    "calendar_48h_online_event": "The {{eventName}} is coming up soon! It is scheduled for {{date}}, from {{formattedTime}}. ",
     "calendar_5m": "The class is starting in 5 minutes! Click here to join now.",
+    "calendar_5m_online_event": "It’s time! The {{eventName}} is starting in 5 minutes. Click here to join now!",
     "dashboardDescription": "Here are your latest notifications. They are automatically removed one month after you’ve seen them.",
     "daysAgo": "{{days}} days ago",
     "hoursAgo": "{{hours}} hours ago",
@@ -1075,12 +1081,15 @@
     "noRecentNotifications": "You have no recent notifications at the moment.",
     "noUnreadNotifications": "No more unread notifications",
     "notifications": "Notifications",
+    "planBNews": "Plan ₿ News",
     "read": "Read",
+    "results": "Your ₿-CERT results are out!",
     "select": "Select",
     "selectAll": "Select all",
     "stayUpToDate": "Stay up to date!",
     "today": "Today",
     "unread": "Unread",
+    "upcomingEvent": "Upcoming Event",
     "weeksAgo": "{{weeks}} week{{s}} ago",
     "yearsAgo": "{{years}} year{{s}} ago",
     "yesterday": "Yesterday"

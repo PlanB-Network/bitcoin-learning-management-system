@@ -10,6 +10,7 @@ export const getUserNotificationsQuery = (uid: string) => {
       n.course_id,
       n.chapter_id,
       n.event_id,
+      n.blog_id,
       uns.created_at,
       uns.read_date
     FROM users.user_notification_status uns

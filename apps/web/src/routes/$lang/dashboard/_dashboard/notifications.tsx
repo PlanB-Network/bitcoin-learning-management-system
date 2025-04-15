@@ -1,6 +1,7 @@
+import { NotificationType } from '@blms/constants';
 import type { JoinedUserNotification } from '@blms/types';
 import { Button, Checkbox, Label, Loader, Switch, TextTag, cn } from '@blms/ui';
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +12,8 @@ import { LuCalendarDays, LuStar } from 'react-icons/lu';
 import { MdAccessAlarm } from 'react-icons/md';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
-import { getTimeString } from '#src/utils/date.ts';
+import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
+import { formatDate, getTimeString } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -43,7 +45,8 @@ function NotificationsDashboard() {
 const NotificationsTable = () => {
   const isMobile = useSmaller('md');
 
-  const { userNotifications, fetchUserNotifications } = useContext(AppContext);
+  const { userNotifications, fetchUserNotifications } =
+    useContext(NotificationsContext);
 
   const markNotificationsAsRead =
     trpc.user.notifications.markUserNotificationsAsRead.useMutation({
@@ -339,7 +342,16 @@ const NotificationItem = ({
             />
           </div>
         )}
-        <div className="flex flex-col gap-2.5 md:px-4 grow">
+        <Link
+          to={getNotificationRedirect(
+            notification.type,
+            notification.courseId ?? undefined,
+            notification.chapterId ?? undefined,
+            notification.eventId ?? undefined,
+            notification.blogId ?? undefined,
+          )}
+          className="flex flex-col gap-2.5 md:px-4 grow"
+        >
           <div className="flex justify-between items-center max-md:min-h-8">
             <div className="flex items-center gap-2 md:gap-3">
               {!isRead && (
@@ -376,10 +388,12 @@ const NotificationItem = ({
             {notification.content ||
               getNotificationContent(
                 notification.type,
-                notification.chapterId || undefined,
+                notification.chapterId ?? undefined,
+                notification.eventId ?? undefined,
+                notification.blogId ?? undefined,
               )}
           </p>
-        </div>
+        </Link>
         <span className="px-4 w-[140px] shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
           {getNotificationDateString(new Date(notification.createdAt))}
         </span>
@@ -438,54 +452,104 @@ export const getNotificationTitle = (type: string, courseId?: string) => {
   const courseName = courses?.find((course) => course.id === courseId)?.name;
 
   switch (type) {
-    case 'calendar_24h_course':
-    case 'calendar_5m_course':
+    case NotificationType.Calendar24HoursCourse:
+    case NotificationType.Calendar5MinutesCourse:
       return courseName;
+    case NotificationType.Calendar48HoursOnlineEvent:
+    case NotificationType.Calendar24HoursInPersonEvent:
+    case NotificationType.Calendar5MinutesOnlineEvent:
+      return t('notifications.upcomingEvent');
+    case NotificationType.Blog:
+      return t('notifications.planBNews');
+    case NotificationType.Results:
+      return t('notifications.bCertResults');
     default:
       return 'Notification';
   }
 };
 
-export const getNotificationContent = (type: string, chapterId?: string) => {
+export const getNotificationContent = (
+  type: string,
+  chapterId?: string,
+  eventId?: string,
+  blogId?: string,
+) => {
   const { i18n } = useTranslation();
 
   const { data: chapter } = trpc.content.getCourseChapter.useQuery(
-    chapterId
-      ? { language: i18n.language, chapterId }
-      : { language: i18n.language, chapterId: '' },
+    { language: i18n.language, chapterId: chapterId ?? '' },
     {
       enabled: !!chapterId,
     },
   );
 
+  const { data: event } = trpc.content.getEvent.useQuery(
+    { id: eventId ?? '' },
+    {
+      enabled: !!eventId,
+    },
+  );
+
+  const blog = useContext(AppContext).blogs?.find((blog) => blog.id === blogId);
+  if (blogId && !blog) {
+    return t('notifications.blogNotTranslated');
+  }
+
   switch (type) {
-    case 'planning':
-      return t('notifications.planning');
-    case 'calendar':
-      return t('notifications.calendar');
-    case 'calendar_24h_course': {
-      return t('notifications.calendar_24h', {
+    case NotificationType.Calendar24HoursCourse: {
+      const isInPerson = chapter?.isInPerson;
+
+      return `${t('notifications.calendar_24h', {
         formattedTime:
           chapter?.startDate &&
           getTimeString(
             chapter?.startDate,
-            chapter?.endDate || undefined,
-            chapter?.timezone || undefined,
+            chapter?.endDate ?? undefined,
+            chapter?.timezone ?? undefined,
           ),
-      });
+      })} ${isInPerson ? t('notifications.bookYourSeat') : ''}`;
     }
-    case 'calendar_5m_course':
+    case NotificationType.Calendar5MinutesCourse:
       return t('notifications.calendar_5m');
-    case 'general':
-      return t('notifications.general');
-    case 'assignment':
-      return t('notifications.assignment');
-    case 'celebration':
-      return t('notifications.celebration');
-    case 'results':
+    case NotificationType.Calendar48HoursOnlineEvent:
+      return t('notifications.calendar_48h_online_event', {
+        formattedTime:
+          event?.startDate &&
+          getTimeString(
+            event?.startDate,
+            event?.endDate ?? undefined,
+            event?.timezone ?? undefined,
+          ),
+        date:
+          event?.startDate &&
+          formatDate(
+            event?.startDate,
+            event.timezone ?? undefined,
+            true,
+            false,
+          ),
+        eventName: event?.name,
+      });
+    case NotificationType.Calendar24HoursInPersonEvent:
+      return t('notifications.calendar_24h_in_person_event', {
+        formattedTime:
+          event?.startDate &&
+          getTimeString(
+            event?.startDate,
+            event?.endDate ?? undefined,
+            event?.timezone ?? undefined,
+          ),
+        eventName: event?.name,
+        adressLine: event?.addressLine1,
+      });
+    case NotificationType.Calendar5MinutesOnlineEvent:
+      return t('notifications.calendar_5m_online_event', {
+        eventName: event?.name,
+      });
+    case NotificationType.Results:
       return t('notifications.results');
-    case 'warning':
-      return t('notifications.warning');
+    case NotificationType.Blog:
+      return blog?.title;
     default:
       return null;
   }
@@ -495,24 +559,49 @@ export const getNotificationIcon = (type: string, className?: string) => {
   const classes = cn(className ? className : 'size-[18px] md:size-6');
 
   switch (type) {
-    case 'planning':
-    case 'calendar':
-    case 'calendar_24h_course':
+    case NotificationType.Calendar:
+    case NotificationType.Calendar24HoursCourse:
+    case NotificationType.Calendar48HoursOnlineEvent:
+    case NotificationType.Calendar24HoursInPersonEvent:
       return <LuCalendarDays className={classes} />;
-    case 'calendar_5m_course':
+    case NotificationType.Calendar5MinutesCourse:
+    case NotificationType.Calendar5MinutesOnlineEvent:
       return <MdAccessAlarm className={classes} />;
-    case 'general':
+    case NotificationType.General:
+    case NotificationType.Blog:
       return <IoMegaphoneOutline className={classes} />;
-    case 'assignment':
+    case NotificationType.Assignment:
       return <BiBookBookmark className={classes} />;
-    case 'celebration':
+    case NotificationType.Celebration:
       return <LuStar className={classes} />;
-    case 'results':
+    case NotificationType.Results:
       return <AiOutlineTrophy className={classes} />;
-    case 'warning':
+    case NotificationType.Warning:
       return <AiOutlineWarning className={classes} />;
     default:
       return null;
+  }
+};
+
+export const getNotificationRedirect = (
+  type: string,
+  courseId?: string,
+  chapterId?: string,
+  eventId?: string,
+  blogId?: string,
+) => {
+  switch (type) {
+    case NotificationType.Calendar24HoursCourse:
+    case NotificationType.Calendar5MinutesCourse:
+      return `/courses/${courseId}/${chapterId}`;
+    case NotificationType.Calendar48HoursOnlineEvent:
+    case NotificationType.Calendar24HoursInPersonEvent:
+    case NotificationType.Calendar5MinutesOnlineEvent:
+      return '/events/';
+    case NotificationType.Blog:
+      return '/public-communication/';
+    default:
+      return '/dashboard/notifications';
   }
 };
 

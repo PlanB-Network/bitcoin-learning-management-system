@@ -9,6 +9,7 @@ export interface Blog {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  createdAt: Date;
   date: Date;
 }
 
@@ -33,6 +34,7 @@ export interface JoinedBlogLight {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  createdAt: Date;
   date: Date;
   language: string;
   title: string;
@@ -48,6 +50,7 @@ export interface JoinedBlog {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  createdAt: Date;
   date: Date;
   language: string;
   title: string;
@@ -64,6 +67,7 @@ export interface BlogWithTagDetails {
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  createdAt: Date;
   date: Date;
   language: string;
   title: string;

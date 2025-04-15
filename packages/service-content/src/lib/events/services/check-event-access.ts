@@ -17,6 +17,7 @@ export const createCheckEventAccess = ({ postgres }: Dependencies) => {
             e.id,
             CASE
                 WHEN e.book_online = false AND e.book_in_person = false THEN true
+                WHEN ue.uid IS NOT NULL AND ue.booked = true THEN true
                 WHEN ep.uid IS NOT NULL AND ep.payment_status = 'paid' THEN true
                 ELSE false
             END AS allowed
@@ -24,6 +25,8 @@ export const createCheckEventAccess = ({ postgres }: Dependencies) => {
             content.events e
         LEFT JOIN
             users.event_payment ep ON e.id = ep.event_id AND ep.uid = ${uid}
+        LEFT JOIN
+            users.user_event ue ON e.id = ue.event_id AND ue.uid = ${uid}
         WHERE
             e.id = ${eid};
       `,

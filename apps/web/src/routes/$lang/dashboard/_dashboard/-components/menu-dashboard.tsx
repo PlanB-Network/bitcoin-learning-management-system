@@ -29,6 +29,7 @@ import { FaRegBell } from 'react-icons/fa6';
 import { TbBriefcase2 } from 'react-icons/tb';
 import { Image } from '#src/components/image.tsx';
 import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
+import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDashboard = ({
@@ -38,11 +39,8 @@ export const MenuDashboard = ({
   location: ParsedLocation;
   toggleMobileMenu?: () => void;
 }) => {
-  const {
-    user,
-    courses: allCourses,
-    userNotifications,
-  } = useContext(AppContext);
+  const { user, courses: allCourses } = useContext(AppContext);
+  const { userNotifications } = useContext(NotificationsContext);
   const [pathname, setPathname] = useState('');
 
   const { data: courses } = trpc.user.courses.getProgress.useQuery(undefined, {

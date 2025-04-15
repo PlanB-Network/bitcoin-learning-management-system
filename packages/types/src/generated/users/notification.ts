@@ -10,6 +10,7 @@ export interface Notification {
   courseId: string | null;
   chapterId: string | null;
   eventId: string | null;
+  blogId: string | null;
   createdAt: Date;
 }
 
@@ -27,6 +28,7 @@ export interface JoinedUserNotification {
   courseId: string | null;
   chapterId: string | null;
   eventId: string | null;
+  blogId: string | null;
   createdAt: Date;
   readDate: Date | null;
 }

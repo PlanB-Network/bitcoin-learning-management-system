@@ -5,10 +5,11 @@ import { t } from 'i18next';
 import { useContext, useState } from 'react';
 import { FaBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-import { AppContext } from '#src/providers/context.tsx';
+import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import {
   getNotificationContent,
   getNotificationIcon,
+  getNotificationRedirect,
   getNotificationTitle,
 } from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -30,7 +31,8 @@ export const NotificationsPanel = ({
 }: NotificationsPanelProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { userNotifications, fetchUserNotifications } = useContext(AppContext);
+  const { userNotifications, fetchUserNotifications } =
+    useContext(NotificationsContext);
 
   const unreadNotifications = (userNotifications ? [...userNotifications] : [])
     .filter((notification) => notification.readDate === null)
@@ -141,7 +143,13 @@ const NotificationItem = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link
-        to={'/dashboard/notifications'}
+        to={getNotificationRedirect(
+          notification.type,
+          notification.courseId || undefined,
+          notification.chapterId || undefined,
+          notification.eventId || undefined,
+          notification.blogId || undefined,
+        )}
         className="flex flex-1 flex-col items-start justify-start gap-2.5 p-4"
       >
         <div className="flex w-full items-center justify-between self-stretch">
@@ -165,6 +173,8 @@ const NotificationItem = ({
           {getNotificationContent(
             notification.type,
             notification.chapterId || undefined,
+            notification.eventId || undefined,
+            notification.blogId || undefined,
           )}
         </p>
       </Link>

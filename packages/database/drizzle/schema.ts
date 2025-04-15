@@ -264,6 +264,7 @@ export const contentBlogs = content.table('blogs', (t) => ({
     .notNull(),
   lastCommit: t.varchar({ length: 40 }).notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   date: t.timestamp({ withTimezone: true }).notNull(),
 }));
 
@@ -2070,6 +2071,7 @@ export const usersNotifications = users.table('notifications', (t) => ({
   eventId: t
     .uuid()
     .references(() => contentEvents.id, { onDelete: 'set null' }),
+  blogId: t.uuid().references(() => contentBlogs.id, { onDelete: 'set null' }),
   createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
