@@ -115,6 +115,7 @@ export const createUpdateProfessors = ({ postgres }: Dependencies) => {
             errors.push(
               `Error processing file(professors) ${file?.path}: ${error}`,
             );
+            return;
           }
         }
       })

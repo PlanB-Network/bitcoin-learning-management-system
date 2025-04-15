@@ -152,6 +152,7 @@ export const createProcessChangedBook = (
             errors.push(
               `Error processing one file ${id} ${file?.path} (${resource.fullPath}): ${error}`,
             );
+            return;
           }
         }
       })

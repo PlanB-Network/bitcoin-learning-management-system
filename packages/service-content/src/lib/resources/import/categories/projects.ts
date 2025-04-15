@@ -124,6 +124,7 @@ export const createProcessChangedProject = (
               errors.push(
                 `Error processing file ${file?.path} (${resource.fullPath}): ${error}`,
               );
+              return;
             }
           }
         } catch (error) {

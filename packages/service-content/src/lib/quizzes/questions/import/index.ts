@@ -122,6 +122,7 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
             errors.push(
               `Error processing file(quiz2) ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
             );
+            return;
           }
         }
       })

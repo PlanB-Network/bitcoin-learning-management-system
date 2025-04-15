@@ -173,6 +173,7 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
             errors.push(
               `Error processing file(tutorials 2) ${file?.path} in tutorial ${tutorial.fullPath} : ${error}`,
             );
+            return;
           }
         }
       })

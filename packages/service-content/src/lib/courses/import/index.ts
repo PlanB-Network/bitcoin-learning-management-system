@@ -839,6 +839,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             errors.push(
               `Error processing file(courses2) ${course.fullPath} ${file?.path}: ${error}`,
             );
+            return;
           }
         }
       })

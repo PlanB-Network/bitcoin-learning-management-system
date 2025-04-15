@@ -128,6 +128,7 @@ export const createProcessChangedBet = (
             errors.push(
               `Error processing one file (bet) ${file?.path} (${resource.fullPath}): ${error}`,
             );
+            return;
           }
         }
       })

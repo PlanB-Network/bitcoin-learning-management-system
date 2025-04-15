@@ -129,6 +129,7 @@ export const createUpdateLegals = ({ postgres }: Dependencies) => {
             errors.push(
               `Error processing file(legals 2) ${file?.path} in legal document ${legal.fullPath} : ${error}`,
             );
+            return;
           }
         }
       })

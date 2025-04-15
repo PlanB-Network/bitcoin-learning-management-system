@@ -144,6 +144,7 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
             errors.push(
               `Error processing file(blogs 2) ${file?.path} in blog ${blog.fullPath} : ${error}`,
             );
+            return;
           }
         }
       })

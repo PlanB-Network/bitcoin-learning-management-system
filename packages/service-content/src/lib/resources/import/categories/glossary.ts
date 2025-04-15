@@ -110,6 +110,7 @@ export const createProcessChangedGlossaryWord = (
             errors.push(
               `Error processing one file (word) ${resource.path} - ${file?.path} (${resource.fullPath}): ${error}`,
             );
+            return;
           }
         }
       })
