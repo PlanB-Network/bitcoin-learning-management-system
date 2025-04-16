@@ -1,9 +1,16 @@
 import type { PropsWithChildren } from 'react';
-import { createContext, useCallback, useEffect, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 import type { JoinedUserNotification } from '@blms/types';
 
 import { trpcClient } from '#src/utils/trpc.js';
+import { AppContext } from './context.tsx';
 interface NotificationsContextValue {
   userNotifications: JoinedUserNotification[];
   fetchUserNotifications: () => Promise<void>;
@@ -15,6 +22,7 @@ export const NotificationsContext = createContext<NotificationsContextValue>({
 });
 
 export const NotificationsProvider = ({ children }: PropsWithChildren) => {
+  const { user } = useContext(AppContext);
   const [userNotifications, setUserNotifications] = useState<
     JoinedUserNotification[]
   >([]);
@@ -31,7 +39,9 @@ export const NotificationsProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    fetchUserNotifications();
+    if (user) {
+      fetchUserNotifications();
+    }
 
     const intervalId = setInterval(
       () => {
@@ -41,7 +51,7 @@ export const NotificationsProvider = ({ children }: PropsWithChildren) => {
     );
 
     return () => clearInterval(intervalId);
-  }, [fetchUserNotifications]);
+  }, [fetchUserNotifications, user]);
 
   const contextValue: NotificationsContextValue = {
     userNotifications,
