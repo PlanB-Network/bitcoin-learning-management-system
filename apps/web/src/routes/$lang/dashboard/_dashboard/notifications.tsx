@@ -373,7 +373,7 @@ const NotificationItem = ({
               >
                 {getNotificationTitle(
                   notification.type,
-                  notification.courseId || undefined,
+                  notification.courseId ?? undefined,
                 )}
               </TextTag>
             </div>
