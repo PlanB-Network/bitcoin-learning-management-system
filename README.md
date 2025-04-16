@@ -39,14 +39,14 @@ To do so, run the migration script : `pnpm run dev:db:migrate`
 
 Once the containers are up and running, you can access the front at `http://localhost:8181`. The app will automatically reload if you change any of the source files.
 
+#### Sync issue
+
+When running the sync locally (next step), there is currently an access right issue with the cdn and sync volumes. To fix it, update the access rights with the following command :
+`docker exec --user=root bitcoin-learning-management-system-api-1 chmod 777 /tmp/{sync,cdn}`
+
 #### Import data from the data repository
 
 In order to sync the database with the data from the data repository, you can make a request to the API with `curl -X POST http://localhost:3000/api/github/sync`. This will import all the data from the data repository into the database.
-
-#### Sync issue
-
-When running the sync locally, there is currently and access right issue with the cdn and sync volumes. To fix it, update the access rights with the following command :
-`docker exec --user=root bitcoin-learning-management-system-api-1 chmod 777 /tmp/{sync,cdn}`
 
 ### Option 2 - Without docker
 
