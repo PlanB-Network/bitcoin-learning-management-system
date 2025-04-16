@@ -710,7 +710,8 @@
           "total": "कुल",
           "owner": "मालिक",
           "uses": "उपयोग किया गया",
-          "maxUses": "अधिकतम उपयोग"
+          "maxUses": "अधिकतम उपयोग",
+          "actions": "क्रियाएँ"
         },
         "productEvent": "कार्यक्रम",
         "productCourse": "पाठ्यक्रम",
