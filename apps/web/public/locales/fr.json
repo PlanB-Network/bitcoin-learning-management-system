@@ -1053,7 +1053,7 @@
     "exchange": {
       "description": "Les échanges sont une des portes d'entrée et de sortie entre votre devise traditionnelle (euro, dollars) et le monde de Bitcoin. Les échanges peuvent être réglementés et KYC (Know Your Client), ou peer-to-peer et anonymes. Chaque échange offrira des fonctionnalités différentes, des structures de frais, de la liquidité et du soutien à la clientèle. Chaque bitcoiner utilisera un différent en fonction de ses besoins et de ses convictions.",
       "shortDescription": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
-      "title": "Échanger"
+      "title": "Plateforme d'échange"
     },
     "explorer": {
       "description": "Tous ces tutoriels ont été écrits par des bitcoiners passionnés et dévoués, qui souhaitent diffuser l'éducation Bitcoin dans le monde entier. N'oubliez pas d'aimer, de faire des retours et de leur envoyer quelques sats !",
@@ -1119,10 +1119,10 @@
       "point-of-sale": "Terminal de paiement",
       "resource": "Ressource",
       "bitcoin": "Bitcoin",
-      "hardware": "Matériel",
-      "on-chain": "Sur la chaîne",
+      "hardware": "Hardware",
+      "on-chain": "On-chain",
       "mobile": "Mobile",
-      "pool": "Piscine"
+      "pool": "Pool"
     }
   },
   "underConstruction": {
