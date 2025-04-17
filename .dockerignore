@@ -10,3 +10,4 @@
 !**/.mocharc.json
 .*
 /docker
+!.npmrc
