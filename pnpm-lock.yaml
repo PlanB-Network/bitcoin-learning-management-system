@@ -342,6 +342,12 @@ importers:
 
   packages/database:
     dependencies:
+      '@blms/constants':
+        specifier: workspace:*
+        version: link:../constants
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       drizzle-orm:
         specifier: ^0.41.0
         version: 0.41.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.14.1))(pg@8.14.1)(postgres@3.4.5)
@@ -349,12 +355,6 @@ importers:
         specifier: 3.4.5
         version: 3.4.5
     devDependencies:
-      '@blms/constants':
-        specifier: workspace:*
-        version: link:../constants
-      dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
       drizzle-kit:
         specifier: ^0.30.6
         version: 0.30.6
