@@ -478,6 +478,14 @@
       "upcomingBookingsSubtitle": "Here you can download the list of participants for all in-person events.",
       "userRolesAllocation": "User roles allocation"
     },
+    "announcements": {
+      "groups": {
+        "active": "Students selected for the Project Assignment",
+        "all": "All students registered",
+        "inactive": "Students selected for the Summer School"
+      },
+      "pickADate": "Pick a date"
+    },
     "bCert": {
       "grade": "Grade",
       "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please <0>reach out to us</0> for assistance."
@@ -771,10 +779,11 @@
         "analytics": "Analytics",
         "announcementModal": {
           "contentLabel": "Text of the announcement",
-          "contentPlaceholder": "Text",
+          "contentPlaceholder": "Please type here.",
           "create": "Create announcement",
           "dateLabel": "Date of publication",
           "datePlaceholder": "Pick a date",
+          "dateRequired": "Date is required",
           "groupLabel": "Select the group of students you want to address",
           "title": "Write new announcement",
           "typeLabel": "What type of announcement is it?",
@@ -1063,6 +1072,15 @@
     "here": "Here",
     "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
     "pageTitle": "Oops."
+  },
+  "notification": {
+    "types": {
+      "assignment": "Assignment",
+      "calendar": "Calendar alert",
+      "celebration": "Celebration",
+      "general": "General information",
+      "warning": "Warning"
+    }
   },
   "notifications": {
     "bCertResults": "Your ₿-CERT results are out!",

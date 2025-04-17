@@ -17,6 +17,7 @@ export * from './atoms/loader.tsx';
 export * from './atoms/popover.tsx';
 export * from './atoms/progress.tsx';
 export * from './atoms/ratings.tsx';
+export * from './atoms/scroll-area.tsx';
 export * from './atoms/select.tsx';
 export * from './atoms/slider.tsx';
 export * from './atoms/switch.tsx';
