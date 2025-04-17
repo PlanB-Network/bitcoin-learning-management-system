@@ -100,3 +100,14 @@ export const getUpcomingEventQuery = () => {
     LIMIT 1
   `;
 };
+
+export const getUpcomingEventsInfosQuery = () => {
+  return sql<JoinedEvent[]>`
+    SELECT
+      e.*
+    FROM content.events e
+
+    WHERE e.start_date > NOW()
+    ORDER BY e.start_date ASC
+  `;
+};

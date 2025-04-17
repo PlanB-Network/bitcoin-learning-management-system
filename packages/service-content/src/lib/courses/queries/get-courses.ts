@@ -155,6 +155,15 @@ export const getProfessorCoursesQuery = (
   `;
 };
 
+export const getCoursesIdsQuery = () => {
+  return sql`
+    SELECT
+      c.id
+    FROM
+      content.courses c
+  `;
+};
+
 export const getPlanBSchoolCoursesIdsQuery = () => {
   return sql`
     SELECT

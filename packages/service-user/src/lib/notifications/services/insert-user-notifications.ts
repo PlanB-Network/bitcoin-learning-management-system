@@ -10,6 +10,7 @@ interface Options {
   courseId?: string;
   chapterId?: string;
   eventId?: string;
+  blogId?: string;
 }
 
 export const createInsertUserNotifications = ({ postgres }: Dependencies) => {
@@ -20,9 +21,10 @@ export const createInsertUserNotifications = ({ postgres }: Dependencies) => {
     courseId,
     chapterId,
     eventId,
+    blogId,
   }: Options) => {
     const existingNotification = await postgres.exec(
-      getExistingNotificationsQuery(type, chapterId, eventId),
+      getExistingNotificationsQuery(type, chapterId, eventId, blogId),
     );
     if (existingNotification.length > 0) {
       return;
@@ -36,6 +38,7 @@ export const createInsertUserNotifications = ({ postgres }: Dependencies) => {
         courseId,
         chapterId,
         eventId,
+        blogId,
       }),
     );
   };

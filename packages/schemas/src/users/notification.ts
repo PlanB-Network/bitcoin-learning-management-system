@@ -23,6 +23,7 @@ export const joinedUserNotificationSchema = notificationSchema
     courseId: true,
     chapterId: true,
     eventId: true,
+    blogId: true,
   })
   .merge(
     userNotificationStatusSchema.pick({

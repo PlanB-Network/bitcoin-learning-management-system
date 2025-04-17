@@ -23,7 +23,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     const result = await transaction<Blog[]>`
         INSERT INTO content.blogs (
-          id, path, category, author, last_updated, last_commit, last_sync, date
+          id, path, category, author, last_updated, last_commit, last_sync, created_at, date
         )
         VALUES (
           ${parsedBlog.id},
@@ -32,6 +32,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedBlog.author},
           ${lastUpdated.time},
           ${lastUpdated.commit},
+          NOW(),
           NOW(),
           ${parsedBlog.date ? parsedBlog.date : null}
         )

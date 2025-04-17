@@ -20,6 +20,7 @@ export const joinedBlogLightSchema = blogSchema
     lastUpdated: true,
     lastCommit: true,
     lastSync: true,
+    createdAt: true,
     date: true,
   })
   .merge(

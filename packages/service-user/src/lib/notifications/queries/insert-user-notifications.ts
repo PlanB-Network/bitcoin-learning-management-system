@@ -8,6 +8,7 @@ type Options = {
   courseId?: string;
   chapterId?: string;
   eventId?: string;
+  blogId?: string;
 };
 
 export const insertUserNotificationsQuery = ({
@@ -16,12 +17,13 @@ export const insertUserNotificationsQuery = ({
   content,
   courseId,
   chapterId,
+  blogId,
   eventId,
 }: Options) => {
   return sql`
     WITH inserted_notification AS (
-      INSERT INTO users.notifications (content, type, course_id, chapter_id, event_id)
-      VALUES (${content || null}, ${type}, ${courseId || null}, ${chapterId || null}, ${eventId || null})
+      INSERT INTO users.notifications (content, type, course_id, chapter_id, event_id, blog_id)
+      VALUES (${content || null}, ${type}, ${courseId || null}, ${chapterId || null}, ${eventId || null}, ${blogId || null})
       RETURNING id
     )
     INSERT INTO users.user_notification_status (uid, notification_id, created_at)

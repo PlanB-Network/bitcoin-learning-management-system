@@ -14,6 +14,7 @@ export const getBlogQuery = (id: string, language?: string) => {
           bl.raw_content,
           b.last_updated,
           b.last_commit,
+          b.created_at,
           b.date,
           COALESCE(tag_agg.tags, ARRAY[]::text[]) AS tags
       FROM content.blogs b
@@ -40,6 +41,7 @@ export const getBlogQuery = (id: string, language?: string) => {
           bl.raw_content,
           b.last_updated,
           b.last_commit,
+          b.created_at,
           b.date,
           tag_agg.tags
   `;

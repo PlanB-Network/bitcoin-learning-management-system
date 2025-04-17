@@ -22,6 +22,7 @@ import { trpc } from '../utils/trpc.ts';
 import { AuthModalProvider } from './auth.tsx';
 import { AppContextProvider } from './context.tsx';
 import { ConversionRateProvider } from './conversionRateContext.tsx';
+import { NotificationsProvider } from './userNotificationsContext.tsx';
 
 interface LangContext {
   setCurrentLanguage: (lang: string) => void;
@@ -144,19 +145,21 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
         <QueryClientProvider client={trpcQueryClient}>
           <LangContext.Provider value={{ setCurrentLanguage }}>
             <AppContextProvider>
-              <ConversionRateProvider>
-                <AuthModalProvider>
-                  <RouterProvider router={router} context={{ i18n }} />
-                  <PageMeta
-                    title={SITE_NAME}
-                    description="Let's build together the Bitcoin educational layer"
-                    type="website"
-                    imageSrc="/share-default.jpg"
-                  />
-                  <ToastContainer autoClose={5000} />
-                  {children}
-                </AuthModalProvider>
-              </ConversionRateProvider>
+              <NotificationsProvider>
+                <ConversionRateProvider>
+                  <AuthModalProvider>
+                    <RouterProvider router={router} context={{ i18n }} />
+                    <PageMeta
+                      title={SITE_NAME}
+                      description="Let's build together the Bitcoin educational layer"
+                      type="website"
+                      imageSrc="/share-default.jpg"
+                    />
+                    <ToastContainer autoClose={5000} />
+                    {children}
+                  </AuthModalProvider>
+                </ConversionRateProvider>
+              </NotificationsProvider>
             </AppContextProvider>
           </LangContext.Provider>
         </QueryClientProvider>
