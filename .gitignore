@@ -40,6 +40,8 @@ Thumbs.db
 
 # Environment Variables
 **/.env
+**/.env.*
+!.env.example
 
 .turbo
 .vite

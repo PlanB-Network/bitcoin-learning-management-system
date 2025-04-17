@@ -8,7 +8,9 @@
   "files": {
     "ignoreUnknown": false,
     "ignore": [
+      "**/out/**",
       "**/dist/**",
+      "**/node_modules/**",
       "**/routeTree.gen.ts",
       "**/.turbo/**",
       "packages/database/drizzle/migrations/*",

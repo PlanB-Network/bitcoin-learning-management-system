@@ -1,54 +1,50 @@
-ARG NODE_VERSION
-ARG GITHUB_SHA
+ARG BASE_IMAGE=blms-base
+ARG NODE_VERSION=22.13.0-alpine3.20
 
 FROM node:$NODE_VERSION AS base
+FROM $BASE_IMAGE AS blms-base
 
-FROM base AS builder
+################################################
+#
+#          prune
+#
+FROM blms-base AS prune
 
-RUN apk update
-RUN apk add --no-cache libc6-compat
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+## Prune the base build to only include the API
+RUN pnpm turbo prune "@blms/api" --docker
 
-# Set working directory
+################################################
+#
+#          installer
+#
+FROM blms-base AS installer
+
 WORKDIR /app
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+## Copy pruned install resources
+COPY --from=prune /prepare/out/json/ .
 
-RUN npm install --location=global pnpm@10
-RUN pnpm add --global turbo@2
+### Log for troubleshooting. There should be files in the directory when there's a cache hit
+RUN echo -e "PNPM contents before install:\n$(du -h -d2 ${PNPM_HOME})"
 
-COPY . .
-RUN turbo prune "@blms/api" --docker
-
-# Add lockfile and package.json's of isolated subworkspace
-FROM base AS installer
-
-RUN apk update
-RUN apk add --no-cache -U \
-    libc6-compat \
-    python3 \
-    g++ \
-    make \
-    cmake \
-    findutils \
-    cairo-dev \
-    pango-dev \
-    shadow
-RUN npm install --location=global pnpm@10
-WORKDIR /app
-
-# First install dependencies (as they change less often)
-COPY .gitignore .gitignore
-COPY --from=builder /app/out/json/ .
 RUN pnpm install --frozen-lockfile
 
-# Build the project and its dependencies
-COPY --from=builder /app/out/full/ .
-COPY turbo.json tsconfig.json ./
-RUN pnpm turbo build
+## Copy pruned sources
+COPY --from=prune /prepare/out/full/ .
+COPY --from=blms-base /prepare/turbo.json /prepare/tsconfig.json .
 
-# Final image
+### Log for troubleshooting. There should be files in the directory when there's a cache hit
+RUN echo -e "Turbo local cache before build:\n$(du -h -d2 .turbo)"
+
+## Build the pruned project and its dependencies
+RUN --mount=type=cache,id=turbo-api,target=.turbo,sharing=locked pnpm turbo build
+
+RUN pnpm install --frozen-lockfile --production
+
+################################################
+#
+#          runner (final image for api)
+#
 FROM base AS runner
 
 ENV HOST=0.0.0.0
@@ -81,4 +77,5 @@ RUN  mkdir -p /usr/share/fonts/ibm-plex \
 USER node
 
 COPY --from=installer /app .
+
 CMD node apps/api/dist/src/index.js

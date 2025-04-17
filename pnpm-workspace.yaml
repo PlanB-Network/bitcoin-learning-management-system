@@ -3,3 +3,8 @@ packages:
   - apps/*
 ignoredBuiltDependencies:
   - esbuild
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - 'argon2'
+  - 'sharp'

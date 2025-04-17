@@ -3,72 +3,25 @@ name: CI/CD
 on:
   push:
     branches:
+      - ci-refactoring
       - mainnet
       - testnet
       - dev
   pull_request:
 
-env:
-  TURBO_TELEMETRY_DISABLED: 1
-
 jobs:
-  build_and_test:
+  build_base:
+    name: Build & Test
     if: github.event_name != 'pull_request' || github.event.pull_request.head.ref != 'weblate-tr'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 1
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Install build libraries # https://github.com/Automattic/node-canvas?tab=readme-ov-file#compiling
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libpango1.0-dev libcairo2-dev libpixman-1-dev pkg-config libgif-dev
-
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Build Project
-        run: pnpm build
-        env:
-          VITE_GITHUB_SHA: ${{ github.sha }}
-
-      - name: Lint Code
-        run: pnpm lint
-
-      # // TODO Add pnpm check-boundaries ?
-
-      - name: Run tests
-        run: pnpm test
-
-  deploy:
-    needs: build_and_test
-    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -77,38 +30,45 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Build Docker image for base
+        uses: docker/build-push-action@v6
         with:
-          run_install: false
+          push: ${{ (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet') }}
+          file: ./docker/Dockerfile.base
+          context: .
+          tags: ghcr.io/planb-network/blms-base:${{ github.sha }}
+          cache-from: type=gha,scope=global
+          cache-to: type=gha,mode=max,scope=global
 
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
+  build_api:
+    name: Build API
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
+    runs-on: ubuntu-latest
+    needs: build_base
+    env:
+      image: ghcr.io/planb-network/blms-api
+      base: ghcr.io/planb-network/blms-base:${{ github.sha }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
+          fetch-depth: 1
 
-      - name: Install Dependencies
-        run: pnpm install
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Set Docker image metadata for api
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Docker image metadata
         uses: docker/metadata-action@v5
-        id: meta-api
+        id: meta
         with:
-          images: ghcr.io/planb-network/blms-api
-          tags: |
-            type=schedule
-            type=ref,event=branch
-            type=ref,event=tag
-            type=sha,prefix=sha-
-
-      - name: Set Docker image metadata for web
-        uses: docker/metadata-action@v5
-        id: meta-web
-        with:
-          images: ghcr.io/planb-network/blms-web
+          images: ${{ env.image }}
           tags: |
             type=schedule
             type=ref,event=branch
@@ -116,56 +76,74 @@ jobs:
             type=sha,prefix=sha-
 
       - name: Build and push Docker image for api
-        uses: docker/bake-action@v6
+        uses: docker/build-push-action@v6
         with:
-          push: true
-          files: |
-            ./docker-bake.hcl
-            cwd://${{ steps.meta-api.outputs.bake-file }}
-          targets: api
+          push: ${{ (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet') }}
+          file: ./apps/api/docker/Dockerfile
+          context: .
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha,scope=global
+          cache-to: type=gha,mode=max,scope=global
+          build-args:
+            BASE_IMAGE=${{ env.base }}
+
+  build_web:
+    name: Build Web
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
+    runs-on: ubuntu-latest
+    needs: build_base
+    env:
+      image: ghcr.io/planb-network/blms-web
+      base: ghcr.io/planb-network/blms-base:${{ github.sha }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Docker image metadata for web
+        uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ${{ env.image }}
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=tag
+            type=sha,prefix=sha-
 
       - name: Build and push Docker image for web
-        uses: docker/bake-action@v6
+        uses: docker/build-push-action@v6
         with:
-          push: true
-          files: |
-            ./docker-bake.hcl
-            cwd://${{ steps.meta-web.outputs.bake-file }}
-          targets: web
-        env:
-          GITHUB_SHA: ${{ github.sha }}
+          push: ${{ (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet') }}
+          file: ./apps/web/docker/Dockerfile
+          context: .
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha,scope=global
+          cache-to: type=gha,mode=max,scope=global
+          build-args:
+            BASE_IMAGE=${{ env.base }}
 
-      - name: Prepare compose file with environment variables
-        run: |
-          if [ "${GITHUB_REF}" = "refs/heads/mainnet" ]; then
-            sed -i 's/planbenvtoreplace/mainnet/g' docker/compose.yml
-          else
-            sed -i 's/planbenvtoreplace/testnet/g' docker/compose.yml
-          fi
-        env:
-          GITHUB_REF: ${{ github.ref }}
-
-      - name: Copy Docker files to server
-        uses: appleboy/scp-action@v0.1.7
+  deploy:
+    name: Deploy hook
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
+    runs-on: ubuntu-latest
+    needs:
+      - build_api
+      - build_web
+    steps:
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v3
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: 'docker/compose.yml,docker/cdn'
-          overwrite: true
-          strip_components: 1
-          target: ${{ github.ref == 'refs/heads/mainnet' && 'mainnet' || 'testnet' }}
-
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script_stop: true
-          script: |
-            cd ${{ github.ref == 'refs/heads/mainnet' && 'mainnet' || 'testnet' }}
-            docker compose pull
-            docker compose stop || true
-            docker compose rm -f || true
-            docker compose up -d
+          webhook_url: ${{ github.ref == 'refs/heads/mainnet' && secrets.MAINNET_WEBHOOK_URL || secrets.TESTNET_WEBHOOK_URL }}
+          webhook_secret: ${{ github.ref == 'refs/heads/mainnet' && secrets.MAINNET_WEBHOOK_SECRET || secrets.TESTNET_WEBHOOK_SECRET }}

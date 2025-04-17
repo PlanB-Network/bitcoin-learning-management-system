@@ -1,4 +1,12 @@
 **/node_modules
-
-.turbo
-.vite
+**/out
+**/dist
+**/.vscode
+**/.github
+**/.turbo
+**/.vite
+**/.asc
+**/.*
+!**/.mocharc.json
+.*
+/docker
