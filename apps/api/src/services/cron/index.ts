@@ -1,6 +1,6 @@
 import {
   createCalculateEventSeats,
-  createGetBlogs,
+  // createGetBlogs,
   createGetCourseChapters,
   createGetCoursesIds,
   createGetUpcomingEventsInfos,
@@ -192,34 +192,34 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       });
     }
 
-    // Every hour, check for newly created blog posts and send a notification to all users
-    {
-      const getBlogs = createGetBlogs(ctx);
-      const insertUserNotifications = createInsertUserNotifications(ctx);
+    // Every hour, check for newly created blog posts and send a notification to all users -- OFF until we figure out a solution for untranslated blogs
+    // {
+    //   const getBlogs = createGetBlogs(ctx);
+    //   const insertUserNotifications = createInsertUserNotifications(ctx);
 
-      ctx.crons.addTask('h', async () => {
-        const blogs = await getBlogs();
-        if (blogs.length === 0) return;
+    //   ctx.crons.addTask('h', async () => {
+    //     const blogs = await getBlogs();
+    //     if (blogs.length === 0) return;
 
-        const now = new Date();
-        const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    //     const now = new Date();
+    //     const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
 
-        for (const blog of blogs) {
-          if (!blog.createdAt) continue;
-          const blogCreationDate = new Date(blog.createdAt);
-          if (blogCreationDate < oneDayAgo) continue;
+    //     for (const blog of blogs) {
+    //       if (!blog.createdAt) continue;
+    //       const blogCreationDate = new Date(blog.createdAt);
+    //       if (blogCreationDate < oneDayAgo) continue;
 
-          const uids = await userNotificationsService.getAllUids();
-          if (uids.length === 0) continue;
+    //       const uids = await userNotificationsService.getAllUids();
+    //       if (uids.length === 0) continue;
 
-          await insertUserNotifications({
-            uids,
-            blogId: blog.id,
-            type: NotificationType.Blog,
-          });
-        }
-      });
-    }
+    //       await insertUserNotifications({
+    //         uids,
+    //         blogId: blog.id,
+    //         type: NotificationType.Blog,
+    //       });
+    //     }
+    //   });
+    // }
 
     // Once a day, check for read notifications that are older than 30 days and delete them
     ctx.crons.addTask('d', async () => {
