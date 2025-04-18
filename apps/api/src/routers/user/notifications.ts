@@ -1,9 +1,16 @@
-import { joinedUserNotificationSchema } from '@blms/schemas';
 import {
+  joinedUserNotificationSchema,
+  scheduledCourseNotificationSchema,
+} from '@blms/schemas';
+import {
+  createGetScheduledCourseNotifications,
   createGetUserNotifications,
   createMarkUserNotificationsAsRead,
 } from '@blms/service-user';
-import type { JoinedUserNotification } from '@blms/types';
+import type {
+  JoinedUserNotification,
+  ScheduledCourseNotification,
+} from '@blms/types';
 import { z } from 'zod';
 import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -34,7 +41,25 @@ const markUserNotificationsAsReadProcedure = studentProcedure
     });
   });
 
+const getPublishedScheduledCourseNotificationsProcedure = studentProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<ScheduledCourseNotification[]>>(
+    scheduledCourseNotificationSchema.array(),
+  )
+  .query(({ ctx, input }) =>
+    createGetScheduledCourseNotifications(ctx.dependencies)({
+      courseId: input.courseId,
+      isPublishedOnly: true,
+    }),
+  );
+
 export const userNotificationsRouter = createTRPCRouter({
+  getPublishedScheduledCourseNotifications:
+    getPublishedScheduledCourseNotificationsProcedure,
   getUserNotifications: getUserNotificationsProcedure,
   markUserNotificationsAsRead: markUserNotificationsAsReadProcedure,
 });

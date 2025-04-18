@@ -21,6 +21,21 @@ export interface UserNotificationStatus {
   createdAt: Date;
 }
 
+export interface ScheduledCourseNotification {
+  id: string;
+  notificationId: string;
+  professorId: string;
+  courseId: string;
+  studentGroup: string;
+  content: string;
+  type: NotificationType;
+  scheduledAt: Date;
+  timezone: string;
+  isPublished: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface JoinedUserNotification {
   id: string;
   content: string | null;

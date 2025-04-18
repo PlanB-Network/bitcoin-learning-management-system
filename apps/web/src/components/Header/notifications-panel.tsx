@@ -1,3 +1,4 @@
+import { NotificationType } from '@blms/constants';
 import type { JoinedUserNotification } from '@blms/types';
 import { Popover, PopoverContent, PopoverTrigger, TextTag, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -36,12 +37,9 @@ export const NotificationsPanel = ({
   const { userNotifications, fetchUserNotifications } =
     useContext(NotificationsContext);
 
-  const unreadNotifications = (userNotifications ? [...userNotifications] : [])
-    .filter((notification) => notification.readDate === null)
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    );
+  const unreadNotifications = (
+    userNotifications ? [...userNotifications] : []
+  ).filter((notification) => notification.readDate === null);
   const hasUnreadNotifications = unreadNotifications.length > 0;
 
   const markNotificationsAsRead =
@@ -131,7 +129,14 @@ const NotificationItem = ({
   mode = 'dark',
 }: NotificationItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const tagVariant = isHovered ? 'orange' : 'grey';
+  const isTeacherAnnouncement =
+    notification.type === NotificationType.Assignment ||
+    notification.type === NotificationType.Calendar ||
+    notification.type === NotificationType.Warning ||
+    notification.type === NotificationType.General ||
+    notification.type === NotificationType.Celebration;
+
+  const tagVariant = isHovered || isTeacherAnnouncement ? 'orange' : 'grey';
   const tagMode = mode === 'dark' ? 'dark100' : 'light100';
 
   return (
@@ -159,7 +164,12 @@ const NotificationItem = ({
             <div className="size-6">
               {getNotificationIcon(
                 notification.type,
-                'size-full text-newBlack-1 dark:text-newGray-4',
+                cn(
+                  'size-full',
+                  isTeacherAnnouncement
+                    ? 'text-darkOrange-6'
+                    : 'text-newBlack-1 dark:text-newGray-4',
+                ),
               )}
             </div>
             <TextTag variant={tagVariant} mode={tagMode} size="verySmall">
@@ -172,12 +182,13 @@ const NotificationItem = ({
           <div className="size-2 rounded-full bg-darkOrange-5" />
         </div>
         <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6">
-          {getNotificationContent(
-            notification.type,
-            notification.chapterId || undefined,
-            notification.eventId || undefined,
-            notification.blogId || undefined,
-          )}
+          {notification.content ||
+            getNotificationContent(
+              notification.type,
+              notification.chapterId || undefined,
+              notification.eventId || undefined,
+              notification.blogId || undefined,
+            )}
         </p>
       </Link>
       {onClose && (

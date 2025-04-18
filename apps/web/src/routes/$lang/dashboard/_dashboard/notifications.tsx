@@ -113,12 +113,7 @@ const NotificationsTable = () => {
 
   useEffect(() => {
     if (userNotifications) {
-      setNotifications(
-        [...userNotifications]?.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-        ),
-      );
+      setNotifications([...userNotifications]);
     }
   }, [userNotifications]);
 
@@ -303,6 +298,13 @@ const NotificationItem = ({
 
   const isRead = notification.readDate !== null;
 
+  const isTeacherAnnouncement =
+    notification.type === NotificationType.Assignment ||
+    notification.type === NotificationType.Calendar ||
+    notification.type === NotificationType.Warning ||
+    notification.type === NotificationType.General ||
+    notification.type === NotificationType.Celebration;
+
   return (
     <div
       key={notification.id}
@@ -357,16 +359,23 @@ const NotificationItem = ({
               {!isRead && (
                 <div className="rounded-full size-2 bg-darkOrange-5 md:hidden ml-1.5" />
               )}
-              {getNotificationIcon(notification.type)}
+              {getNotificationIcon(
+                notification.type,
+                isTeacherAnnouncement
+                  ? 'size-[18px] md:size-6 text-darkOrange-6'
+                  : '',
+              )}
               <TextTag
                 size="verySmall"
                 variant={
-                  !isMobile && notification.id === hoveredNotification
+                  (!isMobile && notification.id === hoveredNotification) ||
+                  isTeacherAnnouncement
                     ? 'orange'
                     : 'grey'
                 }
                 mode={
-                  !isMobile && notification.id === hoveredNotification
+                  (!isMobile && notification.id === hoveredNotification) ||
+                  isTeacherAnnouncement
                     ? 'light100'
                     : 'light'
                 }
@@ -454,6 +463,11 @@ export const getNotificationTitle = (type: string, courseId?: string) => {
   switch (type) {
     case NotificationType.Calendar24HoursCourse:
     case NotificationType.Calendar5MinutesCourse:
+    case NotificationType.Assignment:
+    case NotificationType.General:
+    case NotificationType.Celebration:
+    case NotificationType.Warning:
+    case NotificationType.Calendar:
       return courseName;
     case NotificationType.Calendar48HoursOnlineEvent:
     case NotificationType.Calendar24HoursInPersonEvent:
@@ -600,12 +614,18 @@ export const getNotificationRedirect = (
       return '/events/';
     case NotificationType.Blog:
       return '/public-communication/';
+    case NotificationType.Assignment:
+    case NotificationType.Calendar:
+    case NotificationType.Celebration:
+    case NotificationType.Warning:
+    case NotificationType.General:
+      return `/dashboard/course/${courseId}`;
     default:
       return '/dashboard/notifications';
   }
 };
 
-const getNotificationDateString = (date: Date) => {
+export const getNotificationDateString = (date: Date) => {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
   const diffInSeconds = Math.floor(diffInMs / 1000);

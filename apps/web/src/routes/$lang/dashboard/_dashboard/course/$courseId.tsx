@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi';
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowDown, IoMdClose } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
 import { z } from 'zod';
 
@@ -12,6 +12,7 @@ import type {
   CourseExamResults,
   CourseProgressExtended,
   CourseResponse,
+  ScheduledCourseNotification,
 } from '@blms/types';
 import {
   Button,
@@ -42,8 +43,14 @@ import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { NotificationType } from '@blms/constants';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProgressBar } from '../-components/courses-progress-list.tsx';
+import {
+  getNotificationDateString,
+  getNotificationIcon,
+  getNotificationTitle,
+} from '../notifications.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/course/$courseId',
@@ -192,6 +199,8 @@ const CourseOverview = ({ course }: { course: CourseResponse }) => {
             <CourseProgress courseProgress={courseProgress[0]} />
           </>
         )}
+
+      <CourseAnnouncements courseId={course.id} />
 
       <CourseCurriculum
         course={course}
@@ -343,6 +352,131 @@ export const CourseExams = ({
           openLastExam={openLastExam}
         />
       )}
+    </div>
+  );
+};
+
+const CourseAnnouncements = ({
+  courseId,
+}: {
+  courseId: string;
+}) => {
+  const { data: publishedCourseNotifications } =
+    trpc.user.notifications.getPublishedScheduledCourseNotifications.useQuery({
+      courseId,
+    });
+
+  const [courseAnnouncements, setCourseAnnouncements] = useState<
+    ScheduledCourseNotification[]
+  >([]);
+
+  useEffect(() => {
+    if (
+      publishedCourseNotifications &&
+      publishedCourseNotifications.length >= 0
+    ) {
+      setCourseAnnouncements(
+        publishedCourseNotifications
+          ?.filter((notification) => notification.courseId === courseId)
+          .filter(
+            (notification) =>
+              notification.type === NotificationType.Assignment ||
+              notification.type === NotificationType.Calendar ||
+              notification.type === NotificationType.Warning ||
+              notification.type === NotificationType.General ||
+              notification.type === NotificationType.Celebration,
+          )
+          .filter(
+            (notification) =>
+              new Date(notification.scheduledAt).getTime() >
+              Date.now() - 7 * 24 * 60 * 60 * 1000,
+          ),
+      );
+    }
+  }, [publishedCourseNotifications, courseId]);
+
+  if (!courseAnnouncements || courseAnnouncements.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="w-full flex flex-col gap-5 mt-8">
+      <h3 className="subtitle-large-med-20px text-newBlack-1">
+        {t('dashboard.course.announcement')}
+      </h3>
+      <div className="flex flex-col rounded-[12px] border-newGray-5 border overflow-hidden">
+        {courseAnnouncements.map((announcement, index) => (
+          <CourseAnnouncementItem
+            key={announcement.id}
+            announcement={announcement}
+            courseAnnouncements={courseAnnouncements}
+            setCourseAnnouncements={setCourseAnnouncements}
+            lastAnnouncement={index === courseAnnouncements.length - 1}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const CourseAnnouncementItem = ({
+  announcement,
+  lastAnnouncement,
+  courseAnnouncements,
+  setCourseAnnouncements,
+}: {
+  announcement: ScheduledCourseNotification;
+  lastAnnouncement: boolean;
+  courseAnnouncements: ScheduledCourseNotification[];
+  setCourseAnnouncements: (
+    courseAnnouncements: ScheduledCourseNotification[],
+  ) => void;
+}) => {
+  return (
+    <div key={announcement.id} className="relative flex flex-col">
+      <article
+        className={cn(
+          'group flex w-full md:hover:bg-darkOrange-0 hover:border-darkOrange-4 md:hover:border-l-2 py-1.5 px-4 md:p-4',
+        )}
+      >
+        <div className="flex flex-col gap-2.5 md:px-4 grow">
+          <div className="flex justify-between items-center max-md:min-h-8">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="rounded-full size-2 bg-darkOrange-5 md:hidden ml-1.5" />
+              {getNotificationIcon(
+                announcement.type,
+                'size-[18px] md:size-6 text-darkOrange-6',
+              )}
+              <TextTag size="verySmall" variant="orange" mode="light100">
+                {getNotificationTitle(
+                  announcement.type,
+                  announcement.courseId ?? undefined,
+                )}
+              </TextTag>
+            </div>
+            <div className="rounded-full size-2 bg-darkOrange-5 max-md:hidden" />
+            <span className="px-4 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 md:hidden">
+              {getNotificationDateString(new Date(announcement.scheduledAt))}
+            </span>
+          </div>
+          <p className="body-14px text-newBlack-1">{announcement.content}</p>
+        </div>
+        <span className="px-4 w-[140px] shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
+          {getNotificationDateString(new Date(announcement.scheduledAt))}
+        </span>
+        <button
+          type="button"
+          onClick={() => {
+            setCourseAnnouncements(
+              courseAnnouncements.filter((item) => item.id !== announcement.id),
+            );
+          }}
+          className="pl-2 pr-4 self-start max-md:hidden"
+        >
+          <IoMdClose size={20} />
+        </button>
+      </article>
+      {!lastAnnouncement && <div className="h-px w-full bg-newGray-4" />}
     </div>
   );
 };

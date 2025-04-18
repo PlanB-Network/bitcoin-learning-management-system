@@ -695,6 +695,7 @@
       "yourRoles": "Your job positions"
     },
     "course": {
+      "announcement": "Announcement",
       "checkDetailsCompleted": "Here you can check all the details concerning this course you completed.",
       "completionDiploma": "Completion diploma",
       "completionExamInfo": "You have to complete the exam to have access to this feature.",
