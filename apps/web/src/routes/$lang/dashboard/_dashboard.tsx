@@ -27,7 +27,10 @@ function Dashboard() {
   let padding = paddingClasses.default;
   if (pathname.includes('calendar')) {
     padding = paddingClasses.calendar;
-  } else if (pathname.includes('/dashboard/notifications')) {
+  } else if (
+    pathname.includes('/dashboard/notifications') ||
+    pathname.includes('/dashboard/professor/courses')
+  ) {
     padding = paddingClasses.notifications;
   }
 

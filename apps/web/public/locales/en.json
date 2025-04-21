@@ -482,9 +482,10 @@
       "groups": {
         "active": "Students selected for the Project Assignment",
         "all": "All students registered",
-        "inactive": "Students selected for the Summer School"
+        "summer": "Students selected for the Summer School"
       },
-      "pickADate": "Pick a date"
+      "pickADate": "Pick a date",
+      "publicationDate": "Date of publication"
     },
     "bCert": {
       "grade": "Grade",
@@ -777,6 +778,7 @@
     "studentDashboard": "Student dashboard",
     "teacher": {
       "courses": {
+        "allStudents": "All students",
         "analytics": "Analytics",
         "announcementModal": {
           "contentLabel": "Text of the announcement",
@@ -786,7 +788,7 @@
           "datePlaceholder": "Pick a date",
           "dateRequired": "Date is required",
           "groupLabel": "Select the group of students you want to address",
-          "title": "Write new announcement",
+          "title": "Write an announcement",
           "typeLabel": "What type of announcement is it?",
           "typePlaceholder": "Select one type"
         },
@@ -794,6 +796,7 @@
         "announcementsIntroduction": "In addition to the automatic notifications about class schedules, you have the option to write and schedule extra announcements for your students. For example, you can inform them about logistical changes or last-minute updates.\nStudents will receive these notifications on the platform, and also by email (if they activate this optional feature).",
         "announcementsUpcoming": "Upcoming announcements",
         "announcementsUpcomingDescription": "Here below are the future announcements you wrote and scheduled.",
+        "assignmentStudents": "Project Assignment",
         "courseDetails": "Course details",
         "courseLongDescription": "Introductive description",
         "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
@@ -809,6 +812,8 @@
         "quickRecap": "Here you can find all the general information regarding this course.",
         "reviewInfos": "Here you can control and review all the information concerning each course you've coordinated.",
         "reviews": "Reviews",
+        "selectCourse": "Select course",
+        "summerStudents": "Summer School",
         "writeAnnouncement": "Write an announcement"
       },
       "menu": "Teacher menu",
@@ -1120,6 +1125,9 @@
     "payWithBitcoin": "Pay with Bitcoin",
     "terms": "See our <0>general terms</0> and conditions for refund details",
     "total": "Total"
+  },
+  "placeholders": {
+    "selectTimeZone": "Select timezone"
   },
   "podcast": {
     "check": "Check the podcast"
@@ -1439,6 +1447,7 @@
     "credits": "Credits",
     "dashboard": "Dashboard",
     "date": "Date",
+    "day": "Day",
     "delete": "Delete",
     "description": "Description",
     "details": "Details",
@@ -1542,6 +1551,7 @@
     "ticket": "Ticket",
     "tickets": "Tickets",
     "time": "Time",
+    "timeZone": "Timezone",
     "to": "to",
     "topics": "Topics",
     "total": "Total",

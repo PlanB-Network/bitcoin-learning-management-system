@@ -28,10 +28,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
 import { t } from 'i18next';
 import { CalendarIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { AppContext } from '#src/providers/context.tsx';
+import { getUTCOffset, timeZones } from '#src/utils/date.ts';
+import { trpc } from '#src/utils/trpc.ts';
 import { getNotificationIcon } from '../../notifications.tsx';
 
 interface AnnouncementModalProps {
@@ -43,12 +46,13 @@ interface AnnouncementModalProps {
 const schema = z.object({
   type: z.string(),
   content: z.string().min(1, { message: t('courses.review.fieldRequired') }),
-  studentGroup: z.string(),
+  studentGroup: z.enum(['all', 'assignment', 'summer']).optional(),
   dateTime: z.date({
     required_error: t(
       'dashboard.teacher.courses.announcementModal.dateRequired',
     ),
   }),
+  timezone: z.string(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -63,19 +67,59 @@ export const AnnouncementModal = ({
     resolver: zodResolver(schema),
   });
 
+  const { courses } = useContext(AppContext);
+
+  const isPlanBSchoolCourse = courses?.some(
+    (course) => course.id === courseId && course.isPlanbSchool,
+  );
+
   const [isDateOpen, setIsDateOpen] = useState(false);
 
   const [time, setTime] = useState<string>('00:00');
   const [date, setDate] = useState<Date | null>(null);
+  const [timezone, setTimezone] = useState<string>('GMT');
+
+  const submitScheduledCourseNotification =
+    trpc.user.notifications.insertScheduledCourseNotification.useMutation({
+      onSuccess: () => {
+        closeModal();
+      },
+    });
 
   function closeModal() {
     onClose();
+    setIsDateOpen(false);
+    setDate(null);
+    setTime('00:00');
+    setTimezone('GMT');
     form.reset();
   }
 
   async function onSubmit(data: FormData) {
-    console.log(data);
-    closeModal();
+    let dateInterpretedAsUTC = null;
+
+    const originalDate = data.dateTime;
+
+    const year = originalDate.getFullYear();
+    const month = originalDate.getMonth();
+    const day = originalDate.getDate();
+    const hours = originalDate.getHours();
+    const minutes = originalDate.getMinutes();
+    const seconds = originalDate.getSeconds();
+    const milliseconds = originalDate.getMilliseconds();
+
+    dateInterpretedAsUTC = new Date(
+      Date.UTC(year, month, day, hours, minutes, seconds, milliseconds),
+    );
+
+    submitScheduledCourseNotification.mutate({
+      courseId,
+      type: data.type as NotificationType,
+      content: data.content,
+      studentGroup: data.studentGroup || 'all',
+      scheduledAt: dateInterpretedAsUTC,
+      timezone: data.timezone,
+    });
   }
 
   const notificationOptions = [
@@ -88,8 +132,8 @@ export const AnnouncementModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={() => closeModal()}>
-      <DialogContent className="max-w-3xl p-6 w-[90%] overflow-auto">
-        <DialogTitle>
+      <DialogContent className="max-w-[482px] p-6 w-[90%] overflow-auto">
+        <DialogTitle className="max-md:subtitle-large-18px">
           {t('dashboard.teacher.courses.announcementModal.title')}
         </DialogTitle>
         <DialogDescription className="hidden" />
@@ -97,7 +141,7 @@ export const AnnouncementModal = ({
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-10"
+              className="flex flex-col gap-5 md:gap-10"
             >
               <FormField
                 control={form.control}
@@ -114,7 +158,7 @@ export const AnnouncementModal = ({
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        <SelectTrigger mode="light" className="w-96">
+                        <SelectTrigger mode="light" className="md:w-96">
                           <SelectValue
                             placeholder={t(
                               'dashboard.teacher.courses.announcementModal.typePlaceholder',
@@ -160,83 +204,90 @@ export const AnnouncementModal = ({
                 )}
               />
 
-              <FormField
-                control={form.control}
-                name="studentGroup"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-left mb-2">
-                      {t(
-                        'dashboard.teacher.courses.announcementModal.groupLabel',
-                      )}
-                    </FormLabel>
-                    <FormControl>
-                      <div className="flex flex-col gap-2 pl-[18px]">
-                        {[
-                          {
-                            value: 'all',
-                            label: t('dashboard.announcements.groups.all'),
-                          },
-                          {
-                            value: 'assignment',
-                            label: t('dashboard.announcements.groups.active'),
-                          },
-                          {
-                            value: 'summerSchool',
-                            label: t('dashboard.announcements.groups.inactive'),
-                          },
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className="flex gap-4 items-start"
-                          >
-                            <div className="mt-1 grid place-items-center">
-                              <input
-                                type="radio"
-                                value={option.value}
-                                checked={field.value === option.value}
-                                onChange={() => field.onChange(option.value)}
-                                className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-darkOrange-5 shrink-0"
-                              />
-                              <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-darkOrange-5" />
-                            </div>
-                            <span className="text-black label-medium-16px">
-                              {option.label}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+              {isPlanBSchoolCourse && (
+                <FormField
+                  control={form.control}
+                  name="studentGroup"
+                  defaultValue="all"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-left mb-2">
+                        {t(
+                          'dashboard.teacher.courses.announcementModal.groupLabel',
+                        )}
+                      </FormLabel>
+                      <FormControl>
+                        <div className="flex flex-col gap-2 pl-[18px]">
+                          {[
+                            {
+                              value: 'all',
+                              label: t('dashboard.announcements.groups.all'),
+                            },
+                            {
+                              value: 'assignment',
+                              label: t('dashboard.announcements.groups.active'),
+                            },
+                            {
+                              value: 'summerSchool',
+                              label: t('dashboard.announcements.groups.summer'),
+                            },
+                          ].map((option) => (
+                            <label
+                              key={option.value}
+                              className="flex gap-4 items-start"
+                            >
+                              <div className="mt-1 grid place-items-center">
+                                <input
+                                  type="radio"
+                                  value={option.value}
+                                  checked={field.value === option.value}
+                                  onChange={() => field.onChange(option.value)}
+                                  className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-darkOrange-5 shrink-0"
+                                />
+                                <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-darkOrange-5" />
+                              </div>
+                              <span className="text-black label-medium-16px">
+                                {option.label}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              )}
 
-              <div className="flex w-full gap-4">
+              <div className="flex flex-col gap-2">
+                <FormLabel required>
+                  {t('dashboard.announcements.publicationDate')}
+                </FormLabel>
                 <FormField
                   control={form.control}
                   name="dateTime"
                   render={({ field }) => (
                     <FormItem className="flex flex-col w-full max-w-[320px]">
-                      <FormLabel>{t('words.date')}</FormLabel>
+                      <FormLabel required className="mb-2">
+                        {t('words.day')}
+                      </FormLabel>
                       <Popover open={isDateOpen} onOpenChange={setIsDateOpen}>
                         <PopoverTrigger asChild>
                           <FormControl>
-                            <Button
-                              variant={'outline'}
-                              size="m"
+                            <button
                               className={cn(
-                                'w-full font-normal border-newGray-4 text-newGray-2',
+                                'flex items-center justify-between rounded-lg bg-white border-newGray-3 px-3 py-2 text-sm leading-[120%] text-newBlack-1 data-[placeholder]:text-newGray-2 data-[placeholder]:dark:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate dark:bg-transparent dark:border-newGray-4 border shadow-none',
                               )}
+                              type="button"
                             >
                               {field.value ? (
                                 `${format(field.value, 'PPP')}, ${time}`
                               ) : (
-                                <span>
+                                <span className="text-newGray-2">
                                   {t('dashboard.announcements.pickADate')}
                                 </span>
                               )}
                               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
+                            </button>
                           </FormControl>
                         </PopoverTrigger>
                         <PopoverContent
@@ -277,7 +328,9 @@ export const AnnouncementModal = ({
                   name="dateTime"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>{t('words.time')}</FormLabel>
+                      <FormLabel required className="mb-2">
+                        {t('words.time')}
+                      </FormLabel>
                       <FormControl>
                         <Select
                           defaultValue={time!}
@@ -295,17 +348,13 @@ export const AnnouncementModal = ({
                             }
                           }}
                         >
-                          <Button
-                            asChild
-                            variant="outline"
-                            size="m"
-                            className={cn('w-full font-normal text-newGray-2')}
+                          <SelectTrigger
+                            mode="light"
+                            className="dark:bg-transparent dark:border-newGray-4 border shadow-none w-fit"
                           >
-                            <SelectTrigger className="dark:bg-transparent dark:border-newGray-4 border shadow-none">
-                              <SelectValue />
-                            </SelectTrigger>
-                          </Button>
-                          <SelectContent>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent mode="light">
                             <ScrollArea className="h-[15rem]">
                               {Array.from({ length: 96 }).map((_, i) => {
                                 const hour = Math.floor(i / 4)
@@ -324,6 +373,70 @@ export const AnnouncementModal = ({
                                   </SelectItem>
                                 );
                               })}
+                            </ScrollArea>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="timezone"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col w-full max-w-[320px]">
+                      <FormLabel required className="mb-2">
+                        {t('words.timeZone')}
+                      </FormLabel>
+                      <FormControl defaultValue={timezone}>
+                        <Select
+                          value={field.value}
+                          onValueChange={(selectedValue) => {
+                            setTimezone(selectedValue);
+                            field.onChange(selectedValue);
+                          }}
+                        >
+                          <SelectTrigger
+                            mode="light"
+                            className="dark:bg-transparent dark:border-newGray-4 border shadow-none"
+                          >
+                            <SelectValue
+                              placeholder={t('placeholders.selectTimeZone')}
+                            />
+                          </SelectTrigger>
+
+                          <SelectContent mode="light">
+                            <ScrollArea className="h-[15rem]">
+                              {Object.entries(timeZones)
+                                .sort(([a], [b]) => {
+                                  const offsetA = getUTCOffset(a);
+                                  const offsetB = getUTCOffset(b);
+                                  const numericA =
+                                    Number.parseInt(
+                                      offsetA
+                                        .replace('UTC', '')
+                                        .replace('+', ''),
+                                      10,
+                                    ) || 0;
+                                  const numericB =
+                                    Number.parseInt(
+                                      offsetB
+                                        .replace('UTC', '')
+                                        .replace('+', ''),
+                                      10,
+                                    ) || 0;
+                                  return numericA - numericB;
+                                })
+                                .map(([timeZoneKey, description]) => (
+                                  <SelectItem
+                                    key={timeZoneKey}
+                                    value={timeZoneKey}
+                                  >
+                                    {`(${getUTCOffset(timeZoneKey)}) ${description}`}
+                                  </SelectItem>
+                                ))}
                             </ScrollArea>
                           </SelectContent>
                         </Select>

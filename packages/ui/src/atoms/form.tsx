@@ -102,7 +102,7 @@ const FormLabel = React.forwardRef<
       {...props}
     >
       {props.children}
-      {required && <span className="text-red-5 text-xs mt-1 ml-1">*</span>}
+      {required && <span className="text-red-5 text-xs ml-0.5 md:mt-1">*</span>}
     </Label>
   );
 });
