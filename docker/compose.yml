@@ -10,7 +10,6 @@ x-defaults: &defaults
     NODE_ENV: production
     POSTGRES_HOST: postgres
     POSTGRES_PORT: 5432
-    PLANB_ENVIRONMENT: planbenvtoreplace
 
   logging:
     driver: 'json-file'
