@@ -22,6 +22,7 @@ import { t } from 'i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime } from '#src/utils/date.js';
+import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const BookingPart = ({
@@ -212,12 +213,20 @@ const Buttons = ({
                 });
               }
 
+              const fileName = 'ticket.pdf';
+              const blob = base64ToBlob(base64, 'application/pdf');
+              const url = window.URL.createObjectURL(blob);
+
               const link = document.createElement('a');
-              link.href = `data:application/pdf;base64,${base64}`;
-              link.download = 'ticket.pdf';
-              document.body.append(link);
+              link.href = url;
+              link.setAttribute('download', fileName);
+
+              document.body.appendChild(link);
+
               link.click();
-              link.remove();
+
+              link.parentNode?.removeChild(link);
+              window.URL.revokeObjectURL(url);
             }}
           >
             {t('words.download')}

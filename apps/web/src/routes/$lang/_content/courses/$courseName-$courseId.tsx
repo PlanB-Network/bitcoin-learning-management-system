@@ -41,6 +41,7 @@ import { formatDate, getDateString } from '#src/utils/date.ts';
 import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { base64ToBlob } from '#src/utils/misc.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { CourseLayout } from './-components/course-layout.tsx';
@@ -673,12 +674,20 @@ function CourseDetails() {
             });
             setDownloadedPdf(pdf);
           }
+          const fileName = 'ticket.pdf';
+          const blob = base64ToBlob(pdf, 'application/pdf');
+          const url = window.URL.createObjectURL(blob);
+
           const link = document.createElement('a');
-          link.href = `data:application/pdf;base64,${pdf}`;
-          link.download = 'ticket.pdf';
-          document.body.append(link);
+          link.href = url;
+          link.setAttribute('download', fileName);
+
+          document.body.appendChild(link);
+
           link.click();
-          link.remove();
+
+          link.parentNode?.removeChild(link);
+          window.URL.revokeObjectURL(url);
         }}
       >
         {t('courses.chapter.detail.ticketDownload')}

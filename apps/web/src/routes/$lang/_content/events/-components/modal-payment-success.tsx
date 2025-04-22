@@ -11,6 +11,7 @@ import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate } from '#src/utils/date.js';
+import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 interface ModalPaymentSuccessProps {
@@ -98,12 +99,20 @@ export const ModalPaymentSuccess = ({
                   eventId: event.id,
                   userName: user?.username as string,
                 });
+                const fileName = 'ticket.pdf';
+                const blob = base64ToBlob(base64, 'application/pdf');
+                const url = window.URL.createObjectURL(blob);
+
                 const link = document.createElement('a');
-                link.href = `data:application/pdf;base64,${base64}`;
-                link.download = 'ticket.pdf';
-                document.body.append(link);
+                link.href = url;
+                link.setAttribute('download', fileName);
+
+                document.body.appendChild(link);
+
                 link.click();
-                link.remove();
+
+                link.parentNode?.removeChild(link);
+                window.URL.revokeObjectURL(url);
               }}
             >
               {t('events.payment.download_ticket')}

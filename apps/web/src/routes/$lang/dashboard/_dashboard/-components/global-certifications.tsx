@@ -18,6 +18,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime } from '#src/utils/date.ts';
+import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const GlobalCertifications = () => {
@@ -465,12 +466,20 @@ const ExamTicket = ({
             eventId: examTicket.eventId,
             userName: user?.username as string,
           });
+          const fileName = 'ticket.pdf';
+          const blob = base64ToBlob(base64, 'application/pdf');
+          const url = window.URL.createObjectURL(blob);
+
           const link = document.createElement('a');
-          link.href = `data:application/pdf;base64,${base64}`;
-          link.download = 'ticket.pdf';
-          document.body.append(link);
+          link.href = url;
+          link.setAttribute('download', fileName);
+
+          document.body.appendChild(link);
+
           link.click();
-          link.remove();
+
+          link.parentNode?.removeChild(link);
+          window.URL.revokeObjectURL(url);
         }}
       >
         {t('dashboard.credentials.downloadTicket')}

@@ -29,6 +29,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseBookModal } from './book-modal/course-book-modal.tsx';
 
 import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
+import { base64ToBlob } from '#src/utils/misc.ts';
 
 interface ClassDetailsProps {
   course: CourseResponse;
@@ -187,12 +188,20 @@ export const ClassDetails = ({
                           });
                           setDownloadedPdf(pdf);
                         }
+                        const fileName = 'ticket.pdf';
+                        const blob = base64ToBlob(pdf, 'application/pdf');
+                        const url = window.URL.createObjectURL(blob);
+
                         const link = document.createElement('a');
-                        link.href = `data:application/pdf;base64,${pdf}`;
-                        link.download = 'ticket.pdf';
-                        document.body.append(link);
+                        link.href = url;
+                        link.setAttribute('download', fileName);
+
+                        document.body.appendChild(link);
+
                         link.click();
-                        link.remove();
+
+                        link.parentNode?.removeChild(link);
+                        window.URL.revokeObjectURL(url);
                       }}
                     >
                       {t('courses.chapter.detail.ticketDownload')}
