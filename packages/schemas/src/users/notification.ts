@@ -15,7 +15,7 @@ export const notificationSchema = createSelectSchema(usersNotifications);
 export const userNotificationStatusSchema = createSelectSchema(
   usersUserNotificationStatus,
 );
-export const scheduledCourseNotificationSchema = createSelectSchema(
+export const scheduledCourseAnnouncementSchema = createSelectSchema(
   usersScheduledCourseNotifications,
 );
 

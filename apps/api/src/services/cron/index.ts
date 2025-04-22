@@ -13,6 +13,7 @@ import {
   createGetPendingEventPayments,
   createGetSbpCheckout,
   createInsertUserNotifications,
+  createPublishScheduledCourseAnnouncement,
   createStartCourse,
   createUpdateCoursePayment,
   createUpdateEventPayment,
@@ -220,6 +221,25 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     //     }
     //   });
     // }
+
+    // Every 5 minutes, check for newly created course announcements and send a notification to enrolled students
+    {
+      const publishCourseAnnouncement =
+        createPublishScheduledCourseAnnouncement(ctx);
+
+      ctx.crons.addTask('5m', async () => {
+        const unpublishedCourseAnnouncementsIds =
+          await userNotificationsService.getUnpublishedCourseAnnouncementsIds();
+
+        if (unpublishedCourseAnnouncementsIds.length === 0) return;
+
+        for (const id of unpublishedCourseAnnouncementsIds) {
+          await publishCourseAnnouncement({
+            scheduledAnnouncementId: id,
+          });
+        }
+      });
+    }
 
     // Once a day, check for read notifications that are older than 30 days and delete them
     ctx.crons.addTask('d', async () => {

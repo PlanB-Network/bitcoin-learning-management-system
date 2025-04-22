@@ -21,7 +21,7 @@ export interface UserNotificationStatus {
   createdAt: Date;
 }
 
-export interface ScheduledCourseNotification {
+export interface ScheduledCourseAnnouncement {
   id: string;
   notificationId: string;
   professorId: string;

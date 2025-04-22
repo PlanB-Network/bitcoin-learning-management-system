@@ -12,7 +12,7 @@ import type {
   CourseExamResults,
   CourseProgressExtended,
   CourseResponse,
-  ScheduledCourseNotification,
+  ScheduledCourseAnnouncement,
 } from '@blms/types';
 import {
   Button,
@@ -361,39 +361,39 @@ const CourseAnnouncements = ({
 }: {
   courseId: string;
 }) => {
-  const { data: publishedCourseNotifications } =
-    trpc.user.notifications.getPublishedScheduledCourseNotifications.useQuery({
+  const { data: publishedCourseAnnouncements } =
+    trpc.user.notifications.getPublishedScheduledCourseAnnouncements.useQuery({
       courseId,
     });
 
   const [courseAnnouncements, setCourseAnnouncements] = useState<
-    ScheduledCourseNotification[]
+    ScheduledCourseAnnouncement[]
   >([]);
 
   useEffect(() => {
     if (
-      publishedCourseNotifications &&
-      publishedCourseNotifications.length >= 0
+      publishedCourseAnnouncements &&
+      publishedCourseAnnouncements.length >= 0
     ) {
       setCourseAnnouncements(
-        publishedCourseNotifications
-          ?.filter((notification) => notification.courseId === courseId)
+        publishedCourseAnnouncements
+          ?.filter((announcement) => announcement.courseId === courseId)
           .filter(
-            (notification) =>
-              notification.type === NotificationType.Assignment ||
-              notification.type === NotificationType.Calendar ||
-              notification.type === NotificationType.Warning ||
-              notification.type === NotificationType.General ||
-              notification.type === NotificationType.Celebration,
+            (announcement) =>
+              announcement.type === NotificationType.Assignment ||
+              announcement.type === NotificationType.Calendar ||
+              announcement.type === NotificationType.Warning ||
+              announcement.type === NotificationType.General ||
+              announcement.type === NotificationType.Celebration,
           )
           .filter(
-            (notification) =>
-              new Date(notification.scheduledAt).getTime() >
+            (announcement) =>
+              new Date(announcement.scheduledAt).getTime() >
               Date.now() - 7 * 24 * 60 * 60 * 1000,
           ),
       );
     }
-  }, [publishedCourseNotifications, courseId]);
+  }, [publishedCourseAnnouncements, courseId]);
 
   if (!courseAnnouncements || courseAnnouncements.length === 0) {
     return null;
@@ -425,11 +425,11 @@ const CourseAnnouncementItem = ({
   courseAnnouncements,
   setCourseAnnouncements,
 }: {
-  announcement: ScheduledCourseNotification;
+  announcement: ScheduledCourseAnnouncement;
   lastAnnouncement: boolean;
-  courseAnnouncements: ScheduledCourseNotification[];
+  courseAnnouncements: ScheduledCourseAnnouncement[];
   setCourseAnnouncements: (
-    courseAnnouncements: ScheduledCourseNotification[],
+    courseAnnouncements: ScheduledCourseAnnouncement[],
   ) => void;
 }) => {
   return (

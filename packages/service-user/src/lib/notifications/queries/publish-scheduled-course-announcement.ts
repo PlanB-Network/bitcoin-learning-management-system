@@ -1,13 +1,13 @@
 import { sql } from '@blms/database';
 
-export const publishScheduledCourseNotificationQuery = ({
-  scheduledNotificationId,
-}: { scheduledNotificationId: string }) => {
+export const publishScheduledCourseAnnouncementQuery = ({
+  scheduledAnnouncementId,
+}: { scheduledAnnouncementId: string }) => {
   return sql<{ id: string; notificationId: string }[]>`
         WITH scheduled_data AS (
             SELECT notification_id, course_id, id AS scheduled_id
             FROM users.scheduled_course_notifications
-            WHERE id = ${scheduledNotificationId}
+            WHERE id = ${scheduledAnnouncementId}
             AND is_published = false
             FOR UPDATE
         ),

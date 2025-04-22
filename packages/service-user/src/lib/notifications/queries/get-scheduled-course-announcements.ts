@@ -1,16 +1,16 @@
 import { sql } from '@blms/database';
-import type { ScheduledCourseNotification } from '@blms/types';
+import type { ScheduledCourseAnnouncement } from '@blms/types';
 
 interface Options {
   courseId: string;
   isPublishedOnly?: boolean;
 }
 
-export const getScheduledCourseNotificationsQuery = ({
+export const getScheduledCourseAnnouncementsQuery = ({
   courseId,
   isPublishedOnly = true,
 }: Options) => {
-  return sql<ScheduledCourseNotification[]>`
+  return sql<ScheduledCourseAnnouncement[]>`
     SELECT
         id,
         notification_id,
@@ -28,6 +28,6 @@ export const getScheduledCourseNotificationsQuery = ({
     WHERE course_id = ${courseId}
     ${isPublishedOnly ? sql`AND is_published = true` : sql``}
 
-    ORDER BY scheduled_at DESC, created_at DESC;
+    ORDER BY scheduled_at ASC;
   `;
 };

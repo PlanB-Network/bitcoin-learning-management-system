@@ -1,17 +1,19 @@
 import { NotificationType } from '@blms/constants';
 import {
   joinedUserNotificationSchema,
-  scheduledCourseNotificationSchema,
+  scheduledCourseAnnouncementSchema,
 } from '@blms/schemas';
 import {
-  createGetScheduledCourseNotifications,
+  createDeleteScheduledCourseAnnouncement,
+  createGetScheduledCourseAnnouncements,
   createGetUserNotifications,
-  createInsertScheduledCourseNotification,
+  createInsertScheduledCourseAnnouncement,
   createMarkUserNotificationsAsRead,
+  createUpdateScheduledCourseAnnouncement,
 } from '@blms/service-user';
 import type {
   JoinedUserNotification,
-  ScheduledCourseNotification,
+  ScheduledCourseAnnouncement,
 } from '@blms/types';
 import { z } from 'zod';
 import {
@@ -46,39 +48,39 @@ const markUserNotificationsAsReadProcedure = studentProcedure
     });
   });
 
-const getPublishedScheduledCourseNotificationsProcedure = studentProcedure
+const getPublishedScheduledCourseAnnouncementsProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
     }),
   )
-  .output<Parser<ScheduledCourseNotification[]>>(
-    scheduledCourseNotificationSchema.array(),
+  .output<Parser<ScheduledCourseAnnouncement[]>>(
+    scheduledCourseAnnouncementSchema.array(),
   )
   .query(({ ctx, input }) =>
-    createGetScheduledCourseNotifications(ctx.dependencies)({
+    createGetScheduledCourseAnnouncements(ctx.dependencies)({
       courseId: input.courseId,
       isPublishedOnly: true,
     }),
   );
 
-const getCourseNotificationsProcedure = professorProcedure
+const getCourseAnnouncementsProcedure = professorProcedure
   .input(
     z.object({
       courseId: z.string(),
     }),
   )
-  .output<Parser<ScheduledCourseNotification[]>>(
-    scheduledCourseNotificationSchema.array(),
+  .output<Parser<ScheduledCourseAnnouncement[]>>(
+    scheduledCourseAnnouncementSchema.array(),
   )
   .query(({ ctx, input }) =>
-    createGetScheduledCourseNotifications(ctx.dependencies)({
+    createGetScheduledCourseAnnouncements(ctx.dependencies)({
       courseId: input.courseId,
       isPublishedOnly: false,
     }),
   );
 
-const insertScheduledCourseNotificationProcedure = professorProcedure
+const insertScheduledCourseAnnouncementProcedure = professorProcedure
   .input(
     z.object({
       courseId: z.string(),
@@ -91,7 +93,7 @@ const insertScheduledCourseNotificationProcedure = professorProcedure
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
-    await createInsertScheduledCourseNotification(ctx.dependencies)({
+    await createInsertScheduledCourseAnnouncement(ctx.dependencies)({
       type: input.type,
       content: input.content,
       scheduledAt: input.scheduledAt,
@@ -102,11 +104,52 @@ const insertScheduledCourseNotificationProcedure = professorProcedure
     });
   });
 
+const updateScheduledCourseAnnouncementProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      type: z.nativeEnum(NotificationType),
+      content: z.string(),
+      studentGroup: z.enum(['all', 'summer', 'assignment']),
+      scheduledAt: z.date(),
+      timezone: z.string(),
+      id: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(async ({ ctx, input }) => {
+    await createUpdateScheduledCourseAnnouncement(ctx.dependencies)({
+      type: input.type,
+      content: input.content,
+      scheduledAt: input.scheduledAt,
+      timezone: input.timezone,
+      studentGroup: input.studentGroup,
+      courseId: input.courseId,
+      uid: ctx.user.uid,
+      id: input.id,
+    });
+  });
+
+const deleteScheduledCourseAnnouncementProcedure = professorProcedure
+  .input(
+    z.object({
+      id: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(async ({ ctx, input }) => {
+    await createDeleteScheduledCourseAnnouncement(ctx.dependencies)({
+      id: input.id,
+    });
+  });
+
 export const userNotificationsRouter = createTRPCRouter({
-  insertScheduledCourseNotification: insertScheduledCourseNotificationProcedure,
-  getCourseNotifications: getCourseNotificationsProcedure,
-  getPublishedScheduledCourseNotifications:
-    getPublishedScheduledCourseNotificationsProcedure,
+  deleteScheduledCourseAnnouncement: deleteScheduledCourseAnnouncementProcedure,
+  insertScheduledCourseAnnouncement: insertScheduledCourseAnnouncementProcedure,
+  getCourseAnnouncement: getCourseAnnouncementsProcedure,
+  getPublishedScheduledCourseAnnouncements:
+    getPublishedScheduledCourseAnnouncementsProcedure,
   getUserNotifications: getUserNotificationsProcedure,
   markUserNotificationsAsRead: markUserNotificationsAsReadProcedure,
+  updateScheduledCourseAnnouncement: updateScheduledCourseAnnouncementProcedure,
 });

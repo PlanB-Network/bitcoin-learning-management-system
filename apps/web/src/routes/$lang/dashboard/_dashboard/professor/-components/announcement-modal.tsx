@@ -1,4 +1,5 @@
 import { NotificationType } from '@blms/constants';
+import type { ScheduledCourseAnnouncement } from '@blms/types';
 import {
   Button,
   Calendar,
@@ -26,9 +27,10 @@ import {
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
+import { fromZonedTime, toZonedTime } from 'date-fns-tz';
 import { t } from 'i18next';
 import { CalendarIcon } from 'lucide-react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
@@ -41,6 +43,7 @@ interface AnnouncementModalProps {
   courseId: string;
   isOpen: boolean;
   onClose: (isPaid?: boolean) => void;
+  existingAnnouncement?: ScheduledCourseAnnouncement;
 }
 
 const schema = z.object({
@@ -61,6 +64,7 @@ export const AnnouncementModal = ({
   courseId,
   isOpen,
   onClose,
+  existingAnnouncement,
 }: AnnouncementModalProps) => {
   const { t } = useTranslation();
   const form = useForm<FormData>({
@@ -75,12 +79,27 @@ export const AnnouncementModal = ({
 
   const [isDateOpen, setIsDateOpen] = useState(false);
 
-  const [time, setTime] = useState<string>('00:00');
-  const [date, setDate] = useState<Date | null>(null);
-  const [timezone, setTimezone] = useState<string>('GMT');
+  const [time, setTime] = useState<string>(
+    existingAnnouncement
+      ? format(new Date(existingAnnouncement.scheduledAt), 'HH:mm') || '00:00'
+      : '00:00',
+  );
+  const [date, setDate] = useState<Date | null>(
+    existingAnnouncement ? new Date(existingAnnouncement.scheduledAt) : null,
+  );
+  const [timezone, setTimezone] = useState<string>(
+    existingAnnouncement ? existingAnnouncement.timezone : 'GMT',
+  );
 
-  const submitScheduledCourseNotification =
-    trpc.user.notifications.insertScheduledCourseNotification.useMutation({
+  const submitScheduledCourseAnnouncement =
+    trpc.user.notifications.insertScheduledCourseAnnouncement.useMutation({
+      onSuccess: () => {
+        closeModal();
+      },
+    });
+
+  const updateScheduledCourseAnnouncement =
+    trpc.user.notifications.updateScheduledCourseAnnouncement.useMutation({
       onSuccess: () => {
         closeModal();
       },
@@ -96,30 +115,39 @@ export const AnnouncementModal = ({
   }
 
   async function onSubmit(data: FormData) {
-    let dateInterpretedAsUTC = null;
+    const datePart = format(data.dateTime, 'yyyy-MM-dd');
+    const timePart = time;
+    const dateTimeStringInZone = `${datePart} ${timePart}`;
+    const targetTimeZone = data.timezone;
 
-    const originalDate = data.dateTime;
+    let scheduledUtcDate: Date;
+    try {
+      scheduledUtcDate = fromZonedTime(dateTimeStringInZone, targetTimeZone);
+    } catch (error) {
+      console.error('Error converting date/time/timezone:', error);
+      return;
+    }
 
-    const year = originalDate.getFullYear();
-    const month = originalDate.getMonth();
-    const day = originalDate.getDate();
-    const hours = originalDate.getHours();
-    const minutes = originalDate.getMinutes();
-    const seconds = originalDate.getSeconds();
-    const milliseconds = originalDate.getMilliseconds();
-
-    dateInterpretedAsUTC = new Date(
-      Date.UTC(year, month, day, hours, minutes, seconds, milliseconds),
-    );
-
-    submitScheduledCourseNotification.mutate({
-      courseId,
-      type: data.type as NotificationType,
-      content: data.content,
-      studentGroup: data.studentGroup || 'all',
-      scheduledAt: dateInterpretedAsUTC,
-      timezone: data.timezone,
-    });
+    if (existingAnnouncement) {
+      updateScheduledCourseAnnouncement.mutate({
+        courseId,
+        type: data.type as NotificationType,
+        content: data.content,
+        studentGroup: data.studentGroup || 'all',
+        scheduledAt: scheduledUtcDate,
+        timezone: data.timezone,
+        id: existingAnnouncement.id,
+      });
+    } else {
+      submitScheduledCourseAnnouncement.mutate({
+        courseId,
+        type: data.type as NotificationType,
+        content: data.content,
+        studentGroup: data.studentGroup || 'all',
+        scheduledAt: scheduledUtcDate,
+        timezone: data.timezone,
+      });
+    }
   }
 
   const notificationOptions = [
@@ -130,11 +158,57 @@ export const AnnouncementModal = ({
     NotificationType.Celebration,
   ];
 
+  useEffect(() => {
+    if (existingAnnouncement) {
+      const utcAnnouncementDate = new Date(existingAnnouncement.scheduledAt);
+
+      const targetTimeZone =
+        existingAnnouncement.timezone &&
+        existingAnnouncement.timezone in timeZones
+          ? existingAnnouncement.timezone
+          : 'GMT';
+
+      const zonedAnnouncementDate = toZonedTime(
+        utcAnnouncementDate,
+        targetTimeZone,
+      );
+      setTime(format(zonedAnnouncementDate, 'HH:mm'));
+      setDate(zonedAnnouncementDate);
+      form.setValue('dateTime', zonedAnnouncementDate);
+
+      setTimezone(targetTimeZone);
+      form.setValue('timezone', targetTimeZone);
+
+      form.reset({
+        ...form.getValues(),
+        type: existingAnnouncement.type,
+        content: existingAnnouncement.content,
+        studentGroup: existingAnnouncement.studentGroup as
+          | 'all'
+          | 'assignment'
+          | 'summer',
+      });
+    } else {
+      form.reset({
+        type: NotificationType.Warning,
+        content: '',
+        studentGroup: 'all',
+        dateTime: new Date(),
+        timezone: 'GMT',
+      });
+      setDate(null);
+      setTime('00:00');
+      setTimezone('GMT');
+    }
+  }, [existingAnnouncement, form]);
+
   return (
     <Dialog open={isOpen} onOpenChange={() => closeModal()}>
       <DialogContent className="max-w-[482px] p-6 w-[90%] overflow-auto">
         <DialogTitle className="max-md:subtitle-large-18px">
-          {t('dashboard.teacher.courses.announcementModal.title')}
+          {existingAnnouncement
+            ? t('dashboard.teacher.courses.announcementModal.editAnnouncement')
+            : t('dashboard.teacher.courses.announcementModal.title')}
         </DialogTitle>
         <DialogDescription className="hidden" />
         <div className="flex flex-col gap-6 lg:m-6">
@@ -449,7 +523,9 @@ export const AnnouncementModal = ({
 
               <div className="flex justify-center">
                 <Button type="submit" variant="primary">
-                  {t('dashboard.teacher.courses.announcementModal.create')}
+                  {existingAnnouncement
+                    ? t('words.save')
+                    : t('dashboard.teacher.courses.announcementModal.create')}
                 </Button>
               </div>
             </form>

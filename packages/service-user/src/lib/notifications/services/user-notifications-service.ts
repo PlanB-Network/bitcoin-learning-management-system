@@ -67,6 +67,21 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     return Array.from(uniqueUids);
   };
 
+  const getUnpublishedCourseAnnouncementsIds = async () => {
+    return ctx.postgres
+      .exec(
+        sql`
+        SELECT id
+        FROM users.scheduled_course_notifications
+        WHERE is_published = false
+        AND scheduled_at <= NOW();
+        `,
+      )
+      .then((result) => {
+        return result.map((row) => row.id);
+      });
+  };
+
   const deleteOldReadNotifications = async () => {
     return ctx.postgres
       .exec(sql`
@@ -80,6 +95,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     getAllUids,
     getUidsByCourse,
     getUidsByEvent,
+    getUnpublishedCourseAnnouncementsIds,
     deleteOldReadNotifications,
   };
 };

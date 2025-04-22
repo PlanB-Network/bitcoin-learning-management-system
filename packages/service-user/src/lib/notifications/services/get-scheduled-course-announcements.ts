@@ -1,17 +1,17 @@
 import type { Dependencies } from '#src/dependencies.js';
-import { getScheduledCourseNotificationsQuery } from '../queries/get-scheduled-course-notifications.js';
+import { getScheduledCourseAnnouncementsQuery } from '../queries/get-scheduled-course-announcements.js';
 
 interface Options {
   courseId: string;
   isPublishedOnly?: boolean;
 }
 
-export const createGetScheduledCourseNotifications = ({
+export const createGetScheduledCourseAnnouncements = ({
   postgres,
 }: Dependencies) => {
   return async ({ courseId, isPublishedOnly = true }: Options) => {
     const announcements = await postgres.exec(
-      getScheduledCourseNotificationsQuery({ courseId, isPublishedOnly }),
+      getScheduledCourseAnnouncementsQuery({ courseId, isPublishedOnly }),
     );
     return announcements;
   };

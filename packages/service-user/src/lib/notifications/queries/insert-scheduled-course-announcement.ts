@@ -11,7 +11,7 @@ interface Options {
   professorId: string;
 }
 
-export const insertScheduledCourseNotificationQuery = ({
+export const insertScheduledCourseAnnouncementQuery = ({
   type,
   content,
   courseId,
