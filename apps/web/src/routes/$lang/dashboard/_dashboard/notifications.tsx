@@ -119,7 +119,7 @@ const NotificationsTable = () => {
 
   if (userNotifications && userNotifications.length === 0) {
     return (
-      <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
+      <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
         {t('notifications.noRecentNotifications')}
       </p>
     );

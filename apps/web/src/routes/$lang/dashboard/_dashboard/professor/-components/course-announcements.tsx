@@ -157,7 +157,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
           ))}
         </div>
       ) : (
-        <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
+        <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
           {t('dashboard.teacher.courses.noWrittenAnnouncement')}
         </p>
       )}
@@ -199,7 +199,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
           ))}
         </div>
       ) : (
-        <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
+        <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
           {t('dashboard.teacher.courses.noPastAnnouncement')}
         </p>
       )}
