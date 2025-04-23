@@ -1923,6 +1923,7 @@ export const contentVideos = content.table('videos', (t) => ({
   id: t.uuid().primaryKey().notNull(),
   courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
     onUpdate: 'cascade',
+    onDelete: 'cascade',
   }),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
