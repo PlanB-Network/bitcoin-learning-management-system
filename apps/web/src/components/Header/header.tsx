@@ -35,9 +35,13 @@ import type { NavigationSection, NavigationSectionMobile } from './props.ts';
 
 interface HeaderProps {
   variant?: 'light' | 'dark';
+  notificationPanelVariant?: 'light' | 'dark';
 }
 
-export const Header = ({ variant = 'dark' }: HeaderProps) => {
+export const Header = ({
+  variant = 'dark',
+  notificationPanelVariant = 'dark',
+}: HeaderProps) => {
   const { t } = useTranslation();
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
@@ -406,6 +410,7 @@ export const Header = ({ variant = 'dark' }: HeaderProps) => {
         }}
         sections={desktopSections}
         variant={variant}
+        notificationPanelVariant={notificationPanelVariant}
       />
 
       <MobileMenu

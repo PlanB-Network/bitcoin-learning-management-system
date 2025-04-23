@@ -14,6 +14,7 @@ export interface FlyingMenuProps {
   onClickLogin: () => void;
   onClickRegister: () => void;
   variant?: 'light' | 'dark';
+  notificationPanelVariant?: 'light' | 'dark';
 }
 
 export const FlyingMenu = ({
@@ -21,6 +22,7 @@ export const FlyingMenu = ({
   onClickRegister,
   onClickLogin,
   variant = 'dark',
+  notificationPanelVariant = 'dark',
 }: FlyingMenuProps) => {
   return (
     <nav className="flex w-full flex-row items-center justify-between max-lg:hidden">
@@ -49,6 +51,7 @@ export const FlyingMenu = ({
         onClickLogin={onClickLogin}
         onClickRegister={onClickRegister}
         variant={variant}
+        notificationPanelVariant={notificationPanelVariant}
       />
     </nav>
   );
