@@ -19,6 +19,6 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "cron": "^4.1.4"
+    "cron": "^4.3.0"
   }
 }
