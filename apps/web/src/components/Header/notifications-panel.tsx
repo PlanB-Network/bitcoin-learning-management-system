@@ -22,12 +22,14 @@ interface NotificationItemProps {
 
 interface NotificationsPanelProps {
   className?: string;
-  variant?: 'light' | 'dark' | 'darkOrange';
+  variant?: 'light' | 'dark';
+  headerVariant?: 'light' | 'dark';
 }
 
 export const NotificationsPanel = ({
   className,
   variant = 'dark',
+  headerVariant = 'dark',
 }: NotificationsPanelProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -66,7 +68,7 @@ export const NotificationsPanel = ({
             className={cn(
               'max-lg:hidden group z-50 flex size-[52px] items-center justify-center gap-2 rounded-2xl text-sm font-semibold outline-none transition-all md:hover:bg-darkOrange-4 md:hover:dark:bg-newBlack-3 lg:gap-2.5 relative',
               className,
-              variant === 'dark' && 'dark',
+              headerVariant === 'dark' && 'dark',
             )}
             aria-label="Toggle notifications panel"
           >

@@ -63,7 +63,10 @@ export const MainLayout = ({
       ref={box}
     >
       {/* Header */}
-      <Header variant={headerVariant} />
+      <Header
+        variant={headerVariant}
+        notificationPanelVariant={variant === 'dark' ? 'dark' : 'light'}
+      />
 
       {/* Content */}
       <main className="flex grow flex-col">{children}</main>

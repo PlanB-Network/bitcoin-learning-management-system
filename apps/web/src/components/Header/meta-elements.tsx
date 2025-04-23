@@ -21,11 +21,13 @@ export interface MetaElementsProps {
   onClickLogin: () => void;
   onClickRegister: () => void;
   variant?: 'light' | 'dark';
+  notificationPanelVariant?: 'light' | 'dark';
 }
 
 export const MetaElements = ({
   onClickLogin,
   variant = 'dark',
+  notificationPanelVariant = 'dark',
 }: MetaElementsProps) => {
   const { t, i18n } = useTranslation();
   const { user, session } = useContext(AppContext);
@@ -55,7 +57,10 @@ export const MetaElements = ({
       />
       {isLoggedIn && !isMobile && (
         <>
-          <NotificationsPanel variant={variant} />
+          <NotificationsPanel
+            variant={notificationPanelVariant}
+            headerVariant={variant}
+          />
           <Link className="flex" to="/dashboard/courses">
             {isOnDashboard ? (
               <button
