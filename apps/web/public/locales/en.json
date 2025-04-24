@@ -773,6 +773,8 @@
       "save": "Save",
       "saving": "Saving…",
       "security": "Security",
+      "securitySettings": "Security settings",
+      "settings": "Settings",
       "username": "Username"
     },
     "studentDashboard": "Student dashboard",
@@ -1522,6 +1524,7 @@
     "paid": "Premium",
     "part": "Part",
     "passed": "Passed",
+    "password": "Password",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "previous": "Previous",

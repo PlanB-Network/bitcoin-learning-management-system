@@ -4,6 +4,7 @@ import {
   createChangeCertificateName,
   createChangeDisplayName,
   createChangeEmailConfirmation,
+  createChangeNotificationsSettings,
   createChangePassword,
   createChangePermission,
   createChangeRole,
@@ -164,6 +165,28 @@ export const userRouter = createTRPCRouter({
         uid: ctx.user.uid,
         oldPassword: input.oldPassword,
         newPassword: input.newPassword,
+      }),
+    ),
+
+  changeNotificationsSettings: studentProcedure
+    .input(
+      z.object({
+        platformNotifyEvents: z.boolean(),
+        platformNotifyCourses: z.boolean(),
+        platformNotifyGeneral: z.boolean(),
+        platformNotifyEmailCourses: z.boolean(),
+        platformNotifyEmailGeneral: z.boolean(),
+      }),
+    )
+    .output<Parser<void>>(z.void())
+    .mutation(({ ctx, input }) =>
+      createChangeNotificationsSettings(ctx.dependencies)({
+        uid: ctx.user.uid,
+        platformNotifyEvents: input.platformNotifyEvents,
+        platformNotifyCourses: input.platformNotifyCourses,
+        platformNotifyGeneral: input.platformNotifyGeneral,
+        emailNotifyCourses: input.platformNotifyEmailCourses,
+        emailNotifyGeneral: input.platformNotifyEmailGeneral,
       }),
     ),
   bcert: userBCertRouter,

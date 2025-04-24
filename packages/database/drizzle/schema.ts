@@ -82,6 +82,27 @@ export const usersAccounts = users.table('accounts', (t) => ({
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
+export const usersAccountSettings = users.table('account_settings', (t) => ({
+  uid: t
+    .uuid()
+    .primaryKey()
+    .notNull()
+    .references(() => usersAccounts.uid, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
+
+  platformNotifyEvents: t.boolean().default(true).notNull(),
+  platformNotifyCourses: t.boolean().default(true).notNull(),
+  platformNotifyGeneral: t.boolean().default(true).notNull(),
+
+  emailNotifyCourses: t.boolean().default(true).notNull(),
+  emailNotifyGeneral: t.boolean().default(true).notNull(),
+
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+}));
+
 // SESSIONS
 
 export const usersSessions = users.table('sessions', (t) => ({

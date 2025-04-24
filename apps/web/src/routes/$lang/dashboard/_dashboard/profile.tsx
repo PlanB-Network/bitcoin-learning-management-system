@@ -96,14 +96,14 @@ function DashboardProfile() {
             {
               key: 'info',
               value: 'info',
-              text: t('dashboard.profile.personalInformation'),
+              text: t('dashboard.profile.profile'),
               active: 'info' === currentTab,
             },
             {
-              key: 'security',
-              value: 'security',
-              text: t('dashboard.profile.security'),
-              active: 'security' === currentTab,
+              key: 'settings',
+              value: 'settings',
+              text: t('dashboard.profile.settings'),
+              active: 'settings' === currentTab,
             },
           ]}
           size={isMobile ? 's' : 'm'}
@@ -219,17 +219,31 @@ function DashboardProfile() {
           </div>
         </TabsContent>
 
-        <TabsContent value="security">
-          <div className="mt-6 flex justify-between">
-            <div>{t('dashboard.profile.password')}</div>
-            <Button
-              variant="primary"
-              size="s"
-              onClick={openChangePasswordModal}
-            >
-              {t('dashboard.profile.change')}
-            </Button>
-          </div>
+        <TabsContent value="settings">
+          <section className="flex flex-col my-8 gap-4">
+            <h3>{t('dashboard.profile.securitySettings')}</h3>
+            <div className="flex flex-col gap-2">
+              <span className="subtitle-medium-med-16px text-newBlack-1">
+                {t('words.password')}
+              </span>
+              <div className="flex items-center w-full gap-8 max-md:flex-wrap">
+                <input
+                  type="text"
+                  disabled
+                  className="w-full border border-newGray-4 bg-newGray-5 rounded-lg px-4 py-[5px]"
+                  value={'**********'}
+                />
+                <Button
+                  variant="primary"
+                  size="s"
+                  onClick={openChangePasswordModal}
+                  className="shrink-0"
+                >
+                  {t('dashboard.profile.change')}
+                </Button>
+              </div>
+            </div>
+          </section>
         </TabsContent>
 
         <TabsContent value="document" />
