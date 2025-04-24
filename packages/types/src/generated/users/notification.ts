@@ -26,7 +26,7 @@ export interface ScheduledCourseAnnouncement {
   notificationId: string;
   professorId: string;
   courseId: string;
-  studentGroup: string;
+  studentGroup: 'all' | 'summer' | 'assignment';
   content: string;
   type: NotificationType;
   scheduledAt: Date;

@@ -23,6 +23,7 @@ import {
   JobCategory,
   JobName,
   NotificationType,
+  StudentGroup,
   TeachingFormat,
   TokenType,
   UserPermission,
@@ -2059,6 +2060,8 @@ export const notificationTypeEnum = pgNativeEnum(
   NotificationType,
 );
 
+export const studentGroupEnum = pgNativeEnum('student_group', StudentGroup);
+
 export const usersNotifications = users.table('notifications', (t) => ({
   id: t.uuid().primaryKey().defaultRandom(),
   content: t.text(),
@@ -2111,7 +2114,7 @@ export const usersScheduledCourseNotifications = users.table(
       .references(() => contentCourses.id, {
         onDelete: 'cascade',
       }),
-    studentGroup: t.varchar({ length: 50 }).notNull(),
+    studentGroup: studentGroupEnum().notNull(),
     content: t.text().notNull(),
     type: notificationTypeEnum().notNull(),
     scheduledAt: t.timestamp({ withTimezone: true }).notNull(),

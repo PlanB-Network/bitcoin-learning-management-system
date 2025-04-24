@@ -231,8 +231,6 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         const unpublishedCourseAnnouncementsIds =
           await userNotificationsService.getUnpublishedCourseAnnouncementsIds();
 
-        if (unpublishedCourseAnnouncementsIds.length === 0) return;
-
         for (const id of unpublishedCourseAnnouncementsIds) {
           await publishCourseAnnouncement({
             scheduledAnnouncementId: id,

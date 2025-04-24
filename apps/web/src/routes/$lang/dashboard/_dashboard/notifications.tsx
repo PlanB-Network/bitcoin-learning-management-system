@@ -14,6 +14,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import { formatDate, getTimeString } from '#src/utils/date.ts';
+import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -298,13 +299,6 @@ const NotificationItem = ({
 
   const isRead = notification.readDate !== null;
 
-  const isTeacherAnnouncement =
-    notification.type === NotificationType.Assignment ||
-    notification.type === NotificationType.Calendar ||
-    notification.type === NotificationType.Warning ||
-    notification.type === NotificationType.General ||
-    notification.type === NotificationType.Celebration;
-
   return (
     <div
       key={notification.id}
@@ -361,7 +355,7 @@ const NotificationItem = ({
               )}
               {getNotificationIcon(
                 notification.type,
-                isTeacherAnnouncement
+                isTeacherAnnouncementType(notification.type)
                   ? 'size-[18px] md:size-6 text-darkOrange-6'
                   : '',
               )}
@@ -369,13 +363,13 @@ const NotificationItem = ({
                 size="verySmall"
                 variant={
                   (!isMobile && notification.id === hoveredNotification) ||
-                  isTeacherAnnouncement
+                  isTeacherAnnouncementType(notification.type)
                     ? 'orange'
                     : 'grey'
                 }
                 mode={
                   (!isMobile && notification.id === hoveredNotification) ||
-                  isTeacherAnnouncement
+                  isTeacherAnnouncementType(notification.type)
                     ? 'light100'
                     : 'light'
                 }

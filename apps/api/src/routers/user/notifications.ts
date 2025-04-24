@@ -1,4 +1,4 @@
-import { NotificationType } from '@blms/constants';
+import { NotificationType, StudentGroup } from '@blms/constants';
 import {
   joinedUserNotificationSchema,
   scheduledCourseAnnouncementSchema,
@@ -86,7 +86,7 @@ const insertScheduledCourseAnnouncementProcedure = professorProcedure
       courseId: z.string(),
       type: z.nativeEnum(NotificationType),
       content: z.string(),
-      studentGroup: z.enum(['all', 'summer', 'assignment']),
+      studentGroup: z.nativeEnum(StudentGroup),
       scheduledAt: z.date(),
       timezone: z.string(),
     }),
@@ -110,7 +110,7 @@ const updateScheduledCourseAnnouncementProcedure = professorProcedure
       courseId: z.string(),
       type: z.nativeEnum(NotificationType),
       content: z.string(),
-      studentGroup: z.enum(['all', 'summer', 'assignment']),
+      studentGroup: z.nativeEnum(StudentGroup),
       scheduledAt: z.date(),
       timezone: z.string(),
       id: z.string(),

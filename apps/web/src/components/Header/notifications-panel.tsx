@@ -1,4 +1,3 @@
-import { NotificationType } from '@blms/constants';
 import type { JoinedUserNotification } from '@blms/types';
 import { Popover, PopoverContent, PopoverTrigger, TextTag, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -13,6 +12,7 @@ import {
   getNotificationRedirect,
   getNotificationTitle,
 } from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
+import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 interface NotificationItemProps {
@@ -129,14 +129,11 @@ const NotificationItem = ({
   mode = 'dark',
 }: NotificationItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const isTeacherAnnouncement =
-    notification.type === NotificationType.Assignment ||
-    notification.type === NotificationType.Calendar ||
-    notification.type === NotificationType.Warning ||
-    notification.type === NotificationType.General ||
-    notification.type === NotificationType.Celebration;
 
-  const tagVariant = isHovered || isTeacherAnnouncement ? 'orange' : 'grey';
+  const tagVariant =
+    isHovered || isTeacherAnnouncementType(notification.type)
+      ? 'orange'
+      : 'grey';
   const tagMode = mode === 'dark' ? 'dark100' : 'light100';
 
   return (
@@ -166,7 +163,7 @@ const NotificationItem = ({
                 notification.type,
                 cn(
                   'size-full',
-                  isTeacherAnnouncement
+                  isTeacherAnnouncementType(notification.type)
                     ? 'text-darkOrange-6'
                     : 'text-newBlack-1 dark:text-newGray-4',
                 ),

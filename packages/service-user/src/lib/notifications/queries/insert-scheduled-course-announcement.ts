@@ -1,4 +1,4 @@
-import type { NotificationType } from '@blms/constants';
+import type { NotificationType, StudentGroup } from '@blms/constants';
 import { sql } from '@blms/database';
 
 interface Options {
@@ -6,7 +6,7 @@ interface Options {
   content: string;
   scheduledAt: Date;
   timezone: string;
-  studentGroup: 'all' | 'summer' | 'assignment';
+  studentGroup: StudentGroup;
   courseId: string;
   professorId: string;
 }

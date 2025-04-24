@@ -1,4 +1,4 @@
-import { NotificationType } from '@blms/constants';
+import { NotificationType, StudentGroup } from '@blms/constants';
 import type { ScheduledCourseAnnouncement } from '@blms/types';
 import {
   Button,
@@ -49,7 +49,7 @@ interface AnnouncementModalProps {
 const schema = z.object({
   type: z.string(),
   content: z.string().min(1, { message: t('courses.review.fieldRequired') }),
-  studentGroup: z.enum(['all', 'assignment', 'summer']).optional(),
+  studentGroup: z.nativeEnum(StudentGroup).optional(),
   dateTime: z.date({
     required_error: t(
       'dashboard.teacher.courses.announcementModal.dateRequired',
@@ -133,7 +133,7 @@ export const AnnouncementModal = ({
         courseId,
         type: data.type as NotificationType,
         content: data.content,
-        studentGroup: data.studentGroup || 'all',
+        studentGroup: data.studentGroup || StudentGroup.All,
         scheduledAt: scheduledUtcDate,
         timezone: data.timezone,
         id: existingAnnouncement.id,
@@ -143,7 +143,7 @@ export const AnnouncementModal = ({
         courseId,
         type: data.type as NotificationType,
         content: data.content,
-        studentGroup: data.studentGroup || 'all',
+        studentGroup: data.studentGroup || StudentGroup.All,
         scheduledAt: scheduledUtcDate,
         timezone: data.timezone,
       });
@@ -183,16 +183,13 @@ export const AnnouncementModal = ({
         ...form.getValues(),
         type: existingAnnouncement.type,
         content: existingAnnouncement.content,
-        studentGroup: existingAnnouncement.studentGroup as
-          | 'all'
-          | 'assignment'
-          | 'summer',
+        studentGroup: existingAnnouncement.studentGroup as StudentGroup,
       });
     } else {
       form.reset({
         type: NotificationType.Warning,
         content: '',
-        studentGroup: 'all',
+        studentGroup: StudentGroup.All,
         dateTime: new Date(),
         timezone: 'GMT',
       });
@@ -282,7 +279,7 @@ export const AnnouncementModal = ({
                 <FormField
                   control={form.control}
                   name="studentGroup"
-                  defaultValue="all"
+                  defaultValue={StudentGroup.All}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-left mb-2">
@@ -302,7 +299,7 @@ export const AnnouncementModal = ({
                               label: t('dashboard.announcements.groups.active'),
                             },
                             {
-                              value: 'summerSchool',
+                              value: 'summer',
                               label: t('dashboard.announcements.groups.summer'),
                             },
                           ].map((option) => (

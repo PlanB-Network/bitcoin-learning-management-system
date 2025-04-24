@@ -1,4 +1,4 @@
-import type { NotificationType } from '@blms/constants';
+import type { NotificationType, StudentGroup } from '@blms/constants';
 import { firstRow } from '@blms/database';
 import type { Dependencies } from '#src/dependencies.js';
 import { getUserByIdQuery } from '../../account/queries/get-user.js';
@@ -9,7 +9,7 @@ interface Options {
   content: string;
   scheduledAt: Date;
   timezone: string;
-  studentGroup: 'all' | 'summer' | 'assignment';
+  studentGroup: StudentGroup;
   courseId: string;
   uid: string;
 }
