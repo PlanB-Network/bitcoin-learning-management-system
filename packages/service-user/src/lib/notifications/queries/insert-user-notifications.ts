@@ -11,7 +11,7 @@ type Options = {
   blogId?: string;
 };
 
-export const insertUserNotificationsQuery = ({
+export const insertUserNotificationsAndStatusQuery = ({
   uids,
   type,
   content,

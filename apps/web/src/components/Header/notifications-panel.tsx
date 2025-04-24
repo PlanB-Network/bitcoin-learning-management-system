@@ -12,6 +12,7 @@ import {
   getNotificationRedirect,
   getNotificationTitle,
 } from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
+import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 interface NotificationItemProps {
@@ -36,12 +37,9 @@ export const NotificationsPanel = ({
   const { userNotifications, fetchUserNotifications } =
     useContext(NotificationsContext);
 
-  const unreadNotifications = (userNotifications ? [...userNotifications] : [])
-    .filter((notification) => notification.readDate === null)
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    );
+  const unreadNotifications = (
+    userNotifications ? [...userNotifications] : []
+  ).filter((notification) => notification.readDate === null);
   const hasUnreadNotifications = unreadNotifications.length > 0;
 
   const markNotificationsAsRead =
@@ -131,7 +129,11 @@ const NotificationItem = ({
   mode = 'dark',
 }: NotificationItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const tagVariant = isHovered ? 'orange' : 'grey';
+
+  const tagVariant =
+    isHovered || isTeacherAnnouncementType(notification.type)
+      ? 'orange'
+      : 'grey';
   const tagMode = mode === 'dark' ? 'dark100' : 'light100';
 
   return (
@@ -159,7 +161,12 @@ const NotificationItem = ({
             <div className="size-6">
               {getNotificationIcon(
                 notification.type,
-                'size-full text-newBlack-1 dark:text-newGray-4',
+                cn(
+                  'size-full',
+                  isTeacherAnnouncementType(notification.type)
+                    ? 'text-darkOrange-6'
+                    : 'text-newBlack-1 dark:text-newGray-4',
+                ),
               )}
             </div>
             <TextTag variant={tagVariant} mode={tagMode} size="verySmall">
@@ -172,12 +179,13 @@ const NotificationItem = ({
           <div className="size-2 rounded-full bg-darkOrange-5" />
         </div>
         <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6">
-          {getNotificationContent(
-            notification.type,
-            notification.chapterId || undefined,
-            notification.eventId || undefined,
-            notification.blogId || undefined,
-          )}
+          {notification.content ||
+            getNotificationContent(
+              notification.type,
+              notification.chapterId || undefined,
+              notification.eventId || undefined,
+              notification.blogId || undefined,
+            )}
         </p>
       </Link>
       {onClose && (

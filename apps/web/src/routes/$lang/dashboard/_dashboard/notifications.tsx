@@ -14,6 +14,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import { formatDate, getTimeString } from '#src/utils/date.ts';
+import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -113,18 +114,13 @@ const NotificationsTable = () => {
 
   useEffect(() => {
     if (userNotifications) {
-      setNotifications(
-        [...userNotifications]?.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-        ),
-      );
+      setNotifications([...userNotifications]);
     }
   }, [userNotifications]);
 
   if (userNotifications && userNotifications.length === 0) {
     return (
-      <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
+      <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
         {t('notifications.noRecentNotifications')}
       </p>
     );
@@ -357,16 +353,23 @@ const NotificationItem = ({
               {!isRead && (
                 <div className="rounded-full size-2 bg-darkOrange-5 md:hidden ml-1.5" />
               )}
-              {getNotificationIcon(notification.type)}
+              {getNotificationIcon(
+                notification.type,
+                isTeacherAnnouncementType(notification.type)
+                  ? 'size-[18px] md:size-6 text-darkOrange-6'
+                  : '',
+              )}
               <TextTag
                 size="verySmall"
                 variant={
-                  !isMobile && notification.id === hoveredNotification
+                  (!isMobile && notification.id === hoveredNotification) ||
+                  isTeacherAnnouncementType(notification.type)
                     ? 'orange'
                     : 'grey'
                 }
                 mode={
-                  !isMobile && notification.id === hoveredNotification
+                  (!isMobile && notification.id === hoveredNotification) ||
+                  isTeacherAnnouncementType(notification.type)
                     ? 'light100'
                     : 'light'
                 }
@@ -454,6 +457,11 @@ export const getNotificationTitle = (type: string, courseId?: string) => {
   switch (type) {
     case NotificationType.Calendar24HoursCourse:
     case NotificationType.Calendar5MinutesCourse:
+    case NotificationType.Assignment:
+    case NotificationType.General:
+    case NotificationType.Celebration:
+    case NotificationType.Warning:
+    case NotificationType.Calendar:
       return courseName;
     case NotificationType.Calendar48HoursOnlineEvent:
     case NotificationType.Calendar24HoursInPersonEvent:
@@ -600,12 +608,18 @@ export const getNotificationRedirect = (
       return '/events/';
     case NotificationType.Blog:
       return '/public-communication/';
+    case NotificationType.Assignment:
+    case NotificationType.Calendar:
+    case NotificationType.Celebration:
+    case NotificationType.Warning:
+    case NotificationType.General:
+      return `/dashboard/course/${courseId}`;
     default:
       return '/dashboard/notifications';
   }
 };
 
-const getNotificationDateString = (date: Date) => {
+export const getNotificationDateString = (date: Date) => {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
   const diffInSeconds = Math.floor(diffInMs / 1000);

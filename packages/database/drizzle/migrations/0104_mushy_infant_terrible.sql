@@ -1,0 +1,2 @@
+CREATE TYPE "public"."student_group" AS ENUM('all', 'summer', 'assignment');--> statement-breakpoint
+ALTER TABLE "users"."scheduled_course_notifications" ALTER COLUMN "student_group" SET DATA TYPE "public"."student_group" USING "student_group"::"public"."student_group";

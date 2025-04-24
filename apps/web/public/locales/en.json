@@ -478,6 +478,15 @@
       "upcomingBookingsSubtitle": "Here you can download the list of participants for all in-person events.",
       "userRolesAllocation": "User roles allocation"
     },
+    "announcements": {
+      "groups": {
+        "active": "Students selected for the Project Assignment",
+        "all": "All students registered",
+        "summer": "Students selected for the Summer School"
+      },
+      "pickADate": "Pick a date",
+      "publicationDate": "Date of publication"
+    },
     "bCert": {
       "grade": "Grade",
       "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please <0>reach out to us</0> for assistance."
@@ -687,6 +696,7 @@
       "yourRoles": "Your job positions"
     },
     "course": {
+      "announcement": "Announcement",
       "checkDetailsCompleted": "Here you can check all the details concerning this course you completed.",
       "completionDiploma": "Completion diploma",
       "completionExamInfo": "You have to complete the exam to have access to this feature.",
@@ -768,37 +778,49 @@
     "studentDashboard": "Student dashboard",
     "teacher": {
       "courses": {
+        "allStudents": "All students",
         "analytics": "Analytics",
         "announcementModal": {
           "contentLabel": "Text of the announcement",
-          "contentPlaceholder": "Text",
+          "contentPlaceholder": "Please type here.",
           "create": "Create announcement",
           "dateLabel": "Date of publication",
           "datePlaceholder": "Pick a date",
+          "dateRequired": "Date is required",
+          "editAnnouncement": "Edit announcement",
           "groupLabel": "Select the group of students you want to address",
-          "title": "Write new announcement",
+          "title": "Write an announcement",
           "typeLabel": "What type of announcement is it?",
           "typePlaceholder": "Select one type"
         },
         "announcements": "Announcements",
         "announcementsIntroduction": "In addition to the automatic notifications about class schedules, you have the option to write and schedule extra announcements for your students. For example, you can inform them about logistical changes or last-minute updates.\nStudents will receive these notifications on the platform, and also by email (if they activate this optional feature).",
+        "announcementsPast": "Past anouncements",
+        "announcementsPastDescription": "Here below are listed the announcements that were already published. The list will be cleared out after one month.",
         "announcementsUpcoming": "Upcoming announcements",
         "announcementsUpcomingDescription": "Here below are the future announcements you wrote and scheduled.",
+        "assignmentStudents": "Project Assignment",
         "courseDetails": "Course details",
         "courseLongDescription": "Introductive description",
         "courseModification": "If you need help to edit something in the course, please check this <0>tutorial</0>.",
         "coursesManagementPanel": "Courses panel",
         "curriculum": "Course curriculum",
         "curriculumDescription": "Here is the current curriculum of this course.",
+        "deleteAnnouncementTitle": "Are you sure you want to delete this announcement?",
+        "deleteAnnouncementWarning": "This change is irreversible",
         "editOnGithub": "Edit on Github",
         "examResults": "Exam Results",
         "goal": "Goal",
         "makeModifications": "Need to make modifications?",
+        "noPastAnnouncement": "YOU HAVE NO past announcement at the moment.",
+        "noWrittenAnnouncement": "You have no written announcement at the moment.",
         "objectives": "Objectives",
         "proposeNewCourse": "Propose a new course",
         "quickRecap": "Here you can find all the general information regarding this course.",
         "reviewInfos": "Here you can control and review all the information concerning each course you've coordinated.",
         "reviews": "Reviews",
+        "selectCourse": "Select course",
+        "summerStudents": "Summer School",
         "writeAnnouncement": "Write an announcement"
       },
       "menu": "Teacher menu",
@@ -1064,6 +1086,15 @@
     "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
     "pageTitle": "Oops."
   },
+  "notification": {
+    "types": {
+      "assignment": "Assignment",
+      "calendar": "Calendar alert",
+      "celebration": "Celebration",
+      "general": "General information",
+      "warning": "Warning"
+    }
+  },
   "notifications": {
     "bCertResults": "Your ₿-CERT results are out!",
     "blogNotTranslated": "Sorry, this new blog post is not yet translated in your current language.",
@@ -1101,6 +1132,9 @@
     "payWithBitcoin": "Pay with Bitcoin",
     "terms": "See our <0>general terms</0> and conditions for refund details",
     "total": "Total"
+  },
+  "placeholders": {
+    "selectTimeZone": "Select timezone"
   },
   "podcast": {
     "check": "Check the podcast"
@@ -1420,6 +1454,7 @@
     "credits": "Credits",
     "dashboard": "Dashboard",
     "date": "Date",
+    "day": "Day",
     "delete": "Delete",
     "description": "Description",
     "details": "Details",
@@ -1523,6 +1558,7 @@
     "ticket": "Ticket",
     "tickets": "Tickets",
     "time": "Time",
+    "timeZone": "Timezone",
     "to": "to",
     "topics": "Topics",
     "total": "Total",

@@ -23,3 +23,9 @@ export enum NotificationType {
   Results = 'results',
   Warning = 'warning',
 }
+
+export enum StudentGroup {
+  All = 'all',
+  SummerSchool = 'summer',
+  Assignment = 'assignment',
+}

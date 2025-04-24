@@ -1,7 +1,7 @@
 import type { NotificationType } from '@blms/constants';
 import type { Dependencies } from '#src/dependencies.js';
 import { getExistingNotificationsQuery } from '../queries/get-existing-notifications.js';
-import { insertUserNotificationsQuery } from '../queries/insert-user-notifications.js';
+import { insertUserNotificationsAndStatusQuery } from '../queries/insert-user-notifications.js';
 
 interface Options {
   type: NotificationType;
@@ -31,7 +31,7 @@ export const createInsertUserNotifications = ({ postgres }: Dependencies) => {
     }
 
     await postgres.exec(
-      insertUserNotificationsQuery({
+      insertUserNotificationsAndStatusQuery({
         uids,
         type,
         content,

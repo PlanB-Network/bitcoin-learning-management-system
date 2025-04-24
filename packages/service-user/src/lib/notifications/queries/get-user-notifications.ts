@@ -16,6 +16,7 @@ export const getUserNotificationsQuery = (uid: string) => {
     FROM users.user_notification_status uns
     INNER JOIN users.notifications n
       ON n.id = uns.notification_id
-    WHERE uns.uid = ${uid};
+    WHERE uns.uid = ${uid}
+    ORDER BY uns.created_at DESC;
   `;
 };

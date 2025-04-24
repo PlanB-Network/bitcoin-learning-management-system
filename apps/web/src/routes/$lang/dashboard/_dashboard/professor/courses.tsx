@@ -59,7 +59,7 @@ function DashboardProfessorCourses() {
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8 text-black">
-      <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
+      <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5 max-md:px-4">
         <h3 className="display-small-32px">
           {t('dashboard.teacher.courses.coursesManagementPanel')}
         </h3>
@@ -67,7 +67,7 @@ function DashboardProfessorCourses() {
           {t('dashboard.teacher.profile.teacher')}
         </span>
       </div>
-      <p className="body-14px lg:body-16px text-dashboardSectionTitle">
+      <p className="body-14px lg:body-16px text-dashboardSectionTitle max-md:px-4">
         {t('dashboard.teacher.courses.reviewInfos')}
       </p>
       {!isFetched && <Loader size={'s'} />}
@@ -98,7 +98,7 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
           active: course.index === currentTab,
         }))}
         slice={6}
-        className="max-md:hidden"
+        className="max-md:hidden max-md:px-4"
       >
         <a
           href="https://kutt.planb.network/add-course"
@@ -116,9 +116,9 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
 
       <label
         htmlFor="coursesSelector"
-        className="text-dashboardSectionText leading-tight font-medium md:hidden"
+        className="text-dashboardSectionText leading-tight font-medium md:hidden max-md:px-4"
       >
-        Select course
+        {t('dashboard.teacher.courses.selectCourse')}
       </label>
       <DropdownMenu
         id="coursesSelector"
@@ -138,7 +138,7 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
           `${courses[0].index.toLocaleUpperCase()} - ${courses[0].name}`
         }
         variant="light"
-        className="md:hidden"
+        className="md:hidden max-md:px-4"
       />
 
       {courses?.map((course) => (
@@ -192,11 +192,12 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
               : []),
           ]}
           size={isMobile ? 's' : 'm'}
+          className="max-md:mx-4"
         />
-        <TabsContent value="details">
+        <TabsContent value="details" className="max-md:px-4">
           <CourseDetails course={course} />
         </TabsContent>
-        <TabsContent value="review">
+        <TabsContent value="review" className="max-md:px-4">
           <CourseReview courseId={course.id} />
         </TabsContent>
         <TabsContent value="announcement">
