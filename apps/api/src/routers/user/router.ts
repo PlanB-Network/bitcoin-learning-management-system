@@ -1,5 +1,9 @@
 import { SortDirection, UserPermission, UserRole } from '@blms/constants';
-import { userDetailsSchema, userRolesSchema } from '@blms/schemas';
+import {
+  userAccountSettingsSchema,
+  userDetailsSchema,
+  userRolesSchema,
+} from '@blms/schemas';
 import {
   createChangeCertificateName,
   createChangeDisplayName,
@@ -10,12 +14,18 @@ import {
   createChangeRole,
   createEmailValidationToken,
   createGetTokenInfo,
+  createGetUserAccountSettings,
   createGetUserDetails,
   createGetUsersRoles,
   createPasswordReset,
   createPasswordResetToken,
 } from '@blms/service-user';
-import type { SessionData, UserDetails, UserRoles } from '@blms/types';
+import type {
+  SessionData,
+  UserAccountSettings,
+  UserDetails,
+  UserRoles,
+} from '@blms/types';
 import { z } from 'zod';
 
 import type { Parser } from '#src/trpc/types.js';
@@ -168,14 +178,25 @@ export const userRouter = createTRPCRouter({
       }),
     ),
 
+  getAccountSettings: studentProcedure
+    .input(z.void())
+    .output<Parser<UserAccountSettings | null>>(
+      userAccountSettingsSchema.nullable(),
+    )
+    .query(({ ctx }) =>
+      createGetUserAccountSettings(ctx.dependencies)({
+        uid: ctx.user.uid,
+      }),
+    ),
+
   changeNotificationsSettings: studentProcedure
     .input(
       z.object({
         platformNotifyEvents: z.boolean(),
         platformNotifyCourses: z.boolean(),
         platformNotifyGeneral: z.boolean(),
-        platformNotifyEmailCourses: z.boolean(),
-        platformNotifyEmailGeneral: z.boolean(),
+        emailNotifyCourses: z.boolean(),
+        emailNotifyGeneral: z.boolean(),
       }),
     )
     .output<Parser<void>>(z.void())
@@ -185,8 +206,8 @@ export const userRouter = createTRPCRouter({
         platformNotifyEvents: input.platformNotifyEvents,
         platformNotifyCourses: input.platformNotifyCourses,
         platformNotifyGeneral: input.platformNotifyGeneral,
-        emailNotifyCourses: input.platformNotifyEmailCourses,
-        emailNotifyGeneral: input.platformNotifyEmailGeneral,
+        emailNotifyCourses: input.emailNotifyCourses,
+        emailNotifyGeneral: input.emailNotifyGeneral,
       }),
     ),
   bcert: userBCertRouter,

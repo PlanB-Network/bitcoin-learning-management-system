@@ -390,6 +390,11 @@ const CourseAnnouncements = ({
             (announcement) =>
               new Date(announcement.scheduledAt).getTime() >
               Date.now() - 7 * 24 * 60 * 60 * 1000,
+          )
+          .sort(
+            (a, b) =>
+              new Date(b.scheduledAt).getTime() -
+              new Date(a.scheduledAt).getTime(),
           ),
       );
     }

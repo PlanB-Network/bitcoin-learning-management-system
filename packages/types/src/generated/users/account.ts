@@ -21,6 +21,17 @@ export interface UserAccount {
   updatedAt: Date;
 }
 
+export interface UserAccountSettings {
+  uid: string;
+  platformNotifyEvents: boolean;
+  platformNotifyCourses: boolean;
+  platformNotifyGeneral: boolean;
+  emailNotifyCourses: boolean;
+  emailNotifyGeneral: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface UserDetails {
   uid: string;
   role: UserRole;

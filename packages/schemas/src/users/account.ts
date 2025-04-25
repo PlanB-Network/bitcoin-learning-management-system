@@ -3,6 +3,7 @@ import { z } from 'zod';
 
 import { UserPermission, UserRole } from '@blms/constants';
 import {
+  usersAccountSettings,
   usersAccounts,
   usersApiKeys,
   usersLud4PublicKeys,
@@ -12,6 +13,9 @@ export const userRoleSchema = z.nativeEnum(UserRole);
 export const userPermissionSchema = z.nativeEnum(UserPermission);
 
 export const userAccountSchema = createSelectSchema(usersAccounts);
+
+export const userAccountSettingsSchema =
+  createSelectSchema(usersAccountSettings);
 
 export const userDetailsSchema = userAccountSchema
   .pick({

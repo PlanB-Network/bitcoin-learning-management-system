@@ -19,9 +19,11 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     return ctx.postgres
       .exec(
         sql`
-        SELECT uid
-        FROM users.course_progress
-        WHERE course_id = ${courseId};
+        SELECT cp.uid
+        FROM users.course_progress cp
+        JOIN users.account_settings uas ON cp.uid = uas.uid
+        WHERE cp.course_id = ${courseId}
+        AND uas.platform_notify_courses = TRUE;
         `,
       )
       .then((result) => {
@@ -33,10 +35,12 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     const bookedEventsUids = await ctx.postgres
       .exec(
         sql`
-        SELECT uid
-        FROM users.user_event
-        WHERE event_id = ${eventId}
-        AND booked = TRUE
+        SELECT ue.uid
+        FROM users.user_event ue
+        JOIN users.account_settings uas ON ue.uid = uas.uid
+        WHERE ue.event_id = ${eventId}
+        AND ue.booked = TRUE
+        AND uas.platform_notify_events = TRUE
         `,
       )
       .then((result) => {
@@ -46,11 +50,13 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     const paidEventsUids = await ctx.postgres
       .exec(
         sql`
-        SELECT uid
-        FROM users.event_payment
-        WHERE event_id = ${eventId}
-        AND payment_status = 'paid'
-        `,
+      SELECT ep.uid
+      FROM users.event_payment ep
+      JOIN users.account_settings uas ON ep.uid = uas.uid
+      WHERE ep.event_id = ${eventId}
+      AND ep.payment_status = 'paid'
+      AND uas.platform_notify_events = TRUE
+      `,
       )
       .then((result) => {
         return result.map((row) => row.uid);

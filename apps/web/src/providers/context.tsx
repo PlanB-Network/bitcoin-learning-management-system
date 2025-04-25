@@ -7,6 +7,7 @@ import type {
   JoinedCourse,
   JoinedTutorialLight,
   SessionData,
+  UserAccountSettings,
   UserDetails,
 } from '@blms/types';
 
@@ -21,6 +22,11 @@ interface AppContext {
   user: UserDetails | null | undefined;
   setUser: (user: UserDetails | null) => void;
   refetchUserDetails: () => Promise<void>;
+
+  // Account settings
+  accountSettings: UserAccountSettings | null;
+  setAccountSettings: (settings: UserAccountSettings | null) => void;
+  refetchAccountSettings: () => Promise<void>;
 
   // Session
   session: Session | null | undefined;
@@ -49,6 +55,11 @@ export const AppContext = createContext<AppContext>({
   setUser: () => {},
   refetchUserDetails: async () => {},
 
+  // Account settings
+  accountSettings: null,
+  setAccountSettings: () => {},
+  refetchAccountSettings: async () => {},
+
   // Session
   session: undefined,
   setSession: () => {},
@@ -74,6 +85,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
 
   const [user, setUser] = useState<UserDetails | null | undefined>(undefined);
+  const [accountSettings, setAccountSettings] =
+    useState<UserAccountSettings | null>(null);
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [tutorials, setTutorials] = useState<JoinedTutorialLight[] | null>(
     null,
@@ -93,8 +106,28 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const refetchAccountSettings = async () => {
+    try {
+      const data = await trpcClient.user.getAccountSettings.query();
+      setAccountSettings(data ?? null);
+    } catch {
+      setAccountSettings(null);
+    }
+  };
+
   useEffect(() => {
     refetchUserDetails();
+
+    trpcClient.user.getAccountSettings
+      .query()
+      .then((data) => {
+        if (data) {
+          return setAccountSettings(data);
+        }
+
+        return setAccountSettings(null);
+      })
+      .catch(() => null);
 
     trpcClient.user.getSession
       .query()
@@ -139,6 +172,9 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     user,
     setUser,
     refetchUserDetails,
+    accountSettings,
+    setAccountSettings,
+    refetchAccountSettings,
     session,
     setSession,
     tutorials,
