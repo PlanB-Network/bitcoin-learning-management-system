@@ -218,12 +218,16 @@ const CourseOverview = ({ course }: { course: CourseResponse }) => {
 
       <section className="flex flex-col md:gap-5">
         <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
-          {t('words.professors')}
+          {course.associatedProfessors.length > 0
+            ? t('words.professors')
+            : t('words.professor')}
         </h4>
         <div className="flex h-fit flex-col max-md:gap-4">
-          <span className="uppercase text-darkOrange-5 text-lg">
-            {t('dashboard.course.coordinator')}
-          </span>
+          {course.associatedProfessors.length > 0 ? (
+            <span className="uppercase text-darkOrange-5 text-lg">
+              {t('dashboard.course.coordinator')}
+            </span>
+          ) : null}
           {course.mainProfessors.map((professor) => (
             <AuthorCard
               key={professor.id}

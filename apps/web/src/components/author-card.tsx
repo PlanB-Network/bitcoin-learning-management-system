@@ -23,7 +23,7 @@ export const AuthorCard = ({
     <article {...props} className="flex flex-col w-full">
       <div
         className={cn(
-          'mt-5 md:mt-6 flex max-md:flex-col gap-5 md:gap-7 md:py-5 md:items-start',
+          'flex max-md:flex-col gap-5 md:gap-7 md:py-5 md:items-start',
           centeredContent && 'items-center',
         )}
       >
