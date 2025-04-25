@@ -9,7 +9,7 @@ export const getCalendarEventsQuery = (
   SELECT
     e.id::text as id,
     '' as sub_id,
-    e.type,
+    'event' as type,
     e.name,
     COALESCE(
       (SELECT bu.name FROM content.projects bu WHERE bu.id = e.project_id LIMIT 1),
@@ -34,7 +34,7 @@ export const getCalendarEventsQuery = (
   SELECT
     e.id::text,
     '' as sub_id,
-    e.type,
+    'event' as type,
     e.name,
     COALESCE(
       (SELECT bu.name FROM content.projects bu WHERE bu.id = e.project_id LIMIT 1),
@@ -58,7 +58,7 @@ export const getCalendarEventsQuery = (
   SELECT
     cl.course_id as id,
     cl.chapter_id::text as sub_id,
-    'course' as type,
+    'class' as type,
     CONCAT(UPPER(c.index),' ',cl.title) as name,
     COALESCE(array_to_string(cp_agg.professors, ', '), '') as organizer,
     cl.start_date,

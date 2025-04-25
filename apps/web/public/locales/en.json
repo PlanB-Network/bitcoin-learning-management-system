@@ -514,6 +514,10 @@
     },
     "calendar": {
       "calendar": "Calendar",
+      "eventType": {
+        "class": "Classes",
+        "event": "Events"
+      },
       "personalCalendar": "Personal calendar"
     },
     "careerPortal": {

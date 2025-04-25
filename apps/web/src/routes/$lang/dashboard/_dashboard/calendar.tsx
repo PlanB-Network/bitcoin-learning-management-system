@@ -2,12 +2,19 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { format, getDay, parse, startOfWeek } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
 import { useContext, useEffect, useState } from 'react';
-import type { Components, View } from 'react-big-calendar';
+import type {
+  Components,
+  DateLocalizer,
+  DateRange,
+  Formats,
+  View,
+} from 'react-big-calendar';
 import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
 
 import { Loader, cn } from '@blms/ui';
 
+import FilterIcon from '#src/assets/icons/Filter-black.svg';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.js';
@@ -19,14 +26,9 @@ import { trpc } from '#src/utils/trpc.js';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { CustomAgendaEvent } from '#src/components/Calendar/custom-agenda-event.tsx';
 
-type CourseType =
-  | 'course'
-  | 'lecture'
-  | 'conference'
-  | 'exam'
-  | 'meetup'
-  | 'workshop';
+type CalenderEventType = 'class' | 'event';
 
 export const Route = createFileRoute('/$lang/dashboard/_dashboard/calendar')({
   component: DashboardCalendar,
@@ -38,21 +40,15 @@ function DashboardCalendar() {
 
   const { session } = useContext(AppContext);
 
-  const [currentView, setCurrentView] = useState<View>(Views.MONTH);
+  const [currentView, setCurrentView] = useState<View>(Views.WEEK);
 
   const handleViewChange = (view: View) => {
     setCurrentView(view);
   };
 
-  const courseTypes: CourseType[] = [
-    'course',
-    'lecture',
-    'conference',
-    'exam',
-    'meetup',
-  ];
+  const courseTypes: CalenderEventType[] = ['class', 'event'];
 
-  const courseColor = ['#FF5C00', '#FF9401', '#AD3F00', '#E00000', '#42A86B'];
+  const courseColor = ['#FF5C00', '#AD3F00'];
 
   const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
     upcomingEvents: true,
@@ -81,13 +77,7 @@ function DashboardCalendar() {
     }
   }, [allEvents]);
 
-  const [filter, setFilter] = useState<CourseType[]>([
-    'course',
-    'lecture',
-    'conference',
-    'exam',
-    'meetup',
-  ]);
+  const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);
 
   const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>();
 
@@ -99,7 +89,9 @@ function DashboardCalendar() {
 
     setFilteredEvents(
       events?.filter((e) =>
-        filter.length > 0 ? filter.includes(e.type! as CourseType) : true,
+        filter.length > 0
+          ? filter.includes(e.type! as CalenderEventType)
+          : true,
       ),
     );
   }, [events, filter, filter.length]);
@@ -129,6 +121,13 @@ function DashboardCalendar() {
     event: CustomEventMonth,
   };
 
+  const agendaComponents: Components<CalendarEvent> = {
+    toolbar: CustomToolbar,
+    agenda: {
+      event: CustomAgendaEvent,
+    },
+  };
+
   const scrollToTime = new Date(1970, 1, 1, 9);
 
   useEffect(() => {
@@ -141,6 +140,17 @@ function DashboardCalendar() {
     return <Loader />;
   }
 
+  const formats: Formats = {
+    agendaDateFormat: (date: Date, culture?: string, local?: DateLocalizer) =>
+      local?.format(date, 'eee MMM d', culture || 'en-US') || '',
+
+    agendaTimeRangeFormat: (
+      range: DateRange,
+      culture?: string,
+      local?: DateLocalizer,
+    ) => `${local?.format(range.start, 'h:mm a', culture || 'en-US')}` || '',
+  };
+
   return (
     <div className="flex flex-col gap-4 lg:gap-8 h-full">
       <h3 className="text-2xl max-md:px-6">
@@ -148,21 +158,23 @@ function DashboardCalendar() {
       </h3>
 
       <div className="hidden max-md:px-6 lg:flex">
-        {courseTypes.map((f, index) => (
+        <img className="size-10" src={FilterIcon} alt="" />
+
+        {courseTypes.map((filterName, index) => (
           <button
-            key={f}
+            key={filterName}
             type="button"
             onClick={() =>
               setFilter((prev) =>
                 prev.length === courseTypes.length
-                  ? [f]
-                  : prev.includes(f)
-                    ? prev.filter((p) => p !== f)
-                    : [...prev, f],
+                  ? [filterName]
+                  : prev.includes(filterName)
+                    ? prev.filter((p) => p !== filterName)
+                    : [...prev, filterName],
               )
             }
             style={
-              filter.includes(f)
+              filter.includes(filterName)
                 ? {
                     backgroundColor: `${courseColor[index]}`,
                     color: 'white',
@@ -180,20 +192,20 @@ function DashboardCalendar() {
             }
             className={cn(
               'leading-snug mx-1 px-4 capitalize rounded-xl',
-              filter.includes(f)
+              filter.includes(filterName)
                 ? 'hover:brightness-110'
                 : 'hover:bg-newGray-5',
             )}
           >
-            {f}s
+            {t(`dashboard.calendar.eventType.${filterName}`)}
             <span
               className="ml-2 bg-white rounded-md py-1 px-[6px] text-xs border-gray font-medium"
               style={{
                 color: `${courseColor[index]}`,
-                borderWidth: filter.includes(f) ? '' : '1px',
+                borderWidth: filter.includes(filterName) ? '' : '1px',
               }}
             >
-              {events?.filter((p) => p.type === f).length}
+              {events?.filter((p) => p.type === filterName).length}
             </span>
           </button>
         ))}
@@ -207,7 +219,7 @@ function DashboardCalendar() {
         defaultView={currentView}
         onSelectEvent={(e) => {
           switch (e.type) {
-            case 'course': {
+            case 'class': {
               navigate({
                 to: '/courses/$courseId/$chapterId',
                 params: { courseId: e.id, chapterId: e.subId! },
@@ -228,7 +240,14 @@ function DashboardCalendar() {
           width: '100%',
         }}
         eventPropGetter={customEventGetter}
-        components={currentView === 'month' ? monthComponents : weekComponents}
+        formats={formats}
+        components={
+          currentView === 'month'
+            ? monthComponents
+            : currentView === 'agenda'
+              ? agendaComponents
+              : weekComponents
+        }
         scrollToTime={scrollToTime}
         showAllEvents={true}
       />

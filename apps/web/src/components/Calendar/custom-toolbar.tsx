@@ -1,8 +1,25 @@
-import type { Messages, ToolbarProps, View } from 'react-big-calendar';
-
 import { cn } from '@blms/ui';
-
+import type { Messages, ToolbarProps, View } from 'react-big-calendar';
+import { getDateString } from '#src/utils/date.ts';
 import type { CalendarEvent } from './calendar-event.ts';
+
+const formatAgendaLabel = (label: string): string => {
+  try {
+    const [startDateStr, endDateStr] = label.split(' – ');
+
+    if (!startDateStr || !endDateStr) {
+      return label;
+    }
+
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    return getDateString(startDate, endDate);
+  } catch (error) {
+    console.error('Error formatting agenda label:', error);
+    return label;
+  }
+};
 
 interface ViewNamesGroupProps {
   views: any;
@@ -40,7 +57,6 @@ function ViewNamesGroup({
 }
 
 export default function CustomToolbar({
-  // date, // available, but not used here
   label,
   localizer: { messages },
   onNavigate,
@@ -48,34 +64,38 @@ export default function CustomToolbar({
   view,
   views,
 }: ToolbarProps<CalendarEvent, object>) {
+  const displayLabel = view === 'agenda' ? formatAgendaLabel(label) : label;
+
   return (
-    <div className="rbc-toolbar max-md:px-6">
+    <div className="rbc-toolbar max-md:px-1">
+      {/* Navigation Buttons */}
       <span className="rbc-btn-group examples--custom-toolbar">
         <button
           type="button"
           onClick={() => onNavigate('PREV')}
           aria-label={messages.previous!.toString()}
         >
-          &#60;
+          &#60; {/* Left Arrow */}
         </button>
         <button
           type="button"
           onClick={() => onNavigate('TODAY')}
           aria-label={messages.today!.toString()}
         >
-          {label}
+          {displayLabel}
         </button>
         <button
           type="button"
           onClick={() => onNavigate('NEXT')}
           aria-label={messages.next!.toString()}
         >
-          &#62;
+          &#62; {/* Right Arrow */}
         </button>
       </span>
 
-      <span className="rbc-toolbar-label">{label}</span>
+      <span className="rbc-toolbar-label">{displayLabel}</span>
 
+      {/* View Switcher Buttons */}
       <span className="rbc-btn-group">
         <ViewNamesGroup
           view={view}

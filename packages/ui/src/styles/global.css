@@ -474,10 +474,6 @@
 
 /* react-big-calendar */
 
-.rbc-calendar {
-  max-width: 100% !important;
-}
-
 @media (min-width: 388px) {
   .rbc-toolbar {
     justify-content: space-between !important;
@@ -486,7 +482,7 @@
 
 @media (min-width: 1024px) {
   .rbc-calendar {
-    max-width: calc(100vw - 370px) !important;
+    max-width: min(calc(100vw - 380px), 1000px) !important;
   }
 
   .rbc-toolbar {
@@ -494,10 +490,12 @@
   }
 }
 
-@media (min-width: 1750px) {
-  .rbc-calendar {
-    max-width: calc(100vw - 430px) !important;
-  }
+.rbc-agenda-table th:nth-child(2) {
+  display: none !important;
+}
+
+.rbc-agenda-table tr td:nth-child(2) {
+  display: none !important;
 }
 
 .rbc-day-slot .rbc-time-slot {
@@ -514,6 +512,11 @@
   border: 0 !important;
   overflow: visible !important;
 }
+.rcb-event-content:hover {
+  background-color: #ffffff !important;
+  color: #fff !important;
+}
+
 .rbc-event-label {
   display: none !important;
 }
@@ -524,6 +527,19 @@
 
 .rbc-current-time-indicator {
   background-color: #ff792e !important;
+}
+
+.rbc-btn-group button {
+  border-radius: 10px;
+  border: 1px solid var(--Grey-4, #ccc);
+  background: var(--Grey-white, #fff);
+  font-size: 14px;
+}
+
+@media (min-width: 1024px) {
+  .rbc-btn-group button {
+    font-size: 16px;
+  }
 }
 
 .rbc-toolbar {

@@ -3,40 +3,22 @@ import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
 import { FaVideo } from 'react-icons/fa';
 
-import type { CalendarEvent } from './calendar-event.ts';
+import type { CalendarEvent } from './calendar-event.js';
 
-type CustomEventProps = EventProps<CalendarEvent>;
+type CustomAgendaEventProps = EventProps<CalendarEvent>;
 
-export const CustomEvent = ({ event }: CustomEventProps) => {
+export const CustomAgendaEvent = ({ event }: CustomAgendaEventProps) => {
   const [isSelected, setIsSelected] = useState(false);
-
-  let cssClasses: string;
-
-  switch (event.type) {
-    case 'event': {
-      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
-      break;
-    }
-    case 'class': {
-      cssClasses = 'bg-darkOrange-0 text-darkOrange-5';
-      break;
-    }
-    default: {
-      cssClasses = 'bg-darkGreen-6 text-darkGreen-1';
-      break;
-    }
-  }
 
   return (
     <div
-      className={`${cssClasses}`}
+      className="md:ml-2 md:mt-2"
       style={{
         padding: '10px',
         width: '100%',
-        // maxHeight: `${isSelected ? '100%' : ''}`,
         height: `${isSelected ? 'fit-content' : '100%'}`,
-        paddingLeft: 8,
-        paddingTop: 8,
+        paddingLeft: 0,
+        paddingTop: 0,
         overflow: `${isSelected ? 'hidden' : 'hidden'}`,
       }}
       onPointerEnter={() => {
@@ -46,15 +28,18 @@ export const CustomEvent = ({ event }: CustomEventProps) => {
         setIsSelected(!isSelected);
       }}
     >
-      <div className="flex flex-row text-sm pl-1">
-        {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
+      <div className="flex flex-row text-sm">
+        <div className="font-semibold text-sm">{event.title}</div>
         {event.isOnline && (
           <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
         )}
       </div>
-      <div className="font-semibold text-sm">{event.title}</div>
+
       <div className="text-sm">{event.organizer}</div>
       <div className="text-sm">{event.addressLine1}</div>
+      <div className="text-sm mt-1">
+        {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
+      </div>
     </div>
   );
 };

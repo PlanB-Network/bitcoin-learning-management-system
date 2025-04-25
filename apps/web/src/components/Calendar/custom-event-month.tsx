@@ -10,38 +10,26 @@ type CustomEventProps = EventProps<CalendarEvent>;
 export const CustomEventMonth = ({ event }: CustomEventProps) => {
   const [isSelected, setIsSelected] = useState(false);
 
-  let cssclasses: string;
+  let cssClasses: string;
 
   switch (event.type) {
-    case 'lecture': {
-      cssclasses = 'bg-yellow-6 text-yellow-1';
+    case 'event': {
+      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
       break;
     }
-    case 'conference': {
-      cssclasses = 'bg-[#f2eae5] text-darkOrange-7';
-      break;
-    }
-    case 'exam': {
-      cssclasses = 'bg-red-1 text-red-5';
-      break;
-    }
-    case 'meetups': {
-      cssclasses = 'bg-darkGreen-6 text-darkGreen-1';
-      break;
-    }
-    case 'course': {
-      cssclasses = 'bg-darkOrange-0 text-darkOrange-5';
+    case 'class': {
+      cssClasses = 'bg-darkOrange-0 text-darkOrange-5';
       break;
     }
     default: {
-      cssclasses = 'bg-darkGreen-6 text-darkGreen-1';
+      cssClasses = 'bg-darkGreen-6 text-darkGreen-1';
       break;
     }
   }
 
   return (
     <div
-      className={`${cssclasses} flex flex-col h-[30px] hover:size-auto hover:relative hover:z-20 transition-all duration-200`}
+      className={`${cssClasses} flex flex-col h-[30px] hover:size-auto hover:relative hover:z-20 transition-all duration-200`}
       style={{
         padding: '10px',
         width: '100%',
