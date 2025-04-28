@@ -98,8 +98,8 @@ export const CourseOverview = ({ course }: { course: CourseResponse }) => {
           ))}
         </div>
         {course.associatedProfessors.length > 0 ? (
-          <div className="flex h-fit flex-col max-md:gap-4">
-            <span className="uppercase text-darkOrange-5 text-lg- ">
+          <div className="flex h-fit flex-col">
+            <span className="max-md:mt-6 uppercase text-darkOrange-5 text-lg ">
               {t('courses.details.associatedProfessors')}
             </span>
             <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
