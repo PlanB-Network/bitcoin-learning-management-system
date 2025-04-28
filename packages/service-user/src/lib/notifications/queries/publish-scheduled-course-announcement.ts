@@ -15,6 +15,8 @@ export const publishScheduledCourseAnnouncementQuery = ({
             SELECT cp.uid, sd.notification_id, sd.scheduled_id
             FROM users.course_progress cp
             JOIN scheduled_data sd ON cp.course_id = sd.course_id
+            JOIN users.account_settings uas ON cp.uid = uas.uid
+            WHERE uas.platform_notify_courses = true
         ),
         inserted_status AS (
             INSERT INTO users.user_notification_status (uid, notification_id, created_at)

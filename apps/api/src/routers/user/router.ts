@@ -1,20 +1,31 @@
 import { SortDirection, UserPermission, UserRole } from '@blms/constants';
-import { userDetailsSchema, userRolesSchema } from '@blms/schemas';
+import {
+  userAccountSettingsSchema,
+  userDetailsSchema,
+  userRolesSchema,
+} from '@blms/schemas';
 import {
   createChangeCertificateName,
   createChangeDisplayName,
   createChangeEmailConfirmation,
+  createChangeNotificationsSettings,
   createChangePassword,
   createChangePermission,
   createChangeRole,
   createEmailValidationToken,
   createGetTokenInfo,
+  createGetUserAccountSettings,
   createGetUserDetails,
   createGetUsersRoles,
   createPasswordReset,
   createPasswordResetToken,
 } from '@blms/service-user';
-import type { SessionData, UserDetails, UserRoles } from '@blms/types';
+import type {
+  SessionData,
+  UserAccountSettings,
+  UserDetails,
+  UserRoles,
+} from '@blms/types';
 import { z } from 'zod';
 
 import type { Parser } from '#src/trpc/types.js';
@@ -164,6 +175,39 @@ export const userRouter = createTRPCRouter({
         uid: ctx.user.uid,
         oldPassword: input.oldPassword,
         newPassword: input.newPassword,
+      }),
+    ),
+
+  getAccountSettings: studentProcedure
+    .input(z.void())
+    .output<Parser<UserAccountSettings | null>>(
+      userAccountSettingsSchema.nullable(),
+    )
+    .query(({ ctx }) =>
+      createGetUserAccountSettings(ctx.dependencies)({
+        uid: ctx.user.uid,
+      }),
+    ),
+
+  changeNotificationsSettings: studentProcedure
+    .input(
+      z.object({
+        platformNotifyEvents: z.boolean(),
+        platformNotifyCourses: z.boolean(),
+        platformNotifyGeneral: z.boolean(),
+        emailNotifyCourses: z.boolean(),
+        emailNotifyGeneral: z.boolean(),
+      }),
+    )
+    .output<Parser<void>>(z.void())
+    .mutation(({ ctx, input }) =>
+      createChangeNotificationsSettings(ctx.dependencies)({
+        uid: ctx.user.uid,
+        platformNotifyEvents: input.platformNotifyEvents,
+        platformNotifyCourses: input.platformNotifyCourses,
+        platformNotifyGeneral: input.platformNotifyGeneral,
+        emailNotifyCourses: input.emailNotifyCourses,
+        emailNotifyGeneral: input.emailNotifyGeneral,
       }),
     ),
   bcert: userBCertRouter,
