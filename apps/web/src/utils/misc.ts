@@ -6,7 +6,8 @@ export const isDevelopmentEnvironment = () =>
   window.location.hostname.startsWith('localhost');
 
 export const isTestnetOrDevelopmentEnvironment = () =>
-  isDevelopmentEnvironment() || window.location.hostname.startsWith('testnet');
+  isDevelopmentEnvironment() ||
+  window.location.hostname.startsWith('planbtest');
 
 export const base64ToBlob = (
   base64: string,
