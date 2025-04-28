@@ -13,7 +13,8 @@ import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { CourseExams, CourseRatings } from './$courseId.tsx';
+import { CourseRatings } from './-components/course-ratings.tsx';
+import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/course/completed',
@@ -156,6 +157,8 @@ const CompletedCourseDetails = ({
               {t('dashboard.course.checkDetailsCompleted')}
             </p>
           </div>
+
+          {/* Curriculum */}
           <CourseCurriculum
             course={course}
             completedChapters={courseProgress?.chapters.map(
@@ -170,6 +173,7 @@ const CompletedCourseDetails = ({
             </h4>
           </CourseCurriculum>
 
+          {/* RetakeExam */}
           {isExamResultsFetched && examResults && examResults.length > 0 && (
             <>
               <Divider
@@ -177,7 +181,7 @@ const CompletedCourseDetails = ({
                 width="w-full"
                 mode="light"
               />
-              <CourseExams
+              <CourseRetakeExam
                 courseId={courseId}
                 courseIndex={courseIndex}
                 examLink={`/courses/${courseId}/${
@@ -193,6 +197,7 @@ const CompletedCourseDetails = ({
             </>
           )}
 
+          {/* Ratings */}
           <Divider
             className="mt-10 max-w-[948px]"
             width="w-full"
@@ -212,6 +217,7 @@ const CompletedCourseDetails = ({
             mode="light"
           />
 
+          {/* Professor */}
           <section className="flex flex-col mt-5 md:mt-10 md:gap-5">
             <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
               {t('words.teacher')}

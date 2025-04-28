@@ -1,8 +1,8 @@
-import { format } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
 import { FaVideo } from 'react-icons/fa';
 
+import { format, isSameDay } from 'date-fns';
 import type { CalendarEvent } from './calendar-event.js';
 
 type CustomAgendaEventProps = EventProps<CalendarEvent>;
@@ -19,14 +19,10 @@ export const CustomAgendaEvent = ({ event }: CustomAgendaEventProps) => {
         height: `${isSelected ? 'fit-content' : '100%'}`,
         paddingLeft: 0,
         paddingTop: 0,
-        overflow: `${isSelected ? 'hidden' : 'hidden'}`,
+        overflow: 'hidden',
       }}
-      onPointerEnter={() => {
-        setIsSelected(!isSelected);
-      }}
-      onPointerLeave={() => {
-        setIsSelected(!isSelected);
-      }}
+      onPointerEnter={() => setIsSelected(true)}
+      onPointerLeave={() => setIsSelected(false)}
     >
       <div className="flex flex-row text-sm">
         <div className="font-semibold text-sm">{event.title}</div>
@@ -37,9 +33,12 @@ export const CustomAgendaEvent = ({ event }: CustomAgendaEventProps) => {
 
       <div className="text-sm">{event.organizer}</div>
       <div className="text-sm">{event.addressLine1}</div>
-      <div className="text-sm mt-1">
-        {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
-      </div>
+
+      {isSameDay(event.start, event.end) && (
+        <div className="text-sm mt-1">
+          {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
+        </div>
+      )}
     </div>
   );
 };
