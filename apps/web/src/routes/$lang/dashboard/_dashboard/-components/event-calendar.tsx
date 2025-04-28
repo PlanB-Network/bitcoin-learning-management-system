@@ -1,7 +1,7 @@
 import { useNavigate } from '@tanstack/react-router';
 import { format, getDay, parse, startOfWeek } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type {
   Components,
   DateLocalizer,
@@ -19,17 +19,24 @@ import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Loader } from '@blms/ui';
 import { CustomAgendaEvent } from '#src/components/Calendar/custom-agenda-event.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 
-type CalenderEventType = 'class' | 'event';
-
-export const EventCalendar = ({
-  filter,
-  events,
-}: { filter: CalenderEventType[]; events: CalendarEvent[] }) => {
+export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
   const navigate = useNavigate();
 
-  const [currentView, setCurrentView] = useState<View>(Views.WEEK);
+  const isMobile = useSmaller('md');
+
+  const [currentView, setCurrentView] = useState<View>();
+
+  useEffect(() => {
+    if (isMobile) {
+      setCurrentView(Views.MONTH);
+    } else {
+      setCurrentView(Views.WEEK);
+    }
+  }, [isMobile]);
 
   const handleViewChange = (view: View) => {
     setCurrentView(view);
@@ -80,7 +87,9 @@ export const EventCalendar = ({
     ) => `${local?.format(range.start, 'h:mm a', culture || 'en-US')}` || '',
   };
 
-  return (
+  return currentView === undefined ? (
+    <Loader />
+  ) : (
     <Calendar
       localizer={localizer}
       events={events}

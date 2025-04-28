@@ -125,7 +125,7 @@ function DashboardCalendar() {
         ))}
       </div>
 
-      <EventCalendar filter={filter} events={events ?? []} />
+      <EventCalendar events={events ?? []} />
     </div>
   );
 }

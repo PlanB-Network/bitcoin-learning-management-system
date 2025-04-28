@@ -323,9 +323,5 @@ const CourseCalendar = ({
     },
   );
 
-  const filter = ['class'] as CalenderEventType[];
-
-  type CalenderEventType = 'class' | 'event';
-
-  return <EventCalendar filter={filter} events={events ?? []} />;
+  return <EventCalendar events={events ?? []} />;
 };
