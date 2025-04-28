@@ -91,11 +91,8 @@ function EventDetails() {
             <h1 className="text-lg md:text-2xl text-orange-500 font-medium">
               {event?.name}
             </h1>
-            <p className="text-sm md:text-lg font-medium">
-              {event?.description}
-            </p>
 
-            <div className="w-full flex flex-col md:flex-row gap-2 md:gap-6">
+            <div className="w-full flex flex-col md:flex-row gap-2 md:gap-6 mt-6">
               <div className="flex flex-col gap-6 w-full items-center">
                 {videoUrl && (
                   <iframe
@@ -117,6 +114,10 @@ function EventDetails() {
                 )}
               </div>
             </div>
+
+            <p className="text-sm md:text-lg font-medium mt-6">
+              {event?.description}
+            </p>
           </div>
         )}
 
