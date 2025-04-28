@@ -490,14 +490,6 @@
   }
 }
 
-.rbc-agenda-table th:nth-child(2) {
-  display: none !important;
-}
-
-.rbc-agenda-table tr td:nth-child(2) {
-  display: none !important;
-}
-
 .rbc-day-slot .rbc-time-slot {
   border-top: 0px !important;
 }

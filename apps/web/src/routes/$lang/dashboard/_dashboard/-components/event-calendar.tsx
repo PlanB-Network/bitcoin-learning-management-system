@@ -1,0 +1,125 @@
+import { useNavigate } from '@tanstack/react-router';
+import { format, getDay, parse, startOfWeek } from 'date-fns';
+import { enUS } from 'date-fns/locale/en-US';
+import { useState } from 'react';
+import type {
+  Components,
+  DateLocalizer,
+  DateRange,
+  Formats,
+  View,
+} from 'react-big-calendar';
+import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
+import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
+import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
+import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.js';
+import { CustomEvent } from '#src/components/Calendar/custom-event.js';
+import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
+import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
+
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { CustomAgendaEvent } from '#src/components/Calendar/custom-agenda-event.tsx';
+
+type CalenderEventType = 'class' | 'event';
+
+export const EventCalendar = ({
+  filter,
+  events,
+}: { filter: CalenderEventType[]; events: CalendarEvent[] }) => {
+  const navigate = useNavigate();
+
+  const [currentView, setCurrentView] = useState<View>(Views.WEEK);
+
+  const handleViewChange = (view: View) => {
+    setCurrentView(view);
+  };
+
+  const locales = {
+    'en-US': enUS,
+  };
+
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+  });
+
+  const weekComponents: Components<CalendarEvent> = {
+    toolbar: CustomToolbar,
+    event: CustomEvent,
+    week: {
+      header: CustomWeekHeader,
+    },
+  };
+
+  const monthComponents: Components<CalendarEvent> = {
+    toolbar: CustomToolbar,
+    event: CustomEventMonth,
+  };
+
+  const agendaComponents: Components<CalendarEvent> = {
+    toolbar: CustomToolbar,
+    agenda: {
+      event: CustomAgendaEvent,
+    },
+  };
+
+  const scrollToTime = new Date(1970, 1, 1, 9);
+
+  const formats: Formats = {
+    agendaDateFormat: (date: Date, culture?: string, local?: DateLocalizer) =>
+      local?.format(date, 'eee MMM d', culture || 'en-US') || '',
+
+    agendaTimeRangeFormat: (
+      range: DateRange,
+      culture?: string,
+      local?: DateLocalizer,
+    ) => `${local?.format(range.start, 'h:mm a', culture || 'en-US')}` || '',
+  };
+
+  return (
+    <Calendar
+      localizer={localizer}
+      events={events}
+      views={['week', 'month', 'agenda']}
+      onView={handleViewChange}
+      defaultView={currentView}
+      onSelectEvent={(e) => {
+        switch (e.type) {
+          case 'class': {
+            navigate({
+              to: '/courses/$courseId/$chapterId',
+              params: { courseId: e.id, chapterId: e.subId! },
+            });
+            break;
+          }
+          default: {
+            navigate({
+              to: '/events/$eventId',
+              params: { eventId: e.id },
+            });
+            break;
+          }
+        }
+      }}
+      style={{
+        height: '829px',
+        width: '100%',
+      }}
+      eventPropGetter={customEventGetter}
+      formats={formats}
+      components={
+        currentView === 'month'
+          ? monthComponents
+          : currentView === 'agenda'
+            ? agendaComponents
+            : weekComponents
+      }
+      scrollToTime={scrollToTime}
+      showAllEvents={true}
+    />
+  );
+};

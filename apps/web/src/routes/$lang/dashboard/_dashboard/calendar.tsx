@@ -1,32 +1,17 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { format, getDay, parse, startOfWeek } from 'date-fns';
-import { enUS } from 'date-fns/locale/en-US';
 import { useContext, useEffect, useState } from 'react';
-import type {
-  Components,
-  DateLocalizer,
-  DateRange,
-  Formats,
-  View,
-} from 'react-big-calendar';
-import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
 
 import { Loader, cn } from '@blms/ui';
 
 import FilterIcon from '#src/assets/icons/Filter-black.svg';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
-import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
-import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.js';
-import { CustomEvent } from '#src/components/Calendar/custom-event.js';
-import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
-import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { CustomAgendaEvent } from '#src/components/Calendar/custom-agenda-event.tsx';
+import { EventCalendar } from './-components/event-calendar.tsx';
 
 type CalenderEventType = 'class' | 'event';
 
@@ -40,95 +25,35 @@ function DashboardCalendar() {
 
   const { session } = useContext(AppContext);
 
-  const [currentView, setCurrentView] = useState<View>(Views.WEEK);
-
-  const handleViewChange = (view: View) => {
-    setCurrentView(view);
-  };
-
   const courseTypes: CalenderEventType[] = ['class', 'event'];
 
   const courseColor = ['#FF5C00', '#AD3F00'];
 
-  const { data: allEvents } = trpc.user.calendar.getCalendarEvents.useQuery({
-    upcomingEvents: true,
-    userSpecific: true,
-  });
-
-  const [events, setEvents] = useState<CalendarEvent[]>();
-
-  useEffect(() => {
-    if (allEvents) {
-      const ev: CalendarEvent[] = allEvents?.map((e) => ({
-        title: e.name,
-        type: e.type,
-        id: e.id,
-        subId: e.subId,
-        addressLine1: e.addressLine1,
-        organizer: e.organizer,
-        start: e.startDate!,
-        end: e.endDate!,
-        isOnline: e.isOnline,
-      }));
-
-      if (ev) {
-        setEvents(ev);
-      }
-    }
-  }, [allEvents]);
+  const { data: events } = trpc.user.calendar.getCalendarEvents.useQuery(
+    { upcomingEvents: true, userSpecific: true },
+    {
+      select: (allEvents) =>
+        allEvents
+          ?.filter((e) =>
+            filter.length > 0
+              ? filter.includes(e.type as CalenderEventType)
+              : true,
+          )
+          .map<CalendarEvent>((e) => ({
+            title: e.name,
+            type: e.type,
+            id: e.id,
+            subId: e.subId,
+            addressLine1: e.addressLine1,
+            organizer: e.organizer,
+            start: e.startDate!,
+            end: e.endDate!,
+            isOnline: e.isOnline,
+          })),
+    },
+  );
 
   const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);
-
-  const [filteredEvents, setFilteredEvents] = useState<CalendarEvent[]>();
-
-  useEffect(() => {
-    if (!events || filter.length === 0) {
-      setFilteredEvents([]);
-      return;
-    }
-
-    setFilteredEvents(
-      events?.filter((e) =>
-        filter.length > 0
-          ? filter.includes(e.type! as CalenderEventType)
-          : true,
-      ),
-    );
-  }, [events, filter, filter.length]);
-
-  const locales = {
-    'en-US': enUS,
-  };
-
-  const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
-  });
-
-  const weekComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
-    event: CustomEvent,
-    week: {
-      header: CustomWeekHeader,
-    },
-  };
-
-  const monthComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
-    event: CustomEventMonth,
-  };
-
-  const agendaComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
-    agenda: {
-      event: CustomAgendaEvent,
-    },
-  };
-
-  const scrollToTime = new Date(1970, 1, 1, 9);
 
   useEffect(() => {
     if (session === null) {
@@ -139,17 +64,6 @@ function DashboardCalendar() {
   if (!session) {
     return <Loader />;
   }
-
-  const formats: Formats = {
-    agendaDateFormat: (date: Date, culture?: string, local?: DateLocalizer) =>
-      local?.format(date, 'eee MMM d', culture || 'en-US') || '',
-
-    agendaTimeRangeFormat: (
-      range: DateRange,
-      culture?: string,
-      local?: DateLocalizer,
-    ) => `${local?.format(range.start, 'h:mm a', culture || 'en-US')}` || '',
-  };
 
   return (
     <div className="flex flex-col gap-4 lg:gap-8 h-full">
@@ -211,46 +125,7 @@ function DashboardCalendar() {
         ))}
       </div>
 
-      <Calendar
-        localizer={localizer}
-        events={filteredEvents}
-        views={['week', 'month', 'agenda']}
-        onView={handleViewChange}
-        defaultView={currentView}
-        onSelectEvent={(e) => {
-          switch (e.type) {
-            case 'class': {
-              navigate({
-                to: '/courses/$courseId/$chapterId',
-                params: { courseId: e.id, chapterId: e.subId! },
-              });
-              break;
-            }
-            default: {
-              navigate({
-                to: '/events/$eventId',
-                params: { eventId: e.id },
-              });
-              break;
-            }
-          }
-        }}
-        style={{
-          height: '829px',
-          width: '100%',
-        }}
-        eventPropGetter={customEventGetter}
-        formats={formats}
-        components={
-          currentView === 'month'
-            ? monthComponents
-            : currentView === 'agenda'
-              ? agendaComponents
-              : weekComponents
-        }
-        scrollToTime={scrollToTime}
-        showAllEvents={true}
-      />
+      <EventCalendar filter={filter} events={events ?? []} />
     </div>
   );
 }
