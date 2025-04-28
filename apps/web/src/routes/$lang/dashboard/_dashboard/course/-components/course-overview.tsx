@@ -54,7 +54,7 @@ export const CourseOverview = ({ course }: { course: CourseResponse }) => {
       <CourseAnnouncements courseId={course.id} />
 
       {containsChapterStartDate ? (
-        <div className="flex flex-col gap-6 mt-6 text-xl">
+        <div className="flex flex-col gap-6 mt-6 text-xl course-overview">
           <h3 className="subtitle-large-med-20px text-newBlack-1">
             {t('dashboard.course.courseCalendar')}
           </h3>

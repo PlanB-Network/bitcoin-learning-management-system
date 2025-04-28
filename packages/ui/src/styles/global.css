@@ -480,6 +480,10 @@
   }
 }
 
+.course-overview .rbc-calendar {
+  max-width: min(calc(100vw - 32px), 1000px) !important;
+}
+
 @media (min-width: 1024px) {
   .rbc-calendar {
     max-width: min(calc(100vw - 380px), 1000px) !important;
