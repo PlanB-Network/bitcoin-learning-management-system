@@ -19,7 +19,6 @@ import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Loader } from '@blms/ui';
 import { CustomAgendaEvent } from '#src/components/Calendar/custom-agenda-event.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
@@ -28,13 +27,14 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
 
   const isMobile = useSmaller('md');
 
-  const [currentView, setCurrentView] = useState<View>();
+  const [currentView, setCurrentView] = useState<View>(() =>
+    isMobile ? Views.MONTH : Views.WEEK,
+  );
 
   useEffect(() => {
-    if (isMobile) {
-      setCurrentView(Views.MONTH);
-    } else {
-      setCurrentView(Views.WEEK);
+    const targetView = isMobile ? Views.MONTH : Views.WEEK;
+    if (targetView !== currentView) {
+      setCurrentView(targetView);
     }
   }, [isMobile]);
 
@@ -87,15 +87,13 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
     ) => `${local?.format(range.start, 'h:mm a', culture || 'en-US')}` || '',
   };
 
-  return currentView === undefined ? (
-    <Loader />
-  ) : (
+  return (
     <Calendar
       localizer={localizer}
       events={events}
       views={['week', 'month', 'agenda']}
       onView={handleViewChange}
-      defaultView={currentView}
+      view={currentView}
       onSelectEvent={(e) => {
         switch (e.type) {
           case 'class': {

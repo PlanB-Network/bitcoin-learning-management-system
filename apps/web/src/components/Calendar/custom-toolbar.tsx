@@ -68,42 +68,44 @@ export default function CustomToolbar({
 
   return (
     <div className="rbc-toolbar max-md:px-1">
-      {/* Navigation Buttons */}
-      <span className="rbc-btn-group examples--custom-toolbar">
-        <button
-          type="button"
-          onClick={() => onNavigate('PREV')}
-          aria-label={messages.previous!.toString()}
-        >
-          &#60; {/* Left Arrow */}
-        </button>
-        <button
-          type="button"
-          onClick={() => onNavigate('TODAY')}
-          aria-label={messages.today!.toString()}
-        >
-          {displayLabel}
-        </button>
-        <button
-          type="button"
-          onClick={() => onNavigate('NEXT')}
-          aria-label={messages.next!.toString()}
-        >
-          &#62; {/* Right Arrow */}
-        </button>
-      </span>
+      <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
+        {/* Navigation Buttons */}
+        <span className="rbc-btn-group examples--custom-toolbar">
+          <button
+            type="button"
+            onClick={() => onNavigate('PREV')}
+            aria-label={messages.previous!.toString()}
+          >
+            &#60; {/* Left Arrow */}
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigate('TODAY')}
+            aria-label={messages.today!.toString()}
+          >
+            {displayLabel}
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigate('NEXT')}
+            aria-label={messages.next!.toString()}
+          >
+            &#62; {/* Right Arrow */}
+          </button>
+        </span>
 
-      <span className="rbc-toolbar-label">{displayLabel}</span>
+        <span className="rbc-toolbar-label">{displayLabel}</span>
 
-      {/* View Switcher Buttons */}
-      <span className="rbc-btn-group">
-        <ViewNamesGroup
-          view={view}
-          views={views}
-          messages={messages}
-          onView={onView}
-        />
-      </span>
+        {/* View Switcher Buttons */}
+        <span className="rbc-btn-group">
+          <ViewNamesGroup
+            view={view}
+            views={views}
+            messages={messages}
+            onView={onView}
+          />
+        </span>
+      </div>
     </div>
   );
 }
