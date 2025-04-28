@@ -276,7 +276,9 @@ const CourseAnnouncementItem = ({
               {getNotificationDateString(new Date(announcement.scheduledAt))}
             </span>
           </div>
-          <p className="body-14px text-newBlack-1">{announcement.content}</p>
+          <p className="body-14px text-newBlack-1 whitespace-pre-line">
+            {announcement.content}
+          </p>
         </div>
         <span className="px-4 w-[140px] shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
           {getNotificationDateString(new Date(announcement.scheduledAt))}

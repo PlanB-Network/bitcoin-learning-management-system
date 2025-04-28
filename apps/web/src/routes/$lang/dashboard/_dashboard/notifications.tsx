@@ -387,7 +387,7 @@ const NotificationItem = ({
               {getNotificationDateString(new Date(notification.createdAt))}
             </span>
           </div>
-          <p className="body-14px text-newBlack-1">
+          <p className="body-14px text-newBlack-1 whitespace-pre-line">
             {notification.content ||
               getNotificationContent(
                 notification.type,

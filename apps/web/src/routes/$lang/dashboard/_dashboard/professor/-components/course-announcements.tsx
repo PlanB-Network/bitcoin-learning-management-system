@@ -111,7 +111,9 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                       )}
                     </span>
                   </div>
-                  <p className="body-14px">{announcement.content}</p>
+                  <p className="body-14px whitespace-pre-line">
+                    {announcement.content}
+                  </p>
                 </div>
                 <div className="flex gap-3 items-center max-md:mt-2.5">
                   <div className="flex flex-col items-center md:p-4 w-[140px] shrink-0 text-center body-14px max-md:hidden">
