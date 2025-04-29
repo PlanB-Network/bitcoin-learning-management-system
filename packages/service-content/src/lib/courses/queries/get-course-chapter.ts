@@ -23,6 +23,7 @@ export const getCourseChapterQuery = (chapterId: string, language?: string) => {
       cl.custom_tc_disclaimer,
       cl.start_date,
       cl.end_date,
+      cl.release_date,
       timezone,
       address_line_1,
       address_line_2,

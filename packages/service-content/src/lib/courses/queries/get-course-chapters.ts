@@ -31,6 +31,7 @@ export const getCourseChaptersQuery = ({
         c.custom_tc_disclaimer,
         c.start_date,
         c.end_date,
+        c.release_date,
         c.timezone,
         c.address_line_1,
         c.address_line_2,

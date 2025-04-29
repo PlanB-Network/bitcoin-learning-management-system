@@ -86,6 +86,7 @@ export interface CourseChapterLocalized {
   customTcDisclaimer: string | null;
   startDate: Date | null;
   endDate: Date | null;
+  releaseDate: Date | null;
   timezone: string | null;
   addressLine1: string | null;
   addressLine2: string | null;
@@ -124,6 +125,7 @@ export interface JoinedCourseChapter {
   customTcDisclaimer: string | null;
   startDate: Date | null;
   endDate: Date | null;
+  releaseDate: Date | null;
   timezone: string | null;
   liveUrl: string | null;
   chatUrl: string | null;

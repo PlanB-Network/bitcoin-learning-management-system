@@ -10,6 +10,7 @@ import congratsDark from '#src/assets/animations/congrats_animation_dark.webm';
 import congratsDarkMobile from '#src/assets/animations/congrats_animation_dark_mobile.webm';
 import completionStepsMobile from '#src/assets/courses/completion-steps-course-mobile.webp?no-inline';
 import completionSteps from '#src/assets/courses/completion-steps-course.webp?no-inline';
+import conclusionBlurred from '#src/assets/courses/conclusion_blurred.webp?no-inline';
 import BookPixel from '#src/assets/icons/book-pixelated.svg?react';
 import BookOpen from '#src/assets/icons/book_open.svg?react';
 import FailurePixel from '#src/assets/icons/failure-pixelated.svg?react';
@@ -73,6 +74,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   const reviewChapterId = courseChapters?.find(
     (c) => c.isCourseReview,
   )?.chapterId;
+  const conclusionChapter = courseChapters?.find((c) => c.isCourseConclusion);
 
   const completeAllChaptersMutation =
     trpc.user.courses.completeAllChapters.useMutation({
@@ -115,10 +117,6 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   function completeConclusionChapter() {
     const progress = courseProgress?.[0];
     if (progress && progress.progressPercentage < 100) {
-      const conclusionChapter = courseChapters?.find(
-        (c) => c.isCourseConclusion,
-      );
-
       if (conclusionChapter && course) {
         completeChapterMutation.mutate({
           chapterId: conclusionChapter.chapterId,
@@ -237,6 +235,28 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     'text-newGray-1 subtitle-small-caps-14px md:subtitle-medium-caps-18px';
 
   const isMobile = useSmaller('md');
+  const now = new Date();
+
+  if (
+    conclusionChapter?.releaseDate &&
+    conclusionChapter.releaseDate.getTime() > now.getTime()
+  ) {
+    return (
+      <div className="relative flex items-center w-full h-28 md:h-40 rounded-lg border border-newGray-5 bg-gradient-to-b from-white/75 to-[#e2e2e2]/75">
+        <img
+          src={conclusionBlurred}
+          alt="Congratulations"
+          className="absolute opacity-30"
+        />
+        <div className="absolute flex flex-row ml-6 md:ml-20 p-2 gap-4 items-center">
+          <Padlock className={cn(iconSizeClass, 'fill-newOrange-1')} />
+          <p className="text-black font-semibold">
+            {t('dashboard.course.conclusionNotReleased')}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

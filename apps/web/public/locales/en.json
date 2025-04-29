@@ -705,6 +705,7 @@
       "completionDiploma": "Completion diploma",
       "completionExamInfo": "You have to complete the exam to have access to this feature.",
       "conclusionHeadline": "Here is a summary of what you’ve learned. If some chapters have been missed or have not been validated properly, now is the time to do so, either by going back to learn, or by pressing on the complete button.",
+      "conclusionNotReleased": "The conclusion will be unlocked on the day of the last class.",
       "coordinator": "Course coordinator",
       "courseCalendar": "Course calendar",
       "coursesCompleted": "Courses completed",

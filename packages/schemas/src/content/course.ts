@@ -57,6 +57,7 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
     customTcDisclaimer: true,
     startDate: true,
     endDate: true,
+    releaseDate: true,
     timezone: true,
     liveUrl: true,
     chatUrl: true,

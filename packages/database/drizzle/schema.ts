@@ -1102,6 +1102,7 @@ export const contentCourseChaptersLocalized = content.table(
     customTcDisclaimer: t.text(),
     startDate: t.timestamp(),
     endDate: t.timestamp(),
+    releaseDate: t.timestamp(),
     timezone: t.text(),
     addressLine1: t.text('address_line_1'),
     addressLine2: t.text('address_line_2'),

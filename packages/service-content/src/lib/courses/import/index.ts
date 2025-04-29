@@ -104,6 +104,7 @@ interface Chapter {
   customTcDisclaimer: string | null;
   startDate: string | null;
   endDate: string | null;
+  releaseDate: string | null;
   timeZone: string | null;
   addressLine1: string | null;
   addressLine2: string | null;
@@ -240,6 +241,7 @@ const extractParts = (markdown: string): Part[] => {
           customTcDisclaimer: '',
           startDate: null,
           endDate: null,
+          releaseDate: null,
           addressLine1: '',
           addressLine2: '',
           addressLine3: '',
@@ -282,6 +284,7 @@ const extractParts = (markdown: string): Part[] => {
 
           currentChapter.startDate = extractData(token, 'startDate');
           currentChapter.endDate = extractData(token, 'endDate');
+          currentChapter.releaseDate = extractData(token, 'releaseDate');
           currentChapter.timeZone = extractData(token, 'timeZone');
           currentChapter.addressLine1 = extractData(token, 'addressLine1');
           currentChapter.addressLine2 = extractData(token, 'addressLine2');
@@ -314,6 +317,7 @@ const extractParts = (markdown: string): Part[] => {
             'customTcDisclaimer',
             'startDate',
             'endDate',
+            'releaseDate',
             'timeZone',
             'addressLine1',
             'addressLine2',
@@ -766,6 +770,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                       custom_tc_disclaimer: chapter.customTcDisclaimer,
                       start_date: chapter.startDate,
                       end_date: chapter.endDate,
+                      release_date: chapter.releaseDate,
                       timezone: chapter.timeZone,
                       address_line_1: chapter.addressLine1,
                       address_line_2: chapter.addressLine2,
@@ -795,6 +800,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
                     start_date = EXCLUDED.start_date,
                     end_date = EXCLUDED.end_date,
+                    release_date = EXCLUDED.release_date,
                     timezone = EXCLUDED.timezone,
                     address_line_1 = EXCLUDED.address_line_1,
                     address_line_2 = EXCLUDED.address_line_2,
