@@ -82,6 +82,8 @@ export interface CourseChapterLocalized {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isSingleTrialExam: boolean;
+  rateWeight: number | null;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   startDate: Date | null;
@@ -121,6 +123,8 @@ export interface JoinedCourseChapter {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isSingleTrialExam: boolean;
+  rateWeight: number | null;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   startDate: Date | null;
@@ -284,6 +288,8 @@ export interface JoinedCourseChapterWithContent {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isSingleTrialExam: boolean;
+  rateWeight: number | null;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   startDate: Date | null;
@@ -373,6 +379,8 @@ export interface CourseChapterResponse {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isSingleTrialExam: boolean;
+  rateWeight: number | null;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   startDate: Date | null;

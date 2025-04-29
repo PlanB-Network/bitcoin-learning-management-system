@@ -1,0 +1,1 @@
+ALTER TABLE "content"."course_chapters_localized" ADD COLUMN "is_single_trial_exam" boolean DEFAULT false NOT NULL;

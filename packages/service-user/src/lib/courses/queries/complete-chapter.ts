@@ -30,6 +30,7 @@ export const completeAllChaptersQuery = (
       AND cc.is_course_review = false
       AND cc.is_course_exam = false
       AND cc.is_course_conclusion = false
+      AND cc.is_single_trial_exam = false
     ON CONFLICT (uid, course_id, chapter_id) DO NOTHING
     RETURNING *
   `;

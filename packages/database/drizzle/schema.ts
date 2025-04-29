@@ -1098,6 +1098,8 @@ export const contentCourseChaptersLocalized = content.table(
     isCourseReview: t.boolean().default(false).notNull(),
     isCourseExam: t.boolean().default(false).notNull(),
     isCourseConclusion: t.boolean().default(false).notNull(),
+    isSingleTrialExam: t.boolean().default(false).notNull(),
+    rateWeight: t.integer(),
     isGdprCompliance: t.boolean().notNull().default(false),
     customTcDisclaimer: t.text(),
     startDate: t.timestamp(),

@@ -100,6 +100,8 @@ interface Chapter {
   isCourseReview: boolean;
   isCourseExam: boolean;
   isCourseConclusion: boolean;
+  isSingleTrialExam: boolean;
+  rateWeight: number | null;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   startDate: string | null;
@@ -237,6 +239,8 @@ const extractParts = (markdown: string): Part[] => {
           isCourseReview: false,
           isCourseExam: false,
           isCourseConclusion: false,
+          isSingleTrialExam: false,
+          rateWeight: null,
           isGdprCompliance: false,
           customTcDisclaimer: '',
           startDate: null,
@@ -267,16 +271,24 @@ const extractParts = (markdown: string): Part[] => {
           currentChapter.partId = currentPart.partId;
           currentChapter.releasePlace = extractData(token, 'releasePlace');
           currentChapter.isInPerson =
-            extractData(token, 'isInPerson') === 'true';
-          currentChapter.isOnline = extractData(token, 'isOnline') === 'true';
+            extractData(token, 'isInPerson')?.toLowerCase() === 'true';
+          currentChapter.isOnline =
+            extractData(token, 'isOnline')?.toLowerCase() === 'true';
           currentChapter.isCourseReview =
-            extractData(token, 'isCourseReview') === 'true';
+            extractData(token, 'isCourseReview')?.toLowerCase() === 'true';
           currentChapter.isCourseExam =
-            extractData(token, 'isCourseExam') === 'true';
+            extractData(token, 'isCourseExam')?.toLowerCase() === 'true';
           currentChapter.isCourseConclusion =
-            extractData(token, 'isCourseConclusion') === 'true';
+            extractData(token, 'isCourseConclusion')?.toLowerCase() === 'true';
+          currentChapter.isSingleTrialExam =
+            extractData(token, 'isSingleTrialExam')?.toLowerCase() === 'true';
+
+          const rateWeight = extractData(token, 'rateWeight');
+          if (rateWeight) {
+            currentChapter.rateWeight = +rateWeight;
+          }
           currentChapter.isGdprCompliance =
-            extractData(token, 'isGdprCompliance') === 'true';
+            extractData(token, 'isGdprCompliance')?.toLowerCase() === 'true';
           currentChapter.customTcDisclaimer = extractData(
             token,
             'customTcDisclaimer',
@@ -313,6 +325,8 @@ const extractParts = (markdown: string): Part[] => {
             'isCourseReview',
             'isCourseExam',
             'isCourseConclusion',
+            'isSingleTrialExam',
+            'rateWeight',
             'isGdprCompliance',
             'customTcDisclaimer',
             'startDate',
@@ -766,6 +780,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                       is_course_review: chapter.isCourseReview,
                       is_course_exam: chapter.isCourseExam,
                       is_course_conclusion: chapter.isCourseConclusion,
+                      is_single_trial_exam: chapter.isSingleTrialExam,
+                      rate_weight: chapter.rateWeight,
                       is_gdpr_compliance: chapter.isGdprCompliance,
                       custom_tc_disclaimer: chapter.customTcDisclaimer,
                       start_date: chapter.startDate,
@@ -796,6 +812,8 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                     is_course_review = EXCLUDED.is_course_review,
                     is_course_exam = EXCLUDED.is_course_exam,
                     is_course_conclusion = EXCLUDED.is_course_conclusion,
+                    is_single_trial_exam = EXCLUDED.is_single_trial_exam,
+                    rate_weight = EXCLUDED.rate_weight,
                     is_gdpr_compliance = EXCLUDED.is_gdpr_compliance,
                     custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
                     start_date = EXCLUDED.start_date,
