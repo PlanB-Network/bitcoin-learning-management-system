@@ -151,7 +151,8 @@
       "seeCourse": "استكشاف الدورة",
       "planbSchool": "مدرسة ₿ Plan",
       "comingSoon": "انتظرونا قريباً",
-      "goal": "الهدف:"
+      "goal": "الهدف:",
+      "planbSchoolHeadline": "تقدم Plan ₿ School، بقيادة جياكومو زوكو، برامج تعليمية مكثفة لمدة ثلاثة أشهر مصممة لسد الفجوة بين التعلم والتطبيقات العملية. بالإضافة إلى الدروس التقليدية، يشارك الطلاب في مشاريع عملية بقيادة شركات عدة ومعسكر تعليمي من الدرجة الأولى مخصص لنخبة المتفوقين. لا تتأهل إلى المرحلة النهائية إلا أفضل المواهب بعد جولتين من التصفيات التنافسية، وذلك لضمان جاهزية الطلاب لبدء مسيرتهم المهنية في مجال صناعة البيتكوين."
     },
     "part": {
       "count": "Teilenummer {{count}}/{{total}}"
@@ -223,7 +224,7 @@
       "tamperProof": "آمنة من التزوير: تقنية البلوكشين تضمن بقاء شهادتك كما هي دون أي تلاعب.",
       "testResults": "نتائج الاختبار",
       "timeStampHow": "كيفية عمله:",
-      "timeStampHowDescription": "",
+      "timeStampHowDescription": "عند إصدار شهادتك، يتم إنشاء \"بصمة رقمية\" فريدة تخزّن على سلسلة الكتل (البلوكشين)، مما يضمن أن السجل دائم وغير قابل للتلاعب. وأي محاولة لتعديل الشهادة ستؤدي إلى كسر الرابط وكشف التغيير.",
       "congratulations": "تهانينا، لقد وصلت إلى نهاية هذه الدورة!",
       "retakeInstructions": "لديك 20 دقيقة للإجابة على 40 سؤالاً، كل سؤال له إجابة صحيحة واحدة فقط. يمكنك التنقل بين الأسئلة وتقديم إجاباتك في النهاية.",
       "explanations": "التوضيحات:",
@@ -262,7 +263,8 @@
       "availableDashboardTimestamped": "شهادتك متاحة على لوحة التحكم الخاصة بك.",
       "examNotPassed": "عليك اجتياز الامتحان النهائي والحصول على أكثر من 80٪ لتحصل على الشهادة وتُكمل الدورة بالكامل. سيتم تمييز الشهادة بطابع زمني لضمان مصداقيتها.",
       "failedDiploma": "يجب أن تحصل على أكثر من 80% في الامتحان النهائي للحصول على شهادتك وإكمال الدورة بالكامل. يمكنك إعادة الامتحان بعد 24 ساعة.",
-      "goConclusion": "الذهاب إلى الخاتمة"
+      "goConclusion": "الذهاب إلى الخاتمة",
+      "successDiplomaTimeStamped": "مبروك! لقد اجتزت الامتحان بنجاح.\nستكون شهادتك متاحة في لوحة الطالب الخاصة بك بعد 10 ساعات تقريباً من وقت تقديمك للاختبار. يعود هذا التأخير إلى استخدام تقنية <0>الختم الزمني</0> التي تضمن مصداقية الشهادة."
     },
     "review": {
       "skip": "تخطي كتابة الرأي",
@@ -275,32 +277,37 @@
       "veryGood": "جيد جداً",
       "whatStudentsSay": "ماذا يقول الطلاب عن هذه الدورة",
       "tooLong": "طويل بزيادة",
-      "neutral": "",
-      "no": "",
+      "neutral": "محايد",
+      "no": "لا",
       "tooHard": "صعب بزيادة",
       "yesVeryMuch": "نعم، بشكل كبير",
-      "difficulty": "",
+      "difficulty": "الصعوبة",
       "ratingsAndReviews": "التقييمات والآراء",
       "commentTeacher": "ارسال تعليق خاص للأستاذ",
-      "displayOutOf": "",
-      "feedbackSessionTitle": "",
-      "fieldRequired": "",
-      "generalGrade": "",
-      "length": "",
-      "loadMoreComments": "",
-      "notReally": "",
+      "displayOutOf": "من أصل",
+      "feedbackSessionTitle": "يرجى مساعدتنا في تحسين دوراتنا من خلال إعطاء ملاحظاتك.",
+      "fieldRequired": "هذه الخانة مطلوبة",
+      "generalGrade": "الدرجة العامة",
+      "length": "الطول",
+      "loadMoreComments": "عرض المزيد من التعليقات",
+      "notReally": "ليس تماماً",
       "quality": "الجودة",
       "submitReview": "إضافة الرأي",
       "tooEasy": "سهل بزيادة",
       "writeThoughts": "يمكنك كتابة خواطرك هنا",
       "recommend": "هل توصي به؟",
-      "faithful": "",
+      "faithful": "متوافقة مع الأهداف؟",
       "yesOfCourse": "نعم، أكيد",
       "commentAdminMobile": "تعليق خاص لفريق الإدارة",
       "commentPublicMobile": "تعليق عام",
       "thankYou": "شكراً على رأيك! وصلنا وتم احتسابه",
       "saveReview": "حفظ الرأي",
-      "whatStudentsSayPasEdition": "ماذا يقول الطلاب عن الإصدارات السابقة"
+      "whatStudentsSayPasEdition": "ماذا يقول الطلاب عن الإصدارات السابقة",
+      "feedbackDescription2": "يرجى الملاحظة أن الأساتذة لن يكون لديهم وصول إلى التقييمات الفردية.",
+      "commentTeacherMobile": "تعليق خاص للأستاذ",
+      "editReview": "تعديل الرأي",
+      "feedback": "التقييم و الملاحظات",
+      "feedbackDescription1": "يرجى تقييم تجربتك في القسم أدناه."
     },
     "conclusion": {
       "completedFeedbackSubHeadline": "يمكنك تعديل تقييماتك وتعليقاتك في أي وقت عبر لوحة الطالب الخاصة بك.",
@@ -343,18 +350,20 @@
       "billingTitle": "سجل الفواتير",
       "billingSubtitle": "قم بتنزيل فواتير حجوزاتك من هنا.",
       "invoiceDate": "التاريخ",
-      "invoiceTitle": "",
-      "invoiceType": "",
-      "ticketDate": "",
-      "ticketLocation": "",
-      "ticketTitle": "",
-      "ticketType": "",
-      "noInvoice": "",
-      "noTicket": "",
-      "pastTicketTitle": "",
-      "upcomingTicketTitle": "",
-      "upcomingTicketSubtitle": "",
-      "cancelBookingTitle": "هل أنت متأكد أنك تريد إلغاء هذا الحجز؟"
+      "invoiceTitle": "العنوان",
+      "invoiceType": "النوع",
+      "ticketDate": "التاريخ",
+      "ticketLocation": "الموقع",
+      "ticketTitle": "العنوان",
+      "ticketType": "النوع",
+      "noInvoice": "لا توجد أي فواتير حالياً.",
+      "noTicket": "لا توجد أي تذاكر حالياً.",
+      "pastTicketTitle": "الحجوزات السابقة",
+      "upcomingTicketTitle": "الحجوزات القادمة",
+      "upcomingTicketSubtitle": "يرجى تنزيل تذكرتك من هنا لحضور الفعالية القادمة. لا تنسَ إحضارها معك للدخول.",
+      "cancelBookingTitle": "هل أنت متأكد أنك تريد إلغاء هذا الحجز؟",
+      "yesCancel": "نعم، إلغاء",
+      "noGoBack": "لا، العودة للخلف"
     },
     "credentials": {
       "bCert": "",
@@ -401,11 +410,15 @@
     },
     "bCert": {
       "grade": "الدرجة",
-      "noResults": ""
+      "noResults": "لا توجد أي درجات أو شهادات مرتبطة بهذا الحساب بعد.\nإذا كنت قد اجتزت امتحاناً ولم تظهر نتائجك بعد مرور فترة طويلة، يُرجى <0>التواصل معنا</0> للحصول على المساعدة."
     },
     "calendar": {
-      "calendar": "",
-      "personalCalendar": ""
+      "calendar": "التقويم",
+      "personalCalendar": "التقويم الشخصي",
+      "eventType": {
+        "class": "الصفوف",
+        "event": "الفعاليات"
+      }
     },
     "teacher": {
       "profile": {
@@ -470,7 +483,7 @@
           "multiUse": "قابل للاستخدام المتعدد",
           "singleUse": "للاستخدام مرة واحدة",
           "courses": "الدورات",
-          "events": "المناسبات"
+          "events": "الفعاليات"
         },
         "cancel": "إلغاء",
         "deleteDiscountCodeConfirm": "هل أنت متأكد أنك ترغب بحذف رمز الخصم هذا؟",
@@ -505,16 +518,17 @@
         "numberOfCodes": "كم عدد الرموز التي تريد إنشائها؟",
         "numberOfCodesPlaceholder": "اكتب رقماً",
         "productCourse": "دورة",
-        "productEvent": "مناسبة",
+        "productEvent": "فعالية",
         "selectCourse": "اختيار الدورة",
-        "selectEvent": "اختيار المناسبة",
+        "selectEvent": "اختيار الفعالية",
         "discountValue": "نسبة الخفض",
         "discountValuePlaceholder": "مثال: 20 لـ 20%",
         "forWhichCourse": "لأي دورة؟",
-        "forWhichEvent": "لأي مناسبة؟",
+        "forWhichEvent": "لأي فعالية؟",
         "generateNewCodes": "إنشاء رموز جديدة",
         "maximumNumberOfUse": "الحد الأقصى لعدد الاستخدامات",
-        "generateNew": "إنشاء رمز جديد"
+        "generateNew": "إنشاء رمز جديد",
+        "explanation": "إنشاء و إدارة رموز خصم للفعاليات والدورات – سواء كانت للاستخدام لمرة واحدة مثل المنح الدراسية، أو متعددة الاستخدام لحملات التسويق."
       },
       "bookingsPanel": "لوحة الحجوزات",
       "careers": {
@@ -544,7 +558,7 @@
       "githubLink": "رابط Github",
       "hasAccessTo": "لديه الوصول إلى:",
       "makeProfessor": "تعيين كأستاذ",
-      "nameOfEvent": "اسم المناسبة",
+      "nameOfEvent": "اسم الفعالية",
       "participants": "المشاركون",
       "removeTeacherDescription": "هل أنت متأكد أنك تريد إزالة هذا المعلم؟",
       "searchByNameOrCategory": "البحث بالاسم أو الفئة",
@@ -556,9 +570,63 @@
       "confirmRemoval": "تأكيد الإزالة",
       "selectRole": "اختيار الدور",
       "seeOrEdit": "رؤية أو تعديل",
-      "tutorialsManagementPanel": "لوحة إدارة الدلائل الإرشادية"
+      "tutorialsManagementPanel": "لوحة إدارة الدلائل الإرشادية",
+      "upcomingBookingsSubtitle": "يمكنك من هنا تحميل قائمة المشاركين في جميع الفعاليات الحضورية."
     },
-    "backToDashboard": "العودة إلى اللائحة الرئيسية"
+    "backToDashboard": "العودة إلى اللائحة الرئيسية",
+    "announcements": {
+      "groups": {
+        "active": "الطلاب المُختارون لتنفيذ المشروع",
+        "all": "جميع الطلاب المسجلين",
+        "summer": "الطلاب المُختارون للمدرسة الصيفية"
+      },
+      "pickADate": "اختيار التاريخ",
+      "publicationDate": "تاريخ النشر"
+    },
+    "careerPortal": {
+      "add": "إضافة",
+      "bitcoinCommunityText": "إذا كان الجواب نعم، أي مجتمع وما هو مستوى مشاركتك؟\nهل هذا المجتمع جزء من Plan ₿ Network؟",
+      "bitcoinProjectPlaceholder": "أمثلة: مشروع مجتمعي، مشروع مفتوح المصدر، إلخ...",
+      "bitcoinProjectText": "أي منهم؟",
+      "bitcoinProjectSubLabel": "يرجى وصف مشروعك أدناه.",
+      "bitcoinRelatedExperienceSubtitle": "يرجى مشاركة بعض المعلومات حول مشاركتك في مبادرات البيتكوين.",
+      "companySizeRequired": "اختر حجم شركة واحد على الأقل.",
+      "companySizes": {
+        "1To10": "1 إلى 10 موظفين",
+        "100More": "100 موظف وأكثر",
+        "11To40": "11 إلى 40 موظف",
+        "41To100": "41 إلى 100 موظف",
+        "noPreference": "لا تفضيل محدد"
+      },
+      "contactInformationSubtitle": "يرجى تزويدنا بعنوان بريدك الإلكتروني ووسائل الاتصال الأخرى.",
+      "countryResidence": "بلد الإقامة",
+      "cvUploadSubtitle": "أرفق سيرتك الذاتية لإبراز مهاراتك وخبراتك أمام الجهات المهتمة بالتوظيف.",
+      "cvUploadLabel": "تحميل السيرة الذاتية",
+      "beAware": "يرجى العلم أن Plan ₿ Network ستقوم بجمع وتخزين بياناتك لأغراض التوظيف فقط. تتم معالجة البيانات ومشاركتها مع شركائنا التجاريين وفقاً لأحكام اللائحة العامة لحماية البيانات (GDPR) في الاتحاد الأوروبي. اضغط <0>هنا</0> لمعرفة المزيد عن إشعار خصوصية المرشحين لدينا.",
+      "acceptTermsAndConditions": "أؤكد أنني اطلعت على الشروط والأحكام وأوافق عليها",
+      "acceptedFormat": "نوع الملف المقبول: pdf / الحد الأقصى لحجم الملف: 10 ميغابايت.",
+      "allowReceivingEmails": "أوافق على تلقي رسائل البريد الإلكتروني من Plan ₿ Network بخصوص فرص العمل المتاحة",
+      "applicationIncomplete": "عفواً، طلبك <highlight>غير مكتمل</highlight>",
+      "applicationComplete": "طلبك <highlight>مكتمل</highlight>",
+      "applicationSaved": "تم حفظ طلبك!",
+      "availability": "أوقات تواجدك",
+      "availabilityStart": "متى يمكنك البدء؟",
+      "availabilityStartPlaceholder": "التاريخ",
+      "bitcoinCommunityParticipant": "هل تنتمي إلى مجتمع محلي للبيتكوين؟",
+      "bitcoinProjectParticipant": "هل قمت بالمساهمة بنشاط في أي مشاريع للبيتكوين؟\n(سواء في الماضي أو حالياً)",
+      "bitcoinRelatedExperience": "الخبرة المتعلقة بالبيتكوين",
+      "cannotUndo": "لا يمكن التراجع عن هذا الإجراء.",
+      "chooseFile": "اختيار الملف",
+      "companySizePreference": "ما حجم الشركة الذي تفضله؟",
+      "companySizePreferenceSubLabel": "يمكنك اختيار أجوبة متعددة.",
+      "completeApplication": "اكمال الطلب",
+      "confirmDelete": "تأكيد الحذف",
+      "contactInformation": "معلومات التواصل",
+      "cvRequired": "يتطلب تحميل سيرتك الذاتية.",
+      "cvUpload": "تحميل سيرتك الذاتية",
+      "deleteCareerProfile": "حذف ملف التعريف الوظيفي",
+      "deleteCareerProfileTitle": "هل أنت متأكد من رغبتك بحذف ملف التعريف الوظيفي الخاص بك؟"
+    }
   },
   "events": {
     "main": {
@@ -825,7 +893,7 @@
     "tutorials": "Anleitungen",
     "update": "Update",
     "wallets": "Wallets",
-    "date": "تاريخ",
+    "date": "التاريخ",
     "time": "الوقت",
     "to": "إلى",
     "billing": "",
