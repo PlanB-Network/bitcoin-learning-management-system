@@ -23,7 +23,7 @@ export const createUpdateCoursePayment = (dependencies: Dependencies) => {
       await postgres.exec(updateCourseCoupon({ paymentId: options.id }));
     }
 
-    // Send email to user if course payment is validated and course is professor-led
+    // Send email to user if course payment is validated and course is part of PlanB School
     if (options.isPaid && coursePayment && coursePayment.length === 1) {
       const courseId = coursePayment[0].courseId;
       const userId = coursePayment[0].uid;

@@ -110,7 +110,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
         );
       }
 
-      // Send email to user if course payment is validated and course is professor-led
+      // Send email to user if course payment is validated and course is part of PlanB School
       if (payment && payment.length === 1) {
         const courseId = payment[0].courseId;
         const userId = payment[0].uid;

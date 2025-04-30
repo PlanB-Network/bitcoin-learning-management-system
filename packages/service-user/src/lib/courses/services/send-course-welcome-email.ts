@@ -21,11 +21,7 @@ export const createSendCourseWelcomeEmail = (dependencies: Dependencies) => {
         .exec(getCourseInfo(courseId))
         .then(firstRow);
 
-      if (
-        !courseInfo ||
-        courseInfo.teachingFormat !== 'professor_led' ||
-        !courseInfo.isPlanbSchool
-      ) {
+      if (!courseInfo || !courseInfo.isPlanbSchool) {
         return;
       }
 
