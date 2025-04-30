@@ -60,7 +60,7 @@ export function formatDate(
     : `${day}${getOrdinalSuffix(day)}`;
 }
 
-export function formatTime(date: Date, timezone?: string): string {
+export function formatTime(date: Date | null, timezone?: string): string {
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
     return '';
   }
@@ -85,9 +85,10 @@ export function addMinutesToDate(originalDate: Date, minutes: number) {
 }
 
 export const getDateString = (
-  startDate: Date,
-  endDate: Date,
+  startDate: Date | null,
+  endDate: Date | null,
   timezone?: string,
+  displayTimezone = false,
 ) => {
   const effectiveTimezone = getEffectiveTimezone(timezone);
   if (!(startDate instanceof Date) || !(endDate instanceof Date)) {
@@ -105,7 +106,7 @@ export const getDateString = (
     effectiveTimezone,
     true,
     true,
-  )}`;
+  )} ${displayTimezone ? `(${effectiveTimezone})` : ''}`;
 };
 
 export const getTimeString = (

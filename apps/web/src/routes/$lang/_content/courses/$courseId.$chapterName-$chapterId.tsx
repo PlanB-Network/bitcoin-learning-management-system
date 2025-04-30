@@ -42,6 +42,7 @@ import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { CourseConclusion } from './$courseId/-components/course-conclusion.tsx';
 import { CourseExam } from './$courseId/-components/course-exam.tsx';
 import { CourseReviewComponent } from './$courseId/-components/course-review.tsx';
+import { SingleTrialExam } from './$courseId/-components/single-trial-exam.tsx';
 import { ClassDetails } from './-components/class-details.tsx';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { LiveVideo } from './-components/live-video.tsx';
@@ -535,7 +536,8 @@ function CourseChapter() {
   const isSpecialChapter =
     chapter?.isCourseReview ||
     chapter?.isCourseExam ||
-    chapter?.isCourseConclusion;
+    chapter?.isCourseConclusion ||
+    chapter?.isSingleTrialExam;
 
   let displayClassDetails = false;
   let displayLiveSection = false;
@@ -758,6 +760,10 @@ function CourseChapter() {
 
                   {chapter.isCourseConclusion && (
                     <CourseConclusion chapter={chapter} />
+                  )}
+
+                  {chapter.isSingleTrialExam && (
+                    <SingleTrialExam chapter={chapter} disabled={!isLoggedIn} />
                   )}
 
                   {displayLiveSection &&

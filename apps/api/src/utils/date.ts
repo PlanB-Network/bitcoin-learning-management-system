@@ -15,7 +15,7 @@ const getOrdinalSuffix = (day: number) => {
 };
 
 export function formatDate(
-  date: Date,
+  date: Date | null,
   timezone?: string,
   addMonth = true,
   addYear = true,

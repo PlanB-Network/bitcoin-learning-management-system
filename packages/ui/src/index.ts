@@ -1,3 +1,4 @@
+export * from './atoms/alert.tsx';
 export * from './atoms/alert-dialog.tsx';
 export * from './atoms/avatar.tsx';
 export * from './atoms/badge.tsx';
