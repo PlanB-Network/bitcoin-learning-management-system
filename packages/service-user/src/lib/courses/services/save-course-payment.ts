@@ -110,7 +110,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
         );
       }
 
-      // Send email to user if course payment is validated and course is teacher-led
+      // Send email to user if course payment is validated and course is professor-led
       if (payment && payment.length === 1) {
         const courseId = payment[0].courseId;
         const userId = payment[0].uid;
