@@ -4,20 +4,34 @@ import {
   updateCoursePaymentQuery,
   updatePaymentInvoiceId,
 } from '../queries/update-payment.js';
+import { createSendCourseWelcomeEmail } from './send-course-welcome-email.js';
 
 type Options = { id: string } & (
   | { isPaid: true; isExpired: false }
   | { isPaid: false; isExpired: true }
 );
 
-export const createUpdateCoursePayment = ({ postgres }: Dependencies) => {
+export const createUpdateCoursePayment = (dependencies: Dependencies) => {
   return async (options: Options) => {
+    const { postgres } = dependencies;
+
     const coursePayment = await postgres.exec(
       updateCoursePaymentQuery(options),
     );
 
     if (options.isPaid) {
       await postgres.exec(updateCourseCoupon({ paymentId: options.id }));
+    }
+
+    // Send email to user if course payment is validated and course is part of PlanB School
+    if (options.isPaid && coursePayment && coursePayment.length === 1) {
+      const courseId = coursePayment[0].courseId;
+      const userId = coursePayment[0].uid;
+
+      await createSendCourseWelcomeEmail(dependencies)({
+        courseId: courseId,
+        userId: userId,
+      });
     }
 
     return coursePayment && coursePayment.length === 1

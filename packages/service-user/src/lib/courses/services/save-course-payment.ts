@@ -12,6 +12,7 @@ import {
 import { insertCoursePayment } from '../queries/insert-course-payment.js';
 import { updateCourseCoupon } from '../queries/update-course-coupon.js';
 import { updateCoursePaymentQuery } from '../queries/update-payment.js';
+import { createSendCourseWelcomeEmail } from './send-course-welcome-email.js';
 
 interface Options {
   uid: string;
@@ -107,6 +108,17 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
             paymentId: payment[0].paymentId,
           }),
         );
+      }
+
+      // Send email to user if course payment is validated and course is part of PlanB School
+      if (payment && payment.length === 1) {
+        const courseId = payment[0].courseId;
+        const userId = payment[0].uid;
+
+        await createSendCourseWelcomeEmail(dependencies)({
+          courseId: courseId,
+          userId: userId,
+        });
       }
 
       return {
