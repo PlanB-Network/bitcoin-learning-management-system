@@ -12,6 +12,8 @@ export * from './save-course-review.js';
 export * from './save-course-payment.js';
 export * from './save-quiz-attempt.js';
 export * from './save-user-chapter.js';
+export * from './send-course-weekly-recap-email.js';
+export * from './send-course-welcome-email.js';
 export * from './start-course.js';
 export * from './start-exam-attempt.js';
 export * from './update-payment.js';

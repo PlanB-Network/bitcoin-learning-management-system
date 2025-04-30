@@ -58,7 +58,7 @@ export const createSendCourseWelcomeEmail = (dependencies: Dependencies) => {
       });
     } catch (error) {
       console.error(
-        `Error sending professor-led course welcome email for course ${courseId} to user ${userId}:`,
+        `Error sending welcome email for course ${courseId} to user ${userId}:`,
         error,
       );
     }
