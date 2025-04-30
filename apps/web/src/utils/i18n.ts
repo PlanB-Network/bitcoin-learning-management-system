@@ -19,9 +19,13 @@ export const LANGUAGES = [
   'ja',
   'nb-NO',
   'pt',
+  'pl',
   'ru',
+  'sr-Latn',
+  'sw',
   'vi',
   'zh-Hans',
+  'zh-Hant',
 ];
 
 export const LANGUAGES_MAP: { [key: string]: string } = {
@@ -37,10 +41,14 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   it: 'Italiano',
   ja: '日本語',
   nbno: 'Norsk bokmål',
+  pl: 'Polski',
   pt: 'Português',
   ru: 'Русский',
+  srlatn: 'Srpski',
+  sw: 'Kiswahili',
   vi: 'Tiếng Việt',
   zhhans: '简体中文',
+  zhhant: '繁體',
 };
 
 export const getLanguageName = (language: string) =>
