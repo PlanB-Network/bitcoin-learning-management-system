@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { fontsBytes } from '@blms/service-common/fonts';
 import fontkit from '@pdf-lib/fontkit';
-import type { EmbedFontOptions, PDFFont } from 'pdf-lib';
+import type { PDFFont } from 'pdf-lib';
 import { PDFDocument } from 'pdf-lib';
 
 const dir = import.meta.dirname;
@@ -21,22 +21,19 @@ export const newDocumentFromTemplate = async (buf: Buffer) => {
 
   doc.registerFontkit(fontkit);
 
-  const options: EmbedFontOptions = { subset: true, features: { aalt: true } };
-  const addFont = ((buf: Buffer) => doc.embedFont(buf, options)).bind(doc);
-
   const fonts = {
-    styleScript: await addFont(fontsBytes.styleScript),
-    ibmPlexLight: await addFont(fontsBytes.ibmPlexLight),
-    ibmPlexRegular: await addFont(fontsBytes.ibmPlexRegular),
-    ibmPlexMedium: await addFont(fontsBytes.ibmPlexMedium),
-    ibmPlexSemiBold: await addFont(fontsBytes.ibmPlexSemiBold),
-    ibmPlexBold: await addFont(fontsBytes.ibmPlexBold),
-    mono: await addFont(fontsBytes.mono),
-    notoSansLight: await addFont(fontsBytes.notoSansLight),
-    notoSansRegular: await addFont(fontsBytes.notoSansRegular),
-    notoSansMedium: await addFont(fontsBytes.notoSansMedium),
-    notoSansSemiBold: await addFont(fontsBytes.notoSansSemiBold),
-    notoSansBold: await addFont(fontsBytes.notoSansBold),
+    styleScript: await doc.embedFont(fontsBytes.styleScript),
+    ibmPlexLight: await doc.embedFont(fontsBytes.ibmPlexLight),
+    ibmPlexRegular: await doc.embedFont(fontsBytes.ibmPlexRegular),
+    ibmPlexMedium: await doc.embedFont(fontsBytes.ibmPlexMedium),
+    ibmPlexSemiBold: await doc.embedFont(fontsBytes.ibmPlexSemiBold),
+    ibmPlexBold: await doc.embedFont(fontsBytes.ibmPlexBold),
+    mono: await doc.embedFont(fontsBytes.mono),
+    notoSansLight: await doc.embedFont(fontsBytes.notoSansLight),
+    notoSansRegular: await doc.embedFont(fontsBytes.notoSansRegular),
+    notoSansMedium: await doc.embedFont(fontsBytes.notoSansMedium),
+    notoSansSemiBold: await doc.embedFont(fontsBytes.notoSansSemiBold),
+    notoSansBold: await doc.embedFont(fontsBytes.notoSansBold),
   };
 
   return { doc, fonts };
