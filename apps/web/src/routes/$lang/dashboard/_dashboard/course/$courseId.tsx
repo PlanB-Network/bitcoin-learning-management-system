@@ -8,9 +8,11 @@ import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx'
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { Assignment } from './-components/assignment.tsx';
 import { CourseOverview } from './-components/course-overview.tsx';
 import { CourseRatings } from './-components/course-ratings.tsx';
 import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
+import { SingleTrialExam } from './-components/single-trial-exam.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/course/$courseId',
@@ -45,18 +47,38 @@ function DashboardStudentCourse() {
       .flatMap((part) => part.chapters)
       ?.find((c) => c?.isCourseReview)?.chapterId ?? null;
 
-  const courseHaveExam = course?.parts.some((p) =>
+  const courseHaveRetakeExam = course?.parts.some((p) =>
     p.chapters.some((c) => c?.isCourseExam),
   );
+
+  const courseHaveSingleTrialExam = course?.parts.some((p) =>
+    p.chapters.some((c) => c?.isSingleTrialExam),
+  );
+
+  const courseHaveAssignments = course?.isPlanbSchool;
 
   const tabs = [
     { value: 'overview', key: 'overview', text: t('words.overview') },
   ];
-  if (courseHaveExam) {
+  if (courseHaveRetakeExam) {
     tabs.push({
       value: 'retakeExam',
       key: 'retakeExam',
       text: t('courses.exam.examAndDiploma'),
+    });
+  }
+  if (courseHaveSingleTrialExam) {
+    tabs.push({
+      value: 'singleTrialExam',
+      key: 'singleTrialExam',
+      text: t('courses.exam.examAndDiploma'),
+    });
+  }
+  if (courseHaveAssignments) {
+    tabs.push({
+      value: 'assignment',
+      key: 'assignment',
+      text: t('dashboard.course.assignment'),
     });
   }
   if (reviewChapterId) {
@@ -107,8 +129,8 @@ function DashboardStudentCourse() {
             </TabsContent>
 
             {/* RetakeExam */}
-            {courseHaveExam ? (
-              <TabsContent value="exam">
+            {courseHaveRetakeExam ? (
+              <TabsContent value="retakeExam">
                 <CourseRetakeExam
                   courseId={params.courseId}
                   courseIndex={course.index}
@@ -121,6 +143,19 @@ function DashboardStudentCourse() {
                       ?.chapterId
                   }`}
                 />
+              </TabsContent>
+            ) : null}
+
+            {/* SingleTrialExam */}
+            {courseHaveSingleTrialExam ? (
+              <TabsContent value="singleTrialExam">
+                <SingleTrialExam courseId={params.courseId} />
+              </TabsContent>
+            ) : null}
+
+            {courseHaveAssignments ? (
+              <TabsContent value="assignment">
+                <Assignment courseId={params.courseId} />
               </TabsContent>
             ) : null}
 
