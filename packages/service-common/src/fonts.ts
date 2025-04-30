@@ -20,5 +20,16 @@ export const fontsBytes = {
   ibmPlexBold: fs.readFileSync(
     join(dir, './fonts/ibm-plex/IBMPlexSans-Bold.ttf'),
   ),
+  notoSansLight: fs.readFileSync(join(dir, './fonts/noto/NotoSans-Light.ttf')),
+  notoSansRegular: fs.readFileSync(
+    join(dir, './fonts/noto/NotoSans-Regular.ttf'),
+  ),
+  notoSansMedium: fs.readFileSync(
+    join(dir, './fonts/noto/NotoSans-Medium.ttf'),
+  ),
+  notoSansSemiBold: fs.readFileSync(
+    join(dir, './fonts/noto/NotoSans-SemiBold.ttf'),
+  ),
+  notoSansBold: fs.readFileSync(join(dir, './fonts/noto/NotoSans-Bold.ttf')),
   styleScript: fs.readFileSync(join(dir, './fonts/StyleScript.otf')),
 };

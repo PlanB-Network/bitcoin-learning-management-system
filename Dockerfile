@@ -16,6 +16,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   python3 \
   libcairo2-dev \
   pkg-config \
+  fonts-noto \
   libpixman-1-dev \
   libpango1.0-dev \
   cmake \

@@ -23,7 +23,7 @@ export const generateCouponSvg = ({
   const oneLine = typeof title === 'string';
 
   return `
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" encoding="utf-8" width="1846" height="931" viewBox="0 0 1846 931" fill="none" font-family="IBM Plex Sans">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" encoding="utf-8" width="1846" height="931" viewBox="0 0 1846 931" fill="none" font-family="Noto Sans">
   <g clip-path="url(#clip0_17671_40596)">
     <rect width="1846" height="930.292" rx="40" fill="black"/>
     <rect opacity="0.7" x="1854.33" y="180.225" width="1863.71" height="180.224" transform="rotate(-180 1854.33 180.225)" fill="url(#paint0_linear_17671_40596)"/>

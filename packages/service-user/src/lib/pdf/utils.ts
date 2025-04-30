@@ -29,6 +29,11 @@ export const newDocumentFromTemplate = async (buf: Buffer) => {
     ibmPlexSemiBold: await doc.embedFont(fontsBytes.ibmPlexSemiBold),
     ibmPlexBold: await doc.embedFont(fontsBytes.ibmPlexBold),
     mono: await doc.embedFont(fontsBytes.mono),
+    notoSansLight: await doc.embedFont(fontsBytes.notoSansLight),
+    notoSansRegular: await doc.embedFont(fontsBytes.notoSansRegular),
+    notoSansMedium: await doc.embedFont(fontsBytes.notoSansMedium),
+    notoSansSemiBold: await doc.embedFont(fontsBytes.notoSansSemiBold),
+    notoSansBold: await doc.embedFont(fontsBytes.notoSansBold),
   };
 
   return { doc, fonts };
