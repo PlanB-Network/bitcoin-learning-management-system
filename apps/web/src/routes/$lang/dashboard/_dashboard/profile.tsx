@@ -307,15 +307,12 @@ function DashboardProfile() {
 }
 
 const NotificationSettings = () => {
-  const {
-    // user,
-    accountSettings,
-    refetchAccountSettings,
-  } = useContext(AppContext);
+  const { user, accountSettings, refetchAccountSettings } =
+    useContext(AppContext);
 
   const [isEditingPlatformSettings, setIsEditingPlatformSettings] =
     useState(false);
-  // const [isEditingEmailSettings, setIsEditingEmailSettings] = useState(false);
+  const [isEditingEmailSettings, setIsEditingEmailSettings] = useState(false);
 
   const FormSchema = z.object({
     platformNotifications: z.array(z.string()).default([]),
@@ -428,7 +425,7 @@ const NotificationSettings = () => {
                   : t('words.save')}
             </Button>
           </div>
-          {/* TODO: Hidden until we add email notifications
+
           <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
             <div className="flex flex-col gap-2">
               <FormCheckboxGroup
@@ -480,7 +477,7 @@ const NotificationSettings = () => {
                   ? t('words.edit')
                   : t('words.save')}
             </Button>
-          </div> */}
+          </div>
         </form>
       </Form>
     </section>

@@ -2,6 +2,7 @@ import { firstRow } from '@blms/database';
 
 import type { JoinedCourse, JoinedCourseChapter } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
+import { getUserAccountSettingsQuery } from '../../account/queries/get-account-settings.js';
 import { getUserByIdQuery } from '../../account/queries/get-user.js';
 import { createSendEmail } from '../../account/services/email.js';
 
@@ -9,6 +10,8 @@ interface SendWeeklyRecapEmailParams {
   userId: string;
   course: JoinedCourse;
   courseChapters: JoinedCourseChapter[];
+  startDate: Date;
+  endDate: Date;
 }
 
 export const createSendCourseWeeklyRecapEmail = (
@@ -18,6 +21,8 @@ export const createSendCourseWeeklyRecapEmail = (
     userId,
     course,
     courseChapters,
+    startDate,
+    endDate,
   }: SendWeeklyRecapEmailParams): Promise<void> => {
     const { postgres, config } = dependencies;
     try {
@@ -30,9 +35,30 @@ export const createSendCourseWeeklyRecapEmail = (
         return;
       }
 
+      const userAccountSettings = await postgres
+        .exec(getUserAccountSettingsQuery(userId))
+        .then(firstRow);
+      const acceptsCourseEmail = userAccountSettings?.emailNotifyCourses;
+
+      if (!acceptsCourseEmail) {
+        return;
+      }
+
       const sendEmail = createSendEmail({ config });
+
       const courseName = course.name;
       const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}${courseName} - Weekly recap`;
+      const upcomingChapters = courseChapters.map((chapter) => ({
+        chapterIndex: `${chapter.partIndex}.${chapter.chapterIndex}`,
+        chapterName: chapter.title,
+        chapterStartDate: chapter.startDate?.toISOString(),
+        chapterEndDate: chapter.endDate?.toISOString(),
+        adressLine1: chapter.addressLine1,
+        adressLine2: chapter.addressLine2,
+        adressLine3: chapter.addressLine3,
+      }));
+      const weekEndDate = new Date(endDate);
+      weekEndDate.setDate(weekEndDate.getDate() - 1);
 
       await sendEmail({
         email: userEmail,
@@ -40,6 +66,9 @@ export const createSendCourseWeeklyRecapEmail = (
         template: 'd-014c159979d543ecb8d6657b0265a84c',
         data: {
           courseName: courseName,
+          startDate: startDate.toISOString(),
+          endDate: weekEndDate.toISOString(),
+          upcomingChapters: upcomingChapters,
           dashboardLink: `${config.domainUrl}/dashboard/courses`,
           subject: subject,
         },
