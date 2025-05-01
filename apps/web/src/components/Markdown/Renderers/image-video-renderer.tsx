@@ -100,7 +100,7 @@ export const ImageVideoRenderer = ({
 
   return (
     <img
-      className="mx-auto flex justify-center rounded-lg pb-6"
+      className="mx-auto flex justify-center rounded-lg"
       src={src}
       alt={alt}
     />
