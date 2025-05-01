@@ -91,6 +91,7 @@ export const usersAccountSettings = users.table('account_settings', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
+  unsubscribeId: t.uuid().defaultRandom().notNull().unique(),
 
   platformNotifyEvents: t.boolean().default(true).notNull(),
   platformNotifyCourses: t.boolean().default(true).notNull(),

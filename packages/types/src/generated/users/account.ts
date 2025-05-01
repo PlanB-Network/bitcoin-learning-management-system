@@ -23,6 +23,7 @@ export interface UserAccount {
 
 export interface UserAccountSettings {
   uid: string;
+  unsubscribeId: string;
   platformNotifyEvents: boolean;
   platformNotifyCourses: boolean;
   platformNotifyGeneral: boolean;
@@ -85,4 +86,9 @@ export interface ApiKey {
   expiresAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface EmailSettings {
+  emailNotifyCourses: boolean;
+  emailNotifyGeneral: boolean;
 }

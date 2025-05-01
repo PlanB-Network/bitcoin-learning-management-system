@@ -6,6 +6,7 @@ export * from './change-permission.js';
 export * from './change-role.js';
 export * from './change-password.js';
 export * from './get-account-settings.js';
+export * from './get-email-settings.js';
 export * from './get-user.js';
 export * from './get-user-roles.js';
 export * from './new-credentials-user.js';

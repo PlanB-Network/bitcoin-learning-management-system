@@ -1,5 +1,6 @@
 import { SortDirection, UserPermission, UserRole } from '@blms/constants';
 import {
+  emailSettingsSchema,
   userAccountSettingsSchema,
   userDetailsSchema,
   userRolesSchema,
@@ -13,6 +14,7 @@ import {
   createChangePermission,
   createChangeRole,
   createEmailValidationToken,
+  createGetEmailSettings,
   createGetTokenInfo,
   createGetUserAccountSettings,
   createGetUserDetails,
@@ -21,6 +23,7 @@ import {
   createPasswordResetToken,
 } from '@blms/service-user';
 import type {
+  EmailSettings,
   SessionData,
   UserAccountSettings,
   UserDetails,
@@ -186,6 +189,19 @@ export const userRouter = createTRPCRouter({
     .query(({ ctx }) =>
       createGetUserAccountSettings(ctx.dependencies)({
         uid: ctx.user.uid,
+      }),
+    ),
+
+  getEmailSettings: publicProcedure
+    .input(
+      z.object({
+        unsubscribeId: z.string(),
+      }),
+    )
+    .output<Parser<EmailSettings | null>>(emailSettingsSchema.nullable())
+    .query(({ ctx, input }) =>
+      createGetEmailSettings(ctx.dependencies)({
+        unsubscribeId: input.unsubscribeId,
       }),
     ),
 

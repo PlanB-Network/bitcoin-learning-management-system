@@ -68,3 +68,8 @@ export const loginResponseSchema = z.object({
 });
 
 export const apiKeySchema = createSelectSchema(usersApiKeys);
+
+export const emailSettingsSchema = userAccountSettingsSchema.pick({
+  emailNotifyCourses: true,
+  emailNotifyGeneral: true,
+});
