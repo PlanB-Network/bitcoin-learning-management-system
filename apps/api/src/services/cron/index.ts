@@ -37,213 +37,207 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     );
   }
 
-  if (process.env.PLANB_ENVIRONMENT !== 'mainnet') {
-    // Every 5 minutes, check before sending automated notifications to students from courses with live/in-person chapters'
-    {
-      const getCoursesIds = createGetCoursesIds(ctx);
-      const getCourseChapters = createGetCourseChapters(ctx);
-      const insertUserNotifications = createInsertUserNotifications(ctx);
+  // Every 5 minutes, check before sending automated notifications to students from courses with live/in-person chapters'
+  {
+    const getCoursesIds = createGetCoursesIds(ctx);
+    const getCourseChapters = createGetCourseChapters(ctx);
+    const insertUserNotifications = createInsertUserNotifications(ctx);
 
-      ctx.crons.addTask('5m', async () => {
-        const coursesId = await getCoursesIds();
-        if (coursesId.length === 0) return;
+    ctx.crons.addTask('5m', async () => {
+      const coursesId = await getCoursesIds();
+      if (coursesId.length === 0) return;
 
-        const now = new Date();
-        const notificationStartDate = new Date(
-          now.getTime() + 20 * 60 * 60 * 1000,
-        );
-        const notificationEndDate = new Date(
-          now.getTime() + 24 * 60 * 60 * 1000,
-        );
-        const startingSoonDate = new Date(now.getTime() + 5 * 60 * 1000);
+      const now = new Date();
+      const notificationStartDate = new Date(
+        now.getTime() + 20 * 60 * 60 * 1000,
+      );
+      const notificationEndDate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+      const startingSoonDate = new Date(now.getTime() + 5 * 60 * 1000);
 
-        for (const courseId of coursesId) {
-          const chapters = await getCourseChapters(courseId);
-          if (chapters.length === 0) continue;
+      for (const courseId of coursesId) {
+        const chapters = await getCourseChapters(courseId);
+        if (chapters.length === 0) continue;
 
-          const chaptersInNotificationWindow = chapters.filter((chapter) => {
-            if (!chapter.startDate) return false;
-            const startDate = new Date(chapter.startDate);
-            return (
-              startDate >= notificationStartDate &&
-              startDate <= notificationEndDate
-            );
-          });
+        const chaptersInNotificationWindow = chapters.filter((chapter) => {
+          if (!chapter.startDate) return false;
+          const startDate = new Date(chapter.startDate);
+          return (
+            startDate >= notificationStartDate &&
+            startDate <= notificationEndDate
+          );
+        });
 
-          const chaptersStartingSoon = chapters.filter((chapter) => {
-            if (!chapter.startDate) return false;
-            const startDate = new Date(chapter.startDate);
-            return startDate > now && startDate <= startingSoonDate;
-          });
+        const chaptersStartingSoon = chapters.filter((chapter) => {
+          if (!chapter.startDate) return false;
+          const startDate = new Date(chapter.startDate);
+          return startDate > now && startDate <= startingSoonDate;
+        });
 
-          if (chaptersInNotificationWindow.length > 0) {
-            const uids =
-              await userNotificationsService.getUidsByCourse(courseId);
-            if (uids.length === 0) continue;
+        if (chaptersInNotificationWindow.length > 0) {
+          const uids = await userNotificationsService.getUidsByCourse(courseId);
+          if (uids.length === 0) continue;
 
-            for (const chapter of chaptersInNotificationWindow) {
-              if (!chapter.startDate) continue;
+          for (const chapter of chaptersInNotificationWindow) {
+            if (!chapter.startDate) continue;
 
-              await insertUserNotifications({
-                uids,
-                courseId,
-                chapterId: chapter.chapterId,
-                type: NotificationType.Calendar24HoursCourse,
-              });
-            }
-          }
-
-          if (chaptersStartingSoon.length > 0) {
-            const uids =
-              await userNotificationsService.getUidsByCourse(courseId);
-            if (uids.length === 0) continue;
-
-            for (const chapter of chaptersStartingSoon) {
-              if (!chapter.startDate) continue;
-
-              await insertUserNotifications({
-                uids,
-                courseId,
-                chapterId: chapter.chapterId,
-                type: NotificationType.Calendar5MinutesCourse,
-              });
-            }
+            await insertUserNotifications({
+              uids,
+              courseId,
+              chapterId: chapter.chapterId,
+              type: NotificationType.Calendar24HoursCourse,
+            });
           }
         }
-      });
-    }
 
-    // Every 5 minutes, check for online events that are starting in 48 hours / 5 minutes OR inperson events starting in 24 hours and send a notification to people who booked these events
-    {
-      const getUpcomingEventsInfos = createGetUpcomingEventsInfos(ctx);
-      const insertUserNotifications = createInsertUserNotifications(ctx);
-
-      ctx.crons.addTask('5m', async () => {
-        const now = new Date();
-
-        const upcomingEvents = await getUpcomingEventsInfos();
-        if (upcomingEvents.length === 0) return;
-
-        // Online events starting in 48-44 hours
-        const onlineEvents48h = upcomingEvents.filter((event) => {
-          if (!event.startDate || !event.bookOnline) return false;
-          const startDate = new Date(event.startDate);
-
-          const timeToEvent = startDate.getTime() - now.getTime();
-          return (
-            timeToEvent >= 44 * 60 * 60 * 1000 &&
-            timeToEvent <= 48 * 60 * 60 * 1000
-          );
-        });
-
-        for (const event of onlineEvents48h) {
-          const uids = await userNotificationsService.getUidsByEvent(event.id);
+        if (chaptersStartingSoon.length > 0) {
+          const uids = await userNotificationsService.getUidsByCourse(courseId);
           if (uids.length === 0) continue;
 
-          await insertUserNotifications({
-            uids,
-            eventId: event.id,
-            type: NotificationType.Calendar48HoursOnlineEvent,
-          });
+          for (const chapter of chaptersStartingSoon) {
+            if (!chapter.startDate) continue;
+
+            await insertUserNotifications({
+              uids,
+              courseId,
+              chapterId: chapter.chapterId,
+              type: NotificationType.Calendar5MinutesCourse,
+            });
+          }
         }
-
-        // online events starting in less than 5 minutes
-        const onlineEvents5m = upcomingEvents.filter((event) => {
-          if (!event.startDate || !event.bookOnline) return false;
-          const startDate = new Date(event.startDate);
-          return (
-            startDate > now &&
-            startDate.getTime() <= now.getTime() + 5 * 60 * 1000
-          );
-        });
-
-        for (const event of onlineEvents5m) {
-          const uids = await userNotificationsService.getUidsByEvent(event.id);
-          if (uids.length === 0) continue;
-
-          await insertUserNotifications({
-            uids,
-            eventId: event.id,
-            type: NotificationType.Calendar5MinutesOnlineEvent,
-          });
-        }
-
-        // in-person events starting in 24-20 hours
-        const inPersonEvents24h = upcomingEvents.filter((event) => {
-          if (!event.startDate || !event.bookInPerson) return false;
-          const startDate = new Date(event.startDate);
-
-          const timeToEvent = startDate.getTime() - now.getTime();
-          return (
-            timeToEvent >= 20 * 60 * 60 * 1000 &&
-            timeToEvent <= 24 * 60 * 60 * 1000
-          );
-        });
-
-        for (const event of inPersonEvents24h) {
-          const uids = await userNotificationsService.getUidsByEvent(event.id);
-          if (uids.length === 0) continue;
-
-          await insertUserNotifications({
-            uids,
-            eventId: event.id,
-            type: NotificationType.Calendar24HoursInPersonEvent,
-          });
-        }
-      });
-    }
-
-    // Every hour, check for newly created blog posts and send a notification to all users -- OFF until we figure out a solution for untranslated blogs
-    // {
-    //   const getBlogs = createGetBlogs(ctx);
-    //   const insertUserNotifications = createInsertUserNotifications(ctx);
-
-    //   ctx.crons.addTask('h', async () => {
-    //     const blogs = await getBlogs();
-    //     if (blogs.length === 0) return;
-
-    //     const now = new Date();
-    //     const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-
-    //     for (const blog of blogs) {
-    //       if (!blog.createdAt) continue;
-    //       const blogCreationDate = new Date(blog.createdAt);
-    //       if (blogCreationDate < oneDayAgo) continue;
-
-    //       const uids = await userNotificationsService.getAllUids();
-    //       if (uids.length === 0) continue;
-
-    //       await insertUserNotifications({
-    //         uids,
-    //         blogId: blog.id,
-    //         type: NotificationType.Blog,
-    //       });
-    //     }
-    //   });
-    // }
-
-    // Every 5 minutes, check for newly created course announcements and send a notification to enrolled students
-    {
-      const publishCourseAnnouncement =
-        createPublishScheduledCourseAnnouncement(ctx);
-
-      ctx.crons.addTask('5m', async () => {
-        const unpublishedCourseAnnouncementsIds =
-          await userNotificationsService.getUnpublishedCourseAnnouncementsIds();
-
-        for (const id of unpublishedCourseAnnouncementsIds) {
-          await publishCourseAnnouncement({
-            scheduledAnnouncementId: id,
-          });
-        }
-      });
-    }
-
-    // Once a day, check for read notifications that are older than 30 days and delete them
-    ctx.crons.addTask('d', async () => {
-      await userNotificationsService.deleteOldReadNotifications();
+      }
     });
   }
+
+  // Every 5 minutes, check for online events that are starting in 48 hours / 5 minutes OR inperson events starting in 24 hours and send a notification to people who booked these events
+  {
+    const getUpcomingEventsInfos = createGetUpcomingEventsInfos(ctx);
+    const insertUserNotifications = createInsertUserNotifications(ctx);
+
+    ctx.crons.addTask('5m', async () => {
+      const now = new Date();
+
+      const upcomingEvents = await getUpcomingEventsInfos();
+      if (upcomingEvents.length === 0) return;
+
+      // Online events starting in 48-44 hours
+      const onlineEvents48h = upcomingEvents.filter((event) => {
+        if (!event.startDate || !event.bookOnline) return false;
+        const startDate = new Date(event.startDate);
+
+        const timeToEvent = startDate.getTime() - now.getTime();
+        return (
+          timeToEvent >= 44 * 60 * 60 * 1000 &&
+          timeToEvent <= 48 * 60 * 60 * 1000
+        );
+      });
+
+      for (const event of onlineEvents48h) {
+        const uids = await userNotificationsService.getUidsByEvent(event.id);
+        if (uids.length === 0) continue;
+
+        await insertUserNotifications({
+          uids,
+          eventId: event.id,
+          type: NotificationType.Calendar48HoursOnlineEvent,
+        });
+      }
+
+      // online events starting in less than 5 minutes
+      const onlineEvents5m = upcomingEvents.filter((event) => {
+        if (!event.startDate || !event.bookOnline) return false;
+        const startDate = new Date(event.startDate);
+        return (
+          startDate > now &&
+          startDate.getTime() <= now.getTime() + 5 * 60 * 1000
+        );
+      });
+
+      for (const event of onlineEvents5m) {
+        const uids = await userNotificationsService.getUidsByEvent(event.id);
+        if (uids.length === 0) continue;
+
+        await insertUserNotifications({
+          uids,
+          eventId: event.id,
+          type: NotificationType.Calendar5MinutesOnlineEvent,
+        });
+      }
+
+      // in-person events starting in 24-20 hours
+      const inPersonEvents24h = upcomingEvents.filter((event) => {
+        if (!event.startDate || !event.bookInPerson) return false;
+        const startDate = new Date(event.startDate);
+
+        const timeToEvent = startDate.getTime() - now.getTime();
+        return (
+          timeToEvent >= 20 * 60 * 60 * 1000 &&
+          timeToEvent <= 24 * 60 * 60 * 1000
+        );
+      });
+
+      for (const event of inPersonEvents24h) {
+        const uids = await userNotificationsService.getUidsByEvent(event.id);
+        if (uids.length === 0) continue;
+
+        await insertUserNotifications({
+          uids,
+          eventId: event.id,
+          type: NotificationType.Calendar24HoursInPersonEvent,
+        });
+      }
+    });
+  }
+
+  // Every hour, check for newly created blog posts and send a notification to all users -- OFF until we figure out a solution for untranslated blogs
+  // {
+  //   const getBlogs = createGetBlogs(ctx);
+  //   const insertUserNotifications = createInsertUserNotifications(ctx);
+
+  //   ctx.crons.addTask('h', async () => {
+  //     const blogs = await getBlogs();
+  //     if (blogs.length === 0) return;
+
+  //     const now = new Date();
+  //     const oneDayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+
+  //     for (const blog of blogs) {
+  //       if (!blog.createdAt) continue;
+  //       const blogCreationDate = new Date(blog.createdAt);
+  //       if (blogCreationDate < oneDayAgo) continue;
+
+  //       const uids = await userNotificationsService.getAllUids();
+  //       if (uids.length === 0) continue;
+
+  //       await insertUserNotifications({
+  //         uids,
+  //         blogId: blog.id,
+  //         type: NotificationType.Blog,
+  //       });
+  //     }
+  //   });
+  // }
+
+  // Every 5 minutes, check for newly created course announcements and send a notification to enrolled students
+  {
+    const publishCourseAnnouncement =
+      createPublishScheduledCourseAnnouncement(ctx);
+
+    ctx.crons.addTask('5m', async () => {
+      const unpublishedCourseAnnouncementsIds =
+        await userNotificationsService.getUnpublishedCourseAnnouncementsIds();
+
+      for (const id of unpublishedCourseAnnouncementsIds) {
+        await publishCourseAnnouncement({
+          scheduledAnnouncementId: id,
+        });
+      }
+    });
+  }
+
+  // Once a day, check for read notifications that are older than 30 days and delete them
+  ctx.crons.addTask('d', async () => {
+    await userNotificationsService.deleteOldReadNotifications();
+  });
 
   if (timestampService) {
     // Every five minutes
