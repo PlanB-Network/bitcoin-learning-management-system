@@ -16,7 +16,6 @@ import { trpc } from '#src/utils/trpc.js';
 
 import { canAccess } from '@blms/shared/auth';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { CourseAnnouncements } from './-components/course-announcements.tsx';
 import { CourseDetails } from './-components/course-details.tsx';
 import { CourseReview } from './-components/course-review.tsx';
@@ -179,8 +178,7 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
               text: t('dashboard.teacher.courses.reviews'),
               active: 'review' === currentTab,
             },
-            ...(isTestnetOrDevelopmentEnvironment() &&
-            course.teachingFormat === 'professor_led'
+            ...(course.teachingFormat === 'professor_led'
               ? [
                   {
                     key: 'announcement',
