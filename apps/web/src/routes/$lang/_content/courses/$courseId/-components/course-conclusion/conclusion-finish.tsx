@@ -218,6 +218,10 @@ const Diploma = ({
     .flatMap((part) => part.chapters)
     .find((chapter) => chapter?.isCourseExam)?.chapterId;
 
+  if (!examResults && !examChapterId) {
+    return null;
+  }
+
   return (
     <>
       <DividerSimple className="my-5 md:mt-3 md:mb-8" />
