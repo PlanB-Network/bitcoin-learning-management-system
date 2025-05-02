@@ -465,11 +465,11 @@ function CourseDetails() {
             ))}
           </span>
         </h4>
-        <div className="flex h-fit flex-col max-md:gap-4">
+        <div className="flex h-fit flex-col max-md:gap-4 mt-4">
           {course.mainProfessors.map((professor) => (
             <AuthorCard
               key={professor.id}
-              className="sm:mt-4"
+              mobileSize="medium"
               professor={professor}
             />
           ))}
@@ -479,7 +479,7 @@ function CourseDetails() {
             <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
               <span>{t('courses.details.associatedProfessors')}</span>
             </h4>
-            <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
+            <div className="mt-6 flex flex-row flex-wrap gap-3 md:gap-6 max-md:justify-center">
               {course.associatedProfessors.map((professor) => (
                 <ProfessorCardReduced
                   key={professor.id}

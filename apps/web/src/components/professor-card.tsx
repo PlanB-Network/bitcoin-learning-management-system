@@ -85,10 +85,16 @@ export const ProfessorCardReduced = ({
         className={cn(
           'rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 relative overflow-hidden w-[280px]',
           mobileSize === 'small' &&
-            'max-md:w-[137px] max-md:px-1 max-md:py-[15px] max-md:to-[100px]',
+            'max-md:w-[137px] max-md:px-1 max-md:pb-[15px] max-md:pt-[5px] max-md:to-[100px]',
         )}
       >
-        <span className="mb-2.5 w-full text-center title-large-sb-24px text-white z-10">
+        <span
+          className={cn(
+            'mb-[5px] md:mb-2.5 w-full text-center title-large-sb-24px text-white z-10 flex items-center justify-center',
+            mobileSize === 'small' &&
+              'max-md:h-10 max-md:subtitle-small-sb-14px',
+          )}
+        >
           {professor.name}
         </span>
 
