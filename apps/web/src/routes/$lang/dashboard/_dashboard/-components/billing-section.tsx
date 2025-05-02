@@ -18,7 +18,7 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
           <p className="desktop-subtitle1 text-newBlack-4 my-4">
             {t('dashboard.booking.billingSubtitle')}
           </p>
-          <div className="w-full flex flex-col md:gap-4 text-newBlack-4">
+          <div className="w-full flex flex-col gap-2.5 md:gap-4 text-newBlack-4">
             {invoices.length > 0 ? (
               <>
                 <div className="hidden md:flex flex-row gap-4 font-medium text-newBlack-1">
