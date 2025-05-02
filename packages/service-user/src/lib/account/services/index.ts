@@ -1,6 +1,7 @@
 export * from './get-participants.js';
 export * from './change-display-name.js';
 export * from './change-certificate-name.js';
+export * from './change-email-settings.js';
 export * from './change-notifications-settings.js';
 export * from './change-permission.js';
 export * from './change-role.js';

@@ -39,8 +39,9 @@ export const createSendCourseWeeklyRecapEmail = (
         .exec(getUserAccountSettingsQuery(userId))
         .then(firstRow);
       const acceptsCourseEmail = userAccountSettings?.emailNotifyCourses;
+      const unsubscribeId = userAccountSettings?.unsubscribeId;
 
-      if (!acceptsCourseEmail) {
+      if (!acceptsCourseEmail || !unsubscribeId) {
         return;
       }
 
@@ -53,9 +54,9 @@ export const createSendCourseWeeklyRecapEmail = (
         chapterName: chapter.title,
         chapterStartDate: chapter.startDate?.toISOString(),
         chapterEndDate: chapter.endDate?.toISOString(),
-        adressLine1: chapter.addressLine1,
-        adressLine2: chapter.addressLine2,
-        adressLine3: chapter.addressLine3,
+        addressLine1: chapter.addressLine1,
+        addressLine2: chapter.addressLine2,
+        addressLine3: chapter.addressLine3,
       }));
       const weekEndDate = new Date(endDate);
       weekEndDate.setDate(weekEndDate.getDate() - 1);
@@ -70,6 +71,7 @@ export const createSendCourseWeeklyRecapEmail = (
           endDate: weekEndDate.toISOString(),
           upcomingChapters: upcomingChapters,
           dashboardLink: `${config.domainUrl}/dashboard/courses`,
+          unsubscribeLink: `${config.domainUrl}/change-email-preferences/${unsubscribeId}`,
           subject: subject,
         },
       });

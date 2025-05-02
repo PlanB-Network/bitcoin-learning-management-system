@@ -1,7 +1,15 @@
+import { Button, Form, customToast } from '@blms/ui';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { createFileRoute } from '@tanstack/react-router';
-import { MainLayout } from '#src/components/main-layout.tsx';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { MdMarkEmailRead } from 'react-icons/md';
+import { z } from 'zod';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { isUUID } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { FormCheckboxGroup } from '../../dashboard/_dashboard/profile.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/change-email-preferences/$unsubscribeId',
@@ -10,7 +18,14 @@ export const Route = createFileRoute(
 });
 
 function ChangeEmailPreferences() {
+  const { t } = useTranslation();
+
   const params = Route.useParams();
+
+  const FormSchema = z.object({
+    platformNotifications: z.array(z.string()).default([]),
+    emailNotifications: z.array(z.string()).default([]),
+  });
 
   const { data: emailPreferences, isFetched } =
     trpc.user.getEmailSettings.useQuery(
@@ -22,11 +37,110 @@ function ChangeEmailPreferences() {
       },
     );
 
-  console.log(emailPreferences);
+  const getDefaultEmailNotifications = () => {
+    const defaults = [];
+    if (emailPreferences?.emailNotifyCourses) defaults.push('courses');
+    if (emailPreferences?.emailNotifyGeneral) defaults.push('general');
+    return defaults;
+  };
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      emailNotifications: [],
+    },
+  });
+
+  const changeEmailSettings = trpc.user.changeEmailSettings.useMutation({
+    onSuccess: () => {
+      customToast(
+        t(
+          'dashboard.profile.notificationSettings.emailPreferencesSavedSuccessfully',
+        ),
+        {
+          mode: 'light',
+          icon: MdMarkEmailRead,
+          color: 'success',
+          closeButton: true,
+        },
+      );
+    },
+  });
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    const mutationPayload = {
+      unsubscribeId: params.unsubscribeId,
+      emailNotifyCourses: data.emailNotifications.includes('courses'),
+      emailNotifyGeneral: data.emailNotifications.includes('general'),
+    };
+
+    changeEmailSettings.mutate(mutationPayload);
+  }
+
+  useEffect(() => {
+    if (isFetched) {
+      form.reset({
+        emailNotifications: getDefaultEmailNotifications(),
+      });
+    }
+  }, [isFetched]);
+
+  if (!isFetched) return null;
 
   return (
-    <MainLayout variant="light">
-      <p className="text-newBlack-1">Test</p>
-    </MainLayout>
+    <PageLayout
+      variant="light"
+      footerVariant="light"
+      className="max-w-xl mx-auto"
+    >
+      <h1 className="title-medium-sb-18px md:title-large-sb-24px mb-4 md:mb-8 text-newBlack-1">
+        {t('dashboard.profile.notificationSettings.emailPreferencesTitle')}
+      </h1>
+      <p className="subtitle-small-14px md:subtitle-large-18px mb-4 md:mb-8 text-newBlack-1">
+        {t(
+          'dashboard.profile.notificationSettings.emailPreferencesDescription',
+        )}
+      </p>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit, console.error)}
+          className="flex flex-col gap-4 md:gap-8"
+        >
+          <div className="flex flex-col gap-2">
+            <FormCheckboxGroup
+              id="emailNotifications"
+              control={form.control}
+              label={t('dashboard.profile.notificationSettings.emailTitle')}
+              options={[
+                {
+                  value: 'courses',
+                  label: t(
+                    'dashboard.profile.notificationSettings.coursesOption',
+                  ),
+                },
+                {
+                  value: 'general',
+                  label: t(
+                    'dashboard.profile.notificationSettings.generalOption',
+                  ),
+                },
+              ]}
+              addNoneButton
+            />
+          </div>
+
+          <Button
+            type={'submit'}
+            size="s"
+            disabled={changeEmailSettings.isPending}
+            className="w-fit self-center"
+          >
+            {changeEmailSettings.isPending
+              ? t('words.saving')
+              : t('words.save')}
+          </Button>
+        </form>
+      </Form>
+    </PageLayout>
   );
 }

@@ -9,6 +9,7 @@ import {
   createChangeCertificateName,
   createChangeDisplayName,
   createChangeEmailConfirmation,
+  createChangeEmailSettings,
   createChangeNotificationsSettings,
   createChangePassword,
   createChangePermission,
@@ -202,6 +203,23 @@ export const userRouter = createTRPCRouter({
     .query(({ ctx, input }) =>
       createGetEmailSettings(ctx.dependencies)({
         unsubscribeId: input.unsubscribeId,
+      }),
+    ),
+
+  changeEmailSettings: publicProcedure
+    .input(
+      z.object({
+        unsubscribeId: z.string(),
+        emailNotifyCourses: z.boolean(),
+        emailNotifyGeneral: z.boolean(),
+      }),
+    )
+    .output<Parser<void>>(z.void())
+    .mutation(({ ctx, input }) =>
+      createChangeEmailSettings(ctx.dependencies)({
+        unsubscribeId: input.unsubscribeId,
+        emailNotifyCourses: input.emailNotifyCourses,
+        emailNotifyGeneral: input.emailNotifyGeneral,
       }),
     ),
 

@@ -251,7 +251,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     ctx.crons.addTask('sun4pm', async () => {
       console.log(new Date(), 'Starting weekly recap email cron job');
       const courses = await getCourses('en');
-      if (getCourses.length === 0) return;
+      if (courses.length === 0) return;
 
       const startDate = new Date();
       startDate.setDate(startDate.getDate() + 1);

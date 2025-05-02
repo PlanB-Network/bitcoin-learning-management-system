@@ -484,7 +484,7 @@ const NotificationSettings = () => {
   );
 };
 
-const FormCheckboxGroup = ({
+export const FormCheckboxGroup = ({
   id,
   control,
   label,

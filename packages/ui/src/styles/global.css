@@ -371,6 +371,10 @@
     @apply text-sm leading-[160%] font-medium tracking-[0.1px];
   }
 
+  .subtitle-small-14px {
+    @apply text-sm leading-[160%] font-normal tracking-[0.1px];
+  }
+
   .title-large-24px {
     @apply text-2xl font-normal leading-[133%] tracking-015px;
   }
