@@ -1,25 +1,25 @@
 {
   "about": {
-    "activeContributors": "Active contributors",
+    "activeContributors": "Wachangiaji hai",
     "missionTitle": "Lengo letu",
-    "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
-    "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
-    "commitmentTitle": "Out commitments",
-    "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
-    "coreTeamTitle": "The core team",
-    "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
+    "missionContent1": "Dhamira yetu ni kusaidia jumuiya za Bitcoin za ndani kupitia elimu ya chanzo huria na mitandao. Ili kufanya hivyo, tunakusanya, kupanga, na kuunda rasilimali zinazohitajika (kozi, vitabu, mabango, vipeperushi, video) kwa ajili ya sekta ya Bitcoin kuendeleza.",
+    "missionContent2": "Tunaweka maarifa katikati ili tuweze kuyashiriki kwa njia bora zaidi, kwa kutumia hazina rahisi ya GitHub ya lugha nyingi na jukwaa la E-learning. Pia tunasaidia vitovu vya Bitcoin vya ndani katika ukuzaji wao kwa kutoa zana zinazofaa kwa vipaji vyao kukua.",
+    "commitmentTitle": "Mikataba yetu",
+    "commitmentContent": "Tuna ahadi zifuatazo kwa jumuiya ya bitcoin: \n • Endelea kuwa chanzo wazi \n • Toa maudhui ya elimu ya hali ya juu \n • Tafsiri maudhui yetu katika lugha nyingi iwezekanavyo \n • Saidia wajasiriamali wa Bitcoin katika safari yao",
+    "coreTeamTitle": "Kikundi cha msingi",
+    "coreTeamContent": "Mpango ₿ Mtandao ni mkusanyiko wa mamia ya wachangiaji, walimu, viongozi wa jumuiya, wabunifu, wasanidi programu na waandaaji. Shukrani za pekee ziwaendee watu wengi ambao wamefanikisha Mpango ₿ na wanaendelea kufanya hivyo kila siku. (Ukuta wa wachangiaji unakuja hivi karibuni)",
     "coreTeamGiacomoRole": "Mkurugenzi na mwanzilishi mwenza",
     "coreTeamRogzyRole": "Meneja wa bidhaa na mwanzilishi mwenza",
     "coreTeamAsioRole": "Mratibu wa elimu",
     "coreTeamAjelexRole": "Mratibu wa node",
-    "corporateTitle": "Corporate behind",
-    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
-    "coportateContact": "Contact information:",
-    "storyTitle": "Out story",
-    "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
-    "title": "About the planB network",
-    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. We believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
+    "corporateTitle": "Mashirika nyuma ya mradi huo",
+    "corporateContent": "Mtandao wa Plan ₿ ni mradi wa ushirikiano wa taasisi tatu zinazojihusisha na maendeleo ya Bitcoin. Katika jitihada za kuongeza uwezo wa tabaka la elimu ya Bitcoin, waliamua kushirikiana kuunda Mtandao wa Plan ₿. Tangu wakati huo, taasisi nyingine nyingi zimeamua kuchangia na kujiunga na jitihada hizi za kuleta elimu ya Bitcoin kwa ulimwengu. Kwa hivyo, tunawashukuru sana kwa mchango wao.",
+    "coportateContact": "Maelezo ya mawasiliano",
+    "storyTitle": "Hadithi yetu",
+    "storyContent": "Plan ₿ Network ni mpango unaosaidia elimu ya Bitcoin duniani kote. Ni mseto wa makampuni mbalimbali ya Bitcoin yenye shauku inayolenga elimu, programu huria, mitandao ya rika hadi rika, na hisia za jumuiya. Kwa pamoja, wameamua kuunda Mpango ₿ Mtandao na kuupa mfumo wa ikolojia wa Bitcoin zana zinazofaa za kukuza. Wasilisho letu la toleo la 2023 linapatikana hapa.",
+    "title": "Kuhusu Plan ₿ Network",
+    "subtitle": "Je! Unataka kuorange pill ulimwenguni? Jiunge na Mpango ₿ Mtandao.",
+    "manifesto": "Tunaamini katika siku zijazo zilizowekwa madarakani ambazo Bitcoin inatoa.\n\nDhamira yetu ni kutambulisha Bitcoin kwa watu bilioni moja kwa muongo mmoja. Zana zetu ni elimu na habari. \n\nTunasaidia jumuiya za ndani za Bitcoiners kwa kutoa maudhui ya elimu ya chanzo huria na kutoa mtandao wa washauri wa Bitcoin.\n\nFalsafa yetu imechochewa na manifesto ya cypherpunk. Kama vile walivyotetea faragha, tunatetea elimu. Kwa hakika, tunaamini kwamba ujuzi ndio msingi wa uhuru na mabadiliko.\n\nSisi ni Bitcoin-pekee. \n\nTunatetea uwajibikaji wa mtu binafsi na uhuru unaotolewa kwa kumiliki funguo zako mwenyewe. \n\nTunathibitisha kwa haraka, sio uaminifu wa kipofu. \n\nTunaamini kwamba kwa kurekebisha pesa, tunaweza kurekebisha ulimwengu.\n\nTumegatuliwa na chanzo huria, tukiepuka kutofaulu hata kidogo. \n\nTunahimiza utangazaji bila malipo wa maudhui yetu. \n\nTunatamani ulimwengu unaofanya kazi kutoka chini kwenda juu, ambapo mtu binafsi yuko katikati.\n\nTunarahisisha, tunaelimisha, tunashiriki. \n\nJiunge nasi katika dhamira yetu ya kunyunyiza kidonge cha chungwa ulimwenguni.\n",
     "description": "Plan ₿ Network inasaidiya jamii kote ulimwenguni kujiandaa ili kutoa elimu bora. Jukwaa hili linatengeneza zana muhimu kuelekea lengo hilo, kupitia chuo kikuu cha mtandaoni, portal ya mafunzo, seti ya vifaa vya elimu ya Bitcoin na portal ya rasilimali."
   },
   "auth": {
@@ -30,23 +30,23 @@
     "createOne": "Jisajili hapa!",
     "emailAddress": "Adresse email",
     "errors": {
-      "usernameRegex": "Username can only contain letters, digits, _, . and -",
-      "usernameRequired": "Username is required",
-      "usernameTooShort": "Username must contain at least 5 characters",
+      "usernameRegex": "Jina la mtumiaji linaweza tu kuwa na herufi, tarakimu, mistari chini (_), vituo kamili (.) na deshi (-).",
+      "usernameRequired": "Jina la mtumiaji linahitajika.",
+      "usernameTooShort": "Jina la mtumiaji lazima liwe na angalau vibambo 5.",
       "displayNameTooShort": "Jina la kuonyesha lazima liwe na herufi 2 angalau.",
       "emailInvalid": "Barua pepe isiyo sawa",
       "invalidCredentials": "Sifa za kuingia hazijulikani"
     },
-    "forgottenPassword": "Forgot your password?",
+    "forgottenPassword": "Je, umesahau nenosiri lako?",
     "headerAccountCreated": "Akaunti imeundwa",
     "lnurlAuthDescription": "Changanua msimbo huu wa QR kwa mkoba wako wa Lightning ili kuingia!",
-    "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
+    "noAccountNeeded": "Hakuna haja ya akaunti kuanza kujifunza kwenye Plan ₿ Network!",
     "noAccountYet": "Je, huna akaunti?",
-    "resetPassword": "Réinitilisation de mot de passe",
+    "resetPassword": "Weka upya nenosiri lako",
     "passwordRequired": "Nenosiri linahitajika",
     "passwordsDontMatch": "Manenosiri hayalingani",
-    "sendLink": "Envoyer un lien",
-    "signIn": "Sign In",
+    "sendLink": "Nitumie kiungo",
+    "signIn": "Ingia",
     "checkingTokenExplain": "Tunachunguza ikiwa tokeni ni halali…",
     "passwordResetSent": "Barua pepe ya kubadilisha nenosiri imetumwa kwenye kikasha chako (ikiwa anwani ya barua pepe ipo kwenye hifadhi data yetu).",
     "checkingToken": "kukagua tokeni",
@@ -78,10 +78,10 @@
       "description": "This content is meant to be ready to use for educational events and use.",
       "title": "Maudhui ya Elimu"
     },
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
+    "pageDescription": "Kupitishwa kwa wingi sio rahisi. Ili kusogea karibu na kwa haraka zaidi kuelekea lengo hilo, tumeunda hifadhidata inayoweza kupanuliwa ili kupangisha maudhui ya elimu. Hapa, waelimishaji wa Bitcoin wanaweza kuacha na kufikia yaliyomo kwa uhuru kama inahitajika. Hatuhitaji kuunda tena gurudumu kila wakati, kwa hivyo tushirikiane kuweka kati nyenzo muhimu ni zana moja ya zana!",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
+      "description": "Picha zilizo hapa chini zinaweza kutumika kwa ubunifu wako mwenyewe.",
       "title": "Maudhui Yanayoonekana"
     },
     "contributeDescription": "Ikiwa unataka kuongeza, kuhariri au kutafsiri baadhi ya maudhui, msaada wako utakaribishwa!",
@@ -91,8 +91,8 @@
   "courses": {
     "chapter": {
       "finishCourse": "Maliza kozi",
-      "next": "Done, let's go to the next chapter!",
-      "thanksTip": "Wanna say thanks ? Tip.",
+      "next": "Tayari, tuende kwenye sura inayofuata!",
+      "thanksTip": "Unataka kuonyesha shukrani yako?\nUnaweza kumuunga mkono mwandishi kwa kidokezo.",
       "detail": {
         "title": "Maelezo ya darasa",
         "p1heading": "Je, unapanga kuhudhuria somo hili kwa ana?",
@@ -113,14 +113,14 @@
     "details": {
       "buyCourse": "Nunua kozi",
       "curriculum": "Mtaala",
-      "description": "Description",
+      "description": "Maelezo",
       "mobile": {
         "hours": "{{hours}} masaa"
       },
       "objectives": "Malengo",
-      "objectivesTitle": "What you'll learn :",
+      "objectivesTitle": "Utasoma nini:",
       "startCourse": "Anza kozi",
-      "taughtBy": "This course is being taught by :",
+      "taughtBy": "Mafunzo haya yanafundishwa na",
       "buyInPersonCourse": "Nunua kozi ya ana kwa ana",
       "buyOnlineCourse": "Nunua kozi mtandaoni",
       "inPersonAccess": "Unahitaji kupakua tiketi yako ili uweze kufikia darasa la ana kwa ana.",
@@ -139,7 +139,8 @@
       "teacherLed": "Inayoongozwa na Profesa",
       "premiumContentNeedsPaymentAction": "Nenda kwenye ukurasa mkuu wa kozi",
       "thanksTipping": "Unaweza kusema asante kwa kudokeza profesa.",
-      "learning": "Njia ya kujifunza"
+      "learning": "Njia ya kujifunza",
+      "attendInPersonWarning": "Ikiwa una nia ya kuhudhuria darasa hili ana kwa ana, hakikisha kuwa umeweka kiti chako. Kwa vyovyote vile, somo litatiririshwa moja kwa moja na linapatikana kwa kucheza tena."
     },
     "explorer": {
       "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
@@ -181,14 +182,14 @@
       "hybridDescription": "Tafadhali pitia maelezo ya kozi yaliyotolewa.Kila somo hufanyika ana kwa ana kwenye tarehe na maeneo yaliyoainishwa. Madarasa yote daima hurekodiwa na kupeperushwa moja kwa moja kwa ajili ya kurudiwa.Udhibitisho wa uwepo kwa ana kwa ana unasimamiwa kwa kila somo, kwa hivyo tunakuomba uweke nafasi yako kila wakati unapotaka kuhudhuria kwa mwili."
     },
     "quizz": {
-      "clickOnPie": "Click on the pie chart, so check your mistakes, and see the explanations",
-      "quizz": "Quizz",
-      "quizzResults": "Quizz results",
-      "quizzReview": "Quizz review",
-      "resultCongrats": "Congratulations, you did well !",
-      "resultItsOk": "Don't give up, you'll do better next time !",
-      "resultNotBad": "Not too bad !",
-      "resultPerfect": "Absolutely perfect ! Congrats !"
+      "clickOnPie": "Bofya kwenye chati ya pai ili kuangalia jibu sahihi",
+      "quizz": "Maswali",
+      "quizzResults": "Majibu ya maswali",
+      "quizzReview": "Mspitio Mapitio ya maswali",
+      "resultCongrats": "Hongera, umefanya vizuri!",
+      "resultItsOk": "Usikate tamaa, utafanya vizuri zaidi wakati ujao!",
+      "resultNotBad": "Si mbaya!",
+      "resultPerfect": "Kamili kabisa! Hongera!"
     },
     "review": {
       "yesOfCourse": "ndiyo, bila shaka",
@@ -306,7 +307,10 @@
       "examCertificateCompletionText": "Mtandao wa Plan ₿ unafurahi kumpongeza {{username}} kwa kupewa diploma ya kozi ya \"{{courseName}}\".",
       "examNotPassed": "Unahitaji kufanya mtihani wa mwisho na kupata zaidi ya asilimia 80 ili upate diploma yako na ukamilishe kabisa kozi. Diploma hii itakuwa na <0>muhtasari wa muda</0> ili kuhakikisha uhalisi wake.",
       "timeStampedNoDot": "iliyotiwa tarehe na wakati",
-      "timeStamping": "kuweka alama ya muda"
+      "timeStamping": "kuweka alama ya muda",
+      "singleAttempt": "Mtihani wa jaribio moja",
+      "singleAttemptPrecaution": "Kabla ya kuanza, tafadhali hakikisha kuwa muunganiko wako ni thabiti. Kwa kuwa hii ni mtihani wa jaribio moja, ikiwa utakatika, hutaweza kujaribu tena.",
+      "singleAttemptAvailability": "Mtihani huu unapatikana mtandaoni kwenye: {{date}}"
     },
     "conclusion": {
       "completedChaptersHeadline": "Sura zote sasa zimekamilika!",
@@ -397,7 +401,20 @@
       "profileInformation": "Maelezo ya wasifu",
       "profilePicture": "Picha ya wasifu",
       "security": "Usalama",
-      "username": "Jina la mtumiaji"
+      "username": "Jina la mtumiaji",
+      "notificationSettings": {
+        "emailTitle": "Ni aina gani za arifa ungetaka kupokea kwa barua pepe?",
+        "emailWarning": "Onyo! Hakuna anwani ya barua pepe iliyounganishwa na akaunti yako. Tafadhali iongeze katika sehemu ya wasifu wako.",
+        "eventsOption": "Maelezo ya hivi karibuni kuhusu matukio uliyoyahifadhi",
+        "coursesOption": "Maelezo kuhusu kozi ulizojiandikisha",
+        "description": "Unaweza kubadilisha mipangilio yako ya arifa hapa chini. ",
+        "generalOption": "Habari za jumla na habari kuhusu Mtandao wa Plan ₿",
+        "none": "Hakuna",
+        "platformTitle": "Ni aina gani za arifa ungetaka kupokea kwenye jukwaa hili?",
+        "title": "Mipangilio ya arifa"
+      },
+      "settings": "Mipangilio",
+      "securitySettings": "Mipangilio ya usalama"
     },
     "bCert": {
       "noResults": "Bado hakuna alama au vyeti vinavyohusishwa na akaunti hii \n Iwapo ulifaulu mtihani na matokeo yako hayapatikani baada ya muda mrefu, tafadhali <0>wasiliana nasi</0> kwa usaidizi.",
@@ -405,7 +422,11 @@
     },
     "calendar": {
       "calendar": "Kalenda",
-      "personalCalendar": "Kalenda ya kibinafsi"
+      "personalCalendar": "Kalenda ya kibinafsi",
+      "eventType": {
+        "class": "Madarasa",
+        "event": "Matukio"
+      }
     },
     "course": {
       "checkDetailsCompleted": "Hapa unaweza kukagua maelezo yote kuhusu kozi hii uliyoikamilisha.",
@@ -418,7 +439,16 @@
       "tweetText": "Nimefurahi kukamilisha kozi ya {{courseIndex}} katika @planb_network na kupata diploma yangu kwa alama ya {{score}}/100 kwenye mtihani wa mwisho! {{emoji}} #PBNDiploma\n  {{certificateUrl}}",
       "submitReviewInfo": "Unapaswa kuwasilisha ukaguzi ili kupata ufikiaji wa kipengele hiki.",
       "conclusionHeadline": "Huu hapa ni muhtasari wa yale uliyojifunza. Ikiwa baadhi ya sura zimekosa au hazijathibitishwa ipasavyo, sasa ni wakati wa kufanya hivyo, ama kwa kurudi kujifunza, au kwa kubonyeza kitufe kamili.",
-      "coordinator": "Mratibu wa kozi"
+      "coordinator": "Mratibu wa kozi",
+      "conclusionNotReleased": "Hitimisho itafunguliwa siku ya darasa la mwisho.",
+      "announcement": "Tangazo",
+      "courseCalendar": "Kalenda ya Kozi",
+      "assignment": "Kazi ya ziada",
+      "assignmentDescription": "Uteuzi wa mradi unawakilisha hatua ya pili ya programu ya Shule ya Biashara ya Mpango ₿, inayofunguliwa kwa wanafunzi waliochaguliwa kutoka hatua ya kwanza. Kulingana na cheo cha mwanafunzi na mapendeleo, atapewa uteuzi wa mradi ulioandaliwa na kampuni ya Bitcoin. Uteuzi huu wa mradi wa mtu binafsi utafanyika kwa siku 10, kuanzia Juni 2 hadi Juni 12.\nK throughout uteuzi, watakuwa wakiongozwa na mwakilishi kutoka kampuni. Ifikapo Juni 12, wanafunzi lazima wakamilishe na kuwasilisha kazi zao kwa tathmini.\n\nMiradi itakadiriwa na kampuni. Alama hii itahesabiwa kwa daraja la mwisho. Wanafunzi walio na cheo cha juu tu ndio wataalikwa kushiriki katika Shule ya Majira ya joto huko Lugano, Uswisi, kuanzia Julai 23 hadi Julai 30, 2025.",
+      "planbSchoolExamDescription": "Mpango wa Shule ya Biashara ya Plan ₿ 2025 unaundwa na awamu mbili. Katika awamu ya kwanza, utafanya mitihani miwili mtandaoni, haswa ya katikati ya muhula na ya mwisho: ni mitihani ya jaribio moja, yenye muda unayoweza kukamilisha wakati wowote wakati wa kipindi cha upatikanaji wa siku tatu. Baada ya awamu ya kwanza, wanafunzi watachaguliwa kulingana na viwango vyao kuendelea kwenye awamu ya pili, ambayo inahusisha kazi ya mradi: kazi ya mtu binafsi inayotolewa na kampuni ya Bitcoin. Unaweza kupata maelezo zaidi kuhusu hilo kwenye tabo ya Kazi.\n\nDaraja la mwisho litahesabiwa kama wastani uliopimwa wa mitihani mitatu. Wanafunzi ambao watafikia alama zaidi ya 80% watapokea diploma, na wanafunzi walio na viwango vya juu pia watakuwa na nafasi ya kushiriki katika Shule ya Majira ya joto huko Lugano, mwezi Julai.",
+      "assignmentInformation": "Taarifa ya kazi",
+      "exams": "Mitihani",
+      "generalInformation": "Taarifa za jumla"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -451,7 +481,35 @@
         "quickRecap": "Hapa unaweza kupata taarifa zote za jumla kuhusu kozi hii.",
         "reviewInfos": "Hapa unaweza kudhibiti na kukagua maelezo yote yanayohusu kila kozi uliyoratibu.",
         "reviews": "Ukaguzi",
-        "goal": "Lengo"
+        "goal": "Lengo",
+        "allStudents": "Wanafunzi wote",
+        "announcementModal": {
+          "contentLabel": "Maandishi ya tangazo",
+          "contentPlaceholder": "Tafadhali andika hapa.",
+          "create": "Tengeneza tangazo",
+          "dateLabel": "Tarehe ya kuchapishwa",
+          "datePlaceholder": "Chagua tarehe",
+          "editAnnouncement": "Hariri tangazo",
+          "groupLabel": "Chagua kundi la wanafunzi unalotaka kuwahutubia",
+          "title": "Andika tangazo",
+          "typeLabel": "Ni tangazo la aina gani?",
+          "typePlaceholder": "Chagua aina moja",
+          "dateRequired": "Tarehe inahitajika"
+        },
+        "deleteAnnouncementWarning": "Mabadiliko haya hayawezi kubadilishwa",
+        "noPastAnnouncement": "HUNA tangazo la zamani kwa sasa.",
+        "announcements": "Tangazo",
+        "announcementsIntroduction": "Mbali na arifa za kiotomatiki kuhusu ratiba za darasa, una chaguo la kuandika na kupanga tangazo za ziada kwa wanafunzi wako. Kwa mfano, unaweza kuwajulisha kuhusu mabadiliko ya kimantiki au sasisho za dakika za mwisho.\nWanafunzi watapokea arifa hizi kwenye jukwaa, na pia kwa barua pepe (ikiwa watazindua kipengele hiki cha hiari).",
+        "announcementsUpcoming": "Matukio yajayo",
+        "announcementsUpcomingDescription": "Hapa chini ni matangazo ya baadaye uliyoandika na kupanga.",
+        "assignmentStudents": "Uteuzi wa Mradi",
+        "announcementsPast": "Matangazo yaliyopita",
+        "deleteAnnouncementTitle": "Je, una uhakika unataka kufuta tangazo hili?",
+        "noWrittenAnnouncement": "Huna tangazo lolote lililoandikwa kwa wakati huu.",
+        "selectCourse": "Chagua kozi",
+        "summerStudents": "Shule ya Kiangazi",
+        "writeAnnouncement": "Andika tangazo",
+        "announcementsPastDescription": "Hapa chini kuna orodha ya tangazo ambazo tayari zimetangazwa. Orodha itafutwa baada ya mwezi mmoja."
       },
       "menu": "Menyu ya mwalimu",
       "profile": {
@@ -547,7 +605,9 @@
           "value": "Thamani",
           "uses": "Imetumika",
           "total": "Jumla",
-          "owner": "Mmiliki"
+          "owner": "Mmiliki",
+          "actions": "Vitendo",
+          "maxUses": "Max. matumizi"
         },
         "productEvent": "Tukio",
         "productCourse": "Kozi",
@@ -575,7 +635,18 @@
           "multiUse": "Matumizi mengi",
           "events": "Matukio",
           "courses": "Kozi"
-        }
+        },
+        "close": "Funga",
+        "delete": "Futa",
+        "deleteDiscountCode": "Futa msimbo wa punguzo",
+        "deleteDiscountCodeSuccess": "Msimbo wa punguzo umefutwa",
+        "deleteDiscountCodeWarning": "Pindi msimbo huu ukifutwa, hautafanya kazi tena. Mabadiliko haya hayawezi kutenduliwa",
+        "cancel": "Ghairi",
+        "deleteDiscountCodeConfirm": "Futa msimbo wa punguzo",
+        "discountCodeCopied": "Msimbo wa punguzo umenakiliwa",
+        "downloadImage": "Pakua picha",
+        "downloadImages": "Pakua picha",
+        "generateNewCodes": "Tengeneza misimbo mipya"
       },
       "discountCodes": "Nambari za punguzo"
     },
@@ -759,28 +830,37 @@
       "other": "Nyingine"
     },
     "backToDashboard": "Rudi kwenye dashibodi",
-    "studentDashboard": "Dashibodi ya mwanafunzi"
+    "studentDashboard": "Dashibodi ya mwanafunzi",
+    "announcements": {
+      "groups": {
+        "active": "Wanafunzi waliochaguliwa kwa Mgawo wa Mradi",
+        "summer": "Wanafunzi waliochaguliwa kwa Shule ya Majira ya joto",
+        "all": "Wanafunzi wote waliojiandikisha"
+      },
+      "pickADate": "Chagua tarehe",
+      "publicationDate": "Tarehe ya kuchapishwa"
+    }
   },
   "events": {
     "main": {
-      "upcomingEvents": "Upcoming events",
-      "currentEvents": "Events happening right now"
+      "upcomingEvents": "Matukio yanayotokea sasa hivi",
+      "currentEvents": "Matukio yanayotokea sasa hivi"
     },
     "missed": {
-      "missedH1": "Past events to replay",
-      "missedP1": "Did you miss an event ?",
-      "missedP2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
+      "missedH1": "Matukio ya nyuma ya kucheza tena",
+      "missedP1": "Je, ulikosa tukio?",
+      "missedP2": "Hakuna wasiwasi! Tunahifadhi marudio yote ya matukio ya zamani ambayo yalifanyika katika Mtandao, ili kuruhusu kila mtu kupata kwa uhuru kile alichokosa."
     },
     "card": {
-      "free": "free",
-      "online": "online",
-      "limited": "limited to",
+      "free": "Bure",
+      "online": "mtandaoni",
+      "limited": "kikomo ni",
       "unlimited": "unlimited",
-      "people": "people",
+      "people": "Watu",
       "watchLive": "Watch live",
       "watchReplay": "Watch replay",
-      "bookLive": "Book live",
-      "bookSeat": "Book your seat",
+      "bookLive": "Weka miadi moja kwa moja",
+      "bookSeat": "Weka nafasi",
       "visitWebsite": "Visit website",
       "buyReplay": "Nunua uchezaji wa marudio",
       "eventFull": "Tukio limejaa",
@@ -833,42 +913,42 @@
   },
   "home": {
     "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "welcome": "Welcome to PlanB Network"
+      "content": "Plan ₿ Network inalenga kutoa zana bora na maudhui ya elimu duniani kote, kuwawezesha watu kurejesha uhuru wao. Kuanzia watu binafsi hadi jumuiya, tuko hapa kukusaidia katika safari yako ya Bitcoin.",
+      "forEducators": "Kwa wale wanaojifunza na wale wanaofundisha",
+      "globalNetwork": "Mtandao wa Global Bitcoin",
+      "welcome": "Karibu kwenye Plan ₿ Network"
     },
     "tutorialSection": {
-      "title": "Making Bitcoin education simple is our objective.",
-      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
-      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "See all tutorials",
+      "title": "Weka maarifa kati ili kuyasambaza vyema",
+      "subtitle1": "Elimu ya Bitcoin imerahisishwa.",
+      "content1": "Bitcoin inabadilika kila wakati, na kuibuka kwa watendaji wapya, suluhisho, itifaki, na mafanikio ya kiteknolojia. Kwa hivyo, inaweza kuwa changamoto kudumisha hifadhidata sahihi na iliyosasishwa ya mafunzo ya ubora. Hapa kwenye Mpango ₿, tumefanikiwa hivyo. Iwe wewe ni mwanzilishi au mtumiaji wa hali ya juu, unaweza kusogeza mamia ya mafunzo ili kuchunguza tasnia yetu kulingana na mahitaji yako.",
+      "link": "Tazama mafunzo yote",
       "link2": "Angalia rasilimali zote"
     },
     "aboutUsSection": {
-      "title": "Who are we ?",
-      "subtitle": "A little bit about us",
-      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
-      "bitcoinFocusTitle": "Bitcoin focus",
-      "bitcoinFocusContent": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
-      "openSourceTitle": "Open source",
-      "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
-      "communityTitle": "Community",
-      "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
-      "privacyTitle": "Privacy",
-      "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress"
+      "title": "Sisi ni nani?",
+      "subtitle": "Kidogo kuhusu sisi",
+      "content": "Plan ₿ Network inaauni elimu ya Bitcoin duniani kote. Inawakilisha ushirikiano wa makampuni ya Bitcoin yenye shauku inayolenga elimu, programu huria, mitandao ya rika-kwa-rika, na ujenzi wa jamii. Kwa pamoja, wamezindua mpango huu ili kutoa mfumo ikolojia wa Bitcoin zana muhimu za ukuaji.",
+      "bitcoinFocusTitle": "Umakini kwa Bitcoin",
+      "bitcoinFocusContent": "Tunachunguza mapinduzi ya Bitcoin kutoka safu ya msingi hadi mawasiliano yanayozunguka kati ya wenzao.",
+      "openSourceTitle": "Chanzo cha wazi",
+      "openSourceContent": "Tunakuza mtiririko wa maarifa bila malipo na kuunga mkono suluhisho la chanzo huria",
+      "communityTitle": "Jamii",
+      "communityContent": "Kwanza kabisa sisi ni jumuiya ya wapendaji wanaosaidiana kwenye safari ya Bitcoin",
+      "privacyTitle": "Usiri",
+      "privacyContent": "Tunaamini kuwa faragha ni mojawapo ya haki za kimsingi za binadamu ambazo ni muhimu kwa maendeleo"
     },
     "languageSection": {
-      "title": "No language barrier here.",
-      "subtitle": "Everything is translated to local languages",
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "link": "Help us translate the academy",
+      "title": "Hakuna kizuizi cha lugha hapa.",
+      "subtitle": "Kila kitu kinatafsiriwa kwa lugha za kienyeji!",
+      "content1": "Katika Plan ₿, Network tunaamini Bitcoin ni mapinduzi ya kimataifa ambayo yanahusu kila mtu. Ili kuwawezesha mabilioni ya watu, tunabuni jukwaa hili liwe la lugha nyingi na liweze kufikiwa na wote. Kwa sasa mfumo huu unaauni lugha {{nb}}, na zaidi zinaongezwa kila mwezi. Ili kufikia hili, tunatumia mchanganyiko wa AI na shauku ya Bitcoiners duniani kote. Wewe pia unaweza kuanza kuunganisha mtandao wako wa ndani katika nchi yako!",
+      "link": "Tusaidie kutafsiri chuo",
       "availableLanguages": "Lugha zinazopatikana",
       "availableLanguagesVariation": "Lugha zinazopatikana: "
     },
     "patreonSection": {
-      "title": "Together let's make Bitcoin education better !",
-      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !"
+      "title": "Kwa pamoja, tuifanye elimu ya Bitcoin kuwa bora zaidi!",
+      "content": "Mtandao wa Mpango ₿ unajivunia kuungana na makampuni mengi ya bitcoin duniani kote ili kutoa nyenzo bora za elimu iwezekanavyo!"
     },
     "wallOfLoveSection": {
       "title": "Ukuta wa upendo",
@@ -893,23 +973,23 @@
     }
   },
   "imagesAlt": {
-    "bookCover": "a book cover",
-    "contributorHeart": "a heart for nice contributor",
+    "bookCover": "jalada la kitabu",
+    "contributorHeart": "moyo kwa mchangiaji mzuri",
     "orangePill": "an orange pill",
-    "printedCircuits": "a printed circuits",
-    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "sthRepresentingCompany": "something representing the company",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site"
+    "printedCircuits": "mzunguko uliochapishwa",
+    "rabbit404": "sungura akimulika tochi kwenye ishara 404",
+    "sthRepresentingCompany": "kitu kinachowakilisha kampuni",
+    "underConstructionImage": "Mchoro wa sungura kadhaa wanaofanya kazi kwenye tovuti ya ujenzi"
   },
   "library": {
-    "pageTitle": "The library"
+    "pageTitle": "Bitcoin Library"
   },
   "menu": {
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
-    "teachersDescription": "Get to know our university teachers, passionate bitcoiners",
+    "betDescription": "Mkusanyiko wa maudhui ambayo unaweza kutumia kwa miradi yako ya elimu",
+    "libraryDescription": "Gundua vitabu vingi ili kuboresha maarifa yako",
+    "nodeNetworkDescription": "Jiunge na Mpango ₿ mtandao wa jumuiya ya kimataifa",
+    "podcastsDescription": "Gundua mfumo ikolojia wa bitcoin kupitia podikasti",
+    "teachersDescription": "Wafahamu walimu wetu wa chuo",
     "conferencesDescription": "Mkusanyiko wa marudio ya mkutano wa Bitcoin tangu Block ya Genesis",
     "bCertDescription": "Pita mtihani wa ₿-CERT ili kupima kiwango chako cha Bitcoin",
     "glossaryDescription": "Elewa lugha ya Bitcoin",
@@ -930,26 +1010,26 @@
     "chooseLanguage": "Chagua lugha"
   },
   "nodeNetwork": {
-    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
-    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-    "pageTitle": "Node Map",
+    "description1": "Tunaamini kwamba elimu haipaswi tu kufanyika mtandaoni lakini pia katika nafasi za kimwili. Ili kufanikisha hili, Plan ₿ Network inasimamia mtandao wa vitovu kote ulimwenguni ili kuwakaribisha wanafikra, wajasiriamali na waelimishaji wanaokuza maendeleo ya Bitcoin na teknolojia ya uhuru.",
+    "pageSubtitle": "Je! Unataka kuorange pill ulimwenguni? Jiunge na Mpango ₿ Mtandao.",
+    "pageTitle": "Gundua Plan ₿ Node Network",
     "descriptionExtend": "Hatua yetu ya kwanza ni kualika jumuiya zilizo na nafasi halisi, ambazo tunazirejelea kama \"nodi kamili\" za mtandao wetu, kujiunga nasi. Katika siku zijazo, mtandao wetu unapoimarika, tutasambaza mwaliko huu kwa mipango zaidi duniani kote. Ikiwa unashiriki maadili yetu, tafadhali wasiliana na wawakilishi wetu ili wajiunge na mtandao wetu na kusaidia kujenga elimu bora zaidi ya Bitcoin iwezekanavyo."
   },
   "notFound": {
-    "here": "Here",
-    "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
+    "here": "Hapa",
+    "pageSubtitle": "Inaonekana mtu alianguka sana kwenye shimo la sungura na akapotea. Ili kurudi kwenye uso, bofya",
     "pageTitle": "Oops."
   },
   "podcasts": {
-    "pageTitle": "The Podcast Portal"
+    "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
-    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
-    "pageTitle": "Professors",
+    "pageSubtitle": "Maprofesa wetu wote ni watu wa kujitolea na wapenda Bitcoiners. Unaweza kuwatumia mchango ili kuonyesha shukrani zako.",
+    "pageTitle": "Maprofesa",
     "tips": {
-      "noTipsYet": "This professor does not accept tips at the moment.",
-      "thanks": "Thanks for supporting {{name}}'s work !",
-      "thanksNoName": "Thanks for supporting my work !",
+      "noTipsYet": "Profesa huyu hakubali michango kwa sasa.",
+      "thanks": "Asante kwa kuunga mkono kazi ya {{name}}!",
+      "thanksNoName": "Asante kwa kuunga mkono kazi ya {{name}}!",
       "authorSupport": "Msaidie mwandishi kwa kidokezo"
     },
     "navigationTitles": {
@@ -967,9 +1047,9 @@
       "noNewsletters": "Hakuna jarida lolote kwa sasa kwa lugha iliyochaguliwa.",
       "subtitle": "<0>Nyingine za habari</0> unaweza kupenda"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Resources",
+    "pageDescription": "Kujaribu kuelewa Bitcoin ni kama kuchunguza maze ambayo yanaendelea kukua. Ili kukusaidia katika safari yako, tumekusanya safu kubwa ya nyenzo ikijumuisha vitabu, podikasti, video na marudio ya mkutano. Tovuti hii inakusanya taarifa zote katika hazina moja ya Github ili kukusaidia kuelewa vyema mfumo ikolojia wa Bitcoin.",
+    "pageSubtitle": "Weka maarifa kati ili kuyasambaza vyema",
+    "pageTitle": "Karibu kwenye Tovuti ya Rasilimali",
     "podcasts": {
       "title": "Podcasts",
       "noPodcasts": "Kwa sasa hakuna podikasti za lugha uliyochagua."
@@ -1019,7 +1099,7 @@
     "toggleLabelSelectedLanguage": "Lugha iliyochaguliwa"
   },
   "settings": {
-    "changePassword": "Change password",
+    "changePassword": "Badilisha nenosiri",
     "changeDisplayName": "Badilisha jina la onyesho",
     "changeProfilePicture": "Badilisha picha ya wasifu",
     "changeEmail": "Badilisha barua pepe"
@@ -1034,36 +1114,36 @@
       "tutorialName": "Jina la mafunzo"
     },
     "exchange": {
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
-      "shortDescription": "Bitcoin buying-selling solutions, KYC and non-KYC",
+      "description": "Mabadilishano ni mojawapo ya milango ya kuingia na kutoka kati ya sarafu yako ya jadi (euro, dola) na ulimwengu wa bitcoin. Ubadilishanaji unaweza kudhibitiwa na kutii KYC (Mjue Mteja Wako), au kati-ka-mwenzi na bila majina. Kila ubadilishaji utatoa vipengele tofauti, miundo ya ada, ukwasi, na usaidizi kwa wateja. Kila bitcoiner itatumia tofauti kulingana na mahitaji na imani zao.",
+      "shortDescription": "Suluhu za uuzaji wa Bitcoin, KYC na zisizo za KYC",
       "title": "Exchange"
     },
     "explorer": {
-      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?",
+      "description": "Mafunzo haya yote yameandikwa na bitcoiners wenye shauku na kujitolea, ambao wanataka kueneza elimu ya bitcoin duniani kote. Usisahau kupenda, kukagua na kuwadokeza!",
+      "didYouKnow": "Je wajua?",
       "exploreAllTutorials": "Chunguza mafunzo yote"
     },
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
-      "shortDescription": "Bitcoin mining solutions",
-      "title": "Mining"
+      "description": "Sekta ya madini ni mada ngumu iliyojaa mashimo ya sungura ndani. Hapa, tutajaribu kukusindikiza kwenye safari yako kwa kutumia maunzi na programu. Kutoka kwa kurekebisha S9 kuwa hita ya nyumbani hadi kujaribu kushinda bahati nasibu na mchimbaji nerd.",
+      "shortDescription": "Suluhisho la kuchimba Bitcoin",
+      "title": "Kuchimba"
     },
     "node": {
-      "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
-      "shortDescription": "Solutions to operate a bitcoin node and join the network",
+      "description": "Nodi ni kama seva zako za kibinafsi. Katika Bitcoin, ni programu inayokuruhusu kuendesha mtandao, kukusanya miamala, kuthibitisha sheria na kuwa huru kikweli. Ndani ya mfumo wetu wa ikolojia, kuna nodi mbalimbali, kuanzia Bitcoin Core, hadi utekelezaji wa Umeme, RGB, au masuluhisho mengine ya juu zaidi ya faragha.",
+      "shortDescription": "Suluhisho za kuendesha nodi ya bitcoin na kujiunga na mtandao",
       "title": "Node"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Tutorials",
+    "pageDescription": "Bitcoin ni tasnia pana, ambayo inakuwa pana na pana kila siku. Ili kukusaidia kuichunguza, tumekusanya na kuratibu idadi kubwa ya mafunzo ambayo yanaelezea suluhu mbalimbali katika vikoa vyote vinavyohusiana na Bitcoin.",
+    "pageSubtitle": "Fungua mafumbo ya Bitcoin kwa kuchunguza mfumo wake mkubwa wa ikolojia",
+    "pageTitle": "Gundua mafunzo yetu",
     "privacy": {
-      "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
-      "shortDescription": "Tools for backup and maintaining privacy",
-      "title": "Privacy"
+      "description": "Faragha ni haki ya msingi. Ingawa tunatazamia ulimwengu ambapo faragha ndiyo chaguomsingi, si hali halisi tunayoishi. Tutajaribu kukueleza mbinu bora zaidi, kukusaidia kwa mafunzo, na kukuweka kwenye njia huru zaidi kuhusu data yako.",
+      "shortDescription": "Vifaa vya kufanya backup na kuhakikisha faragha",
+      "title": "Uhuru wa Kibinafsi"
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
-      "shortDescription": "Security solutions and usage of your bitcoins",
+      "description": "Mkoba wa Bitcoin ni kama mnyororo wako wa funguo. Inakuruhusu kutumia na kupokea bitcoin. Kuna aina nyingi tofauti za pochi, zote zikiwa na visa tofauti vya utumiaji, utendakazi, gharama, na uzoefu wa mtumiaji. Kila bitcoiner itatumia kifaa tofauti kulingana na mahitaji yao, kiwango cha mahitaji na uzoefu.",
+      "shortDescription": "Suluhu za usalama na matumizi ya bitcoins zako",
       "title": "Wallet"
     },
     "approvedByCreator": "Imeidhinishwa na muundaji",
@@ -1110,8 +1190,8 @@
   },
   "underConstruction": {
     "github": "GitHub",
-    "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to check out our",
-    "p2": "and consider joining our community!",
+    "p1": "Sungura ameanguka chini ya shimo. Kwa sababu ya tukio hili lisilotarajiwa, ukurasa huu unajengwa kidogo kwa sasa. Tunaomba radhi kwa usumbufu wowote. Timu yetu iko tayari kukamilisha ukurasa huu. Ikiwa una nia ya kukopesha mkono, tafadhali usisite kuangalia yetu",
+    "p2": "na fikiria kujiunga na jumuiya yetu!",
     "pageTitle": "Oops.",
     "itemNotFound": "{{item}} haikupatikana",
     "itemNotFoundOrTranslated": "{{item}} haikupatikana, au haijatafsiriwa kwa lugha yako"
@@ -1120,16 +1200,16 @@
     "about": "About",
     "about-us": "About Us",
     "advanced": "Advanced",
-    "back": "Back",
-    "beginner": "Beginner",
-    "book": "Book",
-    "conference": "Conference",
-    "content": "Content",
-    "course": "Course",
+    "back": "Nyuma",
+    "beginner": "Anayeanza",
+    "book": "Kitabu",
+    "conference": "Mkutano",
+    "content": "Maudhui",
+    "course": "Kozi",
     "courses": "Courses",
     "dashboard": "Dashboard",
     "details": "Details",
-    "events": "Events",
+    "events": "Matukio",
     "home": "Home",
     "intermediate": "Intermediate",
     "level": {
@@ -1150,11 +1230,11 @@
     "network": "Network",
     "newsletter": "Newsletter",
     "nodeNetwork": "Node Network",
-    "ourStory": "Our story",
+    "ourStory": "Hadithi yetu",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "professors": "Professors",
-    "register": "Register",
+    "register": "Andikisha",
     "resources": "Resources",
     "termsAndConditions": "Terms and conditions",
     "tutorial": "Tutorial",
@@ -1273,7 +1353,15 @@
     "linkedin": "Linkedin",
     "movie": "Filamu",
     "name": "Jina",
-    "exam": "Mtihani"
+    "exam": "Mtihani",
+    "calendar": "Kalenda",
+    "mode": "Mfumo",
+    "timeZone": "Mikanda ya Saa",
+    "day": "Siku",
+    "password": "Nenosiri",
+    "saving": "Inahifadhi...",
+    "selectedAmount": "{{amount}} imechaguliwa",
+    "video": "Video"
   },
   "conferences": {
     "addConferences": "Jisikie huru kuongeza mikutano yoyote inayokosekana kupitia hifadhi hii ya <0>Github</0>.",
@@ -1359,7 +1447,8 @@
       "blogSidebarTitle": "Machapisho ya Awali {{category}}",
       "blogListButtonText": "Soma makala",
       "featuredArticleTitleText": "Makala ya hivi karibuni imetolewa",
-      "filterText": "Chuja kwa mada:"
+      "filterText": "Chuja kwa mada:",
+      "blogSidebarTitleForAll": "Machapisho Yaliyopita"
     },
     "title": "Mawasiliano ya umma",
     "blogPost": "Blogu na Habari",
@@ -1477,6 +1566,49 @@
   "accessType": {
     "physical": "Ana kwa ana",
     "online": "Mtandaoni",
-    "replay": "Rudia"
+    "replay": "Rudia",
+    "hybrid": "Ana kwa ana na mtandaoni"
+  },
+  "notification": {
+    "types": {
+      "assignment": "Kazi ya ziada",
+      "calendar": "Kengele ya kalenda",
+      "celebration": "Sherehe",
+      "general": "Taarifa za jumla",
+      "warning": "Onyo"
+    }
+  },
+  "notifications": {
+    "bCertResults": "Matokeo yako ya ₿-CERT yametoka!",
+    "calendar_24h": "Darasa lijalo litakuwa kesho kutoka {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Tukio la {{eventName}} litafanyika kesho, kuanzia {{formattedTime}} saa {{adressLine}}. Hakikisha unapakua tiketi yako ili kuhudhuria!",
+    "blogNotTranslated": "Samahani, chapisho hili jipya la blogu bado halijatafsiriwa kwa lugha yako ya sasa.",
+    "bookYourSeat": "Hifadhi kiti chako ikiwa unataka kuhudhuria kibinafsi!",
+    "calendar_48h_online_event": "{{eventName}} inakaribia hivi karibuni! Imepangwa kwa {{date}}, kutoka {{formattedTime}}. ",
+    "calendar_5m": "Darasa linaanza katika dakika 5! Bonyeza hapa kujiunga sasa.",
+    "calendar_5m_online_event": "Ni wakati! {{eventName}} inaanza katika dakika 5. Bonyeza hapa kujiunga sasa!",
+    "dashboardDescription": "Hapa kuna arifa zako za hivi karibuni. Zinaondolewa kiotomatiki mwezi mmoja baada ya kuziona.",
+    "daysAgo": "Siku {{days}} zilizopita",
+    "hoursAgo": "saa {{hours}} zilizopita",
+    "markAsRead": "Alama kama iliyosomwa",
+    "monthsAgo": "{{months}} mwezi{{s}} uliopita",
+    "noRecentNotifications": "Huna arifa zozote za hivi karibuni kwa sasa.",
+    "noUnreadNotifications": "Hakuna arifa zisizosomwa tena",
+    "notifications": "Arifa",
+    "planBNews": "Mpango ₿ Habari",
+    "read": "Soma",
+    "results": "Matokeo yako ya ₿-CERT yametoka!",
+    "select": "Chagua",
+    "selectAll": "Chagua zote",
+    "stayUpToDate": "Kaa hadi mwisho!",
+    "today": "Leo",
+    "unread": "Haijasomwa",
+    "upcomingEvent": "Tukio Lijalo",
+    "weeksAgo": "{{weeks}} wiki{{s}} iliyopita",
+    "yearsAgo": "{{years}} mwaka{{s}} uliopita",
+    "yesterday": "Jana"
+  },
+  "placeholders": {
+    "selectTimeZone": "Chagua eneo la wakati"
   }
 }
