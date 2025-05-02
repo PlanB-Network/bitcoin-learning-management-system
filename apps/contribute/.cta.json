@@ -1,0 +1,13 @@
+{
+  "framework": "react",
+  "typescript": true,
+  "projectName": "contribute",
+  "mode": "code-router",
+  "tailwind": true,
+  "packageManager": "pnpm",
+  "toolchain": "biome",
+  "variableValues": {},
+  "git": true,
+  "version": 1,
+  "existingAddOns": ["tanstack-query"]
+}
