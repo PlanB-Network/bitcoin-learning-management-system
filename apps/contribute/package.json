@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build && tsc",
+    "build": "tsc --build tsconfig.app.json && vite build --mode production",
     "serve": "vite preview",
     "test": "vitest run",
     "format": "biome format",

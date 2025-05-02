@@ -16,6 +16,7 @@
     /* Linting */
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
@@ -24,5 +25,10 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "references": [
+    {
+      "path": "../api/tsconfig.trpc.json"
+    }
+  ]
 }

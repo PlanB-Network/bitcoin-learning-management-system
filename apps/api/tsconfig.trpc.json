@@ -7,6 +7,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "composite": true,
-    "noEmit": false
+    "noEmit": false,
+    "skipLibCheck": true
   }
 }

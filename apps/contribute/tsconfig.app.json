@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "types": ["node", "vite/client"]
+  },
+  "references": [
+    {
+      "path": "../api/tsconfig.trpc.json"
+    }
+  ]
+}

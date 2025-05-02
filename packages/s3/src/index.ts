@@ -76,7 +76,8 @@ export const createS3Service = (config: S3Config): S3Service => {
             return null;
           }
 
-          return Readable.fromWeb(body.transformToWebStream());
+          // Any needed here to avoid conflicting definitions between node and browser
+          return Readable.fromWeb(body.transformToWebStream() as any);
         });
     },
     // Upload a file to the bucket
