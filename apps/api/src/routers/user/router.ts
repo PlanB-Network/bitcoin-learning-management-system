@@ -1,5 +1,6 @@
 import { SortDirection, UserPermission, UserRole } from '@blms/constants';
 import {
+  emailSettingsSchema,
   userAccountSettingsSchema,
   userDetailsSchema,
   userRolesSchema,
@@ -8,11 +9,13 @@ import {
   createChangeCertificateName,
   createChangeDisplayName,
   createChangeEmailConfirmation,
+  createChangeEmailSettings,
   createChangeNotificationsSettings,
   createChangePassword,
   createChangePermission,
   createChangeRole,
   createEmailValidationToken,
+  createGetEmailSettings,
   createGetTokenInfo,
   createGetUserAccountSettings,
   createGetUserDetails,
@@ -21,6 +24,7 @@ import {
   createPasswordResetToken,
 } from '@blms/service-user';
 import type {
+  EmailSettings,
   SessionData,
   UserAccountSettings,
   UserDetails,
@@ -186,6 +190,36 @@ export const userRouter = createTRPCRouter({
     .query(({ ctx }) =>
       createGetUserAccountSettings(ctx.dependencies)({
         uid: ctx.user.uid,
+      }),
+    ),
+
+  getEmailSettings: publicProcedure
+    .input(
+      z.object({
+        unsubscribeId: z.string(),
+      }),
+    )
+    .output<Parser<EmailSettings | null>>(emailSettingsSchema.nullable())
+    .query(({ ctx, input }) =>
+      createGetEmailSettings(ctx.dependencies)({
+        unsubscribeId: input.unsubscribeId,
+      }),
+    ),
+
+  changeEmailSettings: publicProcedure
+    .input(
+      z.object({
+        unsubscribeId: z.string(),
+        emailNotifyCourses: z.boolean(),
+        emailNotifyGeneral: z.boolean(),
+      }),
+    )
+    .output<Parser<void>>(z.void())
+    .mutation(({ ctx, input }) =>
+      createChangeEmailSettings(ctx.dependencies)({
+        unsubscribeId: input.unsubscribeId,
+        emailNotifyCourses: input.emailNotifyCourses,
+        emailNotifyGeneral: input.emailNotifyGeneral,
       }),
     ),
 

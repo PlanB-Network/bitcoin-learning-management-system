@@ -2,7 +2,7 @@ import { CronJob } from 'cron';
 
 type Fn = () => unknown;
 
-export type Frequency = '1m' | '5m' | 'h' | 'd' | 'm';
+export type Frequency = '1m' | '5m' | 'h' | 'd' | 'm' | 'sun4pm';
 
 export interface CronService {
   addTask: (cronName: Frequency, task: Fn) => void;
@@ -36,6 +36,7 @@ export const createCronService = () => {
   crons.set('h', new CronJob('0 * * * *', createExecTasks('h')));
   crons.set('d', new CronJob('0 0 * * *', createExecTasks('d')));
   crons.set('m', new CronJob('0 0 1 * *', createExecTasks('m')));
+  crons.set('sun4pm', new CronJob('0 16 * * 0', createExecTasks('sun4pm')));
 
   return {
     addTask: (every: Frequency, task: Fn) => {

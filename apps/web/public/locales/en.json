@@ -705,8 +705,8 @@
     "course": {
       "announcement": "Announcement",
       "assignment": "Assignment",
-      "assignmentInformation": "Assignment information",
       "assignmentDescription": "The project assignment marks the second phase of the Plan ₿ Biz School program, open to students selected from the first phase. According to the student ranking and preferences, he will be attributed a project assignment drafted by a Bitcoin company. This individual project-based assignment will take place over 10 days, from June 2nd to June 12th.\nThroughout the assignment, they will be mentored by a representative from the company. By June 12th, students must complete and submit their work for evaluation.\n\nThe projects will be graded by the company. This score will count for the final grade. Only the top-ranked students will be invited to participate in the Summer School in Lugano, Switzerland, from July 23rd to July 30th, 2025.",
+      "assignmentInformation": "Assignment information",
       "checkDetailsCompleted": "Here you can check all the details concerning this course you completed.",
       "completionDiploma": "Completion diploma",
       "completionExamInfo": "You have to complete the exam to have access to this feature.",
@@ -782,10 +782,18 @@
       "notificationSettings": {
         "coursesOption": "Updates about courses you enrolled in",
         "description": "You can customize your notification settings below. ",
+        "emailPreferencesDescription": "Here you can choose the types of emails you'd like to receive from us. These preferences only apply to the email address associated with this link.",
+        "emailPreferencesError": "There was an error while trying to retrieve your email preferences. Please make sure that the link you followed is correct.",
+        "emailPreferencesSavedSuccessfully": "Your email preferences were updated successfully.",
+        "emailPreferencesTitle": "Manage your Plan ₿ Network email preferences",
         "emailTitle": "What types of notifications would you like to receive by email?",
         "emailWarning": "Warning! No email address is linked to your account. Please add it in your profile section.",
         "eventsOption": "Updates about events you booked",
         "generalOption": "General information and news about Plan ₿ Network",
+        "goToProfile": "Go to Profile",
+        "loadEmailSettingsError": "Sorry, we could not load your email preferences.",
+        "loadEmailSettingsErrorDescription": "Please ensure the link you used is complete and correct.",
+        "loadEmailSettingsErrorManage": "If you have access to your account, you can also manage settings directly in your dashboard:",
         "none": "None",
         "platformTitle": "What types of notifications would you like to receive on this platform?",
         "title": "Notification settings"

@@ -2,6 +2,7 @@ import {
   createCalculateEventSeats,
   // createGetBlogs,
   createGetCourseChapters,
+  createGetCourses,
   createGetCoursesIds,
   createGetUpcomingEventsInfos,
   createIndexContent,
@@ -14,6 +15,7 @@ import {
   createGetSbpCheckout,
   createInsertUserNotifications,
   createPublishScheduledCourseAnnouncement,
+  createSendCourseWeeklyRecapEmail,
   createStartCourse,
   createUpdateCoursePayment,
   createUpdateEventPayment,
@@ -238,6 +240,57 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   ctx.crons.addTask('d', async () => {
     await userNotificationsService.deleteOldReadNotifications();
   });
+
+  // Every week (Sunday at 4pm), send a weekly recap of the upcoming week to Plan B School enrolled students
+  // Only send a mail if there are chapters starting in the next 7 days
+  {
+    const getCourses = createGetCourses(ctx);
+    const getCourseChapters = createGetCourseChapters(ctx);
+    const sendCourseWeeklyRecapEmail = createSendCourseWeeklyRecapEmail(ctx);
+
+    ctx.crons.addTask('sun4pm', async () => {
+      console.log(new Date(), 'Starting weekly recap email cron job');
+      const courses = await getCourses('en');
+      if (courses.length === 0) return;
+
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() + 1);
+      startDate.setHours(0, 0, 0, 0);
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + 7);
+      endDate.setHours(0, 0, 0, 0);
+
+      for (const course of courses) {
+        if (!course.isPlanbSchool) continue;
+
+        const chapters = await getCourseChapters(course.id, 'en');
+        if (chapters.length === 0) continue;
+
+        const chaptersStartingSoon = chapters.filter((chapter) => {
+          if (!chapter.startDate) return false;
+          const chapterStartDate = new Date(chapter.startDate);
+          return chapterStartDate > startDate && chapterStartDate < endDate;
+        });
+
+        if (chaptersStartingSoon.length > 0) {
+          const uids = await userNotificationsService.getUidsByCourse(
+            course.id,
+          );
+          if (uids.length === 0) continue;
+
+          for (const uid of uids) {
+            await sendCourseWeeklyRecapEmail({
+              userId: uid,
+              course: course,
+              courseChapters: chaptersStartingSoon,
+              startDate: startDate,
+              endDate: endDate,
+            });
+          }
+        }
+      }
+    });
+  }
 
   if (timestampService) {
     // Every five minutes
