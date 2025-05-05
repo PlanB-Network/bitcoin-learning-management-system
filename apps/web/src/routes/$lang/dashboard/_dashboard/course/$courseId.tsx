@@ -149,7 +149,7 @@ function DashboardStudentCourse() {
             {/* SingleTrialExam */}
             {courseHaveSingleTrialExam ? (
               <TabsContent value="singleTrialExam">
-                <SingleTrialExam courseId={params.courseId} />
+                <SingleTrialExam course={course} />
               </TabsContent>
             ) : null}
 
