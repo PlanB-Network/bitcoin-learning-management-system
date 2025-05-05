@@ -5,6 +5,7 @@ import { z } from 'zod';
 
 import { loginResponseSchema } from '@blms/schemas';
 import {
+  createEmailValidationToken,
   createGetUserByUsername,
   createNewCredentialsUser,
 } from '@blms/service-user';
@@ -58,6 +59,13 @@ export const credentialsAuthRouter = createTRPCRouter({
         contributorId: input.contributor_id,
         email: input.email ?? null,
       });
+
+      if (user && input.email) {
+        await createEmailValidationToken(ctx.dependencies)(
+          user.uid,
+          input.email,
+        );
+      }
 
       setSession(ctx.req, user);
 
