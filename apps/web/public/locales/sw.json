@@ -411,7 +411,9 @@
         "generalOption": "Habari za jumla na habari kuhusu Mtandao wa Plan ₿",
         "none": "Hakuna",
         "platformTitle": "Ni aina gani za arifa ungetaka kupokea kwenye jukwaa hili?",
-        "title": "Mipangilio ya arifa"
+        "title": "Mipangilio ya arifa",
+        "loadEmailSettingsErrorManage": "Ikiwa una ufikiaji wa akaunti yako, unaweza pia kusimamia mipangilio moja kwa moja kwenye dashibodi yako:",
+        "loadEmailSettingsErrorDescription": "Tafadhali hakikisha kuwa kiungo ulichotumia kimekamilika na ni sahihi."
       },
       "settings": "Mipangilio",
       "securitySettings": "Mipangilio ya usalama"
