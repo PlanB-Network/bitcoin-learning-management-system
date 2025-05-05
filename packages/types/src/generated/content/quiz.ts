@@ -36,6 +36,11 @@ export interface QuizAnswerLocalized {
   text: string;
 }
 
+export interface QuizQuestionsCount {
+  count: number;
+  chapterId: string;
+}
+
 export interface JoinedQuizQuestion {
   id: string;
   courseId: string;

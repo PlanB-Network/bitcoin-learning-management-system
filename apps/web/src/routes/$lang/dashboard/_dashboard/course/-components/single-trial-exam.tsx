@@ -16,6 +16,7 @@ import { MdOutlineCalendarMonth } from 'react-icons/md';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { getDateString } from '#src/utils/date.ts';
+import { trpc } from '#src/utils/trpc.ts';
 
 export const SingleTrialExam = ({
   course,
@@ -85,16 +86,17 @@ const ExamItem = ({
   const isExamOngoing =
     exam.startDate.getTime() <= now && exam.endDate.getTime() >= now;
   const isExamEnded = exam.endDate.getTime() < now;
-  const examWeight = ((exam.rateWeight ?? 1) * 100) / totalWeight;
+  const examWeight = Math.round(((exam.rateWeight ?? 1) * 100) / totalWeight);
 
-  // const { data: quizzArray } =
-  //   trpc.content.getCourseChapterQuizQuestions.useQuery({
-  //     language: courseOriginalLanguage,
-  //     chapterId: exam.chapterId,
-  //   });
+  const { data: quizCount } =
+    trpc.content.getCourseChapterQuizQuestionsCount.useQuery({
+      language: courseOriginalLanguage,
+      chapterId: exam.chapterId,
+    });
 
-  let nbQuestion = 0;
+  let nbQuestion = quizCount?.[0]?.count ?? 0;
 
+  // TODO remove hardcoded data when quiz questions are in the data repo
   if (exam.chapterId === '6065ea4e-2675-11f0-b6ab-bb5e1522cb78') {
     nbQuestion = 25;
   } else if (exam.chapterId === '9a307a50-2675-11f0-a893-57c148082c1f') {

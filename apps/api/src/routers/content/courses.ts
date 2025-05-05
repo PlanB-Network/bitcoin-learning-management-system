@@ -8,6 +8,7 @@ import {
   joinedCourseChapterSchema,
   joinedCourseSchema,
   joinedQuizQuestionSchema,
+  quizQuestionsCountSchema,
 } from '@blms/schemas';
 import {
   createCalculateCourseChapterSeats,
@@ -15,6 +16,7 @@ import {
   createGetCourse,
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
+  createGetCourseChapterQuizQuestionsCount,
   createGetCourseChapters,
   createGetCourses,
   createGetProfessorCourses,
@@ -28,6 +30,7 @@ import type {
   JoinedCourse,
   JoinedCourseChapter,
   JoinedQuizQuestion,
+  QuizQuestionsCount,
 } from '@blms/types';
 
 import { professorProcedure } from '#src/procedures/protected.js';
@@ -157,6 +160,21 @@ const getCourseChapterQuizQuestionsProcedure = publicProcedure
     });
   });
 
+const getCourseChapterQuizQuestionsCountProcedure = publicProcedure
+  .input(
+    z.object({
+      chapterId: z.string(),
+      language: z.string(),
+    }),
+  )
+  .output<Parser<QuizQuestionsCount[]>>(quizQuestionsCountSchema.array())
+  .query(({ ctx, input }) => {
+    return createGetCourseChapterQuizQuestionsCount(ctx.dependencies)({
+      chapterId: input.chapterId,
+      language: input.language,
+    });
+  });
+
 const calculateCourseChapterSeatsProcedure = publicProcedure
   .input(
     z.object({
@@ -176,6 +194,8 @@ export const coursesRouter = createTRPCRouter({
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
+  getCourseChapterQuizQuestionsCount:
+    getCourseChapterQuizQuestionsCountProcedure,
   calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
   getPublicCourseReviews: getPublicCourseReviewsProcedure,
   getTeacherCourseReviews: getTeacherCourseReviewsProcedure,

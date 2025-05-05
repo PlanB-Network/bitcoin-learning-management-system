@@ -19,6 +19,11 @@ export const quizAnswerLocalizedSchema = createSelectSchema(
   contentQuizAnswersLocalized,
 );
 
+export const quizQuestionsCountSchema = z.object({
+  count: z.number(),
+  chapterId: z.string(),
+});
+
 export const joinedQuizQuestionSchema = quizQuestionSchema
   .merge(
     quizQuestionLocalizedSchema.pick({
