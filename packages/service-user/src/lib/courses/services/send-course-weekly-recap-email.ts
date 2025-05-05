@@ -30,8 +30,9 @@ export const createSendCourseWeeklyRecapEmail = (
         .exec(getUserByIdQuery(userId))
         .then(firstRow);
       const userEmail = userInfo?.email;
+      const userHasValidatedEmail = userInfo?.currentEmailChecked;
 
-      if (!userEmail) {
+      if (!userEmail || !userHasValidatedEmail) {
         return;
       }
 
@@ -70,7 +71,7 @@ export const createSendCourseWeeklyRecapEmail = (
           startDate: startDate.toISOString(),
           endDate: weekEndDate.toISOString(),
           upcomingChapters: upcomingChapters,
-          dashboardLink: `${config.domainUrl}/dashboard/courses`,
+          dashboardLink: `${config.domainUrl}/dashboard/course/${course.id}`,
           unsubscribeLink: `${config.domainUrl}/change-email-preferences/${unsubscribeId}`,
           subject: subject,
         },

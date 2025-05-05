@@ -29,8 +29,9 @@ export const createSendCourseWelcomeEmail = (dependencies: Dependencies) => {
         .exec(getUserByIdQuery(userId))
         .then(firstRow);
       const userEmail = userInfo?.email;
+      const userHasValidatedEmail = userInfo?.currentEmailChecked;
 
-      if (!userEmail) {
+      if (!userEmail || !userHasValidatedEmail) {
         return;
       }
 
@@ -52,7 +53,7 @@ export const createSendCourseWelcomeEmail = (dependencies: Dependencies) => {
         template: 'd-fe44ab001b384d40b83090c288f5d3fe',
         data: {
           courseName: courseName,
-          dashboardLink: `${config.domainUrl}/dashboard/courses`,
+          dashboardLink: `${config.domainUrl}/dashboard/course/${courseId}`,
           subject: subject,
         },
       });
