@@ -97,7 +97,7 @@
         "title": "クラスの詳細",
         "p1heading": "このレッスンに直接参加される予定はありますか？",
         "p1content": "座席の予約をお忘れなく",
-        "p2heading": "直接ご来場することが難しいですか？",
+        "p2heading": "直接参加することが難しいですか？",
         "p2content": "問題ありません！レッスンはこのページでライブストリーミングされ、終了後にはリプレイも可能です。",
         "bookSeat": "座席を予約する",
         "classIsFull": "クラスはすでに満席です",
@@ -121,10 +121,10 @@
       "objectivesTitle": "学習内容：",
       "startCourse": "コースを開始する",
       "taughtBy": "このコースは以下のメンバーによって提供されています：",
-      "buyInPersonCourse": "会場コースを購入する",
+      "buyInPersonCourse": "直接参加コースを購入する",
       "buyOnlineCourse": "オンラインコースを購入する",
       "paidCourse": "プレミアム",
-      "inPersonAccess": "直接ご来場される場合は、チケットをダウンロードする必要があります。",
+      "inPersonAccess": "直接参加される場合は、チケットをダウンロードする必要があります。",
       "collaborativeEffort": "各レッスン、翻訳、改訂は、貢献者の作業によって実現されています。 そのため、多言語でコンテンツを校閲できる校正者を常時募集しています。 校正プロセスに参加したい方は、私たちの<0>Telegram</0>グループより、<1>チュートリアル</1>をお読みください。\n\nこのコンテンツは<2>CC BY-SA</2>のオープンソースライセンスです。元のソースを明記する限り、自由に共有および使用できます。",
       "courseAddedToDashboard": "このコースは学生ダッシュボードに追加されました",
       "hasBeenProofreadBy": "このコースの校正は",
@@ -138,7 +138,9 @@
       "pastEditionsRatings": "過去の評価",
       "teacherLed": "講師主導",
       "associatedProfessors": "サポート講師陣",
-      "coordinatedBy": "このコースは以下のメンバーによって作成されました："
+      "coordinatedBy": "このコースは以下のメンバーによって作成されました：",
+      "attendInPersonWarning": "このクラスに直接参加する場合は、必ず座席を予約してください。 もちろん、レッスンはライブストリーミングされ、リプレイも可能です。",
+      "learning": "学習の記録"
     },
     "explorer": {
       "pageDescription": "Plan ₿ アカデミーは、世界中のビットコイン教育をシンプルにすることを目的としています。 様々な分野の専門家にキュレーションされた当アカデミーは、ビットコインのあらゆる側面を解明するための包括的なコースを提供しています。\n初心者から専門家まで、ご自身のペースで、あるいは毎週講師がフォローする形で、当アカデミーがビットコインの広大な世界をより深く理解する一助となれば幸いです。 私たちのコースの多くは、誰もが、どこにいても、質の高い教育にアクセスできるように無料で提供されています。",
@@ -171,11 +173,13 @@
       "book_description": "会場の詳細をご確認ください。\nご予約が完了しましたら、確認チケットと当日ご提示いただくQRコードをお送りいたします。",
       "qr_unified": "このQRコードは、ライトニング決済とオンチェーン決済に対応しています。",
       "time": "時間",
-      "inPersonCallout": "あなたは<strong>会場アクセスチケット</strong>を購入しようとしています。",
+      "inPersonCallout": "あなたは<strong>直接参加チケット</strong>を購入しようとしています。",
       "onlineCallout": "このコースへの<strong>オンラインアクセス</strong>チケットを購入しようとしています。",
-      "onlineDescription": "各クラスセッションは、プラットフォーム上でライブストリーミングされます。\nご購入により、ライブストリーミングとリプレイ動画の両方にアクセスできるようになります。",
-      "inPersonDescription": "各クラスのセッションは、指定された日時に指定された会場で開催され、またプラットフォーム上でもライブストリーミングされます。 \n\nこの購入により、会場とオンラインクラスの両方にアクセスできるようになります。\n会場で直接参加する場合は、座席の予約をお忘れなく。",
-      "checkoutError": "チェックアウトの処理中にエラーが発生しました。\nもう一度やり直してください。"
+      "onlineDescription": "各クラスセッションは、プラットフォーム上でライブストリーミングされます。\nご購入することで、ライブストリーミングとリプレイ動画の両方にアクセスできるようになります。",
+      "inPersonDescription": "コースの詳細をご確認ください。 予約確定後、チケットとクラスルームで提示するQRコードをお送りします。",
+      "checkoutError": "チェックアウトの処理中にエラーが発生しました。\nもう一度やり直してください。",
+      "hybridDescription": "コースの詳細をご確認ください。\n各レッスンは、指定された日程と場所で直接行われます。 すべてのクラスは常にライブストリーミングされ、リプレイ用に録画されます。\n\n参加者はレッスンごとに管理されますので、直接参加を希望される場合、その都度、座席のご予約をお願いいたします。",
+      "courseType": "コースの種類"
     },
     "quizz": {
       "clickOnPie": "円グラフをクリックして、間違いをチェックし、解説を確認してください",
@@ -303,7 +307,10 @@
       "successDiploma": "おめでとう！あなたは無事に試験に合格しました。 \n修了証書は学生ダッシュボードで確認できます。これには<0>タイムスタンプが押されています。",
       "successDiplomaTimeStamped": "おめでとう！ あなたは無事に試験に合格しました。 \n修了証書は、受験後約10時間後に受講者ダッシュボードに表示されます。 この遅延は、<0>タイムスタンプ</0>技術によるもので、その真正性を保証するものです。",
       "goConclusion": "まとめを見る",
-      "timeStamping": "タイムスタンプ中"
+      "timeStamping": "タイムスタンプ中",
+      "singleAttempt": "1度限りの試験",
+      "singleAttemptAvailability": "この試験のオンライン受験日：{{date}}",
+      "singleAttemptPrecaution": "開始する前に、インターネット接続が安定していることを確認してください。 この試験は1回限りですので、接続が切断された場合、再試験はできません。"
     },
     "conclusion": {
       "congratulationsEnd": "おめでとうございます。このコースの最後まで完了しました",
@@ -317,8 +324,8 @@
       "unlockFeatures2": "個人情報の収集やクッキーの使用は一切行っておりません。"
     },
     "format": {
-      "hybrid": "会場／オンライン",
-      "inperson": "会場",
+      "hybrid": "直接参加／オンライン",
+      "inperson": "直接参加",
       "online": "オンライン"
     }
   },
@@ -363,11 +370,11 @@
       "billingSubtitle": "ご予約時のインボイスはこちらからダウンロードできます。",
       "invoiceDate": "日付",
       "invoiceTitle": "タイトル",
-      "invoiceType": "タイプ",
+      "invoiceType": "種類",
       "ticketDate": "日付",
       "ticketLocation": "会場",
       "ticketTitle": "タイトル",
-      "ticketType": "タイプ",
+      "ticketType": "種類",
       "noInvoice": "現在、インボイスはありません。",
       "noTicket": "現在、チケットはありません。",
       "pastTicketTitle": "過去の予約",
@@ -398,7 +405,20 @@
       "profileInformation": "プロフィール情報",
       "profilePicture": "プロフィール写真",
       "security": "セキュリティ",
-      "username": "ユーザー名"
+      "username": "ユーザー名",
+      "notificationSettings": {
+        "coursesOption": "登録したコースに関する最新情報",
+        "description": "通知設定は以下でカスタマイズできます。 ",
+        "emailWarning": "警告！あなたのアカウントにEメールアドレスがリンクされていません。プロフィール欄に追加してください。",
+        "emailTitle": "どのような通知をメールで受け取りたいですか？",
+        "eventsOption": "予約したイベントの最新情報",
+        "generalOption": "Plan ₿ Network に関する一般情報とニュース",
+        "none": "なし",
+        "platformTitle": "このプラットフォームでどのような通知を受け取りたいですか？",
+        "title": "通知設定"
+      },
+      "securitySettings": "セキュリティ設定",
+      "settings": "設定"
     },
     "teacher": {
       "reviews": {
@@ -448,7 +468,23 @@
         "quickRecap": "ここでは、このコースに関する一般的な情報をご覧いただけます。",
         "reviewInfos": "ここでは、あなたがコーディネートした各コースに関するすべての情報を管理し、確認することができます。",
         "reviews": "レビュー",
-        "goal": "ゴール"
+        "goal": "ゴール",
+        "announcementModal": {
+          "contentLabel": "アナウンス文",
+          "groupLabel": "取り上げたい学生グループを選択する",
+          "contentPlaceholder": "ここに入力してください。",
+          "create": "アナウンスを作成する",
+          "dateLabel": "発行日",
+          "datePlaceholder": "日付を選ぶ",
+          "dateRequired": "日付は必須",
+          "editAnnouncement": "アナウンスを編集する",
+          "title": "アナウンスを書く",
+          "typeLabel": "どのようなアナウンスですか？",
+          "typePlaceholder": "種類を1つ選択"
+        },
+        "selectCourse": "コースを選択",
+        "allStudents": "全学生",
+        "announcements": "アナウンス"
       },
       "menu": "講師用メニュー",
       "tutorials": {
@@ -458,7 +494,11 @@
     },
     "calendar": {
       "calendar": "カレンダー",
-      "personalCalendar": "個人カレンダー"
+      "personalCalendar": "個人カレンダー",
+      "eventType": {
+        "class": "クラス",
+        "event": "イベント"
+      }
     },
     "course": {
       "checkDetailsCompleted": "ここでは、修了したコースに関するすべての詳細を確認することができます。",
@@ -470,7 +510,17 @@
       "shareOnSocials": "SNSで共有する：",
       "tweetText": "@planb_network の{{courseIndex}}コースを完了し、最終試験で100点中{{score}}点を獲得。修了証書がもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "以下は、あなたが学んだことの要約です。 もし見逃してしまった章があったり、正しく検証されていない章がある場合は、今すぐ戻って学習するか、完了ボタンを押してください。",
-      "submitReviewInfo": "この機能を利用するには、レビューを投稿する必要があります。"
+      "submitReviewInfo": "この機能を利用するには、レビューを投稿する必要があります。",
+      "assignmentDescription": "このプロジェクト課題は、Plan ₿ Biz Schoolプログラムの第2フェーズを示すもので、第1フェーズから選抜された学生を対象としています。 生徒の順位と希望に応じて、ビットコイン企業が立案したプロジェクト課題が与えられます。 この個人プロジェクトベースの課題は、6月2日から6月12日までの10日間にわたって行われます。\n課題中、各企業の代表者から指導を受けます。 生徒は6月12日までに作品を完成させ、評価のために提出しなければなりません。\n\nプロジェクトは企業ごとに採点されます。 この点数は最終成績にカウントされます。 成績上位者のみが、2025年7月23日から7月30日までスイスのルガーノで開催されるサマースクールに招待されます。",
+      "conclusionNotReleased": "結果は、授業の最終日にお知らせします。",
+      "planbSchoolExamDescription": "Plan ₿ Biz School 2025プログラムは、2つのフェーズで構成されています。 第1フェーズでは、中間試験と最終試験の2つのオンライン試験を受験します。この2つの試験は、3日間の受験可能期間中、いつでも受験することができます。 これは、ビットコイン企業が提供する個人課題です。 課題の詳細については、「課題」タブをご覧ください。\n\n最終成績は3つのテストの加重平均で算出されます。 80％以上の成績を収めた生徒には卒業証書が授与され、成績上位者には7月にルガーノで開催されるサマースクールに参加するチャンスが与えられます。",
+      "coordinator": "コースコーディネーター",
+      "announcement": "アナウンス",
+      "assignment": "課題",
+      "assignmentInformation": "課題情報",
+      "courseCalendar": "コースカレンダー",
+      "exams": "試験",
+      "generalInformation": "一般情報"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -666,7 +716,7 @@
       "applicationComplete": "あなたの申請は<highlight>完了</highlight>しました"
     },
     "adminPanel": {
-      "upcomingBookingsSubtitle": "ここでは、すべての会場イベントの参加者リストをダウンロードできます。",
+      "upcomingBookingsSubtitle": "ここでは、すべての直接参加イベントの参加者リストをダウンロードできます。",
       "removeTeacherDescription": "この講師を本当に削除しますか？",
       "careers": {
         "cv": "履歴書",
@@ -689,7 +739,7 @@
       "githubLink": "Githubリンク",
       "makeProfessor": "講師として登録する",
       "date": "日付",
-      "type": "タイプ",
+      "type": "種類",
       "upcomingBookings": "今後の予約状況",
       "userRolesAllocation": "ユーザーの役割分担",
       "nameOfEvent": "イベント名",
@@ -706,10 +756,78 @@
       "deleteRole": "役割の削除",
       "editRole": "役割の編集",
       "hasAccessTo": "以下へのアクセス：",
-      "selectRole": "役割を選択"
+      "selectRole": "役割を選択",
+      "coupons": {
+        "tableHead": {
+          "discount": "割引",
+          "actions": "アクション",
+          "code": "コード",
+          "maxUses": "最大使用回数",
+          "name": "名",
+          "total": "合計",
+          "owner": "管理者",
+          "type": "種類",
+          "uses": "使用済み",
+          "value": "割引率"
+        },
+        "cancel": "キャンセル",
+        "deleteDiscountCode": "割引コードの削除",
+        "deleteDiscountCodeWarning": "この割引コードが削除されると、二度と機能しなくなり、変更することができません",
+        "discountValueExplanation": "5刻みで数字を入力してください（例：5、10、15...100まで）",
+        "explanation": "イベントやコースの割引コードを生成し、管理します。奨学金や同様のケースで1度だけ使用することも、マーケティングキャンペーンで複数回使用することもできます。",
+        "generatedCodes": "コードを生成する",
+        "filters": {
+          "courses": "コース",
+          "events": "イベント",
+          "all": "すべて",
+          "multiUse": "複数回使用",
+          "singleUse": "1度だけ使用"
+        },
+        "close": "閉じる",
+        "delete": "削除",
+        "deleteDiscountCodeConfirm": "本当にこの割引コードを削除しますか？",
+        "deleteDiscountCodeSuccess": "割引コードは正常に削除されました",
+        "discountCode": "割引コード",
+        "discountCodeCopied": "割引コードがコピーされました",
+        "discountCodeExplanation": "コードの大文字と小文字にご注意願います。",
+        "discountCodePlaceholder": "自動生成させたい場合は、空欄のままにしてください",
+        "discountMultiUse": "複数回使用",
+        "discountType": "割引コードの種類は何ですか？",
+        "discountValue": "割引率",
+        "discountValuePlaceholder": "例：20 = 20%割引",
+        "downloadImage": "画像をダウンロード",
+        "downloadImages": "画像をダウンロード",
+        "discountSingleUse": "1度だけ使用",
+        "forWhat": "どんな製品向けですか？",
+        "forWhichCourse": "どのコース向けですか？",
+        "forWhichEvent": "どのイベント向けですか？",
+        "generateCode": "コードを生成する",
+        "generateCodes": "コードを生成する",
+        "generateDiscountCode": "割引コードを生成する",
+        "generateNew": "新しいコードを生成する",
+        "generateNewCodes": "新しいコードを生成する",
+        "generatedCode": "コードを生成する",
+        "maximumNumberOfUse": "最大使用回数",
+        "numberOfCodes": "生成したいコード数は？",
+        "numberOfCodesPlaceholder": "番号を入力する",
+        "productCourse": "コース",
+        "productEvent": "イベント",
+        "selectCourse": "コースを選択",
+        "selectEvent": "イベントを選択"
+      },
+      "discountCodes": "割引コード"
     },
     "backToDashboard": "ダッシュボードに戻る",
-    "studentDashboard": "学生ダッシュボード"
+    "studentDashboard": "学生ダッシュボード",
+    "announcements": {
+      "groups": {
+        "all": "全登録学生",
+        "summer": "サマースクール参加学生",
+        "active": "プロジェクト課題参加学生"
+      },
+      "pickADate": "日付を選ぶ",
+      "publicationDate": "発行日"
+    }
   },
   "events": {
     "main": {
@@ -831,7 +949,7 @@
     },
     "courseSection": {
       "checkAllCourses": "すべてのコースをチェック",
-      "upcomingCourseDescription": "プラットフォームにリリースされた最新のコースをご覧ください。 学ぶことは誰も止められません！",
+      "upcomingCourseDescription": "このプラットフォームにリリースされた最新のコースをご覧ください。 学ぶことは誰にも止められません！",
       "upcomingCourseTitle": "今後の予定と新しいコース"
     }
   },
@@ -1125,7 +1243,7 @@
     "unified": "統合",
     "users": "ユーザー",
     "view": "表示",
-    "inperson": "会場",
+    "inperson": "直接参加",
     "author": "著者",
     "github": "Github",
     "movie": "動画",
@@ -1374,5 +1492,11 @@
     "description2": "あなたの研究分野に合ったラボに参加し、学習経験を高めましょう！",
     "planBLabs": "Plan ₿ ラボ",
     "title": "継続的な学習のための実践的でインタラクティブな授業"
+  },
+  "accessType": {
+    "hybrid": "直接参加とオンライン",
+    "physical": "直接参加",
+    "replay": "リプレイ",
+    "online": "オンライン"
   }
 }
