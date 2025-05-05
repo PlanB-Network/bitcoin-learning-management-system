@@ -89,6 +89,7 @@ export const getDateString = (
   endDate: Date | null,
   timezone?: string,
   displayTimezone = false,
+  displayYear = true,
 ) => {
   const effectiveTimezone = getEffectiveTimezone(timezone);
   if (!(startDate instanceof Date) || !(endDate instanceof Date)) {
@@ -97,7 +98,9 @@ export const getDateString = (
 
   const sameDay = isSameDay(startDate, endDate, effectiveTimezone);
   const sameMonth = isSameMonth(startDate, endDate, effectiveTimezone);
-  const sameYear = isSameYear(startDate, endDate, effectiveTimezone);
+  const sameYear = displayYear
+    ? isSameYear(startDate, endDate, effectiveTimezone)
+    : true;
 
   if (sameDay) return formatDate(startDate, effectiveTimezone, true, true);
 
@@ -105,7 +108,7 @@ export const getDateString = (
     endDate,
     effectiveTimezone,
     true,
-    true,
+    displayYear,
   )} ${displayTimezone ? `(${effectiveTimezone})` : ''}`;
 };
 
