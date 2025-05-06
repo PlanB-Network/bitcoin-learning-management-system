@@ -16,9 +16,9 @@ export const getNextChaptersQuery = (uid: string) => {
         ON cp.part_id = cpa.part_id
     ),
     CompletedChapters AS (
-      SELECT course_id, chapter_id 
+      SELECT course_id, chapter_id
       FROM users.course_user_chapter
-      WHERE uid = ${uid} AND completed_at is not null AND booked = false
+      WHERE uid = ${uid} AND completed_at is not null
     ),
     NextChapters AS (
       SELECT
