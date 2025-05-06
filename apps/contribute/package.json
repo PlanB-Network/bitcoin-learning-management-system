@@ -1,5 +1,5 @@
 {
-  "name": "contribute",
+  "name": "@blms/contribute",
   "private": true,
   "type": "module",
   "imports": {
