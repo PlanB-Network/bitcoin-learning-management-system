@@ -28,10 +28,7 @@ export const CourseOverview = ({ course }: { course: CourseResponse }) => {
     courseId: course.id,
   });
 
-  let completedChapters = courseProgress?.[0]?.chapters;
-  if (!completedChapters) {
-    completedChapters = [];
-  }
+  const completedChapters = courseProgress?.[0]?.chapters ?? [];
 
   const containsChapterStartDate = !!course?.parts.some((part) =>
     part.chapters.some((chapter) => chapter?.startDate != null),

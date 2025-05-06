@@ -29,7 +29,7 @@ export const createGetProgress = ({ postgres }: Dependencies) => {
           completedAt,
         }));
 
-      const nextChapter = nextChapters.find(
+      const courseNextChapters = nextChapters.find(
         (chapter) => chapter.courseId === course.courseId,
       );
 
@@ -40,7 +40,7 @@ export const createGetProgress = ({ postgres }: Dependencies) => {
         progressPercentage:
           course.progressPercentage > 100 ? 100 : course.progressPercentage,
         chapters,
-        nextChapter,
+        nextChapter: courseNextChapters,
         lastCompletedChapter,
       };
     });

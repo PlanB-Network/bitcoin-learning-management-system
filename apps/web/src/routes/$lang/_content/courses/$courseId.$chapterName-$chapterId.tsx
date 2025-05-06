@@ -376,7 +376,7 @@ const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
 
   return (
     <Link
-      className="group flex w-fit !mt-8 md:!mt-16 mx-auto md:ml-auto"
+      className="group flex w-fit !mt-4 md:!mt-8 mx-auto md:ml-auto"
       to={
         isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
       }
@@ -542,7 +542,8 @@ function CourseChapter() {
   let displayClassDetails = false;
   let displayLiveSection = false;
   let displayLiveVideo = false;
-  let displayQuizAndNext = true;
+  let displayQuiz = true;
+  let displayNext = true;
 
   if (chapter?.startDate && chapter.endDate) {
     // const isMarkdownAvailable = chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
@@ -556,7 +557,19 @@ function CourseChapter() {
     displayLiveSection = chapter.isOnline || false;
     displayLiveVideo =
       displayLiveSection && chapterStartDate.setHours(0, 0, 0, 0) <= Date.now();
-    displayQuizAndNext = false;
+    displayQuiz = false;
+
+    const oneHourBeforeStart = new Date(chapterStartDate);
+    oneHourBeforeStart.setHours(oneHourBeforeStart.getHours() - 1);
+
+    const twoDaysAfterStart = new Date(chapterStartDate);
+    twoDaysAfterStart.setDate(twoDaysAfterStart.getDate() + 2);
+
+    if (now > oneHourBeforeStart && now < twoDaysAfterStart) {
+      displayNext = true;
+    } else {
+      displayNext = false;
+    }
   }
 
   let computerProfessor = '';
@@ -775,8 +788,16 @@ function CourseChapter() {
                         displayVideo={displayLiveVideo}
                       />
                     )}
+
+                  {!isSpecialChapter && displayLiveSection && displayNext && (
+                    <div className="mb-8">
+                      <BottomButton chapter={chapter} />
+                    </div>
+                  )}
+
                   <MarkdownContent chapter={chapter} />
-                  {!isSpecialChapter && displayQuizAndNext && (
+
+                  {!isSpecialChapter && displayQuiz && (
                     <div className="md:!mt-5">
                       {questionsArray && questionsArray.length > 0 && (
                         <>
@@ -790,8 +811,11 @@ function CourseChapter() {
                           />
                         </>
                       )}
-                      <BottomButton chapter={chapter} />
                     </div>
+                  )}
+
+                  {!isSpecialChapter && !displayLiveSection && displayNext && (
+                    <BottomButton chapter={chapter} />
                   )}
                 </div>
 
