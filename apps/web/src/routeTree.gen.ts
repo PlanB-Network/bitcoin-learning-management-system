@@ -71,6 +71,7 @@ import { Route as LangContentResourcesChannelsChannelNameChannelIdImport } from 
 import { Route as LangContentResourcesBooksBookNameBookIdImport } from './routes/$lang/_content/resources/books/$bookName-$bookId';
 import { Route as LangContentCoursesCourseIdChapterNameChapterIdImport } from './routes/$lang/_content/courses/$courseId.$chapterName-$chapterId';
 import { Route as LangContentMiscValidateEmailTokenImport } from './routes/$lang/_content/_misc/validate-email.$token';
+import { Route as LangContentMiscValidateEmailChangeTokenImport } from './routes/$lang/_content/_misc/validate-email-change.$token';
 import { Route as LangContentMiscResetPasswordTokenImport } from './routes/$lang/_content/_misc/reset-password.$token';
 import { Route as LangContentMiscPublicCommunicationLegalsImport } from './routes/$lang/_content/_misc/public-communication/legals';
 import { Route as LangContentMiscProfessorsCategoryImport } from './routes/$lang/_content/_misc/professors/$category';
@@ -492,6 +493,13 @@ const LangContentMiscValidateEmailTokenRoute =
     getParentRoute: () => rootRoute,
   } as any);
 
+const LangContentMiscValidateEmailChangeTokenRoute =
+  LangContentMiscValidateEmailChangeTokenImport.update({
+    id: '/$lang/_content/_misc/validate-email-change/$token',
+    path: '/$lang/validate-email-change/$token',
+    getParentRoute: () => rootRoute,
+  } as any);
+
 const LangContentMiscResetPasswordTokenRoute =
   LangContentMiscResetPasswordTokenImport.update({
     id: '/$lang/_content/_misc/reset-password/$token',
@@ -818,6 +826,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/reset-password/$token';
       fullPath: '/$lang/reset-password/$token';
       preLoaderRoute: typeof LangContentMiscResetPasswordTokenImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/$lang/_content/_misc/validate-email-change/$token': {
+      id: '/$lang/_content/_misc/validate-email-change/$token';
+      path: '/$lang/validate-email-change/$token';
+      fullPath: '/$lang/validate-email-change/$token';
+      preLoaderRoute: typeof LangContentMiscValidateEmailChangeTokenImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/_misc/validate-email/$token': {
@@ -1233,6 +1248,7 @@ export interface FileRoutesByFullPath {
   '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
   '/$lang/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
+  '/$lang/validate-email-change/$token': typeof LangContentMiscValidateEmailChangeTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
   '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   '/$lang/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
@@ -1307,6 +1323,7 @@ export interface FileRoutesByTo {
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
   '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
+  '/$lang/validate-email-change/$token': typeof LangContentMiscValidateEmailChangeTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
   '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   '/$lang/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
@@ -1384,6 +1401,7 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
   '/$lang/_content/_misc/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   '/$lang/_content/_misc/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
+  '/$lang/_content/_misc/validate-email-change/$token': typeof LangContentMiscValidateEmailChangeTokenRoute;
   '/$lang/_content/_misc/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
   '/$lang/_content/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   '/$lang/_content/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
@@ -1461,6 +1479,7 @@ export interface FileRouteTypes {
     | '/$lang/professors/$category'
     | '/$lang/public-communication/legals'
     | '/$lang/reset-password/$token'
+    | '/$lang/validate-email-change/$token'
     | '/$lang/validate-email/$token'
     | '/$lang/courses/$courseId/$chapterName-$chapterId'
     | '/$lang/resources/books/$bookName-$bookId'
@@ -1534,6 +1553,7 @@ export interface FileRouteTypes {
     | '/$lang/professor/$professorName-$professorId'
     | '/$lang/professors/$category'
     | '/$lang/reset-password/$token'
+    | '/$lang/validate-email-change/$token'
     | '/$lang/validate-email/$token'
     | '/$lang/courses/$courseId/$chapterName-$chapterId'
     | '/$lang/resources/books/$bookName-$bookId'
@@ -1609,6 +1629,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/professors/$category'
     | '/$lang/_content/_misc/public-communication/legals'
     | '/$lang/_content/_misc/reset-password/$token'
+    | '/$lang/_content/_misc/validate-email-change/$token'
     | '/$lang/_content/_misc/validate-email/$token'
     | '/$lang/_content/courses/$courseId/$chapterName-$chapterId'
     | '/$lang/_content/resources/books/$bookName-$bookId'
@@ -1678,6 +1699,7 @@ export interface RootRouteChildren {
   LangContentMiscProfessorsCategoryRoute: typeof LangContentMiscProfessorsCategoryRoute;
   LangContentMiscPublicCommunicationLegalsRoute: typeof LangContentMiscPublicCommunicationLegalsRouteWithChildren;
   LangContentMiscResetPasswordTokenRoute: typeof LangContentMiscResetPasswordTokenRoute;
+  LangContentMiscValidateEmailChangeTokenRoute: typeof LangContentMiscValidateEmailChangeTokenRoute;
   LangContentMiscValidateEmailTokenRoute: typeof LangContentMiscValidateEmailTokenRoute;
   LangContentCoursesCourseIdChapterNameChapterIdRoute: typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
   LangContentResourcesBooksBookNameBookIdRoute: typeof LangContentResourcesBooksBookNameBookIdRoute;
@@ -1743,6 +1765,8 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscPublicCommunicationLegalsRouteWithChildren,
   LangContentMiscResetPasswordTokenRoute:
     LangContentMiscResetPasswordTokenRoute,
+  LangContentMiscValidateEmailChangeTokenRoute:
+    LangContentMiscValidateEmailChangeTokenRoute,
   LangContentMiscValidateEmailTokenRoute:
     LangContentMiscValidateEmailTokenRoute,
   LangContentCoursesCourseIdChapterNameChapterIdRoute:
@@ -1832,6 +1856,7 @@ export const routeTree = rootRoute
         "/$lang/_content/_misc/professors/$category",
         "/$lang/_content/_misc/public-communication/legals",
         "/$lang/_content/_misc/reset-password/$token",
+        "/$lang/_content/_misc/validate-email-change/$token",
         "/$lang/_content/_misc/validate-email/$token",
         "/$lang/_content/courses/$courseId/$chapterName-$chapterId",
         "/$lang/_content/resources/books/$bookName-$bookId",
@@ -1992,6 +2017,9 @@ export const routeTree = rootRoute
     },
     "/$lang/_content/_misc/reset-password/$token": {
       "filePath": "$lang/_content/_misc/reset-password.$token.tsx"
+    },
+    "/$lang/_content/_misc/validate-email-change/$token": {
+      "filePath": "$lang/_content/_misc/validate-email-change.$token.tsx"
     },
     "/$lang/_content/_misc/validate-email/$token": {
       "filePath": "$lang/_content/_misc/validate-email.$token.tsx"
