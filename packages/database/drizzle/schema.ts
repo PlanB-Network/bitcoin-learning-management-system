@@ -1228,12 +1228,9 @@ export const usersCourseUserChapter = users.table(
       .references(() => contentCourseChapters.chapterId, {
         onDelete: 'cascade',
       }),
-    completedAt: t
-      .timestamp({
-        withTimezone: true,
-      })
-      .defaultNow()
-      .notNull(),
+    completedAt: t.timestamp({
+      withTimezone: true,
+    }),
     booked: t.boolean().default(false),
   }),
   (table) => ({
@@ -1699,6 +1696,10 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
+  //chapterId needed for single trial exam
+  // chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
+  //   onDelete: 'cascade',
+  // }),
 
   language: t.varchar({ length: 10 }).notNull(),
   finalized: t.boolean().default(false).notNull(),

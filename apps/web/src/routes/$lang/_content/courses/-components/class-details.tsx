@@ -122,9 +122,11 @@ export const ClassDetails = ({
                     chapter.addressLine1,
                     chapter.addressLine2,
                     chapter.addressLine3,
-                  ].map((line, _) => (
-                    <span key={line}>{line}</span>
-                  ))}
+                  ]
+                    .filter(Boolean)
+                    .map((line, index) => (
+                      <span key={`address-line-${index}-${line}`}>{line}</span>
+                    ))}
                 </div>
               </div>
             </>

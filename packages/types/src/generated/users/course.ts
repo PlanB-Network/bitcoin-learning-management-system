@@ -29,7 +29,7 @@ export interface CourseUserChapter {
   uid: string;
   courseId: string;
   chapterId: string;
-  completedAt: Date;
+  completedAt: Date | null;
   booked: boolean | null;
 }
 
@@ -94,7 +94,7 @@ export interface CourseProgressExtended {
   totalChapters: number;
   chapters: {
     chapterId: string;
-    completedAt: Date;
+    completedAt: Date | null;
   }[];
   nextChapter?:
     | {
@@ -106,7 +106,7 @@ export interface CourseProgressExtended {
   lastCompletedChapter?:
     | {
         chapterId: string;
-        completedAt: Date;
+        completedAt: Date | null;
       }
     | undefined;
 }
@@ -114,7 +114,7 @@ export interface CourseProgressExtended {
 export interface GetUserChapterResponse {
   courseId: string;
   chapterId: string;
-  completedAt: Date;
+  completedAt: Date | null;
   booked: boolean | null;
 }
 
