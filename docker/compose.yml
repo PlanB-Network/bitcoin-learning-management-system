@@ -77,6 +77,17 @@ services:
     volumes:
       - ./well-known:/usr/share/nginx/html/.well-known:ro
 
+  contribute:
+    <<: *defaults
+    image: ghcr.io/planb-network/blms-contribute:${IMAGE_TAG}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.university-contribute-${ENV}.rule=Host(`contribute.${DOMAIN}`)
+      - traefik.http.routers.university-contribute-${ENV}.entrypoints=https
+      - traefik.http.routers.university-contribute-${ENV}.tls=true
+      - traefik.http.routers.university-contribute-${ENV}.middlewares=university-web-${ENV}-compress
+      - traefik.http.middlewares.university-contribute-${ENV}-compress.compress=true
+
   seed:
     image: ghcr.io/max-lt/pears-cdn:v1.0.4
     environment:
