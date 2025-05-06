@@ -104,9 +104,9 @@ export const GlobalCertifications = () => {
                 exams.length > 0 &&
                 exams.map((exam, index) => {
                   return (
-                    <ExamResult
+                    <BCertResult
                       key={exam.id}
-                      exam={exam}
+                      bcertResult={exam}
                       handleExamOpen={handleExamOpen}
                       index={index}
                       isExamOpen={isExamOpen}
@@ -141,19 +141,21 @@ export const GlobalCertifications = () => {
   );
 };
 
-const ExamResult = ({
-  exam,
+const BCertResult = ({
+  bcertResult,
   index,
   handleExamOpen,
   isExamOpen,
 }: {
-  exam: JoinedBCertResults;
+  bcertResult: JoinedBCertResults;
   index: number;
   handleExamOpen: (index: number) => void;
   isExamOpen: boolean[];
 }) => {
-  const hasPassed = exam.score !== undefined && exam.score >= exam.minScore;
-  const examScore = exam.results.reduce(
+  const hasPassed =
+    bcertResult.score !== undefined &&
+    bcertResult.score >= bcertResult.minScore;
+  const examScore = bcertResult.results.reduce(
     (total, result) => total + result.score,
     0,
   );
@@ -196,10 +198,10 @@ const ExamResult = ({
         // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="button"
       >
-        <td className="py-6 pr-1.5">{exam.date.toLocaleDateString()}</td>
-        <td className="">{exam.location}</td>
+        <td className="py-6 pr-1.5">{bcertResult.date.toLocaleDateString()}</td>
+        <td className="">{bcertResult.location}</td>
         <td className="max-md:hidden">
-          <div className="">{exam.id.slice(0, 8)}</div>
+          <div className="">{bcertResult.id.slice(0, 8)}</div>
         </td>
         <td
           className={cn(
@@ -208,7 +210,7 @@ const ExamResult = ({
           )}
         >
           <span className="float-end">
-            {(examScore * 100) / (exam.results.length * 20)}%
+            {(examScore * 100) / (bcertResult.results.length * 20)}%
           </span>
         </td>
         <td
@@ -239,7 +241,7 @@ const ExamResult = ({
                 <>
                   <td colSpan={4} className="px-2">
                     <BcertDetails
-                      exam={exam}
+                      exam={bcertResult}
                       examScore={examScore}
                       examIndex={index}
                     />
@@ -248,9 +250,9 @@ const ExamResult = ({
                     </div>
 
                     <div>
-                      {exam.imgKey && (
+                      {bcertResult.imgKey && (
                         <img
-                          src={`/api/files/${exam.imgKey}`}
+                          src={`/api/files/${bcertResult.imgKey}`}
                           alt="BCert"
                           className="mt-4 mx-auto"
                         />
@@ -258,7 +260,7 @@ const ExamResult = ({
                     </div>
                     <div className="flex flex-col items-center mt-4 gap-4">
                       <a
-                        href={`/api/files/zip/bcert/${exam.pdfKey?.split('/').slice(1, 3).join('/')}`}
+                        href={`/api/files/zip/bcert/${bcertResult.pdfKey?.split('/').slice(1, 3).join('/')}`}
                         download
                         target="_blank"
                         rel="noreferrer"
@@ -281,10 +283,12 @@ const ExamResult = ({
                           <Link
                             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                               t('bCert.tweetText', {
-                                certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(exam.imgKey ? exam.imgKey.split('.').slice(0, 1).join('.') : '')}`,
-                                score: `${exam.score}`,
+                                certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(bcertResult.imgKey ? bcertResult.imgKey.split('.').slice(0, 1).join('.') : '')}`,
+                                score: `${bcertResult.score}`,
                                 emoji:
-                                  exam.score && exam.score >= 90 ? '🏆' : '💪',
+                                  bcertResult.score && bcertResult.score >= 90
+                                    ? '🏆'
+                                    : '💪',
                               }),
                             )}`}
                             target="_blank"
@@ -314,7 +318,7 @@ const ExamResult = ({
                   <td />
                   <td colSpan={4} className="pr-32">
                     <BcertDetails
-                      exam={exam}
+                      exam={bcertResult}
                       examScore={examScore}
                       examIndex={index}
                     />
@@ -323,9 +327,9 @@ const ExamResult = ({
                     </div>
 
                     <div>
-                      {exam.imgKey && (
+                      {bcertResult.imgKey && (
                         <img
-                          src={`/api/files/${exam.imgKey}`}
+                          src={`/api/files/${bcertResult.imgKey}`}
                           alt="BCert"
                           className="mt-4 md:mt-2.5"
                         />
@@ -333,7 +337,7 @@ const ExamResult = ({
                     </div>
                     <div className="flex flex-row justify-between mt-4">
                       <a
-                        href={`/api/files/zip/bcert/${exam.pdfKey?.split('/').slice(1, 3).join('/')}`}
+                        href={`/api/files/zip/bcert/${bcertResult.pdfKey?.split('/').slice(1, 3).join('/')}`}
                         download
                         target="_blank"
                         rel="noreferrer"
@@ -366,10 +370,12 @@ const ExamResult = ({
                           <Link
                             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                               t('bCert.tweetText', {
-                                certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(exam.imgKey ? exam.imgKey.split('.').slice(0, 1).join('.') : '')}`,
-                                score: `${exam.score}`,
+                                certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(bcertResult.imgKey ? bcertResult.imgKey.split('.').slice(0, 1).join('.') : '')}`,
+                                score: `${bcertResult.score}`,
                                 emoji:
-                                  exam.score && exam.score >= 90 ? '🏆' : '💪',
+                                  bcertResult.score && bcertResult.score >= 90
+                                    ? '🏆'
+                                    : '💪',
                               }),
                             )}`}
                             target="_blank"
@@ -401,7 +407,7 @@ const ExamResult = ({
 
                       <div className="w-full pr-4">
                         <BcertDetails
-                          exam={exam}
+                          exam={bcertResult}
                           examScore={examScore}
                           examIndex={index}
                         />
@@ -422,7 +428,7 @@ const ExamResult = ({
 
                       <div className="w-full pr-4">
                         <BcertDetails
-                          exam={exam}
+                          exam={bcertResult}
                           examScore={examScore}
                           examIndex={index}
                         />
