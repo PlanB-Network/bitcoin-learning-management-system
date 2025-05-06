@@ -495,6 +495,9 @@ function CourseChapter() {
     chapterId: params.chapterId,
   });
 
+  const completeChapterAutoMutation =
+    trpc.user.courses.completeChapter.useMutation();
+
   const { data: proofreading } = trpc.content.getProofreading.useQuery({
     language: i18n.language,
     courseId: params.courseId,
@@ -533,6 +536,22 @@ function CourseChapter() {
     return sections;
   }, [chapter]);
 
+  let isAroundLiveTime = false;
+
+  const now = new Date(Date.now());
+  if (chapter?.startDate && chapter.endDate) {
+    const chapterStartDate = new Date(chapter.startDate.getTime());
+    const oneHourBeforeStart = new Date(chapterStartDate);
+    oneHourBeforeStart.setHours(oneHourBeforeStart.getHours() - 1);
+
+    const twoDaysAfterStart = new Date(chapterStartDate);
+    twoDaysAfterStart.setDate(twoDaysAfterStart.getDate() + 2);
+
+    if (now >= oneHourBeforeStart && now <= twoDaysAfterStart) {
+      isAroundLiveTime = true;
+    }
+  }
+
   const isSpecialChapter =
     chapter?.isCourseReview ||
     chapter?.isCourseExam ||
@@ -547,7 +566,6 @@ function CourseChapter() {
 
   if (chapter?.startDate && chapter.endDate) {
     // const isMarkdownAvailable = chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
-    const now = new Date(Date.now());
     const chapterStartDate = new Date(chapter.startDate.getTime());
     const chapterEndDate = new Date(chapter.endDate.getTime());
 
@@ -559,13 +577,7 @@ function CourseChapter() {
       displayLiveSection && chapterStartDate.setHours(0, 0, 0, 0) <= Date.now();
     displayQuiz = false;
 
-    const oneHourBeforeStart = new Date(chapterStartDate);
-    oneHourBeforeStart.setHours(oneHourBeforeStart.getHours() - 1);
-
-    const twoDaysAfterStart = new Date(chapterStartDate);
-    twoDaysAfterStart.setDate(twoDaysAfterStart.getDate() + 2);
-
-    if (now > oneHourBeforeStart && now < twoDaysAfterStart) {
+    if (isAroundLiveTime) {
       displayNext = true;
     } else {
       displayNext = false;
@@ -610,6 +622,22 @@ function CourseChapter() {
       });
     }
   }, [chapter, isFetched, navigate, params.chapterName]);
+
+  useEffect(() => {
+    if (isLoggedIn && isAroundLiveTime && chapter) {
+      completeChapterAutoMutation.mutate({
+        courseId: chapter.course.id,
+        chapterId: chapter.chapterId,
+        language: i18n.language,
+      });
+    }
+  }, [
+    chapter,
+    isLoggedIn,
+    isAroundLiveTime,
+    completeChapterAutoMutation,
+    i18n.language,
+  ]);
 
   return (
     <CourseLayout>
