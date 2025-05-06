@@ -84,17 +84,29 @@ services:
       - 8181:8181
     volumes:
       - ./apps/web:/home/node/apps/web
+      - ./packages:/home/node/packages
       - /home/node/apps/web/node_modules/
-      - ./packages/ui/src:/home/node/packages/ui/src
-      - ./packages/database/src:/home/node/packages/database/src
-      - ./packages/schemas/src:/home/node/packages/schemas/src
-      - ./packages/types/src:/home/node/packages/types/src
       - cdn:$CDN_PATH
     depends_on:
       - api
     healthcheck:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '8181']
+
+  contribute:
+    <<: [*defaults, *base]
+    command: pnpm turbo run dev --env-mode=loose --filter='@blms/contribute'
+    ports:
+      - 8280:8280
+    volumes:
+      - ./apps/contribute:/home/node/apps/contribute
+      - ./packages:/home/node/packages
+      - /home/node/apps/contribute/node_modules/
+    depends_on:
+      - api
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '8280']
 
   # https://typesense.org
   typesense:

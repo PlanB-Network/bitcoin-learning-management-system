@@ -33,28 +33,15 @@ export default defineConfig({
 
   assetsInclude: [UI_PACKAGE_ASSETS],
 
-  server: process.env.DOCKER
-    ? {
-        host: '0.0.0.0',
-        port: 8181,
-        strictPort: true,
-        proxy: {
-          '/api': 'http://api:3000',
-          '/cdn': {
-            target: 'http://cdn:80',
-            rewrite: (path) => path.replace(/^\/cdn/, ''),
-          },
-        },
-      }
-    : {
-        host: '0.0.0.0',
-        port: 8181,
-        proxy: {
-          '/api': 'http://localhost:3000',
-          '/cdn': {
-            target: 'http://localhost:8080',
-            rewrite: (path) => path.replace(/^\/cdn/, ''),
-          },
-        },
+  server: {
+    host: '0.0.0.0',
+    port: 8181,
+    proxy: {
+      '/api': `http://${process.env.DOCKER ? 'api' : 'localhost'}:3000`,
+      '/cdn': {
+        target: `http://${process.env.DOCKER ? 'cdn:80' : 'localhost:8080'}`,
+        rewrite: (path) => path.replace(/^\/cdn/, ''),
       },
+    },
+  },
 });
