@@ -15,7 +15,7 @@ enum ValidationStatus {
 }
 
 export const Route = createFileRoute(
-  '/$lang/_content/_misc/validate-email/$token',
+  '/$lang/_content/_misc/validate-email-change/$token',
 )({
   params: {
     parse: (params) => ({
@@ -27,16 +27,17 @@ export const Route = createFileRoute(
       token: `${token}`,
     }),
   },
-  component: ValidateEmailPage,
+  component: ValidateEmailChangePage,
 });
 
-function ValidateEmailPage() {
+function ValidateEmailChangePage() {
   const { t } = useTranslation();
 
   const params = Route.useParams();
   const token = params.token;
 
   const { user, setUser } = useContext(AppContext);
+  const [email, setEmail] = useState<string | null>(null);
 
   const [validationStatus, setValidationStatus] = useState<ValidationStatus>(
     ValidationStatus.VALIDATING,
@@ -45,9 +46,10 @@ function ValidateEmailPage() {
   const hasValidated = useRef(false);
 
   // Call the API to validate the email change
-  const validateEmail = trpc.user.validateEmailChange.useMutation({
+  const validateEmailChange = trpc.user.validateEmailChange.useMutation({
     onSuccess: ({ email }) => {
       if (email) {
+        setEmail(email);
         setValidationStatus(ValidationStatus.SUCCESS);
         if (user) {
           setUser({ ...user, email });
@@ -63,17 +65,17 @@ function ValidateEmailPage() {
 
   useEffect(() => {
     if (!hasValidated.current) {
-      console.log('Validating email', token);
-      validateEmail.mutate({ token });
+      console.log('Validating email change', token);
+      validateEmailChange.mutate({ token });
       hasValidated.current = true;
     }
-  }, [token, validateEmail]);
+  }, [token, validateEmailChange]);
 
   const validationMessages = {
     [ValidationStatus.VALIDATING]: (
       <div>
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
-          {t('auth.emailValidation.validatingEmail')}
+          {t('auth.emailValidation.validatingEmailChange')}
         </h1>
         <p className="my-8">{t('auth.emailValidation.wontTakeLong')}</p>
       </div>
@@ -81,10 +83,12 @@ function ValidateEmailPage() {
     [ValidationStatus.SUCCESS]: (
       <div>
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
-          {t('auth.emailValidation.emailValidated')}
+          {t('auth.emailValidation.emailChangeValidated')}
         </h1>
         <p className="my-8">
-          {t('auth.emailValidation.successfullyValidated')}
+          {t('auth.emailValidation.successfullyChanged', {
+            email: email ?? 'null',
+          })}
         </p>
         <p>
           <Button asChild className="w-fit">
@@ -103,10 +107,10 @@ function ValidateEmailPage() {
     [ValidationStatus.ERROR]: (
       <div>
         <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
-          {t('auth.emailValidation.errorValidatingEmail')}
+          {t('auth.emailValidation.errorValidatingEmailChange')}
         </h1>
         <p className="my-8 max-w-2xl">
-          {t('auth.emailValidation.errorValidatingEmailDescription')}
+          {t('auth.emailValidation.errorValidatingEmailChangeDescription')}
         </p>
         <p>
           <Button asChild className="w-fit">

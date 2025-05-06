@@ -64,6 +64,7 @@ export const credentialsAuthRouter = createTRPCRouter({
         await createEmailValidationToken(ctx.dependencies)(
           user.uid,
           input.email,
+          true,
         );
       }
 

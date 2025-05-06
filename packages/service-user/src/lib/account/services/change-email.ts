@@ -53,7 +53,7 @@ export const createEmailValidationToken = (deps: Dependencies) => {
 
   const sendEmail = createSendEmail({ config });
 
-  return async (uid: string, email: string) => {
+  return async (uid: string, email: string, isCreationEmail?: boolean) => {
     // Check last email change request
     const last = await postgres.getOneOrReject(
       sql<
@@ -81,7 +81,7 @@ export const createEmailValidationToken = (deps: Dependencies) => {
           subject: 'Validate your email',
           template,
           data: {
-            token_url: `${domain}/validate-email/${token.id}`,
+            token_url: `${domain}/${isCreationEmail ? 'validate-email' : 'validate-email-change'}/${token.id}`,
           },
         }),
       )

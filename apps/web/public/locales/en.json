@@ -44,6 +44,20 @@
     "displayName": "Display Name",
     "emailAddress": "Email address",
     "emailTip": "The email is not mandatory: it can be useful in case you forget your password!",
+    "emailValidation": {
+      "emailChangeValidated": "Email change validated",
+      "emailValidated": "Email validated",
+      "errorValidatingEmail": "Error validating email",
+      "errorValidatingEmailChange": "Error validating email change",
+      "errorValidatingEmailChangeDescription": "An error occurred while validating your email change, it seems like the link has expired or has already been used. Please try again.",
+      "errorValidatingEmailDescription": "An error occurred while validating your email, it seems like the link has expired or has already been used. Please try again.",
+      "successfullyChanged": "Your email has been successfully changed to {{email}}.",
+      "successfullyValidated": "Your email has been successfully validated.",
+      "validateChange": "Validating email change",
+      "validatingEmail": "Validating email",
+      "validatingEmailChange": "Validating email change",
+      "wontTakeLong": "This won’t take long..."
+    },
     "errors": {
       "displayNameTooShort": "Display name must contain at least 2 characters.",
       "emailInvalid": "Invalid email",
@@ -742,6 +756,8 @@
       "takePlaceAt": "The session will take place at",
       "yourCertificate": "Your certificate"
     },
+    "goToDashboard": "Go to dashboard",
+    "goToHomepage": "Go to homepage",
     "logout": "Log out",
     "myCourses": {
       "completeAll": "Complete all",
