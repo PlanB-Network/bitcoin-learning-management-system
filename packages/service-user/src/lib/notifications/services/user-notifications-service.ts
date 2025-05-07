@@ -2,33 +2,30 @@ import { sql } from '@blms/database';
 import type { Dependencies } from '#src/dependencies.js';
 
 export const createUserNotificationsService = async (ctx: Dependencies) => {
-  const getAllUids = () => {
-    return ctx.postgres
-      .exec(
-        sql`
+  const getAllUids = async () => {
+    const result = await ctx.postgres.exec(
+      sql`
         SELECT uid
         FROM users.accounts;
         `,
-      )
-      .then((result) => {
-        return result.map((row) => row.uid);
-      });
+    );
+    return result.map((row) => row.uid);
   };
 
-  const getUidsByCourse = (courseId: string) => {
-    return ctx.postgres
-      .exec(
-        sql`
+  const getUidsByCourse = async (
+    courseId: string,
+    hasCoursePlatformNotificationEnabled?: boolean,
+  ) => {
+    const result = await ctx.postgres.exec(
+      sql`
         SELECT cp.uid
         FROM users.course_progress cp
         JOIN users.account_settings uas ON cp.uid = uas.uid
         WHERE cp.course_id = ${courseId}
-        AND uas.platform_notify_courses = TRUE;
+        ${hasCoursePlatformNotificationEnabled ? sql`AND uas.platform_notify_courses = TRUE` : sql``}
         `,
-      )
-      .then((result) => {
-        return result.map((row) => row.uid);
-      });
+    );
+    return result.map((row) => row.uid);
   };
 
   const getUidsByEvent = async (eventId: string) => {

@@ -17,6 +17,13 @@ export const getUserByIdQuery = (uid: string) => {
   `;
 };
 
+export const getUsersByIdsQuery = (uids: string[]) => {
+  return sql<UserAccount[]>`
+    SELECT * FROM users.accounts
+    WHERE uid = ANY(${uids});
+  `;
+};
+
 export const getUserByIdWithDetailsQuery = (uid: string) => {
   return sql<UserDetails[]>`
     SELECT

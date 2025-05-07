@@ -15,6 +15,7 @@ import {
   createGetSbpCheckout,
   createInsertUserNotifications,
   createPublishScheduledCourseAnnouncement,
+  createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
   createStartCourse,
   createUpdateCoursePayment,
@@ -44,6 +45,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const getCoursesIds = createGetCoursesIds(ctx);
     const getCourseChapters = createGetCourseChapters(ctx);
     const insertUserNotifications = createInsertUserNotifications(ctx);
+    const sendCourseStartingSoonEmail = createSendCourseStartingSoonEmail(ctx);
 
     ctx.crons.addTask('5m', async () => {
       const coursesId = await getCoursesIds();
@@ -76,7 +78,10 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         });
 
         if (chaptersInNotificationWindow.length > 0) {
-          const uids = await userNotificationsService.getUidsByCourse(courseId);
+          const uids = await userNotificationsService.getUidsByCourse(
+            courseId,
+            true,
+          );
           if (uids.length === 0) continue;
 
           for (const chapter of chaptersInNotificationWindow) {
@@ -92,18 +97,31 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         }
 
         if (chaptersStartingSoon.length > 0) {
-          const uids = await userNotificationsService.getUidsByCourse(courseId);
-          if (uids.length === 0) continue;
+          const uidsToNotifyPlatform =
+            await userNotificationsService.getUidsByCourse(courseId, true);
+
+          const uidsToNotifyEmail =
+            await userNotificationsService.getUidsByCourse(courseId);
 
           for (const chapter of chaptersStartingSoon) {
             if (!chapter.startDate) continue;
 
-            await insertUserNotifications({
-              uids,
-              courseId,
-              chapterId: chapter.chapterId,
-              type: NotificationType.Calendar5MinutesCourse,
-            });
+            if (uidsToNotifyPlatform.length > 0) {
+              await insertUserNotifications({
+                uids: uidsToNotifyPlatform,
+                courseId,
+                chapterId: chapter.chapterId,
+                type: NotificationType.Calendar5MinutesCourse,
+              });
+            }
+
+            if (uidsToNotifyEmail.length > 0) {
+              await sendCourseStartingSoonEmail({
+                uids: uidsToNotifyEmail,
+                courseId,
+                chapterId: chapter.chapterId,
+              });
+            }
           }
         }
       }
@@ -219,7 +237,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   //   });
   // }
 
-  // Every 5 minutes, check for newly created course announcements and send a notification to enrolled students
+  // Every 5 minutes, check for newly created course announcements and send a notification/email to enrolled students
   {
     const publishCourseAnnouncement =
       createPublishScheduledCourseAnnouncement(ctx);
@@ -278,15 +296,13 @@ export const registerCronTasks = async (ctx: Dependencies) => {
           );
           if (uids.length === 0) continue;
 
-          for (const uid of uids) {
-            await sendCourseWeeklyRecapEmail({
-              userId: uid,
-              course: course,
-              courseChapters: chaptersStartingSoon,
-              startDate: startDate,
-              endDate: endDate,
-            });
-          }
+          await sendCourseWeeklyRecapEmail({
+            uids: uids,
+            course: course,
+            courseChapters: chaptersStartingSoon,
+            startDate: startDate,
+            endDate: endDate,
+          });
         }
       }
     });
