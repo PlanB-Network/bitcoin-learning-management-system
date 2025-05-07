@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import type { JoinedEvent } from '@blms/types';
 import { cn } from '@blms/ui';
 
+import { LANGUAGES_MAP } from '@blms/shared';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
 import { getDateString, getTimeString } from '#src/utils/date.js';
-import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-white/25 rounded-xl overflow-hidden';

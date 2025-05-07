@@ -19,6 +19,7 @@ import { z } from 'zod';
 import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
 import { Button, Divider, Loader, TextTag, customToast } from '@blms/ui';
 
+import { LANGUAGES_MAP } from '@blms/shared';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
@@ -38,7 +39,6 @@ import { AppContext } from '#src/providers/context.js';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatDate, getDateString } from '#src/utils/date.ts';
-import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { base64ToBlob } from '#src/utils/misc.ts';

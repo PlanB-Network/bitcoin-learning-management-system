@@ -5,7 +5,6 @@ import {
   eventPaymentSchema,
   userEventSchema,
 } from '@blms/schemas';
-import { LANGUAGES_MAP } from '@blms/service-common';
 import {
   createCalculateEventSeats,
   createGetEvent,
@@ -18,6 +17,7 @@ import {
   createSaveUserEvent,
   generateEventTicket,
 } from '@blms/service-user';
+import { LANGUAGES_MAP } from '@blms/shared';
 
 import { UserPermission } from '@blms/constants';
 import type {

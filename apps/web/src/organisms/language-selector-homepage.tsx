@@ -7,7 +7,8 @@ import { useSmaller } from '#src/hooks/use-smaller.js';
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
 
-import { LANGUAGES, LANGUAGES_MAP } from '../utils/i18n.ts';
+import { LANGUAGES_MAP } from '@blms/shared';
+import { LANGUAGES } from '../utils/i18n.ts';
 
 interface LanguageSelectorProps {
   className?: string;

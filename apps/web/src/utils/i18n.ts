@@ -1,3 +1,4 @@
+import { LANGUAGES_MAP } from '@blms/shared';
 import * as i18n from 'i18next';
 import Detector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
@@ -27,29 +28,6 @@ export const LANGUAGES = [
   'zh-Hans',
   'zh-Hant',
 ];
-
-export const LANGUAGES_MAP: { [key: string]: string } = {
-  cs: 'Čeština',
-  de: 'Deutsch',
-  en: 'English',
-  es: 'Español',
-  et: 'Eesti keel',
-  fi: 'Suomi',
-  fr: 'Français',
-  hi: 'हिंदी',
-  id: 'Bahasa indonesia',
-  it: 'Italiano',
-  ja: '日本語',
-  nbno: 'Norsk bokmål',
-  pl: 'Polski',
-  pt: 'Português',
-  ru: 'Русский',
-  srlatn: 'Srpski',
-  sw: 'Kiswahili',
-  vi: 'Tiếng Việt',
-  zhhans: '简体中文',
-  zhhant: '繁體',
-};
 
 export const getLanguageName = (language: string) =>
   LANGUAGES_MAP[language.replace('-', '').toLowerCase()] ?? language;

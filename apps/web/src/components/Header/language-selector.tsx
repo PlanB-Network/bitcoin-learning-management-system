@@ -12,8 +12,9 @@ import { Button, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
 
+import { LANGUAGES_MAP } from '@blms/shared';
 import { CiGlobe } from 'react-icons/ci';
-import { LANGUAGES, LANGUAGES_MAP } from '../../utils/i18n.ts';
+import { LANGUAGES } from '../../utils/i18n.ts';
 
 interface LanguageSelectorProps {
   direction?: 'up' | 'down';

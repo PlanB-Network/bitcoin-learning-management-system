@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import { Loader, Switch } from '@blms/ui';
 
+import { LANGUAGES_MAP } from '@blms/shared';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { VerticalCard } from '#src/molecules/vertical-card.tsx';
-import { LANGUAGES_MAP } from '#src/utils/i18n.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
