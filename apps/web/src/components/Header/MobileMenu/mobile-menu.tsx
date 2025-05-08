@@ -182,7 +182,7 @@ export const MobileMenu = ({
           </Link>
           <IoMdClose
             size={24}
-            className="text-tertiary-7 dark:text-newGray-3 shrink-0 ml-auto cursor-pointer"
+            className="text-maroon-7 dark:text-newGray-3 shrink-0 ml-auto cursor-pointer"
             onClick={toggleMobileMenu}
           />
         </div>

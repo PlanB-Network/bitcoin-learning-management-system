@@ -402,7 +402,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             className={cn(
               step >= 5
                 ? ''
-                : 'bg-tertiary-1 p-2 md:px-[30px] md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation',
+                : 'bg-maroon-1 p-2 md:px-[30px] md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation',
             )}
           >
             {course && step <= 1 ? (

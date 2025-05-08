@@ -223,7 +223,7 @@ function Lecture() {
 
                   {relatedCourse && (
                     <div className="flex flex-col gap-2 md:gap-3">
-                      <p className="text-tertiary-2 subtitle-small-caps-14px md:subtitle-medium-caps-18px">
+                      <p className="text-maroon-2 subtitle-small-caps-14px md:subtitle-medium-caps-18px">
                         {t('lectures.partCourse')}
                       </p>
                       <div className="flex max-md:flex-col flex-wrap gap-1 md:gap-2">

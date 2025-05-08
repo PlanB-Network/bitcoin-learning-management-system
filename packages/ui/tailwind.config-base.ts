@@ -129,14 +129,13 @@ const baseConfig: Config = {
         10: '#044A03',
         11: '#023402',
       },
-
       darkGreen: {
         1: '#42A86B',
         4: '#A0D4B5',
         5: '#C6E5D3',
         6: '#E3F2E9',
       },
-      tertiary: {
+      maroon: {
         1: '#F1EEEC',
         2: '#E3DDD9',
         3: '#D6CCC6',

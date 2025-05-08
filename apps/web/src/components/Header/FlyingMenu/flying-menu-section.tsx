@@ -156,7 +156,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
             {section.id === 'courses' && highlightedCourse && (
               <Link
                 to={`/courses/${highlightedCourse.id}`}
-                className="w-[253px] mr-2  relative hover:border bg-tertiary-10 border-darkOrange-5 hover:shadow-sm-section rounded-md overflow-hidden"
+                className="w-[253px] mr-2  relative hover:border bg-maroon-10 border-darkOrange-5 hover:shadow-sm-section rounded-md overflow-hidden"
               >
                 <span className="absolute uppercase bg-white border border-white text-black body-semibold-12px rounded-br-[8px] py-[5px] px-2.5 z-10">
                   {t('words.startHere')}
@@ -175,10 +175,10 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                     {highlightedCourse.name}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="bg-tertiary-8 text-white rounded-sm p-1 text-xs leading-none capitalize">
+                    <span className="bg-maroon-8 text-white rounded-sm p-1 text-xs leading-none capitalize">
                       {t(`words.level.${highlightedCourse.level}`)}
                     </span>
-                    <span className="bg-tertiary-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
+                    <span className="bg-maroon-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
                       {highlightedCourse.requiresPayment
                         ? t('courses.details.paidCourse')
                         : t('words.free')}

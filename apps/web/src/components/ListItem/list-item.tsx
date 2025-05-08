@@ -57,7 +57,7 @@ const leftTextListItemVariant = cva('leading-relaxed tracking-[0.08px]', {
     variant: {
       light: 'text-newBlack-4',
       dark: 'text-white/70',
-      lightMaroon: 'text-tertiary-8',
+      lightMaroon: 'text-maroon-8',
     },
   },
   defaultVariants: {
@@ -72,7 +72,7 @@ const rightTextListItemVariant = cva(
       variant: {
         light: 'text-newBlack-1',
         dark: 'text-white',
-        lightMaroon: 'text-tertiary-11',
+        lightMaroon: 'text-maroon-11',
       },
     },
     defaultVariants: {
