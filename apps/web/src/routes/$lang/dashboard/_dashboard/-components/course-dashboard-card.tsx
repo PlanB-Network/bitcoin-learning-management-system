@@ -2,11 +2,12 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
-import { Progress, TextTag } from '@blms/ui';
+import { Progress, TextTag, cn } from '@blms/ui';
 
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
+import { LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -19,7 +20,7 @@ export const CourseDashboardCard = ({
 }) => {
   const isScreenLg = useGreater('2xl');
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isInProgress =
     progress &&
     progress.progressPercentage >= 0 &&
@@ -61,7 +62,13 @@ export const CourseDashboardCard = ({
   return (
     <article className="flex flex-row md:max-h-[242px] 2xl:max-h-fit size-full 2xl:flex-col rounded-[10px] border border-black">
       <span
-        className={`p-[5px] md:p-[15px] title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] max-2xl:[transform:rotate(180deg)] max-2xl:border-l 2xl:border-b max-2xl:rounded-r-[10px] 2xl:rounded-t-[10px] border-black text-center text-sm ${bgColor}`}
+        className={cn(
+          'p-[5px] md:p-[15px] title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] 2xl:border-b  2xl:rounded-t-[10px] border-black text-center text-sm',
+          bgColor,
+          !LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT.includes(i18n.language)
+            ? 'max-2xl:[transform:rotate(180deg)] max-2xl:rounded-r-[10px] max-2xl:border-l'
+            : 'max-2xl:rounded-l-[10px] max-2xl:border-r',
+        )}
       >
         {text}
       </span>
