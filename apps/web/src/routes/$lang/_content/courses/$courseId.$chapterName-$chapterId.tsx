@@ -221,7 +221,7 @@ const TimelineBig = ({
                 ) {
                   return (
                     <Link
-                      className="border-beige-300 h-4 grow border-l-[1.5px] first:border-l-0"
+                      className="border-white h-4 grow border-l-[1.5px] first:border-l-0"
                       to={'/courses/$courseId/$chapterId'}
                       params={{
                         courseId: chapter.course.id,
@@ -238,7 +238,7 @@ const TimelineBig = ({
                               currentChapter.chapterIndex <
                                 chapter.chapterIndex)
                             ? 'bg-darkOrange-5'
-                            : 'bg-newGray-4',
+                            : 'bg-darkOrange-1',
                           firstPart && firstChapter ? 'rounded-l-full' : '',
                           lastPart && lastChapter ? 'rounded-r-full' : '',
                         )}
@@ -249,7 +249,7 @@ const TimelineBig = ({
 
                 return (
                   <div
-                    className="border-beige-300 relative flex grow overflow-visible border-l-[1.5px] first:border-l-0"
+                    className="border-white relative flex grow overflow-visible border-l-[1.5px] first:border-l-0"
                     // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                     key={chapterIndex}
                   >
@@ -261,7 +261,7 @@ const TimelineBig = ({
                     />
                     <div
                       className={compose(
-                        'h-4 w-1/2 bg-newGray-4',
+                        'h-4 w-1/2 bg-darkOrange-1',
                         lastPart && lastChapter ? 'rounded-r-full' : '',
                       )}
                     />
