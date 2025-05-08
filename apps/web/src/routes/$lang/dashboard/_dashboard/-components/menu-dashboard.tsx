@@ -122,7 +122,7 @@ export const MenuDashboard = ({
         {toggleMobileMenu && (
           <IoMdClose
             size={18}
-            className="text-tertiary-2 shrink-0 ml-auto cursor-pointer"
+            className="text-maroon-2 shrink-0 ml-auto cursor-pointer"
             onClick={toggleMobileMenu}
           />
         )}

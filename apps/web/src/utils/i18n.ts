@@ -29,6 +29,12 @@ export const LANGUAGES = [
   'zh-Hant',
 ];
 
+export const LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT = [
+  'ja',
+  'zh-Hans',
+  'zh-Hant',
+];
+
 export const getLanguageName = (language: string) =>
   LANGUAGES_MAP[language.replace('-', '').toLowerCase()] ?? language;
 

@@ -22,9 +22,9 @@ const textTagVariants = cva(
         green:
           'bg-brightGreen-1 text-brightGreen-8 dark:bg-brightGreen-9 dark:text-brightGreen-2 [&.light100]:bg-brightGreen-2 [&.dark100]:bg-brightGreen-9 [&.dark100]:text-brightGreen-2',
         lightMaroon:
-          'bg-tertiary-1 text-tertiary-8 dark:bg-tertiary-8 dark:text-white [&.light100]:bg-tertiary-2 [&.dark100]:bg-tertiary-8 [&.dark100]:text-white',
+          'bg-maroon-1 text-maroon-8 dark:bg-maroon-8 dark:text-white [&.light100]:bg-maroon-2 [&.dark100]:bg-maroon-8 [&.dark100]:text-white',
         darkMaroon:
-          'bg-tertiary-2 text-tertiary-8 dark:bg-tertiary-9 dark:text-white [&.light100]:bg-tertiary-3',
+          'bg-maroon-2 text-maroon-8 dark:bg-maroon-9 dark:text-white [&.light100]:bg-maroon-3',
       },
       mode: {
         light: '',

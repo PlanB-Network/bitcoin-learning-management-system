@@ -18,7 +18,7 @@ import { formatNameForURL } from '#src/utils/string.ts';
 const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
   variants: {
     color: {
-      primary: 'bg-newGray-5 dark:bg-tertiary-10',
+      primary: 'bg-newGray-5 dark:bg-maroon-10',
       featured: 'bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section',
     },
     mode: {
@@ -100,7 +100,7 @@ export const CourseCard = ({
             className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">
-            <span className="max-md:flex flex-col md:mb-2 !line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-tertiary-11 dark:text-white md:align-top mb-2 lg:mb-0">
+            <span className="max-md:flex flex-col md:mb-2 !line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-maroon-11 dark:text-white md:align-top mb-2 lg:mb-0">
               {course.name}
             </span>
             <div className="flex flex-col flex-wrap gap-2.5 md:mt-auto">
@@ -138,7 +138,7 @@ export const CourseCard = ({
           </div>
         </div>
         <div className="relative">
-          <p className="text-tertiary-8 dark:text-tertiary-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute duration-300">
+          <p className="text-maroon-8 dark:text-maroon-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute duration-300">
             {course.goal}
           </p>
         </div>
@@ -262,7 +262,7 @@ export const CourseCardExtended = ({
                 />
               </div>
             </div>
-            <p className="text-tertiary-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-6 md:group-hover:line-clamp-5 mt-2.5 md:mt-3 max-md:desktop-typo1">
+            <p className="text-maroon-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 md:line-clamp-6 md:group-hover:line-clamp-5 mt-2.5 md:mt-3 max-md:desktop-typo1">
               {course.goal}
             </p>
           </div>

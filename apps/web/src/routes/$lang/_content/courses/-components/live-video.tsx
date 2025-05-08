@@ -31,8 +31,8 @@ export const LiveVideo = ({ url, chatUrl, displayVideo }: LiveVideoProps) => {
               src={chatUrl}
               title="Chat"
               sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-              className="w-full"
-              height="315"
+              className="w-full p-2 rounded-2xl border border-darkOrange-0 shadow-course-navigation"
+              height="331px"
             />
           )}
         </div>

@@ -15,13 +15,13 @@ export const SearchResult = ({ item, index }: SearchResultProps) => {
 
   return (
     <a
-      className="block rounded-lg p-2 hover:bg-tertiary-10 border border-transparent focus:border-newOrange-1 focus:outline-none"
+      className="block rounded-lg p-2 hover:bg-maroon-10 border border-transparent focus:border-newOrange-1 focus:outline-none"
       href={`${item.document.link}#:~:text=${item.highlight.body?.matched_tokens?.[0] ?? item.document.title}`}
       target="_blank"
       rel="noreferrer"
     >
       <div className="flex gap-4 items-center">
-        <Tag className="bg-tertiary-9 text-base border-0 p-2 py-1 text-white font-thin">
+        <Tag className="bg-maroon-9 text-base border-0 p-2 py-1 text-white font-thin">
           {t(`search.${item.document.type}`)}
         </Tag>
 

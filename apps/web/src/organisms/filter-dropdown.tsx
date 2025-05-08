@@ -109,13 +109,13 @@ export const FilterDropdown = ({
 
   return (
     <section
-      className="mx-auto max-w-2xl rounded-lg bg-tertiary-11"
+      className="mx-auto max-w-2xl rounded-lg bg-maroon-11"
       ref={dropdownRef}
     >
       <div className="relative">
         <div
           className={cn(
-            'relative w-full flex items-center gap-2.5 border border-tertiary-10 overflow-x-scroll bg-tertiary-10 no-scrollbar',
+            'relative w-full flex items-center gap-2.5 border border-maroon-10 overflow-x-scroll bg-maroon-10 no-scrollbar',
             isFocused && 'border-darkOrange-7',
             isOpen ? 'rounded-b-0 rounded-t-lg md:rounded-b-lg' : 'rounded-lg',
             filters && 'pr-12 md:pr-0',
@@ -132,7 +132,7 @@ export const FilterDropdown = ({
             autoComplete="off"
             placeholder={`${t('search.search')}...`}
             className={cn(
-              'relative ps-10 px-2.5 py-2.5 peer w-full body-16px placeholder:body-16px !bg-transparent text-darkOrange-6 placeholder:text-tertiary-6 focus:ring-0 focus:outline-none',
+              'relative ps-10 px-2.5 py-2.5 peer w-full body-16px placeholder:body-16px !bg-transparent text-darkOrange-6 placeholder:text-maroon-6 focus:ring-0 focus:outline-none',
             )}
             onFocus={() => {
               setIsFocused(true);
@@ -165,7 +165,7 @@ export const FilterDropdown = ({
             className={cn(
               'absolute md:hidden text-darkOrange-0 inset-y-0 right-0 flex items-center rounded-tr-lg border border-l-0 border-darkOrange-6',
               isFocused
-                ? 'bg-tertiary-8 border-darkOrange-7'
+                ? 'bg-maroon-8 border-darkOrange-7'
                 : 'bg-darkOrange-6 ',
               isOpen ? 'rounded-br-0 md:rounded-br-lg' : 'rounded-br-lg',
             )}
@@ -178,7 +178,7 @@ export const FilterDropdown = ({
       </div>
 
       {filters && isOpen && (
-        <div className="bg-tertiary-10 p-2.5 rounded-b-lg border-t border-tertiary-9 md:hidden">
+        <div className="bg-maroon-10 p-2.5 rounded-b-lg border-t border-maroon-9 md:hidden">
           {filterKeys.length > 1 && (
             <div className="flex gap-1 mb-[15px]">
               {filterKeys.map((category) => (
@@ -190,7 +190,7 @@ export const FilterDropdown = ({
                     'px-2.5 py-1.5 body-16px',
                     category === activeCategory
                       ? 'text-white underline'
-                      : 'text-tertiary-6 no-underline',
+                      : 'text-maroon-6 no-underline',
                   )}
                 >
                   {t(`filters.${category.toLowerCase()}`)}
@@ -234,7 +234,7 @@ export const FilterDropdown = ({
                         />
                       </svg>
                     </span>
-                    <span className="text-tertiary-2 body-14px capitalize shrink-0 max-[400px]:max-w-[90px] max-w-[150px] w-full">
+                    <span className="text-maroon-2 body-14px capitalize shrink-0 max-[400px]:max-w-[90px] max-w-[150px] w-full">
                       {option.translation}
                     </span>
                   </label>
@@ -267,7 +267,7 @@ export const FilterDropdown = ({
                       }
                     </span>
                     <IoMdClose
-                      className="text-tertiary-4 cursor-pointer"
+                      className="text-maroon-4 cursor-pointer"
                       size={16}
                       onClick={() => props.onChange?.(category, option)}
                     />

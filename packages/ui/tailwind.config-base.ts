@@ -16,7 +16,6 @@ const baseConfig: Config = {
       dashboardSectionTitle: '#060B15',
       dashboardSectionText: '#050A14',
       commentTextBackground: '#E9E9E9',
-      headerGray: '#25262D',
       headerDark: '#010205',
       white: '#FFFFFF',
       black: '#000000',
@@ -93,10 +92,6 @@ const baseConfig: Config = {
         5: '#E5E5E5',
         6: '#F6F6F6',
       },
-      yellow: {
-        1: '#FF9401',
-        6: '#FFF0D9',
-      },
       red: {
         1: '#FFDAD3',
         2: '#FFB5A7',
@@ -109,14 +104,6 @@ const baseConfig: Config = {
         9: '#800000',
         10: '#630000',
         11: '#480000',
-      },
-      beige: {
-        300: '#FCFBF3',
-        400: '#FAF7E7',
-        500: '#F6F1D7',
-        600: '#D6D2BB',
-        700: '#B7B39F',
-        800: '#989585',
       },
       green: {
         100: '#EDF7F2',
@@ -142,36 +129,13 @@ const baseConfig: Config = {
         10: '#044A03',
         11: '#023402',
       },
-
       darkGreen: {
         1: '#42A86B',
         4: '#A0D4B5',
         5: '#C6E5D3',
         6: '#E3F2E9',
       },
-      turquoise: {
-        100: '#D7EBE9',
-        200: '#C3E1DE',
-        300: '#AFD7D3',
-        400: '#85C4BE',
-        500: '#57B0A9',
-        600: '#079C94',
-        700: '#058780',
-        800: '#04736D',
-        900: '#025F5A',
-      },
-      chocolate: {
-        100: '#F7D2C1',
-        200: '#EFB498',
-        300: '#EBA583',
-        400: '#E18659',
-        500: '#DB7642',
-        600: '#D56626',
-        700: '#B95820',
-        800: '#9E4A19',
-        900: '#833C13',
-      },
-      tertiary: {
+      maroon: {
         1: '#F1EEEC',
         2: '#E3DDD9',
         3: '#D6CCC6',

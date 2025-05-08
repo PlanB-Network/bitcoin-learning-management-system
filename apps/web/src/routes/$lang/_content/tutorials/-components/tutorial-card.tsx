@@ -25,7 +25,7 @@ export const TutorialCard = ({
       className={cn(
         'flex items-center w-full rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 max-md:w-[290px] overflow-hidden',
         dark
-          ? 'bg-tertiary-10 text-white md:hover:shadow-sm-card-dark'
+          ? 'bg-maroon-10 text-white md:hover:shadow-sm-card-dark'
           : 'bg-newGray-6 text-newBlack-3 md:shadow-course-navigation shadow-course-navigation-sm md:border md:hover:shadow-sm-card-light',
         addMargin && 'my-2',
       )}
@@ -48,7 +48,7 @@ export const TutorialCard = ({
         <span
           className={cn(
             'text-xs font-light mb-2 max-md:hidden',
-            dark ? 'text-tertiary-4' : 'text-newBlack-3',
+            dark ? 'text-maroon-4' : 'text-newBlack-3',
           )}
         >
           {tutorial.description}
