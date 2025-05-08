@@ -77,48 +77,44 @@ export const LanguageSelector = ({
         <button
           type="button"
           className={cn(
-            'group z-50 flex place-items-center text-sm font-semibold gap-2 lg:gap-2.5 outline-none px-2.5 py-2 lg:pr-0 rounded-2xl max-lg:w-24 transition-all',
+            'group z-50 flex place-items-center text-sm font-semibold gap-2.5 outline-none pl-2.5 py-2 rounded-2xl transition-all',
             variantHeaderBackgroundMap[variant],
-            open && 'max-lg:rounded-none max-lg:rounded-t-2xl',
             className,
           )}
         >
           <CiGlobe size={24} />
           <MdKeyboardArrowDown
             size={32}
-            className={cn(
-              'transition-transform ease-in-out',
-              open && 'max-lg:-rotate-180',
-            )}
+            className="transition-transform ease-in-out"
           />
         </button>
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex flex-col items-center max-lg:w-24 justify-center absolute z-50 bg-darkOrange-11 rounded-b-2xl lg:rounded-2xl w-fit lg:w-[440px] py-2.5 lg:px-8 lg:py-6 max-h-fit overflow-y-scroll no-scrollbar',
+          'flex flex-col items-center justify-center absolute z-50 bg-darkOrange-11 rounded-2xl w-[816px] px-8 py-6 max-h-fit overflow-y-scroll no-scrollbar',
           direction === 'down'
-            ? '-top-1 lg:top-7 -right-12 lg:-right-[50px]'
+            ? 'top-7 -right-[50px]'
             : 'bottom-16 left-1/2 -translate-x-1/2',
           variantSelectorMap[variant],
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        <span className="w-full text-center text-sm tracking-[1.12px] uppercase mb-6 max-lg:hidden">
+        <span className="w-full text-center text-sm tracking-[1.12px] uppercase mb-6">
           {t('home.languageSection.availableLanguages')}
         </span>
-        <div className="flex flex-wrap justify-center max-lg:w-24 gap-2 lg:gap-4">
+        <div className="gap-4 grid grid-cols-4">
           {sortedLanguages.map((language) => (
             <button
               key={language}
               type="button"
               className={cn(
-                'flex items-center lg:px-4 lg:py-2 rounded-md lg:hover:bg-white/10 w-fit lg:w-44',
+                'flex items-center px-4 py-2 rounded-md hover:bg-white/10 w-44',
                 activeLanguage.toLowerCase() === language.toLowerCase() &&
                   'border rounded-lg border-darkOrange-5 dark gap-2 justify-between',
               )}
               onClick={() => changeLanguage(language)}
             >
-              <span className="capitalize leading-normal max-lg:hidden text-left">
+              <span className="capitalize leading-normal text-left">
                 {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
                   language}
               </span>
@@ -132,7 +128,7 @@ export const LanguageSelector = ({
           href="https://github.com/PlanB-Network/bitcoin-educational-content"
           target="_blank"
           rel="noopener noreferrer"
-          className="max-lg:hidden mt-6 w-full"
+          className="mt-6 w-full"
         >
           <Button
             variant={variant === 'light' ? 'secondary' : 'outlineWhite'}
