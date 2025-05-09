@@ -32,22 +32,22 @@ export async function generateTicket(options: GenerateTicketOptions) {
   const conf = {
     title: {
       size: 20,
-      font: fonts.notoSansSemiBold,
+      font: fonts.ibmPlexSemiBold,
       lineHeight: 24,
     },
     normal: {
       size: 14,
-      font: fonts.notoSansMedium,
+      font: fonts.ibmPlexMedium,
       lineHeight: 20,
     },
     small: {
       size: 12,
-      font: fonts.notoSansMedium,
+      font: fonts.ibmPlexMedium,
       lineHeight: 16,
     },
     xs: {
       size: 10,
-      font: fonts.notoSansLight,
+      font: fonts.ibmPlexLight,
     },
   } satisfies Record<string, PDFPageDrawTextOptions>;
 
@@ -157,7 +157,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
     const y = height - 480;
     const labels = {
       ...conf.xs,
-      font: fonts.notoSansMedium,
+      font: fonts.ibmPlexMedium,
     };
 
     if (ticketNumber) {

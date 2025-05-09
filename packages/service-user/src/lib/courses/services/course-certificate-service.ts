@@ -122,12 +122,13 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
               'id', c.id,
               'index', c.index,
               'level', c.level,
-              'goal', cl.goal,
-              'name', cl.name,
+              'goal', COALESCE(cl_en.goal, cl_orig.goal),
+              'name', COALESCE(cl_en.name, cl_orig.name),
               'hours', c.hours,
               'lastCommit', c.last_commit)
             FROM content.courses c
-            JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language =  a.language
+            JOIN content.courses_localized cl_en ON c.id = cl_en.course_id AND cl_en.language = 'en'
+            JOIN content.courses_localized cl_orig ON c.id = cl_orig.course_id AND cl_orig.language = a.language
             WHERE c.id = a.course_id) AS course
           FROM
             users.exam_attempts a

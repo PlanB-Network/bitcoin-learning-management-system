@@ -66,14 +66,14 @@ export async function createPdf(options: PdfCertificateOptions) {
       font: fonts.mono,
       color: white,
     },
-    notoSansWhite: {
+    ibmPlexWhite: {
       size: 16,
-      font: fonts.notoSansRegular,
+      font: fonts.ibmPlexRegular,
       color: white,
     },
     courseName: {
       size: 50,
-      font: fonts.notoSansRegular,
+      font: fonts.ibmPlexRegular,
       color: white,
     },
     userName: {
@@ -112,12 +112,12 @@ export async function createPdf(options: PdfCertificateOptions) {
   textLeft(page, options.courseIndex.toUpperCase(), {
     x: margin,
     y: 104,
-    ...conf.notoSansWhite,
+    ...conf.ibmPlexWhite,
   });
   textRight(page, options.duration, {
     x: margin,
     y: 104,
-    ...conf.notoSansWhite,
+    ...conf.ibmPlexWhite,
   });
 
   // Course Name
@@ -157,7 +157,7 @@ export async function createPdf(options: PdfCertificateOptions) {
   {
     const font = fonts.notoSansRegular;
     const x = width - margin - font.widthOfTextAtSize(options.date, 16);
-    textLeft(page, options.date, { x, y: 525, ...conf.notoSansWhite });
+    textLeft(page, options.date, { x, y: 525, ...conf.ibmPlexWhite });
   }
 
   // Save the modified PDF
