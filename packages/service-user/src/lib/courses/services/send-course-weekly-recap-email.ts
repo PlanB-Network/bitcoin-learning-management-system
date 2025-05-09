@@ -1,13 +1,11 @@
-import { firstRow } from '@blms/database';
-
 import type { JoinedCourse, JoinedCourseChapter } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
-import { getUserAccountSettingsQuery } from '../../account/queries/get-account-settings.js';
-import { getUserByIdQuery } from '../../account/queries/get-user.js';
+import { getUsersAccountSettingsQuery } from '../../account/queries/get-account-settings.js';
+import { getUsersByIdsQuery } from '../../account/queries/get-user.js';
 import { createSendEmail } from '../../account/services/email.js';
 
 interface SendWeeklyRecapEmailParams {
-  userId: string;
+  uids: string[];
   course: JoinedCourse;
   courseChapters: JoinedCourseChapter[];
   startDate: Date;
@@ -18,7 +16,7 @@ export const createSendCourseWeeklyRecapEmail = (
   dependencies: Dependencies,
 ) => {
   return async ({
-    userId,
+    uids,
     course,
     courseChapters,
     startDate,
@@ -26,59 +24,92 @@ export const createSendCourseWeeklyRecapEmail = (
   }: SendWeeklyRecapEmailParams): Promise<void> => {
     const { postgres, config } = dependencies;
     try {
-      const userInfo = await postgres
-        .exec(getUserByIdQuery(userId))
-        .then(firstRow);
-      const userEmail = userInfo?.email;
-      const userHasValidatedEmail = userInfo?.currentEmailChecked;
+      const [usersInfos, usersAccountSettings] = await Promise.all([
+        postgres.exec(getUsersByIdsQuery(uids)),
+        postgres.exec(getUsersAccountSettingsQuery(uids)),
+      ]);
 
-      if (!userEmail || !userHasValidatedEmail) {
+      if (!usersInfos || usersInfos.length === 0) {
+        console.error(
+          `No users found when sending weekly recap for course ${course.id}`,
+        );
         return;
       }
 
-      const userAccountSettings = await postgres
-        .exec(getUserAccountSettingsQuery(userId))
-        .then(firstRow);
-      const acceptsCourseEmail = userAccountSettings?.emailNotifyCourses;
-      const unsubscribeId = userAccountSettings?.unsubscribeId;
+      const userSettingsMap = new Map(
+        usersAccountSettings.map((setting) => [setting.uid, setting]),
+      );
 
-      if (!acceptsCourseEmail || !unsubscribeId) {
+      const eligibleUsers = [];
+      for (const userInfo of usersInfos) {
+        const userEmail = userInfo.email;
+        const userHasValidatedEmail = userInfo.currentEmailChecked;
+
+        if (!userEmail || !userHasValidatedEmail) {
+          continue;
+        }
+
+        const userAccountSettings = userSettingsMap.get(userInfo.uid);
+
+        if (
+          !userAccountSettings ||
+          !userAccountSettings.emailNotifyCourses ||
+          !userAccountSettings.unsubscribeId
+        ) {
+          continue;
+        }
+
+        eligibleUsers.push({
+          email: userEmail,
+          unsubscribeId: userAccountSettings.unsubscribeId,
+        });
+      }
+
+      if (eligibleUsers.length === 0) {
+        console.error(
+          `No eligible users found for weekly recap of course ${course.id}`,
+        );
         return;
       }
 
-      const sendEmail = createSendEmail({ config });
+      for (const user of eligibleUsers) {
+        const userEmail = user.email;
+        const unsubscribeId = user.unsubscribeId;
 
-      const courseName = course.name;
-      const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}${courseName} - Weekly recap`;
-      const upcomingChapters = courseChapters.map((chapter) => ({
-        chapterIndex: `${chapter.partIndex}.${chapter.chapterIndex}`,
-        chapterName: chapter.title,
-        chapterStartDate: chapter.startDate?.toISOString(),
-        chapterEndDate: chapter.endDate?.toISOString(),
-        addressLine1: chapter.addressLine1,
-        addressLine2: chapter.addressLine2,
-        addressLine3: chapter.addressLine3,
-      }));
-      const weekEndDate = new Date(endDate);
-      weekEndDate.setDate(weekEndDate.getDate() - 1);
+        const sendEmail = createSendEmail({ config });
 
-      await sendEmail({
-        email: userEmail,
-        subject: subject,
-        template: 'd-014c159979d543ecb8d6657b0265a84c',
-        data: {
-          courseName: courseName,
-          startDate: startDate.toISOString(),
-          endDate: weekEndDate.toISOString(),
-          upcomingChapters: upcomingChapters,
-          dashboardLink: `${config.domainUrl}/dashboard/course/${course.id}`,
-          unsubscribeLink: `${config.domainUrl}/change-email-preferences/${unsubscribeId}`,
+        const courseName = course.name;
+        const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}${courseName} - Weekly recap`;
+        const upcomingChapters = courseChapters.map((chapter) => ({
+          chapterIndex: `${chapter.partIndex}.${chapter.chapterIndex}`,
+          chapterName: chapter.title,
+          chapterStartDate: chapter.startDate?.toISOString(),
+          chapterEndDate: chapter.endDate?.toISOString(),
+          addressLine1: chapter.addressLine1,
+          addressLine2: chapter.addressLine2,
+          addressLine3: chapter.addressLine3,
+        }));
+        const weekEndDate = new Date(endDate);
+        weekEndDate.setDate(weekEndDate.getDate() - 1);
+
+        await sendEmail({
+          email: userEmail,
           subject: subject,
-        },
-      });
+          template: 'd-014c159979d543ecb8d6657b0265a84c',
+          data: {
+            courseName: courseName,
+            startDate: startDate.toISOString(),
+            endDate: weekEndDate.toISOString(),
+            upcomingChapters: upcomingChapters,
+            dashboardLink: `${config.domainUrl}/dashboard/course/${course.id}`,
+            unsubscribeLink: `${config.domainUrl}/change-email-preferences/${unsubscribeId}`,
+            subject: subject,
+          },
+        });
+      }
     } catch (error) {
       console.error(
-        `Error sending weekly recap for course ${course.id} to user ${userId}:`,
+        `Error sending weekly recap for course ${course.id}:`,
         error,
       );
     }

@@ -1,9 +1,12 @@
 import type { Dependencies } from '#src/dependencies.js';
+import { createSendCourseAnnouncementEmail } from '../../courses/services/send-course-announcement-email.js';
 import { publishScheduledCourseAnnouncementQuery } from '../queries/publish-scheduled-course-announcement.js';
 
-export const createPublishScheduledCourseAnnouncement = ({
-  postgres,
-}: Dependencies) => {
+export const createPublishScheduledCourseAnnouncement = (
+  dependencies: Dependencies,
+) => {
+  const { postgres } = dependencies;
+
   return async ({
     scheduledAnnouncementId,
   }: {
@@ -19,7 +22,12 @@ export const createPublishScheduledCourseAnnouncement = ({
     );
 
     if (result && result.length > 0) {
-      return result[0];
+      console.log(
+        `Scheduled course announcement with ID: ${scheduledAnnouncementId} published successfully. Sending related emails...`,
+      );
+      createSendCourseAnnouncementEmail(dependencies)({
+        announcementId: result[0].id,
+      });
     }
 
     return null;

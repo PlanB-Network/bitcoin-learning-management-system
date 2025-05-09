@@ -6,3 +6,10 @@ export const getUserAccountSettingsQuery = (uid: string) => {
     UserAccountSettings[]
   >`SELECT * FROM users.account_settings WHERE uid = ${uid}`;
 };
+
+export const getUsersAccountSettingsQuery = (uids: string[]) => {
+  return sql<UserAccountSettings[]>`
+  SELECT * FROM users.account_settings
+  WHERE uid = ANY(${uids})
+  `;
+};
