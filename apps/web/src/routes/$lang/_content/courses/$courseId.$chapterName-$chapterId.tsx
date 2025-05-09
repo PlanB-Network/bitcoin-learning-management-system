@@ -40,9 +40,9 @@ import {
 
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { CourseConclusion } from './$courseId/-components/course-conclusion.tsx';
-import { CourseExam } from './$courseId/-components/course-exam.tsx';
+import { CourseExamWorkflow } from './$courseId/-components/course-exam-workflow.tsx';
 import { CourseReviewComponent } from './$courseId/-components/course-review.tsx';
-import { SingleTrialExam } from './$courseId/-components/single-trial-exam.tsx';
+import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam-workflow.tsx';
 import { ClassDetails } from './-components/class-details.tsx';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { LiveVideo } from './-components/live-video.tsx';
@@ -796,7 +796,10 @@ function CourseChapter() {
                   )}
 
                   {chapter.isCourseExam && (
-                    <CourseExam chapter={chapter} disabled={!isLoggedIn} />
+                    <CourseExamWorkflow
+                      chapter={chapter}
+                      disabled={!isLoggedIn}
+                    />
                   )}
 
                   {chapter.isCourseConclusion && (
@@ -804,7 +807,10 @@ function CourseChapter() {
                   )}
 
                   {chapter.isSingleTrialExam && (
-                    <SingleTrialExam chapter={chapter} disabled={!isLoggedIn} />
+                    <SingleTrialExamWorkflow
+                      chapter={chapter}
+                      disabled={!isLoggedIn}
+                    />
                   )}
 
                   {displayLiveSection &&

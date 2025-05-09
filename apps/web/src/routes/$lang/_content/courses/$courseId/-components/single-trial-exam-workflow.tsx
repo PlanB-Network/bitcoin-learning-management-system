@@ -5,15 +5,15 @@ import { AlertCircle } from 'lucide-react';
 import { Trans } from 'react-i18next';
 import { getDateString } from '#src/utils/date.ts';
 
-interface SingleTrialExamProps {
+interface SingleTrialExamWorkflowProps {
   chapter: CourseChapterResponse;
   disabled?: boolean;
 }
 
-export const SingleTrialExam = ({
+export const SingleTrialExamWorkflow = ({
   chapter,
   disabled,
-}: SingleTrialExamProps) => {
+}: SingleTrialExamWorkflowProps) => {
   const now = new Date();
   const isExamOngoing =
     chapter.startDate &&

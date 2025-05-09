@@ -20,7 +20,7 @@ import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-export const FinalExam = ({
+export const CourseExamSession = ({
   questions,
   setIsExamCompleted,
   chapter,
