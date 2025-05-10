@@ -71,7 +71,21 @@
     "dashboardUnlocked": "La tua bacheca studente è sbloccata!",
     "trackProgress": "Crea un account o accedi per tenere traccia dei tuoi progressi",
     "didYouKnow": "Lo sapevi?",
-    "passwordChangedSuccess": "La password è stata cambiata con successo"
+    "passwordChangedSuccess": "La password è stata cambiata con successo",
+    "emailValidation": {
+      "emailChangeValidated": "Cambio di email validato",
+      "errorValidatingEmailChangeDescription": "Si è verificato un errore durante la convalida della modifica della tua email, sembra che il link sia scaduto o sia già stato utilizzato. Per favore, riprova.",
+      "errorValidatingEmailDescription": "Si è verificato un errore durante la convalida della tua email, sembra che il link sia scaduto o sia già stato utilizzato. Per favore, riprova.",
+      "emailValidated": "Email validata",
+      "errorValidatingEmail": "Errore nella convalida dell'email",
+      "errorValidatingEmailChange": "Errore nella convalida del cambio email",
+      "successfullyChanged": "La tua email è stata cambiata con successo in {{email}}.",
+      "successfullyValidated": "La tua email è stata convalidata con successo.",
+      "validateChange": "Convalida del cambio email",
+      "validatingEmail": "Convalida email",
+      "validatingEmailChange": "Convalida del cambio email",
+      "wontTakeLong": "Non ci vorrà molto..."
+    }
   },
   "bet": {
     "educationalContent": {
@@ -139,7 +153,8 @@
       "teacherLed": "Guidato dall'insegnante",
       "associatedProfessors": "Professori associati",
       "coordinatedBy": "Questo corso è coordinato da",
-      "learning": "Percorso di studio"
+      "learning": "Percorso di studio",
+      "attendInPersonWarning": "Se intendi partecipare a questa lezione di persona, assicurati di prenotare il tuo posto. In ogni caso, la lezione sarà trasmessa in diretta e disponibile per la riproduzione."
     },
     "explorer": {
       "pageDescription": "Plan ₿ Academy offre un'ampia gamma di corsi su Bitcoin, sia gratuiti che a pagamento, da principianti a esperti. Ci sono corsi guidati da esperti del settore, o altri che si possono seguire in autonomia, adattandosi a ogni stile di apprendimento. La nostra missione è semplice: rendere lo studio di Bitcoin chiaro, coinvolgente e accessibile a tutti!",
@@ -306,7 +321,13 @@
       "successDiplomaTimeStamped": "Congratulazioni! Hai superato l'esame con successo.\nIl tuo diploma sarà disponibile nel tuo pannello studenti circa 10 ore dopo aver sostenuto l'esame. Questo ritardo è dovuto alla tecnologia di <0>timestamp</0>, che ne garantisce l'autenticità.",
       "takeExam": "Fai l'esame",
       "timeStampedNoDot": "con timestamp",
-      "timeStamping": "time-stamp"
+      "timeStamping": "time-stamp",
+      "nbMinutes": "{{nb}} minuti",
+      "nbQuestions": "{{nb}} domande",
+      "singleAttempt": "Esame a tentativo unico",
+      "singleAttemptPrecaution": "Prima di iniziare, assicurati che la tua connessione sia stabile. Poiché questo è un esame a tentativo unico, se vieni disconnesso, non sarai in grado di riprovare.",
+      "singleAttemptAvailability": "Questo esame è disponibile online il: {{date}}",
+      "weight": "Peso: {{weight}}%"
     },
     "conclusion": {
       "completedChaptersHeadline": "Tutti i capitoli sono ora completati!",
@@ -386,7 +407,11 @@
     },
     "calendar": {
       "calendar": "Calendario",
-      "personalCalendar": "Calendario personale"
+      "personalCalendar": "Calendario personale",
+      "eventType": {
+        "class": "Lezioni",
+        "event": "Eventi"
+      }
     },
     "profile": {
       "change": "Cambia",
@@ -474,7 +499,14 @@
       "tweetText": "Felice di aver completato il corso {{courseIndex}} su @planb_network e aver ottenuto la certificazione con un punteggio di {{score}}/100 all'esame finale! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Ecco un riassunto di ciò che hai appreso. Se hai tralasciato alcuni capitoli o non li hai validati correttamente, ora è il momento di farlo. Puoi tornare indietro per rivedere il contenuto, o puoi premere il pulsante di completamento.",
       "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione.",
-      "coordinator": "Coordinatore del corso"
+      "coordinator": "Coordinatore del corso",
+      "announcement": "Annuncio",
+      "assignment": "Compito",
+      "assignmentInformation": "Informazioni sull'incarico",
+      "conclusionNotReleased": "La conclusione sarà sbloccata il giorno dell'ultima lezione.",
+      "courseCalendar": "Calendario del corso",
+      "exams": "Esami",
+      "generalInformation": "Informazioni generali"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -569,7 +601,8 @@
           "uses": "Usati",
           "total": "Total",
           "owner": "Proprietario",
-          "actions": "Azioni"
+          "actions": "Azioni",
+          "maxUses": "Max. utilizzi"
         },
         "generateNewCodes": "Genera nuovi codici",
         "productEvent": "Evento",
@@ -584,7 +617,10 @@
         "discountCodeExplanation": "Attenzione, questo codice distingue tra maiuscole e minuscole.",
         "generatedCodes": "Nuovi codici",
         "selectCourse": "Seleziona corso",
-        "selectEvent": "Seleziona evento"
+        "selectEvent": "Seleziona evento",
+        "discountCodeCopied": "Codice sconto copiato",
+        "downloadImage": "Scarica immagine",
+        "downloadImages": "Scarica immagini"
       },
       "discountCodes": "Codici sconto"
     },
@@ -768,6 +804,14 @@
       "noFileSelected": "Nessun file selezionato",
       "applicationComplete": "La tua candidatura è <highlight>Completa</highlight>",
       "applicationIncomplete": "La tua candidatura è <highlight>Incompleta</highlight>"
+    },
+    "announcements": {
+      "groups": {
+        "active": "Studenti selezionati per l'assegnazione del progetto",
+        "all": "Tutti gli studenti registrati"
+      },
+      "pickADate": "Scegli una data",
+      "publicationDate": "Data di pubblicazione"
     }
   },
   "events": {
@@ -1486,6 +1530,7 @@
   "accessType": {
     "physical": "In presenza",
     "online": "Online",
-    "replay": "Replay"
+    "replay": "Replay",
+    "hybrid": "Di persona & online"
   }
 }
