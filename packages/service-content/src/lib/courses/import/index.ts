@@ -127,7 +127,8 @@ export const groupByCourse = (
   for (const file of files) {
     if (
       getContentType(file.path) !== 'courses' ||
-      file.path.includes('quizz')
+      file.path.includes('/quizz/') ||
+      file.path.includes('/assignments/')
     ) {
       continue;
     }

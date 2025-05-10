@@ -50,7 +50,7 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
 export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
   const quizQuestionsFiles = files.filter(
     (item) =>
-      getContentType(item.path) === 'courses' && item.path.includes('quizz'),
+      getContentType(item.path) === 'courses' && item.path.includes('/quizz/'),
   );
 
   const groupedQuizQuestions = new Map<string, ChangedQuizQuestion>();

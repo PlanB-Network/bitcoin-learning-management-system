@@ -2,20 +2,34 @@ import type { CourseChapterResponse } from '@blms/types';
 import { Alert, AlertDescription, AlertTitle } from '@blms/ui';
 import { t } from 'i18next';
 import { AlertCircle } from 'lucide-react';
+import { useContext } from 'react';
 import { Trans } from 'react-i18next';
+import { AppContext } from '#src/providers/context.tsx';
 import { getDateString } from '#src/utils/date.ts';
+import { trpc } from '#src/utils/trpc.ts';
+import { SingleTrialExamPresentation } from './single-trial-exam-presentation.tsx';
 
 interface SingleTrialExamWorkflowProps {
   chapter: CourseChapterResponse;
-  disabled?: boolean;
 }
 
 export const SingleTrialExamWorkflow = ({
   chapter,
-  disabled,
 }: SingleTrialExamWorkflowProps) => {
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
+
+  const { data: previousExamResults, isFetched: isPreviousExamResultsFetched } =
+    trpc.user.courses.getLatestExamResults.useQuery(
+      {
+        courseId: chapter.courseId,
+      },
+      {
+        enabled: isLoggedIn,
+      },
+    );
   const now = new Date();
-  const isExamOngoing =
+  const isExamEnabled =
     chapter.startDate &&
     chapter.endDate &&
     chapter.startDate?.getTime() < now.getTime() &&
@@ -23,7 +37,12 @@ export const SingleTrialExamWorkflow = ({
 
   return (
     <>
-      {isExamOngoing ? null : (
+      {isExamEnabled ? (
+        <>
+          {((isPreviousExamResultsFetched && previousExamResults === null) ||
+            !isLoggedIn) && <SingleTrialExamPresentation />}
+        </>
+      ) : (
         <>
           <Alert variant="default">
             <AlertCircle className="h-4 w-4" />

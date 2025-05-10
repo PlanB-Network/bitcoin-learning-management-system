@@ -631,13 +631,7 @@ function CourseChapter() {
         language: i18n.language,
       });
     }
-  }, [
-    chapter,
-    isLoggedIn,
-    isAroundLiveTime,
-    completeChapterAutoMutation,
-    i18n.language,
-  ]);
+  }, [chapter, isLoggedIn, isAroundLiveTime]);
 
   return (
     <CourseLayout>
@@ -796,10 +790,7 @@ function CourseChapter() {
                   )}
 
                   {chapter.isCourseExam && (
-                    <CourseExamWorkflow
-                      chapter={chapter}
-                      disabled={!isLoggedIn}
-                    />
+                    <CourseExamWorkflow chapter={chapter} />
                   )}
 
                   {chapter.isCourseConclusion && (
@@ -807,10 +798,7 @@ function CourseChapter() {
                   )}
 
                   {chapter.isSingleTrialExam && (
-                    <SingleTrialExamWorkflow
-                      chapter={chapter}
-                      disabled={!isLoggedIn}
-                    />
+                    <SingleTrialExamWorkflow chapter={chapter} />
                   )}
 
                   {displayLiveSection &&

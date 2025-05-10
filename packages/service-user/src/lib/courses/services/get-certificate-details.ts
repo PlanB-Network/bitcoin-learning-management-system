@@ -1,5 +1,5 @@
 import type { Dependencies } from '../../../dependencies.js';
-import { getUidCourseIdAndUsernameByCertificateIdQuery } from '../queries/get-exam.js';
+import { getUidCourseIdAndUsernameByCertificateIdQuery } from '../queries/get-exam-questions.js';
 
 interface Options {
   certificateId: string;

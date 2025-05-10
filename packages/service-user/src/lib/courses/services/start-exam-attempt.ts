@@ -1,7 +1,7 @@
 import type { PartialExamQuestion } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
-import { getPartialExamQuestionsQuery } from '../queries/get-exam.js';
+import { getPartialExamQuestionsQuery } from '../queries/get-exam-questions.js';
 import {
   insertExamAttemptQuery,
   insertExamQuestionsQuery,

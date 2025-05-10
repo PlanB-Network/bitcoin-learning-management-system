@@ -22,6 +22,7 @@ import {
   createGetAllSuccededUserExams,
   createGetAllUserCourseExamsResults,
   createGetCourseReview,
+  createGetExamQuestions,
   createGetLatestExamResults,
   createGetPayment,
   createGetPayments,
@@ -130,7 +131,7 @@ const completeExamAttemptProcedure = studentProcedure
 
 const getLatestExamResultsProcedure = studentProcedure
   .input(z.object({ courseId: z.string() }))
-  .output<Parser<CourseExamResults>>(courseExamResultsSchema)
+  .output<Parser<CourseExamResults | null>>(courseExamResultsSchema.nullable())
   .query(({ ctx, input }) =>
     createGetLatestExamResults(ctx.dependencies)({
       uid: ctx.user.uid,
@@ -295,6 +296,17 @@ const getCourseReviewProcedure = studentProcedure
     }),
   );
 
+const getExamQuestionsProcedure = studentProcedure
+  .input(z.object({ examId: z.string(), language: z.string() }))
+  .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
+
+  .query(({ ctx, input }) =>
+    createGetExamQuestions(ctx.dependencies)({
+      examId: input.examId,
+      language: input.language,
+    }),
+  );
+
 const saveUserChapterProcedure = studentProcedure
   .input(
     z.object({
@@ -382,6 +394,7 @@ export const userCoursesRouter = createTRPCRouter({
   getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getAllSuccededUserExams: getAllSuccededUserExamsProcedure,
   getCourseReview: getCourseReviewProcedure,
+  getExamQuestions: getExamQuestionsProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,

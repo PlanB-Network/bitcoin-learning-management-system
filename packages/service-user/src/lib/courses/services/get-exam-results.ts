@@ -6,7 +6,7 @@ import {
   getAllUserCourseExamsResultsQuery,
   getExamResultsQuery,
   getLatestExamAttemptIdQuery,
-} from '../queries/get-exam.js';
+} from '../queries/get-exam-questions.js';
 
 interface Options {
   uid: string;
@@ -14,26 +14,38 @@ interface Options {
 }
 
 export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
-  return async (options: Options): Promise<CourseExamResults> => {
-    const lastExamId = await postgres.exec(
-      getLatestExamAttemptIdQuery(options),
+  return async (options: Options): Promise<CourseExamResults | null> => {
+    const lastExam = (
+      await postgres.exec(getLatestExamAttemptIdQuery(options))
+    ).at(0);
+
+    if (!lastExam) {
+      return null;
+    }
+
+    const [examResult] = await postgres.exec(
+      getExamResultsQuery({ examId: lastExam.id }),
     );
 
-    const examResult = await postgres.exec(
-      getExamResultsQuery({ examId: lastExamId[0].id }),
-    );
+    // TODO SINGLE TRIAL
+    // if (examResult.type === 'singleTrial') {
+    //   const now = new Date();
+    //   if (examResult.dueTo < new Date(now.getTime() + 5 * 60 * 1000)) {
+    //     examResult.finalized = true;
+    //   }
+    // }
 
     const examTimestamps = await postgres.exec(
       sql<UserExamTimestamp[]>`
           SELECT * FROM users.exam_timestamps
-          WHERE exam_attempt_id = ${lastExamId[0].id};
+          WHERE exam_attempt_id = ${lastExam.id};
         `,
     );
 
     const timestamp = examTimestamps[0];
 
     return {
-      ...examResult[0],
+      ...examResult,
       isTimestamped: !!timestamp?.confirmed || false,
       pdfKey: timestamp?.pdfKey || undefined,
       imgKey: timestamp?.imgKey || undefined,

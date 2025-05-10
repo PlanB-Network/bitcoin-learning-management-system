@@ -8,7 +8,7 @@ import {
   getCorrectAnswersCountQuery,
   getExamIdFromQuestionIdQuery,
   getExamQuestionsCountQuery,
-} from '../queries/get-exam.js';
+} from '../queries/get-exam-questions.js';
 
 interface Options {
   answers: Array<{ questionId: string; order: number }>;

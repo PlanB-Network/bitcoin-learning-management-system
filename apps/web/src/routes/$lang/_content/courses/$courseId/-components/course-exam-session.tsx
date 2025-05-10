@@ -17,16 +17,19 @@ import {
 
 import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
+import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseExamSession = ({
+  startedAt,
   questions,
-  setIsExamCompleted,
+  onCompleteExam,
   chapter,
 }: {
+  startedAt: Date;
   questions: PartialExamQuestion[];
-  setIsExamCompleted: (value: boolean) => void;
+  onCompleteExam: () => void;
   chapter: CourseChapterResponse;
 }) => {
   const [selectedAnswers, setSelectedAnswers] = useState(
@@ -46,7 +49,7 @@ export const CourseExamSession = ({
     );
 
     if (validAnswers.length === 0) {
-      setIsExamCompleted(true);
+      onCompleteExam();
     } else {
       await completeExamAttempt.mutateAsync({
         answers: validAnswers.map((answer) => ({
@@ -57,7 +60,7 @@ export const CourseExamSession = ({
         courseId: chapter.courseId,
       });
     }
-  }, [chapter, completeExamAttempt, selectedAnswers, setIsExamCompleted]);
+  }, [chapter, completeExamAttempt, selectedAnswers]);
 
   const handleAnswerClick = (questionIndex: number, answerIndex: number) => {
     setSelectedAnswers((prev) => {
@@ -79,7 +82,14 @@ export const CourseExamSession = ({
   const [isTimeLeftAlertOpen, setIsTimeLeftAlertOpen] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  const [timeLeft, setTimeLeft] = useState(20 * 60);
+  const now = new Date();
+  const secondsSinceStart = Math.round(
+    (now.getTime() - new Date(startedAt).getTime()) / 1000,
+  );
+  const timeLeftInSeconds =
+    questions.length * EXAM_QUESTION_DURATION_SECONDS -
+    (startedAt ? secondsSinceStart : 0);
+  const [timeLeft, setTimeLeft] = useState(timeLeftInSeconds);
 
   // Timer
   useEffect(() => {
@@ -105,15 +115,15 @@ export const CourseExamSession = ({
     return () => {
       clearInterval(timer);
     };
-  }, [onSubmit, hasSubmitted]);
+  }, []);
 
   // Handle exam completion
   useEffect(() => {
     if (completeExamAttempt.status === 'success') {
       setHasSubmitted(true);
-      setIsExamCompleted(true);
+      onCompleteExam();
     }
-  }, [completeExamAttempt.status, setIsExamCompleted]);
+  }, [completeExamAttempt.status]);
 
   // Prevent closing the tab
   useEffect(() => {

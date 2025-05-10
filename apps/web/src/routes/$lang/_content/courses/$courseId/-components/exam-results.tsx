@@ -3,11 +3,7 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
-import type {
-  CourseChapterResponse,
-  CourseExamResults,
-  PartialExamQuestion,
-} from '@blms/types';
+import type { CourseChapterResponse, CourseExamResults } from '@blms/types';
 import {
   Button,
   Dialog,
@@ -35,12 +31,10 @@ import { CompletedExamAnswer } from '../../-components/quizz/completed-exam-answ
 
 export const ExamResults = ({
   chapter,
-  setIsExamStarted,
-  setPartialExamQuestions,
+  onStartExam,
 }: {
   chapter: CourseChapterResponse;
-  setIsExamStarted: (value: boolean) => void;
-  setPartialExamQuestions: (value: PartialExamQuestion[]) => void;
+  onStartExam: () => void;
 }) => {
   const { i18n } = useTranslation();
 
@@ -56,16 +50,13 @@ export const ExamResults = ({
       courseId: chapter.courseId,
       language: i18n.language || 'en',
     });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   useEffect(() => {
     if (startExamAttempt.isSuccess) {
-      setPartialExamQuestions(startExamAttempt.data);
-      setIsExamStarted(true);
+      onStartExam();
     }
-  }, [startExamAttempt, setPartialExamQuestions, setIsExamStarted]);
+  }, [startExamAttempt]);
 
   const isMobile = window.innerWidth < 768;
 

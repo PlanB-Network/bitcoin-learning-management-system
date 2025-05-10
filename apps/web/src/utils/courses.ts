@@ -11,6 +11,8 @@ export function addSpaceToCourseIndex(courseIndex?: string | null) {
 export const BTC101ID = '2b7dc507-81e3-4b70-88e6-41ed44239966';
 export const BTC402ID = '0b71eea1-4811-4601-a6ad-38d043b52dca';
 
+export const EXAM_QUESTION_DURATION_SECONDS = 30;
+
 export const goToChapterParameters = (
   chapter: CourseChapterResponse,
   type: 'previous' | 'next',

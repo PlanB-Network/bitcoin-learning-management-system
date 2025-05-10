@@ -1,79 +1,95 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
-import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
+import type { CourseChapterResponse } from '@blms/types';
 
 import { trpc } from '#src/utils/trpc.ts';
 
+import { AppContext } from '#src/providers/context.tsx';
+import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
+import { CourseExamPresentation } from './course-exam-presentation.tsx';
 import { CourseExamSession } from './course-exam-session.tsx';
 import { ExamNotTranslated } from './exam-not-translated.tsx';
-import { ExamPresentation } from './exam-presentation.tsx';
 import { ExamResults } from './exam-results.tsx';
 
 interface CourseExamWorkflowProps {
   chapter: CourseChapterResponse;
-  disabled?: boolean;
 }
 
-export const CourseExamWorkflow = ({
-  chapter,
-  disabled,
-}: CourseExamWorkflowProps) => {
-  const [isExamStarted, setIsExamStarted] = useState(false);
-  const [isExamCompleted, setIsExamCompleted] = useState(false);
+export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
-  const [partialExamQuestions, setPartialExamQuestions] = useState<
-    PartialExamQuestion[]
-  >([]);
+  const {
+    data: previousExamResults,
+    isFetched: isPreviousExamResultsFetched,
+    refetch: refetchExamResults,
+  } = trpc.user.courses.getLatestExamResults.useQuery(
+    {
+      courseId: chapter.courseId,
+    },
+    {
+      enabled: isLoggedIn,
+    },
+  );
 
-  console.log('partialExamQuestions', partialExamQuestions);
-
-  const { data: previousExamResults, isFetched: isPreviousExamResultsFetched } =
-    trpc.user.courses.getLatestExamResults.useQuery(
+  const { data: partialExamQuestions } =
+    trpc.user.courses.getExamQuestions.useQuery(
       {
-        courseId: chapter.courseId,
+        examId: previousExamResults?.id ?? '',
+        language: chapter.language,
       },
       {
-        enabled: !disabled,
+        enabled: !!previousExamResults?.id,
       },
     );
+
+  const isExamStarted =
+    previousExamResults?.startedAt !== undefined &&
+    previousExamResults?.startedAt !== null;
 
   const noPreviousExamAttempt =
     !isExamStarted && isPreviousExamResultsFetched && !previousExamResults;
 
-  const shouldRenderExamPresentation = disabled;
+  const examTimeLimit =
+    (partialExamQuestions?.length ?? 0) * EXAM_QUESTION_DURATION_SECONDS * 1000;
+  const isExamCompleted =
+    previousExamResults?.finishedAt != null ||
+    (previousExamResults?.startedAt &&
+      Date.now() > previousExamResults.startedAt.getTime() + examTimeLimit);
+
+  function onRefreshExam() {
+    refetchExamResults();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <>
-      {(noPreviousExamAttempt || shouldRenderExamPresentation) && (
-        <ExamPresentation
-          disabled={disabled}
-          chapter={chapter}
-          setIsExamStarted={setIsExamStarted}
-          setPartialExamQuestions={setPartialExamQuestions}
-        />
-      )}
-
-      {isExamStarted && !isExamCompleted && partialExamQuestions.length > 0 && (
-        <CourseExamSession
-          questions={partialExamQuestions}
-          setIsExamCompleted={setIsExamCompleted}
-          chapter={chapter}
-        />
+      {(noPreviousExamAttempt || !isLoggedIn) && (
+        <CourseExamPresentation chapter={chapter} onStartExam={onRefreshExam} />
       )}
 
       {isExamStarted &&
         !isExamCompleted &&
+        partialExamQuestions &&
+        partialExamQuestions.length > 0 && (
+          <CourseExamSession
+            startedAt={previousExamResults?.startedAt}
+            questions={partialExamQuestions}
+            onCompleteExam={onRefreshExam}
+            chapter={chapter}
+          />
+        )}
+
+      {isExamStarted &&
+        !isExamCompleted &&
+        partialExamQuestions &&
         partialExamQuestions.length === 0 && (
           <ExamNotTranslated chapter={chapter} />
         )}
 
       {((!isExamCompleted && !isExamStarted && previousExamResults) ||
         isExamCompleted) && (
-        <ExamResults
-          chapter={chapter}
-          setIsExamStarted={setIsExamStarted}
-          setPartialExamQuestions={setPartialExamQuestions}
-        />
+        <ExamResults chapter={chapter} onStartExam={onRefreshExam} />
       )}
     </>
   );

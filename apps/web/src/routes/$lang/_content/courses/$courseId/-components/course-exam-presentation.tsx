@@ -4,7 +4,7 @@ import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineModeEdit } from 'react-icons/md';
 
-import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
+import type { CourseChapterResponse } from '@blms/types';
 import { Button, Divider } from '@blms/ui';
 
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
@@ -16,19 +16,18 @@ import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/_dashboard/-
 import { goToChapterParameters } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.js';
 
-export const ExamPresentation = ({
-  disabled,
+export const CourseExamPresentation = ({
   chapter,
-  setIsExamStarted,
-  setPartialExamQuestions,
+  onStartExam,
 }: {
-  disabled?: boolean;
   chapter: CourseChapterResponse;
-  setIsExamStarted: (value: boolean) => void;
-  setPartialExamQuestions: (value: PartialExamQuestion[]) => void;
+  onStartExam: () => void;
 }) => {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
   const {
     open: openAuthModal,
@@ -79,11 +78,9 @@ export const ExamPresentation = ({
 
   useEffect(() => {
     if (startExamAttempt.isSuccess) {
-      setPartialExamQuestions(startExamAttempt.data);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setIsExamStarted(true);
+      onStartExam();
     }
-  }, [startExamAttempt, setPartialExamQuestions, setIsExamStarted]);
+  }, [startExamAttempt]);
 
   return (
     <section className="flex flex-col w-full max-w-[816px] gap-7 md:gap-10">
@@ -131,13 +128,13 @@ export const ExamPresentation = ({
             <span
               id="displayName"
               className="rounded-md bg-commentTextBackground border border-gray-500/10 px-4 py-2 text-newGray-1 text-sm leading-[120%] w-full max-w-[302px] h-8 truncate"
-              onClick={disabled ? openAuthModal : openChangeDisplayNameModal}
+              onClick={!isLoggedIn ? openAuthModal : openChangeDisplayNameModal}
               // biome-ignore lint/a11y/useSemanticElements: <explanation>
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  disabled ? openAuthModal() : openChangeDisplayNameModal();
+                  !isLoggedIn ? openAuthModal() : openChangeDisplayNameModal();
                 }
               }}
             >
@@ -159,10 +156,12 @@ export const ExamPresentation = ({
       <div className="flex max-md:flex-col gap-2.5 md:gap-5 w-full">
         <ButtonWithArrow
           className="w-full max-md:max-w-[290px] md:w-fit"
-          variant={disabled || !user?.displayName ? 'fakeDisabled' : 'primary'}
+          variant={
+            !isLoggedIn || !user?.displayName ? 'fakeDisabled' : 'primary'
+          }
           size={window.innerWidth < 768 ? 'm' : 'l'}
           onClick={() =>
-            disabled
+            !isLoggedIn
               ? openAuthModal()
               : user?.displayName
                 ? onStart()

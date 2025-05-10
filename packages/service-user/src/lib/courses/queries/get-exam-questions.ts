@@ -49,7 +49,7 @@ export const getLatestExamAttemptIdQuery = ({
   courseId: string;
 }) => {
   return sql<CourseExamAttempt[]>`
-    SELECT id
+    SELECT *
     FROM users.exam_attempts
     WHERE uid = ${uid}
       AND course_id = ${courseId}
@@ -112,7 +112,7 @@ export const getExamResultsQuery = ({ examId }: { examId: string }) => {
   `;
 };
 
-export const getAllUserSuccededExamsQuery = ({
+export const getAllUserSucceededExamsQuery = ({
   courseId,
   uid,
   language,

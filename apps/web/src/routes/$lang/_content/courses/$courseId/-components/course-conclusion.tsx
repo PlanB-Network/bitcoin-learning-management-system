@@ -622,7 +622,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             {step === 6 && course ? (
               <ConclusionFinish
                 course={course}
-                examResults={previousExamResults}
+                examResults={previousExamResults ?? undefined}
               />
             ) : null}
           </div>
