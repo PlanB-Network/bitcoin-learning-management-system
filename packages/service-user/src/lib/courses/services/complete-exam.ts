@@ -6,7 +6,6 @@ import {
 } from '../queries/complete-exam.js';
 import {
   getCorrectAnswersCountQuery,
-  getExamIdFromQuestionIdQuery,
   getExamQuestionsCountQuery,
 } from '../queries/get-exam-questions.js';
 
@@ -15,6 +14,7 @@ interface Options {
   uid: string;
   chapterId: string;
   courseId: string;
+  examId: string;
 }
 
 export const createTemporarySaveExamAttempt = ({ postgres }: Dependencies) => {
@@ -27,17 +27,13 @@ export const createTemporarySaveExamAttempt = ({ postgres }: Dependencies) => {
 
 export const createCompleteExamAttempt = ({ postgres }: Dependencies) => {
   return async (options: Options): Promise<void> => {
-    await postgres.exec(
-      insertExamAttemptAnswersQuery({ answers: options.answers }),
-    );
+    const examId = options.examId;
 
-    const examId = await postgres
-      .exec(
-        getExamIdFromQuestionIdQuery({
-          questionId: options.answers[0].questionId,
-        }),
-      )
-      .then((result) => result[0].examId);
+    if (options.answers.length > 0) {
+      await postgres.exec(
+        insertExamAttemptAnswersQuery({ answers: options.answers }),
+      );
+    }
 
     const correctAnswersCount = await postgres
       .exec(getCorrectAnswersCountQuery({ examId }))

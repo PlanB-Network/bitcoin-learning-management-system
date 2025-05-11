@@ -58,30 +58,27 @@ export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const examHasQuestions =
+    partialExamQuestions && partialExamQuestions.length > 0;
+
   return (
     <>
       {(noPreviousExamAttempt || !isLoggedIn) && (
         <CourseExamPresentation chapter={chapter} onStartExam={onRefreshExam} />
       )}
 
-      {isExamStarted &&
-        !isExamCompleted &&
-        partialExamQuestions &&
-        partialExamQuestions.length > 0 && (
-          <CourseExamSession
-            startedAt={previousExamResults?.startedAt}
-            questions={partialExamQuestions}
-            onCompleteExam={onRefreshExam}
-            chapter={chapter}
-          />
-        )}
+      {isExamStarted && !isExamCompleted && examHasQuestions && (
+        <CourseExamSession
+          startedAt={previousExamResults?.startedAt}
+          questions={partialExamQuestions}
+          onCompleteExam={onRefreshExam}
+          chapter={chapter}
+        />
+      )}
 
-      {isExamStarted &&
-        !isExamCompleted &&
-        partialExamQuestions &&
-        partialExamQuestions.length === 0 && (
-          <ExamNotTranslated chapter={chapter} />
-        )}
+      {isExamStarted && !isExamCompleted && !examHasQuestions && (
+        <ExamNotTranslated chapter={chapter} />
+      )}
 
       {((!isExamCompleted && !isExamStarted && previousExamResults) ||
         isExamCompleted) && (

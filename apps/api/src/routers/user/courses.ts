@@ -118,6 +118,7 @@ const completeExamAttemptProcedure = studentProcedure
       answers: z.array(z.object({ questionId: z.string(), order: z.number() })),
       chapterId: z.string(),
       courseId: z.string(),
+      examId: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
@@ -127,6 +128,7 @@ const completeExamAttemptProcedure = studentProcedure
       uid: ctx.user.uid,
       chapterId: input.chapterId,
       courseId: input.courseId,
+      examId: input.examId,
     }),
   );
 
@@ -393,6 +395,7 @@ const temporarySaveExamAttemptProcedure = studentProcedure
       answers: z.array(z.object({ questionId: z.string(), order: z.number() })),
       chapterId: z.string(),
       courseId: z.string(),
+      examId: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
@@ -402,6 +405,7 @@ const temporarySaveExamAttemptProcedure = studentProcedure
       uid: ctx.user.uid,
       chapterId: input.chapterId,
       courseId: input.courseId,
+      examId: input.examId,
     }),
   );
 

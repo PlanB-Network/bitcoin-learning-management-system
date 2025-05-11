@@ -73,23 +73,19 @@ export const CourseExamSession = ({
   }, [isExamResultsFetched, examResults, questions]);
 
   const onSubmit = useCallback(async () => {
-    // debugger;
     const validAnswers = selectedAnswers.filter(
       (answer) => answer.order !== -1,
     );
 
-    if (validAnswers.length === 0) {
-      onCompleteExam();
-    } else {
-      await completeExamAttempt.mutateAsync({
-        answers: validAnswers.map((answer) => ({
-          questionId: answer.questionId,
-          order: answer.order,
-        })),
-        chapterId: chapter.chapterId,
-        courseId: chapter.courseId,
-      });
-    }
+    await completeExamAttempt.mutateAsync({
+      answers: validAnswers.map((answer) => ({
+        questionId: answer.questionId,
+        order: answer.order,
+      })),
+      chapterId: chapter.chapterId,
+      courseId: chapter.courseId,
+      examId: examResults?.id ?? '',
+    });
   }, [chapter, completeExamAttempt, selectedAnswers]);
 
   const handleAnswerClick = (questionIndex: number, answerIndex: number) => {
@@ -144,6 +140,7 @@ export const CourseExamSession = ({
             questionId: answer.questionId,
             order: answer.order,
           })),
+          examId: examResults?.id ?? '',
           chapterId: chapter.chapterId,
           courseId: chapter.courseId,
         });
