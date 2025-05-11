@@ -35,6 +35,7 @@ import {
   createSaveUserChapter,
   createStartCourse,
   createStartExamAttempt,
+  createTemporarySaveExamAttempt,
   generateChapterTicket,
 } from '@blms/service-user';
 import type {
@@ -386,6 +387,24 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
     });
   });
 
+const temporarySaveExamAttemptProcedure = studentProcedure
+  .input(
+    z.object({
+      answers: z.array(z.object({ questionId: z.string(), order: z.number() })),
+      chapterId: z.string(),
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(({ ctx, input }) =>
+    createTemporarySaveExamAttempt(ctx.dependencies)({
+      answers: input.answers,
+      uid: ctx.user.uid,
+      chapterId: input.chapterId,
+      courseId: input.courseId,
+    }),
+  );
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -407,4 +426,5 @@ export const userCoursesRouter = createTRPCRouter({
   saveCoursePayment: saveCoursePaymentProcedure,
   startCourse: startCourseProcedure,
   startExamAttempt: startExamAttemptProcedure,
+  temporarySaveExamAttempt: temporarySaveExamAttemptProcedure,
 });

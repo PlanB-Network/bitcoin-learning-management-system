@@ -17,6 +17,14 @@ interface Options {
   courseId: string;
 }
 
+export const createTemporarySaveExamAttempt = ({ postgres }: Dependencies) => {
+  return async (options: Options): Promise<void> => {
+    await postgres.exec(
+      insertExamAttemptAnswersQuery({ answers: options.answers }),
+    );
+  };
+};
+
 export const createCompleteExamAttempt = ({ postgres }: Dependencies) => {
   return async (options: Options): Promise<void> => {
     await postgres.exec(

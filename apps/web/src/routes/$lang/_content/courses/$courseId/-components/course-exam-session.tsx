@@ -40,10 +40,40 @@ export const CourseExamSession = ({
     })),
   );
 
+  const temporarySaveExamAttemptProcedure =
+    trpc.user.courses.temporarySaveExamAttempt.useMutation();
+
   const completeExamAttempt =
     trpc.user.courses.completeExamAttempt.useMutation();
 
+  const { data: examResults, isFetched: isExamResultsFetched } =
+    trpc.user.courses.getLatestExamResults.useQuery({
+      courseId: chapter.courseId,
+    });
+
+  // when isExamResultsFetched is true, we need to set the selectedAnswers state with the examResults
+  useEffect(() => {
+    if (isExamResultsFetched && examResults) {
+      const newSelectedAnswers = questions.map((question) => {
+        const answer = examResults.questions.find(
+          (q) => q.text === question.text,
+        );
+        return {
+          questionId: question.id,
+          order: answer?.userAnswer ?? -1,
+          index: answer
+            ? question.answers.findIndex(
+                (ans) => ans.order === answer.userAnswer,
+              )
+            : -1,
+        };
+      });
+      setSelectedAnswers(newSelectedAnswers);
+    }
+  }, [isExamResultsFetched, examResults, questions]);
+
   const onSubmit = useCallback(async () => {
+    // debugger;
     const validAnswers = selectedAnswers.filter(
       (answer) => answer.order !== -1,
     );
@@ -86,30 +116,52 @@ export const CourseExamSession = ({
   const secondsSinceStart = Math.round(
     (now.getTime() - new Date(startedAt).getTime()) / 1000,
   );
-  const timeLeftInSeconds =
+  const timeLeftInSeconds = Math.max(
+    0,
     questions.length * EXAM_QUESTION_DURATION_SECONDS -
-    (startedAt ? secondsSinceStart : 0);
+      (startedAt ? secondsSinceStart : 0),
+  );
   const [timeLeft, setTimeLeft] = useState(timeLeftInSeconds);
 
   // Timer
   useEffect(() => {
+    handleActionsBasedOnTime();
+  }, [timeLeft, selectedAnswers]);
+
+  function handleActionsBasedOnTime() {
+    if (timeLeft === 61) {
+      setIsTimeLeftAlertOpen(true);
+    }
+
+    if (timeLeft % 30 === 0 && timeLeft > 0) {
+      const filteredAnswers = selectedAnswers.filter(
+        (answer) => answer.order !== -1,
+      );
+
+      if (filteredAnswers.length !== 0) {
+        temporarySaveExamAttemptProcedure.mutateAsync({
+          answers: filteredAnswers.map((answer) => ({
+            questionId: answer.questionId,
+            order: answer.order,
+          })),
+          chapterId: chapter.chapterId,
+          courseId: chapter.courseId,
+        });
+      }
+    }
+
+    if (timeLeft === 0 && !hasSubmitted) {
+      onSubmit();
+    }
+  }
+
+  useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev === 61) {
-          setIsTimeLeftAlertOpen(true);
-        }
-
-        if (prev > 0) {
+      if (timeLeft !== 0) {
+        setTimeLeft((prev) => {
           return prev - 1;
-        }
-
-        if (!hasSubmitted) {
-          onSubmit();
-        }
-        clearInterval(timer);
-
-        return 0;
-      });
+        });
+      }
     }, 1000);
 
     return () => {

@@ -8,7 +8,8 @@ export const insertExamAttemptAnswersQuery = ({
   return sql`
         INSERT INTO users.exam_answers (question_id, "order")
         VALUES ${sql(answers.map((a) => [a.questionId, a.order]))}
-        ON CONFLICT (question_id) DO NOTHING;
+        ON CONFLICT (question_id) DO UPDATE SET
+          "order" = EXCLUDED."order";
     `;
 };
 

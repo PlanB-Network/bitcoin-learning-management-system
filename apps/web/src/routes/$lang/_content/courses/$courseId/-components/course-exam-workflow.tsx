@@ -5,7 +5,6 @@ import type { CourseChapterResponse } from '@blms/types';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { AppContext } from '#src/providers/context.tsx';
-import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { CourseExamPresentation } from './course-exam-presentation.tsx';
 import { CourseExamSession } from './course-exam-session.tsx';
 import { ExamNotTranslated } from './exam-not-translated.tsx';
@@ -50,12 +49,9 @@ export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
   const noPreviousExamAttempt =
     !isExamStarted && isPreviousExamResultsFetched && !previousExamResults;
 
-  const examTimeLimit =
-    (partialExamQuestions?.length ?? 0) * EXAM_QUESTION_DURATION_SECONDS * 1000;
-  const isExamCompleted =
-    previousExamResults?.finishedAt != null ||
-    (previousExamResults?.startedAt &&
-      Date.now() > previousExamResults.startedAt.getTime() + examTimeLimit);
+  // const examTimeLimit =
+  //   (partialExamQuestions?.length ?? 0) * EXAM_QUESTION_DURATION_SECONDS * 1000;
+  const isExamCompleted = previousExamResults?.finishedAt != null;
 
   function onRefreshExam() {
     refetchExamResults();
