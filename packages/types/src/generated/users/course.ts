@@ -61,6 +61,7 @@ export interface CourseExamAttempt {
   uid: string;
   courseId: string;
   chapterId: string | null;
+  examType: 'final' | 'single_trial';
   language: string;
   finalized: boolean;
   score: number | null;

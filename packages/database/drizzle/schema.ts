@@ -30,6 +30,7 @@ import {
   UserRole,
   VideoProvider,
 } from '@blms/constants';
+import { ExamType } from '@blms/constants';
 
 type StringEnum = Record<string, string>;
 
@@ -1682,6 +1683,8 @@ export const usersExamAnswers = users.table('exam_answers', (t) => ({
   order: t.integer(),
 }));
 
+export const examTypeEnum = pgNativeEnum('exam_type', ExamType);
+
 export const usersExamAttempts = users.table('exam_attempts', (t) => ({
   id: t.uuid().defaultRandom().primaryKey().notNull(),
 
@@ -1700,6 +1703,7 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
   chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
     onDelete: 'cascade',
   }),
+  examType: examTypeEnum().default(ExamType.Final).notNull(),
 
   language: t.varchar({ length: 10 }).notNull(),
   finalized: t.boolean().default(false).notNull(),

@@ -361,6 +361,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
           FROM users.exam_attempts a
           LEFT JOIN users.exam_timestamps t ON a.id = t.exam_attempt_id
           WHERE t.exam_attempt_id IS NULL
+            AND a.exam_type = 'final'
             AND a.finalized = true
             AND a.succeeded = true;
         `,

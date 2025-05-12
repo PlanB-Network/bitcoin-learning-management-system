@@ -1,3 +1,4 @@
+import type { ExamType } from '@blms/constants';
 import { sql } from '@blms/database';
 import type { CourseExamAttempt, CourseExamQuestion } from '@blms/types';
 
@@ -6,17 +7,19 @@ export const insertExamAttemptQuery = ({
   courseId,
   chapterId,
   language,
+  examType,
 }: {
   uid: string;
   courseId: string;
   chapterId: string | null;
   language: string;
+  examType: ExamType;
 }) => {
   return sql<CourseExamAttempt[]>`
     INSERT INTO users.exam_attempts (
-      uid, course_id, chapter_id, language, finalized, succeeded, started_at
+      uid, course_id, chapter_id, exam_type, language, finalized, succeeded, started_at
     ) VALUES (
-      ${uid}, ${courseId}, ${chapterId}, LOWER(${language}), false, false, NOW()
+      ${uid}, ${courseId}, ${chapterId}, ${examType}, LOWER(${language}), false, false, NOW()
     )
     RETURNING id;
   `;

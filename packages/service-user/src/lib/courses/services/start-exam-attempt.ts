@@ -1,5 +1,6 @@
 import type { PartialExamQuestion } from '@blms/types';
 
+import { ExamType } from '@blms/constants';
 import type { Dependencies } from '../../../dependencies.js';
 import { getPartialExamQuestionsQuery } from '../queries/get-exam-questions.js';
 import {
@@ -13,6 +14,7 @@ interface Options {
   courseId: string;
   chapterId: string | null;
   language: string;
+  examType: ExamType;
 }
 
 export const createStartExamAttempt = ({ postgres }: Dependencies) => {
@@ -21,7 +23,7 @@ export const createStartExamAttempt = ({ postgres }: Dependencies) => {
       .exec(insertExamAttemptQuery(options))
       .then((result) => result[0].id);
 
-    if (!options.chapterId) {
+    if (options.examType === ExamType.Final) {
       await postgres.exec(
         insertCourseExamQuestionsQuery({
           examId,
@@ -30,14 +32,18 @@ export const createStartExamAttempt = ({ postgres }: Dependencies) => {
         }),
       );
     } else {
-      await postgres.exec(
-        insertSingleTrialExamQuestionsQuery({
-          examId,
-          courseId: options.courseId,
-          chapterId: options.chapterId,
-          language: options.language,
-        }),
-      );
+      if (options.chapterId) {
+        await postgres.exec(
+          insertSingleTrialExamQuestionsQuery({
+            examId,
+            courseId: options.courseId,
+            chapterId: options.chapterId,
+            language: options.language,
+          }),
+        );
+      } else {
+        console.error('Chapter id missing in createStartExamAttempt');
+      }
     }
 
     return postgres.exec(

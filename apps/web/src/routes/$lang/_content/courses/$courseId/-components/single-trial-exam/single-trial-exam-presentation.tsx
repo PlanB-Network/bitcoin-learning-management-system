@@ -1,3 +1,4 @@
+import { ExamType } from '@blms/constants';
 import type { CourseChapterResponse } from '@blms/types';
 import { Alert, AlertDescription, AlertTitle, Divider } from '@blms/ui';
 import { t } from 'i18next';
@@ -54,6 +55,7 @@ export const SingleTrialExamPresentation = ({
       courseId: chapter.courseId,
       chapterId: chapter.chapterId,
       language: i18n.language || 'en',
+      examType: ExamType.SingleTrial,
     });
   }
 

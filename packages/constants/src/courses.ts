@@ -28,3 +28,8 @@ export enum TeachingFormat {
   SelfPaced = 'self_paced',
   ProfessorLed = 'professor_led',
 }
+
+export enum ExamType {
+  Final = 'final',
+  SingleTrial = 'single_trial',
+}

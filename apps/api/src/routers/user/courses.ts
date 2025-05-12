@@ -50,6 +50,7 @@ import type {
   PartialExamQuestion,
 } from '@blms/types';
 
+import { ExamType } from '@blms/constants';
 import { studentProcedure } from '#src/procedures/protected.js';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -107,6 +108,7 @@ const startExamAttemptProcedure = studentProcedure
       courseId: z.string(),
       chapterId: z.string().nullable(),
       language: z.string(),
+      examType: z.nativeEnum(ExamType),
     }),
   )
   .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
@@ -116,6 +118,7 @@ const startExamAttemptProcedure = studentProcedure
       courseId: input.courseId,
       chapterId: input.chapterId,
       language: input.language,
+      examType: input.examType,
     }),
   );
 

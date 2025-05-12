@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import type { CourseChapterResponse } from '@blms/types';
 import { Divider } from '@blms/ui';
 
+import { ExamType } from '@blms/constants';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -71,6 +72,7 @@ export const CourseExamPresentation = ({
       courseId: chapter.courseId,
       language: i18n.language || 'en',
       chapterId: null,
+      examType: ExamType.Final,
     });
   }
 

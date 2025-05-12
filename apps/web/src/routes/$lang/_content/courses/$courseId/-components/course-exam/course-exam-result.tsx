@@ -17,6 +17,7 @@ import {
   cn,
 } from '@blms/ui';
 
+import { ExamType } from '@blms/constants';
 import FaceFailed from '#src/assets/icons/face_failed.svg';
 import QuestionBelow from '#src/assets/icons/question_below.svg';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
@@ -49,6 +50,7 @@ export const CourseExamResult = ({
       courseId: chapter.courseId,
       chapterId: null,
       language: i18n.language || 'en',
+      examType: ExamType.Final,
     });
   }
 
