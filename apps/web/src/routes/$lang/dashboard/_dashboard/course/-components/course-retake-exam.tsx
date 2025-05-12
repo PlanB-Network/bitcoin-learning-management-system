@@ -15,10 +15,8 @@ import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import {
-  AnswersReviewPanel,
-  TimeStampDialog,
-} from '#src/routes/$lang/_content/courses/$courseId/-components/course-exam/course-exam-result.tsx';
+import { TimeStampDialog } from '#src/routes/$lang/_content/courses/$courseId/-components/course-exam/course-exam-result.tsx';
+import { AnswersReviewPanel } from '#src/routes/$lang/_content/courses/$courseId/-components/shared-between-exams/answers-review-panel.tsx';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 

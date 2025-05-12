@@ -60,6 +60,7 @@ export interface CourseExamAttempt {
   id: string;
   uid: string;
   courseId: string;
+  chapterId: string | null;
   language: string;
   finalized: boolean;
   score: number | null;

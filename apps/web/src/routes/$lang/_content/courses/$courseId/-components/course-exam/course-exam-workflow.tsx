@@ -4,11 +4,12 @@ import type { CourseChapterResponse } from '@blms/types';
 
 import { trpc } from '#src/utils/trpc.ts';
 
+import { t } from 'i18next';
 import { AppContext } from '#src/providers/context.tsx';
+import { ExamSession } from '../shared-between-exams/exam-session.tsx';
 import { CourseExamNotTranslated } from './course-exam-not-translated.tsx';
 import { CourseExamPresentation } from './course-exam-presentation.tsx';
 import { CourseExamResult } from './course-exam-result.tsx';
-import { CourseExamSession } from './course-exam-session.tsx';
 
 interface CourseExamWorkflowProps {
   chapter: CourseChapterResponse;
@@ -68,11 +69,12 @@ export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
       )}
 
       {isExamStarted && !isExamCompleted && examHasQuestions && (
-        <CourseExamSession
+        <ExamSession
           startedAt={previousExamResults?.startedAt}
           questions={partialExamQuestions}
           onCompleteExam={onRefreshExam}
           chapter={chapter}
+          examName={t('courses.exam.finalExam')}
         />
       )}
 

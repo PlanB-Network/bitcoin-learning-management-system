@@ -21,16 +21,18 @@ import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-export const CourseExamSession = ({
+export const ExamSession = ({
   startedAt,
   questions,
   onCompleteExam,
   chapter,
+  examName,
 }: {
   startedAt: Date;
   questions: PartialExamQuestion[];
   onCompleteExam: () => void;
   chapter: CourseChapterResponse;
+  examName: string;
 }) => {
   const [selectedAnswers, setSelectedAnswers] = useState(
     Array.from({ length: questions.length }, (_, i) => ({
@@ -195,7 +197,7 @@ export const CourseExamSession = ({
       <div className="flex flex-col w-full gap-5 bg-darkOrange-1 border-b-2 border-newBlack-1 px-4 py-2.5 md:px-7 md:py-5">
         <div className="flex w-full items-center gap-1 md:gap-4 ">
           <h2 className="body-medium-16px uppercase md:display-medium-bold-caps-40px text-darkOrange-11">
-            {t('courses.exam.finalExam')}
+            {examName}
           </h2>
         </div>
         <div className="flex flex-wrap w-full gap-2 max-md:hidden">

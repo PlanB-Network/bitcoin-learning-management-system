@@ -102,12 +102,19 @@ const getProgressProcedure = studentProcedure
   );
 
 const startExamAttemptProcedure = studentProcedure
-  .input(z.object({ courseId: z.string(), language: z.string() }))
+  .input(
+    z.object({
+      courseId: z.string(),
+      chapterId: z.string().nullable(),
+      language: z.string(),
+    }),
+  )
   .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
   .mutation(({ ctx, input }) =>
     createStartExamAttempt(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      chapterId: input.chapterId,
       language: input.language,
     }),
   );

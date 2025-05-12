@@ -1,0 +1,2 @@
+ALTER TABLE "users"."exam_attempts" ADD COLUMN "chapter_id" uuid;--> statement-breakpoint
+ALTER TABLE "users"."exam_attempts" ADD CONSTRAINT "exam_attempts_chapter_id_course_chapters_chapter_id_fk" FOREIGN KEY ("chapter_id") REFERENCES "content"."course_chapters"("chapter_id") ON DELETE cascade ON UPDATE no action;

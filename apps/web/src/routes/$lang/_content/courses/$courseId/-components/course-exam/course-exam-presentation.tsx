@@ -70,6 +70,7 @@ export const CourseExamPresentation = ({
     await startExamAttempt.mutateAsync({
       courseId: chapter.courseId,
       language: i18n.language || 'en',
+      chapterId: null,
     });
   }
 

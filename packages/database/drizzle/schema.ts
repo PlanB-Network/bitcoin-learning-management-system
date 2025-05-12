@@ -1696,19 +1696,17 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  //chapterId needed for single trial exam
-  // chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
-  //   onDelete: 'cascade',
-  // }),
+  // chapterId for single trial exam only
+  chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
+    onDelete: 'cascade',
+  }),
 
-  // examType
   language: t.varchar({ length: 10 }).notNull(),
   finalized: t.boolean().default(false).notNull(),
   score: t.integer().default(0),
   succeeded: t.boolean().default(false).notNull(),
 
   startedAt: t.timestamp({ withTimezone: true }).notNull(),
-  //dueTo
   finishedAt: t.timestamp({ withTimezone: true }),
 }));
 

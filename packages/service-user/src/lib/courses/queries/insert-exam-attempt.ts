@@ -4,23 +4,25 @@ import type { CourseExamAttempt, CourseExamQuestion } from '@blms/types';
 export const insertExamAttemptQuery = ({
   uid,
   courseId,
+  chapterId,
   language,
 }: {
   uid: string;
   courseId: string;
+  chapterId: string | null;
   language: string;
 }) => {
   return sql<CourseExamAttempt[]>`
     INSERT INTO users.exam_attempts (
-      uid, course_id, language, finalized, succeeded, started_at
+      uid, course_id, chapter_id, language, finalized, succeeded, started_at
     ) VALUES (
-      ${uid}, ${courseId}, LOWER(${language}), false, false, NOW()
+      ${uid}, ${courseId}, ${chapterId}, LOWER(${language}), false, false, NOW()
     )
     RETURNING id;
   `;
 };
 
-export const insertExamQuestionsQuery = ({
+export const insertCourseExamQuestionsQuery = ({
   examId,
   courseId,
   language,
@@ -73,6 +75,35 @@ export const insertExamQuestionsQuery = ({
       UNION ALL
       SELECT id FROM easy_questions
       LIMIT 40
+    )
+    INSERT INTO users.exam_questions (exam_id, question_id)
+    SELECT ${examId}, id
+    FROM selected_questions;
+  `;
+};
+
+export const insertSingleTrialExamQuestionsQuery = ({
+  examId,
+  courseId,
+  chapterId,
+  language,
+}: {
+  examId: string;
+  courseId: string;
+  chapterId: string;
+  language: string;
+}) => {
+  return sql<CourseExamQuestion[]>`
+    WITH selected_questions AS (
+      SELECT qq.id
+      FROM content.quiz_questions qq
+      JOIN content.quiz_questions_localized qql
+        ON qq.id = qql.quiz_question_id
+      WHERE qq.course_id = ${courseId}
+      ${chapterId ? sql`AND qq.chapter_id = ${chapterId}` : sql``}
+      AND qql.language = LOWER(${language})
+      AND qq.disabled = false
+      ORDER BY RANDOM()
     )
     INSERT INTO users.exam_questions (exam_id, question_id)
     SELECT ${examId}, id
