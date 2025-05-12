@@ -5,10 +5,10 @@ import type { CourseChapterResponse } from '@blms/types';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { AppContext } from '#src/providers/context.tsx';
+import { CourseExamNotTranslated } from './course-exam-not-translated.tsx';
 import { CourseExamPresentation } from './course-exam-presentation.tsx';
+import { CourseExamResult } from './course-exam-result.tsx';
 import { CourseExamSession } from './course-exam-session.tsx';
-import { ExamNotTranslated } from './exam-not-translated.tsx';
-import { ExamResults } from './exam-results.tsx';
 
 interface CourseExamWorkflowProps {
   chapter: CourseChapterResponse;
@@ -77,12 +77,12 @@ export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
       )}
 
       {isExamStarted && !isExamCompleted && !examHasQuestions && (
-        <ExamNotTranslated chapter={chapter} />
+        <CourseExamNotTranslated chapter={chapter} />
       )}
 
       {((!isExamCompleted && !isExamStarted && previousExamResults) ||
         isExamCompleted) && (
-        <ExamResults chapter={chapter} onStartExam={onRefreshExam} />
+        <CourseExamResult chapter={chapter} onStartExam={onRefreshExam} />
       )}
     </>
   );

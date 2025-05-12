@@ -27,9 +27,9 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
-import { ConclusionFinish } from './course-conclusion/conclusion-finish.tsx';
-import { StepMessage } from './course-conclusion/step-message.tsx';
-import { CourseReviewComponent } from './course-review.tsx';
+import { CourseReviewComponent } from '../course-review-component.tsx';
+import { ConclusionFinish } from './conclusion-finish.tsx';
+import { StepMessage } from './step-message.tsx';
 
 interface CourseConclusionProps {
   chapter: CourseChapterResponse;

@@ -7,7 +7,7 @@ import { Divider } from '@blms/ui';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { goToChapterParameters } from '#src/utils/courses.ts';
 
-export const ExamNotTranslated = ({
+export const CourseExamNotTranslated = ({
   chapter,
 }: {
   chapter: CourseChapterResponse;

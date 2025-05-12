@@ -39,10 +39,10 @@ import {
 } from '#src/utils/string.js';
 
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { CourseConclusion } from './$courseId/-components/course-conclusion.tsx';
-import { CourseExamWorkflow } from './$courseId/-components/course-exam-workflow.tsx';
-import { CourseReviewComponent } from './$courseId/-components/course-review.tsx';
-import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam-workflow.tsx';
+import { CourseConclusion } from './$courseId/-components/course-conclusion/course-conclusion.tsx';
+import { CourseExamWorkflow } from './$courseId/-components/course-exam/course-exam-workflow.tsx';
+import { CourseReviewComponent } from './$courseId/-components/course-review-component.tsx';
+import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam/single-trial-exam-workflow.tsx';
 import { ClassDetails } from './-components/class-details.tsx';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { LiveVideo } from './-components/live-video.tsx';

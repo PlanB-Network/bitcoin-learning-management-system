@@ -34,131 +34,6 @@ import { trpc } from '#src/utils/trpc.js';
 
 const formDivClass = 'mb-6';
 
-function FormSlider({
-  id,
-  form,
-  label,
-  stepNames,
-  disabled,
-}: {
-  id: string;
-  form: any;
-  label: string;
-  stepNames: string[];
-  disabled?: boolean;
-}) {
-  const sliderProps = {
-    min: -5,
-    default: [0],
-    max: 5,
-    step: 1,
-  };
-
-  return (
-    <div className="flex flex-col">
-      <div className="mb-5 w-full h-px my-2.5 bg-newGray-4" />
-      <div className={formDivClass}>
-        <FormField
-          control={form.control}
-          name={id}
-          render={({ field: { value, onChange } }) => (
-            <FormItem className="space-y-2">
-              <FormLabel className="mb-3.5">{label}</FormLabel>
-              <FormControl>
-                <Slider
-                  {...sliderProps}
-                  id={id}
-                  disabled={disabled}
-                  defaultValue={[value]}
-                  onValueChange={(vals) => {
-                    onChange(vals[0]);
-                  }}
-                  value={[form.getValues(id)]}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="relative mt-4">
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 max-w-[95%] mx-auto">
-            <div className="relative flex justify-between">
-              {Array.from({ length: 11 }).map((_, i) => (
-                <div
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                  key={i}
-                  className="w-[2px] h-1 bg-newGray-3"
-                  style={{ left: `${(i / 10) * 100}%` }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="relative mt-8">
-          <div className="flex lg:flex-col max-lg:justify-between body-14px-medium text-newGray-1 text-center">
-            {stepNames[0] && (
-              <span className="lg:absolute lg:self-start lg:-translate-x-1/2 max-lg:w-1/4 text-left">
-                {stepNames[0]}
-              </span>
-            )}
-            {stepNames[1] && (
-              <span className="lg:absolute lg:self-center max-lg:w-1/4 text-center">
-                {stepNames[1]}
-              </span>
-            )}
-            {stepNames[2] && (
-              <span className="lg:absolute lg:self-end lg:translate-x-1/2 max-lg:w-1/4 text-right">
-                {stepNames[2]}
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FormTextArea({
-  id,
-  control,
-  label,
-  disabled,
-}: {
-  id: string;
-  control: any;
-  label: string;
-  disabled?: boolean;
-}) {
-  const { t } = useTranslation();
-
-  return (
-    <FormField
-      control={control}
-      name={id}
-      render={({ field }: { field: any }) => (
-        <FormItem className="space-y-2">
-          <FormLabel
-            removeDefaultClasses
-            className="block text-left md:text-center label-medium-med-16px md:subtitle-large-med-20px text-dashboardSectionText"
-          >
-            {label}
-          </FormLabel>
-          <FormControl>
-            <Textarea
-              placeholder={t('courses.review.writeThoughts')}
-              rows={3}
-              disabled={disabled}
-              className="w-full rounded-md px-4 py-2.5 text-newBlack-1 placeholder:text-newGray-2 border border-newGray-4 bg-white subtitle-medium-med-16px"
-              {...field}
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-}
-
 export function CourseReviewComponent({
   chapter,
   courseId,
@@ -577,6 +452,131 @@ export function CourseReviewComponent({
         <Loader size={'m'} />
       )}
     </div>
+  );
+}
+
+function FormSlider({
+  id,
+  form,
+  label,
+  stepNames,
+  disabled,
+}: {
+  id: string;
+  form: any;
+  label: string;
+  stepNames: string[];
+  disabled?: boolean;
+}) {
+  const sliderProps = {
+    min: -5,
+    default: [0],
+    max: 5,
+    step: 1,
+  };
+
+  return (
+    <div className="flex flex-col">
+      <div className="mb-5 w-full h-px my-2.5 bg-newGray-4" />
+      <div className={formDivClass}>
+        <FormField
+          control={form.control}
+          name={id}
+          render={({ field: { value, onChange } }) => (
+            <FormItem className="space-y-2">
+              <FormLabel className="mb-3.5">{label}</FormLabel>
+              <FormControl>
+                <Slider
+                  {...sliderProps}
+                  id={id}
+                  disabled={disabled}
+                  defaultValue={[value]}
+                  onValueChange={(vals) => {
+                    onChange(vals[0]);
+                  }}
+                  value={[form.getValues(id)]}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="relative mt-4">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 max-w-[95%] mx-auto">
+            <div className="relative flex justify-between">
+              {Array.from({ length: 11 }).map((_, i) => (
+                <div
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  key={i}
+                  className="w-[2px] h-1 bg-newGray-3"
+                  style={{ left: `${(i / 10) * 100}%` }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="relative mt-8">
+          <div className="flex lg:flex-col max-lg:justify-between body-14px-medium text-newGray-1 text-center">
+            {stepNames[0] && (
+              <span className="lg:absolute lg:self-start lg:-translate-x-1/2 max-lg:w-1/4 text-left">
+                {stepNames[0]}
+              </span>
+            )}
+            {stepNames[1] && (
+              <span className="lg:absolute lg:self-center max-lg:w-1/4 text-center">
+                {stepNames[1]}
+              </span>
+            )}
+            {stepNames[2] && (
+              <span className="lg:absolute lg:self-end lg:translate-x-1/2 max-lg:w-1/4 text-right">
+                {stepNames[2]}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FormTextArea({
+  id,
+  control,
+  label,
+  disabled,
+}: {
+  id: string;
+  control: any;
+  label: string;
+  disabled?: boolean;
+}) {
+  const { t } = useTranslation();
+
+  return (
+    <FormField
+      control={control}
+      name={id}
+      render={({ field }: { field: any }) => (
+        <FormItem className="space-y-2">
+          <FormLabel
+            removeDefaultClasses
+            className="block text-left md:text-center label-medium-med-16px md:subtitle-large-med-20px text-dashboardSectionText"
+          >
+            {label}
+          </FormLabel>
+          <FormControl>
+            <Textarea
+              placeholder={t('courses.review.writeThoughts')}
+              rows={3}
+              disabled={disabled}
+              className="w-full rounded-md px-4 py-2.5 text-newBlack-1 placeholder:text-newGray-2 border border-newGray-4 bg-white subtitle-medium-med-16px"
+              {...field}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
   );
 }
 

@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import { CourseReviewComponent } from '#src/routes/$lang/_content/courses/$courseId/-components/course-review.tsx';
+import { CourseReviewComponent } from '#src/routes/$lang/_content/courses/$courseId/-components/course-review-component.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseRatings = ({

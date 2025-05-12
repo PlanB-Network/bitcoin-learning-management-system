@@ -19,15 +19,30 @@ export const SingleTrialExamWorkflow = ({
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
 
-  const { data: previousExamResults, isFetched: isPreviousExamResultsFetched } =
-    trpc.user.courses.getLatestExamResults.useQuery(
-      {
-        courseId: chapter.courseId,
-      },
-      {
-        enabled: isLoggedIn,
-      },
-    );
+  const {
+    data: previousExamResults,
+    isFetched: isPreviousExamResultsFetched,
+    refetch: refetchExamResults,
+  } = trpc.user.courses.getLatestExamResults.useQuery(
+    {
+      courseId: chapter.courseId,
+    },
+    {
+      enabled: isLoggedIn,
+    },
+  );
+
+  // const { data: partialExamQuestions } =
+  //   trpc.user.courses.getExamQuestions.useQuery(
+  //     {
+  //       examId: previousExamResults?.id ?? '',
+  //       language: chapter.language,
+  //     },
+  //     {
+  //       enabled: !!previousExamResults?.id,
+  //     },
+  //   );
+
   const now = new Date();
   const isExamEnabled =
     chapter.startDate &&
@@ -35,12 +50,33 @@ export const SingleTrialExamWorkflow = ({
     chapter.startDate?.getTime() < now.getTime() &&
     chapter.endDate?.getTime() > now.getTime();
 
+  const isExamStarted =
+    previousExamResults?.startedAt !== undefined &&
+    previousExamResults?.startedAt !== null;
+
+  const noPreviousExamAttempt =
+    !isExamStarted && isPreviousExamResultsFetched && !previousExamResults;
+
+  // const isExamCompleted = previousExamResults?.finishedAt != null;
+
+  function onRefreshExam() {
+    refetchExamResults();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // const examHasQuestions =
+  //   partialExamQuestions && partialExamQuestions.length > 0;
+
   return (
     <>
       {isExamEnabled ? (
         <>
-          {((isPreviousExamResultsFetched && previousExamResults === null) ||
-            !isLoggedIn) && <SingleTrialExamPresentation />}
+          {(noPreviousExamAttempt || !isLoggedIn) && (
+            <SingleTrialExamPresentation
+              chapter={chapter}
+              onStartExam={onRefreshExam}
+            />
+          )}
         </>
       ) : (
         <>

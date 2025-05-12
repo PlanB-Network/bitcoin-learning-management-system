@@ -27,9 +27,9 @@ import { goToChapterParameters } from '#src/utils/courses.ts';
 import { oneDayInMs } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-import { CompletedExamAnswer } from '../../-components/quizz/completed-exam-answer.tsx';
+import { CompletedExamAnswer } from '../../../-components/quizz/completed-exam-answer.tsx';
 
-export const ExamResults = ({
+export const CourseExamResult = ({
   chapter,
   onStartExam,
 }: {
