@@ -1,6 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import {
   Button,
@@ -9,17 +8,23 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DividerSimple,
   TextTag,
+  cn,
 } from '@blms/ui';
-import Warning from '#src/assets/icons/warning.svg';
+import Warning from '#src/assets/icons/warning_orange.svg';
 
 import { AppContext } from '#src/providers/context.tsx';
 
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
-import type { CouponCode } from '@blms/types';
+import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
+import { t } from 'i18next';
+import { ChevronDown, PlusIcon } from 'lucide-react';
 import { FaRegTrashAlt } from 'react-icons/fa';
+import { FaSliders } from 'react-icons/fa6';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import SortableTableHeader from '../-components/sortable-table-header.tsx';
 
@@ -30,8 +35,7 @@ export const Route = createFileRoute(
 });
 
 function AdminCoupons() {
-  const { t } = useTranslation();
-
+  const isMobile = useSmaller('md');
   const navigate = useNavigate();
 
   const { session } = useContext(AppContext);
@@ -157,25 +161,94 @@ function AdminCoupons() {
     setTimeout(() => setPreventDoubleClick(false), 1000);
   };
 
+  const mobileSortDefinitions = [
+    {
+      baseKey: 'code',
+      labelBase: t('dashboard.adminPanel.coupons.tableHead.code'),
+      sortType: 'alpha' as const,
+    },
+    {
+      baseKey: 'name',
+      labelBase: t('dashboard.adminPanel.coupons.tableHead.name'),
+      sortType: 'alpha' as const,
+    },
+    {
+      baseKey: 'reductionPercentage',
+      labelBase: t('dashboard.adminPanel.coupons.tableHead.discount'),
+      sortType: 'numeric' as const,
+    },
+    {
+      baseKey: 'uses',
+      labelBase: t('dashboard.adminPanel.coupons.tableHead.uses'),
+      sortType: 'numeric' as const,
+    },
+    {
+      baseKey: 'maxUses',
+      labelBase: t('dashboard.adminPanel.coupons.tableHead.maxUses'),
+      sortType: 'numeric' as const,
+    },
+    {
+      baseKey: 'username',
+      labelBase: t('dashboard.adminPanel.coupons.tableHead.owner'),
+      sortType: 'alpha' as const,
+    },
+  ];
+
+  const mobileDropdownOptions: MobileSortFieldOption[] =
+    mobileSortDefinitions.map((def) => ({
+      key: def.baseKey,
+      label: def.labelBase,
+      sortType: def.sortType,
+    }));
+
+  const handleMobileSortFieldSelect = (fieldKey: string) => {
+    if (sortKey === fieldKey) {
+      setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortKey(fieldKey);
+      const definition = mobileSortDefinitions.find(
+        (d) => d.baseKey === fieldKey,
+      );
+      if (definition?.sortType === 'numeric') {
+        setSortDirection('desc');
+      } else {
+        setSortDirection('asc');
+      }
+    }
+  };
+
   return (
     <section className="flex flex-col gap-4 lg:gap-8">
       <div className="flex flex-col">
-        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-5 mb-5 md:mb-11">
-          <span className="text-dashboardSectionText text-s text-2xl md:display-small-32px">
+        <div className="flex gap-2.5 md:gap-5 mb-5">
+          <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText">
             {t('dashboard.adminPanel.discountCodes')}
-          </span>
-          <TextTag size={'small'} className="uppercase max-w-[60px]">
+          </h1>
+          <TextTag
+            size={isMobile ? 'verySmall' : 'small'}
+            mode="light"
+            variant="grey"
+            className="uppercase"
+          >
             {t('words.admin')}
           </TextTag>
         </div>
         <span>{t('dashboard.adminPanel.coupons.explanation')}</span>
       </div>
 
-      <Button className="w-fit" variant="primary" onClick={() => modal.open()}>
-        {t('dashboard.adminPanel.coupons.generateNew')}
+      <Button
+        className="w-fit gap-1"
+        variant="primary"
+        onClick={() => modal.open()}
+      >
+        {t('dashboard.adminPanel.coupons.generateNew')} <PlusIcon />
       </Button>
 
-      <div className="flex flex-wrap gap-2 text-black">
+      <DividerSimple mode="light" className="lg:hidden" />
+
+      <div className="flex flex-wrap gap-2 items-center text-black">
+        <FaSliders className="size-6" />
+
         <Button
           variant={filters.has('all') ? 'primary' : 'outline'}
           size="s"
@@ -200,7 +273,7 @@ function AdminCoupons() {
         })}
       </div>
 
-      <table>
+      <table className="max-lg:hidden">
         <thead className="text-left">
           <SortableTableHeader
             onSort={({ key, direction }) => {
@@ -278,7 +351,7 @@ function AdminCoupons() {
                         modal.open();
                       }}
                     >
-                      View
+                      {t('words.view')}
                     </Button>
 
                     <Button
@@ -299,6 +372,40 @@ function AdminCoupons() {
         </tbody>
       </table>
 
+      <div className="lg:hidden flex flex-col gap-4">
+        <MobileSortDropdown
+          options={mobileDropdownOptions}
+          selectedKey={sortKey}
+          currentSortDirection={sortDirection}
+          onSortFieldSelect={handleMobileSortFieldSelect}
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {coupons.data?.map((coupon) => {
+            return (
+              <CouponCard
+                key={coupon.code}
+                coupon={coupon}
+                itemName={itemsMap.get(coupon.itemId)?.name ?? null}
+                onViewClick={() => {
+                  console.log('View coupon code', coupon);
+                  setGeneratedCodes([coupon.code]);
+                  modal.open();
+                }}
+                onDeleteClick={() => {
+                  setCouponToDelete(coupon);
+                  deleteModal.open();
+                }}
+              />
+            );
+          })}
+          {coupons.data?.length === 0 && !coupons.isLoading && (
+            <p className="md:col-span-2 text-center text-newGray-2 py-4">
+              {t('dashboard.adminPanel.coupons.noCouponsFound')}
+            </p>
+          )}
+        </div>
+      </div>
+
       <Dialog open={deleteModal.isOpen} onOpenChange={deleteModal.close}>
         <DialogContent
           showCloseButton={true}
@@ -311,7 +418,7 @@ function AdminCoupons() {
             <DialogDescription> </DialogDescription>
           </DialogHeader>
 
-          <h1 className="text-2xl text-center font-thin text-newOrange-1 my-4 ">
+          <h1 className="text-2xl text-center text-newOrange-1 my-4 ">
             {t('dashboard.adminPanel.coupons.deleteDiscountCodeConfirm')}
           </h1>
 
@@ -350,16 +457,16 @@ function AdminCoupons() {
       <Dialog open={modal.isOpen} onOpenChange={onCreateModalClose}>
         <DialogContent
           showCloseButton={true}
-          className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
+          className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6 max-md:w-full max-md:max-w-[90vw] max-md:mx-auto"
         >
           <DialogHeader className="hidden">
-            <DialogTitle>
+            <DialogTitle variant="orange">
               {t('dashboard.adminPanel.coupons.generateDiscountCode')}
             </DialogTitle>
             <DialogDescription> </DialogDescription>
           </DialogHeader>
 
-          <h1 className="text-2xl font-thin text-newOrange-1 my-4 w-full min-w-96 text-center">
+          <h1 className="text-2xl font-medium text-darkOrange-5 my-4 w-full min-w-56 md:min-w-96 text-center">
             {generatedCodes?.length
               ? t('dashboard.adminPanel.coupons.generatedCodes')
               : t('dashboard.adminPanel.coupons.generateDiscountCode')}
@@ -368,7 +475,9 @@ function AdminCoupons() {
           {!generatedCodes?.length && (
             <>
               <fieldset className="w-full">
-                <h3>{t('dashboard.adminPanel.coupons.forWhat')}</h3>
+                <h3 className="subtitle-medium-med-16px">
+                  {t('dashboard.adminPanel.coupons.forWhat')}
+                </h3>
 
                 <div className="flex gap-2 items-center">
                   <input
@@ -400,9 +509,13 @@ function AdminCoupons() {
               </fieldset>
               <fieldset className="w-full">
                 {formIsEvent ? (
-                  <h3>{t('dashboard.adminPanel.coupons.forWhichEvent')}</h3>
+                  <h3 className="subtitle-medium-med-16px">
+                    {t('dashboard.adminPanel.coupons.forWhichEvent')}
+                  </h3>
                 ) : (
-                  <h3>{t('dashboard.adminPanel.coupons.forWhichCourse')}</h3>
+                  <h3 className="subtitle-medium-med-16px">
+                    {t('dashboard.adminPanel.coupons.forWhichCourse')}
+                  </h3>
                 )}
                 <select
                   className="border p-2 rounded-lg w-full"
@@ -433,7 +546,9 @@ function AdminCoupons() {
               </fieldset>
               {/*  */}
               <fieldset className="w-full">
-                <h3>{t('dashboard.adminPanel.coupons.discountType')}</h3>
+                <h3 className="subtitle-medium-med-16px">
+                  {t('dashboard.adminPanel.coupons.discountType')}
+                </h3>
 
                 <div className="flex gap-2 items-center">
                   <input
@@ -465,7 +580,9 @@ function AdminCoupons() {
               </fieldset>
               {/*  */}
               <fieldset className="w-full">
-                <h3>{t('dashboard.adminPanel.coupons.discountValue')}</h3>
+                <h3 className="subtitle-medium-med-16px">
+                  {t('dashboard.adminPanel.coupons.discountValue')}
+                </h3>
                 <small className="text-newGray-1">
                   {t('dashboard.adminPanel.coupons.discountValueExplanation')}
                 </small>
@@ -495,7 +612,9 @@ function AdminCoupons() {
               ) : (
                 <>
                   <fieldset className="w-full">
-                    <h3>{t('dashboard.adminPanel.coupons.discountCode')}</h3>
+                    <h3 className="subtitle-medium-med-16px">
+                      {t('dashboard.adminPanel.coupons.discountCode')}
+                    </h3>
                     <small className="text-newGray-1">
                       {t(
                         'dashboard.adminPanel.coupons.discountCodeExplanation',
@@ -513,7 +632,7 @@ function AdminCoupons() {
                   </fieldset>
 
                   <fieldset className="w-full">
-                    <h3>
+                    <h3 className="subtitle-medium-med-16px">
                       {t('dashboard.adminPanel.coupons.maximumNumberOfUse')}
                     </h3>
                     <input
@@ -635,5 +754,160 @@ function AdminCoupons() {
         </DialogContent>
       </Dialog>
     </section>
+  );
+}
+
+interface CouponCardProps {
+  coupon: CouponCodeWithOwner;
+  itemName: string | null;
+  onViewClick: () => void;
+  onDeleteClick: () => void;
+}
+
+function CouponCard({
+  coupon,
+  itemName,
+  onViewClick,
+  onDeleteClick,
+}: CouponCardProps) {
+  return (
+    <article className="p-2 rounded-[10px] flex flex-col gap-1.5 bg-newGray-6 border border-newGray-5 shadow-course-navigation-sm text-newBlack-1">
+      <div className="flex justify-between items-center">
+        <h3 className="subtitle-medium-med-16px break-all pr-2 max-w-[calc(100%-60px)]">
+          {coupon.code}
+        </h3>
+        <TextTag size="small" variant="grey" mode="light" className="shrink-0">
+          {coupon.reductionPercentage}%
+        </TextTag>
+      </div>
+
+      <div className="flex justify-between items-start gap-2">
+        <div className="flex flex-col gap-1 flex-grow">
+          <p className="body-14px break-words overflow-hidden max-w-full">
+            {itemName}
+          </p>
+          <p className="body-14px-medium truncate">{coupon.owner}</p>
+          <div className="flex items-center gap-x-2 gap-y-1 flex-wrap">
+            <span className="body-14px text-newBlack-5">
+              {t('dashboard.adminPanel.coupons.tableHead.uses')}:
+            </span>
+            <span className="body-14px-medium">{coupon.uses}</span>
+            <span className="body-14px text-newBlack-5">
+              {t('words.total')}:
+            </span>
+            <span className="body-14px-medium">{coupon.maxUses}</span>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1.5 items-end flex-shrink-0">
+          <Button
+            variant="outline"
+            size="s"
+            onClick={onDeleteClick}
+            aria-label={t('dashboard.adminPanel.coupons.delete')}
+          >
+            <FaRegTrashAlt />
+          </Button>
+          <Button variant="primary" size="s" onClick={onViewClick}>
+            {t('words.view')}
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
+}
+export interface MobileSortFieldOption {
+  key: string;
+  label: string;
+  sortType: 'alpha' | 'numeric';
+}
+
+interface MobileSortDropdownProps {
+  options: MobileSortFieldOption[];
+  selectedKey: string | null;
+  currentSortDirection: 'asc' | 'desc';
+  onSortFieldSelect: (fieldKey: string) => void;
+}
+
+function MobileSortDropdown({
+  options,
+  selectedKey,
+  currentSortDirection,
+  onSortFieldSelect,
+}: MobileSortDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const getDisplayLabel = () => {
+    if (!selectedKey) {
+      return t('dashboard.adminPanel.coupons.mobileSort.sortBy');
+    }
+    const selectedOptionMeta = options.find((opt) => opt.key === selectedKey);
+    if (!selectedOptionMeta) {
+      return t('dashboard.adminPanel.coupons.mobileSort.sortBy');
+    }
+
+    let directionSuffix = '';
+    if (currentSortDirection === 'asc') {
+      directionSuffix =
+        selectedOptionMeta.sortType === 'alpha'
+          ? t('dashboard.adminPanel.coupons.mobileSort.az')
+          : t('dashboard.adminPanel.coupons.mobileSort.lowHigh');
+    } else {
+      directionSuffix =
+        selectedOptionMeta.sortType === 'alpha'
+          ? t('dashboard.adminPanel.coupons.mobileSort.za')
+          : t('dashboard.adminPanel.coupons.mobileSort.highLow');
+    }
+    return `${selectedOptionMeta.label} (${directionSuffix})`;
+  };
+
+  return (
+    <div className="lg:hidden w-full bg-white rounded-lg border border-newGray-4 flex flex-col">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-3 py-2 flex justify-between items-center text-left"
+      >
+        <span
+          className={cn(
+            'text-sm ',
+            !selectedKey ? 'text-newGray-2' : 'text-newBlack-1',
+          )}
+        >
+          {selectedKey && (
+            <span className="text-newGray-2">
+              {t('dashboard.adminPanel.coupons.mobileSort.sortBy')}:{' '}
+            </span>
+          )}
+          {getDisplayLabel()}
+        </span>
+        <div
+          className={`text-black transition-transform duration-200 ${
+            isOpen ? '-rotate-180' : ''
+          }`}
+        >
+          <ChevronDown />
+        </div>
+      </button>
+
+      {isOpen && (
+        <div className="flex flex-col border-t border-newGray-3">
+          {options.map((option) => (
+            <button
+              key={option.key}
+              type="button"
+              onClick={() => {
+                onSortFieldSelect(option.key);
+                setIsOpen(false);
+              }}
+              className={`w-full px-3 py-[7px] text-left text-sm flex flex-col justify-center items-start min-h-[32px]
+                ${selectedKey === option.key ? 'bg-newGray-6 text-black font-medium' : 'text-black hover:bg-newGray-6'}`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

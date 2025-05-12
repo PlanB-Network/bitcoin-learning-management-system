@@ -463,6 +463,14 @@
         "generatedCode": "Generated code",
         "generatedCodes": "Generated codes",
         "maximumNumberOfUse": "Maximum number of use",
+        "mobileSort": {
+          "az": "A-z",
+          "highLow": "High - Low",
+          "lowHigh": "Low - High",
+          "sortBy": "Sort by",
+          "za": "z-A"
+        },
+        "noCouponsFound": "No coupons were found.",
         "numberOfCodes": "How many codes do you want to generate?",
         "numberOfCodesPlaceholder": "type a number",
         "productCourse": "Course",
@@ -808,6 +816,7 @@
       "edit": "Edit",
       "email": "Email",
       "emailChangeConfirmation": "A confirmation email for your email change has been sent, please check your inbox to confirm.",
+      "emailChangeRateLimitError": "You’ve recently updated your email. Please wait a few minutes before trying again.",
       "notificationSettings": {
         "coursesOption": "Updates about courses you enrolled in",
         "description": "You can customize your notification settings below. ",
@@ -825,6 +834,7 @@
         "loadEmailSettingsErrorManage": "If you have access to your account, you can also manage settings directly in your dashboard:",
         "none": "None",
         "platformTitle": "What types of notifications would you like to receive on this platform?",
+        "settingsSaved": "Your settings were saved successfully!",
         "title": "Notification settings"
       },
       "password": "Password",

@@ -16,6 +16,7 @@ import {
   Loader,
   Tabs,
   TabsContent,
+  customToast,
 } from '@blms/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
@@ -25,6 +26,7 @@ import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { IoCheckmarkOutline } from 'react-icons/io5';
 import { z } from 'zod';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -310,9 +312,8 @@ const NotificationSettings = () => {
   const { user, accountSettings, refetchAccountSettings } =
     useContext(AppContext);
 
-  const [isEditingPlatformSettings, setIsEditingPlatformSettings] =
+  const [isEditingNotificationsSettings, setIsEditingNotificationsSettings] =
     useState(false);
-  const [isEditingEmailSettings, setIsEditingEmailSettings] = useState(false);
 
   const FormSchema = z.object({
     platformNotifications: z.array(z.string()).default([]),
@@ -344,8 +345,14 @@ const NotificationSettings = () => {
 
   const changeNotificationSettings =
     trpc.user.changeNotificationsSettings.useMutation({
-      onSuccess: () => {
-        refetchAccountSettings();
+      onSuccess: async () => {
+        await refetchAccountSettings();
+        customToast(t('dashboard.profile.notificationSettings.settingsSaved'), {
+          mode: 'light',
+          color: 'success',
+          icon: IoCheckmarkOutline,
+          closeButton: true,
+        });
       },
     });
 
@@ -363,76 +370,54 @@ const NotificationSettings = () => {
 
   return (
     <section className="flex flex-col mt-5 md:mt-8 gap-5 md:gap-8">
-      <div className="flex flex-col gap-2.5 md:gap-4">
-        <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-newBlack-1">
-          {t('dashboard.profile.notificationSettings.title')}
-        </h3>
-        <p className="desktop-typo1 md:body-16px text-newBlack-1">
-          {t('dashboard.profile.notificationSettings.description')}
-        </p>
-      </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit, console.error)}
           className="flex flex-col gap-6"
         >
-          <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
-            <FormCheckboxGroup
-              id="platformNotifications"
-              control={form.control}
-              label={t('dashboard.profile.notificationSettings.platformTitle')}
-              options={[
-                {
-                  value: 'events',
-                  label: t(
-                    'dashboard.profile.notificationSettings.eventsOption',
-                  ),
-                },
-                {
-                  value: 'courses',
-                  label: t(
-                    'dashboard.profile.notificationSettings.coursesOption',
-                  ),
-                },
-                {
-                  value: 'general',
-                  label: t(
-                    'dashboard.profile.notificationSettings.generalOption',
-                  ),
-                },
-              ]}
-              disabled={
-                changeNotificationSettings.isPending ||
-                !isEditingPlatformSettings
-              }
-              addNoneButton
-            />
-            <Button
-              type={isEditingPlatformSettings ? 'button' : 'submit'}
-              onClick={
-                isEditingPlatformSettings
-                  ? () => setIsEditingPlatformSettings(false)
-                  : () => setIsEditingPlatformSettings(true)
-              }
-              size="s"
-              disabled={changeNotificationSettings.isPending}
-              className="md:self-end w-fit"
-            >
-              {changeNotificationSettings.isPending
-                ? t('words.saving')
-                : !isEditingPlatformSettings
-                  ? t('words.edit')
-                  : t('words.save')}
-            </Button>
-          </div>
+          <div className="flex flex-col gap-2.5 md:gap-4">
+            <div className="flex justify-between w-full items-center flex-wrap">
+              <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-newBlack-1">
+                {t('dashboard.profile.notificationSettings.title')}
+              </h3>
+              <Button
+                type={isEditingNotificationsSettings ? 'button' : 'submit'}
+                onClick={
+                  isEditingNotificationsSettings
+                    ? () => setIsEditingNotificationsSettings(false)
+                    : () => setIsEditingNotificationsSettings(true)
+                }
+                size="s"
+                disabled={changeNotificationSettings.isPending}
+                className="md:self-end w-fit"
+              >
+                {changeNotificationSettings.isPending
+                  ? t('words.saving')
+                  : !isEditingNotificationsSettings
+                    ? t('words.edit')
+                    : t('words.save')}
+              </Button>
+            </div>
 
-          <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
-            <div className="flex flex-col gap-2">
+            <p className="desktop-typo1 md:body-16px text-newBlack-1">
+              {t('dashboard.profile.notificationSettings.description')}
+            </p>
+          </div>
+          <div className="flex flex-col gap-6">
+            <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
               <FormCheckboxGroup
-                id="emailNotifications"
+                id="platformNotifications"
                 control={form.control}
-                label={t('dashboard.profile.notificationSettings.emailTitle')}
+                label={t(
+                  'dashboard.profile.notificationSettings.platformTitle',
+                )}
                 options={[
+                  {
+                    value: 'events',
+                    label: t(
+                      'dashboard.profile.notificationSettings.eventsOption',
+                    ),
+                  },
                   {
                     value: 'courses',
                     label: t(
@@ -448,35 +433,46 @@ const NotificationSettings = () => {
                 ]}
                 disabled={
                   changeNotificationSettings.isPending ||
-                  !isEditingEmailSettings
+                  !isEditingNotificationsSettings
                 }
                 addNoneButton
               />
-
-              {!user?.email && (
-                <p className="body-14px text-red-6">
-                  {t('dashboard.profile.notificationSettings.emailWarning')}
-                </p>
-              )}
             </div>
 
-            <Button
-              type={isEditingEmailSettings ? 'button' : 'submit'}
-              onClick={
-                isEditingEmailSettings
-                  ? () => setIsEditingEmailSettings(false)
-                  : () => setIsEditingEmailSettings(true)
-              }
-              size="s"
-              disabled={changeNotificationSettings.isPending}
-              className="md:self-end w-fit"
-            >
-              {changeNotificationSettings.isPending
-                ? t('words.saving')
-                : !isEditingEmailSettings
-                  ? t('words.edit')
-                  : t('words.save')}
-            </Button>
+            <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
+              <div className="flex flex-col gap-2">
+                <FormCheckboxGroup
+                  id="emailNotifications"
+                  control={form.control}
+                  label={t('dashboard.profile.notificationSettings.emailTitle')}
+                  options={[
+                    {
+                      value: 'courses',
+                      label: t(
+                        'dashboard.profile.notificationSettings.coursesOption',
+                      ),
+                    },
+                    {
+                      value: 'general',
+                      label: t(
+                        'dashboard.profile.notificationSettings.generalOption',
+                      ),
+                    },
+                  ]}
+                  disabled={
+                    changeNotificationSettings.isPending ||
+                    !isEditingNotificationsSettings
+                  }
+                  addNoneButton
+                />
+
+                {!user?.email && (
+                  <p className="body-14px text-red-6">
+                    {t('dashboard.profile.notificationSettings.emailWarning')}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
         </form>
       </Form>
