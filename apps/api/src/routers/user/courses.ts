@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import {
   checkoutDataSchema,
+  courseExamInfoSchema,
   courseExamResultsSchema,
   coursePaymentLightSchema,
   courseProgressExtendedSchema,
@@ -22,6 +23,7 @@ import {
   createGetAllSuccededUserExams,
   createGetAllUserCourseExamsResults,
   createGetCourseReview,
+  createGetExamInfo,
   createGetExamQuestions,
   createGetLatestExamResults,
   createGetPayment,
@@ -40,6 +42,7 @@ import {
 } from '@blms/service-user';
 import type {
   CheckoutData,
+  CourseExamInfo,
   CourseExamResults,
   CoursePaymentLight,
   CourseProgress,
@@ -309,6 +312,17 @@ const getCourseReviewProcedure = studentProcedure
     }),
   );
 
+const getExamInfoProcedure = studentProcedure
+  .input(z.object({ chapterId: z.string(), language: z.string() }))
+  .output<Parser<CourseExamInfo>>(courseExamInfoSchema)
+
+  .query(({ ctx, input }) =>
+    createGetExamInfo(ctx.dependencies)({
+      chapterId: input.chapterId,
+      language: input.language,
+    }),
+  );
+
 const getExamQuestionsProcedure = studentProcedure
   .input(z.object({ examId: z.string(), language: z.string() }))
   .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
@@ -427,6 +441,7 @@ export const userCoursesRouter = createTRPCRouter({
   getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getAllSuccededUserExams: getAllSuccededUserExamsProcedure,
   getCourseReview: getCourseReviewProcedure,
+  getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
   getProgress: getProgressProcedure,

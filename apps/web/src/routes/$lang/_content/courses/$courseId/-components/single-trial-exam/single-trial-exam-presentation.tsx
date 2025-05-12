@@ -1,6 +1,6 @@
 import { ExamType } from '@blms/constants';
 import type { CourseChapterResponse } from '@blms/types';
-import { Alert, AlertDescription, AlertTitle, Divider } from '@blms/ui';
+import { Alert, AlertDescription, AlertTitle, Divider, Loader } from '@blms/ui';
 import { t } from 'i18next';
 import { AlertCircle } from 'lucide-react';
 import { useContext, useEffect } from 'react';
@@ -42,6 +42,10 @@ export const SingleTrialExamPresentation = ({
   } = useDisclosure();
 
   const startExamAttempt = trpc.user.courses.startExamAttempt.useMutation();
+  const { data: examInfo, isFetched } = trpc.user.courses.getExamInfo.useQuery({
+    chapterId: chapter.chapterId,
+    language: chapter.language,
+  });
 
   const now = new Date();
   const isExamEnabled =
@@ -107,12 +111,23 @@ export const SingleTrialExamPresentation = ({
           <span className="body-medium-16px mt-6">
             {t('courses.exam.instructions')}
           </span>
-          <ul className="body-16px text-justify flex flex-col list-disc list-outside pl-6">
-            <li>{t('courses.exam.timerStart')}</li>
-            <li>{t('courses.exam.examDetails')}</li>
-            <li>{t('courses.exam.passRate')}</li>
-            <li>{t('courses.exam.dontWorry')}</li>
-          </ul>
+          {isFetched ? (
+            <ul className="body-16px text-justify flex flex-col list-disc list-outside pl-6">
+              <li>
+                {t('courses.exam.timerStart', {
+                  minutes: (examInfo?.nbQuestions ?? 40) / 2,
+                })}
+              </li>
+              <li>
+                {t('courses.exam.examDetails', {
+                  nb: examInfo?.nbQuestions,
+                })}
+              </li>
+              <li>{t('courses.exam.examAvailabilityDetails')}</li>
+            </ul>
+          ) : (
+            <Loader />
+          )}
         </div>
 
         <ChangeDisplayName />

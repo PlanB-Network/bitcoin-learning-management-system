@@ -4,6 +4,7 @@ export * from './generate-chapter-ticket.js';
 export * from './get-course-review.js';
 export * from './get-succeded-results.js';
 export * from './get-pending-payment.js';
+export * from './get-exam-info.js';
 export * from './get-exam-questions.js';
 export * from './get-exam-results.js';
 export * from './get-payment.js';

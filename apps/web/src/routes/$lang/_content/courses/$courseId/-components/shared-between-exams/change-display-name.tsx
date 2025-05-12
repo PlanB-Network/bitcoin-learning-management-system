@@ -28,7 +28,7 @@ export const ChangeDisplayName = () => {
   return (
     <div className="flex flex-col w-full max-w-[604px] max-md:gap-4">
       <Divider className="mx-0" width="w-full" mode="dark" />
-      <p className="subtitle-medium-med-16px text-newBlack-1 md:mt-4">
+      <p className="subtitle-medium-med-16px text-newBlack-1 md:mt-4 font-normal">
         {t('courses.exam.verifyDisplayName')}
       </p>
       <section className="flex flex-col md:mt-5 gap-2">

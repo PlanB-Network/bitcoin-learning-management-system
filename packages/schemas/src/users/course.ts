@@ -33,6 +33,10 @@ export const coursePaymentLightSchema = coursePaymentSchema.pick({
   invoiceUrl: true,
 });
 
+export const courseExamInfoSchema = z.object({
+  nbQuestions: z.number(),
+});
+
 export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({
     courseIndex: z.string(),

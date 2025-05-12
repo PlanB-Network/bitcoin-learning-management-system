@@ -24,7 +24,7 @@ export const AnswersReviewPanel = ({
       )}
     >
       {/* Question selection */}
-      <section className="flex flex-wrap gap-2 md:gap-4 md:py-4 w-full max-md:justify-center">
+      <section className="flex flex-wrap gap-2 md:gap-2 md:py-4 w-full max-md:justify-center">
         {examResults.questions.map((q, index) => (
           <button
             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -32,7 +32,7 @@ export const AnswersReviewPanel = ({
             type="button"
             onClick={() => setSelectedQuestion(index)}
             className={cn(
-              'size-8 md:size-12 flex justify-center items-center border border-newGray-1 rounded-lg label-medium-med-16px md:title-large-24px text-newBlack-1',
+              'size-8 md:size-10 flex justify-center items-center border border-newGray-1 rounded-lg label-medium-med-16px md:title-large-24px text-newBlack-1',
               q.userAnswer === q.answers.find((ans) => ans.correctAnswer)?.order
                 ? selectedQuestion === index
                   ? 'bg-brightGreen-4'
@@ -48,8 +48,8 @@ export const AnswersReviewPanel = ({
       </section>
 
       {/* Question details */}
-      <article className="flex flex-col md:border-t border-newBlack-5 md:px-5 gap-4 md:gap-6 w-full md:pt-5">
-        <h3 className="body-medium-16px md:title-large-sb-24px text-newBlack-1">
+      <article className="flex flex-col md:border-t border-newBlack-5 md:px-5 gap-4 w-full md:pt-5">
+        <h3 className="body-medium-16px md:subtitle-medium-med-16px text-newBlack-1">
           {selectedQuestion + 1} .{' '}
           {examResults.questions[selectedQuestion].text}
         </h3>

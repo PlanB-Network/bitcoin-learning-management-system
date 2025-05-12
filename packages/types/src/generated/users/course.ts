@@ -85,6 +85,10 @@ export interface CoursePaymentLight {
   invoiceUrl: string | null;
 }
 
+export interface CourseExamInfo {
+  nbQuestions: number;
+}
+
 export interface CourseProgressExtended {
   uid: string;
   courseId: string;
