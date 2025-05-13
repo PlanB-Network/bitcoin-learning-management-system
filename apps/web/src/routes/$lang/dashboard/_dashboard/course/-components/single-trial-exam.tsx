@@ -148,7 +148,23 @@ const ExamItem = ({
             </>
           )}
         </div>
-        {examResults ? null : (
+        {examResults ? (
+          <Link
+            to={'/courses/$courseId/$chapterId'}
+            params={{
+              courseId: courseId,
+              chapterId: exam.chapterId,
+            }}
+          >
+            <ButtonWithArrow
+              variant={'primary'}
+              className="w-fit"
+              size={isMobile ? 's' : 'm'}
+            >
+              <span>{t('courses.exam.viewExam')}</span>
+            </ButtonWithArrow>
+          </Link>
+        ) : (
           <>
             {isExamOngoing ? (
               <Link
