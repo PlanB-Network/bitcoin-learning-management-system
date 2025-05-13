@@ -235,6 +235,8 @@ jobs:
     needs:
       - build_api
       - build_web
+      - build_contribute
+      - build_design_system
     steps:
       - name: Invoke deployment hook
         uses: distributhor/workflow-webhook@v3
