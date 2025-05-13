@@ -18,7 +18,7 @@ interface FeaturedCardProps {
 }
 
 const cardStyles = cva(
-  'mb-[47px] text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-[8px] py-[10px] lg:p-[20px] w-full max-w-[290px] md:max-w-[1178px] rounded-sm md:rounded-[30px] items-center',
+  'mb-[47px] text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-[8px] py-[10px] lg:p-[20px] w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-center',
   {
     variants: {
       background: {
@@ -112,7 +112,7 @@ export const FeaturedCard = ({
           to={`/public-communication/blogs-and-news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
           <img
-            className="rounded-sm lg:rounded-[20px] lg:max-w-[404px]"
+            className="rounded-xs lg:rounded-[20px] lg:max-w-[404px]"
             src={resourceImgUrl(latestBlog)}
             alt={latestBlog.title}
           />

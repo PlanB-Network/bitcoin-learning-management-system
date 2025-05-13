@@ -145,7 +145,7 @@ function TutorialCategory() {
                       value={subCategory}
                       key={subCategory}
                       className={cn(
-                        'max-md:basis-1/2 basis-1/4 grow md:w-full overflow-hidden px-3 py-2 md:px-2 md:py-4 font-medium capitalize md:border-l md:first:border-l-0 !outline-none',
+                        'max-md:basis-1/2 basis-1/4 grow md:w-full overflow-hidden px-3 py-2 md:px-2 md:py-4 font-medium capitalize md:border-l md:first:border-l-0 !outline-hidden',
                         'data-[state=active]:border-none data-[state=active]:bg-darkOrange-1 data-[state=active]:text-darkOrange-5 data-[state=inactive]:text-newBlack-3 data-[state=inactive]:hover:text-darkOrange-5',
                         (index + 1) % 2 === 0 && 'max-md:border-l',
                         subCategories.length > 2 &&

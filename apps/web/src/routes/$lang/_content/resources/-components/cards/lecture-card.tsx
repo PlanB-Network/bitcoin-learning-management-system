@@ -77,7 +77,7 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
             alt={lecture.name ? lecture.name : ''}
             className="object-cover [overflow-clip-margin:_unset] aspect-[432/308] w-full rounded-[5px] md:rounded-2xl"
           />
-          <div className="absolute top-2 right-2 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm">
+          <div className="absolute top-2 right-2 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-xs">
             {lecture.languages.map((language: string) => (
               <Flag code={language} size="m" key={language} />
             ))}

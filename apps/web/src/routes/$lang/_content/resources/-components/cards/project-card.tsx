@@ -14,7 +14,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
         <Image
           breakpoints={{ default: 50, md: 80 }}
           className={cn(
-            'size-[50px] md:size-20 rounded-full group-hover/project:blur-sm group-hover/project:brightness-[0.30] group-focus/project:blur-sm group-focus/project:brightness-[0.30] transition-all',
+            'size-[50px] md:size-20 rounded-full group-hover/project:blur-xs group-hover/project:brightness-[0.30] group-focus/project:blur-xs group-focus/project:brightness-[0.30] transition-all',
             props.cardWidth ? props.cardWidth : '',
           )}
           src={props.logo}

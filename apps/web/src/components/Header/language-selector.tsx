@@ -22,13 +22,13 @@ interface LanguageSelectorProps {
   className?: string;
 }
 
-const variantHeaderBackgroundMap = {
+const variantHeaderBackgroundMapClass = {
   light: 'text-black',
   dark: 'text-white',
   darkOrange: 'text-white bg-darkOrange-11',
 };
 
-const variantSelectorMap = {
+const variantSelectorMapClass = {
   light: 'text-darkOrange-10 lg:bg-darkOrange-2',
   dark: 'text-white lg:bg-newBlack-3',
   darkOrange: 'text-[#909093] lg:bg-[#25262d]',
@@ -77,8 +77,8 @@ export const LanguageSelector = ({
         <button
           type="button"
           className={cn(
-            'group z-50 flex place-items-center text-sm font-semibold gap-2.5 outline-none pl-2.5 py-2 rounded-2xl transition-all',
-            variantHeaderBackgroundMap[variant],
+            'group z-50 flex place-items-center text-sm font-semibold gap-2.5 outline-hidden pl-2.5 py-2 rounded-2xl transition-all',
+            variantHeaderBackgroundMapClass[variant],
             className,
           )}
         >
@@ -95,7 +95,7 @@ export const LanguageSelector = ({
           direction === 'down'
             ? 'top-7 -right-[50px]'
             : 'bottom-16 left-1/2 -translate-x-1/2',
-          variantSelectorMap[variant],
+          variantSelectorMapClass[variant],
         )}
         onClick={(e) => e.stopPropagation()}
       >
@@ -192,7 +192,7 @@ export const LanguageSelectorMobile = ({
         <button
           type="button"
           className={cn(
-            'group flex justify-between items-center gap-[15px] px-[14px] py-2.5 outline-none rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] dark:bg-[#5f5f5f] text-darkOrange-11 dark:text-white',
+            'group flex justify-between items-center gap-[15px] px-[14px] py-2.5 outline-hidden rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] dark:bg-[#5f5f5f] text-darkOrange-11 dark:text-white',
             open && 'rounded-t-none pt-[15px]',
           )}
         >

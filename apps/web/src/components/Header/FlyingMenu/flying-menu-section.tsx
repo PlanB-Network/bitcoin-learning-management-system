@@ -175,10 +175,10 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                     {highlightedCourse.name}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="bg-maroon-8 text-white rounded-sm p-1 text-xs leading-none capitalize">
+                    <span className="bg-maroon-8 text-white rounded-xs p-1 text-xs leading-none capitalize">
                       {t(`words.level.${highlightedCourse.level}`)}
                     </span>
-                    <span className="bg-maroon-8 text-white rounded-sm p-1 text-xs leading-none uppercase">
+                    <span className="bg-maroon-8 text-white rounded-xs p-1 text-xs leading-none uppercase">
                       {highlightedCourse.requiresPayment
                         ? t('courses.details.paidCourse')
                         : t('words.free')}

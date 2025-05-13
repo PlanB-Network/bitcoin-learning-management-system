@@ -250,7 +250,7 @@ export const ProofreadingProgress = ({
                   : 'bg-darkOrange-0',
             )}
           >
-            <DialogClose className="flex justify-end rounded-sm focus:outline-none disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
+            <DialogClose className="flex justify-end rounded-xs focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
               <IoMdClose
                 className={cn(
                   'size-6',

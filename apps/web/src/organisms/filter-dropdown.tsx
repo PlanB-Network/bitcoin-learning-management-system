@@ -132,7 +132,7 @@ export const FilterDropdown = ({
             autoComplete="off"
             placeholder={`${t('search.search')}...`}
             className={cn(
-              'relative ps-10 px-2.5 py-2.5 peer w-full body-16px placeholder:body-16px !bg-transparent text-darkOrange-6 placeholder:text-maroon-6 focus:ring-0 focus:outline-none',
+              'relative ps-10 px-2.5 py-2.5 peer w-full body-16px placeholder:body-16px !bg-transparent text-darkOrange-6 placeholder:text-maroon-6 focus:ring-0 focus:outline-hidden',
             )}
             onFocus={() => {
               setIsFocused(true);

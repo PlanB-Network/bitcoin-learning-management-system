@@ -104,7 +104,7 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
           target="_blank"
           rel="noreferrer"
           className={cn(
-            'flex item-center max-md:basis-1/2 w-56 max-w-56 grow px-5 py-1.5 md:border-l md:first:border-l-0 !outline-none text-newBlack-3 hover:text-darkOrange-5 hover:font-medium text-center',
+            'flex item-center max-md:basis-1/2 w-56 max-w-56 grow px-5 py-1.5 md:border-l md:first:border-l-0 !outline-hidden text-newBlack-3 hover:text-darkOrange-5 hover:font-medium text-center',
           )}
         >
           <span className="m-auto">

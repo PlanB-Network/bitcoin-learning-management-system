@@ -116,12 +116,12 @@ export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {
                   {activeCourse.topic}
                 </span>
                 <div className="flex items-center flex-wrap gap-2.5">
-                  <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
+                  <span className="bg-white/20 rounded-xs p-1 text-xs leading-none uppercase">
                     {activeCourse.index === 'btc101'
                       ? t('words.start')
                       : t(`words.level.${activeCourse.level}`)}
                   </span>
-                  <span className="bg-white/20 rounded-sm p-1 text-xs leading-none uppercase">
+                  <span className="bg-white/20 rounded-xs p-1 text-xs leading-none uppercase">
                     {activeCourse.requiresPayment
                       ? t('courses.details.paidCourse')
                       : t('words.free')}

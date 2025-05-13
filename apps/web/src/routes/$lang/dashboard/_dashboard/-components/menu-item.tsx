@@ -90,7 +90,7 @@ export const MenuItem = ({
               key={index}
               to={item.to}
               className={cn(
-                'text-left body-16px text-white px-2 py-1 lg:hover:bg-darkOrange-9 lg:hover:text-white lg:hover:font-medium w-full rounded-sm truncate',
+                'text-left body-16px text-white px-2 py-1 lg:hover:bg-darkOrange-9 lg:hover:text-white lg:hover:font-medium w-full rounded-xs truncate',
                 location.pathname.includes(item.to) &&
                   'bg-darkOrange-9 font-medium',
               )}

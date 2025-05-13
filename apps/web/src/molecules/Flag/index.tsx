@@ -45,8 +45,8 @@ const Flag: React.FC<Props> = ({
           ${nonTailwindClasses}
           ${gradient}
           ${hasBorder ? 'border' : ''}
-          ${hasDropShadow ? 'drop-shadow' : ''}
-          ${hasBorderRadius ? 'rounded-sm' : ''}
+          ${hasDropShadow ? 'drop-shadow-sm' : ''}
+          ${hasBorderRadius ? 'rounded-xs' : ''}
           ${className ? className.replaceAll(/\s\s+/g, ' ').trim() : ''}`}
     >
       {imgSrc && <img src={imgSrc} alt={code} />}

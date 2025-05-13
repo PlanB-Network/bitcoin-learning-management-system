@@ -64,7 +64,7 @@ export const NotificationsPanel = ({
           <button
             type="button"
             className={cn(
-              'max-lg:hidden group z-50 flex size-[52px] items-center justify-center gap-2 rounded-2xl text-sm font-semibold outline-none transition-all md:hover:bg-darkOrange-4 md:hover:dark:bg-newBlack-3 lg:gap-2.5 relative',
+              'max-lg:hidden group z-50 flex size-[52px] items-center justify-center gap-2 rounded-2xl text-sm font-semibold outline-hidden transition-all md:hover:bg-darkOrange-4 md:hover:dark:bg-newBlack-3 lg:gap-2.5 relative',
               className,
               headerVariant === 'dark' && 'dark',
             )}

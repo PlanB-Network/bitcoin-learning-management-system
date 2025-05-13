@@ -100,7 +100,7 @@ export const EventCard = ({
             </>
           )}
           {event.bookOnline && !isPassed && !event.bookInPerson && (
-            <span className="bg-newGray-4 border border-newGray-2 text-xs text-newBlack-4 font-medium leading-none py-1 px-2 rounded-sm w-fit lg:text-sm">
+            <span className="bg-newGray-4 border border-newGray-2 text-xs text-newBlack-4 font-medium leading-none py-1 px-2 rounded-xs w-fit lg:text-sm">
               {t('events.card.online')}
             </span>
           )}
@@ -370,7 +370,7 @@ export const EventCard = ({
     const isScreenSm = useGreater('sm');
 
     return event.websiteUrl ? (
-      <div className="w-fit sm:mx-auto mt-auto sm:pt-3 sm:pb-1">
+      <div className="w-fit">
         <Link to={event.websiteUrl} target="_blank">
           <Button
             variant="primary"
@@ -406,11 +406,11 @@ export const EventCard = ({
               className="object-cover [overflow-clip-margin:_unset] sm:aspect-[432/308] w-full max-sm:h-[113px] sm:rounded-2xl"
             />
             {event.type && (
-              <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-sm max-sm:hidden">
+              <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-xs max-sm:hidden">
                 {capitalizedType}
               </span>
             )}
-            <div className="absolute max-sm:left-1.5 top-1.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-sm max-sm:hidden">
+            <div className="absolute max-sm:left-1.5 top-1.5 sm:top-4 sm:right-4 bg-white border border-newGray-3 p-1 flex flex-col justify-center items-center gap-1 rounded-xs max-sm:hidden">
               {event.languages.map((language: string) => (
                 <Flag code={language} size="m" key={language} />
               ))}
@@ -441,7 +441,7 @@ export const EventCard = ({
           <div className="flex sm:flex-col gap-2.5 justify-between mt-1 sm:mt-auto sm:py-1">
             {!event.websiteUrl && <PriceInfos />}
           </div>
-          <div className="flex items-center gap-2.5 sm:gap-4">
+          <div className="flex items-center gap-y-2 gap-x-2.5 sm:gap-x-4 mt-auto flex-wrap">
             <EventButtons />
             {isPassed && event.type === 'conference' && (
               <div className="mt-1 sm:mt-auto sm:py-1">

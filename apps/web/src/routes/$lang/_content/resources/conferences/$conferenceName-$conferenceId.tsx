@@ -368,7 +368,7 @@ function Conference() {
             onKeyDown={(event) => handleKeyDownVideo(event)}
             tabIndex={-1}
             role="presentation"
-            className="outline-none"
+            className="outline-hidden"
           >
             <div className="flex flex-col mt-6 w-full">
               <h3 className="text-[40px] text-white leading-tight tracking-[0.25px] mb-6 max-md:hidden">

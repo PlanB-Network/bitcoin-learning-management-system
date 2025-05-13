@@ -61,7 +61,7 @@ export const TipModal = ({
         {lightningAddress ? (
           <>
             <QRCodeSVG value={lightningAddress} size={isMobile ? 150 : 220} />
-            <div className="relative w-full rounded-md shadow-sm">
+            <div className="relative w-full rounded-md shadow-xs">
               <input
                 disabled
                 className="w-full bg-gray-200 p-2 pr-12 text-xs font-semibold text-blue-800 sm:text-base"
