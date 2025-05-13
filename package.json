@@ -18,6 +18,7 @@
     "build": "turbo run build --cache-dir=.turbo",
     "build:packages": "turbo run build --filter='./packages/*'",
     "docker:dev": "docker compose pull && docker compose up -d --remove-orphans postgres && docker compose up -d --build --renew-anon-volumes api web cdn && docker compose exec -u 0:0 api sh -c 'echo $CDN_PATH'",
+    "docker:build-base": "docker build -f docker/Dockerfile.base -t blms-base .",
     "format": "biome format --write .",
     "test": "turbo run test",
     "lint": "biome check . --diagnostic-level=warn",
