@@ -149,7 +149,7 @@ export const getTimeStringWithOnlyMonths = (
   return `${getMonthName(startDate)} ${t('words.to')} ${getMonthName(endDate)} ${getYear(startDate)}`;
 };
 
-export const getTimeStringWithDayAndMonth = (
+export const getDateStringWithDayAndMonth = (
   startDate: Date | null,
   endDate: Date | null,
   timezone?: string,
@@ -162,6 +162,112 @@ export const getTimeStringWithDayAndMonth = (
 
   return `${formatDate(startDate, effectiveTimezone, true, false)} to ${formatDate(endDate, effectiveTimezone, true, false)}, ${getYear(endDate)}`;
 };
+
+export const getTimeStringWithDayAndMonth = (
+  startDate: Date | null,
+  endDate: Date | null,
+  timezone?: string,
+) => {
+  if (!startDate || !endDate) {
+    return '';
+  }
+
+  const effectiveTimezone = getEffectiveTimezone(timezone);
+  const sameDay = isSameDay(startDate, endDate, effectiveTimezone);
+
+  if (sameDay) {
+    return `${formatDate(startDate, effectiveTimezone, true, false)}, ${getYear(endDate)}`;
+  }
+
+  return `${formatDate(startDate, effectiveTimezone, true, false)} ${formatTime(startDate, effectiveTimezone)} to ${formatDate(endDate, effectiveTimezone, true, false)} ${formatTime(endDate, effectiveTimezone)} (${effectiveTimezone})`;
+};
+
+/**
+ * Formats a date range into a string like "May 2nd 00:01 to May 5th 23:59 (CET)".
+ *
+ * @param startDate The start date of the range.
+ * @param endDate The end date of the range.
+ * @returns A string representing the formatted date range.
+ */
+export function formatDateRangeTyped(
+  startDate: Date,
+  endDate: Date,
+  timezone: string,
+): string {
+  /**
+   * Gets the ordinal suffix for a given day of the month.
+   * e.g., 1 -> "st", 2 -> "nd", 3 -> "rd", 4 -> "th"
+   * @param day The day of the month (1-31).
+   * @returns The ordinal suffix string.
+   */
+  const getOrdinalSuffix = (day: number): string => {
+    if (day > 3 && day < 21) return 'th'; // Covers 4th-20th
+    switch (day % 10) {
+      case 1:
+        return 'st';
+      case 2:
+        return 'nd';
+      case 3:
+        return 'rd';
+      default:
+        return 'th';
+    }
+  };
+
+  /**
+   * Formats a single Date object into "Month DaySuffix HH:mm" format for CET.
+   * @param date The Date object to format.
+   * @returns The formatted date-time string.
+   */
+  const formatDateTime = (date: Date): string => {
+    // Options for Intl.DateTimeFormat
+    const monthOptions: Intl.DateTimeFormatOptions = {
+      month: 'long',
+      timeZone: timezone,
+    };
+    const dayOptions: Intl.DateTimeFormatOptions = {
+      day: 'numeric',
+      timeZone: timezone,
+    };
+    const timeOptions: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: timezone,
+      hour12: false, // Use 24-hour format
+    };
+
+    // Using 'en-US' locale for consistent month names and day numbers before suffixing
+    const dateFormatter = new Intl.DateTimeFormat('en-US', monthOptions);
+    const dayFormatter = new Intl.DateTimeFormat('en-US', dayOptions);
+    const timeFormatter = new Intl.DateTimeFormat('en-US', timeOptions);
+
+    // Extract parts reliably
+    // Note: formatToParts returns an array of objects, e.g., [{type: "month", value: "May"}, ...]
+    const monthPart = dateFormatter
+      .formatToParts(date)
+      .find((part) => part.type === 'month');
+    const dayPart = dayFormatter
+      .formatToParts(date)
+      .find((part) => part.type === 'day');
+
+    if (!monthPart || !dayPart) {
+      // This should ideally not happen with valid dates and options
+      console.error('Could not extract month or day from date:', date);
+      return 'Invalid Date';
+    }
+
+    const month = monthPart.value;
+    const day = Number.parseInt(dayPart.value, 10);
+    const time = timeFormatter.format(date);
+
+    return `${month} ${day}${getOrdinalSuffix(day)} ${time}`;
+  };
+
+  const formattedStartDate = formatDateTime(startDate);
+  const formattedEndDate = formatDateTime(endDate);
+
+  return `${formattedStartDate} to ${formattedEndDate} (${timezone})`;
+}
 
 export function formatFullDateWithDay(date: Date, timezone?: string): string {
   if (!(date instanceof Date) || Number.isNaN(date.getTime())) {

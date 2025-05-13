@@ -276,7 +276,7 @@
       "sameRules": "You are about to retake the final exam. The rules remain the same.",
       "score": "Your score is",
       "singleAttempt": "Single-attempt exam",
-      "singleAttemptAvailability": "This exam is available online on: {{date}}",
+      "singleAttemptAvailability": "This exam is available online from {{date}}",
       "singleAttemptPrecaution": "Before starting, please ensure that your connection is stable. Since this is a one-attempt exam, if you get disconnected, you will not be able to try again.",
       "skipExam": "Skip exam",
       "skipExamDescription": "You can also skip the exam and proceed directly to the conclusion by clicking the button below.",
