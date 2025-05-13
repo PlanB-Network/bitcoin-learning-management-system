@@ -3,6 +3,7 @@ import { imageSync } from 'qr-image';
 
 import {
   breakLine,
+  breakLines,
   loadPdfTemplate,
   newDocumentFromTemplate,
 } from './utils.js';
@@ -98,7 +99,26 @@ export async function generateTicket(options: GenerateTicketOptions) {
     const y = height - 330 + (t3 ? lineHeight / 2 : 0);
 
     if (t2) {
-      page.drawText(t2, { x, y: y, ...conf.normal });
+      const text = breakLines(
+        t2,
+        conf.normal.font,
+        conf.normal.size,
+        width * 0.5,
+      );
+
+      if (text.length === 1) {
+        page.drawText(t2, { x, y: y, ...conf.normal });
+      }
+
+      for (let i = 0; i < text.length; i++) {
+        const line = text[i];
+        const yOffset = i * lineHeight * 0.75;
+        page.drawText(line, {
+          x,
+          y: y + lineHeight * 0.6 - yOffset,
+          ...conf.normal,
+        });
+      }
     }
 
     if (t3) {
@@ -106,7 +126,26 @@ export async function generateTicket(options: GenerateTicketOptions) {
     }
 
     if (t1) {
-      page.drawText(t1, { x, y: y - lineHeight * 2, ...conf.normal });
+      const text = breakLines(
+        t1,
+        conf.normal.font,
+        conf.normal.size,
+        width * 0.5,
+      );
+
+      if (text.length === 1) {
+        page.drawText(t1, { x, y: y - lineHeight * 2, ...conf.normal });
+      }
+
+      for (let i = 0; i < text.length; i++) {
+        const line = text[i];
+        const yOffset = i * lineHeight * 0.75;
+        page.drawText(line, {
+          x,
+          y: y - lineHeight * 2 - yOffset,
+          ...conf.normal,
+        });
+      }
     }
   }
 

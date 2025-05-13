@@ -67,3 +67,34 @@ export const breakLine = (
 
   return [t1, t2];
 };
+
+// Split text in multiple lines (as much as needed)
+export const breakLines = (
+  text: string,
+  font: PDFFont,
+  size: number,
+  maxWidth: number,
+) => {
+  const arr = text.split(' ');
+  const lines: string[] = [];
+
+  let line = '';
+
+  for (const word of arr) {
+    const newLine = line ? `${line} ${word}` : word;
+    const width = font.widthOfTextAtSize(newLine, size);
+
+    if (width > maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = newLine;
+    }
+  }
+
+  if (line) {
+    lines.push(line);
+  }
+
+  return lines;
+};
