@@ -51,3 +51,5 @@ tsconfig.*.tsbuildinfo
 *.cpuprofile
 logs
 *.asc
+
+storybook-static

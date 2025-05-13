@@ -17,7 +17,8 @@
       "packages/types/src/generated/*",
       "node_modules/**",
       "apps/**/node_modules/**",
-      "packages/**/node_modules/**"
+      "packages/**/node_modules/**",
+      "packages/ui/storybook-static/**"
     ]
   },
   "formatter": {
