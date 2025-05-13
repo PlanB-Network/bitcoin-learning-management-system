@@ -48,7 +48,7 @@ export const CourseExamResult = ({
   async function onStart() {
     await startExamAttempt.mutateAsync({
       courseId: chapter.courseId,
-      chapterId: null,
+      chapterId: chapter.chapterId,
       language: i18n.language || 'en',
       examType: ExamType.Final,
     });

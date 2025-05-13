@@ -19,6 +19,7 @@ export const SingleTrialExamResult = ({
   const { data: examResults, isFetched: isExamResultsFetched } =
     trpc.user.courses.getLatestExamResults.useQuery({
       courseId: chapter.courseId,
+      chapterId: chapter.chapterId,
     });
 
   const completeChapterMutation =

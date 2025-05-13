@@ -109,7 +109,7 @@ const startExamAttemptProcedure = studentProcedure
   .input(
     z.object({
       courseId: z.string(),
-      chapterId: z.string().nullable(),
+      chapterId: z.string(),
       language: z.string(),
       examType: z.nativeEnum(ExamType),
     }),

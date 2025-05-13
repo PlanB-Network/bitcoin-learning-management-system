@@ -51,6 +51,7 @@ export const ExamSession = ({
   const { data: examResults, isFetched: isExamResultsFetched } =
     trpc.user.courses.getLatestExamResults.useQuery({
       courseId: chapter.courseId,
+      chapterId: chapter.chapterId,
     });
 
   // when isExamResultsFetched is true, we need to set the selectedAnswers state with the examResults

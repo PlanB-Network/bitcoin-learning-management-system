@@ -13,14 +13,14 @@ import {
 interface Options {
   uid: string;
   courseId: string;
-  chapterId: string | null;
+  chapterId: string;
   language: string;
   examType: ExamType;
 }
 
 export const createStartExamAttempt = ({ postgres }: Dependencies) => {
   return async (options: Options): Promise<PartialExamQuestion[]> => {
-    if (options.chapterId) {
+    if (options.examType === ExamType.SingleTrial) {
       const now = new Date();
       const [examInfo] = await postgres.exec(
         getExamInfo({

@@ -833,9 +833,9 @@ function CourseChapter() {
                     </div>
                   )}
 
-                  {(!isSpecialChapter || chapter.isSingleTrialExam) &&
-                    !displayLiveSection &&
-                    displayNext && <BottomButton chapter={chapter} />}
+                  {!isSpecialChapter && !displayLiveSection && displayNext && (
+                    <BottomButton chapter={chapter} />
+                  )}
                 </div>
 
                 {!chapter.isCourseExam &&
