@@ -8,9 +8,10 @@ import {
   CollapsibleTrigger,
   cn,
 } from '@blms/ui';
+import { AlertCircle } from 'lucide-react';
 
 const CollapsibleDropdownVariant = cva(
-  'w-full max-w-[464px] rounded-[12px] flex flex-col px-2.5 py-[5px] justify-center',
+  'w-full rounded-[12px] flex flex-col px-2.5 py-[5px] justify-center',
   {
     variants: {
       variant: {
@@ -44,6 +45,8 @@ interface CollapsibleProps {
   children: React.ReactNode;
   variant?: 'light' | 'dark';
   className?: string;
+  defaultOpen?: boolean;
+  type?: string;
 }
 
 export const CollapsibleDropdown = ({
@@ -51,8 +54,10 @@ export const CollapsibleDropdown = ({
   children,
   variant = 'light',
   className,
+  defaultOpen = false,
+  type,
 }: CollapsibleProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
     <Collapsible
@@ -61,9 +66,12 @@ export const CollapsibleDropdown = ({
       className={cn(CollapsibleDropdownVariant({ variant }), className)}
     >
       <CollapsibleTrigger className={collapsibleTriggerVariant({ variant })}>
-        <span className="font-medium leading-[110%] tracking-015px">
-          {title}
-        </span>
+        <div className="flex flex-row gap-2 items-center">
+          {type === 'info' ? <AlertCircle className="h-4 w-4" /> : null}
+          <span className="font-medium leading-[110%] tracking-015px">
+            {title}
+          </span>
+        </div>
         <MdKeyboardArrowDown
           size={30}
           className={cn('transition-all', isOpen && 'rotate-180')}

@@ -331,7 +331,7 @@ const GeneralGradeSection = ({ ratings }: { ratings: number[] }) => {
       <span className="lowercase body-16px text-dashboardSectionTitle mt-5">{`${averageRating}/${maxRating} (${numberOfReviews} ${numberOfReviews > 1 ? t('dashboard.teacher.reviews.reviews') : t('dashboard.teacher.reviews.review')})`}</span>
       <CollapsibleDropdown
         title={t('dashboard.teacher.reviews.viewDetails')}
-        className="mt-2.5 lg:mt-1.5"
+        className="mt-2.5 lg:mt-1.5 max-w-[464px]"
       >
         <div className="px-5 pt-5 pb-8">
           <RatingChart chartData={chartData} />

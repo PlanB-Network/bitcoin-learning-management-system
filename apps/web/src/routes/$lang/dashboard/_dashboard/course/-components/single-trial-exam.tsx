@@ -1,19 +1,11 @@
 import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Button,
-  DividerSimple,
-  DividerVertical,
-  Loader,
-} from '@blms/ui';
+import { Button, DividerSimple, DividerVertical, Loader } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { AlertCircle } from 'lucide-react';
 import { BiPencil } from 'react-icons/bi';
 import { IoMdLock } from 'react-icons/io';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
+import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { getDateString } from '#src/utils/date.ts';
@@ -39,17 +31,17 @@ export const SingleTrialExam = ({
       <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
         {t('dashboard.course.exams')}
       </h2>
-      <Alert variant="transparent">
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle className="text-black">
-          {t('dashboard.course.generalInformation')}
-        </AlertTitle>
-        <AlertDescription>
-          <p className="whitespace-pre-line text-newBlack-4">
-            {t('dashboard.course.planbSchoolExamDescription')}
-          </p>
-        </AlertDescription>
-      </Alert>
+      <CollapsibleDropdown
+        title={t('dashboard.course.generalInformation')}
+        className="border border-newGray-4"
+        variant="dark"
+        defaultOpen={true}
+        type="info"
+      >
+        <p className="whitespace-pre-line text-newBlack-4">
+          {t('dashboard.course.planbSchoolExamDescription')}
+        </p>
+      </CollapsibleDropdown>
 
       <div className="flex flex-col gap-4">
         {singleTrialExams.map((exam) => {
@@ -114,7 +106,7 @@ const ExamItem = ({
   }
 
   return isExamResultsFetched ? (
-    <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-newGray-5 bg-newGray-6 rounded-lg gap-5">
+    <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-newGray-5 bg-newGray-6 rounded-2xl gap-3 md:gap-5">
       <div className="flex flex-col gap-1 w-52">
         <span className="text-lg font-semibold">{exam.title}</span>
         <span className="text-sm text-newGray-1">
