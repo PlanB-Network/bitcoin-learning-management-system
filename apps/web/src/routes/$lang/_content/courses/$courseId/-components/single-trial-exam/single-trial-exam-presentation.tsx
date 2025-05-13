@@ -112,7 +112,7 @@ export const SingleTrialExamPresentation = ({
             {t('courses.exam.instructions')}
           </span>
           {isFetched ? (
-            <ul className="body-16px text-justify flex flex-col list-disc list-outside pl-6">
+            <ul className="body-16px flex flex-col list-disc list-outside pl-6">
               <li>
                 {t('courses.exam.timerStart', {
                   minutes: (examInfo?.nbQuestions ?? 40) / 2,

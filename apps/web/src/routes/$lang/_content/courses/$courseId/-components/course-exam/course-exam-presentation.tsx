@@ -103,7 +103,7 @@ export const CourseExamPresentation = ({
         <span className="body-medium-16px mt-6">
           {t('courses.exam.instructions')}
         </span>
-        <ul className="body-16px text-justify flex flex-col list-disc list-outside pl-6">
+        <ul className="body-16px flex flex-col list-disc list-outside pl-6">
           <li>{t('courses.exam.timerStart', { minutes: 20 })}</li>
           <li>{t('courses.exam.examDetails', { nb: 40 })}</li>
           <li>{t('courses.exam.passRate')}</li>
