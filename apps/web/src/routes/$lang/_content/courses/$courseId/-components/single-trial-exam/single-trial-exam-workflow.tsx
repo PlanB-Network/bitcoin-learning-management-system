@@ -23,6 +23,7 @@ export const SingleTrialExamWorkflow = ({
   } = trpc.user.courses.getLatestExamResults.useQuery(
     {
       courseId: chapter.courseId,
+      chapterId: chapter.chapterId,
     },
     {
       enabled: isLoggedIn,

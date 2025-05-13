@@ -44,15 +44,18 @@ export const getPartialExamQuestionsQuery = ({
 export const getLatestExamAttemptIdQuery = ({
   uid,
   courseId,
+  chapterId,
 }: {
   uid: string;
   courseId: string;
+  chapterId: string | undefined;
 }) => {
   return sql<CourseExamAttempt[]>`
     SELECT *
     FROM users.exam_attempts
     WHERE uid = ${uid}
       AND course_id = ${courseId}
+      ${chapterId ? sql`AND chapter_id = ${chapterId}` : sql``}
     ORDER BY started_at DESC
     LIMIT 1;
   `;

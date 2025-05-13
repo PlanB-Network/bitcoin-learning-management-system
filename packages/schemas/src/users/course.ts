@@ -35,6 +35,9 @@ export const coursePaymentLightSchema = coursePaymentSchema.pick({
 
 export const courseExamInfoSchema = z.object({
   nbQuestions: z.number(),
+  isSingleTrialExam: z.boolean(),
+  startDate: z.date().nullable(),
+  endDate: z.date().nullable(),
 });
 
 export const courseProgressExtendedSchema = courseProgressSchema.merge(

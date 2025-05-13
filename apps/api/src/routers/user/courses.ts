@@ -146,12 +146,13 @@ const completeExamAttemptProcedure = studentProcedure
   );
 
 const getLatestExamResultsProcedure = studentProcedure
-  .input(z.object({ courseId: z.string() }))
+  .input(z.object({ courseId: z.string(), chapterId: z.string().optional() }))
   .output<Parser<CourseExamResults | null>>(courseExamResultsSchema.nullable())
   .query(({ ctx, input }) =>
     createGetLatestExamResults(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      chapterId: input.chapterId,
     }),
   );
 
@@ -162,6 +163,7 @@ const getAllUserCourseExamResultsProcedure = studentProcedure
     createGetAllUserCourseExamsResults(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
+      chapterId: undefined,
     }),
   );
 

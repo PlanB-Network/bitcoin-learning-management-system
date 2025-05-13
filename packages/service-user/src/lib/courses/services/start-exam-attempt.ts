@@ -2,6 +2,7 @@ import type { PartialExamQuestion } from '@blms/types';
 
 import { ExamType } from '@blms/constants';
 import type { Dependencies } from '../../../dependencies.js';
+import { getExamInfo } from '../queries/get-exam-info.js';
 import { getPartialExamQuestionsQuery } from '../queries/get-exam-questions.js';
 import {
   insertCourseExamQuestionsQuery,
@@ -19,6 +20,26 @@ interface Options {
 
 export const createStartExamAttempt = ({ postgres }: Dependencies) => {
   return async (options: Options): Promise<PartialExamQuestion[]> => {
+    if (options.chapterId) {
+      const now = new Date();
+      const [examInfo] = await postgres.exec(
+        getExamInfo({
+          chapterId: options.chapterId,
+          language: options.language,
+        }),
+      );
+
+      if (examInfo.startDate && examInfo.endDate) {
+        if (now.getTime() < examInfo.startDate.getTime()) {
+          throw new Error('Exam have not yes started.');
+        }
+
+        if (now.getTime() > examInfo.endDate.getTime()) {
+          throw new Error('Exam is over');
+        }
+      }
+    }
+
     const examId = await postgres
       .exec(insertExamAttemptQuery(options))
       .then((result) => result[0].id);

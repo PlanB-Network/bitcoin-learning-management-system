@@ -11,6 +11,7 @@ import {
 interface Options {
   uid: string;
   courseId: string;
+  chapterId: string | undefined;
 }
 
 export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
@@ -26,14 +27,6 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
     const [examResult] = await postgres.exec(
       getExamResultsQuery({ examId: lastExam.id }),
     );
-
-    // TODO SINGLE TRIAL
-    // if (examResult.type === 'singleTrial') {
-    //   const now = new Date();
-    //   if (examResult.dueTo < new Date(now.getTime() + 5 * 60 * 1000)) {
-    //     examResult.finalized = true;
-    //   }
-    // }
 
     const examTimestamps = await postgres.exec(
       sql<UserExamTimestamp[]>`

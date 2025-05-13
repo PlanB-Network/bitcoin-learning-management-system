@@ -87,6 +87,9 @@ export interface CoursePaymentLight {
 
 export interface CourseExamInfo {
   nbQuestions: number;
+  isSingleTrialExam: boolean;
+  startDate: Date | null;
+  endDate: Date | null;
 }
 
 export interface CourseProgressExtended {

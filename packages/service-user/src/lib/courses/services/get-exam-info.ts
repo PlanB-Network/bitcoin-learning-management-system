@@ -9,10 +9,10 @@ interface Options {
 
 export const createGetExamInfo = ({ postgres }: Dependencies) => {
   return async ({ chapterId, language }: Options): Promise<CourseExamInfo> => {
-    const [exam] = await postgres.exec(getExamInfo({ chapterId, language }));
+    const [examInfo] = await postgres.exec(
+      getExamInfo({ chapterId, language }),
+    );
 
-    return {
-      nbQuestions: exam.nbQuestions,
-    };
+    return examInfo;
   };
 };
