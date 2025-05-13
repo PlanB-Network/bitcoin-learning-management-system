@@ -6,6 +6,7 @@ import {
   Button,
   DividerSimple,
   DividerVertical,
+  Loader,
 } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
@@ -58,7 +59,8 @@ export const SingleTrialExam = ({
               exam={exam}
               totalWeight={totalWeight}
               courseId={course.id}
-              courseOriginalLanguage={course.originalLanguage}
+              chapterId={exam.chapterId}
+              language={exam.language}
             />
           );
         })}
@@ -71,14 +73,28 @@ const ExamItem = ({
   exam,
   totalWeight,
   courseId,
-  courseOriginalLanguage,
+  chapterId,
+  language,
 }: {
   exam: JoinedCourseChapter;
   totalWeight: number;
   courseId: string;
-  courseOriginalLanguage: string;
+  chapterId: string;
+  language: string;
 }) => {
   if (!exam.startDate || !exam.endDate) return null;
+
+  const { data: examInfo, isFetched: isExamInfoFetched } =
+    trpc.user.courses.getExamInfo.useQuery({
+      chapterId: chapterId,
+      language: language,
+    });
+
+  const { data: examResults, isFetched: isExamResultsFetched } =
+    trpc.user.courses.getLatestExamResults.useQuery({
+      courseId: courseId,
+      chapterId: chapterId,
+    });
 
   const now = Date.now();
   const isMobile = useSmaller('md');
@@ -88,13 +104,7 @@ const ExamItem = ({
   const isExamEnded = exam.endDate.getTime() < now;
   const examWeight = Math.round(((exam.rateWeight ?? 1) * 100) / totalWeight);
 
-  const { data: quizCount } =
-    trpc.content.getCourseChapterQuizQuestionsCount.useQuery({
-      language: courseOriginalLanguage,
-      chapterId: exam.chapterId,
-    });
-
-  let nbQuestion = quizCount?.[0]?.count ?? 0;
+  let nbQuestion = examInfo?.nbQuestions ?? 0;
 
   // TODO remove hardcoded data when quiz questions are in the data repo
   if (exam.chapterId === '6065ea4e-2675-11f0-b6ab-bb5e1522cb78') {
@@ -103,7 +113,7 @@ const ExamItem = ({
     nbQuestion = 50;
   }
 
-  return (
+  return isExamResultsFetched ? (
     <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-newGray-5 bg-newGray-6 rounded-lg gap-5">
       <div className="flex flex-col gap-1 w-52">
         <span className="text-lg font-semibold">{exam.title}</span>
@@ -115,54 +125,71 @@ const ExamItem = ({
       <DividerSimple className="md:hidden bg-newGray-4" />
       <div className="flex flex-col md:flex-row md:items-center max-md:gap-4 justify-between flex-1">
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center gap-2 text-sm text-newBlack-3">
-            <BiPencil size={24} />
-            <span>
-              {t('courses.exam.nbQuestions', { nb: nbQuestion })} /{' '}
-              {t('courses.exam.nbMinutes', { nb: nbQuestion / 2 })}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-newBlack-3">
-            <MdOutlineCalendarMonth size={24} />
-            <span>
-              {getDateString(
-                exam.startDate,
-                exam.endDate,
-                undefined,
-                false,
-                false,
-              )}
-            </span>
-          </div>
+          {examResults ? (
+            <p className="subtitle-large-med-20px">
+              <span>{t('dashboard.course.examScore')} </span>
+              <span className="text-darkOrange-5">{examResults.score}%</span>
+            </p>
+          ) : (
+            <>
+              <div className="flex items-center gap-2 text-sm text-newBlack-3">
+                <BiPencil size={24} />
+                {isExamInfoFetched ? (
+                  <span>
+                    {t('courses.exam.nbQuestions', { nb: nbQuestion })} /{' '}
+                    {t('courses.exam.nbMinutes', { nb: nbQuestion / 2 })}
+                  </span>
+                ) : null}
+              </div>
+              <div className="flex items-center gap-2 text-sm text-newBlack-3">
+                <MdOutlineCalendarMonth size={24} />
+                <span>
+                  {getDateString(
+                    exam.startDate,
+                    exam.endDate,
+                    undefined,
+                    false,
+                    false,
+                  )}
+                </span>
+              </div>
+            </>
+          )}
         </div>
-        {isExamOngoing ? (
-          <Link
-            to={'/courses/$courseId/$chapterId'}
-            params={{
-              courseId: courseId,
-              chapterId: exam.chapterId,
-            }}
-          >
-            <ButtonWithArrow
-              variant={'primary'}
-              className="w-fit"
-              size={isMobile ? 's' : 'm'}
-            >
-              <span>{t('courses.exam.takeExam')}</span>
-            </ButtonWithArrow>
-          </Link>
-        ) : isExamEnded ? null : (
-          <Button
-            variant={'primary'}
-            disabled
-            className="w-fit"
-            size={isMobile ? 's' : 'm'}
-          >
-            <IoMdLock size={24} className="mr-2" />
-            <span>{t('courses.exam.takeExam')}</span>
-          </Button>
+        {examResults ? null : (
+          <>
+            {isExamOngoing ? (
+              <Link
+                to={'/courses/$courseId/$chapterId'}
+                params={{
+                  courseId: courseId,
+                  chapterId: exam.chapterId,
+                }}
+              >
+                <ButtonWithArrow
+                  variant={'primary'}
+                  className="w-fit"
+                  size={isMobile ? 's' : 'm'}
+                >
+                  <span>{t('courses.exam.takeExam')}</span>
+                </ButtonWithArrow>
+              </Link>
+            ) : isExamEnded ? null : (
+              <Button
+                variant={'primary'}
+                disabled
+                className="w-fit"
+                size={isMobile ? 's' : 'm'}
+              >
+                <IoMdLock size={24} className="mr-2" />
+                <span>{t('courses.exam.takeExam')}</span>
+              </Button>
+            )}
+          </>
         )}
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 };

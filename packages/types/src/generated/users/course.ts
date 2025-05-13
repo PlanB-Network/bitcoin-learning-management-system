@@ -162,6 +162,36 @@ export interface CourseExamResults {
   imgKey?: string | undefined;
 }
 
+export interface CourseExamResultsExtended {
+  score: number | null;
+  finalized: boolean;
+  succeeded: boolean;
+  startedAt: Date;
+  finishedAt: Date | null;
+  id: string;
+  questions: {
+    text: string;
+    explanation: string;
+    chapterName: string;
+    chapterPart: number;
+    chapterIndex: number;
+    chapterLink: string;
+    userAnswer: number | null;
+    answers: {
+      text: string;
+      order: number;
+      correctAnswer: boolean;
+    }[];
+  }[];
+  isTimestamped?: boolean | undefined;
+  pdfKey?: string | undefined;
+  imgKey?: string | undefined;
+  totalGoodUserAnswer: number;
+  totalWrongUserAnswer: number;
+  totalAnsweredAnswers: number;
+  userExamDuration: number;
+}
+
 export interface CourseSuccededExam {
   score: number | null;
   finalized: boolean;

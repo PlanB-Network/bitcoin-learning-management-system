@@ -3,12 +3,13 @@ import type { CouponCode } from '@blms/types';
 
 import type { Dependencies } from '../dependencies.js';
 
-const getCouponCode = (code: string) => {
+const getCouponCode = (code: string, itemId?: string) => {
   return sql<CouponCode[]>`
     SELECT *
       FROM content.coupon_code
       WHERE
         LOWER(code) = LOWER(${code})
+        ${itemId ? sql`AND LOWER(item_id) = LOWER(${itemId})` : sql``}
         AND uses < max_uses
         AND deleted_at IS NULL
         ;
@@ -16,9 +17,11 @@ const getCouponCode = (code: string) => {
 };
 
 export const createGetCouponCode = ({ postgres }: Dependencies) => {
-  return async (code: string) => {
+  return async (code: string, itemId?: string) => {
     try {
-      const result = await postgres.exec(getCouponCode(code)).then(firstRow);
+      const result = await postgres
+        .exec(getCouponCode(code, itemId))
+        .then(firstRow);
       if (!result) {
         return null;
       }

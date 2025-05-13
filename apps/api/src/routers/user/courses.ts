@@ -3,6 +3,7 @@ import { z } from 'zod';
 import {
   checkoutDataSchema,
   courseExamInfoSchema,
+  courseExamResultsExtendedSchema,
   courseExamResultsSchema,
   coursePaymentLightSchema,
   courseProgressExtendedSchema,
@@ -44,6 +45,7 @@ import type {
   CheckoutData,
   CourseExamInfo,
   CourseExamResults,
+  CourseExamResultsExtended,
   CoursePaymentLight,
   CourseProgress,
   CourseProgressExtended,
@@ -147,7 +149,9 @@ const completeExamAttemptProcedure = studentProcedure
 
 const getLatestExamResultsProcedure = studentProcedure
   .input(z.object({ courseId: z.string(), chapterId: z.string().optional() }))
-  .output<Parser<CourseExamResults | null>>(courseExamResultsSchema.nullable())
+  .output<Parser<CourseExamResultsExtended | null>>(
+    courseExamResultsExtendedSchema.nullable(),
+  )
   .query(({ ctx, input }) =>
     createGetLatestExamResults(ctx.dependencies)({
       uid: ctx.user.uid,

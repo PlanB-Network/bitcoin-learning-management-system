@@ -85,6 +85,7 @@ export const PaymentDescription = ({
     },
     {
       enabled: queryEnabled,
+      staleTime: 0,
     },
   );
 

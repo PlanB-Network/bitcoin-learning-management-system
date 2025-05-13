@@ -1,5 +1,9 @@
 import { sql } from '@blms/database';
-import type { CourseExamResults, UserExamTimestamp } from '@blms/types';
+import type {
+  CourseExamResults,
+  CourseExamResultsExtended,
+  UserExamTimestamp,
+} from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
@@ -15,7 +19,9 @@ interface Options {
 }
 
 export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
-  return async (options: Options): Promise<CourseExamResults | null> => {
+  return async (
+    options: Options,
+  ): Promise<CourseExamResultsExtended | null> => {
     const lastExam = (
       await postgres.exec(getLatestExamAttemptIdQuery(options))
     ).at(0);
@@ -37,11 +43,50 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
 
     const timestamp = examTimestamps[0];
 
+    const totalGoodUserAnswer = examResult.questions.reduce(
+      (acc, question) =>
+        acc +
+        (question.userAnswer ===
+        question.answers.find((ans) => ans.correctAnswer)?.order
+          ? 1
+          : 0),
+      0,
+    );
+
+    const totalWrongUserAnswer = examResult.questions.reduce(
+      (acc, question) =>
+        acc +
+        (question.userAnswer !== null &&
+        question.userAnswer !==
+          question.answers.find((ans) => ans.correctAnswer)?.order
+          ? 1
+          : 0),
+      0,
+    );
+
+    const totalAnsweredAnswers = examResult.questions.reduce(
+      (acc, question) => acc + (question.userAnswer === null ? 0 : 1),
+      0,
+    );
+
+    const userExamDuration =
+      examResult.finishedAt && examResult.startedAt
+        ? Math.floor(
+            (new Date(examResult.finishedAt).getTime() -
+              new Date(examResult.startedAt).getTime()) /
+              1000,
+          )
+        : 0;
+
     return {
       ...examResult,
       isTimestamped: !!timestamp?.confirmed || false,
       pdfKey: timestamp?.pdfKey || undefined,
       imgKey: timestamp?.imgKey || undefined,
+      totalGoodUserAnswer,
+      totalWrongUserAnswer,
+      totalAnsweredAnswers,
+      userExamDuration,
     };
   };
 };

@@ -25,41 +25,6 @@ export const SingleTrialExamResult = ({
   const completeChapterMutation =
     trpc.user.courses.completeChapter.useMutation();
 
-  const totalGoodUserAnswer = examResults?.questions.reduce(
-    (acc, question) =>
-      acc +
-      (question.userAnswer ===
-      question.answers.find((ans) => ans.correctAnswer)?.order
-        ? 1
-        : 0),
-    0,
-  );
-
-  const totalWrongUserAnswer = examResults?.questions.reduce(
-    (acc, question) =>
-      acc +
-      (question.userAnswer !== null &&
-      question.userAnswer !==
-        question.answers.find((ans) => ans.correctAnswer)?.order
-        ? 1
-        : 0),
-    0,
-  );
-
-  const totalAnsweredAnswers = examResults?.questions.reduce(
-    (acc, question) => acc + (question.userAnswer === null ? 0 : 1),
-    0,
-  );
-
-  const userExamDuration =
-    examResults?.finishedAt && examResults?.startedAt
-      ? Math.floor(
-          (new Date(examResults.finishedAt).getTime() -
-            new Date(examResults.startedAt).getTime()) /
-            1000,
-        )
-      : 0;
-
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -92,19 +57,19 @@ export const SingleTrialExamResult = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-6 max-w-2xl w-full">
                   <StatsCard
                     label={t('courses.exam.results.questions')}
-                    value={`${totalAnsweredAnswers}/${examResults.questions.length}`}
+                    value={`${examResults.totalAnsweredAnswers}/${examResults.questions.length}`}
                   />
                   <StatsCard
                     label={t('courses.exam.results.time')}
-                    value={formatDuration(userExamDuration)}
+                    value={formatDuration(examResults.userExamDuration)}
                   />
                   <StatsCard
                     label={t('courses.exam.results.correct')}
-                    value={`${totalGoodUserAnswer}/${examResults.questions.length}`}
+                    value={`${examResults.totalGoodUserAnswer}/${examResults.questions.length}`}
                   />
                   <StatsCard
                     label={t('courses.exam.results.incorrect')}
-                    value={`${totalWrongUserAnswer}/${examResults.questions.length}`}
+                    value={`${examResults.totalWrongUserAnswer}/${examResults.questions.length}`}
                   />
                 </div>
               </>

@@ -124,6 +124,15 @@ export const courseExamResultsSchema = courseExamAttemptSchema
     }),
   );
 
+export const courseExamResultsExtendedSchema = courseExamResultsSchema.merge(
+  z.object({
+    totalGoodUserAnswer: z.number(),
+    totalWrongUserAnswer: z.number(),
+    totalAnsweredAnswers: z.number(),
+    userExamDuration: z.number(),
+  }),
+);
+
 export const courseSuccededExamSchema = courseExamAttemptSchema
   .pick({
     score: true,
