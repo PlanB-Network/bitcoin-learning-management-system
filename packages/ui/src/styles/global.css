@@ -574,6 +574,10 @@
   border: none !important;
 }
 
+.rbc-agenda-date-cell,
+.rbc-agenda-time-cell {
+  font-size: 0.875rem;
+}
 /* React Toastify */
 
 :root {
