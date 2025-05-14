@@ -144,7 +144,7 @@ const generateFileContent = (
 
     const zodType = schema._def?.typeName;
 
-    console.debug(`Processing schema "${typeName}" (${zodType})`);
+    // console.debug(`Processing schema "${typeName}" (${zodType})`);
 
     // Register enum
     if (zodType === 'ZodEnum') {
@@ -153,7 +153,7 @@ const generateFileContent = (
 
     if (zodType === 'ZodNativeEnum') {
       const enumValue = (schema._def as ZodEnumDef).values;
-      console.debug(`Processing native enum "${typeName}"`, enumValue);
+      // console.debug(`Processing native enum "${typeName}"`, enumValue);
       const values = Object.values(enumValue);
       enumsMap.set(values.map((v) => `"${v}"`).join(' | '), typeName);
       currentNativeEnumImports.add(typeName);
@@ -166,16 +166,16 @@ const generateFileContent = (
     schema._def.getType = (ts: any) => {
       // Do not return self-references (otherwise you end up with export A = A)
       if (currentlyProcessedType === typeName) {
-        console.debug(`Skipping self-reference for type "${typeName}"`);
+        // console.debug(`Skipping self-reference for type "${typeName}"`);
         return null;
       }
 
-      console.debug(`Get type "${currentlyProcessedType}" -> "${typeName}"`);
+      // console.debug(`Get type "${currentlyProcessedType}" -> "${typeName}"`);
 
       if (filePath !== currentlyProcessedFile) {
-        console.debug(
-          `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
-        );
+        // console.debug(
+        //   `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
+        // );
 
         // Import from @blms/constants
         if (nativeEnumImports.has(typeName)) {
@@ -204,7 +204,7 @@ const generateFileContent = (
     // Tip: search ('.+' \| )+'.+' to find all enum values left in the output
     for (const [values, type] of enumsMap) {
       if (output.includes(values)) {
-        console.debug('Replacing', values, 'with', type);
+        // console.debug('Replacing', values, 'with', type);
         output = output.replace(values, type);
       }
     }
