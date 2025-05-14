@@ -38,7 +38,7 @@ export const SingleTrialExam = ({
         defaultOpen={true}
         type="info"
       >
-        <p className="whitespace-pre-line text-newBlack-4">
+        <p className="whitespace-pre-line text-newBlack-4 max-md:text-sm">
           {t('dashboard.course.planbSchoolExamDescription')}
         </p>
       </CollapsibleDropdown>

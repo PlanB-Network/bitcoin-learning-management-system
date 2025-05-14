@@ -1,6 +1,5 @@
-import { Alert, AlertDescription, AlertTitle } from '@blms/ui';
 import { t } from 'i18next';
-import { AlertCircle } from 'lucide-react';
+import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 
 export const Assignment = ({
   courseId,
@@ -12,17 +11,17 @@ export const Assignment = ({
       <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
         {t('dashboard.course.assignment')}
       </h2>
-      <Alert variant="transparent">
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle className="text-black">
-          {t('dashboard.course.assignmentInformation')}
-        </AlertTitle>
-        <AlertDescription>
-          <p className="whitespace-pre-line text-newBlack-4">
-            {t('dashboard.course.assignmentDescription')}
-          </p>
-        </AlertDescription>
-      </Alert>
+      <CollapsibleDropdown
+        title={t('dashboard.course.assignmentInformation')}
+        className="border border-newGray-4"
+        variant="dark"
+        defaultOpen={true}
+        type="info"
+      >
+        <p className="whitespace-pre-line text-newBlack-4 max-md:text-sm">
+          {t('dashboard.course.assignmentDescription')}
+        </p>
+      </CollapsibleDropdown>
     </section>
   );
 };
