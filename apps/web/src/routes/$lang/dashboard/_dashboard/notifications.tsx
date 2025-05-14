@@ -567,11 +567,11 @@ export const getNotificationIcon = (type: string, className?: string) => {
   const classes = cn(className ? className : 'size-[18px] md:size-6');
 
   switch (type) {
-    case NotificationType.Calendar:
     case NotificationType.Calendar24HoursCourse:
     case NotificationType.Calendar48HoursOnlineEvent:
     case NotificationType.Calendar24HoursInPersonEvent:
       return <LuCalendarDays className={classes} />;
+    case NotificationType.Calendar:
     case NotificationType.Calendar5MinutesCourse:
     case NotificationType.Calendar5MinutesOnlineEvent:
       return <MdAccessAlarm className={classes} />;
