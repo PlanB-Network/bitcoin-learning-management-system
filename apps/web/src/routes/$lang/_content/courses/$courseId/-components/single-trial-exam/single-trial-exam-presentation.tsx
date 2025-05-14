@@ -63,6 +63,15 @@ export const SingleTrialExamPresentation = ({
     });
   }
 
+  let nbQuestion = examInfo?.nbQuestions ?? 0;
+
+  // TODO remove hardcoded data when quiz questions are in the data repo
+  if (chapter.chapterId === '6065ea4e-2675-11f0-b6ab-bb5e1522cb78') {
+    nbQuestion = 25;
+  } else if (chapter.chapterId === '9a307a50-2675-11f0-a893-57c148082c1f') {
+    nbQuestion = 50;
+  }
+
   useEffect(() => {
     if (startExamAttempt.isSuccess) {
       onStartExam();
@@ -114,12 +123,12 @@ export const SingleTrialExamPresentation = ({
             <ul className="body-16px flex flex-col list-disc list-outside pl-6">
               <li>
                 {t('courses.exam.timerStart', {
-                  minutes: (examInfo?.nbQuestions ?? 40) / 2,
+                  minutes: nbQuestion / 2,
                 })}
               </li>
               <li>
                 {t('courses.exam.examDetails', {
-                  nb: examInfo?.nbQuestions,
+                  nb: nbQuestion,
                 })}
               </li>
               <li>{t('courses.exam.examAvailabilityDetails')}</li>

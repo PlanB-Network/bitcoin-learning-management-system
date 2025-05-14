@@ -10,17 +10,28 @@ export const getExamInfo = ({
 }) => {
   return sql<CourseExamInfo[]>`
     SELECT
-      count(*) as nb_questions,
-      is_single_trial_exam,
-      start_date,
-      end_date
-    FROM content.quiz_questions_localized ql
-    JOIN content.quiz_questions qq ON qq.id = ql.quiz_question_id
-    LEFT JOIN content.course_chapters_localized cl
+        COUNT(ql.quiz_question_id) AS nb_questions,
+        cl.is_single_trial_exam,
+        cl.start_date,
+        cl.end_date
+    FROM
+        content.course_chapters_localized cl
+    LEFT JOIN
+        content.quiz_questions qq
         ON cl.chapter_id = qq.chapter_id
-    WHERE qq.chapter_id = ${chapterId}
-      ${language ? sql`AND ql.language = LOWER(${language})` : sql``}
-      AND qq.disabled = false
-    GROUP BY cl.is_single_trial_exam, cl.start_date, cl.end_date
+        AND qq.disabled = FALSE
+    LEFT JOIN
+        content.quiz_questions_localized ql
+        ON qq.id = ql.quiz_question_id
+        AND ql.language = cl.language
+    WHERE
+        cl.chapter_id = ${chapterId}
+        ${language ? sql`AND cl.language = LOWER(${language})` : sql``}
+    GROUP BY
+        cl.chapter_id,
+        cl.language,
+        cl.is_single_trial_exam,
+        cl.start_date,
+        cl.end_date;
   `;
 };

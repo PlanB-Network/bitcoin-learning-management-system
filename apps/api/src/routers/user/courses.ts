@@ -321,7 +321,6 @@ const getCourseReviewProcedure = studentProcedure
 const getExamInfoProcedure = studentProcedure
   .input(z.object({ chapterId: z.string(), language: z.string() }))
   .output<Parser<CourseExamInfo>>(courseExamInfoSchema)
-
   .query(({ ctx, input }) =>
     createGetExamInfo(ctx.dependencies)({
       chapterId: input.chapterId,
