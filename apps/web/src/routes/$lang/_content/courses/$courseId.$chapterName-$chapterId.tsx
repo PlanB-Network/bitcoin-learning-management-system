@@ -572,12 +572,12 @@ function CourseChapter() {
     displayClassDetails =
       (chapter.isInPerson || false || chapter.isOnline || false) &&
       chapterEndDate > now;
-    displayLiveSection = chapter.isOnline || false;
+    displayLiveSection = Boolean(chapter.isOnline);
     displayLiveVideo =
       displayLiveSection && chapterStartDate.setHours(0, 0, 0, 0) <= Date.now();
     displayQuiz = false;
 
-    if (isAroundLiveTime) {
+    if (now > chapterStartDate) {
       displayNext = true;
     } else {
       displayNext = false;
