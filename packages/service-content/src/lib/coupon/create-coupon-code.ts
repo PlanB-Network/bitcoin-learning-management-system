@@ -22,7 +22,7 @@ export const createCreateCouponCode = ({ postgres }: Dependencies) => {
       // Generate multiple codes
       const codes: string[] = Array.from(
         { length: options.numberOfCodes },
-        () => nanoid(),
+        () => nanoid().toUpperCase(),
       );
 
       console.log('Generated codes', codes);
@@ -40,7 +40,7 @@ export const createCreateCouponCode = ({ postgres }: Dependencies) => {
     }
 
     // Generate multi-use code
-    const code = options.code?.trim() || nanoid();
+    const code = options.code?.trim() || nanoid().toUpperCase();
     return postgres.exec(sql<CouponCode[]>`
     INSERT INTO content.coupon_code (code, item_id, uid, reduction_percentage, max_uses)
       VALUES (${code}, ${options.itemId}, ${uid}, ${options.reductionPercentage}, ${options.maxUses})
