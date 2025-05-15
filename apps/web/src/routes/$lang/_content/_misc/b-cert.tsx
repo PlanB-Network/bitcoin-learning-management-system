@@ -46,7 +46,7 @@ const BCertOrganize = () => {
             href="https://kutt.planb.network/BCERT-chart"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:hover:text-darkOrange-5 font-semibold"
+            className="hover:text-darkOrange-5 font-semibold"
           >
             charter
           </a>
@@ -163,7 +163,7 @@ const OrganizeDialog = () => {
                 href="https://kutt.planb.network/BCERT-chart"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:hover:text-darkOrange-5 font-semibold"
+                className="hover:text-darkOrange-5 font-semibold"
               >
                 charter
               </a>
