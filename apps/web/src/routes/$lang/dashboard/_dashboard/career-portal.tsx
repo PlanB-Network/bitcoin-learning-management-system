@@ -1030,7 +1030,7 @@ function CareerPortal() {
                     }
                   }}
                 />
-                <div className="flex items-center rounded-[10px] overflow-hidden max-w-[614px] w-full md:hover:shadow-course-navigation-sm h-[46px]">
+                <div className="flex items-center rounded-[10px] overflow-hidden max-w-[614px] w-full hover:shadow-course-navigation-sm h-[46px]">
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}

@@ -799,7 +799,7 @@ function CouponCard({
           </div>
         </div>
 
-        <div className="flex flex-col gap-1.5 items-end flex-shrink-0">
+        <div className="flex flex-col gap-1.5 items-end shrink-0">
           <Button
             variant="outline"
             size="s"

@@ -141,7 +141,7 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
           'bg-white',
           'text-black',
           'rounded',
-          'shadow-sm',
+          'shadow-xs',
         );
       }
 

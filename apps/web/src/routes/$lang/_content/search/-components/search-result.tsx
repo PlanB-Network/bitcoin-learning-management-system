@@ -15,7 +15,7 @@ export const SearchResult = ({ item, index }: SearchResultProps) => {
 
   return (
     <a
-      className="block rounded-lg p-2 hover:bg-maroon-10 border border-transparent focus:border-newOrange-1 focus:outline-none"
+      className="block rounded-lg p-2 hover:bg-maroon-10 border border-transparent focus:border-newOrange-1 focus:outline-hidden"
       href={`${item.document.link}#:~:text=${item.highlight.body?.matched_tokens?.[0] ?? item.document.title}`}
       target="_blank"
       rel="noreferrer"

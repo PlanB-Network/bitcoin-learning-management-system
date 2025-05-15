@@ -160,7 +160,7 @@ const WrittenFeedbacks = ({
                 {t('dashboard.teacher.reviews.publicComment')}
               </TextTag>
             </div>
-            <div className="flex flex-col justify-between gap-3 p-3 w-full bg-newGray-5 rounded-sm">
+            <div className="flex flex-col justify-between gap-3 p-3 w-full bg-newGray-5 rounded-xs">
               <p className="body-16px text-newBlack-3">
                 &quot;
                 {feedback.teacherComment || "User didn't add comment."}

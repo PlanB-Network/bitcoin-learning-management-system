@@ -17,7 +17,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
   return (
     <div
       className={cn(
-        'max-md:h-full md:relative group min-w-[288px] min-[622px]:max-w-[288px] md:min-w-[250px] md:max-w-[254px] flex md:flex-col gap-4 md:gap-8 px-2 py-1.5 md:p-0 md:hover:bg-darkOrange-10 md:hover:shadow-sm-card-dark border grow shrink-0 border-transparent md:hover:border-darkOrange-6 rounded-2xl transition-all overflow-hidden',
+        'max-md:h-full md:relative group min-w-[288px] min-[622px]:max-w-[288px] md:min-w-[250px] md:max-w-[254px] flex md:flex-col gap-4 md:gap-8 px-2 py-1.5 md:p-0 hover:bg-darkOrange-10 hover:shadow-sm-card-dark border grow shrink-0 border-transparent hover:border-darkOrange-6 rounded-2xl transition-all overflow-hidden',
         props.className,
       )}
     >

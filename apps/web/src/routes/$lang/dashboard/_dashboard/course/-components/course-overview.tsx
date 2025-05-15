@@ -250,7 +250,7 @@ const CourseAnnouncementItem = ({
     <div key={announcement.id} className="relative flex flex-col">
       <article
         className={cn(
-          'group flex w-full md:hover:bg-darkOrange-0 hover:border-darkOrange-4 md:hover:border-l-2 py-1.5 px-4 md:p-4',
+          'group flex w-full hover:bg-darkOrange-0 hover:border-darkOrange-4 hover:border-l-2 py-1.5 px-4 md:p-4',
         )}
       >
         <div className="flex flex-col gap-2.5 md:px-4 grow">

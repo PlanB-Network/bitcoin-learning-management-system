@@ -29,7 +29,7 @@ interface CategoryItemListProps {
 }
 
 const itemStyles = cva(
-  'flex flex-col justify-center items-center gap-3 transition-all bg-darkOrange-10 md:hover:bg-darkOrange-9 border border-darkOrange-9 md:hover:border-darkOrange-8 rounded-[15px]',
+  'flex flex-col justify-center items-center gap-3 transition-all bg-darkOrange-10 hover:bg-darkOrange-9 border border-darkOrange-9 hover:border-darkOrange-8 rounded-[15px]',
 );
 
 const CategoryItem: React.FC<CategoryItemProps> = ({

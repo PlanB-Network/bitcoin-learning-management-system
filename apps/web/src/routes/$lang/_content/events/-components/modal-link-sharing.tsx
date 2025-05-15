@@ -30,7 +30,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, url, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center size-full bg-black/30 backdrop-blur-sm overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center size-full bg-black/30 backdrop-blur-xs overflow-hidden">
       <div className="relative bg-black rounded-lg p-6 w-80 shadow-lg max-h-screen">
         <button
           type="button"
@@ -49,7 +49,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, url, onClose }) => {
             type="text"
             value={url}
             readOnly
-            className="grow text-gray-200 bg-black border-none outline-none"
+            className="grow text-gray-200 bg-black border-none outline-hidden"
           />
           <button
             onClick={copyToClipboard}

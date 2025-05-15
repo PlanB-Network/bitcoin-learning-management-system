@@ -40,6 +40,7 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
+  "tailwindCSS.experimental.configFile": "packages/ui/src/styles/global.css",
   "i18n-ally.keysInUse": [
     "publicCommunication.blogCategories.all",
     "publicCommunication.blogCategories.feature",

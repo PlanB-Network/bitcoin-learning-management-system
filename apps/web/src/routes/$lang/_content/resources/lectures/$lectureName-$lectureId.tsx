@@ -152,7 +152,7 @@ function Lecture() {
                     alt={t('imagesAlt.bookCover')}
                     src={resourceImgUrl(lecture)}
                   />
-                  <div className="shrink-0 md:hidden absolute top-[13px] right-[12px] flex flex-col gap-1 p-1 bg-white rounded-sm">
+                  <div className="shrink-0 md:hidden absolute top-[13px] right-[12px] flex flex-col gap-1 p-1 bg-white rounded-xs">
                     {lecture.languages.map((language) => (
                       <Flag key={language} code={language} size="m" />
                     ))}

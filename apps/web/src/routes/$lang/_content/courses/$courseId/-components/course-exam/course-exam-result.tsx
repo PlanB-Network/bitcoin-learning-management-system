@@ -234,7 +234,7 @@ export const TimeStampDialog = ({
           className={cn(
             'group relative justify-center text-nowrap',
             onHoverAddColor
-              ? 'text-newBlack-1 md:hover:text-darkOrange-5 md:hover:underline md:hover:decoration-darkOrange-5 font-medium'
+              ? 'text-newBlack-1 hover:text-darkOrange-5 hover:underline hover:decoration-darkOrange-5 font-medium'
               : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
           )}
         >

@@ -646,7 +646,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                   alt="Congratulations"
                   className="absolute w-full top-1 object-cover aspect-auto md:hidden"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-[#e2e2e2]/80 backdrop-blur-sm md:backdrop-blur-md flex items-center justify-center md:gap-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-[#e2e2e2]/80 backdrop-blur-xs md:backdrop-blur-md flex items-center justify-center md:gap-6">
                   <img
                     src={LockGif}
                     alt="Lock"
