@@ -27,7 +27,7 @@
     "@blms/service-content": "workspace:*",
     "@blms/service-user": "workspace:*",
     "@blms/shared": "workspace:*",
-    "@trpc/server": "^11.1.1",
+    "@trpc/server": "^11.1.2",
     "argon2": "^0.41.1",
     "bech32": "^2.0.0",
     "bip39": "^3.1.0",
@@ -38,10 +38,10 @@
     "formidable": "^3.5.4",
     "jszip": "^3.10.1",
     "sharp": "^0.34.1",
-    "stripe": "^18.0.0",
+    "stripe": "^18.1.0",
     "superjson": "^2.2.2",
     "typesense": "^2.0.3",
-    "zod": "^3.24.3"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
