@@ -638,6 +638,20 @@
   );
 }
 
+@utility filter-white {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(805%)
+    hue-rotate(185deg) brightness(105%) contrast(101%);
+}
+
+@utility filter-black {
+  filter: brightness(0) saturate(100%) invert(0) sepia(0) contrast(100%);
+}
+
+@utility filter-newOrange1 {
+  filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1484%)
+    hue-rotate(3deg) brightness(105%) contrast(102%);
+}
+
 @layer components {
   mjx-container {
     @apply bg-white/20 p-1 rounded-lg leading-loose;
@@ -648,20 +662,6 @@
 }
 
 @layer utilities {
-  .filter-white {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(805%)
-      hue-rotate(185deg) brightness(105%) contrast(101%);
-  }
-
-  .filter-black {
-    filter: brightness(0) saturate(100%) invert(0) sepia(0) contrast(100%);
-  }
-
-  .filter-newOrange1 {
-    filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1484%)
-      hue-rotate(3deg) brightness(105%) contrast(102%);
-  }
-
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
