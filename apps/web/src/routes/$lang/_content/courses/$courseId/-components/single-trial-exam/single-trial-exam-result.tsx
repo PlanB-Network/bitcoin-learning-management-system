@@ -39,6 +39,9 @@ export const SingleTrialExamResult = ({
     });
   };
 
+  const now = Date.now();
+  const THREE_DAYS = 3 * 24 * 60 * 60 * 1000;
+
   return (
     <div className="flex flex-col">
       {isExamResultsFetched && examResults && (
@@ -75,23 +78,25 @@ export const SingleTrialExamResult = ({
               </>
             </article>
           </section>
-          {examResults.finalized && (
-            <section className="flex flex-col w-full mt-7">
-              <h2 className="body-medium-16px md:text-[34px] text-newBlack-1 leading-tight tracking-[0.25px]">
-                {t('courses.exam.answersReview')}
-              </h2>
-              <Divider
-                className="mt-1 md:mt-2.5 mb-2.5 md:mb-10"
-                width="w-full"
-                mode="light"
-              />
-              <AnswersReviewPanel
-                examResults={examResults}
-                hasBackground
-                className="p-2.5 md:p-5"
-              />
-            </section>
-          )}
+          {examResults.finalized &&
+            examResults.startedAt &&
+            now > examResults.startedAt.getTime() + THREE_DAYS && (
+              <section className="flex flex-col w-full mt-7">
+                <h2 className="body-medium-16px md:text-[34px] text-newBlack-1 leading-tight tracking-[0.25px]">
+                  {t('courses.exam.answersReview')}
+                </h2>
+                <Divider
+                  className="mt-1 md:mt-2.5 mb-2.5 md:mb-10"
+                  width="w-full"
+                  mode="light"
+                />
+                <AnswersReviewPanel
+                  examResults={examResults}
+                  hasBackground
+                  className="p-2.5 md:p-5"
+                />
+              </section>
+            )}
           <Link
             className={cn('flex w-fit max-md:mx-auto md:ml-auto mt-8')}
             to={'/courses/$courseId/$chapterId'}
