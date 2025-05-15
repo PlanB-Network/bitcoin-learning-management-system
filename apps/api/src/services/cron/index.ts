@@ -25,6 +25,7 @@ import {
 
 import { NotificationType } from '@blms/constants';
 import type { Dependencies } from '#src/dependencies.js';
+import { isSpecialChapter } from '#src/utils/chapter.js';
 
 export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
@@ -86,6 +87,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
           for (const chapter of chaptersInNotificationWindow) {
             if (!chapter.startDate) continue;
+            if (isSpecialChapter(chapter)) continue;
 
             await insertUserNotifications({
               uids,
@@ -105,6 +107,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
           for (const chapter of chaptersStartingSoon) {
             if (!chapter.startDate) continue;
+            if (isSpecialChapter(chapter)) continue;
 
             if (uidsToNotifyPlatform.length > 0) {
               await insertUserNotifications({
