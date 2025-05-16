@@ -1,0 +1,13 @@
+<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="bouton modify">
+<circle id="Ellipse 218" cx="17.5" cy="17.5" r="17.5" transform="rotate(90 17.5 17.5)" fill="#91A5D4"/>
+<g id="stylus">
+<mask id="mask0_128_30052" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="9" y="9" width="17" height="17">
+<rect id="Bounding box" x="9.09961" y="9.09998" width="16.8" height="16.8" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_128_30052)">
+<path id="stylus_2" d="M12.0392 23.7825C11.7942 23.8409 11.5812 23.7796 11.4004 23.5988C11.2196 23.4179 11.1583 23.205 11.2167 22.96L11.8292 19.985L15.0142 23.17L12.0392 23.7825ZM16.1517 22.3125L12.6867 18.8475L19.9142 11.62C20.1825 11.3517 20.515 11.2175 20.9117 11.2175C21.3083 11.2175 21.6408 11.3517 21.9092 11.62L23.3792 13.09C23.6475 13.3584 23.7817 13.6909 23.7817 14.0875C23.7817 14.4842 23.6475 14.8167 23.3792 15.085L16.1517 22.3125Z" fill="white"/>
+</g>
+</g>
+</g>
+</svg>

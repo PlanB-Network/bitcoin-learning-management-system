@@ -54,6 +54,46 @@ export const canAccess = (
       );
     }
 
+    // Community role has access to Student resources
+    // Plus specific contributor permissions
+    if (role === UserRole.Community) {
+      // Community users can access Student resources by default
+      if (requiredRole === UserRole.Student) {
+        return true;
+      }
+
+      // If trying to access Community resources, check specific permissions
+      if (requiredRole === UserRole.Community) {
+        // If no specific permissions required, grant access
+        if (
+          !requiredPermissions ||
+          (typeof requiredPermissions === 'string'
+            ? !requiredPermissions
+            : !requiredPermissions.length)
+        ) {
+          return true;
+        }
+
+        // Reject if user has no permissions
+        if (!user.permissions?.length) {
+          return false;
+        }
+
+        // Check if user has required permission (string)
+        if (typeof requiredPermissions === 'string') {
+          return user.permissions.includes(requiredPermissions);
+        }
+
+        // Check if user has required permissions (array)
+        return requiredPermissions.every((permission) =>
+          user.permissions!.includes(permission),
+        );
+      }
+
+      // Community users cannot access other role resources by default
+      return false;
+    }
+
     // Other roles can only access their own resources or student resources
     return role === requiredRole || requiredRole === UserRole.Student;
   };

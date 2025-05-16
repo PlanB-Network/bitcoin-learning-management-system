@@ -340,3 +340,19 @@ export const minimalCourseAssignmentWithStudentsSchema = courseAssignmentSchema
       ),
     }),
   );
+export const basicCourseSchema = z.object({
+  id: z.string(),
+  index: z.string(),
+  topic: z.string(),
+  originalLanguage: z.string(),
+  isArchived: z.boolean(),
+  publishedAt: z.date().nullable(),
+  lastCommit: z.string(),
+  name: z.string(),
+  goal: z.string(),
+});
+
+export const courseTranslationResponseSchema = z.object({
+  courseId: z.string(),
+  language: z.string(),
+});

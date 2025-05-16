@@ -13,11 +13,49 @@ import type {
   TypesenseConfig,
 } from '@blms/types';
 
+// Set environment variables directly if not set
+if (!process.env.NODE_ENV) {
+  console.log('Setting NODE_ENV to development');
+  process.env.NODE_ENV = 'development';
+}
+
+// Set PostgreSQL environment variables directly if not set
+if (!process.env.POSTGRES_DB) {
+  console.log('Setting PostgreSQL environment variables directly');
+  process.env.POSTGRES_HOST = 'localhost';
+  process.env.POSTGRES_PORT = '5432';
+  process.env.POSTGRES_DB = 'postgres';
+  process.env.POSTGRES_USER = 'postgres';
+  process.env.POSTGRES_PASSWORD = 'postgres';
+}
+
+// Set other required variables
+if (!process.env.DATA_REPOSITORY_URL) {
+  process.env.DATA_REPOSITORY_URL =
+    'https://github.com/PlanB-Network/bitcoin-educational-content.git';
+}
+
+if (!process.env.S3_ENDPOINT) {
+  process.env.S3_ENDPOINT = 'http://localhost:9000';
+  process.env.S3_REGION = 'us-east-1';
+  process.env.S3_BUCKET = 'blms';
+  process.env.S3_ACCESS_KEY = 'minioadmin';
+  process.env.S3_SECRET_KEY = 'minioadmin';
+}
+
+// Set Stripe secret
+if (!process.env.STRIPE_SECRET) {
+  process.env.STRIPE_SECRET = 'sk_test_mock_key';
+  process.env.VITE_STRIPE_PUBLIC = 'pk_test_mock_key';
+}
+
 function getenv<
   T,
   R = T extends unknown ? string : T extends null ? string | null : T,
 >(name: string, fallback?: T): R {
   const value = process.env[name] ?? '';
+
+  console.log(`Getting env var ${name}: ${value || '(empty)'}`);
 
   // If the value is empty and no fallback is provided, throw an error
   if (!value && fallback === undefined) {

@@ -512,3 +512,20 @@ export interface MinimalCourseAssignmentWithStudents {
     username: string;
   }[];
 }
+
+export interface BasicCourse {
+  id: string;
+  index: string;
+  topic: string;
+  originalLanguage: string;
+  isArchived: boolean;
+  publishedAt: Date | null;
+  lastCommit: string;
+  name: string;
+  goal: string;
+}
+
+export interface CourseTranslationResponse {
+  courseId: string;
+  language: string;
+}
