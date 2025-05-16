@@ -3,9 +3,8 @@
     "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
-    "noEmit": true,
-    "sourceMap": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "allowImportingTsExtensions": true
   },
   "extends": "../../tsconfig.json",
   "include": ["src", "global.d.ts"],

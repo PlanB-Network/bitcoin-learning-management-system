@@ -13,9 +13,11 @@ import {
   JobCategory,
   JobName,
   NotificationType,
+  ReviewStatus,
   StudentGroup,
   TeachingFormat,
   TokenType,
+  TranslationStatus,
   UserPermission,
   UserRole,
   VideoProvider,
@@ -2231,5 +2233,264 @@ export const usersScheduledCourseNotifications = users.table(
     timezone: t.varchar({ length: 50 }).notNull(),
     type: notificationTypeEnum().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+);
+
+// CONTRIBUTE APP SCHEMA EXTENSIONS
+
+// Enums for translation workflow
+export const translationStatusEnum = pgNativeEnum(
+  'translation_status',
+  TranslationStatus,
+);
+export const reviewStatusEnum = pgNativeEnum('review_status', ReviewStatus);
+export const assignmentStatusEnum = pgNativeEnum(
+  'assignment_status',
+  AssignmentStatus,
+);
+
+// Content schema extensions for translations
+export const contentCourseTranslations = content.table(
+  'course_translations',
+  (t) => ({
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    language: t.varchar({ length: 10 }).notNull(),
+    status: translationStatusEnum().default(TranslationStatus.Todo).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.courseId, table.language],
+    }),
+  }),
+);
+
+export const contentCourseTranslationChapters = content.table(
+  'course_translation_chapters',
+  (t) => ({
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    language: t.varchar({ length: 10 }).notNull(),
+    partId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseParts.partId, {
+        onDelete: 'cascade',
+      }),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
+    status: translationStatusEnum().default(TranslationStatus.Todo).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.courseId, table.language, table.partId, table.chapterId],
+    }),
+    // Foreign key to course_translations using composite key
+    translationFK: foreignKey({
+      columns: [table.courseId, table.language],
+      foreignColumns: [
+        contentCourseTranslations.courseId,
+        contentCourseTranslations.language,
+      ],
+      name: 'course_translation_chapters_to_translations_fk',
+    }).onDelete('cascade'),
+  }),
+);
+
+// Users schema extensions for translation assignments and reviews
+export const usersTranslationAssignments = users.table(
+  'translation_assignments',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    language: t.varchar({ length: 10 }).notNull(),
+    assigneeId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    assignerId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    status: assignmentStatusEnum()
+      .default(AssignmentStatus.Requested)
+      .notNull(),
+    assignedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    completedAt: t.timestamp({ withTimezone: true }),
+    rejectionReason: t.text(),
+  }),
+  (table) => ({
+    uniqueAssignment: unique().on(
+      table.courseId,
+      table.language,
+      table.assigneeId,
+    ),
+    // Foreign key to course_translations using composite key
+    translationFK: foreignKey({
+      columns: [table.courseId, table.language],
+      foreignColumns: [
+        contentCourseTranslations.courseId,
+        contentCourseTranslations.language,
+      ],
+      name: 'translation_assignments_to_translations_fk',
+    }).onDelete('cascade'),
+  }),
+);
+
+export const usersTranslationChapterAssignments = users.table(
+  'translation_chapter_assignments',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    language: t.varchar({ length: 10 }).notNull(),
+    partId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseParts.partId, {
+        onDelete: 'cascade',
+      }),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
+    assigneeId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    assignerId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    status: assignmentStatusEnum()
+      .default(AssignmentStatus.Requested)
+      .notNull(),
+    assignedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    completedAt: t.timestamp({ withTimezone: true }),
+    rejectionReason: t.text(),
+  }),
+  (table) => ({
+    uniqueAssignment: unique().on(
+      table.courseId,
+      table.language,
+      table.partId,
+      table.chapterId,
+      table.assigneeId,
+    ),
+    // Foreign key to course_translation_chapters using composite key
+    translationChapterFK: foreignKey({
+      columns: [table.courseId, table.language, table.partId, table.chapterId],
+      foreignColumns: [
+        contentCourseTranslationChapters.courseId,
+        contentCourseTranslationChapters.language,
+        contentCourseTranslationChapters.partId,
+        contentCourseTranslationChapters.chapterId,
+      ],
+      name: 'translation_chapter_assignments_to_translation_chapters_fk',
+    }).onDelete('cascade'),
+  }),
+);
+
+export const usersTranslationReviews = users.table(
+  'translation_reviews',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    language: t.varchar({ length: 10 }).notNull(),
+    reviewerId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    status: reviewStatusEnum().notNull(),
+    feedback: t.text(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    uniqueTranslationReviewer: unique().on(
+      table.courseId,
+      table.language,
+      table.reviewerId,
+    ),
+    // Foreign key to course_translations using composite key
+    translationFK: foreignKey({
+      columns: [table.courseId, table.language],
+      foreignColumns: [
+        contentCourseTranslations.courseId,
+        contentCourseTranslations.language,
+      ],
+      name: 'translation_reviews_to_translations_fk',
+    }).onDelete('cascade'),
+  }),
+);
+
+export const usersReviewerLanguages = users.table(
+  'reviewer_languages',
+  (t) => ({
+    reviewerId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    languageCode: t
+      .text()
+      .notNull()
+      .references(() => usersLanguages.code, {
+        onDelete: 'cascade',
+      }),
+    proficiencyLevel: t.integer().default(1).notNull(),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.reviewerId, table.languageCode],
+    }),
   }),
 );

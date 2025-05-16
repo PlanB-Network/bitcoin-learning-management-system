@@ -3,3 +3,4 @@
 
 export type * from './content/index.js';
 export type * from './users/index.js';
+export type * from './content/translations.js';

@@ -65,6 +65,8 @@ services:
       - /home/node/apps/api/node_modules/
       - ./packages/service-content/src:/home/node/packages/service-content/src
       - ./packages/database/src:/home/node/packages/database/src
+      - ./packages/database/drizzle:/home/node/packages/database/drizzle
+      - ./packages/database/dist:/home/node/packages/database/dist
       - ./packages/schemas/src:/home/node/packages/schemas/src
       - ./packages/types/src:/home/node/packages/types/src
       - ./packages/service-user/src:/home/node/packages/service-user/src

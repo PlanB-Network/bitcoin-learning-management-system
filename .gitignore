@@ -53,3 +53,4 @@ logs
 *.asc
 
 storybook-static
+.cursor

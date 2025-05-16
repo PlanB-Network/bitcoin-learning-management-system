@@ -1,4 +1,5 @@
 import {
+  basicCourseSchema,
   courseAssignmentSchema,
   courseChapterResponseSchema,
   courseResponseSchema,
@@ -20,11 +21,13 @@ import {
   createGetCourseChapterQuizQuestionsCount,
   createGetCourseChapters,
   createGetCourses,
+  createGetCoursesBasic,
   createGetProfessorCourses,
   createGetPublicCourseReviews,
   createGetTeacherCourseReviews,
 } from '@blms/service-content';
 import type {
+  BasicCourse,
   CourseAssignment,
   CourseChapterResponse,
   CourseResponse,
@@ -221,6 +224,19 @@ const calculateCourseChapterSeatsProcedure = publicProcedure
     return createCalculateCourseChapterSeats(ctx.dependencies)();
   });
 
+const getCoursesBasicProcedure = publicProcedure
+  .input(
+    z
+      .object({
+        language: z.string().optional(),
+      })
+      .optional(),
+  )
+  .output<Parser<BasicCourse[]>>(basicCourseSchema.array())
+  .query(({ ctx, input }) => {
+    return createGetCoursesBasic(ctx.dependencies)(input?.language);
+  });
+
 export const coursesRouter = createTRPCRouter({
   calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
   getCourse: getCourseProcedure,
@@ -236,4 +252,5 @@ export const coursesRouter = createTRPCRouter({
   getProfessorCourses: getProfessorCoursesProcedure,
   getPublicCourseReviews: getPublicCourseReviewsProcedure,
   getTeacherCourseReviews: getTeacherCourseReviewsProcedure,
+  getCoursesBasic: getCoursesBasicProcedure,
 });
