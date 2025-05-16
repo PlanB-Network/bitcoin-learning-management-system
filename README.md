@@ -120,4 +120,5 @@ Once done, create the associated types running :
 
 ### Run SQL queries
 
+To use studio run `pnpm dev:db:studio`
 To open psql, run `docker exec -it bitcoin-learning-management-system-postgres-1 psql -U postgres -d postgres`
