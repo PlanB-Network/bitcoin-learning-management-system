@@ -34,7 +34,7 @@ export const SingleTrialExamWorkflow = ({
     trpc.user.courses.getExamQuestions.useQuery(
       {
         examId: previousExamResults?.id ?? '',
-        language: chapter.language,
+        language: chapter.course.originalLanguage,
       },
       {
         enabled: !!previousExamResults?.id,

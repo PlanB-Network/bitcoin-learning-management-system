@@ -55,10 +55,11 @@ export const SingleTrialExamPresentation = ({
     chapter.endDate?.getTime() > now.getTime();
 
   async function onStart() {
+    // TODO CHECK LANGUAGE LATER (only original? )
     await startExamAttempt.mutateAsync({
       courseId: chapter.courseId,
       chapterId: chapter.chapterId,
-      language: i18n.language || 'en',
+      language: chapter.course.originalLanguage,
       examType: ExamType.SingleTrial,
     });
   }
