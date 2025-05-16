@@ -4,7 +4,7 @@ import { Alert, AlertDescription, AlertTitle, Divider, Loader } from '@blms/ui';
 import { t } from 'i18next';
 import { AlertCircle } from 'lucide-react';
 import { useContext, useEffect } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -23,8 +23,6 @@ export const SingleTrialExamPresentation = ({
 
   onStartExam: () => void;
 }) => {
-  const { i18n } = useTranslation();
-
   const { user } = useContext(AppContext);
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
