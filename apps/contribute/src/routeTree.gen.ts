@@ -15,8 +15,11 @@ import { Route as LangContentEditRouteImport } from './routes/$lang/content/edit
 import { Route as LangContentCreateRouteImport } from './routes/$lang/content/create';
 import { Route as LangContentTranslateIndexRouteImport } from './routes/$lang/content/translate/index';
 import { Route as LangContentTranslateCourseIdRouteImport } from './routes/$lang/content/translate/$courseId';
+<<<<<<< HEAD
 import { Route as LangContentTranslateCourseIdChapterIdRouteImport } from './routes/$lang/content/translate/$courseId/$chapterId';
 import { Route as LangContentTranslateCourseIdChapterIdCompareSlideIndexRouteImport } from './routes/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
+=======
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
 
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
@@ -50,6 +53,7 @@ const LangContentTranslateCourseIdRoute =
     path: '/$lang/content/translate/$courseId',
     getParentRoute: () => rootRouteImport,
   } as any);
+<<<<<<< HEAD
 const LangContentTranslateCourseIdChapterIdRoute =
   LangContentTranslateCourseIdChapterIdRouteImport.update({
     id: '/$chapterId',
@@ -62,26 +66,38 @@ const LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute =
     path: '/compare/$slideIndex',
     getParentRoute: () => LangContentTranslateCourseIdChapterIdRoute,
   } as any);
+=======
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
 
 export interface FileRoutesByFullPath {
   '/$lang': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
   '/$lang/content': typeof LangContentIndexRoute;
+<<<<<<< HEAD
   '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
   '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
   '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRouteWithChildren;
   '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex': typeof LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute;
+=======
+  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRoute;
+  '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
 }
 export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
   '/$lang/content': typeof LangContentIndexRoute;
+<<<<<<< HEAD
   '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
   '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
   '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRouteWithChildren;
   '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex': typeof LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute;
+=======
+  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRoute;
+  '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -89,10 +105,15 @@ export interface FileRoutesById {
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
   '/$lang/content/': typeof LangContentIndexRoute;
+<<<<<<< HEAD
   '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
   '/$lang/content/translate/': typeof LangContentTranslateIndexRoute;
   '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRouteWithChildren;
   '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex': typeof LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute;
+=======
+  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRoute;
+  '/$lang/content/translate/': typeof LangContentTranslateIndexRoute;
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -102,9 +123,13 @@ export interface FileRouteTypes {
     | '/$lang/content/edit'
     | '/$lang/content'
     | '/$lang/content/translate/$courseId'
+<<<<<<< HEAD
     | '/$lang/content/translate'
     | '/$lang/content/translate/$courseId/$chapterId'
     | '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
+=======
+    | '/$lang/content/translate';
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/$lang'
@@ -112,9 +137,13 @@ export interface FileRouteTypes {
     | '/$lang/content/edit'
     | '/$lang/content'
     | '/$lang/content/translate/$courseId'
+<<<<<<< HEAD
     | '/$lang/content/translate'
     | '/$lang/content/translate/$courseId/$chapterId'
     | '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
+=======
+    | '/$lang/content/translate';
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
   id:
     | '__root__'
     | '/$lang/'
@@ -122,9 +151,13 @@ export interface FileRouteTypes {
     | '/$lang/content/edit'
     | '/$lang/content/'
     | '/$lang/content/translate/$courseId'
+<<<<<<< HEAD
     | '/$lang/content/translate/'
     | '/$lang/content/translate/$courseId/$chapterId'
     | '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
+=======
+    | '/$lang/content/translate/';
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -132,7 +165,11 @@ export interface RootRouteChildren {
   LangContentCreateRoute: typeof LangContentCreateRoute;
   LangContentEditRoute: typeof LangContentEditRoute;
   LangContentIndexRoute: typeof LangContentIndexRoute;
+<<<<<<< HEAD
   LangContentTranslateCourseIdRoute: typeof LangContentTranslateCourseIdRouteWithChildren;
+=======
+  LangContentTranslateCourseIdRoute: typeof LangContentTranslateCourseIdRoute;
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
   LangContentTranslateIndexRoute: typeof LangContentTranslateIndexRoute;
 }
 
@@ -180,6 +217,7 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentTranslateCourseIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+<<<<<<< HEAD
     '/$lang/content/translate/$courseId/$chapterId': {
       id: '/$lang/content/translate/$courseId/$chapterId';
       path: '/$chapterId';
@@ -227,13 +265,22 @@ const LangContentTranslateCourseIdRouteWithChildren =
     LangContentTranslateCourseIdRouteChildren,
   );
 
+=======
+  }
+}
+
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
 const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangContentCreateRoute: LangContentCreateRoute,
   LangContentEditRoute: LangContentEditRoute,
   LangContentIndexRoute: LangContentIndexRoute,
+<<<<<<< HEAD
   LangContentTranslateCourseIdRoute:
     LangContentTranslateCourseIdRouteWithChildren,
+=======
+  LangContentTranslateCourseIdRoute: LangContentTranslateCourseIdRoute,
+>>>>>>> 7aeada30f (feat: implement comprehensive course translation and management system)
   LangContentTranslateIndexRoute: LangContentTranslateIndexRoute,
 };
 export const routeTree = rootRouteImport

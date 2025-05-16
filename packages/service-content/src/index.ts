@@ -16,3 +16,4 @@ export * from './lib/search.js';
 export * from './lib/translations/services/index.js';
 export * from './lib/tutorials/services/index.js';
 export * from './lib/videos/services/index.js';
+export * from './lib/translations/services/index.js';
