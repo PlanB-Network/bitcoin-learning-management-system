@@ -1,4 +1,4 @@
-import { sql } from '@blms/database';
+import { firstRow, sql } from '@blms/database';
 import type {
   CourseExamResults,
   CourseExamResultsExtended,
@@ -30,9 +30,13 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
       return null;
     }
 
-    const [examResult] = await postgres.exec(
-      getExamResultsQuery({ examId: lastExam.id }),
-    );
+    const examResult = await postgres
+      .exec(getExamResultsQuery({ examId: lastExam.id }))
+      .then(firstRow);
+
+    if (!examResult) {
+      return null;
+    }
 
     const examTimestamps = await postgres.exec(
       sql<UserExamTimestamp[]>`
