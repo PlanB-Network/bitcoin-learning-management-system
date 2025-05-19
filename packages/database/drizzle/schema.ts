@@ -2068,7 +2068,6 @@ export const contentProofreadingContributor = content.table(
     proofreadingId: t
       .uuid()
       .notNull()
-      .unique()
       .references(() => contentProofreading.id, {
         onDelete: 'cascade',
       }),
