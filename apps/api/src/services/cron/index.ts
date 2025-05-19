@@ -24,8 +24,8 @@ import {
 } from '@blms/service-user';
 
 import { NotificationType } from '@blms/constants';
+import { isSpecialChapter } from '@blms/shared';
 import type { Dependencies } from '#src/dependencies.js';
-import { isSpecialChapter } from '#src/utils/chapter.js';
 
 export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
