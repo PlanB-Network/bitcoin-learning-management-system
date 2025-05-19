@@ -1699,7 +1699,7 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  // chapterId for single trial exam only
+  // chapterId mandatory for single trial exams
   chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
     onDelete: 'cascade',
   }),
