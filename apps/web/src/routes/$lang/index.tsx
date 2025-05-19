@@ -90,7 +90,7 @@ function Home() {
         >
           <div className="col-span-3 hidden items-start lg:flex">
             <img
-              className="mt-9 h-[100] w-auto"
+              className="mt-9 h-100 w-auto"
               src={HeaderLeft}
               alt={t('imagesAlt.printedCircuits')}
               loading="lazy"
@@ -123,7 +123,7 @@ function Home() {
               loading="lazy"
             />
             <img
-              className="absolute left-0 mt-9 h-[100] w-auto"
+              className="absolute left-0 mt-9 h-100 w-auto"
               src={HeaderRight}
               alt={t('imagesAlt.printedCircuits')}
               loading="lazy"
