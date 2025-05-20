@@ -27,7 +27,7 @@ import {
   cn,
   customToast,
 } from '@blms/ui';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { useContext, useEffect, useRef, useState } from 'react';
@@ -286,7 +286,7 @@ function CareerPortal() {
   }, {});
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(schemas[step - 1]),
+    resolver: standardSchemaResolver(schemas[step - 1]),
     defaultValues: {
       firstName: '',
       lastName: '',

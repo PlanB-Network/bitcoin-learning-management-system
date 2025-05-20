@@ -1,5 +1,5 @@
 import { Button, Form, customToast } from '@blms/ui';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -24,7 +24,6 @@ function ChangeEmailPreferences() {
   const params = Route.useParams();
 
   const FormSchema = z.object({
-    platformNotifications: z.array(z.string()).default([]),
     emailNotifications: z.array(z.string()).default([]),
   });
 
@@ -46,7 +45,7 @@ function ChangeEmailPreferences() {
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+    resolver: standardSchemaResolver(FormSchema),
     defaultValues: {
       emailNotifications: [],
     },

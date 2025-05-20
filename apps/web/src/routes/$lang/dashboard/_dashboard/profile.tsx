@@ -24,7 +24,7 @@ import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
-import { zodResolver } from '@hookform/resolvers/zod';
+import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkOutline } from 'react-icons/io5';
 import { z } from 'zod';
@@ -336,7 +336,7 @@ const NotificationSettings = () => {
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+    resolver: standardSchemaResolver(FormSchema),
     defaultValues: {
       platformNotifications: getDefaultPlatformNotifications(),
       emailNotifications: getDefaultEmailNotifications(),
