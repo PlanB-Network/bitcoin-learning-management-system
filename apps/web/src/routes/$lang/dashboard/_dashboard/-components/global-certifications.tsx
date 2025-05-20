@@ -97,7 +97,7 @@ export const GlobalCertifications = () => {
         </p>
 
         <div className="mt-10">
-          <table className="overflow-scroll table-auto w-full max-w-5xl min-w-[400px] md:min-w-[600px]">
+          <table className="overflow-scroll table-auto w-full max-w-5xl md:min-w-[600px]">
             <TableHead />
             <tbody>
               {exams &&
@@ -185,7 +185,7 @@ const BCertResult = ({
     <React.Fragment>
       <tr
         className={cn(
-          'mobile-body2 md:desktop-body1 hover:font-medium',
+          'body-14px md:desktop-body1 hover:font-medium align-top cursor-pointer',
           isExamOpen[index] ? 'bg-newGray-6' : '',
         )}
         onClick={() => handleExamOpen(index)}
@@ -198,30 +198,28 @@ const BCertResult = ({
         // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="button"
       >
-        <td className="py-6 pr-1.5">{bcertResult.date.toLocaleDateString()}</td>
-        <td className="">{bcertResult.location}</td>
-        <td className="max-md:hidden">
+        <td className="py-4">{bcertResult.date.toLocaleDateString()}</td>
+        <td className="pl-3 overflow-hidden py-4">{bcertResult.location}</td>
+        <td className="max-md:hidden pl-3 py-4">
           <div className="">{bcertResult.id.slice(0, 8)}</div>
         </td>
         <td
           className={cn(
-            'font-medium items-center h-full',
+            'font-medium items-center pl-3 py-4',
             hasPassed ? 'text-brightGreen-6' : 'text-red-5',
           )}
         >
-          <span className="float-end">
-            {(examScore * 100) / (bcertResult.results.length * 20)}%
-          </span>
+          {(examScore * 100) / (bcertResult.results.length * 20)}%
         </td>
         <td
           className={cn(
-            'italic pl-8 max-md:hidden',
+            'italic pl-3 md:pl-8 py-4 max-md:hidden',
             hasPassed ? 'text-brightGreen-6' : 'text-red-5',
           )}
         >
           {hasPassed ? t('words.passed') : t('words.failed')}
         </td>
-        <td>
+        <td className="py-4">
           <div>
             <IoIosArrowDown
               size={24}
@@ -502,7 +500,7 @@ const ExamTicket = ({
     <>
       <tr
         className={cn(
-          'mobile-body2 md:desktop-body1 hover:font-medium',
+          'body-14px md:desktop-body1 hover:font-medium align-top cursor-pointer',
           isTicketOpen[index] ? 'bg-newGray-6' : '',
         )}
         onClick={() => handleTicketOpen(index)}
@@ -515,18 +513,18 @@ const ExamTicket = ({
         // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="button"
       >
-        <td>{examTicket.date.toLocaleDateString()}</td>
-        <td>{examTicket.location}</td>
-        <td className="max-md:hidden" />
-        <td className="max-md:hidden" />
-        <td className="italic pl-8">
+        <td className="py-4">{examTicket.date.toLocaleDateString()}</td>
+        <td className="pl-3 overflow-hidden py-4">{examTicket.location}</td>
+        <td className="max-md:hidden py-4" />
+        <td className="max-md:hidden py-4" />
+        <td className="italic pl-3 md:pl-8 py-4">
           {examTicket.date.getTime() > Date.now() ? (
             <span>{t('words.booked')}</span>
           ) : (
             <span>{t('words.inReview')}</span>
           )}
         </td>
-        <td>
+        <td className="py-4">
           <div>
             <IoIosArrowDown
               size={24}
@@ -544,7 +542,7 @@ const ExamTicket = ({
             <>
               <td colSpan={4}>
                 {examTicket.date.getTime() > Date.now() ? (
-                  <div className="flex flex-col items-center desktop-body1 mt-4">
+                  <div className="flex flex-col items-center text-center body-14px md:desktop-body1 mt-4">
                     <p className="font-medium">
                       {t('dashboard.credentials.seatBooked')}
                     </p>
@@ -554,8 +552,8 @@ const ExamTicket = ({
                     <span>{examTicket.addressLine1}</span>
                     <span>{examTicket.addressLine2}</span>
                     <span>{examTicket.addressLine3}</span>
-                    <span>
-                      {`${formatDate(examTicket.date)} at ${formatTime(examTicket.date, examTicket.timezone || 'UTC')} (${examTicket.timezone || 'UTC'})`}
+                    <span className="mt-5">
+                      {`on the ${formatDate(examTicket.date)} at ${formatTime(examTicket.date, examTicket.timezone || 'UTC')} (${examTicket.timezone || 'UTC'})`}
                     </span>
                     <SeeTicket />
                     <img
@@ -592,7 +590,7 @@ const ExamTicket = ({
               </td>
               <td className="pt-6 " colSpan={3}>
                 {examTicket.date.getTime() > Date.now() ? (
-                  <div className="items-center desktop-body1 flex flex-col justify-between py-[2px] w-fit">
+                  <div className="items-center text-center desktop-body1 flex flex-col justify-between py-[2px] w-fit">
                     <p className="font-medium">
                       {t('dashboard.credentials.seatBooked')}
                     </p>
@@ -603,7 +601,7 @@ const ExamTicket = ({
                     <span>{examTicket.addressLine2}</span>
                     <span>{examTicket.addressLine3}</span>
                     <span>
-                      {`${formatDate(examTicket.date)} at ${formatTime(examTicket.date, examTicket.timezone || 'UTC')} (${examTicket.timezone || 'UTC'}`}
+                      {`${formatDate(examTicket.date)} at ${formatTime(examTicket.date, examTicket.timezone || 'UTC')} (${examTicket.timezone || 'UTC'})`}
                     </span>
                     <SeeTicket />
                   </div>
@@ -652,33 +650,23 @@ const TableHead = () => {
     <thead>
       {isMobile ? (
         <tr className="border-b border-newGray-1 text-left">
-          <th className="w-2/12 py-2 mobile-subtitle2 md:desktop-typo2 pr-1.5">
-            {t('words.date')}
-          </th>
-          <th className="mobile-subtitle2 md:desktop-typo2 px-1.5">
-            {t('conferences.location')}
-          </th>
-          <th className="w-[8%] mobile-subtitle2 md:desktop-typo2 px-1.5">
+          <th className="w-2/12 py-2 body-14px-medium">{t('words.date')}</th>
+          <th className="body-14px-medium pl-3">{t('conferences.location')}</th>
+          <th className="w-[8%] body-14px-medium pl-1.5">
             {t('words.status')}
           </th>
         </tr>
       ) : (
         <tr className="border-b border-newGray-1 text-left">
-          <th className="w-2/12 py-2 mobile-subtitle2 md:desktop-typo2 pr-1.5">
+          <th className="w-2/12 py-2 desktop-typo2 pr-1.5">
             {t('words.date')}
           </th>
-          <th className="mobile-subtitle2 md:desktop-typo2 px-1.5">
-            {t('conferences.location')}
-          </th>
-          <th className="w-2/12 mobile-subtitle2 md:desktop-typo2 px-1.5">
-            {t('words.id')}
-          </th>
-          <th className="w-[8%] mobile-subtitle2 md:desktop-typo2 px-1.5">
+          <th className="desktop-typo2 pl-3">{t('conferences.location')}</th>
+          <th className="w-2/12 desktop-typo2 pl-3">{t('words.id')}</th>
+          <th className="w-[8%] desktop-typo2 pl-3">
             {t('dashboard.bCert.grade')}
           </th>
-          <th className="w-[15%] mobile-subtitle2 md:desktop-typo2 pl-6">
-            {t('words.status')}
-          </th>
+          <th className="w-[15%] desktop-typo2 pl-3">{t('words.status')}</th>
         </tr>
       )}
     </thead>
