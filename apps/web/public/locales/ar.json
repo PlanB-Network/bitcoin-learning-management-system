@@ -1,25 +1,25 @@
 {
   "about": {
-    "activeContributors": "Active contributors",
-    "missionTitle": "Our mission",
+    "activeContributors": "المساهمون النشطون",
+    "missionTitle": "مهمتنا",
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. We collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
     "missionContent2": "We centralize knowledge to better distribute it through a simple, multilingual GitHub repository and an E-learning platform. We assist local Bitcoin hubs in their development with the right tools for their talent to grow.",
     "commitmentTitle": "Out commitments",
     "commitmentContent": "Our commitments towards the bitcoin community are the following: \n • Remain open-source \n • Provide high quality educational content \n • Translate our content in as many languages as possible \n • Support Bitcoin builders in their entrepreneurship journey",
     "coreTeamTitle": "The core team",
     "coreTeamContent": "PlanB Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Many thanks to the numerous people who have made PlanB a reality and continue to do so each day. (Wall of contributors coming soon)",
-    "coreTeamGiacomoRole": "Director and Co-founder",
-    "coreTeamRogzyRole": "Product manager & Co-founder",
-    "coreTeamAsioRole": "Educational coordinator",
-    "coreTeamAjelexRole": "Node coordinator",
+    "coreTeamGiacomoRole": "المدير والشريك المؤسس",
+    "coreTeamRogzyRole": "مدير المنتج والشريك المؤسس",
+    "coreTeamAsioRole": "المنسق التعليمي",
+    "coreTeamAjelexRole": "منظم العقدة",
     "corporateTitle": "Corporate behind",
-    "corporateContent": "PlanB Network is the joined project of three entitites focus on Bitcoin developement. In an effort to scale the bitcoin educational layer, they decided to collaborate to form PlanB Network. To succeed in our goal to bring bitcoin education to the world, many other entites have decided to contribute and join forces. Many thanks to them",
+    "corporateContent": "تُعد Plan ₿ Network ثمرة تعاون بين ثلاث جهات تعمل بشغف على تطوير البيتكوين. انطلاقاً من الرغبة في إيصال المعرفة حول البيتكوين إلى نطاق أوسع، توحّدت جهود تلك الجهات لإنشاء هذه الشبكة التعليمية. ومع مرور الوقت، انضمت جهات أخرى تشاركنا الرؤية نفسها، ما عزّز هذا المشروع الجماعي الهادف لنشر تعليم البيتكوين عالمياً. لذا، نتقدّم بجزيل الشكر لكل من آمن بالمشروع وساهم فيه.",
     "coportateContact": "Contact information:",
     "storyTitle": "Out story",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "title": "About the planB network",
     "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
-    "manifesto": "Wir glauben an die dezentralisierte Zukunft, die Bitcoin uns bietet.\n\nUnsere Mission ist es, in einem Jahrzehnt eine Milliarde Menschen an Bitcoin zu bringen. Unsere Werkzeuge: Bildung und Information. \n\nWir unterstützen lokale Gemeinschaften von Bitcoinern, indem wir Open-Source Bildungsinhalte bereitstellen und ein Netzwerk von Bitcoin-Mentoren anbieten.\n\nUnsere Philosophie wird durch das Cypherpunk Manifest inspiriert. Genau wie sie für den Schutz der Privatsphäre kämpfen, verteidigen wir die Bildung. Wir glauben, dass Wissen das Fundament von Freiheit und Veränderung ist.\n\nWir sind Bitcoin-only. \n\nWir stehen zur individuellen Verantwortung und zur Unabhängigkeit bei, die durch den Besitz eigener Schlüssel geboten wird. \n\nWir bitten um Verifizierung und nicht um blindes Vertrauen. \n\nWir glauben, dass wir durch das reparieren des Geldes die Welt reparieren können.\n\nWir sind dezentral und Open-Source und vermeiden somit jeden einzelnen Punkt des Scheiterns. \n\nWir ermutigen die freie Verbreitung unserer Inhalte. \n\nWir streben eine Welt an, die von unten nach oben operiert, in der der Mensch im Zentrum steht.\n\nSchließe dich an unsere Mission an, die Orange-Pille in die Welt zu verteilen.\n",
+    "manifesto": "نحن نؤمن بالمستقبل اللامركزي الذي يقدّمه لنا البيتكوين.\n\nمهمتنا هي تعريف مليار إنسان بالبيتكوين خلال العقد القادم. ووسيلتينا هما التعليم والمعلومة.\n\nنحن ندعم المجتمعات المحلية لمستخدمي البيتكوين من خلال توفير محتوى تعليمي مفتوح المصدر، وتقديم شبكة من الموجّهين المتطوّعين.\n\nفلسفتنا مستوحاة من بيان عظماء التشفير (المعروفون بالسايفر بانك)؛ وكما دافعوا عن الخصوصية، نحن ندافع عن التعليم. فنحن نؤمن بأن المعرفة هي أساس الحريّة والتغيير.\n\nنحن نؤيد البيتكوين حصراً.\n\nنحن ندعو إلى تحمّل المسؤولية الفردية، وإلى الاستقلال الذي تمنحه ملكية المفاتيح الخاصة.\n\nنحن نحث على التحقّق، لا الثقة العمياء.\n\nنحن نؤمن بأنه إذا صلح المال، صلح العالم.\n\nنحن لامركزيون ومفتوحو المصدر، وذلك تجنباً لأي فشل قد ينشأ من نقطة مركزية ما.\n\nنحن نشجع على نشر محتوياتنا بكل حرية.\n\nنحن نطمح إلى عالم ينبثق من القاعدة إلى القمة، يكون فيه الفرد هو المحور.\n\nنحن نُبسّط، ونُعلّم، ونُشارك.\n\nانضم إلينا في مهمتنا لنشر الحبة البرتقالية في أرجاء العالم.\n",
     "description": "تساعد شبكة Plan B المجتمعات في جميع أنحاء العالم على التنظيم من أجل توفير تعليم أفضل. تعمل المنصة على تطوير الأدوات اللازمة لتحقيق هذا الهدف، من خلال الأكاديمية عبر الإنترنت، وبوابة البرامج التعليمية، ومجموعة أدوات التعليم Bitcoin، وبوابة الموارد."
   },
   "auth": {
@@ -30,9 +30,9 @@
     "createOne": "Erstellen Sie eins !",
     "emailAddress": "Email Adresse",
     "errors": {
-      "usernameRegex": "Der Benutzername darf nur Buchstaben, Ziffern, _, und - enthalten",
-      "usernameRequired": "Benutzername erforderlich",
-      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten",
+      "usernameRegex": "يجب أن يحتوي اسم المستخدم فقط على الحروف، الأرقام، الشرطة السفلية (_) النقاط (.) والشرطة (-).",
+      "usernameRequired": "يجب إدخال اسم المستخدم.",
+      "usernameTooShort": "يجب أن يتكون اسم المستخدم من 5 أحرف على الأقل.",
       "emailInvalid": "بريد الكتروني غير صالح",
       "displayNameTooShort": "يجب أن يحتوي اسم العرض على حرفين على الأقل.",
       "invalidCredentials": "بيانات اعتماد غير صالحة"
@@ -65,7 +65,7 @@
     "passwordMinLength": "يجب أن تتكون كلمة المرور من {{len}} حرف على الأقل",
     "passwordChanged": "تم تغيير كلمة المرور",
     "passwordSuccessfullyChanged": "لقد تم تغيير كلمة المرور الخاصة بك بنجاح. يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة.",
-    "emailTip": "البريد الإلكتروني ليس إلزاميًا، لكنه قد يكون مفيدًا في حالة نسيان كلمة المرور :)",
+    "emailTip": "البريد الإلكتروني ليس إلزامياً، لكنه قد يكون مفيداً في حال نسيان كلمة المرور :)",
     "passwordResetSent": "لقد تم إرسال رسالة البريد الإلكتروني لإعادة تعيين كلمة المرور إلى صندوق الوارد الخاص بك (إذا كان عنوان البريد الإلكتروني موجودًا في قاعدة بياناتنا).",
     "checkingTokenExplain": "نحن نتحقق مما إذا كان الرمز صالحًا…",
     "didYouKnow": "هل تعلم ؟",
@@ -78,7 +78,13 @@
       "successfullyValidated": "تم التحقق من بريدك الإلكتروني بنجاح.",
       "validateChange": "جاري التأكد من تغيير البريد الإلكتروني",
       "validatingEmailChange": "جاري التأكد من تغيير البريد الإلكتروني",
-      "wontTakeLong": "لن يستغرق هذا وقتاً طويلاً..."
+      "wontTakeLong": "لن يستغرق هذا وقتاً طويلاً...",
+      "emailChangeValidated": "تم التحقق من تغيير البريد الإلكتروني",
+      "emailValidated": "تم التحقق من البريد الإلكتروني",
+      "errorValidatingEmail": "خطأ في التحقق من صحة البريد الإلكتروني",
+      "errorValidatingEmailChange": "خطأ في التحقق من صحة تغيير البريد الإلكتروني",
+      "errorValidatingEmailChangeDescription": "حدث خطأ أثناء تأكيد تغيير البريد الإلكتروني، يبدو أن الرابط قد انتهت صلاحيته أو تم استخدامه مسبقاً. يرجى المحاولة مرة أخرى.",
+      "errorValidatingEmailDescription": "حدث خطأ أثناء التحقق من صحة بريدك الإلكتروني، يبدو أن الرابط قد انتهت صلاحيته أو تم استخدامه مسبقاً. يرجى المحاولة مرة أخرى."
     }
   },
   "bet": {
@@ -278,7 +284,18 @@
       "weight": "الوزن النسبي: {{weight}}%",
       "singleAttempt": "امتحان محاولة واحدة",
       "nbQuestions": "{{nb}} أسئلة",
-      "singleAttemptAvailability": "هذا الامتحان متاح عبر الإنترنت في: {{date}}"
+      "singleAttemptAvailability": "هذا الامتحان متاح عبر الإنترنت في: {{date}}",
+      "examAvailabilityDetails": "في حال عدم اجتياز الاختبار خلال المدة المحددة له على المنصة، تُسجَّل للطالب درجة 0 تلقائياً.",
+      "completed": "لقد أنهيت الاختبار!",
+      "nextChapter": "الوحدة التالية",
+      "readyToTest": "هل أنت مستعد لاختبار معرفتك؟",
+      "results": {
+        "correct": "الأجوبة الصحيحة",
+        "incorrect": "الأجوبة الغير صحيحة",
+        "questions": "الأسئلة المُجاب عنها",
+        "time": "الوقت المستغرق"
+      },
+      "viewExam": "عرض الاختبار"
     },
     "review": {
       "skip": "تخطي كتابة الرأي",
@@ -542,7 +559,15 @@
         "generateNewCodes": "إنشاء رموز جديدة",
         "maximumNumberOfUse": "الحد الأقصى لعدد الاستخدامات",
         "generateNew": "إنشاء رمز جديد",
-        "explanation": "إنشاء و إدارة رموز خصم للفعاليات والدورات – سواء كانت للاستخدام لمرة واحدة مثل المنح الدراسية، أو متعددة الاستخدام لحملات التسويق."
+        "explanation": "إنشاء و إدارة رموز خصم للفعاليات والدورات – سواء كانت للاستخدام لمرة واحدة مثل المنح الدراسية، أو متعددة الاستخدام لحملات التسويق.",
+        "noCouponsFound": "لم يتم العثور على أي كوبونات.",
+        "mobileSort": {
+          "az": "أ-ي",
+          "highLow": "مرتفع - منخفض",
+          "lowHigh": "منخفض - مرتفع",
+          "sortBy": "الترتيب حسب",
+          "za": "ي-أ"
+        }
       },
       "bookingsPanel": "لوحة الحجوزات",
       "careers": {
@@ -691,7 +716,12 @@
         "logisticManager": "مدير اللوجستيات",
         "marketingManager": "مدير التسويق",
         "backendEngineer": "مهندس النظم الخلفية",
-        "bitcoinInvestmentAnalyst": "محلل استثمار بيتكوين"
+        "bitcoinInvestmentAnalyst": "محلل استثمار بيتكوين",
+        "technicalSupportEngineer": "مهندس الدعم التقني",
+        "uiUxDesigner": "مصمم واجهة المستخدم / تجربة المستخدم (UI/UX)",
+        "uxResearcher": "باحث تجربة المستخدم (UX)",
+        "technicalProductManager": "مدير المنتج التقني",
+        "technicalWriter": "كاتب تقني"
       },
       "fileTooLarge": "الملف الذي اخترته يتعدى الحجم المسموح به",
       "emailPlaceholder": "mail@mail.com",
@@ -706,7 +736,57 @@
       "followProcess": "اتبع هذه العملية خطوة بخطوة لتقديم سيرتك الذاتية ومعلومات الوظيفة.",
       "fullTime": "دوام كامل",
       "invalidFile": "نوع الملف غير صالح",
-      "jobSearch": "البحث عن وظيفة"
+      "jobSearch": "البحث عن وظيفة",
+      "motivationSubtitle": "بإمكانك إرفاق رسالة تقديم مع طلبك لتعطينا فكرة أوضح عنك وعن هدفك في البحث عن عمل.",
+      "roleLevelSubLabel": "اختر المستوى الأنسب لمهاراتك.",
+      "selectRole": "ما هي الوظيفة (أو الوظائف) التي تبحث عنها؟",
+      "languageLevelSubLabel": "اختر المستوى الأنسب لمهاراتك.",
+      "languageLevels": {
+        "advanced": "متقدم (ثقة ودقة عالية)",
+        "beginner": "مبتدئ (فهم محدود للغة)",
+        "elementary": "أساسي (محادثة وكتابة بسيطة)",
+        "fluent": "طلاقة تامة (مستوى اللغة الأم)",
+        "intermediate": "متوسط – تواصل سلس ومفهوم"
+      },
+      "languageRequired": "أضف لغة واحدة على الأقل.",
+      "languageSkills": "مهارات اللغة",
+      "languageSkillsSubtitle": "أخبرنا باللغات التي تتحدثها وتكتبها، ومستوى الإتقان المقابل لكل منها.",
+      "lastName": "اسم العائلة",
+      "legalTerms": "الشروط القانونية",
+      "lookingForJob": "نبحث حالياً عن فرص وظيفية تلائم مهاراتك.",
+      "maxCharacters": "{{characters}} حرفاً كحد أقصى",
+      "maxRoles": "يمكنك اختيار 3 مسميات وظيفية كحد أقصى.",
+      "motivation": "الدافع",
+      "motivationLetterPlaceholder": "ما هو دافعك؟",
+      "noFileSelected": "لم يتم اختيار أي ملف",
+      "provideValidEmail": "يرجى إضافة بريد إلكتروني صالح.",
+      "remoteWorkPreference": "هل توافق على العمل عن بُعد؟",
+      "remoteWorkPreferences": {
+        "no": "لا أفضل ذلك",
+        "sometimes": "من حين لآخر، لا مانع",
+        "yes": "نعم، بكل سرور"
+      },
+      "roleLevel": "مستوى الخبرة",
+      "languageLevel": "مستوى الإتقان",
+      "roleLevels": {
+        "junior": "مبتدئ (سنة إلى 3 سنوات)",
+        "mid": "متوسط (3 إلى 5 سنوات)",
+        "senior": "خبير (5 سنوات أو أكثر)",
+        "student": "طالب (0 سنة)"
+      },
+      "roleRequired": "أضف دوراً واحداً على الأقل.",
+      "seeOrEditProfile": "رؤية أو تعديل الملف الشخصي",
+      "selectJobTitle": "اختر مسمى الوظيفة",
+      "selectLanguage": "اختر لغة",
+      "motivationLetterSubLabel": "يمكنك كتابة بضع كلمات أدناه لوصف خبراتك ودوافعك.",
+      "other": "آخر",
+      "partTime": "دوام جزئي",
+      "personalInformation": "المعلومات الشخصية",
+      "personalInformationSubtitle": "يرجى إضافة اسمك الكامل ومكان إقامتك.",
+      "legalInformation": "معلومات قانونية",
+      "legalInformationSubtitle": "يرجى الموافقة على الشروط والأحكام التالية حتى نتمكن من ربط مهاراتك وخبراتك بفرص العمل المتاحة مع شركائنا.",
+      "motivationLetter": "رسالة الدافع",
+      "selectRoleSubLabel": "يرجى اختيار المسمّى الوظيفي الأنسب لطبيعة الوظيفة التي تبحث عنها."
     }
   },
   "events": {
@@ -823,27 +903,27 @@
     "teachersDescription": "Lernen Sie unsere Universitätslehrer kennen, entschuldigen Sie Bitcoiner",
     "conferencesDescription": "",
     "bCertDescription": "",
-    "glossaryDescription": "",
+    "glossaryDescription": "التعرف على لغة البيتكوين",
     "login": "",
     "publicDescription": ""
   },
   "nodeNetwork": {
     "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
-    "pageSubtitle": "Our strength is our community. Let's gather into a global bitcoin network.",
-    "pageTitle": "Node Map",
+    "pageSubtitle": "هل تطمح لنشر الحبة البرتقالية حول العالم؟ انضم إلى Plan ₿ Network.",
+    "pageTitle": "استكشف شبكة العقد التابعة لـ Plan ₿ Network",
     "descriptionExtend": ""
   },
   "notFound": {
     "here": "Hier",
-    "pageSubtitle": "Anscheinend fiel jemand zu tief in das Kaninchenloch und ist verloren gegangen. Um an die Oberfläche zurückzukehren, klicke auf",
-    "pageTitle": "Hoppla."
+    "pageSubtitle": "هل ضللت الطريق في أعماق الجحر؟ للعودة إلى السطح، اضغط",
+    "pageTitle": "اوه."
   },
   "podcasts": {
-    "pageTitle": "Das Podcast-Portal"
+    "pageTitle": "بودكاستات البيتكوين"
   },
   "professors": {
-    "pageSubtitle": "All our professors are volunteers and passionate bitcoiners. you can tip to say thanks.",
-    "pageTitle": "Professors",
+    "pageSubtitle": "يقدم جميع الأساتذة جهودهم تطوّعاً بدافع الشغف بالبيتكوين. إن رغبت، يمكنك دعمهم بتبرع تعبيراً عن تقديرك.",
+    "pageTitle": "الأساتذة",
     "tips": {
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
@@ -851,10 +931,10 @@
       "authorSupport": ""
     },
     "navigationTitles": {
-      "all": "",
-      "lecturers": "",
-      "tutorialCreators": "",
-      "teachers": ""
+      "all": "الكل",
+      "lecturers": "المحاضرون",
+      "tutorialCreators": "صنّاع الدروس التعليمية",
+      "teachers": "الأساتذة"
     }
   },
   "resources": {
@@ -870,7 +950,25 @@
     "github": "",
     "pageSubtitleBooks": "",
     "pageSubtitlePodcast": "",
-    "searchFilterName": ""
+    "searchFilterName": "",
+    "articles": {
+      "title": "المقالات"
+    },
+    "glossary": {
+      "title": "قاموس المصطلحات"
+    },
+    "bet": {
+      "title": "الموارد التعليمية"
+    },
+    "channels": {
+      "title": "قنوات اليوتيوب"
+    },
+    "conferences": {
+      "title": "تسيجلات المؤتمرات"
+    },
+    "books": {
+      "title": "المكتبة"
+    }
   },
   "settings": {
     "changePassword": "Change password",
@@ -1020,7 +1118,7 @@
     "lectures": "محاضرات",
     "location": "موقع",
     "filter": "فلتر",
-    "glossary": "",
+    "glossary": "قاموس",
     "publicationDate": "تاريخ النشر:",
     "ratings": "تقييمات",
     "required": "مطلوب",
@@ -1116,15 +1214,16 @@
       "termsOfSale": ""
     },
     "blogPageStrings": {
-      "featuredArticleTitleText": "",
+      "featuredArticleTitleText": "أحدث مقال منشور",
       "noArticlesText": "",
       "errorMessageNotFound": "",
-      "pastArticleSubtitleText": "",
+      "pastArticleSubtitleText": "المقالات السابقة",
       "blogListButtonText": "",
-      "blogSidebarTitle": "",
-      "filterText": ""
+      "blogSidebarTitle": "المنشورات السابقة لـ {{category}}",
+      "filterText": "",
+      "blogSidebarTitleForAll": "المنشورات السابقة"
     },
-    "title": "",
+    "title": "النشر العام",
     "blogPost": "",
     "legal": "",
     "blogCategories": {
@@ -1142,10 +1241,10 @@
     "term": "المصطلح",
     "randomSearch": "بحث عشوائي",
     "anotherWord": "البحث عن كلمة أخرى",
-    "pageTitle": "معجم البيتكوين",
+    "pageTitle": "قاموس البيتكوين",
     "definition": "التعريف",
     "loadMoreWords": "تحميل المزيد من الكلمات",
-    "notTranslated": "لم يتم ترجمة البيانات في المعجم بعد.\nإذا كنت ترغب في المساعدة، فلا تتردد في المساهمة في",
+    "notTranslated": "لم يتم ترجمة البيانات في القاموس بعد.\nإذا كنت ترغب في المساعدة، فلا تتردد في المساهمة في",
     "placeHolder": "عمّ تبحث؟",
     "relatedWords": "كلمات ذات صلة:",
     "filterBar": "ابحث عن الكلمة التي تحتاجها هنا",
@@ -1167,7 +1266,7 @@
     "bCertDescription": "شهادة ₿ هي اختبار معترف به دوليًا لتقييم استعدادك للعملة الرقمية Bitcoin والموضوعات المشتقة منها. ستمكنك هذه الشهادة من إثبات مهاراتك ومعرفتك في صناعة Bitcoin، مما يتيح لك الوصول إلى الشركات والمناصب في هذه الصناعة.",
     "readChart": "قراءة الميثاق",
     "organizeDescription": "فكرة رائعة! إذا كان مجتمعك جزء من Plan ₿ Network، يمكنك تنظيم جلسة CERT-₿ في الملتقى أو المركز الخاص بكم.\nيرجى قراءة <0>الميثاق</0> للتأكد من أنك تستوفي الشروط الإلزامية لاستضافة الاختبار. إذا كنت مؤهلاً، يمكنك جدولة الإختبار وإضافة الفعالية إلى المنصة.",
-    "challengeYourself": "تحدى نفسك وأكد مستواك!",
+    "challengeYourself": "تحدى نفسك وقيّم مستواك",
     "organizeSessionConditions": "يرجى قراءة <0>الميثاق</0> للتأكد من أنك تستوفي الشروط الإلزامية لاستضافة الاختبار.\nإذا كنت مؤهلاً، سنكون سعداء بالتخطيط معك لجلسة لمجتمعك المحلي.\nيرجى التواصل معنا باستخدام الطريقة المفضلة لديك.",
     "download": "تنزيل الشهادة",
     "verify": "التحقق من صحة شهادتك",
@@ -1189,5 +1288,12 @@
   },
   "youtubeChannels": {
     "pageTitle": "قنوات يوتيوب"
+  },
+  "projects": {
+    "pageTitle": "مشاريع البيتكوين"
+  },
+  "search": {
+    "glossary_word": "كلمة القاموس",
+    "glossary_words": "كلمات القاموس"
   }
 }

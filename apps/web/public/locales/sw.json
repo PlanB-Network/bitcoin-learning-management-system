@@ -841,7 +841,9 @@
       },
       "pickADate": "Chagua tarehe",
       "publicationDate": "Tarehe ya kuchapishwa"
-    }
+    },
+    "goToHomepage": "Nenda kwenye ukurasa wa kwanza",
+    "goToDashboard": "Nenda kwenye dashibodi"
   },
   "events": {
     "main": {

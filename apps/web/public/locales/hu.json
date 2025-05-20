@@ -1,0 +1,54 @@
+{
+  "about": {
+    "commitmentTitle": "Kötelezettségeink",
+    "coportateContact": "Elérhetőségek:",
+    "coreTeamAsioRole": "oktatási koordinátor",
+    "coreTeamAjelexRole": "node koordinátor",
+    "coreTeamContent": "A Plan ₿ Network több száz hozzájáruló, tanár, közösségi vezető, tervező, fejlesztő és szervező összefogása. Külön köszönet illeti azt a számos embert, akik valóra váltották a Plan ₿-t, és nap mint nap továbbra is ezt teszik. (A hozzájárulók bemutatása hamarosan.)",
+    "coreTeamGiacomoRole": "igazgató és társalapító",
+    "coreTeamRogzyRole": "termékmenedzser és társalapító",
+    "coreTeamTitle": "Az alapcsapat",
+    "corporateTitle": "A projekt mögött álló vállalatok",
+    "description": "A Plan ₿ Network világszerte segíti a közösségeket abban, hogy a jobb oktatás biztosítása érdekében szerveződjenek. A platform az e célhoz szükséges eszközöket fejleszti az online akadémia, a oktatóanyag portál, a Bitcoin oktatási eszköztár és az erőforrás portál segítségével.",
+    "missionContent1": "Küldetésünk, hogy nyílt forráskódú oktatáson és hálózatépítésen keresztül támogassuk a helyi Bitcoin közösségeket. Ezt úgy valósítjuk meg, hogy összegyűjtjük, szervezzük és létrehozzuk a szükséges anyagokat (kurzusok, könyvek, poszterek, szórólapok, videók) a Bitcoin iparág fejlődéséhez.",
+    "missionContent2": "Központosítjuk a tudást, hogy a lehető legjobb módon tudjuk megosztani, egy egyszerű, többnyelvű GitHub tárhely és egy E-learning platform segítségével. Emellett segítjük a helyi Bitcoin központok fejlődését azáltal, hogy a fejlődéshez szükséges eszközöket biztosítjuk.",
+    "missionTitle": "Küldetésünk",
+    "storyTitle": "Történetünk",
+    "subtitle": "Szeretnéd narancs pirulával ellátni a világot? Csatlakozz a Plan ₿ Network-höz!",
+    "title": "A Plan ₿ Network-ről",
+    "activeContributors": "Aktív hozzájárulók",
+    "commitmentContent": "A következő kötelezettségeink vannak a bitcoin közösség felé:\n • Nyílt forráskódúak maradunk\n • Magas színvonalú oktatási tartalmat biztosítunk\n • Tartalmunkat a lehető legtöbb nyelvre lefordítjuk\n • Támogatjuk útjukon a Bitcoin vállalkozókat",
+    "manifesto": "Hiszünk a Bitcoin által kínált decentralizált jövőben.\n\nKüldetésünk, hogy egy évtized alatt egymilliárd emberrel megismertessük a Bitcoint. Eszközeink az oktatás és az információ.\n\nTámogatjuk a helyi Bitcoin közösségeket nyílt forráskódú oktatási tartalmak biztosításával és Bitcoin mentorok hálózatának kínálatával.\n\nFilozófiánkat a cypherpunk kiáltvány inspirálja. Ahogyan ők a magánélet védelmét támogatták, mi az oktatást támogatjuk. Valójában úgy véljük, hogy a tudás a szabadság és a változás alapja.\n\nKizárólag a Bitcoinra fókuszálunk.\n\nPártoljuk az egyéni felelősségvállalást és a saját kulcsok birtoklása által kínált függetlenséget.\n\nEllenőrzésre biztatunk, nem pedig a vak bizalomra.\n\nHiszünk abban, hogy a pénzügyek rendbetételével megjavíthatjuk a világot.\n\nDecentralizáltak és nyílt forráskódúak vagyunk, hogy ne legyen egyetlen meghibásodási pont.\n\nBátorítjuk tartalmaink szabad terjesztését.\n\nOlyan világra törekszünk, amely alulról építkezik, ahol az egyén áll a középpontban.\n\nEgyszerűsítünk, tanítjuk és megosztjuk.\n\nCsatlakozz hozzánk küldetésünkben, hogy \"narancs pirulával\" lássuk el a világot!\n",
+    "corporateContent": "A Plan ₿ Network három entitás közös projektje, amelyek a Bitcoin fejlesztésére összpontosítanak. Azért, hogy a Bitcoin oktatási rétegek skálázhatóvá váljanak, úgy döntöttek, hogy együttműködnek a Plan ₿ Network létrehozásában. Azóta számos más entitás döntött úgy, hogy hozzájárul és csatlakozik erőinkhez, hogy segítsenek nekünk a Bitcoin oktatást eljuttatni a világba. Ezért hatalmas köszönet illeti őket.",
+    "storyContent": "A Plan ₿ Network egy olyan kezdeményezés, amely világszerte támogatja a Bitcoin oktatást. Ez különböző, a Bitcoin iránt elkötelezett cégek kereszteződése, melyek az oktatásra, nyílt forráskódú szoftverekre, peer-to-peer hálózatokra és a közösségi érzésre összpontosítanak. Együtt döntöttek úgy, hogy létrehozzák a Plan ₿ Network-ot, és a Bitcoin ökoszisztémának a növekedéshez szükséges eszközöket kínálják . A 2023-as prezentációnk itt érhető el."
+  },
+  "accessType": {
+    "hybrid": "Személyesen és online",
+    "online": "Online",
+    "physical": "Személyesen",
+    "replay": "Újrajátszás"
+  },
+  "auth": {
+    "accountCreated": "Fiókodat létrehoztuk, {{userName}}!",
+    "alreadyHaveAccount": "Már van fiókod?",
+    "backToHome": "Vissza a kezdőlapra",
+    "backToLogin": "Vissza a bejelentkezéshez",
+    "checkingToken": "Token ellenőrzése",
+    "checkingTokenExplain": "Ellenőrizzük, hogy a token érvényes-e…",
+    "confirmation": "Megerősítés",
+    "createAccount": "Regisztráció",
+    "createOne": "Regisztrálj itt!",
+    "dashboardUnlocked": "A tanuló irányítópultod most már elérhető!",
+    "didYouKnow": "Tudtad?",
+    "emailAddress": "E-mail cím",
+    "emailValidation": {
+      "emailChangeValidated": "E-mail cím változtatás megerősítve",
+      "emailValidated": "Email megerősítve",
+      "errorValidatingEmail": "Hiba az e-mail cím érvényesítésekor",
+      "errorValidatingEmailChange": "Hiba az e-mail cím módosításának ellenőrzésekor"
+    },
+    "canSaveProgress": "Mostantól elmentheted a Bitcoin Akadémián való haladásodat",
+    "displayName": "Megjelenített név",
+    "emailTip": "Az e-mail nem kötelező: hasznos lehet, ha elfelejted a jelszavad!"
+  }
+}
