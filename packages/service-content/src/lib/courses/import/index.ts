@@ -382,11 +382,12 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
     const hasLogo = logo !== undefined;
 
     let courseId: string;
+    let parsedCourse: CourseMain;
 
     return postgres
       .begin(async (transaction) => {
         try {
-          let parsedCourse = await yamlToObject<CourseMain>(main);
+          parsedCourse = await yamlToObject<CourseMain>(main);
 
           if (
             parsedCourse.test_only === true &&
@@ -652,7 +653,13 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
           return;
         }
 
-        for (const file of files) {
+        const sortedFiles = [...files].sort((a, b) => {
+          if (a.language === parsedCourse.original_language) return -1;
+          if (b.language === parsedCourse.original_language) return 1;
+          return 0;
+        });
+
+        for (const [fileIndex, file] of sortedFiles.entries()) {
           try {
             if (!file.language) {
               console.warn(
@@ -676,8 +683,6 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
               header.excerpt = header.excerpt.trim();
             }
 
-            const parts = extractParts(header.content);
-
             await transaction`
               INSERT INTO content.courses_localized (
                 course_id, language, name, goal, objectives, raw_description
@@ -697,8 +702,11 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                 raw_description = EXCLUDED.raw_description
               `;
 
+            const parts = extractParts(header.content);
+
             if (parts.length > 0) {
-              await transaction`
+              if (fileIndex === 0) {
+                await transaction`
                 INSERT INTO content.course_parts ${transaction(
                   parts.map((p, index) => {
                     if (!uuidValidate(p.partId)) {
@@ -718,6 +726,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
                   last_sync = NOW()
                 RETURNING *
               `;
+              }
 
               await transaction`
                 INSERT INTO content.course_parts_localized ${transaction(
@@ -740,31 +749,33 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
 
               // if there is at least one chapter across all parts
               if (parts.some((part) => part.chapters.length > 0)) {
-                await transaction`
-                INSERT INTO content.course_chapters ${transaction(
-                  parts.flatMap((part) =>
-                    part.chapters.map((c, chapterIndex) => {
-                      if (!uuidValidate(c.chapterId)) {
-                        throw new Error(
-                          `Chapter id (uuid) missing or invalid: ${c.chapterId} on chapter ${c.title}`,
-                        );
-                      }
-                      return {
-                        course_id: courseId,
-                        part_id: part.partId,
-                        chapter_index: chapterIndex + 1,
-                        chapter_id: c.chapterId,
-                      };
-                    }),
-                  ),
-                )}
-                ON CONFLICT (chapter_id)
-                DO UPDATE SET
-                  chapter_index = EXCLUDED.chapter_index,
-                  part_id = EXCLUDED.part_id,
-                  last_sync = NOW()
-                RETURNING *
-              `;
+                if (fileIndex === 0) {
+                  await transaction`
+                    INSERT INTO content.course_chapters ${transaction(
+                      parts.flatMap((part) =>
+                        part.chapters.map((c, chapterIndex) => {
+                          if (!uuidValidate(c.chapterId)) {
+                            throw new Error(
+                              `Chapter id (uuid) missing or invalid: ${c.chapterId} on chapter ${c.title}`,
+                            );
+                          }
+                          return {
+                            course_id: courseId,
+                            part_id: part.partId,
+                            chapter_index: chapterIndex + 1,
+                            chapter_id: c.chapterId,
+                          };
+                        }),
+                      ),
+                    )}
+                    ON CONFLICT (chapter_id)
+                    DO UPDATE SET
+                      chapter_index = EXCLUDED.chapter_index,
+                      part_id = EXCLUDED.part_id,
+                      last_sync = NOW()
+                    RETURNING *
+                  `;
+                }
 
                 const formattedChapters = parts.flatMap((part) =>
                   part.chapters.map((chapter) => {

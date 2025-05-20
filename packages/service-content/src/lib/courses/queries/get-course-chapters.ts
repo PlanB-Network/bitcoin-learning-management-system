@@ -56,13 +56,12 @@ export const getCourseChaptersQuery = ({
       LEFT JOIN content.courses co
         ON c.course_id = co.id
       WHERE c.course_id = ${courseId}
-        ${
-          language
-            ? sql`
-              AND (c.language = LOWER(${language}) OR c.language = co.original_language)
-            `
-            : sql``
-        }
+        AND c.language = (
+          CASE
+            WHEN ${language != null} THEN LOWER(${language})
+            ELSE co.original_language
+          END
+        )
         ${partId ? sql`AND ch.part_id = ${partId}` : sql``}
       ORDER BY
         ch.chapter_id,
