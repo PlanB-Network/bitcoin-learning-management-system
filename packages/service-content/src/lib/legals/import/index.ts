@@ -85,7 +85,7 @@ export const createUpdateLegals = ({ postgres }: Dependencies) => {
           await processMainFile(legal);
         } catch (error) {
           errors.push(
-            `Error processing file(legals 1) ${legal?.path}: ${error}`,
+            `Error processing file(legals 1) ${legal?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -127,7 +127,7 @@ export const createUpdateLegals = ({ postgres }: Dependencies) => {
               `;
           } catch (error) {
             errors.push(
-              `Error processing file(legals 2) ${file?.path} in legal document ${legal.fullPath} : ${error}`,
+              `Error processing file(legals 2) ${file?.path} in legal document ${legal.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
             return;
           }

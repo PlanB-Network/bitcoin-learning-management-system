@@ -33,7 +33,7 @@ export const createProcessChangedYoutubeChannel = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(youtube channels) ${resource?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(youtube channels) ${resource?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -68,7 +68,7 @@ export const createProcessChangedYoutubeChannel = (
             `;
         } catch (error) {
           errors.push(
-            `Error processing file(youtube channel) ${main?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(youtube channel) ${main?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
       })

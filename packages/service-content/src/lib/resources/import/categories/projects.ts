@@ -47,7 +47,7 @@ export const createProcessChangedProject = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(projects) ${resource?.fullPath}: ${error}`,
+            `Error processing file(projects) ${resource?.fullPath}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -122,14 +122,14 @@ export const createProcessChangedProject = (
             `.then(firstRow);
             } catch (error) {
               errors.push(
-                `Error processing file ${file?.path} (${resource.fullPath}): ${error}`,
+                `Error processing file ${file?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
               );
               return;
             }
           }
         } catch (error) {
           errors.push(
-            `Error processing file ${main?.path} ((${resource.fullPath})): ${error}`,
+            `Error processing file ${main?.path} ((${resource.fullPath})): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }

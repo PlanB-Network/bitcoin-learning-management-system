@@ -106,7 +106,9 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(blog, main);
         } catch (error) {
-          errors.push(`Error processing file(blogs 1) ${blog?.path}: ${error}`);
+          errors.push(
+            `Error processing file(blogs 1) ${blog?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
+          );
           return;
         }
 
@@ -142,7 +144,7 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
             `;
           } catch (error) {
             errors.push(
-              `Error processing file(blogs 2) ${file?.path} in blog ${blog.fullPath} : ${error}`,
+              `Error processing file(blogs 2) ${file?.path} in blog ${blog.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
             return;
           }

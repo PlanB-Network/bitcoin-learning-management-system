@@ -647,7 +647,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             }
           }
         } catch (error) {
-          const err = `Error processing file(courses1) ${course?.fullPath}: ${error}`;
+          const err = `Error processing file(courses1) ${course?.fullPath}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`;
           console.error(error);
           errors.push(err);
           return;
@@ -873,7 +873,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             }
           } catch (error) {
             errors.push(
-              `Error processing file(courses2) ${course.fullPath} ${file?.path}: ${error}`,
+              `Error processing file(courses2) ${course.fullPath} ${file?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
             return;
           }

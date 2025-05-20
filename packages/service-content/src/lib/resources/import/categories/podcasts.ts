@@ -37,7 +37,7 @@ export const createProcessChangedPodcast = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(podcasts) ${resource?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(podcasts) ${resource?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -77,7 +77,7 @@ export const createProcessChangedPodcast = (
             `;
         } catch (error) {
           errors.push(
-            `Error processing file(podcasts) ${main?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(podcasts) ${main?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
       })

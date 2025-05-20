@@ -94,7 +94,7 @@ export const createUpdateProfessors = ({ postgres }: Dependencies) => {
           await processMainFile(professor, main);
         } catch (error) {
           errors.push(
-            `Error processing file(professors) ${professor?.fullPath} : ${error}`,
+            `Error processing file(professors) ${professor?.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
 
@@ -113,7 +113,7 @@ export const createUpdateProfessors = ({ postgres }: Dependencies) => {
             await processLocalFile(id, file);
           } catch (error) {
             errors.push(
-              `Error processing file(professors) ${file?.path}: ${error}`,
+              `Error processing file(professors) ${file?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
             return;
           }

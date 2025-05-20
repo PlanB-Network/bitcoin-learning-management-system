@@ -38,7 +38,7 @@ export const createUpdateLabs = ({ postgres }: Dependencies) => {
           }
         } catch (error) {
           errors.push(
-            `Error processing file(labs) ${lab?.fullPath} : ${error}`,
+            `Error processing file(labs) ${lab?.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
 

@@ -74,7 +74,7 @@ export const createUpdateEvents = ({ postgres }: Dependencies) => {
           }
         } catch (error) {
           errors.push(
-            `Error processing file(events) ${event?.fullPath}: ${error}`,
+            `Error processing file(events) ${event?.fullPath}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }

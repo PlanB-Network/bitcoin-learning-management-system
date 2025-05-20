@@ -101,7 +101,7 @@ export const createProcessChangedConference = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(conferences2) ${resource?.fullPath}: ${error}`,
+            `Error processing file(conferences2) ${resource?.fullPath}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -164,7 +164,7 @@ export const createProcessChangedConference = (
           }
         } catch (error) {
           errors.push(
-            `Error processing file(conferences1), ${resource.path} - ${main?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(conferences1), ${resource.path} - ${main?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
 

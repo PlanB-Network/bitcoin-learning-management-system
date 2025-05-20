@@ -39,7 +39,7 @@ export const createProcessChangedBet = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(bet) ${resource?.fullPath}: ${error}`,
+            `Error processing file(bet) ${resource?.fullPath}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }

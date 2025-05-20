@@ -35,7 +35,7 @@ export const createProcessChangedNewsletter = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(newsletters) ${resource?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(newsletters) ${resource?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }

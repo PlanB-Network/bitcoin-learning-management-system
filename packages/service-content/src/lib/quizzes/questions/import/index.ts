@@ -105,7 +105,7 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
           id = await processMainFile(quizQuestion, main);
         } catch (error) {
           errors.push(
-            `Error processing file(quiz) ${quizQuestion?.fullPath} for quiz question ${quizQuestion.id}: ${error}`,
+            `Error processing file(quiz) ${quizQuestion?.fullPath} for quiz question ${quizQuestion.id}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -120,7 +120,7 @@ export const createUpdateQuizQuestions = ({ postgres }: Dependencies) => {
             await processLocalFile(quizQuestion, id, file);
           } catch (error) {
             errors.push(
-              `Error processing file(quiz2) ${file.path} for quiz question ${quizQuestion.id}: ${error}`,
+              `Error processing file(quiz2) ${file.path} for quiz question ${quizQuestion.id}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
             return;
           }

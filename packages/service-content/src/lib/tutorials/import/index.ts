@@ -123,7 +123,7 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
           await processMainFile(tutorial, main);
         } catch (error) {
           errors.push(
-            `Error processing file(tutorials 1) ${tutorial?.path}: ${error}`,
+            `Error processing file(tutorials 1) ${tutorial?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -171,7 +171,7 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
         `;
           } catch (error) {
             errors.push(
-              `Error processing file(tutorials 2) ${file?.path} in tutorial ${tutorial.fullPath} : ${error}`,
+              `Error processing file(tutorials 2) ${file?.path} in tutorial ${tutorial.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
             return;
           }

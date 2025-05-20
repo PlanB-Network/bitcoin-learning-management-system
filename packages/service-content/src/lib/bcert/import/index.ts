@@ -109,7 +109,7 @@ export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
           await processMainFile(bCertExam, main);
         } catch (error) {
           errors.push(
-            `Error processing file(B Certificate Exam) ${bCertExam?.fullPath} : ${error}`,
+            `Error processing file(B Certificate Exam) ${bCertExam?.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
 
@@ -136,12 +136,12 @@ export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
                 // );
               } else {
                 errors.push(
-                  `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,
+                  `Error processing file(B Certificate User Result) ${file?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
                 );
               }
             } else {
               errors.push(
-                `Error processing file(B Certificate User Result) ${file?.path}: ${error}`,
+                `Error processing file(B Certificate User Result) ${file?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
               );
             }
           }
@@ -152,11 +152,11 @@ export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
             await processTimestampFile(file, bcertEdition, bcertId);
           } catch (error) {
             console.log(
-              `Error processing file(B Certificate OTS file) ${file?.path}: ${error}`,
+              `Error processing file(B Certificate OTS file) ${file?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
 
             errors.push(
-              `Error processing file(B Certificate OTS file) ${file?.path}: ${error}`,
+              `Error processing file(B Certificate OTS file) ${file?.path}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
             );
           }
         }

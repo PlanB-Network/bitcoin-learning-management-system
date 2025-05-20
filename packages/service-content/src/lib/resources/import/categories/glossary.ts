@@ -33,7 +33,7 @@ export const createProcessChangedGlossaryWord = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(glossary words) ${resource?.fullPath}: ${error}`,
+            `Error processing file(glossary words) ${resource?.fullPath}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -88,7 +88,7 @@ export const createProcessChangedGlossaryWord = (
           }
         } catch (error) {
           errors.push(
-            `Error processing file ${main?.path} ((${resource.fullPath})): ${error}`,
+            `Error processing file ${main?.path} ((${resource.fullPath})): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }

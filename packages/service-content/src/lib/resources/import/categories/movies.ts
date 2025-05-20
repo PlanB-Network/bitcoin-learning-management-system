@@ -35,7 +35,7 @@ export const createProcessChangedMovie = (
           await processMainFile(resource, main);
         } catch (error) {
           errors.push(
-            `Error processing file(movies) ${resource?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(movies) ${resource?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
           return;
         }
@@ -72,7 +72,7 @@ export const createProcessChangedMovie = (
             `;
         } catch (error) {
           errors.push(
-            `Error processing file(movies) ${main?.path} (${resource.fullPath}): ${error}`,
+            `Error processing file(movies) ${main?.path} (${resource.fullPath}): ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
           );
         }
       })
