@@ -25,10 +25,10 @@
     "@blms/service-common": "workspace:*",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "marked": "^15.0.11",
+    "marked": "^15.0.12",
     "typesense": "^2.0.3",
     "uuid": "^11.1.0",
-    "zod": "^3.24.4"
+    "zod": "^3.25.7"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",

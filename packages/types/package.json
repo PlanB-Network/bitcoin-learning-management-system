@@ -28,7 +28,7 @@
     "@types/express-session": "^1.18.1",
     "typescript": "5.8.3",
     "typesense": "^2.0.3",
-    "zod": "^3.24.4",
+    "zod": "^3.25.7",
     "zod-to-ts": "^1.2.0"
   }
 }
