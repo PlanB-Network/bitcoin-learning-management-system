@@ -94,7 +94,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
         />
         <h3
           className={cn(
-            'max-md:desktop-body1 md:text-2xl text-white max-md:text-center',
+            'max-md:desktop-body1 md:text-2xl text-white max-md:text-center break-all',
             category.unreleased
               ? ''
               : 'max-md:group-hover:text-darkOrange-5 group-hover:font-medium',

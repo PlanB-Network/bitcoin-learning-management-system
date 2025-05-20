@@ -39,13 +39,13 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
 }) => {
   return (
     <Link to={`${baseUrl}/${category.name}`} className={cn('group capitalize')}>
-      <div className={cn(itemStyles(), 'size-[135px] flex-none')}>
+      <div className={cn(itemStyles(), 'size-[135px] p-1 flex-none')}>
         <CategoryIcon
           src={category.image}
           variant="resources"
           imgClassName={cn('')}
         />
-        <span className={cn('body-16px text-white text-center')}>
+        <span className={cn('body-16px text-white text-center break-all')}>
           {title(category)}
         </span>
       </div>
