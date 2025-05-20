@@ -73,8 +73,8 @@ export const BookingPart = ({
                   <span className="w-[100px] flex-none capitalize">
                     {ticket.type}
                   </span>
-                  <div className="min-w-[100px] grow h-fit">
-                    <span className="w-fit font-medium line-clamp-1 p-2 text-dashboardSectionTitle">
+                  <div className="min-w-[100px] grow">
+                    <span className="w-fit font-medium line-clamp-1 text-dashboardSectionTitle">
                       {ticket.title}
                     </span>
                   </div>
@@ -244,13 +244,13 @@ const Buttons = ({
             params={{
               eventId: ticket.eventId,
             }}
-            disabled={ticket.date.getTime() > Date.now()}
+            disabled={ticket.date.getTime() - 60 * 60 * 1000 > Date.now()}
           >
             <Button
               variant="primary"
               size={buttonSize}
               mode="light"
-              disabled={ticket.date.getTime() > Date.now()}
+              disabled={ticket.date.getTime() - 60 * 60 * 1000 > Date.now()}
             >
               {t('dashboard.booking.accessLive')}
             </Button>
