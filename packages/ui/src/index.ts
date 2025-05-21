@@ -24,7 +24,6 @@ export * from './atoms/slider.tsx';
 export * from './atoms/switch.tsx';
 export * from './atoms/table.tsx';
 export * from './atoms/tabs.tsx';
-export * from './atoms/tag.tsx';
 export * from './atoms/text-tag.tsx';
 export * from './atoms/textarea.tsx';
 export * from './atoms/toast.tsx';

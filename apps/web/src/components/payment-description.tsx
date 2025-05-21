@@ -158,7 +158,8 @@ export const PaymentDescription = ({
           </div>
 
           <Button
-            variant="tertiary"
+            variant="secondary"
+            mode="light"
             size="s"
             className="-ml-1"
             onClick={applyCoupon}
