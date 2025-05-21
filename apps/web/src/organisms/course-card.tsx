@@ -128,7 +128,7 @@ export const CourseCard = ({
               </div>
               <div className="flex order-1 md:order-2">
                 <StarRating
-                  rating={course.averageRating}
+                  rating={Number(course.averageRating.toFixed(1))}
                   totalStars={maxRating}
                   starSize={20}
                   className="gap-2"

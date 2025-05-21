@@ -17,14 +17,14 @@ type Story = StoryObj<typeof TooltipProvider>;
 
 export const Primary: Story = {
   args: {
-    delayDuration: 200,
+    delayDuration: 100,
     children: (
       <Tooltip>
         <TooltipTrigger asChild>
-          <span className="text-orange-400">Tooltip top</span>
+          <span className="text-darkOrange-5">Tooltip top</span>
         </TooltipTrigger>
-        <TooltipContent className="bg-gray-200" sideOffset={5} side={'top'}>
-          <p className="text-blue-800 ">Hey</p>
+        <TooltipContent sideOffset={5} side={'top'}>
+          <p>Hey</p>
         </TooltipContent>
       </Tooltip>
     ),

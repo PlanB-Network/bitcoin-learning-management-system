@@ -41,207 +41,201 @@ const meta: Meta<typeof Switch> = {
 export default meta;
 type Story = StoryObj<typeof Switch>;
 
-export const DefaultDarkSmallUnchecked: Story = {
-  name: 'Default (Dark, Small, Unchecked)',
-  args: {
-    size: 's',
-    mode: 'dark',
-    checked: false,
-    disabled: false,
-  },
-  parameters: {
-    backgrounds: { default: 'custom-dark' },
-  },
-};
-
-export const DefaultDarkSmallChecked: Story = {
-  name: 'Dark, Small, Checked',
-  args: {
-    size: 's',
-    mode: 'dark',
-    checked: true,
-    disabled: false,
-  },
-  parameters: {
-    backgrounds: { default: 'custom-dark' },
-  },
-};
-
-export const DefaultLightSmallUnchecked: Story = {
-  name: 'Light, Small, Unchecked',
-  args: {
-    size: 's',
-    mode: 'light',
-    checked: false,
-    disabled: false,
-  },
-};
-
-export const DefaultLightSmallChecked: Story = {
-  name: 'Light, Small, Checked',
-  args: {
-    size: 's',
-    mode: 'light',
-    checked: true,
-    disabled: false,
-  },
-};
-
-export const ExtraSmallDarkUnchecked: Story = {
-  name: 'Dark, Extra Small, Unchecked',
-  args: {
-    size: 'xs',
-    mode: 'dark',
-    checked: false,
-    disabled: false,
-  },
-  parameters: {
-    backgrounds: { default: 'custom-dark' },
-  },
-};
-
-export const ExtraSmallDarkChecked: Story = {
-  name: 'Dark, Extra Small, Checked',
-  args: {
-    size: 'xs',
-    mode: 'dark',
-    checked: true,
-    disabled: false,
-  },
-  parameters: {
-    backgrounds: { default: 'custom-dark' },
-  },
-};
-
-export const ExtraSmallLightUnchecked: Story = {
-  name: 'Light, Extra Small, Unchecked',
-  args: {
-    size: 'xs',
-    mode: 'light',
-    checked: false,
-    disabled: false,
-  },
-};
-
-export const ExtraSmallLightChecked: Story = {
-  name: 'Light, Extra Small, Checked',
-  args: {
-    size: 'xs',
-    mode: 'light',
-    checked: true,
-    disabled: false,
-  },
-};
-
-export const DisabledDarkSmallUnchecked: Story = {
-  name: 'Disabled (Dark, Small, Unchecked)',
-  args: {
-    size: 's',
-    mode: 'dark',
-    checked: false,
-    disabled: true,
-  },
-  parameters: {
-    backgrounds: { default: 'custom-dark' },
-  },
-};
-
-export const DisabledDarkSmallChecked: Story = {
-  name: 'Disabled (Dark, Small, Checked)',
-  args: {
-    size: 's',
-    mode: 'dark',
-    checked: true,
-    disabled: true,
-  },
-  parameters: {
-    backgrounds: { default: 'custom-dark' },
-  },
-};
-
-export const DisabledLightSmallUnchecked: Story = {
-  name: 'Disabled (Light, Small, Unchecked)',
-  args: {
-    size: 's',
-    mode: 'light',
-    checked: false,
-    disabled: true,
-  },
-};
-
-export const DisabledLightSmallChecked: Story = {
-  name: 'Disabled (Light, Small, Checked)',
-  args: {
-    size: 's',
-    mode: 'light',
-    checked: true,
-    disabled: true,
-  },
-};
-
-export const WithLabelSmallLight: Story = {
-  name: 'With Label (Small, Light)',
-  args: {
-    size: 's',
-    mode: 'light',
-    id: 'notifications-switch-light',
-  },
-  render: (args) => (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        color: args.mode === 'dark' ? 'white' : 'black',
-      }}
+const SwitchVariant = ({
+  label,
+  ...props
+}: { label: string } & React.ComponentProps<typeof Switch>) => (
+  <div className="flex flex-col items-center gap-2 m-4">
+    <Switch {...props} />
+    <span
+      className={`text-xs ${props.mode === 'dark' ? 'text-white' : 'text-black'}`}
     >
-      <Switch {...args} />
-      <label
-        htmlFor={args.id}
-        style={{
-          fontSize: '14px',
-          userSelect: 'none',
-          cursor: args.disabled ? 'not-allowed' : 'pointer',
-          opacity: args.disabled ? 0.5 : 1,
-        }}
-      >
-        Enable Notifications
-      </label>
+      {label}
+    </span>
+  </div>
+);
+
+export const Default: Story = {
+  args: {
+    size: 's',
+    mode: 'dark',
+    checked: false,
+    disabled: false,
+  },
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+};
+
+export const LightModeVariations: Story = {
+  name: 'Light Mode Variations',
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+  render: () => (
+    <div className="flex flex-wrap justify-center gap-5">
+      <SwitchVariant
+        label="Small Unchecked"
+        size="s"
+        mode="light"
+        checked={false}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Small Checked"
+        size="s"
+        mode="light"
+        checked={true}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Extra Small Unchecked"
+        size="xs"
+        mode="light"
+        checked={false}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Extra Small Checked"
+        size="xs"
+        mode="light"
+        checked={true}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Disabled Small Unchecked"
+        size="s"
+        mode="light"
+        checked={false}
+        disabled={true}
+      />
+      <SwitchVariant
+        label="Disabled Small Checked"
+        size="s"
+        mode="light"
+        checked={true}
+        disabled={true}
+      />
+      <SwitchVariant
+        label="Disabled Extra Small Unchecked"
+        size="xs"
+        mode="light"
+        checked={false}
+        disabled={true}
+      />
+      <SwitchVariant
+        label="Disabled Extra Small Checked"
+        size="xs"
+        mode="light"
+        checked={true}
+        disabled={true}
+      />
     </div>
   ),
 };
 
-export const WithLabelSmallDark: Story = {
-  name: 'With Label (Small, Dark)',
-  args: {
-    size: 's',
-    mode: 'dark',
-    id: 'darkmode-switch',
-  },
+export const DarkModeVariations: Story = {
+  name: 'Dark Mode Variations',
   parameters: {
-    backgrounds: { default: 'custom-dark' },
+    backgrounds: { default: 'dark' },
   },
-  render: (args) => (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        color: args.mode === 'dark' ? 'white' : 'black',
-      }}
-    >
-      <Switch {...args} />
-      <label
-        htmlFor={args.id}
-        style={{
-          fontSize: '14px',
-          userSelect: 'none',
-          cursor: args.disabled ? 'not-allowed' : 'pointer',
-          opacity: args.disabled ? 0.5 : 1,
-        }}
-      >
-        Dark Mode
-      </label>
+  render: () => (
+    <div className="flex flex-wrap justify-center gap-5">
+      <SwitchVariant
+        label="Small Unchecked"
+        size="s"
+        mode="dark"
+        checked={false}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Small Checked"
+        size="s"
+        mode="dark"
+        checked={true}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Extra Small Unchecked"
+        size="xs"
+        mode="dark"
+        checked={false}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Extra Small Checked"
+        size="xs"
+        mode="dark"
+        checked={true}
+        disabled={false}
+      />
+      <SwitchVariant
+        label="Disabled Small Unchecked"
+        size="s"
+        mode="dark"
+        checked={false}
+        disabled={true}
+      />
+      <SwitchVariant
+        label="Disabled Small Checked"
+        size="s"
+        mode="dark"
+        checked={true}
+        disabled={true}
+      />
+      <SwitchVariant
+        label="Disabled Extra Small Unchecked"
+        size="xs"
+        mode="dark"
+        checked={false}
+        disabled={true}
+      />
+      <SwitchVariant
+        label="Disabled Extra Small Checked"
+        size="xs"
+        mode="dark"
+        checked={true}
+        disabled={true}
+      />
     </div>
   ),
+};
+
+export const WithLabels: Story = {
+  name: 'With Labels',
+  render: (args) => (
+    <div className="flex flex-col gap-[30px]">
+      <div className="flex items-center gap-2 text-black">
+        <Switch
+          {...args}
+          size="s"
+          mode="light"
+          id="notifications-switch-light"
+        />
+        <label
+          htmlFor="notifications-switch-light"
+          className={`text-sm select-none ${args.disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-100'}`}
+        >
+          Enable Notifications (Light)
+        </label>
+      </div>
+
+      <div className="bg-[#333333] p-5 rounded-lg flex items-center gap-2 text-white">
+        <Switch {...args} size="s" mode="dark" id="darkmode-switch" />
+        <label
+          htmlFor="darkmode-switch"
+          className={`text-sm select-none ${args.disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-100'}`}
+        >
+          Dark Mode (Dark)
+        </label>
+      </div>
+    </div>
+  ),
+  args: {
+    checked: false,
+    disabled: false,
+  },
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
 };

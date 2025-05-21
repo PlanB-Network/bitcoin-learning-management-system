@@ -169,9 +169,8 @@ export const CourseDashboardCard = ({
                 </div>
                 <div className="relative w-full my-4">
                   <Progress
-                    value={progress.progressPercentage}
-                    totalChapters={progress.totalChapters}
-                    completedChapters={progress.completedChaptersCount}
+                    total={progress.totalChapters}
+                    completed={progress.completedChaptersCount}
                     pillImage={OrangePill}
                   />
                 </div>

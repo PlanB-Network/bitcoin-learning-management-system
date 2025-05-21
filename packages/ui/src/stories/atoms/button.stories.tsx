@@ -1,90 +1,162 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from '#src/atoms/button.tsx';
 
-import { Button } from '../../atoms/button.tsx';
+const variants = [
+  'primary',
+  'secondary',
+  'tertiary',
+  'outline',
+  'outlineWhite',
+  'ghost',
+  'transparent',
+  'fakeDisabled',
+  'flags',
+  'carousel',
+  'loginButton',
+  'carouselDashboard',
+] as const;
+
+const sizes = [
+  'xs',
+  's',
+  'm',
+  'l',
+  'xl',
+  'flagsMobile',
+  'carouselSize',
+  'loginButton',
+] as const;
 
 const meta: Meta<typeof Button> = {
+  title: 'Atoms/button',
   component: Button,
   parameters: {
     layout: 'centered',
-    backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#F2F2F2' },
-        { name: 'dark', value: '#333333' },
-      ],
-    },
   },
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
+  tags: ['autodocs'],
   argTypes: {
+    children: {
+      control: 'text',
+      description: 'Content displayed inside the button.',
+    },
+    variant: {
+      control: { type: 'select' },
+      options: variants,
+    },
+    size: {
+      control: { type: 'select' },
+      options: sizes,
+    },
+    mode: {
+      control: { type: 'radio' },
+      options: ['light', 'dark'],
+      description: 'dark mode requires a `dark` class.',
+    },
+    rounded: {
+      control: 'boolean',
+    },
+    glowing: {
+      control: 'boolean',
+    },
     disabled: {
-      control: 'boolean', // This enables a toggle control in the Storybook UI
-      description: 'Disable the button',
-      defaultValue: false,
+      control: 'boolean',
+      description: 'Becomes non-interactive.',
+    },
+    asChild: {
+      control: 'boolean',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
+        disable: true,
+      },
+    },
+    className: {
+      control: 'text',
+    },
+    onClick: {
+      action: 'clicked',
+      table: {
+        disable: true,
       },
     },
   },
-  tags: ['autodocs'],
+  args: {
+    children: 'Click me',
+    variant: 'primary',
+    size: 'm',
+    mode: 'light',
+    rounded: false,
+    glowing: false,
+    disabled: false,
+  },
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Default: Story = {
+  args: {},
+};
+
+export const AllVariants: Story = {
+  render: (args) => (
+    <>
+      <div className="flex flex-wrap items-end gap-4 p-4">
+        {variants.map((variant) => (
+          <Button key={variant} {...args} mode="light" variant={variant}>
+            {variant.charAt(0).toUpperCase() + variant.slice(1)}
+          </Button>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-end gap-4 p-4 mt-4 rounded bg-[#333333]">
+        {variants.map((variant) => (
+          <Button key={variant} {...args} mode="dark" variant={variant}>
+            {variant.charAt(0).toUpperCase() + variant.slice(1)}
+          </Button>
+        ))}
+      </div>
+    </>
+  ),
   args: {
-    children: 'primary',
-    size: 'm',
+    children: 'Variant',
+  },
+};
+
+export const AllSizes: Story = {
+  render: (args) => (
+    <div className="flex flex-col items-start gap-4 p-4">
+      {sizes.map((size) => (
+        <Button key={size} {...args} size={size}>
+          {`Size ${size.toUpperCase()}`}
+        </Button>
+      ))}
+    </div>
+  ),
+  args: {
+    children: 'Button Size',
     variant: 'primary',
   },
 };
 
-export const Secondary: Story = {
+export const Rounded: Story = {
   args: {
-    children: 'secondary',
-    size: 'l',
-    variant: 'secondary',
+    rounded: true,
+    children: 'Rounded',
+    variant: 'primary',
   },
 };
 
-export const Outline: Story = {
+export const Glowing: Story = {
   args: {
-    children: 'outline',
-    size: 'l',
-    variant: 'outline',
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    children: 'ghost',
-    size: 'l',
-    variant: 'ghost',
+    glowing: true,
+    children: 'Glowing',
+    variant: 'primary',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    children: 'Disabled',
     disabled: true,
-  },
-};
-
-export const GlowingPrimary: Story = {
-  args: {
-    children: 'Glowing',
-    glowing: true,
-    size: 'l',
-    variant: 'primary',
-  },
-};
-
-export const RoundedPrimary: Story = {
-  args: {
-    children: 'Rounded',
-    rounded: true,
-    size: 'l',
+    children: 'Disabled',
     variant: 'primary',
   },
 };
