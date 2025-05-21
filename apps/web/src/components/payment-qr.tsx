@@ -144,7 +144,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
             <Link
-              to="/terms-and-conditions"
+              to="/public-communication/legals/terms-of-sale"
               className="hover:underline hover:underline-offset-2 text-darkOrange-5"
               target="_blank"
               rel="noreferrer"

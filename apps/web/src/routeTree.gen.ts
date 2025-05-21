@@ -31,7 +31,6 @@ import { Route as LangContentEventsEventIdImport } from './routes/$lang/_content
 import { Route as LangContentCoursesBtc105Import } from './routes/$lang/_content/courses/btc105';
 import { Route as LangContentCoursesCourseNameCourseIdImport } from './routes/$lang/_content/courses/$courseName-$courseId';
 import { Route as LangContentMiscUnderConstructionImport } from './routes/$lang/_content/_misc/under-construction';
-import { Route as LangContentMiscTermsAndConditionsImport } from './routes/$lang/_content/_misc/terms-and-conditions';
 import { Route as LangContentMiscNodeNetworkImport } from './routes/$lang/_content/_misc/node-network';
 import { Route as LangContentMiscManifestoImport } from './routes/$lang/_content/_misc/manifesto';
 import { Route as LangContentMiscBCertImport } from './routes/$lang/_content/_misc/b-cert';
@@ -212,13 +211,6 @@ const LangContentMiscUnderConstructionRoute =
   LangContentMiscUnderConstructionImport.update({
     id: '/$lang/_content/_misc/under-construction',
     path: '/$lang/under-construction',
-    getParentRoute: () => rootRoute,
-  } as any);
-
-const LangContentMiscTermsAndConditionsRoute =
-  LangContentMiscTermsAndConditionsImport.update({
-    id: '/$lang/_content/_misc/terms-and-conditions',
-    path: '/$lang/terms-and-conditions',
     getParentRoute: () => rootRoute,
   } as any);
 
@@ -651,13 +643,6 @@ declare module '@tanstack/react-router' {
       path: '/$lang/node-network';
       fullPath: '/$lang/node-network';
       preLoaderRoute: typeof LangContentMiscNodeNetworkImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/$lang/_content/_misc/terms-and-conditions': {
-      id: '/$lang/_content/_misc/terms-and-conditions';
-      path: '/$lang/terms-and-conditions';
-      fullPath: '/$lang/terms-and-conditions';
-      preLoaderRoute: typeof LangContentMiscTermsAndConditionsImport;
       parentRoute: typeof rootRoute;
     };
     '/$lang/_content/_misc/under-construction': {
@@ -1223,7 +1208,6 @@ export interface FileRoutesByFullPath {
   '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
-  '/$lang/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
@@ -1299,7 +1283,6 @@ export interface FileRoutesByTo {
   '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
-  '/$lang/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
@@ -1376,7 +1359,6 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/_content/_misc/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/_content/_misc/node-network': typeof LangContentMiscNodeNetworkRoute;
-  '/$lang/_content/_misc/terms-and-conditions': typeof LangContentMiscTermsAndConditionsRoute;
   '/$lang/_content/_misc/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/_content/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/_content/courses/btc105': typeof LangContentCoursesBtc105Route;
@@ -1454,7 +1436,6 @@ export interface FileRouteTypes {
     | '/$lang/b-cert'
     | '/$lang/manifesto'
     | '/$lang/node-network'
-    | '/$lang/terms-and-conditions'
     | '/$lang/under-construction'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
@@ -1529,7 +1510,6 @@ export interface FileRouteTypes {
     | '/$lang/b-cert'
     | '/$lang/manifesto'
     | '/$lang/node-network'
-    | '/$lang/terms-and-conditions'
     | '/$lang/under-construction'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
@@ -1604,7 +1584,6 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/b-cert'
     | '/$lang/_content/_misc/manifesto'
     | '/$lang/_content/_misc/node-network'
-    | '/$lang/_content/_misc/terms-and-conditions'
     | '/$lang/_content/_misc/under-construction'
     | '/$lang/_content/courses/$courseName-$courseId'
     | '/$lang/_content/courses/btc105'
@@ -1681,7 +1660,6 @@ export interface RootRouteChildren {
   LangContentMiscBCertRoute: typeof LangContentMiscBCertRoute;
   LangContentMiscManifestoRoute: typeof LangContentMiscManifestoRoute;
   LangContentMiscNodeNetworkRoute: typeof LangContentMiscNodeNetworkRoute;
-  LangContentMiscTermsAndConditionsRoute: typeof LangContentMiscTermsAndConditionsRoute;
   LangContentMiscUnderConstructionRoute: typeof LangContentMiscUnderConstructionRoute;
   LangContentCoursesCourseNameCourseIdRoute: typeof LangContentCoursesCourseNameCourseIdRoute;
   LangContentCoursesBtc105Route: typeof LangContentCoursesBtc105Route;
@@ -1738,8 +1716,6 @@ const rootRouteChildren: RootRouteChildren = {
   LangContentMiscBCertRoute: LangContentMiscBCertRoute,
   LangContentMiscManifestoRoute: LangContentMiscManifestoRoute,
   LangContentMiscNodeNetworkRoute: LangContentMiscNodeNetworkRoute,
-  LangContentMiscTermsAndConditionsRoute:
-    LangContentMiscTermsAndConditionsRoute,
   LangContentMiscUnderConstructionRoute: LangContentMiscUnderConstructionRoute,
   LangContentCoursesCourseNameCourseIdRoute:
     LangContentCoursesCourseNameCourseIdRoute,
@@ -1838,7 +1814,6 @@ export const routeTree = rootRoute
         "/$lang/_content/_misc/b-cert",
         "/$lang/_content/_misc/manifesto",
         "/$lang/_content/_misc/node-network",
-        "/$lang/_content/_misc/terms-and-conditions",
         "/$lang/_content/_misc/under-construction",
         "/$lang/_content/courses/$courseName-$courseId",
         "/$lang/_content/courses/btc105",
@@ -1931,9 +1906,6 @@ export const routeTree = rootRoute
     },
     "/$lang/_content/_misc/node-network": {
       "filePath": "$lang/_content/_misc/node-network.tsx"
-    },
-    "/$lang/_content/_misc/terms-and-conditions": {
-      "filePath": "$lang/_content/_misc/terms-and-conditions.tsx"
     },
     "/$lang/_content/_misc/under-construction": {
       "filePath": "$lang/_content/_misc/under-construction.tsx"
