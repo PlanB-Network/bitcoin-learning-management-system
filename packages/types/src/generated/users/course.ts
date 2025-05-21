@@ -8,6 +8,9 @@ export interface CourseProgress {
   completedChaptersCount: number;
   lastUpdated: Date;
   progressPercentage: number;
+  isSelectedForAssignment: boolean | null;
+  appliedAssignmentIds: string[] | null;
+  affectedAssignmentId: string | null;
 }
 
 export interface CoursePayment {
@@ -99,6 +102,9 @@ export interface CourseProgressExtended {
   completedChaptersCount: number;
   lastUpdated: Date;
   progressPercentage: number;
+  isSelectedForAssignment: boolean | null;
+  appliedAssignmentIds: string[] | null;
+  affectedAssignmentId: string | null;
   courseIndex: string;
   totalChapters: number;
   chapters: {

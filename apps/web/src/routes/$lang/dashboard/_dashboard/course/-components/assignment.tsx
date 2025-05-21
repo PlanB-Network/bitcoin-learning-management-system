@@ -21,6 +21,12 @@ export const Assignment = ({
         <p className="whitespace-pre-line text-newBlack-4 max-md:text-sm">
           {t('dashboard.course.assignmentDescription')}
         </p>
+
+        {new Date().getTime() > new Date('2025-06-02T02:00:00Z').getTime() && (
+          <p>
+            {/* If the user is selected for assignments, show the form to do the ranking. */}
+          </p>
+        )}
       </CollapsibleDropdown>
     </section>
   );

@@ -1158,6 +1158,23 @@ export const contentCourseTags = content.table(
   }),
 );
 
+export const contentCoursesAssignment = content.table(
+  'course_assignment',
+  (t) => ({
+    id: t.uuid().primaryKey(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    name: t.varchar({ length: 50 }).notNull(),
+    description: t.text().notNull(),
+    fileUrl: t.varchar({ length: 255 }).notNull(),
+  }),
+);
+
 // COURSE PAYMENTS
 export const coursePaymentFormatEnum = pgNativeEnum(
   'course_payment_format',
@@ -1266,6 +1283,11 @@ export const usersCourseProgress = users.table(
       .defaultNow()
       .notNull(),
     progressPercentage: t.integer().default(0).notNull(),
+    isSelectedForAssignment: t.boolean().default(false),
+    appliedAssignmentIds: t.uuid().array(),
+    affectedAssignmentId: t
+      .uuid()
+      .references(() => contentCoursesAssignment.id, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
