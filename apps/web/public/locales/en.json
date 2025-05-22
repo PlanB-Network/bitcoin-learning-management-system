@@ -1207,6 +1207,7 @@
     "insertReductionCode": "Insert your reduction code",
     "payByCard": "Pay by Card",
     "payWithBitcoin": "Pay with Bitcoin",
+    "taxesMayApply": "Taxes may apply at checkout",
     "terms": "See our <0>general terms</0> and conditions for refund details",
     "total": "Total"
   },
@@ -1523,6 +1524,7 @@
     "conference": "Conference",
     "congrats": "Congrats!",
     "content": "Content",
+    "continue": "Continue",
     "country": "Country",
     "course": "Course",
     "courseId": "Course ID",

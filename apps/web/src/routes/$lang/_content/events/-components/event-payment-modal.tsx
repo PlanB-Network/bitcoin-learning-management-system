@@ -171,6 +171,7 @@ export const EventPaymentModal = ({
             <ModalPaymentSummary
               event={event}
               accessType={accessType}
+              dollarPrice={dollarPriceReduced}
               satsPrice={satsPrice}
               mobileDisplay={false}
             />
@@ -244,7 +245,8 @@ export const EventPaymentModal = ({
                   <ModalPaymentSummary
                     event={event}
                     accessType={accessType}
-                    satsPrice={satsPrice}
+                    dollarPrice={dollarPriceReduced}
+                    satsPrice={satsPriceReduced}
                     mobileDisplay={true}
                   />
                 </PaymentDescription>

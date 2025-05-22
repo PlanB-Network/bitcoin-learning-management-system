@@ -290,14 +290,18 @@ export const EventCard = ({
             </Button>
           ) : (
             <>
-              <span className="italic">{t('events.card.eventFull')}</span>
+              <span className="italic max-sm:body-12px">
+                {t('events.card.eventFull')}
+              </span>
             </>
           ))}
 
         {isBookableInPersonEvent &&
           userBookedTheEvent &&
           userBookedPhysicalEvent && (
-            <span className="italic">{t('events.card.seatBooked')}</span>
+            <span className="italic max-sm:body-12px">
+              {t('events.card.seatBooked')}
+            </span>
           )}
 
         {isPassed && event.type !== 'conference' && <ReplayButtons />}
@@ -403,7 +407,7 @@ export const EventCard = ({
               loading="lazy"
               src={resourceImgUrl(event)}
               alt={event.name ? event.name : ''}
-              className="object-cover [overflow-clip-margin:_unset] sm:aspect-[432/308] w-full max-sm:h-[113px] sm:rounded-2xl"
+              className="object-cover [overflow-clip-margin:_unset] sm:aspect-[432/308] w-full h-full sm:rounded-2xl"
             />
             {event.type && (
               <span className="absolute top-4 left-4 bg-white border border-newGray-3 text-black text-sm font-medium leading-none py-1 px-2 rounded-xs max-sm:hidden">
@@ -419,12 +423,12 @@ export const EventCard = ({
           <div className="max-sm:hidden">
             <GeneralInfos />
           </div>
-          <div className="flex flex-col sm:hidden p-1">
+          <div className="flex flex-col sm:hidden p-1 gap-1">
             <GeneralInfos />
             <div className="flex sm:flex-col gap-2.5 justify-between mt-auto sm:py-1">
               {!event.websiteUrl && <PriceInfos />}
             </div>
-            <div className="flex items-center gap-2.5 sm:gap-4">
+            <div className="flex items-center gap-2.5 sm:gap-4 flex-wrap">
               <EventButtons />
               {isPassed && event.type === 'conference' && (
                 <div className="mt-2.5">

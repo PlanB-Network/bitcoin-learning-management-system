@@ -16,6 +16,7 @@ const borderClassName = 'border border-white/25 rounded-xl overflow-hidden';
 interface ModalPaymentSummaryProps {
   event: JoinedEvent;
   accessType: 'physical' | 'online' | 'replay';
+  dollarPrice: number;
   satsPrice: number;
   mobileDisplay: boolean;
 }
@@ -23,6 +24,7 @@ interface ModalPaymentSummaryProps {
 export const ModalPaymentSummary = ({
   event,
   accessType,
+  dollarPrice,
   satsPrice,
   mobileDisplay,
 }: ModalPaymentSummaryProps) => {
@@ -106,7 +108,7 @@ export const ModalPaymentSummary = ({
           />
           <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
             <span className="font-semibold">
-              {getFormattedUnit(event.priceDollars || 0, DEFAULT_CURRENCY, 0)}
+              {getFormattedUnit(dollarPrice || 0, DEFAULT_CURRENCY, 0)}
             </span>
             <span>·</span>
             <span>{satsPrice} sats</span>
