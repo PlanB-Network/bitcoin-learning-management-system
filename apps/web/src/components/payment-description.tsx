@@ -198,21 +198,13 @@ export const PaymentDescription = ({
             </div>
           </div>
           <Divider mode="light" width="w-full" className="!mx-0" />
-          {paidPriceDollars !== 0 && (
-            <span className="w-full text-right text-newGray-3 body-14px">
-              {t('payment.taxesMayApply')}
-            </span>
-          )}
+          {paidPriceDollars !== 0 && <TaxWarningText />}
         </div>
 
         {/* Todo : a generic component should not reference a specific one */}
         {children}
 
-        {paidPriceDollars !== 0 && (
-          <span className="w-full text-center text-newGray-3 body-14px md:hidden">
-            {t('payment.taxesMayApply')}
-          </span>
-        )}
+        {paidPriceDollars !== 0 && <TaxWarningText />}
 
         <div className="w-full lg:hidden">{displayReductionCode()}</div>
 
@@ -311,5 +303,14 @@ export const PaymentDescription = ({
         </div>
       </div>
     </>
+  );
+};
+
+const TaxWarningText = () => {
+  const { t } = useTranslation();
+  return (
+    <span className="w-full text-center text-newGray-3 body-14px md:hidden">
+      {t('payment.taxesMayApply')}
+    </span>
   );
 };
