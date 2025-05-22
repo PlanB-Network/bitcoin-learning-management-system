@@ -2,7 +2,7 @@ import { type JSX, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { CouponCode, JoinedEvent } from '@blms/types';
-import { Button, Checkbox } from '@blms/ui';
+import { Button, Checkbox, Divider, cn } from '@blms/ui';
 import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import spinner from '#src/assets/icons/spinner.svg';
@@ -174,7 +174,7 @@ export const PaymentDescription = ({
   }
   return (
     <>
-      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto pr-4">
+      <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-4 md:gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto pr-4">
         <PlanBLogo className="h-auto max-lg:hidden" width={240} />
         {callout ? <PaymentCallout description={callout} /> : null}
         <div className="w-full flex flex-col">
@@ -187,18 +187,24 @@ export const PaymentDescription = ({
 
         <div className="w-full max-lg:hidden">{displayReductionCode()}</div>
 
-        <div className="max-lg:hidden flex flex-row justify-between w-full">
-          <span className="text-lg font-medium">{t('payment.total')}</span>
-          <div className="flex flex-col items-end">
-            <span className="text-lg font-medium">
-              {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
-            </span>
-            <span className="text-sm text-gray-400/50">{satsPrice} sats</span>
+        <div className="flex flex-col w-full gap-2 max-lg:hidden">
+          <div className="flex flex-row justify-between w-full">
+            <span className="text-lg font-medium">{t('payment.total')}</span>
+            <div className="flex flex-col items-end">
+              <span className="text-lg font-medium">
+                {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
+              </span>
+              <span className="text-sm text-newBlack-5">{satsPrice} sats</span>
+            </div>
           </div>
+          <Divider mode="light" width="w-full" className="!mx-0" />
+          {paidPriceDollars !== 0 && <TaxWarningText />}
         </div>
 
         {/* Todo : a generic component should not reference a specific one */}
         {children}
+
+        {paidPriceDollars !== 0 && <TaxWarningText />}
 
         <div className="w-full lg:hidden">{displayReductionCode()}</div>
 
@@ -246,36 +252,27 @@ export const PaymentDescription = ({
             {checkoutError}
           </span>
         )}
-        <div className="md:hidden text-center uppercase md:text-xs justify-self-end mt-auto mb-4">
-          <div className="text-[10px] md:text-xs">
-            <Trans i18nKey="payment.terms">
-              <Link
-                to="/public-communication/legals/terms-of-sale"
-                className="hover:underline hover:underline-offset-2 text-darkOrange-5"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Payment terms
-              </Link>
-            </Trans>
-          </div>
-        </div>
-        <div className="flex flex-col-reverse md:flex-row md:w-full gap-4">
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() => {
-              setIsBtnClicked(true);
-              if (isBookEnabled) {
-                initPayment('stripe');
-              }
-            }}
-          >
-            {t('payment.payByCard')}
-          </Button>
+
+        <div className="flex flex-col-reverse md:flex-row md:w-full md:justify-center gap-4">
+          {paidPriceDollars !== 0 && (
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => {
+                setIsBtnClicked(true);
+                if (isBookEnabled) {
+                  initPayment('stripe');
+                }
+              }}
+            >
+              {t('payment.payByCard')}
+            </Button>
+          )}
           <Button
             variant="primary"
-            className="w-full"
+            className={cn(
+              paidPriceDollars !== 0 ? 'w-full' : 'min-w-42 md:min-w-47',
+            )}
             onClick={() => {
               setIsBtnClicked(true);
               if (isBookEnabled) {
@@ -283,11 +280,15 @@ export const PaymentDescription = ({
               }
             }}
           >
-            {t('payment.payWithBitcoin')}
+            {t(
+              paidPriceDollars !== 0
+                ? 'payment.payWithBitcoin'
+                : 'words.continue',
+            )}
           </Button>
         </div>
       </div>
-      <div className="max-md:hidden text-center uppercase md:text-xs justify-self-end mt-auto mb-2">
+      <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-4 md:mb-2">
         <div className="text-[10px] md:text-xs">
           <Trans i18nKey="payment.terms">
             <Link
@@ -302,5 +303,14 @@ export const PaymentDescription = ({
         </div>
       </div>
     </>
+  );
+};
+
+const TaxWarningText = () => {
+  const { t } = useTranslation();
+  return (
+    <span className="w-full text-center text-newGray-3 body-14px md:hidden">
+      {t('payment.taxesMayApply')}
+    </span>
   );
 };

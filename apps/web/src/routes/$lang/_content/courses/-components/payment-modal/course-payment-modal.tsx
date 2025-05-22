@@ -272,7 +272,7 @@ export const CoursePaymentModal = ({
                     course={course}
                     courseName={course?.name}
                     professorNames={professorNames}
-                    paidPriceDollars={dollarPrice}
+                    paidPriceDollars={dollarPriceReduced}
                     satsPrice={satsPriceReduced}
                     mobileDisplay={true}
                   />
