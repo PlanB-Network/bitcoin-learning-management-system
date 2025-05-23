@@ -436,7 +436,9 @@
       "type": "",
       "upcomingBookings": "",
       "upcomingBookingsSubtitle": "",
-      "userRolesAllocation": ""
+      "userRolesAllocation": "",
+      "downloadList": "",
+      "makeProfessor": ""
     },
     "booking": {
       "billingTitle": "",
@@ -455,7 +457,8 @@
       "ticketType": "",
       "upcomingTicketSubtitle": "",
       "upcomingTicketTitle": "",
-      "yesCancel": ""
+      "yesCancel": "",
+      "accessLive": ""
     },
     "calendar": {
       "personalCalendar": "",
