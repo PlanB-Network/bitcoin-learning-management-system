@@ -1,3 +1,4 @@
+export * from './biz-school.js';
 export * from './complete-chapter.js';
 export * from './complete-exam.js';
 export * from './generate-chapter-ticket.js';

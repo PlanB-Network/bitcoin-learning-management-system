@@ -15,6 +15,7 @@ import {
   createGetSbpCheckout,
   createInsertUserNotifications,
   createPublishScheduledCourseAnnouncement,
+  createSelectBizSchoolStudentsForAssignments,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
   createStartCourse,
@@ -310,6 +311,15 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       }
     });
   }
+
+  // On June 2nd at 2am GMT, select all students from the business school
+  ctx.crons.addTask('jun2_2am_gmt', async () => {
+    console.log('[Cron] Running selectBizSchoolStudentsForAssignments job');
+    const selectBizSchoolStudentsForAssignments =
+      createSelectBizSchoolStudentsForAssignments(ctx);
+    await selectBizSchoolStudentsForAssignments;
+    console.log('[Cron] Finished selectBizSchoolStudentsForAssignments job');
+  });
 
   if (timestampService) {
     // Every five minutes
