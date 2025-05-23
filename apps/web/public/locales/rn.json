@@ -517,7 +517,9 @@
       "type": "",
       "upcomingBookings": "",
       "upcomingBookingsSubtitle": "",
-      "userRolesAllocation": ""
+      "userRolesAllocation": "",
+      "downloadList": "",
+      "makeProfessor": ""
     },
     "course": {
       "submitBefore": "",
@@ -616,7 +618,8 @@
       "ticketType": "",
       "upcomingTicketSubtitle": "",
       "upcomingTicketTitle": "",
-      "yesCancel": ""
+      "yesCancel": "",
+      "accessLive": ""
     },
     "calendar": {
       "eventType": {
