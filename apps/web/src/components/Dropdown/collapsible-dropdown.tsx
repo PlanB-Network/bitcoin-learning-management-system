@@ -31,7 +31,7 @@ const collapsibleTriggerVariant = cva(
     variants: {
       variant: {
         light: 'text-darkOrange-5',
-        dark: '',
+        dark: 'text-newBlack-3',
       },
     },
     defaultVariants: {
@@ -68,16 +68,14 @@ export const CollapsibleDropdown = ({
       <CollapsibleTrigger className={collapsibleTriggerVariant({ variant })}>
         <div className="flex flex-row gap-2 items-center">
           {type === 'info' ? <AlertCircle className="h-4 w-4" /> : null}
-          <span className="font-medium leading-[110%] tracking-015px">
-            {title}
-          </span>
+          <span className="body-16px-medium">{title}</span>
         </div>
         <MdKeyboardArrowDown
           size={30}
           className={cn('transition-all', isOpen && 'rotate-180')}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent>{children}</CollapsibleContent>
+      <CollapsibleContent className="text-">{children}</CollapsibleContent>
     </Collapsible>
   );
 };
