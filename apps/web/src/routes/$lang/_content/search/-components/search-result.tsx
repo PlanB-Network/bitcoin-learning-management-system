@@ -1,6 +1,6 @@
 import type { SearchResultItem } from '@blms/types';
 import type { Searchable } from '@blms/types';
-import { Tag } from '@blms/ui';
+import { TextTag } from '@blms/ui';
 import { default as DOMPurify } from 'dompurify';
 
 import { useTranslation } from 'react-i18next';
@@ -21,9 +21,9 @@ export const SearchResult = ({ item, index }: SearchResultProps) => {
       rel="noreferrer"
     >
       <div className="flex gap-4 items-center">
-        <Tag className="bg-maroon-9 text-base border-0 p-2 py-1 text-white font-thin">
+        <TextTag mode="dark" variant="darkMaroon">
           {t(`search.${item.document.type}`)}
-        </Tag>
+        </TextTag>
 
         {item.highlight.title ? (
           <div

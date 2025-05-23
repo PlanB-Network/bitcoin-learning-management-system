@@ -17,24 +17,9 @@ export const Primary: Story = {
     children: (
       <>
         <TabsList>
-          <TabsTrigger
-            value="tabone"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            One
-          </TabsTrigger>
-          <TabsTrigger
-            value="tabtwo"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            Two
-          </TabsTrigger>
-          <TabsTrigger
-            value="tabthree"
-            className="text-gray-500 data-[state=active]:text-black data-[state=inactive]:hover:text-black text-wrap"
-          >
-            Three
-          </TabsTrigger>
+          <TabsTrigger value="tabone">One</TabsTrigger>
+          <TabsTrigger value="tabtwo">Two</TabsTrigger>
+          <TabsTrigger value="tabthree">Three</TabsTrigger>
         </TabsList>
         <TabsContent value="tabone">
           <p>Tab one content</p>

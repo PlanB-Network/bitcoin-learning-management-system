@@ -125,7 +125,7 @@ export const CourseTable = ({
             {levels.map((level) => (
               <TableRow key={level}>
                 <TableCell className="p-1 !bg-white lg:w-[37px]">
-                  <div className="capitalize desktop-caption1 text-black py-[5px] px-px bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] [transform:rotate(180deg)]">
+                  <div className="capitalize desktop-caption1 text-black py-px px-[5px] bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] [transform:rotate(180deg)]">
                     {level}
                   </div>
                 </TableCell>

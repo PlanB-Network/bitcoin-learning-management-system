@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { Button, Tag, cn } from '@blms/ui';
+import { Button, TextTag, cn } from '@blms/ui';
 
 import Flag from '#src/molecules/Flag/index.js';
 
@@ -28,9 +28,9 @@ export const ConferenceRow = ({
       <td className="py-5 pr-4">
         <div className="flex gap-4 flex-wrap items-center">
           {tags.map((tag) => (
-            <Tag key={tag} className="capitalize">
+            <TextTag mode="dark" className="capitalize" key={tag}>
               {tag}
-            </Tag>
+            </TextTag>
           ))}
         </div>
       </td>
