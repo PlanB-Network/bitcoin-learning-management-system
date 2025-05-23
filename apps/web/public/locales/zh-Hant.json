@@ -231,7 +231,8 @@
       "teachers": "老師",
       "time": "時間",
       "checkoutError": "在結帳過程中發生錯誤。\n請再試一次。",
-      "courseType": ""
+      "courseType": "",
+      "hybridDescription": ""
     },
     "review": {
       "commentAdmin": "給管理團隊的留言（私人）",
@@ -791,7 +792,8 @@
         "productCourse": "",
         "productEvent": "",
         "selectCourse": "",
-        "selectEvent": ""
+        "selectEvent": "",
+        "discountValueExplanation": ""
       },
       "coursesIndexes": "",
       "deleteRole": "",
@@ -1154,7 +1156,8 @@
       "callout_book_online": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "errors": {
       "premiumContentNeedsPayment": "這個活動是高級方案的一部分。",
@@ -1351,7 +1354,8 @@
     },
     "contribution": {
       "title": "",
-      "shortDescription": ""
+      "shortDescription": "",
+      "description": ""
     },
     "business": {
       "description": "",
