@@ -703,7 +703,9 @@
       "tutorialsManagementPanel": "",
       "upcomingBookings": "",
       "upcomingBookingsSubtitle": "",
-      "userRolesAllocation": ""
+      "userRolesAllocation": "",
+      "downloadList": "",
+      "makeProfessor": ""
     },
     "course": {
       "assignment": "",
@@ -992,7 +994,8 @@
       "ticketType": "",
       "upcomingTicketSubtitle": "",
       "upcomingTicketTitle": "",
-      "yesCancel": ""
+      "yesCancel": "",
+      "accessLive": ""
     },
     "goToHomepage": "",
     "goToDashboard": "",
