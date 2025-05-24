@@ -44,7 +44,7 @@
     "forgottenPassword": "Zaboravili ste lozinku?",
     "headerAccountCreated": "Nalog je kreiran",
     "lnurlAuthDescription": "Skenirajte ovaj QR kod sa svojim Lightning novčanikom kako biste se prijavili!",
-    "noAccountNeeded": "Nema potrebe za nalogom da biste počeli da učite na Plan B Mreži!",
+    "noAccountNeeded": "Nema potrebe za nalogom da biste počeli da učite na Plan ₿ Network-u!",
     "noAccountYet": "Nemate nalog?",
     "newPassword": "Nova lozinka",
     "passwordMinLength": "Lozinka mora imati najmanje {{len}} karaktera",
@@ -71,23 +71,37 @@
     "dashboardUnlocked": "Vaša studentska kontrolna tabla je otključana !",
     "didYouKnow": "Da li ste znali ?",
     "trackProgress": "Kreirajte nalog ili se prijavite da biste pratili svoj napredak",
-    "passwordChangedSuccess": "Lozinka je uspešno promenjena"
+    "passwordChangedSuccess": "Lozinka je uspešno promenjena",
+    "emailValidation": {
+      "emailChangeValidated": "Promena e-pošte je potvrđena",
+      "emailValidated": "E-pošta je potvrđena",
+      "errorValidatingEmail": "Greška pri validaciji e-pošte",
+      "errorValidatingEmailChange": "Greška pri validaciji promene e-pošte",
+      "errorValidatingEmailChangeDescription": "Došlo je do greške prilikom validacije promene vaše e-pošte, izgleda da je link istekao ili je već iskorišćen. Molim vas, pokušajte ponovo.",
+      "errorValidatingEmailDescription": "Došlo je do greške prilikom validacije vaše e-pošte, izgleda da je link istekao ili je već iskorišćen. Molim vas, pokušajte ponovo.",
+      "successfullyChanged": "Vaša e-pošta je uspešno promenjena u {{email}}.",
+      "successfullyValidated": "Vaša e-pošta je uspešno validirana.",
+      "validateChange": "Potvrđivanje promene e-pošte",
+      "validatingEmail": "Validacija e-pošte",
+      "validatingEmailChange": "Potvrđivanje promene e-pošte",
+      "wontTakeLong": "Ovo neće dugo trajati..."
+    }
   },
   "bCert": {
-    "bCertDescription": "₿ -sertifikat je međunarodno priznat ispit za procenu Vašeg nivoa znanja o Bitcoinu i tema koje iz njega proizlaze. Ovaj sertifikat će Vam omogućiti da dokažete svoje veštine i znanje u industriji Bitcoina, pružajući Vam pristup kompanijama i pozicijama u toj industriji.",
+    "bCertDescription": "₿ -sertifikat je međunarodno priznat ispit za procenu Vašeg nivoa znanja o Bitcoinu i povezanih tema. Ovaj sertifikat će Vam omogućiti da dokažete svoje veštine i znanje u Bitcoin industriji, pružajući Vam pristup kompanijama i pozicijama u toj industriji.",
     "organizeSubtitle": "\"Orange pill-ovanje\" milijardu ljudi nije lako",
     "knowledgeableBitcoin": "Imate znanje o Bitcoinu?",
     "noBookExam": "Ispit još uvek nije planiran.",
-    "organizeDescription": "Nema problema! Ako je vaša zajednica deo PlanB Mreže, možete organizovati ₿-CERT sesiju u vašem centru. \nMolimo Vas da pročitate <0>povelju</0> kako biste se uverili da možete da ispunite obavezne uslove za održavanje ispita. Ako se kvalifikujete, možete zakazati ispit i dodati ga na platformu.",
+    "organizeDescription": "Nema problema! Ako je vaša zajednica deo Plan ₿ Network-a, možete organizovati ₿-CERT sesiju u vašem centru. \nMolimo Vas da pročitate <0>povelju</0> kako biste se uverili da možete da ispunite obavezne uslove za održavanje ispita. Ako se kvalifikujete, možete zakazati ispit i dodati ga na platformu.",
     "organizeExam": "Organizujte ispit",
     "bookExam": "Zakažite ispit",
     "challengeYourself": "Prihvati izazov i oceni svoj nivo",
     "checkout": "Pogledajte ₿ sertifikat",
-    "organizeTitle": "Želite da organizujete ispit za ₿ sertifikat u Vašem centru?",
+    "organizeTitle": "Da li želite organizujete ispit za ₿ sertifikat u Vašem centru?",
     "pageSubtitle": "Masovno širenje kroz centralizovano obrazovanje otvorenog koda",
-    "pageTitle": "Položite za ₿ Sertifikat",
+    "pageTitle": "Polažite za ₿ Sertifikat",
     "readChart": "Pročitajte poglavlje",
-    "tweetText": "Oduševljen/a sam što sam položio/la B-sertifikat na @planb_network sa rezultatom {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
+    "tweetText": "Oduševljen/a sam što sam položio/la ₿-sertifikat na @planb_network sa rezultatom {{score}}/100! {{emoji}}#BCERT\n\n{{certificateUrl}}",
     "verify": "Proverite autentičnost svog sertifikata",
     "download": "Preuzmite sertifikat",
     "organizeSessionConditions": "Molimo vas da pročitate <0>povelju</0> kako biste se uverili da ispunjavate obavezne uslove za organizovanje testa.\nAko ispunjavate uslove, biće nam drago da sa vama planiramo sesiju za vašu lokalnu zajednicu.\nMolimo vas da nas kontaktirate na način koji vam najviše odgovara.",
@@ -155,7 +169,7 @@
     "payment": {
       "date": "Datum",
       "downloadCurriculum": "Preuzmite nastavni plan",
-      "book_description": "Molimo vas da pregledate detalje o mestu održavanja.\nKada se rezervacija obradi, poslaćemo Vam potvrdu o rezervaciji i QR kod, koji treba da pokažete na događaju.",
+      "book_description": "Molimo vas da proverite podatke o mestu održavanja. Nakon što vaša rezervacija bude potvrđena, dobićete potvrdu i QR kod koji treba da pokažete u učionici.",
       "duration": "Trajanje",
       "invoiceId": "ID transakcije",
       "payment_details": "Detalji o plaćanju",
@@ -169,10 +183,12 @@
       "amount": "Iznos",
       "back_course": "Nazad na kurs",
       "onlineDescription": "Svaki čas se prenosi uživo na platformu.\nOva kupovina će Vam dati pristup časovima uživo i snimljenim videima.",
-      "inPersonDescription": "Svaki čas se održava uživo na unapred određenim datumima i mestima, a takođe se i uživo prenosi na platformi.\nOva kupovina Vam daje pristup online časovima kao i časovima uživo.\nNemojte da zaboravite da rezervišete Vaše mesto na časovima na kojima želite da prisustvujete uživo.",
+      "inPersonDescription": "Molimo vas da pregledate detalje o kursu. Nakon potvrde rezervacije, dobićete potvrdu i QR kod koji je potrebno prikazati u učionici.",
       "onlineCallout": "Uskoro ćete kupiti <strong>onlajn</strong> pristup ovom kursu.",
       "inPersonCallout": "Uskoro ćete kupiti <strong>uživo</strong> pristup ovom kursu.",
-      "checkoutError": "Došlo je do greške tokom procesa plaćanja.\nMolimo Vas, pokušajte ponovo."
+      "checkoutError": "Došlo je do greške tokom procesa plaćanja.\nMolimo Vas, pokušajte ponovo.",
+      "courseType": "Vrsta kursa",
+      "hybridDescription": "Molimo vas da pregledate detalje kursa koji su prikazani.\nSve lekcije se održavaju uživo, u terminima i na lokacijama koje su navedene. Svi časovi se prenose uživo i snimaju za kasnije gledanje.\n\nPrisustvo uživo se organizuje po času, stoga vas ljubazno molimo da rezervišete svoje mesto svaki put kada želite da prisustvujete lično."
     },
     "details": {
       "buyCourse": "Kupite kurs",
@@ -200,18 +216,23 @@
       "otherCoursesInterest": "Drugi kursevi koji bi Vas mogli interesovati",
       "pastEditionsRatings": "Ocene Prethodnih Izdanja",
       "thanksTipping": "Možete se zahvaliti ostavljajući napojnicu profesoru.",
-      "teacherLed": "Vođeno od strane nastavnika"
+      "teacherLed": "Vođeno od strane nastavnika",
+      "associatedProfessors": "Saradnici profesori",
+      "attendInPersonWarning": "Ako nameravate da prisustvujete ovom času lično, obavezno rezervišite svoje mesto. U svakom slučaju, čas će biti prenošen uživo i dostupan za ponovno gledanje.",
+      "learning": "Program učenja",
+      "coordinatedBy": "Ovaj kurs vodi"
     },
     "explorer": {
       "findCourses": "Pronađite savršen kurs za Vaše potrebe zahvaljujući alatu za izbor kursa",
-      "pageDescription": "Plan ₿ Akademija ima za cilj da pojednostavi obrazovanje o Bitcoinu širom sveta. Uređena od strane stručnjaka iz različitih disciplina, naša akademija nudi bogatstvo kurseva dizajniranih da pojasne svaki aspekt Bitcoina. \nOd početnika do stručnjaka, bilo da učite u svom ritmu ili pratite nedeljna predavanja sa profesorom, nadamo se da Akademija može da Vam pomogne da bolje razumete obimnu temu kao što je Bitcoin. Veliki deo naših kurseva je potpuno besplatan kako bi svako, bilo gde, mogao da ima pristup kvalitetnom obrazovanju.",
+      "pageDescription": "Plan ₿ Academy nudi širok izbor kurseva o Bitcoin-u, kako besplatnih tako i premium, i za sve nivoe – od početnika do eksperata. Kurseve vode stručnjaci ili su prilagođeni samostalnom učenju, kako bi odgovarali različitim stilovima učenja. Naša misija je jednostavna: da znanje o Bitcoinu učinimo jasnim, zanimljivim i dostupnim svima!",
       "exploreCourses": "Istražite sve Plan ₿ kurseve",
       "buildPath": "Izgradite svoj put \"niz zečju rupu\"",
       "journey": "Bitcoin je putovanje, ne destinacija",
       "seeCourse": "Otkrijte kurs",
       "comingSoon": "uskoro",
       "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, koju vodi Đakomo Zuko, nudi intenzivne troemesečne obrazovne programe dizajnirane da premoste jaz između učenja i stvarnih svetskih primena. Osim tradicionalnih časova, studenti se bave praktičnim projektima vođenim od strane kompanija i prvoklasnim bootcampom posvećenim najboljim studentima. Samo najbolji talenti napreduju nakon dva konkurentska kruga selekcije, osiguravajući da konačni top studenti budu potpuno opremljeni za pokretanje svojih karijera u Bitcoin industriji."
+      "planbSchoolHeadline": "Plan ₿ School, koju vodi Đakomo Zuko, nudi intenzivne troemesečne obrazovne programe dizajnirane da premoste jaz između učenja i stvarnih svetskih primena. Osim tradicionalnih časova, studenti se bave praktičnim projektima vođenim od strane kompanija i prvoklasnim bootcampom posvećenim najboljim studentima. Samo najbolji talenti napreduju nakon dva konkurentska kruga selekcije, osiguravajući da konačni top studenti budu potpuno opremljeni za pokretanje svojih karijera u Bitcoin industriji.",
+      "goal": "Cilj:"
     },
     "part": {
       "count": "Deo {{count}}"
@@ -237,7 +258,7 @@
       "timeStampBenefits": "Zašto je to važno :",
       "timeStamped": "vremenski obeležen.",
       "timeStampHow": "Kako to radi :",
-      "timerStart": "Kada kliknete na Start, tajmer sa trajanjem od 20 minuta će krenuti da odbrojava.",
+      "timerStart": "Kada kliknete na Start, tajmer sa trajanjem od {{minutes}}minuta će krenuti da odbrojava.",
       "tryAgain": "Pokušajte ponovo",
       "tryOneMoreTime": "Hajde da pokušamo još jednom!",
       "verifyDisplayName": "Pre nego što počnete, molimo Vas da proverite svoje prikazano ime ispod, jer će se ono koristiti pri izradi Vaše diplome.",
@@ -269,7 +290,7 @@
       "retakeExam": "Ponovno polaganje ispita",
       "sameRules": "Uskoro ćete ponovo polagati završni ispit. Pravila ostaju ista.",
       "yesSubmit": "Da, potvrdi",
-      "examDetails": "Ispit ima 40 pitanja sa višestrukim izborom, svako ima samo jedan tačan odgovor. Možete da promenite svoj odgovor u svakom trenutku pre nego što ih predate, sve dok je tajmer aktivan.",
+      "examDetails": "Ispit ima {{nb}} pitanja sa višestrukim izborom, svako ima samo jedan tačan odgovor. Možete da promenite svoj odgovor u svakom trenutku pre nego što ih predate, sve dok je tajmer aktivan.",
       "planBTimeStamp": "U Plan ₿ mreži, obezbeđujemo Vašu diplomu koristeći tehnologiju vremenskog označavanja zasnovanu na blockchain-u.",
       "successDiplomaTimeStamped": "Čestitamo! Uspešno ste položili ispit.\nVaša diploma će biti dostupna na Vašoj kontrolnoj tabli okvirno nakon 10 sati od momenta polaganja ispita. Ovo kašnjenje je zbog tehnologije <0>vremenskog pečeta</0>, koja garantuje autentičnost diplome.",
       "bCertCompletionText": "Plan ₿ Network ima zadovoljstvo da čestita {{username}} na dobijanju sertifikata za ₿-CERT test.",
@@ -289,10 +310,27 @@
       "failedDiploma": "Morate postići preko 80% poena na završnom ispitu da biste dobili diplomu i potpuno završili kurs. Ispit možete polagati ponoviti nakon 24 sata.",
       "receiveDiploma": "Preuzmite svoju diplomu",
       "timeStampedNoDot": "označen vremenskim pečetom",
-      "timeStamping": "označavanje vremenskim pečetom"
+      "timeStamping": "označavanje vremenskim pečetom",
+      "readyToTest": "Spremni da testirate svoje znanje?",
+      "singleAttemptAvailability": "Ovaj ispit je dostupan na internetu od {{date}}",
+      "singleAttemptPrecaution": "Pre nego što počnete, molim vas da se uverite da je vaša veza stabilna. Pošto je ovo ispit sa jednim pokušajem, ako se diskonektujete, nećete moći da pokušate ponovo.",
+      "nextChapter": "Sledeće poglavlje",
+      "completed": "Ispit je završen!",
+      "examAvailabilityDetails": "Ako student ne položi ispit tokom perioda dostupnosti na platformi, automatski će dobiti ocenu 0.",
+      "nbMinutes": "{{nb}} minuta",
+      "nbQuestions": "{{nb}} pitanja",
+      "results": {
+        "correct": "Tačni odgovori",
+        "incorrect": "Netačni odgovori",
+        "questions": "Odgovorena pitanja",
+        "time": "Iskorišćeno vreme"
+      },
+      "singleAttempt": "Ispit iz jednog pokušaja",
+      "viewExam": "Pogledajte test",
+      "weight": "Težina: {{weight}}%"
     },
     "quizz": {
-      "clickOnPie": "Kliknite na grafikon u obliku pite da biste proverili tačan odgovor",
+      "clickOnPie": "Kliknite na kružni dijagram da biste proverili tačan odgovor",
       "quizzResults": "Rezultati kviza",
       "quizzReview": "Pregled kviza",
       "resultCongrats": "Čestitamo, dobro ste uradili!",
@@ -354,6 +392,11 @@
       "takeFinalExam": "Sada kada ste završili sva poglavlja, vreme je da polažete završni ispit kako biste testirali svoje znanje.",
       "unlockFeatures1": "Da biste otključali sve funkcije i pratili svoj napredak, potreban Vam je nalog.",
       "unlockFeatures2": "Molimo Vas da budete svesni da ne prikupljamo nikakve lične podatke niti koristimo kolačiće."
+    },
+    "format": {
+      "hybrid": "Uživo/online",
+      "inperson": "Uživo",
+      "online": "Online"
     }
   },
   "dashboard": {
@@ -379,7 +422,11 @@
     },
     "calendar": {
       "calendar": "Kalendar",
-      "personalCalendar": "Lični kalendar"
+      "personalCalendar": "Lični kalendar",
+      "eventType": {
+        "class": "Časovi",
+        "event": "Događaji"
+      }
     },
     "course": {
       "completionDiploma": "Diploma o završenom kursu",
@@ -391,13 +438,24 @@
       "checkDetailsCompleted": "Ovde možete proveriti sve detalje vezane za ovaj kurs koji ste završili.",
       "coursesCompleted": "Završeni kursevi",
       "conclusionHeadline": "Evo rezimea onoga što ste naučili. Ako su neka poglavlja propuštena ili nisu pravilno validirana, sada je pravo vreme da to uradite, bilo da se vratite na učenje, ili pritiskom na dugme za završetak.",
-      "submitReviewInfo": "Morate poslati recenziju da biste imali pristup ovoj funkciji."
+      "submitReviewInfo": "Morate poslati recenziju da biste imali pristup ovoj funkciji.",
+      "assignmentDescription": "Projektni zadatak označava drugu fazu programa Plan ₿ Biz škole, otvorenu za studente izabrane iz prve faze. Prema rangiranju i preferencijama studenata, biće dodeljen projektni zadatak koji je sastavila Bitcoin kompanija. Ovaj individualni projekat će se odvijati tokom 10 dana, od 2. do 12. juna.\nTokom zadatka, biće mentorisani od strane predstavnika kompanije. Do 12. juna, studenti moraju završiti i predati svoj rad na evaluaciju.\n\nProjekti će biti ocenjeni od strane kompanije. Ova ocena će se računati za konačnu ocenu. Samo najbolje rangirani studenti će biti pozvani da učestvuju u Letnjoj školi u Luganu, Švajcarska, od 23. do 30. jula 2025. godine.",
+      "planbSchoolExamDescription": "Program Plan ₿ Biz škole 2025 sastoji se od dve faze. U prvoj fazi, polagaćete dva online ispita, konkretno prvi i završni: to su testovi sa jednim pokušajem, koje možete završiti u bilo kom trenutku tokom trodnevnog perioda dostupnosti. Nakon prve faze, studenti će biti odabrani na osnovu svojih rangova da pređu na drugu fazu, koja uključuje projektni zadatak: individualni zadatak koji pruža Bitcoin kompanija. Više detalja o tome možete pronaći na kartici zadatka.\n\nKonačna ocena će se izračunati kao ponderisani prosek tri testa. Studenti koji dostignu rezultat iznad 80% dobiće diplomu, a studenti sa najvišim rangom će takođe imati priliku da učestvuju u Letnjoj školi u Luganu, u julu.",
+      "examScore": "Rezultat:",
+      "exams": "Ispiti",
+      "announcement": "Objava",
+      "assignment": "Zadatak",
+      "assignmentInformation": "Informacije o zadatku",
+      "conclusionNotReleased": "Zaključak će biti otključan na dan poslednjeg časa.",
+      "coordinator": "Koordinator kursa",
+      "courseCalendar": "Kalendar kursa",
+      "generalInformation": "Opšte informacije"
     },
     "bCert": {
       "grade": "Ocena",
-      "noResults": "Još uvek ne postoje ocene ni sertifikati povezani sa ovim nalogom.\nAko ste položili ispit i Vaši rezultati nisu dostupni nakon dužeg vremena, molimo Vas da nas kontaktirate za pomoć."
+      "noResults": "Još uvek ne postoje ocene ni sertifikati povezani sa ovim nalogom.\nAko ste položili ispit i Vaši rezultati nisu dostupni nakon dužeg vremena, molimo Vas <0>da nas kontaktirate</0> za pomoć."
     },
-    "account": "Račun",
+    "account": "Nalog",
     "myCourses": {
       "yourCertificate": "Vaš sertifikat",
       "completed": "Kompletirano",
@@ -430,16 +488,16 @@
       "yourProgress": "Vaš napredak :"
     },
     "credentials": {
-      "bCertSubtitle": "Ovde možete pronaći detalje o Vašim rezervacijama i ocenama vaših prošlih i budućih ₿ sertifikata. \n₿ Sertifikat je ispit koji organizuje Plan ₿ mreža kako bi se utvrdio Vaš nivo poznavanja Bitcoin-a i sa njim povezanih tema.",
+      "bCertSubtitle": "Ovde možete pronaći detalje o Vašim rezervacijama i ocenama Vaših prošlih i budućih ₿-Sertifikata. \n₿-Sertifikat je ispit koji organizuje Plan ₿ Network kako bi se procenio Vaš nivo znanja o Bitcoinu i povezanim temama.",
       "beingGraded": "Vaš ispit se ocenjuje. Rezultati bi trebalo da budu dostupni za 1 ili 2 nedelje.",
       "courseDiplomasSubtitle": "Ovde možete pronaći detalje o svim ispitima koje ste polagali nakon završetka kursa na platformi.",
-      "bCert": "₿ Sertifikat",
+      "bCert": "₿-Sertifikat",
       "courseDiplomas": "Diplome kurseva",
       "completionDiplomas": "Diplome o završetku",
       "globalCertifications": "Globalne sertifikacije",
       "retakeExam": "Ponovno polaganje ispita",
       "seatBooked": "Vaše mesto na ispitu je rezervisano",
-      "takePlaceAt": "Sesija će se održati u",
+      "takePlaceAt": "Sesija će se održati u:",
       "yourCertificate": "Vaš sertifikat",
       "downloadTicket": "Preuzmite kartu"
     },
@@ -460,7 +518,30 @@
       "profileInformation": "Profilni podaci",
       "profilePicture": "Profilna slika",
       "security": "Bezbednost",
-      "username": "Korisničko ime"
+      "username": "Korisničko ime",
+      "notificationSettings": {
+        "emailPreferencesError": "Došlo je do greške prilikom pokušaja preuzimanja vaših postavki za e-poštu. Molimo vas da proverite da li je link koji ste pratili tačan.",
+        "emailPreferencesDescription": "Ovde možete odabrati vrste e-poruka koje želite da primate od nas. Ove preferencije se odnose samo na e-mail adresu povezanu sa ovim linkom.",
+        "emailWarning": "Upozorenje! Nema povezane email adrese sa vašim nalogom. Molimo vas dodajte je u podešavanjima profila.",
+        "loadEmailSettingsErrorDescription": "Molimo vas da se uverite da je link koji ste koristili potpun i tačan.",
+        "coursesOption": "Ažuriranja o kursevima na koje ste se upisali",
+        "description": "Možete prilagoditi obaveštenja u podešavanjima ispod. ",
+        "emailPreferencesSavedSuccessfully": "Vaše postavke za email su uspešno ažurirane.",
+        "emailPreferencesTitle": "Upravljajte svojim postavkama Plan ₿ Network emaila",
+        "emailTitle": "Koje vrste obaveštenja biste želeli da primate putem e-pošte?",
+        "eventsOption": "Ažuriranja o događajima koje ste rezervisali",
+        "generalOption": "Opšte informacije i vesti o Plan ₿ Network",
+        "goToProfile": "Idite na profil",
+        "loadEmailSettingsError": "Žao nam je, nismo mogli da učitamo vaša podešavanja e-pošte.",
+        "loadEmailSettingsErrorManage": "Ako imate pristup Vašem nalogu, možete takođe upravljati postavkama direktno na svojoj kontrolnoj tabli:",
+        "platformTitle": "Koje vrste obaveštenja biste želeli da primate na ovoj platformi?",
+        "settingsSaved": "Vaša podešavanja su uspešno sačuvana!",
+        "title": "Podešavanje o obaveštenjima",
+        "none": "Nijedne"
+      },
+      "emailChangeRateLimitError": "Nedavno ste ažurirali svoj email. Molimo vas da sačekate nekoliko minuta pre nego što pokušate ponovo.",
+      "securitySettings": "Podešavanja bezbednosti",
+      "settings": "Podešavanja"
     },
     "teacher": {
       "courses": {
@@ -478,7 +559,36 @@
         "objectives": "Ciljevi",
         "proposeNewCourse": "Predložite novi kurs",
         "quickRecap": "Ovde možete pronaći sve opšte informacije o ovom kursu.",
-        "reviews": "Recenzije"
+        "reviews": "Recenzije",
+        "announcementsIntroduction": "Pored automatskih obaveštenja o rasporedima časova, imate mogućnost da napišete i zakažete dodatna obaveštenja za svoje studente. Na primer, možete ih obavestiti o logističkim promenama ili poslednjim ažuriranjima.\nStudenti će ova obaveštenja primati na platformi, ali i putem e-pošte (ako aktiviraju ovu opcionalnu funkciju).",
+        "selectCourse": "Izaberite kurs",
+        "announcementModal": {
+          "contentPlaceholder": "Molim vas, otkucajte ovde.",
+          "groupLabel": "Izaberite grupu studenata kojoj želite da se obratite",
+          "contentLabel": "Tekst obaveštenja",
+          "create": "Kreirajte obaveštenje",
+          "dateLabel": "Datum objavljivanja",
+          "datePlaceholder": "Izaberite datum",
+          "dateRequired": "Datum je obavezan",
+          "editAnnouncement": "Izmeni obaveštenje",
+          "title": "Napišite obaveštenje",
+          "typeLabel": "Koja vrsta obaveštenja je u pitanju?",
+          "typePlaceholder": "Izaberite jedan tip"
+        },
+        "allStudents": "Svi studenti",
+        "announcements": "Obaveštenja",
+        "announcementsPast": "Prethodna obaveštenja",
+        "announcementsPastDescription": "Ovde su navedene objave koje su već objavljene. Lista će biti očišćena nakon jednog meseca.",
+        "announcementsUpcoming": "Predstojeća obaveštenja",
+        "announcementsUpcomingDescription": "Ovde su buduća obaveštenja koje ste napisali i zakazali.",
+        "assignmentStudents": "Projektni zadatak",
+        "deleteAnnouncementTitle": "Da li ste sigurni da želite da uklonite ovo obaveštenje?",
+        "deleteAnnouncementWarning": "Ova promena je nepovratna",
+        "goal": "Cilj",
+        "noPastAnnouncement": "ТРЕНУТНО НЕМАТЕ НИЈЕДНО ПРЕТХОДНО ОБЈАВЉЕНО ОБАВЕШТЕЊЕ.",
+        "noWrittenAnnouncement": "Trenutno nemate nijedno pisano obaveštenje.",
+        "summerStudents": "Letnja škola",
+        "writeAnnouncement": "Napišite obaveštenje"
       },
       "profile": {
         "enterTipsInformations": "Plan ₿ Network podstiče korisnike da daju donacije nastavnicima. Molimo Vas da unesete svoje informacije kako bi Vas ljudi mogli nagraditi kada to žele.",
@@ -694,7 +804,9 @@
       "languageLevelSubLabel": "Izaberite nivo koji najbolje odgovara vašim veštinama.",
       "lastName": "Prezime",
       "legalInformation": "Pravni podaci",
-      "jobSearch": "Potraga za poslom"
+      "jobSearch": "Potraga za poslom",
+      "applicationComplete": "Vaša aplikacija je <highlight>kompletna</highlight>",
+      "applicationIncomplete": "Vaša prijava je <highlight>nepotpuna</highlight>"
     },
     "adminPanel": {
       "seeOrEdit": "Vidi ili izmeni",
@@ -731,10 +843,93 @@
       "selectProfessor": "Izaberite profesora",
       "upcomingBookings": "Predstojeće rezervacije",
       "upcomingBookingsSubtitle": "Ovde možete preuzeti listu učesnika za sve događaje uživo.",
-      "userRolesAllocation": "Dodela korisničkih uloga"
+      "userRolesAllocation": "Dodela korisničkih uloga",
+      "coupons": {
+        "numberOfCodes": "Koliko kodova želite da generišete?",
+        "deleteDiscountCode": "Obriši kod za popust",
+        "deleteDiscountCodeWarning": "Jednom kada se ovaj kod obriše, više neće biti funkcionalan. Ova promena je nepovratna",
+        "discountValueExplanation": "Unesite broj u povećanjima od po 5 (npr. 5, 10, 15... do 100)",
+        "explanation": "Generišite i upravljajte kodovima za popuste za događaje i kurseve - bilo da se radi o jednokratnoj upotrebi za stipendije ili slične slučajeve, ili višekratnoj upotrebi za marketinške kampanje.",
+        "filters": {
+          "multiUse": "Višenamenski",
+          "singleUse": "Jednokratna upotreba",
+          "all": "Svi",
+          "courses": "Kursevi",
+          "events": "Događaji"
+        },
+        "generateNewCodes": "Generiši novi kod",
+        "cancel": "Otkaži",
+        "close": "Zatvori",
+        "delete": "Obriši",
+        "deleteDiscountCodeConfirm": "Da li ste sigurni da želite da uklonite ovaj kod za popust?",
+        "deleteDiscountCodeSuccess": "Kod za popust je uspešno obrisan",
+        "discountCode": "Kod za popust",
+        "discountCodeCopied": "Kod za popust je kopiran",
+        "discountCodeExplanation": "Pažnja: prilikom unosa koda vodite računa o velikim i malim slovima.",
+        "discountCodePlaceholder": "Ostavite prazno za automatsko generisanje",
+        "discountMultiUse": "Višenamenski",
+        "discountSingleUse": "Jednokratna upotreba",
+        "discountType": "Koji tip koda za popust?",
+        "discountValue": "Procenat smanjenja",
+        "discountValuePlaceholder": "primer: 20 za 20%",
+        "downloadImage": "Preuzmi sliku",
+        "downloadImages": "Preuzmi slike",
+        "forWhat": "Za koju vrstu proizvoda?",
+        "forWhichCourse": "Za koji kurs?",
+        "forWhichEvent": "Za koji događaj?",
+        "generateCode": "Generiši kod",
+        "generateCodes": "Generiši kodove",
+        "generateDiscountCode": "Generišite kod za popust",
+        "generateNew": "Generišite novi kod",
+        "generatedCode": "Generisani kod",
+        "generatedCodes": "Generisani kodovi",
+        "maximumNumberOfUse": "Maksimalni broj korišćenja",
+        "mobileSort": {
+          "az": "A-Ž",
+          "highLow": "Od višeg ka nižem",
+          "lowHigh": "Od nižeg ka višem",
+          "sortBy": "Sortiraj po",
+          "za": "Ž-A"
+        },
+        "noCouponsFound": "Kuponi nisu pronađeni.",
+        "numberOfCodesPlaceholder": "unesite broj",
+        "productCourse": "Kurs",
+        "productEvent": "Događaj",
+        "selectCourse": "Izaberite kurs",
+        "selectEvent": "Izaberite događaj",
+        "tableHead": {
+          "actions": "Akcije",
+          "code": "Kod",
+          "discount": "Popust",
+          "name": "Ime",
+          "owner": "Vlasnik",
+          "total": "Ukupno",
+          "type": "Tip",
+          "uses": "Iskorišćen",
+          "value": "Procenat"
+        }
+      },
+      "hasAccessTo": "Ima pristup:",
+      "selectRole": "Izaberite ulogu",
+      "accessGranted": "Pristup odobren",
+      "coursesIndexes": "Indeksi kurseva",
+      "deleteRole": "Obriši ulogu",
+      "discountCodes": "Kodovi za popust",
+      "editRole": "Uzmeni ulogu"
     },
     "backToDashboard": "Nazad na kontrolnu tablu",
-    "studentDashboard": "Kontrolna tabla studenta"
+    "studentDashboard": "Kontrolna tabla studenta",
+    "announcements": {
+      "groups": {
+        "active": "Studenti izabrani za Projektni zadatak",
+        "all": "Svi registrovani studenti",
+        "summer": "Studenti izabrani za Letnju školu"
+      },
+      "pickADate": "Izaberite datum",
+      "publicationDate": "Datum objavljivanja"
+    },
+    "goToDashboard": "Otvori kontrolnu tablu",
+    "goToHomepage": "Otvori početnu stranicu"
   },
   "events": {
     "card": {
@@ -762,7 +957,7 @@
     "pageDescription": "Želite da razgovarate o Bitcoinu u realnom vremenu? Ovde možete pronaći sve događaje podržane od strane zajednica Plan ₿ Mreže. Bilo da želite da slušate predavanje, razgovarate o Bitcoinu uz piće, ili polažete ispit da procenite svoje znanje, ovde ćete pronaći pravi događaj koristeći Plan ₿ Mrežu.",
     "payment": {
       "additional_free_description": "Ovaj događaj je besplatan, tako da nema naplate za rezervaciju ovog mesta. Međutim, molimo Vas da se obavezno pojavite, s obzirom da je broj mesta ograničen.",
-      "description_free_physical": "Molimo Vas da pregledate dostavljene detalje o mestu održavanja.\nKada je rezervacija potvrđena, izdaćemo potvrdu o rezervaciji i QR kod koji treba da pokažete na događaju.",
+      "description_free_physical": "Molimo vas da pregledate podatke o mestu održavanja. Nakon što rezervacija bude potvrđena, dobićete potvrdu i QR kod koje je potrebno pokazati na događaju. ",
       "time": "Vreme",
       "access_type": "Vrsta pristupa",
       "address": "Adresa",
@@ -773,11 +968,18 @@
       "language": "Jezik",
       "limitation": "Ograničenje",
       "max_capacity": "Maksimalni kapacitet od",
-      "payment_successful": "Uspešna rezervacija!",
-      "description_online": "Molim Vas da pregledate datum i vreme navedenog događaja.\nKada dođe vreme, prijavite se na platformu da biste pristupili prenosu uživo preko stranice događaja.",
-      "description_physical": "Molimo Vas da pregledate dostavljene detalje o mestu održavanja. \nKada Vaša rezervacija bude potvrđena, izdaćemo Vam kartu koju treba da pokažete na događaju. Ova karta će Vam takođe omogućiti pristup prenosu uživo i reprizi, ako su dostupni.",
+      "payment_successful": "Uspešna rezervacija.",
+      "description_online": "Molim Vas da pregledate datum i vreme navedenog događaja.Kada dođe vreme, prijavite se na platformu da biste pristupili prenosu uživo preko stranice događaja.",
+      "description_physical": "Molimo Vas da pregledate dostavljene detalje o mestu održavanja. Kada Vaša rezervacija bude potvrđena, izdaćemo Vam kartu koju treba da pokažete na događaju. \n\nOva karta će Vam takođe omogućiti pristup prenosu uživo i reprizi, ako su dostupni.",
       "access_online_successful": "Kada događaj počne, prijavite se na platformu da biste pristupili uživo prenosu na stranici događaja.",
-      "access_physical_successful": "Možete preuzeti svoju kartu ovde, ili je preuzeti kasnije na svojoj kontrolnoj tabli."
+      "access_physical_successful": "Možete preuzeti svoju kartu ovde, ili je preuzeti kasnije na svojoj kontrolnoj tabli.",
+      "callout_book_online": "Upravo ćete rezervisati online pristup ovom događaju.",
+      "callout_purchase_online": "Upravo ćete kupiti <highlight>online pristup</highlight> ovom događaju.",
+      "limitedSeats": "Mesta su ograničena. Molimo vas da otkažete svoju rezervaciju ukoliko ne možete da prisustvujete.",
+      "callout_book_physical": "Uskoro ćete rezervisati <highlight>uživo pristup</highlight> ovom događaju.",
+      "callout_book_replay": "Upravo ćete rezervisati pristup snimku ovog događaja.",
+      "callout_purchase_physical": "Uskoro ćete kupiti <highlight>uživo pristup</highlight> ovom događaju.",
+      "callout_purchase_replay": "Upravo ćete kupiti pristup snimku ovog događaja."
     },
     "pageSubtitle": "Adapcija odozdo prema gore ojačana jakom mrežom",
     "main": {
@@ -786,7 +988,7 @@
     },
     "newEvent": {
       "button": "Dodaj moj događaj",
-      "description": "Naravno! Svi Bitcoin događaji mogu povećati svoju vidljivost ovde, tako da je svaka inicijativa za stvaranje novog događaja više nego dobrodošla :)",
+      "description": "Naravno! Svi Bitcoin događaji ovde mogu povećati svoju vidljivost, tako da je svaka inicijativa za stvaranje novog događaja više nego dobrodošla!",
       "subtitle": "\"Orange pill-ovanje\" milijardu ljudi nije lako",
       "title": "Želite da dodate svoj događaj?"
     },
@@ -795,12 +997,14 @@
       "premiumContentNeedsPayment": "Ovaj događaj je deo premium programa.",
       "premiumContentNeedsPaymentAction": "Idi na stranicu događaja",
       "premiumContentNeedsLogin": "Morate biti prijavljeni da biste pristupili ovom događaju."
-    }
+    },
+    "tcDisclaimer": "Slažem se da moje informacije mogu biti podeljene sa organizatorima u svrhu pristupa mestu događaja.",
+    "tcMustBeAccepted": "Morate prihvatiti uslove i odredbe da biste nastavili"
   },
   "glossary": {
-    "creditsLoic": "<0>Zahvalnice</0>: Bitcoin Rečnik napisao <1>Loïc Morel (Pandul)</1>, dostupan na ovom <2>Github repozitorijumu</2>.",
+    "creditsLoic": "<0>Zahvalnice</0>: Bitcoin Rečnik napisao <1>Loïc Morel (Pandul)</1>, dostupan u ovom <2>Github repozitorijumu</2>.",
     "notTranslated": "Podaci u rečniku još uvek nisu prevedeni.\nAko želite da pomognete, slobodno doprinesite na našem",
-    "anotherWord": "Traži drugu reč",
+    "anotherWord": "Pretraži drugu reč",
     "definition": "Definicija",
     "filterBar": "Pronađite reč koja Vam je potrebna upravo ovde",
     "needHelp": "Potrebna Vam je pomoć u definisanju tehničke reči?",
@@ -815,12 +1019,12 @@
   "home": {
     "header": {
       "content": "Plan ₿ Network platforma ima za cilj da pruži najbolje alate i obrazovni sadržaj širom sveta, osnažujući ljude da povrate svoj suverenitet. Od pojedinaca do zajednica, ovde smo da Vam pomognemo na Vašem Bitcoin putovanju.",
-      "forEducators": "Za nastavnike i preduzetnike",
+      "forEducators": "Za nastavnike i edukatore",
       "globalNetwork": "Globalna Bitcoin mreža",
-      "welcome": "Dobrodošli u Plan ₿ mrežu"
+      "welcome": "Dobrodošli u Plan ₿ Network"
     },
     "languageSection": {
-      "content1": "U Plan ₿, verujemo da je Bitcoin međunarodna revolucija koja se tiče svih. Da bismo osnažili milijarde ljudi, dizajniramo ovu platformu da bude višejezična i dostupna svima. Platforma trenutno podržava 7 jezika, a svakog meseca se dodaju novi. Da bismo to postigli, koristimo kombinaciju veštačke inteligencije i strastvenih Bitcoinera širom sveta. I Vi možete početi da pokrećete svoju lokalnu mrežu u svojoj zemlji!",
+      "content1": "U Plan ₿, verujemo da je Bitcoin međunarodna revolucija koja se tiče svih. Da bismo osnažili milijarde ljudi, dizajniramo ovu platformu da bude višejezična i dostupna svima. Platforma trenutno podržava {{nb}} jezika, a svakog meseca se dodaju novi. Da bismo to postigli, koristimo kombinaciju veštačke inteligencije i strastvenih Bitcoinera širom sveta. I Vi možete početi da pokrećete svoju lokalnu mrežu u svojoj zemlji!",
       "availableLanguages": "Dostupni jezici",
       "availableLanguagesVariation": "Dostupni jezici: ",
       "title": "Ovde nema jezičke barijere.",
@@ -831,7 +1035,7 @@
       "openSourceContent": "Podstičemo slobodan protok znanja i podržavamo rešenja otvorenog koda",
       "title": "Ko smo mi?",
       "subtitle": "Malo o nama",
-      "content": "Plan ₿ mreža podržava obrazovanje o Bitcoinu širom sveta. Predstavlja saradnju strastvenih Bitcoin kompanija fokusiranih na obrazovanje, softver otvorenog koda, peer-to-peer mreže i izgradnju zajednice. Zajedno, pokrenuli su ovu inicijativu da bi obezbedili Bitcoin ekosistemu esencijalne alate za rast.",
+      "content": "Plan ₿ Network podržava Bitcoin obrazovanje širom sveta. Predstavlja saradnju strastvenih Bitcoin kompanija fokusiranih na obrazovanje, softver otvorenog koda, peer-to-peer mreže i izgradnju zajednice. Zajedno, pokrenuli su ovu inicijativu da bi obezbedili Bitcoin ekosistemu esencijalne alate za rast.",
       "bitcoinFocusTitle": "Fokus na Bitcoin",
       "bitcoinFocusContent": "Istražujemo revoluciju Bitcoina od osnovnog sloja do okolnih peer-to-peer komunikacija.",
       "openSourceTitle": "Otvoreni kod",
@@ -848,15 +1052,15 @@
       "link2": "Pogledajte sve resurse"
     },
     "patreonSection": {
-      "title": "Zajedno, hajde da učinimo obrazovanje o Bitcoinu boljim!",
-      "content": "Plan ₿ Mreža ponosno se udružuje sa mnogim bitcoin kompanijama širom sveta kako bi pružila najbolje moguće obrazovne resurse!"
+      "title": "Zajedno, hajde da učinimo obrazovanje o Bitcoin-u boljim!",
+      "content": "Plan ₿ Network ponosno se udružuje sa mnogim Bitcoin kompanijama širom sveta kako bi pružila najbolje moguće obrazovne resurse!"
     },
     "wallOfLoveSection": {
       "title": "Zid ljubavi",
       "subtitle": "Šta Bitkoineri kažu o nama"
     },
     "blogSection": {
-      "blogTitle": "Šta je novo na Plan ₿ mreži",
+      "blogTitle": "Šta je novo u Plan ₿ Network-u",
       "description": "Nastavljamo da unapređujemo platformu, sadržaj i mrežu - pogledajte!",
       "noDateAvailable": "Nema dostupnih datuma",
       "seeAll": "Pogledaj sve",
@@ -882,12 +1086,12 @@
     "libraryDescription": "Otkrijte mnogo knjiga kako biste poboljšali Vaše znanje",
     "login": "Prijavi se",
     "nodeNetworkDescription": "Pridružite se globalnoj mreži zajednice Plan ₿",
-    "podcastsDescription": "Istražite ekosistem Bitcoina kroz podkaste",
+    "podcastsDescription": "Istražite Bitcoin ekosistem kroz podkaste",
     "teachersDescription": "Upoznajte naše nastavnike u Akademiji",
     "businessDescription": "Otkrijte upotrebu Bitcoina u trgovini.",
     "channelsDescription": "Pristupite našoj eksluzivnoj selekciji Youtube kanala da biste saznali više o Bitcoinu",
     "newsletterDescription": "Kolekcija sadržaja koju možete koristiti za vaše obrazovne projekte",
-    "projectsDescription": "Saznajte o kompanijama i projektima koji doprinose poboljšanju Bitcoina i povećanju njegovog usvajanja",
+    "projectsDescription": "Saznajte o kompanijama i projektima koji doprinose poboljšanju Bitcoin-a i povećanju njegovog usvajanja",
     "securityDescription": "Ovladajte tehnikama za zaštitu vaših Bitcoin sredstava.",
     "socialStudiesDescription": "Istražite uticaj Bitcoina na društvo.",
     "bitcoinDescription": "Naučite Bitcoin od osnovnih do naprednih primena.",
@@ -895,13 +1099,14 @@
     "miningCourseDescription": "Razumite procese, alate i industriju iza rudarenja Bitcoina.",
     "moviesDescription": "Otkrijte zanimljive priče i detaljna istraživanja evolucije i uticaja Bitcoina",
     "chooseLanguage": "Selektujte jezik",
-    "protocolDescription": "Otkrijte osnovna pravila koja pokreću Bitcoin mrežu."
+    "protocolDescription": "Otkrijte osnovna pravila koja pokreću Bitcoin mrežu.",
+    "planBLabsDescription": "Pridružite se studijskoj grupi da biste nastavili učenje o Lightning mreži, rudarenju i privatnosi"
   },
   "nodeNetwork": {
-    "description1": "Verujemo da obrazovanje ne bi trebalo da se odvija samo na internetu, već i u fizičkom prostoru. Da bi se to postiglo, Plan B Mreža upravlja mrežom centara širom sveta kako bi dočekao mislioce, kreatore i edukatore koji podstiču napredak Bitcoina i tehnologija slobode.",
-    "pageSubtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se Plan ₿ Mreži.",
-    "descriptionExtend": "Naš prvi korak je da pozovemo zajednice koje imaju fizički prostor, koje nazivamo \"potpunim čvorovima\" naše mreže, da nam se pridruže. U budućnosti, kako naša mreža bude jačala, proširićemo ovu pozivnicu na više inicijativa širom sveta. Ako delite naše vrednosti, molimo Vas da se obratite našim predstavnicima da se pridružite našoj mreži i pomognete u izgradnji najbolje moguće edukacije o Bitcoinu.",
-    "pageTitle": "Istražite Plan ₿ Čvor mrežu"
+    "description1": "Verujemo da obrazovanje ne bi trebalo da se odvija samo na internetu, već i u fizičkom prostoru. Da bi se to postiglo, Plan ₿ Network upravlja mrežom centara širom sveta kako bi dočekao mislioce, kreatore i edukatore koji podstiču Bitcoin napredak i tehnologije slobode.",
+    "pageSubtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se Plan ₿ Network-u.",
+    "descriptionExtend": "Naš prvi korak je da pozovemo zajednice koje imaju fizički prostor, koje nazivamo \"potpunim čvorovima\" naše mreže, da nam se pridruže. U budućnosti, kako naša mreža bude jačala, proširićemo ovu pozivnicu na više inicijativa širom sveta. Ako delite naše vrednosti, molimo Vas da se obratite našim predstavnicima da se pridružite našoj mreži i pomognete u izgradnji najbolje moguće edukacije o Bitcoin-u.",
+    "pageTitle": "Istražite Plan ₿ Node Network"
   },
   "imagesAlt": {
     "bookCover": "omot knjige",
@@ -939,8 +1144,9 @@
       "noArticlesText": "Trenutno nema blog postova.",
       "errorMessageNotFound": "Blog nije pronadjen.",
       "blogSidebarTitle": "Ranije {{category}} objave",
-      "blogListButtonText": "Pročitaj",
-      "filterText": "Filtriraj po temi :"
+      "blogListButtonText": "Pročitaj članak",
+      "filterText": "Filtriraj po temi :",
+      "blogSidebarTitleForAll": "Prethodne objave"
     },
     "title": "Javna komunikacija",
     "blogPost": "Blogovi & Vesti",
@@ -1066,14 +1272,52 @@
     "pageSubtitle": "Otključajte misterije Bitkoina istražujući njegov ogroman ekosistem",
     "hasBeenProofreadBy": "Ovaj tutorijal je lektorisan od strane",
     "hasNotBeenProofread": "Ovaj tutorijal još uvek nije lektorisan",
-    "writtenBy": "Ovaj tutorijal je napisao-la"
+    "writtenBy": "Ovaj tutorijal je napisao-la",
+    "business": {
+      "description": "Želite da integrišete Bitcoin u svoj posao? Ova kategorija okuplja sve tutorijale namenjene profesionalcima. Bilo da se radi o postavljanju sistema za prodajna mesta kako bi se lako prihvatali Bitcoin plaćanja ili dodavanju i upravljanju bitcoinima u blagajni vaše kompanije, ovde ćete pronaći esencijalne tehničke i praktične informacije.",
+      "shortDescription": "Prihvatanje Bitcoin plaćanja i upravljanje njime u vašoj blagajni",
+      "title": "Biznis"
+    },
+    "computer-security": {
+      "description": "Informaciona sigurnost je neophodna za svakog Bitcoinera. U ovoj kategoriji, pronaći ćete tutorijale o esencijalnim alatima i opštim praksama za zaštitu vašeg digitalnog okruženja. Operativni sistemi, sigurni pretraživači, menadžeri lozinki, sistemi za autentifikaciju, VPN-ovi i rešenja za šifrovanu komunikaciju, svi resursi predstavljeni ovde imaju za cilj da poboljšaju vašu bezbednost i privatnost.",
+      "shortDescription": "Osnovni alati za zaštitu vaše digitalne sigurnosti i privatnosti",
+      "title": "Informaciona sigurnost"
+    },
+    "contribution": {
+      "description": "Želite da doprinesete otvorenoj platformi Plan ₿ Network-a? U ovoj kategoriji naučićete kako da napišete i objavite novi tutorijal, pregledate ili lektorišete sadržaj, ili dodate nove korisne resurse za zajednicu. Ovi tutorijali će vam pružiti priliku da se uključite u edukaciju o Bitcoinu i obogatite našu zajedničku bazu znanja.",
+      "shortDescription": "Doprinesite otvorenoj Plan ₿ Network platformi",
+      "title": "Doprinos"
+    },
+    "subCategories": {
+      "analysis": "Analiza",
+      "authentication": "Autentifikacija",
+      "backup": "Rezervna kopija",
+      "bitcoin": "Bitcoin",
+      "centralized": "Centralizovano",
+      "communication": "Komunikacija",
+      "content": "Sadržaj",
+      "data": "Podaci",
+      "desktop": "Desktop",
+      "hardware": "Hardver",
+      "lightning-network": "Lightning mreža",
+      "mobile": "Mobilni",
+      "on-chain": "na chain-u (primarni lanac blokova)",
+      "operating system": "Operativni sistem",
+      "others": "Druge",
+      "peer-to-peer": "Od korisnika do korisnika",
+      "point-of-sale": "Prodajno mesto",
+      "pool": "Bazen",
+      "resource": "Resurs"
+    }
   },
   "payment": {
     "total": "Ukupno",
     "terms": "Pogledajte naše <0>opšte uslove</0> i uslove za detalje o povraćaju novca",
     "payByCard": "Platite karticom",
     "payWithBitcoin": "Plati Bitcoinom",
-    "haveReductionCode": "Imate kod za popust ?"
+    "haveReductionCode": "Imate kod za popust ?",
+    "taxesMayApply": "Porezi se mogu se primeniti prilikom plaćanja",
+    "insertReductionCode": "Unesite svoj kod za smanjenje"
   },
   "notFound": {
     "here": "Ovde",
@@ -1100,7 +1344,7 @@
     "changeEmail": "Promeni email"
   },
   "underConstruction": {
-    "p1": "Zec je pao u rupu. Zbog ove neočekivane avanture, ova stranica je trenutno u fazi izgradnje. Izvinjavamo se za eventualnu neprijatnost. Naš tim je u punom pogonu da završi ovu stranicu. Ako ste zainteresovani da pružite pomoć, nemojte oklevati da pogledate našu",
+    "p1": "Zec je pao u rupu. Zbog ove neočekivane avanture, ova stranica je trenutno u fazi izgradnje. Izvinjavamo se za eventualnu neprijatnost. Naš tim je u punom pogonu da završi ovu stranicu. Ako ste zainteresovani da pružite pomoć, nemojte oklevati da kliknete ovde:",
     "github": "GitHub",
     "itemNotFound": "{{item}} nije pronađen",
     "itemNotFoundOrTranslated": "{{item}} nije pronađen, ili nije preveden na vaš jezik",
@@ -1131,7 +1375,7 @@
     "advanced": "Napredni",
     "amount": "Iznos",
     "back": "Povratak",
-    "bCert": "₿ Sertifikat",
+    "bCert": "₿-Sertifikat",
     "beginner": "Početnik",
     "billing": "Naplaćivanje",
     "book": "Knjiga",
@@ -1263,7 +1507,17 @@
     "projects": "Projekti",
     "protocol": "Protokol",
     "unavailable": "Nedostupno",
-    "yes": "Da"
+    "yes": "Da",
+    "calendar": "Kalendar",
+    "continue": "Nastavi",
+    "password": "Lozinka",
+    "save": "Sačuvaj",
+    "day": "Dan",
+    "mode": "Način",
+    "saving": "Čuvanje...",
+    "selectedAmount": "{{amount}} izabrano",
+    "timeZone": "Vremenska zona",
+    "video": "Video"
   },
   "lectures": {
     "buyVideoToUnlock": "Kupite video da biste ga otključali",
@@ -1341,9 +1595,70 @@
     },
     "filterByType": "Filtriraj po tipu",
     "glossary_word": "Rečnik reč",
-    "languageSelected": "Izabrani jezik: {{language}}"
+    "languageSelected": "Izabrani jezik: {{language}}",
+    "conference": "Konferencija"
   },
   "podcast": {
     "check": "Zavirite u podcast"
+  },
+  "accessType": {
+    "online": "Online",
+    "physical": "Uživo",
+    "replay": "Ponovi",
+    "hybrid": "Uživo i online"
+  },
+  "labs": {
+    "coordinatedBy": "Ova laboratorija je koordinirana od strane",
+    "description1": "Plan ₿ Labs su studijske grupe dizajnirane da pruže studentima redovne praktične i interaktivne časove. Kroz ove studijske grupe, studenti i profesori se uključuju u diskusije, raspravljajući o najnovijim istraživanjima, rešavajući stvarne svetske izazove i primenjujući teorijske koncepte.",
+    "description2": "Pridružite se laboratoriji koja se poklapa sa vašom oblasti studija i poboljšajte svoje iskustvo učenja!",
+    "planBLabs": "Plan ₿ Laboratorije",
+    "presentation": {
+      "link": "Otkrijte Plan ₿ Labs",
+      "subtitle": "Pridružite se laboratoriji da biste učili, diskutovali i napredovali!",
+      "title": "Unapredite svoje Bitcoin veštine!"
+    },
+    "title": "Praktični i interaktivni časovi za kontinuirano učenje"
+  },
+  "notification": {
+    "types": {
+      "assignment": "Zadatak",
+      "calendar": "Obaveštenje sa kalendara",
+      "celebration": "Proslava",
+      "general": "Opšte informacije",
+      "warning": "Upozorenje"
+    }
+  },
+  "notifications": {
+    "bCertResults": "Vaši ₿-CERT rezultati su izašli!",
+    "blogNotTranslated": "Žao nam je, ovaj novi blog post još uvek nije preveden na Vaš trenutni jezik.",
+    "bookYourSeat": "Rezervišite svoje mesto ako želite da prisustvujete lično!",
+    "calendar_24h": "Sledeći čas će biti sutra od {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Dogadjaj {{eventName}} će se održati sutra, od {{formattedTime}} u {{adressLine}}. Obavezno preuzmite svoju kartu za prisustvo!",
+    "calendar_48h_online_event": "{{eventName}} se uskoro održava! Zakazan je za {{date}}, od {{formattedTime}}. ",
+    "calendar_5m": "Čas počinje za 5 minuta! Kliknite ovde da se pridružite odmah.",
+    "calendar_5m_online_event": "Vreme je! {{eventName}} počinje za 5 minuta. Kliknite ovde da se pridružite odmah!",
+    "stayUpToDate": "Ostani u toku!",
+    "dashboardDescription": "Ovo su Vaša najnovija obaveštenja. Obaveštenja će biti automatski uklonjena mesec dana nakon što ih vidite.",
+    "daysAgo": "Pre {{days}} dana",
+    "hoursAgo": "Pre {{hours}} sati",
+    "markAsRead": "Označite kao pročitano",
+    "monthsAgo": "Pre {{months}} mesec{{s}}",
+    "noRecentNotifications": "Trenutno nemate novih obaveštenja.",
+    "noUnreadNotifications": "Nemate više nepročitanih obaveštenja",
+    "notifications": "Notifikacije",
+    "planBNews": "Plan ₿ Vesti",
+    "results": "Vaši ₿-CERT rezultati su izašli!",
+    "selectAll": "Izaberite sve",
+    "select": "Izaberite",
+    "today": "Danas",
+    "unread": "Nepročitano",
+    "upcomingEvent": "Predstojeći događaj",
+    "yearsAgo": "Pre {{years}} godina{{s}}",
+    "yesterday": "Juče",
+    "read": "Pročitaj",
+    "weeksAgo": "Pre {{weeks}} nedelja{{s}}"
+  },
+  "placeholders": {
+    "selectTimeZone": "Izaberite vremensku zonu"
   }
 }
