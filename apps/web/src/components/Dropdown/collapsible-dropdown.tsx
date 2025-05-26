@@ -68,7 +68,7 @@ export const CollapsibleDropdown = ({
       <CollapsibleTrigger className={collapsibleTriggerVariant({ variant })}>
         <div className="flex flex-row gap-2 items-center">
           {type === 'info' ? <AlertCircle className="h-4 w-4" /> : null}
-          <span className="body-16px-medium">{title}</span>
+          <span className="body-14px-medium md:body-16px-medium">{title}</span>
         </div>
         <MdKeyboardArrowDown
           size={30}

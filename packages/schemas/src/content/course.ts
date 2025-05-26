@@ -7,6 +7,7 @@ import {
   contentCourseParts,
   contentCoursePartsLocalized,
   contentCourses,
+  contentCoursesAssignment,
   contentCoursesLocalized,
 } from '@blms/database';
 
@@ -26,6 +27,10 @@ export const coursePartLocalizedSchema = createSelectSchema(
 export const courseChapterSchema = createSelectSchema(contentCourseChapters);
 export const courseChapterLocalizedSchema = createSelectSchema(
   contentCourseChaptersLocalized,
+);
+
+export const courseAssignmentSchema = createSelectSchema(
+  contentCoursesAssignment,
 );
 
 export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema

@@ -11,6 +11,7 @@ export * from './get-exam-results.js';
 export * from './get-payment.js';
 export * from './get-progress.js';
 export * from './get-user-chapter.js';
+export * from './save-course-assignments-order.js';
 export * from './save-course-review.js';
 export * from './save-course-payment.js';
 export * from './save-quiz-attempt.js';

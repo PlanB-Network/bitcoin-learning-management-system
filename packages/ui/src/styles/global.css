@@ -655,7 +655,7 @@
   filter: brightness(0) saturate(100%) invert(0) sepia(0) contrast(100%);
 }
 
-@utility filter-newOrange1 {
+@utility filter-darkOrange {
   filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1484%)
     hue-rotate(3deg) brightness(105%) contrast(102%);
 }

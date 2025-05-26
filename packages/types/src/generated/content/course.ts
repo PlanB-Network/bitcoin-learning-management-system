@@ -104,6 +104,19 @@ export interface CourseChapterLocalized {
   lastSync: Date;
 }
 
+export interface CourseAssignment {
+  id: string;
+  courseId: string;
+  name: string;
+  description: string;
+  mentor: string;
+  telegramUrl: string;
+  fileUrl: string;
+  lastUpdated: Date;
+  lastCommit: string;
+  lastSync: Date;
+}
+
 export interface JoinedCoursePartLocalized {
   courseId: string;
   language: string;

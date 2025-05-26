@@ -266,6 +266,7 @@ export const createRestFilesRoutes = async (
 
       const allowedBuckets = [
         'certificates',
+        'course-assignments',
         'bcertresults',
         'user-files',
         'cvs',

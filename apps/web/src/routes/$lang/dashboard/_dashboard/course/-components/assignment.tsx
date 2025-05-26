@@ -1,20 +1,41 @@
-import { Alert, AlertDescription, AlertTitle, Button, cn } from '@blms/ui';
+import type { CourseAssignment } from '@blms/types';
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  cn,
+  customToast,
+} from '@blms/ui';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
-import FailFace from '#src/assets/icons/face_failed.svg';
+import SadFace from '#src/assets/icons/face_sad.svg';
+import ThumbUp from '#src/assets/icons/thumb_up.svg';
+import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { BiPencil } from 'react-icons/bi';
+import { IoCheckmark } from 'react-icons/io5';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+
 interface RankingItemProps {
-  companyName: string;
-  projectName: string;
+  name: string;
+  description: string;
+  fileUrl: string;
   rank?: number;
   onMoveUp?: () => void;
   onMoveDown?: () => void;
-  onReadAssignment?: () => void;
   onDragStart?: (e: React.DragEvent, index: number) => void;
   onDragEnd?: () => void;
   onDragOver?: (e: React.DragEvent) => void;
@@ -29,62 +50,69 @@ export const Assignment = ({
 }: {
   courseId: string;
 }) => {
-  const isMobile = useSmaller('md');
+  const [assignmentsOrdered, setAssignmentsOrdered] = useState<
+    CourseAssignment[]
+  >([]);
 
-  const [assignments, setAssignments] = useState([
-    {
-      companyName: 'Tether',
-      companyId: 'tether',
-      projectName: 'Implementation of a new feature',
-    },
-    {
-      companyName: 'Braiins',
-      companyId: 'braiins',
-      projectName: 'Arbitraging energy with bitcoin mining',
-    },
-    {
-      companyName: 'Ledger',
-      companyId: 'ledger',
-      projectName:
-        'Very long project name that is not going to fit to see if the text is cut off or if it goes to the next line',
-    },
-  ]);
+  const { data: userProgress, refetch: refetchUserProgress } =
+    trpc.user.courses.getProgress.useQuery({
+      courseId,
+    });
 
-  const { data: userProgress } = trpc.user.courses.getProgress.useQuery({
+  const { data: assignments } = trpc.content.getCourseAssignments.useQuery({
     courseId,
   });
+
+  const saveAssignments =
+    trpc.user.courses.saveCourseAssignmentsOrder.useMutation({
+      onSuccess: () => {
+        setTimeout(() => {
+          refetchUserProgress();
+          customToast(t('dashboard.course.listSaved'), {
+            mode: 'light',
+            color: 'success',
+            icon: IoCheckmark,
+            closeButton: true,
+            time: 5000,
+          });
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }, 100);
+      },
+    });
 
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [draggedOverIndex, setDraggedOverIndex] = useState<number | null>(null);
 
   const handleMoveUp = (index: number) => {
     if (index > 0) {
-      const newAssignments = [...assignments];
+      const newAssignments = [...assignmentsOrdered];
       [newAssignments[index], newAssignments[index - 1]] = [
         newAssignments[index - 1],
         newAssignments[index],
       ];
-      setAssignments(newAssignments);
+      setAssignmentsOrdered(newAssignments);
     }
   };
 
   const handleMoveDown = (index: number) => {
-    if (index < assignments.length - 1) {
-      const newAssignments = [...assignments];
+    if (index < assignmentsOrdered.length - 1) {
+      const newAssignments = [...assignmentsOrdered];
       [newAssignments[index], newAssignments[index + 1]] = [
         newAssignments[index + 1],
         newAssignments[index],
       ];
-      setAssignments(newAssignments);
+      setAssignmentsOrdered(newAssignments);
     }
   };
 
-  const handleReadAssignment = (companyId: string) => {
-    console.log('Open a pdf file for:', companyId);
-  };
-
   const handleSaveList = () => {
-    console.log('Save the list of assignments');
+    saveAssignments.mutate({
+      courseId,
+      assignmentsIds: assignmentsOrdered.map((assignment) => assignment.id),
+    });
   };
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
@@ -114,18 +142,24 @@ export const Assignment = ({
       return;
     }
 
-    const newAssignments = [...assignments];
+    const newAssignments = [...assignmentsOrdered];
     const draggedItem = newAssignments[draggedIndex];
 
     newAssignments.splice(draggedIndex, 1);
     newAssignments.splice(dropIndex, 0, draggedItem);
 
-    setAssignments(newAssignments);
+    setAssignmentsOrdered(newAssignments);
     setDraggedIndex(null);
     setDraggedOverIndex(null);
   };
 
-  const openAssignmentDate = new Date('2025-06-02T02:00:00Z').getTime();
+  useEffect(() => {
+    if (assignments) {
+      setAssignmentsOrdered(assignments);
+    }
+  }, [assignments]);
+
+  const openAssignmentDate = new Date('2025-05-02T02:00:00Z').getTime();
 
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
@@ -146,7 +180,8 @@ export const Assignment = ({
         </CollapsibleDropdown>
       </div>
 
-      {(userProgress?.[0].isSelectedForAssignment ||
+      {((userProgress?.[0].isSelectedForAssignment &&
+        userProgress?.[0].appliedAssignmentIds === null) ||
         new Date().getTime() < openAssignmentDate) && (
         <>
           <div className="flex flex-col gap-4 md:gap-5">
@@ -176,18 +211,16 @@ export const Assignment = ({
                     {t('dashboard.course.mostPreferred')}
                   </span>
 
-                  {assignments.map((assignment, index) => (
+                  {assignmentsOrdered.map((assignment, index) => (
                     <RankingItem
-                      key={assignment.companyId}
-                      companyName={assignment.companyName}
-                      projectName={assignment.projectName}
+                      key={assignment.id}
+                      name={assignment.name}
+                      description={assignment.description}
+                      fileUrl={`/api/files/${assignment.fileUrl}`}
                       rank={index + 1}
                       index={index}
                       onMoveUp={() => handleMoveUp(index)}
                       onMoveDown={() => handleMoveDown(index)}
-                      onReadAssignment={() =>
-                        handleReadAssignment(assignment.companyId)
-                      }
                       onDragStart={handleDragStart}
                       onDragEnd={handleDragEnd}
                       onDragOver={(e) => handleDragOver(e, index)}
@@ -201,24 +234,28 @@ export const Assignment = ({
                     {t('dashboard.course.leastPreferred')}
                   </span>
                 </div>
-                <Button
-                  variant="primary"
-                  mode="light"
-                  size={isMobile ? 'm' : 'l'}
-                  className="w-fit mx-auto"
-                  onClick={handleSaveList}
-                >
-                  {t('dashboard.course.saveList')}
-                </Button>
+                <ConfirmAssignmentsOrderDialog onConfirm={handleSaveList} />
               </>
             )}
         </>
       )}
 
-      {!userProgress?.[0].isSelectedForAssignment &&
+      {userProgress?.[0].isSelectedForAssignment &&
+        userProgress?.[0].appliedAssignmentIds !== null &&
         new Date().getTime() >= openAssignmentDate && (
           <InformationalPanel
-            icon={FailFace}
+            icon={ThumbUp}
+            iconClassName="filter-darkOrange"
+            description={t('dashboard.course.listSavedComeTomorrow')}
+          />
+        )}
+
+      {userProgress &&
+        !userProgress[0].isSelectedForAssignment &&
+        new Date().getTime() >= openAssignmentDate && (
+          <InformationalPanel
+            icon={SadFace}
+            iconClassName="filter-darkOrange"
             description={t('dashboard.course.notSelectedAssignment')}
           />
         )}
@@ -227,12 +264,12 @@ export const Assignment = ({
 };
 
 const RankingItem = ({
-  companyName,
-  projectName,
+  name,
+  description,
+  fileUrl,
   rank = 1,
   onMoveUp,
   onMoveDown,
-  onReadAssignment,
   onDragStart,
   onDragEnd,
   onDragOver,
@@ -313,10 +350,10 @@ const RankingItem = ({
           <div className="flex-1 flex flex-col gap-2">
             <div className="flex flex-col">
               <div className="text-dashboardSectionTitle font-medium text-base leading-5">
-                {companyName}
+                {name}
               </div>
               <div className="text-dashboardSectionTitle text-xs leading-4">
-                {projectName}
+                {description}
               </div>
             </div>
 
@@ -324,10 +361,12 @@ const RankingItem = ({
               variant="outline"
               mode="light"
               size="s"
-              onClick={onReadAssignment}
               className="w-fit"
+              asChild
             >
-              {t('dashboard.course.readAssignment')}
+              <a href={fileUrl} target="_blank" rel="noreferrer">
+                {t('dashboard.course.readAssignment')}
+              </a>
             </Button>
           </div>
 
@@ -388,21 +427,18 @@ const RankingItem = ({
 
           <div className="flex-1 flex flex-col justify-center gap-1">
             <div className="text-dashboardSectionTitle label-med-18px">
-              {companyName}
+              {name}
             </div>
             <div className="text-dashboardSectionTitle body-14px">
-              {projectName}
+              {description}
             </div>
           </div>
 
           <div className="flex items-center gap-5">
-            <Button
-              variant="outline"
-              mode="light"
-              size="s"
-              onClick={onReadAssignment}
-            >
-              {t('dashboard.course.readAssignment')}
+            <Button variant="outline" mode="light" size="s" asChild>
+              <a href={fileUrl} target="_blank" rel="noreferrer">
+                {t('dashboard.course.readAssignment')}
+              </a>
             </Button>
 
             <button
@@ -427,12 +463,14 @@ const InformationalPanel = ({
   subtitle,
   description,
   className,
+  iconClassName,
 }: {
   icon?: string;
   title?: string;
   subtitle?: string;
   description?: string;
   className?: string;
+  iconClassName?: string;
 }) => {
   return (
     <div
@@ -442,7 +480,13 @@ const InformationalPanel = ({
       )}
     >
       <div className="flex flex-col justify-center items-center gap-2.5 md:gap-5">
-        {icon && <img src={icon} alt={title} className="w-7 md:w-9" />}
+        {icon && (
+          <img
+            src={icon}
+            alt={title}
+            className={cn('w-7 md:w-9', iconClassName)}
+          />
+        )}
         {title && (
           <h3 className="text-newBlack-1 label-medium-med-16px md:label-large-med-20px">
             {title}
@@ -460,5 +504,85 @@ const InformationalPanel = ({
         </p>
       )}
     </div>
+  );
+};
+
+const ConfirmAssignmentsOrderDialog = ({
+  onConfirm,
+}: { onConfirm: () => void }) => {
+  const isMobile = useSmaller('md');
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button
+          variant="primary"
+          mode="light"
+          size={isMobile ? 'm' : 'l'}
+          className="w-fit mx-auto"
+        >
+          {t('dashboard.course.saveList')}
+        </Button>
+      </DialogTrigger>
+      <DialogContent
+        className="w-[95%] max-md:max-w-100 md:w-[530px]"
+        showCloseButton
+      >
+        <DialogHeader>
+          <DialogTitle className="hidden">
+            {t('dashboard.course.surePreferenceList')}
+          </DialogTitle>
+          <DialogDescription className="hidden">
+            {t('dashboard.course.surePreferenceList')}
+          </DialogDescription>
+        </DialogHeader>
+
+        <img
+          src={PlanBLogoBlack}
+          alt="Logo Plan ₿ Network"
+          className="w-46 md:w-60 mx-auto max-md:py-6"
+        />
+
+        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-12 md:py-5">
+          <p className="text-darkOrange-5 subtitle-large-18px md:title-large-24px text-center md:px-7">
+            {t('dashboard.course.surePreferenceList')}
+          </p>
+
+          <img
+            src={InformationIcon}
+            alt="Information"
+            className="w-10 md:w-16"
+          />
+
+          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center max-w-[442px] md:px-5">
+            {t('dashboard.course.confirmNoEditable')}
+          </p>
+        </div>
+
+        <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
+          <DialogClose asChild>
+            <Button
+              variant="primary"
+              size={isMobile ? 'm' : 'l'}
+              className="w-fit"
+              onClick={onConfirm}
+            >
+              {t('dashboard.course.confirmList')}{' '}
+              <IoCheckmark className="ml-2.5" />
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button
+              variant="outline"
+              size={isMobile ? 'm' : 'l'}
+              className="w-fit"
+            >
+              {t('dashboard.course.keepEditing')}{' '}
+              <BiPencil className="ml-2.5" />
+            </Button>
+          </DialogClose>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
