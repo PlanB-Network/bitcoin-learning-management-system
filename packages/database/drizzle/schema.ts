@@ -1171,7 +1171,18 @@ export const contentCoursesAssignment = content.table(
       }),
     name: t.varchar({ length: 50 }).notNull(),
     description: t.text().notNull(),
+    mentor: t.varchar({ length: 50 }).notNull(),
+    telegramUrl: t.varchar({ length: 100 }).notNull(),
     fileUrl: t.varchar({ length: 255 }).notNull(),
+
+    lastUpdated: t
+      .timestamp({
+        withTimezone: true,
+      })
+      .defaultNow()
+      .notNull(),
+    lastCommit: t.varchar({ length: 40 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
 );
 
