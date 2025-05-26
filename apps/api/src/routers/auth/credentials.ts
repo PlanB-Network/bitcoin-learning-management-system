@@ -44,6 +44,14 @@ export const credentialsAuthRouter = createTRPCRouter({
 
       const username = input.username.toLowerCase().trim();
 
+      if (/[@\ ]/i.test(username)) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message:
+            'Username can not contain spaces or @ symbol. Please choose another username.',
+        });
+      }
+
       // TODO: move this to service once we have the custom errors
       if (await getUser({ username })) {
         throw new TRPCError({
@@ -64,7 +72,6 @@ export const credentialsAuthRouter = createTRPCRouter({
         await createEmailValidationToken(ctx.dependencies)(
           user.uid,
           input.email,
-          true,
         );
       }
 
