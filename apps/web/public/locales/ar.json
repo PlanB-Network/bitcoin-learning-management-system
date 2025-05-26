@@ -374,7 +374,7 @@
       "whereYouAre": ""
     },
     "account": "الحساب",
-    "courses": "",
+    "courses": "الدورات",
     "logout": "",
     "booking": {
       "accessLive": "الدخول إلى البث المباشر",
@@ -397,28 +397,39 @@
       "noGoBack": "لا، العودة للخلف"
     },
     "credentials": {
-      "bCert": "",
+      "bCert": "CERT-₿",
       "courseDiplomasSubtitle": "",
       "downloadTicket": "",
       "globalCertifications": "",
       "retakeExam": "",
       "bCertSubtitle": "",
-      "beingGraded": "",
+      "beingGraded": "جاري تصحيح امتحانك. ستكون النتائج متاحة في غضون أسبوع أو أسبوعين.",
       "courseDiplomas": "",
-      "completionDiplomas": "",
+      "completionDiplomas": "شهادات الإنهاء",
       "seatBooked": "",
       "takePlaceAt": "",
       "yourCertificate": ""
     },
     "course": {
-      "completionDiploma": "",
-      "checkDetailsCompleted": "",
-      "completionExamInfo": "",
-      "coursesCompleted": "",
+      "completionDiploma": "شهادة الإنهاء",
+      "checkDetailsCompleted": "هنا يمكنك الاطّلاع على جميع التفاصيل المتعلقة بالدورة التي أنهيتها.",
+      "completionExamInfo": "يجب عليك إكمال الامتحان للوصول إلى هذه الميزة.",
+      "coursesCompleted": "الدورات المكملة",
       "feedbacks": "",
-      "ratingsAndFeedbacks": "",
-      "shareOnSocials": "",
-      "tweetText": ""
+      "ratingsAndFeedbacks": "التقييمات والملاحظات",
+      "shareOnSocials": "المشاركة على الشبكات الاجتماعية:",
+      "tweetText": "",
+      "announcement": "الإعلانات",
+      "assignment": "الواجبات",
+      "assignmentInformation": "معلومات الواجب",
+      "conclusionNotReleased": "سيتم فتح الخاتمة في يوم الدرس الأخير.",
+      "coordinator": "منسق الدورة التدريبية",
+      "courseCalendar": "تقويم الدورة التدريبية",
+      "generalInformation": "المعلومات العامة",
+      "submitReviewInfo": "يجب عليك تقديم مراجعة أو رأي للوصول إلى هذه الميزة.",
+      "conclusionHeadline": "فيما يلي ملخص لما تعلّمته. إن فاتتك بعض الوحدات أو لم يتم اعتمادها بالشكل الصحيح، يمكنك إتمامها الآن إمّا بإعادة دراستها أو الضغط على زر \"إكمال\".",
+      "examScore": "النتيجة:",
+      "exams": "الامتحانات"
     },
     "profile": {
       "profilePicture": "",
@@ -786,7 +797,20 @@
       "legalInformation": "معلومات قانونية",
       "legalInformationSubtitle": "يرجى الموافقة على الشروط والأحكام التالية حتى نتمكن من ربط مهاراتك وخبراتك بفرص العمل المتاحة مع شركائنا.",
       "motivationLetter": "رسالة الدافع",
-      "selectRoleSubLabel": "يرجى اختيار المسمّى الوظيفي الأنسب لطبيعة الوظيفة التي تبحث عنها."
+      "selectRoleSubLabel": "يرجى اختيار المسمّى الوظيفي الأنسب لطبيعة الوظيفة التي تبحث عنها.",
+      "startApplication": "بدأ الطلب",
+      "steps": {
+        "step2": "البحث عن وظيفة",
+        "step1": "المعلومات الشخصية",
+        "step3": "تحميل السيرة الذاتية",
+        "step4": "الشروط القانونية"
+      },
+      "termsAndConditions": "الشروط والأحكام",
+      "welcome": "مرحباً بك في بوابتك المهنية",
+      "yourLanguages": "لغاتك",
+      "yourRoles": "وظائفك",
+      "uploadCVSubLabel": "أرفق سيرتك الذاتية لإبراز مهاراتك وخبراتك أمام الجهات المهتمة بالتوظيف.",
+      "uploadCV": "تحميل سيرتك الذاتية"
     }
   },
   "events": {

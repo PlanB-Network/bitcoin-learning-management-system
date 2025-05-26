@@ -48,7 +48,21 @@
     "didYouKnow": "Biliyor Muydunuz?",
     "dashboardUnlocked": "Öğrenci ana ekranınız aktifleşti!",
     "passwordChangedSuccess": "Şifre başarıyla değiştirildi",
-    "trackProgress": "İlerlemelerinizi takip etmek için giriş yapın veya bir hesap oluşturun"
+    "trackProgress": "İlerlemelerinizi takip etmek için giriş yapın veya bir hesap oluşturun",
+    "emailValidation": {
+      "emailChangeValidated": "E-posta değişikliği doğrulandı",
+      "emailValidated": "E-posta doğrulandı",
+      "errorValidatingEmail": "E-posta doğrulama hatası",
+      "errorValidatingEmailChange": "E-posta değişikliğini doğrulama hatası",
+      "errorValidatingEmailChangeDescription": "E-posta değişikliğinizi doğrularken bir hata oluştu, bağlantının süresi dolmuş gibi görünüyor veya zaten kullanılmış. Lütfen tekrar deneyin.",
+      "errorValidatingEmailDescription": "E-postanızı doğrularken bir hata oluştu, bağlantının süresi dolmuş gibi görünüyor veya zaten kullanılmış. Lütfen tekrar deneyin.",
+      "successfullyChanged": "E-posta adresiniz başarıyla {{email}} olarak değiştirildi.",
+      "successfullyValidated": "E-postanız başarıyla doğrulandı.",
+      "validateChange": "E-posta değişikliğini doğrulama",
+      "validatingEmail": "E-posta doğrulama",
+      "validatingEmailChange": "E-posta değişikliğini doğrulama",
+      "wontTakeLong": "Bu uzun sürmeyecek..."
+    }
   },
   "dashboard": {
     "account": "",
@@ -418,18 +432,18 @@
     },
     "details": {
       "buyCourse": "Kursu satın al",
-      "curriculum": "",
-      "description": "",
+      "curriculum": "Özgeçmiş",
+      "description": "Açıklama",
       "mobile": {
-        "hours": ""
+        "hours": "{{hours}} saat"
       },
-      "objectives": "",
-      "objectivesTitle": "",
+      "objectives": "Hedefler",
+      "objectivesTitle": "Ne öğreneceksiniz:",
       "startCourse": "Kursu başlatın",
       "taughtBy": "Bu kurs, bu doçent tarafından verilmektedir",
       "buyInPersonCourse": "Yüz yüze kurs satın al",
       "buyOnlineCourse": "Online kurs satın al",
-      "inPersonAccess": "",
+      "inPersonAccess": "Yüz yüze derse giriş yapmak için biletinizi indirmeniz gerekiyor.",
       "paidCourse": "Premium",
       "associatedProfessors": "Doçentler",
       "pastEditionsRatings": "Geçmiş sürümlerin derecelendirmeleri",
@@ -438,7 +452,15 @@
       "thanksTipping": "Profesöre katkıda bulunarak teşekkür edebilirsiniz.",
       "otherCoursesInterest": "İlgilenebileceğiniz diğer kurslar",
       "premiumContentNeedsLogin": "Bu kursa erişebilmek için giriş yapmış olmanız gerekiyor.",
-      "premiumContentNeedsPayment": "Bu kurs, premium bir programın parçasıdır."
+      "premiumContentNeedsPayment": "Bu kurs, premium bir programın parçasıdır.",
+      "coordinatedBy": "Bu kursun koordinatörü",
+      "collaborativeEffort": "Platformdaki her içerik, işbirlikçi bir çabanın sonucudur: her ders, çeviri ve revizyon, katkıda bulunanların çalışması sayesinde mümkün olmaktadır. Bu nedenle, içeriğimizi birçok dilde gözden geçirebilecek düzeltmenler arıyoruz. Düzeltme sürecine katılmak isterseniz, lütfen <0>Telegram</0> grubumuza ulaşın ve <1>eğitimimizi</1> okuyun.\n\nBu içeriğin açık kaynaklı olduğunu - <2>CC BY-SA</2> altında lisanslı - ve orijinal kaynak belirtildiği sürece serbestçe paylaşılabileceğini ve kullanılabileceğini hatırlatırız.",
+      "attendInPersonWarning": "Bu sınıfa bizzat katılmayı düşünüyorsanız, koltuğunuzu ayırttığınızdan emin olun. Her durumda, ders canlı yayınlanacak ve tekrar izlemek üzere mevcut olacak.",
+      "courseAddedToDashboard": "Bu kurs öğrenci kontrol panelinize eklendi",
+      "hasBeenProofreadBy": "Bu kursu gözden geçiren kişi",
+      "hasNotBeenProofread": "Bu kurs henüz düzelti okuması yapılmamış",
+      "learning": "Öğrenme süreci",
+      "otherCourses": "Diğer kurslar"
     },
     "explorer": {
       "pageDescription": "Plan ₿ Akademisi, dünya çapında Bitcoin eğitimini basitleştirmeyi hedefliyor. Çeşitli alanlardan uzmanlar tarafından hazırlanan akademimiz, Bitcoin'in her yönünü açıklığa kavuşturmayı amaçlayan kapsamlı bir ders yelpazesi sunmaktadır.\nBaşlangıç seviyesinden uzmana kadar, kendi hızınızda ya da bir profesör tarafından haftalık olarak takip edildiğiniz, akademinin Bitcoin'in geniş dünyasını daha derin bir şekilde anlamanıza yardımcı olmasını umuyoruz. Kurslarımızın birçoğu tamamen ücretsizdir, böylece herkes, her yerde, kaliteli eğitime erişebilir.",
@@ -898,5 +920,11 @@
       "blogListButtonText": "",
       "filterText": ""
     }
+  },
+  "accessType": {
+    "physical": "Yüz yüze",
+    "replay": "Replay",
+    "online": "Online",
+    "hybrid": "Yüz yüze & online"
   }
 }
