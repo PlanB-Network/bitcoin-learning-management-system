@@ -108,16 +108,16 @@ export async function generateTicket(options: GenerateTicketOptions) {
 
       if (text.length === 1) {
         page.drawText(t2, { x, y: y, ...conf.normal });
-      }
-
-      for (let i = 0; i < text.length; i++) {
-        const line = text[i];
-        const yOffset = i * lineHeight * 0.75;
-        page.drawText(line, {
-          x,
-          y: y + lineHeight * 0.6 - yOffset,
-          ...conf.normal,
-        });
+      } else {
+        for (let i = 0; i < text.length; i++) {
+          const line = text[i];
+          const yOffset = i * lineHeight * 0.75;
+          page.drawText(line, {
+            x,
+            y: y + lineHeight * 0.6 - yOffset,
+            ...conf.normal,
+          });
+        }
       }
     }
 
