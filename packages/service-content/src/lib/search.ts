@@ -1,3 +1,4 @@
+import removeMarkdown from 'remove-markdown';
 import { Errors as TypesenseErrors } from 'typesense';
 import type { Client as TypesenseClient } from 'typesense';
 import type { CollectionCreateSchema } from 'typesense/lib/Typesense/Collections.js';
@@ -290,6 +291,8 @@ const createIngestData =
       .import(
         data.map((part) => ({
           ...part,
+          body:
+            part.body && removeMarkdown(part.body, { useImgAltText: false }),
           // https://typesense.org/docs/guide/locale.html#best-practices
           locale: ISO_639_LANGUAGES[part.language],
         })),
