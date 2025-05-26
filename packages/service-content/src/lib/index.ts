@@ -12,6 +12,11 @@ import {
 } from './blogs/import/index.js';
 import { supportedContentTypes } from './const.js';
 import {
+  createDeleteAssignments,
+  createUpdateAssignments,
+  groupByAssignments,
+} from './courses/import/assignments.js';
+import {
   createDeleteCourses,
   createUpdateCourses,
   groupByCourse,
@@ -78,6 +83,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
   const updateLabs = createUpdateLabs(dependencies);
   const updateResources = createUpdateResources(dependencies);
   const updateCourses = createUpdateCourses(dependencies);
+  const updateAssignments = createUpdateAssignments(dependencies);
   const updateTutorials = createUpdateTutorials(dependencies);
   const updateQuizQuestions = createUpdateQuizQuestions(dependencies);
   const updateProfessors = createUpdateProfessors(dependencies);
@@ -144,6 +150,16 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
         await updateCourses(course, courseAsset, errors);
       }
 
+      time();
+    }
+
+    // Sync Assignments
+    {
+      const assignments = groupByAssignments(filteredFiles, errors);
+      const time = timeLog(assignments.length, 'assignments');
+      for (const assignment of assignments) {
+        await updateAssignments(assignment, errors);
+      }
       time();
     }
 
@@ -225,6 +241,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteBCerts = createDeleteBCertExams(dependencies);
   const deleteBlogs = createDeleteBlogs(dependencies);
   const deleteLegals = createDeleteLegals(dependencies);
+  const deleteAssignments = createDeleteAssignments(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
     const timeKey = '-- Sync: Removing old entities';
@@ -240,6 +257,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
     await deleteBCerts(sync_date, errors);
     await deleteBlogs(sync_date, errors);
     await deleteLegals(sync_date, errors);
+    await deleteAssignments(sync_date, errors);
 
     console.timeEnd(timeKey);
   };
