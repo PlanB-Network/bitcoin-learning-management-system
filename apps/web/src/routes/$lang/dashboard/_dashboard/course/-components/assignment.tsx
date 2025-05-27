@@ -157,7 +157,7 @@ export const Assignment = ({
     }
   }, [assignments]);
 
-  const openAssignmentDate = new Date('2025-05-02T02:00:00Z').getTime();
+  const openAssignmentDate = new Date('2025-05-27T10:00:00Z').getTime();
 
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">

@@ -1,9 +1,15 @@
 import { firstRow, sql } from '@blms/database';
 import type { Dependencies } from '#src/dependencies.js';
 
-const bizSchoolCourseId = 'c762773a-9017-4129-bc0e-06adf86050ef';
-const bizSchoolMidTermChapterId = '6065ea4e-2675-11f0-b6ab-bb5e1522cb78';
-const bizSchoolFinalExamChapterId = '9a307a50-2675-11f0-a893-57c148082c1f';
+// For mainnet
+// const bizSchoolCourseId = 'c762773a-9017-4129-bc0e-06adf86050ef';
+// const bizSchoolMidTermChapterId = '6065ea4e-2675-11f0-b6ab-bb5e1522cb78';
+// const bizSchoolFinalExamChapterId = '9a307a50-2675-11f0-a893-57c148082c1f';
+
+// For testnet biz999
+const bizSchoolCourseId = '576ac496-a4fd-471a-b022-e0da1ab89a29';
+const bizSchoolMidTermChapterId = '6428d1d7-9f8e-420e-8bdf-83077de1895c';
+const bizSchoolFinalExamChapterId = 'eaf5a2fa-9418-4eb0-bbed-25a1d9461b3d';
 
 export const createSelectBizSchoolStudentsForAssignments = ({
   postgres,
