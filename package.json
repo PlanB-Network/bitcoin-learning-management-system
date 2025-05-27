@@ -38,13 +38,13 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.15.19",
+    "@types/node": "^22.15.21",
     "dotenv-cli": "^8.0.0",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
-    "knip": "^5.56.0",
+    "knip": "^5.58.1",
     "lint-staged": "^15.5.2",
-    "mocha": "^11.4.0",
+    "mocha": "^11.5.0",
     "tsx": "^4.19.4",
     "turbo": "^2.5.3",
     "typescript": "5.8.3"
