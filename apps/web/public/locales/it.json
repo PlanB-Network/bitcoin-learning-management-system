@@ -5,7 +5,7 @@
     "missionContent1": "La nostra missione è supportare le comunità Bitcoin locali attraverso l'educazione open-source e la creazione di reti. Raccogliamo, organizziamo e creiamo le risorse necessarie (corsi, libri, manifesti, volantini, video) per far avanzare il settore Bitcoin.",
     "missionContent2": "Centralizziamo la conoscenza per distribuirla meglio attraverso un repository GitHub semplice e multilingue e una piattaforma di e-learning. Assistiamo gli hub Bitcoin locali nel loro sviluppo con gli strumenti giusti per far crescere il loro talento.",
     "commitmentTitle": "I nostri impegni",
-    "commitmentContent": "I nostri impegni nei confronti della comunità bitcoin sono i seguenti: \n • Rimanere open-source \n • Fornire contenuti educativi di alta qualità \n • Tradurre i nostri contenuti in quante più lingue possibili \n • Supportare i \"creators\" del mondo Bitcoin nel loro viaggio di imprenditorialità",
+    "commitmentContent": "Ci impegniamo nei confronti della comunità Bitcoin con le seguenti promesse: \n • Rimanere open-source \n • Fornire contenuti educativi di alta qualità \n • Tradurre i nostri contenuti in quante più lingue possibili \n • Supportare gli imprenditori del mondo Bitcoin nel loro viaggio",
     "coreTeamTitle": "Il team principale",
     "coreTeamContent": "Plan ₿ Network è una rete di centinaia di collaboratori, insegnanti, community leader, designer, sviluppatori e organizzatori. Un grazie ringraziamento va alle diverse persone che hanno reso Plan ₿ Network una realtà e continuano a farlo ogni giorno",
     "coreTeamGiacomoRole": "Direttore e cofondatore",
@@ -158,7 +158,7 @@
     },
     "explorer": {
       "pageDescription": "Plan ₿ Academy offre un'ampia gamma di corsi su Bitcoin, sia gratuiti che a pagamento, da principianti a esperti. Ci sono corsi guidati da esperti del settore, o altri che si possono seguire in autonomia, adattandosi a ogni stile di apprendimento. La nostra missione è semplice: rendere lo studio di Bitcoin chiaro, coinvolgente e accessibile a tutti!",
-      "buildPath": "Costruisci il tuo percorso nella tana del bianconiglio",
+      "buildPath": "Dai forma al tuo viaggio",
       "exploreCourses": "Esplora i corsi di Plan ₿ Network",
       "findCourses": "Trova il corso perfetto per le tue necessità grazie al selettore corsi",
       "journey": "Bitcoin è un viaggio, non una meta",
@@ -188,7 +188,7 @@
       "qr_unified": "Questo codice QR è unificato, quindi accetta sia pagamenti lightning che on-chain.",
       "time": "Orario",
       "inPersonCallout": "Stai per acquistare l'accesso <strong>in presenza</strong> a questo corso.",
-      "onlineDescription": "Ogni lezione viene trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle dirette e ai video di replay.",
+      "onlineDescription": "Ogni lezione viene trasmessa in diretta sulla piattaforma.\nQuesto acquisto ti darà accesso alle dirette e ai video replay.",
       "inPersonDescription": "Ti chiediamo di rivedere i dettagli sul corso. Una volta confermata la prenotazione, riceverai un biglietto di conferma e un codice QR da presentare in aula.",
       "onlineCallout": "Stai per acquistare l'accesso <strong>online</strong> a questo corso.",
       "checkoutError": "Si è verificato un errore durante il processo di pagamento.\nPer favore, riprova.",
@@ -230,7 +230,7 @@
       "writeThoughts": "Qui puoi scrivere i tuoi pensieri",
       "faithful": "Coerente con l'obiettivo?",
       "whatStudentsSay": "Cosa dicono gli studenti su questo corso",
-      "displayOutOf": "mostrato fuori di",
+      "displayOutOf": "visualizzati su",
       "loadMoreComments": "Carica più commenti",
       "ratingsAndReviews": "Valutazioni e recensioni",
       "yesOfCourse": "sì, certo",
@@ -335,7 +335,7 @@
       "stepsToComplete": "Questi sono i passaggi da percorrere per contrassegnare questo corso come completato nella tua dashboard, prima di continuare il tuo viaggio!",
       "completedFeedbackSubHeadline": "Puoi modificare le tue valutazioni e i commenti in qualsiasi momento dalla dashboard.",
       "congratulationsEnd": "Congratulazioni, sei arrivato alla fine del corso",
-      "finalStep": "Questo è l'ultimo passaggio per segnare questo corso come completato nella tua dashboard, prima di continuare il tuo viaggio!",
+      "finalStep": "Questo è l'ultimo passaggio da percorrere per segnare questo corso come completato nella tua dashboard, prima di continuare il tuo viaggio!",
       "takeFinalExam": "Ora che hai completato tutti i capitoli, è il momento di sostenere l'esame finale per testare le tue conoscenze.",
       "unlockFeatures1": "Per sbloccare tutte le funzionalità e tenere traccia dei tuoi progressi, hai bisogno di un account.",
       "unlockFeatures2": "Si prega di notare che non raccogliamo alcun dato personale né utilizziamo cookie."
@@ -382,7 +382,7 @@
     "courses": "Corsi",
     "logout": "Disconnetti",
     "booking": {
-      "accessLive": "Accesso dal vivo",
+      "accessLive": "Accedi alla diretta",
       "billingTitle": "Cronologia fatturazioni",
       "billingSubtitle": "Qui puoi scaricare le fatture delle tue prenotazioni.",
       "invoiceDate": "Data",
@@ -460,7 +460,7 @@
         "publicProfile": "Profilo pubblico",
         "publicProfileDescription": "Qui puoi compilare o modificare tutte le informazioni associate alla tua attività come insegnante presso Plan ₿ Network.",
         "notifications": "Notifiche",
-        "publicDescription": "Questa descrizione viene visualizzata nella tua scheda informativa da insegnante sulla piattaforma.",
+        "publicDescription": "Questa descrizione viene visualizzata nella tua scheda insegnante sulla piattaforma.",
         "description": "La tua descrizione",
         "enterTipsInformations": "Plan ₿ Network incoraggia gli utenti a fare donazioni agli insegnanti. Inserisci le tue informazioni in modo che le persone possano mandarti un contributo quando lo desiderano.",
         "noLightningAddress": "Nessun indirizzo lightning aggiunto fin ora.",
@@ -615,7 +615,7 @@
         "discountValue": "Percentuale di sconto",
         "discountCode": "Codice sconto",
         "discountCodeExplanation": "Attenzione, questo codice distingue tra maiuscole e minuscole.",
-        "generatedCodes": "Nuovi codici",
+        "generatedCodes": "Codici generati",
         "selectCourse": "Seleziona corso",
         "selectEvent": "Seleziona evento",
         "discountCodeCopied": "Codice sconto copiato",
@@ -864,7 +864,7 @@
       "max_capacity": "Capacità massima di",
       "payment_successful": "Prenotazione confermata.",
       "time": "Orario",
-      "access_online_successful": "Quando l'evento inizia, accedi alla piattaforma per ottenere l'accesso alla live dalla pagina dell'evento.",
+      "access_online_successful": "Quando inizierà l'evento, accedi alla piattaforma per ottenere l'accesso alla live dalla pagina dell'evento.",
       "access_physical_successful": "Puoi scaricare qui il tuo biglietto, o scaricarlo dopo dalla tua dashboard.",
       "description_online": "Salva la data e l'ora di questo evento. Quando sarà il momento, accedi alla piattaforma e alla live dalla pagina dell'evento.",
       "description_physical": "Salva i dettagli dell'indirizzo. Una volta che la prenotazione sarà confermata, ti forniremo un biglietto da presentare all'evento.\n\nIl biglietto ti darà anche accesso alla live streaming e al replay (se disponibili).",
@@ -886,7 +886,7 @@
   },
   "home": {
     "header": {
-      "content": "La piattaforma di Plan ₿ Network mira a fornire i migliori strumenti e contenuti educativi in tutto il mondo per aiutare le persone a recuperare la loro sovranità. Dagli individui alle comunità, siamo qui per aiutarvi lungo il vostro viaggio Bitcoin.",
+      "content": "La piattaforma di Plan ₿ Network mira a fornire i migliori strumenti e contenuti educativi a livello mondiale, per aiutare le persone a recuperare la loro sovranità. Dagli individui alle comunità, siamo qui per aiutarvi lungo il viaggio nel panorama di Bitcoin.",
       "forEducators": "Per educatori e imprenditori",
       "globalNetwork": "Rete Globale Bitcoin",
       "welcome": "Benvenuto su Plan ₿ Network"
@@ -1027,7 +1027,7 @@
       "noNewsletters": "Al momento non ci sono newsletter per la lingua selezionata.",
       "subtitle": "<0>Altre newsletter</0> che potrebbero interessarti"
     },
-    "pageDescription": "Cercare di capire Bitcoin è come esplorare un labirinto che continua a crescere. Per aiutarti nel tuo viaggio, abbiamo curato una vasta collezione di risorse affrontando una miriade di argomenti.",
+    "pageDescription": "Cercare di capire Bitcoin è come esplorare un labirinto che continua a crescere. Per aiutarti nel tuo viaggio, abbiamo curato una vasta collezione di risorse che includono libri, podcast, video e replay di conferenze. Questo portale raccoglie tutte le informazioni in un unico database su Github per aiutarti a capire meglio l'ecosistema di Bitcoin.",
     "pageSubtitle": "Centralizzare la conoscenza per distribuirla al meglio",
     "pageTitle": "Risorse",
     "podcasts": {
@@ -1336,7 +1336,7 @@
     "backConferences": "Torna alle conferenze",
     "conferenceName": "Nome conferenza",
     "conferencesSinceGenesis": "Archivio delle conferenze Bitcoin dal Blocco Genesi",
-    "description": "Le conferenze sono un elemento chiave del settore Bitcoin. Sono parte integrante del viaggio educativo di ogni Bitcoiner. Abbiamo costruito questo strumento per aiutarti a navigare attraverso centinaia di conferenze.",
+    "description": "Le conferenze sono un elemento chiave del settore Bitcoin. Sono parte integrante del viaggio educativo di ogni bitcoiner. Abbiamo dunque creato questo strumento per aiutarti a navigare attraverso centinaia di conferenze.",
     "details": {
       "findReplay": "Cerca una registrazione",
       "nextVideo": "Video successivo",
