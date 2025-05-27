@@ -1,3 +1,4 @@
+# Compose file for local development
 x-defaults: &defaults
   restart: always
   init: true
@@ -24,7 +25,7 @@ x-defaults: &defaults
 
 x-base: &base
   build: .
-  user: node
+  user: root
 
 services:
   postgres:
