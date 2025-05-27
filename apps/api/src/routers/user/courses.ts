@@ -32,6 +32,7 @@ import {
   createGetProgress,
   createGetUserChapter,
   createGetUserDetailsByCertificateId,
+  createSaveCourseAssignmentSubmissionTime,
   createSaveCourseAssignmentsOrder,
   createSaveCoursePayment,
   createSaveCourseReview,
@@ -455,6 +456,20 @@ const saveCourseAssignmentsOrderProcedure = studentProcedure
     });
   });
 
+const saveAssignmentSubmissionTimeProcedure = studentProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(async ({ ctx, input }) => {
+    await createSaveCourseAssignmentSubmissionTime(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    });
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -471,6 +486,7 @@ export const userCoursesRouter = createTRPCRouter({
   getPayment: getPaymentProcedure,
   getPayments: getPaymentsProcedure,
   getUserDetailsByCertificateId: getUserDetailsByCertificateIdProcedure,
+  saveCourseAssignmentSubmissionTime: saveAssignmentSubmissionTimeProcedure,
   saveCourseAssignmentsOrder: saveCourseAssignmentsOrderProcedure,
   saveCourseReview: saveCourseReviewProcedure,
   saveQuizAttempt: saveQuizAttemptProcedure,

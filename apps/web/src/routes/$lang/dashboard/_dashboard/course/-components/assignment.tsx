@@ -11,13 +11,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Divider,
   cn,
   customToast,
 } from '@blms/ui';
 import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
+import Certificate from '#src/assets/icons/certificate.svg';
 import SadFace from '#src/assets/icons/face_sad.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
@@ -25,9 +27,19 @@ import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdo
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { Trans } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
-import { IoCheckmark } from 'react-icons/io5';
+import { FaTelegram } from 'react-icons/fa6';
+import {
+  IoCheckmark,
+  IoCheckmarkOutline,
+  IoWarningOutline,
+} from 'react-icons/io5';
+import { MdOutlineRemoveRedEye } from 'react-icons/md';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+import { AppContext } from '#src/providers/context.tsx';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 interface RankingItemProps {
   name: string;
@@ -50,14 +62,19 @@ export const Assignment = ({
 }: {
   courseId: string;
 }) => {
+  const { user } = useContext(AppContext);
+
   const [assignmentsOrdered, setAssignmentsOrdered] = useState<
     CourseAssignment[]
   >([]);
 
-  const { data: userProgress, refetch: refetchUserProgress } =
-    trpc.user.courses.getProgress.useQuery({
-      courseId,
-    });
+  const {
+    data: userProgress,
+    refetch: refetchUserProgress,
+    isFetched: userProgressFetched,
+  } = trpc.user.courses.getProgress.useQuery({
+    courseId,
+  });
 
   const { data: assignments } = trpc.content.getCourseAssignments.useQuery({
     courseId,
@@ -81,8 +98,46 @@ export const Assignment = ({
       },
     });
 
+  const saveSubmissionDate =
+    trpc.user.courses.saveCourseAssignmentSubmissionTime.useMutation({
+      onSuccess: () => {
+        refetchUserProgress();
+      },
+    });
+
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [draggedOverIndex, setDraggedOverIndex] = useState<number | null>(null);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [workErrorMessage, setWorkErrorMessage] = useState<string>('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFileName, setSelectedFileName] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
+
+  const openAssignmentDate = new Date('2025-05-02T02:00:00Z').getTime();
+  const currentTime = new Date().getTime();
+  const isAssignmentOpen = currentTime >= openAssignmentDate;
+  const isBeforeAssignmentOpen = currentTime < openAssignmentDate;
+
+  const courseProgress = userProgress?.[0];
+  const isSelectedForAssignment =
+    courseProgress?.isSelectedForAssignment ?? false;
+  const hasAppliedAssignments = courseProgress?.appliedAssignmentIds !== null;
+  const hasAffectedAssignment = courseProgress?.affectedAssignmentId !== null;
+  const hasSubmittedWork = courseProgress?.assignmentSubmissionTime !== null;
+
+  const shouldShowRanking = isSelectedForAssignment || isBeforeAssignmentOpen;
+  const canRankAssignments =
+    isAssignmentOpen && isSelectedForAssignment && !hasAppliedAssignments;
+  const hasAlreadyRanked =
+    isSelectedForAssignment && hasAppliedAssignments && isAssignmentOpen;
+
+  const canSubmitWork = hasAlreadyRanked && hasAffectedAssignment;
+  const affectedAssignment = assignments?.find(
+    (assignment) => assignment.id === courseProgress?.affectedAssignmentId,
+  );
+
+  const isNotSelected = !isSelectedForAssignment && isAssignmentOpen;
 
   const handleMoveUp = (index: number) => {
     if (index > 0) {
@@ -151,13 +206,67 @@ export const Assignment = ({
     setDraggedOverIndex(null);
   };
 
+  const handleWorkUpload = async () => {
+    const file = selectedFile;
+    if (file) {
+      if (file.type !== 'application/pdf') {
+        setWorkErrorMessage(t('dashboard.careerPortal.invalidFile'));
+        return;
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        setWorkErrorMessage(t('dashboard.careerPortal.fileTooLarge'));
+        return;
+      }
+
+      const renamedFile = new File(
+        [file],
+        `${formatNameForURL(affectedAssignment?.name || '')}_${formatNameForURL(user?.username || '')}.pdf`,
+        { type: file.type },
+      );
+
+      const formData = new FormData();
+      formData.append('file', renamedFile);
+
+      setIsUploading(true);
+
+      const response = await fetch(
+        `/api/course-assignments/submit/${courseId}/${renamedFile.name}`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
+
+      setIsUploading(false);
+
+      if (response.status === 200) {
+        saveSubmissionDate.mutate({
+          courseId,
+        });
+        setWorkErrorMessage('');
+        customToast(t('dashboard.course.fileUploaded'), {
+          mode: 'light',
+          color: 'success',
+          icon: IoCheckmarkOutline,
+          closeButton: true,
+        });
+      } else {
+        setWorkErrorMessage(t('dashboard.careerPortal.fileUploadError'));
+        customToast(t('dashboard.careerPortal.fileUploadError'), {
+          mode: 'light',
+          color: 'warning',
+          icon: IoWarningOutline,
+          closeButton: true,
+        });
+      }
+    }
+  };
+
   useEffect(() => {
     if (assignments) {
       setAssignmentsOrdered(assignments);
     }
   }, [assignments]);
-
-  const openAssignmentDate = new Date('2025-05-27T10:00:00Z').getTime();
 
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
@@ -178,85 +287,223 @@ export const Assignment = ({
         </CollapsibleDropdown>
       </div>
 
-      {((userProgress?.[0].isSelectedForAssignment &&
-        userProgress?.[0].appliedAssignmentIds === null) ||
-        new Date().getTime() < openAssignmentDate) && (
+      {shouldShowRanking && !canSubmitWork && (
         <>
           <div className="flex flex-col gap-4 md:gap-5">
             <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
               {t('dashboard.course.rankProjectPreferences')}
             </h2>
 
-            <Alert hasCloseButton variant="warning">
-              <AlertTitle icon={LuCircleAlert}>
-                {t('dashboard.course.projectRankingInstructions')}
-              </AlertTitle>
-              <AlertDescription>
-                <div className="flex flex-col text-newBlack-2">
-                  <p className="font-medium">
-                    {t('dashboard.course.rankingOnly24Hours')}
-                  </p>
-                  <p>{t('dashboard.course.rankingInstructions')}</p>
-                </div>
-              </AlertDescription>
-            </Alert>
-          </div>
-          {new Date().getTime() >= openAssignmentDate &&
-            userProgress?.[0].isSelectedForAssignment && (
-              <>
-                <div className="flex flex-col gap-4">
-                  <span className="subtitle-small-caps-14px text-newBlack-5">
-                    {t('dashboard.course.mostPreferred')}
-                  </span>
-
-                  {assignmentsOrdered.map((assignment, index) => (
-                    <RankingItem
-                      key={assignment.id}
-                      name={assignment.name}
-                      description={assignment.description}
-                      fileUrl={`/api/files/${assignment.fileUrl}`}
-                      rank={index + 1}
-                      index={index}
-                      onMoveUp={() => handleMoveUp(index)}
-                      onMoveDown={() => handleMoveDown(index)}
-                      onDragStart={handleDragStart}
-                      onDragEnd={handleDragEnd}
-                      onDragOver={(e) => handleDragOver(e, index)}
-                      onDrop={(e) => handleDrop(e, index)}
-                      isDragging={draggedIndex === index}
-                      isDraggedOver={draggedOverIndex === index}
-                    />
-                  ))}
-
-                  <span className="subtitle-small-caps-14px text-newBlack-5">
-                    {t('dashboard.course.leastPreferred')}
-                  </span>
-                </div>
-                <ConfirmAssignmentsOrderDialog onConfirm={handleSaveList} />
-              </>
+            {!hasAlreadyRanked && (
+              <Alert hasCloseButton variant="warning">
+                <AlertTitle icon={LuCircleAlert}>
+                  {t('dashboard.course.projectRankingInstructions')}
+                </AlertTitle>
+                <AlertDescription>
+                  <div className="flex flex-col text-newBlack-2">
+                    <p className="font-medium">
+                      {t('dashboard.course.rankingOnly24Hours')}
+                    </p>
+                    <p>{t('dashboard.course.rankingInstructions')}</p>
+                  </div>
+                </AlertDescription>
+              </Alert>
             )}
+          </div>
+
+          {canRankAssignments && (
+            <>
+              <div className="flex flex-col gap-4">
+                <span className="subtitle-small-caps-14px text-newBlack-5">
+                  {t('dashboard.course.mostPreferred')}
+                </span>
+
+                {assignmentsOrdered.map((assignment, index) => (
+                  <RankingItem
+                    key={assignment.id}
+                    name={assignment.name}
+                    description={assignment.description}
+                    fileUrl={`/api/files/${assignment.fileUrl}`}
+                    rank={index + 1}
+                    index={index}
+                    onMoveUp={() => handleMoveUp(index)}
+                    onMoveDown={() => handleMoveDown(index)}
+                    onDragStart={handleDragStart}
+                    onDragEnd={handleDragEnd}
+                    onDragOver={(e) => handleDragOver(e, index)}
+                    onDrop={(e) => handleDrop(e, index)}
+                    isDragging={draggedIndex === index}
+                    isDraggedOver={draggedOverIndex === index}
+                  />
+                ))}
+
+                <span className="subtitle-small-caps-14px text-newBlack-5">
+                  {t('dashboard.course.leastPreferred')}
+                </span>
+              </div>
+              <ConfirmAssignmentsOrderDialog onConfirm={handleSaveList} />
+            </>
+          )}
+
+          {hasAlreadyRanked && !canSubmitWork && (
+            <InformationalPanel
+              icon={ThumbUp}
+              iconClassName="filter-darkOrange"
+              description={t('dashboard.course.listSavedComeTomorrow')}
+            />
+          )}
         </>
       )}
 
-      {userProgress?.[0].isSelectedForAssignment &&
-        userProgress?.[0].appliedAssignmentIds !== null &&
-        new Date().getTime() >= openAssignmentDate && (
-          <InformationalPanel
-            icon={ThumbUp}
-            iconClassName="filter-darkOrange"
-            description={t('dashboard.course.listSavedComeTomorrow')}
-          />
-        )}
+      {canSubmitWork && affectedAssignment && (
+        <div className="flex flex-col gap-5 md:gap-8">
+          <div className="flex flex-col gap-5">
+            <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+              {t('dashboard.course.yourProject')}
+            </h3>
 
-      {userProgress &&
-        !userProgress[0].isSelectedForAssignment &&
-        new Date().getTime() >= openAssignmentDate && (
-          <InformationalPanel
-            icon={SadFace}
-            iconClassName="filter-darkOrange"
-            description={t('dashboard.course.notSelectedAssignment')}
-          />
-        )}
+            <article className="flex flex-col gap-4 p-4 rounded-xl border border-newGray-5 bg-newGray-6 subtitle-medium-16px">
+              <h4>
+                {t('words.company')}:{' '}
+                <span className="font-medium">{affectedAssignment.name}</span>
+              </h4>
+              <h4>
+                {t('words.title')}:{' '}
+                <span className="font-medium">
+                  {affectedAssignment.description}
+                </span>
+              </h4>
+              <h4>
+                {t('words.mentor')}:{' '}
+                <span className="font-medium">{affectedAssignment.mentor}</span>
+              </h4>
+              <div className="flex max-md:flex-wrap gap-4 items-center">
+                <Button variant="outline" mode="light" size="s" asChild>
+                  <a
+                    href={`/api/files/${affectedAssignment.fileUrl}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MdOutlineRemoveRedEye className="mr-2" />
+                    {t('dashboard.course.readAssignment')}
+                  </a>
+                </Button>
+                <Button variant="outline" mode="light" size="s" asChild>
+                  <a
+                    href={affectedAssignment.telegramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <FaTelegram className="mr-2" />
+                    {t('dashboard.course.joinTelegramGroup')}
+                  </a>
+                </Button>
+              </div>
+            </article>
+          </div>
+
+          <Divider mode="light" className="!mx-0" width="w-full" />
+
+          {!hasSubmittedWork && (
+            <div className="flex flex-col gap-5">
+              <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+                {t('dashboard.course.submitYourWork')}
+              </h3>
+
+              <Alert hasCloseButton variant="warning">
+                <AlertTitle icon={LuCircleAlert}>
+                  {t('dashboard.course.submissionInstructions')}
+                </AlertTitle>
+                <AlertDescription>
+                  <ul className="list-disc pl-6 text-newBlack-2">
+                    <li>
+                      <Trans i18nKey={'dashboard.course.submitBefore'}>
+                        <span className="font-medium">
+                          June 12th at 23:59 (UTC+2)
+                        </span>
+                      </Trans>
+                    </li>
+                    <li className="max-md:whitespace-pre-line">
+                      <Trans
+                        i18nKey={'dashboard.course.submitFileNamingFormat'}
+                      >
+                        <span className="font-medium">
+                          company_username.pdf
+                        </span>
+                        .
+                      </Trans>
+                    </li>
+                    <li>{t('dashboard.course.mustBePdf')}</li>
+                  </ul>
+                </AlertDescription>
+              </Alert>
+
+              <div className="flex flex-col gap-1 md:gap-2 mb-5 md:mb-10">
+                {/* Hidden file input */}
+                <input
+                  type="file"
+                  accept=".pdf"
+                  className="hidden"
+                  ref={fileInputRef}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      setSelectedFile(file);
+                      setSelectedFileName(file.name);
+                    }
+                  }}
+                />
+                <div className="flex max-md:flex-wrap gap-4 w-full">
+                  <div className="flex flex-col gap-2 max-w-[614px] w-full">
+                    <div className="flex items-center rounded-[10px] overflow-hidden w-full hover:shadow-course-navigation-sm h-[46px]">
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                      >
+                        {t('dashboard.careerPortal.chooseFile')}
+                      </button>
+                      <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
+                        {selectedFileName ||
+                          t('dashboard.careerPortal.noFileSelected')}
+                      </span>
+                    </div>
+
+                    <p className="body-14px text-newGray-1">
+                      {t('dashboard.careerPortal.acceptedFormat')}
+                    </p>
+                    {workErrorMessage && (
+                      <p className="text-red-6 body-14px">{workErrorMessage}</p>
+                    )}
+                  </div>
+                  <ConfirmSubmissionDialog
+                    onConfirm={handleWorkUpload}
+                    selectedFile={selectedFile}
+                    isUploading={isUploading}
+                    workErrorMessage={workErrorMessage}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {hasSubmittedWork && (
+            <InformationalPanel
+              icon={Certificate}
+              title={t('dashboard.course.assignmentCompletedTitle')}
+              description={t('dashboard.course.assignmentCompletedDescription')}
+            />
+          )}
+        </div>
+      )}
+
+      {isNotSelected && userProgressFetched && (
+        <InformationalPanel
+          icon={SadFace}
+          iconClassName="filter-darkOrange"
+          description={t('dashboard.course.notSelectedAssignment')}
+        />
+      )}
     </section>
   );
 };
@@ -557,7 +804,7 @@ const ConfirmAssignmentsOrderDialog = ({
           </p>
         </div>
 
-        <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
+        <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
           <DialogClose asChild>
             <Button
               variant="primary"
@@ -577,6 +824,95 @@ const ConfirmAssignmentsOrderDialog = ({
             >
               {t('dashboard.course.keepEditing')}{' '}
               <BiPencil className="ml-2.5" />
+            </Button>
+          </DialogClose>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+const ConfirmSubmissionDialog = ({
+  onConfirm,
+  selectedFile,
+  isUploading,
+  workErrorMessage,
+}: {
+  onConfirm: () => void;
+  selectedFile: File | null;
+  isUploading: boolean;
+  workErrorMessage: string;
+}) => {
+  const isMobile = useSmaller('md');
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button
+          variant="primary"
+          mode="light"
+          size="m"
+          className="w-fit h-fit"
+          disabled={!selectedFile || isUploading || workErrorMessage !== ''}
+        >
+          {t('words.submit')}
+        </Button>
+      </DialogTrigger>
+      <DialogContent
+        className="w-[95%] max-md:max-w-100 md:w-[530px]"
+        showCloseButton
+      >
+        <DialogHeader>
+          <DialogTitle className="hidden">
+            {t('dashboard.course.isSubmissionFinal')}
+          </DialogTitle>
+          <DialogDescription className="hidden">
+            {t('dashboard.course.isSubmissionFinal')}
+          </DialogDescription>
+        </DialogHeader>
+
+        <img
+          src={PlanBLogoBlack}
+          alt="Logo Plan ₿ Network"
+          className="w-46 md:w-60 mx-auto max-md:py-6"
+        />
+
+        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-12 md:py-5">
+          <p className="text-darkOrange-5 subtitle-large-18px md:title-large-24px text-center md:px-7">
+            {t('dashboard.course.isSubmissionFinal')}
+          </p>
+
+          <img
+            src={InformationIcon}
+            alt="Information"
+            className="w-10 md:w-16"
+          />
+
+          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center max-w-[442px] md:px-5">
+            {t('dashboard.course.confirmNoEditableFile')}
+          </p>
+        </div>
+
+        <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
+          <DialogClose asChild>
+            <Button
+              variant="primary"
+              size={isMobile ? 'm' : 'l'}
+              className="w-fit"
+              onClick={onConfirm}
+            >
+              {t('dashboard.course.confirmSubmission')}{' '}
+              <IoCheckmark className="ml-2.5" />
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button
+              variant="outline"
+              size={isMobile ? 'm' : 'l'}
+              className="w-fit"
+            >
+              {t('courses.exam.goBack')}{' '}
+              <RiArrowGoBackFill className="ml-2.5" />
             </Button>
           </DialogClose>
         </div>

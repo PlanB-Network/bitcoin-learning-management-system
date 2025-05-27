@@ -175,6 +175,35 @@ export const createRestFilesRoutes = async (
       .catch(next);
   });
 
+  router.post(
+    '/course-assignments/submit/:courseId/:key',
+    expressAuthMiddleware,
+    (req, res, next) => {
+      const { courseId, key } = req.params;
+
+      // Sanity check
+      if (!req.session.uid) {
+        throw new InternalServerError('Missing session uid');
+      }
+      if (!courseId || !key) {
+        throw new BadRequest('Missing courseId or key');
+      }
+
+      receivePdf(req)
+        .then((stream) => {
+          return dependencies.s3.upload(
+            `course-assignments/${courseId}/submitted/${key}`,
+            stream,
+            {
+              contentType: 'application/pdf',
+            },
+          );
+        })
+        .then(() => res.json())
+        .catch(next);
+    },
+  );
+
   // Get all B-Cert files in a zip; typical key will be <exam-id>/<user-id>
   router.get('/files/zip/bcert/:edition/:username', async (req, res, next) => {
     try {
