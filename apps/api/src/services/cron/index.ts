@@ -9,6 +9,7 @@ import {
   createRefreshCoursesRatings,
 } from '@blms/service-content';
 import {
+  createAffectProjectToBizSchoolStudents,
   createExamTimestampService,
   createGetPendingCoursePayments,
   createGetPendingEventPayments,
@@ -312,13 +313,22 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     });
   }
 
-  // On June 2nd at 2am GMT, select all students from the business school
+  //jun2_2am_gmt
   ctx.crons.addTask('jun2_2am_gmt', async () => {
     console.log('[Cron] Running selectBizSchoolStudentsForAssignments job');
     const selectBizSchoolStudentsForAssignments =
       createSelectBizSchoolStudentsForAssignments(ctx);
     await selectBizSchoolStudentsForAssignments;
     console.log('[Cron] Finished selectBizSchoolStudentsForAssignments job');
+  });
+
+  //jun3_2am_gmt
+  ctx.crons.addTask('jun3_2am_gmt', async () => {
+    console.log('[Cron] Running affectProjectToBizSchoolStudents job');
+    const affectProjectToBizSchoolStudents =
+      createAffectProjectToBizSchoolStudents(ctx);
+    await affectProjectToBizSchoolStudents;
+    console.log('[Cron] Finished affectProjectToBizSchoolStudents job');
   });
 
   if (timestampService) {
