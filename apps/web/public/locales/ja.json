@@ -1013,7 +1013,8 @@
       "callout_book_replay": "",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": ""
+      "callout_purchase_replay": "",
+      "limitedSeats": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "このイベントにアクセスするにはログインが必要です。",
@@ -1296,7 +1297,8 @@
     },
     "contribution": {
       "shortDescription": "",
-      "title": ""
+      "title": "",
+      "description": ""
     }
   },
   "underConstruction": {
