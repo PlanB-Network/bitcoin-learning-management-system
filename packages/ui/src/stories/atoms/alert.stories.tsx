@@ -21,6 +21,10 @@ const meta: Meta<typeof Alert> = {
       options: ['default', 'transparent', 'destructive'],
       defaultValue: 'default',
     },
+    hasCloseButton: {
+      control: 'boolean',
+      defaultValue: false,
+    },
     className: {
       control: 'text',
     },
@@ -36,8 +40,7 @@ export const Default: Story = {
     variant: 'default',
     children: (
       <>
-        <IoMdAlert className="h-4 w-4" />
-        <AlertTitle>Heads up!</AlertTitle>
+        <AlertTitle icon={IoMdAlert}>Heads up!</AlertTitle>
         <AlertDescription>
           <p>You can add components to your app using the cli.</p>
         </AlertDescription>
@@ -51,8 +54,7 @@ export const Transparent: Story = {
     variant: 'transparent',
     children: (
       <>
-        <IoMdAlert className="h-4 w-4" />
-        <AlertTitle>Notification</AlertTitle>
+        <AlertTitle icon={IoMdAlert}>Notification</AlertTitle>
         <AlertDescription>
           <p>This is a transparent notification alert.</p>
         </AlertDescription>
@@ -61,13 +63,12 @@ export const Transparent: Story = {
   },
 };
 
-export const Destructive: Story = {
+export const Warning: Story = {
   args: {
-    variant: 'destructive',
+    variant: 'warning',
     children: (
       <>
-        <IoMdAlert className="h-4 w-4" />
-        <AlertTitle>Error</AlertTitle>
+        <AlertTitle icon={IoMdAlert}>Error</AlertTitle>
         <AlertDescription>
           <p>Your session has expired. Please log in again.</p>
         </AlertDescription>
@@ -82,8 +83,7 @@ export const DefaultTitleOnly: Story = {
     variant: 'default',
     children: (
       <>
-        <IoMdAlert className="h-4 w-4" />
-        <AlertTitle>Important Update</AlertTitle>
+        <AlertTitle icon={IoMdAlert}>Important Update</AlertTitle>
       </>
     ),
   },
@@ -95,7 +95,6 @@ export const DefaultDescriptionOnly: Story = {
     variant: 'default',
     children: (
       <>
-        <IoMdAlert className="h-4 w-4" />
         <AlertDescription>
           <p>
             Just a description here, providing some context or details without a
@@ -122,10 +121,11 @@ export const DefaultWithoutIcon: Story = {
   },
 };
 
-export const DestructiveWithoutIcon: Story = {
-  name: 'Destructive (No Icon)',
+export const WithCloseButton: Story = {
+  name: 'With Close Button',
   args: {
-    variant: 'destructive',
+    variant: 'default',
+    hasCloseButton: true,
     children: (
       <>
         <AlertTitle>Critical Warning</AlertTitle>
@@ -144,8 +144,7 @@ export const WithCustomClass: Story = {
     className: 'shadow-lg bg-red-2',
     children: (
       <>
-        <IoMdAlert className="h-4 w-4" />
-        <AlertTitle>Custom Styled Alert</AlertTitle>
+        <AlertTitle icon={IoMdAlert}>Custom Styled Alert</AlertTitle>
         <AlertDescription>
           <p>
             This alert has additional custom styling via the className prop.

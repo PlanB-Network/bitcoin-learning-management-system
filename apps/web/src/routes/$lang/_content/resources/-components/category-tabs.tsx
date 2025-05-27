@@ -32,7 +32,7 @@ export const CategoryTabs = ({ resourceActiveCategory }: CategoryTabsProps) => {
               resourceCategory.unreleased
                 ? 'cursor-not-allowed opacity-50'
                 : resourceCategory.name === resourceActiveCategory &&
-                    'filter-newOrange1',
+                    'filter-darkOrange',
             )}
           >
             <div

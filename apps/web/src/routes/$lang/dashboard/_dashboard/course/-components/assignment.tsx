@@ -1,33 +1,586 @@
+import type { CourseAssignment } from '@blms/types';
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Button,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  cn,
+  customToast,
+} from '@blms/ui';
 import { t } from 'i18next';
+import { useEffect, useState } from 'react';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
+import SadFace from '#src/assets/icons/face_sad.svg';
+import ThumbUp from '#src/assets/icons/thumb_up.svg';
+import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { trpc } from '#src/utils/trpc.ts';
+
+import { BiPencil } from 'react-icons/bi';
+import { IoCheckmark } from 'react-icons/io5';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+
+interface RankingItemProps {
+  name: string;
+  description: string;
+  fileUrl: string;
+  rank?: number;
+  onMoveUp?: () => void;
+  onMoveDown?: () => void;
+  onDragStart?: (e: React.DragEvent, index: number) => void;
+  onDragEnd?: () => void;
+  onDragOver?: (e: React.DragEvent) => void;
+  onDrop?: (e: React.DragEvent, dropIndex: number) => void;
+  isDraggedOver?: boolean;
+  isDragging?: boolean;
+  index?: number;
+}
 
 export const Assignment = ({
   courseId,
 }: {
   courseId: string;
 }) => {
-  return (
-    <section className="flex flex-col mt-4 md:mt-10 w-full max-w-[1000px] gap-6">
-      <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-        {t('dashboard.course.assignment')}
-      </h2>
-      <CollapsibleDropdown
-        title={t('dashboard.course.assignmentInformation')}
-        className="border border-newGray-4"
-        variant="dark"
-        defaultOpen={true}
-        type="info"
-      >
-        <p className="whitespace-pre-line text-newBlack-4 max-md:text-sm">
-          {t('dashboard.course.assignmentDescription')}
-        </p>
+  const [assignmentsOrdered, setAssignmentsOrdered] = useState<
+    CourseAssignment[]
+  >([]);
 
-        {new Date().getTime() > new Date('2025-06-02T02:00:00Z').getTime() && (
-          <p>
-            {/* If the user is selected for assignments, show the form to do the ranking. */}
+  const { data: userProgress, refetch: refetchUserProgress } =
+    trpc.user.courses.getProgress.useQuery({
+      courseId,
+    });
+
+  const { data: assignments } = trpc.content.getCourseAssignments.useQuery({
+    courseId,
+  });
+
+  const saveAssignments =
+    trpc.user.courses.saveCourseAssignmentsOrder.useMutation({
+      onSuccess: () => {
+        refetchUserProgress();
+        customToast(t('dashboard.course.listSaved'), {
+          mode: 'light',
+          color: 'success',
+          icon: IoCheckmark,
+          closeButton: true,
+          time: 5000,
+        });
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      },
+    });
+
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [draggedOverIndex, setDraggedOverIndex] = useState<number | null>(null);
+
+  const handleMoveUp = (index: number) => {
+    if (index > 0) {
+      const newAssignments = [...assignmentsOrdered];
+      [newAssignments[index], newAssignments[index - 1]] = [
+        newAssignments[index - 1],
+        newAssignments[index],
+      ];
+      setAssignmentsOrdered(newAssignments);
+    }
+  };
+
+  const handleMoveDown = (index: number) => {
+    if (index < assignmentsOrdered.length - 1) {
+      const newAssignments = [...assignmentsOrdered];
+      [newAssignments[index], newAssignments[index + 1]] = [
+        newAssignments[index + 1],
+        newAssignments[index],
+      ];
+      setAssignmentsOrdered(newAssignments);
+    }
+  };
+
+  const handleSaveList = () => {
+    saveAssignments.mutate({
+      courseId,
+      assignmentsIds: assignmentsOrdered.map((assignment) => assignment.id),
+    });
+  };
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    setDraggedIndex(index);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', e.currentTarget.outerHTML);
+    e.dataTransfer.setData('text/plain', index.toString());
+  };
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null);
+    setDraggedOverIndex(null);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setDraggedOverIndex(index);
+  };
+
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault();
+
+    if (draggedIndex === null || draggedIndex === dropIndex) {
+      setDraggedIndex(null);
+      setDraggedOverIndex(null);
+      return;
+    }
+
+    const newAssignments = [...assignmentsOrdered];
+    const draggedItem = newAssignments[draggedIndex];
+
+    newAssignments.splice(draggedIndex, 1);
+    newAssignments.splice(dropIndex, 0, draggedItem);
+
+    setAssignmentsOrdered(newAssignments);
+    setDraggedIndex(null);
+    setDraggedOverIndex(null);
+  };
+
+  useEffect(() => {
+    if (assignments) {
+      setAssignmentsOrdered(assignments);
+    }
+  }, [assignments]);
+
+  const openAssignmentDate = new Date('2025-05-02T02:00:00Z').getTime();
+
+  return (
+    <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
+      <div className="flex flex-col gap-5">
+        <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+          {t('dashboard.course.assignment')}
+        </h2>
+        <CollapsibleDropdown
+          title={t('dashboard.course.assignmentInformation')}
+          className="border border-newGray-4"
+          variant="dark"
+          defaultOpen={true}
+          type="info"
+        >
+          <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
+            {t('dashboard.course.assignmentDescription')}
           </p>
+        </CollapsibleDropdown>
+      </div>
+
+      {((userProgress?.[0].isSelectedForAssignment &&
+        userProgress?.[0].appliedAssignmentIds === null) ||
+        new Date().getTime() < openAssignmentDate) && (
+        <>
+          <div className="flex flex-col gap-4 md:gap-5">
+            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+              {t('dashboard.course.rankProjectPreferences')}
+            </h2>
+
+            <Alert hasCloseButton variant="warning">
+              <AlertTitle icon={LuCircleAlert}>
+                {t('dashboard.course.projectRankingInstructions')}
+              </AlertTitle>
+              <AlertDescription>
+                <div className="flex flex-col text-newBlack-2">
+                  <p className="font-medium">
+                    {t('dashboard.course.rankingOnly24Hours')}
+                  </p>
+                  <p>{t('dashboard.course.rankingInstructions')}</p>
+                </div>
+              </AlertDescription>
+            </Alert>
+          </div>
+          {new Date().getTime() >= openAssignmentDate &&
+            userProgress?.[0].isSelectedForAssignment && (
+              <>
+                <div className="flex flex-col gap-4">
+                  <span className="subtitle-small-caps-14px text-newBlack-5">
+                    {t('dashboard.course.mostPreferred')}
+                  </span>
+
+                  {assignmentsOrdered.map((assignment, index) => (
+                    <RankingItem
+                      key={assignment.id}
+                      name={assignment.name}
+                      description={assignment.description}
+                      fileUrl={`/api/files/${assignment.fileUrl}`}
+                      rank={index + 1}
+                      index={index}
+                      onMoveUp={() => handleMoveUp(index)}
+                      onMoveDown={() => handleMoveDown(index)}
+                      onDragStart={handleDragStart}
+                      onDragEnd={handleDragEnd}
+                      onDragOver={(e) => handleDragOver(e, index)}
+                      onDrop={(e) => handleDrop(e, index)}
+                      isDragging={draggedIndex === index}
+                      isDraggedOver={draggedOverIndex === index}
+                    />
+                  ))}
+
+                  <span className="subtitle-small-caps-14px text-newBlack-5">
+                    {t('dashboard.course.leastPreferred')}
+                  </span>
+                </div>
+                <ConfirmAssignmentsOrderDialog onConfirm={handleSaveList} />
+              </>
+            )}
+        </>
+      )}
+
+      {userProgress?.[0].isSelectedForAssignment &&
+        userProgress?.[0].appliedAssignmentIds !== null &&
+        new Date().getTime() >= openAssignmentDate && (
+          <InformationalPanel
+            icon={ThumbUp}
+            iconClassName="filter-darkOrange"
+            description={t('dashboard.course.listSavedComeTomorrow')}
+          />
         )}
-      </CollapsibleDropdown>
+
+      {userProgress &&
+        !userProgress[0].isSelectedForAssignment &&
+        new Date().getTime() >= openAssignmentDate && (
+          <InformationalPanel
+            icon={SadFace}
+            iconClassName="filter-darkOrange"
+            description={t('dashboard.course.notSelectedAssignment')}
+          />
+        )}
     </section>
+  );
+};
+
+const RankingItem = ({
+  name,
+  description,
+  fileUrl,
+  rank = 1,
+  onMoveUp,
+  onMoveDown,
+  onDragStart,
+  onDragEnd,
+  onDragOver,
+  onDrop,
+  isDragging = false,
+  isDraggedOver = false,
+  index = 0,
+}: RankingItemProps) => {
+  const handleDragStart = (e: React.DragEvent) => {
+    onDragStart?.(e, index);
+  };
+
+  const handleDragEnd = () => {
+    onDragEnd?.();
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    onDragOver?.(e);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    onDrop?.(e, index);
+  };
+
+  return (
+    <div
+      className={cn(
+        'w-full flex items-center gap-4 transition-all bg-transparent',
+        isDraggedOver && !isDragging && 'transform scale-101',
+      )}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      {/* Mobile */}
+      <div className="md:hidden w-full flex">
+        <div className="w-10 py-2 bg-darkOrange-0 border border-darkOrange-1 rounded-l-lg flex flex-col justify-between items-center">
+          <button
+            className={cn(
+              'w-8.5 h-6.5 px-2 py-2.5 rounded-lg flex items-center justify-center transition-colors',
+              rank === 1 ? 'opacity-30 cursor-not-allowed' : '',
+            )}
+            onClick={rank === 1 ? undefined : onMoveUp}
+            type="button"
+            disabled={rank === 1}
+          >
+            <BsChevronUp className="size-4.5 text-black" />
+          </button>
+
+          <div className="flex-1 flex items-center justify-center">
+            <span className="text-darkOrange-7 font-semibold text-base leading-5">
+              {rank}
+            </span>
+          </div>
+
+          <button
+            className="w-8.5 h-6.5 px-2 py-2.5 rounded-lg flex items-center justify-center transition-colors"
+            onClick={onMoveDown}
+            type="button"
+          >
+            <BsChevronDown className="size-4.5 text-black" />
+          </button>
+        </div>
+
+        <div
+          className={cn(
+            'flex-1 p-2 bg-white border-t border-r border-b border-newGray-5 rounded-r-xl transition-all duration-200 flex flex-wrap items-center content-center',
+            isDragging
+              ? 'border-newGray-3 bg-newGray-6 opacity-50'
+              : 'bg-white border-newGray-5',
+            isDraggedOver && !isDragging
+              ? 'border-darkOrange-3 bg-darkOrange-0'
+              : '',
+          )}
+          draggable
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          <div className="flex-1 flex flex-col gap-2">
+            <div className="flex flex-col">
+              <div className="text-dashboardSectionTitle font-medium text-base leading-5">
+                {name}
+              </div>
+              <div className="text-dashboardSectionTitle text-xs leading-4">
+                {description}
+              </div>
+            </div>
+
+            <Button
+              variant="outline"
+              mode="light"
+              size="s"
+              className="w-fit"
+              asChild
+            >
+              <a href={fileUrl} target="_blank" rel="noreferrer">
+                {t('dashboard.course.readAssignment')}
+              </a>
+            </Button>
+          </div>
+
+          <button
+            className={cn(
+              'size-4.5 rounded flex items-center justify-center transition-colors cursor-grab active:cursor-grabbing ml-2',
+              isDragging && 'cursor-grabbing',
+            )}
+            type="button"
+          >
+            <LuGripVertical className="size-4.5 text-newGray-3" />
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div className="hidden md:contents">
+        <div className="size-15 border rounded-lg bg-darkOrange-0 border-darkOrange-1 flex items-center justify-center">
+          <span className="text-darkOrange-7 display-small-med-32px">
+            {rank}
+          </span>
+        </div>
+
+        <div
+          className={cn(
+            'flex-1 px-4 py-1 border rounded-xl flex items-center gap-5 transition-all duration-200',
+            isDragging
+              ? 'border-newGray-3 bg-newGray-6 opacity-50'
+              : 'bg-white border-newGray-5',
+            isDraggedOver && !isDragging
+              ? 'border-darkOrange-3 bg-darkOrange-0'
+              : '',
+          )}
+          draggable
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          <div className="w-[34px] flex flex-col justify-between items-center h-full">
+            <button
+              className={cn(
+                'h-6.5 px-2 py-2.5 rounded-lg hover:bg-newGray-5 flex items-center justify-center transition-colors',
+                rank === 1 ? 'opacity-30 cursor-not-allowed' : '',
+              )}
+              onClick={rank === 1 ? undefined : onMoveUp}
+              type="button"
+              disabled={rank === 1}
+            >
+              <BsChevronUp className="size-4.5 text-black" />
+            </button>
+            <button
+              className="h-6.5 px-2 py-2.5 rounded-lg hover:bg-newGray-5 flex items-center justify-center transition-colors"
+              onClick={onMoveDown}
+              type="button"
+            >
+              <BsChevronDown className="size-4.5 text-black" />
+            </button>
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center gap-1">
+            <div className="text-dashboardSectionTitle label-med-18px">
+              {name}
+            </div>
+            <div className="text-dashboardSectionTitle body-14px">
+              {description}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-5">
+            <Button variant="outline" mode="light" size="s" asChild>
+              <a href={fileUrl} target="_blank" rel="noreferrer">
+                {t('dashboard.course.readAssignment')}
+              </a>
+            </Button>
+
+            <button
+              className={cn(
+                'size-6 hover:bg-newGray-5 rounded flex items-center justify-center transition-colors cursor-grab active:cursor-grabbing',
+                isDragging && 'cursor-grabbing',
+              )}
+              type="button"
+            >
+              <LuGripVertical className="size-4.5 text-newGray-3" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const InformationalPanel = ({
+  icon,
+  title,
+  subtitle,
+  description,
+  className,
+  iconClassName,
+}: {
+  icon?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  className?: string;
+  iconClassName?: string;
+}) => {
+  return (
+    <div
+      className={cn(
+        'flex w-full flex-col justify-center items-center gap-4 md:gap-8 px-4 py-5 md:p-8 bg-newGray-6 border border-newGray-5 rounded-2xl shadow-course-navigation text-center',
+        className,
+      )}
+    >
+      <div className="flex flex-col justify-center items-center gap-2.5 md:gap-5">
+        {icon && (
+          <img
+            src={icon}
+            alt={title}
+            className={cn('w-7 md:w-9', iconClassName)}
+          />
+        )}
+        {title && (
+          <h3 className="text-newBlack-1 label-medium-med-16px md:label-large-med-20px">
+            {title}
+          </h3>
+        )}
+      </div>
+      {subtitle && (
+        <span className="text-darkOrange-5 display-medium-bold-caps-32px display-large-bold-caps-48px">
+          {subtitle}
+        </span>
+      )}
+      {description && (
+        <p className="body-14px md:label-18px text-newBlack-1 whitespace-pre-line">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+};
+
+const ConfirmAssignmentsOrderDialog = ({
+  onConfirm,
+}: { onConfirm: () => void }) => {
+  const isMobile = useSmaller('md');
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button
+          variant="primary"
+          mode="light"
+          size={isMobile ? 'm' : 'l'}
+          className="w-fit mx-auto"
+        >
+          {t('dashboard.course.saveList')}
+        </Button>
+      </DialogTrigger>
+      <DialogContent
+        className="w-[95%] max-md:max-w-100 md:w-[530px]"
+        showCloseButton
+      >
+        <DialogHeader>
+          <DialogTitle className="hidden">
+            {t('dashboard.course.surePreferenceList')}
+          </DialogTitle>
+          <DialogDescription className="hidden">
+            {t('dashboard.course.surePreferenceList')}
+          </DialogDescription>
+        </DialogHeader>
+
+        <img
+          src={PlanBLogoBlack}
+          alt="Logo Plan ₿ Network"
+          className="w-46 md:w-60 mx-auto max-md:py-6"
+        />
+
+        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-12 md:py-5">
+          <p className="text-darkOrange-5 subtitle-large-18px md:title-large-24px text-center md:px-7">
+            {t('dashboard.course.surePreferenceList')}
+          </p>
+
+          <img
+            src={InformationIcon}
+            alt="Information"
+            className="w-10 md:w-16"
+          />
+
+          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center max-w-[442px] md:px-5">
+            {t('dashboard.course.confirmNoEditable')}
+          </p>
+        </div>
+
+        <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
+          <DialogClose asChild>
+            <Button
+              variant="primary"
+              size={isMobile ? 'm' : 'l'}
+              className="w-fit"
+              onClick={onConfirm}
+            >
+              {t('dashboard.course.confirmList')}{' '}
+              <IoCheckmark className="ml-2.5" />
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button
+              variant="outline"
+              size={isMobile ? 'm' : 'l'}
+              className="w-fit"
+            >
+              {t('dashboard.course.keepEditing')}{' '}
+              <BiPencil className="ml-2.5" />
+            </Button>
+          </DialogClose>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };

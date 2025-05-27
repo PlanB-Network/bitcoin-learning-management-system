@@ -45,7 +45,11 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
           variant="resources"
           imgClassName={cn('')}
         />
-        <span className={cn('body-16px text-white text-center break-all')}>
+        <span
+          className={cn(
+            'body-14px text-white text-center break-words max-w-full',
+          )}
+        >
           {title(category)}
         </span>
       </div>

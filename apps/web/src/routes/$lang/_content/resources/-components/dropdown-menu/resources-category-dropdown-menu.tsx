@@ -94,7 +94,7 @@ export const ResourcesDropdownMenu = ({
           <CategoryIcon
             src={activeCategoryImageSrc || ''}
             variant="resources"
-            imgClassName="filter-newOrange1 size-6"
+            imgClassName="filter-darkOrange size-6"
           />
           <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
             {capitalizeFirstWord(

@@ -2,6 +2,7 @@ import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
 import {
+  courseAssignmentSchema,
   courseChapterResponseSchema,
   courseResponseSchema,
   courseReviewsExtendedSchema,
@@ -14,6 +15,7 @@ import {
   createCalculateCourseChapterSeats,
   createCheckChapterAccess,
   createGetCourse,
+  createGetCourseAssignments,
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
   createGetCourseChapterQuizQuestionsCount,
@@ -24,6 +26,7 @@ import {
   createGetTeacherCourseReviews,
 } from '@blms/service-content';
 import type {
+  CourseAssignment,
   CourseChapterResponse,
   CourseResponse,
   CourseReviewsExtended,
@@ -33,7 +36,10 @@ import type {
   QuizQuestionsCount,
 } from '@blms/types';
 
-import { professorProcedure } from '#src/procedures/protected.js';
+import {
+  professorProcedure,
+  studentProcedure,
+} from '#src/procedures/protected.js';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
@@ -175,6 +181,17 @@ const getCourseChapterQuizQuestionsCountProcedure = publicProcedure
     });
   });
 
+const getCourseAssignmentsProcedure = studentProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<CourseAssignment[]>>(courseAssignmentSchema.array())
+  .query(({ ctx, input }) => {
+    return createGetCourseAssignments(ctx.dependencies)(input.courseId);
+  });
+
 const calculateCourseChapterSeatsProcedure = publicProcedure
   .input(
     z.object({
@@ -191,6 +208,7 @@ export const coursesRouter = createTRPCRouter({
   getCourses: getCoursesProcedure,
   getProfessorCourses: getProfessorCoursesProcedure,
   getCourse: getCourseProcedure,
+  getCourseAssignments: getCourseAssignmentsProcedure,
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,

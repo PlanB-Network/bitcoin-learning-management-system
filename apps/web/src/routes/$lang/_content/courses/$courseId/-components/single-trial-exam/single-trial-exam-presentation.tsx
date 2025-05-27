@@ -80,8 +80,9 @@ export const SingleTrialExamPresentation = ({
   return (
     <>
       <Alert variant="default">
-        <AlertCircle className="h-4 w-4" />
-        <AlertTitle>{t('courses.exam.singleAttempt')}</AlertTitle>
+        <AlertTitle icon={AlertCircle}>
+          {t('courses.exam.singleAttempt')}
+        </AlertTitle>
         <AlertDescription>
           <div>
             <p className="font-semibold">

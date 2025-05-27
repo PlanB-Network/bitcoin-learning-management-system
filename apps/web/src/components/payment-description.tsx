@@ -202,10 +202,12 @@ export const PaymentDescription = ({
           {paidPriceDollars !== 0 && <TaxWarningText />}
         </div>
 
-        {/* Todo : a generic component should not reference a specific one */}
-        {children}
+        <div className="flex flex-col gap-2">
+          {/* Todo : a generic component should not reference a specific one */}
+          {children}
 
-        {paidPriceDollars !== 0 && <TaxWarningText />}
+          {paidPriceDollars !== 0 && <TaxWarningText className="lg:hidden" />}
+        </div>
 
         <div className="w-full lg:hidden">{displayReductionCode()}</div>
 
@@ -307,10 +309,15 @@ export const PaymentDescription = ({
   );
 };
 
-const TaxWarningText = () => {
+const TaxWarningText = ({ className }: { className?: string }) => {
   const { t } = useTranslation();
   return (
-    <span className="w-full text-center text-newGray-3 body-14px md:hidden">
+    <span
+      className={cn(
+        'w-full max-md:text-center md:text-right text-newGray-3 body-14px',
+        className,
+      )}
+    >
       {t('payment.taxesMayApply')}
     </span>
   );

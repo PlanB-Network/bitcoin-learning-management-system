@@ -493,6 +493,10 @@
   @apply text-[32px] leading-[120%] font-medium tracking-normal;
 }
 
+@utility display-medium-bold-caps-32px {
+  @apply text-[32px] leading-[150%] font-bold tracking-normal;
+}
+
 @utility display-small-bold-caps-22px {
   @apply text-[22px] leading-[116%] font-bold tracking-normal uppercase;
 }
@@ -506,6 +510,10 @@
 }
 
 @utility label-18px {
+  @apply text-lg leading-normal font-normal tracking-[0.1px];
+}
+
+@utility label-med-18px {
   @apply text-lg leading-normal font-normal tracking-[0.1px];
 }
 
@@ -647,7 +655,7 @@
   filter: brightness(0) saturate(100%) invert(0) sepia(0) contrast(100%);
 }
 
-@utility filter-newOrange1 {
+@utility filter-darkOrange {
   filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1484%)
     hue-rotate(3deg) brightness(105%) contrast(102%);
 }

@@ -55,7 +55,7 @@ interface CategoryItemProps {
 }
 
 const itemStyles = cva(
-  'max-md:size-[135px] md:w-[272px] flex max-md:flex-col max-md:justify-center items-center rounded-2xl p-5 md:py-2.5 md:px-5 gap-3 md:gap-6 transition-all max-md:bg-newBlack-2 max-md:border max-md:border-newGray-1',
+  'max-md:size-[135px] md:w-[272px] flex max-md:flex-col max-md:justify-center items-center rounded-2xl p-2.5 md:py-2.5 md:px-5 gap-3 md:gap-6 transition-all max-md:bg-newBlack-2 max-md:border max-md:border-newGray-1',
   {
     variants: {
       unreleased: {
@@ -89,12 +89,12 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
           variant="resources"
           imgClassName={cn(
             'max-md:filter-white',
-            category.unreleased ? '' : 'max-md:group-hover:filter-newOrange1',
+            category.unreleased ? '' : 'max-md:group-hover:filter-darkOrange',
           )}
         />
         <h3
           className={cn(
-            'max-md:desktop-body1 md:text-2xl text-white max-md:text-center break-all',
+            'max-md:body-14px md:text-2xl text-white max-md:text-center break-words max-w-full',
             category.unreleased
               ? ''
               : 'max-md:group-hover:text-darkOrange-5 group-hover:font-medium',
