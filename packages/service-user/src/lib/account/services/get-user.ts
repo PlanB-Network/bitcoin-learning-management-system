@@ -5,6 +5,7 @@ import type { Dependencies } from '../../../dependencies.js';
 import {
   getUserByIdWithDetailsQuery,
   getUserByLud4PublicKey,
+  getUserByUserNameOrEmailQuery,
   getUserByUserNameQuery,
 } from '../queries/get-user.js';
 
@@ -21,6 +22,15 @@ export const createGetUserByUsername = ({ postgres }: Dependencies) => {
   return ({ username }: { username: string }): Promise<UserAccount | null> => {
     return postgres
       .exec(getUserByUserNameQuery(username))
+      .then(firstRow)
+      .then((user) => user ?? null);
+  };
+};
+
+export const createGetUserByUsernameOrEmail = ({ postgres }: Dependencies) => {
+  return (usernameOrEmail: string): Promise<UserAccount | null> => {
+    return postgres
+      .exec(getUserByUserNameOrEmailQuery(usernameOrEmail))
       .then(firstRow)
       .then((user) => user ?? null);
   };

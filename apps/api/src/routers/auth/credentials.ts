@@ -7,6 +7,7 @@ import { loginResponseSchema } from '@blms/schemas';
 import {
   createEmailValidationToken,
   createGetUserByUsername,
+  createGetUserByUsernameOrEmail,
   createNewCredentialsUser,
 } from '@blms/service-user';
 import type { LoginResponse, SessionData } from '@blms/types';
@@ -91,7 +92,7 @@ export const credentialsAuthRouter = createTRPCRouter({
     .input(loginCredentialsSchema)
     .output<Parser<LoginResponse>>(loginResponseSchema)
     .mutation(async ({ ctx, input }) => {
-      const getUser = createGetUserByUsername(ctx.dependencies);
+      const getUser = createGetUserByUsernameOrEmail(ctx.dependencies);
 
       // Check if a session exists and if it is valid
       if (ctx.req.session.uid) {
@@ -108,7 +109,7 @@ export const credentialsAuthRouter = createTRPCRouter({
 
       const username = input.username.toLowerCase().trim();
 
-      const user = await getUser({ username });
+      const user = await getUser(username);
 
       if (!user) {
         throw new TRPCError({

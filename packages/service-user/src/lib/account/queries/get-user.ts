@@ -56,3 +56,11 @@ export const getUserByEmailQuery = (email: string) => {
     WHERE email = ${email};
   `;
 };
+
+export const getUserByUserNameOrEmailQuery = (usernameOrEmail: string) => {
+  return sql<UserAccount[]>`
+    SELECT * FROM users.accounts
+    WHERE username = LOWER( ${usernameOrEmail} )
+    OR email = LOWER( ${usernameOrEmail} );
+  `;
+};
