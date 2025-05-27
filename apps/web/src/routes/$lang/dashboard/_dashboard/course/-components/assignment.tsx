@@ -66,20 +66,18 @@ export const Assignment = ({
   const saveAssignments =
     trpc.user.courses.saveCourseAssignmentsOrder.useMutation({
       onSuccess: () => {
-        setTimeout(() => {
-          refetchUserProgress();
-          customToast(t('dashboard.course.listSaved'), {
-            mode: 'light',
-            color: 'success',
-            icon: IoCheckmark,
-            closeButton: true,
-            time: 5000,
-          });
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
-        }, 100);
+        refetchUserProgress();
+        customToast(t('dashboard.course.listSaved'), {
+          mode: 'light',
+          color: 'success',
+          icon: IoCheckmark,
+          closeButton: true,
+          time: 5000,
+        });
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
       },
     });
 

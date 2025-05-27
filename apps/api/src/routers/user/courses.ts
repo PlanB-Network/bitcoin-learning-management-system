@@ -447,8 +447,8 @@ const saveCourseAssignmentsOrderProcedure = studentProcedure
     }),
   )
   .output<Parser<void>>(z.void())
-  .mutation(({ ctx, input }) => {
-    createSaveCourseAssignmentsOrder(ctx.dependencies)({
+  .mutation(async ({ ctx, input }) => {
+    await createSaveCourseAssignmentsOrder(ctx.dependencies)({
       uid: ctx.user.uid,
       courseId: input.courseId,
       assignmentsIds: input.assignmentsIds,

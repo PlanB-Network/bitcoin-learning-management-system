@@ -75,7 +75,7 @@ export const CollapsibleDropdown = ({
           className={cn('transition-all', isOpen && 'rotate-180')}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent className="text-">{children}</CollapsibleContent>
+      <CollapsibleContent>{children}</CollapsibleContent>
     </Collapsible>
   );
 };
