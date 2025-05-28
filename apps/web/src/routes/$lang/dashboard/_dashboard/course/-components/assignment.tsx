@@ -114,7 +114,7 @@ export const Assignment = ({
   const [selectedFileName, setSelectedFileName] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
-  const openAssignmentDate = new Date('2025-05-02T02:00:00Z').getTime();
+  const openAssignmentDate = new Date('2025-05-28T09:10:00Z').getTime();
   const currentTime = new Date().getTime();
   const isAssignmentOpen = currentTime >= openAssignmentDate;
   const isBeforeAssignmentOpen = currentTime < openAssignmentDate;
