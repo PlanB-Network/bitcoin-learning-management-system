@@ -11,6 +11,7 @@ export interface CourseProgress {
   isSelectedForAssignment: boolean | null;
   appliedAssignmentIds: string[] | null;
   affectedAssignmentId: string | null;
+  assignmentSubmissionTime: Date | null;
 }
 
 export interface CoursePayment {
@@ -105,6 +106,7 @@ export interface CourseProgressExtended {
   isSelectedForAssignment: boolean | null;
   appliedAssignmentIds: string[] | null;
   affectedAssignmentId: string | null;
+  assignmentSubmissionTime: Date | null;
   courseIndex: string;
   totalChapters: number;
   chapters: {

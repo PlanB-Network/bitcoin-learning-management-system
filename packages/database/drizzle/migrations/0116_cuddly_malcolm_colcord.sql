@@ -1,0 +1,1 @@
+ALTER TABLE "users"."course_progress" ADD COLUMN "assignment_submission_time" timestamp with time zone;

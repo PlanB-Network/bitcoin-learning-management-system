@@ -1299,6 +1299,7 @@ export const usersCourseProgress = users.table(
     affectedAssignmentId: t
       .uuid()
       .references(() => contentCoursesAssignment.id, { onDelete: 'cascade' }),
+    assignmentSubmissionTime: t.timestamp({ withTimezone: true }),
   }),
   (table) => ({
     pk: primaryKey({
