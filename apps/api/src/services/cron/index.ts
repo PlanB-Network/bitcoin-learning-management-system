@@ -313,8 +313,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     });
   }
 
-  //jun2_2am_gmt
-  ctx.crons.addTask('jun2_2am_gmt', async () => {
+  //jun2_1am_gmt
+  ctx.crons.addTask('jun2_1am_gmt', async () => {
     console.log('[Cron] Running selectBizSchoolStudentsForAssignments job');
     const selectBizSchoolStudentsForAssignments =
       createSelectBizSchoolStudentsForAssignments(ctx);
@@ -322,8 +322,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     console.log('[Cron] Finished selectBizSchoolStudentsForAssignments job');
   });
 
-  //jun3_2am_gmt
-  ctx.crons.addTask('may28_2pm_gmt', async () => {
+  //jun3_1am_gmt
+  ctx.crons.addTask('jun3_1am_gmt', async () => {
     console.log('[Cron] Running affectProjectToBizSchoolStudents job');
     const affectProjectToBizSchoolStudents =
       createAffectProjectToBizSchoolStudents(ctx);
