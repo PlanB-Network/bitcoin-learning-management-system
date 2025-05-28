@@ -6,11 +6,11 @@ export const saveCourseAssignmentsOrderQuery = (
   uid: string,
 ) => {
   return sql`
-    INSERT INTO users.course_progress (uid, course_id, applied_assignment_ids, last_updated)
-    VALUES (${uid}, ${courseId}, ${assignmentsIds}, NOW())
-    ON CONFLICT (uid, course_id) DO UPDATE SET
-      applied_assignment_ids = EXCLUDED.applied_assignment_ids,
-      last_updated = EXCLUDED.last_updated
+    UPDATE users.course_progress
+    SET
+      applied_assignment_ids = ${assignmentsIds},
+      last_updated = NOW()
+    WHERE uid = ${uid} AND course_id = ${courseId}
     RETURNING *;
   `;
 };

@@ -229,20 +229,20 @@ export const Assignment = ({
 
       setIsUploading(true);
 
-      const response = await fetch(
-        `/api/course-assignments/submit/${courseId}/${renamedFile.name}`,
-        {
-          method: 'POST',
-          body: formData,
-        },
-      );
+      try {
+        const response = await fetch(
+          `/api/course-assignments/submit/${courseId}/${renamedFile.name}`,
+          {
+            method: 'POST',
+            body: formData,
+          },
+        );
 
-      setIsUploading(false);
+        if (!response.ok) {
+          throw new Error(`Upload failed with status ${response.status}`);
+        }
 
-      if (response.status === 200) {
-        saveSubmissionDate.mutate({
-          courseId,
-        });
+        saveSubmissionDate.mutate({ courseId });
         setWorkErrorMessage('');
         customToast(t('dashboard.course.fileUploaded'), {
           mode: 'light',
@@ -250,7 +250,7 @@ export const Assignment = ({
           icon: IoCheckmarkOutline,
           closeButton: true,
         });
-      } else {
+      } catch (error) {
         setWorkErrorMessage(t('dashboard.careerPortal.fileUploadError'));
         customToast(t('dashboard.careerPortal.fileUploadError'), {
           mode: 'light',
@@ -258,6 +258,8 @@ export const Assignment = ({
           icon: IoWarningOutline,
           closeButton: true,
         });
+      } finally {
+        setIsUploading(false);
       }
     }
   };
@@ -853,7 +855,7 @@ const ConfirmSubmissionDialog = ({
           mode="light"
           size="m"
           className="w-fit h-fit"
-          disabled={!selectedFile || isUploading || workErrorMessage !== ''}
+          disabled={!selectedFile || isUploading}
         >
           {t('words.submit')}
         </Button>
