@@ -323,7 +323,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   });
 
   //jun3_2am_gmt
-  ctx.crons.addTask('may27_2pm_gmt', async () => {
+  ctx.crons.addTask('may28_2pm_gmt', async () => {
     console.log('[Cron] Running affectProjectToBizSchoolStudents job');
     const affectProjectToBizSchoolStudents =
       createAffectProjectToBizSchoolStudents(ctx);
