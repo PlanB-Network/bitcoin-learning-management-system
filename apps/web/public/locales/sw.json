@@ -14,7 +14,7 @@
     "coreTeamAjelexRole": "Mratibu wa node",
     "corporateTitle": "Mashirika nyuma ya mradi huo",
     "corporateContent": "Mtandao wa Plan ₿ ni mradi wa ushirikiano wa taasisi tatu zinazojihusisha na maendeleo ya Bitcoin. Katika jitihada za kuongeza uwezo wa tabaka la elimu ya Bitcoin, waliamua kushirikiana kuunda Mtandao wa Plan ₿. Tangu wakati huo, taasisi nyingine nyingi zimeamua kuchangia na kujiunga na jitihada hizi za kuleta elimu ya Bitcoin kwa ulimwengu. Kwa hivyo, tunawashukuru sana kwa mchango wao.",
-    "coportateContact": "Maelezo ya mawasiliano",
+    "coportateContact": "Maelezo ya mawasiliano:",
     "storyTitle": "Hadithi yetu",
     "storyContent": "Plan ₿ Network ni mpango unaosaidia elimu ya Bitcoin duniani kote. Ni mseto wa makampuni mbalimbali ya Bitcoin yenye shauku inayolenga elimu, programu huria, mitandao ya rika hadi rika, na hisia za jumuiya. Kwa pamoja, wameamua kuunda Mpango ₿ Mtandao na kuupa mfumo wa ikolojia wa Bitcoin zana zinazofaa za kukuza. Wasilisho letu la toleo la 2023 linapatikana hapa.",
     "title": "Kuhusu Plan ₿ Network",
@@ -71,7 +71,21 @@
     "dashboardUnlocked": "Dashibodi yako ya mwanafunzi sasa inapatikana!",
     "didYouKnow": "Je wajua?",
     "passwordChangedSuccess": "Nenosiri limebadilishwa kwa mafanikio",
-    "trackProgress": "Unda akaunti au ingia kwenye akaunti yako ili kufuatilia maendeleo yako."
+    "trackProgress": "Unda akaunti au ingia kwenye akaunti yako ili kufuatilia maendeleo yako.",
+    "emailValidation": {
+      "validatingEmailChange": "Kuthibitisha mabadiliko ya barua pepe",
+      "emailChangeValidated": "Barua pepe iliyobadilishwa imethibitishwa",
+      "emailValidated": "Barua pepe imethibitishwa",
+      "errorValidatingEmail": "Kosa katika kuthibitisha barua pepe",
+      "errorValidatingEmailChange": "Hitilafu katika kuthibitisha mabadiliko ya barua pepe",
+      "errorValidatingEmailChangeDescription": "Kosa limetokea wakati wa kuthibitisha mabadiliko ya barua pepe yako, inaonekana kama kiungo kimeisha muda wake au kimekwishatumika. Tafadhali jaribu tena.",
+      "errorValidatingEmailDescription": "Kosa limetokea wakati wa kuthibitisha mabadiliko ya barua pepe yako, inaonekana kama kiungo kimeisha muda wake au kimekwishatumika. Tafadhali jaribu tena.",
+      "successfullyChanged": "Barua pepe yako imebadilishwa kwa mafanikio kuwa {{email}}.",
+      "successfullyValidated": "Barua pepe yako imehakikiwa kwa mafanikio.",
+      "validateChange": "Kuthibitisha mabadiliko ya barua pepe",
+      "validatingEmail": "Kuthibitisha barua pepe",
+      "wontTakeLong": "Haitachukua muda mrefu..."
+    }
   },
   "bet": {
     "educationalContent": {
@@ -155,7 +169,7 @@
       "planbSchoolHeadline": "Shule ya Plan ₿, inayoongozwa na Giacomo Zucco, inatoa mipango ya elimu ya kina ya miezi mitatu iliyoundwa kuziba pengo kati ya kujifunza na matumizi ya ulimwengu halisi. Zaidi ya madarasa ya jadi, wanafunzi wanashiriki katika miradi ya vitendo inayoongozwa na kampuni na kambi ya daraja la kwanza iliyotolewa kwa wafanyaji bora. Talanta bora tu ndizo zinazosonga mbele baada ya duru mbili za uteuzi wa ushindani, kuhakikisha kuwa wanafunzi bora wa mwisho wanapata vifaa kamili kuzindua kazi zao katika tasnia ya Bitcoin."
     },
     "part": {
-      "count": "Part n°{{count}}/{{total}}"
+      "count": "Part {{count}}"
     },
     "payment": {
       "accessibility": "Ufikivu",
@@ -170,7 +184,7 @@
       "teacher": "Mwalimu",
       "teachers": "Walimu",
       "back_course": "Rudi kwenye kozi",
-      "book_description": "Tafadhali pitia maelezo ya mahali yaliyotolewa.\nMara tu uwekaji wako utakaposhughulikiwa, tutakutumia tiketi ya uthibitisho na msimbo wa QR wa kuwasilisha kwenye tukio.",
+      "book_description": "Tafadhali pitia maelezo ya mahali yaliyotolewa.Mara tu uwekaji wako utakaposhughulikiwa, tutakutumia tiketi ya uthibitisho na msimbo wa QR wa kuwasilisha kwenye tukio.",
       "qr_unified": "Nambari hii ya QR imeunganishwa, kwa hivyo inakubali malipo ya lightning na malipo ya onchain.",
       "time": "Muda",
       "inPersonCallout": "Unakaribia kununua <strong>ufikiaji wa ana kwa ana</strong> kwenye kozi hii.",
@@ -310,7 +324,21 @@
       "timeStamping": "kuweka alama ya muda",
       "singleAttempt": "Mtihani wa jaribio moja",
       "singleAttemptPrecaution": "Kabla ya kuanza, tafadhali hakikisha kuwa muunganiko wako ni thabiti. Kwa kuwa hii ni mtihani wa jaribio moja, ikiwa utakatika, hutaweza kujaribu tena.",
-      "singleAttemptAvailability": "Mtihani huu unapatikana mtandaoni kwenye: {{date}}"
+      "singleAttemptAvailability": "Mtihani huu unapatikana mtandaoni kwenye: {{date}}",
+      "completed": "Mtihani umekamilika!",
+      "nextChapter": "Sura inayofuata",
+      "examAvailabilityDetails": "Ikiwa mtihani hautapita wakati wa kipindi chake cha upatikanaji kwenye jukwaa, mwanafunzi atapokea moja kwa moja alama ya 0.",
+      "nbMinutes": "{{nb}} dakika",
+      "nbQuestions": "{{nb}} maswali",
+      "readyToTest": "Tayari kujaribu maarifa yako?",
+      "results": {
+        "correct": "Majibu sahihi",
+        "incorrect": "Majibu yasiyo sahihi",
+        "questions": "Maswali yamejibiwa",
+        "time": "Muda uliotumika"
+      },
+      "viewExam": "Tazama mtihani",
+      "weight": "Uzito: {{weight}}%"
     },
     "conclusion": {
       "completedChaptersHeadline": "Sura zote sasa zimekamilika!",
@@ -413,10 +441,18 @@
         "platformTitle": "Ni aina gani za arifa ungetaka kupokea kwenye jukwaa hili?",
         "title": "Mipangilio ya arifa",
         "loadEmailSettingsErrorManage": "Ikiwa una ufikiaji wa akaunti yako, unaweza pia kusimamia mipangilio moja kwa moja kwenye dashibodi yako:",
-        "loadEmailSettingsErrorDescription": "Tafadhali hakikisha kuwa kiungo ulichotumia kimekamilika na ni sahihi."
+        "loadEmailSettingsErrorDescription": "Tafadhali hakikisha kuwa kiungo ulichotumia kimekamilika na ni sahihi.",
+        "emailPreferencesDescription": "Hapa unaweza kuchagua aina za barua pepe unazotaka kupokea kutoka kwetu. Mapendeleo haya yanatumika kwa anwani ya barua pepe iliyounganishwa na kiungo hiki pekee.",
+        "goToProfile": "Nenda kwenye Profaili",
+        "settingsSaved": "Mipangilio yako imehifadhiwa kwa mafanikio!",
+        "emailPreferencesError": "Kulikuwa na hitilafu wakati wa kujaribu kupata mapendeleo yako ya barua pepe. Tafadhali hakikisha kuwa kiungo ulichofuata ni sahihi.",
+        "emailPreferencesSavedSuccessfully": "Mapendeleo yako ya barua pepe yameboreshwa kwa mafanikio.",
+        "emailPreferencesTitle": "Dhibiti mipangilio ya barua pepe ya Mtandao wa Plan ₿",
+        "loadEmailSettingsError": "Samahani, hatukuweza kupakia mapendeleo yako ya barua pepe."
       },
       "settings": "Mipangilio",
-      "securitySettings": "Mipangilio ya usalama"
+      "securitySettings": "Mipangilio ya usalama",
+      "emailChangeRateLimitError": "Hivi karibuni umesasisha barua pepe yako. Tafadhali subiri dakika chache kabla ya kujaribu tena."
     },
     "bCert": {
       "noResults": "Bado hakuna alama au vyeti vinavyohusishwa na akaunti hii \n Iwapo ulifaulu mtihani na matokeo yako hayapatikani baada ya muda mrefu, tafadhali <0>wasiliana nasi</0> kwa usaidizi.",
@@ -450,7 +486,8 @@
       "planbSchoolExamDescription": "Mpango wa Shule ya Biashara ya Plan ₿ 2025 unaundwa na awamu mbili. Katika awamu ya kwanza, utafanya mitihani miwili mtandaoni, haswa ya katikati ya muhula na ya mwisho: ni mitihani ya jaribio moja, yenye muda unayoweza kukamilisha wakati wowote wakati wa kipindi cha upatikanaji wa siku tatu. Baada ya awamu ya kwanza, wanafunzi watachaguliwa kulingana na viwango vyao kuendelea kwenye awamu ya pili, ambayo inahusisha kazi ya mradi: kazi ya mtu binafsi inayotolewa na kampuni ya Bitcoin. Unaweza kupata maelezo zaidi kuhusu hilo kwenye tabo ya Kazi.\n\nDaraja la mwisho litahesabiwa kama wastani uliopimwa wa mitihani mitatu. Wanafunzi ambao watafikia alama zaidi ya 80% watapokea diploma, na wanafunzi walio na viwango vya juu pia watakuwa na nafasi ya kushiriki katika Shule ya Majira ya joto huko Lugano, mwezi Julai.",
       "assignmentInformation": "Taarifa ya kazi",
       "exams": "Mitihani",
-      "generalInformation": "Taarifa za jumla"
+      "generalInformation": "Taarifa za jumla",
+      "examScore": "Alama:"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -648,7 +685,15 @@
         "discountCodeCopied": "Msimbo wa punguzo umenakiliwa",
         "downloadImage": "Pakua picha",
         "downloadImages": "Pakua picha",
-        "generateNewCodes": "Tengeneza misimbo mipya"
+        "generateNewCodes": "Tengeneza misimbo mipya",
+        "mobileSort": {
+          "az": "A-z",
+          "highLow": "Juu - Chini",
+          "lowHigh": "Chini - Juu",
+          "sortBy": "Panga kwa",
+          "za": "z-A"
+        },
+        "noCouponsFound": "Hakuna kuponi zilizopatikana."
       },
       "discountCodes": "Nambari za punguzo"
     },
@@ -859,13 +904,13 @@
       "free": "Bure",
       "online": "mtandaoni",
       "limited": "kikomo ni",
-      "unlimited": "unlimited",
+      "unlimited": "haina kikomo",
       "people": "Watu",
-      "watchLive": "Watch live",
-      "watchReplay": "Watch replay",
+      "watchLive": "Tazama moja kwa moja",
+      "watchReplay": "Tazama uchezaji wa marudio",
       "bookLive": "Weka miadi moja kwa moja",
       "bookSeat": "Weka nafasi",
-      "visitWebsite": "Visit website",
+      "visitWebsite": "Tembelea tovuti",
       "buyReplay": "Nunua uchezaji wa marudio",
       "eventFull": "Tukio limejaa",
       "seatBooked": "Kiti kimehifadhiwa",
@@ -986,7 +1031,7 @@
     "underConstructionImage": "Mchoro wa sungura kadhaa wanaofanya kazi kwenye tovuti ya ujenzi"
   },
   "library": {
-    "pageTitle": "Bitcoin Library"
+    "pageTitle": "Maktaba ya Bitcoin"
   },
   "menu": {
     "betDescription": "Mkusanyiko wa maudhui ambayo unaweza kutumia kwa miradi yako ya elimu",
@@ -1022,7 +1067,7 @@
   "notFound": {
     "here": "Hapa",
     "pageSubtitle": "Inaonekana mtu alianguka sana kwenye shimo la sungura na akapotea. Ili kurudi kwenye uso, bofya",
-    "pageTitle": "Oops."
+    "pageTitle": "Lo!"
   },
   "podcasts": {
     "pageTitle": "Bitcoin Podcasts"
@@ -1045,7 +1090,7 @@
   },
   "resources": {
     "newsletters": {
-      "title": "Newsletters",
+      "title": "Vijarida",
       "author": "Mwandishi : ",
       "level": "Ngazi :",
       "noNewsletters": "Hakuna jarida lolote kwa sasa kwa lugha iliyochaguliwa.",
@@ -1196,13 +1241,13 @@
     "github": "GitHub",
     "p1": "Sungura ameanguka chini ya shimo. Kwa sababu ya tukio hili lisilotarajiwa, ukurasa huu unajengwa kidogo kwa sasa. Tunaomba radhi kwa usumbufu wowote. Timu yetu iko tayari kukamilisha ukurasa huu. Ikiwa una nia ya kukopesha mkono, tafadhali usisite kuangalia yetu",
     "p2": "na fikiria kujiunga na jumuiya yetu!",
-    "pageTitle": "Oops.",
+    "pageTitle": "Lo!",
     "itemNotFound": "{{item}} haikupatikana",
     "itemNotFoundOrTranslated": "{{item}} haikupatikana, au haijatafsiriwa kwa lugha yako"
   },
   "words": {
-    "about": "About",
-    "about-us": "About Us",
+    "about": "Kuhusu",
+    "about-us": "Kuhusu Sisi",
     "advanced": "Advanced",
     "back": "Nyuma",
     "beginner": "Anayeanza",
@@ -1210,39 +1255,39 @@
     "conference": "Mkutano",
     "content": "Maudhui",
     "course": "Kozi",
-    "courses": "Courses",
+    "courses": "Kozi",
     "dashboard": "Dashboard",
     "details": "Details",
     "events": "Matukio",
     "home": "Home",
-    "intermediate": "Intermediate",
+    "intermediate": "Kati",
     "level": {
       "advanced": "Advanced",
-      "beginner": "Beginner",
+      "beginner": "Anayeanza",
       "developer": "developer",
-      "intermediate": "Intermediate",
+      "intermediate": "Kadri",
       "beginnerFriendly": "Rahisi kwa mwanzilishi",
       "wizard": "Mtaalamu",
       "level": "Ngazi",
       "levels": "Ngazi",
       "expert": "Mtaalamu"
     },
-    "library": "Library",
+    "library": "Maktaba",
     "lnurlAuth": "LNURL Auth",
-    "members": " Members",
-    "mining": "Mining",
+    "members": " .Washiriki",
+    "mining": "Kuchimba",
     "network": "Network",
-    "newsletter": "Newsletter",
+    "newsletter": "Jarida",
     "nodeNetwork": "Node Network",
     "ourStory": "Hadithi yetu",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
-    "professors": "Professors",
+    "professors": "Maprofesa",
     "register": "Andikisha",
-    "resources": "Resources",
-    "termsAndConditions": "Terms and conditions",
+    "resources": "Rasilimali",
+    "termsAndConditions": "Kanuni na Masharti",
     "tutorial": "Tutorial",
-    "tutorials": "Tutorials",
+    "tutorials": "Mafunzo",
     "update": "Update",
     "wallets": "Wallets",
     "time": "Muda",
@@ -1365,7 +1410,8 @@
     "password": "Nenosiri",
     "saving": "Inahifadhi...",
     "selectedAmount": "{{amount}} imechaguliwa",
-    "video": "Video"
+    "video": "Video",
+    "continue": "Endelea"
   },
   "conferences": {
     "addConferences": "Jisikie huru kuongeza mikutano yoyote inayokosekana kupitia hifadhi hii ya <0>Github</0>.",
@@ -1395,7 +1441,8 @@
     "haveReductionCode": "Je, una msimbo wa kupunguza?",
     "payByCard": "Lipa kwa Kadi",
     "payWithBitcoin": "Lipa kwa Bitcoin",
-    "insertReductionCode": "Weka msimbo wako wa kupunguza"
+    "insertReductionCode": "Weka msimbo wako wa kupunguza",
+    "taxesMayApply": "Kodi za kodi zinaweza kutumika wakati wa kulipa"
   },
   "bCert": {
     "challengeYourself": "Jitahidi na upime kiwango chako",
@@ -1418,7 +1465,7 @@
     "verify": "Thibitisha uhalali wa cheti chako"
   },
   "glossary": {
-    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by <1>Loïc Morel (Pandul)</1>, available on this <2>Github repository</2>.",
+    "creditsLoic": "<0>Mikopo</0>: Kamusi ya Bitcoin iliyoandikwa na <1>Loïc Morel (Pandul)</1>, inapatikana kwenye <2>hadhi hii ya Github</2>",
     "needHelp": "Je, unahitaji usaidizi kufafanua neno la kiufundi?",
     "keepLooking": "Unataka kuendelea kutafuta?",
     "notTranslated": "Data katika msamiati bado haijatafsiriwa.\nIkiwa ungetaka kusaidia, jisikie huru kuchangia kwenye yetu",
