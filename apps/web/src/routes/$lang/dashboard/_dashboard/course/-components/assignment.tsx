@@ -128,11 +128,13 @@ export const Assignment = ({
 
   const shouldShowRanking = isSelectedForAssignment || isBeforeAssignmentOpen;
   const canRankAssignments =
-    isAssignmentOpen && isSelectedForAssignment && !hasAppliedAssignments;
+    isAssignmentOpen &&
+    isSelectedForAssignment &&
+    !hasAppliedAssignments &&
+    !hasAffectedAssignment;
   const hasAlreadyRanked =
     isSelectedForAssignment && hasAppliedAssignments && isAssignmentOpen;
 
-  const canSubmitWork = hasAlreadyRanked && hasAffectedAssignment;
   const affectedAssignment = assignments?.find(
     (assignment) => assignment.id === courseProgress?.affectedAssignmentId,
   );
@@ -289,7 +291,7 @@ export const Assignment = ({
         </CollapsibleDropdown>
       </div>
 
-      {shouldShowRanking && !canSubmitWork && (
+      {shouldShowRanking && !hasAffectedAssignment && (
         <>
           <div className="flex flex-col gap-4 md:gap-5">
             <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
@@ -347,7 +349,7 @@ export const Assignment = ({
             </>
           )}
 
-          {hasAlreadyRanked && !canSubmitWork && (
+          {hasAlreadyRanked && (
             <InformationalPanel
               icon={ThumbUp}
               iconClassName="filter-darkOrange"
@@ -357,7 +359,7 @@ export const Assignment = ({
         </>
       )}
 
-      {canSubmitWork && affectedAssignment && (
+      {hasAffectedAssignment && affectedAssignment && (
         <div className="flex flex-col gap-5 md:gap-8">
           <div className="flex flex-col gap-5">
             <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
@@ -423,16 +425,6 @@ export const Assignment = ({
                         <span className="font-medium">
                           June 12th at 23:59 (UTC+2)
                         </span>
-                      </Trans>
-                    </li>
-                    <li className="max-md:whitespace-pre-line">
-                      <Trans
-                        i18nKey={'dashboard.course.submitFileNamingFormat'}
-                      >
-                        <span className="font-medium">
-                          company_username.pdf
-                        </span>
-                        .
                       </Trans>
                     </li>
                     <li>{t('dashboard.course.mustBePdf')}</li>
