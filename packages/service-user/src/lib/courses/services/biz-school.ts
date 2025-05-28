@@ -1,4 +1,5 @@
 import { firstRow, sql } from '@blms/database';
+import type { CourseAssignment } from '@blms/types';
 import type { Dependencies } from '#src/dependencies.js';
 
 // For mainnet
@@ -15,7 +16,7 @@ export const createSelectBizSchoolStudentsForAssignments = ({
   postgres,
 }: Dependencies) => {
   return postgres.exec(sql`
-    WITH top100 AS (
+    WITH top_students AS (
       SELECT
         uid,
         COALESCE(MAX(CASE WHEN chapter_id = ${bizSchoolMidTermChapterId} THEN score END), 0)
@@ -28,11 +29,11 @@ export const createSelectBizSchoolStudentsForAssignments = ({
       )
       GROUP BY uid
       ORDER BY new_score DESC
-      LIMIT 100
+      LIMIT 75
     )
     UPDATE users.course_progress cp
     SET is_selected_for_assignment = true
-    FROM top100 t
+    FROM top_students t
     WHERE cp.uid = t.uid AND cp.course_id = ${bizSchoolCourseId};
   `);
 };
@@ -51,6 +52,8 @@ export const createAffectProjectToBizSchoolStudents = async ({
 }: Dependencies) => {
   console.log('[AffectProjects] === START');
 
+  const assignmentApplications: Record<string, Set<string>> = {};
+  const notAssignedUids: string[] = [];
   const MAX_STUDENTS_PER_ASSIGNMENT = 5;
 
   const students = await postgres.exec(sql<StudentWithScore[]>`
@@ -68,8 +71,6 @@ export const createAffectProjectToBizSchoolStudents = async ({
   `);
 
   console.log('[AffectProjects] Students : ', students);
-
-  const assignmentApplications: Record<string, Set<string>> = {};
 
   // Loop through each student, starting with the best grades
   for (const student of students) {
@@ -89,7 +90,8 @@ export const createAffectProjectToBizSchoolStudents = async ({
 
     console.log('[AffectProjects] userProgress', userProgress);
 
-    if (!userProgress) {
+    if (!userProgress?.appliedAssignmentIds) {
+      notAssignedUids.push(student.uid);
       console.log(
         `[AffectProjects] WARNING: no applied assignments found for student ${student.uid}`,
       );
@@ -125,4 +127,48 @@ export const createAffectProjectToBizSchoolStudents = async ({
       );
     }
   }
+
+  const assignments = await postgres.exec(
+    sql<CourseAssignment[]>`
+    SELECT
+      ca.*
+    FROM content.course_assignment ca
+    WHERE ca.course_id = ${bizSchoolCourseId}
+    ORDER BY ca.name ASC`,
+  );
+
+  console.log('[AffectProjects] All assignments count:', assignments.length);
+
+  for (const uid of notAssignedUids) {
+    console.log(
+      `[AffectProjects] No applied assignments found for student ${uid}, assigning to available assignments`,
+    );
+
+    for (const assignment of assignments) {
+      if (!assignmentApplications[assignment.id]) {
+        assignmentApplications[assignment.id] = new Set();
+      }
+
+      if (
+        assignmentApplications[assignment.id].size < MAX_STUDENTS_PER_ASSIGNMENT
+      ) {
+        assignmentApplications[assignment.id].add(uid);
+
+        console.log(
+          `[AffectProjects] Assigned student ${uid} to assignment ${assignment.id}`,
+        );
+
+        await postgres.exec(sql`
+          UPDATE users.course_progress
+          SET affected_assignment_id = ${assignment.id}
+          WHERE uid = ${uid}
+          AND course_id = ${bizSchoolCourseId};
+        `);
+
+        break;
+      }
+    }
+  }
+
+  console.log('[AffectProjects] === END');
 };
