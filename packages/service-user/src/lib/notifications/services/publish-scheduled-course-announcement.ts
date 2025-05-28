@@ -16,7 +16,7 @@ export const createPublishScheduledCourseAnnouncement = (
       `Publishing scheduled course announcement with ID: ${scheduledAnnouncementId}`,
     );
 
-    // TODO: handle getting users with specific group, right now we get every users enlisted in the course
+    // TODO: handle summer school selected students
     const result = await postgres.exec(
       publishScheduledCourseAnnouncementQuery({ scheduledAnnouncementId }),
     );
