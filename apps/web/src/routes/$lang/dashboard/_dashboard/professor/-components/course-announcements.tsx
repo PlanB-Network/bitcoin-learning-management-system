@@ -1,15 +1,5 @@
 import type { ScheduledCourseAnnouncement } from '@blms/types';
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  TextTag,
-} from '@blms/ui';
+import { BasicModal, Button, DialogClose, TextTag } from '@blms/ui';
 import { t } from 'i18next';
 import { Fragment, useState } from 'react';
 import { BiPencil } from 'react-icons/bi';
@@ -223,63 +213,39 @@ const DeleteAnnouncementDialog = ({ onConfirm }: { onConfirm: () => void }) => {
   const isMobile = useSmaller('md');
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button variant="outline" size="s" mode="light">
           <FaRegTrashAlt />
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !px-[15px] !py-5 md:!p-6 gap-6 md:!gap-10 !items-center"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('dashboard.teacher.courses.deleteAnnouncementTitle')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('dashboard.teacher.courses.deleteAnnouncementTitle')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-6 md:py-5">
-          <p className="text-darkOrange-5 title-medium-sb-18px md:title-large-24px text-center md:px-7">
-            {t('dashboard.teacher.courses.deleteAnnouncementTitle')}
-          </p>
-
-          <img
-            src={InformationIcon}
-            alt="Information"
-            className="w-10 md:w-16"
-          />
-
-          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center">
-            {t('dashboard.teacher.courses.deleteAnnouncementWarning')}
-          </p>
-        </div>
-
-        <div className="!flex gap-4 md:!gap-[30px] pb-[30px]">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 'm' : 'l'}
-              className="!w-fit"
-              onClick={onConfirm}
-            >
-              {t('words.delete')}
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 'm' : 'l'}
-              className="w-fit"
-            >
-              {t('words.cancel')}
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      }
+      title={t('dashboard.teacher.courses.deleteAnnouncementTitle')}
+      content={
+        <p>{t('dashboard.teacher.courses.deleteAnnouncementWarning')}</p>
+      }
+      iconSrc={InformationIcon}
+    >
+      <div className="!flex gap-4 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 'm' : 'l'}
+            className="!w-fit"
+            onClick={onConfirm}
+          >
+            {t('words.delete')}
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+          >
+            {t('words.cancel')}
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };

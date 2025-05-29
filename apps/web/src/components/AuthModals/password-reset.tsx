@@ -3,12 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import {
+  BasicModal,
   Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   Form,
   FormControl,
   FormField,
@@ -136,21 +132,18 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent
-        showCloseButton={true}
-        className="w-full max-w-[90%] md:max-w-sm px-4 py-2 sm:p-6"
+    <>
+      <BasicModal
+        trigger={<button type="button" className="hidden" />}
+        title={t('auth.resetPassword')}
+        open={isOpen}
+        onOpenChange={onClose}
+        contentClassName="!max-w-xs md:!max-w-fit"
       >
-        <DialogHeader>
-          <DialogTitle variant="orange">{t('auth.resetPassword')}</DialogTitle>
-          <DialogDescription className="hidden">
-            {t('auth.resetPassword')}
-          </DialogDescription>
-        </DialogHeader>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-full">
           {modalContent[resetPasswordState]}
         </div>
-      </DialogContent>
-    </Dialog>
+      </BasicModal>
+    </>
   );
 };

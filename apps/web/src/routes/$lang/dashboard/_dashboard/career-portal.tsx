@@ -1,13 +1,8 @@
 import type { JobTitle } from '@blms/types';
 import {
+  BasicModal,
   Button,
-  Dialog,
   DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   Form,
   FormControl,
   FormField,
@@ -51,7 +46,6 @@ import {
   CareerRoleLevel,
   JobCategory,
 } from '@blms/constants';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 import { AppContext } from '#src/providers/context.tsx';
 import { BTC402ID } from '#src/utils/courses.ts';
 
@@ -1278,65 +1272,39 @@ const DeleteProfileDialog = ({ onConfirm }: { onConfirm: () => void }) => {
   const isMobile = useSmaller('md');
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button variant={'outline'} mode="light" size="m" type="button">
           {t('dashboard.careerPortal.deleteCareerProfile')}
           <FaRegTrashAlt className="ml-2" />
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !px-[15px] !py-5 md:!p-6 gap-6 md:!gap-10 !items-center"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('dashboard.careerPortal.deleteCareerProfileTitle')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('dashboard.careerPortal.deleteCareerProfileTitle')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
-          className="w-[186px] md:w-[266px] mx-auto"
-        />
-
-        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-6 md:py-5">
-          <p className="text-darkOrange-5 title-medium-sb-18px md:title-large-24px text-center px-7">
-            {t('dashboard.careerPortal.deleteCareerProfileTitle')}
-          </p>
-
-          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center">
-            {t('dashboard.careerPortal.cannotUndo')}
-          </p>
-        </div>
-
-        <div className="!flex gap-4 md:!gap-[30px] pb-[30px]">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 's' : 'l'}
-              className="!w-fit"
-              onClick={onConfirm}
-            >
-              {t('words.delete')}
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 's' : 'l'}
-              className="w-fit"
-            >
-              {t('words.cancel')}
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      }
+      title={t('dashboard.careerPortal.deleteCareerProfileTitle')}
+      content={<p>{t('dashboard.careerPortal.cannotUndo')}</p>}
+      showLogo={true}
+    >
+      <div className="!flex gap-4 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 's' : 'l'}
+            className="!w-fit"
+            onClick={onConfirm}
+          >
+            {t('words.delete')}
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 's' : 'l'}
+            className="w-fit"
+          >
+            {t('words.cancel')}
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };
 

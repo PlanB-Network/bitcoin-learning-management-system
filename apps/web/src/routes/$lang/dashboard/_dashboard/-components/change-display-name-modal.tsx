@@ -6,13 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
+  BasicModal,
   Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   Form,
   FormControl,
   FormField,
@@ -65,23 +60,17 @@ export const ChangeDisplayNameModal = ({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogTrigger asChild>
-        <button type="button" className="hidden" />
-      </DialogTrigger>
-      <DialogContent
-        showCloseButton={false}
-        className="px-4 py-2 sm:p-6 sm:gap-6 gap-3"
+    <>
+      <BasicModal
+        trigger={<button type="button" className="hidden" />}
+        title={t('settings.changeDisplayName')}
+        open={isOpen}
+        onOpenChange={onClose}
+        contentClassName="!max-w-xs md:!max-w-fit"
       >
-        <DialogHeader>
-          <DialogTitle>{t('settings.changeDisplayName')}</DialogTitle>
-          <DialogDescription className="hidden">
-            {t('settings.changeDisplayName')}
-          </DialogDescription>
-        </DialogHeader>
         <Form {...form}>
           <form
-            className="flex w-full flex-col items-center py-6"
+            className="flex w-full flex-col items-center"
             onSubmit={form.handleSubmit(onSubmit)}
           >
             <FormField
@@ -89,7 +78,7 @@ export const ChangeDisplayNameModal = ({
               name="displayName"
               render={({ field, fieldState }) => (
                 <FormItem className="space-y-2 flex flex-col justify-between text-center">
-                  <div className="my-2 w-80">
+                  <div className="my-2 w-full md:w-80">
                     <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
                       {t('auth.displayName')}
                     </FormLabel>
@@ -115,7 +104,7 @@ export const ChangeDisplayNameModal = ({
             </Button>
           </form>
         </Form>
-      </DialogContent>
-    </Dialog>
+      </BasicModal>
+    </>
   );
 };

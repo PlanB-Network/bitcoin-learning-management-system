@@ -36,7 +36,7 @@ export const TipModal = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
         showCloseButton={isMobile ? isMobile : false}
-        className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
+        className="flex flex-col items-center gap-3 sm:gap-6"
       >
         <DialogTitle className="hidden">
           {t('professors.tips.thanksNoName')}

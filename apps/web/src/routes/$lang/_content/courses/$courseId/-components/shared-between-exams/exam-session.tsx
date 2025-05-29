@@ -4,6 +4,7 @@ import { MdTimer } from 'react-icons/md';
 
 import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
 import {
+  BasicModal,
   Button,
   Dialog,
   DialogClose,
@@ -11,7 +12,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   cn,
 } from '@blms/ui';
 
@@ -301,8 +301,8 @@ export const ExamSession = ({
           </div>
         </div>
         {/* Handle submit */}
-        <Dialog>
-          <DialogTrigger asChild>
+        <BasicModal
+          trigger={
             <ButtonWithArrow
               size={isMobile ? 's' : 'l'}
               className="w-fit self-center"
@@ -310,48 +310,36 @@ export const ExamSession = ({
             >
               {t('courses.exam.submit')}
             </ButtonWithArrow>
-          </DialogTrigger>
-          <DialogContent
-            className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !items-center !w-full max-w-[87.5%] md:!max-w-[530px] p-4 md:!px-6 md:!py-11 gap-6 md:gap-14"
-            showCloseButton
-          >
-            <DialogHeader className="max-md:mt-10">
-              <DialogTitle className="!body-16px md:!display-small-32px !text-newBlack-1 px-7 md:!px-4 !text-center md:!mt-14 !w-full !max-w-[482px]">
-                {t('courses.exam.sureSubmit')}
-              </DialogTitle>
-              <DialogDescription className="hidden">
-                {t('courses.exam.sureSubmit')}
-              </DialogDescription>
-            </DialogHeader>
-            <div className="!flex !gap-[18px] max-md:mb-5">
-              <DialogClose asChild>
-                <Button
-                  variant="outline"
-                  size={isMobile ? 's' : 'l'}
-                  className="!w-fit"
-                >
-                  {t('courses.exam.noGoBack')}
-                </Button>
-              </DialogClose>
+          }
+          title={t('courses.exam.sureSubmit')}
+          titleVariant="black"
+          showLogo={false}
+        >
+          <div className="!flex flex-wrap !gap-[18px] max-md:mb-5">
+            <DialogClose asChild>
               <Button
-                variant="primary"
+                variant="outline"
                 size={isMobile ? 's' : 'l'}
-                className="w-fit"
-                onClick={onSubmit}
+                className="!w-fit"
               >
-                {t('courses.exam.yesSubmit')}
+                {t('courses.exam.noGoBack')}
               </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+            </DialogClose>
+            <Button
+              variant="primary"
+              size={isMobile ? 's' : 'l'}
+              className="w-fit"
+              onClick={onSubmit}
+            >
+              {t('courses.exam.yesSubmit')}
+            </Button>
+          </div>
+        </BasicModal>
       </div>
 
       {/* Time left alert */}
       <Dialog open={isTimeLeftAlertOpen} onOpenChange={setIsTimeLeftAlertOpen}>
-        <DialogContent
-          className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] p-4 md:!px-6 md:!py-11 !gap-10 !items-center"
-          showCloseButton
-        >
+        <DialogContent className="!w-full md:!max-w-[530px]" showCloseButton>
           <DialogHeader className="hidden">
             <DialogTitle>{t('courses.exam.oneMinuteLeft')}</DialogTitle>
             <DialogDescription>
