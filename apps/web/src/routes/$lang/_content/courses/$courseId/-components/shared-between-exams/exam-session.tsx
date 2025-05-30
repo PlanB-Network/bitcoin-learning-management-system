@@ -3,17 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { MdTimer } from 'react-icons/md';
 
 import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
-import {
-  BasicModal,
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  cn,
-} from '@blms/ui';
+import { BasicModal, Button, DialogClose, cn } from '@blms/ui';
 
 import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
@@ -338,25 +328,15 @@ export const ExamSession = ({
       </div>
 
       {/* Time left alert */}
-      <Dialog open={isTimeLeftAlertOpen} onOpenChange={setIsTimeLeftAlertOpen}>
-        <DialogContent className="!w-full md:!max-w-[530px]" showCloseButton>
-          <DialogHeader className="hidden">
-            <DialogTitle>{t('courses.exam.oneMinuteLeft')}</DialogTitle>
-            <DialogDescription>
-              {t('courses.exam.oneMinuteLeft')}
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="body-medium-16px md:title-large-sb-24px text-newBlack-1 text-center items-center max-w-[482px] md:px-5 flex flex-col gap-6 md:gap-10 md:py-10">
-            <img
-              src={SandClockEmpty}
-              alt={t('courses.exam.oneMinuteLeft')}
-              className="w-16 md:w-20"
-            />
-            {t('courses.exam.oneMinuteLeft')}
-          </div>
-        </DialogContent>
-      </Dialog>
+      <BasicModal
+        content={
+          <p className="max-w-[482px]">{t('courses.exam.oneMinuteLeft')}</p>
+        }
+        iconSrc={SandClockEmpty}
+        open={isTimeLeftAlertOpen}
+        onOpenChange={setIsTimeLeftAlertOpen}
+        contentClassName="!w-full md:!max-w-[530px]"
+      />
     </section>
   );
 };
