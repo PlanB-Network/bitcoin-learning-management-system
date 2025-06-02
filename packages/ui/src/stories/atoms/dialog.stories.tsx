@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '#src/atoms/button.tsx';
 import {
+  BasicModal,
   Dialog,
   DialogClose,
   DialogContent,
@@ -53,6 +54,40 @@ export const Default: Story = {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  ),
+};
+
+export const Confirmation: Story = {
+  render: () => (
+    <BasicModal
+      trigger={
+        <Button variant={'outline'} mode="light" size="m" type="button">
+          Delete career profile
+        </Button>
+      }
+      title="Are you sure you want to delete your career profile?"
+      content={
+        <p>
+          This action cannot be undone.
+          <br />
+          All your career data will be permanently removed.
+        </p>
+      }
+      showLogo={true}
+    >
+      <div className="!flex gap-4 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button variant="primary" size={'l'} className="!w-fit">
+            Delete
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button variant="outline" size={'l'} className="w-fit">
+            Cancel
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   ),
 };
 

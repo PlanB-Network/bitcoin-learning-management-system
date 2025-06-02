@@ -241,7 +241,7 @@ export const CoursesGallery = ({
           <CourseCard
             course={featuredCourse}
             featured
-            className="md:hidden min-[1150px]:block"
+            className="md:hidden min-xl:block"
           />
         )}
         {selectedSchoolCourse && (
@@ -251,7 +251,7 @@ export const CoursesGallery = ({
           <CourseCard
             course={featuredCourse}
             featured
-            className="max-md:hidden min-[1150px]:hidden"
+            className="max-md:hidden min-xl:hidden"
           />
         )}
         {otherCourses.map((course) => (

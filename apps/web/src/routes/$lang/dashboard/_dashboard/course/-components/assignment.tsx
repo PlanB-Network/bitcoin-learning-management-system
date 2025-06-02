@@ -3,14 +3,9 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
+  BasicModal,
   Button,
-  Dialog,
   DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   Divider,
   cn,
   customToast,
@@ -37,7 +32,6 @@ import {
 } from 'react-icons/io5';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -474,7 +468,6 @@ export const Assignment = ({
                     onConfirm={handleWorkUpload}
                     selectedFile={selectedFile}
                     isUploading={isUploading}
-                    workErrorMessage={workErrorMessage}
                   />
                 </div>
               </div>
@@ -752,8 +745,8 @@ const ConfirmAssignmentsOrderDialog = ({
   const isMobile = useSmaller('md');
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button
           variant="primary"
           mode="light"
@@ -762,67 +755,40 @@ const ConfirmAssignmentsOrderDialog = ({
         >
           {t('dashboard.course.saveList')}
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="w-[95%] max-md:max-w-100 md:w-[530px]"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('dashboard.course.surePreferenceList')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('dashboard.course.surePreferenceList')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
-          className="w-46 md:w-60 mx-auto max-md:py-6"
-        />
-
-        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-12 md:py-5">
-          <p className="text-darkOrange-5 subtitle-large-18px md:title-large-24px text-center md:px-7">
-            {t('dashboard.course.surePreferenceList')}
-          </p>
-
-          <img
-            src={InformationIcon}
-            alt="Information"
-            className="w-10 md:w-16"
-          />
-
-          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center max-w-[442px] md:px-5">
-            {t('dashboard.course.confirmNoEditable')}
-          </p>
-        </div>
-
-        <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 'm' : 'l'}
-              className="w-fit"
-              onClick={onConfirm}
-            >
-              {t('dashboard.course.confirmList')}{' '}
-              <IoCheckmark className="ml-2.5" />
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 'm' : 'l'}
-              className="w-fit"
-            >
-              {t('dashboard.course.keepEditing')}{' '}
-              <BiPencil className="ml-2.5" />
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      }
+      title={t('dashboard.course.surePreferenceList')}
+      content={
+        <p className="text-center max-w-[442px] md:px-5">
+          {t('dashboard.course.confirmNoEditable')}
+        </p>
+      }
+      iconSrc={InformationIcon}
+      showLogo
+      contentClassName="w-[95%] max-md:max-w-100 md:w-[530px]"
+    >
+      <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+            onClick={onConfirm}
+          >
+            {t('dashboard.course.confirmList')}
+            <IoCheckmark className="ml-2.5" />
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+          >
+            {t('dashboard.course.keepEditing')} <BiPencil className="ml-2.5" />
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };
 
@@ -830,18 +796,16 @@ const ConfirmSubmissionDialog = ({
   onConfirm,
   selectedFile,
   isUploading,
-  workErrorMessage,
 }: {
   onConfirm: () => void;
   selectedFile: File | null;
   isUploading: boolean;
-  workErrorMessage: string;
 }) => {
   const isMobile = useSmaller('md');
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button
           variant="primary"
           mode="light"
@@ -851,66 +815,39 @@ const ConfirmSubmissionDialog = ({
         >
           {t('words.submit')}
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="w-[95%] max-md:max-w-100 md:w-[530px]"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('dashboard.course.isSubmissionFinal')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('dashboard.course.isSubmissionFinal')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
-          className="w-46 md:w-60 mx-auto max-md:py-6"
-        />
-
-        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-12 md:py-5">
-          <p className="text-darkOrange-5 subtitle-large-18px md:title-large-24px text-center md:px-7">
-            {t('dashboard.course.isSubmissionFinal')}
-          </p>
-
-          <img
-            src={InformationIcon}
-            alt="Information"
-            className="w-10 md:w-16"
-          />
-
-          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center max-w-[442px] md:px-5">
-            {t('dashboard.course.confirmNoEditableFile')}
-          </p>
-        </div>
-
-        <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-[30px] pb-[20px]">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 'm' : 'l'}
-              className="w-fit"
-              onClick={onConfirm}
-            >
-              {t('dashboard.course.confirmSubmission')}{' '}
-              <IoCheckmark className="ml-2.5" />
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 'm' : 'l'}
-              className="w-fit"
-            >
-              {t('courses.exam.goBack')}{' '}
-              <RiArrowGoBackFill className="ml-2.5" />
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      }
+      title={t('dashboard.course.isSubmissionFinal')}
+      content={
+        <p className="text-center max-w-[442px] md:px-5">
+          {t('dashboard.course.confirmNoEditableFile')}
+        </p>
+      }
+      iconSrc={InformationIcon}
+      showLogo
+      contentClassName="w-[95%] max-md:max-w-100 md:w-[530px]"
+    >
+      <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+            onClick={onConfirm}
+          >
+            {t('dashboard.course.confirmSubmission')}{' '}
+            <IoCheckmark className="ml-2.5" />
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+          >
+            {t('courses.exam.goBack')} <RiArrowGoBackFill className="ml-2.5" />
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };

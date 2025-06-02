@@ -8,14 +8,9 @@ import { TbArrowsSort } from 'react-icons/tb';
 
 import { SortDirection, UserPermission, UserRole } from '@blms/constants';
 import {
+  BasicModal,
   Button,
-  Dialog,
   DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   Loader,
   Select,
   SelectContent,
@@ -34,7 +29,6 @@ import {
 import type { FormattedProfessor, UserRoles } from '@blms/types';
 import { BiPencil } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -965,58 +959,37 @@ const RemoveTeacherDialog = ({ onConfirm }: { onConfirm: () => void }) => {
   const isMobile = window.innerWidth < 768;
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <FiTrash2
           size="24"
           className="cursor-pointer mx-auto text-darkOrange-5"
         />
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !p-4 md:!px-6 md:!py-11 gap-6 md:!gap-12 !items-center"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('dashboard.adminPanel.removeTeacherDescription')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('dashboard.adminPanel.removeTeacherDescription')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
-          className="w-36 md:w-60 mx-auto"
-        />
-
-        <p className="text-darkOrange-5 label-large-20px desktop-h4 text-center px-7">
-          {t('dashboard.adminPanel.removeTeacherDescription')}
-        </p>
-
-        <div className="!flex gap-4 md:!gap-5 pb-5">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 's' : 'l'}
-              className="!w-fit"
-              onClick={onConfirm}
-            >
-              {t('dashboard.adminPanel.confirmRemoval')}
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 's' : 'l'}
-              className="w-fit"
-            >
-              {t('words.cancel')}
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      }
+      title={t('dashboard.adminPanel.removeTeacherDescription')}
+      showLogo
+    >
+      <div className="!flex gap-4 md:!gap-5">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 's' : 'l'}
+            className="!w-fit"
+            onClick={onConfirm}
+          >
+            {t('dashboard.adminPanel.confirmRemoval')}
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 's' : 'l'}
+            className="w-fit"
+          >
+            {t('words.cancel')}
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };

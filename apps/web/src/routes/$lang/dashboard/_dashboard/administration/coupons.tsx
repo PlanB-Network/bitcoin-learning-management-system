@@ -1,17 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DividerSimple,
-  TextTag,
-  cn,
-} from '@blms/ui';
+import { BasicModal, Button, DividerSimple, TextTag, cn } from '@blms/ui';
 import Warning from '#src/assets/icons/warning_orange.svg';
 
 import { AppContext } from '#src/providers/context.tsx';
@@ -406,353 +396,323 @@ function AdminCoupons() {
         </div>
       </div>
 
-      <Dialog open={deleteModal.isOpen} onOpenChange={deleteModal.close}>
-        <DialogContent
-          showCloseButton={true}
-          className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6"
-        >
-          <DialogHeader className="hidden">
-            <DialogTitle>
-              {t('dashboard.adminPanel.coupons.deleteDiscountCode')}
-            </DialogTitle>
-            <DialogDescription> </DialogDescription>
-          </DialogHeader>
+      <BasicModal
+        title={t('dashboard.adminPanel.coupons.deleteDiscountCodeConfirm')}
+        content={
+          <p>{t('dashboard.adminPanel.coupons.deleteDiscountCodeWarning')}</p>
+        }
+        iconSrc={Warning}
+        open={deleteModal.isOpen}
+        onOpenChange={deleteModal.close}
+      >
+        <div className="flex gap-4">
+          <Button
+            variant="primary"
+            onClick={() => {
+              if (couponToDelete) {
+                deleteCouponCode.mutate(couponToDelete.code);
+              }
 
-          <h1 className="text-2xl text-center text-newOrange-1 my-4 ">
-            {t('dashboard.adminPanel.coupons.deleteDiscountCodeConfirm')}
-          </h1>
+              deleteModal.close();
+            }}
+            className="w-1/2"
+          >
+            {t('dashboard.adminPanel.coupons.delete')}
+          </Button>
 
-          <img src={Warning} alt="Warning" className="size-16" />
+          <Button
+            variant="outline"
+            onClick={deleteModal.close}
+            className="w-1/2"
+          >
+            {t('dashboard.adminPanel.coupons.cancel')}
+          </Button>
+        </div>
+      </BasicModal>
 
-          <p className="text-center">
-            {t('dashboard.adminPanel.coupons.deleteDiscountCodeWarning')}
-          </p>
+      <BasicModal
+        title={
+          generatedCodes?.length
+            ? t('dashboard.adminPanel.coupons.generatedCodes')
+            : t('dashboard.adminPanel.coupons.generateDiscountCode')
+        }
+        open={modal.isOpen}
+        onOpenChange={onCreateModalClose}
+      >
+        {!generatedCodes?.length && (
+          <>
+            <fieldset className="w-full">
+              <h3 className="subtitle-medium-med-16px">
+                {t('dashboard.adminPanel.coupons.forWhat')}
+              </h3>
 
-          <div className="flex gap-4">
-            <Button
-              variant="primary"
-              onClick={() => {
-                if (couponToDelete) {
-                  deleteCouponCode.mutate(couponToDelete.code);
-                }
+              <div className="flex gap-2 items-center">
+                <input
+                  type="radio"
+                  name="product"
+                  value="event"
+                  id="is_event"
+                  checked={formIsEvent}
+                  onChange={() => setFormIsEvent(true)}
+                />
+                <label htmlFor="is_event">
+                  {t('dashboard.adminPanel.coupons.productEvent')}
+                </label>
+              </div>
 
-                deleteModal.close();
-              }}
-              className="w-1/2"
-            >
-              {t('dashboard.adminPanel.coupons.delete')}
-            </Button>
-
-            <Button
-              variant="outline"
-              onClick={deleteModal.close}
-              className="w-1/2"
-            >
-              {t('dashboard.adminPanel.coupons.cancel')}
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={modal.isOpen} onOpenChange={onCreateModalClose}>
-        <DialogContent
-          showCloseButton={true}
-          className="flex flex-col items-center gap-3 py-2 px-4 sm:gap-6 sm:p-6 max-md:w-full max-md:max-w-[90vw] max-md:mx-auto"
-        >
-          <DialogHeader className="hidden">
-            <DialogTitle variant="orange">
-              {t('dashboard.adminPanel.coupons.generateDiscountCode')}
-            </DialogTitle>
-            <DialogDescription> </DialogDescription>
-          </DialogHeader>
-
-          <h1 className="text-2xl font-medium text-darkOrange-5 my-4 w-full min-w-56 md:min-w-96 text-center">
-            {generatedCodes?.length
-              ? t('dashboard.adminPanel.coupons.generatedCodes')
-              : t('dashboard.adminPanel.coupons.generateDiscountCode')}
-          </h1>
-
-          {!generatedCodes?.length && (
-            <>
-              <fieldset className="w-full">
+              <div className="flex gap-2 items-center">
+                <input
+                  type="radio"
+                  name="product"
+                  value="course"
+                  id="is_course"
+                  checked={!formIsEvent}
+                  onChange={() => setFormIsEvent(false)}
+                />
+                <label htmlFor="is_course">
+                  {t('dashboard.adminPanel.coupons.productCourse')}
+                </label>
+              </div>
+            </fieldset>
+            <fieldset className="w-full">
+              {formIsEvent ? (
                 <h3 className="subtitle-medium-med-16px">
-                  {t('dashboard.adminPanel.coupons.forWhat')}
+                  {t('dashboard.adminPanel.coupons.forWhichEvent')}
                 </h3>
-
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name="product"
-                    value="event"
-                    id="is_event"
-                    checked={formIsEvent}
-                    onChange={() => setFormIsEvent(true)}
-                  />
-                  <label htmlFor="is_event">
-                    {t('dashboard.adminPanel.coupons.productEvent')}
-                  </label>
-                </div>
-
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name="product"
-                    value="course"
-                    id="is_course"
-                    checked={!formIsEvent}
-                    onChange={() => setFormIsEvent(false)}
-                  />
-                  <label htmlFor="is_course">
-                    {t('dashboard.adminPanel.coupons.productCourse')}
-                  </label>
-                </div>
-              </fieldset>
-              <fieldset className="w-full">
-                {formIsEvent ? (
-                  <h3 className="subtitle-medium-med-16px">
-                    {t('dashboard.adminPanel.coupons.forWhichEvent')}
-                  </h3>
-                ) : (
-                  <h3 className="subtitle-medium-med-16px">
-                    {t('dashboard.adminPanel.coupons.forWhichCourse')}
-                  </h3>
-                )}
-                <select
-                  className="border p-2 rounded-lg w-full"
-                  onChange={(e) => setFormItemId(e.target.value)}
-                >
-                  <option value="" selected={formItemId === ''}>
-                    {t(
-                      `dashboard.adminPanel.coupons.${formIsEvent ? 'selectEvent' : 'selectCourse'}`,
-                    )}
-                  </option>
-                  {(items.data ?? [])
-                    .filter(
-                      (target) =>
-                        target.type === (formIsEvent ? 'event' : 'course'),
-                    )
-                    .map((target) => {
-                      return (
-                        <option
-                          key={target.id}
-                          value={target.id}
-                          selected={formItemId === target.id}
-                        >
-                          {target.name}
-                        </option>
-                      );
-                    })}
-                </select>
-              </fieldset>
-              {/*  */}
-              <fieldset className="w-full">
+              ) : (
                 <h3 className="subtitle-medium-med-16px">
-                  {t('dashboard.adminPanel.coupons.discountType')}
+                  {t('dashboard.adminPanel.coupons.forWhichCourse')}
                 </h3>
+              )}
+              <select
+                className="border p-2 rounded-lg w-full"
+                onChange={(e) => setFormItemId(e.target.value)}
+              >
+                <option value="" selected={formItemId === ''}>
+                  {t(
+                    `dashboard.adminPanel.coupons.${formIsEvent ? 'selectEvent' : 'selectCourse'}`,
+                  )}
+                </option>
+                {(items.data ?? [])
+                  .filter(
+                    (target) =>
+                      target.type === (formIsEvent ? 'event' : 'course'),
+                  )
+                  .map((target) => {
+                    return (
+                      <option
+                        key={target.id}
+                        value={target.id}
+                        selected={formItemId === target.id}
+                      >
+                        {target.name}
+                      </option>
+                    );
+                  })}
+              </select>
+            </fieldset>
+            {/*  */}
+            <fieldset className="w-full">
+              <h3 className="subtitle-medium-med-16px">
+                {t('dashboard.adminPanel.coupons.discountType')}
+              </h3>
 
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name="discount"
-                    value="unique"
-                    id="is_unique"
-                    checked={formSingleUse}
-                    onChange={() => setFormSingleUse(true)}
-                  />
-                  <label htmlFor="is_unique">
-                    {t('dashboard.adminPanel.coupons.discountSingleUse')}
-                  </label>
-                </div>
+              <div className="flex gap-2 items-center">
+                <input
+                  type="radio"
+                  name="discount"
+                  value="unique"
+                  id="is_unique"
+                  checked={formSingleUse}
+                  onChange={() => setFormSingleUse(true)}
+                />
+                <label htmlFor="is_unique">
+                  {t('dashboard.adminPanel.coupons.discountSingleUse')}
+                </label>
+              </div>
 
-                <div className="flex gap-2 items-center">
-                  <input
-                    type="radio"
-                    name="discount"
-                    value="multi"
-                    id="is_multi"
-                    checked={!formSingleUse}
-                    onChange={() => setFormSingleUse(false)}
-                  />
-                  <label htmlFor="is_multi">
-                    {t('dashboard.adminPanel.coupons.discountMultiUse')}
-                  </label>
-                </div>
-              </fieldset>
-              {/*  */}
+              <div className="flex gap-2 items-center">
+                <input
+                  type="radio"
+                  name="discount"
+                  value="multi"
+                  id="is_multi"
+                  checked={!formSingleUse}
+                  onChange={() => setFormSingleUse(false)}
+                />
+                <label htmlFor="is_multi">
+                  {t('dashboard.adminPanel.coupons.discountMultiUse')}
+                </label>
+              </div>
+            </fieldset>
+            {/*  */}
+            <fieldset className="w-full">
+              <h3 className="subtitle-medium-med-16px">
+                {t('dashboard.adminPanel.coupons.discountValue')}
+              </h3>
+              <small className="text-newGray-1">
+                {t('dashboard.adminPanel.coupons.discountValueExplanation')}
+              </small>
+              <input
+                className="w-full border border-newGray-1 rounded-lg p-2"
+                type="number"
+                step="5"
+                min="5"
+                max="100"
+                value={formPercentage}
+                onChange={(e) => setFormPercentage(Number(e.target.value))}
+              />
+            </fieldset>
+            {formSingleUse ? (
               <fieldset className="w-full">
-                <h3 className="subtitle-medium-med-16px">
-                  {t('dashboard.adminPanel.coupons.discountValue')}
-                </h3>
-                <small className="text-newGray-1">
-                  {t('dashboard.adminPanel.coupons.discountValueExplanation')}
-                </small>
+                <h3>{t('dashboard.adminPanel.coupons.numberOfCodes')}</h3>
                 <input
                   className="w-full border border-newGray-1 rounded-lg p-2"
                   type="number"
-                  step="5"
-                  min="5"
-                  max="100"
-                  value={formPercentage}
-                  onChange={(e) => setFormPercentage(Number(e.target.value))}
+                  min="1"
+                  value={formNumberOfCodes}
+                  onChange={(e) => setFormNumberOfCodes(Number(e.target.value))}
                 />
               </fieldset>
-              {formSingleUse ? (
+            ) : (
+              <>
                 <fieldset className="w-full">
-                  <h3>{t('dashboard.adminPanel.coupons.numberOfCodes')}</h3>
+                  <h3 className="subtitle-medium-med-16px">
+                    {t('dashboard.adminPanel.coupons.discountCode')}
+                  </h3>
+                  <small className="text-newGray-1">
+                    {t('dashboard.adminPanel.coupons.discountCodeExplanation')}
+                  </small>
+                  <input
+                    className="w-full border border-newGray-1 rounded-lg p-2"
+                    type="text"
+                    value={formCode}
+                    placeholder={t(
+                      'dashboard.adminPanel.coupons.discountCodePlaceholder',
+                    )}
+                    onChange={(e) => setFormCode(e.target.value)}
+                  />
+                </fieldset>
+
+                <fieldset className="w-full">
+                  <h3 className="subtitle-medium-med-16px">
+                    {t('dashboard.adminPanel.coupons.maximumNumberOfUse')}
+                  </h3>
                   <input
                     className="w-full border border-newGray-1 rounded-lg p-2"
                     type="number"
+                    step="1"
                     min="1"
-                    value={formNumberOfCodes}
-                    onChange={(e) =>
-                      setFormNumberOfCodes(Number(e.target.value))
-                    }
+                    max="1000"
+                    value={formMaxUses}
+                    onChange={(e) => setFormMaxUses(Number(e.target.value))}
                   />
                 </fieldset>
-              ) : (
-                <>
-                  <fieldset className="w-full">
-                    <h3 className="subtitle-medium-med-16px">
-                      {t('dashboard.adminPanel.coupons.discountCode')}
-                    </h3>
-                    <small className="text-newGray-1">
-                      {t(
-                        'dashboard.adminPanel.coupons.discountCodeExplanation',
-                      )}
-                    </small>
-                    <input
-                      className="w-full border border-newGray-1 rounded-lg p-2"
-                      type="text"
-                      value={formCode}
-                      placeholder={t(
-                        'dashboard.adminPanel.coupons.discountCodePlaceholder',
-                      )}
-                      onChange={(e) => setFormCode(e.target.value)}
-                    />
-                  </fieldset>
+              </>
+            )}
+          </>
+        )}
 
-                  <fieldset className="w-full">
-                    <h3 className="subtitle-medium-med-16px">
-                      {t('dashboard.adminPanel.coupons.maximumNumberOfUse')}
-                    </h3>
-                    <input
-                      className="w-full border border-newGray-1 rounded-lg p-2"
-                      type="number"
-                      step="1"
-                      min="1"
-                      max="1000"
-                      value={formMaxUses}
-                      onChange={(e) => setFormMaxUses(Number(e.target.value))}
-                    />
-                  </fieldset>
-                </>
-              )}
-            </>
-          )}
+        {generatedCodes && generatedCodes.length > 0 && (
+          <div className="w-full">
+            <img
+              className="my-4 w-full"
+              alt="Coupon code"
+              src={`/api/coupon-image.png?code=${generatedCodes[0]}`}
+            />
 
-          {generatedCodes && generatedCodes.length > 0 && (
-            <div className="w-full">
-              <img
-                className="my-4 max-w-xl"
-                alt="Coupon code"
-                src={`/api/coupon-image.png?code=${generatedCodes[0]}`}
-              />
-
-              <div className="my-4">
-                <form
-                  action={
-                    generatedCodes.length > 1
-                      ? `/api/coupons.zip?codes=${generatedCodes.join(',')}`
-                      : `/api/coupon-image.png?code=${generatedCodes[0]}`
-                  }
-                  method="POST"
-                  target="_blank"
-                >
-                  <Button className="w-full" variant="primary" type="submit">
-                    {generatedCodes.length > 1
-                      ? t('dashboard.adminPanel.coupons.downloadImages')
-                      : t('dashboard.adminPanel.coupons.downloadImage')}
-                  </Button>
-                </form>
-              </div>
-
-              <ul className="relative border rounded-lg p-2">
-                <li className="absolute top-0 right-0 text-newGray-3 p-1 rounded-md cursor-pointer">
-                  {codeCopied ? (
-                    <div className="pt-1 pr-2 text-orange-400">
-                      {t('dashboard.adminPanel.coupons.discountCodeCopied')}
-                    </div>
-                  ) : (
-                    <button
-                      type="button"
-                      className="group"
-                      onClick={() => {
-                        navigator.clipboard.writeText(
-                          generatedCodes.join('\n'),
-                        );
-                        setCodeCopied(true);
-                        setTimeout(() => setCodeCopied(false), 2000);
-                      }}
-                    >
-                      <svg
-                        role="img"
-                        aria-label="Copy"
-                        className="size-8"
-                        viewBox="0 0 16 17"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6.48926 12.2394C6.12259 12.2394 5.8087 12.1089 5.54759 11.8478C5.28648 11.5866 5.15592 11.2728 5.15592 10.9061V2.90609C5.15592 2.53942 5.28648 2.22553 5.54759 1.96442C5.8087 1.70331 6.12259 1.57275 6.48926 1.57275H12.4893C12.8559 1.57275 13.1698 1.70331 13.4309 1.96442C13.692 2.22553 13.8226 2.53942 13.8226 2.90609V10.9061C13.8226 11.2728 13.692 11.5866 13.4309 11.8478C13.1698 12.1089 12.8559 12.2394 12.4893 12.2394H6.48926ZM6.48926 10.9061H12.4893V2.90609H6.48926V10.9061ZM3.82259 14.9061C3.45592 14.9061 3.14204 14.7755 2.88092 14.5144C2.61981 14.2533 2.48926 13.9394 2.48926 13.5728V4.23942H3.82259V13.5728H11.1559V14.9061H3.82259Z"
-                          className="fill-black group-hover:fill-orange-500"
-                        />
-                      </svg>
-                    </button>
-                  )}
-                </li>
-                {generatedCodes.map((code) => (
-                  <li key={code}>{code}</li>
-                ))}
-              </ul>
+            <div className="my-4">
+              <form
+                action={
+                  generatedCodes.length > 1
+                    ? `/api/coupons.zip?codes=${generatedCodes.join(',')}`
+                    : `/api/coupon-image.png?code=${generatedCodes[0]}`
+                }
+                method="POST"
+                target="_blank"
+              >
+                <Button className="w-full" variant="primary" type="submit">
+                  {generatedCodes.length > 1
+                    ? t('dashboard.adminPanel.coupons.downloadImages')
+                    : t('dashboard.adminPanel.coupons.downloadImage')}
+                </Button>
+              </form>
             </div>
-          )}
 
-          {!generatedCodes?.length ? (
+            <ul className="relative border rounded-lg p-2">
+              <li className="absolute top-0 right-0 text-newGray-3 p-1 rounded-md cursor-pointer">
+                {codeCopied ? (
+                  <div className="pt-1 pr-2 text-orange-400">
+                    {t('dashboard.adminPanel.coupons.discountCodeCopied')}
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    className="group"
+                    onClick={() => {
+                      navigator.clipboard.writeText(generatedCodes.join('\n'));
+                      setCodeCopied(true);
+                      setTimeout(() => setCodeCopied(false), 2000);
+                    }}
+                  >
+                    <svg
+                      role="img"
+                      aria-label="Copy"
+                      className="size-8"
+                      viewBox="0 0 16 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6.48926 12.2394C6.12259 12.2394 5.8087 12.1089 5.54759 11.8478C5.28648 11.5866 5.15592 11.2728 5.15592 10.9061V2.90609C5.15592 2.53942 5.28648 2.22553 5.54759 1.96442C5.8087 1.70331 6.12259 1.57275 6.48926 1.57275H12.4893C12.8559 1.57275 13.1698 1.70331 13.4309 1.96442C13.692 2.22553 13.8226 2.53942 13.8226 2.90609V10.9061C13.8226 11.2728 13.692 11.5866 13.4309 11.8478C13.1698 12.1089 12.8559 12.2394 12.4893 12.2394H6.48926ZM6.48926 10.9061H12.4893V2.90609H6.48926V10.9061ZM3.82259 14.9061C3.45592 14.9061 3.14204 14.7755 2.88092 14.5144C2.61981 14.2533 2.48926 13.9394 2.48926 13.5728V4.23942H3.82259V13.5728H11.1559V14.9061H3.82259Z"
+                        className="fill-black group-hover:fill-orange-500"
+                      />
+                    </svg>
+                  </button>
+                )}
+              </li>
+              {generatedCodes.map((code) => (
+                <li key={code}>{code}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {!generatedCodes?.length ? (
+          <Button
+            className="w-full"
+            variant="primary"
+            onClick={handleSubmit}
+            disabled={!formItemId || preventDoubleClick}
+          >
+            {t(
+              `dashboard.adminPanel.coupons.${
+                formNumberOfCodes > 1 ? 'generateCodes' : 'generateCode'
+              }`,
+            )}
+          </Button>
+        ) : (
+          <div className="flex gap-4 w-full">
+            <Button
+              className="w-full"
+              variant="outline"
+              size={'s'}
+              onClick={onCreateModalClose}
+            >
+              {t('dashboard.adminPanel.coupons.close')}
+            </Button>
+
             <Button
               className="w-full"
               variant="primary"
-              onClick={handleSubmit}
-              disabled={!formItemId || preventDoubleClick}
+              size={'s'}
+              onClick={resetForm}
             >
-              {t(
-                `dashboard.adminPanel.coupons.${
-                  formNumberOfCodes > 1 ? 'generateCodes' : 'generateCode'
-                }`,
-              )}
+              {t('dashboard.adminPanel.coupons.generateNewCodes')}
             </Button>
-          ) : (
-            <div className="flex gap-4 w-full">
-              <Button
-                className="w-full"
-                variant="outline"
-                size={'s'}
-                onClick={onCreateModalClose}
-              >
-                {t('dashboard.adminPanel.coupons.close')}
-              </Button>
-
-              <Button
-                className="w-full"
-                variant="primary"
-                size={'s'}
-                onClick={resetForm}
-              >
-                {t('dashboard.adminPanel.coupons.generateNewCodes')}
-              </Button>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+          </div>
+        )}
+      </BasicModal>
     </section>
   );
 }

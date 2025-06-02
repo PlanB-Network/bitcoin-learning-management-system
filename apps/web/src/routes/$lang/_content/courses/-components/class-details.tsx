@@ -3,16 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FiDownload, FiLoader } from 'react-icons/fi';
 
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@blms/ui';
+import { BasicModal, Button, DialogClose } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatTime, getTimeString } from '#src/utils/date.js';
@@ -28,7 +19,6 @@ import {
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseBookModal } from './book-modal/course-book-modal.tsx';
 
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 import { base64ToBlob } from '#src/utils/misc.ts';
 
 interface ClassDetailsProps {
@@ -249,59 +239,36 @@ const CancelBookingDialog = ({ onConfirm }: { onConfirm: () => void }) => {
   const { t } = useTranslation();
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button variant="outline" size={isMobile ? 's' : 'm'}>
           {t('courses.chapter.detail.cancelBooking')}
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !px-[15px] !py-5 md:!p-6 gap-6 md:!gap-10 !items-center"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('dashboard.booking.cancelBookingTitle')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('dashboard.booking.cancelBookingTitle')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
-          className="w-[186px] md:w-[266px] mx-auto"
-        />
-
-        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-6 md:py-5">
-          <p className="text-darkOrange-5 title-medium-sb-18px md:title-large-24px text-center px-7">
-            {t('dashboard.booking.cancelBookingTitle')}
-          </p>
-        </div>
-
-        <div className="!flex gap-4 md:!gap-[30px] pb-[30px]">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 's' : 'l'}
-              className="!w-fit"
-              onClick={onConfirm}
-            >
-              {t('dashboard.booking.yesCancel')}
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 's' : 'l'}
-              className="w-fit"
-            >
-              {t('dashboard.booking.noGoBack')}
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      }
+      title={t('dashboard.booking.cancelBookingTitle')}
+      showLogo={true}
+    >
+      <div className="!flex gap-4 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 's' : 'l'}
+            className="!w-fit"
+            onClick={onConfirm}
+          >
+            {t('dashboard.booking.yesCancel')}
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 's' : 'l'}
+            className="w-fit"
+          >
+            {t('dashboard.booking.noGoBack')}
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };

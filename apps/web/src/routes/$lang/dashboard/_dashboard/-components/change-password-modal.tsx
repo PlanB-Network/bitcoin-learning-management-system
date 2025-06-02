@@ -6,13 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
+  BasicModal,
   Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   Form,
   FormControl,
   FormField,
@@ -88,87 +83,79 @@ export const ChangePasswordModal = ({
   const methods = useForm();
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogTrigger asChild>
-        <button type="button" className="hidden" />
-      </DialogTrigger>
-      <DialogContent
-        showCloseButton={false}
-        className="px-4 py-2 sm:p-6 sm:gap-6 gap-3"
-      >
-        <DialogHeader>
-          <DialogTitle>{t('settings.changePassword')}</DialogTitle>
-          <DialogDescription className="hidden">
-            {t('settings.changePassword')}
-          </DialogDescription>
-        </DialogHeader>
-        <Form {...methods}>
-          <form
-            className="flex w-full flex-col items-center py-6"
-            onSubmit={form.handleSubmit(onSubmit)}
+    <BasicModal
+      trigger={<button type="button" className="hidden" />}
+      title={t('settings.changePassword')}
+      open={isOpen}
+      onOpenChange={onClose}
+      contentClassName="!max-w-xs md:!max-w-fit"
+    >
+      <Form {...methods}>
+        <form
+          className="flex w-full flex-col items-center"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <FormField
+            control={form.control}
+            name="oldPassword"
+            render={({ field, fieldState }) => (
+              <FormItem className="gap-2 w-full flex flex-col justify-between text-center">
+                <div className="my-2 w-full md:w-80">
+                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                    Old password
+                  </FormLabel>
+                  <FormControl>
+                    <Input type="password" {...field} />
+                  </FormControl>
+                </div>
+                <FormMessage>{fieldState.error?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="newPassword"
+            render={({ field, fieldState }) => (
+              <FormItem className="gap-2 w-full flex flex-col justify-between text-center">
+                <div className="my-2 w-full md:w-80">
+                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                    New password
+                  </FormLabel>
+                  <FormControl>
+                    <Input type="password" {...field} />
+                  </FormControl>
+                </div>
+                <FormMessage>{fieldState.error?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="newPasswordConfirmation"
+            render={({ field, fieldState }) => (
+              <FormItem className="gap-2 w-full flex flex-col justify-between text-center">
+                <div className="my-2 w-full md:w-80">
+                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                    Confirmation
+                  </FormLabel>
+                  <FormControl>
+                    <Input type="password" {...field} />
+                  </FormControl>
+                </div>
+                <FormMessage>{fieldState.error?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            variant="primary"
+            mode="light"
+            className="mt-4 md:mt-6"
           >
-            <FormField
-              control={form.control}
-              name="oldPassword"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 flex flex-col justify-between text-center">
-                  <div className="my-2 w-80">
-                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                      Old password
-                    </FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                  </div>
-                  <FormMessage>{fieldState.error?.message}</FormMessage>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="newPassword"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 flex flex-col justify-between text-center">
-                  <div className="my-2 w-80">
-                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                      New password
-                    </FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                  </div>
-                  <FormMessage>{fieldState.error?.message}</FormMessage>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="newPasswordConfirmation"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 flex flex-col justify-between text-center">
-                  <div className="my-2 w-80">
-                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                      Confirmation
-                    </FormLabel>
-                    <FormControl>
-                      <Input type="password" {...field} />
-                    </FormControl>
-                  </div>
-                  <FormMessage>{fieldState.error?.message}</FormMessage>
-                </FormItem>
-              )}
-            />
-            <Button
-              type="submit"
-              variant="primary"
-              mode="light"
-              className="mt-6"
-            >
-              {t('words.update')}
-            </Button>
-          </form>
-        </Form>
-      </DialogContent>
-    </Dialog>
+            {t('words.update')}
+          </Button>
+        </form>
+      </Form>
+    </BasicModal>
   );
 };

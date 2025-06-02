@@ -4,18 +4,7 @@ import { useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { CourseChapterResponse, CourseExamResults } from '@blms/types';
-import {
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Divider,
-  cn,
-} from '@blms/ui';
+import { BasicModal, Button, DialogClose, Divider, cn } from '@blms/ui';
 
 import { ExamType } from '@blms/constants';
 import FaceFailed from '#src/assets/icons/face_failed.svg';
@@ -227,71 +216,64 @@ export const TimeStampDialog = ({
   onHoverAddColor?: boolean;
 }) => {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <button
-          type="button"
-          className={cn(
-            'group relative justify-center text-nowrap',
-            onHoverAddColor
-              ? 'text-newBlack-1 hover:text-darkOrange-5 hover:underline hover:decoration-darkOrange-5 font-medium'
-              : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
-          )}
-        >
-          {triggerText ?? t('courses.exam.timeStamped')}
-          <img
-            src={QuestionBelow}
-            alt="Question"
-            className="absolute left-1/2 -translate-x-1/2 -bottom-[76px] size-20 hidden md:group-hover:block"
-          />
-        </button>
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[731px] p-4 md:!px-6 md:!py-11 !gap-5 md:!gap-10"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="!title-medium-sb-18px md:!display-small-32px !text-darkOrange-5 !px-2.5 md:!px-7 !text-center !mt-10 !w-full !max-w-[683px] md:whitespace-pre-line">
-            {t('courses.exam.whyTimeStamp')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('courses.exam.whyTimeStamp')}
-          </DialogDescription>
-        </DialogHeader>
-        <div className="!flex !flex-col !gap-10 !items-center">
-          <img
-            src={TimeStamp}
-            alt="Time stamp"
-            className="shrink-0 max-md:w-[90px]"
-          />
-          <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
-            {t('courses.exam.planBTimeStamp')}
-          </p>
-          <div className="flex flex-col gap-5 w-full text-newBlack-1">
-            <div className="flex flex-col">
-              <span className="title-small-med-16px">
-                {t('courses.exam.timeStampHow')}
-              </span>
-              <p className="subtitle-medium-16px">
-                {t('courses.exam.timeStampHowDescription')}
-              </p>
-            </div>
+    <>
+      <BasicModal
+        trigger={
+          <button
+            type="button"
+            className={cn(
+              'group relative justify-center text-nowrap',
+              onHoverAddColor
+                ? 'text-newBlack-1 hover:text-darkOrange-5 hover:underline hover:decoration-darkOrange-5 font-medium'
+                : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
+            )}
+          >
+            {triggerText ?? t('courses.exam.timeStamped')}
+            <img
+              src={QuestionBelow}
+              alt="Question"
+              className="absolute left-1/2 -translate-x-1/2 -bottom-[76px] size-20 hidden md:group-hover:block"
+            />
+          </button>
+        }
+        title={t('courses.exam.whyTimeStamp')}
+        content={
+          <div className="!flex !flex-col !gap-10 !items-center">
+            <img
+              src={TimeStamp}
+              alt="Time stamp"
+              className="shrink-0 max-md:w-[90px]"
+            />
+            <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
+              {t('courses.exam.planBTimeStamp')}
+            </p>
+            <div className="flex flex-col gap-5 w-full text-newBlack-1">
+              <div className="flex flex-col">
+                <span className="title-small-med-16px">
+                  {t('courses.exam.timeStampHow')}
+                </span>
+                <p className="subtitle-medium-16px">
+                  {t('courses.exam.timeStampHowDescription')}
+                </p>
+              </div>
 
-            <div className="flex flex-col">
-              <span className="title-small-med-16px">
-                {t('courses.exam.timeStampBenefits')}
-              </span>
-              <ul className="subtitle-medium-16px flex flex-col list-disc list-outside pl-6">
-                <li>{t('courses.exam.instantVerification')}</li>
-                <li>{t('courses.exam.tamperProof')}</li>
-                <li>{t('courses.exam.globallyRecognized')}</li>
-                <li>{t('courses.exam.futureProof')}</li>
-              </ul>
+              <div className="flex flex-col">
+                <span className="title-small-med-16px">
+                  {t('courses.exam.timeStampBenefits')}
+                </span>
+                <ul className="subtitle-medium-16px flex flex-col list-disc list-outside pl-6">
+                  <li>{t('courses.exam.instantVerification')}</li>
+                  <li>{t('courses.exam.tamperProof')}</li>
+                  <li>{t('courses.exam.globallyRecognized')}</li>
+                  <li>{t('courses.exam.futureProof')}</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+        }
+        showLogo={true}
+      />
+    </>
   );
 };
 
@@ -305,8 +287,8 @@ const TryAgainDialog = ({
   const isMobile = window.innerWidth < 768;
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button
           className="w-fit"
           size={isMobile ? 's' : 'l'}
@@ -320,49 +302,37 @@ const TryAgainDialog = ({
         >
           {t('courses.exam.tryAgain')}
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !p-4 md:!px-6 md:!py-11 gap-6 md:!gap-12 !items-center"
-        showCloseButton
-      >
-        <DialogHeader className="pt-5">
-          <DialogTitle className="!title-medium-sb-18px md:!display-small-32px !text-darkOrange-5 md:!px-7 !text-center !mt-10 !w-full whitespace-pre-line">
-            {t('courses.exam.tryOneMoreTime')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('courses.exam.tryOneMoreTime')}
-          </DialogDescription>
-        </DialogHeader>
+      }
+      title={t('courses.exam.tryOneMoreTime')}
+    >
+      <div className="body-16px md:title-large-24px text-newBlack-1 text-center max-w-[482px] md:px-5 flex flex-col gap-6 md:gap-8">
+        <p>{t('courses.exam.sameRules')}</p>
+        <p>{t('courses.exam.retakeInstructions')}</p>
+        <p>{t('courses.exam.goodLuck')}</p>
+      </div>
 
-        <div className="body-16px md:title-large-24px text-newBlack-1 text-center max-w-[482px] md:px-5 flex flex-col gap-6 md:gap-8">
-          <p>{t('courses.exam.sameRules')}</p>
-          <p>{t('courses.exam.retakeInstructions')}</p>
-          <p>{t('courses.exam.goodLuck')}</p>
-        </div>
-
-        <div className="!flex gap-4 md:!gap-5 pb-5">
-          <DialogClose asChild>
-            <Button
-              variant="primary"
-              size={isMobile ? 's' : 'l'}
-              className="!w-fit"
-              onClick={onStart}
-            >
-              {t('courses.exam.startExam')}
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button
-              variant="outline"
-              size={isMobile ? 's' : 'l'}
-              className="w-fit"
-            >
-              {t('courses.exam.goBack')}
-            </Button>
-          </DialogClose>
-        </div>
-      </DialogContent>
-    </Dialog>
+      <div className="!flex gap-4 md:!gap-5">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 's' : 'l'}
+            className="!w-fit"
+            onClick={onStart}
+          >
+            {t('courses.exam.startExam')}
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 's' : 'l'}
+            className="w-fit"
+          >
+            {t('courses.exam.goBack')}
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };
 

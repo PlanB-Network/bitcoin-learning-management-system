@@ -2,17 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { FaArrowRightLong, FaTelegram } from 'react-icons/fa6';
 
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Loader,
-  cn,
-} from '@blms/ui';
+import { BasicModal, Button, Loader, cn } from '@blms/ui';
 
 import bCertsImage from '#src/assets/about/bcert-presentation.webp?no-inline';
 import { PageLayout } from '#src/components/page-layout.js';
@@ -23,7 +13,6 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BCertEvents } from './-components/b-cert-events.tsx';
 
 import { MdOutlineEmail } from 'react-icons/md';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 
 export const Route = createFileRoute('/$lang/_content/_misc/b-cert')({
   component: BCert,
@@ -121,8 +110,8 @@ const OrganizeDialog = () => {
   const { t } = useTranslation();
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <BasicModal
+      trigger={
         <Button variant="primary" size={isMobile ? 's' : 'l'} type="button">
           {t('bCert.organizeExam')}
           <FaArrowRightLong
@@ -132,68 +121,46 @@ const OrganizeDialog = () => {
             )}
           />
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        className="!bg-white !shadow-course-navigation !border-[#D1D5DB] !rounded-[20px] !flex !flex-col !w-full max-w-[87.5%] md:!max-w-[530px] !px-[15px] !py-5 md:!p-6 gap-6 md:!gap-10 !items-center"
-        showCloseButton
-      >
-        <DialogHeader>
-          <DialogTitle className="hidden">
-            {t('bCert.organizeSessionHub')}
-          </DialogTitle>
-          <DialogDescription className="hidden">
-            {t('bCert.organizeSessionHub')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
-          className="w-[186px] md:w-[266px] mx-auto"
-        />
-
-        <div className="w-full justify-center items-center flex flex-col gap-5 md:gap-6 md:py-5">
-          <p className="text-darkOrange-5 title-medium-sb-18px md:title-large-24px text-center px-7">
-            {t('bCert.organizeSessionHub')}
-          </p>
-
-          <p className="subtitle-medium-16px md:subtitle-large-18px text-newBlack-1 text-center whitespace-pre-line">
-            <Trans i18nKey="bCert.organizeSessionConditions">
-              <a
-                href="https://kutt.planb.network/BCERT-chart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-darkOrange-5 font-semibold"
-              >
-                charter
-              </a>
-            </Trans>
-          </p>
-        </div>
-
-        <div className="!flex gap-4 md:!gap-[30px] pb-[30px]">
-          <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
+      }
+      title={t('bCert.organizeSessionHub')}
+      content={
+        <p>
+          <Trans i18nKey="bCert.organizeSessionConditions">
             <a
-              href="mailto:bcert@planb.network"
-              className="w-fit flex items-center gap-2.5"
-            >
-              <MdOutlineEmail />
-              {t('words.email')}
-            </a>
-          </Button>
-          <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
-            <a
-              href="https://t.me/+PViWTu5CctQ1ZTc8"
+              href="https://kutt.planb.network/BCERT-chart"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit flex items-center gap-2.5"
+              className="hover:text-darkOrange-5 font-semibold"
             >
-              <FaTelegram />
-              {t('words.telegram')}
+              charter
             </a>
-          </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
+          </Trans>
+        </p>
+      }
+      showLogo={true}
+    >
+      <div className="!flex gap-4 md:!gap-[30px]">
+        <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
+          <a
+            href="mailto:bcert@planb.network"
+            className="w-fit flex items-center gap-2.5"
+          >
+            <MdOutlineEmail />
+            {t('words.email')}
+          </a>
+        </Button>
+        <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
+          <a
+            href="https://t.me/+PViWTu5CctQ1ZTc8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit flex items-center gap-2.5"
+          >
+            <FaTelegram />
+            {t('words.telegram')}
+          </a>
+        </Button>
+      </div>
+    </BasicModal>
   );
 };

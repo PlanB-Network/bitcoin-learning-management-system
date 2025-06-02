@@ -1,12 +1,28 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import * as React from 'react';
 import { IoMdClose } from 'react-icons/io';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 
 import { cn } from '#src/lib/utils.ts';
 
 interface DialogTitleProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> {
   variant?: 'orange' | 'black';
+}
+
+interface BasicModalProps {
+  trigger?: React.ReactNode;
+  title?: string;
+  content?: React.ReactNode;
+  showLogo?: boolean;
+  iconSrc?: string;
+  iconAlt?: string;
+  children?: React.ReactNode;
+  showCloseButton?: boolean;
+  titleVariant?: 'orange' | 'black';
+  contentClassName?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const Dialog = DialogPrimitive.Root;
@@ -44,14 +60,14 @@ const DialogContent = React.forwardRef<
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          'my-2 max-h-[95%] overflow-scroll no-scrollbar fixed left-1/2 top-1/2 z-50 grid -translate-x-1/2 -translate-y-1/2 gap-4 border bg-white py-2 px-4 rounded-[1.5em]',
+          'flex flex-col my-2 max-h-[95%] max-w-[90%] overflow-scroll no-scrollbar fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 gap-4 border bg-white py-5 px-4 md:p-6 rounded-[1.5em]',
           className,
         )}
         {...props}
       >
         {showCloseButton && (
-          <DialogPrimitive.Close className="absolute top-3 right-3 flex justify-end rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
-            <IoMdClose className="size-6" />
+          <DialogPrimitive.Close className="absolute top-4 right-4 flex rounded-xs justify-end opacity-100 transition-opacity hover:opacity-70 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-white data-[state=open]:text-muted-foreground">
+            <IoMdClose className="size-5 md:size-6" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}
@@ -66,13 +82,7 @@ const DialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      'flex flex-col space-y-1.5 text-center sm:text-left',
-      className,
-    )}
-    {...props}
-  />
+  <div className={cn('flex flex-col text-center', className)} {...props} />
 );
 DialogHeader.displayName = 'DialogHeader';
 
@@ -80,13 +90,7 @@ const DialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
-      className,
-    )}
-    {...props}
-  />
+  <div className={cn(className)} {...props} />
 );
 DialogFooter.displayName = 'DialogFooter';
 
@@ -94,10 +98,10 @@ const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   DialogTitleProps
 >(({ className, variant = 'orange', ...props }, ref) => {
-  const baseClass = '';
+  const baseClass = 'text-center subtitle-large-18px md:title-large-24px';
   const variantStyles = {
-    orange: 'text-center mobile-h2 md:desktop-h5 text-darkOrange-5 lg:mt-4',
-    black: 'text-black px-2 mb-4 text-center',
+    orange: 'text-darkOrange-5',
+    black: 'text-black',
   };
   const variantClassName = variantStyles[variant] || variantStyles.orange;
 
@@ -117,11 +121,70 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn('text-sm text-muted-foreground', className)}
+    className={cn('body-14px md:subtitle-large-18px', className)}
     {...props}
   />
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
+
+const BasicModal = ({
+  trigger,
+  title,
+  content,
+  showLogo = false,
+  iconSrc,
+  iconAlt = 'Icon',
+  children,
+  showCloseButton = true,
+  titleVariant = 'orange',
+  contentClassName,
+  open,
+  onOpenChange,
+}: BasicModalProps) => {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      <DialogContent
+        className={cn(
+          'gap-6 md:gap-15 w-full max-w-[90%] sm:max-w-[544px]',
+          contentClassName,
+        )}
+        showCloseButton={showCloseButton}
+      >
+        {showLogo && (
+          <img
+            src={PlanBLogoBlack}
+            alt="Logo"
+            className="w-[186px] md:w-[266px] mx-auto pt-6 md:pt-3"
+          />
+        )}
+
+        <div className="flex flex-col items-center text-center gap-5 md:gap-8 py-5">
+          <DialogTitle
+            variant={titleVariant}
+            className="whitespace-pre-line md:max-w-[422px]"
+          >
+            {title}
+          </DialogTitle>
+
+          {iconSrc && (
+            <img src={iconSrc} alt={iconAlt} className="size-10 md:size-15" />
+          )}
+
+          <DialogDescription
+            className={cn(
+              content ? 'whitespace-pre-line md:max-w-[422px]' : 'hidden',
+            )}
+            asChild
+          >
+            {content ? content : <span>{title}</span>}
+          </DialogDescription>
+          {children}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 export {
   Dialog,
@@ -134,4 +197,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  BasicModal,
 };

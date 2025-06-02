@@ -6,11 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
+  BasicModal,
   Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
   Form,
   FormControl,
   FormField,
@@ -82,26 +79,24 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
   );
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent
-        showCloseButton
-        className="pb-[30px] pt-[65px] md:pb-[44px] md:pt-[80px] px-4 w-full max-w-[90%] md:max-w-sm"
+    <>
+      <BasicModal
+        trigger={<button type="button" className="hidden" />}
+        title={t('menu.login')}
+        open={isOpen}
+        onOpenChange={onClose}
+        contentClassName="!max-w-xs md:!max-w-fit"
       >
-        <DialogTitle>{t('menu.login')}</DialogTitle>
-        <DialogDescription className="hidden">
-          {t('menu.login')}
-        </DialogDescription>
-
         <Form {...methods}>
           <form
             onSubmit={methods.handleSubmit(handleLogin)}
-            className="flex w-full flex-col items-center mt-3"
+            className="flex w-full flex-col items-center"
           >
             <FormField
               control={methods.control}
               name="username"
               render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 my-2 w-full md:w-80 text-center">
+                <FormItem className="space-y-2 w-full md:w-80 text-center">
                   <FormLabel>{t('dashboard.profile.username')}</FormLabel>
                   <FormControl>
                     <Input
@@ -158,7 +153,7 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
             </p>
           </form>
         </Form>
-      </DialogContent>
-    </Dialog>
+      </BasicModal>
+    </>
   );
 };
