@@ -10,7 +10,7 @@ export type Frequency =
   | 'm'
   | 'sun4pm'
   | 'jun1_23_gmt'
-  | 'jun2_23_gmt';
+  | 'jun3_0_gmt';
 
 export interface CronService {
   addTask: (cronName: Frequency, task: Fn) => void;
@@ -50,8 +50,8 @@ export const createCronService = () => {
     new CronJob('0 23 1 6 *', createExecTasks('jun1_23_gmt')),
   );
   crons.set(
-    'jun2_23_gmt',
-    new CronJob('0 23 2 6 *', createExecTasks('jun2_23_gmt')),
+    'jun3_0_gmt',
+    new CronJob('0 0 3 6 *', createExecTasks('jun3_0_gmt')),
   );
 
   return {
