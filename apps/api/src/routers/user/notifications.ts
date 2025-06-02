@@ -77,6 +77,7 @@ const getCourseAnnouncementsProcedure = professorProcedure
     createGetScheduledCourseAnnouncements(ctx.dependencies)({
       courseId: input.courseId,
       isPublishedOnly: false,
+      isProfessor: true,
     }),
   );
 

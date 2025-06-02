@@ -4,14 +4,23 @@ import { getScheduledCourseAnnouncementsQuery } from '../queries/get-scheduled-c
 interface Options {
   courseId: string;
   isPublishedOnly?: boolean;
+  isProfessor?: boolean;
 }
 
 export const createGetScheduledCourseAnnouncements = ({
   postgres,
 }: Dependencies) => {
-  return async ({ courseId, isPublishedOnly = true }: Options) => {
+  return async ({
+    courseId,
+    isPublishedOnly = true,
+    isProfessor = false,
+  }: Options) => {
     const announcements = await postgres.exec(
-      getScheduledCourseAnnouncementsQuery({ courseId, isPublishedOnly }),
+      getScheduledCourseAnnouncementsQuery({
+        courseId,
+        isPublishedOnly,
+        isProfessor,
+      }),
     );
     return announcements;
   };

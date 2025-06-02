@@ -4,11 +4,13 @@ import type { ScheduledCourseAnnouncement } from '@blms/types';
 interface Options {
   courseId: string;
   isPublishedOnly?: boolean;
+  isProfessor?: boolean;
 }
 
 export const getScheduledCourseAnnouncementsQuery = ({
   courseId,
   isPublishedOnly = true,
+  isProfessor = false,
 }: Options) => {
   return sql<ScheduledCourseAnnouncement[]>`
     SELECT
@@ -26,6 +28,7 @@ export const getScheduledCourseAnnouncementsQuery = ({
         updated_at
     FROM users.scheduled_course_notifications
     WHERE course_id = ${courseId}
+    ${!isProfessor ? sql`AND student_group = 'all'` : sql``}
     ${isPublishedOnly ? sql`AND is_published = true` : sql``}
 
     ORDER BY scheduled_at ASC;
