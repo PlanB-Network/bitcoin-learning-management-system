@@ -2,8 +2,9 @@
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { cva } from 'class-variance-authority';
-import { Check } from 'lucide-react';
 import * as React from 'react';
+
+import { LuCheck } from 'react-icons/lu';
 
 import { cn } from '#src/lib/utils.ts';
 
@@ -57,7 +58,7 @@ const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Indicator
       className={cn('flex items-center justify-center text-current')}
     >
-      <Check className={cn(checkVariant({ size }))} />
+      <LuCheck className={cn(checkVariant({ size }))} />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));

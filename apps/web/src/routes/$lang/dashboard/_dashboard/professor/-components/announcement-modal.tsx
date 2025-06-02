@@ -26,10 +26,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
 import { fromZonedTime, toZonedTime } from 'date-fns-tz';
 import { t } from 'i18next';
-import { CalendarIcon } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { LuCalendar } from 'react-icons/lu';
 import { z } from 'zod';
 import { AppContext } from '#src/providers/context.tsx';
 import { getUTCOffset, timeZones } from '#src/utils/date.ts';
@@ -351,7 +351,7 @@ export const AnnouncementModal = ({
                                 {t('dashboard.announcements.pickADate')}
                               </span>
                             )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            <LuCalendar className="ml-auto h-4 w-4 opacity-50" />
                           </button>
                         </FormControl>
                       </PopoverTrigger>
