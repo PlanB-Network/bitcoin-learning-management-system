@@ -10,9 +10,9 @@ import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
 import { t } from 'i18next';
-import { ChevronDown, PlusIcon } from 'lucide-react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FaSliders } from 'react-icons/fa6';
+import { LuChevronDown, LuPlus } from 'react-icons/lu';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -231,7 +231,7 @@ function AdminCoupons() {
         variant="primary"
         onClick={() => modal.open()}
       >
-        {t('dashboard.adminPanel.coupons.generateNew')} <PlusIcon />
+        {t('dashboard.adminPanel.coupons.generateNew')} <LuPlus />
       </Button>
 
       <DividerSimple mode="light" className="lg:hidden" />
@@ -846,7 +846,7 @@ function MobileSortDropdown({
             isOpen ? '-rotate-180' : ''
           }`}
         >
-          <ChevronDown />
+          <LuChevronDown />
         </div>
       </button>
 

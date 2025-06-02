@@ -2,9 +2,9 @@ import { ExamType } from '@blms/constants';
 import type { CourseChapterResponse } from '@blms/types';
 import { Alert, AlertDescription, AlertTitle, Divider, Loader } from '@blms/ui';
 import { t } from 'i18next';
-import { AlertCircle } from 'lucide-react';
 import { useContext, useEffect } from 'react';
 import { Trans } from 'react-i18next';
+import { LuCircleAlert } from 'react-icons/lu';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -80,7 +80,7 @@ export const SingleTrialExamPresentation = ({
   return (
     <>
       <Alert variant="default">
-        <AlertTitle icon={AlertCircle}>
+        <AlertTitle icon={LuCircleAlert}>
           {t('courses.exam.singleAttempt')}
         </AlertTitle>
         <AlertDescription>

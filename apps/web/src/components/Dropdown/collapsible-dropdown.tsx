@@ -8,7 +8,7 @@ import {
   CollapsibleTrigger,
   cn,
 } from '@blms/ui';
-import { AlertCircle } from 'lucide-react';
+import { LuCircleAlert } from 'react-icons/lu';
 
 const CollapsibleDropdownVariant = cva(
   'w-full rounded-[12px] flex flex-col px-2.5 py-[5px] justify-center',
@@ -67,7 +67,7 @@ export const CollapsibleDropdown = ({
     >
       <CollapsibleTrigger className={collapsibleTriggerVariant({ variant })}>
         <div className="flex flex-row gap-2 items-center">
-          {type === 'info' ? <AlertCircle className="h-4 w-4" /> : null}
+          {type === 'info' ? <LuCircleAlert className="h-4 w-4" /> : null}
           <span className="body-14px-medium md:body-16px-medium">{title}</span>
         </div>
         <MdKeyboardArrowDown

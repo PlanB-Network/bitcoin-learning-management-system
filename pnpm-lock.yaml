@@ -292,9 +292,6 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
-      lucide-react:
-        specifier: ^0.503.0
-        version: 0.503.0(react@19.1.0)
       password-validator:
         specifier: ^5.3.0
         version: 5.3.0
@@ -698,9 +695,6 @@ importers:
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.1.0)
-      lucide-react:
-        specifier: latest
-        version: 0.511.0(react@19.1.0)
       react:
         specifier: ~19.1.0
         version: 19.1.0
@@ -710,6 +704,9 @@ importers:
       react-hook-form:
         specifier: ^7.56.4
         version: 7.56.4(react@19.1.0)
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.1.0)
       react-toastify:
         specifier: ^11.0.5
         version: 11.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -765,9 +762,6 @@ importers:
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
-      react-icons:
-        specifier: ^5.5.0
-        version: 5.5.0(react@19.1.0)
       storybook:
         specifier: ^8.6.14
         version: 8.6.14(prettier@3.5.3)
@@ -5256,16 +5250,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  lucide-react@0.503.0:
-    resolution: {integrity: sha512-HGGkdlPWQ0vTF8jJ5TdIqhQXZi6uh3LnNgfZ8MHiuxFfX3RZeA79r2MW2tHAZKlAVfoNE8esm3p+O6VkIvpj6w==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  lucide-react@0.511.0:
-    resolution: {integrity: sha512-VK5a2ydJ7xm8GvBeKLS9mu1pVK6ucef9780JVUjw6bAjJL/QXnd4Y0p7SPeOUMC27YhzNCZvm5d/QX0Tp3rc0w==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   luxon@3.6.1:
     resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
@@ -11781,14 +11765,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-react@0.503.0(react@19.1.0):
-    dependencies:
-      react: 19.1.0
-
-  lucide-react@0.511.0(react@19.1.0):
-    dependencies:
-      react: 19.1.0
 
   luxon@3.6.1: {}
 

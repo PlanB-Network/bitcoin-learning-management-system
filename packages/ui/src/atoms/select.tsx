@@ -1,7 +1,7 @@
 import * as SelectPrimitive from '@radix-ui/react-select';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 import * as React from 'react';
 
+import { LuChevronDown, LuChevronUp } from 'react-icons/lu';
 import { cn } from '../lib/utils.js';
 
 const Select = SelectPrimitive.Root;
@@ -27,7 +27,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="size-4 shrink-0 text-[#222222]" />
+      <LuChevronDown className="size-4 shrink-0 text-[#222222]" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -45,7 +45,7 @@ const SelectScrollUpButton = React.forwardRef<
     )}
     {...props}
   >
-    <ChevronUp className="size-4" />
+    <LuChevronUp className="size-4" />
   </SelectPrimitive.ScrollUpButton>
 ));
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
@@ -62,7 +62,7 @@ const SelectScrollDownButton = React.forwardRef<
     )}
     {...props}
   >
-    <ChevronDown className="size-4" />
+    <LuChevronDown className="size-4" />
   </SelectPrimitive.ScrollDownButton>
 ));
 SelectScrollDownButton.displayName =
