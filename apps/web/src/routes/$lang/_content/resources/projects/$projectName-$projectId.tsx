@@ -265,7 +265,7 @@ function Project() {
                         code={language}
                         key={language}
                         size="xl"
-                        className="shrink-0 max-md:hidden"
+                        className="shrink-0 max-md:!hidden"
                       />
                     ))}
                   </div>

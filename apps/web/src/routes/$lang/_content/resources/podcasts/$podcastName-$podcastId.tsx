@@ -133,7 +133,7 @@ function Podcast() {
                     <Flag
                       code={podcast.language}
                       size="m"
-                      className="shrink-0 md:hidden absolute top-[13px] right-[12px]"
+                      className="shrink-0 md:!hidden !absolute top-[13px] right-[12px]"
                     />
                   </div>
                   <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
@@ -160,7 +160,7 @@ function Podcast() {
                       <Flag
                         code={podcast.language}
                         size="xl"
-                        className="shrink-0 max-md:hidden"
+                        className="shrink-0 max-md:!hidden"
                       />
                     </div>
 

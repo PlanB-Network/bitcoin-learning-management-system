@@ -175,7 +175,7 @@ function Lecture() {
                       <Flag
                         code={lecture.languages[0]}
                         size="xl"
-                        className="shrink-0 max-md:hidden"
+                        className="shrink-0 max-md:!hidden"
                       />
                     </div>
 

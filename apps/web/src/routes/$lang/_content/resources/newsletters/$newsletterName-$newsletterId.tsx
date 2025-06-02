@@ -154,7 +154,7 @@ function NewsletterDetail() {
                   <Flag
                     code={newsletter.language}
                     size="m"
-                    className="shrink-0 md:hidden absolute top-[13px] right-[12px]"
+                    className="shrink-0 md:!hidden !absolute top-[13px] right-[12px]"
                   />
                 </div>
 
@@ -181,7 +181,7 @@ function NewsletterDetail() {
                   <Flag
                     code={newsletter.language}
                     size="xl"
-                    className="shrink-0 max-md:hidden"
+                    className="shrink-0 max-md:!hidden"
                   />
                 </div>
                 <p className="text-newGray-3 pr-1 subtitle-small-med-14px md:label-large-med-20px">

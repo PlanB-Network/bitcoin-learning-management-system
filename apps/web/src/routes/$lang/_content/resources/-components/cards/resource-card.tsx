@@ -52,7 +52,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
             <Flag
               code={props.language}
               size="s"
-              className="md:self-center shrink-0 md:hidden"
+              className="shrink-0 md:!hidden"
             />
           )}
         </div>
@@ -70,7 +70,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
             <Flag
               code={props.language}
               size="l"
-              className="md:self-center shrink-0"
+              className="md:!self-center shrink-0"
             />
           )}
         </div>
