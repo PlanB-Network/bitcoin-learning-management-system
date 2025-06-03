@@ -29,7 +29,7 @@
     "remove-markdown": "^0.6.2",
     "typesense": "^2.0.3",
     "uuid": "^11.1.0",
-    "zod": "^3.25.30"
+    "zod": "^3.25.49"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",

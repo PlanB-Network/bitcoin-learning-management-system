@@ -22,7 +22,7 @@
     "@blms/types": "workspace:*"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.817.0",
-    "@aws-sdk/lib-storage": "^3.817.0"
+    "@aws-sdk/client-s3": "^3.821.0",
+    "@aws-sdk/lib-storage": "^3.821.0"
   }
 }
