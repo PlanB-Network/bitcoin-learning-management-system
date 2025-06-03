@@ -11,7 +11,7 @@ import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/_dashboard/-components/change-display-name-modal.tsx';
-import { formatDateRangeTyped } from '#src/utils/date.ts';
+import { formatTimeRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { ChangeDisplayName } from '../shared-between-exams/change-display-name.tsx';
 
@@ -89,7 +89,7 @@ export const SingleTrialExamPresentation = ({
               <Trans
                 i18nKey={'courses.exam.singleAttemptAvailability'}
                 values={{
-                  date: formatDateRangeTyped(
+                  date: formatTimeRange(
                     chapter.startDate!,
                     chapter.endDate!,
                     chapter.timezone ?? 'CET',

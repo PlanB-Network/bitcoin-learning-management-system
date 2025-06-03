@@ -11,7 +11,7 @@ import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
 import { Image } from '#src/components/image.tsx';
-import { getDateStringWithDayAndMonth } from '#src/utils/date.ts';
+import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -283,10 +283,7 @@ export const CourseCardExtended = ({
             {course.startDate && course.endDate && (
               <ListItem
                 leftText={t('dashboard.calendar.calendar')}
-                rightText={getDateStringWithDayAndMonth(
-                  course.startDate,
-                  course.endDate,
-                )}
+                rightText={formatDateRange(course.startDate, course.endDate)}
                 className="md:border-t"
                 variant="dark"
               />

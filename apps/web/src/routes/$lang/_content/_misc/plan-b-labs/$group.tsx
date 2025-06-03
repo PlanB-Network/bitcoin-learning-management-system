@@ -25,12 +25,7 @@ import { AuthorCard } from '#src/components/author-card.tsx';
 import { MainLayout } from '#src/components/main-layout.js';
 import { ReactPlayer } from '#src/components/react-player.tsx';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
-import {
-  formatDate,
-  getDateString,
-  getTimeString,
-  userTimeZone,
-} from '#src/utils/date.ts';
+import { formatDate, formatHourRange, userTimeZone } from '#src/utils/date.ts';
 import { cdnUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -240,18 +235,15 @@ function PlanBLabs() {
                   <>
                     <div className="flex flex-col lg:flex-row max-lg:items-center lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
                       <span>
-                        {getDateString(
-                          lastSession.startDate,
-                          lastSession.endDate,
-                          userTimeZone,
-                        )}
+                        {formatDate(lastSession.startDate, userTimeZone)}
                       </span>
                       <DividerVertical className="my-1 mx-2 bg-black" />
                       <span className="font-semibold uppercase">
-                        {getTimeString(
+                        {formatHourRange(
                           lastSession.startDate,
                           lastSession.endDate,
                           userTimeZone,
+                          true,
                         )}
                       </span>
                     </div>

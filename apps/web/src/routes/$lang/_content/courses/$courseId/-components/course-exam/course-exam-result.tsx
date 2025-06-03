@@ -14,7 +14,7 @@ import TimeStamp from '#src/assets/icons/time_stamp.svg';
 import Warning from '#src/assets/icons/warning.svg';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { goToChapterParameters } from '#src/utils/courses.ts';
-import { oneDayInMs } from '#src/utils/date.ts';
+import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { AnswersReviewPanel } from '../shared-between-exams/answers-review-panel.tsx';
 
@@ -295,7 +295,7 @@ const TryAgainDialog = ({
           variant="primary"
           disabled={
             examResults
-              ? new Date(examResults.startedAt).getTime() + oneDayInMs >
+              ? new Date(examResults.startedAt).getTime() + ONE_DAY_IN_MS >
                 Date.now()
               : true
           }

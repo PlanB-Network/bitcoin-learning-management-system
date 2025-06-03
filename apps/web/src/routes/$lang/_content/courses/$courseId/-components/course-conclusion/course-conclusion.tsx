@@ -26,7 +26,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { oneDayInMs } from '#src/utils/date.ts';
+import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { CourseReviewComponent } from '../course-review-component.tsx';
 import { ConclusionFinish } from './conclusion-finish.tsx';
 import { StepMessage } from './step-message.tsx';
@@ -556,7 +556,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                               : new Date(
                                   previousExamResults.startedAt,
                                 ).getTime() +
-                                  oneDayInMs >
+                                  ONE_DAY_IN_MS >
                                 Date.now()
                             : false
                         }

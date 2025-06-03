@@ -13,7 +13,7 @@ import { MdAccessAlarm } from 'react-icons/md';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
-import { formatDate, getTimeString } from '#src/utils/date.ts';
+import { formatDate, formatHourRange } from '#src/utils/date.ts';
 import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -510,10 +510,11 @@ export const getNotificationContent = (
       return `${t('notifications.calendar_24h', {
         formattedTime:
           chapter?.startDate &&
-          getTimeString(
+          formatHourRange(
             chapter?.startDate,
             chapter?.endDate ?? undefined,
             chapter?.timezone ?? undefined,
+            true,
           ),
       })} ${isInPerson ? t('notifications.bookYourSeat') : ''}`;
     }
@@ -523,29 +524,26 @@ export const getNotificationContent = (
       return t('notifications.calendar_48h_online_event', {
         formattedTime:
           event?.startDate &&
-          getTimeString(
+          formatHourRange(
             event?.startDate,
             event?.endDate ?? undefined,
             event?.timezone ?? undefined,
+            true,
           ),
         date:
           event?.startDate &&
-          formatDate(
-            event?.startDate,
-            event.timezone ?? undefined,
-            true,
-            false,
-          ),
+          formatDate(event?.startDate, event.timezone ?? undefined),
         eventName: event?.name,
       });
     case NotificationType.Calendar24HoursInPersonEvent:
       return t('notifications.calendar_24h_in_person_event', {
         formattedTime:
           event?.startDate &&
-          getTimeString(
+          formatHourRange(
             event?.startDate,
             event?.endDate ?? undefined,
             event?.timezone ?? undefined,
+            true,
           ),
         eventName: event?.name,
         adressLine: event?.addressLine1,

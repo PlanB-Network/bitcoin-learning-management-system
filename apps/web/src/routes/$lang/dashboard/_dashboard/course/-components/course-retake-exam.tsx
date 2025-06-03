@@ -17,7 +17,7 @@ import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { TimeStampDialog } from '#src/routes/$lang/_content/courses/$courseId/-components/course-exam/course-exam-result.tsx';
 import { AnswersReviewPanel } from '#src/routes/$lang/_content/courses/$courseId/-components/shared-between-exams/answers-review-panel.tsx';
-import { oneDayInMs } from '#src/utils/date.ts';
+import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseRetakeExam = ({
@@ -332,7 +332,7 @@ const CourseExamsTable = ({
                             disabled={
                               examResults
                                 ? new Date(exam.startedAt).getTime() +
-                                    oneDayInMs >
+                                    ONE_DAY_IN_MS >
                                   Date.now()
                                 : true
                             }
@@ -344,7 +344,7 @@ const CourseExamsTable = ({
                               disabled={
                                 exam
                                   ? new Date(exam.startedAt).getTime() +
-                                      oneDayInMs >
+                                      ONE_DAY_IN_MS >
                                     Date.now()
                                   : true
                               }

@@ -8,7 +8,7 @@ import { MdOutlineCalendarMonth } from 'react-icons/md';
 import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
-import { getDateString } from '#src/utils/date.ts';
+import { formatDate } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const SingleTrialExam = ({
@@ -96,14 +96,7 @@ const ExamItem = ({
   const isExamEnded = exam.endDate.getTime() < now;
   const examWeight = Math.round(((exam.rateWeight ?? 1) * 100) / totalWeight);
 
-  let nbQuestion = examInfo?.nbQuestions ?? 0;
-
-  // TODO remove hardcoded data when quiz questions are in the data repo
-  if (exam.chapterId === '6065ea4e-2675-11f0-b6ab-bb5e1522cb78') {
-    nbQuestion = 25;
-  } else if (exam.chapterId === '9a307a50-2675-11f0-a893-57c148082c1f') {
-    nbQuestion = 50;
-  }
+  const nbQuestion = examInfo?.nbQuestions ?? 0;
 
   return isExamResultsFetched ? (
     <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-newGray-5 bg-newGray-6 rounded-2xl gap-3 md:gap-5">
@@ -135,15 +128,7 @@ const ExamItem = ({
               </div>
               <div className="flex items-center gap-2 text-sm text-newBlack-3">
                 <MdOutlineCalendarMonth size={24} />
-                <span>
-                  {getDateString(
-                    exam.startDate,
-                    exam.endDate,
-                    undefined,
-                    false,
-                    false,
-                  )}
-                </span>
+                <span>{formatDate(exam.startDate)}</span>
               </div>
             </>
           )}

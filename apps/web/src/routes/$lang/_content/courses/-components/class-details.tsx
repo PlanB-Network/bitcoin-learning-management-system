@@ -6,7 +6,7 @@ import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import { BasicModal, Button, DialogClose } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
-import { formatDate, formatTime, getTimeString } from '#src/utils/date.js';
+import { formatDate, formatHourRange } from '#src/utils/date.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
@@ -72,7 +72,7 @@ export const ClassDetails = ({
 
   const formattedTime =
     chapter.startDate && chapter.endDate
-      ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
+      ? `${formatHourRange(chapter.startDate, chapter.endDate, timezone)}`
       : '';
 
   return (
@@ -91,10 +91,11 @@ export const ClassDetails = ({
               <div className="flex gap-2 items-center">
                 <MdAccessTime size={18} className="shrink-0" />
                 <span>
-                  {getTimeString(
+                  {formatHourRange(
                     chapter.startDate,
                     chapter.endDate || undefined,
                     chapter.timezone || undefined,
+                    true,
                   )}
                 </span>
               </div>

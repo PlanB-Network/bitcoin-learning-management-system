@@ -5,7 +5,7 @@ import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import { Button } from '@blms/ui';
 
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
-import { formatDate, formatTime } from '#src/utils/date.js';
+import { formatDate, formatHourRange } from '#src/utils/date.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -31,7 +31,7 @@ export const ModalBookSuccess = ({
     : '';
   const formattedTime =
     chapter.startDate && chapter.endDate
-      ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
+      ? `${formatHourRange(chapter.startDate, chapter.endDate, timezone)}`
       : '';
 
   return (

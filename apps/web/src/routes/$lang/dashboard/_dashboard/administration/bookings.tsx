@@ -53,7 +53,6 @@ function AdminBookings() {
           {t('dashboard.adminPanel.upcomingBookingsSubtitle')}
         </span>
       </div>
-
       <BookingTable />
     </section>
   );

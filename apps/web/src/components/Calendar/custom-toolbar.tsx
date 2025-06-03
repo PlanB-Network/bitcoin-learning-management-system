@@ -1,6 +1,6 @@
 import { cn } from '@blms/ui';
 import type { Messages, ToolbarProps, View } from 'react-big-calendar';
-import { getDateString } from '#src/utils/date.ts';
+import { formatDateRange } from '#src/utils/date.ts';
 import type { CalendarEvent } from './calendar-event.ts';
 
 const formatAgendaLabel = (label: string): string => {
@@ -14,7 +14,7 @@ const formatAgendaLabel = (label: string): string => {
     const startDate = new Date(startDateStr);
     const endDate = new Date(endDateStr);
 
-    return getDateString(startDate, endDate);
+    return formatDateRange(startDate, endDate);
   } catch (error) {
     console.error('Error formatting agenda label:', error);
     return label;

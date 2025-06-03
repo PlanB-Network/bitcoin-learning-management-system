@@ -7,7 +7,7 @@ import { cn } from '@blms/ui';
 import { LANGUAGES_MAP } from '@blms/shared';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
-import { getDateString, getTimeString } from '#src/utils/date.js';
+import { formatDateRange, formatHourRange } from '#src/utils/date.js';
 import { resourceImgUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
@@ -33,8 +33,8 @@ export const ModalBookSummary = ({
   const startDate = event.startDate;
   const endDate = event.endDate;
 
-  const dateString = getDateString(startDate, endDate, timezone);
-  const timeString = getTimeString(startDate, endDate, timezone);
+  const dateString = formatDateRange(startDate, endDate, timezone);
+  const timeString = formatHourRange(startDate, endDate, timezone, true);
 
   return (
     <div

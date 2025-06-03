@@ -13,7 +13,7 @@ import {
   TableRow,
 } from '@blms/ui';
 
-import { formatDateWithoutTime } from '#src/utils/date.ts';
+import { formatDate } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 interface EventProps {
@@ -154,7 +154,7 @@ const EventRow = ({ event, participants }: EventProps) => {
     <TableRow className="*:capitalize *:align-top">
       <TableCell>{event.type}</TableCell>
       <TableCell>{event.name}</TableCell>
-      <TableCell>{formatDateWithoutTime(startDate)}</TableCell>
+      <TableCell>{formatDate(startDate)}</TableCell>
       <TableCell>{participants.length}</TableCell>
       <TableCell>
         <Button
@@ -179,7 +179,7 @@ const EventCard = ({ event, participants }: EventProps) => {
       <div className="flex flex-col gap-1">
         <span className="text-newBlack-1 mobile-subtitle1">{event.name}</span>
         <span className="flex-none text-sm text-newBlack-5">
-          {formatDateWithoutTime(startDate)}
+          {formatDate(startDate)}
           <span className="inline-block mx-1 text-newBlack-5">·</span>
           <span className="capitalize text-newBlack-5">{event.type}</span>
         </span>

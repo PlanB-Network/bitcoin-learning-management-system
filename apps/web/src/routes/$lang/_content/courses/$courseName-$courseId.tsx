@@ -38,7 +38,7 @@ import { useAuthModal } from '#src/providers/auth.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { formatDate, getDateString } from '#src/utils/date.ts';
+import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
@@ -314,7 +314,7 @@ function CourseDetails() {
                   {course.startDate && course.endDate ? (
                     <>
                       <span className="font-light mx-2 max-md:hidden"> | </span>
-                      {getDateString(course.startDate, course.endDate)}
+                      {formatDateRange(course.startDate, course.endDate)}
                     </>
                   ) : (
                     ''
@@ -423,7 +423,6 @@ function CourseDetails() {
               <BuyCourseButtons />
             </div>
           </article>
-
           {displayDownloadTicket && (
             <div className="ml-2 max-lg:mb-4 max-lg:italic lg:mt-2 flex flex-col gap-4 w-fit">
               <p className="text-lg font-normal max-md:text-base">
@@ -662,8 +661,8 @@ function CourseDetails() {
               addressLine1: '', // TODO ADD
               addressLine2: '', // TODO ADD
               addressLine3: '', // TODO ADD
-              formattedStartDate: `Start date: ${formatDate(course.startDate)}`,
-              formattedTime: `End date: ${formatDate(course.endDate)}`,
+              formattedStartDate: `Start date: ${formatDate(course.startDate ?? undefined)}`,
+              formattedTime: `End date: ${formatDate(course.endDate ?? undefined)}`,
               liveLanguage:
                 LANGUAGES_MAP[
                   course.originalLanguage.toLowerCase().replaceAll('-', '')

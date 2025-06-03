@@ -16,7 +16,7 @@ import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { filterAndRandomizeCourses } from '#src/routes/$lang/_content/_misc/exam-certificates.$certificateId.tsx';
-import { oneDayInMs } from '#src/utils/date.ts';
+import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { TimeStampDialog } from '../course-exam/course-exam-result.tsx';
@@ -279,7 +279,8 @@ const Diploma = ({
                 examResults
                   ? examResults.succeeded
                     ? false
-                    : new Date(examResults.startedAt).getTime() + oneDayInMs >
+                    : new Date(examResults.startedAt).getTime() +
+                        ONE_DAY_IN_MS >
                       Date.now()
                   : false
               }

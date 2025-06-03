@@ -6,7 +6,7 @@ import type { CourseResponse } from '@blms/types';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
-import { getDateString } from '#src/utils/date.ts';
+import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
@@ -100,7 +100,7 @@ export const ModalPaymentSummary = ({
             <>
               <PaymentRow
                 label={t('courses.payment.date')}
-                value={`${getDateString(course.startDate!, course.endDate!)}`}
+                value={`${formatDateRange(course.startDate, course.endDate)}`}
               />
               <Separator />
             </>

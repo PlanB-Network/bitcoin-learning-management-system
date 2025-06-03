@@ -7,7 +7,7 @@ import { cn } from '@blms/ui';
 import { LANGUAGES_MAP } from '@blms/shared';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
-import { getDateString, getTimeString } from '#src/utils/date.js';
+import { formatDateRange, formatHourRange } from '#src/utils/date.js';
 import { assetUrl } from '#src/utils/index.ts';
 
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
@@ -72,7 +72,7 @@ export const ModalBookSummary = ({
             label={t('courses.payment.date')}
             value={
               startDate && endDate
-                ? getDateString(startDate, endDate, timezone)
+                ? formatDateRange(startDate, endDate, timezone)
                 : 'TBA'
             }
           />
@@ -81,7 +81,7 @@ export const ModalBookSummary = ({
             label={t('courses.payment.time')}
             value={
               startDate && endDate
-                ? getTimeString(startDate, endDate, timezone)
+                ? formatHourRange(startDate, endDate, timezone, true)
                 : 'TBA'
             }
           />

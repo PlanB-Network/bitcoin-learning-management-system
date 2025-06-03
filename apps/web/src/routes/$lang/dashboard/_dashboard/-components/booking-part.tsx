@@ -9,7 +9,7 @@ import { BasicModal, Button, Card, DialogClose } from '@blms/ui';
 import { t } from 'i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
-import { formatDate, formatTime } from '#src/utils/date.js';
+import { formatDate, formatHourRange } from '#src/utils/date.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -163,7 +163,7 @@ const Buttons = ({
     formattedStartDate = chapter.startDate ? formatDate(chapter.startDate) : '';
     formattedTime =
       chapter.startDate && chapter.endDate
-        ? `${formatTime(chapter.startDate, timezone)} ${t('words.to')} ${formatTime(chapter.endDate, timezone)}`
+        ? `${formatHourRange(chapter.startDate, chapter.endDate, timezone)}`
         : '';
   }
 
@@ -218,6 +218,7 @@ const Buttons = ({
             }}
           >
             {t('words.download')}
+            AAA
             {isPendingTicket || isPendingChapter ? (
               <span className="ml-3">
                 <FiLoader />
@@ -225,7 +226,6 @@ const Buttons = ({
             ) : null}
           </Button>
         )}
-
         {ticket.isOnline && (
           <Link
             to={'/events/$eventId'}
@@ -244,7 +244,6 @@ const Buttons = ({
             </Button>
           </Link>
         )}
-
         {!ticket.isPaid && ticket.date > now ? (
           <CancelBookingDialog
             onConfirm={async () => {

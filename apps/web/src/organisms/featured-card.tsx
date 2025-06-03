@@ -1,13 +1,12 @@
+import { TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useContext } from 'react';
 
-import { formatDateSimple } from '@blms/api/src/utils/date.ts';
-import { TextTag } from '@blms/ui';
-
 import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.js';
+import { formatDate } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -81,7 +80,7 @@ export const FeaturedCard = ({
             <span className="text-newBlack-5">•</span>
             <span className="text-black lg:text-2xl font-medium lg:font-normal text-sm">
               {latestBlog.date
-                ? formatDateSimple(latestBlog.date)
+                ? formatDate(latestBlog.date)
                 : t('home.blogSection.noDateAvailable')}
             </span>
           </div>

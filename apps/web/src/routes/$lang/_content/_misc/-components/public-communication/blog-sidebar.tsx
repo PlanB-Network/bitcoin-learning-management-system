@@ -1,4 +1,3 @@
-import { formatMonthYear } from '@blms/api/src/utils/date.ts';
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
 import { useContext } from 'react';
@@ -7,6 +6,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import MessageIcon from '../../../../../../assets/icons/icon-message.svg';
 
 import { AppContext } from '#src/providers/context.js';
+import { formatMonthAndYear } from '#src/utils/date.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 interface BlogSidebarProps {
@@ -60,7 +60,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
             >
               <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">
                 <p className="subtitle-medium-16px text-gray-600 min-w-[77px]">
-                  {formatMonthYear(new Date(blog.date))}
+                  {formatMonthAndYear(new Date(blog.date))}
                 </p>
                 <IoIosArrowForward size={16} className="text-black mx-1" />
                 <p className="subtitle-medium-med-16px truncate min-w-[183px] max-w-52">

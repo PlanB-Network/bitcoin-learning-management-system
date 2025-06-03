@@ -9,7 +9,7 @@ import { Image } from '#src/components/image.tsx';
 import { useGreater } from '#src/hooks/use-greater.js';
 import Flag from '#src/molecules/Flag/index.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
-import { getDateString, getTimeString } from '#src/utils/date.js';
+import { formatDateRange, formatHourRange } from '#src/utils/date.js';
 import { resourceImgUrl } from '#src/utils/index.ts';
 
 interface EventCardProps {
@@ -69,8 +69,8 @@ export const EventCard = ({
   const startDate = event.startDate;
   const endDate = event.endDate;
 
-  const dateString = getDateString(startDate, endDate, timezone);
-  const timeString = getTimeString(startDate, endDate, timezone);
+  const dateString = formatDateRange(startDate, endDate, timezone);
+  const timeString = formatHourRange(startDate, endDate, timezone, true);
 
   const isFree = !event.priceDollars;
 

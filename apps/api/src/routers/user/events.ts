@@ -48,6 +48,7 @@ const downloadEventTicketProcedure = studentProcedure
     const formattedStartDate = event.startDate
       ? formatDate(event.startDate)
       : '';
+
     const formattedTime =
       event.startDate && event.endDate
         ? `${formatTime(event.startDate, timezone)} to ${formatTime(
