@@ -154,7 +154,7 @@ function Channel() {
                       <Flag
                         code={channel.language}
                         size="xl"
-                        className="shrink-0 max-md:hidden"
+                        className="shrink-0 max-md:!hidden"
                       />
                     </div>
 

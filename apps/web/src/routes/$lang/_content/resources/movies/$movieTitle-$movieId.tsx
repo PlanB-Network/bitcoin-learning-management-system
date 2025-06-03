@@ -135,7 +135,7 @@ function Movie() {
                       <Flag
                         code={movie.language}
                         size="m"
-                        className="shrink-0 md:hidden absolute top-[13px] right-[12px]"
+                        className="shrink-0 md:!hidden !absolute top-[13px] right-[12px]"
                       />
                     </div>
                     <div className="flex flex-row justify-evenly md:flex-col lg:flex-row">
@@ -162,7 +162,7 @@ function Movie() {
                         <Flag
                           code={movie.language}
                           size="xl"
-                          className="shrink-0 max-md:hidden"
+                          className="shrink-0 max-md:!hidden"
                         />
                       </div>
 
