@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+
 export const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 export const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
@@ -5,7 +7,7 @@ export const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
 export function formatDate(
   value: Date | string | number | undefined,
   timezone?: string,
-  locale = navigator.language,
+  locale = getEffectiveLocale(),
 ) {
   if (!value) {
     return '';
@@ -21,7 +23,7 @@ export function formatDateRange(
   from: Date | string | number | undefined,
   to: Date | string | number | undefined,
   timezone?: string,
-  locale = navigator.language,
+  locale = getEffectiveLocale(),
 ) {
   if (!from || !to) {
     return '';
@@ -75,7 +77,7 @@ export function formatDateRange(
 export function formatTime(
   value: Date | string | number | undefined,
   timezone?: string,
-  locale = navigator.language,
+  locale = getEffectiveLocale(),
 ) {
   if (!value) {
     return '';
@@ -91,7 +93,7 @@ export function formatTimeRange(
   from: Date | string | number | undefined,
   to: Date | string | number | undefined,
   timezone?: string,
-  locale = navigator.language,
+  locale = getEffectiveLocale(),
 ) {
   if (!from || !to) {
     return '';
@@ -147,7 +149,7 @@ export function formatHourRange(
   to: Date | string | number | undefined,
   timezone?: string,
   displayTimezone = false,
-  locale: string = navigator.language,
+  locale: string = getEffectiveLocale(),
 ): string {
   if (!from || !to) {
     return '';
@@ -182,7 +184,7 @@ export function formatHourRange(
 export function formatMonthAndYear(
   value: Date | string | number | undefined,
   timezone?: string,
-  locale = navigator.language,
+  locale = getEffectiveLocale(),
 ) {
   if (!value) {
     return '';
@@ -316,4 +318,18 @@ const getEffectiveTimezone = (timezone: string | undefined) => {
   }
 
   return effectiveTimezone;
+};
+
+const getEffectiveLocale = () => {
+  let effectiveLocale: string;
+
+  if (i18next?.language) {
+    effectiveLocale = i18next.language;
+  } else if (typeof navigator !== 'undefined' && navigator.language) {
+    effectiveLocale = navigator.language;
+  } else {
+    effectiveLocale = 'en-GB';
+  }
+
+  return effectiveLocale;
 };

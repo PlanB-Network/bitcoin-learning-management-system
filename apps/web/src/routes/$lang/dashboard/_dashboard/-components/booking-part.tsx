@@ -218,7 +218,6 @@ const Buttons = ({
             }}
           >
             {t('words.download')}
-            AAA
             {isPendingTicket || isPendingChapter ? (
               <span className="ml-3">
                 <FiLoader />
