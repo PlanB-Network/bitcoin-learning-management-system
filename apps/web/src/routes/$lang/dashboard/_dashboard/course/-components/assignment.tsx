@@ -276,7 +276,7 @@ export const Assignment = ({
           title={t('dashboard.course.assignmentInformation')}
           className="border border-newGray-4"
           variant="dark"
-          defaultOpen={true}
+          defaultOpen={!hasAffectedAssignment}
           type="info"
         >
           <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">

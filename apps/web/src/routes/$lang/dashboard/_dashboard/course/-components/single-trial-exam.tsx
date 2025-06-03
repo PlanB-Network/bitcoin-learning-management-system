@@ -35,7 +35,7 @@ export const SingleTrialExam = ({
         title={t('dashboard.course.generalInformation')}
         className="border border-newGray-4"
         variant="dark"
-        defaultOpen={true}
+        defaultOpen={singleTrialExams.length === 0}
         type="info"
       >
         <p className="whitespace-pre-line text-newBlack-4 max-md:text-sm">
