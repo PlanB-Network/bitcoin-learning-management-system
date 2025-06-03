@@ -1,13 +1,12 @@
 import { format } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
-import { FaVideo } from 'react-icons/fa';
 
-import type { CalendarEvent } from './calendar-event.ts';
+import type { CalendarEvent } from './calendar-event.js';
 
 type CustomEventProps = EventProps<CalendarEvent>;
 
-export const CustomEvent = ({ event }: CustomEventProps) => {
+export const CustomEventWeek = ({ event }: CustomEventProps) => {
   const [isSelected, setIsSelected] = useState(false);
 
   let cssClasses: string;
@@ -48,9 +47,6 @@ export const CustomEvent = ({ event }: CustomEventProps) => {
     >
       <div className="flex flex-row text-sm pl-1">
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
-        {event.isOnline && (
-          <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
-        )}
       </div>
       <div className="font-semibold text-sm">{event.title}</div>
       <div className="text-sm">{event.organizer}</div>

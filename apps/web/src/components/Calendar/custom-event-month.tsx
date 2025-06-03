@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
-import { FaVideo } from 'react-icons/fa';
 
 import type { CalendarEvent } from './calendar-event.ts';
 
@@ -44,12 +43,6 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
         className={`flex flex-row text-sm pl-1 ${isSelected ? 'order-1' : 'order-2'}`}
       >
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
-        {event.isOnline && (
-          <FaVideo
-            className="size-6 ml-auto bg-white p-1 rounded-lg"
-            aria-label="Online event"
-          />
-        )}
       </div>
       <div className="font-semibold text-sm whitespace-normal w-full">
         {event.title}

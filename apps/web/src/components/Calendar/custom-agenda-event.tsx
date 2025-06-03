@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
-import { FaVideo } from 'react-icons/fa';
 
 import { format, isSameDay } from 'date-fns';
 import type { CalendarEvent } from './calendar-event.js';
@@ -26,9 +25,6 @@ export const CustomAgendaEvent = ({ event }: CustomAgendaEventProps) => {
     >
       <div className="flex flex-row text-sm">
         <div className="font-semibold text-sm">{event.title}</div>
-        {event.isOnline && (
-          <FaVideo className="size-6 ml-auto bg-white p-1 rounded-lg" />
-        )}
       </div>
 
       <div className="text-sm">{event.organizer}</div>

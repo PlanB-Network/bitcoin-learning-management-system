@@ -13,7 +13,7 @@ import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.js';
-import { CustomEvent } from '#src/components/Calendar/custom-event.js';
+import { CustomEventWeek } from '#src/components/Calendar/custom-event-week.tsx';
 import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js';
 
@@ -56,7 +56,7 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
 
   const weekComponents: Components<CalendarEvent> = {
     toolbar: CustomToolbar,
-    event: CustomEvent,
+    event: CustomEventWeek,
     week: {
       header: CustomWeekHeader,
     },
