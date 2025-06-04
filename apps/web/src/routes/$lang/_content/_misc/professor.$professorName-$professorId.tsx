@@ -3,12 +3,11 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-import { Loader } from '@blms/ui';
+import { BackLink, Loader } from '@blms/ui';
 
 import { AuthorCardFull } from '#src/components/author-card-full.js';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
-import { BackLink } from '#src/molecules/backlink.tsx';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 

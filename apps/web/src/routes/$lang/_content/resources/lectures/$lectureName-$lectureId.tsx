@@ -4,6 +4,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
+  BackLink,
   Card,
   Carousel,
   CarouselContent,
@@ -20,7 +21,6 @@ import BookOpen from '#src/assets/resources/library.svg';
 import VideoPreview from '#src/assets/resources/preview-video.webp?no-inline';
 import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { BackLink } from '#src/molecules/backlink.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';

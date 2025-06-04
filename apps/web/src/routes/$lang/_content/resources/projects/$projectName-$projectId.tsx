@@ -11,13 +11,12 @@ import conferenceSvg from '#src/assets/resources/conference.svg';
 import youtubeSvg from '#src/assets/resources/youtube.svg';
 import tutorialsSvg from '#src/assets/tutorials/other.svg';
 
-import { Button, Flag, Loader, cn } from '@blms/ui';
+import { BackLink, Button, Flag, Loader, cn } from '@blms/ui';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
-import { BackLink } from '#src/molecules/backlink.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
