@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Progress } from '../../atoms/progress.tsx';
 import OrangePill from '../assets/orange_pill_color.svg';
 

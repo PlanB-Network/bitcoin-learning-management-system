@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from '#src/atoms/badge.tsx';
 
 const meta: Meta<typeof Badge> = {

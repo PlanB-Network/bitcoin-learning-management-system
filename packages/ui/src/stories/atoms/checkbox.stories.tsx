@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Checkbox } from '#src/atoms/checkbox.tsx';
 
 const meta: Meta<typeof Checkbox> = {

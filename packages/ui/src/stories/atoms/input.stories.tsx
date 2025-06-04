@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Input } from '../../atoms/input.tsx';
 
 const meta: Meta<typeof Input> = {

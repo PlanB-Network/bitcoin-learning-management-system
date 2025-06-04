@@ -1,4 +1,4 @@
-/** @type { import('@storybook/react').Preview } */
+/** @type { import('@storybook/react-vite').Preview } */
 
 import '../src/styles/global.css';
 
@@ -20,6 +20,8 @@ const preview = {
       },
     },
   },
+
+  tags: ['autodocs'],
 };
 
 export default preview;
