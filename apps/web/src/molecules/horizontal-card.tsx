@@ -2,9 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { ButtonProps } from '@blms/ui';
-import { Button, cn } from '@blms/ui';
-
-import Flag from '#src/molecules/Flag/index.js';
+import { Button, Flag, cn } from '@blms/ui';
 
 interface HorizontalCardProps {
   title: string;

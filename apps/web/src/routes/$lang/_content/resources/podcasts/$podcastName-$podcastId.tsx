@@ -11,13 +11,13 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  Flag,
   Loader,
   TextTag,
 } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
-import Flag from '#src/molecules/Flag/index.tsx';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';

@@ -2,11 +2,11 @@ import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
+import { ButtonWithArrow } from '@blms/ui';
 import CircuitLeft from '#src/assets/certificates/circuit-left.svg';
 import CircuitRight from '#src/assets/certificates/circuit-right.svg';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.js';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/bcert-certificates/$certificateId',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RatingChart } from '#src/molecules/Chart/rating-chart.tsx';
 
 const meta: Meta<typeof RatingChart> = {
-  title: 'Molecules/RatingChart',
+  title: 'Molecules/rating-chart',
   component: RatingChart,
   parameters: {},
   tags: ['autodocs'],

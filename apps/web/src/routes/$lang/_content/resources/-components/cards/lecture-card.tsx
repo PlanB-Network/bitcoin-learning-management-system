@@ -3,10 +3,9 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { JoinedEvent } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, Flag, cn } from '@blms/ui';
 
 import { Image } from '#src/components/image.tsx';
-import Flag from '#src/molecules/Flag/index.js';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 

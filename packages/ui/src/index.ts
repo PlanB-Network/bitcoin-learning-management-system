@@ -29,6 +29,7 @@ export * from './atoms/textarea.tsx';
 export * from './atoms/toast.tsx';
 export * from './atoms/tooltip.tsx';
 export * from './atoms/button-arrow.tsx';
+export * from './atoms/Flag/flag.tsx';
 export * from './molecules/Chart/rating-chart.tsx';
 export * from './molecules/Stars/star-rating.tsx';
 export * from './lib/utils.ts';

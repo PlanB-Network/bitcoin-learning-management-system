@@ -2,9 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { Button, TextTag, cn } from '@blms/ui';
-
-import Flag from '#src/molecules/Flag/index.js';
+import { Button, Flag, TextTag, cn } from '@blms/ui';
 
 interface ConferenceRowProps {
   name: string;

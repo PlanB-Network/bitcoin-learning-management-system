@@ -2,10 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { ButtonProps } from '@blms/ui';
-import { Button, cn } from '@blms/ui';
+import { Button, Flag, cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
-import Flag from '#src/molecules/Flag/index.js';
 
 import type { JSX } from 'react';
 import { Image } from '#src/components/image.tsx';

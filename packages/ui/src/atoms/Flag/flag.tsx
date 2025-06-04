@@ -19,7 +19,7 @@ interface Props {
 }
 
 const Flag: React.FC<Props> = ({
-  code = 'US',
+  code = 'fr',
   size = 'l',
   gradient = '',
   hasBorder = false,
@@ -54,4 +54,4 @@ const Flag: React.FC<Props> = ({
   );
 };
 
-export default Flag;
+export { Flag };
