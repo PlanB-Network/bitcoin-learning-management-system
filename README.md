@@ -1,6 +1,6 @@
 # Plan ₿ Network
 
-This is the repository for the PlanB Network website. The goal of this project is to create a free, open-source, and community-driven platform to learn about Bitcoin.
+This is the repository for the Plan B Network website. The goal of this project is to create a free, open-source, and community-driven platform to learn about Bitcoin.
 
 The repository holding the data for this project is [here](https://github.com/PlanB-Network/bitcoin-educational-content).
 

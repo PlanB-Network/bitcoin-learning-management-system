@@ -33,7 +33,7 @@ export const createSendEmail = ({ config }: Pick<Dependencies, 'config'>) => {
         subject,
         from: {
           email: config.sendgrid.email,
-          name: 'PlanB Network',
+          name: 'Plan B Network',
         },
         template_id: options.template,
         personalizations: [
