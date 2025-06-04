@@ -4,7 +4,7 @@ import type {
   CourseResponse,
   ScheduledCourseAnnouncement,
 } from '@blms/types';
-import { Divider, TextTag, cn } from '@blms/ui';
+import { ButtonWithArrow, Divider, TextTag, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,6 @@ import { IoMdClose } from 'react-icons/io';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import { ProgressBar } from '../../-components/courses-progress-list.js';

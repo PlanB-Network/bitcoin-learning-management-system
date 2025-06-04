@@ -4,12 +4,11 @@ import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { Button, TextTag, cn } from '@blms/ui';
+import { Button, StarRating, TextTag, cn } from '@blms/ui';
 
 import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
 
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
-import { StarRating } from '#src/components/Stars/star-rating.js';
 import { Image } from '#src/components/image.tsx';
 import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';

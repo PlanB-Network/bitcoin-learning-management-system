@@ -2,11 +2,10 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
-import { Progress, TextTag, cn } from '@blms/ui';
+import { ButtonWithArrow, Progress, TextTag, cn } from '@blms/ui';
 
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { useGreater } from '#src/hooks/use-greater.ts';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';

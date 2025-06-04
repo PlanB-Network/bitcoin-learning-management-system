@@ -7,12 +7,11 @@ import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.we
 import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
 
 import type { CourseExamResults, CourseResponse } from '@blms/types';
-import { DividerSimple } from '@blms/ui';
+import { ButtonWithArrow, DividerSimple } from '@blms/ui';
 
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { CourseCard } from '#src/organisms/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { filterAndRandomizeCourses } from '#src/routes/$lang/_content/_misc/exam-certificates.$certificateId.tsx';

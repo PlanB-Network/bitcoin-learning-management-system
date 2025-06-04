@@ -1,10 +1,9 @@
 import { t } from 'i18next';
 
 import type { CourseChapterResponse } from '@blms/types';
-import { Divider, cn } from '@blms/ui';
+import { ButtonWithArrow, Divider, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import SuccessExam from '#src/assets/icons/success_exam.svg?react';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { goToChapterParameters } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { AnswersReviewPanel } from '../shared-between-exams/answers-review-panel.tsx';

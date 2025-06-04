@@ -1,4 +1,4 @@
-import { Button, TextTag, cn } from '@blms/ui';
+import { Button, ButtonWithArrow, TextTag, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
@@ -7,7 +7,6 @@ import { IoMdClose } from 'react-icons/io';
 
 import type { CourseResponse } from '@blms/types';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 
 export const CourseCurriculum = ({
   course,

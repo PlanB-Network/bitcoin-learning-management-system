@@ -4,7 +4,14 @@ import { useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { CourseChapterResponse, CourseExamResults } from '@blms/types';
-import { BasicModal, Button, DialogClose, Divider, cn } from '@blms/ui';
+import {
+  BasicModal,
+  Button,
+  ButtonWithArrow,
+  DialogClose,
+  Divider,
+  cn,
+} from '@blms/ui';
 
 import { ExamType } from '@blms/constants';
 import FaceFailed from '#src/assets/icons/face_failed.svg';
@@ -12,7 +19,6 @@ import QuestionBelow from '#src/assets/icons/question_below.svg';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import TimeStamp from '#src/assets/icons/time_stamp.svg';
 import Warning from '#src/assets/icons/warning.svg';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { goToChapterParameters } from '#src/utils/courses.ts';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';

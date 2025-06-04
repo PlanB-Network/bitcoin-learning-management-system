@@ -1,6 +1,7 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 
 import {
+  ButtonWithArrow,
   DividerVertical,
   Loader,
   Tabs,
@@ -24,7 +25,6 @@ import { MdLiveTv, MdPerson } from 'react-icons/md';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { MainLayout } from '#src/components/main-layout.js';
 import { ReactPlayer } from '#src/components/react-player.tsx';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { formatDate, formatHourRange, userTimeZone } from '#src/utils/date.ts';
 import { cdnUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';

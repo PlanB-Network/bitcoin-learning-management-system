@@ -1,12 +1,11 @@
 import { Link } from '@tanstack/react-router';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import { cn } from '@blms/ui';
+import { ButtonWithArrow, cn } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 
 import { useTranslation } from 'react-i18next';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import LabsImage from '../assets/courses/labs-presentation.webp?no-inline';
 
 interface LabsPresentationProps {
