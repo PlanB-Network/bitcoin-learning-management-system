@@ -417,7 +417,7 @@ export const Assignment = ({
                     <li>
                       <Trans i18nKey={'dashboard.course.submitBefore'}>
                         <span className="font-medium">
-                          June 12th at 23:59 (UTC+2)
+                          June 18th at 23:59 (UTC+2)
                         </span>
                       </Trans>
                     </li>
