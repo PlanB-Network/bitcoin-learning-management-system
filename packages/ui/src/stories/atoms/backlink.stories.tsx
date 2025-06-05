@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BackLink } from '#src/molecules/backlink.tsx';
+import { BackLink } from '#src/atoms/backlink.tsx';
 
 const meta: Meta<typeof BackLink> = {
-  title: 'Molecules/backlink',
+  title: 'Atoms/backlink',
   component: BackLink,
   parameters: {
     layout: 'centered',
@@ -24,7 +24,6 @@ const meta: Meta<typeof BackLink> = {
     label: 'Back',
     className:
       'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white',
-    asPlainText: true,
   },
 };
 

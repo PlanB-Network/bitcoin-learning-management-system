@@ -1,8 +1,23 @@
-/** @type { import('@storybook/react-vite').Preview } */
+import type { Decorator, Preview } from '@storybook/react-vite';
+import {
+  RouterProvider,
+  createRootRoute,
+  createRouter,
+} from '@tanstack/react-router';
+import React from 'react';
 
 import '../src/styles/global.css';
 
-const preview = {
+const RouterDecorator: Decorator = (Story) => {
+  const rootRoute = createRootRoute({
+    component: () => React.createElement(Story),
+  });
+  const routeTree = rootRoute;
+  const router = createRouter({ routeTree });
+  return React.createElement(RouterProvider, { router });
+};
+
+const preview: Preview = {
   parameters: {
     backgrounds: {
       default: 'lightgray',
@@ -20,6 +35,7 @@ const preview = {
       },
     },
   },
+  decorators: [RouterDecorator],
 
   tags: ['autodocs'],
 };
