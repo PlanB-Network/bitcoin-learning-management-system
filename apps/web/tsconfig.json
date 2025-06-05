@@ -6,7 +6,8 @@
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
     "types": ["vite/client"],
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "sourceMap": true
   },
   "references": [
     {
