@@ -7,9 +7,16 @@ import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 import { z } from 'zod';
 
 import type { ConferenceStageVideo } from '@blms/types';
-import { BackLink, Button, Card, Loader, TextTag, cn } from '@blms/ui';
+import {
+  BackLink,
+  Button,
+  Card,
+  DropdownMenu,
+  Loader,
+  TextTag,
+  cn,
+} from '@blms/ui';
 
-import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';

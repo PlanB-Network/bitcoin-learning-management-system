@@ -12,7 +12,7 @@ export const CopyButton = ({ text }: CopyButtonProps) => {
     try {
       await navigator.clipboard.writeText(text);
       setIsClicked(true);
-      setTimeout(() => setIsClicked(false), 250);
+      setTimeout(() => setIsClicked(false), 1000);
     } catch (error) {
       console.error('Failed to copy text to clipboard:', error);
     }

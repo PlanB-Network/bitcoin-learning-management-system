@@ -7,8 +7,7 @@ import type { JoinedCourse } from '@blms/types';
 
 import { UserRole } from '@blms/constants';
 
-import { Loader, Tabs, TabsContent, cn } from '@blms/ui';
-import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.js';
+import { DropdownMenu, Loader, Tabs, TabsContent, cn } from '@blms/ui';
 import { TabsListSegmented } from '#src/components/Tabs/TabsListSegmented.js';
 import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';

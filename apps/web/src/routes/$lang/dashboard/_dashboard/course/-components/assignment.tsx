@@ -5,6 +5,7 @@ import {
   AlertTitle,
   BasicModal,
   Button,
+  CollapsibleDropdown,
   DialogClose,
   Divider,
   cn,
@@ -18,7 +19,6 @@ import Certificate from '#src/assets/icons/certificate.svg';
 import SadFace from '#src/assets/icons/face_sad.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
-import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 

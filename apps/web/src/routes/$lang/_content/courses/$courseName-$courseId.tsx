@@ -22,6 +22,7 @@ import {
   ButtonWithArrow,
   Divider,
   Loader,
+  PublicComment,
   StarRating,
   TextTag,
   customToast,
@@ -32,7 +33,6 @@ import { Image } from '@blms/ui';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
-import { PublicComment } from '#src/components/Comments/public-comment.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';

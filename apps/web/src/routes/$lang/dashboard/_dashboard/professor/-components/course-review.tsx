@@ -1,6 +1,7 @@
 import type { CourseReviewsExtended } from '@blms/types';
 import {
   Button,
+  CollapsibleDropdown,
   Loader,
   RatingChart,
   Slider,
@@ -9,7 +10,6 @@ import {
 } from '@blms/ui';
 import { t } from 'i18next';
 import { useState } from 'react';
-import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseReview = ({ courseId }: { courseId: string }) => {
