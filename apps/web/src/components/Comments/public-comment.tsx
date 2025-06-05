@@ -1,5 +1,5 @@
+import { Image } from '@blms/ui';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-import { Image } from '../image.tsx';
 
 interface PublicCommentProps {
   author: string;

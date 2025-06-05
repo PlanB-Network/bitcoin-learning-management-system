@@ -5,11 +5,15 @@ import { FiDownload, FiEdit } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
 
 import type { BetViewUrl } from '@blms/types';
-import { Button, Loader, cn } from '@blms/ui';
+import {
+  Button,
+  Loader,
+  VerticalCard,
+  type VerticalCardProps,
+  cn,
+} from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
-import type { VerticalCardProps } from '#src/molecules/vertical-card.js';
-import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 
 import { ResourceLayout } from '../-components/resource-layout.tsx';
@@ -204,6 +208,7 @@ const SectionGrid = ({
             cardColor={cardColor}
             onHoverCardColorChange
             className="max-w-[137px] md:max-w-80"
+            isScreenMd={isScreenMd}
           />
         );
       })}

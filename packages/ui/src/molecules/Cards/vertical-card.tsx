@@ -2,12 +2,9 @@ import { Link } from '@tanstack/react-router';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 import type { ButtonProps } from '@blms/ui';
-import { Button, Flag, cn } from '@blms/ui';
-
-import { useGreater } from '#src/hooks/use-greater.js';
+import { Button, Flag, Image, cn } from '@blms/ui';
 
 import type { JSX } from 'react';
-import { Image } from '#src/components/image.tsx';
 
 export interface VerticalCardProps {
   imageSrc: string;
@@ -40,6 +37,7 @@ export interface VerticalCardProps {
   imgClassName?: string;
   bodyClassName?: string;
   flagsOnMobile?: boolean;
+  isScreenMd?: boolean | null;
 }
 
 export const VerticalCard = ({
@@ -73,9 +71,8 @@ export const VerticalCard = ({
   imgClassName,
   bodyClassName,
   flagsOnMobile,
+  isScreenMd = true,
 }: VerticalCardProps) => {
-  const isScreenMd = useGreater('md');
-
   const cardColorClasses = {
     orange: 'bg-darkOrange-5',
     maroon: 'bg-darkOrange-7',

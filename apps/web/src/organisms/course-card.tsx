@@ -8,8 +8,8 @@ import { Button, StarRating, TextTag, cn } from '@blms/ui';
 
 import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
 
+import { Image } from '@blms/ui';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
-import { Image } from '#src/components/image.tsx';
 import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';

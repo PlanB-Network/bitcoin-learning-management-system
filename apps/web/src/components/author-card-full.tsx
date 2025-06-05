@@ -9,7 +9,7 @@ import { formatNameForURL } from '#src/utils/string.js';
 import DonateLightning from '../assets/icons/tips-icon.svg';
 import { useDisclosure } from '../hooks/index.ts';
 
-import { Image } from './image.tsx';
+import { Image } from '@blms/ui';
 import { SocialLinks, TopicTags } from './professor-card.tsx';
 import { TipModal } from './tip-modal.tsx';
 

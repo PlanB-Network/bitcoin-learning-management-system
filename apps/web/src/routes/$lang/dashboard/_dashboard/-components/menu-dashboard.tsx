@@ -25,9 +25,9 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
+import { Image } from '@blms/ui';
 import { FaRegBell } from 'react-icons/fa6';
 import { TbBriefcase2 } from 'react-icons/tb';
-import { Image } from '#src/components/image.tsx';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import { MenuItem } from './menu-item.tsx';
 

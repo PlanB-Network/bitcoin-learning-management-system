@@ -4,7 +4,7 @@ import { MdThumbDown, MdThumbUp } from 'react-icons/md';
 import type { JoinedTutorialLight } from '@blms/types';
 import { TextTag, cn } from '@blms/ui';
 
-import { Image } from '#src/components/image.tsx';
+import { Image } from '@blms/ui';
 import { assetUrl } from '#src/utils/index.js';
 
 export const TutorialCard = ({

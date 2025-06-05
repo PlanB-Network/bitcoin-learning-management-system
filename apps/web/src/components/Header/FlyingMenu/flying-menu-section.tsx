@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import { Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
+import { Image, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
 
 import { assetUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -11,7 +11,6 @@ import { trpc } from '#src/utils/trpc.ts';
 import { MenuElement } from '../menu-elements.tsx';
 import type { NavigationSection } from '../props.ts';
 
-import { Image } from '#src/components/image.tsx';
 import { BTC101ID } from '#src/utils/courses.ts';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 

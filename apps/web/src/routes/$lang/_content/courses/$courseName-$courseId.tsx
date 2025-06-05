@@ -28,6 +28,7 @@ import {
 } from '@blms/ui';
 
 import { LANGUAGES_MAP } from '@blms/shared';
+import { Image } from '@blms/ui';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
@@ -36,7 +37,6 @@ import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import { Image } from '#src/components/image.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';

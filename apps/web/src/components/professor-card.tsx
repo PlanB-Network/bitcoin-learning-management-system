@@ -3,7 +3,7 @@ import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import type { FormattedProfessor } from '@blms/types';
-import { cn } from '@blms/ui';
+import { Image, cn } from '@blms/ui';
 
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
@@ -14,7 +14,6 @@ import DonateLightning from '../assets/icons/tips-icon.svg';
 import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
 
-import { Image } from './image.tsx';
 import { TipModal } from './tip-modal.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {

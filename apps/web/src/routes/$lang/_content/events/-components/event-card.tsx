@@ -5,7 +5,7 @@ import { HiVideoCamera } from 'react-icons/hi2';
 import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 import { Button, Flag, cn } from '@blms/ui';
 
-import { Image } from '#src/components/image.tsx';
+import { Image } from '@blms/ui';
 import { useGreater } from '#src/hooks/use-greater.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { formatDateRange, formatHourRange } from '#src/utils/date.js';

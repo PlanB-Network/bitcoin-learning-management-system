@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { JoinedConference } from '@blms/types';
-import { Loader } from '@blms/ui';
+import { HorizontalCard, Loader, VerticalCard } from '@blms/ui';
 
-import { HorizontalCard } from '#src/molecules/horizontal-card.js';
-import { VerticalCard } from '#src/molecules/vertical-card.js';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { useGreater } from '#src/hooks/use-greater.ts';
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { ConferencesTable } from '../-components/tables/conferences-table.tsx';
@@ -19,6 +18,7 @@ export const Route = createFileRoute('/$lang/_content/resources/conferences/')({
 });
 
 function Conferences() {
+  const isScreenMd = useGreater('md');
   const [activeYear, setActiveYear] = useState('2024');
   const [filteredConferences, setFilteredConferences] =
     useState<JoinedConference[]>();
@@ -96,6 +96,7 @@ function Conferences() {
                       : ''
                   }
                   languages={latestConferences[0].languages}
+                  isScreenMd={isScreenMd}
                 />
                 <VerticalCard
                   imageSrc={assetUrl(
@@ -114,6 +115,7 @@ function Conferences() {
                   }
                   languages={latestConferences[1].languages}
                   className="md:hidden xl:flex"
+                  isScreenMd={isScreenMd}
                 />
               </>
             )}
@@ -143,6 +145,7 @@ function Conferences() {
                       : ''
                   }
                   languages={latestPlanBConferences[0].languages}
+                  isScreenMd={isScreenMd}
                 />
                 <VerticalCard
                   imageSrc={assetUrl(
@@ -161,6 +164,7 @@ function Conferences() {
                   }
                   languages={latestPlanBConferences[1].languages}
                   className="md:hidden lg:flex"
+                  isScreenMd={isScreenMd}
                 />
               </>
             )}

@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@blms/ui';
+import { Button, Person } from '@blms/ui';
 
 import Corporates from '#src/assets/about/corporates.webp?no-inline';
 import PlanBCircles from '#src/assets/about/planb_circles.webp?no-inline';
@@ -39,9 +39,8 @@ import PpRogzy from '#src/assets/people/rogzy.webp?no-inline';
 import PpTheom from '#src/assets/people/theo_m.webp?no-inline';
 import PpTheop from '#src/assets/people/theo_p.webp?no-inline';
 import PpTodd from '#src/assets/people/todd.webp?no-inline';
+import { AboutUs } from '#src/components/about-us.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
-import { AboutUs } from '#src/molecules/about-us.js';
-import { Person } from '#src/molecules/person.js';
 
 const Mission = () => {
   const { t } = useTranslation();

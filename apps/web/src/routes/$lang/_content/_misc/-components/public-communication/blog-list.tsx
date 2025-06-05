@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { VerticalCard } from '#src/molecules/vertical-card.js';
+import { VerticalCard } from '@blms/ui';
+import { useGreater } from '#src/hooks/use-greater.ts';
 import { FeaturedCard } from '#src/organisms/featured-card.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { resourceImgUrl } from '#src/utils/index.js';
@@ -12,6 +13,7 @@ interface BlogListProps {
 }
 
 export const BlogList = ({ category }: BlogListProps) => {
+  const isScreenMd = useGreater('md');
   const { blogs } = useContext(AppContext);
   const { t } = useTranslation();
 
@@ -69,6 +71,7 @@ export const BlogList = ({ category }: BlogListProps) => {
                 tags={blog.tags}
                 category={blog.category}
                 excerpt={blog.description ?? ''}
+                isScreenMd={isScreenMd}
               />
             ))}
           </div>

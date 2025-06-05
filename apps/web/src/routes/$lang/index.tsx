@@ -5,7 +5,14 @@ import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 
 import type { JoinedEvent } from '@blms/types';
-import { Button, Carousel, CarouselContent, CarouselItem, cn } from '@blms/ui';
+import {
+  Button,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  VerticalCard,
+  cn,
+} from '@blms/ui';
 
 import HeaderLeft from '#src/assets/home/header_left.svg';
 import HeaderRight from '#src/assets/home/header_right.svg';
@@ -20,7 +27,6 @@ import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { VerticalCard } from '#src/molecules/vertical-card.tsx';
 import CategoryItemList from '#src/organisms/category-item.tsx';
 import { LanguageSelectorHomepage } from '#src/organisms/language-selector-homepage.tsx';
 import { AppContext } from '#src/providers/context.tsx';
@@ -32,9 +38,9 @@ import SponsorMobile from '#src/assets/home/mobile-logos.webp?no-inline';
 import Sponsor from '#src/assets/home/sponsor-images.webp?no-inline';
 import WorldMap from '#src/assets/home/world-map.png?no-inline';
 import { MainLayout } from '../../components/main-layout.tsx';
-import { AboutUs } from '../../molecules/about-us.tsx';
 import { CourseCard } from '../../organisms/course-card.tsx';
 
+import { AboutUs } from '#src/components/about-us.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { LANGUAGES } from '#src/utils/i18n.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
@@ -732,6 +738,7 @@ function Home() {
                       category={blog.category}
                       excerpt={blog.description ?? ''}
                       bodyClassName="p-2.5 lg:p-0"
+                      isScreenMd={isScreenMd}
                     />
                   </CarouselItem>
                 ))}
@@ -758,6 +765,7 @@ function Home() {
                 tags={blog.tags}
                 category={blog.category}
                 excerpt={blog.description ?? ''}
+                isScreenMd={isScreenMd}
               />
             ))}
           </div>

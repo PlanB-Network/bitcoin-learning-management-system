@@ -1,17 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@blms/ui';
-
 import BitcoinCircle from '#src/assets/icons/bitcoin_circle.svg';
 import Groups from '#src/assets/icons/groups.svg';
 import OpenSource from '#src/assets/icons/open_source.svg';
 import VisibilityOff from '#src/assets/icons/visibility_off.svg';
 import ProfessorsTile from '../assets/home/professors.webp?no-inline';
 
-const paragraphClassName = cn(
-  'text-sm text-gray-400 sm:text-sm lg:text-base',
-  'mt-2 font-light',
-);
+const paragraphClassName =
+  'text-sm text-gray-400 sm:text-sm lg:text-base mt-2 font-light';
 
 export const AboutUs = () => {
   const { t } = useTranslation();

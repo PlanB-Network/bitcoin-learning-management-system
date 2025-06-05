@@ -1,6 +1,6 @@
 import { Flag, cn } from '@blms/ui';
 
-import { Image } from '#src/components/image.tsx';
+import { Image } from '@blms/ui';
 
 interface ResourceCardProps {
   imageSrc?: string | null;

@@ -13,7 +13,7 @@ import { assetUrl } from '#src/utils/index.ts';
 
 import { levels, sortCoursesByLevel } from '../-utils/course-utils.tsx';
 
-import { Image } from '#src/components/image.tsx';
+import { Image } from '@blms/ui';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { CourseInfoSection } from './course-info-section.tsx';
 
