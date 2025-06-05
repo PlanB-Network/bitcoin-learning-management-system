@@ -1,7 +1,8 @@
 import { sql } from '@blms/database';
+import type { CalendarEventParticipant } from '@blms/types';
 
 export const getEventParticipants = () => {
-  return sql`
+  return sql<CalendarEventParticipant[]>`
     SELECT
       ue.uid,
       ua.username,

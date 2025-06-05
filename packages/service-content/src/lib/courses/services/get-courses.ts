@@ -11,7 +11,9 @@ import {
   getProfessorCoursesQuery,
 } from '../queries/get-courses.js';
 
-export const createGetCourses = ({ postgres }: Dependencies) => {
+export const createGetCourses = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (language?: string): Promise<JoinedCourse[]> => {
     const courses = await postgres.exec(getCoursesQuery(language));
 
@@ -124,7 +126,9 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createGetCoursesIds = ({ postgres }: Dependencies) => {
+export const createGetCoursesIds = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (): Promise<string[]> => {
     const courses = await postgres.exec(getCoursesIdsQuery());
 
@@ -132,7 +136,9 @@ export const createGetCoursesIds = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createGetPlanBSchoolCoursesIds = ({ postgres }: Dependencies) => {
+export const createGetPlanBSchoolCoursesIds = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (): Promise<string[]> => {
     const courses = await postgres.exec(getPlanBSchoolCoursesIdsQuery());
 

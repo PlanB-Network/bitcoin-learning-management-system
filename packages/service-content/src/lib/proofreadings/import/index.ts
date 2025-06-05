@@ -2,7 +2,9 @@ import { sql } from '@blms/database';
 
 import type { Dependencies } from '../../dependencies.js';
 
-export const createDeleteProofreadings = ({ postgres }: Dependencies) => {
+export const createDeleteProofreadings = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (errors: string[]) => {
     try {
       await postgres.exec(sql`DELETE FROM content.proofreading_contributor`);

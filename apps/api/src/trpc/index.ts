@@ -5,38 +5,15 @@ import superjson from 'superjson';
 import { ZodError } from 'zod';
 
 import type { UserPermission, UserRole } from '@blms/constants';
+import type { LogContext } from '@blms/types';
 
 import type { Dependencies } from '../dependencies.js';
 
 dotenv.config();
 
-/**
- * 1. CONTEXT
- *
- * This section defines the "contexts" that are available in the backend API
- *
- * These allow you to access things like the database, the session, etc, when
- * processing a request
- *
- */
-interface CreateInnerContextOptions {
-  dependencies: Dependencies;
-}
-
 export interface InnerContext {
-  dependencies: Dependencies;
+  dependencies: Dependencies & LogContext;
 }
-
-/**
- * This helper generates the "internals" for a tRPC context. If you need to use
- * it, you can export it from here
- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
- */
-const createContextInner = (opts: CreateInnerContextOptions): InnerContext => {
-  return {
-    dependencies: opts.dependencies,
-  };
-};
 
 interface UserContext {
   user?: {
@@ -48,12 +25,14 @@ interface UserContext {
 
 interface SessionContext {
   sessionId?: string;
+  requestId: string;
 }
 
 export type Context = InnerContext &
   SessionContext &
   CreateExpressContextOptions &
-  UserContext;
+  UserContext &
+  LogContext;
 
 /**
  * This is the actual context you'll use in your router. It will be used to
@@ -64,12 +43,14 @@ export const createContext = (
   opts: CreateExpressContextOptions,
   dependencies: Dependencies,
 ): Context => {
-  const contextInner = createContextInner({ dependencies });
+  const log = opts.req.log || (() => {});
 
   return {
     ...opts,
-    ...contextInner,
+    dependencies: { ...dependencies, log },
     sessionId: opts.req.session?.id,
+    requestId: opts.req.id,
+    log,
   };
 };
 

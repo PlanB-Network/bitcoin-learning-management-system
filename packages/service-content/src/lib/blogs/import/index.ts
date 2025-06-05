@@ -96,7 +96,9 @@ export const groupByBlog = (files: ChangedFile[], errors: string[]) => {
   return [...groupedBlogs.values()];
 };
 
-export const createUpdateBlogs = ({ postgres }: Dependencies) => {
+export const createUpdateBlogs = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (blog: ChangedBlog, errors: string[]) => {
     const { main, files } = separateContentFiles(blog, 'post.yml');
 
@@ -156,7 +158,9 @@ export const createUpdateBlogs = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteBlogs = ({ postgres }: Dependencies) => {
+export const createDeleteBlogs = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

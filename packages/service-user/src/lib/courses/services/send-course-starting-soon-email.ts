@@ -18,7 +18,7 @@ interface EligibleUser {
 }
 
 export const createSendCourseStartingSoonEmail = (
-  dependencies: Dependencies,
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
 ) => {
   return async ({
     uids,

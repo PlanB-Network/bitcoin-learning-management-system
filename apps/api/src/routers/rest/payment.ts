@@ -56,7 +56,7 @@ export const createRestPaymentRoutes = (
           coursePayment,
         });
       } catch (error) {
-        console.error('Error in courses webhook', error);
+        req.log('Error in courses webhook', error);
       }
     },
   );
@@ -93,7 +93,7 @@ export const createRestPaymentRoutes = (
           result,
         });
       } catch (error) {
-        console.error('Error in events webhook', error);
+        req.log('Error in events webhook', error);
       }
     },
   );
@@ -115,7 +115,7 @@ export const createRestPaymentRoutes = (
             config.stripe.endpointSecret,
           );
         } catch (error: any) {
-          console.log('Webhook signature verification failed.', error.message);
+          req.log('Webhook signature verification failed.', error.message);
           res.sendStatus(400);
           return;
         }
@@ -123,7 +123,7 @@ export const createRestPaymentRoutes = (
 
       switch (event.type) {
         case 'payment_intent.succeeded': {
-          console.log('=== Stripe webhook', event.type);
+          req.log('=== Stripe webhook', event.type);
           const paymentIntent = event.data.object;
           const paymentIntentId = paymentIntent.id;
           const paymentId = paymentIntent.metadata.paymentId;
@@ -144,7 +144,7 @@ export const createRestPaymentRoutes = (
           break;
         }
         case 'invoice.paid': {
-          console.log('============ Stripe webhook', event.type);
+          req.log('============ Stripe webhook', event.type);
 
           const invoice = event.data.object;
           const intentId = invoice.payment_intent;
@@ -180,13 +180,13 @@ export const createRestPaymentRoutes = (
           break;
         }
         default: {
-          console.log(`Unhandled event type ${event.type}.`);
+          req.log(`Unhandled event type ${event.type}.`);
         }
       }
 
       res.send();
     } catch (error) {
-      console.error('Error in stripe webhook', error);
+      req.log('Error in stripe webhook', error);
     }
   });
 

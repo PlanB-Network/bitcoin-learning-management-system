@@ -6,7 +6,9 @@ interface Options {
   courseId: string;
 }
 
-export const createStartCourse = ({ postgres }: Dependencies) => {
+export const createStartCourse = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return (options: Options): Promise<void> => {
     return postgres
       .exec(

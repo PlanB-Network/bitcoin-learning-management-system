@@ -109,7 +109,9 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
   ];
 };
 
-export const createUpdateResources = (dependencies: Dependencies) => {
+export const createUpdateResources = (
+  dependencies: Pick<Dependencies, 'postgres'>,
+) => {
   return async (resource: ChangedResource, errors: string[]) => {
     const mapHandlers = {
       bet: createProcessChangedBet,
@@ -128,7 +130,9 @@ export const createUpdateResources = (dependencies: Dependencies) => {
   };
 };
 
-export const createDeleteResources = ({ postgres }: Dependencies) => {
+export const createDeleteResources = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

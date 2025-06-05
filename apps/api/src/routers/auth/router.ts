@@ -18,13 +18,11 @@ const logoutProcedure = studentProcedure
       message: z.string(),
     }),
   )
-  .mutation(async ({ ctx }) => {
-    const { req } = ctx;
-
+  .mutation(async ({ ctx: { req } }) => {
     return new Promise((resolve) => {
       req.session.destroy((error) => {
         if (error) {
-          console.error(error);
+          req.log('Error destroying session:', error);
         }
 
         resolve({

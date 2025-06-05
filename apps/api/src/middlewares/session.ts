@@ -5,7 +5,7 @@ import type { SessionConfig } from '@blms/types';
 
 import type { PostgresClient } from '@blms/database';
 import { firstRow, sql } from '@blms/database';
-import type { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../dependencies.js';
 
 const getSessionConfig = (config: SessionConfig) => {
   return {

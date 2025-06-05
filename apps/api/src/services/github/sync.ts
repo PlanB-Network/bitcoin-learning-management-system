@@ -40,8 +40,8 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       return { success: false };
     }
 
-    console.time('-- Sync');
-    console.log('-- Sync: START ===================================');
+    console.time('[sync] Time');
+    console.log('[sync] START ===================================');
 
     if (!config.publicRepositoryUrl) {
       throw new Error('DATA_REPOSITORY_URL is not defined');
@@ -51,7 +51,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     const context = await syncRepositories();
     timeGetAllRepoFiles();
 
-    console.log('-- Sync: UPDATE DATABASE =========================');
+    console.log('[sync] UPDATE DATABASE =========================');
 
     const syncErrors: string[] = [];
     const syncWarnings: string[] = [];
@@ -68,7 +68,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       timeProcessContentFiles();
     }
 
-    console.log('-- Sync: Calculate remaining seats');
+    console.log('[sync] Calculate remaining seats');
     await calculateCourseChapterSeats();
     await calculateEventSeats();
 
@@ -78,12 +78,12 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
 
     if (syncErrors.length > 0) {
       console.error(
-        `=== ${syncErrors.length} ERRORS occurred during the sync process: `,
+        `[sync] === ${syncErrors.length} ERRORS occurred during the sync process: `,
       );
-      console.error(syncErrors.join('\n'));
+      console.error(syncErrors.map((error) => `[sync] ${error}`).join('\n'));
     }
 
-    console.log('-- Sync: UPDATE ASSETS ===========================');
+    console.log('[sync] UPDATE ASSETS ===========================');
 
     let privateCdnError: any;
     if (context.privateGit) {
@@ -91,7 +91,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       try {
         await syncCdnRepository(context.privateRepoDir, context.privateGit);
       } catch (error) {
-        console.error(error);
+        console.error('[sync]', error);
         privateCdnError =
           error instanceof Error ? error.message : new Error('Unknown error');
       }
@@ -104,22 +104,22 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
       try {
         await syncCdnRepository(context.publicRepoDir, context.publicGit);
       } catch (error) {
-        console.error(error);
+        console.error('[sync]', error);
         publicCdnError =
           error instanceof Error ? error.message : new Error('Unknown error');
       }
       timeSync();
     }
 
-    console.log('-- Sync: CLEAR ==================================');
+    console.log('[sync] CLEAR ==================================');
 
     if (syncErrors.length === 0) {
       await processDeleteOldEntities(databaseTime.now, syncErrors);
       await processDisableOldEntities(databaseTime.now, syncErrors);
     }
 
-    console.timeEnd('-- Sync');
-    console.log('-- Sync: END ====================================');
+    console.timeEnd('[sync] Time');
+    console.log('[sync] END ====================================');
 
     return {
       success: syncErrors.length === 0,

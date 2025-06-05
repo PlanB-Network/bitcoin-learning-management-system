@@ -82,7 +82,7 @@ export const createProcessTimestampFile = (
 
     //// If the file is already synced, do nothing
     if (metadata?.commit === file.commit) {
-      console.log(`-- Sync: Already processed file: ${filePath}`, metadata);
+      console.log(`[sync] Already processed file: ${filePath}`, metadata);
     }
 
     //// Else, upload the file to s3

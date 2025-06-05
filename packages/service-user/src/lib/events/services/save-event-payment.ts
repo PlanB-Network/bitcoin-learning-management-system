@@ -159,7 +159,9 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
   };
 };
 
-export const createUpdateEventPaymentStatus = ({ postgres }: Dependencies) => {
+export const createUpdateEventPaymentStatus = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async ({
     paymentId,
     paymentIntentId,

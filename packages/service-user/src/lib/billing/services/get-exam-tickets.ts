@@ -7,7 +7,9 @@ interface Options {
   uid: string;
 }
 
-export const createGetExamTickets = ({ postgres }: Dependencies) => {
+export const createGetExamTickets = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return ({ uid }: Options): Promise<Ticket[]> => {
     return postgres.exec(getExamTicketsQuery(uid));
   };

@@ -103,7 +103,7 @@ export const createPostgresClient = (
 
       await sql`SELECT 1;`;
       console.debug(
-        `Connected ${config.host}:${config.port} on database ${config.database}`,
+        `[database] Connected ${config.host}:${config.port} on database ${config.database}`,
       );
 
       connected = true;

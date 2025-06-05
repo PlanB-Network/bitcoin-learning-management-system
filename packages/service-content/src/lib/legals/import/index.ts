@@ -74,7 +74,9 @@ export const groupByLegal = (files: ChangedFile[], errors: string[]) => {
   return [...groupedLegals.values()];
 };
 
-export const createUpdateLegals = ({ postgres }: Dependencies) => {
+export const createUpdateLegals = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (legal: ChangedLegal, errors: string[]) => {
     const { files } = separateContentFiles(legal, 'post.yml');
 
@@ -139,7 +141,9 @@ export const createUpdateLegals = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteLegals = ({ postgres }: Dependencies) => {
+export const createDeleteLegals = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

@@ -275,8 +275,6 @@ export const userRouter = createTRPCRouter({
   resetPassword: publicProcedure
     .input(z.object({ resetToken: z.string(), newPassword: z.string() }))
     .mutation(({ ctx, input }) => {
-      console.log('Reset Password', input);
-
       return createPasswordReset(ctx.dependencies)(
         input.resetToken,
         input.newPassword,

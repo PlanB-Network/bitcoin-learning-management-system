@@ -25,7 +25,7 @@ interface BetLocal extends BaseResource {
 }
 
 export const createProcessChangedBet = (
-  { postgres }: Dependencies,
+  { postgres }: Pick<Dependencies, 'postgres'>,
   errors: string[],
 ) => {
   return async (resource: ChangedResource) => {

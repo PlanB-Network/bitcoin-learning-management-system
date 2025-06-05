@@ -112,7 +112,9 @@ export const groupByTutorial = (
   return [...groupedTutorials.values()];
 };
 
-export const createUpdateTutorials = ({ postgres }: Dependencies) => {
+export const createUpdateTutorials = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (tutorial: ChangedTutorial, errors: string[]) => {
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
@@ -134,7 +136,7 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
             parsedTutorial.test_only === true &&
             process.env.PLANB_ENVIRONMENT === 'mainnet'
           ) {
-            console.log('-- Sync: Ignore tutorial', parsedTutorial.id);
+            console.log('[sync] Ignore tutorial', parsedTutorial.id);
             return;
           }
         }
@@ -183,7 +185,9 @@ export const createUpdateTutorials = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteTutorials = ({ postgres }: Dependencies) => {
+export const createDeleteTutorials = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

@@ -69,7 +69,10 @@ export const groupByBCertExam = (files: ChangedFile[], errors: string[]) => {
   return [...groupedBCertExams.values()];
 };
 
-export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
+export const createUpdateBCertExams = ({
+  postgres,
+  s3,
+}: Pick<Dependencies, 'postgres' | 's3'>) => {
   return async (bCertExam: ChangedBCertExam, errors: string[]) => {
     const { main, files } = separateContentFiles(bCertExam, 'bcert.yml');
 
@@ -167,7 +170,9 @@ export const createUpdateBCertExams = ({ postgres, s3 }: Dependencies) => {
   };
 };
 
-export const createDeleteBCertExams = ({ postgres }: Dependencies) => {
+export const createDeleteBCertExams = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

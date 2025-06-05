@@ -6,7 +6,9 @@ const getEventListQuery = () => {
   return sql<Array<{ id: string }>>`SELECT id FROM content.events`;
 };
 
-export const createGetEventList = ({ postgres }: Dependencies) => {
+export const createGetEventList = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return () => {
     return postgres
       .exec(getEventListQuery())

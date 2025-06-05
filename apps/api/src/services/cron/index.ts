@@ -38,7 +38,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   {
     const indexContent = createIndexContent(ctx);
     setTimeout(
-      () => indexContent([]).catch((error) => console.error(error)),
+      () => indexContent([]).catch((error) => console.error('[cron]', error)),
       30_000,
     );
   }
@@ -272,7 +272,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const sendCourseWeeklyRecapEmail = createSendCourseWeeklyRecapEmail(ctx);
 
     ctx.crons.addTask('sun4pm', async () => {
-      console.log(new Date(), 'Starting weekly recap email cron job');
+      console.log('[cron]', new Date(), 'Starting weekly recap email cron job');
       const courses = await getCourses('en');
       if (courses.length === 0) return;
 
@@ -314,19 +314,19 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   }
 
   ctx.crons.addTask('jun1_23_gmt', async () => {
-    console.log('[Cron] Running selectBizSchoolStudentsForAssignments job');
+    console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
     const selectBizSchoolStudentsForAssignments =
       createSelectBizSchoolStudentsForAssignments(ctx);
     await selectBizSchoolStudentsForAssignments;
-    console.log('[Cron] Finished selectBizSchoolStudentsForAssignments job');
+    console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
   });
 
   ctx.crons.addTask('jun3_0_gmt', async () => {
-    console.log('[Cron] Running affectProjectToBizSchoolStudents job');
+    console.log('[cron] Running affectProjectToBizSchoolStudents job');
     const affectProjectToBizSchoolStudents =
       createAffectProjectToBizSchoolStudents(ctx);
     await affectProjectToBizSchoolStudents;
-    console.log('[Cron] Finished affectProjectToBizSchoolStudents job');
+    console.log('[cron] Finished affectProjectToBizSchoolStudents job');
   });
 
   if (timestampService) {
@@ -358,7 +358,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         const payments = await getPendingEventsPayments();
 
         for (const payment of payments) {
-          console.log('[Cron] Refreshing event payment', payment.paymentId);
+          console.log('[cron] Refreshing event payment', payment.paymentId);
           const status = await getCheckout(payment.paymentId);
           if (!status.isPaid && !status.isExpired) {
             continue;
@@ -378,7 +378,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         const payments = await getPendingCoursePayments();
 
         for (const payment of payments) {
-          console.log('[Cron] Refreshing course payment', payment.paymentId);
+          console.log('[cron] Refreshing course payment', payment.paymentId);
           const status = await getCheckout(payment.paymentId);
           if (!status.isPaid && !status.isExpired) {
             continue;

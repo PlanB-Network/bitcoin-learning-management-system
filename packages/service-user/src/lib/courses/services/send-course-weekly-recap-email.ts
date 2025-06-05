@@ -13,7 +13,7 @@ interface SendWeeklyRecapEmailParams {
 }
 
 export const createSendCourseWeeklyRecapEmail = (
-  dependencies: Dependencies,
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
 ) => {
   return async ({
     uids,

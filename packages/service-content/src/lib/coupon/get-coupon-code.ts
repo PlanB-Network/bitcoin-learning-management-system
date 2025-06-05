@@ -16,7 +16,9 @@ const getCouponCode = (code: string, itemId?: string) => {
   `;
 };
 
-export const createGetCouponCode = ({ postgres }: Dependencies) => {
+export const createGetCouponCode = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (code: string, itemId?: string) => {
     try {
       const result = await postgres

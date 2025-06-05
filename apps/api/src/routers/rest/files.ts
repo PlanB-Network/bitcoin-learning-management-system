@@ -68,7 +68,7 @@ const receiveImage = (req: Request, resizeOptions = defaultResizeOptions) => {
         resolve(sharpStream);
       });
     } catch (error) {
-      console.log('Error:', error);
+      req.log('Error:', error);
       reject(error);
     }
   });
@@ -118,7 +118,7 @@ const receivePdf = (req: Request) => {
         resolve(fileStream);
       });
     } catch (error) {
-      console.log('Error:', error);
+      req.log('Error:', error);
       reject(error);
     }
   });
@@ -236,7 +236,7 @@ export const createRestFilesRoutes = async (
 
       zipStream(zip).pipe(res);
     } catch (error) {
-      console.log('Error:', error);
+      req.log('Error:', error);
       if (error instanceof NoSuchKey) {
         res.status(404).send('Not found');
         return;
@@ -278,7 +278,7 @@ export const createRestFilesRoutes = async (
 
       zipStream(zip).pipe(res);
     } catch (error) {
-      console.log('Error:', error);
+      req.log('Error:', error);
       if (error instanceof NoSuchKey) {
         res.status(404).send('Not found');
         return;
@@ -313,7 +313,7 @@ export const createRestFilesRoutes = async (
 
       stream.pipe(res);
     } catch (error) {
-      console.log('Error:', error);
+      req.log('Error:', error);
       if (error instanceof NoSuchKey) {
         res.status(404).send('Not found');
         return;

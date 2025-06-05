@@ -359,7 +359,9 @@ const extractParts = (markdown: string): Part[] => {
   return parts;
 };
 
-export const createUpdateCourses = ({ postgres }: Dependencies) => {
+export const createUpdateCourses = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (
     course: ChangedCourse,
     assets: ChangedCourse | undefined,
@@ -393,7 +395,7 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
             parsedCourse.test_only === true &&
             process.env.PLANB_ENVIRONMENT === 'mainnet'
           ) {
-            console.log('-- Sync: Ignore course', course.index);
+            console.log('[sync] Ignore course', course.index);
             return;
           }
 
@@ -880,12 +882,14 @@ export const createUpdateCourses = ({ postgres }: Dependencies) => {
         }
       })
       .catch((error) => {
-        console.error('Error during transaction:', error);
+        console.error('[sync] Error during transaction:', error?.message);
       });
   };
 };
 
-export const createDeleteCourses = ({ postgres }: Dependencies) => {
+export const createDeleteCourses = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

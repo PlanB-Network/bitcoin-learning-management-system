@@ -1,4 +1,4 @@
-import type { CourseSuccededExam } from '@blms/types';
+import type { CourseSucceededExam } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { getAllUserSucceededExamsQuery } from '../queries/get-exam-questions.js';
@@ -8,8 +8,8 @@ interface Options {
   language: string;
 }
 
-export const createGetAllSuccededUserExams = ({ postgres }: Dependencies) => {
-  return async (options: Options): Promise<CourseSuccededExam[]> => {
+export const createGetAllSucceededUserExams = ({ postgres }: Dependencies) => {
+  return async (options: Options): Promise<CourseSucceededExam[]> => {
     return postgres.exec(getAllUserSucceededExamsQuery(options));
   };
 };

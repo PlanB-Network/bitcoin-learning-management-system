@@ -19,7 +19,7 @@ interface YoutubeChannelMain {
 }
 
 export const createProcessChangedYoutubeChannel = (
-  { postgres }: Dependencies,
+  { postgres }: Pick<Dependencies, 'postgres'>,
   errors: string[],
 ) => {
   return async (resource: ChangedResource) => {

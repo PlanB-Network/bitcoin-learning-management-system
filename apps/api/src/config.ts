@@ -27,7 +27,7 @@ function getenv<
   // If the value is empty and a fallback is provided, log a warning
   if (!value) {
     console.warn(
-      `No value found for ${name}, defaulting to ${JSON.stringify(fallback)}`,
+      `[config] No value found for ${name}, defaulting to ${JSON.stringify(fallback)}`,
     );
   }
 

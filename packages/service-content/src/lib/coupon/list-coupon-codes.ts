@@ -44,6 +44,8 @@ const getCouponCodes = (options: ListOptions) => {
   `;
 };
 
-export const createListCouponCodes = ({ postgres }: Dependencies) => {
+export const createListCouponCodes = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return (options: ListOptions) => postgres.exec(getCouponCodes(options));
 };

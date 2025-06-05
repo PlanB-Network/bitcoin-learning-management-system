@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "../service-common/src/nanoid.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",

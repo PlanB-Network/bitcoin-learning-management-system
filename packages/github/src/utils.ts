@@ -8,7 +8,7 @@ import { ResetMode, simpleGit } from 'simple-git';
 import type { ChangedAsset, ChangedFile, GitHubSyncConfig } from '@blms/types';
 
 export const timeLog = (str: string) => {
-  const key = `-- Sync: ${str}`;
+  const key = `[sync] ${str}`;
   console.log(`${key}...`);
   console.time(key);
 
@@ -92,7 +92,7 @@ const syncRepository = async (
       await git.clone(repository, directory, options);
       await git.cwd(directory);
 
-      console.log(`-- Sync: Cloned repository on branch ${branch}`);
+      console.log(`[sync] Cloned repository on branch ${branch}`);
       timeClone();
 
       return git;
@@ -127,7 +127,7 @@ const syncRepository = async (
     const remoteHash = await git.revparse([`origin/${branch}`]);
 
     if (remoteHash.startsWith(currentBranch.commit)) {
-      console.log(`-- Sync: Branch ${branch} is up to date`);
+      console.log(`[sync] Branch ${branch} is up to date`);
     } else {
       await git.pull('origin', branch);
     }
@@ -238,7 +238,7 @@ async function listRepoAssetFiles(
 export const createSyncRepositories = (options: GitHubSyncConfig) => {
   return async () => {
     console.log(
-      '-- Sync: Syncing the public github repository on branch',
+      '[sync] Syncing the public github repository on branch',
       options.publicRepositoryBranch,
     );
 
@@ -262,7 +262,7 @@ export const createSyncRepositories = (options: GitHubSyncConfig) => {
 
       if (options.privateRepositoryUrl && options.githubAccessToken) {
         console.log(
-          '-- Sync: Syncing the private github repository on branch',
+          '[sync] Syncing the private github repository on branch',
           options.privateRepositoryBranch,
         );
 
@@ -382,7 +382,7 @@ export const createSyncCdnRepository = (cdnPath: string) => {
       timeAssetSync();
 
       console.log(
-        `-- Sync: Copied ${copyCount} assets to the CDN (${skipCount} skipped, ${delCount} deleted)`,
+        `[sync] Copied ${copyCount} assets to the CDN (${skipCount} skipped, ${delCount} deleted)`,
       );
 
       // Save the sync state

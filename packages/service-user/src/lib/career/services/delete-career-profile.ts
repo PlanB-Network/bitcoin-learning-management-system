@@ -9,7 +9,11 @@ interface Options {
   uid: string;
 }
 
-export const createDeleteCareerProfile = ({ postgres, s3 }: Dependencies) => {
+export const createDeleteCareerProfile = ({
+  postgres,
+  s3,
+  log,
+}: Dependencies) => {
   return async ({ uid }: Options): Promise<JoinedCareerProfile[]> => {
     const careerProfileId = await postgres
       .exec(getCareerProfileIdQuery(uid))
@@ -24,7 +28,7 @@ export const createDeleteCareerProfile = ({ postgres, s3 }: Dependencies) => {
       try {
         await s3.delete(`cvs/${careerProfileId}`);
       } catch (error) {
-        console.error('Failed to delete related CV', careerProfileId, error);
+        log('Error: Failed to delete related CV', careerProfileId, error);
       }
     }
 
