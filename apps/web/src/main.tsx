@@ -1,8 +1,6 @@
 import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import { Loader } from '@blms/ui';
-
 import { App } from './app.tsx';
 import { AppProvider } from './providers/app.tsx';
 import './utils/i18n';
@@ -17,8 +15,13 @@ root.render(
   <StrictMode>
     <Suspense
       fallback={
-        <div className="size-full flex flex-col justify-center items-center">
-          <Loader variant="orange" size={'m'} />
+        <div className="flex justify-center items-center h-full w-full">
+          <img
+            className="w-[200px]"
+            loading="lazy"
+            alt="Orange pill"
+            src="/src/assets/icons/footer_pill.webp?no-inline"
+          />
         </div>
       }
     >
