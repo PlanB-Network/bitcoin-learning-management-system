@@ -54,6 +54,7 @@ import { Route as LangDashboardDashboardProfessorCoursesRouteImport } from './ro
 import { Route as LangDashboardDashboardCourseCompletedRouteImport } from './routes/$lang/dashboard/_dashboard/course/completed';
 import { Route as LangDashboardDashboardCourseCourseIdRouteImport } from './routes/$lang/dashboard/_dashboard/course/$courseId';
 import { Route as LangDashboardDashboardAdministrationTutorialsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/tutorials';
+import { Route as LangDashboardDashboardAdministrationTranslationPanelRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel';
 import { Route as LangDashboardDashboardAdministrationRoleRouteImport } from './routes/$lang/dashboard/_dashboard/administration/role';
 import { Route as LangDashboardDashboardAdministrationCouponsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/coupons';
 import { Route as LangDashboardDashboardAdministrationCareersRouteImport } from './routes/$lang/dashboard/_dashboard/administration/careers';
@@ -343,6 +344,12 @@ const LangDashboardDashboardAdministrationTutorialsRoute =
     path: '/administration/tutorials',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
+const LangDashboardDashboardAdministrationTranslationPanelRoute =
+  LangDashboardDashboardAdministrationTranslationPanelRouteImport.update({
+    id: '/administration/translation-panel',
+    path: '/administration/translation-panel',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
 const LangDashboardDashboardAdministrationRoleRoute =
   LangDashboardDashboardAdministrationRoleRouteImport.update({
     id: '/administration/role',
@@ -581,6 +588,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
+  '/$lang/dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRoute;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
@@ -655,6 +663,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
+  '/$lang/dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRoute;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
@@ -733,6 +742,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/_dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/_dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
+  '/$lang/dashboard/_dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRoute;
   '/$lang/dashboard/_dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/_dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/_dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
@@ -811,6 +821,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/careers'
     | '/$lang/dashboard/administration/coupons'
     | '/$lang/dashboard/administration/role'
+    | '/$lang/dashboard/administration/translation-panel'
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
@@ -885,6 +896,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/careers'
     | '/$lang/dashboard/administration/coupons'
     | '/$lang/dashboard/administration/role'
+    | '/$lang/dashboard/administration/translation-panel'
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
@@ -962,6 +974,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/administration/careers'
     | '/$lang/dashboard/_dashboard/administration/coupons'
     | '/$lang/dashboard/_dashboard/administration/role'
+    | '/$lang/dashboard/_dashboard/administration/translation-panel'
     | '/$lang/dashboard/_dashboard/administration/tutorials'
     | '/$lang/dashboard/_dashboard/course/$courseId'
     | '/$lang/dashboard/_dashboard/course/completed'
@@ -1357,6 +1370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardAdministrationTutorialsRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
+    '/$lang/dashboard/_dashboard/administration/translation-panel': {
+      id: '/$lang/dashboard/_dashboard/administration/translation-panel';
+      path: '/administration/translation-panel';
+      fullPath: '/$lang/dashboard/administration/translation-panel';
+      preLoaderRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
     '/$lang/dashboard/_dashboard/administration/role': {
       id: '/$lang/dashboard/_dashboard/administration/role';
       path: '/administration/role';
@@ -1590,6 +1610,7 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardAdministrationCareersRoute: typeof LangDashboardDashboardAdministrationCareersRoute;
   LangDashboardDashboardAdministrationCouponsRoute: typeof LangDashboardDashboardAdministrationCouponsRoute;
   LangDashboardDashboardAdministrationRoleRoute: typeof LangDashboardDashboardAdministrationRoleRoute;
+  LangDashboardDashboardAdministrationTranslationPanelRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRoute;
   LangDashboardDashboardAdministrationTutorialsRoute: typeof LangDashboardDashboardAdministrationTutorialsRoute;
   LangDashboardDashboardCourseCourseIdRoute: typeof LangDashboardDashboardCourseCourseIdRoute;
   LangDashboardDashboardCourseCompletedRoute: typeof LangDashboardDashboardCourseCompletedRoute;
@@ -1619,6 +1640,8 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
       LangDashboardDashboardAdministrationCouponsRoute,
     LangDashboardDashboardAdministrationRoleRoute:
       LangDashboardDashboardAdministrationRoleRoute,
+    LangDashboardDashboardAdministrationTranslationPanelRoute:
+      LangDashboardDashboardAdministrationTranslationPanelRoute,
     LangDashboardDashboardAdministrationTutorialsRoute:
       LangDashboardDashboardAdministrationTutorialsRoute,
     LangDashboardDashboardCourseCourseIdRoute:

@@ -264,3 +264,54 @@ export const checkExistingAssignmentQuery = (
     LIMIT 1
   `;
 };
+
+/**
+ * Query to create chapter assignments for all chapters when a translation assignment is accepted
+ */
+export const createChapterAssignmentsQuery = (
+  courseId: string,
+  language: string,
+  assigneeId: string,
+  assignerId: string,
+) => {
+  return sql`
+    INSERT INTO users.translation_chapter_assignments (course_id, language, chapter_id, assignee_id, assigner_id, status)
+    SELECT
+      ${courseId},
+      LOWER(${language}),
+      ch.chapter_id,
+      ${assigneeId},
+      ${assignerId},
+      'assigned'::assignment_status
+    FROM content.course_chapters ch
+    WHERE ch.course_id = ${courseId}
+    ON CONFLICT (course_id, language, chapter_id, assignee_id) DO NOTHING
+    RETURNING *
+  `;
+};
+
+/**
+ * Query to create part assignments for all parts when a translation assignment is accepted
+ */
+export const createPartAssignmentsQuery = (
+  courseId: string,
+  language: string,
+  assigneeId: string,
+  assignerId: string,
+) => {
+  return sql`
+    INSERT INTO users.translation_part_assignments (course_id, language, part_id, chapter_id, assignee_id, assigner_id, status)
+    SELECT
+      ${courseId},
+      LOWER(${language}),
+      ch.part_id,
+      ch.chapter_id,
+      ${assigneeId},
+      ${assignerId},
+      'assigned'::assignment_status
+    FROM content.course_chapters ch
+    WHERE ch.course_id = ${courseId}
+    ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO NOTHING
+    RETURNING *
+  `;
+};

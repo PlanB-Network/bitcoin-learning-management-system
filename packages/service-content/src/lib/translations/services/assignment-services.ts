@@ -2,9 +2,9 @@ import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../dependencies.js';
 import {
+  createTranslationAssignmentQuery,
   getTranslationAssignmentRequestsQuery,
   getUserTranslationAssignmentsQuery,
-  updateTranslationAssignmentStatusQuery,
 } from '../queries/assignment-queries.js';
 
 export interface TranslationAssignment {
@@ -173,23 +173,179 @@ export const createUpdateTranslationAssignmentStatus = ({
     rejectionReason?: string;
   }): Promise<TranslationAssignment> => {
     try {
-      const results = await postgres.exec(
-        updateTranslationAssignmentStatusQuery(
-          assignmentId,
-          status,
-          rejectionReason,
-        ),
-      );
+      console.log('🔄 updateTranslationAssignmentStatus called with:', {
+        assignmentId,
+        status,
+        rejectionReason,
+      });
 
-      if (results.length === 0) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Translation assignment not found',
+      return await postgres.begin(async (transaction) => {
+        // Récupérer les détails de l'assignation
+        console.log('📥 Fetching assignment details for ID:', assignmentId);
+        const assignmentDetails = await transaction`
+          SELECT course_id, language, assignee_id, assigner_id
+          FROM users.translation_assignments
+          WHERE id = ${assignmentId}
+        `;
+
+        console.log('🔍 Raw assignment details result:', assignmentDetails);
+
+        if (assignmentDetails.length === 0) {
+          console.log('❌ Assignment not found for ID:', assignmentId);
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: 'Translation assignment not found',
+          });
+        }
+
+        const assignmentData = assignmentDetails[0];
+        const course_id = assignmentData.courseId;
+        const language = assignmentData.language;
+        const assignee_id = assignmentData.assigneeId;
+        const assigner_id = assignmentData.assignerId;
+
+        console.log('📋 Assignment details:', {
+          course_id,
+          language,
+          assignee_id,
+          assigner_id,
         });
-      }
 
-      return results[0] as TranslationAssignment;
+        // Mettre à jour le statut de l'assignation
+        console.log('🔄 Updating assignment status to:', status);
+        const results = await transaction`
+          UPDATE users.translation_assignments
+          SET
+            status = ${status},
+            completed_at = ${status === 'completed' ? sql`NOW()` : sql`NULL`},
+            rejection_reason = ${rejectionReason || null}
+          WHERE id = ${assignmentId}
+          RETURNING
+            id,
+            course_id AS "courseId",
+            language,
+            assignee_id AS "assigneeId",
+            assigner_id AS "assignerId",
+            status,
+            assigned_at AS "assignedAt",
+            completed_at AS "completedAt",
+            rejection_reason AS "rejectionReason"
+        `;
+
+        console.log('✅ Assignment status updated. Result:', results[0]);
+
+        // Si le statut est "assigned" (accepté par l'admin)
+        if (status === 'assigned') {
+          console.log(
+            '🚀 Status is "assigned", creating chapter and part assignments...',
+          );
+
+          // Diagnostic : vérifier si le cours a des chapitres
+          console.log('🔍 Diagnostic: Checking if course has chapters...');
+          const chaptersCheck = await transaction`
+            SELECT COUNT(*) as count FROM content.course_chapters WHERE course_id = ${course_id}
+          `;
+          console.log(
+            `📊 Course ${course_id} has ${chaptersCheck[0].count} chapters`,
+          );
+
+          // Diagnostic : vérifier les entrées de traduction existantes
+          console.log(
+            '🔍 Diagnostic: Checking existing translation entries...',
+          );
+          const translationsCheck = await transaction`
+            SELECT
+              (SELECT COUNT(*) FROM content.course_translations WHERE course_id = ${course_id} AND language = LOWER(${language})) as course_translations,
+              (SELECT COUNT(*) FROM content.course_translation_chapters WHERE course_id = ${course_id} AND language = LOWER(${language})) as chapter_translations
+          `;
+          console.log('📊 Existing translation entries:', translationsCheck[0]);
+
+          // Si pas d'entrées de traduction, les créer d'abord
+          if (translationsCheck[0].course_translations === 0) {
+            console.log('📝 Creating missing course_translations entry...');
+            await transaction`
+              INSERT INTO content.course_translations (course_id, language, status)
+              VALUES (${course_id}, LOWER(${language}), 'under_review'::translation_status)
+              ON CONFLICT (course_id, language) DO UPDATE SET
+                status = 'under_review'::translation_status,
+                updated_at = NOW()
+            `;
+            console.log('✅ Created course_translations entry');
+          }
+
+          // Créer les entrées manquantes pour les chapitres
+          if (chaptersCheck[0].count > 0) {
+            console.log('📝 Creating missing chapter translation entries...');
+
+            // Créer les entrées course_translation_chapters manquantes
+            const chapterTranslationResults = await transaction`
+              INSERT INTO content.course_translation_chapters (course_id, language, part_id, chapter_id, status)
+              SELECT
+                ch.course_id,
+                LOWER(${language}),
+                ch.part_id,
+                ch.chapter_id,
+                'under_review'::translation_status
+              FROM content.course_chapters ch
+              WHERE ch.course_id = ${course_id}
+              ON CONFLICT (course_id, language, part_id, chapter_id) DO UPDATE SET
+                status = 'under_review'::translation_status,
+                updated_at = NOW()
+              RETURNING course_id
+            `;
+            console.log(
+              `✅ Created/updated ${chapterTranslationResults.length} chapter translation entries`,
+            );
+          }
+
+          // Créer les assignations de chapitres
+          console.log('📝 Creating chapter assignments...');
+          const chapterAssignmentsResult = await transaction`
+            INSERT INTO users.translation_chapter_assignments (course_id, language, part_id, chapter_id, assignee_id, assigner_id, status)
+            SELECT
+              ${course_id},
+              LOWER(${language}),
+              ch.part_id,
+              ch.chapter_id,
+              ${assignee_id},
+              ${assigner_id},
+              'assigned'::assignment_status
+            FROM content.course_chapters ch
+            WHERE ch.course_id = ${course_id}
+            ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO NOTHING
+            RETURNING id
+          `;
+          console.log(
+            `✅ Created ${chapterAssignmentsResult.length} chapter assignments`,
+          );
+
+          // Mettre à jour les statuts des traductions à "under_review" (normalement déjà fait ci-dessus)
+          console.log(
+            '🔄 Final update: Ensuring all translation statuses are under_review...',
+          );
+          const courseTranslationsResult = await transaction`
+            UPDATE content.course_translations
+            SET
+              status = 'under_review'::translation_status,
+              updated_at = NOW()
+            WHERE course_id = ${course_id} AND language = LOWER(${language})
+            RETURNING course_id
+          `;
+          console.log(
+            `✅ Updated ${courseTranslationsResult.length} course_translations`,
+          );
+
+          console.log('🎉 All updates completed successfully!');
+        } else {
+          console.log(
+            'ℹ️ Status is not "assigned", skipping chapter/part assignments creation',
+          );
+        }
+
+        return results[0] as TranslationAssignment;
+      });
     } catch (error) {
+      console.error('❌ Error in updateTranslationAssignmentStatus:', error);
       if (error instanceof TRPCError) {
         throw error;
       }
@@ -264,6 +420,123 @@ export const createGetTranslationAssignmentRequests = ({
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to fetch translation assignment requests',
+      });
+    }
+  };
+};
+
+/**
+ * Service to assign a course translation to a contributor (admin action)
+ */
+export const createAssignCourseToContributor = ({ postgres }: Dependencies) => {
+  return async ({
+    courseId,
+    language,
+    assigneeId,
+    assignerId,
+  }: {
+    courseId: string;
+    language: string;
+    assigneeId: string;
+    assignerId: string;
+  }) => {
+    try {
+      // Check if there's already an assignment for this course and language
+      const existingAssignment = await postgres.exec(sql`
+        SELECT id, status
+        FROM users.translation_assignments
+        WHERE course_id = ${courseId}
+          AND language = LOWER(${language})
+          AND status IN ('assigned', 'in_progress')
+      `);
+
+      if (existingAssignment.length > 0) {
+        throw new TRPCError({
+          code: 'CONFLICT',
+          message: 'Course is already assigned to another contributor',
+        });
+      }
+
+      // Create the assignment with 'assigned' status
+      const result = await postgres.exec(
+        createTranslationAssignmentQuery(
+          courseId,
+          language,
+          assigneeId,
+          assignerId,
+          'assigned',
+        ),
+      );
+
+      return result[0];
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      console.error('Error assigning course to contributor:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to assign course to contributor',
+      });
+    }
+  };
+};
+
+/**
+ * Service to reassign a course translation to a different contributor (admin action)
+ */
+export const createReassignCourseToContributor = ({
+  postgres,
+}: Dependencies) => {
+  return async ({
+    assignmentId,
+    newAssigneeId,
+    assignerId,
+  }: {
+    assignmentId: string;
+    newAssigneeId: string;
+    assignerId: string;
+  }) => {
+    try {
+      // Update the existing assignment
+      const result = await postgres.exec(sql`
+        UPDATE users.translation_assignments
+        SET
+          assignee_id = ${newAssigneeId},
+          assigner_id = ${assignerId},
+          status = 'assigned',
+          assigned_at = NOW(),
+          completed_at = NULL,
+          rejection_reason = NULL
+        WHERE id = ${assignmentId}
+        RETURNING
+          id,
+          course_id AS "courseId",
+          language,
+          assignee_id AS "assigneeId",
+          assigner_id AS "assignerId",
+          status,
+          assigned_at AS "assignedAt",
+          completed_at AS "completedAt",
+          rejection_reason AS "rejectionReason"
+      `);
+
+      if (result.length === 0) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'Assignment not found',
+        });
+      }
+
+      return result[0];
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      console.error('Error reassigning course to contributor:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to reassign course to contributor',
       });
     }
   };
