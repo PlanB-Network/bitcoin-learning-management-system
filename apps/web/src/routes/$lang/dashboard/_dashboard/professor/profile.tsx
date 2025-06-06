@@ -4,10 +4,16 @@ import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { FiGlobe } from 'react-icons/fi';
 
-import { Loader, Tabs, TabsContent, TextTag, cn } from '@blms/ui';
+import {
+  Loader,
+  Tabs,
+  TabsContent,
+  TabsListUnderlined,
+  TextTag,
+  cn,
+} from '@blms/ui';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
-import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { isUUID, resourceImgUrl, trpc } from '#src/utils/index.ts';
 

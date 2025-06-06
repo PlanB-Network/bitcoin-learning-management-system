@@ -13,7 +13,7 @@ import { trpc } from '#src/utils/trpc.js';
 
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { isUUID } from '#src/utils/index.ts';
-import { CourseCard } from '../../../../organisms/course-card.tsx';
+import { CourseCard } from '../../../../patterns/course-card.tsx';
 import { LectureCard } from '../resources/-components/cards/lecture-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 

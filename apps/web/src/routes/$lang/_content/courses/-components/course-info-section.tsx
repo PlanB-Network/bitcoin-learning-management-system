@@ -1,8 +1,7 @@
 import { t } from 'i18next';
 
 import type { JoinedCourse } from '@blms/types';
-
-import { ListItem } from '#src/components/ListItem/list-item.tsx';
+import { ListItem } from '@blms/ui';
 
 export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
   <section className="flex flex-col md:border-t border-white/10 md:mb-8">

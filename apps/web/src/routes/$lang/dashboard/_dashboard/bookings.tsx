@@ -2,9 +2,8 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Loader, Tabs, TabsContent } from '@blms/ui';
+import { Loader, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
 
-import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 

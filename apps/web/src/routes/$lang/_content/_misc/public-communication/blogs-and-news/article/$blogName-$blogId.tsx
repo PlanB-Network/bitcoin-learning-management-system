@@ -10,7 +10,7 @@ import { PageLayout } from '#src/components/page-layout.js';
 import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
-import { FeaturedCard } from '#src/organisms/featured-card.js';
+import { FeaturedCard } from '#src/patterns/featured-card.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 import BlogSidebar from '../../../-components/public-communication/blog-sidebar.tsx';

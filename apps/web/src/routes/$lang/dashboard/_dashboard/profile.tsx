@@ -16,11 +16,11 @@ import {
   Loader,
   Tabs,
   TabsContent,
+  TabsListUnderlined,
   customToast,
 } from '@blms/ui';
 
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 

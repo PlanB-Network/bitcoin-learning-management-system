@@ -3,7 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import { MainLayout } from '#src/components/main-layout.js';
 import { PageHeader } from '#src/components/page-header.js';
-import CategoryContainer from '#src/organisms/category-container.tsx';
+import CategoryContainer from '#src/patterns/category-container.tsx';
 import { RESOURCES_CATEGORIES } from '#src/services/utils.js';
 
 export const Route = createFileRoute('/$lang/_content/resources/')({

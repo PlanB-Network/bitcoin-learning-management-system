@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { VerticalCard } from '@blms/ui';
 import { useGreater } from '#src/hooks/use-greater.ts';
-import { FeaturedCard } from '#src/organisms/featured-card.tsx';
+import { FeaturedCard } from '#src/patterns/featured-card.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';

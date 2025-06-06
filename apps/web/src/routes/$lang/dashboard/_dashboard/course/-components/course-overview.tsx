@@ -12,7 +12,7 @@ import { IoMdClose } from 'react-icons/io';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
-import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import { ProgressBar } from '../../-components/courses-progress-list.js';
 import { EventCalendar } from '../../-components/event-calendar.tsx';

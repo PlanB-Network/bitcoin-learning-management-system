@@ -12,7 +12,7 @@ import { ButtonWithArrow, DividerSimple } from '@blms/ui';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
-import { CourseCard } from '#src/organisms/course-card.tsx';
+import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { filterAndRandomizeCourses } from '#src/routes/$lang/_content/_misc/exam-certificates.$certificateId.tsx';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';

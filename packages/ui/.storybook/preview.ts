@@ -20,20 +20,22 @@ const RouterDecorator: Decorator = (Story) => {
 const preview: Preview = {
   parameters: {
     backgrounds: {
-      default: 'lightgray',
-      values: [
-        {
-          name: 'lightgray',
-          value: '#F2F2F2',
-        },
-      ],
+      options: {
+        dark: { name: 'Dark', value: '#333' },
+        light: { name: 'Light', value: '#ccc' },
+      },
     },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
+  },
+
+  initialGlobals: {
+    backgrounds: { value: 'light' },
   },
   decorators: [RouterDecorator],
 

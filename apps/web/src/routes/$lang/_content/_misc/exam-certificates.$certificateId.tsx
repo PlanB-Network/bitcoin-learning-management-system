@@ -11,7 +11,7 @@ import CircuitLeft from '#src/assets/certificates/circuit-left.svg';
 import CircuitRight from '#src/assets/certificates/circuit-right.svg';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { CourseCard } from '#src/organisms/course-card.js';
+import { CourseCard } from '#src/patterns/course-card.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 

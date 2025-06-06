@@ -4,11 +4,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { CourseProgressExtended } from '@blms/types';
-import { Divider, Tabs, TabsContent } from '@blms/ui';
+import { Divider, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
 
-import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
 

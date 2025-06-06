@@ -7,7 +7,7 @@ import { Loader } from '@blms/ui';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { MainLayout } from '#src/components/main-layout.js';
 import { PageHeader } from '#src/components/page-header.js';
-import CategoryContainer from '#src/organisms/category-container.tsx';
+import CategoryContainer from '#src/patterns/category-container.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 
