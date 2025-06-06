@@ -121,7 +121,7 @@
       "description": "Les articles ci-dessous peuvent être utilisés pour des événements et à des objectifs éducatifs.",
       "title": "Contenu pédagogique"
     },
-    "pageDescription": "L’adoption de masse n’est pas chose aisée. Pour nous rapprocher plus rapidement de cet objectif, nous avons développé une base de données extensible de contenu éducatif. Ici, les éducateurs Bitcoin peuvent librement déposer et accéder au contenu selon leurs besoins. Nous n'avons pas besoin de réinventer la roue à chaque fois, alors travaillons ensemble pour centraliser les ressources utiles dans un seul outil !",
+    "pageDescription": "L'adoption de masse n'est pas chose aisée. Pour nous rapprocher plus rapidement de cet objectif, nous avons développé une base de données extensible de contenu éducatif. Ici, les éducateurs Bitcoin peuvent librement déposer et accéder au contenu selon leurs besoins. Nous n'avons pas besoin de réinventer la roue à chaque fois, alors travaillons ensemble pour centraliser les ressources utiles dans un seul outil !",
     "pageTitle": "Boîte à outils pédagogique Bitcoin",
     "visualContent": {
       "description": "Ce contenu comporte des données visuelles brutes pour vos créations.",
@@ -530,7 +530,111 @@
         "summer": "Étudiants sélectionnés pour la Summer School"
       },
       "pickADate": "Choisissez une date",
-      "publicationDate": "Date de publication"
+      "publicationDate": "Date de publication",
+      "selectRole": "Sélectionnez le rôle",
+      "translationPanel": {
+        "title": "Panneau de traduction administrateur",
+        "admin": "ADMIN",
+        "tabs": {
+          "requests": "Demandes",
+          "contentManagement": "Gestion de contenu",
+          "userManagement": "Gestion des utilisateurs",
+          "reports": "Rapports"
+        },
+        "pendingTranslationRequests": "Demandes de traduction en attente",
+        "toggle": {
+          "pendingRequest": "Demande en attente",
+          "rejectedRequests": "Demandes rejetées"
+        },
+        "searchPlaceholder": "Rechercher...",
+        "table": {
+          "username": "Nom d'utilisateur",
+          "index": "Indice",
+          "course": "Cours",
+          "language": "Langue",
+          "actions": "Actions"
+        },
+        "actions": {
+          "accept": "Accepter",
+          "reject": "Rejeter",
+          "delete": "Supprimer"
+        },
+        "modal": {
+          "acceptTranslationRequest": "Accepter la Demande de Traduction",
+          "doYouWantToAcceptRequest": "Voulez-vous accepter cette demande de traduction ?",
+          "course": "Cours",
+          "contributor": "Contributeur",
+          "language": "Langue",
+          "cancel": "Annuler",
+          "acceptRequest": "Accepter la Demande",
+          "accepting": "Acceptation...",
+          "requestAcceptedSuccess": "Vous avez accepté la demande de traduction !",
+          "close": "Fermer",
+          "requestAcceptedMessage": "Le contributeur a été notifié et peut maintenant commencer à travailler sur la traduction.",
+          "provideRejectionReason": "Veuillez fournir une raison pour rejeter cette demande",
+          "reasonForRejection": "Raison du rejet",
+          "reasonPlaceholder": "Écrivez votre explication ici...",
+          "submitRejection": "Soumettre",
+          "rejecting": "Rejet...",
+          "requestRejectedSuccess": "Demande rejetée avec succès"
+        },
+        "messages": {
+          "noPendingRequests": "Aucune demande de traduction en attente trouvée.",
+          "noRejectedRequests": "Aucune demande de traduction rejetée trouvée.",
+          "noPendingRequestsSearch": "Aucune demande de traduction en attente trouvée correspondant à \"{{query}}\".",
+          "noRejectedRequestsSearch": "Aucune demande de traduction rejetée trouvée correspondant à \"{{query}}\"."
+        },
+        "comingSoon": {
+          "userManagement": "Fonctionnalité de gestion des utilisateurs bientôt disponible...",
+          "reports": "Fonctionnalité de rapports bientôt disponible..."
+        },
+        "contentManagement": {
+          "title": "Gestion de Contenu",
+          "description": "Assigner et gérer les traductions de cours aux contributeurs",
+          "noCourses": "Aucun cours disponible pour la gestion des traductions",
+          "noCoursesFiltered": "Aucun cours trouvé correspondant à vos filtres",
+          "notAssigned": "Non assigné",
+          "table": {
+            "index": "Index",
+            "course": "Cours",
+            "status": "Statut",
+            "contributor": "Contributeur",
+            "progress": "Progression",
+            "actions": "Actions"
+          },
+          "status": {
+            "notAssigned": "Non assigné",
+            "assigned": "Assigné"
+          },
+          "actions": {
+            "view": "Voir",
+            "assign": "Assigner",
+            "reassign": "Réassigner"
+          },
+          "assignModal": {
+            "title": "Assigner le Cours à un Contributeur",
+            "courseInfo": "Informations du Cours",
+            "selectContributor": "Sélectionner un Contributeur",
+            "chooseContributor": "Choisir un contributeur...",
+            "cancel": "Annuler",
+            "assign": "Assigner",
+            "assigning": "Assignation en cours..."
+          },
+          "reassignModal": {
+            "title": "Réassigner le Cours à un Nouveau Contributeur",
+            "courseInfo": "Informations du Cours",
+            "selectNewContributor": "Sélectionner un Nouveau Contributeur",
+            "chooseNewContributor": "Choisir un nouveau contributeur...",
+            "cancel": "Annuler",
+            "reassign": "Réassigner",
+            "reassigning": "Réassignation en cours...",
+            "warning": {
+              "title": "Note Importante",
+              "description": "Les chapitres et parties qui ont déjà été révisés conserveront leur statut de révision et ne seront pas réassignés."
+            }
+          }
+        }
+      }
     },
     "backToDashboard": "Retour au tableau de bord",
     "bCert": {

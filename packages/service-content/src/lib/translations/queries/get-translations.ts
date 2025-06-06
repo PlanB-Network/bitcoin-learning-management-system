@@ -188,3 +188,83 @@ export const getTranslationProgressQuery = (language: string) => {
     FROM total_courses tc, translated_courses trc
   `;
 };
+
+/**
+ * Query to get all courses for admin content management
+ * This includes both unassigned courses ready for review and assigned courses
+ */
+export const getAdminContentManagementCoursesQuery = (language: string) => {
+  return sql`
+    SELECT
+      ct.course_id AS "courseId",
+      ct.language,
+      ct.status,
+      ct.created_at AS "createdAt",
+      ct.updated_at AS "updatedAt",
+      c.index AS "courseIndex",
+      cl.name AS "courseName",
+      ta.id AS "assignmentId",
+      ta.assignee_id AS "assigneeId",
+      ta.assigner_id AS "assignerId",
+      ta.status AS "assignmentStatus",
+      ta.assigned_at AS "assignedAt",
+      ta.completed_at AS "completedAt",
+      ua.username AS "assigneeUsername",
+      ua.display_name AS "assigneeDisplayName",
+      -- Calculate progress based on translation chapters status
+      COALESCE(
+        ROUND(
+          (COUNT(CASE WHEN ctc.status IN ('reviewed', 'published') THEN 1 END)::float /
+           NULLIF(COUNT(ctc.chapter_id), 0)) * 100, 0
+        ), 0
+      ) AS "progress"
+    FROM content.course_translations ct
+    JOIN content.courses c ON ct.course_id = c.id
+    LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
+    LEFT JOIN users.translation_assignments ta ON (
+      ta.course_id = ct.course_id
+      AND ta.language = ct.language
+      AND ta.status IN ('assigned', 'in_progress', 'completed')
+    )
+        LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
+    LEFT JOIN content.course_translation_chapters ctc ON (
+      ctc.course_id = ct.course_id
+      AND ctc.language = ct.language
+    )
+    WHERE ct.language = LOWER(${language})
+      AND ct.status IN ('ready_for_review', 'under_review')
+      AND c.is_archived = false
+    GROUP BY
+      ct.course_id, ct.language, ct.status, ct.created_at, ct.updated_at,
+      c.index, cl.name, ta.id, ta.assignee_id, ta.assigner_id, ta.status,
+      ta.assigned_at, ta.completed_at, ua.username, ua.display_name
+    ORDER BY
+      CASE
+        WHEN ta.status IS NULL THEN 0  -- Unassigned courses first
+        ELSE 1
+      END,
+      ct.updated_at DESC
+  `;
+};
+
+/**
+ * Query to get available contributors for assignment
+ * Returns users with contributor role and translation permissions
+ */
+export const getAvailableContributorsQuery = () => {
+  return sql`
+    SELECT
+      ua.uid,
+      ua.username,
+      ua.display_name AS "displayName",
+      ua.email
+    FROM users.accounts ua
+    WHERE ua.role IN ('contributor', 'community')
+      AND (
+        ua.permissions IS NULL
+        OR ua.permissions @> '["contribute:reviewer"]'::jsonb
+        OR ua.permissions @> '["contribute:assign"]'::jsonb
+      )
+    ORDER BY ua.display_name, ua.username
+  `;
+};

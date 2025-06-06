@@ -43,3 +43,37 @@ export const updateTranslationStatusQuery = (
       updated_at AS "updatedAt"
   `;
 };
+
+/**
+ * Query to update course translation status to "under_review"
+ */
+export const updateCourseTranslationToUnderReviewQuery = (
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    UPDATE content.course_translations
+    SET
+      status = 'under_review'::translation_status,
+      updated_at = NOW()
+    WHERE course_id = ${courseId} AND language = LOWER(${language})
+    RETURNING *
+  `;
+};
+
+/**
+ * Query to update course translation chapters status to "under_review"
+ */
+export const updateCourseTranslationChaptersToUnderReviewQuery = (
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    UPDATE content.course_translation_chapters
+    SET
+      status = 'under_review'::translation_status,
+      updated_at = NOW()
+    WHERE course_id = ${courseId} AND language = LOWER(${language})
+    RETURNING *
+  `;
+};

@@ -56,7 +56,7 @@ The database includes a comprehensive translation management system:
 
 ### Translation Status Flow
 
-1. `todo` → `in_progress` → `ready_for_review` → `under_review` → `published`
+1. `todo` → `in_progress` → `ready_for_review` → `under_review` → `reviewed` → `published`
 2. Assignment status: `requested` → `assigned` → `in_progress` → `completed`
 3. Review status: `approved` | `rejected` | `needs_changes`
 

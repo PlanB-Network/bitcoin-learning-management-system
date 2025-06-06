@@ -8,6 +8,7 @@ import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
+import { AiOutlineTranslation } from 'react-icons/ai';
 import { BsMortarboard } from 'react-icons/bs';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { FaRegBell } from 'react-icons/fa6';
@@ -90,6 +91,8 @@ export const MenuDashboard = ({
   const adminCareersPath = '/dashboard/administration/careers';
   const adminRolePath = '/dashboard/administration/role';
   const adminTutorialsPath = '/dashboard/administration/tutorials';
+  const adminTranslationPanelPath =
+    '/dashboard/administration/translation-panel';
   const professorProfilePath = '/dashboard/professor/profile';
   const professorCoursesPath = '/dashboard/professor/courses';
   const professorTutorialsPath = '/dashboard/professor/tutorials';
@@ -265,6 +268,14 @@ export const MenuDashboard = ({
                 />
               </Link>
             )}
+            <Link to={adminTranslationPanelPath}>
+              <MenuItem
+                text="Admin Translation Panel"
+                icon={<AiOutlineTranslation size={24} />}
+                active={pathname.includes(adminTranslationPanelPath)}
+                onClick={toggleMobileMenu}
+              />
+            </Link>
             {canAccess(UserRole.Admin, UserPermission.Tutorials)(user) && (
               <Link to={adminTutorialsPath}>
                 <MenuItem

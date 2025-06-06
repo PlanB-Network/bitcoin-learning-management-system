@@ -5,6 +5,8 @@ import type {
 
 import type { Dependencies } from '../../dependencies.js';
 import {
+  getAdminContentManagementCoursesQuery,
+  getAvailableContributorsQuery,
   getAvailableCourseTranslationsQuery,
   getCourseTranslationStatusQuery,
   getCoursesReadyForReviewQuery,
@@ -77,20 +79,16 @@ export const createGetCoursesReadyForReview = ({ postgres }: Dependencies) => {
  * Service to get user's contributions under review (status = 'under_review' or 'assigned' with matching contributor_id)
  * These are the courses that should be displayed in "yourContributions"
  */
-export const createGetUserContributionsUnderReview = (
-  dependencies: Dependencies,
-) => {
-  return async (language: string, userUid: string) => {
-    try {
-      const result = await dependencies.postgres.exec(
-        getUserContributionsUnderReviewQuery(language, userUid),
-      );
-
-      return result;
-    } catch (error) {
-      console.error('getUserContributionsUnderReview - Error:', error);
-      throw error;
-    }
+export const createGetUserContributionsUnderReview = ({
+  postgres,
+}: Dependencies) => {
+  return async (
+    language: string,
+    userUid: string,
+  ): Promise<AvailableCourseTranslation[]> => {
+    return postgres.exec(
+      getUserContributionsUnderReviewQuery(language, userUid),
+    );
   };
 };
 
@@ -101,5 +99,26 @@ export const createGetTranslationProgress = ({ postgres }: Dependencies) => {
   return async (language: string): Promise<number> => {
     const result = await postgres.exec(getTranslationProgressQuery(language));
     return result[0]?.progress || 0;
+  };
+};
+
+/**
+ * Service to get all courses for admin content management
+ * This includes both unassigned courses ready for review and assigned courses
+ */
+export const createGetAdminContentManagementCourses = ({
+  postgres,
+}: Dependencies) => {
+  return async (language: string) => {
+    return postgres.exec(getAdminContentManagementCoursesQuery(language));
+  };
+};
+
+/**
+ * Service to get available contributors for assignment
+ */
+export const createGetAvailableContributors = ({ postgres }: Dependencies) => {
+  return async () => {
+    return postgres.exec(getAvailableContributorsQuery());
   };
 };
