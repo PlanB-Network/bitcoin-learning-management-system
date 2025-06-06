@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to API (Local)",
+      "name": "Run all (Local)",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
