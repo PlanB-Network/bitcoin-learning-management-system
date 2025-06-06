@@ -18,7 +18,7 @@ root.render(
     <Suspense
       fallback={
         <div className="size-full flex flex-col justify-center items-center">
-          <Loader variant="black" size={'m'} />
+          <Loader variant="orange" size={'m'} />
         </div>
       }
     >
