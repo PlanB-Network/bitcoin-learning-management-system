@@ -22,6 +22,7 @@ import { trpc } from '#src/utils/trpc.js';
 import { canAccess } from '@blms/shared/auth';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseAnnouncements } from './-components/course-announcements.tsx';
+import { CourseAssignment } from './-components/course-assignment.tsx';
 import { CourseDetails } from './-components/course-details.tsx';
 import { CourseReview } from './-components/course-review.tsx';
 
@@ -193,6 +194,16 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
                   },
                 ]
               : []),
+            ...(course.isPlanbSchool
+              ? [
+                  {
+                    key: 'assignment',
+                    value: 'assignment',
+                    text: t('dashboard.teacher.courses.assignment'),
+                    active: 'assignment' === currentTab,
+                  },
+                ]
+              : []),
           ]}
           size={isMobile ? 's' : 'm'}
           className="max-md:mx-4"
@@ -203,8 +214,11 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         <TabsContent value="review" className="max-md:px-4">
           <CourseReview courseId={course.id} />
         </TabsContent>
-        <TabsContent value="announcement">
+        <TabsContent value="announcement" className="max-md:px-4">
           <CourseAnnouncements courseId={course.id} />
+        </TabsContent>
+        <TabsContent value="assignment" className="max-md:px-4">
+          <CourseAssignment courseId={course.id} />
         </TabsContent>
       </Tabs>
     </TabsContent>
