@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import type { JoinedCourse } from '@blms/types';
 import { Button } from '@blms/ui';
 
-import { CourseCard, CourseCardExtended } from '#src/organisms/course-card.tsx';
-import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
+import { CourseCard, CourseCardExtended } from '#src/patterns/course-card.tsx';
+import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
 
 import { useTranslation } from 'react-i18next';
 import { toCamelCase } from '#src/utils/string.ts';

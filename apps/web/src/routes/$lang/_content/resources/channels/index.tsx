@@ -2,16 +2,15 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Loader, Switch } from '@blms/ui';
+import { Flag, Loader, Switch, VerticalCard } from '@blms/ui';
 
 import { LANGUAGES_MAP } from '@blms/shared';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import Flag from '#src/molecules/Flag/index.tsx';
-import { VerticalCard } from '#src/molecules/vertical-card.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useGreater } from '#src/hooks/use-greater.ts';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
@@ -22,6 +21,7 @@ export const Route = createFileRoute('/$lang/_content/resources/channels/')({
 function YoutubeChannels() {
   const { t, i18n } = useTranslation();
   const isMobile = useSmaller('md');
+  const isScreenMd = useGreater('md');
   const [showLocalOnly, setShowLocalOnly] = useState(true);
 
   const { data: youtubeChannels, isFetched } =
@@ -103,6 +103,7 @@ function YoutubeChannels() {
                   languages={[youtubeChannel.language]}
                   className="md:hidden w-[137px]"
                   flagsOnMobile
+                  isScreenMd={isScreenMd}
                 />
               </Fragment>
             ))
@@ -153,6 +154,7 @@ function YoutubeChannels() {
                       languages={[youtubeChannel.language]}
                       className="md:hidden w-[137px]"
                       flagsOnMobile
+                      isScreenMd={isScreenMd}
                     />
                   </Fragment>
                 ))}

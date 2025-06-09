@@ -2,9 +2,8 @@ import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-import { Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
+import { DropdownMenu, Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
 
-import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.js';
 import { PageLayout } from '#src/components/page-layout.js';
 import { ProfessorCard } from '#src/components/professor-card.js';
 import { formatNameForURL } from '#src/utils/string.js';

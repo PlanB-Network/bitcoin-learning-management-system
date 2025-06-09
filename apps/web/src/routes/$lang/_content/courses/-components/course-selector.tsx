@@ -6,14 +6,13 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import type { JoinedCourse } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, DropdownMenu, cn } from '@blms/ui';
 
-import { DropdownMenu } from '#src/components/Dropdown/dropdown-menu.tsx';
 import { assetUrl } from '#src/utils/index.ts';
 
 import { levels, sortCoursesByLevel } from '../-utils/course-utils.tsx';
 
-import { Image } from '#src/components/image.tsx';
+import { Image } from '@blms/ui';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { CourseInfoSection } from './course-info-section.tsx';
 

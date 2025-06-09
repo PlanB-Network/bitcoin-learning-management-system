@@ -1,13 +1,18 @@
 import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
-import { Button, DividerSimple, DividerVertical, Loader } from '@blms/ui';
+import {
+  Button,
+  ButtonWithArrow,
+  CollapsibleDropdown,
+  DividerSimple,
+  DividerVertical,
+  Loader,
+} from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { BiPencil } from 'react-icons/bi';
 import { IoMdLock } from 'react-icons/io';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
-import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { formatDate } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 

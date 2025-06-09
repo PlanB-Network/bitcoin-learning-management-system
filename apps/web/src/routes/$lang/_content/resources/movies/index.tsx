@@ -2,12 +2,10 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Loader, Switch } from '@blms/ui';
+import { Flag, Loader, Switch, VerticalCard } from '@blms/ui';
 
 import { LANGUAGES_MAP } from '@blms/shared';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import Flag from '#src/molecules/Flag/index.tsx';
-import { VerticalCard } from '#src/molecules/vertical-card.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
@@ -139,6 +137,7 @@ function Movies() {
                     languages={[movie.language]}
                     className="md:hidden w-[137px]"
                     flagsOnMobile
+                    isScreenMd={!isMobile}
                   />
                 </Fragment>
               ))}

@@ -1,10 +1,9 @@
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { cn } from '@blms/ui';
+import { ListItem, cn } from '@blms/ui';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
-import { ListItem } from '#src/components/ListItem/list-item.tsx';
-import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { MakeModificationBlock } from './make-modification.tsx';
 

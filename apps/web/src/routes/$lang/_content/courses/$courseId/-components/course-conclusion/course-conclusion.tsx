@@ -21,7 +21,7 @@ import Padlock from '#src/assets/icons/padlock.svg?react';
 import SpeechIcon from '#src/assets/icons/speech_icon.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import ThumbUp from '#src/assets/icons/thumb-up-pixelated.svg?react';
-import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 

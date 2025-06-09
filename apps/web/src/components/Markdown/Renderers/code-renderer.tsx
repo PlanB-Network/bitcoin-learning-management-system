@@ -1,9 +1,8 @@
-import { cn } from '@blms/ui';
+import { CopyButton, cn } from '@blms/ui';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CopyButton } from '#src/components/copy-button.tsx';
 
 const codeStyles = cva('text-base tracking-wide', {
   variants: {

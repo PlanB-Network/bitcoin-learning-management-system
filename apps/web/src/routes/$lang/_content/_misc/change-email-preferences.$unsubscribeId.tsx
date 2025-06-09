@@ -1,4 +1,4 @@
-import { Button, Form, customToast } from '@blms/ui';
+import { Button, ButtonWithArrow, Form, customToast } from '@blms/ui';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { MdMarkEmailRead } from 'react-icons/md';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { isUUID } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { FormCheckboxGroup } from '../../dashboard/_dashboard/profile.tsx';

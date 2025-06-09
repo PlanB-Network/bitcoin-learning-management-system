@@ -1,5 +1,5 @@
 import { cn } from '@blms/ui';
-import { Image } from '#src/components/image.tsx';
+import { Image } from '@blms/ui';
 
 interface ProjectCardProps {
   name: string;

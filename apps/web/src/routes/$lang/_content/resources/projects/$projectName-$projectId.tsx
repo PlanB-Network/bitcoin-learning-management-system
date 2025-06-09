@@ -11,20 +11,17 @@ import conferenceSvg from '#src/assets/resources/conference.svg';
 import youtubeSvg from '#src/assets/resources/youtube.svg';
 import tutorialsSvg from '#src/assets/tutorials/other.svg';
 
-import { Button, Loader, cn } from '@blms/ui';
+import { BackLink, Button, Flag, Loader, VerticalCard, cn } from '@blms/ui';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
-import Flag from '#src/molecules/Flag/index.js';
-import { BackLink } from '#src/molecules/backlink.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
-import { VerticalCard } from '#src/molecules/vertical-card.tsx';
-import { CourseCard } from '#src/organisms/course-card.tsx';
+import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';
@@ -350,6 +347,7 @@ function Project() {
                     }
                     languages={conference.languages}
                     className="max-w-[137px] md:max-w-[317px]"
+                    isScreenMd={isScreenMd}
                   />
                 ))}
               </div>
@@ -430,6 +428,7 @@ function Project() {
                       languages={[youtubeChannel.language]}
                       className="md:hidden w-[137px]"
                       flagsOnMobile
+                      isScreenMd={isScreenMd}
                     />
                   </Fragment>
                 ))}

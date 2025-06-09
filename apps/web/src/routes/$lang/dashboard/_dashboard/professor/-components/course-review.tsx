@@ -1,10 +1,15 @@
 import type { CourseReviewsExtended } from '@blms/types';
-import { Button, Loader, Slider, TextTag } from '@blms/ui';
+import {
+  Button,
+  CollapsibleDropdown,
+  Loader,
+  RatingChart,
+  Slider,
+  StarRating,
+  TextTag,
+} from '@blms/ui';
 import { t } from 'i18next';
 import { useState } from 'react';
-import { RatingChart } from '#src/components/Chart/rating-chart.tsx';
-import { CollapsibleDropdown } from '#src/components/Dropdown/collapsible-dropdown.tsx';
-import { StarRating } from '#src/components/Stars/star-rating.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseReview = ({ courseId }: { courseId: string }) => {

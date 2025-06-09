@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
 import {
+  BackLink,
   Button,
   Card,
   Carousel,
@@ -11,14 +12,13 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  Flag,
   Loader,
   TextTag,
 } from '@blms/ui';
 
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
-import Flag from '#src/molecules/Flag/index.tsx';
-import { BackLink } from '#src/molecules/backlink.js';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';

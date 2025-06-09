@@ -13,7 +13,7 @@ import SearchErrorIcon from '#src/assets/icons/search-error.svg';
 
 import GlossaryMarkdownBody from '#src/components/Markdown/glossary-markdown-body.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { FilterDropdown } from '#src/organisms/filter-dropdown.tsx';
+import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { cdnUrl } from '#src/utils/index.ts';
 import { useDebounce } from '#src/utils/search.ts';

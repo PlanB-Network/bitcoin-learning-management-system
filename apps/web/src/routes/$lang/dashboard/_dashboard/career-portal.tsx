@@ -2,6 +2,7 @@ import type { JobTitle } from '@blms/types';
 import {
   BasicModal,
   Button,
+  ButtonWithArrow,
   DialogClose,
   Form,
   FormControl,
@@ -36,7 +37,6 @@ import { IoCheckmarkOutline, IoWarningOutline } from 'react-icons/io5';
 import { MdOutlineEdit } from 'react-icons/md';
 import { z } from 'zod';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 import {

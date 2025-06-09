@@ -17,23 +17,29 @@ import ReactMarkdown from 'react-markdown';
 import { z } from 'zod';
 
 import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
-import { Button, Divider, Loader, TextTag, customToast } from '@blms/ui';
+import {
+  Button,
+  ButtonWithArrow,
+  Divider,
+  ListItem,
+  Loader,
+  PublicComment,
+  StarRating,
+  TextTag,
+  customToast,
+} from '@blms/ui';
 
 import { LANGUAGES_MAP } from '@blms/shared';
+import { Image } from '@blms/ui';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
-import { PublicComment } from '#src/components/Comments/public-comment.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
-import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
-import { StarRating } from '#src/components/Stars/star-rating.tsx';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import { Image } from '#src/components/image.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
-import { CourseCurriculum } from '#src/organisms/course-curriculum.tsx';
+import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { useAuthModal } from '#src/providers/auth.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';

@@ -4,13 +4,12 @@ import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { CourseChapterResponse } from '@blms/types';
-import { Divider } from '@blms/ui';
+import { ButtonWithArrow, Divider } from '@blms/ui';
 
 import { ExamType } from '@blms/constants';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/_dashboard/-components/change-display-name-modal.tsx';
 import { goToChapterParameters } from '#src/utils/courses.ts';

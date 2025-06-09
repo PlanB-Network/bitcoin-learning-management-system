@@ -3,7 +3,7 @@ import { cn } from '@blms/ui';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type React from 'react';
 import { useContext } from 'react';
-import { CourseCard } from '#src/organisms/course-card.tsx';
+import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';

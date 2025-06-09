@@ -3,10 +3,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { MdTimer } from 'react-icons/md';
 
 import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
-import { BasicModal, Button, DialogClose, cn } from '@blms/ui';
+import { BasicModal, Button, ButtonWithArrow, DialogClose, cn } from '@blms/ui';
 
 import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';

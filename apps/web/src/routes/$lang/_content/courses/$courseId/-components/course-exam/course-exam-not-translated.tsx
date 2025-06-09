@@ -2,9 +2,8 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 
 import type { CourseChapterResponse } from '@blms/types';
-import { Divider } from '@blms/ui';
+import { ButtonWithArrow, Divider } from '@blms/ui';
 
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { goToChapterParameters } from '#src/utils/courses.ts';
 
 export const CourseExamNotTranslated = ({

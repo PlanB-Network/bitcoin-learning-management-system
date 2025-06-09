@@ -1,10 +1,9 @@
-import { Tabs, TabsContent, TextTag } from '@blms/ui';
+import { Tabs, TabsContent, TabsListUnderlined, TextTag } from '@blms/ui';
 import { createFileRoute, useLocation } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { TabsListUnderlined } from '#src/components/Tabs/TabsListUnderlined.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';

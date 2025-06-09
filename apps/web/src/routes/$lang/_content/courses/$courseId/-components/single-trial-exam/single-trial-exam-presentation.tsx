@@ -1,6 +1,13 @@
 import { ExamType } from '@blms/constants';
 import type { CourseChapterResponse } from '@blms/types';
-import { Alert, AlertDescription, AlertTitle, Divider, Loader } from '@blms/ui';
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  ButtonWithArrow,
+  Divider,
+  Loader,
+} from '@blms/ui';
 import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { Trans } from 'react-i18next';
@@ -8,7 +15,6 @@ import { LuCircleAlert } from 'react-icons/lu';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
-import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/_dashboard/-components/change-display-name-modal.tsx';
 import { formatTimeRange } from '#src/utils/date.ts';
