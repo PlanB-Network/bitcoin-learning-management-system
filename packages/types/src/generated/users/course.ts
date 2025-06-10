@@ -12,6 +12,8 @@ export interface CourseProgress {
   appliedAssignmentIds: string[] | null;
   affectedAssignmentId: string | null;
   assignmentSubmissionTime: Date | null;
+  assignmentGrade: number | null;
+  ranking: number | null;
 }
 
 export interface CoursePayment {
@@ -107,6 +109,8 @@ export interface CourseProgressExtended {
   appliedAssignmentIds: string[] | null;
   affectedAssignmentId: string | null;
   assignmentSubmissionTime: Date | null;
+  assignmentGrade: number | null;
+  ranking: number | null;
   courseIndex: string;
   totalChapters: number;
   chapters: {

@@ -1,6 +1,9 @@
 export { createGetCourse } from './get-course.js';
 export { createGetCourses } from './get-courses.js';
-export { createGetCourseAssignments } from './get-course-assignments.js';
+export {
+  createGetCourseAssignments,
+  createGetCourseAssignmentsWithStudentsGrades,
+} from './get-course-assignments.js';
 export { createGetProfessorCourses } from './get-courses.js';
 export { createGetCoursesIds } from './get-courses.js';
 export { createGetPlanBSchoolCoursesIds } from './get-courses.js';

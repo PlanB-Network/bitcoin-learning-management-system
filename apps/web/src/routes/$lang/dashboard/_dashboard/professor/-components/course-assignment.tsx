@@ -1,3 +1,4 @@
+import type { MinimalCourseAssignmentWithStudents } from '@blms/types';
 import { Alert, AlertDescription, AlertTitle, Button, cn } from '@blms/ui';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,68 +9,13 @@ import {
   LuChevronUp,
   LuCircleAlert,
 } from 'react-icons/lu';
-
-interface Student {
-  displayName: string;
-  username: string;
-  grade: number | null | undefined;
-}
-
-interface Assignment {
-  id: string;
-  name: string;
-  students: Student[];
-}
+import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseAssignment = ({ courseId }: { courseId: string }) => {
   const { t } = useTranslation();
 
-  const [assignments, setAssignments] = useState<Assignment[]>([
-    {
-      id: 'assignment-1',
-      name: 'Breeze',
-      students: [
-        { displayName: 'Alice Johnson', username: 'alice_j', grade: 54 },
-        { displayName: 'David Chen', username: 'david_chen', grade: 85 },
-        { displayName: 'Sarah Williams', username: 'sarah_w', grade: 76 },
-        { displayName: 'Michael Torres', username: 'mike_t', grade: 22 },
-        { displayName: 'Emma Rodriguez', username: 'emma_r', grade: 98 },
-      ],
-    },
-    {
-      id: 'assignment-2',
-      name: 'Braiins',
-      students: [
-        { displayName: 'James Brown', username: 'james_b', grade: null },
-        { displayName: 'Lisa Garcia', username: 'lisa_g', grade: 73 },
-        { displayName: 'Kevin Park', username: 'kevin_p', grade: 89 },
-        { displayName: 'Nina Patel', username: 'nina_p', grade: 82 },
-        { displayName: 'Ryan Thompson', username: 'ryan_t', grade: 91 },
-      ],
-    },
-  ]);
-
-  const handleGradeChange = (
-    assignmentId: string,
-    username: string,
-    newGrade: number,
-  ): void => {
-    setAssignments((prevAssignments) =>
-      prevAssignments.map((assignment) =>
-        assignment.id === assignmentId
-          ? {
-              ...assignment,
-              students: assignment.students.map((student) =>
-                student.username === username
-                  ? { ...student, grade: newGrade }
-                  : student,
-              ),
-            }
-          : assignment,
-      ),
-    );
-  };
-
+  const { data: assignments, refetch: refetchAssignments } =
+    trpc.content.getCourseAssignmentsWithStudentsGrades.useQuery({ courseId });
   return (
     <div className="flex flex-col w-full max-w-[924px]">
       <div className="flex max-md:flex-col md:justify-between gap-4 mt-3 md:mt-8 md:items-center">
@@ -81,7 +27,12 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
             {t('dashboard.teacher.courses.assignmentGrade.description')}
           </p>
         </div>
-        <Button variant="primary" size="m" mode="dark">
+        <Button
+          variant="primary"
+          size="m"
+          mode="dark"
+          className="max-md:self-end"
+        >
           {t('dashboard.teacher.courses.assignmentGrade.publishAllGrades')}
         </Button>
       </div>
@@ -92,35 +43,29 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         <AlertDescription className="text-newBlack-2">
           {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
         </AlertDescription>
-        <span className="flex items-center gap-2 body-14px text-maroon-7 mt-2.5">
-          <FaClock />
+        <span className="flex md:items-center gap-2 body-14px text-maroon-7 mt-2.5">
+          <FaClock className="shrink-0 size-4 max-md:my-0.5" />
           {t('dashboard.teacher.courses.assignmentGrade.alertDescription2')}
         </span>
       </Alert>
-      <div className="flex flex-col gap-6 mt-10">
-        {assignments.map((assignment) => (
-          <AssignmentGradesTable
-            key={assignment.id}
-            assignmentId={assignment.id}
-            assignmentName={assignment.name}
-            students={assignment.students}
-            onGradeChange={handleGradeChange}
-          />
-        ))}
-      </div>
+      {assignments && assignments.length > 0 && (
+        <div className="flex flex-col gap-6 mt-10">
+          {assignments.map((assignment) => (
+            <AssignmentGradesTable
+              key={assignment.id}
+              assignment={assignment}
+              onGradeChange={refetchAssignments}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 interface AssignmentGradesTableProps {
-  assignmentId: string;
-  assignmentName: string;
-  students: Student[];
-  onGradeChange?: (
-    assignmentId: string,
-    username: string,
-    newGrade: number,
-  ) => void;
+  assignment: MinimalCourseAssignmentWithStudents;
+  onGradeChange?: () => void;
 }
 
 interface SortConfig {
@@ -129,18 +74,16 @@ interface SortConfig {
 }
 
 const AssignmentGradesTable = ({
-  assignmentId,
-  assignmentName,
-  students,
+  assignment,
   onGradeChange,
 }: AssignmentGradesTableProps) => {
   const { t } = useTranslation();
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [editingGrades, setEditingGrades] = useState<Record<string, number>>(
-    {},
-  );
+  const [editingGrades, setEditingGrades] = useState<
+    Record<string, number | null>
+  >({});
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: null,
     direction: 'asc',
@@ -155,11 +98,17 @@ const AssignmentGradesTable = ({
   };
 
   const sortedStudents = useMemo(() => {
-    if (!sortConfig.key) return students;
+    if (!sortConfig.key) return assignment.students;
 
-    return [...students].sort((a, b) => {
-      const aValue = a[sortConfig.key as keyof Student];
-      const bValue = b[sortConfig.key as keyof Student];
+    return [...assignment.students].sort((a, b) => {
+      const aValue =
+        a[
+          sortConfig.key as keyof MinimalCourseAssignmentWithStudents['students'][0]
+        ];
+      const bValue =
+        b[
+          sortConfig.key as keyof MinimalCourseAssignmentWithStudents['students'][0]
+        ];
 
       if (sortConfig.key === 'grade') {
         const numA = aValue as number;
@@ -172,7 +121,7 @@ const AssignmentGradesTable = ({
       const comparison = strA.localeCompare(strB);
       return sortConfig.direction === 'asc' ? comparison : -comparison;
     });
-  }, [students, sortConfig]);
+  }, [assignment.students, sortConfig]);
 
   const getSortIcon = (key: string) => {
     if (sortConfig.key !== key) {
@@ -187,15 +136,15 @@ const AssignmentGradesTable = ({
 
   const handleEditClick = () => {
     if (isEditing) {
-      for (const [username, grade] of Object.entries(editingGrades)) {
-        onGradeChange?.(assignmentId, username, grade);
+      for (const _ of Object.entries(editingGrades)) {
+        onGradeChange?.();
       }
       setEditingGrades({});
       setIsEditing(false);
     } else {
-      const initialGrades: Record<string, number> = {};
-      for (const student of students) {
-        initialGrades[student.username] = student.grade ?? 0;
+      const initialGrades: Record<string, number | null> = {};
+      for (const student of assignment.students) {
+        initialGrades[student.username] = student.grade ?? null;
       }
       setEditingGrades(initialGrades);
       setIsEditing(true);
@@ -214,7 +163,7 @@ const AssignmentGradesTable = ({
         [studentUsername]: numericGrade,
       }));
     } else {
-      onGradeChange?.(assignmentId, studentUsername, numericGrade);
+      onGradeChange?.();
     }
   };
 
@@ -234,12 +183,14 @@ const AssignmentGradesTable = ({
     handleGradeChange(studentUsername, e.target.value);
   };
 
-  const getGradeValue = (student: Student) => {
+  const getGradeValue = (
+    student: MinimalCourseAssignmentWithStudents['students'][0],
+  ) => {
     const grade = isEditing
       ? (editingGrades[student.username] ?? student.grade)
       : student.grade;
 
-    return grade !== null && grade !== undefined ? grade : '';
+    return grade !== null ? grade : '';
   };
 
   return (
@@ -255,7 +206,7 @@ const AssignmentGradesTable = ({
         }}
         aria-expanded={!isCollapsed}
       >
-        <h3 className="subtitle-large-med-20px">{assignmentName}</h3>
+        <h3 className="subtitle-large-med-20px">{assignment.name}</h3>
         <LuChevronDown
           className={cn(
             'size-5 transition-all',
@@ -269,16 +220,19 @@ const AssignmentGradesTable = ({
           <table className="w-full">
             <thead>
               <tr>
-                <th className="desktop-typo2 text-left py-4">
+                <th className="desktop-typo2 text-left py-4 pr-2 w-full max-w-[60%] max-md:hidden">
                   {t(
                     'dashboard.teacher.courses.assignmentGrade.studentDisplayName',
                   )}
                 </th>
-                <th className="desktop-typo2 text-left py-4">
+                <th className="desktop-typo2 text-left py-4 pr-2 w-full max-w-[60%] md:hidden">
+                  {t('words.student')}
+                </th>
+                <th className="desktop-typo2 text-left py-4 pr-2 min-w-[180px] w-[20%] max-md:hidden">
                   {t('words.username')}
                 </th>
                 <th
-                  className="desktop-typo2 cursor-pointer text-left py-4"
+                  className="desktop-typo2 cursor-pointer text-left py-4 max-md:min-w-33 md:min-w-[180px] md:w-[20%]"
                   onClick={() => handleSort('grade')}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -287,7 +241,7 @@ const AssignmentGradesTable = ({
                     }
                   }}
                 >
-                  <div className="flex items-center justify-end gap-2">
+                  <div className="flex items-center justify-end gap-2.5">
                     {t('dashboard.teacher.courses.assignmentGrade.grade100')}
                     {getSortIcon('grade')}
                   </div>
@@ -297,8 +251,18 @@ const AssignmentGradesTable = ({
             <tbody>
               {sortedStudents.map((student) => (
                 <tr key={student.username}>
-                  <td className="py-2.5 body-16px">{student.displayName}</td>
-                  <td className="py-2.5 body-16px">{student.username}</td>
+                  <td className="py-2.5 pr-2 body-16px max-md:hidden">
+                    {student.displayName}
+                  </td>
+                  <td className="py-2.5 pr-2 flex flex-col md:hidden">
+                    <span className="body-16px">{student.displayName}</span>
+                    <span className="text-newGray-1 body-12px">
+                      {student.username}
+                    </span>
+                  </td>
+                  <td className="py-2.5 pr-2 body-16px max-md:hidden">
+                    {student.username}
+                  </td>
                   <td className="text-right py-2.5">
                     <input
                       type="number"
@@ -308,7 +272,7 @@ const AssignmentGradesTable = ({
                       placeholder="--"
                       readOnly={!isEditing}
                       className={cn(
-                        'w-25 px-4 py-1.5 text-left border rounded-lg border-newGray-4 placeholder:text-newGray-3',
+                        'w-19 md:w-25 px-4 py-1.5 text-left border rounded-lg border-newGray-4 placeholder:text-newGray-3',
                         isEditing
                           ? 'bg-white'
                           : 'bg-transparent cursor-default',

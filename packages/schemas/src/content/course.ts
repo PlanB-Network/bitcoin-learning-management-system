@@ -315,3 +315,21 @@ export const courseChapterMetaSchema = joinedCourseChapterSchema
       lastCommit: z.string(),
     }),
   );
+
+export const minimalCourseAssignmentWithStudentsSchema = courseAssignmentSchema
+  .pick({
+    id: true,
+    name: true,
+  })
+  .merge(
+    z.object({
+      students: z.array(
+        z.object({
+          uid: z.string(),
+          username: z.string(),
+          displayName: z.string(),
+          grade: z.number().nullable(),
+        }),
+      ),
+    }),
+  );

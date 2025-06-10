@@ -33,6 +33,7 @@ export interface Course {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
@@ -460,4 +461,15 @@ export interface CourseChapterMeta {
   courseId: string;
   courseIndex: string;
   lastCommit: string;
+}
+
+export interface MinimalCourseAssignmentWithStudents {
+  id: string;
+  name: string;
+  students: {
+    uid: string;
+    username: string;
+    displayName: string;
+    grade: number | null;
+  }[];
 }
