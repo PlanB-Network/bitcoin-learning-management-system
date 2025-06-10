@@ -16,14 +16,12 @@ root.render(
   <StrictMode>
     <Suspense
       fallback={
-        <div className="flex justify-center items-center h-full w-full">
-          <img
-            src={OrangePill}
-            className="w-[200px]"
-            loading="lazy"
-            alt="Orange pill"
-          />
-        </div>
+        <img
+          src={OrangePill}
+          className="w-[200px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          loading="lazy"
+          alt="Orange pill"
+        />
       }
     >
       <AppProvider>
