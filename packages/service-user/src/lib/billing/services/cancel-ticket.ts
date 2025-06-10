@@ -1,7 +1,9 @@
 import { sql } from '@blms/database';
 import type { Dependencies } from '../../../dependencies.js';
 
-export const createCancelTicket = ({ postgres }: Dependencies) => {
+export const createCancelTicket = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async ({
     uid,
     ticketId,

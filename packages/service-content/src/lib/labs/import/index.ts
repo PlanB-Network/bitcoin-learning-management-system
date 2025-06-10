@@ -18,7 +18,9 @@ interface LabDetails {
 
 export type ChangedLab = ChangedContent;
 
-export const createUpdateLabs = ({ postgres }: Dependencies) => {
+export const createUpdateLabs = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (lab: ChangedLab, errors: string[]) => {
     const { main, files } = separateContentFiles(lab, 'lab.yml');
 
@@ -58,7 +60,9 @@ export const createUpdateLabs = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteLabs = ({ postgres }: Dependencies) => {
+export const createDeleteLabs = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

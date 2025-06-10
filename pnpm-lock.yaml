@@ -92,9 +92,6 @@ importers:
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
-      eventemitter3:
-        specifier: ^5.0.1
-        version: 5.0.1
       express:
         specifier: ^4.21.2
         version: 4.21.2

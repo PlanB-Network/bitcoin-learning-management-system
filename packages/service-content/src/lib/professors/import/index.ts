@@ -81,7 +81,9 @@ export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
   return [...groupedProfessors.values()];
 };
 
-export const createUpdateProfessors = ({ postgres }: Dependencies) => {
+export const createUpdateProfessors = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (professor: ChangedProfessor, errors: string[]) => {
     const { main, files } = separateContentFiles(professor, 'professor.yml');
 
@@ -125,7 +127,9 @@ export const createUpdateProfessors = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteProfessors = ({ postgres }: Dependencies) => {
+export const createDeleteProfessors = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

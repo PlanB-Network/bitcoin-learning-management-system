@@ -33,7 +33,7 @@ interface ProjectLocal extends BaseResource {
 }
 
 export const createProcessChangedProject = (
-  { postgres }: Dependencies,
+  { postgres }: Pick<Dependencies, 'postgres'>,
   errors: string[],
 ) => {
   return async (resource: ChangedResource) => {

@@ -51,6 +51,8 @@ const listEventsAndCourses = () => {
   `;
 };
 
-export const createListEventsAndCourses = ({ postgres }: Dependencies) => {
+export const createListEventsAndCourses = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return () => postgres.exec(listEventsAndCourses());
 };

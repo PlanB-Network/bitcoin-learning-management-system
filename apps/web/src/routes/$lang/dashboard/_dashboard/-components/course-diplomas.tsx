@@ -16,7 +16,7 @@ export const CourseDiplomas = () => {
   const { session } = useContext(AppContext);
 
   const { data: examResults, isFetched } =
-    trpc.user.courses.getAllSuccededUserExams.useQuery({
+    trpc.user.courses.getAllSucceededUserExams.useQuery({
       language: i18n.language ?? 'en',
     });
 

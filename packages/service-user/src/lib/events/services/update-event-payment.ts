@@ -9,7 +9,9 @@ type Options = { id: string } & (
   | { isPaid: false; isExpired: true }
 );
 
-export const createUpdateEventPayment = ({ postgres }: Dependencies) => {
+export const createUpdateEventPayment = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (options: Options) => {
     const query = updateEventPaymentQuery(options);
     await postgres.exec(query);
@@ -24,7 +26,7 @@ interface Options2 {
 
 export const createUpdateEventPaymentInvoiceId = ({
   postgres,
-}: Dependencies) => {
+}: Pick<Dependencies, 'postgres'>) => {
   return async (options: Options2) => {
     await postgres.exec(updateEventPaymentInvoiceId(options));
   };

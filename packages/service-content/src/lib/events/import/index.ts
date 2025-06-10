@@ -62,7 +62,9 @@ export const groupByEvent = (files: ChangedFile[], errors: string[]) => {
   return [...groupedEvents.values()];
 };
 
-export const createUpdateEvents = ({ postgres }: Dependencies) => {
+export const createUpdateEvents = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (event: ChangedEvent, errors: string[]) => {
     const main = event.files[0];
     return postgres
@@ -85,7 +87,9 @@ export const createUpdateEvents = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createDeleteEvents = ({ postgres }: Dependencies) => {
+export const createDeleteEvents = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(

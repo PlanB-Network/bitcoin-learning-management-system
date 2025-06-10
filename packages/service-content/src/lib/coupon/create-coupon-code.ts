@@ -1,8 +1,8 @@
 import { sql } from '@blms/database';
 import type { CouponCode } from '@blms/types';
 
+import { nanoid } from '@blms/service-common';
 import type { Dependencies } from '../dependencies.js';
-import { nanoid } from '../nanoid.js';
 
 interface Options {
   singleUse: boolean;
@@ -13,7 +13,9 @@ interface Options {
   reductionPercentage: number;
 }
 
-export const createCreateCouponCode = ({ postgres }: Dependencies) => {
+export const createCreateCouponCode = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return (options: Options, uid: string) => {
     console.log('Creating coupon code', options);
 

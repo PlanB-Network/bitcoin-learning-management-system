@@ -3,7 +3,9 @@ import type { CouponCode } from '@blms/types';
 
 import type { Dependencies } from '../dependencies.js';
 
-export const createDeleteCouponCode = ({ postgres }: Dependencies) => {
+export const createDeleteCouponCode = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return (code: string) => {
     console.log('Delete coupon code', code);
 

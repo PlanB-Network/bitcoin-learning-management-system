@@ -8,7 +8,9 @@ interface Options {
   language: string;
 }
 
-export const createGetInvoices = ({ postgres }: Dependencies) => {
+export const createGetInvoices = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return ({ uid, language }: Options): Promise<Invoice[]> => {
     return postgres.exec(getInvoicesQuery(uid, language));
   };

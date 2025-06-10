@@ -48,7 +48,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       parsedEvent.test_only === true &&
       process.env.PLANB_ENVIRONMENT === 'mainnet'
     ) {
-      console.log('-- Sync: Ignore event', parsedEvent.name);
+      console.log('[sync] Ignore event', parsedEvent.name);
       return;
     }
 

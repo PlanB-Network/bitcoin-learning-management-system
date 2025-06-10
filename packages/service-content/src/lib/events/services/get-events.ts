@@ -14,20 +14,26 @@ export const createGetUpcomingEventsBooking = ({ postgres }: Dependencies) => {
   };
 };
 
-export const createGetRecentEvents = ({ postgres }: Dependencies) => {
+export const createGetRecentEvents = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return (): Promise<JoinedEvent[]> => {
     return postgres.exec(getRecentEventsQuery());
   };
 };
 
-export const createGetUpcomingEvent = ({ postgres }: Dependencies) => {
+export const createGetUpcomingEvent = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (): Promise<JoinedEvent | null> => {
     const result = await postgres.exec(getUpcomingEventQuery());
     return result[0] || null;
   };
 };
 
-export const createGetUpcomingEventsInfos = ({ postgres }: Dependencies) => {
+export const createGetUpcomingEventsInfos = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (): Promise<JoinedEvent[]> => {
     const result = await postgres.exec(getUpcomingEventsInfosQuery());
     return result;

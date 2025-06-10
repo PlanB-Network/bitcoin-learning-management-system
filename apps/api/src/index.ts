@@ -6,14 +6,14 @@ import { pathToFileURL } from 'node:url';
 
 import * as dotenv from 'dotenv';
 
-import type { SessionData as ApiSessionDAta } from '@blms/types';
+import type { SessionData as ApiSessionDAta, LogContext } from '@blms/types';
 
 import { startDependencies } from './dependencies.js';
 import { startServer } from './server.js';
 
 declare global {
   namespace Express {
-    interface Request {
+    interface Request extends LogContext {
       id: string;
     }
   }

@@ -10,7 +10,9 @@ interface SendWelcomeEmailParams {
   userId: string;
 }
 
-export const createSendCourseWelcomeEmail = (dependencies: Dependencies) => {
+export const createSendCourseWelcomeEmail = (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+) => {
   return async ({
     courseId,
     userId,

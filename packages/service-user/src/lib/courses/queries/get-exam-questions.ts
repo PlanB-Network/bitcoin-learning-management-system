@@ -2,7 +2,7 @@ import { sql } from '@blms/database';
 import type {
   CourseExamAttempt,
   CourseExamResults,
-  CourseSuccededExam,
+  CourseSucceededExam,
   PartialExamQuestion,
 } from '@blms/types';
 
@@ -124,7 +124,7 @@ export const getAllUserSucceededExamsQuery = ({
   uid: string;
   language?: string;
 }) => {
-  return sql<CourseSuccededExam[]>`
+  return sql<CourseSucceededExam[]>`
     SELECT
       ea.succeeded,
       ea.finalized,

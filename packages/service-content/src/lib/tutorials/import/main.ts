@@ -30,7 +30,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       parsedTutorial.test_only === true &&
       process.env.PLANB_ENVIRONMENT === 'mainnet'
     ) {
-      console.log('-- Sync: Ignore tutorial', parsedTutorial.id);
+      console.log('[sync] Ignore tutorial', parsedTutorial.id);
       return;
     }
 

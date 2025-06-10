@@ -266,20 +266,20 @@ const createInitIndexes = (client: TypesenseClient) => () => {
   return client
     .collections()
     .create(searchableSchema)
-    .then(() => console.log('[SEARCH] Index created'));
+    .then(() => console.log('[search] Index created'));
 };
 
 const createDeleteIndexes = (client: TypesenseClient) => () => {
   return client
     .collections('searchable')
     .delete()
-    .then(() => console.log('[SEARCH] Index deleted'))
+    .then(() => console.log('[search] Index deleted'))
     .catch((error) => {
       if (error instanceof TypesenseErrors.ObjectNotFound) {
-        return console.log('[SEARCH] Nothing to delete, index does not exist');
+        return console.log('[search] Nothing to delete, index does not exist');
       }
 
-      console.error('[SEARCH] Failed to delete index:', error);
+      console.error('[search] Failed to delete index:', error);
     });
 };
 
@@ -298,21 +298,24 @@ const createIngestData =
         })),
       )
       .catch((error) => {
-        console.error('[SEARCH] Import failed:', error.message);
+        console.error('[search] Import failed:', error.message);
         console.error(
-          '[SEARCH] Import result:',
+          '[search] Import result:',
           error.importResults.filter((r: any) => !r.success),
         );
       });
   };
 
-export const createIndexContent = ({ postgres, typesense }: Dependencies) => {
+export const createIndexContent = ({
+  postgres,
+  typesense,
+}: Pick<Dependencies, 'postgres' | 'typesense'>) => {
   const deleteIndexes = createDeleteIndexes(typesense);
   const createIndexes = createInitIndexes(typesense);
   const ingestData = createIngestData(typesense);
 
   return async (_errors: string[]) => {
-    const timeKey = '-- Indexing content for typesense';
+    const timeKey = '[search] Indexing content for typesense';
     console.time(timeKey);
     console.log(`${timeKey}...`);
 
@@ -340,7 +343,7 @@ export const createIndexContent = ({ postgres, typesense }: Dependencies) => {
 
     await ingestData(data);
 
-    console.log(`[SEARCH] Imported ${data.length} documents`);
+    console.log(`[search] Imported ${data.length} documents`);
 
     console.timeEnd(timeKey);
   };

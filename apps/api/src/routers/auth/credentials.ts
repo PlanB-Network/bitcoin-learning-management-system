@@ -96,8 +96,8 @@ export const credentialsAuthRouter = createTRPCRouter({
 
       // Check if a session exists and if it is valid
       if (ctx.req.session.uid) {
-        console.log('----- User is already logged in');
-        console.log('----- Clear user session');
+        ctx.log('----- User is already logged in');
+        ctx.log('----- Clear user session');
         ctx.req.session.destroy((err) => {
           if (err)
             throw new TRPCError({

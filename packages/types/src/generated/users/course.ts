@@ -200,7 +200,7 @@ export interface CourseExamResultsExtended {
   userExamDuration: number;
 }
 
-export interface CourseSuccededExam {
+export interface CourseSucceededExam {
   score: number | null;
   finalized: boolean;
   succeeded: boolean;

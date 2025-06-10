@@ -35,7 +35,9 @@ const fetchProjectLocation = async (query: string) => {
   return expectedResponseSchema.parse(data)?.[0];
 };
 
-export const createSyncProjectsLocations = ({ postgres }: Dependencies) => {
+export const createSyncProjectsLocations = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (syncWarnings: string[]) => {
     try {
       const locations = await postgres.exec(getProjectsWithoutLocationQuery());
@@ -43,7 +45,7 @@ export const createSyncProjectsLocations = ({ postgres }: Dependencies) => {
       for (const { name } of locations) {
         const result = await fetchProjectLocation(name).catch(() => null);
         if (!result) {
-          const warn = `-- Sync: Could not find project location: ${name}`;
+          const warn = `[sync] Could not find project location: ${name}`;
           syncWarnings.push(warn);
           continue;
         }

@@ -11,7 +11,9 @@ type Options = { id: string } & (
   | { isPaid: false; isExpired: true }
 );
 
-export const createUpdateCoursePayment = (dependencies: Dependencies) => {
+export const createUpdateCoursePayment = (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+) => {
   return async (options: Options) => {
     const { postgres } = dependencies;
 
@@ -48,7 +50,7 @@ interface Options2 {
 
 export const createUpdateCoursePaymentInvoiceId = ({
   postgres,
-}: Dependencies) => {
+}: Pick<Dependencies, 'postgres'>) => {
   return async (options: Options2) => {
     const coursePayments = await postgres.exec(updatePaymentInvoiceId(options));
     return coursePayments && coursePayments.length === 1

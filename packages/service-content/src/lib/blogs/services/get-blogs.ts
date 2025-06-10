@@ -3,7 +3,9 @@ import type { JoinedBlogLight } from '@blms/types';
 import type { Dependencies } from '../../dependencies.js';
 import { getBlogsQuery } from '../queries/get-blogs.js';
 
-export const createGetBlogs = ({ postgres }: Dependencies) => {
+export const createGetBlogs = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return (language?: string): Promise<JoinedBlogLight[]> => {
     return postgres.exec(getBlogsQuery(language));
   };

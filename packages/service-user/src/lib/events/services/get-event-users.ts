@@ -15,7 +15,9 @@ const getEventUsersQuery = ({ eventId }: Options) => {
     `;
 };
 
-export const createGetEventUsers = ({ postgres }: Dependencies) => {
+export const createGetEventUsers = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return ({ eventId }: Options) => {
     return postgres.exec(getEventUsersQuery({ eventId }));
   };

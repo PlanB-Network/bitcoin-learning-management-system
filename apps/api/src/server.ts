@@ -4,7 +4,7 @@ import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { Router, json } from 'express';
 
 import type { Dependencies } from './dependencies.js';
-import { createCookieSessionMiddleware } from './middlewares/session/cookie.js';
+import { createCookieSessionMiddleware } from './middlewares/session.js';
 import { createRestRouter } from './routers/rest/index.js';
 import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
@@ -34,9 +34,30 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   app.use(createCookieSessionMiddleware(dependencies));
 
-  // Basic request logger
-  app.use((req, _res, next) => {
-    console.log('➡️', req.method, req.path);
+  const genRequestId = () => crypto.randomUUID().replace(/-/g, '').slice(0, 16);
+
+  // Basic request logger + Set request ID
+  app.use((req, res, next) => {
+    const path = req.path;
+    const method = req.method;
+    const sessionId = req.session?.id || '';
+
+    req.id ||= req.header('x-request-id') || genRequestId();
+    req.log = (...a: any[]) => console.log(`[request] ${req.id}`, ...a);
+    req.log(`${method} ${path} (${req.ip}) session=${sessionId} `);
+
+    // Log response time
+    const start = process.hrtime();
+    res.on('finish', () => {
+      const [s, ns] = process.hrtime(start);
+      const len = res.get('Content-Length');
+      const status = res.statusCode;
+
+      req.log(
+        `${method} ${path} took ${s * 1000 + ns / 1e6}ms (${status})${len ? `, ${len} bytes` : ''}`,
+      );
+    });
+
     next();
   });
 
@@ -61,12 +82,10 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   return new Promise<Server>((resolve, reject) => {
     server.on('listening', () => {
-      console.log(`[ ready ] listening on port ${port}`);
+      console.info(`[server] listening on port ${port}`);
       resolve(server);
     });
 
-    server.on('error', (err) => {
-      reject(err);
-    });
+    server.on('error', (err) => reject(err));
   });
 };

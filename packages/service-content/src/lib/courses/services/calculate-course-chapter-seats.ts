@@ -3,7 +3,7 @@ import { calculateCourseChapterSeats } from '../queries/calculate-course-chapter
 
 export const createCalculateCourseChapterSeats = ({
   postgres,
-}: Dependencies) => {
+}: Pick<Dependencies, 'postgres'>) => {
   return (): Promise<void> => {
     return postgres.exec(calculateCourseChapterSeats()).then(() => void 0);
   };

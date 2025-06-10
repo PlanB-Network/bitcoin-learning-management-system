@@ -8,7 +8,7 @@ interface Options {
   language: string;
 }
 
-export const createGetBlog = ({ postgres }: Dependencies) => {
+export const createGetBlog = ({ postgres }: Pick<Dependencies, 'postgres'>) => {
   return async ({ id, language }: Options) => {
     const blog = await postgres.exec(getBlogQuery(id, language)).then(firstRow);
 

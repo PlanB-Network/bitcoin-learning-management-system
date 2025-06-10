@@ -66,7 +66,10 @@ export const groupByAssignments = (files: ChangedFile[], errors: string[]) => {
   return [...groupedAssignments.values()];
 };
 
-export const createUpdateAssignments = ({ postgres, s3 }: Dependencies) => {
+export const createUpdateAssignments = ({
+  postgres,
+  s3,
+}: Pick<Dependencies, 'postgres' | 's3'>) => {
   return async (assignment: ChangedAssignment, errors: string[]) => {
     const { main, files } = separateContentFiles(assignment, 'assignment.yml');
 
@@ -119,7 +122,7 @@ export const createUpdateAssignments = ({ postgres, s3 }: Dependencies) => {
         }
       })
       .catch((error) => {
-        console.log(`Error during transaction: ${error}`);
+        console.log(`[sync] Error during transaction: ${error?.message}`);
         errors.push(`Error during transaction: ${error}`);
       });
   };
@@ -189,7 +192,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
   };
 };
 
-export const createDeleteAssignments = ({ postgres }: Dependencies) => {
+export const createDeleteAssignments = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
     try {
       await postgres.exec(
@@ -220,7 +225,7 @@ export const createProcessPdfFile = (
     const metadata = await s3.metadata(filePath);
 
     if (metadata?.commit === file.commit) {
-      console.log(`-- Sync: Already processed file: ${filePath}`, metadata);
+      console.log(`[sync] Already processed file: ${filePath}`, metadata);
     } else {
       console.log('put on s3', filePath);
       const mimeType = 'application/pdf';

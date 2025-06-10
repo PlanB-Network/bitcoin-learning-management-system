@@ -9,7 +9,7 @@ import {
   courseProgressExtendedSchema,
   courseProgressSchema,
   courseReviewSchema,
-  courseSuccededExamSchema,
+  courseSucceededExamSchema,
   courseUserChapterSchema,
   partialExamQuestionSchema,
 } from '@blms/schemas';
@@ -21,7 +21,7 @@ import {
   createCompleteAllChapters,
   createCompleteChapter,
   createCompleteExamAttempt,
-  createGetAllSuccededUserExams,
+  createGetAllSucceededUserExams,
   createGetAllUserCourseExamsResults,
   createGetCourseReview,
   createGetExamInfo,
@@ -52,7 +52,7 @@ import type {
   CourseProgress,
   CourseProgressExtended,
   CourseReview,
-  CourseSuccededExam,
+  CourseSucceededExam,
   CourseUserChapter,
   PartialExamQuestion,
 } from '@blms/types';
@@ -173,15 +173,15 @@ const getAllUserCourseExamResultsProcedure = studentProcedure
     }),
   );
 
-const getAllSuccededUserExamsProcedure = studentProcedure
+const getAllSucceededUserExamsProcedure = studentProcedure
   .input(
     z.object({
       language: z.string(),
     }),
   )
-  .output<Parser<CourseSuccededExam[]>>(courseSuccededExamSchema.array())
+  .output<Parser<CourseSucceededExam[]>>(courseSucceededExamSchema.array())
   .query(({ ctx, input }) =>
-    createGetAllSuccededUserExams(ctx.dependencies)({
+    createGetAllSucceededUserExams(ctx.dependencies)({
       uid: ctx.user.uid,
       language: input.language,
     }),
@@ -476,7 +476,7 @@ export const userCoursesRouter = createTRPCRouter({
   completeExamAttempt: completeExamAttemptProcedure,
   downloadChapterTicket: downloadChapterTicketProcedure,
   getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
-  getAllSuccededUserExams: getAllSuccededUserExamsProcedure,
+  getAllSucceededUserExams: getAllSucceededUserExamsProcedure,
   getCourseReview: getCourseReviewProcedure,
   getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,

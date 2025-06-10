@@ -61,7 +61,7 @@ import {
 } from './tutorials/import/index.js';
 
 export const timeLog = (len: number, name: string) => {
-  const key = `-- Sync: Syncing ${len} ${name}${len > 1 ? 's' : ''}`;
+  const key = `[sync] Syncing ${len} ${name}${len > 1 ? 's' : ''}`;
   console.log(`${key}...`);
   console.time(key);
 
@@ -78,7 +78,9 @@ interface SyncResult {
 /**
  * Updates the database from the content files
  */
-export const createProcessContentFiles = (dependencies: Dependencies) => {
+export const createProcessContentFiles = (
+  dependencies: Pick<Dependencies, 'postgres' | 's3' | 'typesense'>,
+) => {
   const deleteProofreadings = createDeleteProofreadings(dependencies);
   const updateLabs = createUpdateLabs(dependencies);
   const updateResources = createUpdateResources(dependencies);
@@ -106,7 +108,7 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
 
     const errors: string[] = [];
     const warnings: string[] = [];
-    console.log('-- Sync: Deleting proofreadings');
+    console.log('[sync] Deleting proofreadings');
     await deleteProofreadings(errors);
 
     // Sync professors
@@ -224,14 +226,16 @@ export const createProcessContentFiles = (dependencies: Dependencies) => {
     }
 
     // Index content
-    console.log('-- Sync procedure: indexing content');
+    console.log('[sync] Indexing search content (Typesense)');
     await indexContent(errors);
 
     return { errors, warnings };
   };
 };
 
-export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
+export const createProcessDeleteOldEntities = (
+  dependencies: Pick<Dependencies, 'postgres'>,
+) => {
   const deleteLabs = createDeleteLabs(dependencies);
   const deleteProfessors = createDeleteProfessors(dependencies);
   const deleteCourses = createDeleteCourses(dependencies);
@@ -244,7 +248,7 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   const deleteAssignments = createDeleteAssignments(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
-    const timeKey = '-- Sync: Removing old entities';
+    const timeKey = '[sync] Removing old entities';
     console.log(`${timeKey}...`);
     console.time(timeKey);
 
@@ -263,11 +267,13 @@ export const createProcessDeleteOldEntities = (dependencies: Dependencies) => {
   };
 };
 
-export const createProcessDisableOldEntities = (dependencies: Dependencies) => {
+export const createProcessDisableOldEntities = (
+  dependencies: Pick<Dependencies, 'postgres'>,
+) => {
   const disableQuizQuestions = createDisableQuizQuestions(dependencies);
 
   return async (sync_date: number, errors: string[]) => {
-    const timeKey = '-- Sync: Disabling old entities';
+    const timeKey = '[sync] Disabling old entities';
     console.log(`${timeKey}...`);
     console.time(timeKey);
 

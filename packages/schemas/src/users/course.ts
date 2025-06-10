@@ -133,7 +133,7 @@ export const courseExamResultsExtendedSchema = courseExamResultsSchema.merge(
   }),
 );
 
-export const courseSuccededExamSchema = courseExamAttemptSchema
+export const courseSucceededExamSchema = courseExamAttemptSchema
   .pick({
     score: true,
     finalized: true,

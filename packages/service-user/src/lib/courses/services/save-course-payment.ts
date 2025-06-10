@@ -192,7 +192,9 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
   };
 };
 
-export const createUpdateCoursePaymentStatus = ({ postgres }: Dependencies) => {
+export const createUpdateCoursePaymentStatus = ({
+  postgres,
+}: Pick<Dependencies, 'postgres'>) => {
   return async ({
     paymentId,
     paymentIntentId,
