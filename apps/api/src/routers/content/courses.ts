@@ -26,6 +26,7 @@ import {
   createGetProfessorCourses,
   createGetPublicCourseReviews,
   createGetTeacherCourseReviews,
+  createSetCourseAssignmentGradesAsPublished,
 } from '@blms/service-content';
 import type {
   CourseAssignment,
@@ -210,6 +211,20 @@ const getCourseAssignmentsWithStudentsGradesProcedure = professorProcedure
     );
   });
 
+const setCourseAssignmentGradesAsPublishedProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(({ ctx, input }) => {
+    return createSetCourseAssignmentGradesAsPublished(ctx.dependencies)({
+      courseId: input.courseId,
+      teacherUid: ctx.user.uid,
+    });
+  });
+
 const calculateCourseChapterSeatsProcedure = publicProcedure
   .input(
     z.object({
@@ -237,4 +252,6 @@ export const coursesRouter = createTRPCRouter({
   calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
   getPublicCourseReviews: getPublicCourseReviewsProcedure,
   getTeacherCourseReviews: getTeacherCourseReviewsProcedure,
+  setCourseAssignmentGradesAsPublished:
+    setCourseAssignmentGradesAsPublishedProcedure,
 });

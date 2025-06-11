@@ -1,21 +1,216 @@
 import type { MinimalCourseAssignmentWithStudents } from '@blms/types';
-import { Alert, AlertDescription, AlertTitle, Button, cn } from '@blms/ui';
-import { useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FaClock } from 'react-icons/fa6';
 import {
-  LuArrowUpDown,
-  LuChevronDown,
-  LuChevronUp,
-  LuCircleAlert,
-} from 'react-icons/lu';
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  BasicModal,
+  Button,
+  DialogClose,
+  Loader,
+  cn,
+  customToast,
+} from '@blms/ui';
+import { useCallback, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  TbAlertCircle,
+  TbArrowBackUp,
+  TbArrowsDownUp,
+  TbCheck,
+  TbChevronDown,
+  TbChevronUp,
+  TbClock,
+} from 'react-icons/tb';
+import InformationIcon from '#src/assets/icons/warning_orange.svg';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+interface GradeToEdit {
+  uid: string;
+  grade: number | null;
+}
+
+interface EditingStates {
+  [assignmentId: string]: {
+    isEditing: boolean;
+    grades: Record<string, number | null>;
+  };
+}
+
 export const CourseAssignment = ({ courseId }: { courseId: string }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data: assignments, refetch: refetchAssignments } =
     trpc.content.getCourseAssignmentsWithStudentsGrades.useQuery({ courseId });
+
+  const { data: course, refetch: refetchCourse } =
+    trpc.content.getCourse.useQuery({ language: i18n.language, id: courseId });
+
+  const saveGradesMutation =
+    trpc.user.courses.saveCourseAssignmentGrade.useMutation({
+      onError: (error) => {
+        customToast(error.message, {
+          mode: 'light',
+          color: 'warning',
+          icon: TbAlertCircle,
+        });
+      },
+    });
+
+  const setGradesAsPublishedMutation =
+    trpc.content.setCourseAssignmentGradesAsPublished.useMutation({
+      onSuccess: async () => {
+        await refetchCourse();
+        await refetchAssignments();
+        customToast(
+          t('dashboard.teacher.courses.assignmentGrade.gradesPublished'),
+          {
+            mode: 'light',
+            color: 'success',
+            icon: TbCheck,
+          },
+        );
+      },
+      onError: (error) => {
+        customToast(error.message, {
+          mode: 'light',
+          color: 'warning',
+          icon: TbAlertCircle,
+        });
+      },
+    });
+
+  const [editingStates, setEditingStates] = useState<EditingStates>({});
+
+  const saveGradesBatch = async (
+    assignmentId: string,
+    gradesToSave: GradeToEdit[],
+  ) => {
+    try {
+      if (gradesToSave.length === 0) return;
+
+      await Promise.all(
+        gradesToSave.map((gradeEntry) =>
+          saveGradesMutation.mutateAsync({
+            courseId,
+            uid: gradeEntry.uid,
+            grade: gradeEntry.grade,
+          }),
+        ),
+      );
+    } catch (error) {
+      console.error(
+        `Error saving grades for assignment ${assignmentId}:`,
+        error,
+      );
+    }
+  };
+
+  const handleToggleEdit = useCallback(
+    async (assignmentId: string) => {
+      const currentState = editingStates[assignmentId];
+      const assignment = assignments?.find((a) => a.id === assignmentId);
+      if (!assignment) return;
+
+      if (currentState?.isEditing) {
+        const gradesToSave: GradeToEdit[] = Object.entries(
+          currentState.grades,
+        ).map(([username, grade]) => ({
+          uid: assignment.students.find((s) => s.username === username)!.uid,
+          grade,
+        }));
+
+        await saveGradesBatch(assignmentId, gradesToSave);
+
+        setEditingStates((prev) => {
+          const newState = { ...prev };
+          delete newState[assignmentId];
+          return newState;
+        });
+
+        await refetchCourse();
+        await refetchAssignments();
+      } else {
+        setEditingStates((prev) => ({
+          ...prev,
+          [assignmentId]: {
+            isEditing: true,
+            grades: {},
+          },
+        }));
+      }
+    },
+    [editingStates, assignments, refetchAssignments, refetchCourse],
+  );
+
+  const handleGradeChange = useCallback(
+    (
+      assignmentId: string,
+      studentUsername: string,
+      newGrade: number | null,
+    ) => {
+      setEditingStates((prev) => ({
+        ...prev,
+        [assignmentId]: {
+          ...prev[assignmentId],
+          isEditing: true,
+          grades: {
+            ...prev[assignmentId].grades,
+            [studentUsername]: newGrade,
+          },
+        },
+      }));
+    },
+    [],
+  );
+
+  const handleBulkSaveAndPublish = async () => {
+    try {
+      const allSaves: Promise<void>[] = [];
+
+      for (const assignment of assignments || []) {
+        const assignmentId = assignment.id;
+        const state = editingStates[assignmentId];
+        const gradesToSave: GradeToEdit[] = [];
+
+        if (state?.isEditing) {
+          for (const [username, grade] of Object.entries(state.grades)) {
+            gradesToSave.push({
+              uid: assignment.students.find((s) => s.username === username)!
+                .uid,
+              grade,
+            });
+          }
+        }
+
+        for (const student of assignment.students) {
+          const isEdited = student.username in (state?.grades || {});
+          if (student.grade === null && !isEdited) {
+            gradesToSave.push({ uid: student.uid, grade: 0 });
+          }
+        }
+
+        if (gradesToSave.length > 0) {
+          allSaves.push(saveGradesBatch(assignmentId, gradesToSave));
+        }
+      }
+
+      await Promise.all(allSaves);
+
+      setEditingStates({});
+
+      await setGradesAsPublishedMutation.mutateAsync({
+        courseId,
+      });
+    } catch (error) {
+      console.error('Error during bulk save and publish:', error);
+    }
+  };
+
+  if (!course) {
+    return <Loader />;
+  }
+
   return (
     <div className="flex flex-col w-full max-w-[924px]">
       <div className="flex max-md:flex-col md:justify-between gap-4 mt-3 md:mt-8 md:items-center">
@@ -27,36 +222,54 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
             {t('dashboard.teacher.courses.assignmentGrade.description')}
           </p>
         </div>
-        <Button
-          variant="primary"
-          size="m"
-          mode="dark"
-          className="max-md:self-end"
-        >
-          {t('dashboard.teacher.courses.assignmentGrade.publishAllGrades')}
-        </Button>
+        {!course.isAssignmentGradingPublished && (
+          <ConfirmGradingSubmissionDialog
+            onConfirm={handleBulkSaveAndPublish}
+            missingGradesCount={
+              assignments?.reduce(
+                (total, assignment) =>
+                  total +
+                  assignment.students.filter(
+                    (student) => student.grade === null,
+                  ).length,
+                0,
+              ) || 0
+            }
+          />
+        )}
       </div>
-      <Alert className="mt-5" variant="warning" hasCloseButton>
-        <AlertTitle icon={LuCircleAlert}>
-          {t('dashboard.teacher.courses.assignmentGrade.alertTitle')}
-        </AlertTitle>
-        <AlertDescription className="text-newBlack-2">
-          {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
-        </AlertDescription>
-        <span className="flex md:items-center gap-2 body-14px text-maroon-7 mt-2.5">
-          <FaClock className="shrink-0 size-4 max-md:my-0.5" />
-          {t('dashboard.teacher.courses.assignmentGrade.alertDescription2')}
-        </span>
-      </Alert>
+      {!course.isAssignmentGradingPublished && (
+        <Alert className="mt-5" variant="warning" hasCloseButton>
+          <AlertTitle icon={TbAlertCircle}>
+            {t('dashboard.teacher.courses.assignmentGrade.alertTitle')}
+          </AlertTitle>
+          <AlertDescription className="text-newBlack-2">
+            {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
+          </AlertDescription>
+          <span className="flex md:items-center gap-2 body-14px text-maroon-7 mt-2.5">
+            <TbClock className="shrink-0 size-4 max-md:my-0.5" />
+            {t('dashboard.teacher.courses.assignmentGrade.alertDescription2')}
+          </span>
+        </Alert>
+      )}
       {assignments && assignments.length > 0 && (
         <div className="flex flex-col gap-6 mt-10">
-          {assignments.map((assignment) => (
-            <AssignmentGradesTable
-              key={assignment.id}
-              assignment={assignment}
-              onGradeChange={refetchAssignments}
-            />
-          ))}
+          {assignments.map((assignment) => {
+            const currentEditingState = editingStates[assignment.id];
+            return (
+              <AssignmentGradesTable
+                key={assignment.id}
+                assignment={assignment}
+                isEditing={currentEditingState?.isEditing ?? false}
+                editingGrades={currentEditingState?.grades ?? {}}
+                onToggleEdit={() => handleToggleEdit(assignment.id)}
+                onGradeChange={(username, grade) =>
+                  handleGradeChange(assignment.id, username, grade)
+                }
+                showEditButton={!course.isAssignmentGradingPublished}
+              />
+            );
+          })}
         </div>
       )}
     </div>
@@ -65,7 +278,11 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
 
 interface AssignmentGradesTableProps {
   assignment: MinimalCourseAssignmentWithStudents;
-  onGradeChange?: () => void;
+  isEditing: boolean;
+  editingGrades: Record<string, number | null>;
+  onToggleEdit: () => void;
+  onGradeChange: (studentUsername: string, newGrade: number | null) => void;
+  showEditButton: boolean;
 }
 
 interface SortConfig {
@@ -75,15 +292,15 @@ interface SortConfig {
 
 const AssignmentGradesTable = ({
   assignment,
+  isEditing,
+  editingGrades,
+  onToggleEdit,
   onGradeChange,
+  showEditButton = true,
 }: AssignmentGradesTableProps) => {
   const { t } = useTranslation();
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [editingGrades, setEditingGrades] = useState<
-    Record<string, number | null>
-  >({});
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: null,
     direction: 'asc',
@@ -125,72 +342,44 @@ const AssignmentGradesTable = ({
 
   const getSortIcon = (key: string) => {
     if (sortConfig.key !== key) {
-      return <LuArrowUpDown className="size-5" />;
+      return <TbArrowsDownUp className="size-5" />;
     }
     return sortConfig.direction === 'asc' ? (
-      <LuChevronUp className="size-5" />
+      <TbChevronUp className="size-5" />
     ) : (
-      <LuChevronDown className="size-5" />
+      <TbChevronDown className="size-5" />
     );
   };
 
-  const handleEditClick = () => {
-    if (isEditing) {
-      for (const _ of Object.entries(editingGrades)) {
-        onGradeChange?.();
-      }
-      setEditingGrades({});
-      setIsEditing(false);
-    } else {
-      const initialGrades: Record<string, number | null> = {};
-      for (const student of assignment.students) {
-        initialGrades[student.username] = student.grade ?? null;
-      }
-      setEditingGrades(initialGrades);
-      setIsEditing(true);
-    }
-  };
-
-  const handleGradeChange = (studentUsername: string, newGrade: string) => {
-    const numericGrade = Number.parseInt(newGrade);
-    if (Number.isNaN(numericGrade) || numericGrade < 0 || numericGrade > 100) {
+  const handleLocalGradeChange = (
+    studentUsername: string,
+    newGradeStr: string,
+  ) => {
+    if (newGradeStr === '') {
+      onGradeChange(studentUsername, null);
       return;
     }
 
-    if (isEditing) {
-      setEditingGrades((prev) => ({
-        ...prev,
-        [studentUsername]: numericGrade,
-      }));
-    } else {
-      onGradeChange?.();
+    const numericGrade = Number.parseInt(newGradeStr);
+    if (
+      !Number.isNaN(numericGrade) &&
+      numericGrade >= 0 &&
+      numericGrade <= 100
+    ) {
+      onGradeChange(studentUsername, numericGrade);
     }
-  };
-
-  const handleGradeKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    studentUsername: string,
-  ) => {
-    if (e.key === 'Enter') {
-      handleGradeChange(studentUsername, e.currentTarget.value);
-    }
-  };
-
-  const handleGradeBlur = (
-    e: React.FocusEvent<HTMLInputElement>,
-    studentUsername: string,
-  ) => {
-    handleGradeChange(studentUsername, e.target.value);
   };
 
   const getGradeValue = (
     student: MinimalCourseAssignmentWithStudents['students'][0],
   ) => {
-    const grade = isEditing
-      ? (editingGrades[student.username] ?? student.grade)
-      : student.grade;
+    if (student.username in editingGrades) {
+      const grade = editingGrades[student.username];
+      return grade !== null ? grade : '';
+    }
 
-    return grade !== null ? grade : '';
+    const originalGrade = student.grade;
+    return originalGrade !== null ? originalGrade : '';
   };
 
   return (
@@ -207,7 +396,7 @@ const AssignmentGradesTable = ({
         aria-expanded={!isCollapsed}
       >
         <h3 className="subtitle-large-med-20px">{assignment.name}</h3>
-        <LuChevronDown
+        <TbChevronDown
           className={cn(
             'size-5 transition-all',
             isCollapsed ? '' : '-rotate-180',
@@ -278,31 +467,103 @@ const AssignmentGradesTable = ({
                           : 'bg-transparent cursor-default',
                       )}
                       onChange={(e) =>
-                        handleGradeChange(student.username, e.target.value)
+                        handleLocalGradeChange(student.username, e.target.value)
                       }
-                      onBlur={(e) => handleGradeBlur(e, student.username)}
-                      onKeyDown={(e) => handleGradeKeyDown(e, student.username)}
                     />
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div className="flex justify-end w-full py-1.5">
-            <Button
-              variant="primary"
-              size="s"
-              mode="light"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleEditClick();
-              }}
-            >
-              {isEditing ? t('words.save') : t('words.edit')}
-            </Button>
-          </div>
+          {showEditButton && (
+            <div className="flex justify-end w-full py-1.5">
+              <Button
+                variant="primary"
+                size="s"
+                mode="light"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleEdit();
+                }}
+              >
+                {isEditing ? t('words.save') : t('words.edit')}
+              </Button>
+            </div>
+          )}
         </div>
       )}
     </div>
+  );
+};
+
+const ConfirmGradingSubmissionDialog = ({
+  onConfirm,
+  missingGradesCount,
+}: {
+  onConfirm: () => void;
+  missingGradesCount: number;
+}) => {
+  const isMobile = useSmaller('md');
+  const { t } = useTranslation();
+
+  return (
+    <BasicModal
+      trigger={
+        <Button
+          variant="primary"
+          size="m"
+          mode="dark"
+          className="max-md:self-end"
+        >
+          {t('dashboard.teacher.courses.assignmentGrade.publishAllGrades')}
+        </Button>
+      }
+      title={
+        missingGradesCount > 0
+          ? t('dashboard.teacher.courses.assignmentGrade.missingGradesTitle', {
+              count: missingGradesCount,
+            })
+          : t(
+              'dashboard.teacher.courses.assignmentGrade.confirmPublicationTitle',
+            )
+      }
+      content={
+        <p className="text-center max-w-[442px] md:px-5">
+          {missingGradesCount > 0
+            ? t(
+                'dashboard.teacher.courses.assignmentGrade.missingGradesDescription',
+              )
+            : t(
+                'dashboard.teacher.courses.assignmentGrade.confirmPublicationDescription',
+              )}
+        </p>
+      }
+      iconSrc={InformationIcon}
+      showLogo
+      contentClassName="w-[95%] max-md:max-w-100 md:w-[530px]"
+    >
+      <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-[30px]">
+        <DialogClose asChild>
+          <Button
+            variant="primary"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+            onClick={onConfirm}
+          >
+            {t('dashboard.teacher.courses.assignmentGrade.confirmPublication')}
+            <TbCheck className="ml-2.5" />
+          </Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button
+            variant="outline"
+            size={isMobile ? 'm' : 'l'}
+            className="w-fit"
+          >
+            {t('courses.exam.goBack')} <TbArrowBackUp className="ml-2.5" />
+          </Button>
+        </DialogClose>
+      </div>
+    </BasicModal>
   );
 };

@@ -191,6 +191,7 @@ export interface MinimalJoinedCourse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -233,6 +234,7 @@ export interface JoinedCourseProfessorId {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -277,6 +279,7 @@ export interface JoinedCourse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -366,6 +369,7 @@ export interface CourseResponse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;

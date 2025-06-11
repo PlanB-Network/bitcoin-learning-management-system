@@ -70,6 +70,7 @@ export const getProfessorCoursesQuery = ({
       c.has_logo,
       c.is_gdpr_compliance,
       c.custom_tc_disclaimer,
+      c.is_assignment_grading_published,
       COALESCE(NULLIF(c.sum_of_all_rating::float, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating,
       COALESCE(
         (SELECT pr.name FROM content.projects pr WHERE pr.id = c.project_id LIMIT 1),
