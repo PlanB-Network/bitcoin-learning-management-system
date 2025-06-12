@@ -27,7 +27,7 @@
     "@blms/service-content": "workspace:*",
     "@blms/service-user": "workspace:*",
     "@blms/shared": "workspace:*",
-    "@trpc/server": "^11.4.0",
+    "@trpc/server": "^11.2.0",
     "argon2": "^0.43.0",
     "bech32": "^2.0.0",
     "bip39": "^3.1.0",
@@ -40,13 +40,13 @@
     "stripe": "^18.2.1",
     "superjson": "^2.2.2",
     "typesense": "^2.0.3",
-    "zod": "^3.25.63"
+    "zod": "^3.25.49"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
-    "@types/express": "^5.0.3",
+    "@types/express": "^5.0.2",
     "@types/express-serve-static-core": "^5.0.6",
-    "@types/express-session": "^1.18.2",
+    "@types/express-session": "^1.18.1",
     "@types/formidable": "^3.4.5",
     "@types/qs": "^6.14.0"
   }
