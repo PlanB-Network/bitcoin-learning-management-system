@@ -3,20 +3,20 @@
     "missionContent2": "Soustředíme znalosti, abychom je mohli jednoduše předávat skrze mnohojazyčné GitHub repozitáře a platformu pro E-learning. Pomáháme místním bitcoinovým hubům v jejich rozvoji pomocí správných nástrojů pro rozvoj jejich potenciálu.",
     "commitmentTitle": "Naše závazky",
     "coreTeamTitle": "Hlavní tým",
-    "coreTeamContent": "Síť PlanB je kolektiv stovky přispěvatelů, učitelů, vedoucích komunit, designérů, vývojářů a organizátorů. Velké díky patří mnoha lidem, díky kterým je PlanB realitou a podílejí se na něm každý den. (Brzy uvedeme „Zeď přispěvatelů“)",
+    "coreTeamContent": "Síť PlanB je kolektiv stovky přispěvatelů, učitelů, vedoucích komunit, designérů, vývojářů a organizátorů. Velké díky patří mnoha lidem, díky kterým je PlanB realitou, a kteří se na něm podílejí každý den. (Brzy uvedeme „Zeď přispěvatelů“)",
     "coreTeamGiacomoRole": "Ředitel a spoluzakladatel",
     "coreTeamRogzyRole": "Produktový manažer a spoluzakladatel",
     "coreTeamAsioRole": "Koordinátor vzdělávání",
     "coreTeamAjelexRole": "Koordinátor nodů (uzlů)",
     "coportateContact": "Kontaktní informace:",
     "storyTitle": "Náš příběh",
-    "description": "Plan B Network pomáhá komunitám po celém světě organizovat se za účelem poskytování lepšího vzdělávání. Platforma vyvíjí nástroje potřebné k dosažení tohoto cíle prostřednictvím online akademie, portálu s výukovými programy, sady vzdělávacích nástrojů pro bitcoin a informačního portálu.",
+    "description": "Plan ₿ Network pomáhá komunitám po celém světě organizovat se za účelem poskytování lepšího vzdělávání. Platforma vyvíjí nástroje potřebné k dosažení tohoto cíle prostřednictvím online akademie, portálu s výukovými programy, sady vzdělávacích nástrojů pro bitcoin a informačního portálu.",
     "subtitle": "Síla bitcoinu spočívá v komunitě. Spojme své síly a staňme se jednou velkou bitcoinovou sítí.",
     "title": "Manifest Plan B Network",
-    "activeContributors": "Aktivní přispěvatelé",
+    "activeContributors": "Aktivní přispivatelé",
     "missionTitle": "Naše mise",
     "missionContent1": "Naší misí je podporovat místní bitcoinové komunity prostřednictvím open-source vzdělávání a networkingu. Vybíráme, organizujeme a vytváříme potřebné materiály (kurzy, knihy, plakáty, letáky a videa) pro rozvoj bitcoinového průmyslu.",
-    "commitmentContent": "Naše závazky vůči bitcoinové komunitě: \n‐ zůstaneme open-source\n- poskytování vysoce kvalitního vzdělávacího obsahu\n- obsah přeložený do co nejvíce jazyků\n- podpora Bitcoin stavitelů na jejich podnikatelské cestě",
+    "commitmentContent": "Naše závazky vůči bitcoinové komunitě: \n‐ zůstabene open-source\n- poskytování vysoce kvalitního vzdělávacího obsahu\n- obsah přeložený do co nejvíce jazyků\n- podpora Bitcoin developerů na jejich podnikatelské cestě",
     "corporateContent": "PlanB Network je sdružený projekt tří subjektů, zaměřených na vývoj Bitcoinu. Ve snaze rozšířit vzdělávání o bitcoinu se rozhodli spolupracovat a vytvořit PlanB Network. K dosažení našeho cíle dostat vzdělávání o bitcoinu do světa se přidalo mnoho dalších, za což jim patří velké díky.",
     "storyContent": "PlanB Network je iniciativa zaměřená na podporu celosvětového vzdělávání o Bitcoinu. Jedná se o spojení rozlišných Bitcoin firem zaměřených na vzdělávání, open-source software, peer-to-peer sítě a smyslem pro komunitu. Společně se rozhodli vybudovat síť PlanB a nabídnout bitcoinovému ekosystému ty správné nástroje k růstu. Naše prezentace k vydání v roce 2023 je dostupná zde.",
     "manifesto": "Věříme v decentralizovanou budoucnost, kterou Bitcoin nabízí.\n\nNaším posláním je představit Bitcoin miliardě lidí do deseti let. Našimi nástroji jsou vzdělávání a informace. \n\nPodporujeme místní komunity bitcoinových uživatelů tím, že poskytujeme open-source vzdělávací obsah a nabízíme síť bitcoinových mentorů.\n\nNaše filozofie je inspirována cypherpunkovým manifestem. Stejně jako se zasadili o ochranu soukromí, my se zasazujeme o vzdělávání. Věříme, že znalosti jsou základem svobody a změny.\n\nJsme výhradně bitcoinoví. \n\nProsazujeme individuální odpovědnost a nezávislost, kterou nabízí vlastnictví vlastních klíčů. \n\nVyzýváme k ověřování, ne ke slepé důvěře. \n\nVěříme, že opravou systému peněz opravíme svět.\n\nJsme decentralizovaní a open-source, čímž se vyhýbáme jakémukoli jedinému bodu selhání. \n\nPodporujeme volné šíření našeho obsahu. \n\nUsilujeme o svět, který funguje zespodu nahoru a jehož středobod tvoří jednotlivec.\n\nZjednodušujeme, vzděláváme, sdílíme. \n\nPřipojte se k nám v naší misi k šíření „oranžové pilulky“ ve světě.\n",
@@ -51,11 +51,11 @@
     "confirmation": "",
     "passwordChanged": "",
     "passwordSuccessfullyChanged": "",
-    "backToLogin": "",
+    "backToLogin": "Zpět na přihlášení",
     "backToHome": "Zpět domů",
     "tryAgain": "",
     "invalidToken": "",
-    "checkingToken": "",
+    "checkingToken": "Kontrola tokenu",
     "invalidTokenExplain": {
       "expired": "",
       "consumed": "",
@@ -499,7 +499,7 @@
       "title": "Bez jazykových bariér.",
       "subtitle": "Vše je přeloženo do místních jazyků",
       "link": "Pomozte nám s překladem akademie",
-      "content1": "V PlanB věříme, že Bitcoin je mezinárodní revoluce, která se týká všech. Chceme posílit postavení miliard lidí, a proto navrhujeme tuto platformu tak, aby byla vícejazyčná a přístupná všem. Platforma v současné době podporuje 7 jazyků a každý měsíc přibývají další. Abychom toho dosáhli, využíváme kombinaci umělé inteligence a nadšení bitcoinerů z celého světa.",
+      "content1": "V PlanB Network, že Bitcoin je mezinárodní revoluce, která se týká všech. Chceme posílit postavení miliard lidí, a proto navrhujeme tuto platformu tak, aby byla vícejazyčná a přístupná všem. Platforma v současné době podporuje {{nb}} jazyků a každý měsíc přibývají další. Abychom toho dosáhli, využíváme kombinaci umělé inteligence a nadšení bitcoinerů z celého světa.",
       "availableLanguagesVariation": ""
     },
     "patreonSection": {
@@ -811,5 +811,11 @@
     "goBackButtons": {
       "simpleGoBack": ""
     }
+  },
+  "accessType": {
+    "hybrid": "Osobně & online",
+    "online": "Online",
+    "physical": "Osobně",
+    "replay": "Odpovědět"
   }
 }

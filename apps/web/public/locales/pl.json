@@ -19,7 +19,7 @@
     "storyContent": "Sieć PlanB to inicjatywa mająca na celu wspieranie edukacji na temat Bitcoina na całym świecie. Jest to połączenie różnych, pełnych pasji firm z branży Bitcoin skupionych na edukacji, oprogramowaniu open-source, sieciach peer-to-peer i poczuciu wspólnoty. Razem postanowiły one stworzyć sieć PlanB i oferować ekosystemowi Bitcoina odpowiednie narzędzia do rozwoju. Nasza prezentacja na rok 2023 jest dostępna tutaj.",
     "title": "O sieci PlanB",
     "subtitle": "Chcesz przekonać świat do wzięcia pomarańczowej pigułki? Dołącz do sieci Plan ₿.",
-    "manifesto": "Wierzymy w zdecentralizowaną przyszłość, którą oferuje Bitcoin.\n\nNaszym zadaniem jest zapoznanie z Bitcoinem miliarda osób w ciągu dekady, a naszymi narzędziami są edukacja i informacja.\n\nWspieramy lokalne społeczności Bitcoinerów, dostarczając otwartych treści edukacyjnych i oferując sieć mentorów Bitcoin.\n\nNasza filozofia jest inspirowana manifestem cypherpunk. Bronimy edukacji tak, jak oni bronili prywatności. Wierzymy, że wiedza jest fundamentem wolności i zmiany.\n\nJesteśmy zainteresowani tylko Bitcoinem.\n\nOpowiadamy się za indywidualną odpowiedzialnością i niezależnością, którą daje posiadanie własnych kluczy.\n\nNawołujemy do weryfikacji, a nie ślepego zaufania.\n\nWierzymy, że naprawiając pieniądze, możemy naprawić świat.\n\nJesteśmy zdecentralizowani i open-source, unikając w ten sposób jakichkolwiek pojedynczych krytycznych punktów wystąpienia awarii.\n\nZachęcamy do darmowego rozpowszechniania naszych treści.\n\nAspirujemy do świata, który działa od dołu do góry, gdzie jednostka jest w centrum.\n\nUpraszczamy, edukujemy, udostepniamy.\n\nDołącz do naszej misji poczęstowania świata pomarańczową pigułką!\n",
+    "manifesto": "Wierzymy w zdecentralizowaną przyszłość, którą oferuje Bitcoin.\n\nNaszym zadaniem jest zapoznanie z Bitcoinem miliarda osób w ciągu dekady, a naszymi narzędziami są edukacja i informacja.\n\nWspieramy lokalne społeczności bitcoinerów, dostarczając otwartych treści edukacyjnych i oferując sieć mentorów Bitcoin.\n\nNasza filozofia jest inspirowana manifestem cypherpunk. Bronimy edukacji tak, jak oni bronili prywatności. Wierzymy, że wiedza jest fundamentem wolności i zmiany.\n\nJesteśmy zainteresowani tylko Bitcoinem.\n\nOpowiadamy się za indywidualną odpowiedzialnością i niezależnością, którą daje posiadanie własnych kluczy.\n\nNawołujemy do weryfikacji, a nie ślepego zaufania.\n\nWierzymy, że naprawiając pieniądze, możemy naprawić świat.\n\nJesteśmy zdecentralizowani i open-source, unikając w ten sposób jakichkolwiek pojedynczych krytycznych punktów wystąpienia awarii.\n\nZachęcamy do darmowego rozpowszechniania naszych treści.\n\nAspirujemy do świata, który działa od dołu do góry, gdzie jednostka jest w centrum.\n\nUpraszczamy, edukujemy, udostepniamy.\n\nDołącz do naszej misji poczęstowania świata pomarańczową pigułką!\n",
     "description": "Sieć Plan B pomaga organizować się społecznościom na całym świecie, aby mogły polepszać jakość swojej oferty edukacyjnej. Platforma opracowuje narzędzia niezbędne do osiągnięcia tego celu, takie jak akademia online, portal z tutorialami, zestaw edukacyjny Bitcoin i portal z materiałami edukacyjnymi."
   },
   "auth": {
@@ -28,7 +28,7 @@
     "canSaveProgress": "Możesz teraz zapisywać swoje postępy w Akademii Bitcoin",
     "createAccount": "Zarejestruj się",
     "createOne": "Zarejestruj się tutaj!",
-    "emailAddress": "Adres email",
+    "emailAddress": "Adres e-mail",
     "errors": {
       "usernameRegex": "Nazwa użytkownika może zawierać tylko litery, cyfry, _, . i -.",
       "usernameRequired": "Wymagana jest nazwa użytkownika.",
@@ -67,11 +67,25 @@
     "tryAgain": "Spróbuj ponownie",
     "confirmation": "Potwierdzenie",
     "displayName": "Nazwa użytkownika",
-    "emailTip": "Podanie adresu email nie jest obowiązkowe, ale może się przydać, jeśli zapomnisz swojego hasła!",
+    "emailTip": "Podanie adresu e-mail nie jest obowiązkowe, ale może się przydać, jeśli zapomnisz swojego hasła!",
     "dashboardUnlocked": "Twój panel ucznia jest odblokowany!",
     "didYouKnow": "Wiedziałeś o tym?",
     "passwordChangedSuccess": "Hasło zostało zmienione pomyślnie",
-    "trackProgress": "Stwórz konto lub login, aby śledzić swoje postępy"
+    "trackProgress": "Stwórz konto lub login, aby śledzić swoje postępy",
+    "emailValidation": {
+      "errorValidatingEmailChangeDescription": "Wystąpił błąd podczas weryfikacji zmiany twojego adresu e-mail, wygląda na to, że link wygasł lub został już wykorzystany. Proszę spróbować ponownie.",
+      "errorValidatingEmailDescription": "Wystąpił błąd podczas weryfikacji zmiany twojego adresu e-mail, wygląda na to, że link wygasł lub został już wykorzystany. Proszę spróbować ponownie.",
+      "validateChange": "Weryfikacja zmiany adresu e-mail",
+      "validatingEmail": "Potwierdzanie adresu e-mail",
+      "validatingEmailChange": "Weryfikacja zmiany adresu e-mail",
+      "wontTakeLong": "To nie potrwa długo...",
+      "emailChangeValidated": "Zmiana adresu e-mail potwierdzona",
+      "emailValidated": "Adres e-mail potwierdzony",
+      "errorValidatingEmail": "Błąd podczas potwierdzania adresu e-mail",
+      "errorValidatingEmailChange": "Błąd podczas potwierdzania zmiany adresu e-mail",
+      "successfullyChanged": "Twój adres e-mail został pomyślnie zmieniony na {{email}}.",
+      "successfullyValidated": "Twój adres e-mail został zweryfikowany pomyślnie."
+    }
   },
   "bet": {
     "educationalContent": {
@@ -139,7 +153,8 @@
       "hasNotBeenProofread": "Ten kurs jeszcze nie został poddany korekcie",
       "associatedProfessors": "Współpracujący z nami nauczyciele",
       "coordinatedBy": "Ten kurs jest koordynowany przez",
-      "learning": "Ścieżka edukacyjna"
+      "learning": "Ścieżka edukacyjna",
+      "attendInPersonWarning": "Jeśli zamierzasz uczestniczyć w tej lekcji osobiście, upewnij się, że zarezerwowałeś swoje miejsce. Lekcja będzie transmitowana na żywo i dostępna do odtworzenia później."
     },
     "explorer": {
       "pageDescription": "Akademia Plan B ma na celu uproszczenie edukacji na temat Bitcoina na całym świecie. Oferujemy szeroki zakres kursów zaprojektowanych przez ekspertów z różnych dziedzin, aby wyjaśnić każdy aspekt Bitcoina.\nWszystko w formacie, który najlepiej pomoże Ci zrozumieć to obszerne zagadnienie – nauka we własnym tempie lub w formie cotygodniowych spotkań z prowadzącycm, poziomy od początkującego do eksperta. Duża część naszych kursów jest całkowicie darmowa, aby każdy, gdziekolwiek jest, mógł mieć dostęp do edukacji.",
@@ -306,7 +321,24 @@
       "successDiplomaTimeStamped": "Gratulacje! Pomyślnie zdałeś egzamin. \nTwój dyplom będzie dostępny w panelu ucznia około 10 godzin po przystąpieniu do egzaminu. Opóźnienie to związane jest z użyciem technologii <0>stemplowania czasowego</0>, która gwarantuje jego autentyczność.",
       "takeExam": "Przystąp do egzaminu",
       "timeStampedNoDot": "oznaczony stemplem czasowym",
-      "timeStamping": "stempel czasowy"
+      "timeStamping": "stempel czasowy",
+      "singleAttemptPrecaution": "Przed rozpoczęciem upewnij się, że twoje połączenie jest stabilne. Ponieważ jest to egzamin, który możesz zdawać tylko w jednym podejściu, jeśli stracisz połączenie, nie będziesz mógł spróbować ponownie.",
+      "results": {
+        "questions": "Pytania, na które odpowiedziano",
+        "correct": "Poprawne odpowiedzi",
+        "incorrect": "Niepoprawne odpowiedzi",
+        "time": "Wykorzystany czas"
+      },
+      "completed": "Egzamin zakończony!",
+      "nextChapter": "Następny rozdział",
+      "examAvailabilityDetails": "Jeśli egzamin nie zostanie zaliczony w okresie jego dostępności na platformie, kursant automatycznie otrzyma ocenę 0.",
+      "nbMinutes": "{{nb}} minut",
+      "nbQuestions": "{{nb}} pytań",
+      "readyToTest": "Gotowy na sprawdzenie swojej wiedzy?",
+      "singleAttempt": "Egzamin można zdawać tylko w jednym podejściu",
+      "singleAttemptAvailability": "Ten egzamin jest dostępny online od {{date}}",
+      "viewExam": "Zobacz test",
+      "weight": "Wynik: {{weight}}%"
     },
     "conclusion": {
       "completedChaptersHeadline": "Wszystkie rozdziały są teraz ukończone!",
@@ -386,7 +418,11 @@
     },
     "calendar": {
       "calendar": "Kalendarz",
-      "personalCalendar": "Kalendarz osobisty"
+      "personalCalendar": "Kalendarz osobisty",
+      "eventType": {
+        "class": "Zajęcia",
+        "event": "Wydarzenia"
+      }
     },
     "profile": {
       "change": "Zmień",
@@ -405,7 +441,18 @@
       "profilePicture": "Zdjęcie profilowe",
       "security": "Bezpieczeństwo",
       "username": "Nazwa użytkownika",
-      "profile": "Profil"
+      "profile": "Profil",
+      "notificationSettings": {
+        "emailPreferencesTitle": "Zarządzaj swoimi preferencjami dotyczącymi e-maili w sieci Plan ₿",
+        "coursesOption": "Aktualizacje dotyczące kursów, na które się zapisałeś",
+        "description": "Poniżej możesz dostosować swoje ustawienia dotyczące powiadomień. ",
+        "emailPreferencesDescription": "Tutaj możesz wybrać rodzaje e-maili, które chciałbyś od nas otrzymywać. Te preferencje dotyczą tylko adresu e-mail powiązanego z tym linkiem.",
+        "emailPreferencesError": "Wystąpił błąd podczas próby pobrania preferencji dotyczących twojego adresu e-mail. Upewnij się, że użyty przez ciebie link jest poprawny.",
+        "emailPreferencesSavedSuccessfully": "Twoje preferencje dotyczące e-maili zostały pomyślnie zaktualizowane.",
+        "emailWarning": "Uwaga! Do Twojego konta nie jest przypisany żaden adres e-mail. Proszę dodać go w sekcji profil.",
+        "emailTitle": "Jakiego rodzaju powiadomienia chciałbyś otrzymywać przez e-maila?"
+      },
+      "emailChangeRateLimitError": "Ostatnio zaktualizowałeś swój adres e-mail. Poczekaj kilka minut, zanim spróbujesz ponownie."
     },
     "teacher": {
       "courses": {
@@ -487,7 +534,47 @@
       "shareOnSocials": "Udostępnij na portalach społecznościowych:",
       "tweetText": "Mam ukończony kurs {{courseIndex}} w @planb_network i dyplom z wynikiem {{score}}/100 na egzaminie końcowym! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Oto podsumowanie tego, czego się nauczyłeś. Jeśli niektóre rozdziały zostały pominięte lub nie zostały prawidłowo zweryfikowane, teraz jest czas, aby to nadrobić, albo wracając do nauki, albo naciskając przycisk zakończ.",
-      "submitReviewInfo": "Musisz przesłać opinię, aby mieć dostęp do tej funkcji."
+      "submitReviewInfo": "Musisz przesłać opinię, aby mieć dostęp do tej funkcji.",
+      "assignmentCompletedDescription": "Twoje zadanie projektowe zostało pomyślnie przesłane i jest w trakcie oceny.\nTwoja ocena będzie widoczna w tym miejscu po wystawieniu ocen dnia 23 czerwca.",
+      "assignmentCompletedTitle": "Zadanie wykonane",
+      "announcement": "Ogłoszenie",
+      "assignment": "Zadanie",
+      "planbSchoolExamDescription": "Program Plan ₿ Biz School 2025 składa się z dwóch etapów. W pierwszym etapie przystąpisz do dwóch egzaminów online, konkretnie do egzaminu śródrocznego i końcowego: są to testy, do których można podejść tylko raz - w dowolnym momencie w ciągu trzydniowego okresu ich dostępności. Po pierwszym etapie nastapi selekcja kursantów, którzy na podstawie swojego miejsca w rankingu zostana dopuszczeni do etapu drugiego, który obejmuje zadanie projektowe: indywidualne zadanie dostarczone przez firmę z branży Bitcoin. Więcej szczegółów na ten temat można znaleźć w zakładce Zadania.\n\nOcena końcowa będzie obliczana jako średnia ważona z trzech testów. Kursanci, którzy osiągną wynik powyżej 80%, otrzymają dyplom, a kursanci z najwyższymi wynikami będą mieli również szansę wziąć udział w Szkole Letniej w Lugano w lipcu.",
+      "submitBefore": "Musisz przesłać swoją pracę przed <0>12 czerwca o 23:59 (UTC+2)</0>. Prace przesłane po tym terminie nie będą oceniane.",
+      "submitFileNamingFormat": "Twój plik musi być nazwany według następującego formatu:\n<0>nazwa_firmy_użytkownik.pdf</0>.\nUsuń wszystkie spacje z nazwy firmy, użyj dokładnej nazwy użytkownika na platformie planB.network i sprawdź, czy nie ma literówek.",
+      "confirmNoEditableFile": "Po wysłaniu nie będziesz już mógł edytować swojego pliku.",
+      "confirmSubmission": "Potwierdź zgłoszenie",
+      "fileUploadError": "Wystąpił błąd podczas przesyłania twojego",
+      "fileUploaded": "Twoja praca została przesłana pomyślnie!",
+      "isSubmissionFinal": "Czy twoje zgłoszenie jest ostateczne?",
+      "joinTelegramGroup": "Dołącz do grupy na Telegramie",
+      "mustBePdf": "Twój plik musi być w formacie PDF. Jeśli musisz przesłać dodatkowy plik, dołącz link do niego wewnątrz swojego dokumentu PDF.",
+      "projectRankingInstructions": "Instrukcje dotyczące rankingu projektów:",
+      "rankProjectPreferences": "Wybierz swoje preferencje projektowe",
+      "rankingInstructions": "Ułóż zaproponowane projekty według swoich preferencji (numer 1 to twój preferowany wybór). Ranking ten pozwoli nam przypisać ci najodpowiedniejszy projekt. Preferencje kursantów z wyższymi wynikami będą brane pod uwagę jako pierwsze.",
+      "rankingOnly24Hours": "Portal rankingowy będzie otwarty tylko przez 24 godziny, 2 czerwca od 00:00 do 23:59 (UTC+2).",
+      "readAssignment": "Przeczytaj zadanie",
+      "saveList": "Zapisz listę",
+      "submissionInstructions": "Instrukcje dotyczące przesyłania zadania",
+      "submitYourWork": "Prześlij swoją pracę",
+      "surePreferenceList": "Czy twoja lista preferencji na pewno jest ostateczna?",
+      "yourProject": "Twój projekt",
+      "exams": "Egzaminy",
+      "assignmentInformation": "Informacje o zadaniu",
+      "assignmentDescription": "Przydział projektu rozpoczyna drugą fazę programu Plan ₿ Biz School i jest dostępny tylko dla kursantów, którzy pomyślnie ukończyli pierwszą fazę. Każdemu kursantowi, na podstawie jego miejsca w rankingu oraz jego preferencji, zostanie przydzielony projekt opracowany przez firmę z branży Bitcoin, który musi zostać przesłany do dnia 12 czerwca.\nKursanci będą przygotowywać zadanie od 2 do 12 czerwca, będą mieć możliwość skorzystania z pomocy mentora - przedstawiciela firmy.\n\nProjekty będą oceniane przez firmę, a wyniki będą wpływać na ocenę końcową. Tylko najlepiej ocenieni kursanci zostaną zaproszeni do udziału w Szkole Letniej w Lugano w Szwajcarii od 23 do 30 lipca 2025 roku.",
+      "confirmList": "Potwierdź listę",
+      "confirmNoEditable": "Po zatwierdzeniu nie będzie już można edytować tej listy preferencji.",
+      "courseCalendar": "Kalendarz kursu",
+      "generalInformation": "Informacje ogólne",
+      "keepEditing": "Kontynuuj edytowanie",
+      "leastPreferred": "Najmniej preferowany",
+      "listSaved": "Twoja lista preferencji została zapisana.",
+      "listSavedComeTomorrow": "Twoja lista preferencji została zapisana.\nJutro w tym miejscu możesz sprawdzić, do którego projektu zostałeś przypisany.",
+      "mostPreferred": "Najbardziej preferowany",
+      "notSelectedAssignment": "Niestety, nie zostałeś wybrany do udziału w projekcie.\nNadal możesz brać udział w wykładach",
+      "conclusionNotReleased": "Wnioski zostaną odblokowane w dniu ostatnich zajęć.",
+      "coordinator": "Koordynator kursu",
+      "examScore": "Wynik:"
     },
     "careerPortal": {
       "applicationComplete": "Twoja aplikacja jest <highlight>Zakończona</highlight>",
@@ -721,7 +808,9 @@
           "value": "Wartość",
           "uses": "Wykorzystany",
           "total": "Suma",
-          "owner": "Właściciel"
+          "owner": "Właściciel",
+          "actions": "Działania",
+          "maxUses": "Maksymalna ilość użyć"
         },
         "generateNew": "Wygeneruj nowy kod",
         "generateDiscountCode": "Wygeneruj kod rabatowy",
@@ -753,12 +842,42 @@
           "multiUse": "Wielokrotnego użytku",
           "events": "Wydarzenia",
           "courses": "Kursy"
-        }
+        },
+        "cancel": "Anuluj",
+        "deleteDiscountCodeConfirm": "Czy na pewno chcesz usunąć ten kod rabatowy?",
+        "deleteDiscountCodeWarning": "Ten kod po usunięciu straci swoją ważność. Ta zmiana jest nieodwracalna",
+        "generateNewCodes": "Wygeneruj nowe kody",
+        "close": "Zamknij",
+        "delete": "Usuń",
+        "deleteDiscountCode": "Usuń kod rabatowy",
+        "deleteDiscountCodeSuccess": "Kod rabatowy został usunięty pomyślnie",
+        "discountCodeCopied": "Kod rabatowy skopiowany",
+        "downloadImage": "Pobierz obraz",
+        "downloadImages": "Pobierz obrazy",
+        "mobileSort": {
+          "az": "A-Z",
+          "highLow": "Wysoki - Niski",
+          "lowHigh": "Niski - Wysoki",
+          "sortBy": "Sortuj według",
+          "za": "Z-A"
+        },
+        "noCouponsFound": "Nie znaleziono kuponów."
       },
       "discountCodes": "Kody rabatowe"
     },
     "backToDashboard": "Powrót do pulpitu ucznia",
-    "studentDashboard": "Panel ucznia"
+    "studentDashboard": "Panel ucznia",
+    "announcements": {
+      "groups": {
+        "active": "Kursanci wybrani do realizacji projektu",
+        "all": "Wszyscy zarejestrowani kursanci",
+        "summer": "Kursanci wybrani na Szkołę Letnią"
+      },
+      "pickADate": "Wybierz termin",
+      "publicationDate": "Data publikacji"
+    },
+    "goToDashboard": "Powrót do pulpitu ucznia",
+    "goToHomepage": "Przejdź do strony głównej"
   },
   "events": {
     "main": {
@@ -832,22 +951,22 @@
   },
   "home": {
     "header": {
-      "content": "Platforma sieci Plan ₿ ma na celu dostarczanie najlepszych narzędzi i treści edukacyjnych na świecie, dając ludziom możliwość odzyskania swojej niezależności. Jesteśmy tu, aby wspierać zarówno poszczególne osoby jak i całe społeczności w ich Bitcoinowej podróży.",
+      "content": "Platforma sieci Plan ₿ ma na celu dostarczanie najlepszych narzędzi i treści edukacyjnych na świecie, dając ludziom możliwość odzyskania swojej niezależności. Pomagamy odkrywać Bitcoina zarówno pojedynczym osobom jak i całym społecznościom.",
       "forEducators": "Dla uczniów i edukatorów",
       "globalNetwork": "Globalalna Sieć Bitcoina",
       "welcome": "Witaj w Sieci PlanB"
     },
     "tutorialSection": {
-      "title": "Zgromadzenie wiedzy w jednym miejscu, aby lepiej się nią dzielić",
+      "title": "Gromadzimy wiedzę w jednym miejscu, aby lepiej się nią dzielić",
       "subtitle1": "Edukacja na temat Bitcoina w przystępnej formie.",
-      "content1": "Bitcoin nieustannie się rozwija, pojawiają się nowi gracze, rozwiązania, protokoły i przełomowe technologie. Dlatego utrzymanie aktualnej i dokładnej bazy danych wysokiej jakości tutoriali może być wyzwaniem. Tutaj, w Planie ₿, udało nam się to osiągnąć. Bez względu na to, czy jesteś początkującym czy zaawansowanym użytkownikiem, możesz przeglądać setki tutoriali, aby zgłębić naszą branżę zgodnie z twoimi potrzebami.",
+      "content1": "Bitcoin nieustannie się rozwija, pojawiają się nowi gracze, rozwiązania, protokoły i przełomowe technologie. Dlatego utrzymanie aktualnej i dokładnej bazy danych wysokiej jakości tutoriali może być wyzwaniem. Tutaj, w Planie ₿, udało nam się to osiągnąć. Bez względu na to, czy jesteś początkującym czy zaawansowanym użytkownikiem, możesz przeglądać setki tutoriali, aby poznawać naszą branżę zgodnie ze swoimi potrzebami.",
       "link": "Zobacz wszystkie tutoriale",
       "link2": "Zobacz wszystkie materiały"
     },
     "aboutUsSection": {
       "title": "Kim jesteśmy?",
       "subtitle": "Trochę o nas",
-      "content": "Sieć PlanB to inicjatywa wspierająca edukację na temat Bitcoina na całym świecie. Jest to punkt spotkania dla różnych, pełnych pasji firm z branży Bitcoin, skupionych na edukacji, oprogramowaniu open-source, sieciach peer-to-peer i budowaniu społeczności. Razem postanowili zbudować sieć PlanB i zaoferować ekosystemowi Bitcoin odpowiednie narzędzia do rozwoju.",
+      "content": "Sieć PlanB to inicjatywa wspierająca edukację na temat Bitcoina na całym świecie. Jest to punkt spotkania różnych, pełnych pasji firm z branży Bitcoin, skupionych na edukacji, oprogramowaniu open-source, sieciach peer-to-peer i budowaniu społeczności. Razem postanowiliśmy zbudować sieć PlanB i zaoferować ekosystemowi Bitcoin odpowiednie narzędzia do rozwoju.",
       "bitcoinFocusTitle": "Wokół Bitcoina",
       "bitcoinFocusContent": "Omawiamy rewolucję Bitcoina od warstwy bazowej do opartej na niej komunikacji peer-to-peer.",
       "openSourceTitle": "Open-source",
@@ -855,12 +974,12 @@
       "communityTitle": "Społeczność",
       "communityContent": "Jesteśmy przede wszystkim społecznością pasjonatów, którzy pomagają sobie nawzajem w podróży w głąb Bitcoina",
       "privacyTitle": "Prywatność",
-      "privacyContent": "Uważamy, że prywatność to jedno z podstawowych praw każdego człowieka, które ma zasadnicze znaczenia dla postępu"
+      "privacyContent": "Uważamy, że prywatność to jedno z podstawowych praw każdego człowieka, które ma zasadnicze znaczenie dla postępu"
     },
     "languageSection": {
       "title": "Nie ma tutaj barier językowych.",
       "subtitle": "Wszystko tłumaczone jest na języki lokalne!",
-      "content1": "W Plan ₿ uważamy, że Bitcoin to międzynarodowa rewolucja, która dotyczy każdego. Aby umożliwić jej dotarcie do miliardów ludzi, projektujemy tę platformę tak, aby była wielojęzyczna i dostępna dla wszystkich. Obecnie platforma obsługuje 7 języków, a każdego miesiąca dodajemy kolejne. Aby to urzeczywistnić, korzystamy z kombinacji AI i pasji Bitcoinerów na całym świecie. Ty też możesz zacząć tworzyć swoją własną lokalną sieć w swoim kraju!",
+      "content1": "W Plan ₿ uważamy, że Bitcoin to międzynarodowa rewolucja, która dotyczy każdego. Aby umożliwić jej dotarcie do miliardów ludzi, projektujemy tę platformę tak, aby była wielojęzyczna i przystępna dla każdego. Obecnie platforma obsługuje {{nb}} języków, a każdego miesiąca dodajemy kolejne. Aby było to możliwe, korzystamy z kombinacji AI i pasji bitcoinerów na całym świecie. Ty też możesz zacząć tworzyć swoją własną lokalną sieć w swoim kraju!",
       "link": "Pomóż nam w tłumaczeniu akademii",
       "availableLanguages": "Dostępne języki",
       "availableLanguagesVariation": "Dostępne języki: "
@@ -870,18 +989,18 @@
       "content": "Sieć Plan ₿ z dumą współpracuje z wieloma firmami z branży Bitcoin na całym świecie, aby zapewnić możliwie najlepsze materiały edukacyjne!"
     },
     "wallOfLoveSection": {
-      "title": "Mur miłości",
-      "subtitle": "Co Bitcoinerzy mówią o nas"
+      "title": "Opinie",
+      "subtitle": "Co bitcoinerzy mówią o nas"
     },
     "courseSection": {
       "checkAllCourses": "Sprawdź wszystkie kursy",
       "upcomingCourseTitle": "Nadchodzące i nowe kursy",
-      "upcomingCourseDescription": "Dowiedz się o najnowszych kursach dodanych do platformy. Nauka nigdy się nie kończy!"
+      "upcomingCourseDescription": "Bądź na bieżąco z najnowszymi kursami dodawanymi do platformy. Nauka nigdy się nie kończy!"
     },
     "eventSection": {
       "eventTitle": "Globalna Sieć Edukatorów Bitcoin",
       "checkEvents": "Sprawdź wszystkie wydarzenia",
-      "hottestEvent": "Najgorętsze wydarzenie związane z bitcoinem"
+      "hottestEvent": "Najgorętsze wydarzenie związane z Bitcoinem"
     },
     "blogSection": {
       "seeAll": "Zobacz wszystko",
@@ -970,7 +1089,7 @@
     "pageSubtitle": "Koncentruj wiedzę w jednym miejscu, aby lepiej się nią dzielić",
     "pageTitle": "Witamy w Portalu z Materiałami Edukacyjnymi",
     "podcasts": {
-      "title": "Podcasts",
+      "title": "Podcasty",
       "noPodcasts": "Obecnie nie ma podcastów dla wybranego języka."
     },
     "github": "Wszystkie dane są zarządzane za pośrednictwem jednego otwartego repozytorium <0>Github</0>. Zachęcamy do wniesienia własnego wkładu i dodawania brakujących treści.",
@@ -1008,7 +1127,7 @@
     },
     "movies": {
       "noMovies": "Obecnie nie ma nagrań ani filmów dokumentalnych w wybranym języku.",
-      "title": "Nagrania i Filmy dokumentalne"
+      "title": "Nagrania i filmy dokumentalne"
     },
     "newsletter": {
       "check": "Sprawdź newsletter"
@@ -1050,7 +1169,7 @@
     "node": {
       "description": "Węzły działają jak twoje prywatne serwery. W Bitcoinie jest to oprogramowanie umożliwiające prowadzenie sieci, gromadzenie transakcji, sprawdzanie zasad i zapewnienie ci pełnej suwerenności. W naszym ekosystemie występują różne węzły - od Bitcoin Core przez implementacje Lightning, RGB, aż do innych bardziej zaawansowanych rozwiązań zapewniających prywatność.",
       "shortDescription": "Metody uruchamiania węzła bitcoin i łączenia się z siecią",
-      "title": "Węzeł"
+      "title": "Węzły"
     },
     "pageDescription": "Bitcoin to obszerna branża, która nieustannie się rozrasta. Aby pomóc ci w jej odkrywaniu, zebraliśmy i starannie wybraliśmy duże ilości poradników, które opisują różne rozwiązania we wszystkich obszarach związanych z Bitcoinem.",
     "pageSubtitle": "Odkryj tajemnice Bitcoina, odkrywając jego ogromny ekosystem",
@@ -1063,7 +1182,7 @@
     "wallet": {
       "description": "Portfel Bitcoin to coś na kształt twojego breloka do kluczy. Umożliwia ci płacenie i odbieranie płatności w bitcoinach. Istnieje wiele różnych typów portfeli, każdy z innymi zastosowaniami, funkcjami, kosztami i doświadczeniem użytkownika. Każdy posiadacz bitcoina wybierze inne urządzenie w zależności od swoich potrzeb, poziomu wymagań i doświadczenia.",
       "shortDescription": "Rozwiązania dotyczące bezpieczeństwa i korzystania z twoich bitcoinów",
-      "title": "Portfel"
+      "title": "Portfele"
     },
     "backTutorials": "Powrót do wszystkich tutoriali",
     "approvedByCreator": "Zatwierdzone przez autora",
@@ -1476,6 +1595,7 @@
   "accessType": {
     "physical": "Stacjonarnie",
     "online": "Online",
-    "replay": "Powtórka"
+    "replay": "Powtórka",
+    "hybrid": "Stacjonarne i online"
   }
 }
