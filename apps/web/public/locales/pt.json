@@ -481,7 +481,7 @@
     "languageSection": {
       "title": "Nenhuma barreira de idioma aqui.",
       "subtitle": "Tudo é traduzido para os idiomas locais",
-      "content1": "No PlanB, nós acreditamos que o Bitcoin é uma revolução internacional que diz respeito a todos. Para capacitar bilhões de pessoas, estamos projetando essa plataforma para ser multilingue e acessível a todos. A plataforma atualmente suporta 7 idiomas e mais estão sendo adicionados a cada mês. Para conseguir isso, usamos uma mistura de IA e a paixão de Bitcoiners ao redor do mundo.",
+      "content1": "No PlanB, nós acreditamos que o Bitcoin é uma revolução internacional que diz respeito a todos. Para capacitar bilhões de pessoas, estamos projetando essa plataforma para ser multilingue e acessível a todos. A plataforma atualmente suporta {{nb}} idiomas e mais estão sendo adicionados a cada mês. Para conseguir isso, usamos uma mistura de IA e a paixão de Bitcoiners ao redor do mundo.",
       "link": "Ajuda-nos a traduzir a academia",
       "availableLanguages": "Idiomas disponíveis",
       "availableLanguagesVariation": ""

@@ -914,7 +914,7 @@
     "languageSection": {
       "title": "Nessuna barriera linguistica qui.",
       "subtitle": "Tutto è tradotto in lingue locali!",
-      "content1": "A Plan ₿ Network, crediamo che Bitcoin sia una rivoluzione internazionale che riguarda tutti. Per dare forza a miliardi di persone, stiamo progettando questa piattaforma per essere multilingua ed accessibile a tutti. La piattaforma attualmente supporta 7 lingue ed altre vengono aggiunte ogni mese. Per raggiungere questo obiettivo, utilizziamo un mix di IA e la passione dei Bitcoiner in tutto il mondo.",
+      "content1": "A Plan ₿ Network, crediamo che Bitcoin sia una rivoluzione internazionale che riguarda tutti. Per dare forza a miliardi di persone, stiamo progettando questa piattaforma per essere multilingua ed accessibile a tutti. La piattaforma attualmente supporta {{nb}} lingue, ed altre vengono aggiunte ogni mese. Per raggiungere questo obiettivo, utilizziamo un mix di IA e la passione dei Bitcoiner in tutto il mondo. Anche tu puoi creare una rete locale dove vivi!",
       "link": "Aiutaci a tradurre l'accademia",
       "availableLanguages": "Lingue disponibili",
       "availableLanguagesVariation": "Lingue disponibili: "

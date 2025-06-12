@@ -843,7 +843,7 @@
   "home": {
     "header": {
       "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Gemeinschaften, wir sind hier, um Sie auf Ihrer Bitcoin-Reise zu unterstützen.",
-      "forEducators": "Für Erzieher *innen und Entwickler*innen",
+      "forEducators": "Für Erzieher und Entwickler",
       "globalNetwork": "Weltweites Bitcoin-Netzwerk",
       "welcome": "Willkommen im Plan ₿ Netzwerk"
     },
@@ -870,7 +870,7 @@
     "languageSection": {
       "title": "Hier gibt es keine Sprachbarriere.",
       "subtitle": "Alles wird in lokale Sprachen übersetzt!",
-      "content1": "Wir von Plan ₿ glauben, dass Bitcoin eine internationale Revolution ist, die jeden betrifft. Um Milliarden von Menschen zu befähigen, gestalten wir diese Plattform mehrsprachig und für alle zugänglich. Die Plattform unterstützt derzeit 7 Sprachen, und jeden Monat kommen weitere hinzu. Um dies zu erreichen, nutzen wir eine Mischung aus KI und der Leidenschaft von Bitcoinern auf der ganzen Welt. Auch Sie können beginnen, Ihr eigenes lokales Netzwerk in Ihrem Land aufzubauen!",
+      "content1": "Wir von Plan ₿ glauben, dass Bitcoin eine internationale Revolution ist, die jeden betrifft. Um Milliarden von Menschen zu befähigen, gestalten wir diese Plattform mehrsprachig und für alle zugänglich. Die Plattform unterstützt derzeit {{nb}} Sprachen, und jeden Monat kommen weitere hinzu. Um dies zu erreichen, nutzen wir eine Mischung aus KI und der Leidenschaft von Bitcoinern auf der ganzen Welt. Auch Sie können beginnen, Ihr eigenes lokales Netzwerk in Ihrem Land aufzubauen!",
       "link": "Helfen Sie uns, die Akademie zu übersetzen",
       "availableLanguages": "Verfügbare Sprachen",
       "availableLanguagesVariation": "Verfügbare Sprachen: "

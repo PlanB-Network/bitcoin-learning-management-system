@@ -71,7 +71,21 @@
     "dashboardUnlocked": "¡Tu panel de control del estudiante está desbloqueado!",
     "didYouKnow": "¿Lo sabías?",
     "trackProgress": "Crea una cuenta o inicia sesión para llevar un seguimiento de tu progreso.",
-    "passwordChangedSuccess": "Contraseña cambiada correctamente"
+    "passwordChangedSuccess": "Contraseña cambiada correctamente",
+    "emailValidation": {
+      "emailValidated": "Correo electrónico validado",
+      "errorValidatingEmailChangeDescription": "Ocurrió un error al validar el cambio de correo electrónico. Parece que el enlace ha expirado o ya ha sido utilizado. Por favor, inténtalo de nuevo.",
+      "wontTakeLong": "Esto no tomará mucho tiempo...",
+      "emailChangeValidated": "Cambio de correo electrónico validado",
+      "errorValidatingEmail": "Error al validar el correo electrónico",
+      "errorValidatingEmailChange": "Error al validar el cambio de correo electrónico",
+      "errorValidatingEmailDescription": "Ocurrió un error al validar tu correo electrónico. Parece que el enlace ha expirado o ya ha sido utilizado. Por favor, inténtalo de nuevo.",
+      "successfullyChanged": "Tu correo electrónico ha sido cambiado exitosamente a {{email}}.",
+      "successfullyValidated": "Tu correo electrónico ha sido validado exitosamente.",
+      "validateChange": "Validando cambio de correo electrónico",
+      "validatingEmail": "Validando correo electrónico",
+      "validatingEmailChange": "Validando cambio de correo electrónico"
+    }
   },
   "bet": {
     "educationalContent": {
@@ -136,7 +150,11 @@
       "thanksTipping": "Puedes mostrar tu agradecimiento dándole una propina al profesor.",
       "hasNotBeenProofread": "Este curso aún no ha sido revisado",
       "pastEditionsRatings": "Calificaciones de Ediciones Pasadas",
-      "teacherLed": "Dirigido por el profesor"
+      "teacherLed": "Dirigido por el profesor",
+      "attendInPersonWarning": "Si tienes la intención de asistir a esta clase en persona, asegúrate de reservar tu asiento. En cualquier caso, la lección se transmitirá en vivo y estará disponible para volver a verla.",
+      "associatedProfessors": "Profesores titulares",
+      "coordinatedBy": "Este curso está coordinado por",
+      "learning": "Camino de aprendizaje"
     },
     "explorer": {
       "pageDescription": "La Academia Plan ₿ tiene como objetivo simplificar la educación sobre Bitcoin a nivel mundial. Curada por expertos de diversos campos, nuestra academia ofrece una amplia gama de cursos diseñados para aclarar cada aspecto de Bitcoin.\nDesde principiante hasta experto, ya sea a tu propio ritmo o seguido semanalmente por un profesor, esperamos que la academia pueda ayudarte a obtener una comprensión más profunda del extenso mundo de Bitcoin. Muchos de nuestros cursos son completamente gratuitos para que cualquier persona, en cualquier lugar, pueda acceder a una educación de calidad.",
@@ -300,7 +318,17 @@
       "receiveDiploma": "Recibe tu diploma",
       "takeExam": "Tomar el examen",
       "timeStampedNoDot": "marca de tiempo",
-      "timeStamping": "marcado de tiempo"
+      "timeStamping": "marcado de tiempo",
+      "nbMinutes": "{{nb}} minutos",
+      "completed": "¡Examen completado!",
+      "examAvailabilityDetails": "Si el examen no se aprueba durante su período de disponibilidad en la plataforma, el estudiante recibirá automáticamente una calificación de 0.",
+      "nextChapter": "Siguiente capítulo",
+      "readyToTest": "¿Listo para probar tus conocimientos?",
+      "nbQuestions": "{{nb}} preguntas",
+      "results": {
+        "correct": "Respuestas correctas",
+        "incorrect": "Respuestas incorrectas"
+      }
     },
     "conclusion": {
       "completedChaptersHeadline": "¡Haz completado todos los capítulos!",
@@ -737,7 +765,7 @@
     "languageSection": {
       "title": "Aquí no hay barrera lingüística.",
       "subtitle": "¡Todo está traducido a idiomas locales!",
-      "content1": "En Plan ₿, creemos que Bitcoin es una revolución internacional que afecta a todos. Para capacitar a miles de millones de personas, diseñamos esta plataforma para que sea multilingüe y accesible para todos. La plataforma soporta actualmente 7 idiomas y se añaden más cada mes. Para lograrlo, utilizamos una mezcla de IA y la pasión de los Bitcoiners en todo el mundo.",
+      "content1": "En Plan ₿, creemos que Bitcoin es una revolución internacional que afecta a todos. Para capacitar a miles de millones de personas, diseñamos esta plataforma para que sea multilingüe y accesible para todos. La plataforma soporta actualmente {{nb}} idiomas y se añaden más cada mes. Para lograrlo, utilizamos una mezcla de IA y la pasión de los Bitcoiners en todo el mundo.",
       "link": "Ayúdanos a traducir la academia",
       "availableLanguages": "Idiomas disponibles",
       "availableLanguagesVariation": "Idiomas disponibles: "
@@ -1257,5 +1285,11 @@
     "related": "Relacionado",
     "relatedEvents": "Próximos eventos relacionados",
     "languages": "Idiomas"
+  },
+  "accessType": {
+    "hybrid": "Presencial y en Línea",
+    "online": "En línea",
+    "physical": "En persona",
+    "replay": "Ver de nuevo"
   }
 }

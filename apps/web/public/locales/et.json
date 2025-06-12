@@ -187,8 +187,8 @@
       "usernameRegex": "Kasutajanimi võib sisaldada ainult tähti, numbreid, _, . ja -.",
       "usernameRequired": "Kasutajanimi on nõutud.",
       "usernameTooShort": "Kasutajanimi peab sisaldama vähemalt 5 tähemärki.",
-      "invalidCredentials": "",
-      "emailInvalid": ""
+      "invalidCredentials": "Vigased sisselogimisandmed",
+      "emailInvalid": "Vigane meiliaadress"
     },
     "forgottenPassword": "Unustasid oma parooli?",
     "headerAccountCreated": "Konto loodud",
@@ -218,9 +218,27 @@
     "passwordMinLength": "Parool peab olema vähemalt {{len}} tähemärki pikk",
     "checkingTokenExplain": "Kontrollime, kas luba on kehtiv…",
     "passwordResetSent": "Parooli lähtestamise e-kiri on saadetud teie postkasti (kui e-kiri meie andmebaasis eksisteerib).",
-    "confirmation": "",
-    "displayName": "",
-    "emailTip": ""
+    "confirmation": "Kinnitus",
+    "displayName": "Kuvanimi",
+    "emailTip": "Meiliaadress ei ole kohustuslik: see võib olla kasulik juhul kui unustate oma parooli!",
+    "dashboardUnlocked": "Teie õpilastöölaud on nüüd kättesaadav!",
+    "didYouKnow": "Kas teadsid?",
+    "emailValidation": {
+      "emailChangeValidated": "Meiliaadressi muutus kinnitatud",
+      "errorValidatingEmailChangeDescription": "Teie meiliaadressi muutmise kinnitamisel ilmnes viga, tundub, et link on aegunud või juba kasutatud. Palun proovige uuesti.",
+      "emailValidated": "Meiliaadress on kinnitatud",
+      "errorValidatingEmail": "Viga meiliaadressi kinnitamisel",
+      "errorValidatingEmailChange": "Viga meiliaadressi muutmise kinnitamisel",
+      "errorValidatingEmailDescription": "Teie meiliaadressi kinnitamisel ilmnes viga, tundub, et link on aegunud või juba kasutatud. Palun proovige uuesti.",
+      "successfullyChanged": "Teie meiliaadress on edukalt muudetud {{email}}-ks.",
+      "successfullyValidated": "Teie meiliaadress on edukalt kinnitatud.",
+      "validateChange": "Meiliaadressi muutmise kinnitamine",
+      "validatingEmail": "Meiliaadressi kinnitamine",
+      "validatingEmailChange": "Kinnitan meiliaadressi muutmist",
+      "wontTakeLong": "See ei võta kaua..."
+    },
+    "passwordChangedSuccess": "Parool on edukalt muudetud",
+    "trackProgress": "Loo konto või logi sisse, et oma edusammudel järge pidada"
   },
   "bCert": {
     "bookExam": "Broneeri eksamisessioon",
@@ -236,7 +254,11 @@
     "pageSubtitle": "Massiline kasutuselevõtt läbi keskse avatud lähtekoodiga hariduse",
     "pageTitle": "B-sertifikaat",
     "readChart": "Loe tabelit",
-    "tweetText": ""
+    "tweetText": "Mul on hea meel, et läbisin @planb_network ₿-CERTi skooriga {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
+    "download": "Laadi sertifikaat alla",
+    "organizeSessionConditions": "Palun lugege läbi <0>põhikiri</0>, et veenduda, et vastate testi korraldamiseks vajalikele tingimustele. \nKui kvalifitseerute, oleme meelsasti valmis koos teiega teie kohaliku kogukonna jaoks sessiooni planeerima. \nPalun võtke meiega ühendust teile sobival viisil.",
+    "organizeSessionHub": "Korraldage oma kohalikus keskuses ₿-CERT testi sessioon",
+    "verify": "Kinnitage oma tunnistuse autentsus"
   },
   "bet": {
     "contributeButton": "Aita & panusta",
@@ -311,7 +333,11 @@
       "inPersonAccess": "",
       "paidCourse": "",
       "buyInPersonCourse": "",
-      "buyOnlineCourse": ""
+      "buyOnlineCourse": "",
+      "teacherLed": "Professori juhtimisel",
+      "premiumContentNeedsPaymentAction": "Mine kursuse avalehele",
+      "thanksTipping": "Saate professorit tänada talle jootraha jättes.",
+      "associatedProfessors": "Seotud professorid"
     },
     "explorer": {
       "buildPath": "Raja iseenda tee jäneseurgu",
@@ -358,8 +384,8 @@
       "resultPerfect": "Täiuslik sooritus ! Õnnitlused !"
     },
     "exam": {
-      "answersReview": "",
-      "availableDashboard": "",
+      "answersReview": "Vastuste ülevaade",
+      "availableDashboard": "See on saadaval teie töölaual umbes 10 tunni pärast.",
       "certificateGeneration": "",
       "congratulations": "",
       "examAndDiploma": "",
@@ -411,7 +437,8 @@
       "tryOneMoreTime": "",
       "dontGiveUpTryAgain": "",
       "goodLuck": "",
-      "congratulationsPassed": ""
+      "congratulationsPassed": "",
+      "availableDashboardTimestamped": "Teie diplom on saadaval teie töölaual."
     },
     "review": {
       "commentTeacher": "",
@@ -445,6 +472,17 @@
       "faithful": "",
       "recommend": "",
       "yesOfCourse": ""
+    },
+    "conclusion": {
+      "completedChaptersHeadline": "Kõik peatükid on nüüd valmis!",
+      "completedFeedbackHeadline": "Täname teid tagasiside eest!\nSee on meie jaoks väga oluline, seega hindame seda väga.",
+      "completedFeedbackSubHeadline": "Saate oma hinnanguid ja kommentaare igal ajal oma töölaual muuta.",
+      "congratulationsEnd": "Õnnitlused, olete jõudnud kursuse lõpuni",
+      "finalStep": "See oli viimane samm, et märkida käesolev kursus oma töölaual lõpetatuks, enne kui jätkate oma teekonda!",
+      "stepsToComplete": "Need on vastavad sammud, et märkida käesolev kursus oma töölaual lõpetatuks, enne kui jätkate oma teekonda!",
+      "takeFinalExam": "Nüüd, kui olete kõik peatükid läbinud, on aeg teha lõpueksam oma teadmiste kontrollimiseks.",
+      "unlockFeatures1": "Et avada kõik funktsioonid ja jälgida oma edusamme, vajate kontot.",
+      "unlockFeatures2": "Palun võtke teadmiseks, et me ei kogu isiklikke andmeid ega kasuta küpsiseid."
     }
   },
   "dashboard": {
@@ -811,5 +849,11 @@
     "blogPost": "",
     "legal": "",
     "description": ""
+  },
+  "accessType": {
+    "online": "Veebi teel",
+    "physical": "Kohapeal",
+    "replay": "Kordus",
+    "hybrid": "Kohapeal & veebis"
   }
 }

@@ -1,1 +1,95 @@
-{}
+{
+  "about": {
+    "activeContributors": "Abitanga muburyo bugaragara",
+    "commitmentTitle": "Ivyo twiyemeje",
+    "coportateContact": "Uburyo bwo kuduhamagara:",
+    "coreTeamAjelexRole": "Umushingwabikorwa wa node (Ishami ryigenga mubuhinga bwa none)",
+    "coreTeamAsioRole": "Umushingwabikorwa w'ivyinyigisho",
+    "coreTeamGiacomoRole": "Umuyobozi akaba n'umwe mubayishinze",
+    "coreTeamRogzyRole": "Uwutunganya ibicuruzwa akaba n’umwe mu bayishinze",
+    "coreTeamTitle": "Umurwi nshingiro",
+    "corporateTitle": "Amashirahamwe arinyuma y'umugambi",
+    "commitmentContent": "Turi izo zifuatazo kuelekea jamii ya Bitcoin: \n • Daima kuwa chanzo wazi \n • Kutoa maudhui ya elimu ya hali ya juu \n • Kutafsiri maudhui yetu katika lugha nyingi iwezekanavyo \n • Kuunga mkono wajasiriamali wa Bitcoin katika safari yao",
+    "coreTeamContent": "Plan ₿ Network ni ihuriro rigizwe n’isinzi ry’abantu batanga intererano, abigisha, imboneza z'imirwi y'ikibano, abacafyi bokubuhinga bwa none, abateza imbere ubuhinga bwa none, hamwe n'abahuza bikorwa. Turashimira ivyumwihariko abantu benshi batumye Plan ₿ ibaho kandi babandanya kubikora uko bukeye n’uko bwije.(Urutonde rw’abatanze intererano ruzoshirwa ahabona vuba)",
+    "corporateContent": "Plan ₿ Network ni ihwaniro ry'imigambi ugizwe n'amashirahamwe atatu yibanda kw'iterambere rya Bitcoin. Mu ntumbero yo kwagura inyigisho zijanye na Bitcoin no kuzishikana kure hashoboka, ayo mashirahamwe yaciye afata ingingo yo gukorana, maze hashingwa Plan ₿ Network. Kuva icogihe, ayandi mashirahamwe menshi yahisemwo guterera hamwe nogushira inguvu hamwe kugira ngo adufashe gushikana inyigisho za Bitcoin kw’isi yose. Kubera iyo mvo, tubashimiye bivuye ku mutima."
+  },
+  "accessType": {
+    "online": "Kurubuga ngurukanabumenyi",
+    "physical": "Muburyo bw'imbona nkubone",
+    "replay": "Gusubiramwo"
+  },
+  "auth": {
+    "accountCreated": "Konti yawe yaremwe, {{userName}}!",
+    "alreadyHaveAccount": "urafise konti?",
+    "backToHome": "Subira ku rupapuro rw'itanguriro",
+    "backToLogin": "Subira kwinjira",
+    "checkingToken": "Gusuzuma token",
+    "checkingTokenExplain": "Turiko turasuzuma niba Token ikora…",
+    "confirmation": "Ukwemeza",
+    "createAccount": "Ukwiyandikisha",
+    "createOne": "Iyandikishe hano!",
+    "dashboardUnlocked": "Urubaho rwawe rw'umunyeshure ubu rwabonetse!",
+    "didYouKnow": "Wari ubizi?",
+    "displayName": "Izina ryo kwerekana",
+    "emailAddress": "Aderesi ya imeyili",
+    "canSaveProgress": "Ubu urashobora kuzigama intambwe ugezeko kuri Bitcoin Academy",
+    "emailTip": "Imeyili si ngombwa: ariko irashobora gufasha igihe wibagiwe ijambo kabanga ryawe!",
+    "emailValidation": {
+      "errorValidatingEmailChangeDescription": "Habaye ikosa mugihe twariko turemeza impinduka za imeyili yawe, biboneka nkaho linki yahagaritswe canke yamaze gukoreshwa. Nyabuna, gerageza iyindi ncuro.",
+      "successfullyValidated": "Imeyili yawe yemejwe neza.",
+      "wontTakeLong": "Ibi ntibiza gutwara umwanya munini...",
+      "emailChangeValidated": "Ihinduka rya Imeyili ryemejwe",
+      "validateChange": "Ukwemeza impinduka ya Imeyili",
+      "errorValidatingEmail": "Ikosa mu kwemeza imeyili",
+      "validatingEmail": "Ukwemeza Imeyili",
+      "validatingEmailChange": "Ukwemeza ihindurwa rya Imeyili",
+      "emailValidated": "Imeyili yemejwe",
+      "errorValidatingEmailChange": "Ikosa mu kwemeza impinduka rya imeyili",
+      "errorValidatingEmailDescription": "Habaye ikosa mugihe twariko turemeza imeyili yawe, biboneka nkaho linki yahagaritswe canke yamaze gukoreshwa. Nyabuna, subira ugerageze.",
+      "successfullyChanged": "Imeyili yawe yahinduwe neza, ubu ni {{email}}."
+    },
+    "errors": {
+      "usernameTooShort": "Izina rikoreshwa ritegezwa kugira nimiburiburi indome 5.",
+      "displayNameTooShort": "Izina ryo kwerekana ritegezwa kuba rifise indome nimiburiburi 2.",
+      "emailInvalid": "Imeyili ntikora",
+      "invalidCredentials": "Amakuru ya konti siyo",
+      "usernameRegex": "Izina rikoreshwa rishobora kugira gusa indome, ibiharuro, ugashushanyo(_), akaburungu (.) hamwe n’agakwego (-).",
+      "usernameRequired": "Izina rikoreshwa ni ngombwa."
+    },
+    "invalidToken": "Token siyo",
+    "lnurlAuthDescription": "Sikana iyi kode ya QR ukoresheje ingodo ya Lightning kugira winjire!",
+    "noAccountNeeded": "Nta konti ikenewe kugira utangure kwiga kuri Plan ₿ Network!",
+    "passwordResetSent": "Imeyili yo gusubirizamwo ijambo kabanga yarungitswe mugasndugu kubutumwa kawe(nimba aderesi ya imeyili iboneka mu bubiko bwacu).",
+    "trackProgress": "Kora ikonti canke winjire kugira ukurikirane intambwe zawe",
+    "forgottenPassword": "Woba wibagiye ijambo kabanga?",
+    "headerAccountCreated": "Konti iraremwe",
+    "invalidTokenExplain": {
+      "consumed": "Token yamaze gukoreshwa",
+      "expired": "Token yamaze guhera",
+      "invalid": "Token siyo",
+      "notFound": "Nta token yabonetse"
+    },
+    "newPassword": "Ijamba kabanga rishasha",
+    "noAccountYet": "Nta konti ufise?",
+    "passwordChanged": "Ijambo kabanga ryahinduwe",
+    "passwordChangedSuccess": "Ijambo kabanga ryahinduwe neza",
+    "passwordMinLength": "Ijambo kabanga ritegezwa kugira nimiburiburi indome {{len}}",
+    "passwordRequired": "Ijambo kabanga rirakenewe",
+    "passwordResetError": "Ikosa mu gusubiriza ijambo kabanga",
+    "passwordSuccessfullyChanged": "Ijambo ryawe ry'ibanga ryarahinduwe neza. Ubu ushobora kwinjira ukoresheje ijambo ryibanga ryawe rishasha.",
+    "passwordsDontMatch": "Amajambo y’ibanga ntahura",
+    "resetPassword": "Subira usabe ijambo ryibanga ryawe",
+    "sendLink": "Ndungikira linki",
+    "signIn": "Injira",
+    "tryAgain": "Subira ugerageze"
+  },
+  "bCert": {
+    "bCertDescription": "₿-CERT ni ikibazo ca nyuma cikwije ca Bitcoin kigenewe gusuzuma ubumenyi bwawe ku bijanye na Bitcoin hamwe n’ibijanye nicocigwa. Iyo ushikanye hejuru ya 80%, uzoronka impamyabushobozi ya ₿-CERT yerekana ubuhinga bwawe mu bijanye n'uruganda rwa Bitcoin, kikazoshobora kwugurura amarembo y’akazi atandukanye mu buhinga bwa Bitcoin.",
+    "bookExam": "Fatisha akanya ko gukora ikibazo",
+    "challengeYourself": "Ihe ihangiro hama upime urwego rwawe",
+    "checkout": "Reba ₿-CERT",
+    "download": "Teresharija impamyabushobozi",
+    "knowledgeableBitcoin": "Uzi ibihe ku bijanye na Bitcoin?",
+    "noBookExam": "Nta kibazo kirategurwa gushika ubu."
+  }
+}

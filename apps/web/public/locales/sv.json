@@ -762,7 +762,7 @@
     "languageSection": {
       "title": "Här finns ingen språkbarriär.",
       "subtitle": "Allt översätts till lokala språk!",
-      "content1": "På Plan ₿ anser vi att Bitcoin är en internationell revolution som berör alla. För att stärka miljarder människor utformar vi denna plattform för att vara flerspråkig och tillgänglig för alla. Plattformen stödjer för närvarande 7 språk, och fler tillkommer varje månad. För att uppnå detta använder vi en kombination av AI och entusiasmen hos bitcoiners runt om i världen. Du kan även starta ditt eget lokala nätverk i ditt land!",
+      "content1": "På Plan ₿ anser vi att Bitcoin är en internationell revolution som berör alla. För att stärka miljarder människor utformar vi denna plattform för att vara flerspråkig och tillgänglig för alla. Plattformen stödjer för närvarande {{nb}} språk, och fler tillkommer varje månad. För att uppnå detta använder vi en kombination av AI och entusiasmen hos bitcoiners runt om i världen. Du kan även starta ditt eget lokala nätverk i ditt land!",
       "link": "Hjälp oss att översätta akademin",
       "availableLanguages": "Tillgängliga språk",
       "availableLanguagesVariation": "Tillgängliga språk: "

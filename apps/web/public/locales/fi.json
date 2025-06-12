@@ -475,7 +475,7 @@
     "languageSection": {
       "title": "Täällä ei kielimuuria ole.",
       "subtitle": "Kaikki on käännetty paikallisille kielille",
-      "content1": "Me PlanB:llä uskomme, että Bitcoin on kansainvälinen vallankumous, joka koskee kaikkia. Voimaannuttaaksemme mahdollisesti miljardeja ihmisiä suunnittelimme tämän alustan monikieliseksi ja kaikille saavutettavaksi. Alusta tukee tällä hetkellä seitsemää kieltä, ja lisää lisätään joka kuukausi. Tämän saavuttamiseksi käytämme yhdistelmää tekoälyä ja Bitcoin-harrastajien intohimoa ympäri maailmaa.",
+      "content1": "At Plan ₿, uskomme, että Bitcoin on kansainvälinen vallankumous, joka koskee kaikkia. Voimaannuttaaksemme miljardeja ihmisiä, suunnittelemme tätä alustaa monikieliseksi ja kaikille saavutettavaksi. Alusta tukee tällä hetkellä {{nb}} kieltä, ja lisää kieliä lisätään joka kuukausi. Tämän saavuttamiseksi käytämme sekoitusta tekoälyä ja Bitcoin-harrastajien intohimoa ympäri maailmaa. Voit myös aloittaa oman paikallisen verkoston rakentamisen maassasi!",
       "link": "Auta meitä kääntämään materiaaleja",
       "availableLanguages": "Saatavilla olevat kielet",
       "availableLanguagesVariation": ""
