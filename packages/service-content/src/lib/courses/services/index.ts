@@ -1,6 +1,9 @@
 export { createGetCourse } from './get-course.js';
 export { createGetCourses } from './get-courses.js';
-export { createGetCourseAssignments } from './get-course-assignments.js';
+export {
+  createGetCourseAssignments,
+  createGetCourseAssignmentsWithStudentsGrades,
+} from './get-course-assignments.js';
 export { createGetProfessorCourses } from './get-courses.js';
 export { createGetCoursesIds } from './get-courses.js';
 export { createGetPlanBSchoolCoursesIds } from './get-courses.js';
@@ -9,6 +12,7 @@ export { createGetCourseChapters } from './get-course-chapters.js';
 export { createCalculateCourseChapterSeats } from './calculate-course-chapter-seats.js';
 export { createGetPublicCourseReviews } from './get-course-reviews.js';
 export { createGetTeacherCourseReviews } from './get-course-reviews.js';
+export { createSetCourseAssignmentGradesAsPublished } from './set-assignment-grades-published.js';
 export {
   createRefreshCoursesRatings,
   createRefreshCourseRating,

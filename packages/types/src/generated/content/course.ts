@@ -33,6 +33,7 @@ export interface Course {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
@@ -190,6 +191,7 @@ export interface MinimalJoinedCourse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -232,6 +234,7 @@ export interface JoinedCourseProfessorId {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -276,6 +279,7 @@ export interface JoinedCourse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -365,6 +369,7 @@ export interface CourseResponse {
   hasLogo: boolean;
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -460,4 +465,15 @@ export interface CourseChapterMeta {
   courseId: string;
   courseIndex: string;
   lastCommit: string;
+}
+
+export interface MinimalCourseAssignmentWithStudents {
+  id: string;
+  name: string;
+  students: {
+    uid: string;
+    username: string;
+    displayName: string;
+    grade: number | null;
+  }[];
 }

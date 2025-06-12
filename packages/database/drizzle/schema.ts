@@ -956,6 +956,8 @@ export const contentCourses = content.table('courses', (t) => ({
   isGdprCompliance: t.boolean().notNull().default(false),
   customTcDisclaimer: t.text(),
 
+  isAssignmentGradingPublished: t.boolean().notNull().default(false),
+
   lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   lastCommit: t.varchar({ length: 40 }).notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
@@ -1300,6 +1302,8 @@ export const usersCourseProgress = users.table(
       .uuid()
       .references(() => contentCoursesAssignment.id, { onDelete: 'cascade' }),
     assignmentSubmissionTime: t.timestamp({ withTimezone: true }),
+    assignmentGrade: t.integer(),
+    ranking: t.integer(),
   }),
   (table) => ({
     pk: primaryKey({

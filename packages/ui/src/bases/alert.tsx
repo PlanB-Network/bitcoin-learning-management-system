@@ -84,7 +84,7 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('body-14px md:body-16px', className)}
+    className={cn('body-16px whitespace-pre-line', className)}
     {...props}
   />
 ));

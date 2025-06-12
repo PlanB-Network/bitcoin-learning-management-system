@@ -9,6 +9,7 @@ import {
   joinedCourseChapterSchema,
   joinedCourseSchema,
   joinedQuizQuestionSchema,
+  minimalCourseAssignmentWithStudentsSchema,
   quizQuestionsCountSchema,
 } from '@blms/schemas';
 import {
@@ -16,6 +17,7 @@ import {
   createCheckChapterAccess,
   createGetCourse,
   createGetCourseAssignments,
+  createGetCourseAssignmentsWithStudentsGrades,
   createGetCourseChapter,
   createGetCourseChapterQuizQuestions,
   createGetCourseChapterQuizQuestionsCount,
@@ -24,6 +26,7 @@ import {
   createGetProfessorCourses,
   createGetPublicCourseReviews,
   createGetTeacherCourseReviews,
+  createSetCourseAssignmentGradesAsPublished,
 } from '@blms/service-content';
 import type {
   CourseAssignment,
@@ -33,6 +36,7 @@ import type {
   JoinedCourse,
   JoinedCourseChapter,
   JoinedQuizQuestion,
+  MinimalCourseAssignmentWithStudents,
   QuizQuestionsCount,
 } from '@blms/types';
 
@@ -192,6 +196,35 @@ const getCourseAssignmentsProcedure = studentProcedure
     return createGetCourseAssignments(ctx.dependencies)(input.courseId);
   });
 
+const getCourseAssignmentsWithStudentsGradesProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<MinimalCourseAssignmentWithStudents[]>>(
+    minimalCourseAssignmentWithStudentsSchema.array(),
+  )
+  .query(({ ctx, input }) => {
+    return createGetCourseAssignmentsWithStudentsGrades(ctx.dependencies)(
+      input.courseId,
+    );
+  });
+
+const setCourseAssignmentGradesAsPublishedProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(({ ctx, input }) => {
+    return createSetCourseAssignmentGradesAsPublished(ctx.dependencies)({
+      courseId: input.courseId,
+      teacherUid: ctx.user.uid,
+    });
+  });
+
 const calculateCourseChapterSeatsProcedure = publicProcedure
   .input(
     z.object({
@@ -209,6 +242,8 @@ export const coursesRouter = createTRPCRouter({
   getProfessorCourses: getProfessorCoursesProcedure,
   getCourse: getCourseProcedure,
   getCourseAssignments: getCourseAssignmentsProcedure,
+  getCourseAssignmentsWithStudentsGrades:
+    getCourseAssignmentsWithStudentsGradesProcedure,
   getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
@@ -217,4 +252,6 @@ export const coursesRouter = createTRPCRouter({
   calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
   getPublicCourseReviews: getPublicCourseReviewsProcedure,
   getTeacherCourseReviews: getTeacherCourseReviewsProcedure,
+  setCourseAssignmentGradesAsPublished:
+    setCourseAssignmentGradesAsPublishedProcedure,
 });

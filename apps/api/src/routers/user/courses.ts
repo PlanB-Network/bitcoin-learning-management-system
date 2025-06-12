@@ -32,6 +32,7 @@ import {
   createGetProgress,
   createGetUserChapter,
   createGetUserDetailsByCertificateId,
+  createSaveCourseAssignmentGrade,
   createSaveCourseAssignmentSubmissionTime,
   createSaveCourseAssignmentsOrder,
   createSaveCoursePayment,
@@ -58,7 +59,10 @@ import type {
 } from '@blms/types';
 
 import { ExamType } from '@blms/constants';
-import { studentProcedure } from '#src/procedures/protected.js';
+import {
+  professorProcedure,
+  studentProcedure,
+} from '#src/procedures/protected.js';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
@@ -470,6 +474,24 @@ const saveAssignmentSubmissionTimeProcedure = studentProcedure
     });
   });
 
+const saveCourseAssignmentGradeProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      uid: z.string(),
+      grade: z.number().nullable(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(async ({ ctx, input }) => {
+    await createSaveCourseAssignmentGrade(ctx.dependencies)({
+      courseId: input.courseId,
+      teacherUid: ctx.user.uid,
+      uid: input.uid,
+      grade: input.grade,
+    });
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -486,6 +508,7 @@ export const userCoursesRouter = createTRPCRouter({
   getPayment: getPaymentProcedure,
   getPayments: getPaymentsProcedure,
   getUserDetailsByCertificateId: getUserDetailsByCertificateIdProcedure,
+  saveCourseAssignmentGrade: saveCourseAssignmentGradeProcedure,
   saveCourseAssignmentSubmissionTime: saveAssignmentSubmissionTimeProcedure,
   saveCourseAssignmentsOrder: saveCourseAssignmentsOrderProcedure,
   saveCourseReview: saveCourseReviewProcedure,

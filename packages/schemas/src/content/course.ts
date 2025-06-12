@@ -125,6 +125,7 @@ export const minimalJoinedCourseSchema = courseSchema
     hasLogo: true,
     isGdprCompliance: true,
     customTcDisclaimer: true,
+    isAssignmentGradingPublished: true,
   })
   .merge(
     z.object({
@@ -313,5 +314,23 @@ export const courseChapterMetaSchema = joinedCourseChapterSchema
       courseId: z.string(),
       courseIndex: z.string(),
       lastCommit: z.string(),
+    }),
+  );
+
+export const minimalCourseAssignmentWithStudentsSchema = courseAssignmentSchema
+  .pick({
+    id: true,
+    name: true,
+  })
+  .merge(
+    z.object({
+      students: z.array(
+        z.object({
+          uid: z.string(),
+          username: z.string(),
+          displayName: z.string(),
+          grade: z.number().nullable(),
+        }),
+      ),
     }),
   );
