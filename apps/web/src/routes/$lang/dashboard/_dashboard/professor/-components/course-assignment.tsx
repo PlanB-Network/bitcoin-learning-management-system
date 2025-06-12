@@ -10,6 +10,7 @@ import {
   cn,
   customToast,
 } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -40,14 +41,21 @@ interface EditingStates {
 export const CourseAssignment = ({ courseId }: { courseId: string }) => {
   const { t, i18n } = useTranslation();
 
-  const { data: assignments, refetch: refetchAssignments } =
-    trpc.content.getCourseAssignmentsWithStudentsGrades.useQuery({ courseId });
+  const { data: assignments, refetch: refetchAssignments } = useQuery(
+    trpc.content.getCourseAssignmentsWithStudentsGrades.queryOptions({
+      courseId,
+    }),
+  );
 
-  const { data: course, refetch: refetchCourse } =
-    trpc.content.getCourse.useQuery({ language: i18n.language, id: courseId });
+  const { data: course, refetch: refetchCourse } = useQuery(
+    trpc.content.getCourse.queryOptions({
+      language: i18n.language,
+      id: courseId,
+    }),
+  );
 
-  const saveGradesMutation =
-    trpc.user.courses.saveCourseAssignmentGrade.useMutation({
+  const saveGradesMutation = useMutation(
+    trpc.user.courses.saveCourseAssignmentGrade.mutationOptions({
       onError: (error) => {
         customToast(error.message, {
           mode: 'light',
@@ -55,10 +63,11 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
           icon: TbAlertCircle,
         });
       },
-    });
+    }),
+  );
 
-  const setGradesAsPublishedMutation =
-    trpc.content.setCourseAssignmentGradesAsPublished.useMutation({
+  const setGradesAsPublishedMutation = useMutation(
+    trpc.content.setCourseAssignmentGradesAsPublished.mutationOptions({
       onSuccess: async () => {
         await refetchCourse();
         await refetchAssignments();
@@ -78,7 +87,8 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
           icon: TbAlertCircle,
         });
       },
-    });
+    }),
+  );
 
   const [editingStates, setEditingStates] = useState<EditingStates>({});
 

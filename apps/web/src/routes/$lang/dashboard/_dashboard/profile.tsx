@@ -25,6 +25,7 @@ import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkOutline } from 'react-icons/io5';
 import { z } from 'zod';
@@ -343,8 +344,8 @@ const NotificationSettings = () => {
     },
   });
 
-  const changeNotificationSettings =
-    trpc.user.changeNotificationsSettings.useMutation({
+  const changeNotificationSettings = useMutation(
+    trpc.user.changeNotificationsSettings.mutationOptions({
       onSuccess: async () => {
         await refetchAccountSettings();
         customToast(t('dashboard.profile.notificationSettings.settingsSaved'), {
@@ -354,7 +355,8 @@ const NotificationSettings = () => {
           closeButton: true,
         });
       },
-    });
+    }),
+  );
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const mutationPayload = {

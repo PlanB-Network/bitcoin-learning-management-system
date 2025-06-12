@@ -11,6 +11,7 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { isUUID } from '#src/utils/index.ts';
 import { CourseCard } from '../../../../patterns/course-card.tsx';
@@ -46,19 +47,23 @@ function ProfessorDetail() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: professor, isFetched } = trpc.content.getProfessor.useQuery(
-    {
-      professorId: params.professorId,
-      language: i18n.language,
-    },
-    {
-      enabled: isUUID(params.professorId),
-    },
+  const { data: professor, isFetched } = useQuery(
+    trpc.content.getProfessor.queryOptions(
+      {
+        professorId: params.professorId,
+        language: i18n.language,
+      },
+      {
+        enabled: isUUID(params.professorId),
+      },
+    ),
   );
 
-  const { data: lectures } = trpc.content.getLectures.useQuery(
-    { professorId: professor?.id },
-    { enabled: !!professor, staleTime: 300_000 },
+  const { data: lectures } = useQuery(
+    trpc.content.getLectures.queryOptions(
+      { professorId: professor?.id },
+      { enabled: !!professor, staleTime: 300_000 },
+    ),
   );
 
   const categoryHash = window.location.hash.replace('#', '') || 'all';

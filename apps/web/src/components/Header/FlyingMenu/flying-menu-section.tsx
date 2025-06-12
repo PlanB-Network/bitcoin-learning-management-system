@@ -11,6 +11,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { MenuElement } from '../menu-elements.tsx';
 import type { NavigationSection } from '../props.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { BTC101ID } from '#src/utils/courses.ts';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
@@ -80,14 +81,16 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
-  const { data: highlightedCourse } = trpc.content.getCourse.useQuery(
-    {
-      language: i18n.language ?? 'en',
-      id: BTC101ID,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: highlightedCourse } = useQuery(
+    trpc.content.getCourse.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+        id: BTC101ID,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   const handleMouseEnter = () => {

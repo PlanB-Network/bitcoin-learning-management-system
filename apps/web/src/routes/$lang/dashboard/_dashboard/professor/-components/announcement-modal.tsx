@@ -23,6 +23,7 @@ import {
   cn,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { fromZonedTime, toZonedTime } from 'date-fns-tz';
 import { t } from 'i18next';
@@ -88,19 +89,21 @@ export const AnnouncementModal = ({
     existingAnnouncement ? existingAnnouncement.timezone : 'GMT',
   );
 
-  const submitScheduledCourseAnnouncement =
-    trpc.user.notifications.insertScheduledCourseAnnouncement.useMutation({
+  const submitScheduledCourseAnnouncement = useMutation(
+    trpc.user.notifications.insertScheduledCourseAnnouncement.mutationOptions({
       onSuccess: () => {
         closeModal();
       },
-    });
+    }),
+  );
 
-  const updateScheduledCourseAnnouncement =
-    trpc.user.notifications.updateScheduledCourseAnnouncement.useMutation({
+  const updateScheduledCourseAnnouncement = useMutation(
+    trpc.user.notifications.updateScheduledCourseAnnouncement.mutationOptions({
       onSuccess: () => {
         closeModal();
       },
-    });
+    }),
+  );
 
   function closeModal() {
     onClose();

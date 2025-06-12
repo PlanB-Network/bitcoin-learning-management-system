@@ -31,6 +31,7 @@ import {
 
 import { LANGUAGES_MAP } from '@blms/shared';
 import { Image } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
@@ -114,25 +115,32 @@ function CourseDetails() {
 
   const navigate = useNavigate();
 
-  const { data: course, isFetched } = trpc.content.getCourse.useQuery(
-    {
-      id: courseId,
-      language: i18n.language,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: course, isFetched } = useQuery(
+    trpc.content.getCourse.queryOptions(
+      {
+        id: courseId,
+        language: i18n.language,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
-  const { data: userCourseProgress } = trpc.user.courses.getProgress.useQuery(
-    {
-      courseId,
-    },
-    { enabled: isLoggedIn },
+  const { data: userCourseProgress } = useQuery(
+    trpc.user.courses.getProgress.queryOptions(
+      {
+        courseId,
+      },
+      { enabled: isLoggedIn },
+    ),
   );
 
-  const { data: payments, refetch: refetchPayment } =
-    trpc.user.courses.getPayments.useQuery(undefined, { enabled: isLoggedIn });
+  const { data: payments, refetch: refetchPayment } = useQuery(
+    trpc.user.courses.getPayments.queryOptions(undefined, {
+      enabled: isLoggedIn,
+    }),
+  );
 
   const isCoursePaid = useMemo(
     () =>
@@ -155,21 +163,24 @@ function CourseDetails() {
     [courseId, payments],
   );
 
-  const { mutateAsync: startCourse } =
-    trpc.user.courses.startCourse.useMutation();
+  const { mutateAsync: startCourse } = useMutation(
+    trpc.user.courses.startCourse.mutationOptions(),
+  );
 
   const {
     mutateAsync: downloadTicketMutateAsync,
     isPending: downloadTicketIsPending,
-  } = trpc.user.courses.downloadChapterTicket.useMutation();
+  } = useMutation(trpc.user.courses.downloadChapterTicket.mutationOptions());
 
-  const { data: reviews } = trpc.content.getPublicCourseReviews.useQuery(
-    {
-      courseId: courseId,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: reviews } = useQuery(
+    trpc.content.getPublicCourseReviews.queryOptions(
+      {
+        courseId: courseId,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   let professorNames = course?.mainProfessors

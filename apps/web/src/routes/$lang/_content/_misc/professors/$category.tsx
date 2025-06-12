@@ -9,6 +9,7 @@ import { ProfessorCard } from '#src/components/professor-card.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { professorTabs } from '../-utils/professor-utils.tsx';
 
 export const Route = createFileRoute(
@@ -44,13 +45,15 @@ export function ProfessorCategoryPage() {
     },
   }));
 
-  const { data: professors, isFetched } = trpc.content.getProfessors.useQuery(
-    {
-      language: i18n.language,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: professors, isFetched } = useQuery(
+    trpc.content.getProfessors.queryOptions(
+      {
+        language: i18n.language,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   const filteredProfessors = professors?.filter((professor) => {

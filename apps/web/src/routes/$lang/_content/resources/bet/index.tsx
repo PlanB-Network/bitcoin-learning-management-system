@@ -16,6 +16,7 @@ import {
 import { useGreater } from '#src/hooks/use-greater.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/bet/')({
@@ -25,13 +26,15 @@ export const Route = createFileRoute('/$lang/_content/resources/bet/')({
 function BET() {
   const { t, i18n } = useTranslation();
 
-  const { data: bets, isFetched } = trpc.content.getBets.useQuery(
-    {
-      language: i18n.language ?? 'en',
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: bets, isFetched } = useQuery(
+    trpc.content.getBets.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   return (

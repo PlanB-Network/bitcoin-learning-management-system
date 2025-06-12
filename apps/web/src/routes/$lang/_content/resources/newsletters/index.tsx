@@ -10,6 +10,7 @@ import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
@@ -21,9 +22,8 @@ function Newsletter() {
   const { t, i18n } = useTranslation();
   const isMobile = useSmaller('md');
 
-  const { data: newsletters, isFetched } = trpc.content.getNewsletters.useQuery(
-    {},
-    { staleTime: 300_000 },
+  const { data: newsletters, isFetched } = useQuery(
+    trpc.content.getNewsletters.queryOptions({}, { staleTime: 300_000 }),
   );
 
   const localNewsletters =

@@ -2,6 +2,7 @@ import { t } from 'i18next';
 
 import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow, Divider, cn } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import SuccessExam from '#src/assets/icons/success_exam.svg?react';
 import { goToChapterParameters } from '#src/utils/courses.ts';
@@ -15,14 +16,16 @@ export const SingleTrialExamResult = ({
   chapter: CourseChapterResponse;
   onStartExam: () => void;
 }) => {
-  const { data: examResults, isFetched: isExamResultsFetched } =
-    trpc.user.courses.getLatestExamResults.useQuery({
+  const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions({
       courseId: chapter.courseId,
       chapterId: chapter.chapterId,
-    });
+    }),
+  );
 
-  const completeChapterMutation =
-    trpc.user.courses.completeChapter.useMutation();
+  const completeChapterMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
 
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);

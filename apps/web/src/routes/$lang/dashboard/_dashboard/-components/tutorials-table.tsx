@@ -17,6 +17,7 @@ import {
 } from '@blms/ui';
 
 import { SortDirection } from '@blms/constants';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -43,20 +44,22 @@ export const DashboardTutorialsTable = ({
     hasNextPage,
     fetchNextPage,
     refetch,
-  } = trpc.content.getTutorialsWithProfessorName.useInfiniteQuery(
-    {
-      language: i18n.language || 'en',
-      professorId: professorId,
-      search: debouncedSearch,
-      orderField: sortConfig.key,
-      orderDirection: sortConfig.direction,
-      limit: professorId ? 100 : 50,
-    },
-    {
-      getNextPageParam: (lastPage) => {
-        return lastPage.nextCursor;
+  } = useInfiniteQuery(
+    trpc.content.getTutorialsWithProfessorName.infiniteQueryOptions(
+      {
+        language: i18n.language || 'en',
+        professorId: professorId,
+        search: debouncedSearch,
+        orderField: sortConfig.key,
+        orderDirection: sortConfig.direction,
+        limit: professorId ? 100 : 50,
       },
-    },
+      {
+        getNextPageParam: (lastPage) => {
+          return lastPage.nextCursor;
+        },
+      },
+    ),
   );
 
   const tutorials = [];

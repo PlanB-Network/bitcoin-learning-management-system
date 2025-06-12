@@ -18,6 +18,7 @@ import PrivacyIcon from '#src/assets/icons/privacy.svg';
 import PlanBLabsLogo from '#src/assets/logo/plan_b_labs_logo_horizontal.svg';
 
 import type { FullProfessor } from '@blms/types';
+import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -78,18 +79,22 @@ function PlanBLabs() {
   const activeItem =
     labsTabs.find((tab) => tab.href.includes(params.group)) || labsTabs[0];
 
-  const { data: lab, isFetched } = trpc.content.getLab.useQuery({
-    group: params.group,
-  });
+  const { data: lab, isFetched } = useQuery(
+    trpc.content.getLab.queryOptions({
+      group: params.group,
+    }),
+  );
 
-  const { data: professor } = trpc.content.getProfessor.useQuery(
-    {
-      professorId: lab?.lab?.professorId!,
-      language: i18n.language,
-    },
-    {
-      enabled: lab?.lab?.professorId !== undefined,
-    },
+  const { data: professor } = useQuery(
+    trpc.content.getProfessor.queryOptions(
+      {
+        professorId: lab?.lab?.professorId!,
+        language: i18n.language,
+      },
+      {
+        enabled: lab?.lab?.professorId !== undefined,
+      },
+    ),
   );
 
   const lastSession = lab?.sessions?.at(0);

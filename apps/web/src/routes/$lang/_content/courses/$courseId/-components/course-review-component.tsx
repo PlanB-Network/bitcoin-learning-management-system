@@ -24,6 +24,7 @@ import {
   customToast,
 } from '@blms/ui';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
@@ -60,15 +61,16 @@ export function CourseReviewComponent({
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const { data: fetchedCourseReview, isFetched: isReviewFetched } =
-    trpc.user.courses.getCourseReview.useQuery(
+  const { data: fetchedCourseReview, isFetched: isReviewFetched } = useQuery(
+    trpc.user.courses.getCourseReview.queryOptions(
       {
         courseId: chapter?.courseId || courseId || '',
       },
       {
         enabled: !formDisabled && !!(chapter || courseId) && !existingReview,
       },
-    );
+    ),
+  );
 
   const previousCourseReview = existingReview || fetchedCourseReview;
 
@@ -80,13 +82,15 @@ export function CourseReviewComponent({
     }
   }, [isReviewFetched, previousCourseReview, formDisabled]);
 
-  const saveCourseReview = trpc.user.courses.saveCourseReview.useMutation({
-    onSuccess: () => {
-      if (isConclusionReview && onReviewSuccess) {
-        onReviewSuccess();
-      }
-    },
-  });
+  const saveCourseReview = useMutation(
+    trpc.user.courses.saveCourseReview.mutationOptions({
+      onSuccess: () => {
+        if (isConclusionReview && onReviewSuccess) {
+          onReviewSuccess();
+        }
+      },
+    }),
+  );
 
   const {
     open: openAuthModal,

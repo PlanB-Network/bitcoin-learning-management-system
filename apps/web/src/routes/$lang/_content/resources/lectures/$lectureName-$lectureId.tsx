@@ -28,6 +28,7 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 
 import type { JoinedEvent } from '@blms/types';
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { LectureCard } from '../-components/cards/lecture-card.js';
@@ -68,27 +69,31 @@ function Lecture() {
     data: lecture,
     refetch: refetchLecture,
     isFetched,
-  } = trpc.content.getLecture.useQuery({
-    strId: params.lectureId,
-    language: i18n.language ?? 'en',
-  });
+  } = useQuery(
+    trpc.content.getLecture.queryOptions({
+      strId: params.lectureId,
+      language: i18n.language ?? 'en',
+    }),
+  );
 
   const relatedCourse = courses?.find(
     (course) => course.id === lecture?.courseRelated,
   );
 
-  const { data: eventPayments, refetch: refetchEventPayments } =
-    trpc.user.events.getEventPayment.useQuery(undefined, {
+  const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
+    trpc.user.events.getEventPayment.queryOptions(undefined, {
       enabled: !!lecture,
-    });
+    }),
+  );
 
   const eventPayment = eventPayments?.find(
     (payment) =>
       payment.paymentStatus === 'paid' && payment.eventId === lecture?.id,
   );
 
-  const { data: suggestedLectures, isFetched: isFetchedSuggested } =
-    trpc.content.getLectures.useQuery({});
+  const { data: suggestedLectures, isFetched: isFetchedSuggested } = useQuery(
+    trpc.content.getLectures.queryOptions({}),
+  );
 
   const navigate = useNavigate();
 

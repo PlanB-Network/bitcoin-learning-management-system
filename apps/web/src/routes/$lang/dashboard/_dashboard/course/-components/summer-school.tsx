@@ -1,4 +1,5 @@
 import { CollapsibleDropdown, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -7,10 +8,11 @@ export const SummerSchool = ({
 }: {
   courseId: string;
 }) => {
-  const { data: userProgress, isFetched: userProgressFetched } =
-    trpc.user.courses.getProgress.useQuery({
+  const { data: userProgress, isFetched: userProgressFetched } = useQuery(
+    trpc.user.courses.getProgress.queryOptions({
       courseId,
-    });
+    }),
+  );
 
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">

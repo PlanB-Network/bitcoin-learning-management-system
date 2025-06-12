@@ -13,6 +13,7 @@ import { AppContext } from '#src/providers/context.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { CurrentEvents } from './-components/current-events.tsx';
 import { EventBookModal } from './-components/event-book-modal.tsx';
@@ -41,20 +42,23 @@ function Events() {
     refetchOnReconnect: false,
   };
 
-  const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery(
-    undefined,
-    queryOpts,
+  const { data: events, isFetched } = useQuery(
+    trpc.content.getRecentEvents.queryOptions(undefined, queryOpts),
   );
-  const { data: eventPayments, refetch: refetchEventPayments } =
-    trpc.user.events.getEventPayment.useQuery(undefined, {
+
+  const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
+    trpc.user.events.getEventPayment.queryOptions(undefined, {
       ...queryOpts,
       enabled: isLoggedIn,
-    });
-  const { data: userEvents, refetch: refetchUserEvents } =
-    trpc.user.events.getUserEvents.useQuery(undefined, {
+    }),
+  );
+
+  const { data: userEvents, refetch: refetchUserEvents } = useQuery(
+    trpc.user.events.getUserEvents.queryOptions(undefined, {
       ...queryOpts,
       enabled: isLoggedIn,
-    });
+    }),
+  );
 
   const [paymentModalData, setPaymentModalData] =
     useState<PaymentModalDataModel>({

@@ -6,6 +6,7 @@ import { FiLoader } from 'react-icons/fi';
 import type { CheckoutData, JoinedEvent } from '@blms/types';
 import { Button } from '@blms/ui';
 
+import { useMutation } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
@@ -29,8 +30,9 @@ export const ModalPaymentSuccess = ({
 }: ModalPaymentSuccessProps) => {
   const { user } = useContext(AppContext);
 
-  const { mutateAsync: downloadTicketAsync, isPending } =
-    trpc.user.events.downloadEventTicket.useMutation();
+  const { mutateAsync: downloadTicketAsync, isPending } = useMutation(
+    trpc.user.events.downloadEventTicket.mutationOptions(),
+  );
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { NotificationType } from '@blms/constants';
 import type { JoinedUserNotification } from '@blms/types';
 import { Button, Checkbox, Label, Loader, Switch, TextTag, cn } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
@@ -49,12 +50,13 @@ const NotificationsTable = () => {
   const { userNotifications, fetchUserNotifications } =
     useContext(NotificationsContext);
 
-  const markNotificationsAsRead =
-    trpc.user.notifications.markUserNotificationsAsRead.useMutation({
+  const markNotificationsAsRead = useMutation(
+    trpc.user.notifications.markUserNotificationsAsRead.mutationOptions({
       onSuccess: () => {
         fetchUserNotifications();
       },
-    });
+    }),
+  );
 
   const [notifications, setNotifications] = useState<JoinedUserNotification[]>(
     [],
@@ -484,18 +486,22 @@ export const getNotificationContent = (
 ) => {
   const { i18n } = useTranslation();
 
-  const { data: chapter } = trpc.content.getCourseChapter.useQuery(
-    { language: i18n.language, chapterId: chapterId ?? '' },
-    {
-      enabled: !!chapterId,
-    },
+  const { data: chapter } = useQuery(
+    trpc.content.getCourseChapter.queryOptions(
+      { language: i18n.language, chapterId: chapterId ?? '' },
+      {
+        enabled: !!chapterId,
+      },
+    ),
   );
 
-  const { data: event } = trpc.content.getEvent.useQuery(
-    { id: eventId ?? '' },
-    {
-      enabled: !!eventId,
-    },
+  const { data: event } = useQuery(
+    trpc.content.getEvent.queryOptions(
+      { id: eventId ?? '' },
+      {
+        enabled: !!eventId,
+      },
+    ),
   );
 
   const blog = useContext(AppContext).blogs?.find((blog) => blog.id === blogId);

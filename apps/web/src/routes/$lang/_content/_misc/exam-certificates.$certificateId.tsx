@@ -7,6 +7,7 @@ import { z } from 'zod';
 import type { JoinedCourse } from '@blms/types';
 import { Button, Loader } from '@blms/ui';
 
+import { useQuery } from '@tanstack/react-query';
 import CircuitLeft from '#src/assets/certificates/circuit-left.svg';
 import CircuitRight from '#src/assets/certificates/circuit-right.svg';
 import { PageLayout } from '#src/components/page-layout.js';
@@ -36,10 +37,11 @@ function Certificate() {
   const { courses } = useContext(AppContext);
   const params = Route.useParams();
 
-  const { data: userDetails, isFetched } =
-    trpc.user.courses.getUserDetailsByCertificateId.useQuery({
+  const { data: userDetails, isFetched } = useQuery(
+    trpc.user.courses.getUserDetailsByCertificateId.queryOptions({
       certificateId: params.certificateId,
-    });
+    }),
+  );
 
   if (!isFetched) {
     return <Loader size="s" />;

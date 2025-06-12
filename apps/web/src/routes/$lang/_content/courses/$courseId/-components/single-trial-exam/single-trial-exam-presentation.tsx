@@ -8,6 +8,7 @@ import {
   Divider,
   Loader,
 } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { Trans } from 'react-i18next';
@@ -45,11 +46,15 @@ export const SingleTrialExamPresentation = ({
     close: onCloseDisplayNameModal,
   } = useDisclosure();
 
-  const startExamAttempt = trpc.user.courses.startExamAttempt.useMutation();
-  const { data: examInfo, isFetched } = trpc.user.courses.getExamInfo.useQuery({
-    chapterId: chapter.chapterId,
-    language: chapter.language,
-  });
+  const startExamAttempt = useMutation(
+    trpc.user.courses.startExamAttempt.mutationOptions(),
+  );
+  const { data: examInfo, isFetched } = useQuery(
+    trpc.user.courses.getExamInfo.queryOptions({
+      chapterId: chapter.chapterId,
+      language: chapter.language,
+    }),
+  );
 
   const now = new Date();
   const isExamEnabled =

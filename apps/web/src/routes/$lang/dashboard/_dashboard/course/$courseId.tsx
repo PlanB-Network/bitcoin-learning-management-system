@@ -1,4 +1,5 @@
 import { Tabs, TabsContent, TabsListUnderlined, TextTag } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useLocation } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
@@ -32,14 +33,16 @@ function DashboardStudentCourse() {
   const params = Route.useParams();
 
   const location = useLocation();
-  const { data: course, isFetched } = trpc.content.getCourse.useQuery(
-    {
-      id: params.courseId,
-      language: i18n.language,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: course, isFetched } = useQuery(
+    trpc.content.getCourse.queryOptions(
+      {
+        id: params.courseId,
+        language: i18n.language,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   const reviewChapterId =

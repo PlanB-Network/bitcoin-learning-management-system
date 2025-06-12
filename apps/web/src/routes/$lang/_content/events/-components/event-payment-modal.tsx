@@ -19,6 +19,7 @@ import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
@@ -49,15 +50,15 @@ export const EventPaymentModal = ({
 
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
-  const saveEventPaymentRequest = trpc.user.events.saveEventPayment.useMutation(
-    {
+  const saveEventPaymentRequest = useMutation(
+    trpc.user.events.saveEventPayment.mutationOptions({
       onError() {
         setCheckoutError(t('courses.payment.checkoutError'));
       },
-    },
+    }),
   );
 
-  const { data: config } = trpc.auth.config.useQuery();
+  const { data: config } = useQuery(trpc.auth.config.queryOptions());
 
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
   const [checkoutData, setCheckoutData] = useState<CheckoutData>();

@@ -22,6 +22,7 @@ import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Trans } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { FaTelegram } from 'react-icons/fa6';
@@ -66,16 +67,20 @@ export const Assignment = ({
     data: userProgress,
     refetch: refetchUserProgress,
     isFetched: userProgressFetched,
-  } = trpc.user.courses.getProgress.useQuery({
-    courseId,
-  });
+  } = useQuery(
+    trpc.user.courses.getProgress.queryOptions({
+      courseId,
+    }),
+  );
 
-  const { data: assignments } = trpc.content.getCourseAssignments.useQuery({
-    courseId,
-  });
+  const { data: assignments } = useQuery(
+    trpc.content.getCourseAssignments.queryOptions({
+      courseId,
+    }),
+  );
 
-  const saveAssignments =
-    trpc.user.courses.saveCourseAssignmentsOrder.useMutation({
+  const saveAssignments = useMutation(
+    trpc.user.courses.saveCourseAssignmentsOrder.mutationOptions({
       onSuccess: () => {
         refetchUserProgress();
         customToast(t('dashboard.course.listSaved'), {
@@ -90,14 +95,16 @@ export const Assignment = ({
           behavior: 'smooth',
         });
       },
-    });
+    }),
+  );
 
-  const saveSubmissionDate =
-    trpc.user.courses.saveCourseAssignmentSubmissionTime.useMutation({
+  const saveSubmissionDate = useMutation(
+    trpc.user.courses.saveCourseAssignmentSubmissionTime.mutationOptions({
       onSuccess: () => {
         refetchUserProgress();
       },
-    });
+    }),
+  );
 
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [draggedOverIndex, setDraggedOverIndex] = useState<number | null>(null);

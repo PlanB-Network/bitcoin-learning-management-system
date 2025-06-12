@@ -25,6 +25,7 @@ import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { CourseReviewComponent } from '../course-review-component.tsx';
@@ -50,25 +51,30 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   const [isCourseReviewSkipped, setIsCourseReviewSkipped] = useState(false);
   const [isCourseExamSkipped, setIsCourseExamSkipped] = useState(false);
 
-  const { data: course } = trpc.content.getCourse.useQuery({
-    id: chapter.courseId,
-    language: i18n.language,
-  });
+  const { data: course } = useQuery(
+    trpc.content.getCourse.queryOptions({
+      id: chapter.courseId,
+      language: i18n.language,
+    }),
+  );
 
-  const { data: courseProgress, refetch: refetchCourseProgress } =
-    trpc.user.courses.getProgress.useQuery(
+  const { data: courseProgress, refetch: refetchCourseProgress } = useQuery(
+    trpc.user.courses.getProgress.queryOptions(
       {
         courseId: course?.id ?? '',
       },
       {
         enabled: course !== undefined && !!session?.user,
       },
-    );
+    ),
+  );
 
-  const { data: courseChapters } = trpc.content.getCourseChapters.useQuery({
-    id: chapter.courseId,
-    language: i18n.language,
-  });
+  const { data: courseChapters } = useQuery(
+    trpc.content.getCourseChapters.queryOptions({
+      id: chapter.courseId,
+      language: i18n.language,
+    }),
+  );
 
   const examChapterId = courseChapters?.find((c) => c.isCourseExam)?.chapterId;
   const reviewChapterId = courseChapters?.find(
@@ -76,34 +82,39 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   )?.chapterId;
   const conclusionChapter = courseChapters?.find((c) => c.isCourseConclusion);
 
-  const completeAllChaptersMutation =
-    trpc.user.courses.completeAllChapters.useMutation({
+  const completeAllChaptersMutation = useMutation(
+    trpc.user.courses.completeAllChapters.mutationOptions({
       onSuccess: () => {
         refetchCourseProgress();
       },
-    });
-
-  const { data: courseReview } = trpc.user.courses.getCourseReview.useQuery(
-    {
-      courseId: course?.id || '',
-    },
-    {
-      enabled: step >= 1,
-    },
+    }),
   );
 
-  const { data: previousExamResults } =
-    trpc.user.courses.getLatestExamResults.useQuery(
+  const { data: courseReview } = useQuery(
+    trpc.user.courses.getCourseReview.queryOptions(
+      {
+        courseId: course?.id || '',
+      },
+      {
+        enabled: step >= 1,
+      },
+    ),
+  );
+
+  const { data: previousExamResults } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions(
       {
         courseId: chapter.courseId,
       },
       {
         enabled: step >= 2,
       },
-    );
+    ),
+  );
 
-  const completeChapterMutation =
-    trpc.user.courses.completeChapter.useMutation();
+  const completeChapterMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
 
   const completedChapters = courseProgress?.[0]?.chapters;
 

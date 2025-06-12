@@ -16,6 +16,7 @@ import {
   Input,
 } from '@blms/ui';
 
+import { useMutation } from '@tanstack/react-query';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -39,9 +40,11 @@ export const ChangeDisplayNameModal = ({
 
   type ChangeDisplayNameForm = z.infer<typeof changeDisplayNameSchema>;
 
-  const changeDisplayName = trpc.user.changeDisplayName.useMutation({
-    onSuccess: onClose,
-  });
+  const changeDisplayName = useMutation(
+    trpc.user.changeDisplayName.mutationOptions({
+      onSuccess: onClose,
+    }),
+  );
 
   const form = useForm({
     resolver: zodResolver(changeDisplayNameSchema),

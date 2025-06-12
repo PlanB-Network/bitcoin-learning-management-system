@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { UserInfo } from './components/UserInfo';
+import { UserInfo } from './components/UserInfo.tsx';
 import logo from './logo.svg';
-import { AppContextProvider } from './providers/context';
-import { TRPCProvider, trpcClient } from './utils/trpc';
+import { AppContextProvider } from './providers/context.tsx';
+import { TRPCProvider, trpcClient } from './utils/trpc.ts';
 
 function App() {
   const queryClient = new QueryClient({

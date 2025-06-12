@@ -5,6 +5,7 @@ import { t } from 'i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -25,13 +26,16 @@ function AdminCareers() {
   const [sortingOrder, setSortingOrder] = useState<'asc' | 'desc'>('desc');
   const [maxShownProfiles, setMaxShownProfiles] = useState(10);
 
-  const { data: careerProfiles, isFetched: isCareerProfilesFetched } =
-    trpc.user.career.getCareerProfiles.useQuery();
+  const { data: careerProfiles, isFetched: isCareerProfilesFetched } = useQuery(
+    trpc.user.career.getCareerProfiles.queryOptions(),
+  );
 
-  const { data: languages, isFetched: isLanguagesFetched } =
-    trpc.user.career.getLanguages.useQuery();
-  const { data: jobTitles, isFetched: isJobTitlesFetched } =
-    trpc.user.career.getJobTitles.useQuery();
+  const { data: languages, isFetched: isLanguagesFetched } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
+  const { data: jobTitles, isFetched: isJobTitlesFetched } = useQuery(
+    trpc.user.career.getJobTitles.queryOptions(),
+  );
 
   useEffect(() => {
     if (careerProfiles) {

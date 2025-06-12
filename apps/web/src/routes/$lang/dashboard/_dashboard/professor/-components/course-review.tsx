@@ -8,20 +8,22 @@ import {
   StarRating,
   TextTag,
 } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useState } from 'react';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseReview = ({ courseId }: { courseId: string }) => {
-  const { data: reviews, isFetched } =
-    trpc.content.getTeacherCourseReviews.useQuery(
+  const { data: reviews, isFetched } = useQuery(
+    trpc.content.getTeacherCourseReviews.queryOptions(
       {
         courseId: courseId,
       },
       {
         staleTime: 300_000, // 5 minutes
       },
-    );
+    ),
+  );
 
   return (
     <section className="flex flex-col mt-6 lg:mt-10">

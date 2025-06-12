@@ -6,6 +6,7 @@ import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { CourseTableMobile } from './-components/course-table-mobile.tsx';
 import { CourseTable } from './-components/course-table.tsx';
 
@@ -18,7 +19,9 @@ function DashboardCourses() {
   const navigate = useNavigate();
   const { session, courses } = useContext(AppContext);
 
-  const { data: progress } = trpc.user.courses.getProgress.useQuery();
+  const { data: progress } = useQuery(
+    trpc.user.courses.getProgress.queryOptions(),
+  );
 
   const filteredCourses = courses
     ? courses.filter((course) => {

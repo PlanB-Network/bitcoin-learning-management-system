@@ -1,4 +1,5 @@
 import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import type React from 'react';
 import { ReactPlayer } from '#src/components/react-player.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -17,14 +18,16 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
     data: video,
     isLoading,
     error,
-  } = trpc.content.getVideo.useQuery(
-    {
-      id: videoId,
-      language: language,
-    },
-    {
-      enabled: !!videoId,
-    },
+  } = useQuery(
+    trpc.content.getVideo.queryOptions(
+      {
+        id: videoId,
+        language: language,
+      },
+      {
+        enabled: !!videoId,
+      },
+    ),
   );
 
   if (isLoading) {

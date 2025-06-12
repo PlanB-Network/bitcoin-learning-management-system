@@ -9,6 +9,7 @@ import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-sato
 import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { ButtonWithArrow, DividerSimple } from '@blms/ui';
 
+import { useQuery } from '@tanstack/react-query';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
@@ -121,10 +122,13 @@ const Professor = ({
 const Credits = ({ course }: { course: CourseResponse }) => {
   const { i18n } = useTranslation();
 
-  const { data: proofreading } = trpc.content.getProofreading.useQuery({
-    language: i18n.language,
-    courseId: course.id,
-  });
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions({
+      language: i18n.language,
+      courseId: course.id,
+    }),
+  );
+
   const isOriginalLanguage = i18n.language === course.originalLanguage;
   if (!proofreading) {
     return null;

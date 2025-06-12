@@ -10,6 +10,7 @@ import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
@@ -24,8 +25,9 @@ function YoutubeChannels() {
   const isScreenMd = useGreater('md');
   const [showLocalOnly, setShowLocalOnly] = useState(true);
 
-  const { data: youtubeChannels, isFetched } =
-    trpc.content.getYoutubeChannels.useQuery({}, { staleTime: 300_000 });
+  const { data: youtubeChannels, isFetched } = useQuery(
+    trpc.content.getYoutubeChannels.queryOptions({}, { staleTime: 300_000 }),
+  );
 
   const localYoutubeChannels =
     youtubeChannels?.filter(

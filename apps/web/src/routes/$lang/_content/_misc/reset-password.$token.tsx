@@ -5,6 +5,7 @@ import { z } from 'zod';
 
 import { Button, Input } from '@blms/ui';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { MainLayout } from '#src/components/main-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -43,9 +44,11 @@ function ResetPasswordPage() {
   const [pageState, setPageState] = useState<PageState>(PageState.CHECKING);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
 
-  const { data: tokenInfo, isFetched } = trpc.user.tokenInfo.useQuery({
-    token,
-  });
+  const { data: tokenInfo, isFetched } = useQuery(
+    trpc.user.tokenInfo.queryOptions({
+      token,
+    }),
+  );
 
   console.log('Token info:', tokenInfo);
 
@@ -69,14 +72,16 @@ function ResetPasswordPage() {
   }, [tokenInfo, isFetched]);
 
   // Call the API to validate the email change
-  const sendNewPassword = trpc.user.resetPassword.useMutation({
-    onSuccess: () => {
-      setPageState(PageState.SUCCESS);
-    },
-    onError: () => {
-      setPageState(PageState.ERROR);
-    },
-  });
+  const sendNewPassword = useMutation(
+    trpc.user.resetPassword.mutationOptions({
+      onSuccess: () => {
+        setPageState(PageState.SUCCESS);
+      },
+      onError: () => {
+        setPageState(PageState.ERROR);
+      },
+    }),
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

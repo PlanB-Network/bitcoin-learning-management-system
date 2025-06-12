@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { z } from 'zod';
 
 import { Button } from '@blms/ui';
+import { useMutation } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { MainLayout } from '#src/components/main-layout.js';
 import { AppContext } from '#src/providers/context.js';
@@ -46,22 +47,24 @@ function ValidateEmailChangePage() {
   const hasValidated = useRef(false);
 
   // Call the API to validate the email change
-  const validateEmailChange = trpc.user.validateEmailChange.useMutation({
-    onSuccess: ({ email }) => {
-      if (email) {
-        setEmail(email);
-        setValidationStatus(ValidationStatus.SUCCESS);
-        if (user) {
-          setUser({ ...user, email });
+  const validateEmailChange = useMutation(
+    trpc.user.validateEmailChange.mutationOptions({
+      onSuccess: ({ email }) => {
+        if (email) {
+          setEmail(email);
+          setValidationStatus(ValidationStatus.SUCCESS);
+          if (user) {
+            setUser({ ...user, email });
+          }
+        } else {
+          setValidationStatus(ValidationStatus.ERROR);
         }
-      } else {
+      },
+      onError: () => {
         setValidationStatus(ValidationStatus.ERROR);
-      }
-    },
-    onError: () => {
-      setValidationStatus(ValidationStatus.ERROR);
-    },
-  });
+      },
+    }),
+  );
 
   useEffect(() => {
     if (!hasValidated.current) {

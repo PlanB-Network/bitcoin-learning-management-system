@@ -4,6 +4,7 @@ import { FiLoader } from 'react-icons/fi';
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import { Button } from '@blms/ui';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { formatDate, formatHourRange } from '#src/utils/date.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
@@ -20,10 +21,11 @@ export const ModalBookSuccess = ({
   chapter,
   onClose,
 }: ModalBookSuccessProps) => {
-  const { mutateAsync: downloadTicketMutateAsync, isPending } =
-    trpc.user.courses.downloadChapterTicket.useMutation();
+  const { mutateAsync: downloadTicketMutateAsync, isPending } = useMutation(
+    trpc.user.courses.downloadChapterTicket.mutationOptions(),
+  );
 
-  const { data: user } = trpc.user.getDetails.useQuery();
+  const { data: user } = useQuery(trpc.user.getDetails.queryOptions());
 
   const timezone = chapter.timezone ? chapter.timezone : undefined;
   const formattedStartDate = chapter.startDate

@@ -12,6 +12,7 @@ import {
 import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useMutation } from '@tanstack/react-query';
 import { ModalBookDescription } from './modal-book-description.tsx';
 import { ModalBookSuccess } from './modal-book-success.tsx';
 import { ModalBookSummary } from './modal-book-summary.tsx';
@@ -33,8 +34,9 @@ export const CourseBookModal = ({
 }: CourseBookModalProps) => {
   const { t } = useTranslation();
 
-  const saveUserChapterRequest =
-    trpc.user.courses.saveUserChapter.useMutation();
+  const saveUserChapterRequest = useMutation(
+    trpc.user.courses.saveUserChapter.mutationOptions(),
+  );
 
   const [isCourseBooked, setIsCourseBooked] = useState(false);
 

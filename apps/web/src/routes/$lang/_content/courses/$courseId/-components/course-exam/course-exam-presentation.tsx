@@ -7,6 +7,7 @@ import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow, Divider } from '@blms/ui';
 
 import { ExamType } from '@blms/constants';
+import { useMutation } from '@tanstack/react-query';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -42,7 +43,9 @@ export const CourseExamPresentation = ({
     close: onCloseDisplayNameModal,
   } = useDisclosure();
 
-  const startExamAttempt = trpc.user.courses.startExamAttempt.useMutation();
+  const startExamAttempt = useMutation(
+    trpc.user.courses.startExamAttempt.mutationOptions(),
+  );
 
   const isLastChapter =
     chapter.chapterIndex === chapter.part.chapters.length &&

@@ -21,6 +21,7 @@ import { MainLayout } from '#src/components/main-layout.tsx';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import {
   TUTORIALS_CATEGORIES,
   extractSubCategories,
@@ -67,11 +68,12 @@ function TutorialCategory() {
     );
   }, [subCategories]);
 
-  const { data: tutorials, isFetched } =
-    trpc.content.getTutorialsByCategory.useQuery({
+  const { data: tutorials, isFetched } = useQuery(
+    trpc.content.getTutorialsByCategory.queryOptions({
       category,
       language: i18n.language,
-    });
+    }),
+  );
 
   useEffect(() => {
     if (!tutorialCategory) {

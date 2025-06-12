@@ -24,6 +24,7 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
@@ -57,13 +58,16 @@ function Movie() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: movie, isFetched } = trpc.content.getMovie.useQuery({
-    id: params.movieId,
-    language: i18n.language ?? 'en',
-  });
+  const { data: movie, isFetched } = useQuery(
+    trpc.content.getMovie.queryOptions({
+      id: params.movieId,
+      language: i18n.language ?? 'en',
+    }),
+  );
 
-  const { data: suggestedMovies, isFetched: isFetchedSuggested } =
-    trpc.content.getMovies.useQuery({});
+  const { data: suggestedMovies, isFetched: isFetchedSuggested } = useQuery(
+    trpc.content.getMovies.queryOptions({}),
+  );
 
   const isScreenMd = useGreater('sm');
 

@@ -18,6 +18,7 @@ import {
   customToast,
 } from '@blms/ui';
 
+import { useMutation } from '@tanstack/react-query';
 import { ImCheckmark } from 'react-icons/im';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -33,17 +34,20 @@ export const ChangePasswordModal = ({
   onClose,
 }: ChangePasswordModalProps) => {
   const { t } = useTranslation();
-  const changePassword = trpc.user.changePassword.useMutation({
-    onSuccess: () => {
-      customToast(t('auth.passwordChangedSuccess'), {
-        mode: 'light',
-        color: 'success',
-        icon: ImCheckmark,
-        closeButton: true,
-      });
-      onClose();
-    },
-  });
+  const changePassword = useMutation(
+    trpc.user.changePassword.mutationOptions({
+      onSuccess: () => {
+        customToast(t('auth.passwordChangedSuccess'), {
+          mode: 'light',
+          color: 'success',
+          icon: ImCheckmark,
+          closeButton: true,
+        });
+        onClose();
+      },
+    }),
+  );
+
   const passwordsDontMatchMessage = t('auth.passwordsDontMatch');
 
   const changePasswordSchema = z

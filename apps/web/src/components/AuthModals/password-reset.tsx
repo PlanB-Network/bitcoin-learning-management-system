@@ -17,6 +17,7 @@ import {
 import { trpc } from '#src/utils/index.js';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
 import { AuthModalState } from './props.ts';
 
@@ -38,16 +39,18 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const [resetPasswordState, setResetPasswordState] =
     useState<ResetPasswordState>(ResetPasswordState.Initial);
 
-  const resetPassword = trpc.user.requestPasswordReset.useMutation({
-    onSuccess: () => {
-      console.log('Password reset email sent');
-      setResetPasswordState(ResetPasswordState.Sent);
-    },
-    onError: (error) => {
-      console.error('Error sending password reset email:', error);
-      setResetPasswordState(ResetPasswordState.Error);
-    },
-  });
+  const resetPassword = useMutation(
+    trpc.user.requestPasswordReset.mutationOptions({
+      onSuccess: () => {
+        console.log('Password reset email sent');
+        setResetPasswordState(ResetPasswordState.Sent);
+      },
+      onError: (error) => {
+        console.error('Error sending password reset email:', error);
+        setResetPasswordState(ResetPasswordState.Error);
+      },
+    }),
+  );
 
   const passwordResetSchema = z.object({
     email: z.string(),

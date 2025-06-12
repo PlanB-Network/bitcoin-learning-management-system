@@ -10,6 +10,7 @@ import { PageLayout } from '#src/components/page-layout.js';
 import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { FeaturedCard } from '#src/patterns/featured-card.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
@@ -49,10 +50,12 @@ function SingleBlogDetail() {
   const params = Route.useParams();
   const blogId = params.blogId;
 
-  const { data: blog, isFetched } = trpc.content.getBlog.useQuery({
-    id: blogId,
-    language: i18n.language,
-  });
+  const { data: blog, isFetched } = useQuery(
+    trpc.content.getBlog.queryOptions({
+      id: blogId,
+      language: i18n.language,
+    }),
+  );
 
   const navigate = useNavigate();
 

@@ -7,6 +7,7 @@ import { Loader, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BillingSection } from './-components/billing-section.tsx';
 import { BookingPart } from './-components/booking-part.tsx';
@@ -29,11 +30,14 @@ function DashboardBookings() {
     setCurrentTab(value);
   };
 
-  const { data: invoices } = trpc.user.billing.getInvoices.useQuery({
-    language: i18n.language ?? 'en',
-  });
-  const { data: tickets, refetch: refetchTickets } =
-    trpc.user.billing.getTickets.useQuery();
+  const { data: invoices } = useQuery(
+    trpc.user.billing.getInvoices.queryOptions({
+      language: i18n.language ?? 'en',
+    }),
+  );
+  const { data: tickets, refetch: refetchTickets } = useQuery(
+    trpc.user.billing.getTickets.queryOptions(),
+  );
 
   const now = new Date();
 

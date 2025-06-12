@@ -5,30 +5,47 @@ import {
   createRoute,
   createRouter,
 } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import DemoTanstackQuery from './routes/demo.tanstack-query';
-
-import Header from './components/Header';
-
-import TanstackQueryLayout from './integrations/tanstack-query/layout';
-
-import * as TanstackQuery from './integrations/tanstack-query/root-provider';
 
 import './styles.css';
-import reportWebVitals from './reportWebVitals.ts';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './App.tsx';
+import { TRPCProvider, trpcClient } from './utils/trpc.ts';
+
+function makeQueryClient() {
+  return new QueryClient({
+    defaultOptions: {
+      queries: {
+        // With SSR, we usually want to set some default staleTime
+        // above 0 to avoid refetching immediately on the client
+        staleTime: 60 * 1000,
+      },
+    },
+  });
+}
+
+let browserQueryClient: QueryClient | undefined = undefined;
+function getQueryClient() {
+  if (typeof window === 'undefined') {
+    // Server: always make a new query client
+    return makeQueryClient();
+    // biome-ignore lint/style/noUselessElse: <explanation>
+  } else {
+    // Browser: make a new query client if we don't already have one
+    // This is very important, so we don't re-make a new client if React
+    // suspends during the initial render. This may not be needed if we
+    // have a suspense boundary BELOW the creation of the query client
+    if (!browserQueryClient) browserQueryClient = makeQueryClient();
+    return browserQueryClient;
+  }
+}
 
 const rootRoute = createRootRoute({
   component: () => (
     <>
-      <Header />
       <Outlet />
-      <TanStackRouterDevtools />
-
-      <TanstackQueryLayout />
     </>
   ),
 });
@@ -39,20 +56,16 @@ const indexRoute = createRoute({
   component: App,
 });
 
-const routeTree = rootRoute.addChildren([
-  indexRoute,
-  DemoTanstackQuery(rootRoute),
-]);
+const routeTree = rootRoute.addChildren([indexRoute]);
 
-const router = createRouter({
+export const router = createRouter({
   routeTree,
+  defaultPreload: false,
   context: {
-    ...TanstackQuery.getContext(),
+    i18n: undefined,
   },
-  defaultPreload: 'intent',
+  unmaskOnReload: true,
   scrollRestoration: true,
-  defaultStructuralSharing: true,
-  defaultPreloadStaleTime: 0,
 });
 
 declare module '@tanstack/react-router' {
@@ -63,12 +76,15 @@ declare module '@tanstack/react-router' {
 
 const rootElement = document.getElementById('app');
 if (rootElement && !rootElement.innerHTML) {
+  const queryClient = getQueryClient();
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <TanstackQuery.Provider>
-        <RouterProvider router={router} />
-      </TanstackQuery.Provider>
+      <QueryClientProvider client={queryClient}>
+        <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+          <RouterProvider router={router} />
+        </TRPCProvider>
+      </QueryClientProvider>
     </StrictMode>,
   );
 }
@@ -76,4 +92,3 @@ if (rootElement && !rootElement.innerHTML) {
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

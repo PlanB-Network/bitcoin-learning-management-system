@@ -23,6 +23,7 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
@@ -56,13 +57,16 @@ function Podcast() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: podcast, isFetched } = trpc.content.getPodcast.useQuery({
-    id: params.podcastId,
-    language: i18n.language ?? 'en',
-  });
+  const { data: podcast, isFetched } = useQuery(
+    trpc.content.getPodcast.queryOptions({
+      id: params.podcastId,
+      language: i18n.language ?? 'en',
+    }),
+  );
 
-  const { data: suggestedPodcasts, isFetched: isFetchedSuggested } =
-    trpc.content.getPodcasts.useQuery({});
+  const { data: suggestedPodcasts, isFetched: isFetchedSuggested } = useQuery(
+    trpc.content.getPodcasts.queryOptions({}),
+  );
 
   const isScreenMd = useGreater('sm');
 

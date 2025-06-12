@@ -8,6 +8,7 @@ import { LANGUAGES_MAP } from '@blms/shared';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { LectureCard } from '../-components/cards/lecture-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
@@ -21,9 +22,8 @@ function Lectures() {
   const [showLocalOnly, setShowLocalOnly] = useState(true);
   const [showFreeOnly, setShowFreeOnly] = useState(false);
 
-  const { data: lectures, isFetched } = trpc.content.getLectures.useQuery(
-    {},
-    { staleTime: 300_000 },
+  const { data: lectures, isFetched } = useQuery(
+    trpc.content.getLectures.queryOptions({}, { staleTime: 300_000 }),
   );
 
   const localLectures =

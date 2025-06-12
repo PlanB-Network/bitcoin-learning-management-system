@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import spinner from '#src/assets/icons/spinner.svg';
 
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
@@ -78,15 +79,17 @@ export const PaymentDescription = ({
     isLoading,
     isFetched,
     error,
-  } = trpc.content.getCouponCode.useQuery(
-    {
-      code: inputCoupon,
-      itemId: itemId,
-    },
-    {
-      enabled: queryEnabled,
-      staleTime: 0,
-    },
+  } = useQuery(
+    trpc.content.getCouponCode.queryOptions(
+      {
+        code: inputCoupon,
+        itemId: itemId,
+      },
+      {
+        enabled: queryEnabled,
+        staleTime: 0,
+      },
+    ),
   );
 
   useEffect(() => {

@@ -11,6 +11,7 @@ import { trpc } from '#src/utils/trpc.js';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useQuery } from '@tanstack/react-query';
 import { EventCalendar } from './-components/event-calendar.tsx';
 
 type CalenderEventType = 'class' | 'event';
@@ -29,28 +30,30 @@ function DashboardCalendar() {
 
   const courseColor = ['#FF5C00', '#AD3F00'];
 
-  const { data: events } = trpc.user.calendar.getCalendarEvents.useQuery(
-    { upcomingEvents: true, userSpecific: true },
-    {
-      select: (allEvents) =>
-        allEvents
-          ?.filter((e) =>
-            filter.length > 0
-              ? filter.includes(e.type as CalenderEventType)
-              : true,
-          )
-          .map<CalendarEvent>((e) => ({
-            title: e.name,
-            type: e.type,
-            id: e.id,
-            subId: e.subId,
-            addressLine1: e.addressLine1,
-            organizer: e.organizer,
-            start: e.startDate!,
-            end: e.endDate!,
-            isOnline: e.isOnline,
-          })),
-    },
+  const { data: events } = useQuery(
+    trpc.user.calendar.getCalendarEvents.queryOptions(
+      { upcomingEvents: true, userSpecific: true },
+      {
+        select: (allEvents) =>
+          allEvents
+            ?.filter((e) =>
+              filter.length > 0
+                ? filter.includes(e.type as CalenderEventType)
+                : true,
+            )
+            .map<CalendarEvent>((e) => ({
+              title: e.name,
+              type: e.type,
+              id: e.id,
+              subId: e.subId,
+              addressLine1: e.addressLine1,
+              organizer: e.organizer,
+              start: e.startDate!,
+              end: e.endDate!,
+              isOnline: e.isOnline,
+            })),
+      },
+    ),
   );
 
   const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);

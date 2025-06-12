@@ -8,6 +8,7 @@ import { HorizontalCard, Loader, VerticalCard } from '@blms/ui';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
@@ -27,11 +28,13 @@ function Conferences() {
   const [latestPlanBConferences, setLatestPlanBConferences] =
     useState<JoinedConference[]>();
 
-  const { data: conferences, isFetched } = trpc.content.getConferences.useQuery(
-    {},
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: conferences, isFetched } = useQuery(
+    trpc.content.getConferences.queryOptions(
+      {},
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   useEffect(() => {

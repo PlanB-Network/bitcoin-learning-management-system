@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { CourseReviewComponent } from '#src/routes/$lang/_content/courses/$courseId/-components/course-review-component.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -9,10 +10,11 @@ export const CourseRatings = ({
   courseId: string;
   reviewChapterId: string;
 }) => {
-  const { data: previousCourseReview, isFetched: isReviewFetched } =
-    trpc.user.courses.getCourseReview.useQuery({
+  const { data: previousCourseReview, isFetched: isReviewFetched } = useQuery(
+    trpc.user.courses.getCourseReview.queryOptions({
       courseId: courseId,
-    });
+    }),
+  );
 
   return (
     <section className="flex flex-col mt-4 md:mt-10 w-full">

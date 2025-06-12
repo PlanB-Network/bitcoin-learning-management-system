@@ -10,6 +10,7 @@ import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { ProjectCard } from '../-components/cards/project-card.js';
 import { ResourceLayout } from '../-components/resource-layout.js';
 
@@ -21,13 +22,15 @@ function Projects() {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: projects, isFetched } = trpc.content.getProjects.useQuery(
-    {
-      language: i18n.language ?? 'en',
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: projects, isFetched } = useQuery(
+    trpc.content.getProjects.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   const sortedProjects = projects

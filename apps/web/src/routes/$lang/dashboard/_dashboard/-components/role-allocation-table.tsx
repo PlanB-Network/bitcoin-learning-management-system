@@ -27,6 +27,7 @@ import {
 } from '@blms/ui';
 
 import type { FormattedProfessor, UserRoles } from '@blms/types';
+import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
 import { BiPencil } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -69,46 +70,53 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
     hasNextPage,
     fetchNextPage,
     refetch,
-  } = trpc.user.getUsersRoles.useInfiniteQuery(
-    {
-      name: debouncedSearch,
-      role: userRole === UserRole.Student ? undefined : userRole,
-      orderField: sortConfig.key,
-      orderDirection: sortConfig.direction,
-      limit: 50,
-    },
-    {
-      getNextPageParam: (lastPage) => {
-        return lastPage.nextCursor;
+  } = useInfiniteQuery(
+    trpc.user.getUsersRoles.infiniteQueryOptions(
+      {
+        name: debouncedSearch,
+        role: userRole === UserRole.Student ? undefined : userRole,
+        orderField: sortConfig.key,
+        orderDirection: sortConfig.direction,
+        limit: 50,
       },
-    },
+      {
+        getNextPageParam: (lastPage) => {
+          return lastPage.nextCursor;
+        },
+      },
+    ),
   );
 
   const users = usersPages?.pages.flatMap((page) => page.users) || [];
 
-  const { data: professors } = trpc.content.getProfessors.useQuery({
-    language: i18n.language,
-  });
+  const { data: professors } = useQuery(
+    trpc.content.getProfessors.queryOptions({
+      language: i18n.language,
+    }),
+  );
 
-  const { mutate: mutateChangeRole, isPending: isPendingRole } =
-    trpc.user.changeRole.useMutation({
+  const { mutate: mutateChangeRole, isPending: isPendingRole } = useMutation(
+    trpc.user.changeRole.mutationOptions({
       onSuccess: () => {
         refetch();
       },
       onError(error) {
         console.log(error.message);
       },
-    });
+    }),
+  );
 
   const { mutate: mutateChangePermission, isPending: isPendingPermission } =
-    trpc.user.changePermission.useMutation({
-      onSuccess: () => {
-        refetch();
-      },
-      onError(error) {
-        console.log(error.message);
-      },
-    });
+    useMutation(
+      trpc.user.changePermission.mutationOptions({
+        onSuccess: () => {
+          refetch();
+        },
+        onError(error) {
+          console.log(error.message);
+        },
+      }),
+    );
 
   // Reset users and cursor when search or sortConfig changes
   useEffect(() => {

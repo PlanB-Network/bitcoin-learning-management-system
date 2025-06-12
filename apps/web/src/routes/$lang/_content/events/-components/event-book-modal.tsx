@@ -11,6 +11,7 @@ import {
 
 import { trpc } from '#src/utils/trpc.js';
 
+import { useMutation } from '@tanstack/react-query';
 import { ModalBookDescription } from './modal-book-description.tsx';
 import { ModalBookSuccess } from './modal-book-success.tsx';
 import { ModalBookSummary } from './modal-book-summary.tsx';
@@ -29,7 +30,9 @@ export const EventBookModal = ({
   onClose,
 }: EventBookModalProps) => {
   const { t } = useTranslation();
-  const saveUserEventRequest = trpc.user.events.saveUserEvent.useMutation();
+  const saveUserEventRequest = useMutation(
+    trpc.user.events.saveUserEvent.mutationOptions(),
+  );
   const [isEventBooked, setIsEventBooked] = useState(false);
 
   const saveAndDisplaySuccess = useCallback(() => {

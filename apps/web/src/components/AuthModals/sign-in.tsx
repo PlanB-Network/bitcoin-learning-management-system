@@ -18,6 +18,7 @@ import {
 
 import { trpc } from '../../utils/trpc.ts';
 
+import { useMutation } from '@tanstack/react-query';
 import { AuthModalState } from './props.ts';
 
 interface SignInFormData {
@@ -50,26 +51,28 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
     },
   });
 
-  const credentialsLogin = trpc.auth.credentials.login.useMutation({
-    onSuccess: () => {
-      onClose();
-      if (redirectTo) {
-        window.location.href = redirectTo;
-      } else {
-        window.location.reload();
-      }
-    },
-    onError: () => {
-      methods.setError('username', {
-        type: 'manual',
-        message: t('auth.errors.invalidCredentials'),
-      });
-      methods.setError('password', {
-        type: 'manual',
-        message: t('auth.errors.invalidCredentials'),
-      });
-    },
-  });
+  const credentialsLogin = useMutation(
+    trpc.auth.credentials.login.mutationOptions({
+      onSuccess: () => {
+        onClose();
+        if (redirectTo) {
+          window.location.href = redirectTo;
+        } else {
+          window.location.reload();
+        }
+      },
+      onError: () => {
+        methods.setError('username', {
+          type: 'manual',
+          message: t('auth.errors.invalidCredentials'),
+        });
+        methods.setError('password', {
+          type: 'manual',
+          message: t('auth.errors.invalidCredentials'),
+        });
+      },
+    }),
+  );
 
   const handleLogin: SubmitHandler<SignInFormData> = useCallback(
     (values) => {

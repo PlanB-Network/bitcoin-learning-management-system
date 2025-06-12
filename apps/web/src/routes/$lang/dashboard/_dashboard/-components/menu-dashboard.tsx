@@ -26,6 +26,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { Image } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { FaRegBell } from 'react-icons/fa6';
 import { TbBriefcase2 } from 'react-icons/tb';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
@@ -42,9 +43,11 @@ export const MenuDashboard = ({
   const { userNotifications } = useContext(NotificationsContext);
   const [pathname, setPathname] = useState('');
 
-  const { data: courses } = trpc.user.courses.getProgress.useQuery(undefined, {
-    staleTime: 300_000, // 5 minutes
-  });
+  const { data: courses } = useQuery(
+    trpc.user.courses.getProgress.queryOptions(undefined, {
+      staleTime: 300_000, // 5 minutes
+    }),
+  );
 
   // TODO: filter only in progress courses
   const inProgressCourses = courses

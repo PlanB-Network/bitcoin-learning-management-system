@@ -4,6 +4,7 @@ import { z } from 'zod';
 
 import { Button, Loader } from '@blms/ui';
 
+import { useQuery } from '@tanstack/react-query';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { MainLayout } from '#src/components/main-layout.js';
@@ -38,9 +39,11 @@ function EventDetails() {
     isFetched,
     isError,
     error,
-  } = trpc.content.getEvent.useQuery({
-    id: params.eventId,
-  });
+  } = useQuery(
+    trpc.content.getEvent.queryOptions({
+      id: params.eventId,
+    }),
+  );
 
   let videoUrl = '';
   if (event?.replayUrl) {

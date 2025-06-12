@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { LegalMarkdownComponent } from '../../-components/public-communication/legal-markdown.tsx';
 
 export const Route = createFileRoute(
@@ -16,10 +17,12 @@ function LegalContactInformation() {
 
   const name = 'contact';
 
-  const { data: legal, isFetched } = trpc.content.getLegal.useQuery({
-    name,
-    language: i18n.language,
-  });
+  const { data: legal, isFetched } = useQuery(
+    trpc.content.getLegal.queryOptions({
+      name,
+      language: i18n.language,
+    }),
+  );
 
   if (isFetched && !legal) {
     return <div className="text-black">Legal information not found!</div>;

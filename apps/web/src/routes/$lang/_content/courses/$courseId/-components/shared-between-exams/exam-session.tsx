@@ -5,6 +5,7 @@ import { MdTimer } from 'react-icons/md';
 import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
 import { BasicModal, Button, ButtonWithArrow, DialogClose, cn } from '@blms/ui';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
@@ -31,17 +32,20 @@ export const ExamSession = ({
     })),
   );
 
-  const temporarySaveExamAttemptProcedure =
-    trpc.user.courses.temporarySaveExamAttempt.useMutation();
+  const temporarySaveExamAttemptProcedure = useMutation(
+    trpc.user.courses.temporarySaveExamAttempt.mutationOptions(),
+  );
 
-  const completeExamAttempt =
-    trpc.user.courses.completeExamAttempt.useMutation();
+  const completeExamAttempt = useMutation(
+    trpc.user.courses.completeExamAttempt.mutationOptions(),
+  );
 
-  const { data: examResults, isFetched: isExamResultsFetched } =
-    trpc.user.courses.getLatestExamResults.useQuery({
+  const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions({
       courseId: chapter.courseId,
       chapterId: chapter.chapterId,
-    });
+    }),
+  );
 
   // when isExamResultsFetched is true, we need to set the selectedAnswers state with the examResults
   useEffect(() => {

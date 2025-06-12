@@ -11,6 +11,7 @@ import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseRatings } from './-components/course-ratings.tsx';
 import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
@@ -25,7 +26,9 @@ function DashboardCompletedCourses() {
   const isMobile = useSmaller('md');
   const location = useLocation();
 
-  const { data: courses } = trpc.user.courses.getProgress.useQuery();
+  const { data: courses } = useQuery(
+    trpc.user.courses.getProgress.queryOptions(),
+  );
 
   const completedCourses = courses?.filter(
     (course) => course.progressPercentage === 100,
@@ -123,14 +126,16 @@ const CompletedCourseDetails = ({
 }) => {
   const { i18n } = useTranslation();
 
-  const { data: course, isFetched } = trpc.content.getCourse.useQuery(
-    {
-      id: courseId,
-      language: i18n.language,
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: course, isFetched } = useQuery(
+    trpc.content.getCourse.queryOptions(
+      {
+        id: courseId,
+        language: i18n.language,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   const reviewChapterId =
@@ -138,10 +143,11 @@ const CompletedCourseDetails = ({
       .flatMap((part) => part.chapters)
       ?.find((c) => c?.isCourseReview)?.chapterId ?? null;
 
-  const { data: examResults, isFetched: isExamResultsFetched } =
-    trpc.user.courses.getAllUserCourseExamResults.useQuery({
+  const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
+    trpc.user.courses.getAllUserCourseExamResults.queryOptions({
       courseId,
-    });
+    }),
+  );
 
   return (
     <div className="flex flex-col w-full">

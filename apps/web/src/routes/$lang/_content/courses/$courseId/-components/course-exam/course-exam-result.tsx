@@ -14,6 +14,7 @@ import {
 } from '@blms/ui';
 
 import { ExamType } from '@blms/constants';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import FaceFailed from '#src/assets/icons/face_failed.svg';
 import QuestionBelow from '#src/assets/icons/question_below.svg';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
@@ -33,12 +34,15 @@ export const CourseExamResult = ({
 }) => {
   const { i18n } = useTranslation();
 
-  const { data: examResults, isFetched: isExamResultsFetched } =
-    trpc.user.courses.getLatestExamResults.useQuery({
+  const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions({
       courseId: chapter.courseId,
-    });
+    }),
+  );
 
-  const startExamAttempt = trpc.user.courses.startExamAttempt.useMutation();
+  const startExamAttempt = useMutation(
+    trpc.user.courses.startExamAttempt.mutationOptions(),
+  );
 
   async function onStart() {
     await startExamAttempt.mutateAsync({
@@ -359,8 +363,9 @@ const ConcludeButton = ({
   addMarginTop?: boolean;
   hasSkipText?: boolean;
 }) => {
-  const completeChapterMutation =
-    trpc.user.courses.completeChapter.useMutation();
+  const completeChapterMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
 
   const completeChapter = () => {
     if (succeeded) {

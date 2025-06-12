@@ -1,5 +1,6 @@
 import type { ScheduledCourseAnnouncement } from '@blms/types';
 import { BasicModal, Button, DialogClose, TextTag } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { Fragment, useState } from 'react';
 import { BiPencil } from 'react-icons/bi';
@@ -19,8 +20,9 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
   const [announcementToEdit, setAnnouncementToEdit] =
     useState<ScheduledCourseAnnouncement | null>(null);
 
-  const { data: courseAnnouncements, refetch } =
-    trpc.user.notifications.getCourseAnnouncement.useQuery({ courseId });
+  const { data: courseAnnouncements, refetch } = useQuery(
+    trpc.user.notifications.getCourseAnnouncement.queryOptions({ courseId }),
+  );
 
   const publishedCourseAnnouncements = courseAnnouncements
     ?.filter(
@@ -39,12 +41,13 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
     (announcement) => !announcement.isPublished,
   );
 
-  const deleteScheduledCourseAnnouncement =
-    trpc.user.notifications.deleteScheduledCourseAnnouncement.useMutation({
+  const deleteScheduledCourseAnnouncement = useMutation(
+    trpc.user.notifications.deleteScheduledCourseAnnouncement.mutationOptions({
       onSuccess: () => {
         refetch();
       },
-    });
+    }),
+  );
 
   return (
     <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-8 max-w-[900px]">

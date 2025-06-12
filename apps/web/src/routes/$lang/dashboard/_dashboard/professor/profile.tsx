@@ -17,6 +17,7 @@ import Nostr from '#src/assets/icons/nostr.svg?react';
 import { AppContext } from '#src/providers/context.js';
 import { isUUID, resourceImgUrl, trpc } from '#src/utils/index.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MakeModificationBlock } from './-components/make-modification.tsx';
 
@@ -34,14 +35,16 @@ function DashboardProfessorProfile() {
 
   const { user } = useContext(AppContext);
 
-  const { data: professor, isFetched } = trpc.content.getProfessor.useQuery(
-    {
-      professorId: user?.professorId ?? '',
-      language: i18n.language,
-    },
-    {
-      enabled: isUUID(user?.professorId),
-    },
+  const { data: professor, isFetched } = useQuery(
+    trpc.content.getProfessor.queryOptions(
+      {
+        professorId: user?.professorId ?? '',
+        language: i18n.language,
+      },
+      {
+        enabled: isUUID(user?.professorId),
+      },
+    ),
   );
 
   const [currentValue, setCurrentTab] = useState('profile');

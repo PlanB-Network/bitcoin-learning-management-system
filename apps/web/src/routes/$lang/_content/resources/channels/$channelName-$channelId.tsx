@@ -24,6 +24,7 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
@@ -57,13 +58,16 @@ function Channel() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: channel, isFetched } = trpc.content.getYoutubeChannel.useQuery({
-    id: params.channelId,
-    language: i18n.language ?? 'en',
-  });
+  const { data: channel, isFetched } = useQuery(
+    trpc.content.getYoutubeChannel.queryOptions({
+      id: params.channelId,
+      language: i18n.language ?? 'en',
+    }),
+  );
 
-  const { data: suggestedChannels, isFetched: isFetchedSuggested } =
-    trpc.content.getYoutubeChannels.useQuery({});
+  const { data: suggestedChannels, isFetched: isFetchedSuggested } = useQuery(
+    trpc.content.getYoutubeChannels.queryOptions({}),
+  );
 
   const isScreenMd = useGreater('sm');
 

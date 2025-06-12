@@ -1,5 +1,6 @@
 import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { ListItem, cn } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
@@ -25,8 +26,8 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
     'Course ID': course.index.toUpperCase(),
   };
 
-  const { data: courseWithDetails, isFetched } =
-    trpc.content.getCourse.useQuery(
+  const { data: courseWithDetails, isFetched } = useQuery(
+    trpc.content.getCourse.queryOptions(
       {
         id: course.id,
         language: i18n.language,
@@ -34,7 +35,8 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
       {
         staleTime: 300_000, // 5 minutes
       },
-    );
+    ),
+  );
 
   const infoTextClasses =
     'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';

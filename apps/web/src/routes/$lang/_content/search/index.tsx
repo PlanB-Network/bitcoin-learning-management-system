@@ -11,6 +11,7 @@ import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import SearchErrorIcon from '#src/assets/icons/search-error.svg';
 
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import GlossaryMarkdownBody from '#src/components/Markdown/glossary-markdown-body.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
@@ -52,26 +53,30 @@ function SearchPage() {
 
   const [query, setQuery] = useState('');
   const debouncedQuery = useDebounce(query, 200);
-  const search = trpc.content.search.useInfiniteQuery(
-    {
-      query: debouncedQuery,
-      language: i18n.language,
-      categories: [
-        ...(categories.has('all') ? availableCategories : categories),
-      ],
-      surroundingWords: isMobile ? 15 : 20,
-      limit: 20,
-    },
-    {
-      initialCursor: 1,
-      getNextPageParam: (lastPage) => lastPage.nextCursor,
-      enabled: debouncedQuery.length > 0, // Only fetch when query has input
-    },
+  const search = useInfiniteQuery(
+    trpc.content.search.infiniteQueryOptions(
+      {
+        query: debouncedQuery,
+        language: i18n.language,
+        categories: [
+          ...(categories.has('all') ? availableCategories : categories),
+        ],
+        surroundingWords: isMobile ? 15 : 20,
+        limit: 20,
+      },
+      {
+        initialCursor: 1,
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+        enabled: debouncedQuery.length > 0, // Only fetch when query has input
+      },
+    ),
   );
 
-  const { data: glossaryWords } = trpc.content.getGlossaryWords.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: glossaryWords } = useQuery(
+    trpc.content.getGlossaryWords.queryOptions({
+      language: i18n.language ?? 'en',
+    }),
+  );
 
   // Get glossary word if exact match from query
   const glossaryWord = glossaryWords?.find(

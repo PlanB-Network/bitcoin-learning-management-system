@@ -6,6 +6,7 @@ import { Loader } from '@blms/ui';
 
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
 import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
 import { GlossaryList } from '../-components/glossary-list.tsx';
@@ -20,10 +21,11 @@ function Glossary() {
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: glossaryWords, isFetched } =
-    trpc.content.getGlossaryWords.useQuery({
+  const { data: glossaryWords, isFetched } = useQuery(
+    trpc.content.getGlossaryWords.queryOptions({
       language: i18n.language ?? 'en',
-    });
+    }),
+  );
 
   const getRandomWord = () => {
     if (glossaryWords && glossaryWords.length > 0) {

@@ -21,6 +21,7 @@ import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
@@ -63,43 +64,57 @@ function Project() {
 
   const { tutorials, courses } = useContext(AppContext);
 
-  const { data: project, isFetched } = trpc.content.getProject.useQuery(
-    {
-      id: params.projectId,
-      language: i18n.language ?? 'en',
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: project, isFetched } = useQuery(
+    trpc.content.getProject.queryOptions(
+      {
+        id: params.projectId,
+        language: i18n.language ?? 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
-  const { data: communities } = trpc.content.getProjects.useQuery(
-    {
-      language: i18n.language ?? 'en',
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: communities } = useQuery(
+    trpc.content.getProjects.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
-  const { data: events } = trpc.content.getRecentEvents.useQuery();
+  const { data: events } = useQuery(
+    trpc.content.getRecentEvents.queryOptions(),
+  );
 
-  const { data: conferenceReplays } = trpc.content.getConferences.useQuery({
-    projectId: params.projectId,
-  });
+  const { data: conferenceReplays } = useQuery(
+    trpc.content.getConferences.queryOptions({
+      projectId: params.projectId,
+    }),
+  );
 
-  const { data: newsletters } = trpc.content.getNewsletters.useQuery({
-    projectId: params.projectId,
-  });
+  const { data: newsletters } = useQuery(
+    trpc.content.getNewsletters.queryOptions({
+      projectId: params.projectId,
+    }),
+  );
 
-  const { data: youtubeChannels } = trpc.content.getYoutubeChannels.useQuery({
-    projectId: params.projectId,
-  });
+  const { data: youtubeChannels } = useQuery(
+    trpc.content.getYoutubeChannels.queryOptions({
+      projectId: params.projectId,
+    }),
+  );
 
-  const { data: proofreading } = trpc.content.getProofreading.useQuery({
-    language: i18n.language,
-    resourceId: params.projectId,
-  });
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions({
+      language: i18n.language,
+      resourceId: params.projectId,
+    }),
+  );
 
   const filteredCommunities = communities
     ? communities

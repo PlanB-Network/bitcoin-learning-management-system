@@ -9,6 +9,7 @@ import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
@@ -20,13 +21,15 @@ function Books() {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: books, isFetched } = trpc.content.getBooks.useQuery(
-    {
-      language: i18n.language ?? 'en',
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: books, isFetched } = useQuery(
+    trpc.content.getBooks.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   const sortedBooks: JoinedBook[] = books

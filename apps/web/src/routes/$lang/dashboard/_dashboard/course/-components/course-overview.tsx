@@ -5,6 +5,7 @@ import type {
   ScheduledCourseAnnouncement,
 } from '@blms/types';
 import { ButtonWithArrow, Divider, TextTag, cn } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
@@ -23,9 +24,11 @@ import {
 } from '../../notifications.js';
 
 export const CourseOverview = ({ course }: { course: CourseResponse }) => {
-  const { data: courseProgress } = trpc.user.courses.getProgress.useQuery({
-    courseId: course.id,
-  });
+  const { data: courseProgress } = useQuery(
+    trpc.user.courses.getProgress.queryOptions({
+      courseId: course.id,
+    }),
+  );
 
   const completedChapters = courseProgress?.[0]?.chapters ?? [];
 
@@ -169,10 +172,13 @@ const CourseAnnouncements = ({
 }: {
   courseId: string;
 }) => {
-  const { data: publishedCourseAnnouncements } =
-    trpc.user.notifications.getPublishedScheduledCourseAnnouncements.useQuery({
-      courseId,
-    });
+  const { data: publishedCourseAnnouncements } = useQuery(
+    trpc.user.notifications.getPublishedScheduledCourseAnnouncements.queryOptions(
+      {
+        courseId,
+      },
+    ),
+  );
 
   const [courseAnnouncements, setCourseAnnouncements] = useState<
     ScheduledCourseAnnouncement[]
@@ -301,24 +307,26 @@ const CourseCalendar = ({
 }: {
   courseId: string;
 }) => {
-  const { data: events } = trpc.user.calendar.getCalendarEvents.useQuery(
-    { upcomingEvents: true, userSpecific: true },
-    {
-      select: (allEvents) =>
-        allEvents
-          ?.filter((e) => e.id === courseId)
-          .map<CalendarEvent>((e) => ({
-            title: e.name,
-            type: e.type,
-            id: e.id,
-            subId: e.subId,
-            addressLine1: e.addressLine1,
-            organizer: e.organizer,
-            start: e.startDate!,
-            end: e.endDate!,
-            isOnline: e.isOnline,
-          })),
-    },
+  const { data: events } = useQuery(
+    trpc.user.calendar.getCalendarEvents.queryOptions(
+      { upcomingEvents: true, userSpecific: true },
+      {
+        select: (allEvents) =>
+          allEvents
+            ?.filter((e) => e.id === courseId)
+            .map<CalendarEvent>((e) => ({
+              title: e.name,
+              type: e.type,
+              id: e.id,
+              subId: e.subId,
+              addressLine1: e.addressLine1,
+              organizer: e.organizer,
+              start: e.startDate!,
+              end: e.endDate!,
+              isOnline: e.isOnline,
+            })),
+      },
+    ),
   );
 
   return <EventCalendar events={events ?? []} />;

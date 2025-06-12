@@ -1,5 +1,6 @@
 import type { JoinedUserNotification } from '@blms/types';
 import { Popover, PopoverContent, PopoverTrigger, TextTag, cn } from '@blms/ui';
+import { useMutation } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useState } from 'react';
@@ -42,12 +43,13 @@ export const NotificationsPanel = ({
   ).filter((notification) => notification.readDate === null);
   const hasUnreadNotifications = unreadNotifications.length > 0;
 
-  const markNotificationsAsRead =
-    trpc.user.notifications.markUserNotificationsAsRead.useMutation({
+  const markNotificationsAsRead = useMutation(
+    trpc.user.notifications.markUserNotificationsAsRead.mutationOptions({
       onSuccess: () => {
         fetchUserNotifications();
       },
-    });
+    }),
+  );
 
   const handleCloseNotification = (id: string) => {
     markNotificationsAsRead.mutate({ notificationIds: [id] });

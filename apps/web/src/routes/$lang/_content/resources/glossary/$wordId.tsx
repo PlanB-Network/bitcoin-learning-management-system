@@ -10,6 +10,7 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
 import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
 import { GlossaryList } from '../-components/glossary-list.tsx';
@@ -43,24 +44,29 @@ function GlossaryWord() {
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: glossaryWord, isFetched } =
-    trpc.content.getGlossaryWord.useQuery({
+  const { data: glossaryWord, isFetched } = useQuery(
+    trpc.content.getGlossaryWord.queryOptions({
       strId: params.wordId,
       language: i18n.language ?? 'en',
-    });
+    }),
+  );
 
-  const { data: glossaryWords } = trpc.content.getGlossaryWords.useQuery({
-    language: i18n.language ?? 'en',
-  });
+  const { data: glossaryWords } = useQuery(
+    trpc.content.getGlossaryWords.queryOptions({
+      language: i18n.language ?? 'en',
+    }),
+  );
 
-  const { data: proofreading } = trpc.content.getProofreading.useQuery(
-    {
-      language: i18n.language,
-      resourceId: glossaryWord?.id,
-    },
-    {
-      enabled: isFetched,
-    },
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions(
+      {
+        language: i18n.language,
+        resourceId: glossaryWord?.id,
+      },
+      {
+        enabled: isFetched,
+      },
+    ),
   );
 
   const handleLetterSelection = (letter: string) => {

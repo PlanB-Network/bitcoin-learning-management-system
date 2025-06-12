@@ -16,6 +16,7 @@ import {
   Input,
 } from '@blms/ui';
 
+import { useMutation } from '@tanstack/react-query';
 import { trpc } from '#src/utils/trpc.js';
 
 const changeEmailSchema = z.object({
@@ -43,15 +44,17 @@ export const ChangeEmailModal = ({
   onEmailSent,
 }: ChangeEmailModalProps) => {
   const { t } = useTranslation();
-  const changeEmail = trpc.user.changeEmail.useMutation({
-    onSuccess: (data) => {
-      onClose();
-      onEmailSent(data);
-    },
-    onError: (error) => {
-      console.error('Error changing email:', error.message);
-    },
-  });
+  const changeEmail = useMutation(
+    trpc.user.changeEmail.mutationOptions({
+      onSuccess: (data) => {
+        onClose();
+        onEmailSent(data);
+      },
+      onError: (error) => {
+        console.error('Error changing email:', error.message);
+      },
+    }),
+  );
 
   const form = useForm({
     resolver: zodResolver(changeEmailSchema),

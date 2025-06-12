@@ -46,6 +46,7 @@ import {
   CareerRoleLevel,
   JobCategory,
 } from '@blms/constants';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AppContext } from '#src/providers/context.tsx';
 import { BTC402ID } from '#src/utils/courses.ts';
 
@@ -165,35 +166,41 @@ function CareerPortal() {
     data: careerProfile,
     refetch: refetchCareerProfile,
     fetchStatus: isCareerProfileFetching,
-  } = trpc.user.career.getCareerProfile.useQuery();
+  } = useQuery(trpc.user.career.getCareerProfile.queryOptions());
 
   const existingCareerProfile = careerProfile !== null;
   const showLoader = isCareerProfileFetching === 'fetching';
 
-  const createCareerProfile = trpc.user.career.insertCareerProfile.useMutation({
-    onSuccess: async () => {
-      await refetchCareerProfile();
-      setStep(1);
-    },
-  });
+  const createCareerProfile = useMutation(
+    trpc.user.career.insertCareerProfile.mutationOptions({
+      onSuccess: async () => {
+        await refetchCareerProfile();
+        setStep(1);
+      },
+    }),
+  );
 
-  const updateCareerProfile = trpc.user.career.updateCareerProfile.useMutation({
-    onSuccess: async () => {
-      await refetchCareerProfile();
-      if (step < 4) {
-        setStep((prev) => prev + 1);
-      } else {
+  const updateCareerProfile = useMutation(
+    trpc.user.career.updateCareerProfile.mutationOptions({
+      onSuccess: async () => {
+        await refetchCareerProfile();
+        if (step < 4) {
+          setStep((prev) => prev + 1);
+        } else {
+          setStep(0);
+        }
+      },
+    }),
+  );
+
+  const deleteCareerProfile = useMutation(
+    trpc.user.career.deleteCareerProfile.mutationOptions({
+      onSuccess: async () => {
+        await refetchCareerProfile();
         setStep(0);
-      }
-    },
-  });
-
-  const deleteCareerProfile = trpc.user.career.deleteCareerProfile.useMutation({
-    onSuccess: async () => {
-      await refetchCareerProfile();
-      setStep(0);
-    },
-  });
+      },
+    }),
+  );
 
   const getValidatedSteps = () => {
     const values = form.getValues();
@@ -257,12 +264,16 @@ function CareerPortal() {
     }
   };
 
-  const { data: languages } = trpc.user.career.getLanguages.useQuery();
+  const { data: languages } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
   const sortedLanguages = languages
     ? [...languages].sort((a, b) => a.code.localeCompare(b.code))
     : [];
 
-  const { data: jobTitles } = trpc.user.career.getJobTitles.useQuery();
+  const { data: jobTitles } = useQuery(
+    trpc.user.career.getJobTitles.queryOptions(),
+  );
 
   const sortedJobTitles = jobTitles
     ? [...jobTitles].sort((a, b) => {

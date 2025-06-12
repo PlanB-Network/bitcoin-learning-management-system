@@ -38,6 +38,7 @@ import {
   joinWords,
 } from '#src/utils/string.js';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { CourseConclusion } from './$courseId/-components/course-conclusion/course-conclusion.tsx';
 import { CourseExamWorkflow } from './$courseId/-components/course-exam/course-exam-workflow.tsx';
@@ -359,8 +360,9 @@ const Header = ({ chapter }: { chapter: CourseChapterResponse }) => {
 const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
   const { t } = useTranslation();
 
-  const completeChapterMutation =
-    trpc.user.courses.completeChapter.useMutation();
+  const completeChapterMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
 
   const completeChapter = () => {
     completeChapterMutation.mutate({
@@ -480,34 +482,42 @@ function CourseChapter() {
 
   const navigate = useNavigate();
 
-  const { data: chapters } = trpc.content.getCourseChapters.useQuery({
-    id: params.courseId,
-    language: i18n.language,
-  });
+  const { data: chapters } = useQuery(
+    trpc.content.getCourseChapters.queryOptions({
+      id: params.courseId,
+      language: i18n.language,
+    }),
+  );
 
   const {
     data: chapter,
     isFetched,
     isError,
     error,
-  } = trpc.content.getCourseChapter.useQuery({
-    language: i18n.language,
-    chapterId: params.chapterId,
-  });
-
-  const completeChapterAutoMutation =
-    trpc.user.courses.completeChapter.useMutation();
-
-  const { data: proofreading } = trpc.content.getProofreading.useQuery({
-    language: i18n.language,
-    courseId: params.courseId,
-  });
-
-  const { data: quizzArray } =
-    trpc.content.getCourseChapterQuizQuestions.useQuery({
+  } = useQuery(
+    trpc.content.getCourseChapter.queryOptions({
       language: i18n.language,
       chapterId: params.chapterId,
-    });
+    }),
+  );
+
+  const completeChapterAutoMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
+
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions({
+      language: i18n.language,
+      courseId: params.courseId,
+    }),
+  );
+
+  const { data: quizzArray } = useQuery(
+    trpc.content.getCourseChapterQuizQuestions.queryOptions({
+      language: i18n.language,
+      chapterId: params.chapterId,
+    }),
+  );
 
   const questionsArray: Question[] = useMemo(() => {
     if (quizzArray === undefined) {

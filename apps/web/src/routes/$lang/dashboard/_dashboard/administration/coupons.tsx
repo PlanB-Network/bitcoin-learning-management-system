@@ -9,6 +9,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FaSliders } from 'react-icons/fa6';
@@ -53,27 +54,29 @@ function AdminCoupons() {
     }
   };
 
-  const items = trpc.content.listEventsAndCourses.useQuery();
+  const items = useQuery(trpc.content.listEventsAndCourses.queryOptions());
 
   const itemsMap = new Map(items.data?.map((item) => [item.id, item]));
 
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [sortKey, setSortKey] = useState<string | null>(null);
 
-  const coupons = trpc.content.listCouponCodes.useQuery({
-    singleUse:
-      filters.has('singleUse') && filters.has('multiUse')
-        ? null
-        : filters.has('singleUse')
-          ? true
-          : filters.has('multiUse')
-            ? false
-            : null,
-    sortBy: sortKey ?? 'createdAt',
-    sortDirection,
-    limit: 10_000,
-    page,
-  });
+  const coupons = useQuery(
+    trpc.content.listCouponCodes.queryOptions({
+      singleUse:
+        filters.has('singleUse') && filters.has('multiUse')
+          ? null
+          : filters.has('singleUse')
+            ? true
+            : filters.has('multiUse')
+              ? false
+              : null,
+      sortBy: sortKey ?? 'createdAt',
+      sortDirection,
+      limit: 10_000,
+      page,
+    }),
+  );
 
   // Delete modal state
   const [couponToDelete, setCouponToDelete] = useState<CouponCode | null>(null);
@@ -113,20 +116,24 @@ function AdminCoupons() {
   const [preventDoubleClick, setPreventDoubleClick] = useState(false);
 
   // Mutation - create coupon code
-  const createCouponCode = trpc.content.createCouponCode.useMutation({
-    onSuccess: (response) => {
-      console.log('Coupon code created', response);
-      setGeneratedCodes(response.map((coupon) => coupon.code));
-    },
-  });
+  const createCouponCode = useMutation(
+    trpc.content.createCouponCode.mutationOptions({
+      onSuccess: (response) => {
+        console.log('Coupon code created', response);
+        setGeneratedCodes(response.map((coupon) => coupon.code));
+      },
+    }),
+  );
 
   // Mutation - delete coupon code
-  const deleteCouponCode = trpc.content.deleteCouponCode.useMutation({
-    onSuccess: () => {
-      console.log('Coupon code deleted');
-      coupons.refetch();
-    },
-  });
+  const deleteCouponCode = useMutation(
+    trpc.content.deleteCouponCode.mutationOptions({
+      onSuccess: () => {
+        console.log('Coupon code deleted');
+        coupons.refetch();
+      },
+    }),
+  );
 
   // On form submit
   const handleSubmit = () => {

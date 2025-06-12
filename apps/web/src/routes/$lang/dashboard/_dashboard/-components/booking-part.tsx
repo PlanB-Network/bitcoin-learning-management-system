@@ -6,6 +6,7 @@ import { FiLoader } from 'react-icons/fi';
 import type { Ticket } from '@blms/types';
 import { BasicModal, Button, Card, DialogClose } from '@blms/ui';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
@@ -121,19 +122,20 @@ const Buttons = ({
   const { i18n } = useTranslation();
 
   const { mutateAsync: downloadTicketAsync, isPending: isPendingTicket } =
-    trpc.user.events.downloadEventTicket.useMutation();
+    useMutation(trpc.user.events.downloadEventTicket.mutationOptions());
 
   const {
     mutateAsync: downloadTicketMutateAsync,
     isPending: isPendingChapter,
-  } = trpc.user.courses.downloadChapterTicket.useMutation();
+  } = useMutation(trpc.user.courses.downloadChapterTicket.mutationOptions());
 
-  const { mutateAsync: cancelTicket } =
-    trpc.user.billing.cancelTicket.useMutation();
+  const { mutateAsync: cancelTicket } = useMutation(
+    trpc.user.billing.cancelTicket.mutationOptions(),
+  );
 
   // TODO should only fetch on click
-  const { data: chapter, isFetched: isChapterFetched } =
-    trpc.content.getCourseChapter.useQuery(
+  const { data: chapter, isFetched: isChapterFetched } = useQuery(
+    trpc.content.getCourseChapter.queryOptions(
       {
         language: i18n.language,
         chapterId: ticket.eventId,
@@ -141,17 +143,20 @@ const Buttons = ({
       {
         enabled: ticket.type === 'course',
       },
-    );
+    ),
+  );
 
-  const { data: course } = trpc.content.getCourse.useQuery(
-    {
-      language: i18n.language,
-      id: chapter ? chapter.courseId : '',
-    },
-    {
-      enabled: isChapterFetched,
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: course } = useQuery(
+    trpc.content.getCourse.queryOptions(
+      {
+        language: i18n.language,
+        id: chapter ? chapter.courseId : '',
+      },
+      {
+        enabled: isChapterFetched,
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   let timezone: string;

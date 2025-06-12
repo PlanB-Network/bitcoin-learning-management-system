@@ -22,6 +22,7 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 const ConferencesMarkdownBody = React.lazy(
@@ -91,15 +92,19 @@ function Conference() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: conference, isFetched } = trpc.content.getConference.useQuery({
-    id: params.conferenceId,
-    language: i18n.language ?? 'en',
-  });
+  const { data: conference, isFetched } = useQuery(
+    trpc.content.getConference.queryOptions({
+      id: params.conferenceId,
+      language: i18n.language ?? 'en',
+    }),
+  );
 
-  const { data: proofreading } = trpc.content.getProofreading.useQuery({
-    language: i18n.language,
-    resourceId: params.conferenceId,
-  });
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions({
+      language: i18n.language,
+      resourceId: params.conferenceId,
+    }),
+  );
 
   // Get stage and video from URL
   useEffect(() => {

@@ -28,6 +28,7 @@ import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import type { GetTutorialResponse, JoinedProofreading } from '@blms/types';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { TutorialLayout } from '../-components/tutorial-layout.tsx';
@@ -277,10 +278,12 @@ function TutorialDetails() {
   const isLoggedIn = !!session;
 
   // Fetch tutorial data
-  const { data: tutorial, isFetched } = trpc.content.getTutorial.useQuery({
-    id,
-    language: i18n.language,
-  });
+  const { data: tutorial, isFetched } = useQuery(
+    trpc.content.getTutorial.queryOptions({
+      id,
+      language: i18n.language,
+    }),
+  );
 
   // Rewrite URL
   useEffect(() => {
@@ -305,39 +308,47 @@ function TutorialDetails() {
   ]);
 
   // Fetch existing like/dislike status
-  const { data: existingLike } =
-    trpc.user.tutorials.getExistingLikeTutorial.useQuery(
+  const { data: existingLike } = useQuery(
+    trpc.user.tutorials.getExistingLikeTutorial.queryOptions(
       {
         id: tutorial?.id || '',
       },
       { enabled: !!tutorial?.id && isLoggedIn },
-    );
+    ),
+  );
 
-  const { data: proofreading } = trpc.content.getProofreading.useQuery(
-    {
-      language: i18n.language,
-      tutorialId: tutorial?.id,
-    },
-    { enabled: !!tutorial?.id },
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions(
+      {
+        language: i18n.language,
+        tutorialId: tutorial?.id,
+      },
+      { enabled: !!tutorial?.id },
+    ),
   );
 
   // Mutation for liking/disliking a tutorial
-  const likeTutorialMutation = trpc.user.tutorials.likeTutorial.useMutation({
-    onSuccess: (_, variables) => {
-      const wasLiked = isLiked.liked;
-      const wasDisliked = isLiked.disliked;
+  const likeTutorialMutation = useMutation(
+    trpc.user.tutorials.likeTutorial.mutationOptions({
+      onSuccess: (_, variables) => {
+        const wasLiked = isLiked.liked;
+        const wasDisliked = isLiked.disliked;
 
-      if ((wasLiked && variables.liked) || (wasDisliked && !variables.liked)) {
-        customToast(t('tutorials.details.ratingSuccess'), {
-          mode: 'light',
-          color: 'success',
-          icon: IoCheckmark,
-          closeButton: true,
-          time: 5000,
-        });
-      }
-    },
-  });
+        if (
+          (wasLiked && variables.liked) ||
+          (wasDisliked && !variables.liked)
+        ) {
+          customToast(t('tutorials.details.ratingSuccess'), {
+            mode: 'light',
+            color: 'success',
+            icon: IoCheckmark,
+            closeButton: true,
+            time: 5000,
+          });
+        }
+      },
+    }),
+  );
 
   // Update tutorial likes when fetched tutorial change
   useEffect(() => {

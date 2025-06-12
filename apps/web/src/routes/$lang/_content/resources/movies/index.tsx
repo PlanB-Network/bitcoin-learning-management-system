@@ -10,6 +10,7 @@ import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
@@ -22,9 +23,8 @@ function Movies() {
   const isMobile = useSmaller('md');
   const [showLocalOnly, setShowLocalOnly] = useState(true);
 
-  const { data: movies, isFetched } = trpc.content.getMovies.useQuery(
-    {},
-    { staleTime: 300_000 },
+  const { data: movies, isFetched } = useQuery(
+    trpc.content.getMovies.queryOptions({}, { staleTime: 300_000 }),
   );
 
   const localMovies =

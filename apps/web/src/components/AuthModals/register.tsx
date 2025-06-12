@@ -20,6 +20,7 @@ import {
 
 import { trpc } from '../../utils/trpc.ts';
 
+import { useMutation } from '@tanstack/react-query';
 import { AuthModalState } from './props.ts';
 
 interface RegisterFormData {
@@ -84,19 +85,21 @@ export const Register = ({
     },
   });
 
-  const register = trpc.auth.credentials.register.useMutation({
-    onSuccess: () => {
-      sessionStorage.setItem('hasJustRegistered', 'true');
+  const register = useMutation(
+    trpc.auth.credentials.register.mutationOptions({
+      onSuccess: () => {
+        sessionStorage.setItem('hasJustRegistered', 'true');
 
-      setTimeout(() => {
-        if (redirectTo) {
-          window.location.href = redirectTo;
-        } else {
-          window.location.reload();
-        }
-      }, 2000);
-    },
-  });
+        setTimeout(() => {
+          if (redirectTo) {
+            window.location.href = redirectTo;
+          } else {
+            window.location.reload();
+          }
+        }, 2000);
+      },
+    }),
+  );
 
   const handleCreateUserAccount: SubmitHandler<RegisterFormData> = useCallback(
     ({ password, username, email }) =>

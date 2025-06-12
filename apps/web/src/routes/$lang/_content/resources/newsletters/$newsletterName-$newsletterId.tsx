@@ -24,6 +24,7 @@ import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
@@ -59,16 +60,20 @@ function NewsletterDetail() {
   const params = Route.useParams();
   const isScreenMd = useGreater('sm');
 
-  const { data: newsletter, isFetched } = trpc.content.getNewsletter.useQuery({
-    id: params.newsletterId,
-    language: i18n.language,
-  });
+  const { data: newsletter, isFetched } = useQuery(
+    trpc.content.getNewsletter.queryOptions({
+      id: params.newsletterId,
+      language: i18n.language,
+    }),
+  );
 
-  const { data: suggestedNewsletters } = trpc.content.getNewsletters.useQuery(
-    {},
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: suggestedNewsletters } = useQuery(
+    trpc.content.getNewsletters.queryOptions(
+      {},
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
   useEffect(() => {

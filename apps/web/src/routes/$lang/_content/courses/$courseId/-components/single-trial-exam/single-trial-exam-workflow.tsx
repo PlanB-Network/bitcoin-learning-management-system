@@ -1,4 +1,5 @@
 import type { CourseChapterResponse } from '@blms/types';
+import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -20,18 +21,20 @@ export const SingleTrialExamWorkflow = ({
     data: previousExamResults,
     isFetched: isPreviousExamResultsFetched,
     refetch: refetchExamResults,
-  } = trpc.user.courses.getLatestExamResults.useQuery(
-    {
-      courseId: chapter.courseId,
-      chapterId: chapter.chapterId,
-    },
-    {
-      enabled: isLoggedIn,
-    },
+  } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions(
+      {
+        courseId: chapter.courseId,
+        chapterId: chapter.chapterId,
+      },
+      {
+        enabled: isLoggedIn,
+      },
+    ),
   );
 
-  const { data: partialExamQuestions } =
-    trpc.user.courses.getExamQuestions.useQuery(
+  const { data: partialExamQuestions } = useQuery(
+    trpc.user.courses.getExamQuestions.queryOptions(
       {
         examId: previousExamResults?.id ?? '',
         language: chapter.course.originalLanguage,
@@ -39,7 +42,8 @@ export const SingleTrialExamWorkflow = ({
       {
         enabled: !!previousExamResults?.id,
       },
-    );
+    ),
+  );
 
   const isExamStarted =
     previousExamResults?.startedAt !== undefined &&

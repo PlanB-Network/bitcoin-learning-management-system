@@ -1,5 +1,6 @@
 import { Button, ButtonWithArrow, Form, customToast } from '@blms/ui';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -26,15 +27,16 @@ function ChangeEmailPreferences() {
     emailNotifications: z.array(z.string()).default([]),
   });
 
-  const { data: emailPreferences, isFetched } =
-    trpc.user.getEmailSettings.useQuery(
+  const { data: emailPreferences, isFetched } = useQuery(
+    trpc.user.getEmailSettings.queryOptions(
       {
         unsubscribeId: params.unsubscribeId,
       },
       {
         enabled: isUUID(params.unsubscribeId),
       },
-    );
+    ),
+  );
 
   const getDefaultEmailNotifications = () => {
     const defaults = [];
@@ -50,21 +52,23 @@ function ChangeEmailPreferences() {
     },
   });
 
-  const changeEmailSettings = trpc.user.changeEmailSettings.useMutation({
-    onSuccess: () => {
-      customToast(
-        t(
-          'dashboard.profile.notificationSettings.emailPreferencesSavedSuccessfully',
-        ),
-        {
-          mode: 'light',
-          icon: MdMarkEmailRead,
-          color: 'success',
-          closeButton: true,
-        },
-      );
-    },
-  });
+  const changeEmailSettings = useMutation(
+    trpc.user.changeEmailSettings.mutationOptions({
+      onSuccess: () => {
+        customToast(
+          t(
+            'dashboard.profile.notificationSettings.emailPreferencesSavedSuccessfully',
+          ),
+          {
+            mode: 'light',
+            icon: MdMarkEmailRead,
+            color: 'success',
+            closeButton: true,
+          },
+        );
+      },
+    }),
+  );
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const mutationPayload = {

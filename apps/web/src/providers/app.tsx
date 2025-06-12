@@ -14,11 +14,8 @@ import { ToastContainer } from '@blms/ui';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { router } from '#src/routes/-router.js';
 import { SITE_NAME } from '#src/utils/meta.js';
-
-import { useTrpc } from '../hooks/index.ts';
+import { TRPCProvider, trpcClient } from '#src/utils/trpc.ts';
 import { LANGUAGES } from '../utils/i18n.ts';
-import { trpc } from '../utils/trpc.ts';
-
 import { AuthModalProvider } from './auth.tsx';
 import { AppContextProvider } from './context.tsx';
 import { ConversionRateProvider } from './conversionRateContext.tsx';
@@ -32,20 +29,50 @@ export const LangContext = createContext<LangContext>({
   setCurrentLanguage: () => {},
 });
 
+function makeQueryClient() {
+  return new QueryClient({
+    defaultOptions: {
+      queries: {
+        // With SSR, we usually want to set some default staleTime
+        // above 0 to avoid refetching immediately on the client
+        staleTime: 60 * 1000,
+      },
+    },
+  });
+}
+
+let browserQueryClient: QueryClient | undefined = undefined;
+function getQueryClient() {
+  if (typeof window === 'undefined') {
+    // Server: always make a new query client
+    return makeQueryClient();
+    // biome-ignore lint/style/noUselessElse: <explanation>
+  } else {
+    // Browser: make a new query client if we don't already have one
+    // This is very important, so we don't re-make a new client if React
+    // suspends during the initial render. This may not be needed if we
+    // have a suspense boundary BELOW the creation of the query client
+    if (!browserQueryClient) browserQueryClient = makeQueryClient();
+    return browserQueryClient;
+  }
+}
+
 export const AppProvider = ({ children }: PropsWithChildren) => {
   const { i18n } = useTranslation();
 
-  const { trpcQueryClient, trpcClient } = useTrpc();
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            retry: 1,
-          },
-        },
-      }),
-  );
+  const queryClient = getQueryClient();
+
+  // const { trpcQueryClient, trpcClient } = useTrpc();
+  // const [queryClient] = useState(
+  //   () =>
+  //     new QueryClient({
+  //       defaultOptions: {
+  //         queries: {
+  //           retry: 1,
+  //         },
+  //       },
+  //     }),
+  // );
 
   const locationLanguage = ((l) =>
     l && (LANGUAGES.includes(l) ? l : undefined))(
@@ -137,12 +164,8 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <HelmetProvider>
-      <trpc.Provider
-        client={trpcClient}
-        // @ts-expect-error TODO: fix this, open issue, idk
-        queryClient={queryClient}
-      >
-        <QueryClientProvider client={trpcQueryClient}>
+      <QueryClientProvider client={queryClient}>
+        <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
           <LangContext.Provider value={{ setCurrentLanguage }}>
             <AppContextProvider>
               <NotificationsProvider>
@@ -162,8 +185,8 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
               </NotificationsProvider>
             </AppContextProvider>
           </LangContext.Provider>
-        </QueryClientProvider>
-      </trpc.Provider>
+        </TRPCProvider>
+      </QueryClientProvider>
     </HelmetProvider>
   );
 };

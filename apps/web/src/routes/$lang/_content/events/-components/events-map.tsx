@@ -35,6 +35,7 @@ import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
+import { useQuery } from '@tanstack/react-query';
 import { EventCard } from './event-card.tsx';
 import ShareModal from './modal-link-sharing.tsx';
 
@@ -225,9 +226,8 @@ const EventsMap = ({
    * Map
    */
 
-  const { data: eventsLocations } = trpc.content.getEventsLocations.useQuery(
-    undefined,
-    queryOpts,
+  const { data: eventsLocations } = useQuery(
+    trpc.content.getEventsLocations.queryOptions(undefined, queryOpts),
   );
 
   const [selectedEventGroup, setSelectedEventGroup] =

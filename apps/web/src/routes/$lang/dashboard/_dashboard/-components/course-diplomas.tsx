@@ -6,6 +6,7 @@ import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 
 import { Button, Card, Loader, cn } from '@blms/ui';
 
+import { useQuery } from '@tanstack/react-query';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -15,10 +16,11 @@ export const CourseDiplomas = () => {
 
   const { session } = useContext(AppContext);
 
-  const { data: examResults, isFetched } =
-    trpc.user.courses.getAllSucceededUserExams.useQuery({
+  const { data: examResults, isFetched } = useQuery(
+    trpc.user.courses.getAllSucceededUserExams.queryOptions({
       language: i18n.language ?? 'en',
-    });
+    }),
+  );
 
   useEffect(() => {
     if (session === null) {

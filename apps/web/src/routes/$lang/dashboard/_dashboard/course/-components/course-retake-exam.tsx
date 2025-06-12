@@ -9,6 +9,7 @@ import { IoReload } from 'react-icons/io5';
 import type { CourseExamResults } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
+import { useQuery } from '@tanstack/react-query';
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
@@ -31,10 +32,11 @@ export const CourseRetakeExam = ({
   examLink: string;
   openLastExam?: boolean;
 }) => {
-  const { data: examResults, isFetched: isExamResultsFetched } =
-    trpc.user.courses.getAllUserCourseExamResults.useQuery({
+  const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
+    trpc.user.courses.getAllUserCourseExamResults.queryOptions({
       courseId,
-    });
+    }),
+  );
 
   return (
     <div className="flex flex-col mt-4 md:mt-10 w-full">

@@ -11,6 +11,7 @@ import { IoReload } from 'react-icons/io5';
 import type { JoinedBCertResults, Ticket } from '@blms/types';
 import { Button, ButtonWithArrow, Loader, cn } from '@blms/ui';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import DummyBCert from '#src/assets/about/dummy-bcert.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
@@ -25,9 +26,13 @@ export const GlobalCertifications = () => {
 
   const { session } = useContext(AppContext);
 
-  const { data: exams } = trpc.user.bcert.getBCertResults.useQuery();
+  const { data: exams } = useQuery(
+    trpc.user.bcert.getBCertResults.queryOptions(),
+  );
 
-  const { data: examTickets } = trpc.user.billing.getExamTickets.useQuery();
+  const { data: examTickets } = useQuery(
+    trpc.user.billing.getExamTickets.queryOptions(),
+  );
 
   const [isExamOpen, setIsExamOpen] = useState<boolean[]>([]);
   const [isTicketOpen, setIsTicketOpen] = useState<boolean[]>([]);
@@ -456,8 +461,9 @@ const ExamTicket = ({
 }) => {
   const isMobile = useSmaller('md');
 
-  const { mutateAsync: downloadTicketAsync, isPending } =
-    trpc.user.events.downloadEventTicket.useMutation();
+  const { mutateAsync: downloadTicketAsync, isPending } = useMutation(
+    trpc.user.events.downloadEventTicket.mutationOptions(),
+  );
   const { user } = useContext(AppContext);
 
   function SeeTicket() {

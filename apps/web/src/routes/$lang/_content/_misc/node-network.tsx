@@ -9,6 +9,7 @@ import { formatNameForURL } from '#src/utils/string.ts';
 
 import { ProjectCard } from '../resources/-components/cards/project-card.js';
 
+import { useQuery } from '@tanstack/react-query';
 import { CommunitiesMap } from './-components/communities-map.tsx';
 
 export const Route = createFileRoute('/$lang/_content/_misc/node-network')({
@@ -25,17 +26,21 @@ const normalizeText = (text: string): string => {
 function NodeNetwork() {
   const { t, i18n } = useTranslation();
 
-  const { data: communities, isFetched } = trpc.content.getProjects.useQuery(
-    {
-      language: i18n.language ?? 'en',
-    },
-    {
-      staleTime: 300_000, // 5 minutes
-    },
+  const { data: communities, isFetched } = useQuery(
+    trpc.content.getProjects.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
   );
 
-  const { data: projectLocations } =
-    trpc.content.getProjectsLocations.useQuery();
+  const { data: projectLocations } = useQuery(
+    trpc.content.getProjectsLocations.queryOptions(),
+  );
+
   const filteredCommunities = communities
     ? communities
         .filter((el) => el.category.toLowerCase() === 'communities')

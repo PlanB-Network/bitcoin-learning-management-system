@@ -13,6 +13,7 @@ import {
   TableRow,
 } from '@blms/ui';
 
+import { useQuery } from '@tanstack/react-query';
 import { formatDate } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -58,11 +59,12 @@ const handleDownload = (
 const BookingTable = () => {
   const { t } = useTranslation();
 
-  const { data: allEvents, isFetched } =
-    trpc.user.calendar.getCalendarEvents.useQuery({
+  const { data: allEvents, isFetched } = useQuery(
+    trpc.user.calendar.getCalendarEvents.queryOptions({
       upcomingEvents: true,
       userSpecific: false,
-    });
+    }),
+  );
 
   const sortedEvents = allEvents
     ?.filter((event) => event.type !== 'conference')
@@ -74,8 +76,9 @@ const BookingTable = () => {
       return dateA - dateB;
     });
 
-  const { data: participantsData, isFetched: isParticipantsFetched } =
-    trpc.user.events.getParticipantsForEvent.useQuery();
+  const { data: participantsData, isFetched: isParticipantsFetched } = useQuery(
+    trpc.user.events.getParticipantsForEvent.queryOptions(),
+  );
 
   if (!isFetched || !isParticipantsFetched) {
     return <Loader size="s" />;

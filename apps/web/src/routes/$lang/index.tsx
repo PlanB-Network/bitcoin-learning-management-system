@@ -40,6 +40,7 @@ import WorldMap from '#src/assets/home/world-map.png?no-inline';
 import { MainLayout } from '../../components/main-layout.tsx';
 import { CourseCard } from '../../patterns/course-card.tsx';
 
+import { useQuery } from '@tanstack/react-query';
 import { AboutUs } from '#src/components/about-us.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { LANGUAGES } from '#src/utils/i18n.ts';
@@ -263,20 +264,26 @@ function Home() {
       refetchOnReconnect: false,
     };
 
-    const { data: event, isFetched } =
-      trpc.content.getUpcomingEvent.useQuery<JoinedEvent>(undefined, queryOpts);
+    const { data: event, isFetched } = useQuery(
+      trpc.content.getUpcomingEvent.queryOptions<JoinedEvent>(
+        undefined,
+        queryOpts,
+      ),
+    );
 
-    const { data: eventPayments, refetch: refetchEventPayments } =
-      trpc.user.events.getEventPayment.useQuery(undefined, {
+    const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
+      trpc.user.events.getEventPayment.queryOptions(undefined, {
         ...queryOpts,
         enabled: isLoggedIn,
-      });
+      }),
+    );
 
-    const { data: userEvents, refetch: refetchUserEvents } =
-      trpc.user.events.getUserEvents.useQuery(undefined, {
+    const { data: userEvents, refetch: refetchUserEvents } = useQuery(
+      trpc.user.events.getUserEvents.queryOptions(undefined, {
         ...queryOpts,
         enabled: isLoggedIn,
-      });
+      }),
+    );
 
     const authMode = AuthModalState.SignIn;
 

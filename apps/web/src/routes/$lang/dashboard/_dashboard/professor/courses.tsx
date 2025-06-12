@@ -20,6 +20,7 @@ import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
 import { canAccess } from '@blms/shared/auth';
+import { useQuery } from '@tanstack/react-query';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseAnnouncements } from './-components/course-announcements.tsx';
 import { CourseAssignment } from './-components/course-assignment.tsx';
@@ -38,8 +39,8 @@ function DashboardProfessorCourses() {
 
   const { session, user } = useContext(AppContext);
 
-  const { data: courses, isFetched } =
-    trpc.content.getProfessorCourses.useQuery(
+  const { data: courses, isFetched } = useQuery(
+    trpc.content.getProfessorCourses.queryOptions(
       {
         coursesId: user?.professorCourses ?? [],
         language: i18n.language,
@@ -48,7 +49,8 @@ function DashboardProfessorCourses() {
         staleTime: 300_000, // 5 minutes
         enabled: user?.role === 'professor',
       },
-    );
+    ),
+  );
 
   useEffect(() => {
     if (!session) {

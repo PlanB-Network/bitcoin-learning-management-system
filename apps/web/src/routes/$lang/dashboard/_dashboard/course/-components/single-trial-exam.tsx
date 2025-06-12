@@ -7,6 +7,7 @@ import {
   DividerVertical,
   Loader,
 } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { BiPencil } from 'react-icons/bi';
@@ -81,17 +82,19 @@ const ExamItem = ({
 }) => {
   if (!exam.startDate || !exam.endDate) return null;
 
-  const { data: examInfo, isFetched: isExamInfoFetched } =
-    trpc.user.courses.getExamInfo.useQuery({
+  const { data: examInfo, isFetched: isExamInfoFetched } = useQuery(
+    trpc.user.courses.getExamInfo.queryOptions({
       chapterId: chapterId,
       language: language,
-    });
+    }),
+  );
 
-  const { data: examResults, isFetched: isExamResultsFetched } =
-    trpc.user.courses.getLatestExamResults.useQuery({
+  const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions({
       courseId: courseId,
       chapterId: chapterId,
-    });
+    }),
+  );
 
   const now = Date.now();
   const isMobile = useSmaller('md');

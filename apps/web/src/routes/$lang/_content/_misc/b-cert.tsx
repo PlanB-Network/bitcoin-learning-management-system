@@ -12,6 +12,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BCertEvents } from './-components/b-cert-events.tsx';
 
+import { useQuery } from '@tanstack/react-query';
 import { MdOutlineEmail } from 'react-icons/md';
 
 export const Route = createFileRoute('/$lang/_content/_misc/b-cert')({
@@ -49,7 +50,9 @@ const BCertOrganize = () => {
 };
 
 function BCert() {
-  const { data: events, isFetched } = trpc.content.getRecentEvents.useQuery();
+  const { data: events, isFetched } = useQuery(
+    trpc.content.getRecentEvents.queryOptions(),
+  );
   const { t } = useTranslation();
 
   const ONE_HOUR = 60 * 60 * 1000;

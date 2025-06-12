@@ -19,6 +19,7 @@ import {
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseBookModal } from './book-modal/course-book-modal.tsx';
 
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { base64ToBlob } from '#src/utils/misc.ts';
 
 interface ClassDetailsProps {
@@ -38,13 +39,15 @@ export const ClassDetails = ({
 
   const { t } = useTranslation();
 
-  const { mutateAsync: downloadTicketMutateAsync, isPending } =
-    trpc.user.courses.downloadChapterTicket.useMutation();
+  const { mutateAsync: downloadTicketMutateAsync, isPending } = useMutation(
+    trpc.user.courses.downloadChapterTicket.mutationOptions(),
+  );
 
-  const { data: userChapters, refetch: refetchUserChapter } =
-    trpc.user.courses.getUserChapter.useQuery({
+  const { data: userChapters, refetch: refetchUserChapter } = useQuery(
+    trpc.user.courses.getUserChapter.queryOptions({
       courseId: course.id,
-    });
+    }),
+  );
 
   const userChapter = userChapters?.find(
     (uc) => uc.chapterId === chapter.chapterId && uc.booked === true,
@@ -52,8 +55,9 @@ export const ClassDetails = ({
 
   const { user } = useContext(AppContext);
 
-  const saveUserChapterRequest =
-    trpc.user.courses.saveUserChapter.useMutation();
+  const saveUserChapterRequest = useMutation(
+    trpc.user.courses.saveUserChapter.mutationOptions(),
+  );
 
   const cancelBooking = useCallback(async () => {
     await saveUserChapterRequest.mutateAsync({

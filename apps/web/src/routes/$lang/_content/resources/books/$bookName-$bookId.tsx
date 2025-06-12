@@ -22,6 +22,7 @@ import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 import { Image } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
@@ -53,21 +54,26 @@ function Book() {
   const params = Route.useParams();
   const { t, i18n } = useTranslation();
 
-  const { data: book, isFetched } = trpc.content.getBook.useQuery({
-    id: params.bookId,
-    language: i18n.language ?? 'en',
-  });
+  const { data: book, isFetched } = useQuery(
+    trpc.content.getBook.queryOptions({
+      id: params.bookId,
+      language: i18n.language ?? 'en',
+    }),
+  );
   const navigate = useNavigate();
 
   const isScreenMd = useGreater('sm');
 
-  const { data: proofreading } = trpc.content.getProofreading.useQuery({
-    language: i18n.language,
-    resourceId: params.bookId,
-  });
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions({
+      language: i18n.language,
+      resourceId: params.bookId,
+    }),
+  );
 
-  const { data: suggestedBooks, isFetched: isFetchedSuggestedBooks } =
-    trpc.content.getBooks.useQuery({});
+  const { data: suggestedBooks, isFetched: isFetchedSuggestedBooks } = useQuery(
+    trpc.content.getBooks.queryOptions({}),
+  );
 
   useEffect(() => {
     if (book && params.bookName !== formatNameForURL(book.title)) {
