@@ -12,6 +12,7 @@ import { CourseOverview } from './-components/course-overview.tsx';
 import { CourseRatings } from './-components/course-ratings.tsx';
 import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
 import { SingleTrialExam } from './-components/single-trial-exam.tsx';
+import { SummerSchool } from './-components/summer-school.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/course/$courseId',
@@ -56,6 +57,8 @@ function DashboardStudentCourse() {
 
   const courseHaveAssignments = course?.isPlanbSchool;
 
+  const isBizSchool = course?.id === 'c762773a-9017-4129-bc0e-06adf86050ef';
+
   const tabs = [
     { value: 'overview', key: 'overview', text: t('words.overview') },
   ];
@@ -78,6 +81,13 @@ function DashboardStudentCourse() {
       value: 'assignment',
       key: 'assignment',
       text: t('dashboard.course.assignment'),
+    });
+  }
+  if (isBizSchool) {
+    tabs.push({
+      value: 'summerSchool',
+      key: 'summerSchool',
+      text: t('dashboard.course.summerSchool'),
     });
   }
   if (reviewChapterId) {
@@ -121,12 +131,10 @@ function DashboardStudentCourse() {
               }))}
               size={isMobile ? 's' : 'm'}
             />
-
             {/* Overview */}
             <TabsContent value="overview">
               <CourseOverview course={course} />
             </TabsContent>
-
             {/* RetakeExam */}
             {courseHaveRetakeExam ? (
               <TabsContent value="retakeExam">
@@ -144,20 +152,24 @@ function DashboardStudentCourse() {
                 />
               </TabsContent>
             ) : null}
-
             {/* SingleTrialExam */}
             {courseHaveSingleTrialExam ? (
               <TabsContent value="singleTrialExam">
                 <SingleTrialExam course={course} />
               </TabsContent>
             ) : null}
-
             {courseHaveAssignments ? (
               <TabsContent value="assignment">
                 <Assignment courseId={params.courseId} />
               </TabsContent>
             ) : null}
 
+            {/* Summer school */}
+            {isBizSchool ? (
+              <TabsContent value="summerSchool">
+                <SummerSchool courseId={course.id} />
+              </TabsContent>
+            ) : null}
             {/* Ratings */}
             {reviewChapterId ? (
               <TabsContent value="ratings">

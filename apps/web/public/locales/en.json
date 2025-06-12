@@ -786,6 +786,9 @@
       "submitFileNamingFormat": "You file must be named using the following format :\n<0>company_username.pdf</0>.\nRemove all spaces from the company name, use your exact username on planB.network platform, and check for typos.",
       "submitReviewInfo": "You have to submit a review to have access to this feature.",
       "submitYourWork": "Submit your work",
+      "summerSchool": "Summer School",
+      "summerSchoolDescription": "The Lugano Summer School marks the third phase of the Plan ₿ Biz School program. Only to the 21 top-ranked students are invited to participate in this week.",
+      "summerSchoolInformation": "Summer School information",
       "surePreferenceList": "Are you sure that your preference list is final?",
       "tweetText": "Thrilled to have completed {{courseIndex}} course at @planb_network and earned my diploma with a score of {{score}}/100 on the final exam! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "yourProject": "Your project"
