@@ -425,8 +425,8 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       drizzle-orm:
-        specifier: ^0.42.0
-        version: 0.42.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7)
+        specifier: ^0.44.2
+        version: 0.44.2(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7)
       postgres:
         specifier: 3.4.7
         version: 3.4.7
@@ -483,11 +483,11 @@ importers:
         specifier: workspace:*
         version: link:../database
       drizzle-orm:
-        specifier: ^0.42.0
-        version: 0.42.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7)
+        specifier: ^0.44.2
+        version: 0.44.2(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7)
       drizzle-zod:
         specifier: ~0.7.1
-        version: 0.7.1(drizzle-orm@0.42.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7))(zod@3.25.64)
+        version: 0.7.1(drizzle-orm@0.44.2(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7))(zod@3.25.64)
       zod:
         specifier: ^3.25.64
         version: 3.25.64
@@ -4091,8 +4091,8 @@ packages:
     resolution: {integrity: sha512-PUjYKWtzOzPtdtQlTHQG3qfv4Y0XT8+Eas6UbxCmxTj7qgMf+39dDujf1BP1I+qqZtw9uzwTh8jYtkMuCq+B0Q==}
     hasBin: true
 
-  drizzle-orm@0.42.0:
-    resolution: {integrity: sha512-pS8nNJm2kBNZwrOjTHJfdKkaU+KuUQmV/vk5D57NojDq4FG+0uAYGMulXtYT///HfgsMF0hnFFvu1ezI3OwOkg==}
+  drizzle-orm@0.44.2:
+    resolution: {integrity: sha512-zGAqBzWWkVSFjZpwPOrmCrgO++1kZ5H/rZ4qTGeGOe18iXGVJWf3WPfHOVwFIbmi8kHjfJstC6rJomzGx8g/dQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -4108,6 +4108,7 @@ packages:
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
       '@types/sql.js': '*'
+      '@upstash/redis': '>=1.34.7'
       '@vercel/postgres': '>=0.8.0'
       '@xata.io/client': '*'
       better-sqlite3: '>=7'
@@ -4150,6 +4151,8 @@ packages:
       '@types/pg':
         optional: true
       '@types/sql.js':
+        optional: true
+      '@upstash/redis':
         optional: true
       '@vercel/postgres':
         optional: true
@@ -10393,7 +10396,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.42.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7):
+  drizzle-orm@0.44.2(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       gel: 2.0.2
@@ -10401,9 +10404,9 @@ snapshots:
       pg: 8.16.0
       postgres: 3.4.7
 
-  drizzle-zod@0.7.1(drizzle-orm@0.42.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7))(zod@3.25.64):
+  drizzle-zod@0.7.1(drizzle-orm@0.44.2(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7))(zod@3.25.64):
     dependencies:
-      drizzle-orm: 0.42.0(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7)
+      drizzle-orm: 0.44.2(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.0))(pg@8.16.0)(postgres@3.4.7)
       zod: 3.25.64
 
   dunder-proto@1.0.1:
