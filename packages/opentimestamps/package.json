@@ -20,7 +20,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "openpgp": "6.1.0",
+    "openpgp": "6.1.1",
     "opentimestamps": "0.4.9"
   },
   "devDependencies": {
