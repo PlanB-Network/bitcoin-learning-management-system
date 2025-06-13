@@ -8,13 +8,14 @@ import {
   CollapsibleDropdown,
   DialogClose,
   Divider,
+  Loader,
   cn,
   customToast,
 } from '@blms/ui';
 import { t } from 'i18next';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
-import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
+import { LuGripVertical } from 'react-icons/lu';
 import Certificate from '#src/assets/icons/certificate.svg';
 import SadFace from '#src/assets/icons/face_sad.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
@@ -33,6 +34,7 @@ import {
 } from 'react-icons/io5';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { TbAlertOctagon } from 'react-icons/tb';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -58,6 +60,9 @@ export const Assignment = ({
   courseId: string;
 }) => {
   const { user } = useContext(AppContext);
+  const { courses } = useContext(AppContext);
+
+  const courseInfo = courses?.find((course) => course.id === courseId);
 
   const [assignmentsOrdered, setAssignmentsOrdered] = useState<
     CourseAssignment[]
@@ -273,6 +278,10 @@ export const Assignment = ({
     }
   }, [assignments]);
 
+  if (!courseInfo) {
+    return <Loader />;
+  }
+
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
       <div className="flex flex-col gap-5">
@@ -301,7 +310,7 @@ export const Assignment = ({
 
             {!hasAlreadyRanked && (
               <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={LuCircleAlert}>
+                <AlertTitle icon={TbAlertOctagon}>
                   {t('dashboard.course.projectRankingInstructions')}
                 </AlertTitle>
                 <AlertDescription>
@@ -416,7 +425,7 @@ export const Assignment = ({
               </h3>
 
               <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={LuCircleAlert}>
+                <AlertTitle icon={TbAlertOctagon}>
                   {t('dashboard.course.submissionInstructions')}
                 </AlertTitle>
                 <AlertDescription>
@@ -481,13 +490,27 @@ export const Assignment = ({
             </div>
           )}
 
-          {hasSubmittedWork && (
-            <InformationalPanel
-              icon={Certificate}
-              title={t('dashboard.course.assignmentCompletedTitle')}
-              description={t('dashboard.course.assignmentCompletedDescription')}
-            />
-          )}
+          {hasSubmittedWork &&
+            (courseInfo.isAssignmentGradingPublished ? (
+              <InformationalPanel
+                icon={Certificate}
+                title={t('dashboard.course.assignmentCompletedTitle')}
+                description={t('dashboard.course.finalAverageGradeDescription')}
+                subtitle={
+                  courseProgress?.assignmentGrade
+                    ? `${courseProgress.assignmentGrade}%`
+                    : 'N/A'
+                }
+              />
+            ) : (
+              <InformationalPanel
+                icon={Certificate}
+                title={t('dashboard.course.assignmentCompletedTitle')}
+                description={t(
+                  'dashboard.course.assignmentCompletedDescription',
+                )}
+              />
+            ))}
         </div>
       )}
 
@@ -733,7 +756,7 @@ const InformationalPanel = ({
         )}
       </div>
       {subtitle && (
-        <span className="text-darkOrange-5 display-medium-bold-caps-32px display-large-bold-caps-48px">
+        <span className="text-darkOrange-5 display-medium-bold-caps-32px md:display-large-bold-caps-48px">
           {subtitle}
         </span>
       )}
