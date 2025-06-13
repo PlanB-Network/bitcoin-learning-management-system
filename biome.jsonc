@@ -13,6 +13,7 @@
       "**/node_modules/**",
       "**/routeTree.gen.ts",
       "**/.turbo/**",
+      "**/.tanstack/**",
       "packages/database/drizzle/migrations/*",
       "packages/types/src/generated/*",
       "node_modules/**",

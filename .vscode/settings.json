@@ -9,13 +9,20 @@
   "i18n-ally.sortKeys": true,
   "i18n-ally.sourceLanguage": "en",
   "search.exclude": {
-    "**/tsconfig.*.tsbuildinfo": true
+    "**/tsconfig.*.tsbuildinfo": true,
+    "**/routeTree.gen.ts": true
   },
   "files.associations": {
     "*.css": "tailwindcss"
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
   "editor.defaultFormatter": "biomejs.biome",
   "editor.inlineSuggest.enabled": true,
   "editor.quickSuggestions": {

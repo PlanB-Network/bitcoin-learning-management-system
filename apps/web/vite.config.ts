@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
-import viteReact from '@vitejs/plugin-react';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -14,11 +14,12 @@ export default defineConfig({
     tsconfigPaths({
       root: './',
     }),
-    TanStackRouterVite({
+    tanstackRouter({
+      target: 'react',
       // TODO: Enable when https://github.com/TanStack/router/issues/2317 is fixed
       autoCodeSplitting: false,
     }),
-    viteReact(),
+    react(),
   ],
 
   root: process.cwd(),

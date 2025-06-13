@@ -1,29 +1,16 @@
 import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
 import type { i18n } from 'i18next';
 
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import { LANGUAGES } from '#src/utils/i18n.ts';
 import PlanBLogoOrange from '../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import { router } from './-router.tsx';
 
 const Root = () => {
-  // const TanStackRouterDevtools =
-  //   process.env.NODE_ENV === 'production'
-  //     ? () => null // Render nothing in production
-  //     : React.lazy(() =>
-  //         // Lazy load in development
-  //         import('@tanstack/router-devtools').then((res) => ({
-  //           default: res.TanStackRouterDevtools,
-  //           // For Embedded Mode
-  //           // default: res.TanStackRouterDevtoolsPanel
-  //         })),
-  //       );
-
   return (
     <>
       <Outlet />
-      {/* <Suspense>
-        <TanStackRouterDevtools />
-      </Suspense> */}
+      <TanStackRouterDevtools />
     </>
   );
 };

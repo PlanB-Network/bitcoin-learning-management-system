@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { Route as rootRouteImport } from './routes/__root';
 import { Route as LangIndexRouteImport } from './routes/$lang/index';
 import { Route as LangDashboardDashboardRouteImport } from './routes/$lang/dashboard/_dashboard';
+import { Route as LangDashboardDashboardIndexRouteImport } from './routes/$lang/dashboard/_dashboard/index';
 import { Route as LangContentTutorialsIndexRouteImport } from './routes/$lang/_content/tutorials/index';
 import { Route as LangContentSearchIndexRouteImport } from './routes/$lang/_content/search/index';
 import { Route as LangContentResourcesIndexRouteImport } from './routes/$lang/_content/resources/index';
@@ -100,6 +101,12 @@ const LangDashboardDashboardRoute = LangDashboardDashboardRouteImport.update({
   id: '/_dashboard',
   getParentRoute: () => LangDashboardRoute,
 } as any);
+const LangDashboardDashboardIndexRoute =
+  LangDashboardDashboardIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
 const LangContentTutorialsIndexRoute =
   LangContentTutorialsIndexRouteImport.update({
     id: '/$lang/_content/tutorials/',
@@ -541,6 +548,7 @@ export interface FileRoutesByFullPath {
   '/$lang/resources': typeof LangContentResourcesIndexRoute;
   '/$lang/search': typeof LangContentSearchIndexRoute;
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
+  '/$lang/dashboard/': typeof LangDashboardDashboardIndexRoute;
   '/$lang/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
@@ -594,7 +602,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
-  '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
+  '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
   '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
@@ -690,6 +698,7 @@ export interface FileRoutesById {
   '/$lang/_content/resources/': typeof LangContentResourcesIndexRoute;
   '/$lang/_content/search/': typeof LangContentSearchIndexRoute;
   '/$lang/_content/tutorials/': typeof LangContentTutorialsIndexRoute;
+  '/$lang/dashboard/_dashboard/': typeof LangDashboardDashboardIndexRoute;
   '/$lang/_content/_misc/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/_content/_misc/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
   '/$lang/_content/_misc/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
@@ -766,6 +775,7 @@ export interface FileRouteTypes {
     | '/$lang/resources'
     | '/$lang/search'
     | '/$lang/tutorials'
+    | '/$lang/dashboard/'
     | '/$lang/bcert-certificates/$certificateId'
     | '/$lang/change-email-preferences/$unsubscribeId'
     | '/$lang/exam-certificates/$certificateId'
@@ -914,6 +924,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/resources/'
     | '/$lang/_content/search/'
     | '/$lang/_content/tutorials/'
+    | '/$lang/dashboard/_dashboard/'
     | '/$lang/_content/_misc/bcert-certificates/$certificateId'
     | '/$lang/_content/_misc/change-email-preferences/$unsubscribeId'
     | '/$lang/_content/_misc/exam-certificates/$certificateId'
@@ -1044,6 +1055,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$lang/dashboard';
       preLoaderRoute: typeof LangDashboardDashboardRouteImport;
       parentRoute: typeof LangDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/': {
+      id: '/$lang/dashboard/_dashboard/';
+      path: '/';
+      fullPath: '/$lang/dashboard/';
+      preLoaderRoute: typeof LangDashboardDashboardIndexRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
     };
     '/$lang/_content/tutorials/': {
       id: '/$lang/_content/tutorials/';
@@ -1546,6 +1564,7 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardCredentialsRoute: typeof LangDashboardDashboardCredentialsRoute;
   LangDashboardDashboardNotificationsRoute: typeof LangDashboardDashboardNotificationsRoute;
   LangDashboardDashboardProfileRoute: typeof LangDashboardDashboardProfileRoute;
+  LangDashboardDashboardIndexRoute: typeof LangDashboardDashboardIndexRoute;
   LangDashboardDashboardAdministrationBookingsRoute: typeof LangDashboardDashboardAdministrationBookingsRoute;
   LangDashboardDashboardAdministrationCareersRoute: typeof LangDashboardDashboardAdministrationCareersRoute;
   LangDashboardDashboardAdministrationCouponsRoute: typeof LangDashboardDashboardAdministrationCouponsRoute;
@@ -1570,6 +1589,7 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
     LangDashboardDashboardNotificationsRoute:
       LangDashboardDashboardNotificationsRoute,
     LangDashboardDashboardProfileRoute: LangDashboardDashboardProfileRoute,
+    LangDashboardDashboardIndexRoute: LangDashboardDashboardIndexRoute,
     LangDashboardDashboardAdministrationBookingsRoute:
       LangDashboardDashboardAdministrationBookingsRoute,
     LangDashboardDashboardAdministrationCareersRoute:
