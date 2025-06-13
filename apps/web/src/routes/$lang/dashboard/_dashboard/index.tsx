@@ -1,5 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { router } from '#src/routes/-router.tsx';
+import { Navigate, createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/$lang/dashboard/_dashboard/')({
   params: {},
@@ -7,9 +6,5 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/')({
 });
 
 function CourseDetails() {
-  const newPath = '/dashboard/courses';
-  router.navigate({
-    to: newPath,
-    replace: true,
-  });
+  return <Navigate to="/dashboard/courses" replace={true} />;
 }

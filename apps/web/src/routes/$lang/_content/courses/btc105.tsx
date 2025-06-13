@@ -1,5 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { router } from '#src/routes/-router.tsx';
+import { Navigate, createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/$lang/_content/courses/btc105')({
   params: {},
@@ -7,9 +6,11 @@ export const Route = createFileRoute('/$lang/_content/courses/btc105')({
 });
 
 function CourseDetails() {
-  const newPath = '/courses/d1370810-63f6-4aba-b822-e3a66bf225a5';
-  router.navigate({
-    to: newPath,
-    replace: true,
-  });
+  return (
+    <Navigate
+      to="/courses/$courseId"
+      params={{ courseId: 'd1370810-63f6-4aba-b822-e3a66bf225a5' }}
+      replace={true}
+    />
+  );
 }
