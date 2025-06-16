@@ -39,7 +39,8 @@
       "advanced": "Edasijõudnud",
       "levels": "Tasemed",
       "wizard": "Abimees",
-      "beginnerFriendly": ""
+      "beginnerFriendly": "Algaja sõbralik",
+      "expert": "Ekspert"
     },
     "invoice": "Arve",
     "intermediate": "Kesktase",
@@ -95,34 +96,102 @@
     "lightningInvoice": "Lightning arve",
     "part": "Osa",
     "unified": "Ühendatud",
-    "booked": "",
-    "bookings": "",
-    "communities": "",
-    "overview": "",
-    "passed": "",
-    "progress": "",
-    "publicationDate": "",
-    "public": "",
-    "ratings": "",
-    "required": "",
-    "total": "",
-    "users": "",
-    "location": "",
-    "chapter": "",
-    "credentials": "",
-    "diploma": "",
-    "goal": "",
-    "grade": "",
-    "id": "",
-    "inReview": "",
-    "lectures": "",
-    "admins": "",
-    "status": "",
-    "students": "",
-    "teacher": "",
-    "filter": "",
-    "failed": "",
-    "hours": ""
+    "booked": "Broneeritud",
+    "bookings": "Broneeringud",
+    "communities": "Kogukonnad",
+    "overview": "Ülevaade",
+    "passed": "Läbitud",
+    "progress": "Progress",
+    "publicationDate": "Avaldamise kuupäev:",
+    "public": "Avalik suhtlus",
+    "ratings": "Hinnangud",
+    "required": "Nõutud",
+    "total": "Kokku",
+    "users": "Kasutajad",
+    "location": "Asukoht",
+    "chapter": "Peatükk",
+    "credentials": "Tunnistused",
+    "diploma": "Diplom",
+    "goal": "Eesmärk",
+    "grade": "Hinne",
+    "id": "ID",
+    "inReview": "Hindamisel",
+    "lectures": "Loengud",
+    "admins": "Administraatorid",
+    "status": "Staatus",
+    "students": "Õpilased",
+    "teacher": "Õpetaja",
+    "filter": "Filter",
+    "failed": "Ebaõnnestunud",
+    "hours": "tundi",
+    "abstract": "Kokkuvõte",
+    "congrats": "Palju õnne!",
+    "project": "Projekt",
+    "action": "Tegevus",
+    "admin": "Administraator",
+    "author": "Autor",
+    "bitcoin": "Bitcoin",
+    "business": "Äri",
+    "cancel": "Tühista",
+    "access": "Juurdepääs",
+    "category": "Kategooria",
+    "close": "Sulge",
+    "dislikes": "Ei meeldi",
+    "hybrid": "Hübriid",
+    "inperson": "Kohapeal",
+    "channel": "Kanal",
+    "chapters": "Peatükid",
+    "finish": "Lõpeta",
+    "credits": "Tunnustused",
+    "exam": "Eksam",
+    "channels": "Kanalid",
+    "country": "Riik",
+    "delete": "Kustuta",
+    "github": "Github",
+    "language": "Keel",
+    "complete": "Lõpeta",
+    "incomplete": "Lõpetamata",
+    "email": "Email",
+    "lecture": "Loeng",
+    "likes": "Meeldimised",
+    "protocol": "Protokoll",
+    "role": "Roll",
+    "search": "Otsi",
+    "security": "Turvalisus",
+    "movie": "Film",
+    "producer": "Produtsent",
+    "linkedin": "Linkedin",
+    "next": "Järgmine",
+    "no": "Ei",
+    "previous": "Eelmine",
+    "name": "Nimi",
+    "projects": "Projektid",
+    "save": "Salvesta",
+    "student": "Õpilane",
+    "skip": "Jäta vahele",
+    "submit": "Esita",
+    "telegram": "Telegram",
+    "yes": "Jah",
+    "user": "Kasutaja",
+    "username": "Kasutajanimi",
+    "unavailable": "Pole saadaval",
+    "password": "Parool",
+    "saving": "Salvestan...",
+    "continue": "Jätka",
+    "company": "Ettevõte",
+    "mentor": "Mentor",
+    "title": "Pealkiri",
+    "calendar": "Kalender",
+    "mode": "Režiim",
+    "video": "Video",
+    "day": "Päev",
+    "timeZone": "Ajavöönd",
+    "viewMore": "Vaata rohkem",
+    "startHere": "Alusta siit!",
+    "selectedAmount": "{{amount}} valitud",
+    "displayName": "Kuvanimi",
+    "socialStudies": "Sotsiaalteadused",
+    "careerPortal": "Karjääriportaal"
   },
   "underConstruction": {
     "pageTitle": "Oih.",
@@ -168,12 +237,42 @@
     },
     "details": {
       "source": "Algallikas :",
-      "author": "",
+      "author": "Autor:",
       "didHelp": "",
-      "writtenBy": ""
+      "writtenBy": "",
+      "tutorialName": "Õpetuse nimi"
     },
     "approvedByCreator": "",
-    "backTutorials": ""
+    "backTutorials": "",
+    "business": {
+      "title": "Äri"
+    },
+    "subCategories": {
+      "analysis": "Analüüs",
+      "authentication": "Autentimine",
+      "backup": "Varundamine",
+      "bitcoin": "Bitcoin",
+      "centralized": "Tsentraliseeritud",
+      "data": "Andmed",
+      "hardware": "Riistvara",
+      "resource": "Materjal",
+      "desktop": "Töölaud",
+      "mobile": "Telefon",
+      "on-chain": "Plokiahelas toimuv",
+      "others": "Muud",
+      "peer-to-peer": "Kasutajalt kasutajale",
+      "pool": "ühikskaevandus",
+      "communication": "Kommunikatsioon",
+      "content": "Sisu",
+      "operating system": "Operatsioonisüsteem",
+      "lightning-network": "Lightning võrgustik"
+    },
+    "contribution": {
+      "title": "Panus"
+    },
+    "computer-security": {
+      "title": "Arvutiturve"
+    }
   },
   "auth": {
     "accountCreated": "Teie konto on loodud, {{userName}}!",
@@ -331,13 +430,15 @@
       "objectivesTitle": "Mida te õpite :",
       "startCourse": "Alusta kursust",
       "inPersonAccess": "",
-      "paidCourse": "",
+      "paidCourse": "Tasuline",
       "buyInPersonCourse": "",
       "buyOnlineCourse": "",
       "teacherLed": "Professori juhtimisel",
       "premiumContentNeedsPaymentAction": "Mine kursuse avalehele",
       "thanksTipping": "Saate professorit tänada talle jootraha jättes.",
-      "associatedProfessors": "Seotud professorid"
+      "associatedProfessors": "Seotud professorid",
+      "otherCourses": "Teised kursused",
+      "learning": "Õpperada"
     },
     "explorer": {
       "buildPath": "Raja iseenda tee jäneseurgu",
@@ -347,7 +448,9 @@
       "findCourses": "Leidke oma vajadustele sobivaim kursus tänu kursusevalijale",
       "pageDescription": "Plan B Akadeemia eesmärk on lihtsustada Bitcoini haridust kogu maailmas. Erinevate erialade ekspertide poolt kureeritud akadeemia pakub hulgaliselt kursuseid, mis on mõeldud Bitcoini kõikide tahkude lahti selgitamiseks. Alates algajast kuni eksperdini, olgu see siis oma tempos või professori poolt nädalas jälgitav, me loodame, et akadeemia aitab teil paremini mõista seda laia teemat, mis on Bitcoin. Suur osa meie kursustest on täiesti tasuta, et igaühel, igal pool, oleks juurdepääs haridusele.",
       "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, mida juhib Giacomo Zucco, pakub intensiivseid kolmekuulisi haridusprogramme, mis on mõeldud silla loomiseks õppimise ja reaalmaailma rakenduste vahel. Traditsiooniliste tundide kõrval osalevad õpilased ettevõtte juhitud praktilistes projektides ja esmaklassilises laagris, mis on pühendatud parimatele esinejatele. Ainult parimad talendid edenevad pärast kahte konkurentsivõimelist valikuringi, tagades, et lõplikud tipptudengid on täielikult varustatud oma karjääri alustamiseks Bitcoin'i tööstuses."
+      "planbSchoolHeadline": "Plan ₿ School, mida juhib Giacomo Zucco, pakub intensiivseid kolmekuulisi haridusprogramme, mis on mõeldud silla loomiseks õppimise ja reaalmaailma rakenduste vahel. Traditsiooniliste tundide kõrval osalevad õpilased ettevõtte juhitud praktilistes projektides ja esmaklassilises laagris, mis on pühendatud parimatele esinejatele. Ainult parimad talendid edenevad pärast kahte konkurentsivõimelist valikuringi, tagades, et lõplikud tipptudengid on täielikult varustatud oma karjääri alustamiseks Bitcoin'i tööstuses.",
+      "goal": "Eesmärk:",
+      "comingSoon": "varsti tulemas"
     },
     "payment": {
       "accessibility": "Juurdepääsetavus",
@@ -390,88 +493,96 @@
       "congratulations": "",
       "examAndDiploma": "",
       "examDetails": "",
-      "failed": "",
-      "finalExam": "",
+      "failed": "Ebaõnnestunud",
+      "finalExam": "Lõpueksam",
       "findInformationChapter": "",
       "futureProof": "",
       "getCertificate": "",
       "globallyRecognized": "",
-      "goBack": "",
+      "goBack": "Mine tagasi",
       "instantVerification": "",
-      "instructions": "",
+      "instructions": "Juhised:",
       "letsConclude": "",
       "noGoBack": "",
       "notTranslatedYet": "",
       "oneMinuteLeft": "",
       "oopsFailed": "",
-      "passed": "",
+      "passed": "Läbitud",
       "passRate": "",
       "retakeInstructions": "",
       "sameRules": "",
       "score": "",
       "skipExamDescription": "",
-      "submit": "",
+      "submit": "Esita",
       "sureSubmit": "",
       "tamperProof": "",
       "testKnowledge": "",
-      "testResults": "",
+      "testResults": "Testi tulemused",
       "wishTryAgain": "",
-      "yesSubmit": "",
-      "timeStamped": "",
+      "yesSubmit": "Jah, esita",
+      "timeStamped": "ajatempliga.",
       "timeStampHow": "",
       "timeStampHowDescription": "",
       "timerStart": "",
-      "tryAgain": "",
+      "tryAgain": "Proovi uuesti",
       "verifyDisplayName": "",
       "whyTimeStamp": "",
       "timeStampBenefits": "",
       "certificateAvailable": "",
       "dontWorry": "",
-      "explanations": "",
+      "explanations": "Selgitused:",
       "planBTimeStamp": "",
       "quitWithoutSubmitting": "",
       "retakeExam": "",
-      "skipExam": "",
+      "skipExam": "Jäta eksam vahele",
       "skipExamGoConclusion": "",
-      "startExam": "",
+      "startExam": "Alusta eksamit",
       "tryOneMoreTime": "",
       "dontGiveUpTryAgain": "",
-      "goodLuck": "",
+      "goodLuck": "Edu!",
       "congratulationsPassed": "",
-      "availableDashboardTimestamped": "Teie diplom on saadaval teie töölaual."
+      "availableDashboardTimestamped": "Teie diplom on saadaval teie töölaual.",
+      "timeStampedNoDot": "ajatempliga",
+      "timeStamping": "ajatemplimine",
+      "buttonTextBCert": "Loe lähemalt",
+      "courseDiploma": "Kursuse diplom"
     },
     "review": {
       "commentTeacher": "",
-      "skip": "",
+      "skip": "Jäta ülevaade vahele",
       "soAndSo": "",
-      "submitReview": "",
-      "tooEasy": "",
-      "tooHard": "",
-      "tooLong": "",
-      "tooShort": "",
-      "veryBad": "",
-      "veryGood": "",
+      "submitReview": "Esita hinnang",
+      "tooEasy": "liiga lihtne",
+      "tooHard": "liiga raske",
+      "tooLong": "liiga pikk",
+      "tooShort": "liiga lühike",
+      "veryBad": "väga halb",
+      "veryGood": "väga hea",
       "whatStudentsSay": "",
-      "difficulty": "",
+      "difficulty": "Raskusaste",
       "feedbackSessionTitle": "",
       "fieldRequired": "",
-      "generalGrade": "",
-      "length": "",
+      "generalGrade": "Üldine hinne",
+      "length": "Pikkus",
       "loadMoreComments": "",
-      "neutral": "",
-      "no": "",
+      "neutral": "neutraalne",
+      "no": "ei",
       "notReally": "",
-      "quality": "",
+      "quality": "Kvaliteet",
       "ratingsAndReviews": "",
       "writeThoughts": "",
       "yesVeryMuch": "",
       "displayOutOf": "",
-      "asExpected": "",
+      "asExpected": "nagu oodatud",
       "commentAdmin": "",
-      "commentPublic": "",
+      "commentPublic": "Kommentaar (avalik)",
       "faithful": "",
       "recommend": "",
-      "yesOfCourse": ""
+      "yesOfCourse": "",
+      "feedback": "Tagasiside",
+      "commentPublicMobile": "Avalik kommentaar",
+      "editReview": "Redigeeri hinnangut",
+      "saveReview": "Salvesta hinnang"
     },
     "conclusion": {
       "completedChaptersHeadline": "Kõik peatükid on nüüd valmis!",
@@ -483,6 +594,11 @@
       "takeFinalExam": "Nüüd, kui olete kõik peatükid läbinud, on aeg teha lõpueksam oma teadmiste kontrollimiseks.",
       "unlockFeatures1": "Et avada kõik funktsioonid ja jälgida oma edusamme, vajate kontot.",
       "unlockFeatures2": "Palun võtke teadmiseks, et me ei kogu isiklikke andmeid ega kasuta küpsiseid."
+    },
+    "format": {
+      "online": "Veebis",
+      "hybrid": "Kohapeal/veebis",
+      "inperson": "Kohapeal"
     }
   },
   "dashboard": {
@@ -502,11 +618,16 @@
       "billingSubtitle": "Laadige siit alla oma broneeringute arved.",
       "noInvoice": "Teil pole veel arveid.",
       "noTicket": "Teil pole veel pileteid.",
-      "upcomingTicketSubtitle": "Laadige oma pilet siit alla, et järgmisel üritusel osaleda. Veenduge, et võtaksite pileti üritusele kaasa sellele pääsemiseks."
+      "upcomingTicketSubtitle": "Laadige oma pilet siit alla, et järgmisel üritusel osaleda. Veenduge, et võtaksite pileti üritusele kaasa sellele pääsemiseks.",
+      "yesCancel": "Jah, tühista"
     },
     "calendar": {
       "calendar": "Kalender",
-      "personalCalendar": "Isiklik kalender"
+      "personalCalendar": "Isiklik kalender",
+      "eventType": {
+        "class": "Klassid",
+        "event": "Sündmused"
+      }
     },
     "courses": "Kursused",
     "myCourses": {
@@ -519,10 +640,20 @@
       "inprogressCoursesDescription": "Siin saate kontrollida oma edusamme alustatud kursustel.",
       "seeProgress": "et siin oma edusamme näha.",
       "startCourse": "Alusta või lõpeta kursus",
-      "done": "",
-      "viewDetails": "",
-      "yourCertificate": "",
-      "whereYouAre": ""
+      "done": "Tehtud",
+      "viewDetails": "Vaata üksikasju",
+      "yourCertificate": "Sinu sertifikaat",
+      "whereYouAre": "",
+      "professor": "Professor:",
+      "download": "Laadi diplom alla",
+      "notValidated": "Pole kinnitatud",
+      "notStarted": "Pole alustatud",
+      "price": "Hind :",
+      "seeDetails": "Vaata üksikasju",
+      "shareOn": "Jaga",
+      "courseDashboard": "Kursuse töölaud",
+      "duration": "Kestus :",
+      "completeAll": "Lõpeta kõik"
     },
     "profile": {
       "change": "Muuda",
@@ -541,7 +672,11 @@
       "personalInformation": "Minu isiklik teave",
       "profileInformation": "Profiili info",
       "emailChangeConfirmation": "E-posti muutmise kinnituseks on e-kiri saadetud, muutmise kinnitamiseks kontrollige oma postkasti.",
-      "profile": ""
+      "profile": "Profiil",
+      "notificationSettings": {
+        "none": "Puudub"
+      },
+      "settings": "Seaded"
     },
     "logout": "Logi välja",
     "bCert": {
@@ -551,78 +686,248 @@
     "course": {
       "tweetText": "",
       "checkDetailsCompleted": "",
-      "completionDiploma": "",
+      "completionDiploma": "Lõputunnistus",
       "completionExamInfo": "",
-      "coursesCompleted": "",
+      "coursesCompleted": "Lõpetatud kursused",
       "feedbacks": "",
       "ratingsAndFeedbacks": "",
-      "shareOnSocials": ""
+      "shareOnSocials": "",
+      "announcement": "Teadaanne",
+      "assignment": "Ülesanne",
+      "exams": "Eksamid",
+      "examScore": "Skoor:",
+      "coordinator": "Kursuse koordinaator"
     },
     "credentials": {
       "seatBooked": "",
       "takePlaceAt": "",
-      "yourCertificate": "",
-      "bCert": "",
+      "yourCertificate": "Sinu sertifikaat",
+      "bCert": "₿-CERT",
       "bCertSubtitle": "",
       "beingGraded": "",
-      "courseDiplomas": "",
+      "courseDiplomas": "Kursuste diplomid",
       "courseDiplomasSubtitle": "",
-      "completionDiplomas": "",
-      "downloadTicket": "",
-      "globalCertifications": "",
+      "completionDiplomas": "Lõputunnistused",
+      "downloadTicket": "Laadi pilet alla",
+      "globalCertifications": "Globaalsed sertifikaadid",
       "retakeExam": ""
     },
     "teacher": {
       "courses": {
-        "analytics": "",
-        "courseDetails": "",
-        "courseLongDescription": "",
+        "analytics": "Analüütika",
+        "courseDetails": "Kursuse üksikasjad",
+        "courseLongDescription": "Sissejuhatav kirjeldus",
         "courseModification": "",
-        "coursesManagementPanel": "",
-        "curriculum": "",
+        "coursesManagementPanel": "Kursuste paneel",
+        "curriculum": "Kursuse õppekava",
         "curriculumDescription": "",
         "editOnGithub": "",
-        "examResults": "",
+        "examResults": "Eksamitulemused",
         "makeModifications": "",
         "proposeNewCourse": "",
         "quickRecap": "",
         "reviewInfos": "",
-        "reviews": "",
-        "objectives": ""
+        "reviews": "Arvustused",
+        "objectives": "Eesmärgid",
+        "goal": "Eesmärk",
+        "announcements": "Teadaanded",
+        "assignment": "Ülesanne",
+        "announcementsUpcoming": "Eelseisvad teadaanded",
+        "announcementModal": {
+          "editAnnouncement": "Muuda teadet",
+          "create": "Loo teadaanne"
+        },
+        "allStudents": "Kõik õpilased",
+        "announcementsPast": "Varasemad teadaanded"
       },
-      "menu": "",
+      "menu": "Õpetaja menüü",
       "profile": {
-        "account": "",
-        "billingInformations": "",
-        "description": "",
+        "account": "Professori konto",
+        "billingInformations": "Arveldusinfo",
+        "description": "Teie kirjeldus",
         "enterTipsInformations": "",
-        "lightningAddress": "",
+        "lightningAddress": "Lightning aadress",
         "makeModifications": "",
         "noLightningAddress": "",
         "noShortBio": "",
         "noTags": "",
-        "notifications": "",
+        "notifications": "Teated",
         "publicDescription": "",
-        "publicProfile": "",
+        "publicProfile": "Avalik profiil",
         "publicProfileDescription": "",
-        "teacher": "",
-        "teacherProfile": "",
+        "teacher": "Õpetaja",
+        "teacherProfile": "Õpetaja profiil",
         "tutorialModification": ""
       },
       "reviews": {
         "noReviewsYet": "",
         "checkComments": "",
         "checkReviews": "",
-        "privateComment": "",
-        "publicComment": "",
-        "review": "",
-        "reviews": "",
+        "privateComment": "Privaatne kommentaar",
+        "publicComment": "Avalik kommentaar",
+        "review": "Arvustus",
+        "reviews": "Arvustused",
         "reviewsAndGrading": "",
-        "seeStatistics": "",
-        "viewDetails": "",
-        "writtenFeedbacks": ""
+        "seeStatistics": "Vaata statistikat",
+        "viewDetails": "Vaata üksikasju",
+        "writtenFeedbacks": "Kirjutatud tagasiside"
+      },
+      "tutorials": {
+        "yourTutorials": "Sinu õpetused"
       }
-    }
+    },
+    "adminPanel": {
+      "bookings": "Broneeringud",
+      "careers": {
+        "cv": "CV",
+        "profession": "Elukutse",
+        "careers": "Karjäärid",
+        "downloadProfiles": "Lae arvutustabel alla",
+        "downloadSpreadsheet": "Lae arvutustabel alla",
+        "lastUpdated": "Viimati uuendatud",
+        "seeMore": "Vaata rohkem",
+        "viewCV": "Vaata CV-d",
+        "lastUpdate": "Viimane uuendus"
+      },
+      "date": "Kuupäev",
+      "type": "Tüüp",
+      "participants": "Osalejad",
+      "coupons": {
+        "discountMultiUse": "Mitmekordne kasutus",
+        "filters": {
+          "all": "Kõik",
+          "events": "Sündmused",
+          "courses": "Kursused",
+          "multiUse": "Mitmekordne kasutus",
+          "singleUse": "Ühekordne kasutus"
+        },
+        "delete": "Kustuta",
+        "cancel": "Tühista",
+        "close": "Sulge",
+        "productEvent": "Sündmus",
+        "productCourse": "Kursus",
+        "mobileSort": {
+          "za": "z-A",
+          "az": "A-z"
+        },
+        "tableHead": {
+          "code": "Kood",
+          "type": "Tüüp",
+          "name": "Nimi",
+          "discount": "Allahindlus",
+          "value": "Väärtus",
+          "uses": "Kasutatud",
+          "total": "Kokku",
+          "owner": "Omanik",
+          "actions": "Tegevused",
+          "maxUses": "Maks. kasutused"
+        },
+        "discountSingleUse": "Ühekordne kasutus",
+        "downloadImages": "Lae pildid alla",
+        "generateCode": "Genereeri kood",
+        "generateCodes": "Genereeri koode",
+        "generatedCode": "Genereeritud kood",
+        "generatedCodes": "Genereeritud koodid",
+        "selectCourse": "Vali kursus",
+        "discountCode": "Allahindluskood",
+        "selectEvent": "Vali üritus",
+        "downloadImage": "Lae pilt alla"
+      },
+      "bookingsPanel": "Broneeringute paneel",
+      "coursesIndexes": "Kursuste nimekirjad",
+      "discountCodes": "Allahindluskoodid",
+      "professorName": "Professori nimi",
+      "selectProfessor": "Vali professor",
+      "tutorialAnalytics": "Õpetuse analüütika",
+      "upcomingBookings": "Eelseisvad broneeringud",
+      "editRole": "Redigeeri rolli",
+      "selectRole": "Vali roll",
+      "confirmRemoval": "Kinnita eemaldamine",
+      "githubLink": "Githubi link",
+      "downloadList": "Laadi nimekiri alla",
+      "makeProfessor": "Muuda professoriks",
+      "accessGranted": "Juurdepääs tagatud",
+      "deleteRole": "Eemalda roll"
+    },
+    "careerPortal": {
+      "emailPlaceholder": "mail@mail.com",
+      "jobTitles": {
+        "researcher": "Teadlane",
+        "cryptographer": "Krüptograaf",
+        "cybersecurity": "Küberturve",
+        "educator": "Õpetaja",
+        "sales": "Müük",
+        "accountingManager": "Pearaamatupidaja",
+        "amlKycSpecialist": "AML/KYC spetsialist",
+        "backendEngineer": "Backend arendaja",
+        "brandStrategist": "Brändi strateeg",
+        "businessAnalyst": "Ärianalüütik",
+        "complianceOfficer": "Vastavuskontrolli spetsialist",
+        "contentWriter": "Sisukirjutaja",
+        "dataEngineer": "Andmeinsener",
+        "marketingManager": "Turundusjuht",
+        "revenueManager": "Tulujuht",
+        "riskAnalyst": "Riskianalüütik",
+        "seoSpecialist": "SEO spetsialist",
+        "technicalWriter": "Tehniline kirjutaja",
+        "uxResearcher": "Kasutajakogemuse uurija",
+        "economicAnalyst": "Majandusanalüütik",
+        "frontendEngineer": "Frontend arendaja",
+        "graphicDesigner": "Graafiline disainer",
+        "hrSpecialist": "Personaliosakonna spetsialist",
+        "productManager": "Tootejuht",
+        "uiUxDesigner": "UI/UX disainer",
+        "devOpsEngineer": "DevOpsi insener",
+        "eventCoordinator": "Ürituste koordinaator",
+        "logisticManager": "Logistikajuht",
+        "miningEngineer": "Kaevandusinsener",
+        "operationsManager": "Tööprotsesside juht",
+        "protocolEngineer": "Protokolli insener",
+        "communityManager": "Kogukonna juht"
+      },
+      "add": "Lisa",
+      "availabilityStartPlaceholder": "Kuupäev",
+      "jobCategories": {
+        "more": "Rohkem",
+        "businessRoles": "Ettevõtte rollid",
+        "technicalRoles": "Tehnilised rollid"
+      },
+      "motivation": "Motivatsioon",
+      "other": "Muu",
+      "bitcoinProjectText": "Milline?",
+      "chooseFile": "Vali fail",
+      "completeApplication": "Esita taotlus",
+      "confirmDelete": "Kinnita kustutamine",
+      "contactInformation": "Kontaktandmed",
+      "cvUploadLabel": "CV üleslaadimine",
+      "emailAddress": "Meiliaadress",
+      "expectedSalary": "Oodatav palk",
+      "fullTime": "Täiskohaga",
+      "jobSearch": "Tööotsing",
+      "lastName": "Perekonnanimi",
+      "legalInformation": "Juriidiline teave",
+      "legalTerms": "Juriidilised terminid",
+      "motivationLetter": "Motivatsioonikiri",
+      "partTime": "Osalise tööajaga",
+      "personalInformation": "Isiklik teave",
+      "yourLanguages": "Sinu räägitavad keeled",
+      "steps": {
+        "step1": "Isiklik teave",
+        "step2": "Tööotsing",
+        "step3": "CV üleslaadimine",
+        "step4": "Juriidilised terminid"
+      },
+      "languageLevels": {
+        "fluent": "Emakeele tasemel"
+      },
+      "languageSkills": "Keeleoskused",
+      "startApplication": "Alusta avalduse täitmist",
+      "availability": "Teie saadavus",
+      "companySizes": {
+        "noPreference": "Puudub eelistus"
+      }
+    },
+    "studentDashboard": "Õpilase töölaud"
   },
   "events": {
     "card": {
@@ -638,7 +943,9 @@
       "people": "inimesed",
       "buyReplay": "Osta kordus",
       "bookSeat": "Broneeri istekoht",
-      "online": "võrgus"
+      "online": "võrgus",
+      "purchased": "Ostetud",
+      "buyVideo": "Osta video"
     },
     "main": {
       "upcomingEvents": "Tulevased sündmused",
@@ -715,7 +1022,7 @@
       "subtitle": "Kõik on tõlgitud kohalikesse keeltesse",
       "content1": "PlanB-s usume, et Bitcoin on kõiki puudutav rahvusvaheline revolutsioon. Et võimestada miljardeid inimesi, loome me seda platvormi mitmekeelseks ja kõigile kättesaadavaks. Käesolev platvorm toetab praegu 7 keelt ning iga kuu lisandub uusi. Selle saavutamiseks kasutame AI-d ja Bitcoini entusiastide kirge üle kogu maailma.",
       "link": "Aita meil akadeemiat tõlkida",
-      "availableLanguagesVariation": ""
+      "availableLanguagesVariation": "Kättesaadavad keeled: "
     },
     "tutorialSection": {
       "link": "Vaata kõiki õpetusi",
@@ -731,6 +1038,9 @@
     "wallOfLoveSection": {
       "title": "",
       "subtitle": ""
+    },
+    "blogSection": {
+      "seeAll": "Vaata kõiki"
     }
   },
   "imagesAlt": {
@@ -771,10 +1081,10 @@
     },
     "pageSubtitle": "Kõik meie professorid on vabatahtlikud ja kirglikud Bitcoini kasutajad. Tänamiseks saate jätta jootraha.",
     "navigationTitles": {
-      "all": "",
-      "lecturers": "",
-      "tutorialCreators": "",
-      "teachers": ""
+      "all": "Kõik",
+      "lecturers": "Lektorid",
+      "tutorialCreators": "Õpetusvideote loojad",
+      "teachers": "Õpetajad"
     }
   },
   "podcasts": {
@@ -782,7 +1092,9 @@
   },
   "resources": {
     "newsletters": {
-      "title": "Uudiskirjad"
+      "title": "Uudiskirjad",
+      "level": "Tase :",
+      "author": "Autor : "
     },
     "podcasts": {
       "title": "Taskuhäälingud"
@@ -793,7 +1105,35 @@
     "pageDescription": "Katsetus Bitcoini mõista on nagu pidevalt kasvava labürindi avastamine. Teie teekonna hõlbustamiseks oleme koostanud laia valiku ressursse, sealhulgas raamatuid, taskuhäälinguid, videoid ja konverentside ülekandeid. See portaal kogub kogu teabe ühte Githubi hoidlasse, et aidata teil paremini Bitcoini ökosüsteemi mõista.",
     "pageSubtitleBooks": "",
     "pageSubtitlePodcast": "",
-    "searchFilterName": ""
+    "searchFilterName": "",
+    "toggleLabelAll": "Kõik",
+    "books": {
+      "author": "Autor: ",
+      "title": "Raamatukogu"
+    },
+    "articles": {
+      "title": "Artiklid"
+    },
+    "glossary": {
+      "title": "Sõnastik"
+    },
+    "projects": {
+      "title": "Projektid"
+    },
+    "toggleLabelSelectedLanguage": "Valitud keel",
+    "bet": {
+      "title": "Õppematerjalide komplekt"
+    },
+    "conferences": {
+      "title": "Konverentsi kordused"
+    },
+    "toggleFreeOnly": "Ainult tasuta",
+    "lectures": {
+      "title": "Loengute kordused"
+    },
+    "channels": {
+      "title": "Youtube'i kanalid"
+    }
   },
   "settings": {
     "changePassword": "Muuda parooli",
@@ -813,11 +1153,11 @@
     "descriptionExtend": ""
   },
   "proofreading": {
-    "completed": "",
+    "completed": "Toimetamine lõpetatud",
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": "",
+    "status": "Toimetamise staatus",
     "thanks": ""
   },
   "publicCommunication": {
@@ -827,27 +1167,28 @@
       "filterText": "",
       "blogSidebarTitle": "",
       "featuredArticleTitleText": "",
-      "pastArticleSubtitleText": "",
-      "blogListButtonText": ""
+      "pastArticleSubtitleText": "Varasemad artiklid",
+      "blogListButtonText": "Loe artiklit",
+      "blogSidebarTitleForAll": "Varasemad postitused"
     },
     "legalSections": {
-      "privacyPolicy": "",
+      "privacyPolicy": "Privaatsuspoliitika",
       "termsOfSale": "",
-      "contact": "",
-      "legalNotice": ""
+      "contact": "Kontakt",
+      "legalNotice": "Õiguslik teade"
     },
     "goBackButtons": {
       "simpleGoBack": ""
     },
-    "title": "",
+    "title": "Avalik suhtlus",
     "blogCategories": {
-      "network": "",
-      "all": "",
-      "content": "",
-      "feature": ""
+      "network": "Võrgustik",
+      "all": "Kõik",
+      "content": "Sisu",
+      "feature": "Omadus"
     },
     "blogPost": "",
-    "legal": "",
+    "legal": "Õiguslik info",
     "description": ""
   },
   "accessType": {
@@ -855,5 +1196,76 @@
     "physical": "Kohapeal",
     "replay": "Kordus",
     "hybrid": "Kohapeal & veebis"
+  },
+  "search": {
+    "podcast": "Taskuhääling",
+    "podcasts": "Taskuhäälingud",
+    "newsletter": "Uudiskiri",
+    "all": "Kõik",
+    "categories": "Kategooriad",
+    "courses": "Kursused",
+    "books": "Raamatud",
+    "events": "Sündmused",
+    "course": "Kursus",
+    "event": "Sündmus",
+    "conference": "Konverents",
+    "newsletters": "Uudiskirjad",
+    "professor": "Professor",
+    "professors": "Professorid",
+    "project": "Projekt",
+    "projects": "Projektid",
+    "tutorial": "Õpetus",
+    "tutorials": "Õpetused",
+    "search": "Otsi",
+    "results": "Tulemused",
+    "book": "Raamat",
+    "glossary_words": "Sõnastiku sõnad",
+    "conference_replay": "Konverentsi kordus",
+    "conference_replays": "Konverentsi kordused",
+    "lecture_replay": "Loengu kordus",
+    "youtube_channel": "Youtube'i kanal",
+    "youtube_channels": "Youtube'i kanalid",
+    "glossary_word": "Sõnastiku sõna",
+    "course_part": "Kursuse osa",
+    "course_chapter": "Kursuse peatükk",
+    "searchResult": "Otsingutulemused",
+    "explorer": {
+      "title": "Otsinguportaal"
+    },
+    "lecture_replays": "Loengute kordused"
+  },
+  "filters": {
+    "categories": "Kategooriad",
+    "levels": "Tasemed",
+    "resources": "Materjalid",
+    "topics": "Teemad"
+  },
+  "projects": {
+    "languages": "Keeled",
+    "related": "Seotud",
+    "pageTitle": "Bitcoini projektid"
+  },
+  "notification": {
+    "types": {
+      "celebration": "Tähistamine",
+      "warning": "Hoiatus",
+      "assignment": "Ülesanne"
+    }
+  },
+  "notifications": {
+    "today": "Täna",
+    "unread": "Lugemata",
+    "notifications": "Teated",
+    "read": "Loe",
+    "select": "Vali",
+    "yesterday": "Eile",
+    "upcomingEvent": "Tulevane üritus",
+    "selectAll": "Vali kõik"
+  },
+  "youtubeChannels": {
+    "pageTitle": "Youtube'i kanalid"
+  },
+  "lectures": {
+    "pageTitle": "Loengute kordused"
   }
 }

@@ -165,7 +165,8 @@
       "seeCourse": "Descubre el Curso",
       "comingSoon": "próximamente",
       "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "La Plan ₿ School, dirigida por Giacomo Zucco, ofrece programas educativos intensivos de tres meses diseñados para cerrar la brecha entre el aprendizaje y las aplicaciones del mundo real. Más allá de las clases tradicionales, los estudiantes participan en proyectos prácticos dirigidos por empresas y un bootcamp de primera clase dedicado a los mejores intérpretes. Solo los mejores talentos avanzan después de dos rondas de selección competitivas, asegurando que los estudiantes finales más destacados estén completamente equipados para lanzar sus carreras en la industria de Bitcoin."
+      "planbSchoolHeadline": "La Plan ₿ School, dirigida por Giacomo Zucco, ofrece programas educativos intensivos de tres meses diseñados para cerrar la brecha entre el aprendizaje y las aplicaciones del mundo real. Más allá de las clases tradicionales, los estudiantes participan en proyectos prácticos dirigidos por empresas y un bootcamp de primera clase dedicado a los mejores intérpretes. Solo los mejores talentos avanzan después de dos rondas de selección competitivas, asegurando que los estudiantes finales más destacados estén completamente equipados para lanzar sus carreras en la industria de Bitcoin.",
+      "goal": "Objetivo:"
     },
     "part": {
       "count": "Parte {{count}}"
@@ -190,7 +191,9 @@
       "inPersonDescription": "Cada sesión de clase se lleva a cabo en persona en las fechas y lugares especificados y también se transmite en vivo en la plataforma. \nEsta compra te dará acceso tanto a las clases presenciales como en línea.\nNo olvides reservar tu asiento para las clases a las que quieras asistir en persona.",
       "onlineDescription": "Cada sesión de clase se transmite en vivo en la plataforma.\nEsta compra te otorgará acceso a transmisiones en vivo y videos de repeticiones.",
       "inPersonCallout": "Estás a punto de comprar acceso <strong>presencial</strong> a este curso.",
-      "checkoutError": "Se produjo un error durante el proceso de compra.\nPor favor, intenta de nuevo."
+      "checkoutError": "Se produjo un error durante el proceso de compra.\nPor favor, intenta de nuevo.",
+      "courseType": "Tipo de curso",
+      "hybridDescription": "Por favor revisa los detalles del curso proporcionados.\nCada lección se lleva a cabo en persona en las fechas y lugares especificados. Todas las clases siempre se transmiten en vivo y se graban para su reproducción.\n\nLa asistencia en persona se gestiona por lección, por lo que te pedimos amablemente que reserves tu asiento cada vez que desees asistir físicamente."
     },
     "quizz": {
       "clickOnPie": "Haz clic en el gráfico de pastel para verificar las respuestas correctas",
@@ -327,8 +330,15 @@
       "nbQuestions": "{{nb}} preguntas",
       "results": {
         "correct": "Respuestas correctas",
-        "incorrect": "Respuestas incorrectas"
-      }
+        "incorrect": "Respuestas incorrectas",
+        "time": "Tiempo utilizado",
+        "questions": "Preguntas respondidas"
+      },
+      "singleAttempt": "Examen de un solo intento",
+      "singleAttemptAvailability": "Este examen está disponible en línea desde {{date}}",
+      "singleAttemptPrecaution": "Antes de comenzar, asegura que tu conexión sea estable. Dado que este es un examen de un solo intento, si se desconecta, no podrás intentarlo de nuevo.",
+      "viewExam": "Ver la prueba",
+      "weight": "Peso: {{weight}}%"
     },
     "conclusion": {
       "completedChaptersHeadline": "¡Haz completado todos los capítulos!",
@@ -340,6 +350,11 @@
       "unlockFeatures1": "Para desbloquear todas las funciones y realizar un seguimiento de tu progreso, necesitas una cuenta.",
       "unlockFeatures2": "Ten en cuenta que no recopilamos ningún dato personal ni utilizamos cookies.",
       "stepsToComplete": "Estos son los pasos para marcar este curso como completado en tu panel de control, ¡antes de continuar tu viaje!"
+    },
+    "format": {
+      "hybrid": "En persona/en línea",
+      "inperson": "En persona",
+      "online": "En línea"
     }
   },
   "dashboard": {
@@ -545,7 +560,15 @@
       "deleteRole": "Eliminar rol",
       "editRole": "Editar rol",
       "hasAccessTo": "Tiene acceso a:",
-      "selectRole": "Seleccionar rol"
+      "selectRole": "Seleccionar rol",
+      "coupons": {
+        "close": "Cerrar",
+        "delete": "Eliminar",
+        "deleteDiscountCodeConfirm": "¿Estás seguro de que quieres eliminar este código de descuento?",
+        "deleteDiscountCodeSuccess": "Código de descuento eliminado exitosamente",
+        "cancel": "Cancelar",
+        "deleteDiscountCode": "Eliminar código de descuento"
+      }
     },
     "backToDashboard": "Volver al panel de control",
     "studentDashboard": "Panel de control del estudiante",
