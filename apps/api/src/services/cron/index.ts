@@ -9,14 +9,12 @@ import {
   createRefreshCoursesRatings,
 } from '@blms/service-content';
 import {
-  createAffectProjectToBizSchoolStudents,
   createExamTimestampService,
   createGetPendingCoursePayments,
   createGetPendingEventPayments,
   createGetSbpCheckout,
   createInsertUserNotifications,
   createPublishScheduledCourseAnnouncement,
-  createSelectBizSchoolStudentsForAssignments,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
   createStartCourse,
@@ -313,21 +311,21 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     });
   }
 
-  ctx.crons.addTask('jun1_23_gmt', async () => {
-    console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
-    const selectBizSchoolStudentsForAssignments =
-      createSelectBizSchoolStudentsForAssignments(ctx);
-    await selectBizSchoolStudentsForAssignments;
-    console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
-  });
+  // ctx.crons.addTask('jun1_23_gmt', async () => {
+  //   console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
+  //   const selectBizSchoolStudentsForAssignments =
+  //     createSelectBizSchoolStudentsForAssignments(ctx);
+  //   await selectBizSchoolStudentsForAssignments;
+  //   console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
+  // });
 
-  ctx.crons.addTask('jun3_0_gmt', async () => {
-    console.log('[cron] Running affectProjectToBizSchoolStudents job');
-    const affectProjectToBizSchoolStudents =
-      createAffectProjectToBizSchoolStudents(ctx);
-    await affectProjectToBizSchoolStudents;
-    console.log('[cron] Finished affectProjectToBizSchoolStudents job');
-  });
+  // ctx.crons.addTask('jun3_0_gmt', async () => {
+  //   console.log('[cron] Running affectProjectToBizSchoolStudents job');
+  //   const affectProjectToBizSchoolStudents =
+  //     createAffectProjectToBizSchoolStudents(ctx);
+  //   await affectProjectToBizSchoolStudents;
+  //   console.log('[cron] Finished affectProjectToBizSchoolStudents job');
+  // });
 
   if (timestampService) {
     // Every five minutes

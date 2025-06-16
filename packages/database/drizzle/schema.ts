@@ -1306,6 +1306,7 @@ export const usersCourseProgress = users.table(
     assignmentSubmissionTime: t.timestamp({ withTimezone: true }),
     assignmentGrade: t.integer(),
     ranking: t.integer(),
+    totalScore: t.integer(),
   }),
   (table) => ({
     pk: primaryKey({

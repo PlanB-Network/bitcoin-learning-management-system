@@ -1,0 +1,1 @@
+ALTER TABLE "users"."course_progress" ADD COLUMN "total_score" integer;
