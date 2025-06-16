@@ -126,6 +126,8 @@ export const minimalJoinedCourseSchema = courseSchema
     isGdprCompliance: true,
     customTcDisclaimer: true,
     isAssignmentGradingPublished: true,
+    passingGradeThreshold: true,
+    assignmentWeight: true,
   })
   .merge(
     z.object({

@@ -34,6 +34,8 @@ export interface Course {
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   isAssignmentGradingPublished: boolean;
+  passingGradeThreshold: number | null;
+  assignmentWeight: number | null;
   lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
@@ -192,6 +194,8 @@ export interface MinimalJoinedCourse {
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   isAssignmentGradingPublished: boolean;
+  passingGradeThreshold: number | null;
+  assignmentWeight: number | null;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -235,6 +239,8 @@ export interface JoinedCourseProfessorId {
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   isAssignmentGradingPublished: boolean;
+  passingGradeThreshold: number | null;
+  assignmentWeight: number | null;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -280,6 +286,8 @@ export interface JoinedCourse {
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   isAssignmentGradingPublished: boolean;
+  passingGradeThreshold: number | null;
+  assignmentWeight: number | null;
   projectName?: string | undefined;
   language: string;
   name: string;
@@ -370,6 +378,8 @@ export interface CourseResponse {
   isGdprCompliance: boolean;
   customTcDisclaimer: string | null;
   isAssignmentGradingPublished: boolean;
+  passingGradeThreshold: number | null;
+  assignmentWeight: number | null;
   projectName?: string | undefined;
   language: string;
   name: string;

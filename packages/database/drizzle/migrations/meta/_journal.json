@@ -827,6 +827,13 @@
       "when": 1749576884915,
       "tag": "0117_ambiguous_vision",
       "breakpoints": true
+    },
+    {
+      "idx": 118,
+      "version": "7",
+      "when": 1750086129694,
+      "tag": "0118_nosy_doctor_strange",
+      "breakpoints": true
     }
   ]
 }

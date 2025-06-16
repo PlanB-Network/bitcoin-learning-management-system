@@ -957,6 +957,8 @@ export const contentCourses = content.table('courses', (t) => ({
   customTcDisclaimer: t.text(),
 
   isAssignmentGradingPublished: t.boolean().notNull().default(false),
+  passingGradeThreshold: t.integer(),
+  assignmentWeight: t.integer(),
 
   lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   lastCommit: t.varchar({ length: 40 }).notNull(),

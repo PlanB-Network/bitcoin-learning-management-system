@@ -67,6 +67,8 @@ interface CourseMain {
   is_planb_school?: boolean;
   is_gdpr_compliance: boolean;
   custom_tc_disclaimer: string;
+  passing_grade_threshold_percentage: number;
+  assignment_weight_percentage: number;
   test_only?: boolean;
   videos?: {
     id: string;
@@ -455,6 +457,8 @@ export const createUpdateCourses = ({
                    has_logo,
                    is_gdpr_compliance,
                    custom_tc_disclaimer,
+                   passing_grade_threshold,
+                   assignment_weight,
                    last_updated,
                    last_commit,
                    last_sync
@@ -488,6 +492,8 @@ export const createUpdateCourses = ({
                   ${hasLogo},
                   ${parsedCourse.is_gdpr_compliance},
                   ${parsedCourse.custom_tc_disclaimer},
+                  ${parsedCourse.passing_grade_threshold_percentage},
+                  ${parsedCourse.assignment_weight_percentage},
                   ${lastUpdated.time},
                   ${lastUpdated.commit},
                   NOW()
@@ -520,6 +526,8 @@ export const createUpdateCourses = ({
                   has_logo = EXCLUDED.has_logo,
                   is_gdpr_compliance = EXCLUDED.is_gdpr_compliance,
                   custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
+                  passing_grade_threshold = EXCLUDED.passing_grade_threshold,
+                  assignment_weight = EXCLUDED.assignment_weight,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()
