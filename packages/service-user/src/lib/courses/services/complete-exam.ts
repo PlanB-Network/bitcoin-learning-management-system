@@ -1,4 +1,5 @@
 import type { Dependencies } from '../../../dependencies.js';
+import { calculateCourseScoreForUser } from '../queries/calculate-score.js';
 import { completeChapterQuery } from '../queries/complete-chapter.js';
 import {
   insertExamAttemptAnswersQuery,
@@ -53,6 +54,10 @@ export const createCompleteExamAttempt = ({ postgres }: Dependencies) => {
         }),
       )
       .then(async (result) => {
+        await postgres.exec(
+          calculateCourseScoreForUser(options.uid, options.courseId),
+        );
+
         if (succeeded) {
           await postgres.exec(
             completeChapterQuery(
