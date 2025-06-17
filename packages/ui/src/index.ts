@@ -2,6 +2,7 @@ export * from './bases/alert.tsx';
 export * from './bases/alert-dialog.tsx';
 export * from './bases/avatar.tsx';
 export * from './bases/badge.tsx';
+export * from './bases/banner.tsx';
 export * from './bases/button.tsx';
 export * from './bases/calendar.tsx';
 export * from './bases/card.tsx';

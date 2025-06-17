@@ -45,6 +45,16 @@ function DashboardStudentCourse() {
     ),
   );
 
+  const { data: userProgress } = useQuery(
+    trpc.user.courses.getProgress.queryOptions({
+      courseId: params.courseId,
+    }),
+  );
+
+  const courseProgress = userProgress?.[0];
+  const isSelectedForSummerSchool =
+    courseProgress?.isSelectedForFinalLesson ?? false;
+
   const reviewChapterId =
     course?.parts
       .flatMap((part) => part.chapters)
@@ -86,7 +96,7 @@ function DashboardStudentCourse() {
       text: t('dashboard.course.assignment'),
     });
   }
-  if (isBizSchool) {
+  if (isBizSchool && isSelectedForSummerSchool) {
     tabs.push({
       value: 'summerSchool',
       key: 'summerSchool',
@@ -168,7 +178,7 @@ function DashboardStudentCourse() {
             ) : null}
 
             {/* Summer school */}
-            {isBizSchool ? (
+            {isBizSchool && isSelectedForSummerSchool ? (
               <TabsContent value="summerSchool">
                 <SummerSchool courseId={course.id} />
               </TabsContent>
