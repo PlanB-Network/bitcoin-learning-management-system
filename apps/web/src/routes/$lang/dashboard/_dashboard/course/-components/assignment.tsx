@@ -5,6 +5,7 @@ import {
   AlertTitle,
   BasicModal,
   Button,
+  ButtonWithArrow,
   CollapsibleDropdown,
   DialogClose,
   Divider,
@@ -13,6 +14,7 @@ import {
   customToast,
 } from '@blms/ui';
 import { t } from 'i18next';
+import type React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { LuGripVertical } from 'react-icons/lu';
@@ -24,6 +26,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { Trans } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { FaTelegram } from 'react-icons/fa6';
@@ -495,7 +498,18 @@ export const Assignment = ({
               <InformationalPanel
                 icon={Certificate}
                 title={t('dashboard.course.assignmentCompletedTitle')}
-                description={t('dashboard.course.finalAverageGradeDescription')}
+                description={
+                  <ButtonWithArrow
+                    variant="outline"
+                    mode="light"
+                    size="s"
+                    asChild
+                  >
+                    <Link to={'#singleTrialExam'}>
+                      {t('dashboard.course.viewFinalGrade')}
+                    </Link>
+                  </ButtonWithArrow>
+                }
                 subtitle={
                   courseProgress?.assignmentGrade != null &&
                   courseProgress.assignmentGrade >= 0
@@ -731,7 +745,7 @@ const InformationalPanel = ({
   icon?: string;
   title?: string;
   subtitle?: string;
-  description?: string;
+  description?: string | React.ReactNode;
   className?: string;
   iconClassName?: string;
 }) => {

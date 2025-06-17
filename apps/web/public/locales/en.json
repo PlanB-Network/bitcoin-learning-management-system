@@ -804,6 +804,7 @@
       "thresholdToPass": "Threshold to pass: {{threshold}}%",
       "tresholdToPass": "",
       "tweetText": "Thrilled to have completed {{courseIndex}} course at @planb_network and earned my diploma with a score of {{score}}/100 on the final exam! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "viewFinalGrade": "View final grade",
       "yourProject": "Your project"
     },
     "courses": "Courses",
