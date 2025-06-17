@@ -13,10 +13,12 @@ interface Options {
 
 export const createSaveCourseAssignmentGrade = ({ postgres }: Dependencies) => {
   return async (options: Options): Promise<void> => {
-    const coordinators = await getCourseCoordinatorsQuery(options.courseId);
-    const userDetails = await getUserByIdQuery(options.teacherUid).then(
-      firstRow,
+    const coordinators = await postgres.exec(
+      getCourseCoordinatorsQuery(options.courseId),
     );
+    const userDetails = await postgres
+      .exec(getUserByIdQuery(options.teacherUid))
+      .then(firstRow);
 
     if (!coordinators.some((c) => c.professorId === userDetails?.professorId)) {
       throw new Error(

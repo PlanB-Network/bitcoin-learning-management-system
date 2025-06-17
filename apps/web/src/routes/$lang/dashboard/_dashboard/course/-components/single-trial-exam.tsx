@@ -34,6 +34,12 @@ export const SingleTrialExam = ({
     }),
   );
 
+  const { data: enrolledStudentsCount } = useQuery(
+    trpc.user.courses.getEnrolledStudentsCount.queryOptions({
+      courseId: course.id,
+    }),
+  );
+
   const courseProgress = userProgress?.[0];
   const assignmentScore = courseProgress?.assignmentGrade;
 
@@ -49,7 +55,7 @@ export const SingleTrialExam = ({
 
   const finalScore = courseProgress?.totalScore || 0;
   const passingThreshold = course.passingGradeThreshold ?? 50;
-  const placeholderTotalStudents = 200;
+  const totalStudents = enrolledStudentsCount ?? '-';
 
   const hasPassed = finalScore >= passingThreshold;
 
@@ -102,8 +108,7 @@ export const SingleTrialExam = ({
                       'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
                     )}
                   >
-                    {courseProgress?.ranking ?? '-'} /{' '}
-                    {placeholderTotalStudents}
+                    {courseProgress?.ranking ?? '-'} / {totalStudents}
                   </span>
                   <span className="subtitle-medium-16px md:label-18px text-newGray-1">
                     {t('dashboard.course.ranking')}

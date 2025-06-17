@@ -497,7 +497,8 @@ export const Assignment = ({
                 title={t('dashboard.course.assignmentCompletedTitle')}
                 description={t('dashboard.course.finalAverageGradeDescription')}
                 subtitle={
-                  courseProgress?.assignmentGrade
+                  courseProgress?.assignmentGrade != null &&
+                  courseProgress.assignmentGrade >= 0
                     ? `${courseProgress.assignmentGrade}%`
                     : 'N/A'
                 }
