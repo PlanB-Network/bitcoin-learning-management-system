@@ -20,7 +20,7 @@ export const calculateCourseScoreForUser = (uid: string, courseId: string) => {
               AND ccl.language = cc.original_language
           ), 0)
           +
-          COALESCE(ucp.assignment_grade::float / cc.assignment_weight, 0)
+          COALESCE(ucp.assignment_grade::float  * cc.assignment_weight / 100, 0)
         ) AS totalScore
       FROM users.course_progress ucp
       JOIN content.courses cc ON ucp.course_id = cc.id
@@ -59,7 +59,7 @@ export const calculateCourseScoreForAllUsers = (courseId: string) => {
         ucp.uid,
         ucp.course_id,
         COALESCE(es.exam_score, 0) +
-        COALESCE(ucp.assignment_grade::float / cc.assignment_weight, 0) AS total_score
+        COALESCE(ucp.assignment_grade::float * cc.assignment_weight / 100, 0) AS total_score
       FROM users.course_progress ucp
       JOIN content.courses cc ON ucp.course_id = cc.id
       LEFT JOIN exam_scores es ON ucp.uid = es.uid AND ucp.course_id = es.course_id

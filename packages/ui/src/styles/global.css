@@ -545,6 +545,10 @@
   @apply text-lg leading-[160%] font-normal tracking-015px;
 }
 
+@utility subtitle-large-med-18px {
+  @apply text-lg leading-[160%] font-medium tracking-015px;
+}
+
 @utility subtitle-medium-caps-18px {
   @apply text-lg leading-normal font-medium tracking-normal uppercase;
 }

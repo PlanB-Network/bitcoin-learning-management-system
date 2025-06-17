@@ -24,6 +24,7 @@ import {
   createGetAllSucceededUserExams,
   createGetAllUserCourseExamsResults,
   createGetCourseReview,
+  createGetEnrolledStudentsCount,
   createGetExamInfo,
   createGetExamQuestions,
   createGetLatestExamResults,
@@ -39,6 +40,7 @@ import {
   createSaveCourseReview,
   createSaveQuizAttempt,
   createSaveUserChapter,
+  createSetCourseAssignmentGradesAsPublished,
   createStartCourse,
   createStartExamAttempt,
   createTemporarySaveExamAttempt,
@@ -492,6 +494,33 @@ const saveCourseAssignmentGradeProcedure = professorProcedure
     });
   });
 
+const setCourseAssignmentGradesAsPublishedProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(({ ctx, input }) => {
+    return createSetCourseAssignmentGradesAsPublished(ctx.dependencies)({
+      courseId: input.courseId,
+      teacherUid: ctx.user.uid,
+    });
+  });
+
+const getEnrolledStudentsCountProcedure = studentProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<number>>(z.number())
+  .query(({ ctx, input }) => {
+    return createGetEnrolledStudentsCount(ctx.dependencies)({
+      courseId: input.courseId,
+    });
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -500,6 +529,7 @@ export const userCoursesRouter = createTRPCRouter({
   getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getAllSucceededUserExams: getAllSucceededUserExamsProcedure,
   getCourseReview: getCourseReviewProcedure,
+  getEnrolledStudentsCount: getEnrolledStudentsCountProcedure,
   getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
@@ -515,6 +545,8 @@ export const userCoursesRouter = createTRPCRouter({
   saveQuizAttempt: saveQuizAttemptProcedure,
   saveUserChapter: saveUserChapterProcedure,
   saveCoursePayment: saveCoursePaymentProcedure,
+  setCourseAssignmentGradesAsPublished:
+    setCourseAssignmentGradesAsPublishedProcedure,
   startCourse: startCourseProcedure,
   startExamAttempt: startExamAttemptProcedure,
   temporarySaveExamAttempt: temporarySaveExamAttemptProcedure,

@@ -5,16 +5,19 @@ import {
   AlertTitle,
   BasicModal,
   Button,
+  ButtonWithArrow,
   CollapsibleDropdown,
   DialogClose,
   Divider,
+  Loader,
   cn,
   customToast,
 } from '@blms/ui';
 import { t } from 'i18next';
+import type React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
-import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
+import { LuGripVertical } from 'react-icons/lu';
 import Certificate from '#src/assets/icons/certificate.svg';
 import SadFace from '#src/assets/icons/face_sad.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
@@ -23,6 +26,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { Trans } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { FaTelegram } from 'react-icons/fa6';
@@ -33,6 +37,7 @@ import {
 } from 'react-icons/io5';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { TbAlertOctagon } from 'react-icons/tb';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -58,6 +63,9 @@ export const Assignment = ({
   courseId: string;
 }) => {
   const { user } = useContext(AppContext);
+  const { courses } = useContext(AppContext);
+
+  const courseInfo = courses?.find((course) => course.id === courseId);
 
   const [assignmentsOrdered, setAssignmentsOrdered] = useState<
     CourseAssignment[]
@@ -273,6 +281,10 @@ export const Assignment = ({
     }
   }, [assignments]);
 
+  if (!courseInfo) {
+    return <Loader />;
+  }
+
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
       <div className="flex flex-col gap-5">
@@ -301,7 +313,7 @@ export const Assignment = ({
 
             {!hasAlreadyRanked && (
               <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={LuCircleAlert}>
+                <AlertTitle icon={TbAlertOctagon}>
                   {t('dashboard.course.projectRankingInstructions')}
                 </AlertTitle>
                 <AlertDescription>
@@ -416,7 +428,7 @@ export const Assignment = ({
               </h3>
 
               <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={LuCircleAlert}>
+                <AlertTitle icon={TbAlertOctagon}>
                   {t('dashboard.course.submissionInstructions')}
                 </AlertTitle>
                 <AlertDescription>
@@ -481,13 +493,39 @@ export const Assignment = ({
             </div>
           )}
 
-          {hasSubmittedWork && (
-            <InformationalPanel
-              icon={Certificate}
-              title={t('dashboard.course.assignmentCompletedTitle')}
-              description={t('dashboard.course.assignmentCompletedDescription')}
-            />
-          )}
+          {hasSubmittedWork &&
+            (courseInfo.isAssignmentGradingPublished ? (
+              <InformationalPanel
+                icon={Certificate}
+                title={t('dashboard.course.assignmentCompletedTitle')}
+                description={
+                  <ButtonWithArrow
+                    variant="outline"
+                    mode="light"
+                    size="s"
+                    asChild
+                  >
+                    <Link to={'#singleTrialExam'}>
+                      {t('dashboard.course.viewFinalGrade')}
+                    </Link>
+                  </ButtonWithArrow>
+                }
+                subtitle={
+                  courseProgress?.assignmentGrade != null &&
+                  courseProgress.assignmentGrade >= 0
+                    ? `${courseProgress.assignmentGrade}%`
+                    : 'N/A'
+                }
+              />
+            ) : (
+              <InformationalPanel
+                icon={Certificate}
+                title={t('dashboard.course.assignmentCompletedTitle')}
+                description={t(
+                  'dashboard.course.assignmentCompletedDescription',
+                )}
+              />
+            ))}
         </div>
       )}
 
@@ -707,7 +745,7 @@ const InformationalPanel = ({
   icon?: string;
   title?: string;
   subtitle?: string;
-  description?: string;
+  description?: string | React.ReactNode;
   className?: string;
   iconClassName?: string;
 }) => {
@@ -733,7 +771,7 @@ const InformationalPanel = ({
         )}
       </div>
       {subtitle && (
-        <span className="text-darkOrange-5 display-medium-bold-caps-32px display-large-bold-caps-48px">
+        <span className="text-darkOrange-5 display-medium-bold-caps-32px md:display-large-bold-caps-48px">
           {subtitle}
         </span>
       )}
