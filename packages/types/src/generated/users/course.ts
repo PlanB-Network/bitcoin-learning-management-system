@@ -15,6 +15,7 @@ export interface CourseProgress {
   assignmentGrade: number | null;
   ranking: number | null;
   totalScore: number | null;
+  isSelectedForFinalLesson: boolean | null;
 }
 
 export interface CoursePayment {
@@ -113,6 +114,7 @@ export interface CourseProgressExtended {
   assignmentGrade: number | null;
   ranking: number | null;
   totalScore: number | null;
+  isSelectedForFinalLesson: boolean | null;
   courseIndex: string;
   totalChapters: number;
   chapters: {
