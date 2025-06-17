@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 import { cn, isString } from '#src/lib/utils.ts';
 
-const cardStyles = cva('flex flex-col rounded-[10px] lg:rounded-3xl border', {
+const cardStyles = cva('flex flex-col rounded-[10px] lg:rounded-3xl border ', {
   variants: {
     color: {
       gray: 'bg-gray-100 border-gray-200',
@@ -44,7 +44,7 @@ export const Card = ({
       <div
         className={cn(
           'grow',
-          withPadding ? 'px-4 pt-8 pb-11 lg:py-16 lg:px-[50px]' : '',
+          withPadding ? 'px-4 pt-8 pb-11 lg:py-16 lg:px-8' : '',
           paddingClass,
         )}
       >

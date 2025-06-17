@@ -5,7 +5,7 @@ import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { SlGlobe } from 'react-icons/sl';
 import { z } from 'zod';
 
-import BookPixel from '#src/assets/icons/book-pixelated.svg?react';
+import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import newsletterSvg from '#src/assets/icons/world-pixelated.svg';
 import conferenceSvg from '#src/assets/resources/conference.svg';
 import youtubeSvg from '#src/assets/resources/youtube.svg';

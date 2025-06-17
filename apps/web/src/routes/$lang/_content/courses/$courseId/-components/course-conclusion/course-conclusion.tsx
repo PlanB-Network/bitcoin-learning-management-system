@@ -11,13 +11,13 @@ import congratsDarkMobile from '#src/assets/animations/congrats_animation_dark_m
 import completionStepsMobile from '#src/assets/courses/completion-steps-course-mobile.webp?no-inline';
 import completionSteps from '#src/assets/courses/completion-steps-course.webp?no-inline';
 import conclusionBlurred from '#src/assets/courses/conclusion_blurred.webp?no-inline';
-import BookPixel from '#src/assets/icons/book-pixelated.svg?react';
 import BookOpen from '#src/assets/icons/book_open.svg?react';
 import FailurePixel from '#src/assets/icons/failure-pixelated.svg?react';
 import Finish from '#src/assets/icons/finish.svg?react';
 import HeartPixel from '#src/assets/icons/heart-pixelated.svg?react';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import Padlock from '#src/assets/icons/padlock.svg?react';
+import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import SpeechIcon from '#src/assets/icons/speech_icon.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import ThumbUp from '#src/assets/icons/thumb-up-pixelated.svg?react';

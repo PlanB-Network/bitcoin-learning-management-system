@@ -46,7 +46,7 @@ const BannerTitle = React.forwardRef<
   <h5
     ref={ref}
     className={cn(
-      ' flex items-center text-xl font-medium gap-0 md:gap-2',
+      ' flex items-center md:text-xl font-medium gap-0 md:gap-2',
       className,
     )}
     {...props}
