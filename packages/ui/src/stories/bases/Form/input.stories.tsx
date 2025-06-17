@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Input } from '../../bases/input.js';
+import { Input } from '#src/bases/input.tsx';
 
 const meta: Meta<typeof Input> = {
   title: 'Bases/Form/input',

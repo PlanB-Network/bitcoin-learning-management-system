@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
-import { Ratings } from '../../bases/ratings.js';
+import { Ratings } from '#src/bases/ratings.tsx';
 
 const meta: Meta<typeof Ratings> = {
   component: Ratings,

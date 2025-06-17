@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
-import { Label } from '../../bases/label.js';
+import { Label } from '#src/bases/label.tsx';
 
 const meta: Meta<typeof Label> = {
   component: Label,

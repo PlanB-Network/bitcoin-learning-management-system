@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
-import { Slider } from '../../bases/slider.js';
+import { Slider } from '#src/bases/slider.tsx';
 
 const meta: Meta<typeof Slider> = {
   component: Slider,

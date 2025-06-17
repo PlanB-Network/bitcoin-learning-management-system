@@ -9,7 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../../bases/alert-dialog.tsx';
+} from '#src/bases/alert-dialog.tsx';
 
 const meta: Meta<typeof AlertDialog> = {
   component: AlertDialog,

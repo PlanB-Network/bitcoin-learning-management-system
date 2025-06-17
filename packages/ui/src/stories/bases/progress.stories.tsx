@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Progress } from '../../bases/progress.js';
+import { Progress } from '#src/bases/progress.js';
 import OrangePill from '../assets/orange_pill_color.svg';
 
 const meta: Meta<typeof Progress> = {

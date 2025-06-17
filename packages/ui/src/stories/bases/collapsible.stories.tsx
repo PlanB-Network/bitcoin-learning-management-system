@@ -4,7 +4,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '../../bases/collapsible.js';
+} from '#src/bases/collapsible.js';
 
 const meta: Meta<typeof Collapsible> = {
   component: Collapsible,

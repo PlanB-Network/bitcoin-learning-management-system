@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '../../bases/tooltip.js';
+} from '#src/bases/tooltip.js';
 
 const meta: Meta<typeof TooltipProvider> = {
   component: TooltipProvider,

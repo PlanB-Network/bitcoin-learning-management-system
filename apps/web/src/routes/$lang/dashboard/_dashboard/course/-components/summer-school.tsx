@@ -14,6 +14,10 @@ export const SummerSchool = ({
     }),
   );
 
+  const courseProgress = userProgress?.[0];
+  const isSelectedForSummerSchool =
+    courseProgress?.isSelectedForFinalLesson ?? false;
+
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
       <div className="flex flex-col gap-5">
@@ -32,8 +36,21 @@ export const SummerSchool = ({
           </p>
         </CollapsibleDropdown>
       </div>
-
-      {userProgressFetched && userProgress ? <div /> : <Loader />}
+      {userProgressFetched && userProgress ? (
+        <>
+          {isSelectedForSummerSchool ? (
+            <div>
+              <p>YOU ARE SELECTED</p>
+            </div>
+          ) : (
+            <div>
+              <p>Not selected...</p>
+            </div>
+          )}
+        </>
+      ) : (
+        <Loader />
+      )}
     </section>
   );
 };

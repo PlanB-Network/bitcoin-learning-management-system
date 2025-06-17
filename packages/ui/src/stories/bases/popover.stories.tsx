@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button } from '../../bases/button.js';
+import { Button } from '#src/bases/button.js';
 import {
   Popover,
   PopoverContent,

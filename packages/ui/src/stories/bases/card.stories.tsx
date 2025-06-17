@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Card } from '../../bases/card.js';
+import { Card } from '#src/bases/card.js';
 
 const meta: Meta<typeof Card> = {
   component: Card,

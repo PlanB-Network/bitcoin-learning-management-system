@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-
 import {
   Select,
   SelectContent,
@@ -8,7 +7,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '../../bases/select.js';
+} from '#src/bases/select.tsx';
 
 const meta: Meta<typeof Select> = {
   title: 'Bases/Form/select',
