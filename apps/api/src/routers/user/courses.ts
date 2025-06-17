@@ -39,6 +39,7 @@ import {
   createSaveCourseReview,
   createSaveQuizAttempt,
   createSaveUserChapter,
+  createSetCourseAssignmentGradesAsPublished,
   createStartCourse,
   createStartExamAttempt,
   createTemporarySaveExamAttempt,
@@ -492,6 +493,20 @@ const saveCourseAssignmentGradeProcedure = professorProcedure
     });
   });
 
+const setCourseAssignmentGradesAsPublishedProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(({ ctx, input }) => {
+    return createSetCourseAssignmentGradesAsPublished(ctx.dependencies)({
+      courseId: input.courseId,
+      teacherUid: ctx.user.uid,
+    });
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -515,6 +530,8 @@ export const userCoursesRouter = createTRPCRouter({
   saveQuizAttempt: saveQuizAttemptProcedure,
   saveUserChapter: saveUserChapterProcedure,
   saveCoursePayment: saveCoursePaymentProcedure,
+  setCourseAssignmentGradesAsPublished:
+    setCourseAssignmentGradesAsPublishedProcedure,
   startCourse: startCourseProcedure,
   startExamAttempt: startExamAttemptProcedure,
   temporarySaveExamAttempt: temporarySaveExamAttemptProcedure,

@@ -67,7 +67,7 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
   );
 
   const setGradesAsPublishedMutation = useMutation(
-    trpc.content.setCourseAssignmentGradesAsPublished.mutationOptions({
+    trpc.user.courses.setCourseAssignmentGradesAsPublished.mutationOptions({
       onSuccess: async () => {
         await refetchCourse();
         await refetchAssignments();

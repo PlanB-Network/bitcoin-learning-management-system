@@ -22,6 +22,7 @@ export * from './send-course-announcement-email.js';
 export * from './send-course-starting-soon-email.js';
 export * from './send-course-weekly-recap-email.js';
 export * from './send-course-welcome-email.js';
+export * from './set-assignment-grades-published.js';
 export * from './start-course.js';
 export * from './start-exam-attempt.js';
 export * from './update-payment.js';

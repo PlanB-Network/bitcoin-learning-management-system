@@ -1,7 +1,7 @@
 import { firstRow } from '@blms/database';
-import type { Dependencies } from '#src/lib/dependencies.js';
-import { getCourseCoordinatorsQuery } from '../../professors/queries/get-course-coordinators.js';
-import { getUserProfessorIdQuery } from '../../professors/queries/get-user-professor-id.js';
+import type { Dependencies } from '#src/dependencies.js';
+import { getUserByIdQuery } from '../../account/queries/get-user.js';
+import { getCourseCoordinatorsQuery } from '../queries/get-course-coordinators.js';
 import { setCourseAssignmentGradesAsPublishedQuery } from '../queries/set-assignment-grades-published.js';
 
 interface Options {
@@ -14,7 +14,7 @@ export const createSetCourseAssignmentGradesAsPublished = ({
 }: Dependencies) => {
   return async (options: Options): Promise<void> => {
     const coordinators = await getCourseCoordinatorsQuery(options.courseId);
-    const userDetails = await getUserProfessorIdQuery(options.teacherUid).then(
+    const userDetails = await getUserByIdQuery(options.teacherUid).then(
       firstRow,
     );
 
