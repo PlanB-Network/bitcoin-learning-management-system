@@ -466,7 +466,6 @@
       "saveList": "Sačuvajte listu",
       "submissionInstructions": "Uputstva za podnošenje",
       "submitYourWork": "Predajte svoj rad",
-      "summerSchoolInformation": "Informacije o letnjoj školi",
       "surePreferenceList": "Da li ste sigurni da je Vaša lista preferencija konačna?",
       "confirmNoEditable": "Jednom potvrđena, ovu listu preferencija više neće biti moguće izmeniti.",
       "notSelectedAssignment": "Nažalost, niste izabrani da učestvujete u izradi projekta.\nMožete i dalje nastaviti da pratite predavanja na kursu",
@@ -478,8 +477,7 @@
       "submitBefore": "Morate predati svoj rad pre <0>18. juna u 23:59 (UTC+2)</0>. Radovi primljeni nakon ovog roka neće biti ocenjeni.",
       "listSavedComeTomorrow": "Vaša lista preferencija je sačuvana. \nVratite se ovde sutra da otkrijete na koji ste projekat dodeljeni.",
       "submitFileNamingFormat": "Vaša datoteka mora biti imenovana koristeći sledeći format:\n<0>ime_firme_korisničko_ime.pdf</0>.\nUklonite sve razmake iz imena firme, koristite tačno korisničko ime na platformi planB.network i proverite da li ima grešaka u kucanju.",
-      "summerSchool": "Letnja škola",
-      "summerSchoolDescription": "Letnja škola Lugano obeležava treću fazu programa Plan ₿ Biz škole. Samo 21 najbolja rangirana studenata je pozvano da učestvuje ove nedelje."
+      "summerSchool": "Letnja škola"
     },
     "bCert": {
       "grade": "Ocena",
