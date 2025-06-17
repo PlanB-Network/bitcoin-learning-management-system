@@ -1,0 +1,1 @@
+ALTER TABLE "users"."course_progress" ADD COLUMN "is_selected_for_final_lesson" boolean DEFAULT false;

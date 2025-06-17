@@ -1307,6 +1307,7 @@ export const usersCourseProgress = users.table(
     assignmentGrade: t.integer(),
     ranking: t.integer(),
     totalScore: t.integer(),
+    isSelectedForFinalLesson: t.boolean().default(false),
   }),
   (table) => ({
     pk: primaryKey({
