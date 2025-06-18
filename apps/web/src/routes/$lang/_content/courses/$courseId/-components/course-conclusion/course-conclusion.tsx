@@ -12,6 +12,7 @@ import completionStepsMobile from '#src/assets/courses/completion-steps-course-m
 import completionSteps from '#src/assets/courses/completion-steps-course.webp?no-inline';
 import conclusionBlurred from '#src/assets/courses/conclusion_blurred.webp?no-inline';
 import BookOpen from '#src/assets/icons/book_open.svg?react';
+import Certificate from '#src/assets/icons/certificate.svg?react';
 import FailurePixel from '#src/assets/icons/failure-pixelated.svg?react';
 import Finish from '#src/assets/icons/finish.svg?react';
 import HeartPixel from '#src/assets/icons/heart-pixelated.svg?react';
@@ -38,6 +39,7 @@ interface CourseConclusionProps {
 
 const STEP_DURATION = 2100;
 
+// TODO: Huge refactor needed here, this component is too big and complex (especially conditions)
 export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   const { i18n } = useTranslation();
 
@@ -82,6 +84,18 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   )?.chapterId;
   const conclusionChapter = courseChapters?.find((c) => c.isCourseConclusion);
 
+  const hasSingleTrialExamAndThreshold =
+    course?.parts.some((part) =>
+      part.chapters.some((chapter) => chapter.isSingleTrialExam),
+    ) && !!course.passingGradeThreshold;
+  const totalScore = courseProgress?.[0]?.totalScore;
+  const hasPassedCourseThreshold =
+    totalScore !== undefined &&
+    totalScore !== null &&
+    course?.passingGradeThreshold !== undefined &&
+    course?.passingGradeThreshold !== null &&
+    totalScore >= course.passingGradeThreshold;
+
   const completeAllChaptersMutation = useMutation(
     trpc.user.courses.completeAllChapters.mutationOptions({
       onSuccess: () => {
@@ -107,7 +121,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
         courseId: chapter.courseId,
       },
       {
-        enabled: step >= 2,
+        enabled: step >= 2 && !hasSingleTrialExamAndThreshold,
       },
     ),
   );
@@ -157,7 +171,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             c &&
             !c?.isCourseConclusion &&
             !c?.isCourseExam &&
-            !c?.isCourseReview,
+            !c?.isCourseReview &&
+            !c?.isSingleTrialExam,
         );
 
       const unfinishedClassicChapters = classicChapters.filter(
@@ -197,7 +212,10 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     if (isCourseExamSkipped && step === 3) {
       setTimeout(() => updateStep(6), STEP_DURATION);
     }
-    if (previousExamResults?.succeeded && step === 3) {
+    if (
+      (previousExamResults?.succeeded || hasSingleTrialExamAndThreshold) &&
+      step === 3
+    ) {
       setTimeout(
         () => updateStep(isCourseReviewSkipped ? 6 : 4),
         STEP_DURATION,
@@ -274,7 +292,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
       <p className="text-darkOrange-5 text-2xl leading-snug max-md:title-medium-sb-18px">
         {t('courses.conclusion.congratulationsEnd')}
       </p>
-      {session?.user && examChapterId ? (
+      {session?.user && (examChapterId || conclusionChapter?.releaseDate) ? (
         <>
           <p className="text-newBlack-1 body-16px mb-3 max-md:hidden">
             {step >= 5
@@ -357,10 +375,15 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
 
             <HeaderBox
               text={t('words.exam')}
-              isDone={step >= 3 && !!previousExamResults?.succeeded}
+              isDone={
+                step >= 3 &&
+                (!!previousExamResults?.succeeded ||
+                  !!hasSingleTrialExamAndThreshold)
+              }
               isCurrentStep={step === 3 || isCourseExamSkipped}
             >
-              {step < 3 || !previousExamResults ? (
+              {step < 3 ||
+              (!previousExamResults && !hasSingleTrialExamAndThreshold) ? (
                 <BookPixel
                   className={cn(
                     iconSizeClass,
@@ -371,7 +394,11 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                 />
               ) : (
                 <>
-                  {previousExamResults?.succeeded ? (
+                  {hasSingleTrialExamAndThreshold ? (
+                    <Certificate
+                      className={cn(iconSizeClass, 'filter-white')}
+                    />
+                  ) : previousExamResults?.succeeded ? (
                     <SuccessParty className={cn(iconSizeClass, 'fill-white')} />
                   ) : (
                     <span className={stepPercentageClass}>
@@ -384,7 +411,9 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             <div className={lineContainerClass}>
               <div className={linkMainClass}>
                 {step >= 3 &&
-                (previousExamResults?.succeeded || isCourseExamSkipped) ? (
+                (previousExamResults?.succeeded ||
+                  !!hasSingleTrialExamAndThreshold ||
+                  isCourseExamSkipped) ? (
                   <div className={linkSubClass} />
                 ) : null}
               </div>
@@ -500,45 +529,34 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             ) : null}
 
             {step >= 3 && step <= 4 ? (
-              <StepMessage
-                title={t('courses.exam.finalExam')}
-                headline={
-                  previousExamResults ? (
-                    previousExamResults.succeeded ? (
-                      <Trans i18nKey={'courses.exam.congratulationsPassed'}>
-                        <span className="font-semibold">{'passed'}</span>
-                      </Trans>
-                    ) : (
-                      <>
-                        <Trans i18nKey={'courses.exam.oopsFailed'}>
-                          <span className="font-semibold">{'failed'}</span>
-                        </Trans>
-                        <br />
-                        <span>
-                          {t('courses.exam.score')}{' '}
-                          <span
-                            className={cn(
-                              'font-semibold',
-                              previousExamResults.succeeded
-                                ? 'text-brightGreen-5'
-                                : 'text-red-5',
-                            )}
-                          >
-                            {previousExamResults.score}%
-                          </span>
+              hasSingleTrialExamAndThreshold ? (
+                <StepMessage
+                  title={t('courses.exam.finalScore')}
+                  headline={
+                    <>
+                      <p className="whitespace-pre-line">
+                        {hasPassedCourseThreshold
+                          ? t('courses.exam.successfulPassedThreshold')
+                          : t('courses.exam.solidEffort')}
+                      </p>
+                      <br />
+                      <span>
+                        {t('courses.exam.score')}{' '}
+                        <span
+                          className={cn(
+                            'font-semibold',
+                            hasPassedCourseThreshold
+                              ? 'text-brightGreen-5'
+                              : 'text-red-5',
+                          )}
+                        >
+                          {totalScore || 'N/A'}%
                         </span>
-                        <br />
-                        {!previousExamResults.succeeded &&
-                          t('courses.exam.dontWorryRetake')}
-                      </>
-                    )
-                  ) : (
-                    t('courses.conclusion.takeFinalExam')
-                  )
-                }
-                icon={
-                  previousExamResults ? (
-                    previousExamResults.succeeded ? (
+                      </span>
+                    </>
+                  }
+                  icon={
+                    hasPassedCourseThreshold ? (
                       <SuccessParty
                         className={cn(
                           stepMessageIconClass,
@@ -546,58 +564,115 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                         )}
                       />
                     ) : (
-                      <FailurePixel
+                      <Certificate
                         className={cn(stepMessageIconClass, 'fill-red-5')}
                       />
                     )
-                  ) : (
-                    <BookPixel
-                      className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
-                    />
-                  )
-                }
-                actionButton={
-                  previousExamResults?.succeeded ? undefined : (
-                    <div className="flex max-md:flex-col gap-4">
-                      <Button
-                        disabled={
-                          previousExamResults
-                            ? previousExamResults.succeeded
-                              ? false
-                              : new Date(
-                                  previousExamResults.startedAt,
-                                ).getTime() +
-                                  ONE_DAY_IN_MS >
-                                Date.now()
-                            : false
-                        }
-                      >
-                        <Link
-                          to="/courses/$courseId/$chapterId"
-                          params={{
-                            courseId: course?.id,
-                            chapterId: examChapterId,
+                  }
+                />
+              ) : (
+                <StepMessage
+                  title={t('courses.exam.finalExam')}
+                  headline={
+                    previousExamResults ? (
+                      previousExamResults.succeeded ? (
+                        <Trans i18nKey={'courses.exam.congratulationsPassed'}>
+                          <span className="font-semibold">{'passed'}</span>
+                        </Trans>
+                      ) : (
+                        <>
+                          <Trans i18nKey={'courses.exam.oopsFailed'}>
+                            <span className="font-semibold">{'failed'}</span>
+                          </Trans>
+                          <br />
+                          <span>
+                            {t('courses.exam.score')}{' '}
+                            <span
+                              className={cn(
+                                'font-semibold',
+                                previousExamResults.succeeded
+                                  ? 'text-brightGreen-5'
+                                  : 'text-red-5',
+                              )}
+                            >
+                              {previousExamResults.score}%
+                            </span>
+                          </span>
+                          <br />
+                          {!previousExamResults.succeeded &&
+                            t('courses.exam.dontWorryRetake')}
+                        </>
+                      )
+                    ) : (
+                      t('courses.conclusion.takeFinalExam')
+                    )
+                  }
+                  icon={
+                    previousExamResults ? (
+                      previousExamResults.succeeded ? (
+                        <SuccessParty
+                          className={cn(
+                            stepMessageIconClass,
+                            'fill-brightGreen-5',
+                          )}
+                        />
+                      ) : (
+                        <FailurePixel
+                          className={cn(stepMessageIconClass, 'fill-red-5')}
+                        />
+                      )
+                    ) : (
+                      <BookPixel
+                        className={cn(
+                          stepMessageIconClass,
+                          'fill-darkOrange-5',
+                        )}
+                      />
+                    )
+                  }
+                  actionButton={
+                    previousExamResults?.succeeded ? undefined : (
+                      <div className="flex max-md:flex-col gap-4">
+                        <Button
+                          disabled={
+                            previousExamResults
+                              ? previousExamResults.succeeded
+                                ? false
+                                : new Date(
+                                    previousExamResults.startedAt,
+                                  ).getTime() +
+                                    ONE_DAY_IN_MS >
+                                  Date.now()
+                              : false
+                          }
+                        >
+                          <Link
+                            to="/courses/$courseId/$chapterId"
+                            params={{
+                              courseId: course?.id,
+                              chapterId: examChapterId,
+                            }}
+                          >
+                            {previousExamResults
+                              ? t('courses.exam.tryAgain')
+                              : t('courses.exam.takeExam')}
+                          </Link>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-fit mx-auto"
+                          onClick={() => {
+                            scrollToHeader();
+                            setIsCourseExamSkipped(true);
                           }}
                         >
-                          {previousExamResults
-                            ? t('courses.exam.tryAgain')
-                            : t('courses.exam.takeExam')}
-                        </Link>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="w-fit mx-auto"
-                        onClick={() => {
-                          scrollToHeader();
-                          setIsCourseExamSkipped(true);
-                        }}
-                      >
-                        {t('words.skip')}
-                      </Button>
-                    </div>
-                  )
-                }
-              />
+                          {t('words.skip')}
+                        </Button>
+                      </div>
+                    )
+                  }
+                />
+              )
             ) : null}
 
             {step === 5 && (
@@ -634,6 +709,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               <ConclusionFinish
                 course={course}
                 examResults={previousExamResults ?? undefined}
+                hasSingleTrialExamAndThreshold={hasSingleTrialExamAndThreshold}
+                hasPassedCourseThreshold={hasPassedCourseThreshold}
               />
             ) : null}
           </div>

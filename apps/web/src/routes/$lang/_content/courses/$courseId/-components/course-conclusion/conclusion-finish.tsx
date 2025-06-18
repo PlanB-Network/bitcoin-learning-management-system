@@ -4,7 +4,8 @@ import React, { useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
-import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
+import CertificateSelfPacedSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
+import CertificateTeacherLedSatoshiImage from '#src/assets/courses/diploma-teacher-led-satoshi.webp?no-inline';
 
 import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { ButtonWithArrow, DividerSimple } from '@blms/ui';
@@ -24,19 +25,33 @@ import { TimeStampDialog } from '../course-exam/course-exam-result.tsx';
 interface ConclusionFinishProps {
   course: CourseResponse;
   examResults?: CourseExamResults;
+  hasSingleTrialExamAndThreshold?: boolean;
+  hasPassedCourseThreshold?: boolean;
 }
 
 export const ConclusionFinish = ({
   course,
   examResults,
+  hasSingleTrialExamAndThreshold = false,
+  hasPassedCourseThreshold = false,
 }: ConclusionFinishProps) => {
   const { session } = useContext(AppContext);
 
   return (
     <>
-      <Professor course={course} addThanksTipping />
-      <Credits course={course} />
-      <Diploma examResults={examResults} course={course} />
+      {!hasSingleTrialExamAndThreshold && (
+        <>
+          <Professor course={course} addThanksTipping />
+          <Credits course={course} />
+        </>
+      )}
+      {hasSingleTrialExamAndThreshold ? (
+        hasPassedCourseThreshold ? (
+          <DiplomaTeacherLed course={course} />
+        ) : null
+      ) : (
+        <DiplomaSelfPaced examResults={examResults} course={course} />
+      )}
       {course.topic === 'protocol' ? <Labs /> : null}
       <OtherCourses course={course} />
       {session?.user && (
@@ -210,7 +225,7 @@ const Credits = ({ course }: { course: CourseResponse }) => {
   );
 };
 
-const Diploma = ({
+const DiplomaSelfPaced = ({
   examResults,
   course,
 }: {
@@ -242,7 +257,7 @@ const Diploma = ({
             <img
               src={
                 examResults?.succeeded
-                  ? CertificateSatoshiImage
+                  ? CertificateSelfPacedSatoshiImage
                   : CertificateLockImage
               }
               alt="Diploma"
@@ -306,6 +321,53 @@ const Diploma = ({
                     ? t('courses.exam.getCertificate')
                     : t('courses.exam.retakeExam')
                   : t('courses.exam.takeExam')}
+              </Link>
+            </ButtonWithArrow>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+const DiplomaTeacherLed = ({
+  course,
+}: {
+  course: CourseResponse;
+}) => {
+  return (
+    <>
+      <section className="w-full flex flex-col">
+        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+          {t('words.diploma')}
+        </h4>
+
+        <p className="mt-1 md:mt-6 label-large-20px md:display-small-32px text-black">
+          {t('courses.exam.receiveDiploma')}
+        </p>
+
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+          <div className="max-md:mx-auto shrink-0">
+            <img
+              src={CertificateTeacherLedSatoshiImage}
+              alt="Diploma"
+              className="w-full max-w-[403px]"
+            />
+          </div>
+          <div className="flex flex-col justify-between gap-4 grow md:pb-2">
+            <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+              {t('courses.exam.successDiplomaTeachedLed')}
+            </p>
+
+            <ButtonWithArrow className="w-fit max-md:mx-auto" asChild>
+              <Link
+                to={'/dashboard/course/$courseId'}
+                hash={'singleTrialExam'}
+                params={{
+                  courseId: course?.id,
+                }}
+              >
+                {t('courses.exam.getCertificate')}
               </Link>
             </ButtonWithArrow>
           </div>
