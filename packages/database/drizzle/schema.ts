@@ -1773,11 +1773,6 @@ export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
     .varchar({ length: 100 })
     .references(() => contentCourses.id, { onDelete: 'cascade' }),
 
-  // DEBUG :
-  // INSERT INTO users.course_progress
-  // (uid, course_id, progress_percentage, is_selected_for_assignment, ranking, total_score)
-  // VALUES ('e3e0086d-9139-4217-b0c8-4d749443f709', 'a804c4b6-9ff5-4a29-a530-7d2f5d04bb7a', 100, true, 1, 100);
-
   // Timestamp data
   txt: t.text().notNull(), // Text to timestamp
   sig: t.text().notNull(), // Signed message
