@@ -70,7 +70,9 @@ function DashboardStudentCourse() {
 
   const courseHaveAssignments = course?.isPlanbSchool;
 
-  const isBizSchool = course?.id === 'c762773a-9017-4129-bc0e-06adf86050ef';
+  const isBizSchool =
+    course?.id === 'c762773a-9017-4129-bc0e-06adf86050ef' ||
+    course?.id === '576ac496-a4fd-471a-b022-e0da1ab89a29';
 
   const tabs = [
     { value: 'overview', key: 'overview', text: t('words.overview') },

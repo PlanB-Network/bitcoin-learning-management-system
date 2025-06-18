@@ -1,6 +1,13 @@
-import { SortDirection, UserPermission, UserRole } from '@blms/constants';
 import {
+  GeneralPaymentItem,
+  SortDirection,
+  UserPermission,
+  UserRole,
+} from '@blms/constants';
+import {
+  checkoutDataSchema,
   emailSettingsSchema,
+  generalPaymentLightSchema,
   userAccountSettingsSchema,
   userDetailsSchema,
   userRolesSchema,
@@ -16,15 +23,19 @@ import {
   createChangeRole,
   createEmailValidationToken,
   createGetEmailSettings,
+  createGetGeneralPayments,
   createGetTokenInfo,
   createGetUserAccountSettings,
   createGetUserDetails,
   createGetUsersRoles,
   createPasswordReset,
   createPasswordResetToken,
+  createSaveGeneralPayment,
 } from '@blms/service-user';
 import type {
+  CheckoutData,
   EmailSettings,
+  GeneralPaymentLight,
   SessionData,
   UserAccountSettings,
   UserDetails,
@@ -272,6 +283,35 @@ export const userRouter = createTRPCRouter({
     .mutation(({ ctx, input }) =>
       createPasswordResetToken(ctx.dependencies)(input.email),
     ),
+  saveGeneralPayment: studentProcedure
+    .input(
+      z.object({
+        item: z.nativeEnum(GeneralPaymentItem),
+        satsPrice: z.number(),
+        dollarPrice: z.number(),
+        couponCode: z.string().optional(),
+        method: z.string(),
+      }),
+    )
+    .output<Parser<CheckoutData>>(checkoutDataSchema)
+    .mutation(({ ctx, input }) =>
+      createSaveGeneralPayment(ctx.dependencies)({
+        uid: ctx.user.uid,
+        item: input.item,
+        satsPrice: input.satsPrice,
+        dollarPrice: input.dollarPrice,
+        method: input.method,
+        couponCode: input.couponCode,
+      }),
+    ),
+
+  getGeneralPaymentsProcedure: studentProcedure
+    .input(z.void())
+    .output<Parser<GeneralPaymentLight[]>>(generalPaymentLightSchema.array())
+    .query(({ ctx }) =>
+      createGetGeneralPayments(ctx.dependencies)({ uid: ctx.user.uid }),
+    ),
+
   resetPassword: publicProcedure
     .input(z.object({ resetToken: z.string(), newPassword: z.string() }))
     .mutation(({ ctx, input }) => {

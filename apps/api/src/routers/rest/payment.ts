@@ -9,6 +9,9 @@ import {
   createUpdateEventPayment,
   createUpdateEventPaymentInvoiceId,
   createUpdateEventPaymentStatus,
+  createUpdateGeneralPayment,
+  createUpdateGeneralPaymentInvoiceId,
+  createUpdateGeneralPaymentStatus,
 } from '@blms/service-user';
 import type { SwissBitcoinPayCheckout } from '@blms/types';
 
@@ -63,6 +66,7 @@ export const createRestPaymentRoutes = (
 
   const updateEventPayment = createUpdateEventPayment(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
+
   router.post(
     '/users/events/payment/webhooks',
     async (req, res): Promise<void> => {
@@ -87,6 +91,40 @@ export const createRestPaymentRoutes = (
         if (status.isPaid === true) {
           await calculateEventSeats();
         }
+
+        res.json({
+          message: 'success',
+          result,
+        });
+      } catch (error) {
+        req.log('Error in events webhook', error);
+      }
+    },
+  );
+
+  const updateGeneralPayment = createUpdateGeneralPayment(dependencies);
+
+  router.post(
+    '/users/general/payment/webhooks',
+    async (req, res): Promise<void> => {
+      console.log('======== Received general payment webhook ========');
+      try {
+        const status = req.body as SwissBitcoinPayCheckout;
+
+        if (typeof status.id !== 'string') {
+          res.status(400).json({ message: 'Invalid or missing id' });
+          return;
+        }
+
+        if (status.isPaid === null || status.isExpired === null) {
+          res.status(400).json({
+            message:
+              'Invalid isPaid or isExpired values. Must be true or false.',
+          });
+          return;
+        }
+
+        const result = await updateGeneralPayment(status);
 
         res.json({
           message: 'success',
@@ -139,6 +177,11 @@ export const createRestPaymentRoutes = (
               paymentId,
               paymentIntentId,
             });
+          } else {
+            await createUpdateGeneralPaymentStatus(dependencies)({
+              paymentId,
+              paymentIntentId,
+            });
           }
 
           break;
@@ -171,6 +214,12 @@ export const createRestPaymentRoutes = (
             }
           } else if (product === 'event') {
             await createUpdateEventPaymentInvoiceId(dependencies)({
+              intentId: intentId,
+              stripeInvoiceId: invoiceId,
+              invoiceUrl: hostedInvoiceUrl,
+            });
+          } else {
+            await createUpdateGeneralPaymentInvoiceId(dependencies)({
               intentId: intentId,
               stripeInvoiceId: invoiceId,
               invoiceUrl: hostedInvoiceUrl,

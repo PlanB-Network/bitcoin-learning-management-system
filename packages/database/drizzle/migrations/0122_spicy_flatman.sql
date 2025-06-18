@@ -1,0 +1,1 @@
+ALTER TABLE "users"."general_payment" DROP COLUMN "format";

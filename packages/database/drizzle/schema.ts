@@ -20,6 +20,7 @@ import {
   CoursePaymentFormat,
   CoursePaymentMethod,
   EventType,
+  GeneralPaymentItem,
   JobCategory,
   JobName,
   NotificationType,
@@ -1808,6 +1809,42 @@ export const usersQuizAttempts = users.table(
   (table) => ({
     pk: primaryKey({
       columns: [table.uid, table.chapterId],
+    }),
+  }),
+);
+
+export const generalPaymentItemEnum = pgNativeEnum(
+  'payment_item',
+  GeneralPaymentItem,
+);
+
+// Payment
+export const usersGeneralPayment = users.table(
+  'general_payment',
+  (t) => ({
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    item: generalPaymentItemEnum('item').notNull(),
+    paymentId: t.varchar({ length: 255 }).notNull(),
+    paymentStatus: t.varchar({ length: 30 }).notNull(),
+    amount: t.integer().notNull(),
+    invoiceUrl: t.varchar({ length: 255 }),
+    stripeInvoiceId: t.varchar({ length: 255 }),
+    stripePaymentIntent: t.varchar({ length: 255 }),
+    method: coursePaymentMethodEnum('method').notNull(),
+    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
+    lastUpdated: t
+      .timestamp({
+        withTimezone: true,
+      })
+      .defaultNow()
+      .notNull(),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.uid, table.item, table.paymentId],
     }),
   }),
 );
