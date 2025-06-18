@@ -3,7 +3,9 @@
 
 export interface UserExamTimestamp {
   id: string;
-  examAttemptId: string;
+  examAttemptId: string | null;
+  uid: string | null;
+  courseId: string | null;
   txt: string;
   sig: string;
   ots?: any;

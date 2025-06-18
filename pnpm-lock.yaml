@@ -586,6 +586,9 @@ importers:
       qr-image:
         specifier: ^3.2.0
         version: 3.2.0
+      sharp:
+        specifier: ^0.34.2
+        version: 0.34.2
       stripe:
         specifier: ^18.2.1
         version: 18.2.1(@types/node@24.0.1)

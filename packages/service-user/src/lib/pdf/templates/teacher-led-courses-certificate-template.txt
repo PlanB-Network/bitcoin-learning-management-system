@@ -1,0 +1,14 @@
+Diploma of Completion for the course {courseName} created by {courseProvider} and offered through Plan ₿ Network.
+
+This diploma is awarded upon the successful completion of the specified online course, certifying the candidate's proficiency in the subject matter. The following details verify this accomplishment:
+
+Student username: {userName}
+Full name: {fullName}
+
+Course name: {courseName}
+Course ID: {courseId}
+Level: {level}
+Course objectives: {goal}
+Student Final Score: {score}
+Date of completion: {date}
+Last block hash: {lastBlockHash}

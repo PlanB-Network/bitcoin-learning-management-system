@@ -115,7 +115,7 @@ export const createGetAllUserCourseExamsResults = ({
     const timestampMap: Record<string, UserExamTimestamp> = {};
 
     for (const timestamp of examTimestamps) {
-      timestampMap[timestamp.examAttemptId] = timestamp;
+      timestampMap[timestamp.examAttemptId!] = timestamp;
     }
 
     return examResults.map((exam) => {

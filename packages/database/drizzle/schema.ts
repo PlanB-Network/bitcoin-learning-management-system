@@ -1760,11 +1760,23 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
 export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
   id: t.uuid().defaultRandom().primaryKey().notNull(),
 
-  // Reference to exam attempt
+  // Reference to exam attempt (users.exam_attempts.exam_type = final)
   examAttemptId: t
     .uuid()
-    .notNull()
     .references(() => usersExamAttempts.id, { onDelete: 'cascade' }),
+
+  // Reference to course progress (users.exam_attempts.exam_type = single_trial)
+  //  score is stored in users.course_progress.total_score (it aggregates multiple exam_attempts)
+  //  threshold is stored in content.courses.passing_grade_threshold
+  uid: t.uuid().references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+  courseId: t
+    .varchar({ length: 100 })
+    .references(() => contentCourses.id, { onDelete: 'cascade' }),
+
+  // DEBUG :
+  // INSERT INTO users.course_progress
+  // (uid, course_id, progress_percentage, is_selected_for_assignment, ranking, total_score)
+  // VALUES ('e3e0086d-9139-4217-b0c8-4d749443f709', 'a804c4b6-9ff5-4a29-a530-7d2f5d04bb7a', 100, true, 1, 100);
 
   // Timestamp data
   txt: t.text().notNull(), // Text to timestamp
