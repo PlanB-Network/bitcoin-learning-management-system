@@ -6,12 +6,32 @@ import {
   Button,
   Card,
   CollapsibleDropdown,
+  DividerSimple,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import type { IconType } from 'react-icons/lib';
-import { TbBrandTelegram, TbCalendarMonth, TbHammer } from 'react-icons/tb';
+import {
+  TbBed,
+  TbBrandTelegram,
+  TbBuildingCommunity,
+  TbBus,
+  TbCalendarMonth,
+  TbCurrencyBitcoin,
+  TbHammer,
+  TbLanguage,
+  TbMapRoute,
+  TbMoodLookUp,
+  TbNumber,
+  TbRosetteDiscountCheck,
+  TbSchool,
+  TbSpeedboat,
+  TbTag,
+  TbToolsKitchen2,
+  TbUsers,
+  TbUsersGroup,
+} from 'react-icons/tb';
 import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import CalendarPixel from '#src/assets/icons/pixelated/calendar.svg?react';
 import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
@@ -130,7 +150,7 @@ export const SummerSchool = ({
         <SummerPresentation />
       )}
 
-      <WhatsIncluded />
+      <WhatsIncluded satsPrice={satsPrice} />
 
       {!isEventPaid ? (
         <div className="flex flex-row justify-center gap-4">
@@ -170,13 +190,17 @@ function SummerPresentation() {
 
   return (
     <section>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
         <div>
           <h2 className="mobile-h3 md:title-large-sb-24px  text-dashboardSectionTitle">
             What to expect
           </h2>
           <div className="flex flex-row gap-4 mt-4 text-center">
-            <Card className="w-full border-0">
+            <Card
+              className="w-full border-0"
+              withPadding={false}
+              paddingClass="py-8 px-8"
+            >
               <div className="flex flex-col gap-2 items-center">
                 <CalendarPixel className="justify-self-center size-11" />
                 <p className="text-xl font-medium">6 days all-inclusive</p>
@@ -186,7 +210,11 @@ function SummerPresentation() {
                 </div>
               </div>
             </Card>
-            <Card className="w-full border-0">
+            <Card
+              className="w-full border-0"
+              withPadding={false}
+              paddingClass="py-8 px-8"
+            >
               <div className="flex flex-col gap-2 items-center">
                 <BookPixel className="justify-self-center size-11 fill-primary" />
                 <p className="text-xl font-medium">5 full-day courses</p>
@@ -196,7 +224,11 @@ function SummerPresentation() {
                 </div>
               </div>
             </Card>
-            <Card className="w-full border-0">
+            <Card
+              className="w-full border-0"
+              withPadding={false}
+              paddingClass="py-8 px-8"
+            >
               <div className="flex flex-col gap-2 items-center">
                 <HeartPixel className="justify-self-center size-11 fill-primary" />
                 <p className="text-xl font-medium">
@@ -207,7 +239,7 @@ function SummerPresentation() {
           </div>
         </div>
 
-        <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+        <h2 className="mt-4 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           As well as
         </h2>
         <div className="flex flex-col gap-3 ml-6">
@@ -215,22 +247,21 @@ function SummerPresentation() {
             <span className="font-semibold">Hands-on workshops</span>
             <span className=""> to apply what you learn</span>
           </ListElement>
-          <ListElement icon={TbHammer}>
+          <ListElement icon={TbUsersGroup}>
             <span className="font-semibold">Collaborative group sessions</span>
             <span className="">to challenge ideas and exchange feedback</span>
           </ListElement>
-          <ListElement icon={TbHammer}>
+          <ListElement icon={TbSchool}>
             <span className="font-semibold">Expert-led lectures</span>
             <span className=""> and real-world case studies</span>
           </ListElement>
-          <ListElement icon={TbHammer}>
-            <span className="font-semibold">Top-tier guest speakers</span>
+          <ListElement icon={TbCurrencyBitcoin}>
+            <span className="font-semibold">Top-tier guest speakers </span>
             <span className="">
-              {' '}
               from the Bitcoin industry, every morning and afternoon
             </span>
           </ListElement>
-          <ListElement icon={TbHammer}>
+          <ListElement icon={TbMapRoute}>
             <span className="font-semibold">Strategy deep dives </span>
             <span className="">
               into Bitcoin adoption and business use cases
@@ -238,31 +269,31 @@ function SummerPresentation() {
           </ListElement>
         </div>
 
-        <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+        <h2 className="mt-4 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           Beyond the Classroom
         </h2>
         <div className="flex flex-col gap-3 ml-6">
-          <ListElement icon={TbHammer}>
+          <ListElement icon={TbUsers}>
             <span className="">Build</span>
             <span className="font-semibold"> lifelong connections </span>
             <span className="">
               with peers and leaders in the Bitcoin space
             </span>
           </ListElement>
-          <ListElement icon={TbHammer}>
+          <ListElement icon={TbMoodLookUp}>
             <span className="font-semibold">Get inspired </span>
             <span className="">
               , challenge your thinking, and have a ton of fun doing it
             </span>
           </ListElement>
-          <ListElement icon={TbHammer}>
+          <ListElement icon={TbSpeedboat}>
             <span className="">Finish off with a</span>
             <span className="font-semibold"> boat trip </span>
             <span className="">on Lake Lugano (July 26)</span>
           </ListElement>
         </div>
 
-        <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+        <h2 className="mt-4 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           See what previous students experienced
         </h2>
         <div className="relative pt-[56.25%]">
@@ -280,14 +311,62 @@ function SummerPresentation() {
   );
 }
 
-function WhatsIncluded() {
+function WhatsIncluded({ satsPrice }: { satsPrice: number }) {
   return (
     <section>
-      <div className="flex flex-col gap-8">
-        <div>
-          <h2 className="mobile-h3 md:title-large-sb-24px  text-dashboardSectionTitle">
-            What's included
-          </h2>
+      <div className="flex flex-col gap-4 bg-newGray-6 py-4 rounded-xl">
+        <h2 className="ml-4 mobile-h3 md:title-large-sb-24px  text-dashboardSectionTitle">
+          What's included
+        </h2>
+
+        <DividerSimple mode={'light'} />
+
+        <div className="px-4 flex flex-col gap-2">
+          <p className="font-medium">Logistics</p>
+          <div className="bg-white p-4 rounded-xl">
+            <ListElement2 icon={TbBed} leftText="Accommodation">
+              Hotel in Brusimpiano (July 20–26) and optional stay extension at a
+              discounted rate
+            </ListElement2>
+            <ListElement2 icon={TbBus} leftText="Transport">
+              Daily transport to and from Lugano
+            </ListElement2>
+            <ListElement2 icon={TbToolsKitchen2} leftText="Food">
+              Breakfast, lunch & dinner included every day
+            </ListElement2>
+            <ListElement2 icon={TbSpeedboat} leftText="Experiences">
+              Boat trip on Lake Lugano (July 26)
+            </ListElement2>
+            <ListElement2
+              icon={TbRosetteDiscountCheck}
+              leftText="Scholarships Availability"
+            >
+              Available, based on merit
+            </ListElement2>
+          </div>
+
+          <p className="font-medium mt-4">Info</p>
+          <div className="bg-white p-4 rounded-xl">
+            <ListElement2 icon={TbBuildingCommunity} leftText="Location">
+              Lugano, Switzerland
+            </ListElement2>
+            <ListElement2 icon={TbNumber} leftText="Number of spots available">
+              21
+            </ListElement2>
+            <ListElement2 icon={TbLanguage} leftText="Language">
+              English
+            </ListElement2>
+          </div>
+
+          <p className="font-medium mt-4">Pricing</p>
+          <div className="bg-white p-4 rounded-xl">
+            <ListElement2 icon={TbTag} leftText="Total price">
+              <div className="flex flex-col">
+                <span>$2,500</span>
+                <span className="text-darkOrange-4">{satsPrice} sats</span>
+              </div>
+            </ListElement2>
+          </div>
         </div>
       </div>
     </section>
@@ -303,6 +382,25 @@ function ListElement({
     <div className="flex items-center gap-4">
       <Icon className="size-8 text-darkOrange-3" />
       <p className="text-xl">{children}</p>
+    </div>
+  );
+}
+
+function ListElement2({
+  icon,
+  leftText,
+  children,
+}: { icon: IconType; leftText: string; children: React.ReactNode }) {
+  const Icon = icon;
+  return (
+    <div className="flex items-center justify-between gap-4 my-2">
+      <div className="flex flex-row gap-2 items-center text-newGray-1">
+        <Icon className="size-6" />
+        <span className="text-sm md:text-base">{leftText}</span>
+      </div>
+      <p className="text-sm md:text-lg text-newBlack-3 text-right">
+        {children}
+      </p>
     </div>
   );
 }
