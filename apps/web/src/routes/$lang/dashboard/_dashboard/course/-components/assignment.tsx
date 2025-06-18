@@ -421,7 +421,7 @@ export const Assignment = ({
 
           <Divider mode="light" className="!mx-0" width="w-full" />
 
-          {!hasSubmittedWork && (
+          {!hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
             <div className="flex flex-col gap-5">
               <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
                 {t('dashboard.course.submitYourWork')}
@@ -492,40 +492,44 @@ export const Assignment = ({
               </div>
             </div>
           )}
+          {hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
+            <InformationalPanel
+              icon={Certificate}
+              title={t('dashboard.course.assignmentCompletedTitle')}
+              description={t('dashboard.course.assignmentCompletedDescription')}
+            />
+          )}
 
-          {hasSubmittedWork &&
-            (courseInfo.isAssignmentGradingPublished ? (
-              <InformationalPanel
-                icon={Certificate}
-                title={t('dashboard.course.assignmentCompletedTitle')}
-                description={
-                  <ButtonWithArrow
-                    variant="outline"
-                    mode="light"
-                    size="s"
-                    asChild
+          {courseInfo.isAssignmentGradingPublished && (
+            <InformationalPanel
+              icon={Certificate}
+              title={t('dashboard.course.assignmentCompletedTitle')}
+              description={
+                <ButtonWithArrow
+                  variant="outline"
+                  mode="light"
+                  size="s"
+                  asChild
+                >
+                  <Link
+                    to={''}
+                    hash="singleTrialExam"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                   >
-                    <Link to={'#singleTrialExam'}>
-                      {t('dashboard.course.viewFinalGrade')}
-                    </Link>
-                  </ButtonWithArrow>
-                }
-                subtitle={
-                  courseProgress?.assignmentGrade != null &&
-                  courseProgress.assignmentGrade >= 0
-                    ? `${courseProgress.assignmentGrade}%`
-                    : 'N/A'
-                }
-              />
-            ) : (
-              <InformationalPanel
-                icon={Certificate}
-                title={t('dashboard.course.assignmentCompletedTitle')}
-                description={t(
-                  'dashboard.course.assignmentCompletedDescription',
-                )}
-              />
-            ))}
+                    {t('dashboard.course.viewFinalGrade')}
+                  </Link>
+                </ButtonWithArrow>
+              }
+              subtitle={
+                courseProgress?.assignmentGrade != null &&
+                courseProgress.assignmentGrade >= 0
+                  ? `${courseProgress.assignmentGrade}%`
+                  : 'N/A'
+              }
+            />
+          )}
         </div>
       )}
 
