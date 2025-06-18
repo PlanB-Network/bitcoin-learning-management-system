@@ -3,7 +3,6 @@ import { sql } from '@blms/database';
 export const publishScheduledCourseAnnouncementQuery = ({
   scheduledAnnouncementId,
 }: { scheduledAnnouncementId: string }) => {
-  // TODO: handle summer school selected students
   return sql<{ id: string; notificationId: string }[]>`
         WITH scheduled_data AS (
             SELECT notification_id, course_id, id AS scheduled_id, student_group
@@ -19,8 +18,9 @@ export const publishScheduledCourseAnnouncementQuery = ({
             JOIN users.account_settings uas ON cp.uid = uas.uid
             WHERE uas.platform_notify_courses = true
             AND (
-                sd.student_group != 'assignment'
+                sd.student_group = 'all'
                 OR (sd.student_group = 'assignment' AND cp.is_selected_for_assignment = true)
+                OR (sd.student_group = 'summer' AND cp.is_selected_for_final_lesson = true)
             )
         ),
         inserted_status AS (

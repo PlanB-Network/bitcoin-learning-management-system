@@ -53,12 +53,12 @@ export const createSendCourseAnnouncementEmail = (
         return;
       }
 
-      // TODO: handle summer school selected students
       const uidsSubscribedToCourse =
         await userNotificationsService.getUidsByCourse(
           course.courseId,
           false,
           announcementInfo.studentGroup === 'assignment',
+          announcementInfo.studentGroup === 'summer',
         );
 
       if (!uidsSubscribedToCourse || uidsSubscribedToCourse.length === 0) {
