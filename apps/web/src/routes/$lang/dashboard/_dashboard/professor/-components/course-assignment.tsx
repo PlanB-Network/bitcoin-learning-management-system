@@ -555,7 +555,7 @@ const ConfirmGradingSubmissionDialog = ({
       <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-[30px]">
         <DialogClose asChild>
           <Button
-            variant="primary"
+            variant={missingGradesCount ? 'outline' : 'primary'}
             size={isMobile ? 'm' : 'l'}
             className="w-fit"
             onClick={onConfirm}
@@ -566,7 +566,7 @@ const ConfirmGradingSubmissionDialog = ({
         </DialogClose>
         <DialogClose asChild>
           <Button
-            variant="outline"
+            variant={missingGradesCount ? 'primary' : 'outline'}
             size={isMobile ? 'm' : 'l'}
             className="w-fit"
           >
