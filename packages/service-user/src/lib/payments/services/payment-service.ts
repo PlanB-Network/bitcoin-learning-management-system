@@ -34,7 +34,7 @@ export const createSbpPayment = (config: SwissBitcoinPayConfig) => {
   return async (
     elementId: string,
     satsPrice: number,
-    type: 'courses' | 'events',
+    type: 'courses' | 'events' | 'general',
   ) => {
     const ONE_MONTH = 60 * 24 * 30;
 

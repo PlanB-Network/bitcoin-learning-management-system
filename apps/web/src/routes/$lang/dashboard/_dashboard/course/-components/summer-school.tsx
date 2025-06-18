@@ -1,63 +1,166 @@
+import { GeneralPaymentItem } from '@blms/constants';
 import {
   Banner,
   BannerDescription,
   BannerTitle,
+  Button,
   Card,
   CollapsibleDropdown,
 } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import type { IconType } from 'react-icons/lib';
-import { TbCalendarMonth, TbHammer } from 'react-icons/tb';
+import { TbBrandTelegram, TbCalendarMonth, TbHammer } from 'react-icons/tb';
 import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import CalendarPixel from '#src/assets/icons/pixelated/calendar.svg?react';
+import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
 import HeartPixel from '#src/assets/icons/pixelated/heart_speaking.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
+import { GeneralPaymentModal } from '#src/components/GeneralPaymentModal/payment-modal/general-payment-modal.tsx';
 import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.tsx';
 import { ReactPlayer } from '#src/components/react-player.tsx';
+import { AppContext } from '#src/providers/context.tsx';
+import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import { trpc } from '#src/utils/trpc.ts';
 
 export const SummerSchool = ({
   courseId,
 }: {
   courseId: string;
 }) => {
-  const paymentDone = false;
+  const { conversionRate } = useContext(ConversionRateContext);
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
+
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [satsPrice, setSatsPrice] = useState<number>(0);
+  const dollarPrice = 2500;
+
+  const { data: payments, refetch: refetchPayment } = useQuery(
+    trpc.user.getGeneralPaymentsProcedure.queryOptions(undefined, {
+      enabled: isLoggedIn,
+    }),
+  );
+
+  const isEventPaid = useMemo(
+    () =>
+      payments?.some(
+        (payment) =>
+          payment.paymentStatus === 'paid' &&
+          payment.item === 'summer_school_2025',
+      ),
+    [courseId, payments],
+  );
+
+  useEffect(() => {
+    let satsPrice = -1;
+    if (conversionRate) {
+      satsPrice = Math.round((dollarPrice * 100_000_000) / conversionRate);
+      if (satsPrice > 10 && process.env.NODE_ENV === 'development') {
+        satsPrice = 10;
+      }
+    }
+
+    setSatsPrice(satsPrice);
+  }, [dollarPrice]);
 
   return (
-    <div className="flex flex-col gap-4 md:gap-8">
-      <section className="flex flex-col md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
+    <div className="flex flex-col gap-4 md:gap-8 w-full max-w-[1000px]">
+      <section className="flex flex-col md:mt-8 w-full gap-4 md:gap-8">
         <div className="flex flex-col gap-5">
           <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
             {t('dashboard.course.summerSchool')}
           </h2>
         </div>
         <div>
-          <Banner
-            variant="success"
-            icon={<SuccessParty className="fill-brightGreen-6" />}
-          >
-            <BannerTitle>
-              Congratulations! You have been selected to participate in the
-              Summer School!
-            </BannerTitle>
-            <BannerDescription className="max-md:hidden">
-              You are 1 of the 21 students selected for the exclusive Summer
-              School
-            </BannerDescription>
-          </Banner>
+          {isEventPaid ? (
+            <>
+              <Banner
+                variant="success"
+                icon={<CheckPixel className="fill-brightGreen-6" />}
+              >
+                <BannerTitle>You've successfully enrolled!</BannerTitle>
+              </Banner>
+              <h2 className="mt-4 mb-2 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
+                Next step
+              </h2>
+              <p>
+                Join the Telegram group to connect with other students and get
+                all the key Summer School updates.
+              </p>
+              <a
+                href="https://t.me/+2todogroupforsummerschool2025"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button className="mx-auto my-4">
+                  <TbBrandTelegram className="mr-2" />
+                  Join Telegram Group
+                </Button>
+              </a>
+            </>
+          ) : (
+            <Banner
+              variant="success"
+              icon={<SuccessParty className="fill-brightGreen-6" />}
+            >
+              <BannerTitle>
+                Congratulations! You have been selected to participate in the
+                Summer School!
+              </BannerTitle>
+              <BannerDescription className="max-md:hidden">
+                You are 1 of the 21 students selected for the exclusive Summer
+                School
+              </BannerDescription>
+            </Banner>
+          )}
         </div>
       </section>
-      {paymentDone ? (
+      {isEventPaid ? (
         <CollapsibleDropdown
           title="Overview"
           className="border border-newGray-4"
           variant="dark"
-          defaultOpen={true}
+          defaultOpen={false}
         >
           <SummerPresentation />
         </CollapsibleDropdown>
       ) : (
         <SummerPresentation />
       )}
+
+      <WhatsIncluded />
+
+      {!isEventPaid ? (
+        <div className="flex flex-row justify-center gap-4">
+          <Button variant={'outline'}>No, I can't join</Button>
+          <Button
+            onClick={() => {
+              setIsPaymentModalOpen(true);
+            }}
+          >
+            Yes, enroll and pay now
+          </Button>
+        </div>
+      ) : null}
+
+      <GeneralPaymentModal
+        item={GeneralPaymentItem.SummerSchool2025}
+        satsPrice={satsPrice}
+        dollarPrice={dollarPrice}
+        isOpen={isPaymentModalOpen}
+        onClose={() => {
+          setIsPaymentModalOpen(false);
+          refetchPayment();
+          setTimeout(() => {
+            refetchPayment();
+          }, 5000);
+          setTimeout(() => {
+            refetchPayment();
+          }, 10000);
+        }}
+      />
     </div>
   );
 };
@@ -171,6 +274,20 @@ function SummerPresentation() {
             controls={true}
             url={fixEmbedUrl(videoUrl)}
           />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhatsIncluded() {
+  return (
+    <section>
+      <div className="flex flex-col gap-8">
+        <div>
+          <h2 className="mobile-h3 md:title-large-sb-24px  text-dashboardSectionTitle">
+            What's included
+          </h2>
         </div>
       </div>
     </section>

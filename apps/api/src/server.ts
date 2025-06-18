@@ -12,6 +12,7 @@ import { createContext } from './trpc/index.js';
 const routesWithRawBody = new Set([
   '/users/courses/payment/webhooks',
   '/users/events/payment/webhooks',
+  '/users/general/payment/webhooks',
   '/api/webhooks/stripe',
 ]);
 

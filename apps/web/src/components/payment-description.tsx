@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import spinner from '#src/assets/icons/spinner.svg';
 
+import { GeneralPaymentItem } from '@blms/constants';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
@@ -41,7 +42,7 @@ interface PaymentDescriptionProps {
   event?: JoinedEvent;
   accessType?: 'physical' | 'online' | 'replay';
   satsPrice: number;
-  callout: React.ReactNode;
+  callout?: React.ReactNode;
   description: string;
   isGdprCompliance: boolean;
   gdprTerms: string;
@@ -74,6 +75,11 @@ export const PaymentDescription = ({
   const [isBookEnabled, setIsBookEnabled] = useState(!isGdprCompliance);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
+  let couponId = itemId;
+  if (itemId === GeneralPaymentItem.SummerSchool2025) {
+    couponId = 'c762773a-9017-4129-bc0e-06adf86050ef';
+  }
+
   const {
     data: coupon,
     isLoading,
@@ -83,7 +89,7 @@ export const PaymentDescription = ({
     trpc.content.getCouponCode.queryOptions(
       {
         code: inputCoupon,
-        itemId: itemId,
+        itemId: couponId,
       },
       {
         enabled: queryEnabled,

@@ -29,3 +29,7 @@ export enum StudentGroup {
   SummerSchool = 'summer',
   Assignment = 'assignment',
 }
+
+export enum GeneralPaymentItem {
+  SummerSchool2025 = 'summer_school_2025',
+}
