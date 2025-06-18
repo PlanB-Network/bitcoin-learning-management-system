@@ -146,7 +146,8 @@ export const CourseCurriculum = ({
                         displayNotStarted &&
                         (chapter.isCourseConclusion ||
                           chapter.isCourseExam ||
-                          chapter.isCourseReview) ? null : (
+                          chapter.isCourseReview ||
+                          chapter.isSingleTrialExam) ? null : (
                           <TextTag
                             variant={displayNotStarted ? 'green' : 'orange'}
                             mode="light100"
@@ -162,7 +163,8 @@ export const CourseCurriculum = ({
                       ) : displayNotStarted &&
                         !chapter.isCourseConclusion &&
                         !chapter.isCourseExam &&
-                        !chapter.isCourseReview ? (
+                        !chapter.isCourseReview &&
+                        !chapter.isSingleTrialExam ? (
                         <TextTag
                           variant={'orange'}
                           mode="light100"

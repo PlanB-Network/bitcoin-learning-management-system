@@ -18,11 +18,11 @@ export const StepMessage = ({
         {title}
       </span>
       {icon}
-      <p className="text-center text-newBlack-1 subtitle-large-18px md:title-large-24px whitespace-pre-line max-w-[710px] mx-auto">
+      <p className="text-center text-newBlack-1 subtitle-large-18px md:title-large-24px whitespace-pre-line max-w-[1042px] mx-auto">
         {headline}
       </p>
       {subHeadline && (
-        <p className="text-center text-dashboardSectionText/75 md:text-newBlack-1 body-14px md:subtitle-large-18px whitespace-pre-line max-w-[710px] mx-auto">
+        <p className="text-center text-dashboardSectionText/75 md:text-newBlack-1 body-14px md:subtitle-large-18px whitespace-pre-line max-w-[1042px] mx-auto">
           {subHeadline}
         </p>
       )}
