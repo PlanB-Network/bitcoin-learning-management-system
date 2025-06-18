@@ -1,7 +1,10 @@
 import { firstRow } from '@blms/database';
 import type { Dependencies } from '#src/dependencies.js';
 import { getUserByIdQuery } from '../../account/queries/get-user.js';
-import { assignRankingToAllUsersQuery } from '../queries/assign-ranking.js';
+import {
+  assignRankingToAllUsersQuery,
+  assignTop21StudentsToFinalLessonQuery,
+} from '../queries/assign-ranking.js';
 import { calculateCourseScoreForAllUsers } from '../queries/calculate-score.js';
 import { getCourseCoordinatorsQuery } from '../queries/get-course-coordinators.js';
 import { setCourseAssignmentGradesAsPublishedQuery } from '../queries/set-assignment-grades-published.js';
@@ -31,6 +34,10 @@ export const createSetCourseAssignmentGradesAsPublished = ({
     await postgres.exec(calculateCourseScoreForAllUsers(options.courseId));
 
     await postgres.exec(assignRankingToAllUsersQuery(options.courseId));
+
+    await postgres.exec(
+      assignTop21StudentsToFinalLessonQuery(options.courseId),
+    );
 
     return postgres
       .exec(setCourseAssignmentGradesAsPublishedQuery(options.courseId))
