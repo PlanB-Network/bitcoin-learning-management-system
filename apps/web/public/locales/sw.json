@@ -487,7 +487,19 @@
       "assignmentInformation": "Taarifa ya kazi",
       "exams": "Mitihani",
       "generalInformation": "Taarifa za jumla",
-      "examScore": "Alama:"
+      "examScore": "Alama:",
+      "assignmentCompletedTitle": "Kazi imekamilika",
+      "confirmList": "Thibitisha orodha",
+      "confirmNoEditable": "Mara ikithibitishwa, orodha hii ya mapendeleo haitakuwa na uwezo wa kuhaririwa tena.",
+      "confirmNoEditableFile": "Mara baada ya kuwasilisha, hutaweza tena kuhariri faili lako.",
+      "confirmSubmission": "Thibitisha utumaji",
+      "fileUploaded": "Kazi yako ilipakiwa kwa mafanikio!",
+      "joinTelegramGroup": "Jiunge na Kikundi cha Telegram",
+      "keepEditing": "Endelea kuhariri",
+      "leastPreferred": "Kupendelea kwa kiwango cha chini",
+      "assignmentCompletedDescription": "Mradi wako umewasilishwa kwa mafanikio na upo chini ya ukaguzi.\nDaraja lako litakuwa linaonekana hapa baada ya kupewa alama mnamo Juni 23.",
+      "fileUploadError": "Kulikuwa na hitilafu wakati wa kupakia yako",
+      "isSubmissionFinal": "Je, umepeana jibu lako la mwisho?"
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -548,7 +560,16 @@
         "selectCourse": "Chagua kozi",
         "summerStudents": "Shule ya Kiangazi",
         "writeAnnouncement": "Andika tangazo",
-        "announcementsPastDescription": "Hapa chini kuna orodha ya tangazo ambazo tayari zimetangazwa. Orodha itafutwa baada ya mwezi mmoja."
+        "announcementsPastDescription": "Hapa chini kuna orodha ya tangazo ambazo tayari zimetangazwa. Orodha itafutwa baada ya mwezi mmoja.",
+        "assignmentGrade": {
+          "grade100": "Daraja (/100)",
+          "gradesPublished": "Daraja zimetolewa.",
+          "publishAllGrades": "Chapisha matokeo yote",
+          "studentDisplayName": "Mwanafunzi (Jina la kuonyesha)",
+          "description": "Wanafunzi wamepangwa kwa makundi ya kazi.",
+          "missingGradesTitle": "Bado kuna {{count}} alama zinakosekana!",
+          "title": "Daraja za kazi za nyumbani"
+        }
       },
       "menu": "Menyu ya mwalimu",
       "profile": {
