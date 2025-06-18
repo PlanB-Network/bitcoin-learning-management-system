@@ -5,7 +5,7 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSelfPacedSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
-import CertificateTeachedLedSatoshiImage from '#src/assets/courses/diploma-teacher-led-satoshi.webp?no-inline';
+import CertificateTeacherLedSatoshiImage from '#src/assets/courses/diploma-teacher-led-satoshi.webp?no-inline';
 
 import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { ButtonWithArrow, DividerSimple } from '@blms/ui';
@@ -349,7 +349,7 @@ const DiplomaTeacherLed = ({
         <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
           <div className="max-md:mx-auto shrink-0">
             <img
-              src={CertificateTeachedLedSatoshiImage}
+              src={CertificateTeacherLedSatoshiImage}
               alt="Diploma"
               className="w-full max-w-[403px]"
             />

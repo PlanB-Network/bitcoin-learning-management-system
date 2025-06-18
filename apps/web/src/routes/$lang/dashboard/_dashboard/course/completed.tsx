@@ -1,6 +1,6 @@
 import { createFileRoute, useLocation } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { CourseProgressExtended } from '@blms/types';
@@ -13,6 +13,7 @@ import { trpc } from '#src/utils/trpc.ts';
 
 import { useQuery } from '@tanstack/react-query';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { CourseRatings } from './-components/course-ratings.tsx';
 import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
 
@@ -26,13 +27,18 @@ function DashboardCompletedCourses() {
   const isMobile = useSmaller('md');
   const location = useLocation();
 
+  const { courses: allCourses } = useContext(AppContext);
+
   const { data: courses } = useQuery(
     trpc.user.courses.getProgress.queryOptions(),
   );
 
-  const completedCourses = courses?.filter(
-    (course) => course.progressPercentage === 100,
-  );
+  // TODO: remove professor-led courses condition
+  const completedCourses = courses?.filter((course) => {
+    const fullCourse = allCourses?.find((c) => c.id === course.courseId);
+    const isProfessorLed = fullCourse?.teachingFormat === 'professor_led';
+    return course.progressPercentage === 100 && !isProfessorLed;
+  });
 
   const tabs = useMemo(
     () =>

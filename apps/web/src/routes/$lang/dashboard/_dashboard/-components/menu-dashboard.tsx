@@ -49,9 +49,13 @@ export const MenuDashboard = ({
     }),
   );
 
-  // TODO: filter only in progress courses
+  // TODO: remove professor led courses from here
   const inProgressCourses = courses
-    ?.filter((course) => course.progressPercentage < 100)
+    ?.filter((course) => {
+      const fullCourse = allCourses?.find((c) => c.id === course.courseId);
+      const isProfessorLed = fullCourse?.teachingFormat === 'professor_led';
+      return course.progressPercentage < 100 || isProfessorLed;
+    })
     .map((course) => {
       return {
         text: `${addSpaceToCourseIndex(course.courseIndex.toLocaleUpperCase())} - ${
@@ -62,9 +66,12 @@ export const MenuDashboard = ({
       };
     });
 
-  const completedCourses = courses?.filter(
-    (course) => course.progressPercentage >= 100,
-  );
+  // TODO: add completed teacher led courses here
+  const completedCourses = courses?.filter((course) => {
+    const fullCourse = allCourses?.find((c) => c.id === course.courseId);
+    const isProfessorLed = fullCourse?.teachingFormat === 'professor_led';
+    return course.progressPercentage >= 100 && !isProfessorLed;
+  });
 
   const unreadNotifications =
     userNotifications?.filter(
