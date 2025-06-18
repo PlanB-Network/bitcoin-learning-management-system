@@ -16,6 +16,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     courseId: string,
     hasCoursePlatformNotificationEnabled?: boolean,
     isSelectedForAssignment?: boolean,
+    isSelectedForFinalLesson?: boolean,
   ) => {
     const result = await ctx.postgres.exec(
       sql`
@@ -25,6 +26,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
         WHERE cp.course_id = ${courseId}
         ${hasCoursePlatformNotificationEnabled ? sql`AND uas.platform_notify_courses = TRUE` : sql``}
         ${isSelectedForAssignment ? sql`AND cp.is_selected_for_assignment = TRUE` : sql``}
+        ${isSelectedForFinalLesson ? sql`AND cp.is_selected_for_final_lesson = TRUE` : sql``}
         `,
     );
     return result.map((row) => row.uid);
