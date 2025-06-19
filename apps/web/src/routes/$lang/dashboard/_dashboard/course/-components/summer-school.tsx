@@ -119,7 +119,7 @@ export const SummerSchool = ({
                 all the key Summer School updates.
               </p>
               <a
-                href="https://t.me/+2todogroupforsummerschool2025"
+                href="https://t.me/+f8Zt5yQI3jc5ZTZk"
                 target="_blank"
                 rel="noreferrer"
               >
