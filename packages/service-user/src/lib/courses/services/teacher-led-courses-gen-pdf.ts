@@ -175,13 +175,15 @@ export async function createTeacherLedCertificatePdf(
     const logo = await fetch(options.courseProviderLogo);
     const bytes = await logo.arrayBuffer();
     const resized = await sharp(Buffer.from(bytes))
-      .resize({ height: 100, withoutEnlargement: true })
+      .resize({ height: 500, withoutEnlargement: true })
       .png()
       .toBuffer();
 
     const image = await doc.embedPng(resized);
 
-    page.drawImage(image, { x: margin, y: 410 });
+    const width = image.width / 5;
+
+    page.drawImage(image, { x: margin, y: 410, height: 100, width });
   } else {
     textLeft(page, options.courseProvider, {
       ...conf.courseName,
