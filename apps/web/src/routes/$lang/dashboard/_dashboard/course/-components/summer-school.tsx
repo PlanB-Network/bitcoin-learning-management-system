@@ -235,28 +235,43 @@ function SummerPresentation() {
         <h2 className="mt-4 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           As well as
         </h2>
-        <div className="flex flex-col gap-3 md:ml-6">
+        <div className="flex flex-col gap-3 md:ml-6 ">
           <ListElement icon={TbHammer}>
-            <span className="font-semibold">Hands-on workshops</span>
-            <span className=""> to apply what you learn</span>
+            <span className="font-semibold max-md:text-base">
+              Hands-on workshops
+            </span>
+            <span className="max-md:text-base"> to apply what you learn</span>
           </ListElement>
           <ListElement icon={TbUsersGroup}>
-            <span className="font-semibold">Collaborative group sessions</span>
-            <span className="">to challenge ideas and exchange feedback</span>
+            <span className="font-semibold max-md:text-base">
+              Collaborative group sessions
+            </span>
+            <span className="max-md:text-base">
+              to challenge ideas and exchange feedback
+            </span>
           </ListElement>
           <ListElement icon={TbSchool}>
-            <span className="font-semibold">Expert-led lectures</span>
-            <span className=""> and real-world case studies</span>
+            <span className="font-semibold max-md:text-base">
+              Expert-led lectures
+            </span>
+            <span className="max-md:text-base">
+              {' '}
+              and real-world case studies
+            </span>
           </ListElement>
           <ListElement icon={TbCurrencyBitcoin}>
-            <span className="font-semibold">Top-tier guest speakers </span>
-            <span className="">
+            <span className="font-semibold max-md:text-base">
+              Top-tier guest speakers{' '}
+            </span>
+            <span className="max-md:text-base">
               from the Bitcoin industry, every morning and afternoon
             </span>
           </ListElement>
           <ListElement icon={TbMapRoute}>
-            <span className="font-semibold">Strategy deep dives </span>
-            <span className="">
+            <span className="font-semibold max-md:text-base">
+              Strategy deep dives{' '}
+            </span>
+            <span className="max-md:text-base">
               into Bitcoin adoption and business use cases
             </span>
           </ListElement>
@@ -268,21 +283,26 @@ function SummerPresentation() {
         <div className="flex flex-col gap-3 md:ml-6">
           <ListElement icon={TbUsers}>
             <span className="">Build</span>
-            <span className="font-semibold"> lifelong connections </span>
-            <span className="">
+            <span className="font-semibold max-md:text-base">
+              {' '}
+              lifelong connections{' '}
+            </span>
+            <span className="max-md:text-base">
               with peers and leaders in the Bitcoin space
             </span>
           </ListElement>
           <ListElement icon={TbMoodLookUp}>
-            <span className="font-semibold">Get inspired </span>
-            <span className="">
+            <span className="font-semibold max-md:text-base">
+              Get inspired{' '}
+            </span>
+            <span className="max-md:text-base">
               , challenge your thinking, and have a ton of fun doing it
             </span>
           </ListElement>
           <ListElement icon={TbSpeedboat}>
-            <span className="">Finish off with a</span>
-            <span className="font-semibold"> boat trip </span>
-            <span className="">on Lake Lugano (July 26)</span>
+            <span className="max-md:text-base">Finish off with a</span>
+            <span className="font-semibold max-md:text-base"> boat trip </span>
+            <span className="max-md:text-base">on Lake Lugano (July 26)</span>
           </ListElement>
         </div>
 
