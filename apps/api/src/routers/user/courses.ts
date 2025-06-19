@@ -44,6 +44,7 @@ import {
   createStartCourse,
   createStartExamAttempt,
   createTemporarySaveExamAttempt,
+  createWithdrawUserFromCourseFinalLesson,
   generateChapterTicket,
 } from '@blms/service-user';
 import type {
@@ -521,6 +522,20 @@ const getEnrolledStudentsCountProcedure = studentProcedure
     });
   });
 
+const withdrawUserFromCourseFinalLessonProcedure = studentProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<void>>(z.void())
+  .mutation(async ({ ctx, input }) => {
+    await createWithdrawUserFromCourseFinalLesson(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
+    });
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -550,4 +565,5 @@ export const userCoursesRouter = createTRPCRouter({
   startCourse: startCourseProcedure,
   startExamAttempt: startExamAttemptProcedure,
   temporarySaveExamAttempt: temporarySaveExamAttemptProcedure,
+  withdrawUserFromCourseFinalLesson: withdrawUserFromCourseFinalLessonProcedure,
 });

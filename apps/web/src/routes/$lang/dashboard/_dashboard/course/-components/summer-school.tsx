@@ -8,7 +8,7 @@ import {
   CollapsibleDropdown,
   DividerSimple,
 } from '@blms/ui';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import type { IconType } from 'react-icons/lib';
@@ -43,6 +43,7 @@ import { ReactPlayer } from '#src/components/react-player.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { trpc } from '#src/utils/trpc.ts';
+import { SummerSchoolWithdrawButton } from './summer-school-withdraw-button.tsx';
 
 export const SummerSchool = ({
   courseId,
@@ -60,6 +61,14 @@ export const SummerSchool = ({
   const { data: payments, refetch: refetchPayment } = useQuery(
     trpc.user.getGeneralPaymentsProcedure.queryOptions(undefined, {
       enabled: isLoggedIn,
+    }),
+  );
+
+  const withdrawMutation = useMutation(
+    trpc.user.courses.withdrawUserFromCourseFinalLesson.mutationOptions({
+      onSuccess: () => {
+        location.reload();
+      },
     }),
   );
 
@@ -154,7 +163,13 @@ export const SummerSchool = ({
 
       {!isEventPaid ? (
         <div className="flex flex-row justify-center gap-4">
-          <Button variant={'outline'}>No, I can't join</Button>
+          <SummerSchoolWithdrawButton
+            onConfirm={() => {
+              withdrawMutation.mutate({
+                courseId: courseId,
+              });
+            }}
+          />
           <Button
             onClick={() => {
               setIsPaymentModalOpen(true);

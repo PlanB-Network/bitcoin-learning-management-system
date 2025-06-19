@@ -1,6 +1,7 @@
 export * from './biz-school.js';
 export * from './complete-chapter.js';
 export * from './complete-exam.js';
+export * from './final-lesson.js';
 export * from './generate-chapter-ticket.js';
 export * from './get-course-review.js';
 export * from './get-succeeded-results.js';
