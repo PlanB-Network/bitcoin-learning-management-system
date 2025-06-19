@@ -305,7 +305,11 @@
       "weight": "Uburemere: {{weight}}%",
       "whyTimeStamp": "Gushira-igihe(Time-Stamping ) kumpamyabushobozi yawe:\nKubera iki arivyingenzi",
       "wishTryAgain": "Nimba ushaka kugerageza ukundi, ikibazo kizoboneka inyuma y’amasaha 24.",
-      "yesSubmit": "Ego, rungika"
+      "yesSubmit": "Ego, rungika",
+      "solidEffort": "Turagukeje ku kurangiza icigwa! Wagize umwete n’ishaka. \nNaho utashoboye kubitora uno musi, intambwe yose uko iri irubaka iterambere. \nNtucike intege, n’ugume utera imbere mu rugendo rwawe rwo kwiga!",
+      "finalScore": "Amanota yanyuma",
+      "successDiplomaTeachedLed": "Turagukeje! Waratsinze neza izo nyigisho.\nImpamyabumenyi yawe iraboneka ubu ku rubuga rwawe rw’umunyeshure.",
+      "successfulPassedThreshold": "Turagukeje ku kurangiza izo nyigisho!\nWarashitse ku rugero rw’amanota rukenewe, ubu urarangije ku mugaragaro.\nImpamyabumenyi yawe iraboneka ku rukuta(dashboard) rwawe rw’umunyeshure."
     },
     "explorer": {
       "buildPath": "Wubake urugendo rwawe",
@@ -353,10 +357,99 @@
       "clickOnPie": "Fyonda kw'ishusho y’ikarata y’uduce (pie chart) kugira urabe inyishu yukuri",
       "quizz": "Utubazo",
       "quizzResults": "Ivyavuye mw'igeragezwa",
-      "resultCongrats": "Turagukeje, wabikoze neza!"
+      "resultCongrats": "Turagukeje, wabikoze neza!",
+      "resultItsOk": "Ntiwihebure, uzobikora neza ikindi gihe!",
+      "resultNotBad": "Si nabi cane!",
+      "resultPerfect": "Biratunganye rwose! Turagukeje!"
     },
     "part": {
       "count": "Igice {{count}}"
+    },
+    "review": {
+      "commentAdmin": "Shikiriza iciyumviro kumugwi w'abatware (ibanga)",
+      "faithful": "Bijanye n’intumbero?",
+      "feedbackDescription2": "Menya ko abigisha batazobona amanota yatanzwe n'umuntu kugiti ciwe.",
+      "recommend": "Woshobora gusaba abandi kugikoresha?",
+      "whatStudentsSay": "Ivyo abanyeshure bavuga kuvyerekeye kino cigwa",
+      "asExpected": "nk'uko vyari vyitezwe",
+      "commentAdminMobile": "Icushikirije c'ibanga kumugwi w'abatware",
+      "commentPublic": "Icushikirije (kukarubanda)",
+      "commentPublicMobile": "Icushikirije kiri kukarubanda",
+      "commentTeacher": "Icushikirije ku mwigisha (ibanga)",
+      "commentTeacherMobile": "Icushikirije c’ibanga ku mwigisha",
+      "difficulty": "Ingorane",
+      "displayOutOf": "bwerekanwe ku rugero rwa",
+      "editReview": "Hindura isuzuma",
+      "feedback": "Inyishu",
+      "feedbackDescription1": "Tugusabe utange amanota kuburambe bwawe mu gice kiri hano hasi.",
+      "feedbackSessionTitle": "Turagusavye udufashe gutunganya neza inyigisho zacu mukutubwira icubivuzeko.",
+      "fieldRequired": "Iki kibanza kirakenewe",
+      "generalGrade": "Urugero rusangi rw’amanota",
+      "length": "Uburebure",
+      "loadMoreComments": "Kwinjiza ibindi vyiyumviro",
+      "neutral": "Bitagira aho bihengamiye",
+      "notReally": "Oya, sivyo nukuri",
+      "quality": "Akanovera",
+      "ratingsAndReviews": "Amanota & n’ugusubira kwihweza",
+      "saveReview": "Bika isuzuma",
+      "skip": "Nusimbe isuzuma",
+      "soAndSo": "Naka na naka",
+      "submitReview": "Rungika isuzuma",
+      "thankYou": "Turagushimiye ku ci yumviro cawe! Carakiriwe neza",
+      "tooEasy": "Biroroshe cane",
+      "tooHard": "Biragoye cane",
+      "tooLong": "nibirebire cane",
+      "tooShort": "kigufi cane",
+      "veryBad": "bibi cane",
+      "veryGood": "Vyiza cane",
+      "whatStudentsSayPasEdition": "Ivyo abanyeshure bavuga kuvyerekeye ibikorwa vya kahise",
+      "writeThoughts": "Hano urashobora kwandika ivyiyumviro vyawe",
+      "yesOfCourse": "Ego, rwose",
+      "yesVeryMuch": "ego, vyinshi cane",
+      "no": "Oya"
+    }
+  },
+  "dashboard": {
+    "account": "Ikonti",
+    "adminPanel": {
+      "accessGranted": "Waronkejwe uburenganzira bwokwinjira",
+      "bookings": "Kubikisha",
+      "bookingsPanel": "Ikibanza ubikishirizamwo",
+      "careers": {
+        "careers": "Umyuga",
+        "careersSubtitle": "Hano urashobora kuraba urutonde rw’abitabiriye bose barangije kuzuza ibisabwa. Ushobora kubona amakuru yose ajanye n’ibisabwa mu rupapuro rw’akazi (spreadsheet).",
+        "seeMore": "Raba vyinshi",
+        "viewCV": "Raba CV(Incamake y’ico urico)",
+        "cv": "Incamake y'ukudondora icurico(Curriculum Vitae)",
+        "downloadProfiles": "Guteresharija urupapuro rw’akazi(Download spreadsheet)",
+        "downloadSpreadsheet": "Guteresharija urupapuro rw’akazi(Download spreadsheet)",
+        "lastUpdate": "Ibiheruka kuvugwa",
+        "profession": "Umwuga",
+        "resultsRemaining": "Hasigaye inyishu {{results}}",
+        "lastUpdated": "Ibiheruka kuvugwa"
+      },
+      "confirmRemoval": "Emeza ko ushaka gukuraho",
+      "coupons": {
+        "cancel": "Hagarika",
+        "close": "Ugara",
+        "delete": "Futa",
+        "deleteDiscountCode": "Futa ikodo y'ukugabanya",
+        "deleteDiscountCodeConfirm": "Uravyemera neza ko ushaka gufuta iyi kode y’ukugabanya?",
+        "deleteDiscountCodeSuccess": "Kode y’ukugabanya yafuswe neza",
+        "deleteDiscountCodeWarning": "Iyo kode imaze gufutwa, ntizosubira gukora narimwe. Uku guhindura ntibishobora gusubirwamwo",
+        "discountCode": "Kode y'ukugabanya",
+        "discountCodeCopied": "Urupapuro rundi rwa kode y'ukugabanya",
+        "discountCodeExplanation": "Turagabisha: Iyi kode iritwararika indome nini na ntoyi.",
+        "discountCodePlaceholder": "Siga ikibanza atakirimwo kijamwo ivyiyandika",
+        "discountMultiUse": "Ivyo gukoreshwa kenshi",
+        "discountSingleUse": "Ibikoreshwa rimwe",
+        "discountType": "Ni ubwoko bwa kode iyihe y’ukugabanya amafaranga?",
+        "discountValue": "Ibice kwijana bigabanywa",
+        "discountValueExplanation": "Shiramwo igitigiri ciyongera ku 5 (nk’akarorero: 5, 10, 15… gushika kuri 100)",
+        "discountValuePlaceholder": "akarorero: 20 kuri 20%",
+        "downloadImage": "Teresharija(Download) isanamu",
+        "downloadImages": "teresharija(Download) imasanamu"
+      }
     }
   }
 }
