@@ -588,8 +588,8 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     },
     generateAllCertificates: async () => {
       const timestamps = await ctx.postgres.exec(
-        sql<Array<{ examAttemptId: string }>>`
-          SELECT exam_attempt_id
+        sql<Array<{ id: string }>>`
+          SELECT id
           FROM users.exam_timestamps
           WHERE confirmed = true
             AND pdf_key IS NULL;
@@ -598,11 +598,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       if (timestamps.length) {
         console.log('[cron] Generate all certificates', timestamps);
 
-        for (const { examAttemptId } of timestamps) {
+        for (const { id } of timestamps) {
           try {
-            await generatePdfCertificate(examAttemptId);
+            await generatePdfCertificate(id);
           } catch (err) {
-            console.error('Failed to generate certificate', examAttemptId, err);
+            console.error('Failed to generate certificate', id, err);
           }
         }
       }
