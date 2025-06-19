@@ -237,6 +237,7 @@
       "examCertificateCompletionText": "Plan ₿ Network is pleased to congratulate {{username}} on being awarded the “{{courseName}}” course diploma.",
       "examDetails": "The exam consists of {{nb}} multiple-choice questions, each with one correct answer. You can change your answers at any time before submitting, as long as the timer is running.",
       "examNotPassed": "You need to take the final exam and to score over 80% to get your diploma and complete the course entirely. This diploma will be <0>time-stamped</0> to ensure its authenticity.",
+      "examResults": "Exam results",
       "explanations": "Explanations:",
       "failed": "Failed",
       "failedDiploma": "You have to score over 80% at the final exam to get your diploma and complete the course entirely. You can retake the exam after 24 hours.",
@@ -1684,6 +1685,7 @@
     "protocol": "Protocol",
     "public": "Public communication",
     "publicationDate": "Publication date:",
+    "questions": "Questions",
     "ratings": "Ratings",
     "register": "Register",
     "required": "Required",
@@ -1699,6 +1701,7 @@
     "start": "Start",
     "startHere": "Start here!",
     "status": "Status",
+    "structure": "Structure",
     "student": "Student",
     "students": "Students",
     "submit": "Submit",
@@ -1725,6 +1728,7 @@
     "view": "View",
     "viewMore": "View more",
     "wallets": "Wallets",
+    "weight": "Weight",
     "yes": "Yes"
   },
   "youtubeChannels": {

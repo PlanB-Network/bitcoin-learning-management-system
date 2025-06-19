@@ -12,6 +12,7 @@ export * from './bases/checkbox.tsx';
 export * from './bases/collapsible.tsx';
 export * from './bases/dialog.tsx';
 export * from './bases/divider.tsx';
+export * from './bases/empty-state.tsx';
 export * from './bases/form.tsx';
 export * from './bases/input.tsx';
 export * from './bases/label.tsx';

@@ -26,6 +26,7 @@ import { CourseAnnouncements } from './-components/course-announcements.tsx';
 import { CourseAssignment } from './-components/course-assignment.tsx';
 import { CourseDetails } from './-components/course-details.tsx';
 import { CourseReview } from './-components/course-review.tsx';
+import { ExamResults } from './-components/exam-results.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/professor/courses',
@@ -206,6 +207,12 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
                   },
                 ]
               : []),
+            {
+              value: 'examResults',
+              key: 'examResults',
+              text: t('courses.exam.examResults'),
+              active: 'examResults' === currentTab,
+            },
           ]}
           size={isMobile ? 's' : 'm'}
           className="max-md:mx-4"
@@ -221,6 +228,9 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         </TabsContent>
         <TabsContent value="assignment" className="max-md:px-4">
           <CourseAssignment courseId={course.id} />
+        </TabsContent>
+        <TabsContent value="examResults">
+          <ExamResults courseId={course.id} />
         </TabsContent>
       </Tabs>
     </TabsContent>
