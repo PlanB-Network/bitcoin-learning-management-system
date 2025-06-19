@@ -64,14 +64,6 @@ export const SummerSchool = ({
     }),
   );
 
-  const withdrawMutation = useMutation(
-    trpc.user.courses.withdrawUserFromCourseFinalLesson.mutationOptions({
-      onSuccess: () => {
-        location.reload();
-      },
-    }),
-  );
-
   const isEventPaid = useMemo(
     () =>
       payments?.some(
@@ -159,27 +151,12 @@ export const SummerSchool = ({
         <SummerPresentation />
       )}
 
-      <WhatsIncluded satsPrice={satsPrice} />
-
-      {!isEventPaid ? (
-        <div className="flex flex-col-reverse md:flex-row justify-center gap-4 items-center">
-          <SummerSchoolWithdrawButton
-            onConfirm={() => {
-              withdrawMutation.mutate({
-                courseId: courseId,
-              });
-            }}
-          />
-          <Button
-            onClick={() => {
-              setIsPaymentModalOpen(true);
-            }}
-            className="max-md:w-full"
-          >
-            Yes, enroll and pay now
-          </Button>
-        </div>
-      ) : null}
+      <WhatsIncluded
+        satsPrice={satsPrice}
+        isEventPaid={isEventPaid}
+        setIsPaymentModalOpen={setIsPaymentModalOpen}
+        courseId={courseId}
+      />
 
       <GeneralPaymentModal
         item={GeneralPaymentItem.SummerSchool2025}
@@ -327,7 +304,25 @@ function SummerPresentation() {
   );
 }
 
-function WhatsIncluded({ satsPrice }: { satsPrice: number }) {
+function WhatsIncluded({
+  satsPrice,
+  isEventPaid,
+  setIsPaymentModalOpen,
+  courseId,
+}: {
+  satsPrice: number;
+  isEventPaid: boolean | undefined;
+  setIsPaymentModalOpen: (open: boolean) => void;
+  courseId: string;
+}) {
+  const withdrawMutation = useMutation(
+    trpc.user.courses.withdrawUserFromCourseFinalLesson.mutationOptions({
+      onSuccess: () => {
+        location.reload();
+      },
+    }),
+  );
+
   return (
     <section>
       <div className="flex flex-col gap-4 bg-newGray-6 py-4 rounded-xl">
@@ -383,6 +378,30 @@ function WhatsIncluded({ satsPrice }: { satsPrice: number }) {
               </div>
             </ListElement2>
           </div>
+
+          {!isEventPaid ? (
+            <>
+              <p className="font-medium mt-4">Secure your spot</p>
+
+              <div className="flex flex-col-reverse md:flex-row justify-center gap-4 items-center">
+                <SummerSchoolWithdrawButton
+                  onConfirm={() => {
+                    withdrawMutation.mutate({
+                      courseId: courseId,
+                    });
+                  }}
+                />
+                <Button
+                  onClick={() => {
+                    setIsPaymentModalOpen(true);
+                  }}
+                  className="max-md:w-full"
+                >
+                  Yes, enroll and pay now
+                </Button>
+              </div>
+            </>
+          ) : null}
         </div>
       </div>
     </section>
@@ -396,7 +415,9 @@ function ListElement({
   const Icon = icon;
   return (
     <div className="flex items-center gap-4">
-      <Icon className="size-8 text-darkOrange-3" />
+      <div className="flex w-6 md:w-8">
+        <Icon className="size-6 md:size-8 text-darkOrange-3" />
+      </div>
       <p className="text-xl">{children}</p>
     </div>
   );
