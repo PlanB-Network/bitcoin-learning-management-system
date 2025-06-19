@@ -609,25 +609,22 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     },
     generateAllThumbnails: async () => {
       const docs = await ctx.postgres.exec(
-        sql<Array<{ examAttemptId: string; pdfKey: string }>>`
-          SELECT exam_attempt_id, pdf_key
+        sql<Array<{ id: string; pdfKey: string }>>`
+          SELECT id, pdf_key
           FROM users.exam_timestamps
           WHERE pdf_key IS NOT NULL
             AND img_key IS NULL;
         `,
       );
+
       if (docs.length) {
         console.log('[cron] Generate all certificates thumbnails', docs);
 
-        for (const { examAttemptId, pdfKey } of docs) {
+        for (const { id, pdfKey } of docs) {
           try {
-            await generateCertificateThumbnail(examAttemptId, pdfKey);
+            await generateCertificateThumbnail(id, pdfKey);
           } catch (err) {
-            console.error(
-              'Failed to generate certificate thumbnail',
-              examAttemptId,
-              err,
-            );
+            console.error('Failed to generate certificate thumbnail', id, err);
           }
         }
       }
