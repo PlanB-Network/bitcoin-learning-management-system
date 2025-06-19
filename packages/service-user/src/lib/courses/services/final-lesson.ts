@@ -36,8 +36,8 @@ export const createWithdrawUserFromCourseFinalLesson = (
     await sendEmail({
       email: 'trigger@planb.network',
       subject: subject,
-      template: '',
-      data: {},
+      template: 'd-10e6dac708224b17bb8b3c2d5336de93',
+      data: { username: username },
     });
   };
 };
