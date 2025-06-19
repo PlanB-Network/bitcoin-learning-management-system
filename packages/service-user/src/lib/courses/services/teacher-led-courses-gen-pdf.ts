@@ -172,18 +172,45 @@ export async function createTeacherLedCertificatePdf(
 
   // Course Provider Logo
   if (options.courseProviderLogo) {
+    // Course Provider Logo
+    const maxWidth = 200;
+    const maxHeight = 100;
+
     const logo = await fetch(options.courseProviderLogo);
     const bytes = await logo.arrayBuffer();
     const resized = await sharp(Buffer.from(bytes))
-      .resize({ height: 500, withoutEnlargement: true })
+      .resize({
+        width: maxWidth * 5,
+        height: maxHeight * 5,
+        fit: 'inside', // Preserve ratio
+        withoutEnlargement: true,
+      })
       .png()
       .toBuffer();
 
     const image = await doc.embedPng(resized);
 
-    const width = image.width / 5;
+    const boxTopY = 420;
+    const imageRatio = image.width / image.height;
+    let finalWidth = 0;
+    let finalHeight = 0;
 
-    page.drawImage(image, { x: margin, y: 410, height: 100, width });
+    if (imageRatio > maxWidth / maxHeight) {
+      finalWidth = maxWidth;
+      finalHeight = maxWidth / imageRatio;
+    } else {
+      finalHeight = maxHeight;
+      finalWidth = maxHeight * imageRatio;
+    }
+
+    const drawY = boxTopY + (maxHeight - finalHeight);
+
+    page.drawImage(image, {
+      x: margin + 10,
+      y: drawY,
+      width: finalWidth,
+      height: finalHeight,
+    });
   } else {
     textLeft(page, options.courseProvider, {
       ...conf.courseName,
