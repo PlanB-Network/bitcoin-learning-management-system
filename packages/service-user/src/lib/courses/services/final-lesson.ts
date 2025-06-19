@@ -34,10 +34,10 @@ export const createWithdrawUserFromCourseFinalLesson = (
     const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''} User ${username} withdrawn from final lesson.`;
 
     await sendEmail({
-      email: 'trigger@planb.network',
+      email: 'asi0@planb.network',
       subject: subject,
       template: 'd-10e6dac708224b17bb8b3c2d5336de93',
-      data: { username: username },
+      data: { username: username, subject: subject },
     });
   };
 };
