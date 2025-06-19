@@ -11,6 +11,7 @@ import {
   courseReviewSchema,
   courseSucceededExamSchema,
   courseUserChapterSchema,
+  minimalUserExamTimestampSchema,
   partialExamQuestionSchema,
 } from '@blms/schemas';
 import {
@@ -31,6 +32,7 @@ import {
   createGetPayment,
   createGetPayments,
   createGetProgress,
+  createGetTeacherLedCourseDiplomaTimestamp,
   createGetUserChapter,
   createGetUserDetailsByCertificateId,
   createSaveCourseAssignmentGrade,
@@ -58,6 +60,7 @@ import type {
   CourseReview,
   CourseSucceededExam,
   CourseUserChapter,
+  MinimalUserExamTimestamp,
   PartialExamQuestion,
 } from '@blms/types';
 
@@ -166,6 +169,18 @@ const getLatestExamResultsProcedure = studentProcedure
       uid: ctx.user.uid,
       courseId: input.courseId,
       chapterId: input.chapterId,
+    }),
+  );
+
+const getTeacherLedCourseDiplomaTimestampProcedure = studentProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<MinimalUserExamTimestamp | null>>(
+    minimalUserExamTimestampSchema.nullable(),
+  )
+  .query(({ ctx, input }) =>
+    createGetTeacherLedCourseDiplomaTimestamp(ctx.dependencies)({
+      uid: ctx.user.uid,
+      courseId: input.courseId,
     }),
   );
 
@@ -548,6 +563,8 @@ export const userCoursesRouter = createTRPCRouter({
   getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
+  getTeacherLedCourseDiplomaTimestamp:
+    getTeacherLedCourseDiplomaTimestampProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,

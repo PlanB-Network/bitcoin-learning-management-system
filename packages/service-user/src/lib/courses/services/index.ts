@@ -30,3 +30,4 @@ export * from './start-exam-attempt.js';
 export * from './update-payment.js';
 export * from './course-certificate-service.js';
 export * from './get-certificate-details.js';
+export * from './get-diploma-timestamp.js';

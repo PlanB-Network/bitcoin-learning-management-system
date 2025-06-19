@@ -20,3 +20,13 @@ export interface UserExamTimestamp {
   updatedAt: Date;
   confirmedAt: Date | null;
 }
+
+export interface MinimalUserExamTimestamp {
+  id: string;
+  uid: string | null;
+  courseId: string | null;
+  confirmed: boolean;
+  examAttemptId: string | null;
+  imgKey: string | null;
+  pdfKey: string | null;
+}
