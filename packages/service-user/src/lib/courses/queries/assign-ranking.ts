@@ -28,7 +28,7 @@ export const assignTop21StudentsToFinalLessonQuery = (courseId: string) => {
   return sql`
     UPDATE users.course_progress cp
     SET is_selected_for_final_lesson = true
-    WHERE ranking >= 21
+    WHERE ranking <= 21
       AND course_id = ${courseId}
   `;
 };
