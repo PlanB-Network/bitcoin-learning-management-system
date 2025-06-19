@@ -382,12 +382,14 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         return null;
       }
 
+      const host = `${process.env.PLANB_ENVIRONMENT === 'mainnet' ? 'planb' : 'planbtest'}.network`;
+
       pdf = await createTeacherLedCertificatePdf({
         fullName: cp.user.displayName,
         courseName: cp.course.name,
         courseFormat: cp.course.format,
         courseProvider: cp.projectName,
-        courseProviderLogo: `https://planb.network/cdn/courses/${cp.course.index}/assets/thumbnail.webp`,
+        courseProviderLogo: `https://${host}/cdn/courses/${cp.course.index}/assets/logo.webp`,
         date: formatDate(cp.startDate),
         hash: timestamp.hash,
         txid: timestamp.blockHash,
