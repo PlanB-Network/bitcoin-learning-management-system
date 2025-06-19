@@ -11,7 +11,11 @@ export const SummerSchoolWithdrawButton = ({ onConfirm }: ModalProps) => {
 
   return (
     <BasicModal
-      trigger={<Button variant={'outline'}>No, I can't join</Button>}
+      trigger={
+        <Button variant={'outline'} className="max-md:w-full">
+          No, I can't join
+        </Button>
+      }
       title={'Are you sure to want to withdraw?'}
       content={
         <div className="flex flex-col gap-4 text-left">
@@ -36,7 +40,6 @@ export const SummerSchoolWithdrawButton = ({ onConfirm }: ModalProps) => {
           <Button
             variant="primary"
             size={isMobile ? 's' : 'l'}
-            className="!w-fit"
             onClick={() => {
               window.open(
                 'https://t.me/asi0_flammeus',

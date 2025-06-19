@@ -162,7 +162,7 @@ export const SummerSchool = ({
       <WhatsIncluded satsPrice={satsPrice} />
 
       {!isEventPaid ? (
-        <div className="flex flex-row justify-center gap-4">
+        <div className="flex flex-col-reverse md:flex-row justify-center gap-4 items-center">
           <SummerSchoolWithdrawButton
             onConfirm={() => {
               withdrawMutation.mutate({
@@ -174,6 +174,7 @@ export const SummerSchool = ({
             onClick={() => {
               setIsPaymentModalOpen(true);
             }}
+            className="max-md:w-full"
           >
             Yes, enroll and pay now
           </Button>
@@ -210,7 +211,7 @@ function SummerPresentation() {
           <h2 className="mobile-h3 md:title-large-sb-24px  text-dashboardSectionTitle">
             What to expect
           </h2>
-          <div className="flex flex-row gap-4 mt-4 text-center">
+          <div className="flex flex-col md:flex-row gap-4 mt-4 text-center">
             <Card
               className="w-full border-0"
               withPadding={false}
@@ -257,7 +258,7 @@ function SummerPresentation() {
         <h2 className="mt-4 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           As well as
         </h2>
-        <div className="flex flex-col gap-3 ml-6">
+        <div className="flex flex-col gap-3 md:ml-6">
           <ListElement icon={TbHammer}>
             <span className="font-semibold">Hands-on workshops</span>
             <span className=""> to apply what you learn</span>
@@ -287,7 +288,7 @@ function SummerPresentation() {
         <h2 className="mt-4 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           Beyond the Classroom
         </h2>
-        <div className="flex flex-col gap-3 ml-6">
+        <div className="flex flex-col gap-3 md:ml-6">
           <ListElement icon={TbUsers}>
             <span className="">Build</span>
             <span className="font-semibold"> lifelong connections </span>
@@ -408,12 +409,12 @@ function ListElement2({
 }: { icon: IconType; leftText: string; children: React.ReactNode }) {
   const Icon = icon;
   return (
-    <div className="flex items-center justify-between gap-4 my-2">
+    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4 my-2">
       <div className="flex flex-row gap-2 items-center text-newGray-1">
         <Icon className="size-6" />
         <span className="text-sm md:text-base">{leftText}</span>
       </div>
-      <p className="text-sm md:text-lg text-newBlack-3 text-right">
+      <p className="text-sm md:text-lg text-newBlack-3 md:text-right">
         {children}
       </p>
     </div>
