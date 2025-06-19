@@ -181,7 +181,7 @@ export async function createTeacherLedCertificatePdf(
 
     const image = await doc.embedPng(resized);
 
-    page.drawImage(image, { x: margin, y: 430 });
+    page.drawImage(image, { x: margin, y: 410 });
   } else {
     textLeft(page, options.courseProvider, {
       ...conf.courseName,
