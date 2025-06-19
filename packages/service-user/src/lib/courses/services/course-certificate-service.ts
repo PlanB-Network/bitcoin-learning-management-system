@@ -137,7 +137,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
   const upgrade = createUpgrade();
   const verify = createVerify({ ignoreBitcoinNode: true });
 
-  const getExamAttempt = (id: string) => {
+  const getExamAttempt = (examAttemptId: string) => {
     return ctx.postgres
       .exec(
         sql<ExamAttemptWithUser[]>`
@@ -169,7 +169,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
             WHERE c.id = a.course_id) AS course
           FROM
             users.exam_attempts a
-          WHERE a.id = ${id};
+          WHERE a.id = ${examAttemptId};
         `,
       )
       .then(firstRow)
@@ -354,7 +354,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     let pdf = null;
 
     if (timestamp.examAttemptId) {
-      const exam = await getExamAttempt(id);
+      const exam = await getExamAttempt(timestamp.examAttemptId);
 
       if (!exam || !timestamp || !timestamp.confirmed || !timestamp.blockHash) {
         return null;
