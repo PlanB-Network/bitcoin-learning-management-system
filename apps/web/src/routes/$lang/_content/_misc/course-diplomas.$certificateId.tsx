@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { z } from 'zod';
 
+import { z } from 'zod';
 import { CertificateDisplay } from './-components/certificate-display.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_content/_misc/exam-certificates/$certificateId',
+  '/$lang/_content/_misc/course-diplomas/$certificateId',
 )({
   params: {
     parse: (params) => ({
@@ -22,5 +22,10 @@ export const Route = createFileRoute(
 function Certificate() {
   const params = Route.useParams();
 
-  return <CertificateDisplay certificateId={params.certificateId as string} />;
+  return (
+    <CertificateDisplay
+      certificateId={params.certificateId as string}
+      isCourseWithSingleTrialExam
+    />
+  );
 }

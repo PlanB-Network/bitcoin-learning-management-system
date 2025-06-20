@@ -805,6 +805,7 @@
       "surePreferenceList": "Are you sure that your preference list is final?",
       "thresholdToPass": "Threshold to pass: {{threshold}}%",
       "tweetText": "Thrilled to have completed {{courseIndex}} course at @planb_network and earned my diploma with a score of {{score}}/100 on the final exam! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetTextCourseDiploma": "Thrilled to have completed the course {{courseName}}, taught by {{courseCoordinator}} on @planb_network and to have earned my diploma!\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewFinalGrade": "View final grade",
       "wellDoneCompleting": "Well done on completing and passing this course! \nHere is your well deserved diploma",
       "yourProject": "Your project"

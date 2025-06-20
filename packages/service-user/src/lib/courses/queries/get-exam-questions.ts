@@ -245,11 +245,9 @@ export const getExamIdFromQuestionIdQuery = ({
     `;
 };
 
-export const getUidCourseIdAndUsernameByCertificateIdQuery = ({
-  certificateId,
-}: {
-  certificateId: string;
-}) => {
+export const getUidCourseIdAndUsernameByCertificateIdQuery = (
+  certificateId: string,
+) => {
   return sql`
     SELECT ea.uid, ea.course_id, u.display_name
     FROM users.exam_attempts ea

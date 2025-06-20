@@ -282,7 +282,7 @@ function SummerPresentation() {
         </h2>
         <div className="flex flex-col gap-3 md:ml-6">
           <ListElement icon={TbUsers}>
-            <span className="">Build</span>
+            <span className="max-md:text-base">Build</span>
             <span className="font-semibold max-md:text-base">
               {' '}
               lifelong connections{' '}

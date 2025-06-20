@@ -14,3 +14,15 @@ export const getTeacherLedCourseDiplomaTimestampQuery = (
               ;
           `;
 };
+
+export const getUidCourseIdAndUsernameByExamTimestampIdQuery = (
+  certificateId: string,
+) => {
+  return sql`
+    SELECT et.uid, et.course_id, u.display_name
+    FROM users.exam_timestamps et
+    JOIN users.accounts u ON et.uid = u.uid
+    WHERE et.id = ${certificateId}
+    LIMIT 1;
+  `;
+};

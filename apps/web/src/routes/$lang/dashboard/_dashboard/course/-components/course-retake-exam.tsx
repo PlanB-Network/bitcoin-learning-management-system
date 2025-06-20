@@ -10,6 +10,7 @@ import type { CourseExamResults } from '@blms/types';
 import { Button, Loader, cn } from '@blms/ui';
 
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
@@ -86,6 +87,7 @@ const CourseExamsTable = ({
   openLastExam?: boolean;
 }) => {
   const isMobile = useSmaller('md');
+  const { i18n } = useTranslation();
 
   const [collapsedStates, setCollapsedStates] = useState<{
     [key: number]: boolean;
@@ -240,7 +242,7 @@ const CourseExamsTable = ({
                               to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                                 t('dashboard.course.tweetText', {
                                   courseIndex: courseIndex.toUpperCase(),
-                                  certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
+                                  certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/exam-certificates/${exam.id}`,
                                   score: `${exam.score}`,
                                   emoji:
                                     exam.score && exam.score >= 90
@@ -276,7 +278,7 @@ const CourseExamsTable = ({
                           to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             t('dashboard.course.tweetText', {
                               courseIndex: courseIndex.toUpperCase(),
-                              certificateUrl: `${window.location.origin}/en/exam-certificates/${exam.id}`,
+                              certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/exam-certificates/${exam.id}`,
                               score: `${exam.score}`,
                               emoji:
                                 exam.score && exam.score >= 90 ? '🏆' : '💪',

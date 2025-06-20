@@ -425,6 +425,7 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
   .input(
     z.object({
       certificateId: z.string(),
+      isCourseWithSingleTrialExam: z.boolean().optional().default(false),
     }),
   )
   .output(
@@ -435,10 +436,11 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
     }),
   )
   .query(({ ctx, input }) => {
-    const { certificateId } = input;
+    const { certificateId, isCourseWithSingleTrialExam } = input;
 
     return createGetUserDetailsByCertificateId(ctx.dependencies)({
       certificateId,
+      isCourseWithSingleTrialExam,
     });
   });
 

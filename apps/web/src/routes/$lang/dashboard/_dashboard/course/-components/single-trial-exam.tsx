@@ -14,7 +14,9 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
+import { BsTwitterX } from 'react-icons/bs';
 import { IoMdLock } from 'react-icons/io';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
 import { TbAlertOctagon, TbDownload } from 'react-icons/tb';
@@ -144,6 +146,8 @@ export const SingleTrialExam = ({
                   <DiplomaSection
                     timestampId={timestamp.id}
                     imgKey={timestamp.imgKey || ''}
+                    courseName={course.name}
+                    courseCoordinator={course.mainProfessors[0]?.name}
                   />
                 ) : (
                   <Loader />
@@ -415,16 +419,24 @@ const AssignmentItem = ({
 interface DiplomaSectionProps {
   timestampId: string;
   imgKey: string;
+  courseName: string;
+  courseCoordinator: string;
 }
 
-const DiplomaSection = ({ timestampId, imgKey }: DiplomaSectionProps) => {
+const DiplomaSection = ({
+  timestampId,
+  imgKey,
+  courseName,
+  courseCoordinator,
+}: DiplomaSectionProps) => {
   const isMobile = useSmaller('md');
+  const { i18n } = useTranslation();
 
   return (
     <div className="flex flex-col w-full max-w-[549px] items-center">
       <img
         src={`/api/files/${imgKey}`}
-        alt="Certificate"
+        alt="Diploma"
         className="mt-4 md:mt-2.5"
       />
 
@@ -444,6 +456,28 @@ const DiplomaSection = ({ timestampId, imgKey }: DiplomaSectionProps) => {
             <TbDownload className="size-[18px] md:size-6" />
           </Button>
         </a>
+        <div className="flex items-center gap-4 max-md:hidden ">
+          <Link
+            to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              t('dashboard.course.tweetTextCourseDiploma', {
+                courseName: courseName,
+                courseCoordinator: courseCoordinator,
+                certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/course-diplomas/${timestampId}`,
+              }),
+            )}`}
+            target="_blank"
+            className="w-fit"
+          >
+            <Button
+              variant="outline"
+              size="m"
+              className="flex gap-2.5 !font-normal"
+            >
+              {t('dashboard.myCourses.shareOn')}
+              <BsTwitterX size={24} />
+            </Button>
+          </Link>
+        </div>
       </div>
       <Link
         to={
@@ -454,6 +488,22 @@ const DiplomaSection = ({ timestampId, imgKey }: DiplomaSectionProps) => {
       >
         <ApprovedIcon className="size-4" />
         <span>{t('dashboard.myCourses.verify')}</span>
+      </Link>
+      <Link
+        to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          t('dashboard.course.tweetTextCourseDiploma', {
+            courseName: courseName,
+            courseCoordinator: courseCoordinator,
+            certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/course-diplomas/${timestampId}`,
+          }),
+        )}`}
+        target="_blank"
+        className="w-fit md:hidden mt-2.5"
+      >
+        <Button variant="tertiary" size="s">
+          Share on
+          <BsTwitterX size={18} className="ml-1.5" />
+        </Button>
       </Link>
     </div>
   );
