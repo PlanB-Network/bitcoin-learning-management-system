@@ -27,6 +27,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { TbX } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { CourseReviewComponent } from '../course-review-component.tsx';
@@ -677,6 +678,14 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
 
             {step === 5 && (
               <div className="fixed inset-0 flex justify-center items-center bg-black md:bg-black/80 md:backdrop-blur-md z-50">
+                <button
+                  onClick={() => updateStep(6)}
+                  className="absolute top-4 right-4 z-10"
+                  type="button"
+                >
+                  <TbX className="size-8 text-white hover:opacity-80 transition-opacity" />
+                </button>
+
                 {isMobile ? (
                   <video
                     className="relative w-full max-h-full"
