@@ -17,7 +17,9 @@ import { t } from 'i18next';
 import { BiPencil } from 'react-icons/bi';
 import { IoMdLock } from 'react-icons/io';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
-import { TbAlertOctagon } from 'react-icons/tb';
+import { TbAlertOctagon, TbDownload } from 'react-icons/tb';
+import ApprovedIcon from '#src/assets/icons/approved.svg?react';
+import Finish from '#src/assets/icons/finish.svg?react';
 import SuccessExam from '#src/assets/icons/success_party.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { formatDate, formatDateRange } from '#src/utils/date.ts';
@@ -40,6 +42,12 @@ export const SingleTrialExam = ({
     }),
   );
 
+  const { data: timestamp, isSuccess: isTimestampFetched } = useQuery(
+    trpc.user.courses.getTeacherLedCourseDiplomaTimestamp.queryOptions({
+      courseId: course.id,
+    }),
+  );
+
   const courseProgress = userProgress?.[0];
   const assignmentScore = courseProgress?.assignmentGrade;
 
@@ -58,6 +66,14 @@ export const SingleTrialExam = ({
   const totalStudents = enrolledStudentsCount ?? '-';
 
   const hasPassed = finalScore >= passingThreshold;
+  const isCourseConclusionReleased = !!course?.parts?.some((part) =>
+    part.chapters.some(
+      (chap) =>
+        chap.isCourseConclusion &&
+        chap.releaseDate != null &&
+        chap.releaseDate <= new Date(),
+    ),
+  );
 
   const scoreAndRankingClasses =
     'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-newGray-5 w-full md:max-w-80';
@@ -70,7 +86,7 @@ export const SingleTrialExam = ({
             <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
               {t('dashboard.course.finalGradeSummary')}
             </h2>
-            <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 p-8 gap-10">
+            <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
               <div className="flex flex-col items-center gap-5">
                 {hasPassed && (
                   <SuccessExam className="size-7 md:size-9 fill-brightGreen-6" />
@@ -117,16 +133,32 @@ export const SingleTrialExam = ({
               </div>
             </section>
           </div>
-          {hasPassed && (
-            <Alert hasCloseButton variant="warning">
-              <AlertTitle icon={TbAlertOctagon}>
-                {t('dashboard.course.diplomaReleaseTitle')}
-              </AlertTitle>
-              <AlertDescription className="max-md:body-14px text-newBlack-2">
-                {t('dashboard.course.diplomaReleaseDescription')}
-              </AlertDescription>
-            </Alert>
-          )}
+          {hasPassed &&
+            (isCourseConclusionReleased ? (
+              <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
+                <Finish className="fill-darkOrange-5 size-7 md:size-9" />
+                <p className="label-medium-16px md:subtitle-large-med-20px text-newBlack-1 whitespace-pre-line text-center">
+                  {t('dashboard.course.wellDoneCompleting')}
+                </p>
+                {isTimestampFetched && timestamp ? (
+                  <DiplomaSection
+                    timestampId={timestamp.id}
+                    imgKey={timestamp.imgKey || ''}
+                  />
+                ) : (
+                  <Loader />
+                )}
+              </section>
+            ) : (
+              <Alert hasCloseButton variant="warning">
+                <AlertTitle icon={TbAlertOctagon}>
+                  {t('dashboard.course.diplomaReleaseTitle')}
+                </AlertTitle>
+                <AlertDescription className="max-md:body-14px text-newBlack-2">
+                  {t('dashboard.course.diplomaReleaseDescription')}
+                </AlertDescription>
+              </Alert>
+            ))}
         </>
       )}
       <div className="flex flex-col gap-2.5 md:gap-6">
@@ -376,6 +408,53 @@ const AssignmentItem = ({
           )}
         </div>
       </div>
+    </div>
+  );
+};
+
+interface DiplomaSectionProps {
+  timestampId: string;
+  imgKey: string;
+}
+
+const DiplomaSection = ({ timestampId, imgKey }: DiplomaSectionProps) => {
+  const isMobile = useSmaller('md');
+
+  return (
+    <div className="flex flex-col w-full max-w-[549px] items-center">
+      <img
+        src={`/api/files/${imgKey}`}
+        alt="Certificate"
+        className="mt-4 md:mt-2.5"
+      />
+
+      <div className="flex max-md:flex-col max-md:items-center md:justify-between w-full mt-7 md:mt-5">
+        <a
+          href={`/api/files/zip/diplomas/${timestampId}`}
+          download
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button
+            size={isMobile ? 's' : 'm'}
+            variant="primary"
+            className="items-center flex gap-2.5"
+          >
+            {t('dashboard.myCourses.download')}
+            <TbDownload className="size-[18px] md:size-6" />
+          </Button>
+        </a>
+      </div>
+      <Link
+        to={
+          '/tutorials/contribution/others/pbn-certificate-timestamping-dd16f8c0-00c1-45fd-8792-920612bed18f'
+        }
+        target="_blank"
+        className="mt-2.5 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
+      >
+        <ApprovedIcon className="size-4" />
+        <span>{t('dashboard.myCourses.verify')}</span>
+      </Link>
     </div>
   );
 };
