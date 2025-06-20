@@ -76,6 +76,7 @@ import { Route as LangContentMiscProfessorsCategoryRouteImport } from './routes/
 import { Route as LangContentMiscProfessorProfessorNameProfessorIdRouteImport } from './routes/$lang/_content/_misc/professor.$professorName-$professorId';
 import { Route as LangContentMiscPlanBLabsGroupRouteImport } from './routes/$lang/_content/_misc/plan-b-labs/$group';
 import { Route as LangContentMiscExamCertificatesCertificateIdRouteImport } from './routes/$lang/_content/_misc/exam-certificates.$certificateId';
+import { Route as LangContentMiscCourseDiplomasCertificateIdRouteImport } from './routes/$lang/_content/_misc/course-diplomas.$certificateId';
 import { Route as LangContentMiscChangeEmailPreferencesUnsubscribeIdRouteImport } from './routes/$lang/_content/_misc/change-email-preferences.$unsubscribeId';
 import { Route as LangContentMiscBcertCertificatesCertificateIdRouteImport } from './routes/$lang/_content/_misc/bcert-certificates.$certificateId';
 import { Route as LangContentMiscPublicCommunicationLegalsIndexRouteImport } from './routes/$lang/_content/_misc/public-communication/legals/index';
@@ -474,6 +475,12 @@ const LangContentMiscExamCertificatesCertificateIdRoute =
     path: '/$lang/exam-certificates/$certificateId',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangContentMiscCourseDiplomasCertificateIdRoute =
+  LangContentMiscCourseDiplomasCertificateIdRouteImport.update({
+    id: '/$lang/_content/_misc/course-diplomas/$certificateId',
+    path: '/$lang/course-diplomas/$certificateId',
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute =
   LangContentMiscChangeEmailPreferencesUnsubscribeIdRouteImport.update({
     id: '/$lang/_content/_misc/change-email-preferences/$unsubscribeId',
@@ -551,6 +558,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/': typeof LangDashboardDashboardIndexRoute;
   '/$lang/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
+  '/$lang/course-diplomas/$certificateId': typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
   '/$lang/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
@@ -625,6 +633,7 @@ export interface FileRoutesByTo {
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
   '/$lang/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
+  '/$lang/course-diplomas/$certificateId': typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
   '/$lang/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
@@ -701,6 +710,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/': typeof LangDashboardDashboardIndexRoute;
   '/$lang/_content/_misc/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/_content/_misc/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
+  '/$lang/_content/_misc/course-diplomas/$certificateId': typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   '/$lang/_content/_misc/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
   '/$lang/_content/_misc/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/_content/_misc/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
@@ -778,6 +788,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/'
     | '/$lang/bcert-certificates/$certificateId'
     | '/$lang/change-email-preferences/$unsubscribeId'
+    | '/$lang/course-diplomas/$certificateId'
     | '/$lang/exam-certificates/$certificateId'
     | '/$lang/plan-b-labs/$group'
     | '/$lang/professor/$professorName-$professorId'
@@ -852,6 +863,7 @@ export interface FileRouteTypes {
     | '/$lang/tutorials'
     | '/$lang/bcert-certificates/$certificateId'
     | '/$lang/change-email-preferences/$unsubscribeId'
+    | '/$lang/course-diplomas/$certificateId'
     | '/$lang/exam-certificates/$certificateId'
     | '/$lang/plan-b-labs/$group'
     | '/$lang/professor/$professorName-$professorId'
@@ -927,6 +939,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/'
     | '/$lang/_content/_misc/bcert-certificates/$certificateId'
     | '/$lang/_content/_misc/change-email-preferences/$unsubscribeId'
+    | '/$lang/_content/_misc/course-diplomas/$certificateId'
     | '/$lang/_content/_misc/exam-certificates/$certificateId'
     | '/$lang/_content/_misc/plan-b-labs/$group'
     | '/$lang/_content/_misc/professor/$professorName-$professorId'
@@ -995,6 +1008,7 @@ export interface RootRouteChildren {
   LangContentTutorialsIndexRoute: typeof LangContentTutorialsIndexRoute;
   LangContentMiscBcertCertificatesCertificateIdRoute: typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute: typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
+  LangContentMiscCourseDiplomasCertificateIdRoute: typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   LangContentMiscExamCertificatesCertificateIdRoute: typeof LangContentMiscExamCertificatesCertificateIdRoute;
   LangContentMiscPlanBLabsGroupRoute: typeof LangContentMiscPlanBLabsGroupRoute;
   LangContentMiscProfessorProfessorNameProfessorIdRoute: typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
@@ -1497,6 +1511,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscExamCertificatesCertificateIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/_content/_misc/course-diplomas/$certificateId': {
+      id: '/$lang/_content/_misc/course-diplomas/$certificateId';
+      path: '/$lang/course-diplomas/$certificateId';
+      fullPath: '/$lang/course-diplomas/$certificateId';
+      preLoaderRoute: typeof LangContentMiscCourseDiplomasCertificateIdRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$lang/_content/_misc/change-email-preferences/$unsubscribeId': {
       id: '/$lang/_content/_misc/change-email-preferences/$unsubscribeId';
       path: '/$lang/change-email-preferences/$unsubscribeId';
@@ -1668,6 +1689,8 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscBcertCertificatesCertificateIdRoute,
   LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute:
     LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute,
+  LangContentMiscCourseDiplomasCertificateIdRoute:
+    LangContentMiscCourseDiplomasCertificateIdRoute,
   LangContentMiscExamCertificatesCertificateIdRoute:
     LangContentMiscExamCertificatesCertificateIdRoute,
   LangContentMiscPlanBLabsGroupRoute: LangContentMiscPlanBLabsGroupRoute,

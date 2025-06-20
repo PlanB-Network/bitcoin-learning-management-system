@@ -265,6 +265,9 @@ export const createGetMetadata = (dependencies: Dependencies) => {
       case 'exam-certificates': {
         return getExamCertificateMetadata(lang, rest); //
       }
+      case 'course-diplomas': {
+        return getExamCertificateMetadata(lang, rest); //
+      }
       case 'bcert-certificates': {
         return getBcertCertificateMetadata(lang, rest); //
       }
