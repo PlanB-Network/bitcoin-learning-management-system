@@ -448,8 +448,38 @@
         "discountValueExplanation": "Shiramwo igitigiri ciyongera ku 5 (nk’akarorero: 5, 10, 15… gushika kuri 100)",
         "discountValuePlaceholder": "akarorero: 20 kuri 20%",
         "downloadImage": "Teresharija(Download) isanamu",
-        "downloadImages": "teresharija(Download) imasanamu"
-      }
+        "downloadImages": "teresharija(Download) imasanamu",
+        "explanation": "Tegura kandi uziganye ama kode yokugabanya ibiciro ku birori canke ivyigwa — ushobora gukoresha ikarata imwe gusa ku banyeshure bahawe ubuhanisho canke ibindi bisa n’ivyo, canke ukoreshe amakarata menshi y’ihungurirwa mu bikorwa vy’ukwamamaza.",
+        "filters": {
+          "all": "Zose",
+          "courses": "Ivyigwa",
+          "events": "Ibirori",
+          "multiUse": "Ikoreshwa kenshi",
+          "singleUse": "Ikoreshwa rimwe"
+        },
+        "forWhat": "Ku bwoko bw'ikintu ikihe?",
+        "forWhichCourse": "Ni ku cigwa icahe ?",
+        "forWhichEvent": "Ni ku gikorwa ikihe?",
+        "generateCode": "Tunganya ikode",
+        "generateCodes": "Tunganya amakode",
+        "generateDiscountCode": "Tunganya ikode y'ukugabanya",
+        "generateNew": "Tunganya ikode nshasha",
+        "generateNewCodes": "Tunganya amakode mashasha",
+        "generatedCode": "Ikode yatunganijwe",
+        "generatedCodes": "Amakode yatunganijwe",
+        "maximumNumberOfUse": "Ibiharuro ntarengwa bikoreshwa",
+        "tableHead": {
+          "owner": "Nyeneyo",
+          "total": "Igitigiri cose",
+          "type": "Ubwoko",
+          "uses": "Vyakoreshejwe",
+          "value": "Agaciro"
+        }
+      },
+      "coursesIndexes": "Ibimenyetso vy'ivyigwa",
+      "date": "Itariki",
+      "deleteRole": "Futa uruhara",
+      "discountCodes": "Amakode y'ukugabanya"
     }
   }
 }
