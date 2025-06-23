@@ -217,10 +217,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
       (previousExamResults?.succeeded || hasSingleTrialExamAndThreshold) &&
       step === 3
     ) {
-      setTimeout(
-        () => updateStep(isCourseReviewSkipped ? 6 : 4),
-        STEP_DURATION,
-      );
+      setTimeout(() => updateStep(4), STEP_DURATION);
     }
   }, [previousExamResults, isCourseExamSkipped, step]);
 

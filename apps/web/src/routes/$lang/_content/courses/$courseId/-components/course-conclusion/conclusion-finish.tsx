@@ -292,37 +292,39 @@ const DiplomaSelfPaced = ({
                 t('courses.exam.failedDiploma')}
             </p>
 
-            <ButtonWithArrow
-              disabled={
-                examResults
-                  ? examResults.succeeded
-                    ? false
-                    : new Date(examResults.startedAt).getTime() +
-                        ONE_DAY_IN_MS >
-                      Date.now()
-                  : false
+            <Link
+              to={
+                examResults?.succeeded
+                  ? '/dashboard/course/$courseId'
+                  : '/courses/$courseId/$chapterId'
               }
-              className="w-fit max-md:mx-auto"
+              hash={examResults?.succeeded ? 'retakeExam' : ''}
+              params={{
+                courseId: course?.id,
+                chapterId: examChapterId,
+              }}
+              className="w-fit"
+              asChild
             >
-              <Link
-                to={
-                  examResults?.succeeded
-                    ? '/dashboard/course/$courseId'
-                    : '/courses/$courseId/$chapterId'
+              <ButtonWithArrow
+                disabled={
+                  examResults
+                    ? examResults.succeeded
+                      ? false
+                      : new Date(examResults.startedAt).getTime() +
+                          ONE_DAY_IN_MS >
+                        Date.now()
+                    : false
                 }
-                hash={examResults?.succeeded ? 'exam' : ''}
-                params={{
-                  courseId: course?.id,
-                  chapterId: examChapterId,
-                }}
+                className="w-fit max-md:mx-auto"
               >
                 {examResults
                   ? examResults.succeeded
                     ? t('courses.exam.getCertificate')
                     : t('courses.exam.retakeExam')
                   : t('courses.exam.takeExam')}
-              </Link>
-            </ButtonWithArrow>
+              </ButtonWithArrow>
+            </Link>
           </div>
         </div>
       </section>
@@ -359,17 +361,19 @@ const DiplomaTeacherLed = ({
               {t('courses.exam.successDiplomaTeachedLed')}
             </p>
 
-            <ButtonWithArrow className="w-fit max-md:mx-auto" asChild>
-              <Link
-                to={'/dashboard/course/$courseId'}
-                hash={'singleTrialExam'}
-                params={{
-                  courseId: course?.id,
-                }}
-              >
+            <Link
+              to={'/dashboard/course/$courseId'}
+              hash={'singleTrialExam'}
+              params={{
+                courseId: course?.id,
+              }}
+              className="w-fit"
+              asChild
+            >
+              <ButtonWithArrow className="w-fit max-md:mx-auto">
                 {t('courses.exam.getCertificate')}
-              </Link>
-            </ButtonWithArrow>
+              </ButtonWithArrow>
+            </Link>
           </div>
         </div>
       </section>
