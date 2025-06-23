@@ -196,10 +196,12 @@ function SummerPresentation() {
             >
               <div className="flex flex-col gap-2 items-center">
                 <CalendarPixel className="justify-self-center size-11" />
-                <p className="text-xl font-medium">6 days all-inclusive</p>
+                <p className="text-xl font-medium">
+                  6 days all-inclusive experience
+                </p>
                 <div className="text-base flex flex-row gap-2 text-newGray-1 items-center">
                   <TbCalendarMonth />
-                  July 20 - 26
+                  July 21 - 26
                 </div>
               </div>
             </Card>
@@ -213,7 +215,7 @@ function SummerPresentation() {
                 <p className="text-xl font-medium">5 full-day courses</p>
                 <div className="text-base flex flex-row gap-2 text-newGray-1 items-center">
                   <TbCalendarMonth />
-                  July 21 - 26
+                  July 21 - 25
                 </div>
               </div>
             </Card>
@@ -225,8 +227,12 @@ function SummerPresentation() {
               <div className="flex flex-col gap-2 items-center">
                 <HeartPixel className="justify-self-center size-11 fill-primary" />
                 <p className="text-xl font-medium">
-                  Top industry leaders insights & network
+                  An entire week at a Four Star Hotel
                 </p>
+                <div className="text-base flex flex-row gap-2 text-newGray-1 items-center">
+                  <TbCalendarMonth />
+                  July 20 - 27
+                </div>
               </div>
             </Card>
           </div>
@@ -356,14 +362,15 @@ function WhatsIncluded({
           <p className="font-medium">Logistics</p>
           <div className="bg-white p-4 rounded-xl">
             <ListElement2 icon={TbBed} leftText="Accommodation">
-              Hotel in Brusimpiano (July 20–26) and optional stay extension at a
+              Hotel in Brusimpiano (July 20–27) and optional stay extension at a
               discounted rate
             </ListElement2>
             <ListElement2 icon={TbBus} leftText="Transport">
               Daily transport to and from Lugano
             </ListElement2>
             <ListElement2 icon={TbToolsKitchen2} leftText="Food">
-              Breakfast, lunch & dinner included every day
+              Breakfast, lunch & dinner included every day, for the duration of
+              the course
             </ListElement2>
             <ListElement2 icon={TbSpeedboat} leftText="Experiences">
               Boat trip on Lake Lugano (July 26)
