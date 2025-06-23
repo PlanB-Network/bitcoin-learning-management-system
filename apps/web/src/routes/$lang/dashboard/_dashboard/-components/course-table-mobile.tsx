@@ -24,7 +24,7 @@ import securitySvg from '#src/assets/icons/padlock-black.svg';
 import protocolSvg from '#src/assets/icons/protocol-black.svg';
 import socialStudiesSvg from '#src/assets/icons/world-black.svg';
 
-import { BTC101ID } from '#src/utils/courses.ts';
+import { BTC101ID } from '@blms/shared';
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 import { courseCategoriesDashboard } from './course-table.tsx';
 

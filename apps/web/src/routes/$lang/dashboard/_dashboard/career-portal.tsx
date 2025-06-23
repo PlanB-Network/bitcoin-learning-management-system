@@ -46,9 +46,9 @@ import {
   CareerRoleLevel,
   JobCategory,
 } from '@blms/constants';
+import { COURSES_CAREER_ACCESS } from '@blms/shared';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { AppContext } from '#src/providers/context.tsx';
-import { BTC402ID } from '#src/utils/courses.ts';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/career-portal',
@@ -339,7 +339,12 @@ function CareerPortal() {
   });
 
   useEffect(() => {
-    if (user !== undefined && !user?.boughtCourses.includes(BTC402ID)) {
+    if (
+      user !== undefined &&
+      !user?.boughtCourses.some((courseId) =>
+        COURSES_CAREER_ACCESS.includes(courseId),
+      )
+    ) {
       navigate({ to: '/' });
     }
   }, [user]);

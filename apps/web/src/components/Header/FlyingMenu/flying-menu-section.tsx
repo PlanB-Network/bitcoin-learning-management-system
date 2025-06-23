@@ -11,8 +11,8 @@ import { trpc } from '#src/utils/trpc.ts';
 import { MenuElement } from '../menu-elements.tsx';
 import type { NavigationSection } from '../props.ts';
 
+import { BTC101ID } from '@blms/shared';
 import { useQuery } from '@tanstack/react-query';
-import { BTC101ID } from '#src/utils/courses.ts';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
 export interface FlyingMenuProps {

@@ -16,7 +16,7 @@ import {
   TooltipTrigger,
 } from '@blms/ui';
 
-import { BTC101ID } from '#src/utils/courses.ts';
+import { BTC101ID } from '@blms/shared';
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 
 export const courseCategoriesDashboard = [

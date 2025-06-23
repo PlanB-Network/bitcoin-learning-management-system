@@ -19,11 +19,12 @@ import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
-import { BTC402ID, addSpaceToCourseIndex } from '#src/utils/courses.ts';
+import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
 
 import { UserPermission, UserRole } from '@blms/constants';
+import { COURSES_CAREER_ACCESS } from '@blms/shared';
 import { canAccess } from '@blms/shared/auth';
 import { Image } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -184,7 +185,9 @@ export const MenuDashboard = ({
             onClick={toggleMobileMenu}
           />
         </Link>
-        {user?.boughtCourses.includes(BTC402ID) ? (
+        {user?.boughtCourses.some((courseId) =>
+          COURSES_CAREER_ACCESS.includes(courseId),
+        ) ? (
           <Link to={careerPortalPath}>
             <MenuItem
               text={t('dashboard.adminPanel.careers.careers')}
