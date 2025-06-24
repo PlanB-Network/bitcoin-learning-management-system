@@ -692,6 +692,115 @@ const reassignCourseToContributorProcedure = adminProcedure
     }
   });
 
+// Admin user management endpoints
+const getAdminUserManagementProcedure = adminProcedure
+  .output(z.array(z.any())) // Using z.any() temporarily
+  .query(async ({ ctx }) => {
+    try {
+      // Query to get all contributor users with their assignment data and languages
+      const result = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          ua.uid,
+          ua.username,
+          ua.display_name AS "displayName",
+          ua.email,
+          ua.role,
+          ua.created_at AS "startDate",
+          (
+            SELECT COUNT(*)
+            FROM users.translation_assignments ta
+            WHERE ta.assignee_id = ua.uid
+              AND ta.status IN ('assigned', 'in_progress', 'completed')
+          ) AS "assignedCourses",
+          (
+            SELECT COALESCE(ARRAY_AGG(DISTINCT language_code), ARRAY[]::text[])
+            FROM users.reviewer_languages rl
+            WHERE rl.reviewer_id = ua.uid
+          ) AS "languages"
+        FROM users.accounts ua
+        WHERE ua.role = 'contributor'
+        ORDER BY ua.created_at DESC
+      `);
+
+      return result;
+    } catch (error) {
+      console.error('Error fetching admin user management data:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch user management data',
+      });
+    }
+  });
+
+const getUserDetailsProcedure = adminProcedure
+  .input(z.object({ userId: z.string() }))
+  .output(z.any()) // Using z.any() temporarily
+  .query(async ({ ctx, input }) => {
+    try {
+      // Get detailed user information including assignments
+      const userResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          ua.uid,
+          ua.username,
+          ua.display_name AS "displayName",
+          ua.email,
+          ua.created_at AS "startDate",
+          ua.role
+        FROM users.accounts ua
+        WHERE ua.uid = ${input.userId}
+      `);
+
+      if (userResult.length === 0) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'User not found',
+        });
+      }
+
+      const user = userResult[0];
+
+      // Get user's assignments
+      const assignmentsResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          ta.id,
+          ta.course_id AS "courseId",
+          ta.language,
+          ta.status,
+          ta.assigned_at AS "assignedAt",
+          ta.completed_at AS "completedAt",
+          c.index AS "courseIndex",
+          cl.name AS "courseName"
+        FROM users.translation_assignments ta
+        JOIN content.courses c ON ta.course_id = c.id
+        LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
+        WHERE ta.assignee_id = ${input.userId}
+        ORDER BY ta.assigned_at DESC
+      `);
+
+      // Get user's languages
+      const languagesResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT language_code AS language
+        FROM users.reviewer_languages
+        WHERE reviewer_id = ${input.userId}
+      `);
+
+      return {
+        ...user,
+        assignments: assignmentsResult,
+        languages: languagesResult.map((row) => row.language),
+      };
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      console.error('Error fetching user details:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch user details',
+      });
+    }
+  });
+
 export const translationsRouter = createTRPCRouter({
   getAvailableCourseTranslations: getAvailableCourseTranslationsProcedure,
   getUserCourseTranslations: getUserCourseTranslationsProcedure,
@@ -715,4 +824,7 @@ export const translationsRouter = createTRPCRouter({
   getAvailableContributors: getAvailableContributorsProcedure,
   assignCourseToContributor: assignCourseToContributorProcedure,
   reassignCourseToContributor: reassignCourseToContributorProcedure,
+  // Admin user management endpoints
+  getAdminUserManagement: getAdminUserManagementProcedure,
+  getUserDetails: getUserDetailsProcedure,
 });

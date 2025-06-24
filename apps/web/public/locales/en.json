@@ -477,6 +477,33 @@
           "rejecting": "Rejecting...",
           "requestRejectedSuccess": "Request rejected successfully"
         },
+        "userManagement": {
+          "title": "User Management",
+          "description": "Manage contributors and their translation assignments",
+          "table": {
+            "startDate": "Start date",
+            "username": "Username",
+            "assignedCourses": "Assigned courses",
+            "language": "Language",
+            "actions": "Action"
+          },
+          "actions": {
+            "viewDetails": "View details"
+          },
+          "noUsers": "No contributors found",
+          "modal": {
+            "title": "User Details",
+            "userInfo": "User Information",
+            "assignments": "Assignment History",
+            "noAssignments": "No assignments found"
+          }
+        },
+        "noResultsFound": "No results found",
+        "status": {
+          "assigned": "Assigned",
+          "inProgress": "In Progress",
+          "completed": "Completed"
+        },
         "messages": {
           "noPendingRequests": "No pending translation requests found.",
           "noRejectedRequests": "No rejected translation requests found.",
@@ -993,6 +1020,11 @@
         "loadEmailSettingsErrorDescription": "Please ensure the link you used is complete and correct.",
         "loadEmailSettingsErrorManage": "If you have access to your account, you can also manage settings directly in your dashboard:",
         "none": "None",
+        "assignedAt": "Assigned at",
+        "completedAt": "Completed at",
+        "displayName": "Display name",
+        "role": "Role",
+        "filter": "Filter",
         "platformTitle": "What types of notifications would you like to receive on this platform?",
         "settingsSaved": "Your settings were saved successfully!",
         "title": "Notification settings"

@@ -578,6 +578,33 @@
           "rejecting": "Rejet...",
           "requestRejectedSuccess": "Demande rejetée avec succès"
         },
+        "userManagement": {
+          "title": "Gestion des utilisateurs",
+          "description": "Gérer les contributeurs et leurs assignations de traduction",
+          "table": {
+            "startDate": "Date de début",
+            "username": "Nom d'utilisateur",
+            "assignedCourses": "Cours assignés",
+            "language": "Langue",
+            "actions": "Action"
+          },
+          "actions": {
+            "viewDetails": "Voir les détails"
+          },
+          "noUsers": "Aucun contributeur trouvé",
+          "modal": {
+            "title": "Détails de l'utilisateur",
+            "userInfo": "Informations utilisateur",
+            "assignments": "Historique des assignations",
+            "noAssignments": "Aucune assignation trouvée"
+          }
+        },
+        "noResultsFound": "Aucun résultat trouvé",
+        "status": {
+          "assigned": "Assigné",
+          "inProgress": "En cours",
+          "completed": "Terminé"
+        },
         "messages": {
           "noPendingRequests": "Aucune demande de traduction en attente trouvée.",
           "noRejectedRequests": "Aucune demande de traduction rejetée trouvée.",
