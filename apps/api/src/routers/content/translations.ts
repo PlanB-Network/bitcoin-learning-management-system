@@ -759,21 +759,40 @@ const getUserDetailsProcedure = adminProcedure
 
       const user = userResult[0];
 
-      // Get user's assignments
+      // Get user's assignments with translation status from course_translations
       const assignmentsResult = await ctx.dependencies.postgres.exec(sql`
         SELECT
           ta.id,
           ta.course_id AS "courseId",
           ta.language,
-          ta.status,
+          ta.status AS "assignmentStatus",
           ta.assigned_at AS "assignedAt",
           ta.completed_at AS "completedAt",
           c.index AS "courseIndex",
-          cl.name AS "courseName"
+          cl.name AS "courseName",
+          ct.status AS "translationStatus",
+          ct.updated_at AS "translationUpdatedAt",
+          COALESCE(
+            ROUND(
+              (COUNT(CASE WHEN ctc.status = 'reviewed' THEN 1 END)::numeric /
+               NULLIF(COUNT(ctc.chapter_id), 0)::numeric) * 100, 0
+            ), 0
+          ) AS "progress"
         FROM users.translation_assignments ta
         JOIN content.courses c ON ta.course_id = c.id
         LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
+        LEFT JOIN content.course_translations ct ON (
+          ct.course_id = ta.course_id
+          AND ct.language = ta.language
+        )
+        LEFT JOIN content.course_translation_chapters ctc ON (
+          ctc.course_id = ta.course_id
+          AND ctc.language = ta.language
+        )
         WHERE ta.assignee_id = ${input.userId}
+        GROUP BY
+          ta.id, ta.course_id, ta.language, ta.status, ta.assigned_at, ta.completed_at,
+          c.index, cl.name, ct.status, ct.updated_at
         ORDER BY ta.assigned_at DESC
       `);
 

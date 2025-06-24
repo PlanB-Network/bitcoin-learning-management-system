@@ -488,7 +488,8 @@
             "actions": "Action"
           },
           "actions": {
-            "viewDetails": "View details"
+            "viewDetails": "View details",
+            "backToList": "Back to user list"
           },
           "noUsers": "No contributors found",
           "modal": {

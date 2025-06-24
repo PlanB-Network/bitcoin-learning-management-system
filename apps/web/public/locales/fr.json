@@ -589,7 +589,8 @@
             "actions": "Action"
           },
           "actions": {
-            "viewDetails": "Voir les détails"
+            "viewDetails": "Voir les détails",
+            "backToList": "Retour à la liste"
           },
           "noUsers": "Aucun contributeur trouvé",
           "modal": {
