@@ -569,17 +569,18 @@ const assignCourseToContributorProcedure = adminProcedure
 
         // Create chapter assignments for all chapters
         await transaction`
-          INSERT INTO users.translation_chapter_assignments (course_id, language, chapter_id, assignee_id, assigner_id, status)
+          INSERT INTO users.translation_chapter_assignments (course_id, language, part_id, chapter_id, assignee_id, assigner_id, status)
           SELECT
             ${input.courseId},
             LOWER(${input.language}),
+            ch.part_id,
             ch.chapter_id,
             ${input.assigneeId},
             ${assignerId},
             'assigned'::assignment_status
           FROM content.course_chapters ch
           WHERE ch.course_id = ${input.courseId}
-          ON CONFLICT (course_id, language, chapter_id, assignee_id) DO UPDATE SET
+          ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO UPDATE SET
             assigner_id = EXCLUDED.assigner_id,
             assigned_at = NOW(),
             status = 'assigned'::assignment_status
@@ -660,17 +661,18 @@ const reassignCourseToContributorProcedure = adminProcedure
 
         // Create/update chapter assignments for all chapters
         await transaction`
-          INSERT INTO users.translation_chapter_assignments (course_id, language, chapter_id, assignee_id, assigner_id, status)
+          INSERT INTO users.translation_chapter_assignments (course_id, language, part_id, chapter_id, assignee_id, assigner_id, status)
           SELECT
             ${courseId},
             LOWER(${language}),
+            ch.part_id,
             ch.chapter_id,
             ${input.newAssigneeId},
             ${assignerId},
             'assigned'::assignment_status
           FROM content.course_chapters ch
           WHERE ch.course_id = ${courseId}
-          ON CONFLICT (course_id, language, chapter_id, assignee_id) DO UPDATE SET
+          ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO UPDATE SET
             assigner_id = EXCLUDED.assigner_id,
             assigned_at = NOW(),
             status = 'assigned'::assignment_status

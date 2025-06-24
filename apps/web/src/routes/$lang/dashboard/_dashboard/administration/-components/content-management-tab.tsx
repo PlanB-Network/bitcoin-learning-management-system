@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Loader } from '@blms/ui';
+import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
 
 import { trpcClient } from '#src/utils/trpc.js';
+import {
+  SharedTable,
+  SharedTableHead,
+  SharedTableHeader,
+} from '../../-components/shared-table-header.tsx';
 import { AssignCourseModal } from './assign-course-modal.tsx';
 import { ReassignCourseModal } from './reassign-course-modal.tsx';
 
@@ -261,218 +266,171 @@ export const ContentManagementTab = () => {
       </div>
 
       {/* Courses Table */}
-      <div className="bg-white overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full table-fixed">
-            <colgroup>
-              <col className="w-16" />
-              <col className="w-48" />
-              <col className="w-32" />
-              <col className="w-40" />
-              <col className="w-20" />
-              <col className="w-36" />
-            </colgroup>
-            <thead className="bg-gray-50">
-              <tr className="border-b-2 border-gray-300">
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <button
-                    type="button"
-                    onClick={() => handleSort('courseIndex')}
-                    className="flex items-center space-x-1 hover:text-gray-700"
-                  >
-                    <span>
-                      {t(
-                        'dashboard.adminPanel.translationPanel.contentManagement.table.index',
-                      )}
+      <div className="w-full">
+        <SharedTable>
+          <SharedTableHeader>
+            <SharedTableHead
+              className="w-24"
+              sortable
+              onSort={() => handleSort('courseIndex')}
+              sortIcon={getSortIcon('courseIndex')}
+            >
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.index',
+              )}
+            </SharedTableHead>
+            <SharedTableHead
+              sortable
+              onSort={() => handleSort('courseName')}
+              sortIcon={getSortIcon('courseName')}
+            >
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.course',
+              )}
+            </SharedTableHead>
+            <SharedTableHead
+              sortable
+              onSort={() => handleSort('status')}
+              sortIcon={getSortIcon('status')}
+            >
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.status',
+              )}
+            </SharedTableHead>
+            <SharedTableHead
+              sortable
+              onSort={() => handleSort('assigneeDisplayName')}
+              sortIcon={getSortIcon('assigneeDisplayName')}
+            >
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.contributor',
+              )}
+            </SharedTableHead>
+            <SharedTableHead
+              sortable
+              onSort={() => handleSort('progress')}
+              sortIcon={getSortIcon('progress')}
+            >
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.progress',
+              )}
+            </SharedTableHead>
+            <SharedTableHead>
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.actions',
+              )}
+            </SharedTableHead>
+          </SharedTableHeader>
+          <TableBody>
+            {filteredAndSortedCourses && filteredAndSortedCourses.length > 0 ? (
+              filteredAndSortedCourses.map((course) => (
+                <TableRow
+                  key={`${course.courseId}-${course.language}`}
+                  className="border-b border-gray-100 hover:bg-gray-50"
+                >
+                  <TableCell className="py-4 font-medium text-gray-900">
+                    <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
+                      {course.courseIndex}
                     </span>
-                    <span className="text-gray-400">
-                      {getSortIcon('courseIndex')}
-                    </span>
-                  </button>
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <button
-                    type="button"
-                    onClick={() => handleSort('courseName')}
-                    className="flex items-center space-x-1 hover:text-gray-700"
-                  >
-                    <span className="break-words">
-                      {t(
-                        'dashboard.adminPanel.translationPanel.contentManagement.table.course',
-                      )}
-                    </span>
-                    <span className="text-gray-400">
-                      {getSortIcon('courseName')}
-                    </span>
-                  </button>
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <button
-                    type="button"
-                    onClick={() => handleSort('status')}
-                    className="flex items-center space-x-1 hover:text-gray-700"
-                  >
-                    <span>
-                      {t(
-                        'dashboard.adminPanel.translationPanel.contentManagement.table.status',
-                      )}
-                    </span>
-                    <span className="text-gray-400">
-                      {getSortIcon('status')}
-                    </span>
-                  </button>
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <button
-                    type="button"
-                    onClick={() => handleSort('assigneeDisplayName')}
-                    className="flex items-center space-x-1 hover:text-gray-700"
-                  >
-                    <span className="break-words">
-                      {t(
-                        'dashboard.adminPanel.translationPanel.contentManagement.table.contributor',
-                      )}
-                    </span>
-                    <span className="text-gray-400">
-                      {getSortIcon('assigneeDisplayName')}
-                    </span>
-                  </button>
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  <button
-                    type="button"
-                    onClick={() => handleSort('progress')}
-                    className="flex items-center space-x-1 hover:text-gray-700"
-                  >
-                    <span className="break-words">
-                      {t(
-                        'dashboard.adminPanel.translationPanel.contentManagement.table.progress',
-                      )}
-                    </span>
-                    <span className="text-gray-400">
-                      {getSortIcon('progress')}
-                    </span>
-                  </button>
-                </th>
-                <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  {t(
-                    'dashboard.adminPanel.translationPanel.contentManagement.table.actions',
-                  )}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-100">
-              {filteredAndSortedCourses &&
-              filteredAndSortedCourses.length > 0 ? (
-                filteredAndSortedCourses.map((course) => (
-                  <tr
-                    key={`${course.courseId}-${course.language}`}
-                    className="hover:bg-gray-50"
-                  >
-                    <td className="px-3 py-4 text-sm font-medium text-gray-900">
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
-                        {course.courseIndex}
-                      </span>
-                    </td>
-                    <td className="px-3 py-4">
-                      <div className="text-sm font-medium text-gray-900 break-words">
-                        {course.courseName || course.courseId}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {course.language.toUpperCase()}
-                      </div>
-                    </td>
-                    <td className="px-3 py-4">
-                      <span
-                        className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md ${
-                          course.status === 'not_assigned'
-                            ? 'bg-gray-100 text-gray-800'
-                            : course.status === 'assigned'
-                              ? 'bg-green-100 text-green-800'
-                              : 'bg-gray-100 text-gray-800'
-                        }`}
-                      >
-                        {course.status === 'not_assigned'
-                          ? t(
-                              'dashboard.adminPanel.translationPanel.contentManagement.status.notAssigned',
-                            )
+                  </TableCell>
+                  <TableCell className="py-4">
+                    <div className="text-sm font-medium text-gray-900 break-words">
+                      {course.courseName || course.courseId}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      {course.language.toUpperCase()}
+                    </div>
+                  </TableCell>
+                  <TableCell className="py-4">
+                    <span
+                      className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md ${
+                        course.status === 'not_assigned'
+                          ? 'bg-gray-100 text-gray-800'
                           : course.status === 'assigned'
-                            ? t(
-                                'dashboard.adminPanel.translationPanel.contentManagement.status.assigned',
-                              )
-                            : course.status}
-                      </span>
-                    </td>
-                    <td className="px-3 py-4 text-sm text-gray-900 break-words">
-                      {course.assigneeDisplayName ||
-                        course.assigneeUsername ||
-                        ''}
-                    </td>
-                    <td className="px-3 py-4 text-sm text-gray-900">
-                      {course.progress || 0}%
-                    </td>
-                    <td className="px-3 py-4 text-sm">
-                      <div className="flex space-x-1">
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      {course.status === 'not_assigned'
+                        ? t(
+                            'dashboard.adminPanel.translationPanel.contentManagement.status.notAssigned',
+                          )
+                        : course.status === 'assigned'
+                          ? t(
+                              'dashboard.adminPanel.translationPanel.contentManagement.status.assigned',
+                            )
+                          : course.status}
+                    </span>
+                  </TableCell>
+                  <TableCell className="py-4 text-gray-900 break-words">
+                    {course.assigneeDisplayName ||
+                      course.assigneeUsername ||
+                      ''}
+                  </TableCell>
+                  <TableCell className="py-4 text-gray-900">
+                    {course.progress || 0}%
+                  </TableCell>
+                  <TableCell className="py-4 text-center">
+                    <div className="flex gap-2 justify-center">
+                      <Button
+                        variant="outline"
+                        size="s"
+                        onClick={() => {
+                          // TODO: Implement view functionality
+                          console.log('View course:', course);
+                        }}
+                        className="text-xs"
+                      >
+                        {t(
+                          'dashboard.adminPanel.translationPanel.contentManagement.actions.view',
+                        )}
+                      </Button>
+
+                      {course.assigneeId ? (
                         <Button
                           variant="outline"
                           size="s"
-                          onClick={() => {
-                            // TODO: Implement view functionality
-                            console.log('View course:', course);
-                          }}
+                          onClick={() => handleReassign(course)}
                           className="text-xs"
                         >
                           {t(
-                            'dashboard.adminPanel.translationPanel.contentManagement.actions.view',
+                            'dashboard.adminPanel.translationPanel.contentManagement.actions.reassign',
                           )}
                         </Button>
-
-                        {course.assigneeId ? (
-                          <Button
-                            variant="outline"
-                            size="s"
-                            onClick={() => handleReassign(course)}
-                            className="text-xs"
-                          >
-                            {t(
-                              'dashboard.adminPanel.translationPanel.contentManagement.actions.reassign',
-                            )}
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="primary"
-                            size="s"
-                            onClick={() => handleAssign(course)}
-                            className="text-xs"
-                          >
-                            {t(
-                              'dashboard.adminPanel.translationPanel.contentManagement.actions.assign',
-                            )}
-                          </Button>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td
-                    colSpan={6}
-                    className="px-3 py-8 text-center text-gray-500"
-                  >
-                    {searchQuery || selectedTopic !== 'all'
-                      ? t(
-                          'dashboard.adminPanel.translationPanel.contentManagement.noCoursesFiltered',
-                        )
-                      : t(
-                          'dashboard.adminPanel.translationPanel.contentManagement.noCourses',
-                        )}
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+                      ) : (
+                        <Button
+                          variant="primary"
+                          size="s"
+                          onClick={() => handleAssign(course)}
+                          className="text-xs"
+                        >
+                          {t(
+                            'dashboard.adminPanel.translationPanel.contentManagement.actions.assign',
+                          )}
+                        </Button>
+                      )}
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={6}
+                  className="py-8 text-center text-gray-500"
+                >
+                  {searchQuery || selectedTopic !== 'all'
+                    ? t(
+                        'dashboard.adminPanel.translationPanel.contentManagement.noCoursesFiltered',
+                      )
+                    : t(
+                        'dashboard.adminPanel.translationPanel.contentManagement.noCourses',
+                      )}
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </SharedTable>
       </div>
 
       {/* Modals */}

@@ -3,16 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { HiOutlineChatAlt2, HiOutlineViewGrid } from 'react-icons/hi';
 
+import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
+
 import {
-  Button,
-  Loader,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@blms/ui';
+  SharedTable,
+  SharedTableHead,
+  SharedTableHeader,
+} from './shared-table-header.tsx';
 
 import { AssignmentStatus } from '@blms/constants';
 import { getLanguageName } from '#src/utils/i18n.ts';
@@ -326,26 +323,24 @@ export const TranslationRequestsTable = ({
   return (
     <>
       <div className="w-full">
-        <Table>
-          <TableHeader>
-            <TableRow className="border-b border-gray-200">
-              <TableHead className="font-semibold text-gray-900 py-3">
-                {t('dashboard.adminPanel.translationPanel.table.username')}
-              </TableHead>
-              <TableHead className="font-semibold text-gray-900 py-3 w-24">
-                {t('dashboard.adminPanel.translationPanel.table.index')}
-              </TableHead>
-              <TableHead className="font-semibold text-gray-900 py-3">
-                {t('dashboard.adminPanel.translationPanel.table.course')}
-              </TableHead>
-              <TableHead className="font-semibold text-gray-900 py-3">
-                {t('dashboard.adminPanel.translationPanel.table.language')}
-              </TableHead>
-              <TableHead className="font-semibold text-gray-900 py-3 text-center">
-                {t('dashboard.adminPanel.translationPanel.table.actions')}
-              </TableHead>
-            </TableRow>
-          </TableHeader>
+        <SharedTable>
+          <SharedTableHeader>
+            <SharedTableHead>
+              {t('dashboard.adminPanel.translationPanel.table.username')}
+            </SharedTableHead>
+            <SharedTableHead className="w-24">
+              {t('dashboard.adminPanel.translationPanel.table.index')}
+            </SharedTableHead>
+            <SharedTableHead>
+              {t('dashboard.adminPanel.translationPanel.table.course')}
+            </SharedTableHead>
+            <SharedTableHead>
+              {t('dashboard.adminPanel.translationPanel.table.language')}
+            </SharedTableHead>
+            <SharedTableHead className="text-center">
+              {t('dashboard.adminPanel.translationPanel.table.actions')}
+            </SharedTableHead>
+          </SharedTableHeader>
           <TableBody>
             {filteredRequests.map((request: TranslationRequest) => {
               const isProcessing = processingRequests.has(request.id);
@@ -447,7 +442,7 @@ export const TranslationRequestsTable = ({
               );
             })}
           </TableBody>
-        </Table>
+        </SharedTable>
       </div>
 
       {/* Accept Translation Request Modal - Simplified */}
