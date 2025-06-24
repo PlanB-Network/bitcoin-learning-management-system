@@ -1,4 +1,4 @@
-import { Loader, cn } from '@blms/ui';
+import { Clock, DashGauge, Loader, RadialGauge, cn } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { TbCalendar, TbClipboardText, TbClock, TbWeight } from 'react-icons/tb';
@@ -6,7 +6,7 @@ import { formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const ExamResults = ({ courseId }: { courseId: string }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions({
@@ -52,12 +52,45 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
     },
   ];
 
+  const finalResultsInfos = {
+    graduatedStudents: 68,
+    totalStudents: 86,
+    averageScore: 86,
+    thresholdToPass: course?.passingGradeThreshold,
+  };
+
   if (!course) {
     return <Loader />;
   }
 
   return (
-    <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 border border-newGray-5 bg-white rounded-2xl mt-3 md:mt-8">
+    <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 lg:border border-newGray-5 bg-white rounded-2xl mt-3 lg:mt-8">
+      <section className="flex flex-col items-center gap-3 lg:gap-7 w-full">
+        <h2 className="text-center title-large-24px font-medium">
+          {t('dashboard.teacher.courses.finalAverageResults')}
+        </h2>
+        <div className="flex flex-wrap lg:gap-2 items-center justify-center w-full">
+          <DashGauge
+            total={finalResultsInfos.totalStudents}
+            completed={finalResultsInfos.graduatedStudents}
+            label={t('dashboard.teacher.courses.studentsGraduated')}
+            variant="orange"
+            size="l"
+          />
+          <RadialGauge
+            percentage={finalResultsInfos.averageScore}
+            label={t('dashboard.teacher.courses.averageScore')}
+            variant="green"
+            size="l"
+          />
+          <RadialGauge
+            percentage={finalResultsInfos.thresholdToPass || 0}
+            label={t('dashboard.teacher.courses.thresholdToPass')}
+            variant="yellow"
+            size="l"
+          />
+        </div>
+      </section>
       {exams.map((exam) => (
         <ExamCard
           key={exam.index}
@@ -68,6 +101,9 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
           endDate={exam.endDate}
           duration={exam.duration}
           questionsCount={exam.questionsCount}
+          averageScore={exam.averageScore}
+          medianScore={exam.medianScore}
+          averageDuration={exam.averageDuration}
         />
       ))}
     </div>
@@ -82,6 +118,9 @@ interface ExamCardProps {
   endDate: string;
   duration?: number;
   questionsCount?: number;
+  averageScore?: number;
+  medianScore?: number;
+  averageDuration?: number; // in seconds
 }
 
 const ExamCard = ({
@@ -92,59 +131,98 @@ const ExamCard = ({
   endDate,
   duration,
   questionsCount,
+  averageScore,
+  medianScore,
+  averageDuration,
 }: ExamCardProps) => {
   const { t } = useTranslation();
 
+  const areResultsPublished =
+    averageScore !== undefined && medianScore !== undefined;
+
   return (
-    <article className="bg-newGray-6 rounded-2xl overflow-hidden">
-      <header className="px-6 py-3 border-b border-newGray-5">
-        <h4 className="label-large-med-20px text-newBlack-1">
+    <article className="bg-newGray-6 rounded-2xl overflow-hidden w-full">
+      <header className="p-4 lg:px-6 lg:py-3 border-b border-newGray-5">
+        <h4 className="label-med-18px font-medium lg:label-large-med-20px text-newBlack-1">
           {index + 1}. {name}
         </h4>
       </header>
 
-      <section className="p-6">
-        <h5 className="mb-3 label-medium-16px text-newBlack-3">
-          {t('words.structure')}
-        </h5>
+      <section className="p-3 xl:p-6 flex max-xl:flex-col gap-4 xl:gap-7 w-full">
+        <div className="flex flex-col grow self-center max-lg:w-full lg:min-w-80">
+          <h5 className="mb-3 label-medium-med-16px text-newBlack-3">
+            {t('words.structure')}
+          </h5>
 
-        <div className="flex flex-col gap-1.5 bg-white rounded-2xl p-5">
-          {questionsCount && (
+          <div className="flex flex-col gap-1.5 bg-white rounded-2xl p-2 lg:p-5">
+            {questionsCount && (
+              <InfoRow
+                label={t('words.questions')}
+                value={questionsCount}
+                icon={<TbClipboardText className="size-6 shrink-0" />}
+                showBorder={true}
+              />
+            )}
+
             <InfoRow
-              label={t('words.questions')}
-              value={questionsCount}
-              icon={<TbClipboardText className="size-6 shrink-0" />}
+              label={t('words.weight')}
+              value={
+                <div className="flex items-center gap-3">
+                  <span>{weight}%</span>
+                  <WeightIndicator weight={weight} />
+                </div>
+              }
+              icon={<TbWeight className="size-6 shrink-0" />}
               showBorder={true}
             />
-          )}
 
-          <InfoRow
-            label={t('words.weight')}
-            value={
-              <div className="flex items-center gap-3">
-                <span>{weight}%</span>
-                <WeightIndicator weight={weight} />
-              </div>
-            }
-            icon={<TbWeight className="size-6 shrink-0" />}
-            showBorder={true}
-          />
+            {duration && (
+              <InfoRow
+                label={t('words.duration')}
+                value={`${duration}'`}
+                icon={<TbClock className="size-6 shrink-0" />}
+                showBorder={true}
+              />
+            )}
 
-          {duration && (
             <InfoRow
-              label={t('words.duration')}
-              value={`${duration}'`}
-              icon={<TbClock className="size-6 shrink-0" />}
-              showBorder={true}
+              label={t('words.date')}
+              value={formatDateRange(new Date(startDate), new Date(endDate))}
+              icon={<TbCalendar className="size-6 shrink-0" />}
             />
-          )}
-
-          <InfoRow
-            label={t('words.date')}
-            value={formatDateRange(new Date(startDate), new Date(endDate))}
-            icon={<TbCalendar className="size-6 shrink-0" />}
-          />
+          </div>
         </div>
+        {areResultsPublished && (
+          <div className="flex flex-col items-center">
+            <h5 className="mb-3 label-medium-med-16px text-newBlack-3 self-start">
+              {t('words.results')}
+            </h5>
+
+            <div className="flex items-center gap-2 flex-wrap">
+              <RadialGauge
+                percentage={averageScore}
+                label={t('dashboard.teacher.courses.averageScore')}
+                variant="green"
+                showBackground
+              />
+              <RadialGauge
+                percentage={medianScore}
+                label={t('dashboard.teacher.courses.medianScore')}
+                variant="purple"
+                showBackground
+              />
+
+              {averageDuration && (
+                <Clock
+                  time={`${Math.floor(averageDuration / 60)}’${(averageDuration % 60).toString().padStart(2, '0')}’’`}
+                  label={t('dashboard.teacher.courses.averageDuration')}
+                  variant="blue"
+                  showBackground
+                />
+              )}
+            </div>
+          </div>
+        )}
       </section>
     </article>
   );
@@ -165,16 +243,18 @@ const InfoRow = ({
 }) => (
   <div
     className={cn(
-      'flex justify-between items-center py-1.5 ',
+      'flex justify-between items-center py-1.5 gap-2',
       showBorder && 'border-b border-newGray-6',
       className,
     )}
   >
-    <div className="flex items-center gap-2 text-newGray-1">
+    <div className="flex items-center gap-2 text-newGray-1 shrink-0">
       {icon}
-      <span className={'label-18px'}>{label}</span>
+      <span className="subtitle-small-14px lg:label-18px">{label}</span>
     </div>
-    <span className="label-18px text-newBlack-3">{value}</span>
+    <span className="subtitle-small-14px lg:label-18px text-newBlack-3">
+      {value}
+    </span>
   </div>
 );
 

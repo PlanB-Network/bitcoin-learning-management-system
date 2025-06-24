@@ -40,6 +40,7 @@ export * from './composites/Comments/public-comment.tsx';
 export * from './composites/Cards/horizontal-card.tsx';
 export * from './composites/Cards/vertical-card.tsx';
 export * from './composites/Chart/rating-chart.tsx';
+export * from './composites/Chart/radial-gauge.tsx';
 export * from './composites/Dropdown/dropdown-menu.tsx';
 export * from './composites/Dropdown/dropdown-item.tsx';
 export * from './composites/Dropdown/collapsible-dropdown.tsx';

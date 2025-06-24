@@ -14,14 +14,18 @@ const meta: Meta<typeof RadialGauge> = {
       control: 'number',
       description: 'The percentage value to display (0-100)',
     },
-    size: {
-      control: 'number',
-      description: 'The diameter of the gauge in pixels',
-    },
     variant: {
       control: 'select',
-      options: ['green'],
+      options: ['green', 'purple', 'yellow'],
       description: 'Color variant for the gauge',
+    },
+    showBackground: {
+      control: 'boolean',
+      description: 'Whether to show the background',
+    },
+    className: {
+      control: 'text',
+      description: 'Additional CSS classes for custom styling',
     },
   },
   parameters: {
@@ -39,6 +43,6 @@ export const Default: Story = {
     label: 'Average score',
     percentage: 86,
     variant: 'green',
-    size: 124,
+    showBackground: true,
   },
 };
