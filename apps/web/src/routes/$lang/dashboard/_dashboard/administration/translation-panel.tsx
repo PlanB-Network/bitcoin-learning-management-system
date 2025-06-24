@@ -1,4 +1,9 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import {
+  Outlet,
+  createFileRoute,
+  useLocation,
+  useNavigate,
+} from '@tanstack/react-router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -8,28 +13,24 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Tabs,
   TabsContent,
-  TabsList,
-  TabsTrigger,
-  TextTag,
 } from '@blms/ui';
 
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 
-import { AssignmentStatus, UserRole } from '@blms/constants';
+import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { ToggleSwitch } from '#src/components/ui/toggle-switch.tsx';
+import { ContentManagementTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/content-management-tab.tsx';
+import { TranslationPanelHeader } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-panel-header.tsx';
 import {
   SharedTable,
   SharedTableHead,
   SharedTableHeader,
 } from '../-components/shared-table-header.tsx';
 import { TranslationRequestsTable } from '../-components/translation-requests-table.js';
-import { ContentManagementTab } from './-components/content-management-tab.tsx';
 
 // Import filter icon
 import FilterIcon from '#src/assets/icons/Filter.svg';
@@ -41,90 +42,46 @@ export const Route = createFileRoute(
 });
 
 function DashboardAdministrationTranslationPanel() {
-  const isMobile = useSmaller('md');
-  const isTablet = useSmaller('lg');
   const { t } = useTranslation();
-
+  const { user } = useContext(AppContext);
   const navigate = useNavigate();
-  const { session } = useContext(AppContext);
+  const location = useLocation();
 
-  // Changed to boolean - false = pending, true = rejected
-  const [showRejectedRequests, setShowRejectedRequests] = useState(false);
+  // Check if we're on a child route (like user details)
+  const isChildRoute = location.pathname.includes('/user/');
+
+  // Get current tab from URL search params or default to 'requests'
+  const currentTab = (location.search as any)?.tab || 'requests';
+
   const [searchQuery, setSearchQuery] = useState('');
+  const [showRejectedRequests, setShowRejectedRequests] = useState(false);
 
-  // State for pending requests
-  const [pendingRequests, setPendingRequests] = useState<any[]>([]);
-  const [isLoadingPendingRequests, setIsLoadingPendingRequests] =
-    useState(true);
+  // For now, we'll set pendingCount to 0 since the endpoint doesn't exist yet
+  const pendingCount = 0;
 
-  const pendingCount = pendingRequests?.length || 0;
-
-  // Fetch pending requests using trpcClient
+  // Redirect if user doesn't have access
   useEffect(() => {
-    const fetchPendingRequests = async () => {
-      try {
-        setIsLoadingPendingRequests(true);
-        // @ts-ignore - translations router should be available
-        const data =
-          await trpcClient.content.getTranslationAssignmentRequests.query({
-            status: AssignmentStatus.Requested,
-          });
-        setPendingRequests(data || []);
-      } catch (error) {
-        console.error('Error fetching pending requests:', error);
-        setPendingRequests([]);
-      } finally {
-        setIsLoadingPendingRequests(false);
-      }
-    };
-
-    fetchPendingRequests();
-  }, []);
-
-  useEffect(() => {
-    if (!session) {
-      navigate({ to: '/' });
-    } else if (!canAccess(UserRole.Admin)(session?.user)) {
-      navigate({ to: '/dashboard/courses' });
+    if (user && !canAccess(UserRole.Admin)(user)) {
+      navigate({ to: '/$lang/dashboard' });
     }
-  }, [session]);
+  }, [user, navigate]);
 
-  if (!session) {
-    return <Loader />;
+  if (!user || !canAccess(UserRole.Admin)(user)) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <Loader />
+      </div>
+    );
+  }
+
+  // If we're on a child route, render the child component
+  if (isChildRoute) {
+    return <Outlet />;
   }
 
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
-      {/* Header */}
-      <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-        <h1 className="display-small-32px">
-          {t('dashboard.adminPanel.translationPanel.title')}
-        </h1>
-        <TextTag
-          size={isTablet ? 'verySmall' : 'small'}
-          className="uppercase w-fit bg-newOrange-1 text-white"
-        >
-          {t('dashboard.adminPanel.translationPanel.admin')}
-        </TextTag>
-      </div>
-
-      {/* Main Tabs */}
-      <Tabs defaultValue="requests" className="w-full">
-        <TabsList size={isMobile ? 's' : 'm'} className="w-full justify-start">
-          <TabsTrigger value="requests" size={isMobile ? 's' : 'm'}>
-            {t('dashboard.adminPanel.translationPanel.tabs.requests')}
-          </TabsTrigger>
-          <TabsTrigger value="content" size={isMobile ? 's' : 'm'}>
-            {t('dashboard.adminPanel.translationPanel.tabs.contentManagement')}
-          </TabsTrigger>
-          <TabsTrigger value="users" size={isMobile ? 's' : 'm'}>
-            {t('dashboard.adminPanel.translationPanel.tabs.userManagement')}
-          </TabsTrigger>
-          <TabsTrigger value="reports" size={isMobile ? 's' : 'm'}>
-            {t('dashboard.adminPanel.translationPanel.tabs.reports')}
-          </TabsTrigger>
-        </TabsList>
-
+      <TranslationPanelHeader activeTab={currentTab}>
         {/* Requests Tab */}
         <TabsContent value="requests" className="space-y-6 mt-6">
           <div className="space-y-6">
@@ -200,7 +157,7 @@ function DashboardAdministrationTranslationPanel() {
             {t('dashboard.adminPanel.translationPanel.comingSoon.reports')}
           </div>
         </TabsContent>
-      </Tabs>
+      </TranslationPanelHeader>
     </div>
   );
 }
@@ -218,6 +175,7 @@ interface UserManagementData {
 
 const UserManagementTab = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [users, setUsers] = useState<UserManagementData[]>([]);
   const [usersLoading, setUsersLoading] = useState(true);
@@ -226,7 +184,6 @@ const UserManagementTab = () => {
   const fetchUsers = async () => {
     try {
       setUsersLoading(true);
-      // @ts-ignore - translations router should be available
       const data = await trpcClient.content.getAdminUserManagement.query();
       setUsers(data || []);
     } catch (error) {
@@ -264,7 +221,7 @@ const UserManagementTab = () => {
     });
   }, [users, searchQuery]);
 
-  const formatDate = (dateString: string) => {
+  const formatDateForTable = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: '2-digit',
@@ -278,6 +235,13 @@ const UserManagementTab = () => {
     }
 
     return languages.map((lang) => getLanguageName(lang)).join(', ');
+  };
+
+  const handleViewDetails = (userId: string) => {
+    navigate({
+      to: '/$lang/dashboard/administration/translation-panel/user/$userId',
+      params: { userId },
+    });
   };
 
   if (usersLoading) {
@@ -369,7 +333,7 @@ const UserManagementTab = () => {
               filteredUsers.map((user) => (
                 <TableRow key={user.uid} className="hover:bg-gray-50">
                   <TableCell className="py-4">
-                    {formatDate(user.startDate)}
+                    {formatDateForTable(user.startDate)}
                   </TableCell>
                   <TableCell className="py-4">
                     <span className="font-medium">{user.username}</span>
@@ -388,6 +352,7 @@ const UserManagementTab = () => {
                     <Button
                       size="s"
                       className="bg-orange-500 hover:bg-orange-600 text-white"
+                      onClick={() => handleViewDetails(user.uid)}
                     >
                       {t(
                         'dashboard.adminPanel.translationPanel.userManagement.actions.viewDetails',
