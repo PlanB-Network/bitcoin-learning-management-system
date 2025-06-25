@@ -22,7 +22,7 @@ function CoursesExplorer() {
   const { courses } = useContext(AppContext);
   const { i18n } = useTranslation();
 
-  const selectedSchool = 'biz225';
+  const selectedSchool = null; // index of the selected school course
 
   const filteredCourses = courses
     ? courses
@@ -52,7 +52,7 @@ function CoursesExplorer() {
         {filteredCourses && (
           <CoursesGallery
             courses={filteredCourses}
-            selectedSchool={selectedSchool}
+            selectedSchool={selectedSchool || undefined}
           />
         )}
       </div>

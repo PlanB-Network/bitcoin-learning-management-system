@@ -14,7 +14,7 @@ import { toggleSelection } from '#src/utils/toggle.ts';
 export const CoursesGallery = ({
   courses,
   selectedSchool,
-}: { courses: JoinedCourse[]; selectedSchool: string }) => {
+}: { courses: JoinedCourse[]; selectedSchool?: string }) => {
   const { t } = useTranslation();
 
   const uniqueTopics = Array.from(
