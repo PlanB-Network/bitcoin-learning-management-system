@@ -104,7 +104,9 @@ function UserDetailsPage() {
       case 'todo':
         bgColor = 'bg-gray-100';
         textColor = 'text-gray-800';
-        displayText = 'To Do';
+        displayText = t(
+          'dashboard.adminPanel.translationPanel.userManagement.status.todo',
+        );
         break;
       case 'in_progress':
         bgColor = 'bg-yellow-100';
@@ -116,17 +118,30 @@ function UserDetailsPage() {
       case 'ready_for_review':
         bgColor = 'bg-orange-100';
         textColor = 'text-orange-800';
-        displayText = 'Ready for Review';
+        displayText = t(
+          'dashboard.adminPanel.translationPanel.userManagement.status.readyForReview',
+        );
         break;
       case 'under_review':
-        bgColor = 'bg-purple-100';
-        textColor = 'text-purple-800';
-        displayText = 'Under Review';
+        bgColor = 'bg-yellow-200';
+        textColor = 'text-yellow-900';
+        displayText = t(
+          'dashboard.adminPanel.translationPanel.userManagement.status.underReview',
+        );
         break;
-      case 'published':
+      case 'reviewed':
         bgColor = 'bg-green-100';
         textColor = 'text-green-800';
-        displayText = 'Published';
+        displayText = t(
+          'dashboard.adminPanel.translationPanel.userManagement.status.reviewed',
+        );
+        break;
+      case 'published':
+        bgColor = 'bg-green-600';
+        textColor = 'text-white';
+        displayText = t(
+          'dashboard.adminPanel.translationPanel.userManagement.status.published',
+        );
         break;
       case 'assigned':
         bgColor = 'bg-blue-100';
@@ -145,13 +160,20 @@ function UserDetailsPage() {
       case 'rejected':
         bgColor = 'bg-red-100';
         textColor = 'text-red-800';
-        displayText = 'Rejected';
+        displayText = t(
+          'dashboard.adminPanel.translationPanel.userManagement.status.rejected',
+        );
         break;
     }
 
     return (
       <span
-        className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md ${bgColor} ${textColor}`}
+        className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md whitespace-nowrap ${bgColor} ${textColor}`}
+        style={
+          status === 'under_review'
+            ? { backgroundColor: '#fef3c7', color: '#92400e' }
+            : {}
+        }
       >
         {displayText}
       </span>
@@ -198,19 +220,17 @@ function UserDetailsPage() {
               className="flex items-center gap-1 text-orange-600 hover:text-orange-700"
             >
               <img src={ArrowIcon} alt="Back" className="w-3 h-3 rotate-180" />
-              Back to users
+              {t(
+                'dashboard.adminPanel.translationPanel.userManagement.actions.backToUsers',
+              )}
             </button>
-            <img
-              src={ArrowIcon}
-              alt="Arrow"
-              className="w-3 h-3 text-gray-400"
-            />
-            <span className="text-gray-600">Contributor information</span>
           </div>
 
           {/* Contributor Information Title */}
           <h2 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
-            Contributor information
+            {t(
+              'dashboard.adminPanel.translationPanel.userManagement.contributorInformation',
+            )}
           </h2>
 
           {/* Contributor Information Card */}
@@ -302,7 +322,9 @@ function UserDetailsPage() {
                         // Estimate chapters per course (we can make this more accurate later)
                         return total + 5; // Assume average 5 chapters per course
                       }, 0)}{' '}
-                      Chapters
+                      {t(
+                        'dashboard.adminPanel.translationPanel.userManagement.chapters',
+                      )}
                     </span>
                   </div>
 
@@ -324,7 +346,10 @@ function UserDetailsPage() {
                       </svg>
                     </div>
                     <span className="text-base text-gray-900">
-                      {userDetails.assignments.length} Courses
+                      {userDetails.assignments.length}{' '}
+                      {t(
+                        'dashboard.adminPanel.translationPanel.userManagement.courses',
+                      )}
                     </span>
                   </div>
                 </div>
@@ -333,7 +358,7 @@ function UserDetailsPage() {
           </div>
 
           {/* Assignments History Table */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
+          <div className="bg-white p-6">
             <h2 className="title-large-sb-24px text-dashboardSectionTitle mb-4">
               {t(
                 'dashboard.adminPanel.translationPanel.userManagement.modal.assignments',
@@ -362,21 +387,16 @@ function UserDetailsPage() {
                     </SharedTableHead>
                     <SharedTableHead className="w-32">
                       {t(
+                        'dashboard.adminPanel.translationPanel.contentManagement.table.language',
+                      )}
+                    </SharedTableHead>
+                    <SharedTableHead className="w-32">
+                      {t(
                         'dashboard.adminPanel.translationPanel.contentManagement.table.status',
                       )}
                     </SharedTableHead>
-                    <SharedTableHead className="w-36">
-                      {t(
-                        'dashboard.adminPanel.translationPanel.userManagement.table.startDate',
-                      )}
-                    </SharedTableHead>
-                    <SharedTableHead className="w-24">
-                      {t(
-                        'dashboard.adminPanel.translationPanel.contentManagement.table.progress',
-                      )}
-                    </SharedTableHead>
-                    <SharedTableHead className="w-36">
-                      {t('words.completedAt')}
+                    <SharedTableHead className="w-32">
+                      {t('words.actions')}
                     </SharedTableHead>
                   </SharedTableHeader>
                   <TableBody>
@@ -394,9 +414,9 @@ function UserDetailsPage() {
                           <div className="text-sm font-medium text-gray-900 break-words">
                             {assignment.courseName || assignment.courseId}
                           </div>
-                          <div className="text-sm text-gray-500">
-                            {assignment.language.toUpperCase()}
-                          </div>
+                        </TableCell>
+                        <TableCell className="py-4 text-sm text-gray-900">
+                          {getLanguageName(assignment.language)}
                         </TableCell>
                         <TableCell className="py-4">
                           {getStatusTag(
@@ -404,16 +424,22 @@ function UserDetailsPage() {
                               assignment.assignmentStatus,
                           )}
                         </TableCell>
-                        <TableCell className="py-4 text-sm text-gray-900">
-                          {formatDateForTable(assignment.assignedAt)}
-                        </TableCell>
-                        <TableCell className="py-4 text-sm font-medium text-gray-900">
-                          {assignment.progress || 0}%
-                        </TableCell>
-                        <TableCell className="py-4 text-sm text-gray-900">
-                          {assignment.completedAt
-                            ? formatDateForTable(assignment.completedAt)
-                            : '-'}
+                        <TableCell className="py-4 text-center">
+                          <Button
+                            size="s"
+                            className="bg-orange-500 hover:bg-orange-600 text-white"
+                            onClick={() => {
+                              // TODO: Navigate to assignment details
+                              console.log(
+                                'View details for assignment:',
+                                assignment.id,
+                              );
+                            }}
+                          >
+                            {t(
+                              'dashboard.adminPanel.translationPanel.userManagement.actions.viewDetails',
+                            )}
+                          </Button>
                         </TableCell>
                       </TableRow>
                     ))}

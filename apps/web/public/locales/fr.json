@@ -581,6 +581,9 @@
         "userManagement": {
           "title": "Gestion des utilisateurs",
           "description": "Gérer les contributeurs et leurs assignations de traduction",
+          "contributorInformation": "Informations du contributeur",
+          "chapters": "Chapitres",
+          "courses": "Cours",
           "table": {
             "startDate": "Date de début",
             "username": "Nom d'utilisateur",
@@ -590,7 +593,8 @@
           },
           "actions": {
             "viewDetails": "Voir les détails",
-            "backToList": "Retour à la liste"
+            "backToList": "Retour à la liste",
+            "backToUsers": "Retour aux utilisateurs"
           },
           "noUsers": "Aucun contributeur trouvé",
           "modal": {
@@ -598,6 +602,14 @@
             "userInfo": "Informations utilisateur",
             "assignments": "Historique des assignations",
             "noAssignments": "Aucune assignation trouvée"
+          },
+          "status": {
+            "todo": "À faire",
+            "readyForReview": "Prêt pour révision",
+            "underReview": "En révision",
+            "reviewed": "Révisé",
+            "published": "Publié",
+            "rejected": "Rejeté"
           }
         },
         "noResultsFound": "Aucun résultat trouvé",
@@ -625,6 +637,7 @@
           "table": {
             "index": "Index",
             "course": "Cours",
+            "language": "Langue",
             "status": "Statut",
             "contributor": "Contributeur",
             "progress": "Progression",
