@@ -481,6 +481,9 @@
         "userManagement": {
           "title": "User Management",
           "description": "Manage contributors and their translation assignments",
+          "contributorInformation": "Contributor information",
+          "chapters": "Chapters",
+          "courses": "Courses",
           "table": {
             "startDate": "Start date",
             "username": "Username",
@@ -490,7 +493,8 @@
           },
           "actions": {
             "viewDetails": "View details",
-            "backToList": "Back to user list"
+            "backToList": "Back to user list",
+            "backToUsers": "Back to users"
           },
           "noUsers": "No contributors found",
           "modal": {
@@ -498,6 +502,14 @@
             "userInfo": "User Information",
             "assignments": "Assignment History",
             "noAssignments": "No assignments found"
+          },
+          "status": {
+            "todo": "To Do",
+            "readyForReview": "Ready for Review",
+            "underReview": "Under Review",
+            "reviewed": "Reviewed",
+            "published": "Published",
+            "rejected": "Rejected"
           }
         },
         "noResultsFound": "No results found",
@@ -525,6 +537,7 @@
           "table": {
             "index": "Index",
             "course": "Course",
+            "language": "Language",
             "status": "Status",
             "contributor": "Contributor",
             "progress": "Progress",
@@ -1735,6 +1748,7 @@
     "academy": "Academy",
     "access": "Access",
     "action": "Action",
+    "actions": "Actions",
     "admin": "Admin",
     "admins": "Admins",
     "advanced": "Advanced",
@@ -1834,6 +1848,7 @@
     "newsletter": "Newsletter",
     "next": "Next",
     "no": "No",
+    "none": "None",
     "nodeNetwork": "Node Network",
     "notApplicable": "Not applicable",
     "on": "on",
