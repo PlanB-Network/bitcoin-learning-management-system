@@ -217,3 +217,24 @@ export interface CourseSucceededExam {
   courseId: string;
   courseName: string;
 }
+
+export interface MinimalCourseExamAttemptWithUsername {
+  uid: string;
+  score: number | null;
+  chapterId: string | null;
+  examType: 'final' | 'single_trial';
+  startedAt: Date;
+  finishedAt: Date | null;
+  username: string;
+}
+
+export interface CourseWithSingleTrialExamsGradesAndSummary {
+  examsGrades: MinimalCourseExamAttemptWithUsername[];
+  assignmentGrades: {
+    username: string;
+    uid: string;
+    assignmentGrade: number | null;
+  }[];
+  averageTotalScore: number;
+  graduatedStudentsAmount: number;
+}

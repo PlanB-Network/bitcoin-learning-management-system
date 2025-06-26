@@ -14,6 +14,40 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
       id: courseId,
     }),
   );
+  const singleTrialExams = course?.parts.flatMap((p) =>
+    p.chapters.filter((c) => c?.isSingleTrialExam),
+  );
+
+  const isPlanBSchool = course?.isPlanbSchool;
+
+  const { data: enrolledStudentsCount } = useQuery(
+    trpc.user.courses.getEnrolledStudentsCount.queryOptions({
+      courseId: courseId,
+    }),
+  );
+
+  const { data: courseGradesAndSummary } = useQuery(
+    trpc.user.courses.getTeacherLedCourseGrades.queryOptions(
+      {
+        courseId: courseId,
+        passingThreshold: course?.passingGradeThreshold ?? 0,
+      },
+      {
+        enabled: !!course && !!course?.passingGradeThreshold,
+      },
+    ),
+  );
+
+  const assignmentWeight = course?.assignmentWeight ?? 40;
+
+  const isCourseConclusionReleased = !!course?.parts?.some((part) =>
+    part.chapters.some(
+      (chap) =>
+        chap.isCourseConclusion &&
+        chap.releaseDate != null &&
+        chap.releaseDate <= new Date(),
+    ),
+  );
 
   // Placeholder
   const exams = [
@@ -33,8 +67,6 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
       index: 1,
       name: 'Project assignment',
       weight: 15,
-      startDate: '15 May 2025',
-      endDate: '17 May 2025',
       averageScore: 56,
       medianScore: 48,
     },
@@ -42,8 +74,8 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
       index: 2,
       name: 'Final exam',
       weight: 40,
-      startDate: '15 May 2025',
-      endDate: '17 May 2025',
+      startDate: '18 May 2025',
+      endDate: '22 May 2025',
       duration: 25,
       questionsCount: 50,
       averageScore: 70,
@@ -53,9 +85,9 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   ];
 
   const finalResultsInfos = {
-    graduatedStudents: 68,
-    totalStudents: 86,
-    averageScore: 86,
+    graduatedStudents: courseGradesAndSummary?.graduatedStudentsAmount ?? 0,
+    totalStudents: enrolledStudentsCount,
+    averageScore: courseGradesAndSummary?.averageTotalScore ?? 0,
     thresholdToPass: course?.passingGradeThreshold,
   };
 
@@ -63,34 +95,43 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
     return <Loader />;
   }
 
+  if (!singleTrialExams || singleTrialExams.length === 0) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 lg:border border-newGray-5 bg-white rounded-2xl mt-3 lg:mt-8">
-      <section className="flex flex-col items-center gap-3 lg:gap-7 w-full">
-        <h2 className="text-center title-large-24px font-medium">
-          {t('dashboard.teacher.courses.finalAverageResults')}
-        </h2>
-        <div className="flex flex-wrap lg:gap-2 items-center justify-center w-full">
-          <DashGauge
-            total={finalResultsInfos.totalStudents}
-            completed={finalResultsInfos.graduatedStudents}
-            label={t('dashboard.teacher.courses.studentsGraduated')}
-            variant="orange"
-            size="l"
-          />
-          <RadialGauge
-            percentage={finalResultsInfos.averageScore}
-            label={t('dashboard.teacher.courses.averageScore')}
-            variant="green"
-            size="l"
-          />
-          <RadialGauge
-            percentage={finalResultsInfos.thresholdToPass || 0}
-            label={t('dashboard.teacher.courses.thresholdToPass')}
-            variant="yellow"
-            size="l"
-          />
-        </div>
-      </section>
+      {isCourseConclusionReleased && (
+        <section className="flex flex-col items-center gap-3 lg:gap-7 w-full">
+          <h2 className="text-center title-large-24px font-medium">
+            {t('dashboard.teacher.courses.finalAverageResults')}
+          </h2>
+          <div className="flex flex-wrap lg:gap-2 items-center justify-center w-full">
+            {finalResultsInfos.totalStudents &&
+            finalResultsInfos.totalStudents > 0 ? (
+              <DashGauge
+                total={finalResultsInfos.totalStudents}
+                completed={finalResultsInfos.graduatedStudents}
+                label={t('dashboard.teacher.courses.studentsGraduated')}
+                variant="orange"
+                size="l"
+              />
+            ) : null}
+            <RadialGauge
+              percentage={finalResultsInfos.averageScore}
+              label={t('dashboard.teacher.courses.averageScore')}
+              variant="green"
+              size="l"
+            />
+            <RadialGauge
+              percentage={finalResultsInfos.thresholdToPass || 0}
+              label={t('dashboard.teacher.courses.thresholdToPass')}
+              variant="yellow"
+              size="l"
+            />
+          </div>
+        </section>
+      )}
       {exams.map((exam) => (
         <ExamCard
           key={exam.index}
@@ -114,8 +155,8 @@ interface ExamCardProps {
   index: number;
   name: string;
   weight: number;
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  endDate?: string;
   duration?: number;
   questionsCount?: number;
   averageScore?: number;
@@ -173,7 +214,7 @@ const ExamCard = ({
                 </div>
               }
               icon={<TbWeight className="size-6 shrink-0" />}
-              showBorder={true}
+              showBorder={!!(duration || (startDate && endDate))}
             />
 
             {duration && (
@@ -185,11 +226,13 @@ const ExamCard = ({
               />
             )}
 
-            <InfoRow
-              label={t('words.date')}
-              value={formatDateRange(new Date(startDate), new Date(endDate))}
-              icon={<TbCalendar className="size-6 shrink-0" />}
-            />
+            {startDate && endDate && (
+              <InfoRow
+                label={t('words.date')}
+                value={formatDateRange(new Date(startDate), new Date(endDate))}
+                icon={<TbCalendar className="size-6 shrink-0" />}
+              />
+            )}
           </div>
         </div>
         {areResultsPublished && (

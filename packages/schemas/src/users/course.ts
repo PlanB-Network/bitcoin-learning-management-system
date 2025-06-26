@@ -143,3 +143,32 @@ export const courseSucceededExamSchema = courseExamAttemptSchema
     courseId: true,
   })
   .merge(z.object({ courseName: z.string() }));
+
+export const minimalCourseExamAttemptWithUsernameSchema =
+  courseExamAttemptSchema
+    .pick({
+      uid: true,
+      score: true,
+      chapterId: true,
+      examType: true,
+      startedAt: true,
+      finishedAt: true,
+    })
+    .merge(
+      z.object({
+        username: z.string(),
+      }),
+    );
+
+export const courseWithSingleTrialExamsGradesAndSummarySchema = z.object({
+  examsGrades: z.array(minimalCourseExamAttemptWithUsernameSchema),
+  assignmentGrades: z.array(
+    z.object({
+      username: z.string(),
+      uid: z.string(),
+      assignmentGrade: z.number().nullable(),
+    }),
+  ),
+  averageTotalScore: z.number(),
+  graduatedStudentsAmount: z.number(),
+});

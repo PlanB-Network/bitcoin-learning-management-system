@@ -11,6 +11,7 @@ import {
   courseReviewSchema,
   courseSucceededExamSchema,
   courseUserChapterSchema,
+  courseWithSingleTrialExamsGradesAndSummarySchema,
   minimalUserExamTimestampSchema,
   partialExamQuestionSchema,
 } from '@blms/schemas';
@@ -33,6 +34,7 @@ import {
   createGetPayments,
   createGetProgress,
   createGetTeacherLedCourseDiplomaTimestamp,
+  createGetTeacherLedCourseGrades,
   createGetUserChapter,
   createGetUserDetailsByCertificateId,
   createSaveCourseAssignmentGrade,
@@ -60,6 +62,7 @@ import type {
   CourseReview,
   CourseSucceededExam,
   CourseUserChapter,
+  CourseWithSingleTrialExamsGradesAndSummary,
   MinimalUserExamTimestamp,
   PartialExamQuestion,
 } from '@blms/types';
@@ -206,6 +209,23 @@ const getAllSucceededUserExamsProcedure = studentProcedure
     createGetAllSucceededUserExams(ctx.dependencies)({
       uid: ctx.user.uid,
       language: input.language,
+    }),
+  );
+
+const getGetTeacherLedCourseGradesProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      passingThreshold: z.number(),
+    }),
+  )
+  .output<Parser<CourseWithSingleTrialExamsGradesAndSummary>>(
+    courseWithSingleTrialExamsGradesAndSummarySchema,
+  )
+  .query(({ ctx, input }) =>
+    createGetTeacherLedCourseGrades(ctx.dependencies)({
+      courseId: input.courseId,
+      passingThreshold: input.passingThreshold,
     }),
   );
 
@@ -567,6 +587,7 @@ export const userCoursesRouter = createTRPCRouter({
   getLatestExamResults: getLatestExamResultsProcedure,
   getTeacherLedCourseDiplomaTimestamp:
     getTeacherLedCourseDiplomaTimestampProcedure,
+  getTeacherLedCourseGrades: getGetTeacherLedCourseGradesProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,
