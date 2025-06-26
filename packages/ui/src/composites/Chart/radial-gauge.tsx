@@ -55,6 +55,86 @@ const gaugeContainerVariants = cva(
   },
 );
 
+const GAUGE_RADIUS = 45;
+const GAUGE_STROKE_WIDTH = 10;
+const SVG_VIEWBOX = '0 0 100 55';
+const SVG_CENTER_X = 50;
+const SVG_CENTER_Y = 50;
+
+const MOBILE_LABEL_CLASSES = 'subtitle-small-sb-14px lg:hidden';
+
+const getSvgContainerClasses = (size: 'm' | 'l') =>
+  cn(
+    'relative h-full',
+    size === 'l' ? 'w-full max-lg:h-40' : 'max-lg:w-26 lg:w-full',
+  );
+
+const getMainTextClasses = (size: 'm' | 'l') =>
+  cn(
+    'font-semibold',
+    size === 'l'
+      ? 'text-[44px] font-bold leading-none'
+      : 'title-large-24px lg:display-small-32px',
+  );
+
+const getLabelTextClasses = (size: 'm' | 'l') =>
+  cn(
+    'text-center',
+    size === 'l'
+      ? 'text-[22px] tracking-015px font-semibold'
+      : 'title-small-sb-16px max-lg:hidden',
+  );
+
+const getTextContainerClasses = (size: 'm' | 'l') =>
+  cn(
+    'absolute inset-0 flex flex-col items-center justify-center gap-3',
+    size === 'l' ? 'pt-18 lg:pt-10' : 'pt-6 lg:pt-5',
+  );
+
+const MobileLabel = ({
+  label,
+  colorClasses,
+  size,
+}: {
+  label: string;
+  colorClasses: { text: string };
+  size: 'm' | 'l';
+}) => (
+  <span
+    className={cn(
+      MOBILE_LABEL_CLASSES,
+      size === 'l' && 'hidden',
+      colorClasses.text,
+    )}
+  >
+    {label}
+  </span>
+);
+
+const GaugeContainer = ({
+  children,
+  className,
+  showBackground,
+  size,
+  ...props
+}: {
+  children: React.ReactNode;
+  className?: string;
+  showBackground: boolean;
+  size: 'm' | 'l';
+} & React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      showBackground && 'bg-white',
+      gaugeContainerVariants({ size }),
+      className,
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
 export interface RadialGaugeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof gaugeContainerVariants> {
@@ -95,73 +175,52 @@ const RadialGauge = ({
   ...props
 }: RadialGaugeProps) => {
   const clampedPercentage = Math.min(100, Math.max(0, percentage));
+  const colorClasses = gaugeVariantStyles[variant];
 
-  const radius = 45;
-  const strokeWidth = 10;
-
-  const circumference = radius * Math.PI;
-
+  const circumference = GAUGE_RADIUS * Math.PI;
   const strokeDashoffset =
     circumference - (clampedPercentage / 100) * circumference;
 
   const needleAngle = (clampedPercentage / 100) * 180;
   const needleRadians = (needleAngle * Math.PI) / 180;
+  const innerRadius = GAUGE_RADIUS - GAUGE_STROKE_WIDTH / 2 - 1;
+  const outerRadius = GAUGE_RADIUS + GAUGE_STROKE_WIDTH / 2 + 1;
 
-  const centerX = 50;
-  const centerY = 50;
+  const needleStartX = SVG_CENTER_X - innerRadius * Math.cos(needleRadians);
+  const needleStartY = SVG_CENTER_Y - innerRadius * Math.sin(needleRadians);
+  const needleEndX = SVG_CENTER_X - outerRadius * Math.cos(needleRadians);
+  const needleEndY = SVG_CENTER_Y - outerRadius * Math.sin(needleRadians);
 
-  const innerRadius = radius - strokeWidth / 2 - 1;
-  const outerRadius = radius + strokeWidth / 2 + 1;
-
-  const needleStartX = centerX - innerRadius * Math.cos(needleRadians);
-  const needleStartY = centerY - innerRadius * Math.sin(needleRadians);
-  const needleEndX = centerX - outerRadius * Math.cos(needleRadians);
-  const needleEndY = centerY - outerRadius * Math.sin(needleRadians);
-
-  const colorClasses = gaugeVariantStyles[variant];
+  const arcPath = `M 5,50 A ${GAUGE_RADIUS},${GAUGE_RADIUS} 0 0 1 95,50`;
 
   return (
-    <div
-      className={cn(
-        showBackground && 'bg-white',
-        gaugeContainerVariants({ size }),
-        className,
-      )}
+    <GaugeContainer
+      className={className}
+      showBackground={showBackground}
+      size={size}
       {...props}
     >
-      <span
-        className={cn(
-          'subtitle-small-sb-14px lg:hidden',
-          size === 'l' && 'hidden',
-          colorClasses.text,
-        )}
-      >
-        {label}
-      </span>
-      <div
-        className={cn(
-          'relative h-full',
-          size === 'l' ? 'w-full max-lg:h-40' : 'max-lg:w-26 lg:w-full',
-        )}
-      >
+      <MobileLabel label={label} colorClasses={colorClasses} size={size} />
+
+      <div className={getSvgContainerClasses(size)}>
         {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
         <svg
-          viewBox="0 0 100 55"
+          viewBox={SVG_VIEWBOX}
           className="w-full h-auto absolute top-0 left-0"
         >
-          {/* Unfilled Arc */}
+          {/* Unfilled */}
           <path
-            d={`M 5,50 A ${radius},${radius} 0 0 1 95,50`}
+            d={arcPath}
             fill="none"
-            strokeWidth={strokeWidth}
+            strokeWidth={GAUGE_STROKE_WIDTH}
             className={cn(colorClasses.background)}
           />
 
-          {/* Filled Arc */}
+          {/* Filled */}
           <path
-            d={`M 5,50 A ${radius},${radius} 0 0 1 95,50`}
+            d={arcPath}
             fill="none"
-            strokeWidth={strokeWidth}
+            strokeWidth={GAUGE_STROKE_WIDTH}
             className={cn(colorClasses.foreground)}
             style={{
               strokeDasharray: circumference,
@@ -181,44 +240,24 @@ const RadialGauge = ({
         </svg>
 
         {/* Text */}
-        <div
-          className={cn(
-            'absolute inset-0 flex flex-col items-center justify-center gap-3',
-            size === 'l' ? 'pt-18 lg:pt-10' : 'pt-6 lg:pt-5',
-          )}
-        >
+        <div className={getTextContainerClasses(size)}>
           <div
             className={cn(
               'flex items-end justify-center text-center',
               colorClasses.text,
             )}
           >
-            <span
-              className={cn(
-                'font-semibold',
-                size === 'l'
-                  ? 'text-[44px] font-bold leading-none'
-                  : 'title-large-24px lg:display-small-32px',
-              )}
-            >
+            <span className={getMainTextClasses(size)}>
               {Math.round(clampedPercentage)}
             </span>
             <span className="label-large-med-20px">%</span>
           </div>
-          <span
-            className={cn(
-              'text-center',
-              size === 'l'
-                ? 'text-[22px] tracking-015px font-semibold'
-                : 'title-small-sb-16px max-lg:hidden',
-              colorClasses.text,
-            )}
-          >
+          <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
             {label}
           </span>
         </div>
       </div>
-    </div>
+    </GaugeContainer>
   );
 };
 
@@ -232,50 +271,45 @@ const DashGauge = ({
   size = 'm',
   ...props
 }: DashGaugeProps) => {
-  // Clamp maxDashes between 20 and 50
-  const clampedMaxDashes = Math.min(50, Math.max(20, total));
-
-  // Dynamic stroke width based on number of dashes
-  const strokeWidth = Math.floor(
-    5 - ((clampedMaxDashes - 20) / (50 - 20)) * (5 - 2),
-  );
-
-  const filledDashes = Math.round((completed / total) * clampedMaxDashes);
-
-  const radius = 44;
-  const dashLength = 12;
-
-  // Arc span
-  const startAngle = 0;
-  const endAngle = 180;
-  const angleSpan = endAngle - startAngle;
-
-  const dashSpacing = angleSpan / (clampedMaxDashes - 1);
-
-  const centerX = 50;
-  const centerY = 50;
-
   const colorClasses = gaugeVariantStyles[variant];
 
+  const DASH_RADIUS = 44;
+  const DASH_LENGTH = 12;
+  const MIN_DASHES = 20;
+  const MAX_DASHES = 50;
+  const MIN_STROKE_WIDTH = 2;
+  const MAX_STROKE_WIDTH = 5;
+  const ARC_START_ANGLE = 0;
+  const ARC_END_ANGLE = 180;
+
+  const clampedMaxDashes = Math.min(MAX_DASHES, Math.max(MIN_DASHES, total));
+  const strokeWidth = Math.floor(
+    MAX_STROKE_WIDTH -
+      ((clampedMaxDashes - MIN_DASHES) / (MAX_DASHES - MIN_DASHES)) *
+        (MAX_STROKE_WIDTH - MIN_STROKE_WIDTH),
+  );
+  const filledDashes = Math.round((completed / total) * clampedMaxDashes);
+  const angleSpan = ARC_END_ANGLE - ARC_START_ANGLE;
+  const dashSpacing = angleSpan / (clampedMaxDashes - 1);
+
   const dashes = [];
-  for (let i = 0; i < clampedMaxDashes; i++) {
-    const angle = startAngle + i * dashSpacing;
+  for (let dashIndex = 0; dashIndex < clampedMaxDashes; dashIndex++) {
+    const angle = ARC_START_ANGLE + dashIndex * dashSpacing;
     const radians = (angle * Math.PI) / 180;
 
-    // Dash position
-    const innerRadius = radius - dashLength / 2;
-    const outerRadius = radius + dashLength / 2;
+    const innerRadius = DASH_RADIUS - DASH_LENGTH / 2;
+    const outerRadius = DASH_RADIUS + DASH_LENGTH / 2;
 
-    const startX = centerX - innerRadius * Math.cos(radians);
-    const startY = centerY - innerRadius * Math.sin(radians);
-    const endX = centerX - outerRadius * Math.cos(radians);
-    const endY = centerY - outerRadius * Math.sin(radians);
+    const startX = SVG_CENTER_X - innerRadius * Math.cos(radians);
+    const startY = SVG_CENTER_Y - innerRadius * Math.sin(radians);
+    const endX = SVG_CENTER_X - outerRadius * Math.cos(radians);
+    const endY = SVG_CENTER_Y - outerRadius * Math.sin(radians);
 
-    const isFilled = i < filledDashes;
+    const isFilled = dashIndex < filledDashes;
 
     dashes.push(
       <line
-        key={i}
+        key={dashIndex}
         x1={startX}
         y1={startY}
         x2={endX}
@@ -289,78 +323,42 @@ const DashGauge = ({
   }
 
   return (
-    <div
-      className={cn(
-        showBackground && 'bg-white',
-        gaugeContainerVariants({ size }),
-        className,
-      )}
+    <GaugeContainer
+      className={className}
+      showBackground={showBackground}
+      size={size}
       {...props}
     >
-      <span
-        className={cn(
-          'subtitle-small-sb-14px lg:hidden',
-          size === 'l' && 'hidden',
-          colorClasses.text,
-        )}
-      >
-        {label}
-      </span>
-      <div
-        className={cn(
-          'relative h-full',
-          size === 'l' ? 'w-full max-lg:h-40' : 'max-lg:w-26 lg:w-full',
-        )}
-      >
+      <MobileLabel label={label} colorClasses={colorClasses} size={size} />
+
+      <div className={getSvgContainerClasses(size)}>
         {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
         <svg
-          viewBox="0 0 100 55"
+          viewBox={SVG_VIEWBOX}
           className="w-full h-auto absolute top-0 left-0"
         >
           {dashes}
         </svg>
 
         {/* Text */}
-        <div
-          className={cn(
-            'absolute inset-0 flex flex-col items-center justify-center gap-3',
-            size === 'l' ? 'pt-18 lg:pt-10' : 'pt-6 lg:pt-5',
-          )}
-        >
+        <div className={getTextContainerClasses(size)}>
           <div
             className={cn(
               'flex items-end justify-center text-center',
               colorClasses.text,
             )}
           >
-            <span
-              className={cn(
-                ' font-semibold',
-                size === 'l'
-                  ? 'text-[44px] font-bold leading-none'
-                  : 'title-large-24px lg:display-small-med-32px',
-              )}
-            >
-              {completed}
-            </span>
+            <span className={getMainTextClasses(size)}>{completed}</span>
             <span className={cn('label-18px', colorClasses.background)}>
               /{total}
             </span>
           </div>
-          <span
-            className={cn(
-              'text-center',
-              size === 'l'
-                ? 'text-[22px] tracking-015px font-semibold'
-                : 'title-small-sb-16px max-lg:hidden',
-              colorClasses.text,
-            )}
-          >
+          <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
             {label}
           </span>
         </div>
       </div>
-    </div>
+    </GaugeContainer>
   );
 };
 
@@ -369,25 +367,23 @@ const Clock = ({
   time,
   label,
   variant = 'blue',
+  size = 'm',
   showBackground = false,
   ...props
 }: ClockProps) => {
   const colorClasses = clockVariantStyles[variant];
 
   return (
-    <div
-      className={cn(
-        showBackground && 'bg-white',
-        gaugeContainerVariants(),
-        className,
-      )}
+    <GaugeContainer
+      className={className}
+      showBackground={showBackground}
+      size="m"
       {...props}
     >
-      <span
-        className={cn('subtitle-small-sb-14px lg:hidden', colorClasses.text)}
-      >
+      <span className={cn(MOBILE_LABEL_CLASSES, colorClasses.text)}>
         {label}
       </span>
+
       <div className="relative max-lg:w-26 lg:w-full h-full">
         <div
           className={cn('absolute inset-0 w-full lg:w-[124px] h-full mx-auto')}
@@ -415,7 +411,7 @@ const Clock = ({
           </span>
         </div>
       </div>
-    </div>
+    </GaugeContainer>
   );
 };
 
