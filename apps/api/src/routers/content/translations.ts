@@ -514,6 +514,37 @@ const getAvailableContributorsProcedure = adminProcedure
     }
   });
 
+const getAllUsersProcedure = adminProcedure
+  .output(z.array(z.any())) // Using z.any() temporarily
+  .query(async ({ ctx }) => {
+    try {
+      // Get all users including contributors (but exclude admin and superadmin)
+      const result = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          ua.uid,
+          ua.username,
+          ua.display_name AS "displayName",
+          ua.email,
+          ua.role,
+          (
+            SELECT COALESCE(ARRAY_AGG(DISTINCT language_code), ARRAY[]::text[])
+            FROM users.reviewer_languages rl
+            WHERE rl.reviewer_id = ua.uid
+          ) AS "assignedLanguages"
+        FROM users.accounts ua
+        WHERE ua.role NOT IN ('admin', 'superadmin')
+        ORDER BY ua.display_name, ua.username
+      `);
+      return result;
+    } catch (error) {
+      console.error('Error fetching all users:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch all users',
+      });
+    }
+  });
+
 const assignCourseToContributorProcedure = adminProcedure
   .input(
     z.object({
@@ -820,6 +851,65 @@ const getUserDetailsProcedure = adminProcedure
     }
   });
 
+const assignLanguageToContributorProcedure = adminProcedure
+  .input(
+    z.object({
+      contributorId: z.string(),
+      languageCode: z.string(),
+    }),
+  )
+  .output(z.any()) // Temporary until we have the proper schema
+  .mutation(async ({ ctx, input }) => {
+    try {
+      // First, update the user's role to 'contributor' if not already
+      await ctx.dependencies.postgres.exec(sql`
+        UPDATE users.accounts
+        SET role = 'contributor'
+        WHERE uid = ${input.contributorId}
+        AND role NOT IN ('contributor', 'admin', 'superadmin')
+      `);
+
+      // Insert or update the reviewer language assignment
+      const result = await ctx.dependencies.postgres.exec(sql`
+        INSERT INTO users.reviewer_languages (reviewer_id, language_code, proficiency_level)
+        VALUES (${input.contributorId}, ${input.languageCode}, 1)
+        ON CONFLICT (reviewer_id, language_code)
+        DO UPDATE SET proficiency_level = EXCLUDED.proficiency_level
+        RETURNING reviewer_id AS "reviewerId", language_code AS "languageCode", proficiency_level AS "proficiencyLevel"
+      `);
+
+      return result[0];
+    } catch (error) {
+      console.error('Error assigning language to contributor:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to assign language to contributor',
+      });
+    }
+  });
+
+const getAvailableLanguagesProcedure = publicProcedure
+  .output(z.array(z.any())) // Temporary until we have the proper schema
+  .query(async ({ ctx }) => {
+    try {
+      // Get all available languages from the users.languages table
+      const result = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          l.code,
+          l.name
+        FROM users.languages l
+        ORDER BY l.name
+      `);
+      return result;
+    } catch (error) {
+      console.error('Error fetching available languages:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch available languages',
+      });
+    }
+  });
+
 export const translationsRouter = createTRPCRouter({
   getAvailableCourseTranslations: getAvailableCourseTranslationsProcedure,
   getUserCourseTranslations: getUserCourseTranslationsProcedure,
@@ -841,9 +931,12 @@ export const translationsRouter = createTRPCRouter({
   getAdminContentManagementCourses: getAdminContentManagementCoursesProcedure,
   getContentManagementTopics: getContentManagementTopicsProcedure,
   getAvailableContributors: getAvailableContributorsProcedure,
+  getAllUsers: getAllUsersProcedure,
   assignCourseToContributor: assignCourseToContributorProcedure,
   reassignCourseToContributor: reassignCourseToContributorProcedure,
   // Admin user management endpoints
   getAdminUserManagement: getAdminUserManagementProcedure,
   getUserDetails: getUserDetailsProcedure,
+  assignLanguageToContributor: assignLanguageToContributorProcedure,
+  getAvailableLanguages: getAvailableLanguagesProcedure,
 });

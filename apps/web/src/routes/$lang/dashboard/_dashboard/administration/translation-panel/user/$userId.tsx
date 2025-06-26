@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
 
 import { formatDate } from '#src/utils/date.ts';
-import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
@@ -58,6 +57,9 @@ function UserDetailsPage() {
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [languages, setLanguages] = useState<
+    Array<{ code: string; name: string }>
+  >([]);
 
   // Fetch user details
   const fetchUserDetails = async () => {
@@ -74,9 +76,26 @@ function UserDetailsPage() {
     }
   };
 
+  // Fetch languages data
+  const fetchLanguages = async () => {
+    try {
+      const data = await trpcClient.content.getAvailableLanguages.query();
+      setLanguages(data || []);
+    } catch (error) {
+      console.error('Error fetching languages:', error);
+      setLanguages([]);
+    }
+  };
+
+  // Function to get language names from the fetched languages data
+  const getLanguageNameFromData = (code: string) => {
+    return languages.find((lang) => lang.code === code)?.name || code;
+  };
+
   useEffect(() => {
     if (userId) {
       fetchUserDetails();
+      fetchLanguages();
     }
   }, [userId]);
 
@@ -258,7 +277,7 @@ function UserDetailsPage() {
                           key={language}
                           className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-orange-500 text-white"
                         >
-                          {getLanguageName(language)}
+                          {getLanguageNameFromData(language)}
                         </span>
                       ))}
                     </div>
@@ -416,7 +435,7 @@ function UserDetailsPage() {
                           </div>
                         </TableCell>
                         <TableCell className="py-4 text-sm text-gray-900">
-                          {getLanguageName(assignment.language)}
+                          {getLanguageNameFromData(assignment.language)}
                         </TableCell>
                         <TableCell className="py-4">
                           {getStatusTag(

@@ -480,6 +480,7 @@
         "userManagement": {
           "title": "User Management",
           "description": "Manage contributors and their translation assignments",
+          "addContributor": "Add contributor",
           "contributorInformation": "Contributor information",
           "chapters": "Chapters",
           "courses": "Courses",
@@ -510,6 +511,21 @@
             "published": "Published",
             "rejected": "Rejected"
           }
+        },
+        "addContributor": {
+          "title": "Add Contributor",
+          "findContributor": "Find a contributor",
+          "language": "Language",
+          "selectLanguage": "Select a language",
+          "assign": "Assign",
+          "confirm": "Confirm",
+          "assigning": "Assigning...",
+          "assignmentSuccess": "Contributors assigned successfully!",
+          "noUsers": "No users available",
+          "searchUsers": "Search users...",
+          "selectedUsers": "Selected Users:",
+          "assignedLanguages": "Already assigned languages",
+          "addLanguage": "Add another language"
         },
         "noResultsFound": "No results found",
         "status": {
@@ -555,21 +571,26 @@
           },
           "assignModal": {
             "title": "Assign Course to Contributor",
+            "assigningCourse": "Assigning course:",
             "courseInfo": "Course Information",
             "selectContributor": "Select Contributor",
             "chooseContributor": "Choose a contributor...",
             "cancel": "Cancel",
             "assign": "Assign",
-            "assigning": "Assigning..."
+            "assigning": "Assigning...",
+            "assignmentSuccess": "Course assigned successfully!"
           },
           "reassignModal": {
             "title": "Reassign Course to New Contributor",
+            "reassigningCourse": "Reassigning course:",
+            "currentlyAssignedTo": "Currently assigned to:",
             "courseInfo": "Course Information",
             "selectNewContributor": "Select New Contributor",
             "chooseNewContributor": "Choose a new contributor...",
             "cancel": "Cancel",
             "reassign": "Reassign",
             "reassigning": "Reassigning...",
+            "reassignmentSuccess": "Course reassigned successfully!",
             "warning": {
               "title": "Important Note",
               "description": "Chapters and parts that have already been reviewed will keep their reviewed status and will not be reassigned."
