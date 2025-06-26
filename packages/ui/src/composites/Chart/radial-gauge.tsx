@@ -1,7 +1,7 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import { cn } from '#src/lib/utils.ts';
 
-import DurationClock from '#src/assets/charts/duration.svg';
+import DurationClock from '#src/assets/charts/duration.webp';
 
 const gaugeVariantStyles = {
   green: {
@@ -41,12 +41,12 @@ type DashGaugeVariant = keyof typeof gaugeVariantStyles;
 type ClockVariant = keyof typeof clockVariantStyles;
 
 const gaugeContainerVariants = cva(
-  'max-lg:flex max-lg:items-center max-lg:justify-between relative inline-flex lg:flex-col items-center justify-center rounded-2xl',
+  'flex items-center max-lg:justify-between relative justify-center rounded-2xl',
   {
     variants: {
       size: {
-        m: 'h-20 w-66 lg:w-40 lg:h-36 px-3 pb-3 pt-2.5',
-        l: 'w-full max-w-54 lg:max-w-[336px] h-50 lg:px-14 my-7',
+        m: 'w-66 lg:w-40 px-3 py-5 lg:flex-col',
+        l: 'w-full max-w-54 lg:max-w-[336px] lg:px-14 my-7 flex-col',
       },
     },
     defaultVariants: {
@@ -64,32 +64,26 @@ const SVG_CENTER_Y = 50;
 const MOBILE_LABEL_CLASSES = 'subtitle-small-sb-14px lg:hidden';
 
 const getSvgContainerClasses = (size: 'm' | 'l') =>
-  cn(
-    'relative h-full',
-    size === 'l' ? 'w-full max-lg:h-40' : 'max-lg:w-26 lg:w-full',
-  );
+  cn('relative', size === 'l' ? 'w-full' : 'max-lg:w-26 lg:w-full');
 
 const getMainTextClasses = (size: 'm' | 'l') =>
   cn(
     'font-semibold',
     size === 'l'
-      ? 'text-[44px] font-bold leading-none'
-      : 'title-large-24px lg:display-small-32px',
+      ? 'text-[44px] font-bold leading-0'
+      : 'title-large-24px lg:display-small-32px leading-0',
   );
 
 const getLabelTextClasses = (size: 'm' | 'l') =>
   cn(
     'text-center',
     size === 'l'
-      ? 'text-[22px] tracking-015px font-semibold'
-      : 'title-small-sb-16px max-lg:hidden',
+      ? 'text-[22px] tracking-015px font-semibold pt-5'
+      : 'title-small-sb-16px max-lg:hidden lg:pt-3',
   );
 
 const getTextContainerClasses = (size: 'm' | 'l') =>
-  cn(
-    'absolute inset-0 flex flex-col items-center justify-center gap-3',
-    size === 'l' ? 'pt-18 lg:pt-10' : 'pt-6 lg:pt-5',
-  );
+  cn('text-center w-full absolute', size === 'l' ? 'bottom-2' : 'bottom-0.5');
 
 const MobileLabel = ({
   label,
@@ -162,6 +156,7 @@ export interface ClockProps
   time: string;
   label: string;
   variant?: ClockVariant;
+  size?: 'm' | 'l';
   showBackground?: boolean;
 }
 
@@ -204,10 +199,7 @@ const RadialGauge = ({
 
       <div className={getSvgContainerClasses(size)}>
         {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-        <svg
-          viewBox={SVG_VIEWBOX}
-          className="w-full h-auto absolute top-0 left-0"
-        >
+        <svg viewBox={SVG_VIEWBOX} className="w-full">
           {/* Unfilled */}
           <path
             d={arcPath}
@@ -240,23 +232,16 @@ const RadialGauge = ({
         </svg>
 
         {/* Text */}
-        <div className={getTextContainerClasses(size)}>
-          <div
-            className={cn(
-              'flex items-end justify-center text-center',
-              colorClasses.text,
-            )}
-          >
-            <span className={getMainTextClasses(size)}>
-              {Math.round(clampedPercentage)}
-            </span>
-            <span className="label-large-med-20px">%</span>
-          </div>
-          <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
-            {label}
+        <div className={cn(colorClasses.text, getTextContainerClasses(size))}>
+          <span className={getMainTextClasses(size)}>
+            {Math.round(clampedPercentage)}
           </span>
+          <span className="label-large-med-20px leading-0">%</span>
         </div>
       </div>
+      <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
+        {label}
+      </span>
     </GaugeContainer>
   );
 };
@@ -273,8 +258,7 @@ const DashGauge = ({
 }: DashGaugeProps) => {
   const colorClasses = gaugeVariantStyles[variant];
 
-  const DASH_RADIUS = 44;
-  const DASH_LENGTH = 12;
+  const DASH_LENGTH = 10;
   const MIN_DASHES = 20;
   const MAX_DASHES = 50;
   const MIN_STROKE_WIDTH = 2;
@@ -297,8 +281,8 @@ const DashGauge = ({
     const angle = ARC_START_ANGLE + dashIndex * dashSpacing;
     const radians = (angle * Math.PI) / 180;
 
-    const innerRadius = DASH_RADIUS - DASH_LENGTH / 2;
-    const outerRadius = DASH_RADIUS + DASH_LENGTH / 2;
+    const innerRadius = GAUGE_RADIUS - DASH_LENGTH / 2;
+    const outerRadius = GAUGE_RADIUS + DASH_LENGTH / 2;
 
     const startX = SVG_CENTER_X - innerRadius * Math.cos(radians);
     const startY = SVG_CENTER_Y - innerRadius * Math.sin(radians);
@@ -333,31 +317,21 @@ const DashGauge = ({
 
       <div className={getSvgContainerClasses(size)}>
         {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-        <svg
-          viewBox={SVG_VIEWBOX}
-          className="w-full h-auto absolute top-0 left-0"
-        >
+        <svg viewBox={SVG_VIEWBOX} className="w-full">
           {dashes}
         </svg>
 
         {/* Text */}
-        <div className={getTextContainerClasses(size)}>
-          <div
-            className={cn(
-              'flex items-end justify-center text-center',
-              colorClasses.text,
-            )}
-          >
-            <span className={getMainTextClasses(size)}>{completed}</span>
-            <span className={cn('label-18px', colorClasses.background)}>
-              /{total}
-            </span>
-          </div>
-          <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
-            {label}
+        <div className={cn(colorClasses.text, getTextContainerClasses(size))}>
+          <span className={getMainTextClasses(size)}>{completed}</span>
+          <span className={cn('label-18px leading-0', colorClasses.background)}>
+            /{total}
           </span>
         </div>
       </div>
+      <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
+        {label}
+      </span>
     </GaugeContainer>
   );
 };
@@ -377,40 +351,23 @@ const Clock = ({
     <GaugeContainer
       className={className}
       showBackground={showBackground}
-      size="m"
+      size={size}
       {...props}
     >
-      <span className={cn(MOBILE_LABEL_CLASSES, colorClasses.text)}>
-        {label}
-      </span>
+      <MobileLabel label={label} colorClasses={colorClasses} size={size} />
 
-      <div className="relative max-lg:w-26 lg:w-full h-full">
-        <div
-          className={cn('absolute inset-0 w-full lg:w-[124px] h-full mx-auto')}
-        >
-          <img src={DurationClock} alt="Duration clock" className="w-full" />
-        </div>
+      <div className={getSvgContainerClasses(size)}>
+        <img src={DurationClock} alt="Duration clock" className="w-full" />
 
         {/* Text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-5 gap-3">
-          <span
-            className={cn(
-              'text-2xl lg:text-[28px] font-semibold text-center',
-              colorClasses.text,
-            )}
-          >
-            {time}
-          </span>
-          <span
-            className={cn(
-              'title-small-sb-16px max-lg:hidden text-center',
-              colorClasses.text,
-            )}
-          >
-            {label}
-          </span>
+        <div className={cn(colorClasses.text, getTextContainerClasses(size))}>
+          <span className={getMainTextClasses(size)}>{time}</span>
         </div>
       </div>
+
+      <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
+        {label}
+      </span>
     </GaugeContainer>
   );
 };
