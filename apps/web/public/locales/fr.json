@@ -581,6 +581,7 @@
         "userManagement": {
           "title": "Gestion des utilisateurs",
           "description": "Gérer les contributeurs et leurs assignations de traduction",
+          "addContributor": "Ajouter un contributeur",
           "contributorInformation": "Informations du contributeur",
           "chapters": "Chapitres",
           "courses": "Cours",
@@ -611,6 +612,21 @@
             "published": "Publié",
             "rejected": "Rejeté"
           }
+        },
+        "addContributor": {
+          "title": "Ajouter un contributeur",
+          "findContributor": "Trouver un contributeur",
+          "language": "Langue",
+          "selectLanguage": "Sélectionner une langue",
+          "assign": "Assigner",
+          "confirm": "Confirmer",
+          "assigning": "Assignation en cours...",
+          "assignmentSuccess": "Contributeurs assignés avec succès !",
+          "noUsers": "Aucun utilisateur disponible",
+          "searchUsers": "Rechercher des utilisateurs...",
+          "selectedUsers": "Utilisateurs sélectionnés :",
+          "assignedLanguages": "Langues déjà assignées",
+          "addLanguage": "Ajouter une autre langue"
         },
         "noResultsFound": "Aucun résultat trouvé",
         "status": {
@@ -654,21 +670,26 @@
           },
           "assignModal": {
             "title": "Assigner le Cours à un Contributeur",
+            "assigningCourse": "Assignation du cours :",
             "courseInfo": "Informations du Cours",
             "selectContributor": "Sélectionner un Contributeur",
             "chooseContributor": "Choisir un contributeur...",
             "cancel": "Annuler",
             "assign": "Assigner",
-            "assigning": "Assignation en cours..."
+            "assigning": "Assignation en cours...",
+            "assignmentSuccess": "Cours assigné avec succès !"
           },
           "reassignModal": {
             "title": "Réassigner le Cours à un Nouveau Contributeur",
+            "reassigningCourse": "Réassignation du cours :",
+            "currentlyAssignedTo": "Actuellement assigné à :",
             "courseInfo": "Informations du Cours",
             "selectNewContributor": "Sélectionner un Nouveau Contributeur",
             "chooseNewContributor": "Choisir un nouveau contributeur...",
             "cancel": "Annuler",
             "reassign": "Réassigner",
             "reassigning": "Réassignation en cours...",
+            "reassignmentSuccess": "Cours réassigné avec succès !",
             "warning": {
               "title": "Note Importante",
               "description": "Les chapitres et parties qui ont déjà été révisés conserveront leur statut de révision et ne seront pas réassignés."

@@ -17,7 +17,6 @@ import {
 } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
-import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 
 import { UserRole } from '@blms/constants';
@@ -31,6 +30,7 @@ import {
   SharedTableHeader,
 } from '../-components/shared-table-header.tsx';
 import { TranslationRequestsTable } from '../-components/translation-requests-table.js';
+import { ContributorAssignmentModal } from './translation-panel/-components/contributor-assignment-modal.tsx';
 
 // Import filter icon
 import FilterIcon from '#src/assets/icons/Filter.svg';
@@ -179,6 +179,10 @@ const UserManagementTab = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [users, setUsers] = useState<UserManagementData[]>([]);
   const [usersLoading, setUsersLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [languages, setLanguages] = useState<
+    Array<{ code: string; name: string }>
+  >([]);
 
   // Fetch users data
   const fetchUsers = async () => {
@@ -194,8 +198,20 @@ const UserManagementTab = () => {
     }
   };
 
+  // Fetch languages data
+  const fetchLanguages = async () => {
+    try {
+      const data = await trpcClient.content.getAvailableLanguages.query();
+      setLanguages(data || []);
+    } catch (error) {
+      console.error('Error fetching languages:', error);
+      setLanguages([]);
+    }
+  };
+
   useEffect(() => {
     fetchUsers();
+    fetchLanguages();
   }, []);
 
   // Filter users based on search query
@@ -208,7 +224,7 @@ const UserManagementTab = () => {
     return users.filter((user: UserManagementData) => {
       const languages = user.languages || [];
       const languageNames = languages
-        .map((lang) => getLanguageName(lang).toLowerCase())
+        .map((lang) => getLanguageNameFromData(lang).toLowerCase())
         .join(' ');
 
       return (
@@ -229,12 +245,19 @@ const UserManagementTab = () => {
     });
   };
 
-  const formatLanguages = (languages: string[] | null) => {
-    if (!languages || languages.length === 0) {
+  // Function to get language names from the fetched languages data
+  const getLanguageNameFromData = (code: string) => {
+    return languages.find((lang) => lang.code === code)?.name || code;
+  };
+
+  const formatLanguages = (languageCodes: string[] | null) => {
+    if (!languageCodes || languageCodes.length === 0) {
       return t('words.none');
     }
 
-    return languages.map((lang) => getLanguageName(lang)).join(', ');
+    return languageCodes
+      .map((lang) => getLanguageNameFromData(lang))
+      .join(', ');
   };
 
   const handleViewDetails = (userId: string) => {
@@ -252,9 +275,22 @@ const UserManagementTab = () => {
     <div className="space-y-6">
       {/* Header Section */}
       <div className="flex flex-col gap-4">
-        <h2 className="title-large-sb-24px text-dashboardSectionTitle">
-          {t('dashboard.adminPanel.translationPanel.userManagement.title')}
-        </h2>
+        <div className="flex justify-between items-center">
+          <h2 className="title-large-sb-24px text-dashboardSectionTitle">
+            {t('dashboard.adminPanel.translationPanel.userManagement.title')}
+          </h2>
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-orange-500 hover:bg-orange-600 text-white flex items-center gap-2"
+          >
+            <span>
+              {t(
+                'dashboard.adminPanel.translationPanel.userManagement.addContributor',
+              )}
+            </span>
+            <span className="text-lg">+</span>
+          </Button>
+        </div>
 
         <p className="text-gray-600">
           {t(
@@ -365,6 +401,17 @@ const UserManagementTab = () => {
           </TableBody>
         </SharedTable>
       </div>
+
+      {/* Contributor Assignment Modal */}
+      <ContributorAssignmentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={() => {
+          // Refresh users list to show updated languages
+          fetchUsers();
+          setIsModalOpen(false);
+        }}
+      />
     </div>
   );
 };
