@@ -74,13 +74,14 @@ export const TranslationRequestsTable = ({
   const fetchRequests = async () => {
     try {
       setIsLoading(true);
-      // @ts-ignore - translations router should be available
       const data =
-        await trpcClient.content.getTranslationAssignmentRequests.query({
-          status:
-            status === 'requested' ? AssignmentStatus.Requested : 'rejected',
-        });
-      setRequests(data || []);
+        await trpcClient.user.translation.getTranslationAssignmentRequests.query(
+          {
+            status:
+              status === 'requested' ? AssignmentStatus.Requested : 'rejected',
+          },
+        );
+      setRequests((data || []) as TranslationRequest[]);
     } catch (error) {
       console.error('Error fetching translation requests:', error);
       setRequests([]);
@@ -151,12 +152,13 @@ export const TranslationRequestsTable = ({
     rejectionReason?: string,
   ) => {
     try {
-      // @ts-ignore - translations router should be available
-      return await trpcClient.content.updateTranslationAssignmentStatus.mutate({
-        assignmentId,
-        status,
-        rejectionReason,
-      });
+      return await trpcClient.user.translation.updateTranslationAssignmentStatus.mutate(
+        {
+          assignmentId,
+          status,
+          rejectionReason,
+        },
+      );
     } catch (error) {
       console.error('Error updating assignment status:', error);
       throw error;

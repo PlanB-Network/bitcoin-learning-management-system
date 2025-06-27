@@ -19,7 +19,7 @@ import FilterIcon from '#src/assets/icons/Filter.svg';
 type SortField =
   | 'courseIndex'
   | 'courseName'
-  | 'status'
+  | 'isAssigned'
   | 'assigneeDisplayName'
   | 'progress';
 type SortDirection = 'asc' | 'desc';
@@ -47,7 +47,6 @@ export const ContentManagementTab = () => {
   const fetchTopics = async () => {
     try {
       setTopicsLoading(true);
-      // @ts-ignore - translations router should be available
       const data = await trpcClient.content.getContentManagementTopics.query();
       setAvailableTopics(data || []);
     } catch (error) {
@@ -62,7 +61,6 @@ export const ContentManagementTab = () => {
   const fetchCourses = async () => {
     try {
       setCoursesLoading(true);
-      // @ts-ignore - translations router should be available
       const data =
         await trpcClient.content.getAdminContentManagementCourses.query({
           topic: selectedTopic,
@@ -80,8 +78,8 @@ export const ContentManagementTab = () => {
   const fetchContributors = async () => {
     try {
       setContributorsLoading(true);
-      // @ts-ignore - translations router should be available
-      const data = await trpcClient.content.getAvailableContributors.query();
+      const data =
+        await trpcClient.user.translation.getAvailableContributors.query();
       setContributors(data || []);
     } catch (error) {
       console.error('Error fetching contributors:', error);
@@ -129,9 +127,9 @@ export const ContentManagementTab = () => {
           aValue = a.courseName || a.courseId || '';
           bValue = b.courseName || b.courseId || '';
           break;
-        case 'status':
-          aValue = a.status || '';
-          bValue = b.status || '';
+        case 'isAssigned':
+          aValue = a.isAssigned || '';
+          bValue = b.isAssigned || '';
           break;
         case 'assigneeDisplayName':
           aValue = a.assigneeDisplayName || a.assigneeUsername || '';
@@ -292,8 +290,8 @@ export const ContentManagementTab = () => {
             </SharedTableHead>
             <SharedTableHead
               sortable
-              onSort={() => handleSort('status')}
-              sortIcon={getSortIcon('status')}
+              onSort={() => handleSort('isAssigned')}
+              sortIcon={getSortIcon('isAssigned')}
             >
               {t(
                 'dashboard.adminPanel.translationPanel.contentManagement.table.status',
@@ -346,22 +344,22 @@ export const ContentManagementTab = () => {
                   <TableCell className="py-4">
                     <span
                       className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md ${
-                        course.status === 'not_assigned'
+                        course.isAssigned === 'not_assigned'
                           ? 'bg-gray-100 text-gray-800'
-                          : course.status === 'assigned'
+                          : course.isAssigned === 'assigned'
                             ? 'bg-green-100 text-green-800'
                             : 'bg-gray-100 text-gray-800'
                       }`}
                     >
-                      {course.status === 'not_assigned'
+                      {course.isAssigned === 'not_assigned'
                         ? t(
                             'dashboard.adminPanel.translationPanel.contentManagement.status.notAssigned',
                           )
-                        : course.status === 'assigned'
+                        : course.isAssigned === 'assigned'
                           ? t(
                               'dashboard.adminPanel.translationPanel.contentManagement.status.assigned',
                             )
-                          : course.status}
+                          : course.isAssigned}
                     </span>
                   </TableCell>
                   <TableCell className="py-4 text-gray-900 break-words">

@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
+import type { CourseDetails, CourseInfo } from '@blms/types';
 import { trpcClient } from '#src/utils/trpc.js';
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 
@@ -23,26 +24,44 @@ function CourseDetailsComponent() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  // Configuration des requêtes TRPC
   const queries = {
-    getCourseLanguages: async (params: { courseId: string }) => {
-      return await trpcClient.content.getCourseLanguages.query(params);
+    getCourseLanguages: async (params: {
+      courseId: string;
+    }): Promise<CourseInfo> => {
+      const response: any =
+        await trpcClient.content.getCourseLanguages.query(params);
+      return {
+        courseId: response.id || response.courseId,
+        courseIndex: response.index || response.courseIndex,
+        courseName: response.courseName,
+        languages: response.languages,
+      } as CourseInfo;
     },
     getCourseDetails: async (params: {
       courseId: string;
       language: string;
-    }) => {
-      return await trpcClient.content.getCourseDetails.query(params);
+    }): Promise<CourseDetails> => {
+      const response: any =
+        await trpcClient.content.getCourseDetails.query(params);
+      return {
+        id: response.id,
+        courseIndex: response.courseIndex,
+        courseName: response.courseName,
+        translationStatus: response.translationStatus,
+        assigneeDisplayName: response.assigneeDisplayName,
+        progress: response.progress,
+        totalChapters: response.totalChapters,
+        completedChapters: response.completedChapters,
+        parts: response.parts,
+      } as CourseDetails;
     },
   };
 
-  // Configuration des options
   const options = {
     courseId,
     language,
   };
 
-  // Gestion du changement de langue
   const handleLanguageChange = (courseId: string, newLanguage: string) => {
     navigate({
       to: '/$lang/dashboard/administration/translation-panel/course/$courseId',
@@ -51,10 +70,9 @@ function CourseDetailsComponent() {
     });
   };
 
-  // Actions sur les chapitres
   const handleChapterAction = (chapterId: string) => {
     console.log('View chapter details:', chapterId);
-    // TODO: Implémenter la navigation vers les détails du chapitre
+    // TODO: Implement navigation to chapter details
   };
 
   // Navigation breadcrumb
@@ -74,7 +92,6 @@ function CourseDetailsComponent() {
     },
   ];
 
-  // Labels pour la localisation
   const labels = {
     currentContributor: t(
       'dashboard.adminPanel.translationPanel.courseDetails.currentContributor',
@@ -118,17 +135,15 @@ function CourseDetailsComponent() {
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
       <TranslationPanelHeader activeTab="content" showTabs={false}>
-        <div className="mt-6">
-          <CourseDetailsPage
-            options={options}
-            queries={queries}
-            onLanguageChange={handleLanguageChange}
-            onChapterAction={handleChapterAction}
-            breadcrumbItems={breadcrumbItems}
-            labels={labels}
-            t={t}
-          />
-        </div>
+        <CourseDetailsPage
+          options={options}
+          queries={queries}
+          onLanguageChange={handleLanguageChange}
+          onChapterAction={handleChapterAction}
+          breadcrumbItems={breadcrumbItems}
+          labels={labels}
+          t={t}
+        />
       </TranslationPanelHeader>
     </div>
   );

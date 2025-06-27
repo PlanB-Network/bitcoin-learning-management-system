@@ -50,8 +50,8 @@ export const ContributorAssignmentModal = ({
   // Fetch users when modal opens or search query changes
   const fetchUsers = async () => {
     try {
-      const response = await trpcClient.content.getAllUsers.query();
-      setUsers(response);
+      const response = await trpcClient.user.translation.getAllUsers.query();
+      setUsers(response as User[]);
     } catch (error) {
       console.error('Error fetching users:', error);
       setErrorMessage('Failed to fetch users');
@@ -61,7 +61,8 @@ export const ContributorAssignmentModal = ({
   // Fetch languages when modal opens
   const fetchLanguages = async () => {
     try {
-      const response = await trpcClient.content.getAvailableLanguages.query();
+      const response =
+        await trpcClient.user.translation.getAvailableLanguages.query();
       setLanguages(response);
     } catch (error) {
       console.error('Error fetching languages:', error);
@@ -170,10 +171,12 @@ export const ContributorAssignmentModal = ({
         for (const languageCode of selectedUser.languageCodes) {
           if (languageCode) {
             // Only assign non-empty language codes
-            await trpcClient.content.assignLanguageToContributor.mutate({
-              contributorId: selectedUser.user.uid,
-              languageCode: languageCode,
-            });
+            await trpcClient.user.translation.assignLanguageToContributor.mutate(
+              {
+                contributorId: selectedUser.user.uid,
+                languageCode: languageCode,
+              },
+            );
           }
         }
       }
@@ -200,11 +203,6 @@ export const ContributorAssignmentModal = ({
 
   const getUserDisplayName = (user: User) => {
     return user.displayName || user.username || user.email || 'Unknown User';
-  };
-
-  // Function to get language names from the fetched languages data
-  const getLanguageName = (code: string) => {
-    return languages.find((lang) => lang.code === code)?.name || code;
   };
 
   if (isAssigned) {

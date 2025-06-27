@@ -47,7 +47,7 @@ export const ReassignCourseModal = ({
     setErrorMessage('');
 
     try {
-      await trpcClient.content.reassignCourseToContributor.mutate({
+      await trpcClient.user.translation.reassignCourseToContributor.mutate({
         assignmentId: course.assignmentId,
         newAssigneeId: selectedContributorId,
       });
