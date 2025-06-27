@@ -15,8 +15,8 @@ export interface TranslationAssignment {
   assignerId: string;
   status: string;
   assignedAt: Date;
-  completedAt?: Date;
-  rejectionReason?: string;
+  completedAt: Date | null;
+  rejectionReason: string | null;
   courseIndex?: string;
   courseName?: string;
   assigneeUsername?: string;

@@ -5,6 +5,7 @@ import type {
 
 import type { Dependencies } from '../../dependencies.js';
 import {
+  getAdminContentManagementCoursesQuery,
   getAvailableCourseTranslationsQuery,
   getCourseTranslationStatusQuery,
   getCoursesReadyForReviewQuery,
@@ -101,5 +102,19 @@ export const createGetTranslationProgress = ({ postgres }: Dependencies) => {
   return async (language: string): Promise<number> => {
     const result = await postgres.exec(getTranslationProgressQuery(language));
     return result[0]?.progress || 0;
+  };
+};
+
+/**
+ * Service to get all courses for admin content management
+ * This includes both unassigned courses ready for review and assigned courses
+ */
+export const createGetAdminContentManagementCourses = ({
+  postgres,
+}: Dependencies) => {
+  return async (language?: string, topic?: string) => {
+    return postgres.exec(
+      getAdminContentManagementCoursesQuery(language, topic),
+    );
   };
 };

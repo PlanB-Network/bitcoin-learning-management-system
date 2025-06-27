@@ -6,3 +6,4 @@ export * from './lib/events/services/index.js';
 export * from './lib/notifications/services/index.js';
 export * from './lib/payments/services/index.js';
 export * from './lib/tutorials/services/index.js';
+export * from './lib/translations/index.js';

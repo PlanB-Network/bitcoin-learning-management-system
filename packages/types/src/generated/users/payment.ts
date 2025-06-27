@@ -33,6 +33,5 @@ export interface CheckoutData {
 }
 
 export interface StripeSession {
-    status: string;
-};
-
+  status: string;
+}

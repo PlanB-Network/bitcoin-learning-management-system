@@ -1,28 +1,34 @@
 import { TranslationStatus, UserPermission, UserRole } from '@blms/constants';
-import { sql } from '@blms/database';
 import {
+  adminContentManagementCourseSchema,
   availableCourseTranslationSchema,
   availableCourseTranslationWithAssignmentSchema,
+  courseLanguagesServiceResponseSchema,
+  courseTranslationDetailsServiceResponseSchema,
   courseTranslationStatusSchema,
   createTranslationInputSchema,
   updateTranslationStatusInputSchema,
 } from '@blms/schemas';
 import {
-  createCheckUserTranslationAssignment,
   createCreateCourseTranslation,
+  createGetAdminContentManagementCourses,
   createGetAvailableCourseTranslations,
+  createGetContentManagementTopics,
+  createGetCourseLanguages,
+  createGetCourseTranslationDetails,
   createGetCourseTranslationStatus,
   createGetCoursesReadyForReview,
-  createGetTranslationAssignmentRequests,
+  createGetTranslationProgress,
   createGetUserContributionsUnderReview,
   createGetUserCourseTranslations,
-  createGetUserTranslationAssignments,
-  createRequestTranslationAssignment,
-  createUpdateTranslationAssignmentStatus,
   createUpdateTranslationStatus,
 } from '@blms/service-content';
 import type {
+  AdminContentManagementCourse,
   AvailableCourseTranslation,
+  AvailableCourseTranslationWithAssignment,
+  CourseLanguagesServiceResponse,
+  CourseTranslationDetailsServiceResponse,
   CourseTranslationStatus,
 } from '@blms/types';
 import { TRPCError } from '@trpc/server';
@@ -63,19 +69,8 @@ const getUserCourseTranslationsProcedure = contributorProcedure
 const getCourseTranslationStatusProcedure = publicProcedure
   .input(createTranslationInputSchema)
   .output<Parser<CourseTranslationStatus>>(courseTranslationStatusSchema)
-  .query(async ({ ctx, input }) => {
-    try {
-      return await createGetCourseTranslationStatus(ctx.dependencies)(input);
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error fetching course translation status:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to fetch translation status',
-      });
-    }
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationStatus(ctx.dependencies)(input);
   });
 
 // Create a new translation for a course
@@ -100,18 +95,7 @@ const createCourseTranslationProcedure = contributorProcedure
       });
     }
 
-    try {
-      return await createCreateCourseTranslation(ctx.dependencies)(input);
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error creating course translation:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to create translation',
-      });
-    }
+    return createCreateCourseTranslation(ctx.dependencies)(input);
   });
 
 // Update translation status
@@ -146,18 +130,7 @@ const updateTranslationStatusProcedure = contributorProcedure
       });
     }
 
-    try {
-      return await createUpdateTranslationStatus(ctx.dependencies)(input);
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error updating translation status:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to update translation status',
-      });
-    }
+    return createUpdateTranslationStatus(ctx.dependencies)(input);
   });
 
 // Get courses ready for review (for contribute app)
@@ -173,10 +146,10 @@ const getCoursesReadyForReviewProcedure = publicProcedure
 // Get user's contributions under review (for contribute app)
 const getUserContributionsUnderReviewProcedure = contributorProcedure
   .input(z.object({ language: z.string() }))
-  .output<Parser<AvailableCourseTranslation[]>>(
+  .output<Parser<AvailableCourseTranslationWithAssignment[]>>(
     availableCourseTranslationWithAssignmentSchema.array(),
   )
-  .query(async ({ ctx, input }) => {
+  .query(({ ctx, input }) => {
     const userId = ctx.user?.uid;
     if (!userId) {
       throw new TRPCError({
@@ -185,209 +158,72 @@ const getUserContributionsUnderReviewProcedure = contributorProcedure
       });
     }
 
-    try {
-      console.log('getUserContributionsUnderReview - Input:', {
-        language: input.language,
-        userId,
-      });
-
-      const result = await createGetUserContributionsUnderReview(
-        ctx.dependencies,
-      )(input.language, userId);
-
-      console.log('getUserContributionsUnderReview - Result:', result);
-
-      return result;
-    } catch (error) {
-      console.error('Error in getUserContributionsUnderReview:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to fetch user contributions',
-        cause: error,
-      });
-    }
-  });
-
-// Request translation assignment
-const requestTranslationAssignmentProcedure = contributorProcedure
-  .input(z.object({ courseId: z.string(), language: z.string() }))
-  .output(z.any()) // Temporary until we have the proper schema
-  .mutation(async ({ ctx, input }) => {
-    const userId = ctx.user?.uid;
-    if (!userId) {
-      throw new TRPCError({
-        code: 'UNAUTHORIZED',
-        message: 'User not authenticated',
-      });
-    }
-
-    try {
-      return await createRequestTranslationAssignment(ctx.dependencies)({
-        courseId: input.courseId,
-        language: input.language,
-        userId,
-      });
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error requesting translation assignment:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to request translation assignment',
-      });
-    }
-  });
-
-// Get user's translation assignments
-const getUserTranslationAssignmentsProcedure = contributorProcedure
-  .input(
-    z.object({
-      language: z.string().optional(),
-      status: z.string().optional(),
-    }),
-  )
-  .output(z.any().array()) // Temporary until we have the proper schema
-  .query(async ({ ctx, input }) => {
-    const userId = ctx.user?.uid;
-    if (!userId) {
-      throw new TRPCError({
-        code: 'UNAUTHORIZED',
-        message: 'User not authenticated',
-      });
-    }
-
-    try {
-      return await createGetUserTranslationAssignments(ctx.dependencies)({
-        userId,
-        language: input.language,
-        status: input.status,
-      });
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error fetching user translation assignments:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to fetch translation assignments',
-      });
-    }
-  });
-
-// Update translation assignment status
-const updateTranslationAssignmentStatusProcedure = adminProcedure
-  .input(
-    z.object({
-      assignmentId: z.string(),
-      status: z.string(),
-      rejectionReason: z.string().optional(),
-    }),
-  )
-  .output(z.any()) // Temporary until we have the proper schema
-  .mutation(async ({ ctx, input }) => {
-    try {
-      return await createUpdateTranslationAssignmentStatus(ctx.dependencies)({
-        assignmentId: input.assignmentId,
-        status: input.status,
-        rejectionReason: input.rejectionReason,
-      });
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error updating translation assignment status:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to update assignment status',
-      });
-    }
-  });
-
-// Get all translation assignment requests (for admins)
-const getTranslationAssignmentRequestsProcedure = adminProcedure
-  .input(z.object({ status: z.string().optional() }))
-  .output(z.any().array()) // Temporary until we have the proper schema
-  .query(async ({ ctx, input }) => {
-    try {
-      return await createGetTranslationAssignmentRequests(ctx.dependencies)(
-        input.status,
-      );
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error fetching translation assignment requests:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to fetch assignment requests',
-      });
-    }
+    return createGetUserContributionsUnderReview(ctx.dependencies)(
+      input.language,
+      userId,
+    );
   });
 
 // Get translation progress for a language
 const getTranslationProgressProcedure = publicProcedure
   .input(z.object({ language: z.string() }))
   .output<Parser<{ progress: number }>>(z.object({ progress: z.number() }))
-  .query(async ({ ctx, input }) => {
-    const { postgres } = ctx.dependencies;
-
-    // Query to calculate translation progress
-    const result = await postgres.exec(sql`
-      WITH total_courses AS (
-        SELECT COUNT(*) as total
-        FROM content.courses c
-        WHERE c.is_archived = false
-      ),
-      translated_courses AS (
-        SELECT COUNT(*) as translated
-        FROM content.course_translations ct
-        JOIN content.courses c ON ct.course_id = c.id
-        WHERE ct.language = LOWER(${input.language})
-          AND ct.status = 'published'
-          AND c.is_archived = false
-      )
-      SELECT
-        CASE
-          WHEN tc.total = 0 THEN 0
-          ELSE ROUND((trc.translated::decimal / tc.total::decimal) * 100, 1)
-        END as progress
-      FROM total_courses tc, translated_courses trc
-    `);
-
-    const progress = result[0]?.progress || 0;
-    return { progress };
+  .query(({ ctx, input }) => {
+    return createGetTranslationProgress(ctx.dependencies)(input.language).then(
+      (progress: number) => ({ progress }),
+    );
   });
 
-// Check if user has existing translation assignment
-const checkUserTranslationAssignmentProcedure = contributorProcedure
-  .input(z.object({ courseId: z.string(), language: z.string() }))
-  .output(z.any().nullable()) // Temporary until we have the proper schema
-  .query(async ({ ctx, input }) => {
-    const userId = ctx.user?.uid;
-    if (!userId) {
-      throw new TRPCError({
-        code: 'UNAUTHORIZED',
-        message: 'User not authenticated',
-      });
-    }
+// Admin content management endpoints
+const getAdminContentManagementCoursesProcedure = adminProcedure
+  .input(
+    z.object({
+      language: z.string().optional(),
+      topic: z.string().optional(),
+    }),
+  )
+  .output<Parser<AdminContentManagementCourse[]>>(
+    adminContentManagementCourseSchema.array(),
+  )
+  .query(({ ctx, input }) => {
+    return createGetAdminContentManagementCourses(ctx.dependencies)(
+      input.language,
+      input.topic,
+    );
+  });
 
-    try {
-      return await createCheckUserTranslationAssignment(ctx.dependencies)({
-        userId,
-        courseId: input.courseId,
-        language: input.language,
-      });
-    } catch (error) {
-      if (error instanceof TRPCError) {
-        throw error;
-      }
-      console.error('Error checking user translation assignment:', error);
-      throw new TRPCError({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: 'Failed to check translation assignment',
-      });
-    }
+const getContentManagementTopicsProcedure = adminProcedure
+  .output<Parser<string[]>>(z.array(z.string()))
+  .query(({ ctx }) => {
+    return createGetContentManagementTopics(ctx.dependencies)();
+  });
+
+const getCourseLanguagesProcedure = adminProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<CourseLanguagesServiceResponse>>(
+    courseLanguagesServiceResponseSchema,
+  )
+  .query(({ ctx, input }) => {
+    return createGetCourseLanguages(ctx.dependencies)({
+      courseId: input.courseId,
+    });
+  });
+
+const getCourseTranslationDetailsProcedure = adminProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      language: z.string(),
+    }),
+  )
+  .output<Parser<CourseTranslationDetailsServiceResponse>>(
+    courseTranslationDetailsServiceResponseSchema,
+  )
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationDetails(ctx.dependencies)({
+      courseId: input.courseId,
+      language: input.language,
+    });
   });
 
 export const translationsRouter = createTRPCRouter({
@@ -398,13 +234,10 @@ export const translationsRouter = createTRPCRouter({
   updateTranslationStatus: updateTranslationStatusProcedure,
   getCoursesReadyForReview: getCoursesReadyForReviewProcedure,
   getUserContributionsUnderReview: getUserContributionsUnderReviewProcedure,
-  // Translation assignment endpoints
-  requestTranslationAssignment: requestTranslationAssignmentProcedure,
-  getUserTranslationAssignments: getUserTranslationAssignmentsProcedure,
-  updateTranslationAssignmentStatus: updateTranslationAssignmentStatusProcedure,
-  getTranslationAssignmentRequests: getTranslationAssignmentRequestsProcedure,
-  // Translation progress endpoint
   getTranslationProgress: getTranslationProgressProcedure,
-  // Check user assignment endpoint
-  checkUserTranslationAssignment: checkUserTranslationAssignmentProcedure,
+  // Admin content management endpoints
+  getAdminContentManagementCourses: getAdminContentManagementCoursesProcedure,
+  getContentManagementTopics: getContentManagementTopicsProcedure,
+  getCourseDetails: getCourseTranslationDetailsProcedure,
+  getCourseLanguages: getCourseLanguagesProcedure,
 });

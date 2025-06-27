@@ -4,6 +4,12 @@ export type * from './generated/index.js';
 export type * from './search.js';
 export type * from './session.js';
 export type * from './utils.js';
+export type {
+  ServiceTranslationAssignment,
+  ServiceTranslationAssignmentRequest,
+  ServiceUserTranslationAssignment,
+  ServiceUserDetails,
+} from './generated/content/translations.js';
 
 export type SwissBitcoinPayCheckout = (
   | { isPaid: true; isExpired: false }
