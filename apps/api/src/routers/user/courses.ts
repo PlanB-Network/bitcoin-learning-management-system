@@ -14,6 +14,7 @@ import {
   courseWithSingleTrialExamsGradesAndSummarySchema,
   minimalUserExamTimestampSchema,
   partialExamQuestionSchema,
+  singleTrialExamQuestionStatisticsSchema,
 } from '@blms/schemas';
 import {
   createCalculateCourseChapterSeats,
@@ -33,6 +34,7 @@ import {
   createGetPayment,
   createGetPayments,
   createGetProgress,
+  createGetSingleTrialExamQuestionStatistics,
   createGetTeacherLedCourseDiplomaTimestamp,
   createGetTeacherLedCourseGrades,
   createGetUserChapter,
@@ -65,6 +67,7 @@ import type {
   CourseWithSingleTrialExamsGradesAndSummary,
   MinimalUserExamTimestamp,
   PartialExamQuestion,
+  SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 
 import { ExamType } from '@blms/constants';
@@ -383,6 +386,17 @@ const getExamQuestionsProcedure = studentProcedure
     }),
   );
 
+const getSingleTrialExamQuestionStatisticsProcedure = professorProcedure
+  .input(z.object({ chapterId: z.string() }))
+  .output<Parser<SingleTrialExamQuestionStatistics[]>>(
+    singleTrialExamQuestionStatisticsSchema.array(),
+  )
+  .query(({ ctx, input }) =>
+    createGetSingleTrialExamQuestionStatistics(ctx.dependencies)(
+      input.chapterId,
+    ),
+  );
+
 const saveUserChapterProcedure = studentProcedure
   .input(
     z.object({
@@ -584,6 +598,8 @@ export const userCoursesRouter = createTRPCRouter({
   getEnrolledStudentsCount: getEnrolledStudentsCountProcedure,
   getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,
+  getSingleTrialExamQuestionStatistics:
+    getSingleTrialExamQuestionStatisticsProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
   getTeacherLedCourseDiplomaTimestamp:
     getTeacherLedCourseDiplomaTimestampProcedure,

@@ -1,12 +1,15 @@
 import { sql } from '@blms/database';
-import type { MinimalCourseExamAttemptWithUsername } from '@blms/types';
+import type {
+  MinimalAssignmentGrade,
+  MinimalCourseExamAttemptWithUsername,
+} from '@blms/types';
 
 export const getAllSingleTrialExamsGradesQuery = (courseId: string) => {
   return sql<MinimalCourseExamAttemptWithUsername[]>`
         WITH ranked_attempts AS (
             SELECT *,
                 ROW_NUMBER() OVER (
-                    PARTITION BY chapter_id
+                    PARTITION BY chapter_id, uid
                     ORDER BY started_at DESC
                 ) as rn
             FROM users.exam_attempts ea
@@ -22,7 +25,7 @@ export const getAllSingleTrialExamsGradesQuery = (courseId: string) => {
 };
 
 export const getAllAssignmentsGradesQuery = (courseId: string) => {
-  return sql<{ username: string; uid: string; assignmentGrade: number }[]>`
+  return sql<MinimalAssignmentGrade[]>`
         SELECT cp.uid, ua.username, cp.assignment_grade
         FROM users.course_progress cp
         JOIN users.accounts ua ON cp.uid = ua.uid

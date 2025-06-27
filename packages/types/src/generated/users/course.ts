@@ -228,6 +228,12 @@ export interface MinimalCourseExamAttemptWithUsername {
   username: string;
 }
 
+export interface MinimalAssignmentGrade {
+  username: string;
+  uid: string;
+  assignmentGrade: number | null;
+}
+
 export interface CourseWithSingleTrialExamsGradesAndSummary {
   examsGrades: MinimalCourseExamAttemptWithUsername[];
   assignmentGrades: {
@@ -237,4 +243,12 @@ export interface CourseWithSingleTrialExamsGradesAndSummary {
   }[];
   averageTotalScore: number;
   graduatedStudentsAmount: number;
+}
+
+export interface SingleTrialExamQuestionStatistics {
+  questionId: string;
+  questionText: string;
+  questionDifficulty: string;
+  totalAnswers: number;
+  successPercentage: number;
 }

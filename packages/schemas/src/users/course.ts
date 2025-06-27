@@ -160,6 +160,12 @@ export const minimalCourseExamAttemptWithUsernameSchema =
       }),
     );
 
+export const minimalAssignmentGradeSchema = z.object({
+  username: z.string(),
+  uid: z.string(),
+  assignmentGrade: z.number().nullable(),
+});
+
 export const courseWithSingleTrialExamsGradesAndSummarySchema = z.object({
   examsGrades: z.array(minimalCourseExamAttemptWithUsernameSchema),
   assignmentGrades: z.array(
@@ -171,4 +177,12 @@ export const courseWithSingleTrialExamsGradesAndSummarySchema = z.object({
   ),
   averageTotalScore: z.number(),
   graduatedStudentsAmount: z.number(),
+});
+
+export const singleTrialExamQuestionStatisticsSchema = z.object({
+  questionId: z.string(),
+  questionText: z.string(),
+  questionDifficulty: z.string(),
+  totalAnswers: z.number(),
+  successPercentage: z.number(),
 });
