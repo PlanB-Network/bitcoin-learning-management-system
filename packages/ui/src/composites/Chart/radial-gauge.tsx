@@ -26,7 +26,7 @@ const gaugeVariantStyles = {
     background: 'stroke-darkOrange-1', // Unfilled
     foreground: 'stroke-darkOrange-4', // Filled
     text: 'text-darkOrange-4',
-    needle: 'text-darkOrange-4',
+    needle: 'stroke-darkOrange-4',
   },
 };
 

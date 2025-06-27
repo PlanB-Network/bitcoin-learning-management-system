@@ -16,7 +16,7 @@ const meta: Meta<typeof RadialGauge> = {
     },
     variant: {
       control: 'select',
-      options: ['green', 'purple', 'yellow'],
+      options: ['green', 'purple', 'yellow', 'orange'],
       description: 'Color variant for the gauge',
     },
     showBackground: {
