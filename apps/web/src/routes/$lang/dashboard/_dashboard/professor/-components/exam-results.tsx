@@ -23,6 +23,7 @@ import {
   TbWeight,
 } from 'react-icons/tb';
 import XLSX from 'xlsx';
+
 import { formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -224,38 +225,12 @@ const ExamCard = ({
       ? endDate != null && endDate < new Date() && examGrades.length > 0
       : assignmentPublished && assignmentGrades.length > 0;
 
-  const averageDuration =
-    Math.round(
-      examGrades.reduce((acc, grade) => {
-        if (grade.finishedAt && grade.startedAt) {
-          return (
-            acc +
-            Math.floor(
-              (new Date(grade.finishedAt).getTime() -
-                new Date(grade.startedAt).getTime()) /
-                1000,
-            )
-          );
-        }
-        return acc;
-      }, 0) / examGrades.length,
-    ) || undefined;
+  const averageDuration = calculateAverageDuration(examGrades);
 
   const averageScore =
     assignmentGrades && assignmentGrades.length > 0
-      ? (() => {
-          const validGrades = assignmentGrades.filter(
-            (grade) => grade.assignmentGrade !== null,
-          );
-          return validGrades.length > 0
-            ? validGrades.reduce(
-                (acc, grade) => acc + grade.assignmentGrade!,
-                0,
-              ) / validGrades.length
-            : 0;
-        })()
-      : examGrades.reduce((acc, grade) => acc + (grade.score || 0), 0) /
-          examGrades.length || 0;
+      ? calculateAssignmentAverageScore(assignmentGrades)
+      : calculateExamAverageScore(examGrades);
 
   const medianScore = calculateMedian(
     assignmentGrades && assignmentGrades.length > 0
@@ -366,7 +341,7 @@ const ExamCard = ({
 
               {averageDuration && (
                 <Clock
-                  time={`${Math.floor(averageDuration / 60)}’${(averageDuration % 60).toString().padStart(2, '0')}’’`}
+                  time={`${Math.floor(averageDuration / 60)}'${(averageDuration % 60).toString().padStart(2, '0')}''`}
                   label={t('dashboard.teacher.courses.averageDuration')}
                   variant="blue"
                   showBackground
@@ -441,6 +416,57 @@ const calculateMedian = (values: (number | null)[]) => {
     : (validValues[mid - 1] + validValues[mid]) / 2;
 };
 
+const sanitizeFilename = (filename: string) => {
+  return filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+};
+
+const calculateAverageDuration = (
+  examGrades: MinimalCourseExamAttemptWithUsername[],
+) => {
+  const validDurations = examGrades
+    .filter((grade) => grade.finishedAt && grade.startedAt)
+    .map((grade) =>
+      Math.floor(
+        (new Date(grade.finishedAt!).getTime() -
+          new Date(grade.startedAt!).getTime()) /
+          1000,
+      ),
+    );
+
+  if (validDurations.length === 0) return undefined;
+
+  return Math.round(
+    validDurations.reduce((acc, duration) => acc + duration, 0) /
+      validDurations.length,
+  );
+};
+
+const calculateAssignmentAverageScore = (
+  assignmentGrades: MinimalAssignmentGrade[],
+) => {
+  const validGrades = assignmentGrades.filter(
+    (grade) => grade.assignmentGrade !== null,
+  );
+
+  if (validGrades.length === 0) return 0;
+
+  return (
+    validGrades.reduce((acc, grade) => acc + grade.assignmentGrade!, 0) /
+    validGrades.length
+  );
+};
+
+const calculateExamAverageScore = (
+  examGrades: MinimalCourseExamAttemptWithUsername[],
+) => {
+  if (examGrades.length === 0) return 0;
+
+  return (
+    examGrades.reduce((acc, grade) => acc + (grade.score || 0), 0) /
+    examGrades.length
+  );
+};
+
 const downloadAssignmentGrades = (
   assignmentGrades: MinimalAssignmentGrade[],
 ) => {
@@ -493,10 +519,10 @@ const downloadExamGrades = (
       }
 
       return {
-        username: grade.username,
-        score: grade.score,
-        realScore: realScore,
-        duration: duration,
+        username: grade.username!,
+        score: grade.score!,
+        realScore,
+        duration,
       };
     });
 
@@ -570,19 +596,26 @@ const downloadExamGrades = (
     );
 
     statisticsWorksheet['!cols'] = [
-      { wch: Math.max(maxQuestionIdWidth, 15) }, // Question ID
-      { wch: maxQuestionTextWidth }, // Question text
-      { wch: 20 }, // Question difficulty
-      { wch: 15 }, // Total answers
-      { wch: 17 }, // Correct answers (%)
+      { wch: Math.max(maxQuestionIdWidth, 15) },
+      { wch: maxQuestionTextWidth },
+      { wch: 20 },
+      { wch: 15 },
+      { wch: 17 },
     ];
   }
 
-  const sanitizedExamName = examName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  const sanitizedExamName = sanitizeFilename(examName);
   XLSX.writeFile(workbook, `${sanitizedExamName}_grades.xlsx`, {
     compression: true,
   });
 };
+
+interface ConsolidatedGradeRow {
+  username: string;
+  average_grade: number;
+  assignment_score?: number;
+  [key: `exam_${number}_score`]: number;
+}
 
 const downloadConsolidatedGrades = (
   courseGradesAndSummary: CourseWithSingleTrialExamsGradesAndSummary,
@@ -609,47 +642,53 @@ const downloadConsolidatedGrades = (
     }
   }
 
-  const rows = Array.from(allUsernames).map((username) => {
-    const row: any = { username };
+  const rows: ConsolidatedGradeRow[] = Array.from(allUsernames).map(
+    (username) => {
+      const row: ConsolidatedGradeRow = {
+        username,
+        average_grade: 0,
+      };
 
-    singleTrialExams.forEach((exam, index) => {
-      const examGrade = courseGradesAndSummary?.examsGrades?.find(
-        (grade) =>
-          grade.username === username && grade.chapterId === exam.chapterId,
-      );
-      row[`exam_${index + 1}_score`] = examGrade?.score ?? 0;
-    });
+      singleTrialExams.forEach((exam, index) => {
+        const examGrade = courseGradesAndSummary?.examsGrades?.find(
+          (grade) =>
+            grade.username === username && grade.chapterId === exam.chapterId,
+        );
+        const examKey = `exam_${index + 1}_score` as const;
+        row[examKey] = examGrade?.score ?? 0;
+      });
 
-    if (hasAssignment) {
-      const assignmentGrade = courseGradesAndSummary?.assignmentGrades?.find(
-        (grade) => grade.username === username,
-      );
-      row.assignment_score = assignmentGrade?.assignmentGrade ?? 0;
-    }
+      if (hasAssignment) {
+        const assignmentGrade = courseGradesAndSummary?.assignmentGrades?.find(
+          (grade) => grade.username === username,
+        );
+        row.assignment_score = assignmentGrade?.assignmentGrade ?? 0;
+      }
 
-    let totalWeightedScore = 0;
-    let totalWeight = 0;
+      let totalWeightedScore = 0;
+      let totalWeight = 0;
 
-    singleTrialExams.forEach((exam, index) => {
-      const examScore = row[`exam_${index + 1}_score`];
-      const examWeight = exam.rateWeight || 0;
-      totalWeightedScore += (examScore * examWeight) / 100;
-      totalWeight += examWeight;
-    });
+      singleTrialExams.forEach((exam, index) => {
+        const examKey = `exam_${index + 1}_score` as const;
+        const examScore = row[examKey];
+        const examWeight = exam.rateWeight || 0;
+        totalWeightedScore += (examScore * examWeight) / 100;
+        totalWeight += examWeight;
+      });
 
-    if (hasAssignment) {
-      const assignmentScore = row.assignment_score;
-      totalWeightedScore += (assignmentScore * assignmentWeight) / 100;
-      totalWeight += assignmentWeight;
-    }
+      if (hasAssignment && row.assignment_score !== undefined) {
+        totalWeightedScore += (row.assignment_score * assignmentWeight) / 100;
+        totalWeight += assignmentWeight;
+      }
 
-    row.average_grade =
-      totalWeight > 0
-        ? Math.round((totalWeightedScore / totalWeight) * 100)
-        : 0;
+      row.average_grade =
+        totalWeight > 0
+          ? Math.round((totalWeightedScore / totalWeight) * 100)
+          : 0;
 
-    return row;
-  });
+      return row;
+    },
+  );
 
   rows.sort((a, b) => b.average_grade - a.average_grade);
 
@@ -658,9 +697,9 @@ const downloadConsolidatedGrades = (
   XLSX.utils.book_append_sheet(workbook, worksheet, 'Consolidated grades');
 
   const headers = ['Username'];
-  singleTrialExams.forEach((exam, _) => {
+  for (const exam of singleTrialExams) {
     headers.push(`${exam.title} (%)`);
-  });
+  }
   if (hasAssignment) {
     headers.push('Assignment (%)');
   }
@@ -683,9 +722,7 @@ const downloadConsolidatedGrades = (
 
   worksheet['!cols'] = cols;
 
-  const sanitizedCourseName = courseName
-    .replace(/[^a-z0-9]/gi, '_')
-    .toLowerCase();
+  const sanitizedCourseName = sanitizeFilename(courseName);
   XLSX.writeFile(workbook, `${sanitizedCourseName}_consolidated_grades.xlsx`, {
     compression: true,
   });
