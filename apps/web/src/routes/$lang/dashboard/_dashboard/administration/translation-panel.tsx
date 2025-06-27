@@ -47,8 +47,10 @@ function DashboardAdministrationTranslationPanel() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Check if we're on a child route (like user details)
-  const isChildRoute = location.pathname.includes('/user/');
+  // Check if we're on a child route (like user details or course details)
+  const isChildRoute =
+    location.pathname.includes('/user/') ||
+    location.pathname.includes('/course/');
 
   // Get current tab from URL search params or default to 'requests'
   const currentTab = (location.search as any)?.tab || 'requests';

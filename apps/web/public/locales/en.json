@@ -531,7 +531,9 @@
         "status": {
           "assigned": "Assigned",
           "inProgress": "In Progress",
-          "completed": "Completed"
+          "completed": "Completed",
+          "todo": "To Do",
+          "underReview": "Under Review"
         },
         "messages": {
           "noPendingRequests": "No pending translation requests found.",
@@ -567,7 +569,8 @@
           "actions": {
             "view": "View",
             "assign": "Assign",
-            "reassign": "Reassign"
+            "reassign": "Reassign",
+            "backToContentManagement": "Back to content management"
           },
           "assignModal": {
             "title": "Assign Course to Contributor",
@@ -596,7 +599,28 @@
               "description": "Chapters and parts that have already been reviewed will keep their reviewed status and will not be reassigned."
             }
           }
-        }
+        },
+        "courseDetails": {
+          "courseInformation": "Course Information",
+          "courseIndex": "Course Index",
+          "courseName": "Course Name",
+          "language": "Language",
+          "translationStatus": "Translation Status",
+          "assignedTo": "Assigned To",
+          "progress": "Progress",
+          "chaptersCompleted": "chapters completed",
+          "chaptersAndProgress": "Chapters and Progress",
+          "noChapters": "No chapters found for this course",
+          "partTitle": "Part {{index}}: {{title}}",
+          "chapterIndex": "Chapter",
+          "chapterTitle": "Title",
+          "status": "Status",
+          "actions": "Actions",
+          "currentContributor": "Current contributor",
+          "noContributor": "No contributor assigned",
+          "errorLoadingDetails": "Error loading course details"
+        },
+        "courseNotFound": "Course not found"
       },
       "coupons": {
         "cancel": "Cancel",

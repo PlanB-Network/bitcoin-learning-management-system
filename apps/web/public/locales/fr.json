@@ -632,7 +632,9 @@
         "status": {
           "assigned": "Assigné",
           "inProgress": "En cours",
-          "completed": "Terminé"
+          "completed": "Terminé",
+          "todo": "À Faire",
+          "underReview": "En Révision"
         },
         "messages": {
           "noPendingRequests": "Aucune demande de traduction en attente trouvée.",
@@ -666,7 +668,8 @@
           "actions": {
             "view": "Voir",
             "assign": "Assigner",
-            "reassign": "Réassigner"
+            "reassign": "Réassigner",
+            "backToContentManagement": "Retour à la gestion de contenu"
           },
           "assignModal": {
             "title": "Assigner le Cours à un Contributeur",
@@ -695,7 +698,28 @@
               "description": "Les chapitres et parties qui ont déjà été révisés conserveront leur statut de révision et ne seront pas réassignés."
             }
           }
-        }
+        },
+        "courseDetails": {
+          "courseInformation": "Informations du Cours",
+          "courseIndex": "Index du Cours",
+          "courseName": "Nom du Cours",
+          "language": "Langue",
+          "translationStatus": "Statut de Traduction",
+          "assignedTo": "Assigné à",
+          "progress": "Progression",
+          "chaptersCompleted": "chapitres terminés",
+          "chaptersAndProgress": "Chapitres et Progression",
+          "noChapters": "Aucun chapitre trouvé pour ce cours",
+          "partTitle": "Partie {{index}} : {{title}}",
+          "chapterIndex": "Chapitre",
+          "chapterTitle": "Titre",
+          "status": "Statut",
+          "actions": "Actions",
+          "currentContributor": "Contributeur actuel",
+          "noContributor": "Aucun contributeur assigné",
+          "errorLoadingDetails": "Erreur lors du chargement des détails du cours"
+        },
+        "courseNotFound": "Cours non trouvé"
       }
     },
     "backToDashboard": "Retour au tableau de bord",

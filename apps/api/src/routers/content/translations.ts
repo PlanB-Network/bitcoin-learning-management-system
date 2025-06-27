@@ -910,6 +910,213 @@ const getAvailableLanguagesProcedure = publicProcedure
     }
   });
 
+const getCourseLanguagesProcedure = adminProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output(z.any()) // Using z.any() temporarily
+  .query(async ({ ctx, input }) => {
+    try {
+      // Get course basic information first
+      const courseResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          c.id AS "courseId",
+          c.index AS "courseIndex",
+          cl.name AS "courseName"
+        FROM content.courses c
+        LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
+        WHERE c.id = ${input.courseId}
+        LIMIT 1
+      `);
+
+      if (courseResult.length === 0) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'Course not found',
+        });
+      }
+
+      // Get languages from course_translations table for this specific course
+      const languagesResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          ct.language AS "languageCode",
+          l.name AS "languageName",
+          ct.status AS "translationStatus",
+          ta.assignee_id AS "assigneeId",
+          ua.username AS "assigneeUsername",
+          ua.display_name AS "assigneeDisplayName"
+        FROM content.course_translations ct
+        LEFT JOIN users.languages l ON ct.language = l.code
+        LEFT JOIN users.translation_assignments ta ON (
+          ta.course_id = ct.course_id
+          AND ta.language = ct.language
+          AND ta.status IN ('assigned', 'in_progress', 'completed')
+        )
+        LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
+        WHERE ct.course_id = ${input.courseId}
+        ORDER BY l.name
+      `);
+
+      const courseInfo = courseResult[0];
+      const languages = languagesResult.map((row) => ({
+        code: row.languageCode,
+        name: row.languageName,
+        translationStatus: row.translationStatus,
+        assigneeId: row.assigneeId,
+        assigneeUsername: row.assigneeUsername,
+        assigneeDisplayName: row.assigneeDisplayName,
+      }));
+
+      return {
+        ...courseInfo,
+        languages,
+      };
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      console.error('Error fetching course languages:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch course languages',
+      });
+    }
+  });
+
+const getCourseTranslationDetailsProcedure = adminProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      language: z.string(),
+    }),
+  )
+  .output(z.any()) // Using z.any() temporarily
+  .query(async ({ ctx, input }) => {
+    try {
+      // Get course basic information
+      const courseResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          c.id,
+          c.index AS "courseIndex",
+          cl.name AS "courseName",
+          ct.status AS "translationStatus",
+          ct.created_at AS "translationCreatedAt",
+          ct.updated_at AS "translationUpdatedAt",
+          ta.assignee_id AS "assigneeId",
+          ua.username AS "assigneeUsername",
+          ua.display_name AS "assigneeDisplayName",
+          ta.assigned_at AS "assignedAt",
+          ta.status AS "assignmentStatus"
+        FROM content.courses c
+        LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
+        LEFT JOIN content.course_translations ct ON (
+          ct.course_id = c.id
+          AND ct.language = LOWER(${input.language})
+        )
+        LEFT JOIN users.translation_assignments ta ON (
+          ta.course_id = c.id
+          AND ta.language = LOWER(${input.language})
+          AND ta.status IN ('assigned', 'in_progress', 'completed')
+        )
+        LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
+        WHERE c.id = ${input.courseId}
+        LIMIT 1
+      `);
+
+      if (courseResult.length === 0) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'Course not found',
+        });
+      }
+
+      const course = courseResult[0];
+
+      // TODO: Get parts and chapters with their translation status
+      // Currently using mock status, should use proper translation progress table
+      const chaptersResult = await ctx.dependencies.postgres.exec(sql`
+        SELECT
+          cp.part_id AS "partId",
+          cp.part_index AS "partIndex",
+          cpl.title AS "partTitle",
+          cc.chapter_id AS "chapterId",
+          cc.chapter_index AS "chapterIndex",
+          ccl.title AS "chapterTitle",
+          COALESCE(ctc.status, 'todo') AS "status",
+          ctc.updated_at AS "updatedAt"
+        FROM content.course_parts cp
+        LEFT JOIN content.course_parts_localized cpl ON (
+          cp.part_id = cpl.part_id
+          AND cpl.language = 'en'
+        )
+        LEFT JOIN content.course_chapters cc ON cp.part_id = cc.part_id
+        LEFT JOIN content.course_chapters_localized ccl ON (
+          cc.chapter_id = ccl.chapter_id
+          AND ccl.language = 'en'
+        )
+        LEFT JOIN content.course_translation_chapters ctc ON (
+          ctc.course_id = ${input.courseId}
+          AND ctc.language = LOWER(${input.language})
+          AND ctc.part_id = cp.part_id
+          AND ctc.chapter_id = cc.chapter_id
+        )
+        WHERE cp.course_id = ${input.courseId}
+        ORDER BY cp.part_index, cc.chapter_index
+      `);
+
+      // Group chapters by parts
+      const partsMap = new Map();
+
+      for (const chapter of chaptersResult) {
+        if (!partsMap.has(chapter.partId)) {
+          partsMap.set(chapter.partId, {
+            partId: chapter.partId,
+            partIndex: chapter.partIndex,
+            partTitle: chapter.partTitle,
+            chapters: [],
+          });
+        }
+
+        partsMap.get(chapter.partId).chapters.push({
+          chapterId: chapter.chapterId,
+          chapterIndex: chapter.chapterIndex,
+          chapterTitle: chapter.chapterTitle,
+          status: chapter.status,
+          updatedAt: chapter.updatedAt,
+        });
+      }
+
+      const parts = Array.from(partsMap.values());
+
+      // TODO: Calculate overall progress from proper translation progress table
+      // For now, using mock progress calculation
+      const totalChapters = chaptersResult.length;
+      const completedChapters = chaptersResult.filter(
+        (chapter) =>
+          chapter.status === 'reviewed' || chapter.status === 'published',
+      ).length;
+      const progress =
+        totalChapters > 0
+          ? Math.round((completedChapters / totalChapters) * 100)
+          : 0;
+
+      return {
+        ...course,
+        parts,
+        progress,
+        totalChapters,
+        completedChapters,
+      };
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      console.error('Error fetching course translation details:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch course translation details',
+      });
+    }
+  });
+
 export const translationsRouter = createTRPCRouter({
   getAvailableCourseTranslations: getAvailableCourseTranslationsProcedure,
   getUserCourseTranslations: getUserCourseTranslationsProcedure,
@@ -939,4 +1146,6 @@ export const translationsRouter = createTRPCRouter({
   getUserDetails: getUserDetailsProcedure,
   assignLanguageToContributor: assignLanguageToContributorProcedure,
   getAvailableLanguages: getAvailableLanguagesProcedure,
+  getCourseDetails: getCourseTranslationDetailsProcedure,
+  getCourseLanguages: getCourseLanguagesProcedure,
 });

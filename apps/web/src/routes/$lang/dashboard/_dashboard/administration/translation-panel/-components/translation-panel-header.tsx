@@ -131,6 +131,9 @@ export const TranslationPanelHeader = ({
           {children}
         </Tabs>
       )}
+
+      {/* Content when tabs are disabled */}
+      {!showTabs && children}
     </div>
   );
 };
