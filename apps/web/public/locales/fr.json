@@ -662,6 +662,8 @@
             "actions": "Actions"
           },
           "status": {
+            "readyForReview": "Prêt pour révision",
+            "underReview": "En révision",
             "notAssigned": "Non assigné",
             "assigned": "Assigné"
           },

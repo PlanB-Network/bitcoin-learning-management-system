@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import type { UserTranslationDetailsServiceResponse } from '@blms/types';
 import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
 
 import { formatDate } from '#src/utils/date.ts';
@@ -18,31 +19,6 @@ import {
 import ArrowIcon from '#src/assets/icons/arrow_filled.svg';
 import ProfileIcon from '#src/assets/icons/groups.svg';
 
-interface UserDetails {
-  uid: string;
-  username: string;
-  displayName: string | null;
-  email: string;
-  startDate: string;
-  role: string;
-  assignments: Assignment[];
-  languages: string[];
-}
-
-interface Assignment {
-  id: string;
-  courseId: string;
-  language: string;
-  assignmentStatus: string;
-  translationStatus: string;
-  assignedAt: string;
-  completedAt: string | null;
-  courseIndex: string;
-  courseName: string;
-  progress: number;
-  translationUpdatedAt: string;
-}
-
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId',
 )({
@@ -54,7 +30,8 @@ function UserDetailsPage() {
   const navigate = useNavigate();
   const { userId } = Route.useParams();
 
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+  const [userDetails, setUserDetails] =
+    useState<UserTranslationDetailsServiceResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [languages, setLanguages] = useState<
@@ -66,7 +43,9 @@ function UserDetailsPage() {
     try {
       setLoading(true);
       setError(null);
-      const data = await trpcClient.content.getUserDetails.query({ userId });
+      const data = await trpcClient.user.translation.getUserDetails.query({
+        userId,
+      });
       setUserDetails(data);
     } catch (error) {
       console.error('Error fetching user details:', error);
@@ -79,7 +58,8 @@ function UserDetailsPage() {
   // Fetch languages data
   const fetchLanguages = async () => {
     try {
-      const data = await trpcClient.content.getAvailableLanguages.query();
+      const data =
+        await trpcClient.user.translation.getAvailableLanguages.query();
       setLanguages(data || []);
     } catch (error) {
       console.error('Error fetching languages:', error);
@@ -103,14 +83,6 @@ function UserDetailsPage() {
     navigate({
       to: '/$lang/dashboard/administration/translation-panel',
       search: { tab: 'users' },
-    });
-  };
-
-  const formatDateForTable = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
     });
   };
 

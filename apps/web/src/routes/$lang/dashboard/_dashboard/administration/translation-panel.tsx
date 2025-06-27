@@ -32,6 +32,7 @@ import {
 import { TranslationRequestsTable } from '../-components/translation-requests-table.js';
 import { ContributorAssignmentModal } from './translation-panel/-components/contributor-assignment-modal.tsx';
 
+import type { AdminUserManagement } from '@blms/types';
 // Import filter icon
 import FilterIcon from '#src/assets/icons/Filter.svg';
 
@@ -165,21 +166,12 @@ function DashboardAdministrationTranslationPanel() {
 }
 
 // User Management Tab Component
-interface UserManagementData {
-  uid: string;
-  username: string;
-  displayName: string | null;
-  email: string;
-  startDate: string;
-  assignedCourses: number;
-  languages: string[] | null;
-}
 
 const UserManagementTab = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-  const [users, setUsers] = useState<UserManagementData[]>([]);
+  const [users, setUsers] = useState<AdminUserManagement[]>([]);
   const [usersLoading, setUsersLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [languages, setLanguages] = useState<
@@ -190,7 +182,8 @@ const UserManagementTab = () => {
   const fetchUsers = async () => {
     try {
       setUsersLoading(true);
-      const data = await trpcClient.content.getAdminUserManagement.query();
+      const data =
+        await trpcClient.user.translation.getAdminUserManagement.query();
       setUsers(data || []);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -203,7 +196,8 @@ const UserManagementTab = () => {
   // Fetch languages data
   const fetchLanguages = async () => {
     try {
-      const data = await trpcClient.content.getAvailableLanguages.query();
+      const data =
+        await trpcClient.user.translation.getAvailableLanguages.query();
       setLanguages(data || []);
     } catch (error) {
       console.error('Error fetching languages:', error);
@@ -216,6 +210,14 @@ const UserManagementTab = () => {
     fetchLanguages();
   }, []);
 
+  // Function to get language names from the fetched languages data
+  const getLanguageNameFromData = (code: string) => {
+    if (!languages || languages.length === 0) {
+      return code;
+    }
+    return languages.find((lang) => lang.code === code)?.name || code;
+  };
+
   // Filter users based on search query
   const filteredUsers = useMemo(() => {
     if (!users || !searchQuery.trim()) {
@@ -223,36 +225,42 @@ const UserManagementTab = () => {
     }
 
     const query = searchQuery.toLowerCase().trim();
-    return users.filter((user: UserManagementData) => {
-      const languages = user.languages || [];
-      const languageNames = languages
+    return users.filter((user: AdminUserManagement) => {
+      const userLanguages = user.languages || [];
+      const languageNames = userLanguages
         .map((lang) => getLanguageNameFromData(lang).toLowerCase())
         .join(' ');
 
+      // Safe string matching with null checks
+      const usernameMatch =
+        user.username?.toLowerCase().includes(query) || false;
+      const displayNameMatch =
+        user.displayName?.toLowerCase().includes(query) || false;
+      const emailMatch = user.email?.toLowerCase().includes(query) || false;
+      const languageCodeMatch =
+        userLanguages.some((lang) => lang?.toLowerCase().includes(query)) ||
+        false;
+      const languageNameMatch = languageNames.includes(query);
+
       return (
-        user.username.toLowerCase().includes(query) ||
-        user.displayName?.toLowerCase().includes(query) ||
-        user.email.toLowerCase().includes(query) ||
-        languages.some((lang) => lang.toLowerCase().includes(query)) ||
-        languageNames.includes(query)
+        usernameMatch ||
+        displayNameMatch ||
+        emailMatch ||
+        languageCodeMatch ||
+        languageNameMatch
       );
     });
-  }, [users, searchQuery]);
+  }, [users, searchQuery, languages]);
 
-  const formatDateForTable = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+  const formatDateForTable = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
     });
   };
 
-  // Function to get language names from the fetched languages data
-  const getLanguageNameFromData = (code: string) => {
-    return languages.find((lang) => lang.code === code)?.name || code;
-  };
-
-  const formatLanguages = (languageCodes: string[] | null) => {
+  const formatLanguages = (languageCodes: string[]) => {
     if (!languageCodes || languageCodes.length === 0) {
       return t('words.none');
     }
@@ -383,7 +391,7 @@ const UserManagementTab = () => {
                   </TableCell>
                   <TableCell className="py-4">
                     <span className="text-sm text-gray-700">
-                      {formatLanguages(user.languages)}
+                      {formatLanguages(user.languages || [])}
                     </span>
                   </TableCell>
                   <TableCell className="py-4 text-center">
