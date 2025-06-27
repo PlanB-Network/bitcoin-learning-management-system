@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -25,6 +26,7 @@ type SortDirection = 'asc' | 'desc';
 
 export const ContentManagementTab = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [assignModalOpen, setAssignModalOpen] = useState(false);
   const [reassignModalOpen, setReassignModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState<any>(null);
@@ -376,8 +378,11 @@ export const ContentManagementTab = () => {
                         variant="outline"
                         size="s"
                         onClick={() => {
-                          // TODO: Implement view functionality
-                          console.log('View course:', course);
+                          navigate({
+                            to: '/$lang/dashboard/administration/translation-panel/course/$courseId',
+                            params: { courseId: course.courseId },
+                            search: { language: course.language },
+                          });
                         }}
                         className="text-xs"
                       >

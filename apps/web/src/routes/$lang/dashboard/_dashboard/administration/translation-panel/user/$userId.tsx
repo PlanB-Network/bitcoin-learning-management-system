@@ -448,11 +448,11 @@ function UserDetailsPage() {
                             size="s"
                             className="bg-orange-500 hover:bg-orange-600 text-white"
                             onClick={() => {
-                              // TODO: Navigate to assignment details
-                              console.log(
-                                'View details for assignment:',
-                                assignment.id,
-                              );
+                              navigate({
+                                to: '/$lang/dashboard/administration/translation-panel/course/$courseId',
+                                params: { courseId: assignment.courseId },
+                                search: { language: assignment.language },
+                              });
                             }}
                           >
                             {t(
