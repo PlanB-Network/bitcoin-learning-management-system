@@ -6,7 +6,6 @@ import type {
 import type { Dependencies } from '../../dependencies.js';
 import {
   getAdminContentManagementCoursesQuery,
-  getAvailableContributorsQuery,
   getAvailableCourseTranslationsQuery,
   getCourseTranslationStatusQuery,
   getCoursesReadyForReviewQuery,
@@ -109,16 +108,9 @@ export const createGetTranslationProgress = ({ postgres }: Dependencies) => {
 export const createGetAdminContentManagementCourses = ({
   postgres,
 }: Dependencies) => {
-  return async (language: string) => {
-    return postgres.exec(getAdminContentManagementCoursesQuery(language));
-  };
-};
-
-/**
- * Service to get available contributors for assignment
- */
-export const createGetAvailableContributors = ({ postgres }: Dependencies) => {
-  return async () => {
-    return postgres.exec(getAvailableContributorsQuery());
+  return async (language?: string, topic?: string) => {
+    return postgres.exec(
+      getAdminContentManagementCoursesQuery(language, topic),
+    );
   };
 };

@@ -193,15 +193,36 @@ export const getTranslationProgressQuery = (language: string) => {
  * Query to get all courses for admin content management
  * This includes both unassigned courses ready for review and assigned courses
  */
-export const getAdminContentManagementCoursesQuery = (language: string) => {
+export const getAdminContentManagementCoursesQuery = (
+  language?: string,
+  topic?: string,
+) => {
+  let whereClause = sql`
+    WHERE ct.status IN ('ready_for_review', 'under_review')
+      AND c.is_archived = false
+  `;
+
+  if (language) {
+    whereClause = sql`${whereClause} AND ct.language = LOWER(${language})`;
+  }
+
+  if (topic && topic !== 'all') {
+    whereClause = sql`${whereClause} AND c.topic = ${topic}`;
+  }
+
   return sql`
     SELECT
       ct.course_id AS "courseId",
       ct.language,
       ct.status,
+      CASE
+        WHEN ta.status IS NOT NULL THEN 'assigned'
+        ELSE 'not_assigned'
+      END AS "isAssigned",
       ct.created_at AS "createdAt",
       ct.updated_at AS "updatedAt",
       c.index AS "courseIndex",
+      c.topic AS "courseTopic",
       cl.name AS "courseName",
       ta.id AS "assignmentId",
       ta.assignee_id AS "assigneeId",
@@ -214,8 +235,8 @@ export const getAdminContentManagementCoursesQuery = (language: string) => {
       -- Calculate progress based on translation chapters status
       COALESCE(
         ROUND(
-          (COUNT(CASE WHEN ctc.status IN ('reviewed', 'published') THEN 1 END)::float /
-           NULLIF(COUNT(ctc.chapter_id), 0)) * 100, 0
+          (COUNT(CASE WHEN ctc.status IN ('reviewed', 'published') THEN 1 END)::numeric /
+           NULLIF(COUNT(ctc.chapter_id), 0)) * 100
         ), 0
       ) AS "progress"
     FROM content.course_translations ct
@@ -224,19 +245,16 @@ export const getAdminContentManagementCoursesQuery = (language: string) => {
     LEFT JOIN users.translation_assignments ta ON (
       ta.course_id = ct.course_id
       AND ta.language = ct.language
-      AND ta.status IN ('assigned', 'in_progress', 'completed')
     )
-        LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
+    LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
     LEFT JOIN content.course_translation_chapters ctc ON (
       ctc.course_id = ct.course_id
       AND ctc.language = ct.language
     )
-    WHERE ct.language = LOWER(${language})
-      AND ct.status IN ('ready_for_review', 'under_review')
-      AND c.is_archived = false
+    ${whereClause}
     GROUP BY
       ct.course_id, ct.language, ct.status, ct.created_at, ct.updated_at,
-      c.index, cl.name, ta.id, ta.assignee_id, ta.assigner_id, ta.status,
+      c.index, c.topic, cl.name, ta.id, ta.assignee_id, ta.assigner_id, ta.status,
       ta.assigned_at, ta.completed_at, ua.username, ua.display_name
     ORDER BY
       CASE
@@ -244,27 +262,5 @@ export const getAdminContentManagementCoursesQuery = (language: string) => {
         ELSE 1
       END,
       ct.updated_at DESC
-  `;
-};
-
-/**
- * Query to get available contributors for assignment
- * Returns users with contributor role and translation permissions
- */
-export const getAvailableContributorsQuery = () => {
-  return sql`
-    SELECT
-      ua.uid,
-      ua.username,
-      ua.display_name AS "displayName",
-      ua.email
-    FROM users.accounts ua
-    WHERE ua.role IN ('contributor', 'community')
-      AND (
-        ua.permissions IS NULL
-        OR ua.permissions @> '["contribute:reviewer"]'::jsonb
-        OR ua.permissions @> '["contribute:assign"]'::jsonb
-      )
-    ORDER BY ua.display_name, ua.username
   `;
 };
