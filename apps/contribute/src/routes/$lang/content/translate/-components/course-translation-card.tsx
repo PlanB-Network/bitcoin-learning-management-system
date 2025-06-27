@@ -46,6 +46,7 @@ export const CourseTranslationCard = ({
   course,
   targetLanguage: propTargetLanguage,
   userContributions,
+  refetchUserContributions,
 }: CourseTranslationCardProps): JSX.Element => {
   const { t, i18n } = useTranslation();
   const { session } = useContext(AppContext);
@@ -78,10 +79,12 @@ export const CourseTranslationCard = ({
       try {
         setIsCheckingAssignment(true);
         const data =
-          await trpcClient.content.checkUserTranslationAssignment.query({
-            courseId: course.id,
-            language: targetLanguage,
-          });
+          await trpcClient.user.translation.checkUserTranslationAssignment.query(
+            {
+              courseId: course.id,
+              language: targetLanguage,
+            },
+          );
         setExistingAssignment(data);
       } catch (error) {
         console.error('Failed to check existing assignment:', error);
@@ -157,7 +160,7 @@ export const CourseTranslationCard = ({
 
     setIsRequesting(true);
     try {
-      await trpcClient.content.requestTranslationAssignment.mutate({
+      await trpcClient.user.translation.requestTranslationAssignment.mutate({
         courseId: course.id,
         language: targetLanguage,
       });
