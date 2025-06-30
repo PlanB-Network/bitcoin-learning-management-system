@@ -71,7 +71,21 @@
     "dashboardUnlocked": "学生ダッシュボードのロックが解除されました！",
     "didYouKnow": "ご存知でしたか？",
     "passwordChangedSuccess": "パスワードの変更に成功しました",
-    "trackProgress": "アカウントを作成するか、ログインして進捗状況を確認してください"
+    "trackProgress": "アカウントを作成するか、ログインして進捗状況を確認してください",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -247,7 +261,7 @@
       "congratulations": "おめでとうございます。このコースはこれで完了です！",
       "dontWorry": "このテストは学習の強化に役立ちます。 もし合格できなくても、24時間後に再トライすることができます。",
       "examAndDiploma": "試験と修了証書",
-      "examDetails": "試験は40問の多肢選択式で、各問題の正解は1つです。 タイマーが作動している限り、提出前にいつでも解答を変更することができます。",
+      "examDetails": "試験は40問の多肢選択式で、各問題の正解は1つです。 タイ��ーが作動している限り、提出前にいつでも解答を変更することができます。",
       "explanations": "説明：",
       "failed": "不合格",
       "finalExam": "最終試験",
@@ -310,7 +324,25 @@
       "timeStamping": "タイムスタンプ中",
       "singleAttempt": "1度限りの試験",
       "singleAttemptAvailability": "この試験のオンライン受験日：{{date}}",
-      "singleAttemptPrecaution": "開始する前に、インターネット接続が安定していることを確認してください。 この試験は1回限りですので、接続が切断された場合、再試験はできません。"
+      "singleAttemptPrecaution": "開始する前に、インターネット接続が安定していることを確認してください。 この試験は1回限りですので、接続が切断された場合、再試験はできません。",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "viewExam": ""
     },
     "conclusion": {
       "congratulationsEnd": "おめでとうございます。このコースの最後まで完了しました",
@@ -415,10 +447,20 @@
         "generalOption": "Plan ₿ Network に関する一般情報とニュース",
         "none": "なし",
         "platformTitle": "このプラットフォームでどのような通知を受け取りたいですか？",
-        "title": "通知設定"
+        "title": "通知設定",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "settingsSaved": ""
       },
       "securitySettings": "セキュリティ設定",
-      "settings": "設定"
+      "settings": "設定",
+      "emailChangeRateLimitError": ""
     },
     "teacher": {
       "reviews": {
@@ -484,7 +526,36 @@
         },
         "selectCourse": "コースを選択",
         "allStudents": "全学生",
-        "announcements": "アナウンス"
+        "announcements": "アナウンス",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": "",
+          "alertTitle": ""
+        },
+        "assignmentStudents": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "assignment": ""
       },
       "menu": "講師用メニュー",
       "tutorials": {
@@ -520,7 +591,51 @@
       "assignmentInformation": "課題情報",
       "courseCalendar": "コースカレンダー",
       "exams": "試験",
-      "generalInformation": "一般情報"
+      "generalInformation": "一般情報",
+      "assignmentCompletedTitle": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "summerSchool": "",
+      "confirmList": "",
+      "assignmentCompletedDescription": "",
+      "assignmentTitle": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -813,7 +928,15 @@
         "productCourse": "コース",
         "productEvent": "イベント",
         "selectCourse": "コースを選択",
-        "selectEvent": "イベントを選択"
+        "selectEvent": "イベントを選択",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "割引コード"
     },
@@ -827,7 +950,9 @@
       },
       "pickADate": "日付を選ぶ",
       "publicationDate": "発行日"
-    }
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "main": {
@@ -882,7 +1007,13 @@
       "description_physical": "会場の詳細をご確認ください。\nご予約が確認されましたら、当日ご提示いただくチケットを発行いたします。 このチケットにより、ライブストリーミングおよびリプレイ動画（視聴可能な場合）へのアクセスが可能になります。",
       "access_online_successful": "イベントが始まったら、プラットフォームにログインし、イベントページのライブストリーミングにアクセスしてください。",
       "access_physical_successful": "チケットはこちらからダウンロードするか、あとでダッシュボードからダウンロードしてください。",
-      "description_online": "開催日時をご確認ください。\n時間になりましたら、プラットフォームにログインし、イベントページからライブストリーミングにアクセスしてください。"
+      "description_online": "開催日時をご確認ください。\n時間になりましたら、プラットフォームにログインし、イベントページからライブストリーミングにアクセスしてください。",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "このイベントにアクセスするにはログインが必要です。",
@@ -1131,7 +1262,42 @@
     "backTutorials": "すべてのチュートリアルに戻る",
     "hasNotBeenProofread": "このチュートリアルはまだ校正されていません",
     "hasBeenProofreadBy": "このチュートリアルの校正者：",
-    "writtenBy": "このチュートリアルの作者："
+    "writtenBy": "このチュートリアルの作者：",
+    "subCategories": {
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    }
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1298,7 +1464,20 @@
     "username": "ユーザー名",
     "viewMore": "もっと見る",
     "yes": "はい",
-    "save": "保存"
+    "save": "保存",
+    "password": "",
+    "company": "",
+    "mode": "",
+    "calendar": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "notApplicable": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "conferences": {
     "details": {
@@ -1327,7 +1506,9 @@
     "total": "合計",
     "haveReductionCode": "割引コードをお持ちですか？",
     "payWithBitcoin": "ビットコインで支払う",
-    "payByCard": "クレジットカードで支払う"
+    "payByCard": "クレジットカードで支払う",
+    "taxesMayApply": "",
+    "insertReductionCode": ""
   },
   "bCert": {
     "bCertDescription": "₿-CERT は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 ₿-CERT 認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
@@ -1398,7 +1579,8 @@
       "errorMessageNotFound": "記事は見つかりませんでした。",
       "blogSidebarTitle": "過去の{{category}}記事",
       "blogListButtonText": "記事を読む",
-      "filterText": "トピックでフィルタ ："
+      "filterText": "トピックでフィルタ ：",
+      "blogSidebarTitleForAll": ""
     },
     "title": "パブリックコミュニケーション",
     "blogPost": "ブログとニュース",
@@ -1491,12 +1673,59 @@
     "description1": "Plan ₿ ラボは、学生が定期的に実践的でインタラクティブな授業を受けられるようにデザインされた学習グループです。 この勉強会を通して、学生と教授はディスカッションを行い、最新の研究について議論し、現実世界の課題を解決し、理論的な概念を応用します。",
     "description2": "あなたの研究分野に合ったラボに参加し、学習経験を高めましょう！",
     "planBLabs": "Plan ₿ ラボ",
-    "title": "継続的な学習のための実践的でインタラクティブな授業"
+    "title": "継続的な学習のための実践的でインタラクティブな授業",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    }
   },
   "accessType": {
     "hybrid": "直接参加とオンライン",
     "physical": "直接参加",
     "replay": "リプレイ",
     "online": "オンライン"
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "notifications": {
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "daysAgo": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "notification": {
+    "types": {
+      "celebration": "",
+      "general": "",
+      "warning": "",
+      "assignment": "",
+      "calendar": ""
+    }
   }
 }
