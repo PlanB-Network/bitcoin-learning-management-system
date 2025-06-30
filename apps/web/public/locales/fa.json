@@ -71,7 +71,21 @@
     "dashboardUnlocked": "داشبورد دانش آموز شما باز شده است!",
     "didYouKnow": "آیا می دانستید؟",
     "passwordChangedSuccess": "رمز عبور با موفقیت تغییر یافت",
-    "trackProgress": "یک حساب کاربری ایجاد کنید یا وارد حساب خود شوید تا پیشرفت خود را پیگیری کنید"
+    "trackProgress": "یک حساب کاربری ایجاد کنید یا وارد حساب خود شوید تا پیشرفت خود را پیگیری کنید",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "bCertDescription": "B-CERT یک امتحان شناخته شده بین المللی می‌باشدکه تسلط شما بر بیت کوین و موضوعات مربوط به آن را ارزیابی می‌کند. این گواهینامه به شما این امکان را می‌دهد تا مهارت‌ها و دانش خود را در صنعت بیت کوین اثبات کنید، همچنین امکان دسترسی به بهترین شرکت‌ها و موقعیت‌های شغلی عالی را برای شما فراهم می‌کند.",
@@ -349,7 +363,28 @@
       "skipGoConclusion": "از امتحان صرف نظر کنید، به قسمت نتیجه بروید",
       "takeExam": "در امتحان شرکت کنید",
       "timeStampedNoDot": "مهر-زمانی",
-      "timeStamping": "مهر-زمانی"
+      "timeStamping": "مهر-زمانی",
+      "viewExam": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "nbMinutes": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "finalScore": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "readyToTest": "",
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": ""
     },
     "conclusion": {
       "unlockFeatures2": "لطفا توجه داشته باشید که ما هیچ داده شخصی را جمع آوری نمی‌کنیم و از کوکی‌ها استفاده نمی‌کنیم.",
@@ -386,7 +421,30 @@
       "profileInformation": "اطلاعات پروفایل",
       "profilePicture": "تصویر پروفایل",
       "security": "امنیت",
-      "username": "نام کاربری"
+      "username": "نام کاربری",
+      "settings": "",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": ""
     },
     "myCourses": {
       "inprogress": "در حال پیشروی",
@@ -463,10 +521,39 @@
           "groupLabel": "گروهی از دانشجویان را که می‌خواهید مخاطب قرار دهید برگزینید",
           "title": "آگهی تازه‌ای بنویسید",
           "typeLabel": "این چه‌نوعی از آگهی است؟",
-          "typePlaceholder": "یک نوع را برگزینید"
+          "typePlaceholder": "یک نوع را برگزینید",
+          "dateRequired": "",
+          "editAnnouncement": ""
         },
         "announcements": "آگهی‌ها",
-        "writeAnnouncement": "یک آگهی بنویسید"
+        "writeAnnouncement": "یک آگهی بنویسید",
+        "assignmentGrade": {
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "assignment": "",
+        "allStudents": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": ""
       },
       "menu": "منوی آموزگار",
       "profile": {
@@ -532,7 +619,11 @@
     },
     "calendar": {
       "calendar": "تقویم",
-      "personalCalendar": "تقویم شخصی"
+      "personalCalendar": "تقویم شخصی",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "course": {
       "checkDetailsCompleted": "در اینجا می‌توانید تمام جزئیات مربوط به دوره‌ای که تکمیل کرده‌اید را بررسی کنید.",
@@ -545,7 +636,60 @@
       "tweetText": "مفتخرم که دوره {{courseIndex}} را در @planb_network تکمیل کرده‌ام و با کسب نمره {{score}} از 100 در امتحان نهایی، گواهینامه خود را دریافت کرده‌ام! {{emoji}}\n\n{{certificateUrl}}",
       "conclusionHeadline": "این قسمت خلاصه‌ای است از آنچه تا کنون یاد گرفته‌اید. اگر برخی از سر فصل‌ها از دست رفته‌اند یا به درستی تثبیت نشده‌اند، حالا زمان آن است که این کار را انجام دهید، یا با برگشت به یادگیری، یا با فشار دادن دکمه تکمیل.",
       "submitReviewInfo": "برای دسترسی به این ویژگی باید یک بازخورد ارسال کنید.",
-      "coordinator": "هماهنگ‌کننده‌ی دوره"
+      "coordinator": "هماهنگ‌کننده‌ی دوره",
+      "summerSchool": "",
+      "announcement": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "exams": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "confirmList": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "readAssignment": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": ""
     },
     "courses": "دوره‌ها",
     "logout": "خروج از حساب کاربری",
@@ -826,12 +970,31 @@
         "generateDiscountCode": "یک کد تخفیف ایجاد کن",
         "generateNew": "کد تازه ایجاد کن",
         "productCourse": "دوره",
-        "productEvent": "رویداد"
+        "productEvent": "رویداد",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "کدهای تخفیف"
     },
     "backToDashboard": "بازگشت به داشبورد",
-    "studentDashboard": "داشبورد دانشجو"
+    "studentDashboard": "داشبورد دانشجو",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "home": {
     "patreonSection": {
@@ -1196,7 +1359,18 @@
     "student": "دانشجو",
     "submit": "ارسال",
     "calendar": "گاه‌شمار",
-    "mode": "حالت"
+    "mode": "حالت",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "notApplicable": "",
+    "password": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "events": {
     "missed": {
@@ -1381,7 +1555,8 @@
     "haveReductionCode": "کد تخفیف دارید؟",
     "payByCard": "پرداخت با کارت",
     "payWithBitcoin": "پرداخت با بیت کوین",
-    "insertReductionCode": "کد تخفیف خود را وارد کنید"
+    "insertReductionCode": "کد تخفیف خود را وارد کنید",
+    "taxesMayApply": ""
   },
   "podcasts": {
     "pageTitle": "پادکست‌های بیت‌کوین"
@@ -1512,5 +1687,47 @@
     "physical": "حضوری",
     "replay": "بازپخش",
     "hybrid": "حضوری و آنلاین"
+  },
+  "notifications": {
+    "daysAgo": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
