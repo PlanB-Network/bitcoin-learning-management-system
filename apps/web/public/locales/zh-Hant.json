@@ -71,7 +71,21 @@
     "trackProgress": "建立帳號或登入以追蹤您的進度",
     "dashboardUnlocked": "您的學員儀表板已解鎖！",
     "didYouKnow": "你知道嗎？",
-    "passwordChangedSuccess": "密碼更改成功"
+    "passwordChangedSuccess": "密碼更改成功",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "bCertDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。該證書能夠證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
@@ -178,7 +192,11 @@
       "teacherLed": "由教授領導的",
       "otherCourses": "其他課程",
       "otherCoursesInterest": "您可能會感興趣的其他課程",
-      "thanksTipping": "您可以透過給予小費來感謝教授。"
+      "thanksTipping": "您可以透過給予小費來感謝教授。",
+      "associatedProfessors": "",
+      "coordinatedBy": "",
+      "attendInPersonWarning": "",
+      "learning": ""
     },
     "explorer": {
       "buildPath": "打造屬於你自己的探索之路",
@@ -189,7 +207,8 @@
       "seeCourse": "查看課程",
       "planbSchoolHeadline": "Plan ₿ School，由 Giacomo Zucco 主導，提供為期三個月的密集型教育課程，目標在彌合學習與現實世界應用之間的差距。除了傳統課程外，學生還會參與由公司主導的實踐項目以及專為頂尖表現者設計的一流訓練營。經過兩輪競爭激烈的選拔，只有最優秀的人才能晉級，確保最終的優秀學生能夠充分準備，開啟他們在比特幣產業的職業生涯。",
       "comingSoon": "即將來臨",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "goal": ""
     },
     "payment": {
       "downloadCurriculum": "下載課程表",
@@ -211,7 +230,8 @@
       "teacher": "老師",
       "teachers": "老師",
       "time": "時間",
-      "checkoutError": "在結帳過程中發生錯誤。\n請再試一次。"
+      "checkoutError": "在結帳過程中發生錯誤。\n請再試一次。",
+      "courseType": ""
     },
     "review": {
       "commentAdmin": "給管理團隊的留言（私人）",
@@ -342,7 +362,28 @@
       "courseNotFound": "找不到課程",
       "dontWorryRetake": "別擔心，你可以在24小時後重新考試。",
       "examCertificateCompletionText": "Plan ₿ Network 很高興恭喜 {{username}} 獲得 “{{courseName}}” 的課程證書。",
-      "certificatePageOtherCourses": "其他相關課程"
+      "certificatePageOtherCourses": "其他相關課程",
+      "viewExam": "",
+      "nextChapter": "",
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": ""
     },
     "conclusion": {
       "unlockFeatures2": "請注意，我們不會收集任何個人資料，也不使用 cookies。",
@@ -354,6 +395,11 @@
       "stepsToComplete": "在繼續您的學習旅程之前，請按照以下步驟在儀表板中標記此課程為已完成！",
       "takeFinalExam": "現在您已完成所有章節，是時候進行最終考試來測試您的知識了。",
       "unlockFeatures1": "為了解鎖所有功能並追蹤您的進度，您需要擁有一個帳號。"
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -398,7 +444,30 @@
       "profileInformation": "個人資料",
       "profilePicture": "個人照片",
       "security": "安全",
-      "username": "使用者名稱"
+      "username": "使用者名稱",
+      "notificationSettings": {
+        "none": "",
+        "emailPreferencesDescription": "",
+        "platformTitle": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "teacher": {
       "courses": {
@@ -416,7 +485,53 @@
         "objectives": "目標",
         "proposeNewCourse": "提出新課程",
         "reviewInfos": "在此您可以管理並檢視您所有您參與課程的相關資訊。",
-        "reviews": "評論"
+        "reviews": "評論",
+        "allStudents": "",
+        "assignment": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "profile": {
         "noShortBio": "此帳戶尚未連結簡短個人介紹，您可以隨時在 GitHub 上新增。",
@@ -458,7 +573,11 @@
     "account": "帳戶",
     "calendar": {
       "calendar": "日曆",
-      "personalCalendar": "個人日曆"
+      "personalCalendar": "個人日曆",
+      "eventType": {
+        "event": "",
+        "class": ""
+      }
     },
     "courses": "課程",
     "logout": "登出",
@@ -503,7 +622,61 @@
       "shareOnSocials": "在社群媒體上分享：",
       "tweetText": "很高興您完成了 @planb_network 的 {{courseIndex}} 課程，並且在期末考中獲得了 {{score}}/100 的成績，順利取得我的文憑！{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "這是您所學習內容的摘要。如果有些章節未學習或未正確完成，您可以現在進行補充，也可以回頭學習或直接按下完成按鈕。",
-      "submitReviewInfo": "您必須提交評論才能使用此功能。"
+      "submitReviewInfo": "您必須提交評論才能使用此功能。",
+      "submitBefore": "",
+      "assignmentTitle": "",
+      "assignmentDescription": "",
+      "confirmList": "",
+      "exams": "",
+      "leastPreferred": "",
+      "summerSchool": "",
+      "assignment": "",
+      "announcement": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "assignmentInformation": "",
+      "conclusionNotReleased": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "coordinator": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": ""
     },
     "credentials": {
       "bCert": "比特幣 ₿ 證書",
@@ -554,7 +727,79 @@
         "resultsRemaining": "剩餘 {{results}} 個結果",
         "seeMore": "查看更多",
         "viewCV": "查看履歷表"
-      }
+      },
+      "coupons": {
+        "tableHead": {
+          "value": "",
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": ""
+        },
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": ""
+      },
+      "coursesIndexes": "",
+      "deleteRole": "",
+      "discountCodes": "",
+      "editRole": "",
+      "accessGranted": "",
+      "hasAccessTo": "",
+      "selectRole": ""
     },
     "studentDashboard": "學員儀表板",
     "backToDashboard": "返回儀表板",
@@ -733,8 +978,21 @@
       "maxRoles": "您最多可以選擇3個職位名稱。",
       "motivation": "動機",
       "motivationLetter": "動機信",
-      "motivationLetterPlaceholder": "你的動機是什麼？"
-    }
+      "motivationLetterPlaceholder": "你的動機是什麼？",
+      "applicationComplete": "",
+      "applicationIncomplete": ""
+    },
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "glossary": {
     "filterBar": "在這裡找到你需要的詞彙",
@@ -834,7 +1092,8 @@
     "businessDescription": "展示比特幣在商業中的應用。",
     "moviesDescription": "探索引人入勝的故事和比特幣演變及影響的深入分析",
     "projectsDescription": "了解那些致力於改善比特幣並推動其普及的公司和專案",
-    "lecturesDescription": "重新觀看比特幣專家的講座錄影"
+    "lecturesDescription": "重新觀看比特幣專家的講座錄影",
+    "planBLabsDescription": ""
   },
   "events": {
     "card": {
@@ -889,13 +1148,21 @@
       "access_physical_successful": "您可以在這裡下載您的票券，或者稍後在您的儀表板中下載。",
       "access_online_successful": "活動開始時，請登入平台，您將能夠透過活動頁面觀看直播。",
       "description_online": "請檢查活動的日期和時間。\n當活動開始時，請登入平台，並透過活動頁面觀看直播。",
-      "description_physical": "請確認以下的場地詳情。\n當您的預訂確認後，我們將發送一張票券以便於活動當日出示。此票券還將讓您獲得直播和重播影片的觀看權限（如有提供）。"
+      "description_physical": "請確認以下的場地詳情。\n當您的預訂確認後，我們將發送一張票券以便於活動當日出示。此票券還將讓您獲得直播和重播影片的觀看權限（如有提供）。",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_book_online": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "errors": {
       "premiumContentNeedsPayment": "這個活動是高級方案的一部分。",
       "premiumContentNeedsLogin": "您需要登入才能取得此活動。",
       "premiumContentNeedsPaymentAction": "前往活動頁面"
-    }
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "imagesAlt": {
     "bookCover": "書籍封面",
@@ -920,7 +1187,9 @@
     "total": "總計",
     "payWithBitcoin": "用比特幣支付",
     "payByCard": "刷卡付款",
-    "haveReductionCode": "有折扣碼嗎？"
+    "haveReductionCode": "有折扣碼嗎？",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "publicCommunication": {
     "description": "Plan ₿ Network 以遵循開源標準為傲，並在整個過程中保持透明",
@@ -937,7 +1206,8 @@
       "noArticlesText": "目前沒有任何部落格文章。",
       "errorMessageNotFound": "找不到部落格。",
       "blogSidebarTitle": "{{category}}的過去文章",
-      "blogListButtonText": "閱讀"
+      "blogListButtonText": "閱讀",
+      "blogSidebarTitleForAll": ""
     },
     "title": "公開交流",
     "blogPost": "部落格與新聞",
@@ -1057,7 +1327,42 @@
     "pageTitle": "探索我們的課程",
     "writtenBy": "本課程由以下人員撰寫",
     "hasBeenProofreadBy": "此課程已由以下人員進行校對",
-    "hasNotBeenProofread": "這門課程尚未校對"
+    "hasNotBeenProofread": "這門課程尚未校對",
+    "subCategories": {
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "contribution": {
+      "title": "",
+      "shortDescription": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    }
   },
   "words": {
     "nodeNetwork": "節點網絡",
@@ -1215,7 +1520,21 @@
     "producer": "製作人",
     "project": "專案",
     "projects": "專案",
-    "country": "國家"
+    "country": "國家",
+    "selectedAmount": "",
+    "calendar": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "mode": "",
+    "notApplicable": "",
+    "password": "",
+    "save": "",
+    "saving": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "notFound": {
     "here": "這裡",
@@ -1325,7 +1644,8 @@
     "podcasts": "Podcasts",
     "professor": "教授",
     "professors": "教授",
-    "resultError": "發生了一些錯誤。請再試一次。"
+    "resultError": "發生了一些錯誤。請再試一次。",
+    "conference": ""
   },
   "lectures": {
     "buyVideoToUnlock": "購買該影片來解鎖它",
@@ -1345,5 +1665,65 @@
     "goToMovie": "去看電影",
     "pageTitle": "電影與紀錄片",
     "watchTrailer": "觀看預告片"
+  },
+  "labs": {
+    "planBLabs": "",
+    "title": "",
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    }
+  },
+  "accessType": {
+    "online": "",
+    "hybrid": "",
+    "physical": "",
+    "replay": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
