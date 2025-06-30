@@ -101,7 +101,22 @@
       "inprogressCoursesTitle": "",
       "seeProgress": "",
       "startCourse": "",
-      "yourCertificate": ""
+      "yourCertificate": "",
+      "notValidated": "",
+      "completeAll": "",
+      "courseDashboard": "",
+      "detailsAndCertificate": "",
+      "download": "",
+      "duration": "",
+      "newCourses": "",
+      "noCoursesAvailable": "",
+      "notStarted": "",
+      "price": "",
+      "seeDetails": "",
+      "seeTheCourse": "",
+      "shareOn": "",
+      "verify": "",
+      "yourProgress": ""
     },
     "bCert": {
       "noResults": "Bu hesapla henüz ilişkilendirilmiş bir not veya sertifika bulunmamaktadır.\nBir sınavı geçtiyseniz ve sonuçlarınız uzun bir süre sonra hala mevcut değilse, lütfen yardım için <0>bize ulaşın</0>.",
@@ -124,7 +139,30 @@
       "profileInformation": "",
       "profilePicture": "",
       "security": "",
-      "username": "Kullanıcı Adı"
+      "username": "Kullanıcı Adı",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": "",
+      "settings": ""
     },
     "calendar": {
       "calendar": "Takvim",
@@ -170,7 +208,35 @@
       "saveList": "Listeyi kaydet",
       "submitReviewInfo": "Bu özelliğe erişim sağlamak için bir inceleme göndermeniz gerekiyor.",
       "surePreferenceList": "Tercih listenizin son hali olduğundan emin misiniz?",
-      "listSavedComeTomorrow": "Tercihleriniz kaydedildi. \nYarın buraya gelin ve hangi Projeye atandığınızı öğrenin."
+      "listSavedComeTomorrow": "Tercihleriniz kaydedildi. \nYarın buraya gelin ve hangi Projeye atandığınızı öğrenin.",
+      "summerSchool": "",
+      "assignmentCompletedTitle": "",
+      "assignmentCompletedDescription": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepMovingForward": "",
+      "mustBePdf": "",
+      "planbSchoolGeneralInformation": "",
+      "ranking": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "assignmentTitle": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -202,7 +268,53 @@
         "proposeNewCourse": "",
         "quickRecap": "",
         "reviewInfos": "",
-        "reviews": ""
+        "reviews": "",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "menu": "",
       "profile": {
@@ -235,6 +347,10 @@
         "seeStatistics": "",
         "viewDetails": "",
         "writtenFeedbacks": ""
+      },
+      "tutorials": {
+        "yourTutorials": "",
+        "tutorialAnalyticsDescription": ""
       }
     },
     "careerPortal": {
@@ -535,11 +651,19 @@
       "pickADate": "Bir tarih seçin",
       "publicationDate": "Yayın tarihi"
     },
-    "backToDashboard": "Gösterge paneline geri dön"
+    "backToDashboard": "Gösterge paneline geri dön",
+    "goToDashboard": "",
+    "goToHomepage": "",
+    "studentDashboard": ""
   },
   "payment": {
     "terms": "",
-    "total": ""
+    "total": "",
+    "haveReductionCode": "",
+    "insertReductionCode": "",
+    "payByCard": "",
+    "payWithBitcoin": "",
+    "taxesMayApply": ""
   },
   "words": {
     "on": "",
@@ -571,7 +695,8 @@
       "beginnerFriendly": "",
       "wizard": "",
       "level": "",
-      "levels": ""
+      "levels": "",
+      "expert": ""
     },
     "library": "",
     "lnurlAuth": "",
@@ -641,7 +766,76 @@
     "topics": "",
     "unified": "",
     "users": "",
-    "view": ""
+    "view": "",
+    "country": "",
+    "credits": "",
+    "previous": "",
+    "language": "",
+    "abstract": "",
+    "access": "",
+    "action": "",
+    "admin": "",
+    "author": "",
+    "bitcoin": "",
+    "business": "",
+    "calendar": "",
+    "cancel": "",
+    "careerPortal": "",
+    "category": "",
+    "channel": "",
+    "channels": "",
+    "chapters": "",
+    "close": "",
+    "company": "",
+    "complete": "",
+    "congrats": "",
+    "continue": "",
+    "day": "",
+    "delete": "",
+    "dislikes": "",
+    "displayName": "",
+    "email": "",
+    "exam": "",
+    "finish": "",
+    "github": "",
+    "hybrid": "",
+    "incomplete": "",
+    "inperson": "",
+    "lecture": "",
+    "likes": "",
+    "linkedin": "",
+    "mentor": "",
+    "mode": "",
+    "movie": "",
+    "name": "",
+    "next": "",
+    "no": "",
+    "notApplicable": "",
+    "password": "",
+    "producer": "",
+    "project": "",
+    "projects": "",
+    "protocol": "",
+    "role": "",
+    "save": "",
+    "saving": "",
+    "search": "",
+    "security": "",
+    "selectedAmount": "",
+    "skip": "",
+    "socialStudies": "",
+    "startHere": "",
+    "student": "",
+    "submit": "",
+    "telegram": "",
+    "timeZone": "",
+    "title": "",
+    "unavailable": "",
+    "user": "",
+    "username": "",
+    "video": "",
+    "viewMore": "",
+    "yes": ""
   },
   "about": {
     "activeContributors": "Aktif katılımcılar",
@@ -939,7 +1133,11 @@
       },
       "singleAttempt": "Tek denemelik sınav",
       "viewExam": "Testi görüntüleyin",
-      "weight": "Ağırlık: {{weight}}%"
+      "weight": "Ağırlık: {{weight}}%",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "conclusion": {
       "completedFeedbackHeadline": "Geri bildiriminiz için teşekkür ederiz!\nBu bizim için çok önemli, gerçekten minnettarız.",
@@ -969,7 +1167,9 @@
       "source": "",
       "didHelp": "",
       "author": "",
-      "writtenBy": ""
+      "writtenBy": "",
+      "ratingSuccess": "",
+      "tutorialName": ""
     },
     "exchange": {
       "description": "",
@@ -1005,7 +1205,45 @@
       "title": ""
     },
     "approvedByCreator": "",
-    "backTutorials": ""
+    "backTutorials": "",
+    "hasBeenProofreadBy": "",
+    "subCategories": {
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "hasNotBeenProofread": "",
+    "writtenBy": ""
   },
   "events": {
     "card": {
@@ -1021,7 +1259,9 @@
       "bookSeat": "",
       "eventFull": "",
       "seatBooked": "",
-      "visitWebsite": ""
+      "visitWebsite": "",
+      "buyVideo": "",
+      "purchased": ""
     },
     "main": {
       "upcomingEvents": "",
@@ -1054,8 +1294,24 @@
       "limitation": "",
       "max_capacity": "",
       "payment_successful": "",
-      "time": ""
-    }
+      "time": "",
+      "access_online_successful": "",
+      "access_physical_successful": "",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": "",
+      "description_online": "",
+      "description_physical": ""
+    },
+    "errors": {
+      "premiumContentNeedsLogin": "",
+      "premiumContentNeedsPaymentAction": ""
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "home": {
     "header": {
@@ -1099,6 +1355,22 @@
     "wallOfLoveSection": {
       "title": "",
       "subtitle": ""
+    },
+    "blogSection": {
+      "blogTitle": "",
+      "description": "",
+      "noBlogsAvailable": "",
+      "noDateAvailable": "",
+      "seeAll": ""
+    },
+    "courseSection": {
+      "checkAllCourses": "",
+      "upcomingCourseTitle": ""
+    },
+    "eventSection": {
+      "checkEvents": "",
+      "eventTitle": "",
+      "hottestEvent": ""
     }
   },
   "imagesAlt": {
@@ -1123,7 +1395,20 @@
     "bCertDescription": "",
     "glossaryDescription": "",
     "login": "Giriş Yap",
-    "publicDescription": ""
+    "publicDescription": "",
+    "miningCourseDescription": "",
+    "bitcoinDescription": "",
+    "businessDescription": "",
+    "channelsDescription": "",
+    "chooseLanguage": "",
+    "lecturesDescription": "",
+    "moviesDescription": "",
+    "newsletterDescription": "",
+    "planBLabsDescription": "",
+    "projectsDescription": "",
+    "protocolDescription": "",
+    "securityDescription": "",
+    "socialStudiesDescription": ""
   },
   "notFound": {
     "here": "",
@@ -1151,18 +1436,61 @@
   },
   "resources": {
     "newsletters": {
-      "title": ""
+      "title": "",
+      "author": "",
+      "level": "",
+      "noNewsletters": "",
+      "subtitle": ""
     },
     "pageDescription": "",
     "pageSubtitle": "",
     "pageTitle": "",
     "github": "",
     "podcasts": {
-      "title": ""
+      "title": "",
+      "noPodcasts": ""
     },
     "pageSubtitleBooks": "",
     "pageSubtitlePodcast": "",
-    "searchFilterName": ""
+    "searchFilterName": "",
+    "articles": {
+      "title": ""
+    },
+    "bet": {
+      "title": ""
+    },
+    "books": {
+      "title": ""
+    },
+    "conferences": {
+      "title": ""
+    },
+    "channels": {
+      "noYoutubeChannels": "",
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "lectures": {
+      "noLectures": "",
+      "title": ""
+    },
+    "movies": {
+      "noMovies": "",
+      "title": ""
+    },
+    "newsletter": {
+      "check": ""
+    },
+    "pageSubtitleChannels": "",
+    "pageSubtitleLectures": "",
+    "projects": {
+      "title": ""
+    },
+    "toggleFreeOnly": "",
+    "toggleLabelAll": "",
+    "toggleLabelSelectedLanguage": ""
   },
   "settings": {
     "changePassword": "",
@@ -1219,7 +1547,8 @@
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "rewardsText": ""
   },
   "publicCommunication": {
     "description": "",
@@ -1248,7 +1577,8 @@
       "errorMessageNotFound": "",
       "blogSidebarTitle": "",
       "blogListButtonText": "",
-      "filterText": ""
+      "filterText": "",
+      "blogSidebarTitleForAll": ""
     }
   },
   "accessType": {
@@ -1256,5 +1586,141 @@
     "replay": "Replay",
     "online": "Online",
     "hybrid": "Yüz yüze & online"
+  },
+  "search": {
+    "projects": "",
+    "podcast": "",
+    "podcasts": "",
+    "professor": "",
+    "newsletter": "",
+    "newsletters": "",
+    "search": "",
+    "all": "",
+    "book": "",
+    "books": "",
+    "categories": "",
+    "conference": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "course": "",
+    "course_chapter": "",
+    "course_part": "",
+    "courses": "",
+    "event": "",
+    "events": "",
+    "explorer": {
+      "subtitle": "",
+      "title": ""
+    },
+    "filterByType": "",
+    "glossary_word": "",
+    "glossary_words": "",
+    "languageSelected": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "loadMoreResults": "",
+    "professors": "",
+    "project": "",
+    "resultEmpty": "",
+    "resultError": "",
+    "resultInfo": "",
+    "results": "",
+    "resultsRemaining": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorial": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": ""
+  },
+  "notification": {
+    "types": {
+      "calendar": "",
+      "celebration": "",
+      "assignment": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "lectures": {
+    "buyVideoToUnlock": "",
+    "pageTitle": "",
+    "checkFullCourse": "",
+    "lecturePartCourse": "",
+    "partCourse": "",
+    "watchLecture": ""
+  },
+  "filters": {
+    "levels": "",
+    "categories": "",
+    "resources": "",
+    "topics": ""
+  },
+  "labs": {
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "movies": {
+    "goToMovie": "",
+    "pageTitle": "",
+    "watchTrailer": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "podcast": {
+    "check": ""
+  },
+  "projects": {
+    "languages": "",
+    "networkStrength": "",
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "pageTitle": "",
+    "related": "",
+    "relatedEvents": ""
+  },
+  "youtubeChannels": {
+    "pageTitle": "",
+    "view": "",
+    "watchTrailer": ""
   }
 }
