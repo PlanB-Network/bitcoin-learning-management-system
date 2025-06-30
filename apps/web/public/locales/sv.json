@@ -71,7 +71,21 @@
     "passwordChangedSuccess": "Ändring av lösenord lyckades",
     "dashboardUnlocked": "Din studentpanel är upplåst!",
     "didYouKnow": "Visste du det?",
-    "trackProgress": "Skapa ett konto eller logga in för att hålla koll på dina framsteg"
+    "trackProgress": "Skapa ett konto eller logga in för att hålla koll på dina framsteg",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -134,7 +148,12 @@
       "premiumContentNeedsLogin": "Du måste vara inloggad för att få tillgång till denna kurs.",
       "premiumContentNeedsPayment": "Denna kurs är en del av ett premiumprogram.",
       "premiumContentNeedsPaymentAction": "Gå till kursens startsida",
-      "thanksTipping": "Du kan säga tack genom att ge läraren dricks."
+      "thanksTipping": "Du kan säga tack genom att ge läraren dricks.",
+      "learning": "",
+      "associatedProfessors": "",
+      "coordinatedBy": "",
+      "attendInPersonWarning": "",
+      "pastEditionsRatings": ""
     },
     "explorer": {
       "pageDescription": "Plan ₿ Academy strävar efter att förenkla Bitcoin-utbildning världen över. Skapad av experter från olika områden, vår akademi erbjuder ett omfattande utbud av kurser utformade för att skapa klarhet kring alla delar av Bitcoin.\nFrån nybörjare till expert, oavsett i din egen takt eller följt veckovis av en lärare, vi hoppas att akademin kan hjälpa dig att få en djupare förståelse för den expansiva världen av Bitcoin. Många av våra kurser är helt gratis så att vem som helst, var som helst, kan få tillgång till kvalitetsutbildning.",
@@ -144,7 +163,9 @@
       "exploreCourses": "Utforska alla Plan ₿-kurser",
       "journey": "Bitcoin är en resa, inte en destination",
       "planbSchoolHeadline": "Plan ₿ School, ledd av Giacomo Zucco, erbjuder intensiva tre månaders utbildningsprogram designade för att överbrygga klyftan mellan inlärning och verkliga tillämpningar. Utöver traditionella klasser engagerar sig studenter i företagsledda praktiska projekt och en förstklassig bootcamp dedikerad till topprestatörer. Endast de bästa talangerna avancerar efter två konkurrenskraftiga urvalsrundor, vilket säkerställer att de slutliga toppstudenterna blir fullt utrustade för att lansera sina karriärer inom Bitcoin-industrin.",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "comingSoon": "",
+      "goal": ""
     },
     "part": {
       "count": "Del {{count}}"
@@ -169,7 +190,8 @@
       "onlineCallout": "Du är på väg att köpa <strong>online-</strong>-tillgång till denna kurs.",
       "onlineDescription": "Varje föreläsnings-session sänds live på plattformen.\nDetta köp ger dig tillgång till live-sändningar och inspelade videor.",
       "inPersonDescription": "Varje föreläsnings-session äger rum på plats på de angivna datumen och lokalerna och sänds även live på plattformen. \nDetta köp ger dig tillgång till lektioner både online och på plats.\nGlöm inte att reservera din plats för de lektioner du vill delta i fysiskt.",
-      "checkoutError": "Ett fel inträffade under betalningsprocessen.\nVänligen försök igen."
+      "checkoutError": "Ett fel inträffade under betalningsprocessen.\nVänligen försök igen.",
+      "courseType": ""
     },
     "quizz": {
       "clickOnPie": "Klicka på cirkeldiagrammet för att kontrollera det rätta svaret",
@@ -221,7 +243,8 @@
       "editReview": "Redigera recension",
       "feedbackDescription1": "Vänligen betygsätt din upplevelse av kursen nedan.",
       "saveReview": "Spara recension",
-      "thankYou": "Tack för din recension! Den kommer att tas i åtanke"
+      "thankYou": "Tack för din recension! Den kommer att tas i åtanke",
+      "whatStudentsSayPasEdition": ""
     },
     "exam": {
       "congratulationsPassed": "Grattis, du <0>klarade</0> slutprovet!",
@@ -284,7 +307,40 @@
       "courseDiploma": "Kursdiplom",
       "courseNotFound": "Kursen hittades inte",
       "dontWorryRetake": "Oroa dig inte, du kan göra om provet efter 24 timmar.",
-      "examCertificateCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ett diplom för kursen \"{{courseName}}\"."
+      "examCertificateCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ett diplom för kursen \"{{courseName}}\".",
+      "availableDashboardTimestamped": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "examNotPassed": "",
+      "failedDiploma": "",
+      "finalScore": "",
+      "goConclusion": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "passExam": "",
+      "readyToTest": "",
+      "receiveDiploma": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "skipGoConclusion": "",
+      "solidEffort": "",
+      "successDiploma": "",
+      "successDiplomaTeachedLed": "",
+      "successDiplomaTimeStamped": "",
+      "successfulPassedThreshold": "",
+      "takeExam": "",
+      "timeStampedNoDot": "",
+      "timeStamping": "",
+      "weight": "",
+      "viewExam": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "Alla kapitel är nu klara!",
@@ -296,6 +352,11 @@
       "takeFinalExam": "Nu när du har slutfört alla kapitel är det dags att göra slutprovet för att testa dina kunskaper.",
       "unlockFeatures1": "Du behöver ett konto för att låsa upp alla funktioner och hålla koll på dina framsteg.",
       "unlockFeatures2": "Notera att vi inte samlar in några personuppgifter och vi använder inte heller cookies."
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -327,7 +388,8 @@
       "seeDetails": "Se detaljer",
       "seeTheCourse": "Visa kursen",
       "verify": "Verifiera äktheten av ditt diplom",
-      "yourProgress": "Dina framsteg:"
+      "yourProgress": "Dina framsteg:",
+      "shareOn": ""
     },
     "account": "Konto",
     "courses": "Kurser",
@@ -347,7 +409,10 @@
       "noTicket": "Du har för närvarande inga biljetter.",
       "pastTicketTitle": "Tidigare bokningar",
       "upcomingTicketTitle": "Kommande bokningar",
-      "upcomingTicketSubtitle": "Ladda ner din biljett här för att delta på ditt kommande event. Kom ihåg att ta med den för inträde."
+      "upcomingTicketSubtitle": "Ladda ner din biljett här för att delta på ditt kommande event. Kom ihåg att ta med den för inträde.",
+      "cancelBookingTitle": "",
+      "noGoBack": "",
+      "yesCancel": ""
     },
     "profile": {
       "saving": "Sparar…",
@@ -366,7 +431,30 @@
       "profileInformation": "Profilinformation",
       "profilePicture": "Profilbild",
       "security": "Säkerhet",
-      "username": "Användarnamn"
+      "username": "Användarnamn",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": "",
+      "settings": ""
     },
     "bCert": {
       "noResults": "Det finns ännu inga betyg eller certifikat kopplade till detta konto.\nOm du har klarat ett prov och dina resultat inte syns efter en längre tid, vänligen <0>hör av dig till oss</0> för att få hjälp.",
@@ -401,7 +489,53 @@
         "proposeNewCourse": "Föreslå en ny kurs",
         "quickRecap": "Här kan du hitta allmän information om denna kurs.",
         "reviewInfos": "Här kan du kontrollera och granska all information som rör varje kurs som du har samordnat.",
-        "reviews": "Recensioner"
+        "reviews": "Recensioner",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcementsPast": "",
+        "allStudents": "",
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "menu": "Meny för lärare",
       "profile": {
@@ -429,7 +563,11 @@
     },
     "calendar": {
       "calendar": "Kalender",
-      "personalCalendar": "Personlig kalender"
+      "personalCalendar": "Personlig kalender",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "course": {
       "checkDetailsCompleted": "Här kan du se alla detaljer angående denna kurs som du har slutfört.",
@@ -441,7 +579,61 @@
       "shareOnSocials": "Dela på sociala medier:",
       "tweetText": "Överlycklig över att ha slutfört {{courseIndex}} kursen på @planb_network och tjänat mitt certifikat med ett resultat på {{score}}/100 på slutprovet! {{emoji}}\n\n{{certificateUrl}}",
       "conclusionHeadline": "Här är en sammanfattning av vad du har lärt dig. Om vissa kapitel har missats eller inte har validerats ordentligt, är det nu dags att göra det, antingen genom att gå tillbaka för att lära dig, eller genom att klicka på slutför-knappen.",
-      "submitReviewInfo": "Du måste skicka in en recension för att få tillgång till denna funktion."
+      "submitReviewInfo": "Du måste skicka in en recension för att få tillgång till denna funktion.",
+      "ranking": "",
+      "submitBefore": "",
+      "examScore": "",
+      "exams": "",
+      "notSelectedAssignment": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "keepEditing": "",
+      "saveList": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "summerSchool": "",
+      "yourProject": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "conclusionNotReleased": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "coordinator": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "assignmentTitle": "",
+      "congratulationsPassed": "",
+      "courseCalendar": ""
     },
     "credentials": {
       "bCert": "₿-certifikat",
@@ -492,7 +684,79 @@
       "type": "Typ",
       "upcomingBookings": "Kommande bokningar",
       "upcomingBookingsSubtitle": "Här kan du ladda ner listan över deltagare för alla fysiska events.",
-      "userRolesAllocation": "Tilldelning av användarroller"
+      "userRolesAllocation": "Tilldelning av användarroller",
+      "accessGranted": "",
+      "coupons": {
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        }
+      },
+      "coursesIndexes": "",
+      "deleteRole": "",
+      "discountCodes": "",
+      "editRole": "",
+      "hasAccessTo": "",
+      "selectRole": ""
     },
     "careerPortal": {
       "acceptTermsAndConditions": "Jag har läst och jag accepterar de allmänna villkoren",
@@ -666,10 +930,26 @@
       "uploadCV": "Ladda upp ditt CV",
       "welcome": "Välkommen till din karriärportal",
       "yourLanguages": "Dina språk",
-      "yourRoles": "Dina jobbpositioner"
+      "yourRoles": "Dina jobbpositioner",
+      "applicationComplete": "",
+      "applicationIncomplete": "",
+      "chooseFile": "",
+      "lookingForJob": "",
+      "noFileSelected": ""
     },
     "backToDashboard": "Tillbaka till kontrollpanelen",
-    "studentDashboard": "Studentpanel"
+    "studentDashboard": "Studentpanel",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "main": {
@@ -715,7 +995,13 @@
       "access_online_successful": "När eventet startar, logga in på plattformen för att få tillgång till live-sändningen på eventsidan.",
       "description_online": "Vänligen granska datum och tid för eventet som hålls.\nNär det är dags, logga in på plattformen för att få tillgång till live-sändningen via eventsidan.",
       "access_physical_successful": "Du kan ladda ner din biljett här, eller ladda ner den senare i kontrollpanelen.",
-      "description_physical": "Vänligen granska de angivna detaljerna för lokalen.\nNär din bokning är bekräftad kommer vi att utfärda en biljett att presentera vid eventet. Denna biljett ger dig också tillgång till live-sändningen och den inspelade videon, om tillgänglig."
+      "description_physical": "Vänligen granska de angivna detaljerna för lokalen.\nNär din bokning är bekräftad kommer vi att utfärda en biljett att presentera vid eventet. Denna biljett ger dig också tillgång till live-sändningen och den inspelade videon, om tillgänglig.",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "newEvent": {
       "button": "Lägg till mitt event",
@@ -730,7 +1016,9 @@
       "premiumContentNeedsLogin": "Du måste vara inloggad för att få tillgång till detta event.",
       "premiumContentNeedsPayment": "Detta event är en del av ett premiumprogram.",
       "premiumContentNeedsPaymentAction": "Gå till eventsidan"
-    }
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "home": {
     "header": {
@@ -826,7 +1114,9 @@
     "moviesDescription": "Upptäck fängslande berättelser och djupgående utforskningar av Bitcoins evolution och påverkan",
     "protocolDescription": "Upptäck de grundläggande reglerna som driver Bitcoin-nätverket.",
     "securityDescription": "Bemästra teknikerna för att skydda dina Bitcoin-tillgångar.",
-    "socialStudiesDescription": "Studera Bitcoins effekt på samhället."
+    "socialStudiesDescription": "Studera Bitcoins effekt på samhället.",
+    "planBLabsDescription": "",
+    "projectsDescription": ""
   },
   "nodeNetwork": {
     "description1": "Vi tror på att utbildning inte enbart borde ske online utan också i fysiska utrymmen. För att uppnå detta hanterar Plan ₿ Network ett nätverk av hubbar runt om i världen för att välkomna tänkare, entreprenörer och utbildare som främjar utvecklingen av Bitcoin och frihetsteknologier.",
@@ -969,7 +1259,42 @@
     "backTutorials": "Tillbaka till alla tutorials",
     "hasBeenProofreadBy": "Denna tutorial har korrekturlästs av",
     "hasNotBeenProofread": "Denna tutorial har ännu inte korrekturlästs",
-    "writtenBy": "Denna tutorial har skrivits av"
+    "writtenBy": "Denna tutorial har skrivits av",
+    "subCategories": {
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    }
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1003,7 +1328,8 @@
       "beginnerFriendly": "Nybörjarvänlig",
       "wizard": "Mästare",
       "level": "Nivå",
-      "levels": "Nivåer"
+      "levels": "Nivåer",
+      "expert": ""
     },
     "library": "Bibliotek",
     "lnurlAuth": "LNURL-autentisering",
@@ -1131,7 +1457,24 @@
     "user": "Användare",
     "abstract": "Abstrakt",
     "projects": "Projekt",
-    "project": "Projekt"
+    "project": "Projekt",
+    "company": "",
+    "email": "",
+    "incomplete": "",
+    "mentor": "",
+    "password": "",
+    "calendar": "",
+    "complete": "",
+    "continue": "",
+    "day": "",
+    "mode": "",
+    "notApplicable": "",
+    "save": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "conferences": {
     "location": "Plats",
@@ -1159,7 +1502,10 @@
     "terms": "Se våra <0>allmänna villkor</0> för detaljer om återbetalning",
     "total": "Totalt",
     "payByCard": "Betala med kort",
-    "payWithBitcoin": "Betala med Bitcoin"
+    "payWithBitcoin": "Betala med Bitcoin",
+    "haveReductionCode": "",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "bCert": {
     "challengeYourself": "Utmana dig själv och testa din nivå!",
@@ -1177,7 +1523,9 @@
     "pageSubtitle": "Massadoption genom centraliserad open source-utbildning",
     "pageTitle": "Bli godkänd på ₿-Certifikatet",
     "verify": "Verifiera äktheten av ditt certifikat",
-    "download": "Ladda ner certifikat"
+    "download": "Ladda ner certifikat",
+    "organizeSessionConditions": "",
+    "organizeSessionHub": ""
   },
   "glossary": {
     "filterBar": "Hitta ordet du behöver precis här",
@@ -1231,7 +1579,8 @@
       "errorMessageNotFound": "Bloggen hittades inte.",
       "blogSidebarTitle": "Tidigare {{category}}-inlägg",
       "blogListButtonText": "Läs",
-      "filterText": "Filtrera efter ämne:"
+      "filterText": "Filtrera efter ämne:",
+      "blogSidebarTitleForAll": ""
     }
   },
   "youtubeChannels": {
@@ -1278,7 +1627,20 @@
     "searchResult": "Sökresultat",
     "startSearch": "Starta din sökning för att se resultaten här",
     "tutorial": "Tutorial",
-    "tutorials": "Tutorials"
+    "tutorials": "Tutorials",
+    "conference": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "event": "",
+    "glossary_words": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "newsletter": "",
+    "newsletters": "",
+    "project": "",
+    "projects": "",
+    "youtube_channel": "",
+    "youtube_channels": ""
   },
   "movies": {
     "goToMovie": "Gå till filmen",
@@ -1287,5 +1649,80 @@
   },
   "podcast": {
     "check": "Se podcasten"
+  },
+  "accessType": {
+    "online": "",
+    "physical": "",
+    "replay": "",
+    "hybrid": ""
+  },
+  "notifications": {
+    "select": "",
+    "calendar_24h_in_person_event": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "projects": {
+    "languages": "",
+    "networkStrength": "",
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "pageTitle": "",
+    "related": "",
+    "relatedEvents": ""
+  },
+  "filters": {
+    "categories": "",
+    "levels": "",
+    "resources": "",
+    "topics": ""
+  },
+  "labs": {
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
