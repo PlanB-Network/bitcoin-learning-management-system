@@ -71,7 +71,21 @@
     "dashboardUnlocked": "Studentdashbordet ditt er låst opp!",
     "didYouKnow": "Visste du det?",
     "trackProgress": "Opprett en konto eller logg inn for å holde oversikt over fremdriften din",
-    "passwordChangedSuccess": "Passordet ble endret"
+    "passwordChangedSuccess": "Passordet ble endret",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "checkout": "Sjekk ut ₿-CERT",
@@ -219,7 +233,8 @@
       "onlineDescription": "Hver klasseøkt blir strømmet live på plattformen.\nDette kjøpet vil gi deg tilgang til live-strømmer og opptak av videoer.",
       "inPersonDescription": "Hver klasseøkt finner sted fysisk på de angitte datoene og stedene, og blir også direktesendt på plattformen. \nDette kjøpet vil gi deg tilgang til både personlig tilstede og online klasser.\nIkke glem å reservere plassen din for klasser du ønsker å delta på personlig tilstede.",
       "inPersonCallout": "Du er i ferd med å kjøpe <strong>personlig tilstede</strong> tilgang til dette kurset.",
-      "checkoutError": "En feil oppstod under utsjekkingsprosessen.\nVennligst prøv igjen."
+      "checkoutError": "En feil oppstod under utsjekkingsprosessen.\nVennligst prøv igjen.",
+      "courseType": ""
     },
     "quizz": {
       "quizz": "Quiz",
@@ -347,7 +362,28 @@
       "timeStamping": "tidsstempling",
       "passExam": "Bestå eksamen",
       "receiveDiploma": "Motta ditt diplom",
-      "skipGoConclusion": "Hopp over, gå til konklusjonen"
+      "skipGoConclusion": "Hopp over, gå til konklusjonen",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "finalScore": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "nbMinutes": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "viewExam": "",
+      "weight": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "Alle kapitler er nå fullført!",
@@ -359,6 +395,11 @@
       "finalStep": "Dette var det siste steget for å merke dette kurset som fullført i dashbordet ditt, før du fortsetter reisen din!",
       "takeFinalExam": "Nå som du har fullført alle kapitlene, er det på tide å ta den endelige eksamenen for å teste kunnskapene dine.",
       "unlockFeatures1": "For å låse opp alle funksjoner og holde oversikt over fremgangen din, trenger du en konto."
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "words": {
@@ -518,7 +559,20 @@
     "projects": "Prosjekter",
     "previous": "Forrige",
     "yes": "Ja",
-    "save": "Lagre"
+    "save": "Lagre",
+    "timeZone": "",
+    "title": "",
+    "day": "",
+    "video": "",
+    "mentor": "",
+    "mode": "",
+    "notApplicable": "",
+    "saving": "",
+    "password": "",
+    "selectedAmount": "",
+    "calendar": "",
+    "company": "",
+    "continue": ""
   },
   "dashboard": {
     "account": "Konto",
@@ -548,7 +602,11 @@
     },
     "calendar": {
       "calendar": "Kalender",
-      "personalCalendar": "Personlig kalender"
+      "personalCalendar": "Personlig kalender",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "courses": "Kurs",
     "logout": "Logg ut",
@@ -600,7 +658,30 @@
       "security": "Sikkerhet",
       "username": "Brukernavn",
       "personalInformation": "Min personlige informasjon",
-      "profile": "Profil"
+      "profile": "Profil",
+      "settings": "",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": ""
     },
     "teacher": {
       "courses": {
@@ -618,7 +699,53 @@
         "proposeNewCourse": "Foreslå en ny kurs",
         "courseModification": "Hvis du trenger hjelp til å redigere noe i kurset, vennligst sjekk denne <0>tutorial</0>.",
         "quickRecap": "Her kan du finne all generell informasjon om dette kurset.",
-        "reviews": "Anmeldelser"
+        "reviews": "Anmeldelser",
+        "announcementsUpcoming": "",
+        "goal": "",
+        "announcementModal": {
+          "title": "",
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "assignment": "",
+        "assignmentGrade": {
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "allStudents": "",
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "profile": {
         "enterTipsInformations": "Plan ₿ Network oppfordrer brukere til å tipse lærere. Vennligst oppgi informasjonen din slik at folk kan tipse deg når de ønsker det.",
@@ -667,7 +794,61 @@
       "coursesCompleted": "Fullførte kurs",
       "shareOnSocials": "Del på sosiale medier:",
       "conclusionHeadline": "Her er en oppsummering av det du har lært. Hvis noen kapitler er blitt oversett eller ikke er blitt validert ordentlig, er det nå tid for å gjøre det, enten ved å gå tilbake for å lære, eller ved å trykke på fullfør-knappen.",
-      "submitReviewInfo": "Du må sende inn en anmeldelse for å få tilgang til denne funksjonen."
+      "submitReviewInfo": "Du må sende inn en anmeldelse for å få tilgang til denne funksjonen.",
+      "isSubmissionFinal": "",
+      "examScore": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentInformation": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "diplomaReleaseTitle": "",
+      "exams": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "summerSchool": "",
+      "assignmentDescription": "",
+      "confirmList": "",
+      "coordinator": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "confirmSubmission": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -724,7 +905,73 @@
       "coursesIndexes": "Kursindekser",
       "deleteRole": "Slett rolle",
       "editRole": "Rediger rolle",
-      "hasAccessTo": "Har tilgang til:"
+      "hasAccessTo": "Har tilgang til:",
+      "coupons": {
+        "tableHead": {
+          "maxUses": "",
+          "code": "",
+          "discount": "",
+          "name": "",
+          "actions": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        },
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": ""
+      },
+      "discountCodes": ""
     },
     "studentDashboard": "Studentdashbord",
     "backToDashboard": "Tilbake til dashbordet",
@@ -903,8 +1150,21 @@
       "motivationLetterSubLabel": "Du kan skrive noen ord nedenfor for å beskrive din erfaring og motivasjon.",
       "motivationSubtitle": "Du kan berike søknaden din med et presentasjonsbrev, for å gi oss mer kontekst om deg selv og jobbsøket ditt.",
       "other": "Annet",
-      "partTime": "Deltid"
-    }
+      "partTime": "Deltid",
+      "applicationComplete": "",
+      "applicationIncomplete": ""
+    },
+    "announcements": {
+      "groups": {
+        "all": "",
+        "active": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "card": {
@@ -958,14 +1218,22 @@
       "description_online": "Vennligst sjekk dato og tid for arrangementet som er oppgitt.\nNår tiden kommer, logg inn på plattformen for å få tilgang til direktesendingen via arrangementsiden.",
       "description_physical": "Vennligst gjennomgå de oppgitte detaljene for stedet.\nNår bookingen din er bekreftet, vil vi utstede en billett som du kan presentere på arrangementet. Denne billetten vil også gi deg tilgang til direktesendingen og opptaket av videoen, hvis tilgjengelig.",
       "access_online_successful": "Når arrangementet starter, logg inn på plattformen for å få tilgang til direktesendingen på arrangementsiden.",
-      "access_physical_successful": "Du kan laste ned billetten din her, eller laste den ned senere i dashbordet ditt."
+      "access_physical_successful": "Du kan laste ned billetten din her, eller laste den ned senere i dashbordet ditt.",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "pageDescription": "Vil du snakke om Bitcoin i nåtid? Her, kan du finne alle arrangementene som støttes av Plan B Network-samfunnene. Enten du vil lytte til et foredrag, diskutere Bitcoin over en drink, eller ta en eksamen for å vurdere kunnskapen din, du vil finne det rette arrangementet her gjennom Plan B Network.",
     "errors": {
       "premiumContentNeedsLogin": "Du må være logget inn for å få tilgang til denne hendelsen.",
       "premiumContentNeedsPayment": "Denne hendelsen er en del av et premiumprogram.",
       "premiumContentNeedsPaymentAction": "Gå til arrangementssiden"
-    }
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "glossary": {
     "anotherWord": "Søk etter et annet ord",
@@ -1133,7 +1401,8 @@
       "errorMessageNotFound": "Bloggen ble ikke funnet.",
       "blogSidebarTitle": "Tidligere innlegg i nettverket",
       "blogListButtonText": "Les",
-      "filterText": "Filtrer etter emne :"
+      "filterText": "Filtrer etter emne :",
+      "blogSidebarTitleForAll": ""
     }
   },
   "resources": {
@@ -1255,14 +1524,51 @@
     },
     "hasBeenProofreadBy": "Dette kurset har blitt korrekturlest av",
     "hasNotBeenProofread": "Dette kurset er ikke korrekturlest ennå",
-    "writtenBy": "Dette kurset er skrevet av"
+    "writtenBy": "Dette kurset er skrevet av",
+    "subCategories": {
+      "desktop": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "data": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    }
   },
   "payment": {
     "terms": "Se våre <0>generelle vilkår</0> og betingelser for detaljer om refusjon",
     "total": "Totalt",
     "payWithBitcoin": "Betal med Bitcoin",
     "payByCard": "Betal med kort",
-    "haveReductionCode": "Har du en rabattkode?"
+    "haveReductionCode": "Har du en rabattkode?",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "podcast": {
     "check": "Sjekk podcasten"
@@ -1365,12 +1671,59 @@
     "description1": "Plan ₿ Labs er studiegrupper designet for å gi studenter regelmessige praktiske og interaktive klasser. Gjennom disse studiegruppene engasjerer studenter og professorer seg i diskusjoner, debatterer den siste forskningen, løser virkelige utfordringer, og anvender teoretiske konsepter.",
     "description2": "Bli med i labben som samsvarer med studiefeltet ditt og forbedre læringsopplevelsen din!",
     "planBLabs": "Plan ₿ Labs",
-    "title": "Praktiske og interaktive klasser for kontinuerlig læring"
+    "title": "Praktiske og interaktive klasser for kontinuerlig læring",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    }
   },
   "accessType": {
     "hybrid": "Personlig tilstede og på nett",
     "online": "På nett",
     "physical": "Fysisk tilstede",
     "replay": "Svar"
+  },
+  "notifications": {
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "yesterday": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "results": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": ""
+  },
+  "notification": {
+    "types": {
+      "calendar": "",
+      "celebration": "",
+      "assignment": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
