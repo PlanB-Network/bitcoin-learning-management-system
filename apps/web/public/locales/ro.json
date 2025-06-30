@@ -71,7 +71,21 @@
     "trackProgress": "Creează un cont sau autentifică-te pentru a urmări progresul tău",
     "dashboardUnlocked": "Dashboard-ul tău de student este deblocat!",
     "didYouKnow": "Știai?",
-    "passwordChangedSuccess": "Parola a fost schimbată cu succes"
+    "passwordChangedSuccess": "Parola a fost schimbată cu succes",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "bCertDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
@@ -160,7 +174,8 @@
       "teacherLed": "condus de profesor",
       "learning": "Parcursul de învățare",
       "associatedProfessors": "Profesori asociați",
-      "coordinatedBy": "Acest curs este coordonat de"
+      "coordinatedBy": "Acest curs este coordonat de",
+      "attendInPersonWarning": ""
     },
     "chapter": {
       "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș.",
@@ -348,7 +363,28 @@
       "skipGoConclusion": "Sari, mergi la concluzie",
       "takeExam": "Dă examenul",
       "timeStampedNoDot": "marcat cu data și ora",
-      "timeStamping": "marcare temporală"
+      "timeStamping": "marcare temporală",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "viewExam": "",
+      "weight": "",
+      "singleAttemptAvailability": "",
+      "completed": "",
+      "examAvailabilityDetails": ""
     },
     "conclusion": {
       "completedFeedbackHeadline": "Vă mulțumim pentru feedback!\nEste foarte important pentru noi, așa că îl apreciem cu adevărat.",
@@ -395,7 +431,11 @@
     },
     "calendar": {
       "calendar": "Calendar",
-      "personalCalendar": "Calendar personal"
+      "personalCalendar": "Calendar personal",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "courses": "Cursuri",
     "logout": "Deconectează-te",
@@ -447,7 +487,30 @@
       "profileInformation": "Informații de profil",
       "profilePicture": "Fotografie de profil",
       "security": "Securitate",
-      "username": "Username"
+      "username": "Username",
+      "notificationSettings": {
+        "loadEmailSettingsError": "",
+        "title": "",
+        "description": "",
+        "coursesOption": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "teacher": {
       "courses": {
@@ -466,7 +529,52 @@
         "courseModification": "Dacă aveți nevoie de ajutor pentru a edita ceva în curs, vă rugăm să verificați acest <0>tutorial</0>.",
         "reviewInfos": "Aici puteți controla și revizui toate informațiile referitoare la fiecare curs pe care l-ați coordonat.",
         "reviews": "Recenzii",
-        "goal": "Obiectiv"
+        "goal": "Obiectiv",
+        "announcementModal": {
+          "title": "",
+          "dateRequired": "",
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "allStudents": "",
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "title": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "alertDescription": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "assignment": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "menu": "Meniu profesor",
       "profile": {
@@ -516,7 +624,60 @@
       "tweetText": "Bucuros că am finalizat cursul {{courseIndex}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
       "conclusionHeadline": "Iată un rezumat a ceea ce ai învățat. Dacă unele capitole au fost omise sau nu au fost validate corespunzător, acum este momentul să o faci, fie întorcându-te să înveți, fie apăsând pe butonul de completare.",
       "submitReviewInfo": "Trebuie să trimiți o recenzie pentru a avea acces la această funcție.",
-      "coordinator": "Coordonator de curs"
+      "coordinator": "Coordonator de curs",
+      "submitBefore": "",
+      "submissionInstructions": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "summerSchool": "",
+      "exams": "",
+      "announcement": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "courseCalendar": ""
     },
     "credentials": {
       "bCertSubtitle": "Aici puteți găsi detalii referitoare la rezervările și notele dumneavoastră pentru Certificatele ₿ trecute și viitoare.\nCertificatul ₿ este un examen organizat de Plan ₿ Network pentru a confirma cunoștințele dumneavoastră în Bitcoin și subiectele sale conexe.",
@@ -589,7 +750,9 @@
           "value": "Valoare",
           "uses": "Folosit",
           "total": "Total",
-          "owner": "Proprietar"
+          "owner": "Proprietar",
+          "actions": "",
+          "maxUses": ""
         },
         "productEvent": "Eveniment",
         "productCourse": "Curs",
@@ -611,7 +774,26 @@
         "generatedCode": "Cod generat",
         "generatedCodes": "Coduri generate",
         "selectCourse": "Selectează cursul",
-        "selectEvent": "Selectează evenimentul"
+        "selectEvent": "Selectează evenimentul",
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCodeCopied": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "mobileSort": {
+          "za": "",
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": ""
+        },
+        "generateNewCodes": "",
+        "noCouponsFound": ""
       },
       "discountCodes": "Coduri de reducere",
       "accessGranted": "Acces acordat",
@@ -801,7 +983,18 @@
       "applicationIncomplete": "Cererea ta este <highlight>incompletă</highlight>"
     },
     "backToDashboard": "Înapoi la dashboard",
-    "studentDashboard": "Dashboardul studentului"
+    "studentDashboard": "Dashboardul studentului",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "card": {
@@ -998,7 +1191,8 @@
       "blogListButtonText": "Citește",
       "filterText": "Filtrează după subiect:",
       "featuredArticleTitleText": "Cel mai recent articol publicat",
-      "pastArticleSubtitleText": "Articole anterioare"
+      "pastArticleSubtitleText": "Articole anterioare",
+      "blogSidebarTitleForAll": ""
     },
     "description": "Plan ₿ Network este mândru să adere la standardele open-source și să mențină transparența pe parcursul călătoriei sale",
     "title": "Comunicare publică",
@@ -1175,7 +1369,8 @@
     "payByCard": "Plătește cu cardul",
     "payWithBitcoin": "Plătește cu Bitcoin",
     "haveReductionCode": "Ai un cod de reducere ?",
-    "insertReductionCode": "Introdu codul tău de reducere"
+    "insertReductionCode": "Introdu codul tău de reducere",
+    "taxesMayApply": ""
   },
   "proofreading": {
     "description": "Conținutul original a fost tradus de AI, dar este necesară revizuirea umană pentru a asigura acuratețea acestuia.",
@@ -1370,7 +1565,20 @@
     "search": "Caută",
     "skip": "Sări",
     "email": "Email",
-    "save": "Salvează"
+    "save": "Salvează",
+    "day": "",
+    "calendar": "",
+    "company": "",
+    "continue": "",
+    "mentor": "",
+    "notApplicable": "",
+    "password": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "mode": "",
+    "saving": "",
+    "video": ""
   },
   "underConstruction": {
     "p1": "Un iepure a căzut într-o groapă. Din cauza acestei aventuri neașteptate, această pagină este într-o oarecare construcție în acest moment. Ne cerem scuze pentru orice inconvenient. Echipa noastră lucrează din greu pentru a finaliza această pagină. Dacă sunteți interesat să dați o mână de ajutor, nu ezitați să verificați",
@@ -1477,6 +1685,49 @@
   "accessType": {
     "online": "Online",
     "replay": "Reluare",
-    "physical": "În persoană"
+    "physical": "În persoană",
+    "hybrid": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
