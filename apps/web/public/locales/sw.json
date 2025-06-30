@@ -338,7 +338,11 @@
         "time": "Muda uliotumika"
       },
       "viewExam": "Tazama mtihani",
-      "weight": "Uzito: {{weight}}%"
+      "weight": "Uzito: {{weight}}%",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "Sura zote sasa zimekamilika!",
@@ -499,7 +503,38 @@
       "leastPreferred": "Kupendelea kwa kiwango cha chini",
       "assignmentCompletedDescription": "Mradi wako umewasilishwa kwa mafanikio na upo chini ya ukaguzi.\nDaraja lako litakuwa linaonekana hapa baada ya kupewa alama mnamo Juni 23.",
       "fileUploadError": "Kulikuwa na hitilafu wakati wa kupakia yako",
-      "isSubmissionFinal": "Je, umepeana jibu lako la mwisho?"
+      "isSubmissionFinal": "Je, umepeana jibu lako la mwisho?",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "submitBefore": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "keepMovingForward": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "congratulationsPassed": "",
+      "ranking": "",
+      "assignmentTitle": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -568,8 +603,16 @@
           "studentDisplayName": "Mwanafunzi (Jina la kuonyesha)",
           "description": "Wanafunzi wamepangwa kwa makundi ya kazi.",
           "missingGradesTitle": "Bado kuna {{count}} alama zinakosekana!",
-          "title": "Daraja za kazi za nyumbani"
-        }
+          "title": "Daraja za kazi za nyumbani",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "missingGradesDescription": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": ""
+        },
+        "assignment": ""
       },
       "menu": "Menyu ya mwalimu",
       "profile": {
@@ -1432,7 +1475,11 @@
     "saving": "Inahifadhi...",
     "selectedAmount": "{{amount}} imechaguliwa",
     "video": "Video",
-    "continue": "Endelea"
+    "continue": "Endelea",
+    "company": "",
+    "mentor": "",
+    "notApplicable": "",
+    "title": ""
   },
   "conferences": {
     "addConferences": "Jisikie huru kuongeza mikutano yoyote inayokosekana kupitia hifadhi hii ya <0>Github</0>.",
