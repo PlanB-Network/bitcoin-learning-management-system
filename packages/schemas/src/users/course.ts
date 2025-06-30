@@ -143,3 +143,46 @@ export const courseSucceededExamSchema = courseExamAttemptSchema
     courseId: true,
   })
   .merge(z.object({ courseName: z.string() }));
+
+export const minimalCourseExamAttemptWithUsernameSchema =
+  courseExamAttemptSchema
+    .pick({
+      uid: true,
+      score: true,
+      chapterId: true,
+      examType: true,
+      startedAt: true,
+      finishedAt: true,
+    })
+    .merge(
+      z.object({
+        username: z.string(),
+      }),
+    );
+
+export const minimalAssignmentGradeSchema = z.object({
+  username: z.string(),
+  uid: z.string(),
+  assignmentGrade: z.number().nullable(),
+});
+
+export const courseWithSingleTrialExamsGradesAndSummarySchema = z.object({
+  examsGrades: z.array(minimalCourseExamAttemptWithUsernameSchema),
+  assignmentGrades: z.array(
+    z.object({
+      username: z.string(),
+      uid: z.string(),
+      assignmentGrade: z.number().nullable(),
+    }),
+  ),
+  averageTotalScore: z.number(),
+  graduatedStudentsAmount: z.number(),
+});
+
+export const singleTrialExamQuestionStatisticsSchema = z.object({
+  questionId: z.string(),
+  questionText: z.string(),
+  questionDifficulty: z.string(),
+  totalAnswers: z.number(),
+  successPercentage: z.number(),
+});

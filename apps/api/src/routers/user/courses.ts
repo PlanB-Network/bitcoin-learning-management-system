@@ -11,8 +11,10 @@ import {
   courseReviewSchema,
   courseSucceededExamSchema,
   courseUserChapterSchema,
+  courseWithSingleTrialExamsGradesAndSummarySchema,
   minimalUserExamTimestampSchema,
   partialExamQuestionSchema,
+  singleTrialExamQuestionStatisticsSchema,
 } from '@blms/schemas';
 import {
   createCalculateCourseChapterSeats,
@@ -32,7 +34,9 @@ import {
   createGetPayment,
   createGetPayments,
   createGetProgress,
+  createGetSingleTrialExamQuestionStatistics,
   createGetTeacherLedCourseDiplomaTimestamp,
+  createGetTeacherLedCourseGrades,
   createGetUserChapter,
   createGetUserDetailsByCertificateId,
   createSaveCourseAssignmentGrade,
@@ -60,8 +64,10 @@ import type {
   CourseReview,
   CourseSucceededExam,
   CourseUserChapter,
+  CourseWithSingleTrialExamsGradesAndSummary,
   MinimalUserExamTimestamp,
   PartialExamQuestion,
+  SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 
 import { ExamType } from '@blms/constants';
@@ -206,6 +212,23 @@ const getAllSucceededUserExamsProcedure = studentProcedure
     createGetAllSucceededUserExams(ctx.dependencies)({
       uid: ctx.user.uid,
       language: input.language,
+    }),
+  );
+
+const getGetTeacherLedCourseGradesProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      passingThreshold: z.number(),
+    }),
+  )
+  .output<Parser<CourseWithSingleTrialExamsGradesAndSummary>>(
+    courseWithSingleTrialExamsGradesAndSummarySchema,
+  )
+  .query(({ ctx, input }) =>
+    createGetTeacherLedCourseGrades(ctx.dependencies)({
+      courseId: input.courseId,
+      passingThreshold: input.passingThreshold,
     }),
   );
 
@@ -361,6 +384,17 @@ const getExamQuestionsProcedure = studentProcedure
       examId: input.examId,
       language: input.language,
     }),
+  );
+
+const getSingleTrialExamQuestionStatisticsProcedure = professorProcedure
+  .input(z.object({ chapterId: z.string() }))
+  .output<Parser<SingleTrialExamQuestionStatistics[]>>(
+    singleTrialExamQuestionStatisticsSchema.array(),
+  )
+  .query(({ ctx, input }) =>
+    createGetSingleTrialExamQuestionStatistics(ctx.dependencies)(
+      input.chapterId,
+    ),
   );
 
 const saveUserChapterProcedure = studentProcedure
@@ -564,9 +598,12 @@ export const userCoursesRouter = createTRPCRouter({
   getEnrolledStudentsCount: getEnrolledStudentsCountProcedure,
   getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,
+  getSingleTrialExamQuestionStatistics:
+    getSingleTrialExamQuestionStatisticsProcedure,
   getLatestExamResults: getLatestExamResultsProcedure,
   getTeacherLedCourseDiplomaTimestamp:
     getTeacherLedCourseDiplomaTimestampProcedure,
+  getTeacherLedCourseGrades: getGetTeacherLedCourseGradesProcedure,
   getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
   getPayment: getPaymentProcedure,

@@ -4,6 +4,7 @@ import type {
   CourseExamResults,
   CourseSucceededExam,
   PartialExamQuestion,
+  SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 
 export const getPartialExamQuestionsQuery = ({
@@ -220,6 +221,45 @@ export const getCorrectAnswersCountQuery = ({ examId }: { examId: string }) => {
             AND ea."order" = qa."order"
         WHERE eq.exam_id = ${examId}
             AND qa.correct = true;
+    `;
+};
+
+export const getSingleTrialExamQuestionStatisticsQuery = (
+  chapterId: string,
+) => {
+  return sql<SingleTrialExamQuestionStatistics[]>`
+        SELECT
+            qq.id AS question_id,
+            COALESCE(qql.question, 'N/A - Missing question text') AS question_text,
+            COALESCE(qq.difficulty, 'N/A - Missing difficulty') AS question_difficulty,
+            COUNT(ueq.question_id) AS total_answers,
+            COALESCE(
+                (
+                    COUNT(
+                        CASE
+                            WHEN uea.order = correct_answer_def.order THEN 1
+                        END
+                    ) * 100.0
+                ) / NULLIF(COUNT(uea.question_id), 0),
+                0
+            ) AS success_percentage
+        FROM
+            content.quiz_questions AS qq
+            JOIN content.courses AS c ON qq.course_id = c.id
+            LEFT JOIN content.quiz_questions_localized AS qql ON qq.id = qql.quiz_question_id
+            AND qql.language = c.original_language
+            JOIN content.quiz_answers AS correct_answer_def ON qq.id = correct_answer_def.quiz_question_id
+            AND correct_answer_def.correct = TRUE
+            LEFT JOIN users.exam_questions AS ueq ON qq.id = ueq.question_id
+            LEFT JOIN users.exam_answers AS uea ON ueq.id = uea.question_id
+        WHERE
+            qq.chapter_id = ${chapterId}
+        GROUP BY
+            qq.id,
+            qql.question
+        ORDER BY
+            success_percentage DESC,
+            total_answers DESC;
     `;
 };
 

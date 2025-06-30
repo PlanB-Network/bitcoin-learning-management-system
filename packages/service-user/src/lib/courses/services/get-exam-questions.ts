@@ -1,6 +1,12 @@
-import type { PartialExamQuestion } from '@blms/types';
+import type {
+  PartialExamQuestion,
+  SingleTrialExamQuestionStatistics,
+} from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
-import { getPartialExamQuestionsQuery } from '../queries/get-exam-questions.js';
+import {
+  getPartialExamQuestionsQuery,
+  getSingleTrialExamQuestionStatisticsQuery,
+} from '../queries/get-exam-questions.js';
 
 interface Options {
   examId: string;
@@ -17,5 +23,15 @@ export const createGetExamQuestions = ({ postgres }: Dependencies) => {
     );
 
     return exam;
+  };
+};
+
+export const createGetSingleTrialExamQuestionStatistics = ({
+  postgres,
+}: Dependencies) => {
+  return async (
+    chapterId: string,
+  ): Promise<SingleTrialExamQuestionStatistics[]> => {
+    return postgres.exec(getSingleTrialExamQuestionStatisticsQuery(chapterId));
   };
 };
