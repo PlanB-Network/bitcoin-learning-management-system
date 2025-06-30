@@ -360,7 +360,11 @@
       "nextChapter": "Další kapitola",
       "completed": "Zkouška dokončena!",
       "examCertificateCompletionText": "Síť Plan ₿ je potěšena, že může pogratulovat {{username}} k získání diplomu z kurzu \"{{courseName}}\".",
-      "singleAttemptPrecaution": "Před zahájením se ujistěte, že vaše připojení je stabilní. Jelikož se jedná o zkoušku s jedním pokusem, pokud dojde k odpojení, nebudete mít další pokus."
+      "singleAttemptPrecaution": "Před zahájením se ujistěte, že vaše připojení je stabilní. Jelikož se jedná o zkoušku s jedním pokusem, pokud dojde k odpojení, nebudete mít další pokus.",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "finalScore": "",
+      "successfulPassedThreshold": ""
     },
     "format": {
       "hybrid": "Osobně/online",
