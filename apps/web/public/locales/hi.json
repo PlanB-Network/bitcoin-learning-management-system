@@ -71,7 +71,21 @@
     "invalidToken": "अमान्य टोकन",
     "tryAgain": "पुनः प्रयास करें",
     "didYouKnow": "क्या आप जानते हैं?",
-    "trackProgress": "अपनी प्रगति का हिसाब रखने के लिए एक खाता बनाएं या लॉग इन करें"
+    "trackProgress": "अपनी प्रगति का हिसाब रखने के लिए एक खाता बनाएं या लॉग इन करें",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "bookExam": "परीक्षण सत्र बुक करें",
@@ -248,7 +262,26 @@
       "wishTryAgain": "यदि आप पुनः प्रयास करना चाहते हैं, तो परीक्षा 24 घंटे में उपलब्ध होगी।",
       "timeStampHowDescription": "जब आपका डिप्लोमा जारी किया जाता है, तो एक अद्वितीय डिजिटल \"फिंगरप्रिंट\" बनाई जाती है और ब्लॉकचेन पर सुरक्षित रखी जाती है। इससे यह रिकॉर्ड स्थायी और छेड़छाड़ से सुरक्षित रहता है। यदि कोई इसे बदलने की कोशिश करेगा, तो लिंक टूट जाएगा और बदलाव का पता चल जाएगा।",
       "singleAttempt": "एकल प्रयास परीक्षा",
-      "singleAttemptAvailability": "यह परीक्षा ऑनलाइन उपलब्ध है: {{date}} पर"
+      "singleAttemptAvailability": "यह परीक्षा ऑनलाइन उपलब्ध है: {{date}} पर",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "weight": "",
+      "viewExam": ""
     },
     "explorer": {
       "journey": "बिटकॉइन एक यात्रा है, एक मंजिल नहीं",
@@ -598,7 +631,30 @@
       "saving": "सुरक्षित किया जा रहा है…",
       "security": "सुरक्षा",
       "username": "यूज़रनेम",
-      "crop": "काटें"
+      "crop": "काटें",
+      "notificationSettings": {
+        "none": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "teacher": {
       "courses": {
@@ -617,7 +673,52 @@
         "reviewInfos": "यहाँ आप अपने समन्वित प्रत्येक पाठ्यक्रम की पूरी जानकारी की समीक्षा और नियंत्रण कर सकते हैं।",
         "reviews": "समीक्षाएं",
         "analytics": "विश्लेषिकी",
-        "goal": "लक्ष्य"
+        "goal": "लक्ष्य",
+        "announcementModal": {
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "typePlaceholder": ""
+        },
+        "assignmentGrade": {
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "studentDisplayName": "",
+          "title": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": ""
+        },
+        "assignmentStudents": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "assignment": "",
+        "allStudents": "",
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": ""
       },
       "reviews": {
         "seeStatistics": "आंकड़े देखें",
@@ -755,7 +856,15 @@
         "discountCodeCopied": "डिस्काउंट कोड कॉपी किया गया",
         "downloadImage": "तस्वीर डाउनलोड करें",
         "downloadImages": "तस्वीर डाउनलोड करें",
-        "generateNewCodes": "नया कोड उत्पन्न करें"
+        "generateNewCodes": "नया कोड उत्पन्न करें",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "डिस्काउंट कोड"
     },
@@ -771,7 +880,60 @@
       "submitReviewInfo": "इस सुविधा का उपयोग करने के लिए आपको एक समीक्षा जमा करनी होगी।",
       "checkDetailsCompleted": "यहां आप इस पाठ्यक्रम के बारे में सभी विवरण देख सकते हैं जिसे आपने पूरा किया है।",
       "completionDiploma": "डिप्लोमा प्रमाणपत्र",
-      "coordinator": "पाठ्यक्रम समन्वयक"
+      "coordinator": "पाठ्यक्रम समन्वयक",
+      "ranking": "",
+      "submitBefore": "",
+      "summerSchool": "",
+      "yourProject": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "fileUploaded": "",
+      "announcement": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "confirmList": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "fileUploadError": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "exams": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "confirmNoEditable": "",
+      "congratulationsPassed": "",
+      "courseCalendar": ""
     },
     "credentials": {
       "completionDiplomas": "डिप्लोमा प्रमाणपत्र",
@@ -816,8 +978,23 @@
     "logout": "लॉग आउट करें",
     "calendar": {
       "calendar": "कैलेंडर",
-      "personalCalendar": "व्यक्तिगत कैलेंडर"
-    }
+      "personalCalendar": "व्यक्तिगत कैलेंडर",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
+    },
+    "goToHomepage": "",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": ""
   },
   "events": {
     "card": {
@@ -985,7 +1162,8 @@
     "payWithBitcoin": "बिटकॉइन के द्वारा भुगतान करें",
     "total": "कुल",
     "terms": "हमारी <0>सामान्य नियम</0> और शर्तों में रिफंड विवरण देखें",
-    "insertReductionCode": "अपना कटौती कोड डालें"
+    "insertReductionCode": "अपना कटौती कोड डालें",
+    "taxesMayApply": ""
   },
   "podcast": {
     "check": "पॉडकास्ट की जांच करें"
@@ -1341,7 +1519,18 @@
     "users": "उपयोगकर्ता",
     "about-us": "हमारे बारे में",
     "calendar": "कैलेंडर",
-    "mode": "तरीका"
+    "mode": "तरीका",
+    "password": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "notApplicable": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "home": {
     "courseSection": {
@@ -1498,5 +1687,47 @@
     "online": "ऑनलाइन",
     "replay": "रीप्ले",
     "hybrid": "प्रत्यक्ष एवं ऑनलाइन"
+  },
+  "notification": {
+    "types": {
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "assignment": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": "",
+    "read": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
