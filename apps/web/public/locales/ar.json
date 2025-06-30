@@ -295,7 +295,11 @@
         "questions": "الأسئلة المُجاب عنها",
         "time": "الوقت المستغرق"
       },
-      "viewExam": "عرض الاختبار"
+      "viewExam": "عرض الاختبار",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "review": {
       "skip": "تخطي كتابة الرأي",
@@ -371,7 +375,22 @@
       "startCourse": "",
       "viewDetails": "",
       "inprogressCoursesDescription": "",
-      "whereYouAre": ""
+      "whereYouAre": "",
+      "seeDetails": "",
+      "detailsAndCertificate": "",
+      "completeAll": "",
+      "courseDashboard": "",
+      "download": "",
+      "verify": "",
+      "yourProgress": "",
+      "notStarted": "",
+      "notValidated": "",
+      "price": "",
+      "duration": "",
+      "newCourses": "",
+      "noCoursesAvailable": "",
+      "seeTheCourse": "",
+      "shareOn": ""
     },
     "account": "الحساب",
     "courses": "الدورات",
@@ -429,7 +448,52 @@
       "submitReviewInfo": "يجب عليك تقديم مراجعة أو رأي للوصول إلى هذه الميزة.",
       "conclusionHeadline": "فيما يلي ملخص لما تعلّمته. إن فاتتك بعض الوحدات أو لم يتم اعتمادها بالشكل الصحيح، يمكنك إتمامها الآن إمّا بإعادة دراستها أو الضغط على زر \"إكمال\".",
       "examScore": "النتيجة:",
-      "exams": "الامتحانات"
+      "exams": "الامتحانات",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "assignmentDescription": "",
+      "assignmentTitle": ""
     },
     "profile": {
       "profilePicture": "",
@@ -448,7 +512,30 @@
       "profileInformation": "",
       "username": "",
       "emailChangeConfirmation": "",
-      "saving": ""
+      "saving": "",
+      "notificationSettings": {
+        "none": "",
+        "emailWarning": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": ""
+      },
+      "securitySettings": "",
+      "settings": "",
+      "emailChangeRateLimitError": ""
     },
     "bCert": {
       "grade": "الدرجة",
@@ -509,9 +596,59 @@
         "quickRecap": "",
         "reviewInfos": "",
         "analytics": "",
-        "courseDetails": ""
+        "courseDetails": "",
+        "announcements": "",
+        "allStudents": "",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription2": "",
+          "alertDescription": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
-      "menu": ""
+      "menu": "",
+      "tutorials": {
+        "tutorialAnalyticsDescription": "",
+        "yourTutorials": ""
+      }
     },
     "adminPanel": {
       "coupons": {
@@ -811,7 +948,10 @@
       "yourRoles": "وظائفك",
       "uploadCVSubLabel": "أرفق سيرتك الذاتية لإبراز مهاراتك وخبراتك أمام الجهات المهتمة بالتوظيف.",
       "uploadCV": "تحميل سيرتك الذاتية"
-    }
+    },
+    "goToDashboard": "",
+    "goToHomepage": "",
+    "studentDashboard": ""
   },
   "events": {
     "main": {
@@ -836,7 +976,9 @@
       "visitWebsite": "Visit website",
       "buyReplay": "",
       "eventFull": "",
-      "seatBooked": ""
+      "seatBooked": "",
+      "buyVideo": "",
+      "purchased": ""
     },
     "newEvent": {
       "button": "",
@@ -860,8 +1002,24 @@
       "limitation": "",
       "max_capacity": "",
       "payment_successful": "",
-      "time": ""
-    }
+      "time": "",
+      "access_online_successful": "",
+      "access_physical_successful": "",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": "",
+      "description_online": "",
+      "description_physical": ""
+    },
+    "errors": {
+      "premiumContentNeedsLogin": "",
+      "premiumContentNeedsPaymentAction": ""
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "home": {
     "header": {
@@ -905,6 +1063,22 @@
     "wallOfLoveSection": {
       "title": "",
       "subtitle": ""
+    },
+    "blogSection": {
+      "blogTitle": "",
+      "description": "",
+      "noBlogsAvailable": "",
+      "noDateAvailable": "",
+      "seeAll": ""
+    },
+    "courseSection": {
+      "checkAllCourses": "",
+      "upcomingCourseTitle": ""
+    },
+    "eventSection": {
+      "checkEvents": "",
+      "eventTitle": "",
+      "hottestEvent": ""
     }
   },
   "imagesAlt": {
@@ -929,7 +1103,20 @@
     "bCertDescription": "",
     "glossaryDescription": "التعرف على لغة البيتكوين",
     "login": "",
-    "publicDescription": ""
+    "publicDescription": "",
+    "chooseLanguage": "",
+    "channelsDescription": "",
+    "lecturesDescription": "",
+    "miningCourseDescription": "",
+    "moviesDescription": "",
+    "bitcoinDescription": "",
+    "businessDescription": "",
+    "newsletterDescription": "",
+    "planBLabsDescription": "",
+    "projectsDescription": "",
+    "protocolDescription": "",
+    "securityDescription": "",
+    "socialStudiesDescription": ""
   },
   "nodeNetwork": {
     "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
@@ -963,13 +1150,18 @@
   },
   "resources": {
     "newsletters": {
-      "title": "Newsletters"
+      "title": "Newsletters",
+      "author": "",
+      "level": "",
+      "noNewsletters": "",
+      "subtitle": ""
     },
     "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
     "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
     "pageTitle": "Ressourcen",
     "podcasts": {
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "noPodcasts": ""
     },
     "github": "",
     "pageSubtitleBooks": "",
@@ -985,14 +1177,34 @@
       "title": "الموارد التعليمية"
     },
     "channels": {
-      "title": "قنوات اليوتيوب"
+      "title": "قنوات اليوتيوب",
+      "noYoutubeChannels": ""
     },
     "conferences": {
       "title": "تسيجلات المؤتمرات"
     },
     "books": {
       "title": "المكتبة"
-    }
+    },
+    "lectures": {
+      "noLectures": "",
+      "title": ""
+    },
+    "movies": {
+      "noMovies": "",
+      "title": ""
+    },
+    "newsletter": {
+      "check": ""
+    },
+    "pageSubtitleChannels": "",
+    "pageSubtitleLectures": "",
+    "projects": {
+      "title": ""
+    },
+    "toggleLabelAll": "",
+    "toggleLabelSelectedLanguage": "",
+    "toggleFreeOnly": ""
   },
   "settings": {
     "changePassword": "Change password",
@@ -1005,7 +1217,9 @@
       "source": "Original source :",
       "author": "",
       "didHelp": "",
-      "writtenBy": ""
+      "writtenBy": "",
+      "ratingSuccess": "",
+      "tutorialName": ""
     },
     "exchange": {
       "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
@@ -1041,7 +1255,45 @@
       "title": "Wallet"
     },
     "approvedByCreator": "",
-    "backTutorials": ""
+    "backTutorials": "",
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "subCategories": {
+      "pool": "",
+      "resource": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "hasBeenProofreadBy": "",
+    "hasNotBeenProofread": "",
+    "writtenBy": ""
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1202,7 +1454,26 @@
     "close": "أغلق",
     "complete": "كامل",
     "congrats": "مبروك!",
-    "country": "بلد"
+    "country": "بلد",
+    "mentor": "",
+    "abstract": "",
+    "access": "",
+    "action": "",
+    "admin": "",
+    "author": "",
+    "bitcoin": "",
+    "business": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "dislikes": "",
+    "displayName": "",
+    "hybrid": "",
+    "notApplicable": "",
+    "password": "",
+    "saving": "",
+    "timeZone": "",
+    "title": ""
   },
   "conferences": {
     "topics": "مواضيع",
@@ -1228,7 +1499,12 @@
   },
   "payment": {
     "terms": "",
-    "total": ""
+    "total": "",
+    "haveReductionCode": "",
+    "insertReductionCode": "",
+    "payByCard": "",
+    "payWithBitcoin": "",
+    "taxesMayApply": ""
   },
   "publicCommunication": {
     "legalSections": {
@@ -1302,7 +1578,8 @@
     "reviewEarn": "",
     "status": "",
     "description": "",
-    "thanks": ""
+    "thanks": "",
+    "rewardsText": ""
   },
   "accessType": {
     "hybrid": "شخصياً وعبر الإنترنت",
@@ -1311,13 +1588,139 @@
     "replay": "مشاهدة"
   },
   "youtubeChannels": {
-    "pageTitle": "قنوات يوتيوب"
+    "pageTitle": "قنوات يوتيوب",
+    "view": "",
+    "watchTrailer": ""
   },
   "projects": {
-    "pageTitle": "مشاريع البيتكوين"
+    "pageTitle": "مشاريع البيتكوين",
+    "languages": "",
+    "networkStrength": "",
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "related": "",
+    "relatedEvents": ""
   },
   "search": {
     "glossary_word": "كلمة القاموس",
-    "glossary_words": "كلمات القاموس"
+    "glossary_words": "كلمات القاموس",
+    "course": "",
+    "podcasts": "",
+    "newsletter": "",
+    "all": "",
+    "book": "",
+    "books": "",
+    "categories": "",
+    "conference": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "course_chapter": "",
+    "course_part": "",
+    "courses": "",
+    "event": "",
+    "events": "",
+    "explorer": {
+      "subtitle": "",
+      "title": ""
+    },
+    "filterByType": "",
+    "languageSelected": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "loadMoreResults": "",
+    "newsletters": "",
+    "podcast": "",
+    "professor": "",
+    "professors": "",
+    "project": "",
+    "projects": "",
+    "resultEmpty": "",
+    "resultError": "",
+    "resultInfo": "",
+    "results": "",
+    "resultsRemaining": "",
+    "search": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorial": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": ""
+  },
+  "notifications": {
+    "today": "",
+    "daysAgo": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "hoursAgo": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": "",
+    "results": "",
+    "markAsRead": ""
+  },
+  "notification": {
+    "types": {
+      "calendar": "",
+      "assignment": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "filters": {
+    "categories": "",
+    "levels": "",
+    "topics": "",
+    "resources": ""
+  },
+  "labs": {
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "lectures": {
+    "buyVideoToUnlock": "",
+    "checkFullCourse": "",
+    "lecturePartCourse": "",
+    "pageTitle": "",
+    "partCourse": "",
+    "watchLecture": ""
+  },
+  "movies": {
+    "goToMovie": "",
+    "pageTitle": "",
+    "watchTrailer": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "podcast": {
+    "check": ""
   }
 }
