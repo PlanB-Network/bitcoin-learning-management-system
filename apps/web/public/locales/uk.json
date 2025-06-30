@@ -71,7 +71,21 @@
     "trackProgress": "Створіть обліковий запис або увійдіть, щоб відстежувати свій прогрес",
     "dashboardUnlocked": "Ваша студентська панель тепер доступна!",
     "didYouKnow": "Ви це знали?",
-    "passwordChangedSuccess": "Пароль успішно змінено"
+    "passwordChangedSuccess": "Пароль успішно змінено",
+    "emailValidation": {
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "emailChangeValidated": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "bCertDescription": "Сертифікат ₿ (₿-CERT) - це міжнародно визнаний іспит, який оцінює ваше володіння Біткоїном та похідними темами. Якщо ви наберете більше ніж 80% правильних відповідей - ви отримаєте сертифікат, який підтвердить ваші навички та знання в Біткоїн-індустрії, що відкриє вам доступ до найкращих компаній та робочих місць.",
@@ -178,7 +192,11 @@
       "otherCoursesInterest": "Інші курси, які можуть вас зацікавити",
       "premiumContentNeedsLogin": "Вам потрібно увійти в систему, щоб отримати доступ до цього курсу.",
       "premiumContentNeedsPayment": "Цей курс є частиною преміум-програми.",
-      "premiumContentNeedsPaymentAction": "Перейдіть на домашню сторінку курсу"
+      "premiumContentNeedsPaymentAction": "Перейдіть на домашню сторінку курсу",
+      "associatedProfessors": "",
+      "coordinatedBy": "",
+      "learning": "",
+      "attendInPersonWarning": ""
     },
     "explorer": {
       "buildPath": "Прокладіть свій власний шлях у кролячу нору",
@@ -189,7 +207,8 @@
       "seeCourse": "Переглянути курс",
       "planbSchoolHeadline": "Plan ₿ School, під керівництвом Джакомо Зукко пропонує інтенсивні тримісячні освітні програми, покликані подолати розрив між навчанням та реальним застосуванням знань. Окрім традиційних занять, студенти беруть участь у практичних проектах під керівництвом компанії та першокласному буткемпі, присвяченому найкращим працівникам. Тільки видатні таланти проходять два конкурсні відбори, що гарантує, що найталановитіші студенти отримають все необхідне для початку своєї кар'єри в Біткоїн-індустрії.",
       "comingSoon": "незабаром",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "goal": ""
     },
     "payment": {
       "accessibility": "Доступність",
@@ -211,7 +230,8 @@
       "inPersonCallout": "Ви збираєтеся придбати <strong>особистий</strong> доступ до цього курсу.",
       "onlineCallout": "Ви збираєтеся придбати <strong>онлайн</strong> доступ до цього курсу.",
       "onlineDescription": "Кожне заняття транслюється в прямому ефірі на платформі.\nЦя покупка надасть вам доступ до прямих трансляцій та відео для перегляду.",
-      "checkoutError": "Під час оформлення замовлення сталася помилка.\nБудь ласка, спробуйте ще раз."
+      "checkoutError": "Під час оформлення замовлення сталася помилка.\nБудь ласка, спробуйте ще раз.",
+      "courseType": ""
     },
     "quizz": {
       "quizz": "Тест",
@@ -342,7 +362,28 @@
       "successDiplomaTimeStamped": "Вітаємо! Ви успішно склали екзамен. \nВаш диплом буде доступний у вашому студентському дашборді приблизно через 10 годин після того, як ви склали екзамен. Ця затримка пов'язана з технологією <0>відмітки часу</0>, яка гарантує його автентичність.",
       "goConclusion": "Перейдіть до висновку",
       "skipGoConclusion": "Пропустити, перейти до висновку",
-      "timeStamping": "позначення часу"
+      "timeStamping": "позначення часу",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": "",
+      "viewExam": ""
     },
     "conclusion": {
       "completedFeedbackHeadline": "Дякуємо за ваш відгук!\nЦе дуже важливо для нас, тому ми дійсно цінуємо це.",
@@ -354,6 +395,11 @@
       "takeFinalExam": "Тепер, коли ви завершили всі розділи, настав час скласти фінальний іспит, щоб перевірити свої знання.",
       "unlockFeatures1": "Щоб розблокувати всі функції та відстежувати свій прогрес, вам потрібен обліковий запис.",
       "unlockFeatures2": "Будь ласка, зверніть увагу, що ми не збираємо жодних особистих даних і не використовуємо файли cookie."
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -384,7 +430,11 @@
     },
     "calendar": {
       "calendar": "Календар",
-      "personalCalendar": "Особистий календар"
+      "personalCalendar": "Особистий календар",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "courses": "Курси",
     "logout": "Вийти з системи",
@@ -436,7 +486,30 @@
       "profileInformation": "Інформація профілю",
       "profilePicture": "Фото профілю",
       "security": "Безпека",
-      "username": "Ім'я користувача"
+      "username": "Ім'я користувача",
+      "notificationSettings": {
+        "loadEmailSettingsErrorDescription": "",
+        "none": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorManage": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": "",
+      "settings": "",
+      "emailChangeRateLimitError": ""
     },
     "teacher": {
       "courses": {
@@ -454,7 +527,53 @@
         "reviewInfos": "Тут ви можете керувати та переглядати всю інформацію, що стосується кожного курсу, яким ви координували.",
         "reviews": "Відгуки",
         "makeModifications": "Потрібно внести зміни?",
-        "quickRecap": "Тут ви можете знайти всю загальну інформацію щодо цього курсу."
+        "quickRecap": "Тут ви можете знайти всю загальну інформацію щодо цього курсу.",
+        "announcementsIntroduction": "",
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "typePlaceholder": "",
+          "contentPlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": ""
+        },
+        "announcements": "",
+        "assignmentGrade": {
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "studentDisplayName": "",
+          "title": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": ""
+        },
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "assignment": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": ""
       },
       "menu": "Меню викладача",
       "profile": {
@@ -503,7 +622,61 @@
       "shareOnSocials": "Поділитися в соцмережах:",
       "tweetText": "Захоплений тим, що завершив {{courseIndex}} у мережі Plan ₿ і отримав свій сертифікат з балом {{score}}/100 на фінальному іспиті! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Ось підсумок того, що ви вивчили. Якщо деякі розділи були пропущені або не пройдені належним чином, зараз саме час це зробити, або повернувшись до них, або натиснувши на кнопку «Завершити».",
-      "submitReviewInfo": "Вам потрібно надіслати відгук, щоб отримати доступ до цієї функції."
+      "submitReviewInfo": "Вам потрібно надіслати відгук, щоб отримати доступ до цієї функції.",
+      "exams": "",
+      "examScore": "",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "assignmentCompletedTitle": "",
+      "mustBePdf": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "conclusionNotReleased": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "coordinator": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "assignmentTitle": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -554,7 +727,79 @@
       "type": "Тип",
       "upcomingBookings": "Найближчі бронювання",
       "upcomingBookingsSubtitle": "Тут ви можете завантажити список учасників усіх очних заходів.",
-      "userRolesAllocation": "Розподіл ролей користувачів"
+      "userRolesAllocation": "Розподіл ролей користувачів",
+      "accessGranted": "",
+      "coupons": {
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        }
+      },
+      "coursesIndexes": "",
+      "deleteRole": "",
+      "discountCodes": "",
+      "editRole": "",
+      "hasAccessTo": "",
+      "selectRole": ""
     },
     "careerPortal": {
       "cvUpload": "Завантажити резюме",
@@ -731,10 +976,23 @@
       "fileUploaded": "Резюме успішно завантажено!",
       "fileUploadError": "Під час завантаження вашого файлу сталася помилка. Будь ласка, спробуйте ще раз.",
       "noFileSelected": "Не вибрано жодного файлу",
-      "chooseFile": "Вибрати файл"
+      "chooseFile": "Вибрати файл",
+      "applicationComplete": "",
+      "applicationIncomplete": ""
     },
     "backToDashboard": "Повернутися до панелі керування",
-    "studentDashboard": "Панель студента"
+    "studentDashboard": "Панель студента",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "card": {
@@ -788,14 +1046,22 @@
       "access_online_successful": "Коли захід почнеться, увійдіть на платформу, щоб отримати доступ до прямої трансляції на сторінці заходу.",
       "description_online": "Будь ласка, перегляньте дату та час проведення заходу.\nКоли настане час, увійдіть на платформу, щоб отримати доступ до прямої трансляції через сторінку заходу.",
       "description_physical": "Будь ласка, ознайомтеся з наданою інформацією про місце проведення заходу.\nЯк тільки ваше бронювання буде підтверджено, ми надішлемо вам квиток для участі у заході. Цей квиток також надасть вам доступ до прямої трансляції та відео повтору, якщо таке буде доступне.",
-      "access_physical_successful": "Ви можете завантажити свій квиток тут, або завантажити його пізніше у своїй панелі керування."
+      "access_physical_successful": "Ви можете завантажити свій квиток тут, або завантажити його пізніше у своїй панелі керування.",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "pageDescription": "Хочете обговорити Біткоїн в реальному часі? Тут ви можете знайти всі заходи, які підтримуються спільнотами мережі Plan B. Незалежно від того, чи хочете ви послухати лекцію, обговорити Біткоїн за чашкою кави, чи скласти іспит для оцінки своїх знань, ви знайдете відповідний захід тут через мережу Plan B.",
     "errors": {
       "premiumContentNeedsLogin": "Вам потрібно увійти, щоб отримати доступ до цього заходу.",
       "premiumContentNeedsPayment": "Ця подія є частиною преміум-програми.",
       "premiumContentNeedsPaymentAction": "Перейдіть на сторінку подій"
-    }
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "glossary": {
     "term": "Термін",
@@ -907,7 +1173,8 @@
     "securityDescription": "Опануйте методи захисту ваших Біткоїн-активів.",
     "socialStudiesDescription": "Вивчайте вплив Біткоїна на суспільство.",
     "projectsDescription": "Дізнайтеся про компанії та проєкти, які сприяють вдосконаленню Біткоїна та збільшенню його прийняття",
-    "bitcoinDescription": "Вивчайте Біткоїн від основ до просунутих додатків."
+    "bitcoinDescription": "Вивчайте Біткоїн від основ до просунутих додатків.",
+    "planBLabsDescription": ""
   },
   "nodeNetwork": {
     "description1": "Ми віримо, що освіта має відбуватися не лише онлайн, але й у фізичному просторі. Для цього Plan ₿ Network керує мережею хабів по всьому світу, які приймають мислителів, підприємців та викладачів, що сприяють розвитку Біткоїна та технологій свободи.",
@@ -951,7 +1218,8 @@
       "blogSidebarTitle": "Попередня {{категорія}} Пости",
       "blogListButtonText": "Читати",
       "filterText": "Фільтрувати за темою :",
-      "featuredArticleTitleText": "Остання стаття опублікована"
+      "featuredArticleTitleText": "Остання стаття опублікована",
+      "blogSidebarTitleForAll": ""
     },
     "description": "Мережа Plan ₿ з гордістю дотримується стандартів відкритого коду та забезпечує прозорість на всьому своєму шляху"
   },
@@ -1066,7 +1334,42 @@
     "pageTitle": "Відкрийте для себе наші навчальні посібники",
     "writtenBy": "Цей підручник був написаний",
     "hasBeenProofreadBy": "Цей підручник був вичитаний",
-    "hasNotBeenProofread": "Цей підручник ще не був вичитаний"
+    "hasNotBeenProofread": "Цей підручник ще не був вичитаний",
+    "subCategories": {
+      "hardware": "",
+      "pool": "",
+      "mobile": "",
+      "others": "",
+      "peer-to-peer": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "lightning-network": "",
+      "on-chain": "",
+      "operating system": "",
+      "point-of-sale": "",
+      "resource": ""
+    },
+    "business": {
+      "title": "",
+      "description": "",
+      "shortDescription": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    }
   },
   "words": {
     "courses": "Курси",
@@ -1224,7 +1527,21 @@
     "lecture": "Лекція",
     "likes": "Подобається",
     "linkedin": "Linkedin",
-    "email": "Електронна пошта"
+    "email": "Електронна пошта",
+    "calendar": "",
+    "company": "",
+    "notApplicable": "",
+    "password": "",
+    "selectedAmount": "",
+    "day": "",
+    "continue": "",
+    "mentor": "",
+    "mode": "",
+    "save": "",
+    "saving": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "notFound": {
     "here": "Тут",
@@ -1236,7 +1553,9 @@
     "total": "Всього",
     "payByCard": "Оплата карткою",
     "payWithBitcoin": "Платіть біткоїнами",
-    "haveReductionCode": "Маєте код знижки?"
+    "haveReductionCode": "Маєте код знижки?",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "podcasts": {
     "pageTitle": "Подкасти про Біткоїн"
@@ -1316,7 +1635,8 @@
     "lecture_replay": "Повтор лекції",
     "lecture_replays": "Записи лекцій",
     "project": "Проєкт",
-    "projects": "Проєкти"
+    "projects": "Проєкти",
+    "conference": ""
   },
   "lectures": {
     "buyVideoToUnlock": "Придбайте відео, щоб розблокувати його",
@@ -1332,7 +1652,8 @@
     "languages": "Мови",
     "noRelatedEvents": "Наразі немає найближчих подій, пов'язаних з цим викладачем.",
     "otherCommunities": "Досліджуйте спільноти Plan B",
-    "pageTitle": "Біткоїн-проєкти"
+    "pageTitle": "Біткоїн-проєкти",
+    "related": ""
   },
   "youtubeChannels": {
     "pageTitle": "Канали YouTube",
@@ -1350,5 +1671,59 @@
     "replay": "Відтворити",
     "hybrid": "Очно та онлайн",
     "online": "Онлайн"
+  },
+  "labs": {
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": "",
+    "coordinatedBy": "",
+    "description1": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "warning": "",
+      "celebration": "",
+      "general": ""
+    }
+  },
+  "notifications": {
+    "calendar_48h_online_event": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "notifications": "",
+    "select": "",
+    "selectAll": "",
+    "noUnreadNotifications": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
