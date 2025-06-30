@@ -67,7 +67,23 @@
     "invalidToken": "",
     "checkingToken": "",
     "checkingTokenExplain": "",
-    "passwordResetSent": ""
+    "passwordResetSent": "",
+    "passwordChangedSuccess": "",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    },
+    "trackProgress": ""
   },
   "bet": {
     "educationalContent": {
@@ -120,7 +136,21 @@
       "paidCourse": "",
       "buyInPersonCourse": "",
       "buyOnlineCourse": "",
-      "inPersonAccess": ""
+      "inPersonAccess": "",
+      "coordinatedBy": "",
+      "learning": "",
+      "associatedProfessors": "",
+      "attendInPersonWarning": "",
+      "collaborativeEffort": "",
+      "courseAddedToDashboard": "",
+      "hasBeenProofreadBy": "",
+      "hasNotBeenProofread": "",
+      "otherCourses": "",
+      "otherCoursesInterest": "",
+      "pastEditionsRatings": "",
+      "premiumContentNeedsLogin": "",
+      "premiumContentNeedsPaymentAction": "",
+      "thanksTipping": ""
     },
     "explorer": {
       "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
@@ -130,7 +160,9 @@
       "findCourses": "",
       "seeCourse": "",
       "planbSchoolHeadline": "Plan ₿ School, jota johtaa Giacomo Zucco, tarjoaa intensiivisiä kolmen kuukauden koulutusohjelmia, jotka on suunniteltu kaventamaan kuilua oppimisen ja todellisen maailman sovellusten välillä. Perinteisten luokkien lisäksi opiskelijat osallistuvat yritysten johtamiin käytännön projekteihin ja ensiluokkaiseen bootcampiin, joka on omistettu parhaille suorittajille. Vain parhaat lahjakkuudet etenevät kahden kilpailukykyisen valintakierroksen jälkeen, varmistaen, että lopulliset huippuopiskelijat varustetaan täysin aloittamaan uransa Bitcoin-teollisuudessa.",
-      "planbSchool": "PLAN ₿ SCHOOL"
+      "planbSchool": "PLAN ₿ SCHOOL",
+      "comingSoon": "",
+      "goal": ""
     },
     "part": {
       "count": "Jakso {{count}}"
@@ -154,7 +186,9 @@
       "onlineCallout": "",
       "inPersonDescription": "",
       "onlineDescription": "",
-      "inPersonCallout": ""
+      "inPersonCallout": "",
+      "checkoutError": "",
+      "courseType": ""
     },
     "quizz": {
       "clickOnPie": "Klikkaa piirakka-kaaviota, josta näet virheesi selityksineen",
@@ -220,7 +254,46 @@
       "congratulationsPassed": "",
       "dontGiveUpTryAgain": "",
       "goodLuck": "",
-      "tryOneMoreTime": ""
+      "tryOneMoreTime": "",
+      "courseDiploma": "",
+      "availableDashboardTimestamped": "",
+      "courseNotFound": "",
+      "dontWorryRetake": "",
+      "examCertificateCompletionText": "",
+      "buttonTextBCert": "",
+      "certificatePageOtherCourses": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "passExam": "",
+      "readyToTest": "",
+      "receiveDiploma": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "successfulPassedThreshold": "",
+      "skipGoConclusion": "",
+      "solidEffort": "",
+      "successDiploma": "",
+      "successDiplomaTeachedLed": "",
+      "successDiplomaTimeStamped": "",
+      "takeExam": "",
+      "timeStampedNoDot": "",
+      "timeStamping": "",
+      "weight": "",
+      "failedDiploma": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "examNotPassed": "",
+      "goConclusion": "",
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "viewExam": ""
     },
     "review": {
       "asExpected": "",
@@ -253,7 +326,32 @@
       "tooShort": "",
       "yesOfCourse": "",
       "recommend": "",
-      "faithful": ""
+      "faithful": "",
+      "commentAdminMobile": "",
+      "commentPublicMobile": "",
+      "saveReview": "",
+      "whatStudentsSayPasEdition": "",
+      "commentTeacherMobile": "",
+      "editReview": "",
+      "feedback": "",
+      "feedbackDescription2": "",
+      "thankYou": ""
+    },
+    "conclusion": {
+      "completedFeedbackHeadline": "",
+      "completedFeedbackSubHeadline": "",
+      "completedChaptersHeadline": "",
+      "congratulationsEnd": "",
+      "finalStep": "",
+      "stepsToComplete": "",
+      "takeFinalExam": "",
+      "unlockFeatures1": "",
+      "unlockFeatures2": ""
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -270,7 +368,22 @@
       "completedCoursesDescription": "",
       "done": "",
       "whereYouAre": "",
-      "inprogressCoursesDescription": ""
+      "inprogressCoursesDescription": "",
+      "courseDashboard": "",
+      "detailsAndCertificate": "",
+      "yourProgress": "",
+      "completeAll": "",
+      "duration": "",
+      "newCourses": "",
+      "noCoursesAvailable": "",
+      "notStarted": "",
+      "notValidated": "",
+      "price": "",
+      "seeDetails": "",
+      "seeTheCourse": "",
+      "shareOn": "",
+      "verify": "",
+      "download": ""
     },
     "account": "Tili",
     "courses": "Luennot",
@@ -290,7 +403,10 @@
       "noInvoice": "Ei maksutapahtumia.",
       "noTicket": "Ei pääsylippuja.",
       "upcomingTicketTitle": "Tulevat",
-      "pastTicketTitle": "Aiemmat"
+      "pastTicketTitle": "Aiemmat",
+      "cancelBookingTitle": "",
+      "noGoBack": "",
+      "yesCancel": ""
     },
     "profile": {
       "personalInformation": "",
@@ -309,7 +425,30 @@
       "save": "",
       "crop": "",
       "saving": "",
-      "emailChangeConfirmation": ""
+      "emailChangeConfirmation": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "teacher": {
       "reviews": {
@@ -340,7 +479,53 @@
         "quickRecap": "",
         "reviewInfos": "",
         "reviews": "",
-        "courseModification": ""
+        "courseModification": "",
+        "announcementsPast": "",
+        "assignmentGrade": {
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "alertTitle": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "allStudents": "",
+        "assignment": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": ""
       },
       "menu": "",
       "profile": {
@@ -360,6 +545,10 @@
         "teacher": "",
         "teacherProfile": "",
         "tutorialModification": ""
+      },
+      "tutorials": {
+        "tutorialAnalyticsDescription": "",
+        "yourTutorials": ""
       }
     },
     "bCert": {
@@ -368,7 +557,11 @@
     },
     "calendar": {
       "calendar": "",
-      "personalCalendar": ""
+      "personalCalendar": "",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "course": {
       "checkDetailsCompleted": "",
@@ -378,7 +571,63 @@
       "feedbacks": "",
       "ratingsAndFeedbacks": "",
       "shareOnSocials": "",
-      "tweetText": ""
+      "tweetText": "",
+      "assignmentDescription": "",
+      "summerSchool": "",
+      "confirmList": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "examScore": "",
+      "exams": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "keepMovingForward": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitReviewInfo": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "projectRankingInstructions": "",
+      "saveList": "",
+      "assignmentInformation": "",
+      "conclusionHeadline": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "coordinator": "",
+      "courseCalendar": "",
+      "assignmentTitle": ""
     },
     "credentials": {
       "bCert": "",
@@ -393,7 +642,305 @@
       "courseDiplomas": "",
       "completionDiplomas": "",
       "yourCertificate": ""
-    }
+    },
+    "goToDashboard": "",
+    "studentDashboard": "",
+    "adminPanel": {
+      "coupons": {
+        "productEvent": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        },
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": ""
+      },
+      "accessGranted": "",
+      "bookings": "",
+      "bookingsPanel": "",
+      "careers": {
+        "careers": "",
+        "careersSubtitle": "",
+        "cv": "",
+        "downloadProfiles": "",
+        "downloadSpreadsheet": "",
+        "lastUpdate": "",
+        "lastUpdated": "",
+        "profession": "",
+        "resultsRemaining": "",
+        "seeMore": "",
+        "viewCV": ""
+      },
+      "coursesIndexes": "",
+      "date": "",
+      "nameOfEvent": "",
+      "participants": "",
+      "professorName": "",
+      "removeTeacherDescription": "",
+      "searchByNameOrCategory": "",
+      "seeOrEdit": "",
+      "selectProfessor": "",
+      "selectRole": "",
+      "tutorialAnalytics": "",
+      "tutorialAnalyticsDescription": "",
+      "tutorialsManagementPanel": "",
+      "type": "",
+      "upcomingBookings": "",
+      "upcomingBookingsSubtitle": "",
+      "userRolesAllocation": "",
+      "confirmRemoval": "",
+      "deleteRole": "",
+      "discountCodes": "",
+      "editRole": "",
+      "githubLink": "",
+      "hasAccessTo": "",
+      "listOfParticipants": ""
+    },
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "careerPortal": {
+      "applicationComplete": "",
+      "applicationIncomplete": "",
+      "applicationSaved": "",
+      "bitcoinCommunityText": "",
+      "bitcoinProjectParticipant": "",
+      "bitcoinProjectPlaceholder": "",
+      "bitcoinProjectSubLabel": "",
+      "bitcoinProjectText": "",
+      "bitcoinRelatedExperience": "",
+      "bitcoinRelatedExperienceSubtitle": "",
+      "companySizes": {
+        "noPreference": "",
+        "100More": "",
+        "11To40": "",
+        "1To10": "",
+        "41To100": ""
+      },
+      "completeApplication": "",
+      "confirmDelete": "",
+      "cvUpload": "",
+      "cvUploadLabel": "",
+      "cvUploadSubtitle": "",
+      "deleteCareerProfile": "",
+      "deleteCareerProfileTitle": "",
+      "description": "",
+      "emailPlaceholder": "",
+      "fileTooLarge": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "firstName": "",
+      "followProcess": "",
+      "invalidFile": "",
+      "jobCategories": {
+        "more": "",
+        "operationsSupport": "",
+        "technicalRoles": "",
+        "businessRoles": "",
+        "financeCompliance": "",
+        "marketingCommunity": "",
+        "productDesign": "",
+        "researchEducation": ""
+      },
+      "jobSearch": "",
+      "jobSearchSubtitle": "",
+      "jobTitles": {
+        "accountingManager": "",
+        "amlKycSpecialist": "",
+        "backendEngineer": "",
+        "bitcoinInvestmentAnalyst": "",
+        "brandStrategist": "",
+        "businessAnalyst": "",
+        "businessDevelopmentManager": "",
+        "cloudInfrastructureEngineer": "",
+        "communityManager": "",
+        "complianceOfficer": "",
+        "cryptographer": "",
+        "customerSuccessManager": "",
+        "dataEngineer": "",
+        "devOpsEngineer": "",
+        "economicAnalyst": "",
+        "educator": "",
+        "eventCoordinator": "",
+        "frontendEngineer": "",
+        "fullStackDeveloper": "",
+        "graphicDesigner": "",
+        "hrSpecialist": "",
+        "legalContractSpecialist": "",
+        "logisticManager": "",
+        "marketingManager": "",
+        "miningEngineer": "",
+        "miningOperationsManager": "",
+        "mobileAppDeveloper": "",
+        "operationsManager": "",
+        "protocolEngineer": "",
+        "publicRelationsManager": "",
+        "revenueManager": "",
+        "riskAnalyst": "",
+        "sales": "",
+        "seoSpecialist": "",
+        "socialMediaManager": "",
+        "technicalProductManager": "",
+        "technicalSupportEngineer": "",
+        "technicalWriter": "",
+        "uiUxDesigner": "",
+        "uxResearcher": "",
+        "customerSupportSpecialist": "",
+        "cybersecurity": "",
+        "productManager": "",
+        "researcher": "",
+        "contentWriter": ""
+      },
+      "languageLevel": "",
+      "languageLevelSubLabel": "",
+      "languageLevels": {
+        "advanced": "",
+        "beginner": "",
+        "elementary": "",
+        "fluent": "",
+        "intermediate": ""
+      },
+      "languageRequired": "",
+      "languageSkills": "",
+      "languageSkillsSubtitle": "",
+      "lastName": "",
+      "legalInformation": "",
+      "legalInformationSubtitle": "",
+      "motivation": "",
+      "motivationLetter": "",
+      "motivationLetterPlaceholder": "",
+      "motivationLetterSubLabel": "",
+      "noFileSelected": "",
+      "other": "",
+      "partTime": "",
+      "personalInformation": "",
+      "personalInformationSubtitle": "",
+      "provideValidEmail": "",
+      "selectJobTitle": "",
+      "termsAndConditions": "",
+      "acceptTermsAndConditions": "",
+      "acceptedFormat": "",
+      "add": "",
+      "allowReceivingEmails": "",
+      "availability": "",
+      "availabilityStart": "",
+      "availabilityStartPlaceholder": "",
+      "beAware": "",
+      "bitcoinCommunityParticipant": "",
+      "cannotUndo": "",
+      "chooseFile": "",
+      "companySizePreference": "",
+      "companySizePreferenceSubLabel": "",
+      "companySizeRequired": "",
+      "contactInformationSubtitle": "",
+      "countryResidence": "",
+      "cvRequired": "",
+      "expectedSalary": "",
+      "expectedSalaryPlaceholder": "",
+      "expectedSalarySubLabel": "",
+      "fullTime": "",
+      "legalTerms": "",
+      "lookingForJob": "",
+      "maxCharacters": "",
+      "maxRoles": "",
+      "motivationSubtitle": "",
+      "remoteWorkPreference": "",
+      "remoteWorkPreferences": {
+        "no": "",
+        "sometimes": "",
+        "yes": ""
+      },
+      "roleLevel": "",
+      "roleLevelSubLabel": "",
+      "roleLevels": {
+        "junior": "",
+        "mid": "",
+        "senior": "",
+        "student": ""
+      },
+      "roleRequired": "",
+      "seeOrEditProfile": "",
+      "contactInformation": "",
+      "selectLanguage": "",
+      "selectRole": "",
+      "selectRoleSubLabel": "",
+      "startApplication": "",
+      "steps": {
+        "step1": "",
+        "step2": "",
+        "step3": "",
+        "step4": ""
+      },
+      "uploadCV": "",
+      "uploadCVSubLabel": "",
+      "welcome": "",
+      "yourLanguages": "",
+      "yourRoles": ""
+    },
+    "goToHomepage": "",
+    "backToDashboard": ""
   },
   "events": {
     "main": {
@@ -418,7 +965,9 @@
       "visitWebsite": "Vieraile sivustolla",
       "buyReplay": "Osta tallenne",
       "eventFull": "Tapahtuma loppuunmyyty",
-      "seatBooked": "Istumapaikka varattu"
+      "seatBooked": "Istumapaikka varattu",
+      "buyVideo": "",
+      "purchased": ""
     },
     "newEvent": {
       "button": "Lisää tapahtuma",
@@ -442,8 +991,24 @@
       "limitation": "Rajoitukset",
       "max_capacity": "Maksimi määrä",
       "payment_successful": "Varaus onnistui!",
-      "time": "Aika"
-    }
+      "time": "Aika",
+      "access_online_successful": "",
+      "access_physical_successful": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": "",
+      "description_online": "",
+      "description_physical": "",
+      "callout_book_online": "",
+      "callout_book_physical": ""
+    },
+    "errors": {
+      "premiumContentNeedsLogin": "",
+      "premiumContentNeedsPaymentAction": ""
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "home": {
     "header": {
@@ -487,6 +1052,22 @@
     "wallOfLoveSection": {
       "title": "",
       "subtitle": ""
+    },
+    "blogSection": {
+      "blogTitle": "",
+      "description": "",
+      "noBlogsAvailable": "",
+      "noDateAvailable": "",
+      "seeAll": ""
+    },
+    "courseSection": {
+      "checkAllCourses": "",
+      "upcomingCourseTitle": ""
+    },
+    "eventSection": {
+      "checkEvents": "",
+      "eventTitle": "",
+      "hottestEvent": ""
     }
   },
   "imagesAlt": {
@@ -511,7 +1092,20 @@
     "glossaryDescription": "",
     "login": "",
     "bCertDescription": "",
-    "publicDescription": ""
+    "publicDescription": "",
+    "newsletterDescription": "",
+    "securityDescription": "",
+    "socialStudiesDescription": "",
+    "bitcoinDescription": "",
+    "businessDescription": "",
+    "channelsDescription": "",
+    "chooseLanguage": "",
+    "lecturesDescription": "",
+    "miningCourseDescription": "",
+    "moviesDescription": "",
+    "planBLabsDescription": "",
+    "projectsDescription": "",
+    "protocolDescription": ""
   },
   "nodeNetwork": {
     "description1": "Rahoitusjärjestelmämme on romahtamassa, ruokamme myrkytetään ja vapautemme viedään. Emme voi odottaa ihmettä, vaan meidän täytyy luoda turvallinen paikka elää. Meidän täytyy luoda oma PlanB!",
@@ -545,18 +1139,61 @@
   },
   "resources": {
     "newsletters": {
-      "title": "Uutiskirje"
+      "title": "Uutiskirje",
+      "author": "",
+      "level": "",
+      "noNewsletters": "",
+      "subtitle": ""
     },
     "pageDescription": "Bitcoinin ymmärtäminen on kuin tutkisi labyrinttia, joka jatkuvasti kasvaa. Auttaaksemme sinua matkallasi, olemme koonneet laajan valikoiman resursseja, jotka käsittelevät Bitcoinin ekosysteemin lukuisia aiheita.",
     "pageSubtitle": "Hajautettu tieto tehokkaampaan levitykseen",
     "pageTitle": "Tervetuloa Resurssi-portaaliin",
     "podcasts": {
-      "title": "Podcastit"
+      "title": "Podcastit",
+      "noPodcasts": ""
     },
     "github": "Kaikki tämä data hallitaan yhden avoimen lähdekoodin <0>GitHub</0>-repositoryn kautta. Voit vapaasti osallistua ja lisätä puuttuvaa sisältöä.",
     "pageSubtitleBooks": "",
     "pageSubtitlePodcast": "",
-    "searchFilterName": ""
+    "searchFilterName": "",
+    "articles": {
+      "title": ""
+    },
+    "bet": {
+      "title": ""
+    },
+    "books": {
+      "title": ""
+    },
+    "channels": {
+      "noYoutubeChannels": "",
+      "title": ""
+    },
+    "conferences": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "lectures": {
+      "noLectures": "",
+      "title": ""
+    },
+    "movies": {
+      "noMovies": "",
+      "title": ""
+    },
+    "newsletter": {
+      "check": ""
+    },
+    "pageSubtitleChannels": "",
+    "pageSubtitleLectures": "",
+    "projects": {
+      "title": ""
+    },
+    "toggleFreeOnly": "",
+    "toggleLabelAll": "",
+    "toggleLabelSelectedLanguage": ""
   },
   "settings": {
     "changePassword": "Vaihda salasana",
@@ -569,7 +1206,9 @@
       "source": "Alkuperäinen lähde :",
       "author": "",
       "didHelp": "",
-      "writtenBy": ""
+      "writtenBy": "",
+      "tutorialName": "",
+      "ratingSuccess": ""
     },
     "exchange": {
       "description": "Pörssit ovat yksi sisään- ja uloskäyntiporteista perinteisen valuutan (euro, dollari) ja bitcoin-maailman välillä. Pörssit voivat olla säänneltyjä ja noudattaa KYC (\"Know Your Customer\", Tunne Asiakkaasi) -periaatetta tai vertaisverkkoon perustuvia ja anonyymejä. Jokainen pörssi tarjoaa erilaisia ominaisuuksia, maksurakenteita, likviditeettiä ja asiakastukea. Jokainen bitcoin-harrastaja käyttää erilaista pörssiä tarpeidensa ja vakaumustensa mukaan.",
@@ -605,7 +1244,45 @@
       "title": "Lompakko"
     },
     "approvedByCreator": "",
-    "backTutorials": ""
+    "backTutorials": "",
+    "hasBeenProofreadBy": "",
+    "subCategories": {
+      "peer-to-peer": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "writtenBy": "",
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "hasNotBeenProofread": ""
   },
   "underConstruction": {
     "github": "GitHub",
@@ -639,7 +1316,8 @@
       "beginnerFriendly": "",
       "wizard": "",
       "level": "",
-      "levels": ""
+      "levels": "",
+      "expert": ""
     },
     "library": "Kirjasto",
     "lnurlAuth": "LNURL Auth",
@@ -715,11 +1393,85 @@
     "paid": "",
     "part": "",
     "all": "",
-    "amount": ""
+    "amount": "",
+    "cancel": "",
+    "password": "",
+    "abstract": "",
+    "access": "",
+    "action": "",
+    "admin": "",
+    "author": "",
+    "bitcoin": "",
+    "business": "",
+    "calendar": "",
+    "careerPortal": "",
+    "category": "",
+    "channel": "",
+    "channels": "",
+    "chapters": "",
+    "close": "",
+    "company": "",
+    "complete": "",
+    "congrats": "",
+    "continue": "",
+    "country": "",
+    "credits": "",
+    "day": "",
+    "delete": "",
+    "dislikes": "",
+    "displayName": "",
+    "email": "",
+    "exam": "",
+    "finish": "",
+    "github": "",
+    "hybrid": "",
+    "incomplete": "",
+    "inperson": "",
+    "language": "",
+    "lecture": "",
+    "likes": "",
+    "linkedin": "",
+    "mentor": "",
+    "mode": "",
+    "movie": "",
+    "name": "",
+    "next": "",
+    "no": "",
+    "notApplicable": "",
+    "previous": "",
+    "producer": "",
+    "project": "",
+    "projects": "",
+    "protocol": "",
+    "role": "",
+    "save": "",
+    "saving": "",
+    "search": "",
+    "security": "",
+    "selectedAmount": "",
+    "skip": "",
+    "socialStudies": "",
+    "startHere": "",
+    "student": "",
+    "submit": "",
+    "telegram": "",
+    "timeZone": "",
+    "title": "",
+    "unavailable": "",
+    "user": "",
+    "username": "",
+    "video": "",
+    "viewMore": "",
+    "yes": ""
   },
   "payment": {
     "total": "Yhteensä",
-    "terms": "Katso <0>general terms</0> toimitus- ja palautusehdot"
+    "terms": "Katso <0>general terms</0> toimitus- ja palautusehdot",
+    "haveReductionCode": "",
+    "insertReductionCode": "",
+    "payByCard": "",
+    "payWithBitcoin": "",
+    "taxesMayApply": ""
   },
   "conferences": {
     "addConferences": "Voit vapaasti lisätä puuttuvia konferensseja tämän <0>Github</0> -repositoryn kautta.",
@@ -757,7 +1509,11 @@
     "challengeYourself": "",
     "readChart": "",
     "bCertDescription": "",
-    "organizeDescription": ""
+    "organizeDescription": "",
+    "download": "",
+    "organizeSessionConditions": "",
+    "organizeSessionHub": "",
+    "verify": ""
   },
   "publicCommunication": {
     "title": "",
@@ -785,7 +1541,8 @@
       "errorMessageNotFound": "",
       "blogSidebarTitle": "",
       "blogListButtonText": "",
-      "filterText": ""
+      "filterText": "",
+      "blogSidebarTitleForAll": ""
     },
     "description": ""
   },
@@ -810,6 +1567,149 @@
     "inProgress": "",
     "reviewEarn": "",
     "status": "",
-    "thanks": ""
+    "thanks": "",
+    "rewardsText": ""
+  },
+  "accessType": {
+    "online": "",
+    "hybrid": "",
+    "physical": "",
+    "replay": ""
+  },
+  "notification": {
+    "types": {
+      "calendar": "",
+      "assignment": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "projects": {
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "networkStrength": "",
+    "pageTitle": "",
+    "related": "",
+    "relatedEvents": "",
+    "languages": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "movies": {
+    "goToMovie": "",
+    "pageTitle": "",
+    "watchTrailer": ""
+  },
+  "search": {
+    "podcasts": "",
+    "professor": "",
+    "professors": "",
+    "project": "",
+    "projects": "",
+    "all": "",
+    "book": "",
+    "books": "",
+    "categories": "",
+    "conference": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "course": "",
+    "course_chapter": "",
+    "course_part": "",
+    "courses": "",
+    "event": "",
+    "events": "",
+    "explorer": {
+      "subtitle": "",
+      "title": ""
+    },
+    "filterByType": "",
+    "glossary_word": "",
+    "glossary_words": "",
+    "languageSelected": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "loadMoreResults": "",
+    "newsletter": "",
+    "newsletters": "",
+    "podcast": "",
+    "resultEmpty": "",
+    "resultError": "",
+    "resultInfo": "",
+    "results": "",
+    "resultsRemaining": "",
+    "search": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorial": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": ""
+  },
+  "filters": {
+    "categories": "",
+    "levels": "",
+    "resources": "",
+    "topics": ""
+  },
+  "labs": {
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "lectures": {
+    "buyVideoToUnlock": "",
+    "checkFullCourse": "",
+    "lecturePartCourse": "",
+    "pageTitle": "",
+    "partCourse": "",
+    "watchLecture": ""
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "podcast": {
+    "check": ""
+  },
+  "youtubeChannels": {
+    "pageTitle": "",
+    "view": "",
+    "watchTrailer": ""
   }
 }
