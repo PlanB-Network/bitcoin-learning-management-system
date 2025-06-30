@@ -71,7 +71,21 @@
     "didYouKnow": "Le saviez vous ?",
     "dashboardUnlocked": "Votre tableau de bord d'étudiant est déverrouillé !",
     "trackProgress": "Créez un compte ou connectez-vous pour suivre votre progression",
-    "passwordChangedSuccess": "Mot de passe modifié avec succès"
+    "passwordChangedSuccess": "Mot de passe modifié avec succès",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -264,7 +278,28 @@
       "successDiplomaTimeStamped": "Félicitations ! Vous avez réussi l'examen avec succès. \nVotre diplôme sera disponible dans votre tableau de bord étudiant environ 10 heures après le moment où vous avez passé l'examen. Ce délai est dû à la technologie d'<0>horodatage</0>, qui garantit son authenticité.",
       "takeExam": "Passez l'examen",
       "timeStampedNoDot": "horodaté",
-      "timeStamping": "Horodatage"
+      "timeStamping": "Horodatage",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "viewExam": ""
     },
     "review": {
       "generalGrade": "Note générale",
@@ -387,7 +422,11 @@
     },
     "calendar": {
       "calendar": "Calendrier",
-      "personalCalendar": "Calendrier personnel"
+      "personalCalendar": "Calendrier personnel",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "profile": {
       "preview": "Aperçu",
@@ -406,7 +445,30 @@
       "edit": "Éditer",
       "change": "Changer",
       "emailChangeConfirmation": "Un email de confirmation pour le changement de votre email a été envoyé, veuillez vérifier votre boîte de réception pour confirmer.",
-      "crop": "Recadrer"
+      "crop": "Recadrer",
+      "securitySettings": "",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "settings": ""
     },
     "teacher": {
       "courses": {
@@ -425,7 +487,52 @@
         "editOnGithub": "Modifier sur Github",
         "makeModifications": "Besoin de faire des modifications ?",
         "quickRecap": "Ici vous pouvez trouver toutes les informations générales concernant ce cours.",
-        "goal": "But"
+        "goal": "But",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "selectCourse": "",
+        "summerStudents": "",
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "assignment": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "writeAnnouncement": ""
       },
       "menu": "Menu enseignant",
       "profile": {
@@ -475,7 +582,60 @@
       "shareOnSocials": "Partager sur les réseaux :",
       "submitReviewInfo": "Vous devez soumettre un avis pour avoir accès à cette fonctionnalité.",
       "conclusionHeadline": "Voici un résumé de ce que vous avez appris. Si certains chapitres sont manquants ou n'ont pas été validés correctement, c'est maintenant le moment de le faire, soit en revenant pour apprendre, soit en appuyant sur le bouton terminer.",
-      "coordinator": "Coordinateur de cours"
+      "coordinator": "Coordinateur de cours",
+      "assignmentDescription": "",
+      "submitBefore": "",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "yourProject": "",
+      "assignment": "",
+      "announcement": "",
+      "assignmentInformation": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "exams": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "confirmNoEditableFile": "",
+      "examScore": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -583,7 +743,15 @@
         "discountCode": "Code de réduction",
         "discountCodeCopied": "Code de réduction copié",
         "downloadImage": "Télécharger l'image",
-        "downloadImages": "Télécharger les images"
+        "downloadImages": "Télécharger les images",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "Codes de réduction",
       "accessGranted": "Accès accordé",
@@ -773,7 +941,18 @@
       "applicationIncomplete": "Votre application est <highlight>Incomplète</highlight>",
       "chooseFile": "Choisir un fichier",
       "noFileSelected": "Aucun fichier sélectionné"
-    }
+    },
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "main": {
@@ -1338,7 +1517,18 @@
     "email": "Email",
     "save": "Sauvegarder",
     "calendar": "Calendrier",
-    "mode": "Mode"
+    "mode": "Mode",
+    "selectedAmount": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "notApplicable": "",
+    "password": "",
+    "saving": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "conferences": {
     "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
@@ -1368,7 +1558,8 @@
     "payWithBitcoin": "Payer avec Bitcoin",
     "payByCard": "Payer par carte",
     "haveReductionCode": "Avez-vous un code de réduction ?",
-    "insertReductionCode": "Insérez votre code de réduction"
+    "insertReductionCode": "Insérez votre code de réduction",
+    "taxesMayApply": ""
   },
   "bCert": {
     "bCertDescription": "Le ₿-CERT est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
@@ -1496,5 +1687,47 @@
       "subtitle": "Rejoignez un laboratoire pour apprendre, discuter et grandir !",
       "title": "Améliorez vos compétences sur Bitcoin !"
     }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
   }
 }
