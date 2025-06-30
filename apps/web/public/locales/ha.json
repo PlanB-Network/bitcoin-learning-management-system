@@ -67,7 +67,23 @@
     "passwordResetSent": "An turo imel adireshi na canza kalmar sirri(idan akwai imel aderishin ka acikin kushin baya nan mu).",
     "confirmation": "Tabbatarwa",
     "displayName": "Suna",
-    "emailTip": "Amfani da imel ba dole ba ne, amma zai iya amfani idan an manta kalmar sirri :)"
+    "emailTip": "Amfani da imel ba dole ba ne, amma zai iya amfani idan an manta kalmar sirri :)",
+    "passwordChangedSuccess": "",
+    "emailValidation": {
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": "",
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": ""
+    },
+    "trackProgress": ""
   },
   "bCert": {
     "bookExam": "Kama gurbin yin jarabawa",
@@ -83,7 +99,11 @@
     "pageSubtitle": "Samun karbuwa ilimi ta hanyar cibiya bai daya na bayani mai ginshiki",
     "pageTitle": "Tsallake Takardar ₿",
     "readChart": "Karanta al'amuran",
-    "tweetText": "Muna taya murna bisa samun nasarara da takardar shaidar B (B-Certificate) a @planb_network da maki {{score}}/100 a jarrabawar ƙarshe! {{emoji}}\n\n{{certificateUrl}}"
+    "tweetText": "Muna taya murna bisa samun nasarara da takardar shaidar B (B-Certificate) a @planb_network da maki {{score}}/100 a jarrabawar ƙarshe! {{emoji}}\n\n{{certificateUrl}}",
+    "organizeSessionHub": "",
+    "download": "",
+    "organizeSessionConditions": "",
+    "verify": ""
   },
   "bet": {
     "contributeButton": "Ka taimaka ka bada gudun mowa",
@@ -158,7 +178,21 @@
       "buyInPersonCourse": "Sayi kwas ɗin koyo na gani-gaka",
       "buyOnlineCourse": "Sayi kwas ɗin online",
       "inPersonAccess": "Dole ne ka sauke tikitinka don samun damar shiga ajin gani-gaka.",
-      "paidCourse": "An biya"
+      "paidCourse": "An biya",
+      "learning": "",
+      "associatedProfessors": "",
+      "collaborativeEffort": "",
+      "coordinatedBy": "",
+      "hasBeenProofreadBy": "",
+      "premiumContentNeedsLogin": "",
+      "attendInPersonWarning": "",
+      "courseAddedToDashboard": "",
+      "hasNotBeenProofread": "",
+      "otherCourses": "",
+      "otherCoursesInterest": "",
+      "pastEditionsRatings": "",
+      "premiumContentNeedsPaymentAction": "",
+      "thanksTipping": ""
     },
     "quizz": {
       "clickOnPie": "Danna kan da’irar zanen chat don duba kurakuranka da ganin bayanin su",
@@ -201,7 +235,16 @@
       "fieldRequired": "Wajibi ne cike wannan gurbi",
       "skip": "Tsallake shawarwari",
       "loadMoreComments": "Loda ƙarin ra'ayoyi",
-      "ratingsAndReviews": "Bayanai da ra'ayoyi"
+      "ratingsAndReviews": "Bayanai da ra'ayoyi",
+      "commentAdminMobile": "",
+      "commentPublicMobile": "",
+      "commentTeacherMobile": "",
+      "editReview": "",
+      "feedback": "",
+      "feedbackDescription2": "",
+      "saveReview": "",
+      "thankYou": "",
+      "whatStudentsSayPasEdition": ""
     },
     "explorer": {
       "buildPath": "Ka gina naka tafarki a cikin zurfin bincike",
@@ -211,7 +254,9 @@
       "pageDescription": "Makarantar Plan B na da niyyar sauya ilimin Bitcoin a duniya. An tattara shi ta hanyar masu mahimmanci daga sauran fannoni, makarantarmu ta samar da nau'ikan ilimi da suka kai ga kowane bangare na Bitcoin. Daga na farko zuwa na sani, ko a kan hanyarka ta kansa ko kuma an biyo ta makaranta a kowane mako ta hanyar malami, muna fatan za a iya taimakawa ka fahimci mafi girma na abin da ke cikin Bitcoin. Babban bangaren nau'ikanmu suna kawai kyauta domin kowace mutum, a kowace wurare, zai iya samun damar ilimi.",
       "seeCourse": "Kaduba Littafin",
       "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, da ke karkashin jagorancin Giacomo Zucco, ta ba da koyarwa mai dauke da wata uku wanda aka tsara don rufe tsakanin koyarwa da ayyukan duniya na gaskiya. Bãyan koyarwa na gadi, dalibai ke cika ayyuka na aiki da kamfanoni suka shirya da kuma aikin kungiyar farko mai kyau wanda aka yiwa masu iya yawa. Kawai mafi kyawawan talanta suke ci gaba bayan biyu na zabe na zaɓi, wanda hakan yana tabbatar da cewa daliban mafi girma a karshe sun samu komai don fara ayyukansu a cikin kasuwancin Bitcoin."
+      "planbSchoolHeadline": "Plan ₿ School, da ke karkashin jagorancin Giacomo Zucco, ta ba da koyarwa mai dauke da wata uku wanda aka tsara don rufe tsakanin koyarwa da ayyukan duniya na gaskiya. Bãyan koyarwa na gadi, dalibai ke cika ayyuka na aiki da kamfanoni suka shirya da kuma aikin kungiyar farko mai kyau wanda aka yiwa masu iya yawa. Kawai mafi kyawawan talanta suke ci gaba bayan biyu na zabe na zaɓi, wanda hakan yana tabbatar da cewa daliban mafi girma a karshe sun samu komai don fara ayyukansu a cikin kasuwancin Bitcoin.",
+      "comingSoon": "",
+      "goal": ""
     },
     "payment": {
       "accessibility_forever": "Har abada",
@@ -232,7 +277,9 @@
       "inPersonCallout": "Ka/kina gab da sayan damar shiga wannan kwas na <strong>fuska-da-fuska.</strong>",
       "onlineCallout": "Ka/kina gab da sayan damar shiga wannan kwas <strong>ta yanar gizo. </strong>",
       "onlineDescription": "Kowane zaman ajin ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga watsawar kai tsaye da bidiyon maimaitawa.",
-      "inPersonDescription": "Kowane zaman ajin yana gudana a zahiri a kwanaki da wuraren da aka sa, kuma ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga ajin na zahiri da na kan layi(online).\nKada ka/ki manta da kama kujerarka/ki don ajin da ka/kike son halarta a zahiri."
+      "inPersonDescription": "Kowane zaman ajin yana gudana a zahiri a kwanaki da wuraren da aka sa, kuma ana watsa shi kai tsaye a dandalin.\nWannan sayan zai ba ka/ki damar shiga ajin na zahiri da na kan layi(online).\nKada ka/ki manta da kama kujerarka/ki don ajin da ka/kike son halarta a zahiri.",
+      "checkoutError": "",
+      "courseType": ""
     },
     "part": {
       "count": "Rukuni {{count}}"
@@ -291,7 +338,62 @@
       "dontWorry": "Kada ka/ki damu da kuskure; wannan jarabawar tana taimakawa wajen karfafa koyonka/ki. Idan ba ka/ki ci nasara ba, za ka/ki iya kara gwadawa bayan sa'o'i 24.",
       "examDetails": "Jarabawar tana da tambayoyi masu zaɓuɓɓuka guda 40, kowacce tambaya tana da amsa guda ɗaya dai-dai. Za ka/ki iya canza amsoshinka/ki a kowane lokaci kafin ka/ki aika, muddin agogon ƙididdiga yana gudana.",
       "explanations": "Bayanai :",
-      "finalExam": "Jarrabawar Karshe"
+      "finalExam": "Jarrabawar Karshe",
+      "viewExam": "",
+      "availableDashboardTimestamped": "",
+      "buttonTextBCert": "",
+      "certificatePageOtherCourses": "",
+      "finalScore": "",
+      "passExam": "",
+      "readyToTest": "",
+      "receiveDiploma": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "skipGoConclusion": "",
+      "solidEffort": "",
+      "successDiploma": "",
+      "successDiplomaTeachedLed": "",
+      "successDiplomaTimeStamped": "",
+      "successfulPassedThreshold": "",
+      "timeStampedNoDot": "",
+      "timeStamping": "",
+      "weight": "",
+      "nbMinutes": "",
+      "goConclusion": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "completed": "",
+      "courseDiploma": "",
+      "courseNotFound": "",
+      "dontWorryRetake": "",
+      "examAvailabilityDetails": "",
+      "examCertificateCompletionText": "",
+      "examNotPassed": "",
+      "failedDiploma": "",
+      "takeExam": ""
+    },
+    "conclusion": {
+      "unlockFeatures1": "",
+      "completedChaptersHeadline": "",
+      "completedFeedbackHeadline": "",
+      "completedFeedbackSubHeadline": "",
+      "congratulationsEnd": "",
+      "finalStep": "",
+      "stepsToComplete": "",
+      "takeFinalExam": "",
+      "unlockFeatures2": ""
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -314,12 +416,19 @@
       "noTicket": "Ba ka da tikiti a yanzu.",
       "pastTicketTitle": "Ayyukan da aka gudanar da su da wuri",
       "upcomingTicketTitle": "Ajiyar nan gaba",
-      "upcomingTicketSubtitle": "Sauke tikettinka ta nan don zuwa taron da za'a yi gaba. Kada ku manta kuzo dashi domin samun shiga."
+      "upcomingTicketSubtitle": "Sauke tikettinka ta nan don zuwa taron da za'a yi gaba. Kada ku manta kuzo dashi domin samun shiga.",
+      "cancelBookingTitle": "",
+      "noGoBack": "",
+      "yesCancel": ""
     },
     "account": "Asusu",
     "calendar": {
       "calendar": "Kalanda",
-      "personalCalendar": "Kalandar ka"
+      "personalCalendar": "Kalandar ka",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "profile": {
       "profilePicture": "Hotona",
@@ -338,7 +447,30 @@
       "personalInformation": "Bayanina na kansa",
       "profileInformation": "Bayanan na Asali",
       "emailChangeConfirmation": "Antura maka imel na tabbatarwa don canja imel ɗin ka an aika, don Allah duba akwatin saƙonka don tabbatawa.",
-      "profile": "Baya nan mutum"
+      "profile": "Baya nan mutum",
+      "securitySettings": "",
+      "settings": "",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      }
     },
     "courses": "Darasi",
     "logout": "Fita daga asusun",
@@ -355,7 +487,22 @@
       "done": "An gama",
       "whereYouAre": "Bari mu ga inda ka/kike!",
       "viewDetails": "Duba cikakkun bayanai",
-      "yourCertificate": "Takardar shaidarka/ki"
+      "yourCertificate": "Takardar shaidarka/ki",
+      "verify": "",
+      "yourProgress": "",
+      "detailsAndCertificate": "",
+      "download": "",
+      "duration": "",
+      "newCourses": "",
+      "noCoursesAvailable": "",
+      "notStarted": "",
+      "notValidated": "",
+      "price": "",
+      "seeDetails": "",
+      "seeTheCourse": "",
+      "shareOn": "",
+      "completeAll": "",
+      "courseDashboard": ""
     },
     "teacher": {
       "courses": {
@@ -373,7 +520,53 @@
         "makeModifications": "A na bukayar a yi wani gyara?",
         "reviews": "Bita",
         "quickRecap": "Anan za ka sami duk bayanai game da wannan darasin.",
-        "reviewInfos": "Anan za ka iya gudanar da kuma duba duk bayanin da ya shafi kowane darasi da ka tattara."
+        "reviewInfos": "Anan za ka iya gudanar da kuma duba duk bayanin da ya shafi kowane darasi da ka tattara.",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "profile": {
         "makeModifications": "Kana buƙatar yin gyare-gyare?",
@@ -406,6 +599,10 @@
         "seeStatistics": "Duba kididdiga",
         "viewDetails": "Duba cikakkun bayanai",
         "writtenFeedbacks": "Ra'ayoyi da aka rubuta"
+      },
+      "tutorials": {
+        "tutorialAnalyticsDescription": "",
+        "yourTutorials": ""
       }
     },
     "course": {
@@ -416,7 +613,63 @@
       "tweetText": "Ina farin cikin kammala kwas din {{courseIndex}} a @planb_network da kuma samun takardar shaida ta tare da maki {{score}}/100 a jarabawar ƙarshe! {{emoji}}\n\n{{certificateUrl}}",
       "feedbacks": "Akwai wani babi a ƙarshen kwas ɗinnan da aka keɓe don ra'ayoyi. Idan kuna son ba da ra'ayinku yanzu, za ku iya yin hakan anan.",
       "ratingsAndFeedbacks": "Bayanai da Ra'ayoyi",
-      "shareOnSocials": "Yada akan kafofin sada zumunta:"
+      "shareOnSocials": "Yada akan kafofin sada zumunta:",
+      "assignmentInformation": "",
+      "summerSchool": "",
+      "yourProject": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentDescription": "",
+      "examScore": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitReviewInfo": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "mustBePdf": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "confirmNoEditable": "",
+      "assignmentTitle": "",
+      "conclusionHeadline": "",
+      "conclusionNotReleased": "",
+      "confirmList": "",
+      "congratulationsPassed": "",
+      "coordinator": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "exams": ""
     },
     "credentials": {
       "completionDiplomas": "Takardun kammala kwas",
@@ -431,7 +684,305 @@
       "bCert": "Takardar shaida ta ₿",
       "bCertSubtitle": "A nan za ka iya samun cikakkun bayanai game da ajiyar ka da darajojin takardun shaida na ₿ da ka gabatar da kuma waɗanda za su zo nan gaba. Takardar shaida ta ₿ jarabawar tebur ce da Plan ₿ Network ke shiryawa don tantance matakin ka/ki gameda Bitcoin da batutuwan da suka shafe shi.",
       "beingGraded": "Ana duba jarabawar ka/ki. Sakamakon zai kasance cikin makonni 1 ko 2."
-    }
+    },
+    "adminPanel": {
+      "coupons": {
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        },
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": ""
+      },
+      "accessGranted": "",
+      "bookings": "",
+      "bookingsPanel": "",
+      "careers": {
+        "careers": "",
+        "careersSubtitle": "",
+        "cv": "",
+        "downloadProfiles": "",
+        "downloadSpreadsheet": "",
+        "lastUpdate": "",
+        "lastUpdated": "",
+        "profession": "",
+        "resultsRemaining": "",
+        "seeMore": "",
+        "viewCV": ""
+      },
+      "confirmRemoval": "",
+      "coursesIndexes": "",
+      "date": "",
+      "deleteRole": "",
+      "discountCodes": "",
+      "editRole": "",
+      "githubLink": "",
+      "hasAccessTo": "",
+      "listOfParticipants": "",
+      "nameOfEvent": "",
+      "participants": "",
+      "professorName": "",
+      "removeTeacherDescription": "",
+      "searchByNameOrCategory": "",
+      "seeOrEdit": "",
+      "selectProfessor": "",
+      "selectRole": "",
+      "tutorialAnalytics": "",
+      "tutorialAnalyticsDescription": "",
+      "tutorialsManagementPanel": "",
+      "type": "",
+      "upcomingBookings": "",
+      "upcomingBookingsSubtitle": "",
+      "userRolesAllocation": ""
+    },
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "publicationDate": "",
+      "pickADate": ""
+    },
+    "backToDashboard": "",
+    "careerPortal": {
+      "acceptTermsAndConditions": "",
+      "acceptedFormat": "",
+      "add": "",
+      "allowReceivingEmails": "",
+      "applicationComplete": "",
+      "applicationIncomplete": "",
+      "applicationSaved": "",
+      "availability": "",
+      "availabilityStart": "",
+      "availabilityStartPlaceholder": "",
+      "beAware": "",
+      "bitcoinCommunityParticipant": "",
+      "bitcoinCommunityText": "",
+      "bitcoinProjectParticipant": "",
+      "bitcoinProjectPlaceholder": "",
+      "bitcoinProjectSubLabel": "",
+      "bitcoinProjectText": "",
+      "bitcoinRelatedExperience": "",
+      "bitcoinRelatedExperienceSubtitle": "",
+      "cannotUndo": "",
+      "companySizePreference": "",
+      "companySizePreferenceSubLabel": "",
+      "companySizeRequired": "",
+      "companySizes": {
+        "100More": "",
+        "11To40": "",
+        "1To10": "",
+        "41To100": "",
+        "noPreference": ""
+      },
+      "completeApplication": "",
+      "confirmDelete": "",
+      "contactInformation": "",
+      "contactInformationSubtitle": "",
+      "countryResidence": "",
+      "cvRequired": "",
+      "cvUpload": "",
+      "cvUploadLabel": "",
+      "cvUploadSubtitle": "",
+      "deleteCareerProfile": "",
+      "deleteCareerProfileTitle": "",
+      "description": "",
+      "emailPlaceholder": "",
+      "expectedSalary": "",
+      "expectedSalaryPlaceholder": "",
+      "expectedSalarySubLabel": "",
+      "fileTooLarge": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "firstName": "",
+      "followProcess": "",
+      "fullTime": "",
+      "invalidFile": "",
+      "jobCategories": {
+        "businessRoles": "",
+        "financeCompliance": "",
+        "marketingCommunity": "",
+        "more": "",
+        "operationsSupport": "",
+        "productDesign": "",
+        "researchEducation": "",
+        "technicalRoles": ""
+      },
+      "jobSearch": "",
+      "jobSearchSubtitle": "",
+      "jobTitles": {
+        "accountingManager": "",
+        "amlKycSpecialist": "",
+        "backendEngineer": "",
+        "bitcoinInvestmentAnalyst": "",
+        "brandStrategist": "",
+        "businessAnalyst": "",
+        "businessDevelopmentManager": "",
+        "cloudInfrastructureEngineer": "",
+        "communityManager": "",
+        "complianceOfficer": "",
+        "contentWriter": "",
+        "cryptographer": "",
+        "customerSuccessManager": "",
+        "customerSupportSpecialist": "",
+        "cybersecurity": "",
+        "dataEngineer": "",
+        "devOpsEngineer": "",
+        "economicAnalyst": "",
+        "educator": "",
+        "eventCoordinator": "",
+        "frontendEngineer": "",
+        "fullStackDeveloper": "",
+        "graphicDesigner": "",
+        "hrSpecialist": "",
+        "legalContractSpecialist": "",
+        "logisticManager": "",
+        "marketingManager": "",
+        "miningEngineer": "",
+        "miningOperationsManager": "",
+        "mobileAppDeveloper": "",
+        "operationsManager": "",
+        "productManager": "",
+        "protocolEngineer": "",
+        "publicRelationsManager": "",
+        "researcher": "",
+        "revenueManager": "",
+        "riskAnalyst": "",
+        "sales": "",
+        "seoSpecialist": "",
+        "socialMediaManager": "",
+        "technicalProductManager": "",
+        "technicalSupportEngineer": "",
+        "technicalWriter": "",
+        "uiUxDesigner": "",
+        "uxResearcher": ""
+      },
+      "languageLevel": "",
+      "languageLevelSubLabel": "",
+      "languageLevels": {
+        "advanced": "",
+        "beginner": "",
+        "elementary": "",
+        "fluent": "",
+        "intermediate": ""
+      },
+      "languageRequired": "",
+      "languageSkills": "",
+      "languageSkillsSubtitle": "",
+      "lastName": "",
+      "legalInformation": "",
+      "legalInformationSubtitle": "",
+      "legalTerms": "",
+      "lookingForJob": "",
+      "maxCharacters": "",
+      "maxRoles": "",
+      "motivation": "",
+      "motivationLetter": "",
+      "motivationLetterPlaceholder": "",
+      "motivationLetterSubLabel": "",
+      "motivationSubtitle": "",
+      "other": "",
+      "partTime": "",
+      "personalInformation": "",
+      "personalInformationSubtitle": "",
+      "provideValidEmail": "",
+      "remoteWorkPreference": "",
+      "remoteWorkPreferences": {
+        "no": "",
+        "sometimes": "",
+        "yes": ""
+      },
+      "roleLevel": "",
+      "roleLevelSubLabel": "",
+      "roleLevels": {
+        "junior": "",
+        "mid": "",
+        "senior": "",
+        "student": ""
+      },
+      "roleRequired": "",
+      "seeOrEditProfile": "",
+      "selectJobTitle": "",
+      "selectLanguage": "",
+      "selectRole": "",
+      "selectRoleSubLabel": "",
+      "startApplication": "",
+      "steps": {
+        "step1": "",
+        "step2": "",
+        "step3": "",
+        "step4": ""
+      },
+      "termsAndConditions": "",
+      "uploadCV": "",
+      "uploadCVSubLabel": "",
+      "welcome": "",
+      "yourLanguages": "",
+      "yourRoles": "",
+      "chooseFile": "",
+      "noFileSelected": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": "",
+    "studentDashboard": ""
   },
   "events": {
     "card": {
@@ -447,7 +998,9 @@
       "bookSeat": "Tanadi wurin zama",
       "eventFull": "Taron ya cika",
       "seatBooked": "An tanadi wurin zama",
-      "visitWebsite": "Ziyarci shafin yanar gizo"
+      "visitWebsite": "Ziyarci shafin yanar gizo",
+      "purchased": "",
+      "buyVideo": ""
     },
     "missed": {
       "missedP1": "An rasa wannan taron?",
@@ -474,14 +1027,30 @@
       "limitation": "Iyaka",
       "max_capacity": "Mafi yawan",
       "payment_successful": "Ankammala Ajiya!",
-      "time": "Lokaci"
+      "time": "Lokaci",
+      "access_online_successful": "",
+      "access_physical_successful": "",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": "",
+      "description_online": "",
+      "description_physical": ""
     },
     "main": {
       "upcomingEvents": "Tarurruka masu zuwa",
       "currentEvents": "Tarurrukan da ke faruwa a halin yanzu"
     },
     "pageSubtitle": "Karɓa daga ƙasa zuwa sama yana ƙarfafa ne ta hanyar sadarwa mai kyau mai ƙarfi",
-    "pageTitle": "Ana neman halartar taron Bitcoin?"
+    "pageTitle": "Ana neman halartar taron Bitcoin?",
+    "errors": {
+      "premiumContentNeedsPaymentAction": "",
+      "premiumContentNeedsLogin": ""
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "glossary": {
     "anotherWord": "Nema wani kalma",
@@ -508,7 +1077,20 @@
     "glossaryDescription": "Fahimci harshen Bitcoin",
     "nodeNetworkDescription": "Shiga cikin cibiyar al'umma ta duniya ta Plan B",
     "publicDescription": "Bincika makaloli na sadarwa na jama'a",
-    "teachersDescription": "San malamai na makarantar mu"
+    "teachersDescription": "San malamai na makarantar mu",
+    "miningCourseDescription": "",
+    "bitcoinDescription": "",
+    "businessDescription": "",
+    "channelsDescription": "",
+    "chooseLanguage": "",
+    "lecturesDescription": "",
+    "moviesDescription": "",
+    "newsletterDescription": "",
+    "planBLabsDescription": "",
+    "projectsDescription": "",
+    "protocolDescription": "",
+    "securityDescription": "",
+    "socialStudiesDescription": ""
   },
   "imagesAlt": {
     "underConstructionImage": "Zane na zomaye da dama suna aiki a wurin gini",
@@ -531,21 +1113,69 @@
   "resources": {
     "github": "Dukkan wannan bayanin ana sarrafa shi ta hanyar wani rumbun ajiya na tushe na bude a <0>Github</0>. Za'a iya bada gudummawa da ƙara duk wani abu da bai bayyana ba.",
     "newsletters": {
-      "title": "Wasikun Labarai"
+      "title": "Wasikun Labarai",
+      "author": "",
+      "level": "",
+      "noNewsletters": "",
+      "subtitle": ""
     },
     "pageDescription": "Yin ƙoƙarin fahimtar Bitcoin kamar shiga wani sarƙaƙƙiya mai ci gaba da faɗaɗa. Don taimaka maka a cikin tafiyarka, mun tattara tarin albarkatu masu yawa ciki har da littattafai, faifai na sauti, bidiyo, da sake kunnawa na taruka. Wannan shafin yana haɗa dukkan bayanan a cikin wurin guda a GitHub domin taimaka maka ka fahimci tsarin Bitcoin da kyau.",
     "podcasts": {
-      "title": "Shirye-shiryen sauti"
+      "title": "Shirye-shiryen sauti",
+      "noPodcasts": ""
     },
     "searchFilterName": "Yi amfani da suna ka bincika",
     "pageSubtitle": "Tsara sanin ilimi don inganta yaduwar shi",
     "pageTitle": "Barka da zuwa dandalin samun bayanai",
     "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": ""
+    "pageSubtitlePodcast": "",
+    "books": {
+      "title": ""
+    },
+    "channels": {
+      "title": "",
+      "noYoutubeChannels": ""
+    },
+    "articles": {
+      "title": ""
+    },
+    "bet": {
+      "title": ""
+    },
+    "conferences": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "lectures": {
+      "noLectures": "",
+      "title": ""
+    },
+    "movies": {
+      "noMovies": "",
+      "title": ""
+    },
+    "newsletter": {
+      "check": ""
+    },
+    "pageSubtitleChannels": "",
+    "pageSubtitleLectures": "",
+    "projects": {
+      "title": ""
+    },
+    "toggleFreeOnly": "",
+    "toggleLabelAll": "",
+    "toggleLabelSelectedLanguage": ""
   },
   "payment": {
     "terms": "Duba <0>sharuddanda ka'idoji</0> namu don bayanai kan dawo da kuɗi",
-    "total": "JImla"
+    "total": "JImla",
+    "haveReductionCode": "",
+    "insertReductionCode": "",
+    "payByCard": "",
+    "payWithBitcoin": "",
+    "taxesMayApply": ""
   },
   "podcasts": {
     "pageTitle": "Podcasts na Bitcoin"
@@ -572,7 +1202,8 @@
     "inProgress": "Ana ci gaba da duba kurakurai",
     "reviewEarn": "Duba kuma a samu sats",
     "status": "Matsayin duba kurakurai",
-    "thanks": "Godiya ta masumman ga masu duba ayyukanmu!"
+    "thanks": "Godiya ta masumman ga masu duba ayyukanmu!",
+    "rewardsText": ""
   },
   "publicCommunication": {
     "blogCategories": {
@@ -594,7 +1225,8 @@
       "pastArticleSubtitleText": "Makaloli na baya",
       "errorMessageNotFound": "Ba'a samu blog ba.",
       "blogSidebarTitle": "Rubutun da suka gabata a Hanyar sadarwa",
-      "filterText": "Tace bisa ga jigo :"
+      "filterText": "Tace bisa ga jigo :",
+      "blogSidebarTitleForAll": ""
     },
     "title": "Sadarwa na jama'a",
     "description": "A Plan B Network, muna alfahari da bin ka'idojin tushe na bude da kuma kiyaye gaskiya a duk tafiyarmu",
@@ -651,6 +1283,22 @@
     "wallOfLoveSection": {
       "title": "Katangar kauna",
       "subtitle": "Abin yan Bitcoin ke cewa game da mu"
+    },
+    "blogSection": {
+      "description": "",
+      "seeAll": "",
+      "blogTitle": "",
+      "noBlogsAvailable": "",
+      "noDateAvailable": ""
+    },
+    "courseSection": {
+      "upcomingCourseTitle": "",
+      "checkAllCourses": ""
+    },
+    "eventSection": {
+      "checkEvents": "",
+      "eventTitle": "",
+      "hottestEvent": ""
     }
   },
   "settings": {
@@ -665,7 +1313,9 @@
       "author": "Mawallafi ",
       "didHelp": "Wan nan ya taimaka?",
       "source": "Rahoton asalin:",
-      "writtenBy": "Wanda yayi wan nan karatun shine :"
+      "writtenBy": "Wanda yayi wan nan karatun shine :",
+      "ratingSuccess": "",
+      "tutorialName": ""
     },
     "approvedByCreator": "Wanda ya hada shi ya karba",
     "exchange": {
@@ -700,7 +1350,45 @@
       "description": "Walat na Bitcoin kamar makullin ku ne. Yana ba ku damar kashewa da karɓar bitcoin. Akwai nau'ikan walat da yawa, kowanne na da banbancin amfani, ayyuka, farashi, da ƙwarewar mai amfani. Kowanne mai amfani da Bitcoin zai yi amfani da na'ura daban bisa ga bukatunsu, matakin gaggawa, da ƙwarewa.",
       "shortDescription": "Hanyoyin tsaro da amfani da bitcoins ɗinku",
       "title": "Walat"
-    }
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "subCategories": {
+      "on-chain": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "hasBeenProofreadBy": "",
+    "hasNotBeenProofread": "",
+    "writtenBy": ""
   },
   "underConstruction": {
     "github": "Github",
@@ -740,7 +1428,8 @@
       "level": "Matsayi",
       "levels": "Matakai",
       "wizard": "Kwararre",
-      "beginnerFriendly": "‬‬Mai dacewa da masu farawa"
+      "beginnerFriendly": "‬‬Mai dacewa da masu farawa",
+      "expert": ""
     },
     "lectures": "Laccoci",
     "library": "Dakin karatu",
@@ -810,6 +1499,217 @@
     "total": "JImlila",
     "inReview": "Ana kan dubawa",
     "location": "Wuri",
-    "required": "Ana bukata"
+    "required": "Ana bukata",
+    "access": "",
+    "no": "",
+    "email": "",
+    "exam": "",
+    "protocol": "",
+    "project": "",
+    "projects": "",
+    "security": "",
+    "selectedAmount": "",
+    "skip": "",
+    "socialStudies": "",
+    "startHere": "",
+    "submit": "",
+    "abstract": "",
+    "action": "",
+    "admin": "",
+    "channels": "",
+    "author": "",
+    "bitcoin": "",
+    "business": "",
+    "calendar": "",
+    "cancel": "",
+    "careerPortal": "",
+    "category": "",
+    "channel": "",
+    "chapters": "",
+    "close": "",
+    "company": "",
+    "complete": "",
+    "congrats": "",
+    "continue": "",
+    "country": "",
+    "credits": "",
+    "day": "",
+    "delete": "",
+    "dislikes": "",
+    "displayName": "",
+    "finish": "",
+    "github": "",
+    "hybrid": "",
+    "incomplete": "",
+    "inperson": "",
+    "language": "",
+    "lecture": "",
+    "likes": "",
+    "linkedin": "",
+    "mentor": "",
+    "mode": "",
+    "movie": "",
+    "name": "",
+    "next": "",
+    "notApplicable": "",
+    "password": "",
+    "previous": "",
+    "producer": "",
+    "role": "",
+    "save": "",
+    "saving": "",
+    "search": "",
+    "student": "",
+    "timeZone": "",
+    "title": "",
+    "unavailable": "",
+    "user": "",
+    "username": "",
+    "video": "",
+    "viewMore": "",
+    "yes": "",
+    "telegram": ""
+  },
+  "search": {
+    "tutorial": "",
+    "book": "",
+    "books": "",
+    "categories": "",
+    "conference": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "course": "",
+    "course_chapter": "",
+    "course_part": "",
+    "courses": "",
+    "event": "",
+    "events": "",
+    "explorer": {
+      "subtitle": "",
+      "title": ""
+    },
+    "filterByType": "",
+    "glossary_word": "",
+    "glossary_words": "",
+    "languageSelected": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "loadMoreResults": "",
+    "newsletter": "",
+    "newsletters": "",
+    "podcast": "",
+    "podcasts": "",
+    "professor": "",
+    "professors": "",
+    "project": "",
+    "projects": "",
+    "resultEmpty": "",
+    "resultError": "",
+    "resultInfo": "",
+    "results": "",
+    "resultsRemaining": "",
+    "search": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": "",
+    "all": ""
+  },
+  "accessType": {
+    "hybrid": "",
+    "physical": "",
+    "online": "",
+    "replay": ""
+  },
+  "notifications": {
+    "hoursAgo": "",
+    "stayUpToDate": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "filters": {
+    "categories": "",
+    "levels": "",
+    "resources": "",
+    "topics": ""
+  },
+  "labs": {
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "lectures": {
+    "buyVideoToUnlock": "",
+    "checkFullCourse": "",
+    "lecturePartCourse": "",
+    "pageTitle": "",
+    "partCourse": "",
+    "watchLecture": ""
+  },
+  "movies": {
+    "goToMovie": "",
+    "pageTitle": "",
+    "watchTrailer": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "podcast": {
+    "check": ""
+  },
+  "projects": {
+    "languages": "",
+    "networkStrength": "",
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "pageTitle": "",
+    "related": "",
+    "relatedEvents": ""
+  },
+  "youtubeChannels": {
+    "pageTitle": "",
+    "view": "",
+    "watchTrailer": ""
   }
 }
