@@ -19,7 +19,7 @@ import {
   TbCalendar,
   TbClipboardText,
   TbClock,
-  TbDownload,
+  TbFileTypeXls,
   TbWeight,
 } from 'react-icons/tb';
 import XLSX from 'xlsx';
@@ -131,7 +131,7 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
             type="button"
             className="absolute right-0 text-newBlack-5"
           >
-            <TbDownload size={24} />
+            <TbFileTypeXls size={24} />
           </button>
         </section>
       )}
@@ -268,7 +268,7 @@ const ExamCard = ({
               <span className="max-lg:hidden">
                 {t('dashboard.teacher.courses.exportExamData')}
               </span>
-              <TbDownload />
+              <TbFileTypeXls />
             </button>
           )}
       </header>
