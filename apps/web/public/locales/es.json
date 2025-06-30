@@ -338,7 +338,11 @@
       "singleAttemptAvailability": "Este examen está disponible en línea desde {{date}}",
       "singleAttemptPrecaution": "Antes de comenzar, asegura que tu conexión sea estable. Dado que este es un examen de un solo intento, si se desconecta, no podrás intentarlo de nuevo.",
       "viewExam": "Ver la prueba",
-      "weight": "Peso: {{weight}}%"
+      "weight": "Peso: {{weight}}%",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "conclusion": {
       "completedChaptersHeadline": "¡Haz completado todos los capítulos!",
@@ -386,7 +390,8 @@
       "seeDetails": "Ver detalles",
       "seeTheCourse": "Ver el curso",
       "verify": "Verifica la autenticidad de tu diploma",
-      "yourProgress": "Tu progreso:"
+      "yourProgress": "Tu progreso:",
+      "shareOn": ""
     },
     "account": "Cuenta",
     "courses": "Cursos",
@@ -432,11 +437,38 @@
       "displayName": "Nombre para mostrar",
       "email": "Correo electrónico",
       "password": "Contraseña",
-      "profile": "Perfil"
+      "profile": "Perfil",
+      "notificationSettings": {
+        "title": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "calendar": {
       "calendar": "Calendario",
-      "personalCalendar": "Calendario personal"
+      "personalCalendar": "Calendario personal",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "teacher": {
       "courses": {
@@ -454,7 +486,53 @@
         "proposeNewCourse": "Proponer un nuevo curso",
         "quickRecap": "Aquí puedes encontrar toda la información general sobre este curso.",
         "reviewInfos": "Aquí puedes controlar y revisar toda la información concerniente a cada curso que has coordinado.",
-        "reviews": "Reseñas"
+        "reviews": "Reseñas",
+        "announcementModal": {
+          "contentLabel": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": "",
+          "contentPlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "missingGradesTitle": "",
+          "studentDisplayName": "",
+          "title": "",
+          "alertDescription2": "",
+          "alertDescription": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "publishAllGrades": ""
+        },
+        "assignmentStudents": "",
+        "allStudents": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "assignment": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "profile": {
         "billingInformations": "Información de facturación",
@@ -503,7 +581,61 @@
       "checkDetailsCompleted": "Aquí puedes revisar todos los detalles relacionados con este curso que completaste.",
       "completionDiploma": "Diploma de finalización",
       "conclusionHeadline": "A continuación te mostramos un resumen de lo que has aprendido. Si te has saltado alguno de los capítulos o no los has validado correctamente, ahora es el momento de hacerlo, ya sea volviendo a aprender o presionando el botón de completar.",
-      "submitReviewInfo": "Debes compartirnos una reseña para poder habilitar el acceso a esta función."
+      "submitReviewInfo": "Debes compartirnos una reseña para poder habilitar el acceso a esta función.",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "yourProject": "",
+      "assignment": "",
+      "announcement": "",
+      "assignmentDescription": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "exams": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "assignmentInformation": "",
+      "submitYourWork": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "coordinator": "",
+      "courseCalendar": "",
+      "examScore": ""
     },
     "credentials": {
       "bCertSubtitle": "Aquí puedes encontrar los detalles sobre tus reservas y calificaciones de tus ₿-CERT pasados y futuros.\nEl ₿-CERT es un examen de mesa organizado por la Plan ₿ Network para que puedas afirmar tu nivel en Bitcoin y sus temas relacionados.",
@@ -567,8 +699,66 @@
         "deleteDiscountCodeConfirm": "¿Estás seguro de que quieres eliminar este código de descuento?",
         "deleteDiscountCodeSuccess": "Código de descuento eliminado exitosamente",
         "cancel": "Cancelar",
-        "deleteDiscountCode": "Eliminar código de descuento"
-      }
+        "deleteDiscountCode": "Eliminar código de descuento",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "productCourse": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        },
+        "selectEvent": ""
+      },
+      "discountCodes": ""
     },
     "backToDashboard": "Volver al panel de control",
     "studentDashboard": "Panel de control del estudiante",
@@ -617,7 +807,14 @@
         "researcher": "Investigador",
         "sales": "Ventas",
         "riskAnalyst": "Analista de Riesgos",
-        "socialMediaManager": "Administrador de Redes Sociales"
+        "socialMediaManager": "Administrador de Redes Sociales",
+        "revenueManager": "",
+        "seoSpecialist": "",
+        "technicalProductManager": "",
+        "technicalSupportEngineer": "",
+        "technicalWriter": "",
+        "uiUxDesigner": "",
+        "uxResearcher": ""
       },
       "availability": "Tu disponibilidad",
       "availabilityStart": "¿Cuándo puedes iniciar?",
@@ -696,8 +893,65 @@
       },
       "roleRequired": "Añade al menos un rol.",
       "seeOrEditProfile": "Ver o editar perfil",
-      "roleLevel": "Nivel de experiencia"
-    }
+      "roleLevel": "Nivel de experiencia",
+      "applicationComplete": "",
+      "applicationIncomplete": "",
+      "languageLevel": "",
+      "languageLevelSubLabel": "",
+      "languageLevels": {
+        "advanced": "",
+        "beginner": "",
+        "elementary": "",
+        "fluent": "",
+        "intermediate": ""
+      },
+      "languageRequired": "",
+      "languageSkills": "",
+      "languageSkillsSubtitle": "",
+      "lastName": "",
+      "motivationLetterPlaceholder": "",
+      "motivationLetterSubLabel": "",
+      "motivationSubtitle": "",
+      "noFileSelected": "",
+      "other": "",
+      "partTime": "",
+      "selectJobTitle": "",
+      "selectLanguage": "",
+      "selectRole": "",
+      "selectRoleSubLabel": "",
+      "startApplication": "",
+      "steps": {
+        "step1": "",
+        "step2": "",
+        "step3": "",
+        "step4": ""
+      },
+      "termsAndConditions": "",
+      "uploadCV": "",
+      "uploadCVSubLabel": "",
+      "welcome": "",
+      "yourLanguages": "",
+      "yourRoles": "",
+      "legalInformation": "",
+      "legalInformationSubtitle": "",
+      "legalTerms": "",
+      "lookingForJob": "",
+      "maxCharacters": "",
+      "maxRoles": "",
+      "motivation": "",
+      "motivationLetter": ""
+    },
+    "announcements": {
+      "pickADate": "",
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "main": {
@@ -750,13 +1004,23 @@
       "payment_successful": "¡Reservación exitosa!",
       "time": "Hora",
       "description_online": "Por favor revisa la fecha y hora del evento proporcionada.\nCuando llegue el momento, inicia sesión en la plataforma para acceder a la transmisión en vivo a través de la página del evento.",
-      "description_physical": "Por favor revisa los detalles del lugar proporcionados.\nUna vez confirmada tu reserva, emitiremos un ticket para presentar en el evento. Este boleto también te otorgará acceso a la transmisión en vivo y a la repetición del video, si está disponible."
+      "description_physical": "Por favor revisa los detalles del lugar proporcionados.\nUna vez confirmada tu reserva, emitiremos un ticket para presentar en el evento. Este boleto también te otorgará acceso a la transmisión en vivo y a la repetición del video, si está disponible.",
+      "access_online_successful": "",
+      "access_physical_successful": "",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "errors": {
       "premiumContentNeedsLogin": "Necesitas iniciar sesión para acceder a este evento.",
       "premiumContentNeedsPayment": "Este evento es parte de un programa premium.",
       "premiumContentNeedsPaymentAction": "Ve a la página de eventos"
-    }
+    },
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "home": {
     "header": {
@@ -847,7 +1111,14 @@
     "socialStudiesDescription": "Estudia el impacto de Bitcoin en la sociedad.",
     "projectsDescription": "Aprende sobre las empresas y proyectos que contribuyen a mejorar e incrementar la adopción de Bitcoin",
     "protocolDescription": "Descubre las reglas fundamentales que impulsan la red de Bitcoin.",
-    "securityDescription": "Domina las técnicas para proteger tus activos en Bitcoin."
+    "securityDescription": "Domina las técnicas para proteger tus activos en Bitcoin.",
+    "bitcoinDescription": "",
+    "businessDescription": "",
+    "channelsDescription": "",
+    "chooseLanguage": "",
+    "lecturesDescription": "",
+    "miningCourseDescription": "",
+    "moviesDescription": ""
   },
   "nodeNetwork": {
     "description1": "Creemos que la educación no solo debe llevarse a cabo en línea, sino también en espacios físicos. Para lograr esto, Plan ₿ Network gestiona una red de centros alrededor del mundo para dar la bienvenida a pensadores, emprendedores y educadores que fomentan el avance de Bitcoin y las tecnologías de la libertad.",
@@ -987,7 +1258,45 @@
       "title": "Billetera"
     },
     "approvedByCreator": "Aprobado por el creador",
-    "backTutorials": "Regresar a todos los tutoriales"
+    "backTutorials": "Regresar a todos los tutoriales",
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "subCategories": {
+      "hardware": "",
+      "lightning-network": "",
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "hasBeenProofreadBy": "",
+    "hasNotBeenProofread": "",
+    "writtenBy": ""
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1021,7 +1330,8 @@
       "wizard": "Experto",
       "level": "Nivel",
       "levels": "Niveles",
-      "beginnerFriendly": "Amigable para principiantes"
+      "beginnerFriendly": "Amigable para principiantes",
+      "expert": ""
     },
     "library": "Biblioteca",
     "lnurlAuth": "LNURL Auth",
@@ -1128,7 +1438,45 @@
     "yes": "Sí",
     "role": "Rol",
     "projects": "Proyectos",
-    "protocol": "Protocolo"
+    "protocol": "Protocolo",
+    "title": "",
+    "email": "",
+    "business": "",
+    "calendar": "",
+    "careerPortal": "",
+    "company": "",
+    "complete": "",
+    "continue": "",
+    "country": "",
+    "day": "",
+    "delete": "",
+    "dislikes": "",
+    "exam": "",
+    "finish": "",
+    "github": "",
+    "hybrid": "",
+    "incomplete": "",
+    "inperson": "",
+    "language": "",
+    "lecture": "",
+    "likes": "",
+    "linkedin": "",
+    "mentor": "",
+    "mode": "",
+    "movie": "",
+    "name": "",
+    "next": "",
+    "no": "",
+    "notApplicable": "",
+    "password": "",
+    "previous": "",
+    "producer": "",
+    "project": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "video": "",
+    "displayName": ""
   },
   "conferences": {
     "addConferences": "Siéntete de agregar cualquier conferencia faltante a través de este repositorio de <0>Github</0>.",
@@ -1157,7 +1505,9 @@
     "total": "Total",
     "payWithBitcoin": "Paga con Bitcoin",
     "payByCard": "Paga con tarjeta",
-    "haveReductionCode": "¿Tienes un código de descuento?"
+    "haveReductionCode": "¿Tienes un código de descuento?",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "bCert": {
     "pageTitle": "Consigue el ₿-CERT",
@@ -1217,7 +1567,8 @@
       "errorMessageNotFound": "Blog no encontrado.",
       "blogSidebarTitle": "Publicaciones anteriores en la Red",
       "blogListButtonText": "Leer",
-      "filterText": "Filtrar por tema:"
+      "filterText": "Filtrar por tema:",
+      "blogSidebarTitleForAll": ""
     },
     "title": "Comunicación pública",
     "description": "Plan ₿ Network se enorgullece de adherirse a los estándares de código abierto y mantener la transparencia a lo largo de su trayectoria",
@@ -1295,7 +1646,14 @@
     "newsletter": "Boletín",
     "newsletters": "Boletines",
     "project": "Proyecto",
-    "projects": "Proyectos"
+    "projects": "Proyectos",
+    "search": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorial": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": ""
   },
   "podcast": {
     "check": "Revisa el podcast"
@@ -1314,5 +1672,59 @@
     "online": "En línea",
     "physical": "En persona",
     "replay": "Ver de nuevo"
+  },
+  "labs": {
+    "coordinatedBy": "",
+    "description1": "",
+    "description2": "",
+    "planBLabs": "",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    },
+    "title": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
