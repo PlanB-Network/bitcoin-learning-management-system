@@ -327,7 +327,11 @@
       },
       "singleAttempt": "Ispit iz jednog pokušaja",
       "viewExam": "Pogledajte test",
-      "weight": "Težina: {{weight}}%"
+      "weight": "Težina: {{weight}}%",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "quizz": {
       "clickOnPie": "Kliknite na kružni dijagram da biste proverili tačan odgovor",
@@ -477,7 +481,22 @@
       "submitBefore": "Morate predati svoj rad pre <0>18. juna u 23:59 (UTC+2)</0>. Radovi primljeni nakon ovog roka neće biti ocenjeni.",
       "listSavedComeTomorrow": "Vaša lista preferencija je sačuvana. \nVratite se ovde sutra da otkrijete na koji ste projekat dodeljeni.",
       "submitFileNamingFormat": "Vaša datoteka mora biti imenovana koristeći sledeći format:\n<0>ime_firme_korisničko_ime.pdf</0>.\nUklonite sve razmake iz imena firme, koristite tačno korisničko ime na platformi planB.network i proverite da li ima grešaka u kucanju.",
-      "summerSchool": "Letnja škola"
+      "summerSchool": "Letnja škola",
+      "confirmList": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "keepMovingForward": "",
+      "planbSchoolGeneralInformation": "",
+      "ranking": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "assignmentTitle": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": ""
     },
     "bCert": {
       "grade": "Ocena",
@@ -616,7 +635,24 @@
         "noPastAnnouncement": "ТРЕНУТНО НЕМАТЕ НИЈЕДНО ПРЕТХОДНО ОБЈАВЉЕНО ОБАВЕШТЕЊЕ.",
         "noWrittenAnnouncement": "Trenutno nemate nijedno pisano obaveštenje.",
         "summerStudents": "Letnja škola",
-        "writeAnnouncement": "Napišite obaveštenje"
+        "writeAnnouncement": "Napišite obaveštenje",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        }
       },
       "profile": {
         "enterTipsInformations": "Plan ₿ Network podstiče korisnike da daju donacije nastavnicima. Molimo Vas da unesete svoje informacije kako bi Vas ljudi mogli nagraditi kada to žele.",
@@ -934,7 +970,8 @@
           "total": "Ukupno",
           "type": "Tip",
           "uses": "Iskorišćen",
-          "value": "Procenat"
+          "value": "Procenat",
+          "maxUses": ""
         }
       },
       "hasAccessTo": "Ima pristup:",
@@ -1545,7 +1582,11 @@
     "saving": "Čuvanje...",
     "selectedAmount": "{{amount}} izabrano",
     "timeZone": "Vremenska zona",
-    "video": "Video"
+    "video": "Video",
+    "mentor": "",
+    "company": "",
+    "notApplicable": "",
+    "title": ""
   },
   "lectures": {
     "buyVideoToUnlock": "Kupite video da biste ga otključali",
