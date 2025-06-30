@@ -81,7 +81,8 @@
       "level": "Уровень",
       "levels": "Уровни",
       "wizard": "Мастер",
-      "beginnerFriendly": ""
+      "beginnerFriendly": "",
+      "expert": ""
     },
     "library": "Библиотека",
     "lnurlAuth": "Аутентификация LNURL",
@@ -144,7 +145,76 @@
     "required": "",
     "status": "",
     "teacher": "",
-    "total": ""
+    "total": "",
+    "channel": "",
+    "credits": "",
+    "abstract": "",
+    "access": "",
+    "action": "",
+    "admin": "",
+    "author": "",
+    "bitcoin": "",
+    "business": "",
+    "calendar": "",
+    "cancel": "",
+    "careerPortal": "",
+    "category": "",
+    "channels": "",
+    "chapters": "",
+    "close": "",
+    "company": "",
+    "complete": "",
+    "congrats": "",
+    "continue": "",
+    "country": "",
+    "day": "",
+    "delete": "",
+    "dislikes": "",
+    "displayName": "",
+    "email": "",
+    "exam": "",
+    "finish": "",
+    "github": "",
+    "hybrid": "",
+    "incomplete": "",
+    "inperson": "",
+    "language": "",
+    "lecture": "",
+    "likes": "",
+    "linkedin": "",
+    "mentor": "",
+    "mode": "",
+    "movie": "",
+    "name": "",
+    "next": "",
+    "notApplicable": "",
+    "password": "",
+    "previous": "",
+    "producer": "",
+    "project": "",
+    "projects": "",
+    "protocol": "",
+    "role": "",
+    "save": "",
+    "saving": "",
+    "search": "",
+    "security": "",
+    "selectedAmount": "",
+    "skip": "",
+    "socialStudies": "",
+    "startHere": "",
+    "student": "",
+    "submit": "",
+    "telegram": "",
+    "timeZone": "",
+    "title": "",
+    "unavailable": "",
+    "user": "",
+    "username": "",
+    "video": "",
+    "viewMore": "",
+    "yes": "",
+    "no": ""
   },
   "auth": {
     "accountCreated": "Ваш аккаунт создан, {{userName}}!",
@@ -195,7 +265,21 @@
     "didYouKnow": "Знаете ли Вы?",
     "dashboardUnlocked": "Ваша студенческая панель разблокирована",
     "passwordChangedSuccess": "Пароль успешно изменен",
-    "trackProgress": "Создайте учетную запись или войдите в систему, чтобы следить за своим прогрессом"
+    "trackProgress": "Создайте учетную запись или войдите в систему, чтобы следить за своим прогрессом",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -260,7 +344,11 @@
       "premiumContentNeedsPayment": "Этот курс является частью программы премиум-класса.",
       "premiumContentNeedsPaymentAction": "Перейти на главную страницу курса",
       "teacherLed": "Под руководством профессора",
-      "thanksTipping": "Вы можете поблагодарить профессора, дав ему чаевые."
+      "thanksTipping": "Вы можете поблагодарить профессора, дав ему чаевые.",
+      "learning": "",
+      "associatedProfessors": "",
+      "attendInPersonWarning": "",
+      "coordinatedBy": ""
     },
     "explorer": {
       "pageDescription": "Академия Plan B стремится упростить обучение Биткойну во всем мире. Академия предлагает подборку курсов, разработанных экспертами из различных областей, чтобы развеять все тайны Биткойна. От новичка до эксперта, в Вашем собственном темпе или под руководством профессора каждую неделю, мы надеемся, что академия поможет вам лучше понять такую обширную тему, как Биткойн. Большая часть наших курсов абсолютно бесплатна, чтобы каждый, в любом месте, мог получить доступ к образованию.",
@@ -271,7 +359,8 @@
       "seeCourse": "Узнайте о курсе",
       "planbSchoolHeadline": "Школа Plan ₿, возглавляемая Джакомо Зукко, предлагает интенсивные трехмесячные образовательные программы, призванные сократить разрыв между обучением и применением знаний в реальном мире. Помимо традиционных занятий, студенты участвуют в практических проектах под руководством компании и в первоклассном учебном лагере, предназначенном для лучших исполнителей. Только лучшие таланты проходят два конкурсных отбора, гарантируя, что лучшие студенты получат все необходимое для начала карьеры в Биткойн-индустрии.",
       "planbSchool": "PLAN ₿ Школа",
-      "comingSoon": "В ближайшее время"
+      "comingSoon": "В ближайшее время",
+      "goal": ""
     },
     "part": {
       "count": "Часть {{count}}"
@@ -296,7 +385,8 @@
       "onlineCallout": "Вы собираетесь приобрести <strong>онлайн</strong> доступ к этому курсу.",
       "onlineDescription": "Каждая сессия транслируется в прямом эфире на платформе.\nПриобретая эту покупку, вы получаете доступ к прямым трансляциям и видеоповторам.",
       "inPersonDescription": "Каждое занятие проводится лично в указанные даты и в указанном месте, а также транслируется в прямом эфире на платформе. \nПриобретая этот курс, вы получаете доступ как к очным, так и к онлайн-занятиям.\nНе забудьте забронировать место на занятиях, которые вы хотите посетить лично.",
-      "checkoutError": "В процессе оформления заказа произошла ошибка.\nПожалуйста, попробуйте еще раз."
+      "checkoutError": "В процессе оформления заказа произошла ошибка.\nПожалуйста, попробуйте еще раз.",
+      "courseType": ""
     },
     "quizz": {
       "clickOnPie": "Нажмите на круговую диаграмму, чтобы проверить правильный ответ",
@@ -424,7 +514,28 @@
       "timeStamping": "Временная отметка",
       "skipGoConclusion": "Пропустить,перейти к завершению",
       "successDiploma": "Поздравляем! Вы успешно сдали экзамен. \nВаш диплом доступен на панели управления студента. Он был <0>отмечен временем</0>, чтобы гарантировать его подлинность.",
-      "takeExam": "Сдать экзамен"
+      "takeExam": "Сдать экзамен",
+      "nextChapter": "",
+      "finalScore": "",
+      "nbMinutes": "",
+      "nbQuestions": "",
+      "results": {
+        "incorrect": "",
+        "correct": "",
+        "questions": "",
+        "time": ""
+      },
+      "readyToTest": "",
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "viewExam": ""
     },
     "conclusion": {
       "stepsToComplete": "Вот шаги, которые необходимо выполнить, чтобы отметить этот курс как завершенный на вашей панели управления, прежде чем продолжить путешествие!",
@@ -436,6 +547,11 @@
       "takeFinalExam": "Теперь, когда вы прошли все главы, пришло время сдать итоговый экзамен, чтобы проверить свои знания.",
       "unlockFeatures2": "Пожалуйста обратите внимание,что мы не собираем никаких личных данных и не используем файлы cookie.",
       "completedFeedbackSubHeadline": "Вы можете редактировать свои оценки и комментарии в любое время на панели управления."
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -495,7 +611,11 @@
     },
     "calendar": {
       "calendar": "Календарь",
-      "personalCalendar": "Личный календарь"
+      "personalCalendar": "Личный календарь",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "profile": {
       "change": "Изменить",
@@ -514,7 +634,30 @@
       "security": "Безопасность",
       "username": "Имя пользователя",
       "emailChangeConfirmation": "Письмо с подтверждением изменения электронной почты было отправлено, пожалуйста проверьте свой почтовый ящик, чтобы подтвердить изменение.",
-      "profile": "Профиль"
+      "profile": "Профиль",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": "",
+        "none": ""
+      },
+      "securitySettings": "",
+      "settings": ""
     },
     "bCert": {
       "noResults": "С этой учетной записью пока не связано никаких оценок или сертификатов.\nЕсли вы сдали экзамен, но ваши результаты не доступны в течение длительного времени, пожалуйста, <0>обратитесь к нам</0> за помощью.",
@@ -531,7 +674,60 @@
       "tweetText": "Очень рад, что закончил {{courseIndex}} курс в @planb_network и получил диплом, набрав {{score}}/100 баллов на выпускном экзамене! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "conclusionHeadline": "Здесь приводится краткое изложение того, что вы изучили. Если некоторые главы были пропущены или не были проверены должным образом, сейчас самое время сделать это, либо вернувшись к изучению, либо нажав на кнопку \"Завершить\".",
       "coordinator": "Координатор курса",
-      "submitReviewInfo": "Чтобы получить доступ к этой функции, необходимо отправить отзыв."
+      "submitReviewInfo": "Чтобы получить доступ к этой функции, необходимо отправить отзыв.",
+      "assignment": "",
+      "confirmSubmission": "",
+      "surePreferenceList": "",
+      "announcement": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "confirmList": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "examScore": "",
+      "exams": "",
+      "fileUploadError": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "summerSchool": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "fileUploaded": ""
     },
     "credentials": {
       "bCert": "",
@@ -564,7 +760,52 @@
         "quickRecap": "Здесь вы найдете всю общую информацию об этом курсе.",
         "reviewInfos": "Здесь вы можете контролировать и просматривать всю информацию, касающуюся каждого согласованного вами курса.",
         "reviews": "Отзывы",
-        "goal": "Цель"
+        "goal": "Цель",
+        "deleteAnnouncementTitle": "",
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": "",
+          "alertDescription2": ""
+        },
+        "assignmentStudents": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": "",
+        "assignment": ""
       },
       "menu": "Меню учителя",
       "profile": {
@@ -644,7 +885,73 @@
       "bookingsPanel": "Панель бронирования",
       "upcomingBookings": "Предстоящие заказы",
       "upcomingBookingsSubtitle": "Здесь вы можете скачать список участников всех очных мероприятий.",
-      "userRolesAllocation": "Распределение ролей пользователей"
+      "userRolesAllocation": "Распределение ролей пользователей",
+      "coupons": {
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        }
+      },
+      "discountCodes": ""
     },
     "backToDashboard": "Назад к панели управления",
     "careerPortal": {
@@ -826,7 +1133,18 @@
       "yourLanguages": "Ваши языки",
       "yourRoles": "Ваши рабочие места"
     },
-    "studentDashboard": "Панель управления для студентов"
+    "studentDashboard": "Панель управления для студентов",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToHomepage": "",
+    "goToDashboard": ""
   },
   "events": {
     "card": {
@@ -1009,7 +1327,12 @@
   },
   "payment": {
     "terms": "Смотрите наши <0>общие условия</0> для получения информации о возврате",
-    "total": "Всего"
+    "total": "Всего",
+    "haveReductionCode": "",
+    "insertReductionCode": "",
+    "payByCard": "",
+    "payWithBitcoin": "",
+    "taxesMayApply": ""
   },
   "podcasts": {
     "pageTitle": "Подкасты о Биткойне"
@@ -1032,18 +1355,61 @@
   },
   "resources": {
     "newsletters": {
-      "title": "Новостные рассылки"
+      "title": "Новостные рассылки",
+      "author": "",
+      "level": "",
+      "noNewsletters": "",
+      "subtitle": ""
     },
     "pageDescription": "Попытка понять Биткойн сравнима с исследованием лабиринта, который продолжает расти. Чтобы помочь Вам в этом путешествии, мы собрали огромный массив ресурсов, включая книги, подкасты, видео и записи конференций. Этот портал собирает всю информацию в одном репозитории Github, чтобы помочь Вам лучше понять экосистему Биткойна.",
     "pageSubtitle": "Централизуйте знания для их лучшего распределения",
     "pageTitle": "Добро пожаловать в Портал ресурсов",
     "github": "Все эти данные управляются через один открытый репозиторий <0>Github</0>. Не стесняйтесь вносить свой вклад и добавлять любой отсутствующий контент.",
     "podcasts": {
-      "title": "Подкасты"
+      "title": "Подкасты",
+      "noPodcasts": ""
     },
     "searchFilterName": "Искать по имени",
     "pageSubtitleBooks": "",
-    "pageSubtitlePodcast": ""
+    "pageSubtitlePodcast": "",
+    "toggleLabelAll": "",
+    "lectures": {
+      "title": "",
+      "noLectures": ""
+    },
+    "articles": {
+      "title": ""
+    },
+    "bet": {
+      "title": ""
+    },
+    "books": {
+      "title": ""
+    },
+    "channels": {
+      "noYoutubeChannels": "",
+      "title": ""
+    },
+    "conferences": {
+      "title": ""
+    },
+    "glossary": {
+      "title": ""
+    },
+    "movies": {
+      "noMovies": "",
+      "title": ""
+    },
+    "newsletter": {
+      "check": ""
+    },
+    "pageSubtitleChannels": "",
+    "pageSubtitleLectures": "",
+    "projects": {
+      "title": ""
+    },
+    "toggleFreeOnly": "",
+    "toggleLabelSelectedLanguage": ""
   },
   "settings": {
     "changePassword": "Сменить пароль",
@@ -1056,7 +1422,9 @@
       "source": "Оригинальный ресурс:",
       "didHelp": "Это помогло?",
       "writtenBy": "Этот учебный материал был написан:",
-      "author": "Автор "
+      "author": "Автор ",
+      "ratingSuccess": "",
+      "tutorialName": ""
     },
     "exchange": {
       "description": "Биржи являются одним из входов и выходов между Вашей традиционной валютой (евро, доллары) и миром биткойна. Биржи могут быть регулируемыми и соответствовать требованиям KYC (Узнай своего клиента), или быть пиринговыми и анонимными. Каждая биржа предлагает различные функции, структуры комиссий, ликвидность и поддержку клиентов. Каждый биткойнер будет использовать разные биржи в зависимости от своих потребностей и убеждений.",
@@ -1092,7 +1460,45 @@
       "title": "Кошелек"
     },
     "backTutorials": "Назад к учебным материалам",
-    "approvedByCreator": "Одобренно создателем"
+    "approvedByCreator": "Одобренно создателем",
+    "hasBeenProofreadBy": "",
+    "business": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "computer-security": {
+      "description": "",
+      "shortDescription": "",
+      "title": ""
+    },
+    "contribution": {
+      "shortDescription": "",
+      "title": ""
+    },
+    "hasNotBeenProofread": "",
+    "subCategories": {
+      "analysis": "",
+      "authentication": "",
+      "backup": "",
+      "bitcoin": "",
+      "centralized": "",
+      "communication": "",
+      "content": "",
+      "data": "",
+      "desktop": "",
+      "hardware": "",
+      "lightning-network": "",
+      "mobile": "",
+      "on-chain": "",
+      "operating system": "",
+      "others": "",
+      "peer-to-peer": "",
+      "point-of-sale": "",
+      "pool": "",
+      "resource": ""
+    },
+    "writtenBy": ""
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1164,7 +1570,8 @@
       "errorMessageNotFound": "",
       "blogSidebarTitle": "",
       "blogListButtonText": "",
-      "filterText": ""
+      "filterText": "",
+      "blogSidebarTitleForAll": ""
     }
   },
   "proofreading": {
@@ -1173,7 +1580,8 @@
     "description": "",
     "inProgress": "",
     "reviewEarn": "",
-    "status": ""
+    "status": "",
+    "rewardsText": ""
   },
   "filters": {
     "categories": "Категории",
@@ -1211,7 +1619,110 @@
       "calendar": "Оповещение по календарю",
       "celebration": "Праздник",
       "general": "Общая информация",
-      "assignment": "Задание"
+      "assignment": "Задание",
+      "warning": ""
     }
+  },
+  "accessType": {
+    "hybrid": "",
+    "physical": "",
+    "replay": "",
+    "online": ""
+  },
+  "notifications": {
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
+  },
+  "podcast": {
+    "check": ""
+  },
+  "projects": {
+    "networkStrength": "",
+    "noRelatedEvents": "",
+    "otherCommunities": "",
+    "pageTitle": "",
+    "related": "",
+    "relatedEvents": "",
+    "languages": ""
+  },
+  "search": {
+    "all": "",
+    "book": "",
+    "books": "",
+    "categories": "",
+    "conference": "",
+    "conference_replay": "",
+    "conference_replays": "",
+    "course": "",
+    "course_chapter": "",
+    "course_part": "",
+    "courses": "",
+    "event": "",
+    "events": "",
+    "explorer": {
+      "subtitle": "",
+      "title": ""
+    },
+    "filterByType": "",
+    "glossary_word": "",
+    "glossary_words": "",
+    "languageSelected": "",
+    "lecture_replay": "",
+    "lecture_replays": "",
+    "loadMoreResults": "",
+    "newsletter": "",
+    "newsletters": "",
+    "podcast": "",
+    "podcasts": "",
+    "professor": "",
+    "professors": "",
+    "project": "",
+    "projects": "",
+    "resultEmpty": "",
+    "resultError": "",
+    "resultInfo": "",
+    "results": "",
+    "resultsRemaining": "",
+    "search": "",
+    "searchResult": "",
+    "startSearch": "",
+    "tutorial": "",
+    "tutorials": "",
+    "youtube_channel": "",
+    "youtube_channels": ""
+  },
+  "youtubeChannels": {
+    "pageTitle": "",
+    "view": "",
+    "watchTrailer": ""
   }
 }
