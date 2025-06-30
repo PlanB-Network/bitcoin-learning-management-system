@@ -71,7 +71,21 @@
     "passwordResetError": "මුරපද යළි සැකසීමේ දෝෂය",
     "passwordResetSent": "මුරපද යළි පිහිටුවීමේ විද්‍යුත් තැපෑල ඔබගේ ඉන්බොක්ස් වෙත යවා ඇත (අපගේ දත්ත ගබඩාවේ ඊමේල් ලිපිනය තිබේ නම්).",
     "passwordSuccessfullyChanged": "ඔබගේ මුරපදය සාර්ථකව වෙනස් කර ඇත. ඔබට දැන් ඔබගේ නව මුරපදය සමඟ පිවිසිය හැක.",
-    "passwordsDontMatch": "මුරපද නොගැලපේ"
+    "passwordsDontMatch": "මුරපද නොගැලපේ",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bCert": {
     "bookExam": "විභාග සැසියක් වෙන්කරවා ගන්න",
@@ -189,7 +203,11 @@
       "description": "විස්තරය",
       "hasNotBeenProofread": "මෙම පාඨමාලාව තවම සෝදුපත් කියවා නැත",
       "hasBeenProofreadBy": "මෙම පාඨමාලාව සෝදුපත් කියවා ඇත",
-      "thanksTipping": "මහාචාර්යවරයාට අමතර ගෙවීමක් කිරීමෙන් ඔබට ස්තූති කළ හැකිය."
+      "thanksTipping": "මහාචාර්යවරයාට අමතර ගෙවීමක් කිරීමෙන් ඔබට ස්තූති කළ හැකිය.",
+      "associatedProfessors": "",
+      "attendInPersonWarning": "",
+      "coordinatedBy": "",
+      "learning": ""
     },
     "exam": {
       "buttonTextBCert": "වැඩිදුර ඉගෙන ගන්න",
@@ -264,7 +282,28 @@
       "goConclusion": "නිගමනයට යන්න",
       "passExam": "විභාගය සමත්",
       "timeStampedNoDot": "කාල සටහන් කර ඇත",
-      "timeStamping": "කාල සටහන් කිරීම"
+      "timeStamping": "කාල සටහන් කිරීම",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "finalScore": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "nbMinutes": "",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "weight": "",
+      "viewExam": ""
     },
     "explorer": {
       "journey": "Bitcoin යනු ගමනක් මිස ගමනාන්තයක් නොවේ",
@@ -275,7 +314,8 @@
       "buildPath": "ඔබේම ගමනක් ගොඩනඟන්න",
       "comingSoon": "ඉක්මණින් පැමිණෙයි",
       "exploreCourses": "සියලුම Plan ₿ පාඨමාලා ගවේෂණය කරන්න",
-      "seeCourse": "පාඨමාලාව සොයා ගන්න"
+      "seeCourse": "පාඨමාලාව සොයා ගන්න",
+      "goal": ""
     },
     "payment": {
       "date": "දිනය",
@@ -297,7 +337,8 @@
       "back_course": "ආපසු පාඨමාලාවට",
       "book_description": "කරුණාකර ලබා දුන් ස්ථාන විස්තර සමාලෝචනය කරන්න.\nඔබගේ වෙන්කරවා ගැනීම ක්‍රියාවට නැංවූ පසු, අපි ඔබට උත්සවයට ඉදිරිපත් කිරීමට තහවුරු කිරීමේ ටිකට් පතක් සහ QR කේතයක් එවන්නෙමු.",
       "payment_details": "ගෙවීම් විස්තර",
-      "payment_successful": "ගෙවීම සාර්ථකයි!"
+      "payment_successful": "ගෙවීම සාර්ථකයි!",
+      "courseType": ""
     },
     "quizz": {
       "quizz": "ප්‍රශ්නාවලිය",
@@ -354,6 +395,11 @@
       "no": "නැත",
       "tooHard": "ගොඩක් අපහසුයි",
       "commentPublicMobile": "පොදු අදහස"
+    },
+    "format": {
+      "hybrid": "",
+      "inperson": "",
+      "online": ""
     }
   },
   "dashboard": {
@@ -398,7 +444,73 @@
       "coursesIndexes": "පාඨමාලා දර්ශක",
       "deleteRole": "භූමිකාව මකා දමන්න",
       "editRole": "භූමිකාව සංස්කරණය කරන්න",
-      "hasAccessTo": "ප්‍රවේශය ඇත:"
+      "hasAccessTo": "ප්‍රවේශය ඇත:",
+      "coupons": {
+        "cancel": "",
+        "close": "",
+        "delete": "",
+        "deleteDiscountCode": "",
+        "deleteDiscountCodeConfirm": "",
+        "deleteDiscountCodeSuccess": "",
+        "deleteDiscountCodeWarning": "",
+        "discountCode": "",
+        "discountCodeCopied": "",
+        "discountCodeExplanation": "",
+        "discountCodePlaceholder": "",
+        "discountMultiUse": "",
+        "discountSingleUse": "",
+        "discountType": "",
+        "discountValue": "",
+        "discountValuePlaceholder": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "explanation": "",
+        "filters": {
+          "all": "",
+          "courses": "",
+          "events": "",
+          "multiUse": "",
+          "singleUse": ""
+        },
+        "forWhat": "",
+        "forWhichCourse": "",
+        "forWhichEvent": "",
+        "generateCode": "",
+        "generateCodes": "",
+        "generateDiscountCode": "",
+        "generateNew": "",
+        "generateNewCodes": "",
+        "generatedCode": "",
+        "generatedCodes": "",
+        "maximumNumberOfUse": "",
+        "mobileSort": {
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": "",
+          "az": ""
+        },
+        "noCouponsFound": "",
+        "numberOfCodes": "",
+        "numberOfCodesPlaceholder": "",
+        "productCourse": "",
+        "productEvent": "",
+        "selectCourse": "",
+        "selectEvent": "",
+        "tableHead": {
+          "actions": "",
+          "code": "",
+          "discount": "",
+          "maxUses": "",
+          "name": "",
+          "owner": "",
+          "total": "",
+          "type": "",
+          "uses": "",
+          "value": ""
+        }
+      },
+      "discountCodes": ""
     },
     "account": "ගිණුම",
     "booking": {
@@ -596,7 +708,9 @@
       "maxCharacters": "{{characters}} අක්ෂර උපරිමය",
       "motivation": "අභිප්‍රේරණය",
       "motivationLetter": "අභිප්‍රේරණ ලිපිය",
-      "motivationLetterPlaceholder": "ඔබේ අභිප්‍රේරණය කුමක්ද?"
+      "motivationLetterPlaceholder": "ඔබේ අභිප්‍රේරණය කුමක්ද?",
+      "applicationComplete": "",
+      "applicationIncomplete": ""
     },
     "bCert": {
       "grade": "ශ්‍රේණිය",
@@ -605,7 +719,11 @@
     "backToDashboard": "උපකරණ පුවරුවට නැවත යන්න",
     "calendar": {
       "calendar": "දින දර්ශනය",
-      "personalCalendar": "පුද්ගලික දින දර්ශනය"
+      "personalCalendar": "පුද්ගලික දින දර්ශනය",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "myCourses": {
       "inprogressCoursesTitle": "පාඨමාලා සිදුවෙමින් පවතී",
@@ -662,7 +780,61 @@
       "coursesCompleted": "සම්පුර්ණ කරන ලද පාඨමාලා",
       "feedbacks": "මෙහිදී ඔබට මෙම පාඨමාලාවට ඔබ ලබා දී ඇති ශ්‍රේණිගත කිරීම් සහ ප්‍රතිපෝෂණ පරීක්ෂා කර සංස්කරණය කළ හැක.",
       "ratingsAndFeedbacks": "ශ්‍රේණිගත කිරීම් සහ ප්‍රතිපෝෂණ",
-      "submitReviewInfo": "මෙම විශේෂාංගයට ප්‍රවේශ වීමට ඔබ සමාලෝචනයක් ඉදිරිපත් කළ යුතුය."
+      "submitReviewInfo": "මෙම විශේෂාංගයට ප්‍රවේශ වීමට ඔබ සමාලෝචනයක් ඉදිරිපත් කළ යුතුය.",
+      "submitBefore": "",
+      "examScore": "",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "exams": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "assignmentDescription": "",
+      "assignmentInformation": "",
+      "confirmList": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "assignmentTitle": "",
+      "conclusionNotReleased": "",
+      "congratulationsPassed": "",
+      "coordinator": ""
     },
     "profile": {
       "change": "වෙනස් කරන්න",
@@ -681,7 +853,30 @@
       "save": "සුරකින්න",
       "saving": "සුරකිමින්…",
       "security": "ආරක්ෂාව",
-      "username": "පරිශීලක නාමය"
+      "username": "පරිශීලක නාමය",
+      "notificationSettings": {
+        "title": "",
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": ""
+      },
+      "emailChangeRateLimitError": "",
+      "securitySettings": "",
+      "settings": ""
     },
     "teacher": {
       "courses": {
@@ -699,7 +894,53 @@
         "objectives": "අරමුණු",
         "proposeNewCourse": "නව පාඨමාලාවක් යෝජනා කරන්න",
         "reviewInfos": "මෙහිදී ඔබට ඔබ සම්බන්ධීකරණය කර ඇති එක් එක් පාඨමාලාවට අදාළ සියලු තොරතුරු පාලනය කිරීමට සහ සමාලෝචනය කළ හැක.",
-        "reviews": "සමාලෝචන"
+        "reviews": "සමාලෝචන",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertTitle": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "allStudents": "",
+        "announcementModal": {
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "title": "",
+          "typeLabel": "",
+          "typePlaceholder": ""
+        },
+        "announcements": "",
+        "noWrittenAnnouncement": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "goal": "",
+        "noPastAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "reviews": {
         "reviewsAndGrading": "සමාලෝචන & ශ්‍රේණිගත කිරීම",
@@ -740,7 +981,18 @@
     },
     "courses": "පාඨමාලා",
     "logout": "ඉවත් වන්න",
-    "studentDashboard": "ශිෂ්‍ය උපකරණ පුවරුව"
+    "studentDashboard": "ශිෂ්‍ය උපකරණ පුවරුව",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "all": "",
+        "summer": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToDashboard": "",
+    "goToHomepage": ""
   },
   "events": {
     "card": {
@@ -791,7 +1043,13 @@
       "limitation": "සීමා කිරීම",
       "max_capacity": "උපරිම ධාරිතාව",
       "payment_successful": "වෙන්කරවා ගැනීම සාර්ථකයි.",
-      "time": "කාලය"
+      "time": "කාලය",
+      "callout_book_online": "",
+      "callout_book_physical": "",
+      "callout_book_replay": "",
+      "callout_purchase_online": "",
+      "callout_purchase_physical": "",
+      "callout_purchase_replay": ""
     },
     "newEvent": {
       "subtitle": "බිලියනයක පිරිසකට ඔරේන්ජ් පිල් කිරීම පහසු නොවේ.",
@@ -801,7 +1059,9 @@
     },
     "pageDescription": "තත්‍ය කාලීනව බිට්කොයින් ගැන කතා කිරීමට අවශ්‍යද? මෙහිදී, ඔබට Plan ₿ Network ප්‍රජාවන් විසින් සහාය දක්වන සියලුම සිදුවීම් සොයා ගත හැක. ඔබට දේශනයකට ඇහුම්කන් දීමට, පානයක් හරහා බිට්කොයින් ගැන සාකච්ඡා කිරීමට හෝ ඔබේ දැනුම තක්සේරු කිරීමට විභාගයකට යාමට අවශ්‍ය වුවද, ඔබට Plan ₿ Network හරහා මෙහිදී නිවැරදි සිදුවීම සොයාගත හැකිය.",
     "pageSubtitle": "ශක්තිමත් ජාලයක් මගින් වැඩිදියුණු කරන ලද පහළ සිට ඉහළට ගැනීම",
-    "pageTitle": "සහභාගී වීමට බිට්කොයින් සිදුවීමක් සොයන්නේද?"
+    "pageTitle": "සහභාගී වීමට බිට්කොයින් සිදුවීමක් සොයන්නේද?",
+    "tcDisclaimer": "",
+    "tcMustBeAccepted": ""
   },
   "glossary": {
     "keepLooking": "දිගටම සෙවීමට අවශ්‍යද?",
@@ -937,7 +1197,9 @@
     "total": "එකතුව",
     "payByCard": "කාඩ්පතෙන් ගෙවන්න",
     "payWithBitcoin": "බිට්කොයින් සමඟ ගෙවන්න",
-    "terms": "ආපසු ගෙවීමේ විස්තර සඳහා අපගේ <0>සාමාන්‍ය නියමයන්</0> සහ කොන්දේසි බලන්න"
+    "terms": "ආපසු ගෙවීමේ විස්තර සඳහා අපගේ <0>සාමාන්‍ය නියමයන්</0> සහ කොන්දේසි බලන්න",
+    "insertReductionCode": "",
+    "taxesMayApply": ""
   },
   "podcast": {
     "check": "පොඩ්කාස්ට් එක පරීක්ෂා කරන්න"
@@ -1061,7 +1323,8 @@
       "featuredArticleTitleText": "නවතම ලිපිය නිකුත් කර ඇත",
       "filterText": "මාතෘකාව අනුව පෙරහන් කරන්න :",
       "noArticlesText": "මෙම වේලාවේ බ්ලොග් පෝස්ට් කිසිවක් නොමැත.",
-      "pastArticleSubtitleText": "පසුගිය ලිපි"
+      "pastArticleSubtitleText": "පසුගිය ලිපි",
+      "blogSidebarTitleForAll": ""
     },
     "blogPost": "බ්ලොග් සහ පුවත්",
     "description": "Plan ₿ Network විවෘත මූලාශ්‍ර ප්‍රමිතීන්ට අනුගත වීම සහ එහි ගමන පුරා විනිවිදභාවය පවත්වා ගැනීම ගැන ආඩම්බර වේ",
@@ -1376,7 +1639,20 @@
     "view": "බලන්න",
     "yes": "ඔව්",
     "email": "විද්‍යුත් තැපෑල",
-    "save": "සුරකින්න"
+    "save": "සුරකින්න",
+    "calendar": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "mentor": "",
+    "mode": "",
+    "notApplicable": "",
+    "password": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "underConstruction": {
     "p2": "සහ අපගේ ප්‍රජාවට සම්බන්ධ වීම ගැන සලකා බලන්න!",
@@ -1396,6 +1672,59 @@
     "description1": "Plan ₿ රසායනාගාර යනු සිසුන්ට නිතිපතා ප්‍රායෝගික සහ අන්තර්ක්‍රියාකාරී පන්ති සැපයීම සඳහා නිර්මාණය කර ඇති අධ්‍යයන කණ්ඩායම් වේ. මෙම අධ්‍යයන කණ්ඩායම් හරහා, සිසුන් සහ මහාචාර්යවරු සාකච්ඡා, නවතම පර්යේෂණ විවාද, සැබෑ ලෝකයේ අභියෝග විසඳීම සහ න්‍යායික සංකල්ප යෙදීමෙහි නිරත වෙති.",
     "planBLabs": "Plan ₿ රසායනාගාර",
     "description2": "ඔබේ අධ්‍යයන ක්ෂේත්‍රයට ගැලපෙන රසායනාගාරයට සම්බන්ධ වී ඔබේ ඉගෙනුම් අත්දැකීම් වැඩි දියුණු කරගන්න!",
-    "title": "අඛණ්ඩ ඉගෙනීම සඳහා ප්‍රායෝගික හා අන්තර්ක්‍රියාකාරී පන්ති"
+    "title": "අඛණ්ඩ ඉගෙනීම සඳහා ප්‍රායෝගික හා අන්තර්ක්‍රියාකාරී පන්ති",
+    "presentation": {
+      "link": "",
+      "subtitle": "",
+      "title": ""
+    }
+  },
+  "accessType": {
+    "hybrid": "",
+    "physical": "",
+    "replay": "",
+    "online": ""
+  },
+  "notifications": {
+    "calendar_24h": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "markAsRead": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "planBNews": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "yearsAgo": "",
+    "yesterday": ""
+  },
+  "notification": {
+    "types": {
+      "assignment": "",
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": ""
+    }
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
