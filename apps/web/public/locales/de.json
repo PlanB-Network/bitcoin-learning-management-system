@@ -71,7 +71,21 @@
     "passwordChangedSuccess": "Passwort erfolgreich geändert",
     "trackProgress": "Erstellen Sie ein Konto oder melden Sie sich an, um Ihre Fortschritte zu verfolgen",
     "dashboardUnlocked": "Ihr Studenten-Dashboard ist freigeschaltet!",
-    "didYouKnow": "Wussten Sie schon?"
+    "didYouKnow": "Wussten Sie schon?",
+    "emailValidation": {
+      "emailChangeValidated": "",
+      "emailValidated": "",
+      "errorValidatingEmail": "",
+      "errorValidatingEmailChange": "",
+      "errorValidatingEmailChangeDescription": "",
+      "errorValidatingEmailDescription": "",
+      "successfullyChanged": "",
+      "successfullyValidated": "",
+      "validateChange": "",
+      "validatingEmail": "",
+      "validatingEmailChange": "",
+      "wontTakeLong": ""
+    }
   },
   "bet": {
     "educationalContent": {
@@ -139,7 +153,8 @@
       "hasBeenProofreadBy": "Dieser Kurs wurde Korrektur gelesen von",
       "coordinatedBy": "Dieser Kurs wird koordiniert von",
       "learning": "Lernpfad",
-      "associatedProfessors": "Zugehörige Dozenten"
+      "associatedProfessors": "Zugehörige Dozenten",
+      "attendInPersonWarning": ""
     },
     "explorer": {
       "pageDescription": "Die Plan ₿ Academy zielt darauf ab, die Bitcoin-Ausbildung weltweit zu vereinfachen. Kuratiert von Experten aus verschiedenen Bereichen, bietet unsere Akademie ein umfassendes Angebot an Kursen, die jeden Aspekt von Bitcoin klären sollen.\nVom Anfänger bis zum Experten, ob in Ihrem eigenen Tempo oder wöchentlich von einem Professor begleitet, hoffen wir, dass die Akademie Ihnen helfen kann, ein tieferes Verständnis für die weitreichende Welt des Bitcoin zu erlangen. Viele unserer Kurse sind völlig kostenlos, so dass jeder, überall, Zugang zu hochwertiger Bildung hat.",
@@ -306,7 +321,28 @@
       "receiveDiploma": "Sie erhalten Ihr Abschlusszeugnis",
       "skipGoConclusion": "Überspringen, weiter zur Schlussfolgerung",
       "successDiploma": "Herzlichen Glückwunsch! Sie haben die Prüfung erfolgreich bestanden. \nIhr Abschlusszeugnis ist in Ihrem Studenten-Dashboard verfügbar. Es wurde mit einem <0>time-stamped</0> versehen, um seine Echtheit zu gewährleisten.",
-      "takeExam": "Machen Sie die Prüfung"
+      "takeExam": "Machen Sie die Prüfung",
+      "completed": "",
+      "examAvailabilityDetails": "",
+      "finalScore": "",
+      "nbQuestions": "",
+      "nextChapter": "",
+      "readyToTest": "",
+      "results": {
+        "correct": "",
+        "incorrect": "",
+        "questions": "",
+        "time": ""
+      },
+      "singleAttempt": "",
+      "singleAttemptAvailability": "",
+      "singleAttemptPrecaution": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": "",
+      "weight": "",
+      "nbMinutes": "",
+      "viewExam": ""
     },
     "conclusion": {
       "unlockFeatures2": "Bitte beachten Sie, dass wir keine personenbezogenen Daten erheben und keine Cookies verwenden.",
@@ -401,11 +437,38 @@
       "profilePicture": "Profilbild",
       "security": "Sicherheit",
       "username": "Benutzername",
-      "profile": "Profil"
+      "profile": "Profil",
+      "emailChangeRateLimitError": "",
+      "notificationSettings": {
+        "coursesOption": "",
+        "description": "",
+        "emailPreferencesDescription": "",
+        "emailPreferencesError": "",
+        "emailPreferencesSavedSuccessfully": "",
+        "emailPreferencesTitle": "",
+        "emailTitle": "",
+        "emailWarning": "",
+        "eventsOption": "",
+        "generalOption": "",
+        "goToProfile": "",
+        "loadEmailSettingsError": "",
+        "loadEmailSettingsErrorDescription": "",
+        "loadEmailSettingsErrorManage": "",
+        "none": "",
+        "platformTitle": "",
+        "settingsSaved": "",
+        "title": ""
+      },
+      "securitySettings": "",
+      "settings": ""
     },
     "calendar": {
       "calendar": "Kalender",
-      "personalCalendar": "Persönlicher Kalender"
+      "personalCalendar": "Persönlicher Kalender",
+      "eventType": {
+        "class": "",
+        "event": ""
+      }
     },
     "teacher": {
       "courses": {
@@ -424,7 +487,52 @@
         "proposeNewCourse": "Einen neuen Kurs vorschlagen",
         "quickRecap": "Hier finden Sie alle allgemeinen Informationen zu diesem Kurs.",
         "reviews": "Bewertungen",
-        "goal": "Ziel"
+        "goal": "Ziel",
+        "announcementModal": {
+          "title": "",
+          "editAnnouncement": "",
+          "groupLabel": "",
+          "typeLabel": "",
+          "contentLabel": "",
+          "contentPlaceholder": "",
+          "create": "",
+          "dateLabel": "",
+          "datePlaceholder": "",
+          "dateRequired": "",
+          "typePlaceholder": ""
+        },
+        "assignmentGrade": {
+          "alertTitle": "",
+          "confirmPublication": "",
+          "alertDescription": "",
+          "alertDescription2": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        },
+        "allStudents": "",
+        "announcements": "",
+        "announcementsIntroduction": "",
+        "announcementsPast": "",
+        "announcementsPastDescription": "",
+        "announcementsUpcoming": "",
+        "announcementsUpcomingDescription": "",
+        "assignment": "",
+        "assignmentStudents": "",
+        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementWarning": "",
+        "noPastAnnouncement": "",
+        "noWrittenAnnouncement": "",
+        "selectCourse": "",
+        "summerStudents": "",
+        "writeAnnouncement": ""
       },
       "profile": {
         "noShortBio": "Bisher ist keine kurze Biografie mit diesem Konto verknüpft, fühlen Sie sich frei, sie auf GitHub hinzuzufügen.",
@@ -474,7 +582,60 @@
       "coursesCompleted": "Absolvierte Kurse",
       "conclusionHeadline": "Hier ist eine Zusammenfassung dessen, was Sie gelernt haben. Wenn Sie einige Kapitel verpasst oder nicht richtig validiert haben, können Sie dies jetzt nachholen, indem Sie entweder zurückgehen, um zu lernen, oder indem Sie auf die Schaltfläche „Vollständig“ drücken.",
       "submitReviewInfo": "Sie müssen eine Bewertung abgeben, um Zugang zu dieser Funktion zu erhalten.",
-      "coordinator": "Kurskoordinator"
+      "coordinator": "Kurskoordinator",
+      "assignmentDescription": "",
+      "summerSchool": "",
+      "surePreferenceList": "",
+      "yourProject": "",
+      "examScore": "",
+      "exams": "",
+      "confirmList": "",
+      "announcement": "",
+      "assignment": "",
+      "assignmentInformation": "",
+      "confirmNoEditableFile": "",
+      "congratulationsPassed": "",
+      "courseCalendar": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "generalInformation": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolExamDescription": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submitBefore": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "submissionInstructions": "",
+      "assignmentCompletedDescription": "",
+      "assignmentCompletedTitle": "",
+      "conclusionNotReleased": "",
+      "assignmentTitle": "",
+      "confirmNoEditable": "",
+      "confirmSubmission": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -549,7 +710,8 @@
           "value": "Wert",
           "uses": "Gebraucht",
           "total": "Gesamt",
-          "owner": "Eigentümer"
+          "owner": "Eigentümer",
+          "maxUses": ""
         },
         "discountType": "Welche Art von Rabattcode?",
         "discountSingleUse": "Einweg",
@@ -584,7 +746,18 @@
         "generateCode": "Code generieren",
         "generateCodes": "Codes generieren",
         "generatedCode": "Generierter Code",
-        "generatedCodes": "Generierte Codes"
+        "generatedCodes": "Generierte Codes",
+        "discountCodeCopied": "",
+        "downloadImage": "",
+        "downloadImages": "",
+        "mobileSort": {
+          "az": "",
+          "highLow": "",
+          "lowHigh": "",
+          "sortBy": "",
+          "za": ""
+        },
+        "noCouponsFound": ""
       },
       "discountCodes": "Rabattcodes"
     },
@@ -768,7 +941,18 @@
       "applicationIncomplete": "Deine Anwendung ist <highlight>Abgeschlossen</highlight>",
       "applicationComplete": "Deine Anwendung ist <highlight>Abgeschlossen</highlight>"
     },
-    "studentDashboard": "Dashboard für Studenten"
+    "studentDashboard": "Dashboard für Studenten",
+    "goToDashboard": "",
+    "announcements": {
+      "groups": {
+        "active": "",
+        "summer": "",
+        "all": ""
+      },
+      "pickADate": "",
+      "publicationDate": ""
+    },
+    "goToHomepage": ""
   },
   "events": {
     "main": {
@@ -1282,7 +1466,20 @@
     "bitcoin": "Bitcoin",
     "username": "Benutzername",
     "viewMore": "Mehr anzeigen",
-    "yes": "Ja"
+    "yes": "Ja",
+    "calendar": "",
+    "company": "",
+    "continue": "",
+    "day": "",
+    "notApplicable": "",
+    "mentor": "",
+    "mode": "",
+    "password": "",
+    "saving": "",
+    "selectedAmount": "",
+    "timeZone": "",
+    "title": "",
+    "video": ""
   },
   "conferences": {
     "description": "Konferenzen sind ein Schlüsselelement in der Bitcoin-Branche. Sie sind Teil der Bildungsreise eines jeden Bitcoiners. Wir haben dieses Tool entwickelt, um Ihnen bei der Navigation durch Hunderte von Konferenzen zu helfen.",
@@ -1312,7 +1509,8 @@
     "payWithBitcoin": "Mit Bitcoin bezahlen",
     "haveReductionCode": "Haben Sie einen Ermäßigungscode?",
     "payByCard": "Mit Karte bezahlen",
-    "insertReductionCode": "Gib deinen Rabattcode ein"
+    "insertReductionCode": "Gib deinen Rabattcode ein",
+    "taxesMayApply": ""
   },
   "bCert": {
     "bCertDescription": "Das ₿ Zertifikat ist eine international anerkannte Prüfung, die Ihre Beherrschung von Bitcoin und den davon abgeleiteten Themen bewertet. Dieses Zertifikat ermöglicht es Ihnen, Ihre Fähigkeiten und Kenntnisse in der Bitcoin-Branche nachzuweisen, und gibt Ihnen Zugang zu den besten Unternehmen und hervorragenden Arbeitsstelle.",
@@ -1386,7 +1584,8 @@
       "errorMessageNotFound": "Blog nicht gefunden.",
       "blogSidebarTitle": "Vorherige {{category}} Beiträge",
       "blogListButtonText": "Lesen",
-      "filterText": "Filtern nach Thema :"
+      "filterText": "Filtern nach Thema :",
+      "blogSidebarTitleForAll": ""
     }
   },
   "filters": {
@@ -1474,7 +1673,8 @@
   "accessType": {
     "physical": "Persönlich",
     "online": "Online",
-    "replay": "Wiedergabe"
+    "replay": "Wiedergabe",
+    "hybrid": ""
   },
   "labs": {
     "coordinatedBy": "Dieses Labor wird koordiniert von",
@@ -1487,5 +1687,47 @@
       "title": "Verbessere deine Bitcoin-Fähigkeiten!"
     },
     "title": "Praktische und interaktive Unterrichtseinheiten für kontinuierliches Lernen"
+  },
+  "notification": {
+    "types": {
+      "calendar": "",
+      "celebration": "",
+      "general": "",
+      "warning": "",
+      "assignment": ""
+    }
+  },
+  "notifications": {
+    "stayUpToDate": "",
+    "today": "",
+    "unread": "",
+    "upcomingEvent": "",
+    "weeksAgo": "",
+    "bCertResults": "",
+    "blogNotTranslated": "",
+    "bookYourSeat": "",
+    "calendar_24h": "",
+    "calendar_24h_in_person_event": "",
+    "calendar_48h_online_event": "",
+    "calendar_5m": "",
+    "calendar_5m_online_event": "",
+    "dashboardDescription": "",
+    "daysAgo": "",
+    "hoursAgo": "",
+    "monthsAgo": "",
+    "noRecentNotifications": "",
+    "noUnreadNotifications": "",
+    "notifications": "",
+    "read": "",
+    "results": "",
+    "select": "",
+    "selectAll": "",
+    "yearsAgo": "",
+    "yesterday": "",
+    "markAsRead": "",
+    "planBNews": ""
+  },
+  "placeholders": {
+    "selectTimeZone": ""
   }
 }
