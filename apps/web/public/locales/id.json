@@ -337,7 +337,11 @@
       "singleAttemptAvailability": "Ujian ini tersedia secara online mulai tanggal {{date}}",
       "singleAttemptPrecaution": "Sebelum memulai, pastikan koneksi Anda stabil. Karena ini adalah ujian satu kali percobaan, jika koneksi Anda terputus, Anda tidak dapat mencoba lagi.",
       "viewExam": "Lihat tes",
-      "weight": "Berat: {{weight}} %"
+      "weight": "Berat: {{weight}} %",
+      "finalScore": "",
+      "solidEffort": "",
+      "successDiplomaTeachedLed": "",
+      "successfulPassedThreshold": ""
     },
     "review": {
       "asExpected": "seperti yang diharapkan",
@@ -529,7 +533,50 @@
       "courseCalendar": "Kalender kursus",
       "exams": "Ujian",
       "examScore": "Skor:",
-      "generalInformation": "Informasi umum"
+      "generalInformation": "Informasi umum",
+      "submitBefore": "",
+      "summerSchool": "",
+      "confirmList": "",
+      "assignmentCompletedTitle": "",
+      "assignmentCompletedDescription": "",
+      "confirmNoEditable": "",
+      "confirmNoEditableFile": "",
+      "confirmSubmission": "",
+      "congratulationsPassed": "",
+      "diplomaReleaseDescription": "",
+      "diplomaReleaseTitle": "",
+      "fileUploadError": "",
+      "fileUploaded": "",
+      "finalAverageGradeDescription": "",
+      "finalGradeSummary": "",
+      "finalScore": "",
+      "individualWork": "",
+      "isSubmissionFinal": "",
+      "joinTelegramGroup": "",
+      "keepEditing": "",
+      "keepMovingForward": "",
+      "leastPreferred": "",
+      "listSaved": "",
+      "listSavedComeTomorrow": "",
+      "mostPreferred": "",
+      "mustBePdf": "",
+      "notSelectedAssignment": "",
+      "planbSchoolGeneralInformation": "",
+      "projectRankingInstructions": "",
+      "rankProjectPreferences": "",
+      "ranking": "",
+      "rankingInstructions": "",
+      "rankingOnly24Hours": "",
+      "readAssignment": "",
+      "saveList": "",
+      "submissionInstructions": "",
+      "submitFileNamingFormat": "",
+      "submitYourWork": "",
+      "surePreferenceList": "",
+      "thresholdToPass": "",
+      "viewFinalGrade": "",
+      "yourProject": "",
+      "assignmentTitle": ""
     },
     "credentials": {
       "bCert": "₿-CERT",
@@ -590,7 +637,24 @@
         "noWrittenAnnouncement": "Saat ini tidak ada pengumuman tertulis.",
         "selectCourse": "Pilih kursus",
         "summerStudents": "Sekolah musim panas",
-        "writeAnnouncement": "Tulis pengumuman"
+        "writeAnnouncement": "Tulis pengumuman",
+        "assignment": "",
+        "assignmentGrade": {
+          "alertDescription": "",
+          "alertDescription2": "",
+          "alertTitle": "",
+          "confirmPublication": "",
+          "confirmPublicationDescription": "",
+          "confirmPublicationTitle": "",
+          "description": "",
+          "grade100": "",
+          "gradesPublished": "",
+          "missingGradesDescription": "",
+          "missingGradesTitle": "",
+          "publishAllGrades": "",
+          "studentDisplayName": "",
+          "title": ""
+        }
       },
       "menu": "Menu guru",
       "profile": {
@@ -1324,7 +1388,12 @@
     "save": "Simpan",
     "saving": "Menyimpan...",
     "selectedAmount": "{{amount}} dipilih",
-    "video": "Video"
+    "video": "Video",
+    "notApplicable": "",
+    "title": "",
+    "company": "",
+    "continue": "",
+    "mentor": ""
   },
   "home": {
     "header": {
@@ -1459,7 +1528,8 @@
     "payByCard": "Bayar dengan Kartu",
     "haveReductionCode": "Punya kode reduksi?",
     "payWithBitcoin": "Bayar dengan Bitcoin",
-    "insertReductionCode": "Masukkan kode pengurangan Anda"
+    "insertReductionCode": "Masukkan kode pengurangan Anda",
+    "taxesMayApply": ""
   },
   "professors": {
     "pageSubtitle": "Semua profesor kami adalah sukarelawan dan penggemar bitcoin yang berdedikasi. Anda bisa memberikan tip sebagai ungkapan terima kasih.",
