@@ -41,7 +41,7 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     }
 
     console.time('[sync] Time');
-    console.log('[sync] START ===================================');
+    console.log('[sync] START =====---=============================');
 
     if (!config.publicRepositoryUrl) {
       throw new Error('DATA_REPOSITORY_URL is not defined');

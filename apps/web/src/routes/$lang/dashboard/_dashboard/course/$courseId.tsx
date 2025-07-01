@@ -124,7 +124,7 @@ function DashboardStudentCourse() {
   };
 
   return (
-    <>
+    <div>
       {isFetched && course && (
         <div className="flex flex-col gap-4 md:gap-8">
           <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
@@ -197,6 +197,6 @@ function DashboardStudentCourse() {
           </Tabs>
         </div>
       )}
-    </>
+    </div>
   );
 }

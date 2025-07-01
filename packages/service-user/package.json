@@ -26,7 +26,7 @@
     "@blms/s3": "workspace:*",
     "@blms/service-common": "workspace:*",
     "@pdf-lib/fontkit": "^1.1.1",
-    "@trpc/server": "^11.4.1",
+    "@trpc/server": "^11.4.3",
     "@types/qr-image": "^3.2.9",
     "argon2": "^0.43.0",
     "bip39": "^3.1.0",

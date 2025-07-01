@@ -27,11 +27,11 @@
     "@blms/service-content": "workspace:*",
     "@blms/service-user": "workspace:*",
     "@blms/shared": "workspace:*",
-    "@trpc/server": "^11.4.1",
+    "@trpc/server": "^11.4.3",
     "argon2": "^0.43.0",
     "bech32": "^2.0.0",
     "bip39": "^3.1.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "formidable": "^3.5.4",
@@ -40,7 +40,7 @@
     "stripe": "^18.2.1",
     "superjson": "^2.2.2",
     "typesense": "^2.0.3",
-    "zod": "^3.25.64"
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
