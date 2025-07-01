@@ -398,7 +398,7 @@ function UserDetailsPage() {
                       >
                         <TableCell className="py-4 font-medium text-gray-900">
                           <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
-                            {assignment.courseIndex}
+                            {assignment.index || 'N/A'}
                           </span>
                         </TableCell>
                         <TableCell className="py-4">

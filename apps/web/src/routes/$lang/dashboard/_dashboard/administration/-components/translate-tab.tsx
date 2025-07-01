@@ -192,9 +192,11 @@ export const TranslateTab = () => {
           </SharedTableHeader>
           <TableBody>
             {courses.map((course: CourseWithTodoTranslations) => (
-              <TableRow key={course.courseId}>
+              <TableRow key={course.id}>
                 <TableCell className="font-medium">
-                  {course.courseIndex}
+                  <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
+                    {course.index}
+                  </span>
                 </TableCell>
                 <TableCell>
                   <span className="font-medium">{course.courseName}</span>

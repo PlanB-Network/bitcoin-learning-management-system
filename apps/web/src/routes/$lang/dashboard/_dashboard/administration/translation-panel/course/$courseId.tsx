@@ -3,7 +3,11 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-import type { CourseDetails, CourseInfo } from '@blms/types';
+import type {
+  CourseDetails,
+  CourseInfo,
+  CourseTranslationDetailsServiceResponse,
+} from '@blms/types';
 import { trpcClient } from '#src/utils/trpc.js';
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 
@@ -31,21 +35,21 @@ function CourseDetailsComponent() {
       const response: any =
         await trpcClient.content.getCourseLanguages.query(params);
       return {
-        courseId: response.id || response.courseId,
-        courseIndex: response.index || response.courseIndex,
-        courseName: response.courseName,
+        id: response.id,
+        index: response.index,
+        name: response.name || 'Unknown Course',
         languages: response.languages,
-      } as CourseInfo;
+      };
     },
     getCourseDetails: async (params: {
       courseId: string;
       language: string;
     }): Promise<CourseDetails> => {
-      const response: any =
+      const response: CourseTranslationDetailsServiceResponse =
         await trpcClient.content.getCourseDetails.query(params);
       return {
         id: response.id,
-        courseIndex: response.courseIndex,
+        index: response.index,
         courseName: response.courseName,
         translationStatus: response.translationStatus,
         assigneeDisplayName: response.assigneeDisplayName,
@@ -53,7 +57,7 @@ function CourseDetailsComponent() {
         totalChapters: response.totalChapters,
         completedChapters: response.completedChapters,
         parts: response.parts,
-      } as CourseDetails;
+      };
     },
   };
 
