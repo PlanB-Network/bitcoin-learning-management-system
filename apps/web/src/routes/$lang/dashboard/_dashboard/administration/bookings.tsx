@@ -42,7 +42,7 @@ function AdminBookings() {
           <span className="text-dashboardSectionText text-s text-2xl md:display-small-32px">
             {t('dashboard.adminPanel.bookingsPanel')}
           </span>
-          <TextTag size={'small'} className="uppercase max-w-[60px]">
+          <TextTag size={'small'} className="uppercase">
             {t('words.admin')}
           </TextTag>
         </div>

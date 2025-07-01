@@ -1,0 +1,140 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Rubik" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" />
+    <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'IBM Plex Sans', Rubik, Arial, sans-serif" color="#000000" />
+      <mj-text font-size="16px" line-height="24px" letter-spacing="0.10px" />
+      <mj-button border-radius="16px" background-color="#FF5C00" color="#ffffff" font-weight="500" font-size="20px" font-family="Rubik, Arial, sans-serif" />
+    </mj-attributes>
+    <mj-style>
+      .main-title div {
+      font-size: 32px !important;
+      font-weight: 300 !important;
+      line-height: 38.40px !important;
+      font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
+      }
+      .sub-title div {
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase;
+      line-height: 27px !important;
+      letter-spacing: 0.10px !important;
+      font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
+      }
+      .classes-heading div {
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase;
+      line-height: 30px !important;
+      letter-spacing: 0.10px !important;
+      font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
+      }
+      .class-title {
+      color: #010205 !important;
+      font-weight: 500 !important;
+      }
+      .class-details {
+      color: #666666 !important;
+      font-weight: 400 !important;
+      }
+      .footer-text div {
+      letter-spacing: 0.10px !important;
+      font-family: Rubik, Arial, sans-serif !important;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+
+    <!-- Logo -->
+    <mj-section padding-top="40px" padding-bottom="20px">
+      <mj-column>
+        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/60c4ab01-f068-4c89-8535-0a83955e19fa/528x98.png" alt="Logo" width="264px" align="center" padding="0" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Header -->
+    <mj-section padding-top="20px" padding-bottom="16px">
+      <mj-column>
+        <mj-text align="center" padding-bottom="10px" css-class="main-title">
+          {{courseName}}
+        </mj-text>
+        <mj-text align="center" padding="0" css-class="sub-title">
+          Weekly recap ({{formatDate startDate "D MMMM"}} - {{formatDate endDate "D MMMM"}})
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Intro -->
+    <mj-section padding-top="30px" padding-bottom="30px">
+      <mj-column width="90%">
+        <mj-text font-weight="400" padding="0">
+          Hello everyone!<br />Hope you’re all doing well! Here’s your weekly recap with the schedule for the upcoming classes.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Upcoming classes header -->
+    <mj-section padding-top="0px" padding-bottom="10px">
+      <mj-column width="90%">
+        <mj-text css-class="classes-heading" padding="0">
+          UPCOMING CLASSES
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    {{#each upcomingChapters}}
+      <!-- Class -->
+      <mj-section padding-top="10px" padding-bottom="10px">
+        <mj-column width="90%">
+          <mj-text padding="0">
+            <span class="class-title">{{this.chapterIndex}} - {{this.chapterName}} - {{formatDate this.chapterStartDate "dddd, D MMMM YYYY"}}<br /></span>
+            <span class="class-details">Time (UTC) : {{formatDate this.chapterStartDate "HH:mmA"}} - {{formatDate this.chapterEndDate "HH:mmA"}}<br />Location: {{this.addressLine1}}{{#if this.addressLine2}} - {{this.addressLine2}}{{/if}}{{#if this.addressLine3}} - {{this.addressLine3}}{{/if}}.</span>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    {{/each}}
+
+    <!-- Closing text -->
+    <mj-section padding-top="20px" padding-bottom="15px">
+      <mj-column width="90%">
+        <mj-text font-weight="400" padding="0">
+          To keep track of news related to this course, the best way is to log in and go to your student dashboard.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Button -->
+    <mj-section padding-top="15px" padding-bottom="40px">
+      <mj-column width="90%">
+        <mj-button href="{{dashboardLink}}" align="left" padding="0" inner-padding="14px 18px">
+          Go to course dashboard
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <!-- Contact & signature -->
+    <mj-section padding-top="20px" padding-bottom="15px">
+      <mj-column width="90%">
+        <mj-text font-weight="400" padding="0" padding-bottom="16px">
+          If you encounter any issue, please reach out at <a href="mailto:contact@planb.network" style="color: #000000; text-decoration: underline;">contact@planb.network</a>.
+        </mj-text>
+        <mj-text font-weight="400" padding="0">
+          Best regards,<br />
+          The {{courseName}} team<br />
+          Plan ₿ Network
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section padding-top="40px" padding-bottom="40px">
+      <mj-column>
+        <mj-text align="center" font-size="12px" line-height="14px" font-weight="400" css-class="footer-text" padding="0 25px">
+          You are receiving this email because you have an account on planb.network.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>
