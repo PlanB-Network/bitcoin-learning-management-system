@@ -6,9 +6,11 @@ import {
   Button,
   ButtonWithArrow,
   CollapsibleDropdown,
+  CustomGauge,
   DividerSimple,
   DividerVertical,
   Loader,
+  RadialGauge,
   cn,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -38,12 +40,6 @@ export const SingleTrialExam = ({
     }),
   );
 
-  const { data: enrolledStudentsCount } = useQuery(
-    trpc.user.courses.getEnrolledStudentsCount.queryOptions({
-      courseId: course.id,
-    }),
-  );
-
   const { data: timestamp, isSuccess: isTimestampFetched } = useQuery(
     trpc.user.courses.getTeacherLedCourseDiplomaTimestamp.queryOptions({
       courseId: course.id,
@@ -65,7 +61,6 @@ export const SingleTrialExam = ({
 
   const finalScore = courseProgress?.totalScore || 0;
   const passingThreshold = course.passingGradeThreshold ?? 50;
-  const totalStudents = enrolledStudentsCount ?? '-';
 
   const hasPassed = finalScore >= passingThreshold;
   const isCourseConclusionReleased = !!course?.parts?.some((part) =>
@@ -77,9 +72,6 @@ export const SingleTrialExam = ({
     ),
   );
 
-  const scoreAndRankingClasses =
-    'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-newGray-5 w-full md:max-w-80';
-
   return (
     <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
       {course.isAssignmentGradingPublished && (
@@ -89,49 +81,50 @@ export const SingleTrialExam = ({
               {t('dashboard.course.finalGradeSummary')}
             </h2>
             <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
-              <div className="flex flex-col items-center gap-5">
+              <div
+                className={cn(
+                  'flex flex-col items-center',
+                  hasPassed && 'gap-5',
+                )}
+              >
                 {hasPassed && (
                   <SuccessExam className="size-7 md:size-9 fill-brightGreen-6" />
                 )}
-                <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
+                <p
+                  className={cn(
+                    'whitespace-pre-line label-large-med-20px md:title-large-sb-24px text-center',
+                    hasPassed ? 'text-brightGreen-6' : 'text-yellow-5',
+                  )}
+                >
                   {hasPassed
                     ? t('dashboard.course.congratulationsPassed')
-                    : t('dashboard.course.keepMovingForward')}
+                    : t('dashboard.course.gaveSolidEffort')}
                 </p>
+                {!hasPassed && (
+                  <p className="text-center body-14px md:body-16px text-newBlack-1">
+                    {t('dashboard.course.keepMovingForward')}
+                  </p>
+                )}
               </div>
               <div className="flex max-md:flex-col max-md:items-center gap-2.5 md:gap-4 items-stretch justify-center w-full">
-                <div className={scoreAndRankingClasses}>
-                  <span
-                    className={cn(
-                      hasPassed ? 'text-brightGreen-6' : 'text-red-5',
-                      'title-large-sb-24px md:display-small-med-32px',
-                    )}
-                  >
-                    {finalScore}%
-                  </span>
-                  <div className="flex flex-col items-center">
-                    <span className="subtitle-medium-16px md:label-18px text-newGray-1">
-                      {t('dashboard.course.finalScore')}
-                    </span>
-                    <span className="body-12px text-newGray-2">
-                      {t('dashboard.course.thresholdToPass', {
-                        threshold: passingThreshold,
-                      })}
-                    </span>
-                  </div>
-                </div>
-                <div className={scoreAndRankingClasses}>
-                  <span
-                    className={cn(
-                      'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
-                    )}
-                  >
-                    {courseProgress?.ranking ?? '-'} / {totalStudents}
-                  </span>
-                  <span className="subtitle-medium-16px md:label-18px text-newGray-1">
-                    {t('dashboard.course.ranking')}
-                  </span>
-                </div>
+                <RadialGauge
+                  percentage={finalScore}
+                  label={t('dashboard.teacher.courses.finalScore')}
+                  subLabel={`${t(
+                    'dashboard.teacher.courses.thresholdToPass',
+                  )}: ${course?.passingGradeThreshold || 'N/A'}%`}
+                  variant={hasPassed ? 'green' : 'yellow'}
+                  size="l"
+                  showBackground
+                />
+                <CustomGauge
+                  value={courseProgress?.ranking?.toString() ?? '-'}
+                  label={t('dashboard.course.ranking')}
+                  variant="blue"
+                  type="star"
+                  size="l"
+                  showBackground
+                />
               </div>
             </section>
           </div>

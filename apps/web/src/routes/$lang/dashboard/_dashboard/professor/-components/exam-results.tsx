@@ -6,7 +6,7 @@ import type {
   SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 import {
-  Clock,
+  CustomGauge,
   DashGauge,
   EmptyState,
   Loader,
@@ -115,6 +115,7 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
               percentage={finalResultsInfos.thresholdToPass || 0}
               label={t('dashboard.teacher.courses.thresholdToPass')}
               variant="yellow"
+              filledColorTransparent
               size="l"
             />
           </div>
@@ -340,10 +341,11 @@ const ExamCard = ({
               />
 
               {averageDuration && (
-                <Clock
-                  time={`${Math.floor(averageDuration / 60)}'${(averageDuration % 60).toString().padStart(2, '0')}''`}
+                <CustomGauge
+                  value={`${Math.floor(averageDuration / 60)}'${(averageDuration % 60).toString().padStart(2, '0')}''`}
                   label={t('dashboard.teacher.courses.averageDuration')}
                   variant="blue"
+                  type="clock"
                   showBackground
                 />
               )}

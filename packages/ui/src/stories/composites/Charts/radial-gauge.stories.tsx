@@ -19,6 +19,10 @@ const meta: Meta<typeof RadialGauge> = {
       options: ['green', 'purple', 'yellow', 'orange'],
       description: 'Color variant for the gauge',
     },
+    filledColorTransparent: {
+      control: 'boolean',
+      description: 'Whether the filled color should be transparent',
+    },
     showBackground: {
       control: 'boolean',
       description: 'Whether to show the background',
@@ -43,6 +47,18 @@ export const Default: Story = {
     label: 'Average score',
     percentage: 86,
     variant: 'green',
+    filledColorTransparent: false,
+    showBackground: true,
+  },
+};
+
+export const TransparentFilled: Story = {
+  name: 'Transparent Filled',
+  args: {
+    label: 'Average score',
+    percentage: 86,
+    variant: 'green',
+    filledColorTransparent: true,
     showBackground: true,
   },
 };

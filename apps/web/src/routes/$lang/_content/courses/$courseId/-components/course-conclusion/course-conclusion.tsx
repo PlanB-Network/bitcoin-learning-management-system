@@ -4,7 +4,7 @@ import { type JSX, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import type { CourseChapterResponse } from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import { Button, RadialGauge, cn } from '@blms/ui';
 
 import congratsDark from '#src/assets/animations/congrats_animation_dark.webm';
 import congratsDarkMobile from '#src/assets/animations/congrats_animation_dark_mobile.webm';
@@ -537,20 +537,17 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                           ? t('courses.exam.successfulPassedThreshold')
                           : t('courses.exam.solidEffort')}
                       </p>
-                      <br />
-                      <span>
-                        {t('courses.exam.score')}{' '}
-                        <span
-                          className={cn(
-                            'font-semibold',
-                            hasPassedCourseThreshold
-                              ? 'text-brightGreen-5'
-                              : 'text-red-5',
-                          )}
-                        >
-                          {totalScore || 'N/A'}%
-                        </span>
-                      </span>
+                      <RadialGauge
+                        percentage={totalScore || 0}
+                        label={t('dashboard.teacher.courses.finalScore')}
+                        subLabel={`${t(
+                          'dashboard.teacher.courses.thresholdToPass',
+                        )}: ${course?.passingGradeThreshold || 'N/A'}%`}
+                        variant={hasPassedCourseThreshold ? 'green' : 'yellow'}
+                        size="l"
+                        showBackground
+                        className="mx-auto mt-5 md:mt-7.5"
+                      />
                     </>
                   }
                   icon={
