@@ -3,6 +3,7 @@
     "bradlc.vscode-tailwindcss",
     "lokalise.i18n-ally",
     "streetsidesoftware.code-spell-checker",
-    "biomejs.biome"
+    "biomejs.biome",
+    "mjmlio.vscode-mjml"
   ]
 }

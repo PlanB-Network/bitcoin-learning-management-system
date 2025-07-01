@@ -1,0 +1,75 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Rubik" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="Rubik, Arial, sans-serif" />
+      <mj-text color="#000000" />
+      <mj-button border-radius="16px" background-color="#FF5C00" color="#ffffff" font-weight="500" font-size="20px" />
+    </mj-attributes>
+    <mj-style>
+      .title-text div {
+        line-height: 31.92px !important;
+      }
+       .body-text div {
+         letter-spacing: 0.10px !important;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+
+    <!-- Logo -->
+    <mj-section padding-top="32px" padding-bottom="20px" padding-left="20px" padding-right="20px">
+      <mj-column>
+        <mj-image
+          src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/60c4ab01-f068-4c89-8535-0a83955e19fa/528x98.png"
+          alt="Logo"
+          width="264px"
+          align="center"
+          padding="0" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Title -->
+    <mj-section padding-top="20px" padding-bottom="15px" padding-left="20px" padding-right="20px">
+      <mj-column>
+        <mj-text
+          align="center"
+          font-size="24px"
+          font-weight="400"
+          padding="0 25px"
+          css-class="title-text">
+          Welcome to {{courseName}}!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Body -->
+    <mj-section padding-top="15px" padding-bottom="20px" padding-left="20px" padding-right="20px">
+      <mj-column>
+        <mj-text
+          align="center"
+          font-size="18px"
+          font-weight="400"
+          padding="0 25px"
+          line-height="1.5"
+          css-class="body-text">
+          Thank you for your registration. You are now officially part of the {{courseName}} promotion.<br/><br/>Log in to your account and find in your student dashboard all the information relative to the course : class calendar, exams information, teacher announcements and more.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Button -->
+    <mj-section padding-top="20px" padding-bottom="40px" padding-left="20px" padding-right="20px">
+      <mj-column>
+        <mj-button
+          href="https://planb.network/en/dashboard/courses"
+          align="center"
+          padding="0"
+          inner-padding="14px 18px">
+          Go to course dashboard
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>
