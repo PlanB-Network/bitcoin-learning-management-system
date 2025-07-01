@@ -1,3 +1,4 @@
+import type { AssignmentStatus } from '@blms/constants';
 import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../dependencies.js';
@@ -13,11 +14,11 @@ export interface TranslationAssignment {
   language: string;
   assigneeId: string;
   assignerId: string;
-  status: string;
+  status: AssignmentStatus;
   assignedAt: Date;
   completedAt: Date | null;
   rejectionReason: string | null;
-  courseIndex?: string;
+  index?: string;
   courseName?: string;
   assigneeUsername?: string;
   assignerUsername?: string;

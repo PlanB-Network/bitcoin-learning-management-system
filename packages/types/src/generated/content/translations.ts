@@ -31,16 +31,112 @@ export interface CourseTranslationChapter {
   updatedAt: Date;
 }
 
-export interface TranslationAssignment {
+export interface CourseBasic {
   id: string;
+  index: string;
+  projectId: string | null;
+  isArchived: boolean;
+  level: string;
+  hours: number;
+  topic: string;
+  subtopic: string;
+  originalLanguage: string;
+  requiresPayment: boolean;
+  paymentExpirationDate: Date | null;
+  publishedAt: Date | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  teachingFormat: 'self_paced' | 'professor_led';
+  onlinePriceDollars: number | null;
+  inpersonPriceDollars: number | null;
+  paidDescription: string | null;
+  paidVideoLink: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  contact: string | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
+  isPlanbSchool: boolean;
+  presentationMarkdown: string | null;
+  hasLogo: boolean;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
+  isAssignmentGradingPublished: boolean;
+  passingGradeThreshold: number | null;
+  assignmentWeight: number | null;
+  lastUpdated: Date;
+  lastCommit: string;
+  lastSync: Date;
+  numberOfRating: number;
+  sumOfAllRating: number;
+}
+
+export interface CoursesLocalized {
   courseId: string;
   language: string;
-  assigneeId: string;
-  assignerId: string;
-  status: 'requested' | 'assigned' | 'in_progress' | 'completed' | 'rejected';
-  assignedAt: Date;
-  completedAt: Date | null;
-  rejectionReason: string | null;
+  name: string;
+  goal: string;
+  objectives: string[];
+  rawDescription: string;
+}
+
+export interface CourseParts {
+  courseId: string;
+  partIndex: number;
+  partId: string;
+  lastSync: Date;
+}
+
+export interface CoursePartsLocalized {
+  courseId: string;
+  partId: string;
+  language: string;
+  title: string;
+  lastSync: Date;
+}
+
+export interface CourseChapters {
+  courseId: string;
+  chapterIndex: number;
+  partId: string;
+  chapterId: string;
+  lastSync: Date;
+}
+
+export interface CourseChaptersLocalized {
+  courseId: string;
+  chapterId: string;
+  language: string;
+  releasePlace: string | null;
+  isOnline: boolean;
+  isInPerson: boolean;
+  isCourseReview: boolean;
+  isCourseExam: boolean;
+  isCourseConclusion: boolean;
+  isSingleTrialExam: boolean;
+  rateWeight: number | null;
+  isGdprCompliance: boolean;
+  customTcDisclaimer: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  releaseDate: Date | null;
+  timezone: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  addressLine3: string | null;
+  liveUrl: string | null;
+  chatUrl: string | null;
+  availableSeats: number | null;
+  remainingSeats: number | null;
+  liveLanguage: string | null;
+  title: string;
+  sections: string[];
+  rawContent: string;
+  lastSync: Date;
+}
+
+export interface CourseTranslationResponse {
+  courseId: string;
+  language: string;
 }
 
 export interface AvailableCourseTranslation {
@@ -87,127 +183,28 @@ export interface TranslationChapterWithPartInfo {
 export interface AdminContentManagementCourse {
   courseId: string;
   language: string;
-  status: unknown;
-  isAssigned: 'assigned' | 'not_assigned';
+  status:
+    | 'todo'
+    | 'in_progress'
+    | 'ready_for_review'
+    | 'under_review'
+    | 'reviewed'
+    | 'published';
   createdAt: Date;
   updatedAt: Date;
-  courseIndex: string;
-  courseTopic: string | null;
+  index: string;
+  topic: string;
+  isAssigned: 'assigned' | 'not_assigned';
   courseName: string | null;
   assignmentId: string | null;
   assigneeId: string | null;
   assignerId: string | null;
-  assignmentStatus:
-    | ('requested' | 'assigned' | 'in_progress' | 'completed' | 'rejected')
-    | null;
+  assignmentStatus: unknown | null;
   assignedAt: Date | null;
   completedAt?: (Date | null) | undefined;
   assigneeUsername: string | null;
   assigneeDisplayName: string | null;
   progress: number;
-}
-
-export interface AvailableContributor {
-  uid: string;
-  username: string | null;
-  displayName: string | null;
-  email: string | null;
-}
-
-export interface AllUsers {
-  uid: string;
-  username: string | null;
-  displayName: string | null;
-  email: string | null;
-  role: string;
-  assignedLanguages: string[];
-}
-
-export interface AdminUserManagement {
-  uid: string;
-  username: string | null;
-  displayName: string | null;
-  email: string | null;
-  role: string;
-  startDate: Date;
-  assignedCourses: number;
-  languages: string[];
-}
-
-export interface UserAssignmentDetails {
-  id: string;
-  courseId: string;
-  language: string;
-  assignmentStatus: string;
-  assignedAt: Date;
-  completedAt: Date | null;
-  courseIndex?: string | undefined;
-  courseName: string | null;
-  translationStatus: string | null;
-  translationUpdatedAt: Date | null;
-  progress: number;
-}
-
-export interface UserTranslationDetails {
-  uid: string;
-  username: string | null;
-  displayName: string | null;
-  email: string | null;
-  startDate: Date;
-  role: string;
-  assignments: UserAssignmentDetails[];
-  languages: string[];
-}
-
-export interface AssignmentResult {
-  id: string;
-  courseId: string;
-  language: string;
-  assigneeId: string;
-  assignerId: string;
-  status: string;
-  assignedAt: Date;
-  completedAt?: (Date | null) | undefined;
-  rejectionReason: string | null;
-}
-
-export interface TranslationAssignmentRequest {
-  id: string;
-  courseId: string;
-  language: string;
-  assigneeId: string;
-  assignerId: string;
-  status: string;
-  assignedAt: Date;
-  completedAt?: (Date | null) | undefined;
-  rejectionReason: string | null;
-  courseIndex?: string | undefined;
-  courseName: string | null;
-  assigneeUsername: string | null;
-  assignerUsername: string | null;
-}
-
-export interface UserTranslationAssignment {
-  id: string;
-  courseId: string;
-  language: string;
-  status: string;
-  assignedAt: Date;
-  completedAt?: (Date | null) | undefined;
-  rejectionReason: string | null;
-  courseIndex?: string | undefined;
-  courseName: string | null;
-}
-
-export interface AssignCourseToContributorInput {
-  courseId: string;
-  language: string;
-  assigneeId: string;
-}
-
-export interface ReassignCourseToContributorInput {
-  assignmentId: string;
-  newAssigneeId: string;
 }
 
 export interface CourseTranslationStatus {
@@ -233,48 +230,16 @@ export interface GetTranslationStatusInput {
 export interface CreateTranslationInput {
   courseId: string;
   language: string;
+  chapterId: string;
+  partId: string;
+  status?: unknown;
 }
 
 export interface UpdateTranslationStatusInput {
   courseId: string;
   language: string;
+  chapterId: string;
   status: unknown;
-}
-
-export interface TranslationAssignmentResponse {
-  id: string;
-  courseId: string;
-  language: string;
-  assigneeId: string;
-  assignerId: string;
-  status: 'requested' | 'assigned' | 'in_progress' | 'completed' | 'rejected';
-  assignedAt: Date;
-  completedAt: Date | null;
-  rejectionReason?: (string | null) | undefined;
-  courseIndex?: string | undefined;
-  courseName?: string | undefined;
-  assigneeUsername?: string | undefined;
-  assignerUsername?: string | undefined;
-}
-
-export interface CreateTranslationAssignmentInput {
-  courseId: string;
-  language: string;
-}
-
-export interface UpdateTranslationAssignmentInput {
-  assignmentId: string;
-  status: unknown;
-}
-
-export interface GetUserTranslationAssignmentsInput {
-  language?: string | undefined;
-  status?: unknown | undefined;
-}
-
-export interface LanguageInfo {
-  code: string;
-  name: string;
 }
 
 export interface CourseLanguage {
@@ -286,7 +251,10 @@ export interface CourseLanguage {
   assigneeDisplayName: string | null;
 }
 
-export interface CourseLanguagesServiceResponse {
+export interface CourseLanguageInfo {
+  id: string;
+  index: string;
+  name: string;
   languages: CourseLanguage[];
 }
 
@@ -307,7 +275,7 @@ export interface CoursePartDetails {
 
 export interface CourseDetails {
   id: string;
-  courseIndex: string;
+  index: string;
   courseName: string | null;
   translationStatus: string | null;
   assigneeDisplayName: string | null;
@@ -317,82 +285,28 @@ export interface CourseDetails {
   parts: CoursePartDetails[];
 }
 
-export interface UserTranslationDetailsServiceResponse {
-  uid: string;
-  username: string | null;
-  displayName: string | null;
-  email: string | null;
-  startDate: Date;
-  role: string;
-  assignments: {
-    id: string;
-    courseId: string;
-    language: string;
-    assignmentStatus: string;
-    assignedAt: Date;
-    completedAt: Date | null;
-    courseIndex?: string | undefined;
-    courseName: string | null;
-    translationStatus: string | null;
-    translationUpdatedAt: Date | null;
-    progress: number;
-  }[];
-  languages: string[];
-}
-
 export interface CourseTranslationDetailsServiceResponse {
+  id: string;
+  index: string;
+  courseName: string | null;
+  translationStatus: string | null;
+  translationCreatedAt: Date | null;
+  translationUpdatedAt: Date | null;
+  assigneeId: string | null;
+  assigneeUsername: string | null;
+  assigneeDisplayName: string | null;
+  assignedAt: Date | null;
+  assignmentStatus: string | null;
   parts: CoursePartDetails[];
   progress: number;
   totalChapters: number;
   completedChapters: number;
 }
 
-export interface UserTranslationSummary {
-  assignments: UserTranslationAssignment[];
-  languages: string[];
-}
-
-export interface ServiceTranslationAssignment {
+export interface CourseWithTodoTranslations {
   id: string;
-  courseId: string;
-  language: string;
-  assigneeId: string;
-  assignerId: string;
-  status: string;
-  assignedAt: Date;
-  completedAt: Date | null;
-  rejectionReason: string | null;
-}
-
-export interface ServiceTranslationAssignmentRequest {
-  id: string;
-  courseId: string;
-  language: string;
-  assigneeId: string;
-  assignerId: string;
-  status: string;
-  assignedAt: Date;
-  completedAt: Date | null;
-  rejectionReason: string | null;
-  courseIndex?: string | undefined;
-  courseName: string | null;
-  assigneeUsername: string | null;
-  assignerUsername: string | null;
-}
-
-export interface ServiceUserTranslationAssignment {
-  id: string;
-  courseId: string;
-  language: string;
-  status: string;
-  assignedAt: Date;
-  completedAt: Date | null;
-  rejectionReason: string | null;
-  courseIndex?: string | undefined;
-  courseName: string | null;
-}
-
-export interface ServiceUserDetails {
-  assignments: ServiceUserTranslationAssignment[];
-  languages: string[];
+  index: string;
+  courseName: string;
+  todoLanguages: string[];
+  totalLanguages: number;
 }

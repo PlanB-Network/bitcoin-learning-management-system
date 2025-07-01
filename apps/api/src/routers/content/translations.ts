@@ -308,14 +308,14 @@ const getCourseLanguagesProcedure = adminProcedure
   )
   .query(({ ctx, input }) => {
     return createGetCourseLanguages(ctx.dependencies)({
-      courseId: input.courseId,
+      courseId: input.id,
     });
   });
 
 const getCourseTranslationDetailsProcedure = adminProcedure
   .input(
     z.object({
-      courseId: z.string(),
+      id: z.string(),
       language: z.string(),
     }),
   )
@@ -324,9 +324,18 @@ const getCourseTranslationDetailsProcedure = adminProcedure
   )
   .query(({ ctx, input }) => {
     return createGetCourseTranslationDetails(ctx.dependencies)({
-      courseId: input.courseId,
+      courseId: input.id,
       language: input.language,
     });
+  });
+
+// Get courses with todo translations
+const getCoursesWithTodoTranslationsProcedure = adminProcedure
+  .output<Parser<CourseWithTodoTranslations[]>>(
+    courseWithTodoTranslationsSchema.array(),
+  )
+  .query(({ ctx }) => {
+    return createGetCoursesWithTodoTranslations(ctx.dependencies)();
   });
 
 export const translationsRouter = createTRPCRouter({
