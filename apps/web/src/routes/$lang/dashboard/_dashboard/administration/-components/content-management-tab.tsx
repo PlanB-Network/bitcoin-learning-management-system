@@ -17,7 +17,7 @@ import { ReassignCourseModal } from './reassign-course-modal.tsx';
 import FilterIcon from '#src/assets/icons/Filter.svg';
 
 type SortField =
-  | 'courseIndex'
+  | 'index'
   | 'courseName'
   | 'isAssigned'
   | 'assigneeDisplayName'
@@ -32,7 +32,7 @@ export const ContentManagementTab = () => {
   const [selectedCourse, setSelectedCourse] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
-  const [sortField, setSortField] = useState<SortField>('courseIndex');
+  const [sortField, setSortField] = useState<SortField>('index');
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   // State for data
@@ -110,7 +110,7 @@ export const ContentManagementTab = () => {
       const matchesSearch =
         searchQuery === '' ||
         course.courseName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.courseIndex?.toLowerCase().includes(searchQuery.toLowerCase());
+        course.index?.toLowerCase().includes(searchQuery.toLowerCase());
 
       return matchesSearch;
     })
@@ -119,9 +119,9 @@ export const ContentManagementTab = () => {
       let bValue: any;
 
       switch (sortField) {
-        case 'courseIndex':
-          aValue = a.courseIndex || '';
-          bValue = b.courseIndex || '';
+        case 'index':
+          aValue = a.index || '';
+          bValue = b.index || '';
           break;
         case 'courseName':
           aValue = a.courseName || a.courseId || '';
@@ -272,8 +272,8 @@ export const ContentManagementTab = () => {
             <SharedTableHead
               className="w-24"
               sortable
-              onSort={() => handleSort('courseIndex')}
-              sortIcon={getSortIcon('courseIndex')}
+              onSort={() => handleSort('index')}
+              sortIcon={getSortIcon('index')}
             >
               {t(
                 'dashboard.adminPanel.translationPanel.contentManagement.table.index',
@@ -330,7 +330,7 @@ export const ContentManagementTab = () => {
                 >
                   <TableCell className="py-4 font-medium text-gray-900">
                     <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
-                      {course.courseIndex}
+                      {course.index}
                     </span>
                   </TableCell>
                   <TableCell className="py-4">

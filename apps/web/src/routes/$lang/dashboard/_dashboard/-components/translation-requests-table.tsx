@@ -28,7 +28,7 @@ interface TranslationRequest {
   assignedAt: Date;
   completedAt?: Date;
   rejectionReason?: string;
-  courseIndex: string;
+  index: string;
   courseName: string;
   assigneeUsername: string;
   assignerUsername: string;
@@ -138,7 +138,7 @@ export const TranslationRequestsTable = ({
       return (
         request.assigneeUsername.toLowerCase().includes(query) ||
         request.courseName.toLowerCase().includes(query) ||
-        request.courseIndex.toLowerCase().includes(query) ||
+        request.index.toLowerCase().includes(query) ||
         request.language.toLowerCase().includes(query) ||
         languageName.includes(query)
       );
@@ -357,7 +357,7 @@ export const TranslationRequestsTable = ({
                   </TableCell>
                   <TableCell className="py-4">
                     <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded">
-                      {request.courseIndex}
+                      {request.index}
                     </span>
                   </TableCell>
                   <TableCell className="py-4 text-gray-900">

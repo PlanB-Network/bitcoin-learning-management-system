@@ -148,8 +148,8 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
   return (
     <div className={`flex flex-col gap-6 lg:gap-8 ${className}`}>
       <CourseHeader
-        courseIndex={courseInfo.courseIndex}
-        courseName={courseInfo.courseName || courseInfo.courseId}
+        courseIndex={courseInfo.index}
+        courseName={courseInfo.name || courseInfo.id}
         assigneeDisplayName={courseDetails?.assigneeDisplayName || undefined}
         breadcrumbItems={breadcrumbItems}
         labels={{

@@ -384,7 +384,7 @@ const UserManagementTab = () => {
               filteredUsers.map((user) => (
                 <TableRow key={user.uid} className="hover:bg-gray-50">
                   <TableCell className="py-4">
-                    {formatDateForTable(user.startDate)}
+                    {formatDateForTable(user.createdAt)}
                   </TableCell>
                   <TableCell className="py-4">
                     <span className="font-medium">{user.username}</span>
