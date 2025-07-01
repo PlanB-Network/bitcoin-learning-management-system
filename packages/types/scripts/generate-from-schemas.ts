@@ -223,6 +223,13 @@ const generateFileContent = (
     }
   }
 
+  // Ensure that any native enums referenced in the generated types are properly imported.
+  for (const enumName of nativeEnumImports) {
+    if (fileContent.includes(enumName)) {
+      currentNativeEnumImports.add(enumName);
+    }
+  }
+
   return [
     generatedHeader,
     currentNativeEnumImports.size

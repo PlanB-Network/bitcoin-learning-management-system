@@ -9,9 +9,9 @@ import { CourseProgressBar } from './course-progress-bar.js';
 import { LanguageSelector } from './language-selector.js';
 
 interface CourseDetailsQueries {
-  getCourseLanguages: (params: { courseId: string }) => Promise<CourseInfo>;
+  getCourseLanguages: (params: { id: string }) => Promise<CourseInfo>;
   getCourseDetails: (params: {
-    courseId: string;
+    id: string;
     language: string;
   }) => Promise<CourseDetails>;
 }
@@ -84,7 +84,7 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
   const fetchCourseInfo = async () => {
     try {
       setCourseInfoLoading(true);
-      const data = await queries.getCourseLanguages({ courseId });
+      const data = await queries.getCourseLanguages({ id: courseId });
       setCourseInfo(data);
       setCourseInfoError(null);
     } catch (error) {
@@ -100,7 +100,7 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
     try {
       setCourseDetailsLoading(true);
       const data = await queries.getCourseDetails({
-        courseId,
+        id: courseId,
         language: selectedLanguage,
       });
       setCourseDetails(data);
@@ -158,7 +158,13 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
         }}
       >
         <LanguageSelector
-          languages={courseInfo.languages}
+          languages={courseInfo.languages.map((l) => ({
+            translationStatus: 'todo',
+            assigneeId: null,
+            assigneeUsername: null,
+            assigneeDisplayName: null,
+            ...l,
+          }))}
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
           languageLabel={labels.language}

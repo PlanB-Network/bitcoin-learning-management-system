@@ -41,9 +41,9 @@ export const createGetCourseLanguages = ({ postgres }: Dependencies) => {
       // Get course basic information first
       const courseResult = await postgres.exec(sql`
         SELECT
-          c.id AS "courseId",
-          c.index AS "courseIndex",
-          cl.name AS "courseName"
+          c.id AS "id",
+          c.index AS "index",
+          cl.name AS "name"
         FROM content.courses c
         LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
         WHERE c.id = ${courseId}
@@ -89,7 +89,9 @@ export const createGetCourseLanguages = ({ postgres }: Dependencies) => {
       }));
 
       return {
-        ...courseInfo,
+        id: courseInfo.id,
+        index: courseInfo.index,
+        name: courseInfo.name,
         languages,
       };
     } catch (error) {
@@ -123,7 +125,7 @@ export const createGetCourseTranslationDetails = ({
       const courseResult = await postgres.exec(sql`
         SELECT
           c.id,
-          c.index AS "courseIndex",
+          c.index,
           cl.name AS "courseName",
           ct.status AS "translationStatus",
           ct.created_at AS "translationCreatedAt",
@@ -225,7 +227,17 @@ export const createGetCourseTranslationDetails = ({
           : 0;
 
       return {
-        ...course,
+        id: course.id,
+        index: course.index,
+        courseName: course.courseName,
+        translationStatus: course.translationStatus,
+        translationCreatedAt: course.translationCreatedAt,
+        translationUpdatedAt: course.translationUpdatedAt,
+        assigneeId: course.assigneeId,
+        assigneeUsername: course.assigneeUsername,
+        assigneeDisplayName: course.assigneeDisplayName,
+        assignedAt: course.assignedAt,
+        assignmentStatus: course.assignmentStatus,
         parts,
         progress,
         totalChapters,
