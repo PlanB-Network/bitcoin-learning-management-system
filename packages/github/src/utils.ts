@@ -74,8 +74,10 @@ const syncRepository = async (
 
     // Add authentication header if provided
     if (githubAccessToken) {
-      const header = `AUTHORIZATION: basic ${Buffer.from(githubAccessToken).toString('base64')}`;
-      options['--config'] = `http.${repository}.extraheader=${header}`;
+      const header = `AUTHORIZATION: basic ${Buffer.from(
+        githubAccessToken,
+      ).toString('base64')}`;
+      options['--config'] = `http.https://github.com/.extraheader=${header}`;
     }
 
     // If the directory already exists, remove it (should not happen in production)
