@@ -23,6 +23,7 @@ import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { ToggleSwitch } from '#src/components/ui/toggle-switch.tsx';
 import { ContentManagementTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/content-management-tab.tsx';
+import { TranslateTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/translate-tab.tsx';
 import { TranslationPanelHeader } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-panel-header.tsx';
 import {
   SharedTable,
@@ -159,6 +160,10 @@ function DashboardAdministrationTranslationPanel() {
           <div className="p-8 text-center text-gray-500">
             {t('dashboard.adminPanel.translationPanel.comingSoon.reports')}
           </div>
+        </TabsContent>
+
+        <TabsContent value="translate" className="mt-6">
+          <TranslateTab />
         </TabsContent>
       </TranslationPanelHeader>
     </div>

@@ -539,7 +539,8 @@
           "requests": "Demandes",
           "contentManagement": "Gestion de contenu",
           "userManagement": "Gestion des utilisateurs",
-          "reports": "Rapports"
+          "reports": "Rapports",
+          "translate": "Traduire"
         },
         "pendingTranslationRequests": "Demandes de traduction en attente",
         "toggle": {
@@ -721,7 +722,44 @@
           "noContributor": "Aucun contributeur assigné",
           "errorLoadingDetails": "Erreur lors du chargement des détails du cours"
         },
-        "courseNotFound": "Cours non trouvé"
+        "courseNotFound": "Cours non trouvé",
+        "translate": {
+          "title": "Traduire les cours",
+          "description": "Commencer les traductions pour les cours qui doivent être traduits dans des langues spécifiques.",
+          "noCourses": "Aucun cours n'a besoin de traduction pour le moment.",
+          "table": {
+            "index": "Index",
+            "course": "Cours",
+            "todoLanguages": "Langues à traduire",
+            "totalLanguages": "Total des langues",
+            "actions": "Actions"
+          },
+          "actions": {
+            "translate": "Traduire"
+          },
+          "selectLanguagesModal": {
+            "title": "Sélectionner les langues à traduire",
+            "course": "Cours :",
+            "selectLanguages": "Sélectionner les langues à traduire :",
+            "noLanguagesAvailable": "Aucune langue disponible pour la traduction.",
+            "uploadFiles": "Télécharger des fichiers de support (Optionnel)",
+            "audioFile": "Fichier audio",
+            "chooseAudioFile": "Choisir l'audio",
+            "noAudioFileSelected": "Aucun fichier audio sélectionné",
+            "audioFileInfo": "Formats supportés : MP3, WAV, M4A (Max 50 Mo)",
+            "invalidAudioFile": "Veuillez sélectionner un fichier audio valide.",
+            "audioFileTooLarge": "Le fichier audio est trop volumineux. Taille maximale : 50 Mo.",
+            "pptxFile": "Fichier PowerPoint",
+            "choosePptxFile": "Choisir PPTX",
+            "noPptxFileSelected": "Aucun fichier PowerPoint sélectionné",
+            "pptxFileInfo": "Seuls les fichiers .pptx sont supportés (Max 100 Mo)",
+            "invalidPptxFile": "Veuillez sélectionner un fichier PowerPoint (.pptx) valide.",
+            "pptxFileTooLarge": "Le fichier PowerPoint est trop volumineux. Taille maximale : 100 Mo.",
+            "cancel": "Annuler",
+            "startTranslation": "Commencer la traduction",
+            "startingTranslation": "Démarrage..."
+          }
+        }
       }
     },
     "backToDashboard": "Retour au tableau de bord",

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 interface TranslationPanelHeaderProps {
-  activeTab?: 'requests' | 'content' | 'users' | 'reports';
+  activeTab?: 'requests' | 'content' | 'users' | 'reports' | 'translate';
   showTabs?: boolean;
   children?: React.ReactNode;
   isUserDetailsPage?: boolean;
@@ -97,6 +97,17 @@ export const TranslationPanelHeader = ({
             >
               {t('dashboard.adminPanel.translationPanel.tabs.reports')}
             </button>
+            <button
+              type="button"
+              onClick={() => handleTabChange('translate')}
+              className={`data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-color focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-black ${isMobile ? 'label-medium-16px pb-2' : 'label-18px pb-2.5'} ${
+                activeTab === 'translate'
+                  ? 'font-medium text-black border-b-2 border-darkOrange-5'
+                  : 'text-newBlack-3 hover:border-b-2 hover:border-newGray-4'
+              }`}
+            >
+              {t('dashboard.adminPanel.translationPanel.tabs.translate')}
+            </button>
           </div>
           {children}
         </div>
@@ -126,6 +137,9 @@ export const TranslationPanelHeader = ({
             </TabsTrigger>
             <TabsTrigger value="reports" size={isMobile ? 's' : 'm'}>
               {t('dashboard.adminPanel.translationPanel.tabs.reports')}
+            </TabsTrigger>
+            <TabsTrigger value="translate" size={isMobile ? 's' : 'm'}>
+              {t('dashboard.adminPanel.translationPanel.tabs.translate')}
             </TabsTrigger>
           </TabsList>
           {children}
