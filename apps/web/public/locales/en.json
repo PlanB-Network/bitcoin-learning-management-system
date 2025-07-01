@@ -438,7 +438,8 @@
           "requests": "Requests",
           "contentManagement": "Content management",
           "userManagement": "User management",
-          "reports": "Reports"
+          "reports": "Reports",
+          "translate": "Translate"
         },
         "pendingTranslationRequests": "Pending translation requests",
         "toggle": {
@@ -620,7 +621,44 @@
           "noContributor": "No contributor assigned",
           "errorLoadingDetails": "Error loading course details"
         },
-        "courseNotFound": "Course not found"
+        "courseNotFound": "Course not found",
+        "translate": {
+          "title": "Translate Courses",
+          "description": "Start translations for courses that need to be translated into specific languages.",
+          "noCourses": "No courses need translation at the moment.",
+          "table": {
+            "index": "Index",
+            "course": "Course",
+            "todoLanguages": "Languages to Translate",
+            "totalLanguages": "Total Languages",
+            "actions": "Actions"
+          },
+          "actions": {
+            "translate": "Translate"
+          },
+          "selectLanguagesModal": {
+            "title": "Select Languages to Translate",
+            "course": "Course:",
+            "selectLanguages": "Select languages to translate:",
+            "noLanguagesAvailable": "No languages available for translation.",
+            "uploadFiles": "Upload Supporting Files (Optional)",
+            "audioFile": "Audio File",
+            "chooseAudioFile": "Choose Audio",
+            "noAudioFileSelected": "No audio file selected",
+            "audioFileInfo": "Supported formats: MP3, WAV, M4A (Max 50MB)",
+            "invalidAudioFile": "Please select a valid audio file.",
+            "audioFileTooLarge": "Audio file is too large. Maximum size is 50MB.",
+            "pptxFile": "PowerPoint File",
+            "choosePptxFile": "Choose PPTX",
+            "noPptxFileSelected": "No PowerPoint file selected",
+            "pptxFileInfo": "Only .pptx files are supported (Max 100MB)",
+            "invalidPptxFile": "Please select a valid PowerPoint (.pptx) file.",
+            "pptxFileTooLarge": "PowerPoint file is too large. Maximum size is 100MB.",
+            "cancel": "Cancel",
+            "startTranslation": "Start Translation",
+            "startingTranslation": "Starting..."
+          }
+        }
       },
       "coupons": {
         "cancel": "Cancel",
@@ -973,7 +1011,7 @@
       "isSubmissionFinal": "Is your submission final?",
       "joinTelegramGroup": "Join Telegram Group",
       "keepEditing": "Keep editing",
-      "keepMovingForward": "While you didn’t pass this time, every step builds progress.\nKeep moving forward on your learning journey!",
+      "keepMovingForward": "While you didn't pass this time, every step builds progress.\nKeep moving forward on your learning journey!",
       "leastPreferred": "Least preferred",
       "listSaved": "Your preference list is saved.",
       "listSavedComeTomorrow": "Your list of preferences is saved. \nCome back here tomorrow to discover which Project you have been assigned to.",
@@ -1127,11 +1165,11 @@
         "announcementsUpcomingDescription": "Here below are the future announcements you wrote and scheduled.",
         "assignment": "Assignment",
         "assignmentGrade": {
-          "alertDescription": "After all grades have been typed in, click on “Publish all grades” to publish all of them at once.\nPlease verify the grades beforehand, because they won’t be editable anymore after they have been published. ",
+          "alertDescription": "After all grades have been typed in, click on \"Publish all grades\" to publish all of them at once.\nPlease verify the grades beforehand, because they won't be editable anymore after they have been published. ",
           "alertDescription2": "The assignment grades have to be published before June 22nd at midnight (CET).",
           "alertTitle": "Assignment grading",
           "confirmPublication": "Confirm publication",
-          "confirmPublicationDescription": "After grades are published, there’s no going back  because they won’t be editable anymore.",
+          "confirmPublicationDescription": "After grades are published, there's no going back  because they won't be editable anymore.",
           "confirmPublicationTitle": "Have you verified there is no error?",
           "courseAssignment": "Course assignment",
           "description": "Students are ordered by groups of assignment.",
