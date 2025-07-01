@@ -84,6 +84,7 @@ export const createGetAdminUserManagement = ({ postgres }: Dependencies) => {
           ua.display_name AS "displayName",
           ua.email,
           ua.role,
+          ua.created_at AS "createdAt",
           ua.created_at AS "startDate",
           (
             SELECT COUNT(*)
@@ -125,6 +126,7 @@ export const createGetUserTranslationDetails = ({ postgres }: Dependencies) => {
           ua.username,
           ua.display_name AS "displayName",
           ua.email,
+          ua.created_at AS "createdAt",
           ua.created_at AS "startDate",
           ua.role
         FROM users.accounts ua
@@ -149,7 +151,7 @@ export const createGetUserTranslationDetails = ({ postgres }: Dependencies) => {
           ta.status AS "assignmentStatus",
           ta.assigned_at AS "assignedAt",
           ta.completed_at AS "completedAt",
-          c.index AS "courseIndex",
+          c.index,
           cl.name AS "courseName",
           ct.status AS "translationStatus",
           ct.updated_at AS "translationUpdatedAt",
@@ -186,7 +188,10 @@ export const createGetUserTranslationDetails = ({ postgres }: Dependencies) => {
 
       return {
         ...user,
-        assignments: assignmentsResult,
+        assignments: assignmentsResult.map((assignment: any) => ({
+          ...assignment,
+          assignmentStatus: assignment.assignmentStatus,
+        })),
         languages: languagesResult.map((row: any) => row.language),
       };
     } catch (error) {

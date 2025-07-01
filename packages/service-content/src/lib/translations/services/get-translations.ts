@@ -109,8 +109,13 @@ export const createGetAdminContentManagementCourses = ({
   postgres,
 }: Dependencies) => {
   return async (language?: string, topic?: string) => {
-    return postgres.exec(
+    const results = await postgres.exec(
       getAdminContentManagementCoursesQuery(language, topic),
     );
+
+    return results.map((row: any) => ({
+      ...row,
+      topic: row.courseTopic,
+    }));
   };
 };

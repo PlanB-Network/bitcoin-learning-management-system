@@ -221,7 +221,7 @@ export const getAdminContentManagementCoursesQuery = (
       END AS "isAssigned",
       ct.created_at AS "createdAt",
       ct.updated_at AS "updatedAt",
-      c.index AS "courseIndex",
+      c.index AS "index",
       c.topic AS "courseTopic",
       cl.name AS "courseName",
       ta.id AS "assignmentId",

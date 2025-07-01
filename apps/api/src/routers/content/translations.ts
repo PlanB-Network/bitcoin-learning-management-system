@@ -3,9 +3,10 @@ import {
   adminContentManagementCourseSchema,
   availableCourseTranslationSchema,
   availableCourseTranslationWithAssignmentSchema,
-  courseLanguagesServiceResponseSchema,
+  courseLanguageInfoSchema,
   courseTranslationDetailsServiceResponseSchema,
   courseTranslationStatusSchema,
+  courseWithTodoTranslationsSchema,
   createTranslationInputSchema,
   updateTranslationStatusInputSchema,
 } from '@blms/schemas';
@@ -18,6 +19,7 @@ import {
   createGetCourseTranslationDetails,
   createGetCourseTranslationStatus,
   createGetCoursesReadyForReview,
+  createGetCoursesWithTodoTranslations,
   createGetTranslationProgress,
   createGetUserContributionsUnderReview,
   createGetUserCourseTranslations,
@@ -27,9 +29,10 @@ import type {
   AdminContentManagementCourse,
   AvailableCourseTranslation,
   AvailableCourseTranslationWithAssignment,
-  CourseLanguagesServiceResponse,
+  CourseLanguageInfo,
   CourseTranslationDetailsServiceResponse,
   CourseTranslationStatus,
+  CourseWithTodoTranslations,
 } from '@blms/types';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
@@ -199,20 +202,18 @@ const getContentManagementTopicsProcedure = adminProcedure
   });
 
 const getCourseLanguagesProcedure = adminProcedure
-  .input(z.object({ courseId: z.string() }))
-  .output<Parser<CourseLanguagesServiceResponse>>(
-    courseLanguagesServiceResponseSchema,
-  )
+  .input(z.object({ id: z.string() }))
+  .output<Parser<CourseLanguageInfo>>(courseLanguageInfoSchema)
   .query(({ ctx, input }) => {
     return createGetCourseLanguages(ctx.dependencies)({
-      courseId: input.courseId,
+      courseId: input.id,
     });
   });
 
 const getCourseTranslationDetailsProcedure = adminProcedure
   .input(
     z.object({
-      courseId: z.string(),
+      id: z.string(),
       language: z.string(),
     }),
   )
@@ -221,9 +222,18 @@ const getCourseTranslationDetailsProcedure = adminProcedure
   )
   .query(({ ctx, input }) => {
     return createGetCourseTranslationDetails(ctx.dependencies)({
-      courseId: input.courseId,
+      courseId: input.id,
       language: input.language,
     });
+  });
+
+// Get courses with todo translations
+const getCoursesWithTodoTranslationsProcedure = adminProcedure
+  .output<Parser<CourseWithTodoTranslations[]>>(
+    courseWithTodoTranslationsSchema.array(),
+  )
+  .query(({ ctx }) => {
+    return createGetCoursesWithTodoTranslations(ctx.dependencies)();
   });
 
 export const translationsRouter = createTRPCRouter({
@@ -240,4 +250,5 @@ export const translationsRouter = createTRPCRouter({
   getContentManagementTopics: getContentManagementTopicsProcedure,
   getCourseDetails: getCourseTranslationDetailsProcedure,
   getCourseLanguages: getCourseLanguagesProcedure,
+  getCoursesWithTodoTranslations: getCoursesWithTodoTranslationsProcedure,
 });
