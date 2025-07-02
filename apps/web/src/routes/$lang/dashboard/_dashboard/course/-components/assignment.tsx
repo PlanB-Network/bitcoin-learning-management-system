@@ -10,6 +10,7 @@ import {
   DialogClose,
   Divider,
   Loader,
+  RadialGauge,
   cn,
   customToast,
 } from '@blms/ui';
@@ -419,7 +420,9 @@ export const Assignment = ({
             </article>
           </div>
 
-          <Divider mode="light" className="!mx-0" width="w-full" />
+          {!courseInfo.isAssignmentGradingPublished && (
+            <Divider mode="light" className="!mx-0" width="w-full" />
+          )}
 
           {!hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
             <div className="flex flex-col gap-5">
@@ -501,10 +504,27 @@ export const Assignment = ({
           )}
 
           {courseInfo.isAssignmentGradingPublished && (
-            <InformationalPanel
-              icon={Certificate}
-              title={t('dashboard.course.assignmentCompletedTitle')}
-              description={
+            <section className="flex flex-col w-full border border-newGray-5 rounded-2xl">
+              <h4 className="label-medium-16px md:label-large-20px font-medium text-newBlack-1 flex gap-2 md:gap-4 items-center border-b border-newGray-5 px-4 md:px-6 py-3">
+                <img
+                  src={Certificate}
+                  alt={t('dashboard.course.assignmentCompletedTitle')}
+                  className={cn('w-4 md:w-6')}
+                />
+                {t('dashboard.course.assignmentCompletedTitle')}
+              </h4>
+              <div className="flex flex-col justify-center items-center gap-2 p-6">
+                <RadialGauge
+                  percentage={
+                    courseProgress?.assignmentGrade != null &&
+                    courseProgress.assignmentGrade >= 0
+                      ? courseProgress.assignmentGrade
+                      : 0
+                  }
+                  label={t('dashboard.course.assignmentScore')}
+                  variant="green"
+                  size="l"
+                />
                 <ButtonWithArrow
                   variant="outline"
                   mode="light"
@@ -521,14 +541,8 @@ export const Assignment = ({
                     {t('dashboard.course.viewFinalGrade')}
                   </Link>
                 </ButtonWithArrow>
-              }
-              subtitle={
-                courseProgress?.assignmentGrade != null &&
-                courseProgress.assignmentGrade >= 0
-                  ? `${courseProgress.assignmentGrade}%`
-                  : 'N/A'
-              }
-            />
+              </div>
+            </section>
           )}
         </div>
       )}

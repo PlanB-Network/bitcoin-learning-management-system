@@ -2,6 +2,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 import { cn } from '#src/lib/utils.ts';
 
 import DurationClock from '#src/assets/charts/duration.webp';
+import StarGauge from '#src/assets/charts/stars.svg';
 
 const gaugeVariantStyles = {
   green: {
@@ -18,7 +19,7 @@ const gaugeVariantStyles = {
   },
   yellow: {
     background: 'stroke-yellow-1', // Unfilled
-    foreground: 'stroke-yellow-1', // Filled - See later if we want a different color than unfilled
+    foreground: 'stroke-yellow-5', // Filled - See later if we want a different color than unfilled
     text: 'text-yellow-5',
     needle: 'stroke-yellow-7',
   },
@@ -30,7 +31,7 @@ const gaugeVariantStyles = {
   },
 };
 
-const clockVariantStyles = {
+const customGaugeVariantStyles = {
   blue: {
     text: 'text-[#0A69DA]',
   },
@@ -38,7 +39,7 @@ const clockVariantStyles = {
 
 type GaugeVariant = keyof typeof gaugeVariantStyles;
 type DashGaugeVariant = keyof typeof gaugeVariantStyles;
-type ClockVariant = keyof typeof clockVariantStyles;
+type CustomGaugeVariant = keyof typeof customGaugeVariantStyles;
 
 const gaugeContainerVariants = cva(
   'flex items-center max-lg:justify-between relative justify-center rounded-2xl',
@@ -46,7 +47,7 @@ const gaugeContainerVariants = cva(
     variants: {
       size: {
         m: 'w-66 lg:w-40 px-3 py-5 lg:flex-col',
-        l: 'w-full max-w-54 lg:max-w-[336px] lg:px-14 my-7 flex-col',
+        l: 'w-full max-w-54 lg:max-w-[336px] lg:px-14 py-7 flex-col',
       },
     },
     defaultVariants: {
@@ -120,6 +121,7 @@ const GaugeContainer = ({
   <div
     className={cn(
       showBackground && 'bg-white',
+      showBackground && size === 'l' && 'px-7',
       gaugeContainerVariants({ size }),
       className,
     )}
@@ -134,7 +136,9 @@ export interface RadialGaugeProps
     VariantProps<typeof gaugeContainerVariants> {
   percentage: number;
   label: string;
+  subLabel?: string;
   variant?: GaugeVariant;
+  filledColorTransparent?: boolean;
   size?: 'm' | 'l';
   showBackground?: boolean;
 }
@@ -150,12 +154,13 @@ export interface DashGaugeProps
   showBackground?: boolean;
 }
 
-export interface ClockProps
+export interface CustomGaugeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof gaugeContainerVariants> {
-  time: string;
+  value: string;
   label: string;
-  variant?: ClockVariant;
+  variant?: CustomGaugeVariant;
+  type?: 'clock' | 'star';
   size?: 'm' | 'l';
   showBackground?: boolean;
 }
@@ -164,6 +169,8 @@ const RadialGauge = ({
   className,
   percentage,
   label,
+  subLabel,
+  filledColorTransparent = false,
   variant = 'green',
   size = 'm',
   showBackground = false,
@@ -213,7 +220,11 @@ const RadialGauge = ({
             d={arcPath}
             fill="none"
             strokeWidth={GAUGE_STROKE_WIDTH}
-            className={cn(colorClasses.foreground)}
+            className={cn(
+              filledColorTransparent
+                ? 'stroke-transparent'
+                : colorClasses.foreground,
+            )}
             style={{
               strokeDasharray: circumference,
               strokeDashoffset: strokeDashoffset,
@@ -242,6 +253,13 @@ const RadialGauge = ({
       <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
         {label}
       </span>
+      {subLabel && (
+        <span
+          className={cn('text-center text-newGray-2 text-xs tracking-015px')}
+        >
+          {subLabel}
+        </span>
+      )}
     </GaugeContainer>
   );
 };
@@ -336,16 +354,19 @@ const DashGauge = ({
   );
 };
 
-const Clock = ({
+const CustomGauge = ({
   className,
-  time,
+  value,
   label,
   variant = 'blue',
+  type = 'clock',
   size = 'm',
   showBackground = false,
   ...props
-}: ClockProps) => {
-  const colorClasses = clockVariantStyles[variant];
+}: CustomGaugeProps) => {
+  const colorClasses = customGaugeVariantStyles[variant];
+
+  const imgSrc = type === 'clock' ? DurationClock : StarGauge;
 
   return (
     <GaugeContainer
@@ -357,11 +378,17 @@ const Clock = ({
       <MobileLabel label={label} colorClasses={colorClasses} size={size} />
 
       <div className={getSvgContainerClasses(size)}>
-        <img src={DurationClock} alt="Duration clock" className="w-full" />
+        <img src={imgSrc} alt="Gauge" className="w-full" />
 
         {/* Text */}
-        <div className={cn(colorClasses.text, getTextContainerClasses(size))}>
-          <span className={getMainTextClasses(size)}>{time}</span>
+        <div
+          className={cn(
+            colorClasses.text,
+            getTextContainerClasses(size),
+            type === 'star' && '!bottom-0',
+          )}
+        >
+          <span className={getMainTextClasses(size)}>{value}</span>
         </div>
       </div>
 
@@ -372,4 +399,4 @@ const Clock = ({
   );
 };
 
-export { RadialGauge, DashGauge, Clock };
+export { RadialGauge, DashGauge, CustomGauge };
