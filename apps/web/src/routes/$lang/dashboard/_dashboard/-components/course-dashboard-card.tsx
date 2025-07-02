@@ -233,7 +233,7 @@ export const CourseDashboardCard = ({
                     to={
                       course.teachingFormat === 'professor_led'
                         ? `/dashboard/course/${course.id}`
-                        : `/dashboard/course/completed#${course.id}`
+                        : `/dashboard/course/completed#${course.index}`
                     }
                   >
                     <ButtonWithArrow
