@@ -3,7 +3,13 @@ import type { AvailableCourseTranslation } from '@blms/types';
 import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
-import { updateTranslationStatusQuery } from '../queries/update-translations.js';
+import {
+  createCourseTranslationQuery,
+  createCourseTranslationsInitQuery,
+  populateCourseTranslationChaptersQuery,
+  startCourseTranslationsQuery,
+  updateTranslationStatusQuery,
+} from '../queries/update-translations.js';
 
 /**
  * Service to create a new translation for a course
@@ -19,39 +25,19 @@ export const createCreateCourseTranslation = ({ postgres }: Dependencies) => {
     try {
       return await postgres.begin(async (transaction) => {
         // Create course_translations entry if it doesn't exist
-        await transaction`
-          INSERT INTO content.course_translations (course_id, language, status, created_at, updated_at)
-          VALUES (${courseId}, LOWER(${language}), 'todo'::translation_status, NOW(), NOW())
-          ON CONFLICT (course_id, language) DO NOTHING
-        `;
+        await postgres.exec(
+          createCourseTranslationsInitQuery(courseId, language),
+        );
 
         // Populate course_translation_chapters for this course-language combination
-        await transaction`
-          INSERT INTO content.course_translation_chapters (course_id, language, part_id, chapter_id, status, created_at, updated_at)
-          SELECT
-            ${courseId},
-            ${language.toLowerCase()},
-            cc.part_id,
-            cc.chapter_id,
-            'todo'::translation_status,
-            NOW(),
-            NOW()
-          FROM content.course_chapters cc
-          WHERE cc.course_id = ${courseId}
-          ON CONFLICT (course_id, language, part_id, chapter_id) DO NOTHING
-        `;
+        await postgres.exec(
+          populateCourseTranslationChaptersQuery(courseId, language),
+        );
 
         // Create the main translation entry
-        const results = await transaction<AvailableCourseTranslation[]>`
-          INSERT INTO content.course_translations (course_id, language, status)
-          VALUES (${courseId}, LOWER(${language}), 'todo'::translation_status)
-          RETURNING
-            course_id AS "courseId",
-            language,
-            status,
-            created_at AS "createdAt",
-            updated_at AS "updatedAt"
-        `;
+        const results = await postgres.exec(
+          createCourseTranslationQuery(courseId, language),
+        );
 
         if (results.length === 0) {
           throw new TRPCError({
@@ -119,6 +105,36 @@ export const createUpdateTranslationStatus = ({ postgres }: Dependencies) => {
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to update translation status',
+      });
+    }
+  };
+};
+
+/**
+ * Service to start translations by updating status from 'todo' to 'in_progress' for multiple languages
+ */
+export const createStartTranslations = ({ postgres }: Dependencies) => {
+  return async ({
+    courseId,
+    languages,
+  }: {
+    courseId: string;
+    languages: string[];
+  }): Promise<AvailableCourseTranslation[]> => {
+    try {
+      const results = await postgres.exec(
+        startCourseTranslationsQuery(courseId, languages),
+      );
+
+      return results;
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to start translations',
       });
     }
   };

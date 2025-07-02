@@ -1,7 +1,11 @@
-import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../../dependencies.js';
+import {
+  assignLanguageToContributorQuery,
+  getAvailableLanguagesQuery,
+  updateUserRoleToContributorQuery,
+} from '../queries/language-assignment.js';
 
 export interface LanguageInfo {
   code: string;
@@ -14,13 +18,7 @@ export interface LanguageInfo {
 export const createGetAvailableLanguages = ({ postgres }: Dependencies) => {
   return async (): Promise<LanguageInfo[]> => {
     try {
-      const result = await postgres.exec(sql`
-        SELECT
-          l.code,
-          l.name
-        FROM users.languages l
-        ORDER BY l.name
-      `);
+      const result = await postgres.exec(getAvailableLanguagesQuery());
       return result as LanguageInfo[];
     } catch (error) {
       console.error('Error fetching available languages:', error);
@@ -47,20 +45,12 @@ export const createAssignLanguageToContributor = ({
   }) => {
     try {
       // First, update the user's role to 'contributor' if not already
-      await postgres.exec(sql`
-        UPDATE users.accounts
-        SET role = 'contributor'
-        WHERE uid = ${contributorId}
-        AND role NOT IN ('contributor', 'admin', 'superadmin')
-      `);
+      await postgres.exec(updateUserRoleToContributorQuery(contributorId));
 
       // Insert or update the reviewer language assignment
-      await postgres.exec(sql`
-        INSERT INTO users.reviewer_languages (reviewer_id, language_code, proficiency_level)
-        VALUES (${contributorId}, ${languageCode}, 1)
-        ON CONFLICT (reviewer_id, language_code)
-        DO UPDATE SET proficiency_level = EXCLUDED.proficiency_level
-      `);
+      await postgres.exec(
+        assignLanguageToContributorQuery(contributorId, languageCode),
+      );
 
       return;
     } catch (error) {
