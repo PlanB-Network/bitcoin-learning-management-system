@@ -264,3 +264,143 @@ export const checkExistingAssignmentQuery = (
     LIMIT 1
   `;
 };
+
+/**
+ * Query to create chapter assignments for all chapters when a translation assignment is accepted
+ */
+export const createChapterAssignmentsQuery = (
+  courseId: string,
+  language: string,
+  assigneeId: string,
+  assignerId: string,
+) => {
+  return sql`
+    INSERT INTO users.translation_chapter_assignments (course_id, language, chapter_id, assignee_id, assigner_id, status)
+    SELECT
+      ${courseId},
+      LOWER(${language}),
+      ch.chapter_id,
+      ${assigneeId},
+      ${assignerId},
+      'assigned'::assignment_status
+    FROM content.course_chapters ch
+    WHERE ch.course_id = ${courseId}
+    ON CONFLICT (course_id, language, chapter_id, assignee_id) DO NOTHING
+    RETURNING *
+  `;
+};
+
+/**
+ * Query to create part assignments for all parts when a translation assignment is accepted
+ */
+export const createPartAssignmentsQuery = (
+  courseId: string,
+  language: string,
+  assigneeId: string,
+  assignerId: string,
+) => {
+  return sql`
+    INSERT INTO users.translation_part_assignments (course_id, language, part_id, chapter_id, assignee_id, assigner_id, status)
+    SELECT
+      ${courseId},
+      LOWER(${language}),
+      ch.part_id,
+      ch.chapter_id,
+      ${assigneeId},
+      ${assignerId},
+      'assigned'::assignment_status
+    FROM content.course_chapters ch
+    WHERE ch.course_id = ${courseId}
+    ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO NOTHING
+    RETURNING *
+  `;
+};
+
+/**
+ * Query to check if course translation exists
+ */
+export const checkCourseTranslationExistsQuery = (
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    SELECT course_id, language
+    FROM content.course_translations
+    WHERE course_id = ${courseId} AND language = LOWER(${language})
+  `;
+};
+
+/**
+ * Query to create course translation
+ */
+export const createCourseTranslationQuery = (
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    INSERT INTO content.course_translations (course_id, language, status)
+    VALUES (${courseId}, LOWER(${language}), 'todo'::translation_status)
+  `;
+};
+
+/**
+ * Query to populate course translation chapters
+ */
+export const populateCourseTranslationChaptersQuery = (
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    INSERT INTO content.course_translation_chapters (course_id, language, part_id, chapter_id, status, created_at, updated_at)
+    SELECT
+      ${courseId},
+      ${language.toLowerCase()},
+      cc.part_id,
+      cc.chapter_id,
+      'todo'::translation_status,
+      NOW(),
+      NOW()
+    FROM content.course_chapters cc
+    WHERE cc.course_id = ${courseId}
+    ON CONFLICT (course_id, language, part_id, chapter_id) DO NOTHING
+  `;
+};
+
+/**
+ * Query to get assignment details by ID
+ */
+export const getAssignmentDetailsByIdQuery = (assignmentId: string) => {
+  return sql`
+    SELECT course_id, language, assignee_id, assigner_id
+    FROM users.translation_assignments
+    WHERE id = ${assignmentId}
+  `;
+};
+
+/**
+ * Query to check user translation assignment
+ */
+export const checkUserTranslationAssignmentQuery = (
+  userId: string,
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    SELECT
+      ta.id,
+      ta.course_id AS "courseId",
+      ta.language,
+      ta.assignee_id AS "assigneeId",
+      ta.assigner_id AS "assignerId",
+      ta.status,
+      ta.assigned_at AS "assignedAt",
+      ta.completed_at AS "completedAt",
+      ta.rejection_reason AS "rejectionReason"
+    FROM users.translation_assignments ta
+    WHERE ta.assignee_id = ${userId}
+      AND ta.course_id = ${courseId}
+      AND ta.language = LOWER(${language})
+    ORDER BY ta.assigned_at DESC
+    LIMIT 1
+  `;
+};

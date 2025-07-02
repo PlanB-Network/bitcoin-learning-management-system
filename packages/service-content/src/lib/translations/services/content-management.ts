@@ -1,7 +1,13 @@
-import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
+import {
+  getContentManagementTopicsQuery,
+  getCourseBasicInfoQuery,
+  getCourseLanguagesQuery,
+  getCourseTranslationChaptersQuery,
+  getCourseTranslationDetailsQuery,
+} from '../queries/content-management.js';
 
 /**
  * Service to get available topics for content management
@@ -11,15 +17,7 @@ export const createGetContentManagementTopics = ({
 }: Dependencies) => {
   return async (): Promise<string[]> => {
     try {
-      const result = await postgres.exec(sql`
-        SELECT DISTINCT c.topic
-        FROM content.courses c
-        JOIN content.course_translations ct ON c.id = ct.course_id
-        WHERE ct.status IN ('ready_for_review', 'under_review')
-          AND c.is_archived = false
-          AND c.topic IS NOT NULL
-        ORDER BY c.topic
-      `);
+      const result = await postgres.exec(getContentManagementTopicsQuery());
 
       return result.map((row) => row.topic);
     } catch (error) {
@@ -39,16 +37,9 @@ export const createGetCourseLanguages = ({ postgres }: Dependencies) => {
   return async ({ courseId }: { courseId: string }) => {
     try {
       // Get course basic information first
-      const courseResult = await postgres.exec(sql`
-        SELECT
-          c.id AS "id",
-          c.index AS "index",
-          cl.name AS "name"
-        FROM content.courses c
-        LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
-        WHERE c.id = ${courseId}
-        LIMIT 1
-      `);
+      const courseResult = await postgres.exec(
+        getCourseBasicInfoQuery(courseId),
+      );
 
       if (courseResult.length === 0) {
         throw new TRPCError({
@@ -58,25 +49,9 @@ export const createGetCourseLanguages = ({ postgres }: Dependencies) => {
       }
 
       // Get languages from course_translations table for this specific course
-      const languagesResult = await postgres.exec(sql`
-        SELECT
-          ct.language AS "languageCode",
-          l.name AS "languageName",
-          ct.status AS "translationStatus",
-          ta.assignee_id AS "assigneeId",
-          ua.username AS "assigneeUsername",
-          ua.display_name AS "assigneeDisplayName"
-        FROM content.course_translations ct
-        LEFT JOIN users.languages l ON ct.language = l.code
-        LEFT JOIN users.translation_assignments ta ON (
-          ta.course_id = ct.course_id
-          AND ta.language = ct.language
-          AND ta.status IN ('assigned', 'in_progress', 'completed')
-        )
-        LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
-        WHERE ct.course_id = ${courseId}
-        ORDER BY l.name
-      `);
+      const languagesResult = await postgres.exec(
+        getCourseLanguagesQuery(courseId),
+      );
 
       const courseInfo = courseResult[0];
       const languages = languagesResult.map((row) => ({
@@ -122,34 +97,9 @@ export const createGetCourseTranslationDetails = ({
   }) => {
     try {
       // Get course basic information
-      const courseResult = await postgres.exec(sql`
-        SELECT
-          c.id,
-          c.index,
-          cl.name AS "courseName",
-          ct.status AS "translationStatus",
-          ct.created_at AS "translationCreatedAt",
-          ct.updated_at AS "translationUpdatedAt",
-          ta.assignee_id AS "assigneeId",
-          ua.username AS "assigneeUsername",
-          ua.display_name AS "assigneeDisplayName",
-          ta.assigned_at AS "assignedAt",
-          ta.status AS "assignmentStatus"
-        FROM content.courses c
-        LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
-        LEFT JOIN content.course_translations ct ON (
-          ct.course_id = c.id
-          AND ct.language = LOWER(${language})
-        )
-        LEFT JOIN users.translation_assignments ta ON (
-          ta.course_id = c.id
-          AND ta.language = LOWER(${language})
-          AND ta.status IN ('assigned', 'in_progress', 'completed')
-        )
-        LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
-        WHERE c.id = ${courseId}
-        LIMIT 1
-      `);
+      const courseResult = await postgres.exec(
+        getCourseTranslationDetailsQuery(courseId, language),
+      );
 
       if (courseResult.length === 0) {
         throw new TRPCError({
@@ -161,35 +111,9 @@ export const createGetCourseTranslationDetails = ({
       const course = courseResult[0];
 
       // Get parts and chapters with their translation status
-      const chaptersResult = await postgres.exec(sql`
-        SELECT
-          cp.part_id AS "partId",
-          cp.part_index AS "partIndex",
-          cpl.title AS "partTitle",
-          cc.chapter_id AS "chapterId",
-          cc.chapter_index AS "chapterIndex",
-          ccl.title AS "chapterTitle",
-          COALESCE(ctc.status, 'todo') AS "status",
-          ctc.updated_at AS "updatedAt"
-        FROM content.course_parts cp
-        LEFT JOIN content.course_parts_localized cpl ON (
-          cp.part_id = cpl.part_id
-          AND cpl.language = 'en'
-        )
-        LEFT JOIN content.course_chapters cc ON cp.part_id = cc.part_id
-        LEFT JOIN content.course_chapters_localized ccl ON (
-          cc.chapter_id = ccl.chapter_id
-          AND ccl.language = 'en'
-        )
-        LEFT JOIN content.course_translation_chapters ctc ON (
-          ctc.course_id = ${courseId}
-          AND ctc.language = LOWER(${language})
-          AND ctc.part_id = cp.part_id
-          AND ctc.chapter_id = cc.chapter_id
-        )
-        WHERE cp.course_id = ${courseId}
-        ORDER BY cp.part_index, cc.chapter_index
-      `);
+      const chaptersResult = await postgres.exec(
+        getCourseTranslationChaptersQuery(courseId, language),
+      );
 
       // Group chapters by parts
       const partsMap = new Map();

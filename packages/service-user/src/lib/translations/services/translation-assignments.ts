@@ -1,12 +1,19 @@
 import type { AssignmentStatus } from '@blms/constants';
-import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
+  checkCourseTranslationExistsQuery,
+  checkExistingAssignmentQuery,
+  checkUserTranslationAssignmentQuery,
+  createCourseTranslationQuery,
+  createTranslationAssignmentQuery,
+  getAssignmentDetailsByIdQuery,
   getTranslationAssignmentRequestsQuery,
   getUserTranslationAssignmentsQuery,
-} from '../queries/assignment-queries.js';
+  populateCourseTranslationChaptersQuery,
+  updateTranslationAssignmentStatusQuery,
+} from '../queries/translation-assignments.js';
 
 export interface TranslationAssignment {
   id: string;
@@ -42,14 +49,9 @@ export const createRequestTranslationAssignment = ({
     try {
       return await postgres.begin(async (transaction) => {
         // Check if user already has an assignment for this course-language combination
-        const existingAssignment = await transaction<{ id: string }[]>`
-          SELECT id
-          FROM users.translation_assignments
-          WHERE course_id = ${courseId}
-            AND language = LOWER(${language})
-            AND assignee_id = ${userId}
-          LIMIT 1
-        `;
+        const existingAssignment = await postgres.exec(
+          checkExistingAssignmentQuery(courseId, language, userId),
+        );
 
         if (existingAssignment.length > 0) {
           throw new TRPCError({
@@ -60,51 +62,30 @@ export const createRequestTranslationAssignment = ({
         }
 
         // Check if course translation exists, if not create it
-        const existingTranslation = await transaction`
-          SELECT course_id, language
-          FROM content.course_translations
-          WHERE course_id = ${courseId} AND language = LOWER(${language})
-        `;
+        const existingTranslation = await postgres.exec(
+          checkCourseTranslationExistsQuery(courseId, language),
+        );
 
         if (existingTranslation.length === 0) {
           // Create the course translation entry
-          await transaction`
-            INSERT INTO content.course_translations (course_id, language, status)
-            VALUES (${courseId}, LOWER(${language}), 'todo'::translation_status)
-          `;
+          await postgres.exec(createCourseTranslationQuery(courseId, language));
 
           // Populate course_translation_chapters
-          await transaction`
-            INSERT INTO content.course_translation_chapters (course_id, language, part_id, chapter_id, status, created_at, updated_at)
-            SELECT
-              ${courseId},
-              ${language.toLowerCase()},
-              cc.part_id,
-              cc.chapter_id,
-              'todo'::translation_status,
-              NOW(),
-              NOW()
-            FROM content.course_chapters cc
-            WHERE cc.course_id = ${courseId}
-            ON CONFLICT (course_id, language, part_id, chapter_id) DO NOTHING
-          `;
+          await postgres.exec(
+            populateCourseTranslationChaptersQuery(courseId, language),
+          );
         }
 
         // Create the assignment request
-        const results = await transaction<TranslationAssignment[]>`
-          INSERT INTO users.translation_assignments (course_id, language, assignee_id, assigner_id, status)
-          VALUES (${courseId}, LOWER(${language}), ${userId}, ${userId}, 'requested')
-          RETURNING
-            id,
-            course_id AS "courseId",
+        const results = await postgres.exec(
+          createTranslationAssignmentQuery(
+            courseId,
             language,
-            assignee_id AS "assigneeId",
-            assigner_id AS "assignerId",
-            status,
-            assigned_at AS "assignedAt",
-            completed_at AS "completedAt",
-            rejection_reason AS "rejectionReason"
-        `;
+            userId,
+            userId,
+            'requested',
+          ),
+        );
 
         if (results.length === 0) {
           throw new TRPCError({
@@ -113,7 +94,7 @@ export const createRequestTranslationAssignment = ({
           });
         }
 
-        return results[0];
+        return results[0] as TranslationAssignment;
       });
     } catch (error) {
       if (error instanceof TRPCError) {
@@ -176,11 +157,9 @@ export const createUpdateTranslationAssignmentStatus = ({
     try {
       return await postgres.begin(async (transaction) => {
         // Retrieve assignment details
-        const assignmentDetails = await transaction`
-          SELECT course_id, language, assignee_id, assigner_id
-          FROM users.translation_assignments
-          WHERE id = ${assignmentId}
-        `;
+        const assignmentDetails = await postgres.exec(
+          getAssignmentDetailsByIdQuery(assignmentId),
+        );
 
         if (assignmentDetails.length === 0) {
           throw new TRPCError({
@@ -190,24 +169,13 @@ export const createUpdateTranslationAssignmentStatus = ({
         }
 
         // Update assignment status
-        const results = await transaction`
-          UPDATE users.translation_assignments
-          SET
-            status = ${status},
-            completed_at = ${status === 'completed' ? sql`NOW()` : sql`NULL`},
-            rejection_reason = ${rejectionReason || null}
-          WHERE id = ${assignmentId}
-          RETURNING
-            id,
-            course_id AS "courseId",
-            language,
-            assignee_id AS "assigneeId",
-            assigner_id AS "assignerId",
+        const results = await postgres.exec(
+          updateTranslationAssignmentStatusQuery(
+            assignmentId,
             status,
-            assigned_at AS "assignedAt",
-            completed_at AS "completedAt",
-            rejection_reason AS "rejectionReason"
-        `;
+            rejectionReason,
+          ),
+        );
 
         return results[0] as TranslationAssignment;
       });
@@ -239,24 +207,9 @@ export const createCheckUserTranslationAssignment = ({
     language: string;
   }): Promise<TranslationAssignment | null> => {
     try {
-      const results = await postgres.exec(sql`
-        SELECT
-          ta.id,
-          ta.course_id AS "courseId",
-          ta.language,
-          ta.assignee_id AS "assigneeId",
-          ta.assigner_id AS "assignerId",
-          ta.status,
-          ta.assigned_at AS "assignedAt",
-          ta.completed_at AS "completedAt",
-          ta.rejection_reason AS "rejectionReason"
-        FROM users.translation_assignments ta
-        WHERE ta.assignee_id = ${userId}
-          AND ta.course_id = ${courseId}
-          AND ta.language = LOWER(${language})
-        ORDER BY ta.assigned_at DESC
-        LIMIT 1
-      `);
+      const results = await postgres.exec(
+        checkUserTranslationAssignmentQuery(userId, courseId, language),
+      );
 
       return results.length > 0 ? (results[0] as TranslationAssignment) : null;
     } catch (error) {
