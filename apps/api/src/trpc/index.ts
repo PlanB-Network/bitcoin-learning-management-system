@@ -62,7 +62,8 @@ export const createContext = (
  */
 const t = initTRPC.context<Context>().create({
   transformer: superjson,
-  errorFormatter({ shape, error }) {
+  errorFormatter({ ctx, shape, error }) {
+    ctx?.log('ERROR:', error.message, error.name, error.code);
     return {
       ...shape,
       data: {
