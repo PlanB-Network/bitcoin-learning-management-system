@@ -30,6 +30,7 @@ export const createGetCoursesWithTodoTranslations = ({
           ct.course_id,
           COUNT(*) AS total_languages
         FROM content.course_translations ct
+        WHERE ct.status = 'todo'
         GROUP BY ct.course_id
       )
       SELECT

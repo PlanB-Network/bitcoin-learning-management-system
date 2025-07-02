@@ -1,7 +1,7 @@
 import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 
-import type { Dependencies } from '../../dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 
 export interface LanguageInfo {
   code: string;
