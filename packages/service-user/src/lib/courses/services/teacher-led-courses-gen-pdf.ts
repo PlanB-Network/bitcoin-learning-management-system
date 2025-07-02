@@ -128,8 +128,8 @@ export async function createTeacherLedCertificatePdf(
       textCenter(page, options.fullName, { y: 360, ...conf.userName });
     } else {
       const [line1, line2] = breakLine(options.fullName, font, size, false);
-      textCenter(page, line1, { y: 375, ...conf.userName });
-      textCenter(page, line2, { y: 320, ...conf.userName });
+      textCenter(page, line1, { y: 395, ...conf.userName });
+      textCenter(page, line2, { y: 340, ...conf.userName });
     }
   }
 
