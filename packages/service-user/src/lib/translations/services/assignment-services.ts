@@ -1,11 +1,11 @@
 import type { AssignmentStatus } from '@blms/constants';
 import { sql } from '@blms/database';
 import { TRPCError } from '@trpc/server';
-import type { Dependencies } from '../../dependencies.js';
+
+import type { Dependencies } from '../../../dependencies.js';
 import {
   getTranslationAssignmentRequestsQuery,
   getUserTranslationAssignmentsQuery,
-  updateTranslationAssignmentStatusQuery,
 } from '../queries/assignment-queries.js';
 
 export interface TranslationAssignment {
@@ -174,27 +174,47 @@ export const createUpdateTranslationAssignmentStatus = ({
     rejectionReason?: string;
   }): Promise<TranslationAssignment> => {
     try {
-      const results = await postgres.exec(
-        updateTranslationAssignmentStatusQuery(
-          assignmentId,
-          status,
-          rejectionReason,
-        ),
-      );
+      return await postgres.begin(async (transaction) => {
+        // Retrieve assignment details
+        const assignmentDetails = await transaction`
+          SELECT course_id, language, assignee_id, assigner_id
+          FROM users.translation_assignments
+          WHERE id = ${assignmentId}
+        `;
 
-      if (results.length === 0) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Translation assignment not found',
-        });
-      }
+        if (assignmentDetails.length === 0) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: 'Translation assignment not found',
+          });
+        }
 
-      return results[0] as TranslationAssignment;
+        // Update assignment status
+        const results = await transaction`
+          UPDATE users.translation_assignments
+          SET
+            status = ${status},
+            completed_at = ${status === 'completed' ? sql`NOW()` : sql`NULL`},
+            rejection_reason = ${rejectionReason || null}
+          WHERE id = ${assignmentId}
+          RETURNING
+            id,
+            course_id AS "courseId",
+            language,
+            assignee_id AS "assigneeId",
+            assigner_id AS "assignerId",
+            status,
+            assigned_at AS "assignedAt",
+            completed_at AS "completedAt",
+            rejection_reason AS "rejectionReason"
+        `;
+
+        return results[0] as TranslationAssignment;
+      });
     } catch (error) {
       if (error instanceof TRPCError) {
         throw error;
       }
-
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to update translation assignment status',
