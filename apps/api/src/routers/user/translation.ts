@@ -35,6 +35,7 @@ import {
   createGetAvailableLanguages,
   createGetTranslationAssignmentRequests,
   createGetUserTranslationAssignments,
+  createGetUserTranslationDetails,
   createReassignCourseToContributor,
   createRequestTranslationAssignment,
   createUpdateTranslationAssignmentStatus,
