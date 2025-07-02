@@ -30,7 +30,6 @@ function TranslateCoursesPage() {
     targetLanguage,
 
     // Data
-    courses,
     userContributions,
     uniqueTopics,
     filteredCourses,

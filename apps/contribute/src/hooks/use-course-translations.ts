@@ -69,7 +69,11 @@ export const useCourseTranslations = () => {
           await trpcClient.content.getUserContributionsUnderReview.query({
             language: targetLanguage.toLowerCase(),
           });
-        setUserContributions(data || []);
+        const mapped = (data || []).map((item) => ({
+          courseId: item.courseId,
+          assignmentStatus: item.assignmentStatus as string | undefined,
+        }));
+        setUserContributions(mapped);
       } catch (error) {
         console.error('Failed to fetch user contributions:', error);
         setContributionsError(
@@ -144,7 +148,11 @@ export const useCourseTranslations = () => {
         await trpcClient.content.getUserContributionsUnderReview.query({
           language: targetLanguage.toLowerCase(),
         });
-      setUserContributions(data || []);
+      const mapped = (data || []).map((item) => ({
+        courseId: item.courseId,
+        assignmentStatus: item.assignmentStatus as string | undefined,
+      }));
+      setUserContributions(mapped);
     } catch (error) {
       console.error('Failed to refetch user contributions:', error);
       setContributionsError(

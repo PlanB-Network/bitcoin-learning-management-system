@@ -3,15 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
-import type { CourseResponse, NavigationSection } from '@blms/types';
+import type { CourseResponse } from '@blms/types';
 import { Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
+import type { NavigationSection } from '../props.ts';
 
 import { assetUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 
-import { MenuElement } from '../menu-elements.tsx';
-
 import { Image } from '#src/components/image.tsx';
+import { MenuElement } from '../menu-elements.tsx';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
 const BTC101ID = 'btc101';
@@ -197,7 +197,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
               </Link>
             )}
             {'items' in section &&
-              section.items.map((subSectionOrElement) => {
+              section.items.map((subSectionOrElement: any) => {
                 return 'items' in subSectionOrElement ? (
                   <FlyingMenuSubSection
                     key={subSectionOrElement.id}

@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 
 import { Loader } from '@blms/ui';
 
-import { App } from './app.tsx';
+import { App } from './App.tsx';
 import { AppProvider } from './providers/app.tsx';
 import './utils/i18n';
 

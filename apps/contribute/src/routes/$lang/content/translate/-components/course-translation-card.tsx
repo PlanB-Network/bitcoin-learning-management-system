@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { HiOutlineViewGrid } from 'react-icons/hi';
@@ -8,7 +8,6 @@ import type { BasicCourse } from '@blms/types';
 
 import { Image } from '#src/components/image.tsx';
 import Flag from '#src/molecules/Flag/index.tsx';
-import { AppContext } from '#src/providers/context.js';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
@@ -48,8 +47,7 @@ export const CourseTranslationCard = ({
   userContributions,
   refetchUserContributions,
 }: CourseTranslationCardProps): JSX.Element => {
-  const { t, i18n } = useTranslation();
-  const { session } = useContext(AppContext);
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasEnglishTranslation, setHasEnglishTranslation] = useState(false);
   const [isRequesting, setIsRequesting] = useState(false);
@@ -68,7 +66,7 @@ export const CourseTranslationCard = ({
   // State for existing assignment check
   const [existingAssignment, setExistingAssignment] =
     useState<TranslationAssignment | null>(null);
-  const [isCheckingAssignment, setIsCheckingAssignment] = useState(false);
+  const [, setIsCheckingAssignment] = useState(false);
 
   // Check if user has existing translation assignment
   useEffect(() => {
@@ -85,7 +83,11 @@ export const CourseTranslationCard = ({
               language: targetLanguage,
             },
           );
-        setExistingAssignment(data);
+        if (data) {
+          setExistingAssignment({ status: String(data.status ?? '') });
+        } else {
+          setExistingAssignment(null);
+        }
       } catch (error) {
         console.error('Failed to check existing assignment:', error);
         setExistingAssignment(null);

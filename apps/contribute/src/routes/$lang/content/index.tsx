@@ -20,7 +20,7 @@ function ContentSectionPage() {
   const { lang } = Route.useParams();
   const [courseTranslationProgress, setCourseTranslationProgress] =
     useState<number>(0);
-  const [isLoadingProgress, setIsLoadingProgress] = useState(false);
+  const [, setIsLoadingProgress] = useState(false);
 
   // Get the target language from localStorage (selected on previous page)
   const [targetLanguage, setTargetLanguage] = useState<string>('en');
