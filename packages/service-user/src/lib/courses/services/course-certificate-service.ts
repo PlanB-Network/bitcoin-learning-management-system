@@ -219,7 +219,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       .exec(
         sql<UserExamTimestamp[]>`
           SELECT * FROM users.exam_timestamps
-          WHERE id = ${id};
+          WHERE exam_attempt_id = ${id} OR id = ${id};
         `,
       )
       .then(firstRow)
