@@ -255,9 +255,21 @@ export const createRestFilesRoutes = async (
 
       const timestamp = await timeStampService!.getExamTimestamp(key);
 
-      const pdfFile = await dependencies.s3.getBlob(
-        `certificates/${timestamp.id}.pdf`,
-      );
+      let pdfFile: any;
+      try {
+        pdfFile = await dependencies.s3.getBlob(
+          `certificates/${timestamp.id}.pdf`,
+        );
+      } catch (error) {
+        if (error instanceof NoSuchKey) {
+          pdfFile = await dependencies.s3.getBlob(
+            `certificates/${timestamp.examAttemptId}.pdf`,
+          );
+        } else {
+          throw error;
+        }
+      }
+
       const otsFile = timestamp.ots;
       const txtFile = timestamp.txt;
 
