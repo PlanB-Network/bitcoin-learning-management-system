@@ -79,7 +79,9 @@ services:
       test: ['CMD', 'nc', '-zv', 'localhost', '3000']
 
   web:
-    <<: [*defaults, *base]
+    <<: *defaults
+    build: .
+    user: "${UID:-1000}:${GID:-1000}"
     command: pnpm turbo run dev --env-mode=loose --filter='@blms/web'
     ports:
       - 8181:8181
