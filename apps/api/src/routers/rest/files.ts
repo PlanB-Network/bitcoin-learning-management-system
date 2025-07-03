@@ -311,6 +311,7 @@ export const createRestFilesRoutes = async (
         'bcertresults',
         'user-files',
         'cvs',
+        'contribute',
       ];
       if (!allowedBuckets.includes(dir)) {
         res.status(401).send('Unauthorized');
