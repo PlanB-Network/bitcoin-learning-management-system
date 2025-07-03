@@ -1,20 +1,18 @@
-import type { GeneralPaymentItem } from '@blms/constants';
 import { cn } from '@blms/ui';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import SummerSchoolThumbnail from '#src/assets/courses/summer-school-thumbnail.png?no-inline';
 import { PaymentRow } from '#src/components/payment-row.tsx';
 import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
+
 const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
 
 interface ModalPaymentSummaryProps {
-  item: GeneralPaymentItem;
   mobileDisplay: boolean;
   paidPriceDollars: number;
   satsPrice: number;
 }
 
 export const ModalPaymentSummary = ({
-  item,
   mobileDisplay,
   paidPriceDollars,
   satsPrice,
@@ -25,7 +23,7 @@ export const ModalPaymentSummary = ({
   //   const description = '';
 
   //   const parts = description?.split('\n').map((part, index) => (
-  //     // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+  //     // biome-ignore lint/suspicious/noArrayIndexKey: explanation
   //     <React.Fragment key={index}>
   //       {index > 0 && <br />}
   //       {part}

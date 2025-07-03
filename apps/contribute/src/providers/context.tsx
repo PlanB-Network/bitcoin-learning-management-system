@@ -1,9 +1,7 @@
+import type { SessionData, UserDetails } from '@blms/types';
+import { useQuery } from '@tanstack/react-query';
 import type { PropsWithChildren } from 'react';
 import { createContext, useCallback, useEffect, useState } from 'react';
-
-import type { SessionData, UserDetails } from '@blms/types';
-
-import { useQuery } from '@tanstack/react-query';
 import { useTRPC } from '#src/utils/trpc.js';
 
 interface AppContext {
@@ -18,14 +16,14 @@ interface AppContext {
 }
 
 export const AppContext = createContext<AppContext>({
-  // User
-  user: undefined,
-  setUser: () => {},
   refetchUserDetails: async () => {},
 
   // Session
   session: undefined,
   setSession: () => {},
+  setUser: () => {},
+  // User
+  user: undefined,
 });
 
 export const AppContextProvider = ({ children }: PropsWithChildren) => {
@@ -43,8 +41,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const userQuery = useQuery({
     ...trpc.user.getDetails.queryOptions(),
     enabled: isUserQueryEnabled,
-    refetchOnWindowFocus: false,
-    refetchInterval: 5 * 60 * 1000, // 5 minutes
+    refetchInterval: 5 * 60 * 1000,
+    refetchOnWindowFocus: false, // 5 minutes
     retry: 1,
   });
 
@@ -70,11 +68,11 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   }, [isUserQueryEnabled, userQuery.isSuccess, userQuery.data]);
 
   const appContext: AppContext = {
-    user,
-    setUser,
     refetchUserDetails,
     session,
     setSession,
+    setUser,
+    user,
   };
 
   return (

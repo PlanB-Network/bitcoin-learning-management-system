@@ -20,10 +20,10 @@ export const formatProfessor = (
     lastSync: new Date(professor.lastSync),
     lastUpdated: new Date(professor.lastUpdated),
     links: {
-      website: professor.websiteUrl,
-      twitter: professor.twitterUrl,
       github: professor.githubUrl,
       nostr: professor.nostr,
+      twitter: professor.twitterUrl,
+      website: professor.websiteUrl,
     },
     tips: {
       lightningAddress: professor.lightningAddress,

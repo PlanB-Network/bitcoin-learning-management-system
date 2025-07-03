@@ -1,6 +1,5 @@
-import type { PartialExamQuestion } from '@blms/types';
-
 import { ExamType } from '@blms/constants';
+import type { PartialExamQuestion } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
 import { getExamInfo } from '../queries/get-exam-info.js';
 import { getPartialExamQuestionsQuery } from '../queries/get-exam-questions.js';
@@ -47,8 +46,8 @@ export const createStartExamAttempt = ({ postgres }: Dependencies) => {
     if (options.examType === ExamType.Final) {
       await postgres.exec(
         insertCourseExamQuestionsQuery({
-          examId,
           courseId: options.courseId,
+          examId,
           language: options.language,
         }),
       );
@@ -56,9 +55,9 @@ export const createStartExamAttempt = ({ postgres }: Dependencies) => {
       if (options.chapterId) {
         await postgres.exec(
           insertSingleTrialExamQuestionsQuery({
-            examId,
-            courseId: options.courseId,
             chapterId: options.chapterId,
+            courseId: options.courseId,
+            examId,
             language: options.language,
           }),
         );

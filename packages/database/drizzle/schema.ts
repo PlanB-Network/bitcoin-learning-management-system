@@ -1,16 +1,4 @@
 import {
-  type PgEnum,
-  customType,
-  foreignKey,
-  index,
-  jsonb,
-  pgEnum,
-  pgSchema,
-  primaryKey,
-  unique,
-} from 'drizzle-orm/pg-core';
-
-import {
   BetType,
   CareerCompanySize,
   CareerLanguageLevel,
@@ -20,6 +8,7 @@ import {
   CoursePaymentFormat,
   CoursePaymentMethod,
   EventType,
+  ExamType,
   GeneralPaymentItem,
   JobCategory,
   JobName,
@@ -31,7 +20,17 @@ import {
   UserRole,
   VideoProvider,
 } from '@blms/constants';
-import { ExamType } from '@blms/constants';
+import {
+  customType,
+  foreignKey,
+  index,
+  jsonb,
+  type PgEnum,
+  pgEnum,
+  pgSchema,
+  primaryKey,
+  unique,
+} from 'drizzle-orm/pg-core';
 
 type StringEnum = Record<string, string>;
 
@@ -62,29 +61,37 @@ export const userPermissionsEnum = pgNativeEnum(
 );
 
 export const usersAccounts = users.table('accounts', (t) => ({
-  uid: t.uuid().defaultRandom().primaryKey().notNull(),
-  username: t.varchar({ length: 255 }).unique().notNull(),
-  displayName: t.varchar({ length: 255 }),
   certificateName: t.varchar({ length: 255 }),
-  picture: t.uuid(),
-  email: t.varchar({ length: 255 }).unique(),
-  role: userRoleEnum().default(UserRole.Student).notNull(),
-  permissions: userPermissionsEnum().array().default([]),
-  lastEmailChangeRequest: t.timestamp({ withTimezone: true }),
-  currentEmailChecked: t.boolean().default(false).notNull(),
-  passwordHash: t.varchar({ length: 255 }),
   contributorId: t.varchar({ length: 20 }).unique().notNull(),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  currentEmailChecked: t.boolean().default(false).notNull(),
+  displayName: t.varchar({ length: 255 }),
+  email: t.varchar({ length: 255 }).unique(),
+  lastEmailChangeRequest: t.timestamp({ withTimezone: true }),
+  passwordHash: t.varchar({ length: 255 }),
+  permissions: userPermissionsEnum().array().default([]),
+  picture: t.uuid(),
   professorId: t
     .uuid()
     .unique()
     .references(() => contentProfessors.id, {
       onUpdate: 'cascade',
     }),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  role: userRoleEnum().default(UserRole.Student).notNull(),
+  uid: t.uuid().defaultRandom().primaryKey().notNull(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  username: t.varchar({ length: 255 }).unique().notNull(),
 }));
 
 export const usersAccountSettings = users.table('account_settings', (t) => ({
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  emailNotifyCourses: t.boolean().default(true).notNull(),
+  emailNotifyGeneral: t.boolean().default(true).notNull(),
+  platformNotifyCourses: t.boolean().default(true).notNull(),
+
+  platformNotifyEvents: t.boolean().default(true).notNull(),
+  platformNotifyGeneral: t.boolean().default(true).notNull(),
   uid: t
     .uuid()
     .primaryKey()
@@ -94,28 +101,19 @@ export const usersAccountSettings = users.table('account_settings', (t) => ({
       onUpdate: 'cascade',
     }),
   unsubscribeId: t.uuid().defaultRandom().notNull().unique(),
-
-  platformNotifyEvents: t.boolean().default(true).notNull(),
-  platformNotifyCourses: t.boolean().default(true).notNull(),
-  platformNotifyGeneral: t.boolean().default(true).notNull(),
-
-  emailNotifyCourses: t.boolean().default(true).notNull(),
-  emailNotifyGeneral: t.boolean().default(true).notNull(),
-
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
 // SESSIONS
 
 export const usersSessions = users.table('sessions', (t) => ({
+  cookie: jsonb().notNull(),
+  expires: t.timestamp({ withTimezone: true }).notNull(),
   sid: t.varchar({ length: 255 }).primaryKey().notNull(),
   uid: t
     .uuid()
     .notNull()
     .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-  expires: t.timestamp({ withTimezone: true }).notNull(),
-  cookie: jsonb().notNull(),
 }));
 
 // CAREER
@@ -142,6 +140,42 @@ export const jobNameEnum = pgNativeEnum('job_name', JobName);
 export const jobCategoryEnum = pgNativeEnum('job_category', JobCategory);
 
 export const usersCareerProfiles = users.table('career_profiles', (t) => ({
+  allowReceivingEmails: t.boolean().default(false).notNull(),
+
+  // Agreement
+  areTermsAccepted: t.boolean().default(false).notNull(),
+  availabilityStart: t.text(),
+  bitcoinCommunityText: t.text(),
+  bitcoinProjectText: t.text(),
+  country: t.text(),
+
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  // CV/Resume and Motivation Letter
+  cvUrl: t.text(),
+  editedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  // Contact
+  email: t.text(),
+  expectedSalary: t.text(),
+
+  // Primary infos
+  firstName: t.text(),
+  github: t.text(),
+  id: t.uuid().primaryKey().notNull(),
+
+  // Job preferences
+  isAvailableFullTime: t.boolean().default(true).notNull(),
+
+  // Bitcoin related experiences
+  isBitcoinCommunityParticipant: t.boolean().default(false).notNull(),
+  isBitcoinProjectParticipant: t.boolean().default(false).notNull(),
+  lastName: t.text(),
+  linkedin: t.text(),
+  motivationLetter: t.text(),
+  otherContact: t.text(),
+  remoteWorkPreference: careerRemoteEnum().default(CareerRemote.Yes).notNull(),
+  telegram: t.text(),
   uid: t
     .uuid()
     .notNull()
@@ -150,42 +184,6 @@ export const usersCareerProfiles = users.table('career_profiles', (t) => ({
       onUpdate: 'cascade',
     })
     .unique(),
-  id: t.uuid().primaryKey().notNull(),
-
-  // Primary infos
-  firstName: t.text(),
-  lastName: t.text(),
-  country: t.text(),
-
-  // Contact
-  email: t.text(),
-  linkedin: t.text(),
-  github: t.text(),
-  telegram: t.text(),
-  otherContact: t.text(),
-
-  // Bitcoin related experiences
-  isBitcoinCommunityParticipant: t.boolean().default(false).notNull(),
-  bitcoinCommunityText: t.text(),
-  isBitcoinProjectParticipant: t.boolean().default(false).notNull(),
-  bitcoinProjectText: t.text(),
-
-  // Job preferences
-  isAvailableFullTime: t.boolean().default(true).notNull(),
-  remoteWorkPreference: careerRemoteEnum().default(CareerRemote.Yes).notNull(),
-  expectedSalary: t.text(),
-  availabilityStart: t.text(),
-
-  // CV/Resume and Motivation Letter
-  cvUrl: t.text(),
-  motivationLetter: t.text(),
-
-  // Agreement
-  areTermsAccepted: t.boolean().default(false).notNull(),
-  allowReceivingEmails: t.boolean().default(false).notNull(),
-
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  editedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
 export const usersCareerLanguages = users.table(
@@ -224,6 +222,7 @@ export const usersCareerRoles = users.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    level: careerRoleLevelEnum().notNull(),
     roleId: t
       .uuid()
       .notNull()
@@ -231,7 +230,6 @@ export const usersCareerRoles = users.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    level: careerRoleLevelEnum().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -266,20 +264,22 @@ export const usersLanguages = users.table('languages', (t) => ({
 }));
 
 export const usersJobTitles = users.table('job_titles', (t) => ({
+  category: jobCategoryEnum().notNull(),
   id: t.uuid().primaryKey().notNull(),
   name: jobNameEnum().notNull(),
-  category: jobCategoryEnum().notNull(),
 }));
 
 // BLOGS
 
 export const contentBlogs = content.table('blogs', (t) => ({
-  id: t.uuid().primaryKey(),
-  path: t.varchar({ length: 255 }).notNull(),
+  author: t.varchar({ length: 255 }),
 
   category: t.varchar({ length: 255 }).notNull(),
-
-  author: t.varchar({ length: 255 }),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  date: t.timestamp({ withTimezone: true }).notNull(),
+  id: t.uuid().primaryKey(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
   lastUpdated: t
     .timestamp({
@@ -287,10 +287,7 @@ export const contentBlogs = content.table('blogs', (t) => ({
     })
     .defaultNow()
     .notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  date: t.timestamp({ withTimezone: true }).notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
 }));
 
 export const contentBlogsLocalized = content.table(
@@ -300,10 +297,10 @@ export const contentBlogsLocalized = content.table(
       .uuid()
       .notNull()
       .references(() => contentBlogs.id),
-    language: t.varchar({ length: 10 }).notNull(),
-    title: t.text().notNull(),
     description: t.text(),
+    language: t.varchar({ length: 10 }).notNull(),
     rawContent: t.text().notNull(),
+    title: t.text().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -334,27 +331,27 @@ export const contentBlogTags = content.table(
 // LUD4 PUBLIC KEYS (LNURL)
 
 export const usersLud4PublicKeys = users.table('lud4_public_keys', (t) => ({
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   id: t.uuid().defaultRandom().primaryKey().notNull(),
+  publicKey: t.text().unique().notNull(),
   uid: t
     .uuid()
     .notNull()
     .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-  publicKey: t.text().unique().notNull(),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
 // API KEYS
 
 export const usersApiKeys = users.table('api_keys', (t) => ({
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  expiresAt: t.timestamp({ withTimezone: true }),
   id: t.uuid().defaultRandom().primaryKey().notNull(),
+  revokedAt: t.timestamp({ withTimezone: true }),
   uid: t
     .uuid()
     .notNull()
     .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-  revokedAt: t.timestamp({ withTimezone: true }),
-  expiresAt: t.timestamp({ withTimezone: true }),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
@@ -363,13 +360,11 @@ export const usersApiKeys = users.table('api_keys', (t) => ({
 export const contentBCertificateExam = content.table(
   'b_certificate_exam',
   (t) => ({
-    id: t.uuid().primaryKey().notNull(),
-    path: t.varchar({ length: 255 }).notNull(),
-
     date: t.timestamp().notNull(),
-    location: t.text().notNull(),
-    minScore: t.integer().notNull(),
     duration: t.integer().notNull(),
+    id: t.uuid().primaryKey().notNull(),
+    lastCommit: t.varchar({ length: 40 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
     lastUpdated: t
       .timestamp({
@@ -377,18 +372,15 @@ export const contentBCertificateExam = content.table(
       })
       .defaultNow()
       .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    location: t.text().notNull(),
+    minScore: t.integer().notNull(),
+    path: t.varchar({ length: 255 }).notNull(),
   }),
 );
 
 export const usersBCertificateResults = users.table(
   'b_certificate_results',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     bCertificateExam: t
       .uuid()
       .notNull()
@@ -398,7 +390,8 @@ export const usersBCertificateResults = users.table(
       }),
 
     category: t.varchar().notNull(),
-    score: t.integer().notNull(),
+    lastCommit: t.varchar({ length: 40 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
     lastUpdated: t
       .timestamp({
@@ -406,8 +399,11 @@ export const usersBCertificateResults = users.table(
       })
       .defaultNow()
       .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    score: t.integer().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -419,10 +415,6 @@ export const usersBCertificateResults = users.table(
 export const usersBCertificateTimestamps = users.table(
   'b_certificate_timestamps',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     bCertificateExam: t
       .uuid()
       .notNull()
@@ -431,13 +423,17 @@ export const usersBCertificateTimestamps = users.table(
         onUpdate: 'cascade',
       }),
 
-    pdfKey: t.varchar({ length: 255 }),
+    createdAt: t.timestamp().defaultNow().notNull(),
     imgKey: t.varchar({ length: 255 }),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+    pdfKey: t.varchar({ length: 255 }),
     txtKey: t.varchar({ length: 255 }),
     txtOtsKey: t.varchar({ length: 255 }),
-
-    createdAt: t.timestamp().defaultNow().notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -449,17 +445,17 @@ export const usersBCertificateTimestamps = users.table(
 // RESOURCES
 
 export const contentResources = content.table('resources', (t) => ({
-  id: t.uuid().notNull().primaryKey(),
   category: t.varchar({ length: 255 }).notNull(),
-  path: t.varchar({ length: 255 }).notNull(),
+  id: t.uuid().notNull().primaryKey(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   lastUpdated: t
     .timestamp({
       withTimezone: true,
     })
     .defaultNow()
     .notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  path: t.varchar({ length: 255 }).notNull(),
 }));
 
 export const contentTags = content.table('tags', (t) => ({
@@ -494,6 +490,11 @@ export const contentResourceTags = content.table(
 export const betTypeEnum = pgNativeEnum('bet_type', BetType);
 
 export const contentBet = content.table('bet', (t) => ({
+  downloadUrl: t.text().notNull(),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -502,12 +503,7 @@ export const contentBet = content.table('bet', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  projectId: t
-    .uuid()
-    .references(() => contentProjects.id, { onDelete: 'set null' }),
   type: betTypeEnum().notNull(),
-  downloadUrl: t.text().notNull(),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
 }));
 
 export const contentBetViewUrl = content.table(
@@ -540,11 +536,11 @@ export const contentBetLocalized = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    description: t.text().notNull(),
     language: t.varchar({ length: 10 }).notNull(),
 
     // Per translation
     name: t.text().notNull(),
-    description: t.text().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -556,6 +552,9 @@ export const contentBetLocalized = content.table(
 // BOOKS
 
 export const contentBooks = content.table('books', (t) => ({
+  author: t.text().notNull(),
+  level: t.varchar({ length: 255 }),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -564,10 +563,7 @@ export const contentBooks = content.table('books', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  level: t.varchar({ length: 255 }),
-  author: t.text().notNull(),
   websiteUrl: t.text(),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
 }));
 
 export const contentBooksLocalized = content.table(
@@ -580,22 +576,22 @@ export const contentBooksLocalized = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    cover: t.text(),
+    description: t.text(),
+    downloadUrl: t.text(),
     language: t.varchar({ length: 10 }).notNull(),
     original: t.boolean().notNull(),
+    publicationYear: t.integer(),
+    publisher: t.varchar({ length: 255 }),
+
+    // Links
+    shopUrl: t.text(),
+    summaryContributorId: t.varchar({ length: 20 }),
+    summaryText: t.text(),
 
     // Per translation
     title: t.text().notNull(),
     translator: t.text(),
-    description: t.text(),
-    publisher: t.varchar({ length: 255 }),
-    publicationYear: t.integer(),
-    cover: t.text(),
-    summaryText: t.text(),
-    summaryContributorId: t.varchar({ length: 20 }),
-
-    // Links
-    shopUrl: t.text(),
-    downloadUrl: t.text(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -607,7 +603,16 @@ export const contentBooksLocalized = content.table(
 // PROJECTS
 
 export const contentProjects = content.table('projects', (t) => ({
+  addressLine1: t.text('address_line_1'),
+  addressLine2: t.text('address_line_2'),
+  addressLine3: t.text('address_line_3'),
+  category: t.varchar({ length: 255 }).notNull(),
+  githubUrl: t.text(),
   id: t.uuid().primaryKey().unique(),
+  languages: t.varchar({ length: 255 }).array(),
+  name: t.text().notNull(),
+  nostr: t.text(),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
   resourceId: t
     .uuid()
     .notNull()
@@ -615,32 +620,22 @@ export const contentProjects = content.table('projects', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  name: t.text().notNull(),
-  category: t.varchar({ length: 255 }).notNull(),
-  languages: t.varchar({ length: 255 }).array(),
-  addressLine1: t.text('address_line_1'),
-  addressLine2: t.text('address_line_2'),
-  addressLine3: t.text('address_line_3'),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  twitterUrl: t.text(),
 
   // Links
   websiteUrl: t.text(),
-  twitterUrl: t.text(),
-  githubUrl: t.text(),
-  nostr: t.text(),
 }));
 
 export const contentProjectsLocalized = content.table(
   'projects_localized',
   (t) => ({
+    // Per translation
+    description: t.text(),
     id: t
       .uuid()
       .references(() => contentProjects.id, { onDelete: 'cascade' })
       .notNull(),
     language: t.varchar({ length: 10 }).notNull(),
-
-    // Per translation
-    description: t.text(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -655,16 +650,24 @@ export const contentProjectsLocalized = content.table(
 export const contentProjectLocation = content.table(
   'projects_locations',
   (t) => ({
-    placeId: t.integer().notNull(), // OSM place_id
-    name: t.text().primaryKey(), // address_line_1 in the projects table
-    lat: t.doublePrecision().notNull(),
-    lng: t.doublePrecision().notNull(),
+    lat: t.doublePrecision().notNull(), // OSM place_id
+    lng: t.doublePrecision().notNull(), // address_line_1 in the projects table
+    name: t.text().primaryKey(),
+    placeId: t.integer().notNull(),
   }),
 );
 
 // CONFERENCES
 
 export const contentConferences = content.table('conferences', (t) => ({
+  description: t.text(),
+  languages: t.varchar({ length: 255 }).array(),
+  location: t.text().notNull(),
+  name: t.text().notNull(),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -673,25 +676,16 @@ export const contentConferences = content.table('conferences', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  projectId: t
-    .uuid()
-    .references(() => contentProjects.id, { onDelete: 'set null' }),
-  name: t.text().notNull(),
-  description: t.text(),
-  year: t.text().notNull(),
-  languages: t.varchar({ length: 255 }).array(),
-  location: t.text().notNull(),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  twitterUrl: t.text(),
 
   // Links
   websiteUrl: t.text(),
-  twitterUrl: t.text(),
+  year: t.text().notNull(),
 }));
 
 export const contentConferencesStages = content.table(
   'conferences_stages',
   (t) => ({
-    stageId: t.varchar().primaryKey().notNull(),
     conferenceId: t
       .uuid()
       .notNull()
@@ -700,21 +694,22 @@ export const contentConferencesStages = content.table(
         onUpdate: 'cascade',
       }),
     name: t.text().notNull(),
+    stageId: t.varchar().primaryKey().notNull(),
   }),
 );
 
 export const contentConferenceStageVideos = content.table(
   'conferences_stages_videos',
   (t) => ({
-    videoId: t.varchar().primaryKey().notNull(),
+    name: t.text().notNull(),
+    rawContent: t.text().notNull(),
     stageId: t
       .varchar()
       .notNull()
       .references(() => contentConferencesStages.stageId, {
         onDelete: 'cascade',
       }),
-    name: t.text().notNull(),
-    rawContent: t.text().notNull(),
+    videoId: t.varchar().primaryKey().notNull(),
   }),
 );
 
@@ -724,9 +719,8 @@ export const contentLegals = content.table(
   'legals',
   (t) => ({
     id: t.integer().primaryKey().generatedAlwaysAsIdentity().notNull(),
-    path: t.varchar({ length: 255 }).unique().notNull(),
-
-    name: t.varchar({ length: 255 }).notNull(),
+    lastCommit: t.varchar({ length: 40 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
     lastUpdated: t
       .timestamp({
@@ -734,8 +728,9 @@ export const contentLegals = content.table(
       })
       .defaultNow()
       .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+    name: t.varchar({ length: 255 }).notNull(),
+    path: t.varchar({ length: 255 }).unique().notNull(),
   }),
   (table) => ({
     unqName: unique().on(table.name),
@@ -750,8 +745,8 @@ export const contentLegalsLocalized = content.table(
       .notNull()
       .references(() => contentLegals.id, { onDelete: 'cascade' }),
     language: t.varchar({ length: 10 }).notNull(),
-    title: t.text().notNull(),
     rawContent: t.text().notNull(),
+    title: t.text().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -763,6 +758,16 @@ export const contentLegalsLocalized = content.table(
 // MOVIES
 
 export const contentMovies = content.table('movies', (t) => ({
+  author: t.text().notNull(),
+  description: t.text(),
+  duration: t.integer(),
+  id: t.uuid().unique().notNull(),
+
+  language: t.varchar({ length: 10 }).notNull(),
+
+  // Links
+  platform: t.text().notNull(),
+  publicationYear: t.integer(),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -771,25 +776,26 @@ export const contentMovies = content.table('movies', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  id: t.uuid().unique().notNull(),
-
-  language: t.varchar({ length: 10 }).notNull(),
 
   title: t.text().notNull(),
-  description: t.text(),
-  duration: t.integer(),
-  publicationYear: t.integer(),
-
-  author: t.text().notNull(),
-
-  // Links
-  platform: t.text().notNull(),
   trailer: t.text().notNull(),
 }));
 
 // NEWSLETTER
 
 export const contentNewsletters = content.table('newsletters', (t) => ({
+  author: t.text().notNull(),
+  contributors: t.text().array(),
+  description: t.text(),
+  id: t.uuid().unique().notNull(),
+  language: t.varchar({ length: 10 }).notNull(),
+
+  level: t.varchar({ length: 255 }),
+
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
+  publication_date: t.text(),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -798,26 +804,21 @@ export const contentNewsletters = content.table('newsletters', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  id: t.uuid().unique().notNull(),
-
-  projectId: t
-    .uuid()
-    .references(() => contentProjects.id, { onDelete: 'set null' }),
-
-  level: t.varchar({ length: 255 }),
-  author: t.text().notNull(),
-  websiteUrl: t.text(),
-  publication_date: t.text(),
-  title: t.text().notNull(),
   tags: t.text().array(),
-  contributors: t.text().array(),
-  language: t.varchar({ length: 10 }).notNull(),
-  description: t.text(),
+  title: t.text().notNull(),
+  websiteUrl: t.text(),
 }));
 
 // PODCASTS
 
 export const contentPodcasts = content.table('podcasts', (t) => ({
+  description: t.text(),
+  host: t.text().notNull(),
+  language: t.varchar({ length: 10 }).notNull(),
+
+  name: t.text().notNull(),
+  nostr: t.text(),
+  podcastUrl: t.text(),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -826,22 +827,19 @@ export const contentPodcasts = content.table('podcasts', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  language: t.varchar({ length: 10 }).notNull(),
-
-  name: t.text().notNull(),
-  host: t.text().notNull(),
-  description: t.text(),
+  twitterUrl: t.text(),
 
   // Links
   websiteUrl: t.text(),
-  twitterUrl: t.text(),
-  podcastUrl: t.text(),
-  nostr: t.text(),
 }));
 
 // GLOSSARY WORDS
 
 export const contentGlossaryWords = content.table('glossary_words', (t) => ({
+  fileName: t.text().notNull(),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  originalWord: t.text().notNull(),
+  relatedWords: t.varchar({ length: 255 }).array(),
   resourceId: t
     .uuid()
     .primaryKey()
@@ -850,15 +848,12 @@ export const contentGlossaryWords = content.table('glossary_words', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  originalWord: t.text().notNull(),
-  fileName: t.text().notNull(),
-  relatedWords: t.varchar({ length: 255 }).array(),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
 }));
 
 export const contentGlossaryWordsLocalized = content.table(
   'glossary_words_localized',
   (t) => ({
+    definition: t.text().notNull(),
     glossaryWordId: t
       .uuid()
       .notNull()
@@ -870,7 +865,6 @@ export const contentGlossaryWordsLocalized = content.table(
 
     // Per translation
     term: t.text().notNull(),
-    definition: t.text().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -884,6 +878,18 @@ export const contentGlossaryWordsLocalized = content.table(
 export const contentYoutubeChannels = content.table(
   'youtube_channels',
   (t) => ({
+    // Links
+    channel: t.text().notNull(),
+    description: t.text(),
+    id: t.uuid().unique().notNull(),
+
+    language: t.varchar({ length: 10 }).notNull(),
+
+    name: t.text().notNull(),
+
+    projectId: t
+      .uuid()
+      .references(() => contentProjects.id, { onDelete: 'set null' }),
     resourceId: t
       .uuid()
       .primaryKey()
@@ -892,19 +898,6 @@ export const contentYoutubeChannels = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    id: t.uuid().unique().notNull(),
-
-    projectId: t
-      .uuid()
-      .references(() => contentProjects.id, { onDelete: 'set null' }),
-
-    language: t.varchar({ length: 10 }).notNull(),
-
-    name: t.text().notNull(),
-    description: t.text(),
-
-    // Links
-    channel: t.text().notNull(),
     trailer: t.text().notNull(),
   }),
 );
@@ -918,54 +911,54 @@ export const teachingFormatEnum = pgNativeEnum(
 );
 
 export const contentCourses = content.table('courses', (t) => ({
+  assignmentWeight: t.integer(),
+  availableSeats: t.integer().default(0),
+  contact: t.varchar({ length: 255 }),
+  customTcDisclaimer: t.text(),
+  endDate: t.timestamp({ withTimezone: true }),
+  format: courseFormatEnum().default(CourseFormat.Online).notNull(),
+  hasLogo: t.boolean().notNull().default(false),
+  hours: t.doublePrecision().notNull(),
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
   index: t.varchar({ length: 20 }).unique().notNull(),
+  inpersonPriceDollars: t.integer(),
+
+  isArchived: t.boolean().default(false).notNull(),
+
+  isAssignmentGradingPublished: t.boolean().notNull().default(false),
+
+  isGdprCompliance: t.boolean().notNull().default(false),
+
+  isPlanbSchool: t.boolean().default(false).notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  level: t.varchar({ length: 255 }).notNull(),
+  numberOfRating: t.integer().default(0).notNull(),
+  onlinePriceDollars: t.integer(),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  paidDescription: t.text(),
+  paidVideoLink: t.text(),
+  passingGradeThreshold: t.integer(),
+  paymentExpirationDate: t.timestamp(),
+  presentationMarkdown: t.varchar(),
 
   projectId: t
     .uuid()
     .references(() => contentProjects.id, { onDelete: 'set null' }),
-
-  isArchived: t.boolean().default(false).notNull(),
-
-  level: t.varchar({ length: 255 }).notNull(),
-  hours: t.doublePrecision().notNull(),
-  topic: t.text().notNull(),
-  subtopic: t.text().notNull(),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  publishedAt: t.timestamp(),
+  remainingSeats: t.integer(),
 
   requiresPayment: t.boolean().default(false).notNull(),
-  paymentExpirationDate: t.timestamp(),
-  publishedAt: t.timestamp(),
-  format: courseFormatEnum().default(CourseFormat.Online).notNull(),
+  startDate: t.timestamp({ withTimezone: true }),
+  subtopic: t.text().notNull(),
+  sumOfAllRating: t.integer().default(0).notNull(),
   teachingFormat: teachingFormatEnum()
     .default(TeachingFormat.SelfPaced)
     .notNull(),
-  onlinePriceDollars: t.integer(),
-  inpersonPriceDollars: t.integer(),
-  paidDescription: t.text(),
-  paidVideoLink: t.text(),
-  startDate: t.timestamp({ withTimezone: true }),
-  endDate: t.timestamp({ withTimezone: true }),
-  contact: t.varchar({ length: 255 }),
-  availableSeats: t.integer().default(0),
-  remainingSeats: t.integer(),
-
-  isPlanbSchool: t.boolean().default(false).notNull(),
-  presentationMarkdown: t.varchar(),
-  hasLogo: t.boolean().notNull().default(false),
-
-  isGdprCompliance: t.boolean().notNull().default(false),
-  customTcDisclaimer: t.text(),
-
-  isAssignmentGradingPublished: t.boolean().notNull().default(false),
-  passingGradeThreshold: t.integer(),
-  assignmentWeight: t.integer(),
-
-  lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  numberOfRating: t.integer().default(0).notNull(),
-  sumOfAllRating: t.integer().default(0).notNull(),
+  topic: t.text().notNull(),
 }));
 
 export const contentCoursesLocalized = content.table(
@@ -978,11 +971,11 @@ export const contentCoursesLocalized = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    goal: t.text().notNull(),
     language: t.varchar({ length: 10 }).notNull(),
 
     // Per translation
     name: t.text().notNull(),
-    goal: t.text().notNull(),
     objectives: t.text().array().notNull(),
     rawDescription: t.text().notNull(),
   }),
@@ -1003,9 +996,9 @@ export const contentCourseParts = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    partIndex: t.integer().notNull(),
-    partId: t.uuid().unique().notNull(),
     lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    partId: t.uuid().unique().notNull(),
+    partIndex: t.integer().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1024,23 +1017,15 @@ export const contentCoursePartsLocalized = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    language: t.varchar({ length: 10 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     partId: t
       .uuid()
       .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    language: t.varchar({ length: 10 }).notNull(),
     title: t.text().notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
   (table) => ({
-    pk: primaryKey({
-      columns: [table.courseId, table.partId, table.language],
-    }),
-    fkCoursePartsLocalizedToCourseParts: foreignKey({
-      columns: [table.courseId, table.partId],
-      foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
-      name: 'course_parts_localized_to_course_parts_fk',
-    }).onDelete('cascade'),
     fkCoursePartsLocalizedToCourseLocalized: foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
@@ -1049,12 +1034,22 @@ export const contentCoursePartsLocalized = content.table(
       ],
       name: 'course_parts_localized_to_course_localized_fk',
     }).onDelete('cascade'),
+    fkCoursePartsLocalizedToCourseParts: foreignKey({
+      columns: [table.courseId, table.partId],
+      foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
+      name: 'course_parts_localized_to_course_parts_fk',
+    }).onDelete('cascade'),
+    pk: primaryKey({
+      columns: [table.courseId, table.partId, table.language],
+    }),
   }),
 );
 
 export const contentCourseChapters = content.table(
   'course_chapters',
   (t) => ({
+    chapterId: t.uuid().unique().notNull(),
+    chapterIndex: t.integer().notNull(),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1062,29 +1057,38 @@ export const contentCourseChapters = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    chapterIndex: t.integer().notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     partId: t
       .uuid()
       .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
-    chapterId: t.uuid().unique().notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
   (table) => ({
-    pk: primaryKey({
-      columns: [table.chapterId],
-    }),
     fkCourseChaptersToCourseParts: foreignKey({
       columns: [table.courseId, table.partId],
       foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
       name: 'course_chapters_to_course_parts_fk',
     }).onDelete('cascade'),
+    pk: primaryKey({
+      columns: [table.chapterId],
+    }),
   }),
 );
 
 export const contentCourseChaptersLocalized = content.table(
   'course_chapters_localized',
   (t) => ({
+    addressLine1: t.text('address_line_1'),
+    addressLine2: t.text('address_line_2'),
+    addressLine3: t.text('address_line_3'),
+    availableSeats: t.integer(),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
+    chatUrl: t.text(),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1092,44 +1096,30 @@ export const contentCourseChaptersLocalized = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    chapterId: t
-      .uuid()
-      .notNull()
-      .references(() => contentCourseChapters.chapterId, {
-        onDelete: 'cascade',
-      }),
-    language: t.varchar({ length: 10 }).notNull(),
-    releasePlace: t.varchar({ length: 50 }),
-    isOnline: t.boolean().default(false).notNull(),
-    isInPerson: t.boolean().default(false).notNull(),
-    isCourseReview: t.boolean().default(false).notNull(),
-    isCourseExam: t.boolean().default(false).notNull(),
-    isCourseConclusion: t.boolean().default(false).notNull(),
-    isSingleTrialExam: t.boolean().default(false).notNull(),
-    rateWeight: t.integer(),
-    isGdprCompliance: t.boolean().notNull().default(false),
     customTcDisclaimer: t.text(),
-    startDate: t.timestamp(),
     endDate: t.timestamp(),
-    releaseDate: t.timestamp(),
-    timezone: t.text(),
-    addressLine1: t.text('address_line_1'),
-    addressLine2: t.text('address_line_2'),
-    addressLine3: t.text('address_line_3'),
-    liveUrl: t.text(),
-    chatUrl: t.text(),
-    availableSeats: t.integer(),
-    remainingSeats: t.integer(),
-    liveLanguage: t.text(),
-    title: t.text().notNull(),
-    sections: t.text().array().notNull(),
-    rawContent: t.text().notNull(),
+    isCourseConclusion: t.boolean().default(false).notNull(),
+    isCourseExam: t.boolean().default(false).notNull(),
+    isCourseReview: t.boolean().default(false).notNull(),
+    isGdprCompliance: t.boolean().notNull().default(false),
+    isInPerson: t.boolean().default(false).notNull(),
+    isOnline: t.boolean().default(false).notNull(),
+    isSingleTrialExam: t.boolean().default(false).notNull(),
+    language: t.varchar({ length: 10 }).notNull(),
     lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    liveLanguage: t.text(),
+    liveUrl: t.text(),
+    rateWeight: t.integer(),
+    rawContent: t.text().notNull(),
+    releaseDate: t.timestamp(),
+    releasePlace: t.varchar({ length: 50 }),
+    remainingSeats: t.integer(),
+    sections: t.text().array().notNull(),
+    startDate: t.timestamp(),
+    timezone: t.text(),
+    title: t.text().notNull(),
   }),
   (table) => ({
-    pk: primaryKey({
-      columns: [table.courseId, table.chapterId, table.language],
-    }),
     fkCourseChaptersLocalizedToCourseLocalized: foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
@@ -1138,6 +1128,9 @@ export const contentCourseChaptersLocalized = content.table(
       ],
       name: 'course_chapters_localized_to_course_localized_fk',
     }).onDelete('cascade'),
+    pk: primaryKey({
+      columns: [table.courseId, table.chapterId, table.language],
+    }),
   }),
 );
 
@@ -1166,7 +1159,6 @@ export const contentCourseTags = content.table(
 export const contentCoursesAssignment = content.table(
   'course_assignment',
   (t) => ({
-    id: t.uuid().primaryKey(),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1174,11 +1166,11 @@ export const contentCoursesAssignment = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    name: t.varchar({ length: 50 }).notNull(),
     description: t.text().notNull(),
-    mentor: t.varchar({ length: 50 }).notNull(),
-    telegramUrl: t.varchar({ length: 100 }).notNull(),
     fileUrl: t.varchar({ length: 255 }).notNull(),
+    id: t.uuid().primaryKey(),
+    lastCommit: t.varchar({ length: 40 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
     lastUpdated: t
       .timestamp({
@@ -1186,8 +1178,9 @@ export const contentCoursesAssignment = content.table(
       })
       .defaultNow()
       .notNull(),
-    lastCommit: t.varchar({ length: 40 }).notNull(),
-    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    mentor: t.varchar({ length: 50 }).notNull(),
+    name: t.varchar({ length: 50 }).notNull(),
+    telegramUrl: t.varchar({ length: 100 }).notNull(),
   }),
 );
 
@@ -1205,10 +1198,8 @@ export const coursePaymentMethodEnum = pgNativeEnum(
 export const usersCoursePayment = users.table(
   'course_payment',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    amount: t.integer().notNull(),
+    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1218,20 +1209,22 @@ export const usersCoursePayment = users.table(
     format: coursePaymentFormatEnum('format')
       .default(CoursePaymentFormat.InPerson)
       .notNull(),
-    paymentStatus: t.varchar({ length: 30 }).notNull(),
-    amount: t.integer().notNull(),
-    paymentId: t.varchar({ length: 255 }).notNull(),
     invoiceUrl: t.varchar({ length: 255 }),
-    stripeInvoiceId: t.varchar({ length: 255 }),
-    stripePaymentIntent: t.varchar({ length: 255 }),
-    method: coursePaymentMethodEnum('method').notNull(),
-    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
     lastUpdated: t
       .timestamp({
         withTimezone: true,
       })
       .defaultNow()
       .notNull(),
+    method: coursePaymentMethodEnum('method').notNull(),
+    paymentId: t.varchar({ length: 255 }).notNull(),
+    paymentStatus: t.varchar({ length: 30 }).notNull(),
+    stripeInvoiceId: t.varchar({ length: 255 }),
+    stripePaymentIntent: t.varchar({ length: 255 }),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1245,17 +1238,7 @@ export const usersCoursePayment = users.table(
 export const usersCourseUserChapter = users.table(
   'course_user_chapter',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    courseId: t
-      .varchar({ length: 100 })
-      .notNull()
-      .references(() => contentCourses.id, {
-        onDelete: 'cascade',
-        onUpdate: 'cascade',
-      }),
+    booked: t.boolean().default(false),
     chapterId: t
       .uuid()
       .notNull()
@@ -1265,24 +1248,6 @@ export const usersCourseUserChapter = users.table(
     completedAt: t.timestamp({
       withTimezone: true,
     }),
-    booked: t.boolean().default(false),
-  }),
-  (table) => ({
-    pk: primaryKey({
-      columns: [table.uid, table.courseId, table.chapterId],
-    }),
-    uidIdx: index().on(table.uid),
-    courseIdIdx: index().on(table.courseId),
-  }),
-);
-
-export const usersCourseProgress = users.table(
-  'course_progress',
-  (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1290,8 +1255,39 @@ export const usersCourseProgress = users.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    startDate: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+  }),
+  (table) => ({
+    courseIdIdx: index().on(table.courseId),
+    pk: primaryKey({
+      columns: [table.uid, table.courseId, table.chapterId],
+    }),
+    uidIdx: index().on(table.uid),
+  }),
+);
+
+export const usersCourseProgress = users.table(
+  'course_progress',
+  (t) => ({
+    affectedAssignmentId: t
+      .uuid()
+      .references(() => contentCoursesAssignment.id, { onDelete: 'cascade' }),
+    appliedAssignmentIds: t.uuid().array(),
+    assignmentGrade: t.integer(),
+    assignmentSubmissionTime: t.timestamp({ withTimezone: true }),
     completedChaptersCount: t.integer().default(0).notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    isSelectedForAssignment: t.boolean().default(false),
+    isSelectedForFinalLesson: t.boolean().default(false),
     lastUpdated: t
       .timestamp({
         withTimezone: true,
@@ -1299,16 +1295,13 @@ export const usersCourseProgress = users.table(
       .defaultNow()
       .notNull(),
     progressPercentage: t.integer().default(0).notNull(),
-    isSelectedForAssignment: t.boolean().default(false),
-    appliedAssignmentIds: t.uuid().array(),
-    affectedAssignmentId: t
-      .uuid()
-      .references(() => contentCoursesAssignment.id, { onDelete: 'cascade' }),
-    assignmentSubmissionTime: t.timestamp({ withTimezone: true }),
-    assignmentGrade: t.integer(),
     ranking: t.integer(),
+    startDate: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     totalScore: t.integer(),
-    isSelectedForFinalLesson: t.boolean().default(false),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1320,10 +1313,7 @@ export const usersCourseProgress = users.table(
 export const usersCourseReview = users.table(
   'course_review',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    adminComment: t.text(),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1331,16 +1321,19 @@ export const usersCourseReview = users.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    difficulty: t.integer().default(0).notNull(),
+    faithful: t.integer().default(0).notNull(),
     general: t.integer().default(0).notNull(),
     length: t.integer().default(0).notNull(),
-    difficulty: t.integer().default(0).notNull(),
-    quality: t.integer().default(0).notNull(),
-    faithful: t.integer().default(0).notNull(),
-    recommend: t.integer().default(0).notNull(),
     publicComment: t.text(),
+    quality: t.integer().default(0).notNull(),
+    recommend: t.integer().default(0).notNull(),
     teacherComment: t.text(),
-    adminComment: t.text(),
-    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1354,38 +1347,38 @@ export const usersCourseReview = users.table(
 export const eventTypeEnum = pgNativeEnum('event_type', EventType);
 
 export const contentEvents = content.table('events', (t) => ({
-  id: t.uuid().primaryKey(),
-  projectId: t
-    .uuid()
-    .references(() => contentProjects.id, { onDelete: 'set null' }),
-  path: t.varchar({ length: 255 }).notNull(),
-  type: eventTypeEnum(),
-  name: t.text(),
-  description: t.text(),
-  startDate: t.timestamp().notNull(),
-  endDate: t.timestamp().notNull(),
-  timezone: t.text(),
-  priceDollars: t.integer(),
-  availableSeats: t.integer(),
-  remainingSeats: t.integer(),
-  bookOnline: t.boolean().default(false),
-  bookInPerson: t.boolean().default(false),
-  isGdprCompliance: t.boolean().notNull().default(false),
-  customTcDisclaimer: t.text(),
   addressLine1: t.text('address_line_1'),
   addressLine2: t.text('address_line_2'),
   addressLine3: t.text('address_line_3'),
-  professor: t.uuid(),
-  courseRelated: t.text(),
-  websiteUrl: t.text(),
-  replayUrl: t.text(),
-  liveUrl: t.text(),
-  chatUrl: t.text(),
   assetUrl: t.text(),
-  rawDescription: t.text(),
-  lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  availableSeats: t.integer(),
+  bookInPerson: t.boolean().default(false),
+  bookOnline: t.boolean().default(false),
+  chatUrl: t.text(),
+  courseRelated: t.text(),
+  customTcDisclaimer: t.text(),
+  description: t.text(),
+  endDate: t.timestamp().notNull(),
+  id: t.uuid().primaryKey(),
+  isGdprCompliance: t.boolean().notNull().default(false),
   lastCommit: t.varchar({ length: 40 }).notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  liveUrl: t.text(),
+  name: t.text(),
+  path: t.varchar({ length: 255 }).notNull(),
+  priceDollars: t.integer(),
+  professor: t.uuid(),
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
+  rawDescription: t.text(),
+  remainingSeats: t.integer(),
+  replayUrl: t.text(),
+  startDate: t.timestamp().notNull(),
+  timezone: t.text(),
+  type: eventTypeEnum(),
+  websiteUrl: t.text(),
 }));
 
 export const contentEventTags = content.table(
@@ -1432,10 +1425,7 @@ export const contentEventLanguages = content.table(
 export const usersUserEvent = users.table(
   'user_event',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    booked: t.boolean().default(false),
     eventId: t
       .uuid()
       .notNull()
@@ -1443,39 +1433,32 @@ export const usersUserEvent = users.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    booked: t.boolean().default(false),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     withPhysical: t.boolean().default(false),
   }),
   (table) => ({
+    eventIdIdx: index().on(table.eventId),
     pk: primaryKey({
       columns: [table.uid, table.eventId],
     }),
     uidIdx: index().on(table.uid),
-    eventIdIdx: index().on(table.eventId),
   }),
 );
 
 export const usersEventPayment = users.table(
   'event_payment',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    amount: t.integer().notNull(),
+    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
     eventId: t
       .uuid()
       .notNull()
       .references(() => contentEvents.id, {
         onUpdate: 'cascade',
       }),
-    withPhysical: t.boolean().default(false),
-    stripeInvoiceId: t.varchar({ length: 255 }),
-    stripePaymentIntent: t.varchar({ length: 255 }),
-    method: coursePaymentMethodEnum('method').notNull(),
-    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
-    paymentStatus: t.varchar({ length: 30 }).notNull(),
-    amount: t.integer().notNull(),
-    paymentId: t.varchar({ length: 255 }).notNull(),
     invoiceUrl: t.varchar({ length: 255 }),
     lastUpdated: t
       .timestamp({
@@ -1483,6 +1466,16 @@ export const usersEventPayment = users.table(
       })
       .defaultNow()
       .notNull(),
+    method: coursePaymentMethodEnum('method').notNull(),
+    paymentId: t.varchar({ length: 255 }).notNull(),
+    paymentStatus: t.varchar({ length: 30 }).notNull(),
+    stripeInvoiceId: t.varchar({ length: 255 }),
+    stripePaymentIntent: t.varchar({ length: 255 }),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    withPhysical: t.boolean().default(false),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1494,23 +1487,11 @@ export const usersEventPayment = users.table(
 // TUTORIALS
 
 export const contentTutorials = content.table('tutorials', (t) => ({
-  id: t.uuid().primaryKey().notNull(),
-  projectId: t
-    .uuid()
-    .references(() => contentProjects.id, { onDelete: 'set null' }),
-  professorId: t.uuid().references(() => contentProfessors.id, {
-    onUpdate: 'cascade',
-  }),
-  path: t.varchar({ length: 255 }).notNull(),
-  logoUrl: t.text().notNull().default(''),
-
-  name: t.varchar({ length: 255 }).notNull(),
   category: t.varchar({ length: 255 }).notNull(),
-  subcategory: t.varchar({ length: 255 }),
-  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
-
-  level: t.varchar({ length: 255 }).notNull(),
   creditLink: t.text(),
+  id: t.uuid().primaryKey().notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
   lastUpdated: t
     .timestamp({
@@ -1518,23 +1499,35 @@ export const contentTutorials = content.table('tutorials', (t) => ({
     })
     .defaultNow()
     .notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  level: t.varchar({ length: 255 }).notNull(),
+  logoUrl: t.text().notNull().default(''),
+
+  name: t.varchar({ length: 255 }).notNull(),
+  originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
+  path: t.varchar({ length: 255 }).notNull(),
+  professorId: t.uuid().references(() => contentProfessors.id, {
+    onUpdate: 'cascade',
+  }),
+  projectId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
+  subcategory: t.varchar({ length: 255 }),
 }));
 
 export const contentTutorialsLocalized = content.table(
   'tutorials_localized',
   (t) => ({
+    description: t.text(),
+    language: t.varchar({ length: 10 }).notNull(),
+    rawContent: t.text().notNull(),
+    title: t.text().notNull(),
     tutorialId: t
       .uuid()
       .notNull()
       .references(() => contentTutorials.id, {
         onDelete: 'cascade',
       }),
-    language: t.varchar({ length: 10 }).notNull(),
-    title: t.text().notNull(),
-    description: t.text(),
-    rawContent: t.text().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1546,16 +1539,16 @@ export const contentTutorialsLocalized = content.table(
 export const contentTutorialTags = content.table(
   'tutorial_tags',
   (t) => ({
+    tagId: t
+      .integer()
+      .notNull()
+      .references(() => contentTags.id, { onDelete: 'cascade' }),
     tutorialId: t
       .uuid()
       .notNull()
       .references(() => contentTutorials.id, {
         onDelete: 'cascade',
       }),
-    tagId: t
-      .integer()
-      .notNull()
-      .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1567,6 +1560,7 @@ export const contentTutorialTags = content.table(
 export const contentTutorialLikesDislikes = content.table(
   'tutorial_likes_dislikes',
   (t) => ({
+    liked: t.boolean().notNull(),
     tutorialId: t
       .uuid()
       .notNull()
@@ -1576,8 +1570,7 @@ export const contentTutorialLikesDislikes = content.table(
     uid: t
       .uuid()
       .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    liked: t.boolean().notNull(), // true = liked, false = disliked
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }), // true = liked, false = disliked
   }),
   (table) => ({
     pk: primaryKey({
@@ -1589,7 +1582,14 @@ export const contentTutorialLikesDislikes = content.table(
 // QUIZZES AND EXAMS
 
 export const contentQuizQuestions = content.table('quiz_questions', (t) => ({
-  id: t.uuid().primaryKey().notNull(),
+  author: t.varchar({ length: 255 }),
+
+  chapterId: t
+    .uuid()
+    .notNull()
+    .references(() => contentCourseChapters.chapterId, {
+      onDelete: 'cascade',
+    }),
 
   courseId: t
     .varchar({ length: 100 })
@@ -1599,18 +1599,13 @@ export const contentQuizQuestions = content.table('quiz_questions', (t) => ({
       onUpdate: 'cascade',
     }),
 
-  chapterId: t
-    .uuid()
-    .notNull()
-    .references(() => contentCourseChapters.chapterId, {
-      onDelete: 'cascade',
-    }),
-
   difficulty: t.varchar({ length: 255 }).notNull(),
-  author: t.varchar({ length: 255 }),
-  duration: t.integer(),
 
   disabled: t.boolean().default(false),
+  duration: t.integer(),
+  id: t.uuid().primaryKey().notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
   lastUpdated: t
     .timestamp({
@@ -1618,22 +1613,20 @@ export const contentQuizQuestions = content.table('quiz_questions', (t) => ({
     })
     .defaultNow()
     .notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
 export const contentQuizQuestionsLocalized = content.table(
   'quiz_questions_localized',
   (t) => ({
+    answer: t.text().notNull(),
+    explanation: t.text(),
+    language: t.varchar({ length: 10 }).notNull(),
+    question: t.text().notNull(),
     quizQuestionId: t
       .uuid()
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
-    language: t.varchar({ length: 10 }).notNull(),
-    question: t.text().notNull(),
-    answer: t.text().notNull(),
     wrongAnswers: t.text().array().notNull(),
-    explanation: t.text(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1645,13 +1638,13 @@ export const contentQuizQuestionsLocalized = content.table(
 export const contentQuizAnswers = content.table(
   'quiz_answers',
   (t) => ({
+    correct: t.boolean().notNull(),
+
+    order: t.integer().notNull(),
     quizQuestionId: t
       .uuid()
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
-
-    order: t.integer().notNull(),
-    correct: t.boolean().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1663,16 +1656,12 @@ export const contentQuizAnswers = content.table(
 export const contentQuizAnswersLocalized = content.table(
   'quiz_answers_localized',
   (t) => ({
-    quizQuestionId: t.uuid().notNull(),
-    order: t.integer().notNull(),
-
     language: t.varchar({ length: 10 }).notNull(),
+    order: t.integer().notNull(),
+    quizQuestionId: t.uuid().notNull(),
     text: t.text().notNull(),
   }),
   (table) => ({
-    pk: primaryKey({
-      columns: [table.quizQuestionId, table.order, table.language],
-    }),
     parent: foreignKey({
       columns: [table.quizQuestionId, table.order],
       foreignColumns: [
@@ -1681,6 +1670,9 @@ export const contentQuizAnswersLocalized = content.table(
       ],
       name: 'quiz_answers_localized_to_quiz_answers_fk',
     }).onDelete('cascade'),
+    pk: primaryKey({
+      columns: [table.quizQuestionId, table.order, table.language],
+    }),
   }),
 );
 
@@ -1704,12 +1696,11 @@ export const contentQuizQuestionTags = content.table(
 );
 
 export const usersExamQuestions = users.table('exam_questions', (t) => ({
-  id: t.uuid().defaultRandom().primaryKey().notNull(),
-
   examId: t
     .uuid()
     .notNull()
     .references(() => usersExamAttempts.id, { onDelete: 'cascade' }),
+  id: t.uuid().defaultRandom().primaryKey().notNull(),
   questionId: t
     .uuid()
     .notNull()
@@ -1717,24 +1708,21 @@ export const usersExamQuestions = users.table('exam_questions', (t) => ({
 }));
 
 export const usersExamAnswers = users.table('exam_answers', (t) => ({
+  order: t.integer(),
   questionId: t
     .uuid()
     .primaryKey()
     .notNull()
     .references(() => usersExamQuestions.id, { onDelete: 'cascade' }),
-
-  order: t.integer(),
 }));
 
 export const examTypeEnum = pgNativeEnum('exam_type', ExamType);
 
 export const usersExamAttempts = users.table('exam_attempts', (t) => ({
-  id: t.uuid().defaultRandom().primaryKey().notNull(),
-
-  uid: t
-    .uuid()
-    .notNull()
-    .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+  // chapterId mandatory for single trial exams
+  chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
+    onDelete: 'cascade',
+  }),
   courseId: t
     .varchar({ length: 100 })
     .notNull()
@@ -1742,76 +1730,78 @@ export const usersExamAttempts = users.table('exam_attempts', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  // chapterId mandatory for single trial exams
-  chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
-    onDelete: 'cascade',
-  }),
   examType: examTypeEnum().default(ExamType.Final).notNull(),
+  finalized: t.boolean().default(false).notNull(),
+  finishedAt: t.timestamp({ withTimezone: true }),
+  id: t.uuid().defaultRandom().primaryKey().notNull(),
 
   language: t.varchar({ length: 10 }).notNull(),
-  finalized: t.boolean().default(false).notNull(),
   score: t.integer().default(0),
-  succeeded: t.boolean().default(false).notNull(),
 
   startedAt: t.timestamp({ withTimezone: true }).notNull(),
-  finishedAt: t.timestamp({ withTimezone: true }),
+  succeeded: t.boolean().default(false).notNull(),
+
+  uid: t
+    .uuid()
+    .notNull()
+    .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
 }));
 
 export const userExamTimestamps = users.table('exam_timestamps', (t) => ({
-  id: t.uuid().defaultRandom().primaryKey().notNull(),
+  blockHash: t.varchar({ length: 64 }),
+  blockHeight: t.integer(),
+  blockTimestamp: t.bigint({ mode: 'bigint' }),
+
+  // Is the timestamp is confirmed
+  confirmed: t.boolean().default(false).notNull(),
+  confirmedAt: t.timestamp(), // Text to timestamp
+  courseId: t
+    .varchar({ length: 100 })
+    .references(() => contentCourses.id, { onDelete: 'cascade' }), // Signed message
+
+  createdAt: t.timestamp().defaultNow().notNull(), // OpenTimestamps proof
 
   // Reference to exam attempt (users.exam_attempts.exam_type = final)
   examAttemptId: t
     .uuid()
-    .references(() => usersExamAttempts.id, { onDelete: 'cascade' }),
+    .references(() => usersExamAttempts.id, { onDelete: 'cascade' }), // Hash of the signature (ots target)
+  hash: t.varchar({ length: 64 }).notNull(),
+  id: t.uuid().defaultRandom().primaryKey().notNull(),
+  imgKey: t.varchar({ length: 255 }),
+  ots: blob('ots').notNull(),
+
+  // If pdf/image has been generated
+  pdfKey: t.varchar({ length: 255 }),
+  sig: t.text().notNull(),
+
+  // Timestamp data
+  txt: t.text().notNull(),
 
   // Reference to course progress (users.exam_attempts.exam_type = single_trial)
   //  score is stored in users.course_progress.total_score (it aggregates multiple exam_attempts)
   //  threshold is stored in content.courses.passing_grade_threshold
   uid: t.uuid().references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-  courseId: t
-    .varchar({ length: 100 })
-    .references(() => contentCourses.id, { onDelete: 'cascade' }),
-
-  // Timestamp data
-  txt: t.text().notNull(), // Text to timestamp
-  sig: t.text().notNull(), // Signed message
-  ots: blob('ots').notNull(), // OpenTimestamps proof
-  hash: t.varchar({ length: 64 }).notNull(), // Hash of the signature (ots target)
-
-  // Is the timestamp is confirmed
-  confirmed: t.boolean().default(false).notNull(),
-  blockHash: t.varchar({ length: 64 }),
-  blockHeight: t.integer(),
-  blockTimestamp: t.bigint({ mode: 'bigint' }),
-
-  // If pdf/image has been generated
-  pdfKey: t.varchar({ length: 255 }),
-  imgKey: t.varchar({ length: 255 }),
-
-  createdAt: t.timestamp().defaultNow().notNull(),
   updatedAt: t.timestamp().defaultNow().notNull(),
-  confirmedAt: t.timestamp(),
 }));
 
 export const usersQuizAttempts = users.table(
   'quiz_attempts',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     chapterId: t
       .uuid()
       .notNull()
       .references(() => contentCourseChapters.chapterId, {
         onDelete: 'cascade',
       }),
-
-    questionsCount: t.integer().notNull(),
     correctAnswersCount: t.integer().notNull(),
 
     doneAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+    questionsCount: t.integer().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1829,25 +1819,25 @@ export const generalPaymentItemEnum = pgNativeEnum(
 export const usersGeneralPayment = users.table(
   'general_payment',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
-    item: generalPaymentItemEnum('item').notNull(),
-    paymentId: t.varchar({ length: 255 }).notNull(),
-    paymentStatus: t.varchar({ length: 30 }).notNull(),
     amount: t.integer().notNull(),
-    invoiceUrl: t.varchar({ length: 255 }),
-    stripeInvoiceId: t.varchar({ length: 255 }),
-    stripePaymentIntent: t.varchar({ length: 255 }),
-    method: coursePaymentMethodEnum('method').notNull(),
     couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
+    invoiceUrl: t.varchar({ length: 255 }),
+    item: generalPaymentItemEnum('item').notNull(),
     lastUpdated: t
       .timestamp({
         withTimezone: true,
       })
       .defaultNow()
       .notNull(),
+    method: coursePaymentMethodEnum('method').notNull(),
+    paymentId: t.varchar({ length: 255 }).notNull(),
+    paymentStatus: t.varchar({ length: 30 }).notNull(),
+    stripeInvoiceId: t.varchar({ length: 255 }),
+    stripePaymentIntent: t.varchar({ length: 255 }),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -1860,16 +1850,8 @@ export const usersGeneralPayment = users.table(
 
 export const contentLabs = content.table('labs', (t) => ({
   id: t.uuid().primaryKey().defaultRandom().notNull(),
-  path: t.varchar({ length: 255 }).unique().notNull(),
-  studyGroup: t.varchar({ length: 20 }),
-  professorId: t
-    .uuid()
-    .notNull()
-    .references(() => contentProfessors.id, {
-      onUpdate: 'cascade',
-    }),
-  studentCount: t.integer().default(0).notNull(),
-  telegramUrl: t.varchar({ length: 100 }),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
   lastUpdated: t
     .timestamp({
@@ -1877,11 +1859,20 @@ export const contentLabs = content.table('labs', (t) => ({
     })
     .defaultNow()
     .notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  path: t.varchar({ length: 255 }).unique().notNull(),
+  professorId: t
+    .uuid()
+    .notNull()
+    .references(() => contentProfessors.id, {
+      onUpdate: 'cascade',
+    }),
+  studentCount: t.integer().default(0).notNull(),
+  studyGroup: t.varchar({ length: 20 }),
+  telegramUrl: t.varchar({ length: 100 }),
 }));
 
 export const contentLabSession = content.table('labs_sessions', (t) => ({
+  endDate: t.timestamp().notNull(),
   id: t.uuid().primaryKey().defaultRandom().notNull(),
   labId: t
     .uuid()
@@ -1890,13 +1881,12 @@ export const contentLabSession = content.table('labs_sessions', (t) => ({
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-  title: t.varchar({ length: 100 }),
-  startDate: t.timestamp().notNull(),
-  endDate: t.timestamp().notNull(),
-  liveUrl: t.varchar({ length: 255 }),
-  rawContent: t.text().notNull(),
 
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  liveUrl: t.varchar({ length: 255 }),
+  rawContent: t.text().notNull(),
+  startDate: t.timestamp().notNull(),
+  title: t.varchar({ length: 100 }),
 }));
 
 // PROFESSORS
@@ -1906,25 +1896,12 @@ export const contentContributors = content.table('contributors', (t) => ({
 }));
 
 export const contentProfessors = content.table('professors', (t) => ({
-  id: t.uuid().primaryKey().notNull(),
-  path: t.varchar({ length: 255 }).notNull(),
-
-  name: t.varchar({ length: 255 }).unique().notNull(),
-  company: t.varchar({ length: 255 }),
   affiliations: t.uuid().array(),
-
-  // Links
-  websiteUrl: t.text(),
-  twitterUrl: t.text(),
+  company: t.varchar({ length: 255 }),
   githubUrl: t.text(),
-  nostr: t.text(),
-
-  // Tips
-  lightningAddress: t.text(),
-  lnurlPay: t.text(),
-  paynym: t.text(),
-  silentPayment: t.text(),
-  tipsUrl: t.text(),
+  id: t.uuid().primaryKey().notNull(),
+  lastCommit: t.varchar({ length: 40 }).notNull(),
+  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
   lastUpdated: t
     .timestamp({
@@ -1932,13 +1909,29 @@ export const contentProfessors = content.table('professors', (t) => ({
     })
     .defaultNow()
     .notNull(),
-  lastCommit: t.varchar({ length: 40 }).notNull(),
-  lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+
+  // Tips
+  lightningAddress: t.text(),
+  lnurlPay: t.text(),
+
+  name: t.varchar({ length: 255 }).unique().notNull(),
+  nostr: t.text(),
+  path: t.varchar({ length: 255 }).notNull(),
+  paynym: t.text(),
+  silentPayment: t.text(),
+  tipsUrl: t.text(),
+  twitterUrl: t.text(),
+
+  // Links
+  websiteUrl: t.text(),
 }));
 
 export const contentProfessorsLocalized = content.table(
   'professors_localized',
   (t) => ({
+    // Per translation
+    bio: t.text(),
+    language: t.varchar({ length: 10 }).notNull(),
     professorId: t
       .uuid()
       .notNull()
@@ -1946,10 +1939,6 @@ export const contentProfessorsLocalized = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
-    language: t.varchar({ length: 10 }).notNull(),
-
-    // Per translation
-    bio: t.text(),
     shortBio: t.text(),
   }),
   (table) => ({
@@ -1991,10 +1980,10 @@ export const contentCourseProfessors = content.table(
         onDelete: 'cascade',
         onUpdate: 'cascade',
       }),
+    isCoordinator: t.boolean().notNull().default(true),
     professorId: t.uuid().references(() => contentProfessors.id, {
       onUpdate: 'cascade',
     }),
-    isCoordinator: t.boolean().notNull().default(true),
   }),
   (table) => ({
     pk: primaryKey({
@@ -2006,18 +1995,18 @@ export const contentCourseProfessors = content.table(
 export const contentCourseChaptersLocalizedProfessors = content.table(
   'course_chapters_localized_professors',
   (t) => ({
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
       .references(() => contentCourses.id, {
         onDelete: 'cascade',
         onUpdate: 'cascade',
-      }),
-    chapterId: t
-      .uuid()
-      .notNull()
-      .references(() => contentCourseChapters.chapterId, {
-        onDelete: 'cascade',
       }),
     language: t.varchar({ length: 10 }).notNull(),
     professorId: t.uuid().references(() => contentProfessors.id, {
@@ -2037,11 +2026,11 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
 );
 
 export const contentVideos = content.table('videos', (t) => ({
-  id: t.uuid().primaryKey().notNull(),
   courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
-    onUpdate: 'cascade',
     onDelete: 'cascade',
+    onUpdate: 'cascade',
   }),
+  id: t.uuid().primaryKey().notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 }));
 
@@ -2054,9 +2043,9 @@ export const contentVideosLocalized = content.table(
       .uuid()
       .references(() => contentVideos.id, { onDelete: 'cascade' })
       .notNull(),
+    idFromProvider: t.varchar({ length: 40 }),
     language: t.varchar({ length: 10 }).notNull(),
     provider: videoProviderEnum().notNull(),
-    idFromProvider: t.varchar({ length: 40 }),
   }),
   (table) => ({
     pk: primaryKey({
@@ -2067,15 +2056,15 @@ export const contentVideosLocalized = content.table(
 
 export const couponCode = content.table('coupon_code', (t) => ({
   code: t.varchar({ length: 20 }).primaryKey().notNull(),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  deletedAt: t.timestamp({ withTimezone: true }),
   itemId: t.varchar({ length: 100 }).notNull(),
-  reductionPercentage: t.integer(),
-  uses: t.integer().default(0).notNull(),
   maxUses: t.integer().default(1).notNull(),
+  reductionPercentage: t.integer(),
   uid: t.uuid().references(() => usersAccounts.uid, {
     onDelete: 'cascade',
   }),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  deletedAt: t.timestamp({ withTimezone: true }), // Paranoid delete
+  uses: t.integer().default(0).notNull(), // Paranoid delete
 }));
 
 /**
@@ -2085,54 +2074,53 @@ export const couponCode = content.table('coupon_code', (t) => ({
 export const tokenTypeEnum = pgNativeEnum('token_type', TokenType);
 
 export const token = users.table('tokens', (t) => ({
+  // When the token was consumed (used)
+  consumedAt: t.timestamp(),
+  // Arbitrary data to store with the token
+  data: t.varchar({ length: 255 }),
+  expiresAt: t.timestamp().notNull(),
   id: t.uuid().primaryKey().defaultRandom(),
+  type: tokenTypeEnum().notNull(),
   uid: t
     .uuid()
     .notNull()
     .references(() => usersAccounts.uid, {
       onDelete: 'cascade',
     }),
-  type: tokenTypeEnum().notNull(),
-  // Arbitrary data to store with the token
-  data: t.varchar({ length: 255 }),
-  expiresAt: t.timestamp().notNull(),
-  // When the token was consumed (used)
-  consumedAt: t.timestamp(),
 }));
 
 /**
  * Table to store coordinates for events (bound by address_line_1).
  */
 export const contentEventLocation = content.table('event_locations', (t) => ({
-  placeId: t.integer().notNull(), // OSM place_id
-  name: t.text().primaryKey(), // address_line_1 in the events table
-  lat: t.doublePrecision().notNull(),
-  lng: t.doublePrecision().notNull(),
+  lat: t.doublePrecision().notNull(), // OSM place_id
+  lng: t.doublePrecision().notNull(), // address_line_1 in the events table
+  name: t.text().primaryKey(),
+  placeId: t.integer().notNull(),
 }));
 
 export const contentProofreading = content.table(
   'proofreading',
   (t) => ({
-    id: t.uuid().primaryKey().defaultRandom(),
-
     courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
       onDelete: 'cascade',
       onUpdate: 'cascade',
     }),
-    tutorialId: t.uuid().references(() => contentTutorials.id, {
-      onDelete: 'cascade',
-    }),
-    resourceId: t.uuid().references(() => contentResources.id, {
-      onDelete: 'cascade',
-      onUpdate: 'cascade',
-    }),
+    id: t.uuid().primaryKey().defaultRandom(),
 
     language: t.varchar({ length: 10 }).notNull(),
     lastContributionDate: t.timestamp({
       withTimezone: true,
     }),
-    urgency: t.integer(),
+    resourceId: t.uuid().references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
     reward: t.integer(),
+    tutorialId: t.uuid().references(() => contentTutorials.id, {
+      onDelete: 'cascade',
+    }),
+    urgency: t.integer(),
   }),
   // TODO add index when drizzle bug fixed: https://github.com/drizzle-team/drizzle-kit-mirror/issues/486
   // (table) => {
@@ -2151,17 +2139,17 @@ export const contentProofreading = content.table(
 export const contentProofreadingContributor = content.table(
   'proofreading_contributor',
   (t) => ({
+    contributorId: t
+      .varchar({ length: 20 })
+      .notNull()
+      .references(() => contentContributors.id, { onDelete: 'cascade' }),
+    order: t.integer().notNull(),
     proofreadingId: t
       .uuid()
       .notNull()
       .references(() => contentProofreading.id, {
         onDelete: 'cascade',
       }),
-    contributorId: t
-      .varchar({ length: 20 })
-      .notNull()
-      .references(() => contentContributors.id, { onDelete: 'cascade' }),
-    order: t.integer().notNull(),
   }),
   (table) => ({
     pk: primaryKey({
@@ -2178,35 +2166,35 @@ export const notificationTypeEnum = pgNativeEnum(
 export const studentGroupEnum = pgNativeEnum('student_group', StudentGroup);
 
 export const usersNotifications = users.table('notifications', (t) => ({
-  id: t.uuid().primaryKey().defaultRandom(),
-  content: t.text(),
-  type: notificationTypeEnum().notNull(),
-  courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
-    onDelete: 'set null',
-  }),
+  blogId: t.uuid().references(() => contentBlogs.id, { onDelete: 'set null' }),
   chapterId: t.uuid().references(() => contentCourseChapters.chapterId, {
     onDelete: 'set null',
   }),
+  content: t.text(),
+  courseId: t.varchar({ length: 100 }).references(() => contentCourses.id, {
+    onDelete: 'set null',
+  }),
+  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   eventId: t
     .uuid()
     .references(() => contentEvents.id, { onDelete: 'set null' }),
-  blogId: t.uuid().references(() => contentBlogs.id, { onDelete: 'set null' }),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  id: t.uuid().primaryKey().defaultRandom(),
+  type: notificationTypeEnum().notNull(),
 }));
 
 export const usersUserNotificationStatus = users.table(
   'user_notification_status',
   (t) => ({
-    uid: t
-      .uuid()
-      .notNull()
-      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     notificationId: t
       .uuid()
       .notNull()
       .references(() => usersNotifications.id, { onDelete: 'cascade' }),
     readDate: t.timestamp({ withTimezone: true }),
-    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
   (table) => [primaryKey({ columns: [table.uid, table.notificationId] })],
 );
@@ -2214,7 +2202,16 @@ export const usersUserNotificationStatus = users.table(
 export const usersScheduledCourseNotifications = users.table(
   'scheduled_course_notifications',
   (t) => ({
+    content: t.text().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+      }),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     id: t.uuid().primaryKey().defaultRandom(),
+    isPublished: t.boolean().default(false).notNull(),
     notificationId: t
       .uuid()
       .notNull()
@@ -2223,19 +2220,10 @@ export const usersScheduledCourseNotifications = users.table(
       .uuid()
       .notNull()
       .references(() => contentProfessors.id, { onDelete: 'cascade' }),
-    courseId: t
-      .varchar({ length: 100 })
-      .notNull()
-      .references(() => contentCourses.id, {
-        onDelete: 'cascade',
-      }),
-    studentGroup: studentGroupEnum().notNull(),
-    content: t.text().notNull(),
-    type: notificationTypeEnum().notNull(),
     scheduledAt: t.timestamp({ withTimezone: true }).notNull(),
+    studentGroup: studentGroupEnum().notNull(),
     timezone: t.varchar({ length: 50 }).notNull(),
-    isPublished: t.boolean().default(false).notNull(),
-    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    type: notificationTypeEnum().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
 );

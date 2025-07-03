@@ -1,6 +1,5 @@
-import type { JoinedCareerProfile } from '@blms/types';
-
 import { firstRow } from '@blms/database';
+import type { JoinedCareerProfile } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
 import { deleteCareerProfileQuery } from '../queries/delete-career-profile.js';
 import { getCareerProfileIdQuery } from '../queries/get-career-profile.js';

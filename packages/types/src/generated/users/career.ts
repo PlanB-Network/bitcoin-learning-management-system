@@ -17,36 +17,36 @@ export interface CareerLanguage {
 }
 
 export interface CareerProfile {
-  uid: string;
-  id: string;
-  firstName: string | null;
-  lastName: string | null;
-  country: string | null;
-  email: string | null;
-  linkedin: string | null;
-  github: string | null;
-  telegram: string | null;
-  otherContact: string | null;
-  isBitcoinCommunityParticipant: boolean;
-  bitcoinCommunityText: string | null;
-  isBitcoinProjectParticipant: boolean;
-  bitcoinProjectText: string | null;
-  isAvailableFullTime: boolean;
-  remoteWorkPreference: CareerRemote;
-  expectedSalary: string | null;
-  availabilityStart: string | null;
-  cvUrl: string | null;
-  motivationLetter: string | null;
-  areTermsAccepted: boolean;
   allowReceivingEmails: boolean;
+  areTermsAccepted: boolean;
+  availabilityStart: string | null;
+  bitcoinCommunityText: string | null;
+  bitcoinProjectText: string | null;
+  country: string | null;
   createdAt: Date;
+  cvUrl: string | null;
   editedAt: Date;
+  email: string | null;
+  expectedSalary: string | null;
+  firstName: string | null;
+  github: string | null;
+  id: string;
+  isAvailableFullTime: boolean;
+  isBitcoinCommunityParticipant: boolean;
+  isBitcoinProjectParticipant: boolean;
+  lastName: string | null;
+  linkedin: string | null;
+  motivationLetter: string | null;
+  otherContact: string | null;
+  remoteWorkPreference: CareerRemote;
+  telegram: string | null;
+  uid: string;
 }
 
 export interface CareerRole {
   careerProfileId: string;
-  roleId: string;
   level: CareerRoleLevel;
+  roleId: string;
 }
 
 export interface Language {
@@ -56,43 +56,43 @@ export interface Language {
 }
 
 export interface JobTitle {
+  category: JobCategory;
   id: string;
   name: JobName;
-  category: JobCategory;
 }
 
 export interface JoinedCareerProfile {
-  uid: string;
-  id: string;
-  firstName: string | null;
-  lastName: string | null;
-  country: string | null;
-  email: string | null;
-  linkedin: string | null;
-  github: string | null;
-  telegram: string | null;
-  otherContact: string | null;
-  isBitcoinCommunityParticipant: boolean;
-  bitcoinCommunityText: string | null;
-  isBitcoinProjectParticipant: boolean;
-  bitcoinProjectText: string | null;
-  isAvailableFullTime: boolean;
-  remoteWorkPreference: CareerRemote;
-  expectedSalary: string | null;
-  availabilityStart: string | null;
-  cvUrl: string | null;
-  motivationLetter: string | null;
-  areTermsAccepted: boolean;
   allowReceivingEmails: boolean;
+  areTermsAccepted: boolean;
+  availabilityStart: string | null;
+  bitcoinCommunityText: string | null;
+  bitcoinProjectText: string | null;
+  country: string | null;
   createdAt: Date;
+  cvUrl: string | null;
   editedAt: Date;
+  email: string | null;
+  expectedSalary: string | null;
+  firstName: string | null;
+  github: string | null;
+  id: string;
+  isAvailableFullTime: boolean;
+  isBitcoinCommunityParticipant: boolean;
+  isBitcoinProjectParticipant: boolean;
+  lastName: string | null;
+  linkedin: string | null;
+  motivationLetter: string | null;
+  otherContact: string | null;
+  remoteWorkPreference: CareerRemote;
+  telegram: string | null;
+  uid: string;
+  companySizes: CareerCompanySize[];
   languages: {
     languageCode: string;
     level: CareerLanguageLevel;
   }[];
   roles: {
-    roleId: string;
     level: CareerRoleLevel;
+    roleId: string;
   }[];
-  companySizes: CareerCompanySize[];
 }

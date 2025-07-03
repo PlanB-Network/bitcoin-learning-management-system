@@ -1,8 +1,7 @@
+import { cn, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader, cn } from '@blms/ui';
 
 import FilterIcon from '#src/assets/icons/Filter-black.svg';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
@@ -42,15 +41,15 @@ function DashboardCalendar() {
                 : true,
             )
             .map<CalendarEvent>((e) => ({
-              title: e.name,
-              type: e.type,
-              id: e.id,
-              subId: e.subId,
               addressLine1: e.addressLine1,
+              end: e.endDate!,
+              id: e.id,
+              isOnline: e.isOnline,
               organizer: e.organizer,
               start: e.startDate!,
-              end: e.endDate!,
-              isOnline: e.isOnline,
+              subId: e.subId,
+              title: e.name,
+              type: e.type,
             })),
       },
     ),
@@ -96,15 +95,15 @@ function DashboardCalendar() {
                     backgroundColor: `${courseColor[index]}`,
                     color: 'white',
                     fontWeight: 600,
-                    paddingTop: '8px',
                     paddingBottom: '8px',
+                    paddingTop: '8px',
                   }
                 : {
-                    color: `${courseColor[index]}`,
                     borderColor: `${courseColor[index]}`,
                     borderWidth: '2px',
-                    paddingTop: '6px',
+                    color: `${courseColor[index]}`,
                     paddingBottom: '6px',
+                    paddingTop: '6px',
                   }
             }
             className={cn(
@@ -118,8 +117,8 @@ function DashboardCalendar() {
             <span
               className="ml-2 bg-white rounded-md py-1 px-[6px] text-xs border-gray font-medium"
               style={{
-                color: `${courseColor[index]}`,
                 borderWidth: filter.includes(filterName) ? '' : '1px',
+                color: `${courseColor[index]}`,
               }}
             >
               {events?.filter((p) => p.type === filterName).length}

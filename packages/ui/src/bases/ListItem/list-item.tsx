@@ -1,7 +1,6 @@
+import { cn } from '@blms/ui';
 import { cva } from 'class-variance-authority';
 import type React from 'react';
-
-import { cn } from '@blms/ui';
 
 interface ListItemProps {
   leftText: string;
@@ -19,64 +18,64 @@ interface ListItemProps {
 const listItemVariant = cva(
   'text-base flex items-center justify-between &:not(:last-child):border-b md:gap-2',
   {
+    defaultVariants: {
+      hasIncreasedPadding: false,
+      isDesktopOnly: false,
+      isMobileOnly: false,
+      variant: 'dark',
+      wrapOnMobile: false,
+    },
     variants: {
-      variant: {
-        light: 'border-newGray-4',
-        dark: 'border-white/10',
-        lightMaroon: 'border-black/10',
-      },
-      isMobileOnly: {
-        true: 'md:hidden',
-        false: '',
+      hasIncreasedPadding: {
+        false: 'py-2 md:py-[3px]',
+        true: 'py-3',
       },
       isDesktopOnly: {
-        true: 'max-md:hidden',
         false: '',
+        true: 'max-md:hidden',
+      },
+      isMobileOnly: {
+        false: '',
+        true: 'md:hidden',
+      },
+      variant: {
+        dark: 'border-white/10',
+        light: 'border-newGray-4',
+        lightMaroon: 'border-black/10',
       },
       wrapOnMobile: {
-        true: 'max-md:flex-wrap',
         false: '',
+        true: 'max-md:flex-wrap',
       },
-      hasIncreasedPadding: {
-        true: 'py-3',
-        false: 'py-2 md:py-[3px]',
-      },
-    },
-    defaultVariants: {
-      variant: 'dark',
-      isMobileOnly: false,
-      isDesktopOnly: false,
-      wrapOnMobile: false,
-      hasIncreasedPadding: false,
     },
   },
 );
 
 const leftTextListItemVariant = cva('leading-relaxed tracking-[0.08px]', {
-  variants: {
-    variant: {
-      light: 'text-newBlack-4',
-      dark: 'text-white/70',
-      lightMaroon: 'text-maroon-8',
-    },
-  },
   defaultVariants: {
     variant: 'dark',
+  },
+  variants: {
+    variant: {
+      dark: 'text-white/70',
+      light: 'text-newBlack-4',
+      lightMaroon: 'text-maroon-8',
+    },
   },
 });
 
 const rightTextListItemVariant = cva(
   'font-medium leading-relaxed tracking-[0.08px] text-right',
   {
-    variants: {
-      variant: {
-        light: 'text-newBlack-1',
-        dark: 'text-white',
-        lightMaroon: 'text-maroon-11',
-      },
-    },
     defaultVariants: {
       variant: 'dark',
+    },
+    variants: {
+      variant: {
+        dark: 'text-white',
+        light: 'text-newBlack-1',
+        lightMaroon: 'text-maroon-11',
+      },
     },
   },
 );
@@ -97,11 +96,11 @@ export const ListItem = ({
     <div
       className={cn(
         listItemVariant({
-          isMobileOnly,
-          isDesktopOnly,
-          wrapOnMobile,
           hasIncreasedPadding,
+          isDesktopOnly,
+          isMobileOnly,
           variant,
+          wrapOnMobile,
         }),
         className,
       )}

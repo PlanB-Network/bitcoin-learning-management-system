@@ -1,26 +1,4 @@
 {
-  "name": "@blms/ui",
-  "version": "0.0.1",
-  "type": "module",
-  "exports": {
-    ".": "./src/index.ts"
-  },
-  "imports": {
-    "#src/*": "./src/*"
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "tsc --build tsconfig.json",
-    "lint": "biome check .",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit",
-    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
-    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
-  },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-avatar": "^1.1.10",
@@ -64,5 +42,27 @@
     "storybook": "^9.0.15",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7"
-  }
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "main": "./src/index.ts",
+  "name": "@blms/ui",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "build-storybook": "storybook build",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "check-types": "tsc --noEmit",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
+    "lint": "biome check .",
+    "storybook": "storybook dev -p 6006",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
+    "type-check": "tsc --build"
+  },
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Banner, BannerDescription, BannerTitle } from '#src/bases/banner.tsx';
 
 const meta: Meta<typeof Banner> = {
-  title: 'Bases/banner',
   component: Banner,
   tags: ['autodocs'],
+  title: 'Bases/banner',
 };
 
 export default meta;
@@ -13,7 +13,6 @@ type Story = StoryObj<typeof Banner>;
 
 export const Default: Story = {
   args: {
-    variant: 'success',
     children: (
       <>
         <Banner variant="success">
@@ -24,5 +23,6 @@ export const Default: Story = {
         </Banner>
       </>
     ),
+    variant: 'success',
   },
 };

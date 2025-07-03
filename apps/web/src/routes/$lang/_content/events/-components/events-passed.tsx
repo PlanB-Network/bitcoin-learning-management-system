@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
 import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
+import { useTranslation } from 'react-i18next';
 
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 

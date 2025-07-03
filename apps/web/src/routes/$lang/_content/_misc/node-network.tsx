@@ -1,15 +1,11 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
-
 import { Loader } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { PageLayout } from '#src/components/page-layout.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-
 import { ProjectCard } from '../resources/-components/cards/project-card.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { CommunitiesMap } from './-components/communities-map.tsx';
 
 export const Route = createFileRoute('/$lang/_content/_misc/node-network')({

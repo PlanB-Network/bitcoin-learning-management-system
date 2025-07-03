@@ -1,6 +1,3 @@
-import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
-
 import { joinedEventSchema } from '@blms/schemas';
 import {
   createCheckEventAccess,
@@ -10,6 +7,8 @@ import {
   createGetUpcomingEventsBooking,
 } from '@blms/service-content';
 import type { JoinedEvent } from '@blms/types';
+import { TRPCError } from '@trpc/server';
+import { z } from 'zod';
 
 import { adminProcedure } from '#src/procedures/protected.js';
 import { publicProcedure } from '#src/procedures/public.js';
@@ -39,8 +38,8 @@ const getEventProcedure = publicProcedure
 
     if (!status.allowed) {
       throw new TRPCError({
-        code: uid ? 'FORBIDDEN' : 'UNAUTHORIZED',
         cause: 'Payment required to access this chapter',
+        code: uid ? 'FORBIDDEN' : 'UNAUTHORIZED',
       });
     }
 
@@ -52,8 +51,8 @@ const getUpcomingEventProcedure = publicProcedure
   .query(({ ctx }) => createGetUpcomingEvent(ctx.dependencies)());
 
 export const eventsRouter = createTRPCRouter({
-  getUpcomingEventsBookings: getUpcomingEventsBookingsProcedure,
-  getRecentEvents: getRecentEventsProcedure,
   getEvent: getEventProcedure,
+  getRecentEvents: getRecentEventsProcedure,
   getUpcomingEvent: getUpcomingEventProcedure,
+  getUpcomingEventsBookings: getUpcomingEventsBookingsProcedure,
 });

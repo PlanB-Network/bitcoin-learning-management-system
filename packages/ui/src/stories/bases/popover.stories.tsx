@@ -5,14 +5,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '../../bases/popover.js';
+
 const meta: Meta<typeof Popover> = {
-  title: 'Bases/popover',
-  component: Popover,
-  tags: ['autodocs'],
   argTypes: {},
+  component: Popover,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/popover',
 };
 
 export default meta;

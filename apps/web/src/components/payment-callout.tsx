@@ -1,6 +1,5 @@
-import { AiOutlineWarning } from 'react-icons/ai';
-
 import { cn } from '@blms/ui';
+import { AiOutlineWarning } from 'react-icons/ai';
 
 interface PaymentCalloutProps {
   description: React.ReactNode;

@@ -1,8 +1,3 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BackLink,
   Button,
@@ -16,22 +11,25 @@ import {
   Loader,
   TextTag,
 } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.tsx';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-
-import { useQuery } from '@tanstack/react-query';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/movies/$movieTitle-$movieId',
 )({
+  component: Movie,
   params: {
     parse: (params) => {
       const movieTitleId = params['movieTitle-$movieId'];
@@ -39,9 +37,9 @@ export const Route = createFileRoute(
 
       return {
         lang: z.string().parse(params.lang),
-        'movieTitle-$movieId': `${name}-${id}`,
-        movieTitle: z.string().parse(name),
         movieId: z.string().parse(id),
+        movieTitle: z.string().parse(name),
+        'movieTitle-$movieId': `${name}-${id}`,
       };
     },
     stringify: ({ lang, movieTitle, movieId }) => ({
@@ -49,7 +47,6 @@ export const Route = createFileRoute(
       'movieTitle-$movieId': `${movieTitle}-${movieId}`,
     }),
   },
-  component: Movie,
 });
 
 function Movie() {
@@ -74,8 +71,8 @@ function Movie() {
   useEffect(() => {
     if (movie && params.movieTitle !== formatNameForURL(movie.title)) {
       navigate({
-        to: `/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`,
         replace: true,
+        to: `/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`,
       });
     }
   }, [movie, isFetched, navigateTo404, navigate, params.movieTitle]);

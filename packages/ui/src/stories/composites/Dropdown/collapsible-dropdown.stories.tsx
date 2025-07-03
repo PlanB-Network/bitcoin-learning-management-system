@@ -5,22 +5,18 @@ const variants = ['light', 'dark'] as const;
 const types = ['info', 'default'] as const;
 
 const meta: Meta<typeof CollapsibleDropdown> = {
-  title: 'Composites/Dropdown/collapsible-dropdown',
-  component: CollapsibleDropdown,
-  parameters: {
-    layout: 'centered',
+  args: {
+    children:
+      'This is the collapsible content that can be expanded or collapsed by clicking the header.',
+    className: '',
+    defaultOpen: false,
+    title: 'Frequently Asked Questions',
+    type: 'default',
+    variant: 'light',
   },
-  tags: ['autodocs'],
   argTypes: {
-    title: {
-      control: 'text',
-    },
     children: {
       control: 'text',
-    },
-    variant: {
-      control: { type: 'select' },
-      options: variants,
     },
     className: {
       control: 'text',
@@ -28,20 +24,24 @@ const meta: Meta<typeof CollapsibleDropdown> = {
     defaultOpen: {
       control: 'boolean',
     },
+    title: {
+      control: 'text',
+    },
     type: {
       control: { type: 'select' },
       options: types,
     },
+    variant: {
+      control: { type: 'select' },
+      options: variants,
+    },
   },
-  args: {
-    title: 'Frequently Asked Questions',
-    children:
-      'This is the collapsible content that can be expanded or collapsed by clicking the header.',
-    variant: 'light',
-    className: '',
-    defaultOpen: false,
-    type: 'default',
+  component: CollapsibleDropdown,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/Dropdown/collapsible-dropdown',
 };
 
 export default meta;
@@ -54,31 +54,30 @@ export const Default: Story = {
 
 export const DarkVariant: Story = {
   args: {
-    variant: 'dark',
     title: 'Dark Theme Dropdown',
+    variant: 'dark',
   },
 };
 
 export const WithInfoIcon: Story = {
   args: {
-    title: 'Important Information',
-    type: 'info',
     children:
       'This collapsible section includes an info icon to draw attention to important content.',
+    title: 'Important Information',
+    type: 'info',
   },
 };
 
 export const DefaultOpen: Story = {
   args: {
-    title: 'Already Expanded',
-    defaultOpen: true,
     children: 'This collapsible starts in an open state by default.',
+    defaultOpen: true,
+    title: 'Already Expanded',
   },
 };
 
 export const LongContent: Story = {
   args: {
-    title: 'Detailed Information',
     children: (
       <div>
         <h3>This is a longer content example</h3>
@@ -97,5 +96,6 @@ export const LongContent: Story = {
         </p>
       </div>
     ),
+    title: 'Detailed Information',
   },
 };

@@ -11,12 +11,12 @@ import {
 } from '../../bases/table.js';
 
 const meta: Meta<typeof Table> = {
-  title: 'Composites/table',
   component: Table,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  title: 'Composites/table',
 };
 
 export default meta;
@@ -27,42 +27,42 @@ const bitcoinBlocks = [
   {
     block: '#840,000',
     hash: '00000000000000000004e...3b1d',
-    transactions: '4,000',
     minedBy: 'Foundry USA',
     reward: '6.25 BTC',
     timestamp: '2024-05-15 14:30 UTC',
+    transactions: '4,000',
   },
   {
     block: '#839,999',
     hash: '00000000000000000003a...2c9e',
-    transactions: '3,850',
     minedBy: 'AntPool',
     reward: '6.25 BTC',
     timestamp: '2024-05-15 14:20 UTC',
+    transactions: '3,850',
   },
   {
     block: '#839,998',
     hash: '00000000000000000005b...1f7a',
-    transactions: '4,120',
     minedBy: 'F2Pool',
     reward: '6.25 BTC',
     timestamp: '2024-05-15 14:10 UTC',
+    transactions: '4,120',
   },
   {
     block: '#839,997',
     hash: '00000000000000000001c...9d3f',
-    transactions: '3,980',
     minedBy: 'ViaBTC',
     reward: '6.25 BTC',
     timestamp: '2024-05-15 14:00 UTC',
+    transactions: '3,980',
   },
   {
     block: '#839,996',
     hash: '00000000000000000006d...8a4e',
-    transactions: '4,050',
     minedBy: 'Poolin',
     reward: '6.25 BTC',
     timestamp: '2024-05-15 13:50 UTC',
+    transactions: '4,050',
   },
 ];
 

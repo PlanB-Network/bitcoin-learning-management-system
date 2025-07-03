@@ -1,9 +1,8 @@
-import { t } from 'i18next';
-
 import type { CourseChapterResponse } from '@blms/types';
-import { ButtonWithArrow, Divider, cn } from '@blms/ui';
+import { ButtonWithArrow, cn, Divider } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 import SuccessExam from '#src/assets/icons/success_exam.svg?react';
 import { goToChapterParameters } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -11,15 +10,13 @@ import { AnswersReviewPanel } from '../shared-between-exams/answers-review-panel
 
 export const SingleTrialExamResult = ({
   chapter,
-  onStartExam,
 }: {
   chapter: CourseChapterResponse;
-  onStartExam: () => void;
 }) => {
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getLatestExamResults.queryOptions({
-      courseId: chapter.courseId,
       chapterId: chapter.chapterId,
+      courseId: chapter.courseId,
     }),
   );
 
@@ -35,8 +32,8 @@ export const SingleTrialExamResult = ({
 
   const completeChapter = () => {
     completeChapterMutation.mutate({
-      courseId: chapter.course.id,
       chapterId: chapter.chapterId,
+      courseId: chapter.course.id,
       language: chapter.language,
     });
   };

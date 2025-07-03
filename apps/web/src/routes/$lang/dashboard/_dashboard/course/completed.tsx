@@ -1,19 +1,16 @@
+import type { CourseProgressExtended } from '@blms/types';
+import { Divider, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useLocation } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { CourseProgressExtended } from '@blms/types';
-import { Divider, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
-
 import { AuthorCard } from '#src/components/author-card.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
+import { AppContext } from '#src/providers/context.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
-
-import { useQuery } from '@tanstack/react-query';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { AppContext } from '#src/providers/context.tsx';
 import { CourseRatings } from './-components/course-ratings.tsx';
 import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
 
@@ -44,9 +41,9 @@ function DashboardCompletedCourses() {
     () =>
       completedCourses
         ? completedCourses.map((course) => ({
-            value: course.courseIndex,
             key: course.courseId,
             text: addSpaceToCourseIndex(course.courseIndex).toUpperCase(),
+            value: course.courseIndex,
           }))
         : [],
     [completedCourses],

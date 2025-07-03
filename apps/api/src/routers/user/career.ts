@@ -1,7 +1,3 @@
-import { z } from 'zod';
-import { adminProcedure, studentProcedure } from '#src/procedures/protected.js';
-import { createTRPCRouter } from '#src/trpc/index.js';
-
 import {
   CareerLanguageLevel,
   CareerRemote,
@@ -24,7 +20,10 @@ import {
   createUpdateCareerProfile,
 } from '@blms/service-user';
 import type { JobTitle, JoinedCareerProfile, Language } from '@blms/types';
+import { z } from 'zod';
 import { checkPermissions } from '#src/middlewares/auth.js';
+import { adminProcedure, studentProcedure } from '#src/procedures/protected.js';
+import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
 
 const deleteCareerProfileProcedure = studentProcedure
@@ -77,46 +76,46 @@ const insertCareerProfileProcedure = studentProcedure
 const updateCareerProfileProcedure = studentProcedure
   .input(
     z.object({
-      firstName: z.string(),
-      lastName: z.string().optional(),
-      country: z.string(),
-      email: z.string(),
-      linkedin: z.string().optional(),
-      github: z.string().optional(),
-      telegram: z.string().optional(),
-      otherContact: z.string().optional(),
-      isBitcoinCommunityParticipant: z.boolean(),
-      bitcoinCommunityText: z.string().optional(),
-      isBitcoinProjectParticipant: z.boolean(),
-      bitcoinProjectText: z.string().optional(),
-      isAvailableFullTime: z.boolean(),
-      remoteWorkPreference: z.nativeEnum(CareerRemote),
-      expectedSalary: z.string().optional(),
-      availabilityStart: z.string().optional(),
-      cvUrl: z.string().optional(),
-      motivationLetter: z.string(),
-      areTermsAccepted: z.boolean(),
       allowReceivingEmails: z.boolean(),
+      areTermsAccepted: z.boolean(),
+      availabilityStart: z.string().optional(),
+      bitcoinCommunityText: z.string().optional(),
+      bitcoinProjectText: z.string().optional(),
+      companySizes: careerCompanySizeSchema.array(),
+      country: z.string(),
+      cvUrl: z.string().optional(),
+      email: z.string(),
+      expectedSalary: z.string().optional(),
+      firstName: z.string(),
+      github: z.string().optional(),
+      isAvailableFullTime: z.boolean(),
+      isBitcoinCommunityParticipant: z.boolean(),
+      isBitcoinProjectParticipant: z.boolean(),
       languages: z.array(
         z.object({
           languageCode: z.string(),
           level: z.nativeEnum(CareerLanguageLevel),
         }),
       ),
+      lastName: z.string().optional(),
+      linkedin: z.string().optional(),
+      motivationLetter: z.string(),
+      otherContact: z.string().optional(),
+      remoteWorkPreference: z.nativeEnum(CareerRemote),
       roles: z.array(
         z.object({
-          roleId: z.string(),
           level: z.nativeEnum(CareerRoleLevel),
+          roleId: z.string(),
         }),
       ),
-      companySizes: careerCompanySizeSchema.array(),
+      telegram: z.string().optional(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createUpdateCareerProfile(ctx.dependencies)({
-      uid: ctx.user.uid,
       data: input,
+      uid: ctx.user.uid,
     });
   });
 

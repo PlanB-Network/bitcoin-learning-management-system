@@ -1,16 +1,14 @@
+import type { CourseExamResults } from '@blms/types';
+import { Button, cn, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
-
-import type { CourseExamResults } from '@blms/types';
-import { Button, Loader, cn } from '@blms/ui';
-
-import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
@@ -163,9 +161,9 @@ const CourseExamsTable = ({
                 >
                   <span className="pl-1 w-fit md:w-[180px] max-md:mr-auto">
                     {new Date(exam.startedAt).toLocaleDateString(undefined, {
-                      year: 'numeric',
-                      month: 'numeric',
                       day: 'numeric',
+                      month: 'numeric',
+                      year: 'numeric',
                     })}
                   </span>
                   <span className="max-md:hidden w-full max-w-[503px]">
@@ -241,13 +239,13 @@ const CourseExamsTable = ({
                             <Link
                               to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                                 t('dashboard.course.tweetText', {
-                                  courseIndex: courseIndex.toUpperCase(),
                                   certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/exam-certificates/${exam.id}`,
-                                  score: `${exam.score}`,
+                                  courseIndex: courseIndex.toUpperCase(),
                                   emoji:
                                     exam.score && exam.score >= 90
                                       ? '🏆'
                                       : '💪',
+                                  score: `${exam.score}`,
                                 }),
                               )}`}
                               target="_blank"
@@ -277,11 +275,11 @@ const CourseExamsTable = ({
                         <Link
                           to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                             t('dashboard.course.tweetText', {
-                              courseIndex: courseIndex.toUpperCase(),
                               certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/exam-certificates/${exam.id}`,
-                              score: `${exam.score}`,
+                              courseIndex: courseIndex.toUpperCase(),
                               emoji:
                                 exam.score && exam.score >= 90 ? '🏆' : '💪',
+                              score: `${exam.score}`,
                             }),
                           )}`}
                           target="_blank"

@@ -1,9 +1,8 @@
+import type { FormattedProfessor } from '@blms/types';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
-
-import type { FormattedProfessor } from '@blms/types';
-import { Image, cn } from '@blms/ui';
 
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { resourceImgUrl } from '#src/utils/index.js';

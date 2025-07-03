@@ -4,14 +4,14 @@ import type {
   CourseResponse,
   ScheduledCourseAnnouncement,
 } from '@blms/types';
-import { ButtonWithArrow, Divider, TextTag, cn } from '@blms/ui';
+import { ButtonWithArrow, cn, Divider, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
+import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -153,8 +153,8 @@ const CourseProgress = ({
           <Link
             to={'/courses/$courseId/$chapterId'}
             params={{
-              courseId: courseProgress.courseId,
               chapterId: courseProgress.nextChapter?.chapterId as string,
+              courseId: courseProgress.courseId,
             }}
           >
             <ButtonWithArrow variant="outline" size="s">
@@ -167,11 +167,7 @@ const CourseProgress = ({
   );
 };
 
-const CourseAnnouncements = ({
-  courseId,
-}: {
-  courseId: string;
-}) => {
+const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
   const { data: publishedCourseAnnouncements } = useQuery(
     trpc.user.notifications.getPublishedScheduledCourseAnnouncements.queryOptions(
       {
@@ -302,11 +298,7 @@ const CourseAnnouncementItem = ({
   );
 };
 
-const CourseCalendar = ({
-  courseId,
-}: {
-  courseId: string;
-}) => {
+const CourseCalendar = ({ courseId }: { courseId: string }) => {
   const { data: events } = useQuery(
     trpc.user.calendar.getCalendarEvents.queryOptions(
       { upcomingEvents: true, userSpecific: true },
@@ -315,15 +307,15 @@ const CourseCalendar = ({
           allEvents
             ?.filter((e) => e.id === courseId)
             .map<CalendarEvent>((e) => ({
-              title: e.name,
-              type: e.type,
-              id: e.id,
-              subId: e.subId,
               addressLine1: e.addressLine1,
+              end: e.endDate!,
+              id: e.id,
+              isOnline: e.isOnline,
               organizer: e.organizer,
               start: e.startDate!,
-              end: e.endDate!,
-              isOnline: e.isOnline,
+              subId: e.subId,
+              title: e.name,
+              type: e.type,
             })),
       },
     ),

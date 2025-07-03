@@ -1,5 +1,5 @@
 import type { JoinedUserNotification } from '@blms/types';
-import { Popover, PopoverContent, PopoverTrigger, TextTag, cn } from '@blms/ui';
+import { cn, Popover, PopoverContent, PopoverTrigger, TextTag } from '@blms/ui';
 import { useMutation } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
@@ -153,8 +153,6 @@ const NotificationItem = ({
           notification.type,
           notification.courseId || undefined,
           notification.chapterId || undefined,
-          notification.eventId || undefined,
-          notification.blogId || undefined,
         )}
         className="flex flex-1 flex-col items-start justify-start gap-2.5 p-4"
       >

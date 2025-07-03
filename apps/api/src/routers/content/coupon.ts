@@ -1,15 +1,18 @@
-import { z } from 'zod';
-
-import { couponCodeSchema, couponCodeWithOwnerSchema } from '@blms/schemas';
-import { couponTargetSchema } from '@blms/schemas';
-import { createCreateCouponCode } from '@blms/service-content';
-import { createDeleteCouponCode } from '@blms/service-content';
-import { createGetCouponCode } from '@blms/service-content';
-import { createListEventsAndCourses } from '@blms/service-content';
-import { createListCouponCodes } from '@blms/service-content';
-import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
-
 import { UserPermission } from '@blms/constants';
+import {
+  couponCodeSchema,
+  couponCodeWithOwnerSchema,
+  couponTargetSchema,
+} from '@blms/schemas';
+import {
+  createCreateCouponCode,
+  createDeleteCouponCode,
+  createGetCouponCode,
+  createListCouponCodes,
+  createListEventsAndCourses,
+} from '@blms/service-content';
+import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
+import { z } from 'zod';
 import { checkPermissions } from '#src/middlewares/auth.js';
 import { adminProcedure } from '#src/procedures/protected.js';
 import { publicProcedure } from '#src/procedures/public.js';
@@ -40,9 +43,9 @@ const listCouponCodes = adminProcedure
   .use(checkPermissions(UserPermission.Coupons))
   .input(
     z.object({
-      singleUse: z.boolean().nullable().default(null),
       limit: z.number().default(10),
       page: z.number().default(1),
+      singleUse: z.boolean().nullable().default(null),
       sortBy: z.string().default('createdAt'),
       sortDirection: z.enum(['asc', 'desc']).default('desc'),
     }),
@@ -57,10 +60,10 @@ const createCouponCode = adminProcedure
     z.object({
       code: z.string().nullable(),
       itemId: z.string(),
-      reductionPercentage: z.number().min(1).max(100),
-      singleUse: z.boolean(),
       maxUses: z.number().default(1),
       numberOfCodes: z.number().default(1),
+      reductionPercentage: z.number().min(1).max(100),
+      singleUse: z.boolean(),
     }),
   )
   .output<Parser<CouponCode[]>>(couponCodeSchema.array())
@@ -79,11 +82,11 @@ const deleteCouponCode = adminProcedure
 
 // Router
 export const couponRouter = createTRPCRouter({
+  createCouponCode,
+  deleteCouponCode,
   // Public
   getCouponCode,
   // Admin
   listCouponCodes,
   listEventsAndCourses,
-  createCouponCode,
-  deleteCouponCode,
 });

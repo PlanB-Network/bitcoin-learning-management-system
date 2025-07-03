@@ -1,6 +1,5 @@
-import { MainLayout } from '#src/components/main-layout.js';
-
 import type { JSX } from 'react';
+import { MainLayout } from '#src/components/main-layout.js';
 
 export const CourseLayout = ({
   children,

@@ -1,7 +1,6 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@blms/ui';
 
 import { RESOURCES_CATEGORIES } from '#src/services/utils.js';
 import { capitalizeFirstWord } from '#src/utils/string.js';

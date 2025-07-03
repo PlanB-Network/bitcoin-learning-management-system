@@ -1,7 +1,6 @@
-import { useTranslation } from 'react-i18next';
-
 import type { Invoice } from '@blms/types';
 import { Card } from '@blms/ui';
+import { useTranslation } from 'react-i18next';
 
 import { formatDate } from '#src/utils/date.js';
 
@@ -63,7 +62,7 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                   }
 
                   return (
-                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                    // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                     <div key={index}>
                       <div className="hidden md:flex flex-row gap-4">
                         <span className="w-[150px] flex-none">

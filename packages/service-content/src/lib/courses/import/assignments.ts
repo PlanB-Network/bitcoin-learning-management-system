@@ -1,7 +1,6 @@
-import { type TransactionSql, firstRow, sql } from '@blms/database';
-import type { ChangedFile, Course } from '@blms/types';
-
+import { firstRow, sql, type TransactionSql } from '@blms/database';
 import type { S3Service } from '@blms/s3';
+import type { ChangedFile, Course } from '@blms/types';
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';
 import {
@@ -24,8 +23,8 @@ export const parseDetailsFromPath = (path: string): BCertExamDetails => {
   if (pathElements.length < 3) throw new Error('Invalid assignment path');
 
   return {
-    path: pathElements.slice(0, 4).join('/'),
     fullPath: pathElements.join('/'),
+    path: pathElements.slice(0, 4).join('/'),
   };
 };
 
@@ -45,16 +44,16 @@ export const groupByAssignments = (files: ChangedFile[], errors: string[]) => {
       const assignment: ChangedAssignment = groupedAssignments.get(
         assignmentsPath,
       ) || {
-        type: 'assignments',
-        path: assignmentsPath,
-        fullPath: fullPath,
         files: [],
+        fullPath: fullPath,
+        path: assignmentsPath,
+        type: 'assignments',
       };
 
       assignment.files.push({
         ...file,
-        path: getRelativePath(file.path, assignmentsPath),
         fullPath: file.path,
+        path: getRelativePath(file.path, assignmentsPath),
       });
 
       groupedAssignments.set(assignmentsPath, assignment);
@@ -73,8 +72,6 @@ export const createUpdateAssignments = ({
   return async (assignment: ChangedAssignment, errors: string[]) => {
     const { main, files } = separateContentFiles(assignment, 'assignment.yml');
 
-    const assignmentName = assignment.fullPath.split('/').slice(3, 4).join('/');
-
     return postgres
       .begin(async (transaction) => {
         const processMainFile = createProcessMainFile(transaction);
@@ -86,12 +83,7 @@ export const createUpdateAssignments = ({
 
         let assignmentId: string | undefined;
         try {
-          assignmentId = await processMainFile(
-            assignment,
-            assignmentName,
-            main,
-            courseIndex,
-          );
+          assignmentId = await processMainFile(assignment, main, courseIndex);
         } catch (error) {
           console.log(
             `Error processing file(Assignment) ${assignment?.fullPath} : ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,
@@ -139,7 +131,6 @@ interface AssignmentMain {
 export const createProcessMainFile = (transaction: TransactionSql) => {
   return async (
     assignment: ChangedAssignment,
-    assignmentName: string,
     file: ChangedFile,
     courseIndex: string,
   ) => {

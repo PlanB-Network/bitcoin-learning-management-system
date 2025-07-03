@@ -24,8 +24,8 @@ export const SingleTrialExamWorkflow = ({
   } = useQuery(
     trpc.user.courses.getLatestExamResults.queryOptions(
       {
-        courseId: chapter.courseId,
         chapterId: chapter.chapterId,
+        courseId: chapter.courseId,
       },
       {
         enabled: isLoggedIn,
@@ -56,7 +56,7 @@ export const SingleTrialExamWorkflow = ({
 
   function onRefreshExam() {
     refetchExamResults();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ behavior: 'smooth', top: 0 });
   }
 
   const examHasQuestions =
@@ -82,9 +82,7 @@ export const SingleTrialExamWorkflow = ({
       )}
 
       {((!isExamCompleted && !isExamStarted && previousExamResults) ||
-        isExamCompleted) && (
-        <SingleTrialExamResult chapter={chapter} onStartExam={onRefreshExam} />
-      )}
+        isExamCompleted) && <SingleTrialExamResult chapter={chapter} />}
     </>
   );
 };

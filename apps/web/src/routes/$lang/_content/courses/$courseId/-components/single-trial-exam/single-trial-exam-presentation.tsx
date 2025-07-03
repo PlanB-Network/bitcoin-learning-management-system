@@ -66,10 +66,10 @@ export const SingleTrialExamPresentation = ({
   async function onStart() {
     // TODO CHECK LANGUAGE LATER (only original? )
     await startExamAttempt.mutateAsync({
-      courseId: chapter.courseId,
       chapterId: chapter.chapterId,
-      language: chapter.course.originalLanguage,
+      courseId: chapter.courseId,
       examType: ExamType.SingleTrial,
+      language: chapter.course.originalLanguage,
     });
   }
 

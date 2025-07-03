@@ -1,9 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
+import { GeneralPaymentItem } from '@blms/constants';
 
 import { firstRow, sql } from '@blms/database';
 import type { CouponCode, GeneralPaymentLight } from '@blms/types';
-
-import { GeneralPaymentItem } from '@blms/constants';
+import { v4 as uuidv4 } from 'uuid';
 import type { Dependencies } from '../../../dependencies.js';
 import { getGeneralPaymentsQuery } from '../queries/get-general-payments.js';
 import { insertGeneralPayment } from '../queries/insert-general-payment.js';
@@ -84,14 +83,14 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
 
       const payment = await postgres.exec(
         insertGeneralPayment({
-          item: item,
-          uid: uid,
-          couponCode: couponCode,
-          paymentStatus: 'paid',
           amount: 0,
-          paymentId: randomUUID,
-          method: 'free',
+          couponCode: couponCode,
           invoiceUrl: '',
+          item: item,
+          method: 'free',
+          paymentId: randomUUID,
+          paymentStatus: 'paid',
+          uid: uid,
         }),
       );
 
@@ -104,12 +103,12 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
       }
 
       return {
-        id: 'free',
-        pr: '',
-        onChainAddr: undefined,
         amount: dollarPrice,
         checkoutUrl: '',
         clientSecret: '',
+        id: 'free',
+        onChainAddr: undefined,
+        pr: '',
       };
     }
 
@@ -122,14 +121,14 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
 
       await postgres.exec(
         insertGeneralPayment({
-          uid,
-          item,
-          paymentStatus: 'pending',
           amount: checkoutData.amount,
-          paymentId: checkoutData.id,
-          invoiceUrl: checkoutData.checkoutUrl,
-          method: method,
           couponCode: couponCode,
+          invoiceUrl: checkoutData.checkoutUrl,
+          item,
+          method: method,
+          paymentId: checkoutData.id,
+          paymentStatus: 'pending',
+          uid,
         }),
       );
 
@@ -147,24 +146,24 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
 
       await postgres.exec(
         insertGeneralPayment({
-          uid,
-          item,
-          paymentId,
           amount: dollarPrice,
-          paymentStatus: 'pending',
-          invoiceUrl: '',
-          method: method,
           couponCode: couponCode,
+          invoiceUrl: '',
+          item,
+          method: method,
+          paymentId,
+          paymentStatus: 'pending',
+          uid,
         }),
       );
 
       return {
-        id: paymentId,
-        pr: '',
-        onChainAddr: undefined,
         amount: dollarPrice,
         checkoutUrl: session.id,
         clientSecret: session.client_secret as string,
+        id: paymentId,
+        onChainAddr: undefined,
+        pr: '',
       };
     }
 
@@ -186,8 +185,8 @@ export const createUpdateGeneralPaymentStatus = ({
       updateGeneralPaymentQuery({
         id: paymentId,
         intentId: paymentIntentId,
-        isPaid: true,
         isExpired: false,
+        isPaid: true,
       }),
     );
   };

@@ -1,11 +1,10 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import BlogsAndNewsLayout from '../-layout.tsx';
 import { BlogList } from '../../-components/public-communication/blog-list.tsx';
 import { DropdownMenu } from '../../-components/public-communication/dropdown-menu.tsx';
 import { blogTabs } from '../../-components/utils/public-communication-utils.tsx';
+import BlogsAndNewsLayout from '../-layout.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/public-communication/blogs-and-news/',
@@ -22,8 +21,8 @@ function BlogsNews() {
   };
 
   const dropdownItems = blogTabs.map((tab) => ({
-    name: t(tab.label),
     link: tab.href,
+    name: t(tab.label),
     onClick: () => handleMainTabChange(tab.id),
   }));
 

@@ -2,12 +2,13 @@
   "$schema": "https://turborepo.org/schema.json",
   "extends": ["//"],
   "tasks": {
-    "check-types": {
+    "build": {
       "dependsOn": [
-        "@blms/types#build-types",
-        "@blms/database#build-types",
-        "@blms/service-common#build-types"
-      ]
+        "@blms/types#build",
+        "@blms/database#build",
+        "@blms/service-common#build"
+      ],
+      "outputs": ["dist"]
     },
     "build-types": {
       "dependsOn": [
@@ -17,13 +18,12 @@
       ],
       "outputs": ["dist"]
     },
-    "build": {
+    "check-types": {
       "dependsOn": [
-        "@blms/types#build",
-        "@blms/database#build",
-        "@blms/service-common#build"
-      ],
-      "outputs": ["dist"]
+        "@blms/types#build-types",
+        "@blms/database#build-types",
+        "@blms/service-common#build-types"
+      ]
     }
   }
 }

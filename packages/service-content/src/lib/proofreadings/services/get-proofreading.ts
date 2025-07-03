@@ -14,7 +14,7 @@ export const createGetProofreading = ({ postgres }: Dependencies) => {
     try {
       const result = await postgres
         .exec(
-          getProofreadingQuery({ language, courseId, tutorialId, resourceId }),
+          getProofreadingQuery({ courseId, language, resourceId, tutorialId }),
         )
         .then(firstRow);
 

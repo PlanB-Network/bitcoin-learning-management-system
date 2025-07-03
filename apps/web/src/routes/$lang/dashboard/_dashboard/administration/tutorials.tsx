@@ -1,11 +1,9 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect } from 'react';
-
-import { AppContext } from '#src/providers/context.js';
-
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { Loader } from '@blms/ui';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '#src/providers/context.js';
 import { DashboardTutorialsPanel } from '../-components/tutorials-panel.tsx';
 
 export const Route = createFileRoute(

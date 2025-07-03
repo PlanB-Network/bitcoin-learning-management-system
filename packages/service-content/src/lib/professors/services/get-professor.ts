@@ -3,9 +3,9 @@ import type { FullProfessor } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
 import { indexBy } from '../../utils.js';
+import { getProfessorQuery } from '../queries/get-professor.js';
 import { getProfessorCoursesQuery } from '../queries/get-professor-courses.js';
 import { getProfessorTutorialsQuery } from '../queries/get-professor-tutorials.js';
-import { getProfessorQuery } from '../queries/get-professor.js';
 import { getProfessorsQuery } from '../queries/get-professors.js';
 
 import { formatProfessor } from './utils.js';
@@ -22,16 +22,16 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
 
     const courses = await postgres.exec(
       getProfessorCoursesQuery({
-        professorId: professor.id,
         language,
+        professorId: professor.id,
       }),
     );
 
     const mainProfessors = await postgres
       .exec(
         getProfessorsQuery({
-          professorIds: courses.flatMap((course) => course.mainProfessorIds),
           language,
+          professorIds: courses.flatMap((course) => course.mainProfessorIds),
         }),
       )
       .then((professors) =>
@@ -41,10 +41,10 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
     const associatedProfessors = await postgres
       .exec(
         getProfessorsQuery({
+          language,
           professorIds: courses.flatMap(
             (course) => course.associatedProfessorIds,
           ),
-          language,
         }),
       )
       .then((professors) =>
@@ -53,8 +53,8 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
 
     const tutorials = await postgres.exec(
       getProfessorTutorialsQuery({
-        professorId: professor.id,
         language,
+        professorId: professor.id,
       }),
     );
 
@@ -69,17 +69,17 @@ export const createGetProfessor = ({ postgres }: Dependencies) => {
 
         return {
           ...course,
-          mainProfessors: mainProfessors.filter(
-            (professor) =>
-              professor !== undefined &&
-              course.mainProfessorIds.some((p) => String(p) === professor.id),
-          ),
           associatedProfessors: sortedAssociatedProfessors.filter(
             (professor) =>
               professor?.id !== undefined &&
               course.associatedProfessorIds.some(
                 (p) => String(p) === professor.id,
               ),
+          ),
+          mainProfessors: mainProfessors.filter(
+            (professor) =>
+              professor !== undefined &&
+              course.mainProfessorIds.some((p) => String(p) === professor.id),
           ),
         };
       }),

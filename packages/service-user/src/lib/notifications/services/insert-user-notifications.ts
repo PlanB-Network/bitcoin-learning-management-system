@@ -32,13 +32,13 @@ export const createInsertUserNotifications = ({ postgres }: Dependencies) => {
 
     await postgres.exec(
       insertUserNotificationsAndStatusQuery({
-        uids,
-        type,
+        blogId,
+        chapterId,
         content,
         courseId,
-        chapterId,
         eventId,
-        blogId,
+        type,
+        uids,
       }),
     );
   };

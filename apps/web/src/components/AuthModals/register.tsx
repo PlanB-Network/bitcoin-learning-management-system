@@ -1,12 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import PasswordValidator from 'password-validator';
-import { useCallback } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { BsCheck } from 'react-icons/bs';
-import { z } from 'zod';
-
 import {
   BasicModal,
   Button,
@@ -17,10 +8,16 @@ import {
   FormLabel,
   Input,
 } from '@blms/ui';
-
-import { trpc } from '../../utils/trpc.ts';
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import PasswordValidator from 'password-validator';
+import { useCallback } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { BsCheck } from 'react-icons/bs';
+import { z } from 'zod';
+import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
 
 interface RegisterFormData {
@@ -48,19 +45,6 @@ export const Register = ({
 
   const registerSchema = z
     .object({
-      username: z
-        .string({ required_error: t('auth.errors.usernameRequired') })
-        .min(5, { message: t('auth.errors.usernameTooShort') })
-        .regex(/^[\w.\\-]+$/, {
-          message: t('auth.errors.usernameRegex'),
-        }),
-      password: z.string().refine(
-        (pwd) => password.validate(pwd),
-        (pwd) => {
-          const result = password.validate(pwd, { details: true });
-          return { message: Array.isArray(result) ? result[0].message : '' };
-        },
-      ),
       confirmation: z.string(),
       email: z
         .union([
@@ -69,6 +53,19 @@ export const Register = ({
         ])
         .transform((data) => data || null)
         .nullable(),
+      password: z.string().refine(
+        (pwd) => password.validate(pwd),
+        (pwd) => {
+          const result = password.validate(pwd, { details: true });
+          return { message: Array.isArray(result) ? result[0].message : '' };
+        },
+      ),
+      username: z
+        .string({ required_error: t('auth.errors.usernameRequired') })
+        .min(5, { message: t('auth.errors.usernameTooShort') })
+        .regex(/^[\w.-]+$/, {
+          message: t('auth.errors.usernameRegex'),
+        }),
     })
     .refine((data) => data.password === data.confirmation, {
       message: t('auth.passwordsDontMatch'),
@@ -76,13 +73,13 @@ export const Register = ({
     });
 
   const methods = useForm({
-    resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: '',
-      password: '',
       confirmation: '',
       email: '',
+      password: '',
+      username: '',
     },
+    resolver: zodResolver(registerSchema),
   });
 
   const register = useMutation(
@@ -103,7 +100,7 @@ export const Register = ({
 
   const handleCreateUserAccount: SubmitHandler<RegisterFormData> = useCallback(
     ({ password, username, email }) =>
-      register.mutate({ password, username, email }),
+      register.mutate({ email, password, username }),
     [register],
   );
 

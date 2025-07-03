@@ -43,8 +43,8 @@ const markUserNotificationsAsReadProcedure = studentProcedure
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createMarkUserNotificationsAsRead(ctx.dependencies)({
-      uid: ctx.user.uid,
       notificationIds: input.notificationIds,
+      uid: ctx.user.uid,
     });
   });
 
@@ -76,31 +76,31 @@ const getCourseAnnouncementsProcedure = professorProcedure
   .query(({ ctx, input }) =>
     createGetScheduledCourseAnnouncements(ctx.dependencies)({
       courseId: input.courseId,
-      isPublishedOnly: false,
       isProfessor: true,
+      isPublishedOnly: false,
     }),
   );
 
 const insertScheduledCourseAnnouncementProcedure = professorProcedure
   .input(
     z.object({
-      courseId: z.string(),
-      type: z.nativeEnum(NotificationType),
       content: z.string(),
-      studentGroup: z.nativeEnum(StudentGroup),
+      courseId: z.string(),
       scheduledAt: z.date(),
+      studentGroup: z.nativeEnum(StudentGroup),
       timezone: z.string(),
+      type: z.nativeEnum(NotificationType),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createInsertScheduledCourseAnnouncement(ctx.dependencies)({
-      type: input.type,
       content: input.content,
-      scheduledAt: input.scheduledAt,
-      timezone: input.timezone,
-      studentGroup: input.studentGroup,
       courseId: input.courseId,
+      scheduledAt: input.scheduledAt,
+      studentGroup: input.studentGroup,
+      timezone: input.timezone,
+      type: input.type,
       uid: ctx.user.uid,
     });
   });
@@ -108,26 +108,26 @@ const insertScheduledCourseAnnouncementProcedure = professorProcedure
 const updateScheduledCourseAnnouncementProcedure = professorProcedure
   .input(
     z.object({
-      courseId: z.string(),
-      type: z.nativeEnum(NotificationType),
       content: z.string(),
-      studentGroup: z.nativeEnum(StudentGroup),
-      scheduledAt: z.date(),
-      timezone: z.string(),
+      courseId: z.string(),
       id: z.string(),
+      scheduledAt: z.date(),
+      studentGroup: z.nativeEnum(StudentGroup),
+      timezone: z.string(),
+      type: z.nativeEnum(NotificationType),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createUpdateScheduledCourseAnnouncement(ctx.dependencies)({
-      type: input.type,
       content: input.content,
-      scheduledAt: input.scheduledAt,
-      timezone: input.timezone,
-      studentGroup: input.studentGroup,
       courseId: input.courseId,
-      uid: ctx.user.uid,
       id: input.id,
+      scheduledAt: input.scheduledAt,
+      studentGroup: input.studentGroup,
+      timezone: input.timezone,
+      type: input.type,
+      uid: ctx.user.uid,
     });
   });
 
@@ -146,11 +146,11 @@ const deleteScheduledCourseAnnouncementProcedure = professorProcedure
 
 export const userNotificationsRouter = createTRPCRouter({
   deleteScheduledCourseAnnouncement: deleteScheduledCourseAnnouncementProcedure,
-  insertScheduledCourseAnnouncement: insertScheduledCourseAnnouncementProcedure,
   getCourseAnnouncement: getCourseAnnouncementsProcedure,
   getPublishedScheduledCourseAnnouncements:
     getPublishedScheduledCourseAnnouncementsProcedure,
   getUserNotifications: getUserNotificationsProcedure,
+  insertScheduledCourseAnnouncement: insertScheduledCourseAnnouncementProcedure,
   markUserNotificationsAsRead: markUserNotificationsAsReadProcedure,
   updateScheduledCourseAnnouncement: updateScheduledCourseAnnouncementProcedure,
 });

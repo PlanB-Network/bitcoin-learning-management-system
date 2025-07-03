@@ -1,33 +1,32 @@
-import { type VariantProps, cva } from 'class-variance-authority';
-import { cn } from '#src/lib/utils.ts';
-
+import { cva, type VariantProps } from 'class-variance-authority';
 import DurationClock from '#src/assets/charts/duration.webp';
 import StarGauge from '#src/assets/charts/stars.svg';
+import { cn } from '#src/lib/utils.ts';
 
 const gaugeVariantStyles = {
   green: {
     background: 'stroke-brightGreen-2', // Unfilled
     foreground: 'stroke-brightGreen-4', // Filled
-    text: 'text-brightGreen-6',
     needle: 'stroke-brightGreen-7',
-  },
-  purple: {
-    background: 'stroke-[#EFB6FC]', // Unfilled
-    foreground: 'stroke-[#D954F7]', // Filled
-    text: 'text-[#D954F7]',
-    needle: 'stroke-[#790792]',
-  },
-  yellow: {
-    background: 'stroke-yellow-1', // Unfilled
-    foreground: 'stroke-yellow-5', // Filled - See later if we want a different color than unfilled
-    text: 'text-yellow-5',
-    needle: 'stroke-yellow-7',
+    text: 'text-brightGreen-6',
   },
   orange: {
     background: 'stroke-darkOrange-1', // Unfilled
     foreground: 'stroke-darkOrange-4', // Filled
-    text: 'text-darkOrange-4',
     needle: 'stroke-darkOrange-4',
+    text: 'text-darkOrange-4',
+  },
+  purple: {
+    background: 'stroke-[#EFB6FC]', // Unfilled
+    foreground: 'stroke-[#D954F7]', // Filled
+    needle: 'stroke-[#790792]',
+    text: 'text-[#D954F7]',
+  },
+  yellow: {
+    background: 'stroke-yellow-1', // Unfilled
+    foreground: 'stroke-yellow-5', // Filled - See later if we want a different color than unfilled
+    needle: 'stroke-yellow-7',
+    text: 'text-yellow-5',
   },
 };
 
@@ -44,14 +43,14 @@ type CustomGaugeVariant = keyof typeof customGaugeVariantStyles;
 const gaugeContainerVariants = cva(
   'flex items-center max-lg:justify-between relative justify-center rounded-2xl',
   {
-    variants: {
-      size: {
-        m: 'w-66 lg:w-40 px-3 py-5 lg:flex-col',
-        l: 'w-full max-w-54 lg:max-w-[336px] lg:px-14 py-7 flex-col',
-      },
-    },
     defaultVariants: {
       size: 'm',
+    },
+    variants: {
+      size: {
+        l: 'w-full max-w-54 lg:max-w-[336px] lg:px-14 py-7 flex-col',
+        m: 'w-66 lg:w-40 px-3 py-5 lg:flex-col',
+      },
     },
   },
 );
@@ -205,7 +204,7 @@ const RadialGauge = ({
       <MobileLabel label={label} colorClasses={colorClasses} size={size} />
 
       <div className={getSvgContainerClasses(size)}>
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: explanation */}
         <svg viewBox={SVG_VIEWBOX} className="w-full">
           {/* Unfilled */}
           <path
@@ -334,7 +333,7 @@ const DashGauge = ({
       <MobileLabel label={label} colorClasses={colorClasses} size={size} />
 
       <div className={getSvgContainerClasses(size)}>
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: explanation */}
         <svg viewBox={SVG_VIEWBOX} className="w-full">
           {dashes}
         </svg>

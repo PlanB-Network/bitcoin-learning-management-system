@@ -1,8 +1,8 @@
 import { LANGUAGES_MAP } from '@blms/shared';
 import * as i18n from 'i18next';
 import Detector from 'i18next-browser-languagedetector';
-import Backend from 'i18next-http-backend';
 import type { HttpBackendOptions } from 'i18next-http-backend';
+import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 import { build } from './cache.ts';
 
@@ -43,7 +43,6 @@ void i18n
   .use(Backend)
   .use(initReactI18next)
   .init<HttpBackendOptions>({
-    load: 'all',
     backend: {
       loadPath: `/locales/{{lng}}.json${build ? `?c=${build}` : ''}`,
       requestOptions: {
@@ -52,11 +51,12 @@ void i18n
     },
     debug: false,
     fallbackLng: 'en',
-    returnNull: false,
-    returnEmptyString: false,
     interpolation: {
       escapeValue: false,
     },
+    load: 'all',
+    returnEmptyString: false,
+    returnNull: false,
   });
 
 export default i18n;

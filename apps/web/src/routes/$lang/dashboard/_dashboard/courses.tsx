@@ -1,14 +1,12 @@
+import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
-
-import { Loader } from '@blms/ui';
-import { useQuery } from '@tanstack/react-query';
-import { CourseTableMobile } from './-components/course-table-mobile.tsx';
 import { CourseTable } from './-components/course-table.tsx';
+import { CourseTableMobile } from './-components/course-table-mobile.tsx';
 
 export const Route = createFileRoute('/$lang/dashboard/_dashboard/courses')({
   component: DashboardCourses,

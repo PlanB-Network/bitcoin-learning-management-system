@@ -83,8 +83,8 @@ export const parseDetailsFromPath = (path: string): LabDetails => {
   }
 
   return {
-    path: pathElements.slice(0, 2).join('/'),
     fullPath: pathElements.join('/'),
+    path: pathElements.slice(0, 2).join('/'),
   };
 };
 
@@ -100,10 +100,10 @@ export const groupByLab = (files: ChangedFile[], errors: string[]) => {
       const { path: labPath, fullPath } = parseDetailsFromPath(file.path);
 
       const lab: ChangedLab = groupedLabs.get(labPath) || {
-        type: 'labs',
-        path: labPath,
-        fullPath: fullPath,
         files: [],
+        fullPath: fullPath,
+        path: labPath,
+        type: 'labs',
       };
 
       lab.files.push({

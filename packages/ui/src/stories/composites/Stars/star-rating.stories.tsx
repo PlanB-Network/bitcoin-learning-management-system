@@ -2,30 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { StarRating } from '#src/composites/Stars/star-rating.tsx';
 
 const meta: Meta<typeof StarRating> = {
-  title: 'Composites/Stars/star-rating',
-  component: StarRating,
-  parameters: {},
-  tags: ['autodocs'],
   argTypes: {
-    rating: {
-      control: { type: 'number', min: 0, max: 10, step: 0.1 },
-    },
-    totalStars: {
-      control: { type: 'number', min: 1, max: 10 },
-    },
     fillColor: {
       control: { type: 'color' },
+    },
+    rating: {
+      control: { max: 10, min: 0, step: 0.1, type: 'number' },
+    },
+    starSize: {
+      control: { max: 100, min: 10, type: 'number' },
     },
     strokeColor: {
       control: { type: 'color' },
     },
+    totalStars: {
+      control: { max: 10, min: 1, type: 'number' },
+    },
     unfilledStrokeColor: {
       control: { type: 'color' },
     },
-    starSize: {
-      control: { type: 'number', min: 10, max: 100 },
-    },
   },
+  component: StarRating,
+  parameters: {},
+  tags: ['autodocs'],
+  title: 'Composites/Stars/star-rating',
 };
 
 export default meta;

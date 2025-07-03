@@ -1,10 +1,8 @@
-import { Link } from '@tanstack/react-router';
-import { FaArrowRightLong } from 'react-icons/fa6';
-
 import type { ButtonProps } from '@blms/ui';
-import { Button, Flag, Image, cn } from '@blms/ui';
-
+import { Button, cn, Flag, Image } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import type { JSX } from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 export interface VerticalCardProps {
   imageSrc: string;
@@ -74,31 +72,31 @@ export const VerticalCard = ({
   isScreenMd = true,
 }: VerticalCardProps) => {
   const cardColorClasses = {
-    orange: 'bg-darkOrange-5',
-    maroon: 'bg-darkOrange-7',
     grey: 'bg-newBlack-2',
     lightgrey: 'bg-newGray-6',
+    maroon: 'bg-darkOrange-7',
+    orange: 'bg-darkOrange-5',
   };
 
   const hoverCardColorClasses = {
-    orange: 'hover:bg-darkOrange-6',
-    maroon: 'hover:bg-darkOrange-8',
     grey: 'hover:bg-newBlack-3',
     lightgrey: 'bg-newGray-5',
+    maroon: 'hover:bg-darkOrange-8',
+    orange: 'hover:bg-darkOrange-6',
   };
 
   const subtitleColorClasses = {
-    orange: 'text-newGray-6',
-    maroon: 'text-newGray-6',
     grey: 'text-newGray-4',
     lightgrey: 'text-darkOrange-5',
+    maroon: 'text-newGray-6',
+    orange: 'text-newGray-6',
   };
 
   const titleColorClasses = {
-    orange: 'text-white',
-    maroon: 'text-white',
     grey: 'text-white',
     lightgrey: 'text-black',
+    maroon: 'text-white',
+    orange: 'text-white',
   };
 
   return (

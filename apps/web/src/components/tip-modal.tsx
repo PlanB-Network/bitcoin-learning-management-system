@@ -1,13 +1,12 @@
-import { QRCodeSVG } from 'qrcode.react';
-import { useTranslation } from 'react-i18next';
-import { AiOutlineCopy } from 'react-icons/ai';
-
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogTitle,
 } from '@blms/ui';
+import { QRCodeSVG } from 'qrcode.react';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineCopy } from 'react-icons/ai';
 
 import { useSmaller } from '#src/hooks/use-smaller.js';
 

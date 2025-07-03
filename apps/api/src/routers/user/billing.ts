@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 import { invoiceSchema, ticketSchema } from '@blms/schemas';
 import {
   createCancelTicket,
@@ -8,6 +6,7 @@ import {
   createGetTickets,
 } from '@blms/service-user';
 import type { Invoice, Ticket } from '@blms/types';
+import { z } from 'zod';
 
 import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -22,8 +21,8 @@ const getInvoicesProcedure = studentProcedure
   .output<Parser<Invoice[]>>(invoiceSchema.array())
   .query(({ ctx, input }) =>
     createGetInvoices(ctx.dependencies)({
-      uid: ctx.user.uid,
       language: input.language,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -47,22 +46,22 @@ const getTicketsProcedure = studentProcedure
 const cancelTicketProcedure = studentProcedure
   .input(
     z.object({
-      ticketId: z.string(),
       eventType: z.string(),
+      ticketId: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(({ ctx, input }) =>
     createCancelTicket(ctx.dependencies)({
-      uid: ctx.user.uid,
-      ticketId: input.ticketId,
       eventType: input.eventType,
+      ticketId: input.ticketId,
+      uid: ctx.user.uid,
     }),
   );
 
 export const userBillingRouter = createTRPCRouter({
+  cancelTicket: cancelTicketProcedure,
   getExamTickets: getExamTicketsProcedure,
   getInvoices: getInvoicesProcedure,
   getTickets: getTicketsProcedure,
-  cancelTicket: cancelTicketProcedure,
 });

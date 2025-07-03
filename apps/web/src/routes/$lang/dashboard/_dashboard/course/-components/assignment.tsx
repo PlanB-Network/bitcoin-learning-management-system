@@ -7,40 +7,39 @@ import {
   Button,
   ButtonWithArrow,
   CollapsibleDropdown,
+  cn,
+  customToast,
   DialogClose,
   Divider,
   Loader,
   RadialGauge,
-  cn,
-  customToast,
 } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
-import { LuGripVertical } from 'react-icons/lu';
-import Certificate from '#src/assets/icons/certificate.svg';
-import SadFace from '#src/assets/icons/face_sad.svg';
-import ThumbUp from '#src/assets/icons/thumb_up.svg';
-import InformationIcon from '#src/assets/icons/warning_orange.svg';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { trpc } from '#src/utils/trpc.ts';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
 import { Trans } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FaTelegram } from 'react-icons/fa6';
 import {
   IoCheckmark,
   IoCheckmarkOutline,
   IoWarningOutline,
 } from 'react-icons/io5';
+import { LuGripVertical } from 'react-icons/lu';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { TbAlertOctagon } from 'react-icons/tb';
+import Certificate from '#src/assets/icons/certificate.svg';
+import SadFace from '#src/assets/icons/face_sad.svg';
+import ThumbUp from '#src/assets/icons/thumb_up.svg';
+import InformationIcon from '#src/assets/icons/warning_orange.svg';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
+import { trpc } from '#src/utils/trpc.ts';
 
 interface RankingItemProps {
   name: string;
@@ -58,11 +57,7 @@ interface RankingItemProps {
   index?: number;
 }
 
-export const Assignment = ({
-  courseId,
-}: {
-  courseId: string;
-}) => {
+export const Assignment = ({ courseId }: { courseId: string }) => {
   const { user } = useContext(AppContext);
   const { courses } = useContext(AppContext);
 
@@ -93,15 +88,15 @@ export const Assignment = ({
       onSuccess: () => {
         refetchUserProgress();
         customToast(t('dashboard.course.listSaved'), {
-          mode: 'light',
+          closeButton: true,
           color: 'success',
           icon: IoCheckmark,
-          closeButton: true,
+          mode: 'light',
           time: 5000,
         });
         window.scrollTo({
-          top: 0,
           behavior: 'smooth',
+          top: 0,
         });
       },
     }),
@@ -125,7 +120,7 @@ export const Assignment = ({
   const [isUploading, setIsUploading] = useState(false);
 
   const openAssignmentDate = new Date('2025-06-02T00:00:00Z').getTime();
-  const currentTime = new Date().getTime();
+  const currentTime = Date.now();
   const isAssignmentOpen = currentTime >= openAssignmentDate;
   const isBeforeAssignmentOpen = currentTime < openAssignmentDate;
 
@@ -175,8 +170,8 @@ export const Assignment = ({
 
   const handleSaveList = () => {
     saveAssignments.mutate({
-      courseId,
       assignmentsIds: assignmentsOrdered.map((assignment) => assignment.id),
+      courseId,
     });
   };
 
@@ -245,8 +240,8 @@ export const Assignment = ({
         const response = await fetch(
           `/api/course-assignments/submit/${courseId}/${renamedFile.name}`,
           {
-            method: 'POST',
             body: formData,
+            method: 'POST',
           },
         );
 
@@ -257,18 +252,18 @@ export const Assignment = ({
         saveSubmissionDate.mutate({ courseId });
         setWorkErrorMessage('');
         customToast(t('dashboard.course.fileUploaded'), {
-          mode: 'light',
+          closeButton: true,
           color: 'success',
           icon: IoCheckmarkOutline,
-          closeButton: true,
+          mode: 'light',
         });
-      } catch (error) {
+      } catch (_error) {
         setWorkErrorMessage(t('dashboard.careerPortal.fileUploadError'));
         customToast(t('dashboard.careerPortal.fileUploadError'), {
-          mode: 'light',
+          closeButton: true,
           color: 'warning',
           icon: IoWarningOutline,
-          closeButton: true,
+          mode: 'light',
         });
       } finally {
         setIsUploading(false);
@@ -535,7 +530,7 @@ export const Assignment = ({
                     to={''}
                     hash="singleTrialExam"
                     onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      window.scrollTo({ behavior: 'smooth', top: 0 });
                     }}
                   >
                     {t('dashboard.course.viewFinalGrade')}
@@ -804,7 +799,9 @@ const InformationalPanel = ({
 
 const ConfirmAssignmentsOrderDialog = ({
   onConfirm,
-}: { onConfirm: () => void }) => {
+}: {
+  onConfirm: () => void;
+}) => {
   const isMobile = useSmaller('md');
 
   return (

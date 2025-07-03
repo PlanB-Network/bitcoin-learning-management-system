@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
+import { BTC101ID } from '@blms/shared';
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
 import {
   Table,
@@ -15,8 +13,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@blms/ui';
-
-import { BTC101ID } from '@blms/shared';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 
 export const courseCategoriesDashboard = [
@@ -51,31 +49,31 @@ export const CourseTable = ({
     ]),
   );
   const getCourseStatus = (courseName: string | null) => {
-    if (!courseName) return { text: null, bgColor: 'bg-white' };
+    if (!courseName) return { bgColor: 'bg-white', text: null };
     const course = courses.find((c) => c.name === courseName);
-    if (!course) return { text: null, bgColor: 'bg-white' };
+    if (!course) return { bgColor: 'bg-white', text: null };
 
     const progressForCourse = progressMap.get(course.id);
     if (!progressForCourse)
       return {
-        text: t('dashboard.myCourses.notStarted'),
         bgColor: 'bg-newGray-5 hover:bg-newGray-6',
+        text: t('dashboard.myCourses.notStarted'),
       };
 
     const { progressPercentage } = progressForCourse;
     if (progressPercentage === 100)
       return {
-        text: t('dashboard.myCourses.completed'),
         bgColor: 'bg-brightGreen-4 hover:bg-brightGreen-5',
+        text: t('dashboard.myCourses.completed'),
       };
     if (progressPercentage >= 0)
       return {
-        text: t('dashboard.myCourses.inprogress'),
         bgColor: 'bg-darkOrange-4 hover:bg-darkOrange-5',
+        text: t('dashboard.myCourses.inprogress'),
       };
     return {
-      text: t('dashboard.myCourses.notStarted'),
       bgColor: 'bg-newGray-5 hover:bg-newGray-6',
+      text: t('dashboard.myCourses.notStarted'),
     };
   };
 

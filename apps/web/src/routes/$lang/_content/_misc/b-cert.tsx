@@ -1,19 +1,15 @@
+import { BasicModal, Button, cn, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { FaArrowRightLong, FaTelegram } from 'react-icons/fa6';
-
-import { BasicModal, Button, Loader, cn } from '@blms/ui';
-
+import { MdOutlineEmail } from 'react-icons/md';
 import bCertsImage from '#src/assets/about/bcert-presentation.webp?no-inline';
 import { PageLayout } from '#src/components/page-layout.js';
-import { trpc } from '#src/utils/trpc.js';
-
-import { Trans, useTranslation } from 'react-i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { trpc } from '#src/utils/trpc.js';
 import { BCertEvents } from './-components/b-cert-events.tsx';
-
-import { useQuery } from '@tanstack/react-query';
-import { MdOutlineEmail } from 'react-icons/md';
 
 export const Route = createFileRoute('/$lang/_content/_misc/b-cert')({
   component: BCert,
@@ -70,7 +66,7 @@ function BCert() {
     if (isFetched && window.location.href.includes('#bcertevents')) {
       const element = document.querySelector('#bcertevents');
       if (element) {
-        element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   }, [isFetched]);

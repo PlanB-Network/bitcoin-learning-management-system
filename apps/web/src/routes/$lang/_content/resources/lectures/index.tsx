@@ -1,14 +1,11 @@
+import { LANGUAGES_MAP } from '@blms/shared';
+import { Flag, Loader, Switch } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Flag, Loader, Switch } from '@blms/ui';
-
-import { LANGUAGES_MAP } from '@blms/shared';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { LectureCard } from '../-components/cards/lecture-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 

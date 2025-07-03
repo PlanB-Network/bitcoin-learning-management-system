@@ -1,8 +1,7 @@
+import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
-
-import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
 
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 
@@ -33,8 +32,8 @@ export const EventsCarousel = ({
 }: EventsCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
-    containScroll: false,
     breakpoints: { '(min-width: 1024px)': { containScroll: 'trimSnaps' } },
+    containScroll: false,
   });
 
   const scrollPrev = useCallback(() => {

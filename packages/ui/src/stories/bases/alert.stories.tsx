@@ -3,10 +3,22 @@ import { IoMdAlert } from 'react-icons/io';
 import { Alert, AlertDescription, AlertTitle } from '#src/bases/alert.tsx';
 
 const meta: Meta<typeof Alert> = {
+  argTypes: {
+    className: {
+      control: 'text',
+    },
+    hasCloseButton: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    variant: {
+      control: 'select',
+      defaultValue: 'default',
+      options: ['default', 'transparent', 'destructive'],
+    },
+  },
   component: Alert,
-  title: 'Bases/alert',
   parameters: {
-    layout: 'centered',
     backgrounds: {
       default: 'light',
       values: [
@@ -14,22 +26,10 @@ const meta: Meta<typeof Alert> = {
         { name: 'dark', value: '#333333' },
       ],
     },
-  },
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'transparent', 'destructive'],
-      defaultValue: 'default',
-    },
-    hasCloseButton: {
-      control: 'boolean',
-      defaultValue: false,
-    },
-    className: {
-      control: 'text',
-    },
+    layout: 'centered',
   },
   tags: ['autodocs'],
+  title: 'Bases/alert',
 };
 
 export default meta;
@@ -37,7 +37,6 @@ type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
   args: {
-    variant: 'default',
     children: (
       <>
         <AlertTitle icon={IoMdAlert}>Heads up!</AlertTitle>
@@ -46,12 +45,12 @@ export const Default: Story = {
         </AlertDescription>
       </>
     ),
+    variant: 'default',
   },
 };
 
 export const Transparent: Story = {
   args: {
-    variant: 'transparent',
     children: (
       <>
         <AlertTitle icon={IoMdAlert}>Notification</AlertTitle>
@@ -60,12 +59,12 @@ export const Transparent: Story = {
         </AlertDescription>
       </>
     ),
+    variant: 'transparent',
   },
 };
 
 export const Warning: Story = {
   args: {
-    variant: 'warning',
     children: (
       <>
         <AlertTitle icon={IoMdAlert}>Error</AlertTitle>
@@ -74,25 +73,24 @@ export const Warning: Story = {
         </AlertDescription>
       </>
     ),
+    variant: 'warning',
   },
 };
 
 export const DefaultTitleOnly: Story = {
-  name: 'Default (Title Only)',
   args: {
-    variant: 'default',
     children: (
       <>
         <AlertTitle icon={IoMdAlert}>Important Update</AlertTitle>
       </>
     ),
+    variant: 'default',
   },
+  name: 'Default (Title Only)',
 };
 
 export const DefaultDescriptionOnly: Story = {
-  name: 'Default (Description Only)',
   args: {
-    variant: 'default',
     children: (
       <>
         <AlertDescription>
@@ -103,13 +101,13 @@ export const DefaultDescriptionOnly: Story = {
         </AlertDescription>
       </>
     ),
+    variant: 'default',
   },
+  name: 'Default (Description Only)',
 };
 
 export const DefaultWithoutIcon: Story = {
-  name: 'Default (No Icon)',
   args: {
-    variant: 'default',
     children: (
       <>
         <AlertTitle>Simple Alert</AlertTitle>
@@ -118,14 +116,13 @@ export const DefaultWithoutIcon: Story = {
         </AlertDescription>
       </>
     ),
+    variant: 'default',
   },
+  name: 'Default (No Icon)',
 };
 
 export const WithCloseButton: Story = {
-  name: 'With Close Button',
   args: {
-    variant: 'default',
-    hasCloseButton: true,
     children: (
       <>
         <AlertTitle>Critical Warning</AlertTitle>
@@ -134,14 +131,14 @@ export const WithCloseButton: Story = {
         </AlertDescription>
       </>
     ),
+    hasCloseButton: true,
+    variant: 'default',
   },
+  name: 'With Close Button',
 };
 
 export const WithCustomClass: Story = {
-  name: 'Default (Custom Class)',
   args: {
-    variant: 'default',
-    className: 'shadow-lg bg-red-2',
     children: (
       <>
         <AlertTitle icon={IoMdAlert}>Custom Styled Alert</AlertTitle>
@@ -152,5 +149,8 @@ export const WithCustomClass: Story = {
         </AlertDescription>
       </>
     ),
+    className: 'shadow-lg bg-red-2',
+    variant: 'default',
   },
+  name: 'Default (Custom Class)',
 };

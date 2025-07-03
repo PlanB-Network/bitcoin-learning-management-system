@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
 import { TextTag } from '@blms/ui';
+import { useTranslation } from 'react-i18next';
 
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 

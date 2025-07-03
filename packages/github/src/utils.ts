@@ -1,11 +1,9 @@
 import { copyFileSync, existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
 import { readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-
+import type { ChangedAsset, ChangedFile, GitHubSyncConfig } from '@blms/types';
 import type { SimpleGit } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
-
-import type { ChangedAsset, ChangedFile, GitHubSyncConfig } from '@blms/types';
 
 export const timeLog = (str: string) => {
   const key = `[sync] ${str}`;
@@ -68,8 +66,8 @@ const syncRepository = async (
   // Clone the repository if it does not exist locally or if the branch is different
   if (directoryBranch !== branch) {
     const options: Record<string, string> = {
-      '--depth': '1',
       '--branch': branch,
+      '--depth': '1',
     };
 
     // Add authentication header if provided
@@ -189,10 +187,10 @@ async function loadRepoContentFiles(
     const filePath = path.join(repoDir, file.path);
 
     return {
-      path: file.path,
       commit: file.hash,
-      time: statSync(filePath).mtimeMs,
       load: () => readFile(filePath),
+      path: file.path,
+      time: statSync(filePath).mtimeMs,
     };
   });
 
@@ -218,10 +216,10 @@ async function listRepoAssetFiles(
     const assetPath = path.join(repoDir, asset.path);
 
     return {
-      path: asset.path,
       commit: asset.hash,
-      time: statSync(assetPath).mtimeMs,
       load: () => readFile(assetPath),
+      path: asset.path,
+      time: statSync(assetPath).mtimeMs,
     };
   });
 
@@ -293,18 +291,18 @@ export const createSyncRepositories = (options: GitHubSyncConfig) => {
         );
 
         return {
-          files: [...publicFiles, ...privateFiles],
           assets: [...publicAssets, ...privateAssets],
-          publicGit,
-          publicRepoDir,
+          files: [...publicFiles, ...privateFiles],
           privateGit,
           privateRepoDir,
+          publicGit,
+          publicRepoDir,
         };
       }
 
       return {
-        files: publicFiles,
         assets: publicAssets,
+        files: publicFiles,
         publicGit,
         publicRepoDir,
       };

@@ -1,6 +1,5 @@
-import { createSelectSchema } from 'drizzle-zod';
-
 import { couponCode } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 export const couponCodeSchema = createSelectSchema(couponCode);
@@ -13,6 +12,6 @@ export const couponCodeWithOwnerSchema = couponCodeSchema.merge(
 
 export const couponTargetSchema = z.object({
   id: z.string(),
-  type: z.string(),
   name: z.string(),
+  type: z.string(),
 });

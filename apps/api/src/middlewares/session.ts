@@ -1,27 +1,26 @@
-import type { RequestHandler } from 'express';
-import session, { Store, type SessionData } from 'express-session';
-
-import type { SessionConfig } from '@blms/types';
-
 import type { PostgresClient } from '@blms/database';
 import { firstRow, sql } from '@blms/database';
+
+import type { SessionConfig } from '@blms/types';
+import type { RequestHandler } from 'express';
+import session, { type SessionData, Store } from 'express-session';
 import type { Dependencies } from '../dependencies.js';
 
 const getSessionConfig = (config: SessionConfig) => {
   return {
-    name: config.cookieName,
-    secret: config.secret,
-    resave: false,
-    saveUninitialized: true,
-    proxy: true,
     cookie: {
       domain: config.domain,
-      maxAge: config.maxAge,
       httpOnly: true,
+      maxAge: config.maxAge,
       path: '/',
-      secure: config.secure,
       sameSite: 'strict' as const,
+      secure: config.secure,
     },
+    name: config.cookieName,
+    proxy: true,
+    resave: false,
+    saveUninitialized: true,
+    secret: config.secret,
   };
 };
 

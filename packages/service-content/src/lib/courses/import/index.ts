@@ -1,8 +1,3 @@
-import matter from 'gray-matter';
-import type { Token } from 'marked';
-import { marked } from 'marked';
-import { validate as uuidValidate } from 'uuid';
-
 import { firstRow, sql } from '@blms/database';
 import type {
   ChangedAsset,
@@ -11,6 +6,10 @@ import type {
   Proofreading,
   VideosLocalized,
 } from '@blms/types';
+import matter from 'gray-matter';
+import type { Token } from 'marked';
+import { marked } from 'marked';
+import { validate as uuidValidate } from 'uuid';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
@@ -144,17 +143,17 @@ export const groupByCourse = (
       } = parseDetailsFromPath(file.path);
 
       const course: ChangedCourse = groupedCourses.get(coursePath) || {
-        type: 'courses',
+        files: [],
+        fullPath,
         index,
         path: coursePath,
-        fullPath,
-        files: [],
+        type: 'courses',
       };
 
       course.files.push({
         ...file,
-        path: getRelativePath(file.path, coursePath),
         language,
+        path: getRelativePath(file.path, coursePath),
       });
 
       groupedCourses.set(coursePath, course);
@@ -177,10 +176,10 @@ const parseDetailsFromPath = (path: string): CourseDetails => {
   }
 
   return {
-    index: pathElements[1],
-    path: pathElements.slice(0, 2).join('/'),
     fullPath: path,
+    index: pathElements[1],
     language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
+    path: pathElements.slice(0, 2).join('/'),
   };
 };
 
@@ -216,9 +215,9 @@ const extractParts = (markdown: string): Part[] => {
   for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
       parts.push({
+        chapters: [],
         partId: '',
         title: token.text as string,
-        chapters: [],
       });
     } else if (parts.length > 0) {
       const currentPart = parts.at(-1)!;
@@ -230,34 +229,34 @@ const extractParts = (markdown: string): Part[] => {
 
       if (token.type === 'heading' && token.depth === 2) {
         currentPart.chapters.push({
-          chapterId: '',
-          partId: currentPart.partId,
-          title: token.text as string,
-          sections: [],
-          raw_content: '',
-          professorIds: [],
-          releasePlace: '',
-          isOnline: false,
-          isInPerson: false,
-          isCourseReview: false,
-          isCourseExam: false,
-          isCourseConclusion: false,
-          isSingleTrialExam: false,
-          rateWeight: null,
-          isGdprCompliance: false,
-          customTcDisclaimer: '',
-          startDate: null,
-          endDate: null,
-          releaseDate: null,
           addressLine1: '',
           addressLine2: '',
           addressLine3: '',
-          timeZone: '',
-          liveUrl: '',
-          chatUrl: '',
           availableSeats: -1,
-          remainingSeats: -1,
+          chapterId: '',
+          chatUrl: '',
+          customTcDisclaimer: '',
+          endDate: null,
+          isCourseConclusion: false,
+          isCourseExam: false,
+          isCourseReview: false,
+          isGdprCompliance: false,
+          isInPerson: false,
+          isOnline: false,
+          isSingleTrialExam: false,
           liveLanguage: '',
+          liveUrl: '',
+          partId: currentPart.partId,
+          professorIds: [],
+          rateWeight: null,
+          raw_content: '',
+          releaseDate: null,
+          releasePlace: '',
+          remainingSeats: -1,
+          sections: [],
+          startDate: null,
+          timeZone: '',
+          title: token.text as string,
         });
       } else if (currentPart.chapters.length > 0) {
         const currentChapter = currentPart.chapters.at(-1)!;
@@ -404,11 +403,11 @@ export const createUpdateCourses = ({
           courseId = parsedCourse.id;
 
           const defaults = {
-            is_archived: false,
-            requires_payment: false,
-            is_planb_school: false,
-            is_gdpr_compliance: false,
             format: 'online',
+            is_archived: false,
+            is_gdpr_compliance: false,
+            is_planb_school: false,
+            requires_payment: false,
             teaching_format: 'self_paced',
           };
 
@@ -726,8 +725,8 @@ export const createUpdateCourses = ({
                     }
                     return {
                       course_id: courseId,
-                      part_index: index + 1,
                       part_id: p.partId,
+                      part_index: index + 1,
                     };
                   }),
                 )}
@@ -742,8 +741,8 @@ export const createUpdateCourses = ({
                 INSERT INTO content.course_parts_localized ${transaction(
                   parts.map((part) => ({
                     course_id: courseId,
-                    part_id: part.partId,
                     language: file.language,
+                    part_id: part.partId,
                     title: part.title,
                   })),
                   'course_id',
@@ -770,10 +769,10 @@ export const createUpdateCourses = ({
                             );
                           }
                           return {
+                            chapter_id: c.chapterId,
+                            chapter_index: chapterIndex + 1,
                             course_id: courseId,
                             part_id: part.partId,
-                            chapter_index: chapterIndex + 1,
-                            chapter_id: c.chapterId,
                           };
                         }),
                       ),
@@ -790,34 +789,34 @@ export const createUpdateCourses = ({
                 const formattedChapters = parts.flatMap((part) =>
                   part.chapters.map((chapter) => {
                     return {
-                      course_id: courseId,
-                      chapter_id: chapter.chapterId,
-                      language: file.language,
-                      title: chapter.title,
-                      sections: chapter.sections,
-                      raw_content: chapter.raw_content.trim(),
-                      release_place: chapter.releasePlace,
-                      is_online: chapter.isOnline,
-                      is_in_person: chapter.isInPerson,
-                      is_course_review: chapter.isCourseReview,
-                      is_course_exam: chapter.isCourseExam,
-                      is_course_conclusion: chapter.isCourseConclusion,
-                      is_single_trial_exam: chapter.isSingleTrialExam,
-                      rate_weight: chapter.rateWeight,
-                      is_gdpr_compliance: chapter.isGdprCompliance,
-                      custom_tc_disclaimer: chapter.customTcDisclaimer,
-                      start_date: chapter.startDate,
-                      end_date: chapter.endDate,
-                      release_date: chapter.releaseDate,
-                      timezone: chapter.timeZone,
                       address_line_1: chapter.addressLine1,
                       address_line_2: chapter.addressLine2,
                       address_line_3: chapter.addressLine3,
-                      live_url: chapter.liveUrl,
-                      chat_url: chapter.chatUrl,
                       available_seats: chapter.availableSeats,
-                      remaining_seats: chapter.availableSeats,
+                      chapter_id: chapter.chapterId,
+                      chat_url: chapter.chatUrl,
+                      course_id: courseId,
+                      custom_tc_disclaimer: chapter.customTcDisclaimer,
+                      end_date: chapter.endDate,
+                      is_course_conclusion: chapter.isCourseConclusion,
+                      is_course_exam: chapter.isCourseExam,
+                      is_course_review: chapter.isCourseReview,
+                      is_gdpr_compliance: chapter.isGdprCompliance,
+                      is_in_person: chapter.isInPerson,
+                      is_online: chapter.isOnline,
+                      is_single_trial_exam: chapter.isSingleTrialExam,
+                      language: file.language,
                       live_language: chapter.liveLanguage,
+                      live_url: chapter.liveUrl,
+                      rate_weight: chapter.rateWeight,
+                      raw_content: chapter.raw_content.trim(),
+                      release_date: chapter.releaseDate,
+                      release_place: chapter.releasePlace,
+                      remaining_seats: chapter.availableSeats,
+                      sections: chapter.sections,
+                      start_date: chapter.startDate,
+                      timezone: chapter.timeZone,
+                      title: chapter.title,
                     };
                   }),
                 );
@@ -854,15 +853,15 @@ export const createUpdateCourses = ({
 
                 const formattedChapters2 = parts.flatMap((part, partIndex) =>
                   part.chapters.map((chapter, chapterIndex) => ({
-                    course_id: courseId,
-                    chapter_id: chapter.chapterId,
-                    part: partIndex + 1,
                     chapter: chapterIndex + 1,
+                    chapter_id: chapter.chapterId,
+                    course_id: courseId,
                     language: file.language,
-                    title: chapter.title,
-                    sections: chapter.sections,
-                    raw_content: chapter.raw_content.trim(),
+                    part: partIndex + 1,
                     professorIds: chapter.professorIds,
+                    raw_content: chapter.raw_content.trim(),
+                    sections: chapter.sections,
+                    title: chapter.title,
                   })),
                 );
 

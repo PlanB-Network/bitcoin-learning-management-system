@@ -1,10 +1,8 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Button, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { z } from 'zod';
-
-import { Button, Loader } from '@blms/ui';
-
-import { useQuery } from '@tanstack/react-query';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { MainLayout } from '#src/components/main-layout.js';
@@ -12,17 +10,17 @@ import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute('/$lang/_content/events/$eventId')({
+  component: EventDetails,
   params: {
     parse: (params) => ({
-      lang: z.string().parse(params.lang),
       eventId: z.string().parse(params.eventId),
+      lang: z.string().parse(params.lang),
     }),
     stringify: ({ lang, eventId }) => ({
-      lang: lang,
       eventId: `${eventId}`,
+      lang: lang,
     }),
   },
-  component: EventDetails,
 });
 
 function EventDetails() {

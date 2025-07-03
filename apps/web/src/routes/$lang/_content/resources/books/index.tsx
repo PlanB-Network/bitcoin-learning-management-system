@@ -1,15 +1,12 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
 import type { JoinedBook } from '@blms/types';
 import { Loader } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 

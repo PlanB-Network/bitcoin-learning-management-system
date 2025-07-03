@@ -99,10 +99,10 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
   };
 
   return {
+    deleteOldReadNotifications,
     getAllUids,
     getUidsByCourse,
     getUidsByEvent,
     getUnpublishedCourseAnnouncementsIds,
-    deleteOldReadNotifications,
   };
 };

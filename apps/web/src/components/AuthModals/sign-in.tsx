@@ -1,10 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useCallback } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BasicModal,
   Button,
@@ -15,10 +8,14 @@ import {
   FormLabel,
   Input,
 } from '@blms/ui';
-
-import { trpc } from '../../utils/trpc.ts';
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { useCallback } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
+import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
 
 interface SignInFormData {
@@ -39,20 +36,30 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
   const passwordRequired = t('auth.passwordRequired');
 
   const signInSchema = z.object({
-    username: z.string().min(1, { message: usernameRequired }),
     password: z.string().min(1, { message: passwordRequired }),
+    username: z.string().min(1, { message: usernameRequired }),
   });
 
   const methods = useForm({
-    resolver: zodResolver(signInSchema),
     defaultValues: {
-      username: '',
       password: '',
+      username: '',
     },
+    resolver: zodResolver(signInSchema),
   });
 
   const credentialsLogin = useMutation(
     trpc.auth.credentials.login.mutationOptions({
+      onError: () => {
+        methods.setError('username', {
+          message: t('auth.errors.invalidCredentials'),
+          type: 'manual',
+        });
+        methods.setError('password', {
+          message: t('auth.errors.invalidCredentials'),
+          type: 'manual',
+        });
+      },
       onSuccess: () => {
         onClose();
         if (redirectTo) {
@@ -60,16 +67,6 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
         } else {
           window.location.reload();
         }
-      },
-      onError: () => {
-        methods.setError('username', {
-          type: 'manual',
-          message: t('auth.errors.invalidCredentials'),
-        });
-        methods.setError('password', {
-          type: 'manual',
-          message: t('auth.errors.invalidCredentials'),
-        });
       },
     }),
   );

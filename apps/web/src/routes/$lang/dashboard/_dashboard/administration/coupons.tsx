@@ -1,21 +1,18 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
-
-import { BasicModal, Button, DividerSimple, TextTag, cn } from '@blms/ui';
-import Warning from '#src/assets/icons/warning_orange.svg';
-
-import { AppContext } from '#src/providers/context.tsx';
-
 import { UserPermission, UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
+import { BasicModal, Button, cn, DividerSimple, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { useContext, useEffect, useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FaSliders } from 'react-icons/fa6';
 import { LuChevronDown, LuPlus } from 'react-icons/lu';
+import Warning from '#src/assets/icons/warning_orange.svg';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import SortableTableHeader from '../-components/sortable-table-header.tsx';
 
@@ -63,6 +60,8 @@ function AdminCoupons() {
 
   const coupons = useQuery(
     trpc.content.listCouponCodes.queryOptions({
+      limit: 10_000,
+      page,
       singleUse:
         filters.has('singleUse') && filters.has('multiUse')
           ? null
@@ -73,8 +72,6 @@ function AdminCoupons() {
               : null,
       sortBy: sortKey ?? 'createdAt',
       sortDirection,
-      limit: 10_000,
-      page,
     }),
   );
 
@@ -138,17 +135,17 @@ function AdminCoupons() {
   // On form submit
   const handleSubmit = () => {
     const options = {
+      itemId: formItemId,
       reductionPercentage: formPercentage,
       singleUse: formSingleUse,
-      itemId: formItemId,
       ...(formSingleUse
         ? {
-            numberOfCodes: formNumberOfCodes,
             code: null,
+            numberOfCodes: formNumberOfCodes,
           }
         : {
-            maxUses: formMaxUses,
             code: formCode,
+            maxUses: formMaxUses,
           }),
     };
 

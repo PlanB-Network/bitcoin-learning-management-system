@@ -13,11 +13,11 @@ import {
 } from '#src/bases/dialog.tsx';
 
 const meta: Meta<typeof Dialog> = {
-  title: 'Bases/dialog',
+  argTypes: {},
   component: Dialog,
   parameters: {},
   tags: ['autodocs'],
-  argTypes: {},
+  title: 'Bases/dialog',
 };
 
 export default meta;
@@ -183,7 +183,7 @@ export const DialogWithLongContent: Story = {
         </DialogHeader>
         <div className="py-4">
           {Array.from({ length: 5 }).map((_, i) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            // biome-ignore lint/suspicious/noArrayIndexKey: explanation
             <p key={i} className="mb-2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

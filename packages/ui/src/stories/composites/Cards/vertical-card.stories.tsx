@@ -14,37 +14,32 @@ const buttonVariants = [
 const cardColors = ['grey', 'maroon', 'orange', 'lightgrey'] as const;
 
 const meta: Meta<typeof VerticalCard> = {
-  title: 'Composites/Cards/vertical-card',
-  component: VerticalCard,
-  parameters: {
-    layout: 'centered',
+  args: {
+    buttonLink: '/course/bitcoin',
+    buttonText: 'Start Course',
+    buttonVariant: 'primary',
+    cardColor: 'grey',
+    category: 'Course',
+    excerpt:
+      'Learn the basics of Bitcoin technology in this comprehensive course.',
+    externalLink: false,
+    flagsOnMobile: false,
+    imageSrc: 'https://placehold.co/320x240',
+    imgClassName: 'w-full mb-1 rounded-[10px] md:rounded-3xl',
+    isScreenMd: true,
+    languages: ['en', 'fr'],
+    onHoverArrow: true,
+    onHoverCardColorChange: false,
+    secondaryButtonText: undefined,
+    secondaryButtonVariant: 'secondary',
+    secondaryLink: undefined,
+    subtitle: 'Introduction to cryptocurrency',
+    tags: ['Beginner', 'Free'],
+    title: 'Bitcoin Fundamentals',
   },
-  tags: ['autodocs'],
   argTypes: {
-    imageSrc: {
+    buttonLink: {
       control: 'text',
-    },
-    imgClassName: {
-      control: 'text',
-    },
-    title: {
-      control: 'text',
-    },
-    subtitle: {
-      control: 'text',
-    },
-    category: {
-      control: 'text',
-    },
-    excerpt: {
-      control: 'text',
-    },
-    cardColor: {
-      control: { type: 'select' },
-      options: cardColors,
-    },
-    onHoverCardColorChange: {
-      control: 'boolean',
     },
     buttonText: {
       control: 'text',
@@ -53,8 +48,39 @@ const meta: Meta<typeof VerticalCard> = {
       control: { type: 'select' },
       options: buttonVariants,
     },
-    buttonLink: {
+    cardColor: {
+      control: { type: 'select' },
+      options: cardColors,
+    },
+    category: {
       control: 'text',
+    },
+    excerpt: {
+      control: 'text',
+    },
+    externalLink: {
+      control: 'boolean',
+    },
+    flagsOnMobile: {
+      control: 'boolean',
+    },
+    imageSrc: {
+      control: 'text',
+    },
+    imgClassName: {
+      control: 'text',
+    },
+    isScreenMd: {
+      control: 'boolean',
+    },
+    languages: {
+      control: 'object',
+    },
+    onHoverArrow: {
+      control: 'boolean',
+    },
+    onHoverCardColorChange: {
+      control: 'boolean',
     },
     secondaryButtonText: {
       control: 'text',
@@ -66,48 +92,22 @@ const meta: Meta<typeof VerticalCard> = {
     secondaryLink: {
       control: 'text',
     },
-    externalLink: {
-      control: 'boolean',
-    },
-    onHoverArrow: {
-      control: 'boolean',
-    },
-    languages: {
-      control: 'object',
+    subtitle: {
+      control: 'text',
     },
     tags: {
       control: 'object',
     },
-    flagsOnMobile: {
-      control: 'boolean',
-    },
-    isScreenMd: {
-      control: 'boolean',
+    title: {
+      control: 'text',
     },
   },
-  args: {
-    imageSrc: 'https://placehold.co/320x240',
-    imgClassName: 'w-full mb-1 rounded-[10px] md:rounded-3xl',
-    title: 'Bitcoin Fundamentals',
-    subtitle: 'Introduction to cryptocurrency',
-    category: 'Course',
-    excerpt:
-      'Learn the basics of Bitcoin technology in this comprehensive course.',
-    cardColor: 'grey',
-    onHoverCardColorChange: false,
-    buttonText: 'Start Course',
-    buttonVariant: 'primary',
-    buttonLink: '/course/bitcoin',
-    secondaryButtonText: undefined,
-    secondaryButtonVariant: 'secondary',
-    secondaryLink: undefined,
-    externalLink: false,
-    onHoverArrow: true,
-    languages: ['en', 'fr'],
-    tags: ['Beginner', 'Free'],
-    flagsOnMobile: false,
-    isScreenMd: true,
+  component: VerticalCard,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/Cards/vertical-card',
 };
 
 export default meta;
@@ -120,27 +120,27 @@ export const Default: Story = {
 
 export const WithTwoButtons: Story = {
   args: {
-    title: 'Advanced Trading',
-    category: 'Premium Course',
     buttonText: 'Start Learning',
+    category: 'Premium Course',
     secondaryButtonText: 'Preview',
     secondaryLink: '/preview/trading',
+    title: 'Advanced Trading',
   },
 };
 
 export const WithManyLanguages: Story = {
   args: {
-    title: 'Global Economics',
-    languages: ['en', 'fr', 'es', 'de', 'ja'],
     flagsOnMobile: true,
+    languages: ['en', 'fr', 'es', 'de', 'ja'],
+    title: 'Global Economics',
   },
 };
 
 export const DisabledButton: Story = {
   args: {
-    title: 'Coming Soon',
-    subtitle: 'Course in development',
-    buttonText: 'Start Course',
     buttonLink: undefined,
+    buttonText: 'Start Course',
+    subtitle: 'Course in development',
+    title: 'Coming Soon',
   },
 };

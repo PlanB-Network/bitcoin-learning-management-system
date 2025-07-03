@@ -2,10 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from '#src/bases/badge.tsx';
 
 const meta: Meta<typeof Badge> = {
+  argTypes: {
+    asChild: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    children: {
+      control: 'text',
+    },
+    className: {
+      control: 'text',
+    },
+    size: {
+      control: 'select',
+      defaultValue: 'small',
+      options: ['small', 'verySmall'],
+    },
+    variant: {
+      control: 'select',
+      defaultValue: 'darkOrange',
+      options: ['darkOrange', 'lightOrange', 'darkMaroon'],
+    },
+  },
   component: Badge,
-  title: 'Bases/badge',
   parameters: {
-    layout: 'centered',
     backgrounds: {
       default: 'light',
       values: [
@@ -13,102 +33,79 @@ const meta: Meta<typeof Badge> = {
         { name: 'dark', value: '#333333' },
       ],
     },
-  },
-  argTypes: {
-    children: {
-      control: 'text',
-    },
-    size: {
-      control: 'select',
-      options: ['small', 'verySmall'],
-      defaultValue: 'small',
-    },
-    variant: {
-      control: 'select',
-      options: ['darkOrange', 'lightOrange', 'darkMaroon'],
-      defaultValue: 'darkOrange',
-    },
-    asChild: {
-      control: 'boolean',
-      defaultValue: false,
-    },
-    className: {
-      control: 'text',
-    },
+    layout: 'centered',
   },
   tags: ['autodocs'],
+  title: 'Bases/badge',
 };
 
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
 export const DefaultDarkOrangeSmall: Story = {
-  name: 'Default (Dark Orange Small)',
   args: {
     children: 'Badge',
   },
+  name: 'Default (Dark Orange Small)',
 };
 
 export const VerySmallSize: Story = {
-  name: 'Dark Orange Very Small',
   args: {
     children: 'Very Small',
     size: 'verySmall',
     variant: 'darkOrange',
   },
+  name: 'Dark Orange Very Small',
 };
 
 export const LightOrangeSmall: Story = {
-  name: 'Light Orange Small',
   args: {
     children: 'Light Orange',
-    variant: 'lightOrange',
     size: 'small',
+    variant: 'lightOrange',
   },
+  name: 'Light Orange Small',
 };
 
 export const LightOrangeVerySmall: Story = {
-  name: 'Light Orange Very Small',
   args: {
     children: 'VS Light Orange',
-    variant: 'lightOrange',
     size: 'verySmall',
+    variant: 'lightOrange',
   },
+  name: 'Light Orange Very Small',
 };
 
 export const DarkMaroonSmall: Story = {
-  name: 'Dark Maroon Small',
   args: {
     children: 'Dark Maroon',
-    variant: 'darkMaroon',
     size: 'small',
+    variant: 'darkMaroon',
   },
+  name: 'Dark Maroon Small',
 };
 
 export const DarkMaroonVerySmall: Story = {
-  name: 'Dark Maroon Very Small',
   args: {
     children: 'VS Dark Maroon',
-    variant: 'darkMaroon',
     size: 'verySmall',
+    variant: 'darkMaroon',
   },
+  name: 'Dark Maroon Very Small',
 };
 
 export const WithLongText: Story = {
-  name: 'With Long Text',
   args: {
     children: 'This is a longer badge text',
-    variant: 'lightOrange',
     size: 'small',
+    variant: 'lightOrange',
   },
+  name: 'With Long Text',
 };
 
 export const AsChildLink: Story = {
-  name: 'As Child (Link)',
   args: {
     asChild: true,
-    variant: 'darkMaroon',
-    size: 'small',
     children: (
       <a
         href="https://planb.network"
@@ -119,15 +116,18 @@ export const AsChildLink: Story = {
         Link Badge
       </a>
     ),
+    size: 'small',
+    variant: 'darkMaroon',
   },
+  name: 'As Child (Link)',
 };
 
 export const WithCustomClass: Story = {
-  name: 'With Custom Class',
   args: {
     children: 'Custom CSS',
-    variant: 'darkOrange',
-    size: 'small',
     className: 'opacity-75 rotate-3',
+    size: 'small',
+    variant: 'darkOrange',
   },
+  name: 'With Custom Class',
 };

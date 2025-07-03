@@ -1,8 +1,18 @@
+import {
+  CareerCompanySize,
+  CareerLanguageLevel,
+  CareerRemote,
+  CareerRoleLevel,
+  JobCategory,
+} from '@blms/constants';
+import { COURSES_CAREER_ACCESS } from '@blms/shared';
 import type { JobTitle } from '@blms/types';
 import {
   BasicModal,
   Button,
   ButtonWithArrow,
+  cn,
+  customToast,
   DialogClose,
   Form,
   FormControl,
@@ -20,10 +30,9 @@ import {
   SelectValue,
   Switch,
   Textarea,
-  cn,
-  customToast,
 } from '@blms/ui';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { useContext, useEffect, useRef, useState } from 'react';
@@ -37,18 +46,8 @@ import { IoCheckmarkOutline, IoWarningOutline } from 'react-icons/io5';
 import { MdOutlineEdit } from 'react-icons/md';
 import { z } from 'zod';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { trpc } from '#src/utils/trpc.ts';
-
-import {
-  CareerCompanySize,
-  CareerLanguageLevel,
-  CareerRemote,
-  CareerRoleLevel,
-  JobCategory,
-} from '@blms/constants';
-import { COURSES_CAREER_ACCESS } from '@blms/shared';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { AppContext } from '#src/providers/context.tsx';
+import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/career-portal',
@@ -72,19 +71,6 @@ function CareerPortal() {
   const { user } = useContext(AppContext);
 
   const Step1FormSchema = z.object({
-    firstName: z
-      .string()
-      .min(1, { message: t('courses.review.fieldRequired') }),
-    lastName: z.string().optional(),
-    country: z.string().min(1, { message: t('courses.review.fieldRequired') }),
-    email: z
-      .string()
-      .email({ message: t('dashboard.careerPortal.provideValidEmail') }),
-    linkedin: z.string().optional(),
-    github: z.string().optional(),
-    telegram: z.string().optional(),
-    otherContact: z.string().optional(),
-    isBitcoinCommunityParticipant: z.boolean().default(false),
     bitcoinCommunityText: z
       .string()
       .max(600, {
@@ -93,7 +79,6 @@ function CareerPortal() {
         }),
       })
       .optional(),
-    isBitcoinProjectParticipant: z.boolean().default(false),
     bitcoinProjectText: z
       .string()
       .max(600, {
@@ -102,6 +87,16 @@ function CareerPortal() {
         }),
       })
       .optional(),
+    country: z.string().min(1, { message: t('courses.review.fieldRequired') }),
+    email: z
+      .string()
+      .email({ message: t('dashboard.careerPortal.provideValidEmail') }),
+    firstName: z
+      .string()
+      .min(1, { message: t('courses.review.fieldRequired') }),
+    github: z.string().optional(),
+    isBitcoinCommunityParticipant: z.boolean().default(false),
+    isBitcoinProjectParticipant: z.boolean().default(false),
     languages: z
       .array(
         z.object({
@@ -110,25 +105,29 @@ function CareerPortal() {
         }),
       )
       .min(1, { message: t('dashboard.careerPortal.languageRequired') }),
+    lastName: z.string().optional(),
+    linkedin: z.string().optional(),
+    otherContact: z.string().optional(),
+    telegram: z.string().optional(),
   });
 
   const Step2FormSchema = z.object({
+    availabilityStart: z.string().optional(),
+    companySizes: z
+      .array(z.nativeEnum(CareerCompanySize))
+      .min(1, { message: t('dashboard.careerPortal.companySizeRequired') }),
+    expectedSalary: z.string().optional(),
     isAvailableFullTime: z.boolean().default(true),
     remoteWorkPreference: z.nativeEnum(CareerRemote).default(CareerRemote.Yes),
-    expectedSalary: z.string().optional(),
-    availabilityStart: z.string().optional(),
     roles: z
       .array(
         z.object({
-          roleId: z.string(),
           level: z.nativeEnum(CareerRoleLevel),
+          roleId: z.string(),
         }),
       )
       .min(1, { message: t('dashboard.careerPortal.roleRequired') })
       .max(3, { message: t('dashboard.careerPortal.maxRoles') }),
-    companySizes: z
-      .array(z.nativeEnum(CareerCompanySize))
-      .min(1, { message: t('dashboard.careerPortal.companySizeRequired') }),
   });
 
   const Step3FormSchema = z.object({
@@ -144,8 +143,8 @@ function CareerPortal() {
   });
 
   const Step4FormSchema = z.object({
-    areTermsAccepted: z.boolean().default(false),
     allowReceivingEmails: z.boolean().default(false),
+    areTermsAccepted: z.boolean().default(false),
   });
 
   const FormSchema = z.object({
@@ -240,25 +239,25 @@ function CareerPortal() {
       formData.append('file', file);
 
       const response = await fetch(`/api/career/cvs/${careerProfile?.id}`, {
-        method: 'POST',
         body: formData,
+        method: 'POST',
       });
 
       if (response.status === 200) {
         form.setValue('cvUrl', `/api/files/cvs/${careerProfile?.id}`);
         setCvErrorMessage('');
         customToast(t('dashboard.careerPortal.fileUploaded'), {
-          mode: 'light',
+          closeButton: true,
           color: 'success',
           icon: IoCheckmarkOutline,
-          closeButton: true,
+          mode: 'light',
         });
       } else {
         customToast(t('dashboard.careerPortal.fileUploadError'), {
-          mode: 'light',
+          closeButton: true,
           color: 'warning',
           icon: IoWarningOutline,
-          closeButton: true,
+          mode: 'light',
         });
       }
     }
@@ -291,33 +290,33 @@ function CareerPortal() {
   }, {});
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: standardSchemaResolver(schemas[step - 1]),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      country: '',
-      email: '',
-      linkedin: '',
-      github: '',
-      telegram: '',
-      otherContact: '',
-      isBitcoinCommunityParticipant: false,
-      bitcoinCommunityText: '',
-      isBitcoinProjectParticipant: false,
-      bitcoinProjectText: '',
-      isAvailableFullTime: true,
-      remoteWorkPreference: CareerRemote.Yes,
-      expectedSalary: '',
-      availabilityStart: '',
-      cvUrl: '',
-      motivationLetter: '',
-      areTermsAccepted: false,
       allowReceivingEmails: false,
-      languages: [],
-      roles: [],
+      areTermsAccepted: false,
+      availabilityStart: '',
+      bitcoinCommunityText: '',
+      bitcoinProjectText: '',
       companySizes: [],
+      country: '',
+      cvUrl: '',
+      email: '',
+      expectedSalary: '',
+      firstName: '',
+      github: '',
+      isAvailableFullTime: true,
+      isBitcoinCommunityParticipant: false,
+      isBitcoinProjectParticipant: false,
+      languages: [],
+      lastName: '',
+      linkedin: '',
+      motivationLetter: '',
+      otherContact: '',
+      remoteWorkPreference: CareerRemote.Yes,
+      roles: [],
+      telegram: '',
     },
     mode: 'onTouched',
+    resolver: standardSchemaResolver(schemas[step - 1]),
   });
 
   const {
@@ -351,39 +350,39 @@ function CareerPortal() {
 
   useEffect(() => {
     form.reset({
-      firstName: careerProfile?.firstName ?? '',
-      lastName: careerProfile?.lastName ?? '',
+      allowReceivingEmails: careerProfile?.allowReceivingEmails ?? false,
+      areTermsAccepted: careerProfile?.areTermsAccepted ?? false,
+      availabilityStart: careerProfile?.availabilityStart ?? '',
+      bitcoinCommunityText: careerProfile?.bitcoinCommunityText ?? '',
+      bitcoinProjectText: careerProfile?.bitcoinProjectText ?? '',
+      companySizes: careerProfile?.companySizes ?? ([] as CareerCompanySize[]),
       country: careerProfile?.country ?? '',
+      cvUrl: careerProfile?.cvUrl ?? '',
       email: careerProfile?.email ?? '',
-      linkedin: careerProfile?.linkedin ?? '',
+      expectedSalary: careerProfile?.expectedSalary ?? '',
+      firstName: careerProfile?.firstName ?? '',
       github: careerProfile?.github ?? '',
-      telegram: careerProfile?.telegram ?? '',
-      otherContact: careerProfile?.otherContact ?? '',
+      isAvailableFullTime: careerProfile?.isAvailableFullTime ?? true,
       isBitcoinCommunityParticipant:
         careerProfile?.isBitcoinCommunityParticipant ?? false,
-      bitcoinCommunityText: careerProfile?.bitcoinCommunityText ?? '',
       isBitcoinProjectParticipant:
         careerProfile?.isBitcoinProjectParticipant ?? false,
-      bitcoinProjectText: careerProfile?.bitcoinProjectText ?? '',
-      isAvailableFullTime: careerProfile?.isAvailableFullTime ?? true,
+      languages: careerProfile?.languages ?? [],
+      lastName: careerProfile?.lastName ?? '',
+      linkedin: careerProfile?.linkedin ?? '',
+      motivationLetter: careerProfile?.motivationLetter ?? '',
+      otherContact: careerProfile?.otherContact ?? '',
       remoteWorkPreference:
         careerProfile?.remoteWorkPreference ?? CareerRemote.Yes,
-      expectedSalary: careerProfile?.expectedSalary ?? '',
-      availabilityStart: careerProfile?.availabilityStart ?? '',
-      cvUrl: careerProfile?.cvUrl ?? '',
-      motivationLetter: careerProfile?.motivationLetter ?? '',
-      areTermsAccepted: careerProfile?.areTermsAccepted ?? false,
-      allowReceivingEmails: careerProfile?.allowReceivingEmails ?? false,
-      languages: careerProfile?.languages ?? [],
       roles: careerProfile?.roles ?? [],
-      companySizes: careerProfile?.companySizes ?? ([] as CareerCompanySize[]),
+      telegram: careerProfile?.telegram ?? '',
     });
     setValidatedSteps(getValidatedSteps());
   }, [careerProfile, form.reset]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: explanation
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ behavior: 'smooth', top: 0 });
   }, [step]);
 
   const inputRowFlexClasses = 'flex max-md:flex-col gap-5 md:gap-[70px]';
@@ -409,10 +408,10 @@ function CareerPortal() {
             updateCareerProfile.mutate(form.getValues());
             if (step === 4) {
               customToast(t('dashboard.careerPortal.applicationSaved'), {
-                mode: 'light',
+                closeButton: true,
                 color: 'success',
                 icon: IoCheckmarkOutline,
-                closeButton: true,
+                mode: 'light',
               });
             }
           }, console.error)}
@@ -687,10 +686,10 @@ function CareerPortal() {
                           )}
                           options={Object.values(CareerLanguageLevel).map(
                             (level) => ({
-                              value: level,
                               label: t(
                                 `dashboard.careerPortal.languageLevels.${level}`,
                               ),
+                              value: level,
                             }),
                           )}
                           className="w-full md:max-w-[450px]"
@@ -835,8 +834,8 @@ function CareerPortal() {
                     type="button"
                     onClick={() => {
                       rolesAppend({
-                        roleId: selectedRole,
                         level: CareerRoleLevel.Student,
+                        roleId: selectedRole,
                       });
                     }}
                     disabled={
@@ -892,10 +891,10 @@ function CareerPortal() {
                           )}
                           options={Object.values(CareerRoleLevel).map(
                             (roleLevel) => ({
-                              value: roleLevel,
                               label: t(
                                 `dashboard.careerPortal.roleLevels.${roleLevel}`,
                               ),
+                              value: roleLevel,
                             }),
                           )}
                           className="w-full md:max-w-[450px]"
@@ -930,10 +929,10 @@ function CareerPortal() {
                 )}
                 options={Object.values(CareerCompanySize).map(
                   (companySize) => ({
-                    value: companySize,
                     label: t(
                       `dashboard.careerPortal.companySizes.${companySize}`,
                     ),
+                    value: companySize,
                   }),
                 )}
                 mandatory
@@ -947,12 +946,12 @@ function CareerPortal() {
                   label={t('dashboard.careerPortal.availability')}
                   options={[
                     {
-                      value: true,
                       label: t('dashboard.careerPortal.fullTime'),
+                      value: true,
                     },
                     {
-                      value: false,
                       label: t('dashboard.careerPortal.partTime'),
+                      value: false,
                     },
                   ]}
                   mandatory
@@ -963,10 +962,10 @@ function CareerPortal() {
                   control={form.control}
                   label={t('dashboard.careerPortal.remoteWorkPreference')}
                   options={Object.values(CareerRemote).map((remote) => ({
-                    value: remote,
                     label: t(
                       `dashboard.careerPortal.remoteWorkPreferences.${remote}`,
                     ),
+                    value: remote,
                   }))}
                   mandatory
                 />
@@ -1238,7 +1237,7 @@ const StepsProcessMobile = ({ currentStep }: { currentStep: number }) => {
       <div className="flex gap-1 w-full">
         {Array.from({ length: 4 }, (_, index) => (
           <div
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            // biome-ignore lint/suspicious/noArrayIndexKey: explanation
             key={index}
             className={cn(
               'w-full h-1.5 rounded-full',

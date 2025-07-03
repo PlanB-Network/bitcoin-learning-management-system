@@ -30,13 +30,13 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
     <div
       className={`${cssClasses}`}
       style={{
-        padding: '10px',
-        width: '100%',
         // maxHeight: `${isSelected ? '100%' : ''}`,
         height: `${isSelected ? 'fit-content' : '100%'}`,
+        overflow: `${isSelected ? 'hidden' : 'hidden'}`,
+        padding: '10px',
         paddingLeft: 8,
         paddingTop: 8,
-        overflow: `${isSelected ? 'hidden' : 'hidden'}`,
+        width: '100%',
       }}
       onPointerEnter={() => {
         setIsSelected(!isSelected);

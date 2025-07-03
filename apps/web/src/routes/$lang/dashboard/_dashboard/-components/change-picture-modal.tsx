@@ -5,12 +5,12 @@ import 'cropperjs/dist/cropper.css';
 
 import {
   Button,
+  cn,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  cn,
 } from '@blms/ui';
 
 import spinner from '#src/assets/icons/spinner.svg';

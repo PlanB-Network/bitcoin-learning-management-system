@@ -1,13 +1,11 @@
+import type { CheckoutData, JoinedEvent } from '@blms/types';
+import { Button } from '@blms/ui';
+import { useMutation } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext } from 'react';
 import { Trans } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
-
-import type { CheckoutData, JoinedEvent } from '@blms/types';
-import { Button } from '@blms/ui';
-
-import { useMutation } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { AppContext } from '#src/providers/context.js';

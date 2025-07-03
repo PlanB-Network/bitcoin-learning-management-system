@@ -1,22 +1,20 @@
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { LegalMarkdownComponent } from '../../-components/public-communication/legal-markdown.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/public-communication/legals/$name',
 )({
+  component: LegalInformationTab,
   params: {
     parse: (params) => ({
       name: z.string().parse(params.name),
     }),
     stringify: ({ name }) => ({ name: `${name}` }),
   },
-  component: LegalInformationTab,
 });
 
 function LegalInformationTab() {
@@ -26,8 +24,8 @@ function LegalInformationTab() {
 
   const { data: legal, isFetched } = useQuery(
     trpc.content.getLegal.queryOptions({
-      name,
       language: i18n.language,
+      name,
     }),
   );
 

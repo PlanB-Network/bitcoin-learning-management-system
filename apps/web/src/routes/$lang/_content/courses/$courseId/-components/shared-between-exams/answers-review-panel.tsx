@@ -27,7 +27,7 @@ export const AnswersReviewPanel = ({
       <section className="flex flex-wrap gap-2 md:gap-2 md:py-4 w-full max-md:justify-center">
         {examResults.questions.map((q, index) => (
           <button
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            // biome-ignore lint/suspicious/noArrayIndexKey: explanation
             key={index}
             type="button"
             onClick={() => setSelectedQuestion(index)}
@@ -58,7 +58,7 @@ export const AnswersReviewPanel = ({
           {examResults.questions[selectedQuestion].answers.map(
             (answer, answerIndex) => (
               <CompletedExamAnswer
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={answerIndex}
                 answer={answer.text}
                 answerIndex={answerIndex}

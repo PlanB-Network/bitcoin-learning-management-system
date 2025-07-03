@@ -7,94 +7,94 @@ import { toast } from 'react-toastify';
 export { ToastContainer } from 'react-toastify';
 
 const toastVariants = cva('md:!w-[299px] focus:ring-1 focus:ring-newGray-2', {
+  defaultVariants: {
+    color: 'primary',
+    mode: 'light',
+  },
   variants: {
-    mode: {
-      light: '',
-      dark: 'dark',
-    },
     color: {
-      primary:
-        '!bg-darkOrange-0 dark:!bg-darkOrange-10 hover:!bg-darkOrange-1 hover:dark:!bg-darkOrange-9 focus:!bg-darkOrange-1 focus:dark:!bg-darkOrange-9',
-      warning:
-        '!bg-red-1 dark:!bg-red-9 hover:!bg-red-2 hover:dark:!bg-red-8 focus:!bg-red-2 focus:dark:!bg-red-8',
-      success:
-        '!bg-brightGreen-1 dark:!bg-brightGreen-9 hover:!bg-brightGreen-2 hover:dark:!bg-brightGreen-8 focus:!bg-brightGreen-2 focus:dark:!bg-brightGreen-8',
       neutral:
         '!bg-newGray-6 dark:!bg-newBlack-3 hover:!bg-newGray-5 hover:dark:!bg-newBlack-4 focus:!bg-newGray-5 focus:dark:!bg-newBlack-4',
+      primary:
+        '!bg-darkOrange-0 dark:!bg-darkOrange-10 hover:!bg-darkOrange-1 hover:dark:!bg-darkOrange-9 focus:!bg-darkOrange-1 focus:dark:!bg-darkOrange-9',
+      success:
+        '!bg-brightGreen-1 dark:!bg-brightGreen-9 hover:!bg-brightGreen-2 hover:dark:!bg-brightGreen-8 focus:!bg-brightGreen-2 focus:dark:!bg-brightGreen-8',
+      warning:
+        '!bg-red-1 dark:!bg-red-9 hover:!bg-red-2 hover:dark:!bg-red-8 focus:!bg-red-2 focus:dark:!bg-red-8',
     },
-  },
-  defaultVariants: {
-    mode: 'light',
-    color: 'primary',
+    mode: {
+      dark: 'dark',
+      light: '',
+    },
   },
 });
 
 const textVariants = cva('body-medium-12px', {
-  variants: {
-    mode: {
-      light: '!text-newBlack-1',
-      dark: '!text-white',
-    },
-  },
   defaultVariants: {
     mode: 'light',
+  },
+  variants: {
+    mode: {
+      dark: '!text-white',
+      light: '!text-newBlack-1',
+    },
   },
 });
 
 const iconVariants = cva('shrink-0', {
-  variants: {
-    mode: {
-      light: '',
-      dark: 'dark',
-    },
-    color: {
-      primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
-      warning: '!text-red-5',
-      success: '!text-brightGreen-4 dark:!text-brightGreen-6',
-      neutral: '!text-newGray-3 dark:!text-newGray-2',
-    },
-  },
   defaultVariants: {
-    mode: 'light',
     color: 'primary',
+    mode: 'light',
+  },
+  variants: {
+    color: {
+      neutral: '!text-newGray-3 dark:!text-newGray-2',
+      primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
+      success: '!text-brightGreen-4 dark:!text-brightGreen-6',
+      warning: '!text-red-5',
+    },
+    mode: {
+      dark: 'dark',
+      light: '',
+    },
   },
 });
 
 const progressBarVariants = cva('', {
-  variants: {
-    mode: {
-      light: '',
-      dark: 'dark',
-    },
-    color: {
-      primary: '!bg-darkOrange-4 dark:!bg-darkOrange-6',
-      warning: '!bg-red-5',
-      success: '!bg-brightGreen-4 dark:!bg-brightGreen-6',
-      neutral: '!bg-newGray-3 dark:!bg-newGray-2',
-    },
-  },
   defaultVariants: {
-    mode: 'light',
     color: 'primary',
+    mode: 'light',
+  },
+  variants: {
+    color: {
+      neutral: '!bg-newGray-3 dark:!bg-newGray-2',
+      primary: '!bg-darkOrange-4 dark:!bg-darkOrange-6',
+      success: '!bg-brightGreen-4 dark:!bg-brightGreen-6',
+      warning: '!bg-red-5',
+    },
+    mode: {
+      dark: 'dark',
+      light: '',
+    },
   },
 });
 
 const toastCloseButtonVariants = cva('shrink-0', {
-  variants: {
-    mode: {
-      light: 'hover:!brightness-90',
-      dark: 'dark hover:!brightness-110',
-    },
-    color: {
-      primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
-      warning: '!text-red-5',
-      success: '!text-brightGreen-4 dark:!text-brightGreen-6',
-      neutral: '!text-newGray-3 dark:!text-newGray-2',
-    },
-  },
   defaultVariants: {
-    mode: 'light',
     color: 'primary',
+    mode: 'light',
+  },
+  variants: {
+    color: {
+      neutral: '!text-newGray-3 dark:!text-newGray-2',
+      primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
+      success: '!text-brightGreen-4 dark:!text-brightGreen-6',
+      warning: '!text-red-5',
+    },
+    mode: {
+      dark: 'dark hover:!brightness-110',
+      light: 'hover:!brightness-90',
+    },
   },
 });
 
@@ -120,37 +120,18 @@ export const customToast = (
 
   return toast(
     ToastContent({
-      message: message,
       className: textVariants({
         mode: options.mode,
       }),
+      message: message,
       onClick: options.onClick,
     }),
     {
       autoClose: options.time || 5000,
       className: toastVariants({
-        mode: options.mode,
         color: options.color,
-      }),
-      progressClassName: progressBarVariants({
         mode: options.mode,
-        color: options.color,
       }),
-      icon: options.imgSrc
-        ? () => (
-            <img
-              src={options.imgSrc}
-              alt={message}
-              className="shrink-0 size-8"
-            />
-          )
-        : options.icon && (
-            <ToastIconWithClasses
-              icon={options.icon}
-              mode={options.mode}
-              color={options.color}
-            />
-          ),
       closeButton: options.onClick
         ? false
         : options.closeButton
@@ -166,8 +147,27 @@ export const customToast = (
               />
             )
           : false,
-      onClick: options.onClick,
       closeOnClick: closeOnClick,
+      icon: options.imgSrc
+        ? () => (
+            <img
+              src={options.imgSrc}
+              alt={message}
+              className="shrink-0 size-8"
+            />
+          )
+        : options.icon && (
+            <ToastIconWithClasses
+              icon={options.icon}
+              mode={options.mode}
+              color={options.color}
+            />
+          ),
+      onClick: options.onClick,
+      progressClassName: progressBarVariants({
+        color: options.color,
+        mode: options.mode,
+      }),
     },
   );
 };
@@ -214,7 +214,7 @@ const ToastCloseButton = ({
   >
     <IoCloseOutline
       size={24}
-      className={toastCloseButtonVariants({ mode, color })}
+      className={toastCloseButtonVariants({ color, mode })}
     />
   </button>
 );
@@ -228,5 +228,5 @@ const ToastIconWithClasses = ({
   mode?: ToastProps['mode'];
   color?: ToastProps['color'];
 }) => {
-  return <Icon size={28} className={iconVariants({ mode, color })} />;
+  return <Icon size={28} className={iconVariants({ color, mode })} />;
 };

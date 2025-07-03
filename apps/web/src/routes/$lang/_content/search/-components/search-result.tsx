@@ -1,5 +1,4 @@
-import type { SearchResultItem } from '@blms/types';
-import type { Searchable } from '@blms/types';
+import type { Searchable, SearchResultItem } from '@blms/types';
 import { TextTag } from '@blms/ui';
 import { default as DOMPurify } from 'dompurify';
 
@@ -10,7 +9,7 @@ interface SearchResultProps {
   index: number;
 }
 
-export const SearchResult = ({ item, index }: SearchResultProps) => {
+export const SearchResult = ({ item }: SearchResultProps) => {
   const { t } = useTranslation();
 
   return (

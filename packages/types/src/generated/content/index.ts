@@ -3,8 +3,8 @@
 
 export type * from './bcert.js';
 export type * from './bet.js';
+export type * from './blogs.js';
 export type * from './book.js';
-export type * from './project.js';
 export type * from './channels.js';
 export type * from './conference.js';
 export type * from './coupon.js';
@@ -12,15 +12,15 @@ export type * from './course.js';
 export type * from './event.js';
 export type * from './glossary.js';
 export type * from './lab.js';
+export type * from './legals.js';
 export type * from './movie.js';
+export type * from './newsletters.js';
 export type * from './podcast.js';
 export type * from './professor.js';
 export type * from './professors2.js';
+export type * from './project.js';
 export type * from './proofreading.js';
 export type * from './quiz.js';
 export type * from './resource.js';
 export type * from './tutorial.js';
-export type * from './blogs.js';
-export type * from './legals.js';
-export type * from './newsletters.js';
 export type * from './video.js';

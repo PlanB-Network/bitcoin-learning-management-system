@@ -10,21 +10,21 @@ import {
 } from '../../../bases/charts.tsx';
 
 const meta: Meta<typeof ChartContainer> = {
-  title: 'Composites/Charts/charts',
-  component: ChartContainer,
-  tags: ['autodocs'],
   argTypes: {
+    className: {
+      control: 'text',
+    },
     config: {
       control: 'object',
       description: 'Configuration for chart data labels and colors.',
     },
-    className: {
-      control: 'text',
-    },
   },
+  component: ChartContainer,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/Charts/charts',
 };
 
 export default meta;
@@ -41,23 +41,23 @@ const sampleRatingData = [
 
 const ratingChartConfig: ChartConfig = {
   reviews: {
-    label: 'Number of reviews:',
     color: '#ff5c00',
+    label: 'Number of reviews:',
   },
 };
 
 export const RatingsBarChart: Story = {
-  name: 'Ratings Bar Chart',
   args: {
-    config: ratingChartConfig,
     className: 'h-[300px] w-full',
+    config: ratingChartConfig,
   },
+  name: 'Ratings Bar Chart',
   render: (args) => (
     <ChartContainer {...args}>
       <Recharts.BarChart
         accessibilityLayer
         data={sampleRatingData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        margin={{ bottom: 5, left: 20, right: 30, top: 20 }}
       >
         <Recharts.CartesianGrid vertical={false} strokeDasharray="3 3" />
         <Recharts.XAxis dataKey="rating" tickLine={false} axisLine={false} />
@@ -75,17 +75,17 @@ export const RatingsBarChart: Story = {
 };
 
 export const RatingsLineChart: Story = {
-  name: 'Ratings Line Chart',
   args: {
-    config: ratingChartConfig,
     className: 'h-[300px] w-full',
+    config: ratingChartConfig,
   },
+  name: 'Ratings Line Chart',
   render: (args) => (
     <ChartContainer {...args}>
       <Recharts.LineChart
         accessibilityLayer
         data={sampleRatingData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        margin={{ bottom: 5, left: 20, right: 30, top: 20 }}
       >
         <Recharts.CartesianGrid vertical={false} strokeDasharray="3 3" />
         <Recharts.XAxis dataKey="rating" tickLine={false} axisLine={false} />
@@ -105,17 +105,17 @@ export const RatingsLineChart: Story = {
 };
 
 export const RatingsAreaChart: Story = {
-  name: 'Ratings Area Chart',
   args: {
-    config: ratingChartConfig,
     className: 'h-[300px] w-full',
+    config: ratingChartConfig,
   },
+  name: 'Ratings Area Chart',
   render: (args) => (
     <ChartContainer {...args}>
       <Recharts.AreaChart
         accessibilityLayer
         data={sampleRatingData}
-        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+        margin={{ bottom: 0, left: 0, right: 30, top: 10 }}
       >
         <Recharts.CartesianGrid strokeDasharray="3 3" />
         <Recharts.XAxis dataKey="rating" />

@@ -1,3 +1,14 @@
+import { SortDirection } from '@blms/constants';
+import {
+  cn,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@blms/ui';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
@@ -5,19 +16,6 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdKeyboardArrowDown, MdThumbDown, MdThumbUp } from 'react-icons/md';
 import { TbArrowsSort } from 'react-icons/tb';
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-  cn,
-} from '@blms/ui';
-
-import { SortDirection } from '@blms/constants';
-import { useInfiniteQuery } from '@tanstack/react-query';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -35,8 +33,8 @@ export const DashboardTutorialsTable = ({
     key: 'category' | 'professorName' | 'title' | 'likeCount' | 'dislikeCount';
     direction: SortDirection;
   }>({
-    key: 'title',
     direction: SortDirection.Asc,
+    key: 'title',
   });
 
   const {
@@ -48,11 +46,11 @@ export const DashboardTutorialsTable = ({
     trpc.content.getTutorialsWithProfessorName.infiniteQueryOptions(
       {
         language: i18n.language || 'en',
+        limit: professorId ? 100 : 50,
+        orderDirection: sortConfig.direction,
+        orderField: sortConfig.key,
         professorId: professorId,
         search: debouncedSearch,
-        orderField: sortConfig.key,
-        orderDirection: sortConfig.direction,
-        limit: professorId ? 100 : 50,
       },
       {
         getNextPageParam: (lastPage) => {
@@ -121,11 +119,11 @@ export const DashboardTutorialsTable = ({
   // Handle sorting logic
   const handleSorting = (key: typeof sortConfig.key) => {
     setSortConfig((prev) => ({
-      key,
       direction:
         prev.key === key && prev.direction === SortDirection.Asc
           ? SortDirection.Desc
           : SortDirection.Asc,
+      key,
     }));
   };
 

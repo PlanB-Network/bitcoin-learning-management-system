@@ -1,12 +1,10 @@
+import { Button, Card, cn, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
-
-import { Button, Card, Loader, cn } from '@blms/ui';
-
-import { useQuery } from '@tanstack/react-query';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -54,7 +52,7 @@ export const CourseDiplomas = () => {
                   examResults.map((exam, index) => {
                     return (
                       <tr
-                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                        // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                         key={index}
                         className={cn('mobile-body2 md:desktop-body1')}
                       >
@@ -89,7 +87,7 @@ export const CourseDiplomas = () => {
                 examResults.map((exam, index) => {
                   return (
                     <Card
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                       key={index}
                       className={cn('p-2 my-4')}
                       withPadding={false}

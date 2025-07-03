@@ -1,13 +1,10 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared/auth';
+import { Loader, TextTag } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader, TextTag } from '@blms/ui';
-
 import { AppContext } from '#src/providers/context.tsx';
-
-import { UserRole } from '@blms/constants';
-import { canAccess } from '@blms/shared/auth';
 import BookingTable from '../-components/booking-table.tsx';
 
 export const Route = createFileRoute(

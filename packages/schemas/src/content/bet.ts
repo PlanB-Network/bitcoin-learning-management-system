@@ -1,15 +1,12 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
+import { BetType } from '@blms/constants';
 import {
   contentBet,
   contentBetLocalized,
   contentBetViewUrl,
 } from '@blms/database';
-
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 import { resourceSchema } from './resource.js';
-
-import { BetType } from '@blms/constants';
 
 export const betTypeSchema = z.nativeEnum(BetType);
 
@@ -20,15 +17,15 @@ export const betLocalizedSchema = createSelectSchema(contentBetLocalized);
 export const joinedBetSchema = resourceSchema
   .pick({
     id: true,
-    path: true,
-    lastUpdated: true,
     lastCommit: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     betSchema.pick({
-      type: true,
       downloadUrl: true,
       originalLanguage: true,
+      type: true,
     }),
   )
   .merge(
@@ -38,14 +35,14 @@ export const joinedBetSchema = resourceSchema
   )
   .merge(
     betLocalizedSchema.pick({
+      description: true,
       language: true,
       name: true,
-      description: true,
     }),
   )
   .merge(
     z.object({
-      viewurls: betViewUrlSchema.array(),
       tags: z.array(z.string()),
+      viewurls: betViewUrlSchema.array(),
     }),
   );

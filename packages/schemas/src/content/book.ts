@@ -1,11 +1,8 @@
+import { contentBooks, contentBooksLocalized } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
-import { contentBooks, contentBooksLocalized } from '@blms/database';
-
+import { courseLevelSchema } from './course.js';
 import { resourceSchema } from './resource.js';
-
-import { courseLevelSchema } from './index.js';
 
 export const bookSchema = createSelectSchema(contentBooks);
 export const bookLocalizedSchema = createSelectSchema(contentBooksLocalized);
@@ -13,9 +10,9 @@ export const bookLocalizedSchema = createSelectSchema(contentBooksLocalized);
 export const joinedBookSchema = resourceSchema
   .pick({
     id: true,
-    path: true,
-    lastUpdated: true,
     lastCommit: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     bookSchema.pick({
@@ -25,18 +22,18 @@ export const joinedBookSchema = resourceSchema
   )
   .merge(
     bookLocalizedSchema.pick({
+      cover: true,
+      description: true,
+      downloadUrl: true,
       language: true,
+      original: true,
+      publicationYear: true,
+      publisher: true,
+      shopUrl: true,
+      summaryContributorId: true,
+      summaryText: true,
       title: true,
       translator: true,
-      description: true,
-      publisher: true,
-      publicationYear: true,
-      cover: true,
-      summaryText: true,
-      summaryContributorId: true,
-      shopUrl: true,
-      downloadUrl: true,
-      original: true,
     }),
   )
   .merge(

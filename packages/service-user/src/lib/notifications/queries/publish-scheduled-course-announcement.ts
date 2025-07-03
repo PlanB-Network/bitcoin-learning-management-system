@@ -2,7 +2,9 @@ import { sql } from '@blms/database';
 
 export const publishScheduledCourseAnnouncementQuery = ({
   scheduledAnnouncementId,
-}: { scheduledAnnouncementId: string }) => {
+}: {
+  scheduledAnnouncementId: string;
+}) => {
   return sql<{ id: string; notificationId: string }[]>`
         WITH scheduled_data AS (
             SELECT notification_id, course_id, id AS scheduled_id, student_group

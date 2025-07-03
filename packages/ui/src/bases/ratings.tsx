@@ -5,20 +5,20 @@ import { cn } from '../lib/utils.js';
 
 const ratingVariants = {
   default: {
-    star: 'text-foreground',
     emptyStar: 'text-muted-foreground',
+    star: 'text-foreground',
   },
   destructive: {
-    star: 'text-destructive',
     emptyStar: 'text-destructive/70',
-  },
-  yellow: {
-    star: 'text-darkOrange-5',
-    emptyStar: 'text-newGray-2',
+    star: 'text-destructive',
   },
   disabled: {
-    star: 'text-newGray-1',
     emptyStar: 'text-newGray-2',
+    star: 'text-newGray-1',
+  },
+  yellow: {
+    emptyStar: 'text-newGray-2',
+    star: 'text-darkOrange-5',
   },
 };
 
@@ -73,17 +73,17 @@ const Ratings = ({ ...props }: RatingsProps) => {
     >
       {Array.from({ length: fullStars }).map((_, i) =>
         React.cloneElement(FilledIcon, {
-          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          key: i,
-          size,
           className: cn(
             fill ? 'fill-current' : 'fill-transparent',
             ratingVariants[variant].star,
             asInput ? 'cursor-pointer hover:fill-current' : '',
           ),
-          role: props.asInput && 'input',
+          // biome-ignore lint/suspicious/noArrayIndexKey: explanation
+          key: i,
           onClick: () => onValueChange?.(i + 1),
           onMouseEnter: () => setHoverValue(i + 1),
+          role: props.asInput && 'input',
+          size,
         }),
       )}
       {partialStar}
@@ -91,16 +91,16 @@ const Ratings = ({ ...props }: RatingsProps) => {
         length: totalStars - fullStars - (partialStar ? 1 : 0),
       }).map((_, i) =>
         React.cloneElement(Icon, {
-          key: i + fullStars + 1,
-          size,
           className: cn(
             ratingVariants[variant].emptyStar,
             asInput ? 'cursor-pointer hover:fill-current' : '',
           ),
-          role: props.asInput && 'input',
+          key: i + fullStars + 1,
           onClick: () =>
             onValueChange?.(fullStars + i + 1 + (partialStar ? 1 : 0)),
           onMouseEnter: () => setHoverValue(fullStars + i + 1),
+          role: props.asInput && 'input',
+          size,
         }),
       )}
     </div>
@@ -131,20 +131,20 @@ const PartialStar = ({ ...props }: PartialStarProps) => {
       className={cn('relative inline-block', asInput && 'cursor-pointer')}
     >
       {React.cloneElement(Icon, {
-        size,
         className: cn('fill-transparent', className),
+        size,
       })}
       <div
         style={{
+          overflow: 'hidden',
           position: 'absolute',
           top: 0,
-          overflow: 'hidden',
           width: `${fillPercentage * 100}%`,
         }}
       >
         {React.cloneElement(Icon, {
-          size,
           className: cn('fill-current', className),
+          size,
         })}
       </div>
     </div>

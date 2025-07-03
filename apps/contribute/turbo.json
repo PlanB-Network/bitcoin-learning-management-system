@@ -2,12 +2,12 @@
   "$schema": "https://turborepo.org/schema.json",
   "extends": ["//"],
   "tasks": {
-    "check-types": {
-      "dependsOn": ["@blms/api#build-types", "@blms/types#build-types"]
-    },
     "build": {
       "dependsOn": ["@blms/api#build", "@blms/types#build"],
       "outputs": ["dist/**"]
+    },
+    "check-types": {
+      "dependsOn": ["@blms/api#build-types", "@blms/types#build-types"]
     }
   }
 }

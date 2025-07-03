@@ -1,7 +1,6 @@
-import { MdThumbDown, MdThumbUp } from 'react-icons/md';
-
 import type { JoinedTutorialLight } from '@blms/types';
 import { cn } from '@blms/ui';
+import { MdThumbDown, MdThumbUp } from 'react-icons/md';
 
 import SeparatorIcon from '#src/assets/icons/separator-likes.svg';
 

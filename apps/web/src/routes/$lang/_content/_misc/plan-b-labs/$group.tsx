@@ -1,4 +1,4 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { FullProfessor } from '@blms/types';
 
 import {
   ButtonWithArrow,
@@ -9,20 +9,18 @@ import {
   TabsTrigger,
   TextTag,
 } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
+import React, { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
+import { MdLiveTv, MdPerson } from 'react-icons/md';
 import { z } from 'zod';
 import LabIcon from '#src/assets/icons/lab.svg';
 import LightningWhiteIcon from '#src/assets/icons/lightning_white.svg';
 import MiningIcon from '#src/assets/icons/mining_white.svg';
 import PrivacyIcon from '#src/assets/icons/privacy.svg';
 import PlanBLabsLogo from '#src/assets/logo/plan_b_labs_logo_horizontal.svg';
-
-import type { FullProfessor } from '@blms/types';
-import { useQuery } from '@tanstack/react-query';
-import { Suspense } from 'react';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { MdLiveTv, MdPerson } from 'react-icons/md';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { MainLayout } from '#src/components/main-layout.js';
 import { ReactPlayer } from '#src/components/react-player.tsx';
@@ -30,6 +28,7 @@ import { formatDate, formatHourRange, userTimeZone } from '#src/utils/date.ts';
 import { cdnUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
+
 const GlossaryMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/glossary-markdown-body.js'),
 );
@@ -37,37 +36,37 @@ const GlossaryMarkdownBody = React.lazy(
 export const Route = createFileRoute(
   '/$lang/_content/_misc/plan-b-labs/$group',
 )({
+  component: PlanBLabs,
   params: {
     parse: (params) => ({
-      lang: z.string().parse(params.lang),
       group: z.string().parse(params.group),
+      lang: z.string().parse(params.lang),
     }),
     stringify: ({ lang, group }) => ({
-      lang: lang,
       group: `${group}`,
+      lang: lang,
     }),
   },
-  component: PlanBLabs,
 });
 
 export const labsTabs = [
   {
-    id: 'lightning',
-    label: 'Lightning',
     href: '/plan-b-labs/lightning',
     icon: LightningWhiteIcon,
+    id: 'lightning',
+    label: 'Lightning',
   },
   {
-    id: 'mining',
-    label: 'Mining',
     href: '/plan-b-labs/mining',
     icon: MiningIcon,
+    id: 'mining',
+    label: 'Mining',
   },
   {
-    id: 'privacy',
-    label: 'Privacy',
     href: '/plan-b-labs/privacy',
     icon: PrivacyIcon,
+    id: 'privacy',
+    label: 'Privacy',
   },
 ];
 
@@ -88,8 +87,8 @@ function PlanBLabs() {
   const { data: professor } = useQuery(
     trpc.content.getProfessor.queryOptions(
       {
-        professorId: lab?.lab?.professorId!,
         language: i18n.language,
+        professorId: lab?.lab?.professorId!,
       },
       {
         enabled: lab?.lab?.professorId !== undefined,
@@ -347,11 +346,7 @@ function PlanBLabs() {
   );
 }
 
-const Professor = ({
-  professor,
-}: {
-  professor: FullProfessor;
-}) => {
+const Professor = ({ professor }: { professor: FullProfessor }) => {
   return (
     <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-7 md:mt-16 text-white">
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">

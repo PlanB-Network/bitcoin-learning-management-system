@@ -37,10 +37,10 @@ interface Metadata {
 const DEFAULT_IMAGE = '/share-default.jpg';
 
 const DEFAULT: Metadata = {
-  title: 'Plan ₿ Network',
   description: "Let's build together the Bitcoin educational layer",
   image: DEFAULT_IMAGE,
   lang: 'en',
+  title: 'Plan ₿ Network',
 };
 
 const defaultMeta = (lang: string): Metadata => ({ ...DEFAULT, lang });
@@ -58,12 +58,12 @@ const meta = (
   image?: string | null,
   lang = 'en',
 ) => ({
-  title: title || DEFAULT.title,
   description: ellipsis(
     description?.replaceAll(/<[^>]*>?/gm, '') || DEFAULT.description,
   ),
   image: image || DEFAULT_IMAGE,
   lang,
+  title: title || DEFAULT.title,
 });
 
 export const createGetMetadata = (dependencies: Dependencies) => {

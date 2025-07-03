@@ -1,12 +1,9 @@
+import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader } from '@blms/ui';
-
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
 import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
 import { GlossaryList } from '../-components/glossary-list.tsx';

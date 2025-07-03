@@ -1,12 +1,8 @@
-import type {} from 'express-serve-static-core';
-import type {} from 'qs';
 import 'express-session';
 
 import { pathToFileURL } from 'node:url';
-
-import * as dotenv from 'dotenv';
-
 import type { SessionData as ApiSessionDAta, LogContext } from '@blms/types';
+import * as dotenv from 'dotenv';
 
 import { startDependencies } from './dependencies.js';
 import { startServer } from './server.js';

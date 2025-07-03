@@ -1,6 +1,5 @@
-import { TRPCError } from '@trpc/server';
-
 import { firstRow } from '@blms/database';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -58,9 +57,9 @@ export const createGetExistingLikeTutorial = ({ postgres }: Dependencies) => {
 
     return existingEntry.length > 0
       ? {
-          liked: existingEntry[0].liked as boolean,
           disliked: !existingEntry[0].liked,
+          liked: existingEntry[0].liked as boolean,
         }
-      : { liked: false, disliked: false };
+      : { disliked: false, liked: false };
   };
 };

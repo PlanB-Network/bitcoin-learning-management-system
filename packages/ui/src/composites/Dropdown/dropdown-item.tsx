@@ -1,17 +1,17 @@
 import { Link } from '@tanstack/react-router';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 
 const dropdownItemVariant = cva(
   'flex items-center gap-4 p-2 leading-[140%] tracking-015px text-start rounded',
   {
-    variants: {
-      variant: {
-        light: 'text-black hover:bg-newGray-5',
-        dark: 'text-white hover:bg-white/15',
-      },
-    },
     defaultVariants: {
       variant: 'dark',
+    },
+    variants: {
+      variant: {
+        dark: 'text-white hover:bg-white/15',
+        light: 'text-black hover:bg-newGray-5',
+      },
     },
   },
 );

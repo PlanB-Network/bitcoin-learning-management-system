@@ -50,14 +50,14 @@ export const createSendCourseWelcomeEmail = (
       const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}Welcome to ${courseName}`;
 
       await sendEmail({
-        email: userEmail,
-        subject: subject,
-        template: 'd-fe44ab001b384d40b83090c288f5d3fe',
         data: {
           courseName: courseName,
           dashboardLink: `${config.domainUrl}/dashboard/course/${courseId}`,
           subject: subject,
         },
+        email: userEmail,
+        subject: subject,
+        template: 'd-fe44ab001b384d40b83090c288f5d3fe',
       });
     } catch (error) {
       console.error(

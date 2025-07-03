@@ -1,3 +1,4 @@
+import type { CourseFormat } from '@blms/constants';
 import { firstRow, rejectOnEmpty, sql } from '@blms/database';
 import {
   createTimestamp,
@@ -7,16 +8,11 @@ import {
   getLatestBlockHash,
   loadPrivateKey,
 } from '@blms/opentimestamps';
-import type { UserExamTimestamp } from '@blms/types';
-
-import type { Dependencies } from '#src/dependencies.js';
-
-import { loadTxtTemplate } from '../../pdf/utils.js';
-
-import { createPdf } from './course-certificate-gen-pdf.js';
-
-import type { CourseFormat } from '@blms/constants';
 import { pdfThumbnail } from '@blms/service-common';
+import type { UserExamTimestamp } from '@blms/types';
+import type { Dependencies } from '#src/dependencies.js';
+import { loadTxtTemplate } from '../../pdf/utils.js';
+import { createPdf } from './course-certificate-gen-pdf.js';
 import { createTeacherLedCertificatePdf } from './teacher-led-courses-gen-pdf.js';
 
 interface CourseProgressKey {
@@ -285,16 +281,16 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     const lastBlockHash = await getLatestBlockHash();
 
     const text = getExamAttemptTextToSign({
-      userName: exam.user.userName,
-      fullName: exam.user.displayName,
-      courseName: exam.course.name,
       courseId: exam.course.id,
-      level: exam.course.level,
-      goal: exam.course.goal,
-      duration: `${exam.course.hours} hours`,
-      lastCommitHash: exam.course.lastCommit,
+      courseName: exam.course.name,
       date: formatDate(exam.startedAt),
+      duration: `${exam.course.hours} hours`,
+      fullName: exam.user.displayName,
+      goal: exam.course.goal,
       lastBlockHash,
+      lastCommitHash: exam.course.lastCommit,
+      level: exam.course.level,
+      userName: exam.user.userName,
     });
 
     const { signature, ots, hash } = await timestamp({ text });
@@ -319,18 +315,18 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     const lastBlockHash = await getLatestBlockHash();
 
     const text = getTeacherLedCourseTextToSign({
-      userName: cp.user.userName,
-      fullName: cp.user.displayName,
-      courseName: cp.course.name,
       courseId: cp.course.id,
-      level: cp.course.level,
-      goal: cp.course.goal,
-      duration: `${cp.course.hours} hours`,
-      lastCommitHash: cp.course.lastCommit,
-      date: formatDate(new Date()),
-      lastBlockHash,
-      score: cp.totalScore,
+      courseName: cp.course.name,
       courseProvider: 'Plan ₿ Network',
+      date: formatDate(new Date()),
+      duration: `${cp.course.hours} hours`,
+      fullName: cp.user.displayName,
+      goal: cp.course.goal,
+      lastBlockHash,
+      lastCommitHash: cp.course.lastCommit,
+      level: cp.course.level,
+      score: cp.totalScore,
+      userName: cp.user.userName,
     });
 
     const { signature, ots, hash } = await timestamp({ text });
@@ -361,11 +357,11 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       }
 
       pdf = await createPdf({
-        fullName: exam.user.displayName,
-        courseName: exam.course.name,
         courseIndex: exam.course.index,
-        duration: `${exam.course.hours} hours`,
+        courseName: exam.course.name,
         date: formatDate(exam.startedAt),
+        duration: `${exam.course.hours} hours`,
+        fullName: exam.user.displayName,
         hash: timestamp.hash,
         txid: timestamp.blockHash,
       });
@@ -374,8 +370,8 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     //
     else if (timestamp.uid && timestamp.courseId) {
       const cp = await getCourseProgress({
-        uid: timestamp.uid,
         courseId: timestamp.courseId,
+        uid: timestamp.uid,
       });
 
       if (!cp || !timestamp || !timestamp.confirmed || !timestamp.blockHash) {
@@ -385,12 +381,12 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       const host = `${process.env.PLANB_ENVIRONMENT === 'mainnet' ? 'planb' : 'planbtest'}.network`;
 
       pdf = await createTeacherLedCertificatePdf({
-        fullName: cp.user.displayName,
-        courseName: cp.course.name,
         courseFormat: cp.course.format,
+        courseName: cp.course.name,
         courseProvider: cp.projectName,
         courseProviderLogo: `https://${host}/cdn/courses/${cp.course.index}/assets/logo.webp`,
         date: formatDate(timestamp.createdAt),
+        fullName: cp.user.displayName,
         hash: timestamp.hash,
         txid: timestamp.blockHash,
       });
@@ -483,10 +479,52 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
   };
 
   return {
+    generateAllCertificates: async () => {
+      const timestamps = await ctx.postgres.exec(
+        sql<Array<{ id: string }>>`
+          SELECT id
+          FROM users.exam_timestamps
+          WHERE confirmed = true
+            AND pdf_key IS NULL;
+        `,
+      );
+      if (timestamps.length) {
+        console.log('[cron] Generate all certificates', timestamps);
+
+        for (const { id } of timestamps) {
+          try {
+            await generatePdfCertificate(id);
+          } catch (err) {
+            console.error('Failed to generate certificate', id, err);
+          }
+        }
+      }
+    },
+    generateAllThumbnails: async () => {
+      const docs = await ctx.postgres.exec(
+        sql<Array<{ id: string; pdfKey: string }>>`
+          SELECT id, pdf_key
+          FROM users.exam_timestamps
+          WHERE pdf_key IS NOT NULL
+            AND img_key IS NULL;
+        `,
+      );
+
+      if (docs.length) {
+        console.log('[cron] Generate all certificates thumbnails', docs);
+
+        for (const { id, pdfKey } of docs) {
+          try {
+            await generateCertificateThumbnail(id, pdfKey);
+          } catch (err) {
+            console.error('Failed to generate certificate thumbnail', id, err);
+          }
+        }
+      }
+    },
+    generatePdfCertificate,
     //
     getExamTimestamp,
-    getPdfCertificate,
-    getPngCertificate,
     getOpenTimestampFile: async (examAttemptId: string) => {
       const timestamp = await getExamTimestamp(examAttemptId);
       if (!timestamp) {
@@ -495,12 +533,8 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
       return timestamp.ots as Buffer;
     },
-    //
-    timestampFinalExamAttempt,
-    upgradeExamTimestamp,
-    validateExamTimestamp,
-    verifyExamTimestamp,
-    generatePdfCertificate,
+    getPdfCertificate,
+    getPngCertificate,
     //
     timestampAllExams: async () => {
       const finalExams = await ctx.postgres.exec(
@@ -561,6 +595,8 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         }
       }
     },
+    //
+    timestampFinalExamAttempt,
     upgradeAllTimeStamps: async () => {
       const timestamps = await getAllPendingTimestamps();
       if (timestamps.length) {
@@ -576,6 +612,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         }
       }
     },
+    upgradeExamTimestamp,
     validateAllTimeStamps: async () => {
       const timestamps = await getAllPendingTimestamps();
       if (timestamps.length) {
@@ -591,48 +628,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         }
       }
     },
-    generateAllCertificates: async () => {
-      const timestamps = await ctx.postgres.exec(
-        sql<Array<{ id: string }>>`
-          SELECT id
-          FROM users.exam_timestamps
-          WHERE confirmed = true
-            AND pdf_key IS NULL;
-        `,
-      );
-      if (timestamps.length) {
-        console.log('[cron] Generate all certificates', timestamps);
-
-        for (const { id } of timestamps) {
-          try {
-            await generatePdfCertificate(id);
-          } catch (err) {
-            console.error('Failed to generate certificate', id, err);
-          }
-        }
-      }
-    },
-    generateAllThumbnails: async () => {
-      const docs = await ctx.postgres.exec(
-        sql<Array<{ id: string; pdfKey: string }>>`
-          SELECT id, pdf_key
-          FROM users.exam_timestamps
-          WHERE pdf_key IS NOT NULL
-            AND img_key IS NULL;
-        `,
-      );
-
-      if (docs.length) {
-        console.log('[cron] Generate all certificates thumbnails', docs);
-
-        for (const { id, pdfKey } of docs) {
-          try {
-            await generateCertificateThumbnail(id, pdfKey);
-          } catch (err) {
-            console.error('Failed to generate certificate thumbnail', id, err);
-          }
-        }
-      }
-    },
+    validateExamTimestamp,
+    verifyExamTimestamp,
   };
 };

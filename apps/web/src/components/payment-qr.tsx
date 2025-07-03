@@ -1,11 +1,9 @@
+import type { CheckoutData } from '@blms/types';
+import { Button, cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import { QRCodeSVG } from 'qrcode.react';
 import { Trans, useTranslation } from 'react-i18next';
 import { AiOutlineCopy } from 'react-icons/ai';
-
-import type { CheckoutData } from '@blms/types';
-import { Button, cn } from '@blms/ui';
-
-import { Link } from '@tanstack/react-router';
 import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
 
 interface PaymentQrProps extends React.HTMLProps<HTMLDivElement> {
@@ -45,8 +43,8 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
           >
             <span className="desktop-subtitle1 text-newBlack-3 flex-1 truncate">
               {(checkoutData.amount / 100_000_000).toLocaleString('en-US', {
-                minimumFractionDigits: 8,
                 maximumFractionDigits: 8,
+                minimumFractionDigits: 8,
               })}{' '}
               BTC
             </span>
@@ -55,8 +53,8 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
               onClick={() => {
                 navigator.clipboard.writeText(
                   (checkoutData.amount / 100_000_000).toLocaleString('en-US', {
-                    minimumFractionDigits: 8,
                     maximumFractionDigits: 8,
+                    minimumFractionDigits: 8,
                   }),
                 );
               }}

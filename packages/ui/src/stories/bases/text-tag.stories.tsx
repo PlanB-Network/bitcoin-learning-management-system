@@ -2,29 +2,26 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TextTag } from '#src/bases/text-tag.tsx';
 
 const meta: Meta<typeof TextTag> = {
-  component: TextTag,
-  title: 'Bases/text-tag',
-  parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#F2F2F2' },
-        { name: 'dark', value: '#333333' },
-      ],
-    },
-  },
   argTypes: {
     children: {
       control: 'text',
     },
+    className: {
+      control: 'text',
+    },
+    mode: {
+      control: 'select',
+      defaultValue: 'light',
+      options: ['light', 'light100', 'dark', 'dark100'],
+    },
     size: {
       control: 'select',
-      options: ['small', 'verySmall'],
       defaultValue: 'small',
+      options: ['small', 'verySmall'],
     },
     variant: {
       control: 'select',
+      defaultValue: 'grey',
       options: [
         'withoutFill',
         'grey',
@@ -33,18 +30,21 @@ const meta: Meta<typeof TextTag> = {
         'lightMaroon',
         'darkMaroon',
       ],
-      defaultValue: 'grey',
-    },
-    mode: {
-      control: 'select',
-      options: ['light', 'light100', 'dark', 'dark100'],
-      defaultValue: 'light',
-    },
-    className: {
-      control: 'text',
     },
   },
+  component: TextTag,
+  parameters: {
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#F2F2F2' },
+        { name: 'dark', value: '#333333' },
+      ],
+    },
+    layout: 'centered',
+  },
   tags: ['autodocs'],
+  title: 'Bases/text-tag',
 };
 
 export default meta;
@@ -99,51 +99,51 @@ export const DarkMaroon: Story = {
 };
 
 export const GreyModeLight100: Story = {
-  name: 'Grey Light100',
   args: {
     children: 'Light100',
-    variant: 'grey',
-    size: 'small',
     mode: 'light100',
+    size: 'small',
+    variant: 'grey',
   },
+  name: 'Grey Light100',
 };
 
 export const GreyModeDark: Story = {
-  name: 'Grey Dark',
   args: {
     children: 'Mode Dark',
-    variant: 'grey',
-    size: 'small',
     mode: 'dark',
+    size: 'small',
+    variant: 'grey',
   },
+  name: 'Grey Dark',
 };
 
 export const GreyModeDark100: Story = {
-  name: 'Grey Dark100',
   args: {
     children: 'Mode Dark100',
-    variant: 'grey',
-    size: 'small',
     mode: 'dark100',
+    size: 'small',
+    variant: 'grey',
   },
+  name: 'Grey Dark100',
 };
 
 export const OrangeModeDark: Story = {
-  name: 'Orange Dark',
   args: {
     children: 'Orange Dark',
-    variant: 'orange',
-    size: 'small',
     mode: 'dark',
+    size: 'small',
+    variant: 'orange',
   },
+  name: 'Orange Dark',
 };
 
 export const OrangeModeDark100: Story = {
-  name: 'Orange Dark100',
   args: {
     children: 'Orange Dark100',
-    variant: 'orange',
-    size: 'small',
     mode: 'dark100',
+    size: 'small',
+    variant: 'orange',
   },
+  name: 'Orange Dark100',
 };

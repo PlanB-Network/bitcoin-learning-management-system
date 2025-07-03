@@ -1,7 +1,6 @@
 import { sql } from '@blms/database';
-import type { CouponCode } from '@blms/types';
-
 import { nanoid } from '@blms/service-common';
+import type { CouponCode } from '@blms/types';
 import type { Dependencies } from '../dependencies.js';
 
 interface Options {

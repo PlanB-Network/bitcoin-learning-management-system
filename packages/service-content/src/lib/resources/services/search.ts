@@ -1,6 +1,4 @@
-import type { SearchResult } from '@blms/types';
-
-import type { Searchable } from '@blms/types';
+import type { Searchable, SearchResult } from '@blms/types';
 import type { Dependencies } from '#src/lib/dependencies.js';
 
 interface SearchInput {
@@ -16,20 +14,20 @@ interface SearchInput {
 }
 
 const searchCategoryMap: Record<string, string[] | null> = {
-  courses: ['course', 'course_part', 'course_chapter'],
+  '': null,
+  all: null,
   books: ['book'],
+  conference_replays: ['conference', 'conference_replay'],
+  courses: ['course', 'course_part', 'course_chapter'],
   events: ['event'],
   glossary_words: ['glossary_word'],
-  podcasts: ['podcast'],
-  tutorials: ['tutorial'],
-  professors: ['professor'],
-  newsletters: ['newsletter'],
-  youtube_channels: ['youtube_channel'],
-  conference_replays: ['conference', 'conference_replay'],
   lecture_replays: ['lecture_replay'],
+  newsletters: ['newsletter'],
+  podcasts: ['podcast'],
+  professors: ['professor'],
   projects: ['project'],
-  all: null,
-  '': null,
+  tutorials: ['tutorial'],
+  youtube_channels: ['youtube_channel'],
 };
 
 const notEmptyNotAll = (value: string) => value && value !== 'all';
@@ -44,18 +42,18 @@ const CATEGORIES = Object.keys(searchCategoryMap)
 const CategoryWeight: Record<string, number> = {
   // Course category
   course: 6,
-  course_part: 6,
   course_chapter: 6,
-  // Tutorials category
-  tutorial: 5,
-  // Events category
-  event: 4,
-  // Projects
-  project: 3,
-  // Professors
-  professor: 2,
+  course_part: 6,
   // Everything else with a weight of 1
   default: 1,
+  // Events category
+  event: 4,
+  // Professors
+  professor: 2,
+  // Projects
+  project: 3,
+  // Tutorials category
+  tutorial: 5,
 };
 
 // https://typesense.org/docs/guide/ranking-and-relevance.html#boosting-burying-sets-of-records
@@ -130,23 +128,23 @@ export const createSearch = ({ typesense }: Dependencies) => {
     console.log('Search filter:', filter);
 
     return typesense.collections<Searchable>('searchable').documents().search({
-      q: search.query,
-      query_by: 'title,body',
-      query_by_weights: '3,1',
-      sort_by: SORT_RULES,
-      prioritize_exact_match: true,
-      highlight_affix_num_tokens: search.surroundingWords,
-      search_cutoff_ms: 500, // search for 500ms max
       filter_by: filter,
+      highlight_affix_num_tokens: search.surroundingWords,
       limit: search.limit,
       page: search.cursor,
+      prioritize_exact_match: true,
+      q: search.query,
+      query_by: 'title,body', // search for 500ms max
+      query_by_weights: '3,1',
+      search_cutoff_ms: 500,
+      sort_by: SORT_RULES,
     });
   };
 
   return async (search: SearchInput): Promise<SearchResult<Searchable>> => {
     const searchResult: SearchResult<Searchable> = {
-      remaining: 0,
       nextCursor: 0,
+      remaining: 0,
       results: [],
       ...search,
       found: 0,

@@ -1,22 +1,19 @@
+import type { BetViewUrl } from '@blms/types';
+import {
+  Button,
+  cn,
+  Loader,
+  VerticalCard,
+  type VerticalCardProps,
+} from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { FiDownload, FiEdit } from 'react-icons/fi';
 import { IoIosSearch } from 'react-icons/io';
-
-import type { BetViewUrl } from '@blms/types';
-import {
-  Button,
-  Loader,
-  VerticalCard,
-  type VerticalCardProps,
-  cn,
-} from '@blms/ui';
-
 import { useGreater } from '#src/hooks/use-greater.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
-
-import { useQuery } from '@tanstack/react-query';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/bet/')({
@@ -66,11 +63,11 @@ function BET() {
                   ?.filter((bet) => bet.type === 'educational content')
                   .map((bet) => {
                     return {
+                      downloadUrl: bet.downloadUrl,
+                      logo: resourceImgUrl(bet, 'logo.webp'),
                       name: bet.name,
                       projectName: bet.projectName || '',
-                      downloadUrl: bet.downloadUrl,
                       viewurls: bet.viewurls,
-                      logo: resourceImgUrl(bet, 'logo.webp'),
                     };
                   }) || []
               }
@@ -93,11 +90,11 @@ function BET() {
                   ?.filter((bet) => bet.type === 'visual content')
                   .map((bet) => {
                     return {
+                      downloadUrl: bet.downloadUrl,
+                      logo: resourceImgUrl(bet, 'logo.webp'),
                       name: bet.name,
                       projectName: bet.projectName || '',
-                      downloadUrl: bet.downloadUrl,
                       viewurls: bet.viewurls,
-                      logo: resourceImgUrl(bet, 'logo.webp'),
                     };
                   }) || []
               }
@@ -180,7 +177,7 @@ const SectionGrid = ({
 
   return (
     <div className="flex flex-wrap justify-center gap-4">
-      {elements.map((item, index) => {
+      {elements.map((item) => {
         const currentLanguageViewUrl =
           item.viewurls.find((el) => el.language === language)?.viewUrl ||
           item.viewurls[0]?.viewUrl;

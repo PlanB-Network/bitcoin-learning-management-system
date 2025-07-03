@@ -1,14 +1,11 @@
+import { TokenType } from '@blms/constants';
+import { EmptyResultError, firstRow, rejectOnEmpty } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 import { hash } from 'argon2';
-
-import { EmptyResultError, firstRow, rejectOnEmpty } from '@blms/database';
-
 import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery } from '../queries/change-password.js';
 import { getUserByEmailQuery } from '../queries/get-user.js';
 import { consumeTokenQuery, createTokenQuery } from '../queries/token.js';
-
-import { TokenType } from '@blms/constants';
 import { createSendEmail } from './email.js';
 
 export const createPasswordResetToken = (deps: Dependencies) => {
@@ -41,12 +38,12 @@ export const createPasswordResetToken = (deps: Dependencies) => {
         .then(rejectOnEmpty)
         .then((token) =>
           sendEmail({
-            email,
-            subject: 'Reset your password',
-            template,
             data: {
               token_url: `${domainUrl}/reset-password/${token.id}`,
             },
+            email,
+            subject: 'Reset your password',
+            template,
           }),
         )
         .then(() => ({ success: true }))

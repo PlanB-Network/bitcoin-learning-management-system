@@ -40,10 +40,10 @@ export const parseDetailsFromPath = (path: string): QuizQuestionDetails => {
   const id = `${pathElements[1]}-${pathElements[3]}`;
 
   return {
-    id,
-    path: pathElements.slice(0, 4).join('/'),
     fullPath: pathElements.join('/'),
+    id,
     language: pathElements[4].replace(/\..*/, '').toLowerCase() as Language,
+    path: pathElements.slice(0, 4).join('/'),
   };
 };
 
@@ -67,18 +67,18 @@ export const groupByQuizQuestion = (files: ChangedFile[], errors: string[]) => {
       const quizQuestion: ChangedQuizQuestion = groupedQuizQuestions.get(
         quizQuestionPath,
       ) || {
-        type: 'quizzes/questions',
+        files: [],
+        fullPath,
         id,
         path: quizQuestionPath,
-        fullPath,
-        files: [],
+        type: 'quizzes/questions',
       };
 
       quizQuestion.files.push({
         ...file,
-        path: getRelativePath(file.path, quizQuestionPath),
         fullPath: file.path,
         language,
+        path: getRelativePath(file.path, quizQuestionPath),
       });
 
       groupedQuizQuestions.set(quizQuestionPath, quizQuestion);
@@ -119,7 +119,7 @@ export const createUpdateQuizQuestions = ({
 
         for (const file of files) {
           try {
-            await processLocalFile(quizQuestion, id, file);
+            await processLocalFile(id, file);
           } catch (error) {
             errors.push(
               `Error processing file(quiz2) ${file.path} for quiz question ${quizQuestion.id}: ${error}${(error as any).detail ? ` - Detail: ${(error as any).detail}` : ''}`,

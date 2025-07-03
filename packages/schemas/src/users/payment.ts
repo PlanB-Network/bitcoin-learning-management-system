@@ -5,20 +5,20 @@ import { z } from 'zod';
 export const generalPaymentSchema = createSelectSchema(usersGeneralPayment);
 
 export const generalPaymentLightSchema = generalPaymentSchema.pick({
-  item: true,
-  paymentStatus: true,
   amount: true,
-  paymentId: true,
   invoiceUrl: true,
+  item: true,
+  paymentId: true,
+  paymentStatus: true,
 });
 
 export const checkoutDataSchema = z.object({
-  id: z.string(),
-  pr: z.string(),
-  onChainAddr: z.string().optional(),
   amount: z.number(),
   checkoutUrl: z.string(),
   clientSecret: z.string().optional(),
+  id: z.string(),
+  onChainAddr: z.string().optional(),
+  pr: z.string(),
 });
 
 export const stripeSessionSchema = z.object({

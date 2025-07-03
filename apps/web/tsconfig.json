@@ -1,14 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["src", "global.d.ts"],
   "compilerOptions": {
-    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "jsx": "react-jsx",
     "lib": ["dom", "esnext"],
-    "types": ["vite/client"],
-    "allowImportingTsExtensions": true,
-    "sourceMap": true
+    "noEmit": true,
+    "sourceMap": true,
+    "types": ["vite/client"]
   },
+  "extends": "../../tsconfig.json",
+  "include": ["src", "global.d.ts"],
   "references": [
     {
       "path": "../api/tsconfig.trpc.json"

@@ -1,7 +1,3 @@
-import type { PropsWithChildren } from 'react';
-import { createContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
 import type {
   JoinedBlogLight,
   JoinedCourse,
@@ -10,6 +6,9 @@ import type {
   UserAccountSettings,
   UserDetails,
 } from '@blms/types';
+import type { PropsWithChildren } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { trpcClient } from '#src/utils/trpc.js';
 
@@ -50,35 +49,34 @@ interface AppContext {
 }
 
 export const AppContext = createContext<AppContext>({
-  // User
-  user: undefined,
-  setUser: () => {},
-  refetchUserDetails: async () => {},
-
   // Account settings
   accountSettings: null,
-  setAccountSettings: () => {},
-  refetchAccountSettings: async () => {},
-
-  // Session
-  session: undefined,
-  setSession: () => {},
-
-  // Tutorials
-  tutorials: null,
-  setTutorials: () => {},
-
-  // Courses
-  courses: null,
-  setCourses: () => {},
 
   // Blog
   blogs: null,
-  setBlogs: () => {},
+
+  // Courses
+  courses: null,
 
   // Register Toast
   hasSeenRegisterToast: false,
+  refetchAccountSettings: async () => {},
+  refetchUserDetails: async () => {},
+
+  // Session
+  session: undefined,
+  setAccountSettings: () => {},
+  setBlogs: () => {},
+  setCourses: () => {},
   setHasSeenRegisterToast: () => {},
+  setSession: () => {},
+  setTutorials: () => {},
+  setUser: () => {},
+
+  // Tutorials
+  tutorials: null,
+  // User
+  user: undefined,
 });
 
 export const AppContextProvider = ({ children }: PropsWithChildren) => {
@@ -169,22 +167,22 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   }, [i18n.language]);
 
   const appContext: AppContext = {
-    user,
-    setUser,
-    refetchUserDetails,
     accountSettings,
-    setAccountSettings,
-    refetchAccountSettings,
-    session,
-    setSession,
-    tutorials,
-    setTutorials,
-    courses,
-    setCourses,
     blogs,
-    setBlogs,
+    courses,
     hasSeenRegisterToast,
+    refetchAccountSettings,
+    refetchUserDetails,
+    session,
+    setAccountSettings,
+    setBlogs,
+    setCourses,
     setHasSeenRegisterToast,
+    setSession,
+    setTutorials,
+    setUser,
+    tutorials,
+    user,
   };
 
   return (

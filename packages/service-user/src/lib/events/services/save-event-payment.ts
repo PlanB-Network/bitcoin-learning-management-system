@@ -1,7 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import { firstRow, sql } from '@blms/database';
 import type { CouponCode, Event } from '@blms/types';
+import { v4 as uuidv4 } from 'uuid';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
@@ -78,15 +77,15 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
 
       const payment = await postgres.exec(
         insertEventPayment({
-          eventId: eventId,
-          withPhysical: withPhysical,
-          uid: uid,
-          couponCode: couponCode,
-          paymentStatus: 'paid',
           amount: 0,
-          paymentId: randomUUID,
-          method: 'free',
+          couponCode: couponCode,
+          eventId: eventId,
           invoiceUrl: '',
+          method: 'free',
+          paymentId: randomUUID,
+          paymentStatus: 'paid',
+          uid: uid,
+          withPhysical: withPhysical,
         }),
       );
 
@@ -108,13 +107,13 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
 
       await postgres.exec(
         insertEventPayment({
-          uid,
-          eventId,
-          paymentStatus: 'pending',
           amount: checkoutData.amount,
-          paymentId: checkoutData.id,
+          eventId,
           invoiceUrl: checkoutData.checkoutUrl,
           method,
+          paymentId: checkoutData.id,
+          paymentStatus: 'pending',
+          uid,
           withPhysical,
         }),
       );
@@ -133,25 +132,25 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
 
       await postgres.exec(
         insertEventPayment({
-          uid,
-          eventId,
-          withPhysical,
-          paymentId,
           amount: dollarPrice,
-          paymentStatus: 'pending',
+          couponCode,
+          eventId,
           invoiceUrl: '',
           method,
-          couponCode,
+          paymentId,
+          paymentStatus: 'pending',
+          uid,
+          withPhysical,
         }),
       );
 
       return {
-        id: paymentId,
-        pr: '',
-        onChainAddr: undefined,
         amount: dollarPrice,
         checkoutUrl: session.id,
         clientSecret: session.client_secret as string,
+        id: paymentId,
+        onChainAddr: undefined,
+        pr: '',
       };
     }
 
@@ -173,8 +172,8 @@ export const createUpdateEventPaymentStatus = ({
       updateEventPaymentQuery({
         id: paymentId,
         intentId: paymentIntentId,
-        isPaid: true,
         isExpired: false,
+        isPaid: true,
       }),
     );
   };

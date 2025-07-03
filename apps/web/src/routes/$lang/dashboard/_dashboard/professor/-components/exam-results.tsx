@@ -7,11 +7,11 @@ import type {
 } from '@blms/types';
 import {
   CustomGauge,
+  cn,
   DashGauge,
   EmptyState,
   Loader,
   RadialGauge,
-  cn,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -32,8 +32,8 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
 
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions({
-      language: i18n.language,
       id: courseId,
+      language: i18n.language,
     }),
   );
 
@@ -73,10 +73,10 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   );
 
   const finalResultsInfos = {
-    graduatedStudents: courseGradesAndSummary?.graduatedStudentsAmount ?? 0,
-    totalStudents: enrolledStudentsCount,
     averageScore: courseGradesAndSummary?.averageTotalScore ?? 0,
+    graduatedStudents: courseGradesAndSummary?.graduatedStudentsAmount ?? 0,
     thresholdToPass: course?.passingGradeThreshold,
+    totalStudents: enrolledStudentsCount,
   };
 
   if (!course) {
@@ -393,7 +393,7 @@ const WeightIndicator = ({ weight }: { weight: number }) => {
     <div className="flex gap-0.25">
       {[...Array(5)].map((_, i) => (
         <div
-          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+          // biome-ignore lint/suspicious/noArrayIndexKey: explanation
           key={`weight-bar-${i}`}
           className={cn(
             'w-1.5 h-5.5',
@@ -475,8 +475,8 @@ const downloadAssignmentGrades = (
   const rows = assignmentGrades
     .filter((grade) => grade.assignmentGrade !== null && grade.username)
     .map((grade) => ({
-      username: grade.username,
       assignmentScore: grade.assignmentGrade,
+      username: grade.username,
     }));
 
   const worksheet = XLSX.utils.json_to_sheet(rows);
@@ -521,19 +521,19 @@ const downloadExamGrades = (
       }
 
       return {
-        username: grade.username!,
-        score: grade.score!,
-        realScore,
         duration,
+        realScore,
+        score: grade.score!,
+        username: grade.username!,
       };
     });
 
   const statisticsRows = questionsStatistics.map((stat) => ({
+    questionDifficulty: stat.questionDifficulty,
     questionId: stat.questionId,
     questionText: stat.questionText,
-    questionDifficulty: stat.questionDifficulty,
-    totalAnswers: stat.totalAnswers,
     successPercentage: Math.round(stat.successPercentage * 100) / 100,
+    totalAnswers: stat.totalAnswers,
   }));
 
   const workbook = XLSX.utils.book_new();
@@ -647,8 +647,8 @@ const downloadConsolidatedGrades = (
   const rows: ConsolidatedGradeRow[] = Array.from(allUsernames).map(
     (username) => {
       const row: ConsolidatedGradeRow = {
-        username,
         average_grade: 0,
+        username,
       };
 
       singleTrialExams.forEach((exam, index) => {

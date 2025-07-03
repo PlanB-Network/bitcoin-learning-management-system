@@ -1,15 +1,8 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { IoCheckmark } from 'react-icons/io5';
-import { z } from 'zod';
-
 import type { CourseChapterResponse, CourseReview } from '@blms/types';
 import {
   Button,
+  cn,
+  customToast,
   Form,
   FormControl,
   FormField,
@@ -20,11 +13,16 @@ import {
   Ratings,
   Slider,
   Textarea,
-  cn,
-  customToast,
 } from '@blms/ui';
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useNavigate } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { IoCheckmark } from 'react-icons/io5';
+import { z } from 'zod';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
@@ -101,33 +99,33 @@ export function CourseReviewComponent({
   const authMode = AuthModalState.SignIn;
 
   const FormSchema = z.object({
+    adminComment: z.string(),
+    difficulty: z.number().min(-5).max(5),
+    faithful: z.number().min(-5).max(5),
     general: z
       .number()
       .min(1, { message: t('courses.review.fieldRequired') })
       .max(5),
     length: z.number().min(-5).max(5),
-    difficulty: z.number().min(-5).max(5),
-    quality: z.number().min(-5).max(5),
-    faithful: z.number().min(-5).max(5),
-    recommend: z.number().min(-5).max(5),
     publicComment: z.string(),
+    quality: z.number().min(-5).max(5),
+    recommend: z.number().min(-5).max(5),
     teacherComment: z.string(),
-    adminComment: z.string(),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
     defaultValues: {
+      adminComment: '',
+      difficulty: 0,
+      faithful: 0,
       general: 0,
       length: 0,
-      difficulty: 0,
-      quality: 0,
-      faithful: 0,
-      recommend: 0,
       publicComment: '',
+      quality: 0,
+      recommend: 0,
       teacherComment: '',
-      adminComment: '',
     },
+    resolver: zodResolver(FormSchema),
   });
 
   useEffect(() => {
@@ -159,8 +157,8 @@ export function CourseReviewComponent({
 
     await saveCourseReview.mutateAsync({
       ...form.getValues(),
-      courseId: chapter?.courseId || courseId || '',
       chapterId: chapterId || '',
+      courseId: chapter?.courseId || courseId || '',
     });
 
     navigateToNextChapter();
@@ -173,13 +171,13 @@ export function CourseReviewComponent({
 
     if (isLastChapter) {
       navigate({
-        to: '/courses/$courseId',
         params: goToChapterParameters(chapter, 'next'),
+        to: '/courses/$courseId',
       });
     } else {
       navigate({
-        to: '/courses/$courseId/$chapterId',
         params: goToChapterParameters(chapter, 'next'),
+        to: '/courses/$courseId/$chapterId',
       });
     }
   }
@@ -223,11 +221,11 @@ export function CourseReviewComponent({
                       await onSubmit();
                       setIsEditable(false);
                       customToast(t('courses.review.thankYou'), {
+                        closeButton: true,
                         closeOnClick: true,
-                        mode: 'light',
                         color: 'success',
                         icon: IoCheckmark,
-                        closeButton: true,
+                        mode: 'light',
                         time: 3000,
                       });
                     } else {
@@ -473,9 +471,9 @@ function FormSlider({
   disabled?: boolean;
 }) {
   const sliderProps = {
-    min: -5,
     default: [0],
     max: 5,
+    min: -5,
     step: 1,
   };
 
@@ -510,7 +508,7 @@ function FormSlider({
             <div className="relative flex justify-between">
               {Array.from({ length: 11 }).map((_, i) => (
                 <div
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                   key={i}
                   className="w-[2px] h-1 bg-newGray-3"
                   style={{ left: `${(i / 10) * 100}%` }}

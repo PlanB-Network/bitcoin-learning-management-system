@@ -15,8 +15,8 @@ import { createProcessChangedNewsletter } from './categories/newsletters.js';
 import { createProcessChangedPodcast } from './categories/podcasts.js';
 import { createProcessChangedProject } from './categories/projects.js';
 import { createProcessChangedYoutubeChannel } from './categories/youtubeChannels.js';
-import { assertSupportedCategoryPath } from './const.js';
 import type { ResourceCategory } from './const.js';
+import { assertSupportedCategoryPath } from './const.js';
 
 interface ResourceDetails {
   category: ResourceCategory;
@@ -53,9 +53,9 @@ const parseDetailsFromPath = (path: string): ResourceDetails => {
 
   return {
     category: categorySubpath,
-    path: pathElements.slice(0, 3).join('/'),
     fullPath: pathElements.join('/'),
     language: pathElements[3].replace(/\..*/, '').toLowerCase() as Language,
+    path: pathElements.slice(0, 3).join('/'),
   };
 };
 
@@ -77,17 +77,17 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
       } = parseDetailsFromPath(file.path);
 
       const resource: ChangedResource = groupedResources.get(resourcePath) || {
-        type: 'resources',
         category,
-        path: resourcePath,
-        fullPath,
         files: [],
+        fullPath,
+        path: resourcePath,
+        type: 'resources',
       };
 
       resource.files.push({
         ...file,
-        path: getRelativePath(file.path, resourcePath),
         language,
+        path: getRelativePath(file.path, resourcePath),
       });
 
       groupedResources.set(resourcePath, resource);

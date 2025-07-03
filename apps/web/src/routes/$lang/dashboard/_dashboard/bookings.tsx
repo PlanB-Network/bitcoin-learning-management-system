@@ -1,14 +1,11 @@
+import { Loader, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
-
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BillingSection } from './-components/billing-section.tsx';
 import { BookingPart } from './-components/booking-part.tsx';
 
@@ -70,16 +67,16 @@ function DashboardBookings() {
         <TabsListUnderlined
           tabs={[
             {
-              key: 'tickets',
-              value: 'tickets',
-              text: t('words.tickets'),
               active: 'tickets' === currentTab,
+              key: 'tickets',
+              text: t('words.tickets'),
+              value: 'tickets',
             },
             {
-              key: 'billings',
-              value: 'billings',
-              text: t('words.billing'),
               active: 'billings' === currentTab,
+              key: 'billings',
+              text: t('words.billing'),
+              value: 'billings',
             },
           ]}
           size={isMobile ? 's' : 'm'}

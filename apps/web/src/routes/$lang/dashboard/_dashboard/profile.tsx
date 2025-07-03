@@ -1,11 +1,7 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
-import type { ChangeEvent } from 'react';
-import { useContext, useEffect, useState } from 'react';
-
 import {
   Button,
   Checkbox,
+  customToast,
   DividerSimple,
   Form,
   FormControl,
@@ -17,20 +13,21 @@ import {
   Tabs,
   TabsContent,
   TabsListUnderlined,
-  customToast,
 } from '@blms/ui';
-
-import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-import { AppContext } from '#src/providers/context.js';
-import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
-
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useMutation } from '@tanstack/react-query';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { t } from 'i18next';
+import type { ChangeEvent } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoCheckmarkOutline } from 'react-icons/io5';
 import { z } from 'zod';
+import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.js';
+import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 import { trpc } from '#src/utils/trpc.ts';
 import { ChangeDisplayNameModal } from './-components/change-display-name-modal.tsx';
 import { ChangeEmailModal } from './-components/change-email-modal.tsx';
@@ -114,16 +111,16 @@ function DashboardProfile() {
         <TabsListUnderlined
           tabs={[
             {
-              key: 'info',
-              value: 'info',
-              text: t('dashboard.profile.profile'),
               active: 'info' === currentTab,
+              key: 'info',
+              text: t('dashboard.profile.profile'),
+              value: 'info',
             },
             {
-              key: 'settings',
-              value: 'settings',
-              text: t('dashboard.profile.settings'),
               active: 'settings' === currentTab,
+              key: 'settings',
+              text: t('dashboard.profile.settings'),
+              value: 'settings',
             },
           ]}
           size={isMobile ? 's' : 'm'}
@@ -317,8 +314,8 @@ const NotificationSettings = () => {
     useState(false);
 
   const FormSchema = z.object({
-    platformNotifications: z.array(z.string()).default([]),
     emailNotifications: z.array(z.string()).default([]),
+    platformNotifications: z.array(z.string()).default([]),
   });
 
   const getDefaultPlatformNotifications = () => {
@@ -337,11 +334,11 @@ const NotificationSettings = () => {
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: standardSchemaResolver(FormSchema),
     defaultValues: {
-      platformNotifications: getDefaultPlatformNotifications(),
       emailNotifications: getDefaultEmailNotifications(),
+      platformNotifications: getDefaultPlatformNotifications(),
     },
+    resolver: standardSchemaResolver(FormSchema),
   });
 
   const changeNotificationSettings = useMutation(
@@ -349,10 +346,10 @@ const NotificationSettings = () => {
       onSuccess: async () => {
         await refetchAccountSettings();
         customToast(t('dashboard.profile.notificationSettings.settingsSaved'), {
-          mode: 'light',
+          closeButton: true,
           color: 'success',
           icon: IoCheckmarkOutline,
-          closeButton: true,
+          mode: 'light',
         });
       },
     }),
@@ -360,11 +357,11 @@ const NotificationSettings = () => {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const mutationPayload = {
-      platformNotifyEvents: data.platformNotifications.includes('events'),
-      platformNotifyCourses: data.platformNotifications.includes('courses'),
-      platformNotifyGeneral: data.platformNotifications.includes('general'),
       emailNotifyCourses: data.emailNotifications.includes('courses'),
       emailNotifyGeneral: data.emailNotifications.includes('general'),
+      platformNotifyCourses: data.platformNotifications.includes('courses'),
+      platformNotifyEvents: data.platformNotifications.includes('events'),
+      platformNotifyGeneral: data.platformNotifications.includes('general'),
     };
 
     changeNotificationSettings.mutate(mutationPayload);
@@ -415,22 +412,22 @@ const NotificationSettings = () => {
                 )}
                 options={[
                   {
-                    value: 'events',
                     label: t(
                       'dashboard.profile.notificationSettings.eventsOption',
                     ),
+                    value: 'events',
                   },
                   {
-                    value: 'courses',
                     label: t(
                       'dashboard.profile.notificationSettings.coursesOption',
                     ),
+                    value: 'courses',
                   },
                   {
-                    value: 'general',
                     label: t(
                       'dashboard.profile.notificationSettings.generalOption',
                     ),
+                    value: 'general',
                   },
                 ]}
                 disabled={
@@ -449,16 +446,16 @@ const NotificationSettings = () => {
                   label={t('dashboard.profile.notificationSettings.emailTitle')}
                   options={[
                     {
-                      value: 'courses',
                       label: t(
                         'dashboard.profile.notificationSettings.coursesOption',
                       ),
+                      value: 'courses',
                     },
                     {
-                      value: 'general',
                       label: t(
                         'dashboard.profile.notificationSettings.generalOption',
                       ),
+                      value: 'general',
                     },
                   ]}
                   disabled={

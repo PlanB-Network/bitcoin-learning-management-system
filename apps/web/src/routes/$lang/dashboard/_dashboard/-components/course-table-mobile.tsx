@@ -1,6 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
+import { BTC101ID } from '@blms/shared';
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
 import type { CarouselApi } from '@blms/ui';
 import {
@@ -16,25 +14,24 @@ import {
   TableHeader,
   TableRow,
 } from '@blms/ui';
-
+import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import bitcoinSvg from '#src/assets/icons/btc.svg';
 import businessSvg from '#src/assets/icons/luggage.svg';
 import miningSvg from '#src/assets/icons/mining-black.svg';
 import securitySvg from '#src/assets/icons/padlock-black.svg';
 import protocolSvg from '#src/assets/icons/protocol-black.svg';
 import socialStudiesSvg from '#src/assets/icons/world-black.svg';
-
-import { BTC101ID } from '@blms/shared';
 import { CourseDashboardCard } from './course-dashboard-card.tsx';
 import { courseCategoriesDashboard } from './course-table.tsx';
 
 const categoryIcons = {
   bitcoin: bitcoinSvg,
   business: businessSvg,
+  mining: miningSvg,
   protocol: protocolSvg,
   security: securitySvg,
   'social studies': socialStudiesSvg,
-  mining: miningSvg,
 };
 
 export const CourseTableMobile = ({
@@ -71,7 +68,7 @@ export const CourseTableMobile = ({
       coursesByCategory[category].push({ course, progress });
     }
 
-    return { progressMap, combinedMap, coursesByCategory };
+    return { combinedMap, coursesByCategory, progressMap };
   }, [courses, progress]);
 
   const getStatusStyles = (
@@ -80,8 +77,8 @@ export const CourseTableMobile = ({
   ) => {
     if (!progress) {
       return {
-        text: t('dashboard.myCourses.notStarted'),
         bgColor: isSelected ? 'bg-newGray-5' : 'bg-newGray-4',
+        text: t('dashboard.myCourses.notStarted'),
       };
     }
 
@@ -89,14 +86,14 @@ export const CourseTableMobile = ({
 
     if (progressPercentage === 100) {
       return {
-        text: t('dashboard.myCourses.completed'),
         bgColor: isSelected ? 'bg-brightGreen-5' : 'bg-brightGreen-4',
+        text: t('dashboard.myCourses.completed'),
       };
     }
 
     return {
-      text: t('dashboard.myCourses.inprogress'),
       bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
+      text: t('dashboard.myCourses.inprogress'),
     };
   };
 

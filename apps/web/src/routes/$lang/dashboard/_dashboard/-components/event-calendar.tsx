@@ -9,7 +9,7 @@ import type {
   Formats,
   View,
 } from 'react-big-calendar';
-import { Calendar, Views, dateFnsLocalizer } from 'react-big-calendar';
+import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.js';
@@ -48,30 +48,30 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
 
   const localizer = dateFnsLocalizer({
     format,
-    parse,
-    startOfWeek,
     getDay,
     locales,
+    parse,
+    startOfWeek,
   });
 
   const weekComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
     event: CustomEventWeek,
+    toolbar: CustomToolbar,
     week: {
       header: CustomWeekHeader,
     },
   };
 
   const monthComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
     event: CustomEventMonth,
+    toolbar: CustomToolbar,
   };
 
   const agendaComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
     agenda: {
       event: CustomAgendaEvent,
     },
+    toolbar: CustomToolbar,
   };
 
   const scrollToTime = new Date(1970, 1, 1, 9);
@@ -98,15 +98,15 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
         switch (e.type) {
           case 'class': {
             navigate({
+              params: { chapterId: e.subId!, courseId: e.id },
               to: '/courses/$courseId/$chapterId',
-              params: { courseId: e.id, chapterId: e.subId! },
             });
             break;
           }
           default: {
             navigate({
-              to: '/events/$eventId',
               params: { eventId: e.id },
+              to: '/events/$eventId',
             });
             break;
           }

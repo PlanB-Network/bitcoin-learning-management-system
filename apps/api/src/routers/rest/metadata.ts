@@ -1,6 +1,5 @@
-import type { Router } from 'express';
-
 import { createGetMetadata } from '@blms/service-content';
+import type { Router } from 'express';
 
 import { type Dependencies, injectLogContext } from '#src/dependencies.js';
 

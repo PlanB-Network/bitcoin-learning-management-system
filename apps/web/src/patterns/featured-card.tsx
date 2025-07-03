@@ -1,9 +1,8 @@
+import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 import { TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useContext } from 'react';
-
-import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate } from '#src/utils/date.ts';
@@ -19,13 +18,13 @@ interface FeaturedCardProps {
 const cardStyles = cva(
   'mb-[47px] text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-[8px] py-[10px] lg:p-[20px] w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-center',
   {
+    defaultVariants: {
+      background: 'gray',
+    },
     variants: {
       background: {
         gray: 'bg-newGray-6',
       },
-    },
-    defaultVariants: {
-      background: 'gray',
     },
   },
 );

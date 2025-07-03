@@ -4,46 +4,46 @@
 import type { NotificationType } from '@blms/constants';
 
 export interface Notification {
-  id: string;
-  content: string | null;
-  type: NotificationType;
-  courseId: string | null;
-  chapterId: string | null;
-  eventId: string | null;
   blogId: string | null;
+  chapterId: string | null;
+  content: string | null;
+  courseId: string | null;
   createdAt: Date;
+  eventId: string | null;
+  id: string;
+  type: NotificationType;
 }
 
 export interface UserNotificationStatus {
-  uid: string;
+  createdAt: Date;
   notificationId: string;
   readDate: Date | null;
-  createdAt: Date;
+  uid: string;
 }
 
 export interface ScheduledCourseAnnouncement {
+  content: string;
+  courseId: string;
+  createdAt: Date;
   id: string;
+  isPublished: boolean;
   notificationId: string;
   professorId: string;
-  courseId: string;
-  studentGroup: 'all' | 'summer' | 'assignment';
-  content: string;
-  type: NotificationType;
   scheduledAt: Date;
+  studentGroup: 'all' | 'summer' | 'assignment';
   timezone: string;
-  isPublished: boolean;
-  createdAt: Date;
+  type: NotificationType;
   updatedAt: Date;
 }
 
 export interface JoinedUserNotification {
-  id: string;
-  content: string | null;
-  type: NotificationType;
-  courseId: string | null;
-  chapterId: string | null;
-  eventId: string | null;
   blogId: string | null;
+  chapterId: string | null;
+  content: string | null;
+  courseId: string | null;
+  eventId: string | null;
+  id: string;
+  type: NotificationType;
   createdAt: Date;
   readDate: Date | null;
 }

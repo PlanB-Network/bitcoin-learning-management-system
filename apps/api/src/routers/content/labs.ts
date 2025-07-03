@@ -1,8 +1,7 @@
-import { z } from 'zod';
-
 import { joinedLabSchema } from '@blms/schemas';
 import { createGetLab } from '@blms/service-content';
 import type { JoinedLab } from '@blms/types';
+import { z } from 'zod';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';

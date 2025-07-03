@@ -10,14 +10,14 @@ interface DividerProps {
 }
 
 const dividerVariant = cva('w-full border-t', {
+  defaultVariants: {
+    mode: 'dark',
+  },
   variants: {
     mode: {
       dark: 'border-newGray-1',
       light: 'border-newGray-4',
     },
-  },
-  defaultVariants: {
-    mode: 'dark',
   },
 });
 
@@ -47,14 +47,14 @@ export const Divider = ({
 };
 
 const dividerSimpleVariant = cva('w-full h-px', {
+  defaultVariants: {
+    mode: 'dark',
+  },
   variants: {
     mode: {
       dark: 'bg-newGray-1',
       light: 'bg-newGray-4',
     },
-  },
-  defaultVariants: {
-    mode: 'dark',
   },
 });
 
@@ -69,14 +69,14 @@ export const DividerSimple = ({
 };
 
 const dividerVerticalVariant = cva('w-px', {
+  defaultVariants: {
+    mode: 'dark',
+  },
   variants: {
     mode: {
       dark: 'bg-newGray-1',
       light: 'bg-newGray-1',
     },
-  },
-  defaultVariants: {
-    mode: 'dark',
   },
 });
 

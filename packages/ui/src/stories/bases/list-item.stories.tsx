@@ -4,57 +4,57 @@ import { ListItem } from '#src/bases/ListItem/list-item.tsx';
 const variants = ['dark', 'light', 'lightMaroon'] as const;
 
 const meta: Meta<typeof ListItem> = {
-  title: 'Bases/list-item',
-  component: ListItem,
-  parameters: {
-    layout: 'padded',
+  args: {
+    className: '',
+    hasIncreasedPadding: false,
+    isDesktopOnly: false,
+    isMobileOnly: false,
+    leftText: 'Label',
+    leftTextClassName: '',
+    rightText: 'Value',
+    rightTextClassName: '',
+    variant: 'dark',
+    wrapOnMobile: false,
   },
-  tags: ['autodocs'],
   argTypes: {
+    className: {
+      control: 'text',
+    },
+    hasIncreasedPadding: {
+      control: 'boolean',
+    },
+    isDesktopOnly: {
+      control: 'boolean',
+    },
+    isMobileOnly: {
+      control: 'boolean',
+    },
     leftText: {
       control: 'text',
     },
+    leftTextClassName: {
+      control: 'text',
+    },
     rightText: {
+      control: 'text',
+    },
+    rightTextClassName: {
       control: 'text',
     },
     variant: {
       control: { type: 'select' },
       options: variants,
     },
-    isMobileOnly: {
-      control: 'boolean',
-    },
-    isDesktopOnly: {
-      control: 'boolean',
-    },
     wrapOnMobile: {
       control: 'boolean',
     },
-    hasIncreasedPadding: {
-      control: 'boolean',
-    },
-    className: {
-      control: 'text',
-    },
-    rightTextClassName: {
-      control: 'text',
-    },
-    leftTextClassName: {
-      control: 'text',
-    },
   },
-  args: {
-    leftText: 'Label',
-    rightText: 'Value',
-    variant: 'dark',
-    isMobileOnly: false,
-    isDesktopOnly: false,
-    wrapOnMobile: false,
-    hasIncreasedPadding: false,
-    className: '',
-    rightTextClassName: '',
-    leftTextClassName: '',
+  component: ListItem,
+  parameters: {
+    layout: 'padded',
   },
+  tags: ['autodocs'],
+  title: 'Bases/list-item',
 };
 
 export default meta;
@@ -67,25 +67,25 @@ export const Default: Story = {
 
 export const LightVariant: Story = {
   args: {
-    variant: 'light',
     leftText: 'Course Duration',
     rightText: '2 hours',
+    variant: 'light',
   },
 };
 
 export const LightMaroonVariant: Story = {
   args: {
-    variant: 'lightMaroon',
     leftText: 'Difficulty Level',
     rightText: 'Intermediate',
+    variant: 'lightMaroon',
   },
 };
 
 export const WithIncreasedPadding: Story = {
   args: {
+    hasIncreasedPadding: true,
     leftText: 'Course Price',
     rightText: '$29.99',
-    hasIncreasedPadding: true,
   },
 };
 

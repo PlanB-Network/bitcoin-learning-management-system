@@ -1,5 +1,3 @@
-import type { Router } from 'express';
-
 import { createCalculateEventSeats } from '@blms/service-content';
 import {
   createStartCourse,
@@ -14,6 +12,7 @@ import {
   createUpdateGeneralPaymentStatus,
 } from '@blms/service-user';
 import type { SwissBitcoinPayCheckout } from '@blms/types';
+import type { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -55,8 +54,8 @@ export const createRestPaymentRoutes = (
         }
 
         res.json({
-          message: 'success',
           coursePayment,
+          message: 'success',
         });
       } catch (error) {
         req.log('Error in courses webhook', error);
@@ -202,8 +201,8 @@ export const createRestPaymentRoutes = (
               dependencies,
             )({
               intentId: intentId,
-              stripeInvoiceId: invoiceId,
               invoiceUrl: hostedInvoiceUrl,
+              stripeInvoiceId: invoiceId,
             });
 
             if (coursePayment) {
@@ -215,14 +214,14 @@ export const createRestPaymentRoutes = (
           } else if (product === 'event') {
             await createUpdateEventPaymentInvoiceId(dependencies)({
               intentId: intentId,
-              stripeInvoiceId: invoiceId,
               invoiceUrl: hostedInvoiceUrl,
+              stripeInvoiceId: invoiceId,
             });
           } else {
             await createUpdateGeneralPaymentInvoiceId(dependencies)({
               intentId: intentId,
-              stripeInvoiceId: invoiceId,
               invoiceUrl: hostedInvoiceUrl,
+              stripeInvoiceId: invoiceId,
             });
           }
 

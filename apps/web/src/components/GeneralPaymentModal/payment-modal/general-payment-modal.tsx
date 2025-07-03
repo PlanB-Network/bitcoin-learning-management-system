@@ -1,27 +1,24 @@
+import type { GeneralPaymentItem } from '@blms/constants';
+import type { CheckoutData, CouponCode } from '@blms/types';
+import {
+  Button,
+  customToast,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@blms/ui';
 import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { CheckoutData, CouponCode } from '@blms/types';
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  customToast,
-} from '@blms/ui';
-
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import type { GeneralPaymentItem } from '@blms/constants';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.js';
 
@@ -76,11 +73,11 @@ export const GeneralPaymentModal = ({
     async (method: 'sbp' | 'stripe' | null) => {
       if (method) {
         const serverCheckoutData = await saveGeneralPaymentRequest.mutateAsync({
-          satsPrice: satsPriceReduced,
-          dollarPrice: dollarPriceReduced,
           couponCode: validatedCoupon?.code,
+          dollarPrice: dollarPriceReduced,
           item: item,
           method: method,
+          satsPrice: satsPriceReduced,
         });
         setCheckoutData(serverCheckoutData);
         if (
@@ -139,9 +136,9 @@ export const GeneralPaymentModal = ({
   useEffect(() => {
     if (isPaymentSuccess) {
       customToast('Payment successful!', {
+        closeButton: true,
         color: 'primary',
         mode: 'light',
-        closeButton: true,
       });
     }
   }, [isPaymentSuccess]);
@@ -182,7 +179,6 @@ export const GeneralPaymentModal = ({
           </DialogDescription>
           <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] h-full gap-6 lg:gap-0">
             <ModalPaymentSummary
-              item={item}
               paidPriceDollars={dollarPrice}
               satsPrice={satsPriceReduced}
               mobileDisplay={false}
@@ -239,7 +235,6 @@ export const GeneralPaymentModal = ({
                   gdprTerms={t('events.tcDisclaimer')}
                 >
                   <ModalPaymentSummary
-                    item={item}
                     paidPriceDollars={dollarPriceReduced}
                     satsPrice={satsPriceReduced}
                     mobileDisplay={true}

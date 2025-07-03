@@ -1,8 +1,7 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import type React from 'react';
-
-import { cn } from '@blms/ui';
 
 import { CategoryIcon } from '#src/components/category-icon.tsx';
 
@@ -57,15 +56,15 @@ interface CategoryItemProps {
 const itemStyles = cva(
   'max-md:size-[135px] md:w-[272px] flex max-md:flex-col max-md:justify-center items-center rounded-2xl p-2.5 md:py-2.5 md:px-5 gap-3 md:gap-6 transition-all max-md:bg-newBlack-2 max-md:border max-md:border-newGray-1',
   {
-    variants: {
-      unreleased: {
-        true: 'opacity-50 cursor-not-allowed',
-        false:
-          'opacity-100 md:group-hover:bg-newBlack-3 max-md:group-hover:border-darkOrange-5',
-      },
-    },
     defaultVariants: {
       unreleased: false,
+    },
+    variants: {
+      unreleased: {
+        false:
+          'opacity-100 md:group-hover:bg-newBlack-3 max-md:group-hover:border-darkOrange-5',
+        true: 'opacity-50 cursor-not-allowed',
+      },
     },
   },
 );

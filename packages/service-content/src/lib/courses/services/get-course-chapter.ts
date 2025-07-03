@@ -29,7 +29,7 @@ export const createGetCourseChapter = (dependencies: Dependencies) => {
     const part = course.parts.find((part) => part.partId === chapter?.partId);
 
     const professors = await postgres.exec(
-      getProfessorsQuery({ professorIds: chapter?.professors, language }),
+      getProfessorsQuery({ language, professorIds: chapter?.professors }),
     );
 
     // Should never happen if a chapter was found
@@ -39,9 +39,9 @@ export const createGetCourseChapter = (dependencies: Dependencies) => {
 
     return {
       ...chapter,
-      professors: professors?.map((element) => formatProfessor(element)),
       course,
       part,
+      professors: professors?.map((element) => formatProfessor(element)),
     };
   };
 };

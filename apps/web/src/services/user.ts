@@ -10,7 +10,7 @@ export const setProfilePicture = async (file: File) => {
   formData.append('file', file);
 
   return httpClient.json<UserDetails>('/user-file/profile-picture', {
-    method: 'POST',
     body: formData,
+    method: 'POST',
   });
 };

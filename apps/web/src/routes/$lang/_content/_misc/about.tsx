@@ -1,7 +1,6 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
-
 import { Button, Person } from '@blms/ui';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 
 import Corporates from '#src/assets/about/corporates.webp?no-inline';
 import PlanBCircles from '#src/assets/about/planb_circles.webp?no-inline';

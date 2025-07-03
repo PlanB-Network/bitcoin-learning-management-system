@@ -4,6 +4,7 @@ import {
   BasicModal,
   Button,
   Calendar,
+  cn,
   Form,
   FormControl,
   FormField,
@@ -20,7 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
   Textarea,
-  cn,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
@@ -45,15 +45,15 @@ interface AnnouncementModalProps {
 }
 
 const schema = z.object({
-  type: z.string(),
   content: z.string().min(1, { message: t('courses.review.fieldRequired') }),
-  studentGroup: z.nativeEnum(StudentGroup).optional(),
   dateTime: z.date({
     required_error: t(
       'dashboard.teacher.courses.announcementModal.dateRequired',
     ),
   }),
+  studentGroup: z.nativeEnum(StudentGroup).optional(),
   timezone: z.string(),
+  type: z.string(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -130,22 +130,22 @@ export const AnnouncementModal = ({
 
     if (existingAnnouncement) {
       updateScheduledCourseAnnouncement.mutate({
-        courseId,
-        type: data.type as NotificationType,
         content: data.content,
-        studentGroup: data.studentGroup || StudentGroup.All,
-        scheduledAt: scheduledUtcDate,
-        timezone: data.timezone,
+        courseId,
         id: existingAnnouncement.id,
+        scheduledAt: scheduledUtcDate,
+        studentGroup: data.studentGroup || StudentGroup.All,
+        timezone: data.timezone,
+        type: data.type as NotificationType,
       });
     } else {
       submitScheduledCourseAnnouncement.mutate({
-        courseId,
-        type: data.type as NotificationType,
         content: data.content,
-        studentGroup: data.studentGroup || StudentGroup.All,
+        courseId,
         scheduledAt: scheduledUtcDate,
+        studentGroup: data.studentGroup || StudentGroup.All,
         timezone: data.timezone,
+        type: data.type as NotificationType,
       });
     }
   }
@@ -181,17 +181,17 @@ export const AnnouncementModal = ({
 
       form.reset({
         ...form.getValues(),
-        type: existingAnnouncement.type,
         content: existingAnnouncement.content,
         studentGroup: existingAnnouncement.studentGroup as StudentGroup,
+        type: existingAnnouncement.type,
       });
     } else {
       form.reset({
-        type: NotificationType.Warning,
         content: '',
-        studentGroup: StudentGroup.All,
         dateTime: new Date(),
+        studentGroup: StudentGroup.All,
         timezone: 'GMT',
+        type: NotificationType.Warning,
       });
       setDate(null);
       setTime('00:00');
@@ -288,16 +288,16 @@ export const AnnouncementModal = ({
                       <div className="flex flex-col gap-2 pl-[18px] text-left">
                         {[
                           {
-                            value: 'all',
                             label: t('dashboard.announcements.groups.all'),
+                            value: 'all',
                           },
                           {
-                            value: 'assignment',
                             label: t('dashboard.announcements.groups.active'),
+                            value: 'assignment',
                           },
                           {
-                            value: 'summer',
                             label: t('dashboard.announcements.groups.summer'),
+                            value: 'summer',
                           },
                         ].map((option) => (
                           <label
@@ -433,7 +433,7 @@ export const AnnouncementModal = ({
                                 .padStart(2, '0');
                               return (
                                 <SelectItem
-                                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                                  // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                                   key={i}
                                   value={`${hour}:${minute}`}
                                 >

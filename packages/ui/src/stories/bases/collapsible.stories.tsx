@@ -16,8 +16,6 @@ type Story = StoryObj<typeof Collapsible>;
 
 export const Primary: Story = {
   args: {
-    key: 'collapsKey',
-    defaultOpen: false,
     children: (
       <div key="collapsKey">
         <CollapsibleTrigger className="group flex justify-start text-left">
@@ -28,5 +26,7 @@ export const Primary: Story = {
         </CollapsibleContent>
       </div>
     ),
+    defaultOpen: false,
+    key: 'collapsKey',
   },
 };

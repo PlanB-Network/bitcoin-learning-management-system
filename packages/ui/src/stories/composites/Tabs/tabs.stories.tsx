@@ -9,8 +9,8 @@ import {
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
-  title: 'Composites/Tabs/tabs',
   tags: ['autodocs'],
+  title: 'Composites/Tabs/tabs',
 };
 
 export default meta;
@@ -18,8 +18,6 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Primary: Story = {
   args: {
-    defaultValue: 'tabone',
-    className: 'max-w-[600px]',
     children: (
       <>
         <TabsList>
@@ -38,5 +36,7 @@ export const Primary: Story = {
         </TabsContent>
       </>
     ),
+    className: 'max-w-[600px]',
+    defaultValue: 'tabone',
   },
 };

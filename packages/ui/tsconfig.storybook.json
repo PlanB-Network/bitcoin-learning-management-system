@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "outDir": "dist-storybook"
@@ -14,6 +13,7 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.js"
   ],
+  "extends": "./tsconfig.json",
   "include": [
     "src/**/*.stories.ts",
     "src/**/*.stories.js",

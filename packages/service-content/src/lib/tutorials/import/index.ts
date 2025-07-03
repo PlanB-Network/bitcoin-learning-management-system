@@ -1,7 +1,6 @@
-import matter from 'gray-matter';
-
 import { firstRow, sql } from '@blms/database';
 import type { ChangedAsset, ChangedFile, Tutorial } from '@blms/types';
+import matter from 'gray-matter';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
@@ -13,7 +12,7 @@ import {
   yamlToObject,
 } from '../../utils.js';
 
-import { type TutorialMain, createProcessMainFile } from './main.js';
+import { createProcessMainFile, type TutorialMain } from './main.js';
 
 interface TutorialDetails {
   category: string;
@@ -50,12 +49,12 @@ export const parseDetailsFromPath = (path: string): TutorialDetails => {
 
   return {
     category: pathElements[1],
-    path: tutorialElements.join('/'),
     fullPath: pathElements.join('/'),
     language: pathElements
       .at(-1)
       ?.replace(/\..*/, '')
       .toLowerCase() as Language,
+    path: tutorialElements.join('/'),
   };
 };
 
@@ -86,21 +85,21 @@ export const groupByTutorial = (
       } = parseDetailsFromPath(file.path);
 
       const tutorial: ChangedTutorial = groupedTutorials.get(tutorialPath) || {
-        type: 'tutorials',
-        name: tutorialPath.split('/').at(-1) as string,
         category,
-        path: tutorialPath,
-        fullPath,
         files: [],
+        fullPath,
         hasLogo: tutorialsLogos.some(
           (logo) => logo.path === `${tutorialPath}/assets/logo.webp`,
         ),
+        name: tutorialPath.split('/').at(-1) as string,
+        path: tutorialPath,
+        type: 'tutorials',
       };
 
       tutorial.files.push({
         ...file,
-        path: getRelativePath(file.path, tutorialPath),
         language,
+        path: getRelativePath(file.path, tutorialPath),
       });
 
       groupedTutorials.set(tutorialPath, tutorial);

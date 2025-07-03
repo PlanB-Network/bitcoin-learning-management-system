@@ -39,26 +39,26 @@ export const createSbpPayment = (config: SwissBitcoinPayConfig) => {
     const ONE_MONTH = 60 * 24 * 30;
 
     const paymentData = {
-      title: elementId,
       amount: satsPrice,
-      unit: 'sat',
-      onChain: true,
       delay: ONE_MONTH,
+      onChain: true,
+      title: elementId,
+      unit: 'sat',
       webhook: `${config.proxyUrl}/users/${type}/payment/webhooks`,
     };
 
     const headers = new Headers({
-      'Content-Type': 'application/json',
       'api-key': config.apiKey || '',
+      'Content-Type': 'application/json',
     });
 
     try {
       const response = await fetch(
         'https://api.swiss-bitcoin-pay.ch/checkout',
         {
-          method: 'POST',
-          headers: headers,
           body: JSON.stringify(paymentData),
+          headers: headers,
+          method: 'POST',
         },
       );
 
@@ -85,8 +85,8 @@ export const createGetSbpCheckout = (ctx: Dependencies) => {
     const url = `https://api.swiss-bitcoin-pay.ch/checkout/${id}`;
     const response = await fetch(url, {
       headers: {
-        'Content-Type': 'application/json',
         'api-key': config.apiKey || '',
+        'Content-Type': 'application/json',
       },
     });
 
@@ -110,35 +110,35 @@ export const createStripePayment = ({
     paymentId: string,
   ) => {
     return stripe.checkout.sessions.create({
-      mode: 'payment',
-      ui_mode: 'embedded',
+      automatic_tax: { enabled: true },
+      billing_address_collection: 'required',
       invoice_creation: {
         enabled: true,
       },
-      billing_address_collection: 'required',
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: productName,
+            },
+            unit_amount: dollarPrice * 100,
+          },
+          quantity: 1,
+        },
+      ],
       metadata: {
         product: productType,
       },
+      mode: 'payment',
       payment_intent_data: {
         metadata: {
           paymentId: paymentId,
           product: productType,
         },
       },
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            unit_amount: dollarPrice * 100,
-            product_data: {
-              name: productName,
-            },
-          },
-          quantity: 1,
-        },
-      ],
       redirect_on_completion: 'never',
-      automatic_tax: { enabled: true },
+      ui_mode: 'embedded',
     });
   };
 };

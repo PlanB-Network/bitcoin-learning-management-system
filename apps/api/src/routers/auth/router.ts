@@ -1,7 +1,6 @@
-import { z } from 'zod';
-
 import { envConfigEndpointResultSchema } from '@blms/schemas';
 import type { EnvConfigEndpointResult } from '@blms/types';
+import { z } from 'zod';
 
 import type { Parser } from '#src/trpc/types.js';
 
@@ -14,8 +13,8 @@ const logoutProcedure = studentProcedure
   .input(z.void())
   .output<Parser<{ status: number; message: string }>>(
     z.object({
-      status: z.number(),
       message: z.string(),
+      status: z.number(),
     }),
   )
   .mutation(async ({ ctx: { req } }) => {
@@ -26,8 +25,8 @@ const logoutProcedure = studentProcedure
         }
 
         resolve({
-          status: 200,
           message: 'Logged out successfully',
+          status: 200,
         });
       });
     });
@@ -43,7 +42,7 @@ const configProcedure = publicProcedure
   });
 
 export const authRouter = createTRPCRouter({
+  config: configProcedure,
   credentials: credentialsAuthRouter,
   logout: logoutProcedure,
-  config: configProcedure,
 });

@@ -1,10 +1,9 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { z } from 'zod';
-
 import { Button } from '@blms/ui';
 import { useMutation } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { MainLayout } from '#src/components/main-layout.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -18,6 +17,7 @@ enum ValidationStatus {
 export const Route = createFileRoute(
   '/$lang/_content/_misc/validate-email-change/$token',
 )({
+  component: ValidateEmailChangePage,
   params: {
     parse: (params) => ({
       lang: z.string().parse(params.lang),
@@ -28,7 +28,6 @@ export const Route = createFileRoute(
       token: `${token}`,
     }),
   },
-  component: ValidateEmailChangePage,
 });
 
 function ValidateEmailChangePage() {
@@ -49,6 +48,9 @@ function ValidateEmailChangePage() {
   // Call the API to validate the email change
   const validateEmailChange = useMutation(
     trpc.user.validateEmailChange.mutationOptions({
+      onError: () => {
+        setValidationStatus(ValidationStatus.ERROR);
+      },
       onSuccess: ({ email }) => {
         if (email) {
           setEmail(email);
@@ -59,9 +61,6 @@ function ValidateEmailChangePage() {
         } else {
           setValidationStatus(ValidationStatus.ERROR);
         }
-      },
-      onError: () => {
-        setValidationStatus(ValidationStatus.ERROR);
       },
     }),
   );

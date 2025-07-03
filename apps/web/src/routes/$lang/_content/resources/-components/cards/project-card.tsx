@@ -1,5 +1,4 @@
-import { cn } from '@blms/ui';
-import { Image } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 
 interface ProjectCardProps {
   name: string;

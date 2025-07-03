@@ -2,25 +2,25 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Loader } from '#src/bases/loader.js';
 
 const meta: Meta<typeof Loader> = {
-  title: 'Bases/loader',
-  component: Loader,
-  tags: ['autodocs'],
   argTypes: {
-    variant: {
-      control: 'select',
-      options: ['black', 'orange'],
+    className: {
+      control: 'text',
     },
     size: {
       control: 'select',
       options: ['s', 'm', 'xl'],
     },
-    className: {
-      control: 'text',
+    variant: {
+      control: 'select',
+      options: ['black', 'orange'],
     },
   },
+  component: Loader,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/loader',
 };
 
 export default meta;
@@ -29,23 +29,23 @@ type Story = StoryObj<typeof Loader>;
 
 export const Default: Story = {
   args: {
-    variant: 'orange',
     size: 'm',
+    variant: 'orange',
   },
 };
 
 export const SmallBlackLoader: Story = {
-  name: 'Small Black Loader',
   args: {
-    variant: 'black',
     size: 's',
+    variant: 'black',
   },
+  name: 'Small Black Loader',
 };
 
 export const LargeOrangeLoader: Story = {
-  name: 'Large Orange Loader',
   args: {
-    variant: 'orange',
     size: 'xl',
+    variant: 'orange',
   },
+  name: 'Large Orange Loader',
 };

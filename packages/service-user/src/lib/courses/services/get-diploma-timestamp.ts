@@ -24,13 +24,13 @@ export const createGetTeacherLedCourseDiplomaTimestamp = ({
     }
 
     return {
-      id: timestamp.id,
-      uid: timestamp.uid,
-      courseId: timestamp.courseId,
       confirmed: timestamp.confirmed,
+      courseId: timestamp.courseId,
       examAttemptId: timestamp.examAttemptId,
+      id: timestamp.id,
       imgKey: timestamp.imgKey,
       pdfKey: timestamp.pdfKey,
+      uid: timestamp.uid,
     };
   };
 };

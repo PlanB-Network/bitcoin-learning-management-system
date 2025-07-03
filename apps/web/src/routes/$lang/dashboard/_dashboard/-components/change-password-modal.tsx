@@ -1,13 +1,7 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import PasswordValidator from 'password-validator';
-import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BasicModal,
   Button,
+  customToast,
   Form,
   FormControl,
   FormField,
@@ -15,11 +9,15 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  customToast,
 } from '@blms/ui';
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import PasswordValidator from 'password-validator';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { ImCheckmark } from 'react-icons/im';
+import { z } from 'zod';
 import { trpc } from '#src/utils/trpc.js';
 
 const password = new PasswordValidator().is().min(10);
@@ -38,10 +36,10 @@ export const ChangePasswordModal = ({
     trpc.user.changePassword.mutationOptions({
       onSuccess: () => {
         customToast(t('auth.passwordChangedSuccess'), {
-          mode: 'light',
+          closeButton: true,
           color: 'success',
           icon: ImCheckmark,
-          closeButton: true,
+          mode: 'light',
         });
         onClose();
       },
@@ -52,7 +50,6 @@ export const ChangePasswordModal = ({
 
   const changePasswordSchema = z
     .object({
-      oldPassword: z.string(),
       newPassword: z.string().refine(
         (pwd) => password.validate(pwd),
         (pwd) => {
@@ -61,6 +58,7 @@ export const ChangePasswordModal = ({
         },
       ),
       newPasswordConfirmation: z.string(),
+      oldPassword: z.string(),
     })
     .refine((data) => data.newPassword === data.newPasswordConfirmation, {
       message: passwordsDontMatchMessage,
@@ -70,18 +68,18 @@ export const ChangePasswordModal = ({
   type ChangePasswordForm = z.infer<typeof changePasswordSchema>;
 
   const form = useForm({
-    resolver: zodResolver(changePasswordSchema),
     defaultValues: {
-      oldPassword: '',
       newPassword: '',
       newPasswordConfirmation: '',
+      oldPassword: '',
     },
+    resolver: zodResolver(changePasswordSchema),
   });
 
   const onSubmit: SubmitHandler<ChangePasswordForm> = async (values) => {
     await changePassword.mutateAsync({
-      oldPassword: values.oldPassword,
       newPassword: values.newPassword,
+      oldPassword: values.oldPassword,
     });
   };
   const methods = useForm();

@@ -1,11 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-
+import * as schemas from '@blms/schemas';
 import { SyntaxKind } from 'typescript';
 import type { ZodEnumDef, ZodTypeAny } from 'zod';
 import { type GetType, printNode, zodToTs } from 'zod-to-ts';
-
-import * as schemas from '@blms/schemas';
 
 const schemasDirectory = '../schemas/src';
 const outputDirectory = './src/generated';
@@ -17,7 +15,7 @@ const generatedHeader =
 
 // Delete the output directory if it exists
 if (fs.existsSync(outputDirectory)) {
-  fs.rmSync(outputDirectory, { recursive: true, force: true });
+  fs.rmSync(outputDirectory, { force: true, recursive: true });
 }
 
 // Ensure the output directory is created
@@ -105,7 +103,7 @@ const extractSchemas = (fileContent: string): string[] => {
 
   for (const pattern of regexPatterns) {
     let match: string[] | null;
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+    // biome-ignore lint/suspicious/noAssignInExpressions: explanation
     while ((match = pattern.exec(fileContent)) !== null) {
       // @ts-ignore - we know this is not null
       schemaNames.add(match[1]);

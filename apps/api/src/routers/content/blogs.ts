@@ -1,6 +1,5 @@
-import { z } from 'zod';
-
 import { createGetBlog, createGetBlogs } from '@blms/service-content';
+import { z } from 'zod';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 
@@ -31,6 +30,6 @@ const getBlogProcedure = publicProcedure
   );
 
 export const blogsRouter = createTRPCRouter({
-  getBlogs: getBlogsProcedure,
   getBlog: getBlogProcedure,
+  getBlogs: getBlogsProcedure,
 });

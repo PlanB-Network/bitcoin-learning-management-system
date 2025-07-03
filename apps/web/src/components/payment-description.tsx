@@ -1,15 +1,13 @@
+import { GeneralPaymentItem } from '@blms/constants';
+import type { CouponCode, JoinedEvent } from '@blms/types';
+import { Button, Checkbox, cn, Divider } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { type JSX, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
-import type { CouponCode, JoinedEvent } from '@blms/types';
-import { Button, Checkbox, Divider, cn } from '@blms/ui';
 import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import spinner from '#src/assets/icons/spinner.svg';
-
-import { GeneralPaymentItem } from '@blms/constants';
-import { useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -17,7 +15,7 @@ import { trpc } from '#src/utils/trpc.js';
 const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   let prefix = '';
   if (amount > 0 && amount < 0.01) {
-    // biome-ignore lint/style/noParameterAssign: <explanation>
+    // biome-ignore lint/style/noParameterAssign: explanation
     amount = 0.01;
     prefix = '< ';
   }
@@ -27,11 +25,11 @@ const getFormattedUnit = (amount: number, unit: string, floating = 2) => {
   }
 
   return `${prefix}${Intl.NumberFormat(undefined, {
-    style: 'currency',
     currency: unit,
     currencyDisplay: 'narrowSymbol',
-    minimumFractionDigits: floating,
     maximumFractionDigits: floating,
+    minimumFractionDigits: floating,
+    style: 'currency',
   }).format(amount)}`;
 };
 

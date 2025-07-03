@@ -1,16 +1,13 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { LANGUAGES_MAP } from '@blms/shared';
+import { Flag, Loader, Switch, VerticalCard } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Flag, Loader, Switch, VerticalCard } from '@blms/ui';
-
-import { LANGUAGES_MAP } from '@blms/shared';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 

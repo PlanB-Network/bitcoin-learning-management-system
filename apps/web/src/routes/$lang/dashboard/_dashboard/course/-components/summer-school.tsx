@@ -45,11 +45,7 @@ import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx'
 import { trpc } from '#src/utils/trpc.ts';
 import { SummerSchoolWithdrawButton } from './summer-school-withdraw-button.tsx';
 
-export const SummerSchool = ({
-  courseId,
-}: {
-  courseId: string;
-}) => {
+export const SummerSchool = ({ courseId }: { courseId: string }) => {
   const { conversionRate } = useContext(ConversionRateContext);
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
@@ -319,7 +315,7 @@ function SummerPresentation() {
           <ReactPlayer
             height={'100%'}
             width={'100%'}
-            style={{ position: 'absolute', top: 0, left: 0 }}
+            style={{ left: 0, position: 'absolute', top: 0 }}
             className="mb-2 rounded-lg"
             controls={true}
             url={fixEmbedUrl(videoUrl)}
@@ -438,7 +434,10 @@ function WhatsIncluded({
 function ListElement({
   icon,
   children,
-}: { icon: IconType; children: React.ReactNode }) {
+}: {
+  icon: IconType;
+  children: React.ReactNode;
+}) {
   const Icon = icon;
   return (
     <div className="flex items-center gap-4">
@@ -454,7 +453,11 @@ function ListElement2({
   icon,
   leftText,
   children,
-}: { icon: IconType; leftText: string; children: React.ReactNode }) {
+}: {
+  icon: IconType;
+  leftText: string;
+  children: React.ReactNode;
+}) {
   const Icon = icon;
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4 my-2">

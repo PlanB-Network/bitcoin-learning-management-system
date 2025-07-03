@@ -1,16 +1,16 @@
 import { useNavigate } from '@tanstack/react-router';
+import { Attribution, defaults as defaultControls, Zoom } from 'ol/control.js';
 import Feature from 'ol/Feature.js';
-import OpenLayerMap from 'ol/Map.js';
-import View from 'ol/View.js';
-import { Attribution, Zoom, defaults as defaultControls } from 'ol/control.js';
 import Point from 'ol/geom/Point.js';
 import TileLayer from 'ol/layer/Tile.js';
 import VectorLayer from 'ol/layer/Vector.js';
+import OpenLayerMap from 'ol/Map.js';
 import type { Pixel } from 'ol/pixel.js';
 import { transform } from 'ol/proj.js';
-import { Vector as VectorSource } from 'ol/source.js';
 import OSM from 'ol/source/OSM.js';
+import { Vector as VectorSource } from 'ol/source.js';
 import { Circle as CircleStyle, Fill, Icon, Style } from 'ol/style.js';
+import View from 'ol/View.js';
 import { useEffect } from 'react';
 
 import OrangePillPath from '#src/assets/icons/orange_pill_color.svg';
@@ -30,7 +30,15 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
 
   useEffect(() => {
     const map = new OpenLayerMap({
-      target: 'communities-map',
+      controls: defaultControls({ zoom: false }).extend([
+        new Zoom({
+          className: 'custom-zoom-controls',
+        }),
+        new Attribution({
+          className: 'custom-attribution',
+          collapsible: false,
+        }),
+      ]),
       layers: [
         new TileLayer({
           source: new OSM({
@@ -38,19 +46,11 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
           }),
         }),
       ],
+      target: 'communities-map',
       view: new View({
         center: transform([0, 30], 'EPSG:4326', 'EPSG:3857'),
         zoom: 2,
       }),
-      controls: defaultControls({ zoom: false }).extend([
-        new Zoom({
-          className: 'custom-zoom-controls',
-        }),
-        new Attribution({
-          collapsible: false,
-          className: 'custom-attribution',
-        }),
-      ]),
     });
 
     const markers = communities.map((community) => {
@@ -67,27 +67,27 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
       const styles = [
         new Style({
           image: new CircleStyle({
-            radius: 11,
             fill: new Fill({
               color: 'rgba(218, 107, 9, 0.6)',
             }),
+            radius: 11,
           }),
         }),
         new Style({
           image: new CircleStyle({
-            radius: 9,
             fill: new Fill({
               color: 'white',
             }),
+            radius: 9,
           }),
         }),
         new Style({
           image: new Icon({
-            src: OrangePillPath,
-            scale: 0.03,
             anchor: [0.5, 1.2],
             anchorXUnits: 'fraction',
             anchorYUnits: 'fraction',
+            scale: 0.03,
+            src: OrangePillPath,
           }),
         }),
       ];

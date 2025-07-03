@@ -130,16 +130,16 @@ export const createSendCourseAnnouncementEmail = (
 
         try {
           await sendEmail({
+            data: {
+              announcementText: announcementText,
+              courseName: courseName,
+              dashboardLink: dashboardLink,
+              subject: subject,
+              unsubscribeLink: unsubscribeLink,
+            },
             email: user.email,
             subject: subject,
             template: 'd-7510966cbc5e48cc9746cbbd93256d9a',
-            data: {
-              courseName: courseName,
-              announcementText: announcementText,
-              dashboardLink: dashboardLink,
-              unsubscribeLink: unsubscribeLink,
-              subject: subject,
-            },
           });
         } catch (emailError) {
           console.error(

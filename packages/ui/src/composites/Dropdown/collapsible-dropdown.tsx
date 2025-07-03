@@ -1,26 +1,25 @@
-import { cva } from 'class-variance-authority';
-import { useState } from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
   cn,
 } from '@blms/ui';
+import { cva } from 'class-variance-authority';
+import { useState } from 'react';
 import { LuCircleAlert } from 'react-icons/lu';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 
 const CollapsibleDropdownVariant = cva(
   'w-full rounded-[12px] flex flex-col px-2.5 py-[5px] justify-center',
   {
-    variants: {
-      variant: {
-        light: 'bg-newGray-6 border-newGray-4',
-        dark: '',
-      },
-    },
     defaultVariants: {
       variant: 'light',
+    },
+    variants: {
+      variant: {
+        dark: '',
+        light: 'bg-newGray-6 border-newGray-4',
+      },
     },
   },
 );
@@ -28,14 +27,14 @@ const CollapsibleDropdownVariant = cva(
 const collapsibleTriggerVariant = cva(
   'flex justify-between items-center py-2 pl-[5px]',
   {
-    variants: {
-      variant: {
-        light: 'text-darkOrange-5',
-        dark: 'text-newBlack-3',
-      },
-    },
     defaultVariants: {
       variant: 'light',
+    },
+    variants: {
+      variant: {
+        dark: 'text-newBlack-3',
+        light: 'text-darkOrange-5',
+      },
     },
   },
 );

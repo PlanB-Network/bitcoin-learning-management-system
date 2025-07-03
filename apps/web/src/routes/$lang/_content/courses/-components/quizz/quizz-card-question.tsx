@@ -1,8 +1,7 @@
+import { cn } from '@blms/ui';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaPlay } from 'react-icons/fa6';
-
-import { cn } from '@blms/ui';
 
 import { QuizzHeader } from './-components/quizz-header.tsx';
 

@@ -1,9 +1,8 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "dist",
     "rootDir": ".",
-    "baseUrl": ".",
     "types": ["node", "vite/client"]
   },
   "exclude": [
@@ -16,6 +15,7 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
+  "extends": "./tsconfig.json",
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {

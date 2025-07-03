@@ -81,30 +81,30 @@ export const createSendCourseWeeklyRecapEmail = (
         const courseName = course.name;
         const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}${courseName} - Weekly recap`;
         const upcomingChapters = courseChapters.map((chapter) => ({
-          chapterIndex: `${chapter.partIndex}.${chapter.chapterIndex}`,
-          chapterName: chapter.title,
-          chapterStartDate: chapter.startDate?.toISOString(),
-          chapterEndDate: chapter.endDate?.toISOString(),
           addressLine1: chapter.addressLine1,
           addressLine2: chapter.addressLine2,
           addressLine3: chapter.addressLine3,
+          chapterEndDate: chapter.endDate?.toISOString(),
+          chapterIndex: `${chapter.partIndex}.${chapter.chapterIndex}`,
+          chapterName: chapter.title,
+          chapterStartDate: chapter.startDate?.toISOString(),
         }));
         const weekEndDate = new Date(endDate);
         weekEndDate.setDate(weekEndDate.getDate() - 1);
 
         await sendEmail({
+          data: {
+            courseName: courseName,
+            dashboardLink: `${config.domainUrl}/dashboard/course/${course.id}`,
+            endDate: weekEndDate.toISOString(),
+            startDate: startDate.toISOString(),
+            subject: subject,
+            unsubscribeLink: `${config.domainUrl}/change-email-preferences/${unsubscribeId}`,
+            upcomingChapters: upcomingChapters,
+          },
           email: userEmail,
           subject: subject,
           template: 'd-014c159979d543ecb8d6657b0265a84c',
-          data: {
-            courseName: courseName,
-            startDate: startDate.toISOString(),
-            endDate: weekEndDate.toISOString(),
-            upcomingChapters: upcomingChapters,
-            dashboardLink: `${config.domainUrl}/dashboard/course/${course.id}`,
-            unsubscribeLink: `${config.domainUrl}/change-email-preferences/${unsubscribeId}`,
-            subject: subject,
-          },
         });
       }
     } catch (error) {

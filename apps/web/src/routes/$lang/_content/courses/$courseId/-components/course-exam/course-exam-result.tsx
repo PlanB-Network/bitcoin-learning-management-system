@@ -1,20 +1,18 @@
-import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { useEffect } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-
+import { ExamType } from '@blms/constants';
 import type { CourseChapterResponse, CourseExamResults } from '@blms/types';
 import {
   BasicModal,
   Button,
   ButtonWithArrow,
+  cn,
   DialogClose,
   Divider,
-  cn,
 } from '@blms/ui';
-
-import { ExamType } from '@blms/constants';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
+import { useEffect } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import FaceFailed from '#src/assets/icons/face_failed.svg';
 import QuestionBelow from '#src/assets/icons/question_below.svg';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
@@ -46,10 +44,10 @@ export const CourseExamResult = ({
 
   async function onStart() {
     await startExamAttempt.mutateAsync({
-      courseId: chapter.courseId,
       chapterId: chapter.chapterId,
-      language: i18n.language || 'en',
+      courseId: chapter.courseId,
       examType: ExamType.Final,
+      language: i18n.language || 'en',
     });
   }
 
@@ -370,8 +368,8 @@ const ConcludeButton = ({
   const completeChapter = () => {
     if (succeeded) {
       completeChapterMutation.mutate({
-        courseId: chapter.course.id,
         chapterId: chapter.chapterId,
+        courseId: chapter.course.id,
         language: chapter.language,
       });
     }

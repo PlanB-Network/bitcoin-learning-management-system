@@ -1,11 +1,10 @@
-import { Button, ButtonWithArrow, TextTag, cn } from '@blms/ui';
+import type { CourseResponse } from '@blms/types';
+import { Button, ButtonWithArrow, cn, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-
-import type { CourseResponse } from '@blms/types';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 export const CourseCurriculum = ({
@@ -39,7 +38,7 @@ export const CourseCurriculum = ({
       <section className="flex flex-col gap-5">
         {course.parts?.map((part, partIndex) => (
           <details
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            // biome-ignore lint/suspicious/noArrayIndexKey: explanation
             key={partIndex}
             open={
               expandAll
@@ -86,7 +85,7 @@ export const CourseCurriculum = ({
                 return (
                   chapter !== undefined && (
                     <div
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                       key={index}
                       className="flex justify-between items-center pl-4 lg:pl-8 gap-2"
                     >
@@ -97,8 +96,8 @@ export const CourseCurriculum = ({
                             : '/courses/$courseId/$chapterId'
                         }
                         params={{
-                          courseId: course.id,
                           chapterId: chapter.chapterId,
+                          courseId: course.id,
                         }}
                         className={cn(
                           'flex items-center group/link gap-[5px] lg:gap-7',
@@ -120,13 +119,13 @@ export const CourseCurriculum = ({
                             <span className="max-lg:label-medium-16px text-newGray-1 leading-[121%] hover:no-underline">
                               {'//'}{' '}
                               {new Intl.DateTimeFormat(undefined, {
-                                month: 'short',
                                 day: 'numeric',
-                                year: 'numeric',
                                 hour: 'numeric',
-                                minute: 'numeric',
                                 hour12: true,
+                                minute: 'numeric',
+                                month: 'short',
                                 timeZoneName: 'short',
+                                year: 'numeric',
                               }).format(new Date(chapter.startDate))}
                               {chapter.addressLine1 &&
                                 ` - ${chapter.addressLine1}`}
@@ -187,8 +186,8 @@ export const CourseCurriculum = ({
                                 : '/courses/$courseId/$chapterId'
                             }
                             params={{
-                              courseId: course.id,
                               chapterId: chapter.chapterId,
+                              courseId: course.id,
                             }}
                             className={cn(
                               'flex items-center',

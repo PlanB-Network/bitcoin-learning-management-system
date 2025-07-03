@@ -1,10 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BasicModal,
   Button,
@@ -15,8 +8,13 @@ import {
   FormLabel,
   Input,
 } from '@blms/ui';
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { useContext } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -47,10 +45,10 @@ export const ChangeDisplayNameModal = ({
   );
 
   const form = useForm({
-    resolver: zodResolver(changeDisplayNameSchema),
     defaultValues: {
       displayName: '',
     },
+    resolver: zodResolver(changeDisplayNameSchema),
   });
 
   const onSubmit: SubmitHandler<ChangeDisplayNameForm> = async (values) => {

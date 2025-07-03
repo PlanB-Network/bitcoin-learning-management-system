@@ -74,6 +74,6 @@ export const createGetTutorialsWithProfessorName = ({
       }
     }
 
-    return { tutorials: data, nextCursor };
+    return { nextCursor, tutorials: data };
   };
 };

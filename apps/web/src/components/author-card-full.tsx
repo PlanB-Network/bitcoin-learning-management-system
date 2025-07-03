@@ -1,15 +1,11 @@
+import type { FullProfessor } from '@blms/types';
+import { Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
-import type { FullProfessor } from '@blms/types';
-
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
-
 import DonateLightning from '../assets/icons/tips-icon.svg';
 import { useDisclosure } from '../hooks/index.ts';
-
-import { Image } from '@blms/ui';
 import { SocialLinks, TopicTags } from './professor-card.tsx';
 import { TipModal } from './tip-modal.tsx';
 

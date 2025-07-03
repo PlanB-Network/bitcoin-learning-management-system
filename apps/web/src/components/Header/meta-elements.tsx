@@ -1,18 +1,15 @@
+import { Button } from '@blms/ui';
 import { Link, useLocation } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoLogOutOutline } from 'react-icons/io5';
-
-import { Button } from '@blms/ui';
-
+import SearchIcon from '#src/assets/icons/search.svg';
+import SearchIconBlack from '#src/assets/icons/search-black.svg';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.ts';
-
-import SearchIconBlack from '#src/assets/icons/search-black.svg';
-import SearchIcon from '#src/assets/icons/search.svg';
 import SignInIconLight from '../../assets/icons/sing-in.svg';
 import { LanguageSelector } from './language-selector.tsx';
 import { NotificationsPanel } from './notifications-panel.tsx';

@@ -16,16 +16,16 @@ const getCouponCodes = (options: ListOptions) => {
   // This is important to prevent SQL injection attacks thant we ensure that
   // the sortBy value is one of the keys in this map and not a user input
   const sortMap = {
+    code: sql`code`,
     createdAt: sql`coupon_code.created_at`,
-    updatedAt: sql`coupon_code.updated_at`,
+    maxUses: sql`max_uses`,
     // Note: it is not possible to sort by name, because it points to both
     // content.courses_localized and content.events tables
     name: sql`coupon_code.item_id`,
-    code: sql`code`,
-    uses: sql`uses`,
-    maxUses: sql`max_uses`,
-    reductionPercentage: sql`reduction_percentage`,
     owner: sql`username`,
+    reductionPercentage: sql`reduction_percentage`,
+    updatedAt: sql`coupon_code.updated_at`,
+    uses: sql`uses`,
   } as const;
 
   const sort = sortMap[options.sortBy as keyof typeof sortMap] || null;

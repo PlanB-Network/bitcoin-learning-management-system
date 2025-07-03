@@ -1,7 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import { firstRow, sql } from '@blms/database';
 import type { CouponCode, Course } from '@blms/types';
+import { v4 as uuidv4 } from 'uuid';
 
 import type { Dependencies } from '../../../dependencies.js';
 import {
@@ -90,15 +89,15 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
 
       const payment = await postgres.exec(
         insertCoursePayment({
+          amount: 0,
+          couponCode: couponCode,
           courseId: courseId,
           format: format,
-          uid: uid,
-          couponCode: couponCode,
-          paymentStatus: 'paid',
-          amount: 0,
-          paymentId: randomUUID,
-          method: 'free',
           invoiceUrl: '',
+          method: 'free',
+          paymentId: randomUUID,
+          paymentStatus: 'paid',
+          uid: uid,
         }),
       );
 
@@ -122,12 +121,12 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
       }
 
       return {
-        id: 'free',
-        pr: '',
-        onChainAddr: undefined,
         amount: dollarPrice,
         checkoutUrl: '',
         clientSecret: '',
+        id: 'free',
+        onChainAddr: undefined,
+        pr: '',
       };
     }
 
@@ -140,15 +139,15 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
 
       await postgres.exec(
         insertCoursePayment({
-          uid,
-          courseId,
-          paymentStatus: 'pending',
-          format: format,
           amount: checkoutData.amount,
-          paymentId: checkoutData.id,
+          couponCode: couponCode,
+          courseId,
+          format: format,
           invoiceUrl: checkoutData.checkoutUrl,
           method: method,
-          couponCode: couponCode,
+          paymentId: checkoutData.id,
+          paymentStatus: 'pending',
+          uid,
         }),
       );
 
@@ -166,25 +165,25 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
 
       await postgres.exec(
         insertCoursePayment({
-          uid,
+          amount: dollarPrice,
+          couponCode: couponCode,
           courseId,
           format,
-          paymentId,
-          amount: dollarPrice,
-          paymentStatus: 'pending',
           invoiceUrl: '',
           method: method,
-          couponCode: couponCode,
+          paymentId,
+          paymentStatus: 'pending',
+          uid,
         }),
       );
 
       return {
-        id: paymentId,
-        pr: '',
-        onChainAddr: undefined,
         amount: dollarPrice,
         checkoutUrl: session.id,
         clientSecret: session.client_secret as string,
+        id: paymentId,
+        onChainAddr: undefined,
+        pr: '',
       };
     }
 
@@ -206,8 +205,8 @@ export const createUpdateCoursePaymentStatus = ({
       updateCoursePaymentQuery({
         id: paymentId,
         intentId: paymentIntentId,
-        isPaid: true,
         isExpired: false,
+        isPaid: true,
       }),
     );
   };

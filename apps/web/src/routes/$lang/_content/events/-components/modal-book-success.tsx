@@ -1,11 +1,9 @@
+import type { JoinedEvent } from '@blms/types';
+import { Button } from '@blms/ui';
+import { useMutation } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useContext } from 'react';
 import { FiLoader } from 'react-icons/fi';
-
-import type { JoinedEvent } from '@blms/types';
-import { Button } from '@blms/ui';
-
-import { useMutation } from '@tanstack/react-query';
 import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { AppContext } from '#src/providers/context.js';
 import { base64ToBlob } from '#src/utils/misc.ts';

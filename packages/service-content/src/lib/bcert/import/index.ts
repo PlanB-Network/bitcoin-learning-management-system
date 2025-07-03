@@ -30,8 +30,8 @@ export const parseDetailsFromPath = (path: string): BCertExamDetails => {
     throw new Error('Invalid B Certificate Exam path');
 
   return {
-    path: pathElements.slice(0, 3).join('/'),
     fullPath: pathElements.join('/'),
+    path: pathElements.slice(0, 3).join('/'),
   };
 };
 
@@ -49,10 +49,10 @@ export const groupByBCertExam = (files: ChangedFile[], errors: string[]) => {
       const bCertExam: ChangedBCertExam = groupedBCertExams.get(
         bCertExamPath,
       ) || {
-        type: 'bcert/editions',
-        path: bCertExamPath,
-        fullPath: fullPath,
         files: [],
+        fullPath: fullPath,
+        path: bCertExamPath,
+        type: 'bcert/editions',
       };
 
       bCertExam.files.push({

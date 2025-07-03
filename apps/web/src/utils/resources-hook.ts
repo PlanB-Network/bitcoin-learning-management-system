@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import type {
   JoinedBook,
   JoinedEvent,
@@ -8,6 +6,7 @@ import type {
   JoinedPodcast,
   JoinedYoutubeChannel,
 } from '@blms/types';
+import { useTranslation } from 'react-i18next';
 
 type Content =
   | JoinedBook
@@ -49,7 +48,7 @@ export const useShuffleSuggestedContent = (
       }
       return acc;
     },
-    { prioritized: [], others: [] },
+    { others: [], prioritized: [] },
   );
 
   // Shuffle and combine prioritized and others

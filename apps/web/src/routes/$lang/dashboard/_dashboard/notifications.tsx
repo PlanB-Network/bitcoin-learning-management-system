@@ -1,8 +1,9 @@
+/** biome-ignore-all lint/correctness/useHookAtTopLevel: TODO check */
 import { NotificationType } from '@blms/constants';
 import type { JoinedUserNotification } from '@blms/types';
-import { Button, Checkbox, Label, Loader, Switch, TextTag, cn } from '@blms/ui';
+import { Button, Checkbox, cn, Label, Loader, Switch, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -345,8 +346,6 @@ const NotificationItem = ({
             notification.type,
             notification.courseId ?? undefined,
             notification.chapterId ?? undefined,
-            notification.eventId ?? undefined,
-            notification.blogId ?? undefined,
           )}
           className="flex flex-col gap-2.5 md:px-4 grow"
         >
@@ -488,7 +487,7 @@ export const getNotificationContent = (
 
   const { data: chapter } = useQuery(
     trpc.content.getCourseChapter.queryOptions(
-      { language: i18n.language, chapterId: chapterId ?? '' },
+      { chapterId: chapterId ?? '', language: i18n.language },
       {
         enabled: !!chapterId,
       },
@@ -528,21 +527,10 @@ export const getNotificationContent = (
       return t('notifications.calendar_5m');
     case NotificationType.Calendar48HoursOnlineEvent:
       return t('notifications.calendar_48h_online_event', {
-        formattedTime:
-          event?.startDate &&
-          formatHourRange(
-            event?.startDate,
-            event?.endDate ?? undefined,
-            event?.timezone ?? undefined,
-            true,
-          ),
         date:
           event?.startDate &&
           formatDate(event?.startDate, event.timezone ?? undefined),
         eventName: event?.name,
-      });
-    case NotificationType.Calendar24HoursInPersonEvent:
-      return t('notifications.calendar_24h_in_person_event', {
         formattedTime:
           event?.startDate &&
           formatHourRange(
@@ -551,8 +539,19 @@ export const getNotificationContent = (
             event?.timezone ?? undefined,
             true,
           ),
-        eventName: event?.name,
+      });
+    case NotificationType.Calendar24HoursInPersonEvent:
+      return t('notifications.calendar_24h_in_person_event', {
         adressLine: event?.addressLine1,
+        eventName: event?.name,
+        formattedTime:
+          event?.startDate &&
+          formatHourRange(
+            event?.startDate,
+            event?.endDate ?? undefined,
+            event?.timezone ?? undefined,
+            true,
+          ),
       });
     case NotificationType.Calendar5MinutesOnlineEvent:
       return t('notifications.calendar_5m_online_event', {
@@ -599,8 +598,6 @@ export const getNotificationRedirect = (
   type: string,
   courseId?: string,
   chapterId?: string,
-  eventId?: string,
-  blogId?: string,
 ) => {
   switch (type) {
     case NotificationType.Calendar24HoursCourse:
@@ -655,8 +652,8 @@ export const getNotificationDateString = (date: Date) => {
   }
   if (diffInWeeks < 5) {
     return t('notifications.weeksAgo', {
-      weeks: diffInWeeks,
       s: diffInWeeks > 1 ? 's' : '',
+      weeks: diffInWeeks,
     });
   }
   if (diffInMonths < 12) {
@@ -666,7 +663,7 @@ export const getNotificationDateString = (date: Date) => {
     });
   }
   return t('notifications.yearsAgo', {
-    years: diffInYears,
     s: diffInYears > 1 ? 's' : '',
+    years: diffInYears,
   });
 };

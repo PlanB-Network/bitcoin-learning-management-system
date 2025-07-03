@@ -2,10 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RadialGauge } from '#src/composites/Chart/radial-gauge.js';
 
 const meta: Meta<typeof RadialGauge> = {
-  title: 'Composites/Charts/radial-gauge',
-  component: RadialGauge,
-  tags: ['autodocs'],
   argTypes: {
+    className: {
+      control: 'text',
+      description: 'Additional CSS classes for custom styling',
+    },
+    filledColorTransparent: {
+      control: 'boolean',
+      description: 'Whether the filled color should be transparent',
+    },
     label: {
       control: 'text',
       description: 'The label displayed below the gauge',
@@ -14,27 +19,22 @@ const meta: Meta<typeof RadialGauge> = {
       control: 'number',
       description: 'The percentage value to display (0-100)',
     },
-    variant: {
-      control: 'select',
-      options: ['green', 'purple', 'yellow', 'orange'],
-      description: 'Color variant for the gauge',
-    },
-    filledColorTransparent: {
-      control: 'boolean',
-      description: 'Whether the filled color should be transparent',
-    },
     showBackground: {
       control: 'boolean',
       description: 'Whether to show the background',
     },
-    className: {
-      control: 'text',
-      description: 'Additional CSS classes for custom styling',
+    variant: {
+      control: 'select',
+      description: 'Color variant for the gauge',
+      options: ['green', 'purple', 'yellow', 'orange'],
     },
   },
+  component: RadialGauge,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/Charts/radial-gauge',
 };
 
 export default meta;
@@ -42,23 +42,23 @@ export default meta;
 type Story = StoryObj<typeof RadialGauge>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
+    filledColorTransparent: false,
     label: 'Average score',
     percentage: 86,
-    variant: 'green',
-    filledColorTransparent: false,
     showBackground: true,
+    variant: 'green',
   },
+  name: 'Default',
 };
 
 export const TransparentFilled: Story = {
-  name: 'Transparent Filled',
   args: {
+    filledColorTransparent: true,
     label: 'Average score',
     percentage: 86,
-    variant: 'green',
-    filledColorTransparent: true,
     showBackground: true,
+    variant: 'green',
   },
+  name: 'Transparent Filled',
 };

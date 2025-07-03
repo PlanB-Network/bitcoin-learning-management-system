@@ -1,10 +1,7 @@
+import type { JoinedTutorialLight } from '@blms/types';
+import { cn, Image, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { MdThumbDown, MdThumbUp } from 'react-icons/md';
-
-import type { JoinedTutorialLight } from '@blms/types';
-import { TextTag, cn } from '@blms/ui';
-
-import { Image } from '@blms/ui';
 import { assetUrl } from '#src/utils/index.js';
 
 export const TutorialCard = ({

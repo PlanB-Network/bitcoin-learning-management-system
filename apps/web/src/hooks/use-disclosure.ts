@@ -16,8 +16,8 @@ export const useDisclosure = () => {
   }, []);
 
   return {
-    isOpen,
     close,
+    isOpen,
     open,
     toggle,
   };

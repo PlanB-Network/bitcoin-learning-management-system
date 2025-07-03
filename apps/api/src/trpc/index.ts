@@ -1,11 +1,10 @@
+import type { UserPermission, UserRole } from '@blms/constants';
+import type { LogContext } from '@blms/types';
 import { initTRPC } from '@trpc/server';
 import type { CreateExpressContextOptions } from '@trpc/server/adapters/express';
 import * as dotenv from 'dotenv';
 import superjson from 'superjson';
 import { ZodError } from 'zod';
-
-import type { UserPermission, UserRole } from '@blms/constants';
-import type { LogContext } from '@blms/types';
 
 import type { Dependencies } from '../dependencies.js';
 
@@ -48,9 +47,9 @@ export const createContext = (
   return {
     ...opts,
     dependencies: { ...dependencies, log },
-    sessionId: opts.req.session?.id,
-    requestId: opts.req.id,
     log,
+    requestId: opts.req.id,
+    sessionId: opts.req.session?.id,
   };
 };
 
@@ -61,7 +60,6 @@ export const createContext = (
  * transformer
  */
 const t = initTRPC.context<Context>().create({
-  transformer: superjson,
   errorFormatter({ ctx, shape, error }) {
     ctx?.log('ERROR:', error.message, error.name, error.code);
     return {
@@ -72,6 +70,7 @@ const t = initTRPC.context<Context>().create({
       },
     };
   },
+  transformer: superjson,
 });
 
 /**

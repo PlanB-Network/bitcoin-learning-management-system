@@ -1,6 +1,4 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
+import { CourseLevel } from '@blms/constants';
 import {
   contentCourseChapters,
   contentCourseChaptersLocalized,
@@ -10,10 +8,11 @@ import {
   contentCoursesAssignment,
   contentCoursesLocalized,
 } from '@blms/database';
-
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 import { formattedProfessorSchema } from './professor.js';
 
-import { courseLevelSchema } from './index.js';
+export const courseLevelSchema = z.nativeEnum(CourseLevel);
 
 export const courseSchema = createSelectSchema(contentCourses);
 export const courseLocalizedSchema = createSelectSchema(
@@ -48,38 +47,38 @@ export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema
 
 export const joinedCourseChapterSchema = courseChapterLocalizedSchema
   .pick({
-    chapterId: true,
-    language: true,
-    title: true,
-    sections: true,
-    releasePlace: true,
-    isOnline: true,
-    isInPerson: true,
-    isCourseReview: true,
-    isCourseExam: true,
-    isCourseConclusion: true,
-    isSingleTrialExam: true,
-    rateWeight: true,
-    isGdprCompliance: true,
-    customTcDisclaimer: true,
-    startDate: true,
-    endDate: true,
-    releaseDate: true,
-    timezone: true,
-    liveUrl: true,
-    chatUrl: true,
     addressLine1: true,
     addressLine2: true,
     addressLine3: true,
     availableSeats: true,
-    remainingSeats: true,
+    chapterId: true,
+    chatUrl: true,
+    customTcDisclaimer: true,
+    endDate: true,
+    isCourseConclusion: true,
+    isCourseExam: true,
+    isCourseReview: true,
+    isGdprCompliance: true,
+    isInPerson: true,
+    isOnline: true,
+    isSingleTrialExam: true,
+    language: true,
     liveLanguage: true,
+    liveUrl: true,
+    rateWeight: true,
     rawContent: true,
+    releaseDate: true,
+    releasePlace: true,
+    remainingSeats: true,
+    sections: true,
+    startDate: true,
+    timezone: true,
+    title: true,
   })
   .merge(
     courseChapterSchema.pick({
-      partId: true,
       chapterIndex: true,
+      partId: true,
     }),
   )
   .merge(
@@ -95,39 +94,39 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
 
 export const minimalJoinedCourseSchema = courseSchema
   .pick({
+    assignmentWeight: true,
+    availableSeats: true,
+    contact: true,
+    customTcDisclaimer: true,
+    endDate: true,
+    format: true,
+    hasLogo: true,
+    hours: true,
     id: true,
     index: true,
-    isArchived: true,
-    hours: true,
-    topic: true,
-    subtopic: true,
-    originalLanguage: true,
-    requiresPayment: true,
-    paymentExpirationDate: true,
-    publishedAt: true,
-    format: true,
-    teachingFormat: true,
-    onlinePriceDollars: true,
     inpersonPriceDollars: true,
+    isArchived: true,
+    isAssignmentGradingPublished: true,
+    isGdprCompliance: true,
+    isPlanbSchool: true,
+    lastCommit: true,
+    lastUpdated: true,
+    numberOfRating: true,
+    onlinePriceDollars: true,
+    originalLanguage: true,
     paidDescription: true,
     paidVideoLink: true,
-    startDate: true,
-    endDate: true,
-    availableSeats: true,
-    remainingSeats: true,
-    contact: true,
-    lastUpdated: true,
-    lastCommit: true,
-    numberOfRating: true,
-    sumOfAllRating: true,
-    isPlanbSchool: true,
-    presentationMarkdown: true,
-    hasLogo: true,
-    isGdprCompliance: true,
-    customTcDisclaimer: true,
-    isAssignmentGradingPublished: true,
     passingGradeThreshold: true,
-    assignmentWeight: true,
+    paymentExpirationDate: true,
+    presentationMarkdown: true,
+    publishedAt: true,
+    remainingSeats: true,
+    requiresPayment: true,
+    startDate: true,
+    subtopic: true,
+    sumOfAllRating: true,
+    teachingFormat: true,
+    topic: true,
   })
   .merge(
     z.object({
@@ -136,17 +135,17 @@ export const minimalJoinedCourseSchema = courseSchema
   )
   .merge(
     courseLocalizedSchema.pick({
+      goal: true,
       language: true,
       name: true,
-      goal: true,
       objectives: true,
       rawDescription: true,
     }),
   )
   .merge(
     z.object({
-      level: courseLevelSchema,
       chaptersCount: z.number().optional(),
+      level: courseLevelSchema,
     }),
   )
   .merge(
@@ -157,54 +156,54 @@ export const minimalJoinedCourseSchema = courseSchema
 
 export const joinedCourseProfessorIdSchema = minimalJoinedCourseSchema.merge(
   z.object({
-    mainProfessorIds: z.string().array(),
     associatedProfessorIds: z.string().array(),
     averageRating: z.number(),
+    mainProfessorIds: z.string().array(),
   }),
 );
 
 export const joinedCourseSchema = minimalJoinedCourseSchema.merge(
   z.object({
-    mainProfessors: formattedProfessorSchema.array(),
     associatedProfessors: formattedProfessorSchema.array(),
     averageRating: z.number(),
+    mainProfessors: formattedProfessorSchema.array(),
   }),
 );
 
 export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
   .pick({
-    courseId: true,
-    chapterId: true,
-    language: true,
-    title: true,
-    sections: true,
-    releasePlace: true,
-    isOnline: true,
-    isInPerson: true,
-    isCourseReview: true,
-    isCourseExam: true,
-    isCourseConclusion: true,
-    isSingleTrialExam: true,
-    rateWeight: true,
-    isGdprCompliance: true,
-    customTcDisclaimer: true,
-    startDate: true,
-    endDate: true,
-    timezone: true,
-    liveUrl: true,
-    chatUrl: true,
     addressLine1: true,
     addressLine2: true,
     addressLine3: true,
     availableSeats: true,
-    remainingSeats: true,
+    chapterId: true,
+    chatUrl: true,
+    courseId: true,
+    customTcDisclaimer: true,
+    endDate: true,
+    isCourseConclusion: true,
+    isCourseExam: true,
+    isCourseReview: true,
+    isGdprCompliance: true,
+    isInPerson: true,
+    isOnline: true,
+    isSingleTrialExam: true,
+    language: true,
     liveLanguage: true,
+    liveUrl: true,
+    rateWeight: true,
     rawContent: true,
+    releasePlace: true,
+    remainingSeats: true,
+    sections: true,
+    startDate: true,
+    timezone: true,
+    title: true,
   })
   .merge(
     courseChapterSchema.pick({
-      partId: true,
       chapterIndex: true,
+      partId: true,
     }),
   )
   .merge(
@@ -214,8 +213,8 @@ export const joinedCourseChapterWithContentSchema = courseChapterLocalizedSchema
   )
   .merge(
     courseSchema.pick({
-      lastUpdated: true,
       lastCommit: true,
+      lastUpdated: true,
     }),
   )
   .merge(
@@ -233,17 +232,17 @@ export const partWithChaptersSchema = joinedCoursePartLocalizedSchema.merge(
 export const courseResponseSchema = minimalJoinedCourseSchema
   .merge(
     z.object({
-      professors: formattedProfessorSchema.array(),
+      chaptersCount: z.number(),
       parts: z
         .object({
-          part: z.number().optional(),
-          language: z.string().optional(),
-          title: z.string().optional(),
           chapters: joinedCourseChapterSchema.optional().array(),
+          language: z.string().optional(),
+          part: z.number().optional(),
+          title: z.string().optional(),
         })
         .array(),
       partsCount: z.number(),
-      chaptersCount: z.number(),
+      professors: formattedProfessorSchema.array(),
     }),
   )
   .omit({
@@ -251,11 +250,11 @@ export const courseResponseSchema = minimalJoinedCourseSchema
   })
   .merge(
     z.object({
-      mainProfessors: formattedProfessorSchema.array(),
       associatedProfessors: formattedProfessorSchema.array(),
+      chaptersCount: z.number(),
+      mainProfessors: formattedProfessorSchema.array(),
       parts: partWithChaptersSchema.array(),
       partsCount: z.number(),
-      chaptersCount: z.number(),
     }),
   );
 
@@ -269,47 +268,47 @@ export const courseChapterResponseSchema =
   );
 
 export const courseReviewsExtendedSchema = z.object({
-  general: z.array(z.number()),
   difficulty: z.array(z.number()),
-  length: z.array(z.number()),
   faithful: z.array(z.number()),
-  recommend: z.array(z.number()),
-  quality: z.array(z.number()),
   feedbacks: z.array(
     z.object({
+      adminComment: z.string().nullable(),
       date: z.string(),
-      user: z.string(),
-      userPicture: z.string().nullable(),
       publicComment: z.string(),
       teacherComment: z.string().nullable(),
-      adminComment: z.string().nullable(),
+      user: z.string(),
+      userPicture: z.string().nullable(),
     }),
   ),
+  general: z.array(z.number()),
+  length: z.array(z.number()),
+  quality: z.array(z.number()),
+  recommend: z.array(z.number()),
 });
 
 export const courseMetaSchema = minimalJoinedCourseSchema.pick({
+  contact: true,
+  goal: true,
   id: true,
   index: true,
-  topic: true,
-  subtopic: true,
-  contact: true,
-  lastCommit: true,
   language: true,
+  lastCommit: true,
   name: true,
-  goal: true,
   objectives: true,
+  subtopic: true,
+  topic: true,
 });
 
 export const courseChapterMetaSchema = joinedCourseChapterSchema
   .pick({
-    partId: true,
     chapterId: true,
     language: true,
-    title: true,
-    sections: true,
-    releasePlace: true,
-    rawContent: true,
     liveLanguage: true,
+    partId: true,
+    rawContent: true,
+    releasePlace: true,
+    sections: true,
+    title: true,
   })
   .merge(
     z.object({
@@ -328,10 +327,10 @@ export const minimalCourseAssignmentWithStudentsSchema = courseAssignmentSchema
     z.object({
       students: z.array(
         z.object({
-          uid: z.string(),
-          username: z.string(),
           displayName: z.string(),
           grade: z.number().nullable(),
+          uid: z.string(),
+          username: z.string(),
         }),
       ),
     }),

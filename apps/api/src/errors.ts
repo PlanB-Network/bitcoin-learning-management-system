@@ -9,8 +9,8 @@ export class HttpError extends Error {
 
   public toJSON() {
     return {
-      status: this.status,
       message: this.message,
+      status: this.status,
     };
   }
 }

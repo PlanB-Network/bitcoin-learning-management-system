@@ -22,18 +22,18 @@ export const newDocumentFromTemplate = async (buf: Buffer) => {
   doc.registerFontkit(fontkit);
 
   const fonts = {
-    styleScript: await doc.embedFont(fontsBytes.styleScript),
-    ibmPlexLight: await doc.embedFont(fontsBytes.ibmPlexLight),
-    ibmPlexRegular: await doc.embedFont(fontsBytes.ibmPlexRegular),
-    ibmPlexMedium: await doc.embedFont(fontsBytes.ibmPlexMedium),
-    ibmPlexSemiBold: await doc.embedFont(fontsBytes.ibmPlexSemiBold),
     ibmPlexBold: await doc.embedFont(fontsBytes.ibmPlexBold),
+    ibmPlexLight: await doc.embedFont(fontsBytes.ibmPlexLight),
+    ibmPlexMedium: await doc.embedFont(fontsBytes.ibmPlexMedium),
+    ibmPlexRegular: await doc.embedFont(fontsBytes.ibmPlexRegular),
+    ibmPlexSemiBold: await doc.embedFont(fontsBytes.ibmPlexSemiBold),
     mono: await doc.embedFont(fontsBytes.mono),
-    notoSansLight: await doc.embedFont(fontsBytes.notoSansLight),
-    notoSansRegular: await doc.embedFont(fontsBytes.notoSansRegular),
-    notoSansMedium: await doc.embedFont(fontsBytes.notoSansMedium),
-    notoSansSemiBold: await doc.embedFont(fontsBytes.notoSansSemiBold),
     notoSansBold: await doc.embedFont(fontsBytes.notoSansBold),
+    notoSansLight: await doc.embedFont(fontsBytes.notoSansLight),
+    notoSansMedium: await doc.embedFont(fontsBytes.notoSansMedium),
+    notoSansRegular: await doc.embedFont(fontsBytes.notoSansRegular),
+    notoSansSemiBold: await doc.embedFont(fontsBytes.notoSansSemiBold),
+    styleScript: await doc.embedFont(fontsBytes.styleScript),
   };
 
   return { doc, fonts };

@@ -5,15 +5,13 @@ import {
   RiInformationLine,
 } from 'react-icons/ri';
 import { Button } from '../../bases/button.tsx';
-import { ToastContainer, customToast } from '../../bases/toast.tsx';
+import { customToast, ToastContainer } from '../../bases/toast.tsx';
 
 const meta: Meta = {
-  title: 'Composites/toast',
   component: ToastContainer,
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
   render: (args) => (
     <div className="relative w-[800px] min-h-60 h-auto p-4 bg-darkOrange-0 rounded-lg flex items-center justify-center">
       <ToastContainer
@@ -31,6 +29,8 @@ const meta: Meta = {
       </div>
     </div>
   ),
+  tags: ['autodocs'],
+  title: 'Composites/toast',
 };
 
 export default meta;
@@ -86,8 +86,8 @@ export const Default: Story = {
           <Button
             onClick={() =>
               customToast('This is a dark mode primary toast.', {
-                mode: 'dark',
                 color: 'primary',
+                mode: 'dark',
               })
             }
           >
@@ -98,9 +98,9 @@ export const Default: Story = {
           <Button
             onClick={() =>
               customToast('This is a dark mode warning toast!', {
-                mode: 'dark',
                 color: 'warning',
                 icon: RiErrorWarningLine,
+                mode: 'dark',
               })
             }
           >
@@ -111,9 +111,9 @@ export const Default: Story = {
           <Button
             onClick={() =>
               customToast('Dark mode operation successful!', {
-                mode: 'dark',
                 color: 'success',
                 icon: RiCheckLine,
+                mode: 'dark',
               })
             }
           >
@@ -124,9 +124,9 @@ export const Default: Story = {
           <Button
             onClick={() =>
               customToast('Dark mode informational message.', {
-                mode: 'dark',
                 color: 'neutral',
                 icon: RiInformationLine,
+                mode: 'dark',
               })
             }
           >
@@ -148,8 +148,8 @@ export const Default: Story = {
         <Button
           onClick={() =>
             customToast('Click me to see an alert!', {
-              onClick: () => alert('Toast Clicked!'),
               color: 'success',
+              onClick: () => alert('Toast Clicked!'),
               time: 7000,
             })
           }
@@ -160,8 +160,8 @@ export const Default: Story = {
         <Button
           onClick={() =>
             customToast('This toast will disappear quickly.', {
-              time: 2000,
               color: 'primary',
+              time: 2000,
             })
           }
         >

@@ -46,34 +46,34 @@
     "TYPESENSE_NODES"
   ],
   "tasks": {
+    "//#lint": {},
+    "//#lint:fix": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"],
-      "inputs": ["$TURBO_DEFAULT$", ".env"]
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": ["dist/**"]
     },
-    "test": {
-      "dependsOn": ["^test"]
-    },
-    "type-check": {
-      "dependsOn": ["^type-check"]
-    },
-    "check-types": {},
     "build-types": {},
-    "generate-types": {},
-    "trace-performance": {
-      "cache": false
-    },
+    "check-types": {},
     "clear": {
-      "dependsOn": ["^clear"],
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^clear"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "//#lint": {},
-    "//#lint:fix": {
+    "generate-types": {},
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "trace-performance": {
       "cache": false
+    },
+    "type-check": {
+      "dependsOn": ["^type-check"]
     }
   }
 }

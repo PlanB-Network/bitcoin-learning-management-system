@@ -1,11 +1,10 @@
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts';
-
 import {
   type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from '@blms/ui';
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from 'recharts';
 
 interface RatingChartProps {
   chartData: Array<{ [key: string]: string | number }>;

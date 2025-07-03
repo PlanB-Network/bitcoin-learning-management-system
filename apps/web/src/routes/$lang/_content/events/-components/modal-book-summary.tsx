@@ -1,10 +1,8 @@
-import { capitalize } from 'lodash-es';
-import { useTranslation } from 'react-i18next';
-
+import { LANGUAGES_MAP } from '@blms/shared';
 import type { JoinedEvent } from '@blms/types';
 import { cn } from '@blms/ui';
-
-import { LANGUAGES_MAP } from '@blms/shared';
+import { capitalize } from 'lodash-es';
+import { useTranslation } from 'react-i18next';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { formatDateRange, formatHourRange } from '#src/utils/date.js';

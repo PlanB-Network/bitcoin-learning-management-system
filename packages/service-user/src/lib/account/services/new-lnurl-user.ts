@@ -23,9 +23,9 @@ export const createNewLnurlUser = (dependencies: Dependencies) => {
     return postgres
       .exec(
         newLnurlUserQuery({
-          username,
-          publicKey,
           contributorId,
+          publicKey,
+          username,
         }),
       )
       .then(firstRow) as Promise<UserDetails>;

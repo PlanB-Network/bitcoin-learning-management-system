@@ -1,11 +1,10 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   contentBCertificateExam,
   usersBCertificateResults,
   usersBCertificateTimestamps,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 export const BCertExamSchema = createSelectSchema(contentBCertificateExam);
 
@@ -16,19 +15,19 @@ export const BCertTimestampsSchema = createSelectSchema(
 );
 
 export const JoinedBCertResultsSchema = BCertExamSchema.pick({
-  id: true,
   date: true,
+  duration: true,
+  id: true,
+  lastCommit: true,
+  lastUpdated: true,
   location: true,
   minScore: true,
-  duration: true,
   path: true,
-  lastUpdated: true,
-  lastCommit: true,
 })
   .merge(
     BCertTimestampsSchema.pick({
-      pdfKey: true,
       imgKey: true,
+      pdfKey: true,
       txtKey: true,
       txtOtsKey: true,
     }),

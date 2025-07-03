@@ -1,12 +1,9 @@
+import { Loader, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader, Tabs, TabsContent, TabsListUnderlined } from '@blms/ui';
-
-import { AppContext } from '#src/providers/context.js';
-
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.js';
 import { CourseDiplomas } from './-components/course-diplomas.tsx';
 import { GlobalCertifications } from './-components/global-certifications.tsx';
 
@@ -51,16 +48,16 @@ function DashboardCredentials() {
         <TabsListUnderlined
           tabs={[
             {
-              key: 'certifications',
-              value: 'certifications',
-              text: t('dashboard.credentials.globalCertifications'),
               active: 'certifications' === currentTab,
+              key: 'certifications',
+              text: t('dashboard.credentials.globalCertifications'),
+              value: 'certifications',
             },
             {
-              key: 'diplomas',
-              value: 'diplomas',
-              text: t('dashboard.credentials.courseDiplomas'),
               active: 'diplomas' === currentTab,
+              key: 'diplomas',
+              text: t('dashboard.credentials.courseDiplomas'),
+              value: 'diplomas',
             },
           ]}
           size={isMobile ? 's' : 'm'}

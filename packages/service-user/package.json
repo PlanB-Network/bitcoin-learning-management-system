@@ -1,24 +1,4 @@
 {
-  "name": "@blms/service-user",
-  "version": "0.0.1",
-  "type": "module",
-  "exports": {
-    "development": "./src/index.ts",
-    "import": "./dist/src/index.js",
-    "types": "./src/index.ts"
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "postbuild": "cp -r src/lib/pdf dist/src/lib/",
-    "lint": "biome check .",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit",
-    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
-    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
-  },
   "dependencies": {
     "@blms/constants": "workspace:*",
     "@blms/database": "workspace:*",
@@ -39,5 +19,25 @@
   "devDependencies": {
     "@blms/types": "workspace:*",
     "@types/uuid": "^10.0.0"
-  }
+  },
+  "exports": {
+    "development": "./src/index.ts",
+    "import": "./dist/src/index.js",
+    "types": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "name": "@blms/service-user",
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "check-types": "tsc --noEmit",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
+    "lint": "biome check .",
+    "postbuild": "cp -r src/lib/pdf dist/src/lib/",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
+    "type-check": "tsc --build"
+  },
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

@@ -1,13 +1,11 @@
+import { ExamType } from '@blms/constants';
+import type { CourseChapterResponse } from '@blms/types';
+import { ButtonWithArrow, Divider } from '@blms/ui';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { CourseChapterResponse } from '@blms/types';
-import { ButtonWithArrow, Divider } from '@blms/ui';
-
-import { ExamType } from '@blms/constants';
-import { useMutation } from '@tanstack/react-query';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -58,23 +56,23 @@ export const CourseExamPresentation = ({
 
     if (isLastChapter) {
       navigate({
-        to: '/courses/$courseId',
         params: goToChapterParameters(chapter, 'next'),
+        to: '/courses/$courseId',
       });
     } else {
       navigate({
-        to: '/courses/$courseId/$chapterId',
         params: goToChapterParameters(chapter, 'next'),
+        to: '/courses/$courseId/$chapterId',
       });
     }
   }
 
   async function onStart() {
     await startExamAttempt.mutateAsync({
-      courseId: chapter.courseId,
-      language: i18n.language || 'en',
       chapterId: chapter.chapterId,
+      courseId: chapter.courseId,
       examType: ExamType.Final,
+      language: i18n.language || 'en',
     });
   }
 

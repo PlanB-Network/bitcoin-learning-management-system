@@ -3,8 +3,8 @@ import { Slider } from '#src/bases/slider.tsx';
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
-  title: 'Bases/Form/slider',
   tags: ['autodocs'],
+  title: 'Bases/Form/slider',
 };
 
 export default meta;
@@ -12,10 +12,10 @@ type Story = StoryObj<typeof Slider>;
 
 export const Primary: Story = {
   args: {
-    min: -2,
-    max: 2,
-    step: 1,
     defaultValue: [1],
+    max: 2,
+    min: -2,
+    step: 1,
     value: [1],
   },
 };

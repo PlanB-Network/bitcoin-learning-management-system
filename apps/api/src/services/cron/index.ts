@@ -1,3 +1,4 @@
+import { NotificationType } from '@blms/constants';
 import {
   createCalculateEventSeats,
   // createGetBlogs,
@@ -22,8 +23,6 @@ import {
   createUpdateEventPayment,
   createUserNotificationsService,
 } from '@blms/service-user';
-
-import { NotificationType } from '@blms/constants';
 import { isSpecialChapter } from '@blms/shared';
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -90,10 +89,10 @@ export const registerCronTasks = async (ctx: Dependencies) => {
             if (isSpecialChapter(chapter)) continue;
 
             await insertUserNotifications({
-              uids,
-              courseId,
               chapterId: chapter.chapterId,
+              courseId,
               type: NotificationType.Calendar24HoursCourse,
+              uids,
             });
           }
         }
@@ -111,18 +110,18 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
             if (uidsToNotifyPlatform.length > 0) {
               await insertUserNotifications({
-                uids: uidsToNotifyPlatform,
-                courseId,
                 chapterId: chapter.chapterId,
+                courseId,
                 type: NotificationType.Calendar5MinutesCourse,
+                uids: uidsToNotifyPlatform,
               });
             }
 
             if (uidsToNotifyEmail.length > 0) {
               await sendCourseStartingSoonEmail({
-                uids: uidsToNotifyEmail,
-                courseId,
                 chapterId: chapter.chapterId,
+                courseId,
+                uids: uidsToNotifyEmail,
               });
             }
           }
@@ -159,9 +158,9 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         if (uids.length === 0) continue;
 
         await insertUserNotifications({
-          uids,
           eventId: event.id,
           type: NotificationType.Calendar48HoursOnlineEvent,
+          uids,
         });
       }
 
@@ -180,9 +179,9 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         if (uids.length === 0) continue;
 
         await insertUserNotifications({
-          uids,
           eventId: event.id,
           type: NotificationType.Calendar5MinutesOnlineEvent,
+          uids,
         });
       }
 
@@ -203,9 +202,9 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         if (uids.length === 0) continue;
 
         await insertUserNotifications({
-          uids,
           eventId: event.id,
           type: NotificationType.Calendar24HoursInPersonEvent,
+          uids,
         });
       }
     });
@@ -300,11 +299,11 @@ export const registerCronTasks = async (ctx: Dependencies) => {
           if (uids.length === 0) continue;
 
           await sendCourseWeeklyRecapEmail({
-            uids: uids,
             course: course,
             courseChapters: chaptersStartingSoon,
-            startDate: startDate,
             endDate: endDate,
+            startDate: startDate,
+            uids: uids,
           });
         }
       }

@@ -1,6 +1,4 @@
-import { Flag, cn } from '@blms/ui';
-
-import { Image } from '@blms/ui';
+import { cn, Flag, Image } from '@blms/ui';
 
 interface ResourceCardProps {
   imageSrc?: string | null;

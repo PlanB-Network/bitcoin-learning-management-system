@@ -76,7 +76,7 @@ describe('Shared hasRole function', () => {
   });
 
   it('admin can access everything if no specific permissions are required', () => {
-    const admin = { role: UserRole.Admin, permissions: [] };
+    const admin = { permissions: [], role: UserRole.Admin };
     assert.equal(true, canAccess(UserRole.Student)(admin));
     assert.equal(true, canAccess(UserRole.Community)(admin));
     assert.equal(true, canAccess(UserRole.Professor)(admin));
@@ -86,8 +86,8 @@ describe('Shared hasRole function', () => {
 
   it('admin can access everything if user has required permissions', () => {
     const admin = {
-      role: UserRole.Admin,
       permissions: [UserPermission.Coupons, UserPermission.Career],
+      role: UserRole.Admin,
     };
 
     assert(canAccess(UserRole.Student, UserPermission.Coupons)(admin));

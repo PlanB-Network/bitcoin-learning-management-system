@@ -18,8 +18,8 @@ export const createGetScheduledCourseAnnouncements = ({
     const announcements = await postgres.exec(
       getScheduledCourseAnnouncementsQuery({
         courseId,
-        isPublishedOnly,
         isProfessor,
+        isPublishedOnly,
       }),
     );
     return announcements;

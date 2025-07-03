@@ -1,6 +1,5 @@
-import { createSelectSchema } from 'drizzle-zod';
-
 import { contentLabSession, contentLabs } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
 export const labSchema = createSelectSchema(contentLabs);

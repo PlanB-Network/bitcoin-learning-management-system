@@ -1,20 +1,18 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import type { JoinedGlossaryWord } from '@blms/types';
+import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-
-import type { JoinedGlossaryWord } from '@blms/types';
-import { Loader } from '@blms/ui';
-
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
 import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
 import { GlossaryList } from '../-components/glossary-list.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
+
 const GlossaryMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/glossary-markdown-body.js'),
 );
@@ -22,6 +20,7 @@ const GlossaryMarkdownBody = React.lazy(
 export const Route = createFileRoute(
   '/$lang/_content/resources/glossary/$wordId',
 )({
+  component: GlossaryWord,
   params: {
     parse: (params) => ({
       lang: z.string().parse(params.lang),
@@ -32,7 +31,6 @@ export const Route = createFileRoute(
       wordId: `${wordId}`,
     }),
   },
-  component: GlossaryWord,
 });
 
 function GlossaryWord() {
@@ -46,8 +44,8 @@ function GlossaryWord() {
 
   const { data: glossaryWord, isFetched } = useQuery(
     trpc.content.getGlossaryWord.queryOptions({
-      strId: params.wordId,
       language: i18n.language ?? 'en',
+      strId: params.wordId,
     }),
   );
 
@@ -94,7 +92,7 @@ function GlossaryWord() {
         );
       }
 
-      document.body.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.scrollTo({ behavior: 'smooth', top: 0 });
     }
   }, [glossaryWord, glossaryWords, isFetched]);
   const isOriginalLanguage =

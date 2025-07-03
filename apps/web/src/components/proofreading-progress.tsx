@@ -1,9 +1,6 @@
-import { t } from 'i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { IoMdClose } from 'react-icons/io';
-
 import {
   Button,
+  cn,
   Dialog,
   DialogClose,
   DialogContent,
@@ -12,10 +9,11 @@ import {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
-  cn,
 } from '@blms/ui';
-
+import { t } from 'i18next';
 import { useContext } from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { IoMdClose } from 'react-icons/io';
 import largeCircleProgress0 from '#src/assets/proofreading/large_circle_progress_0.webp?no-inline';
 import largeCircleProgress1 from '#src/assets/proofreading/large_circle_progress_1.webp?no-inline';
 import largeCircleProgress2 from '#src/assets/proofreading/large_circle_progress_2.webp?no-inline';

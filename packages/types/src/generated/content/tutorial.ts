@@ -4,115 +4,115 @@
 import type { FormattedProfessor } from './professor.js';
 
 export interface Tutorial {
-  id: string;
-  projectId: string | null;
-  professorId: string | null;
-  path: string;
-  logoUrl: string;
-  name: string;
   category: string;
-  subcategory: string | null;
-  originalLanguage: string;
-  level: string;
   creditLink: string | null;
-  lastUpdated: Date;
+  id: string;
   lastCommit: string;
   lastSync: Date;
+  lastUpdated: Date;
+  level: string;
+  logoUrl: string;
+  name: string;
+  originalLanguage: string;
+  path: string;
+  professorId: string | null;
+  projectId: string | null;
+  subcategory: string | null;
 }
 
 export interface TutorialLocalized {
-  tutorialId: string;
-  language: string;
-  title: string;
   description: string | null;
+  language: string;
   rawContent: string;
+  title: string;
+  tutorialId: string;
 }
 
 export interface TutorialLikeDislike {
+  liked: boolean;
   tutorialId: string;
   uid: string;
-  liked: boolean;
 }
 
 export interface JoinedTutorialLight {
+  category: string;
+  creditLink: string | null;
   id: string;
-  path: string;
+  lastCommit: string;
+  lastUpdated: Date;
+  level: string;
   logoUrl: string;
   name: string;
-  level: string;
-  category: string;
-  subcategory: string | null;
-  projectId: string | null;
-  professorId: string | null;
-  creditLink: string | null;
   originalLanguage: string;
-  lastUpdated: Date;
-  lastCommit: string;
+  path: string;
+  professorId: string | null;
+  projectId: string | null;
+  subcategory: string | null;
+  description: string | null;
   language: string;
   title: string;
-  description: string | null;
-  likeCount: number;
   dislikeCount: number;
+  likeCount: number;
   tags: string[];
 }
 
 export interface JoinedTutorial {
+  category: string;
+  creditLink: string | null;
   id: string;
-  path: string;
+  lastCommit: string;
+  lastUpdated: Date;
+  level: string;
   logoUrl: string;
   name: string;
-  level: string;
-  category: string;
-  subcategory: string | null;
-  projectId: string | null;
-  professorId: string | null;
-  creditLink: string | null;
   originalLanguage: string;
-  lastUpdated: Date;
-  lastCommit: string;
+  path: string;
+  professorId: string | null;
+  projectId: string | null;
+  subcategory: string | null;
+  description: string | null;
   language: string;
   title: string;
-  description: string | null;
-  likeCount: number;
   dislikeCount: number;
+  likeCount: number;
   tags: string[];
   rawContent: string;
 }
 
 export interface TutorialWithProfessorName {
+  category: string;
   id: string;
-  path: string;
   logoUrl: string;
   name: string;
-  category: string;
+  path: string;
   subcategory: string | null;
   language: string;
   title: string;
-  likeCount: number;
   dislikeCount: number;
-  professorName: string | null;
+  likeCount: number;
   professorId: string | null;
+  professorName: string | null;
 }
 
 export interface GetTutorialResponse {
+  category: string;
+  creditLink: string | null;
   id: string;
-  path: string;
+  lastCommit: string;
+  lastUpdated: Date;
+  level: string;
   logoUrl: string;
   name: string;
-  level: string;
-  category: string;
-  subcategory: string | null;
-  projectId: string | null;
-  professorId: string | null;
-  creditLink: string | null;
   originalLanguage: string;
-  lastUpdated: Date;
-  lastCommit: string;
+  path: string;
+  professorId: string | null;
+  projectId: string | null;
+  subcategory: string | null;
+  description: string | null;
   language: string;
   title: string;
-  description: string | null;
-  likeCount: number;
   dislikeCount: number;
+  likeCount: number;
   tags: string[];
   rawContent: string;
   professor?: FormattedProfessor | undefined;

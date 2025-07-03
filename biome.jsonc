@@ -1,55 +1,69 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "assist": {
+    "actions": { "source": { "organizeImports": "on", "useSortedKeys": "on" } }
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [
-      "**/out/**",
-      "**/dist/**",
-      "**/node_modules/**",
-      "**/routeTree.gen.ts",
-      "**/.turbo/**",
-      "**/.tanstack/**",
-      "packages/database/drizzle/migrations/*",
-      "packages/types/src/generated/*",
-      "node_modules/**",
-      "apps/**/node_modules/**",
-      "packages/**/node_modules/**",
-      "packages/ui/storybook-static/**"
+    "includes": [
+      "**",
+      "!**/out/**",
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/routeTree.gen.ts",
+      "!**/.turbo/**",
+      "!**/.tanstack/**",
+      "!**/packages/database/drizzle/migrations/**/*",
+      "!**/packages/types/src/generated/**/*",
+      "!**/node_modules/**",
+      "!**/apps/**/node_modules/**",
+      "!**/packages/**/node_modules/**",
+      "!**/packages/ui/storybook-static/**"
     ]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space"
   },
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "correctness": {
-        "useExhaustiveDependencies": "info",
-        "noUnusedImports": "error"
-      },
-      "style": {
-        "noNonNullAssertion": "off",
-        "useEnumInitializers": "off"
-      },
-      "suspicious": {
-        "noExplicitAny": "off"
-      }
-    }
-  },
   "javascript": {
     "formatter": {
       "quoteStyle": "single"
       //   "lineWidth": 80
     }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "a11y": {
+        "noStaticElementInteractions": "off" // To remove
+      },
+      "correctness": {
+        "noUnusedImports": "error",
+        "useExhaustiveDependencies": "info"
+      },
+      "recommended": true,
+      "style": {
+        "noInferrableTypes": "error",
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "noUnusedTemplateLiteral": "error",
+        "noUselessElse": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "off",
+        "useNumberNamespace": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error"
+      },
+      "suspicious": {
+        "noDuplicateProperties": "off", //To remove
+        "noExplicitAny": "off"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": false,
+    "useIgnoreFile": false
   }
 }

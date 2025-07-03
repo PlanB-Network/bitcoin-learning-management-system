@@ -1,17 +1,14 @@
+import type { JoinedEvent } from '@blms/types';
+import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
-
-import type { JoinedEvent } from '@blms/types';
-
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { AppContext } from '#src/providers/context.js';
+import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { EventBookModal } from '../../events/-components/event-book-modal.js';
 import { EventCard } from '../../events/-components/event-card.js';
 import { EventPaymentModal } from '../../events/-components/event-payment-modal.js';
@@ -40,10 +37,10 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
 
   const [paymentModalData, setPaymentModalData] =
     useState<PaymentModalDataModel>({
+      accessType: null,
+      dollarPrice: null,
       eventId: null,
       satsPrice: null,
-      dollarPrice: null,
-      accessType: null,
     });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
@@ -95,10 +92,10 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
             onClose={() => {
               refetchEventPayments();
               setPaymentModalData({
+                accessType: null,
+                dollarPrice: null,
                 eventId: null,
                 satsPrice: null,
-                dollarPrice: null,
-                accessType: null,
               });
               setIsPaymentModalOpen(false);
             }}

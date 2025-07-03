@@ -1,39 +1,36 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { BackLink, Button, cn, Flag, Loader, VerticalCard } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { Fragment, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { SlGlobe } from 'react-icons/sl';
 import { z } from 'zod';
-
+import Nostr from '#src/assets/icons/nostr.svg?react';
 import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import newsletterSvg from '#src/assets/icons/world-pixelated.svg';
 import conferenceSvg from '#src/assets/resources/conference.svg';
 import youtubeSvg from '#src/assets/resources/youtube.svg';
 import tutorialsSvg from '#src/assets/tutorials/other.svg';
-
-import { BackLink, Button, Flag, Loader, VerticalCard, cn } from '@blms/ui';
-
-import Nostr from '#src/assets/icons/nostr.svg?react';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
-import { resourceImgUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
-import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { resourceImgUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
+import { trpc } from '#src/utils/trpc.js';
+import { TutorialCard } from '../../tutorials/-components/tutorial-card.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { ProjectEvents } from '../-components/project-events.js';
 import { ResourceLayout } from '../-components/resource-layout.js';
-import { TutorialCard } from '../../tutorials/-components/tutorial-card.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/projects/$projectName-$projectId',
 )({
+  component: Project,
   params: {
     parse: (params) => {
       const projectNameId = params['projectName-$projectId'];
@@ -41,9 +38,9 @@ export const Route = createFileRoute(
 
       return {
         lang: z.string().parse(params.lang),
-        'projectName-$projectId': `${name}-${id}`,
-        projectName: z.string().parse(name),
         projectId: z.string().parse(id),
+        projectName: z.string().parse(name),
+        'projectName-$projectId': `${name}-${id}`,
       };
     },
     stringify: ({ lang, projectName, projectId }) => ({
@@ -51,7 +48,6 @@ export const Route = createFileRoute(
       'projectName-$projectId': `${projectName}-${projectId}`,
     }),
   },
-  component: Project,
 });
 
 function Project() {
@@ -144,8 +140,8 @@ function Project() {
   useEffect(() => {
     if (project && params.projectName !== formatNameForURL(project.name)) {
       navigate({
-        to: `/resources/projects/${formatNameForURL(project.name)}-${project.id}`,
         replace: true,
+        to: `/resources/projects/${formatNameForURL(project.name)}-${project.id}`,
       });
     }
   }, [project, isFetched, navigateTo404, navigate, params.projectName]);

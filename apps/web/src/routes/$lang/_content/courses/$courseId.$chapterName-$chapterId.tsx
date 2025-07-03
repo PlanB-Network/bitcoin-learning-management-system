@@ -1,4 +1,7 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { CourseChapterResponse, JoinedQuizQuestion } from '@blms/types';
+import { Button, cn, Loader, TextTag } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import React, {
   memo,
   Suspense,
@@ -13,10 +16,6 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 import { HiCheck } from 'react-icons/hi2';
 import { IoIosArrowForward } from 'react-icons/io';
 import { z } from 'zod';
-
-import type { CourseChapterResponse, JoinedQuizQuestion } from '@blms/types';
-import { Button, Loader, TextTag, cn } from '@blms/ui';
-
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
@@ -25,9 +24,10 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { AppContext } from '#src/providers/context.js';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import {
-  COURSES_WITH_INLINE_LATEX_SUPPORT,
   addSpaceToCourseIndex,
+  COURSES_WITH_INLINE_LATEX_SUPPORT,
   goToChapterParameters,
 } from '#src/utils/courses.js';
 import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
@@ -37,18 +37,15 @@ import {
   formatNameForURL,
   joinWords,
 } from '#src/utils/string.js';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { CourseConclusion } from './$courseId/-components/course-conclusion/course-conclusion.tsx';
-import { CourseExamWorkflow } from './$courseId/-components/course-exam/course-exam-workflow.tsx';
-import { CourseReviewComponent } from './$courseId/-components/course-review-component.tsx';
-import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam/single-trial-exam-workflow.tsx';
 import { ClassDetails } from './-components/class-details.tsx';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { LiveVideo } from './-components/live-video.tsx';
 import { NavigationPanel } from './-components/navigation-panel.tsx';
 import QuizzCard, { type Question } from './-components/quizz/quizz-card.tsx';
+import { CourseConclusion } from './$courseId/-components/course-conclusion/course-conclusion.tsx';
+import { CourseExamWorkflow } from './$courseId/-components/course-exam/course-exam-workflow.tsx';
+import { CourseReviewComponent } from './$courseId/-components/course-review-component.tsx';
+import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam/single-trial-exam-workflow.tsx';
 
 const CoursesMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/courses-markdown-body.js'),
@@ -57,25 +54,6 @@ const CoursesMarkdownBody = React.lazy(
 export const Route = createFileRoute(
   '/$lang/_content/courses/$courseId/$chapterName-$chapterId',
 )({
-  params: {
-    parse: (params) => {
-      const paramNameId = params['chapterName-$chapterId'];
-      const { id, name } = getNameAndIdFromUrl(paramNameId);
-
-      return {
-        lang: z.string().parse(params.lang),
-        courseId: z.string().parse(params.courseId),
-        'chapterName-$chapterId': `${name}-${id}`,
-        chapterName: z.string().parse(name),
-        chapterId: z.string().parse(id),
-      };
-    },
-    stringify: ({ lang, courseId, chapterName, chapterId }) => ({
-      lang: lang,
-      courseId: `${courseId}`,
-      'chapterName-$chapterId': `${chapterName}-${chapterId}`,
-    }),
-  },
   // params: {
   //   parse: (params) => ({
   //     lang: z.string().parse(params.lang),
@@ -89,6 +67,25 @@ export const Route = createFileRoute(
   //   }),
   // },
   component: CourseChapter,
+  params: {
+    parse: (params) => {
+      const paramNameId = params['chapterName-$chapterId'];
+      const { id, name } = getNameAndIdFromUrl(paramNameId);
+
+      return {
+        chapterId: z.string().parse(id),
+        chapterName: z.string().parse(name),
+        'chapterName-$chapterId': `${name}-${id}`,
+        courseId: z.string().parse(params.courseId),
+        lang: z.string().parse(params.lang),
+      };
+    },
+    stringify: ({ lang, courseId, chapterName, chapterId }) => ({
+      'chapterName-$chapterId': `${chapterName}-${chapterId}`,
+      courseId: `${courseId}`,
+      lang: lang,
+    }),
+  },
 });
 
 const TimelineSmall = ({
@@ -209,7 +206,7 @@ const TimelineBig = ({
             currentPart.partIndex === chapter.course.parts.length;
 
           return (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            // biome-ignore lint/suspicious/noArrayIndexKey: explanation
             <div className="flex h-4 grow flex-row" key={partIndex}>
               {currentPart.chapters.map((currentChapter, chapterIndex) => {
                 const firstChapter = currentChapter.chapterIndex === 1;
@@ -225,10 +222,10 @@ const TimelineBig = ({
                       className="border-white h-4 grow border-l-[1.5px] first:border-l-0"
                       to={'/courses/$courseId/$chapterId'}
                       params={{
-                        courseId: chapter.course.id,
                         chapterId: currentChapter.chapterId,
+                        courseId: chapter.course.id,
                       }}
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                       key={chapterIndex}
                     >
                       <div
@@ -251,7 +248,7 @@ const TimelineBig = ({
                 return (
                   <div
                     className="border-white relative flex grow overflow-visible border-l-[1.5px] first:border-l-0"
-                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                    // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                     key={chapterIndex}
                   >
                     <div
@@ -366,8 +363,8 @@ const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
 
   const completeChapter = () => {
     completeChapterMutation.mutate({
-      courseId: chapter.course.id,
       chapterId: chapter.chapterId,
+      courseId: chapter.course.id,
       language: chapter.language,
     });
   };
@@ -449,10 +446,10 @@ function mapQuizzToQuestions(quizzArray: JoinedQuizQuestion[]): Question[] {
     const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
 
     return {
-      question: quizz.question,
       answers: shuffledAnswers,
-      explanation: quizz.explanation as string,
       correctAnswer,
+      explanation: quizz.explanation as string,
+      question: quizz.question,
     };
   });
 }
@@ -496,8 +493,8 @@ function CourseChapter() {
     error,
   } = useQuery(
     trpc.content.getCourseChapter.queryOptions({
-      language: i18n.language,
       chapterId: params.chapterId,
+      language: i18n.language,
     }),
   );
 
@@ -507,15 +504,15 @@ function CourseChapter() {
 
   const { data: proofreading } = useQuery(
     trpc.content.getProofreading.queryOptions({
-      language: i18n.language,
       courseId: params.courseId,
+      language: i18n.language,
     }),
   );
 
   const { data: quizzArray } = useQuery(
     trpc.content.getCourseChapterQuizQuestions.queryOptions({
-      language: i18n.language,
       chapterId: params.chapterId,
+      language: i18n.language,
     }),
   );
 
@@ -538,7 +535,7 @@ function CourseChapter() {
     const sections: string[] = [];
 
     let match: any;
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+    // biome-ignore lint/suspicious/noAssignInExpressions: explanation
     while ((match = regex.exec(chapter.rawContent)) !== null) {
       sections.push(match[1]);
     }
@@ -597,7 +594,7 @@ function CourseChapter() {
   let computerProfessor = '';
   if (chapter) {
     (() => {
-      // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
+      // biome-ignore lint/suspicious/noImplicitAnyLet: explanation
       let professors;
       professors = chapter.course.mainProfessors;
       if (chapter.professors && chapter.professors.length > 0) {
@@ -627,8 +624,8 @@ function CourseChapter() {
       params.chapterName !== formatNameForURL(chapter.title)
     ) {
       navigate({
-        to: `/courses/${chapter.courseId}/${formatNameForURL(chapter.title)}-${chapter.chapterId}`,
         replace: true,
+        to: `/courses/${chapter.courseId}/${formatNameForURL(chapter.title)}-${chapter.chapterId}`,
       });
     }
   }, [chapter, isFetched, navigate, params.chapterName]);
@@ -636,8 +633,8 @@ function CourseChapter() {
   useEffect(() => {
     if (isLoggedIn && isAroundLiveTime && chapter) {
       completeChapterAutoMutation.mutate({
-        courseId: chapter.course.id,
         chapterId: chapter.chapterId,
+        courseId: chapter.course.id,
         language: i18n.language,
       });
     }

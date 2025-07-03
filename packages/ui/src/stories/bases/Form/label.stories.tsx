@@ -3,8 +3,8 @@ import { Label } from '#src/bases/label.tsx';
 
 const meta: Meta<typeof Label> = {
   component: Label,
-  title: 'Bases/Form/label',
   tags: ['autodocs'],
+  title: 'Bases/Form/label',
 };
 
 export default meta;

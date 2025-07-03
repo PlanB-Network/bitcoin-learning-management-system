@@ -1,50 +1,46 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import { useContext, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { AiOutlineRight } from 'react-icons/ai';
-import { BsTwitter } from 'react-icons/bs';
-
 import type { JoinedEvent } from '@blms/types';
 import {
   Button,
   Carousel,
   CarouselContent,
   CarouselItem,
-  VerticalCard,
   cn,
+  VerticalCard,
 } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineRight } from 'react-icons/ai';
+import { BsTwitter } from 'react-icons/bs';
 import HeaderLeft from '#src/assets/home/header_left.svg';
 import HeaderRight from '#src/assets/home/header_right.svg';
+import SponsorMobile from '#src/assets/home/mobile-logos.webp?no-inline';
+import Sponsor from '#src/assets/home/sponsor-images.webp?no-inline';
 import TwitterClaire from '#src/assets/home/twitter_claire.jpeg?no-inline';
 import TwitterLecompte from '#src/assets/home/twitter_lecompte.jpeg?no-inline';
 import TwitterLoic from '#src/assets/home/twitter_loic.jpeg?no-inline';
 import TwitterMirBtc from '#src/assets/home/twitter_mir_btc.jpeg?no-inline';
 import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg?no-inline';
+import WorldMap from '#src/assets/home/world-map.png?no-inline';
 import HeaderPill from '#src/assets/icons/footer_pill.webp?no-inline';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
+import { AboutUs } from '#src/components/about-us.tsx';
 import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
 import CategoryItemList from '#src/patterns/category-item.tsx';
 import { LanguageSelectorHomepage } from '#src/patterns/language-selector-homepage.tsx';
 import { AppContext } from '#src/providers/context.tsx';
+import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
+import { LANGUAGES } from '#src/utils/i18n.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
-
-import SponsorMobile from '#src/assets/home/mobile-logos.webp?no-inline';
-import Sponsor from '#src/assets/home/sponsor-images.webp?no-inline';
-import WorldMap from '#src/assets/home/world-map.png?no-inline';
 import { MainLayout } from '../../components/main-layout.tsx';
 import { CourseCard } from '../../patterns/course-card.tsx';
-
-import { useQuery } from '@tanstack/react-query';
-import { AboutUs } from '#src/components/about-us.tsx';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
-import { LANGUAGES } from '#src/utils/i18n.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { CurrentEvents } from './_content/events/-components/current-events.tsx';
 import { EventBookModal } from './_content/events/-components/event-book-modal.tsx';
 import { EventPaymentModal } from './_content/events/-components/event-payment-modal.tsx';
@@ -258,10 +254,10 @@ function Home() {
     } = useDisclosure();
 
     const queryOpts = {
-      staleTime: 600_000, // 10 minutes
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
+      refetchOnMount: false, // 10 minutes
       refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+      staleTime: 600_000,
     };
 
     const { data: event, isFetched } = useQuery(
@@ -289,10 +285,10 @@ function Home() {
 
     const [paymentModalData, setPaymentModalData] =
       useState<PaymentModalDataModel>({
+        accessType: null,
+        dollarPrice: null,
         eventId: null,
         satsPrice: null,
-        dollarPrice: null,
-        accessType: null,
       });
 
     const payingEvent =
@@ -329,10 +325,10 @@ function Home() {
                   onClose={() => {
                     refetchEventPayments();
                     setPaymentModalData({
+                      accessType: null,
+                      dollarPrice: null,
                       eventId: null,
                       satsPrice: null,
-                      dollarPrice: null,
-                      accessType: null,
                     });
                     setIsPaymentModalOpen(false);
                   }}

@@ -1,7 +1,6 @@
 import { cn } from '@blms/ui';
 import { useState } from 'react';
-import { BsChevronExpand } from 'react-icons/bs';
-import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { BsChevronDown, BsChevronExpand, BsChevronUp } from 'react-icons/bs';
 
 type SortDirection = 'asc' | 'desc';
 
@@ -23,8 +22,8 @@ interface Props {
 
 const SortableTableHeader = ({ items, onSort }: Props) => {
   const [sortConfig, setSortConfig] = useState<SortConfig>({
-    key: null,
     direction: 'desc',
+    key: null,
   });
 
   const handleSort = (key: string) => {
@@ -34,8 +33,8 @@ const SortableTableHeader = ({ items, onSort }: Props) => {
       direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
     }
 
-    setSortConfig({ key, direction });
-    onSort?.({ key, direction });
+    setSortConfig({ direction, key });
+    onSort?.({ direction, key });
   };
 
   return (

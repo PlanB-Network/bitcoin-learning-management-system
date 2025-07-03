@@ -12,10 +12,10 @@ interface AuthModalContextType {
 }
 
 const AuthModalContext = createContext<AuthModalContextType>({
-  isAuthModalOpen: false,
   authMode: AuthModalState.SignIn,
-  openAuthModal: () => {},
   closeAuthModal: () => {},
+  isAuthModalOpen: false,
+  openAuthModal: () => {},
 });
 
 export const AuthModalProvider = ({ children }: PropsWithChildren) => {
@@ -32,7 +32,7 @@ export const AuthModalProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <AuthModalContext.Provider
-      value={{ isAuthModalOpen, authMode, openAuthModal, closeAuthModal }}
+      value={{ authMode, closeAuthModal, isAuthModalOpen, openAuthModal }}
     >
       {isAuthModalOpen && (
         <AuthModal

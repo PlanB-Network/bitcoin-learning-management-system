@@ -1,7 +1,10 @@
 {
-  "name": "@blms/service-common",
-  "version": "0.0.1",
-  "type": "module",
+  "dependencies": {
+    "pdfjs-dist": "^5.3.31"
+  },
+  "devDependencies": {
+    "@blms/types": "workspace:*"
+  },
   "exports": {
     ".": {
       "development": "./src/index.ts",
@@ -15,24 +18,21 @@
     }
   },
   "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "name": "@blms/service-common",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "postbuild": "cp -r src/fonts dist/src/fonts/",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "check-types": "tsc --noEmit",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
     "lint": "biome check .",
+    "postbuild": "cp -r src/fonts dist/src/fonts/",
     "test": "mocha src/**/*.test.ts",
     "test:bun": "bun test",
     "test:bun:coverage": "bun test --coverage",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit",
-    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
+    "type-check": "tsc --build"
   },
-  "dependencies": {
-    "pdfjs-dist": "^5.3.31"
-  },
-  "devDependencies": {
-    "@blms/types": "workspace:*"
-  }
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

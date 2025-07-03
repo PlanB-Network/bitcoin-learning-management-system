@@ -4,14 +4,14 @@ import type { ReactNode } from 'react';
 import { cn, isString } from '#src/lib/utils.ts';
 
 const cardStyles = cva('flex flex-col rounded-[10px] lg:rounded-3xl border ', {
+  defaultVariants: {
+    color: 'gray',
+  },
   variants: {
     color: {
       gray: 'bg-gray-100 border-gray-200',
       orange: 'bg-darkOrange-10 border-darkOrange-5',
     },
-  },
-  defaultVariants: {
-    color: 'gray',
   },
 });
 

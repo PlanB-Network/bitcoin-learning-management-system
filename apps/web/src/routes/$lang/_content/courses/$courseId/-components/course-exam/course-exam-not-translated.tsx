@@ -1,8 +1,7 @@
-import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
-
 import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow, Divider } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 
 import { goToChapterParameters } from '#src/utils/courses.ts';
 

@@ -27,9 +27,9 @@ export const goToChapterParameters = (
 
     const gotoChapter = allChapters[currentChapterPosition - 1];
     return {
-      courseId: chapter.course.id,
       chapterId: gotoChapter.chapterId,
       chapterName: gotoChapter.title,
+      courseId: chapter.course.id,
     };
   }
   if (currentChapterPosition === allChapters.length - 1) {
@@ -39,9 +39,9 @@ export const goToChapterParameters = (
   const gotoChapter = allChapters[currentChapterPosition + 1];
 
   return {
-    courseId: chapter.course.id,
     chapterId: gotoChapter.chapterId,
     chapterName: gotoChapter.title,
+    courseId: chapter.course.id,
   };
 };
 

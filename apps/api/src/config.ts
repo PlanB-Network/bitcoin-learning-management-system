@@ -63,9 +63,9 @@ export const protectSyncRoute: boolean = getenv('PROTECT_SYNC_ROUTE', true);
 export const domainUrl = getenv('DOMAIN_URL', 'http://localhost:8181');
 
 export const sendgrid: SendGridConfig = {
-  key: getenv('SENDGRID_KEY', null),
-  enable: getenv('SENDGRID_ENABLE', false),
   email: getenv('SENDGRID_EMAIL', null),
+  enable: getenv('SENDGRID_ENABLE', false),
+  key: getenv('SENDGRID_KEY', null),
   templates: {
     emailChange: getenv('SENDGRID_EMAIL_CHANGE_TEMPLATE_ID', null),
     resetPassword: getenv('SENDGRID_RESET_PASSWORD_TEMPLATE_ID', null),
@@ -73,35 +73,35 @@ export const sendgrid: SendGridConfig = {
 };
 
 export const postgres: PostgresClientConfig = {
-  host: getenv('POSTGRES_HOST', 'localhost'),
-  port: getenv('POSTGRES_PORT', 5432),
   database: getenv('POSTGRES_DB'),
-  username: getenv('POSTGRES_USER'),
+  host: getenv('POSTGRES_HOST', 'localhost'),
   password: getenv('POSTGRES_PASSWORD'),
+  port: getenv('POSTGRES_PORT', 5432),
+  username: getenv('POSTGRES_USER'),
 };
 
 export const sync: GitHubSyncConfig = {
   cdnPath: getenv('CDN_PATH', '/tmp/cdn'),
-  syncPath: getenv('SYNC_PATH', '/tmp/sync'),
-  publicRepositoryUrl: getenv('DATA_REPOSITORY_URL'),
-  publicRepositoryBranch: getenv('DATA_REPOSITORY_BRANCH', 'main'),
-  privateRepositoryUrl: getenv('PRIVATE_DATA_REPOSITORY_URL', null),
-  privateRepositoryBranch: getenv('PRIVATE_DATA_REPOSITORY_BRANCH', 'main'),
   githubAccessToken: getenv('GITHUB_ACCESS_TOKEN', null),
+  privateRepositoryBranch: getenv('PRIVATE_DATA_REPOSITORY_BRANCH', 'main'),
+  privateRepositoryUrl: getenv('PRIVATE_DATA_REPOSITORY_URL', null),
+  publicRepositoryBranch: getenv('DATA_REPOSITORY_BRANCH', 'main'),
+  publicRepositoryUrl: getenv('DATA_REPOSITORY_URL'),
+  syncPath: getenv('SYNC_PATH', '/tmp/sync'),
 };
 
 export const session: SessionConfig = {
   cookieName: getenv('SESSION_COOKIE_NAME', 'session'),
-  secret: getenv('SESSION_SECRET', 'super secret'),
-  maxAge: getenv('SESSION_MAX_AGE', 1000 * 60 * 60 * 24 * 7), // 1 week
-  secure: production,
   domain: production ? domain : undefined,
+  maxAge: getenv('SESSION_MAX_AGE', 1000 * 60 * 60 * 24 * 7), // 1 week
+  secret: getenv('SESSION_SECRET', 'super secret'),
+  secure: production,
 };
 
 export const stripe: StripeConfig = {
+  endpointSecret: getenv('STRIPE_ENDPOINT_SECRET', null),
   publicKey: getenv('VITE_STRIPE_PUBLIC', null),
   secret: getenv('STRIPE_SECRET', ''),
-  endpointSecret: getenv('STRIPE_ENDPOINT_SECRET', null),
 };
 
 export const swissBitcoinPay: SwissBitcoinPayConfig = {
@@ -118,15 +118,15 @@ export const opentimestamps: OpenTimestampsConfig = {
   passphrase: getenv('OTS_PGP_KEY_PASSPHRASE', null),
   rpc:
     rpcUrl && rpcUser
-      ? { url: rpcUrl, user: rpcUser, password: rpcPassword }
+      ? { password: rpcPassword, url: rpcUrl, user: rpcUser }
       : undefined,
 };
 
 export const s3: S3Config = {
+  accessKey: getenv('S3_ACCESS_KEY').trim(),
+  bucket: getenv('S3_BUCKET').trim(),
   endpoint: getenv('S3_ENDPOINT').trim(),
   region: getenv('S3_REGION').trim(),
-  bucket: getenv('S3_BUCKET').trim(),
-  accessKey: getenv('S3_ACCESS_KEY').trim(),
   secretKey: getenv('S3_SECRET_KEY').trim(),
 };
 

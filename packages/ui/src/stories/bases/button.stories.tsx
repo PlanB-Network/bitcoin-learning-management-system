@@ -28,48 +28,40 @@ const sizes = [
 ] as const;
 
 const meta: Meta<typeof Button> = {
-  title: 'Bases/button',
-  component: Button,
-  parameters: {
-    layout: 'centered',
+  args: {
+    children: 'Click me',
+    disabled: false,
+    glowing: false,
+    mode: 'light',
+    rounded: false,
+    size: 'm',
+    variant: 'primary',
   },
-  tags: ['autodocs'],
   argTypes: {
-    children: {
-      control: 'text',
-      description: 'Content displayed inside the button.',
-    },
-    variant: {
-      control: { type: 'select' },
-      options: variants,
-    },
-    size: {
-      control: { type: 'select' },
-      options: sizes,
-    },
-    mode: {
-      control: { type: 'radio' },
-      options: ['light', 'dark'],
-      description: 'dark mode requires a `dark` class.',
-    },
-    rounded: {
-      control: 'boolean',
-    },
-    glowing: {
-      control: 'boolean',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Becomes non-interactive.',
-    },
     asChild: {
       control: 'boolean',
       table: {
         disable: true,
       },
     },
+    children: {
+      control: 'text',
+      description: 'Content displayed inside the button.',
+    },
     className: {
       control: 'text',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Becomes non-interactive.',
+    },
+    glowing: {
+      control: 'boolean',
+    },
+    mode: {
+      control: { type: 'radio' },
+      description: 'dark mode requires a `dark` class.',
+      options: ['light', 'dark'],
     },
     onClick: {
       action: 'clicked',
@@ -77,16 +69,24 @@ const meta: Meta<typeof Button> = {
         disable: true,
       },
     },
+    rounded: {
+      control: 'boolean',
+    },
+    size: {
+      control: { type: 'select' },
+      options: sizes,
+    },
+    variant: {
+      control: { type: 'select' },
+      options: variants,
+    },
   },
-  args: {
-    children: 'Click me',
-    variant: 'primary',
-    size: 'm',
-    mode: 'light',
-    rounded: false,
-    glowing: false,
-    disabled: false,
+  component: Button,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/button',
 };
 
 export default meta;
@@ -98,6 +98,9 @@ export const Default: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {
+    children: 'Variant',
+  },
   render: (args) => (
     <>
       <div className="flex flex-wrap items-end gap-4 p-4">
@@ -116,12 +119,13 @@ export const AllVariants: Story = {
       </div>
     </>
   ),
-  args: {
-    children: 'Variant',
-  },
 };
 
 export const AllSizes: Story = {
+  args: {
+    children: 'Button Size',
+    variant: 'primary',
+  },
   render: (args) => (
     <div className="flex flex-col items-start gap-4 p-4">
       {sizes.map((size) => (
@@ -131,32 +135,28 @@ export const AllSizes: Story = {
       ))}
     </div>
   ),
-  args: {
-    children: 'Button Size',
-    variant: 'primary',
-  },
 };
 
 export const Rounded: Story = {
   args: {
-    rounded: true,
     children: 'Rounded',
+    rounded: true,
     variant: 'primary',
   },
 };
 
 export const Glowing: Story = {
   args: {
-    glowing: true,
     children: 'Glowing',
+    glowing: true,
     variant: 'primary',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    disabled: true,
     children: 'Disabled',
+    disabled: true,
     variant: 'primary',
   },
 };

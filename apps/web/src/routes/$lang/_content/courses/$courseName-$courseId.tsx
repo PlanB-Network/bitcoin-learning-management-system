@@ -1,13 +1,28 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { LANGUAGES_MAP } from '@blms/shared';
+import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
+import {
+  Button,
+  ButtonWithArrow,
+  customToast,
+  Divider,
+  Image,
+  ListItem,
+  Loader,
+  PublicComment,
+  StarRating,
+  TextTag,
+} from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { last } from 'lodash-es';
 import React, {
+  type JSX,
   memo,
   Suspense,
   useContext,
   useEffect,
   useMemo,
   useState,
-  type JSX,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaLock } from 'react-icons/fa';
@@ -15,29 +30,12 @@ import { FiLoader } from 'react-icons/fi';
 import { IoCheckmark } from 'react-icons/io5';
 import ReactMarkdown from 'react-markdown';
 import { z } from 'zod';
-
-import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
-import {
-  Button,
-  ButtonWithArrow,
-  Divider,
-  ListItem,
-  Loader,
-  PublicComment,
-  StarRating,
-  TextTag,
-  customToast,
-} from '@blms/ui';
-
-import { LANGUAGES_MAP } from '@blms/shared';
-import { Image } from '@blms/ui';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
+import { AuthorCard } from '#src/components/author-card.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
-import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
@@ -57,24 +55,24 @@ import { CoursePaymentModal } from './-components/payment-modal/course-payment-m
 export const Route = createFileRoute(
   '/$lang/_content/courses/$courseName-$courseId',
 )({
+  component: CourseDetails,
   params: {
     parse: (params) => {
       const paramNameId = params['courseName-$courseId'];
       const { id, name } = getNameAndIdFromUrl(paramNameId);
 
       return {
-        lang: z.string().parse(params.lang),
-        'courseName-$courseId': `${name}-${id}`,
-        courseName: z.string().parse(name),
         courseId: z.string().parse(id),
+        courseName: z.string().parse(name),
+        'courseName-$courseId': `${name}-${id}`,
+        lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, courseName, courseId }) => ({
-      lang: lang,
       'courseName-$courseId': `${courseName}-${courseId}`,
+      lang: lang,
     }),
   },
-  component: CourseDetails,
 });
 
 function CourseDetails() {
@@ -220,8 +218,8 @@ function CourseDetails() {
   useEffect(() => {
     if (course && params.courseName !== formatNameForURL(course.name)) {
       navigate({
-        to: `/courses/${formatNameForURL(course.name)}-${course.id}`,
         replace: true,
+        to: `/courses/${formatNameForURL(course.name)}-${course.id}`,
       });
     }
   }, [course, isFetched, navigate, params.bookName]);
@@ -574,7 +572,7 @@ function CourseDetails() {
             .slice(0, visibleFeedbacks)
             .map((feedback, index) => (
               <PublicComment
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={index}
                 author={feedback.user}
                 date={feedback.date}
@@ -659,11 +657,7 @@ function CourseDetails() {
     );
   };
 
-  const DownloadTicketButton = ({
-    course,
-  }: {
-    course: CourseResponse;
-  }) => {
+  const DownloadTicketButton = ({ course }: { course: CourseResponse }) => {
     return (
       <Button
         size="l"
@@ -674,10 +668,10 @@ function CourseDetails() {
           let pdf = downloadedPdf;
           if (!pdf) {
             pdf = await downloadTicketMutateAsync({
-              title: course.name,
-              addressLine1: '', // TODO ADD
+              addressLine1: '',
               addressLine2: '', // TODO ADD
               addressLine3: '', // TODO ADD
+              availableSeats: course.availableSeats, // TODO ADD
               formattedStartDate: `Start date: ${formatDate(course.startDate ?? undefined)}`,
               formattedTime: `End date: ${formatDate(course.endDate ?? undefined)}`,
               liveLanguage:
@@ -685,7 +679,7 @@ function CourseDetails() {
                   course.originalLanguage.toLowerCase().replaceAll('-', '')
                 ],
               organizer: course.projectName ?? 'Plan ₿ Network',
-              availableSeats: course.availableSeats,
+              title: course.name,
               userName: user ? user.username : '',
             });
             setDownloadedPdf(pdf);
@@ -761,8 +755,8 @@ function CourseDetails() {
             if (!isLoggedIn && !hasSeenRegisterToast) {
               customToast(t('auth.trackProgress'), {
                 color: 'primary',
-                mode: 'light',
                 imgSrc: SignInIconLight,
+                mode: 'light',
                 onClick: () => {
                   openAuthModalContext(AuthModalState.SignIn);
                 },
@@ -778,18 +772,16 @@ function CourseDetails() {
                 !course?.requiresPayment
               ) {
                 customToast(t('courses.details.courseAddedToDashboard'), {
-                  color: 'primary',
-                  mode: 'light',
-                  imgSrc: SignInIconLight,
                   closeButton: true,
+                  color: 'primary',
+                  imgSrc: SignInIconLight,
+                  mode: 'light',
                 });
               }
             }
 
             navigate({
-              to: '/courses/$courseId/$chapterId',
               params: {
-                courseId,
                 chapterId:
                   userCourseProgress &&
                   userCourseProgress.length > 0 &&
@@ -806,7 +798,9 @@ function CourseDetails() {
                     : course?.parts[0]?.chapters[0]
                       ? course?.parts[0].chapters[0].chapterId
                       : '',
+                courseId,
               },
+              to: '/courses/$courseId/$chapterId',
             });
           };
 
@@ -912,13 +906,7 @@ function CourseDetails() {
 }
 
 const DescriptionAndObjectives = memo(
-  ({
-    course,
-    isMobile,
-  }: {
-    course: CourseResponse;
-    isMobile?: boolean;
-  }) => {
+  ({ course, isMobile }: { course: CourseResponse; isMobile?: boolean }) => {
     const { t } = useTranslation();
 
     return (

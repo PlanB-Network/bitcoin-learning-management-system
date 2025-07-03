@@ -1,7 +1,6 @@
-import { hash } from 'argon2';
-
 import { firstRow, rejectOnEmpty } from '@blms/database';
 import type { UserAccount } from '@blms/types';
+import { hash } from 'argon2';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { newCredentialsUserQuery } from '../queries/new-credentials-user.js';
@@ -28,8 +27,8 @@ export const createNewCredentialsUser = (dependencies: Dependencies) => {
       .exec(
         newCredentialsUserQuery({
           ...options,
-          passwordHash,
           contributorId,
+          passwordHash,
         }),
       )
       .then(firstRow)

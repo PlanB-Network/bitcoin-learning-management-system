@@ -2,11 +2,11 @@ import { BreakPointHooks, useHasMounted } from '@react-hooks-library/core';
 import { useEffect, useState } from 'react';
 
 const customBreakpoints = {
-  sm: 639,
-  md: 767,
-  lg: 1023,
-  xl: 1279,
   '2xl': 1535,
+  lg: 1023,
+  md: 767,
+  sm: 639,
+  xl: 1279,
 };
 
 // Using custom breakpoints instead of Tailwind's one to prevent discrepancies

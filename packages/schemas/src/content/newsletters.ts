@@ -1,7 +1,6 @@
+import { contentNewsletters } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
-import { contentNewsletters } from '@blms/database';
 
 import { resourceSchema } from './resource.js';
 
@@ -9,18 +8,18 @@ export const newsletterSchema = createSelectSchema(contentNewsletters);
 
 export const joinedNewsletterSchema = resourceSchema
   .pick({
-    path: true,
-    lastUpdated: true,
     lastCommit: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     newsletterSchema.pick({
       author: true,
-      websiteUrl: true,
-      level: true,
-      language: true,
       description: true,
+      language: true,
+      level: true,
       title: true,
+      websiteUrl: true,
     }),
   )
   .merge(
@@ -30,10 +29,10 @@ export const joinedNewsletterSchema = resourceSchema
   )
   .merge(
     z.object({
-      uuid: z.string(),
-      id: z.string(),
-      tags: z.array(z.string()),
       contributors: z.array(z.string()),
+      id: z.string(),
       publication_date: z.string().optional(),
+      tags: z.array(z.string()),
+      uuid: z.string(),
     }),
   );

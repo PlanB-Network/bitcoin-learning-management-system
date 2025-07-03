@@ -1,7 +1,6 @@
-import matter from 'gray-matter';
-
 import { firstRow, sql } from '@blms/database';
 import type { ChangedFile, Legal } from '@blms/types';
+import matter from 'gray-matter';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
@@ -32,12 +31,12 @@ export const parseDetailsFromPath = (path: string): LegalDetails => {
   }
 
   return {
-    path: pathElements.slice(0, -1).join('/'),
     fullPath: pathElements.join('/'),
     language: pathElements
       .at(-1)
       ?.replace(/\..*/, '')
       .toLowerCase() as Language,
+    path: pathElements.slice(0, -1).join('/'),
   };
 };
 
@@ -55,16 +54,16 @@ export const groupByLegal = (files: ChangedFile[], errors: string[]) => {
         language,
       } = parseDetailsFromPath(file.path);
       const legal: ChangedLegal = groupedLegals.get(legalPath) || {
-        type: 'legals',
+        files: [],
+        fullPath,
         name: legalPath.split('/').at(-1) as string,
         path: legalPath,
-        fullPath,
-        files: [],
+        type: 'legals',
       };
       legal.files.push({
         ...file,
-        path: getRelativePath(file.path, legalPath),
         language,
+        path: getRelativePath(file.path, legalPath),
       });
       groupedLegals.set(legalPath, legal);
     } catch {

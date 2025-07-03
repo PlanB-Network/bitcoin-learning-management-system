@@ -172,8 +172,8 @@
   --font-mono: Manrope;
   --font-poppins: Poppins;
 
-  --shadow-md-dark: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px
-    rgb(0 0 0 / 0.3);
+  --shadow-md-dark:
+    0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
   --shadow-md-button: 0px 0px 40px 0px #ff5c00;
   --shadow-md-button-white: 0px 0px 40px 0px #ffffff88;
   --shadow-sm-section: 0px 0px 20px 0px #ff5c00;
@@ -193,8 +193,8 @@
   --shadow-search-word-md: 0px 0px 51.676px 8.515px rgba(255, 92, 0, 0.25);
   --shadow-filter-bar: 0px 0px 50px 8px rgba(255, 92, 0, 0.5);
   --shadow-tabs-sm: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px
-    rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   --tracking-015px: 0.15px;
 
@@ -290,7 +290,9 @@
   }
 
   body {
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
     font-synthesis: none !important;
   }
 
@@ -631,7 +633,7 @@
 @utility bg-gradient-cards {
   background-image: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.0) 48.98%,
+    rgba(0, 0, 0, 0) 48.98%,
     rgba(40, 33, 33, 0.9) 80.73%
   );
 }
@@ -640,25 +642,25 @@
   background-image: linear-gradient(
     0deg,
     rgba(255, 92, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.0) 100%
+    rgba(0, 0, 0, 0) 100%
   );
 }
 
 @utility bg-home-gradient {
   background-image: linear-gradient(
     180deg,
-    rgba(255, 92, 0, 0.0) 0%,
+    rgba(255, 92, 0, 0) 0%,
     rgba(255, 92, 0, 0.9) 10.5%,
-    rgba(255, 92, 0, 0.0) 50%
+    rgba(255, 92, 0, 0) 50%
   );
 }
 
 @utility bg-home-gradient-mobile {
   background-image: linear-gradient(
     180deg,
-    rgba(255, 92, 0, 0.0) 0%,
+    rgba(255, 92, 0, 0) 0%,
     rgba(255, 92, 0, 0.9) 6.5%,
-    rgba(255, 92, 0, 0.0) 30%
+    rgba(255, 92, 0, 0) 30%
   );
 }
 

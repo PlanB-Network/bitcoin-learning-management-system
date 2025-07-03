@@ -17,7 +17,6 @@ type Story = StoryObj<typeof TooltipProvider>;
 
 export const Primary: Story = {
   args: {
-    delayDuration: 100,
     children: (
       <Tooltip>
         <TooltipTrigger asChild>
@@ -28,5 +27,6 @@ export const Primary: Story = {
         </TooltipContent>
       </Tooltip>
     ),
+    delayDuration: 100,
   },
 };

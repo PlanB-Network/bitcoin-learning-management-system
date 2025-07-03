@@ -61,25 +61,25 @@ export async function createPdf(options: PdfCertificateOptions) {
 
   // Common options
   const conf = {
-    hash: {
-      size: 10.4,
-      font: fonts.mono,
+    courseName: {
       color: white,
+      font: fonts.ibmPlexRegular,
+      size: 50,
+    },
+    hash: {
+      color: white,
+      font: fonts.mono,
+      size: 10.4,
     },
     ibmPlexWhite: {
+      color: white,
+      font: fonts.ibmPlexRegular,
       size: 16,
-      font: fonts.ibmPlexRegular,
-      color: white,
-    },
-    courseName: {
-      size: 50,
-      font: fonts.ibmPlexRegular,
-      color: white,
     },
     userName: {
-      size: 70,
-      font: fonts.styleScript,
       color: orange,
+      font: fonts.styleScript,
+      size: 70,
     },
   } satisfies Record<string, MandatoryTextOptions>;
 
@@ -132,8 +132,8 @@ export async function createPdf(options: PdfCertificateOptions) {
       textCenter(page, options.courseName, { ...conf.courseName, y: 395 });
     } else {
       const [line1, line2] = breakLine(options.courseName, font, size, false);
-      textCenter(page, line1, { ...conf.courseName, y: 425, size: 48 });
-      textCenter(page, line2, { ...conf.courseName, y: 370, size: 48 });
+      textCenter(page, line1, { ...conf.courseName, size: 48, y: 425 });
+      textCenter(page, line2, { ...conf.courseName, size: 48, y: 370 });
     }
   }
 

@@ -1,24 +1,18 @@
 import { format, getDay, parse, startOfWeek } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
-import Feature from 'ol/Feature.js';
-import OpenLayerMap from 'ol/Map.js';
-import type MapBrowserEvent from 'ol/MapBrowserEvent.js';
-import View from 'ol/View.js';
 import type { Coordinate } from 'ol/coordinate.js';
+import Feature from 'ol/Feature.js';
 import Point from 'ol/geom/Point.js';
 import TileLayer from 'ol/layer/Tile.js';
 import VectorLayer from 'ol/layer/Vector.js';
+import OpenLayerMap from 'ol/Map.js';
+import type MapBrowserEvent from 'ol/MapBrowserEvent.js';
 import { transform } from 'ol/proj.js';
-import { Vector as VectorSource } from 'ol/source.js';
 import OSM from 'ol/source/OSM.js';
+import { Vector as VectorSource } from 'ol/source.js';
 import { Icon, Style } from 'ol/style.js';
+import View from 'ol/View.js';
 import 'ol/ol.css';
-import { useEffect, useState } from 'react';
-import type { Components } from 'react-big-calendar';
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import { CiShare2 } from 'react-icons/ci';
-import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 
 import type {
   EventLocation,
@@ -27,15 +21,19 @@ import type {
   UserEvent,
 } from '@blms/types';
 import { Button, cn } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import type { Components } from 'react-big-calendar';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { CiShare2 } from 'react-icons/ci';
+import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.tsx';
 import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.ts';
-
-import { useQuery } from '@tanstack/react-query';
 import { EventCard } from './event-card.tsx';
 import ShareModal from './modal-link-sharing.tsx';
 
@@ -116,10 +114,10 @@ function groupCountries(
       group.events.push(event);
     } else {
       groupedByLocationEvents.set(location.placeId, {
-        placeId: location.placeId,
         coordinate: [location.lng, location.lat],
         events: [event],
         location,
+        placeId: location.placeId,
       });
     }
   }
@@ -165,10 +163,10 @@ function createCounterStyle(count: number) {
 
   return new Style({
     image: new Icon({
-      src,
+      displacement: [0, 24],
       opacity: 1,
       scale: 0.8,
-      displacement: [0, 24],
+      src,
     }),
   });
 }
@@ -184,20 +182,20 @@ function createMarker(group: EventGroup) {
 
   const feature = new Feature({
     geometry,
-    value: group,
     location: group.location,
+    value: group,
   });
 
   feature.setStyle(createCounterStyle(group.events.length));
 
   return new VectorLayer({
-    style: {
-      'text-value': group.events.length.toString(),
-      'icon-height': 300,
-    },
     source: new VectorSource({
       features: [feature],
     }),
+    style: {
+      'icon-height': 300,
+      'text-value': group.events.length.toString(),
+    },
   });
 }
 
@@ -216,10 +214,10 @@ const EventsMap = ({
   const [shareUrl, setShareUrl] = useState('');
 
   const queryOpts = {
-    staleTime: 600_000, // 10 minutes
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
+    refetchOnMount: false, // 10 minutes
     refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+    staleTime: 600_000,
   };
 
   /*
@@ -288,8 +286,8 @@ const EventsMap = ({
     }
 
     const map = new OpenLayerMap({
-      target: 'ol-map',
       layers: [osmLayer],
+      target: 'ol-map',
       view: new View(state),
     });
 
@@ -356,15 +354,15 @@ const EventsMap = ({
 
   const localizer = dateFnsLocalizer({
     format,
-    parse,
-    startOfWeek,
     getDay,
     locales,
+    parse,
+    startOfWeek,
   });
 
   const weekComponents: Components<CalendarEvent> = {
-    toolbar: CustomToolbar,
     event: CustomEventMonth,
+    toolbar: CustomToolbar,
   };
 
   const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>();
@@ -381,16 +379,16 @@ const EventsMap = ({
         );
       })
       .map<CalendarEvent>((data: JoinedEvent) => ({
-        title: data.name,
-        type: data.type,
-        id: data.id,
-        subId: null,
         addressLine1: data.addressLine1,
+        data,
+        end: data.endDate,
+        id: data.id,
+        isOnline: false,
         organizer: null,
         start: data.startDate,
-        end: data.endDate,
-        isOnline: false,
-        data,
+        subId: null,
+        title: data.name,
+        type: data.type,
       }));
   };
   useEffect(() => {
@@ -648,7 +646,7 @@ const EventsMap = ({
                 setIsPaymentModalOpen={setIsPaymentModalOpen}
                 setPaymentModalData={setPaymentModalData}
                 conversionRate={conversionRate}
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={index}
               />
             ))

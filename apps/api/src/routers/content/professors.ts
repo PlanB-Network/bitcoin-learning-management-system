@@ -1,8 +1,7 @@
-import { z } from 'zod';
-
 import { formattedProfessorSchema, fullProfessorSchema } from '@blms/schemas';
 import { createGetProfessor, createGetProfessors } from '@blms/service-content';
 import type { FormattedProfessor, FullProfessor } from '@blms/types';
+import { z } from 'zod';
 
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -24,8 +23,8 @@ const getProfessorsProcedure = publicProcedure
 const getProfessorProcedure = publicProcedure
   .input(
     z.object({
-      professorId: z.string(),
       language: z.string().optional(),
+      professorId: z.string(),
     }),
   )
   .output<Parser<FullProfessor>>(fullProfessorSchema)
@@ -34,6 +33,6 @@ const getProfessorProcedure = publicProcedure
   );
 
 export const professorsRouter = createTRPCRouter({
-  getProfessors: getProfessorsProcedure,
   getProfessor: getProfessorProcedure,
+  getProfessors: getProfessorsProcedure,
 });

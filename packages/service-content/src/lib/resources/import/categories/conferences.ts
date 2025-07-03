@@ -1,8 +1,7 @@
-import matter from 'gray-matter';
-import { marked } from 'marked';
-
 import { firstRow } from '@blms/database';
 import type { Conference, Proofreading, Resource } from '@blms/types';
+import matter from 'gray-matter';
+import { marked } from 'marked';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
 

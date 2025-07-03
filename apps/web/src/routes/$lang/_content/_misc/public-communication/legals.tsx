@@ -1,8 +1,7 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router';
+import { cn } from '@blms/ui';
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@blms/ui';
 
 import { DropdownMenu } from '../-components/public-communication/dropdown-menu.tsx';
 import { legalTabs } from '../-components/utils/public-communication-utils.tsx';
@@ -56,8 +55,8 @@ function LegalInformation({ activeSubTab, setActiveSubTab }: LegalTabsProps) {
 
   const dropdownItems = legalTabs.map((tab) => ({
     id: tab.id,
-    name: t(tab.label),
     link: tab.href,
+    name: t(tab.label),
     onClick: () => {
       setActiveSubTab(tab.id);
     },

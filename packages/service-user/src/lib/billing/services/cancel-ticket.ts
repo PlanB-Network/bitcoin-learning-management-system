@@ -8,7 +8,11 @@ export const createCancelTicket = ({
     uid,
     ticketId,
     eventType,
-  }: { uid: string; ticketId: string; eventType: string }) => {
+  }: {
+    uid: string;
+    ticketId: string;
+    eventType: string;
+  }) => {
     console.log(`------------------${eventType} -- ${ticketId}`);
     if (eventType === 'course') {
       return postgres

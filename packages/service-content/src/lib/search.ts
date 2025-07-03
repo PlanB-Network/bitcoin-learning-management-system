@@ -1,11 +1,9 @@
-import removeMarkdown from 'remove-markdown';
-import { Errors as TypesenseErrors } from 'typesense';
-import type { Client as TypesenseClient } from 'typesense';
-import type { CollectionCreateSchema } from 'typesense/lib/Typesense/Collections.js';
-
 import { sql } from '@blms/database';
-
 import type { Searchable } from '@blms/types';
+import removeMarkdown from 'remove-markdown';
+import type { Client as TypesenseClient } from 'typesense';
+import { Errors as TypesenseErrors } from 'typesense';
+import type { CollectionCreateSchema } from 'typesense/lib/Typesense/Collections.js';
 import { ISO_639_LANGUAGES, type Language } from './const.js';
 import type { Dependencies } from './dependencies.js';
 
@@ -253,14 +251,14 @@ const getLectureReplaysQuery = () => sql<Searchable<Language>[]>`
 
 const createInitIndexes = (client: TypesenseClient) => () => {
   const searchableSchema: CollectionCreateSchema = {
-    name: 'searchable',
     fields: [
-      { name: 'type', type: 'string', facet: true },
-      { name: 'language', type: 'string', facet: true },
-      { name: 'title', type: 'string', facet: false },
-      { name: 'body', type: 'string', facet: false },
-      { name: 'endDate', type: 'int64', facet: false, optional: true },
+      { facet: true, name: 'type', type: 'string' },
+      { facet: true, name: 'language', type: 'string' },
+      { facet: false, name: 'title', type: 'string' },
+      { facet: false, name: 'body', type: 'string' },
+      { facet: false, name: 'endDate', optional: true, type: 'int64' },
     ],
+    name: 'searchable',
   };
 
   return client

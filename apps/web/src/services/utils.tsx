@@ -21,109 +21,109 @@ import walletSvg from '#src/assets/tutorials/wallet.svg';
 
 export const TUTORIALS_CATEGORIES = [
   {
-    name: 'wallet',
     image: walletSvg,
-    subcategories: ['mobile', 'desktop', 'hardware', 'backup'],
+    name: 'wallet',
     route: '/tutorials/wallet',
+    subcategories: ['mobile', 'desktop', 'hardware', 'backup'],
   },
   {
-    name: 'node',
     image: nodeSvg,
-    subcategories: ['bitcoin', 'lightning-network', 'others'],
+    name: 'node',
     route: '/tutorials/node',
+    subcategories: ['bitcoin', 'lightning-network', 'others'],
   },
   {
-    name: 'mining',
     image: miningSvg,
-    subcategories: ['hardware', 'pool'],
+    name: 'mining',
     route: '/tutorials/mining',
+    subcategories: ['hardware', 'pool'],
   },
   {
-    name: 'exchange',
     image: exchangeSvg,
-    subcategories: ['centralized', 'peer-to-peer'],
+    name: 'exchange',
     route: '/tutorials/exchange',
+    subcategories: ['centralized', 'peer-to-peer'],
   },
   {
-    name: 'business',
     image: businessSvg,
-    subcategories: ['point-of-sale', 'others'],
+    name: 'business',
     route: '/tutorials/business',
+    subcategories: ['point-of-sale', 'others'],
   },
   {
-    name: 'privacy',
     image: privacySvg,
-    subcategories: ['on-chain', 'analysis'],
+    name: 'privacy',
     route: '/tutorials/privacy',
+    subcategories: ['on-chain', 'analysis'],
   },
   {
-    name: 'computer-security',
     image: computerSecuritySvg,
+    name: 'computer-security',
+    route: '/tutorials/computer-security',
     subcategories: [
       'authentication',
       'communication',
       'data',
       'operating system',
     ],
-    route: '/tutorials/computer-security',
   },
   {
-    name: 'contribution',
     image: contributionSvg,
-    subcategories: ['content', 'resource', 'others'],
+    name: 'contribution',
     route: '/tutorials/contribution',
+    subcategories: ['content', 'resource', 'others'],
   },
 ] as const;
 
 export const RESOURCES_CATEGORIES = [
   {
-    name: 'books',
     image: librarySvg,
+    name: 'books',
     unreleased: false,
   },
   {
-    name: 'podcasts',
     image: podcastSvg,
+    name: 'podcasts',
     unreleased: false,
   },
   {
-    name: 'conferences',
     image: conferenceSvg,
+    name: 'conferences',
     unreleased: false,
   },
   {
-    name: 'projects',
     image: projectSvg,
+    name: 'projects',
     unreleased: false,
   },
   {
-    name: 'bet',
     image: toolkitSvg,
+    name: 'bet',
     unreleased: false,
   },
   {
-    name: 'glossary',
     image: glossarySvg,
+    name: 'glossary',
     unreleased: false,
   },
   {
-    name: 'newsletters',
     image: webSvg,
+    name: 'newsletters',
     unreleased: false,
   },
   {
-    name: 'channels',
     image: youtubeSvg,
+    name: 'channels',
     unreleased: false,
   },
   {
-    name: 'lectures',
     image: lectureSvg,
+    name: 'lectures',
     unreleased: false,
   },
   {
-    name: 'movies',
     image: movieSvg,
+    name: 'movies',
     unreleased: false,
   },
 ] as const;
@@ -182,7 +182,7 @@ export const getFormattedUnit = (
 ) => {
   let prefix = '';
   if (amount > 0 && amount < 0.01) {
-    // biome-ignore lint/style/noParameterAssign: <explanation>
+    // biome-ignore lint/style/noParameterAssign: explanation
     amount = 0.01;
     prefix = '< ';
   }
@@ -192,11 +192,11 @@ export const getFormattedUnit = (
   }
 
   return `${prefix}${Intl.NumberFormat(undefined, {
-    style: 'currency',
     currency: unit,
     currencyDisplay: 'narrowSymbol',
-    minimumFractionDigits: floating,
     maximumFractionDigits: floating,
+    minimumFractionDigits: floating,
+    style: 'currency',
   }).format(amount)}`;
 };
 

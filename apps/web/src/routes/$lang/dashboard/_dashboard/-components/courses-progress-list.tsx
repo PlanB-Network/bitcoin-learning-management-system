@@ -22,7 +22,7 @@ export const ProgressBar = ({
 
           return (
             <div
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              // biome-ignore lint/suspicious/noArrayIndexKey: explanation
               key={index}
               className={cn(
                 'relative h-2 flex justify-end items-center',

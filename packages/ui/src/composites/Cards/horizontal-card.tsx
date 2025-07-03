@@ -1,8 +1,7 @@
+import type { ButtonProps } from '@blms/ui';
+import { Button, cn, Flag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { FaArrowRightLong } from 'react-icons/fa6';
-
-import type { ButtonProps } from '@blms/ui';
-import { Button, Flag, cn } from '@blms/ui';
 
 interface HorizontalCardProps {
   title: string;

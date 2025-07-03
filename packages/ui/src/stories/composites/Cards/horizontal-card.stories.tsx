@@ -12,17 +12,16 @@ const buttonVariants = [
 ] as const;
 
 const meta: Meta<typeof HorizontalCard> = {
-  title: 'Composites/Cards/horizontal-card',
-  component: HorizontalCard,
-  parameters: {
-    layout: 'centered',
+  args: {
+    buttonLink: '/course/bitcoin',
+    buttonText: 'Start Learning',
+    buttonVariant: 'primary',
+    languages: ['en', 'fr'],
+    subtitle: 'Learn the fundamentals',
+    title: 'Bitcoin 101',
   },
-  tags: ['autodocs'],
   argTypes: {
-    title: {
-      control: 'text',
-    },
-    subtitle: {
+    buttonLink: {
       control: 'text',
     },
     buttonText: {
@@ -32,24 +31,25 @@ const meta: Meta<typeof HorizontalCard> = {
       control: { type: 'select' },
       options: buttonVariants,
     },
-    buttonLink: {
+    className: {
       control: 'text',
     },
     languages: {
       control: 'object',
     },
-    className: {
+    subtitle: {
+      control: 'text',
+    },
+    title: {
       control: 'text',
     },
   },
-  args: {
-    title: 'Bitcoin 101',
-    subtitle: 'Learn the fundamentals',
-    buttonText: 'Start Learning',
-    buttonVariant: 'primary',
-    buttonLink: '/course/bitcoin',
-    languages: ['en', 'fr'],
+  component: HorizontalCard,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/Cards/horizontal-card',
 };
 
 export default meta;
@@ -62,38 +62,38 @@ export const Default: Story = {
 
 export const WithoutSubtitle: Story = {
   args: {
-    title: 'Advanced Economics',
-    subtitle: undefined,
     buttonText: 'Begin Course',
     languages: ['en', 'es', 'de'],
+    subtitle: undefined,
+    title: 'Advanced Economics',
   },
 };
 
 export const NoButton: Story = {
   args: {
-    title: 'Coming Soon',
-    subtitle: 'Lightning Network Basics',
-    buttonText: undefined,
     buttonLink: undefined,
+    buttonText: undefined,
     languages: ['en', 'fr'],
+    subtitle: 'Lightning Network Basics',
+    title: 'Coming Soon',
   },
 };
 
 export const DisabledButton: Story = {
   args: {
-    title: 'Premium Course',
-    subtitle: 'Requires payment',
-    buttonText: 'Locked',
     buttonLink: undefined,
+    buttonText: 'Locked',
     languages: ['en'],
+    subtitle: 'Requires payment',
+    title: 'Premium Course',
   },
 };
 
 export const MultipleLanguages: Story = {
   args: {
-    title: 'Global Economics',
-    subtitle: 'Available in many languages',
     buttonText: 'Explore',
     languages: ['en', 'fr', 'es', 'de', 'ja'],
+    subtitle: 'Available in many languages',
+    title: 'Global Economics',
   },
 };

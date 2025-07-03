@@ -1,8 +1,7 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { ButtonWithArrow } from '@blms/ui';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-
-import { ButtonWithArrow } from '@blms/ui';
 import CircuitLeft from '#src/assets/certificates/circuit-left.svg';
 import CircuitRight from '#src/assets/certificates/circuit-right.svg';
 import { PageLayout } from '#src/components/page-layout.js';
@@ -11,17 +10,17 @@ import { useGreater } from '#src/hooks/use-greater.js';
 export const Route = createFileRoute(
   '/$lang/_content/_misc/bcert-certificates/$certificateId',
 )({
+  component: Certificate,
   params: {
     parse: (params) => ({
-      lang: z.string().parse(params.lang),
       certificateId: z.string().parse(params.certificateId),
+      lang: z.string().parse(params.lang),
     }),
     stringify: ({ lang, certificateId }) => ({
-      lang: lang,
       certificateId: `${certificateId}`,
+      lang: lang,
     }),
   },
-  component: Certificate,
 });
 
 function Certificate() {

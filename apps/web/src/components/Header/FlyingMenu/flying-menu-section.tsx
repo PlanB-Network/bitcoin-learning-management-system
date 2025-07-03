@@ -1,18 +1,14 @@
+import { BTC101ID } from '@blms/shared';
+import { cn, Image, Popover, PopoverContent, PopoverTrigger } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-
-import { Image, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
-
 import { assetUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.ts';
-
 import { MenuElement } from '../menu-elements.tsx';
 import type { NavigationSection } from '../props.ts';
-
-import { BTC101ID } from '@blms/shared';
-import { useQuery } from '@tanstack/react-query';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
 export interface FlyingMenuProps {
@@ -34,8 +30,8 @@ const SectionTitle = ({
   isOpen,
 }: SectionTitleProps) => {
   const variantMap = {
-    light: 'text-black',
     dark: 'text-white',
+    light: 'text-black',
   };
 
   if ('path' in section) {
@@ -84,8 +80,8 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
   const { data: highlightedCourse } = useQuery(
     trpc.content.getCourse.queryOptions(
       {
-        language: i18n.language ?? 'en',
         id: BTC101ID,
+        language: i18n.language ?? 'en',
       },
       {
         staleTime: 300_000, // 5 minutes

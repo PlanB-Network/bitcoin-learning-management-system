@@ -1,8 +1,7 @@
+import { Badge, cn } from '@blms/ui';
 import { Link, useLocation } from '@tanstack/react-router';
 import { useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-
-import { Badge, cn } from '@blms/ui';
 
 export const MenuItem = ({
   text,
@@ -86,7 +85,7 @@ export const MenuItem = ({
         <div className="flex flex-col w-full pl-8 gap-1 pt-1">
           {dropdown.map((item, index) => (
             <Link
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              // biome-ignore lint/suspicious/noArrayIndexKey: explanation
               key={index}
               to={item.to}
               className={cn(

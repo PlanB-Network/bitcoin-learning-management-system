@@ -1,33 +1,31 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs';
 import type { Readable } from 'node:stream';
-
+import { NoSuchKey } from '@blms/s3';
+import {
+  createExamTimestampService,
+  createSetProfilePicture,
+} from '@blms/service-user';
 import type { Request, Router } from 'express';
 import formidable from 'formidable';
 import JSZip from 'jszip';
 import type { ResizeOptions } from 'sharp';
 import sharp from 'sharp';
 
-import { NoSuchKey } from '@blms/s3';
-import {
-  createExamTimestampService,
-  createSetProfilePicture,
-} from '@blms/service-user';
-
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
 const defaultResizeOptions: ResizeOptions = {
-  width: 200,
   height: 200,
+  width: 200,
   withoutEnlargement: true,
 };
 
 const zipStream = (zip: JSZip) => {
   return zip.generateNodeStream({
-    type: 'nodebuffer',
     streamFiles: true,
+    type: 'nodebuffer',
   });
 };
 
@@ -36,12 +34,12 @@ const receiveImage = (req: Request, resizeOptions = defaultResizeOptions) => {
     const sharpStream = sharp().resize(resizeOptions).webp();
 
     const form = formidable({
-      multiples: false,
       fileWriteStreamHandler: () => sharpStream,
+      multiples: false,
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, fields, files) => {
+      form.parse<never, 'file'>(req, (err, _fields, files) => {
         if (err) {
           throw new InternalServerError('Failed to parse form data');
         }

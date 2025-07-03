@@ -44,12 +44,12 @@ const base = (path: string): string => {
 
 export const createS3Service = (config: S3Config): S3Service => {
   const s3 = new S3Client({
-    region: config.region,
-    endpoint: config.endpoint,
     credentials: {
       accessKeyId: config.accessKey,
       secretAccessKey: config.secretKey,
     },
+    endpoint: config.endpoint,
+    region: config.region,
   });
 
   const Bucket = config.bucket;
@@ -63,6 +63,12 @@ export const createS3Service = (config: S3Config): S3Service => {
   };
 
   return {
+    // Delete the requested file
+    delete(key: string) {
+      const cmd = new DeleteObjectCommand({ Bucket, Key: base(key) });
+
+      return s3.send(cmd).then(() => void 0);
+    },
     // Return the requested file as a blob
     getBlob(key: string) {
       return get(key).then((res) => res.Body?.transformToByteArray() ?? null);
@@ -80,16 +86,31 @@ export const createS3Service = (config: S3Config): S3Service => {
           return Readable.fromWeb(body.transformToWebStream() as any);
         });
     },
+    // Return the metadata of the requested file
+    head(key: string) {
+      return head(key).then((res) => ({
+        contentLength: res.ContentLength,
+        contentType: res.ContentType,
+        lastModified: res.LastModified,
+        metadata: res.Metadata,
+      }));
+    },
+    // Return the metadata of the requested file
+    metadata(key: string) {
+      return head(key)
+        .then((res) => res.Metadata ?? null)
+        .catch(() => null);
+    },
     // Upload a file to the bucket
     put(key: string, body: Data, { contentType, metadata }: PutOptions = {}) {
       contentType ??=
         typeof body === 'string' ? 'text/plain' : 'application/octet-stream';
 
       const cmd = new PutObjectCommand({
-        Bucket,
-        Key: base(key),
         Body: body,
+        Bucket,
         ContentType: contentType,
+        Key: base(key),
         Metadata: metadata,
       });
 
@@ -106,36 +127,15 @@ export const createS3Service = (config: S3Config): S3Service => {
       const upload = new Upload({
         client: s3,
         params: {
-          Bucket,
-          Key: base(key),
-          ContentType: contentType,
           Body: stream,
+          Bucket,
+          ContentType: contentType,
+          Key: base(key),
           Metadata: metadata,
         },
       });
 
       await upload.done();
-    },
-    // Return the metadata of the requested file
-    head(key: string) {
-      return head(key).then((res) => ({
-        lastModified: res.LastModified,
-        contentLength: res.ContentLength,
-        contentType: res.ContentType,
-        metadata: res.Metadata,
-      }));
-    },
-    // Delete the requested file
-    delete(key: string) {
-      const cmd = new DeleteObjectCommand({ Bucket, Key: base(key) });
-
-      return s3.send(cmd).then(() => void 0);
-    },
-    // Return the metadata of the requested file
-    metadata(key: string) {
-      return head(key)
-        .then((res) => res.Metadata ?? null)
-        .catch(() => null);
     },
   };
 };

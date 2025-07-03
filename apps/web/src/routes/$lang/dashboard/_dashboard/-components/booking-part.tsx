@@ -1,13 +1,11 @@
+import type { Ticket } from '@blms/types';
+import { BasicModal, Button, Card, DialogClose } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
-
-import type { Ticket } from '@blms/types';
-import { BasicModal, Button, Card, DialogClose } from '@blms/ui';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatHourRange } from '#src/utils/date.js';
@@ -137,8 +135,8 @@ const Buttons = ({
   const { data: chapter, isFetched: isChapterFetched } = useQuery(
     trpc.content.getCourseChapter.queryOptions(
       {
-        language: i18n.language,
         chapterId: ticket.eventId,
+        language: i18n.language,
       },
       {
         enabled: ticket.type === 'course',
@@ -149,8 +147,8 @@ const Buttons = ({
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions(
       {
-        language: i18n.language,
         id: chapter ? chapter.courseId : '',
+        language: i18n.language,
       },
       {
         enabled: isChapterFetched,
@@ -191,9 +189,9 @@ const Buttons = ({
                     organizer: course.projectName ?? 'Plan ₿ Network',
                     ...chapter,
                     ...course,
+                    availableSeats: chapter.availableSeats,
                     formattedStartDate,
                     formattedTime,
-                    availableSeats: chapter.availableSeats,
                     userName,
                   });
                 } else {

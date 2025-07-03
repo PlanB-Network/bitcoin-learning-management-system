@@ -1,36 +1,32 @@
+import type { CourseResponse, JoinedCourse } from '@blms/types';
+import { Button, cn, Image, ListItem, StarRating, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-
-import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { Button, ListItem, StarRating, TextTag, cn } from '@blms/ui';
-
 import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
-
-import { Image } from '@blms/ui';
 import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
+  defaultVariants: {
+    borderRadius: 'courses',
+    color: 'primary',
+    mode: 'dark',
+  },
   variants: {
-    color: {
-      primary: 'bg-newGray-5 dark:bg-maroon-10',
-      featured: 'bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section',
-    },
-    mode: {
-      light: '',
-      dark: 'dark',
-    },
     borderRadius: {
       courses: 'rounded-[10px] md:rounded-[20px]',
     },
-  },
-  defaultVariants: {
-    color: 'primary',
-    mode: 'dark',
-    borderRadius: 'courses',
+    color: {
+      featured: 'bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section',
+      primary: 'bg-newGray-5 dark:bg-maroon-10',
+    },
+    mode: {
+      dark: 'dark',
+      light: '',
+    },
   },
 });
 

@@ -12,12 +12,12 @@ type Story = StoryObj<typeof Card>;
 
 export const Primary: Story = {
   args: {
-    withPadding: true,
-    image: 'src/stories/assets/discord.svg',
     children: (
       <>
         <p>Card content</p>
       </>
     ),
+    image: 'src/stories/assets/discord.svg',
+    withPadding: true,
   },
 };

@@ -52,7 +52,7 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
             <ReactPlayer
               width={'100%'}
               height={'100%'}
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               controls={true}
               url={fixEmbedUrl(youtubeUrl)}
@@ -68,7 +68,7 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
             <iframe
               width="100%"
               height="100%"
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               src={fixEmbedUrl(rumbleUrl)}
               title={video.id}
@@ -85,7 +85,7 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
             <iframe
               width="100%"
               height="100%"
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               src={fixEmbedUrl(peertubeUrl)}
               title={video.id}

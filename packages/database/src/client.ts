@@ -1,10 +1,10 @@
-import postgres from 'postgres';
 import type {
   TransactionSql as OriginalTransactionSql,
   PendingQuery,
   Row,
   Sql,
 } from 'postgres';
+import postgres from 'postgres';
 
 import { firstRow, rejectOnEmpty } from './helpers.js';
 
@@ -67,31 +67,31 @@ export const createPostgresClient = (
 
   sql = postgres({
     ...config,
-    types: {
-      bigint: {
-        to: 20,
-        from: [20],
-        parse: Number,
-        serialize: (x: number) => x.toString(),
-      },
-      numeric: {
-        to: 1700,
-        from: [1700],
-        parse: Number,
-        serialize: (x: number) => x.toString(),
-      },
-      // Placeholder for TypeScript to accept undefined values
-      null: {
-        to: 0,
-        from: [0],
-        parse: () => undefined,
-        serialize: () => null,
-      },
-    },
     transform: {
       ...postgres.camel,
       // Convert undefined values to null postgres values
       undefined: null,
+    },
+    types: {
+      bigint: {
+        from: [20],
+        parse: Number,
+        serialize: (x: number) => x.toString(),
+        to: 20,
+      },
+      // Placeholder for TypeScript to accept undefined values
+      null: {
+        from: [0],
+        parse: () => undefined,
+        serialize: () => null,
+        to: 0,
+      },
+      numeric: {
+        from: [1700],
+        parse: Number,
+        serialize: (x: number) => x.toString(),
+        to: 1700,
+      },
     },
   });
 

@@ -1,7 +1,6 @@
+import { contentPodcasts } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
-import { contentPodcasts } from '@blms/database';
 
 import { resourceSchema } from './resource.js';
 
@@ -10,20 +9,20 @@ export const podcastSchema = createSelectSchema(contentPodcasts);
 export const joinedPodcastSchema = resourceSchema
   .pick({
     id: true,
-    path: true,
-    lastUpdated: true,
     lastCommit: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     podcastSchema.pick({
+      description: true,
+      host: true,
       language: true,
       name: true,
-      host: true,
-      description: true,
-      websiteUrl: true,
-      twitterUrl: true,
-      podcastUrl: true,
       nostr: true,
+      podcastUrl: true,
+      twitterUrl: true,
+      websiteUrl: true,
     }),
   )
   .merge(

@@ -1,20 +1,17 @@
+import type { JoinedEvent } from '@blms/types';
+import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { JoinedEvent } from '@blms/types';
-import { Loader } from '@blms/ui';
-
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { AppContext } from '#src/providers/context.js';
+import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { CurrentEvents } from './-components/current-events.tsx';
 import { EventBookModal } from './-components/event-book-modal.tsx';
 import { EventPaymentModal } from './-components/event-payment-modal.tsx';
@@ -36,10 +33,10 @@ function Events() {
   const isLoggedIn = !!session;
 
   const queryOpts = {
-    staleTime: 600_000, // 10 minutes
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
+    refetchOnMount: false, // 10 minutes
     refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+    staleTime: 600_000,
   };
 
   const { data: events, isFetched } = useQuery(
@@ -62,10 +59,10 @@ function Events() {
 
   const [paymentModalData, setPaymentModalData] =
     useState<PaymentModalDataModel>({
+      accessType: null,
+      dollarPrice: null,
       eventId: null,
       satsPrice: null,
-      dollarPrice: null,
-      accessType: null,
     });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
@@ -112,10 +109,10 @@ function Events() {
             onClose={() => {
               refetchEventPayments();
               setPaymentModalData({
+                accessType: null,
+                dollarPrice: null,
                 eventId: null,
                 satsPrice: null,
-                dollarPrice: null,
-                accessType: null,
               });
               setIsPaymentModalOpen(false);
             }}

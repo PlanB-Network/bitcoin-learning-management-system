@@ -23,7 +23,7 @@ const readJSON = (filePath: string): any => {
 };
 
 const writeJSON = (filePath: string, data: any): void => {
-  const content = JSON.stringify(data, (key, value) => value, 2);
+  const content = JSON.stringify(data, (value) => value, 2);
   fs.writeFileSync(filePath, content);
 };
 

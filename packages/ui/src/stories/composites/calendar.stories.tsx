@@ -3,36 +3,36 @@ import { useState } from 'react';
 import { Calendar } from '../../bases/calendar.tsx';
 
 const meta: Meta<typeof Calendar> = {
-  title: 'Composites/calendar',
-  component: Calendar,
-  tags: ['autodocs'],
   argTypes: {
-    mode: {
-      control: 'select',
-      options: ['single', 'multiple', 'range'],
-      description: 'The selection mode of the calendar.',
-    },
-    selected: {
-      control: 'object',
-      description: 'The selected date(s).',
-    },
-    onSelect: {
-      action: 'date selected',
-      description: 'Callback function when a date is selected.',
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the calendar is disabled.',
     },
     initialFocus: {
       control: 'boolean',
       description: 'Whether the calendar should have initial focus.',
     },
+    mode: {
+      control: 'select',
+      description: 'The selection mode of the calendar.',
+      options: ['single', 'multiple', 'range'],
+    },
+    onSelect: {
+      action: 'date selected',
+      description: 'Callback function when a date is selected.',
+    },
+    selected: {
+      control: 'object',
+      description: 'The selected date(s).',
+    },
     showOutsideDays: {
       control: 'boolean',
       description: 'Whether to show days outside the current month.',
     },
-    disabled: {
-      control: 'boolean',
-      description: 'Whether the calendar is disabled.',
-    },
   },
+  component: Calendar,
+  tags: ['autodocs'],
+  title: 'Composites/calendar',
 };
 
 export default meta;
@@ -55,12 +55,12 @@ export const Default: Story = {
 export const MultipleDates: Story = {
   args: {
     mode: 'multiple',
+    month: new Date('2024-07-01'),
     selected: [
       new Date('2024-07-10'),
       new Date('2024-07-15'),
       new Date('2024-07-20'),
     ],
-    month: new Date('2024-07-01'),
   },
   render: (args) => {
     const [dates, setDates] = useState<Date[] | undefined>(
@@ -80,9 +80,9 @@ export const MultipleDates: Story = {
 
 export const DisabledDays: Story = {
   args: {
+    disabled: (date) => date.getDay() === 0 || date.getDay() === 6,
     mode: 'single',
     selected: new Date(),
-    disabled: (date) => date.getDay() === 0 || date.getDay() === 6,
   },
   render: (args) => {
     const [date, setDate] = useState<Date | undefined>(args.selected as Date);
@@ -94,10 +94,10 @@ export const DisabledDays: Story = {
 
 export const FromSpecificDate: Story = {
   args: {
-    mode: 'single',
-    selected: new Date(),
     fromDate: new Date('2024-07-15'),
+    mode: 'single',
     month: new Date('2024-07-01'),
+    selected: new Date(),
   },
   render: (args) => {
     const [date, setDate] = useState<Date | undefined>(args.selected as Date);

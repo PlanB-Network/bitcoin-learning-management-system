@@ -1,10 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useCallback } from 'react';
-import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BasicModal,
   Button,
@@ -15,8 +8,13 @@ import {
   FormLabel,
   Input,
 } from '@blms/ui';
-
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { useCallback } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { trpc } from '#src/utils/trpc.js';
 
 const changeEmailSchema = z.object({
@@ -46,19 +44,19 @@ export const ChangeEmailModal = ({
   const { t } = useTranslation();
   const changeEmail = useMutation(
     trpc.user.changeEmail.mutationOptions({
+      onError: (error) => {
+        console.error('Error changing email:', error.message);
+      },
       onSuccess: (data) => {
         onClose();
         onEmailSent(data);
-      },
-      onError: (error) => {
-        console.error('Error changing email:', error.message);
       },
     }),
   );
 
   const form = useForm({
-    resolver: zodResolver(changeEmailSchema),
     defaultValues: { email },
+    resolver: zodResolver(changeEmailSchema),
   });
 
   const onSubmit: SubmitHandler<ChangeEmailForm> = useCallback(

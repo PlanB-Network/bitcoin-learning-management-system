@@ -1,8 +1,7 @@
-import { z } from 'zod';
-
 import { JoinedBCertResultsSchema } from '@blms/schemas';
 import { createGetBCertResults } from '@blms/service-content';
 import type { JoinedBCertResults } from '@blms/types';
+import { z } from 'zod';
 
 import { studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';

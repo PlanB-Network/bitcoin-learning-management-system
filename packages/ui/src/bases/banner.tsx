@@ -1,16 +1,16 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 import type { IconType } from 'react-icons/lib';
 import { cn } from '../lib/utils.ts';
 
 const bannerVariants = cva('relative w-full rounded-lg border p-4', {
+  defaultVariants: {
+    variant: 'success',
+  },
   variants: {
     variant: {
       success: 'bg-brightGreen-1 border-brightGreen-2 text-brightGreen-8',
     },
-  },
-  defaultVariants: {
-    variant: 'success',
   },
 });
 
@@ -22,9 +22,8 @@ const Banner = React.forwardRef<
     } & { icon?: React.ReactNode }
 >(({ className, variant, icon, onClose, ...props }, ref) => {
   return (
-    <div
+    <header
       ref={ref}
-      role="banner"
       className={cn(
         'flex flex-row items-center justify-center',
         bannerVariants({ variant }),
@@ -34,7 +33,7 @@ const Banner = React.forwardRef<
     >
       {icon && <span className="size-9 flex items-center mr-4">{icon}</span>}
       <div>{props.children}</div>
-    </div>
+    </header>
   );
 });
 Banner.displayName = 'Banner';

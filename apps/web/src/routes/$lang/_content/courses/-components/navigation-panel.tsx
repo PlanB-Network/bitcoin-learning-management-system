@@ -1,7 +1,3 @@
-import { Link } from '@tanstack/react-router';
-import type { CSSProperties } from 'react';
-import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
-
 import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
 import {
   Collapsible,
@@ -9,6 +5,9 @@ import {
   CollapsibleTrigger,
   cn,
 } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
+import type { CSSProperties } from 'react';
+import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 
 import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 import { formatNameForURL } from '#src/utils/string.ts';
@@ -103,13 +102,13 @@ export const NavigationPanel: React.FC<Props> = ({
                         (chapter) => chapter.partIndex === chapterOne.partIndex,
                       )
                       .map((chapter, index) => (
-                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                        // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                         <li key={index + 1000}>
                           <Link
                             to={'/courses/$courseId/$chapterId'}
                             params={{
-                              courseId: course.id,
                               chapterId: chapter.chapterId,
+                              courseId: course.id,
                             }}
                           >
                             <div className="mt-1 grid grid-cols-8 items-center gap-1">

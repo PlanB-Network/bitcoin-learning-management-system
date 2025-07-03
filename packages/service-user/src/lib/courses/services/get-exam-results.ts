@@ -84,12 +84,12 @@ export const createGetLatestExamResults = ({ postgres }: Dependencies) => {
 
     return {
       ...examResult,
+      imgKey: timestamp?.imgKey || undefined,
       isTimestamped: !!timestamp?.confirmed || false,
       pdfKey: timestamp?.pdfKey || undefined,
-      imgKey: timestamp?.imgKey || undefined,
+      totalAnsweredAnswers,
       totalGoodUserAnswer,
       totalWrongUserAnswer,
-      totalAnsweredAnswers,
       userExamDuration,
     };
   };
@@ -123,9 +123,9 @@ export const createGetAllUserCourseExamsResults = ({
 
       return {
         ...exam,
+        imgKey: timestamp?.imgKey || undefined,
         isTimestamped: !!timestamp?.confirmed || false,
         pdfKey: timestamp?.pdfKey || undefined,
-        imgKey: timestamp?.imgKey || undefined,
       };
     });
   };

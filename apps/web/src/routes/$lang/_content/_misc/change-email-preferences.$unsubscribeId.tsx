@@ -1,7 +1,7 @@
-import { Button, ButtonWithArrow, Form, customToast } from '@blms/ui';
+import { Button, ButtonWithArrow, customToast, Form } from '@blms/ui';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -46,10 +46,10 @@ function ChangeEmailPreferences() {
   };
 
   const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: standardSchemaResolver(FormSchema),
     defaultValues: {
       emailNotifications: [],
     },
+    resolver: standardSchemaResolver(FormSchema),
   });
 
   const changeEmailSettings = useMutation(
@@ -60,10 +60,10 @@ function ChangeEmailPreferences() {
             'dashboard.profile.notificationSettings.emailPreferencesSavedSuccessfully',
           ),
           {
-            mode: 'light',
-            icon: MdMarkEmailRead,
-            color: 'success',
             closeButton: true,
+            color: 'success',
+            icon: MdMarkEmailRead,
+            mode: 'light',
           },
         );
       },
@@ -72,9 +72,9 @@ function ChangeEmailPreferences() {
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const mutationPayload = {
-      unsubscribeId: params.unsubscribeId,
       emailNotifyCourses: data.emailNotifications.includes('courses'),
       emailNotifyGeneral: data.emailNotifications.includes('general'),
+      unsubscribeId: params.unsubscribeId,
     };
 
     changeEmailSettings.mutate(mutationPayload);
@@ -118,16 +118,16 @@ function ChangeEmailPreferences() {
                   label={t('dashboard.profile.notificationSettings.emailTitle')}
                   options={[
                     {
-                      value: 'courses',
                       label: t(
                         'dashboard.profile.notificationSettings.coursesOption',
                       ),
+                      value: 'courses',
                     },
                     {
-                      value: 'general',
                       label: t(
                         'dashboard.profile.notificationSettings.generalOption',
                       ),
+                      value: 'general',
                     },
                   ]}
                   addNoneButton

@@ -1,6 +1,5 @@
-import { Link } from '@tanstack/react-router';
-
 import type { JoinedTutorialLight } from '@blms/types';
+import { Link } from '@tanstack/react-router';
 
 import { assetUrl } from '#src/utils/index.ts';
 

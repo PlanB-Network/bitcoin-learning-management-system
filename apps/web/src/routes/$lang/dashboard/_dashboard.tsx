@@ -1,11 +1,9 @@
-import { Outlet, createFileRoute, useLocation } from '@tanstack/react-router';
-
 import { cn } from '@blms/ui';
+import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 
 import { MainLayout } from '#src/components/main-layout.js';
-import { useSmaller } from '#src/hooks/use-smaller.js';
-
 import { NotFoundDashboard } from '#src/components/not-found-dashboard.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.js';
 import { MenuDashboard } from './_dashboard/-components/menu-dashboard.tsx';
 
 export const Route = createFileRoute('/$lang/dashboard/_dashboard')({
@@ -20,8 +18,8 @@ function Dashboard() {
   const pathname = location.href;
   const paddingClasses = {
     calendar: 'px-0 py-6 md:p-6',
-    notifications: 'md:px-4 py-6',
     default: 'px-4 py-6',
+    notifications: 'md:px-4 py-6',
   };
 
   let padding = paddingClasses.default;

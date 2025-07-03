@@ -2,17 +2,27 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DashGauge } from '#src/composites/Chart/radial-gauge.js';
 
 const meta: Meta<typeof DashGauge> = {
-  title: 'Composites/Charts/dash-gauge',
-  component: DashGauge,
-  tags: ['autodocs'],
   argTypes: {
-    label: {
+    className: {
       control: 'text',
-      description: 'The label displayed below the gauge',
+      description: 'Additional CSS classes for custom styling',
     },
     completed: {
       control: 'number',
       description: 'The number of completed items',
+    },
+    label: {
+      control: 'text',
+      description: 'The label displayed below the gauge',
+    },
+    showBackground: {
+      control: 'boolean',
+      description: 'Whether to show the background',
+    },
+    size: {
+      control: 'select',
+      description: 'Size of the gauge',
+      options: ['m', 'l'],
     },
     total: {
       control: 'number',
@@ -20,26 +30,16 @@ const meta: Meta<typeof DashGauge> = {
     },
     variant: {
       control: 'select',
-      options: ['green', 'purple', 'yellow', 'orange'],
       description: 'Color variant for the gauge',
-    },
-    size: {
-      control: 'select',
-      options: ['m', 'l'],
-      description: 'Size of the gauge',
-    },
-    showBackground: {
-      control: 'boolean',
-      description: 'Whether to show the background',
-    },
-    className: {
-      control: 'text',
-      description: 'Additional CSS classes for custom styling',
+      options: ['green', 'purple', 'yellow', 'orange'],
     },
   },
+  component: DashGauge,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/Charts/dash-gauge',
 };
 
 export default meta;
@@ -47,37 +47,37 @@ export default meta;
 type Story = StoryObj<typeof DashGauge>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
-    label: 'Progress',
     completed: 15,
+    label: 'Progress',
+    showBackground: true,
+    size: 'm',
     total: 20,
     variant: 'green',
-    size: 'm',
-    showBackground: true,
   },
+  name: 'Default',
 };
 
 export const LargeSize: Story = {
-  name: 'Large size',
   args: {
-    label: 'Course progress',
     completed: 46,
+    label: 'Course progress',
+    showBackground: true,
+    size: 'l',
     total: 100,
     variant: 'purple',
-    size: 'l',
-    showBackground: true,
   },
+  name: 'Large size',
 };
 
 export const NoBackground: Story = {
-  name: 'No background',
   args: {
-    label: 'Tasks complete',
     completed: 8,
+    label: 'Tasks complete',
+    showBackground: false,
+    size: 'm',
     total: 12,
     variant: 'orange',
-    size: 'm',
-    showBackground: false,
   },
+  name: 'No background',
 };

@@ -1,15 +1,14 @@
+import { ToastContainer } from '@blms/ui';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from '@tanstack/react-router';
 import {
-  type PropsWithChildren,
   createContext,
+  type PropsWithChildren,
   useEffect,
   useState,
 } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-
-import { ToastContainer } from '@blms/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { router } from '#src/routes/-router.js';
@@ -41,12 +40,12 @@ function makeQueryClient() {
   });
 }
 
-let browserQueryClient: QueryClient | undefined = undefined;
+let browserQueryClient: QueryClient | undefined;
 function getQueryClient() {
   if (typeof window === 'undefined') {
     // Server: always make a new query client
     return makeQueryClient();
-    // biome-ignore lint/style/noUselessElse: <explanation>
+    // biome-ignore lint/style/noUselessElse: explanation
   } else {
     // Browser: make a new query client if we don't already have one
     // This is very important, so we don't re-make a new client if React
@@ -102,8 +101,8 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
     if (path === '/') {
       router.navigate({
-        to: `/${newLanguageUpdated}${location.hash}${location.search}`,
         replace: true,
+        to: `/${newLanguageUpdated}${location.hash}${location.search}`,
       });
     }
 
@@ -111,8 +110,8 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
     if (pathLanguage && !LANGUAGES.includes(pathLanguage)) {
       router.navigate({
-        to: `/${newLanguageUpdated}${location.pathname}${location.hash}${location.search}`,
         replace: true,
+        to: `/${newLanguageUpdated}${location.pathname}${location.hash}${location.search}`,
       });
     }
 

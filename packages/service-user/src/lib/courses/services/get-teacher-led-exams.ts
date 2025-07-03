@@ -43,9 +43,9 @@ export const createGetTeacherLedCourseGrades = ({ postgres }: Dependencies) => {
     );
 
     return {
-      examsGrades,
       assignmentGrades,
       averageTotalScore: averageAndMedianTotalScore[0].average,
+      examsGrades,
       graduatedStudentsAmount: graduatedStudentsAmount[0].count,
     };
   };

@@ -1,8 +1,3 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BackLink,
   Button,
@@ -16,40 +11,42 @@ import {
   Loader,
   TextTag,
 } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.tsx';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-
-import { useQuery } from '@tanstack/react-query';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/channels/$channelName-$channelId',
 )({
+  component: Channel,
   params: {
     parse: (params) => {
       const channelNameId = params['channelName-$channelId'];
       const { id, name } = getNameAndIdFromUrl(channelNameId);
 
       return {
-        lang: z.string().parse(params.lang),
-        'channelName-$channelId': `${name}-${id}`,
-        channelName: z.string().parse(name),
         channelId: z.string().parse(id),
+        channelName: z.string().parse(name),
+        'channelName-$channelId': `${name}-${id}`,
+        lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, channelName, channelId }) => ({
-      lang: lang,
       'channelName-$channelId': `${channelName}-${channelId}`,
+      lang: lang,
     }),
   },
-  component: Channel,
 });
 
 function Channel() {
@@ -74,8 +71,8 @@ function Channel() {
   useEffect(() => {
     if (channel && params.channelName !== formatNameForURL(channel.name)) {
       navigate({
-        to: `/resources/channels/${formatNameForURL(channel.name)}-${channel.id}`,
         replace: true,
+        to: `/resources/channels/${formatNameForURL(channel.name)}-${channel.id}`,
       });
     }
   }, [channel, isFetched, navigateTo404, navigate, params.channelName]);
@@ -238,9 +235,9 @@ function Channel() {
                             style={{
                               background: `linear-gradient(360deg, rgba(40, 33, 33, 0.90) 10%, rgba(0, 0, 0, 0.00) 60%),
                                   linear-gradient(0deg, rgba(57, 53, 49, 0.20) 0%, rgba(57, 53, 49, 0.20) 100%)`,
-                              backgroundSize: '153.647% 100%',
                               backgroundPosition: '-5.216px 0px',
                               backgroundRepeat: 'no-repeat',
+                              backgroundSize: '153.647% 100%',
                             }}
                           />
                         </div>

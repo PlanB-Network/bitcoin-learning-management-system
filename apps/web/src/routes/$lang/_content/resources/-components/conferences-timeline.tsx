@@ -1,8 +1,7 @@
+import { cn } from '@blms/ui';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
-
-import { cn } from '@blms/ui';
 
 interface ConferenceTimeLineProps {
   activeYear: string;
@@ -16,15 +15,15 @@ export const ConferencesTimeLine = ({
   const currentYear = new Date().getFullYear();
   const years = Array.from(
     { length: currentYear - 2008 },
-    (v, i) => `${2009 + i}`,
+    (_v, i) => `${2009 + i}`,
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    startIndex: years.indexOf('2024') - 1,
-    containScroll: false,
     breakpoints: {
       '(min-width: 768px)': { containScroll: 'trimSnaps' },
     },
+    containScroll: false,
+    startIndex: years.indexOf('2024') - 1,
   });
 
   const scrollPrev = useCallback(() => {

@@ -1,12 +1,11 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   contentQuizAnswers,
   contentQuizAnswersLocalized,
   contentQuizQuestions,
   contentQuizQuestionsLocalized,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 export const quizQuestionSchema = createSelectSchema(contentQuizQuestions);
 export const quizAnswerSchema = createSelectSchema(contentQuizAnswers);
@@ -20,18 +19,18 @@ export const quizAnswerLocalizedSchema = createSelectSchema(
 );
 
 export const quizQuestionsCountSchema = z.object({
-  count: z.number(),
   chapterId: z.string(),
+  count: z.number(),
 });
 
 export const joinedQuizQuestionSchema = quizQuestionSchema
   .merge(
     quizQuestionLocalizedSchema.pick({
+      answer: true,
+      explanation: true,
       language: true,
       question: true,
-      answer: true,
       wrongAnswers: true,
-      explanation: true,
     }),
   )
   .merge(

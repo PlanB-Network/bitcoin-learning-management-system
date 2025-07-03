@@ -7,20 +7,21 @@ const gradients = ['', 'top-down', 'real-circular', 'real-linear'] as const;
 const countryCodes = ['fr', 'it', 'ja'] as const;
 
 const meta: Meta<typeof Flag> = {
-  title: 'Bases/flag',
-  component: Flag,
-  parameters: {
-    layout: 'centered',
+  args: {
+    code: 'fr',
+    gradient: '',
+    hasBorder: false,
+    hasBorderRadius: true,
+    hasDropShadow: false,
+    size: 'l',
   },
-  tags: ['autodocs'],
   argTypes: {
+    className: {
+      control: 'text',
+    },
     code: {
       control: 'text',
       description: 'Flag code (2 letters)',
-    },
-    size: {
-      control: { type: 'select' },
-      options: sizes,
     },
     gradient: {
       control: { type: 'select' },
@@ -29,24 +30,23 @@ const meta: Meta<typeof Flag> = {
     hasBorder: {
       control: 'boolean',
     },
-    hasDropShadow: {
-      control: 'boolean',
-    },
     hasBorderRadius: {
       control: 'boolean',
     },
-    className: {
-      control: 'text',
+    hasDropShadow: {
+      control: 'boolean',
+    },
+    size: {
+      control: { type: 'select' },
+      options: sizes,
     },
   },
-  args: {
-    code: 'fr',
-    size: 'l',
-    gradient: '',
-    hasBorder: false,
-    hasDropShadow: false,
-    hasBorderRadius: true,
+  component: Flag,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/flag',
 };
 
 export default meta;

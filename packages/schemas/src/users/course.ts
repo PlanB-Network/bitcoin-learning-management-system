@@ -1,6 +1,3 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   usersCoursePayment,
   usersCourseProgress,
@@ -10,6 +7,8 @@ import {
   usersExamQuestions,
   usersQuizAttempts,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 import { courseChapterSchema } from '../content/index.js';
 
@@ -25,52 +24,52 @@ export const courseExamAttemptSchema = createSelectSchema(usersExamAttempts);
 export const courseExamQuestionSchema = createSelectSchema(usersExamQuestions);
 
 export const coursePaymentLightSchema = coursePaymentSchema.pick({
-  courseId: true,
-  paymentStatus: true,
-  format: true,
   amount: true,
-  paymentId: true,
+  courseId: true,
+  format: true,
   invoiceUrl: true,
+  paymentId: true,
+  paymentStatus: true,
 });
 
 export const courseExamInfoSchema = z.object({
-  nbQuestions: z.number(),
-  isSingleTrialExam: z.boolean(),
-  startDate: z.date().nullable(),
   endDate: z.date().nullable(),
+  isSingleTrialExam: z.boolean(),
+  nbQuestions: z.number(),
+  startDate: z.date().nullable(),
 });
 
 export const courseProgressExtendedSchema = courseProgressSchema.merge(
   z.object({
-    courseIndex: z.string(),
-    totalChapters: z.number(),
     chapters: z.array(
       courseUserChapterSchema.pick({
         chapterId: true,
         completedAt: true,
       }),
     ),
-    nextChapter: courseChapterSchema
-      .pick({
-        chapterIndex: true,
-        chapterId: true,
-        courseId: true,
-      })
-      .optional(),
+    courseIndex: z.string(),
     lastCompletedChapter: courseUserChapterSchema
       .pick({
         chapterId: true,
         completedAt: true,
       })
       .optional(),
+    nextChapter: courseChapterSchema
+      .pick({
+        chapterId: true,
+        chapterIndex: true,
+        courseId: true,
+      })
+      .optional(),
+    totalChapters: z.number(),
   }),
 );
 
 export const getUserChapterResponseSchema = courseUserChapterSchema.pick({
-  courseId: true,
+  booked: true,
   chapterId: true,
   completedAt: true,
-  booked: true,
+  courseId: true,
 });
 
 export const partialExamQuestionSchema = courseExamQuestionSchema
@@ -79,80 +78,80 @@ export const partialExamQuestionSchema = courseExamQuestionSchema
   })
   .merge(
     z.object({
-      text: z.string(),
       answers: z
         .object({
           order: z.number(),
           text: z.string(),
         })
         .array(),
+      text: z.string(),
     }),
   );
 
 export const courseExamResultsSchema = courseExamAttemptSchema
   .pick({
-    score: true,
     finalized: true,
-    succeeded: true,
-    startedAt: true,
     finishedAt: true,
     id: true,
+    score: true,
+    startedAt: true,
+    succeeded: true,
   })
   .merge(
     z.object({
-      questions: z.array(
-        z.object({
-          text: z.string(),
-          explanation: z.string(),
-          chapterName: z.string(),
-          chapterPart: z.number(),
-          chapterIndex: z.number(),
-          chapterLink: z.string(),
-          userAnswer: z.number().nullable(),
-          answers: z.array(
-            z.object({
-              text: z.string(),
-              order: z.number(),
-              correctAnswer: z.boolean(),
-            }),
-          ),
-        }),
-      ),
+      imgKey: z.string().optional(),
       isTimestamped: z.boolean().optional(),
       pdfKey: z.string().optional(),
-      imgKey: z.string().optional(),
+      questions: z.array(
+        z.object({
+          answers: z.array(
+            z.object({
+              correctAnswer: z.boolean(),
+              order: z.number(),
+              text: z.string(),
+            }),
+          ),
+          chapterIndex: z.number(),
+          chapterLink: z.string(),
+          chapterName: z.string(),
+          chapterPart: z.number(),
+          explanation: z.string(),
+          text: z.string(),
+          userAnswer: z.number().nullable(),
+        }),
+      ),
     }),
   );
 
 export const courseExamResultsExtendedSchema = courseExamResultsSchema.merge(
   z.object({
+    totalAnsweredAnswers: z.number(),
     totalGoodUserAnswer: z.number(),
     totalWrongUserAnswer: z.number(),
-    totalAnsweredAnswers: z.number(),
     userExamDuration: z.number(),
   }),
 );
 
 export const courseSucceededExamSchema = courseExamAttemptSchema
   .pick({
-    score: true,
-    finalized: true,
-    succeeded: true,
-    startedAt: true,
-    finishedAt: true,
     courseId: true,
+    finalized: true,
+    finishedAt: true,
+    score: true,
+    startedAt: true,
+    succeeded: true,
   })
   .merge(z.object({ courseName: z.string() }));
 
 export const minimalCourseExamAttemptWithUsernameSchema =
   courseExamAttemptSchema
     .pick({
-      uid: true,
-      score: true,
       chapterId: true,
       examType: true,
-      startedAt: true,
       finishedAt: true,
+      score: true,
+      startedAt: true,
+      uid: true,
     })
     .merge(
       z.object({
@@ -161,28 +160,28 @@ export const minimalCourseExamAttemptWithUsernameSchema =
     );
 
 export const minimalAssignmentGradeSchema = z.object({
-  username: z.string(),
-  uid: z.string(),
   assignmentGrade: z.number().nullable(),
+  uid: z.string(),
+  username: z.string(),
 });
 
 export const courseWithSingleTrialExamsGradesAndSummarySchema = z.object({
-  examsGrades: z.array(minimalCourseExamAttemptWithUsernameSchema),
   assignmentGrades: z.array(
     z.object({
-      username: z.string(),
-      uid: z.string(),
       assignmentGrade: z.number().nullable(),
+      uid: z.string(),
+      username: z.string(),
     }),
   ),
   averageTotalScore: z.number(),
+  examsGrades: z.array(minimalCourseExamAttemptWithUsernameSchema),
   graduatedStudentsAmount: z.number(),
 });
 
 export const singleTrialExamQuestionStatisticsSchema = z.object({
+  questionDifficulty: z.string(),
   questionId: z.string(),
   questionText: z.string(),
-  questionDifficulty: z.string(),
-  totalAnswers: z.number(),
   successPercentage: z.number(),
+  totalAnswers: z.number(),
 });

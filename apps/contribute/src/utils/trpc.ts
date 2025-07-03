@@ -23,14 +23,14 @@ export const queryClient = new QueryClient();
 export const tRPCClientOptions = {
   links: [
     httpBatchLink({
-      url: '/api/trpc',
-      transformer: superjson,
       fetch: (url, options) => {
         return fetch(url, {
           ...options,
           credentials: 'include',
         });
       },
+      transformer: superjson,
+      url: '/api/trpc',
     }),
   ],
 };

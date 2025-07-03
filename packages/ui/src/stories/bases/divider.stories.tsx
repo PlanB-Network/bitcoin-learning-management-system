@@ -2,18 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Divider, DividerSimple, DividerVertical } from '#src/bases/divider.js';
 
 const meta: Meta<typeof Divider> = {
-  title: 'Bases/divider',
-  component: Divider,
-  tags: ['autodocs'],
   argTypes: {
     children: {
       control: 'text',
       description: 'Optional text to display in the middle of the divider',
-    },
-    width: {
-      control: 'text',
-      description:
-        'CSS width tailwind class for the divider (e.g. "w-4/5", "w-full")',
     },
     className: {
       control: 'text',
@@ -22,10 +14,18 @@ const meta: Meta<typeof Divider> = {
       control: 'select',
       options: ['dark', 'light'],
     },
+    width: {
+      control: 'text',
+      description:
+        'CSS width tailwind class for the divider (e.g. "w-4/5", "w-full")',
+    },
   },
+  component: Divider,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/divider',
 };
 
 export default meta;
@@ -33,11 +33,11 @@ export default meta;
 type Story = StoryObj<typeof Divider>;
 
 export const DefaultHorizontalDivider: Story = {
-  name: 'Horizontal Divider (Default)',
   args: {
     mode: 'dark',
     width: 'w-full',
   },
+  name: 'Horizontal Divider (Default)',
   render: (args) => (
     <div className="w-[400px]">
       <Divider {...args} />
@@ -46,11 +46,11 @@ export const DefaultHorizontalDivider: Story = {
 };
 
 export const HorizontalDividerLightMode: Story = {
-  name: 'Horizontal Divider (Light Mode)',
   args: {
     mode: 'light',
     width: 'w-full',
   },
+  name: 'Horizontal Divider (Light Mode)',
   render: (args) => (
     <div className="w-[400px]">
       <Divider {...args} />
@@ -59,12 +59,12 @@ export const HorizontalDividerLightMode: Story = {
 };
 
 export const HorizontalDividerWithText: Story = {
-  name: 'Horizontal Divider with Text',
   args: {
     children: 'OR',
     mode: 'dark',
     width: 'w-full',
   },
+  name: 'Horizontal Divider with Text',
   render: (args) => (
     <div className="w-[400px]">
       <Divider {...args} />
@@ -73,6 +73,19 @@ export const HorizontalDividerWithText: Story = {
 };
 
 export const SimpleHorizontalDivider: StoryObj<typeof DividerSimple> = {
+  args: {
+    className: 'my-4',
+    mode: 'dark',
+  },
+  argTypes: {
+    className: {
+      control: 'text',
+    },
+    mode: {
+      control: 'select',
+      options: ['dark', 'light'],
+    },
+  },
   name: 'Simple Horizontal Line',
   render: (args) => (
     <div className="w-[400px] p-4">
@@ -81,22 +94,21 @@ export const SimpleHorizontalDivider: StoryObj<typeof DividerSimple> = {
       <p className="mt-2">Content below</p>
     </div>
   ),
+};
+
+export const VerticalDivider: StoryObj<typeof DividerVertical> = {
   args: {
     mode: 'dark',
-    className: 'my-4',
   },
   argTypes: {
+    className: {
+      control: 'text',
+    },
     mode: {
       control: 'select',
       options: ['dark', 'light'],
     },
-    className: {
-      control: 'text',
-    },
   },
-};
-
-export const VerticalDivider: StoryObj<typeof DividerVertical> = {
   name: 'Vertical Divider',
   render: (args) => (
     <div className="flex h-40 items-center justify-center">
@@ -105,16 +117,4 @@ export const VerticalDivider: StoryObj<typeof DividerVertical> = {
       <span>Right Content</span>
     </div>
   ),
-  args: {
-    mode: 'dark',
-  },
-  argTypes: {
-    mode: {
-      control: 'select',
-      options: ['dark', 'light'],
-    },
-    className: {
-      control: 'text',
-    },
-  },
 };

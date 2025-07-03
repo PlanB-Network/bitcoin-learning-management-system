@@ -3,31 +3,18 @@ import { Progress } from '#src/bases/progress.js';
 import OrangePill from '../assets/orange_pill_color.svg';
 
 const meta: Meta<typeof Progress> = {
-  component: Progress,
-  title: 'Bases/progress',
-  parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#F2F2F2' },
-        { name: 'dark', value: '#333333' },
-      ],
-    },
-  },
   argTypes: {
-    total: {
-      control: { type: 'number' },
+    className: {
+      control: 'text',
       table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '20' },
+        type: { summary: 'string' },
       },
     },
     completed: {
       control: { type: 'number' },
       table: {
-        type: { summary: 'number' },
         defaultValue: { summary: '15' },
+        type: { summary: 'number' },
       },
     },
     pillImage: {
@@ -36,20 +23,39 @@ const meta: Meta<typeof Progress> = {
         type: { summary: 'string' },
       },
     },
-    className: {
-      control: 'text',
+    total: {
+      control: { type: 'number' },
       table: {
-        type: { summary: 'string' },
+        defaultValue: { summary: '20' },
+        type: { summary: 'number' },
       },
     },
   },
+  component: Progress,
+  parameters: {
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#F2F2F2' },
+        { name: 'dark', value: '#333333' },
+      ],
+    },
+    layout: 'centered',
+  },
   tags: ['autodocs'],
+  title: 'Bases/progress',
 };
 
 export default meta;
 type Story = StoryObj<typeof Progress>;
 
 export const Default: Story = {
+  args: {
+    className: 'w-40',
+    completed: 15,
+    pillImage: OrangePill,
+    total: 20,
+  },
   render: (args) => (
     <div className="relative w-full my-4">
       <Progress
@@ -60,10 +66,4 @@ export const Default: Story = {
       />
     </div>
   ),
-  args: {
-    total: 20,
-    completed: 15,
-    pillImage: OrangePill,
-    className: 'w-40',
-  },
 };

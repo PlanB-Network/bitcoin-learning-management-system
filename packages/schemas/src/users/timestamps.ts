@@ -1,15 +1,14 @@
-import { createSelectSchema } from 'drizzle-zod';
-
 import { userExamTimestamps } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
 
 export const userExamTimestampSchema = createSelectSchema(userExamTimestamps);
 
 export const minimalUserExamTimestampSchema = userExamTimestampSchema.pick({
-  id: true,
-  uid: true,
-  courseId: true,
   confirmed: true,
+  courseId: true,
   examAttemptId: true,
+  id: true,
   imgKey: true,
   pdfKey: true,
+  uid: true,
 });

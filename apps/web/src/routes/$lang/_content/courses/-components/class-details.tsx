@@ -1,26 +1,21 @@
+import type { CourseChapterResponse, CourseResponse } from '@blms/types';
+import { BasicModal, Button, DialogClose } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useCallback, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiDownload, FiLoader } from 'react-icons/fi';
-
-import type { CourseChapterResponse, CourseResponse } from '@blms/types';
-import { BasicModal, Button, DialogClose } from '@blms/ui';
-
-import { AppContext } from '#src/providers/context.js';
-import { formatDate, formatHourRange } from '#src/utils/date.js';
-import { trpc } from '#src/utils/trpc.js';
-
-import InformationIcon from '#src/assets/icons/warning_orange.svg';
-
 import {
   MdAccessTime,
   MdOutlineCalendarMonth,
   MdOutlineLocationOn,
 } from 'react-icons/md';
+import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { CourseBookModal } from './book-modal/course-book-modal.tsx';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { AppContext } from '#src/providers/context.js';
+import { formatDate, formatHourRange } from '#src/utils/date.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
+import { trpc } from '#src/utils/trpc.js';
+import { CourseBookModal } from './book-modal/course-book-modal.tsx';
 
 interface ClassDetailsProps {
   course: CourseResponse;
@@ -61,9 +56,9 @@ export const ClassDetails = ({
 
   const cancelBooking = useCallback(async () => {
     await saveUserChapterRequest.mutateAsync({
-      courseId: course.id,
-      chapterId: chapter.chapterId,
       booked: false,
+      chapterId: chapter.chapterId,
+      courseId: course.id,
     });
     refetchUserChapter();
   }, [chapter, course.id, refetchUserChapter, saveUserChapterRequest]);
@@ -178,9 +173,9 @@ export const ClassDetails = ({
                             organizer: course.projectName ?? 'Plan ₿ Network',
                             ...chapter,
                             ...course,
+                            availableSeats: chapter.availableSeats,
                             formattedStartDate,
                             formattedTime,
-                            availableSeats: chapter.availableSeats,
                             userName: user.username,
                           });
                           setDownloadedPdf(pdf);

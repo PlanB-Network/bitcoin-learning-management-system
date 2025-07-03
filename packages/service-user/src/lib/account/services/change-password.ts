@@ -1,8 +1,8 @@
 // TODO: use normal error
-import { TRPCError } from '@trpc/server';
-import { hash, verify as verifyHash } from 'argon2';
 
 import { firstRow } from '@blms/database';
+import { TRPCError } from '@trpc/server';
+import { hash, verify as verifyHash } from 'argon2';
 
 import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery } from '../queries/change-password.js';

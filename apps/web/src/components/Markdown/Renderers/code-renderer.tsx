@@ -1,19 +1,19 @@
 import { CopyButton, cn } from '@blms/ui';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const codeStyles = cva('text-base tracking-wide', {
+  defaultVariants: {
+    intent: 'default',
+  },
   variants: {
     intent: {
       default: 'bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm',
       glossary:
         'bg-white/20 px-1.5 rounded-lg font-mono inline-block text-sm text-white',
     },
-  },
-  defaultVariants: {
-    intent: 'default',
   },
 });
 

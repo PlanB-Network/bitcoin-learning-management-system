@@ -1,8 +1,4 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
+import type { JoinedEvent } from '@blms/types';
 import {
   BackLink,
   Card,
@@ -15,7 +11,11 @@ import {
   Loader,
   TextTag,
 } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { useContext, useEffect } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import BookOpen from '#src/assets/resources/library.svg';
 import VideoPreview from '#src/assets/resources/preview-video.webp?no-inline';
@@ -23,13 +23,10 @@ import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.t
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
-
-import type { JoinedEvent } from '@blms/types';
-import { useQuery } from '@tanstack/react-query';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { LectureCard } from '../-components/cards/lecture-card.js';
 import { LectureBuy } from '../-components/lecture-buy.js';
@@ -39,6 +36,7 @@ import { SuggestedHeader } from '../-components/suggested-header.js';
 export const Route = createFileRoute(
   '/$lang/_content/resources/lectures/$lectureName-$lectureId',
 )({
+  component: Lecture,
   params: {
     parse: (params) => {
       const lectureNameId = params['lectureName-$lectureId'];
@@ -46,9 +44,9 @@ export const Route = createFileRoute(
 
       return {
         lang: z.string().parse(params.lang),
-        'lectureName-$lectureId': `${name}-${id}`,
-        lectureName: z.string().parse(name),
         lectureId: z.string().parse(id),
+        lectureName: z.string().parse(name),
+        'lectureName-$lectureId': `${name}-${id}`,
       };
     },
     stringify: ({ lang, lectureName, lectureId }) => ({
@@ -56,7 +54,6 @@ export const Route = createFileRoute(
       'lectureName-$lectureId': `${lectureName}-${lectureId}`,
     }),
   },
-  component: Lecture,
 });
 
 function Lecture() {
@@ -71,8 +68,8 @@ function Lecture() {
     isFetched,
   } = useQuery(
     trpc.content.getLecture.queryOptions({
-      strId: params.lectureId,
       language: i18n.language ?? 'en',
+      strId: params.lectureId,
     }),
   );
 
@@ -116,8 +113,8 @@ function Lecture() {
   useEffect(() => {
     if (lecture && params.lectureName !== formatNameForURL(lecture.name!)) {
       navigate({
-        to: `/resources/lectures/${formatNameForURL(lecture.name!)}-${lecture.id}`,
         replace: true,
+        to: `/resources/lectures/${formatNameForURL(lecture.name!)}-${lecture.id}`,
       });
     }
   }, [lecture, isFetched, navigate, params.bookName]);

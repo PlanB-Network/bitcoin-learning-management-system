@@ -1,6 +1,3 @@
-import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
-
 import {
   courseAssignmentSchema,
   courseChapterResponseSchema,
@@ -38,6 +35,8 @@ import type {
   MinimalCourseAssignmentWithStudents,
   QuizQuestionsCount,
 } from '@blms/types';
+import { TRPCError } from '@trpc/server';
+import { z } from 'zod';
 
 import {
   professorProcedure,
@@ -128,8 +127,8 @@ const getCourseChaptersProcedure = publicProcedure
 const getCourseChapterProcedure = publicProcedure
   .input(
     z.object({
-      language: z.string(),
       chapterId: z.string(),
+      language: z.string(),
     }),
   )
   .output<Parser<CourseChapterResponse>>(courseChapterResponseSchema)
@@ -143,8 +142,8 @@ const getCourseChapterProcedure = publicProcedure
 
     if (!status.allowed) {
       throw new TRPCError({
-        code: uid ? 'FORBIDDEN' : 'UNAUTHORIZED',
         cause: 'Payment required to access this chapter',
+        code: uid ? 'FORBIDDEN' : 'UNAUTHORIZED',
       });
     }
 
@@ -213,8 +212,8 @@ const getCourseAssignmentsWithStudentsGradesProcedure = professorProcedure
 const calculateCourseChapterSeatsProcedure = publicProcedure
   .input(
     z.object({
-      oldPassword: z.string(),
       newPassword: z.string(),
+      oldPassword: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
@@ -223,18 +222,18 @@ const calculateCourseChapterSeatsProcedure = publicProcedure
   });
 
 export const coursesRouter = createTRPCRouter({
-  getCourses: getCoursesProcedure,
-  getProfessorCourses: getProfessorCoursesProcedure,
+  calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
   getCourse: getCourseProcedure,
   getCourseAssignments: getCourseAssignmentsProcedure,
   getCourseAssignmentsWithStudentsGrades:
     getCourseAssignmentsWithStudentsGradesProcedure,
-  getCourseChapters: getCourseChaptersProcedure,
   getCourseChapter: getCourseChapterProcedure,
   getCourseChapterQuizQuestions: getCourseChapterQuizQuestionsProcedure,
   getCourseChapterQuizQuestionsCount:
     getCourseChapterQuizQuestionsCountProcedure,
-  calculateCourseChapterSeats: calculateCourseChapterSeatsProcedure,
+  getCourseChapters: getCourseChaptersProcedure,
+  getCourses: getCoursesProcedure,
+  getProfessorCourses: getProfessorCoursesProcedure,
   getPublicCourseReviews: getPublicCourseReviewsProcedure,
   getTeacherCourseReviews: getTeacherCourseReviewsProcedure,
 });

@@ -22,6 +22,19 @@ const GlossaryMarkdownBody = ({
   return (
     <ReactMarkdown
       components={{
+        a: ({ children, href }) => (
+          <LinkRenderer href={href} intent="glossary">
+            {children}
+          </LinkRenderer>
+        ),
+        blockquote: ({ children }) => (
+          <BlockquoteRenderer mode={'dark'}>{children}</BlockquoteRenderer>
+        ),
+        code: ({ className, children }) => (
+          <CodeRenderer className={className} intent="glossary">
+            {children}
+          </CodeRenderer>
+        ),
         h2: ({ children }) => (
           <h2 className="mt-6 text-xl font-semibold text-white sm:mt-10 sm:text-2xl">
             <div className="flex w-auto items-center">{children}</div>
@@ -30,44 +43,31 @@ const GlossaryMarkdownBody = ({
         h3: ({ children }) => (
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
-        p: ({ children }) => (
-          <ParagraphRenderer intent="glossary" header="none">
-            {children}
-          </ParagraphRenderer>
-        ),
         img: ({ src, alt }) => (
           <ImageVideoRenderer header="none" src={src} alt={alt} />
-        ),
-        a: ({ children, href }) => (
-          <LinkRenderer href={href} intent="glossary">
-            {children}
-          </LinkRenderer>
-        ),
-        ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
-            {children}
-          </ol>
-        ),
-        ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
-            {children}
-          </ul>
         ),
         li: ({ children }) => (
           <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-white font-[450]">
             {children}
           </li>
         ),
-        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
-        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        blockquote: ({ children }) => (
-          <BlockquoteRenderer mode={'dark'}>{children}</BlockquoteRenderer>
-        ),
-        code: ({ className, children }) => (
-          <CodeRenderer className={className} intent="glossary">
+        ol: ({ children }) => (
+          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
             {children}
-          </CodeRenderer>
+          </ol>
+        ),
+        p: ({ children }) => (
+          <ParagraphRenderer intent="glossary" header="none">
+            {children}
+          </ParagraphRenderer>
+        ),
+        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        ul: ({ children }) => (
+          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
+            {children}
+          </ul>
         ),
       }}
       remarkPlugins={[remarkGfm, rehypeUnwrapImages, remarkMath]}

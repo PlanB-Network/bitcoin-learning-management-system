@@ -1,11 +1,10 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   contentProjectLocation,
   contentProjects,
   contentProjectsLocalized,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 import { resourceSchema } from './resource.js';
 
@@ -22,28 +21,28 @@ export const projectLocalizedSchema = createSelectSchema(
 export const joinedProjectSchema = resourceSchema
   .pick({
     id: true,
-    path: true,
     lastCommit: true,
+    path: true,
   })
   .merge(
     projectSchema.pick({
-      name: true,
-      category: true,
-      languages: true,
-      websiteUrl: true,
-      twitterUrl: true,
-      githubUrl: true,
-      nostr: true,
       addressLine1: true,
       addressLine2: true,
       addressLine3: true,
+      category: true,
+      githubUrl: true,
+      languages: true,
+      name: true,
+      nostr: true,
       originalLanguage: true,
+      twitterUrl: true,
+      websiteUrl: true,
     }),
   )
   .merge(
     projectLocalizedSchema.pick({
-      language: true,
       description: true,
+      language: true,
     }),
   )
   .merge(

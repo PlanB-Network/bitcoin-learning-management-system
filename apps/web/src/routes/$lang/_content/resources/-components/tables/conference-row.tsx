@@ -1,8 +1,7 @@
+import { Button, cn, Flag, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-
-import { Button, Flag, TextTag, cn } from '@blms/ui';
 
 interface ConferenceRowProps {
   name: string;

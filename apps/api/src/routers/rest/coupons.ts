@@ -1,19 +1,16 @@
-import type { NextFunction, Request, Response, Router } from 'express';
-
 import { UserRole } from '@blms/constants';
-import { canAccess } from '@blms/shared/auth';
-import JSZip from 'jszip';
-import type { Dependencies } from '#src/dependencies.js';
-import { Unauthorized } from '#src/errors.js';
-
 import {
   createGetCouponCode,
   createListEventsAndCourses,
   generateCouponSvg,
 } from '@blms/service-content';
-
+import { canAccess } from '@blms/shared/auth';
+import type { NextFunction, Request, Response, Router } from 'express';
+import JSZip from 'jszip';
 import sharp from 'sharp';
 import { z } from 'zod';
+import type { Dependencies } from '#src/dependencies.js';
+import { Unauthorized } from '#src/errors.js';
 
 const expectedImageQuery = z.object({ code: z.string() });
 const expectedImagesQuery = z.object({ codes: z.string() });
@@ -24,8 +21,8 @@ interface ImageQuery {
 
 const zipStream = (zip: JSZip) => {
   return zip.generateNodeStream({
-    type: 'nodebuffer',
     streamFiles: true,
+    type: 'nodebuffer',
   });
 };
 
@@ -35,6 +32,7 @@ export const createRestCouponsRoutes = (
 ) => {
   const couponPermissionMiddleware = (
     req: Request,
+    // biome-ignore lint/correctness/noUnusedFunctionParameters: explanation
     res: Response,
     next: NextFunction,
   ) => {
@@ -45,7 +43,7 @@ export const createRestCouponsRoutes = (
     const role = req.session.role;
     const permissions = req.session.permissions;
 
-    if (!canAccess(UserRole.Admin)({ role, permissions })) {
+    if (!canAccess(UserRole.Admin)({ permissions, role })) {
       throw new Unauthorized('Insufficient permissions');
     }
 
@@ -67,8 +65,8 @@ export const createRestCouponsRoutes = (
     );
 
     return generateCouponSvg({
-      reductionPercentage: couponCode.reductionPercentage ?? 0,
       code: couponCode.code,
+      reductionPercentage: couponCode.reductionPercentage ?? 0,
       title: eventOrCourse?.name || 'unknown',
     });
   };
@@ -163,8 +161,8 @@ export const createRestCouponsRoutes = (
 
     for (const couponCode of couponCodes) {
       const svg = generateCouponSvg({
-        reductionPercentage: couponCode!.reductionPercentage,
         code: couponCode!.code,
+        reductionPercentage: couponCode!.reductionPercentage,
         title: couponCode!.title,
       });
 

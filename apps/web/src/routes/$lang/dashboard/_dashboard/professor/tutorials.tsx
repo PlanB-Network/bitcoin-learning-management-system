@@ -1,9 +1,7 @@
+import { Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
-
 import { AppContext } from '#src/providers/context.js';
-
-import { Loader } from '@blms/ui';
 import { DashboardTutorialsPanel } from '../-components/tutorials-panel.tsx';
 
 export const Route = createFileRoute(

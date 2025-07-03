@@ -1,14 +1,11 @@
-import { TRPCError } from '@trpc/server';
+import { TokenType } from '@blms/constants';
 
 import { EmptyResultError, firstRow, rejectOnEmpty, sql } from '@blms/database';
 import type { UserAccount } from '@blms/types';
-
+import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '#src/dependencies.js';
-
 import { changeEmailWithTokenQuery } from '../queries/change-email.js';
 import { createTokenQuery } from '../queries/token.js';
-
-import { TokenType } from '@blms/constants';
 import { createSendEmail } from './email.js';
 
 /**
@@ -24,7 +21,7 @@ export const createChangeEmailConfirmation = ({ postgres }: Dependencies) => {
       .then(rejectOnEmpty)
       .catch((error) => {
         if (error instanceof EmptyResultError) {
-          return { error: "Token doesn't exist or expired", email: null };
+          return { email: null, error: "Token doesn't exist or expired" };
         }
 
         console.error('Error changing email:', error);
@@ -77,12 +74,12 @@ export const createEmailValidationToken = (deps: Dependencies) => {
       .getOneOrReject(createTokenQuery(uid, TokenType.ValidateEmail, email))
       .then((token) =>
         sendEmail({
-          email,
-          subject: 'Validate your email',
-          template,
           data: {
             token_url: `${domain}/${isCreationEmail ? 'validate-email' : 'validate-email-change'}/${token.id}`,
           },
+          email,
+          subject: 'Validate your email',
+          template,
         }),
       )
       .then(() => ({ success: true }))

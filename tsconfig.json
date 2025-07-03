@@ -2,49 +2,50 @@
   // TODO move this tsconfig to a specific package https://turbo.build/repo/docs/crafting-your-repository/structuring-a-repository#common-pitfalls
   "compilerOptions": {
     // Language and Environment
-    "target": "ESNext",
-    "module": "NodeNext",
-    "lib": ["ES2024"],
-    "types": ["node"],
-
-    // Module
-    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-
-    // Emit
-    "removeComments": true,
-
-    // Output format
-    "noErrorTruncation": false,
 
     // Interop constraints
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "lib": ["ES2024"],
+    "module": "NodeNext",
 
-    // Type Checking
-    "strict": true,
-    "alwaysStrict": true,
-    "skipLibCheck": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": false, // Temporarily disabled
+    // Module
+    "moduleResolution": "NodeNext",
+
+    // Output format
+    "noErrorTruncation": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": false, // Temporarily disabled
     "noImplicitAny": true,
+    "noImplicitOverride": true,
     "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "useUnknownInCatchVariables": true,
-    "strictPropertyInitialization": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
     "noUnusedLocals": true,
-    "allowUnreachableCode": true,
-    "allowUnusedLabels": false,
 
     // Paths
     "paths": {
       "#src/*": ["./src/*"]
-    }
+    },
+
+    // Emit
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+
+    // Type Checking
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    // Language and Environment
+    "target": "ESNext",
+    "types": ["node"],
+    "useUnknownInCatchVariables": true
   },
   "exclude": ["**/node_modules", "**/dist", "**/build"]
 }

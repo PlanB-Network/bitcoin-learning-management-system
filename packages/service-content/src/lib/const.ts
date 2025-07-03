@@ -20,21 +20,21 @@ export type ContentType = (typeof supportedContentTypes)[number];
 // https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 // https://typesense.org/docs/guide/locale.html#commonly-used-languages
 export const ISO_639_LANGUAGES = {
-  id: 'id',
+  cs: 'cs',
+  de: 'de',
   en: 'en',
-  fi: 'fi',
+  es: 'es',
   et: 'et',
+  fi: 'fi',
+  fr: 'fr',
+  id: 'id',
+  it: 'it',
+  ja: 'ja',
+  'nb-no': 'nn',
+  pt: 'po',
   ru: 'ru',
   vi: 'vi',
-  pt: 'po',
-  ja: 'ja',
-  cs: 'cs',
   'zh-hans': 'zh',
-  'nb-no': 'nn',
-  it: 'it',
-  es: 'es',
-  de: 'de',
-  fr: 'fr',
 } as const;
 
 export type Language = keyof typeof ISO_639_LANGUAGES;

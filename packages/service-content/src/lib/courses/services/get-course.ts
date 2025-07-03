@@ -5,9 +5,9 @@ import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
 import { formatProfessor } from '../../professors/services/utils.js';
 import { indexBy } from '../../utils.js';
+import { getCourseQuery } from '../queries/get-course.js';
 import { getCourseChaptersQuery } from '../queries/get-course-chapters.js';
 import { getCoursePartsQuery } from '../queries/get-course-parts.js';
-import { getCourseQuery } from '../queries/get-course.js';
 
 export const createGetCourse = ({ postgres }: Dependencies) => {
   return async (id: string, language: string): Promise<CourseResponse> => {
@@ -25,13 +25,13 @@ export const createGetCourse = ({ postgres }: Dependencies) => {
     );
 
     const mainProfessors = await postgres.exec(
-      getProfessorsQuery({ professorIds: course.mainProfessorIds, language }),
+      getProfessorsQuery({ language, professorIds: course.mainProfessorIds }),
     );
 
     const associatedProfessors = await postgres.exec(
       getProfessorsQuery({
-        professorIds: course.associatedProfessorIds,
         language,
+        professorIds: course.associatedProfessorIds,
       }),
     );
     const associatedProfessorsMap = indexBy(associatedProfessors, 'id');
@@ -46,13 +46,13 @@ export const createGetCourse = ({ postgres }: Dependencies) => {
 
     return {
       ...course,
-      mainProfessors: mainProfessors.map((element) => formatProfessor(element)),
       associatedProfessors: sortedAssociatedProfessors.map((element) =>
         formatProfessor(element),
       ),
+      chaptersCount: chapters.length,
+      mainProfessors: mainProfessors.map((element) => formatProfessor(element)),
       parts: partsWithChapters,
       partsCount: parts.length,
-      chaptersCount: chapters.length,
     };
   };
 };

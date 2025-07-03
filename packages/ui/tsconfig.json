@@ -1,18 +1,18 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./typings.d.ts"],
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": ".",
+    "allowImportingTsExtensions": true,
     "baseUrl": ".",
-    "lib": ["DOM", "DOM.Iterable", "es2023"],
     "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
     "incremental": true,
-    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "es2023"],
     "noEmit": true,
-    "jsx": "react-jsx"
-  }
+    "outDir": "dist",
+    "rootDir": ".",
+    "sourceMap": true
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./typings.d.ts"]
 }

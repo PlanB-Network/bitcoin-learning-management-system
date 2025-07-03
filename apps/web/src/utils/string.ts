@@ -43,7 +43,6 @@ export const formatNameForURL = (name: string): string => {
       // Decompose accented characters (e.g., é -> e + ´)
       .normalize('NFD')
       // Remove diacritical marks (accents)
-      // biome-ignore lint/suspicious/noMisleadingCharacterClass: <explanation>
       .replace(/[\u0300-\u036f]/g, '')
       // Convert to lowercase
       .toLowerCase()

@@ -1,17 +1,15 @@
+import type { EventPayment, JoinedEvent } from '@blms/types';
+import { Button } from '@blms/ui';
 import { t } from 'i18next';
 import { useContext, useState } from 'react';
 import { IoMdLock, IoMdUnlock } from 'react-icons/io';
-
-import type { EventPayment, JoinedEvent } from '@blms/types';
-import { Button } from '@blms/ui';
 
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { useAuthModal } from '#src/providers/auth.tsx';
 import { AppContext } from '#src/providers/context.tsx';
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
-
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { EventPaymentModal } from '../../events/-components/event-payment-modal.tsx';
 
 export const LectureBuy = ({
@@ -39,10 +37,10 @@ export const LectureBuy = ({
 
   const [paymentModalData, setPaymentModalData] =
     useState<PaymentModalDataModel>({
+      accessType: null,
+      dollarPrice: null,
       eventId: null,
       satsPrice: null,
-      dollarPrice: null,
-      accessType: null,
     });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
@@ -69,10 +67,10 @@ export const LectureBuy = ({
             onClose={() => {
               refetchEventPayments();
               setPaymentModalData({
+                accessType: null,
+                dollarPrice: null,
                 eventId: null,
                 satsPrice: null,
-                dollarPrice: null,
-                accessType: null,
               });
               setIsPaymentModalOpen(false);
             }}
@@ -100,10 +98,10 @@ export const LectureBuy = ({
             onClick={() => {
               if (isLoggedIn) {
                 setPaymentModalData({
+                  accessType: 'online',
+                  dollarPrice: dollarPrice,
                   eventId: lecture.id,
                   satsPrice: satsPrice,
-                  dollarPrice: dollarPrice,
-                  accessType: 'online',
                 });
                 setIsPaymentModalOpen(true);
               } else {

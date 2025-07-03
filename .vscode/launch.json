@@ -1,22 +1,22 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run all (Local)",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["pnpm", "run", "dev"],
-      "restart": true,
+      "cwd": "${workspaceFolder}",
       "localRoot": "${workspaceFolder}",
-      "cwd": "${workspaceFolder}"
+      "name": "Run all (Local)",
+      "request": "launch",
+      "restart": true,
+      "runtimeArgs": ["pnpm", "run", "dev"],
+      "runtimeExecutable": "pnpm",
+      "type": "node"
     },
     {
       "name": "Debug Web (Chrome)",
-      "type": "chrome",
       "request": "launch",
+      "type": "chrome",
       "url": "http://localhost:8181",
       "webRoot": "${workspaceFolder}/apps/web/src"
     }
-  ]
+  ],
+  "version": "0.2.0"
 }

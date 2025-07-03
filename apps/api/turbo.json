@@ -2,25 +2,6 @@
   "$schema": "https://turborepo.org/schema.json",
   "extends": ["//"],
   "tasks": {
-    "check-types": {
-      "dependsOn": [
-        "@blms/service-common#build-types",
-        "@blms/service-content#build-types",
-        "@blms/service-user#build-types",
-        "@blms/opentimestamps#build-types",
-        "@blms/github#build-types"
-      ]
-    },
-    "build-types": {
-      "outputs": ["dist/**"],
-      "dependsOn": [
-        "@blms/service-common#build-types",
-        "@blms/service-content#build-types",
-        "@blms/service-user#build-types",
-        "@blms/opentimestamps#build-types",
-        "@blms/github#build-types"
-      ]
-    },
     "build": {
       "dependsOn": [
         "@blms/service-common#build",
@@ -30,6 +11,25 @@
         "@blms/github#build"
       ],
       "outputs": ["dist/**"]
+    },
+    "build-types": {
+      "dependsOn": [
+        "@blms/service-common#build-types",
+        "@blms/service-content#build-types",
+        "@blms/service-user#build-types",
+        "@blms/opentimestamps#build-types",
+        "@blms/github#build-types"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "check-types": {
+      "dependsOn": [
+        "@blms/service-common#build-types",
+        "@blms/service-content#build-types",
+        "@blms/service-user#build-types",
+        "@blms/opentimestamps#build-types",
+        "@blms/github#build-types"
+      ]
     }
   }
 }

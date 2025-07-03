@@ -1,11 +1,10 @@
+import { type CronService, createCronService } from '@blms/crons';
+import type { PostgresClient } from '@blms/database';
+import { createPostgresClient } from '@blms/database';
+import { createS3Service, type S3Service } from '@blms/s3';
+import type { EnvConfig, LogContext } from '@blms/types';
 import Stripe from 'stripe';
 import { Client as TypesenseClient } from 'typesense';
-
-import { type CronService, createCronService } from '@blms/crons';
-import { createPostgresClient } from '@blms/database';
-import type { PostgresClient } from '@blms/database';
-import { type S3Service, createS3Service } from '@blms/s3';
-import type { EnvConfig, LogContext } from '@blms/types';
 
 import * as config from './config.js';
 import { registerCronTasks } from './services/cron/index.js';
@@ -37,18 +36,18 @@ export const startDependencies = async () => {
   await postgres.connect();
 
   const typesense = new TypesenseClient({
-    nodes: config.typesense.nodes,
     apiKey: config.typesense.apiKey,
     connectionTimeoutSeconds: 2,
+    nodes: config.typesense.nodes,
   });
 
   const dependencies: Dependencies = {
-    s3,
-    postgres,
-    typesense,
     config,
     crons,
+    postgres,
+    s3,
     stripe,
+    typesense,
   };
 
   await registerCronTasks(dependencies);

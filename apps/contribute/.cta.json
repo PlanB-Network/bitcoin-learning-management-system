@@ -1,13 +1,13 @@
 {
+  "existingAddOns": ["tanstack-query"],
   "framework": "react",
-  "typescript": true,
-  "projectName": "contribute",
-  "mode": "code-router",
-  "tailwind": true,
-  "packageManager": "pnpm",
-  "toolchain": "biome",
-  "variableValues": {},
   "git": true,
-  "version": 1,
-  "existingAddOns": ["tanstack-query"]
+  "mode": "code-router",
+  "packageManager": "pnpm",
+  "projectName": "contribute",
+  "tailwind": true,
+  "toolchain": "biome",
+  "typescript": true,
+  "variableValues": {},
+  "version": 1
 }

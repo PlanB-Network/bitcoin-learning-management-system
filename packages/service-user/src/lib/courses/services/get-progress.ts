@@ -37,11 +37,11 @@ export const createGetProgress = ({ postgres }: Dependencies) => {
 
       return {
         ...course,
+        chapters,
+        lastCompletedChapter,
+        nextChapter: courseNextChapters,
         progressPercentage:
           course.progressPercentage > 100 ? 100 : course.progressPercentage,
-        chapters,
-        nextChapter: courseNextChapters,
-        lastCompletedChapter,
       };
     });
   };

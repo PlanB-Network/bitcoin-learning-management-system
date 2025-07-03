@@ -1,8 +1,7 @@
+import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
+import { ButtonWithArrow, cn, Progress, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
-import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
-import { ButtonWithArrow, Progress, TextTag, cn } from '@blms/ui';
 
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { useGreater } from '#src/hooks/use-greater.ts';
@@ -32,26 +31,26 @@ export const CourseDashboardCard = ({
   const getStatusStyles = (progress: CourseProgressExtended | null) => {
     if (!progress)
       return {
-        text: t('dashboard.myCourses.notStarted'),
         bgColor: 'bg-newGray-5',
+        text: t('dashboard.myCourses.notStarted'),
       };
 
     const { progressPercentage } = progress;
     if (progressPercentage === 100) {
       return {
-        text: t('dashboard.myCourses.completed'),
         bgColor: 'bg-brightGreen-4',
+        text: t('dashboard.myCourses.completed'),
       };
     }
     if (progressPercentage > 0 || progressPercentage === 0) {
       return {
-        text: t('dashboard.myCourses.inprogress'),
         bgColor: 'bg-darkOrange-4',
+        text: t('dashboard.myCourses.inprogress'),
       };
     }
     return {
-      text: t('dashboard.myCourses.notStarted'),
       bgColor: 'bg-newGray-5',
+      text: t('dashboard.myCourses.notStarted'),
     };
   };
 

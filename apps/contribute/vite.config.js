@@ -1,9 +1,8 @@
+import { resolve } from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 import viteReact from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-
-import { resolve } from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,10 +13,6 @@ export default defineConfig({
     viteReact(),
     tailwindcss(),
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -30,5 +25,9 @@ export default defineConfig({
     proxy: {
       '/api': `http://${process.env.DOCKER ? 'api' : 'localhost'}:3000`,
     },
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
   },
 });

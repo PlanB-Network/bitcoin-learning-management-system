@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { UserPermission } from '@blms/constants';
 
 import {
   checkoutDataSchema,
@@ -18,14 +18,13 @@ import {
   generateEventTicket,
 } from '@blms/service-user';
 import { LANGUAGES_MAP } from '@blms/shared';
-
-import { UserPermission } from '@blms/constants';
 import type {
   CalendarEventParticipant,
   CheckoutData,
   EventPayment,
   UserEvent,
 } from '@blms/types';
+import { z } from 'zod';
 import { checkPermissions } from '#src/middlewares/auth.js';
 import { adminProcedure, studentProcedure } from '#src/procedures/protected.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -58,17 +57,17 @@ const downloadEventTicketProcedure = studentProcedure
         : '';
 
     return generateEventTicket({
-      title: event.name ? event.name : '',
-      organizer: event.projectName,
       addressLine1: event.addressLine1 ?? '',
       addressLine2: event.addressLine2,
       addressLine3: event.addressLine3,
+      availableSeats: event.availableSeats,
       formattedStartDate: formattedStartDate,
       formattedTime: formattedTime,
       liveLanguage: event.languages
         .map((code) => LANGUAGES_MAP[code])
         .join(', '),
-      availableSeats: event.availableSeats,
+      organizer: event.projectName,
+      title: event.name ? event.name : '',
       userName: input.userName,
     }).then((buffer) => buffer.toString('base64'));
   });
@@ -102,23 +101,23 @@ const getUserEventsProcedure = studentProcedure
 const saveEventPaymentProcedure = studentProcedure
   .input(
     z.object({
-      eventId: z.string(),
-      satsPrice: z.number(),
-      dollarPrice: z.number(),
       couponCode: z.string().optional(),
-      withPhysical: z.boolean(),
+      dollarPrice: z.number(),
+      eventId: z.string(),
       method: z.string(),
+      satsPrice: z.number(),
+      withPhysical: z.boolean(),
     }),
   )
   .output<Parser<CheckoutData>>(checkoutDataSchema)
   .mutation(({ ctx, input }) =>
     createSaveEventPayment(ctx.dependencies)({
-      uid: ctx.user.uid,
-      eventId: input.eventId,
-      satsPrice: input.satsPrice,
-      dollarPrice: input.dollarPrice,
-      method: input.method,
       couponCode: input.couponCode,
+      dollarPrice: input.dollarPrice,
+      eventId: input.eventId,
+      method: input.method,
+      satsPrice: input.satsPrice,
+      uid: ctx.user.uid,
       withPhysical: input.withPhysical,
     }),
   );
@@ -126,17 +125,17 @@ const saveEventPaymentProcedure = studentProcedure
 const saveUserEventProcedure = studentProcedure
   .input(
     z.object({
-      eventId: z.string(),
       booked: z.boolean(),
+      eventId: z.string(),
       withPhysical: z.boolean(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveUserEvent(ctx.dependencies)({
-      uid: ctx.user.uid,
-      eventId: input.eventId,
       booked: input.booked,
+      eventId: input.eventId,
+      uid: ctx.user.uid,
       withPhysical: input.withPhysical,
     });
 
@@ -148,11 +147,11 @@ const getParticipantsForEventProcedure = adminProcedure
   .output<Parser<CalendarEventParticipant[]>>(
     z.array(
       z.object({
-        uid: z.string(),
-        username: z.string(),
         displayName: z.string(),
         email: z.string(),
         id: z.string(),
+        uid: z.string(),
+        username: z.string(),
       }),
     ),
   )
@@ -163,8 +162,8 @@ const getParticipantsForEventProcedure = adminProcedure
 export const userEventsRouter = createTRPCRouter({
   downloadEventTicket: downloadEventTicketProcedure,
   getEventPayment: getEventPaymentsProcedure,
+  getParticipantsForEvent: getParticipantsForEventProcedure,
   getUserEvents: getUserEventsProcedure,
   saveEventPayment: saveEventPaymentProcedure,
   saveUserEvent: saveUserEventProcedure,
-  getParticipantsForEvent: getParticipantsForEventProcedure,
 });

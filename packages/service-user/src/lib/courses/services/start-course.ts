@@ -13,8 +13,8 @@ export const createStartCourse = ({
     return postgres
       .exec(
         saveCourseProgress({
-          uid: options.uid,
           courseId: options.courseId,
+          uid: options.uid,
         }),
       )
       .then(() => void 0);

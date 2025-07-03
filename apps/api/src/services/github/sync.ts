@@ -122,11 +122,11 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     console.log('[sync] END ====================================');
 
     return {
-      success: syncErrors.length === 0,
-      syncWarnings: syncWarnings.length > 0 ? syncWarnings : undefined,
-      syncErrors: syncErrors.length > 0 ? syncErrors : undefined,
-      publicCdnError: publicCdnError,
       privateCdnError: privateCdnError,
+      publicCdnError: publicCdnError,
+      success: syncErrors.length === 0,
+      syncErrors: syncErrors.length > 0 ? syncErrors : undefined,
+      syncWarnings: syncWarnings.length > 0 ? syncWarnings : undefined,
     };
   };
 }

@@ -1,15 +1,12 @@
+import type { JoinedConference } from '@blms/types';
+import { HorizontalCard, Loader, VerticalCard } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
-import type { JoinedConference } from '@blms/types';
-import { HorizontalCard, Loader, VerticalCard } from '@blms/ui';
-
+import { useGreater } from '#src/hooks/use-greater.ts';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-
-import { useQuery } from '@tanstack/react-query';
-import { useGreater } from '#src/hooks/use-greater.ts';
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { ConferencesTable } from '../-components/tables/conferences-table.tsx';

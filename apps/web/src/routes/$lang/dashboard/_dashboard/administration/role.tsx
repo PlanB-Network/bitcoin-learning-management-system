@@ -1,7 +1,5 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared/auth';
 import {
   Loader,
   Tabs,
@@ -10,12 +8,11 @@ import {
   TabsTrigger,
   TextTag,
 } from '@blms/ui';
-
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useContext, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
-
-import { UserRole } from '@blms/constants';
-import { canAccess } from '@blms/shared/auth';
 import { RoleAllocationTable } from '../-components/role-allocation-table.tsx';
 
 export const Route = createFileRoute(

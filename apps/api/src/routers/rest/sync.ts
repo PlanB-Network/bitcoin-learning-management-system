@@ -22,7 +22,7 @@ export const createRestSyncRoutes = (
   router.post(
     '/github/sync',
     protectSyncMiddleware,
-    async (req, res): Promise<void> => {
+    async (_req, res): Promise<void> => {
       if (syncLocked) {
         res.status(409).json({ error: 'Already syncing' });
         return;

@@ -1,57 +1,57 @@
 {
-  "name": "Plan ₿ Network",
-  "short_name": "Plan ₿ Network",
-  "description": "The Plan ₿ Network aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty.",
-  "start_url": ".",
-  "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "rgb(255 92 0)",
-  "orientation": "portrait",
+  "description": "The Plan ₿ Network aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty.",
+  "display": "standalone",
   "icons": [
     {
-      "src": "/icons/icon.svg",
       "sizes": "any",
+      "src": "/icons/icon.svg",
       "type": "image/svg+xml"
     },
     {
-      "src": "/icons/48.png",
       "sizes": "48x48",
+      "src": "/icons/48.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/72.png",
       "sizes": "72x72",
+      "src": "/icons/72.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/96.png",
       "sizes": "96x96",
+      "src": "/icons/96.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/144.png",
       "sizes": "144x144",
+      "src": "/icons/144.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/192.png",
       "sizes": "192x192",
+      "src": "/icons/192.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/256.png",
       "sizes": "256x256",
+      "src": "/icons/256.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/512.png",
       "sizes": "512x512",
+      "src": "/icons/512.png",
       "type": "image/png"
     },
     {
-      "src": "/icons/1024.png",
       "sizes": "1024x1024",
+      "src": "/icons/1024.png",
       "type": "image/png"
     }
-  ]
+  ],
+  "name": "Plan ₿ Network",
+  "orientation": "portrait",
+  "short_name": "Plan ₿ Network",
+  "start_url": ".",
+  "theme_color": "rgb(255 92 0)"
 }

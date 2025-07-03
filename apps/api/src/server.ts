@@ -1,7 +1,7 @@
 import type { Server } from 'node:http';
 
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express, { Router, json } from 'express';
+import express, { json, Router } from 'express';
 
 import type { Dependencies } from './dependencies.js';
 import { createCookieSessionMiddleware } from './middlewares/session.js';
@@ -71,8 +71,8 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   router.use(
     '/trpc',
     createExpressMiddleware({
-      router: trpcRouter,
       createContext: (opts) => createContext(opts, dependencies),
+      router: trpcRouter,
     }),
   );
 

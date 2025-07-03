@@ -1,6 +1,5 @@
-import yaml from 'js-yaml';
-
 import type { ChangedFile } from '@blms/types';
+import yaml from 'js-yaml';
 
 import { supportedContentTypes } from './const.js';
 import type { ChangedContent } from './types.js';
@@ -34,8 +33,8 @@ export const separateContentFiles = (
   resource: ChangedContent,
   mainFileName: string,
 ) => ({
-  main: resource.files.find((file) => file.path === mainFileName),
   files: resource.files.filter((file) => file.path !== mainFileName),
+  main: resource.files.find((file) => file.path === mainFileName),
 });
 
 /**

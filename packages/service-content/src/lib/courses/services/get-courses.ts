@@ -20,8 +20,8 @@ export const createGetCourses = ({
     const mainProfessors = await postgres
       .exec(
         getProfessorsQuery({
-          professorIds: courses.flatMap((course) => course.mainProfessorIds),
           language,
+          professorIds: courses.flatMap((course) => course.mainProfessorIds),
         }),
       )
       .then((professors) =>
@@ -31,10 +31,10 @@ export const createGetCourses = ({
     const associatedProfessors = await postgres
       .exec(
         getProfessorsQuery({
+          language,
           professorIds: courses.flatMap(
             (course) => course.associatedProfessorIds,
           ),
-          language,
         }),
       )
       .then((professors) =>
@@ -50,17 +50,17 @@ export const createGetCourses = ({
 
       return {
         ...course,
-        mainProfessors: mainProfessors.filter(
-          (professor) =>
-            professor !== undefined &&
-            course.mainProfessorIds.some((p) => String(p) === professor.id),
-        ),
         associatedProfessors: sortedAssociatedProfessors.filter(
           (professor) =>
             professor?.id !== undefined &&
             course.associatedProfessorIds.some(
               (p) => String(p) === professor.id,
             ),
+        ),
+        mainProfessors: mainProfessors.filter(
+          (professor) =>
+            professor !== undefined &&
+            course.mainProfessorIds.some((p) => String(p) === professor.id),
         ),
       };
     });
@@ -79,8 +79,8 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
     const mainProfessors = await postgres
       .exec(
         getProfessorsQuery({
-          professorIds: courses.flatMap((course) => course.mainProfessorIds),
           language,
+          professorIds: courses.flatMap((course) => course.mainProfessorIds),
         }),
       )
       .then((professors) =>
@@ -90,10 +90,10 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
     const associatedProfessors = await postgres
       .exec(
         getProfessorsQuery({
+          language,
           professorIds: courses.flatMap(
             (course) => course.associatedProfessorIds,
           ),
-          language,
         }),
       )
       .then((professors) =>
@@ -109,17 +109,17 @@ export const createGetProfessorCourses = ({ postgres }: Dependencies) => {
 
       return {
         ...course,
-        mainProfessors: mainProfessors.filter(
-          (professor) =>
-            professor !== undefined &&
-            course.mainProfessorIds.some((p) => String(p) === professor.id),
-        ),
         associatedProfessors: sortedAssociatedProfessors.filter(
           (professor) =>
             professor?.id !== undefined &&
             course.associatedProfessorIds.some(
               (p) => String(p) === professor.id,
             ),
+        ),
+        mainProfessors: mainProfessors.filter(
+          (professor) =>
+            professor !== undefined &&
+            course.mainProfessorIds.some((p) => String(p) === professor.id),
         ),
       };
     });

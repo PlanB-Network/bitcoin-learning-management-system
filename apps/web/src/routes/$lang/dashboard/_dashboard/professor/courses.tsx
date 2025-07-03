@@ -1,27 +1,23 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
-import type { JoinedCourse } from '@blms/types';
-
 import { UserRole } from '@blms/constants';
-
+import { canAccess } from '@blms/shared/auth';
+import type { JoinedCourse } from '@blms/types';
 import {
+  cn,
   DropdownMenu,
   Loader,
   Tabs,
   TabsContent,
   TabsListSegmented,
   TabsListUnderlined,
-  cn,
 } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { t } from 'i18next';
+import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { canAccess } from '@blms/shared/auth';
-import { useQuery } from '@tanstack/react-query';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseAnnouncements } from './-components/course-announcements.tsx';
 import { CourseAssignment } from './-components/course-assignment.tsx';
 import { CourseDetails } from './-components/course-details.tsx';
@@ -47,8 +43,8 @@ function DashboardProfessorCourses() {
         language: i18n.language,
       },
       {
-        staleTime: 300_000, // 5 minutes
-        enabled: user?.role === 'professor',
+        enabled: user?.role === 'professor', // 5 minutes
+        staleTime: 300_000,
       },
     ),
   );
@@ -100,10 +96,10 @@ const CourseTabs = ({ courses }: { courses: JoinedCourse[] }) => {
     >
       <TabsListSegmented
         tabs={courses.map((course) => ({
-          value: course.index,
+          active: course.index === currentTab,
           key: course.index,
           text: `${course.index.toLocaleUpperCase()} - ${course.name}`,
-          active: course.index === currentTab,
+          value: course.index,
         }))}
         slice={6}
         className="max-md:hidden max-md:px-4"
@@ -176,42 +172,42 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         <TabsListUnderlined
           tabs={[
             {
-              key: 'details',
-              value: 'details',
-              text: t('dashboard.teacher.courses.courseDetails'),
               active: 'details' === currentTab,
+              key: 'details',
+              text: t('dashboard.teacher.courses.courseDetails'),
+              value: 'details',
             },
             {
-              key: 'review',
-              value: 'review',
-              text: t('dashboard.teacher.courses.reviews'),
               active: 'review' === currentTab,
+              key: 'review',
+              text: t('dashboard.teacher.courses.reviews'),
+              value: 'review',
             },
             ...(course.teachingFormat === 'professor_led'
               ? [
                   {
-                    key: 'announcement',
-                    value: 'announcement',
-                    text: t('dashboard.teacher.courses.announcements'),
                     active: 'announcement' === currentTab,
+                    key: 'announcement',
+                    text: t('dashboard.teacher.courses.announcements'),
+                    value: 'announcement',
                   },
                 ]
               : []),
             ...(course.isPlanbSchool
               ? [
                   {
-                    key: 'assignment',
-                    value: 'assignment',
-                    text: t('dashboard.teacher.courses.assignment'),
                     active: 'assignment' === currentTab,
+                    key: 'assignment',
+                    text: t('dashboard.teacher.courses.assignment'),
+                    value: 'assignment',
                   },
                 ]
               : []),
             {
-              value: 'examResults',
+              active: 'examResults' === currentTab,
               key: 'examResults',
               text: t('courses.exam.examResults'),
-              active: 'examResults' === currentTab,
+              value: 'examResults',
             },
           ]}
           size={isMobile ? 's' : 'm'}

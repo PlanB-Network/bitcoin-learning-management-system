@@ -1,11 +1,8 @@
+import { cn, TextTag } from '@blms/ui';
+import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
-
 import { IoMdClose } from 'react-icons/io';
 import { MdOutlineClear } from 'react-icons/md';
-
-import { TextTag, cn } from '@blms/ui';
-
-import { t } from 'i18next';
 import FilterIcon from '#src/assets/icons/Filter.svg';
 import SearchIcon from '#src/assets/icons/search.svg';
 
@@ -38,6 +35,7 @@ export const FilterDropdown = ({
   const filterKeys = Object.keys(filters || {});
 
   if (filters) {
+    // biome-ignore lint/correctness/useHookAtTopLevel: TODO check
     useEffect(() => {
       if (!activeCategory) {
         const firstCategory = filterKeys[0] || null;

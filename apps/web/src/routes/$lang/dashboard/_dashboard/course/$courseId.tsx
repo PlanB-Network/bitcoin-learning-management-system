@@ -18,13 +18,13 @@ import { SummerSchool } from './-components/summer-school.tsx';
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/course/$courseId',
 )({
+  component: DashboardStudentCourse,
   params: {
     parse: (params) => ({
       courseId: z.string().parse(params.courseId),
     }),
     stringify: ({ courseId }) => ({ courseId: `${courseId}` }),
   },
-  component: DashboardStudentCourse,
 });
 
 function DashboardStudentCourse() {
@@ -75,38 +75,38 @@ function DashboardStudentCourse() {
     course?.id === '576ac496-a4fd-471a-b022-e0da1ab89a29';
 
   const tabs = [
-    { value: 'overview', key: 'overview', text: t('words.overview') },
+    { key: 'overview', text: t('words.overview'), value: 'overview' },
   ];
   if (courseHaveRetakeExam) {
     tabs.push({
-      value: 'retakeExam',
       key: 'retakeExam',
       text: t('courses.exam.examAndDiploma'),
+      value: 'retakeExam',
     });
   }
   if (courseHaveSingleTrialExam) {
     tabs.push({
-      value: 'singleTrialExam',
       key: 'singleTrialExam',
       text: t('courses.exam.examAndDiploma'),
+      value: 'singleTrialExam',
     });
   }
   if (courseHaveAssignments) {
     tabs.push({
-      value: 'assignment',
       key: 'assignment',
       text: t('dashboard.course.assignment'),
+      value: 'assignment',
     });
   }
   if (isBizSchool && isSelectedForSummerSchool) {
     tabs.push({
-      value: 'summerSchool',
       key: 'summerSchool',
       text: t('dashboard.course.summerSchool'),
+      value: 'summerSchool',
     });
   }
   if (reviewChapterId) {
-    tabs.push({ value: 'ratings', key: 'ratings', text: t('words.ratings') });
+    tabs.push({ key: 'ratings', text: t('words.ratings'), value: 'ratings' });
   }
 
   const [currentTab, setCurrentTab] = useState<string>();

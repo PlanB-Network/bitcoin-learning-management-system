@@ -1,19 +1,14 @@
+import type { JoinedCourse } from '@blms/types';
+import { Button, cn, DropdownMenu, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-
-import type { JoinedCourse } from '@blms/types';
-import { Button, DropdownMenu, cn } from '@blms/ui';
-
 import { assetUrl } from '#src/utils/index.ts';
-
-import { levels, sortCoursesByLevel } from '../-utils/course-utils.tsx';
-
-import { Image } from '@blms/ui';
 import { formatNameForURL } from '#src/utils/string.ts';
+import { levels, sortCoursesByLevel } from '../-utils/course-utils.tsx';
 import { CourseInfoSection } from './course-info-section.tsx';
 
 export const CourseSelector = ({ courses }: { courses: JoinedCourse[] }) => {

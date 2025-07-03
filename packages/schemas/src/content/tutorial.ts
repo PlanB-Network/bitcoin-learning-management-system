@@ -1,11 +1,10 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   contentTutorialLikesDislikes,
   contentTutorials,
   contentTutorialsLocalized,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 import { formattedProfessorSchema } from './professor.js';
 
 export const tutorialSchema = createSelectSchema(contentTutorials);
@@ -19,31 +18,31 @@ export const tutorialLikeDislikeSchema = createSelectSchema(
 
 export const joinedTutorialLightSchema = tutorialSchema
   .pick({
+    category: true,
+    creditLink: true,
     id: true,
-    path: true,
+    lastCommit: true,
+    lastUpdated: true,
+    level: true,
     logoUrl: true,
     name: true,
-    level: true,
-    category: true,
-    subcategory: true,
-    projectId: true,
-    professorId: true,
-    creditLink: true,
     originalLanguage: true,
-    lastUpdated: true,
-    lastCommit: true,
+    path: true,
+    professorId: true,
+    projectId: true,
+    subcategory: true,
   })
   .merge(
     tutorialLocalizedSchema.pick({
+      description: true,
       language: true,
       title: true,
-      description: true,
     }),
   )
   .merge(
     z.object({
-      likeCount: z.number(),
       dislikeCount: z.number(),
+      likeCount: z.number(),
       tags: z.array(z.string()),
     }),
   );
@@ -56,11 +55,11 @@ export const joinedTutorialSchema = joinedTutorialLightSchema.merge(
 
 export const tutorialWithProfessorNameSchema = tutorialSchema
   .pick({
+    category: true,
     id: true,
-    path: true,
     logoUrl: true,
     name: true,
-    category: true,
+    path: true,
     subcategory: true,
   })
   .merge(
@@ -71,10 +70,10 @@ export const tutorialWithProfessorNameSchema = tutorialSchema
   )
   .merge(
     z.object({
-      likeCount: z.number(),
       dislikeCount: z.number(),
-      professorName: z.string().nullable(),
+      likeCount: z.number(),
       professorId: z.string().nullable(),
+      professorName: z.string().nullable(),
     }),
   );
 

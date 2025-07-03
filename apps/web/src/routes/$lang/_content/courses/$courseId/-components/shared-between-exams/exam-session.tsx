@@ -1,11 +1,9 @@
+import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
+import { BasicModal, Button, ButtonWithArrow, cn, DialogClose } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
 import { MdTimer } from 'react-icons/md';
-
-import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
-import { BasicModal, Button, ButtonWithArrow, DialogClose, cn } from '@blms/ui';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
 import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
@@ -26,9 +24,9 @@ export const ExamSession = ({
 }) => {
   const [selectedAnswers, setSelectedAnswers] = useState(
     Array.from({ length: questions.length }, (_, i) => ({
-      questionId: questions[i].id,
-      order: -1,
       index: -1,
+      order: -1,
+      questionId: questions[i].id,
     })),
   );
 
@@ -42,8 +40,8 @@ export const ExamSession = ({
 
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getLatestExamResults.queryOptions({
-      courseId: chapter.courseId,
       chapterId: chapter.chapterId,
+      courseId: chapter.courseId,
     }),
   );
 
@@ -55,13 +53,13 @@ export const ExamSession = ({
           (q) => q.text === question.text,
         );
         return {
-          questionId: question.id,
-          order: answer?.userAnswer ?? -1,
           index: answer
             ? question.answers.findIndex(
                 (ans) => ans.order === answer.userAnswer,
               )
             : -1,
+          order: answer?.userAnswer ?? -1,
+          questionId: question.id,
         };
       });
       setSelectedAnswers(newSelectedAnswers);
@@ -75,8 +73,8 @@ export const ExamSession = ({
 
     await completeExamAttempt.mutateAsync({
       answers: validAnswers.map((answer) => ({
-        questionId: answer.questionId,
         order: answer.order,
+        questionId: answer.questionId,
       })),
       chapterId: chapter.chapterId,
       courseId: chapter.courseId,
@@ -93,8 +91,8 @@ export const ExamSession = ({
             ? { ...ans, index: -1, order: -1 }
             : {
                 ...ans,
-                order: questions[questionIndex].answers[answerIndex].order,
                 index: answerIndex,
+                order: questions[questionIndex].answers[answerIndex].order,
               }
           : ans,
       );
@@ -133,12 +131,12 @@ export const ExamSession = ({
       if (filteredAnswers.length !== 0) {
         temporarySaveExamAttemptProcedure.mutateAsync({
           answers: filteredAnswers.map((answer) => ({
-            questionId: answer.questionId,
             order: answer.order,
+            questionId: answer.questionId,
           })),
-          examId: examResults?.id ?? '',
           chapterId: chapter.chapterId,
           courseId: chapter.courseId,
+          examId: examResults?.id ?? '',
         });
       }
     }
@@ -197,7 +195,7 @@ export const ExamSession = ({
         <div className="flex flex-wrap w-full gap-2 max-md:hidden">
           {questions.map((_, questionIndex) => (
             <button
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              // biome-ignore lint/suspicious/noArrayIndexKey: explanation
               key={questionIndex}
               type="button"
               onClick={() => {
@@ -210,9 +208,9 @@ export const ExamSession = ({
                 const articleRect = article.getBoundingClientRect();
 
                 container.scrollTo({
+                  behavior: 'smooth',
                   top:
                     articleRect.top - containerRect.top + container.scrollTop,
-                  behavior: 'smooth',
                 });
               }}
               className={cn(
@@ -258,7 +256,7 @@ export const ExamSession = ({
                 <section className="flex flex-col gap-2.5 md:gap-4 w-full">
                   {q.answers.map((answer, answerIndex) => (
                     <button
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                       key={answerIndex}
                       type="button"
                       onClick={() =>

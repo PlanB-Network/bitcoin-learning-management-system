@@ -1,3 +1,8 @@
+import { UserPermission, UserRole } from '@blms/constants';
+import { COURSES_CAREER_ACCESS } from '@blms/shared';
+import { canAccess } from '@blms/shared/auth';
+import { Button, Image } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import type { ParsedLocation } from '@tanstack/react-router';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
@@ -5,6 +10,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { BsMortarboard } from 'react-icons/bs';
 import { FaRegCalendarCheck } from 'react-icons/fa';
+import { FaRegBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
 import {
   IoLogOutOutline,
@@ -12,25 +18,15 @@ import {
   IoTicketOutline,
 } from 'react-icons/io5';
 import { LuPencilRuler, LuShieldAlert } from 'react-icons/lu';
-
-import { Button } from '@blms/ui';
-
+import { TbBriefcase2 } from 'react-icons/tb';
 import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
+import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import { getPictureUrl } from '#src/services/user.js';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { logout } from '#src/utils/session-utils.js';
 import { trpc } from '#src/utils/trpc.ts';
-
-import { UserPermission, UserRole } from '@blms/constants';
-import { COURSES_CAREER_ACCESS } from '@blms/shared';
-import { canAccess } from '@blms/shared/auth';
-import { Image } from '@blms/ui';
-import { useQuery } from '@tanstack/react-query';
-import { FaRegBell } from 'react-icons/fa6';
-import { TbBriefcase2 } from 'react-icons/tb';
-import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import { MenuItem } from './menu-item.tsx';
 
 export const MenuDashboard = ({
@@ -59,11 +55,11 @@ export const MenuDashboard = ({
     })
     .map((course) => {
       return {
+        onClick: toggleMobileMenu,
         text: `${addSpaceToCourseIndex(course.courseIndex.toLocaleUpperCase())} - ${
           allCourses?.find((c) => c.id === course.courseId)?.name
         }`,
         to: `/dashboard/course/${course.courseId}`,
-        onClick: toggleMobileMenu,
       };
     });
 
@@ -144,17 +140,17 @@ export const MenuDashboard = ({
           icon={<AiOutlineBook size={24} />}
           dropdown={[
             {
+              onClick: toggleMobileMenu,
               text: t('words.dashboard'),
               to: '/dashboard/courses',
-              onClick: toggleMobileMenu,
             },
             ...(inProgressCourses ?? []),
             ...(completedCourses && completedCourses.length > 0
               ? [
                   {
+                    onClick: toggleMobileMenu,
                     text: t('dashboard.myCourses.completed'),
                     to: '/dashboard/course/completed',
-                    onClick: toggleMobileMenu,
                   },
                 ]
               : []),

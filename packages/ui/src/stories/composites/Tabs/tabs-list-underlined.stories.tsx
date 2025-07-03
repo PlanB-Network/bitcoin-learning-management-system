@@ -1,16 +1,52 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { TabsListUnderlined } from '#src/composites/Tabs/tabs-list-underlined.tsx';
 import { Tabs } from '#src/composites/Tabs/tabs.tsx';
+import { TabsListUnderlined } from '#src/composites/Tabs/tabs-list-underlined.tsx';
 
 const variants = ['dark', 'light'] as const;
 const sizes = ['s', 'm', 'l'] as const;
 
 const meta: Meta<typeof TabsListUnderlined> = {
-  title: 'Composites/Tabs/tabs-list-underlined',
-  component: TabsListUnderlined,
-  parameters: {
-    layout: 'centered',
+  args: {
+    children: '',
+    size: 'm',
+    tabs: [
+      { active: true, key: 'overview', text: 'Overview', value: 'overview' },
+      {
+        active: false,
+        key: 'curriculum',
+        text: 'Curriculum',
+        value: 'curriculum',
+      },
+      {
+        active: false,
+        key: 'resources',
+        text: 'Resources',
+        value: 'resources',
+      },
+      { active: false, key: 'reviews', text: 'Reviews', value: 'reviews' },
+    ],
+    variant: 'light',
   },
+  argTypes: {
+    children: {
+      control: 'text',
+    },
+    size: {
+      control: { type: 'select' },
+      options: sizes,
+    },
+    slice: {
+      control: 'number',
+    },
+    tabs: {
+      control: 'object',
+    },
+    variant: {
+      control: { type: 'select' },
+      options: variants,
+    },
+  },
+  component: TabsListUnderlined,
   decorators: [
     (Story, context) => (
       <Tabs
@@ -24,47 +60,11 @@ const meta: Meta<typeof TabsListUnderlined> = {
       </Tabs>
     ),
   ],
+  parameters: {
+    layout: 'centered',
+  },
   tags: ['autodocs'],
-  argTypes: {
-    tabs: {
-      control: 'object',
-    },
-    slice: {
-      control: 'number',
-    },
-    variant: {
-      control: { type: 'select' },
-      options: variants,
-    },
-    size: {
-      control: { type: 'select' },
-      options: sizes,
-    },
-    children: {
-      control: 'text',
-    },
-  },
-  args: {
-    tabs: [
-      { value: 'overview', key: 'overview', text: 'Overview', active: true },
-      {
-        value: 'curriculum',
-        key: 'curriculum',
-        text: 'Curriculum',
-        active: false,
-      },
-      {
-        value: 'resources',
-        key: 'resources',
-        text: 'Resources',
-        active: false,
-      },
-      { value: 'reviews', key: 'reviews', text: 'Reviews', active: false },
-    ],
-    variant: 'light',
-    size: 'm',
-    children: '',
-  },
+  title: 'Composites/Tabs/tabs-list-underlined',
 };
 
 export default meta;
@@ -77,17 +77,17 @@ export const Default: Story = {
 
 export const DarkVariant: Story = {
   args: {
-    variant: 'dark',
     tabs: [
-      { value: 'dashboard', key: 'dashboard', text: 'Dashboard', active: true },
+      { active: true, key: 'dashboard', text: 'Dashboard', value: 'dashboard' },
       {
-        value: 'analytics',
+        active: false,
         key: 'analytics',
         text: 'Analytics',
-        active: false,
+        value: 'analytics',
       },
-      { value: 'settings', key: 'settings', text: 'Settings', active: false },
+      { active: false, key: 'settings', text: 'Settings', value: 'settings' },
     ],
+    variant: 'dark',
   },
 };
 
@@ -95,9 +95,9 @@ export const SmallSize: Story = {
   args: {
     size: 's',
     tabs: [
-      { value: 'home', key: 'home', text: 'Home', active: true },
-      { value: 'about', key: 'about', text: 'About', active: false },
-      { value: 'contact', key: 'contact', text: 'Contact', active: false },
+      { active: true, key: 'home', text: 'Home', value: 'home' },
+      { active: false, key: 'about', text: 'About', value: 'about' },
+      { active: false, key: 'contact', text: 'Contact', value: 'contact' },
     ],
   },
 };
@@ -106,9 +106,9 @@ export const LargeSize: Story = {
   args: {
     size: 'l',
     tabs: [
-      { value: 'projects', key: 'projects', text: 'Projects', active: false },
-      { value: 'team', key: 'team', text: 'Team Members', active: true },
-      { value: 'reports', key: 'reports', text: 'Reports', active: false },
+      { active: false, key: 'projects', text: 'Projects', value: 'projects' },
+      { active: true, key: 'team', text: 'Team Members', value: 'team' },
+      { active: false, key: 'reports', text: 'Reports', value: 'reports' },
     ],
   },
 };
@@ -116,16 +116,16 @@ export const LargeSize: Story = {
 export const WithDisabledTab: Story = {
   args: {
     tabs: [
-      { value: 'basic', key: 'basic', text: 'Basic Info', active: true },
-      { value: 'advanced', key: 'advanced', text: 'Advanced', active: false },
+      { active: true, key: 'basic', text: 'Basic Info', value: 'basic' },
+      { active: false, key: 'advanced', text: 'Advanced', value: 'advanced' },
       {
-        value: 'premium',
-        key: 'premium',
-        text: 'Premium Features',
         active: false,
         disabled: true,
+        key: 'premium',
+        text: 'Premium Features',
+        value: 'premium',
       },
-      { value: 'settings', key: 'settings', text: 'Settings', active: false },
+      { active: false, key: 'settings', text: 'Settings', value: 'settings' },
     ],
   },
 };
@@ -135,28 +135,28 @@ export const WithTextSlicing: Story = {
     slice: 8,
     tabs: [
       {
-        value: 'introduction',
+        active: true,
         key: 'introduction',
         text: 'Introduction to Bitcoin',
-        active: true,
+        value: 'introduction',
       },
       {
-        value: 'fundamentals',
+        active: false,
         key: 'fundamentals',
         text: 'Fundamentals',
-        active: false,
+        value: 'fundamentals',
       },
       {
-        value: 'advanced',
+        active: false,
         key: 'advanced',
         text: 'Advanced Trading',
-        active: false,
+        value: 'advanced',
       },
       {
-        value: 'security',
+        active: false,
         key: 'security',
         text: 'Security Best Practices',
-        active: false,
+        value: 'security',
       },
     ],
   },
@@ -165,14 +165,14 @@ export const WithTextSlicing: Story = {
 export const ManyTabs: Story = {
   args: {
     tabs: [
-      { value: 'tab1', key: 'tab1', text: 'Overview', active: true },
-      { value: 'tab2', key: 'tab2', text: 'Getting Started', active: false },
-      { value: 'tab3', key: 'tab3', text: 'Curriculum', active: false },
-      { value: 'tab4', key: 'tab4', text: 'Resources', active: false },
-      { value: 'tab5', key: 'tab5', text: 'Assignments', active: false },
-      { value: 'tab6', key: 'tab6', text: 'Discussion', active: false },
-      { value: 'tab7', key: 'tab7', text: 'Reviews', active: false },
-      { value: 'tab8', key: 'tab8', text: 'Certificates', active: false },
+      { active: true, key: 'tab1', text: 'Overview', value: 'tab1' },
+      { active: false, key: 'tab2', text: 'Getting Started', value: 'tab2' },
+      { active: false, key: 'tab3', text: 'Curriculum', value: 'tab3' },
+      { active: false, key: 'tab4', text: 'Resources', value: 'tab4' },
+      { active: false, key: 'tab5', text: 'Assignments', value: 'tab5' },
+      { active: false, key: 'tab6', text: 'Discussion', value: 'tab6' },
+      { active: false, key: 'tab7', text: 'Reviews', value: 'tab7' },
+      { active: false, key: 'tab8', text: 'Certificates', value: 'tab8' },
     ],
   },
 };
@@ -181,22 +181,22 @@ export const LongTabNames: Story = {
   args: {
     tabs: [
       {
-        value: 'course',
+        active: true,
         key: 'course',
         text: 'Course Information and Overview',
-        active: true,
+        value: 'course',
       },
       {
-        value: 'detailed',
+        active: false,
         key: 'detailed',
         text: 'Detailed Curriculum with Learning Objectives',
-        active: false,
+        value: 'detailed',
       },
       {
-        value: 'additional',
+        active: false,
         key: 'additional',
         text: 'Additional Resources and Materials',
-        active: false,
+        value: 'additional',
       },
     ],
   },
@@ -204,6 +204,6 @@ export const LongTabNames: Story = {
 
 export const SingleTab: Story = {
   args: {
-    tabs: [{ value: 'only', key: 'only', text: 'Only Tab', active: true }],
+    tabs: [{ active: true, key: 'only', text: 'Only Tab', value: 'only' }],
   },
 };

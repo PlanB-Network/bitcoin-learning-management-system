@@ -2,14 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Input } from '#src/bases/input.tsx';
 
 const meta: Meta<typeof Input> = {
-  title: 'Bases/Form/input',
-  component: Input,
-  tags: ['autodocs'],
   argTypes: {
-    labelText: {
-      control: 'text',
-    },
-    placeholder: {
+    className: {
       control: 'text',
     },
     cornerHint: {
@@ -17,27 +11,33 @@ const meta: Meta<typeof Input> = {
         disable: true,
       },
     },
+    disabled: {
+      control: 'boolean',
+    },
+    error: {
+      control: 'text',
+    },
+    labelText: {
+      control: 'text',
+    },
     mandatory: {
       control: 'boolean',
       description: 'If true, * is displayed next to the label',
     },
-    error: {
+    placeholder: {
       control: 'text',
     },
     type: {
       control: 'select',
       options: ['text', 'password', 'email', 'number', 'tel', 'url'],
     },
-    disabled: {
-      control: 'boolean',
-    },
-    className: {
-      control: 'text',
-    },
   },
+  component: Input,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/Form/input',
 };
 
 export default meta;
@@ -54,8 +54,8 @@ export const Default: Story = {
 export const MandatoryInput: Story = {
   args: {
     labelText: 'Required Field',
-    placeholder: 'This field is mandatory',
     mandatory: true,
+    placeholder: 'This field is mandatory',
   },
 };
 
@@ -69,26 +69,26 @@ export const PasswordInput: Story = {
 
 export const WithError: Story = {
   args: {
+    error: 'Invalid email format.',
     labelText: 'Email Address',
     placeholder: 'you@example.com',
-    error: 'Invalid email format.',
     type: 'email',
   },
 };
 
 export const DisabledInput: Story = {
   args: {
+    disabled: true,
     labelText: 'Disabled Input',
     placeholder: 'You cannot type here',
-    disabled: true,
   },
 };
 
 export const InputWithTypeNumber: Story = {
-  name: 'Input (Type: Number)',
   args: {
     labelText: 'Age',
     placeholder: 'Enter your age',
     type: 'number',
   },
+  name: 'Input (Type: Number)',
 };

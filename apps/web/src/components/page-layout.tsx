@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react';
-
 import { cn } from '@blms/ui';
+import type { ReactNode } from 'react';
 
 import { PageHeader } from '#src/components/page-header.tsx';
 

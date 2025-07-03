@@ -1,7 +1,6 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { Trans } from 'react-i18next';
-
-import { cn } from '@blms/ui';
 
 export const PageHeader = ({
   title,

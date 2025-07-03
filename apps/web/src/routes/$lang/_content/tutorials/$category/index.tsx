@@ -1,35 +1,33 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { capitalize } from 'lodash-es';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FaArrowLeftLong } from 'react-icons/fa6';
-import { z } from 'zod';
-
 import {
   Button,
+  cn,
   Loader,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-  cn,
 } from '@blms/ui';
-
-import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { capitalize } from 'lodash-es';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { z } from 'zod';
 import { CategoryIcon } from '#src/components/category-icon.js';
+import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { MainLayout } from '#src/components/main-layout.tsx';
+import {
+  extractSubCategories,
+  TUTORIALS_CATEGORIES,
+} from '#src/services/utils.tsx';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
-import {
-  TUTORIALS_CATEGORIES,
-  extractSubCategories,
-} from '#src/services/utils.tsx';
 import { TutorialCard } from '../-components/tutorial-card.tsx';
 import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 
 export const Route = createFileRoute('/$lang/_content/tutorials/$category/')({
+  component: TutorialCategory,
   params: {
     parse: (params) => ({
       category: z.string().parse(params.category),
@@ -40,7 +38,6 @@ export const Route = createFileRoute('/$lang/_content/tutorials/$category/')({
       lang: `${lang}`,
     }),
   },
-  component: TutorialCategory,
 });
 
 function TutorialCategory() {

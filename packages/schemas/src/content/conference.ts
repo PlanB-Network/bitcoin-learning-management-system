@@ -1,11 +1,10 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   contentConferenceStageVideos,
   contentConferences,
   contentConferencesStages,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 import { resourceSchema } from './resource.js';
 
@@ -28,9 +27,9 @@ export const joinedConferenceStageSchema = conferenceStageSchema.merge(
 export const joinedConferenceSchema = resourceSchema
   .pick({
     id: true,
-    path: true,
-    lastUpdated: true,
     lastCommit: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     z.object({
@@ -39,13 +38,13 @@ export const joinedConferenceSchema = resourceSchema
   )
   .merge(
     conferenceSchema.pick({
-      name: true,
       description: true,
-      year: true,
       languages: true,
       location: true,
-      websiteUrl: true,
+      name: true,
       twitterUrl: true,
+      websiteUrl: true,
+      year: true,
     }),
   )
   .merge(

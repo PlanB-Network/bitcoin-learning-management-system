@@ -1,12 +1,9 @@
-import { useContext } from 'react';
-
 import type { CourseChapterResponse } from '@blms/types';
-
-import { trpc } from '#src/utils/trpc.ts';
-
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
+import { useContext } from 'react';
 import { AppContext } from '#src/providers/context.tsx';
+import { trpc } from '#src/utils/trpc.ts';
 import { ExamSession } from '../shared-between-exams/exam-session.tsx';
 import { CourseExamNotTranslated } from './course-exam-not-translated.tsx';
 import { CourseExamPresentation } from './course-exam-presentation.tsx';
@@ -60,7 +57,7 @@ export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
 
   function onRefreshExam() {
     refetchExamResults();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ behavior: 'smooth', top: 0 });
   }
 
   const examHasQuestions =

@@ -1,5 +1,5 @@
 import type { FormattedProfessor } from '@blms/types';
-import { TextTag, cn } from '@blms/ui';
+import { cn, TextTag } from '@blms/ui';
 
 import { ProfessorCardReduced, SocialLinks } from './professor-card.tsx';
 

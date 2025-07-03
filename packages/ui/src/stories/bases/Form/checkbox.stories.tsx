@@ -2,10 +2,24 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Checkbox } from '#src/bases/checkbox.tsx';
 
 const meta: Meta<typeof Checkbox> = {
+  argTypes: {
+    checked: {
+      control: 'boolean',
+    },
+    className: {
+      control: 'text',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    size: {
+      control: 'select',
+      defaultValue: 'm',
+      options: ['s', 'm'],
+    },
+  },
   component: Checkbox,
-  title: 'Bases/Form/checkbox',
   parameters: {
-    layout: 'centered',
     backgrounds: {
       default: 'light',
       values: [
@@ -13,109 +27,95 @@ const meta: Meta<typeof Checkbox> = {
         { name: 'dark', value: '#333333' },
       ],
     },
-  },
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['s', 'm'],
-      defaultValue: 'm',
-    },
-    checked: {
-      control: 'boolean',
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    className: {
-      control: 'text',
-    },
+    layout: 'centered',
   },
   tags: ['autodocs'],
+  title: 'Bases/Form/checkbox',
 };
 
 export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const DefaultMedium: Story = {
-  name: 'Default Medium (Unchecked)',
   args: {
-    size: 'm',
     checked: false,
     disabled: false,
+    size: 'm',
   },
+  name: 'Default Medium (Unchecked)',
 };
 
 export const DefaultSmall: Story = {
-  name: 'Default Small (Unchecked)',
   args: {
-    size: 's',
     checked: false,
     disabled: false,
+    size: 's',
   },
+  name: 'Default Small (Unchecked)',
 };
 
 export const CheckedMedium: Story = {
-  name: 'Checked Medium',
   args: {
-    size: 'm',
     checked: true,
     disabled: false,
+    size: 'm',
   },
+  name: 'Checked Medium',
 };
 
 export const CheckedSmall: Story = {
-  name: 'Checked Small',
   args: {
-    size: 's',
     checked: true,
     disabled: false,
+    size: 's',
   },
+  name: 'Checked Small',
 };
 
 export const DisabledUncheckedMedium: Story = {
-  name: 'Disabled Medium (Unchecked)',
   args: {
-    size: 'm',
     checked: false,
     disabled: true,
+    size: 'm',
   },
+  name: 'Disabled Medium (Unchecked)',
 };
 
 export const DisabledCheckedMedium: Story = {
-  name: 'Disabled Medium (Checked)',
   args: {
-    size: 'm',
     checked: true,
     disabled: true,
+    size: 'm',
   },
+  name: 'Disabled Medium (Checked)',
 };
 
 export const DisabledUncheckedSmall: Story = {
-  name: 'Disabled Small (Unchecked)',
   args: {
-    size: 's',
     checked: false,
     disabled: true,
+    size: 's',
   },
+  name: 'Disabled Small (Unchecked)',
 };
 
 export const DisabledCheckedSmall: Story = {
-  name: 'Disabled Small (Checked)',
   args: {
-    size: 's',
     checked: true,
     disabled: true,
+    size: 's',
   },
+  name: 'Disabled Small (Checked)',
 };
 
 export const WithLabel: Story = {
-  name: 'With Label (Medium)',
   args: {
-    size: 'm',
     id: 'terms-checkbox-medium',
+    size: 'm',
   },
+  name: 'With Label (Medium)',
   render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+    <div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>
       <Checkbox {...args} />
       <label
         htmlFor={args.id}
@@ -128,13 +128,13 @@ export const WithLabel: Story = {
 };
 
 export const WithLabelSmall: Story = {
-  name: 'With Label (Small)',
   args: {
-    size: 's',
     id: 'terms-checkbox-small',
+    size: 's',
   },
+  name: 'With Label (Small)',
   render: (args) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+    <div style={{ alignItems: 'center', display: 'flex', gap: '6px' }}>
       <Checkbox {...args} />
       <label
         htmlFor={args.id}

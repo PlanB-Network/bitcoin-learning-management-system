@@ -93,15 +93,15 @@ export const createSendCourseStartingSoonEmail = (
 
         try {
           await sendEmail({
-            email: user.email,
-            subject: subject,
-            template: 'd-d1bdb6bbffdf40be903b8d7cde8b9c2d',
             data: {
               courseName: courseName,
               joinClassLink: joinClassLink,
-              unsubscribeLink: unsubscribeLink,
               subject: subject,
+              unsubscribeLink: unsubscribeLink,
             },
+            email: user.email,
+            subject: subject,
+            template: 'd-d1bdb6bbffdf40be903b8d7cde8b9c2d',
           });
         } catch (emailError) {
           console.error(

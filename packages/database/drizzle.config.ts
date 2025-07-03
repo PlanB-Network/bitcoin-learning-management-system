@@ -1,24 +1,24 @@
 import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  schema: './drizzle/schema.ts',
-  out: './drizzle/migrations',
-  dialect: 'postgresql',
-  introspect: {
-    casing: 'camel',
-  },
   casing: 'snake_case',
-  schemaFilter: ['users', 'content'],
   dbCredentials: {
-    host: process.env.POSTGRES_HOST || '127.0.0.1',
-    port: Number(process.env.POSTGRES_PORT) || 5432,
-    user: process.env.POSTGRES_USER || 'postgres',
-    password: process.env.POSTGRES_PASSWORD || 'postgres',
     database: process.env.POSTGRES_DB || 'postgres',
+    host: process.env.POSTGRES_HOST || '127.0.0.1',
+    password: process.env.POSTGRES_PASSWORD || 'postgres',
+    port: Number(process.env.POSTGRES_PORT) || 5432,
     ssl:
       process.env.NODE_ENV === 'production' ||
       process.env.NODE_ENV === 'testnet'
         ? 'prefer'
         : false,
+    user: process.env.POSTGRES_USER || 'postgres',
   },
+  dialect: 'postgresql',
+  introspect: {
+    casing: 'camel',
+  },
+  out: './drizzle/migrations',
+  schema: './drizzle/schema.ts',
+  schemaFilter: ['users', 'content'],
 });

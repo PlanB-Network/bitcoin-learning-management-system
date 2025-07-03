@@ -1,16 +1,13 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-
-import { Loader } from '@blms/ui';
-
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { ProjectCard } from '../-components/cards/project-card.js';
 import { ResourceLayout } from '../-components/resource-layout.js';
 

@@ -1,7 +1,6 @@
-import { TRPCError } from '@trpc/server';
-
 import { TokenType } from '@blms/constants';
 import { firstRow, rejectOnEmpty } from '@blms/database';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '#src/dependencies.js';
 
@@ -34,12 +33,12 @@ export const createPasswordRecoveryToken = (deps: Dependencies) => {
       .then(rejectOnEmpty)
       .then((token) =>
         sendEmail({
-          email,
-          subject: 'Recover your password',
-          template,
           data: {
             token_url: `${domain}/recover-password/${token.id}`,
           },
+          email,
+          subject: 'Recover your password',
+          template,
         }),
       )
       .then(() => ({ success: true }))

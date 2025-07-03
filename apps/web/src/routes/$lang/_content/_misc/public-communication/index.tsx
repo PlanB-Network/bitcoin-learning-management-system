@@ -5,8 +5,8 @@ export const Route = createFileRoute(
 )({
   loader: () => {
     return redirect({
-      to: '/public-communication/blogs-and-news',
       throw: false,
+      to: '/public-communication/blogs-and-news',
     });
   },
 });

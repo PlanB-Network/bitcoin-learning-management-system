@@ -1,7 +1,6 @@
+import { format, isSameDay } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
-
-import { format, isSameDay } from 'date-fns';
 import type { CalendarEvent } from './calendar-event.js';
 
 type CustomAgendaEventProps = EventProps<CalendarEvent>;
@@ -13,12 +12,12 @@ export const CustomAgendaEvent = ({ event }: CustomAgendaEventProps) => {
     <div
       className="md:ml-2 md:mt-2"
       style={{
-        padding: '10px',
-        width: '100%',
         height: `${isSelected ? 'fit-content' : '100%'}`,
+        overflow: 'hidden',
+        padding: '10px',
         paddingLeft: 0,
         paddingTop: 0,
-        overflow: 'hidden',
+        width: '100%',
       }}
       onPointerEnter={() => setIsSelected(true)}
       onPointerLeave={() => setIsSelected(false)}

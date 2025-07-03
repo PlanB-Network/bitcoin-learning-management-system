@@ -1,27 +1,4 @@
 {
-  "name": "@blms/types",
-  "version": "0.0.1",
-  "type": "module",
-  "exports": {
-    "development": "./src/index.ts",
-    "import": "./dist/src/index.js",
-    "types": "./src/index.ts"
-  },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "scripts": {
-    "build": "tsc --build tsconfig.json && pnpm lint:fix",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write ./src/generated",
-    "types:generate": "tsx ./scripts/generate-from-schemas.ts && pnpm lint:fix",
-    "types:generate:bun": "bun run ./scripts/generate-from-schemas.ts && bun lint:fix",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit -p tsconfig.json",
-    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
-    "generate-types": "tsx ./scripts/generate-from-schemas.ts && pnpm lint:fix",
-    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
-  },
   "devDependencies": {
     "@blms/constants": "workspace:*",
     "@blms/schemas": "workspace:*",
@@ -30,5 +7,28 @@
     "typesense": "^2.0.3",
     "zod": "^3.25.67",
     "zod-to-ts": "^1.2.0"
-  }
+  },
+  "exports": {
+    "development": "./src/index.ts",
+    "import": "./dist/src/index.js",
+    "types": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "name": "@blms/types",
+  "scripts": {
+    "build": "tsc --build tsconfig.json && pnpm lint:fix",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "check-types": "tsc --noEmit -p tsconfig.json",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
+    "generate-types": "tsx ./scripts/generate-from-schemas.ts",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ./src/generated",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
+    "type-check": "tsc --build",
+    "types:generate": "tsx ./scripts/generate-from-schemas.ts",
+    "types:generate:bun": "bun run ./scripts/generate-from-schemas.ts && bun lint:fix"
+  },
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

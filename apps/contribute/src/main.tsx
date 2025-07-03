@@ -1,9 +1,9 @@
 import {
-  Outlet,
-  RouterProvider,
   createRootRoute,
   createRoute,
   createRouter,
+  Outlet,
+  RouterProvider,
 } from '@tanstack/react-router';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
@@ -26,12 +26,12 @@ function makeQueryClient() {
   });
 }
 
-let browserQueryClient: QueryClient | undefined = undefined;
+let browserQueryClient: QueryClient | undefined;
 function getQueryClient() {
   if (typeof window === 'undefined') {
     // Server: always make a new query client
     return makeQueryClient();
-    // biome-ignore lint/style/noUselessElse: <explanation>
+    // biome-ignore lint/style/noUselessElse: explanation
   } else {
     // Browser: make a new query client if we don't already have one
     // This is very important, so we don't re-make a new client if React
@@ -51,21 +51,21 @@ const rootRoute = createRootRoute({
 });
 
 const indexRoute = createRoute({
+  component: App,
   getParentRoute: () => rootRoute,
   path: '/',
-  component: App,
 });
 
 const routeTree = rootRoute.addChildren([indexRoute]);
 
 export const router = createRouter({
-  routeTree,
-  defaultPreload: false,
   context: {
     i18n: undefined,
   },
-  unmaskOnReload: true,
+  defaultPreload: false,
+  routeTree,
   scrollRestoration: true,
+  unmaskOnReload: true,
 });
 
 declare module '@tanstack/react-router' {

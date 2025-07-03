@@ -1,9 +1,9 @@
 // TODO: use normal error
-import { TRPCError } from '@trpc/server';
-
-import { firstRow } from '@blms/database';
 
 import type { UserRole } from '@blms/constants';
+
+import { firstRow } from '@blms/database';
+import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../../dependencies.js';
 import { changeRoleQuery } from '../queries/change-role.js';
 import { getUserByIdQuery } from '../queries/get-user.js';

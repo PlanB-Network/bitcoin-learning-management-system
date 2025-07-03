@@ -49,8 +49,8 @@ export const createCompleteExamAttempt = ({ postgres }: Dependencies) => {
       .exec(
         updateExamAttemptQuery({
           examId,
-          succeeded: succeeded,
           score: Math.round((correctAnswersCount / questionsCount) * 100),
+          succeeded: succeeded,
         }),
       )
       .then(async (result) => {

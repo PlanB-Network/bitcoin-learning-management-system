@@ -1,8 +1,7 @@
-import React from 'react';
-import { FaArrowRightLong } from 'react-icons/fa6';
-
 import type { ButtonProps } from '@blms/ui';
 import { Button, cn } from '@blms/ui';
+import React from 'react';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 interface ButtonWithArrowProps extends ButtonProps {
   children: React.ReactNode;

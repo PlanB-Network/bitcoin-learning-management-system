@@ -1,12 +1,9 @@
+import { cn, customToast, ScrollToTopButton } from '@blms/ui';
 import { type JSX, useEffect, useRef } from 'react';
-
-import { ScrollToTopButton, cn, customToast } from '@blms/ui';
-
-import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-
 import { useTranslation } from 'react-i18next';
-import { Header } from './Header/header.tsx';
+import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { Footer } from './footer.tsx';
+import { Header } from './Header/header.tsx';
 
 interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
@@ -27,10 +24,10 @@ export const MainLayout = ({
   const box = useRef<HTMLDivElement | null>(null);
 
   const bgColorClasses = {
-    light: 'bg-white',
-    dark: 'bg-black',
     blue: 'bg-blue-200',
+    dark: 'bg-black',
     gray: 'bg-newGray-6',
+    light: 'bg-white',
   };
 
   // using session storage to check if user just registered and show toast
@@ -39,14 +36,14 @@ export const MainLayout = ({
 
     if (hasJustRegistered) {
       customToast(t('auth.dashboardUnlocked'), {
-        mode: variant === 'dark' ? 'dark' : 'light',
-        color: 'primary',
-        time: 5000,
         closeButton: true,
+        color: 'primary',
         imgSrc: SignInIconLight,
+        mode: variant === 'dark' ? 'dark' : 'light',
         onClick: () => {
           window.location.href = '/dashboard/courses';
         },
+        time: 5000,
       });
 
       sessionStorage.removeItem('hasJustRegistered');

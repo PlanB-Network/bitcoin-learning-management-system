@@ -1,19 +1,16 @@
+import { BackLink, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-
-import { BackLink, Loader } from '@blms/ui';
-
 import { AuthorCardFull } from '#src/components/author-card-full.js';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
-import { formatNameForURL } from '#src/utils/string.js';
-import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { isUUID } from '#src/utils/index.ts';
+import { formatNameForURL } from '#src/utils/string.js';
+import { trpc } from '#src/utils/trpc.js';
 import { CourseCard } from '../../../../patterns/course-card.tsx';
 import { LectureCard } from '../resources/-components/cards/lecture-card.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
@@ -21,6 +18,7 @@ import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 export const Route = createFileRoute(
   '/$lang/_content/_misc/professor/$professorName-$professorId',
 )({
+  component: ProfessorDetail,
   params: {
     parse: (params) => {
       const paramNameId = params['professorName-$professorId'];
@@ -28,9 +26,9 @@ export const Route = createFileRoute(
 
       return {
         lang: z.string().parse(params.lang),
-        'professorName-$professorId': `${name}-${id}`,
-        professorName: z.string().parse(name),
         professorId: z.string().parse(id),
+        professorName: z.string().parse(name),
+        'professorName-$professorId': `${name}-${id}`,
       };
     },
     stringify: ({ lang, professorName, professorId }) => ({
@@ -38,7 +36,6 @@ export const Route = createFileRoute(
       'professorName-$professorId': `${professorName}-${professorId}`,
     }),
   },
-  component: ProfessorDetail,
 });
 
 function ProfessorDetail() {
@@ -50,8 +47,8 @@ function ProfessorDetail() {
   const { data: professor, isFetched } = useQuery(
     trpc.content.getProfessor.queryOptions(
       {
-        professorId: params.professorId,
         language: i18n.language,
+        professorId: params.professorId,
       },
       {
         enabled: isUUID(params.professorId),
@@ -82,8 +79,8 @@ function ProfessorDetail() {
       params.professorName !== formatNameForURL(professor.name)
     ) {
       navigate({
-        to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
         replace: true,
+        to: `/professor/${formatNameForURL(professor.name)}-${professor.id}`,
       });
     }
   }, [professor, isFetched, navigateTo404, navigate, params.professorName]);

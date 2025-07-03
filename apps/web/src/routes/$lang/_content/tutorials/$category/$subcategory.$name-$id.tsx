@@ -1,18 +1,19 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { GetTutorialResponse, JoinedProofreading } from '@blms/types';
+import { cn, customToast, DividerSimple, Loader } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { memo, Suspense, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { IoCheckmark } from 'react-icons/io5';
 import { z } from 'zod';
-
-import { DividerSimple, Loader, cn, customToast } from '@blms/ui';
-
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
 // import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
+import { AuthorCard } from '#src/components/author-card.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { MainLayout } from '#src/components/main-layout.tsx';
 import {
@@ -22,15 +23,11 @@ import {
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { AppContext } from '#src/providers/context.js';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import type { GetTutorialResponse, JoinedProofreading } from '@blms/types';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { AuthorCard } from '#src/components/author-card.tsx';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 
@@ -41,35 +38,31 @@ const TutorialsMarkdownBody = React.lazy(
 export const Route = createFileRoute(
   '/$lang/_content/tutorials/$category/$subcategory/$name-$id',
 )({
+  component: TutorialDetails,
   params: {
     parse: (params) => {
       const nameId = params['name-$id'];
       const { id, name } = getNameAndIdFromUrl(nameId);
 
       return {
-        lang: z.string().parse(params.lang),
-        'name-$id': nameId,
-        name: z.string().parse(name),
-        id: z.string().parse(id),
         category: z.string().parse(params.category),
+        id: z.string().parse(id),
+        lang: z.string().parse(params.lang),
+        name: z.string().parse(name),
+        'name-$id': nameId,
         subcategory: z.string().parse(params.subcategory),
       };
     },
     stringify: ({ lang, name, id, category, subcategory }) => ({
-      lang: lang,
       category: category,
-      subcategory: subcategory,
+      lang: lang,
       'name-$id': `${name}-${id}`,
+      subcategory: subcategory,
     }),
   },
-  component: TutorialDetails,
 });
 
-const Header = ({
-  tutorial,
-}: {
-  tutorial: GetTutorialResponse;
-}) => {
+const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
   return (
     <div>
       <section className="flex justify-between items-end gap-4 w-full border-b md:border-b-2 border-newBlack-3 py-1 md:py-2.5">
@@ -117,11 +110,7 @@ const Header = ({
   );
 };
 
-const AuthorDetails = ({
-  tutorial,
-}: {
-  tutorial: GetTutorialResponse;
-}) => {
+const AuthorDetails = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
   const author = tutorial?.professor;
 
   return (
@@ -259,11 +248,11 @@ function TutorialDetails() {
   const { navigateTo404 } = useNavigateMisc();
 
   // States
-  const [isLiked, setIsLiked] = useState({ liked: false, disliked: false });
+  const [isLiked, setIsLiked] = useState({ disliked: false, liked: false });
 
   const [likesCounts, setLikesCounts] = useState({
-    likeCount: 0,
     dislikeCount: 0,
+    likeCount: 0,
   });
 
   const {
@@ -294,8 +283,8 @@ function TutorialDetails() {
         params.subcategory !== formatNameForURL(tutorial.subcategory ?? ''))
     ) {
       navigate({
-        to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}-${tutorial.id}`,
         replace: true,
+        to: `/tutorials/${formatNameForURL(tutorial.category)}/${formatNameForURL(tutorial.subcategory || '')}/${formatNameForURL(tutorial.name)}-${tutorial.id}`,
       });
     }
   }, [
@@ -339,10 +328,10 @@ function TutorialDetails() {
           (wasDisliked && !variables.liked)
         ) {
           customToast(t('tutorials.details.ratingSuccess'), {
-            mode: 'light',
+            closeButton: true,
             color: 'success',
             icon: IoCheckmark,
-            closeButton: true,
+            mode: 'light',
             time: 5000,
           });
         }
@@ -354,15 +343,15 @@ function TutorialDetails() {
   useEffect(() => {
     if (tutorial) {
       setLikesCounts({
-        likeCount: tutorial.likeCount,
         dislikeCount: tutorial.dislikeCount,
+        likeCount: tutorial.likeCount,
       });
     }
   }, [tutorial]);
 
   // Update existing like when fetched
   useEffect(() => {
-    setIsLiked(existingLike || { liked: false, disliked: false });
+    setIsLiked(existingLike || { disliked: false, liked: false });
   }, [existingLike]);
 
   // Like/dislike buttons component
@@ -373,15 +362,15 @@ function TutorialDetails() {
 
       likeTutorialMutation.mutate({ id: tutorial.id, liked: true });
       setIsLiked((prev) => ({
-        liked: !prev.liked,
         disliked: false,
+        liked: !prev.liked,
       }));
       setLikesCounts((prev) => {
         return {
-          likeCount: isLiked.liked ? prev.likeCount - 1 : prev.likeCount + 1,
           dislikeCount: isLiked.disliked
             ? prev.dislikeCount - 1
             : prev.dislikeCount,
+          likeCount: isLiked.liked ? prev.likeCount - 1 : prev.likeCount + 1,
         };
       });
     };
@@ -394,15 +383,15 @@ function TutorialDetails() {
         liked: false,
       });
       setIsLiked((prev) => ({
-        liked: false,
         disliked: !prev.disliked,
+        liked: false,
       }));
       setLikesCounts((prev) => {
         return {
-          likeCount: isLiked.liked ? prev.likeCount - 1 : prev.likeCount,
           dislikeCount: isLiked.disliked
             ? prev.dislikeCount - 1
             : prev.dislikeCount + 1,
+          likeCount: isLiked.liked ? prev.likeCount - 1 : prev.likeCount,
         };
       });
     };
@@ -500,8 +489,8 @@ function TutorialDetails() {
                   <Header
                     tutorial={{
                       ...tutorial,
-                      likeCount: likesCounts.likeCount,
                       dislikeCount: likesCounts.dislikeCount,
+                      likeCount: likesCounts.likeCount,
                     }}
                   />
                   <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
@@ -544,11 +533,7 @@ function TutorialDetails() {
 }
 
 const MarkdownContent = memo(
-  ({
-    tutorial,
-  }: {
-    tutorial: GetTutorialResponse;
-  }) => {
+  ({ tutorial }: { tutorial: GetTutorialResponse }) => {
     return (
       <Suspense fallback={<Loader size={'s'} />}>
         {tutorial && (

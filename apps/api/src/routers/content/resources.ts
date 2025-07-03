@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 import {
   joinedBetSchema,
   joinedBookSchema,
@@ -46,6 +44,7 @@ import type {
   JoinedProject,
   JoinedYoutubeChannel,
 } from '@blms/types';
+import { z } from 'zod';
 
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -65,31 +64,21 @@ const createGetResourceProcedure = () => {
 
 const createGetResourceProcedureWithStrId = () => {
   return publicProcedure.input(
-    z.object({ strId: z.string(), language: z.string() }),
+    z.object({ language: z.string(), strId: z.string() }),
   );
 };
 
 export const resourcesRouter = createTRPCRouter({
-  // Search
-  search: publicProcedure
-    .input(
-      z.object({
-        query: z.string(),
-        language: z.string(),
-        categories: z.string().array().optional(),
-        cursor: z.number().optional().default(1),
-        limit: z.number().optional().default(10),
-        surroundingWords: z.number().optional().default(20),
-      }),
-    )
-    .query(({ ctx, input }) => {
-      return createSearch(ctx.dependencies)(input);
-    }),
   // Bets
   getBets: createGetResourcesProcedure()
     .output<Parser<JoinedBet[]>>(joinedBetSchema.array())
     .query(({ ctx, input }) => {
       return createGetBets(ctx.dependencies)(input?.language);
+    }),
+  getBook: createGetResourceProcedure()
+    .output<Parser<JoinedBook>>(joinedBookSchema)
+    .query(({ ctx, input }) => {
+      return createGetBook(ctx.dependencies)(input.id, input.language);
     }),
   // Books
   getBooks: createGetResourcesProcedure()
@@ -97,22 +86,9 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return createGetBooks(ctx.dependencies)(input?.language);
     }),
-  getBook: createGetResourceProcedure()
-    .output<Parser<JoinedBook>>(joinedBookSchema)
-    .query(({ ctx, input }) => {
-      return createGetBook(ctx.dependencies)(input.id, input.language);
-    }),
-  // Projects
-  getProjects: createGetResourcesProcedure()
-    .output<Parser<JoinedProject[]>>(joinedProjectSchema.array())
-    .query(({ ctx, input }) => {
-      return createGetProjects(ctx.dependencies)(input?.language);
-    }),
-  getProject: createGetResourceProcedure()
-    .output<Parser<JoinedProject>>(joinedProjectSchema)
-    .query(({ ctx, input }) => {
-      return createGetProject(ctx.dependencies)(input.id, input.language);
-    }),
+  getConference: createGetResourceProcedure()
+    .output<Parser<JoinedConference>>(joinedConferenceSchema)
+    .query(({ ctx, input }) => createGetConference(ctx.dependencies)(input.id)),
   // Conferences
   getConferences: createGetResourcesProcedure()
     .input(z.object({ projectId: z.string().optional() }).optional())
@@ -120,15 +96,6 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx, input }) =>
       createGetConferences(ctx.dependencies)(input?.projectId),
     ),
-  getConference: createGetResourceProcedure()
-    .output<Parser<JoinedConference>>(joinedConferenceSchema)
-    .query(({ ctx, input }) => createGetConference(ctx.dependencies)(input.id)),
-  // Glossary Words
-  getGlossaryWords: createGetResourcesProcedure()
-    .output<Parser<JoinedGlossaryWord[]>>(joinedGlossaryWordSchema.array())
-    .query(({ ctx, input }) => {
-      return createGetGlossaryWords(ctx.dependencies)(input?.language);
-    }),
   getGlossaryWord: createGetResourceProcedureWithStrId()
     .output<Parser<JoinedGlossaryWord>>(joinedGlossaryWordSchema)
     .query(({ ctx, input }) => {
@@ -137,12 +104,11 @@ export const resourcesRouter = createTRPCRouter({
         input.language,
       );
     }),
-  // Lectures
-  getLectures: createGetResourcesProcedure()
-    .input(z.object({ professorId: z.string().optional() }).optional())
-    .output<Parser<JoinedEvent[]>>(joinedEventSchema.array())
+  // Glossary Words
+  getGlossaryWords: createGetResourcesProcedure()
+    .output<Parser<JoinedGlossaryWord[]>>(joinedGlossaryWordSchema.array())
     .query(({ ctx, input }) => {
-      return createGetLectures(ctx.dependencies)(input?.professorId);
+      return createGetGlossaryWords(ctx.dependencies)(input?.language);
     }),
   getLecture: createGetResourceProcedureWithStrId()
     .output<Parser<JoinedEvent>>(joinedEventSchema)
@@ -152,6 +118,18 @@ export const resourcesRouter = createTRPCRouter({
         ctx.user.uid || '',
       );
     }),
+  // Lectures
+  getLectures: createGetResourcesProcedure()
+    .input(z.object({ professorId: z.string().optional() }).optional())
+    .output<Parser<JoinedEvent[]>>(joinedEventSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetLectures(ctx.dependencies)(input?.professorId);
+    }),
+  getMovie: createGetResourceProcedure()
+    .output<Parser<JoinedMovie>>(joinedMovieSchema)
+    .query(({ ctx, input }) => {
+      return createGetMovie(ctx.dependencies)(input.id);
+    }),
 
   // Movies
   getMovies: createGetResourcesProcedure()
@@ -159,10 +137,10 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx }) => {
       return createGetMovies(ctx.dependencies)();
     }),
-  getMovie: createGetResourceProcedure()
-    .output<Parser<JoinedMovie>>(joinedMovieSchema)
+  getNewsletter: createGetResourceProcedure()
+    .output<Parser<JoinedNewsletter>>(joinedNewsletterSchema)
     .query(({ ctx, input }) => {
-      return createGetMovie(ctx.dependencies)(input.id);
+      return createGetNewsletter(ctx.dependencies)(input.id);
     }),
 
   //Newsletters
@@ -172,10 +150,10 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return createGetNewsletters(ctx.dependencies)(input?.projectId);
     }),
-  getNewsletter: createGetResourceProcedure()
-    .output<Parser<JoinedNewsletter>>(joinedNewsletterSchema)
+  getPodcast: createGetResourceProcedure()
+    .output<Parser<JoinedPodcast>>(joinedPodcastSchema)
     .query(({ ctx, input }) => {
-      return createGetNewsletter(ctx.dependencies)(input.id);
+      return createGetPodcast(ctx.dependencies)(input.id);
     }),
   // Podcasts
   getPodcasts: createGetResourcesProcedure()
@@ -183,10 +161,21 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx }) => {
       return createGetPodcasts(ctx.dependencies)();
     }),
-  getPodcast: createGetResourceProcedure()
-    .output<Parser<JoinedPodcast>>(joinedPodcastSchema)
+  getProject: createGetResourceProcedure()
+    .output<Parser<JoinedProject>>(joinedProjectSchema)
     .query(({ ctx, input }) => {
-      return createGetPodcast(ctx.dependencies)(input.id);
+      return createGetProject(ctx.dependencies)(input.id, input.language);
+    }),
+  // Projects
+  getProjects: createGetResourcesProcedure()
+    .output<Parser<JoinedProject[]>>(joinedProjectSchema.array())
+    .query(({ ctx, input }) => {
+      return createGetProjects(ctx.dependencies)(input?.language);
+    }),
+  getYoutubeChannel: createGetResourceProcedure()
+    .output<Parser<JoinedYoutubeChannel>>(joinedYoutubeChannelSchema)
+    .query(({ ctx, input }) => {
+      return createGetYoutubeChannel(ctx.dependencies)(input.id);
     }),
 
   // Youtube Channels
@@ -196,9 +185,19 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return createGetYoutubeChannels(ctx.dependencies)(input?.projectId);
     }),
-  getYoutubeChannel: createGetResourceProcedure()
-    .output<Parser<JoinedYoutubeChannel>>(joinedYoutubeChannelSchema)
+  // Search
+  search: publicProcedure
+    .input(
+      z.object({
+        categories: z.string().array().optional(),
+        cursor: z.number().optional().default(1),
+        language: z.string(),
+        limit: z.number().optional().default(10),
+        query: z.string(),
+        surroundingWords: z.number().optional().default(20),
+      }),
+    )
     .query(({ ctx, input }) => {
-      return createGetYoutubeChannel(ctx.dependencies)(input.id);
+      return createSearch(ctx.dependencies)(input);
     }),
 });

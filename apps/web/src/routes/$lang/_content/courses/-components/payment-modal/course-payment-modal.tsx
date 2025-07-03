@@ -1,28 +1,24 @@
+import type { CheckoutData, CouponCode, CourseResponse } from '@blms/types';
+import {
+  Button,
+  customToast,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@blms/ui';
 import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
-
-import type { CheckoutData, CouponCode, CourseResponse } from '@blms/types';
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  customToast,
-} from '@blms/ui';
-
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
@@ -81,13 +77,13 @@ export const CoursePaymentModal = ({
     async (method: 'sbp' | 'stripe' | null) => {
       if (method) {
         const serverCheckoutData = await savePaymentRequest.mutateAsync({
+          couponCode: validatedCoupon?.code,
           courseId: course.id,
           courseIndex: course.index,
-          satsPrice: satsPriceReduced,
           dollarPrice: dollarPriceReduced,
-          couponCode: validatedCoupon?.code,
           format: coursePaymentFormat,
           method: method,
+          satsPrice: satsPriceReduced,
         });
         setCheckoutData(serverCheckoutData);
         if (
@@ -167,10 +163,10 @@ export const CoursePaymentModal = ({
   useEffect(() => {
     if (isPaymentSuccess) {
       customToast(t('courses.details.courseAddedToDashboard'), {
-        color: 'primary',
-        mode: 'light',
-        imgSrc: SignInIconLight,
         closeButton: true,
+        color: 'primary',
+        imgSrc: SignInIconLight,
+        mode: 'light',
       });
     }
   }, [isPaymentSuccess]);

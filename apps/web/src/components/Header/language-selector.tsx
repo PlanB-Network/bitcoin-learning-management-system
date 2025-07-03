@@ -1,19 +1,16 @@
+import { LANGUAGES_MAP } from '@blms/shared';
+import { Button, cn, Popover, PopoverContent, PopoverTrigger } from '@blms/ui';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { CiGlobe } from 'react-icons/ci';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
   MdOutlineCheck,
 } from 'react-icons/md';
-
-import { Button, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
-
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
-
-import { LANGUAGES_MAP } from '@blms/shared';
-import { CiGlobe } from 'react-icons/ci';
 import { LANGUAGES } from '../../utils/i18n.ts';
 
 interface LanguageSelectorProps {
@@ -23,15 +20,15 @@ interface LanguageSelectorProps {
 }
 
 const variantHeaderBackgroundMapClass = {
-  light: 'text-black',
   dark: 'text-white',
   darkOrange: 'text-white bg-darkOrange-11',
+  light: 'text-black',
 };
 
 const variantSelectorMapClass = {
-  light: 'text-darkOrange-10 lg:bg-darkOrange-2',
   dark: 'text-white lg:bg-newBlack-3',
   darkOrange: 'text-[#909093] lg:bg-[#25262d]',
+  light: 'text-darkOrange-10 lg:bg-darkOrange-2',
 };
 
 export const LanguageSelector = ({
@@ -50,8 +47,8 @@ export const LanguageSelector = ({
     const pathWithoutLang = location.pathname.replace(/^\/[^/]+/, '');
     const newPath = `/${lang}${pathWithoutLang}${location.hash}${location.search}`;
     router.navigate({
-      to: newPath,
       replace: true,
+      to: newPath,
     });
 
     setCurrentLanguage(lang);
@@ -165,8 +162,8 @@ export const LanguageSelectorMobile = ({
     const pathWithoutLang = location.pathname.replace(/^\/[^/]+/, '');
     const newPath = `/${lang}${pathWithoutLang}${location.hash}${location.search}`;
     router.navigate({
-      to: newPath,
       replace: true,
+      to: newPath,
     });
 
     setCurrentLanguage(lang);

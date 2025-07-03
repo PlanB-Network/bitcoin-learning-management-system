@@ -11,7 +11,7 @@ export const createSendEmail = ({ config }: Pick<Dependencies, 'config'>) => {
   return async ({ email, subject, ...options }: SendEmailOptions<object>) => {
     if (!config.sendgrid.enable) {
       console.log('Email sending disabled');
-      console.debug('Email:', { email, subject, options });
+      console.debug('Email:', { email, options, subject });
       return;
     }
 
@@ -24,25 +24,25 @@ export const createSendEmail = ({ config }: Pick<Dependencies, 'config'>) => {
     }
 
     return fetch('https://api.sendgrid.com/v3/mail/send', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${config.sendgrid.key}`,
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({
-        subject,
         from: {
           email: config.sendgrid.email,
           name: 'Plan B Network',
         },
-        template_id: options.template,
         personalizations: [
           {
-            to: [{ email }],
             dynamic_template_data: options.data,
+            to: [{ email }],
           },
         ],
+        subject,
+        template_id: options.template,
       }),
+      headers: {
+        Authorization: `Bearer ${config.sendgrid.key}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
     });
   };
 };

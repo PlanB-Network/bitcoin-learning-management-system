@@ -4,10 +4,10 @@
 import type { TokenType } from '@blms/constants';
 
 export interface Token {
-  id: string;
-  uid: string;
-  type: TokenType;
+  consumedAt: Date | null;
   data: string | null;
   expiresAt: Date;
-  consumedAt: Date | null;
+  id: string;
+  type: TokenType;
+  uid: string;
 }

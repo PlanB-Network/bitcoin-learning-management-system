@@ -1,14 +1,11 @@
+import { Loader } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
-
-import { Loader } from '@blms/ui';
-
-import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
-import { PageLayout } from '#src/components/page-layout.js';
-
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
 import { LabsPresentation } from '#src/components/labs-presentation.tsx';
+import { PageLayout } from '#src/components/page-layout.js';
 import { AppContext } from '#src/providers/context.tsx';
 import { CourseSelector } from './-components/course-selector.tsx';
 import { CoursesGallery } from './-components/courses-gallery.tsx';

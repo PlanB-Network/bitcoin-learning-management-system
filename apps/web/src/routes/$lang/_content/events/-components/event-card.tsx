@@ -1,11 +1,8 @@
+import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
+import { Button, cn, Flag, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { HiVideoCamera } from 'react-icons/hi2';
-
-import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
-import { Button, Flag, cn } from '@blms/ui';
-
-import { Image } from '@blms/ui';
 import { useGreater } from '#src/hooks/use-greater.js';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { formatDateRange, formatHourRange } from '#src/utils/date.js';
@@ -200,10 +197,10 @@ export const EventCard = ({
               onClick={() => {
                 if (isLoggedIn) {
                   setPaymentModalData({
+                    accessType: 'online',
+                    dollarPrice: dollarPrice,
                     eventId: event.id,
                     satsPrice: satsPrice,
-                    dollarPrice: dollarPrice,
-                    accessType: 'online',
                   });
                   setIsPaymentModalOpen(true);
                 } else {
@@ -246,10 +243,10 @@ export const EventCard = ({
               onClick={() => {
                 if (isLoggedIn) {
                   setPaymentModalData({
+                    accessType: 'online',
+                    dollarPrice: dollarPrice,
                     eventId: event.id,
                     satsPrice: satsPrice,
-                    dollarPrice: dollarPrice,
-                    accessType: 'online',
                   });
                   setIsPaymentModalOpen(true);
                 } else {
@@ -274,10 +271,10 @@ export const EventCard = ({
               onClick={() => {
                 if (isLoggedIn) {
                   setPaymentModalData({
+                    accessType: 'physical',
+                    dollarPrice: dollarPrice,
                     eventId: event.id,
                     satsPrice: satsPrice,
-                    dollarPrice: dollarPrice,
-                    accessType: 'physical',
                   });
                   setIsPaymentModalOpen(true);
                 } else {
@@ -350,10 +347,10 @@ export const EventCard = ({
         onClick={() => {
           if (isLoggedIn) {
             setPaymentModalData({
+              accessType: 'replay',
+              dollarPrice: dollarPrice,
               eventId: event.id,
               satsPrice: satsPrice,
-              dollarPrice: dollarPrice,
-              accessType: 'replay',
             });
             setIsPaymentModalOpen(true);
           } else {

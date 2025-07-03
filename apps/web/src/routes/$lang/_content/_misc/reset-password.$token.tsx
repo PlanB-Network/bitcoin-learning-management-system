@@ -1,11 +1,9 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Button, Input } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-
-import { Button, Input } from '@blms/ui';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { MainLayout } from '#src/components/main-layout.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -23,6 +21,7 @@ enum PageState {
 export const Route = createFileRoute(
   '/$lang/_content/_misc/reset-password/$token',
 )({
+  component: ResetPasswordPage,
   params: {
     parse: (params) => ({
       lang: z.string().parse(params.lang),
@@ -33,7 +32,6 @@ export const Route = createFileRoute(
       token: `${token}`,
     }),
   },
-  component: ResetPasswordPage,
 });
 
 function ResetPasswordPage() {
@@ -74,11 +72,11 @@ function ResetPasswordPage() {
   // Call the API to validate the email change
   const sendNewPassword = useMutation(
     trpc.user.resetPassword.mutationOptions({
-      onSuccess: () => {
-        setPageState(PageState.SUCCESS);
-      },
       onError: () => {
         setPageState(PageState.ERROR);
+      },
+      onSuccess: () => {
+        setPageState(PageState.SUCCESS);
       },
     }),
   );
@@ -94,7 +92,7 @@ function ResetPasswordPage() {
     const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
     const newPassword = formData.get('password') as string;
-    sendNewPassword.mutate({ resetToken: tokenInfo.id, newPassword });
+    sendNewPassword.mutate({ newPassword, resetToken: tokenInfo.id });
     setPageState(PageState.SENDING);
   };
 

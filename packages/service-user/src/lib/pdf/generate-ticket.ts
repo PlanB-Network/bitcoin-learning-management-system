@@ -31,24 +31,24 @@ export async function generateTicket(options: GenerateTicketOptions) {
   const { doc, fonts } = await newDocumentFromTemplate(pdfTemplateBytes);
 
   const conf = {
-    title: {
-      size: 20,
-      font: fonts.ibmPlexSemiBold,
-      lineHeight: 24,
-    },
     normal: {
-      size: 14,
       font: fonts.ibmPlexMedium,
       lineHeight: 20,
+      size: 14,
     },
     small: {
-      size: 12,
       font: fonts.ibmPlexMedium,
       lineHeight: 16,
+      size: 12,
+    },
+    title: {
+      font: fonts.ibmPlexSemiBold,
+      lineHeight: 24,
+      size: 20,
     },
     xs: {
-      size: 10,
       font: fonts.ibmPlexLight,
+      size: 10,
     },
   } satisfies Record<string, PDFPageDrawTextOptions>;
 
@@ -60,7 +60,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
   const { width, height } = page.getSize();
   const margin = width / 20;
 
-  console.log({ width, height, margin });
+  console.log({ height, margin, width });
 
   // Course name
   {
@@ -228,8 +228,8 @@ export async function generateTicket(options: GenerateTicketOptions) {
   // QR code
   {
     const png = imageSync(options.userName, {
-      type: 'png',
       margin: 2,
+      type: 'png',
     });
 
     const qr = await doc.embedPng(png);
@@ -237,7 +237,7 @@ export async function generateTicket(options: GenerateTicketOptions) {
     const y = height - 415;
     const size = 170;
 
-    page.drawImage(qr, { x, y, width: size, height: size });
+    page.drawImage(qr, { height: size, width: size, x, y });
   }
 
   return Buffer.from(await doc.save());

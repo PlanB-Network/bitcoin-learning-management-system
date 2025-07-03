@@ -1,6 +1,5 @@
-import type React from 'react';
-
 import { TabsList, TabsTrigger } from '@blms/ui';
+import type React from 'react';
 
 interface TabsListUnderlinedProps extends React.HTMLAttributes<HTMLDivElement> {
   tabs: Array<{

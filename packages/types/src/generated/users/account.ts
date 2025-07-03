@@ -4,87 +4,87 @@
 import type { UserPermission, UserRole } from '@blms/constants';
 
 export interface UserAccount {
-  uid: string;
-  username: string;
-  displayName: string | null;
   certificateName: string | null;
-  picture: string | null;
-  email: string | null;
-  role: UserRole;
-  permissions: UserPermission[] | null;
-  lastEmailChangeRequest: Date | null;
-  currentEmailChecked: boolean;
-  passwordHash: string | null;
   contributorId: string;
-  professorId: string | null;
   createdAt: Date;
+  currentEmailChecked: boolean;
+  displayName: string | null;
+  email: string | null;
+  lastEmailChangeRequest: Date | null;
+  passwordHash: string | null;
+  permissions: UserPermission[] | null;
+  picture: string | null;
+  professorId: string | null;
+  role: UserRole;
+  uid: string;
   updatedAt: Date;
+  username: string;
 }
 
 export interface UserAccountSettings {
-  uid: string;
-  unsubscribeId: string;
-  platformNotifyEvents: boolean;
-  platformNotifyCourses: boolean;
-  platformNotifyGeneral: boolean;
+  createdAt: Date;
   emailNotifyCourses: boolean;
   emailNotifyGeneral: boolean;
-  createdAt: Date;
+  platformNotifyCourses: boolean;
+  platformNotifyEvents: boolean;
+  platformNotifyGeneral: boolean;
+  uid: string;
+  unsubscribeId: string;
   updatedAt: Date;
 }
 
 export interface UserDetails {
-  uid: string;
-  role: UserRole;
-  email: string | null;
-  picture: string | null;
-  username: string;
-  displayName: string | null;
   certificateName: string | null;
-  professorId: string | null;
   contributorId: string;
+  displayName: string | null;
+  email: string | null;
   permissions: UserPermission[] | null;
+  picture: string | null;
+  professorId: string | null;
+  role: UserRole;
+  uid: string;
+  username: string;
+  boughtCourses: string[];
   professorCourses: string[];
   professorTutorials: string[];
-  boughtCourses: string[];
 }
 
 export interface UserRoles {
-  uid: string;
-  username: string;
+  contributorId: string;
   displayName: string | null;
   email: string | null;
-  contributorId: string;
-  role: UserRole;
-  professorId: string | null;
   permissions: UserPermission[] | null;
+  professorId: string | null;
+  role: UserRole;
+  uid: string;
+  username: string;
   professorName?: string | undefined;
 }
 
 export interface UsersLud4PublicKey {
-  id: string;
-  uid: string;
-  publicKey: string;
   createdAt: Date;
+  id: string;
+  publicKey: string;
+  uid: string;
   updatedAt: Date;
 }
 
 export interface LoginResponse {
-  status: number;
   message: string;
+  status: number;
   user: {
+    email: string | null;
     uid: string;
     username: string;
-    email: string | null;
   };
 }
 
 export interface ApiKey {
-  id: string;
-  uid: string;
-  revokedAt: Date | null;
-  expiresAt: Date | null;
   createdAt: Date;
+  expiresAt: Date | null;
+  id: string;
+  revokedAt: Date | null;
+  uid: string;
   updatedAt: Date;
 }
 

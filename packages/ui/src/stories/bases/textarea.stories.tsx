@@ -4,8 +4,8 @@ import { Textarea } from '#src/bases/textarea.js';
 
 const meta: Meta<typeof Textarea> = {
   component: Textarea,
-  title: 'Bases/Form/textarea',
   tags: ['autodocs'],
+  title: 'Bases/Form/textarea',
 };
 
 export default meta;

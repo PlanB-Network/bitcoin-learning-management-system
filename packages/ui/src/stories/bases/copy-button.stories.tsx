@@ -2,23 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CopyButton } from '#src/bases/copy-button.tsx';
 
 const meta: Meta<typeof CopyButton> = {
-  title: 'Bases/copy-button',
-  component: CopyButton,
-  parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'dark',
-    },
+  args: {
+    text: 'Hello, World!',
   },
-  tags: ['autodocs'],
   argTypes: {
     text: {
       control: 'text',
     },
   },
-  args: {
-    text: 'Hello, World!',
+  component: CopyButton,
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+    },
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/copy-button',
 };
 
 export default meta;

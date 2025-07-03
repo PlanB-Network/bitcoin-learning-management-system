@@ -24,9 +24,9 @@ const parseDetailsFromPath = (path: string): EventDetails => {
   }
 
   return {
+    fullPath: pathElements.join('/'),
     id: pathElements[1],
     path: pathElements.slice(0, 2).join('/'),
-    fullPath: pathElements.join('/'),
   };
 };
 
@@ -42,10 +42,10 @@ export const groupByEvent = (files: ChangedFile[], errors: string[]) => {
       const { path: eventPath } = parseDetailsFromPath(file.path);
 
       const event: ChangedEvent = groupedEvents.get(eventPath) || {
-        type: 'events',
-        path: eventPath,
-        fullPath: eventPath,
         files: [],
+        fullPath: eventPath,
+        path: eventPath,
+        type: 'events',
       };
 
       event.files.push({

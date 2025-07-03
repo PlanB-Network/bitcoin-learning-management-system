@@ -1,7 +1,7 @@
-import { type TransactionSql, firstRow } from '@blms/database';
+import { firstRow, type TransactionSql } from '@blms/database';
 import type { ChangedFile } from '@blms/types';
 import matter from 'gray-matter';
-import { type Token, marked } from 'marked';
+import { marked, type Token } from 'marked';
 
 interface LabSession {
   professor_id: string;
@@ -88,8 +88,8 @@ const extractSessions = (markdown: string): Session[] => {
   for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
       sessions.push({
-        title: token.text as string,
         rawContent: '',
+        title: token.text as string,
       });
     } else if (sessions.length > 0) {
       const currentSession = sessions.at(-1)!;

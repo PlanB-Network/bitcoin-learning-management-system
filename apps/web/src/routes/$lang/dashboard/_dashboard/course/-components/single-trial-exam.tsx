@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/correctness/useHookAtTopLevel: TODO check */
 import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
 import {
   Alert,
@@ -7,11 +8,11 @@ import {
   ButtonWithArrow,
   CollapsibleDropdown,
   CustomGauge,
+  cn,
   DividerSimple,
   DividerVertical,
   Loader,
   RadialGauge,
-  cn,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
@@ -29,11 +30,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-export const SingleTrialExam = ({
-  course,
-}: {
-  course: CourseResponse;
-}) => {
+export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
   const { data: userProgress } = useQuery(
     trpc.user.courses.getProgress.queryOptions({
       courseId: course.id,
@@ -237,8 +234,8 @@ const ExamItem = ({
 
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getLatestExamResults.queryOptions({
-      courseId: courseId,
       chapterId: chapterId,
+      courseId: courseId,
     }),
   );
 
@@ -295,8 +292,8 @@ const ExamItem = ({
           <Link
             to={'/courses/$courseId/$chapterId'}
             params={{
-              courseId: courseId,
               chapterId: exam.chapterId,
+              courseId: courseId,
             }}
           >
             <ButtonWithArrow
@@ -313,8 +310,8 @@ const ExamItem = ({
               <Link
                 to={'/courses/$courseId/$chapterId'}
                 params={{
-                  courseId: courseId,
                   chapterId: exam.chapterId,
+                  courseId: courseId,
                 }}
               >
                 <ButtonWithArrow
@@ -453,9 +450,9 @@ const DiplomaSection = ({
           <Link
             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               t('dashboard.course.tweetTextCourseDiploma', {
-                courseName: courseName,
-                courseCoordinator: courseCoordinator,
                 certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/course-diplomas/${timestampId}`,
+                courseCoordinator: courseCoordinator,
+                courseName: courseName,
               }),
             )}`}
             target="_blank"
@@ -485,9 +482,9 @@ const DiplomaSection = ({
       <Link
         to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
           t('dashboard.course.tweetTextCourseDiploma', {
-            courseName: courseName,
-            courseCoordinator: courseCoordinator,
             certificateUrl: `${window.location.origin}/${i18n.language ?? 'en'}/course-diplomas/${timestampId}`,
+            courseCoordinator: courseCoordinator,
+            courseName: courseName,
           }),
         )}`}
         target="_blank"

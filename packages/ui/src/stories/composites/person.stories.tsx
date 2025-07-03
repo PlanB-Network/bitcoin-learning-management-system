@@ -2,28 +2,28 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Person } from '#src/composites/person.tsx';
 
 const meta: Meta<typeof Person> = {
-  title: 'Composites/person',
-  component: Person,
-  parameters: {
-    layout: 'centered',
+  args: {
+    job: 'Software Engineer',
+    name: 'John Doe',
+    picture: 'https://placehold.co/80x80',
   },
-  tags: ['autodocs'],
   argTypes: {
-    name: {
+    job: {
       control: 'text',
     },
-    job: {
+    name: {
       control: 'text',
     },
     picture: {
       control: 'text',
     },
   },
-  args: {
-    name: 'John Doe',
-    job: 'Software Engineer',
-    picture: 'https://placehold.co/80x80',
+  component: Person,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Composites/person',
 };
 
 export default meta;

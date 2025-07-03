@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/a11y/useAltText: Can be provided by the parent component */
 import React from 'react';
 
 type ReactImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
@@ -6,12 +7,12 @@ type TailwindSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 // https://v3.tailwindcss.com/docs/theme#screens
 const breakpointsMap: Record<TailwindSizes, number> = {
-  xs: 320,
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
   '2xl': 1400,
+  lg: 1024,
+  md: 768,
+  sm: 640,
+  xl: 1280,
+  xs: 320,
 };
 
 interface ImageProps extends Omit<ReactImageProps, 'sizes'> {
@@ -59,7 +60,6 @@ export const Image = ({
       .join(', ');
 
   return (
-    // biome-ignore lint/a11y/useAltText: Can be provided by the parent component
     <img
       {...props}
       srcSet={srcSet}

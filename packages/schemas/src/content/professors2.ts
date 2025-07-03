@@ -6,23 +6,23 @@ import { joinedTutorialLightSchema } from './tutorial.js';
 
 export const fullProfessorSchema = joinedProfessorSchema
   .omit({
-    websiteUrl: true,
-    twitterUrl: true,
     githubUrl: true,
-    nostr: true,
     lightningAddress: true,
     lnurlPay: true,
+    nostr: true,
     paynym: true,
     silentPayment: true,
     tipsUrl: true,
+    twitterUrl: true,
+    websiteUrl: true,
   })
   .merge(
     z.object({
       links: z.object({
-        website: joinedProfessorSchema.shape.websiteUrl,
-        twitter: joinedProfessorSchema.shape.twitterUrl,
         github: joinedProfessorSchema.shape.githubUrl,
         nostr: joinedProfessorSchema.shape.nostr,
+        twitter: joinedProfessorSchema.shape.twitterUrl,
+        website: joinedProfessorSchema.shape.websiteUrl,
       }),
       tips: z.object({
         lightningAddress: joinedProfessorSchema.shape.lightningAddress,

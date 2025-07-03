@@ -1,13 +1,11 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
+import { NotificationType } from '@blms/constants';
 import {
   usersNotifications,
   usersScheduledCourseNotifications,
   usersUserNotificationStatus,
 } from '@blms/database';
-
-import { NotificationType } from '@blms/constants';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 export const notificationTypeSchema = z.nativeEnum(NotificationType);
 
@@ -21,13 +19,13 @@ export const scheduledCourseAnnouncementSchema = createSelectSchema(
 
 export const joinedUserNotificationSchema = notificationSchema
   .pick({
-    id: true,
-    content: true,
-    type: true,
-    courseId: true,
-    chapterId: true,
-    eventId: true,
     blogId: true,
+    chapterId: true,
+    content: true,
+    courseId: true,
+    eventId: true,
+    id: true,
+    type: true,
   })
   .merge(
     userNotificationStatusSchema.pick({

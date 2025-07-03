@@ -14,14 +14,14 @@ export const TabLinks: React.FC = () => {
 
   const mainTabs: Tab[] = [
     {
+      href: '/public-communication/blogs-and-news',
       id: 'tab1',
       label: 'publicCommunication.blogPost',
-      href: '/public-communication/blogs-and-news',
     },
     {
+      href: '/public-communication/legals',
       id: 'tab2',
       label: 'publicCommunication.legal',
-      href: '/public-communication/legals',
     },
   ];
 

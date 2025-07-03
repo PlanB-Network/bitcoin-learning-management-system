@@ -2,19 +2,19 @@
   "$schema": "https://turborepo.org/schema.json",
   "extends": ["//"],
   "tasks": {
-    "check-types": {
-      "dependsOn": ["@blms/schemas#build-types"]
-    },
-    "generate-types": {
-      "dependsOn": ["@blms/schemas#build"]
+    "build": {
+      "dependsOn": ["generate-types"],
+      "outputs": ["dist/**"]
     },
     "build-types": {
       "dependsOn": ["generate-types"],
       "outputs": ["dist/**"]
     },
-    "build": {
-      "dependsOn": ["generate-types"],
-      "outputs": ["dist/**"]
+    "check-types": {
+      "dependsOn": ["@blms/schemas#build-types"]
+    },
+    "generate-types": {
+      "dependsOn": ["@blms/schemas#build"]
     }
   }
 }

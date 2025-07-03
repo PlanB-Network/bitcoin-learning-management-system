@@ -23,6 +23,15 @@ const CoursesMarkdownBody = ({
   return (
     <ReactMarkdown
       components={{
+        a: ({ children, href }) => (
+          <LinkRenderer href={href}>{children}</LinkRenderer>
+        ),
+        blockquote: ({ children }) => (
+          <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
+        ),
+        code: ({ className, children }) => (
+          <CodeRenderer className={className}>{children}</CodeRenderer>
+        ),
         h2: ({ children }) => (
           <h2 className="max-lg:title-large-sb-24px lg:text-3xl leading-snug text-darkOrange-5">
             <div className="flex w-auto items-center">{children}</div>
@@ -36,36 +45,27 @@ const CoursesMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
-        p: ({ children }) => (
-          <ParagraphRenderer header="logo">{children}</ParagraphRenderer>
-        ),
         img: ({ src, alt }) => (
           <ImageVideoRenderer header="logo" src={src} alt={alt} />
         ),
-        a: ({ children, href }) => (
-          <LinkRenderer href={href}>{children}</LinkRenderer>
+        li: ({ children }) => (
+          <li className="my-1 body-16px last:mb-0 font-[450]">{children}</li>
         ),
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 body-16px font-[450]">
             {children}
           </ol>
         ),
+        p: ({ children }) => (
+          <ParagraphRenderer header="logo">{children}</ParagraphRenderer>
+        ),
+        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         ul: ({ children }) => (
           <ul className="flex list-disc flex-col pl-10 body-16px font-[450]">
             {children}
           </ul>
-        ),
-        li: ({ children }) => (
-          <li className="my-1 body-16px last:mb-0 font-[450]">{children}</li>
-        ),
-        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
-        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        blockquote: ({ children }) => (
-          <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
-        ),
-        code: ({ className, children }) => (
-          <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
       }}
       remarkPlugins={[

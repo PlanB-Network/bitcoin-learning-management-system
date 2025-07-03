@@ -1,11 +1,3 @@
-import {
-  EmbeddedCheckout,
-  EmbeddedCheckoutProvider,
-} from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import { useCallback, useEffect, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-
 import type { CheckoutData, CouponCode, JoinedEvent } from '@blms/types';
 import {
   Button,
@@ -14,12 +6,17 @@ import {
   DialogDescription,
   DialogTitle,
 } from '@blms/ui';
-
+import {
+  EmbeddedCheckout,
+  EmbeddedCheckoutProvider,
+} from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { useCallback, useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
 import { ModalPaymentSuccess } from './modal-payment-success.tsx';
 import { ModalPaymentSummary } from './modal-payment-summary.tsx';
 
@@ -78,12 +75,12 @@ export const EventPaymentModal = ({
     async (method: 'sbp' | 'stripe' | null) => {
       if (method) {
         const serverCheckoutData = await saveEventPaymentRequest.mutateAsync({
-          eventId: eventId,
-          satsPrice: satsPriceReduced,
-          dollarPrice: dollarPriceReduced,
           couponCode: validatedCoupon?.code,
-          withPhysical: accessType === 'physical',
+          dollarPrice: dollarPriceReduced,
+          eventId: eventId,
           method: method,
+          satsPrice: satsPriceReduced,
+          withPhysical: accessType === 'physical',
         });
 
         setCheckoutData(serverCheckoutData);

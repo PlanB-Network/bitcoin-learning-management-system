@@ -1,6 +1,3 @@
-import { useCallback, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-
 import type { JoinedEvent } from '@blms/types';
 import {
   Dialog,
@@ -8,10 +5,10 @@ import {
   DialogDescription,
   DialogTitle,
 } from '@blms/ui';
-
-import { trpc } from '#src/utils/trpc.js';
-
 import { useMutation } from '@tanstack/react-query';
+import { useCallback, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import { trpc } from '#src/utils/trpc.js';
 import { ModalBookDescription } from './modal-book-description.tsx';
 import { ModalBookSuccess } from './modal-book-success.tsx';
 import { ModalBookSummary } from './modal-book-summary.tsx';
@@ -37,8 +34,8 @@ export const EventBookModal = ({
 
   const saveAndDisplaySuccess = useCallback(() => {
     saveUserEventRequest.mutateAsync({
-      eventId: event.id,
       booked: true,
+      eventId: event.id,
       withPhysical: true,
     });
     setIsEventBooked(true);

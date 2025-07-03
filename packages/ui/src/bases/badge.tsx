@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
 import { cn } from '../lib/utils.js';
@@ -7,6 +7,10 @@ import { cn } from '../lib/utils.js';
 const badgeVariants = cva(
   'w-fit flex justify-center items-center text-center ',
   {
+    defaultVariants: {
+      size: 'small',
+      variant: 'darkOrange',
+    },
     variants: {
       size: {
         small: 'px-2 text-center text-[10px] leading-none h-[18px] rounded-lg',
@@ -14,14 +18,10 @@ const badgeVariants = cva(
           'px-1.5 text-center text-[10px] leading-none h-4 rounded-md ',
       },
       variant: {
+        darkMaroon: 'bg-newBlack-4 text-white',
         darkOrange: 'bg-darkOrange-8 text-maroon-1',
         lightOrange: 'bg-darkOrange-3 text-white',
-        darkMaroon: 'bg-newBlack-4 text-white',
       },
-    },
-    defaultVariants: {
-      size: 'small',
-      variant: 'darkOrange',
     },
   },
 );

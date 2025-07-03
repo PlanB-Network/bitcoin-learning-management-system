@@ -1,14 +1,3 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
-import {
-  usersCareerLanguages,
-  usersCareerProfiles,
-  usersCareerRoles,
-  usersJobTitles,
-  usersLanguages,
-} from '@blms/database';
-
 import {
   CareerCompanySize,
   CareerLanguageLevel,
@@ -17,6 +6,15 @@ import {
   JobCategory,
   JobName,
 } from '@blms/constants';
+import {
+  usersCareerLanguages,
+  usersCareerProfiles,
+  usersCareerRoles,
+  usersJobTitles,
+  usersLanguages,
+} from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 export const careerLanguageLevelSchema = z.nativeEnum(CareerLanguageLevel);
 
@@ -35,6 +33,7 @@ export const jobTitleSchema = createSelectSchema(usersJobTitles);
 
 export const joinedCareerProfileSchema = careerProfileSchema.merge(
   z.object({
+    companySizes: careerCompanySizeSchema.array(),
     languages: careerLanguageSchema
       .pick({
         languageCode: true,
@@ -43,10 +42,9 @@ export const joinedCareerProfileSchema = careerProfileSchema.merge(
       .array(),
     roles: careerRoleSchema
       .pick({
-        roleId: true,
         level: true,
+        roleId: true,
       })
       .array(),
-    companySizes: careerCompanySizeSchema.array(),
   }),
 );

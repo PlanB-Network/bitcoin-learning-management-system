@@ -61,30 +61,30 @@ export async function createTeacherLedCertificatePdf(
 
   // Common options
   const conf = {
-    hash: {
-      size: 10.4,
-      font: fonts.mono,
-      color: grey3,
-    },
-    default: {
-      size: 16,
-      font: fonts.ibmPlexRegular,
-      color: black,
+    authors: {
+      color: black3,
+      font: fonts.ibmPlexLight,
+      size: 12,
     },
     courseName: {
-      size: 36,
-      font: fonts.ibmPlexLight,
       color: black,
+      font: fonts.ibmPlexLight,
+      size: 36,
+    },
+    default: {
+      color: black,
+      font: fonts.ibmPlexRegular,
+      size: 16,
+    },
+    hash: {
+      color: grey3,
+      font: fonts.mono,
+      size: 10.4,
     },
     userName: {
-      size: 48,
-      font: fonts.styleScript,
       color: orange,
-    },
-    authors: {
-      size: 12,
-      font: fonts.ibmPlexLight,
-      color: black3,
+      font: fonts.styleScript,
+      size: 48,
     },
   } satisfies Record<string, MandatoryTextOptions>;
 
@@ -180,9 +180,9 @@ export async function createTeacherLedCertificatePdf(
     const bytes = await logo.arrayBuffer();
     const resized = await sharp(Buffer.from(bytes))
       .resize({
-        width: maxWidth * 5,
+        fit: 'inside',
         height: maxHeight * 5,
-        fit: 'inside', // Preserve ratio
+        width: maxWidth * 5, // Preserve ratio
         withoutEnlargement: true,
       })
       .png()
@@ -206,16 +206,16 @@ export async function createTeacherLedCertificatePdf(
     const drawY = boxTopY + (maxHeight - finalHeight);
 
     page.drawImage(image, {
+      height: finalHeight,
+      width: finalWidth,
       x: margin + 10,
       y: drawY,
-      width: finalWidth,
-      height: finalHeight,
     });
   } else {
     textLeft(page, options.courseProvider, {
       ...conf.courseName,
-      y: 475,
       x: margin + 25,
+      y: 475,
     });
   }
 

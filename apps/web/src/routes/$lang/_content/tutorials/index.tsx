@@ -1,8 +1,7 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { Loader } from '@blms/ui';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader } from '@blms/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { MainLayout } from '#src/components/main-layout.js';

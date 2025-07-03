@@ -1,7 +1,6 @@
-import matter from 'gray-matter';
-
 import { firstRow, sql } from '@blms/database';
 import type { Blog, ChangedFile } from '@blms/types';
+import matter from 'gray-matter';
 
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
@@ -48,12 +47,12 @@ export const parseDetailsFromPath = (path: string): BlogDetails => {
 
   return {
     category: pathElements[1],
-    path: blogElements.join('/'),
     fullPath: pathElements.join('/'),
     language: pathElements
       .at(-1)
       ?.replace(/\..*/, '')
       .toLowerCase() as Language,
+    path: blogElements.join('/'),
   };
 };
 
@@ -73,18 +72,18 @@ export const groupByBlog = (files: ChangedFile[], errors: string[]) => {
       } = parseDetailsFromPath(file.path);
 
       const blog: ChangedBlog = groupedBlogs.get(blogPath) || {
-        type: 'blogposts',
-        name: blogPath.split('/').at(-1) as string,
         category,
-        path: blogPath,
-        fullPath,
         files: [],
+        fullPath,
+        name: blogPath.split('/').at(-1) as string,
+        path: blogPath,
+        type: 'blogposts',
       };
 
       blog.files.push({
         ...file,
-        path: getRelativePath(file.path, blogPath),
         language,
+        path: getRelativePath(file.path, blogPath),
       });
 
       groupedBlogs.set(blogPath, blog);

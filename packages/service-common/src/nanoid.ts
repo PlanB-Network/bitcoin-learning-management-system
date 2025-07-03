@@ -39,7 +39,7 @@ export function nanoid(n = 12) {
   let id = '';
 
   for (let i = 0; i < n; i++) {
-    let l = undefined;
+    let l: any;
 
     while (l === undefined) {
       l = alphabet[rng.next() & mask];

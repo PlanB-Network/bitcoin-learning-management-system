@@ -1,10 +1,10 @@
 import type { Config } from 'tailwindcss';
 
 const baseConfig: Config = {
-  darkMode: 'selector',
   content: ['./src/**/*.{ts,tsx}'],
-  theme: {},
+  darkMode: 'selector',
   plugins: [require('tailwindcss-animate')],
+  theme: {},
 };
 
 export default baseConfig;

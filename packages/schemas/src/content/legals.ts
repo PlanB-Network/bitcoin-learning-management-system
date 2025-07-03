@@ -1,7 +1,6 @@
+import { contentLegals, contentLegalsLocalized } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
-import { contentLegals, contentLegalsLocalized } from '@blms/database';
 
 export const legalSchema = createSelectSchema(contentLegals);
 export const legalLocalizedSchema = createSelectSchema(contentLegalsLocalized);
@@ -9,11 +8,11 @@ export const legalLocalizedSchema = createSelectSchema(contentLegalsLocalized);
 export const joinedLegalLightSchema = legalSchema
   .pick({
     id: true,
-    path: true,
-    name: true,
-    lastUpdated: true,
     lastCommit: true,
     lastSync: true,
+    lastUpdated: true,
+    name: true,
+    path: true,
   })
   .merge(
     legalLocalizedSchema.pick({

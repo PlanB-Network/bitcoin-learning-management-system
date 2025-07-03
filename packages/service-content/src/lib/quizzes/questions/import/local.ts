@@ -3,8 +3,6 @@ import type { TransactionSql } from '@blms/database';
 import type { ChangedFileWithLanguage } from '../../../types.js';
 import { yamlToObject } from '../../../utils.js';
 
-import type { ChangedQuizQuestion } from './index.js';
-
 interface QuizQuestionLocal {
   question: string;
   answer: string;
@@ -13,11 +11,7 @@ interface QuizQuestionLocal {
 }
 
 export const createProcessLocalFile = (transaction: TransactionSql) => {
-  return async (
-    quizQuestion: ChangedQuizQuestion,
-    id: string,
-    file: ChangedFileWithLanguage,
-  ) => {
+  return async (id: string, file: ChangedFileWithLanguage) => {
     const parsed = await yamlToObject<QuizQuestionLocal>(file);
 
     await transaction`

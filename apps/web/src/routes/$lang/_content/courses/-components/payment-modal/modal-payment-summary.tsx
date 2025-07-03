@@ -1,8 +1,7 @@
+import type { CourseResponse } from '@blms/types';
 import { cn } from '@blms/ui';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { CourseResponse } from '@blms/types';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
@@ -33,7 +32,7 @@ export const ModalPaymentSummary = ({
   const DescriptionWithBreaks = () => {
     const description = course.paidDescription;
     const parts = description?.split('\n').map((part, index) => (
-      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
       <React.Fragment key={index}>
         {index > 0 && <br />}
         {part}

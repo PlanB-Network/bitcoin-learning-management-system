@@ -1,4 +1,4 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
 import { IoMdClose } from 'react-icons/io';
@@ -6,15 +6,15 @@ import type { IconType } from 'react-icons/lib';
 import { cn } from '../lib/utils.js';
 
 const alertVariants = cva('relative w-full rounded-lg border p-4', {
+  defaultVariants: {
+    variant: 'default',
+  },
   variants: {
     variant: {
       default: 'bg-darkOrange-0 border-darkOrange-1 text-foreground',
       transparent: 'border-newGray-4',
       warning: 'bg-darkOrange-0 border-darkOrange-1 text-darkOrange-9',
     },
-  },
-  defaultVariants: {
-    variant: 'default',
   },
 });
 

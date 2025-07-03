@@ -1,5 +1,5 @@
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { ListItem, cn } from '@blms/ui';
+import { cn, ListItem } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -12,18 +12,18 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
   const { t, i18n } = useTranslation();
 
   const courseItems = {
+    'Course ID': course.index.toUpperCase(),
     'Course Name': course.name,
-    Professor: course.mainProfessors
-      .map((professor) => professor.name)
-      .join(', '),
-    Level: t(`words.level.${course.level}`),
     Duration: `${course.hours} ${t('words.hours')}`,
+    Level: t(`words.level.${course.level}`),
     Price:
       (course.onlinePriceDollars && course.onlinePriceDollars > 0) ||
       (course.inpersonPriceDollars && course.inpersonPriceDollars > 0)
         ? `$${course.inpersonPriceDollars} (in-person) \n $${course.onlinePriceDollars} (online)`
         : t('words.free'),
-    'Course ID': course.index.toUpperCase(),
+    Professor: course.mainProfessors
+      .map((professor) => professor.name)
+      .join(', '),
   };
 
   const { data: courseWithDetails, isFetched } = useQuery(
@@ -114,7 +114,7 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
                     infoTextClasses,
                   )}
                 >
-                  {course.objectives.map((objective, i) => (
+                  {course.objectives.map((objective) => (
                     <li key={objective}>{objective}</li>
                   ))}
                 </ul>

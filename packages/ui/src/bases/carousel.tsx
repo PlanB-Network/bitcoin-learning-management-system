@@ -121,17 +121,18 @@ const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          carouselRef,
           api: api,
+          canScrollNext,
+          canScrollPrev,
+          carouselRef,
           opts,
           orientation:
             orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
-          scrollPrev,
           scrollNext,
-          canScrollPrev,
-          canScrollNext,
+          scrollPrev,
         }}
       >
+        {/** biome-ignore lint/a11y/useAriaPropsSupportedByRole: TODO check */}
         <section
           ref={ref}
           onKeyDownCapture={handleKeyDown}

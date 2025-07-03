@@ -1,15 +1,9 @@
-import { t } from 'i18next';
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { FiTrash2 } from 'react-icons/fi';
-import { MdCheck, MdKeyboardArrowDown } from 'react-icons/md';
-import { TbArrowsSort } from 'react-icons/tb';
-
 import { SortDirection, UserPermission, UserRole } from '@blms/constants';
+import type { FormattedProfessor, UserRoles } from '@blms/types';
 import {
   BasicModal,
   Button,
+  cn,
   DialogClose,
   Loader,
   Select,
@@ -23,13 +17,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  cn,
 } from '@blms/ui';
-
-import type { FormattedProfessor, UserRoles } from '@blms/types';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
+import { t } from 'i18next';
+import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { BiPencil } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
+import { FiTrash2 } from 'react-icons/fi';
+import { MdCheck, MdKeyboardArrowDown } from 'react-icons/md';
+import { TbArrowsSort } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -61,8 +59,8 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
     key: 'username' | 'displayName' | 'role';
     direction: SortDirection;
   }>({
-    key: 'username',
     direction: SortDirection.Asc,
+    key: 'username',
   });
 
   const {
@@ -73,11 +71,11 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   } = useInfiniteQuery(
     trpc.user.getUsersRoles.infiniteQueryOptions(
       {
-        name: debouncedSearch,
-        role: userRole === UserRole.Student ? undefined : userRole,
-        orderField: sortConfig.key,
-        orderDirection: sortConfig.direction,
         limit: 50,
+        name: debouncedSearch,
+        orderDirection: sortConfig.direction,
+        orderField: sortConfig.key,
+        role: userRole === UserRole.Student ? undefined : userRole,
       },
       {
         getNextPageParam: (lastPage) => {
@@ -97,11 +95,11 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
 
   const { mutate: mutateChangeRole, isPending: isPendingRole } = useMutation(
     trpc.user.changeRole.mutationOptions({
-      onSuccess: () => {
-        refetch();
-      },
       onError(error) {
         console.log(error.message);
+      },
+      onSuccess: () => {
+        refetch();
       },
     }),
   );
@@ -109,11 +107,11 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   const { mutate: mutateChangePermission, isPending: isPendingPermission } =
     useMutation(
       trpc.user.changePermission.mutationOptions({
-        onSuccess: () => {
-          refetch();
-        },
         onError(error) {
           console.log(error.message);
+        },
+        onSuccess: () => {
+          refetch();
         },
       }),
     );
@@ -146,11 +144,11 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   // Handle sorting logic
   const handleSorting = (key: typeof sortConfig.key) => {
     setSortConfig((prev) => ({
-      key,
       direction:
         prev.key === key && prev.direction === SortDirection.Asc
           ? SortDirection.Desc
           : SortDirection.Asc,
+      key,
     }));
   };
 
@@ -199,11 +197,11 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
         (user.role === UserRole.Professor && selectedProfessors[user.uid])
       ) {
         mutateChangeRole({
-          uid: user.uid,
-          role: newRole,
           professorId: shouldAssignProfessor
             ? selectedProfessors[user.uid]
             : null,
+          role: newRole,
+          uid: user.uid,
         });
 
         setSelectedRoles((prev) => {
@@ -238,10 +236,10 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
 
     if (editingUsers[userId]) {
       mutateChangePermission({
-        uid: userId,
         permissions: selectedPermissions[userId]
           ? selectedPermissions[userId]
           : [],
+        uid: userId,
       });
       refetch();
     }
@@ -540,9 +538,9 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                             variant={'outline'}
                             onClick={() => {
                               mutateChangeRole({
-                                uid: user.uid,
-                                role: UserRole.Student,
                                 professorId: null,
+                                role: UserRole.Student,
+                                uid: user.uid,
                               });
                               refetch();
                             }}
@@ -667,9 +665,9 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                         <RemoveTeacherDialog
                           onConfirm={() => {
                             mutateChangeRole({
-                              uid: user.uid,
-                              role: UserRole.Student,
                               professorId: null,
+                              role: UserRole.Student,
+                              uid: user.uid,
                             });
                           }}
                         />
@@ -850,9 +848,9 @@ const StudentMobileCard = ({
           variant="outline"
           onClick={() => {
             mutateChangeRole({
-              uid: user.uid,
-              role: UserRole.Student,
               professorId: null,
+              role: UserRole.Student,
+              uid: user.uid,
             });
             refetch();
           }}

@@ -5,27 +5,27 @@ import type { JoinedCourse } from './course.js';
 import type { JoinedTutorialLight } from './tutorial.js';
 
 export interface FullProfessor {
-  id: string;
-  path: string;
-  name: string;
-  company: string | null;
   affiliations: string[] | null;
-  lastUpdated: Date;
+  company: string | null;
+  id: string;
   lastCommit: string;
   lastSync: Date;
-  language: string;
+  lastUpdated: Date;
+  name: string;
+  path: string;
   bio: string | null;
+  language: string;
   shortBio: string | null;
-  tags: string[];
   coursesCount: number;
   coursesIndexes: string[];
-  tutorialsCount: number;
   lecturesCount: number;
+  tags: string[];
+  tutorialsCount: number;
   links: {
-    website: string | null;
-    twitter: string | null;
     github: string | null;
     nostr: string | null;
+    twitter: string | null;
+    website: string | null;
   };
   tips: {
     lightningAddress: string | null;

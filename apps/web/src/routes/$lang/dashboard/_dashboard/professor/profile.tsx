@@ -1,24 +1,21 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { BsGithub, BsTwitterX } from 'react-icons/bs';
-import { FiGlobe } from 'react-icons/fi';
-
 import {
+  cn,
   Loader,
   Tabs,
   TabsContent,
   TabsListUnderlined,
   TextTag,
-  cn,
 } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { BsGithub, BsTwitterX } from 'react-icons/bs';
+import { FiGlobe } from 'react-icons/fi';
 import Nostr from '#src/assets/icons/nostr.svg?react';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { isUUID, resourceImgUrl, trpc } from '#src/utils/index.ts';
-
-import { useQuery } from '@tanstack/react-query';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MakeModificationBlock } from './-components/make-modification.tsx';
 
 export const Route = createFileRoute(
@@ -38,8 +35,8 @@ function DashboardProfessorProfile() {
   const { data: professor, isFetched } = useQuery(
     trpc.content.getProfessor.queryOptions(
       {
-        professorId: user?.professorId ?? '',
         language: i18n.language,
+        professorId: user?.professorId ?? '',
       },
       {
         enabled: isUUID(user?.professorId),
@@ -55,17 +52,17 @@ function DashboardProfessorProfile() {
 
   const tabs = [
     {
-      value: 'profile',
+      active: currentValue === 'profile',
       key: 'profile',
       text: t('dashboard.teacher.profile.publicProfile'),
-      active: currentValue === 'profile',
+      value: 'profile',
     },
     {
-      value: 'notifications',
-      key: 'notifications',
-      text: t('dashboard.teacher.profile.notifications'),
       active: currentValue === 'notifications',
       disabled: true,
+      key: 'notifications',
+      text: t('dashboard.teacher.profile.notifications'),
+      value: 'notifications',
     },
   ];
 

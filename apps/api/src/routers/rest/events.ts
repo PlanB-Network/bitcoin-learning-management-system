@@ -1,6 +1,5 @@
-import type { Router } from 'express';
-
 import { createGetEventList, createGetEventUsers } from '@blms/service-user';
+import type { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { createApiKeyMiddleware } from '#src/middlewares/auth.js';

@@ -1,20 +1,20 @@
-import { useSearch } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
-
 import type { JoinedCourse } from '@blms/types';
 import { Button } from '@blms/ui';
-
+import { useSearch } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CourseCard, CourseCardExtended } from '#src/patterns/course-card.tsx';
 import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
-
-import { useTranslation } from 'react-i18next';
 import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
 
 export const CoursesGallery = ({
   courses,
   selectedSchool,
-}: { courses: JoinedCourse[]; selectedSchool?: string }) => {
+}: {
+  courses: JoinedCourse[];
+  selectedSchool?: string;
+}) => {
   const { t } = useTranslation();
 
   const uniqueTopics = Array.from(
@@ -222,12 +222,12 @@ export const CoursesGallery = ({
       <div className="md:hidden w-full max-w-[500px] mx-auto">
         <FilterDropdown
           filters={{
-            Topics: topics,
             Levels: mobileLevels,
+            Topics: topics,
           }}
           selectedFilters={{
-            Topics: activeTopics,
             Levels: activeLevels,
+            Topics: activeTopics,
           }}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}

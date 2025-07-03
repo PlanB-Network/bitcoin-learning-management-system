@@ -1,30 +1,28 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { ConferenceStageVideo } from '@blms/types';
+import {
+  BackLink,
+  Button,
+  Card,
+  cn,
+  DropdownMenu,
+  Loader,
+  TextTag,
+} from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsLink, BsTwitterX } from 'react-icons/bs';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 import { z } from 'zod';
-
-import type { ConferenceStageVideo } from '@blms/types';
-import {
-  BackLink,
-  Button,
-  Card,
-  DropdownMenu,
-  Loader,
-  TextTag,
-  cn,
-} from '@blms/ui';
-
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
-
-import { useQuery } from '@tanstack/react-query';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
+
 const ConferencesMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/conference-markdown-body.js'),
 );
@@ -32,24 +30,24 @@ const ConferencesMarkdownBody = React.lazy(
 export const Route = createFileRoute(
   '/$lang/_content/resources/conferences/$conferenceName-$conferenceId',
 )({
+  component: Conference,
   params: {
     parse: (params) => {
       const conferenceNameId = params['conferenceName-$conferenceId'];
       const { id, name } = getNameAndIdFromUrl(conferenceNameId);
 
       return {
-        lang: z.string().parse(params.lang),
-        'conferenceName-$conferenceId': `${name}-${id}`,
-        conferenceName: z.string().parse(name),
         conferenceId: z.string().parse(id),
+        conferenceName: z.string().parse(name),
+        'conferenceName-$conferenceId': `${name}-${id}`,
+        lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, conferenceName, conferenceId }) => ({
-      lang: lang,
       'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`,
+      lang: lang,
     }),
   },
-  component: Conference,
 });
 
 const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
@@ -58,7 +56,7 @@ const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
       .replaceAll('[live replay]', '![video]')
       .split('\n')
       .map((content, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+        // biome-ignore lint/suspicious/noArrayIndexKey: explanation
         <Suspense key={index} fallback={<Loader size={'s'} />}>
           <ConferencesMarkdownBody content={content} />
         </Suspense>
@@ -163,8 +161,8 @@ function Conference() {
       params.conferenceName !== formatNameForURL(conference.name)
     ) {
       navigate({
-        to: `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}${location.hash}${location.search}`,
         replace: true,
+        to: `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}${location.hash}${location.search}`,
       });
     }
   }, [conference, isFetched, navigateTo404, navigate, params.conferenceName]);

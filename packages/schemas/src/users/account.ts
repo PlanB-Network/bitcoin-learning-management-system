@@ -1,6 +1,3 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import { UserPermission, UserRole } from '@blms/constants';
 import {
   usersAccountSettings,
@@ -8,6 +5,8 @@ import {
   usersApiKeys,
   usersLud4PublicKeys,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 export const userRoleSchema = z.nativeEnum(UserRole);
 export const userPermissionSchema = z.nativeEnum(UserPermission);
@@ -19,35 +18,35 @@ export const userAccountSettingsSchema =
 
 export const userDetailsSchema = userAccountSchema
   .pick({
-    uid: true,
-    role: true,
-    email: true,
-    picture: true,
-    username: true,
-    displayName: true,
     certificateName: true,
-    professorId: true,
     contributorId: true,
+    displayName: true,
+    email: true,
     permissions: true,
+    picture: true,
+    professorId: true,
+    role: true,
+    uid: true,
+    username: true,
   })
   .merge(
     z.object({
+      boughtCourses: z.string().array(),
       professorCourses: z.string().array(),
       professorTutorials: z.string().array(),
-      boughtCourses: z.string().array(),
     }),
   );
 
 export const userRolesSchema = userAccountSchema
   .pick({
-    uid: true,
-    username: true,
+    contributorId: true,
     displayName: true,
     email: true,
-    contributorId: true,
-    role: true,
-    professorId: true,
     permissions: true,
+    professorId: true,
+    role: true,
+    uid: true,
+    username: true,
   })
   .merge(
     z.object({
@@ -58,12 +57,12 @@ export const userRolesSchema = userAccountSchema
 export const usersLud4PublicKeySchema = createSelectSchema(usersLud4PublicKeys);
 
 export const loginResponseSchema = z.object({
-  status: z.number(),
   message: z.string(),
+  status: z.number(),
   user: z.object({
+    email: z.string().nullable(),
     uid: z.string(),
     username: z.string(),
-    email: z.string().nullable(),
   }),
 });
 

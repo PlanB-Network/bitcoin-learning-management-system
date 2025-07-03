@@ -1,8 +1,7 @@
+import { Button, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { RxReload } from 'react-icons/rx';
-
-import { Button, cn } from '@blms/ui';
 
 interface GlossaryFilterBarProps {
   value?: string;
@@ -60,8 +59,8 @@ export const GlossaryFilterBar = ({
               const elementPosition =
                 element.getBoundingClientRect().top + window.scrollY;
               window.scrollTo({
-                top: elementPosition - 130,
                 behavior: 'smooth',
+                top: elementPosition - 130,
               });
             }
           }}

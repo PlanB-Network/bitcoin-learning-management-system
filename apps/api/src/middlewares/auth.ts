@@ -1,9 +1,8 @@
-import { TRPCError } from '@trpc/server';
-import type { NextFunction, Request, RequestHandler, Response } from 'express';
-
 import { type UserPermission, UserRole } from '@blms/constants';
 import { createGetActiveApiKey } from '@blms/service-user';
 import { canAccess } from '@blms/shared/auth';
+import { TRPCError } from '@trpc/server';
+import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { Unauthorized } from '#src/errors.js';
@@ -23,7 +22,7 @@ export const loadContextMiddleware = createMiddleware(({ ctx, next }) => {
 
   return next({
     ctx: {
-      user: { uid: userId, role: userRole, permissions: userPermissions },
+      user: { permissions: userPermissions, role: userRole, uid: userId },
     },
   });
 });
@@ -70,7 +69,7 @@ export const checkPermissions = (
  */
 export const expressAuthMiddleware = (
   req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction,
 ) => {
   if (!req.session.uid) {

@@ -1,27 +1,26 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cn } from '@blms/ui';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { useEffect, useRef, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-
-import { cn } from '@blms/ui';
 
 import { DropdownItem } from './dropdown-item.tsx';
 
 const dropdownButtonVariant = cva(
   'flex items-center gap-4 px-4 pt-3 pb-2 w-full',
   {
-    variants: {
-      variant: {
-        light: 'bg-newGray-6 border-newGray-4',
-        dark: 'bg-darkOrange-11 border-darkOrange-9',
-      },
-      isOpen: {
-        true: 'rounded-t-xl border-x border-t',
-        false: 'rounded-xl border',
-      },
-    },
     defaultVariants: {
-      variant: 'dark',
       isOpen: false,
+      variant: 'dark',
+    },
+    variants: {
+      isOpen: {
+        false: 'rounded-xl border',
+        true: 'rounded-t-xl border-x border-t',
+      },
+      variant: {
+        dark: 'bg-darkOrange-11 border-darkOrange-9',
+        light: 'bg-newGray-6 border-newGray-4',
+      },
     },
   },
 );
@@ -29,14 +28,14 @@ const dropdownButtonVariant = cva(
 const dropdownContainerVariant = cva(
   'absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-2 rounded-b-xl border-x border-b z-10 overflow-auto no-scrollbar',
   {
-    variants: {
-      variant: {
-        light: 'bg-newGray-6 border-newGray-4',
-        dark: 'bg-darkOrange-11 border-darkOrange-9',
-      },
-    },
     defaultVariants: {
       variant: 'dark',
+    },
+    variants: {
+      variant: {
+        dark: 'bg-darkOrange-11 border-darkOrange-9',
+        light: 'bg-newGray-6 border-newGray-4',
+      },
     },
   },
 );
@@ -101,7 +100,7 @@ export const DropdownMenu = ({
         {filteredItems.length > 0 ? (
           <button
             type="button"
-            className={dropdownButtonVariant({ variant, isOpen: isOpen })}
+            className={dropdownButtonVariant({ isOpen: isOpen, variant })}
             id="options-menu"
             aria-expanded={isOpen}
             aria-haspopup="true"
@@ -125,7 +124,7 @@ export const DropdownMenu = ({
         ) : (
           <button
             type="button"
-            className={dropdownButtonVariant({ variant, isOpen: isOpen })}
+            className={dropdownButtonVariant({ isOpen: isOpen, variant })}
             id="options-menu"
             disabled
           >

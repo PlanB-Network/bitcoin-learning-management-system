@@ -5,11 +5,6 @@ import type { StorybookConfig } from '@storybook/react-vite';
 const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
-  stories: [
-    '../src/stories/**/Fonts.mdx',
-    '../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
-
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-docs'),
@@ -19,6 +14,10 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
+  stories: [
+    '../src/stories/**/Fonts.mdx',
+    '../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
 
   viteFinal: async (config) => {
     if (config.optimizeDeps) {

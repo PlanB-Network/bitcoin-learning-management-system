@@ -1,15 +1,15 @@
+import type { CourseChapterResponse } from '@blms/types';
+import { Button, cn, RadialGauge } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { type JSX, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
-import type { CourseChapterResponse } from '@blms/types';
-import { Button, RadialGauge, cn } from '@blms/ui';
-
+import { TbX } from 'react-icons/tb';
 import congratsDark from '#src/assets/animations/congrats_animation_dark.webm';
 import congratsDarkMobile from '#src/assets/animations/congrats_animation_dark_mobile.webm';
-import completionStepsMobile from '#src/assets/courses/completion-steps-course-mobile.webp?no-inline';
 import completionSteps from '#src/assets/courses/completion-steps-course.webp?no-inline';
+import completionStepsMobile from '#src/assets/courses/completion-steps-course-mobile.webp?no-inline';
 import conclusionBlurred from '#src/assets/courses/conclusion_blurred.webp?no-inline';
 import BookOpen from '#src/assets/icons/book_open.svg?react';
 import Certificate from '#src/assets/icons/certificate.svg?react';
@@ -22,14 +22,11 @@ import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import SpeechIcon from '#src/assets/icons/speech_icon.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import ThumbUp from '#src/assets/icons/thumb-up-pixelated.svg?react';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { AppContext } from '#src/providers/context.tsx';
-import { trpc } from '#src/utils/trpc.ts';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { TbX } from 'react-icons/tb';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
+import { trpc } from '#src/utils/trpc.ts';
 import { CourseReviewComponent } from '../course-review-component.tsx';
 import { ConclusionFinish } from './conclusion-finish.tsx';
 import { StepMessage } from './step-message.tsx';
@@ -224,8 +221,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   useEffect(() => {
     if (step === 4) {
       completeChapterMutation.mutate({
-        courseId: chapter.course.id,
         chapterId: chapter.chapterId,
+        courseId: chapter.course.id,
         language: chapter.language,
       });
       updateStep(5);
@@ -644,8 +641,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                           <Link
                             to="/courses/$courseId/$chapterId"
                             params={{
-                              courseId: course?.id,
                               chapterId: examChapterId,
+                              courseId: course?.id,
                             }}
                           >
                             {previousExamResults
@@ -808,6 +805,6 @@ function scrollToHeader() {
   if (element) {
     const yOffset = -110;
     const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    window.scrollTo({ behavior: 'smooth', top: y });
   }
 }

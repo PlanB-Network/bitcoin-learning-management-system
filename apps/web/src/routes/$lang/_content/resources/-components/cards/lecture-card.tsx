@@ -1,11 +1,8 @@
+import type { JoinedEvent } from '@blms/types';
+import { Button, cn, Flag, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { JoinedEvent } from '@blms/types';
-import { Button, Flag, cn } from '@blms/ui';
-
-import { Image } from '@blms/ui';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 

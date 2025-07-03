@@ -1,6 +1,6 @@
 import type { JoinedBlogLight } from '@blms/types';
 import { cn } from '@blms/ui';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
 import { useContext } from 'react';
 import { CourseCard } from '#src/patterns/course-card.tsx';
@@ -10,15 +10,15 @@ import { resourceImgUrl } from '#src/utils/index.ts';
 import { getBlog, getCourse, getTutorial } from '../utils/link-preview.tsx';
 
 const linkStyles = cva('text-base tracking-wide', {
+  defaultVariants: {
+    intent: 'default',
+  },
   variants: {
     intent: {
       default: 'underline text-newBlue-1 font-[450]',
       general: 'text-blue-500 font-[450]',
       glossary: 'underline text-darkOrange-5 hover:font-medium',
     },
-  },
-  defaultVariants: {
-    intent: 'default',
   },
 });
 

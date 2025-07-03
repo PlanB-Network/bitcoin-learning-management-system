@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 const scrollToTop = () => {
   window.scrollTo({
-    top: 0,
     behavior: 'smooth',
+    top: 0,
   });
 };
 

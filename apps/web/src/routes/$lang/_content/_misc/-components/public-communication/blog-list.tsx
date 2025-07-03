@@ -1,7 +1,6 @@
+import { VerticalCard } from '@blms/ui';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { VerticalCard } from '@blms/ui';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { FeaturedCard } from '#src/patterns/featured-card.tsx';
 import { AppContext } from '#src/providers/context.js';
@@ -53,7 +52,7 @@ export const BlogList = ({ category }: BlogListProps) => {
             {t('publicCommunication.blogPageStrings.pastArticleSubtitleText')}
           </h3>
           <div className="text-black grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {sortedBlogs.slice(1).map((blog, index) => (
+            {sortedBlogs.slice(1).map((blog) => (
               <VerticalCard
                 key={blog.id}
                 imageSrc={resourceImgUrl(blog)}

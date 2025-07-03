@@ -1,12 +1,11 @@
+/** biome-ignore-all lint/correctness/useHookAtTopLevel: TODO check */
+import type { JoinedCourse } from '@blms/types';
+import { Button, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
-
-import type { JoinedCourse } from '@blms/types';
-import { Button, Loader } from '@blms/ui';
-
-import { useQuery } from '@tanstack/react-query';
 import CircuitLeft from '#src/assets/certificates/circuit-left.svg';
 import CircuitRight from '#src/assets/certificates/circuit-right.svg';
 import { PageLayout } from '#src/components/page-layout.js';
@@ -55,8 +54,8 @@ export const CertificateDisplay = ({
       {username && courseName ? (
         <p className="text-center max-w-[848px] body-14px lg:label-large-20px mx-auto mt-[35px] lg:mt-[80px]">
           {t('courses.exam.examCertificateCompletionText', {
-            username,
             courseName,
+            username,
           })}
         </p>
       ) : null}

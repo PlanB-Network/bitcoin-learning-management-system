@@ -1,8 +1,7 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import type React from 'react';
-
-import { cn } from '@blms/ui';
 
 import { CategoryIcon } from '#src/components/category-icon.tsx';
 import {

@@ -1,7 +1,6 @@
-import matter from 'gray-matter';
-
 import { firstRow } from '@blms/database';
 import type { GlossaryWord, Proofreading, Resource } from '@blms/types';
+import matter from 'gray-matter';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
 

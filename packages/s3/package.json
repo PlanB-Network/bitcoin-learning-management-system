@@ -1,28 +1,28 @@
 {
-  "name": "@blms/s3",
-  "version": "0.0.1",
-  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.840.0",
+    "@aws-sdk/lib-storage": "^3.840.0"
+  },
+  "devDependencies": {
+    "@blms/types": "workspace:*"
+  },
   "exports": {
     "development": "./src/index.ts",
     "import": "./dist/src/index.js",
     "types": "./src/index.ts"
   },
   "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "name": "@blms/s3",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "lint": "biome check .",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit",
     "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "check-types": "tsc --noEmit",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
+    "lint": "biome check .",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
+    "type-check": "tsc --build"
   },
-  "devDependencies": {
-    "@blms/types": "workspace:*"
-  },
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.840.0",
-    "@aws-sdk/lib-storage": "^3.840.0"
-  }
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

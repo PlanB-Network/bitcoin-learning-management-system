@@ -1,10 +1,8 @@
 import { createHash } from 'node:crypto';
-
+import type { OpenTimestampsConfig } from '@blms/types';
 import type { PrivateKey } from 'openpgp';
 import * as openpgp from 'openpgp';
 import ots from 'opentimestamps';
-
-import type { OpenTimestampsConfig } from '@blms/types';
 
 export const getLatestBlockHeight = async (): Promise<number> => {
   const res = await fetch('https://mempool.space/api/blocks/tip/height');
@@ -57,7 +55,7 @@ const createSignature = (privateKey: PrivateKey) => {
       signingKeys: [privateKey],
     });
 
-    return { text, signature };
+    return { signature, text };
   };
 };
 

@@ -1,18 +1,13 @@
+import { Button, cn, Loader } from '@blms/ui';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Button, Loader, cn } from '@blms/ui';
-
-import { PageLayout } from '#src/components/page-layout.tsx';
-import { trpc } from '#src/utils/trpc.ts';
-
 import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import SearchErrorIcon from '#src/assets/icons/search-error.svg';
-
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import GlossaryMarkdownBody from '#src/components/Markdown/glossary-markdown-body.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
@@ -20,6 +15,7 @@ import { cdnUrl } from '#src/utils/index.ts';
 import { useDebounce } from '#src/utils/search.ts';
 import { toCamelCase } from '#src/utils/string.ts';
 import { toggleSelection } from '#src/utils/toggle.ts';
+import { trpc } from '#src/utils/trpc.ts';
 import { SearchResult } from './-components/search-result.tsx';
 
 export const Route = createFileRoute('/$lang/_content/search/')({
@@ -56,18 +52,18 @@ function SearchPage() {
   const search = useInfiniteQuery(
     trpc.content.search.infiniteQueryOptions(
       {
-        query: debouncedQuery,
-        language: i18n.language,
         categories: [
           ...(categories.has('all') ? availableCategories : categories),
         ],
-        surroundingWords: isMobile ? 15 : 20,
+        language: i18n.language,
         limit: 20,
+        query: debouncedQuery,
+        surroundingWords: isMobile ? 15 : 20,
       },
       {
-        initialCursor: 1,
+        enabled: debouncedQuery.length > 0,
         getNextPageParam: (lastPage) => lastPage.nextCursor,
-        enabled: debouncedQuery.length > 0, // Only fetch when query has input
+        initialCursor: 1, // Only fetch when query has input
       },
     ),
   );
@@ -196,20 +192,20 @@ function SearchPage() {
                       <div className="flex flex-col gap-2">
                         {Object.entries({
                           Categories: availableCategories,
-                        }).map(([groupname, group], index) => {
+                        }).map(([_groupname, group], index) => {
                           const target = {
-                            value: categories,
                             dispatch: setCategories,
+                            value: categories,
                           };
 
                           return (
                             <div
-                              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                              // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                               key={`group-${index}`}
                               className="flex flex-wrap gap-2"
                             >
                               <Button
-                                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                                // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                                 key={`group-${index}-all`}
                                 variant={
                                   target.value.has('all')

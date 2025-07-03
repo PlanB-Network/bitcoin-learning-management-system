@@ -29,16 +29,16 @@ export const LegalMarkdownComponent = ({
             {children}
           </h3>
         ),
-        p: ({ children }) => (
-          <p className="leading-relaxed mb-5 text-start text-black">
-            {children}
-          </p>
-        ),
 
         li: ({ children }) => (
           <li className="leading-relaxed mb-5 text-start text-black">
             {children}
           </li>
+        ),
+        p: ({ children }) => (
+          <p className="leading-relaxed mb-5 text-start text-black">
+            {children}
+          </p>
         ),
       }}
     >

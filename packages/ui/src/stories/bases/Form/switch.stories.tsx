@@ -2,10 +2,29 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Switch } from '#src/bases/switch.tsx';
 
 const meta: Meta<typeof Switch> = {
+  argTypes: {
+    checked: {
+      control: 'boolean',
+    },
+    className: {
+      control: 'text',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    mode: {
+      control: 'select',
+      defaultValue: 'dark',
+      options: ['light', 'dark'],
+    },
+    size: {
+      control: 'select',
+      defaultValue: 's',
+      options: ['xs', 's'],
+    },
+  },
   component: Switch,
-  title: 'Bases/Form/switch',
   parameters: {
-    layout: 'centered',
     backgrounds: {
       default: 'light',
       values: [
@@ -13,29 +32,10 @@ const meta: Meta<typeof Switch> = {
         { name: 'dark', value: '#333333' },
       ],
     },
-  },
-  argTypes: {
-    checked: {
-      control: 'boolean',
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    size: {
-      control: 'select',
-      options: ['xs', 's'],
-      defaultValue: 's',
-    },
-    mode: {
-      control: 'select',
-      options: ['light', 'dark'],
-      defaultValue: 'dark',
-    },
-    className: {
-      control: 'text',
-    },
+    layout: 'centered',
   },
   tags: ['autodocs'],
+  title: 'Bases/Form/switch',
 };
 
 export default meta;
@@ -57,10 +57,10 @@ const SwitchVariant = ({
 
 export const Default: Story = {
   args: {
-    size: 's',
-    mode: 'dark',
     checked: false,
     disabled: false,
+    mode: 'dark',
+    size: 's',
   },
   parameters: {
     backgrounds: { default: 'dark' },
@@ -202,7 +202,14 @@ export const DarkModeVariations: Story = {
 };
 
 export const WithLabels: Story = {
+  args: {
+    checked: false,
+    disabled: false,
+  },
   name: 'With Labels',
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
   render: (args) => (
     <div className="flex flex-col gap-[30px]">
       <div className="flex items-center gap-2 text-black">
@@ -231,11 +238,4 @@ export const WithLabels: Story = {
       </div>
     </div>
   ),
-  args: {
-    checked: false,
-    disabled: false,
-  },
-  parameters: {
-    backgrounds: { default: 'light' },
-  },
 };

@@ -1,7 +1,8 @@
 {
-  "name": "@blms/shared",
-  "version": "0.0.1",
-  "type": "module",
+  "dependencies": {
+    "@blms/constants": "workspace:*"
+  },
+  "devDependencies": {},
   "exports": {
     ".": {
       "development": "./src/index.ts",
@@ -15,20 +16,19 @@
     }
   },
   "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "name": "@blms/shared",
   "scripts": {
     "build": "tsc --build tsconfig.json",
+    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "check-types": "tsc --noEmit",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
     "lint": "biome check .",
     "test": "mocha src/**/*.test.ts",
     "test:bun": "bun test",
     "test:bun:coverage": "bun test --coverage",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit",
-    "build-types": "tsc --emitDeclarationOnly -p tsconfig.json",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
+    "type-check": "tsc --build"
   },
-  "devDependencies": {},
-  "dependencies": {
-    "@blms/constants": "workspace:*"
-  }
+  "type": "module",
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

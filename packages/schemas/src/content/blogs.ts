@@ -1,11 +1,10 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
-  contentBlogTags,
   contentBlogs,
   contentBlogsLocalized,
+  contentBlogTags,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 export const blogSchema = createSelectSchema(contentBlogs);
 export const blogLocalizedSchema = createSelectSchema(contentBlogsLocalized);
@@ -13,21 +12,21 @@ export const blogTagSchema = createSelectSchema(contentBlogTags);
 
 export const joinedBlogLightSchema = blogSchema
   .pick({
-    id: true,
-    path: true,
-    category: true,
     author: true,
-    lastUpdated: true,
-    lastCommit: true,
-    lastSync: true,
+    category: true,
     createdAt: true,
     date: true,
+    id: true,
+    lastCommit: true,
+    lastSync: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     blogLocalizedSchema.pick({
+      description: true,
       language: true,
       title: true,
-      description: true,
     }),
   )
   .merge(

@@ -1,7 +1,3 @@
-import { useCallback, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-
 import {
   BasicModal,
   Button,
@@ -13,12 +9,13 @@ import {
   FormMessage,
   Input,
 } from '@blms/ui';
-
-import { trpc } from '#src/utils/index.js';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { useCallback, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { trpc } from '#src/utils/index.js';
 import { AuthModalState } from './props.ts';
 
 interface LoginModalProps {
@@ -41,13 +38,13 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
   const resetPassword = useMutation(
     trpc.user.requestPasswordReset.mutationOptions({
-      onSuccess: () => {
-        console.log('Password reset email sent');
-        setResetPasswordState(ResetPasswordState.Sent);
-      },
       onError: (error) => {
         console.error('Error sending password reset email:', error);
         setResetPasswordState(ResetPasswordState.Error);
+      },
+      onSuccess: () => {
+        console.log('Password reset email sent');
+        setResetPasswordState(ResetPasswordState.Sent);
       },
     }),
   );
@@ -57,8 +54,8 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   });
 
   const form = useForm({
-    resolver: zodResolver(passwordResetSchema),
     defaultValues: { email: '' },
+    resolver: zodResolver(passwordResetSchema),
   });
 
   const handlePasswordReset = useCallback(

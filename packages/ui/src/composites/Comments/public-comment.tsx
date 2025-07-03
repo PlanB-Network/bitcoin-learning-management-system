@@ -31,8 +31,8 @@ export const PublicComment = ({
           </h2>
           <time className="text-newBlack-5 label-medium-16px truncate">
             {new Date(date).toLocaleDateString(undefined, {
-              month: 'long',
               day: 'numeric',
+              month: 'long',
               year: 'numeric',
             })}
           </time>

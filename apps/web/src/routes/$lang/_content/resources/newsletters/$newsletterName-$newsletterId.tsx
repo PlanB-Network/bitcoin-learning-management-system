@@ -1,8 +1,3 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import {
   BackLink,
   Button,
@@ -16,22 +11,25 @@ import {
   Loader,
   TextTag,
 } from '@blms/ui';
-
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
-import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { SuggestedHeader } from '../-components/suggested-header.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/newsletters/$newsletterName-$newsletterId',
 )({
+  component: NewsletterDetail,
   params: {
     parse: (params) => {
       const newsletterNameId = params['newsletterName-$newsletterId'];
@@ -39,9 +37,9 @@ export const Route = createFileRoute(
 
       return {
         lang: z.string().parse(params.lang),
-        'newsletterName-$newsletterId': `${name}-${id}`,
-        newsletterName: z.string().parse(name),
         newsletterId: z.string().parse(id),
+        newsletterName: z.string().parse(name),
+        'newsletterName-$newsletterId': `${name}-${id}`,
       };
     },
     stringify: ({ lang, newsletterName, newsletterId }) => ({
@@ -49,7 +47,6 @@ export const Route = createFileRoute(
       'newsletterName-$newsletterId': `${newsletterName}-${newsletterId}`,
     }),
   },
-  component: NewsletterDetail,
 });
 
 function NewsletterDetail() {
@@ -82,10 +79,10 @@ function NewsletterDetail() {
       params.newsletterName !== formatNameForURL(newsletter.title)
     ) {
       navigate({
+        replace: true,
         to: `/resources/newsletters/${formatNameForURL(newsletter.title)}-${
           newsletter.id
         }`,
-        replace: true,
       });
     }
   }, [newsletter, isFetched, navigateTo404, params.newsletterName, navigate]);
@@ -259,9 +256,9 @@ function NewsletterDetail() {
                           style={{
                             background: `linear-gradient(360deg, rgba(40, 33, 33, 0.90) 10%, rgba(0, 0, 0, 0.00) 60%),
                         linear-gradient(0deg, rgba(57, 53, 49, 0.20) 0%, rgba(57, 53, 49, 0.20) 100%)`,
-                            backgroundSize: '153.647% 100%',
                             backgroundPosition: '-5.216px 0px',
                             backgroundRepeat: 'no-repeat',
+                            backgroundSize: '153.647% 100%',
                           }}
                         />
                       </div>

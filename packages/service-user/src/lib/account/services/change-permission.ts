@@ -1,7 +1,7 @@
 // TODO: use normal error
-import { TRPCError } from '@trpc/server';
 
 import { firstRow } from '@blms/database';
+import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../../dependencies.js';
 import { changePermissionQuery } from '../queries/change-permission.js';
 import { getUserByIdQuery } from '../queries/get-user.js';

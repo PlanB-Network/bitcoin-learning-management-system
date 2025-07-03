@@ -1,7 +1,6 @@
+import { cn } from '@blms/ui';
 import type { ToPathOption } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
-
-import { cn } from '@blms/ui';
 
 import { MainLayout } from '#src/components/main-layout.js';
 import { PageHeader } from '#src/components/page-header.js';

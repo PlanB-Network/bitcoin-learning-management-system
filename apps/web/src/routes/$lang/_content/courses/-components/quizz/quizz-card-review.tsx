@@ -79,7 +79,7 @@ export default function QuizzCardReview({
           <div className="flex flex-col gap-5">
             {answers.map((answer, answerIndex) => (
               <CompletedExamAnswer
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={answerIndex}
                 answer={answer}
                 answerIndex={answerIndex}

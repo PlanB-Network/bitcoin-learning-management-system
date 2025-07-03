@@ -6,17 +6,17 @@ import { CertificateDisplay } from './-components/certificate-display.tsx';
 export const Route = createFileRoute(
   '/$lang/_content/_misc/course-diplomas/$certificateId',
 )({
+  component: Certificate,
   params: {
     parse: (params) => ({
-      lang: z.string().parse(params.lang),
       certificateId: z.string().parse(params.certificateId),
+      lang: z.string().parse(params.lang),
     }),
     stringify: ({ lang, certificateId }) => ({
-      lang: lang,
       certificateId: `${certificateId}`,
+      lang: lang,
     }),
   },
-  component: Certificate,
 });
 
 function Certificate() {

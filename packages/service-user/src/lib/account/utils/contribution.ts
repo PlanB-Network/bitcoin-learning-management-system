@@ -1,6 +1,5 @@
-import * as bip39 from 'bip39';
-
 import type { PostgresClient } from '@blms/database';
+import * as bip39 from 'bip39';
 
 import { anyContributorIdExistsQuery } from '../queries/contributor-id-exists.js';
 

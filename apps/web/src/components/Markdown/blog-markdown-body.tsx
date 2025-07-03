@@ -1,6 +1,5 @@
-import ReactMarkdown from 'react-markdown';
-
 import type { JoinedBlogLight } from '@blms/types';
+import ReactMarkdown from 'react-markdown';
 import rehypeMathjax from 'rehype-mathjax/svg';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 import remarkGfm from 'remark-gfm';
@@ -24,6 +23,14 @@ const BlogMarkdownBody = ({
   return (
     <ReactMarkdown
       components={{
+        a: ({ children, href }) => (
+          <LinkRenderer href={href} blogs={blogs}>
+            {children}
+          </LinkRenderer>
+        ),
+        code: ({ className, children }) => (
+          <CodeRenderer className={className}>{children}</CodeRenderer>
+        ),
         h1: ({ children }) => (
           <h1 className="text-xl mb-4 text-black">
             <div className="flex w-auto items-center text-start font-medium">
@@ -48,39 +55,31 @@ const BlogMarkdownBody = ({
             {children}
           </h3>
         ),
-        p: ({ children }) => (
-          <ParagraphRenderer intent="blog" header="text">
-            {children}
-          </ParagraphRenderer>
-        ),
         img: ({ src, alt }) => (
           <ImageVideoRenderer header="text" src={src} alt={alt} />
-        ),
-        a: ({ children, href }) => (
-          <LinkRenderer href={href} blogs={blogs}>
-            {children}
-          </LinkRenderer>
-        ),
-        ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
-            {children}
-          </ol>
-        ),
-        ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
-            {children}
-          </ul>
         ),
         li: ({ children }) => (
           <li className="leading-relaxed mb-5 text-start text-black font-[450]">
             {children}
           </li>
         ),
+        ol: ({ children }) => (
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
+            {children}
+          </ol>
+        ),
+        p: ({ children }) => (
+          <ParagraphRenderer intent="blog" header="text">
+            {children}
+          </ParagraphRenderer>
+        ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
-        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        code: ({ className, children }) => (
-          <CodeRenderer className={className}>{children}</CodeRenderer>
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        ul: ({ children }) => (
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
+            {children}
+          </ul>
         ),
       }}
       remarkPlugins={[remarkGfm, rehypeUnwrapImages, [remarkMath, {}]]}

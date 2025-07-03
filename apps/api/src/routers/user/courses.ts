@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { ExamType } from '@blms/constants';
 
 import {
   checkoutDataSchema,
@@ -69,8 +69,7 @@ import type {
   PartialExamQuestion,
   SingleTrialExamQuestionStatistics,
 } from '@blms/types';
-
-import { ExamType } from '@blms/constants';
+import { z } from 'zod';
 import {
   professorProcedure,
   studentProcedure,
@@ -82,18 +81,18 @@ import type { Parser } from '#src/trpc/types.js';
 const completeChapterProcedure = studentProcedure
   .input(
     z.object({
-      courseId: z.string(),
       chapterId: z.string(),
+      courseId: z.string(),
       language: z.string(),
     }),
   )
   .output<Parser<CourseProgress[]>>(courseProgressSchema.array())
   .mutation(({ ctx, input }) =>
     createCompleteChapter(ctx.dependencies)({
-      uid: ctx.user.uid,
-      courseId: input.courseId,
       chapterId: input.chapterId,
+      courseId: input.courseId,
       language: input?.language,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -107,9 +106,9 @@ const completeAllChaptersProcedure = studentProcedure
   .output<Parser<CourseProgress[]>>(courseProgressSchema.array())
   .mutation(({ ctx, input }) =>
     createCompleteAllChapters(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
       language: input?.language,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -120,35 +119,35 @@ const getProgressProcedure = studentProcedure
   )
   .query(({ ctx, input }) =>
     createGetProgress(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input?.courseId || '',
+      uid: ctx.user.uid,
     }),
   );
 
 const startExamAttemptProcedure = studentProcedure
   .input(
     z.object({
-      courseId: z.string(),
       chapterId: z.string(),
-      language: z.string(),
+      courseId: z.string(),
       examType: z.nativeEnum(ExamType),
+      language: z.string(),
     }),
   )
   .output<Parser<PartialExamQuestion[]>>(partialExamQuestionSchema.array())
   .mutation(({ ctx, input }) =>
     createStartExamAttempt(ctx.dependencies)({
-      uid: ctx.user.uid,
-      courseId: input.courseId,
       chapterId: input.chapterId,
-      language: input.language,
+      courseId: input.courseId,
       examType: input.examType,
+      language: input.language,
+      uid: ctx.user.uid,
     }),
   );
 
 const completeExamAttemptProcedure = studentProcedure
   .input(
     z.object({
-      answers: z.array(z.object({ questionId: z.string(), order: z.number() })),
+      answers: z.array(z.object({ order: z.number(), questionId: z.string() })),
       chapterId: z.string(),
       courseId: z.string(),
       examId: z.string(),
@@ -158,23 +157,23 @@ const completeExamAttemptProcedure = studentProcedure
   .mutation(({ ctx, input }) =>
     createCompleteExamAttempt(ctx.dependencies)({
       answers: input.answers,
-      uid: ctx.user.uid,
       chapterId: input.chapterId,
       courseId: input.courseId,
       examId: input.examId,
+      uid: ctx.user.uid,
     }),
   );
 
 const getLatestExamResultsProcedure = studentProcedure
-  .input(z.object({ courseId: z.string(), chapterId: z.string().optional() }))
+  .input(z.object({ chapterId: z.string().optional(), courseId: z.string() }))
   .output<Parser<CourseExamResultsExtended | null>>(
     courseExamResultsExtendedSchema.nullable(),
   )
   .query(({ ctx, input }) =>
     createGetLatestExamResults(ctx.dependencies)({
-      uid: ctx.user.uid,
-      courseId: input.courseId,
       chapterId: input.chapterId,
+      courseId: input.courseId,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -185,8 +184,8 @@ const getTeacherLedCourseDiplomaTimestampProcedure = studentProcedure
   )
   .query(({ ctx, input }) =>
     createGetTeacherLedCourseDiplomaTimestamp(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -195,9 +194,9 @@ const getAllUserCourseExamResultsProcedure = studentProcedure
   .output<Parser<CourseExamResults[]>>(courseExamResultsSchema.array())
   .query(({ ctx, input }) =>
     createGetAllUserCourseExamsResults(ctx.dependencies)({
-      uid: ctx.user.uid,
-      courseId: input.courseId,
       chapterId: undefined,
+      courseId: input.courseId,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -210,8 +209,8 @@ const getAllSucceededUserExamsProcedure = studentProcedure
   .output<Parser<CourseSucceededExam[]>>(courseSucceededExamSchema.array())
   .query(({ ctx, input }) =>
     createGetAllSucceededUserExams(ctx.dependencies)({
-      uid: ctx.user.uid,
       language: input.language,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -236,34 +235,34 @@ const saveQuizAttemptProcedure = studentProcedure
   .input(
     z.object({
       chapterId: z.string(),
-      questionsCount: z.number(),
       correctAnswersCount: z.number(),
+      questionsCount: z.number(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(({ ctx, input }) =>
     createSaveQuizAttempt(ctx.dependencies)({
-      uid: ctx.user.uid,
       chapterId: input.chapterId,
-      questionsCount: input.questionsCount,
       correctAnswersCount: input.correctAnswersCount,
+      questionsCount: input.questionsCount,
+      uid: ctx.user.uid,
     }),
   );
 
 const saveCourseReviewProcedure = studentProcedure
   .input(
     z.object({
+      adminComment: z.string(),
+      chapterId: z.string(),
+      courseId: z.string(),
+      difficulty: z.number(),
+      faithful: z.number(),
       general: z.number(),
       length: z.number(),
-      difficulty: z.number(),
-      quality: z.number(),
-      faithful: z.number(),
-      recommend: z.number(),
       publicComment: z.string(),
+      quality: z.number(),
+      recommend: z.number(),
       teacherComment: z.string(),
-      adminComment: z.string(),
-      courseId: z.string(),
-      chapterId: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
@@ -271,12 +270,12 @@ const saveCourseReviewProcedure = studentProcedure
     const { chapterId, ...rest } = input;
 
     await createSaveCourseReview(ctx.dependencies)({
+      chapterId: chapterId,
       newReview: {
         ...rest,
         createdAt: new Date(),
         uid: ctx.user.uid,
       },
-      chapterId: chapterId,
     });
 
     await createRefreshCourseRating(ctx.dependencies)(input.courseId);
@@ -285,26 +284,26 @@ const saveCourseReviewProcedure = studentProcedure
 const saveCoursePaymentProcedure = studentProcedure
   .input(
     z.object({
+      couponCode: z.string().optional(),
       courseId: z.string(),
       courseIndex: z.string(),
-      satsPrice: z.number(),
       dollarPrice: z.number(),
-      couponCode: z.string().optional(),
       format: z.string(),
       method: z.string(),
+      satsPrice: z.number(),
     }),
   )
   .output<Parser<CheckoutData>>(checkoutDataSchema)
   .mutation(({ ctx, input }) =>
     createSaveCoursePayment(ctx.dependencies)({
-      uid: ctx.user.uid,
+      couponCode: input.couponCode,
       courseId: input.courseId,
       courseIndex: input.courseIndex,
-      satsPrice: input.satsPrice,
       dollarPrice: input.dollarPrice,
-      method: input.method,
-      couponCode: input.couponCode,
       format: input.format,
+      method: input.method,
+      satsPrice: input.satsPrice,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -341,17 +340,17 @@ const getUserChapterProcedure = studentProcedure
   .output<Parser<GetUserChapterOutput>>(
     courseUserChapterSchema
       .pick({
-        courseId: true,
         booked: true,
         chapterId: true,
         completedAt: true,
+        courseId: true,
       })
       .array(),
   )
   .query(({ ctx, input }) =>
     createGetUserChapter(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -360,8 +359,8 @@ const getCourseReviewProcedure = studentProcedure
   .output<Parser<CourseReview | null>>(courseReviewSchema.nullable())
   .query(({ ctx, input }) =>
     createGetCourseReview(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
+      uid: ctx.user.uid,
     }),
   );
 
@@ -400,18 +399,18 @@ const getSingleTrialExamQuestionStatisticsProcedure = professorProcedure
 const saveUserChapterProcedure = studentProcedure
   .input(
     z.object({
-      courseId: z.string(),
-      chapterId: z.string(),
       booked: z.boolean(),
+      chapterId: z.string(),
+      courseId: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveUserChapter(ctx.dependencies)({
-      uid: ctx.user.uid,
-      courseId: input.courseId,
-      chapterId: input.chapterId,
       booked: input.booked,
+      chapterId: input.chapterId,
+      courseId: input.courseId,
+      uid: ctx.user.uid,
     });
 
     await createCalculateCourseChapterSeats(ctx.dependencies)();
@@ -426,32 +425,32 @@ const startCourseProcedure = studentProcedure
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createStartCourse(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
+      uid: ctx.user.uid,
     });
   });
 
 const downloadChapterTicketProcedure = studentProcedure
   .input(
     z.object({
-      title: z.string().optional(),
       addressLine1: z.string().nullable(),
       addressLine2: z.string().nullable(),
       addressLine3: z.string().nullable(),
+      availableSeats: z.number().nullable(),
       formattedStartDate: z.string().optional(),
       formattedTime: z.string().optional(),
       liveLanguage: z.string().nullable(),
-      availableSeats: z.number().nullable(),
-      userName: z.string(),
       organizer: z.string().optional(),
+      title: z.string().optional(),
+      userName: z.string(),
     }),
   )
   .output<Parser<string>>(z.string())
   .mutation(({ input }) => {
     return generateChapterTicket({
       ...input,
-      title: input.title || '',
       addressLine1: input.addressLine1 || '',
+      title: input.title || '',
     }).then((buffer) => buffer.toString('base64'));
   });
 
@@ -464,9 +463,9 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
   )
   .output(
     z.object({
-      uid: z.string(),
       courseId: z.string(),
       displayName: z.string(),
+      uid: z.string(),
     }),
   )
   .query(({ ctx, input }) => {
@@ -481,7 +480,7 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
 const temporarySaveExamAttemptProcedure = studentProcedure
   .input(
     z.object({
-      answers: z.array(z.object({ questionId: z.string(), order: z.number() })),
+      answers: z.array(z.object({ order: z.number(), questionId: z.string() })),
       chapterId: z.string(),
       courseId: z.string(),
       examId: z.string(),
@@ -491,26 +490,26 @@ const temporarySaveExamAttemptProcedure = studentProcedure
   .mutation(({ ctx, input }) =>
     createTemporarySaveExamAttempt(ctx.dependencies)({
       answers: input.answers,
-      uid: ctx.user.uid,
       chapterId: input.chapterId,
       courseId: input.courseId,
       examId: input.examId,
+      uid: ctx.user.uid,
     }),
   );
 
 const saveCourseAssignmentsOrderProcedure = studentProcedure
   .input(
     z.object({
-      courseId: z.string(),
       assignmentsIds: z.string().array(),
+      courseId: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveCourseAssignmentsOrder(ctx.dependencies)({
-      uid: ctx.user.uid,
-      courseId: input.courseId,
       assignmentsIds: input.assignmentsIds,
+      courseId: input.courseId,
+      uid: ctx.user.uid,
     });
   });
 
@@ -523,8 +522,8 @@ const saveAssignmentSubmissionTimeProcedure = studentProcedure
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveCourseAssignmentSubmissionTime(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
+      uid: ctx.user.uid,
     });
   });
 
@@ -532,17 +531,17 @@ const saveCourseAssignmentGradeProcedure = professorProcedure
   .input(
     z.object({
       courseId: z.string(),
-      uid: z.string(),
       grade: z.number().nullable(),
+      uid: z.string(),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createSaveCourseAssignmentGrade(ctx.dependencies)({
       courseId: input.courseId,
+      grade: input.grade,
       teacherUid: ctx.user.uid,
       uid: input.uid,
-      grade: input.grade,
     });
   });
 
@@ -582,8 +581,8 @@ const withdrawUserFromCourseFinalLessonProcedure = studentProcedure
   .output<Parser<void>>(z.void())
   .mutation(async ({ ctx, input }) => {
     await createWithdrawUserFromCourseFinalLesson(ctx.dependencies)({
-      uid: ctx.user.uid,
       courseId: input.courseId,
+      uid: ctx.user.uid,
     });
   });
 
@@ -592,30 +591,30 @@ export const userCoursesRouter = createTRPCRouter({
   completeChapter: completeChapterProcedure,
   completeExamAttempt: completeExamAttemptProcedure,
   downloadChapterTicket: downloadChapterTicketProcedure,
-  getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getAllSucceededUserExams: getAllSucceededUserExamsProcedure,
+  getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
   getCourseReview: getCourseReviewProcedure,
   getEnrolledStudentsCount: getEnrolledStudentsCountProcedure,
   getExamInfo: getExamInfoProcedure,
   getExamQuestions: getExamQuestionsProcedure,
+  getLatestExamResults: getLatestExamResultsProcedure,
+  getPayment: getPaymentProcedure,
+  getPayments: getPaymentsProcedure,
+  getProgress: getProgressProcedure,
   getSingleTrialExamQuestionStatistics:
     getSingleTrialExamQuestionStatisticsProcedure,
-  getLatestExamResults: getLatestExamResultsProcedure,
   getTeacherLedCourseDiplomaTimestamp:
     getTeacherLedCourseDiplomaTimestampProcedure,
   getTeacherLedCourseGrades: getGetTeacherLedCourseGradesProcedure,
-  getProgress: getProgressProcedure,
   getUserChapter: getUserChapterProcedure,
-  getPayment: getPaymentProcedure,
-  getPayments: getPaymentsProcedure,
   getUserDetailsByCertificateId: getUserDetailsByCertificateIdProcedure,
   saveCourseAssignmentGrade: saveCourseAssignmentGradeProcedure,
   saveCourseAssignmentSubmissionTime: saveAssignmentSubmissionTimeProcedure,
   saveCourseAssignmentsOrder: saveCourseAssignmentsOrderProcedure,
+  saveCoursePayment: saveCoursePaymentProcedure,
   saveCourseReview: saveCourseReviewProcedure,
   saveQuizAttempt: saveQuizAttemptProcedure,
   saveUserChapter: saveUserChapterProcedure,
-  saveCoursePayment: saveCoursePaymentProcedure,
   setCourseAssignmentGradesAsPublished:
     setCourseAssignmentGradesAsPublishedProcedure,
   startCourse: startCourseProcedure,

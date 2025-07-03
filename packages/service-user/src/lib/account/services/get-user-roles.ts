@@ -38,6 +38,6 @@ export const createGetUsersRoles = ({ postgres }: Dependencies) => {
       nextCursor = lastItem?.[orderField] || null;
     }
 
-    return { users: data, nextCursor };
+    return { nextCursor, users: data };
   };
 };

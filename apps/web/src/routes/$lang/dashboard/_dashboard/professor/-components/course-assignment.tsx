@@ -5,10 +5,10 @@ import {
   AlertTitle,
   BasicModal,
   Button,
-  DialogClose,
-  Loader,
   cn,
   customToast,
+  DialogClose,
+  Loader,
 } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useCallback, useMemo, useState } from 'react';
@@ -49,8 +49,8 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
 
   const { data: course, refetch: refetchCourse } = useQuery(
     trpc.content.getCourse.queryOptions({
-      language: i18n.language,
       id: courseId,
+      language: i18n.language,
     }),
   );
 
@@ -58,9 +58,9 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
     trpc.user.courses.saveCourseAssignmentGrade.mutationOptions({
       onError: (error) => {
         customToast(error.message, {
-          mode: 'light',
           color: 'warning',
           icon: TbAlertCircle,
+          mode: 'light',
         });
       },
     }),
@@ -68,24 +68,24 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
 
   const setGradesAsPublishedMutation = useMutation(
     trpc.user.courses.setCourseAssignmentGradesAsPublished.mutationOptions({
+      onError: (error) => {
+        customToast(error.message, {
+          color: 'warning',
+          icon: TbAlertCircle,
+          mode: 'light',
+        });
+      },
       onSuccess: async () => {
         await refetchCourse();
         await refetchAssignments();
         customToast(
           t('dashboard.teacher.courses.assignmentGrade.gradesPublished'),
           {
-            mode: 'light',
             color: 'success',
             icon: TbCheck,
+            mode: 'light',
           },
         );
-      },
-      onError: (error) => {
-        customToast(error.message, {
-          mode: 'light',
-          color: 'warning',
-          icon: TbAlertCircle,
-        });
       },
     }),
   );
@@ -103,8 +103,8 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         gradesToSave.map((gradeEntry) =>
           saveGradesMutation.mutateAsync({
             courseId,
-            uid: gradeEntry.uid,
             grade: gradeEntry.grade,
+            uid: gradeEntry.uid,
           }),
         ),
       );
@@ -126,8 +126,8 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         const gradesToSave: GradeToEdit[] = Object.entries(
           currentState.grades,
         ).map(([username, grade]) => ({
-          uid: assignment.students.find((s) => s.username === username)!.uid,
           grade,
+          uid: assignment.students.find((s) => s.username === username)!.uid,
         }));
 
         await saveGradesBatch(assignmentId, gradesToSave);
@@ -144,8 +144,8 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         setEditingStates((prev) => ({
           ...prev,
           [assignmentId]: {
-            isEditing: true,
             grades: {},
+            isEditing: true,
           },
         }));
       }
@@ -163,11 +163,11 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         ...prev,
         [assignmentId]: {
           ...prev[assignmentId],
-          isEditing: true,
           grades: {
             ...prev[assignmentId].grades,
             [studentUsername]: newGrade,
           },
+          isEditing: true,
         },
       }));
     },
@@ -186,9 +186,9 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         if (state?.isEditing) {
           for (const [username, grade] of Object.entries(state.grades)) {
             gradesToSave.push({
+              grade,
               uid: assignment.students.find((s) => s.username === username)!
                 .uid,
-              grade,
             });
           }
         }
@@ -196,7 +196,7 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
         for (const student of assignment.students) {
           const isEdited = student.username in (state?.grades || {});
           if (student.grade === null && !isEdited) {
-            gradesToSave.push({ uid: student.uid, grade: 0 });
+            gradesToSave.push({ grade: 0, uid: student.uid });
           }
         }
 
@@ -312,8 +312,8 @@ const AssignmentGradesTable = ({
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [sortConfig, setSortConfig] = useState<SortConfig>({
-    key: null,
     direction: 'asc',
+    key: null,
   });
 
   const handleSort = (key: string) => {
@@ -321,7 +321,7 @@ const AssignmentGradesTable = ({
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
       direction = 'desc';
     }
-    setSortConfig({ key, direction });
+    setSortConfig({ direction, key });
   };
 
   const sortedStudents = useMemo(() => {
@@ -394,6 +394,7 @@ const AssignmentGradesTable = ({
 
   return (
     <div className="w-full border border-newGray-5 bg-newGray-6 rounded-xl flex flex-col gap-2">
+      {/** biome-ignore lint/a11y/useAriaPropsSupportedByRole: TODO fix this */}
       <div
         className="flex items-center justify-between px-4 py-2.5 cursor-pointer"
         onClick={() => setIsCollapsed(!isCollapsed)}

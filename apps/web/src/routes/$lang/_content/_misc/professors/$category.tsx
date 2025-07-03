@@ -1,31 +1,28 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { DropdownMenu, Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-
-import { DropdownMenu, Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
-
 import { PageLayout } from '#src/components/page-layout.js';
 import { ProfessorCard } from '#src/components/professor-card.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { professorTabs } from '../-utils/professor-utils.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/professors/$category',
 )({
+  component: ProfessorCategoryPage,
   params: {
     parse: (params) => ({
-      lang: z.string().parse(params.lang),
       category: z.string().parse(params.category),
+      lang: z.string().parse(params.lang),
     }),
     stringify: ({ lang, category }) => ({
-      lang: lang,
       category: `${category}`,
+      lang: lang,
     }),
   },
-  component: ProfessorCategoryPage,
 });
 
 export function ProfessorCategoryPage() {

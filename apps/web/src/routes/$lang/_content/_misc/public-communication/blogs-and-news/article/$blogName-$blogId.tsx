@@ -1,19 +1,16 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
+import { Button, cn, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import React, { Suspense, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { z } from 'zod';
-
-import { Button, Loader, cn } from '@blms/ui';
-
 import { PageLayout } from '#src/components/page-layout.js';
-import { cdnUrl } from '#src/utils/index.js';
-import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { FeaturedCard } from '#src/patterns/featured-card.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import { cdnUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
+import { trpc } from '#src/utils/trpc.js';
 import BlogSidebar from '../../../-components/public-communication/blog-sidebar.tsx';
 import Breadcrumbs from '../../../-components/public-communication/breadcrumbs.tsx';
 
@@ -24,24 +21,24 @@ const BlogMarkdownBody = React.lazy(
 export const Route = createFileRoute(
   '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId',
 )({
+  component: SingleBlogDetail,
   params: {
     parse: (params) => {
       const paramNameId = params['blogName-$blogId'];
       const { id, name } = getNameAndIdFromUrl(paramNameId);
 
       return {
-        lang: z.string().parse(params.lang),
-        'blogName-$blogId': `${name}-${id}`,
-        blogName: z.string().parse(name),
         blogId: z.string().parse(id),
+        blogName: z.string().parse(name),
+        'blogName-$blogId': `${name}-${id}`,
+        lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, blogName, blogId }) => ({
-      lang: lang,
       'blogName-$blogId': `${blogName}-${blogId}`,
+      lang: lang,
     }),
   },
-  component: SingleBlogDetail,
 });
 
 function SingleBlogDetail() {
@@ -62,8 +59,8 @@ function SingleBlogDetail() {
   useEffect(() => {
     if (blog && params.blogName !== formatNameForURL(blog.title)) {
       navigate({
-        to: `/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`,
         replace: true,
+        to: `/public-communication/blogs-and-news/article/${formatNameForURL(blog.title)}-${blog.id}`,
       });
     }
   }, [blog, isFetched, navigate, params.bookName]);

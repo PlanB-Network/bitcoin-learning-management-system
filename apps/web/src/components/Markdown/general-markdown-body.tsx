@@ -24,6 +24,17 @@ const GeneralMarkdownBody = ({
   return (
     <ReactMarkdown
       components={{
+        a: ({ children, href }) => (
+          <LinkRenderer href={href} intent="general">
+            {children}
+          </LinkRenderer>
+        ),
+        blockquote: ({ children }) => (
+          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
+        ),
+        code: ({ className, children }) => (
+          <CodeRenderer className={className}>{children}</CodeRenderer>
+        ),
         h1: ({ children }) => (
           <h2 className="mt-6 text-2xl font-bold text-orange-600 sm:mt-10 sm:text-3xl ">
             <div className="flex  w-auto items-center">
@@ -46,42 +57,31 @@ const GeneralMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-2xl font-medium">{children}</h3>
         ),
-        p: ({ children }) => (
-          <ParagraphRenderer intent="general" header="logo">
-            {children}
-          </ParagraphRenderer>
-        ),
         img: ({ src, alt }) => (
           <ImageVideoRenderer header="logo" src={src} alt={alt} />
-        ),
-        a: ({ children, href }) => (
-          <LinkRenderer href={href} intent="general">
-            {children}
-          </LinkRenderer>
-        ),
-        ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide font-[450]">
-            {children}
-          </ol>
-        ),
-        ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide font-[450]">
-            {children}
-          </ul>
         ),
         li: ({ children }) => (
           <li className="my-1 text-base tracking-wide last:mb-0 font-[450]">
             {children}
           </li>
         ),
-        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
-        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
-        blockquote: ({ children }) => (
-          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
+        ol: ({ children }) => (
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide font-[450]">
+            {children}
+          </ol>
         ),
-        code: ({ className, children }) => (
-          <CodeRenderer className={className}>{children}</CodeRenderer>
+        p: ({ children }) => (
+          <ParagraphRenderer intent="general" header="logo">
+            {children}
+          </ParagraphRenderer>
+        ),
+        table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+        td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
+        ul: ({ children }) => (
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide font-[450]">
+            {children}
+          </ul>
         ),
       }}
       remarkPlugins={[remarkGfm, rehypeUnwrapImages, remarkMath]}

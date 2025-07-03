@@ -142,13 +142,13 @@ const WrittenFeedbacks = ({
   return (
     <section className="mt-7 flex flex-col gap-5 md:gap-7">
       {feedbacks.slice(0, visibleFeedbacks).map((feedback, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+        // biome-ignore lint/suspicious/noArrayIndexKey: explanation
         <article key={index} className="flex flex-col">
           <div className="flex flex-col">
             <span className="label-small-12px text-newGray-1 capitalize">
               {new Date(feedback.date).toLocaleDateString(undefined, {
-                month: 'long',
                 day: 'numeric',
+                month: 'long',
                 year: 'numeric',
               })}
             </span>
@@ -254,9 +254,9 @@ const ReviewSlider = ({
   value: number;
 }) => {
   const sliderProps = {
-    min: -5,
     default: [0],
     max: 5,
+    min: -5,
     step: 1,
   };
 
@@ -278,7 +278,7 @@ const ReviewSlider = ({
           <div className="relative flex justify-between">
             {Array.from({ length: 11 }).map((_, i) => (
               <div
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={i}
                 className="w-[2px] h-1 bg-newGray-3"
                 style={{ left: `${(i / 10) * 100}%` }}

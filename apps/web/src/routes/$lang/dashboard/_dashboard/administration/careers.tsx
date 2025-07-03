@@ -1,16 +1,15 @@
 import type { JoinedCareerProfile } from '@blms/types';
-import { Button, Loader, TextTag, cn } from '@blms/ui';
+import { Button, cn, Loader, TextTag } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { trpc } from '#src/utils/trpc.ts';
-
-import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TbArrowsSort } from 'react-icons/tb';
 import XLSX from 'xlsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/administration/careers',
@@ -90,31 +89,31 @@ function AdminCareers() {
         .join('\n');
 
       return {
-        'First Name': profile.firstName,
-        'Last Name': profile.lastName,
-        Country: profile.country,
-        Email: profile.email,
-        LinkedIn: profile.linkedin || 'N/A',
-        GitHub: profile.github || 'N/A',
-        Telegram: profile.telegram || 'N/A',
-        'Other Contact': profile.otherContact || 'N/A',
-        Languages: languagesText,
+        'Availability Start': profile.availabilityStart,
         'Bitcoin Community': profile.isBitcoinCommunityParticipant
           ? 'yes'
           : 'no',
         'Bitcoin Community Text': profile.bitcoinCommunityText,
         'Bitcoin Projects': profile.isBitcoinProjectParticipant ? 'yes' : 'no',
         'Bitcoin Projects Text': profile.bitcoinProjectText,
-        Roles: rolesText,
         'Company Sizes': companySizesText,
-        'Full-Time Available': profile.isAvailableFullTime ? 'yes' : 'no',
-        'Remote Work Preference': profile.remoteWorkPreference,
-        'Expected Salary': profile.expectedSalary,
-        'Availability Start': profile.availabilityStart,
-        'CV URL': `https://planb.network${profile.cvUrl}`,
-        'Motivation Letter': profile.motivationLetter,
+        Country: profile.country,
         'Created At': profile.createdAt,
+        'CV URL': `https://planb.network${profile.cvUrl}`,
         'Edited At': profile.editedAt,
+        Email: profile.email,
+        'Expected Salary': profile.expectedSalary,
+        'First Name': profile.firstName,
+        'Full-Time Available': profile.isAvailableFullTime ? 'yes' : 'no',
+        GitHub: profile.github || 'N/A',
+        Languages: languagesText,
+        'Last Name': profile.lastName,
+        LinkedIn: profile.linkedin || 'N/A',
+        'Motivation Letter': profile.motivationLetter,
+        'Other Contact': profile.otherContact || 'N/A',
+        'Remote Work Preference': profile.remoteWorkPreference,
+        Roles: rolesText,
+        Telegram: profile.telegram || 'N/A',
       };
     });
 
@@ -212,9 +211,9 @@ function AdminCareers() {
                           ),
                         ),
                       ).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
                         day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
                       })
                     : 'N/A'}
                 </span>

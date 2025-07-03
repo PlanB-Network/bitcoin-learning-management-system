@@ -1,6 +1,3 @@
-import { useCallback, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import {
   Dialog,
@@ -8,11 +5,11 @@ import {
   DialogDescription,
   DialogTitle,
 } from '@blms/ui';
-
+import { useMutation } from '@tanstack/react-query';
+import { useCallback, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
-
-import { useMutation } from '@tanstack/react-query';
 import { ModalBookDescription } from './modal-book-description.tsx';
 import { ModalBookSuccess } from './modal-book-success.tsx';
 import { ModalBookSummary } from './modal-book-summary.tsx';
@@ -42,9 +39,9 @@ export const CourseBookModal = ({
 
   const saveAndDisplaySuccess = useCallback(() => {
     saveUserChapterRequest.mutateAsync({
-      courseId: course.id,
-      chapterId: chapter.chapterId,
       booked: true,
+      chapterId: chapter.chapterId,
+      courseId: course.id,
     });
     setIsCourseBooked(true);
   }, [chapter.chapterId, course.id, saveUserChapterRequest]);

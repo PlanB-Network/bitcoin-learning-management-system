@@ -30,11 +30,11 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
     <div
       className={`${cssClasses} flex flex-col h-[30px] hover:size-auto hover:relative hover:z-20 transition-all duration-200`}
       style={{
+        overflow: isSelected ? 'visible' : 'hidden',
         padding: '10px',
-        width: '100%',
         paddingLeft: 8,
         paddingTop: 8,
-        overflow: isSelected ? 'visible' : 'hidden',
+        width: '100%',
       }}
       onPointerEnter={() => setIsSelected(true)}
       onPointerLeave={() => setIsSelected(false)}

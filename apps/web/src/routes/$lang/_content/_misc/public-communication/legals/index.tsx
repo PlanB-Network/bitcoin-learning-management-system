@@ -1,9 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
 import { trpc } from '#src/utils/trpc.js';
-
-import { useQuery } from '@tanstack/react-query';
 import { LegalMarkdownComponent } from '../../-components/public-communication/legal-markdown.tsx';
 
 export const Route = createFileRoute(
@@ -19,8 +17,8 @@ function LegalContactInformation() {
 
   const { data: legal, isFetched } = useQuery(
     trpc.content.getLegal.queryOptions({
-      name,
       language: i18n.language,
+      name,
     }),
   );
 

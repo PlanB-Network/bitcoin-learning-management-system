@@ -1,16 +1,13 @@
+import type { CourseExamResults, CourseResponse } from '@blms/types';
+import { ButtonWithArrow, DividerSimple } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSelfPacedSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
 import CertificateTeacherLedSatoshiImage from '#src/assets/courses/diploma-teacher-led-satoshi.webp?no-inline';
-
-import type { CourseExamResults, CourseResponse } from '@blms/types';
-import { ButtonWithArrow, DividerSimple } from '@blms/ui';
-
-import { useQuery } from '@tanstack/react-query';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
@@ -139,8 +136,8 @@ const Credits = ({ course }: { course: CourseResponse }) => {
 
   const { data: proofreading } = useQuery(
     trpc.content.getProofreading.queryOptions({
-      language: i18n.language,
       courseId: course.id,
+      language: i18n.language,
     }),
   );
 
@@ -300,8 +297,8 @@ const DiplomaSelfPaced = ({
               }
               hash={examResults?.succeeded ? 'retakeExam' : ''}
               params={{
-                courseId: course?.id,
                 chapterId: examChapterId,
+                courseId: course?.id,
               }}
               className="w-fit"
               asChild
@@ -332,11 +329,7 @@ const DiplomaSelfPaced = ({
   );
 };
 
-const DiplomaTeacherLed = ({
-  course,
-}: {
-  course: CourseResponse;
-}) => {
+const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
   return (
     <>
       <section className="w-full flex flex-col">

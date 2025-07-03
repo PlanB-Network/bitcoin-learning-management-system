@@ -2,29 +2,29 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BackLink } from '#src/bases/backlink.tsx';
 
 const meta: Meta<typeof BackLink> = {
-  title: 'Bases/backlink',
-  component: BackLink,
-  parameters: {
-    layout: 'centered',
+  args: {
+    className:
+      'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white',
+    label: 'Back',
+    to: '/',
   },
-  tags: ['autodocs'],
   argTypes: {
-    to: {
+    className: {
       control: 'text',
     },
     label: {
       control: 'text',
     },
-    className: {
+    to: {
       control: 'text',
     },
   },
-  args: {
-    to: '/',
-    label: 'Back',
-    className:
-      'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white',
+  component: BackLink,
+  parameters: {
+    layout: 'centered',
   },
+  tags: ['autodocs'],
+  title: 'Bases/backlink',
 };
 
 export default meta;

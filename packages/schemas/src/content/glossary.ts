@@ -1,10 +1,9 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import {
   contentGlossaryWords,
   contentGlossaryWordsLocalized,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 import { resourceSchema } from './resource.js';
 
@@ -18,23 +17,23 @@ export const glossaryWordLocalizedSchema = createSelectSchema(
 export const joinedGlossaryWordSchema = resourceSchema
   .pick({
     id: true,
-    path: true,
-    lastUpdated: true,
     lastCommit: true,
+    lastUpdated: true,
+    path: true,
   })
   .merge(
     glossaryWordSchema.pick({
-      originalWord: true,
       fileName: true,
-      relatedWords: true,
       originalLanguage: true,
+      originalWord: true,
+      relatedWords: true,
     }),
   )
   .merge(
     glossaryWordLocalizedSchema.pick({
+      definition: true,
       language: true,
       term: true,
-      definition: true,
     }),
   )
   .merge(

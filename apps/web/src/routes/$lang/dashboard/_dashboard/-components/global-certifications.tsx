@@ -1,3 +1,6 @@
+import type { JoinedBCertResults, Ticket } from '@blms/types';
+import { Button, ButtonWithArrow, cn, Loader } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
@@ -7,11 +10,6 @@ import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload, FiLoader } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
-
-import type { JoinedBCertResults, Ticket } from '@blms/types';
-import { Button, ButtonWithArrow, Loader, cn } from '@blms/ui';
-
-import { useMutation, useQuery } from '@tanstack/react-query';
 import DummyBCert from '#src/assets/about/dummy-bcert.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
@@ -187,6 +185,7 @@ const BCertResult = ({
 
   return (
     <React.Fragment>
+      {/** biome-ignore lint/a11y/useSemanticElements: explanation */}
       <tr
         className={cn(
           'body-14px md:desktop-body1 hover:font-medium align-top cursor-pointer',
@@ -199,7 +198,6 @@ const BCertResult = ({
           }
         }}
         tabIndex={0}
-        // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="button"
       >
         <td className="py-4">{bcertResult.date.toLocaleDateString()}</td>
@@ -286,11 +284,11 @@ const BCertResult = ({
                             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                               t('bCert.tweetText', {
                                 certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(bcertResult.imgKey ? bcertResult.imgKey.split('.').slice(0, 1).join('.') : '')}`,
-                                score: `${bcertResult.score}`,
                                 emoji:
                                   bcertResult.score && bcertResult.score >= 90
                                     ? '🏆'
                                     : '💪',
+                                score: `${bcertResult.score}`,
                               }),
                             )}`}
                             target="_blank"
@@ -373,11 +371,11 @@ const BCertResult = ({
                             to={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                               t('bCert.tweetText', {
                                 certificateUrl: `${window.location.origin}/en/bcert-certificates/${encodeURIComponent(bcertResult.imgKey ? bcertResult.imgKey.split('.').slice(0, 1).join('.') : '')}`,
-                                score: `${bcertResult.score}`,
                                 emoji:
                                   bcertResult.score && bcertResult.score >= 90
                                     ? '🏆'
                                     : '💪',
+                                score: `${bcertResult.score}`,
                               }),
                             )}`}
                             target="_blank"
@@ -503,6 +501,7 @@ const ExamTicket = ({
 
   return (
     <>
+      {/** biome-ignore lint/a11y/useSemanticElements: explanation */}
       <tr
         className={cn(
           'body-14px md:desktop-body1 hover:font-medium align-top cursor-pointer',
@@ -515,7 +514,6 @@ const ExamTicket = ({
           }
         }}
         tabIndex={0}
-        // biome-ignore lint/a11y/useSemanticElements: <explanation>
         role="button"
       >
         <td className="py-4">{examTicket.date.toLocaleDateString()}</td>

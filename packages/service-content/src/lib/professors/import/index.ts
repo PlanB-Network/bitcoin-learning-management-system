@@ -36,9 +36,9 @@ export const parseDetailsFromPath = (path: string): ProfessorDetails => {
   }
 
   return {
-    path: pathElements.slice(0, 2).join('/'),
     fullPath: pathElements.join('/'),
     language: pathElements[2].replace(/\..*/, '').toLowerCase() as Language,
+    path: pathElements.slice(0, 2).join('/'),
   };
 };
 
@@ -60,16 +60,16 @@ export const groupByProfessor = (files: ChangedFile[], errors: string[]) => {
       const professor: ChangedProfessor = groupedProfessors.get(
         professorPath,
       ) || {
-        type: 'professors',
-        path: professorPath,
-        fullPath: fullPath,
         files: [],
+        fullPath: fullPath,
+        path: professorPath,
+        type: 'professors',
       };
 
       professor.files.push({
         ...file,
-        path: getRelativePath(file.path, professorPath),
         language,
+        path: getRelativePath(file.path, professorPath),
       });
 
       groupedProfessors.set(professorPath, professor);

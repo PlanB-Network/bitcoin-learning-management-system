@@ -10,12 +10,10 @@ import {
 } from '#src/bases/select.tsx';
 
 const meta: Meta<typeof Select> = {
-  title: 'Bases/Form/select',
   component: Select,
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
   render: (args) => (
     <Select {...args}>
       <SelectTrigger className="w-[180px]">
@@ -37,6 +35,8 @@ const meta: Meta<typeof Select> = {
       </SelectContent>
     </Select>
   ),
+  tags: ['autodocs'],
+  title: 'Bases/Form/select',
 };
 
 export default meta;

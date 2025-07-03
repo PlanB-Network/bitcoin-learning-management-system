@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import type { CalendarEvent, CalendarEventParticipant } from '@blms/types';
 import {
   Button,
@@ -12,8 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from '@blms/ui';
-
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { formatDate } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 

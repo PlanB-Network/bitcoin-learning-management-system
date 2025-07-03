@@ -4,7 +4,7 @@ let customCdnUrl = window.localStorage.getItem('cdnUrl');
 
 Object.defineProperty(window, 'setCustomCdnUrl', {
   value: (url: string) => {
-    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+    // biome-ignore lint/suspicious/noAssignInExpressions: explanation
     window.localStorage.setItem('cdnUrl', (customCdnUrl = url));
   },
 });

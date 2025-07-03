@@ -1,7 +1,4 @@
-import { z } from 'zod';
-
 import { SortDirection } from '@blms/constants';
-
 import {
   getTutorialResponseSchema,
   joinedTutorialLightSchema,
@@ -17,6 +14,7 @@ import type {
   JoinedTutorialLight,
   TutorialWithProfessorName,
 } from '@blms/types';
+import { z } from 'zod';
 
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
@@ -50,8 +48,18 @@ const getTutorialsByCategoryProcedure = publicProcedure
 const getTutorialsWithProfessorNameProcedure = publicProcedure
   .input(
     z.object({
+      cursor: z
+        .object({
+          id: z.string(),
+          value: z.union([z.string(), z.number()]),
+        })
+        .optional(),
       language: z.string(),
-      search: z.string(),
+      limit: z.number(),
+      orderDirection: z
+        .nativeEnum(SortDirection)
+        .optional()
+        .default(SortDirection.Asc),
       orderField: z
         .enum([
           'category',
@@ -62,18 +70,8 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
         ])
         .optional()
         .default('likeCount'),
-      orderDirection: z
-        .nativeEnum(SortDirection)
-        .optional()
-        .default(SortDirection.Asc),
-      limit: z.number(),
-      cursor: z
-        .object({
-          id: z.string(),
-          value: z.union([z.string(), z.number()]),
-        })
-        .optional(),
       professorId: z.string().optional(),
+      search: z.string(),
     }),
   )
   .output<
@@ -83,24 +81,24 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
     }>
   >(
     z.object({
-      tutorials: tutorialWithProfessorNameSchema.array(),
       nextCursor: z
         .object({
           id: z.string(),
           value: z.union([z.string(), z.number()]),
         })
         .nullable(),
+      tutorials: tutorialWithProfessorNameSchema.array(),
     }),
   )
   .query(({ ctx, input }) => {
     return createGetTutorialsWithProfessorName(ctx.dependencies)({
-      language: input.language,
-      search: input.search,
-      orderField: input.orderField,
-      orderDirection: input.orderDirection,
-      limit: input.limit,
       cursor: input.cursor,
+      language: input.language,
+      limit: input.limit,
+      orderDirection: input.orderDirection,
+      orderField: input.orderField,
       professorId: input.professorId,
+      search: input.search,
     });
   });
 
@@ -120,8 +118,8 @@ const getTutorialProcedure = publicProcedure
   });
 
 export const tutorialsRouter = createTRPCRouter({
+  getTutorial: getTutorialProcedure,
+  getTutorials: getTutorialsProcedure,
   getTutorialsByCategory: getTutorialsByCategoryProcedure,
   getTutorialsWithProfessorName: getTutorialsWithProfessorNameProcedure,
-  getTutorials: getTutorialsProcedure,
-  getTutorial: getTutorialProcedure,
 });

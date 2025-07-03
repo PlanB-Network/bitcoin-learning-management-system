@@ -2,16 +2,16 @@
   "$schema": "https://turborepo.org/schema.json",
   "extends": ["//"],
   "tasks": {
-    "check-types": {
-      "dependsOn": ["@blms/database#build-types"]
+    "build": {
+      "dependsOn": ["@blms/database#build"],
+      "outputs": ["dist/**"]
     },
     "build-types": {
       "dependsOn": ["@blms/database#build-types"],
       "outputs": ["dist/**"]
     },
-    "build": {
-      "dependsOn": ["@blms/database#build"],
-      "outputs": ["dist/**"]
+    "check-types": {
+      "dependsOn": ["@blms/database#build-types"]
     }
   }
 }

@@ -76,7 +76,7 @@ export const ImageVideoRenderer = ({
             <ReactPlayer
               width={'100%'}
               height={'100%'}
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               controls={true}
               url={src}
@@ -86,7 +86,7 @@ export const ImageVideoRenderer = ({
             <iframe
               width="100%"
               height="100%"
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               src={fixEmbedUrl(src)}
               title={alt}

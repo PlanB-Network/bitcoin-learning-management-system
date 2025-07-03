@@ -9,17 +9,17 @@ import {
 const expectedResponseSchema = z.array(
   z
     .object({
-      name: z.string(),
-      place_id: z.number(),
-      place_rank: z.number(),
       display_name: z.string(),
       lat: z.string(),
       lon: z.string(),
+      name: z.string(),
+      place_id: z.number(),
+      place_rank: z.number(),
     })
     .transform((data) => ({
-      placeId: data.place_id,
       lat: Number.parseFloat(data.lat),
       lng: Number.parseFloat(data.lon),
+      placeId: data.place_id,
     })),
 );
 
