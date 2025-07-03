@@ -65,7 +65,7 @@ const getExamAttemptTextToSign = (options: CourseCertificateOptions) => {
     .replace('{lastBlockHash}', options.lastBlockHash);
 };
 
-const getSingleTrialExamTextToSign = (
+const getTeacherLedCourseTextToSign = (
   options: CourseCertificateOptions & { score: number; courseProvider: string },
 ) => {
   return singleTrialTemplate
@@ -310,7 +310,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
     return true;
   };
 
-  const timestampSingleTrialExamAttempt = async (key: CourseProgressKey) => {
+  const timestampTeacherLedCourse = async (key: CourseProgressKey) => {
     const cp = await getCourseProgress(key);
     if (!cp) {
       return false;
@@ -318,7 +318,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
 
     const lastBlockHash = await getLatestBlockHash();
 
-    const text = getSingleTrialExamTextToSign({
+    const text = getTeacherLedCourseTextToSign({
       userName: cp.user.userName,
       fullName: cp.user.displayName,
       courseName: cp.course.name,
@@ -327,7 +327,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
       goal: cp.course.goal,
       duration: `${cp.course.hours} hours`,
       lastCommitHash: cp.course.lastCommit,
-      date: formatDate(cp.startDate),
+      date: formatDate(new Date()),
       lastBlockHash,
       score: cp.totalScore,
       courseProvider: 'Plan ₿ Network',
@@ -390,7 +390,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         courseFormat: cp.course.format,
         courseProvider: cp.projectName,
         courseProviderLogo: `https://${host}/cdn/courses/${cp.course.index}/assets/logo.webp`,
-        date: formatDate(cp.startDate),
+        date: formatDate(timestamp.createdAt),
         hash: timestamp.hash,
         txid: timestamp.blockHash,
       });
@@ -526,7 +526,7 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         }
       }
 
-      const singleTrialExams = await ctx.postgres.exec(
+      const teacherLedCourseProgress = await ctx.postgres.exec(
         sql<Array<CourseProgressKey>>`
           SELECT
             cp.uid,
@@ -547,11 +547,14 @@ export const createExamTimestampService = async (ctx: Dependencies) => {
         `,
       );
 
-      console.log('[cron] Timestamp all single trial exams', singleTrialExams);
+      console.log(
+        '[cron] Timestamp all teacher led courses',
+        teacherLedCourseProgress,
+      );
 
-      for (const key of singleTrialExams) {
+      for (const key of teacherLedCourseProgress) {
         try {
-          await timestampSingleTrialExamAttempt(key);
+          await timestampTeacherLedCourse(key);
           await sleep(1000); // Avoid rate limiting
         } catch (err) {
           console.error('Failed to timestamp exam', key, err);
