@@ -2494,3 +2494,32 @@ export const usersReviewerLanguages = users.table(
     }),
   }),
 );
+
+// Content upload table for course materials
+export const contentCourseUploads = content.table(
+  'course_translation_uploads',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    originalLanguage: t.varchar({ length: 10 }).notNull(),
+    translationLanguages: t.varchar({ length: 10 }).array().notNull(),
+    uploaderId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    pptxFileUrl: t.text(), // S3 URL for PowerPoint file
+    audioFileUrl: t.text(), // S3 URL for audio file
+    uploadSuccess: t.boolean().default(false).notNull(),
+    errorMessage: t.text(), // Store error details if upload fails
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+);

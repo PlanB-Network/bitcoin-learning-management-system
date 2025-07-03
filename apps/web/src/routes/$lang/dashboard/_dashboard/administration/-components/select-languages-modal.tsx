@@ -11,6 +11,7 @@ import { trpcClient } from '#src/utils/trpc.js';
 interface SelectLanguagesModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
   course: CourseWithTodoTranslations;
 }
 
@@ -37,6 +38,7 @@ const initialState: ModalState = {
 export const SelectLanguagesModal = ({
   isOpen,
   onClose,
+  onSuccess,
   course,
 }: SelectLanguagesModalProps) => {
   const { t } = useTranslation();
@@ -169,16 +171,34 @@ export const SelectLanguagesModal = ({
 
     setState((prev) => ({ ...prev, isStarting: true }));
     try {
-      // TODO: Implement API call to create translation with files
-      // For now, just simulate the action
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log(
-        'Starting translation for languages:',
-        state.selectedLanguages,
-      );
-      console.log('Audio file:', state.selectedAudioFile);
-      console.log('PPTX file:', state.selectedPptxFile);
-      onClose();
+      const formData = new FormData();
+      formData.append('courseId', course.id);
+      formData.append('languages', JSON.stringify(state.selectedLanguages));
+      if (state.selectedAudioFile) {
+        formData.append('audioFile', state.selectedAudioFile);
+      }
+      if (state.selectedPptxFile) {
+        formData.append('pptxFile', state.selectedPptxFile);
+      }
+
+      const response = await fetch('/api/translation-uploads', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(`Upload failed: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        onClose();
+      }
     } catch (error) {
       console.error('Error starting translation:', error);
     } finally {
@@ -188,7 +208,9 @@ export const SelectLanguagesModal = ({
     state.selectedLanguages,
     state.selectedAudioFile,
     state.selectedPptxFile,
+    course.id,
     onClose,
+    onSuccess,
   ]);
 
   const handleClose = useCallback(() => {
@@ -216,13 +238,25 @@ export const SelectLanguagesModal = ({
     >
       <div className="w-full space-y-6">
         {/* Course Information */}
-        <div className="text-center">
-          <span className="text-sm font-medium text-gray-700">
-            {t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.course',
-            )}
-          </span>
-          <p className="text-base font-semibold">{course.courseName}</p>
+        <div className="text-center space-y-1">
+          <div>
+            <span className="text-sm font-medium text-gray-700">
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.course',
+              )}
+            </span>
+            <p className="text-base font-semibold">{course.courseName}</p>
+          </div>
+          <div>
+            <span className="text-sm font-medium text-gray-700">
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.originalLanguage',
+              )}
+            </span>
+            <p className="text-base font-semibold">
+              {getLanguageNameFromData((course as any).originalLanguage)}
+            </p>
+          </div>
         </div>
 
         {/* Language Selection */}

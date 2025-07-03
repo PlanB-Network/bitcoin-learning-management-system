@@ -9,6 +9,7 @@ import {
   contentCoursePartsLocalized,
   contentCourseTranslationChapters,
   contentCourseTranslations,
+  contentCourseUploads,
   contentCourses,
   contentCoursesLocalized,
 } from '@blms/database';
@@ -34,6 +35,8 @@ export const courseChaptersSchema = createSelectSchema(contentCourseChapters);
 export const courseChaptersLocalizedSchema = createSelectSchema(
   contentCourseChaptersLocalized,
 );
+export const courseTranslationUploadSchema =
+  createSelectSchema(contentCourseUploads);
 
 // Schema for simple course translation response (only courseId and language)
 export const courseTranslationResponseSchema = courseTranslationSchema.pick({
@@ -239,7 +242,46 @@ export const courseWithTodoTranslationsSchema = courseBasicSchema
   .merge(
     z.object({
       courseName: z.string(),
+      originalLanguage: z.string(),
       todoLanguages: z.array(z.string()),
       totalLanguages: z.number(),
     }),
   );
+
+// Schema for course translation uploads - based on database schema
+export const courseTranslationUploadResponseSchema =
+  courseTranslationUploadSchema.pick({
+    id: true,
+    courseId: true,
+    languages: true,
+    uploaderId: true,
+    pptxFileUrl: true,
+    audioFileUrl: true,
+    uploadSuccess: true,
+    errorMessage: true,
+    createdAt: true,
+    updatedAt: true,
+  });
+
+// Input schema for creating translation uploads - API interface
+export const createCourseTranslationUploadInputSchema = z.object({
+  courseId: z.string(),
+  languages: z.array(z.string()),
+  pptxFileUrl: z.string().optional(),
+  audioFileUrl: z.string().optional(),
+});
+
+// Input schema for updating translation upload - API interface
+export const updateCourseTranslationUploadInputSchema = z.object({
+  id: z.string(),
+  pptxFileUrl: z.string().optional(),
+  audioFileUrl: z.string().optional(),
+  uploadSuccess: z.boolean().optional(),
+  errorMessage: z.string().optional(),
+});
+
+// Input schema for starting translation (updating status to in_progress) - API interface
+export const startTranslationInputSchema = z.object({
+  courseId: z.string(),
+  languages: z.array(z.string()),
+});

@@ -141,3 +141,24 @@ export const startCourseTranslationsQuery = (
       updated_at AS "updatedAt"
   `;
 };
+
+/**
+ * Query to start translations for chapters by updating status from 'todo' to 'in_progress' for multiple languages
+ */
+export const startCourseTranslationChaptersQuery = (
+  courseId: string,
+  languages: string[],
+) => {
+  const languageList = languages.map((lang) => lang.toLowerCase());
+
+  return sql`
+    UPDATE content.course_translation_chapters
+    SET
+      status = ${TranslationStatus.InProgress},
+      updated_at = NOW()
+    WHERE
+      course_id = ${courseId}
+      AND language = ANY(${languageList})
+      AND status = ${TranslationStatus.Todo}
+  `;
+};

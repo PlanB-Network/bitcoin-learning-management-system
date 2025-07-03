@@ -7,6 +7,7 @@ export interface CourseWithTodoTranslations {
   courseName: string;
   todoLanguages: string[];
   totalLanguages: number;
+  originalLanguage: string;
 }
 
 /**
@@ -22,6 +23,7 @@ export const createGetCoursesWithTodoTranslations = ({
       id: row.courseId,
       index: row.courseIndex,
       courseName: row.courseName,
+      originalLanguage: row.originalLanguage,
       todoLanguages: row.todoLanguages || [],
       totalLanguages: row.totalLanguages || 0,
     }));

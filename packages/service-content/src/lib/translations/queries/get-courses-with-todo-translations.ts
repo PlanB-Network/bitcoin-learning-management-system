@@ -24,6 +24,7 @@ export const getCoursesWithTodoTranslationsQuery = () => {
     SELECT
       c.id AS "courseId",
       c.index AS "courseIndex",
+      c.original_language AS "originalLanguage",
       cl.name AS "courseName",
       ctl.todo_languages AS "todoLanguages",
       cttl.total_languages AS "totalLanguages"

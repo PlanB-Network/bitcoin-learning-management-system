@@ -639,6 +639,7 @@
           "selectLanguagesModal": {
             "title": "Select Languages to Translate",
             "course": "Course:",
+            "originalLanguage": "Original language:",
             "selectLanguages": "Select languages to translate:",
             "noLanguagesAvailable": "No languages available for translation.",
             "uploadFiles": "Upload Supporting Files (Optional)",
