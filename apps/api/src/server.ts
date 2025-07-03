@@ -45,7 +45,10 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
     req.id ||= req.header('x-request-id') || genRequestId();
     req.log = (...a: any[]) => console.log(`[request] ${req.id}`, ...a);
-    req.log(`${method} ${path} (${req.ip}) session=${sessionId} `);
+
+    if (!path.includes('getUserNotifications')) {
+      req.log(`${method} ${path} (${req.ip}) session=${sessionId} `);
+    }
 
     // Log response time
     const start = process.hrtime();
@@ -54,9 +57,11 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
       const len = res.get('Content-Length');
       const status = res.statusCode;
 
-      req.log(
-        `${method} ${path} took ${s * 1000 + ns / 1e6}ms (${status})${len ? `, ${len} bytes` : ''}`,
-      );
+      if (!path.includes('getUserNotifications')) {
+        req.log(
+          `${method} ${path} took ${s * 1000 + ns / 1e6}ms (${status})${len ? `, ${len} bytes` : ''}`,
+        );
+      }
     });
 
     next();
