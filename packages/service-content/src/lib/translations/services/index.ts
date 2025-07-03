@@ -1,4 +1,5 @@
 export * from './content-management.js';
+export * from './course-translation-uploads.js';
 export * from './get-courses-with-todo-translations.js';
 export * from './get-translation-audio.js';
 export * from './get-translation-downloads.js';

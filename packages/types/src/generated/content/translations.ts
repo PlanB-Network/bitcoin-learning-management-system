@@ -134,6 +134,19 @@ export interface CourseChaptersLocalized {
   lastSync: Date;
 }
 
+export interface CourseTranslationUpload {
+  id: string;
+  courseId: string;
+  languages: string[];
+  uploaderId: string;
+  pptxFileUrl: string | null;
+  audioFileUrl: string | null;
+  uploadSuccess: boolean;
+  errorMessage: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface CourseTranslationResponse {
   courseId: string;
   language: string;
@@ -307,6 +320,40 @@ export interface CourseWithTodoTranslations {
   id: string;
   index: string;
   courseName: string;
+  originalLanguage: string;
   todoLanguages: string[];
   totalLanguages: number;
+}
+
+export interface CourseTranslationUploadResponse {
+  id: string;
+  courseId: string;
+  languages: string[];
+  uploaderId: string;
+  pptxFileUrl: string | null;
+  audioFileUrl: string | null;
+  uploadSuccess: boolean;
+  errorMessage: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface CreateCourseTranslationUploadInput {
+  courseId: string;
+  languages: string[];
+  pptxFileUrl?: string | undefined;
+  audioFileUrl?: string | undefined;
+}
+
+export interface UpdateCourseTranslationUploadInput {
+  id: string;
+  pptxFileUrl?: string | undefined;
+  audioFileUrl?: string | undefined;
+  uploadSuccess?: boolean | undefined;
+  errorMessage?: string | undefined;
+}
+
+export interface StartTranslationInput {
+  courseId: string;
+  languages: string[];
 }

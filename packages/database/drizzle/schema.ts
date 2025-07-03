@@ -2496,6 +2496,47 @@ export const usersReviewerLanguages = users.table(
   }),
 );
 
+// Content upload table for course materials
+export const contentCourseUploads = content.table(
+  'course_translation_uploads',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    originalLanguage: t.varchar({ length: 10 }).notNull(),
+    translationLanguages: t.varchar({ length: 10 }).array().notNull(),
+    uploaderId: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+      }),
+    partId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseParts.partId, {
+        onDelete: 'cascade',
+      }),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
+    pptxFileUrl: t.text(), // S3 URL for PowerPoint file
+    textFileUrl: t.text(), // S3 URL for directory (txt files) or archive
+    uploadSuccess: t.boolean().default(false).notNull(),
+    errorMessage: t.text(), // Store error details if upload fails
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+);
+
 export const contentCourseTranslationSlides = content.table(
   'course_translation_slides',
   (t) => ({
@@ -2525,7 +2566,6 @@ export const contentCourseTranslationSlides = content.table(
     pptValidated: t.boolean().default(false).notNull(),
     transcriptionValidated: t.boolean().default(false).notNull(),
     audioValidated: t.boolean().default(false).notNull(),
-    audioTries: t.integer().default(0).notNull(),
     pptResourcePath: t.text(),
     audioResourcePath: t.text(),
     originalContent: t.text(),

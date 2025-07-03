@@ -99,6 +99,13 @@ export const TranslateTab = () => {
     });
   }, []);
 
+  const handleTranslationSuccess = useCallback(() => {
+    // Close modal first
+    setState({ selectedCourse: null, isModalOpen: false });
+    // Refresh the courses list
+    fetchCourses();
+  }, [fetchCourses]);
+
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -244,6 +251,7 @@ export const TranslateTab = () => {
         <SelectLanguagesModal
           isOpen={state.isModalOpen}
           onClose={handleCloseModal}
+          onSuccess={handleTranslationSuccess}
           course={state.selectedCourse}
         />
       )}

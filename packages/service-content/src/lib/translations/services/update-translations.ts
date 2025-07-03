@@ -7,6 +7,7 @@ import {
   createCourseTranslationQuery,
   createCourseTranslationsInitQuery,
   populateCourseTranslationChaptersQuery,
+  startCourseTranslationChaptersQuery,
   startCourseTranslationsQuery,
   updateTranslationStatusQuery,
 } from '../queries/update-translations.js';
@@ -122,11 +123,25 @@ export const createStartTranslations = ({ postgres }: Dependencies) => {
     languages: string[];
   }): Promise<AvailableCourseTranslation[]> => {
     try {
-      const results = await postgres.exec(
+      // 1. Ensure base translation rows and chapter rows exist for each language
+      for (const lang of languages) {
+        await postgres.exec(createCourseTranslationsInitQuery(courseId, lang));
+        await postgres.exec(
+          populateCourseTranslationChaptersQuery(courseId, lang),
+        );
+      }
+
+      // 2. Update course_translations to in_progress
+      const translationResults = await postgres.exec(
         startCourseTranslationsQuery(courseId, languages),
       );
 
-      return results;
+      // 3. Update course_translation_chapters to in_progress
+      await postgres.exec(
+        startCourseTranslationChaptersQuery(courseId, languages),
+      );
+
+      return translationResults;
     } catch (error) {
       if (error instanceof TRPCError) {
         throw error;

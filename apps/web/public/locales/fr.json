@@ -740,6 +740,7 @@
           "selectLanguagesModal": {
             "title": "Sélectionner les langues à traduire",
             "course": "Cours :",
+            "originalLanguage": "Langue originale :",
             "selectLanguages": "Sélectionner les langues à traduire :",
             "noLanguagesAvailable": "Aucune langue disponible pour la traduction.",
             "uploadFiles": "Télécharger des fichiers de support (Optionnel)",
