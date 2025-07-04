@@ -150,7 +150,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
     trpcClient.content.getCoursesBasic
       .query({
-        language: i18n.language,
+        language: 'en',
       })
       .then((data) => data ?? null)
       .then(setCourses)

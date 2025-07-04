@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { BasicCourse } from '@blms/types';
+import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import {
-  Breadcrumb,
   CourseGrid,
   EmptyState,
   InfoBanner,
@@ -94,9 +94,30 @@ function TranslateCoursesPage() {
     <MainLayout variant="dark" footerVariant="light">
       <div className="flex flex-col items-center bg-white text-black">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <Breadcrumb to="/$lang/content/" params={{ lang: i18n.language }}>
-            {t('translate.backToSection')}
-          </Breadcrumb>
+          <div className="flex items-center gap-1 text-base mb-6">
+            <img
+              src={BreadcrumbArrowIcon}
+              alt=""
+              className="w-[8px] h-[12px]"
+            />
+            <Link
+              to="/$lang/content/"
+              params={{ lang: i18n.language }}
+              className="text-orange-500 hover:text-orange-600 font-medium"
+            >
+              {t('translate.backToSectionToTranslate', {
+                defaultValue: 'Back to section to translate',
+              })}
+            </Link>
+            <img
+              src={BreadcrumbArrowIcon}
+              alt=""
+              className="w-[8px] h-[12px]"
+            />
+            <span className="text-orange-500 font-medium">
+              {t('translate.courses', { defaultValue: 'Courses' })}
+            </span>
+          </div>
 
           <h1 className="text-2xl font-bold mb-6 text-gray-900">
             {t('translate.selectCourseToTranslate')}

@@ -1655,7 +1655,10 @@
     "view": "View",
     "viewMore": "View more",
     "wallets": "Wallets",
-    "yes": "Yes"
+    "yes": "Yes",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube Channels",
@@ -1665,9 +1668,9 @@
   "translate": {
     "makingBitcoinEducationGlobal": "Making Bitcoin Education Global",
     "bitcoinTranslationCommunity": "Bitcoin Proofreading Community",
-    "bridgingLanguageGaps": "Bridging language gaps, one video at a time. Join our contributors in proofreading, making Bitcoin education accessible worldwide. Every proofreading helps more people understand and engage with the ecosystem.",
-    "backToLanguages": "« Back to Languages",
-    "backToSection": "Back to section to proofread",
+    "bridgingLanguageGaps": "Bridging language gaps, one video at a time.",
+    "backToLanguages": "Back to Languages",
+    "backToSection": "Back to courses",
     "selectCourseToTranslate": "Select a course to proofread",
     "youCanSelectOnlyOneCourse": "You can select only one course at a time to begin proofreading its content",
     "noCoursesAvailableForTranslation": "No courses available for proofreading in this language yet",
@@ -1733,6 +1736,42 @@
       "close": "Close",
       "requestSentSuccess": "✓ Request Sent",
       "onceRequestApproved": "Once your request is approved, you'll be able to start proofreading this course. You'll be notified as soon as it's accepted."
-    }
+    },
+    "joinOurProofreaders": "Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!",
+    "courseProofreadingProgress": "Course proofreading progress",
+    "ofChaptersCompleted": "of {{count}} chapters completed",
+    "review": "Review",
+    "resume": "Resume",
+    "proofread": "Proofread",
+    "videoGeneration": {
+      "completed": "Great job! Thank you for proofreading this course!",
+      "title": "Video generation",
+      "progress": "progress",
+      "completedMessage": "No need to wait! Feel free to review the next course now.",
+      "backToCourse": "Back to course",
+      "nextChapter": "Next chapter"
+    },
+    "progress": "Progress",
+    "slides": "Slides",
+    "chapterTranslation": "Chapter translation",
+    "coursePresentation": "Course presentation",
+    "reviewAndEditSlides": "Review and edit each slide, making the necessary adjustments. Once you're finished, select 'Validate Presentation' to save your changes.",
+    "translateTo": "Translate to",
+    "enVersion": "EN version",
+    "saveChanges": "Save changes",
+    "validatePresentationPPT": "Validate presentation PPT",
+    "reviewTranscriptionGenerateAudio": "Review transcription & generate audio",
+    "reviewTranscriptionInstructions": "Translate and type the transcription of the lecture in your language. Then, select Generate Audio to create an automatic audio version of your transcription. Once generated, listen to the audio to ensure accuracy and validate it using Validate Audio. If needed, you can regenerate the audio to make adjustments. You can do this up to 3 times.",
+    "language": "Language",
+    "limitTries": "Limit 2/3 tries",
+    "generateAudio": "Generate audio",
+    "editTranscript": "Edit transcript",
+    "enterTranslation": "Enter your translation here...",
+    "validateTranscription": "Validate transcription",
+    "validateAudio": "Validate audio",
+    "reviewInstructions": "Review the transcription, make any necessary corrections, and then generate the audio.",
+    "createVideo": "Create video",
+    "nextSlide": "Next slide",
+    "completeAllValidations": "Please complete all validations before proceeding"
   }
 }

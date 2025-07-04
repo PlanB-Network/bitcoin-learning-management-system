@@ -1,14 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import { CircuitPattern } from '#src/components/circuit-pattern.tsx';
-import {
-  Breadcrumb,
-  InfoBanner,
-  MainLayout,
-  SectionCard,
-} from '#src/components/index.ts';
+import { InfoBanner, MainLayout, SectionCard } from '#src/components/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute('/$lang/content/')({
@@ -20,7 +16,6 @@ function ContentSectionPage() {
   const { lang } = Route.useParams();
   const [courseTranslationProgress, setCourseTranslationProgress] =
     useState<number>(0);
-  const [, setIsLoadingProgress] = useState(false);
 
   // Get the target language from localStorage (selected on previous page)
   const [targetLanguage, setTargetLanguage] = useState<string>('en');
@@ -36,7 +31,6 @@ function ContentSectionPage() {
       if (!targetLanguage) return;
 
       try {
-        setIsLoadingProgress(true);
         const progressData =
           await trpcClient.content.getTranslationProgress.query({
             language: targetLanguage,
@@ -47,8 +41,6 @@ function ContentSectionPage() {
         }
       } catch (error) {
         console.error('Failed to fetch translation progress:', error);
-      } finally {
-        setIsLoadingProgress(false);
       }
     };
 
@@ -63,9 +55,20 @@ function ContentSectionPage() {
     <MainLayout variant="dark" footerVariant="light">
       <div className="flex flex-col items-center bg-white text-black">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <Breadcrumb to="/$lang" params={{ lang: i18n.language }}>
-            {t('translate.backToLanguages')}
-          </Breadcrumb>
+          <div className="flex items-center gap-1 text-base mb-6">
+            <img
+              src={BreadcrumbArrowIcon}
+              alt=""
+              className="w-[8px] h-[12px]"
+            />
+            <Link
+              to="/$lang"
+              params={{ lang: i18n.language }}
+              className="text-orange-500 hover:text-orange-600 font-medium"
+            >
+              {t('translate.backToLanguages')}
+            </Link>
+          </div>
 
           <h1 className="text-2xl font-bold mb-6 text-gray-900">
             {t('translate.selectSection')}

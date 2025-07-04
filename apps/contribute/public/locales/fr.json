@@ -1123,6 +1123,14 @@
       "on-chain": "On-chain",
       "mobile": "Mobile",
       "pool": "Pool"
+    },
+    "videoGeneration": {
+      "completed": "Excellent travail ! Merci d'avoir relu ce cours !",
+      "title": "Génération de la vidéo",
+      "progress": "progression",
+      "completedMessage": "Pas besoin d'attendre ! Vous pouvez déjà passer au prochain chapitre ou cours.",
+      "backToCourse": "Retour au cours",
+      "nextChapter": "Chapitre suivant"
     }
   },
   "underConstruction": {
@@ -1338,7 +1346,10 @@
     "email": "Email",
     "save": "Sauvegarder",
     "calendar": "Calendrier",
-    "mode": "Mode"
+    "mode": "Mode",
+    "completed": "Terminé",
+    "inProgress": "En cours",
+    "notStarted": "Non commencé"
   },
   "conferences": {
     "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
@@ -1500,9 +1511,9 @@
   "translate": {
     "makingBitcoinEducationGlobal": "Rendre l'éducation Bitcoin mondiale",
     "bitcoinTranslationCommunity": "Communauté de relecture Bitcoin",
-    "bridgingLanguageGaps": "Combler les lacunes linguistiques, une vidéo à la fois. Rejoignez nos contributeurs dans la relecture, rendant l'éducation Bitcoin accessible dans le monde entier. Chaque relecture aide plus de personnes à comprendre et à s'engager avec l'écosystème.",
-    "backToLanguages": "« Retour aux langues",
-    "backToSection": "Retour à la section à relire",
+    "bridgingLanguageGaps": "Combler les lacunes linguistiques, une vidéo à la fois.",
+    "backToLanguages": "Retour aux langues",
+    "backToSection": "Retour aux cours",
     "selectCourseToTranslate": "Sélectionnez un cours à relire",
     "youCanSelectOnlyOneCourse": "Vous ne pouvez sélectionner qu'un seul cours à la fois pour commencer à relire son contenu",
     "noCoursesAvailableForTranslation": "Aucun cours disponible pour la relecture dans cette langue pour le moment",
@@ -1568,6 +1579,42 @@
       "close": "Fermer",
       "requestSentSuccess": "✓ Demande envoyée",
       "onceRequestApproved": "Une fois votre demande approuvée, vous pourrez commencer à relire ce cours. Vous serez notifié dès qu'elle sera acceptée."
-    }
+    },
+    "joinOurProofreaders": "Rejoignez notre équipe de relecture pour rendre l'éducation Bitcoin accessible dans le monde entier. Vous pouvez aider plus de personnes à s'engager avec l'écosystème et à trouver leur chemin vers la liberté !",
+    "courseProofreadingProgress": "Progression de la relecture du cours",
+    "ofChaptersCompleted": "sur {{count}} chapitres terminés",
+    "review": "Réviser",
+    "resume": "Reprendre",
+    "proofread": "Relire",
+    "videoGeneration": {
+      "completed": "Excellent travail ! Merci d'avoir relu ce cours !",
+      "title": "Génération de la vidéo",
+      "progress": "progression",
+      "completedMessage": "Pas besoin d'attendre ! Vous pouvez déjà passer au prochain chapitre ou cours.",
+      "backToCourse": "Retour au cours",
+      "nextChapter": "Chapitre suivant"
+    },
+    "progress": "Progression",
+    "slides": "Diapositives",
+    "chapterTranslation": "Traduction du chapitre",
+    "coursePresentation": "Présentation du cours",
+    "reviewAndEditSlides": "Passez en revue et modifiez chaque diapositive en effectuant les ajustements nécessaires. Une fois terminé, sélectionnez \u00AB Valider la présentation \u00BB pour enregistrer vos modifications.",
+    "translateTo": "Traduire vers",
+    "enVersion": "Version EN",
+    "saveChanges": "Enregistrer les modifications",
+    "validatePresentationPPT": "Valider la présentation PPT",
+    "reviewTranscriptionGenerateAudio": "Réviser la transcription & générer l'audio",
+    "reviewTranscriptionInstructions": "Traduisez et saisissez la transcription du cours dans votre langue. Ensuite, cliquez sur \u00AB Générer l'audio \u00BB pour créer automatiquement une version audio de votre transcription. Une fois généré, écoutez l'audio pour en vérifier l'exactitude et validez-le avec \u00AB Valider l'audio \u00BB. Si nécessaire, vous pouvez régénérer l'audio pour effectuer des ajustements, jusqu'à 3 fois.",
+    "language": "Langue",
+    "limitTries": "Limite 2/3 essais",
+    "generateAudio": "Générer l'audio",
+    "editTranscript": "Éditer la transcription",
+    "enterTranslation": "Entrez votre traduction ici...",
+    "validateTranscription": "Valider la transcription",
+    "validateAudio": "Valider l'audio",
+    "reviewInstructions": "Révisez la transcription, apportez les corrections nécessaires, puis générez l'audio.",
+    "createVideo": "Créer la vidéo",
+    "nextSlide": "Diapositive suivante",
+    "completeAllValidations": "Veuillez compléter toutes les validations avant de continuer"
   }
 }

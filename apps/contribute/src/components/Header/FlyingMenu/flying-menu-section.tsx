@@ -78,7 +78,7 @@ const SectionTitle = ({
 };
 
 export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [highlightedCourse, setHighlightedCourse] =
     useState<CourseResponse | null>(null);
@@ -88,7 +88,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
     if (section.id === 'courses' && BTC101ID) {
       trpcClient.content.getCourse
         .query({
-          language: i18n.language ?? 'en',
+          language: 'en', // Always fetch course info in English for translation interface
           id: BTC101ID,
         })
         .then((data) => {
@@ -98,7 +98,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
           setHighlightedCourse(null);
         });
     }
-  }, [section.id, i18n.language]);
+  }, [section.id]);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {

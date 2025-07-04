@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -47,7 +48,8 @@ export const CourseTranslationCard = ({
   userContributions,
   refetchUserContributions,
 }: CourseTranslationCardProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasEnglishTranslation, setHasEnglishTranslation] = useState(false);
   const [isRequesting, setIsRequesting] = useState(false);
@@ -66,7 +68,6 @@ export const CourseTranslationCard = ({
   // State for existing assignment check
   const [existingAssignment, setExistingAssignment] =
     useState<TranslationAssignment | null>(null);
-  const [, setIsCheckingAssignment] = useState(false);
 
   // Check if user has existing translation assignment
   useEffect(() => {
@@ -75,7 +76,6 @@ export const CourseTranslationCard = ({
       if (!course.id || !targetLanguage || userContribution) return;
 
       try {
-        setIsCheckingAssignment(true);
         const data =
           await trpcClient.user.translation.checkUserTranslationAssignment.query(
             {
@@ -91,8 +91,6 @@ export const CourseTranslationCard = ({
       } catch (error) {
         console.error('Failed to check existing assignment:', error);
         setExistingAssignment(null);
-      } finally {
-        setIsCheckingAssignment(false);
       }
     };
 
@@ -119,10 +117,15 @@ export const CourseTranslationCard = ({
     if (assignmentStatus === 'requested') {
       return;
     }
-    // If assigned, navigate to proofreading interface (for now just prevent modal)
+    // If assigned, navigate to proofreading interface
     if (assignmentStatus === 'assigned') {
-      // TODO: Navigate to proofreading interface
-      console.log('Navigate to proofreading interface for course:', course.id);
+      navigate({
+        to: '/$lang/content/translate/$courseId',
+        params: {
+          lang: i18n.language,
+          courseId: course.id,
+        },
+      });
       return;
     }
     setIsModalOpen(true);
@@ -135,13 +138,15 @@ export const CourseTranslationCard = ({
       if (assignmentStatus === 'requested') {
         return;
       }
-      // If assigned, navigate to proofreading interface (for now just prevent modal)
+      // If assigned, navigate to proofreading interface
       if (assignmentStatus === 'assigned') {
-        // TODO: Navigate to proofreading interface
-        console.log(
-          'Navigate to proofreading interface for course:',
-          course.id,
-        );
+        navigate({
+          to: '/$lang/content/translate/$courseId',
+          params: {
+            lang: i18n.language,
+            courseId: course.id,
+          },
+        });
         return;
       }
       setIsModalOpen(true);

@@ -15,6 +15,7 @@ import { Route as LangContentEditRouteImport } from './routes/$lang/content/edit
 import { Route as LangContentCreateRouteImport } from './routes/$lang/content/create';
 import { Route as LangContentTranslateIndexRouteImport } from './routes/$lang/content/translate/index';
 import { Route as LangContentTranslateCourseIdRouteImport } from './routes/$lang/content/translate/$courseId';
+import { Route as LangContentTranslateCourseIdChapterIdRouteImport } from './routes/$lang/content/translate/$courseId/$chapterId';
 
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
@@ -48,22 +49,30 @@ const LangContentTranslateCourseIdRoute =
     path: '/$lang/content/translate/$courseId',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangContentTranslateCourseIdChapterIdRoute =
+  LangContentTranslateCourseIdChapterIdRouteImport.update({
+    id: '/$chapterId',
+    path: '/$chapterId',
+    getParentRoute: () => LangContentTranslateCourseIdRoute,
+  } as any);
 
 export interface FileRoutesByFullPath {
   '/$lang': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
   '/$lang/content': typeof LangContentIndexRoute;
-  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRoute;
+  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
   '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
+  '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRoute;
 }
 export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
   '/$lang/content': typeof LangContentIndexRoute;
-  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRoute;
+  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
   '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
+  '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -71,8 +80,9 @@ export interface FileRoutesById {
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
   '/$lang/content/': typeof LangContentIndexRoute;
-  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRoute;
+  '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
   '/$lang/content/translate/': typeof LangContentTranslateIndexRoute;
+  '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -82,7 +92,8 @@ export interface FileRouteTypes {
     | '/$lang/content/edit'
     | '/$lang/content'
     | '/$lang/content/translate/$courseId'
-    | '/$lang/content/translate';
+    | '/$lang/content/translate'
+    | '/$lang/content/translate/$courseId/$chapterId';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/$lang'
@@ -90,7 +101,8 @@ export interface FileRouteTypes {
     | '/$lang/content/edit'
     | '/$lang/content'
     | '/$lang/content/translate/$courseId'
-    | '/$lang/content/translate';
+    | '/$lang/content/translate'
+    | '/$lang/content/translate/$courseId/$chapterId';
   id:
     | '__root__'
     | '/$lang/'
@@ -98,7 +110,8 @@ export interface FileRouteTypes {
     | '/$lang/content/edit'
     | '/$lang/content/'
     | '/$lang/content/translate/$courseId'
-    | '/$lang/content/translate/';
+    | '/$lang/content/translate/'
+    | '/$lang/content/translate/$courseId/$chapterId';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -106,7 +119,7 @@ export interface RootRouteChildren {
   LangContentCreateRoute: typeof LangContentCreateRoute;
   LangContentEditRoute: typeof LangContentEditRoute;
   LangContentIndexRoute: typeof LangContentIndexRoute;
-  LangContentTranslateCourseIdRoute: typeof LangContentTranslateCourseIdRoute;
+  LangContentTranslateCourseIdRoute: typeof LangContentTranslateCourseIdRouteWithChildren;
   LangContentTranslateIndexRoute: typeof LangContentTranslateIndexRoute;
 }
 
@@ -154,15 +167,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentTranslateCourseIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/content/translate/$courseId/$chapterId': {
+      id: '/$lang/content/translate/$courseId/$chapterId';
+      path: '/$chapterId';
+      fullPath: '/$lang/content/translate/$courseId/$chapterId';
+      preLoaderRoute: typeof LangContentTranslateCourseIdChapterIdRouteImport;
+      parentRoute: typeof LangContentTranslateCourseIdRoute;
+    };
   }
 }
+
+interface LangContentTranslateCourseIdRouteChildren {
+  LangContentTranslateCourseIdChapterIdRoute: typeof LangContentTranslateCourseIdChapterIdRoute;
+}
+
+const LangContentTranslateCourseIdRouteChildren: LangContentTranslateCourseIdRouteChildren =
+  {
+    LangContentTranslateCourseIdChapterIdRoute:
+      LangContentTranslateCourseIdChapterIdRoute,
+  };
+
+const LangContentTranslateCourseIdRouteWithChildren =
+  LangContentTranslateCourseIdRoute._addFileChildren(
+    LangContentTranslateCourseIdRouteChildren,
+  );
 
 const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangContentCreateRoute: LangContentCreateRoute,
   LangContentEditRoute: LangContentEditRoute,
   LangContentIndexRoute: LangContentIndexRoute,
-  LangContentTranslateCourseIdRoute: LangContentTranslateCourseIdRoute,
+  LangContentTranslateCourseIdRoute:
+    LangContentTranslateCourseIdRouteWithChildren,
   LangContentTranslateIndexRoute: LangContentTranslateIndexRoute,
 };
 export const routeTree = rootRouteImport

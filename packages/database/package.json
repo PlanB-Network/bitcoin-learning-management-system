@@ -31,7 +31,9 @@
     "drizzle:up": "drizzle-kit up --config=drizzle.config.ts",
     "lint": "biome check .",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
-    "type-check": "tsc --build"
+    "type-check": "tsc --build",
+    "db:populate-slides": "tsx ./scripts/populate-slides.ts",
+    "db:populate-slides:local": "dotenv -e ../../.env -- tsx ./scripts/populate-slides.ts"
   },
   "type": "module",
   "types": "./src/index.ts",
