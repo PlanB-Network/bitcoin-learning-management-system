@@ -20,10 +20,10 @@
     "formidable": "^3.5.4",
     "jszip": "^3.10.1",
     "sharp": "^0.34.2",
-    "stripe": "^18.2.1",
+    "stripe": "^18.3.0",
     "superjson": "^2.2.2",
     "typesense": "^2.0.3",
-    "zod": "^3.25.67"
+    "zod": "^3.25.73"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
