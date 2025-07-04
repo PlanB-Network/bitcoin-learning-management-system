@@ -8,9 +8,15 @@ import {
   contentCourseParts,
   contentCoursePartsLocalized,
   contentCourseTranslationChapters,
+  contentCourseTranslationSlides,
   contentCourseTranslations,
   contentCourses,
   contentCoursesLocalized,
+  usersLanguages,
+  usersReviewerLanguages,
+  usersTranslationAssignments,
+  usersTranslationChapterAssignments,
+  usersTranslationReviews,
 } from '@blms/database';
 
 import { assignmentStatusEnum, translationStatusEnum } from '../enums.js';
@@ -33,6 +39,22 @@ export const coursePartsLocalizedSchema = createSelectSchema(
 export const courseChaptersSchema = createSelectSchema(contentCourseChapters);
 export const courseChaptersLocalizedSchema = createSelectSchema(
   contentCourseChaptersLocalized,
+);
+export const courseTranslationSlidesSchema = createSelectSchema(
+  contentCourseTranslationSlides,
+);
+export const usersLanguagesSchema = createSelectSchema(usersLanguages);
+export const usersReviewerLanguagesSchema = createSelectSchema(
+  usersReviewerLanguages,
+);
+export const usersTranslationAssignmentsSchema = createSelectSchema(
+  usersTranslationAssignments,
+);
+export const usersTranslationChapterAssignmentsSchema = createSelectSchema(
+  usersTranslationChapterAssignments,
+);
+export const usersTranslationReviewsSchema = createSelectSchema(
+  usersTranslationReviews,
 );
 
 // Schema for simple course translation response (only courseId and language)
@@ -243,3 +265,106 @@ export const courseWithTodoTranslationsSchema = courseBasicSchema
       totalLanguages: z.number(),
     }),
   );
+
+// Schema for course translation slide - based on database schema
+export const courseTranslationSlideSchema = courseTranslationSlidesSchema
+  .pick({
+    courseId: true,
+    language: true,
+    partId: true,
+    chapterId: true,
+    slideId: true,
+    pptResourcePath: true,
+    audioResourcePath: true,
+    originalContent: true,
+    translatedContent: true,
+    createdAt: true,
+    updatedAt: true,
+  })
+  .merge(
+    z.object({
+      status: translationStatusEnum,
+    }),
+  );
+
+// Schema for chapter translation context - based on course and chapter schemas
+export const chapterTranslationContextSchema = courseBasicSchema
+  .pick({
+    id: true,
+  })
+  .merge(
+    courseChaptersSchema.pick({
+      chapterId: true,
+      chapterIndex: true,
+    }),
+  )
+  .merge(
+    coursePartsSchema.pick({
+      partId: true,
+      partIndex: true,
+    }),
+  )
+  .merge(
+    z.object({
+      courseId: z.string(),
+      courseIndex: z.string(),
+      courseName: z.string(),
+      partTitle: z.string(),
+      chapterTitle: z.string(),
+      translationStatus: z.string(),
+      chapterTranslationStatus: z.string(),
+    }),
+  );
+
+// Schema for chapter translation data (context + slides)
+export const chapterTranslationDataSchema = z.object({
+  context: chapterTranslationContextSchema,
+  slides: z.array(courseTranslationSlideSchema),
+});
+
+// Input schemas for slide operations
+export const getCourseTranslationSlidesInputSchema = z.object({
+  courseId: z.string(),
+  language: z.string(),
+  chapterId: z.string(),
+});
+
+export const updateCourseTranslationSlideInputSchema = z.object({
+  courseId: z.string(),
+  language: z.string(),
+  chapterId: z.string(),
+  slideId: z.string(),
+  translatedContent: z.string(),
+  status: translationStatusEnum
+    .optional()
+    .default(TranslationStatus.InProgress),
+});
+
+// Schema for chapter progress in course translation overview - based on chapter schema
+export const chapterProgressSchema = courseChaptersSchema
+  .pick({
+    chapterId: true,
+    chapterIndex: true,
+  })
+  .merge(
+    coursePartsSchema.pick({
+      partId: true,
+      partIndex: true,
+    }),
+  )
+  .merge(
+    z.object({
+      chapterTitle: z.string(),
+      totalSlides: z.number(),
+      completedSlides: z.number(),
+      inProgressSlides: z.number(),
+      todoSlides: z.number(),
+      status: z.enum(['completed', 'in-progress', 'not-started']),
+    }),
+  );
+
+// Input schema for getting chapter progress
+export const getCourseTranslationChapterProgressInputSchema = z.object({
+  courseId: z.string(),
+  language: z.string(),
+});

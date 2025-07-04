@@ -3,11 +3,16 @@ import {
   adminContentManagementCourseSchema,
   availableCourseTranslationSchema,
   availableCourseTranslationWithAssignmentSchema,
+  chapterTranslationDataSchema,
   courseLanguageInfoSchema,
   courseTranslationDetailsServiceResponseSchema,
+  courseTranslationSlideSchema,
   courseTranslationStatusSchema,
   courseWithTodoTranslationsSchema,
   createTranslationInputSchema,
+  getCourseTranslationChapterProgressInputSchema,
+  getCourseTranslationSlidesInputSchema,
+  updateCourseTranslationSlideInputSchema,
   updateTranslationStatusInputSchema,
 } from '@blms/schemas';
 import {
@@ -16,13 +21,16 @@ import {
   createGetAvailableCourseTranslations,
   createGetContentManagementTopics,
   createGetCourseLanguages,
+  createGetCourseTranslationChapterProgress,
   createGetCourseTranslationDetails,
+  createGetCourseTranslationSlides,
   createGetCourseTranslationStatus,
   createGetCoursesReadyForReview,
   createGetCoursesWithTodoTranslations,
   createGetTranslationProgress,
   createGetUserContributionsUnderReview,
   createGetUserCourseTranslations,
+  createUpdateCourseTranslationSlide,
   createUpdateTranslationStatus,
 } from '@blms/service-content';
 import type {
@@ -236,6 +244,29 @@ const getCoursesWithTodoTranslationsProcedure = adminProcedure
     return createGetCoursesWithTodoTranslations(ctx.dependencies)();
   });
 
+// Get course translation slides for a chapter
+const getCourseTranslationSlidesProcedure = contributorProcedure
+  .input(getCourseTranslationSlidesInputSchema)
+  .output(chapterTranslationDataSchema)
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationSlides(ctx.dependencies)(input);
+  });
+
+// Update course translation slide
+const updateCourseTranslationSlideProcedure = contributorProcedure
+  .input(updateCourseTranslationSlideInputSchema)
+  .output(courseTranslationSlideSchema)
+  .mutation(({ ctx, input }) => {
+    return createUpdateCourseTranslationSlide(ctx.dependencies)(input);
+  });
+
+// Get course translation chapter progress
+const getCourseTranslationChapterProgressProcedure = contributorProcedure
+  .input(getCourseTranslationChapterProgressInputSchema)
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationChapterProgress(ctx.dependencies)(input);
+  });
+
 export const translationsRouter = createTRPCRouter({
   getAvailableCourseTranslations: getAvailableCourseTranslationsProcedure,
   getUserCourseTranslations: getUserCourseTranslationsProcedure,
@@ -251,4 +282,9 @@ export const translationsRouter = createTRPCRouter({
   getCourseDetails: getCourseTranslationDetailsProcedure,
   getCourseLanguages: getCourseLanguagesProcedure,
   getCoursesWithTodoTranslations: getCoursesWithTodoTranslationsProcedure,
+  // Course translation slides endpoints
+  getCourseTranslationSlides: getCourseTranslationSlidesProcedure,
+  updateCourseTranslationSlide: updateCourseTranslationSlideProcedure,
+  getCourseTranslationChapterProgress:
+    getCourseTranslationChapterProgressProcedure,
 });

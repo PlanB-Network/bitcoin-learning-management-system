@@ -134,6 +134,76 @@ export interface CourseChaptersLocalized {
   lastSync: Date;
 }
 
+export interface CourseTranslationSlides {
+  courseId: string;
+  language: string;
+  partId: string;
+  chapterId: string;
+  slideId: string;
+  pptResourcePath: string | null;
+  audioResourcePath: string | null;
+  originalContent: string | null;
+  translatedContent: string | null;
+  status:
+    | 'todo'
+    | 'in_progress'
+    | 'ready_for_review'
+    | 'under_review'
+    | 'reviewed'
+    | 'published';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface UsersLanguages {
+  code: string;
+  name: string;
+  nativeName: string;
+}
+
+export interface UsersReviewerLanguages {
+  reviewerId: string;
+  languageCode: string;
+  proficiencyLevel: number;
+}
+
+export interface UsersTranslationAssignments {
+  id: string;
+  courseId: string;
+  language: string;
+  assigneeId: string;
+  assignerId: string;
+  status: 'requested' | 'assigned' | 'in_progress' | 'completed' | 'rejected';
+  assignedAt: Date;
+  completedAt: Date | null;
+  rejectionReason: string | null;
+}
+
+export interface UsersTranslationChapterAssignments {
+  id: string;
+  courseId: string;
+  language: string;
+  partId: string;
+  chapterId: string;
+  assigneeId: string;
+  assignerId: string;
+  status: 'requested' | 'assigned' | 'in_progress' | 'completed' | 'rejected';
+  assignedAt: Date;
+  completedAt: Date | null;
+  rejectionReason: string | null;
+}
+
+export interface UsersTranslationReviews {
+  id: string;
+  courseId: string;
+  language: string;
+  reviewerId: string;
+  status: 'approved' | 'rejected' | 'needs_changes';
+  feedback: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface CourseTranslationResponse {
   courseId: string;
   language: string;
@@ -309,4 +379,72 @@ export interface CourseWithTodoTranslations {
   courseName: string;
   todoLanguages: string[];
   totalLanguages: number;
+}
+
+export interface CourseTranslationSlide {
+  courseId: string;
+  language: string;
+  partId: string;
+  chapterId: string;
+  slideId: string;
+  pptResourcePath: string | null;
+  audioResourcePath: string | null;
+  originalContent: string | null;
+  translatedContent: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  status: unknown;
+}
+
+export interface ChapterTranslationContext {
+  id: string;
+  chapterId: string;
+  chapterIndex: number;
+  partId: string;
+  partIndex: number;
+  courseId: string;
+  courseIndex: string;
+  courseName: string;
+  partTitle: string;
+  chapterTitle: string;
+  translationStatus: string;
+  chapterTranslationStatus: string;
+}
+
+export interface ChapterTranslationData {
+  context: ChapterTranslationContext;
+  slides: CourseTranslationSlide[];
+}
+
+export interface GetCourseTranslationSlidesInput {
+  courseId: string;
+  language: string;
+  chapterId: string;
+}
+
+export interface UpdateCourseTranslationSlideInput {
+  courseId: string;
+  language: string;
+  chapterId: string;
+  slideId: string;
+  translatedContent: string;
+  status?: unknown;
+}
+
+export interface ChapterProgress {
+  chapterId: string;
+  chapterIndex: number;
+  partId: string;
+  partIndex: number;
+  chapterTitle: string;
+  totalSlides: number;
+  completedSlides: number;
+  inProgressSlides: number;
+  todoSlides: number;
+  status: 'completed' | 'in-progress' | 'not-started';
+}
+
+export interface GetCourseTranslationChapterProgressInput {
+  courseId: string;
+  language: string;
 }
