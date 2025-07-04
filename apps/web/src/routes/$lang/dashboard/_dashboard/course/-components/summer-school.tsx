@@ -318,7 +318,7 @@ function SummerPresentation() {
             style={{ left: 0, position: 'absolute', top: 0 }}
             className="mb-2 rounded-lg"
             controls={true}
-            url={fixEmbedUrl(videoUrl)}
+            src={fixEmbedUrl(videoUrl)}
           />
         </div>
       </div>

@@ -55,7 +55,7 @@ export const VideoPlayerWrapper: React.FC<VideoPlayerWrapperProps> = ({
               style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               controls={true}
-              url={fixEmbedUrl(youtubeUrl)}
+              src={fixEmbedUrl(youtubeUrl)}
             />
           </div>
         );

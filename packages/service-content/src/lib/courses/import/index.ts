@@ -889,7 +889,9 @@ export const createUpdateCourses = ({
         }
       })
       .catch((error) => {
-        console.error('[sync] Error during transaction:', error?.message);
+        console.error(
+          `[sync] Error during transaction :(${course.fullPath}) ${error?.message}`,
+        );
       });
   };
 };

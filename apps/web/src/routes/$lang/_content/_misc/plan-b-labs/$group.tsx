@@ -236,52 +236,57 @@ function PlanBLabs() {
                   <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-3xl xl:text-4xl italic text-darkOrange-6">
                     Next session
                   </div>
-                  <>
-                    <div className="flex flex-col lg:flex-row max-lg:items-center lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
-                      <span>
-                        {formatDate(lastSession.startDate, userTimeZone)}
-                      </span>
-                      <DividerVertical className="my-1 mx-2 bg-black" />
-                      <span className="font-semibold uppercase">
-                        {formatHourRange(
-                          lastSession.startDate,
-                          lastSession.endDate,
-                          userTimeZone,
-                          true,
-                        )}
-                      </span>
-                    </div>
-                    <div className="mt-6 w-full">
-                      <span className="text-newGray-1 uppercase">
-                        {'> TOPIC OF DISCUSSION'}
-                      </span>
-                      <div className="mx-auto lg:max-w-2x max-md:w-full lg:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
-                        {lastSession ? (
-                          <Suspense fallback={<Loader size={'s'} />}>
-                            <GlossaryMarkdownBody
-                              content={lastSession.rawContent}
-                              assetPrefix={cdnUrl(lab?.lab?.path || '')}
-                            />
-                            {lastSession.liveUrl ? (
+
+                  <div className="flex flex-col lg:flex-row max-lg:items-center lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
+                    <span>
+                      {formatDate(lastSession.startDate, userTimeZone)}
+                    </span>
+                    <DividerVertical className="my-1 mx-2 bg-black" />
+                    <span className="font-semibold uppercase">
+                      {formatHourRange(
+                        lastSession.startDate,
+                        lastSession.endDate,
+                        userTimeZone,
+                        true,
+                      )}
+                    </span>
+                  </div>
+                  <div className="mt-6 w-full">
+                    <span className="text-newGray-1 uppercase">
+                      {'> TOPIC OF DISCUSSION'}
+                    </span>
+                    <div className="mx-auto lg:max-w-2x max-md:w-full lg:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
+                      {lastSession ? (
+                        <Suspense fallback={<Loader size={'s'} />}>
+                          <GlossaryMarkdownBody
+                            content={lastSession.rawContent}
+                            assetPrefix={cdnUrl(lab?.lab?.path || '')}
+                          />
+                          {lastSession.liveUrl ? (
+                            <div
+                              className="relative w-full"
+                              style={{ aspectRatio: '16/9' }}
+                            >
                               <ReactPlayer
-                                width={'100%'}
-                                className="mx-auto top-0 left-0 mb-2 rounded-lg"
+                                width="100%"
+                                height="100%"
+                                className="absolute top-0 left-0 mb-2 rounded-lg"
                                 controls={true}
-                                url={lastSession.liveUrl}
-                                src="Session video"
+                                src={lastSession.liveUrl}
+                                alt="Session video"
                               />
-                            ) : null}
-                          </Suspense>
-                        ) : (
-                          <p>
-                            The next session details are being prepared and will
-                            be displayed here soon. You can join the telegram
-                            group to be the first informed.
-                          </p>
-                        )}
-                      </div>
+                            </div>
+                          ) : null}
+                        </Suspense>
+                      ) : (
+                        <p>
+                          The next session details are being prepared and will
+                          be displayed here soon. You can join the telegram
+                          group to be the first informed.
+                        </p>
+                      )}
                     </div>
-                  </>
+                  </div>
                 </div>
 
                 {/* Previous session */}

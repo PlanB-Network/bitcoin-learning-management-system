@@ -79,8 +79,8 @@ export const ImageVideoRenderer = ({
               style={{ left: 0, position: 'absolute', top: 0 }}
               className="mx-auto mb-2 rounded-lg"
               controls={true}
-              url={src}
-              src={alt}
+              src={src}
+              alt={alt}
             />
           ) : (
             <iframe
