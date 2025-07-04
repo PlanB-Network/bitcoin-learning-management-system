@@ -6,7 +6,7 @@
     "@blms/service-common": "workspace:*",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "marked": "^15.0.12",
+    "marked": "^16.0.0",
     "remove-markdown": "^0.6.2",
     "typesense": "^2.0.3",
     "uuid": "^11.1.0",
