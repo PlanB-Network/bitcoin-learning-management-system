@@ -1,7 +1,7 @@
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import type React from 'react';
-import { ReactPlayer } from '#src/components/react-player.tsx';
+import ReactPlayer from 'react-player';
 import { trpc } from '#src/utils/trpc.ts';
 import { fixEmbedUrl } from './Markdown/conference-markdown-body.tsx';
 

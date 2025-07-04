@@ -32,6 +32,7 @@ import {
   TbUsers,
   TbUsersGroup,
 } from 'react-icons/tb';
+import ReactPlayer from 'react-player';
 import BookPixel from '#src/assets/icons/pixelated/book.svg?react';
 import CalendarPixel from '#src/assets/icons/pixelated/calendar.svg?react';
 import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
@@ -39,7 +40,6 @@ import HeartPixel from '#src/assets/icons/pixelated/heart_speaking.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import { GeneralPaymentModal } from '#src/components/GeneralPaymentModal/payment-modal/general-payment-modal.tsx';
 import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.tsx';
-import { ReactPlayer } from '#src/components/react-player.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { trpc } from '#src/utils/trpc.ts';

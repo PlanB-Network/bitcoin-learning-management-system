@@ -15,6 +15,7 @@ import { t } from 'i18next';
 import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdLiveTv, MdPerson } from 'react-icons/md';
+import ReactPlayer from 'react-player';
 import { z } from 'zod';
 import LabIcon from '#src/assets/icons/lab.svg';
 import LightningWhiteIcon from '#src/assets/icons/lightning_white.svg';
@@ -23,7 +24,6 @@ import PrivacyIcon from '#src/assets/icons/privacy.svg';
 import PlanBLabsLogo from '#src/assets/logo/plan_b_labs_logo_horizontal.svg';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { MainLayout } from '#src/components/main-layout.js';
-import { ReactPlayer } from '#src/components/react-player.tsx';
 import { formatDate, formatHourRange, userTimeZone } from '#src/utils/date.ts';
 import { cdnUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
@@ -273,7 +273,6 @@ function PlanBLabs() {
                                 className="absolute top-0 left-0 mb-2 rounded-lg"
                                 controls={true}
                                 src={lastSession.liveUrl}
-                                alt="Session video"
                               />
                             </div>
                           ) : null}

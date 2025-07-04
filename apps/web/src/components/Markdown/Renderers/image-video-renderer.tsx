@@ -1,6 +1,6 @@
 import { t } from 'i18next';
+import ReactPlayer from 'react-player';
 import VideoSVG from '#src/assets/resources/video.svg?react';
-import { ReactPlayer } from '../../react-player.tsx';
 
 const fixEmbedUrl = (src: string) => {
   if (src.includes('embed')) {
@@ -80,7 +80,6 @@ export const ImageVideoRenderer = ({
               className="mx-auto mb-2 rounded-lg"
               controls={true}
               src={src}
-              alt={alt}
             />
           ) : (
             <iframe
