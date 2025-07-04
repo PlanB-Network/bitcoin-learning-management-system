@@ -46,24 +46,18 @@ interface AppContext {
   // Register Toast
   hasSeenRegisterToast: boolean;
   setHasSeenRegisterToast: (value: boolean) => void;
+
+  university: string | null;
+  setUniversity: (university: string | null) => void;
 }
 
 export const AppContext = createContext<AppContext>({
-  // Account settings
   accountSettings: null,
-
-  // Blog
   blogs: null,
-
-  // Courses
   courses: null,
-
-  // Register Toast
   hasSeenRegisterToast: false,
   refetchAccountSettings: async () => {},
   refetchUserDetails: async () => {},
-
-  // Session
   session: undefined,
   setAccountSettings: () => {},
   setBlogs: () => {},
@@ -71,11 +65,10 @@ export const AppContext = createContext<AppContext>({
   setHasSeenRegisterToast: () => {},
   setSession: () => {},
   setTutorials: () => {},
+  setUniversity: async () => {},
   setUser: () => {},
-
-  // Tutorials
   tutorials: null,
-  // User
+  university: null,
   user: undefined,
 });
 
@@ -94,6 +87,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
+
+  const [university, setUniversity] = useState<string | null>(null);
 
   const refetchUserDetails = async () => {
     try {
@@ -180,8 +175,10 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     setHasSeenRegisterToast,
     setSession,
     setTutorials,
+    setUniversity,
     setUser,
     tutorials,
+    university,
     user,
   };
 

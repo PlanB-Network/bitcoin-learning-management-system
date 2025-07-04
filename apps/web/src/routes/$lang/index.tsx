@@ -55,6 +55,14 @@ export const Route = createFileRoute('/$lang/')({
 function Home() {
   const { t } = useTranslation();
   const isScreenMd = useGreater('md');
+  const { setUniversity } = useContext(AppContext);
+
+  const { university } = Route.useSearch();
+
+  if (university) {
+    setUniversity(university);
+  }
+
   const buttonSize = isScreenMd ? 'l' : 'm';
   const tutorialButtonSize = isScreenMd ? 'l' : 's';
 
