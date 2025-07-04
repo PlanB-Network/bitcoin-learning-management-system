@@ -2523,3 +2523,52 @@ export const contentCourseUploads = content.table(
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
 );
+
+export const contentCourseTranslationSlides = content.table(
+  'course_translation_slides',
+  (t) => ({
+    language: t.varchar({ length: 10 }).notNull(),
+    partId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseParts.partId, {
+        onDelete: 'cascade',
+      }),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
+    slideId: t.uuid().notNull(),
+    pptResourcePath: t.text(),
+    audioResourcePath: t.text(),
+    originalContent: t.text(),
+    translatedContent: t.text(),
+    status: translationStatusEnum().default(TranslationStatus.Todo).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    pk: primaryKey({
+      columns: [
+        table.courseId,
+        table.language,
+        table.partId,
+        table.chapterId,
+        table.slideId,
+      ],
+    }),
+    // Foreign key to course_translation_chapters using composite key
+    translationChapterFK: foreignKey({
+      columns: [table.courseId, table.language, table.partId, table.chapterId],
+      foreignColumns: [
+        contentCourseTranslationChapters.courseId,
+        contentCourseTranslationChapters.language,
+        contentCourseTranslationChapters.partId,
+        contentCourseTranslationChapters.chapterId,
+      ],
+      name: 'course_translation_slides_to_translation_chapters_fk',
+    }).onDelete('cascade'),
+  }),
+);
