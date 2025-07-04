@@ -6,6 +6,7 @@ interface NewCredentialsUserOptions {
   passwordHash: string;
   contributorId: string;
   email: string | null;
+  university: string | null;
 }
 
 export const newCredentialsUserQuery = ({
@@ -13,6 +14,7 @@ export const newCredentialsUserQuery = ({
   passwordHash,
   contributorId,
   email,
+  university,
 }: NewCredentialsUserOptions) => {
   return sql<UserAccount[]>`
     WITH inserted_user AS (
@@ -22,6 +24,7 @@ export const newCredentialsUserQuery = ({
         certificate_name,
         password_hash,
         email,
+        university,
         contributor_id
       ) VALUES (
         ${username.toLowerCase()},
@@ -29,6 +32,7 @@ export const newCredentialsUserQuery = ({
         ${username},
         ${passwordHash},
         ${email || null},
+        ${university || null},
         ${contributorId}
       )
       RETURNING
@@ -38,6 +42,7 @@ export const newCredentialsUserQuery = ({
         certificate_name,
         contributor_id,
         email,
+        university,
         role,
         permissions
     ), inserted_settings AS (
@@ -66,6 +71,7 @@ export const newCredentialsUserQuery = ({
       certificate_name,
       contributor_id,
       email,
+      university,
       role,
       permissions
     FROM inserted_user;

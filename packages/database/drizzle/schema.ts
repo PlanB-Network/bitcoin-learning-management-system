@@ -79,6 +79,7 @@ export const usersAccounts = users.table('accounts', (t) => ({
     }),
   role: userRoleEnum().default(UserRole.Student).notNull(),
   uid: t.uuid().defaultRandom().primaryKey().notNull(),
+  university: t.varchar({ length: 100 }).unique(),
   updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   username: t.varchar({ length: 255 }).unique().notNull(),
 }));

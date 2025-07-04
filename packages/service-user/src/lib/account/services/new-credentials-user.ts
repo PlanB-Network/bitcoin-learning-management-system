@@ -12,6 +12,7 @@ interface Options {
   password: string;
   contributorId?: string;
   email: string | null;
+  university: string | null;
 }
 
 export const createNewCredentialsUser = (dependencies: Dependencies) => {

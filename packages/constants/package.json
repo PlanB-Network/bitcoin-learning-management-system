@@ -4,6 +4,7 @@
   "exports": {
     "development": "./src/index.ts",
     "import": "./dist/src/index.js",
+    "require": "./dist/src/index.js",
     "types": "./src/index.ts"
   },
   "main": "./src/index.ts",

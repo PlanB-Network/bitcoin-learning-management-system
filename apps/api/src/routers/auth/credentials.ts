@@ -17,13 +17,6 @@ import { publicProcedure } from '../../procedures/index.js';
 import { createTRPCRouter } from '../../trpc/index.js';
 import { contributorIdSchema } from '../../utils/validators.js';
 
-const registerCredentialsSchema = z.object({
-  contributor_id: contributorIdSchema.optional(),
-  email: z.string().email().optional().nullable(),
-  password: z.string().min(8),
-  username: z.string().min(5),
-});
-
 const loginCredentialsSchema = z.object({
   password: z.string(),
   username: z.string(),
@@ -93,7 +86,15 @@ export const credentialsAuthRouter = createTRPCRouter({
       };
     }),
   register: publicProcedure
-    .input(registerCredentialsSchema)
+    .input(
+      z.object({
+        contributor_id: contributorIdSchema.optional(),
+        email: z.string().email().optional().nullable(),
+        password: z.string().min(8),
+        university: z.string().optional().nullable(),
+        username: z.string().min(5),
+      }),
+    )
     .output<Parser<LoginResponse>>(loginResponseSchema)
     .mutation(async ({ ctx, input }) => {
       const getUser = createGetUserByUsername(ctx.dependencies);
@@ -121,6 +122,7 @@ export const credentialsAuthRouter = createTRPCRouter({
         contributorId: input.contributor_id,
         email: input.email ?? null,
         password: input.password,
+        university: input.university ?? null,
         username,
       });
 

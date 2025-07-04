@@ -7,11 +7,13 @@
     ".": {
       "development": "./src/index.ts",
       "import": "./dist/src/index.js",
+      "require": "./dist/src/index.js",
       "types": "./src/index.ts"
     },
     "./*": {
       "development": "./src/*.ts",
       "import": "./dist/src/*.js",
+      "require": "./dist/src/*.js",
       "types": "./src/*.ts"
     }
   },

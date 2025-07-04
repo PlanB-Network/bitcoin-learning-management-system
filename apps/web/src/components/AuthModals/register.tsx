@@ -11,12 +11,13 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import PasswordValidator from 'password-validator';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
 import { z } from 'zod';
+import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
 
@@ -25,6 +26,7 @@ interface RegisterFormData {
   password: string;
   confirmation: string;
   email: string | null;
+  university?: string | null;
 }
 
 interface RegisterProps {
@@ -41,6 +43,8 @@ export const Register = ({
   redirectTo,
 }: RegisterProps) => {
   const { t } = useTranslation();
+  const { university } = useContext(AppContext);
+
   const password = new PasswordValidator().is().min(10);
 
   const registerSchema = z
@@ -60,6 +64,7 @@ export const Register = ({
           return { message: Array.isArray(result) ? result[0].message : '' };
         },
       ),
+      university: z.string().optional(),
       username: z
         .string({ required_error: t('auth.errors.usernameRequired') })
         .min(5, { message: t('auth.errors.usernameTooShort') })
@@ -77,6 +82,7 @@ export const Register = ({
       confirmation: '',
       email: '',
       password: '',
+      university: university ?? undefined,
       username: '',
     },
     resolver: zodResolver(registerSchema),
@@ -99,8 +105,8 @@ export const Register = ({
   );
 
   const handleCreateUserAccount: SubmitHandler<RegisterFormData> = useCallback(
-    ({ password, username, email }) =>
-      register.mutate({ email, password, username }),
+    ({ password, username, email, university }) =>
+      register.mutate({ email, password, university, username }),
     [register],
   );
 
@@ -126,122 +132,119 @@ export const Register = ({
           </p>
         </div>
       ) : (
-        <>
-          <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
-            <Form {...methods}>
-              <form
-                onSubmit={methods.handleSubmit(handleCreateUserAccount)}
-                className="flex w-full flex-col items-center mt-3"
-              >
-                <FormField
-                  control={methods.control}
-                  name="username"
-                  render={({ field, fieldState }) => (
-                    <FormItem className="space-y-2 my-2 w-full">
-                      <FormLabel required>
-                        {t('dashboard.profile.username')}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="username"
-                          {...field}
-                          error={fieldState.error?.message || null}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={methods.control}
-                  name="password"
-                  render={({ field, fieldState }) => (
-                    <FormItem className="space-y-2 my-2 w-full">
-                      <FormLabel required>
-                        {t('dashboard.profile.password')}
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="password"
-                          type="password"
-                          {...field}
-                          error={fieldState.error?.message || null}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={methods.control}
-                  name="confirmation"
-                  render={({ field, fieldState }) => (
-                    <FormItem className="space-y-2 my-2 w-full">
-                      <FormLabel required>{t('auth.confirmation')}</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="password"
-                          type="password"
-                          {...field}
-                          error={fieldState.error?.message || null}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={methods.control}
-                  name="email"
-                  render={({ field, fieldState }) => (
-                    <FormItem className="space-y-2 my-2 w-full">
-                      <FormLabel>{t('auth.emailAddress')}</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="email"
-                          type="email"
-                          {...field}
-                          value={field.value ?? ''}
-                          error={fieldState.error?.message || null}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-
-                <p className="mt-4 text-sm text-gray-400">
-                  {t('auth.emailTip')}
-                </p>
-
-                {register.error && (
-                  <p className="mt-2 text-base font-semibold text-red-300">
-                    {register.error.message}
-                  </p>
+        <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
+          <Form {...methods}>
+            <form
+              onSubmit={methods.handleSubmit(handleCreateUserAccount)}
+              className="flex w-full flex-col items-center mt-3"
+            >
+              <FormField
+                control={methods.control}
+                name="username"
+                render={({ field, fieldState }) => (
+                  <FormItem className="space-y-2 my-2 w-full">
+                    <FormLabel required>
+                      {t('dashboard.profile.username')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="username"
+                        {...field}
+                        error={fieldState.error?.message || null}
+                      />
+                    </FormControl>
+                  </FormItem>
                 )}
+              />
 
-                <Button
-                  variant="primary"
-                  size="m"
-                  type="submit"
-                  className="my-8"
-                >
-                  {t('auth.createAccount')}
-                </Button>
-              </form>
-            </Form>
+              <FormField
+                control={methods.control}
+                name="password"
+                render={({ field, fieldState }) => (
+                  <FormItem className="space-y-2 my-2 w-full">
+                    <FormLabel required>
+                      {t('dashboard.profile.password')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="password"
+                        type="password"
+                        {...field}
+                        error={fieldState.error?.message || null}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
 
-            <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
-              {t('auth.alreadyHaveAccount')}
-              <button
-                type="button"
-                onClick={() => goTo(AuthModalState.SignIn)}
-                className="cursor-pointer underline italic"
-              >
-                {t('menu.login')}
-              </button>
-            </p>
-          </div>
-        </>
+              <FormField
+                control={methods.control}
+                name="confirmation"
+                render={({ field, fieldState }) => (
+                  <FormItem className="space-y-2 my-2 w-full">
+                    <FormLabel required>{t('auth.confirmation')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="password"
+                        type="password"
+                        {...field}
+                        error={fieldState.error?.message || null}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={methods.control}
+                name="email"
+                render={({ field, fieldState }) => (
+                  <FormItem className="space-y-2 my-2 w-full">
+                    <FormLabel>{t('auth.emailAddress')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="email"
+                        type="email"
+                        {...field}
+                        value={field.value ?? ''}
+                        error={fieldState.error?.message || null}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={methods.control}
+                name="university"
+                render={({ field }) => <input type="hidden" {...field} />}
+              />
+
+              <p className="mt-4 text-sm text-gray-400">{t('auth.emailTip')}</p>
+
+              {register.error && (
+                <p className="mt-2 text-base font-semibold text-red-300">
+                  {register.error.message}
+                </p>
+              )}
+
+              <Button variant="primary" size="m" type="submit" className="my-8">
+                {t('auth.createAccount')}
+              </Button>
+            </form>
+          </Form>
+
+          <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
+            {t('auth.alreadyHaveAccount')}
+            <button
+              type="button"
+              onClick={() => goTo(AuthModalState.SignIn)}
+              className="cursor-pointer underline italic"
+            >
+              {t('menu.login')}
+            </button>
+          </p>
+        </div>
       )}
 
       <div className="flex flex-col items-center text-center px-0.5 sm:px-5 mx-auto">

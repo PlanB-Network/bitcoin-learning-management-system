@@ -17,6 +17,7 @@ export interface UserAccount {
   professorId: string | null;
   role: UserRole;
   uid: string;
+  university: string | null;
   updatedAt: Date;
   username: string;
 }

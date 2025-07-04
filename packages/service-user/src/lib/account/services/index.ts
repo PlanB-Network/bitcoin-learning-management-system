@@ -14,7 +14,6 @@ export * from './get-participants.js';
 export * from './get-user.js';
 export * from './get-user-roles.js';
 export * from './new-credentials-user.js';
-export * from './new-lnurl-user.js';
 export * from './reset-password.js';
 export * from './set-profile-picture.js';
 export * from './token-info.js';
