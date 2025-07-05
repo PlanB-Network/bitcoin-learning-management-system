@@ -37,9 +37,9 @@ export const getStatusBadgeClass = (status: string): string => {
     case 'reviewed':
       return 'bg-blue-100 text-blue-800';
     case 'under_review':
-      return 'bg-yellow-100 text-yellow-800';
+      return 'bg-orange-800 text-white';
     case 'ready_for_review':
-      return 'bg-purple-100 text-purple-800';
+      return 'bg-orange-400 text-white';
     case 'in_progress':
       return 'bg-orange-100 text-orange-800';
     case 'todo':

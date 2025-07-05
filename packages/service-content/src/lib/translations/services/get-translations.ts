@@ -2,13 +2,14 @@ import type {
   AvailableCourseTranslation,
   CourseTranslationStatus,
 } from '@blms/types';
-
 import type { Dependencies } from '../../dependencies.js';
+
 import {
   getAdminContentManagementCoursesQuery,
   getAvailableCourseTranslationsQuery,
   getCourseTranslationStatusQuery,
   getCoursesReadyForReviewQuery,
+  getReportsCoursesQuery,
   getTranslationProgressQuery,
   getUserContributionsUnderReviewQuery,
   getUserCourseTranslationsQuery,
@@ -111,6 +112,23 @@ export const createGetAdminContentManagementCourses = ({
   return async (language?: string, topic?: string) => {
     const results = await postgres.exec(
       getAdminContentManagementCoursesQuery(language, topic),
+    );
+
+    return results.map((row: any) => ({
+      ...row,
+      topic: row.courseTopic,
+    }));
+  };
+};
+
+/**
+ * Service to get all courses for reports tab
+ * This includes all course translations for comprehensive reporting
+ */
+export const createGetReportsCourses = ({ postgres }: Dependencies) => {
+  return async (language?: string, topic?: string) => {
+    const results = await postgres.exec(
+      getReportsCoursesQuery(language, topic),
     );
 
     return results.map((row: any) => ({

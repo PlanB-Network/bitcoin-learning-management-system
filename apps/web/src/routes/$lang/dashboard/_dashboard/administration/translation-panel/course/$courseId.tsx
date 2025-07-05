@@ -29,20 +29,25 @@ function CourseDetailsComponent() {
   const { t } = useTranslation();
 
   const queries = {
-    getCourseLanguages: async (params: {
-      courseId: string;
-    }): Promise<CourseInfo> => {
-      const response: any =
+    getCourseLanguages: async (params: { id: string }): Promise<CourseInfo> => {
+      const response =
         await trpcClient.content.getCourseLanguages.query(params);
       return {
         id: response.id,
         index: response.index,
         name: response.name || 'Unknown Course',
-        languages: response.languages,
+        languages: response.languages.map(
+          (l: { code: string; name: string | null }) => ({
+            code: l.code,
+            name: l.name ?? '',
+          }),
+        ),
       };
     },
+
+    // Fetch course details for the selected language
     getCourseDetails: async (params: {
-      courseId: string;
+      id: string;
       language: string;
     }): Promise<CourseDetails> => {
       const response: CourseTranslationDetailsServiceResponse =

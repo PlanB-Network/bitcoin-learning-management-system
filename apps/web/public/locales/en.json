@@ -544,7 +544,45 @@
         },
         "comingSoon": {
           "userManagement": "User management functionality coming soon...",
-          "reports": "Reports functionality coming soon..."
+          "courses": "Courses view coming soon",
+          "coverage": "Language coverage view coming soon"
+        },
+        "reports": {
+          "proofreadCourses": "Proofread courses",
+          "totalLanguages": "Total languages",
+          "languagesProofread": "Languages proofread",
+          "tabs": {
+            "contributors": "Contributors",
+            "courses": "Courses",
+            "coverage": "Language coverage"
+          },
+          "filterByLanguage": "Filter by language",
+          "contributors": {
+            "title": "Contributors",
+            "startDate": "Start date",
+            "username": "Username",
+            "assignedCourses": "Assigned courses",
+            "completedCourses": "Completed courses",
+            "languages": "Languages",
+            "totalReward": "Total reward"
+          },
+          "noContributors": "No contributors found",
+          "comingSoon": {
+            "courses": "Courses view coming soon",
+            "coverage": "Language coverage view coming soon"
+          },
+          "courses": {
+            "filterByCourse": "Filter by course",
+            "contributor": "Contributor",
+            "progress": "Progress %",
+            "lastUpdated": "Last updated"
+          },
+          "table": {
+            "contributor": "Contributor",
+            "progress": "Progress %",
+            "lastUpdated": "Last updated"
+          },
+          "noCourses": "No courses found"
         },
         "contentManagement": {
           "title": "Content Management",

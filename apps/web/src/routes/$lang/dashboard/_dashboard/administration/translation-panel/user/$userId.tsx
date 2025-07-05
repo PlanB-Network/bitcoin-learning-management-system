@@ -16,6 +16,7 @@ import {
 } from '../../../-components/shared-table-header.tsx';
 
 // Import des icônes
+import { getStatusBadgeClass, getStatusText } from '@blms/shared';
 import ArrowIcon from '#src/assets/icons/arrow_filled.svg';
 import ProfileIcon from '#src/assets/icons/groups.svg';
 
@@ -86,90 +87,15 @@ function UserDetailsPage() {
     });
   };
 
-  const getStatusTag = (status: string) => {
-    let bgColor = 'bg-gray-100';
-    let textColor = 'text-gray-800';
-    let displayText = status;
-
-    switch (status) {
-      case 'todo':
-        bgColor = 'bg-gray-100';
-        textColor = 'text-gray-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.userManagement.status.todo',
-        );
-        break;
-      case 'in_progress':
-        bgColor = 'bg-yellow-100';
-        textColor = 'text-yellow-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.status.inProgress',
-        );
-        break;
-      case 'ready_for_review':
-        bgColor = 'bg-orange-100';
-        textColor = 'text-orange-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.userManagement.status.readyForReview',
-        );
-        break;
-      case 'under_review':
-        bgColor = 'bg-yellow-200';
-        textColor = 'text-yellow-900';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.userManagement.status.underReview',
-        );
-        break;
-      case 'reviewed':
-        bgColor = 'bg-green-100';
-        textColor = 'text-green-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.userManagement.status.reviewed',
-        );
-        break;
-      case 'published':
-        bgColor = 'bg-green-600';
-        textColor = 'text-white';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.userManagement.status.published',
-        );
-        break;
-      case 'assigned':
-        bgColor = 'bg-blue-100';
-        textColor = 'text-blue-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.status.assigned',
-        );
-        break;
-      case 'completed':
-        bgColor = 'bg-green-100';
-        textColor = 'text-green-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.status.completed',
-        );
-        break;
-      case 'rejected':
-        bgColor = 'bg-red-100';
-        textColor = 'text-red-800';
-        displayText = t(
-          'dashboard.adminPanel.translationPanel.userManagement.status.rejected',
-        );
-        break;
-    }
-
-    return (
-      <span
-        className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md whitespace-nowrap ${bgColor} ${textColor}`}
-        style={
-          status === 'under_review'
-            ? { backgroundColor: '#fef3c7', color: '#92400e' }
-            : {}
-        }
-      >
-        {displayText}
-      </span>
-    );
-  };
+  const getStatusTag = (status: string) => (
+    <span
+      className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md whitespace-nowrap ${getStatusBadgeClass(
+        status,
+      )}`}
+    >
+      {getStatusText(status, t)}
+    </span>
+  );
 
   if (loading) {
     return (
@@ -411,8 +337,10 @@ function UserDetailsPage() {
                         </TableCell>
                         <TableCell className="py-4">
                           {getStatusTag(
-                            assignment.translationStatus ||
-                              assignment.assignmentStatus,
+                            String(
+                              assignment.translationStatus ||
+                                assignment.assignmentStatus,
+                            ),
                           )}
                         </TableCell>
                         <TableCell className="py-4 text-center">
