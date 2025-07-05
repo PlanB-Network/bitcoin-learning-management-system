@@ -589,7 +589,8 @@
             "notStarted": "Not started",
             "totalCourses": "Total courses"
           },
-          "noLanguages": "No languages found"
+          "noLanguages": "No languages found",
+          "generalReport": "General Report"
         },
         "contentManagement": {
           "title": "Content Management",

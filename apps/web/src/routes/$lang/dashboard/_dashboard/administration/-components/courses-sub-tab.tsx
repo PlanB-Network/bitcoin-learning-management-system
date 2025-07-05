@@ -1,6 +1,7 @@
 import { getStatusBadgeClass } from '@blms/shared';
 import type { AdminContentManagementCourse } from '@blms/types';
 import {
+  Button,
   Select,
   SelectContent,
   SelectItem,
@@ -11,6 +12,8 @@ import {
   TableRow,
 } from '@blms/ui';
 import { useMemo, useState } from 'react';
+import { HiOutlineDownload } from 'react-icons/hi';
+import XLSX from 'xlsx';
 import {
   SharedTable,
   SharedTableHead,
@@ -71,28 +74,62 @@ export const CoursesSubTab = ({
       year: 'numeric',
     });
 
+  /** ------------------------------------------------------------------ */
+  /** Export helpers                                                     */
+  /** ------------------------------------------------------------------ */
+  const downloadGeneralReport = () => {
+    if (assignedCourses.length === 0) return;
+
+    const data = assignedCourses.map((row) => ({
+      'Course Index': row.index,
+      'Course Name': row.courseName ?? '',
+      Language: getLanguageName(row.language),
+      Contributor: row.assigneeDisplayName || row.assigneeUsername || '',
+      Status: row.status,
+      Progress: `${row.progress}%`,
+      'Last Updated': new Date(row.updatedAt).toLocaleDateString('en-GB'),
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Courses');
+    XLSX.writeFile(wb, 'Courses_Report.xlsx');
+  };
+
   return (
     <div className="space-y-6">
-      {/* Filter */}
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="label-medium-16px">
-          {t(
-            'dashboard.adminPanel.translationPanel.reports.courses.filterByCourse',
-          )}
-        </span>
-        <Select value={selectedCourseId} onValueChange={setSelectedCourseId}>
-          <SelectTrigger className="w-48 bg-white border-gray-300 text-gray-900">
-            <SelectValue placeholder="Select course" />
-          </SelectTrigger>
-          <SelectContent className="max-h-60 bg-white border-gray-300">
-            <SelectItem value="all">{t('words.all')}</SelectItem>
-            {uniqueCourses.map((c) => (
-              <SelectItem key={c.courseId} value={c.courseId}>
-                {c.index}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      {/* Filter & export */}
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="label-medium-16px">
+            {t(
+              'dashboard.adminPanel.translationPanel.reports.courses.filterByCourse',
+            )}
+          </span>
+          <Select value={selectedCourseId} onValueChange={setSelectedCourseId}>
+            <SelectTrigger className="w-48 bg-white border-gray-300 text-gray-900">
+              <SelectValue placeholder="Select course" />
+            </SelectTrigger>
+            <SelectContent className="max-h-60 bg-white border-gray-300">
+              <SelectItem value="all">{t('words.all')}</SelectItem>
+              {uniqueCourses.map((c) => (
+                <SelectItem key={c.courseId} value={c.courseId}>
+                  {c.index}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <Button
+          variant="primary"
+          size="s"
+          className="bg-orange-500 hover:bg-orange-600 text-white flex items-center gap-1"
+          onClick={downloadGeneralReport}
+        >
+          {t('dashboard.adminPanel.translationPanel.reports.generalReport')}
+          <HiOutlineDownload className="w-4 h-4 ml-1" />
+        </Button>
       </div>
 
       {selectedCourseInfo && (
