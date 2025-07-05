@@ -582,7 +582,14 @@
             "progress": "Progress %",
             "lastUpdated": "Last updated"
           },
-          "noCourses": "No courses found"
+          "noCourses": "No courses found",
+          "languageCoverage": {
+            "inProgress": "In progress",
+            "completed": "Completed",
+            "notStarted": "Not started",
+            "totalCourses": "Total courses"
+          },
+          "noLanguages": "No languages found"
         },
         "contentManagement": {
           "title": "Content Management",
