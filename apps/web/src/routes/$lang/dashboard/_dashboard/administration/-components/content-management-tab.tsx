@@ -1,5 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
@@ -15,6 +16,7 @@ import { ReassignCourseModal } from './reassign-course-modal.tsx';
 
 // Import filter icon
 import FilterIcon from '#src/assets/icons/Filter.svg';
+import SwapIcon from '#src/assets/translation/swap.svg';
 
 type SortField =
   | 'index'
@@ -33,7 +35,7 @@ export const ContentManagementTab = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
   const [sortField, setSortField] = useState<SortField>('index');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
   // State for data
   const [availableTopics, setAvailableTopics] = useState<string[]>([]);
@@ -164,9 +166,9 @@ export const ContentManagementTab = () => {
     }
   };
 
-  const getSortIcon = (field: SortField) => {
+  const getSortIcon = (field: SortField): ReactNode => {
     if (sortField !== field) {
-      return '↕️'; // Both arrows when not sorted
+      return <img src={SwapIcon} alt="Swap" className="w-4 h-4" />;
     }
     return sortDirection === 'asc' ? '↑' : '↓';
   };

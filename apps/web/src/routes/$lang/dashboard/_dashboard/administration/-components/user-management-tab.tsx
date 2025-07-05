@@ -1,11 +1,13 @@
 import { useNavigate } from '@tanstack/react-router';
 import { useEffect, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
 
 import type { AdminUserManagement } from '@blms/types';
 import FilterIcon from '#src/assets/icons/Filter.svg';
+import SwapIcon from '#src/assets/translation/swap.svg';
 import { trpcClient } from '#src/utils/trpc.js';
 import {
   SharedTable,
@@ -24,6 +26,29 @@ export const UserManagementTab = () => {
   const [languages, setLanguages] = useState<
     Array<{ code: string; name: string }>
   >([]);
+
+  /* ------------------------------------------------------------- */
+  /* Sorting                                                       */
+  /* ------------------------------------------------------------- */
+  type SortField = 'startDate' | 'username' | 'assignedCourses' | 'languages';
+  const [sortField, setSortField] = useState<SortField>('startDate');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+
+  const handleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const getSortIcon = (field: SortField): ReactNode => {
+    if (sortField !== field) {
+      return <img src={SwapIcon} alt="Swap" className="w-4 h-4" />;
+    }
+    return sortDirection === 'asc' ? '↑' : '↓';
+  };
 
   /* ------------------------------------------------------------------ */
   /* Fetch helpers                                                      */
@@ -82,6 +107,45 @@ export const UserManagementTab = () => {
       );
     });
   }, [users, searchQuery, languages]);
+
+  const sortedUsers = useMemo(() => {
+    const list = [...filteredUsers];
+    list.sort((a, b) => {
+      let aVal: any;
+      let bVal: any;
+      switch (sortField) {
+        case 'startDate':
+          aVal = a.createdAt;
+          bVal = b.createdAt;
+          break;
+        case 'username':
+          aVal = a.username ?? '';
+          bVal = b.username ?? '';
+          break;
+        case 'assignedCourses':
+          aVal = a.assignedCourses ?? 0;
+          bVal = b.assignedCourses ?? 0;
+          break;
+        case 'languages':
+          aVal = (a.languages || []).join(',');
+          bVal = (b.languages || []).join(',');
+          break;
+        default:
+          return 0;
+      }
+      if (aVal instanceof Date && bVal instanceof Date) {
+        return sortDirection === 'asc'
+          ? aVal.getTime() - bVal.getTime()
+          : bVal.getTime() - aVal.getTime();
+      }
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+      const comp = String(aVal).localeCompare(String(bVal));
+      return sortDirection === 'asc' ? comp : -comp;
+    });
+    return list;
+  }, [filteredUsers, sortField, sortDirection]);
 
   const formatDate = (d: Date) =>
     new Date(d).toLocaleDateString('en-US', {
@@ -156,22 +220,42 @@ export const UserManagementTab = () => {
       {/* Table */}
       <SharedTable>
         <SharedTableHeader>
-          <SharedTableHead className="w-32">
+          <SharedTableHead
+            className="w-32"
+            sortable
+            onSort={() => handleSort('startDate')}
+            sortIcon={getSortIcon('startDate')}
+          >
             {t(
               'dashboard.adminPanel.translationPanel.userManagement.table.startDate',
             )}
           </SharedTableHead>
-          <SharedTableHead className="w-48">
+          <SharedTableHead
+            className="w-48"
+            sortable
+            onSort={() => handleSort('username')}
+            sortIcon={getSortIcon('username')}
+          >
             {t(
               'dashboard.adminPanel.translationPanel.userManagement.table.username',
             )}
           </SharedTableHead>
-          <SharedTableHead className="w-28 text-center">
+          <SharedTableHead
+            className="w-28 text-center"
+            sortable
+            onSort={() => handleSort('assignedCourses')}
+            sortIcon={getSortIcon('assignedCourses')}
+          >
             {t(
               'dashboard.adminPanel.translationPanel.userManagement.table.assignedCourses',
             )}
           </SharedTableHead>
-          <SharedTableHead className="w-56">
+          <SharedTableHead
+            className="w-56"
+            sortable
+            onSort={() => handleSort('languages')}
+            sortIcon={getSortIcon('languages')}
+          >
             {t(
               'dashboard.adminPanel.translationPanel.userManagement.table.language',
             )}
@@ -183,7 +267,7 @@ export const UserManagementTab = () => {
           </SharedTableHead>
         </SharedTableHeader>
         <TableBody>
-          {filteredUsers.length === 0 ? (
+          {sortedUsers.length === 0 ? (
             <TableRow>
               <TableCell colSpan={5} className="text-center py-8">
                 {searchQuery.trim()
@@ -194,7 +278,7 @@ export const UserManagementTab = () => {
               </TableCell>
             </TableRow>
           ) : (
-            filteredUsers.map((u) => (
+            sortedUsers.map((u) => (
               <TableRow key={u.uid} className="hover:bg-gray-50">
                 <TableCell className="py-4">
                   {formatDate(u.createdAt)}
