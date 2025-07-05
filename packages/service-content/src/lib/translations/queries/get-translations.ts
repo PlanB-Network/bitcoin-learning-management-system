@@ -264,3 +264,75 @@ export const getAdminContentManagementCoursesQuery = (
       ct.updated_at DESC
   `;
 };
+
+/**
+ * Query to get all courses for reports tab
+ * This includes all course translations with any status for comprehensive reporting
+ */
+export const getReportsCoursesQuery = (language?: string, topic?: string) => {
+  let whereClause = sql`
+    WHERE c.is_archived = false
+  `;
+
+  if (language) {
+    whereClause = sql`${whereClause} AND ct.language = LOWER(${language})`;
+  }
+
+  if (topic && topic !== 'all') {
+    whereClause = sql`${whereClause} AND c.topic = ${topic}`;
+  }
+
+  return sql`
+    SELECT
+      ct.course_id AS "courseId",
+      ct.language,
+      ct.status,
+      CASE
+        WHEN ta.status IS NOT NULL THEN 'assigned'
+        ELSE 'not_assigned'
+      END AS "isAssigned",
+      ct.created_at AS "createdAt",
+      ct.updated_at AS "updatedAt",
+      c.index AS "index",
+      c.topic AS "courseTopic",
+      cl.name AS "courseName",
+      ta.id AS "assignmentId",
+      ta.assignee_id AS "assigneeId",
+      ta.assigner_id AS "assignerId",
+      ta.status AS "assignmentStatus",
+      ta.assigned_at AS "assignedAt",
+      ta.completed_at AS "completedAt",
+      ua.username AS "assigneeUsername",
+      ua.display_name AS "assigneeDisplayName",
+      -- Calculate progress based on translation chapters status
+      COALESCE(
+        ROUND(
+          (COUNT(CASE WHEN ctc.status IN ('reviewed', 'published') THEN 1 END)::numeric /
+           NULLIF(COUNT(ctc.chapter_id), 0)) * 100
+        ), 0
+      ) AS "progress"
+    FROM content.course_translations ct
+    JOIN content.courses c ON ct.course_id = c.id
+    LEFT JOIN content.courses_localized cl ON c.id = cl.course_id AND cl.language = 'en'
+    LEFT JOIN users.translation_assignments ta ON (
+      ta.course_id = ct.course_id
+      AND ta.language = ct.language
+    )
+    LEFT JOIN users.accounts ua ON ta.assignee_id = ua.uid
+    LEFT JOIN content.course_translation_chapters ctc ON (
+      ctc.course_id = ct.course_id
+      AND ctc.language = ct.language
+    )
+    ${whereClause}
+    GROUP BY
+      ct.course_id, ct.language, ct.status, ct.created_at, ct.updated_at,
+      c.index, c.topic, cl.name, ta.id, ta.assignee_id, ta.assigner_id, ta.status,
+      ta.assigned_at, ta.completed_at, ua.username, ua.display_name
+    ORDER BY
+      CASE
+        WHEN ta.status IS NULL THEN 0  -- Unassigned courses first
+        ELSE 1
+      END,
+      ct.updated_at DESC
+  `;
+};

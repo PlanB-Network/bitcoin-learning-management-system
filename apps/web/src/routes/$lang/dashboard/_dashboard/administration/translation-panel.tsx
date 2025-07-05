@@ -31,6 +31,7 @@ import {
   SharedTableHeader,
 } from '../-components/shared-table-header.tsx';
 import { TranslationRequestsTable } from '../-components/translation-requests-table.js';
+import { ReportsTab } from './-components/reports-tab.tsx';
 import { ContributorAssignmentModal } from './translation-panel/-components/contributor-assignment-modal.tsx';
 
 import type { AdminUserManagement } from '@blms/types';
@@ -156,10 +157,8 @@ function DashboardAdministrationTranslationPanel() {
           <UserManagementTab />
         </TabsContent>
 
-        <TabsContent value="reports">
-          <div className="p-8 text-center text-gray-500">
-            {t('dashboard.adminPanel.translationPanel.comingSoon.reports')}
-          </div>
+        <TabsContent value="reports" className="mt-6">
+          <ReportsTab />
         </TabsContent>
 
         <TabsContent value="translate" className="mt-6">

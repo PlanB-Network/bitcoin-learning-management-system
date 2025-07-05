@@ -645,7 +645,35 @@
         },
         "comingSoon": {
           "userManagement": "Fonctionnalité de gestion des utilisateurs bientôt disponible...",
-          "reports": "Fonctionnalité de rapports bientôt disponible..."
+          "courses": "Vue des cours bientôt disponible",
+          "coverage": "Vue de la couverture linguistique bientôt disponible"
+        },
+        "reports": {
+          "proofreadCourses": "Cours relus",
+          "totalLanguages": "Total des langues",
+          "languagesProofread": "Langues relues",
+          "tabs": {
+            "contributors": "Contributeurs",
+            "courses": "Cours",
+            "coverage": "Couverture linguistique"
+          },
+          "contributors": {
+            "title": "Contributeurs"
+          },
+          "filterByLanguage": "Filtrer par langue",
+          "table": {
+            "startDate": "Date de début",
+            "username": "Nom d'utilisateur",
+            "assignedCourses": "Cours assignés",
+            "completedCourses": "Cours terminés",
+            "languages": "Langue",
+            "totalReward": "Récompense totale (Sats)"
+          },
+          "noContributors": "Aucun contributeur trouvé",
+          "comingSoon": {
+            "courses": "Vue des cours bientôt disponible",
+            "coverage": "Vue de la couverture linguistique bientôt disponible"
+          }
         },
         "contentManagement": {
           "title": "Gestion de Contenu",

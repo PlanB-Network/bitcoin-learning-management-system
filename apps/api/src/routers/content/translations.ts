@@ -27,6 +27,7 @@ import {
   createGetCourseTranslationDetails,
   createGetCourseTranslationSlides,
   createGetCourseTranslationStatus,
+  createGetReportsCourses,
   createGetTranslationProgress,
   createGetUserContributionsUnderReview,
   createGetUserCourseTranslations,
@@ -203,6 +204,24 @@ const getAdminContentManagementCoursesProcedure = adminProcedure
     );
   });
 
+// Reports courses endpoint - includes all courses for comprehensive reporting
+const getReportsCoursesProcedure = adminProcedure
+  .input(
+    z.object({
+      language: z.string().optional(),
+      topic: z.string().optional(),
+    }),
+  )
+  .output<Parser<AdminContentManagementCourse[]>>(
+    adminContentManagementCourseSchema.array(),
+  )
+  .query(({ ctx, input }) => {
+    return createGetReportsCourses(ctx.dependencies)(
+      input.language,
+      input.topic,
+    );
+  });
+
 const getContentManagementTopicsProcedure = adminProcedure
   .output<Parser<string[]>>(z.array(z.string()))
   .query(({ ctx }) => {
@@ -349,6 +368,7 @@ export const translationsRouter = createTRPCRouter({
   getTranslationProgress: getTranslationProgressProcedure,
   // Admin content management endpoints
   getAdminContentManagementCourses: getAdminContentManagementCoursesProcedure,
+  getReportsCourses: getReportsCoursesProcedure,
   getContentManagementTopics: getContentManagementTopicsProcedure,
   getCourseDetails: getCourseTranslationDetailsProcedure,
   getCourseLanguages: getCourseLanguagesProcedure,
