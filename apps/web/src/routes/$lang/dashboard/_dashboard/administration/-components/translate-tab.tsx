@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import SwapIcon from '#src/assets/translation/swap.svg';
 
 import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
 
@@ -31,6 +33,29 @@ export const TranslateTab = () => {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+
+  /* ------------------------------------------------------------- */
+  /* Sorting                                                       */
+  /* ------------------------------------------------------------- */
+  type SortField = 'index' | 'course' | 'todoCount' | 'totalLanguages';
+  const [sortField, setSortField] = useState<SortField>('index');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+
+  const handleSort = (field: SortField) => {
+    if (sortField === field) {
+      setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const getSortIcon = (field: SortField): ReactNode => {
+    if (sortField !== field) {
+      return <img src={SwapIcon} alt="Swap" className="w-4 h-4" />;
+    }
+    return sortDirection === 'asc' ? '↑' : '↓';
+  };
 
   // Fetch courses with todo translations
   const fetchCourses = async () => {
@@ -106,6 +131,40 @@ export const TranslateTab = () => {
     fetchCourses();
   }, [fetchCourses]);
 
+  const sortedCourses = useMemo(() => {
+    const list = [...courses];
+    list.sort((a, b) => {
+      let aVal: any;
+      let bVal: any;
+      switch (sortField) {
+        case 'index':
+          aVal = a.index;
+          bVal = b.index;
+          break;
+        case 'course':
+          aVal = a.courseName ?? '';
+          bVal = b.courseName ?? '';
+          break;
+        case 'todoCount':
+          aVal = a.todoLanguages?.length ?? 0;
+          bVal = b.todoLanguages?.length ?? 0;
+          break;
+        case 'totalLanguages':
+          aVal = a.totalLanguages ?? 0;
+          bVal = b.totalLanguages ?? 0;
+          break;
+        default:
+          return 0;
+      }
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      }
+      const comp = String(aVal).localeCompare(String(bVal));
+      return sortDirection === 'asc' ? comp : -comp;
+    });
+    return list;
+  }, [courses, sortField, sortDirection]);
+
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -173,20 +232,38 @@ export const TranslateTab = () => {
       <div className="w-full">
         <SharedTable>
           <SharedTableHeader>
-            <SharedTableHead className="w-24">
+            <SharedTableHead
+              className="w-24"
+              sortable
+              onSort={() => handleSort('index')}
+              sortIcon={getSortIcon('index')}
+            >
               {t('dashboard.adminPanel.translationPanel.translate.table.index')}
             </SharedTableHead>
-            <SharedTableHead>
+            <SharedTableHead
+              sortable
+              onSort={() => handleSort('course')}
+              sortIcon={getSortIcon('course')}
+            >
               {t(
                 'dashboard.adminPanel.translationPanel.translate.table.course',
               )}
             </SharedTableHead>
-            <SharedTableHead>
+            <SharedTableHead
+              sortable
+              onSort={() => handleSort('todoCount')}
+              sortIcon={getSortIcon('todoCount')}
+            >
               {t(
                 'dashboard.adminPanel.translationPanel.translate.table.todoLanguages',
               )}
             </SharedTableHead>
-            <SharedTableHead className="w-32 text-center">
+            <SharedTableHead
+              className="w-32 text-center"
+              sortable
+              onSort={() => handleSort('totalLanguages')}
+              sortIcon={getSortIcon('totalLanguages')}
+            >
               {t(
                 'dashboard.adminPanel.translationPanel.translate.table.totalLanguages',
               )}
@@ -198,7 +275,7 @@ export const TranslateTab = () => {
             </SharedTableHead>
           </SharedTableHeader>
           <TableBody>
-            {courses.map((course: CourseWithTodoTranslations) => (
+            {sortedCourses.map((course: CourseWithTodoTranslations) => (
               <TableRow key={course.id}>
                 <TableCell className="font-medium">
                   <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">

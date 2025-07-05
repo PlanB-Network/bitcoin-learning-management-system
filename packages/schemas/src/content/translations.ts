@@ -253,7 +253,8 @@ export const courseTranslationUploadResponseSchema =
   courseTranslationUploadSchema.pick({
     id: true,
     courseId: true,
-    languages: true,
+    originalLanguage: true,
+    translationLanguages: true,
     uploaderId: true,
     pptxFileUrl: true,
     audioFileUrl: true,

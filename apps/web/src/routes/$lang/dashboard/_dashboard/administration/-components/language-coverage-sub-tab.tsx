@@ -1,5 +1,7 @@
 import { TableBody, TableCell, TableRow } from '@blms/ui';
 import { useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
+import SwapIcon from '#src/assets/translation/swap.svg';
 
 import type { AdminContentManagementCourse } from '@blms/types';
 import {
@@ -82,7 +84,7 @@ export const LanguageCoverageSubTab = ({
   /** Sorting logic                                                      */
   /** ------------------------------------------------------------------ */
   const [sortField, setSortField] = useState<SortField>('language');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
   const sortedStats = useMemo(() => {
     const sorted = [...languageStats].sort((a, b) => {
@@ -111,6 +113,13 @@ export const LanguageCoverageSubTab = ({
     }
   };
 
+  const getSortIcon = (field: SortField): ReactNode => {
+    if (sortField !== field) {
+      return <img src={SwapIcon} alt="Swap" className="w-4 h-4" />;
+    }
+    return sortDirection === 'asc' ? '↑' : '↓';
+  };
+
   /** ------------------------------------------------------------------ */
   /** Render                                                             */
   /** ------------------------------------------------------------------ */
@@ -122,12 +131,7 @@ export const LanguageCoverageSubTab = ({
             className="w-48 cursor-pointer"
             sortable
             onSort={() => toggleSort('language')}
-            sortIcon={
-              <SortIcon
-                active={sortField === 'language'}
-                direction={sortDirection}
-              />
-            }
+            sortIcon={getSortIcon('language')}
           >
             <div className="flex items-center gap-1">{t('words.language')}</div>
           </SharedTableHead>
@@ -135,12 +139,7 @@ export const LanguageCoverageSubTab = ({
             className="w-32 text-center cursor-pointer"
             sortable
             onSort={() => toggleSort('inProgress')}
-            sortIcon={
-              <SortIcon
-                active={sortField === 'inProgress'}
-                direction={sortDirection}
-              />
-            }
+            sortIcon={getSortIcon('inProgress')}
           >
             <div className="flex items-center justify-center gap-1">
               {t(
@@ -152,12 +151,7 @@ export const LanguageCoverageSubTab = ({
             className="w-32 text-center cursor-pointer"
             sortable
             onSort={() => toggleSort('completed')}
-            sortIcon={
-              <SortIcon
-                active={sortField === 'completed'}
-                direction={sortDirection}
-              />
-            }
+            sortIcon={getSortIcon('completed')}
           >
             <div className="flex items-center justify-center gap-1">
               {t(
@@ -169,12 +163,7 @@ export const LanguageCoverageSubTab = ({
             className="w-32 text-center cursor-pointer"
             sortable
             onSort={() => toggleSort('notStarted')}
-            sortIcon={
-              <SortIcon
-                active={sortField === 'notStarted'}
-                direction={sortDirection}
-              />
-            }
+            sortIcon={getSortIcon('notStarted')}
           >
             <div className="flex items-center justify-center gap-1">
               {t(
@@ -186,12 +175,7 @@ export const LanguageCoverageSubTab = ({
             className="w-32 text-center cursor-pointer"
             sortable
             onSort={() => toggleSort('total')}
-            sortIcon={
-              <SortIcon
-                active={sortField === 'total'}
-                direction={sortDirection}
-              />
-            }
+            sortIcon={getSortIcon('total')}
           >
             <div className="flex items-center justify-center gap-1">
               {t(
@@ -229,29 +213,5 @@ export const LanguageCoverageSubTab = ({
         </TableBody>
       </SharedTable>
     </div>
-  );
-};
-
-/** Simple sort arrow icon */
-const SortIcon = ({
-  active,
-  direction,
-}: {
-  active: boolean;
-  direction: 'asc' | 'desc';
-}) => {
-  return (
-    <svg
-      className={`w-4 h-4 text-gray-500 ${active ? 'opacity-100' : 'opacity-40'}`}
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      aria-hidden="true"
-    >
-      {direction === 'asc' ? (
-        <path d="M5.293 12.707a1 1 0 001.414 0L10 9.414l3.293 3.293a1 1 0 001.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 000 1.414z" />
-      ) : (
-        <path d="M14.707 7.293a1 1 0 00-1.414 0L10 10.586 6.707 7.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l4-4a1 1 0 000-1.414z" />
-      )}
-    </svg>
   );
 };
