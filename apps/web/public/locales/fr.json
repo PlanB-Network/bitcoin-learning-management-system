@@ -670,6 +670,13 @@
             "totalReward": "Récompense totale (Sats)"
           },
           "noContributors": "Aucun contributeur trouvé",
+          "languageCoverage": {
+            "inProgress": "En cours",
+            "completed": "Terminé",
+            "notStarted": "Pas commencé",
+            "totalCourses": "Total cours"
+          },
+          "noLanguages": "Aucune langue trouvée",
           "comingSoon": {
             "courses": "Vue des cours bientôt disponible",
             "coverage": "Vue de la couverture linguistique bientôt disponible"
