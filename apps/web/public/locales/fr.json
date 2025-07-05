@@ -680,7 +680,8 @@
           "comingSoon": {
             "courses": "Vue des cours bientôt disponible",
             "coverage": "Vue de la couverture linguistique bientôt disponible"
-          }
+          },
+          "generalReport": "Rapport général"
         },
         "contentManagement": {
           "title": "Gestion de Contenu",
