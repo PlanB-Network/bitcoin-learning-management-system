@@ -13,7 +13,7 @@ export const useTranslatePage = () => {
   const { i18n } = useTranslation();
 
   // State for view mode (courses to translate or user contributions)
-  const [viewMode, setViewMode] = useState<ViewMode>('courses');
+  const [viewMode, setViewMode] = useState<ViewMode>('contributions');
 
   // State for selected topic filter
   const [selectedTopic, setSelectedTopic] = useState<string>('All');

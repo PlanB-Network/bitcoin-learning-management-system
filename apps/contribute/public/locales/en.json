@@ -1695,10 +1695,10 @@
     "courseParts": "Course parts",
     "noCoursePartsFound": "No course parts found for proofreading",
     "chapters": "chapters",
-    "languageMissing": "Your language is missing? Let us know!",
-    "helpExpandBitcoinEducation": "Help expand Bitcoin education! If your language isn't listed, reach out and contribute to new proofreading.",
+    "languageMissing": "Is your language missing? Let us know!",
+    "helpExpandBitcoinEducation": "If your language isn’t listed, feel free to reach out! We can work together to add it on the platform.",
     "contactUs": "Contact us",
-    "noteFewCourses": "Note: A few courses provide English content alongside the original language to support better understanding and proofreading.",
+    "noteFewCourses": "Note: you can access the English version of some courses alongside the original language content for better understanding.",
     "status": {
       "published": "Published",
       "validated": "Validated",
@@ -1769,7 +1769,7 @@
     "enterTranslation": "Enter your translation here...",
     "validateTranscription": "Validate transcription",
     "validateAudio": "Validate audio",
-    "reviewInstructions": "Review the transcription, make any necessary corrections, and then generate the audio.",
+    "reviewInstructions": "Review the transcription, make any necessary corrections and then generate the audio.\nIf the audio has an issue that is not related to the transcription, you can report the problem",
     "createVideo": "Create video",
     "nextSlide": "Next slide",
     "completeAllValidations": "Please complete all validations before proceeding"

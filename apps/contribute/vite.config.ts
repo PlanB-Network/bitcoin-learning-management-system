@@ -31,6 +31,14 @@ export default defineConfig({
     outDir: 'dist',
   },
 
+  optimizeDeps: {
+    include: ['pptxgenjs'],
+  },
+
+  define: {
+    global: 'globalThis',
+  },
+
   assetsInclude: [UI_PACKAGE_ASSETS],
 
   server: {
@@ -41,6 +49,17 @@ export default defineConfig({
       '/cdn': {
         target: `http://${process.env.DOCKER ? 'cdn:80' : 'localhost:8080'}`,
         rewrite: (path) => path.replace(/^\/cdn/, ''),
+      },
+
+      // ONLYOFFICE Document Server static assets
+      '/web-apps': {
+        target: `http://${process.env.DOCKER ? 'onlyoffice' : 'localhost'}`,
+        changeOrigin: true,
+      },
+      // Versioned resource folder (e.g. /9.0.2-abcdef123/)
+      '^/\\d+\\.\\d+\\.\\d+.*': {
+        target: `http://${process.env.DOCKER ? 'onlyoffice' : 'localhost'}`,
+        changeOrigin: true,
       },
     },
   },

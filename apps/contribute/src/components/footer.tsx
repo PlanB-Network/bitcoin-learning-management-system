@@ -6,7 +6,6 @@ import { cn } from '@blms/ui';
 import { SocialNetworks } from './social-networks.tsx';
 
 import OrangePill from '../assets/icons/footer_pill.webp?no-inline';
-import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 import PlanBLogoWhite from '../assets/logo/planb_logo_horizontal_white_orangepill_gradient.svg';
 
 interface FooterProps {
@@ -18,84 +17,84 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
   const { t } = useTranslation();
 
   return (
-    <footer className="pt-16 md:pt-24 lg:pt-40 w-full">
+    <footer className="w-full">
+      {/* Top section */}
       <div
         className={cn(
-          'flex w-full flex-col',
+          'relative flex w-full flex-col border-t border-[#333333]',
           color ??
             (variant === 'dark'
               ? 'bg-white text-black'
-              : 'bg-black text-white'),
+              : 'bg-[#1A1A1A] text-white'),
         )}
       >
-        <div className="relative z-10 flex w-full flex-col py-5 lg:py-28">
-          <div className="flex flex-row">
-            <div className="w-full mx-auto flex flex-col gap-6 lg:gap-20 px-7 xl:justify-center xl:mr-40 lg:flex-row">
-              <div className="flex flex-col gap-5 md:gap-8">
-                <img
-                  src={variant === 'light' ? PlanBLogoWhite : PlanBLogoBlack}
-                  alt="Logo Plan ₿ Network"
-                  className="w-36 md:w-60 self-start"
-                />
-                <SocialNetworks variant={variant} />
-              </div>
-              <div className="flex flex-row gap-7 min-[480px]:gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-32">
-                <div className="flex flex-col lg:ml-6">
-                  <h4 className="mb-2 text-xs min-[480px]:text-base font-bold">
-                    {t('words.content')}
-                  </h4>
-                  <ul className="flex flex-col gap-2 text-xs min-[480px]:text-base leading-snug">
-                    <li>
-                      <Link to={'/courses'}>{t('words.courses')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/resources'}>{t('words.resources')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/tutorials'}>{t('words.tutorials')}</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col">
-                  <h4 className="mb-2 text-xs min-[480px]:text-base font-bold">
-                    {t('words.network')}
-                  </h4>
-                  <ul className="flex flex-col gap-2 text-xs min-[480px]:text-base leading-snug">
-                    <li>
-                      <Link to={'/events'}>{t('words.events')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/node-network'}>{t('words.nodeNetwork')}</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col">
-                  <h4 className="mb-2 text-xs min-[480px]:text-base font-bold">
-                    {t('words.about')}
-                  </h4>
-                  <ul className="flex flex-col gap-2 text-xs min-[480px]:text-base leading-snug">
-                    <li>
-                      <Link to={'/manifesto'}>{t('words.ourStory')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/professors'}>{t('words.professors')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/public-communication'}>
-                        {t('words.public')}
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <div className="relative mx-auto flex w-full max-w-[1440px] min-h-[181px] flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 px-6 pt-14 pb-8 md:pb-[72px]">
+          {/* Navigation columns */}
+          <div className="flex flex-col sm:flex-row items-center md:items-start gap-4 sm:gap-16">
+            <div
+              className="flex flex-col gap-2"
+              style={{ fontFamily: 'Rubik' }}
+            >
+              <Link
+                to="/"
+                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
+              >
+                {t('words.home')}
+              </Link>
+              <Link
+                to="/content"
+                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
+              >
+                {t('footer.contentSections', {
+                  defaultValue: 'Content sections',
+                })}
+              </Link>
+            </div>
+            <div
+              className="flex flex-col gap-2"
+              style={{ fontFamily: 'Rubik' }}
+            >
+              <Link
+                to="/my-contributions"
+                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
+              >
+                {t('footer.myContributions', {
+                  defaultValue: 'My contributions',
+                })}
+              </Link>
+              <Link
+                to="/help-center"
+                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
+              >
+                {t('footer.helpCenter', {
+                  defaultValue: 'Help center',
+                })}
+              </Link>
             </div>
           </div>
+
+          {/* Social networks */}
+          <div className="flex flex-col items-center md:items-start gap-4 mt-8 md:mt-0">
+            <span className="font-bold text-sm md:text-base">Follow us on</span>
+            <SocialNetworks variant={variant} />
+          </div>
+
+          {/* Decorative Orange pill */}
           <img
             src={OrangePill}
-            className="absolute -right-0 h-[102px] md:h-56 lg:h-72 -top-12 md:-top-24 lg:-top-32 lg:right-12"
+            className="pointer-events-none absolute hidden xl:block -right-[120px] xl:right-[140px] top-1/2 -translate-y-1/2 mt-5 h-24 md:h-48 lg:h-[243px] rotate-55 scale-70 select-none"
             alt="Orange Pill"
           />
         </div>
+      </div>
+
+      {/* Bottom section */}
+      <div className="flex w-full items-center justify-center bg-[#333333] py-4">
+        <img
+          src={PlanBLogoWhite}
+          alt="Plan ₿ Network logo"
+          className="w-[124.5px] h-[23.18px]"
+        />
       </div>
     </footer>
   );

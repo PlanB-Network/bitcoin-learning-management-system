@@ -1,0 +1,24 @@
+<svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Create a mask similar to play.svg: white circle reveal, black bars hide -->
+  <mask id="pauseMask" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="34" height="35">
+    <!-- Circle -->
+    <path
+      d="M17 32.9313C25.2845 32.9313 32 26.2158 32 17.9313C32 9.64677 25.2845 2.93127 17 2.93127C8.7155 2.93127 2 9.64677 2 17.9313C2 26.2158 8.7155 32.9313 17 32.9313Z"
+      fill="white"
+      stroke="white"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Left bar -->
+    <rect x="11" y="11" width="4" height="14" rx="1" fill="black" />
+
+    <!-- Right bar -->
+    <rect x="19" y="11" width="4" height="14" rx="1" fill="black" />
+  </mask>
+
+  <!-- Apply orange fill through the mask -->
+  <g mask="url(#pauseMask)">
+    <rect x="-1" y="-0.0687256" width="36" height="36" fill="#FF5C00" />
+  </g>
+</svg>

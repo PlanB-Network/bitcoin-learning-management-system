@@ -5,6 +5,7 @@ import {
   DeleteObjectCommand,
   GetObjectCommand,
   HeadObjectCommand,
+  ListObjectsV2Command,
   PutObjectCommand,
   S3Client,
 } from '@aws-sdk/client-s3';
@@ -25,11 +26,26 @@ interface PutOptions {
 export interface S3Service {
   getBlob(key: string): Promise<Uint8Array | null>;
   getStream(key: string): Promise<Readable | null>;
+  /**
+   * Return a byte range of the requested file as a stream. If the range is
+   * invalid or the object does not exist, `null` is returned.
+   *
+   * @param key   Path in the bucket
+   * @param start Inclusive 0-based start byte offset
+   * @param end   Inclusive end byte offset – if omitted or larger than the
+   *              object size the request is treated as `start-` (to EOF)
+   */
+  getRangeStream(
+    key: string,
+    start: number,
+    end?: number,
+  ): Promise<Readable | null>;
   put(key: string, body: Data, opts?: PutOptions): Promise<void>;
   upload(key: string, stream: Readable, opts?: PutOptions): Promise<void>;
   head(key: string): Promise<S3Head>;
   delete(key: string): Promise<void>;
   metadata(key: string): Promise<Metadata | null>;
+  list(prefix: string): Promise<string[]>;
 }
 
 export interface S3Head {
@@ -58,7 +74,7 @@ export const createS3Service = (config: S3Config): S3Service => {
     return s3.send(new GetObjectCommand({ Bucket, Key: base(key) }));
   };
 
-  const head = (key: string) => {
+  const headObject = (key: string) => {
     return s3.send(new HeadObjectCommand({ Bucket, Key: base(key) }));
   };
 
@@ -101,6 +117,23 @@ export const createS3Service = (config: S3Config): S3Service => {
         .then((res) => res.Metadata ?? null)
         .catch(() => null);
     },
+    // Return a portion of the requested file as a stream
+    getRangeStream(key: string, start: number, end?: number) {
+      const Range =
+        end !== undefined ? `bytes=${start}-${end}` : `bytes=${start}-`;
+
+      return s3
+        .send(new GetObjectCommand({ Bucket, Key: base(key), Range }))
+        .then((res) => res.Body)
+        .then((body) => {
+          if (!body) {
+            return null;
+          }
+
+          // Cast to Node stream – see note above
+          return Readable.fromWeb(body.transformToWebStream() as any);
+        });
+    },
     // Upload a file to the bucket
     put(key: string, body: Data, { contentType, metadata }: PutOptions = {}) {
       contentType ??=
@@ -136,6 +169,35 @@ export const createS3Service = (config: S3Config): S3Service => {
       });
 
       await upload.done();
+    },
+    // List all object keys under the given prefix (recursively). Returns an
+    // array of full object keys.
+    async list(prefix: string): Promise<string[]> {
+      const keys: string[] = [];
+      let continuationToken: string | undefined;
+
+      do {
+        const { Contents, IsTruncated, NextContinuationToken } = await s3.send(
+          new ListObjectsV2Command({
+            Bucket,
+            Prefix: base(prefix),
+            ContinuationToken: continuationToken,
+          }),
+        );
+
+        // Replace forEach with for...of to satisfy lint rule
+        if (Contents) {
+          for (const obj of Contents) {
+            if (obj.Key) {
+              keys.push(obj.Key);
+            }
+          }
+        }
+
+        continuationToken = IsTruncated ? NextContinuationToken : undefined;
+      } while (continuationToken);
+
+      return keys;
     },
   };
 };

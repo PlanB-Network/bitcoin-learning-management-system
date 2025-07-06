@@ -126,6 +126,37 @@ services:
     volumes:
       - typesense:/usr/share/typesense/data
 
+  # ONLYOFFICE Document Server for rich PPTX editing
+  onlyoffice:
+    <<: *defaults
+    image: onlyoffice/documentserver:latest
+    ports:
+      - 80:80
+    environment:
+      - ONLYOFFICE_HTTPS_HSTS_ENABLED=false
+      - ONLYOFFICE_HTTPS_HSTS_MAXAGE=31536000
+      - JWT_ENABLED=false
+      - JWT_SECRET=
+      - JWT_HEADER=Authorization
+      - JWT_IN_BODY=true
+      - WOPI_ENABLED=false
+      - USE_UNAUTHORIZED_STORAGE=true
+      - ONLYOFFICE_DEFAULT_FORMATS=docx;xlsx;pptx
+      - ALLOW_PRIVATE_IP_ADDRESS=true
+      - ALLOW_HTTP_REQUEST_TO_EDIT_DOCUMENT=true
+      - ALLOW_META_IP_ADDRESS=true
+      - DENY_EMBEDDED_FONTS=false
+      # Increase timeouts for large files
+      - ONLYOFFICE_TIMEOUT_DOWNLOAD=120000
+      - ONLYOFFICE_TIMEOUT_CONVERSION=120000
+      - ONLYOFFICE_MAX_FILE_SIZE=104857600
+      - ONLYOFFICE_MAX_TEMPLATE_SIZE=104857600
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '80']
+
 volumes:
   typesense:
   corestore:

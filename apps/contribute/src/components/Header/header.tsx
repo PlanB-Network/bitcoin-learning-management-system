@@ -291,6 +291,15 @@ export const Header = ({
     },
   ];
 
+  // Remove main navigation items per contribute-app spec
+  const NAV_IDS_TO_REMOVE = [
+    'courses',
+    'events',
+    'resources',
+    'tutorials',
+    'about-us',
+  ];
+
   const mobileSections: NavigationSectionMobile[] = [
     {
       id: 'courses',
@@ -389,6 +398,15 @@ export const Header = ({
     },
   ];
 
+  // Filter out unwanted sections for both desktop and mobile navigation
+  const filteredDesktopSections = desktopSections.filter(
+    (section) => !NAV_IDS_TO_REMOVE.includes(section.id),
+  );
+
+  const filteredMobileSections = mobileSections.filter(
+    (section) => !NAV_IDS_TO_REMOVE.includes(section.id),
+  );
+
   return (
     <header
       className={cn(
@@ -405,7 +423,7 @@ export const Header = ({
           setAuthMode(AuthModalState.Register);
           openAuthModal();
         }}
-        sections={desktopSections}
+        sections={filteredDesktopSections}
         variant={variant}
         notificationPanelVariant={notificationPanelVariant}
       />
@@ -415,7 +433,7 @@ export const Header = ({
           setAuthMode(AuthModalState.SignIn);
           openAuthModal();
         }}
-        sections={[...mobileSections]}
+        sections={[...filteredMobileSections]}
         variant={variant}
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}

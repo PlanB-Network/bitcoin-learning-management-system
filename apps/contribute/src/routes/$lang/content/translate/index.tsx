@@ -92,8 +92,36 @@ function TranslateCoursesPage() {
 
   return (
     <MainLayout variant="dark" footerVariant="light">
-      <div className="flex flex-col items-center bg-white text-black">
+      <div className="flex flex-col items-center bg-white text-black pb-[100px]">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
+          {/* Main Content Header */}
+          <div className="text-center mb-10 mt-10">
+            <p className="text-orange-500 text-base font-medium mb-2">
+              {t('translate.bridgingLanguageGaps', {
+                defaultValue: 'Bridging language gaps, one video at a time',
+              })}
+            </p>
+            <h1
+              className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+              style={{
+                fontFamily: 'Rubik, sans-serif',
+                fontWeight: 400,
+                lineHeight: '117%',
+              }}
+            >
+              {t('translate.bitcoinTranslationCommunity', {
+                defaultValue: 'Bitcoin Proofreading Community',
+              })}
+            </h1>
+            <p className="text-gray-600 max-w-3xl mx-auto mb-8">
+              {t('translate.joinOurProofreaders', {
+                defaultValue:
+                  'Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!',
+              })}
+            </p>
+          </div>
+
+          {/* Back Navigation */}
           <div className="flex items-center gap-1 text-base mb-6">
             <img
               src={BreadcrumbArrowIcon}
@@ -119,9 +147,9 @@ function TranslateCoursesPage() {
             </span>
           </div>
 
-          <h1 className="text-2xl font-bold mb-6 text-gray-900">
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">
             {t('translate.selectCourseToTranslate')}
-          </h1>
+          </h2>
 
           <div className="mb-8">
             <ToggleSwitch

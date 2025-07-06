@@ -49,14 +49,25 @@ function ProofreadCoursePage() {
   const chapterId = 'chapterId' in params ? params.chapterId : undefined;
   const isOnChapterRoute = Boolean(chapterId);
 
-  // Calculate real progress from chapter progress data
+  // Calculate progress using slide counts for more granular accuracy
   const totalChapters = chapterProgress.length;
   const completedChapters = chapterProgress.filter(
     (ch) => ch.status === 'completed',
   ).length;
+
+  const totalStepsInCourse = chapterProgress.reduce(
+    (sum, ch) => sum + ((ch as any).totalSteps ?? (ch.totalSlides || 0) * 3),
+    0,
+  );
+  const completedStepsInCourse = chapterProgress.reduce(
+    (sum, ch) =>
+      sum + ((ch as any).validatedSteps ?? (ch.completedSlides || 0) * 3),
+    0,
+  );
+
   const progressPercentage =
-    totalChapters > 0
-      ? Math.round((completedChapters / totalChapters) * 100)
+    totalStepsInCourse > 0
+      ? Math.round((completedStepsInCourse / totalStepsInCourse) * 100)
       : 0;
 
   // ALL useEffect hooks must be called every render
@@ -103,7 +114,7 @@ function ProofreadCoursePage() {
     };
 
     fetchCourseData();
-  }, [courseId, i18n.language, isOnChapterRoute]);
+  }, [courseId, isOnChapterRoute]);
 
   // ALL function definitions must be defined every render
   const getStatusText = (status: string) => {
@@ -159,7 +170,18 @@ function ProofreadCoursePage() {
             chapterIndex: chapter?.chapterIndex || 0,
             chapterTitle: chapter?.title || `Chapter ${chapter?.chapterIndex}`,
             status: progressData?.status || 'not-started',
-          };
+            // Validation-step progress information for granular percentage display
+            totalSteps:
+              (progressData as any)?.totalSteps ??
+              (progressData?.totalSlides ?? 0) * 3,
+            validatedSteps:
+              (progressData as any)?.validatedSteps ??
+              (progressData?.completedSlides ?? 0) * 3,
+            totalSlides: progressData?.totalSlides ?? 0,
+            completedSlides: progressData?.completedSlides ?? 0,
+            inProgressSlides: progressData?.inProgressSlides ?? 0,
+            todoSlides: progressData?.todoSlides ?? 0,
+          } as any; // Cast to allow additional fields beyond CourseChapterDetails
         }) || [],
     })) || [];
 
@@ -220,7 +242,7 @@ function ProofreadCoursePage() {
           variant="light"
           footerVariant="light"
           maxWidth="max-w-7xl"
-          paddingXClasses="px-4 md:px-8"
+          paddingXClasses="px-4"
         >
           {/* Main Content Header */}
           <div className="text-center mb-8 mt-8">
@@ -229,7 +251,14 @@ function ProofreadCoursePage() {
                 defaultValue: 'Bridging language gaps, one video at a time',
               })}
             </p>
-            <h1 className="text-3xl font-bold mb-4 text-gray-900">
+            <h1
+              className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+              style={{
+                fontFamily: 'Rubik, sans-serif',
+                fontWeight: 400,
+                lineHeight: '117%',
+              }}
+            >
               {t('translate.bitcoinTranslationCommunity', {
                 defaultValue: 'Bitcoin Proofreading Community',
               })}
@@ -279,27 +308,21 @@ function ProofreadCoursePage() {
                 >
                   {course?.index?.toUpperCase() || courseId.toUpperCase()}
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2
+                  className="text-gray-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  style={{
+                    fontFamily: 'Rubik, sans-serif',
+                    fontWeight: 500,
+                    lineHeight: '120%',
+                  }}
+                >
                   {course?.name || 'The Bitcoin Journey'}
                 </h2>
               </div>
 
               {/* Progress Card */}
-              <div className="flex-shrink-0">
-                <div
-                  style={{
-                    width: '300px',
-                    height: '73px',
-                    backgroundColor: '#F6F6F6',
-                    border: '1px solid #E5E5E5',
-                    borderRadius: '8px',
-                    padding: '4px 10px',
-                    boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.25)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}
-                >
+              <div className="flex-shrink-0 w-full lg:w-[300px]">
+                <div className="w-full h-auto bg-[#F6F6F6] border border-[#E5E5E5] rounded-lg px-[10px] py-[4px] shadow-sm flex flex-col justify-between">
                   <span className="text-sm font-medium text-gray-900">
                     {t('translate.courseProofreadingProgress', {
                       defaultValue: 'Course proofreading progress',
@@ -352,6 +375,11 @@ function ProofreadCoursePage() {
               noChapters: t('translate.noCoursePartsFound', {
                 defaultValue: 'No course parts found for proofreading',
               }),
+              proofreadText: t('translate.proofread', {
+                defaultValue: 'Proofread',
+              }),
+              resumeText: t('translate.resume', { defaultValue: 'Resume' }),
+              reviewText: t('translate.review', { defaultValue: 'Review' }),
             }}
             className="mt-6"
           />

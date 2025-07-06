@@ -7,6 +7,10 @@ export interface CourseTranslationSlide {
   partId: string;
   chapterId: string;
   slideId: string;
+  slideNumber: number;
+  pptValidated: boolean;
+  transcriptionValidated: boolean;
+  audioValidated: boolean;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -31,6 +35,10 @@ export const getCourseTranslationSlidesQuery = (
       cts.part_id AS "partId",
       cts.chapter_id AS "chapterId",
       cts.slide_id AS "slideId",
+      cts.slide_number AS "slideNumber",
+      cts.ppt_validated AS "pptValidated",
+      cts.transcription_validated AS "transcriptionValidated",
+      cts.audio_validated AS "audioValidated",
       cts.ppt_resource_path AS "pptResourcePath",
       cts.audio_resource_path AS "audioResourcePath",
       cts.original_content AS "originalContent",
@@ -92,14 +100,20 @@ export const updateCourseTranslationSlideQuery = (
   language: string,
   chapterId: string,
   slideId: string,
-  translatedContent: string,
-  status: TranslationStatus,
+  translatedContent: string | null,
+  status: TranslationStatus | null,
+  pptValidated: boolean | null,
+  transcriptionValidated: boolean | null,
+  audioValidated: boolean | null,
 ) => {
   return sql`
     UPDATE content.course_translation_slides
     SET
-      translated_content = ${translatedContent},
-      status = ${status}::translation_status,
+      translated_content = COALESCE(${translatedContent}, translated_content),
+      status = COALESCE(${status}::translation_status, status),
+      ppt_validated = COALESCE(${pptValidated}, ppt_validated),
+      transcription_validated = COALESCE(${transcriptionValidated}, transcription_validated),
+      audio_validated = COALESCE(${audioValidated}, audio_validated),
       updated_at = NOW()
     WHERE course_id = ${courseId}
       AND language = LOWER(${language})
@@ -122,10 +136,36 @@ export const getCourseTranslationChapterProgressQuery = (
       SELECT
         cts.chapter_id,
         cts.part_id,
-        COUNT(*) as total_slides,
-        COUNT(CASE WHEN cts.status IN ('reviewed', 'published') THEN 1 END) as completed_slides,
-        COUNT(CASE WHEN cts.status IN ('in_progress', 'ready_for_review', 'under_review') THEN 1 END) as in_progress_slides,
-        COUNT(CASE WHEN cts.status = 'todo' THEN 1 END) as todo_slides
+        COUNT(*)                            AS total_slides,
+        -- A slide is fully completed only when all three validations are true
+        COUNT(
+          CASE
+            WHEN cts.ppt_validated
+              AND cts.transcription_validated
+              AND cts.audio_validated THEN 1
+          END
+        )                                   AS completed_slides,
+        -- Slides with at least one validation but not all three
+        COUNT(
+          CASE
+            WHEN (cts.ppt_validated OR cts.transcription_validated OR cts.audio_validated)
+              AND NOT (cts.ppt_validated AND cts.transcription_validated AND cts.audio_validated)
+              THEN 1
+          END
+        )                                   AS in_progress_slides,
+        -- Slides with no validations at all
+        COUNT(
+          CASE
+            WHEN NOT (cts.ppt_validated OR cts.transcription_validated OR cts.audio_validated) THEN 1
+          END
+        )                                   AS todo_slides,
+        -- Total validations (3 per slide) and completed validations (sum of individual booleans)
+        COUNT(*) * 3                        AS total_validations,
+        SUM(
+          (CASE WHEN cts.ppt_validated THEN 1 ELSE 0 END) +
+          (CASE WHEN cts.transcription_validated THEN 1 ELSE 0 END) +
+          (CASE WHEN cts.audio_validated THEN 1 ELSE 0 END)
+        )                                   AS completed_validations
       FROM content.course_translation_slides cts
       WHERE cts.course_id = ${courseId}
         AND cts.language = LOWER(${language})
@@ -149,16 +189,18 @@ export const getCourseTranslationChapterProgressQuery = (
       cd."chapterTitle",
       cd."partIndex",
       cd."partId",
-      COALESCE(csc.total_slides, 0) as "totalSlides",
-      COALESCE(csc.completed_slides, 0) as "completedSlides",
-      COALESCE(csc.in_progress_slides, 0) as "inProgressSlides",
-      COALESCE(csc.todo_slides, 0) as "todoSlides",
+      COALESCE(csc.total_slides, 0)            AS "totalSlides",
+      COALESCE(csc.completed_slides, 0)        AS "completedSlides",
+      COALESCE(csc.in_progress_slides, 0)      AS "inProgressSlides",
+      COALESCE(csc.todo_slides, 0)             AS "todoSlides",
+      COALESCE(csc.total_validations, 0)       AS "totalSteps",
+      COALESCE(csc.completed_validations, 0)   AS "validatedSteps",
       CASE
-        WHEN COALESCE(csc.total_slides, 0) = 0 THEN 'not-started'
-        WHEN csc.completed_slides = csc.total_slides THEN 'completed'
-        WHEN csc.in_progress_slides > 0 OR csc.completed_slides > 0 THEN 'in-progress'
+        WHEN COALESCE(csc.total_validations, 0) = 0 THEN 'not-started'
+        WHEN csc.completed_validations = csc.total_validations THEN 'completed'
+        WHEN csc.completed_validations > 0 THEN 'in-progress'
         ELSE 'not-started'
-      END as "status"
+      END                                       AS "status"
     FROM chapter_details cd
     LEFT JOIN chapter_slide_counts csc ON cd."chapterId" = csc.chapter_id
     ORDER BY cd."partIndex", cd."chapterIndex"

@@ -26,13 +26,13 @@ else
 fi
 
 # Step 3: Remove the specific postgres volume
-echo "💾 Removing postgres volume..."
-if docker volume ls | grep -q "bitcoin-learning-management-system_postgres"; then
-    docker volume rm bitcoin-learning-management-system_postgres
-    echo "✅ Postgres volume removed"
-else
-    echo "ℹ️  Postgres volume not found or already removed"
-fi
+#echo "💾 Removing postgres volume..."
+#if docker volume ls | grep -q "bitcoin-learning-management-system_postgres"; then
+#    docker volume rm bitcoin-learning-management-system_postgres
+#    echo "✅ Postgres volume removed"
+#else
+#    echo "ℹ️  Postgres volume not found or already removed"
+#fi
 
 # Step 4: Start services with docker compose up
 echo "🚀 Starting services with docker compose up..."

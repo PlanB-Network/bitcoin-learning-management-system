@@ -1539,9 +1539,9 @@
     "noCoursePartsFound": "Aucune partie de cours trouvée pour la relecture",
     "chapters": "chapitres",
     "languageMissing": "Votre langue manque ? Faites-le nous savoir !",
-    "helpExpandBitcoinEducation": "Aidez à développer l'éducation Bitcoin ! Si votre langue n'est pas répertoriée, contactez-nous et contribuez à de nouvelles relectures.",
+    "helpExpandBitcoinEducation": "Si votre langue n'est pas répertoriée, n'hésitez pas à nous contacter ! Nous pouvons collaborer pour l'ajouter sur la plateforme.",
     "contactUs": "Contactez-nous",
-    "noteFewCourses": "Note : Quelques cours fournissent du contenu anglais aux côtés de la langue originale pour soutenir une meilleure compréhension et relecture.",
+    "noteFewCourses": "Note : vous pouvez accéder à la version anglaise de certains cours en parallèle du contenu dans la langue d'origine pour une meilleure compréhension.",
     "status": {
       "published": "Publié",
       "validated": "Validé",
@@ -1612,9 +1612,10 @@
     "enterTranslation": "Entrez votre traduction ici...",
     "validateTranscription": "Valider la transcription",
     "validateAudio": "Valider l'audio",
-    "reviewInstructions": "Révisez la transcription, apportez les corrections nécessaires, puis générez l'audio.",
+    "reviewInstructions": "Révisez la transcription, apportez les corrections nécessaires, puis générez l'audio.\nSi l'audio présente un problème qui n'est pas lié à la transcription, vous pouvez signaler le problème.",
     "createVideo": "Créer la vidéo",
     "nextSlide": "Diapositive suivante",
-    "completeAllValidations": "Veuillez compléter toutes les validations avant de continuer"
+    "completeAllValidations": "Veuillez compléter toutes les validations avant de continuer",
+    "maxAudioTriesReached": "Vous avez atteint le nombre maximum de générations audio. Pour demander une tentative supplémentaire, veuillez contacter le coordinateur."
   }
 }

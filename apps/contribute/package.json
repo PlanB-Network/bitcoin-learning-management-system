@@ -59,7 +59,9 @@
     "remark-math": "6.0.0",
     "superjson": "^2.2.2",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "zod": "^3.24.4"
+    "zod": "^3.24.4",
+    "pptxgenjs": "^3.10.1",
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
     "@blms/api": "workspace:*",

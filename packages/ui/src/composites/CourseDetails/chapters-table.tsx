@@ -15,6 +15,7 @@ import { CourseStatusBadge } from './course-status-badge.js';
 interface ChaptersTableProps {
   parts: CoursePartDetails[];
   onChapterAction?: (chapterId: string) => void;
+  // Default action text for not-started chapters
   actionButtonText: string;
   getStatusText: (status: string) => string;
   // Labels for localization
@@ -26,6 +27,9 @@ interface ChaptersTableProps {
     progress: string;
     actions: string;
     noChapters: string;
+    proofreadText?: string; // Optional overrides (fallback to actionButtonText)
+    resumeText?: string;
+    reviewText?: string;
   };
   className?: string;
 }
@@ -96,17 +100,73 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = ({
                       />
                     </TableCell>
                     <TableCell className="py-4 text-sm text-gray-700">
-                      {getProgressPercentage(chapter.status)}
+                      {(() => {
+                        const totalSteps = (chapter as any).totalSteps;
+                        const validatedSteps = (chapter as any).validatedSteps;
+
+                        if (typeof totalSteps === 'number' && totalSteps > 0) {
+                          const percent = Math.round(
+                            (Math.min(validatedSteps || 0, totalSteps) /
+                              totalSteps) *
+                              100,
+                          );
+                          return `${percent}%`;
+                        }
+
+                        // Fallback to slide-level calc if available
+                        const totalSlides = (chapter as any).totalSlides;
+                        const completedSlides = (chapter as any)
+                          .completedSlides;
+                        if (
+                          typeof totalSlides === 'number' &&
+                          totalSlides > 0
+                        ) {
+                          const percent = Math.round(
+                            (Math.min(completedSlides || 0, totalSlides) /
+                              totalSlides) *
+                              100,
+                          );
+                          return `${percent}%`;
+                        }
+
+                        // Fallback to status-based percentage
+                        return getProgressPercentage(chapter.status);
+                      })()}
                     </TableCell>
                     {onChapterAction && (
                       <TableCell className="py-4 text-center">
-                        <Button
-                          size="s"
-                          className="bg-orange-500 hover:bg-orange-600 text-white"
-                          onClick={() => onChapterAction(chapter.chapterId)}
-                        >
-                          {actionButtonText}
-                        </Button>
+                        {(() => {
+                          const status = chapter.status as string;
+
+                          // Determine label and style based on status
+                          const proofreadText =
+                            labels.proofreadText || actionButtonText;
+                          const resumeText = labels.resumeText || 'Resume';
+                          const reviewText = labels.reviewText || 'Review';
+
+                          let label = proofreadText;
+                          let btnClass =
+                            'bg-orange-500 hover:bg-orange-600 text-white';
+
+                          if (status === 'completed') {
+                            label = reviewText;
+                            btnClass =
+                              'border border-orange-500 text-orange-500 bg-transparent hover:bg-orange-50';
+                          } else if (status === 'in-progress') {
+                            label = resumeText;
+                            // keep orange background
+                          }
+
+                          return (
+                            <Button
+                              size="s"
+                              className={btnClass}
+                              onClick={() => onChapterAction(chapter.chapterId)}
+                            >
+                              {label}
+                            </Button>
+                          );
+                        })()}
                       </TableCell>
                     )}
                   </TableRow>

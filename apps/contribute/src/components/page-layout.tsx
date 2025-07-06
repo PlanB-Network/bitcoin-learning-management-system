@@ -28,7 +28,7 @@ export const PageLayout = ({
   children,
   className,
   maxWidth = 'max-w-6xl',
-  paddingXClasses = 'px-2 md:px-10',
+  paddingXClasses = 'px-4',
   hideDescriptionOnMobile = true,
 }: Props) => {
   return (
@@ -36,7 +36,7 @@ export const PageLayout = ({
       <div
         className={cn('flex h-fit justify-center', className, paddingXClasses)}
       >
-        <div className={cn('w-full', maxWidth)}>
+        <div className={cn('w-full pb-[100px]', maxWidth)}>
           {title && (
             <PageHeader
               title={title}

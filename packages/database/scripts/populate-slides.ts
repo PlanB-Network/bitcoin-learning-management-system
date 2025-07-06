@@ -575,30 +575,44 @@ async function populateSlideData() {
                   : `[FR] ${slideTopics[topicIndex]}: Contenu traduit en français pour cette diapositive.`;
             const status = getRandomItem(translationStatuses);
 
-            // Insert slide using raw SQL
+            const slideNumber = i + 1;
+            // Validation flags default to false
+            const pptValidated = false;
+            const transcriptionValidated = false;
+            const audioValidated = false;
+
+            // Insert slide using raw SQL (updated columns)
             await connection.unsafe(
               `
               INSERT INTO content.course_translation_slides (
-                course_id, language, part_id, chapter_id, slide_id,
+                course_id, language, part_id, chapter_id, slide_id, slide_number,
+                ppt_validated, transcription_validated, audio_validated,
                 ppt_resource_path, audio_resource_path, original_content, translated_content,
                 status, created_at, updated_at
               ) VALUES (
-                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12
+                $1, $2, $3, $4, $5, $6,
+                $7, $8, $9,
+                $10, $11, $12, $13,
+                $14, $15, $16
               ) ON CONFLICT DO NOTHING
             `,
               [
-                course.courseId,
-                'fr',
-                part.partId,
-                chapter.chapterId,
-                slideId,
-                pptResourcePath,
-                audioResourcePath,
-                originalContent,
-                translatedContent,
-                status,
-                new Date().toISOString(),
-                new Date().toISOString(),
+                course.courseId, // $1
+                'fr', // $2
+                part.partId, // $3
+                chapter.chapterId, // $4
+                slideId, // $5
+                slideNumber, // $6
+                pptValidated, // $7
+                transcriptionValidated, // $8
+                audioValidated, // $9
+                pptResourcePath, // $10
+                audioResourcePath, // $11
+                originalContent, // $12
+                translatedContent, // $13
+                status, // $14
+                new Date().toISOString(), // $15
+                new Date().toISOString(), // $16
               ],
             );
 

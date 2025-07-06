@@ -4,9 +4,8 @@ import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CircuitPattern } from '#src/components/circuit-pattern.tsx';
 import { MainLayout } from '#src/components/layouts/main-layout.tsx';
-import Flag from '#src/molecules/Flag/index.tsx';
+// Removed Flag import because flags are no longer displayed
 
 export const Route = createFileRoute('/$lang/')({
   component: ContributePage,
@@ -53,25 +52,37 @@ function ContributePage() {
 
   return (
     <MainLayout variant="dark" footerVariant="light">
-      <div className="flex flex-col items-center bg-white text-black">
+      <div className="flex flex-col items-center bg-white text-black pb-[100px]">
         {/* Hero section */}
         <section className="w-full py-12 text-center px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-orange-500 font-medium mb-4">
-              {t('translate.makingBitcoinEducationGlobal')}
+            <div className="text-orange-500 text-base font-medium mb-2">
+              {t('translate.bridgingLanguageGaps', {
+                defaultValue: 'Bridging language gaps, one video at a time',
+              })}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1
+              className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+              style={{
+                fontFamily: 'Rubik, sans-serif',
+                fontWeight: 400,
+                lineHeight: '117%',
+              }}
+            >
               {t('translate.bitcoinTranslationCommunity')}
             </h1>
-            <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
-              {t('translate.bridgingLanguageGaps')}
+            <p className="text-gray-600 max-w-3xl mx-auto mb-8">
+              {t('translate.joinOurProofreaders', {
+                defaultValue:
+                  'Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!',
+              })}
             </p>
           </div>
         </section>
 
         {/* Language selection section */}
-        <section className="w-full py-8 px-4 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
+        <section className="w-full py-0 px-4 md:px-10 lg:px-20 xl:px-40 bg-gray-50">
+          <div>
             <h2 className="text-2xl font-bold mb-6">
               {t('translate.selectCourseToTranslate')}
             </h2>
@@ -79,37 +90,41 @@ function ContributePage() {
               {t('translate.youCanSelectOnlyOneCourse')}
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-[repeat(auto-fit,_minmax(135px,_1fr))] gap-x-[20px] gap-y-[20px] justify-items-center">
               {languages.map((lang) => (
                 <button
                   type="button"
                   key={lang.code}
                   onClick={() => handleLanguageSelect(lang.code)}
-                  className="flex flex-col items-center p-4 border border-orange-200 rounded-lg bg-orange-50 hover:bg-orange-100 transition-colors cursor-pointer"
+                  className="flex items-center justify-center px-2 w-[135px] h-[135px] border border-orange-200 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-500 hover:text-black transition-colors cursor-pointer"
                 >
-                  <div className="w-12 h-12 mb-2 flex items-center justify-center">
-                    <Flag code={lang.code} size="l" />
-                  </div>
-                  <span className="text-center font-medium">{lang.name}</span>
+                  <span className="font-medium text-center text-sm md:text-base">
+                    {lang.name}
+                  </span>
                 </button>
               ))}
             </div>
           </div>
         </section>
-
+        {/* Divider */}
+        <div className="w-full px-4">
+          <hr className="w-full max-w-4xl mx-auto border-t border-[#808080] my-12" />
+        </div>
         {/* Request language section */}
-        <section className="w-full py-12 px-4">
-          <div className="max-w-3xl mx-auto bg-gray-50 rounded-lg p-8">
-            <h2 className="text-3xl font-bold text-orange-500 mb-4">
-              {t('translate.languageMissing')}
-            </h2>
-            <p className="text-gray-600 mb-6">
-              {t('translate.helpExpandBitcoinEducation')}
-            </p>
-            <div className="text-right">
+        <section className="w-full px-4 md:px-10 lg:px-20 xl:px-40">
+          <div className="w-full min-h-[189px] bg-gray-50 border border-[#E5E5E5] rounded-[20px] p-5 flex flex-col md:flex-row">
+            <div className="flex flex-col gap-4">
+              <h2 className="text-orange-500 text-3xl md:text-[40px] leading-[1.24] tracking-[0.25px] font-normal text-left">
+                {t('translate.languageMissing')}
+              </h2>
+              <p className="text-gray-600 text-base md:text-[20px] leading-[1.33] font-normal text-left">
+                {t('translate.helpExpandBitcoinEducation')}
+              </p>
+            </div>
+            <div className="ml-auto flex items-end mt-4 md:mt-0">
               <a
                 href="mailto:contact@planb.network"
-                className="inline-flex items-center px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                className="inline-flex items-center px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors whitespace-nowrap shrink-0"
               >
                 {t('translate.contactUs')}{' '}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -117,15 +132,6 @@ function ContributePage() {
             </div>
           </div>
         </section>
-
-        {/* Circuit background decoration */}
-        <div className="w-full bg-gray-50 py-12 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="opacity-70">
-              <CircuitPattern />
-            </div>
-          </div>
-        </div>
       </div>
     </MainLayout>
   );

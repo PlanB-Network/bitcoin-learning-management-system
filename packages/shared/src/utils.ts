@@ -42,6 +42,13 @@ export const getStatusBadgeClass = (status: string): string => {
       return 'bg-purple-100 text-purple-800';
     case 'in_progress':
       return 'bg-orange-100 text-orange-800';
+    // New translation progress statuses for chapter-level overview
+    case 'completed':
+      return 'bg-green-100 text-green-800';
+    case 'in-progress':
+      return 'bg-orange-100 text-orange-800';
+    case 'not-started':
+      return 'bg-gray-100 text-gray-800';
     case 'todo':
       return 'bg-gray-100 text-gray-800';
     default:

@@ -82,6 +82,25 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   app.use(baseRoute, router);
   app.use(baseRoute, restRouter);
 
+  // Add error handling middleware
+  app.use((err: any, req: any, res: any, next: any) => {
+    // Log the error
+    req.log('Error:', err);
+
+    // Handle our custom HTTP errors
+    if (err.status && err.toJSON) {
+      res.status(err.status).json(err.toJSON());
+      return;
+    }
+
+    // Handle other errors
+    console.error('Unhandled error:', err);
+    res.status(500).json({
+      status: 500,
+      message: 'Internal server error',
+    });
+  });
+
   const server = app.listen(port, '0.0.0.0');
 
   server.on('error', console.error);

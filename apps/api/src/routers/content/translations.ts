@@ -218,6 +218,16 @@ const getCourseLanguagesProcedure = adminProcedure
     });
   });
 
+// Public version – allows anyone to fetch list of languages available for a course
+const getCourseLanguagesPublicProcedure = publicProcedure
+  .input(z.object({ id: z.string() }))
+  .output<Parser<CourseLanguageInfo>>(courseLanguageInfoSchema)
+  .query(({ ctx, input }) => {
+    return createGetCourseLanguages(ctx.dependencies)({
+      courseId: input.id,
+    });
+  });
+
 const getCourseTranslationDetailsProcedure = adminProcedure
   .input(
     z.object({
@@ -281,6 +291,7 @@ export const translationsRouter = createTRPCRouter({
   getContentManagementTopics: getContentManagementTopicsProcedure,
   getCourseDetails: getCourseTranslationDetailsProcedure,
   getCourseLanguages: getCourseLanguagesProcedure,
+  getCourseLanguagesPublic: getCourseLanguagesPublicProcedure,
   getCoursesWithTodoTranslations: getCoursesWithTodoTranslationsProcedure,
   // Course translation slides endpoints
   getCourseTranslationSlides: getCourseTranslationSlidesProcedure,

@@ -8,6 +8,8 @@ import { createRestFilesRoutes } from './files.js';
 import { createRestMetadataRoutes } from './metadata.js';
 import { createRestPaymentRoutes } from './payment.js';
 import { createRestSyncRoutes } from './sync.js';
+import { createRestTranslationAudioRoutes } from './translation-audio.js';
+import { createRestTranslationDownloadRoutes } from './translation-downloads.js';
 // import { createRestTranslationUploadRoutes } from './translation-uploads.js';
 
 export const createRestRouter = async (
@@ -16,6 +18,8 @@ export const createRestRouter = async (
   const router = Router();
 
   await createRestFilesRoutes(dependencies, router);
+  await createRestTranslationDownloadRoutes(dependencies, router);
+  await createRestTranslationAudioRoutes(dependencies, router);
   // await createRestTranslationUploadRoutes(dependencies, router);
   createRestMetadataRoutes(dependencies, router);
   createRestPaymentRoutes(dependencies, router);
