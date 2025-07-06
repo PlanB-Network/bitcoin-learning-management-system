@@ -108,13 +108,19 @@ export const createUpdateCourseTranslationSlide = ({
     slideId,
     translatedContent,
     status,
+    pptValidated,
+    transcriptionValidated,
+    audioValidated,
   }: {
     courseId: string;
     language: string;
     chapterId: string;
     slideId: string;
-    translatedContent: string;
-    status: TranslationStatus;
+    translatedContent?: string;
+    status?: TranslationStatus;
+    pptValidated?: boolean;
+    transcriptionValidated?: boolean;
+    audioValidated?: boolean;
   }): Promise<CourseTranslationSlide> => {
     try {
       const result = await postgres.exec(
@@ -123,8 +129,11 @@ export const createUpdateCourseTranslationSlide = ({
           language,
           chapterId,
           slideId,
-          translatedContent,
-          status,
+          translatedContent ?? null,
+          status ?? null,
+          pptValidated ?? null,
+          transcriptionValidated ?? null,
+          audioValidated ?? null,
         ),
       );
 
