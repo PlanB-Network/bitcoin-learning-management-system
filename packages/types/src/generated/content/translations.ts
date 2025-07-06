@@ -153,6 +153,10 @@ export interface CourseTranslationSlides {
   partId: string;
   chapterId: string;
   slideId: string;
+  slideNumber: number;
+  pptValidated: boolean;
+  textValidated?: boolean;
+  audioValidated: boolean;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -434,6 +438,10 @@ export interface CourseTranslationSlide {
   partId: string;
   chapterId: string;
   slideId: string;
+  slideNumber: number;
+  pptValidated: boolean;
+  textValidated?: boolean;
+  audioValidated: boolean;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;

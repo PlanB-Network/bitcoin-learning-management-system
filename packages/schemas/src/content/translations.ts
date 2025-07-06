@@ -327,6 +327,10 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
   })
   .merge(
     z.object({
+      slideNumber: z.number(),
+      pptValidated: z.boolean(),
+      transcriptionValidated: z.boolean(),
+      audioValidated: z.boolean(),
       status: translationStatusEnum,
     }),
   );
@@ -378,10 +382,13 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   language: z.string(),
   chapterId: z.string(),
   slideId: z.string(),
-  translatedContent: z.string(),
+  translatedContent: z.string().optional(),
   status: translationStatusEnum
     .optional()
     .default(TranslationStatus.InProgress),
+  pptValidated: z.boolean().optional(),
+  transcriptionValidated: z.boolean().optional(),
+  audioValidated: z.boolean().optional(),
 });
 
 // Schema for chapter progress in course translation overview - based on chapter schema

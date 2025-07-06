@@ -7,6 +7,10 @@ export interface CourseTranslationSlide {
   partId: string;
   chapterId: string;
   slideId: string;
+  slideNumber: number;
+  pptValidated: boolean;
+  transcriptionValidated: boolean;
+  audioValidated: boolean;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -31,6 +35,10 @@ export const getCourseTranslationSlidesQuery = (
       cts.part_id AS "partId",
       cts.chapter_id AS "chapterId",
       cts.slide_id AS "slideId",
+      cts.slide_number AS "slideNumber",
+      cts.ppt_validated AS "pptValidated",
+      cts.transcription_validated AS "transcriptionValidated",
+      cts.audio_validated AS "audioValidated",
       cts.ppt_resource_path AS "pptResourcePath",
       cts.audio_resource_path AS "audioResourcePath",
       cts.original_content AS "originalContent",
@@ -92,14 +100,20 @@ export const updateCourseTranslationSlideQuery = (
   language: string,
   chapterId: string,
   slideId: string,
-  translatedContent: string,
-  status: TranslationStatus,
+  translatedContent: string | null,
+  status: TranslationStatus | null,
+  pptValidated: boolean | null,
+  transcriptionValidated: boolean | null,
+  audioValidated: boolean | null,
 ) => {
   return sql`
     UPDATE content.course_translation_slides
     SET
-      translated_content = ${translatedContent},
-      status = ${status}::translation_status,
+      translated_content = COALESCE(${translatedContent}, translated_content),
+      status = COALESCE(${status}::translation_status, status),
+      ppt_validated = COALESCE(${pptValidated}, ppt_validated),
+      transcription_validated = COALESCE(${transcriptionValidated}, transcription_validated),
+      audio_validated = COALESCE(${audioValidated}, audio_validated),
       updated_at = NOW()
     WHERE course_id = ${courseId}
       AND language = LOWER(${language})
