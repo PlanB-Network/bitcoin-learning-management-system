@@ -37,6 +37,13 @@ const meta: Meta<typeof CollapsibleDropdown> = {
     },
   },
   component: CollapsibleDropdown,
+  decorators: [
+    (Story) => (
+      <div className="w-[300px] md:w-[600px]">
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: 'centered',
   },

@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import VideoSVG from '#src/assets/resources/video.svg?react';
-import { VideoPlayerWrapper } from '#src/components/video-player.tsx';
+import { VideoPlayerWrapper } from '#src/components/video-player-wrapper.tsx';
 import { TradingViewWidget } from './tradingview-widget.tsx';
 
 const paragraphStyles = cva('text-base tracking-wide', {

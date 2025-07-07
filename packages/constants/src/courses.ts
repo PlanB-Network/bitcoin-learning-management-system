@@ -33,3 +33,8 @@ export enum ExamType {
   Final = 'final',
   SingleTrial = 'single_trial',
 }
+
+export enum VideoSourceType {
+  AI = 'AI',
+  Original = 'original',
+}
