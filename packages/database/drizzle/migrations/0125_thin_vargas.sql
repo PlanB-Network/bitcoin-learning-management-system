@@ -1,0 +1,2 @@
+ALTER TABLE "content"."videos_localized" DROP CONSTRAINT "videos_localized_id_language_pk";--> statement-breakpoint
+ALTER TABLE "content"."videos_localized" ADD CONSTRAINT "videos_localized_id_language_provider_pk" PRIMARY KEY("id","language","provider");

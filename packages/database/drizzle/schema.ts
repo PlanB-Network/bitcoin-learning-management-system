@@ -2050,7 +2050,7 @@ export const contentVideosLocalized = content.table(
   }),
   (table) => ({
     pk: primaryKey({
-      columns: [table.id, table.language],
+      columns: [table.id, table.language, table.provider],
     }),
   }),
 );
