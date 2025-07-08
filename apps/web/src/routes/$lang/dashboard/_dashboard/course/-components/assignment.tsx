@@ -27,6 +27,7 @@ import {
   IoCheckmarkOutline,
   IoWarningOutline,
 } from 'react-icons/io5';
+import type { IconType } from 'react-icons/lib';
 import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';

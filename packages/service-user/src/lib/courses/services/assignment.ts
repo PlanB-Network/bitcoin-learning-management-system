@@ -41,24 +41,19 @@ export const createAssignSingleAssignmentToCourseStudents = async ({
 
   console.log('[Assign single assignment] Students count:', students.length);
 
-  for (const student of students) {
+  if (students.length > 0) {
+    const studentUids = students.map((student) => student.uid);
     console.log(
-      `[Assign single assignment] Assigning ${assignment.id} to student ${student.uid}`,
+      `[Assign single assignment] Assigning ${assignment.id} to ${students.length} students.`,
     );
 
-    // update is_selected_for_assignment for every students
     await postgres.exec(sql`
         UPDATE users.course_progress
-        SET is_selected_for_assignment = true, last_updated = NOW()
-        WHERE uid = ${student.uid}
-        AND course_id = ${courseId};
-      `);
-
-    // update affected_assignment_id for every students
-    await postgres.exec(sql`
-        UPDATE users.course_progress
-        SET affected_assignment_id = ${assignment.id}, last_updated = NOW()
-        WHERE uid = ${student.uid}
+        SET
+          is_selected_for_assignment = true,
+          affected_assignment_id = ${assignment.id},
+          last_updated = NOW()
+        WHERE uid = ANY(${studentUids})
         AND course_id = ${courseId};
       `);
   }
