@@ -193,7 +193,7 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
                   },
                 ]
               : []),
-            ...(course.isPlanbSchool
+            ...(course.hasAssignment
               ? [
                   {
                     active: 'assignment' === currentTab,

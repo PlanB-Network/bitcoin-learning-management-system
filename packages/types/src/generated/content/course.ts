@@ -5,12 +5,17 @@ import type { CourseLevel } from '@blms/constants';
 import type { FormattedProfessor } from './professor.js';
 
 export interface Course {
+  areScoresCalculated: boolean;
+  assignmentDescription: string | null;
+  assignmentEndDate: Date | null;
+  assignmentStartDate: Date | null;
   assignmentWeight: number | null;
   availableSeats: number | null;
   contact: string | null;
   customTcDisclaimer: string | null;
   endDate: Date | null;
   format: 'online' | 'inperson' | 'hybrid';
+  hasAssignment: boolean;
   hasLogo: boolean;
   hours: number;
   id: string;
@@ -115,9 +120,9 @@ export interface CourseAssignment {
   lastCommit: string;
   lastSync: Date;
   lastUpdated: Date;
-  mentor: string;
-  name: string;
-  telegramUrl: string;
+  mentor: string | null;
+  name: string | null;
+  telegramUrl: string | null;
 }
 
 export interface JoinedCoursePartLocalized {
@@ -196,6 +201,11 @@ export interface MinimalJoinedCourse {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  hasAssignment: boolean;
+  assignmentStartDate: Date | null;
+  assignmentEndDate: Date | null;
+  assignmentDescription: string | null;
+  areScoresCalculated: boolean;
   projectName?: string | undefined;
   goal: string;
   language: string;
@@ -241,6 +251,11 @@ export interface JoinedCourseProfessorId {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  hasAssignment: boolean;
+  assignmentStartDate: Date | null;
+  assignmentEndDate: Date | null;
+  assignmentDescription: string | null;
+  areScoresCalculated: boolean;
   projectName?: string | undefined;
   goal: string;
   language: string;
@@ -288,6 +303,11 @@ export interface JoinedCourse {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  hasAssignment: boolean;
+  assignmentStartDate: Date | null;
+  assignmentEndDate: Date | null;
+  assignmentDescription: string | null;
+  areScoresCalculated: boolean;
   projectName?: string | undefined;
   goal: string;
   language: string;
@@ -380,6 +400,11 @@ export interface CourseResponse {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  hasAssignment: boolean;
+  assignmentStartDate: Date | null;
+  assignmentEndDate: Date | null;
+  assignmentDescription: string | null;
+  areScoresCalculated: boolean;
   projectName?: string | undefined;
   goal: string;
   language: string;
@@ -479,7 +504,7 @@ export interface CourseChapterMeta {
 
 export interface MinimalCourseAssignmentWithStudents {
   id: string;
-  name: string;
+  name: string | null;
   students: {
     displayName: string;
     grade: number | null;

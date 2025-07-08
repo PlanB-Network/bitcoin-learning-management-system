@@ -1,0 +1,1 @@
+ALTER TABLE "content"."courses" ADD COLUMN "are_scores_calculated" boolean DEFAULT false NOT NULL;

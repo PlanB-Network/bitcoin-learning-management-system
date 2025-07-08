@@ -127,6 +127,11 @@ export const minimalJoinedCourseSchema = courseSchema
     sumOfAllRating: true,
     teachingFormat: true,
     topic: true,
+    hasAssignment: true,
+    assignmentStartDate: true,
+    assignmentEndDate: true,
+    assignmentDescription: true,
+    areScoresCalculated: true,
   })
   .merge(
     z.object({

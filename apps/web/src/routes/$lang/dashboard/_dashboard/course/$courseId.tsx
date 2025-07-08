@@ -68,7 +68,7 @@ function DashboardStudentCourse() {
     p.chapters.some((c) => c?.isSingleTrialExam),
   );
 
-  const courseHaveAssignments = course?.isPlanbSchool;
+  const courseHaveAssignments = course?.hasAssignment;
 
   const isBizSchool =
     course?.id === 'c762773a-9017-4129-bc0e-06adf86050ef' ||
@@ -80,14 +80,14 @@ function DashboardStudentCourse() {
   if (courseHaveRetakeExam) {
     tabs.push({
       key: 'retakeExam',
-      text: t('courses.exam.examAndDiploma'),
+      text: t('courses.exam.scoreAndDiploma'),
       value: 'retakeExam',
     });
   }
   if (courseHaveSingleTrialExam) {
     tabs.push({
       key: 'singleTrialExam',
-      text: t('courses.exam.examAndDiploma'),
+      text: t('courses.exam.scoreAndDiploma'),
       value: 'singleTrialExam',
     });
   }

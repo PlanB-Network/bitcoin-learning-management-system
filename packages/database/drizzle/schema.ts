@@ -912,12 +912,17 @@ export const teachingFormatEnum = pgNativeEnum(
 );
 
 export const contentCourses = content.table('courses', (t) => ({
+  areScoresCalculated: t.boolean().default(false).notNull(),
+  assignmentDescription: t.text(),
+  assignmentEndDate: t.timestamp({ withTimezone: true }),
+  assignmentStartDate: t.timestamp({ withTimezone: true }),
   assignmentWeight: t.integer(),
   availableSeats: t.integer().default(0),
   contact: t.varchar({ length: 255 }),
   customTcDisclaimer: t.text(),
   endDate: t.timestamp({ withTimezone: true }),
   format: courseFormatEnum().default(CourseFormat.Online).notNull(),
+  hasAssignment: t.boolean().notNull().default(false),
   hasLogo: t.boolean().notNull().default(false),
   hours: t.doublePrecision().notNull(),
   id: t.varchar({ length: 100 }).primaryKey().notNull(),
@@ -1179,9 +1184,9 @@ export const contentCoursesAssignment = content.table(
       })
       .defaultNow()
       .notNull(),
-    mentor: t.varchar({ length: 50 }).notNull(),
-    name: t.varchar({ length: 50 }).notNull(),
-    telegramUrl: t.varchar({ length: 100 }).notNull(),
+    mentor: t.varchar({ length: 50 }),
+    name: t.varchar({ length: 50 }),
+    telegramUrl: t.varchar({ length: 100 }),
   }),
 );
 

@@ -10,11 +10,13 @@ import {
   createRefreshCoursesRatings,
 } from '@blms/service-content';
 import {
+  createAssignSingleAssignmentToCourseStudents,
   createExamTimestampService,
   createGetPendingCoursePayments,
   createGetPendingEventPayments,
   createGetSbpCheckout,
   createInsertUserNotifications,
+  createProcessTeacherLedCoursesWithConclusionIn24Hours,
   createPublishScheduledCourseAnnouncement,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
@@ -318,6 +320,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   //   console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
   // });
 
+  // TODO : Either change the cron date whenever we want to run this job or use the assignment_start_date field (in course). Second option could be tricky as we would have to run it constantly and check if the date is reached + it could create issues with the older Biz School editions
   // ctx.crons.addTask('jun3_0_gmt', async () => {
   //   console.log('[cron] Running affectProjectToBizSchoolStudents job');
   //   const affectProjectToBizSchoolStudents =
@@ -325,6 +328,65 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   //   await affectProjectToBizSchoolStudents;
   //   console.log('[cron] Finished affectProjectToBizSchoolStudents job');
   // });
+
+  {
+    const getCourses = createGetCourses(ctx);
+    ctx.crons.addTask('h', async () => {
+      console.log(
+        '[cron] Running affect project to students in courses with assignment job',
+      );
+      const courses = await getCourses();
+      if (courses.length === 0) return;
+
+      const now = new Date();
+      const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+
+      const coursesWithAssignmentStartDate24HoursAgo = courses.filter(
+        (course) => {
+          if (
+            !course.hasAssignment ||
+            !course.assignmentStartDate ||
+            course.isPlanbSchool
+          )
+            return false;
+          const assignmentStartDate = new Date(course.assignmentStartDate);
+          return (
+            assignmentStartDate >= twentyFourHoursAgo &&
+            assignmentStartDate <= now
+          );
+        },
+      );
+
+      if (coursesWithAssignmentStartDate24HoursAgo.length === 0) return;
+
+      for (const course of coursesWithAssignmentStartDate24HoursAgo) {
+        const affectProjectToStudentsInCoursesWithAssignment =
+          createAssignSingleAssignmentToCourseStudents({
+            ...ctx,
+            courseId: course.id,
+          });
+        await affectProjectToStudentsInCoursesWithAssignment;
+      }
+      console.log(
+        '[cron] Finished affect project to students in courses with assignment job',
+      );
+    });
+  }
+
+  {
+    const processTeacherLedCoursesWithConclusionIn24Hours =
+      createProcessTeacherLedCoursesWithConclusionIn24Hours(ctx);
+
+    ctx.crons.addTask('h', async () => {
+      console.log(
+        '[cron] Running process teacher-led courses with conclusion in 24 hours job',
+      );
+      await processTeacherLedCoursesWithConclusionIn24Hours();
+      console.log(
+        '[cron] Finished process teacher-led courses with conclusion in 24 hours job',
+      );
+    });
+  }
 
   if (timestampService) {
     // Every five minutes

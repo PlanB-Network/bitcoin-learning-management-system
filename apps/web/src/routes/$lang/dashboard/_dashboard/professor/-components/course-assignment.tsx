@@ -20,7 +20,6 @@ import {
   TbCheck,
   TbChevronDown,
   TbChevronUp,
-  TbClock,
 } from 'react-icons/tb';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -211,6 +210,7 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
 
       await setGradesAsPublishedMutation.mutateAsync({
         courseId,
+        isPlanBSchool: course?.isPlanbSchool || false,
       });
     } catch (error) {
       console.error('Error during bulk save and publish:', error);
@@ -256,10 +256,6 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
           <AlertDescription className="text-newBlack-2">
             {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
           </AlertDescription>
-          <span className="flex md:items-center gap-2 body-14px text-maroon-7 mt-2.5">
-            <TbClock className="shrink-0 size-4 max-md:my-0.5" />
-            {t('dashboard.teacher.courses.assignmentGrade.alertDescription2')}
-          </span>
         </Alert>
       )}
       {assignments && assignments.length > 0 && (
@@ -394,7 +390,6 @@ const AssignmentGradesTable = ({
 
   return (
     <div className="w-full border border-newGray-5 bg-newGray-6 rounded-xl flex flex-col gap-2">
-      {/** biome-ignore lint/a11y/useAriaPropsSupportedByRole: TODO fix this */}
       <div
         className="flex items-center justify-between px-4 py-2.5 cursor-pointer"
         onClick={() => setIsCollapsed(!isCollapsed)}
@@ -404,9 +399,11 @@ const AssignmentGradesTable = ({
             e.preventDefault();
           }
         }}
-        aria-expanded={!isCollapsed}
       >
-        <h3 className="subtitle-large-med-20px">{assignment.name}</h3>
+        <h3 className="subtitle-large-med-20px">
+          {assignment.name ||
+            t('dashboard.teacher.courses.assignmentGrade.courseAssignment')}
+        </h3>
         <TbChevronDown
           className={cn(
             'size-5 transition-all',

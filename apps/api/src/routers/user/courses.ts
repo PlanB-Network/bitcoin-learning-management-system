@@ -549,12 +549,14 @@ const setCourseAssignmentGradesAsPublishedProcedure = professorProcedure
   .input(
     z.object({
       courseId: z.string(),
+      isPlanBSchool: z.boolean().optional().default(false),
     }),
   )
   .output<Parser<void>>(z.void())
   .mutation(({ ctx, input }) => {
     return createSetCourseAssignmentGradesAsPublished(ctx.dependencies)({
       courseId: input.courseId,
+      isPlanBSchool: input.isPlanBSchool,
       teacherUid: ctx.user.uid,
     });
   });
