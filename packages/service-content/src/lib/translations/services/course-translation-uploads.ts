@@ -17,8 +17,10 @@ export const createCreateCourseTranslationUpload = ({
     originalLanguage: string,
     translateLanguages: string[],
     uploaderId: string,
+    partId: string,
+    chapterId: string,
     pptxFileUrl?: string,
-    audioFileUrl?: string,
+    textFileUrl?: string,
   ) => {
     const result = await postgres.exec(
       createCourseTranslationUploadQuery(
@@ -26,8 +28,10 @@ export const createCreateCourseTranslationUpload = ({
         originalLanguage,
         translateLanguages,
         uploaderId,
+        partId,
+        chapterId,
         pptxFileUrl,
-        audioFileUrl,
+        textFileUrl,
       ),
     );
 
@@ -44,7 +48,7 @@ export const createUpdateCourseTranslationUpload = ({
   return async (
     id: string,
     pptxFileUrl?: string,
-    audioFileUrl?: string,
+    textFileUrl?: string,
     uploadSuccess?: boolean,
     errorMessage?: string,
   ) => {
@@ -52,7 +56,7 @@ export const createUpdateCourseTranslationUpload = ({
       updateCourseTranslationUploadQuery(
         id,
         pptxFileUrl,
-        audioFileUrl,
+        textFileUrl,
         uploadSuccess,
         errorMessage,
       ),

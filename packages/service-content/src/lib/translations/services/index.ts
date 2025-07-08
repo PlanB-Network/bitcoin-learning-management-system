@@ -11,3 +11,4 @@ export {
   type ChapterTranslationData,
   type ChapterProgress,
 } from './translation-slides.js';
+export { createGetPartAndChapterIds } from './chapter-mapping.js';

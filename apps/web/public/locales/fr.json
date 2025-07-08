@@ -794,7 +794,14 @@
             "pptxFileTooLarge": "Le fichier PowerPoint est trop volumineux. Taille maximale : 100 Mo.",
             "cancel": "Annuler",
             "startTranslation": "Commencer la traduction",
-            "startingTranslation": "Démarrage..."
+            "startingTranslation": "Démarrage...",
+            "startSuccess": "Traduction lancée avec succès !",
+            "uploadFolder": "Téléverser le dossier (PPTX + TXT)",
+            "chooseFolder": "Choisir un dossier",
+            "chooseZip": "Choisir ZIP",
+            "noZipSelected": "Aucun ZIP sélectionné",
+            "noFolderSelected": "Aucun dossier sélectionné",
+            "folderUrl": "URL du dossier"
           }
         }
       }

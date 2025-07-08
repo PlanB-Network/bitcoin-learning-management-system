@@ -703,7 +703,14 @@
             "pptxFileTooLarge": "PowerPoint file is too large. Maximum size is 100MB.",
             "cancel": "Cancel",
             "startTranslation": "Start Translation",
-            "startingTranslation": "Starting..."
+            "startingTranslation": "Starting...",
+            "startSuccess": "Translation started successfully!",
+            "uploadFolder": "Upload folder (PPTX + TXT)",
+            "chooseFolder": "Choose folder",
+            "chooseZip": "Choose ZIP",
+            "noZipSelected": "No ZIP selected",
+            "noFolderSelected": "No folder selected",
+            "folderUrl": "Folder URL"
           }
         }
       },

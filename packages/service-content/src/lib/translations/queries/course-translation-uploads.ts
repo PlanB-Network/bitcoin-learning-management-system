@@ -9,8 +9,10 @@ export const createCourseTranslationUploadQuery = (
   originalLanguage: string,
   translateLanguages: string[],
   uploaderId: string,
+  partId: string,
+  chapterId: string,
   pptxFileUrl?: string,
-  audioFileUrl?: string,
+  textFileUrl?: string,
 ) => {
   return sql<CourseTranslationUpload[]>`
     INSERT INTO content.course_translation_uploads (
@@ -18,15 +20,19 @@ export const createCourseTranslationUploadQuery = (
       original_language,
       translation_languages,
       uploader_id,
+      part_id,
+      chapter_id,
       pptx_file_url,
-      audio_file_url
+      text_file_url
     ) VALUES (
       ${courseId},
       ${originalLanguage},
       ${translateLanguages},
       ${uploaderId},
+      ${partId},
+      ${chapterId},
       ${pptxFileUrl},
-      ${audioFileUrl}
+      ${textFileUrl}
     )
     RETURNING
       id,
@@ -34,8 +40,10 @@ export const createCourseTranslationUploadQuery = (
       original_language   AS "originalLanguage",
       translation_languages AS "translationLanguages",
       uploader_id         AS "uploaderId",
+      part_id             AS "partId",
+      chapter_id          AS "chapterId",
       pptx_file_url       AS "pptxFileUrl",
-      audio_file_url      AS "audioFileUrl",
+      text_file_url       AS "textFileUrl",
       upload_success      AS "uploadSuccess",
       error_message       AS "errorMessage",
       created_at          AS "createdAt",
@@ -49,7 +57,7 @@ export const createCourseTranslationUploadQuery = (
 export const updateCourseTranslationUploadQuery = (
   id: string,
   pptxFileUrl?: string,
-  audioFileUrl?: string,
+  textFileUrl?: string,
   uploadSuccess?: boolean,
   errorMessage?: string,
 ) => {
@@ -57,7 +65,7 @@ export const updateCourseTranslationUploadQuery = (
     UPDATE content.course_translation_uploads
     SET
       pptx_file_url = COALESCE(${pptxFileUrl}, pptx_file_url),
-      audio_file_url = COALESCE(${audioFileUrl}, audio_file_url),
+      text_file_url = COALESCE(${textFileUrl}, text_file_url),
       upload_success = COALESCE(${uploadSuccess}, upload_success),
       error_message = COALESCE(${errorMessage}, error_message),
       updated_at = NOW()
@@ -68,8 +76,10 @@ export const updateCourseTranslationUploadQuery = (
       original_language   AS "originalLanguage",
       translation_languages AS "translationLanguages",
       uploader_id         AS "uploaderId",
+      part_id             AS "partId",
+      chapter_id          AS "chapterId",
       pptx_file_url       AS "pptxFileUrl",
-      audio_file_url      AS "audioFileUrl",
+      text_file_url       AS "textFileUrl",
       upload_success      AS "uploadSuccess",
       error_message       AS "errorMessage",
       created_at          AS "createdAt",
@@ -88,8 +98,10 @@ export const getCourseTranslationUploadsQuery = (courseId: string) => {
       original_language   AS "originalLanguage",
       translation_languages AS "translationLanguages",
       uploader_id         AS "uploaderId",
+      part_id             AS "partId",
+      chapter_id          AS "chapterId",
       pptx_file_url       AS "pptxFileUrl",
-      audio_file_url      AS "audioFileUrl",
+      text_file_url       AS "textFileUrl",
       upload_success      AS "uploadSuccess",
       error_message       AS "errorMessage",
       created_at          AS "createdAt",
@@ -111,8 +123,10 @@ export const getCourseTranslationUploadByIdQuery = (id: string) => {
       original_language   AS "originalLanguage",
       translation_languages AS "translationLanguages",
       uploader_id         AS "uploaderId",
+      part_id             AS "partId",
+      chapter_id          AS "chapterId",
       pptx_file_url       AS "pptxFileUrl",
-      audio_file_url      AS "audioFileUrl",
+      text_file_url       AS "textFileUrl",
       upload_success      AS "uploadSuccess",
       error_message       AS "errorMessage",
       created_at          AS "createdAt",

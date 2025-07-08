@@ -2515,8 +2515,20 @@ export const contentCourseUploads = content.table(
       .references(() => usersAccounts.uid, {
         onDelete: 'cascade',
       }),
+    partId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseParts.partId, {
+        onDelete: 'cascade',
+      }),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+      }),
     pptxFileUrl: t.text(), // S3 URL for PowerPoint file
-    audioFileUrl: t.text(), // S3 URL for audio file
+    textFileUrl: t.text(), // S3 URL for directory (txt files) or archive
     uploadSuccess: t.boolean().default(false).notNull(),
     errorMessage: t.text(), // Store error details if upload fails
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
@@ -2527,6 +2539,13 @@ export const contentCourseUploads = content.table(
 export const contentCourseTranslationSlides = content.table(
   'course_translation_slides',
   (t) => ({
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
     language: t.varchar({ length: 10 }).notNull(),
     partId: t
       .uuid()

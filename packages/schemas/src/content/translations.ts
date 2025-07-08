@@ -279,8 +279,10 @@ export const courseTranslationUploadResponseSchema =
     originalLanguage: true,
     translationLanguages: true,
     uploaderId: true,
+    partId: true,
+    chapterId: true,
     pptxFileUrl: true,
-    audioFileUrl: true,
+    textFileUrl: true,
     uploadSuccess: true,
     errorMessage: true,
     createdAt: true,
@@ -292,14 +294,14 @@ export const createCourseTranslationUploadInputSchema = z.object({
   courseId: z.string(),
   languages: z.array(z.string()),
   pptxFileUrl: z.string().optional(),
-  audioFileUrl: z.string().optional(),
+  textFileUrl: z.string().optional(),
 });
 
 // Input schema for updating translation upload - API interface
 export const updateCourseTranslationUploadInputSchema = z.object({
   id: z.string(),
   pptxFileUrl: z.string().optional(),
-  audioFileUrl: z.string().optional(),
+  textFileUrl: z.string().optional(),
   uploadSuccess: z.boolean().optional(),
   errorMessage: z.string().optional(),
 });
