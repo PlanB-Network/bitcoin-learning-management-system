@@ -71,13 +71,14 @@ export const CollapsibleDropdown = ({
         <div className="flex flex-row gap-2 items-center">
           {icon
             ? React.cloneElement(icon as React.ReactElement<any>, {
-                className: cn('h-4 w-4', icon.props?.className),
+                size: icon.props?.size || 16,
+                className: cn(icon.props?.className),
               })
             : null}
           <span className="body-14px-medium md:body-16px-medium">{title}</span>
         </div>
         <TbChevronDown
-          size={30}
+          size={20}
           className={cn('transition-all', isOpen && 'rotate-180')}
         />
       </CollapsibleTrigger>

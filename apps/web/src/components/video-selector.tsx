@@ -5,9 +5,9 @@ import React, { useMemo, useState } from 'react';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { trpc } from '#src/utils/trpc.ts';
-import { fixEmbedUrl } from './Markdown/conference-markdown-body.js';
+import { fixEmbedUrl } from './Markdown/conference-markdown-body.tsx';
 
-export const VideoPlayerWrapper = ({
+export const VideoSelector = ({
   videoId,
   language,
 }: {
@@ -102,7 +102,7 @@ export const VideoPlayerWrapper = ({
         <div className="my-4 text-center text-gray-500">No video found.</div>
       )}
       {videos.length > 1 ? (
-        <VideoSelector
+        <CollapsibleSelectorPart
           providers={providers}
           sourceTypes={sourceTypes}
           selectedProvider={selectedProvider}
@@ -115,7 +115,7 @@ export const VideoPlayerWrapper = ({
   );
 };
 
-const VideoSelector = ({
+const CollapsibleSelectorPart = ({
   providers,
   sourceTypes,
   selectedProvider,
@@ -137,7 +137,7 @@ const VideoSelector = ({
     defaultOpen={false}
     icon={<TbVideo />}
   >
-    <div className="flex flex-col gap-2 mt-4">
+    <div className="flex flex-col gap-2 my-4">
       <div className="flex justify-between">
         <span className="mr-2 subtitle-medium-16px">Player</span>
         <div className="flex flex-row gap-2">
@@ -158,26 +158,28 @@ const VideoSelector = ({
           ))}
         </div>
       </div>
-      <div className="flex justify-between">
-        <span className="mr-2 subtitle-medium-16px">Language</span>
-        <div className="flex flex-row gap-2">
-          {sourceTypes.map((sourceType) => (
-            <Button
-              key={sourceType}
-              type="button"
-              className={`${
-                selectedSourceType === sourceType
-                  ? 'bg-newGray-4 text-white'
-                  : 'bg-white text-newBlack-4 border-newGray-4'
-              }`}
-              onClick={() => onSourceTypeChange(sourceType)}
-              disabled={selectedSourceType === sourceType}
-            >
-              {sourceType}
-            </Button>
-          ))}
+      {sourceTypes.length > 1 ? (
+        <div className="flex justify-between">
+          <span className="mr-2 subtitle-medium-16px">Language</span>
+          <div className="flex flex-row gap-2">
+            {sourceTypes.map((sourceType) => (
+              <Button
+                key={sourceType}
+                type="button"
+                className={`${
+                  selectedSourceType === sourceType
+                    ? 'bg-newGray-4 text-white'
+                    : 'bg-white text-newBlack-4 border-newGray-4'
+                }`}
+                onClick={() => onSourceTypeChange(sourceType)}
+                disabled={selectedSourceType === sourceType}
+              >
+                {sourceType}
+              </Button>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   </CollapsibleDropdown>
 );
