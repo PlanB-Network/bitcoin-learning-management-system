@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { firstRow, sql } from '@blms/database';
 import type { Dependencies } from '#src/dependencies.js';
 import { getUserByIdQuery } from '../../account/queries/get-user.js';
 import {
@@ -39,6 +39,10 @@ export const createSetCourseAssignmentGradesAsPublished = ({
 
       await postgres.exec(
         assignTop21StudentsToFinalLessonQuery(options.courseId),
+      );
+
+      await postgres.exec(
+        sql`UPDATE content.courses SET are_scores_calculated = TRUE WHERE id = ${options.courseId};`,
       );
     }
 
