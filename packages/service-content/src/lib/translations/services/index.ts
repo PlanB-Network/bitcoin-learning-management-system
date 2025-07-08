@@ -1,3 +1,4 @@
+export { createGetPartAndChapterIds } from './chapter-mapping.js';
 export * from './content-management.js';
 export * from './course-translation-uploads.js';
 export * from './get-courses-with-todo-translations.js';

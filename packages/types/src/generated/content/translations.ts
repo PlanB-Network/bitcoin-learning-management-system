@@ -137,10 +137,13 @@ export interface CourseChaptersLocalized {
 export interface CourseTranslationUpload {
   id: string;
   courseId: string;
-  languages: string[];
+  originalLanguage: string;
+  translationLanguages: string[];
   uploaderId: string;
+  partId: string;
+  chapterId: string;
   pptxFileUrl: string | null;
-  audioFileUrl: string | null;
+  textFileUrl: string | null;
   uploadSuccess: boolean;
   errorMessage: string | null;
   createdAt: Date;
@@ -155,7 +158,7 @@ export interface CourseTranslationSlides {
   slideId: string;
   slideNumber: number;
   pptValidated: boolean;
-  textValidated?: boolean;
+  transcriptionValidated: boolean;
   audioValidated: boolean;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
@@ -402,10 +405,13 @@ export interface CourseWithTodoTranslations {
 export interface CourseTranslationUploadResponse {
   id: string;
   courseId: string;
-  languages: string[];
+  originalLanguage: string;
+  translationLanguages: string[];
   uploaderId: string;
+  partId: string;
+  chapterId: string;
   pptxFileUrl: string | null;
-  audioFileUrl: string | null;
+  textFileUrl: string | null;
   uploadSuccess: boolean;
   errorMessage: string | null;
   createdAt: Date;
@@ -416,13 +422,13 @@ export interface CreateCourseTranslationUploadInput {
   courseId: string;
   languages: string[];
   pptxFileUrl?: string | undefined;
-  audioFileUrl?: string | undefined;
+  textFileUrl?: string | undefined;
 }
 
 export interface UpdateCourseTranslationUploadInput {
   id: string;
   pptxFileUrl?: string | undefined;
-  audioFileUrl?: string | undefined;
+  textFileUrl?: string | undefined;
   uploadSuccess?: boolean | undefined;
   errorMessage?: string | undefined;
 }
@@ -438,16 +444,16 @@ export interface CourseTranslationSlide {
   partId: string;
   chapterId: string;
   slideId: string;
-  slideNumber: number;
-  pptValidated: boolean;
-  textValidated?: boolean;
-  audioValidated: boolean;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
   translatedContent: string | null;
   createdAt: Date;
   updatedAt: Date;
+  slideNumber: number;
+  pptValidated: boolean;
+  transcriptionValidated: boolean;
+  audioValidated: boolean;
   status: unknown;
 }
 
@@ -482,8 +488,11 @@ export interface UpdateCourseTranslationSlideInput {
   language: string;
   chapterId: string;
   slideId: string;
-  translatedContent: string;
+  translatedContent?: string | undefined;
   status?: unknown;
+  pptValidated?: boolean | undefined;
+  transcriptionValidated?: boolean | undefined;
+  audioValidated?: boolean | undefined;
 }
 
 export interface ChapterProgress {

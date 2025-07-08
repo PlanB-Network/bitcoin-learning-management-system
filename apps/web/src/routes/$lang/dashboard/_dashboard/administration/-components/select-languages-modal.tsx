@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineTranslate } from 'react-icons/hi';
 
-import { Loader, cn } from '@blms/ui';
+import { Input, Loader, cn, customToast } from '@blms/ui';
 
 import type { CourseWithTodoTranslations } from '@blms/types';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
@@ -19,20 +19,16 @@ interface ModalState {
   selectedLanguages: string[];
   isStarting: boolean;
   languages: Array<{ code: string; name: string }>;
-  selectedAudioFile: File | null;
-  selectedPptxFile: File | null;
-  audioError: string;
-  pptxError: string;
+  selectedFiles: File[];
+  folderError: string;
 }
 
 const initialState: ModalState = {
   selectedLanguages: [],
   isStarting: false,
   languages: [],
-  selectedAudioFile: null,
-  selectedPptxFile: null,
-  audioError: '',
-  pptxError: '',
+  selectedFiles: [],
+  folderError: '',
 };
 
 export const SelectLanguagesModal = ({
@@ -44,8 +40,8 @@ export const SelectLanguagesModal = ({
   const { t } = useTranslation();
   const [state, setState] = useState<ModalState>(initialState);
 
-  const audioInputRef = useRef<HTMLInputElement>(null);
-  const pptxInputRef = useRef<HTMLInputElement>(null);
+  const folderInputRef = useRef<HTMLInputElement>(null);
+  const zipInputRef = useRef<HTMLInputElement>(null);
 
   // Fetch languages data
   useEffect(() => {
@@ -88,81 +84,50 @@ export const SelectLanguagesModal = ({
     }));
   }, []);
 
-  const handleAudioFileChange = useCallback(
+  const handleFolderChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) {
-        // Validate audio file type
-        if (!file.type.startsWith('audio/')) {
-          setState((prev) => ({
-            ...prev,
-            audioError: t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.invalidAudioFile',
-            ),
-            selectedAudioFile: null,
-          }));
-          return;
-        }
-        // File size limit (50MB)
-        if (file.size > 50 * 1024 * 1024) {
-          setState((prev) => ({
-            ...prev,
-            audioError: t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.audioFileTooLarge',
-            ),
-            selectedAudioFile: null,
-          }));
-          return;
-        }
-        setState((prev) => ({
-          ...prev,
-          selectedAudioFile: file,
-          audioError: '',
-        }));
-      }
+      const fileList = e.target.files;
+      if (!fileList || fileList.length === 0) return;
+
+      const files = Array.from(fileList);
+      setState((prev) => ({
+        ...prev,
+        selectedFiles: files,
+        folderError: '',
+      }));
+      // Clear any previously entered URL
+      setFolderUrl('');
     },
-    [t],
+    [],
   );
 
-  const handlePptxFileChange = useCallback(
+  const handleZipChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) {
-        // Validate PPTX file type
-        if (
-          file.type !==
-            'application/vnd.openxmlformats-officedocument.presentationml.presentation' &&
-          !file.name.toLowerCase().endsWith('.pptx')
-        ) {
-          setState((prev) => ({
-            ...prev,
-            pptxError: t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.invalidPptxFile',
-            ),
-            selectedPptxFile: null,
-          }));
-          return;
-        }
-        // File size limit (100MB)
-        if (file.size > 100 * 1024 * 1024) {
-          setState((prev) => ({
-            ...prev,
-            pptxError: t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.pptxFileTooLarge',
-            ),
-            selectedPptxFile: null,
-          }));
-          return;
-        }
-        setState((prev) => ({
-          ...prev,
-          selectedPptxFile: file,
-          pptxError: '',
-        }));
-      }
+      const fileList = e.target.files;
+      if (!fileList || fileList.length === 0) return;
+
+      const files = Array.from(fileList);
+      setState((prev) => ({
+        ...prev,
+        selectedFiles: files,
+        folderError: '',
+      }));
+      // Clear URL when ZIP chosen
+      setFolderUrl('');
     },
-    [t],
+    [],
   );
+
+  const handleFolderInputClick = useCallback(() => {
+    folderInputRef.current?.click();
+  }, []);
+
+  const handleZipInputClick = useCallback(() => {
+    zipInputRef.current?.click();
+  }, []);
+
+  // URL input state
+  const [folderUrl, setFolderUrl] = useState('');
 
   const handleStartTranslation = useCallback(async () => {
     if (state.selectedLanguages.length === 0) {
@@ -174,11 +139,13 @@ export const SelectLanguagesModal = ({
       const formData = new FormData();
       formData.append('courseId', course.id);
       formData.append('languages', JSON.stringify(state.selectedLanguages));
-      if (state.selectedAudioFile) {
-        formData.append('audioFile', state.selectedAudioFile);
+      if (state.selectedFiles.length > 0) {
+        for (const f of state.selectedFiles) {
+          formData.append('files', f, (f as any).webkitRelativePath || f.name);
+        }
       }
-      if (state.selectedPptxFile) {
-        formData.append('pptxFile', state.selectedPptxFile);
+      if (folderUrl) {
+        formData.append('url', folderUrl);
       }
 
       const response = await fetch('/api/translation-uploads', {
@@ -192,7 +159,13 @@ export const SelectLanguagesModal = ({
       }
 
       const data = await response.json();
-      console.log(data);
+
+      customToast(
+        t(
+          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.startSuccess',
+        ),
+        { color: 'success' },
+      );
 
       if (onSuccess) {
         onSuccess();
@@ -206,25 +179,18 @@ export const SelectLanguagesModal = ({
     }
   }, [
     state.selectedLanguages,
-    state.selectedAudioFile,
-    state.selectedPptxFile,
+    state.selectedFiles,
     course.id,
     onClose,
     onSuccess,
+    folderUrl,
+    t,
   ]);
 
   const handleClose = useCallback(() => {
     setState(initialState);
     onClose();
   }, [onClose]);
-
-  const handleAudioFileClick = useCallback(() => {
-    audioInputRef.current?.click();
-  }, []);
-
-  const handlePptxFileClick = useCallback(() => {
-    pptxInputRef.current?.click();
-  }, []);
 
   return (
     <CommonModal
@@ -300,106 +266,103 @@ export const SelectLanguagesModal = ({
           )}
         </div>
 
-        {/* File Upload Section */}
+        {/* Folder Upload Section */}
         <div className="space-y-4">
           <h3 className="text-sm font-medium text-gray-700 text-center">
             {t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFiles',
+              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
             )}
           </h3>
 
-          {/* Audio File Upload */}
-          <div className="space-y-2">
-            <label
-              htmlFor="audioFileInput"
-              className="block text-sm font-medium text-gray-700"
-            >
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.audioFile',
-              )}
-            </label>
-            <input
-              id="audioFileInput"
-              type="file"
-              accept="audio/*"
-              className="hidden"
-              ref={audioInputRef}
-              onChange={handleAudioFileChange}
-            />
+          <input
+            ref={folderInputRef}
+            type="file"
+            multiple
+            /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+            // @ts-ignore - non-standard attribute for folder selection
+            {...{ webkitdirectory: 'true', directory: 'true' }}
+            className="hidden"
+            onChange={handleFolderChange}
+          />
+
+          {/* Hidden input for ZIP selection */}
+          <input
+            ref={zipInputRef}
+            type="file"
+            accept=".zip"
+            className="hidden"
+            onChange={handleZipChange}
+          />
+
+          <div className="flex flex-col gap-3">
             <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
               <button
                 type="button"
-                onClick={handleAudioFileClick}
+                onClick={handleFolderInputClick}
                 className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
               >
                 {t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseAudioFile',
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseFolder',
                 )}
               </button>
               <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.selectedAudioFile?.name ||
-                  t(
-                    'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noAudioFileSelected',
-                  )}
+                {state.selectedFiles.length > 0
+                  ? `${state.selectedFiles.length} files selected`
+                  : t(
+                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
+                    )}
               </span>
             </div>
-            {state.audioError && (
-              <p className="text-red-600 text-xs" role="alert">
-                {state.audioError}
-              </p>
-            )}
-            <p className="text-xs text-gray-500">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.audioFileInfo',
-              )}
-            </p>
+
+            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+              <button
+                type="button"
+                onClick={handleZipInputClick}
+                className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
+              >
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseZip',
+                )}
+              </button>
+              <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                {state.selectedFiles.length > 0
+                  ? `${state.selectedFiles.length} file(s) selected`
+                  : t(
+                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
+                    )}
+              </span>
+            </div>
           </div>
 
-          {/* PPTX File Upload */}
-          <div className="space-y-2">
+          {state.folderError && (
+            <p className="text-red-600 text-xs" role="alert">
+              {state.folderError}
+            </p>
+          )}
+
+          {/* Optional URL field */}
+          <div className="space-y-1">
             <label
-              htmlFor="pptxFileInput"
+              htmlFor="folderUrl"
               className="block text-sm font-medium text-gray-700"
             >
               {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.pptxFile',
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.folderUrl',
               )}
             </label>
-            <input
-              id="pptxFileInput"
-              type="file"
-              accept=".pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"
-              className="hidden"
-              ref={pptxInputRef}
-              onChange={handlePptxFileChange}
+            <Input
+              id="folderUrl"
+              type="url"
+              value={folderUrl}
+              onChange={(e) => {
+                setFolderUrl(e.target.value);
+                // Clear selected files when URL provided
+                if (e.target.value) {
+                  setState((prev) => ({ ...prev, selectedFiles: [] }));
+                }
+              }}
+              placeholder="https://..."
             />
-            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
-              <button
-                type="button"
-                onClick={handlePptxFileClick}
-                className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
-              >
-                {t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.choosePptxFile',
-                )}
-              </button>
-              <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.selectedPptxFile?.name ||
-                  t(
-                    'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noPptxFileSelected',
-                  )}
-              </span>
-            </div>
-            {state.pptxError && (
-              <p className="text-red-600 text-xs" role="alert">
-                {state.pptxError}
-              </p>
-            )}
-            <p className="text-xs text-gray-500">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.pptxFileInfo',
-              )}
-            </p>
           </div>
         </div>
 
