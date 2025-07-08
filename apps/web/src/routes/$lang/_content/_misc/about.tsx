@@ -110,7 +110,7 @@ const Corporate = () => {
         </h2>
         <p className="mt-2 text-gray-400">{t('about.corporateContent')}</p>
         <p className="mt-2">
-          {t('about.coportateContact')}{' '}
+          {t('about.corporateContact')}{' '}
           <a href="mailto:contact@planb.network">contact@planb.network</a>
         </p>
       </div>
