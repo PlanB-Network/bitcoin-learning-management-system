@@ -28,7 +28,7 @@ import {
   IoCheckmarkOutline,
   IoWarningOutline,
 } from 'react-icons/io5';
-import { LuGripVertical } from 'react-icons/lu';
+import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { TbAlertOctagon } from 'react-icons/tb';
@@ -292,7 +292,7 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
           className="border border-newGray-4"
           variant="dark"
           defaultOpen={!hasAffectedAssignment}
-          type="info"
+          icon={<LuCircleAlert />}
         >
           <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
             {t('dashboard.course.assignmentDescription')}

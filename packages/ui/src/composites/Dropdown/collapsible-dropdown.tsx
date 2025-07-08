@@ -5,9 +5,8 @@ import {
   cn,
 } from '@blms/ui';
 import { cva } from 'class-variance-authority';
-import { useState } from 'react';
-import { LuCircleAlert } from 'react-icons/lu';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import React, { useState } from 'react';
+import { TbChevronDown } from 'react-icons/tb';
 
 const CollapsibleDropdownVariant = cva(
   'w-full rounded-[12px] flex flex-col px-2.5 py-[5px] justify-center',
@@ -25,7 +24,7 @@ const CollapsibleDropdownVariant = cva(
 );
 
 const collapsibleTriggerVariant = cva(
-  'flex justify-between items-center py-2 pl-[5px]',
+  'flex justify-between items-center py-2',
   {
     defaultVariants: {
       variant: 'light',
@@ -39,13 +38,17 @@ const collapsibleTriggerVariant = cva(
   },
 );
 
+interface MyIconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number;
+}
+
 interface CollapsibleProps {
   title: string;
   children: React.ReactNode;
   variant?: 'light' | 'dark';
   className?: string;
   defaultOpen?: boolean;
-  type?: string;
+  icon?: React.ReactElement<MyIconProps>;
 }
 
 export const CollapsibleDropdown = ({
@@ -54,7 +57,7 @@ export const CollapsibleDropdown = ({
   variant = 'light',
   className,
   defaultOpen = false,
-  type,
+  icon,
 }: CollapsibleProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -66,10 +69,14 @@ export const CollapsibleDropdown = ({
     >
       <CollapsibleTrigger className={collapsibleTriggerVariant({ variant })}>
         <div className="flex flex-row gap-2 items-center">
-          {type === 'info' ? <LuCircleAlert className="h-4 w-4" /> : null}
+          {icon
+            ? React.cloneElement(icon as React.ReactElement<any>, {
+                className: cn('h-4 w-4', icon.props?.className),
+              })
+            : null}
           <span className="body-14px-medium md:body-16px-medium">{title}</span>
         </div>
-        <MdKeyboardArrowDown
+        <TbChevronDown
           size={30}
           className={cn('transition-all', isOpen && 'rotate-180')}
         />

@@ -21,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { BsTwitterX } from 'react-icons/bs';
 import { IoMdLock } from 'react-icons/io';
+import { LuCircleAlert } from 'react-icons/lu';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
 import { TbAlertOctagon, TbDownload } from 'react-icons/tb';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
@@ -164,7 +165,7 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
           className="border border-newGray-4"
           variant="dark"
           defaultOpen={singleTrialExams.length === 0}
-          type="info"
+          icon={<LuCircleAlert />}
         >
           <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px">
             {t('dashboard.course.planbSchoolGeneralInformation', {

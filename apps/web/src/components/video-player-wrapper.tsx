@@ -2,6 +2,7 @@ import { VideoProvider, type VideoSourceType } from '@blms/constants';
 import { Button, CollapsibleDropdown, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import React, { useMemo, useState } from 'react';
+import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { trpc } from '#src/utils/trpc.ts';
 import { fixEmbedUrl } from './Markdown/conference-markdown-body.js';
@@ -134,10 +135,11 @@ const VideoSelector = ({
     className="border-b border-l border-r rounded-t-none rounded-b-[12px] border-newGray-4"
     variant="dark"
     defaultOpen={false}
+    icon={<TbVideo />}
   >
     <div className="flex flex-col gap-2 mt-4">
       <div className="flex justify-between">
-        <span className="mr-2">Player</span>
+        <span className="mr-2 subtitle-medium-16px">Player</span>
         <div className="flex flex-row gap-2">
           {providers.map((provider) => (
             <Button
@@ -157,7 +159,7 @@ const VideoSelector = ({
         </div>
       </div>
       <div className="flex justify-between">
-        <span className="mr-2">Language</span>
+        <span className="mr-2 subtitle-medium-16px">Language</span>
         <div className="flex flex-row gap-2">
           {sourceTypes.map((sourceType) => (
             <Button

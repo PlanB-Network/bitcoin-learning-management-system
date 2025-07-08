@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { TbVideo } from 'react-icons/tb';
 import { CollapsibleDropdown } from '#src/composites/Dropdown/collapsible-dropdown.tsx';
 
 const variants = ['light', 'dark'] as const;
-const types = ['info', 'default'] as const;
 
 const meta: Meta<typeof CollapsibleDropdown> = {
   args: {
@@ -11,7 +11,6 @@ const meta: Meta<typeof CollapsibleDropdown> = {
     className: '',
     defaultOpen: false,
     title: 'Frequently Asked Questions',
-    type: 'default',
     variant: 'light',
   },
   argTypes: {
@@ -26,10 +25,6 @@ const meta: Meta<typeof CollapsibleDropdown> = {
     },
     title: {
       control: 'text',
-    },
-    type: {
-      control: { type: 'select' },
-      options: types,
     },
     variant: {
       control: { type: 'select' },
@@ -66,12 +61,11 @@ export const DarkVariant: Story = {
   },
 };
 
-export const WithInfoIcon: Story = {
+export const WithVideoIcon: Story = {
   args: {
-    children:
-      'This collapsible section includes an info icon to draw attention to important content.',
-    title: 'Important Information',
-    type: 'info',
+    children: 'This collapsible section includes a video icon.',
+    icon: <TbVideo size={24} />,
+    title: 'Video section',
   },
 };
 
