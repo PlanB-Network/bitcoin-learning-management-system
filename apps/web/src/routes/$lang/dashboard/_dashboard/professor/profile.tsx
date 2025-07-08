@@ -224,10 +224,10 @@ function DashboardProfessorProfile() {
             {/* Billing */}
             <div className="flex flex-col">
               <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
-                {t('dashboard.teacher.profile.billingInformations')}
+                {t('dashboard.teacher.profile.billingInformation')}
               </h4>
               <p className="mb-5 lg:mb-6 text-dashboardSectionText/75 body-14px lg:body-16px">
-                {t('dashboard.teacher.profile.enterTipsInformations')}
+                {t('dashboard.teacher.profile.enterTipsInformation')}
               </p>
               <div className="flex flex-col gap-2 w-full">
                 <span className="text-dashboardSectionText font-medium leading-tight">

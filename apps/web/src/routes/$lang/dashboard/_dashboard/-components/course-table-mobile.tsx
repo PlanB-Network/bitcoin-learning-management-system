@@ -93,7 +93,7 @@ export const CourseTableMobile = ({
 
     return {
       bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
-      text: t('dashboard.myCourses.inprogress'),
+      text: t('dashboard.myCourses.inProgress'),
     };
   };
 

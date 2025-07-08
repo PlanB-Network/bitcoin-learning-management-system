@@ -331,46 +331,44 @@ const DiplomaSelfPaced = ({
 
 const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
   return (
-    <>
-      <section className="w-full flex flex-col">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
-          {t('words.diploma')}
-        </h4>
+    <section className="w-full flex flex-col">
+      <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+        {t('words.diploma')}
+      </h4>
 
-        <p className="mt-1 md:mt-6 label-large-20px md:display-small-32px text-black">
-          {t('courses.exam.receiveDiploma')}
-        </p>
+      <p className="mt-1 md:mt-6 label-large-20px md:display-small-32px text-black">
+        {t('courses.exam.receiveDiploma')}
+      </p>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
-          <div className="max-md:mx-auto shrink-0">
-            <img
-              src={CertificateTeacherLedSatoshiImage}
-              alt="Diploma"
-              className="w-full max-w-[403px]"
-            />
-          </div>
-          <div className="flex flex-col justify-between gap-4 grow md:pb-2">
-            <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
-              {t('courses.exam.successDiplomaTeachedLed')}
-            </p>
-
-            <Link
-              to={'/dashboard/course/$courseId'}
-              hash={'singleTrialExam'}
-              params={{
-                courseId: course?.id,
-              }}
-              className="w-fit"
-              asChild
-            >
-              <ButtonWithArrow className="w-fit max-md:mx-auto">
-                {t('courses.exam.getCertificate')}
-              </ButtonWithArrow>
-            </Link>
-          </div>
+      <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+        <div className="max-md:mx-auto shrink-0">
+          <img
+            src={CertificateTeacherLedSatoshiImage}
+            alt="Diploma"
+            className="w-full max-w-[403px]"
+          />
         </div>
-      </section>
-    </>
+        <div className="flex flex-col justify-between gap-4 grow md:pb-2">
+          <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+            {t('courses.exam.successDiplomaTeacherLed')}
+          </p>
+
+          <Link
+            to={'/dashboard/course/$courseId'}
+            hash={'singleTrialExam'}
+            params={{
+              courseId: course?.id,
+            }}
+            className="w-fit"
+            asChild
+          >
+            <ButtonWithArrow className="w-fit max-md:mx-auto">
+              {t('courses.exam.getCertificate')}
+            </ButtonWithArrow>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 };
 

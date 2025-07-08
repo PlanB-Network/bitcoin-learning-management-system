@@ -45,7 +45,7 @@ export const CourseDashboardCard = ({
     if (progressPercentage > 0 || progressPercentage === 0) {
       return {
         bgColor: 'bg-darkOrange-4',
-        text: t('dashboard.myCourses.inprogress'),
+        text: t('dashboard.myCourses.inProgress'),
       };
     }
     return {

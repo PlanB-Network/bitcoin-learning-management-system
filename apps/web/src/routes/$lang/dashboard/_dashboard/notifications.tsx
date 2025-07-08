@@ -542,7 +542,7 @@ export const getNotificationContent = (
       });
     case NotificationType.Calendar24HoursInPersonEvent:
       return t('notifications.calendar_24h_in_person_event', {
-        adressLine: event?.addressLine1,
+        addressLine: event?.addressLine1,
         eventName: event?.name,
         formattedTime:
           event?.startDate &&
