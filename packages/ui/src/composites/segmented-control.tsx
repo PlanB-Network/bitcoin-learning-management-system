@@ -74,7 +74,7 @@ function SegmentedControlItem({
           size: context.size || size,
           variant: context.variant || variant,
         }),
-        'data-[state=on]:bg-white hover:bg-newGray-5 min-w-0 flex-1 shrink-0 shadow-none focus:z-10 focus-visible:z-10 border-0 rounded-b-md',
+        'data-[state=on]:bg-white max-md:text-xs hover:bg-newGray-5 min-w-0 flex-1 shrink-0 shadow-none focus:z-10 focus-visible:z-10 border-0 rounded-b-md',
         className,
       )}
       {...props}
