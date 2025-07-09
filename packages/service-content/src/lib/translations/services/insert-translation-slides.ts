@@ -10,6 +10,8 @@ import {
   updateCourseTranslationSlideQuery,
 } from '../queries/get-translation-slides.js';
 
+import { insertCourseTranslationSlideQuery } from '../queries/insert-course-translation-slide.js';
+
 export interface ChapterTranslationContext {
   id: string;
   courseId: string;
@@ -187,5 +189,38 @@ export const createGetCourseTranslationChapterProgress = ({
         message: 'Failed to fetch course translation chapter progress',
       });
     }
+  };
+};
+
+/**
+ * Service to insert a new course translation slide (no-op if already exists).
+ */
+export const createInsertCourseTranslationSlide = ({
+  postgres,
+}: Dependencies) => {
+  return async (
+    courseId: string,
+    language: string,
+    partId: string,
+    chapterId: string,
+    slideId: string,
+    slideNumber: number,
+    pptResourcePath: string | null,
+    originalContent: string | null,
+    translatedContent: string | null,
+  ) => {
+    await postgres.exec(
+      insertCourseTranslationSlideQuery(
+        courseId,
+        language,
+        partId,
+        chapterId,
+        slideId,
+        slideNumber,
+        pptResourcePath,
+        originalContent,
+        translatedContent,
+      ),
+    );
   };
 };

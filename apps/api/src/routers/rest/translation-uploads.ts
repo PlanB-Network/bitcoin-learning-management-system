@@ -1,17 +1,21 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {
+  createCreateCourseTranslationUpload,
+  createDeleteCourseTranslationUploadsByCourseId,
+  createGetCourseOriginalLanguage,
+  createGetCourseTranslationUploads,
+  createGetPartAndChapterIds,
+  createInsertCourseTranslationSlide,
+  createSetTranslationsReadyForReview,
+  createStartTranslations,
+  createUpdateCourseTranslationUpload,
+} from '@blms/service-content';
 import AdmZip from 'adm-zip';
 
 import type { Router } from 'express';
 import formidable from 'formidable';
-
-import {
-  createCreateCourseTranslationUpload,
-  createGetPartAndChapterIds,
-  createStartTranslations,
-  createUpdateCourseTranslationUpload,
-} from '@blms/service-content';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
@@ -129,11 +133,6 @@ const receiveUploadForm = (req: any) => {
         (f) => !f.originalFilename?.toLowerCase().endsWith('.zip'),
       );
 
-      if (finalFiles.length === 0) {
-        reject(new BadRequest('No files provided'));
-        return;
-      }
-
       resolve({
         courseId: courseId as string,
         languages,
@@ -143,6 +142,228 @@ const receiveUploadForm = (req: any) => {
   });
 };
 
+// --- Language Toolkit client -------------------------------------------------
+const LT_BASE_URL = process.env.LT_BASE_URL ?? '';
+const LT_CLIENT_ID = process.env.LT_CLIENT_ID ?? '';
+const LT_CLIENT_SEC = process.env.LT_CLIENT_SECRET ?? '';
+
+let ltAccessToken: string | null = null;
+let ltTokenExpiry = 0;
+
+async function ensureLtToken() {
+  const now = Date.now();
+  if (ltAccessToken && now < ltTokenExpiry - 30_000) return ltAccessToken;
+
+  const params = new URLSearchParams();
+  params.append('username', LT_CLIENT_ID);
+  params.append('password', LT_CLIENT_SEC);
+
+  const res = await fetch(`${LT_BASE_URL}/token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params,
+  });
+  if (!res.ok) throw new Error('LT token fetch failed');
+  const data = (await res.json()) as {
+    access_token: string;
+    expires_in: number;
+  };
+
+  ltAccessToken = data.access_token;
+  ltTokenExpiry = now + data.expires_in * 1000;
+  return ltAccessToken;
+}
+
+async function translateCourseOnToolkit(payload: {
+  course_id: string;
+  source_lang: string;
+  target_langs: string[];
+}): Promise<string | null> {
+  if (!LT_BASE_URL) {
+    console.warn('[LT] LT_BASE_URL not set – skipping Toolkit call');
+    return null;
+  }
+  try {
+    const token = await ensureLtToken();
+    const resp = await fetch(`${LT_BASE_URL}/translate/course_s3`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!resp.ok) {
+      console.error('[LT] translate/course_s3 failed', resp.status);
+      return null;
+    }
+
+    const data = (await resp.json()) as { task_id?: string };
+    const taskId = data.task_id ?? null;
+    return taskId;
+  } catch (e) {
+    console.error('Language Toolkit call failed', e);
+    return null;
+  }
+}
+
+/**
+ * Poll Toolkit tasks endpoint until status === 'completed'.
+ * Returns the manifest when available, otherwise null.
+ */
+async function pollToolkitTask(
+  taskId: string,
+  {
+    intervalMs = 5000,
+    maxAttempts = 120, // ~10 minutes
+  }: { intervalMs?: number; maxAttempts?: number } = {},
+): Promise<unknown | null> {
+  if (!LT_BASE_URL) return null;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    try {
+      const token = await ensureLtToken();
+      const resp = await fetch(`${LT_BASE_URL}/tasks/${taskId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!resp.ok) {
+        console.error('[LT] Task poll failed', resp.status);
+        return null;
+      }
+      const data = (await resp.json()) as {
+        status: 'pending' | 'completed' | string;
+        manifest?: unknown;
+      };
+      if (data.status === 'completed') {
+        return data.manifest ?? null;
+      }
+    } catch (err) {
+      console.error('[LT] Error polling task', err);
+      return null;
+    }
+    // Wait before next poll
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+  console.warn('[LT] Task polling timed out');
+  return null;
+}
+
+/**
+ * Read manifest JSON structure and insert slide rows into DB.
+ */
+async function insertSlidesFromManifest(
+  manifest: any,
+  courseId: string,
+  originalLanguage: string,
+  dependencies: Dependencies,
+) {
+  if (!manifest || typeof manifest !== 'object') return;
+
+  const courseNode = manifest[courseId];
+  if (!courseNode) return;
+
+  // Initialize slide insertion service once
+  const insertSlide = createInsertCourseTranslationSlide(dependencies as any);
+
+  // Iterate languages (target languages)
+  for (const [langKey, parts] of Object.entries(courseNode as any)) {
+    if (typeof parts !== 'object') continue;
+
+    for (const [partId, chapters] of Object.entries(parts as any)) {
+      if (typeof chapters !== 'object') continue;
+
+      for (const [chapterId, slides] of Object.entries(chapters as any)) {
+        if (typeof slides !== 'object') continue;
+
+        for (const [slideId, files] of Object.entries(slides as any)) {
+          const filePair = files as { pptx?: string; text?: string };
+          if (!filePair || !filePair.text) continue; // need at least text filename
+
+          const { pptx: pptxFile, text: textFile } = filePair;
+
+          // Derive slide number from filename part after '_'
+          let slideNumber = 0;
+          try {
+            const match = /_(\d+)\./.exec(textFile);
+            if (match) slideNumber = Number(match[1]);
+          } catch {}
+
+          // Build S3 keys for original and translated text and pptx
+          const translatedPptKey = pptxFile
+            ? `contribute/${courseId}/${langKey}/${partId}/${chapterId}/${slideId}/pptx/${pptxFile}`
+            : null;
+          const translatedTextKey = `contribute/${courseId}/${langKey}/${partId}/${chapterId}/${slideId}/text/${textFile}`;
+          const originalTextKey = `contribute/${courseId}/${originalLanguage}/${partId}/${chapterId}/text/${textFile}`;
+
+          // Helper to safely fetch blob, returning null if key not found
+          const safeGetBlob = async (key: string | null) => {
+            if (!key) return null;
+            try {
+              return await dependencies.s3.getBlob(key);
+            } catch (err: any) {
+              if (err?.name === 'NoSuchKey') {
+                return null;
+              }
+              console.error('[S3] Error fetching key', key, err);
+              return null;
+            }
+          };
+
+          const MAX_RETRIES = 6;
+          const RETRY_DELAY_MS = 3000;
+
+          let [origBlob, transBlob] = await Promise.all([
+            safeGetBlob(originalTextKey),
+            safeGetBlob(translatedTextKey),
+          ]);
+
+          let attempt = 0;
+          while ((!origBlob || !transBlob) && attempt < MAX_RETRIES) {
+            attempt += 1;
+            await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+            if (!origBlob) origBlob = await safeGetBlob(originalTextKey);
+            if (!transBlob) transBlob = await safeGetBlob(translatedTextKey);
+          }
+
+          if (!origBlob || !transBlob) {
+            console.warn('[UPLOAD] Missing slide content after retries', {
+              courseId,
+              lang: langKey,
+              partId,
+              chapterId,
+              slideId,
+              originalKey: originalTextKey,
+              translatedKey: translatedTextKey,
+              pptKey: translatedPptKey,
+              missingOriginal: !origBlob,
+              missingTranslated: !transBlob,
+              attempts: attempt,
+            });
+          }
+
+          const toStr = (b: Uint8Array | null) =>
+            b ? Buffer.from(b).toString('utf-8') : null;
+
+          const originalContent = toStr(origBlob);
+          const translatedContent = toStr(transBlob);
+
+          await insertSlide(
+            courseId,
+            langKey,
+            partId,
+            chapterId,
+            slideId,
+            slideNumber,
+            translatedPptKey,
+            originalContent,
+            translatedContent,
+          );
+        }
+      }
+    }
+  }
+}
+
 export const createRestTranslationUploadRoutes = async (
   dependencies: Dependencies,
   router: Router,
@@ -151,6 +372,18 @@ export const createRestTranslationUploadRoutes = async (
   const updateUpload = createUpdateCourseTranslationUpload(dependencies as any);
   const startTranslations = createStartTranslations(dependencies as any);
   const getPartAndChapterIdsService = createGetPartAndChapterIds(
+    dependencies as any,
+  );
+  const getUploadsService = createGetCourseTranslationUploads(
+    dependencies as any,
+  );
+  const deleteUploadsService = createDeleteCourseTranslationUploadsByCourseId(
+    dependencies as any,
+  );
+  const setReadyService = createSetTranslationsReadyForReview(
+    dependencies as any,
+  );
+  const getCourseOriginalLang = createGetCourseOriginalLanguage(
     dependencies as any,
   );
 
@@ -170,14 +403,59 @@ export const createRestTranslationUploadRoutes = async (
           files: initialFiles,
         } = await receiveUploadForm(req);
 
-        const files = initialFiles;
+        // Check existing uploads for this course
+        const existingUploads = await getUploadsService(courseId);
 
-        // Get original language once
-        const [{ originalLanguage }] = await dependencies.postgres.exec(
-          dependencies.postgres`SELECT original_language FROM content.courses WHERE id = ${courseId} LIMIT 1` as any,
-        );
+        // Get original language once (needed whether or not we upload files)
+        const originalLanguage = await getCourseOriginalLang(courseId);
         if (!originalLanguage) {
           throw new InternalServerError('Course not found');
+        }
+
+        const filesProvided = initialFiles.length > 0;
+
+        if (!filesProvided && existingUploads.length === 0) {
+          throw new BadRequest(
+            'No files provided and no existing uploads found for this course',
+          );
+        }
+
+        // If new files are provided and uploads already exist, overwrite by deleting old rows
+        if (filesProvided && existingUploads.length > 0) {
+          await deleteUploadsService(courseId);
+        }
+
+        const files = initialFiles;
+
+        // If no new files provided, directly trigger translations and toolkit, skip upload processing
+        if (!filesProvided) {
+          // Start translations for selected languages
+          await startTranslations({ courseId, languages });
+
+          const taskId = await translateCourseOnToolkit({
+            course_id: courseId,
+            source_lang: originalLanguage,
+            target_langs: languages,
+          });
+
+          if (taskId) {
+            const manifest = await pollToolkitTask(taskId);
+
+            if (manifest) {
+              await insertSlidesFromManifest(
+                manifest,
+                courseId,
+                originalLanguage,
+                dependencies,
+              );
+            }
+
+            const langList = languages.map((l) => l.toLowerCase());
+            await setReadyService(courseId, langList);
+          }
+
+          res.json({ message: 'Translation started without new uploads' });
+          return;
         }
 
         // Organise files per chapter key "part.chapter"
@@ -314,6 +592,29 @@ export const createRestTranslationUploadRoutes = async (
 
         // Start translations for selected languages
         await startTranslations({ courseId, languages });
+
+        // Call Language Toolkit to trigger translation
+        const secondTaskId = await translateCourseOnToolkit({
+          course_id: courseId,
+          source_lang: originalLanguage,
+          target_langs: languages,
+        });
+
+        if (secondTaskId) {
+          const manifest = await pollToolkitTask(secondTaskId);
+
+          if (manifest) {
+            await insertSlidesFromManifest(
+              manifest,
+              courseId,
+              originalLanguage,
+              dependencies,
+            );
+          }
+
+          const langList = languages.map((l) => l.toLowerCase());
+          await setReadyService(courseId, langList);
+        }
 
         res.json(uploadResults);
       } catch (error) {

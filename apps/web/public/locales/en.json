@@ -705,6 +705,8 @@
             "startTranslation": "Start Translation",
             "startingTranslation": "Starting...",
             "startSuccess": "Translation started successfully!",
+            "existingUploadsInfo": "Original files already uploaded. You can start translation without uploading them again. Uploading new files will overwrite existing ones.",
+            "overwriteWarning": "Existing files will be replaced.",
             "uploadFolder": "Upload folder (PPTX + TXT)",
             "chooseFolder": "Choose folder",
             "chooseZip": "Choose ZIP",

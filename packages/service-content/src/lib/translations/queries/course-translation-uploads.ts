@@ -135,3 +135,15 @@ export const getCourseTranslationUploadByIdQuery = (id: string) => {
     WHERE id = ${id}
   `;
 };
+
+/**
+ * Delete all translation uploads for a specific course
+ */
+export const deleteCourseTranslationUploadsByCourseQuery = (
+  courseId: string,
+) => {
+  return sql`
+    DELETE FROM content.course_translation_uploads
+    WHERE course_id = ${courseId}
+  `;
+};

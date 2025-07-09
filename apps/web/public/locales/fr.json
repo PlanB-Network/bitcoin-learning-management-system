@@ -796,6 +796,8 @@
             "startTranslation": "Commencer la traduction",
             "startingTranslation": "Démarrage...",
             "startSuccess": "Traduction lancée avec succès !",
+            "existingUploadsInfo": "Les fichiers originaux sont déjà présents. Vous pouvez lancer la traduction sans les téléverser à nouveau. Le téléversement de nouveaux fichiers remplacera les précédents.",
+            "overwriteWarning": "Les fichiers existants seront remplacés.",
             "uploadFolder": "Téléverser le dossier (PPTX + TXT)",
             "chooseFolder": "Choisir un dossier",
             "chooseZip": "Choisir ZIP",

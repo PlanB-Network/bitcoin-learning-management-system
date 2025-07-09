@@ -43,7 +43,10 @@
     "STRIPE_ENDPOINT_SECRET",
     "PROTECT_SYNC_ROUTE",
     "TYPESENSE_API_KEY",
-    "TYPESENSE_NODES"
+    "TYPESENSE_NODES",
+    "LT_BASE_URL",
+    "LT_CLIENT_ID",
+    "LT_CLIENT_SECRET"
   ],
   "tasks": {
     "//#lint": {},

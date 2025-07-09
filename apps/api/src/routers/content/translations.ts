@@ -25,6 +25,7 @@ import {
   createGetCourseTranslationDetails,
   createGetCourseTranslationSlides,
   createGetCourseTranslationStatus,
+  createGetCourseTranslationUploads,
   createGetCoursesReadyForReview,
   createGetCoursesWithTodoTranslations,
   createGetReportsCourses,
@@ -186,6 +187,16 @@ const getTranslationProgressProcedure = publicProcedure
     );
   });
 
+// Check if uploads exist for a course
+const hasCourseUploadsProcedure = publicProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output(z.object({ exists: z.boolean() }))
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationUploads(ctx.dependencies)(
+      input.courseId,
+    ).then((rows) => ({ exists: rows.length > 0 }));
+  });
+
 // Admin content management endpoints
 const getAdminContentManagementCoursesProcedure = adminProcedure
   .input(
@@ -295,6 +306,7 @@ export const translationsRouter = createTRPCRouter({
   getCoursesReadyForReview: getCoursesReadyForReviewProcedure,
   getUserContributionsUnderReview: getUserContributionsUnderReviewProcedure,
   getTranslationProgress: getTranslationProgressProcedure,
+  hasCourseUploads: hasCourseUploadsProcedure,
   // Admin content management endpoints
   getAdminContentManagementCourses: getAdminContentManagementCoursesProcedure,
   getReportsCourses: getReportsCoursesProcedure,
