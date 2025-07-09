@@ -1,6 +1,7 @@
 import type { Dependencies } from '../../dependencies.js';
 import {
   createCourseTranslationUploadQuery,
+  deleteCourseTranslationUploadsByCourseQuery,
   getCourseTranslationUploadByIdQuery,
   getCourseTranslationUploadsQuery,
   updateCourseTranslationUploadQuery,
@@ -86,5 +87,16 @@ export const createGetCourseTranslationUploadById = ({
   return async (id: string) => {
     const result = await postgres.exec(getCourseTranslationUploadByIdQuery(id));
     return result[0] || null;
+  };
+};
+
+/**
+ * Service to delete all uploads for a course
+ */
+export const createDeleteCourseTranslationUploadsByCourseId = ({
+  postgres,
+}: Dependencies) => {
+  return async (courseId: string) => {
+    await postgres.exec(deleteCourseTranslationUploadsByCourseQuery(courseId));
   };
 };

@@ -9,6 +9,8 @@ import {
   populateCourseTranslationChaptersQuery,
   startCourseTranslationChaptersQuery,
   startCourseTranslationsQuery,
+  updateCourseTranslationChaptersToReadyForReviewQuery,
+  updateCourseTranslationToReadyForReviewQuery,
   updateTranslationStatusQuery,
 } from '../queries/update-translations.js';
 
@@ -152,5 +154,22 @@ export const createStartTranslations = ({ postgres }: Dependencies) => {
         message: 'Failed to start translations',
       });
     }
+  };
+};
+
+/**
+ * Service to set translations & chapters to ready_for_review
+ */
+export const createSetTranslationsReadyForReview = ({
+  postgres,
+}: Dependencies) => {
+  return async (courseId: string, languages: string[]) => {
+    const langList = languages.map((l) => l.toLowerCase());
+    await postgres.exec(
+      updateCourseTranslationToReadyForReviewQuery(courseId, langList),
+    );
+    await postgres.exec(
+      updateCourseTranslationChaptersToReadyForReviewQuery(courseId, langList),
+    );
   };
 };
