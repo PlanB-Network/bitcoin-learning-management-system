@@ -357,8 +357,6 @@ export const registerCronTasks = async (ctx: Dependencies) => {
         },
       );
 
-      if (coursesWithAssignmentStartDate24HoursAgo.length === 0) return;
-
       for (const course of coursesWithAssignmentStartDate24HoursAgo) {
         const affectProjectToStudentsInCoursesWithAssignment =
           createAssignSingleAssignmentToCourseStudents({
