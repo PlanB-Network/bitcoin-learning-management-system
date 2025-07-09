@@ -3,11 +3,11 @@ import { CronJob } from 'cron';
 type Fn = () => unknown;
 
 export type Frequency =
-  | '1m'
-  | '5m'
-  | 'h'
-  | 'd'
-  | 'm'
+  | '1min'
+  | '5min'
+  | '1hour'
+  | '1day'
+  | '1month'
   | 'sun4pm'
   | 'jun1_23_gmt'
   | 'jun3_0_gmt';
@@ -39,11 +39,11 @@ export const createCronService = () => {
     };
   };
 
-  crons.set('1m', new CronJob('* * * * *', createExecTasks('1m')));
-  crons.set('5m', new CronJob('*/5 * * * *', createExecTasks('5m')));
-  crons.set('h', new CronJob('0 * * * *', createExecTasks('h')));
-  crons.set('d', new CronJob('0 0 * * *', createExecTasks('d')));
-  crons.set('m', new CronJob('0 0 1 * *', createExecTasks('m')));
+  crons.set('1min', new CronJob('* * * * *', createExecTasks('1min')));
+  crons.set('5min', new CronJob('*/5 * * * *', createExecTasks('5min')));
+  crons.set('1hour', new CronJob('0 * * * *', createExecTasks('1hour')));
+  crons.set('1day', new CronJob('0 0 * * *', createExecTasks('1day')));
+  crons.set('1month', new CronJob('0 0 1 * *', createExecTasks('1month')));
   crons.set('sun4pm', new CronJob('0 16 * * 0', createExecTasks('sun4pm')));
   crons.set(
     'jun1_23_gmt',

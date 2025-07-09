@@ -49,7 +49,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const insertUserNotifications = createInsertUserNotifications(ctx);
     const sendCourseStartingSoonEmail = createSendCourseStartingSoonEmail(ctx);
 
-    ctx.crons.addTask('5m', async () => {
+    ctx.crons.addTask('5min', async () => {
       const coursesId = await getCoursesIds();
       if (coursesId.length === 0) return;
 
@@ -137,7 +137,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const getUpcomingEventsInfos = createGetUpcomingEventsInfos(ctx);
     const insertUserNotifications = createInsertUserNotifications(ctx);
 
-    ctx.crons.addTask('5m', async () => {
+    ctx.crons.addTask('5min', async () => {
       const now = new Date();
 
       const upcomingEvents = await getUpcomingEventsInfos();
@@ -217,7 +217,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   //   const getBlogs = createGetBlogs(ctx);
   //   const insertUserNotifications = createInsertUserNotifications(ctx);
 
-  //   ctx.crons.addTask('h', async () => {
+  //   ctx.crons.addTask('1hour', async () => {
   //     const blogs = await getBlogs();
   //     if (blogs.length === 0) return;
 
@@ -246,7 +246,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const publishCourseAnnouncement =
       createPublishScheduledCourseAnnouncement(ctx);
 
-    ctx.crons.addTask('5m', async () => {
+    ctx.crons.addTask('5min', async () => {
       const unpublishedCourseAnnouncementsIds =
         await userNotificationsService.getUnpublishedCourseAnnouncementsIds();
 
@@ -259,7 +259,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   }
 
   // Once a day, check for read notifications that are older than 30 days and delete them
-  ctx.crons.addTask('d', async () => {
+  ctx.crons.addTask('1day', async () => {
     await userNotificationsService.deleteOldReadNotifications();
   });
 
@@ -388,12 +388,12 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
   if (timestampService) {
     // Every five minutes
-    ctx.crons.addTask('5m', () => refreshCoursesRatings());
-    ctx.crons.addTask('5m', () => timestampService.timestampAllExams());
-    ctx.crons.addTask('5m', () => timestampService.upgradeAllTimeStamps());
-    ctx.crons.addTask('5m', () => timestampService.validateAllTimeStamps());
-    ctx.crons.addTask('5m', () => timestampService.generateAllCertificates());
-    ctx.crons.addTask('5m', () => timestampService.generateAllThumbnails());
+    ctx.crons.addTask('5min', () => refreshCoursesRatings());
+    ctx.crons.addTask('5min', () => timestampService.timestampAllExams());
+    ctx.crons.addTask('5min', () => timestampService.upgradeAllTimeStamps());
+    ctx.crons.addTask('5min', () => timestampService.validateAllTimeStamps());
+    ctx.crons.addTask('5min', () => timestampService.generateAllCertificates());
+    ctx.crons.addTask('5min', () => timestampService.generateAllThumbnails());
   }
 
   // Poll swiss bitcoin pay payments status
@@ -408,7 +408,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const calculateEventSeats = createCalculateEventSeats(ctx);
     const startCourse = createStartCourse(ctx);
 
-    ctx.crons.addTask('1m', async () => {
+    ctx.crons.addTask('1min', async () => {
       // Events payments
       {
         let refreshEventsSeats = false;
