@@ -837,8 +837,6 @@
       "download": "修了証書をダウンロードする",
       "duration": "期間：",
       "inProgress": "進行中",
-      "inprogressCoursesDescription": "ここでは、開始したコースの進捗状況を確認することができます。",
-      "inprogressCoursesTitle": "進行中のコース",
       "newCourses": "毎月新しいコースが追加されます",
       "noCoursesAvailable": "コースはありません。",
       "notStarted": "未着手",
