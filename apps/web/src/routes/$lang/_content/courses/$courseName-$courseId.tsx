@@ -36,6 +36,7 @@ import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
+import { LinkRenderer } from '#src/components/Markdown/Renderers/link-renderer.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
@@ -918,6 +919,14 @@ const DescriptionAndObjectives = memo(
             </h4>
             <ReactMarkdown
               components={{
+                a: ({ href, children }) => (
+                  <LinkRenderer
+                    href={href || ''}
+                    className="body-14px md:subtitle-large-18px"
+                  >
+                    {children}
+                  </LinkRenderer>
+                ),
                 h1: ({ children }) => (
                   <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
                     {children}
