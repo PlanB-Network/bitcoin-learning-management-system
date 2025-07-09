@@ -386,7 +386,6 @@ export const ProofreadingDesktop = ({
     <div
       className={cn(
         'group rounded-[20px] shadow-course-navigation gap-2.5',
-        '',
         variant === 'horizontal' ? 'flex-row' : 'flex-col',
         mode === 'dark'
           ? 'bg-newBlack-3'
@@ -395,7 +394,7 @@ export const ProofreadingDesktop = ({
             : 'bg-darkOrange-0',
         standalone
           ? 'p-5 w-fit max-w-[282px] flex'
-          : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-4 justify-start items-start inline-flex',
+          : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-4 justify-start items-start inline-flex hover:min-h-[231px]',
         className,
       )}
     >
