@@ -331,7 +331,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
   {
     const getCourses = createGetCourses(ctx);
-    ctx.crons.addTask('h', async () => {
+    ctx.crons.addTask('1hour', async () => {
       console.log(
         '[cron] Running affect project to students in courses with assignment job',
       );
@@ -375,7 +375,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const processTeacherLedCoursesWithConclusionIn24Hours =
       createProcessTeacherLedCoursesWithConclusionIn24Hours(ctx);
 
-    ctx.crons.addTask('h', async () => {
+    ctx.crons.addTask('1hour', async () => {
       console.log(
         '[cron] Running process teacher-led courses with conclusion in 24 hours job',
       );
