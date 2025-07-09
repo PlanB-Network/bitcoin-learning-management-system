@@ -1569,6 +1569,19 @@
     "p2": "and consider joining our community!",
     "pageTitle": "Oops."
   },
+  "videoSelector": {
+    "language": {
+      "AI": "AI Translation",
+      "language": "Language",
+      "original": "Original language"
+    },
+    "player": {
+      "peertube": "Peertube",
+      "player": "Player",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
+  },
   "words": {
     "about": "About",
     "about-us": "About Us",

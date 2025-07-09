@@ -1,6 +1,12 @@
 import { VideoProvider, type VideoSourceType } from '@blms/constants';
-import { Button, CollapsibleDropdown, Loader } from '@blms/ui';
+import {
+  CollapsibleDropdown,
+  Loader,
+  SegmentedControl,
+  SegmentedControlItem,
+} from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
+import { t } from 'i18next';
 import React, { useMemo, useState } from 'react';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
@@ -138,46 +144,42 @@ const CollapsibleSelectorPart = ({
     icon={<TbVideo />}
   >
     <div className="flex flex-col gap-2 my-4">
-      <div className="flex justify-between">
-        <span className="mr-2 subtitle-medium-16px">Player</span>
+      <div className="flex justify-between items-center">
+        <span className="mr-2 label-small-12px md:subtitle-medium-16px">
+          {t('videoSelector.player.player')}
+        </span>
         <div className="flex flex-row gap-2">
-          {providers.map((provider) => (
-            <Button
-              key={provider}
-              type="button"
-              className={`${
-                selectedProvider === provider
-                  ? 'bg-newGray-4 text-white'
-                  : 'bg-white text-newBlack-4 border-newGray-4'
-              }`}
-              onClick={() => onProviderChange(provider)}
-              disabled={selectedProvider === provider}
-            >
-              {provider}
-            </Button>
-          ))}
+          <SegmentedControl variant="outline" defaultValue={selectedProvider}>
+            {providers.map((provider) => (
+              <SegmentedControlItem
+                value={provider}
+                key={provider}
+                onClick={() => onProviderChange(provider)}
+              >
+                <p className="px-4">{t(`videoSelector.player.${provider}`)}</p>
+              </SegmentedControlItem>
+            ))}
+          </SegmentedControl>
         </div>
       </div>
       {sourceTypes.length > 1 ? (
-        <div className="flex justify-between">
-          <span className="mr-2 subtitle-medium-16px">Language</span>
-          <div className="flex flex-row gap-2">
+        <div className="flex justify-between items-center">
+          <span className="mr-2 label-small-12px md:subtitle-medium-16px">
+            {t('videoSelector.language.language')}
+          </span>
+          <SegmentedControl variant="outline" defaultValue={selectedSourceType}>
             {sourceTypes.map((sourceType) => (
-              <Button
+              <SegmentedControlItem
+                value={sourceType}
                 key={sourceType}
-                type="button"
-                className={`${
-                  selectedSourceType === sourceType
-                    ? 'bg-newGray-4 text-white'
-                    : 'bg-white text-newBlack-4 border-newGray-4'
-                }`}
                 onClick={() => onSourceTypeChange(sourceType)}
-                disabled={selectedSourceType === sourceType}
               >
-                {sourceType}
-              </Button>
+                <p className="px-4">
+                  {t(`videoSelector.language.${sourceType}`)}
+                </p>
+              </SegmentedControlItem>
             ))}
-          </div>
+          </SegmentedControl>
         </div>
       ) : null}
     </div>
