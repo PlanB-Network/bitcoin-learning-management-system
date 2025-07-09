@@ -144,24 +144,30 @@ const CollapsibleSelectorPart = ({
     icon={<TbVideo />}
   >
     <div className="flex flex-col gap-2 my-4">
-      <div className="flex justify-between items-center">
-        <span className="mr-2 label-small-12px md:subtitle-medium-16px">
-          {t('videoSelector.player.player')}
-        </span>
-        <div className="flex flex-row gap-2">
-          <SegmentedControl variant="outline" defaultValue={selectedProvider}>
-            {providers.map((provider) => (
-              <SegmentedControlItem
-                value={provider}
-                key={provider}
-                onClick={() => onProviderChange(provider)}
-              >
-                <p className="px-4">{t(`videoSelector.player.${provider}`)}</p>
-              </SegmentedControlItem>
-            ))}
-          </SegmentedControl>
+      {providers.length > 1 ? (
+        <div className="flex justify-between items-center">
+          <span className="mr-2 label-small-12px md:subtitle-medium-16px">
+            {t('videoSelector.player.player')}
+          </span>
+
+          <div className="flex flex-row gap-2">
+            <SegmentedControl variant="outline" defaultValue={selectedProvider}>
+              {providers.map((provider) => (
+                <SegmentedControlItem
+                  value={provider}
+                  key={provider}
+                  onClick={() => onProviderChange(provider)}
+                >
+                  <p className="px-4">
+                    {t(`videoSelector.player.${provider}`)}
+                  </p>
+                </SegmentedControlItem>
+              ))}
+            </SegmentedControl>
+          </div>
         </div>
-      </div>
+      ) : null}
+
       {sourceTypes.length > 1 ? (
         <div className="flex justify-between items-center">
           <span className="mr-2 label-small-12px md:subtitle-medium-16px">
