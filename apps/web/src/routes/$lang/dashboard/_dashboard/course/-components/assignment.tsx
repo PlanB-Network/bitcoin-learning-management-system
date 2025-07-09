@@ -19,7 +19,6 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Trans } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FaTelegram } from 'react-icons/fa6';
@@ -28,21 +27,31 @@ import {
   IoCheckmarkOutline,
   IoWarningOutline,
 } from 'react-icons/io5';
+import type { IconType } from 'react-icons/lib';
 import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { RiArrowGoBackFill } from 'react-icons/ri';
-import { TbAlertOctagon } from 'react-icons/tb';
+import {
+  TbAlertOctagon,
+  TbBook2,
+  TbBuildingSkyscraper,
+  TbCalendar,
+  TbUser,
+  TbWeight,
+} from 'react-icons/tb';
 import Certificate from '#src/assets/icons/certificate.svg';
 import SadFace from '#src/assets/icons/face_sad.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
+import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { WeightIndicator } from '../../professor/-components/exam-results.tsx';
 
 interface RankingItemProps {
-  name: string;
+  name: string | null;
   description: string;
   fileUrl: string;
   rank?: number;
@@ -57,11 +66,19 @@ interface RankingItemProps {
   index?: number;
 }
 
+interface InfoRowProps {
+  icon: IconType;
+  label: string;
+  value: string | React.ReactNode;
+}
+
 export const Assignment = ({ courseId }: { courseId: string }) => {
   const { user } = useContext(AppContext);
   const { courses } = useContext(AppContext);
 
   const courseInfo = courses?.find((course) => course.id === courseId);
+
+  const isPlanBSchool = courseInfo?.isPlanbSchool;
 
   const [assignmentsOrdered, setAssignmentsOrdered] = useState<
     CourseAssignment[]
@@ -119,7 +136,14 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
   const [selectedFileName, setSelectedFileName] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
-  const openAssignmentDate = new Date('2025-06-02T00:00:00Z').getTime();
+  const openAssignmentDate = new Date(
+    isPlanBSchool
+      ? '2025-06-02T00:00:00Z'
+      : courseInfo?.assignmentStartDate || '2025-06-02T00:00:00Z',
+  ).getTime();
+  const endAssignmentDate = new Date(
+    courseInfo?.assignmentEndDate || '2025-06-18T23:59:00Z',
+  ).getTime();
   const currentTime = Date.now();
   const isAssignmentOpen = currentTime >= openAssignmentDate;
   const isBeforeAssignmentOpen = currentTime < openAssignmentDate;
@@ -131,7 +155,8 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
   const hasAffectedAssignment = courseProgress?.affectedAssignmentId !== null;
   const hasSubmittedWork = courseProgress?.assignmentSubmissionTime !== null;
 
-  const shouldShowRanking = isSelectedForAssignment || isBeforeAssignmentOpen;
+  const shouldShowRanking =
+    isPlanBSchool && (isSelectedForAssignment || isBeforeAssignmentOpen);
   const canRankAssignments =
     isAssignmentOpen &&
     isSelectedForAssignment &&
@@ -283,22 +308,26 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
 
   return (
     <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
-      <div className="flex flex-col gap-5">
-        <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-          {t('dashboard.course.assignment')}
-        </h2>
-        <CollapsibleDropdown
-          title={t('dashboard.course.assignmentInformation')}
-          className="border border-newGray-4"
-          variant="dark"
-          defaultOpen={!hasAffectedAssignment}
-          icon={<LuCircleAlert />}
-        >
-          <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
-            {t('dashboard.course.assignmentDescription')}
-          </p>
-        </CollapsibleDropdown>
-      </div>
+      {!hasSubmittedWork && (
+        <div className="flex flex-col gap-5">
+          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+            {t('dashboard.course.assignment')}
+          </h2>
+          {courseInfo.assignmentDescription && (
+            <CollapsibleDropdown
+              title={t('dashboard.course.generalInformation')}
+              className="border border-newGray-4"
+              variant="dark"
+              defaultOpen={!hasAffectedAssignment}
+              icon={<LuCircleAlert />}
+            >
+              <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
+                {courseInfo.assignmentDescription}
+              </p>
+            </CollapsibleDropdown>
+          )}
+        </div>
+      )}
 
       {shouldShowRanking && !hasAffectedAssignment && (
         <>
@@ -370,26 +399,54 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
 
       {hasAffectedAssignment && affectedAssignment && (
         <div className="flex flex-col gap-5 md:gap-8">
-          <div className="flex flex-col gap-5">
-            <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-              {t('dashboard.course.yourProject')}
+          <section className="flex flex-col w-full bg-neutral-50 rounded-2xl">
+            <h3 className="px-2 md:px-6 py-3 border-b border-neutral-100 mobile-h3 md:title-large-sb-24px">
+              {t('dashboard.course.yourProjectAssignment')}
             </h3>
-
-            <article className="flex flex-col gap-4 p-4 rounded-xl border border-newGray-5 bg-newGray-6 subtitle-medium-16px">
-              <h4>
-                {t('words.company')}:{' '}
-                <span className="font-medium">{affectedAssignment.name}</span>
-              </h4>
-              <h4>
-                {t('words.title')}:{' '}
-                <span className="font-medium">
-                  {affectedAssignment.description}
-                </span>
-              </h4>
-              <h4>
-                {t('words.mentor')}:{' '}
-                <span className="font-medium">{affectedAssignment.mentor}</span>
-              </h4>
+            <div className="w-full p-2 md:p-6 flex flex-col gap-6 md:gap-7">
+              <article className="flex flex-col bg-white p-2 md:px-5 md:py-4 gap-2 rounded-2xl w-full">
+                <div className="flex flex-col gap-2">
+                  {affectedAssignment.name && (
+                    <InfoRow
+                      icon={TbBuildingSkyscraper}
+                      label={t('words.company')}
+                      value={affectedAssignment.name}
+                    />
+                  )}
+                  <InfoRow
+                    icon={TbBook2}
+                    label={t('words.title')}
+                    value={affectedAssignment.description}
+                  />
+                  {affectedAssignment.mentor && (
+                    <InfoRow
+                      icon={TbUser}
+                      label={t('words.mentor')}
+                      value={affectedAssignment.mentor}
+                    />
+                  )}
+                  <InfoRow
+                    icon={TbCalendar}
+                    label={t('words.date')}
+                    value={formatDateRange(
+                      courseInfo.assignmentStartDate || undefined,
+                      courseInfo.assignmentEndDate || undefined,
+                    )}
+                  />
+                  <InfoRow
+                    icon={TbWeight}
+                    label={t('words.weight')}
+                    value={
+                      <div className="flex items-center gap-3">
+                        <span>{courseInfo.assignmentWeight}%</span>
+                        <WeightIndicator
+                          weight={courseInfo.assignmentWeight || 0}
+                        />
+                      </div>
+                    }
+                  />
+                </div>
+              </article>
               <div className="flex max-md:flex-wrap gap-4 items-center">
                 <Button variant="outline" mode="light" size="s" asChild>
                   <a
@@ -401,23 +458,23 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
                     {t('dashboard.course.readAssignment')}
                   </a>
                 </Button>
-                <Button variant="outline" mode="light" size="s" asChild>
-                  <a
-                    href={affectedAssignment.telegramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <FaTelegram className="mr-2" />
-                    {t('dashboard.course.joinTelegramGroup')}
-                  </a>
-                </Button>
+                {affectedAssignment.telegramUrl && (
+                  <Button variant="outline" mode="light" size="s" asChild>
+                    <a
+                      href={affectedAssignment.telegramUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <FaTelegram className="mr-2" />
+                      {t('dashboard.course.joinTelegramGroup')}
+                    </a>
+                  </Button>
+                )}
               </div>
-            </article>
-          </div>
+            </div>
+          </section>
 
-          {!courseInfo.isAssignmentGradingPublished && (
-            <Divider mode="light" className="!mx-0" width="w-full" />
-          )}
+          <Divider mode="light" className="!mx-0" width="w-full" />
 
           {!hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
             <div className="flex flex-col gap-5">
@@ -432,11 +489,12 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
                 <AlertDescription>
                   <ul className="list-disc pl-6 text-newBlack-2">
                     <li>
-                      <Trans i18nKey={'dashboard.course.submitBefore'}>
-                        <span className="font-medium">
-                          June 18th at 23:59 (UTC+2)
-                        </span>
-                      </Trans>
+                      <span className="font-medium">
+                        {t('dashboard.course.submitBefore', {
+                          date: formatDate(endAssignmentDate),
+                          hour: formatTime(endAssignmentDate),
+                        })}
+                      </span>
                     </li>
                     <li>{t('dashboard.course.mustBePdf')}</li>
                   </ul>
@@ -499,26 +557,21 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
           )}
 
           {courseInfo.isAssignmentGradingPublished && (
-            <section className="flex flex-col w-full border border-newGray-5 rounded-2xl">
-              <h4 className="label-medium-16px md:label-large-20px font-medium text-newBlack-1 flex gap-2 md:gap-4 items-center border-b border-newGray-5 px-4 md:px-6 py-3">
+            <section className="flex flex-col w-full bg-white rounded-2xl border border-newGray-5">
+              <div className="px-2 md:px-6 py-3 border-b border-newGray-5 mobile-h3 md:title-large-sb-24px flex gap-2 md:gap-4 items-center">
                 <img
                   src={Certificate}
-                  alt={t('dashboard.course.assignmentCompletedTitle')}
+                  alt={'Certificate icon'}
                   className={cn('w-4 md:w-6')}
                 />
-                {t('dashboard.course.assignmentCompletedTitle')}
-              </h4>
-              <div className="flex flex-col justify-center items-center gap-2 p-6">
+                <span>{t('dashboard.course.assignmentCompletedTitle')}</span>
+              </div>
+              <div className="w-full p-2 md:p-6 flex flex-col gap-2 items-center justify-center">
                 <RadialGauge
-                  percentage={
-                    courseProgress?.assignmentGrade != null &&
-                    courseProgress.assignmentGrade >= 0
-                      ? courseProgress.assignmentGrade
-                      : 0
-                  }
-                  label={t('dashboard.course.assignmentScore')}
-                  variant="green"
                   size="l"
+                  label={t('dashboard.course.assignmentScore')}
+                  percentage={courseProgress?.assignmentGrade ?? 0}
+                  variant="green"
                 />
                 <ButtonWithArrow
                   variant="outline"
@@ -533,7 +586,7 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
                       window.scrollTo({ behavior: 'smooth', top: 0 });
                     }}
                   >
-                    {t('dashboard.course.viewFinalGrade')}
+                    {t('dashboard.course.viewScoreSummary')}
                   </Link>
                 </ButtonWithArrow>
               </div>
@@ -793,6 +846,19 @@ const InformationalPanel = ({
           {description}
         </p>
       )}
+    </div>
+  );
+};
+
+const InfoRow = ({ icon, label, value }: InfoRowProps) => {
+  const Icon = icon;
+  return (
+    <div className="flex items-center gap-2 flex-wrap w-full justify-between border-b border-neutral-50 py-1 last:border-b-0">
+      <div className="flex items-center gap-2 text-newGray-1">
+        <Icon size={24} />
+        <span className="body-16px">{label}</span>
+      </div>
+      <span className="text-newBlack-3 body-16px">{value}</span>
     </div>
   );
 };

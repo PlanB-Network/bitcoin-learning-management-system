@@ -883,6 +883,20 @@
       "when": 1751873841473,
       "tag": "0125_thin_vargas",
       "breakpoints": true
+    },
+    {
+      "idx": 126,
+      "version": "7",
+      "when": 1751962015456,
+      "tag": "0126_wise_black_cat",
+      "breakpoints": true
+    },
+    {
+      "idx": 127,
+      "version": "7",
+      "when": 1751978493897,
+      "tag": "0127_flashy_earthquake",
+      "breakpoints": true
     }
   ]
 }

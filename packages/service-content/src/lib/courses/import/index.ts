@@ -68,6 +68,10 @@ interface CourseMain {
   custom_tc_disclaimer: string;
   passing_grade_threshold_percentage: number;
   assignment_weight_percentage: number;
+  has_assignment?: boolean;
+  assignment_start_date?: number;
+  assignment_end_date?: number;
+  assignment_description?: string;
   test_only?: boolean;
   videos?: {
     id: string;
@@ -405,6 +409,7 @@ export const createUpdateCourses = ({
 
           const defaults = {
             format: 'online',
+            has_assignment: false,
             is_archived: false,
             is_gdpr_compliance: false,
             is_planb_school: false,
@@ -459,6 +464,10 @@ export const createUpdateCourses = ({
                    custom_tc_disclaimer,
                    passing_grade_threshold,
                    assignment_weight,
+                   has_assignment,
+                   assignment_start_date,
+                   assignment_end_date,
+                   assignment_description,
                    last_updated,
                    last_commit,
                    last_sync
@@ -494,6 +503,10 @@ export const createUpdateCourses = ({
                   ${parsedCourse.custom_tc_disclaimer},
                   ${parsedCourse.passing_grade_threshold_percentage},
                   ${parsedCourse.assignment_weight_percentage},
+                  ${parsedCourse.has_assignment === true},
+                  ${parsedCourse.assignment_start_date},
+                  ${parsedCourse.assignment_end_date},
+                  ${parsedCourse.assignment_description},
                   ${lastUpdated.time},
                   ${lastUpdated.commit},
                   NOW()
@@ -528,6 +541,10 @@ export const createUpdateCourses = ({
                   custom_tc_disclaimer = EXCLUDED.custom_tc_disclaimer,
                   passing_grade_threshold = EXCLUDED.passing_grade_threshold,
                   assignment_weight = EXCLUDED.assignment_weight,
+                  has_assignment = EXCLUDED.has_assignment,
+                  assignment_start_date = EXCLUDED.assignment_start_date,
+                  assignment_end_date = EXCLUDED.assignment_end_date,
+                  assignment_description = EXCLUDED.assignment_description,
                   last_updated = EXCLUDED.last_updated,
                   last_commit = EXCLUDED.last_commit,
                   last_sync = NOW()

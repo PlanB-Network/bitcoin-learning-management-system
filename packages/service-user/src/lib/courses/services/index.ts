@@ -1,3 +1,4 @@
+export * from './assignment.js';
 export * from './biz-school.js';
 export * from './complete-chapter.js';
 export * from './complete-exam.js';
@@ -31,4 +32,5 @@ export * from './send-course-welcome-email.js';
 export * from './set-assignment-grades-published.js';
 export * from './start-course.js';
 export * from './start-exam-attempt.js';
+export * from './teacher-led.js';
 export * from './update-payment.js';

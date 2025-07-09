@@ -37,6 +37,11 @@ export const getCoursesQuery = (language?: string) => {
       c.is_assignment_grading_published,
       c.passing_grade_threshold,
       c.assignment_weight,
+      c.has_assignment,
+      c.assignment_start_date,
+      c.assignment_end_date,
+      c.assignment_description,
+      c.are_scores_calculated,
       COALESCE(NULLIF(c.sum_of_all_rating::float, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating,
       COALESCE(
         (SELECT pr.name FROM content.projects pr WHERE pr.id = c.project_id LIMIT 1),
@@ -118,6 +123,11 @@ export const getProfessorCoursesQuery = (
       c.is_assignment_grading_published,
       c.passing_grade_threshold,
       c.assignment_weight,
+      c.has_assignment,
+      c.assignment_start_date,
+      c.assignment_end_date,
+      c.assignment_description,
+      c.are_scores_calculated,
       COALESCE(NULLIF(c.sum_of_all_rating::float, 0) / NULLIF(c.number_of_rating, 0), 0) AS average_rating,
       COALESCE(
         (SELECT pr.name FROM content.projects pr WHERE pr.id = c.project_id LIMIT 1),

@@ -7,12 +7,10 @@ import {
   Button,
   ButtonWithArrow,
   CollapsibleDropdown,
-  CustomGauge,
   cn,
   DividerSimple,
   DividerVertical,
   Loader,
-  RadialGauge,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
@@ -38,6 +36,12 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
     }),
   );
 
+  const { data: enrolledStudentsCount } = useQuery(
+    trpc.user.courses.getEnrolledStudentsCount.queryOptions({
+      courseId: course.id,
+    }),
+  );
+
   const { data: timestamp, isSuccess: isTimestampFetched } = useQuery(
     trpc.user.courses.getTeacherLedCourseDiplomaTimestamp.queryOptions({
       courseId: course.id,
@@ -51,6 +55,7 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
     p.chapters.filter((c) => c?.isSingleTrialExam),
   );
 
+  const courseHasAssignment = course?.hasAssignment;
   const assignmentWeight = course?.assignmentWeight ?? 40;
 
   const totalWeight =
@@ -59,6 +64,7 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
 
   const finalScore = courseProgress?.totalScore || 0;
   const passingThreshold = course.passingGradeThreshold ?? 50;
+  const totalStudents = enrolledStudentsCount ?? '-';
 
   const hasPassed = finalScore >= passingThreshold;
   const isCourseConclusionReleased = !!course?.parts?.some((part) =>
@@ -70,59 +76,93 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
     ),
   );
 
+  const examItems = singleTrialExams.map((exam) => ({
+    data: exam,
+    startDate: exam.startDate,
+    type: 'exam' as const,
+  }));
+
+  const assignmentItems = courseHasAssignment
+    ? [
+        {
+          data: {
+            description: t('dashboard.course.individualWork'),
+            endDate: new Date(
+              course.assignmentEndDate || '2024-06-18T23:59:00',
+            ),
+            isGradePublished: course.isAssignmentGradingPublished,
+            score:
+              typeof assignmentScore === 'number' && assignmentScore >= 0
+                ? assignmentScore
+                : undefined,
+            startDate: new Date(course.assignmentStartDate || '2024-06-02'),
+            title: t('dashboard.course.assignmentTitle'),
+            weight: assignmentWeight,
+          },
+          startDate: new Date(course.assignmentStartDate || '2024-06-02'),
+          type: 'assignment' as const,
+        },
+      ]
+    : [];
+  const allItems = [...examItems, ...assignmentItems].sort(
+    (a, b) => (a.startDate?.getTime() || 0) - (b.startDate?.getTime() || 0),
+  );
+
+  const scoreAndRankingClasses =
+    'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-newGray-5 w-full md:max-w-80';
+
   return (
     <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
-      {course.isAssignmentGradingPublished && (
+      {isCourseConclusionReleased && (
         <>
           <div className="flex flex-col gap-4 md:gap-6 w-full">
             <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
               {t('dashboard.course.finalGradeSummary')}
             </h2>
             <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
-              <div
-                className={cn(
-                  'flex flex-col items-center',
-                  hasPassed && 'gap-5',
-                )}
-              >
+              <div className="flex flex-col items-center gap-5">
                 {hasPassed && (
                   <SuccessExam className="size-7 md:size-9 fill-brightGreen-6" />
                 )}
-                <p
-                  className={cn(
-                    'whitespace-pre-line label-large-med-20px md:title-large-sb-24px text-center',
-                    hasPassed ? 'text-brightGreen-6' : 'text-yellow-5',
-                  )}
-                >
+                <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
                   {hasPassed
                     ? t('dashboard.course.congratulationsPassed')
-                    : t('dashboard.course.gaveSolidEffort')}
+                    : t('dashboard.course.keepMovingForward')}
                 </p>
-                {!hasPassed && (
-                  <p className="text-center body-14px md:body-16px text-newBlack-1">
-                    {t('dashboard.course.keepMovingForward')}
-                  </p>
-                )}
               </div>
               <div className="flex max-md:flex-col max-md:items-center gap-2.5 md:gap-4 items-stretch justify-center w-full">
-                <RadialGauge
-                  percentage={finalScore}
-                  label={t('dashboard.teacher.courses.finalScore')}
-                  subLabel={`${t(
-                    'dashboard.teacher.courses.thresholdToPass',
-                  )}: ${course?.passingGradeThreshold || 'N/A'}%`}
-                  variant={hasPassed ? 'green' : 'yellow'}
-                  size="l"
-                  showBackground
-                />
-                <CustomGauge
-                  value={courseProgress?.ranking?.toString() ?? '-'}
-                  label={t('dashboard.course.ranking')}
-                  variant="blue"
-                  type="star"
-                  size="l"
-                  showBackground
-                />
+                <div className={scoreAndRankingClasses}>
+                  <span
+                    className={cn(
+                      hasPassed ? 'text-brightGreen-6' : 'text-red-5',
+                      'title-large-sb-24px md:display-small-med-32px',
+                    )}
+                  >
+                    {finalScore}%
+                  </span>
+                  <div className="flex flex-col items-center">
+                    <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                      {t('dashboard.course.finalScore')}
+                    </span>
+                    <span className="body-12px text-newGray-2">
+                      {t('dashboard.course.thresholdToPass', {
+                        threshold: passingThreshold,
+                      })}
+                    </span>
+                  </div>
+                </div>
+                <div className={scoreAndRankingClasses}>
+                  <span
+                    className={cn(
+                      'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
+                    )}
+                  >
+                    {courseProgress?.ranking ?? '-'} / {totalStudents}
+                  </span>
+                  <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                    {t('dashboard.course.ranking')}
+                  </span>
+                </div>
               </div>
             </section>
           </div>
@@ -160,52 +200,51 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
         <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           {t('dashboard.course.exams')}
         </h2>
-        <CollapsibleDropdown
-          title={t('dashboard.course.generalInformation')}
-          className="border border-newGray-4"
-          variant="dark"
-          defaultOpen={singleTrialExams.length === 0}
-          icon={<LuCircleAlert />}
-        >
-          <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px">
-            {t('dashboard.course.planbSchoolGeneralInformation', {
-              threshold: passingThreshold,
-            })}
-          </p>
-        </CollapsibleDropdown>
+        {course?.isPlanbSchool && (
+          <CollapsibleDropdown
+            title={t('dashboard.course.generalInformation')}
+            className="border border-newGray-4"
+            variant="dark"
+            defaultOpen={singleTrialExams.length === 0}
+            icon={<LuCircleAlert />}
+          >
+            <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px">
+              {t('dashboard.course.planbSchoolGeneralInformation', {
+                threshold: passingThreshold,
+              })}
+            </p>
+          </CollapsibleDropdown>
+        )}
       </div>
 
       <div className="flex flex-col gap-4">
-        {singleTrialExams.map((exam) => {
+        {allItems.map((item) => {
+          if (item.type === 'exam') {
+            return (
+              <ExamItem
+                key={item.data.chapterId}
+                exam={item.data}
+                totalWeight={totalWeight}
+                courseId={course.id}
+                chapterId={item.data.chapterId}
+                language={item.data.language}
+              />
+            );
+          }
+
           return (
-            <ExamItem
-              key={exam.chapterId}
-              exam={exam}
-              totalWeight={totalWeight}
-              courseId={course.id}
-              chapterId={exam.chapterId}
-              language={exam.language}
+            <AssignmentItem
+              key={'assignment'}
+              title={item.data.title}
+              description={item.data.description}
+              weight={item.data.weight}
+              startDate={item.data.startDate}
+              endDate={item.data.endDate}
+              score={item.data.score}
+              isGradePublished={item.data.isGradePublished}
             />
           );
         })}
-        {course.isPlanbSchool &&
-          (courseProgress ? (
-            <AssignmentItem
-              title={t('dashboard.course.assignmentTitle')}
-              description={t('dashboard.course.individualWork')}
-              weight={assignmentWeight}
-              startDate={new Date('2024-06-02')}
-              endDate={new Date('2024-06-18T23:59:00')}
-              score={
-                typeof assignmentScore === 'number' && assignmentScore >= 0
-                  ? assignmentScore
-                  : undefined
-              }
-              isGradePublished={course.isAssignmentGradingPublished}
-            />
-          ) : (
-            <Loader />
-          ))}
       </div>
     </section>
   );
