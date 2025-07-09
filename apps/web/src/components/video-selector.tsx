@@ -238,7 +238,7 @@ function DisplayVideo({
       );
     }
     case VideoProvider.Peertube: {
-      const peertubeUrl = `https://peertube.planb.network/${idFromProvider}`;
+      const peertubeUrl = `https://peertube.planb.network/videos/embed/${idFromProvider}`;
 
       return (
         <div className="relative pt-[56.25%]">
