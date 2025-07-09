@@ -787,14 +787,16 @@ const HeaderBox = ({
         {children}
       </div>
       {text && (
-        <span
-          className={cn(
-            'text-center text-wrap title-medium-sb-18px max-md:hidden',
-            isDone || isCurrentStep ? 'text-newBlack-1' : 'text-newGray-4',
-          )}
-        >
-          {text}
-        </span>
+        <div className="relative w-full">
+          <span
+            className={cn(
+              'text-center text-nowrap title-medium-sb-18px max-md:hidden absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap',
+              isDone || isCurrentStep ? 'text-newBlack-1' : 'text-newGray-4',
+            )}
+          >
+            {text}
+          </span>
+        </div>
       )}
     </div>
   );
