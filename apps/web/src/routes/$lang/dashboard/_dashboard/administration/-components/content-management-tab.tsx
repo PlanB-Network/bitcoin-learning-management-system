@@ -24,6 +24,7 @@ import { ReassignCourseModal } from './reassign-course-modal.tsx';
 import SwapIcon from '#src/assets/translation/swap.svg';
 // Import filter icon
 import { SearchBar } from '#src/components/ui/search-bar.tsx';
+import { getLanguageName } from '#src/utils/i18n.ts';
 
 type SortField =
   | 'index'
@@ -41,8 +42,8 @@ export const ContentManagementTab = () => {
   const [selectedCourse, setSelectedCourse] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
-  const [sortField, setSortField] = useState<SortField>('index');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  const [sortField, setSortField] = useState<SortField>('isAssigned');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   // State for data
   const [availableTopics, setAvailableTopics] = useState<string[]>([]);
@@ -282,6 +283,11 @@ export const ContentManagementTab = () => {
                 'dashboard.adminPanel.translationPanel.contentManagement.table.course',
               )}
             </SharedTableHead>
+            <SharedTableHead>
+              {t(
+                'dashboard.adminPanel.translationPanel.contentManagement.table.language',
+              )}
+            </SharedTableHead>
             <SharedTableHead
               sortable
               onSort={() => handleSort('isAssigned')}
@@ -331,9 +337,9 @@ export const ContentManagementTab = () => {
                     <div className="text-sm font-medium text-gray-900 break-words">
                       {course.courseName || course.courseId}
                     </div>
-                    <div className="text-sm text-gray-500">
-                      {course.language.toUpperCase()}
-                    </div>
+                  </TableCell>
+                  <TableCell className="py-4 text-gray-900">
+                    {getLanguageName(course.language)}
                   </TableCell>
                   <TableCell className="py-4">
                     <span
@@ -413,7 +419,7 @@ export const ContentManagementTab = () => {
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={6}
+                  colSpan={7}
                   className="py-8 text-center text-gray-500"
                 >
                   {searchQuery || selectedTopic !== 'all'

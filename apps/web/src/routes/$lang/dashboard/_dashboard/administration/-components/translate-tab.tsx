@@ -48,7 +48,7 @@ export const TranslateTab = () => {
   /* ------------------------------------------------------------- */
   type SortField = 'index' | 'course' | 'todoCount' | 'totalLanguages';
   const [sortField, setSortField] = useState<SortField>('index');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
