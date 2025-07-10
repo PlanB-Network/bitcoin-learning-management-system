@@ -592,7 +592,15 @@
             "totalCourses": "Total courses"
           },
           "noLanguages": "No languages found",
-          "generalReport": "General Report"
+          "generalReport": "General Report",
+          "dateFilter": "Date filter",
+          "downloadData": "Download Data",
+          "year": "Year",
+          "chooseYear": "Which year do you want to consider?",
+          "fromMonth": "From",
+          "fromMonthPlaceholder": "From which month?",
+          "toMonth": "To",
+          "toMonthPlaceholder": "To which month?"
         },
         "contentManagement": {
           "title": "Content Management",
@@ -2061,5 +2069,19 @@
     "pageTitle": "Youtube Channels",
     "view": "View Youtube Channel",
     "watchTrailer": "Watch the trailer"
+  },
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
   }
 }

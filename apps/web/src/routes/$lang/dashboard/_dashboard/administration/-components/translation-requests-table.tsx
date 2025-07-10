@@ -140,16 +140,18 @@ export const TranslationRequestsTable = ({
     }
 
     const query = searchQuery.toLowerCase().trim();
-    return requests.filter((request: TranslationRequest) => {
-      const languageName = getLanguageName(request.language).toLowerCase();
-      return (
-        request.assigneeUsername.toLowerCase().includes(query) ||
-        request.courseName.toLowerCase().includes(query) ||
-        request.index.toLowerCase().includes(query) ||
-        request.language.toLowerCase().includes(query) ||
-        languageName.includes(query)
-      );
-    });
+    return requests
+      .filter((request: TranslationRequest) => {
+        const languageName = getLanguageName(request.language).toLowerCase();
+        return (
+          request.assigneeUsername.toLowerCase().includes(query) ||
+          request.courseName.toLowerCase().includes(query) ||
+          request.index.toLowerCase().includes(query) ||
+          request.language.toLowerCase().includes(query) ||
+          languageName.includes(query)
+        );
+      })
+      .sort((a, b) => a.index.localeCompare(b.index));
   }, [requests, searchQuery]);
 
   // Function to update assignment status using trpcClient
