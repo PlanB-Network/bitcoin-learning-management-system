@@ -15,10 +15,14 @@ import {
   SharedTableHeader,
 } from '../../../-components/shared-table-header.tsx';
 
-// Import des icônes
 import { getStatusBadgeClass, getStatusText } from '@blms/shared';
-import ArrowIcon from '#src/assets/icons/arrow_filled.svg';
-import ProfileIcon from '#src/assets/icons/groups.svg';
+import BookIcon from '#src/assets/translation/book_black.svg';
+import CalendarIcon from '#src/assets/translation/calendar.svg';
+import ProfileIcon from '#src/assets/translation/contributor.svg';
+import GridIcon from '#src/assets/translation/grid_view.svg';
+import LeftArrowIcon from '#src/assets/translation/left_arrow.svg';
+
+import { TextTag } from '@blms/ui';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId',
@@ -136,7 +140,7 @@ function UserDetailsPage() {
               onClick={handleBackToUserManagement}
               className="flex items-center gap-1 text-orange-600 hover:text-orange-700"
             >
-              <img src={ArrowIcon} alt="Back" className="w-3 h-3 rotate-180" />
+              <img src={LeftArrowIcon} alt="Back" className="w-3 h-3" />
               {t(
                 'dashboard.adminPanel.translationPanel.userManagement.actions.backToUsers',
               )}
@@ -156,29 +160,19 @@ function UserDetailsPage() {
               {/* Left side - User info */}
               <div className="space-y-4">
                 {/* Name with profile icon */}
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 text-gray-600">
-                    <img
-                      src={ProfileIcon}
-                      alt="Profile icon"
-                      className="w-5 h-5"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-lg font-medium text-gray-900">
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-2">
+                    <img src={ProfileIcon} alt="Profile" className="w-5 h-5" />
+                    <span className="text-lg font-medium text-gray-900">
                       {userDetails.displayName || userDetails.username}
-                    </div>
-                    {/* Languages under username with orange background */}
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {userDetails.languages.map((language) => (
-                        <span
-                          key={language}
-                          className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-orange-500 text-white"
-                        >
-                          {getLanguageNameFromData(language)}
-                        </span>
-                      ))}
-                    </div>
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1 mt-4 w-full">
+                    {userDetails.languages.map((language) => (
+                      <TextTag key={language} size="verySmall" variant="orange">
+                        {getLanguageNameFromData(language)}
+                      </TextTag>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -188,30 +182,11 @@ function UserDetailsPage() {
                 <div className="space-y-3">
                   {/* Start date with calendar icon */}
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 text-gray-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-label="Calendar"
-                      >
-                        <title>Calendar</title>
-                        <rect
-                          x="3"
-                          y="4"
-                          width="18"
-                          height="18"
-                          rx="2"
-                          ry="2"
-                        />
-                        <line x1="16" y1="2" x2="16" y2="6" />
-                        <line x1="8" y1="2" x2="8" y2="6" />
-                        <line x1="3" y1="10" x2="21" y2="10" />
-                      </svg>
-                    </div>
+                    <img
+                      src={CalendarIcon}
+                      alt="Calendar"
+                      className="w-5 h-5"
+                    />
                     <span className="text-base text-gray-900">
                       {formatDate(userDetails.startDate)}
                     </span>
@@ -219,21 +194,7 @@ function UserDetailsPage() {
 
                   {/* Total chapters */}
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 text-gray-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-label="Chapters"
-                      >
-                        <title>Book chapters</title>
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                      </svg>
-                    </div>
+                    <img src={GridIcon} alt="Chapters" className="w-5 h-5" />
                     <span className="text-base text-gray-900">
                       {userDetails.assignments.reduce((total) => {
                         // Estimate chapters per course (we can make this more accurate later)
@@ -247,21 +208,7 @@ function UserDetailsPage() {
 
                   {/* Courses with book icon */}
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 text-gray-600">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-label="Courses"
-                      >
-                        <title>Courses</title>
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                      </svg>
-                    </div>
+                    <img src={BookIcon} alt="Courses" className="w-5 h-5" />
                     <span className="text-base text-gray-900">
                       {userDetails.assignments.length}{' '}
                       {t(

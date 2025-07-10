@@ -3,13 +3,20 @@ import { useTranslation } from 'react-i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { HiOutlineChatAlt2, HiOutlineViewGrid } from 'react-icons/hi';
 
-import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
+import {
+  Button,
+  Loader,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextTag,
+} from '@blms/ui';
 
 import {
   SharedTable,
   SharedTableHead,
   SharedTableHeader,
-} from './shared-table-header.tsx';
+} from '../../-components/shared-table-header.tsx';
 
 import { AssignmentStatus } from '@blms/constants';
 import { getLanguageName } from '#src/utils/i18n.ts';
@@ -356,9 +363,9 @@ export const TranslationRequestsTable = ({
                     {request.assigneeUsername}
                   </TableCell>
                   <TableCell className="py-4">
-                    <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded">
-                      {request.index}
-                    </span>
+                    <TextTag size="verySmall" variant="grey">
+                      {request.index.toUpperCase()}
+                    </TextTag>
                   </TableCell>
                   <TableCell className="py-4 text-gray-900">
                     {request.courseName}
@@ -369,14 +376,13 @@ export const TranslationRequestsTable = ({
                   <TableCell className="py-4 text-center">
                     <div className="flex gap-2 justify-center">
                       {status === 'requested' ? (
-                        // For pending requests: Reject + Accept
                         <>
                           <Button
                             size="s"
                             variant="outline"
                             onClick={() => handleReject(request.id)}
                             disabled={isProcessing}
-                            className="text-red-600 border-red-300 hover:bg-red-50 hover:border-red-400"
+                            className="text-newOrange-1 border-newOrange-1 hover:bg-orange-50"
                           >
                             {isProcessing ? (
                               <Loader size="s" />
@@ -409,16 +415,16 @@ export const TranslationRequestsTable = ({
                             variant="outline"
                             onClick={() => handleDelete(request.id)}
                             disabled={isProcessing}
-                            className="text-red-600 border-red-300 hover:bg-red-50 hover:border-red-400 flex items-center gap-2"
+                            className="text-newOrange-1 border-newOrange-1 hover:bg-orange-50 flex items-center gap-2"
                           >
                             {isProcessing ? (
                               <Loader size="s" />
                             ) : (
                               <>
-                                <FaRegTrashAlt />
                                 {t(
                                   'dashboard.adminPanel.translationPanel.actions.delete',
                                 )}
+                                <FaRegTrashAlt />
                               </>
                             )}
                           </Button>

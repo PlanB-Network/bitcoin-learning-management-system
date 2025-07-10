@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
 
 import type { AdminUserManagement } from '@blms/types';
-import FilterIcon from '#src/assets/icons/Filter.svg';
 import SwapIcon from '#src/assets/translation/swap.svg';
+import { SearchBar } from '#src/components/ui/search-bar.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 import {
   SharedTable,
@@ -199,22 +199,14 @@ export const UserManagementTab = () => {
         </p>
 
         {/* Search */}
-        <div className="relative max-w-md">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={t(
-              'dashboard.adminPanel.translationPanel.searchPlaceholder',
-            )}
-            className="w-full px-4 py-2.5 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-newOrange-1 focus:border-newOrange-1 outline-none"
-          />
-          <img
-            src={FilterIcon}
-            alt={t('words.filter')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
-          />
-        </div>
+        <SearchBar
+          value={searchQuery}
+          onChange={setSearchQuery}
+          placeholder={t(
+            'dashboard.adminPanel.translationPanel.searchPlaceholder',
+          )}
+          className="max-w-lg"
+        />
       </div>
 
       {/* Table */}

@@ -62,12 +62,14 @@ export const SelectLanguagesModal = ({
 
     if (isOpen) {
       fetchLanguages();
-      trpcClient.content.translations.hasCourseUploads
+      trpcClient.content.hasCourseUploads
         .query({ courseId: course.id })
-        .then((info) => {
+        .then((info: { exists: boolean }) => {
           setState((prev) => ({ ...prev, hasExisting: info.exists }));
         })
-        .catch((e) => console.error('Error checking existing uploads', e));
+        .catch((e: unknown) =>
+          console.error('Error checking existing uploads', e),
+        );
     }
   }, [isOpen]);
 
@@ -142,7 +144,23 @@ export const SelectLanguagesModal = ({
   const [folderUrl, setFolderUrl] = useState('');
 
   const handleStartTranslation = useCallback(async () => {
-    if (state.selectedLanguages.length === 0) {
+    // User must have chosen at least one language AND (uploaded files OR previous uploads exist OR provided URL)
+    const readyToStart =
+      state.selectedLanguages.length > 0 &&
+      (state.hasExisting ||
+        state.selectedFiles.length > 0 ||
+        folderUrl.trim().length > 0);
+
+    if (!readyToStart) {
+      // Set error message prompting user to upload files first
+      setState((prev) => ({
+        ...prev,
+        folderError:
+          t(
+            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.missingFilesError',
+          ) ||
+          'Please upload translation files or provide a URL before starting.',
+      }));
       return;
     }
 
@@ -192,12 +210,20 @@ export const SelectLanguagesModal = ({
   }, [
     state.selectedLanguages,
     state.selectedFiles,
+    state.hasExisting,
     course.id,
     onClose,
     onSuccess,
     folderUrl,
     t,
   ]);
+
+  // Determine if translation can start (for button disabled state)
+  const canStartTranslation =
+    state.selectedLanguages.length > 0 &&
+    (state.hasExisting ||
+      state.selectedFiles.length > 0 ||
+      folderUrl.trim().length > 0);
 
   const handleClose = useCallback(() => {
     setState(initialState);
@@ -278,83 +304,81 @@ export const SelectLanguagesModal = ({
           )}
         </div>
 
-        {/* Folder / ZIP Section or Existing Notice */}
+        {/* Upload Section & Notice */}
         <div className="space-y-4">
-          {state.hasExisting ? (
+          {state.hasExisting && (
             <p className="text-sm text-gray-700 text-center">
               {t(
                 'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.existingUploadsInfo',
               )}
             </p>
-          ) : (
-            <>
-              <h3 className="text-sm font-medium text-gray-700 text-center">
-                {t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
-                )}
-              </h3>
-
-              <input
-                ref={folderInputRef}
-                type="file"
-                multiple
-                /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-                // @ts-ignore - non-standard attribute for folder selection
-                {...{ webkitdirectory: 'true', directory: 'true' }}
-                className="hidden"
-                onChange={handleFolderChange}
-              />
-
-              {/* Hidden input for ZIP selection */}
-              <input
-                ref={zipInputRef}
-                type="file"
-                accept=".zip"
-                className="hidden"
-                onChange={handleZipChange}
-              />
-
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
-                  <button
-                    type="button"
-                    onClick={handleFolderInputClick}
-                    className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
-                  >
-                    {t(
-                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseFolder',
-                    )}
-                  </button>
-                  <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                    {state.selectedFiles.length > 0
-                      ? `${state.selectedFiles.length} files selected`
-                      : t(
-                          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
-                        )}
-                  </span>
-                </div>
-
-                <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
-                  <button
-                    type="button"
-                    onClick={handleZipInputClick}
-                    className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
-                  >
-                    {t(
-                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseZip',
-                    )}
-                  </button>
-                  <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                    {state.selectedFiles.length > 0
-                      ? `${state.selectedFiles.length} file(s) selected`
-                      : t(
-                          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
-                        )}
-                  </span>
-                </div>
-              </div>
-            </>
           )}
+
+          <h3 className="text-sm font-medium text-gray-700 text-center">
+            {t(
+              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
+            )}
+          </h3>
+
+          {/* Hidden file inputs */}
+          <input
+            ref={folderInputRef}
+            type="file"
+            multiple
+            /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+            // @ts-ignore - non-standard attribute for folder selection
+            {...{ webkitdirectory: 'true', directory: 'true' }}
+            className="hidden"
+            onChange={handleFolderChange}
+          />
+
+          <input
+            ref={zipInputRef}
+            type="file"
+            accept=".zip"
+            className="hidden"
+            onChange={handleZipChange}
+          />
+
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+              <button
+                type="button"
+                onClick={handleFolderInputClick}
+                className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
+              >
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseFolder',
+                )}
+              </button>
+              <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                {state.selectedFiles.length > 0
+                  ? `${state.selectedFiles.length} files selected`
+                  : t(
+                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
+                    )}
+              </span>
+            </div>
+
+            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+              <button
+                type="button"
+                onClick={handleZipInputClick}
+                className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
+              >
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseZip',
+                )}
+              </button>
+              <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                {state.selectedFiles.length > 0
+                  ? `${state.selectedFiles.length} file(s) selected`
+                  : t(
+                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
+                    )}
+              </span>
+            </div>
+          </div>
 
           {state.overwriteWarning && (
             <p className="text-orange-600 text-xs" role="alert">
@@ -410,7 +434,7 @@ export const SelectLanguagesModal = ({
           <button
             type="button"
             onClick={handleStartTranslation}
-            disabled={state.selectedLanguages.length === 0 || state.isStarting}
+            disabled={!canStartTranslation || state.isStarting}
             className="flex-1 py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
           >
             {state.isStarting ? (

@@ -414,6 +414,7 @@
   "dashboard": {
     "account": "Account",
     "adminPanel": {
+      "translation": "Translation panel",
       "accessGranted": "Access granted",
       "bookings": "Bookings",
       "bookingsPanel": "Bookings panel",
@@ -708,6 +709,7 @@
             "startSuccess": "Translation started successfully!",
             "existingUploadsInfo": "Original files already uploaded. You can start translation without uploading them again. Uploading new files will overwrite existing ones.",
             "overwriteWarning": "Existing files will be replaced.",
+            "missingFilesError": "Please upload the translation files or provide a URL before starting the translation.",
             "uploadFolder": "Upload folder (PPTX + TXT)",
             "chooseFolder": "Choose folder",
             "chooseZip": "Choose ZIP",
