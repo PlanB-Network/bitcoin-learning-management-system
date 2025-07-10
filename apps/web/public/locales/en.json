@@ -534,7 +534,8 @@
           "inProgress": "In Progress",
           "completed": "Completed",
           "todo": "To Do",
-          "underReview": "Under Review"
+          "underReview": "Under Review",
+          "readyForReview": "Ready for Review"
         },
         "messages": {
           "noPendingRequests": "No pending translation requests found.",

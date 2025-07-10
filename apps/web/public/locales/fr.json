@@ -635,7 +635,8 @@
           "inProgress": "En cours",
           "completed": "Terminé",
           "todo": "À Faire",
-          "underReview": "En Révision"
+          "underReview": "En Révision",
+          "readyForReview": "Prêt pour révision"
         },
         "messages": {
           "noPendingRequests": "Aucune demande de traduction en attente trouvée.",

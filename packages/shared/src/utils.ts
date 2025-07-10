@@ -33,15 +33,15 @@ export const COURSES_CAREER_ACCESS = [BTC402ID, BIZ225ID, BIZ999ID];
 export const getStatusBadgeClass = (status: string): string => {
   switch (status) {
     case 'published':
-      return 'bg-green-100 text-green-800';
+      return 'bg-brightGreen-1 text-green-800';
     case 'reviewed':
-      return 'bg-blue-100 text-blue-800';
+      return 'bg-blue-200 text-white';
     case 'under_review':
-      return 'bg-orange-800 text-white';
+      return 'bg-darkOrange-8 text-white';
     case 'ready_for_review':
-      return 'bg-orange-400 text-white';
+      return 'bg-darkOrange-4 text-white';
     case 'in_progress':
-      return 'bg-orange-100 text-orange-800';
+      return 'bg-darkOrange-1 text-orange-800';
     case 'todo':
       return 'bg-gray-100 text-gray-800';
     default:
