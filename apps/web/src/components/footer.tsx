@@ -99,7 +99,7 @@ export const Footer = ({ variant = 'light' }: FooterProps) => {
 
       <div
         className={cn(
-          'flex w-full justify-center py-2 md:py-5',
+          'flex w-full justify-center py-6 md:py-5',
           logoBottomBgClass,
         )}
       >
