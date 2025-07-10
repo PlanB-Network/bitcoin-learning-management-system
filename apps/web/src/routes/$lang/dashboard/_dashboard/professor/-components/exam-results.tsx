@@ -133,13 +133,13 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   });
 
   return (
-    <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 lg:border border-newGray-5 bg-white rounded-2xl mt-3 lg:mt-8">
+    <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 md:border border-newGray-5 bg-white rounded-2xl mt-3 md:mt-8">
       {isCourseConclusionReleased && courseGradesAndSummary && (
-        <section className="relative flex flex-col items-center gap-3 lg:gap-7 w-full">
+        <section className="relative flex flex-col items-center gap-3 md:gap-7 w-full">
           <h2 className="text-center title-large-24px font-medium">
             {t('dashboard.teacher.courses.finalAverageResults')}
           </h2>
-          <div className="flex flex-wrap lg:gap-2 items-center justify-center w-full">
+          <div className="flex flex-wrap gap-x-12 md:gap-2 items-center justify-center w-full">
             {finalResultsInfos.totalStudents &&
             finalResultsInfos.totalStudents > 0 ? (
               <DashGauge
@@ -288,8 +288,8 @@ const ExamCard = ({
 
   return (
     <article className="bg-newGray-6 rounded-2xl overflow-hidden w-full">
-      <header className="p-4 lg:px-6 lg:py-3 border-b border-newGray-5 flex justify-between items-center">
-        <h4 className="label-med-18px font-medium lg:label-large-med-20px text-newBlack-1">
+      <header className="p-4 md:px-6 md:py-3 border-b border-newGray-5 flex justify-between items-center">
+        <h4 className="label-med-18px font-medium md:label-large-med-20px text-newBlack-1">
           {index + 1}. {name}
         </h4>
         {((assignmentGrades && assignmentGrades.length > 0) ||
@@ -309,7 +309,7 @@ const ExamCard = ({
               type="button"
               className="body-16px-medium text-newBlack-5 flex items-center gap-2"
             >
-              <span className="max-lg:hidden">
+              <span className="max-md:hidden">
                 {t('dashboard.teacher.courses.exportExamData')}
               </span>
               <TbFileTypeXls />
@@ -317,13 +317,13 @@ const ExamCard = ({
           )}
       </header>
 
-      <section className="p-3 xl:p-6 flex max-xl:flex-col gap-4 xl:gap-7 w-full">
-        <div className="flex flex-col grow self-center max-lg:w-full lg:min-w-80">
+      <section className="p-3 md:p-6 flex max-md:flex-col gap-4 md:gap-7 w-full">
+        <div className="flex flex-col grow self-center max-md:w-full md:min-w-80">
           <h5 className="mb-3 label-medium-med-16px text-newBlack-3">
             {t('words.structure')}
           </h5>
 
-          <div className="flex flex-col gap-1.5 bg-white rounded-2xl p-2 lg:p-5">
+          <div className="flex flex-col gap-1.5 bg-white rounded-2xl p-2 md:p-5">
             {examInfo?.nbQuestions && (
               <InfoRow
                 label={t('words.questions')}
@@ -364,12 +364,12 @@ const ExamCard = ({
           </div>
         </div>
         {areResultsPublished && (
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col max-md:grow max-md:self-center items-center">
             <h5 className="mb-3 label-medium-med-16px text-newBlack-3 self-start">
               {t('words.results')}
             </h5>
 
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap max-md:w-full">
               <RadialGauge
                 percentage={averageScore}
                 label={t('dashboard.teacher.courses.averageScore')}
@@ -422,9 +422,9 @@ const InfoRow = ({
   >
     <div className="flex items-center gap-2 text-newGray-1 shrink-0">
       {icon}
-      <span className="subtitle-small-14px lg:label-18px">{label}</span>
+      <span className="subtitle-small-14px md:label-18px">{label}</span>
     </div>
-    <span className="subtitle-small-14px lg:label-18px text-newBlack-3">
+    <span className="subtitle-small-14px md:label-18px text-newBlack-3">
       {value}
     </span>
   </div>

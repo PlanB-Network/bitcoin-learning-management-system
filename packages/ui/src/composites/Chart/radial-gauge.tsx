@@ -41,15 +41,15 @@ type DashGaugeVariant = keyof typeof gaugeVariantStyles;
 type CustomGaugeVariant = keyof typeof customGaugeVariantStyles;
 
 const gaugeContainerVariants = cva(
-  'flex items-center max-lg:justify-between relative justify-center rounded-2xl',
+  'flex items-center max-md:justify-between relative justify-center rounded-2xl',
   {
     defaultVariants: {
       size: 'm',
     },
     variants: {
       size: {
-        l: 'w-full max-w-54 lg:max-w-[336px] lg:px-14 py-7 flex-col',
-        m: 'w-66 lg:w-40 px-3 py-5 lg:flex-col',
+        l: 'w-full max-w-54 md:max-w-[336px] md:px-14 py-7 flex-col',
+        m: 'w-full md:w-40 px-3 py-5 md:flex-col',
       },
     },
   },
@@ -61,17 +61,17 @@ const SVG_VIEWBOX = '0 0 100 55';
 const SVG_CENTER_X = 50;
 const SVG_CENTER_Y = 50;
 
-const MOBILE_LABEL_CLASSES = 'subtitle-small-sb-14px lg:hidden';
+const MOBILE_LABEL_CLASSES = 'subtitle-small-sb-14px md:hidden';
 
 const getSvgContainerClasses = (size: 'm' | 'l') =>
-  cn('relative', size === 'l' ? 'w-full' : 'max-lg:w-26 lg:w-full');
+  cn('relative', size === 'l' ? 'w-full' : 'max-md:w-26 md:w-full');
 
 const getMainTextClasses = (size: 'm' | 'l') =>
   cn(
     'font-semibold',
     size === 'l'
       ? 'text-[44px] font-bold leading-0'
-      : 'title-large-24px lg:display-small-32px leading-0',
+      : 'title-large-24px md:display-small-32px leading-0',
   );
 
 const getLabelTextClasses = (size: 'm' | 'l') =>
@@ -79,7 +79,7 @@ const getLabelTextClasses = (size: 'm' | 'l') =>
     'text-center',
     size === 'l'
       ? 'text-[22px] tracking-015px font-semibold pt-5'
-      : 'title-small-sb-16px max-lg:hidden lg:pt-3',
+      : 'title-small-sb-16px max-md:hidden md:pt-3',
   );
 
 const getTextContainerClasses = (size: 'm' | 'l') =>
@@ -387,7 +387,14 @@ const CustomGauge = ({
             type === 'star' && '!bottom-0',
           )}
         >
-          <span className={getMainTextClasses(size)}>{value}</span>
+          <span
+            className={cn(
+              getMainTextClasses(size),
+              size === 'm' && 'md:!text-[28px]',
+            )}
+          >
+            {value}
+          </span>
         </div>
       </div>
 
