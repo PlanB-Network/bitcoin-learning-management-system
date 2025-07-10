@@ -139,7 +139,7 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
           <h2 className="text-center title-large-24px font-medium">
             {t('dashboard.teacher.courses.finalAverageResults')}
           </h2>
-          <div className="flex flex-wrap gap-x-12 md:gap-2 items-center justify-center w-full">
+          <div className="flex flex-wrap gap-x-12 md:gap-x-2 items-center justify-center w-full">
             {finalResultsInfos.totalStudents &&
             finalResultsInfos.totalStudents > 0 ? (
               <DashGauge

@@ -459,7 +459,6 @@ const DiplomaSection = ({
   courseName,
   courseCoordinator,
 }: DiplomaSectionProps) => {
-  const isMobile = useSmaller('md');
   const { i18n } = useTranslation();
 
   return (
@@ -478,7 +477,7 @@ const DiplomaSection = ({
           rel="noreferrer"
         >
           <Button
-            size={isMobile ? 's' : 'm'}
+            size={'m'}
             variant="primary"
             className="items-center flex gap-2.5"
           >
@@ -514,7 +513,7 @@ const DiplomaSection = ({
           '/tutorials/contribution/others/pbn-certificate-timestamping-dd16f8c0-00c1-45fd-8792-920612bed18f'
         }
         target="_blank"
-        className="mt-2.5 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline"
+        className="mt-4 md:mt-2.5 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline max-md:order-3"
       >
         <ApprovedIcon className="size-4" />
         <span>{t('dashboard.myCourses.verify')}</span>
@@ -528,9 +527,9 @@ const DiplomaSection = ({
           }),
         )}`}
         target="_blank"
-        className="w-fit md:hidden mt-2.5"
+        className="w-fit md:hidden mt-4"
       >
-        <Button variant="tertiary" size="s">
+        <Button variant="outline" size="m">
           Share on
           <BsTwitterX size={18} className="ml-1.5" />
         </Button>
