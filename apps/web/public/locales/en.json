@@ -1094,6 +1094,9 @@
     "resources": "Resources",
     "topics": "Topics"
   },
+  "footer": {
+    "followUsOn": "Follow us on"
+  },
   "glossary": {
     "anotherWord": "Search for another word",
     "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by <1>Loïc Morel (Pandul)</1>, available on this <2>Github repository</2>.",
@@ -1586,6 +1589,7 @@
     "about": "About",
     "about-us": "About Us",
     "abstract": "Abstract",
+    "academy": "Academy",
     "access": "Access",
     "action": "Action",
     "admin": "Admin",

@@ -1,142 +1,245 @@
-import { cn } from '@blms/ui';
+import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import {
-  BsGithub,
-  BsTwitterX,
-  BsYoutube,
-  // BsDiscord,
-  // BsFacebook,
-  // BsLinkedin,
-} from 'react-icons/bs';
-
-import { useGreater } from '#src/hooks/use-greater.ts';
-
-import OrangePill from '../assets/icons/footer_pill.webp?no-inline';
+import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
+import Nostr from '#src/assets/icons/nostr.svg?react';
+import Rumble from '#src/assets/icons/rumble.svg?react';
 import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 import PlanBLogoWhite from '../assets/logo/planb_logo_horizontal_white_orangepill_gradient.svg';
 
 interface FooterProps {
   variant?: 'light' | 'dark';
-  color?: string;
 }
 
-export const Footer = ({ variant = 'light', color }: FooterProps) => {
+const SOCIAL_LINKS = [
+  {
+    href: 'https://twitter.com/planb_network',
+    icon: BsTwitterX,
+    isReactIcon: true,
+    label: 'X',
+  },
+  {
+    href: 'https://www.youtube.com/@PlanBNetwork',
+    icon: BsYoutube,
+    isReactIcon: true,
+    label: 'YouTube',
+  },
+  {
+    href: 'https://github.com/PlanB-Network/bitcoin-educational-content',
+    icon: BsGithub,
+    isReactIcon: true,
+    label: 'Github',
+  },
+  {
+    href: 'https://www.linkedin.com/company/planb-network/',
+    icon: BsLinkedin,
+    isReactIcon: true,
+    label: 'Linkedin',
+  },
+  {
+    href: 'https://rumble.com/user/planb_network',
+    icon: Rumble,
+    isReactIcon: false,
+    label: 'Rumble',
+  },
+  {
+    href: 'https://primal.net/planbnetwork',
+    icon: Nostr,
+    isReactIcon: false,
+    label: 'Nostr',
+  },
+];
+
+export const Footer = ({ variant = 'light' }: FooterProps) => {
   const { t } = useTranslation();
 
+  const isLight = variant === 'light';
+  const backgroundClass =
+    variant === 'dark' ? 'bg-white text-newBlack-2' : 'bg-black text-white';
+  const textSecondaryClass = isLight ? 'text-newGray-4' : 'text-newBlack-5';
+  const logoBottomBgClass = isLight ? 'bg-newBlack-3' : 'bg-newGray-6';
+
   return (
-    <footer className="pt-16 md:pt-24 lg:pt-40 w-full">
+    <footer className="pt-16 md:pt-24 lg:pt-32 w-full">
+      <div className={cn('flex w-full flex-col', backgroundClass)}>
+        <div className="flex max-md:flex-col w-full p-4 pb-8 md:py-12 md:px-0 max-md:gap-4">
+          <div className="w-full flex max-md:flex-col justify-center gap-6 md:gap-28">
+            <NavigationSection
+              title={t('words.academy')}
+              links={[
+                { label: t('words.courses'), to: '/courses' },
+                { label: t('words.tutorials'), to: '/tutorials' },
+                { label: t('words.resources'), to: '/resources' },
+                { label: t('words.professors'), to: '/professors' },
+                { label: t('words.bCert'), to: '/b-cert' },
+                { label: t('labs.planBLabs'), to: '/plan-b-labs' },
+              ]}
+              textSecondaryClass={textSecondaryClass}
+            />
+
+            <NavigationSection
+              title={t('words.network')}
+              links={[
+                { label: t('words.events'), to: '/events' },
+                { label: t('words.nodeNetwork'), to: '/node-network' },
+                { label: t('words.public'), to: '/public-communication' },
+              ]}
+              textSecondaryClass={textSecondaryClass}
+            />
+
+            <SocialNetworksDesktop variant={variant} />
+          </div>
+
+          <div className="w-full flex flex-col md:hidden gap-4">
+            <DividerSimple mode={isLight ? 'dark' : 'light'} />
+            <SocialNetworksMobile variant={variant} />
+          </div>
+        </div>
+      </div>
+
       <div
         className={cn(
-          'flex w-full flex-col',
-          color ??
-            (variant === 'dark'
-              ? 'bg-white text-black'
-              : 'bg-black text-white'),
+          'flex w-full justify-center py-2 md:py-5',
+          logoBottomBgClass,
         )}
       >
-        <div className="relative z-10 flex w-full flex-col py-5 lg:py-28">
-          <div className="flex flex-row">
-            <div className="w-full mx-auto flex flex-col gap-6 lg:gap-20 px-7 xl:justify-center xl:mr-40 lg:flex-row">
-              <div className="flex flex-col gap-5 md:gap-8">
-                <img
-                  src={variant === 'light' ? PlanBLogoWhite : PlanBLogoBlack}
-                  alt="Logo Plan ₿ Network"
-                  className="w-36 md:w-60 self-start"
-                />
-                <SocialNetworks variant={variant} />
-              </div>
-              <div className="flex flex-row gap-7 min-[480px]:gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-32">
-                <div className="flex flex-col lg:ml-6">
-                  <h4 className="mb-2 text-xs min-[480px]:text-base font-bold">
-                    {t('words.content')}
-                  </h4>
-                  <ul className="flex flex-col gap-2 text-xs min-[480px]:text-base leading-snug">
-                    <li>
-                      <Link to={'/courses'}>{t('words.courses')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/resources'}>{t('words.resources')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/tutorials'}>{t('words.tutorials')}</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col">
-                  <h4 className="mb-2 text-xs min-[480px]:text-base font-bold">
-                    {t('words.network')}
-                  </h4>
-                  <ul className="flex flex-col gap-2 text-xs min-[480px]:text-base leading-snug">
-                    <li>
-                      <Link to={'/events'}>{t('words.events')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/node-network'}>{t('words.nodeNetwork')}</Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex flex-col">
-                  <h4 className="mb-2 text-xs min-[480px]:text-base font-bold">
-                    {t('words.about')}
-                  </h4>
-                  <ul className="flex flex-col gap-2 text-xs min-[480px]:text-base leading-snug">
-                    <li>
-                      <Link to={'/manifesto'}>{t('words.ourStory')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/professors'}>{t('words.professors')}</Link>
-                    </li>
-                    <li>
-                      <Link to={'/public-communication'}>
-                        {t('words.public')}
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <img
-            src={OrangePill}
-            className="absolute -right-0 h-[102px] md:h-56 lg:h-72 -top-12 md:-top-24 lg:-top-32 lg:right-12"
-            alt="Orange Pill"
-          />
-        </div>
+        <img
+          src={isLight ? PlanBLogoWhite : PlanBLogoBlack}
+          alt="Logo Plan ₿ Network"
+          className="w-26 md:w-30"
+        />
       </div>
     </footer>
   );
 };
 
-const SocialNetworks = ({ variant }: { variant: FooterProps['variant'] }) => {
-  const isScreenLg = useGreater('lg');
-  const iconSize = isScreenLg ? 24 : 18;
+const NavigationSection = ({
+  title,
+  links,
+  textSecondaryClass,
+}: {
+  title: string;
+  links: Array<{ to: string; label: string }>;
+  textSecondaryClass: string;
+}) => (
+  <div className="flex flex-col gap-0.5 md:gap-2">
+    <h4 className="body-14px-medium">{title}</h4>
+    <ul
+      className={cn(
+        'flex flex-col gap-1 md:gap-0.5 body-14px capitalize',
+        textSecondaryClass,
+      )}
+    >
+      {links.map(({ to, label }) => (
+        <li key={to}>
+          <Link to={to}>{label}</Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
-  const iconClasses = cn('', variant === 'light' ? 'text-white' : 'text-black');
+const SocialLink = ({
+  href,
+  icon: Icon,
+  label,
+  isReactIcon,
+  iconSize,
+  iconClasses,
+  showLabel = false,
+}: {
+  href: string;
+  icon: React.ElementType;
+  label: string;
+  isReactIcon: boolean;
+  iconSize?: number;
+  iconClasses: string;
+  showLabel?: boolean;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    className={showLabel ? 'flex items-center gap-2' : ''}
+  >
+    {isReactIcon ? (
+      <Icon size={iconSize} className={iconClasses} />
+    ) : (
+      <Icon
+        className={cn(
+          iconSize ? `w-${iconSize / 4} h-${iconSize / 4}` : 'h-3.5',
+          'fill-current',
+          iconClasses,
+        )}
+      />
+    )}
+    {showLabel && <span className="body-14px">{label}</span>}
+  </a>
+);
+
+const SocialNetworksMobile = ({
+  variant,
+}: {
+  variant: FooterProps['variant'];
+}) => {
+  const iconSize = 14;
+  const iconClasses = cn(
+    variant === 'light'
+      ? 'text-newGray-4 stroke-newGray-4'
+      : 'text-newBlack-5 stroke-newBlack-5',
+  );
 
   return (
-    <div className="flex gap-5">
-      <a
-        href="https://twitter.com/planb_network"
-        target="_blank"
-        rel="noreferrer"
+    <div className="flex gap-3.5 mx-auto">
+      {SOCIAL_LINKS.map(({ href, icon, label, isReactIcon }) => (
+        <SocialLink
+          key={href}
+          href={href}
+          icon={icon}
+          label={label}
+          isReactIcon={isReactIcon}
+          iconSize={iconSize}
+          iconClasses={iconClasses}
+        />
+      ))}
+    </div>
+  );
+};
+
+const SocialNetworksDesktop = ({
+  variant,
+}: {
+  variant: FooterProps['variant'];
+}) => {
+  const { t } = useTranslation();
+  const iconSize = 18;
+  const iconClasses = cn(
+    variant === 'light' ? 'stroke-newGray-4' : 'stroke-newBlack-5',
+  );
+
+  return (
+    <div className="flex flex-col gap-2 max-md:hidden">
+      <h4 className="body-14px-medium">{t('footer.followUsOn')}</h4>
+      <ul
+        className={cn(
+          'flex flex-col gap-0.5 body-14px',
+          variant === 'light' ? 'text-newGray-4' : 'text-newBlack-5',
+        )}
       >
-        <BsTwitterX size={iconSize} className={iconClasses} />{' '}
-      </a>
-      <a
-        href="https://github.com/PlanB-Network/bitcoin-educational-content"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <BsGithub size={iconSize} className={iconClasses} />{' '}
-      </a>
-      <a
-        href="https://www.youtube.com/@PlanBNetwork"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <BsYoutube size={iconSize} className={iconClasses} />
-      </a>
+        {SOCIAL_LINKS.map(({ href, icon, label, isReactIcon }) => (
+          <li key={href}>
+            <SocialLink
+              href={href}
+              icon={icon}
+              label={label}
+              isReactIcon={isReactIcon}
+              iconSize={iconSize}
+              iconClasses={iconClasses}
+              showLabel={true}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
