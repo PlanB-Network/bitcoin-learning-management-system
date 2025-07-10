@@ -270,7 +270,7 @@ export const MenuDashboard = ({
             )}
             <Link to={adminTranslationPanelPath}>
               <MenuItem
-                text="Admin Translation Panel"
+                text={t('dashboard.adminPanel.translation')}
                 icon={<AiOutlineTranslation size={24} />}
                 active={pathname.includes(adminTranslationPanelPath)}
                 onClick={toggleMobileMenu}

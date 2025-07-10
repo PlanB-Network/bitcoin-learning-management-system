@@ -2,8 +2,16 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import SwapIcon from '#src/assets/translation/swap.svg';
+import { SearchBar } from '#src/components/ui/search-bar.tsx';
 
-import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
+import {
+  Button,
+  Loader,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextTag,
+} from '@blms/ui';
 
 import type { CourseWithTodoTranslations } from '@blms/types';
 import { trpcClient } from '#src/utils/trpc.js';
@@ -28,6 +36,7 @@ export const TranslateTab = () => {
   });
 
   const [courses, setCourses] = useState<CourseWithTodoTranslations[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [languages, setLanguages] = useState<{ code: string; name: string }[]>(
     [],
   );
@@ -131,8 +140,20 @@ export const TranslateTab = () => {
     fetchCourses();
   }, [fetchCourses]);
 
+  // Filter courses based on search query
+  const filteredCourses = useMemo(() => {
+    if (!searchQuery.trim()) return courses;
+    const q = searchQuery.toLowerCase().trim();
+    return courses.filter(
+      (c) =>
+        c.courseName?.toLowerCase().includes(q) ||
+        c.index.toLowerCase().includes(q) ||
+        (c.todoLanguages || []).some((lang) => lang.toLowerCase().includes(q)),
+    );
+  }, [courses, searchQuery]);
+
   const sortedCourses = useMemo(() => {
-    const list = [...courses];
+    const list = [...filteredCourses];
     list.sort((a, b) => {
       let aVal: any;
       let bVal: any;
@@ -163,7 +184,7 @@ export const TranslateTab = () => {
       return sortDirection === 'asc' ? comp : -comp;
     });
     return list;
-  }, [courses, sortField, sortDirection]);
+  }, [filteredCourses, sortField, sortDirection]);
 
   if (isLoading) {
     return (
@@ -228,6 +249,16 @@ export const TranslateTab = () => {
         {t('dashboard.adminPanel.translationPanel.translate.description')}
       </p>
 
+      {/* Search Bar */}
+      <SearchBar
+        value={searchQuery}
+        onChange={setSearchQuery}
+        placeholder={t(
+          'dashboard.adminPanel.translationPanel.searchPlaceholder',
+        )}
+        className="max-w-lg"
+      />
+
       {/* Courses Table */}
       <div className="w-full">
         <SharedTable>
@@ -278,9 +309,9 @@ export const TranslateTab = () => {
             {sortedCourses.map((course: CourseWithTodoTranslations) => (
               <TableRow key={course.id}>
                 <TableCell className="font-medium">
-                  <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
-                    {course.index}
-                  </span>
+                  <TextTag size="verySmall" variant="grey">
+                    {course.index.toUpperCase()}
+                  </TextTag>
                 </TableCell>
                 <TableCell>
                   <span className="font-medium">{course.courseName}</span>

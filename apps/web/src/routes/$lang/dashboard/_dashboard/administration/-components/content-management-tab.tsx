@@ -3,7 +3,14 @@ import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
+import {
+  Button,
+  Loader,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextTag,
+} from '@blms/ui';
 
 import { trpcClient } from '#src/utils/trpc.js';
 import {
@@ -14,9 +21,9 @@ import {
 import { AssignCourseModal } from './assign-course-modal.tsx';
 import { ReassignCourseModal } from './reassign-course-modal.tsx';
 
-// Import filter icon
-import FilterIcon from '#src/assets/icons/Filter.svg';
 import SwapIcon from '#src/assets/translation/swap.svg';
+// Import filter icon
+import { SearchBar } from '#src/components/ui/search-bar.tsx';
 
 type SortField =
   | 'index'
@@ -242,29 +249,14 @@ export const ContentManagementTab = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="relative max-w-md">
-          <div className="relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={t(
-                'dashboard.adminPanel.translationPanel.searchPlaceholder',
-              )}
-              className="w-full px-4 py-2.5 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-newOrange-1 focus:border-newOrange-1 outline-none"
-            />
-            <button
-              type="button"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1"
-            >
-              <img
-                src={FilterIcon}
-                alt={t('words.filter')}
-                className="w-5 h-5"
-              />
-            </button>
-          </div>
-        </div>
+        <SearchBar
+          value={searchQuery}
+          onChange={setSearchQuery}
+          placeholder={t(
+            'dashboard.adminPanel.translationPanel.searchPlaceholder',
+          )}
+          className="max-w-lg"
+        />
       </div>
 
       {/* Courses Table */}
@@ -331,9 +323,9 @@ export const ContentManagementTab = () => {
                   className="border-b border-gray-100 hover:bg-gray-50"
                 >
                   <TableCell className="py-4 font-medium text-gray-900">
-                    <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
-                      {course.index}
-                    </span>
+                    <TextTag size="verySmall" variant="grey">
+                      {course.index?.toUpperCase()}
+                    </TextTag>
                   </TableCell>
                   <TableCell className="py-4">
                     <div className="text-sm font-medium text-gray-900 break-words">
