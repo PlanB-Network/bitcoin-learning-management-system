@@ -27,6 +27,7 @@ export const insertCourseTranslationSlideQuery = (
       ppt_resource_path,
       original_content,
       translated_content,
+      ai_translated_content,
       created_at,
       updated_at
     ) VALUES (
@@ -38,6 +39,7 @@ export const insertCourseTranslationSlideQuery = (
       ${slideNumber},
       ${pptResourcePath},
       ${originalContent},
+      ${translatedContent},
       ${translatedContent},
       NOW(),
       NOW()
@@ -56,6 +58,7 @@ export const insertCourseTranslationSlideQuery = (
       audio_resource_path AS "audioResourcePath",
       original_content AS "originalContent",
       translated_content AS "translatedContent",
+      ai_translated_content AS "aiTranslatedContent",
       status,
       created_at       AS "createdAt",
       updated_at       AS "updatedAt";

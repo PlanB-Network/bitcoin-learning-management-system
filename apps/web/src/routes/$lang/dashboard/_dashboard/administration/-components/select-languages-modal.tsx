@@ -23,6 +23,8 @@ interface ModalState {
   folderError: string;
   hasExisting: boolean;
   overwriteWarning: boolean;
+  hasEnglishTranslation: boolean;
+  useEnglish: boolean;
 }
 
 const initialState: ModalState = {
@@ -33,6 +35,8 @@ const initialState: ModalState = {
   folderError: '',
   hasExisting: false,
   overwriteWarning: false,
+  hasEnglishTranslation: false,
+  useEnglish: false,
 };
 
 export const SelectLanguagesModal = ({
@@ -43,6 +47,28 @@ export const SelectLanguagesModal = ({
 }: SelectLanguagesModalProps) => {
   const { t } = useTranslation();
   const [state, setState] = useState<ModalState>(initialState);
+
+  /* ------------------------------------------------------------- */
+  /* Check if English translation is published                      */
+  /* ------------------------------------------------------------- */
+  useEffect(() => {
+    const fetchEnglish = async () => {
+      if (course.originalLanguage?.toLowerCase() === 'en') return;
+      try {
+        const data =
+          await trpcClient.content.getAvailableCourseTranslations.query({
+            language: 'en',
+            courseId: course.id,
+          });
+        if (data && data.length > 0) {
+          setState((prev) => ({ ...prev, hasEnglishTranslation: true }));
+        }
+      } catch (err) {
+        console.error('Failed fetching English translation info', err);
+      }
+    };
+    fetchEnglish();
+  }, [course.id, course.originalLanguage]);
 
   const folderInputRef = useRef<HTMLInputElement>(null);
   const zipInputRef = useRef<HTMLInputElement>(null);
@@ -178,6 +204,11 @@ export const SelectLanguagesModal = ({
         formData.append('url', folderUrl);
       }
 
+      // Append useEnglish flag if relevant
+      if (state.hasEnglishTranslation) {
+        formData.append('useEnglish', state.useEnglish ? 'true' : 'false');
+      }
+
       const response = await fetch('/api/translation-uploads', {
         method: 'POST',
         body: formData,
@@ -216,6 +247,8 @@ export const SelectLanguagesModal = ({
     onSuccess,
     folderUrl,
     t,
+    state.hasEnglishTranslation,
+    state.useEnglish,
   ]);
 
   // Determine if translation can start (for button disabled state)
@@ -229,6 +262,27 @@ export const SelectLanguagesModal = ({
     setState(initialState);
     onClose();
   }, [onClose]);
+
+  /* ------------------------------------------------------------- */
+  /* Checkbox for using English                                     */
+  /* ------------------------------------------------------------- */
+  const englishCheckboxSection = state.hasEnglishTranslation ? (
+    <div className="flex items-center gap-2">
+      <input
+        id="use-english-checkbox"
+        type="checkbox"
+        checked={state.useEnglish}
+        onChange={() =>
+          setState((prev) => ({ ...prev, useEnglish: !prev.useEnglish }))
+        }
+      />
+      <label htmlFor="use-english-checkbox" className="text-sm text-gray-700">
+        {t(
+          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.useEnglishLabel',
+        )}
+      </label>
+    </div>
+  ) : null;
 
   return (
     <CommonModal
@@ -304,16 +358,11 @@ export const SelectLanguagesModal = ({
           )}
         </div>
 
+        {/* English checkbox */}
+        {englishCheckboxSection}
+
         {/* Upload Section & Notice */}
         <div className="space-y-4">
-          {state.hasExisting && (
-            <p className="text-sm text-gray-700 text-center">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.existingUploadsInfo',
-              )}
-            </p>
-          )}
-
           <h3 className="text-sm font-medium text-gray-700 text-center">
             {t(
               'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
@@ -340,7 +389,7 @@ export const SelectLanguagesModal = ({
             onChange={handleZipChange}
           />
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
               <button
                 type="button"
@@ -419,6 +468,15 @@ export const SelectLanguagesModal = ({
             />
           </div>
         </div>
+
+        {/* Info about existing uploads */}
+        {state.hasExisting && (
+          <p className="text-sm text-gray-700 text-center">
+            {t(
+              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.existingUploadsInfo',
+            )}
+          </p>
+        )}
 
         {/* Action Buttons */}
         <div className="flex gap-3 pt-4">
