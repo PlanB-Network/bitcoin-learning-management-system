@@ -97,7 +97,7 @@ function SegmentedControlItem({
           size: context.size || size,
           variant: context.variant || variant,
         }),
-        'shadow-sm !body-12px md:!body-14px !text-newBlack-5 data-[state=on]:!text-newBlack-3 data-[state=on]:!font-medium data-[state=on]:bg-white max-md:text-xs hover:bg-newGray-5 min-w-0 flex-1 shrink-0 focus:z-10 focus-visible:z-10 border-0 rounded-lg',
+        'max-w-fit overflow-hidden !body-12px md:!body-14px !text-newBlack-5 data-[state=on]:!text-newBlack-3 data-[state=on]:!font-medium data-[state=on]:bg-white data-[state=on]:shadow-sm max-md:text-xs hover:bg-newGray-5 min-w-0 flex-1 shrink-0 focus:z-10 focus-visible:z-10 border-0 rounded-lg',
         className,
       )}
       {...props}

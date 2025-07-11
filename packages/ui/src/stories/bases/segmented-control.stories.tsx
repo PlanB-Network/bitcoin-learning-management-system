@@ -21,7 +21,7 @@ export const Default: Story = {
   render: (_args) => (
     <SegmentedControl variant="outline" defaultValue={'two'}>
       <SegmentedControlItem value={'one'} key={'one'}>
-        Object one
+        Long object one
       </SegmentedControlItem>
       <SegmentedControlItem value={'two'} key={'two'}>
         Object two
