@@ -1,7 +1,7 @@
 {
-  "root": false,
-  "extends": "//",
   "assist": {
     "actions": { "source": { "organizeImports": "on", "useSortedKeys": "off" } }
-  }
+  },
+  "extends": "//",
+  "root": false
 }

@@ -13,7 +13,6 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.6",
     "@blms/api": "workspace:*",
     "@blms/types": "workspace:*",
     "@testing-library/dom": "^10.4.0",
