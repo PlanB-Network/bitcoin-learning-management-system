@@ -22,27 +22,27 @@ import { TimeStampDialog } from '../course-exam/course-exam-result.tsx';
 interface ConclusionFinishProps {
   course: CourseResponse;
   examResults?: CourseExamResults;
-  hasSingleTrialExamAndThreshold?: boolean;
+  hasSingleTrialExamOrAssignment?: boolean;
   hasPassedCourseThreshold?: boolean;
 }
 
 export const ConclusionFinish = ({
   course,
   examResults,
-  hasSingleTrialExamAndThreshold = false,
+  hasSingleTrialExamOrAssignment = false,
   hasPassedCourseThreshold = false,
 }: ConclusionFinishProps) => {
   const { session } = useContext(AppContext);
 
   return (
     <>
-      {!hasSingleTrialExamAndThreshold && (
+      {!hasSingleTrialExamOrAssignment && (
         <>
           <Professor course={course} addThanksTipping />
           <Credits course={course} />
         </>
       )}
-      {hasSingleTrialExamAndThreshold ? (
+      {hasSingleTrialExamOrAssignment ? (
         hasPassedCourseThreshold ? (
           <DiplomaTeacherLed course={course} />
         ) : null

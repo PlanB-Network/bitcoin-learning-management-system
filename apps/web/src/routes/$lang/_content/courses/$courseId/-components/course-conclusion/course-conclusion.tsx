@@ -76,16 +76,23 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     }),
   );
 
-  const examChapterId = courseChapters?.find((c) => c.isCourseExam)?.chapterId;
+  const isProfessorLed = course?.teachingFormat === 'professor_led';
+
+  const hasAssignment = course?.hasAssignment;
+
+  const multiAttemptsExamChapterId = courseChapters?.find(
+    (c) => c.isCourseExam,
+  )?.chapterId;
+
   const reviewChapterId = courseChapters?.find(
     (c) => c.isCourseReview,
   )?.chapterId;
   const conclusionChapter = courseChapters?.find((c) => c.isCourseConclusion);
 
-  const hasSingleTrialExamAndThreshold =
+  const hasSingleTrialExamOrAssignment =
     course?.parts.some((part) =>
       part.chapters.some((chapter) => chapter.isSingleTrialExam),
-    ) && !!course.passingGradeThreshold;
+    ) || hasAssignment;
   const totalScore = courseProgress?.[0]?.totalScore;
   const hasPassedCourseThreshold =
     totalScore !== undefined &&
@@ -119,7 +126,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
         courseId: chapter.courseId,
       },
       {
-        enabled: step >= 2 && !hasSingleTrialExamAndThreshold,
+        enabled: step >= 2 && !hasSingleTrialExamOrAssignment,
       },
     ),
   );
@@ -211,7 +218,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
       setTimeout(() => updateStep(6), STEP_DURATION);
     }
     if (
-      (previousExamResults?.succeeded || hasSingleTrialExamAndThreshold) &&
+      (previousExamResults?.succeeded || hasSingleTrialExamOrAssignment) &&
       step === 3
     ) {
       setTimeout(() => updateStep(4), STEP_DURATION);
@@ -238,7 +245,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   }, [step]);
 
   useEffect(() => {
-    if (!examChapterId) {
+    if (!multiAttemptsExamChapterId) {
       completeConclusionChapter();
     }
   }, [step]);
@@ -287,7 +294,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
       <p className="text-darkOrange-5 text-2xl leading-snug max-md:title-medium-sb-18px">
         {t('courses.conclusion.congratulationsEnd')}
       </p>
-      {session?.user && (examChapterId || conclusionChapter?.releaseDate) ? (
+      {session?.user &&
+      (multiAttemptsExamChapterId || hasSingleTrialExamOrAssignment) ? (
         <>
           <p className="text-newBlack-1 body-16px mb-3 max-md:hidden">
             {step >= 5
@@ -373,12 +381,12 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               isDone={
                 step >= 3 &&
                 (!!previousExamResults?.succeeded ||
-                  !!hasSingleTrialExamAndThreshold)
+                  !!hasSingleTrialExamOrAssignment)
               }
               isCurrentStep={step === 3 || isCourseExamSkipped}
             >
               {step < 3 ||
-              (!previousExamResults && !hasSingleTrialExamAndThreshold) ? (
+              (!previousExamResults && !hasSingleTrialExamOrAssignment) ? (
                 <BookPixel
                   className={cn(
                     iconSizeClass,
@@ -389,7 +397,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                 />
               ) : (
                 <>
-                  {hasSingleTrialExamAndThreshold ? (
+                  {hasSingleTrialExamOrAssignment ? (
                     <Certificate
                       className={cn(iconSizeClass, 'filter-white')}
                     />
@@ -407,7 +415,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               <div className={linkMainClass}>
                 {step >= 3 &&
                 (previousExamResults?.succeeded ||
-                  !!hasSingleTrialExamAndThreshold ||
+                  !!hasSingleTrialExamOrAssignment ||
                   isCourseExamSkipped) ? (
                   <div className={linkSubClass} />
                 ) : null}
@@ -524,7 +532,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             ) : null}
 
             {step >= 3 && step <= 4 ? (
-              hasSingleTrialExamAndThreshold ? (
+              isProfessorLed ? (
                 <StepMessage
                   title={t('courses.exam.finalScore')}
                   headline={
@@ -641,7 +649,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                           <Link
                             to="/courses/$courseId/$chapterId"
                             params={{
-                              chapterId: examChapterId,
+                              chapterId: multiAttemptsExamChapterId,
                               courseId: course?.id,
                             }}
                           >
@@ -709,7 +717,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               <ConclusionFinish
                 course={course}
                 examResults={previousExamResults ?? undefined}
-                hasSingleTrialExamAndThreshold={hasSingleTrialExamAndThreshold}
+                hasSingleTrialExamOrAssignment={hasSingleTrialExamOrAssignment}
                 hasPassedCourseThreshold={hasPassedCourseThreshold}
               />
             ) : null}
@@ -717,7 +725,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
         </>
       ) : course ? (
         <>
-          {session?.user || !examChapterId ? (
+          {session?.user || !multiAttemptsExamChapterId ? (
             <p className="text-newBlack-1 body-16px mb-3 max-md:hidden">
               {t('courses.conclusion.finalStep')}
             </p>
