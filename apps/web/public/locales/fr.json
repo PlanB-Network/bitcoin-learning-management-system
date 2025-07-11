@@ -813,7 +813,8 @@
             "chooseZip": "Choisir ZIP",
             "noZipSelected": "Aucun ZIP sélectionné",
             "noFolderSelected": "Aucun dossier sélectionné",
-            "folderUrl": "URL du dossier"
+            "folderUrl": "URL du dossier",
+            "useEnglishLabel": "Le cours est déjà traduit en anglais. Utiliser la version anglaise comme source ?"
           }
         }
       }

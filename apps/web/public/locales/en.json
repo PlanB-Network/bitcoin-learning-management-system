@@ -723,7 +723,8 @@
             "chooseZip": "Choose ZIP",
             "noZipSelected": "No ZIP selected",
             "noFolderSelected": "No folder selected",
-            "folderUrl": "Folder URL"
+            "folderUrl": "Folder URL",
+            "useEnglishLabel": "The course has already been translated into English. Use the English version as source?"
           }
         }
       },

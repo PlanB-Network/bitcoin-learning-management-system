@@ -4,6 +4,7 @@ import path from 'node:path';
 import {
   createCreateCourseTranslationUpload,
   createDeleteCourseTranslationUploadsByCourseId,
+  createGetAvailableCourseTranslations,
   createGetCourseOriginalLanguage,
   createGetCourseTranslationUploads,
   createGetPartAndChapterIds,
@@ -31,6 +32,7 @@ const receiveUploadForm = (req: any) => {
     courseId: string;
     languages: string[];
     files: formidable.File[];
+    useEnglish?: boolean;
   }>((resolve, reject) => {
     const form = formidable({ multiples: true, keepExtensions: true });
 
@@ -47,6 +49,9 @@ const receiveUploadForm = (req: any) => {
         ? fields.languages[0]
         : fields.languages;
       const urlField = Array.isArray(fields.url) ? fields.url[0] : fields.url;
+      const useEnglishField = Array.isArray(fields.useEnglish)
+        ? fields.useEnglish[0]
+        : fields.useEnglish;
 
       if (!courseId || !languagesField) {
         reject(new BadRequest('Missing courseId or languages'));
@@ -133,10 +138,17 @@ const receiveUploadForm = (req: any) => {
         (f) => !f.originalFilename?.toLowerCase().endsWith('.zip'),
       );
 
+      // Parse optional useEnglish flag
+      let useEnglishOverride: boolean | undefined;
+      if (typeof useEnglishField === 'string') {
+        useEnglishOverride = useEnglishField.toLowerCase() === 'true';
+      }
+
       resolve({
         courseId: courseId as string,
         languages,
         files: finalFiles,
+        useEnglish: useEnglishOverride,
       });
     });
   });
@@ -178,6 +190,7 @@ async function translateCourseOnToolkit(payload: {
   course_id: string;
   source_lang: string;
   target_langs: string[];
+  use_english?: boolean;
 }): Promise<string | null> {
   if (!LT_BASE_URL) {
     console.warn('[LT] LT_BASE_URL not set – skipping Toolkit call');
@@ -383,6 +396,9 @@ export const createRestTranslationUploadRoutes = async (
   const setReadyService = createSetTranslationsReadyForReview(
     dependencies as any,
   );
+  const getAvailableCourseTranslations = createGetAvailableCourseTranslations(
+    dependencies as any,
+  );
   const getCourseOriginalLang = createGetCourseOriginalLanguage(
     dependencies as any,
   );
@@ -401,6 +417,7 @@ export const createRestTranslationUploadRoutes = async (
           courseId,
           languages,
           files: initialFiles,
+          useEnglish: useEnglishOverride,
         } = await receiveUploadForm(req);
 
         // Check existing uploads for this course
@@ -410,6 +427,19 @@ export const createRestTranslationUploadRoutes = async (
         const originalLanguage = await getCourseOriginalLang(courseId);
         if (!originalLanguage) {
           throw new InternalServerError('Course not found');
+        }
+
+        // Determine if we should use English as the intermediate language
+        const enTranslations = await getAvailableCourseTranslations(
+          'en',
+          courseId,
+        );
+        let useEnglish =
+          originalLanguage.toLowerCase() !== 'en' && enTranslations.length > 0;
+
+        // If the client provided an explicit preference, override automatic decision
+        if (typeof useEnglishOverride === 'boolean') {
+          useEnglish = useEnglishOverride;
         }
 
         const filesProvided = initialFiles.length > 0;
@@ -436,6 +466,7 @@ export const createRestTranslationUploadRoutes = async (
             course_id: courseId,
             source_lang: originalLanguage,
             target_langs: languages,
+            ...(useEnglish ? { use_english: true } : {}),
           });
 
           if (taskId) {
@@ -471,15 +502,34 @@ export const createRestTranslationUploadRoutes = async (
           const relativePath = file.originalFilename ?? file.newFilename;
           const segments = relativePath.split(pathSeparator);
 
-          // find any segment matching "digit.digit"
+          let partIndex: number | null = null;
+          let chapterIndex: number | null = null;
+
+          // Try to find a directory segment like "1.2"
           const partChapSegment = segments.find((s) => /^\d+\.\d+$/.test(s));
-          if (!partChapSegment) continue;
+          if (partChapSegment) {
+            const m = /^(\d+)\.(\d+)$/.exec(partChapSegment);
+            if (m) {
+              partIndex = Number(m[1]);
+              chapterIndex = Number(m[2]);
+            }
+          }
 
-          const match = /^(\d+)\.(\d+)$/.exec(partChapSegment);
-          if (!match) continue; // skip files not in expected dir
+          // Fallback: look at the filename itself (before first underscore or dot)
+          if (partIndex === null || chapterIndex === null) {
+            const baseName = segments[segments.length - 1]; // e.g. 1.2_0.txt
+            const m2 = /^(\d+)\.(\d+)/.exec(baseName);
+            if (m2) {
+              partIndex = Number(m2[1]);
+              chapterIndex = Number(m2[2]);
+            }
+          }
 
-          const partIndex = Number(match[1]);
-          const chapterIndex = Number(match[2]);
+          if (partIndex === null || chapterIndex === null) {
+            // Skip files not matching expected pattern
+            continue;
+          }
+
           const key = `${partIndex}.${chapterIndex}`;
 
           let group = chapterGroups.get(key);
@@ -598,6 +648,7 @@ export const createRestTranslationUploadRoutes = async (
           course_id: courseId,
           source_lang: originalLanguage,
           target_langs: languages,
+          ...(useEnglish ? { use_english: true } : {}),
         });
 
         if (secondTaskId) {
