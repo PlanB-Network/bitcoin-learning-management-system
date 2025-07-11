@@ -237,6 +237,7 @@
       "examCertificateCompletionText": "Plan ₿ Network a le plaisir de féliciter {{username}} pour avoir obtenu le diplôme du cours \"{{courseName}}\".",
       "examDetails": "L'examen comprend 40 questions à choix multiples, chacune avec une seule bonne réponse. Vous pouvez changer vos réponses à tout moment avant de les soumettre, tant que le chronomètre n'est pas fini.",
       "examNotPassed": "Vous devez passer l'examen final et obtenir plus de 80% pour obtenir votre diplôme et terminer entièrement le cours. Ce diplôme sera <0>horodaté</0> pour garantir son authenticité.",
+      "examResults": "Résultats d'examen",
       "explanations": "Explications :",
       "failed": "Échoué",
       "failedDiploma": "Vous devez obtenir plus de 80% à l'examen final pour obtenir votre diplôme et terminer entièrement le cours. Vous pouvez repasser l'examen après 24 heures.",
@@ -276,6 +277,7 @@
       "retakeInstructions": "Vous avez 20 minutes pour répondre à 40 questions, chacune avec une seule bonne réponse. Vous pouvez naviguer entre les questions et soumettre vos réponses à la fin.",
       "sameRules": "Vous êtes sur le point de repasser l'examen final. Les règles restent les mêmes.",
       "score": "Score",
+      "scoreAndDiploma": "Score & Diplôme",
       "singleAttempt": "Examen à tentative unique",
       "singleAttemptAvailability": "Cet examen est disponible en ligne à partir du {{date}}",
       "singleAttemptPrecaution": "Avant de commencer, veuillez vous assurer que votre connexion est stable. Comme il s'agit d'un examen à tentative unique, si vous êtes déconnecté, vous ne pourrez pas essayer à nouveau.",
@@ -309,9 +311,7 @@
       "weight": "Poids : {{weight}}%",
       "whyTimeStamp": "Horodatage de votre diplôme :\nPourquoi c'est important",
       "wishTryAgain": "Si vous souhaitez réessayer, l'examen sera disponible dans 24 heures.",
-      "yesSubmit": "Oui, soumettre",
-      "examResults": "Résultats d'examen",
-      "scoreAndDiploma": "Score & Diplôme"
+      "yesSubmit": "Oui, soumettre"
     },
     "explorer": {
       "buildPath": "Construisez votre propre chemin dans le terrier du lapin",
@@ -751,6 +751,7 @@
       "assignmentCompletedTitle": "Devoir terminé",
       "assignmentDescription": "L'attribution du projet marque la seconde phase du programme Plan ₿ Biz School et n'est disponible que pour les étudiants qui ont réussi la première phase. Selon leur classement et leurs préférences, chaque étudiant se verra attribuer un projet développé par une entreprise Bitcoin, qui doit être soumis avant le 18 juin.\nLes étudiants prépareront le devoir du 2 juin au 18 juin, avec la possibilité de recevoir un mentorat d'un représentant de l'entreprise.\n\nLes projets seront notés par l'entreprise, et les scores influenceront la note finale. Seuls les étudiants les mieux classés seront invités à participer à l'école d'été à Lugano, en Suisse, du 23 juillet au 30 juillet 2025.",
       "assignmentInformation": "Informations sur la mission",
+      "assignmentScore": "Score du devoir",
       "assignmentTitle": "Mission du projet",
       "checkDetailsCompleted": "Ici, vous pouvez vérifier tous les détails concernant le cours que vous avez terminé.",
       "completionDiploma": "Diplôme final",
@@ -808,8 +809,7 @@
       "thresholdToPass": "",
       "tweetText": "Fier d'avoir terminé le cours {{courseIndex}} chez @planb_network et d'avoir obtenu mon certificat avec un score de {{score}}/100 à l'examen final ! {{emoji}}\n\n{{certificateUrl}}",
       "viewFinalGrade": "",
-      "yourProject": "",
-      "assignmentScore": "Score du devoir"
+      "yourProject": ""
     },
     "courses": "Cours",
     "credentials": {
