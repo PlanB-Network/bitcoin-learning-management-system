@@ -264,9 +264,14 @@ const ExamCard = ({
     ),
   );
 
+  const now = Date.now();
+  const TWO_HOURS = 2 * 60 * 60 * 1000;
+
   const areResultsPublished =
     type === 'single-trial'
-      ? endDate != null && endDate < new Date() && examGrades.length > 0
+      ? endDate != null &&
+        now > endDate.getDate() + TWO_HOURS &&
+        examGrades.length > 0
       : assignmentPublished && assignmentGrades.length > 0;
 
   const averageDuration = calculateAverageDuration(examGrades);
