@@ -364,8 +364,7 @@ export const AnnouncementModal = ({
                       >
                         <Calendar
                           mode="single"
-                          fromMonth={new Date()}
-                          captionLayout="buttons"
+                          startMonth={new Date()}
                           selected={date || field.value}
                           onSelect={(selectedDate) => {
                             const [hours, minutes] = time.split(':')!;
@@ -377,8 +376,7 @@ export const AnnouncementModal = ({
                             field.onChange(selectedDate);
                           }}
                           onDayClick={() => setIsDateOpen(false)}
-                          fromYear={new Date().getFullYear()}
-                          toYear={new Date().getFullYear() + 3}
+                          endMonth={new Date(new Date().getFullYear() + 3, 11)}
                           disabled={(date) =>
                             Number(date) < Date.now() - 1000 * 60 * 60 * 24
                           }
