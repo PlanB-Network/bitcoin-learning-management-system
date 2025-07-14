@@ -20,12 +20,13 @@ interface AppContext {
   // User
   user: UserDetails | null | undefined;
   setUser: (user: UserDetails | null) => void;
-  refetchUserDetails: () => Promise<void>;
 
   // Account settings
   accountSettings: UserAccountSettings | null;
   setAccountSettings: (settings: UserAccountSettings | null) => void;
-  refetchAccountSettings: () => Promise<void>;
+
+  // Fetch functions
+  fetchUserDetailsAndSettings: () => Promise<void>;
 
   // Session
   session: Session | null | undefined;
@@ -55,9 +56,8 @@ export const AppContext = createContext<AppContext>({
   accountSettings: null,
   blogs: null,
   courses: null,
+  fetchUserDetailsAndSettings: async () => {},
   hasSeenRegisterToast: false,
-  refetchAccountSettings: async () => {},
-  refetchUserDetails: async () => {},
   session: undefined,
   setAccountSettings: () => {},
   setBlogs: () => {},
@@ -90,49 +90,38 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
   const [university, setUniversity] = useState<string | null>(null);
 
-  const refetchUserDetails = async () => {
+  const fetchUserDetailsAndSettings = async () => {
     try {
-      const data = await trpcClient.user.getDetails.query();
-      setUser(data ?? null);
-    } catch {
-      setUser(null);
-    }
-  };
+      let currentSession = session;
 
-  const refetchAccountSettings = async () => {
-    try {
-      const data = await trpcClient.user.getAccountSettings.query();
-      setAccountSettings(data ?? null);
+      if (!currentSession) {
+        const sessionData = await trpcClient.user.getSession.query();
+        if (sessionData?.uid && sessionData.role) {
+          currentSession = { user: sessionData };
+          setSession(currentSession);
+        } else {
+          setSession(null);
+          setUser(null);
+          setAccountSettings(null);
+          return;
+        }
+      }
+
+      const detailsData = await trpcClient.user.getDetails.query();
+      setUser(detailsData ?? null);
+
+      const accountSettingsData =
+        await trpcClient.user.getAccountSettings.query();
+      setAccountSettings(accountSettingsData ?? null);
     } catch {
+      setSession(null);
+      setUser(null);
       setAccountSettings(null);
     }
   };
 
   useEffect(() => {
-    refetchUserDetails();
-
-    trpcClient.user.getAccountSettings
-      .query()
-      .then((data) => {
-        if (data) {
-          return setAccountSettings(data);
-        }
-
-        return setAccountSettings(null);
-      })
-      .catch(() => null);
-
-    trpcClient.user.getSession
-      .query()
-      .then((data) => {
-        if (data?.uid && data.role) {
-          const session: Session = { user: data };
-          return setSession(session);
-        }
-
-        return setSession(null);
-      })
-      .catch(() => null);
+    fetchUserDetailsAndSettings();
 
     trpcClient.content.getTutorials
       .query({
@@ -165,9 +154,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     accountSettings,
     blogs,
     courses,
+    fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
-    refetchAccountSettings,
-    refetchUserDetails,
     session,
     setAccountSettings,
     setBlogs,

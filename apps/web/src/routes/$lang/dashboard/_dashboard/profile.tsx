@@ -307,7 +307,7 @@ function DashboardProfile() {
 }
 
 const NotificationSettings = () => {
-  const { user, accountSettings, refetchAccountSettings } =
+  const { user, accountSettings, fetchUserDetailsAndSettings } =
     useContext(AppContext);
 
   const [isEditingNotificationsSettings, setIsEditingNotificationsSettings] =
@@ -344,7 +344,7 @@ const NotificationSettings = () => {
   const changeNotificationSettings = useMutation(
     trpc.user.changeNotificationsSettings.mutationOptions({
       onSuccess: async () => {
-        await refetchAccountSettings();
+        await fetchUserDetailsAndSettings();
         customToast(t('dashboard.profile.notificationSettings.settingsSaved'), {
           closeButton: true,
           color: 'success',
