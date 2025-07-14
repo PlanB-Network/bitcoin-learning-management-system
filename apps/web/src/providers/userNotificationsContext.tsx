@@ -28,6 +28,10 @@ export const NotificationsProvider = ({ children }: PropsWithChildren) => {
   >([]);
 
   const fetchUserNotifications = useCallback(async () => {
+    if (!user) {
+      return;
+    }
+
     try {
       const data =
         await trpcClient.user.notifications.getUserNotifications.query();
@@ -36,19 +40,17 @@ export const NotificationsProvider = ({ children }: PropsWithChildren) => {
       console.error('Failed to fetch user notifications:', error);
       setUserNotifications([]);
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
-    if (user) {
-      fetchUserNotifications();
+    if (!user) {
+      setUserNotifications([]);
+      return;
     }
 
-    const intervalId = setInterval(
-      () => {
-        fetchUserNotifications();
-      },
-      1 * 60 * 1000,
-    );
+    fetchUserNotifications();
+
+    const intervalId = setInterval(fetchUserNotifications, 1 * 60 * 1000);
 
     return () => clearInterval(intervalId);
   }, [fetchUserNotifications, user]);

@@ -60,7 +60,9 @@ function Lecture() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { courses } = useContext(AppContext);
+  const { courses, session } = useContext(AppContext);
+
+  const isLoggedIn = !!session;
 
   const {
     data: lecture,
@@ -79,7 +81,7 @@ function Lecture() {
 
   const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
     trpc.user.events.getEventPayment.queryOptions(undefined, {
-      enabled: !!lecture,
+      enabled: !!lecture && isLoggedIn,
     }),
   );
 

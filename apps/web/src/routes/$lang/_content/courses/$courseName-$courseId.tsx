@@ -79,7 +79,7 @@ export const Route = createFileRoute(
 function CourseDetails() {
   const {
     session,
-    refetchUserDetails,
+    fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
     setHasSeenRegisterToast,
   } = useContext(AppContext);
@@ -886,7 +886,7 @@ function CourseDetails() {
               onClose={() => {
                 setIsPaymentModalOpen(false);
                 refetchPayment();
-                refetchUserDetails();
+                fetchUserDetailsAndSettings();
               }}
             />
           </div>
