@@ -245,7 +245,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   }, [step]);
 
   useEffect(() => {
-    if (!multiAttemptsExamChapterId) {
+    if (!multiAttemptsExamChapterId && !hasSingleTrialExamOrAssignment) {
       completeConclusionChapter();
     }
   }, [step]);
