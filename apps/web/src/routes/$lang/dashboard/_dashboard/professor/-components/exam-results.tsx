@@ -522,7 +522,6 @@ const downloadAssignmentGrades = (
 ) => {
   const rows = assignmentGrades
     .filter((grade) => grade.assignmentGrade !== null && grade.username)
-    // biome-ignore assist/source/useSortedKeys: not necessary
     .map((grade) => ({
       Username: grade.username,
       'Score (%)': grade.assignmentGrade,
@@ -568,7 +567,6 @@ const downloadExamGrades = (
         realScore = Math.round((grade.score / 100) * totalQuestions);
       }
 
-      // biome-ignore assist/source/useSortedKeys: not necessary
       return {
         Username: grade.username!,
         'Score (%)': grade.score!,
@@ -577,7 +575,6 @@ const downloadExamGrades = (
       };
     });
 
-  // biome-ignore assist/source/useSortedKeys: not necessary
   const statisticsRows = questionsStatistics.map((stat) => ({
     'Question ID': stat.questionId,
     'Question text': stat.questionText,

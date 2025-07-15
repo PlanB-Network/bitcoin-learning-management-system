@@ -518,8 +518,8 @@
       "tutorialAnalytics": "Tutorial-analyse",
       "tutorialAnalyticsDescription": "Hier kun je alle tutorials op het platform controleren en vergelijken.",
       "tutorialsManagementPanel": "Beheerpaneel voor tutorials",
-      "type": "Type",
       "upcomingBookings": "Aankomende boekingen",
+      "type": "Type",
       "upcomingBookingsSubtitle": "Hier kun je de lijst met deelnemers voor alle fysieke evenementen downloaden.",
       "userRolesAllocation": "Toewijzing van gebruikersrollen"
     },
