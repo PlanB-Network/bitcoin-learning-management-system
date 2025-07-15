@@ -237,6 +237,7 @@
       "examCertificateCompletionText": "Plan ₿ Networkil on hea meel õnnitleda kasutajat {{username}} “{{courseName}}” kursuse diplomi saamise puhul.",
       "examDetails": "Eksam koosneb {{nb}} valikvastustega küsimusest, millest igaühel on üks õige vastus. Saate oma vastuseid muuta igal ajal enne esitamist, seni kuni taimer käib.",
       "examNotPassed": "Peatet sooritama lõpp­eksami ja saavutama üle 80% tulemuse, et saada diplom ja kursus täielikult lõpetada. Antud diplom varustatakse <0>aja­templiga</0>, mis tagab selle autentsuse.",
+      "examResults": "Eksamitulemused",
       "explanations": "Selgitused:",
       "failed": "Ebaõnnestunud",
       "failedDiploma": "Peate lõppeksamil saavutama üle 80% tulemuse, et saada diplom ja kursus täielikult lõpetada. Eksamit saate uuesti sooritada 24 tunni pärast.",
@@ -276,6 +277,7 @@
       "retakeInstructions": "Teil on 20 minutit aega, et vastata 40 küsimusele, millest igaühel on ainult üks õige vastus. Saate küsimuste vahel liikuda ja esitada oma vastused kõige lõpus.",
       "sameRules": "Olete kohe lõpueksamit uuesti sooritamas. Reeglid jäävad samaks.",
       "score": "Sinu skoor on",
+      "scoreAndDiploma": "Skoor & Diplom",
       "singleAttempt": "Ühekordse katsega eksam",
       "singleAttemptAvailability": "See eksam on saadaval veebis alates {{date}}",
       "singleAttemptPrecaution": "Enne alustamist veenduge, et teieinternetiühendus on stabiilne. Kuna tegemist on ühe-katse eksamiga, ei saa ühenduse katkemisel uuesti proovida.",
@@ -309,9 +311,7 @@
       "weight": "Kaal: {{weight}}%",
       "whyTimeStamp": "Oma diplomile ajatempli lisamine:\nMiks see oluline on",
       "wishTryAgain": "Juhul kui soovite uuesti proovida, on eksam saadaval 24 tunni pärast.",
-      "yesSubmit": "Jah, esita",
-      "examResults": "Eksamitulemused",
-      "scoreAndDiploma": "Skoor & Diplom"
+      "yesSubmit": "Jah, esita"
     },
     "explorer": {
       "buildPath": "Raja iseenda tee jäneseurgu",
@@ -751,6 +751,7 @@
       "assignmentCompletedTitle": "Ülesanne täidetud",
       "assignmentDescription": "Projektiülesanne tähistab Plan ₿ Biz School programmi teist etappi ja see on saadaval ainult õpilastele, kes on edukalt läbinud esimese etapi. Vastavalt nende positsioonile edetabelis ja eelistustele määratakse igale õpilasele projekt, mille on välja töötanud Bitcoin ettevõte ja mis tuleb esitada hiljemalt 18. juuniks.\nÕpilased valmistavad ülesande ette vahemikus 2. juuni kuni 18. juuni, võimalusega saada mentorlust ettevõtte esindajalt.\n\nProjekte hindab ettevõte ja hinded mõjutavad lõpphinnet. Ainult kõrgeima hinnanguga õpilased kutsutakse osalema suvekoolis Luganos, Šveitsis, 23. juulist 30. juulini 2025.",
       "assignmentInformation": "Ülesande teave",
+      "assignmentScore": "Ülesande skoor",
       "assignmentTitle": "Projekti ülesanne",
       "checkDetailsCompleted": "Siin saate vaadata kõiki üksikasju selle kursuse kohta, mille olete läbinud.",
       "completionDiploma": "Lõputunnistus",
@@ -775,6 +776,7 @@
       "finalAverageGradeDescription": "Oma lõpliku keskmise hinde leiate töölaua Eksam ja Diplom jaotisest.",
       "finalGradeSummary": "Lõpliku hinde kokkuvõte",
       "finalScore": "Lõppskoor",
+      "gaveSolidEffort": "Sa pingutasid tublisti!",
       "generalInformation": "Üldine informatsioon",
       "individualWork": "Individuaaltöö",
       "isSubmissionFinal": "Kas teie esitatud töö on lõplik?",
@@ -807,14 +809,12 @@
       "surePreferenceList": "Olete kindel, et teie eelistuste nimekiri on lõplik?",
       "thresholdToPass": "Lävend et läbida: {{threshold}}%",
       "tweetText": "Olen väga uhke, et lõpetasin @planb_network {{courseIndex}} kursuse ja teenisin diplomi, saades lõpueksamil {{score}} punkti 100-st! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "Vaata lõpphinnet",
-      "yourProject": "Teie projekt",
-      "assignmentScore": "Ülesande skoor",
-      "viewScoreSummary": "Vaadake skoori kokkuvõtet",
-      "yourProjectAssignment": "Teie projekti ülesanne",
-      "gaveSolidEffort": "Sa pingutasid tublisti!",
       "tweetTextCourseDiploma": "Mul on hea meel, et olen lõpetanud {{courseCoordinator}} õpetatud kursuse {{courseName}} @planb_network platvormil ja teenides välja oma diplomi!\n#PBNDiploma\n\n{{certificateUrl}}",
-      "wellDoneCompleting": "Tubli töö käesoleva kursuse lõpetamisel ja läbimisel! \nSiin on teie vääriliselt teenitud diplom"
+      "viewFinalGrade": "Vaata lõpphinnet",
+      "viewScoreSummary": "Vaadake skoori kokkuvõtet",
+      "wellDoneCompleting": "Tubli töö käesoleva kursuse lõpetamisel ja läbimisel! \nSiin on teie vääriliselt teenitud diplom",
+      "yourProject": "Teie projekt",
+      "yourProjectAssignment": "Teie projekti ülesanne"
     },
     "courses": "Kursused",
     "credentials": {
@@ -937,6 +937,7 @@
           "confirmPublication": "Kinnita avaldamine",
           "confirmPublicationDescription": "Pärast hinnete avaldamist ei saa enam tagasi minna, sest neid ei ole võimalik enam muuta.",
           "confirmPublicationTitle": "Kas oled veendunud, et vigu ei ole?",
+          "courseAssignment": "Kursuse ülesanne",
           "description": "Õpilased on jaotatud ülesannete rühmade kaupa.",
           "grade100": "Hinne (/100)",
           "gradesPublished": "Hinded on välja pandud.",
@@ -944,10 +945,11 @@
           "missingGradesTitle": "Veel {{count}} hinnet on puudu!",
           "publishAllGrades": "Avalda kõik hinded",
           "studentDisplayName": "Õpilane (Kuvatav nimi)",
-          "title": "Ülesannete hinded",
-          "courseAssignment": "Kursuse ülesanne"
+          "title": "Ülesannete hinded"
         },
         "assignmentStudents": "Projekti ülesanne",
+        "averageDuration": "Keskmine kestus",
+        "averageScore": "Keskmine skoor",
         "courseDetails": "Kursuse üksikasjad",
         "courseLongDescription": "Sissejuhatav kirjeldus",
         "courseModification": "Kui vajate kursuse redigeerimisel abi, vaadake seda <0>õpetust</0>.",
@@ -958,8 +960,13 @@
         "deleteAnnouncementWarning": "See muutus on pöördumatu",
         "editOnGithub": "Redigeeri Githubis",
         "examResults": "Eksamitulemused",
+        "exportExamData": "Ekspordi eksamiandmed",
+        "finalAverageResults": "Lõplikud keskmised tulemused",
+        "finalScore": "Lõppskoor",
         "goal": "Eesmärk",
         "makeModifications": "Vaja teha muudatusi?",
+        "medianScore": "Mediaan skoor",
+        "noExamLinked": "Praegu pole selle kursusega seotud ühtegi eksamit. Kui soovite eksami luua, võtke meiega ühendust.",
         "noPastAnnouncement": "TEIL EI OLE praegu ühtegi varasemat teadet.",
         "noWrittenAnnouncement": "Teil pole hetkel ühtegi kirjalikku teadet.",
         "objectives": "Eesmärgid",
@@ -968,17 +975,10 @@
         "reviewInfos": "Siin saate kontrollida ja üle vaadata kogu teabe iga kursuse kohta, mida olete koordineerinud.",
         "reviews": "Arvustused",
         "selectCourse": "Vali kursus",
-        "summerStudents": "Suvekool",
-        "writeAnnouncement": "Kirjutage teadaanne",
-        "averageDuration": "Keskmine kestus",
-        "averageScore": "Keskmine skoor",
-        "finalScore": "Lõppskoor",
-        "medianScore": "Mediaan skoor",
         "studentsGraduated": "Lõpetanud õpilasi",
-        "exportExamData": "Ekspordi eksamiandmed",
-        "finalAverageResults": "Lõplikud keskmised tulemused",
+        "summerStudents": "Suvekool",
         "thresholdToPass": "Läbimise lävi",
-        "noExamLinked": "Praegu pole selle kursusega seotud ühtegi eksamit. Kui soovite eksami luua, võtke meiega ühendust."
+        "writeAnnouncement": "Kirjutage teadaanne"
       },
       "menu": "Õpetaja menüü",
       "profile": {
@@ -1093,6 +1093,9 @@
     "levels": "Tasemed",
     "resources": "Materjalid",
     "topics": "Teemad"
+  },
+  "footer": {
+    "followUsOn": "Jälgi meid"
   },
   "glossary": {
     "anotherWord": "Otsi teist sõna",
@@ -1569,10 +1572,24 @@
     "p2": "ning kaaluge meie kogukonnaga liitumist!",
     "pageTitle": "Oih."
   },
+  "videoSelector": {
+    "language": {
+      "AI": "Tehisintellekti tõlge",
+      "language": "Keel",
+      "original": "Originaalkeel"
+    },
+    "player": {
+      "peertube": "Peertube",
+      "player": "Mängija",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
+  },
   "words": {
     "about": "Umbes",
     "about-us": "Meist",
     "abstract": "Kokkuvõte",
+    "academy": "Akadeemia",
     "access": "Juurdepääs",
     "action": "Tegevus",
     "admin": "Administraator",
@@ -1698,10 +1715,12 @@
     "protocol": "Protokoll",
     "public": "Avalik suhtlus",
     "publicationDate": "Avaldamise kuupäev:",
+    "questions": "Küsimused",
     "ratings": "Hinnangud",
     "register": "Registreeri",
     "required": "Nõutud",
     "resources": "Materjalid",
+    "results": "Tulemused",
     "role": "Roll",
     "save": "Salvesta",
     "saving": "Salvestan...",
@@ -1713,6 +1732,7 @@
     "start": "Alusta",
     "startHere": "Alusta siit!",
     "status": "Staatus",
+    "structure": "Struktuur",
     "student": "Õpilane",
     "students": "Õpilased",
     "submit": "Esita",
@@ -1739,32 +1759,12 @@
     "view": "Vaade",
     "viewMore": "Vaata rohkem",
     "wallets": "Rahakotid",
-    "yes": "Jah",
-    "questions": "Küsimused",
-    "academy": "Akadeemia",
-    "results": "Tulemused",
-    "structure": "Struktuur",
-    "weight": "Kaal"
+    "weight": "Kaal",
+    "yes": "Jah"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube'i kanalid",
     "view": "Vaata Youtube'i kanalit",
     "watchTrailer": "Vaata treilerit"
-  },
-  "videoSelector": {
-    "language": {
-      "language": "Keel",
-      "AI": "Tehisintellekti tõlge",
-      "original": "Originaalkeel"
-    },
-    "player": {
-      "peertube": "Peertube",
-      "player": "Mängija",
-      "rumble": "Rumble",
-      "youtube": "Youtube"
-    }
-  },
-  "footer": {
-    "followUsOn": "Jälgi meid"
   }
 }

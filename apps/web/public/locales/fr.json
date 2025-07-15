@@ -776,6 +776,7 @@
       "finalAverageGradeDescription": "Vous pouvez trouver votre note moyenne finale dans la section Examen & Diplôme de votre tableau de bord.",
       "finalGradeSummary": "Résumé de la note finale",
       "finalScore": "Score final",
+      "gaveSolidEffort": "Vous avez fourni un bel effort !",
       "generalInformation": "Informations générales",
       "individualWork": "Travail individuel",
       "isSubmissionFinal": "Votre soumission est-elle définitive ?",
@@ -808,12 +809,11 @@
       "surePreferenceList": "Êtes-vous sûr que votre liste de préférences est définitive ?",
       "thresholdToPass": "Seuil à franchir : {{threshold}}%",
       "tweetText": "Fier d'avoir terminé le cours {{courseIndex}} chez @planb_network et d'avoir obtenu mon certificat avec un score de {{score}}/100 à l'examen final ! {{emoji}}\n\n{{certificateUrl}}",
-      "viewFinalGrade": "Voir la note finale",
-      "yourProject": "Votre projet",
       "tweetTextCourseDiploma": "Ravi d'avoir terminé le cours {{courseName}}, enseigné par {{courseCoordinator}} sur @planb_network et d'avoir obtenu mon diplôme !\n#PBNDiploma\n\n{{certificateUrl}}",
-      "gaveSolidEffort": "Vous avez fourni un bel effort !",
+      "viewFinalGrade": "Voir la note finale",
       "viewScoreSummary": "Voir le résumé des scores",
       "wellDoneCompleting": "Félicitations pour avoir terminé et réussi ce cours !\nVoici votre diplôme bien mérité",
+      "yourProject": "Votre projet",
       "yourProjectAssignment": "Votre affectation de projet"
     },
     "courses": "Cours",
@@ -937,6 +937,7 @@
           "confirmPublication": "Confirmer la publication",
           "confirmPublicationDescription": "Après la publication des notes, il n'y a pas de retour en arrière, car elles ne seront plus modifiables.",
           "confirmPublicationTitle": "Avez-vous vérifié qu'il n'y a pas d'erreur ?",
+          "courseAssignment": "Affectation de cours",
           "description": "Les étudiants sont classés par groupes d'assignations.",
           "grade100": "Note (/100)",
           "gradesPublished": "Les notes sont publiées.",
@@ -944,10 +945,11 @@
           "missingGradesTitle": "Il manque encore {{count}} notes !",
           "publishAllGrades": "Publiez toutes les notes",
           "studentDisplayName": "Étudiant (Nom affiché)",
-          "title": "Notes de devoirs",
-          "courseAssignment": "Affectation de cours"
+          "title": "Notes de devoirs"
         },
         "assignmentStudents": "Mission du projet",
+        "averageDuration": "Durée moyenne",
+        "averageScore": "Score moyen",
         "courseDetails": "Détails du cours",
         "courseLongDescription": "Description introductive",
         "courseModification": "Si vous avez besoin d'aide pour modifier quelque chose dans le cours, veuillez consulter ce <0>tutoriel</0>.",
@@ -958,8 +960,13 @@
         "deleteAnnouncementWarning": "Ce changement est irréversible",
         "editOnGithub": "Modifier sur Github",
         "examResults": "Résultats d'examen",
+        "exportExamData": "Exporter les données d'examen",
+        "finalAverageResults": "Résultats moyens finaux",
+        "finalScore": "Score final",
         "goal": "But",
         "makeModifications": "Besoin de faire des modifications ?",
+        "medianScore": "Score médian",
+        "noExamLinked": "Il n'y a actuellement aucun examen lié à ce cours. Si vous souhaitez créer un examen, veuillez nous contacter.",
         "noPastAnnouncement": "VOUS N'AVEZ AUCUNE annonce passée pour le moment.",
         "noWrittenAnnouncement": "Vous n'avez aucune annonce écrite pour le moment.",
         "objectives": "Objectifs",
@@ -968,17 +975,10 @@
         "reviewInfos": "Ici vous pouvez contrôler et examiner toutes les informations concernant chaque cours que vous avez coordonné.",
         "reviews": "Avis",
         "selectCourse": "Sélectionner le cours",
+        "studentsGraduated": "Étudiants diplômés",
         "summerStudents": "Summer School",
-        "writeAnnouncement": "Écrire une annonce",
-        "noExamLinked": "Il n'y a actuellement aucun examen lié à ce cours. Si vous souhaitez créer un examen, veuillez nous contacter.",
         "thresholdToPass": "Seuil à franchir",
-        "averageDuration": "Durée moyenne",
-        "averageScore": "Score moyen",
-        "exportExamData": "Exporter les données d'examen",
-        "finalAverageResults": "Résultats moyens finaux",
-        "finalScore": "Score final",
-        "medianScore": "Score médian",
-        "studentsGraduated": "Étudiants diplômés"
+        "writeAnnouncement": "Écrire une annonce"
       },
       "menu": "Menu enseignant",
       "profile": {
@@ -1093,6 +1093,9 @@
     "levels": "Niveaux",
     "resources": "Ressources",
     "topics": "Sujets"
+  },
+  "footer": {
+    "followUsOn": "Suivez-nous sur"
   },
   "glossary": {
     "anotherWord": "Cherchez un autre mot",
@@ -1569,10 +1572,24 @@
     "p2": "et pensez à rejoindre notre communauté !",
     "pageTitle": "Oups."
   },
+  "videoSelector": {
+    "language": {
+      "AI": "Traduction IA",
+      "language": "Langue",
+      "original": "Langue d'origine"
+    },
+    "player": {
+      "peertube": "Peertube",
+      "player": "Lecteur vidéo",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
+  },
   "words": {
     "about": "À propos de",
     "about-us": "A Propos",
     "abstract": "Résumé",
+    "academy": "Académie",
     "access": "Accès",
     "action": "Action",
     "admin": "Administrateur",
@@ -1698,10 +1715,12 @@
     "protocol": "Protocole",
     "public": "Communication publique",
     "publicationDate": "Date de publication :",
+    "questions": "Questions",
     "ratings": "Évaluations",
     "register": "Inscription",
     "required": "Requis",
     "resources": "Ressources",
+    "results": "Résultats",
     "role": "Rôle",
     "save": "Sauvegarder",
     "saving": "Enregistrement...",
@@ -1713,6 +1732,7 @@
     "start": "Commencer",
     "startHere": "Commencez ici !",
     "status": "Statut",
+    "structure": "Structure",
     "student": "Étudiant",
     "students": "Étudiants",
     "submit": "Soumettre",
@@ -1739,32 +1759,12 @@
     "view": "Vue",
     "viewMore": "Voir plus",
     "wallets": "Portefeuilles",
-    "yes": "Oui",
-    "academy": "Académie",
-    "questions": "Questions",
-    "results": "Résultats",
-    "structure": "Structure",
-    "weight": "Poids"
+    "weight": "Poids",
+    "yes": "Oui"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
     "view": "Voir la chaîne Youtube",
     "watchTrailer": "Regardez la bande-annonce"
-  },
-  "videoSelector": {
-    "language": {
-      "AI": "Traduction IA",
-      "language": "Langue",
-      "original": "Langue d'origine"
-    },
-    "player": {
-      "peertube": "Peertube",
-      "player": "Lecteur vidéo",
-      "rumble": "Rumble",
-      "youtube": "Youtube"
-    }
-  },
-  "footer": {
-    "followUsOn": "Suivez-nous sur"
   }
 }
