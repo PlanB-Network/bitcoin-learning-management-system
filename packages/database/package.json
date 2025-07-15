@@ -1,8 +1,8 @@
 {
   "dependencies": {
     "@blms/constants": "workspace:*",
-    "dotenv": "^17.0.1",
-    "drizzle-orm": "^0.44.2",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.44.3",
     "postgres": "3.4.7"
   },
   "devDependencies": {

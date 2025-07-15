@@ -2,9 +2,9 @@
   "dependencies": {
     "@blms/constants": "workspace:*",
     "@blms/database": "workspace:*",
-    "drizzle-orm": "^0.44.2",
+    "drizzle-orm": "^0.44.3",
     "drizzle-zod": "~0.7.1",
-    "zod": "^3.25.73"
+    "zod": "^3.25.76"
   },
   "exports": {
     "development": "./src/index.ts",

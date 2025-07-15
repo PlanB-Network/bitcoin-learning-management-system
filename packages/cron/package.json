@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "cron": "^4.3.1"
+    "cron": "^4.3.2"
   },
   "exports": {
     "development": "./src/index.ts",
