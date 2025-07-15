@@ -25,6 +25,7 @@ export const ISO_639_LANGUAGES = {
   en: 'en',
   es: 'es',
   et: 'et',
+  fa: 'fa',
   fi: 'fi',
   fr: 'fr',
   id: 'id',
@@ -32,7 +33,10 @@ export const ISO_639_LANGUAGES = {
   ja: 'ja',
   'nb-no': 'nn',
   pt: 'po',
+  pl: 'pl',
   ru: 'ru',
+  'sr-Latn': 'sr',
+  sv: 'sv',
   vi: 'vi',
   'zh-hans': 'zh',
 } as const;
