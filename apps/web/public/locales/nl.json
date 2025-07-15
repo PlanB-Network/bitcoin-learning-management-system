@@ -810,11 +810,56 @@
       "thresholdToPass": "Drempel om te slagen: {{threshold}}%",
       "tweetText": "Superblij dat ik de {{courseIndex}} cursus bij @planb_network heb afgerond en mijn diploma heb behaald met een score van {{score}}/100 op het eindexamen! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "tweetTextCourseDiploma": "Superblij dat ik de cursus {{courseName}}, gegeven door {{courseCoordinator}} op @planb_network heb afgerond en mijn diploma heb behaald!\n#PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "Bekijk eindcijfer",
       "viewScoreSummary": "Bekijk scoreoverzicht",
       "wellDoneCompleting": "Goed gedaan met het afronden en slagen voor deze cursus! \nHier is je welverdiende diploma",
       "yourProject": "Jouw project",
       "yourProjectAssignment": "Jouw projectopdracht"
+      "viewFinalGrade": "Bekijk eindcijfer"
+    },
+    "backToDashboard": "Terug naar dashboard",
+    "calendar": {
+      "calendar": "Kalender",
+      "eventType": {
+        "class": "Lessen",
+        "event": "Evenementen"
+      },
+      "personalCalendar": "Persoonlijke kalender"
+    },
+    "profile": {
+      "emailChangeConfirmation": "Er is een bevestigingsmail verstuurd voor het wijzigen van je e-mailadres. Controleer je inbox om deze te bevestigen.",
+      "cancel": "Annuleren",
+      "change": "Wijzigen",
+      "crop": "Crop",
+      "displayName": "Weergavenaam",
+      "edit": "Bewerken",
+      "email": "E-mail",
+      "emailChangeRateLimitError": "Je hebt onlangs je e-mail bijgewerkt. Wacht alstublieft een paar minuten voordat je het opnieuw probeert.",
+      "notificationSettings": {
+        "coursesOption": "Updates over de cursussen waarvoor je staat ingeschreven",
+        "loadEmailSettingsErrorDescription": "Zorg ervoor dat de link die je hebt gebruikt volledig en correct is.",
+        "eventsOption": "Updates over evenementen die je geboekt hebt",
+        "generalOption": "Algemene informatie en nieuws over Plan ₿ Network",
+        "goToProfile": "Ga naar Profiel",
+        "loadEmailSettingsError": "Sorry, we konden je e-mailvoorkeuren niet laden.",
+        "loadEmailSettingsErrorManage": "Als je toegang hebt tot je account, kun je alle instellingen direct beheren in je dashboard:",
+        "none": "Geen",
+        "platformTitle": "Welk soort meldingen wil je ontvangen op dit platform?",
+        "settingsSaved": "Je instellingen zijn succesvol opgeslagen!",
+        "title": "Notificatie-instellingen",
+        "description": "Je kunt hieronder je notificatie-instellingen aanpassen. "
+      },
+      "securitySettings": "Beveiligingsinstellingen",
+      "password": "Wachtwoord",
+      "personalInformation": "Mijn persoonlijke informatie",
+      "preview": "Preview",
+      "profile": "Profiel",
+      "profileInformation": "Profielinformatie",
+      "profilePicture": "Profielfoto",
+      "save": "Opslaan",
+      "saving": "Opslaan…",
+      "security": "Beveiliging",
+      "settings": "Instellingen",
+      "username": "Gebruikersnaam"
     },
     "courses": "Cursussen",
     "credentials": {
