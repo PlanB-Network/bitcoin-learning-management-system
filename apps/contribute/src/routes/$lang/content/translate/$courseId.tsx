@@ -244,33 +244,6 @@ function ProofreadCoursePage() {
           maxWidth="max-w-7xl"
           paddingXClasses="px-4"
         >
-          {/* Main Content Header */}
-          <div className="text-center mb-8 mt-8">
-            <p className="text-orange-500 text-sm font-medium mb-2">
-              {t('translate.bridgingLanguageGaps', {
-                defaultValue: 'Bridging language gaps, one video at a time',
-              })}
-            </p>
-            <h1
-              className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-              style={{
-                fontFamily: 'Rubik, sans-serif',
-                fontWeight: 400,
-                lineHeight: '117%',
-              }}
-            >
-              {t('translate.bitcoinTranslationCommunity', {
-                defaultValue: 'Bitcoin Proofreading Community',
-              })}
-            </h1>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-              {t('translate.joinOurProofreaders', {
-                defaultValue:
-                  'Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!',
-              })}
-            </p>
-          </div>
-
           {/* Navigation and Course Header */}
           <div className="flex flex-col gap-6 mb-8">
             {/* Back Navigation */}

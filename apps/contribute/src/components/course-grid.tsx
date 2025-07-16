@@ -7,6 +7,7 @@ interface CourseGridProps {
   className?: string;
   userContributions?: Array<{ courseId: string; assignmentStatus?: string }>;
   refetchUserContributions?: () => Promise<void>;
+  onRequestSuccess?: () => void;
 }
 
 export const CourseGrid = ({
@@ -15,6 +16,7 @@ export const CourseGrid = ({
   className = '',
   userContributions,
   refetchUserContributions,
+  onRequestSuccess,
 }: CourseGridProps) => {
   return (
     <div
@@ -27,6 +29,7 @@ export const CourseGrid = ({
           targetLanguage={targetLanguage}
           userContributions={userContributions}
           refetchUserContributions={refetchUserContributions}
+          onRequestSuccess={onRequestSuccess}
         />
       ))}
     </div>

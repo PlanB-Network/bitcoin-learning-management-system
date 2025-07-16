@@ -25,7 +25,7 @@ export const SectionCard = ({
 
   const cardContent = (
     <div
-      className={`relative rounded-lg overflow-hidden shadow-md ${isComingSoon ? '' : 'border-2 border-orange-500'} ${className}`}
+      className={`relative rounded-lg overflow-hidden ${isComingSoon ? '' : 'border-2 border-orange-500'} bg-[#E5E5E5] transition-shadow duration-200 hover:shadow-[0_0_8px_0_#FF5C00] ${className}`}
     >
       {isComingSoon && (
         <>
@@ -43,7 +43,7 @@ export const SectionCard = ({
         <div className="text-3xl font-bold">{t('translate.translations')}</div>
       </div>
 
-      <div className={`p-4 ${isComingSoon ? 'bg-white' : 'bg-gray-100'}`}>
+      <div className={`p-4 ${isComingSoon ? 'bg-white' : 'bg-[#E5E5E5]'}`}>
         <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
         <div className="flex items-center justify-between mb-2">
           <span className="text-gray-600">

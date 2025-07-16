@@ -11,8 +11,10 @@ export interface CourseTranslationSlide {
   pptValidated: boolean;
   transcriptionValidated: boolean;
   audioValidated: boolean;
+  audioTries: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
+  professor: string | null;
   originalContent: string | null;
   translatedContent: string | null;
   status: TranslationStatus;
@@ -39,8 +41,10 @@ export const getCourseTranslationSlidesQuery = (
       cts.ppt_validated AS "pptValidated",
       cts.transcription_validated AS "transcriptionValidated",
       cts.audio_validated AS "audioValidated",
+      cts.audio_tries AS "audioTries",
       cts.ppt_resource_path AS "pptResourcePath",
       cts.audio_resource_path AS "audioResourcePath",
+      cts.professor AS "professor",
       cts.original_content AS "originalContent",
       cts.translated_content AS "translatedContent",
       cts.status,
@@ -105,6 +109,7 @@ export const updateCourseTranslationSlideQuery = (
   pptValidated: boolean | null,
   transcriptionValidated: boolean | null,
   audioValidated: boolean | null,
+  audioTries: number | null,
 ) => {
   return sql`
     UPDATE content.course_translation_slides
@@ -114,6 +119,7 @@ export const updateCourseTranslationSlideQuery = (
       ppt_validated = COALESCE(${pptValidated}, ppt_validated),
       transcription_validated = COALESCE(${transcriptionValidated}, transcription_validated),
       audio_validated = COALESCE(${audioValidated}, audio_validated),
+      audio_tries = COALESCE(${audioTries}, audio_tries),
       updated_at = NOW()
     WHERE course_id = ${courseId}
       AND language = LOWER(${language})

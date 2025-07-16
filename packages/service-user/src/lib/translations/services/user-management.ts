@@ -253,3 +253,27 @@ export const createReassignCourseToContributor = ({
     }
   };
 };
+
+/**
+ * Service to get the languages that a reviewer (contributor) is allowed to work with.
+ */
+export const createGetReviewerLanguages = ({ postgres }: Dependencies) => {
+  return async ({ userId }: { userId: string }) => {
+    try {
+      const languagesResult = await postgres.exec(
+        getUserLanguagesQuery(userId),
+      );
+      // Map to simple string array
+      return languagesResult.map((row: any) => row.language);
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      console.error('Error fetching reviewer languages:', error);
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to fetch reviewer languages',
+      });
+    }
+  };
+};

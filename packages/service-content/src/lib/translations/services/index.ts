@@ -9,4 +9,4 @@ export {
   type ChapterTranslationContext,
   type ChapterTranslationData,
   type ChapterProgress,
-} from './translation-slides.js';
+} from './get-translation-slides.js';

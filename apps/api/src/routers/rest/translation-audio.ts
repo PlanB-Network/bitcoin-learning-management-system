@@ -4,6 +4,38 @@ import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
+interface CourseProfessor {
+  id: string;
+  name: string;
+  isCoordinator: boolean; // Note: postgres client transforms snake_case to camelCase
+}
+
+/**
+ * Get professor information for a course to enable voice matching
+ */
+const getCourseProfessors = async (
+  postgres: Dependencies['postgres'],
+  courseId: string,
+): Promise<CourseProfessor[]> => {
+  try {
+    const professors = await postgres.exec(postgres`
+      SELECT
+        cp.professor_id as id,
+        p.name,
+        cp.is_coordinator
+      FROM content.course_professors cp
+      JOIN content.professors p ON cp.professor_id = p.id
+      WHERE cp.course_id = ${courseId}
+      ORDER BY cp.is_coordinator DESC, p.name ASC
+    `);
+
+    return professors as CourseProfessor[];
+  } catch (error) {
+    console.warn(`Failed to fetch professors for course ${courseId}:`, error);
+    return [];
+  }
+};
+
 /**
  * Routes for generating slide audio using the external Language-Toolkit API.
  *
@@ -16,7 +48,7 @@ import { expressAuthMiddleware } from '#src/middlewares/auth.js';
  * caller can poll for completion if desired.
  */
 export const createRestTranslationAudioRoutes = async (
-  _dependencies: Dependencies,
+  dependencies: Dependencies,
   router: Router,
 ) => {
   /**
@@ -46,6 +78,7 @@ export const createRestTranslationAudioRoutes = async (
           language,
           text,
           voiceId,
+          professor,
         } = req.body as Record<string, string | undefined>;
 
         if (
@@ -62,6 +95,44 @@ export const createRestTranslationAudioRoutes = async (
 
         // Expected S3 key for the generated MP3
         const outputKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/audio/${fileName}.mp3`;
+
+        // Determine professor information for voice matching
+        let professors: Array<{
+          id: string;
+          name: string;
+          isCoordinator: boolean;
+        }> = [];
+
+        if (professor) {
+          // Use the professor name provided by the client (slide-level)
+          professors = [
+            {
+              id: 'slide',
+              name: professor,
+              isCoordinator: true,
+            },
+          ];
+          console.log(`Using professor from slide payload: ${professor}`);
+        } else {
+          // Fallback to course-level professors
+          const courseProfs = await getCourseProfessors(
+            dependencies.postgres,
+            courseId,
+          );
+          professors = courseProfs.map((p) => ({
+            id: p.id,
+            name: p.name,
+            isCoordinator: p.isCoordinator,
+          }));
+
+          console.log(
+            `Found ${professors.length} professors for course ${courseId}:`,
+            professors.map(
+              (p) =>
+                `${p.name} (${p.isCoordinator ? 'coordinator' : 'associated'})`,
+            ),
+          );
+        }
 
         // Base URL of the Language-Toolkit API (default to local dev instance)
         const toolkitUrl = process.env.LTK_URL ?? 'http://localhost:8000';
@@ -105,7 +176,26 @@ export const createRestTranslationAudioRoutes = async (
           text,
           output_key: outputKey,
         };
-        if (voiceId) ttsBody.voice_id = voiceId;
+
+        // Add voice_id if explicitly provided
+        if (voiceId) {
+          ttsBody.voice_id = voiceId;
+        }
+
+        // Add professor information for voice matching (if no explicit voice_id)
+        if (professors.length > 0) {
+          // Convert camelCase fields back to snake_case for Language-Toolkit compatibility
+          ttsBody.professors = professors.map((prof) => ({
+            id: prof.id,
+            name: prof.name,
+            is_coordinator: prof.isCoordinator,
+          }));
+        }
+
+        console.log('Sending TTS request to Language-Toolkit:', {
+          ...ttsBody,
+          text: `${text.substring(0, 100)}...`, // Log truncated text for debugging
+        });
 
         const ttsResp = await fetch(`${toolkitUrl}/tts_text_s3`, {
           method: 'POST',
@@ -129,6 +219,12 @@ export const createRestTranslationAudioRoutes = async (
           message: 'Audio generation task started',
           outputKey,
           toolkitTask: taskInfo,
+          professorsFound: professors.length,
+          voiceSelectionMethod: voiceId
+            ? 'explicit_voice_id'
+            : professors.length > 0
+              ? 'professor_matching'
+              : 'default_fallback',
         });
       } catch (err) {
         next(err);

@@ -298,6 +298,7 @@ export const Header = ({
     'resources',
     'tutorials',
     'about-us',
+    'profile',
   ];
 
   const mobileSections: NavigationSectionMobile[] = [

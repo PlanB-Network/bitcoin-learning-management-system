@@ -1676,7 +1676,7 @@
     "noCoursesAvailableForTranslation": "No courses available for proofreading in this language yet",
     "translateCourse": "Proofread Course",
     "translateCourses": "Proofread Courses",
-    "translateContent": "Proofread the content",
+    "translateContent": "Sending proofreading request",
     "coursesToTranslate": "Courses to proofread",
     "yourContributions": "Your contributions",
     "startTranslating": "Start proofreading",
@@ -1696,9 +1696,9 @@
     "noCoursePartsFound": "No course parts found for proofreading",
     "chapters": "chapters",
     "languageMissing": "Is your language missing? Let us know!",
-    "helpExpandBitcoinEducation": "If your language isn’t listed, feel free to reach out! We can work together to add it on the platform.",
+    "helpExpandBitcoinEducation": "If your language isn't listed, feel free to reach out! We can work together to add it on the platform.",
     "contactUs": "Contact us",
-    "noteFewCourses": "Note: you can access the English version of some courses alongside the original language content for better understanding.",
+    "noteFewCourses": "Note: you can access the English version of some courses alongside the original language content for better understanding.",
     "status": {
       "published": "Published",
       "validated": "Validated",
@@ -1725,8 +1725,8 @@
     "assigned": "Assigned",
     "notAssigned": "Not assigned",
     "modal": {
-      "requestToProofreadCourse": "Request to proofread this course",
-      "doYouWantToSendRequest": "Do you want to send this proofreading request?",
+      "requestToProofreadCourse": "Ask to proofread this course",
+      "doYouWantToSendRequest": "Would you like to send a proofreading request?",
       "course": "Course",
       "originalLanguage": "Original language",
       "languageToProofread": "Language to proofread",
@@ -1734,7 +1734,7 @@
       "sendRequest": "Send request",
       "cancel": "Cancel",
       "close": "Close",
-      "requestSentSuccess": "✓ Request Sent",
+      "requestSentSuccess": "Your proofreading request was sent",
       "onceRequestApproved": "Once your request is approved, you'll be able to start proofreading this course. You'll be notified as soon as it's accepted."
     },
     "joinOurProofreaders": "Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!",
@@ -1745,7 +1745,7 @@
     "proofread": "Proofread",
     "videoGeneration": {
       "completed": "Great job! Thank you for proofreading this course!",
-      "title": "Video generation",
+      "title": "Video creation progress",
       "progress": "progress",
       "completedMessage": "No need to wait! Feel free to review the next course now.",
       "backToCourse": "Back to course",
@@ -1763,7 +1763,6 @@
     "reviewTranscriptionGenerateAudio": "Review transcription & generate audio",
     "reviewTranscriptionInstructions": "Translate and type the transcription of the lecture in your language. Then, select Generate Audio to create an automatic audio version of your transcription. Once generated, listen to the audio to ensure accuracy and validate it using Validate Audio. If needed, you can regenerate the audio to make adjustments. You can do this up to 3 times.",
     "language": "Language",
-    "limitTries": "Limit 2/3 tries",
     "generateAudio": "Generate audio",
     "editTranscript": "Edit transcript",
     "enterTranslation": "Enter your translation here...",
@@ -1772,6 +1771,15 @@
     "reviewInstructions": "Review the transcription, make any necessary corrections and then generate the audio.\nIf the audio has an issue that is not related to the transcription, you can report the problem",
     "createVideo": "Create video",
     "nextSlide": "Next slide",
-    "completeAllValidations": "Please complete all validations before proceeding"
+    "completeAllValidations": "Please complete all validations before proceeding",
+    "slideNotFound": "⚠️ Slide not found",
+    "slideNotFoundDescription": "This slide file doesn't exist. Please contact support for assistance.",
+    "audioNotFoundDescription": "Audio file not found. Please contact support for assistance.",
+    "seeMore": "See more",
+    "note": "Note: you can access the English version of some courses alongside the original language content for better understanding.\nIf you can't find any courses translated into your language, please "
+  },
+  "footer": {
+    "helpCenter": "Help center",
+    "visitPlanB": "Visit Plan ₿ Network"
   }
 }

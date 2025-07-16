@@ -1,9 +1,10 @@
+import { Button } from '@blms/ui';
 import { useNavigate } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { HiOutlineViewGrid } from 'react-icons/hi';
+import { TranslationRequestModal } from '#src/components/translation-request-modal.tsx';
 
 import type { BasicCourse } from '@blms/types';
 
@@ -12,9 +13,6 @@ import Flag from '#src/molecules/Flag/index.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
-
-// Import the correct logo assets
-import PlanBLogoBlack from '../../../../../assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 
 /**
  * Represents a course translation with essential properties
@@ -33,6 +31,7 @@ export interface CourseTranslationCardProps {
   targetLanguage?: string;
   userContributions?: Array<{ courseId: string; assignmentStatus?: string }>;
   refetchUserContributions?: () => Promise<void>;
+  onRequestSuccess?: () => void;
 }
 
 interface TranslationAssignment {
@@ -47,6 +46,7 @@ export const CourseTranslationCard = ({
   targetLanguage: propTargetLanguage,
   userContributions,
   refetchUserContributions,
+  onRequestSuccess,
 }: CourseTranslationCardProps): JSX.Element => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -54,11 +54,54 @@ export const CourseTranslationCard = ({
   const [hasEnglishTranslation, setHasEnglishTranslation] = useState(false);
   const [isRequesting, setIsRequesting] = useState(false);
   const [isRequested, setIsRequested] = useState(false);
+  // Video creation progress percentage (0-100)
+  const [progress, setProgress] = useState<number | null>(null);
 
   // Get target language from localStorage or prop
   const [targetLanguage] = useState<string>(() => {
     return propTargetLanguage || localStorage.getItem('targetLanguage') || 'en';
   });
+
+  // Fetch translation chapter progress to compute video creation progress
+  useEffect(() => {
+    const fetchProgress = async () => {
+      try {
+        const chapters =
+          await trpcClient.content.getCourseTranslationChapterProgress.query({
+            courseId: course.id,
+            language: targetLanguage.toLowerCase(),
+          });
+
+        if (!chapters || chapters.length === 0) {
+          setProgress(0);
+          return;
+        }
+
+        const totals = chapters.reduce(
+          (
+            acc: { total: number; completed: number },
+            chapter: { totalSlides: number; completedSlides: number },
+          ) => {
+            acc.total += chapter.totalSlides;
+            acc.completed += chapter.completedSlides;
+            return acc;
+          },
+          { total: 0, completed: 0 },
+        );
+
+        const percent =
+          totals.total === 0
+            ? 0
+            : Math.round((totals.completed / totals.total) * 100);
+        setProgress(percent);
+      } catch (err) {
+        console.warn('Failed to fetch chapter progress', err);
+        setProgress(null);
+      }
+    };
+
+    fetchProgress();
+  }, [course.id, targetLanguage]);
 
   // Find user's contribution for this course
   const userContribution = userContributions?.find(
@@ -102,13 +145,27 @@ export const CourseTranslationCard = ({
     userContribution?.assignmentStatus || existingAssignment?.status;
   const hasAssignment = !!userContribution || !!existingAssignment;
 
-  // For now, assume English translation exists if original language is not English
-  // This logic can be enhanced later if needed
+  // Check if an English version of this course is published
   useEffect(() => {
-    if (course.originalLanguage !== 'en') {
-      setHasEnglishTranslation(true);
-    }
-  }, [course.originalLanguage]);
+    const checkEnglishAvailability = async () => {
+      try {
+        const resp = await trpcClient.content.getCourseLanguagesPublic.query({
+          id: course.id,
+        });
+        const hasEn = resp?.languages?.some(
+          (l: any) => l.code?.toLowerCase() === 'en',
+        );
+        // If original language is English, we also consider English version available
+        setHasEnglishTranslation(hasEn || course.originalLanguage === 'en');
+      } catch (err) {
+        console.warn('Could not fetch course languages', err);
+        // Fallback: assume unavailable to avoid false positive
+        setHasEnglishTranslation(course.originalLanguage === 'en');
+      }
+    };
+
+    checkEnglishAvailability();
+  }, [course.id, course.originalLanguage]);
 
   // Handle course selection
   const handleCourseClick = (e: React.MouseEvent) => {
@@ -181,7 +238,9 @@ export const CourseTranslationCard = ({
         await refetchUserContributions();
       }
 
-      // Keep modal open to show success state
+      // Close request modal and notify parent
+      setIsModalOpen(false);
+      if (onRequestSuccess) onRequestSuccess();
     } catch (error) {
       console.error('Error requesting assignment:', error);
     } finally {
@@ -191,18 +250,12 @@ export const CourseTranslationCard = ({
 
   // Get course details
   const courseName = course.name || '';
-  // Use topic field directly instead of categories
-  const courseCategory = course.index || 'BITCOIN';
+  // Use topic field from course data instead of course code/index
+  const courseTopic = course.topic || 'BITCOIN';
   // Use originalLanguage from course data
   const originalLanguage = course.originalLanguage || 'en';
 
-  // Determine if we should show English content status
-  // Don't show if original language is English or if target language is English
-  const shouldShowEnglishContentStatus =
-    originalLanguage !== 'en' &&
-    targetLanguage.toLowerCase() !== 'en' &&
-    targetLanguage.toLowerCase() !== 'english' &&
-    hasEnglishTranslation;
+  // no longer used banner; flag kept for internal badge
 
   // Get button text based on assignment status
   const getButtonText = () => {
@@ -242,17 +295,16 @@ export const CourseTranslationCard = ({
 
   return (
     <>
-      <button
-        type="button"
+      <div
         onClick={handleCourseClick}
         onKeyDown={handleKeyDown}
-        className="group w-full max-w-[330px] cursor-pointer text-left"
+        className="group w-full cursor-pointer text-left"
         aria-label={`Translate course: ${courseName}`}
       >
-        <div className="rounded-3xl overflow-hidden shadow-md bg-gray-100 border border-transparent group-hover:border-orange-300 transition-all duration-200 relative">
+        <div className="rounded-3xl overflow-hidden border border-transparent group-hover:border-orange-300 transition-all duration-200 relative bg-[#E5E5E5] group-hover:shadow-[0_0_8px_0_#FF5C00]">
           {/* Course image with padding */}
           <div className="pt-2 px-2 relative">
-            <div className="h-48 overflow-hidden rounded-t-2xl">
+            <div className="h-48 overflow-hidden rounded-lg">
               <Image
                 src={assetUrl(
                   `courses/${course.index}`,
@@ -265,16 +317,18 @@ export const CourseTranslationCard = ({
               />
 
               {/* Language flags - positioned in the top-right corner of the image */}
-              <div className="absolute top-2 right-2 flex flex-col gap-1">
+              <div className="absolute top-4 right-4 flex flex-col gap-1">
                 {/* Original language flag */}
-                <div className="shadow-sm bg-white rounded overflow-hidden">
-                  <Flag code={originalLanguage} size="s" />
+                <div className="shadow-sm bg-white rounded overflow-hidden px-[6px] py-[4px]">
+                  {/* Increased flag size and added internal white padding for better visibility */}
+                  <Flag code={originalLanguage} size="m" />
                 </div>
 
                 {/* English flag - only if course has English translation and original is not English */}
                 {originalLanguage !== 'en' && hasEnglishTranslation && (
-                  <div className="shadow-sm bg-white rounded overflow-hidden mt-1">
-                    <Flag code="en" size="s" />
+                  <div className="shadow-sm bg-white rounded overflow-hidden mt-1 px-[6px] py-[4px]">
+                    {/* Enlarged English flag and increased padding */}
+                    <Flag code="en" size="m" />
                   </div>
                 )}
               </div>
@@ -290,7 +344,7 @@ export const CourseTranslationCard = ({
             {/* Category and assignment tags - category on left, assignment on right */}
             <div className="mb-3 flex justify-between items-start">
               <span className="inline-block bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-1 rounded uppercase">
-                {courseCategory}
+                {courseTopic}
               </span>
               <span
                 className={`inline-block text-xs font-medium px-2.5 py-1 rounded ${assignmentDisplay.className}`}
@@ -301,8 +355,20 @@ export const CourseTranslationCard = ({
 
             {/* Course information */}
             <div className="flex flex-col space-y-2">
+              {/* Video creation progress row */}
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">
+                <span className="text-maroon-8">
+                  {t('translate.videoGeneration.title', {
+                    defaultValue: 'Video creation progress',
+                  })}
+                </span>
+                <span className="font-medium text-black">
+                  {progress !== null ? `${progress}%` : '—'}
+                </span>
+              </div>
+
+              <div className="flex justify-between text-sm">
+                <span className="text-maroon-8">
                   {t('translate.originalLanguage')}
                 </span>
                 <span className="font-medium">
@@ -314,181 +380,38 @@ export const CourseTranslationCard = ({
 
           {/* Action indicator - shows on hover without nested interactive elements */}
           <div className="h-0 group-hover:h-16 transition-all duration-200 overflow-hidden">
-            <div className="px-4 pt-1 pb-5">
-              <div
-                className={`w-full py-2 px-4 rounded flex items-center justify-center transition-colors ${
+            <div className="px-4 py-4">
+              <Button
+                variant="primary"
+                size="flagsMobile"
+                disabled={!isButtonClickable}
+                className={`w-full h-[32px] px-[10px] py-[14px] gap-[10px] rounded-[8px] !shadow-none transition-colors ${
                   isButtonClickable
-                    ? 'bg-orange-500 hover:bg-orange-600 text-white'
-                    : 'bg-gray-400 text-white cursor-not-allowed'
+                    ? ''
+                    : '!bg-gray-400 text-white cursor-not-allowed'
                 }`}
               >
                 {getButtonText()}
-                {isButtonClickable && <FaArrowRightLong className="ml-2" />}
-              </div>
+                {isButtonClickable && <FaArrowRightLong />}
+              </Button>
             </div>
           </div>
         </div>
-      </button>
+      </div>
 
       {/* Translation Request Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative">
-            {/* Close button */}
-            <button
-              type="button"
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-              onClick={handleCloseModal}
-            >
-              ×
-            </button>
-
-            {/* Logo and header */}
-            <div className="flex flex-col items-center mb-5">
-              <img
-                src={PlanBLogoBlack}
-                alt="Plan B Network"
-                className="h-8 mb-4"
-              />
-              <h2 className="text-orange-500 text-lg font-medium">
-                {t('translate.modal.requestToProofreadCourse')}
-              </h2>
-              <div className="text-orange-500 text-4xl mt-4 mb-2">
-                <HiOutlineViewGrid />
-              </div>
-              <p className="text-gray-700 text-center">
-                {t('translate.modal.doYouWantToSendRequest')}
-              </p>
-            </div>
-
-            {/* Course details */}
-            <div className="bg-gray-100 rounded-lg p-4 mb-6">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-gray-700 font-medium">
-                      {t('translate.modal.course')}:
-                    </span>
-                    <span className="text-gray-800 ml-2">{courseName}</span>
-                  </div>
-                  <span className="bg-orange-100 text-xs rounded px-1 py-0.5 text-orange-800">
-                    {courseCategory}
-                  </span>
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700 font-medium">
-                    {t('translate.modal.originalLanguage')}:
-                  </span>
-                  <span className="text-gray-800">
-                    {getLanguageName(originalLanguage)}
-                  </span>
-                </div>
-
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700 font-medium">
-                    {t('translate.modal.languageToProofread')}:
-                  </span>
-                  <span className="text-gray-800">
-                    {getLanguageName(targetLanguage)}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* English content status - only show if applicable */}
-            {shouldShowEnglishContentStatus && (
-              <div className="mb-6">
-                <div
-                  className={`rounded-lg p-3 flex items-center space-x-3 ${
-                    hasEnglishTranslation
-                      ? 'bg-orange-100 border border-orange-200'
-                      : 'bg-gray-100 border border-gray-200'
-                  }`}
-                >
-                  {hasEnglishTranslation && (
-                    <div className="text-orange-500">
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                  <span
-                    className={`text-sm ${
-                      hasEnglishTranslation
-                        ? 'text-orange-800'
-                        : 'text-gray-600'
-                    }`}
-                  >
-                    {t('translate.modal.englishContentIncluded')}
-                  </span>
-                </div>
-              </div>
-            )}
-
-            {/* Action buttons */}
-            <div className="flex space-x-3">
-              {isRequested ? (
-                <>
-                  <button
-                    type="button"
-                    className="flex-1 bg-green-100 text-green-800 py-2 px-4 rounded border border-green-300"
-                    disabled
-                  >
-                    {t('translate.modal.requestSentSuccess')}
-                  </button>
-                  <button
-                    type="button"
-                    className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition-colors"
-                    onClick={handleCloseModal}
-                  >
-                    {t('translate.modal.close')}
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    type="button"
-                    className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition-colors"
-                    onClick={handleCloseModal}
-                    disabled={isRequesting}
-                  >
-                    {t('translate.modal.cancel')}
-                  </button>
-                  <button
-                    type="button"
-                    className="flex-1 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={handleSendRequest}
-                    disabled={isRequesting}
-                  >
-                    {isRequesting
-                      ? t('translate.requesting')
-                      : t('translate.modal.sendRequest')}
-                  </button>
-                </>
-              )}
-            </div>
-
-            {/* Success message */}
-            {isRequested && (
-              <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-sm text-green-800 text-center">
-                  {t('translate.modal.onceRequestApproved')}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      <TranslationRequestModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        courseName={courseName}
+        courseTopic={courseTopic}
+        originalLanguage={originalLanguage}
+        targetLanguage={targetLanguage}
+        hasEnglishTranslation={hasEnglishTranslation}
+        isRequested={isRequested}
+        isRequesting={isRequesting}
+        onSendRequest={handleSendRequest}
+      />
     </>
   );
 };

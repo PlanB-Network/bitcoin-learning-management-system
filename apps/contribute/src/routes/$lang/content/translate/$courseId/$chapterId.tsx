@@ -61,10 +61,12 @@ interface CourseTranslationSlide {
   pptValidated?: boolean;
   transcriptionValidated?: boolean;
   audioValidated?: boolean;
+  audioTries?: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
   translatedContent: string | null;
+  professor: string | null;
   status: string;
   createdAt: Date;
   updatedAt: Date;
@@ -99,7 +101,10 @@ function ChapterTranslationPage() {
     const chapIdx = chapterData.context.chapterIndex;
     const slide = chapterData.slides?.[currentSlideIndex];
     if (!slide) return '';
-    const slideIdx = slide.slideNumber ?? currentSlideIndex; // slide index is already 0-based in storage
+    // Convert 1-based slideNumber from database to 0-based for filename
+    const slideIdx = slide.slideNumber
+      ? slide.slideNumber - 1
+      : currentSlideIndex;
     return `${partIdx}.${chapIdx}_${slideIdx}`;
   }, [chapterData, currentSlideIndex]);
 
@@ -122,6 +127,46 @@ function ChapterTranslationPage() {
   const [audioGenerating, setAudioGenerating] = useState(false);
   const [audioVersion, setAudioVersion] = useState(0);
 
+  // ----------------------------
+  // Original transcript language selector (same logic as compare view)
+  // ----------------------------
+  interface LanguageAvailability {
+    code: string;
+    name: string;
+    available: boolean;
+  }
+
+  const [
+    selectedOriginalTranscriptLanguage,
+    setSelectedOriginalTranscriptLanguage,
+  ] = useState<string>('');
+  const [transcriptLanguageAvailability, setTranscriptLanguageAvailability] =
+    useState<LanguageAvailability[]>([]);
+  const [transcriptLanguagesLoading, setTranscriptLanguagesLoading] =
+    useState(false);
+  const [transcriptContentCache, setTranscriptContentCache] = useState<
+    Record<string, string | null>
+  >({});
+
+  // Helper to fetch availability per slide
+  const fetchSlideTranscriptLanguageAvailability = async (
+    courseId: string,
+    partId: string,
+    chapterId: string,
+    slideId: string,
+  ): Promise<string[]> => {
+    try {
+      const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error('Failed to fetch transcript availability');
+      const data = (await resp.json()) as { languages: string[] };
+      return data.languages ?? [];
+    } catch (err) {
+      console.warn('Could not fetch transcript language availability', err);
+      return [];
+    }
+  };
+
   // Load attempts whenever slide changes
   useEffect(() => {
     if (!chapterData) return;
@@ -131,7 +176,8 @@ function ChapterTranslationPage() {
     const saved = Number(
       sessionStorage.getItem(getAttemptKey(slide.slideId)) ?? '0',
     );
-    setAudioAttempts(Number.isFinite(saved) ? saved : 0);
+    const fromDb = slide.audioTries ?? 0;
+    setAudioAttempts(Math.max(saved, fromDb));
   }, [chapterData, currentSlideIndex]);
 
   // Video generation modal state
@@ -212,7 +258,138 @@ function ChapterTranslationPage() {
       transcriptionValidated: slide.transcriptionValidated ?? false,
       audioValidated: slide.audioValidated ?? false,
     });
+
+    // Reset source transcript cache when slide changes
+    setTranscriptContentCache({});
   }, [chapterData, currentSlideIndex]);
+
+  // ----------------------------
+  // Fetch transcript language availability for current slide
+  // ----------------------------
+  useEffect(() => {
+    const fetchTranscriptLanguages = async () => {
+      if (!chapterData) return;
+      setTranscriptLanguagesLoading(true);
+
+      try {
+        let resp: any;
+        try {
+          resp = await trpcClient.content.getCourseLanguagesPublic.query({
+            id: courseId,
+          });
+        } catch (e: any) {
+          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
+            id: courseId,
+          });
+        }
+
+        const originalLang = courseData?.originalLanguage ?? 'en';
+        const codesSet = new Set<string>();
+        if (resp?.languages?.length) {
+          for (const l of resp.languages) codesSet.add(l.code);
+        }
+        codesSet.add(originalLang);
+        const codes = Array.from(codesSet);
+
+        const slide = chapterData.slides[currentSlideIndex];
+        if (slide) {
+          const availableCodes = await fetchSlideTranscriptLanguageAvailability(
+            courseId,
+            slide.partId,
+            chapterId,
+            slide.slideId,
+          );
+
+          const availability = codes.map((lang) => ({
+            code: lang,
+            name: getLanguageName(lang),
+            available: availableCodes.includes(lang) || lang === originalLang,
+          }));
+
+          setTranscriptLanguageAvailability(availability);
+
+          if (!selectedOriginalTranscriptLanguage) {
+            const available = availability.filter((l) => l.available);
+            if (available.length > 0) {
+              const defaultLang =
+                available.find((l) => l.code === 'en')?.code ||
+                available[0].code;
+              setSelectedOriginalTranscriptLanguage(defaultLang);
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Could not fetch transcript languages', err);
+      } finally {
+        setTranscriptLanguagesLoading(false);
+      }
+    };
+
+    fetchTranscriptLanguages();
+  }, [
+    courseId,
+    chapterId,
+    courseData,
+    currentSlideIndex,
+    selectedOriginalTranscriptLanguage,
+    chapterData?.slides?.[currentSlideIndex]?.slideId,
+  ]);
+
+  // ----------------------------
+  // Load transcript content for selected language
+  // ----------------------------
+  useEffect(() => {
+    const loadTranscriptContent = async () => {
+      if (!selectedOriginalTranscriptLanguage) return;
+      if (!chapterData) return;
+
+      const lang = selectedOriginalTranscriptLanguage;
+      const slide = chapterData.slides[currentSlideIndex];
+      if (!slide) return;
+
+      if (Object.hasOwn(transcriptContentCache, lang)) return;
+
+      if (lang === (courseData?.originalLanguage ?? 'en')) {
+        setTranscriptContentCache((prev) => ({
+          ...prev,
+          [lang]: slide.originalContent,
+        }));
+        return;
+      }
+
+      try {
+        const resp = await trpcClient.content.getCourseTranslationSlides.query({
+          courseId,
+          language: lang,
+          chapterId,
+        });
+        const otherSlide = resp?.slides?.[currentSlideIndex];
+        setTranscriptContentCache((prev) => ({
+          ...prev,
+          [lang]: otherSlide?.translatedContent ?? null,
+        }));
+      } catch (err) {
+        console.warn('Could not load transcript content', err);
+        setTranscriptContentCache((prev) => ({ ...prev, [lang]: null }));
+      }
+    };
+
+    loadTranscriptContent();
+  }, [
+    selectedOriginalTranscriptLanguage,
+    currentSlideIndex,
+    courseData,
+    courseId,
+    chapterId,
+    transcriptContentCache,
+    chapterData?.slides?.[currentSlideIndex]?.slideId,
+  ]);
+
+  const displayedOriginalTranscript =
+    selectedOriginalTranscriptLanguage ===
+    (courseData?.originalLanguage ?? 'en')
+      ? chapterData?.slides?.[currentSlideIndex]?.originalContent
+      : transcriptContentCache[selectedOriginalTranscriptLanguage];
 
   // Scroll to top when slide changes
   useEffect(() => {
@@ -229,57 +406,48 @@ function ChapterTranslationPage() {
     document.title = `${t('translate.chapterTranslation')} | Plan ₿ Network`;
   }, [t]);
 
-  useEffect(() => {
-    const fetchChapterData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        console.log('Fetching chapter data for:', {
+  const fetchChapterData = React.useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Fetch both chapter data and course data in parallel
+      const [chapterDataResp, courseDataResp] = await Promise.all([
+        trpcClient.content.getCourseTranslationSlides.query({
           courseId,
+          language: targetLanguage,
           chapterId,
-          targetLanguage,
-        });
+        }),
+        trpcClient.content.getCourse.query({
+          language: 'en',
+          id: courseId,
+        }),
+      ]);
 
-        // Fetch both chapter data and course data in parallel
-        const [chapterData, courseData] = await Promise.all([
-          trpcClient.content.getCourseTranslationSlides.query({
-            courseId,
-            language: targetLanguage,
-            chapterId,
-          }),
-          trpcClient.content.getCourse.query({
-            language: 'en',
-            id: courseId,
-          }),
-        ]);
+      setChapterData(chapterDataResp);
+      setCourseData(courseDataResp);
 
-        console.log('Chapter data received:', chapterData);
-        console.log('Course data received:', courseData);
-
-        setChapterData(chapterData);
-        setCourseData(courseData);
-
-        // Calculate total chapters from course data
-        if (courseData?.parts) {
-          const totalChaptersCount = courseData.parts.reduce(
-            (total, part) => total + (part.chapters?.length || 0),
-            0,
-          );
-          setTotalChapters(totalChaptersCount);
-          console.log('Total chapters calculated:', totalChaptersCount);
-        }
-      } catch (error) {
-        console.error('Error fetching chapter translation data:', error);
-        setError(
-          error instanceof Error ? error.message : 'Unknown error occurred',
+      if (courseDataResp?.parts) {
+        const totalChaptersCount = courseDataResp.parts.reduce(
+          (total, part) => total + (part.chapters?.length || 0),
+          0,
         );
-      } finally {
-        setLoading(false);
+        setTotalChapters(totalChaptersCount);
       }
-    };
-
-    fetchChapterData();
+    } catch (error) {
+      console.error('Error fetching chapter translation data:', error);
+      setError(error instanceof Error ? error.message : 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
   }, [courseId, chapterId, targetLanguage]);
+
+  // Initial fetch & when route params change
+  useEffect(() => {
+    if (!isCompareRoute) {
+      fetchChapterData();
+    }
+  }, [fetchChapterData, isCompareRoute]);
 
   const handleTranslationChange = (
     slideId: string,
@@ -445,6 +613,7 @@ function ChapterTranslationPage() {
           fileName: fileBaseName,
           language: targetLanguage,
           text: currentSlide.translatedContent || '',
+          professor: currentSlide.professor || undefined,
         }),
       });
 
@@ -456,7 +625,10 @@ function ChapterTranslationPage() {
       const data = await response.json();
       console.log('Audio generation task started:', data);
 
-      // Mark audio as unvalidated in DB immediately
+      // Increment attempt count & persist
+      const newAttempts = audioAttempts + 1;
+
+      // Mark audio as unvalidated in DB immediately and store attempts
       try {
         await trpcClient.content.updateCourseTranslationSlide.mutate({
           courseId,
@@ -464,20 +636,20 @@ function ChapterTranslationPage() {
           chapterId,
           slideId: currentSlide.slideId,
           audioValidated: false,
+          audioTries: newAttempts,
         } as any);
       } catch (err) {
         console.warn('Failed to mark audio unvalidated', err);
       }
 
-      const toolkitTaskId = data.toolkitTask?.task_id;
-
-      // Increment attempt count & persist
-      const newAttempts = audioAttempts + 1;
+      // Update local attempts state and persist to session storage
       setAudioAttempts(newAttempts);
       sessionStorage.setItem(
         getAttemptKey(currentSlide.slideId),
         String(newAttempts),
       );
+
+      const toolkitTaskId = data.toolkitTask?.task_id;
 
       // Start polling Language-Toolkit status if task_id present
       if (toolkitTaskId) {
@@ -871,33 +1043,6 @@ function ChapterTranslationPage() {
       maxWidth="max-w-7xl"
       paddingXClasses="px-4"
     >
-      {/* Main Content Header */}
-      <div className="text-center mb-10 mt-10">
-        <p className="text-orange-500 text-base font-medium mb-2">
-          {t('translate.bridgingLanguageGaps', {
-            defaultValue: 'Bridging language gaps, one video at a time',
-          })}
-        </p>
-        <h1
-          className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-          style={{
-            fontFamily: 'Rubik, sans-serif',
-            fontWeight: 400,
-            lineHeight: '117%',
-          }}
-        >
-          {t('translate.bitcoinTranslationCommunity', {
-            defaultValue: 'Bitcoin Proofreading Community',
-          })}
-        </h1>
-        <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-          {t('translate.joinOurProofreaders', {
-            defaultValue:
-              'Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!',
-          })}
-        </p>
-      </div>
-
       {/* Navigation and Course Header */}
       <div className="flex flex-col gap-10 mb-10">
         {/* Back Navigation */}
@@ -1231,7 +1376,7 @@ function ChapterTranslationPage() {
         </p>
 
         <TranscriptionEditor
-          originalContent={currentSlide?.originalContent || ''}
+          originalContent={displayedOriginalTranscript || ''}
           translatedContent={currentSlide?.translatedContent || ''}
           onTranslationChange={(value) =>
             currentSlide && handleTranslationChange(currentSlide.slideId, value)
@@ -1239,6 +1384,12 @@ function ChapterTranslationPage() {
           onGenerateAudio={handleGenerateAudio}
           onValidateTranscription={handleValidateTranscription}
           transcriptionValidated={validationStates.transcriptionValidated}
+          sourceLanguageOptions={transcriptLanguageAvailability}
+          sourceLanguageLoading={transcriptLanguagesLoading}
+          selectedSourceLanguage={selectedOriginalTranscriptLanguage}
+          onSourceLanguageChange={(code) =>
+            setSelectedOriginalTranscriptLanguage(code)
+          }
           generateDisabled={audioAttempts >= MAX_AUDIO_TRIES}
           triesLabel={
             audioAttempts >= MAX_AUDIO_TRIES

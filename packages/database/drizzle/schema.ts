@@ -2524,6 +2524,7 @@ export const contentCourseTranslationSlides = content.table(
     pptValidated: t.boolean().default(false).notNull(),
     transcriptionValidated: t.boolean().default(false).notNull(),
     audioValidated: t.boolean().default(false).notNull(),
+    audioTries: t.integer().default(0).notNull(),
     pptResourcePath: t.text(),
     audioResourcePath: t.text(),
     originalContent: t.text(),

@@ -1,3 +1,4 @@
+import { sql } from '@blms/database';
 import type { Dependencies } from '../../dependencies.js';
 
 export interface GenerateCourseVideoResponse {
@@ -6,16 +7,44 @@ export interface GenerateCourseVideoResponse {
   accessToken?: string;
 }
 
+interface CourseProfessor {
+  professorId: string;
+  name: string;
+  isCoordinator: boolean;
+}
+
+/**
+ * Get professor information for a course to enable voice matching
+ */
+const getCourseProfessors = async (
+  postgres: Dependencies['postgres'],
+  courseId: string,
+): Promise<CourseProfessor[]> => {
+  const professors = await postgres.exec(sql<CourseProfessor[]>`
+    SELECT
+      cp.professor_id as "professorId",
+      p.name,
+      cp.is_coordinator as "isCoordinator"
+    FROM content.course_professors cp
+    JOIN content.professors p ON cp.professor_id = p.id
+    WHERE cp.course_id = ${courseId}
+    ORDER BY cp.is_coordinator DESC, p.name ASC
+  `);
+
+  return professors;
+};
+
 /**
  * Create a course video by delegating the heavy lifting to the Language-Toolkit API.
  *
  * Steps performed:
  *  1. Compute the canonical S3 key where the final video will reside.
- *  2. Acquire an access-token for the Toolkit API (supports static token or /token flow).
- *  3. POST a JSON payload to `/video/course_s3` on the Toolkit.
- *  4. Return the task information so that the caller can poll progress.
+ *  2. Query professor information for voice matching.
+ *  3. Acquire an access-token for the Toolkit API (supports static token or /token flow).
+ *  4. POST a JSON payload to `/video/course_s3` on the Toolkit with professor info.
+ *  5. Return the task information so that the caller can poll progress.
  */
-export const createGenerateCourseVideo = (_deps: Dependencies) => {
+export const createGenerateCourseVideo = (deps: Dependencies) => {
   return async (
     courseId: string,
     language: string,
@@ -30,6 +59,22 @@ export const createGenerateCourseVideo = (_deps: Dependencies) => {
     console.log(`Generating course video for ${courseId} in ${language}`);
     console.log(`Toolkit URL: ${toolkitUrl}`);
     console.log(`Output key: ${outputKey}`);
+
+    // Query professor information for voice matching
+    let professors: CourseProfessor[] = [];
+    try {
+      professors = await getCourseProfessors(deps.postgres, courseId);
+      console.log(
+        `Found ${professors.length} professors for course ${courseId}:`,
+        professors.map(
+          (p) =>
+            `${p.name} (${p.isCoordinator ? 'coordinator' : 'associated'})`,
+        ),
+      );
+    } catch (error) {
+      console.warn(`Failed to fetch professors for course ${courseId}:`, error);
+      // Continue without professor info - Language-Toolkit will use default voice
+    }
 
     // 1) Get auth token – prefer static token but fall back to /token exchange
     let accessToken: string | undefined = process.env.LTK_STATIC_TOKEN;
@@ -77,11 +122,16 @@ export const createGenerateCourseVideo = (_deps: Dependencies) => {
       console.log('Using static token for authentication');
     }
 
-    // 2) Call Toolkit endpoint
+    // 2) Call Toolkit endpoint with professor information
     const body = {
       course_id: courseId,
       language,
       output_key: outputKey,
+      professors: professors.map((p) => ({
+        id: p.professorId,
+        name: p.name,
+        is_coordinator: p.isCoordinator,
+      })),
     };
 
     console.log('Calling Toolkit video generation endpoint...');

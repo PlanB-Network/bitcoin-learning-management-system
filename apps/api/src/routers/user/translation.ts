@@ -33,6 +33,7 @@ import {
   createGetAllUsers,
   createGetAvailableContributors,
   createGetAvailableLanguages,
+  createGetReviewerLanguages,
   createGetTranslationAssignmentRequests,
   createGetUserTranslationAssignments,
   createGetUserTranslationDetails,
@@ -150,6 +151,23 @@ const getAvailableContributorsProcedure = adminProcedure
   .output<Parser<AvailableContributor[]>>(z.array(availableContributorSchema))
   .query(({ ctx }) => {
     return createGetAvailableContributors(ctx.dependencies)();
+  });
+
+// Get reviewer languages for logged-in contributor
+const getReviewerLanguagesProcedure = contributorProcedure
+  .output<Parser<string[]>>(z.array(z.string()))
+  .query(({ ctx }) => {
+    const userId = ctx.user?.uid;
+    if (!userId) {
+      throw new TRPCError({
+        code: 'UNAUTHORIZED',
+        message: 'User not authenticated',
+      });
+    }
+
+    return createGetReviewerLanguages(ctx.dependencies)({
+      userId,
+    });
   });
 
 // Get all users (for admin)
@@ -276,4 +294,5 @@ export const userTranslationRouter = createTRPCRouter({
   getUserDetails: getUserDetailsProcedure,
   assignLanguageToContributor: assignLanguageToContributorProcedure,
   getAvailableLanguages: getAvailableLanguagesProcedure,
+  getReviewerLanguages: getReviewerLanguagesProcedure,
 });

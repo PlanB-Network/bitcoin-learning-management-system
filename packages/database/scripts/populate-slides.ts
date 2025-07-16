@@ -580,20 +580,21 @@ async function populateSlideData() {
             const pptValidated = false;
             const transcriptionValidated = false;
             const audioValidated = false;
+            const audioTries = 0;
 
             // Insert slide using raw SQL (updated columns)
             await connection.unsafe(
               `
               INSERT INTO content.course_translation_slides (
                 course_id, language, part_id, chapter_id, slide_id, slide_number,
-                ppt_validated, transcription_validated, audio_validated,
+                ppt_validated, transcription_validated, audio_validated, audio_tries,
                 ppt_resource_path, audio_resource_path, original_content, translated_content,
                 status, created_at, updated_at
               ) VALUES (
                 $1, $2, $3, $4, $5, $6,
-                $7, $8, $9,
-                $10, $11, $12, $13,
-                $14, $15, $16
+                $7, $8, $9, $10,
+                $11, $12, $13, $14,
+                $15, $16, $17
               ) ON CONFLICT DO NOTHING
             `,
               [
@@ -606,13 +607,14 @@ async function populateSlideData() {
                 pptValidated, // $7
                 transcriptionValidated, // $8
                 audioValidated, // $9
-                pptResourcePath, // $10
-                audioResourcePath, // $11
-                originalContent, // $12
-                translatedContent, // $13
-                status, // $14
-                new Date().toISOString(), // $15
+                audioTries, // $10
+                pptResourcePath, // $11
+                audioResourcePath, // $12
+                originalContent, // $13
+                translatedContent, // $14
+                status, // $15
                 new Date().toISOString(), // $16
+                new Date().toISOString(), // $17
               ],
             );
 

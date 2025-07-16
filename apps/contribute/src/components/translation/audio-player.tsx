@@ -329,6 +329,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           })}
         </p>
       )}
+      {exists === false && !generating && (
+        <div
+          className="flex items-center gap-2 text-sm mb-2"
+          style={{ color: '#92400e' }}
+        >
+          <span>⚠️</span>
+          <span>
+            {t('translate.audioNotFoundDescription', {
+              defaultValue:
+                'Audio file not found. Please contact support for assistance.',
+            })}
+          </span>
+        </div>
+      )}
 
       {/* Audio Player Container */}
       <div

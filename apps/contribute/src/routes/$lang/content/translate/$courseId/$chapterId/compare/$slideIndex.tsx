@@ -3,11 +3,12 @@ import { Link, createFileRoute } from '@tanstack/react-router';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { TranslationStatus } from '@blms/constants';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
-
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { OnlyOfficeSlideEditor } from '#src/components/translation/onlyoffice-slide-editor.tsx';
+import { LanguageDropdown, ValidationCheckbox } from '#src/components/ui';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
@@ -44,6 +45,7 @@ interface CourseTranslationSlide {
   pptValidated?: boolean;
   transcriptionValidated?: boolean;
   audioValidated?: boolean;
+  audioTries?: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -100,6 +102,14 @@ function CompareSlidePage() {
   const [transcriptContentCache, setTranscriptContentCache] = useState<
     Record<string, string | null>
   >({});
+
+  // ----------------------------
+  // Target transcription editing & validation state
+  // ----------------------------
+  const [translatedText, setTranslatedText] = useState<string>('');
+  const [transcriptionValidated, setTranscriptionValidated] =
+    useState<boolean>(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
 
   const numericSlideIndex = Number(slideIndex);
   const targetLanguage = Route.useSearch()?.targetLanguage || 'fr';
@@ -344,7 +354,12 @@ function CompareSlidePage() {
     };
 
     fetchTranscriptLanguages();
-  }, [courseId, chapterData, numericSlideIndex]);
+  }, [
+    courseId,
+    chapterId,
+    numericSlideIndex,
+    chapterData?.slides?.[numericSlideIndex]?.slideId,
+  ]);
 
   // ----------------------------
   // Load transcript content for selected language
@@ -387,16 +402,103 @@ function CompareSlidePage() {
     loadTranscriptContent();
   }, [
     selectedOriginalTranscriptLanguage,
-    chapterData,
     numericSlideIndex,
     courseId,
     chapterId,
     courseData,
     transcriptContentCache,
+    chapterData?.slides?.[numericSlideIndex]?.slideId,
   ]);
 
   // Compute derived values once we have data
   const currentSlide = chapterData?.slides?.[numericSlideIndex];
+
+  // Initialise translated transcription state whenever slide changes
+  useEffect(() => {
+    if (currentSlide) {
+      setTranslatedText(currentSlide.translatedContent ?? '');
+      setTranscriptionValidated(currentSlide.transcriptionValidated ?? false);
+      setHasUnsavedChanges(false);
+    }
+  }, [currentSlide]);
+
+  // ----------------------------
+  // Handlers for translated transcription
+  // ----------------------------
+  const handleTranslatedChange = (value: string) => {
+    if (!currentSlide) return;
+
+    const wasValidated = transcriptionValidated;
+
+    setTranslatedText(value);
+    setHasUnsavedChanges(true);
+
+    // Update local chapterData so UI reflects edits immediately
+    setChapterData((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        slides: prev.slides.map((s) =>
+          s.slideId === currentSlide.slideId
+            ? { ...s, translatedContent: value, transcriptionValidated: false }
+            : s,
+        ),
+      };
+    });
+
+    if (wasValidated) {
+      setTranscriptionValidated(false);
+      // Immediately mark as unvalidated in DB
+      trpcClient.content.updateCourseTranslationSlide
+        .mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          transcriptionValidated: false,
+        } as any)
+        .catch((err) =>
+          console.error('Error auto-unvalidating transcript', err),
+        );
+    }
+  };
+
+  const handleValidateTranscription = async () => {
+    if (!currentSlide) return;
+    try {
+      await trpcClient.content.updateCourseTranslationSlide.mutate({
+        courseId,
+        language: targetLanguage,
+        chapterId,
+        slideId: currentSlide.slideId,
+        translatedContent: translatedText,
+        status: TranslationStatus.InProgress,
+        transcriptionValidated: true,
+      } as any);
+
+      setTranscriptionValidated(true);
+      setHasUnsavedChanges(false);
+
+      // Sync local state
+      setChapterData((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          slides: prev.slides.map((s) =>
+            s.slideId === currentSlide.slideId
+              ? {
+                  ...s,
+                  translatedContent: translatedText,
+                  transcriptionValidated: true,
+                }
+              : s,
+          ),
+        };
+      });
+    } catch (err) {
+      console.error('Error validating transcription', err);
+    }
+  };
 
   // Determine transcript to display based on selection
   const displayedOriginalTranscript =
@@ -449,7 +551,10 @@ function CompareSlidePage() {
     if (!chapterData || !currentSlide) return '';
     const partIdx = chapterData.context.partIndex;
     const chapIdx = chapterData.context.chapterIndex;
-    const slideIdx = currentSlide.slideNumber ?? numericSlideIndex;
+    // Convert 1-based slideNumber from database to 0-based for filename
+    const slideIdx = currentSlide.slideNumber
+      ? currentSlide.slideNumber - 1
+      : numericSlideIndex;
     return `${partIdx}.${chapIdx}_${slideIdx}`;
   }, [chapterData, currentSlide, numericSlideIndex]);
 
@@ -549,32 +654,7 @@ function CompareSlidePage() {
       maxWidth="max-w-7xl"
       paddingXClasses="px-4"
     >
-      {/* Header Section – copied from translation page for consistency */}
-      <div className="text-center mb-10 mt-10">
-        <p className="text-orange-500 text-base font-medium mb-2">
-          {t('translate.bridgingLanguageGaps', {
-            defaultValue: 'Bridging language gaps, one video at a time',
-          })}
-        </p>
-        <h1
-          className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-          style={{
-            fontFamily: 'Rubik, sans-serif',
-            fontWeight: 400,
-            lineHeight: '117%',
-          }}
-        >
-          {t('translate.bitcoinTranslationCommunity', {
-            defaultValue: 'Bitcoin Proofreading Community',
-          })}
-        </h1>
-        <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-          {t('translate.joinOurProofreaders', {
-            defaultValue:
-              'Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!',
-          })}
-        </p>
-      </div>
+      {/* Header Section removed */}
 
       {/* Navigation and Course Header */}
       <div className="flex flex-col gap-10 mb-10">
@@ -754,6 +834,7 @@ function CompareSlidePage() {
                   slideId={currentSlide?.slideId}
                   fileName={fileBaseName}
                   language={originalLanguage}
+                  mode="view"
                 />
               </div>
             </div>
@@ -834,73 +915,26 @@ function CompareSlidePage() {
                     {t('translate.language', { defaultValue: 'Language' })}
                   </span>
                   <div className="relative">
-                    <select
+                    <LanguageDropdown
+                      options={transcriptLanguageAvailability}
+                      loading={transcriptLanguagesLoading}
                       value={selectedOriginalTranscriptLanguage}
-                      onChange={(e) => {
-                        const selectedLang = e.target.value;
+                      onChange={(code) => {
                         const availability =
                           transcriptLanguageAvailability.find(
-                            (l) => l.code === selectedLang,
+                            (l) => l.code === code,
                           );
                         if (availability?.available) {
-                          setSelectedOriginalTranscriptLanguage(selectedLang);
+                          setSelectedOriginalTranscriptLanguage(code);
                         }
                       }}
-                      disabled={transcriptLanguagesLoading}
-                      className={`appearance-none bg-white border border-[#CCCCCC] rounded-[10px] text-sm text-orange-500 w-full sm:w-[225px] h-[34px] pl-8 pr-3 py-1 ${
-                        transcriptLanguagesLoading
-                          ? 'opacity-50 cursor-not-allowed'
-                          : ''
-                      }`}
-                    >
-                      {transcriptLanguagesLoading ? (
-                        <option value="">
-                          {t('translate.loadingLanguages', {
-                            defaultValue: 'Loading languages...',
-                          })}
-                        </option>
-                      ) : transcriptLanguageAvailability.length === 0 ? (
-                        <option value="">
-                          {t('translate.noLanguagesAvailable', {
-                            defaultValue: 'No languages available',
-                          })}
-                        </option>
-                      ) : (
-                        transcriptLanguageAvailability.map((lang) => (
-                          <option
-                            key={lang.code}
-                            value={lang.code}
-                            disabled={!lang.available}
-                            className={`${lang.available ? 'text-gray-900' : 'text-gray-400 cursor-not-allowed'}`}
-                            style={{
-                              color: lang.available ? 'inherit' : '#9CA3AF',
-                              cursor: lang.available
-                                ? 'pointer'
-                                : 'not-allowed',
-                            }}
-                          >
-                            {lang.name}
-                            {!lang.available && ' (Not available)'}
-                          </option>
-                        ))
-                      )}
-                    </select>
-                    {transcriptLanguagesLoading ? (
-                      <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-                        <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-orange-500" />
-                      </div>
-                    ) : (
-                      <img
-                        src={DroplistArrowIcon}
-                        alt="Dropdown arrow"
-                        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-[11px] h-[7px]"
-                      />
-                    )}
+                      selectClassName="w-full sm:w-[225px]"
+                    />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-50 border rounded-lg p-4 min-h-[200px]">
+              <div className="bg-white border rounded-lg p-4 min-h-[200px]">
                 <div className="text-gray-700 whitespace-pre-wrap">
                   {displayedOriginalTranscript ??
                     t('translate.noTranscriptionAvailable', {
@@ -913,18 +947,57 @@ function CompareSlidePage() {
 
           {/* Translated Transcription */}
           <div>
-            <h3 className="mb-4 text-gray-900 font-semibold text-[20px]">
-              {t('translate.translatedTranscription', {
-                defaultValue: 'Translated transcription',
-              })}{' '}
-              – {targetLanguageName}
-            </h3>
-            <div className="bg-gray-50 border rounded-lg p-4 min-h-[200px]">
-              <div className="text-gray-700 whitespace-pre-wrap">
-                {currentSlide?.translatedContent ||
-                  t('translate.noTranslationAvailable', {
-                    defaultValue: 'No translation available',
+            <div
+              style={{
+                backgroundColor: '#F5F5F5',
+                border: '1px solid #D1D5DB',
+                borderRadius: '8px',
+                padding: '20px',
+                boxShadow: '0px 1px 1px 0px #00000040',
+              }}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-[10px]">
+                  <span
+                    className="text-[18px] font-semibold text-gray-900"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {t('translate.translatedTranscription', {
+                      defaultValue: 'Translated transcription',
+                    })}
+                  </span>
+                  <span
+                    className="text-orange-500 text-[18px]"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {targetLanguageName}
+                  </span>
+                </div>
+              </div>
+
+              {/* Editable area */}
+              <div className="bg-white border rounded-lg p-4 min-h-[200px]">
+                <textarea
+                  value={translatedText}
+                  onChange={(e) => handleTranslatedChange(e.target.value)}
+                  placeholder={t('translate.enterTranslation', {
+                    defaultValue: 'Enter your translation here...',
                   })}
+                  className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-base leading-relaxed bg-transparent text-gray-900 textarea-scrollbar"
+                  style={{ width: 'calc(100% + 18px)', marginRight: '-18px' }}
+                />
+              </div>
+
+              {/* Validate Transcription */}
+              <div className="mt-4">
+                <ValidationCheckbox
+                  checked={transcriptionValidated}
+                  onToggle={handleValidateTranscription}
+                  label={t('translate.validateTranscription', {
+                    defaultValue: 'Validate transcription',
+                  })}
+                />
               </div>
             </div>
           </div>

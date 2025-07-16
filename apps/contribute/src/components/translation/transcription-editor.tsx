@@ -1,8 +1,13 @@
 import { Button } from '@blms/ui';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
-import './transcription-editor-scrollbar.css';
+import { LanguageDropdown, ValidationCheckbox } from '../ui/index.ts';
+
+interface LanguageOption {
+  code: string;
+  name: string;
+  available: boolean;
+}
 
 interface TranscriptionEditorProps {
   originalContent: string;
@@ -11,7 +16,11 @@ interface TranscriptionEditorProps {
   onGenerateAudio: () => void;
   onValidateTranscription: () => void;
   transcriptionValidated: boolean;
-  /** Optional: display the tries remaining e.g. "Limit 2/3 tries" */
+  // New props for dynamic source language selector
+  sourceLanguageOptions?: LanguageOption[];
+  sourceLanguageLoading?: boolean;
+  selectedSourceLanguage?: string;
+  onSourceLanguageChange?: (code: string) => void;
   triesLabel?: string;
   /** Disable Generate Audio button when tries exhausted */
   generateDisabled?: boolean;
@@ -29,7 +38,11 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
   onGenerateAudio,
   onValidateTranscription,
   transcriptionValidated,
-  triesLabel = 'Limit 2/3 tries',
+  sourceLanguageOptions,
+  sourceLanguageLoading = false,
+  selectedSourceLanguage,
+  onSourceLanguageChange,
+  triesLabel = 'Limit 0/3 tries',
   generateDisabled = false,
 }) => {
   const { t } = useTranslation();
@@ -55,18 +68,13 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
             >
               {t('translate.language', { defaultValue: 'Language' })}
             </span>
-            {/* Custom select with left arrow */}
-            <div className="relative">
-              <select className="appearance-none bg-white border border-[#CCCCCC] rounded-[10px] text-sm text-orange-500 w-full sm:w-[225px] h-[34px] pl-8 pr-3 py-1">
-                <option>English</option>
-              </select>
-              {/* Black arrow icon */}
-              <img
-                src={DroplistArrowIcon}
-                alt="Dropdown arrow"
-                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-[11px] h-[7px]"
-              />
-            </div>
+            <LanguageDropdown
+              options={sourceLanguageOptions ?? []}
+              loading={sourceLanguageLoading}
+              value={selectedSourceLanguage ?? ''}
+              onChange={(code: string) => onSourceLanguageChange?.(code)}
+              selectClassName="w-full sm:w-[225px]"
+            />
           </div>
           {/* Target language information (visible only on large screens) */}
           <div className="hidden lg:flex items-center gap-2 lg:justify-start justify-start">
@@ -144,32 +152,13 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
           </span>
         </div>
 
-        {/* Right group: Validate transcription */}
-        <button
-          type="button"
-          onClick={onValidateTranscription}
-          className="flex items-center gap-3 cursor-pointer bg-transparent border-0 p-0 md:mt-0"
-        >
-          <div
-            className={`w-6 h-6 border-2 rounded-[4px] flex items-center justify-center ${
-              transcriptionValidated
-                ? 'bg-orange-500 border-orange-500'
-                : 'bg-transparent border-gray-400'
-            }`}
-          >
-            {transcriptionValidated && (
-              <span className="text-white text-sm">✓</span>
-            )}
-          </div>
-          <span className="text-gray-900 font-medium text-sm sm:text-base md:text-lg">
-            {t('translate.validateTranscription', {
-              defaultValue: 'Validate transcription',
-            })}
-            <span className="ml-1 font-medium" style={{ color: '#ef4444' }}>
-              *
-            </span>
-          </span>
-        </button>
+        <ValidationCheckbox
+          checked={transcriptionValidated}
+          onToggle={onValidateTranscription}
+          label={t('translate.validateTranscription', {
+            defaultValue: 'Validate transcription',
+          })}
+        />
       </div>
     </div>
   );

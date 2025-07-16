@@ -14,7 +14,7 @@ interface FooterProps {
 }
 
 export const Footer = ({ variant = 'light', color }: FooterProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <footer className="w-full">
@@ -36,32 +36,17 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
               style={{ fontFamily: 'Rubik' }}
             >
               <Link
-                to="/"
+                to="/$lang/"
+                params={{ lang: i18n.language }}
                 className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
               >
                 {t('words.home')}
-              </Link>
-              <Link
-                to="/content"
-                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
-              >
-                {t('footer.contentSections', {
-                  defaultValue: 'Content sections',
-                })}
               </Link>
             </div>
             <div
               className="flex flex-col gap-2"
               style={{ fontFamily: 'Rubik' }}
             >
-              <Link
-                to="/my-contributions"
-                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
-              >
-                {t('footer.myContributions', {
-                  defaultValue: 'My contributions',
-                })}
-              </Link>
               <Link
                 to="/help-center"
                 className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
@@ -70,6 +55,16 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
                   defaultValue: 'Help center',
                 })}
               </Link>
+              <a
+                href="https://planb.network/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-500 text-[14px] leading-[1.43] tracking-[0.17px] font-normal"
+              >
+                {t('footer.visitPlanB', {
+                  defaultValue: 'Visit Plan ₿ Network',
+                })}
+              </a>
             </div>
           </div>
 

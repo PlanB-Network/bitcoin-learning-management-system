@@ -64,19 +64,6 @@ export const PptLinkSection: React.FC<PptLinkProps> = ({
 
   return (
     <>
-      {/* PPTX Resource Status */}
-      <div className="mb-4">
-        {exists === false && (
-          <div className="flex items-center gap-2 text-sm text-amber-600">
-            <span>⚠️</span>
-            <span>
-              Original slide not found - you can create a new one using the
-              editor above
-            </span>
-          </div>
-        )}
-      </div>
-
       {/* Validate presentation PPT */}
       <div
         className={`flex flex-col sm:flex-row items-center gap-3 ${leftComponent ? 'sm:justify-between justify-center' : 'justify-center sm:justify-end'}`}

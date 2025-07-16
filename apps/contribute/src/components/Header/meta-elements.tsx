@@ -1,4 +1,4 @@
-import { Link, useLocation } from '@tanstack/react-router';
+import { useLocation } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoLogOutOutline } from 'react-icons/io5';
@@ -68,11 +68,7 @@ export const MetaElements = ({
             variant={notificationPanelVariant}
             headerVariant={variant}
           />
-          <Link
-            className="flex"
-            to="/$lang/content"
-            params={{ lang: i18n.language }}
-          >
+          <div className="flex">
             {isOnDashboard ? (
               <button
                 type="button"
@@ -97,7 +93,7 @@ export const MetaElements = ({
                 />
               </button>
             )}
-          </Link>
+          </div>
         </>
       )}
 

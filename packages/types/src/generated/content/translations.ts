@@ -144,6 +144,7 @@ export interface CourseTranslationSlides {
   pptValidated: boolean;
   textValidated?: boolean;
   audioValidated: boolean;
+  audioTries: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -395,6 +396,7 @@ export interface CourseTranslationSlide {
   pptValidated: boolean;
   textValidated?: boolean;
   audioValidated: boolean;
+  audioTries: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
