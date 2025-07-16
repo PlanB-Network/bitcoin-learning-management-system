@@ -21,6 +21,7 @@ interface ConferenceMain {
     twitter?: string;
   };
   proofreading: ProofreadingEntry[];
+  test_only?: boolean;
 }
 
 interface ConferenceLocalized {
@@ -95,6 +96,16 @@ export const createProcessChangedConference = (
         );
         if (!main) return;
 
+        const parsedConference = await yamlToObject<ConferenceMain>(main);
+
+        if (
+          parsedConference.test_only === true &&
+          process.env.PLANB_ENVIRONMENT === 'mainnet'
+        ) {
+          console.log('[sync] Ignore conference', main.path);
+          return;
+        }
+
         try {
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(resource, main);
@@ -115,10 +126,7 @@ export const createProcessChangedConference = (
           throw new Error(`Resource not found for path ${resource.path}`);
         }
 
-        let parsedConference: ConferenceMain | null = null;
-
         try {
-          parsedConference = await yamlToObject<ConferenceMain>(main);
           const result = await transaction<Conference[]>`
               INSERT INTO content.conferences (
                 resource_id, project_id, languages, name, year, location, original_language, description, website_url, twitter_url
