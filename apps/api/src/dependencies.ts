@@ -2,6 +2,10 @@ import { type CronService, createCronService } from '@blms/crons';
 import type { PostgresClient } from '@blms/database';
 import { createPostgresClient } from '@blms/database';
 import { createS3Service, type S3Service } from '@blms/s3';
+import {
+  type LanguageToolkitClient,
+  createLanguageToolkitClient,
+} from '@blms/service-language-toolkit';
 import type { EnvConfig, LogContext } from '@blms/types';
 import Stripe from 'stripe';
 import { Client as TypesenseClient } from 'typesense';
@@ -15,7 +19,8 @@ export interface Dependencies {
   typesense: TypesenseClient;
   config: EnvConfig;
   crons: CronService;
-  stripe: Stripe | null;
+  stripe: Stripe;
+  languageToolkit: LanguageToolkitClient;
 }
 
 export const injectLogContext = <T>(
@@ -32,7 +37,12 @@ export const startDependencies = async () => {
   const crons = createCronService();
   const postgres = createPostgresClient(config.postgres);
   const s3 = createS3Service(config.s3);
-  const stripe = config.stripe.secret ? new Stripe(config.stripe.secret) : null;
+  const stripe = new Stripe(config.stripe.secret);
+  const languageToolkit = createLanguageToolkitClient({
+    baseUrl: process.env.LT_BASE_URL ?? '',
+    clientId: process.env.LT_CLIENT_ID ?? '',
+    clientSecret: process.env.LT_CLIENT_SECRET ?? '',
+  });
   await postgres.connect();
 
   const typesense = new TypesenseClient({
@@ -48,6 +58,7 @@ export const startDependencies = async () => {
     s3,
     stripe,
     typesense,
+    languageToolkit,
   };
 
   await registerCronTasks(dependencies);

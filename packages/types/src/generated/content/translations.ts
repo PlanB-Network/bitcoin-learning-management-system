@@ -149,6 +149,7 @@ export interface CourseTranslationSlides {
   audioResourcePath: string | null;
   originalContent: string | null;
   translatedContent: string | null;
+  aiTranslatedContent: string | null;
   status:
     | 'todo'
     | 'in_progress'
