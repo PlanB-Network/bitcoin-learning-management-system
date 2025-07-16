@@ -883,7 +883,14 @@
         "none": "Geen",
         "platformTitle": "Welk soort meldingen wil je ontvangen op dit platform?",
         "settingsSaved": "Je instellingen zijn succesvol opgeslagen!",
-        "title": "Notificatie-instellingen"
+        "title": "Notificatie-instellingen",
+        "description": "Je kunt hieronder je notificatie-instellingen aanpassen. ",
+        "emailPreferencesDescription": "Hier kun je kiezen welk type e-mails je van ons wilt ontvangen. Deze voorkeuren zijn alleen van toepassing op het e-mailadres dat aan deze link is gekoppeld.",
+        "emailPreferencesError": "Er is een fout opgetreden tijdens het ophalen van je e-mailvoorkeuren. Zorg ervoor dat de link die je heeft gevolgd correct is.",
+        "emailPreferencesSavedSuccessfully": "Je e-mailvoorkeuren zijn succesvol bijgewerkt.",
+        "emailPreferencesTitle": "Beheer je Plan ₿ Network e-mailvoorkeuren",
+        "emailTitle": "Welke soort meldingen wil je per e-mail ontvangen?",
+        "emailWarning": "Waarschuwing! Er is geen e-mailadres gekoppeld aan je account. Voeg dit toe in je profielsectie."
       },
       "password": "Wachtwoord",
       "personalInformation": "Mijn persoonlijke informatie",
@@ -925,9 +932,148 @@
         "assignment": "Opdracht",
         "assignmentGrade": {
           "alertDescription": "Nadat alle cijfers zijn ingevoerd, klik op \"Alle cijfers publiceren\" om ze in één zichtbaar te maken.\nControleer de cijfers van tevoren, want ze na publicatie kunnen ze niet meer worden aangepast. ",
-          "alertDescription2": "De cijfers voor de opdracht moeten vóór 22 juni om middernacht (CET) worden gepubliceerd."
-        }
-      }
+          "alertDescription2": "De cijfers voor de opdracht moeten vóór 22 juni om middernacht (CET) worden gepubliceerd.",
+          "missingGradesDescription": "Als de cijfers worden gepubliceerd, worden ontbrekende cijfers vervangen door 0/100.",
+          "publishAllGrades": "Publiceer alle cijfers",
+          "studentDisplayName": "Student (Weergavenaam)",
+          "title": "Opdracht cijfers",
+          "alertTitle": "Opdrachtbeoordeling",
+          "confirmPublication": "Bevestig publicatie",
+          "confirmPublicationDescription": "Nadat de cijfers zijn gepubliceerd, kun je niet meer terug omdat ze niet meer bewerkbaar zijn.",
+          "confirmPublicationTitle": "Heb je geverifieerd dat er geen fout is?",
+          "courseAssignment": "Cursusopdracht",
+          "description": "Studenten worden per opdracht ingedeeld in groepen.",
+          "grade100": "Cijfer (/100)",
+          "gradesPublished": "De cijfers zijn gepubliceerd.",
+          "missingGradesTitle": "Er ontbreken nog {{count}} cijfers!"
+        },
+        "courseModification": "Als je hulp nodig heeft om iets in de cursus te bewerken, raadpleeg dan deze <0>tutorial</0>.",
+        "deleteAnnouncementWarning": "Deze wijziging kan niet ongedaan gemaakt worden",
+        "noExamLinked": "Er is momenteel geen examen gekoppeld aan deze cursus. Als je een examen wilt maken, neem dan contact met ons op.",
+        "assignmentStudents": "Projectopdracht",
+        "averageDuration": "Gemiddelde duur",
+        "averageScore": "Gemiddelde score",
+        "courseDetails": "Cursusdetails",
+        "courseLongDescription": "Inleidende beschrijving",
+        "coursesManagementPanel": "Cursusoverzicht",
+        "curriculumDescription": "Dit is het huidige curriculum van deze cursus.",
+        "deleteAnnouncementTitle": "Weet je zeker dat je deze aankondiging wilt verwijderen?",
+        "editOnGithub": "Bewerk op Github",
+        "examResults": "Examenresultaten",
+        "exportExamData": "Examengegevens exporteren",
+        "finalAverageResults": "Eindgemiddelde resultaten",
+        "finalScore": "Eindscore",
+        "goal": "Doel",
+        "makeModifications": "Wil je wijzigingen aanbrengen?",
+        "medianScore": "Mediaanscore",
+        "noPastAnnouncement": "JE HEBT OP DIT MOMENT GEEN eerdere aankondigingen.",
+        "noWrittenAnnouncement": "Je hebt op dit moment geen geschreven aankondiging.",
+        "objectives": "Doelen",
+        "proposeNewCourse": "Stel een nieuwe cursus voor",
+        "reviewInfos": "Hier kun je all informatie beheren en bekijken met betrekking tot elke cursus die je hebt gecoördineerd.",
+        "quickRecap": "Hier vind je alle algemene informatie over deze cursus.",
+        "curriculum": "Cursus curriculum",
+        "reviews": "Beoordelingen",
+        "selectCourse": "Selecteer cursus",
+        "studentsGraduated": "Afgestudeerde studenten",
+        "summerStudents": "Zomerschool",
+        "thresholdToPass": "Slaaggrens",
+        "writeAnnouncement": "Schrijf een aankondiging"
+      },
+      "profile": {
+        "description": "Jouw beschrijving",
+        "enterTipsInformation": "Plan ₿ Netwerk moedigt gebruikers aan om docenten een fooi te geven. Vul alsjeblieft je informatie in zodat mensen je een fooi kunnen geven.",
+        "lightningAddress": "Lightning adres",
+        "makeModifications": "Wil je wijzigingen aanbrengen?",
+        "noLightningAddress": "Nog geen Lightning adres toegevoegd.",
+        "publicDescription": "Deze beschrijving wordt weergegeven op je docenteninformatiekaart op het platform.",
+        "tutorialModification": "Als je hulp nodig hebt bij het bewerken van iets, bekijk dan deze <0>tutorial</0>.",
+        "account": "Professor account",
+        "billingInformation": "Facturatiegegevens",
+        "noShortBio": "Er is nog geen korte bio gekoppeld aan dit account. Voeg er gerust een toe op GitHub.",
+        "noTags": "Nog geen tags gekoppeld aan dit account.",
+        "notifications": "Notificaties",
+        "publicProfile": "Openbaar profiel",
+        "publicProfileDescription": "Hier kun je alle informatie invullen of bewerken die geassocieerd is met je activiteit als docent bij Plan ₿ Network.",
+        "teacher": "Docent",
+        "teacherProfile": "Docentenprofiel"
+      },
+      "reviews": {
+        "reviewsAndGrading": "Beoordelingen & cijfers",
+        "checkComments": "Hier kun je de opmerkingen van de studenten lezen. De opmerkingen zijn gesorteerd op datum.",
+        "checkReviews": "Hier kun je de cijfers en beoordelingen van jouw cursus controleren.",
+        "noReviewsYet": "Deze cursus heeft nog geen beoordelingen of cijfers ontvangen.",
+        "privateComment": "Privé reactie",
+        "publicComment": "Openbare reactie",
+        "review": "Beoordeling",
+        "reviews": "Beoordelingen",
+        "seeStatistics": "Zie statistieken",
+        "viewDetails": "Bekijk details",
+        "writtenFeedbacks": "Schriftelijke feedback"
+      },
+      "tutorials": {
+        "tutorialAnalyticsDescription": "Hier vind je analyses van de tutorials die je hebt gemaakt en gepubliceerd op het platform.",
+        "yourTutorials": "Jouw tutorials"
+      },
+      "menu": "Docent menu"
     }
+  },
+  "events": {
+    "card": {
+      "bookLive": "Boek live",
+      "buyReplay": "Koop herhaling",
+      "watchLive": "Kijk live",
+      "bookSeat": "Reserveer je plek",
+      "buyVideo": "Koop video",
+      "eventFull": "Het evenement is vol",
+      "free": "gratis",
+      "limited": "beperkt tot",
+      "online": "online",
+      "people": "mensen",
+      "purchased": "Gekocht",
+      "seatBooked": "Plek gereserveerd",
+      "unlimited": "onbeperkt",
+      "visitWebsite": "Bezoek website",
+      "watchReplay": "Bekijk herhaling"
+    },
+    "errors": {
+      "premiumContentNeedsPayment": "Dit evenement maakt deel uit van een premium programma.",
+      "premiumContentNeedsLogin": "Je moet ingelogd zijn om toegang te krijgen tot dit evenement.",
+      "premiumContentNeedsPaymentAction": "Ga naar evenementenpagina"
+    },
+    "missed": {
+      "missedP2": "Geen zorgen! We bewaren alle herhalingen van eerdere evenementen die plaatsvonden in het Network, zodat iedereen vrij kan inhalen wat ze hebben gemist.",
+      "missedH1": "Eerdere gebeurtenissen om opnieuw af te spelen",
+      "missedP1": "Heb je een evenement gemist?"
+    },
+    "pageDescription": "Wil je in real-time over Bitcoin praten? Hier vind je alle evenementen die worden ondersteund door de Plan ₿ Network-communities. Of je nu naar een lezing wilt luisteren, Bitcoin wilt bespreken onder het genot van een drankje, of een examen wilt afleggen om je kennis te testen, je vindt het juiste evenement hier via het Plan ₿ Network.",
+    "payment": {
+      "callout_book_online": "Je staat op het punt om online toegang tot dit evenement te boeken.",
+      "callout_purchase_online": "Je staat op het punt om <highlight>online toegang</highlight> tot dit evenement te kopen.",
+      "access_online_successful": "Wanneer het evenement begint, log in op het platform en start de livestream via de evenementpagina.",
+      "access_physical_successful": "Je kunt je ticket hier downloaden, of download het later via je dashboard.",
+      "access_type": "Toegangstype",
+      "additional_free_description": "Dit evenement is gratis, dus er worden geen kosten in rekening gebracht om deze plek te reserveren.",
+      "address": "Adres",
+      "back_events": "Terug naar evenementen",
+      "book_seat": "Reserveer je plek",
+      "callout_book_physical": "Je staat op het punt om <highlight>fysieke toegang</highlight> te boeken voor dit evenement.",
+      "callout_book_replay": "Je staat op het punt toegang tot de replayvideo van dit evenement te boeken.",
+      "callout_purchase_physical": "Je staat op het punt om <highlight>fysieke toegang</highlight> tot dit evenement te kopen.",
+      "callout_purchase_replay": "Je staat op het punt toegang tot de replayvideo van dit evenement te kopen.",
+      "date": "Datum"
+    },
+    "main": {
+      "currentEvents": "Evenementen die nu plaatsvinden",
+      "upcomingEvents": "Aankomende evenementen"
+    },
+    "newEvent": {
+      "button": "Voeg mijn evenement toe",
+      "description": "Natuurlijk! Alle Bitcoin-evenementen kunnen hier hun zichtbaarheid vergroten, dus elk initiatief om een nieuw evenement te creëren is meer dan welkom!",
+      "subtitle": "Een miljard mensen orange-pillen is niet makkelijk",
+      "title": "Wil je jouw evenement toevoegen?"
+    },
+    "pageSubtitle": "Bottom-up adoptie versterkt door een sterk netwerk",
+    "pageTitle": "Op zoek naar een Bitcoin-evenement om bij te wonen?"
   }
 }
