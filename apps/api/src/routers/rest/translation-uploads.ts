@@ -154,113 +154,6 @@ const receiveUploadForm = (req: any) => {
   });
 };
 
-// --- Language Toolkit client -------------------------------------------------
-const LT_BASE_URL = process.env.LT_BASE_URL ?? '';
-const LT_CLIENT_ID = process.env.LT_CLIENT_ID ?? '';
-const LT_CLIENT_SEC = process.env.LT_CLIENT_SECRET ?? '';
-
-let ltAccessToken: string | null = null;
-let ltTokenExpiry = 0;
-
-async function ensureLtToken() {
-  const now = Date.now();
-  if (ltAccessToken && now < ltTokenExpiry - 30_000) return ltAccessToken;
-
-  const params = new URLSearchParams();
-  params.append('username', LT_CLIENT_ID);
-  params.append('password', LT_CLIENT_SEC);
-
-  const res = await fetch(`${LT_BASE_URL}/token`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params,
-  });
-  if (!res.ok) throw new Error('LT token fetch failed');
-  const data = (await res.json()) as {
-    access_token: string;
-    expires_in: number;
-  };
-
-  ltAccessToken = data.access_token;
-  ltTokenExpiry = now + data.expires_in * 1000;
-  return ltAccessToken;
-}
-
-async function translateCourseOnToolkit(payload: {
-  course_id: string;
-  source_lang: string;
-  target_langs: string[];
-  use_english?: boolean;
-}): Promise<string | null> {
-  if (!LT_BASE_URL) {
-    console.warn('[LT] LT_BASE_URL not set – skipping Toolkit call');
-    return null;
-  }
-  try {
-    const token = await ensureLtToken();
-    const resp = await fetch(`${LT_BASE_URL}/translate/course_s3`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!resp.ok) {
-      console.error('[LT] translate/course_s3 failed', resp.status);
-      return null;
-    }
-
-    const data = (await resp.json()) as { task_id?: string };
-    const taskId = data.task_id ?? null;
-    return taskId;
-  } catch (e) {
-    console.error('Language Toolkit call failed', e);
-    return null;
-  }
-}
-
-/**
- * Poll Toolkit tasks endpoint until status === 'completed'.
- * Returns the manifest when available, otherwise null.
- */
-async function pollToolkitTask(
-  taskId: string,
-  {
-    intervalMs = 5000,
-    maxAttempts = 120, // ~10 minutes
-  }: { intervalMs?: number; maxAttempts?: number } = {},
-): Promise<unknown | null> {
-  if (!LT_BASE_URL) return null;
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    try {
-      const token = await ensureLtToken();
-      const resp = await fetch(`${LT_BASE_URL}/tasks/${taskId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!resp.ok) {
-        console.error('[LT] Task poll failed', resp.status);
-        return null;
-      }
-      const data = (await resp.json()) as {
-        status: 'pending' | 'completed' | string;
-        manifest?: unknown;
-      };
-      if (data.status === 'completed') {
-        return data.manifest ?? null;
-      }
-    } catch (err) {
-      console.error('[LT] Error polling task', err);
-      return null;
-    }
-    // Wait before next poll
-    await new Promise((r) => setTimeout(r, intervalMs));
-  }
-  console.warn('[LT] Task polling timed out');
-  return null;
-}
-
 /**
  * Read manifest JSON structure and insert slide rows into DB.
  */
@@ -403,274 +296,277 @@ export const createRestTranslationUploadRoutes = async (
     dependencies as any,
   );
 
+  const processTranslationUpload = async (
+    uid: string,
+    courseId: string,
+    languages: string[],
+    initialFiles: formidable.File[],
+    useEnglishOverride?: boolean,
+  ) => {
+    // Check existing uploads for this course
+    const existingUploads = await getUploadsService(courseId);
+
+    // Get original language once (needed whether or not we upload files)
+    const originalLanguage = await getCourseOriginalLang(courseId);
+    if (!originalLanguage) {
+      throw new InternalServerError('Course not found');
+    }
+
+    // Determine if we should use English as the intermediate language
+    const enTranslations = await getAvailableCourseTranslations('en', courseId);
+    let useEnglish =
+      originalLanguage.toLowerCase() !== 'en' && enTranslations.length > 0;
+
+    // If the client provided an explicit preference, override automatic decision
+    if (typeof useEnglishOverride === 'boolean') {
+      useEnglish = useEnglishOverride;
+    }
+
+    const filesProvided = initialFiles.length > 0;
+
+    if (!filesProvided && existingUploads.length === 0) {
+      throw new BadRequest(
+        'No files provided and no existing uploads found for this course',
+      );
+    }
+
+    // If new files are provided and uploads already exist, overwrite by deleting old rows
+    if (filesProvided && existingUploads.length > 0) {
+      await deleteUploadsService(courseId);
+    }
+
+    const files = initialFiles;
+
+    // If no new files provided, directly trigger translations and toolkit, skip upload processing
+    if (!filesProvided) {
+      // Start translations for selected languages
+      await startTranslations({ courseId, languages });
+
+      const taskId = await dependencies.languageToolkit.translateCourse({
+        course_id: courseId,
+        source_lang: originalLanguage,
+        target_langs: languages,
+        ...(useEnglish ? { use_english: true } : {}),
+      });
+
+      if (taskId) {
+        const manifest = await dependencies.languageToolkit.pollTask(taskId);
+
+        if (manifest) {
+          await insertSlidesFromManifest(
+            manifest,
+            courseId,
+            originalLanguage,
+            dependencies,
+          );
+        }
+
+        const langList = languages.map((l) => l.toLowerCase());
+        await setReadyService(courseId, langList);
+      }
+
+      return { message: 'Translation started without new uploads' } as const;
+    }
+
+    // Organise files per chapter key "part.chapter"
+    interface ChapterGroup {
+      pptx?: formidable.File;
+      txts: formidable.File[];
+    }
+    const chapterGroups = new Map<string, ChapterGroup>();
+
+    const pathSeparator = /[\\/]/;
+
+    for (const file of files) {
+      const relativePath = file.originalFilename ?? (file as any).newFilename;
+      const segments = relativePath.split(pathSeparator);
+
+      let partIndex: number | null = null;
+      let chapterIndex: number | null = null;
+
+      // Try to find a directory segment like "1.2"
+      const partChapSegment = segments.find((s: string) =>
+        /^\d+\.\d+$/.test(s),
+      );
+      if (partChapSegment) {
+        const m = /^(\d+)\.(\d+)$/.exec(partChapSegment);
+        if (m) {
+          partIndex = Number(m[1]);
+          chapterIndex = Number(m[2]);
+        }
+      }
+
+      // Fallback: look at the filename itself (before first underscore or dot)
+      if (partIndex === null || chapterIndex === null) {
+        const baseName = segments[segments.length - 1]; // e.g. 1.2_0.txt
+        const m2 = /^(\d+)\.(\d+)/.exec(baseName);
+        if (m2) {
+          partIndex = Number(m2[1]);
+          chapterIndex = Number(m2[2]);
+        }
+      }
+
+      if (partIndex === null || chapterIndex === null) {
+        // Skip files not matching expected pattern
+        continue;
+      }
+
+      const key = `${partIndex}.${chapterIndex}`;
+
+      let group = chapterGroups.get(key);
+      if (!group) {
+        group = { txts: [] };
+        chapterGroups.set(key, group);
+      }
+
+      if (
+        file.mimetype?.includes('presentation') ||
+        file.originalFilename?.endsWith('.pptx')
+      ) {
+        group.pptx = file;
+      } else if (
+        file.mimetype?.startsWith('text') ||
+        file.originalFilename?.endsWith('.txt')
+      ) {
+        group.txts.push(file);
+      }
+    }
+
+    if (chapterGroups.size === 0) {
+      throw new BadRequest('No valid chapter files detected');
+    }
+
+    const uploadResults: any[] = [];
+
+    for (const [key, group] of chapterGroups.entries()) {
+      const [partIdxStr, chapIdxStr] = key.split('.');
+      const partIndex = Number(partIdxStr);
+      const chapterIndex = Number(chapIdxStr);
+
+      let partId: string;
+      let chapterId: string;
+      try {
+        const mapping = await getPartAndChapterIdsService(
+          courseId,
+          partIndex,
+          chapterIndex,
+        );
+        partId = mapping.partId;
+        chapterId = mapping.chapterId;
+      } catch (err) {
+        // Skip chapters that don't exist in DB
+        console.warn(
+          `Skipping upload for unmapped part ${partIndex} chapter ${chapterIndex}`,
+        );
+        continue;
+      }
+
+      // Build base key path helper
+      const buildKey = (
+        type: 'pptx' | 'text',
+        partId: string,
+        chapterId: string,
+        filename: string,
+      ) =>
+        `contribute/${courseId}/${originalLanguage}/${partId}/${chapterId}/${type}/${filename}`;
+
+      let pptxKey: string | undefined;
+
+      // upload pptx once per chapter (or skip if absent)
+      if (group.pptx) {
+        const pptFile = group.pptx;
+        const base = (pptFile.originalFilename ?? 'upload.pptx')
+          .split(pathSeparator)
+          .pop()!;
+        pptxKey = buildKey('pptx', partId, chapterId, base);
+        const stream = fs.createReadStream(pptFile.filepath);
+
+        await dependencies.s3.upload(pptxKey, stream, {
+          contentType:
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        });
+      }
+
+      // each txt => one DB row
+      for (const txt of group.txts) {
+        const baseTxt = (txt.originalFilename ?? 'slide.txt')
+          .split(pathSeparator)
+          .pop()!;
+        const txtKey = buildKey('text', partId, chapterId, baseTxt);
+        const stream = fs.createReadStream(txt.filepath);
+
+        await dependencies.s3.upload(txtKey, stream, {
+          contentType: 'text/plain',
+        });
+
+        const uploadRecord = await (createUpload as any)(
+          courseId,
+          originalLanguage,
+          languages,
+          uid,
+          partId,
+          chapterId,
+          pptxKey,
+          txtKey,
+        );
+
+        await updateUpload(uploadRecord.id, pptxKey, txtKey, true, undefined);
+        uploadResults.push(uploadRecord);
+      }
+    }
+
+    // Start translations for selected languages
+    await startTranslations({ courseId, languages });
+
+    // Call Language Toolkit to trigger translation
+    const secondTaskId = await dependencies.languageToolkit.translateCourse({
+      course_id: courseId,
+      source_lang: originalLanguage,
+      target_langs: languages,
+      ...(useEnglish ? { use_english: true } : {}),
+    });
+
+    if (secondTaskId) {
+      const manifest =
+        await dependencies.languageToolkit.pollTask(secondTaskId);
+
+      if (manifest) {
+        await insertSlidesFromManifest(
+          manifest,
+          courseId,
+          originalLanguage,
+          dependencies,
+        );
+      }
+
+      const langList = languages.map((l) => l.toLowerCase());
+      await setReadyService(courseId, langList);
+    }
+
+    return uploadResults;
+  };
+
   router.post(
     '/translation-uploads',
     expressAuthMiddleware,
-    async (req, res, next) => {
+    (req, res, next) => {
       const uid = req.session.uid;
       if (!uid) {
         return next(new InternalServerError('User session missing'));
       }
 
-      try {
-        const {
-          courseId,
-          languages,
-          files: initialFiles,
-          useEnglish: useEnglishOverride,
-        } = await receiveUploadForm(req);
-
-        // Check existing uploads for this course
-        const existingUploads = await getUploadsService(courseId);
-
-        // Get original language once (needed whether or not we upload files)
-        const originalLanguage = await getCourseOriginalLang(courseId);
-        if (!originalLanguage) {
-          throw new InternalServerError('Course not found');
-        }
-
-        // Determine if we should use English as the intermediate language
-        const enTranslations = await getAvailableCourseTranslations(
-          'en',
-          courseId,
-        );
-        let useEnglish =
-          originalLanguage.toLowerCase() !== 'en' && enTranslations.length > 0;
-
-        // If the client provided an explicit preference, override automatic decision
-        if (typeof useEnglishOverride === 'boolean') {
-          useEnglish = useEnglishOverride;
-        }
-
-        const filesProvided = initialFiles.length > 0;
-
-        if (!filesProvided && existingUploads.length === 0) {
-          throw new BadRequest(
-            'No files provided and no existing uploads found for this course',
-          );
-        }
-
-        // If new files are provided and uploads already exist, overwrite by deleting old rows
-        if (filesProvided && existingUploads.length > 0) {
-          await deleteUploadsService(courseId);
-        }
-
-        const files = initialFiles;
-
-        // If no new files provided, directly trigger translations and toolkit, skip upload processing
-        if (!filesProvided) {
-          // Start translations for selected languages
-          await startTranslations({ courseId, languages });
-
-          const taskId = await translateCourseOnToolkit({
-            course_id: courseId,
-            source_lang: originalLanguage,
-            target_langs: languages,
-            ...(useEnglish ? { use_english: true } : {}),
-          });
-
-          if (taskId) {
-            const manifest = await pollToolkitTask(taskId);
-
-            if (manifest) {
-              await insertSlidesFromManifest(
-                manifest,
-                courseId,
-                originalLanguage,
-                dependencies,
-              );
-            }
-
-            const langList = languages.map((l) => l.toLowerCase());
-            await setReadyService(courseId, langList);
-          }
-
-          res.json({ message: 'Translation started without new uploads' });
-          return;
-        }
-
-        // Organise files per chapter key "part.chapter"
-        interface ChapterGroup {
-          pptx?: formidable.File;
-          txts: formidable.File[];
-        }
-        const chapterGroups = new Map<string, ChapterGroup>();
-
-        const pathSeparator = /[\\/]/;
-
-        for (const file of files) {
-          const relativePath = file.originalFilename ?? file.newFilename;
-          const segments = relativePath.split(pathSeparator);
-
-          let partIndex: number | null = null;
-          let chapterIndex: number | null = null;
-
-          // Try to find a directory segment like "1.2"
-          const partChapSegment = segments.find((s) => /^\d+\.\d+$/.test(s));
-          if (partChapSegment) {
-            const m = /^(\d+)\.(\d+)$/.exec(partChapSegment);
-            if (m) {
-              partIndex = Number(m[1]);
-              chapterIndex = Number(m[2]);
-            }
-          }
-
-          // Fallback: look at the filename itself (before first underscore or dot)
-          if (partIndex === null || chapterIndex === null) {
-            const baseName = segments[segments.length - 1]; // e.g. 1.2_0.txt
-            const m2 = /^(\d+)\.(\d+)/.exec(baseName);
-            if (m2) {
-              partIndex = Number(m2[1]);
-              chapterIndex = Number(m2[2]);
-            }
-          }
-
-          if (partIndex === null || chapterIndex === null) {
-            // Skip files not matching expected pattern
-            continue;
-          }
-
-          const key = `${partIndex}.${chapterIndex}`;
-
-          let group = chapterGroups.get(key);
-          if (!group) {
-            group = { txts: [] };
-            chapterGroups.set(key, group);
-          }
-
-          if (
-            file.mimetype?.includes('presentation') ||
-            file.originalFilename?.endsWith('.pptx')
-          ) {
-            group.pptx = file;
-          } else if (
-            file.mimetype?.startsWith('text') ||
-            file.originalFilename?.endsWith('.txt')
-          ) {
-            group.txts.push(file);
-          }
-        }
-
-        if (chapterGroups.size === 0) {
-          throw new BadRequest('No valid chapter files detected');
-        }
-
-        const uploadResults = [];
-
-        for (const [key, group] of chapterGroups.entries()) {
-          const [partIdxStr, chapIdxStr] = key.split('.');
-          const partIndex = Number(partIdxStr);
-          const chapterIndex = Number(chapIdxStr);
-
-          let partId: string;
-          let chapterId: string;
-          try {
-            const mapping = await getPartAndChapterIdsService(
-              courseId,
-              partIndex,
-              chapterIndex,
-            );
-            partId = mapping.partId;
-            chapterId = mapping.chapterId;
-          } catch (err) {
-            // Skip chapters that don't exist in DB
-            console.warn(
-              `Skipping upload for unmapped part ${partIndex} chapter ${chapterIndex}`,
-            );
-            continue;
-          }
-
-          // Build base key path helper
-          const buildKey = (
-            type: 'pptx' | 'text',
-            partId: string,
-            chapterId: string,
-            filename: string,
-          ) =>
-            `contribute/${courseId}/${originalLanguage}/${partId}/${chapterId}/${type}/${filename}`;
-
-          let pptxKey: string | undefined;
-
-          // upload pptx once per chapter (or skip if absent)
-          if (group.pptx) {
-            const pptFile = group.pptx;
-            const base = (pptFile.originalFilename ?? 'upload.pptx')
-              .split(pathSeparator)
-              .pop()!;
-            pptxKey = buildKey('pptx', partId, chapterId, base);
-            const stream = fs.createReadStream(pptFile.filepath);
-
-            await dependencies.s3.upload(pptxKey, stream, {
-              contentType:
-                'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-            });
-          }
-
-          // each txt => one DB row
-          for (const txt of group.txts) {
-            const baseTxt = (txt.originalFilename ?? 'slide.txt')
-              .split(pathSeparator)
-              .pop()!;
-            const txtKey = buildKey('text', partId, chapterId, baseTxt);
-            const stream = fs.createReadStream(txt.filepath);
-
-            await dependencies.s3.upload(txtKey, stream, {
-              contentType: 'text/plain',
-            });
-
-            const uploadRecord = await (createUpload as any)(
-              courseId,
-              originalLanguage,
-              languages,
-              uid,
-              partId,
-              chapterId,
-              pptxKey,
-              txtKey,
-            );
-
-            await updateUpload(
-              uploadRecord.id,
-              pptxKey,
-              txtKey,
-              true,
-              undefined,
-            );
-            uploadResults.push(uploadRecord);
-          }
-        }
-
-        // Start translations for selected languages
-        await startTranslations({ courseId, languages });
-
-        // Call Language Toolkit to trigger translation
-        const secondTaskId = await translateCourseOnToolkit({
-          course_id: courseId,
-          source_lang: originalLanguage,
-          target_langs: languages,
-          ...(useEnglish ? { use_english: true } : {}),
-        });
-
-        if (secondTaskId) {
-          const manifest = await pollToolkitTask(secondTaskId);
-
-          if (manifest) {
-            await insertSlidesFromManifest(
-              manifest,
-              courseId,
-              originalLanguage,
-              dependencies,
-            );
-          }
-
-          const langList = languages.map((l) => l.toLowerCase());
-          await setReadyService(courseId, langList);
-        }
-
-        res.json(uploadResults);
-      } catch (error) {
-        next(error);
-      }
+      receiveUploadForm(req)
+        .then(({ courseId, languages, files: initialFiles, useEnglish }) =>
+          processTranslationUpload(
+            uid,
+            courseId,
+            languages,
+            initialFiles,
+            useEnglish,
+          ),
+        )
+        .then((result) => res.json(result))
+        .catch(next);
     },
   );
 };
