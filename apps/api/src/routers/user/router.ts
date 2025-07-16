@@ -64,6 +64,7 @@ export const userRouter = createTRPCRouter({
   billing: userBillingRouter,
   calendar: userCalendarRouter,
   career: userCareerRouter,
+  translation: userTranslationRouter,
 
   changeCertificateName: studentProcedure
     .input(

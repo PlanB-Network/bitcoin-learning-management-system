@@ -1,4 +1,5 @@
 import {
+  AssignmentStatus,
   BetType,
   CareerCompanySize,
   CareerLanguageLevel,

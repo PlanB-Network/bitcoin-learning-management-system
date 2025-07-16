@@ -1,10 +1,9 @@
+import type { CourseWithTodoTranslations } from '@blms/types';
+import { cn, customToast, Input, Loader } from '@blms/ui';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineTranslate } from 'react-icons/hi';
 
-import { Input, Loader, cn, customToast } from '@blms/ui';
-
-import type { CourseWithTodoTranslations } from '@blms/types';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 
@@ -218,8 +217,6 @@ export const SelectLanguagesModal = ({
       if (!response.ok) {
         throw new Error(`Upload failed: ${response.statusText}`);
       }
-
-      const data = await response.json();
 
       customToast(
         t(
