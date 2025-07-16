@@ -599,7 +599,11 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
         <InformationalPanel
           icon={SadFace}
           iconClassName="filter-darkOrange"
-          description={t('dashboard.course.notSelectedAssignment')}
+          description={
+            isPlanBSchool
+              ? t('dashboard.course.notSelectedAssignment')
+              : t('dashboard.course.assignmentNotAccessible')
+          }
         />
       )}
     </section>

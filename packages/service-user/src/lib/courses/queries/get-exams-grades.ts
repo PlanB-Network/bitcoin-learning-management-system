@@ -4,7 +4,10 @@ import type {
   MinimalCourseExamAttemptWithUsername,
 } from '@blms/types';
 
-export const getAllSingleTrialExamsGradesQuery = (courseId: string) => {
+export const getAllExamsGradesQuery = (
+  courseId: string,
+  isSingleTrialExamOnly: boolean,
+) => {
   return sql<MinimalCourseExamAttemptWithUsername[]>`
         WITH ranked_attempts AS (
             SELECT *,
@@ -14,7 +17,7 @@ export const getAllSingleTrialExamsGradesQuery = (courseId: string) => {
                 ) as rn
             FROM users.exam_attempts ea
             WHERE ea.course_id = ${courseId}
-                AND ea.exam_type = 'single_trial'
+                ${isSingleTrialExamOnly ? sql`AND ea.exam_type = 'single_trial'` : sql``}
                 AND ea.finalized = true
         )
         SELECT ua.username, ra.uid, ra.chapter_id, ra.exam_type, ra.score, ra.started_at, ra.finished_at

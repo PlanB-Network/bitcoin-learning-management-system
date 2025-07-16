@@ -717,6 +717,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               <ConclusionFinish
                 course={course}
                 examResults={previousExamResults ?? undefined}
+                isProfessorLed={isProfessorLed}
                 hasSingleTrialExamOrAssignment={hasSingleTrialExamOrAssignment}
                 hasPassedCourseThreshold={hasPassedCourseThreshold}
               />

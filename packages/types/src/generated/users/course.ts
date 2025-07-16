@@ -245,10 +245,18 @@ export interface CourseWithSingleTrialExamsGradesAndSummary {
   graduatedStudentsAmount: number;
 }
 
-export interface SingleTrialExamQuestionStatistics {
+export interface CourseWithMultiAttemptsExamGradesAndSummary {
+  averageScore: number;
+  examsGrades: MinimalCourseExamAttemptWithUsername[];
+  graduatedStudentsAmount: number;
+  totalStudentsTakingExam: number;
+}
+
+export interface ExamQuestionStatistics {
   questionDifficulty: string;
   questionId: string;
   questionText: string;
   successPercentage: number;
   totalAnswers: number;
+  isArchived: boolean;
 }

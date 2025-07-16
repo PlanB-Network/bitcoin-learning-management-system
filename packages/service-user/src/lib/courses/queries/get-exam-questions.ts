@@ -3,8 +3,8 @@ import type {
   CourseExamAttempt,
   CourseExamResults,
   CourseSucceededExam,
+  ExamQuestionStatistics,
   PartialExamQuestion,
-  SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 
 export const getPartialExamQuestionsQuery = ({
@@ -224,15 +224,20 @@ export const getCorrectAnswersCountQuery = ({ examId }: { examId: string }) => {
     `;
 };
 
-export const getSingleTrialExamQuestionStatisticsQuery = (
-  chapterId: string,
-) => {
-  return sql<SingleTrialExamQuestionStatistics[]>`
+export const getExamQuestionStatisticsQuery = ({
+  chapterId,
+  courseId,
+}: {
+  chapterId?: string;
+  courseId?: string;
+}) => {
+  return sql<ExamQuestionStatistics[]>`
         SELECT
             qq.id AS question_id,
-            COALESCE(qql.question, 'N/A - Missing question text') AS question_text,
+            qq.disabled as is_archived,
+            COALESCE(qql_original.question, 'N/A - Missing question text') AS question_text,
             COALESCE(qq.difficulty, 'N/A - Missing difficulty') AS question_difficulty,
-            COUNT(ueq.question_id) AS total_answers,
+            COUNT(DISTINCT ueq.question_id) AS total_answers,
             COALESCE(
                 (
                     COUNT(
@@ -246,17 +251,21 @@ export const getSingleTrialExamQuestionStatisticsQuery = (
         FROM
             content.quiz_questions AS qq
             JOIN content.courses AS c ON qq.course_id = c.id
-            LEFT JOIN content.quiz_questions_localized AS qql ON qq.id = qql.quiz_question_id
-            AND qql.language = c.original_language
+            -- original language text for display
+            LEFT JOIN content.quiz_questions_localized AS qql_original ON qq.id = qql_original.quiz_question_id
+            AND qql_original.language = c.original_language
+            -- all language versions for statistics aggregation
+            LEFT JOIN content.quiz_questions_localized AS qql_all ON qq.id = qql_all.quiz_question_id
             JOIN content.quiz_answers AS correct_answer_def ON qq.id = correct_answer_def.quiz_question_id
             AND correct_answer_def.correct = TRUE
-            LEFT JOIN users.exam_questions AS ueq ON qq.id = ueq.question_id
+            -- user answers through all language versions
+            LEFT JOIN users.exam_questions AS ueq ON qql_all.quiz_question_id = ueq.question_id
             LEFT JOIN users.exam_answers AS uea ON ueq.id = uea.question_id
         WHERE
-            qq.chapter_id = ${chapterId}
+            ${chapterId ? sql`qq.chapter_id = ${chapterId}` : sql`qq.course_id = ${courseId}`}
         GROUP BY
             qq.id,
-            qql.question
+            qql_original.question
         ORDER BY
             success_percentage DESC,
             total_answers DESC;

@@ -178,10 +178,18 @@ export const courseWithSingleTrialExamsGradesAndSummarySchema = z.object({
   graduatedStudentsAmount: z.number(),
 });
 
-export const singleTrialExamQuestionStatisticsSchema = z.object({
+export const courseWithMultiAttemptsExamGradesAndSummarySchema = z.object({
+  averageScore: z.number(),
+  examsGrades: z.array(minimalCourseExamAttemptWithUsernameSchema),
+  graduatedStudentsAmount: z.number(),
+  totalStudentsTakingExam: z.number(),
+});
+
+export const examQuestionStatisticsSchema = z.object({
   questionDifficulty: z.string(),
   questionId: z.string(),
   questionText: z.string(),
   successPercentage: z.number(),
   totalAnswers: z.number(),
+  isArchived: z.boolean(),
 });
