@@ -39,7 +39,7 @@ export const createGetMultiAttemptsExamCourseGrades = ({
 
     return {
       examsGrades,
-      averageScore: averageScore[0].average || 0,
+      averageScore: averageScore.length ? averageScore[0].average : 0,
       graduatedStudentsAmount,
       totalStudentsTakingExam,
     };
