@@ -12,6 +12,7 @@ import {
   EmptyState,
   Loader,
   RadialGauge,
+  SegmentedGauge,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -546,6 +547,7 @@ const ExamCard = ({
                 variant="green"
                 showBackground
               />
+
               {type === 'assignment' || type === 'single-trial' ? (
                 <RadialGauge
                   percentage={medianScore || 0}
@@ -554,6 +556,17 @@ const ExamCard = ({
                   showBackground
                 />
               ) : null}
+
+              {type === 'multi-attempts' && (
+                <SegmentedGauge
+                  value={calculateAverageAttemptsPerUser(examGrades)}
+                  label={t('dashboard.teacher.courses.averageAttempts')}
+                  variant="purple"
+                  threshold1={2}
+                  threshold2={3}
+                  showBackground
+                />
+              )}
 
               {averageDuration && (
                 <CustomGauge
@@ -684,6 +697,28 @@ const calculateExamAverageScore = (
   );
 };
 
+const calculateAverageAttemptsPerUser = (
+  examGrades: MinimalCourseExamAttemptWithUsername[],
+): number => {
+  if (examGrades.length === 0) return 0;
+
+  const attemptsByUser = examGrades.reduce(
+    (acc, grade) => {
+      if (grade.username) {
+        acc[grade.username] = (acc[grade.username] || 0) + 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+
+  const usernames = Object.keys(attemptsByUser);
+  if (usernames.length === 0) return 0;
+
+  const totalAttempts = examGrades.length;
+  return totalAttempts / usernames.length;
+};
+
 const downloadAssignmentGrades = (
   assignmentGrades: MinimalAssignmentGrade[],
 ) => {
@@ -735,13 +770,21 @@ const downloadExamGrades = (
         realScore = Math.round((grade.score / 100) * totalQuestions);
       }
 
-      return {
+      const baseRow = {
         Username: grade.username!,
         'Score (%)': grade.score!,
         'Correct answers': realScore,
         'Duration (seconds)': duration,
-        Date: isMultiAttempts ? grade.finishedAt : undefined,
       };
+
+      if (isMultiAttempts) {
+        return {
+          ...baseRow,
+          Date: grade.finishedAt,
+        };
+      }
+
+      return baseRow;
     });
 
   const statisticsRows = questionsStatistics.map((stat) => ({
@@ -779,6 +822,7 @@ const downloadExamGrades = (
     { wch: 10 },
     { wch: 15 },
     { wch: 18 },
+    ...(isMultiAttempts ? [{ wch: 15 }] : []),
   ];
 
   if (statisticsRows.length > 0) {

@@ -237,7 +237,7 @@ export const getExamQuestionStatisticsQuery = ({
             qq.disabled as is_archived,
             COALESCE(qql_original.question, 'N/A - Missing question text') AS question_text,
             COALESCE(qq.difficulty, 'N/A - Missing difficulty') AS question_difficulty,
-            COUNT(DISTINCT ueq.question_id) AS total_answers,
+            COUNT(DISTINCT ueq.id) AS total_answers,
             COALESCE(
                 (
                     COUNT(

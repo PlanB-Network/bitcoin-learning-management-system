@@ -8,7 +8,8 @@ export const getAllExamsGradesQuery = (
   courseId: string,
   isSingleTrialExamOnly: boolean,
 ) => {
-  return sql<MinimalCourseExamAttemptWithUsername[]>`
+  if (isSingleTrialExamOnly) {
+    return sql<MinimalCourseExamAttemptWithUsername[]>`
         WITH ranked_attempts AS (
             SELECT *,
                 ROW_NUMBER() OVER (
@@ -17,13 +18,23 @@ export const getAllExamsGradesQuery = (
                 ) as rn
             FROM users.exam_attempts ea
             WHERE ea.course_id = ${courseId}
-                ${isSingleTrialExamOnly ? sql`AND ea.exam_type = 'single_trial'` : sql``}
+                AND ea.exam_type = 'single_trial'
                 AND ea.finalized = true
         )
         SELECT ua.username, ra.uid, ra.chapter_id, ra.exam_type, ra.score, ra.started_at, ra.finished_at
         FROM ranked_attempts ra
         JOIN users.accounts ua ON ra.uid = ua.uid
         WHERE ra.rn = 1
+    `;
+  }
+
+  return sql<MinimalCourseExamAttemptWithUsername[]>`
+        SELECT ua.username, ea.uid, ea.chapter_id, ea.exam_type, ea.score, ea.started_at, ea.finished_at
+        FROM users.exam_attempts ea
+        JOIN users.accounts ua ON ea.uid = ua.uid
+        WHERE ea.course_id = ${courseId}
+            AND ea.finalized = true
+        ORDER BY ea.started_at DESC
     `;
 };
 

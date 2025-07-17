@@ -950,6 +950,7 @@
           "title": "Assignment grades"
         },
         "assignmentStudents": "Project Assignment",
+        "averageAttempts": "Average attempts",
         "averageDuration": "Average duration",
         "averageScore": "Average score",
         "courseDetails": "Course details",
