@@ -492,10 +492,15 @@ function CourseChapter() {
     isError,
     error,
   } = useQuery(
-    trpc.content.getCourseChapter.queryOptions({
-      chapterId: params.chapterId,
-      language: i18n.language,
-    }),
+    trpc.content.getCourseChapter.queryOptions(
+      {
+        chapterId: params.chapterId,
+        language: i18n.language,
+      },
+      {
+        refetchOnWindowFocus: false,
+      },
+    ),
   );
 
   const completeChapterAutoMutation = useMutation(
