@@ -175,11 +175,9 @@ const generateFileContent = (
         //   `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
         // );
 
-        // Import from @blms/constants
+        // Native enums are handled via currentNativeEnumImports to keep a single import statement.
         if (nativeEnumImports.has(typeName)) {
-          currentImportSet.add(
-            `import { ${typeName} } from '@blms/constants';\n`,
-          );
+          // nothing – import handled globally for the file
         }
 
         // Import from an other type file
@@ -223,7 +221,7 @@ const generateFileContent = (
     }
   }
 
-  // Ensure that any native enums referenced in the generated types are properly imported.
+  // Ensure any native enums referenced are included in the top import line
   for (const enumName of nativeEnumImports) {
     if (fileContent.includes(enumName)) {
       currentNativeEnumImports.add(enumName);

@@ -27,15 +27,12 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 # To fix a bug with the default version of corepack
 RUN npm i -g corepack@latest
 
-# Create directory for pnpm store with appropriate permissions
-RUN mkdir -p /pnpm/store/v10 && chmod -R 777 /pnpm
-
 # https://nodejs.org/api/corepack.html
 RUN corepack enable \
   && mkdir -p $PNPM_HOME \
-  && chmod -R 777 $PNPM_HOME \
+  && chown -R node:node $PNPM_HOME \
   && mkdir -p /deploy \
-  && chmod -R 777 /deploy
+  && chown -R node:node /deploy
 
 WORKDIR /home/node
 
@@ -53,7 +50,7 @@ USER node
 
 COPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json turbo.json ./
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
+RUN --mount=type=cache,uid=1000,gid=1000,id=pnpm,target=/pnpm/store pnpm fetch
 
 COPY --chown=node:node packages ./packages
 COPY --chown=node:node apps ./apps

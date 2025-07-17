@@ -32,106 +32,111 @@ export interface CourseTranslationChapter {
 }
 
 export interface CourseBasic {
+  areScoresCalculated: boolean;
+  assignmentDescription: string | null;
+  assignmentEndDate: Date | null;
+  assignmentStartDate: Date | null;
+  assignmentWeight: number | null;
+  availableSeats: number | null;
+  contact: string | null;
+  customTcDisclaimer: string | null;
+  endDate: Date | null;
+  format: 'online' | 'inperson' | 'hybrid';
+  hasAssignment: boolean;
+  hasLogo: boolean;
+  hours: number;
   id: string;
   index: string;
-  projectId: string | null;
-  isArchived: boolean;
-  level: string;
-  hours: number;
-  topic: string;
-  subtopic: string;
-  originalLanguage: string;
-  requiresPayment: boolean;
-  paymentExpirationDate: Date | null;
-  publishedAt: Date | null;
-  format: 'online' | 'inperson' | 'hybrid';
-  teachingFormat: 'self_paced' | 'professor_led';
-  onlinePriceDollars: number | null;
   inpersonPriceDollars: number | null;
-  paidDescription: string | null;
-  paidVideoLink: string | null;
-  startDate: Date | null;
-  endDate: Date | null;
-  contact: string | null;
-  availableSeats: number | null;
-  remainingSeats: number | null;
-  isPlanbSchool: boolean;
-  presentationMarkdown: string | null;
-  hasLogo: boolean;
-  isGdprCompliance: boolean;
-  customTcDisclaimer: string | null;
+  isArchived: boolean;
   isAssignmentGradingPublished: boolean;
-  passingGradeThreshold: number | null;
-  assignmentWeight: number | null;
-  lastUpdated: Date;
+  isGdprCompliance: boolean;
+  isPlanbSchool: boolean;
   lastCommit: string;
   lastSync: Date;
+  lastUpdated: Date;
+  level: string;
   numberOfRating: number;
+  onlinePriceDollars: number | null;
+  originalLanguage: string;
+  paidDescription: string | null;
+  paidVideoLink: string | null;
+  passingGradeThreshold: number | null;
+  paymentExpirationDate: Date | null;
+  presentationMarkdown: string | null;
+  projectId: string | null;
+  publishedAt: Date | null;
+  remainingSeats: number | null;
+  requiresPayment: boolean;
+  startDate: Date | null;
+  subtopic: string;
   sumOfAllRating: number;
+  teachingFormat: 'self_paced' | 'professor_led';
+  topic: string;
 }
 
 export interface CoursesLocalized {
   courseId: string;
+  goal: string;
   language: string;
   name: string;
-  goal: string;
   objectives: string[];
   rawDescription: string;
 }
 
 export interface CourseParts {
   courseId: string;
-  partIndex: number;
-  partId: string;
   lastSync: Date;
+  partId: string;
+  partIndex: number;
 }
 
 export interface CoursePartsLocalized {
   courseId: string;
-  partId: string;
   language: string;
-  title: string;
   lastSync: Date;
+  partId: string;
+  title: string;
 }
 
 export interface CourseChapters {
-  courseId: string;
-  chapterIndex: number;
-  partId: string;
   chapterId: string;
+  chapterIndex: number;
+  courseId: string;
   lastSync: Date;
+  partId: string;
 }
 
 export interface CourseChaptersLocalized {
-  courseId: string;
-  chapterId: string;
-  language: string;
-  releasePlace: string | null;
-  isOnline: boolean;
-  isInPerson: boolean;
-  isCourseReview: boolean;
-  isCourseExam: boolean;
-  isCourseConclusion: boolean;
-  isSingleTrialExam: boolean;
-  rateWeight: number | null;
-  isGdprCompliance: boolean;
-  customTcDisclaimer: string | null;
-  startDate: Date | null;
-  endDate: Date | null;
-  releaseDate: Date | null;
-  timezone: string | null;
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;
-  liveUrl: string | null;
-  chatUrl: string | null;
   availableSeats: number | null;
-  remainingSeats: number | null;
-  liveLanguage: string | null;
-  title: string;
-  sections: string[];
-  rawContent: string;
+  chapterId: string;
+  chatUrl: string | null;
+  courseId: string;
+  customTcDisclaimer: string | null;
+  endDate: Date | null;
+  isCourseConclusion: boolean;
+  isCourseExam: boolean;
+  isCourseReview: boolean;
+  isGdprCompliance: boolean;
+  isInPerson: boolean;
+  isOnline: boolean;
+  isSingleTrialExam: boolean;
+  language: string;
   lastSync: Date;
+  liveLanguage: string | null;
+  liveUrl: string | null;
+  rateWeight: number | null;
+  rawContent: string;
+  releaseDate: Date | null;
+  releasePlace: string | null;
+  remainingSeats: number | null;
+  sections: string[];
+  startDate: Date | null;
+  timezone: string | null;
+  title: string;
 }
 
 export interface CourseTranslationUpload {
