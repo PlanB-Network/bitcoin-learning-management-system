@@ -3,27 +3,27 @@
 
 export interface Legal {
   id: number;
-  path: string;
-  name: string;
-  lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  lastUpdated: Date;
+  name: string;
+  path: string;
 }
 
 export interface LegalLocalized {
   id: number;
   language: string;
-  title: string;
   rawContent: string;
+  title: string;
 }
 
 export interface JoinedLegalLight {
   id: number;
-  path: string;
-  name: string;
-  lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  lastUpdated: Date;
+  name: string;
+  path: string;
   language: string;
   title: string;
   tags?: string[] | undefined;
@@ -31,11 +31,11 @@ export interface JoinedLegalLight {
 
 export interface JoinedLegal {
   id: number;
-  path: string;
-  name: string;
-  lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  lastUpdated: Date;
+  name: string;
+  path: string;
   language: string;
   title: string;
   tags?: string[] | undefined;

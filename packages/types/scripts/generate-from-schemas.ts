@@ -178,8 +178,11 @@ const generateFileContent = (
         // Native enums are handled via currentNativeEnumImports to keep a single import statement.
         if (nativeEnumImports.has(typeName)) {
           // nothing – import handled globally for the file
-        } else {
-          // Import from an other type file
+        }
+
+        // Import from an other type file
+        else {
+          // TODO: This is a bit hacky, but it works for now
           const importName = `${/.*\/(.+)\.ts$/.exec(filePath)?.[1]}.js`;
           currentImportSet.add(
             `import { ${typeName} } from './${importName}';\n`,

@@ -3,25 +3,25 @@
 
 export interface Lab {
   id: string;
-  path: string;
-  studyGroup: string | null;
-  professorId: string;
-  studentCount: number;
-  telegramUrl: string | null;
-  lastUpdated: Date;
   lastCommit: string;
   lastSync: Date;
+  lastUpdated: Date;
+  path: string;
+  professorId: string;
+  studentCount: number;
+  studyGroup: string | null;
+  telegramUrl: string | null;
 }
 
 export interface LabSession {
+  endDate: Date;
   id: string;
   labId: string;
-  title: string | null;
-  startDate: Date;
-  endDate: Date;
+  lastSync: Date;
   liveUrl: string | null;
   rawContent: string;
-  lastSync: Date;
+  startDate: Date;
+  title: string | null;
 }
 
 export interface JoinedLab {

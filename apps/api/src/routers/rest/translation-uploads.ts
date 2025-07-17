@@ -253,6 +253,12 @@ async function insertSlidesFromManifest(
           const originalContent = toStr(origBlob);
           const translatedContent = toStr(transBlob);
 
+          // Extract professor name (second segment before underscore) from file name
+          const baseTxtName = path.basename(textFile);
+          const nameSegments = baseTxtName.split('_');
+          const professorName =
+            nameSegments.length >= 3 ? nameSegments[1] : null;
+
           await insertSlide(
             courseId,
             langKey,
@@ -260,6 +266,7 @@ async function insertSlidesFromManifest(
             chapterId,
             slideId,
             slideNumber,
+            professorName,
             translatedPptKey,
             originalContent,
             translatedContent,

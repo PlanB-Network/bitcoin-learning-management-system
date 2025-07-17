@@ -60,23 +60,6 @@ export const usersTranslationReviewsSchema = createSelectSchema(
 export const courseTranslationUploadSchema =
   createSelectSchema(contentCourseUploads);
 
-export const courseTranslationSlidesSchema = createSelectSchema(
-  contentCourseTranslationSlides,
-);
-export const usersLanguagesSchema = createSelectSchema(usersLanguages);
-export const usersReviewerLanguagesSchema = createSelectSchema(
-  usersReviewerLanguages,
-);
-export const usersTranslationAssignmentsSchema = createSelectSchema(
-  usersTranslationAssignments,
-);
-export const usersTranslationChapterAssignmentsSchema = createSelectSchema(
-  usersTranslationChapterAssignments,
-);
-export const usersTranslationReviewsSchema = createSelectSchema(
-  usersTranslationReviews,
-);
-
 // Schema for simple course translation response (only courseId and language)
 export const courseTranslationResponseSchema = courseTranslationSchema.pick({
   courseId: true,
