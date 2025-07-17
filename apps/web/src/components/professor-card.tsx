@@ -3,16 +3,14 @@ import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
-
+import { TbBrandLinkedin } from 'react-icons/tb';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
-
 import NostrIcon from '../assets/icons/nostr-primary.svg';
 import DonateLightning from '../assets/icons/tips-icon.svg';
 import WebIcon from '../assets/icons/world-primary.svg';
 import TwitterIcon from '../assets/icons/x-primary.svg';
-
 import { TipModal } from './tip-modal.tsx';
 
 interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
@@ -277,7 +275,6 @@ export const SocialLinks = ({ professor }: ProfessorCardProps) => {
           <img src={NostrIcon} alt="Nostr" className="block" />
         </button>
       )}
-
       {professor.links.website && (
         <button
           type="button"
@@ -292,6 +289,22 @@ export const SocialLinks = ({ professor }: ProfessorCardProps) => {
           }}
         >
           <img src={WebIcon} alt="Website" className="block" />
+        </button>
+      )}
+      {professor.links.linkedin && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(
+              professor.links.linkedin as string,
+              '_blank',
+              'noopener noreferrer',
+            );
+          }}
+        >
+          <TbBrandLinkedin size={28} className="shrink-0" />
         </button>
       )}
     </div>

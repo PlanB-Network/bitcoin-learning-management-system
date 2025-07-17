@@ -24,6 +24,7 @@ export interface FullProfessor {
   links: {
     github: string | null;
     nostr: string | null;
+    linkedin: string | null;
     twitter: string | null;
     website: string | null;
   };

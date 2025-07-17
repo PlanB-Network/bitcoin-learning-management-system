@@ -30,6 +30,7 @@ export const formattedProfessorSchema = joinedProfessorSchema
   .omit({
     githubUrl: true,
     lightningAddress: true,
+    linkedinUrl: true,
     lnurlPay: true,
     nostr: true,
     paynym: true,
@@ -43,6 +44,7 @@ export const formattedProfessorSchema = joinedProfessorSchema
       links: z.object({
         github: joinedProfessorSchema.shape.githubUrl,
         nostr: joinedProfessorSchema.shape.nostr,
+        linkedin: joinedProfessorSchema.shape.linkedinUrl,
         twitter: joinedProfessorSchema.shape.twitterUrl,
         website: joinedProfessorSchema.shape.websiteUrl,
       }),

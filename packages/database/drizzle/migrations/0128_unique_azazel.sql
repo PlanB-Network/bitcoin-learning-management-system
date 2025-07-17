@@ -1,0 +1,1 @@
+ALTER TABLE "content"."professors" ADD COLUMN "linkedin_url" text;

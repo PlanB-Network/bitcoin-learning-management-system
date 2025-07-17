@@ -13,6 +13,7 @@ export const fullProfessorSchema = joinedProfessorSchema
     paynym: true,
     silentPayment: true,
     tipsUrl: true,
+    linkedinUrl: true,
     twitterUrl: true,
     websiteUrl: true,
   })
@@ -21,6 +22,7 @@ export const fullProfessorSchema = joinedProfessorSchema
       links: z.object({
         github: joinedProfessorSchema.shape.githubUrl,
         nostr: joinedProfessorSchema.shape.nostr,
+        linkedin: joinedProfessorSchema.shape.linkedinUrl,
         twitter: joinedProfessorSchema.shape.twitterUrl,
         website: joinedProfessorSchema.shape.websiteUrl,
       }),

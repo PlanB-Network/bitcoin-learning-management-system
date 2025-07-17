@@ -7,6 +7,7 @@ export const formatProfessor = (
 ): FormattedProfessor => {
   return {
     ...omit(professor, [
+      'linkedinUrl',
       'websiteUrl',
       'twitterUrl',
       'githubUrl',
@@ -22,6 +23,7 @@ export const formatProfessor = (
     links: {
       github: professor.githubUrl,
       nostr: professor.nostr,
+      linkedin: professor.linkedinUrl,
       twitter: professor.twitterUrl,
       website: professor.websiteUrl,
     },

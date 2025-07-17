@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsTwitterX } from 'react-icons/bs';
 import { FiGlobe } from 'react-icons/fi';
+import { TbBrandLinkedin } from 'react-icons/tb';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
@@ -174,6 +175,18 @@ function DashboardProfessorProfile() {
                           target="_blank"
                         >
                           {professor.links.website}
+                        </Link>
+                      </div>
+                    )}
+                    {professor.links.linkedin && (
+                      <div className="flex gap-5 items-center">
+                        <TbBrandLinkedin size={18} className="shrink-0" />
+                        <Link
+                          to={professor.links.linkedin}
+                          className="w-fit truncate body-14px text-black"
+                          target="_blank"
+                        >
+                          {professor.links.linkedin}
                         </Link>
                       </div>
                     )}

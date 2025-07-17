@@ -17,6 +17,7 @@ export interface Professor {
   paynym: string | null;
   silentPayment: string | null;
   tipsUrl: string | null;
+  linkedinUrl: string | null;
   twitterUrl: string | null;
   websiteUrl: string | null;
 }
@@ -44,6 +45,7 @@ export interface JoinedProfessor {
   paynym: string | null;
   silentPayment: string | null;
   tipsUrl: string | null;
+  linkedinUrl: string | null;
   twitterUrl: string | null;
   websiteUrl: string | null;
   bio: string | null;
@@ -76,6 +78,7 @@ export interface FormattedProfessor {
   links: {
     github: string | null;
     nostr: string | null;
+    linkedin: string | null;
     twitter: string | null;
     website: string | null;
   };

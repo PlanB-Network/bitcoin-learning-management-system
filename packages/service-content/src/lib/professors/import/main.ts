@@ -14,6 +14,7 @@ interface ProfessorMain {
   links?: {
     website?: string;
     twitter?: string;
+    linkedin?: string;
     github?: string;
     nostr?: string;
   };
@@ -44,6 +45,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           affiliations,
           website_url,
           twitter_url,
+          linkedin_url,
           github_url,
           nostr,
           lightning_address,
@@ -63,6 +65,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedProfessor.affiliations},
           ${parsedProfessor.links?.website},
           ${parsedProfessor.links?.twitter},
+          ${parsedProfessor.links?.linkedin},
           ${parsedProfessor.links?.github},
           ${parsedProfessor.links?.nostr},
           ${parsedProfessor.tips?.lightning_address},
@@ -81,6 +84,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           affiliations = EXCLUDED.affiliations,
           website_url = EXCLUDED.website_url,
           twitter_url = EXCLUDED.twitter_url,
+          linkedin_url = EXCLUDED.linkedin_url,
           github_url = EXCLUDED.github_url,
           nostr = EXCLUDED.nostr,
           lightning_address = EXCLUDED.lightning_address,

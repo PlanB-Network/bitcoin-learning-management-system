@@ -1926,9 +1926,9 @@ export const contentProfessors = content.table('professors', (t) => ({
   paynym: t.text(),
   silentPayment: t.text(),
   tipsUrl: t.text(),
-  twitterUrl: t.text(),
 
-  // Links
+  linkedinUrl: t.text(),
+  twitterUrl: t.text(),
   websiteUrl: t.text(),
 }));
 

@@ -119,7 +119,6 @@ function ProfessorDetail() {
               )}
             </>
           )}
-
           {professor.tutorials.length > 0 && (
             <>
               <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
@@ -140,7 +139,6 @@ function ProfessorDetail() {
               </div>
             </>
           )}
-
           {lectures && lectures?.length > 0 && (
             <>
               <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
