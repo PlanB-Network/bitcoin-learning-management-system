@@ -731,36 +731,34 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               {t('courses.conclusion.finalStep')}
             </p>
           ) : (
-            <>
-              <div className="relative w-full aspect-[110/25] md:aspect-[110/18] rounded-lg overflow-hidden">
+            <div className="relative w-full aspect-[110/25] md:aspect-[110/18] rounded-lg overflow-hidden">
+              <img
+                src={completionSteps}
+                alt="Congratulations"
+                className="absolute w-full top-5 object-cover aspect-auto max-md:hidden"
+              />
+              <img
+                src={completionStepsMobile}
+                alt="Congratulations"
+                className="absolute w-full top-1 object-cover aspect-auto md:hidden"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-[#e2e2e2]/80 backdrop-blur-xs md:backdrop-blur-md flex items-center justify-center md:gap-6">
                 <img
-                  src={completionSteps}
-                  alt="Congratulations"
-                  className="absolute w-full top-5 object-cover aspect-auto max-md:hidden"
+                  src={LockGif}
+                  alt="Lock"
+                  className="size-11 md:size-[74px] shrink-0"
                 />
-                <img
-                  src={completionStepsMobile}
-                  alt="Congratulations"
-                  className="absolute w-full top-1 object-cover aspect-auto md:hidden"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-[#e2e2e2]/80 backdrop-blur-xs md:backdrop-blur-md flex items-center justify-center md:gap-6">
-                  <img
-                    src={LockGif}
-                    alt="Lock"
-                    className="size-11 md:size-[74px] shrink-0"
-                  />
-                  <p className="text-black body-medium-12px md:subtitle-medium-med-16px w-full max-w-[831px] flex flex-col">
-                    <span>{t('courses.conclusion.unlockFeatures1')}</span>
-                    <span className="max-md:hidden">
-                      {t('courses.conclusion.unlockFeatures2')}
-                    </span>
-                  </p>
-                </div>
+                <p className="text-black body-medium-12px md:subtitle-medium-med-16px w-full max-w-[831px] flex flex-col">
+                  <span>{t('courses.conclusion.unlockFeatures1')}</span>
+                  <span className="max-md:hidden">
+                    {t('courses.conclusion.unlockFeatures2')}
+                  </span>
+                </p>
               </div>
-            </>
+            </div>
           )}
           <div>
-            <ConclusionFinish course={course} />
+            <ConclusionFinish course={course} isProfessorLed={isProfessorLed} />
           </div>
         </>
       ) : null}

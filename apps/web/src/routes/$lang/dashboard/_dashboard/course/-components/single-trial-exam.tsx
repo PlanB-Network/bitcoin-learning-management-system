@@ -112,88 +112,86 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
   return (
     <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
       {isCourseConclusionReleased && (
-        <>
-          <div className="flex flex-col gap-4 md:gap-6 w-full">
-            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
-              {t('dashboard.course.finalGradeSummary')}
-            </h2>
-            <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
-              <div className="flex flex-col items-center gap-5">
-                {hasPassed && (
-                  <SuccessExam className="size-7 md:size-9 fill-brightGreen-6" />
-                )}
-                <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
-                  {hasPassed
-                    ? t('dashboard.course.congratulationsPassed')
-                    : t('dashboard.course.keepMovingForward')}
-                </p>
-              </div>
-              <div className="flex max-md:flex-col max-md:items-center gap-2.5 md:gap-4 items-stretch justify-center w-full">
-                <div className={scoreAndRankingClasses}>
-                  <span
-                    className={cn(
-                      hasPassed ? 'text-brightGreen-6' : 'text-red-5',
-                      'title-large-sb-24px md:display-small-med-32px',
-                    )}
-                  >
-                    {finalScore}%
-                  </span>
-                  <div className="flex flex-col items-center">
-                    <span className="subtitle-medium-16px md:label-18px text-newGray-1">
-                      {t('dashboard.course.finalScore')}
-                    </span>
-                    <span className="body-12px text-newGray-2">
-                      {t('dashboard.course.thresholdToPass', {
-                        threshold: passingThreshold,
-                      })}
-                    </span>
-                  </div>
-                </div>
-                <div className={scoreAndRankingClasses}>
-                  <span
-                    className={cn(
-                      'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
-                    )}
-                  >
-                    {courseProgress?.ranking ?? '-'} / {totalStudents}
-                  </span>
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
+          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
+            {t('dashboard.course.finalGradeSummary')}
+          </h2>
+          <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
+            <div className="flex flex-col items-center gap-5">
+              {hasPassed && (
+                <SuccessExam className="size-7 md:size-9 fill-brightGreen-6" />
+              )}
+              <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
+                {hasPassed
+                  ? t('dashboard.course.congratulationsPassed')
+                  : t('dashboard.course.keepMovingForward')}
+              </p>
+            </div>
+            <div className="flex max-md:flex-col max-md:items-center gap-2.5 md:gap-4 items-stretch justify-center w-full">
+              <div className={scoreAndRankingClasses}>
+                <span
+                  className={cn(
+                    hasPassed ? 'text-brightGreen-6' : 'text-red-5',
+                    'title-large-sb-24px md:display-small-med-32px',
+                  )}
+                >
+                  {finalScore}%
+                </span>
+                <div className="flex flex-col items-center">
                   <span className="subtitle-medium-16px md:label-18px text-newGray-1">
-                    {t('dashboard.course.ranking')}
+                    {t('dashboard.course.finalScore')}
+                  </span>
+                  <span className="body-12px text-newGray-2">
+                    {t('dashboard.course.thresholdToPass', {
+                      threshold: passingThreshold,
+                    })}
                   </span>
                 </div>
               </div>
-            </section>
-          </div>
-          {hasPassed &&
-            (isCourseConclusionReleased ? (
-              <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
-                <Finish className="fill-darkOrange-5 size-7 md:size-9" />
-                <p className="label-medium-16px md:subtitle-large-med-20px text-newBlack-1 whitespace-pre-line text-center">
-                  {t('dashboard.course.wellDoneCompleting')}
-                </p>
-                {isTimestampFetched && timestamp ? (
-                  <DiplomaSection
-                    timestampId={timestamp.id}
-                    imgKey={timestamp.imgKey || ''}
-                    courseName={course.name}
-                    courseCoordinator={course.mainProfessors[0]?.name}
-                  />
-                ) : (
-                  <Loader />
-                )}
-              </section>
-            ) : (
-              <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={TbAlertOctagon}>
-                  {t('dashboard.course.diplomaReleaseTitle')}
-                </AlertTitle>
-                <AlertDescription className="max-md:body-14px text-newBlack-2">
-                  {t('dashboard.course.diplomaReleaseDescription')}
-                </AlertDescription>
-              </Alert>
-            ))}
-        </>
+              <div className={scoreAndRankingClasses}>
+                <span
+                  className={cn(
+                    'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
+                  )}
+                >
+                  {courseProgress?.ranking ?? '-'} / {totalStudents}
+                </span>
+                <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                  {t('dashboard.course.ranking')}
+                </span>
+              </div>
+            </div>
+          </section>
+        </div>
       )}
+      {hasPassed &&
+        (isCourseConclusionReleased ? (
+          <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
+            <Finish className="fill-darkOrange-5 size-7 md:size-9" />
+            <p className="label-medium-16px md:subtitle-large-med-20px text-newBlack-1 whitespace-pre-line text-center">
+              {t('dashboard.course.wellDoneCompleting')}
+            </p>
+            {isTimestampFetched && timestamp ? (
+              <DiplomaSection
+                timestampId={timestamp.id}
+                imgKey={timestamp.imgKey || ''}
+                courseName={course.name}
+                courseCoordinator={course.mainProfessors[0]?.name}
+              />
+            ) : (
+              <Loader />
+            )}
+          </section>
+        ) : (
+          <Alert hasCloseButton variant="warning">
+            <AlertTitle icon={TbAlertOctagon}>
+              {t('dashboard.course.diplomaReleaseTitle')}
+            </AlertTitle>
+            <AlertDescription className="max-md:body-14px text-newBlack-2">
+              {t('dashboard.course.diplomaReleaseDescription')}
+            </AlertDescription>
+          </Alert>
+        ))}
       <div className="flex flex-col gap-2.5 md:gap-6">
         <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           {t('dashboard.course.exams')}
