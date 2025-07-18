@@ -123,10 +123,10 @@ const NavigationSection = ({
   textSecondaryClass: string;
 }) => (
   <div className="flex flex-col gap-0.5 md:gap-2">
-    <h4 className="body-14px-medium">{title}</h4>
+    <h4 className="body-16px-medium">{title}</h4>
     <ul
       className={cn(
-        'flex flex-col gap-1 md:gap-0.5 body-14px capitalize',
+        'flex flex-col gap-1 md:gap-0.5 body-16px capitalize',
         textSecondaryClass,
       )}
     >
@@ -163,17 +163,19 @@ const SocialLink = ({
     className={showLabel ? 'flex items-center gap-2' : ''}
   >
     {isReactIcon ? (
-      <Icon size={iconSize} className={iconClasses} />
+      <Icon
+        className={cn(iconClasses, iconSize ? `h-${iconSize / 4}` : 'h-4.5')}
+      />
     ) : (
       <Icon
         className={cn(
-          iconSize ? `w-${iconSize / 4} h-${iconSize / 4}` : 'h-3.5',
+          iconSize ? `h-${iconSize / 4}` : 'h-4.5',
           'fill-current',
           iconClasses,
         )}
       />
     )}
-    {showLabel && <span className="body-14px">{label}</span>}
+    {showLabel && <span className="body-16px">{label}</span>}
   </a>
 );
 
@@ -182,7 +184,7 @@ const SocialNetworksMobile = ({
 }: {
   variant: FooterProps['variant'];
 }) => {
-  const iconSize = 14;
+  const iconSize = 18;
   const iconClasses = cn(
     variant === 'light'
       ? 'text-newGray-4 stroke-newGray-4'
@@ -190,7 +192,7 @@ const SocialNetworksMobile = ({
   );
 
   return (
-    <div className="flex gap-3.5 mx-auto">
+    <div className="flex gap-5 mx-auto">
       {SOCIAL_LINKS.map(({ href, icon, label, isReactIcon }) => (
         <SocialLink
           key={href}
@@ -219,10 +221,10 @@ const SocialNetworksDesktop = ({
 
   return (
     <div className="flex flex-col gap-2 max-md:hidden">
-      <h4 className="body-14px-medium">{t('footer.followUsOn')}</h4>
+      <h4 className="body-16px-medium">{t('footer.followUsOn')}</h4>
       <ul
         className={cn(
-          'flex flex-col gap-0.5 body-14px',
+          'flex flex-col gap-0.5 body-16px',
           variant === 'light' ? 'text-newGray-4' : 'text-newBlack-5',
         )}
       >
