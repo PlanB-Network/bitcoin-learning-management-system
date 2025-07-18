@@ -268,10 +268,15 @@ function TutorialDetails() {
 
   // Fetch tutorial data
   const { data: tutorial, isFetched } = useQuery(
-    trpc.content.getTutorial.queryOptions({
-      id,
-      language: i18n.language,
-    }),
+    trpc.content.getTutorial.queryOptions(
+      {
+        id,
+        language: i18n.language,
+      },
+      {
+        refetchOnWindowFocus: false,
+      },
+    ),
   );
 
   // Rewrite URL
