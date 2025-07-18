@@ -12,6 +12,7 @@ export * from './get-enrolled-students-count.js';
 export * from './get-exam-info.js';
 export * from './get-exam-questions.js';
 export * from './get-exam-results.js';
+export * from './get-multi-attempts-exams.js';
 export * from './get-payment.js';
 export * from './get-pending-payment.js';
 export * from './get-progress.js';

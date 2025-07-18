@@ -3,8 +3,8 @@ import type { CourseWithSingleTrialExamsGradesAndSummary } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
 import {
   getAllAssignmentsGradesQuery,
-  getAllSingleTrialExamsGradesQuery,
-} from '../queries/get-teacher-led-exams.js';
+  getAllExamsGradesQuery,
+} from '../queries/get-exams-grades.js';
 
 interface Options {
   courseId: string;
@@ -16,7 +16,7 @@ export const createGetTeacherLedCourseGrades = ({ postgres }: Dependencies) => {
     options: Options,
   ): Promise<CourseWithSingleTrialExamsGradesAndSummary> => {
     const examsGrades = await postgres.exec(
-      getAllSingleTrialExamsGradesQuery(options.courseId),
+      getAllExamsGradesQuery(options.courseId, true),
     );
 
     const assignmentGrades = await postgres.exec(

@@ -64,9 +64,9 @@ function DashboardStudentCourse() {
     p.chapters.some((c) => c?.isCourseExam),
   );
 
-  const courseHaveSingleTrialExam = course?.parts.some((p) =>
-    p.chapters.some((c) => c?.isSingleTrialExam),
-  );
+  const courseHaveSingleTrialExamOrAssignment =
+    course?.parts.some((p) => p.chapters.some((c) => c?.isSingleTrialExam)) ||
+    course?.hasAssignment;
 
   const courseHaveAssignments = course?.hasAssignment;
 
@@ -84,7 +84,7 @@ function DashboardStudentCourse() {
       value: 'retakeExam',
     });
   }
-  if (courseHaveSingleTrialExam) {
+  if (courseHaveSingleTrialExamOrAssignment) {
     tabs.push({
       key: 'singleTrialExam',
       text: t('courses.exam.scoreAndDiploma'),
@@ -167,8 +167,8 @@ function DashboardStudentCourse() {
                 />
               </TabsContent>
             ) : null}
-            {/* SingleTrialExam */}
-            {courseHaveSingleTrialExam ? (
+            {/* SingleTrialExam or assignment */}
+            {courseHaveSingleTrialExamOrAssignment ? (
               <TabsContent value="singleTrialExam">
                 <SingleTrialExam course={course} />
               </TabsContent>

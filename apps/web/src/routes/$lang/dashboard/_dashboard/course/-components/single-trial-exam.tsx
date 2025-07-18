@@ -6,7 +6,6 @@ import {
   AlertTitle,
   Button,
   ButtonWithArrow,
-  CollapsibleDropdown,
   cn,
   DividerSimple,
   DividerVertical,
@@ -19,7 +18,6 @@ import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { BsTwitterX } from 'react-icons/bs';
 import { IoMdLock } from 'react-icons/io';
-import { LuCircleAlert } from 'react-icons/lu';
 import { MdOutlineCalendarMonth } from 'react-icons/md';
 import { TbAlertOctagon, TbDownload } from 'react-icons/tb';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
@@ -200,21 +198,6 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
         <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
           {t('dashboard.course.exams')}
         </h2>
-        {course?.isPlanbSchool && (
-          <CollapsibleDropdown
-            title={t('dashboard.course.generalInformation')}
-            className="border border-newGray-4"
-            variant="dark"
-            defaultOpen={singleTrialExams.length === 0}
-            icon={<LuCircleAlert />}
-          >
-            <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px">
-              {t('dashboard.course.planbSchoolGeneralInformation', {
-                threshold: passingThreshold,
-              })}
-            </p>
-          </CollapsibleDropdown>
-        )}
       </div>
 
       <div className="flex flex-col gap-4">
@@ -341,7 +324,7 @@ const ExamItem = ({
               className="w-fit"
               size={isMobile ? 's' : 'm'}
             >
-              <span>{t('courses.exam.viewExam')}</span>
+              <span>{t('words.review')}</span>
             </ButtonWithArrow>
           </Link>
         ) : (

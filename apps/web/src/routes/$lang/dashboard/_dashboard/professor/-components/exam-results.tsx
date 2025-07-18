@@ -1,9 +1,9 @@
 import type {
   CourseWithSingleTrialExamsGradesAndSummary,
+  ExamQuestionStatistics,
   JoinedCourseChapter,
   MinimalAssignmentGrade,
   MinimalCourseExamAttemptWithUsername,
-  SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 import {
   CustomGauge,
@@ -12,6 +12,7 @@ import {
   EmptyState,
   Loader,
   RadialGauge,
+  SegmentedGauge,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +20,7 @@ import {
   TbCalendar,
   TbClipboardText,
   TbClock,
+  TbFileStack,
   TbFileTypeXls,
   TbWeight,
 } from 'react-icons/tb';
@@ -26,6 +28,14 @@ import XLSX from 'xlsx';
 
 import { formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
+
+const SELF_PACED_PASSING_THRESHOLD = 80;
+const DEFAULT_ASSIGNMENT_WEIGHT = 40;
+const MAX_QUESTIONS_IN_MULTI_ATTEMPT_EXAM = 40;
+const DURATION_CALCULATION_QUESTIONS_PER_MINUTE = 2;
+const TWO_HOURS_IN_MS = 2 * 60 * 60 * 1000;
+const WEIGHT_PER_BAR = 20;
+const TOTAL_WEIGHT_BARS = 5;
 
 export const ExamResults = ({ courseId }: { courseId: string }) => {
   const { t, i18n } = useTranslation();
@@ -42,26 +52,16 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
       p.chapters.filter((c) => c?.isSingleTrialExam),
     ) || [];
 
-  const { data: enrolledStudentsCount } = useQuery(
-    trpc.user.courses.getEnrolledStudentsCount.queryOptions({
-      courseId: courseId,
-    }),
-  );
+  const multiAttemptExams =
+    course?.parts.flatMap((p) => p.chapters.filter((c) => c?.isCourseExam)) ||
+    [];
 
-  const { data: courseGradesAndSummary } = useQuery(
-    trpc.user.courses.getTeacherLedCourseGrades.queryOptions(
-      {
-        courseId: courseId,
-        passingThreshold: course?.passingGradeThreshold ?? 0,
-      },
-      {
-        enabled: !!course && !!course?.passingGradeThreshold,
-      },
-    ),
-  );
+  const isSelfPacedCourse = course?.teachingFormat === 'self_paced';
+  const isProfessorLedCourse = course?.teachingFormat === 'professor_led';
 
-  const hasAssignment = course?.hasAssignment;
-  const assignmentWeight = course?.assignmentWeight ?? 40;
+  const hasAssignment = course?.hasAssignment ?? false;
+  const assignmentWeight =
+    course?.assignmentWeight ?? DEFAULT_ASSIGNMENT_WEIGHT;
 
   const isCourseConclusionReleased = !!course?.parts?.some((part) =>
     part.chapters.some(
@@ -72,27 +72,77 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
     ),
   );
 
+  const { data: enrolledStudentsCount } = useQuery(
+    trpc.user.courses.getEnrolledStudentsCount.queryOptions(
+      {
+        courseId: courseId,
+      },
+      { enabled: !!courseId && isProfessorLedCourse },
+    ),
+  );
+
+  const { data: teacherLedCourseGradesAndSummary } = useQuery(
+    trpc.user.courses.getTeacherLedCourseGrades.queryOptions(
+      {
+        courseId: courseId,
+        passingThreshold: course?.passingGradeThreshold ?? 0,
+      },
+      {
+        enabled:
+          !!course &&
+          isProfessorLedCourse &&
+          (singleTrialExams.length > 0 || hasAssignment),
+      },
+    ),
+  );
+
+  const { data: selfPacedCourseGradesAndSummary } = useQuery(
+    trpc.user.courses.getMultiAttemptExamCourseGrades.queryOptions(
+      {
+        courseId: courseId,
+        passingThreshold: SELF_PACED_PASSING_THRESHOLD,
+      },
+      {
+        enabled: !!course && isSelfPacedCourse && multiAttemptExams.length > 0,
+      },
+    ),
+  );
+
   const finalResultsInfos = {
-    averageScore: courseGradesAndSummary?.averageTotalScore ?? 0,
-    graduatedStudents: courseGradesAndSummary?.graduatedStudentsAmount ?? 0,
-    thresholdToPass: course?.passingGradeThreshold,
-    totalStudents: enrolledStudentsCount,
+    averageScore:
+      (isProfessorLedCourse
+        ? teacherLedCourseGradesAndSummary?.averageTotalScore
+        : selfPacedCourseGradesAndSummary?.averageScore) || 0,
+    graduatedStudents:
+      (isProfessorLedCourse
+        ? teacherLedCourseGradesAndSummary?.graduatedStudentsAmount
+        : selfPacedCourseGradesAndSummary?.graduatedStudentsAmount) || 0,
+    thresholdToPass: isProfessorLedCourse
+      ? course?.passingGradeThreshold || 0
+      : SELF_PACED_PASSING_THRESHOLD,
+    totalStudents:
+      enrolledStudentsCount ||
+      selfPacedCourseGradesAndSummary?.totalStudentsTakingExam,
   };
 
   if (!course) {
     return <Loader />;
   }
 
-  if (singleTrialExams.length === 0 && !hasAssignment) {
+  if (
+    singleTrialExams.length === 0 &&
+    !hasAssignment &&
+    multiAttemptExams.length === 0
+  ) {
     return <EmptyState message={t('dashboard.teacher.courses.noExamLinked')} />;
   }
 
-  const examItems = singleTrialExams.map((exam, index) => ({
+  const singleTrialExamItems = singleTrialExams.map((exam, index) => ({
     data: {
       chapterId: exam.chapterId,
       endDate: exam.endDate,
       examGrades:
-        courseGradesAndSummary?.examsGrades.filter(
+        teacherLedCourseGradesAndSummary?.examsGrades.filter(
           (grade) => grade.chapterId === exam.chapterId,
         ) || undefined,
       index,
@@ -106,11 +156,27 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
     type: 'exam' as const,
   }));
 
+  const multiAttemptsExamItems = multiAttemptExams.map((exam, index) => ({
+    data: {
+      chapterId: exam.chapterId,
+      examGrades:
+        selfPacedCourseGradesAndSummary?.examsGrades.filter(
+          (grade) => grade.chapterId === exam.chapterId,
+        ) || undefined,
+      index,
+      language: course.originalLanguage,
+      type: 'multi-attempts' as const,
+      name: exam.title,
+    },
+    type: 'exam' as const,
+  }));
+
   const assignmentItems = hasAssignment
     ? [
         {
           data: {
-            assignmentGrades: courseGradesAndSummary?.assignmentGrades || [],
+            assignmentGrades:
+              teacherLedCourseGradesAndSummary?.assignmentGrades || [],
             assignmentPublished: course?.isAssignmentGradingPublished,
             endDate: course?.assignmentEndDate,
             index: singleTrialExams.length,
@@ -126,73 +192,48 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
       ]
     : [];
 
-  const allItems = [...examItems, ...assignmentItems].sort((a, b) => {
-    const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
-    const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+  const allItems = [
+    ...singleTrialExamItems,
+    ...multiAttemptsExamItems,
+    ...assignmentItems,
+  ].sort((a, b) => {
+    const dateA =
+      'startDate' in a && a.startDate ? new Date(a.startDate).getTime() : 0;
+    const dateB =
+      'startDate' in b && b.startDate ? new Date(b.startDate).getTime() : 0;
     return dateA - dateB;
   });
 
   return (
     <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 md:border border-newGray-5 bg-white rounded-2xl mt-3 md:mt-8">
-      {isCourseConclusionReleased && courseGradesAndSummary && (
-        <section className="relative flex flex-col items-center gap-3 md:gap-7 w-full">
-          <h2 className="text-center title-large-24px font-medium">
-            {t('dashboard.teacher.courses.finalAverageResults')}
-          </h2>
-          <div className="flex flex-wrap gap-x-12 md:gap-x-2 items-center justify-center w-full">
-            {finalResultsInfos.totalStudents &&
-            finalResultsInfos.totalStudents > 0 ? (
-              <DashGauge
-                total={finalResultsInfos.totalStudents}
-                completed={finalResultsInfos.graduatedStudents}
-                label={t('dashboard.teacher.courses.studentsGraduated')}
-                variant="orange"
-                size="l"
-              />
-            ) : null}
-            <RadialGauge
-              percentage={finalResultsInfos.averageScore}
-              label={t('dashboard.teacher.courses.averageScore')}
-              variant="green"
-              size="l"
-            />
-            <RadialGauge
-              percentage={finalResultsInfos.thresholdToPass || 0}
-              label={t('dashboard.teacher.courses.thresholdToPass')}
-              variant="yellow"
-              size="l"
-            />
-          </div>
-          <button
-            onClick={() =>
-              downloadConsolidatedGrades(
-                courseGradesAndSummary,
-                singleTrialExams,
-                hasAssignment || false,
-                assignmentWeight,
-                course.name,
-              )
-            }
-            type="button"
-            className="absolute right-0 text-newBlack-5"
-          >
-            <TbFileTypeXls size={24} />
-          </button>
-        </section>
+      {((isCourseConclusionReleased && teacherLedCourseGradesAndSummary) ||
+        (multiAttemptExams.length > 0 && selfPacedCourseGradesAndSummary)) && (
+        <FinalResultsSummary
+          finalResultsInfos={finalResultsInfos}
+          teacherLedCourseGradesAndSummary={teacherLedCourseGradesAndSummary}
+          singleTrialExams={singleTrialExams}
+          hasAssignment={hasAssignment}
+          assignmentWeight={assignmentWeight}
+          courseName={course.name}
+        />
       )}
       {allItems.map((item, sortedIndex) => (
         <ExamCard
           key={item.type === 'exam' ? item.data.chapterId : 'assignment'}
           index={sortedIndex}
           name={item.data.name}
-          weight={item.data.weight}
+          weight={'weight' in item.data ? item.data.weight : undefined}
           chapterId={
-            item.data.type === 'single-trial' ? item.data.chapterId : undefined
+            item.data.type === 'single-trial' ||
+            item.data.type === 'multi-attempts'
+              ? item.data.chapterId
+              : undefined
           }
+          courseId={courseId}
           language={item.data.language}
           type={item.data.type}
-          startDate={item.data.startDate}
-          endDate={item.data.endDate}
+          startDate={'startDate' in item.data ? item.data.startDate : undefined}
+          endDate={'endDate' in item.data ? item.data.endDate : undefined}
           assignmentPublished={
             item.data.type === 'assignment'
               ? item.data.assignmentPublished
@@ -204,7 +245,10 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
               : undefined
           }
           examGrades={
-            item.data.type === 'single-trial' ? item.data.examGrades : undefined
+            item.data.type === 'single-trial' ||
+            item.data.type === 'multi-attempts'
+              ? item.data.examGrades
+              : undefined
           }
         />
       ))}
@@ -212,13 +256,88 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   );
 };
 
+interface FinalResultsSummaryProps {
+  finalResultsInfos: {
+    averageScore: number;
+    graduatedStudents: number;
+    thresholdToPass?: number | null;
+    totalStudents?: number;
+  };
+  teacherLedCourseGradesAndSummary?: CourseWithSingleTrialExamsGradesAndSummary;
+  singleTrialExams: JoinedCourseChapter[];
+  hasAssignment: boolean;
+  assignmentWeight: number;
+  courseName: string;
+}
+
+const FinalResultsSummary = ({
+  finalResultsInfos,
+  teacherLedCourseGradesAndSummary,
+  singleTrialExams,
+  hasAssignment,
+  assignmentWeight,
+  courseName,
+}: FinalResultsSummaryProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <section className="relative flex flex-col items-center gap-3 md:gap-7 w-full">
+      <h2 className="text-center title-large-24px font-medium">
+        {t('dashboard.teacher.courses.finalAverageResults')}
+      </h2>
+      <div className="flex flex-wrap gap-x-12 md:gap-x-2 items-center justify-center w-full">
+        {finalResultsInfos.totalStudents &&
+        finalResultsInfos.totalStudents > 0 ? (
+          <DashGauge
+            total={finalResultsInfos.totalStudents}
+            completed={finalResultsInfos.graduatedStudents}
+            label={t('dashboard.teacher.courses.studentsGraduated')}
+            variant="orange"
+            size="l"
+          />
+        ) : null}
+        <RadialGauge
+          percentage={finalResultsInfos.averageScore}
+          label={t('dashboard.teacher.courses.averageScore')}
+          variant="green"
+          size="l"
+        />
+        <RadialGauge
+          percentage={finalResultsInfos.thresholdToPass || 0}
+          label={t('dashboard.teacher.courses.thresholdToPass')}
+          variant="yellow"
+          size="l"
+        />
+      </div>
+      {teacherLedCourseGradesAndSummary && (
+        <button
+          onClick={() =>
+            downloadConsolidatedGrades(
+              teacherLedCourseGradesAndSummary,
+              singleTrialExams,
+              hasAssignment,
+              assignmentWeight,
+              courseName,
+            )
+          }
+          type="button"
+          className="absolute right-0 text-newBlack-5"
+        >
+          <TbFileTypeXls size={24} />
+        </button>
+      )}
+    </section>
+  );
+};
+
 interface ExamCardProps {
   index: number;
   name: string;
-  weight: number;
   language: string;
+  weight?: number;
   chapterId?: string;
-  type?: 'single-trial' | 'assignment';
+  courseId?: string;
+  type?: 'single-trial' | 'multi-attempts' | 'assignment';
   startDate?: Date | null;
   endDate?: Date | null;
   assignmentPublished?: boolean;
@@ -232,6 +351,7 @@ const ExamCard = ({
   weight,
   language,
   chapterId,
+  courseId,
   type,
   startDate,
   endDate,
@@ -253,7 +373,7 @@ const ExamCard = ({
     ),
   );
 
-  const { data: examQuestionsStatistics } = useQuery(
+  const { data: singleTrialExamQuestionsStatistics } = useQuery(
     trpc.user.courses.getSingleTrialExamQuestionStatistics.queryOptions(
       {
         chapterId: chapterId || '',
@@ -264,15 +384,27 @@ const ExamCard = ({
     ),
   );
 
+  const { data: multiAttemptsExamQuestionsStatistics } = useQuery(
+    trpc.user.courses.getMultiAttemptsExamQuestionStatistics.queryOptions(
+      {
+        courseId: courseId || '',
+      },
+      {
+        enabled: type === 'multi-attempts',
+      },
+    ),
+  );
+
   const now = Date.now();
-  const TWO_HOURS = 2 * 60 * 60 * 1000;
 
   const areResultsPublished =
     type === 'single-trial'
       ? endDate != null &&
-        now > endDate.getDate() + TWO_HOURS &&
+        now > endDate.getTime() + TWO_HOURS_IN_MS &&
         examGrades.length > 0
-      : assignmentPublished && assignmentGrades.length > 0;
+      : type === 'assignment'
+        ? assignmentPublished && assignmentGrades.length > 0
+        : true;
 
   const averageDuration = calculateAverageDuration(examGrades);
 
@@ -286,6 +418,20 @@ const ExamCard = ({
       ? assignmentGrades.map((g) => g.assignmentGrade)
       : examGrades.map((g) => g.score),
   );
+
+  const questionsInExam = examInfo?.isSingleTrialExam
+    ? examInfo?.nbQuestions
+    : type === 'multi-attempts'
+      ? Math.min(
+          multiAttemptsExamQuestionsStatistics?.length || 0,
+          MAX_QUESTIONS_IN_MULTI_ATTEMPT_EXAM,
+        )
+      : 0;
+
+  const totalQuestions =
+    type === 'multi-attempts'
+      ? multiAttemptsExamQuestionsStatistics?.length || 0
+      : examInfo?.nbQuestions || 0;
 
   if (!isExamInfoFetched && type === 'single-trial') {
     return <Loader />;
@@ -307,8 +453,13 @@ const ExamCard = ({
                   : downloadExamGrades(
                       examGrades,
                       name,
-                      examInfo?.nbQuestions || 0,
-                      examQuestionsStatistics || [],
+                      (type === 'single-trial'
+                        ? examInfo?.nbQuestions
+                        : questionsInExam) || 0,
+                      singleTrialExamQuestionsStatistics ||
+                        multiAttemptsExamQuestionsStatistics ||
+                        [],
+                      type === 'multi-attempts',
                     )
               }
               type="button"
@@ -329,33 +480,48 @@ const ExamCard = ({
           </h5>
 
           <div className="flex flex-col gap-1.5 bg-white rounded-2xl p-2 md:p-5">
-            {examInfo?.nbQuestions && (
+            {questionsInExam > 0 && (
               <InfoRow
-                label={t('words.questions')}
-                value={examInfo?.nbQuestions}
+                label={
+                  examInfo?.isSingleTrialExam
+                    ? t('words.questions')
+                    : t('dashboard.teacher.courses.questionsInExam')
+                }
+                value={questionsInExam}
                 icon={<TbClipboardText className="size-6 shrink-0" />}
                 showBorder={true}
               />
             )}
 
-            <InfoRow
-              label={t('words.weight')}
-              value={
-                <div className="flex items-center gap-3">
-                  <span>{weight}%</span>
-                  <WeightIndicator weight={weight} />
-                </div>
-              }
-              icon={<TbWeight className="size-6 shrink-0" />}
-              showBorder={!!(examInfo?.nbQuestions || (startDate && endDate))}
-            />
+            {totalQuestions > 0 && !examInfo?.isSingleTrialExam && (
+              <InfoRow
+                label={t('dashboard.teacher.courses.totalQuestions')}
+                value={totalQuestions}
+                icon={<TbFileStack className="size-6 shrink-0" />}
+                showBorder={true}
+              />
+            )}
 
-            {examInfo?.nbQuestions && (
+            {weight && (
+              <InfoRow
+                label={t('words.weight')}
+                value={
+                  <div className="flex items-center gap-3">
+                    <span>{weight}%</span>
+                    <WeightIndicator weight={weight} />
+                  </div>
+                }
+                icon={<TbWeight className="size-6 shrink-0" />}
+                showBorder={!!(examInfo?.nbQuestions || (startDate && endDate))}
+              />
+            )}
+
+            {questionsInExam > 0 && (
               <InfoRow
                 label={t('words.duration')}
-                value={`${Math.round(examInfo?.nbQuestions / 2)}'`}
+                value={`${Math.round(questionsInExam / DURATION_CALCULATION_QUESTIONS_PER_MINUTE)}'`}
                 icon={<TbClock className="size-6 shrink-0" />}
-                showBorder={true}
+                showBorder={type !== 'multi-attempts'}
               />
             )}
 
@@ -381,12 +547,26 @@ const ExamCard = ({
                 variant="green"
                 showBackground
               />
-              <RadialGauge
-                percentage={medianScore || 0}
-                label={t('dashboard.teacher.courses.medianScore')}
-                variant="purple"
-                showBackground
-              />
+
+              {type === 'assignment' || type === 'single-trial' ? (
+                <RadialGauge
+                  percentage={medianScore || 0}
+                  label={t('dashboard.teacher.courses.medianScore')}
+                  variant="purple"
+                  showBackground
+                />
+              ) : null}
+
+              {type === 'multi-attempts' && (
+                <SegmentedGauge
+                  value={calculateAverageAttemptsPerUser(examGrades)}
+                  label={t('dashboard.teacher.courses.averageAttempts')}
+                  variant="purple"
+                  threshold1={2}
+                  threshold2={3}
+                  showBackground
+                />
+              )}
 
               {averageDuration && (
                 <CustomGauge
@@ -436,10 +616,10 @@ const InfoRow = ({
 );
 
 export const WeightIndicator = ({ weight }: { weight: number }) => {
-  const filledBars = Math.ceil(weight / 20);
+  const filledBars = Math.ceil(weight / WEIGHT_PER_BAR);
   return (
     <div className="flex gap-0.25">
-      {[...Array(5)].map((_, i) => (
+      {[...Array(TOTAL_WEIGHT_BARS)].map((_, i) => (
         <div
           // biome-ignore lint/suspicious/noArrayIndexKey: false positive
           key={`weight-bar-${i}`}
@@ -517,6 +697,28 @@ const calculateExamAverageScore = (
   );
 };
 
+const calculateAverageAttemptsPerUser = (
+  examGrades: MinimalCourseExamAttemptWithUsername[],
+): number => {
+  if (examGrades.length === 0) return 0;
+
+  const attemptsByUser = examGrades.reduce(
+    (acc, grade) => {
+      if (grade.username) {
+        acc[grade.username] = (acc[grade.username] || 0) + 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+
+  const usernames = Object.keys(attemptsByUser);
+  if (usernames.length === 0) return 0;
+
+  const totalAttempts = examGrades.length;
+  return totalAttempts / usernames.length;
+};
+
 const downloadAssignmentGrades = (
   assignmentGrades: MinimalAssignmentGrade[],
 ) => {
@@ -548,7 +750,8 @@ const downloadExamGrades = (
   examGrades: MinimalCourseExamAttemptWithUsername[],
   examName: string,
   totalQuestions: number,
-  questionsStatistics: SingleTrialExamQuestionStatistics[] = [],
+  questionsStatistics: ExamQuestionStatistics[] = [],
+  isMultiAttempts = false,
 ) => {
   const gradesRows = examGrades
     .filter((grade) => grade.username && grade.score !== null)
@@ -567,12 +770,21 @@ const downloadExamGrades = (
         realScore = Math.round((grade.score / 100) * totalQuestions);
       }
 
-      return {
+      const baseRow = {
         Username: grade.username!,
         'Score (%)': grade.score!,
         'Correct answers': realScore,
         'Duration (seconds)': duration,
       };
+
+      if (isMultiAttempts) {
+        return {
+          ...baseRow,
+          Date: grade.finishedAt,
+        };
+      }
+
+      return baseRow;
     });
 
   const statisticsRows = questionsStatistics.map((stat) => ({
@@ -581,6 +793,7 @@ const downloadExamGrades = (
     'Question difficulty': stat.questionDifficulty,
     'Total answers': stat.totalAnswers,
     'Correct answers (%)': Math.round(stat.successPercentage * 100) / 100,
+    Archived: stat.isArchived ? 'Yes' : 'No',
   }));
 
   const workbook = XLSX.utils.book_new();
@@ -590,6 +803,7 @@ const downloadExamGrades = (
     'Score (%)',
     'Correct answers',
     'Duration (seconds)',
+    ...(isMultiAttempts ? ['Date'] : []),
   ];
 
   const gradesWorksheet = XLSX.utils.json_to_sheet(gradesRows, {
@@ -608,6 +822,7 @@ const downloadExamGrades = (
     { wch: 10 },
     { wch: 15 },
     { wch: 18 },
+    ...(isMultiAttempts ? [{ wch: 15 }] : []),
   ];
 
   if (statisticsRows.length > 0) {
@@ -617,6 +832,7 @@ const downloadExamGrades = (
       'Question difficulty',
       'Total answers',
       'Correct answers (%)',
+      'Archived',
     ];
 
     const statisticsWorksheet = XLSX.utils.json_to_sheet(statisticsRows, {
@@ -648,6 +864,7 @@ const downloadExamGrades = (
       { wch: 20 },
       { wch: 15 },
       { wch: 17 },
+      { wch: 10 },
     ];
   }
 
@@ -658,7 +875,7 @@ const downloadExamGrades = (
 };
 
 const downloadConsolidatedGrades = (
-  courseGradesAndSummary: CourseWithSingleTrialExamsGradesAndSummary,
+  teacherLedCourseGradesAndSummary: CourseWithSingleTrialExamsGradesAndSummary,
   singleTrialExams: JoinedCourseChapter[],
   hasAssignment: boolean,
   assignmentWeight: number,
@@ -666,16 +883,16 @@ const downloadConsolidatedGrades = (
 ) => {
   const allUsernames = new Set<string>();
 
-  if (courseGradesAndSummary?.examsGrades) {
-    for (const grade of courseGradesAndSummary.examsGrades) {
+  if (teacherLedCourseGradesAndSummary?.examsGrades) {
+    for (const grade of teacherLedCourseGradesAndSummary.examsGrades) {
       if (grade.username) {
         allUsernames.add(grade.username);
       }
     }
   }
 
-  if (courseGradesAndSummary?.assignmentGrades) {
-    for (const grade of courseGradesAndSummary.assignmentGrades) {
+  if (teacherLedCourseGradesAndSummary?.assignmentGrades) {
+    for (const grade of teacherLedCourseGradesAndSummary.assignmentGrades) {
       if (grade.username) {
         allUsernames.add(grade.username);
       }
@@ -697,7 +914,7 @@ const downloadConsolidatedGrades = (
     };
 
     singleTrialExams.forEach((exam) => {
-      const examGrade = courseGradesAndSummary?.examsGrades?.find(
+      const examGrade = teacherLedCourseGradesAndSummary?.examsGrades?.find(
         (grade) =>
           grade.username === username && grade.chapterId === exam.chapterId,
       );
@@ -706,9 +923,10 @@ const downloadConsolidatedGrades = (
     });
 
     if (hasAssignment) {
-      const assignmentGrade = courseGradesAndSummary?.assignmentGrades?.find(
-        (grade) => grade.username === username,
-      );
+      const assignmentGrade =
+        teacherLedCourseGradesAndSummary?.assignmentGrades?.find(
+          (grade) => grade.username === username,
+        );
       row['Assignment (%)'] = assignmentGrade?.assignmentGrade ?? 0;
     }
 

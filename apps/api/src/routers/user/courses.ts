@@ -11,10 +11,11 @@ import {
   courseReviewSchema,
   courseSucceededExamSchema,
   courseUserChapterSchema,
+  courseWithMultiAttemptsExamGradesAndSummarySchema,
   courseWithSingleTrialExamsGradesAndSummarySchema,
+  examQuestionStatisticsSchema,
   minimalUserExamTimestampSchema,
   partialExamQuestionSchema,
-  singleTrialExamQuestionStatisticsSchema,
 } from '@blms/schemas';
 import {
   createCalculateCourseChapterSeats,
@@ -31,6 +32,8 @@ import {
   createGetExamInfo,
   createGetExamQuestions,
   createGetLatestExamResults,
+  createGetMultiAttemptsExamCourseGrades,
+  createGetMultiAttemptsExamQuestionStatistics,
   createGetPayment,
   createGetPayments,
   createGetProgress,
@@ -64,10 +67,11 @@ import type {
   CourseReview,
   CourseSucceededExam,
   CourseUserChapter,
+  CourseWithMultiAttemptsExamGradesAndSummary,
   CourseWithSingleTrialExamsGradesAndSummary,
+  ExamQuestionStatistics,
   MinimalUserExamTimestamp,
   PartialExamQuestion,
-  SingleTrialExamQuestionStatistics,
 } from '@blms/types';
 import { z } from 'zod';
 import {
@@ -231,6 +235,23 @@ const getGetTeacherLedCourseGradesProcedure = professorProcedure
     }),
   );
 
+const getMultiAttemptsExamCourseGradesProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      passingThreshold: z.number(),
+    }),
+  )
+  .output<Parser<CourseWithMultiAttemptsExamGradesAndSummary>>(
+    courseWithMultiAttemptsExamGradesAndSummarySchema,
+  )
+  .query(({ ctx, input }) =>
+    createGetMultiAttemptsExamCourseGrades(ctx.dependencies)({
+      courseId: input.courseId,
+      passingThreshold: input.passingThreshold,
+    }),
+  );
+
 const saveQuizAttemptProcedure = studentProcedure
   .input(
     z.object({
@@ -387,12 +408,23 @@ const getExamQuestionsProcedure = studentProcedure
 
 const getSingleTrialExamQuestionStatisticsProcedure = professorProcedure
   .input(z.object({ chapterId: z.string() }))
-  .output<Parser<SingleTrialExamQuestionStatistics[]>>(
-    singleTrialExamQuestionStatisticsSchema.array(),
+  .output<Parser<ExamQuestionStatistics[]>>(
+    examQuestionStatisticsSchema.array(),
   )
   .query(({ ctx, input }) =>
     createGetSingleTrialExamQuestionStatistics(ctx.dependencies)(
       input.chapterId,
+    ),
+  );
+
+const getMultiAttemptsExamQuestionStatisticsProcedure = professorProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output<Parser<ExamQuestionStatistics[]>>(
+    examQuestionStatisticsSchema.array(),
+  )
+  .query(({ ctx, input }) =>
+    createGetMultiAttemptsExamQuestionStatistics(ctx.dependencies)(
+      input.courseId,
     ),
   );
 
@@ -605,9 +637,12 @@ export const userCoursesRouter = createTRPCRouter({
   getProgress: getProgressProcedure,
   getSingleTrialExamQuestionStatistics:
     getSingleTrialExamQuestionStatisticsProcedure,
+  getMultiAttemptsExamQuestionStatistics:
+    getMultiAttemptsExamQuestionStatisticsProcedure,
   getTeacherLedCourseDiplomaTimestamp:
     getTeacherLedCourseDiplomaTimestampProcedure,
   getTeacherLedCourseGrades: getGetTeacherLedCourseGradesProcedure,
+  getMultiAttemptExamCourseGrades: getMultiAttemptsExamCourseGradesProcedure,
   getUserChapter: getUserChapterProcedure,
   getUserDetailsByCertificateId: getUserDetailsByCertificateIdProcedure,
   saveCourseAssignmentGrade: saveCourseAssignmentGradeProcedure,

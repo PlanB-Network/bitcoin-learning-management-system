@@ -153,6 +153,18 @@ export interface DashGaugeProps
   showBackground?: boolean;
 }
 
+export interface SegmentedGaugeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof gaugeContainerVariants> {
+  value: number;
+  threshold1: number;
+  threshold2: number;
+  label: string;
+  variant?: GaugeVariant;
+  size?: 'm' | 'l';
+  showBackground?: boolean;
+}
+
 export interface CustomGaugeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof gaugeContainerVariants> {
@@ -353,6 +365,98 @@ const DashGauge = ({
   );
 };
 
+const SegmentedGauge = ({
+  className,
+  value,
+  threshold1,
+  threshold2,
+  label,
+  variant = 'green',
+  size = 'm',
+  showBackground = false,
+  ...props
+}: SegmentedGaugeProps) => {
+  const colorClasses = gaugeVariantStyles[variant];
+
+  const segment2Filled = value >= threshold1;
+  const segment3Filled = value >= threshold2;
+
+  const SEGMENT_ANGLE = 60;
+  const GAP_ANGLE = 1;
+
+  const createSegmentArc = (segmentIndex: number) => {
+    const startAngle = segmentIndex * SEGMENT_ANGLE + segmentIndex * GAP_ANGLE;
+    const endAngle = startAngle + SEGMENT_ANGLE - GAP_ANGLE;
+
+    const startRadians = (startAngle * Math.PI) / 180;
+    const endRadians = (endAngle * Math.PI) / 180;
+
+    const startX = SVG_CENTER_X - GAUGE_RADIUS * Math.cos(startRadians);
+    const startY = SVG_CENTER_Y - GAUGE_RADIUS * Math.sin(startRadians);
+    const endX = SVG_CENTER_X - GAUGE_RADIUS * Math.cos(endRadians);
+    const endY = SVG_CENTER_Y - GAUGE_RADIUS * Math.sin(endRadians);
+
+    return `M ${startX},${startY} A ${GAUGE_RADIUS},${GAUGE_RADIUS} 0 0 1 ${endX},${endY}`;
+  };
+
+  const segment1Arc = createSegmentArc(0);
+  const segment2Arc = createSegmentArc(1);
+  const segment3Arc = createSegmentArc(2);
+
+  return (
+    <GaugeContainer
+      className={className}
+      showBackground={showBackground}
+      size={size}
+      {...props}
+    >
+      <MobileLabel label={label} colorClasses={colorClasses} size={size} />
+
+      <div className={getSvgContainerClasses(size)}>
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: explanation */}
+        <svg viewBox={SVG_VIEWBOX} className="w-full">
+          <path
+            d={segment1Arc}
+            fill="none"
+            strokeWidth={GAUGE_STROKE_WIDTH}
+            className={cn(colorClasses.foreground)}
+          />
+
+          <path
+            d={segment2Arc}
+            fill="none"
+            strokeWidth={GAUGE_STROKE_WIDTH}
+            className={cn(
+              segment2Filled
+                ? colorClasses.foreground
+                : colorClasses.background,
+            )}
+          />
+
+          <path
+            d={segment3Arc}
+            fill="none"
+            strokeWidth={GAUGE_STROKE_WIDTH}
+            className={cn(
+              segment3Filled
+                ? colorClasses.foreground
+                : colorClasses.background,
+            )}
+          />
+        </svg>
+
+        <div className={cn(colorClasses.text, getTextContainerClasses(size))}>
+          <span className={getMainTextClasses(size)}>{value}</span>
+        </div>
+      </div>
+
+      <span className={cn(getLabelTextClasses(size), colorClasses.text)}>
+        {label}
+      </span>
+    </GaugeContainer>
+  );
+};
+
 const CustomGauge = ({
   className,
   value,
@@ -405,4 +509,4 @@ const CustomGauge = ({
   );
 };
 
-export { RadialGauge, DashGauge, CustomGauge };
+export { RadialGauge, DashGauge, SegmentedGauge, CustomGauge };
