@@ -1061,7 +1061,17 @@
       "callout_book_replay": "Je staat op het punt toegang tot de replayvideo van dit evenement te boeken.",
       "callout_purchase_physical": "Je staat op het punt om <highlight>fysieke toegang</highlight> tot dit evenement te kopen.",
       "callout_purchase_replay": "Je staat op het punt toegang tot de replayvideo van dit evenement te kopen.",
-      "date": "Datum"
+      "date": "Datum",
+      "description_free_physical": "Controleer alstublieft de verstrekte locatiegegevens. Zodra de boeking is bevestigd, ontvang je een bevestigingsticket en een QR-code die je kunt laten zien bij het evenement. ",
+      "description_online": "Controleer alsjeblieft de opgegeven datum en tijd van het evenement. Zodra het zover is, log je in op het platform om de livestream te volgen via de evenementpagina.",
+      "description_physical": "Controleer alsjeblieft de verstrekte locatiegegevens. Zodra de boeking is bevestigd, ontvang je een bevestigingsticket en een QR-code die je kunt tonen bij het evenement.\n\nDit ticket geeft je ook toegang tot de livestream en eventuele replayvideo.",
+      "download_ticket": "Download je ticket",
+      "language": "Gesproken taal",
+      "limitation": "Beperking",
+      "limitedSeats": "Plaatsen zijn beperkt. Annuleer je reservering als je niet kunt komen.",
+      "max_capacity": "Maximale capaciteit van",
+      "payment_successful": "Reservering succesvol.",
+      "time": "Tijd"
     },
     "main": {
       "currentEvents": "Evenementen die nu plaatsvinden",
@@ -1074,6 +1084,687 @@
       "title": "Wil je jouw evenement toevoegen?"
     },
     "pageSubtitle": "Bottom-up adoptie versterkt door een sterk netwerk",
-    "pageTitle": "Op zoek naar een Bitcoin-evenement om bij te wonen?"
+    "pageTitle": "Op zoek naar een Bitcoin-evenement om bij te wonen?",
+    "tcDisclaimer": "Ik ga ermee akkoord dat mijn informatie gedeeld mag worden met organisatoren voor toegangsdoeleinden tot de locatie.",
+    "tcMustBeAccepted": "Je moet de algemene voorwaarden accepteren om verder te gaan"
+  },
+  "glossary": {
+    "creditsLoic": "<0>Credits</0>: Bitcoin Woordenboek geschreven door <1>Loïc Morel (Pandul)</1>, beschikbaar op deze <2>Github repository</2>.",
+    "notTranslated": "De data in de woordenlijst zijn nog niet vertaald.\nAls je wilt helpen, voel je vrij om bij te dragen op onze",
+    "pageTitle": "Bitcoin Woordenlijst",
+    "anotherWord": "Zoek naar een ander woord",
+    "definition": "Definitie",
+    "filterBar": "Vind hier het woord dat je nodig hebt",
+    "keepLooking": "Wil je blijven zoeken?",
+    "loadMoreWords": "Laad meer woorden",
+    "needHelp": "Heb je hulp nodig bij het definiëren van een technisch woord?",
+    "placeHolder": "Wat is dit?",
+    "randomSearch": "Willekeurig zoeken",
+    "relatedWords": "Gerelateerde woorden:",
+    "term": "Term"
+  },
+  "filters": {
+    "categories": "Categorieën",
+    "levels": "Niveaus",
+    "resources": "Bronnen",
+    "topics": "Onderwerpen"
+  },
+  "footer": {
+    "followUsOn": "Volg ons op"
+  },
+  "home": {
+    "blogSection": {
+      "noBlogsAvailable": "Geen blogs beschikbaar.",
+      "blogTitle": "Wat is er nieuw bij Plan ₿ Network",
+      "description": "We blijven het platform, de inhoud en het netwerk verbeteren - neem eens een kijkje!",
+      "noDateAvailable": "Geen datum beschikbaar",
+      "seeAll": "Zie alle"
+    },
+    "courseSection": {
+      "checkAllCourses": "Bekijken alle cursussen",
+      "upcomingCourseDescription": "Ontdek de nieuwste cursussen die op het platform zijn uitgebracht. Leren stopt nooit!",
+      "upcomingCourseTitle": "Aankomende & nieuwe cursussen"
+    },
+    "languageSection": {
+      "content1": "Bij Plan ₿ geloven we dat Bitcoin een internationale revolutie is die iedereen aangaat. Om miljarden mensen in hun kracht te zetten, ontwerpen we dit platform om meertalig en toegankelijk te zijn voor iedereen. Het platform ondersteunt momenteel {{nb}} talen, en er worden elke maand meer toegevoegd. Om dit te bereiken, gebruiken we een mix van AI en de passie van Bitcoiners over de hele wereld. Ook jij kunt beginnen met het opzetten van je eigen lokale netwerk in je land!",
+      "availableLanguages": "Beschikbare talen",
+      "availableLanguagesVariation": "Beschikbare talen: ",
+      "link": "Help ons de academie te vertalen",
+      "subtitle": "Alles wordt vertaald naar lokale talen!",
+      "title": "Hier geen taalbarrière."
+    },
+    "tutorialSection": {
+      "content1": "Bitcoin evolueert voortdurend door de opkomst van nieuwe spelers, oplossingen, protocollen en technologische doorbraken. Het kan daarom een uitdaging zijn om een nauwkeurige en actuele database van kwalitatief sterke tutorials te onderhouden. Hier bij Plan ₿ hebben we precies dat bereikt. Of je nu een beginner of een gevorderde gebruiker bent, je kunt honderden tutorials doorzoeken om onze industrie te verkennen op basis van jouw behoeften.",
+      "link": "Bekijk alle tutorials",
+      "link2": "Bekijk alle bronnen",
+      "subtitle1": "Bitcoin-educatie eenvoudig gemaakt.",
+      "title": "Centraliseer kennis om het beter te verspreiden"
+    },
+    "eventSection": {
+      "eventTitle": "Een wereldwijd netwerk van Bitcoin-opleiders",
+      "checkEvents": "Bekijk alle evenementen",
+      "hottestEvent": "Populairste bitcoin evenement"
+    },
+    "patreonSection": {
+      "title": "Laten we samen Bitcoin-educatie verbeteren!",
+      "content": "Het Plan ₿ Network is trots om wereldwijd samen te werken met veel bitcoin-bedrijven om de best mogelijke educatieve bronnen aan te bieden!"
+    },
+    "header": {
+      "content": "Plan ₿ Network streeft ernaar om wereldwijd de beste tools en educatieve content te bieden om mensen in staat te stellen om hun soevereiniteit terug te winnen. Van individuen tot communities, we zijn hier om je te helpen op je Bitcoin-reis.",
+      "forEducators": "Voor studenten en docenten",
+      "globalNetwork": "Een wereldwijd Bitcoin-netwerk",
+      "welcome": "Welkom bij Plan ₿ Network"
+    },
+    "aboutUsSection": {
+      "bitcoinFocusContent": "We verkennen de Bitcoin-revolutie van de basislaag tot de omliggende peer-to-peer communicatie.",
+      "bitcoinFocusTitle": "Bitcoin focus",
+      "communityContent": "Wij zijn in de eerste plaats een gemeenschap van enthousiastelingen die elkaar helpen op de Bitcoin-reis",
+      "communityTitle": "Community",
+      "content": "Plan ₿ Network ondersteunt Bitcoin-educatie wereldwijd. Het vertegenwoordigt een samenwerking van gepassioneerde Bitcoin-bedrijven die zich richten op onderwijs, open-source software, peer-to-peer netwerken en het opbouwen van een community. Samen hebben ze dit initiatief gelanceerd om het Bitcoin-ecosysteem te voorzien van de essentiële tools voor groei.",
+      "openSourceContent": "We bevorderen de vrije stroom van kennis en ondersteunen open-source oplossingen",
+      "openSourceTitle": "Open source",
+      "privacyContent": "Wij geloven dat privacy een van de meest fundamentele mensenrechten is die essentieel is voor vooruitgang",
+      "privacyTitle": "Privacy",
+      "subtitle": "Een beetje over ons",
+      "title": "Wie zijn wij?"
+    },
+    "wallOfLoveSection": {
+      "subtitle": "Wat Bitcoiners over ons zeggen",
+      "title": "Muur van liefde"
+    }
+  },
+  "lectures": {
+    "lecturePartCourse": "De herhaling van deze les maakt deel uit van de cursus <0>{{courseTitle}}</0>.\nDuik in de volledige cursus om het hele concept te beheersen en je volledige potentieel te benutten!",
+    "buyVideoToUnlock": "Koop de video om deze te ontgrendelen",
+    "checkFullCourse": "Bekijk de volledige cursus",
+    "pageTitle": "Herhalingen van de lessen",
+    "partCourse": "Deze les maakt deel uit van de cursus:",
+    "watchLecture": "Bekijk de herhaling van de les"
+  },
+  "labs": {
+    "description1": "Plan ₿ Labs zijn studiegroepen die zijn opgezet om studenten regelmatige, praktische en interactieve lessen te bieden. Via deze studiegroepen gaan studenten en professoren met elkaar in gesprek, bespreken ze het nieuwste onderzoek, lossen ze praktijkgerichte vraagstukken op en passen ze theoretische concepten toe.",
+    "coordinatedBy": "Dit lab wordt gecoördineerd door",
+    "description2": "Doe mee met het Lab dat aansluit bij jouw studierichting en verbeter je leerervaring!",
+    "planBLabs": "Plan ₿ Labs",
+    "presentation": {
+      "link": "Ontdek Plan ₿ Labs",
+      "subtitle": "Doe mee aan een lab om te leren, te discussiëren en te groeien!",
+      "title": "Verbeter je Bitcoin vaardigheden!"
+    },
+    "title": "Praktische en interactieve lessen voor continu leren"
+  },
+  "imagesAlt": {
+    "bookCover": "een boekomslag",
+    "contributorHeart": "een hart voor aardige bijdrager",
+    "orangePill": "een oranje pil",
+    "printedCircuits": "gedrukte schakeling",
+    "rabbit404": "een konijn dat met een zaklamp op een 404-bord schijnt",
+    "sthRepresentingCompany": "iets dat het bedrijf vertegenwoordigt",
+    "underConstructionImage": "Illustratie van verschillende konijnen die op een bouwplaats werken"
+  },
+  "projects": {
+    "related": "Gerelateerd",
+    "relatedEvents": "Gerelateerde aankomende evenementen",
+    "languages": "Talen",
+    "networkStrength": "De kracht van een netwerk ligt in zijn leden",
+    "noRelatedEvents": "Er zijn momenteel geen aankomende evenementen gerelateerd aan deze docent.",
+    "otherCommunities": "Verken Plan ₿ Communities",
+    "pageTitle": "Bitcoin Projecten"
+  },
+  "proofreading": {
+    "description": "De oorspronkelijke tekst is vertaald door AI, maar het heeft ook menselijke controle nodig om nauwkeurigheid van het taalgebruik te garanderen.",
+    "completed": "Proeflezen voltooid",
+    "descriptionOriginalLanguage": "Zelfs als deze inhoud in de oorspronkelijke taal is, is menselijke beoordeling nodig om de nauwkeurigheid te garanderen.",
+    "inProgress": "Proeflezen in uitvoering",
+    "reviewEarn": "Beoordeel en verdien sats",
+    "rewardsText": "*Beloningen kunnen variëren op basis van de $ wisselkoers",
+    "status": "Proefleesstatus",
+    "thanks": "Grote dank gaat uit naar onze geweldige proeflezers!"
+  },
+  "menu": {
+    "miningCourseDescription": "Begrijp de processen, hulpmiddelen en industrie achter het minen van Bitcoin.",
+    "bCertDescription": "Doe de ₿-CERT test om je Bitcoin niveau te beoordelen",
+    "betDescription": "Verzameling van inhoud die je kunt gebruiken voor je educatieve projecten",
+    "bitcoinDescription": "Leer Bitcoin van de basisprincipes tot geavanceerde toepassingen.",
+    "businessDescription": "Ontdek hoe Bitcoin wordt gebruikt in handel en commercie.",
+    "channelsDescription": "Bekijk onze exclusieve selectie van Youtube-kanalen om meer te leren over Bitcoin",
+    "chooseLanguage": "Kies een taal",
+    "conferencesDescription": "Verzameling van herhalingen van Bitcoin conferenties sinds het Genesis Block",
+    "glossaryDescription": "Begrijp de taal van Bitcoin",
+    "lecturesDescription": "Bekijk opgenomen lessen van Bitcoin-experts opnieuw",
+    "libraryDescription": "Ontdek een verscheidenheid aan boeken om je kennis te verbeteren",
+    "login": "Inloggen",
+    "moviesDescription": "Ontdek boeiende verhalen en deep-dives over de evolutie en impact van Bitcoin",
+    "planBLabsDescription": "Doe mee aan een studiegroep om door te gaan met leren over Lightning, Mining en Privacy",
+    "securityDescription": "Beheers de technieken om jouw Bitcoin-bezittingen te beschermen.",
+    "newsletterDescription": "Verzameling van inhoud die je kunt gebruiken voor je educatieve projecten",
+    "nodeNetworkDescription": "Word lid van het wereldwijde Plan ₿ network community",
+    "podcastsDescription": "Verken het bitcoin-ecosysteem via podcasts",
+    "projectsDescription": "Leer over de bedrijven en projecten die bijdragen aan de verbetering van Bitcoin en het vergroten van de adoptie ervan",
+    "protocolDescription": "Ontdek de kernregels die het Bitcoin-netwerk aandrijven.",
+    "publicDescription": "Verken openbare communicatie artikelen",
+    "socialStudiesDescription": "Bestudeer de impact van Bitcoin op de samenleving.",
+    "teachersDescription": "Leer de docenten van onze academie kennen"
+  },
+  "notifications": {
+    "calendar_48h_online_event": "Het evenement {{eventName}} komt er snel aan! Het is gepland op {{date}}, vanaf {{formattedTime}}. ",
+    "dashboardDescription": "Dit zijn je nieuwste meldingen. Nadat je ze hebt gezien worden ze na een maand automatisch verwijderd.",
+    "upcomingEvent": "Aankomend Evenement",
+    "calendar_24h_in_person_event": "{{eventName}} vindt morgen plaats, vanaf {{formattedTime}} op {{addressLine}}. Vergeet niet je ticket te downloaden zodat je aanwezig kunt zijn!",
+    "bCertResults": "Je ₿-CERT resultaten zijn bekend!",
+    "blogNotTranslated": "Sorry, deze nieuwe blogpost is nog niet vertaald in je geselecteerde taal.",
+    "bookYourSeat": "Reserveer een plek als je persoonlijk wilt deelnemen!",
+    "calendar_5m": "De les begint over 5 minuten! Klik hier om nu deel te nemen.",
+    "calendar_5m_online_event": "Het is tijd! {{eventName}} begint over 5 minuten. Klik hier om nu deel te nemen!",
+    "calendar_24h": "De volgende les zal morgen zijn vanaf {{ formattedTime }}.",
+    "daysAgo": "{{days}} dagen geleden",
+    "hoursAgo": "{{hours}} uur geleden",
+    "markAsRead": "Markeer als gelezen",
+    "monthsAgo": "{{months}} maand geleden",
+    "noRecentNotifications": "Je hebt op dit moment geen recente meldingen.",
+    "notifications": "Notificaties",
+    "noUnreadNotifications": "Geen ongelezen notificaties meer",
+    "planBNews": "Plan ₿ Nieuws",
+    "read": "Lees",
+    "results": "Je ₿-CERT resultaten zijn bekend!",
+    "select": "Selecteer",
+    "selectAll": "Selecteer alles",
+    "stayUpToDate": "Blijf up-to-date!",
+    "today": "Vandaag",
+    "unread": "Ongelezen",
+    "weeksAgo": "{{weeks}} week geleden",
+    "yearsAgo": "{{years}} jaar geleden",
+    "yesterday": "Gisteren"
+  },
+  "nodeNetwork": {
+    "description1": "Wij geloven dat onderwijs niet alleen online moet plaatsvinden, maar ook in fysieke ruimtes. Om dit te bereiken, beheert Plan ₿ Network een netwerk van hubs over de hele wereld om denkers, ondernemers en docenten te verwelkomen die de vooruitgang van Bitcoin en vrijheidstechnologieën bevorderen.",
+    "descriptionExtend": "Onze eerste stap is communities met fysieke ruimtes, die we de \"full nodes\" van ons netwerk noemen, uitnodigen om zich bij ons aan te sluiten. In de toekomst, naarmate ons netwerk sterker wordt, zullen we deze uitnodiging uitbreiden naar meer initiatieven wereldwijd. Deel je onze waarden? Neem dan contact op met onze vertegenwoordigers om deel uit te maken van ons netwerk en mee te bouwen aan de best mogelijke Bitcoin-educatie.",
+    "pageSubtitle": "Wil je de wereld orange-pillen? Sluit je aan bij Plan ₿ Network.",
+    "pageTitle": "Verken Plan ₿ Node Network"
+  },
+  "library": {
+    "pageTitle": "Bitcoin Bibliotheek"
+  },
+  "movies": {
+    "goToMovie": "Ga naar film",
+    "pageTitle": "Films & Documentaires",
+    "watchTrailer": "Bekijk de trailer"
+  },
+  "notFound": {
+    "here": "Hier",
+    "pageSubtitle": "Het lijkt erop dat iemand te diep in het konijnenhol is gevallen en verdwaald is geraakt. Om terug te keren naar de oppervlakte, klik",
+    "pageTitle": "Oeps."
+  },
+  "notification": {
+    "types": {
+      "assignment": "Opdracht",
+      "calendar": "Kalenderwaarschuwing",
+      "celebration": "Viering",
+      "general": "Algemene informatie",
+      "warning": "Waarschuwing"
+    }
+  },
+  "resources": {
+    "channels": {
+      "noYoutubeChannels": "Er zijn momenteel geen Youtube-kanalen voor de geselecteerde taal.",
+      "title": "Youtube Kanalen"
+    },
+    "github": "Alle gegevens worden beheerd via een enkele open-source <0>Github</0> repository. Voel je vrij om bij te dragen en eventuele ontbrekende inhoud toe te voegen.",
+    "lectures": {
+      "title": "Herhalingen van de lessen",
+      "noLectures": "Er zijn momenteel geen herhalingen van lessen beschikbaar voor de geselecteerde taal."
+    },
+    "movies": {
+      "title": "Films & Documentaires",
+      "noMovies": "Er zijn momenteel geen films of documentaires beschikbaar voor de geselecteerde taal."
+    },
+    "articles": {
+      "title": "Artikelen"
+    },
+    "bet": {
+      "title": "Educatieve Toolkit"
+    },
+    "books": {
+      "author": "Auteur: ",
+      "title": "Bibliotheek"
+    },
+    "conferences": {
+      "title": "Conferentie herhalingen"
+    },
+    "glossary": {
+      "title": "Woordenlijst"
+    },
+    "newsletter": {
+      "check": "Bekijk de nieuwsbrief"
+    },
+    "newsletters": {
+      "level": "Niveau :",
+      "noNewsletters": "Er zijn momenteel geen nieuwsbrieven beschikbaar voor de geselecteerde taal.",
+      "author": "Auteur : ",
+      "subtitle": "<0>Andere nieuwsbrieven</0> die je misschien interessant vindt",
+      "title": "Nieuwsbrieven"
+    },
+    "pageDescription": "Bitcoin proberen te begrijpen is als het verkennen van een doolhof dat steeds groter wordt. Om je te helpen op je reis, hebben we een breed scala aan bronnen verzameld, waaronder boeken, podcasts, video's en herhalingen van conferenties. Dit portaal verzamelt al die informatie in één Github-repository, zodat je een beter inzicht krijgt in het Bitcoin-ecosysteem.",
+    "pageSubtitle": "Centraliseer kennis om het beter te verspreiden",
+    "pageSubtitleBooks": "<0>Andere boeken</0> die je interessant vindt",
+    "pageSubtitleChannels": "<0>Andere Youtube-kanalen</0> die je misschien interessant vindt",
+    "pageSubtitleLectures": "<0>Andere hoorcollege herhalingen</0> die je misschien interessant vindt",
+    "pageSubtitlePodcast": "<0>Andere podcasts</0> die je misschien interessant vindt",
+    "pageTitle": "Welkom bij het Bronnenportaal",
+    "podcasts": {
+      "noPodcasts": "Er zijn momenteel geen podcasts beschikbaar voor de geselecteerde taal.",
+      "title": "Podcasts"
+    },
+    "projects": {
+      "title": "Projecten"
+    },
+    "searchFilterName": "Zoeken op naam",
+    "toggleFreeOnly": "Alleen gratis",
+    "toggleLabelAll": "Alle",
+    "toggleLabelSelectedLanguage": "Geselecteerde taal"
+  },
+  "payment": {
+    "haveReductionCode": "Heb je een kortingscode?",
+    "insertReductionCode": "Voer je kortingscode in",
+    "payByCard": "Betaal met kaart",
+    "payWithBitcoin": "Betaal met Bitcoin",
+    "taxesMayApply": "Belastingen kunnen van toepassing zijn bij het afrekenen",
+    "terms": "Bekijk onze <0>algemene voorwaarden</0> voor meer informatie over terugbetalingen",
+    "total": "Totaal"
+  },
+  "placeholders": {
+    "selectTimeZone": "Selecteer tijdzone"
+  },
+  "podcast": {
+    "check": "Bekijk de podcast"
+  },
+  "podcasts": {
+    "pageTitle": "Bitcoin Podcasts"
+  },
+  "professors": {
+    "navigationTitles": {
+      "all": "Alle",
+      "lecturers": "Docenten",
+      "teachers": "Docenten",
+      "tutorialCreators": "Tutorial makers"
+    },
+    "pageSubtitle": "Al onze professoren zijn vrijwilligers en gepassioneerde Bitcoiners. Je kunt hen een donatie sturen om je waardering te tonen.",
+    "pageTitle": "Professoren",
+    "tips": {
+      "authorSupport": "Steun de auteur met een fooi",
+      "noTipsYet": "Deze professor accepteert momenteel geen donaties.",
+      "thanks": "Bedankt voor je steun aan het werk van {{name}}!",
+      "thanksNoName": "Bedankt dat je mijn werk steunt!"
+    }
+  },
+  "publicCommunication": {
+    "blogCategories": {
+      "all": "Alle",
+      "content": "Inhoud",
+      "feature": "Kenmerk",
+      "network": "Netwerk"
+    },
+    "blogPageStrings": {
+      "blogListButtonText": "Lees artikel",
+      "blogSidebarTitle": "Vorige {{category}} Berichten",
+      "blogSidebarTitleForAll": "Vorige berichten",
+      "errorMessageNotFound": "Blog niet gevonden.",
+      "featuredArticleTitleText": "Nieuwst gepubliceerde artikel",
+      "filterText": "Filter op onderwerp :",
+      "noArticlesText": "Er zijn op dit moment geen blogs.",
+      "pastArticleSubtitleText": "Eerdere artikelen"
+    },
+    "blogPost": "Blogs & Nieuws",
+    "description": "Plan ₿ Network is trots om open-source normen en transparantie te handhaven gedurende zijn reis",
+    "goBackButtons": {
+      "simpleGoBack": "Terug naar alle artikelen"
+    },
+    "legal": "Juridische informatie",
+    "legalSections": {
+      "contact": "Contact",
+      "legalNotice": "Juridische kennisgeving",
+      "privacyPolicy": "Privacybeleid",
+      "termsOfSale": "Verkoopvoorwaarden"
+    },
+    "title": "Openbare communicatie"
+  },
+  "search": {
+    "all": "Alle",
+    "book": "Boek",
+    "books": "Boeken",
+    "categories": "Categorieën",
+    "conference": "Conferentie",
+    "conference_replay": "Conferentie herhaling",
+    "resultError": "Er is iets misgegaan. Probeer het opnieuw.",
+    "startSearch": "Begin je zoekopdracht om hier de resultaten te bekijken",
+    "conference_replays": "Conferentie herhalingen",
+    "course": "Cursus",
+    "course_chapter": "Cursushoofdstuk",
+    "course_part": "Cursusdeel",
+    "courses": "Cursussen",
+    "event": "Evenement",
+    "events": "Evenementen",
+    "explorer": {
+      "subtitle": "Waar ben je naar op zoek?",
+      "title": "Zoekportaal"
+    },
+    "filterByType": "Filter op type",
+    "glossary_word": "Begrip",
+    "glossary_words": "Begrippen",
+    "languageSelected": "Geselecteerde taal: {{language}}",
+    "lecture_replay": "Herhaling van de les",
+    "lecture_replays": "Herhalingen van de lessen",
+    "loadMoreResults": "Bekijk meer resultaten",
+    "newsletter": "Nieuwsbrief",
+    "newsletters": "Nieuwsbrieven",
+    "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "professor": "Professor",
+    "professors": "Professoren",
+    "project": "Project",
+    "projects": "Projecten",
+    "resultEmpty": "Oeps! We konden niets vinden dat overeenkomt met je zoekopdracht. Controleer de spelling, probeer andere trefwoorden, of selecteer een andere categorie.",
+    "resultInfo": "{{count}} resultaten gevonden in {{time}}ms",
+    "results": "Resultaten",
+    "resultsRemaining": "{{count}} resterende resultaten",
+    "search": "Zoeken",
+    "searchResult": "Zoekresultaten",
+    "tutorial": "Tutorial",
+    "tutorials": "Tutorials",
+    "youtube_channel": "Youtube kanaal",
+    "youtube_channels": "Youtube kanalen"
+  },
+  "settings": {
+    "changeDisplayName": "Weergavenaam wijzigen",
+    "changeEmail": "E-mail wijzigen",
+    "changePassword": "Wachtwoord wijzigen",
+    "changeProfilePicture": "Profielfoto wijzigen"
+  },
+  "tutorials": {
+    "approvedByCreator": "Goedgekeurd door de maker",
+    "backTutorials": "Terug naar alle tutorials",
+    "exchange": {
+      "description": "Exchanges vormen een van de in- en uitgangen tussen traditionele valuta (euro, dollars) en de wereld van Bitcoin. Exchanges kunnen gereguleerd zijn en voldoen aan KYC (Know Your Customer), of juist peer-to-peer en anoniem functioneren. Elke exchange biedt verschillende functies, kostenstructuren, liquiditeit en klantenservice. Elke bitcoiner zal een andere exchange gebruiken afhankelijk van zijn of haar behoeften en overtuigingen.",
+      "shortDescription": "Bitcoin koop-verkoop oplossingen, KYC en niet-KYC",
+      "title": "Exchange"
+    },
+    "hasBeenProofreadBy": "Deze tutorial is gecontroleerd door",
+    "hasNotBeenProofread": "Deze tutorial is nog niet nagelezen",
+    "mining": {
+      "description": "De mining-industrie is een complex onderwerp vol diepe rabbit holes. Hier begeleiden we je op je ontdekkingsreis met behulp van zowel hardware als software, van het ombouwen van een S9 tot huisverwarming, tot proberen de loterij te winnen met een Nerd miner.",
+      "shortDescription": "Bitcoin mining oplossingen",
+      "title": "Mining"
+    },
+    "business": {
+      "description": "Wil je Bitcoin integreren in je bedrijf? In deze categorie vind je alle tutorials die speciaal zijn ontworpen voor professionals. Of je nu een point-of-sale systeem wilt opzetten om eenvoudig Bitcoin-betalingen te accepteren, of bitcoins wilt toevoegen en beheren binnen je bedrijfsreserves, hier vind je alle essentiële technische en praktische informatie.",
+      "shortDescription": "Bitcoin-betalingen accepteren en beheren in je bedrijfsreserves",
+      "title": "Zakelijk"
+    },
+    "computer-security": {
+      "description": "Computerbeveiliging is essentieel voor elke Bitcoiner. In deze categorie vind je tutorials over onmisbare tools en algemene werkwijzen om je digitale omgeving te beschermen. Besturingssystemen, veilige browsers, wachtwoordmanagers, authenticatiesystemen, VPN's en versleutelde communicatiemiddelen, alle bronnen die hier worden gepresenteerd zijn bedoeld om jouw veiligheid en privacy te versterken.",
+      "shortDescription": "Essentiële hulpmiddelen om je digitale beveiliging en privacy te beschermen",
+      "title": "Computerbeveiliging"
+    },
+    "contribution": {
+      "description": "Wil je bijdragen aan het open-source platform van Plan ₿ Network? In deze categorie leer je hoe je een nieuwe tutorial schrijft en publiceert, content beoordeelt of proefleest, of nieuwe nuttige bronnen voor de community kunt toevoegen. Deze tutorials geven je de kans om deel te nemen aan Bitcoin-educatie en onze gedeelde kennisbasis te verrijken.",
+      "shortDescription": "Draag bij aan het Plan ₿ Network open-source platform",
+      "title": "Bijdrage"
+    },
+    "details": {
+      "author": "Auteur:",
+      "didHelp": "Heeft dit geholpen?",
+      "ratingSuccess": "Bedankt voor je beoordeling!",
+      "source": "Originele bron:",
+      "tutorialName": "Naam van de tutorial",
+      "writtenBy": "Deze tutorial is geschreven door:"
+    },
+    "explorer": {
+      "description": "Al deze tutorials zijn geschreven door gepassioneerde en toegewijde bitcoiners die bitcoin-educatie wereldwijd willen verspreiden. Vergeet niet om ze te liken, te beoordelen en ze te belonen met wat sats!",
+      "didYouKnow": "Wist je dat?",
+      "exploreAllTutorials": "Verken alle tutorials"
+    },
+    "node": {
+      "description": "Nodes zijn als je persoonlijke servers. In Bitcoin is het de software die je in staat stelt om het netwerk te draaien, transacties te verzamelen, de regels te verifiëren en écht soeverein te zijn. Binnen ons ecosysteem bestaan er verschillende nodes, van Bitcoin Core, tot Lightning-implementaties, RGB, of andere meer geavanceerde privacy-oplossingen.",
+      "shortDescription": "Oplossingen om een bitcoin-node te draaien en je aan te sluiten op het netwerk",
+      "title": "Node"
+    },
+    "subCategories": {
+      "others": "Andere",
+      "point-of-sale": "Point-of-sale",
+      "analysis": "Analyse",
+      "authentication": "Authenticatie",
+      "backup": "Back-up",
+      "bitcoin": "Bitcoin",
+      "centralized": "Gecentraliseerd",
+      "communication": "Communicatie",
+      "content": "Content",
+      "data": "Gegevens",
+      "desktop": "Desktop",
+      "hardware": "Hardware",
+      "lightning-network": "Lightning network",
+      "mobile": "Mobiel",
+      "on-chain": "On-chain",
+      "operating system": "Besturingssysteem",
+      "peer-to-peer": "Peer-to-peer",
+      "pool": "Pool",
+      "resource": "Bron"
+    },
+    "wallet": {
+      "description": "Een Bitcoin-wallet is als je sleutelbos. Het stelt je in staat om bitcoin te versturen en te ontvangen. Er zijn veel verschillende soorten wallets, elk met hun eigen gebruikstoepassingen, functies, kosten en gebruikerservaring. Elke Bitcoiner zal een ander type apparaat afhankelijk van zijn of haar behoeften, noodzaak en ervaring.",
+      "shortDescription": "Beveiligingsoplossingen en het gebruik van jouw bitcoins",
+      "title": "Wallet"
+    },
+    "pageDescription": "Bitcoin is een brede industrie die elke dag blijft groeien. Om je te helpen bij het verkennen ervan, hebben we een groot aantal tutorials verzameld en samengesteld. Ze beschrijven uiteenlopende oplossingen in alle domeinen gerelateerd aan Bitcoin.",
+    "pageSubtitle": "Ontgrendel de mysteries van Bitcoin door zijn uitgestrekte ecosysteem te verkennen",
+    "pageTitle": "Ontdek onze tutorials",
+    "privacy": {
+      "description": "Privacy is een fundamenteel recht. Hoewel we streven naar een wereld waar privacy de standaard is, is dit helaas niet de realiteit waarin we leven. We proberen je de beste praktijken uit te leggen, te begeleiden met tutorials en te helpen een meer soeverein pad te bewandelen als het gaat om je data.",
+      "shortDescription": "Tools voor back-ups en het behoud van privacy",
+      "title": "Privacy"
+    },
+    "writtenBy": "Deze tutorial is geschreven door"
+  },
+  "underConstruction": {
+    "p1": "Een konijn is in een gat gevallen. Door dit onverwachte avontuur is deze pagina momenteel nog in aanbouw. Onze excuses voor het ongemak. Ons team is druk bezig om deze pagina af te maken. Wil je meehelpen, aarzel dan niet om hier te klikken:",
+    "github": "GitHub",
+    "itemNotFound": "{{item}} niet gevonden",
+    "itemNotFoundOrTranslated": "{{item}} niet gevonden of niet vertaald in jouw taal",
+    "p2": "en overweeg om je aan te sluiten bij onze community!",
+    "pageTitle": "Oeps."
+  },
+  "words": {
+    "channels": "Kanalen",
+    "description": "Beschrijving",
+    "finish": "Afronden",
+    "lectures": "Lessen",
+    "content": "Content",
+    "level": {
+      "expert": "Expert",
+      "intermediate": "Gemiddeld",
+      "advanced": "Gevorderd",
+      "beginner": "Beginner",
+      "beginnerFriendly": "Beginnervriendelijk",
+      "developer": "Ontwikkelaar",
+      "level": "Niveau",
+      "levels": "Niveaus",
+      "wizard": "Expert"
+    },
+    "newsletter": "Nieuwsbrief",
+    "password": "Wachtwoord",
+    "public": "Externe communicatie",
+    "save": "Opslaan",
+    "socialStudies": "Sociale wetenschappen",
+    "timeZone": "Tijdzone",
+    "view": "Bekijken",
+    "about": "Over",
+    "about-us": "Over Ons",
+    "abstract": "Samenvatting",
+    "academy": "Academie",
+    "access": "Toegang",
+    "action": "Actie",
+    "admin": "Beheerder",
+    "admins": "Beheerders",
+    "advanced": "Geavanceerd",
+    "all": "Alle",
+    "amount": "Bedrag",
+    "author": "Auteur",
+    "back": "Terug",
+    "bCert": "₿-CERT",
+    "beginner": "Beginner",
+    "billing": "Facturatie",
+    "bitcoin": "Bitcoin",
+    "book": "Boek",
+    "booked": "Geboekt",
+    "bookings": "Reserveringen",
+    "calendar": "Kalender",
+    "cancel": "Annuleren",
+    "careerPortal": "Carrièreportaal",
+    "category": "Categorie",
+    "channel": "Kanaal",
+    "business": "Zakelijk",
+    "chapter": "Hoofdstuk",
+    "chapters": "Hoofdstukken",
+    "close": "Sluiten",
+    "communities": "Communities",
+    "company": "Bedrijf",
+    "conference": "Conferentie",
+    "congrats": "Gefeliciteerd!",
+    "continue": "Doorgaan",
+    "country": "Land",
+    "course": "Cursus",
+    "courseId": "Cursus ID",
+    "courses": "Cursussen",
+    "credentials": "Certificaten",
+    "credits": "Credits",
+    "dashboard": "Dashboard",
+    "date": "Datum",
+    "day": "Dag",
+    "delete": "Verwijderen",
+    "details": "Details",
+    "diploma": "Diploma",
+    "dislikes": "Vind-ik-niet-leuks",
+    "displayName": "Weergavenaam",
+    "download": "Download",
+    "duration": "Duur",
+    "edit": "Bewerken",
+    "email": "E-mail",
+    "events": "Evenementen",
+    "exam": "Examen",
+    "failed": "Mislukt",
+    "filter": "Filter",
+    "free": "Gratis",
+    "github": "Github",
+    "glossary": "Woordenlijst",
+    "goal": "Doel",
+    "grade": "Cijfer",
+    "home": "Home",
+    "hours": "uren",
+    "hybrid": "Hybride",
+    "id": "ID",
+    "incomplete": "Onvolledig",
+    "inperson": "Fysiek",
+    "inReview": "Wordt beoordeeld",
+    "intermediate": "Gemiddeld",
+    "invoice": "Factuur",
+    "language": "Taal",
+    "lecture": "Les",
+    "complete": "Voltooi",
+    "library": "Bibliotheek",
+    "lightningInvoice": "Lightning factuur",
+    "likes": "Vind-ik-leuks",
+    "linkedin": "Linkedin",
+    "lnurlAuth": "LNURL Auth",
+    "location": "Locatie",
+    "members": " Leden",
+    "mentor": "Mentor",
+    "mining": "Mining",
+    "mode": "Modus",
+    "movie": "Film",
+    "name": "Naam",
+    "network": "Netwerk",
+    "next": "Volgende",
+    "no": "Nee",
+    "nodeNetwork": "Node Netwerk",
+    "notApplicable": "Niet van toepassing",
+    "on": "op",
+    "onChainAddress": "On-chain adres",
+    "online": "Online",
+    "ourStory": "Ons verhaal",
+    "overview": "Overzicht",
+    "paid": "Premium",
+    "part": "Deel",
+    "passed": "Geslaagd",
+    "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "previous": "Vorige",
+    "price": "Prijs",
+    "producer": "Producent",
+    "professor": "Professor",
+    "professors": "Professoren",
+    "progress": "Progressie",
+    "project": "Project",
+    "projects": "Projecten",
+    "protocol": "Protocol",
+    "publicationDate": "Publicatiedatum:",
+    "questions": "Vragen",
+    "ratings": "Beoordelingen",
+    "register": "Registreren",
+    "required": "Vereist",
+    "resources": "Resources",
+    "results": "Resultaten",
+    "role": "Rol",
+    "saving": "Opslaan...",
+    "search": "Zoeken",
+    "security": "Beveiliging",
+    "selectedAmount": "{{amount}} geselecteerd",
+    "skip": "Overslaan",
+    "start": "Start",
+    "startHere": "Start hier!",
+    "status": "Status",
+    "structure": "Structuur",
+    "student": "Student",
+    "students": "Studenten",
+    "submit": "Indienen",
+    "teacher": "Docent",
+    "telegram": "Telegram",
+    "termsAndConditions": "Algemene voorwaarden",
+    "ticket": "Ticket",
+    "tickets": "Tickets",
+    "time": "Tijd",
+    "title": "Titel",
+    "to": "naar",
+    "topics": "Onderwerpen",
+    "total": "Totaal",
+    "tutorial": "Tutorial",
+    "tutorials": "Tutorials",
+    "unavailable": "Niet beschikbaar",
+    "unified": "Verenigd",
+    "update": "Bijwerken",
+    "user": "Gebruiker",
+    "username": "Gebruikersnaam",
+    "users": "Gebruikers",
+    "video": "Video",
+    "viewMore": "Bekijk meer",
+    "wallets": "Wallets",
+    "weight": "Gewicht",
+    "yes": "Ja"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "AI Vertaling",
+      "language": "Taal",
+      "original": "Oorspronkelijke taal"
+    },
+    "player": {
+      "peertube": "Peertube",
+      "rumble": "Rumble",
+      "player": "Player",
+      "youtube": "Youtube"
+    }
+  },
+  "youtubeChannels": {
+    "pageTitle": "Youtube Kanalen",
+    "view": "Bekijk Youtube Kanaal",
+    "watchTrailer": "Bekijk de trailer"
   }
 }

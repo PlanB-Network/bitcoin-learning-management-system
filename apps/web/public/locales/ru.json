@@ -1259,192 +1259,192 @@
     "results": "Ваши результаты ₿-CERT опубликованы!",
     "select": "Выберите",
     "selectAll": "Выбрать все",
-    "stayUpToDate": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "stayUpToDate": "Будьте в курсе событий!",
+    "today": "Сегодня",
+    "unread": "Непрочитанное",
+    "upcomingEvent": "Предстоящее событие",
+    "weeksAgo": "{{weeks}} неделю{{с}} назад",
+    "yearsAgo": "{{years}} год{{с}} назад",
+    "yesterday": "Вчера"
   },
   "payment": {
-    "haveReductionCode": "",
-    "insertReductionCode": "",
-    "payByCard": "",
-    "payWithBitcoin": "",
-    "taxesMayApply": "",
+    "haveReductionCode": "У вас есть код снижения стоимости?",
+    "insertReductionCode": "Вставьте код снижения стоимости",
+    "payByCard": "Оплата картой",
+    "payWithBitcoin": "Оплата с помощью Биткойна",
+    "taxesMayApply": "Налоги могут взиматься при оформлении заказа",
     "terms": "Смотрите наши <0>общие условия</0> для получения информации о возврате",
     "total": "Всего"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Выберите часовой пояс"
   },
   "podcast": {
-    "check": ""
+    "check": "Проверьте подкаст"
   },
   "podcasts": {
     "pageTitle": "Подкасты о Биткойне"
   },
   "professors": {
     "navigationTitles": {
-      "all": "",
-      "lecturers": "",
-      "teachers": "",
-      "tutorialCreators": ""
+      "all": "Все",
+      "lecturers": "Лекции",
+      "teachers": "Преподаватели",
+      "tutorialCreators": "Создатели учебника"
     },
     "pageSubtitle": "Все наши профессора - добровольцы и страстные биткоинеры. Вы можете дать чаевые, чтобы сказать спасибо.",
     "pageTitle": "Профессора",
     "tips": {
-      "authorSupport": "",
+      "authorSupport": "Поддержите автора чаевыми",
       "noTipsYet": "В настоящее время этот профессор не принимает чаевые.",
       "thanks": "Спасибо за поддержку работы {{name}}!",
       "thanksNoName": "Спасибо за поддержку моей работы!"
     }
   },
   "projects": {
-    "languages": "",
-    "networkStrength": "",
-    "noRelatedEvents": "",
-    "otherCommunities": "",
-    "pageTitle": "",
-    "related": "",
-    "relatedEvents": ""
+    "languages": "Языки",
+    "networkStrength": "Сила сети заключается в ее членах",
+    "noRelatedEvents": "На данный момент нет никаких предстоящих событий, связанных с этим педагогом.",
+    "otherCommunities": "Изучите план ₿ Сообщества",
+    "pageTitle": "Биткойн-проекты",
+    "related": "Связанные",
+    "relatedEvents": "Ближайшие события"
   },
   "proofreading": {
-    "completed": "",
-    "description": "",
-    "descriptionOriginalLanguage": "",
-    "inProgress": "",
-    "reviewEarn": "",
-    "rewardsText": "",
-    "status": "",
-    "thanks": ""
+    "completed": "Вычитка завершена",
+    "description": "Оригинальный текст был переведен искусственным интеллектом, но для обеспечения точности перевода требуется человеческая проверка.",
+    "descriptionOriginalLanguage": "Даже если это содержимое на языке оригинала, оно нуждается в человеческом анализе для обеспечения точности языка.",
+    "inProgress": "Продолжается корректура",
+    "reviewEarn": "Просматривайте и получайте зачеты",
+    "rewardsText": "*Вознаграждения могут меняться в зависимости от курса доллара",
+    "status": "Состояние корректуры",
+    "thanks": "Большое спасибо нашим замечательным рецензентам!"
   },
   "publicCommunication": {
     "blogCategories": {
       "all": "Все",
-      "content": "",
-      "feature": "",
+      "content": "Контент",
+      "feature": "Характеристика",
       "network": "Сеть"
     },
     "blogPageStrings": {
-      "blogListButtonText": "",
-      "blogSidebarTitle": "",
-      "blogSidebarTitleForAll": "",
-      "errorMessageNotFound": "",
-      "featuredArticleTitleText": "",
-      "filterText": "",
-      "noArticlesText": "",
-      "pastArticleSubtitleText": ""
+      "blogListButtonText": "Читать статью",
+      "blogSidebarTitle": "Предыдущие {{category}} Посты",
+      "blogSidebarTitleForAll": "Предыдущие Посты",
+      "errorMessageNotFound": "Блог не найден.",
+      "featuredArticleTitleText": "Вышла последняя статья",
+      "filterText": "Фильтр по теме :",
+      "noArticlesText": "На данный момент в блоге нет записей.",
+      "pastArticleSubtitleText": "Прошлые статьи"
     },
-    "blogPost": "",
+    "blogPost": "Блоги и новости",
     "description": "В Сети Plan B мы используем стандарты открытого кода и поддерживаем прозрачность на нашем пути",
     "goBackButtons": {
       "simpleGoBack": "Назад ко всем статьям"
     },
-    "legal": "",
+    "legal": "Юридическая информация",
     "legalSections": {
       "contact": "Контакты",
-      "legalNotice": "",
-      "privacyPolicy": "",
-      "termsOfSale": ""
+      "legalNotice": "Юридическое уведомление",
+      "privacyPolicy": "Политика конфиденциальности",
+      "termsOfSale": "Условия продажи"
     },
     "title": "Публичное общение"
   },
   "resources": {
     "articles": {
-      "title": ""
+      "title": "Статьи"
     },
     "bet": {
-      "title": ""
+      "title": "Образовательный инструментарий"
     },
     "books": {
-      "author": "",
-      "title": ""
+      "author": "Автор: ",
+      "title": "Библиотека"
     },
     "channels": {
-      "noYoutubeChannels": "",
-      "title": ""
+      "noYoutubeChannels": "В настоящее время для выбранного языка нет каналов Youtube.",
+      "title": "Каналы Youtube"
     },
     "conferences": {
-      "title": ""
+      "title": "Повторы конференций"
     },
     "github": "Все эти данные управляются через один открытый репозиторий <0>Github</0>. Не стесняйтесь вносить свой вклад и добавлять любой отсутствующий контент.",
     "glossary": {
-      "title": ""
+      "title": "Глоссарий"
     },
     "lectures": {
-      "noLectures": "",
-      "title": ""
+      "noLectures": "В настоящее время для выбранного языка нет повторов лекций.",
+      "title": "Повторы лекций"
     },
     "movies": {
-      "noMovies": "",
-      "title": ""
+      "noMovies": "В настоящее время для выбранного языка нет фильмов или документальных фильмов.",
+      "title": "Фильмы и документальные фильмы"
     },
     "newsletter": {
-      "check": ""
+      "check": "Проверьте информационный бюллетень"
     },
     "newsletters": {
-      "author": "",
-      "level": "",
-      "noNewsletters": "",
-      "subtitle": "",
+      "author": "Автор : ",
+      "level": "Уровень :",
+      "noNewsletters": "В настоящее время для выбранного языка нет новостных рассылок.",
+      "subtitle": "<0>Другие информационные бюллетени</0>, которые могут вам понравиться",
       "title": "Новостные рассылки"
     },
     "pageDescription": "Попытка понять Биткойн сравнима с исследованием лабиринта, который продолжает расти. Чтобы помочь Вам в этом путешествии, мы собрали огромный массив ресурсов, включая книги, подкасты, видео и записи конференций. Этот портал собирает всю информацию в одном репозитории Github, чтобы помочь Вам лучше понять экосистему Биткойна.",
     "pageSubtitle": "Централизуйте знания для их лучшего распределения",
-    "pageSubtitleBooks": "",
-    "pageSubtitleChannels": "",
-    "pageSubtitleLectures": "",
-    "pageSubtitlePodcast": "",
+    "pageSubtitleBooks": "<0>Другие книги</0>, которые могут вам понравиться",
+    "pageSubtitleChannels": "<0>Другие каналы Youtube</0>, которые могут вам понравиться",
+    "pageSubtitleLectures": "<0>Другие записи лекций</0>, которые могут вам понравиться",
+    "pageSubtitlePodcast": "<0>Другие подкасты</0>, которые могут вам понравиться",
     "pageTitle": "Добро пожаловать в Портал ресурсов",
     "podcasts": {
-      "noPodcasts": "",
+      "noPodcasts": "В настоящее время нет подкастов для выбранного языка.",
       "title": "Подкасты"
     },
     "projects": {
-      "title": ""
+      "title": "Проекты"
     },
     "searchFilterName": "Искать по имени",
-    "toggleFreeOnly": "",
-    "toggleLabelAll": "",
-    "toggleLabelSelectedLanguage": ""
+    "toggleFreeOnly": "Только бесплатно",
+    "toggleLabelAll": "Все",
+    "toggleLabelSelectedLanguage": "Избранный язык"
   },
   "search": {
-    "all": "",
-    "book": "",
-    "books": "",
-    "categories": "",
-    "conference": "",
-    "conference_replay": "",
-    "conference_replays": "",
-    "course": "",
-    "course_chapter": "",
-    "course_part": "",
-    "courses": "",
-    "event": "",
-    "events": "",
+    "all": "Все",
+    "book": "Книга",
+    "books": "Книги",
+    "categories": "Категории",
+    "conference": "Конференция",
+    "conference_replay": "Повтор конференции",
+    "conference_replays": "Повторы конференции",
+    "course": "Курс",
+    "course_chapter": "Глава курса",
+    "course_part": "Часть курса",
+    "courses": "Курсы",
+    "event": "Мероприятие",
+    "events": "Мероприятия",
     "explorer": {
-      "subtitle": "",
-      "title": ""
+      "subtitle": "Что вы ищете?",
+      "title": "Поисковый портал"
     },
-    "filterByType": "",
-    "glossary_word": "",
-    "glossary_words": "",
-    "languageSelected": "",
-    "lecture_replay": "",
-    "lecture_replays": "",
-    "loadMoreResults": "",
-    "newsletter": "",
-    "newsletters": "",
-    "podcast": "",
-    "podcasts": "",
-    "professor": "",
-    "professors": "",
-    "project": "",
-    "projects": "",
-    "resultEmpty": "",
-    "resultError": "",
+    "filterByType": "Фильтр по типу",
+    "glossary_word": "Слово из глоссария",
+    "glossary_words": "Слова из глоссария",
+    "languageSelected": "Выбранный язык: {{language}}",
+    "lecture_replay": "Повтор лекции",
+    "lecture_replays": "Повторы лекции",
+    "loadMoreResults": "Посмотреть другие результаты",
+    "newsletter": "Новостная рассылка",
+    "newsletters": "Новостные рассылки",
+    "podcast": "Подкаст",
+    "podcasts": "Подкасты",
+    "professor": "Профессор",
+    "professors": "Профессора",
+    "project": "Проект",
+    "projects": "Проекты",
+    "resultEmpty": "Упс! Мы не смогли найти ничего подходящего для вашего поиска. Проверьте орфографию, попробуйте другие ключевые слова или выберите другую категорию.",
+    "resultError": "Что-то пошло не так. Пожалуйста, попробуйте еще раз.",
     "resultInfo": "",
     "results": "",
     "resultsRemaining": "",
