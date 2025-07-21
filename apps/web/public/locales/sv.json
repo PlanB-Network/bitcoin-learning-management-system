@@ -94,10 +94,10 @@
     "tryAgain": "Försök igen"
   },
   "bCert": {
-    "bCertDescription": "₿-certifikatet är ett internationellt erkänt prov för att bedöma din kunskapsnivå inom Bitcoin och dess relaterade ämnen. Detta certifikat kommer att göra det möjligt för dig att bevisa dina färdigheter och kunskaper inom Bitcoin-industrin.",
+    "bCertDescription": "₿-CERT är ett internationellt erkänt prov för att bedöma din kunskapsnivå inom Bitcoin och dess relaterade ämnen. Detta certifikat kommer att göra det möjligt för dig att bevisa dina färdigheter och kunskaper inom Bitcoin-industrin.",
     "bookExam": "Boka ett provtillfälle",
     "challengeYourself": "Utmana dig själv och testa din nivå!",
-    "checkout": "Kolla in ₿-certifikatet",
+    "checkout": "Kolla in ₿-CERT",
     "download": "Ladda ner certifikat",
     "knowledgeableBitcoin": "Kunnig inom Bitcoin?",
     "noBookExam": "Det finns inget provtillfälle planerat ännu.",
@@ -108,9 +108,9 @@
     "organizeSubtitle": "Att orange-pilla en miljard människor är inte lätt",
     "organizeTitle": "Vill du arrangera ett ₿-certifikatprov hos din hubb?",
     "pageSubtitle": "Massadoption genom centraliserad open source-utbildning",
-    "pageTitle": "Bli godkänd på ₿-Certifikatet",
+    "pageTitle": "Bli godkänd på ₿-CERT",
     "readChart": "Läs föreskriften",
-    "tweetText": "Överlycklig över att ha klarat ₿-certifikatet på @planb_network med ett resultat på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
+    "tweetText": "Överlycklig över att ha klarat ₿-CERT på @planb_network med ett resultat på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
     "verify": "Verifiera äktheten av ditt certifikat"
   },
   "bet": {
@@ -219,7 +219,7 @@
       "answersReview": "Genomgång av svar",
       "availableDashboard": "Det kommer att finnas tillgängligt på din kontrollpanel om cirka 10 timmar.",
       "availableDashboardTimestamped": "",
-      "bCertCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ₿-certifikatet.",
+      "bCertCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ₿-CERT.",
       "buttonTextBCert": "Läs mer",
       "certificateAvailable": "Det kommer att vara tillgängligt cirka 10 timmar efter inlämning.",
       "certificateGeneration": "Ditt certifikat genereras ",
@@ -811,7 +811,7 @@
     "courses": "Kurser",
     "credentials": {
       "bCert": "₿-certifikat",
-      "bCertSubtitle": "Här kan du se detaljerna angående dina bokningar samt betyg för dina tidigare och framtida ₿-certifikat.\n₿-certifikatet är ett prov organiserat av Plan ₿ Network för att fastställa din kunskapsnivå i Bitcoin och dess relaterade ämnen.",
+      "bCertSubtitle": "Här kan du se detaljerna angående dina bokningar samt betyg för dina tidigare och framtida ₿-CERT.\n₿-CERT är ett prov organiserat av Plan ₿ Network för att fastställa din kunskapsnivå i Bitcoin och dess relaterade ämnen.",
       "beingGraded": "Ditt prov är under betygsättning. Resultatet bör vara tillgängligt om 1 eller 2 veckor.",
       "completionDiplomas": "Slutdiplom",
       "courseDiplomas": "Kursdiplom",
