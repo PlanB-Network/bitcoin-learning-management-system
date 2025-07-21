@@ -2562,6 +2562,7 @@ export const contentCourseTranslationSlides = content.table(
       }),
     slideId: t.uuid().notNull(),
     slideNumber: t.integer().notNull(),
+    professorName: t.text(), // Professor associated with the slide (parsed from filename)
     pptValidated: t.boolean().default(false).notNull(),
     transcriptionValidated: t.boolean().default(false).notNull(),
     audioValidated: t.boolean().default(false).notNull(),

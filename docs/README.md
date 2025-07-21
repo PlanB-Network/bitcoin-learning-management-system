@@ -8,6 +8,7 @@ This directory contains comprehensive documentation for the Bitcoin Learning Man
 - [Code Structure](./code-structure.md) - Detailed explanation of code organization patterns and conventions
 - [Reusable Components](./reusable-components.md) - Guide to reusable components and features across the platform
 - [Reusable Web Components](./reusable-web-components.md) - Specific components from the web app that can be reused in the contribute app
+- [Translation Panel](./translation-panel.md) - In-depth guide to the admin translation panel (functional specs, UI/UX, architecture, data flow)
 - [Data Architecture](./data-architecture.md) - Database schema, relationships, and data access patterns
 - [Cursor Rules](./cursor-rules.md) - Development rules and patterns for building consistent apps within the BLMS ecosystem
 
