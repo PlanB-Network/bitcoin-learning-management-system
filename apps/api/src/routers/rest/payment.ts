@@ -145,6 +145,10 @@ export const createRestPaymentRoutes = (
         const signature = req.headers['stripe-signature'] as string;
 
         try {
+          if (!stripe) {
+            throw new Error('Stripe instance is not available');
+          }
+
           event = stripe.webhooks.constructEvent(
             // @ts-expect-error TODO: fix this?
             req.rawBody,
@@ -192,6 +196,10 @@ export const createRestPaymentRoutes = (
           const intentId = invoice.payment_intent;
           const invoiceId = invoice.id;
           const hostedInvoiceUrl = invoice.hosted_invoice_url;
+
+          if (!stripe) {
+            throw new Error('Stripe instance is not available');
+          }
 
           const paymentIntent = await stripe.paymentIntents.retrieve(intentId);
           const product = paymentIntent.metadata.product;

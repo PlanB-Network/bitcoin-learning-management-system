@@ -7,5 +7,5 @@ export interface Dependencies extends LogContext {
   postgres: PostgresClient;
   config: EnvConfig;
   s3: S3Service;
-  stripe: Stripe;
+  stripe: Stripe | null;
 }

@@ -109,6 +109,10 @@ export const createStripePayment = ({
     dollarPrice: number,
     paymentId: string,
   ) => {
+    if (!stripe) {
+      throw new Error('Stripe instance is not available');
+    }
+
     return stripe.checkout.sessions.create({
       automatic_tax: { enabled: true },
       billing_address_collection: 'required',
