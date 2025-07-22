@@ -491,38 +491,22 @@ const ProgressBar = ({
         isDone={isExamStepComplete}
         isCurrentStep={isCurrentlyOnExamStep}
       >
-        {(() => {
-          // Not yet reached exam step or no exam data available
-          if (isExamStepNotReachedOrNoData) {
-            return (
-              <BookPixel
-                className={cn(
-                  iconSizeClass,
-                  isCurrentlyOnExamStep ? 'fill-newOrange-1' : 'fill-newGray-5',
-                )}
-              />
-            );
-          }
-
-          // Single trial exam or assignment completed
-          if (hasSingleTrialExamOrAssignment) {
-            return (
-              <Certificate className={cn(iconSizeClass, 'filter-white')} />
-            );
-          }
-
-          // Multi-attempt exam passed
-          if (hasExamSucceeded) {
-            return <SuccessParty className={cn(iconSizeClass, 'fill-white')} />;
-          }
-
-          // Multi-attempt exam failed - show score
-          return (
-            <span className={stepPercentageClass}>
-              {previousExamResults?.score}%
-            </span>
-          );
-        })()}
+        {isExamStepNotReachedOrNoData ? (
+          <BookPixel
+            className={cn(
+              iconSizeClass,
+              isCurrentlyOnExamStep ? 'fill-newOrange-1' : 'fill-newGray-5',
+            )}
+          />
+        ) : hasSingleTrialExamOrAssignment ? (
+          <Certificate className={cn(iconSizeClass, 'filter-white')} />
+        ) : hasExamSucceeded ? (
+          <SuccessParty className={cn(iconSizeClass, 'fill-white')} />
+        ) : (
+          <span className={stepPercentageClass}>
+            {previousExamResults?.score}%
+          </span>
+        )}
       </HeaderBox>
 
       <div className={lineContainerClass}>
