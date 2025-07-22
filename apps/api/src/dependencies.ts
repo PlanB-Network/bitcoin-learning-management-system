@@ -15,7 +15,7 @@ export interface Dependencies {
   typesense: TypesenseClient;
   config: EnvConfig;
   crons: CronService;
-  stripe: Stripe;
+  stripe: Stripe | null;
 }
 
 export const injectLogContext = <T>(
@@ -32,7 +32,7 @@ export const startDependencies = async () => {
   const crons = createCronService();
   const postgres = createPostgresClient(config.postgres);
   const s3 = createS3Service(config.s3);
-  const stripe = new Stripe(config.stripe.secret);
+  const stripe = config.stripe.secret ? new Stripe(config.stripe.secret) : null;
   await postgres.connect();
 
   const typesense = new TypesenseClient({
