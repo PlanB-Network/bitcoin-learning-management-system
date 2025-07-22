@@ -1,6 +1,16 @@
-import type { CourseChapterResponse } from '@blms/types';
+import type {
+  CourseChapterResponse,
+  CourseExamResultsExtended,
+  CourseProgressExtended,
+  CourseResponse,
+  CourseReview,
+} from '@blms/types';
 import { Button, cn, RadialGauge } from '@blms/ui';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import {
+  type UseMutationResult,
+  useMutation,
+  useQuery,
+} from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { type JSX, useContext, useEffect, useState } from 'react';
@@ -36,11 +46,10 @@ interface CourseConclusionProps {
 }
 
 const STEP_DURATION = 2100;
+const INITIAL_STEP_DELAY = 1000;
 
-// TODO: Huge refactor needed here, this component is too big and complex (especially conditions)
 export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   const { i18n } = useTranslation();
-
   const { session } = useContext(AppContext);
 
   const [step, setStep] = useState(0);
@@ -60,12 +69,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
 
   const { data: courseProgress, refetch: refetchCourseProgress } = useQuery(
     trpc.user.courses.getProgress.queryOptions(
-      {
-        courseId: course?.id ?? '',
-      },
-      {
-        enabled: course !== undefined && !!session?.user,
-      },
+      { courseId: course?.id ?? '' },
+      { enabled: course !== undefined && !!session?.user },
     ),
   );
 
@@ -76,9 +81,40 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     }),
   );
 
-  const isProfessorLed = course?.teachingFormat === 'professor_led';
+  const { data: courseReview } = useQuery(
+    trpc.user.courses.getCourseReview.queryOptions(
+      { courseId: course?.id || '' },
+      { enabled: step >= 1 },
+    ),
+  );
 
   const hasAssignment = course?.hasAssignment;
+  const hasSingleTrialExamOrAssignment =
+    course?.parts.some((part) =>
+      part.chapters.some((chapter) => chapter.isSingleTrialExam),
+    ) || hasAssignment;
+
+  const { data: previousExamResults } = useQuery(
+    trpc.user.courses.getLatestExamResults.queryOptions(
+      { courseId: chapter.courseId },
+      { enabled: step >= 2 && !hasSingleTrialExamOrAssignment },
+    ),
+  );
+
+  const completeAllChaptersMutation = useMutation(
+    trpc.user.courses.completeAllChapters.mutationOptions({
+      onSuccess: () => refetchCourseProgress(),
+    }),
+  );
+
+  const completeChapterMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
+
+  const now = new Date();
+  const isProfessorLed = course?.teachingFormat === 'professor_led';
+  const completedChapters = courseProgress?.[0]?.chapters;
+  const totalScore = courseProgress?.[0]?.totalScore;
 
   const multiAttemptsExamChapterId = courseChapters?.find(
     (c) => c.isCourseExam,
@@ -87,55 +123,19 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   const reviewChapterId = courseChapters?.find(
     (c) => c.isCourseReview,
   )?.chapterId;
+
   const conclusionChapter = courseChapters?.find((c) => c.isCourseConclusion);
 
-  const hasSingleTrialExamOrAssignment =
-    course?.parts.some((part) =>
-      part.chapters.some((chapter) => chapter.isSingleTrialExam),
-    ) || hasAssignment;
-  const totalScore = courseProgress?.[0]?.totalScore;
+  const isConclusionNotReleased =
+    conclusionChapter?.releaseDate &&
+    conclusionChapter.releaseDate.getTime() > now.getTime();
+
   const hasPassedCourseThreshold =
     totalScore !== undefined &&
     totalScore !== null &&
     course?.passingGradeThreshold !== undefined &&
     course?.passingGradeThreshold !== null &&
     totalScore >= course.passingGradeThreshold;
-
-  const completeAllChaptersMutation = useMutation(
-    trpc.user.courses.completeAllChapters.mutationOptions({
-      onSuccess: () => {
-        refetchCourseProgress();
-      },
-    }),
-  );
-
-  const { data: courseReview } = useQuery(
-    trpc.user.courses.getCourseReview.queryOptions(
-      {
-        courseId: course?.id || '',
-      },
-      {
-        enabled: step >= 1,
-      },
-    ),
-  );
-
-  const { data: previousExamResults } = useQuery(
-    trpc.user.courses.getLatestExamResults.queryOptions(
-      {
-        courseId: chapter.courseId,
-      },
-      {
-        enabled: step >= 2 && !hasSingleTrialExamOrAssignment,
-      },
-    ),
-  );
-
-  const completeChapterMutation = useMutation(
-    trpc.user.courses.completeChapter.mutationOptions(),
-  );
-
-  const completedChapters = courseProgress?.[0]?.chapters;
 
   function updateStep(step: number, forceScroll = false) {
     if (forceScroll) {
@@ -157,46 +157,12 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     }
   }
 
+  // Effects for step progression
   useEffect(() => {
     if (step === 0 && session?.user) {
-      setTimeout(() => updateStep(1, false), 1000);
+      setTimeout(() => updateStep(1, false), INITIAL_STEP_DELAY);
     }
   }, [step, session]);
-
-  useEffect(() => {
-    if (course && courseProgress) {
-      const completedChaptersIds = [
-        completedChapters?.map((c) => c.chapterId),
-      ].flat();
-
-      const classicChapters = course?.parts
-        .flatMap((p) => p.chapters)
-        .filter(
-          (c) =>
-            c &&
-            !c?.isCourseConclusion &&
-            !c?.isCourseExam &&
-            !c?.isCourseReview &&
-            !c?.isSingleTrialExam,
-        );
-
-      const unfinishedClassicChapters = classicChapters.filter(
-        (c) => c && !completedChaptersIds?.includes(c.chapterId),
-      );
-
-      setClassicChapterCompletion(
-        Math.round(
-          ((classicChapters.length - unfinishedClassicChapters.length) /
-            classicChapters.length) *
-            100,
-        ),
-      );
-
-      if (unfinishedClassicChapters && unfinishedClassicChapters.length === 0) {
-        setIsAllClassicChaptersDone(true);
-      }
-    }
-  }, [completedChapters, course, courseProgress, isAllClassicChaptersDone]);
 
   useEffect(() => {
     if (isAllClassicChaptersDone && step === 1) {
@@ -223,7 +189,12 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     ) {
       setTimeout(() => updateStep(4), STEP_DURATION);
     }
-  }, [previousExamResults, isCourseExamSkipped, step]);
+  }, [
+    previousExamResults,
+    isCourseExamSkipped,
+    step,
+    hasSingleTrialExamOrAssignment,
+  ]);
 
   useEffect(() => {
     if (step === 4) {
@@ -236,42 +207,63 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     }
   }, [step, completeChapterMutation, chapter]);
 
+  // Effects for chapter completion tracking
+  useEffect(() => {
+    if (course && courseProgress) {
+      const completedChaptersIds =
+        completedChapters?.map((c) => c.chapterId) ?? [];
+
+      const classicChapters = course.parts
+        .flatMap((p) => p.chapters)
+        .filter(
+          (c) =>
+            c &&
+            !c.isCourseConclusion &&
+            !c.isCourseExam &&
+            !c.isCourseReview &&
+            !c.isSingleTrialExam,
+        );
+
+      const unfinishedClassicChapters = classicChapters.filter(
+        (c) => c && !completedChaptersIds.includes(c.chapterId),
+      );
+
+      const completionPercentage = Math.round(
+        ((classicChapters.length - unfinishedClassicChapters.length) /
+          classicChapters.length) *
+          100,
+      );
+
+      setClassicChapterCompletion(completionPercentage);
+
+      if (unfinishedClassicChapters.length === 0) {
+        setIsAllClassicChaptersDone(true);
+      }
+    }
+  }, [completedChapters, course, courseProgress]);
+
+  // Effects for UI/completion logic
   useEffect(() => {
     document.body.style.overflow = step === 5 ? 'hidden' : 'auto';
 
     if (step === 6 && !isCourseReviewSkipped && !isCourseExamSkipped) {
       completeConclusionChapter();
     }
-  }, [step]);
+  }, [step, isCourseReviewSkipped, isCourseExamSkipped]);
 
   useEffect(() => {
     if (!multiAttemptsExamChapterId && !hasSingleTrialExamOrAssignment) {
       completeConclusionChapter();
     }
-  }, [step]);
+  }, [multiAttemptsExamChapterId, hasSingleTrialExamOrAssignment]);
 
   useEffect(() => {
     scrollToHeader();
   }, []);
 
-  const lineContainerClass = 'flex items-center w-full h-12 md:h-[100px]';
-  const lineSizeClass = 'w-full h-1 md:h-[5px] rounded-l-full';
-  const linkMainClass = `${lineSizeClass} bg-newGray-5`;
-  const linkSubClass = `${lineSizeClass}absolute bg-gradient-to-r from-white to-darkOrange-5 transition-all ease-in-out start-animation`;
   const iconSizeClass = 'size-7 md:size-14';
-  const stepMessageIconClass = 'size-10 md:size-20 mx-auto';
-  const stepPercentageClass =
-    'label-small-med-12px md:title-large-sb-24px text-darkOrange-5 text-center';
-  const titleStepClass =
-    'text-newGray-1 subtitle-small-caps-14px md:subtitle-medium-caps-18px';
 
-  const isMobile = useSmaller('md');
-  const now = new Date();
-
-  if (
-    conclusionChapter?.releaseDate &&
-    conclusionChapter.releaseDate.getTime() > now.getTime()
-  ) {
+  if (isConclusionNotReleased) {
     return (
       <div className="relative flex items-center w-full h-28 md:h-40 rounded-lg border border-newGray-5 bg-gradient-to-b from-white/75 to-[#e2e2e2]/75">
         <img
@@ -289,440 +281,60 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     );
   }
 
+  const hasExamOrAssignment =
+    multiAttemptsExamChapterId || hasSingleTrialExamOrAssignment;
+  const showFinalStep = step >= 5;
+  const showProgressSteps = session?.user && hasExamOrAssignment;
+
   return (
     <>
       <p className="text-darkOrange-5 text-2xl leading-snug max-md:title-medium-sb-18px">
         {t('courses.conclusion.congratulationsEnd')}
       </p>
-      {session?.user &&
-      (multiAttemptsExamChapterId || hasSingleTrialExamOrAssignment) ? (
+
+      {showProgressSteps ? (
         <>
           <p className="text-newBlack-1 body-16px mb-3 max-md:hidden">
-            {step >= 5
+            {showFinalStep
               ? t('courses.conclusion.finalStep')
               : t('courses.conclusion.stepsToComplete')}
           </p>
-          <div
-            className={cn('flex flex-row', step >= 5 ? 'md:pb-3' : 'md:pb-8')}
-            id="progressBar"
-          >
-            <div
-              className={cn(
-                lineContainerClass,
-                'w-[26px] md:w-[70px] shrink-0',
-              )}
-            >
-              <div className={cn(linkMainClass, 'w-full shrink-0')}>
-                {step >= 0 ? (
-                  <div className={cn(linkSubClass, '!duration-1000')} />
-                ) : null}
-              </div>
-            </div>
 
-            <HeaderBox
-              text={t('words.chapters')}
-              isDone={step >= 1 && isAllClassicChaptersDone}
-              isCurrentStep={step === 1}
-            >
-              {step < 1 ? (
-                <BookOpen
-                  className={cn(
-                    iconSizeClass,
-                    step === 1 ? 'fill-newOrange-1' : 'fill-newGray-5',
-                  )}
-                />
-              ) : step === 1 && !isAllClassicChaptersDone ? (
-                <span className={stepPercentageClass}>
-                  {classicChapterCompletion}%
-                </span>
-              ) : (
-                <ThumbUp className={cn(iconSizeClass, 'fill-white')} />
-              )}
-            </HeaderBox>
-            <div className={lineContainerClass}>
-              <div className={linkMainClass}>
-                {step >= 1 && isAllClassicChaptersDone ? (
-                  <div className={linkSubClass} />
-                ) : null}
-              </div>
-            </div>
+          <ProgressBar
+            step={step}
+            iconSizeClass={iconSizeClass}
+            classicChapterCompletion={classicChapterCompletion}
+            isAllClassicChaptersDone={isAllClassicChaptersDone}
+            isCourseReviewSubmitted={isCourseReviewSubmitted}
+            isCourseReviewSkipped={isCourseReviewSkipped}
+            isCourseExamSkipped={isCourseExamSkipped}
+            hasSingleTrialExamOrAssignment={hasSingleTrialExamOrAssignment}
+            courseReview={courseReview}
+            previousExamResults={previousExamResults}
+          />
 
-            <HeaderBox
-              text={t('courses.review.feedback')}
-              isDone={step >= 2 && (!!courseReview || isCourseReviewSubmitted)}
-              isCurrentStep={step === 2 || isCourseReviewSkipped}
-            >
-              {step < 2 || (!courseReview && !isCourseReviewSubmitted) ? (
-                <SpeechIcon
-                  className={cn(
-                    iconSizeClass,
-                    step === 2 || isCourseReviewSkipped
-                      ? 'fill-newOrange-1'
-                      : 'fill-newGray-5',
-                  )}
-                />
-              ) : (
-                <HeartPixel className={cn(iconSizeClass, 'fill-white')} />
-              )}
-            </HeaderBox>
-            <div className={lineContainerClass}>
-              <div className={linkMainClass}>
-                {step >= 2 &&
-                (courseReview ||
-                  isCourseReviewSubmitted ||
-                  isCourseReviewSkipped) ? (
-                  <div className={linkSubClass} />
-                ) : null}
-              </div>
-            </div>
-
-            <HeaderBox
-              text={t('words.exam')}
-              isDone={
-                step >= 3 &&
-                (!!previousExamResults?.succeeded ||
-                  !!hasSingleTrialExamOrAssignment)
-              }
-              isCurrentStep={step === 3 || isCourseExamSkipped}
-            >
-              {step < 3 ||
-              (!previousExamResults && !hasSingleTrialExamOrAssignment) ? (
-                <BookPixel
-                  className={cn(
-                    iconSizeClass,
-                    step === 3 || isCourseExamSkipped
-                      ? 'fill-newOrange-1'
-                      : 'fill-newGray-5',
-                  )}
-                />
-              ) : (
-                <>
-                  {hasSingleTrialExamOrAssignment ? (
-                    <Certificate
-                      className={cn(iconSizeClass, 'filter-white')}
-                    />
-                  ) : previousExamResults?.succeeded ? (
-                    <SuccessParty className={cn(iconSizeClass, 'fill-white')} />
-                  ) : (
-                    <span className={stepPercentageClass}>
-                      {previousExamResults?.score}%
-                    </span>
-                  )}
-                </>
-              )}
-            </HeaderBox>
-            <div className={lineContainerClass}>
-              <div className={linkMainClass}>
-                {step >= 3 &&
-                (previousExamResults?.succeeded ||
-                  !!hasSingleTrialExamOrAssignment ||
-                  isCourseExamSkipped) ? (
-                  <div className={linkSubClass} />
-                ) : null}
-              </div>
-            </div>
-
-            <HeaderBox
-              text={t('words.congrats')}
-              isDone={
-                step >= 4 && !isCourseExamSkipped && !isCourseReviewSkipped
-              }
-              isCurrentStep={
-                step === 6 && (isCourseExamSkipped || isCourseReviewSkipped)
-              }
-            >
-              {step <= 3 ? (
-                <Finish className={cn(iconSizeClass, 'fill-newGray-5')} />
-              ) : isCourseExamSkipped || isCourseReviewSkipped ? (
-                <Padlock className={cn(iconSizeClass, 'fill-newOrange-1')} />
-              ) : (
-                <Finish className={cn(iconSizeClass, 'fill-white')} />
-              )}
-            </HeaderBox>
-          </div>
-
-          <div
-            className={cn(
-              step >= 5
-                ? ''
-                : 'bg-maroon-1 p-2 md:px-[30px] md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation',
-            )}
-          >
-            {course && step <= 1 ? (
-              isAllClassicChaptersDone ? (
-                <StepMessage
-                  title={t('words.chapters')}
-                  headline={t('courses.conclusion.completedChaptersHeadline')}
-                  icon={
-                    <ThumbUp
-                      className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
-                    />
-                  }
-                />
-              ) : (
-                <section className="flex flex-col w-full gap-5 md:gap-[30px]">
-                  <p className={titleStepClass}>{t('words.chapters')}</p>
-                  <p className="text-newBlack-1 body-16px md:subtitle-large-18px whitespace-pre-line">
-                    {t('dashboard.course.conclusionHeadline')}
-                  </p>
-                  <CourseCurriculum
-                    course={course}
-                    completedChapters={completedChapters?.map(
-                      (chapter) => chapter.chapterId,
-                    )}
-                    nextChapter={courseProgress?.[0]?.nextChapter?.chapterId}
-                    hideGithubLink
-                    displayNotStarted
-                    expandAll
-                    className="self-start w-full md:mt-2.5"
-                  />
-                  {step > 1 ? null : (
-                    <Button
-                      className="ml-auto mr-6"
-                      onClick={() => {
-                        scrollToHeader();
-                        completeAllChaptersMutation.mutate({
-                          courseId: chapter.course.id,
-                          language: chapter.language,
-                        });
-                      }}
-                    >
-                      {t('dashboard.myCourses.completeAll')}
-                    </Button>
-                  )}
-                </section>
-              )
-            ) : null}
-
-            {step === 2 ? (
-              courseReview || isCourseReviewSubmitted ? (
-                <StepMessage
-                  title={t('courses.review.feedback')}
-                  headline={t('courses.conclusion.completedFeedbackHeadline')}
-                  subHeadline={t(
-                    'courses.conclusion.completedFeedbackSubHeadline',
-                  )}
-                  icon={
-                    <HeartPixel
-                      className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
-                    />
-                  }
-                />
-              ) : (
-                <section className="flex flex-col w-full gap-5 md:gap-[30px]">
-                  <span className={titleStepClass}>
-                    {t('courses.review.feedback')}
-                  </span>
-                  <div>
-                    {course && reviewChapterId ? (
-                      <CourseReviewComponent
-                        courseId={course?.id}
-                        chapterId={reviewChapterId}
-                        isConclusionReview
-                        onReviewSuccess={() => setIsCourseReviewSubmitted(true)}
-                        onSkip={() => {
-                          scrollToHeader();
-                          setIsCourseReviewSkipped(true);
-                        }}
-                      />
-                    ) : null}
-                  </div>
-                </section>
-              )
-            ) : null}
-
-            {step >= 3 && step <= 4 ? (
-              isProfessorLed ? (
-                <StepMessage
-                  title={t('courses.exam.finalScore')}
-                  headline={
-                    <>
-                      <p className="whitespace-pre-line">
-                        {hasPassedCourseThreshold
-                          ? t('courses.exam.successfulPassedThreshold')
-                          : t('courses.exam.solidEffort')}
-                      </p>
-                      <RadialGauge
-                        percentage={totalScore || 0}
-                        label={t('dashboard.teacher.courses.finalScore')}
-                        subLabel={`${t(
-                          'dashboard.teacher.courses.thresholdToPass',
-                        )}: ${course?.passingGradeThreshold || 'N/A'}%`}
-                        variant={hasPassedCourseThreshold ? 'green' : 'yellow'}
-                        size="l"
-                        showBackground
-                        className="mx-auto mt-5 md:mt-7.5"
-                      />
-                    </>
-                  }
-                  icon={
-                    hasPassedCourseThreshold ? (
-                      <SuccessParty
-                        className={cn(
-                          stepMessageIconClass,
-                          'fill-brightGreen-5',
-                        )}
-                      />
-                    ) : (
-                      <Certificate
-                        className={cn(stepMessageIconClass, 'fill-red-5')}
-                      />
-                    )
-                  }
-                />
-              ) : (
-                <StepMessage
-                  title={t('courses.exam.finalExam')}
-                  headline={
-                    previousExamResults ? (
-                      previousExamResults.succeeded ? (
-                        <Trans i18nKey={'courses.exam.congratulationsPassed'}>
-                          <span className="font-semibold">{'passed'}</span>
-                        </Trans>
-                      ) : (
-                        <>
-                          <Trans i18nKey={'courses.exam.oopsFailed'}>
-                            <span className="font-semibold">{'failed'}</span>
-                          </Trans>
-                          <br />
-                          <span>
-                            {t('courses.exam.score')}{' '}
-                            <span
-                              className={cn(
-                                'font-semibold',
-                                previousExamResults.succeeded
-                                  ? 'text-brightGreen-5'
-                                  : 'text-red-5',
-                              )}
-                            >
-                              {previousExamResults.score}%
-                            </span>
-                          </span>
-                          <br />
-                          {!previousExamResults.succeeded &&
-                            t('courses.exam.dontWorryRetake')}
-                        </>
-                      )
-                    ) : (
-                      t('courses.conclusion.takeFinalExam')
-                    )
-                  }
-                  icon={
-                    previousExamResults ? (
-                      previousExamResults.succeeded ? (
-                        <SuccessParty
-                          className={cn(
-                            stepMessageIconClass,
-                            'fill-brightGreen-5',
-                          )}
-                        />
-                      ) : (
-                        <FailurePixel
-                          className={cn(stepMessageIconClass, 'fill-red-5')}
-                        />
-                      )
-                    ) : (
-                      <BookPixel
-                        className={cn(
-                          stepMessageIconClass,
-                          'fill-darkOrange-5',
-                        )}
-                      />
-                    )
-                  }
-                  actionButton={
-                    previousExamResults?.succeeded ? undefined : (
-                      <div className="flex max-md:flex-col gap-4">
-                        <Button
-                          disabled={
-                            previousExamResults
-                              ? previousExamResults.succeeded
-                                ? false
-                                : new Date(
-                                    previousExamResults.startedAt,
-                                  ).getTime() +
-                                    ONE_DAY_IN_MS >
-                                  Date.now()
-                              : false
-                          }
-                        >
-                          <Link
-                            to="/courses/$courseId/$chapterId"
-                            params={{
-                              chapterId: multiAttemptsExamChapterId,
-                              courseId: course?.id,
-                            }}
-                          >
-                            {previousExamResults
-                              ? t('courses.exam.tryAgain')
-                              : t('courses.exam.takeExam')}
-                          </Link>
-                        </Button>
-                        <Button
-                          variant="outline"
-                          className="w-fit mx-auto"
-                          onClick={() => {
-                            scrollToHeader();
-                            setIsCourseExamSkipped(true);
-                          }}
-                        >
-                          {t('words.skip')}
-                        </Button>
-                      </div>
-                    )
-                  }
-                />
-              )
-            ) : null}
-
-            {step === 5 && (
-              <div className="fixed inset-0 flex justify-center items-center bg-black md:bg-black/80 md:backdrop-blur-md z-50">
-                <button
-                  onClick={() => updateStep(6)}
-                  className="absolute top-4 right-4 z-10"
-                  type="button"
-                >
-                  <TbX className="size-8 text-white hover:opacity-80 transition-opacity" />
-                </button>
-
-                {isMobile ? (
-                  <video
-                    className="relative w-full max-h-full"
-                    src={congratsDarkMobile}
-                    autoPlay
-                    muted
-                    preload="auto"
-                    onEnded={() => {
-                      updateStep(6);
-                    }}
-                  />
-                ) : (
-                  <div className="flex justify-center w-full max-h-[85%] bg-black px-[100px]">
-                    <video
-                      className="relative w-full"
-                      src={congratsDark}
-                      autoPlay
-                      muted
-                      preload="auto"
-                      onEnded={() => {
-                        updateStep(6);
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            )}
-
-            {step === 6 && course ? (
-              <ConclusionFinish
-                course={course}
-                examResults={previousExamResults ?? undefined}
-                isProfessorLed={isProfessorLed}
-                hasSingleTrialExamOrAssignment={hasSingleTrialExamOrAssignment}
-                hasPassedCourseThreshold={hasPassedCourseThreshold}
-              />
-            ) : null}
-          </div>
+          <StepsContent
+            course={course}
+            chapter={chapter}
+            step={step}
+            isAllClassicChaptersDone={isAllClassicChaptersDone}
+            completedChapters={completedChapters}
+            reviewChapterId={reviewChapterId}
+            courseReview={courseReview}
+            courseProgress={courseProgress}
+            previousExamResults={previousExamResults}
+            isProfessorLed={isProfessorLed}
+            totalScore={totalScore}
+            hasPassedCourseThreshold={hasPassedCourseThreshold}
+            multiAttemptsExamChapterId={multiAttemptsExamChapterId}
+            hasSingleTrialExamOrAssignment={hasSingleTrialExamOrAssignment}
+            isCourseReviewSubmitted={isCourseReviewSubmitted}
+            setIsCourseReviewSubmitted={setIsCourseReviewSubmitted}
+            setIsCourseReviewSkipped={setIsCourseReviewSkipped}
+            setIsCourseExamSkipped={setIsCourseExamSkipped}
+            updateStep={updateStep}
+            completeAllChaptersMutation={completeAllChaptersMutation}
+          />
         </>
       ) : course ? (
         <>
@@ -731,31 +343,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
               {t('courses.conclusion.finalStep')}
             </p>
           ) : (
-            <div className="relative w-full aspect-[110/25] md:aspect-[110/18] rounded-lg overflow-hidden">
-              <img
-                src={completionSteps}
-                alt="Congratulations"
-                className="absolute w-full top-5 object-cover aspect-auto max-md:hidden"
-              />
-              <img
-                src={completionStepsMobile}
-                alt="Congratulations"
-                className="absolute w-full top-1 object-cover aspect-auto md:hidden"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-[#e2e2e2]/80 backdrop-blur-xs md:backdrop-blur-md flex items-center justify-center md:gap-6">
-                <img
-                  src={LockGif}
-                  alt="Lock"
-                  className="size-11 md:size-[74px] shrink-0"
-                />
-                <p className="text-black body-medium-12px md:subtitle-medium-med-16px w-full max-w-[831px] flex flex-col">
-                  <span>{t('courses.conclusion.unlockFeatures1')}</span>
-                  <span className="max-md:hidden">
-                    {t('courses.conclusion.unlockFeatures2')}
-                  </span>
-                </p>
-              </div>
-            </div>
+            <LockedBar />
           )}
           <div>
             <ConclusionFinish course={course} isProfessorLed={isProfessorLed} />
@@ -763,6 +351,200 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
         </>
       ) : null}
     </>
+  );
+};
+
+interface ProgressBarProps {
+  step: number;
+  iconSizeClass: string;
+  classicChapterCompletion: number;
+  isAllClassicChaptersDone: boolean;
+  isCourseReviewSubmitted: boolean;
+  isCourseReviewSkipped: boolean;
+  isCourseExamSkipped: boolean;
+  hasSingleTrialExamOrAssignment?: boolean;
+  courseReview?: CourseReview | null;
+  previousExamResults?: CourseExamResultsExtended | null;
+}
+
+const ProgressBar = ({
+  step,
+  iconSizeClass,
+  classicChapterCompletion,
+  isAllClassicChaptersDone,
+  isCourseReviewSubmitted,
+  isCourseReviewSkipped,
+  isCourseExamSkipped,
+  hasSingleTrialExamOrAssignment,
+  courseReview,
+  previousExamResults,
+}: ProgressBarProps) => {
+  const lineContainerClass = 'flex items-center w-full h-12 md:h-[100px]';
+  const lineSizeClass = 'w-full h-1 md:h-[5px] rounded-l-full';
+  const linkMainClass = `${lineSizeClass} bg-newGray-5`;
+  const linkSubClass = `${lineSizeClass}absolute bg-gradient-to-r from-white to-darkOrange-5 transition-all ease-in-out start-animation`;
+  const stepPercentageClass =
+    'label-small-med-12px md:title-large-sb-24px text-darkOrange-5 text-center';
+
+  // Chapter conditions
+  const isChapterStepComplete = step >= 1 && isAllClassicChaptersDone;
+  const isCurrentlyOnChapterStep = step === 1;
+  const isChapterStepNotReached = step < 1;
+  const isChapterStepInProgress = step === 1 && !isAllClassicChaptersDone;
+
+  // Review conditions
+  const hasCourseReviewData = !!courseReview || isCourseReviewSubmitted;
+  const isReviewStepComplete = step >= 2 && hasCourseReviewData;
+  const isCurrentlyOnReviewStep = step === 2 || isCourseReviewSkipped;
+  const isReviewStepNotReachedOrIncomplete =
+    step < 2 || (!courseReview && !isCourseReviewSubmitted);
+  const canProgressFromReviewStep =
+    step >= 2 &&
+    (courseReview || isCourseReviewSubmitted || isCourseReviewSkipped);
+
+  // Exam conditions
+  const hasExamSucceeded = !!previousExamResults?.succeeded;
+  const isExamStepComplete =
+    step >= 3 && (hasExamSucceeded || !!hasSingleTrialExamOrAssignment);
+  const isCurrentlyOnExamStep = step === 3 || isCourseExamSkipped;
+  const isExamStepNotReachedOrNoData =
+    step < 3 || (!previousExamResults && !hasSingleTrialExamOrAssignment);
+  const canProgressFromExamStep =
+    step >= 3 &&
+    (hasExamSucceeded ||
+      !!hasSingleTrialExamOrAssignment ||
+      isCourseExamSkipped);
+
+  // Final conditions
+  const isFinalStepComplete =
+    step >= 4 && !isCourseExamSkipped && !isCourseReviewSkipped;
+  const isCurrentlyOnLockedFinalStep =
+    step === 6 && (isCourseExamSkipped || isCourseReviewSkipped);
+  const isFinalStepNotReached = step <= 3;
+  const isFinalStepLocked = isCourseExamSkipped || isCourseReviewSkipped;
+
+  return (
+    <div
+      className={cn('flex flex-row', step >= 5 ? 'md:pb-3' : 'md:pb-8')}
+      id="progressBar"
+    >
+      <div className={cn(lineContainerClass, 'w-[26px] md:w-[70px] shrink-0')}>
+        <div className={cn(linkMainClass, 'w-full shrink-0')}>
+          {step >= 0 ? (
+            <div className={cn(linkSubClass, '!duration-1000')} />
+          ) : null}
+        </div>
+      </div>
+
+      <HeaderBox
+        text={t('words.chapters')}
+        isDone={isChapterStepComplete}
+        isCurrentStep={isCurrentlyOnChapterStep}
+      >
+        {isChapterStepNotReached ? (
+          <BookOpen
+            className={cn(
+              iconSizeClass,
+              step === 1 ? 'fill-newOrange-1' : 'fill-newGray-5',
+            )}
+          />
+        ) : isChapterStepInProgress ? (
+          <span className={stepPercentageClass}>
+            {classicChapterCompletion}%
+          </span>
+        ) : (
+          <ThumbUp className={cn(iconSizeClass, 'fill-white')} />
+        )}
+      </HeaderBox>
+
+      <div className={lineContainerClass}>
+        <div className={linkMainClass}>
+          {isChapterStepComplete ? <div className={linkSubClass} /> : null}
+        </div>
+      </div>
+
+      <HeaderBox
+        text={t('courses.review.feedback')}
+        isDone={isReviewStepComplete}
+        isCurrentStep={isCurrentlyOnReviewStep}
+      >
+        {isReviewStepNotReachedOrIncomplete ? (
+          <SpeechIcon
+            className={cn(
+              iconSizeClass,
+              isCurrentlyOnReviewStep ? 'fill-newOrange-1' : 'fill-newGray-5',
+            )}
+          />
+        ) : (
+          <HeartPixel className={cn(iconSizeClass, 'fill-white')} />
+        )}
+      </HeaderBox>
+
+      <div className={lineContainerClass}>
+        <div className={linkMainClass}>
+          {canProgressFromReviewStep ? <div className={linkSubClass} /> : null}
+        </div>
+      </div>
+
+      <HeaderBox
+        text={t('words.exam')}
+        isDone={isExamStepComplete}
+        isCurrentStep={isCurrentlyOnExamStep}
+      >
+        {(() => {
+          // Not yet reached exam step or no exam data available
+          if (isExamStepNotReachedOrNoData) {
+            return (
+              <BookPixel
+                className={cn(
+                  iconSizeClass,
+                  isCurrentlyOnExamStep ? 'fill-newOrange-1' : 'fill-newGray-5',
+                )}
+              />
+            );
+          }
+
+          // Single trial exam or assignment completed
+          if (hasSingleTrialExamOrAssignment) {
+            return (
+              <Certificate className={cn(iconSizeClass, 'filter-white')} />
+            );
+          }
+
+          // Multi-attempt exam passed
+          if (hasExamSucceeded) {
+            return <SuccessParty className={cn(iconSizeClass, 'fill-white')} />;
+          }
+
+          // Multi-attempt exam failed - show score
+          return (
+            <span className={stepPercentageClass}>
+              {previousExamResults?.score}%
+            </span>
+          );
+        })()}
+      </HeaderBox>
+
+      <div className={lineContainerClass}>
+        <div className={linkMainClass}>
+          {canProgressFromExamStep ? <div className={linkSubClass} /> : null}
+        </div>
+      </div>
+
+      <HeaderBox
+        text={t('words.congrats')}
+        isDone={isFinalStepComplete}
+        isCurrentStep={isCurrentlyOnLockedFinalStep}
+      >
+        {isFinalStepNotReached ? (
+          <Finish className={cn(iconSizeClass, 'fill-newGray-5')} />
+        ) : isFinalStepLocked ? (
+          <Padlock className={cn(iconSizeClass, 'fill-newOrange-1')} />
+        ) : (
+          <Finish className={cn(iconSizeClass, 'fill-white')} />
+        )}
+      </HeaderBox>
+    </div>
   );
 };
 
@@ -805,6 +587,376 @@ const HeaderBox = ({
           </span>
         </div>
       )}
+    </div>
+  );
+};
+
+interface StepsContentProps {
+  course?: CourseResponse;
+  chapter: CourseChapterResponse;
+  courseProgress?: CourseProgressExtended[];
+  courseReview?: CourseReview | null;
+  previousExamResults?: CourseExamResultsExtended | null;
+  completedChapters?: CourseProgressExtended['chapters'] | null;
+  reviewChapterId?: string;
+  multiAttemptsExamChapterId?: string;
+  step: number;
+  isAllClassicChaptersDone: boolean;
+  isCourseReviewSubmitted?: boolean;
+  hasSingleTrialExamOrAssignment?: boolean;
+  isProfessorLed?: boolean;
+  totalScore?: number | null;
+  hasPassedCourseThreshold?: boolean;
+  setIsCourseReviewSubmitted: (value: boolean) => void;
+  setIsCourseReviewSkipped: (value: boolean) => void;
+  setIsCourseExamSkipped: (value: boolean) => void;
+  updateStep: (step: number, forceScroll?: boolean) => void;
+  completeAllChaptersMutation: UseMutationResult<any, any, any, any>;
+}
+
+const StepsContent = ({
+  course,
+  chapter,
+  courseProgress,
+  courseReview,
+  previousExamResults,
+  completedChapters,
+  reviewChapterId,
+  multiAttemptsExamChapterId,
+  step,
+  isAllClassicChaptersDone,
+  isCourseReviewSubmitted,
+  hasSingleTrialExamOrAssignment,
+  isProfessorLed,
+  totalScore,
+  hasPassedCourseThreshold,
+  setIsCourseReviewSubmitted,
+  setIsCourseReviewSkipped,
+  setIsCourseExamSkipped,
+  updateStep,
+  completeAllChaptersMutation,
+}: StepsContentProps) => {
+  const stepMessageIconClass = 'size-10 md:size-20 mx-auto';
+  const titleStepClass =
+    'text-newGray-1 subtitle-small-caps-14px md:subtitle-medium-caps-18px';
+
+  const isMobile = useSmaller('md');
+
+  // Chapter conditions
+  const shouldShowChapterStep = course && step <= 1;
+  const shouldShowChapterCompleteButton = step <= 1;
+
+  // Review conditions
+  const hasCourseReviewData = !!courseReview || isCourseReviewSubmitted;
+  const shouldShowReviewStep = step === 2;
+
+  // Exam conditions
+  const hasExamResults = !!previousExamResults;
+  const hasExamSucceeded = !!previousExamResults?.succeeded;
+  const shouldShowExamStep = step >= 3 && step <= 4;
+  const isExamButtonDisabled =
+    hasExamResults &&
+    !hasExamSucceeded &&
+    new Date(previousExamResults.startedAt).getTime() + ONE_DAY_IN_MS >
+      Date.now();
+
+  // Video conditions
+  const shouldShowCongratsVideo = step === 5;
+
+  // Final conditions
+  const shouldShowConclusionFinish = step === 6 && !!course;
+
+  // Container styling condition
+  const shouldApplyContainerStyling = step < 5;
+
+  return (
+    <div
+      className={cn(
+        shouldApplyContainerStyling
+          ? 'bg-maroon-1 p-2 md:px-[30px] md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation'
+          : '',
+      )}
+    >
+      {shouldShowChapterStep ? (
+        isAllClassicChaptersDone ? (
+          <StepMessage
+            title={t('words.chapters')}
+            headline={t('courses.conclusion.completedChaptersHeadline')}
+            icon={
+              <ThumbUp
+                className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
+              />
+            }
+          />
+        ) : (
+          <section className="flex flex-col w-full gap-5 md:gap-[30px]">
+            <p className={titleStepClass}>{t('words.chapters')}</p>
+            <p className="text-newBlack-1 body-16px md:subtitle-large-18px whitespace-pre-line">
+              {t('dashboard.course.conclusionHeadline')}
+            </p>
+            <CourseCurriculum
+              course={course}
+              completedChapters={completedChapters?.map(
+                (chapter) => chapter.chapterId,
+              )}
+              nextChapter={courseProgress?.[0]?.nextChapter?.chapterId}
+              hideGithubLink
+              displayNotStarted
+              expandAll
+              className="self-start w-full md:mt-2.5"
+            />
+            {shouldShowChapterCompleteButton ? (
+              <Button
+                className="ml-auto mr-6"
+                onClick={() => {
+                  scrollToHeader();
+                  completeAllChaptersMutation.mutate({
+                    courseId: chapter.course.id,
+                    language: chapter.language,
+                  });
+                }}
+              >
+                {t('dashboard.myCourses.completeAll')}
+              </Button>
+            ) : null}
+          </section>
+        )
+      ) : null}
+
+      {shouldShowReviewStep ? (
+        hasCourseReviewData ? (
+          <StepMessage
+            title={t('courses.review.feedback')}
+            headline={t('courses.conclusion.completedFeedbackHeadline')}
+            subHeadline={t('courses.conclusion.completedFeedbackSubHeadline')}
+            icon={
+              <HeartPixel
+                className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
+              />
+            }
+          />
+        ) : (
+          <section className="flex flex-col w-full gap-5 md:gap-[30px]">
+            <span className={titleStepClass}>
+              {t('courses.review.feedback')}
+            </span>
+            <div>
+              {course && reviewChapterId ? (
+                <CourseReviewComponent
+                  courseId={course?.id}
+                  chapterId={reviewChapterId}
+                  isConclusionReview
+                  onReviewSuccess={() => setIsCourseReviewSubmitted(true)}
+                  onSkip={() => {
+                    scrollToHeader();
+                    setIsCourseReviewSkipped(true);
+                  }}
+                />
+              ) : null}
+            </div>
+          </section>
+        )
+      ) : null}
+
+      {shouldShowExamStep ? (
+        isProfessorLed ? (
+          <StepMessage
+            title={t('courses.exam.finalScore')}
+            headline={
+              <>
+                <p className="whitespace-pre-line">
+                  {hasPassedCourseThreshold
+                    ? t('courses.exam.successfulPassedThreshold')
+                    : t('courses.exam.solidEffort')}
+                </p>
+                <RadialGauge
+                  percentage={totalScore || 0}
+                  label={t('dashboard.teacher.courses.finalScore')}
+                  subLabel={`${t(
+                    'dashboard.teacher.courses.thresholdToPass',
+                  )}: ${course?.passingGradeThreshold || 'N/A'}%`}
+                  variant={hasPassedCourseThreshold ? 'green' : 'yellow'}
+                  size="l"
+                  showBackground
+                  className="mx-auto mt-5 md:mt-7.5"
+                />
+              </>
+            }
+            icon={
+              hasPassedCourseThreshold ? (
+                <SuccessParty
+                  className={cn(stepMessageIconClass, 'fill-brightGreen-5')}
+                />
+              ) : (
+                <Certificate
+                  className={cn(stepMessageIconClass, 'fill-red-5')}
+                />
+              )
+            }
+          />
+        ) : (
+          <StepMessage
+            title={t('courses.exam.finalExam')}
+            headline={
+              hasExamResults ? (
+                hasExamSucceeded ? (
+                  <Trans i18nKey={'courses.exam.congratulationsPassed'}>
+                    <span className="font-semibold">{'passed'}</span>
+                  </Trans>
+                ) : (
+                  <>
+                    <Trans i18nKey={'courses.exam.oopsFailed'}>
+                      <span className="font-semibold">{'failed'}</span>
+                    </Trans>
+                    <br />
+                    <span>
+                      {t('courses.exam.score')}{' '}
+                      <span
+                        className={cn(
+                          'font-semibold',
+                          hasExamSucceeded
+                            ? 'text-brightGreen-5'
+                            : 'text-red-5',
+                        )}
+                      >
+                        {previousExamResults.score}%
+                      </span>
+                    </span>
+                    <br />
+                    {!hasExamSucceeded && t('courses.exam.dontWorryRetake')}
+                  </>
+                )
+              ) : (
+                t('courses.conclusion.takeFinalExam')
+              )
+            }
+            icon={
+              hasExamResults ? (
+                hasExamSucceeded ? (
+                  <SuccessParty
+                    className={cn(stepMessageIconClass, 'fill-brightGreen-5')}
+                  />
+                ) : (
+                  <FailurePixel
+                    className={cn(stepMessageIconClass, 'fill-red-5')}
+                  />
+                )
+              ) : (
+                <BookPixel
+                  className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
+                />
+              )
+            }
+            actionButton={
+              hasExamSucceeded ? undefined : (
+                <div className="flex max-md:flex-col gap-4">
+                  <Button disabled={isExamButtonDisabled}>
+                    <Link
+                      to="/courses/$courseId/$chapterId"
+                      params={{
+                        chapterId: multiAttemptsExamChapterId,
+                        courseId: course?.id,
+                      }}
+                    >
+                      {hasExamResults
+                        ? t('courses.exam.tryAgain')
+                        : t('courses.exam.takeExam')}
+                    </Link>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-fit mx-auto"
+                    onClick={() => {
+                      scrollToHeader();
+                      setIsCourseExamSkipped(true);
+                    }}
+                  >
+                    {t('words.skip')}
+                  </Button>
+                </div>
+              )
+            }
+          />
+        )
+      ) : null}
+
+      {shouldShowCongratsVideo && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black md:bg-black/80 md:backdrop-blur-md z-50">
+          <button
+            onClick={() => updateStep(6)}
+            className="absolute top-4 right-4 z-10"
+            type="button"
+          >
+            <TbX className="size-8 text-white hover:opacity-80 transition-opacity" />
+          </button>
+
+          {isMobile ? (
+            <video
+              className="relative w-full max-h-full"
+              src={congratsDarkMobile}
+              autoPlay
+              muted
+              preload="auto"
+              onEnded={() => {
+                updateStep(6);
+              }}
+            />
+          ) : (
+            <div className="flex justify-center w-full max-h-[85%] bg-black px-[100px]">
+              <video
+                className="relative w-full"
+                src={congratsDark}
+                autoPlay
+                muted
+                preload="auto"
+                onEnded={() => {
+                  updateStep(6);
+                }}
+              />
+            </div>
+          )}
+        </div>
+      )}
+
+      {shouldShowConclusionFinish && (
+        <ConclusionFinish
+          course={course}
+          examResults={previousExamResults ?? undefined}
+          isProfessorLed={isProfessorLed}
+          hasSingleTrialExamOrAssignment={hasSingleTrialExamOrAssignment}
+          hasPassedCourseThreshold={hasPassedCourseThreshold}
+        />
+      )}
+    </div>
+  );
+};
+
+const LockedBar = () => {
+  return (
+    <div className="relative w-full aspect-[110/25] md:aspect-[110/18] rounded-lg overflow-hidden">
+      <img
+        src={completionSteps}
+        alt="Congratulations"
+        className="absolute w-full top-5 object-cover aspect-auto max-md:hidden"
+      />
+      <img
+        src={completionStepsMobile}
+        alt="Congratulations"
+        className="absolute w-full top-1 object-cover aspect-auto md:hidden"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-[#e2e2e2]/80 backdrop-blur-xs md:backdrop-blur-md flex items-center justify-center md:gap-6">
+        <img
+          src={LockGif}
+          alt="Lock"
+          className="size-11 md:size-[74px] shrink-0"
+        />
+        <p className="text-black body-medium-12px md:subtitle-medium-med-16px w-full max-w-[831px] flex flex-col">
+          <span>{t('courses.conclusion.unlockFeatures1')}</span>
+          <span className="max-md:hidden">
+            {t('courses.conclusion.unlockFeatures2')}
+          </span>
+        </p>
+      </div>
     </div>
   );
 };
