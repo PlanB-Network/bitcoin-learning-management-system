@@ -4,7 +4,7 @@ import { canAccess } from '@blms/shared/auth';
 import { Button, Image } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import type { ParsedLocation } from '@tanstack/react-router';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
@@ -76,8 +76,6 @@ export const MenuDashboard = ({
     ) || [];
 
   const pictureUrl = getPictureUrl(user ? user : null);
-
-  const navigate = useNavigate();
 
   const credentialsPath = '/dashboard/credentials';
   const bookingsPath = '/dashboard/bookings';
@@ -315,8 +313,6 @@ export const MenuDashboard = ({
           size="m"
           onClick={async () => {
             await logout();
-            await navigate({ to: '/' });
-            window.location.reload();
           }}
           className="flex gap-2.5 w-fit my-[15px]"
         >

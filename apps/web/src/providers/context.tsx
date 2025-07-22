@@ -120,6 +120,27 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  // Listen for logout events from other tabs
+  useEffect(() => {
+    const channel = new BroadcastChannel('auth');
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.type === 'LOGOUT') {
+        setSession(null);
+        setUser(null);
+        setAccountSettings(null);
+        window.location.reload();
+      }
+    };
+
+    channel.addEventListener('message', handleMessage);
+
+    return () => {
+      channel.removeEventListener('message', handleMessage);
+      channel.close();
+    };
+  }, []);
+
   useEffect(() => {
     fetchUserDetailsAndSettings();
 

@@ -64,7 +64,6 @@ export const MetaElements = ({
                 type="button"
                 onClick={async () => {
                   await logout();
-                  window.location.reload();
                 }}
                 className={`cursor-pointer rounded-[16px] py-[14px] px-[18px] ${
                   variant === 'light'
