@@ -74,7 +74,7 @@ export const createS3Service = (config: S3Config): S3Service => {
     return s3.send(new GetObjectCommand({ Bucket, Key: base(key) }));
   };
 
-  const headObject = (key: string) => {
+  const head = (key: string) => {
     return s3.send(new HeadObjectCommand({ Bucket, Key: base(key) }));
   };
 

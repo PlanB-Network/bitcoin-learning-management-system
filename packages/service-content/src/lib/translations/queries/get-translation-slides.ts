@@ -8,6 +8,7 @@ export interface CourseTranslationSlide {
   chapterId: string;
   slideId: string;
   slideNumber: number;
+  professorName: string | null;
   pptValidated: boolean;
   transcriptionValidated: boolean;
   audioValidated: boolean;

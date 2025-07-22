@@ -18,6 +18,7 @@ export {
   createGetPlanBSchoolCoursesIds,
   createGetProfessorCourses,
 } from './get-courses.js';
+export { createGetCoursesBasic } from './get-courses-basic.js';
 export {
   createRefreshCourseRating,
   createRefreshCoursesRatings,

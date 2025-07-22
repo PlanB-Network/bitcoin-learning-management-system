@@ -1,23 +1,22 @@
-import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
-
 import { TranslationStatus } from '@blms/constants';
 import {
   contentCourseChapters,
   contentCourseChaptersLocalized,
   contentCourseParts,
   contentCoursePartsLocalized,
+  contentCourses,
+  contentCoursesLocalized,
   contentCourseTranslationChapters,
   contentCourseTranslationSlides,
   contentCourseTranslations,
-  contentCourses,
-  contentCoursesLocalized,
   usersLanguages,
   usersReviewerLanguages,
   usersTranslationAssignments,
   usersTranslationChapterAssignments,
   usersTranslationReviews,
 } from '@blms/database';
+import { createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
 import { assignmentStatusEnum, translationStatusEnum } from '../enums.js';
 
@@ -278,7 +277,6 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
     audioResourcePath: true,
     originalContent: true,
     translatedContent: true,
-    professor: true,
     createdAt: true,
     updatedAt: true,
   })
@@ -289,7 +287,7 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
       transcriptionValidated: z.boolean(),
       audioValidated: z.boolean(),
       audioTries: z.number(),
-      professor: z.string().nullable(),
+      professorName: z.string().nullable(),
       status: translationStatusEnum,
     }),
   );

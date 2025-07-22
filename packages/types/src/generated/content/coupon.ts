@@ -3,29 +3,29 @@
 
 export interface CouponCode {
   code: string;
-  itemId: string;
-  reductionPercentage: number | null;
-  uses: number;
-  maxUses: number;
-  uid: string | null;
   createdAt: Date;
   deletedAt: Date | null;
+  itemId: string;
+  maxUses: number;
+  reductionPercentage: number | null;
+  uid: string | null;
+  uses: number;
 }
 
 export interface CouponCodeWithOwner {
   code: string;
-  itemId: string;
-  reductionPercentage: number | null;
-  uses: number;
-  maxUses: number;
-  uid: string | null;
   createdAt: Date;
   deletedAt: Date | null;
+  itemId: string;
+  maxUses: number;
+  reductionPercentage: number | null;
+  uid: string | null;
+  uses: number;
   owner?: (string | undefined) | null;
 }
 
 export interface CouponTarget {
   id: string;
-  type: string;
   name: string;
+  type: string;
 }

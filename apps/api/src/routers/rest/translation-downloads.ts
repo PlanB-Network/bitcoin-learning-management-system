@@ -1,12 +1,11 @@
 import { randomUUID } from 'node:crypto';
 import { Readable } from 'node:stream';
 import { NoSuchKey } from '@blms/s3';
-import type { Router } from 'express';
-
 import {
   createGetPptxAvailableLanguages,
   createGetTranscriptAvailableLanguages,
 } from '@blms/service-content';
+import type { Router } from 'express';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
@@ -102,7 +101,6 @@ export const createRestTranslationDownloadRoutes = async (
         };
 
         // Use localhost in development (hybrid environment) or onlyoffice in Docker
-        const onlyofficeHost = process.env.DOCKER ? 'onlyoffice' : 'localhost';
         const onlyofficeUrl = process.env.DOCKER
           ? 'http://onlyoffice/coauthoring/CommandService.ashx'
           : 'http://localhost:80/coauthoring/CommandService.ashx';
@@ -128,11 +126,11 @@ export const createRestTranslationDownloadRoutes = async (
   // OnlyOffice callback endpoint for manual saves
   router.post(
     '/translation-downloads/pptx-callback',
-    async (req, res, next) => {
+    async (req, res, _next) => {
       try {
         console.log('OnlyOffice callback received:', req.body);
 
-        const { status, key, url } = req.body;
+        const { status, url } = req.body;
         const { courseId, partId, chapterId, slideId, language, fileName } =
           req.query as any;
 
@@ -505,7 +503,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Handle CORS preflight requests for PPTX downloads
   router.options(
     '/translation-downloads/pptx/:courseId/:language/:partId/:chapterId/:slideId/:fileName',
-    (req, res) => {
+    (_req, res) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
       res.setHeader(
@@ -517,7 +515,7 @@ export const createRestTranslationDownloadRoutes = async (
   );
 
   // OnlyOffice callback endpoint for document saves
-  router.post('/onlyoffice-callback', async (req, res, next) => {
+  router.post('/onlyoffice-callback', async (req, res, _next) => {
     try {
       const { status, url, key } = req.body;
 
@@ -661,8 +659,9 @@ export const createRestTranslationDownloadRoutes = async (
           throw new BadRequest('Missing required path parameters');
         }
 
-        const getPptxAvailableLanguages =
-          createGetPptxAvailableLanguages(dependencies);
+        const getPptxAvailableLanguages = createGetPptxAvailableLanguages(
+          dependencies as any,
+        );
         const languages = await getPptxAvailableLanguages(
           courseId,
           partId,
@@ -689,7 +688,7 @@ export const createRestTranslationDownloadRoutes = async (
         }
 
         const getTranscriptAvailableLanguages =
-          createGetTranscriptAvailableLanguages(dependencies);
+          createGetTranscriptAvailableLanguages(dependencies as any);
         const languages = await getTranscriptAvailableLanguages(
           courseId,
           partId,

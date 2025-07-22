@@ -1,5 +1,3 @@
-import { hash } from 'argon2';
-
 import type { UserPermission } from '@blms/constants';
 import { firstRow, rejectOnEmpty } from '@blms/database';
 import type { UserAccount } from '@blms/types';

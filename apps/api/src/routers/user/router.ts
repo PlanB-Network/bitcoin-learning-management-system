@@ -56,7 +56,6 @@ import { userCareerRouter } from './career.js';
 import { userCoursesRouter } from './courses.js';
 import { userEventsRouter } from './events.js';
 import { userNotificationsRouter } from './notifications.js';
-import { userTranslationRouter } from './translation.js';
 import { userTutorialsRouter } from './tutorials.js';
 
 export const userRouter = createTRPCRouter({

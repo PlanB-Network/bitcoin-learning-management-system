@@ -4,11 +4,11 @@
 import type { BetType } from '@blms/constants';
 
 export interface Bet {
-  resourceId: string;
-  projectId: string | null;
-  type: BetType;
   downloadUrl: string;
   originalLanguage: string;
+  projectId: string | null;
+  resourceId: string;
+  type: BetType;
 }
 
 export interface BetViewUrl {
@@ -19,23 +19,23 @@ export interface BetViewUrl {
 
 export interface BetLocalized {
   betId: string;
+  description: string;
   language: string;
   name: string;
-  description: string;
 }
 
 export interface JoinedBet {
   id: string;
-  path: string;
-  lastUpdated: Date;
   lastCommit: string;
-  type: BetType;
+  lastUpdated: Date;
+  path: string;
   downloadUrl: string;
   originalLanguage: string;
+  type: BetType;
   projectName?: string | undefined;
+  description: string;
   language: string;
   name: string;
-  description: string;
-  viewurls: BetViewUrl[];
   tags: string[];
+  viewurls: BetViewUrl[];
 }
