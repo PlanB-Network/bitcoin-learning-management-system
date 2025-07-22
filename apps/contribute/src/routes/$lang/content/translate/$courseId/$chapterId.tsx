@@ -120,9 +120,8 @@ function ChapterTranslationPage() {
   // -----------------------------
   const MAX_AUDIO_TRIES = 3;
 
-  const getAttemptKey = (slideId: string) =>
-    `audioAttempts_${courseId}_${chapterId}_${slideId}`;
-
+  // Track audio generation attempts for the current slide. We rely on the
+  // database's `audio_tries` column instead of any client-side storage.
   const [audioAttempts, setAudioAttempts] = useState<number>(0);
   const [audioGenerating, setAudioGenerating] = useState(false);
   const [audioVersion, setAudioVersion] = useState(0);
@@ -173,11 +172,9 @@ function ChapterTranslationPage() {
     const slide = chapterData.slides[currentSlideIndex];
     if (!slide) return;
 
-    const saved = Number(
-      sessionStorage.getItem(getAttemptKey(slide.slideId)) ?? '0',
-    );
+    // Initialise attempts from the database field only – no cookie/sessionStorage fallback
     const fromDb = slide.audioTries ?? 0;
-    setAudioAttempts(Math.max(saved, fromDb));
+    setAudioAttempts(fromDb);
   }, [chapterData, currentSlideIndex]);
 
   // Video generation modal state
@@ -642,12 +639,8 @@ function ChapterTranslationPage() {
         console.warn('Failed to mark audio unvalidated', err);
       }
 
-      // Update local attempts state and persist to session storage
+      // Update local attempts state (no persistence to cookies / sessionStorage)
       setAudioAttempts(newAttempts);
-      sessionStorage.setItem(
-        getAttemptKey(currentSlide.slideId),
-        String(newAttempts),
-      );
 
       const toolkitTaskId = data.toolkitTask?.task_id;
 
@@ -816,13 +809,13 @@ function ChapterTranslationPage() {
       if (toolkitTask?.task_id) {
         pollToolkitTask(toolkitTask.task_id, accessToken);
       } else {
-        // Fallback to simulated progress if no task id
-        simulateVideoGeneration();
+        // No task id returned – cannot track progress.
+        console.warn(
+          'No toolkit task id returned – unable to track video progress.',
+        );
       }
     } catch (err) {
       console.error('Error generating video', err);
-      // fallback
-      simulateVideoGeneration();
     }
   };
 
@@ -894,17 +887,7 @@ function ChapterTranslationPage() {
     }, 5000);
   };
 
-  const simulateVideoGeneration = () => {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.random() * 15; // Random progress increments
-      if (progress >= 100) {
-        progress = 100;
-        clearInterval(interval);
-      }
-      setVideoGenerationProgress(Math.floor(progress));
-    }, 1000);
-  };
+  // Removed simulateVideoGeneration – progress will no longer be faked on errors.
 
   const handleCloseVideoModal = () => {
     setIsVideoModalOpen(false);

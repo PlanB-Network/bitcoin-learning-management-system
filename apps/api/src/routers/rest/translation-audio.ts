@@ -1,40 +1,13 @@
 import type { Router } from 'express';
 
+import {
+  type CourseProfessor,
+  createGetCourseProfessors,
+} from '@blms/service-content';
+
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
-
-interface CourseProfessor {
-  id: string;
-  name: string;
-  isCoordinator: boolean; // Note: postgres client transforms snake_case to camelCase
-}
-
-/**
- * Get professor information for a course to enable voice matching
- */
-const getCourseProfessors = async (
-  postgres: Dependencies['postgres'],
-  courseId: string,
-): Promise<CourseProfessor[]> => {
-  try {
-    const professors = await postgres.exec(postgres`
-      SELECT
-        cp.professor_id as id,
-        p.name,
-        cp.is_coordinator
-      FROM content.course_professors cp
-      JOIN content.professors p ON cp.professor_id = p.id
-      WHERE cp.course_id = ${courseId}
-      ORDER BY cp.is_coordinator DESC, p.name ASC
-    `);
-
-    return professors as CourseProfessor[];
-  } catch (error) {
-    console.warn(`Failed to fetch professors for course ${courseId}:`, error);
-    return [];
-  }
-};
 
 /**
  * Routes for generating slide audio using the external Language-Toolkit API.
@@ -115,11 +88,11 @@ export const createRestTranslationAudioRoutes = async (
           console.log(`Using professor from slide payload: ${professor}`);
         } else {
           // Fallback to course-level professors
-          const courseProfs = await getCourseProfessors(
-            dependencies.postgres,
-            courseId,
+          const getCourseProfessors = createGetCourseProfessors(
+            dependencies as any,
           );
-          professors = courseProfs.map((p) => ({
+          const courseProfs = await getCourseProfessors(courseId);
+          professors = courseProfs.map((p: CourseProfessor) => ({
             id: p.id,
             name: p.name,
             isCoordinator: p.isCoordinator,
