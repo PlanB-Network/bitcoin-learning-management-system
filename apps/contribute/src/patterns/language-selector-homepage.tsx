@@ -1,13 +1,10 @@
+import { LANGUAGES_MAP } from '@blms/shared';
+import { Button, cn } from '@blms/ui';
 import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Button, cn } from '@blms/ui';
-
 import { useSmaller } from '#src/hooks/use-smaller.js';
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
-
-import { LANGUAGES_MAP } from '@blms/shared';
 import { LANGUAGES } from '../utils/i18n.ts';
 
 interface LanguageSelectorProps {

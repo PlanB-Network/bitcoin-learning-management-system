@@ -1,6 +1,5 @@
-import { Link } from '@tanstack/react-router';
-
 import { cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 
 import type { NavigationElementMobile } from '../props.ts';
 

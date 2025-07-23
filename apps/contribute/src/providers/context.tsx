@@ -1,17 +1,14 @@
-import type { SessionData, UserDetails } from '@blms/types';
-import { useQuery } from '@tanstack/react-query';
-import type { PropsWithChildren } from 'react';
-import { createContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
 import type {
-  BasicCourse,
   JoinedBlogLight,
+  JoinedCourse,
   JoinedTutorialLight,
   SessionData,
   UserAccountSettings,
   UserDetails,
 } from '@blms/types';
+import type { PropsWithChildren } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { trpcClient } from '#src/utils/trpc.js';
 
@@ -23,12 +20,13 @@ interface AppContext {
   // User
   user: UserDetails | null | undefined;
   setUser: (user: UserDetails | null) => void;
-  refetchUserDetails: () => Promise<void>;
 
   // Account settings
   accountSettings: UserAccountSettings | null;
   setAccountSettings: (settings: UserAccountSettings | null) => void;
-  refetchAccountSettings: () => Promise<void>;
+
+  // Fetch functions
+  fetchUserDetailsAndSettings: () => Promise<void>;
 
   // Session
   session: Session | null | undefined;
@@ -38,9 +36,9 @@ interface AppContext {
   tutorials: JoinedTutorialLight[] | null;
   setTutorials: (tutorials: JoinedTutorialLight[] | null) => void;
 
-  // Courses - using BasicCourse for better performance
-  courses: BasicCourse[] | null;
-  setCourses: (courses: BasicCourse[] | null) => void;
+  // Courses
+  courses: JoinedCourse[] | null;
+  setCourses: (courses: JoinedCourse[] | null) => void;
 
   // Blog
   blogs: JoinedBlogLight[] | null;
@@ -49,35 +47,29 @@ interface AppContext {
   // Register Toast
   hasSeenRegisterToast: boolean;
   setHasSeenRegisterToast: (value: boolean) => void;
+
+  university: string | null;
+  setUniversity: (university: string | null) => void;
 }
 
 export const AppContext = createContext<AppContext>({
-  refetchUserDetails: async () => {},
-
-  // Account settings
   accountSettings: null,
-  setAccountSettings: () => {},
-  refetchAccountSettings: async () => {},
-
-  // Session
-  session: undefined,
-  setSession: () => {},
-
-  // Tutorials
-  tutorials: null,
-  setTutorials: () => {},
-
-  // Courses
-  courses: null,
-  setCourses: () => {},
-
-  // Blog
   blogs: null,
-  setBlogs: () => {},
-
-  // Register Toast
+  courses: null,
+  fetchUserDetailsAndSettings: async () => {},
   hasSeenRegisterToast: false,
+  session: undefined,
+  setAccountSettings: () => {},
+  setBlogs: () => {},
+  setCourses: () => {},
   setHasSeenRegisterToast: () => {},
+  setSession: () => {},
+  setTutorials: () => {},
+  setUniversity: async () => {},
+  setUser: () => {},
+  tutorials: null,
+  university: null,
+  user: undefined,
 });
 
 export const AppContextProvider = ({ children }: PropsWithChildren) => {
@@ -90,55 +82,46 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const [tutorials, setTutorials] = useState<JoinedTutorialLight[] | null>(
     null,
   );
-  const [courses, setCourses] = useState<BasicCourse[] | null>(null);
+  const [courses, setCourses] = useState<JoinedCourse[] | null>(null);
   const [blogs, setBlogs] = useState<JoinedBlogLight[] | null>(null);
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
 
-  const refetchUserDetails = async () => {
-    try {
-      const data = await trpcClient.user.getDetails.query();
-      setUser(data ?? null);
-    } catch {
-      setUser(null);
-    }
-  };
+  const [university, setUniversity] = useState<string | null>(null);
 
-  const refetchAccountSettings = async () => {
+  const fetchUserDetailsAndSettings = async () => {
     try {
-      const data = await trpcClient.user.getAccountSettings.query();
-      setAccountSettings(data ?? null);
+      let currentSession = session;
+
+      if (!currentSession) {
+        const sessionData = await trpcClient.user.getSession.query();
+        if (sessionData?.uid && sessionData.role) {
+          currentSession = { user: sessionData };
+          setSession(currentSession);
+        } else {
+          setSession(null);
+          setUser(null);
+          setAccountSettings(null);
+          return;
+        }
+      }
+
+      const detailsData = await trpcClient.user.getDetails.query();
+      setUser(detailsData ?? null);
+
+      const accountSettingsData =
+        await trpcClient.user.getAccountSettings.query();
+      setAccountSettings(accountSettingsData ?? null);
     } catch {
+      setSession(null);
+      setUser(null);
       setAccountSettings(null);
     }
   };
 
   useEffect(() => {
-    refetchUserDetails();
-
-    trpcClient.user.getAccountSettings
-      .query()
-      .then((data) => {
-        if (data) {
-          return setAccountSettings(data);
-        }
-
-        return setAccountSettings(null);
-      })
-      .catch(() => null);
-
-    trpcClient.user.getSession
-      .query()
-      .then((data) => {
-        if (data?.uid && data.role) {
-          const session: Session = { user: data };
-          return setSession(session);
-        }
-
-        return setSession(null);
-      })
-      .catch(() => null);
+    fetchUserDetailsAndSettings();
 
     trpcClient.content.getTutorials
       .query({
@@ -148,9 +131,9 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       .then(setTutorials)
       .catch(() => null);
 
-    trpcClient.content.getCoursesBasic
+    trpcClient.content.getCourses
       .query({
-        language: 'en',
+        language: i18n.language,
       })
       .then((data) => data ?? null)
       .then(setCourses)
@@ -168,20 +151,23 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   }, [i18n.language]);
 
   const appContext: AppContext = {
-    refetchUserDetails,
     accountSettings,
-    setAccountSettings,
-    refetchAccountSettings,
-    session,
-    setSession,
-    tutorials,
-    setTutorials,
-    courses,
-    setCourses,
     blogs,
-    setBlogs,
+    courses,
+    fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
+    session,
+    setAccountSettings,
+    setBlogs,
+    setCourses,
     setHasSeenRegisterToast,
+    setSession,
+    setTutorials,
+    setUniversity,
+    setUser,
+    tutorials,
+    university,
+    user,
   };
 
   return (

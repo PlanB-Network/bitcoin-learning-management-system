@@ -1,15 +1,14 @@
+import { ToastContainer } from '@blms/ui';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from '@tanstack/react-router';
 import {
-  type PropsWithChildren,
   createContext,
+  type PropsWithChildren,
   useEffect,
   useState,
 } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-
-import { ToastContainer } from '@blms/ui';
 
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { router } from '#src/routes/-router.js';
@@ -40,7 +39,7 @@ function makeQueryClient() {
   });
 }
 
-let browserQueryClient: QueryClient | undefined = undefined;
+let browserQueryClient: QueryClient | undefined;
 function getQueryClient() {
   if (typeof window === 'undefined') {
     return makeQueryClient();

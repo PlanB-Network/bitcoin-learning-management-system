@@ -1,19 +1,16 @@
+import { LANGUAGES_MAP } from '@blms/shared';
+import { Button, cn, Popover, PopoverContent, PopoverTrigger } from '@blms/ui';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { CiGlobe } from 'react-icons/ci';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import {
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
   MdOutlineCheck,
 } from 'react-icons/md';
-
-import { Button, Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
-
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
-
-import { LANGUAGES_MAP } from '@blms/shared';
-import { CiGlobe } from 'react-icons/ci';
 import { LANGUAGES } from '../../utils/i18n.ts';
 
 interface LanguageSelectorProps {

@@ -1,4 +1,4 @@
-import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import type { i18n } from 'i18next';
 
 import { LANGUAGES } from '#src/utils/i18n.ts';

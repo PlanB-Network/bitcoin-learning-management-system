@@ -1,3 +1,4 @@
+import type { JoinedUserNotification } from '@blms/types';
 import type { PropsWithChildren } from 'react';
 import {
   createContext,
@@ -7,10 +8,9 @@ import {
   useState,
 } from 'react';
 
-import type { JoinedUserNotification } from '@blms/types';
-
 import { trpcClient } from '#src/utils/trpc.js';
 import { AppContext } from './context.tsx';
+
 interface NotificationsContextValue {
   userNotifications: JoinedUserNotification[];
   fetchUserNotifications: () => Promise<void>;

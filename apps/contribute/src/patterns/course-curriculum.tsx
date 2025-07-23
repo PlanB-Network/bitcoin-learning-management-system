@@ -1,11 +1,10 @@
-import { Button, TextTag, cn } from '@blms/ui';
+import type { CourseResponse } from '@blms/types';
+import { Button, cn, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-
-import type { CourseResponse } from '@blms/types';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ButtonWithArrow } from '#src/molecules/button-arrow.tsx';
 
@@ -40,7 +39,7 @@ export const CourseCurriculum = ({
       <section className="flex flex-col gap-5">
         {course.parts?.map((part, partIndex) => (
           <details
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+            // biome-ignore lint/suspicious/noArrayIndexKey: using index as key is acceptable here because parts lack stable ids
             key={partIndex}
             open={
               expandAll
@@ -87,7 +86,7 @@ export const CourseCurriculum = ({
                 return (
                   chapter !== undefined && (
                     <div
-                      // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                      // biome-ignore lint/suspicious/noArrayIndexKey: using index as key is acceptable here because chapters lack unique identifiers
                       key={index}
                       className="flex justify-between items-center pl-4 lg:pl-8 gap-2"
                     >

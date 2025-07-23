@@ -1,6 +1,8 @@
 import { joinedVideoSchema } from '@blms/schemas';
-import { createGetVideos } from '@blms/service-content';
-import { createGenerateCourseVideo } from '@blms/service-content';
+import {
+  createGenerateCourseVideo,
+  createGetVideos,
+} from '@blms/service-content';
 import type { JoinedVideo } from '@blms/types';
 import { z } from 'zod';
 import { contributorProcedure } from '#src/procedures/protected.js';

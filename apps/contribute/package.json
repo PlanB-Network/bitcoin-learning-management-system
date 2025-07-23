@@ -6,7 +6,7 @@
     "#src/*": "./src/*"
   },
   "scripts": {
-    "build": "tsc --build tsconfig.app.json && vite build --mode production",
+    "build": "vite build --mode production",
     "dev": "vite serve --mode development",
     "lint": "biome check .",
     "type-check": "tsc --build",

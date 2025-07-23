@@ -15,7 +15,6 @@ export interface CourseTranslationSlide {
   audioTries: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
-  professor: string | null;
   originalContent: string | null;
   translatedContent: string | null;
   status: TranslationStatus;
@@ -45,7 +44,7 @@ export const getCourseTranslationSlidesQuery = (
       cts.audio_tries AS "audioTries",
       cts.ppt_resource_path AS "pptResourcePath",
       cts.audio_resource_path AS "audioResourcePath",
-      cts.professor AS "professor",
+      cts.professor_name AS "professorName",
       cts.original_content AS "originalContent",
       cts.translated_content AS "translatedContent",
       cts.status,

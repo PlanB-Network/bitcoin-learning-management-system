@@ -1,5 +1,5 @@
 import type { JoinedUserNotification } from '@blms/types';
-import { Popover, PopoverContent, PopoverTrigger, TextTag, cn } from '@blms/ui';
+import { cn, Popover, PopoverContent, PopoverTrigger, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useState } from 'react';

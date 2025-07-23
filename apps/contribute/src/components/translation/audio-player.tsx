@@ -1,9 +1,9 @@
 import React, {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
-  useLayoutEffect,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 

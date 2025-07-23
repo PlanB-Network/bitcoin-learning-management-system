@@ -1,6 +1,5 @@
-import { Link } from '@tanstack/react-router';
-
 import { cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 
 import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/logo/planb_logo_horizontal_white_whitepill.svg?react';

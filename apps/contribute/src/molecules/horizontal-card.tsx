@@ -1,8 +1,7 @@
-import { Link } from '@tanstack/react-router';
-import { FaArrowRightLong } from 'react-icons/fa6';
-
 import type { ButtonProps } from '@blms/ui';
 import { Button, cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 import Flag from '#src/molecules/Flag/index.js';
 

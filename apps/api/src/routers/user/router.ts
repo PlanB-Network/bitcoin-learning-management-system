@@ -56,6 +56,7 @@ import { userCareerRouter } from './career.js';
 import { userCoursesRouter } from './courses.js';
 import { userEventsRouter } from './events.js';
 import { userNotificationsRouter } from './notifications.js';
+import { userTranslationRouter } from './translation.js';
 import { userTutorialsRouter } from './tutorials.js';
 
 export const userRouter = createTRPCRouter({
@@ -313,6 +314,7 @@ export const userRouter = createTRPCRouter({
       createGetTokenInfo(ctx.dependencies)(input.token),
     ),
   tutorials: userTutorialsRouter,
+  translation: userTranslationRouter,
   validateEmailChange: publicProcedure
     .input(z.object({ token: z.string() }))
     .mutation(({ ctx, input }) =>

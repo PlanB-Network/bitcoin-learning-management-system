@@ -1,14 +1,12 @@
+import type { BasicCourse } from '@blms/types';
 import { Button } from '@blms/ui';
 import { useNavigate } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { TranslationRequestModal } from '#src/components/translation-request-modal.tsx';
-
-import type { BasicCourse } from '@blms/types';
-
 import { Image } from '#src/components/image.tsx';
+import { TranslationRequestModal } from '#src/components/translation-request-modal.tsx';
 import Flag from '#src/molecules/Flag/index.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
@@ -295,7 +293,8 @@ export const CourseTranslationCard = ({
 
   return (
     <>
-      <div
+      <button
+        type="button"
         onClick={handleCourseClick}
         onKeyDown={handleKeyDown}
         className="group w-full cursor-pointer text-left"
@@ -397,7 +396,7 @@ export const CourseTranslationCard = ({
             </div>
           </div>
         </div>
-      </div>
+      </button>
 
       {/* Translation Request Modal */}
       <TranslationRequestModal

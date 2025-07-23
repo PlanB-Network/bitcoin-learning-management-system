@@ -1,7 +1,6 @@
+import { cn } from '@blms/ui';
 import { cva } from 'class-variance-authority';
 import type React from 'react';
-
-import { cn } from '@blms/ui';
 
 interface ListItemProps {
   leftText: string;

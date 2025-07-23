@@ -1,13 +1,13 @@
 import { TranslationStatus } from '@blms/constants';
 import { Button } from '@blms/ui';
 import {
+  createFileRoute,
   Link,
   Outlet,
-  createFileRoute,
   useLocation,
   useNavigate,
 } from '@tanstack/react-router';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BookClosedIcon from '#src/assets/icons/book_closed.svg';
@@ -66,7 +66,7 @@ interface CourseTranslationSlide {
   audioResourcePath: string | null;
   originalContent: string | null;
   translatedContent: string | null;
-  professor: string | null;
+  professorName: string | null;
   status: string;
   createdAt: Date;
   updatedAt: Date;
@@ -274,7 +274,7 @@ function ChapterTranslationPage() {
           resp = await trpcClient.content.getCourseLanguagesPublic.query({
             id: courseId,
           });
-        } catch (e: any) {
+        } catch (_e: any) {
           resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
             id: courseId,
           });
@@ -497,7 +497,7 @@ function ChapterTranslationPage() {
     setHasUnsavedChanges(true);
   };
 
-  const handleSaveChanges = async () => {
+  const _handleSaveChanges = async () => {
     if (!chapterData || !hasUnsavedChanges) return;
 
     try {
@@ -610,7 +610,7 @@ function ChapterTranslationPage() {
           fileName: fileBaseName,
           language: targetLanguage,
           text: currentSlide.translatedContent || '',
-          professor: currentSlide.professor || undefined,
+          professor: currentSlide.professorName || undefined,
         }),
       });
 
@@ -1184,18 +1184,18 @@ function ChapterTranslationPage() {
             {/* Segmented slide progress bar */}
             <div className="flex items-center gap-1 h-[6px]">
               {chapterData!.slides.map((slide, slideIndex) => {
-                const isCompleted = slideIndex < currentSlideIndex;
-                const isCurrent = slideIndex === currentSlideIndex;
-                const isFirst = slideIndex === 0;
-                const isLast = slideIndex === chapterData!.slides.length - 1;
+                const _isCompleted = slideIndex < currentSlideIndex;
+                const _isCurrent = slideIndex === currentSlideIndex;
+                const _isFirst = slideIndex === 0;
+                const _isLast = slideIndex === chapterData!.slides.length - 1;
 
                 return (
                   <div
                     key={`slide-progress-${slide.slideId}`}
                     className={`h-[6px] flex-1 rounded-full ${
-                      isCompleted
+                      _isCompleted
                         ? 'bg-orange-400'
-                        : isCurrent
+                        : _isCurrent
                           ? 'bg-orange-500'
                           : 'bg-[#E5E5E5]'
                     }`}

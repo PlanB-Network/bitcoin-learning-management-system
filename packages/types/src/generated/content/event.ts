@@ -25,7 +25,7 @@ export interface Event {
   name: string | null;
   path: string;
   priceDollars: number | null;
-  professor: string | null;
+  professorName: string | null;
   projectId: string | null;
   rawDescription: string | null;
   remainingSeats: number | null;
@@ -58,7 +58,6 @@ export interface JoinedEvent {
   name: string | null;
   path: string;
   priceDollars: number | null;
-  professor: string | null;
   projectId: string | null;
   rawDescription: string | null;
   remainingSeats: number | null;

@@ -1,9 +1,8 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
-import { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
 import type { BasicCourse } from '@blms/types';
 import { Button } from '@blms/ui';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import {
   CourseGrid,

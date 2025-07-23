@@ -1,12 +1,9 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@blms/ui';
-
-import { SocialNetworks } from './social-networks.tsx';
-
 import OrangePill from '../assets/icons/footer_pill.webp?no-inline';
 import PlanBLogoWhite from '../assets/logo/planb_logo_horizontal_white_orangepill_gradient.svg';
+import { SocialNetworks } from './social-networks.tsx';
 
 interface FooterProps {
   variant?: 'light' | 'dark';

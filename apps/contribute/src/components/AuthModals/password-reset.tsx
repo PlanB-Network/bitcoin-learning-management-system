@@ -1,7 +1,3 @@
-import { useCallback, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-
 import {
   Button,
   Dialog,
@@ -17,8 +13,10 @@ import {
   FormMessage,
   Input,
 } from '@blms/ui';
-
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCallback, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { trpcClient } from '#src/utils/trpc.ts';
 import { AuthModalState } from './props.ts';

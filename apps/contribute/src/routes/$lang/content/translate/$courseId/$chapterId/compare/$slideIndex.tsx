@@ -1,9 +1,8 @@
+import { TranslationStatus } from '@blms/constants';
 import { Button } from '@blms/ui';
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { TranslationStatus } from '@blms/constants';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
@@ -75,7 +74,7 @@ function CompareSlidePage() {
     null,
   );
   const [courseData, setCourseData] = useState<any>(null);
-  const [totalChapters, setTotalChapters] = useState<number>(0);
+  const [_totalChapters, setTotalChapters] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'presentation' | 'transcription'>(
@@ -109,7 +108,7 @@ function CompareSlidePage() {
   const [translatedText, setTranslatedText] = useState<string>('');
   const [transcriptionValidated, setTranscriptionValidated] =
     useState<boolean>(false);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
+  const [_hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
 
   const numericSlideIndex = Number(slideIndex);
   const targetLanguage = Route.useSearch()?.targetLanguage || 'fr';
@@ -162,7 +161,7 @@ function CompareSlidePage() {
           resp = await (
             trpcClient as any
           ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (e: any) {
+        } catch (_e: any) {
           // If public endpoint unavailable (older backend) or we are admin using secured route
           resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
             id: courseId,
@@ -233,8 +232,8 @@ function CompareSlidePage() {
 
       // Fallback: use original language + English (if available)
       const originalLanguageCode = courseData?.originalLanguage ?? 'en';
-      const hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
-      const fallbackLanguages = hasEnglishVersion
+      const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
+      const fallbackLanguages = _hasEnglishVersion
         ? [originalLanguageCode, 'en']
         : [originalLanguageCode];
 
@@ -278,7 +277,7 @@ function CompareSlidePage() {
 
         if (!selectedOriginalLanguage) {
           setSelectedOriginalLanguage(
-            hasEnglishVersion ? 'en' : originalLanguageCode,
+            _hasEnglishVersion ? 'en' : originalLanguageCode,
           );
         }
       }
@@ -303,7 +302,7 @@ function CompareSlidePage() {
           resp = await (
             trpcClient as any
           ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (e: any) {
+        } catch (_e: any) {
           resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
             id: courseId,
           });
@@ -560,7 +559,7 @@ function CompareSlidePage() {
 
   // Original language handling
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
-  const hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
+  const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
 
   // Get available languages from the languageAvailability state
   const availableLanguages = languageAvailability.filter((l) => l.available);
@@ -585,11 +584,11 @@ function CompareSlidePage() {
     availableLanguages.find((l) => l.code === 'en')?.code ||
     availableLanguages[0]?.code ||
     originalLanguageCode;
-  const originalLanguageName = getLanguageName(originalLanguage);
+  const _originalLanguageName = getLanguageName(originalLanguage);
   const targetLanguageName = getLanguageName(targetLanguage);
 
   // Overall chapter index for progress (copied logic)
-  const overallChapterNumber = React.useMemo(() => {
+  const _overallChapterNumber = React.useMemo(() => {
     if (!courseData) return 0;
     const chaptersInCourse = courseData.parts.flatMap(
       (part: any) => part.chapters,
@@ -600,7 +599,7 @@ function CompareSlidePage() {
     return index >= 0 ? index + 1 : 0;
   }, [courseData, chapterId]);
 
-  const partEndIndexes = React.useMemo(() => {
+  const _partEndIndexes = React.useMemo(() => {
     if (!courseData) return [] as number[];
     let cumulative = 0;
     return courseData.parts.map((part: any) => {

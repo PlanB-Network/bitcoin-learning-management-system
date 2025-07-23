@@ -1,15 +1,13 @@
+import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
+import { TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { TextTag } from '@blms/ui';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
-
-import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 
 interface FeaturedCardProps {
   category: string;

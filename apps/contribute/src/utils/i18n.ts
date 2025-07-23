@@ -1,8 +1,8 @@
 import { LANGUAGES_MAP } from '@blms/shared';
 import * as i18n from 'i18next';
 import Detector from 'i18next-browser-languagedetector';
-import Backend from 'i18next-http-backend';
 import type { HttpBackendOptions } from 'i18next-http-backend';
+import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 import { build } from './cache.ts';
 

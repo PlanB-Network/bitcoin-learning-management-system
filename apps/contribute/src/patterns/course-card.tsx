@@ -1,16 +1,14 @@
+import type { CourseResponse, JoinedCourse } from '@blms/types';
+import { Button, cn, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
-import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { Button, TextTag, cn } from '@blms/ui';
-
 import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
-
+import { Image } from '#src/components/image.tsx';
 import { ListItem } from '#src/components/ListItem/list-item.tsx';
 import { StarRating } from '#src/components/Stars/star-rating.js';
-import { Image } from '#src/components/image.tsx';
 import { getDateStringWithDayAndMonth } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';

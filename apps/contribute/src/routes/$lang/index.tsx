@@ -1,11 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { trpcClient } from '#src/utils/trpc.ts';
-
 import { MainLayout } from '#src/components/layouts/main-layout.tsx';
+import { trpcClient } from '#src/utils/trpc.ts';
 // Removed Flag import because flags are no longer displayed
 
 export const Route = createFileRoute('/$lang/')({
@@ -37,7 +35,6 @@ function ContributePage() {
     })();
   }, []);
 
-  // For improved SEO
   useEffect(() => {
     document.title = `Plan ₿ Network - ${t('translate.makingBitcoinEducationGlobal')}`;
   }, [t]);

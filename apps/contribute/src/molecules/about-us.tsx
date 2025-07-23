@@ -1,6 +1,5 @@
-import { useTranslation } from 'react-i18next';
-
 import { cn } from '@blms/ui';
+import { useTranslation } from 'react-i18next';
 
 import BitcoinCircle from '#src/assets/icons/bitcoin_circle.svg';
 import Groups from '#src/assets/icons/groups.svg';

@@ -1,10 +1,9 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiMiniBars3 } from 'react-icons/hi2';
 import { IoMdClose } from 'react-icons/io';
-
-import { cn } from '@blms/ui';
 
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
@@ -14,9 +13,8 @@ import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black_blackpill.svg?react';
 import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import { LanguageSelectorMobile } from '../language-selector.tsx';
-import type { NavigationSectionMobile } from '../props.ts';
-
 import { NotificationsPanel } from '../notifications-panel.tsx';
+import type { NavigationSectionMobile } from '../props.ts';
 import { MobileMenuSection } from './mobile-menu-section.tsx';
 
 export interface MobileMenuProps {

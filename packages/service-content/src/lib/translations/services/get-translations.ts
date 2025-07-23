@@ -7,8 +7,8 @@ import type { Dependencies } from '../../dependencies.js';
 import {
   getAdminContentManagementCoursesQuery,
   getAvailableCourseTranslationsQuery,
-  getCourseTranslationStatusQuery,
   getCoursesReadyForReviewQuery,
+  getCourseTranslationStatusQuery,
   getTranslationProgressQuery,
   getUserContributionsUnderReviewQuery,
   getUserCourseTranslationsQuery,

@@ -1,8 +1,7 @@
+import { cn } from '@blms/ui';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
 import { SiRumble } from 'react-icons/si';
 import Nostr from '#src/assets/icons/nostr.svg?react';
-
-import { cn } from '@blms/ui';
 
 interface SocialNetworksProps {
   variant?: 'light' | 'dark';

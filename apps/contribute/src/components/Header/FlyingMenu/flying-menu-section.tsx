@@ -1,17 +1,15 @@
+import type { CourseResponse } from '@blms/types';
+import { cn, Popover, PopoverContent, PopoverTrigger } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-
-import type { CourseResponse } from '@blms/types';
-import { Popover, PopoverContent, PopoverTrigger, cn } from '@blms/ui';
-import type { NavigationSection } from '../props.ts';
+import { Image } from '#src/components/image.tsx';
 
 import { assetUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.js';
-
-import { Image } from '#src/components/image.tsx';
 import { MenuElement } from '../menu-elements.tsx';
+import type { NavigationSection } from '../props.ts';
 import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 
 const BTC101ID = 'btc101';

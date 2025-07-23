@@ -1,7 +1,6 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cn, TabsList, TabsTrigger } from '@blms/ui';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
-
-import { TabsList, TabsTrigger, cn } from '@blms/ui';
 
 const tabsTriggerVariant = cva(
   'max-md:basis-1/2 w-52 max-w-52 grow px-5 py-1.5 capitalize md:border-l md:first:border-l-0 !outline-hidden data-[state=active]:font-medium hover:font-medium data-[state=active]:border-none',

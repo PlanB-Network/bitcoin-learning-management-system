@@ -8,6 +8,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { loadDocsAPI } from '#src/utils/onlyoffice-loader.ts';
+
 // Kick-off script preload as soon as this module is evaluated (fire-and-forget)
 loadDocsAPI().catch(() => {
   // Errors will also surface again when individual editors await the loader
@@ -385,11 +386,11 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 console.log('OnlyOffice requesting document restore');
                 return false;
               },
-              onRequestSaveAs: (event: any) => {
+              onRequestSaveAs: (_event: any) => {
                 console.log('OnlyOffice requesting save as');
                 return false;
               },
-              onDownloadAs: (event: any) => {
+              onDownloadAs: (_event: any) => {
                 console.log('OnlyOffice downloading document');
                 return false;
               },

@@ -1,9 +1,8 @@
-import type { Router } from 'express';
-
 import {
   type CourseProfessor,
   createGetCourseProfessors,
 } from '@blms/service-content';
+import type { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';

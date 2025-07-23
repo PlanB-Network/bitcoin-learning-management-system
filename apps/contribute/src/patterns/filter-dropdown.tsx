@@ -1,11 +1,8 @@
+import { cn, TextTag } from '@blms/ui';
+import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
-
 import { IoMdClose } from 'react-icons/io';
 import { MdOutlineClear } from 'react-icons/md';
-
-import { TextTag, cn } from '@blms/ui';
-
-import { t } from 'i18next';
 import FilterIcon from '#src/assets/icons/Filter.svg';
 import SearchIcon from '#src/assets/icons/search.svg';
 
@@ -37,14 +34,14 @@ export const FilterDropdown = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const filterKeys = Object.keys(filters || {});
 
-  if (filters) {
-    useEffect(() => {
-      if (!activeCategory) {
-        const firstCategory = filterKeys[0] || null;
-        setActiveCategory(firstCategory);
-      }
-    }, [filterKeys, activeCategory]);
-  }
+  // Ensure hooks are called unconditionally. Only run logic when `filters` prop is provided.
+  useEffect(() => {
+    if (!filters) return;
+    if (!activeCategory) {
+      const firstCategory = filterKeys[0] || null;
+      setActiveCategory(firstCategory);
+    }
+  }, [filters, filterKeys, activeCategory]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

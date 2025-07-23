@@ -1,7 +1,6 @@
+import { Loader } from '@blms/ui';
 import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
-
-import { Loader } from '@blms/ui';
 
 import { App } from './App.tsx';
 import { AppProvider } from './providers/app.tsx';
