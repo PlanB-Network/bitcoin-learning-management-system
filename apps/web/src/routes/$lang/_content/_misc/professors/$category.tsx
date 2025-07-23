@@ -117,7 +117,7 @@ export function ProfessorCategoryPage() {
       </Tabs>
 
       <div className="bg-black items-center justify-center">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-[60px] lg:grid-cols-3  max-w-[300px] sm:max-w-[500px] md:max-w-[760px] lg:max-w-[1020px] mx-auto mt-4 lg:mt-32">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-15 lg:grid-cols-3  max-w-[300px] sm:max-w-[500px] md:max-w-[760px] lg:max-w-[1020px] mx-auto mt-4 lg:mt-32">
           {!isFetched && <Loader size={'s'} />}
           {sortedProfessors?.map((professor) => (
             <Link

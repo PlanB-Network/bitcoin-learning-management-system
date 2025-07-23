@@ -178,11 +178,11 @@ function Project() {
             ) : (
               <></>
             )}
-            <section className="flex p-2 md:p-[30px]">
+            <section className="flex p-2 md:p-7">
               <div className="flex flex-col gap-3">
                 <img
                   src={resourceImgUrl(project, 'logo.webp')}
-                  className="rounded-2xl md:rounded-3xl size-[84px] md:size-[276px] shadow-card-items-dark"
+                  className="rounded-2xl md:rounded-3xl size-21 md:size-[276px] shadow-card-items-dark"
                   alt={t('imagesAlt.sthRepresentingCompany')}
                 />
                 <div className="flex justify-center gap-2.5 md:hidden">

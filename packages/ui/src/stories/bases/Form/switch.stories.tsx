@@ -211,7 +211,7 @@ export const WithLabels: Story = {
     backgrounds: { default: 'light' },
   },
   render: (args) => (
-    <div className="flex flex-col gap-[30px]">
+    <div className="flex flex-col gap-7">
       <div className="flex items-center gap-2 text-black">
         <Switch
           {...args}

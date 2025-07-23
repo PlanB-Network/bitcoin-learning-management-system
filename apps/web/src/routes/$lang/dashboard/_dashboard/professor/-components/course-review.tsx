@@ -280,7 +280,7 @@ const ReviewSlider = ({
               <div
                 // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={i}
-                className="w-[2px] h-1 bg-newGray-3"
+                className="w-0.5 h-1 bg-newGray-3"
                 style={{ left: `${(i / 10) * 100}%` }}
               />
             ))}

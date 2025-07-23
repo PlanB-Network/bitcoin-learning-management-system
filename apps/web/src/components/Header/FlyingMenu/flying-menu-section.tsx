@@ -156,7 +156,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                 to={`/courses/${highlightedCourse.id}`}
                 className="w-[253px] mr-2  relative hover:border bg-maroon-10 border-darkOrange-5 hover:shadow-sm-section rounded-md overflow-hidden"
               >
-                <span className="absolute uppercase bg-white border border-white text-black body-semibold-12px rounded-br-[8px] py-[5px] px-2.5 z-10">
+                <span className="absolute uppercase bg-white border border-white text-black body-semibold-12px rounded-br-[8px] py-1 px-2.5 z-10">
                   {t('words.startHere')}
                 </span>
                 <article className="w-full px-3 py-2 flex flex-col">

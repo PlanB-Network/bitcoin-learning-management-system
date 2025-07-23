@@ -39,7 +39,7 @@ function CoursesExplorer() {
       title={t('courses.explorer.exploreCourses')}
       subtitle={t('courses.explorer.journey')}
       description={t('courses.explorer.pageDescription')}
-      paddingXClasses="px-[15px]"
+      paddingXClasses="px-4"
       maxWidth="max-w-[3000px]"
       hideDescriptionOnMobile={false}
     >
@@ -54,7 +54,7 @@ function CoursesExplorer() {
         )}
       </div>
       <div className="border-t border-newGray-1 max-w-[300px] md:max-w-[730px] xl:max-w-[1115px] w-full mx-auto" />
-      <div className="py-5 lg:py-[60px]">
+      <div className="py-5 lg:py-15">
         <div className="bg-[linear-gradient(180deg,_#000_0%,_#666666_50.5%,_#000_99.5%)] w-full">
           <LabsPresentation marginClasses="mt-0 !border-0 !shadow-none text-center lg:text-start" />
         </div>

@@ -52,7 +52,7 @@ export const CertificateDisplay = ({
         {t('courses.exam.courseDiploma')}
       </h2>
       {username && courseName ? (
-        <p className="text-center max-w-[848px] body-14px lg:label-large-20px mx-auto mt-[35px] lg:mt-[80px]">
+        <p className="text-center max-w-[848px] body-14px lg:label-large-20px mx-auto mt-9 lg:mt-20">
           {t('courses.exam.examCertificateCompletionText', {
             courseName,
             username,
@@ -60,7 +60,7 @@ export const CertificateDisplay = ({
         </p>
       ) : null}
 
-      <div className="flex flex-col w-full items-center pt-4 pb-[35px] md:pt-[40px] md:pb-[80px] font-light md:font-normal lg:px-4 text-center lg:text-start">
+      <div className="flex flex-col w-full items-center pt-4 pb-9 md:pt-10 md:pb-20 font-light md:font-normal lg:px-4 text-center lg:text-start">
         {/* Certificate with Circuits */}
         <div className="relative flex items-center justify-center w-full ">
           {/* Left Circuit */}
@@ -116,8 +116,8 @@ const CourseSection = ({ course }: { course: JoinedCourse }) => {
   const selectedCourses = filterAndRandomizeCourses(course, allCourses);
 
   return (
-    <section className="max-w-[1080px] mx-auto mt-[30px] lg:mt-[111px]">
-      <h2 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-start mb-5 md:mb-[30px]">
+    <section className="max-w-[1080px] mx-auto mt-7 lg:mt-28">
+      <h2 className="text-white title-medium-sb-18px lg:display-semibold-40px text-center lg:text-start mb-5 md:mb-7">
         {t('courses.exam.certificatePageOtherCourses')}
       </h2>
 

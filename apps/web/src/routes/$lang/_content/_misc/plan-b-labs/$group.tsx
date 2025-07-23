@@ -126,7 +126,7 @@ function PlanBLabs() {
         <>
           <Tabs
             defaultValue={activeItem.label}
-            className="pt-9 md:pt-12 border-b-[1px] border-newGray-1 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
+            className="pt-9 md:pt-12 border-b border-newGray-1 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
           >
             <TabsList size="l" mode="dark2" className="max-md:gap-3">
               <img
@@ -356,7 +356,7 @@ const Professor = ({ professor }: { professor: FullProfessor }) => {
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
         {t('words.professor')}
       </h4>
-      <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-white">
+      <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-white">
         {t('labs.coordinatedBy')}{' '}
         <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
           <Link

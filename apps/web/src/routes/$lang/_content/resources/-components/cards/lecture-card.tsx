@@ -25,7 +25,7 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
 
   const GeneralInfos = () => {
     return (
-      <div className="flex flex-col gap-[3px] md:gap-1">
+      <div className="flex flex-col gap-1">
         <h3 className="text-white text-sm font-medium leading-tight md:text-lg md:font-bold md:leading-snug line-clamp-2">
           {lecture.name}
         </h3>
@@ -80,7 +80,7 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
           </div>
         </div>
         <GeneralInfos />
-        <div className="flex max-md:flex-col gap-[3px] md:gap-2.5 md:justify-between mt-auto pt-[3px] md:py-[5px]">
+        <div className="flex max-md:flex-col gap-1 md:gap-2.5 md:justify-between mt-auto pt-1 md:py-1">
           <PriceInfos />
           <Link to={`/resources/lectures/${lecture.id}`} className="md:w-fit">
             <Button size="s" className="w-full">

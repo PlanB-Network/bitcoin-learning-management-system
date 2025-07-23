@@ -90,7 +90,7 @@ export const LanguageSelector = ({
         className={cn(
           'flex flex-col items-center justify-center absolute z-50 bg-darkOrange-11 rounded-2xl w-[816px] px-8 py-6 max-h-fit overflow-y-scroll no-scrollbar',
           direction === 'down'
-            ? 'top-7 -right-[50px]'
+            ? 'top-7 -right-12'
             : 'bottom-16 left-1/2 -translate-x-1/2',
           variantSelectorMapClass[variant],
         )}
@@ -189,8 +189,8 @@ export const LanguageSelectorMobile = ({
         <button
           type="button"
           className={cn(
-            'group flex justify-between items-center gap-[15px] px-[14px] py-2.5 outline-hidden rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] dark:bg-[#5f5f5f] text-darkOrange-11 dark:text-white',
-            open && 'rounded-t-none pt-[15px]',
+            'group flex justify-between items-center gap-4 px-3 py-2.5 outline-hidden rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] dark:bg-[#5f5f5f] text-darkOrange-11 dark:text-white',
+            open && 'rounded-t-none pt-4',
           )}
         >
           <span className="text-lg leading-normal font-medium text-wrap">
@@ -207,7 +207,7 @@ export const LanguageSelectorMobile = ({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-[51px] left-1/2 -translate-x-1/2 gap-5 px-[14px] pt-[15px] max-h-[calc(100dvh-84px)]',
+          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-13 left-1/2 -translate-x-1/2 gap-5 px-3 pt-4 max-h-[calc(100dvh-84px)]',
           mode === 'dark' && 'dark',
         )}
         addAnimation={false}

@@ -75,7 +75,7 @@ export const Default: Story = {
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Block</TableHead>
+            <TableHead className="w-25">Block</TableHead>
             <TableHead>Hash</TableHead>
             <TableHead>Transactions</TableHead>
             <TableHead>Mined By</TableHead>

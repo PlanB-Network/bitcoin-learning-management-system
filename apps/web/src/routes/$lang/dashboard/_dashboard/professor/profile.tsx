@@ -130,7 +130,7 @@ function DashboardProfessorProfile() {
                   <p className="text-sm text-newGray-1 leading-tight">
                     {t('dashboard.teacher.profile.publicDescription')}
                   </p>
-                  <p className={cn('h-[100px]', infoTextClasses)}>
+                  <p className={cn('h-25', infoTextClasses)}>
                     {professor.shortBio ||
                       t('dashboard.teacher.profile.noShortBio')}
                   </p>

@@ -66,7 +66,7 @@ const CategoryItemList: React.FC<CategoryItemListProps> = ({
 
   return (
     <div className="mt-10">
-      <div className="flex flex-wrap justify-center items-center content-center gap-[15px] lg:gap-x-[25px] lg:gap-y-[40px] max-w-[1095px]">
+      <div className="flex flex-wrap justify-center items-center content-center gap-4 lg:gap-x-6 lg:gap-y-10 max-w-[1095px]">
         {categories.map((category) => (
           <CategoryItem
             key={category.name}

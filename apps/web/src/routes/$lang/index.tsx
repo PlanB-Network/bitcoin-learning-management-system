@@ -217,7 +217,7 @@ function Home() {
       : [];
 
     return (
-      <section className="max-w-[1080px] mx-auto mt-[30px] lg:mt-[111px] px-4">
+      <section className="max-w-[1080px] mx-auto mt-7 lg:mt-28 px-4">
         <h2 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
           {t('home.courseSection.upcomingCourseTitle')}
         </h2>
@@ -305,7 +305,7 @@ function Home() {
     const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
     return (
-      <section className="lg:-mx-12 md:-mx-8 mt-[30px] lg:h-[913px] lg:mt-[108px]">
+      <section className="lg:-mx-12 md:-mx-8 mt-7 lg:h-[913px] lg:mt-27">
         <div className="bg-home-gradient-mobile lg:bg-home-gradient h-full">
           <div className="flex flex-col lg:relative h-full">
             <h1 className="flex justify-center lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 w-full text-white title-small-med-16px lg:display-large-med-48px text-center">
@@ -314,7 +314,7 @@ function Home() {
             <img
               src={WorldMap}
               alt=""
-              className="mx-auto 2xl:self-center lg:mx-0 object-cover w-full lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-[120px]"
+              className="mx-auto 2xl:self-center lg:mx-0 object-cover w-full lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-30"
             />
 
             {paymentModalData.eventId &&
@@ -384,7 +384,7 @@ function Home() {
               )}
             </div>
             <Link
-              className="flex justify-center lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 mt-[30px]"
+              className="flex justify-center lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 mt-7"
               to={'/events'}
             >
               <Button
@@ -506,7 +506,7 @@ function Home() {
 
   const TutorialSection = () => {
     return (
-      <div className={cn('mt-5 lg:mt-[60px] ', sectionClass)}>
+      <div className={cn('mt-5 lg:mt-15 ', sectionClass)}>
         <div
           className={cn(
             'flex flex-col md:text-center md:items-center',
@@ -533,7 +533,7 @@ function Home() {
             categoryType="tutorials"
             title={(category) => t(`tutorials.${category.name}.title`)}
           />
-          <Link to={'/tutorials'} className="mt-[30px]">
+          <Link to={'/tutorials'} className="mt-7">
             <Button
               variant="outlineWhite"
               rounded={false}
@@ -551,7 +551,7 @@ function Home() {
             categoryType="resources"
             title={(category) => t(`resources.${category.name}.title`)}
           />
-          <Link to={'/resources'} className="mt-[30px]">
+          <Link to={'/resources'} className="mt-7">
             <Button
               variant="outlineWhite"
               rounded={false}
@@ -592,7 +592,7 @@ function Home() {
   const LanguageSection = () => {
     return (
       <article className="lg:-mx-12 md:-mx-8 bg-gradient-to-b from-[rgba(33,12,0,0.9)] via-[rgba(102,102,102,0.9)] to-[rgba(33,12,0,0.9)]">
-        <div className="!py-0 my-8 md:mt-[98px] md:mb-[130px] max-w-[1164px] mx-auto">
+        <div className="!py-0 my-8 md:mt-24 md:mb-32 max-w-[1164px] mx-auto">
           <div>
             <div className="flex flex-col">
               <p className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
@@ -610,7 +610,7 @@ function Home() {
                 {t('home.languageSection.content1', { nb: LANGUAGES.length })}
               </p>
 
-              <span className="mt-[50px] subtitle-small-med-14px lg:title-large-sb-24px text-center lg:text-start">
+              <span className="mt-12 subtitle-small-med-14px lg:title-large-sb-24px text-center lg:text-start">
                 {t('home.languageSection.availableLanguagesVariation')}
               </span>
 
@@ -619,7 +619,7 @@ function Home() {
                 to="https://github.com/PlanB-Network/bitcoin-educational-content"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-[50px] !rounded-[16px] mx-auto lg:mx-0"
+                className="mt-12 !rounded-[16px] mx-auto lg:mx-0"
               >
                 <Button
                   variant="secondary"
@@ -644,7 +644,7 @@ function Home() {
     return (
       <div
         className={cn(
-          'text-left !pb-0 flex flex-col !2xl:w-[1225] mt-5 lg:mt-[100px]',
+          'text-left !pb-0 flex flex-col !2xl:w-[1225] mt-5 lg:mt-25',
           sectionClass,
         )}
       >
@@ -715,7 +715,7 @@ function Home() {
     }
 
     return (
-      <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)] lg:mt-[107px] px-[15px] lg:px-0">
+      <div className="lg:-mx-12 md:-mx-8 bg-[linear-gradient(180deg,_#000_0%,_#853000_50.5%,_#000_99.5%)] lg:mt-27 px-4 lg:px-0">
         <div className="mx-auto max-w-[1079px]">
           <h3 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-end">
             {t('home.blogSection.blogTitle')}
@@ -730,7 +730,7 @@ function Home() {
                 {latestBlogsByCategory.map((blog) => (
                   <CarouselItem
                     key={blog.id}
-                    className="basis 1/2 md:basis-1/3 max-w-[137px] !pl-[10px]"
+                    className="basis 1/2 md:basis-1/3 max-w-[137px] !pl-2"
                   >
                     <VerticalCard
                       imageSrc={resourceImgUrl(blog)}

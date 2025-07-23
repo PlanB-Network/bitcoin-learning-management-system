@@ -49,7 +49,7 @@ export const ModalBookDescription = ({
         <div className="flex self-start space-x-2 w-full relative">
           <Checkbox
             id="terms"
-            className="self-start mt-[2px] border-black data-[state=checked]:bg-white"
+            className="self-start mt-0.5 border-black data-[state=checked]:bg-white"
             checked={isBookEnabled}
             onCheckedChange={(e: boolean) => {
               setIsBookEnabled(e);

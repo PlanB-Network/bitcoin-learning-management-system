@@ -172,7 +172,7 @@ function Conferences() {
         </div>
       </div>
 
-      <div className="h-px bg-newBlack-5 md:bg-white/25 mt-3 mb-8 md:mt-10 md:mb-[60px] mx-4" />
+      <div className="h-px bg-newBlack-5 md:bg-white/25 mt-3 mb-8 md:mt-10 md:mb-15 mx-4" />
 
       {/* Timeline and table */}
       <div className="flex flex-col justify-center items-center text-center mx-4">

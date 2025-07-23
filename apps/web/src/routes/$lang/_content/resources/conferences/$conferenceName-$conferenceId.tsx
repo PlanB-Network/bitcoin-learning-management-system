@@ -206,7 +206,7 @@ function Conference() {
           <Card
             className="md:mx-auto w-full !rounded-[10px] !md:rounded-[20px]"
             withPadding={false}
-            paddingClass="p-5 md:p-[30px]"
+            paddingClass="p-5 md:p-7"
             color="orange"
           >
             <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-5 lg:gap-10">
@@ -225,7 +225,7 @@ function Conference() {
                   {conference.location} · {conference.year}
                 </span>
                 {(conference.twitterUrl || conference.websiteUrl) && (
-                  <div className="flex flex-wrap items-center gap-4 mt-[15px]">
+                  <div className="flex flex-wrap items-center gap-4 mt-4">
                     {conference.twitterUrl && (
                       <a
                         href={conference.twitterUrl}
@@ -246,7 +246,7 @@ function Conference() {
                     )}
                   </div>
                 )}
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-5 md:mt-[25px]">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-5 md:mt-6">
                   {conference.tags.map((tag) => (
                     <TextTag
                       key={tag}
@@ -258,7 +258,7 @@ function Conference() {
                     </TextTag>
                   ))}
                 </div>
-                <p className="max-lg:hidden body-16px text-white mt-[25px] text-justify whitespace-pre-line">
+                <p className="max-lg:hidden body-16px text-white mt-6 text-justify whitespace-pre-line">
                   {conference.description}
                 </p>
               </div>
@@ -339,7 +339,7 @@ function Conference() {
 
           {/* Stage and Video Selectors */}
           {/* Mobile */}
-          <div className="flex flex-col gap-4 md:hidden mt-[30px] mb-9">
+          <div className="flex flex-col gap-4 md:hidden mt-7 mb-9">
             <h3 className="mobile-subtitle1 text-white mb-2.5">
               {t('conferences.details.findReplay')}
             </h3>

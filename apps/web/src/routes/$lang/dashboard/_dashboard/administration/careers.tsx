@@ -172,7 +172,7 @@ function AdminCareers() {
           {t('words.admin')}
         </TextTag>
       </div>
-      <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-[15px]">
+      <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-4">
         {t('dashboard.adminPanel.careers.careers')}
       </h2>
       <p className="text-dashboardSectionText/75 md:text-newBlack-1 body-16px mb-8 max-w-[994px]">
@@ -432,7 +432,7 @@ function AdminCareers() {
             </div>
 
             {maxShownProfiles < sortedCareerProfiles.length && (
-              <div className="w-full max-w-[1012px] flex flex-col gap-[15px] items-center justify-center mt-6 md:mt-12">
+              <div className="w-full max-w-[1012px] flex flex-col gap-4 items-center justify-center mt-6 md:mt-12">
                 <Button
                   variant="outline"
                   size="m"

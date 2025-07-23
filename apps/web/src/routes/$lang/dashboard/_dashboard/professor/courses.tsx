@@ -67,7 +67,7 @@ function DashboardProfessorCourses() {
         <h3 className="display-small-32px">
           {t('dashboard.teacher.courses.coursesManagementPanel')}
         </h3>
-        <span className="flex size-fit p-1 lg:py-[3px] lg:px-2 justify-center items-center rounded-md bg-[rgba(204,204,204,0.50)] text-newBlack-3 desktop-typo1 uppercase">
+        <span className="flex size-fit p-1 lg:px-2 justify-center items-center rounded-md bg-[rgba(204,204,204,0.50)] text-newBlack-3 desktop-typo1 uppercase">
           {t('dashboard.teacher.profile.teacher')}
         </span>
       </div>

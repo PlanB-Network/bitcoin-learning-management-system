@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { TbChevronDown } from 'react-icons/tb';
 
 const CollapsibleDropdownVariant = cva(
-  'w-full rounded-[12px] flex flex-col px-2.5 py-[5px] justify-center',
+  'w-full rounded-[12px] flex flex-col px-2.5 py-1 justify-center',
   {
     defaultVariants: {
       variant: 'light',

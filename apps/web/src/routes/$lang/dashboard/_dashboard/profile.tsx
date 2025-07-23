@@ -249,7 +249,7 @@ function DashboardProfile() {
                 <input
                   type="text"
                   disabled
-                  className="w-full border border-newGray-4 bg-newGray-5 rounded-lg px-4 py-[5px] placeholder:text-newGray-2"
+                  className="w-full border border-newGray-4 bg-newGray-5 rounded-lg px-4 py-1 placeholder:text-newGray-2"
                   placeholder="**********"
                 />
                 <Button
@@ -515,7 +515,7 @@ export const FormCheckboxGroup = ({
             )}
           </FormLabel>
           <FormControl>
-            <div className="flex flex-col gap-2 pl-[18px]">
+            <div className="flex flex-col gap-2 pl-4">
               {options.map((option) => (
                 <div key={option.value} className="flex gap-4 items-center">
                   <Checkbox

@@ -162,7 +162,7 @@ export const MobileMenu = ({
         )}
         ref={mobileMenuRef}
       >
-        <div className="flex items-center w-full px-4 py-[15px] text-newBlack-1 dark:text-white">
+        <div className="flex items-center w-full px-4 py-4 text-newBlack-1 dark:text-white">
           <HiMiniBars3
             className={cn(
               'cursor-pointer',
@@ -183,7 +183,7 @@ export const MobileMenu = ({
             onClick={toggleMobileMenu}
           />
         </div>
-        <ul className="list-none w-full px-4 flex flex-col gap-2.5 my-[15px]">
+        <ul className="list-none w-full px-4 flex flex-col gap-2.5 my-4">
           {sections.map((section) => (
             <MobileMenuSection section={section} key={section.id} />
           ))}

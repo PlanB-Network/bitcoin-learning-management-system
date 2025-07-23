@@ -74,7 +74,7 @@ export const CourseExamResult = ({
               mode="light"
             />
 
-            <article className="flex flex-col px-4 md:px-[30px] py-5 md:py-11 items-center gap-4 md:gap-10 bg-newGray-6 rounded-[20px] shadow-course-navigation w-full self-center">
+            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-4 md:gap-10 bg-newGray-6 rounded-[20px] shadow-course-navigation w-full self-center">
               {examResults.finalized ? (
                 <>
                   <p className="text-newBlack-1 label-medium-16px md:title-large-24px max-md:w-[194px] text-center">
@@ -240,7 +240,7 @@ export const TimeStampDialog = ({
             <img
               src={QuestionBelow}
               alt="Question"
-              className="absolute left-1/2 -translate-x-1/2 -bottom-[76px] size-20 hidden md:group-hover:block"
+              className="absolute left-1/2 -translate-x-1/2 -bottom-19 size-20 hidden md:group-hover:block"
             />
           </button>
         }

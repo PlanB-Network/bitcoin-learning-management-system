@@ -121,13 +121,13 @@ function Channel() {
             <Card
               className="md:mx-auto w-full max-w-[1179px]"
               withPadding={false}
-              paddingClass="p-5 md:p-[50px]"
+              paddingClass="p-5 md:p-12"
               color="orange"
             >
               <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-16">
                 <div className="flex flex-col items-center">
                   <img
-                    className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none mb-5 lg:mb-[30px]"
+                    className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none mb-5 lg:mb-7"
                     alt={'Channel thumbnail'}
                     src={resourceImgUrl(channel)}
                   />
@@ -148,7 +148,7 @@ function Channel() {
 
                 <div className="w-full max-w-2xl flex flex-col md:mt-0">
                   <div>
-                    <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-[30px]">
+                    <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-7">
                       <h2 className="title-large-24px lg:display-small-med-32px text-white">
                         {channel.name}
                       </h2>
@@ -159,7 +159,7 @@ function Channel() {
                       />
                     </div>
 
-                    <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
+                    <div className="flex flex-wrap gap-2 mb-5 lg:mb-8">
                       {channel.tags
                         ?.filter((tag) => tag && tag.toLowerCase() !== 'null')
                         .map((tag) => (
@@ -242,7 +242,7 @@ function Channel() {
                           />
                         </div>
 
-                        <h3 className="absolute w-full max-w-[140px] lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                        <h3 className="absolute w-full max-w-35 lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                           {suggestedChannel.name}
                         </h3>
                       </Link>

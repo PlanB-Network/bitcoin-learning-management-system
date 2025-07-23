@@ -236,7 +236,7 @@ export const CoursesGallery = ({
         />
       </div>
 
-      <section className="flex justify-center gap-5 md:gap-[50px] flex-wrap mt-8 md:mt-12 mb-5 lg:mb-[60px] max-w-[1226px] mx-auto">
+      <section className="flex justify-center gap-5 md:gap-12 flex-wrap mt-8 md:mt-12 mb-5 lg:mb-15 max-w-[1226px] mx-auto">
         {featuredCourse && (
           <CourseCard
             course={featuredCourse}

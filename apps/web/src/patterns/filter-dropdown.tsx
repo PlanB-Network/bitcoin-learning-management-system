@@ -178,7 +178,7 @@ export const FilterDropdown = ({
       {filters && isOpen && (
         <div className="bg-maroon-10 p-2.5 rounded-b-lg border-t border-maroon-9 md:hidden">
           {filterKeys.length > 1 && (
-            <div className="flex gap-1 mb-[15px]">
+            <div className="flex gap-1 mb-4">
               {filterKeys.map((category) => (
                 <button
                   key={category}
@@ -201,7 +201,7 @@ export const FilterDropdown = ({
             <div className="grid grid-cols-2 gap-x-7 gap-y-5">
               {filters[activeCategory].map((option) => (
                 <div className="flex items-center" key={option.name}>
-                  <label className="flex items-center cursor-pointer relative gap-[7px]">
+                  <label className="flex items-center cursor-pointer relative gap-2">
                     <input
                       type="checkbox"
                       checked={
@@ -246,7 +246,7 @@ export const FilterDropdown = ({
         Object.values(selectedFilters).some(
           (options) => options.size > 0 && !options.has('all'),
         ) && (
-          <div className="flex flex-wrap items-center gap-[5px] px-2.5 py-2">
+          <div className="flex flex-wrap items-center gap-1 px-2.5 py-2">
             {Object.entries(selectedFilters).map(([category, options]) =>
               [...options]
                 .filter((option) => option !== 'all')

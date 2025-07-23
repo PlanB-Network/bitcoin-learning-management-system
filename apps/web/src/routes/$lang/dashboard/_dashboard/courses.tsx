@@ -50,7 +50,7 @@ function DashboardCourses() {
 
   return (
     <div className="max-xl:max-w-[698px] flex flex-col max-lg:mx-auto">
-      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-[15px] md:mb-[21px] xl:mb-[42px]">
+      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-4 md:mb-5 xl:mb-10">
         {t('dashboard.myCourses.courseDashboard')}
       </h1>
       <CourseTable courses={filteredCourses} progress={progress || []} />

@@ -69,7 +69,7 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
       <div className="flex flex-col gap-6 mb-5 mt-6 lg:mb-8 lg:mt-10 lg:bg-newGray-6 lg:shadow-course-navigation lg:rounded-[20px] lg:p-5 max-w-xl lg:max-w-5xl">
         {/* Course details section */}
         <div className="flex flex-col gap-5 lg:gap-10 w-full items-center">
-          <div className="flex max-lg:flex-col items-center justify-center w-full gap-x-[60px] gap-y-5">
+          <div className="flex max-lg:flex-col items-center justify-center w-full gap-x-15 gap-y-5">
             <div className="flex flex-col gap-2.5 w-full max-w-[517px]">
               <div className="flex flex-col w-full">
                 {Object.entries(courseItems).map(([key, value]) => (

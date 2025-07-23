@@ -133,7 +133,7 @@ function Events() {
             }}
           />
         )}
-      <div className="max-w-[1440px] w-full flex flex-col gap-6 px-3 pt-2.5 mx-auto md:gap-[60px] md:px-10 mt-6 md:mt-[60px]">
+      <div className="max-w-[1440px] w-full flex flex-col gap-6 px-3 pt-2.5 mx-auto md:gap-15 md:px-10 mt-6 md:mt-15">
         {!isFetched && <Loader size={'s'} />}
         {events && (
           <CurrentEvents
@@ -191,7 +191,7 @@ function Events() {
             {t('events.newEvent.description')}
           </p>
           <a
-            className="px-[10px] sm:px-[18px] py-[14px] bg-darkOrange-5 text-white rounded-md sm:rounded-2xl flex justify-center items-center sm:text-xl sm:leading-normal font-medium active:scale-95"
+            className="px-2 sm:px-4 py-3 bg-darkOrange-5 text-white rounded-md sm:rounded-2xl flex justify-center items-center sm:text-xl sm:leading-normal font-medium active:scale-95"
             href="https://workspace.planb.network/apps/forms/s/AdXeMipQ7xrrXNyrtyZ2sCLs"
             target="_blank"
             rel="noreferrer"

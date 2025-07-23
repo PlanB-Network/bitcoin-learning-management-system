@@ -46,7 +46,7 @@ export const ConferencesTimeLine = ({
       <button
         type="button"
         onClick={scrollPrev}
-        className="max-md:hidden p-[11px] rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
+        className="max-md:hidden p-3 rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
         onMouseMoveCapture={scrollPrev}
       >
         <RxCaretLeft size={24} />
@@ -62,7 +62,7 @@ export const ConferencesTimeLine = ({
                 scrollTo(index);
               }}
               className={cn(
-                'p-[14px] rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 text-lg font-medium leading-none transition-colors',
+                'p-4 rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 text-lg font-medium leading-none transition-colors',
                 activeYear === year ? 'bg-white text-darkOrange-5' : '',
               )}
             >
@@ -88,7 +88,7 @@ export const ConferencesTimeLine = ({
       <button
         type="button"
         onClick={scrollNext}
-        className="max-md:hidden p-[11px] rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
+        className="max-md:hidden p-3 rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
         onMouseMoveCapture={scrollNext}
       >
         <RxCaretRight size={24} />

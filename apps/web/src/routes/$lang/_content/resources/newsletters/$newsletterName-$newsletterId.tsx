@@ -143,20 +143,20 @@ function NewsletterDetail() {
             className="md:mx-auto !rounded-[10px] md:!rounded-[20px]"
             color="orange"
             withPadding={false}
-            paddingClass="p-5 md:p-[30px]"
+            paddingClass="p-5 md:p-7"
           >
             <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
               <div className="flex flex-col">
                 <div className="relative max-md:max-w-[219px] mx-auto">
                   <img
-                    className="max-md:max-w-[219px] md:w-[367px] mx-auto object-cover rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-5 lg:mb-[30px]"
+                    className="max-md:max-w-[219px] md:w-[367px] mx-auto object-cover rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-[22px] mb-5 lg:mb-7"
                     alt={newsletter.title}
                     src={resourceImgUrl(newsletter)}
                   />
                   <Flag
                     code={newsletter.language}
                     size="m"
-                    className="shrink-0 md:!hidden !absolute top-[13px] right-[12px]"
+                    className="shrink-0 md:!hidden !absolute top-3 right-3"
                   />
                 </div>
 
@@ -176,7 +176,7 @@ function NewsletterDetail() {
               </div>
 
               <div className="w-full max-w-2xl flex flex-col md:mt-0">
-                <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-[30px]">
+                <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-7">
                   <h2 className="title-large-24px lg:display-small-med-32px text-white">
                     {newsletter.title}
                   </h2>
@@ -193,16 +193,16 @@ function NewsletterDetail() {
                   </span>
                 </p>
 
-                <div className="flex items-center mb-5 lg:mb-[30px] mt-2.5 md:mt-0">
+                <div className="flex items-center mb-5 lg:mb-7 mt-2.5 md:mt-0">
                   <span className="text-newGray-3 pr-1 subtitle-small-med-14px md:label-large-med-20px">
                     {t('resources.newsletters.level')}
                   </span>
-                  <span className="capitalize text-white max-w-[140px] md:max-w-none subtitle-small-med-14px md:label-large-med-20px">
+                  <span className="capitalize text-white max-w-35 md:max-w-none subtitle-small-med-14px md:label-large-med-20px">
                     {t(`words.level.${newsletter.level}`)}
                   </span>
                 </div>
 
-                <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
+                <div className="flex flex-wrap gap-2 mb-5 lg:mb-8">
                   {newsletter.tags
                     ?.filter((tag) => tag && tag.toLowerCase() !== 'null')
                     .map((tag) => (
@@ -224,7 +224,7 @@ function NewsletterDetail() {
         </article>
       </div>
 
-      <section className="mt-8 lg:mt-[100px]">
+      <section className="mt-8 lg:mt-25">
         <SuggestedHeader
           text="resources.newsletters.subtitle"
           placeholder="Other newsletters"
@@ -262,7 +262,7 @@ function NewsletterDetail() {
                           }}
                         />
                       </div>
-                      <h3 className="absolute w-full max-w-[140px]  lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                      <h3 className="absolute w-full max-w-35  lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                         {suggestedNewsletter.title}
                       </h3>
                     </Link>

@@ -120,7 +120,7 @@ const AuthorDetails = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
         <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
           {t('words.author')}
         </h4>
-        <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
+        <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
           {t('tutorials.writtenBy')}{' '}
           <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
             <Link
@@ -172,7 +172,7 @@ const Credits = ({
           {t('words.credits')}
         </h4>
 
-        <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
+        <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
           {proofreading?.contributorNames?.length > 0
             ? t('tutorials.hasBeenProofreadBy')
             : t('tutorials.hasNotBeenProofread')}
@@ -193,7 +193,7 @@ const Credits = ({
           </span>
         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-12 mt-6 md:mt-7">
           <div className="max-md:mx-auto shrink-0">
             <ProofreadingDesktop
               isOriginalLanguage={isOriginalLanguage}
@@ -402,7 +402,7 @@ function TutorialDetails() {
     };
 
     return (
-      <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-newGray-6 w-[290px] md:w-fit rounded-[15px] md:rounded-[30px] px-[30px] py-5 md:pb-4 border border-newGray-5 shadow-course-navigation-sm-accent text-black mx-auto md:my-[30px]">
+      <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-newGray-6 w-[290px] md:w-fit rounded-[15px] md:rounded-[30px] px-7 py-5 md:pb-4 border border-newGray-5 shadow-course-navigation-sm-accent text-black mx-auto md:my-7">
         <span className="title-medium-sb-18px md:title-large-sb-24px text-center text-newBlack-1">
           {t('tutorials.details.didHelp')}
         </span>
@@ -414,7 +414,7 @@ function TutorialDetails() {
                 isLoggedIn ? handleLike() : openAuthModal();
               }}
               className={cn(
-                'py-3.5 px-[18px] rounded-lg md:rounded-[12px] border shadow-course-navigation border-brightGreen-6 focus:border-brightGreen-8',
+                'py-3.5 px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-brightGreen-6 focus:border-brightGreen-8',
                 isLiked.liked
                   ? 'bg-brightGreen-1'
                   : 'hover:bg-brightGreen-1 bg-white',
@@ -430,7 +430,7 @@ function TutorialDetails() {
                 isLoggedIn ? handleDislike() : openAuthModal();
               }}
               className={cn(
-                'py-3 md:py-3.5 px-3.5 md:px-[18px] rounded-lg md:rounded-[12px] border shadow-course-navigation border-red-5 focus:border-red-7',
+                'py-3 md:py-3.5 px-3.5 md:px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-red-5 focus:border-red-7',
                 isLiked.disliked ? 'bg-red-1' : 'hover:bg-red-1 bg-white',
               )}
             >
@@ -490,7 +490,7 @@ function TutorialDetails() {
                 </span>
               </div>
               <div className="flex w-full flex-col items-center justify-center">
-                <div className="w-full flex flex-col gap-5 md:gap-[30px] text-newBlack-1 md:max-w-[800px]">
+                <div className="w-full flex flex-col gap-5 md:gap-7 text-newBlack-1 md:max-w-[800px]">
                   <Header
                     tutorial={{
                       ...tutorial,

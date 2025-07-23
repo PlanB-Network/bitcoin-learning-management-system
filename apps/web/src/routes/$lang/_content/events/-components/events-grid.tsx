@@ -51,7 +51,7 @@ export const EventsGrid = ({
         {t('events.main.upcomingEvents')}
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mt-6 md:mt-12 mx-auto">
+      <div className="flex flex-wrap justify-center gap-5 lg:gap-7 mt-6 md:mt-12 mx-auto">
         {sortedEvents?.map((event) => (
           <EventCard
             event={event}

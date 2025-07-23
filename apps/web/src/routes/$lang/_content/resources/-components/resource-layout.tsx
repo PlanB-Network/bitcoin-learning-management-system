@@ -48,7 +48,7 @@ export const ResourceLayout = ({
     <MainLayout footerVariant="dark">
       <div
         className={cn(
-          'flex h-fit justify-center p-[15px] md:p-10 relative',
+          'flex h-fit justify-center p-4 md:p-10 relative',
           className,
         )}
       >
@@ -83,7 +83,7 @@ export const ResourceLayout = ({
             </div>
           )}
 
-          <div className={cn(marginTopChildren && 'mt-4 md:mt-[60px]')}>
+          <div className={cn(marginTopChildren && 'mt-4 md:mt-15')}>
             {children}
           </div>
         </div>

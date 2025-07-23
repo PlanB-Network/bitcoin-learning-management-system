@@ -20,9 +20,9 @@ const textTagVariants = cva(
         light100: 'light100',
       },
       size: {
-        small: 'px-2 py-[3px] subtitle-medium-16px rounded-lg',
+        small: 'px-2 py-1 subtitle-medium-16px rounded-lg',
         verySmall:
-          'px-[5px] py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
+          'px-1 py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
       },
       variant: {
         darkMaroon:

@@ -398,7 +398,7 @@ const NotificationItem = ({
               )}
           </p>
         </Link>
-        <span className="px-4 w-[140px] shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
+        <span className="px-4 w-35 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
           {getNotificationDateString(new Date(notification.createdAt))}
         </span>
       </article>
@@ -431,7 +431,7 @@ const MultiSelectionTool = ({
           onCheckedChange={handleSelectAll}
           size={isMobile ? 's' : 'm'}
         />
-        <span className="text-newBlack-1 subtitle-small-med-14px max-md:leading-[14px] md:subtitle-medium-med-16px">
+        <span className="text-newBlack-1 subtitle-small-med-14px max-md:leading-4 md:subtitle-medium-med-16px">
           {selectedAmount && selectedAmount > 0
             ? t('words.selectedAmount', { amount: selectedAmount })
             : t('notifications.selectAll')}

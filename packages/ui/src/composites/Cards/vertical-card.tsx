@@ -123,7 +123,7 @@ export const VerticalCard = ({
           breakpoints={{ default: 140, md: 320 }}
           loading="lazy"
           className={cn(
-            'h-[105px] md:h-[241px] object-cover [overflow-clip-margin:_unset] lg:mb-[17px]',
+            'h-[105px] md:h-[241px] object-cover [overflow-clip-margin:_unset] lg:mb-4',
             imgClassName
               ? imgClassName
               : 'w-[137px] md:w-[320px] rounded-md md:rounded-2xl mb-2.5',
@@ -132,7 +132,7 @@ export const VerticalCard = ({
         {languages && languages.length > 0 && (
           <div
             className={cn(
-              'absolute top-[3px] md:top-3 right-[3px] md:right-4 flex flex-col gap-[3px] md:gap-2.5 p-[3px] md:p-2 bg-white rounded-[3px] md:rounded-md',
+              'absolute top-1 md:top-3 right-1 md:right-4 flex flex-col gap-1 md:gap-2.5 p-1 md:p-2 bg-white rounded-[3px] md:rounded-md',
               !flagsOnMobile && 'max-md:hidden',
             )}
           >
@@ -149,7 +149,7 @@ export const VerticalCard = ({
               {tags.slice(0, isScreenMd ? tags.length : 1).map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs font-medium text-gray-700 bg-gray-200 rounded-[5px] px-[5px] py-px"
+                  className="text-xs font-medium text-gray-700 bg-gray-200 rounded-[5px] px-1 py-px"
                 >
                   {tag}
                 </span>
@@ -190,7 +190,7 @@ export const VerticalCard = ({
             </span>
           )}
         </div>
-        <div className="flex flex-wrap max-md:flex-col max-md:justify-center items-center w-full mt-[3px] md:mt-4 gap-1.5 md:gap-5">
+        <div className="flex flex-wrap max-md:flex-col max-md:justify-center items-center w-full mt-1 md:mt-4 gap-1.5 md:gap-5">
           {buttonText &&
             (buttonLink ? (
               externalLink ? (

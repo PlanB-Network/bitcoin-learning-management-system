@@ -92,13 +92,13 @@ export const CourseTable = ({
   }
 
   return (
-    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-[18px] 2xl:gap-16 w-full max-lg:mx-auto max-2xl:max-w-[698px]">
+    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-4 2xl:gap-16 w-full max-lg:mx-auto max-2xl:max-w-[698px]">
       <div className="max-w-[698px] max-md:hidden shrink-0">
         <Table
           maxHeightClass="max-h-[665px]"
-          className="size-full border-spacing-[10px]"
+          className="size-full border-spacing-2"
         >
-          <TableCaption className="max-2xl:hidden !body-16px-medium text-black mt-[31px]">
+          <TableCaption className="max-2xl:hidden !body-16px-medium text-black mt-8">
             {t('dashboard.myCourses.newCourses')}
           </TableCaption>
           {/* Table Header */}
@@ -108,9 +108,9 @@ export const CourseTable = ({
               {courseCategoriesDashboard.map((category) => (
                 <TableHead
                   key={category}
-                  className="text-center lg:w-[101px] max-w-[101px] pb-[11px] pt-[6px]"
+                  className="text-center lg:w-[101px] max-w-[101px] pb-3 pt-1.5"
                 >
-                  <div className="capitalize bg-darkOrange-7 text-white desktop-caption1 py-px px-[5px] rounded-[5px] h-[22px] lg:w-[101px] mx-auto text-center">
+                  <div className="capitalize bg-darkOrange-7 text-white desktop-caption1 py-px px-1 rounded-[5px] h-[22px] lg:w-[101px] mx-auto text-center">
                     {category}
                   </div>
                 </TableHead>
@@ -119,11 +119,11 @@ export const CourseTable = ({
           </TableHeader>
 
           {/* Table Body */}
-          <TableBody className="bg-newGray-6 p-[5px] gap-[5px]">
+          <TableBody className="bg-newGray-6 p-1 gap-1">
             {levels.map((level) => (
               <TableRow key={level}>
                 <TableCell className="p-1 !bg-white lg:w-[37px]">
-                  <div className="capitalize desktop-caption1 text-black py-px px-[5px] bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] [transform:rotate(180deg)]">
+                  <div className="capitalize desktop-caption1 text-black py-px px-1 bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] [transform:rotate(180deg)]">
                     {level}
                   </div>
                 </TableCell>
@@ -166,7 +166,7 @@ export const CourseTable = ({
                                     onClick={() =>
                                       setSelectedCourse(course?.name)
                                     }
-                                    className={`md:w-[50px] md:h-[52px] rounded ${bgColor} flex items-center justify-center hover:course-navigation-sm`}
+                                    className={`md:w-[50px] md:h-13 rounded ${bgColor} flex items-center justify-center hover:course-navigation-sm`}
                                     tabIndex={0}
                                     onKeyDown={(e) => {
                                       if (e.key === 'Enter' || e.key === ' ') {
