@@ -41,7 +41,7 @@ export const ConclusionFinish = ({
       {!isProfessorLed && (
         <>
           <Professor course={course} addThanksTipping />
-          <Credits course={course} />
+          {!course.requiresPayment && <Credits course={course} />}
         </>
       )}
       {hasSingleTrialExamOrAssignment ? (
