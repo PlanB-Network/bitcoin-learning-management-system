@@ -98,7 +98,9 @@ export const createRestTranslationAudioRoutes = async (
           }));
 
           console.log(
-            `Found ${professors.length} professors for course ${courseId}:`,
+            'Found %d professors for course %s:',
+            professors.length,
+            courseId,
             professors.map(
               (p) =>
                 `${p.name} (${p.isCoordinator ? 'coordinator' : 'associated'})`,
