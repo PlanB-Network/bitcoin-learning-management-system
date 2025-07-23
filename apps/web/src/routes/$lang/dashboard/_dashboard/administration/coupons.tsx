@@ -864,7 +864,7 @@ function MobileSortDropdown({
                 onSortFieldSelect(option.key);
                 setIsOpen(false);
               }}
-              className={`w-full px-3 py-[7px] text-left text-sm flex flex-col justify-center items-start min-h-[32px]
+              className={`w-full px-3 py-2 text-left text-sm flex flex-col justify-center items-start min-h-8
                 ${selectedKey === option.key ? 'bg-newGray-6 text-black font-medium' : 'text-black hover:bg-newGray-6'}`}
             >
               {option.label}

@@ -120,21 +120,21 @@ function Podcast() {
             <Card
               className="md:mx-auto w-full max-w-[1179px]"
               withPadding={false}
-              paddingClass="p-5 md:p-[30px]"
+              paddingClass="p-5 md:p-7"
               color="orange"
             >
               <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-16">
                 <div className="flex flex-col items-center justify-center">
                   <div className="relative">
                     <img
-                      className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none mb-5 lg:mb-[30px]"
+                      className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:max-w-[347px] md:mx-0 lg:rounded-none mb-5 lg:mb-7"
                       alt={'Podcast logo'}
                       src={resourceImgUrl(podcast, 'logo.webp')}
                     />
                     <Flag
                       code={podcast.language}
                       size="m"
-                      className="shrink-0 md:!hidden !absolute top-[13px] right-[12px]"
+                      className="shrink-0 md:!hidden !absolute top-3 right-3"
                     />
                   </div>
                   <div className="flex flex-row justify-evenly md:flex-col md:space-y-2 lg:flex-row lg:space-y-0">
@@ -154,7 +154,7 @@ function Podcast() {
 
                 <div className="w-full max-w-2xl flex flex-col md:mt-0">
                   <div>
-                    <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-[30px]">
+                    <div className="flex justify-between items-center gap-2 w-full mb-5 lg:mb-7">
                       <h2 className="title-large-24px lg:display-small-med-32px text-white">
                         {podcast?.name}
                       </h2>
@@ -165,7 +165,7 @@ function Podcast() {
                       />
                     </div>
 
-                    <div className="flex flex-wrap gap-[10px] mb-5 lg:mb-8">
+                    <div className="flex flex-wrap gap-2 mb-5 lg:mb-8">
                       {podcast?.tags
                         ?.filter((tag) => tag && tag.toLowerCase() !== 'null')
                         .map((tag) => (
@@ -180,7 +180,7 @@ function Podcast() {
                         ))}
                     </div>
 
-                    <div className="flex items-center flex-wrap mb-5 md:mb-[30px]">
+                    <div className="flex items-center flex-wrap mb-5 md:mb-7">
                       <span className="text-white subtitle-small-med-14px md:title-small-med-16px">
                         {podcast.host}
                       </span>
@@ -197,7 +197,7 @@ function Podcast() {
         </div>
       )}
 
-      <section className="mt-8 lg:mt-[100px]">
+      <section className="mt-8 lg:mt-25">
         <SuggestedHeader
           text="resources.pageSubtitlePodcast"
           placeholder="Other podcasts"
@@ -235,7 +235,7 @@ function Podcast() {
                           />
                         </div>
 
-                        <h3 className="absolute w-full max-w-[140px] lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                        <h3 className="absolute w-full max-w-35 lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                           {suggestedPodcast.name}
                         </h3>
                       </Link>

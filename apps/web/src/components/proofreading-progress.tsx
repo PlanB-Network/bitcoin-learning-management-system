@@ -419,7 +419,7 @@ export const ProofreadingDesktop = ({
           standalone ? 'flex w-full' : 'max-w-[258px] hidden group-hover:flex',
         )}
       >
-        <div className="flex items-center gap-[15px]">
+        <div className="flex items-center gap-4">
           <span
             className={cn(
               'px-2 py-1 rounded-md shadow-course-navigation-sm title-medium-sb-18px',

@@ -21,7 +21,7 @@ const tabsListVariants = cva(
       size: {
         l: 'gap-8',
         m: 'gap-6',
-        s: 'gap-[18px]',
+        s: 'gap-4',
       },
     },
   },
@@ -38,7 +38,7 @@ const tabsTriggerVariants = cva(
       mode: {
         dark: 'dark:data-[state=active]:text-white data-[state=inactive]:hover:border-b-2 data-[state=inactive]:hover:border-newGray-4 data-[state=active]:border-b-2 data-[state=active]:border-darkOrange-5',
         dark2:
-          'data-[state=active]:text-white border-newGray-2 data-[state=inactive]:hover:border-newGray-5 data-[state=inactive]:hover:font-medium data-[state=active]:bg-darkOrange-5 border-t-[1px] border-x-[1px] rounded-t-2xl px-4 pt-3 bg-black',
+          'data-[state=active]:text-white border-newGray-2 data-[state=inactive]:hover:border-newGray-5 data-[state=inactive]:hover:font-medium data-[state=active]:bg-darkOrange-5 border-t border-x rounded-t-2xl px-4 pt-3 bg-black',
       },
       size: {
         l: 'label-large-20px pb-3',

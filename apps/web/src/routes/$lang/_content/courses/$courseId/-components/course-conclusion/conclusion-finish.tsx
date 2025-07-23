@@ -78,7 +78,7 @@ const Professor = ({
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
         {t('words.professor')}
       </h4>
-      <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
+      <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
         {course.associatedProfessors.length > 0
           ? t('courses.details.coordinatedBy')
           : t('courses.details.taughtBy')}{' '}
@@ -156,7 +156,7 @@ const Credits = ({ course }: { course: CourseResponse }) => {
           {t('words.credits')}
         </h4>
 
-        <p className="mt-[15px] md:mt-6 label-large-20px md:display-small-32px text-black">
+        <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
           {proofreading?.contributorNames?.length > 0
             ? t('courses.details.hasBeenProofreadBy')
             : t('courses.details.hasNotBeenProofread')}
@@ -177,7 +177,7 @@ const Credits = ({ course }: { course: CourseResponse }) => {
           </span>
         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-12 mt-6 md:mt-7">
           <div className="max-md:mx-auto shrink-0">
             <ProofreadingDesktop
               isOriginalLanguage={isOriginalLanguage}
@@ -251,7 +251,7 @@ const DiplomaSelfPaced = ({
           {t('courses.exam.receiveDiploma')}
         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-12 mt-6 md:mt-7">
           <div className="max-md:mx-auto shrink-0">
             <img
               src={
@@ -342,7 +342,7 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
         {t('courses.exam.receiveDiploma')}
       </p>
 
-      <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px] mt-6 md:mt-[30px]">
+      <div className="flex flex-col md:flex-row gap-6 lg:gap-12 mt-6 md:mt-7">
         <div className="max-md:mx-auto shrink-0">
           <img
             src={CertificateTeacherLedSatoshiImage}
@@ -395,7 +395,7 @@ const Labs = () => {
           {t('labs.description2')}
         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-[50px]">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-12">
           <Link to="/plan-b-labs">
             <ButtonWithArrow variant="primary">
               {t('labs.presentation.link')}

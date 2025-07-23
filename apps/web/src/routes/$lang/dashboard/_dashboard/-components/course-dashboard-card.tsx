@@ -61,7 +61,7 @@ export const CourseDashboardCard = ({
     <article className="flex flex-row md:max-h-[242px] 2xl:max-h-fit size-full 2xl:flex-col rounded-[10px] border border-black">
       <span
         className={cn(
-          'p-[5px] md:p-[15px] title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] 2xl:border-b  2xl:rounded-t-[10px] border-black text-center text-sm',
+          'p-1 md:p-4 title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] 2xl:border-b  2xl:rounded-t-[10px] border-black text-center text-sm',
           bgColor,
           !LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT.includes(i18n.language)
             ? 'max-2xl:[transform:rotate(180deg)] max-2xl:rounded-r-[10px] max-2xl:border-l'
@@ -70,7 +70,7 @@ export const CourseDashboardCard = ({
       >
         {text}
       </span>
-      <div className="flex flex-col justify-between w-full max-md:items-start pt-[5px] md:p-2.5 2xl:pb-[30px] px-2.5 pb-2.5 gap-2 md:gap-4">
+      <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 2xl:pb-7 px-2.5 pb-2.5 gap-2 md:gap-4">
         <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
           <div className="flex flex-wrap gap-2 max-2xl:order-2 max-md:hidden">
             <TextTag size={'verySmall'} variant="grey" className="uppercase">

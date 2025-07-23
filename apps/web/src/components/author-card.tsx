@@ -42,7 +42,7 @@ export const AuthorCard = ({
           <p className="body-16px md:max-w-[596px] w-full text-justify">
             {professor.bio}
           </p>
-          <div className="mt-[18px] md:mt-4 flex flex-wrap gap-2.5 items-center">
+          <div className="mt-4 md:mt-4 flex flex-wrap gap-2.5 items-center">
             {professor.tags?.map((tag) => (
               <TextTag key={tag} mode={mode ? mode : undefined}>
                 {tag}

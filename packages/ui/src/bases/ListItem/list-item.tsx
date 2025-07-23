@@ -27,7 +27,7 @@ const listItemVariant = cva(
     },
     variants: {
       hasIncreasedPadding: {
-        false: 'py-2 md:py-[3px]',
+        false: 'py-2 md:py-1',
         true: 'py-3',
       },
       isDesktopOnly: {

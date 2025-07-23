@@ -100,7 +100,7 @@ export const CourseCurriculum = ({
                           courseId: course.id,
                         }}
                         className={cn(
-                          'flex items-center group/link gap-[5px] lg:gap-7',
+                          'flex items-center group/link gap-1 lg:gap-7',
                           chapter.startDate &&
                             'max-lg:flex-col max-lg:items-start',
                           courseHasToBePurchased && 'pointer-events-none',

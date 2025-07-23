@@ -14,7 +14,7 @@ export const MobileMenuSectionElement = ({
     <button
       type="button"
       onClick={element.action}
-      className="group flex items-center text-maroon-9 dark:text-white body-16px pr-2 pl-10 py-[5px] gap-[15px] w-full"
+      className="group flex items-center text-maroon-9 dark:text-white body-16px pr-2 pl-10 py-1 gap-4 w-full"
     >
       {typeof element.icon === 'string' ? (
         <img
@@ -32,7 +32,7 @@ export const MobileMenuSectionElement = ({
     </button>
   ) : (
     <Link
-      className="group flex items-center text-maroon-9 dark:text-white body-16px pr-2 pl-10 py-[5px] gap-[15px] w-full"
+      className="group flex items-center text-maroon-9 dark:text-white body-16px pr-2 pl-10 py-1 gap-4 w-full"
       to={element.path}
     >
       {typeof element.icon === 'string' ? (

@@ -97,12 +97,12 @@ const TimelineSmall = ({
   const { t } = useTranslation();
 
   return (
-    <div className="mb-0 w-full max-w-5xl px-[15px] sm:hidden mt-[15px]">
+    <div className="mb-0 w-full max-w-5xl px-4 sm:hidden mt-4">
       <Link
         to={`/courses/${chapter.course.name}-${chapter.course.id}`}
         className="w-full flex justify-center items-center mb-4"
       >
-        <h1 className="px-[22px] title-medium-sb-18px text-black max-md:text-center">
+        <h1 className="px-5 title-medium-sb-18px text-black max-md:text-center">
           {chapter.course.name}
         </h1>
       </Link>
@@ -122,7 +122,7 @@ const TimelineSmall = ({
 
         <div
           className={cn(
-            'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-[5px] shadow-course-navigation-sm mt-2.5 mb-3 gap-4',
+            'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-1 shadow-course-navigation-sm mt-2.5 mb-3 gap-4',
           )}
         >
           {/* TODO */}
@@ -189,7 +189,7 @@ const TimelineBig = ({
           {chapter.course.name}
         </Link>
       </h1>
-      <div className="font-body flex flex-col justify-between text-xl text-black leading-relaxed tracking-015px mt-[25px]">
+      <div className="font-body flex flex-col justify-between text-xl text-black leading-relaxed tracking-015px mt-6">
         <span className="label-medium-med-16px text-newBlack-2">
           {t('courses.part.count', {
             count: chapter.part.partIndex,
@@ -737,14 +737,14 @@ function CourseChapter() {
             <div className="flex w-full flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
               {!chapter.isCourseExam && !chapter.isSingleTrialExam && (
                 <div
-                  className="text-blue-1000 w-full space-y-5 break-words px-[15px] md:px-2 mt-3 md:mt-8 md:grow md:space-y-[18px] md:overflow-hidden pb-2 md:pb-0"
+                  className="text-blue-1000 w-full space-y-5 break-words px-4 md:px-2 mt-3 md:mt-8 md:grow md:space-y-4 md:overflow-hidden pb-2 md:pb-0"
                   id="headerChapter"
                 >
                   <Header chapter={chapter} />
                 </div>
               )}
               <div className="flex w-full max-lg:flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
-                <div className="text-blue-1000 flex flex-col w-full gap-5 break-words px-[15px] md:px-2 md:mt-8 md:grow md:gap-[18px] md:overflow-hidden pb-2">
+                <div className="text-blue-1000 flex flex-col w-full gap-5 break-words px-4 md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
                   {!chapter.isCourseExam &&
                     !chapter.isSingleTrialExam &&
                     sections.length > 0 && (
@@ -776,7 +776,7 @@ function CourseChapter() {
                           </span>
                         </button>
                         {isContentExpanded && (
-                          <div className="mt-[15px] lg:mt-4 text-sm md:text-base">
+                          <div className="mt-4 lg:mt-4 text-sm md:text-base">
                             <ul className="flex flex-col gap-1.5">
                               {sections.map((goal: string) => (
                                 <li

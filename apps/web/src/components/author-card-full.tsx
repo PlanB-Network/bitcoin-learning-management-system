@@ -93,7 +93,7 @@ export const AuthorCardFull = ({
 
               <BackgroundAuthorCardElement showAllCounts={showAllCounts} />
             </Link>
-            <div className="flex items-center justify-center py-4 lg:py-[18px] px-[18px]">
+            <div className="flex items-center justify-center py-4 lg:py-4 px-4">
               <button
                 type="button"
                 onClick={(e) => {
@@ -151,7 +151,7 @@ export const BackgroundAuthorCardElement = ({
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 280 45"
       fill="none"
-      className={`absolute bottom-0 h-full ${showAllCounts ? 'max-h-[240px]' : 'max-h-[140px]'}`}
+      className={`absolute bottom-0 h-full ${showAllCounts ? 'max-h-[240px]' : 'max-h-35'}`}
       role="img"
       aria-label="Background effect"
     >

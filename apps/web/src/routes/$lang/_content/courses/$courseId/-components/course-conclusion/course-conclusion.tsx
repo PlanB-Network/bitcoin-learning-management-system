@@ -254,8 +254,8 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     scrollToHeader();
   }, []);
 
-  const lineContainerClass = 'flex items-center w-full h-12 md:h-[100px]';
-  const lineSizeClass = 'w-full h-1 md:h-[5px] rounded-l-full';
+  const lineContainerClass = 'flex items-center w-full h-12 md:h-25';
+  const lineSizeClass = 'w-full h-1 md:h-1 rounded-l-full';
   const linkMainClass = `${lineSizeClass} bg-newGray-5`;
   const linkSubClass = `${lineSizeClass}absolute bg-gradient-to-r from-white to-darkOrange-5 transition-all ease-in-out start-animation`;
   const iconSizeClass = 'size-7 md:size-14';
@@ -445,7 +445,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
             className={cn(
               step >= 5
                 ? ''
-                : 'bg-maroon-1 p-2 md:px-[30px] md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation',
+                : 'bg-maroon-1 p-2 md:px-7 md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation',
             )}
           >
             {course && step <= 1 ? (
@@ -460,7 +460,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                   }
                 />
               ) : (
-                <section className="flex flex-col w-full gap-5 md:gap-[30px]">
+                <section className="flex flex-col w-full gap-5 md:gap-7">
                   <p className={titleStepClass}>{t('words.chapters')}</p>
                   <p className="text-newBlack-1 body-16px md:subtitle-large-18px whitespace-pre-line">
                     {t('dashboard.course.conclusionHeadline')}
@@ -509,7 +509,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                   }
                 />
               ) : (
-                <section className="flex flex-col w-full gap-5 md:gap-[30px]">
+                <section className="flex flex-col w-full gap-5 md:gap-7">
                   <span className={titleStepClass}>
                     {t('courses.review.feedback')}
                   </span>
@@ -697,7 +697,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
                     }}
                   />
                 ) : (
-                  <div className="flex justify-center w-full max-h-[85%] bg-black px-[100px]">
+                  <div className="flex justify-center w-full max-h-[85%] bg-black px-25">
                     <video
                       className="relative w-full"
                       src={congratsDark}
@@ -780,10 +780,10 @@ const HeaderBox = ({
   isCurrentStep,
 }: HeaderBoxProps) => {
   return (
-    <div className="flex flex-col max-w-12 md:max-w-[100px] gap-4">
+    <div className="flex flex-col max-w-12 md:max-w-25 gap-4">
       <div
         className={cn(
-          'size-12 md:size-[100px] border-4 rounded-xl flex flex-col items-center justify-center z-10 shrink-0',
+          'size-12 md:size-25 border-4 rounded-xl flex flex-col items-center justify-center z-10 shrink-0',
           isDone
             ? 'border-darkOrange-1 bg-darkOrange-5 shadow-course-navigation-sm'
             : isCurrentStep

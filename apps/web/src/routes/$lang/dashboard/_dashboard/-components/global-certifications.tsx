@@ -542,50 +542,42 @@ const ExamTicket = ({
       {isTicketOpen[index] && (
         <tr className="bg-newGray-6">
           {isMobile ? (
-            <>
-              <td colSpan={4}>
-                {examTicket.date.getTime() > Date.now() ? (
-                  <div className="flex flex-col items-center text-center body-14px md:desktop-body1 mt-4">
-                    <p className="font-medium">
-                      {t('dashboard.credentials.seatBooked')}
-                    </p>
-                    <span className="mt-6">
-                      {t('dashboard.credentials.takePlaceAt')}
-                    </span>
-                    <span>{examTicket.addressLine1}</span>
-                    <span>{examTicket.addressLine2}</span>
-                    <span>{examTicket.addressLine3}</span>
-                    <span className="mt-5">
-                      {`on the ${formatDate(examTicket.date)} at ${formatTime(examTicket.date, examTicket.timezone || 'UTC')} (${examTicket.timezone || 'UTC'})`}
-                    </span>
-                    <SeeTicket />
-                    <img
-                      className="mt-2 mx-auto"
-                      src={DummyBCert}
-                      alt="Dummy b-cert"
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <div className="items-center desktop-body1 flex flex-col justify-between py-[2px] w-fit">
-                      <p className="font-medium text-center px-6">
-                        {t('dashboard.credentials.beingGraded')}
-                      </p>
-                      <img
-                        className="mt-4 h-10"
-                        src={SandClockGif}
-                        alt="Sandclock"
-                      />
-                      <img
-                        className="mt-4"
-                        src={DummyBCert}
-                        alt="Dummy b-cert"
-                      />
-                    </div>
-                  </>
-                )}
-              </td>
-            </>
+            <td colSpan={4}>
+              {examTicket.date.getTime() > Date.now() ? (
+                <div className="flex flex-col items-center text-center body-14px md:desktop-body1 mt-4">
+                  <p className="font-medium">
+                    {t('dashboard.credentials.seatBooked')}
+                  </p>
+                  <span className="mt-6">
+                    {t('dashboard.credentials.takePlaceAt')}
+                  </span>
+                  <span>{examTicket.addressLine1}</span>
+                  <span>{examTicket.addressLine2}</span>
+                  <span>{examTicket.addressLine3}</span>
+                  <span className="mt-5">
+                    {`on the ${formatDate(examTicket.date)} at ${formatTime(examTicket.date, examTicket.timezone || 'UTC')} (${examTicket.timezone || 'UTC'})`}
+                  </span>
+                  <SeeTicket />
+                  <img
+                    className="mt-2 mx-auto"
+                    src={DummyBCert}
+                    alt="Dummy b-cert"
+                  />
+                </div>
+              ) : (
+                <div className="items-center desktop-body1 flex flex-col justify-between py-0.5 w-fit">
+                  <p className="font-medium text-center px-6">
+                    {t('dashboard.credentials.beingGraded')}
+                  </p>
+                  <img
+                    className="mt-4 h-10"
+                    src={SandClockGif}
+                    alt="Sandclock"
+                  />
+                  <img className="mt-4" src={DummyBCert} alt="Dummy b-cert" />
+                </div>
+              )}
+            </td>
           ) : (
             <>
               <td className=" pt-6 pb-2" colSpan={2}>
@@ -593,7 +585,7 @@ const ExamTicket = ({
               </td>
               <td className="pt-6 " colSpan={3}>
                 {examTicket.date.getTime() > Date.now() ? (
-                  <div className="items-center text-center desktop-body1 flex flex-col justify-between py-[2px] w-fit">
+                  <div className="items-center text-center desktop-body1 flex flex-col justify-between py-0.5 w-fit">
                     <p className="font-medium">
                       {t('dashboard.credentials.seatBooked')}
                     </p>
@@ -609,7 +601,7 @@ const ExamTicket = ({
                     <SeeTicket />
                   </div>
                 ) : (
-                  <div className="items-center desktop-body1 flex flex-col justify-between py-[2px] w-fit">
+                  <div className="items-center desktop-body1 flex flex-col justify-between py-0.5 w-fit">
                     <p className="font-medium text-center">
                       {t('dashboard.credentials.beingGraded')}
                     </p>
@@ -718,7 +710,7 @@ const BcertDetails = ({
           className="mt-2 desktop-body1"
           key={`${examIndex}-${result.category}`}
         >
-          <div className="flex flew-row justify-between border-b py-[2px]  border-newGray-4">
+          <div className="flex flew-row justify-between border-b py-0.5  border-newGray-4">
             <span>
               {t('words.part')}{' '}
               {`${resultIndex + 1} - ${capitalize(result.category)}`}

@@ -136,7 +136,7 @@ function Book() {
             <Card
               className="md:mx-auto w-full !rounded-[10px] md:!rounded-[20px]"
               withPadding={false}
-              paddingClass="p-5 md:p-[30px]"
+              paddingClass="p-5 md:p-7"
               color="orange"
             >
               <article className="w-full flex flex-col md:flex-row gap-5 lg:gap-9">
@@ -153,7 +153,7 @@ function Book() {
 
                 <div className="w-full max-w-2xl flex flex-col md:mt-0">
                   <div>
-                    <h2 className="title-large-24px lg:display-small-med-32px text-white mb-5 lg:mb-[30px] text-center md:text-start">
+                    <h2 className="title-large-24px lg:display-small-med-32px text-white mb-5 lg:mb-7 text-center md:text-start">
                       {book?.title}
                     </h2>
 
@@ -165,7 +165,7 @@ function Book() {
                       </span>
                     </p>
 
-                    <div className="flex items-center justify-center md:justify-start mb-5 md:mb-[30px]">
+                    <div className="flex items-center justify-center md:justify-start mb-5 md:mb-7">
                       <span className="text-newGray-3 pr-1 title-medium-sb-18px md:label-large-med-20px">
                         {t('words.publicationDate')}
                       </span>
@@ -174,7 +174,7 @@ function Book() {
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap gap-[10px] items-center justify-center md:justify-start  mb-5 lg:mb-[30px]">
+                    <div className="flex flex-wrap gap-2 items-center justify-center md:justify-start  mb-5 lg:mb-7">
                       {book?.tags.map((tag) => (
                         <TextTag
                           key={tag}
@@ -196,7 +196,7 @@ function Book() {
           </div>
         </div>
       )}
-      <section className="mt-8 lg:mt-[100px]">
+      <section className="mt-8 lg:mt-25">
         <SuggestedHeader
           text="resources.pageSubtitleBooks"
           placeholder="Other books"
@@ -240,7 +240,7 @@ function Book() {
                           />
                         </div>
 
-                        <h3 className="absolute w-full max-w-[140px]  lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
+                        <h3 className="absolute w-full max-w-35  lg:max-w-[220px] lg:w-[220px] px-2 lg:px-4 body-14px lg:title-large-24px mb-1 lg:mb-5 bottom-px line-clamp-2">
                           {suggestedBook.title}
                         </h3>
                       </Link>

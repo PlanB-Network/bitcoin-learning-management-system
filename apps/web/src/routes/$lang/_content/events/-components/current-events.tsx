@@ -77,7 +77,7 @@ export const CurrentEvents = ({
         <h2 className={` ${headingColor}${headingClass}`}>
           {headingText || t('events.main.currentEvents')}
         </h2>
-        <div className="flex flex-wrap justify-center gap-10 mt-[10px] lg:mt-[30px] mx-auto sm:p-4 sm:shadow-l-section sm:rounded-[20px] sm:border-2 sm:border-newOrange-1">
+        <div className="flex flex-wrap justify-center gap-10 mt-2 lg:mt-7 mx-auto sm:p-4 sm:shadow-l-section sm:rounded-[20px] sm:border-2 sm:border-newOrange-1">
           {liveEvents.length > 0
             ? liveEvents.map((event) => (
                 <EventCard

@@ -34,10 +34,10 @@ export const BookingPart = ({
             <span className="w-[150px] flex-none capitalize">
               {t('dashboard.booking.ticketLocation')}
             </span>
-            <span className="w-[100px] flex-none capitalize">
+            <span className="w-25 flex-none capitalize">
               {t('dashboard.booking.ticketType')}
             </span>
-            <span className="min-w-[100px] grow">
+            <span className="min-w-25 grow">
               {t('dashboard.booking.ticketTitle')}
             </span>
             <span className="w-[150px] flex-none mr-28">
@@ -57,10 +57,10 @@ export const BookingPart = ({
                   <span className="w-[150px] flex-none capitalize text-dashboardSectionText/75 line-clamp-1">
                     {location}
                   </span>
-                  <span className="w-[100px] flex-none capitalize">
+                  <span className="w-25 flex-none capitalize">
                     {ticket.type}
                   </span>
-                  <div className="min-w-[100px] grow">
+                  <div className="min-w-25 grow">
                     <span className="w-fit font-medium line-clamp-1 text-dashboardSectionTitle">
                       {ticket.title}
                     </span>
@@ -280,7 +280,7 @@ const CancelBookingDialog = ({ onConfirm }: { onConfirm: () => void }) => {
       title={t('dashboard.booking.cancelBookingTitle')}
       showLogo={true}
     >
-      <div className="!flex gap-4 md:!gap-[30px]">
+      <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>
           <Button
             variant="primary"

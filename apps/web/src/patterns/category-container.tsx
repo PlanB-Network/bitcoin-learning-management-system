@@ -28,7 +28,7 @@ const CategoryContainer: React.FC<CategoryContainerProps> = ({
     <div className="mt-10 md:mt-20 px-4 md:px-8">
       <div
         className={cn(
-          'flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl md:p-[30px] mx-auto gap-4 sm:gap-5 md:gap-12',
+          'flex flex-wrap justify-center items-center content-center max-w-xl md:max-w-5xl md:p-7 mx-auto gap-4 sm:gap-5 md:gap-12',
           bgClass,
         )}
       >

@@ -75,7 +75,7 @@ export const Confirmation: Story = {
       }
       showLogo={true}
     >
-      <div className="!flex gap-4 md:!gap-[30px]">
+      <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>
           <Button variant="primary" size={'l'} className="!w-fit">
             Delete

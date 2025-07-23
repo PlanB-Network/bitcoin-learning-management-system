@@ -10,7 +10,7 @@ interface BackLinkProps {
 export const BackLink = ({
   to,
   label,
-  className = 'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white mb-[30px]',
+  className = 'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white mb-7',
 }: BackLinkProps) => (
   <Link to={to} className={className}>
     <MdKeyboardArrowLeft className="size-[18px] md:size-12" />

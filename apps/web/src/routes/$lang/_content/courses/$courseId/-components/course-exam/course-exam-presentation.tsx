@@ -97,7 +97,7 @@ export const CourseExamPresentation = ({
         <p className="text-darkOrange-5 subtitle-medium-med-16px md:title-large-24px">
           {t('courses.exam.congratulations')}
         </p>
-        <p className="body-16px text-justify mt-[18px]">
+        <p className="body-16px text-justify mt-4">
           {t('courses.exam.testKnowledge')}
         </p>
         <span className="body-medium-16px mt-6">

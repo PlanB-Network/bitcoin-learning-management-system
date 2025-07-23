@@ -13,7 +13,7 @@ export const StepMessage = ({
   actionButton?: JSX.Element;
 }) => {
   return (
-    <section className="flex flex-col w-full gap-5 md:gap-[30px]">
+    <section className="flex flex-col w-full gap-5 md:gap-7">
       <span className="text-newGray-1 subtitle-small-caps-14px md:subtitle-medium-caps-18px">
         {title}
       </span>

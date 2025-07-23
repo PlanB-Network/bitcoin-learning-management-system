@@ -72,7 +72,7 @@ export const ProfessorCardReduced = ({
     <div
       className={cn(
         'rounded-[20px] p-2 border-2 border-newBlack-1 bg-newGray-6 size-fit flex flex-col',
-        mobileSize === 'small' && 'max-md:p-[5px] max-md:border',
+        mobileSize === 'small' && 'max-md:p-1 max-md:border',
       )}
     >
       <Link
@@ -81,12 +81,12 @@ export const ProfessorCardReduced = ({
         className={cn(
           'rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 relative overflow-hidden w-[280px]',
           mobileSize === 'small' &&
-            'max-md:w-[137px] max-md:px-1 max-md:pb-[15px] max-md:pt-[5px] max-md:to-[100px]',
+            'max-md:w-[137px] max-md:px-1 max-md:pb-4 max-md:pt-1 max-md:to-[100px]',
         )}
       >
         <span
           className={cn(
-            'mb-[5px] md:mb-2.5 w-full text-center title-large-sb-24px text-white z-10 flex items-center justify-center',
+            'mb-1 md:mb-2.5 w-full text-center title-large-sb-24px text-white z-10 flex items-center justify-center',
             mobileSize === 'small' &&
               'max-md:h-10 max-md:subtitle-small-sb-14px',
           )}
@@ -146,7 +146,7 @@ export const ProfessorCardReduced = ({
       {hasDonateButton && (
         <div
           className={cn(
-            'flex items-center justify-center py-4 px-[18px]',
+            'flex items-center justify-center py-4 px-4',
             mobileSize === 'small' && 'max-md:hidden',
           )}
         >
@@ -324,8 +324,8 @@ const BackgroundAuthorCardElement = ({
       preserveAspectRatio="xMidYMid meet"
       className={
         reduced
-          ? 'absolute bottom-0 h-full max-h-[110px] md:max-h-[140px]'
-          : 'absolute bottom-0 h-full max-h-[120px] lg:max-h-[290px]'
+          ? 'absolute bottom-0 h-full max-h-[110px] md:max-h-35'
+          : 'absolute bottom-0 h-full max-h-30 lg:max-h-[290px]'
       }
       role="img"
       aria-label="Background effect"

@@ -66,7 +66,7 @@ export const MetaElements = ({
                   await logout();
                   window.location.reload();
                 }}
-                className={`cursor-pointer rounded-[16px] py-[14px] px-[18px] ${
+                className={`cursor-pointer rounded-[16px] py-3 px-4 ${
                   variant === 'light'
                     ? 'bg-darkOrange-2 text-black hover:bg-darkOrange-1 active:bg-darkOrange-1 active:text-darkOrange-5'
                     : 'bg-newBlack-3 text-white hover:bg-darkHover'

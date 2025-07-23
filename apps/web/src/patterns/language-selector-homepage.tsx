@@ -38,7 +38,7 @@ export const LanguageSelectorHomepage = ({
   return (
     <div
       className={cn(
-        'flex flex-wrap gap-[15px] items-center justify-center lg:justify-start max-w-[1164px] mt-8',
+        'flex flex-wrap gap-4 items-center justify-center lg:justify-start max-w-[1164px] mt-8',
         className,
       )}
     >

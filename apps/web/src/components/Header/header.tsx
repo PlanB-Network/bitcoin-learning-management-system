@@ -395,7 +395,7 @@ export const Header = ({
   return (
     <header
       className={cn(
-        'sticky left-0 top-0 z-40 flex w-full flex-row justify-between py-[11px] px-4 lg:min-h-[96px] lg:px-12 lg:py-3',
+        'sticky left-0 top-0 z-40 flex w-full flex-row justify-between py-3 px-4 lg:min-h-24 lg:px-12 lg:py-3',
         variant === 'light' ? 'bg-darkOrange-5' : 'bg-headerDark',
       )}
     >

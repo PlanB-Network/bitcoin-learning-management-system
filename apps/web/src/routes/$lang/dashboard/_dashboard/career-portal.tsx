@@ -385,12 +385,12 @@ function CareerPortal() {
     window.scrollTo({ behavior: 'smooth', top: 0 });
   }, [step]);
 
-  const inputRowFlexClasses = 'flex max-md:flex-col gap-5 md:gap-[70px]';
+  const inputRowFlexClasses = 'flex max-md:flex-col gap-5 md:gap-17';
   const inputRowMarginClasses = 'mb-5 md:mb-4';
 
   return (
     <div className="max-w-[1066px] flex flex-col">
-      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-[15px] md:mb-[40px]">
+      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-4 md:mb-10">
         {t('words.careerPortal')}
       </h1>
       {showLoader && <Loader />}
@@ -419,10 +419,10 @@ function CareerPortal() {
           {/* Step 0 */}
           {!showLoader && step === 0 && (
             <>
-              <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-[15px]">
+              <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-4">
                 {t('dashboard.careerPortal.welcome')}
               </h2>
-              <p className="text-black body-14px md:label-medium-16px mb-[25px] md:mb-[60px]">
+              <p className="text-black body-14px md:label-medium-16px mb-6 md:mb-15">
                 {t('dashboard.careerPortal.description')}
               </p>
               {existingCareerProfile ? (
@@ -439,14 +439,14 @@ function CareerPortal() {
                       }}
                     />
                   </p>
-                  <p className="w-full text-center text-newBlack-5 body-16px md:label-medium-16px mb-[25px] md:mb-[60px] whitespace-pre-line">
+                  <p className="w-full text-center text-newBlack-5 body-16px md:label-medium-16px mb-6 md:mb-15 whitespace-pre-line">
                     {validatedSteps === 4
                       ? t('dashboard.careerPortal.lookingForJob')
                       : t('dashboard.careerPortal.followProcess')}
                   </p>
                 </>
               ) : (
-                <p className="w-full text-center text-black body-16px-medium md:label-medium-med-16px mb-[25px] md:mb-[60px] whitespace-pre-line">
+                <p className="w-full text-center text-black body-16px-medium md:label-medium-med-16px mb-6 md:mb-15 whitespace-pre-line">
                   {t('dashboard.careerPortal.followProcess')}
                 </p>
               )}
@@ -462,14 +462,14 @@ function CareerPortal() {
                   mode="light"
                   size="m"
                   onClick={() => createCareerProfile.mutate()}
-                  className="mb-5 md:mb-[30px] mx-auto"
+                  className="mb-5 md:mb-7 mx-auto"
                   type="button"
                 >
                   {t('dashboard.careerPortal.startApplication')}
                 </ButtonWithArrow>
               )}
               {existingCareerProfile && (
-                <div className="flex max-md:flex-col items-center justify-center gap-4 md:gap-[30px] mb-5 md:mb-[30px] mx-auto">
+                <div className="flex max-md:flex-col items-center justify-center gap-4 md:gap-7 mb-5 md:mb-7 mx-auto">
                   <Button
                     variant="primary"
                     mode="light"
@@ -596,7 +596,7 @@ function CareerPortal() {
               />
 
               <section>
-                <div className="w-full flex max-md:flex-col gap-5 md:gap-[60px] md:items-center">
+                <div className="w-full flex max-md:flex-col gap-5 md:gap-15 md:items-center">
                   <div className="w-full max-w-xs md:max-w-[450px] flex flex-col gap-2">
                     <FormHeader
                       label={t('dashboard.careerPortal.selectLanguage')}
@@ -659,14 +659,14 @@ function CareerPortal() {
                 )}
 
                 {languageSkillsFields.length > 0 && (
-                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-[15px] p-4 mt-5 md:mt-4">
+                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
                     <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
                       {t('dashboard.careerPortal.yourLanguages')}
                     </h3>
                     {languageSkillsFields.map((field, index) => (
                       <div
                         key={field.languageCode}
-                        className="flex max-md:flex-col gap-1 md:gap-[30px]"
+                        className="flex max-md:flex-col gap-1 md:gap-7"
                       >
                         <span className="w-full md:min-w-[194px] md:max-w-[194px] subtitle-large-18px md:subtitle-medium-med-16px text-black">
                           {
@@ -698,7 +698,7 @@ function CareerPortal() {
                         <div className="flex w-full">
                           <span className="w-full max-w-[224px] md:hidden" />
                           <Button
-                            className="md:self-end max-md:mt-[11px] md:ml-auto flex gap-2.5 shrink-0"
+                            className="md:self-end max-md:mt-3 md:ml-auto flex gap-2.5 shrink-0"
                             type="button"
                             variant="outline"
                             mode="light"
@@ -723,7 +723,7 @@ function CareerPortal() {
                 className="mt-5 md:mt-10"
               />
 
-              <div className="flex flex-col gap-[30px] md:gap-5">
+              <div className="flex flex-col gap-7 md:gap-5">
                 <FormSwitch
                   id="isBitcoinCommunityParticipant"
                   control={form.control}
@@ -780,7 +780,7 @@ function CareerPortal() {
               />
 
               <section className="mb-5 md:mb-10">
-                <div className="w-full flex max-md:flex-col gap-5 md:gap-[60px] md:items-center">
+                <div className="w-full flex max-md:flex-col gap-5 md:gap-15 md:items-center">
                   <div className="w-full max-w-xs md:max-w-[450px] flex flex-col gap-2">
                     <FormHeader
                       label={t('dashboard.careerPortal.selectRole')}
@@ -863,14 +863,14 @@ function CareerPortal() {
                 )}
 
                 {rolesFields.length > 0 && (
-                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-[15px] p-4 mt-5 md:mt-4">
+                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
                     <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
                       {t('dashboard.careerPortal.yourRoles')}
                     </h3>
                     {rolesFields.map((field, index) => (
                       <div
                         key={field.roleId}
-                        className="flex max-md:flex-col gap-1 md:gap-[30px]"
+                        className="flex max-md:flex-col gap-1 md:gap-7"
                       >
                         <span className="w-full md:min-w-[194px] md:max-w-[194px] subtitle-large-18px md:subtitle-medium-med-16px text-black">
                           {t(
@@ -903,7 +903,7 @@ function CareerPortal() {
                         <div className="flex w-full">
                           <span className="w-full max-w-[224px] md:hidden" />
                           <Button
-                            className="md:self-end max-md:mt-[11px] md:ml-auto flex gap-2.5 shrink-0"
+                            className="md:self-end max-md:mt-3 md:ml-auto flex gap-2.5 shrink-0"
                             type="button"
                             variant="outline"
                             mode="light"
@@ -1191,8 +1191,8 @@ const StepsProcess = ({
   return (
     <section
       className={cn(
-        'w-full flex max-md:flex-col md:justify-between md:px-[30px]',
-        currentStep === 0 ? 'mb-8 md:mb-[60px]' : 'max-md:hidden mb-10',
+        'w-full flex max-md:flex-col md:justify-between md:px-7',
+        currentStep === 0 ? 'mb-8 md:mb-15' : 'max-md:hidden mb-10',
       )}
     >
       {processSteps.map((step) => (
@@ -1212,7 +1212,7 @@ const StepsProcess = ({
             <div className="max-md:hidden w-full relative flex justify-center">
               <div
                 className={cn(
-                  'absolute bottom-4 w-full max-w-[80px] h-[6px] rounded-full',
+                  'absolute bottom-4 w-full max-w-20 h-1.5 rounded-full',
                   (currentStep === 0 && step.stepNumber < validatedSteps) ||
                     step.stepNumber < currentStep
                     ? 'bg-darkOrange-5'
@@ -1298,7 +1298,7 @@ const DeleteProfileDialog = ({ onConfirm }: { onConfirm: () => void }) => {
       content={<p>{t('dashboard.careerPortal.cannotUndo')}</p>}
       showLogo={true}
     >
-      <div className="!flex gap-4 md:!gap-[30px]">
+      <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>
           <Button
             variant="primary"
@@ -1334,12 +1334,7 @@ const TitleAndSubtitle = ({
   subtitle: string;
   className?: string;
 }) => (
-  <div
-    className={cn(
-      'flex flex-col mb-5 md:mb-10 gap-[5px] md:gap-[15px]',
-      className,
-    )}
-  >
+  <div className={cn('flex flex-col mb-5 md:mb-10 gap-1 md:gap-4', className)}>
     <h3 className="text-dashboardSectionTitle title-medium-sb-18px md:title-large-sb-24px">
       {title}
     </h3>
@@ -1400,7 +1395,7 @@ const FormText = ({
               <input
                 type="text"
                 placeholder={placeholder}
-                className="w-full border border-newGray-4 bg-white rounded-lg px-4 py-[5px] placeholder:text-sm placeholder:leading-tight placeholder:text-newGray-3 placeholder:truncate"
+                className="w-full border border-newGray-4 bg-white rounded-lg px-4 py-1 placeholder:text-sm placeholder:leading-tight placeholder:text-newGray-3 placeholder:truncate"
                 {...field}
               />
             ) : (
@@ -1442,7 +1437,7 @@ const FormSwitch = ({
       control={control}
       name={id}
       render={({ field }) => (
-        <FormItem className="w-full flex max-md:flex-col gap-[15px] md:gap-10 md:items-center">
+        <FormItem className="w-full flex max-md:flex-col gap-4 md:gap-10 md:items-center">
           <FormHeader label={label} mandatory={mandatory} />
           <FormControl>
             <div className="flex gap-2.5 items-center">
@@ -1487,7 +1482,7 @@ const FormRadio = ({
         <FormItem className="w-full flex flex-col gap-2">
           <FormHeader label={label} mandatory={mandatory} />
           <FormControl>
-            <div className="flex flex-col gap-2 pl-[18px]">
+            <div className="flex flex-col gap-2 pl-4">
               {options.map((option) => (
                 <React.Fragment key={String(option.value)}>
                   <label className="flex gap-4 items-start">
@@ -1591,7 +1586,7 @@ const FormCheckboxGroup = ({
         <FormItem className="w-full flex flex-col gap-2">
           <FormHeader label={label} subLabel={subLabel} mandatory={mandatory} />
           <FormControl>
-            <div className="flex flex-col gap-2 pl-[18px]">
+            <div className="flex flex-col gap-2 pl-4">
               {options.map((option) => (
                 <label key={option.value} className="flex gap-4 items-center">
                   <div className="grid place-items-center">

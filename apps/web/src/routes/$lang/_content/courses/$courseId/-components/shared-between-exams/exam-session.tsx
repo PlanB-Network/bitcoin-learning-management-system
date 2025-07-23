@@ -276,7 +276,7 @@ export const ExamSession = ({
                       </span>
                       <p
                         className={cn(
-                          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-[5px] md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white lg:group-hover:bg-newGray-4',
+                          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-1 md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white lg:group-hover:bg-newGray-4',
                           selectedAnswers[questionIndex].index ===
                             answerIndex &&
                             '!bg-darkOrange-1 lg:group-hover:!bg-darkOrange-0',
@@ -306,7 +306,7 @@ export const ExamSession = ({
           titleVariant="black"
           showLogo={false}
         >
-          <div className="!flex flex-wrap !gap-[18px] max-md:mb-5">
+          <div className="!flex flex-wrap !gap-4 max-md:mb-5">
             <DialogClose asChild>
               <Button
                 variant="outline"

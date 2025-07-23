@@ -60,7 +60,7 @@ export const CourseCard = ({
       >
         {/* Badge for Featured Card */}
         {featured && (
-          <span className="absolute uppercase -top-px -left-px bg-white border border-white text-black body-semibold-12px md:title-medium-sb-18px rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-[5px] px-2.5 md:py-2.5 md:px-[15px] md:rounded-br-[20px] z-10">
+          <span className="absolute uppercase -top-px -left-px bg-white border border-white text-black body-semibold-12px md:title-medium-sb-18px rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-1 px-2.5 md:py-2.5 md:px-4 md:rounded-br-[20px] z-10">
             {t('words.startHere')}
           </span>
         )}
@@ -91,7 +91,7 @@ export const CourseCard = ({
             )}
             alt={course.name}
             breakpoints={{ default: 124 }}
-            className="md:hidden rounded-md w-[124px] object-cover [overflow-clip-margin:_unset] object-center"
+            className="md:hidden rounded-md w-31 object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">
             <span className="max-md:flex flex-col md:mb-2 !line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-maroon-11 dark:text-white md:align-top mb-2 lg:mb-0">
@@ -196,7 +196,7 @@ export const CourseCardExtended = ({
           'overflow-hidden group flex flex-col w-full max-md:max-w-[500px] max-md:mx-auto md:h-[472px] p-2.5 bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section rounded-[10px] md:rounded-[20px] relative'
         }
       >
-        <span className="absolute uppercase -top-px -left-px bg-white border border-white rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-[5px] px-2.5 md:py-2.5 md:px-[15px] md:rounded-br-[20px] z-10 shrink-0 max-md:w-[95px]">
+        <span className="absolute uppercase -top-px -left-px bg-white border border-white rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-1 px-2.5 md:py-2.5 md:px-4 md:rounded-br-[20px] z-10 shrink-0 max-md:w-[95px]">
           <Image
             src={PlanBSchoolLogo}
             alt="Plan B School"

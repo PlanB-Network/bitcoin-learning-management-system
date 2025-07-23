@@ -48,7 +48,7 @@ export const CategoryTabs = ({ resourceActiveCategory }: CategoryTabsProps) => {
             </div>
             <span
               className={cn(
-                'absolute left-1/2 -translate-x-1/2 body-14px text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 w-[100px] text-center',
+                'absolute left-1/2 -translate-x-1/2 body-14px text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 w-25 text-center',
                 resourceCategory.name === resourceActiveCategory
                   ? 'top-16'
                   : 'top-14',

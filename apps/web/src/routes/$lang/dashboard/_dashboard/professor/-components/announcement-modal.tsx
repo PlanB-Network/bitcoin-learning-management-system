@@ -264,7 +264,7 @@ export const AnnouncementModal = ({
                       placeholder={t(
                         'dashboard.teacher.courses.announcementModal.contentPlaceholder',
                       )}
-                      className="min-h-[100px] bg-white border-newGray-3"
+                      className="min-h-25 bg-white border-newGray-3"
                       {...field}
                     />
                   </FormControl>
@@ -285,7 +285,7 @@ export const AnnouncementModal = ({
                       )}
                     </FormLabel>
                     <FormControl>
-                      <div className="flex flex-col gap-2 pl-[18px] text-left">
+                      <div className="flex flex-col gap-2 pl-4 text-left">
                         {[
                           {
                             label: t('dashboard.announcements.groups.all'),

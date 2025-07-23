@@ -83,7 +83,7 @@ export default function QuizzCard({
   }
 
   return (
-    <div className="border-newBlack-1 bg-white flex w-full mt-5 md:mt-12 flex-col gap-1.5 rounded-[20px] border md:border-2 p-[5px] md:p-2.5 md:gap-2.5 mx-auto">
+    <div className="border-newBlack-1 bg-white flex w-full mt-5 md:mt-12 flex-col gap-1.5 rounded-[20px] border md:border-2 p-1 md:p-2.5 md:gap-2.5 mx-auto">
       {currentStep === 1 && (
         <QuizzCardQuestion
           name={name}

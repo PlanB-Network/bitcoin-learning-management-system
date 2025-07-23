@@ -109,7 +109,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                   </p>
                 </div>
                 <div className="flex gap-3 items-center max-md:mt-2.5">
-                  <div className="flex flex-col items-center md:p-4 w-[140px] shrink-0 text-center body-14px max-md:hidden">
+                  <div className="flex flex-col items-center md:p-4 w-35 shrink-0 text-center body-14px max-md:hidden">
                     <span>
                       {new Intl.DateTimeFormat(undefined, {
                         day: 'numeric',
@@ -179,11 +179,11 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                       `dashboard.teacher.courses.${announcement.studentGroup}Students`,
                     )}
                   </TextTag>
-                  <span className="flex ml-auto justify-center md:w-[140px] shrink-0 text-center desktop-caption1 text-newBlack-5">
+                  <span className="flex ml-auto justify-center md:w-35 shrink-0 text-center desktop-caption1 text-newBlack-5">
                     {getNotificationDateString(announcement.scheduledAt)}
                   </span>
                 </div>
-                <p className="body-14px mt-[5px] md:mt-2.5">
+                <p className="body-14px mt-1 md:mt-2.5">
                   {announcement.content}
                 </p>
               </article>
@@ -228,7 +228,7 @@ const DeleteAnnouncementDialog = ({ onConfirm }: { onConfirm: () => void }) => {
       }
       iconSrc={InformationIcon}
     >
-      <div className="!flex gap-4 md:!gap-[30px]">
+      <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>
           <Button
             variant="primary"

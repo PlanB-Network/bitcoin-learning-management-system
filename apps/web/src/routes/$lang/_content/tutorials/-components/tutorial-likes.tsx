@@ -37,7 +37,7 @@ export const TutorialLikes = ({
         <img
           src={SeparatorIcon}
           alt="separator icon"
-          className="inline-block md:hidden mx-[18px] h-[10px]"
+          className="inline-block md:hidden mx-[18px] h-2.5"
         />
         <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
       </span>

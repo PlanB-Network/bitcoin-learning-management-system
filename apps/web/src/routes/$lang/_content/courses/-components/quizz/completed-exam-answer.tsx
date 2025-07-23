@@ -34,7 +34,7 @@ export const CompletedExamAnswer = ({
       </span>
       <p
         className={cn(
-          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-[5px] md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white',
+          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-1 md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white',
           answerOrder === correctAnswer
             ? answerOrder === selectedAnswer
               ? 'bg-brightGreen-3 !font-semibold'

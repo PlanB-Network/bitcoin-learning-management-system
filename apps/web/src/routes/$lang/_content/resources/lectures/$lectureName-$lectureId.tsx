@@ -146,17 +146,17 @@ function Lecture() {
             <Card
               className="md:mx-auto w-full"
               withPadding={false}
-              paddingClass="p-4 md:p-[30px]"
+              paddingClass="p-4 md:p-7"
               color="orange"
             >
-              <div className="w-full flex flex-col md:flex-row gap-[25px] lg:gap-10">
+              <div className="w-full flex flex-col md:flex-row gap-6 lg:gap-10">
                 <div className="flex flex-col items-center shrink-0 relative rounded-[10px] lg:rounded-[20px] max-md:shadow-course-navigation max-md:w-fit mx-auto">
                   <img
                     className="w-full max-w-[256px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:rounded-[20px] lg:max-w-[457px]"
                     alt={t('imagesAlt.bookCover')}
                     src={resourceImgUrl(lecture)}
                   />
-                  <div className="shrink-0 md:hidden absolute top-[13px] right-[12px] flex flex-col gap-1 p-1 bg-white rounded-xs">
+                  <div className="shrink-0 md:hidden absolute top-3 right-3 flex flex-col gap-1 p-1 bg-white rounded-xs">
                     {lecture.languages.map((language) => (
                       <Flag key={language} code={language} size="m" />
                     ))}
@@ -187,7 +187,7 @@ function Lecture() {
                       {lecture.professorName || lecture.projectName}
                     </span>
 
-                    <div className="flex max-md:flex-col gap-[5px] md:gap-12">
+                    <div className="flex max-md:flex-col gap-1 md:gap-12">
                       {lectureDuration && (
                         <span className="text-newGray-3 subtitle-small-med-14px lg:subtitle-large-med-20px">
                           {t('words.duration')}:{' '}
@@ -211,7 +211,7 @@ function Lecture() {
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-[10px]">
+                    <div className="flex flex-wrap gap-2">
                       {lecture.tags.map((tag) => (
                         <TextTag
                           key={tag}
@@ -274,7 +274,7 @@ function Lecture() {
         lecture.priceDollars > 0 ? (
           <div className="relative w-full">
             <img src={VideoPreview} alt="Video preview" />
-            <div className="absolute -top-3 left-1 md:top-[30px] md:left-[18px] flex gap-3 items-center">
+            <div className="absolute -top-3 left-1 md:top-7 md:left-4 flex gap-3 items-center">
               <img
                 src={LockGif}
                 alt="Locked"
@@ -306,7 +306,7 @@ function Lecture() {
           <div className="flex max-md:flex-col items-center justify-center md:justify-start mb-2 lg:mb-4 mx-auto w-fit">
             <img
               src={BookOpen}
-              className="size-[20px] lg:size-[32px] mr-3 my-1 shrink-0"
+              className="size-5 lg:size-8 mr-3 my-1 shrink-0"
               alt="BookOpen"
             />
             <h3 className="items-center title-small-med-16px md:title-large-24px font-medium mt-1 text-darkOrange-5">

@@ -119,7 +119,7 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
           {t('bCert.bookExam')}
         </h3>
         {sortedEvents.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-5 lg:gap-[30px] mx-auto">
+          <div className="flex flex-wrap justify-center gap-5 lg:gap-7 mx-auto">
             {sortedEvents?.map((event) => (
               <EventCard
                 event={event}

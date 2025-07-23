@@ -215,7 +215,7 @@ export const DashboardTutorialsTable = ({
             </TableHead>
 
             <TableHead
-              className={cn('w-[60px] md:w-[100px]')}
+              className={cn('w-15 md:w-25')}
               onClick={() => handleSorting('likeCount')}
             >
               <div className="flex gap-2.5 items-center justify-center">
@@ -241,7 +241,7 @@ export const DashboardTutorialsTable = ({
             </TableHead>
 
             <TableHead
-              className={cn('w-[60px] md:w-[100px]')}
+              className={cn('w-15 md:w-25')}
               onClick={() => handleSorting('dislikeCount')}
             >
               <div className="flex gap-2.5 items-center justify-center">

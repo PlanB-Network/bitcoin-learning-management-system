@@ -116,14 +116,14 @@ export const MenuDashboard = ({
         height={112}
         width={48}
       />
-      <div className="bg-gradient-to-b from-darkOrange-5 to-[#99370000] flex items-center gap-3 py-2 lg:py-8 px-[17px] lg:px-5">
+      <div className="bg-gradient-to-b from-darkOrange-5 to-[#99370000] flex items-center gap-3 py-2 lg:py-8 px-4 lg:px-5">
         <Image
           breakpoints={{ default: 35, lg: 60 }}
           src={pictureUrl ?? SignInIconLight}
           alt="avatar"
-          className="rounded-full size-[35px] lg:size-[60px]"
+          className="rounded-full size-[35px] lg:size-15"
         />
-        <p className="max-lg:label-medium-16px lg:font-medium lg:leading-relaxed z-10 w-full lg:max-w-[92px] min-[1750px]:max-w-[148px] break-words line-clamp-2">
+        <p className="max-lg:label-medium-16px lg:font-medium lg:leading-relaxed z-10 w-full lg:max-w-23 min-[1750px]:max-w-[148px] break-words line-clamp-2">
           {user?.displayName}
         </p>
         {toggleMobileMenu && (
@@ -134,7 +134,7 @@ export const MenuDashboard = ({
           />
         )}
       </div>
-      <div className="flex flex-col pl-5 pr-2.5 max-lg:pt-[15px] lg:px-4 text-darkOrange-5 gap-2.5 lg:gap-1">
+      <div className="flex flex-col pl-5 pr-2.5 max-lg:pt-4 lg:px-4 text-darkOrange-5 gap-2.5 lg:gap-1">
         <MenuItem
           text={t('dashboard.courses')}
           icon={<AiOutlineBook size={24} />}
@@ -214,7 +214,7 @@ export const MenuDashboard = ({
         {user?.professorId && canAccess(UserRole.Professor)(user) && (
           <>
             <Separator />
-            <p className="uppercase text-white italic pl-12 text-sm leading-snug py-[5px] truncate">
+            <p className="uppercase text-white italic pl-12 text-sm leading-snug py-1 truncate">
               {t('dashboard.teacher.menu')}
             </p>
             <Link to={professorProfilePath}>
@@ -252,7 +252,7 @@ export const MenuDashboard = ({
           <>
             <Separator />
 
-            <p className="uppercase text-white italic pl-12 text-sm leading-snug py-[5px] truncate">
+            <p className="uppercase text-white italic pl-12 text-sm leading-snug py-1 truncate">
               Admin menu
             </p>
             {canAccess(UserRole.Superadmin)(user) && (
@@ -318,7 +318,7 @@ export const MenuDashboard = ({
             await navigate({ to: '/' });
             window.location.reload();
           }}
-          className="flex gap-2.5 w-fit my-[15px]"
+          className="flex gap-2.5 w-fit my-4"
         >
           <IoLogOutOutline size={24} />
           <span>{t('dashboard.logout')}</span>

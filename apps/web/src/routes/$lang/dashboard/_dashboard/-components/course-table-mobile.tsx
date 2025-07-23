@@ -199,7 +199,7 @@ export const CourseTableMobile = ({
                   key={category}
                   className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
                 >
-                  <div className="flex flex-col gap-[5px] min-[650px]:gap-2.5">
+                  <div className="flex flex-col gap-1 min-[650px]:gap-2.5">
                     {(coursesByCategory[category.toLowerCase()] || [])
                       .sort((a, b) =>
                         a.course.index

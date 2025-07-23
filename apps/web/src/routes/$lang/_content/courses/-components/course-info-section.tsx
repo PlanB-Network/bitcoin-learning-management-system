@@ -9,17 +9,17 @@ export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
       rightText={course.mainProfessors
         .map((professor) => professor.name)
         .join(', ')}
-      className="lg:py-[3px]"
+      className="lg:py-1"
     />
     <ListItem
       leftText={t('words.level.level')}
       rightText={t(`words.level.${course.level}`)}
-      className="lg:py-[3px]"
+      className="lg:py-1"
     />
     <ListItem
       leftText={t('words.duration')}
       rightText={`${course.hours} ${t('words.hours')}`}
-      className="lg:py-[3px]"
+      className="lg:py-1"
     />
     <ListItem
       leftText={t('words.price')}
@@ -30,13 +30,13 @@ export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
             : `${course.onlinePriceDollars}$`
           : t('words.free')
       }
-      className="lg:py-[3px]"
+      className="lg:py-1"
     />
     <ListItem
       leftText={t('words.courseId')}
       rightText={course.index.toUpperCase()}
       isDesktopOnly
-      className="lg:py-[3px]"
+      className="lg:py-1"
     />
   </section>
 );

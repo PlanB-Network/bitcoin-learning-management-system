@@ -78,7 +78,7 @@ function BCert() {
       footerVariant="dark"
       maxWidth="max-w-[1380px]"
     >
-      <div className="flex max-lg:flex-col justify-center items-center gap-6 lg:gap-[80px] my-6 md:mt-14 lg:mb-14">
+      <div className="flex max-lg:flex-col justify-center items-center gap-6 lg:gap-20 my-6 md:mt-14 lg:mb-14">
         <img
           src={bCertsImage}
           alt="₿ Certificates"
@@ -138,7 +138,7 @@ const OrganizeDialog = () => {
       }
       showLogo={true}
     >
-      <div className="!flex gap-4 md:!gap-[30px]">
+      <div className="!flex gap-4 md:!gap-7">
         <Button variant="primary" size={isMobile ? 'm' : 'l'} asChild>
           <a
             href="mailto:bcert@planb.network"

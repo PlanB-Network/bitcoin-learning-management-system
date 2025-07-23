@@ -122,11 +122,11 @@ function Movie() {
               <Card
                 className="md:mx-auto w-full max-w-[1179px]"
                 withPadding={false}
-                paddingClass="p-5 md:p-[50px]"
+                paddingClass="p-5 md:p-12"
                 color="orange"
               >
                 <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-10">
-                  <div className="flex flex-col items-center gap-5 md:gap-[30px] relative">
+                  <div className="flex flex-col items-center gap-5 md:gap-7 relative">
                     <div className="relative">
                       <img
                         className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] lg:max-w-[347px] md:mx-0 shadow-course-navigation"
@@ -136,7 +136,7 @@ function Movie() {
                       <Flag
                         code={movie.language}
                         size="m"
-                        className="shrink-0 md:!hidden !absolute top-[13px] right-[12px]"
+                        className="shrink-0 md:!hidden !absolute top-3 right-3"
                       />
                     </div>
                     <div className="flex flex-row justify-evenly md:flex-col lg:flex-row">
@@ -168,7 +168,7 @@ function Movie() {
                       </div>
 
                       {(movie.author || movie.duration) && (
-                        <div className="flex flex-col max-md:gap-[5px]">
+                        <div className="flex flex-col max-md:gap-1">
                           {movie.author && (
                             <span className="text-newGray-3 subtitle-small-med-14px lg:subtitle-large-med-20px">
                               {t('words.producer')}:{' '}
@@ -214,7 +214,7 @@ function Movie() {
             </article>
           </div>
 
-          <div className="flex flex-col mt-8 lg:mt-[100px] w-full">
+          <div className="flex flex-col mt-8 lg:mt-25 w-full">
             <h3 className="subtitle-medium-16px lg:display-small-32px text-white mb-5 lg:mb-8">
               {t('movies.watchTrailer')}
             </h3>
@@ -233,7 +233,7 @@ function Movie() {
             </div>
           </div>
 
-          <section className="mt-8 lg:mt-[100px]">
+          <section className="mt-8 lg:mt-25">
             <SuggestedHeader
               text="resources.pageSubtitleMovies"
               placeholder="Other movies"

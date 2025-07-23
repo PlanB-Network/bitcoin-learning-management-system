@@ -20,7 +20,7 @@ export const TutorialCard = ({
       to={href}
       rel="noreferrer"
       className={cn(
-        'flex items-center w-full rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 max-md:w-[290px] overflow-hidden',
+        'flex items-center w-full rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 overflow-hidden',
         dark
           ? 'bg-maroon-10 text-white hover:shadow-sm-card-dark'
           : 'bg-newGray-6 text-newBlack-3 md:shadow-course-navigation shadow-course-navigation-sm md:border hover:shadow-sm-card-light',
@@ -31,7 +31,7 @@ export const TutorialCard = ({
         breakpoints={{ default: 60, md: 80 }}
         src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
         alt={tutorial.name}
-        className="size-[60px] md:size-20 rounded-full shrink-0"
+        className="size-15 md:size-20 rounded-full shrink-0"
       />
       <div className="flex flex-col overflow-hidden w-full">
         <span
@@ -78,7 +78,7 @@ export const TutorialCard = ({
                 }
               />
               <div
-                className={`h-[9px] mx-3 w-px md:hidden ${dark ? 'bg-white' : 'bg-black'}`}
+                className={`h-2 mx-3 w-px md:hidden ${dark ? 'bg-white' : 'bg-black'}`}
               />
               <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
             </span>
@@ -129,7 +129,7 @@ export const TutorialCard = ({
             />
 
             <div
-              className={`h-[9px] mx-3 w-px md:hidden ${dark ? 'bg-white' : 'bg-black'}`}
+              className={`h-2 mx-3 w-px md:hidden ${dark ? 'bg-white' : 'bg-black'}`}
             />
             <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
           </span>

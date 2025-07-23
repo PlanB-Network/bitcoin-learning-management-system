@@ -49,7 +49,7 @@ export const ModalPaymentSummary = ({
     >
       <div
         className={cn(
-          'flex flex-col w-full max-w-[492px] p-2.5 lg:p-[30px] backdrop-blur-md bg-newGray-5 lg:bg-black/75',
+          'flex flex-col w-full max-w-[492px] p-2.5 lg:p-7 backdrop-blur-md bg-newGray-5 lg:bg-black/75',
           borderClassName,
         )}
       >

@@ -24,16 +24,16 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                   <span className="w-[150px] flex-none">
                     {t('dashboard.booking.invoiceDate')}
                   </span>
-                  <span className="w-[100px] flex-none capitalize">
+                  <span className="w-25 flex-none capitalize">
                     {t('dashboard.booking.invoiceType')}
                   </span>
-                  <span className="min-w-[100px] grow">
+                  <span className="min-w-25 grow">
                     {t('dashboard.booking.invoiceTitle')}
                   </span>
-                  <span className="w-[100px] flex-none ml-auto">
+                  <span className="w-25 flex-none ml-auto">
                     {t('words.price')}
                   </span>
-                  <span className="w-[100px] flex-none ml-auto">
+                  <span className="w-25 flex-none ml-auto">
                     {t('words.invoice')}
                   </span>
                 </div>
@@ -68,22 +68,22 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                         <span className="w-[150px] flex-none">
                           {formatDate(invoice.date)}
                         </span>
-                        <span className="w-[100px] flex-none capitalize">
+                        <span className="w-25 flex-none capitalize">
                           {invoice.type}
                         </span>
-                        <div className="min-w-[100px] grow h-fit">
+                        <div className="min-w-25 grow h-fit">
                           <span className="w-fit bg-newGray-5 pl-4 pr-2 py-1 rounded-full text-black font-medium">
                             {invoice.title}
                           </span>
                         </div>
-                        <span className="w-[100px] flex-none ml-auto">
+                        <span className="w-25 flex-none ml-auto">
                           {invoice.paymentMethod === 'stripe' &&
                             `${invoice.amount} $`}
                           {invoice.paymentMethod === 'sbp' &&
                             `${invoice.amount} sats`}
                           {invoice.paymentMethod === 'free' && t('words.free')}
                         </span>
-                        <span className="w-[100px] flex-none ml-auto">
+                        <span className="w-25 flex-none ml-auto">
                           <DlInvoice invoice={invoice} />
                         </span>
                       </div>

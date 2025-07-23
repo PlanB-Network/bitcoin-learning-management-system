@@ -16,7 +16,7 @@ interface FeaturedCardProps {
 }
 
 const cardStyles = cva(
-  'mb-[47px] text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-[8px] py-[10px] lg:p-[20px] w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-center',
+  'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-2 py-2 lg:p-5 w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-center',
   {
     defaultVariants: {
       background: 'gray',
@@ -69,10 +69,10 @@ export const FeaturedCard = ({
         <Link
           to={`/public-communication/blogs-and-news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
-          <h2 className="text-darkOrange-5 mb-2 lg:mb-[22px] mobile-h2 lg:display-small-32px">
+          <h2 className="text-darkOrange-5 mb-2 lg:mb-5 mobile-h2 lg:display-small-32px">
             {latestBlog.title}
           </h2>
-          <div className="flex flex-row gap-2.5 mb-2 lg:mb-[22px] items-center">
+          <div className="flex flex-row gap-2.5 mb-2 lg:mb-5 items-center">
             <span className="text-black font-medium text-sm lg:title-large-24px">
               {latestBlog.author}
             </span>
@@ -84,7 +84,7 @@ export const FeaturedCard = ({
             </span>
           </div>
           {latestBlog.tags && (
-            <div className="flex flex-row flex-wrap gap-2 md:gap-4 mb-2 lg:mb-[22px]">
+            <div className="flex flex-row flex-wrap gap-2 md:gap-4 mb-2 lg:mb-5">
               {latestBlog.tags.map((tag) => (
                 <TextTag
                   key={tag}

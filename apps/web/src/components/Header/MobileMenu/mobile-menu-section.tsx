@@ -20,7 +20,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
     if ('path' in section) {
       return (
         <Link
-          className="group flex items-center text-newBlack-1 dark:text-white text-lg font-medium p-2 gap-[15px] w-full"
+          className="group flex items-center text-newBlack-1 dark:text-white text-lg font-medium p-2 gap-4 w-full"
           to={section.path}
         >
           {section.mobileIcon && (
@@ -45,7 +45,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
         <button
           type="button"
           onClick={section.action}
-          className="group flex items-center text-newBlack-1 dark:text-white text-lg font-medium p-2 gap-[15px] w-full"
+          className="group flex items-center text-newBlack-1 dark:text-white text-lg font-medium p-2 gap-4 w-full"
         >
           {section.mobileIcon && (
             <img
@@ -68,7 +68,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
       <button
         type="button"
         onClick={() => toggle()}
-        className="group flex items-center text-newBlack-1 dark:text-white text-lg font-medium p-2 gap-[15px] w-full"
+        className="group flex items-center text-newBlack-1 dark:text-white text-lg font-medium p-2 gap-4 w-full"
       >
         {section.mobileIcon && (
           <img
@@ -99,7 +99,7 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
       {'items' in section && (
         <div
           className={compose(
-            'overflow-hidden flex flex-col gap-[5px] mt-2.5',
+            'overflow-hidden flex flex-col gap-1 mt-2.5',
             isOpen ? '' : 'hidden',
           )}
         >

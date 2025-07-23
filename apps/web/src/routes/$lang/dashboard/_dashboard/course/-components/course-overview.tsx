@@ -142,7 +142,7 @@ const CourseProgress = ({
           courseCompletedChapters={courseProgress.completedChaptersCount}
           courseTotalChapters={courseProgress.totalChapters}
         />
-        <span className="text-xl font-medium text-darkOrange-5 leading-normal w-[52px] shrink-0 text-end max-md:hidden">
+        <span className="text-xl font-medium text-darkOrange-5 leading-normal w-13 shrink-0 text-end max-md:hidden">
           {courseProgress.progressPercentage}%
         </span>
         <div
@@ -278,7 +278,7 @@ const CourseAnnouncementItem = ({
             {announcement.content}
           </p>
         </div>
-        <span className="px-4 w-[140px] shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
+        <span className="px-4 w-35 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
           {getNotificationDateString(new Date(announcement.scheduledAt))}
         </span>
         <button

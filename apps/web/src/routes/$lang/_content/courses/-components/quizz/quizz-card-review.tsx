@@ -69,7 +69,7 @@ export default function QuizzCardReview({
           <div className="flex items-start gap-2.5 text-newBlack-1">
             <FaPlay
               size={window.innerWidth < 768 ? 10 : 24}
-              className="max-md:mt-[5px] shrink-0"
+              className="max-md:mt-1 shrink-0"
             />
             <span className="body-14px md:label-large-20px">{question}</span>
           </div>

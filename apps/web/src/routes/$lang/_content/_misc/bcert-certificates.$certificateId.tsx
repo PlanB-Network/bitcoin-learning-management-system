@@ -50,12 +50,12 @@ function Certificate() {
       <h2 className="text-center display-small-32px lg:display-large">
         {t('words.bCert')}
       </h2>
-      <p className="text-center max-w-[848px] body-14px lg:label-large-20px mx-auto mt-[35px] lg:mt-[80px]">
+      <p className="text-center max-w-[848px] body-14px lg:label-large-20px mx-auto mt-9 lg:mt-20">
         {t('courses.exam.bCertCompletionText', {
           username: capitalizedUsername,
         })}
       </p>
-      <div className="flex flex-col w-full items-center py-8 md:pt-[40px] md:pb-[80px] font-light md:font-normal px-4 text-center lg:text-start">
+      <div className="flex flex-col w-full items-center py-8 md:pt-10 md:pb-20 font-light md:font-normal px-4 text-center lg:text-start">
         {/* Certificate with Circuits */}
         <div className="relative flex items-center justify-center w-full ">
           {/* Left Circuit */}
@@ -99,7 +99,7 @@ function Certificate() {
         <p className="md:desktop-h8 body-16px  mt-4 lg:mt-8">
           {t('bCert.bCertDescription')}
         </p>
-        <Link to="/b-cert" className="flex justify-center mt-[15px] md:mt-8">
+        <Link to="/b-cert" className="flex justify-center mt-4 md:mt-8">
           <ButtonWithArrow variant="primary" size={isScreenMd ? 'l' : 'm'}>
             {t('courses.exam.buttonTextBCert')}
           </ButtonWithArrow>

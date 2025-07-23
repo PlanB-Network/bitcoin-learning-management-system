@@ -89,7 +89,7 @@ function Lectures() {
         )}
 
         {/* Render Filtered Lectures */}
-        <div className="flex flex-wrap gap-[15px] md:gap-[45px] justify-center">
+        <div className="flex flex-wrap gap-4 md:gap-11 justify-center">
           {!isFetched && <Loader size="s" />}
           {filteredLectures?.length ? (
             filteredLectures.map((lecture) => (
@@ -114,7 +114,7 @@ function Lectures() {
                 {LANGUAGES_MAP.en}
               </span>
             </div>
-            <div className="flex flex-wrap gap-[15px] md:gap-[45px] justify-center">
+            <div className="flex flex-wrap gap-4 md:gap-11 justify-center">
               {englishLectures.map((lecture) => (
                 <LectureCard key={lecture.id} lecture={lecture} />
               ))}
