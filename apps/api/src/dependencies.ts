@@ -19,7 +19,7 @@ export interface Dependencies {
   typesense: TypesenseClient;
   config: EnvConfig;
   crons: CronService;
-  stripe: Stripe;
+  stripe: Stripe | null;
   languageToolkit: LanguageToolkitClient;
 }
 
@@ -37,7 +37,7 @@ export const startDependencies = async () => {
   const crons = createCronService();
   const postgres = createPostgresClient(config.postgres);
   const s3 = createS3Service(config.s3);
-  const stripe = new Stripe(config.stripe.secret);
+  const stripe = config.stripe.secret ? new Stripe(config.stripe.secret) : null;
   const languageToolkit = createLanguageToolkitClient({
     baseUrl: process.env.LT_BASE_URL ?? '',
     clientId: process.env.LT_CLIENT_ID ?? '',

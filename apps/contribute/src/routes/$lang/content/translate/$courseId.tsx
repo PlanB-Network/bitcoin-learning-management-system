@@ -4,7 +4,6 @@ import type {
   JoinedCourseChapter,
   PartWithChapters,
 } from '@blms/types';
-import { ChaptersTable } from '@blms/ui';
 import {
   createFileRoute,
   Link,
@@ -14,6 +13,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
+import { ChaptersTable } from '#src/components/CourseDetails/chapters-table.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { trpcClient } from '#src/utils/trpc.ts';

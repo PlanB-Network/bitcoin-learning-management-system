@@ -1,15 +1,15 @@
 import { getProgressPercentage } from '@blms/shared';
 import type { CoursePartDetails } from '@blms/types';
-import type React from 'react';
-import { Button } from '../../bases/button.js';
 import {
+  Button,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from '../../bases/table.js';
+} from '@blms/ui';
+import type React from 'react';
 import { CourseStatusBadge } from './course-status-badge.js';
 
 interface ChaptersTableProps {
