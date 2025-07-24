@@ -10,6 +10,25 @@ import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
+// Added SSRF-protection: OnlyOffice base URL and validator
+const ONLYOFFICE_BASE_URL =
+  process.env.ONLYOFFICE_URL ||
+  (process.env.DOCKER ? 'http://onlyoffice' : 'http://localhost:80');
+const ONLYOFFICE_HOSTNAME = new URL(ONLYOFFICE_BASE_URL).hostname;
+
+function assertOnlyofficeUrl(input: string): void {
+  let parsed: URL;
+  try {
+    parsed = new URL(input);
+  } catch {
+    throw new BadRequest('Invalid OnlyOffice URL');
+  }
+
+  if (parsed.hostname !== ONLYOFFICE_HOSTNAME) {
+    throw new BadRequest('Untrusted OnlyOffice host');
+  }
+}
+
 // In-memory store for temporary download tokens (in production, use Redis)
 const downloadTokens = new Map<
   string,
@@ -100,10 +119,8 @@ export const createRestTranslationDownloadRoutes = async (
           }),
         };
 
-        // Use localhost in development (hybrid environment) or onlyoffice in Docker
-        const onlyofficeUrl = process.env.DOCKER
-          ? 'http://onlyoffice/coauthoring/CommandService.ashx'
-          : 'http://localhost:80/coauthoring/CommandService.ashx';
+        // Build command service URL from trusted base
+        const onlyofficeUrl = `${ONLYOFFICE_BASE_URL.replace(/\/$/, '')}/coauthoring/CommandService.ashx`;
         const commandResponse = await fetch(onlyofficeUrl, {
           method: 'POST',
           headers: {
@@ -149,7 +166,8 @@ export const createRestTranslationDownloadRoutes = async (
           );
 
           try {
-            // Download the document from OnlyOffice
+            // Validate and download the document from OnlyOffice
+            assertOnlyofficeUrl(url);
             const response = await fetch(url);
             if (!response.ok) {
               throw new Error(
@@ -534,7 +552,8 @@ export const createRestTranslationDownloadRoutes = async (
           // Document is ready for saving or force save
           if (url) {
             try {
-              // Download the updated document from OnlyOffice
+              // Validate and download the updated document from OnlyOffice
+              assertOnlyofficeUrl(url);
               const response = await fetch(url);
               if (response.ok) {
                 const buffer = await response.arrayBuffer();
