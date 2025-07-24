@@ -904,6 +904,13 @@
       "when": 1752739592851,
       "tag": "0128_unique_azazel",
       "breakpoints": true
+    },
+    {
+      "idx": 129,
+      "version": "7",
+      "when": 1753190889934,
+      "tag": "0129_flashy_white_queen",
+      "breakpoints": true
     }
   ]
 }

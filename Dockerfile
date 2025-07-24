@@ -56,4 +56,3 @@ COPY --chown=node:node packages ./packages
 COPY --chown=node:node apps ./apps
 
 RUN pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
-

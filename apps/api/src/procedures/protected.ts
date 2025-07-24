@@ -15,6 +15,10 @@ export const communityProcedure = publicProcedure.use(
   enforceAuthenticatedUserMiddleware(UserRole.Community),
 );
 
+export const contributorProcedure = publicProcedure.use(
+  enforceAuthenticatedUserMiddleware(UserRole.Contributor),
+);
+
 export const adminProcedure = publicProcedure.use(
   enforceAuthenticatedUserMiddleware(UserRole.Admin),
 );

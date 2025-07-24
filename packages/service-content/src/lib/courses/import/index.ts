@@ -743,6 +743,39 @@ export const createUpdateCourses = ({
               `;
 
             const parts = extractParts(header.content);
+            // Populate translation tables for this course and language
+            // Insert or update course translation as 'published' since we have localized content
+            await transaction`
+              INSERT INTO content.course_translations (course_id, language, status, created_at, updated_at)
+              VALUES (
+                ${courseId},
+                ${file.language},
+                'published'::translation_status,
+                NOW(),
+                NOW()
+              )
+              ON CONFLICT (course_id, language) DO UPDATE SET
+                status = 'published'::translation_status,
+                updated_at = NOW()
+            `;
+
+            // Ensure we have translation entries for all missing languages as 'todo'
+            await transaction`
+              INSERT INTO content.course_translations (course_id, language, status, created_at, updated_at)
+              SELECT
+                ${courseId},
+                languages.language,
+                'todo'::translation_status,
+                NOW(),
+                NOW()
+              FROM (
+                SELECT DISTINCT language FROM content.courses_localized
+              ) languages
+              WHERE NOT EXISTS (
+                SELECT 1 FROM content.course_translations ct
+                WHERE ct.course_id = ${courseId} AND ct.language = languages.language
+              )
+            `;
 
             if (parts.length > 0) {
               if (fileIndex === 0) {
@@ -880,6 +913,24 @@ export const createUpdateCourses = ({
                     available_seats = EXCLUDED.available_seats,
                     live_language = EXCLUDED.live_language,
                     last_sync = NOW()
+                `;
+
+                // Populate course_translation_chapters for all languages
+                await transaction`
+                  INSERT INTO content.course_translation_chapters (course_id, language, part_id, chapter_id, status, created_at, updated_at)
+                  SELECT
+                    ${courseId},
+                    ct.language,
+                    cc.part_id,
+                    cc.chapter_id,
+                    'todo'::translation_status,
+                    NOW(),
+                    NOW()
+                  FROM content.course_translations ct
+                  CROSS JOIN content.course_chapters cc
+                  WHERE ct.course_id = ${courseId}
+                    AND cc.course_id = ${courseId}
+                  ON CONFLICT (course_id, language, part_id, chapter_id) DO NOTHING
                 `;
 
                 const formattedChapters2 = parts.flatMap((part, partIndex) =>

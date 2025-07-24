@@ -114,7 +114,17 @@ const rpcUser = getenv('OTS_RPC_USER', null);
 const rpcPassword = getenv('OTS_RPC_PASSWORD', null);
 const pgpKeyPath = docker ? '/tmp/key.asc' : getenv('OTS_PGP_KEY_PATH', null);
 export const opentimestamps: OpenTimestampsConfig = {
-  armoredKey: pgpKeyPath && fs.readFileSync(pgpKeyPath, 'utf8'),
+  armoredKey: pgpKeyPath
+    ? (() => {
+        try {
+          return fs.readFileSync(pgpKeyPath, 'utf8');
+        } catch (err) {
+          throw new Error(
+            `Failed to read PGP key from path "${pgpKeyPath}": ${(err as Error).message}`,
+          );
+        }
+      })()
+    : '',
   passphrase: getenv('OTS_PGP_KEY_PASSPHRASE', null),
   rpc:
     rpcUrl && rpcUser

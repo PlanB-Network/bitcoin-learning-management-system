@@ -7,6 +7,7 @@ import {
   contentCourses,
   contentCoursesAssignment,
   contentCoursesLocalized,
+  usersReviewerLanguages,
 } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
@@ -30,6 +31,10 @@ export const courseChapterLocalizedSchema = createSelectSchema(
 
 export const courseAssignmentSchema = createSelectSchema(
   contentCoursesAssignment,
+);
+
+export const reviewerLanguagesSchema = createSelectSchema(
+  usersReviewerLanguages,
 );
 
 export const joinedCoursePartLocalizedSchema = coursePartLocalizedSchema
@@ -336,6 +341,44 @@ export const minimalCourseAssignmentWithStudentsSchema = courseAssignmentSchema
           grade: z.number().nullable(),
           uid: z.string(),
           username: z.string(),
+        }),
+      ),
+    }),
+  );
+
+export const basicCourseSchema = courseSchema
+  .pick({
+    id: true,
+    index: true,
+    topic: true,
+    originalLanguage: true,
+    isArchived: true,
+    publishedAt: true,
+    lastCommit: true,
+  })
+  .merge(
+    courseLocalizedSchema.pick({
+      name: true,
+      goal: true,
+    }),
+  );
+
+export const courseInfoSchema = courseSchema
+  .pick({
+    id: true,
+    index: true,
+  })
+  .merge(
+    courseLocalizedSchema.pick({
+      name: true,
+    }),
+  )
+  .merge(
+    z.object({
+      languages: z.array(
+        z.object({
+          code: z.string(),
+          name: z.string(),
         }),
       ),
     }),

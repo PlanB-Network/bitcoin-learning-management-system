@@ -15,3 +15,4 @@ export type * from './notification.js';
 export type * from './payment.js';
 export type * from './timestamps.js';
 export type * from './token.js';
+export type * from './translations.js';

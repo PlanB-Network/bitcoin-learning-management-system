@@ -175,16 +175,11 @@ const generateFileContent = (
         //   `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
         // );
 
-        // Import from @blms/constants
+        // Native enums are handled via currentNativeEnumImports to keep a single import statement.
         if (nativeEnumImports.has(typeName)) {
-          currentImportSet.add(
-            `import { ${typeName} } from '@blms/constants';\n`,
-          );
-        }
-
-        // Import from an other type file
-        else {
-          // TODO: This is a bit hacky, but it works for now
+          // nothing – import handled globally for the file
+        } else {
+          // Import from an other type file
           const importName = `${/.*\/(.+)\.ts$/.exec(filePath)?.[1]}.js`;
           currentImportSet.add(
             `import { ${typeName} } from './${importName}';\n`,
@@ -220,6 +215,13 @@ const generateFileContent = (
         fileContent += `// Default export for ${typeName} (${node.kind}:${kind}|${zodType})\n`;
         fileContent += `export type ${typeName} = ${output};\n\n`;
       }
+    }
+  }
+
+  // Ensure any native enums referenced are included in the top import line
+  for (const enumName of nativeEnumImports) {
+    if (fileContent.includes(enumName)) {
+      currentNativeEnumImports.add(enumName);
     }
   }
 

@@ -130,3 +130,59 @@ export function createSyncGithubRepositories(dependencies: Dependencies) {
     };
   };
 }
+
+export function createSyncCdnOnly(dependencies: Dependencies) {
+  const config = dependencies.config.sync;
+  const syncRepositories = createSyncRepositories(config);
+  const syncCdnRepository = createSyncCdnRepository(config.cdnPath);
+
+  return async () => {
+    console.time('-- CDN Sync');
+    console.log('-- CDN Sync: START ===============================');
+
+    if (!config.publicRepositoryUrl) {
+      throw new Error('DATA_REPOSITORY_URL is not defined');
+    }
+
+    const timeGetAllRepoFiles = timeLog('Loading repositories for assets');
+    const context = await syncRepositories();
+    timeGetAllRepoFiles();
+
+    console.log('-- CDN Sync: SYNCING ASSETS ======================');
+
+    let privateCdnError: any;
+    if (context.privateGit) {
+      const timeSync = timeLog('Syncing private CDN repository');
+      try {
+        await syncCdnRepository(context.privateRepoDir, context.privateGit);
+      } catch (error) {
+        console.error(error);
+        privateCdnError =
+          error instanceof Error ? error.message : new Error('Unknown error');
+      }
+      timeSync();
+    }
+
+    let publicCdnError: any;
+    {
+      const timeSync = timeLog('Syncing public CDN repository');
+      try {
+        await syncCdnRepository(context.publicRepoDir, context.publicGit);
+      } catch (error) {
+        console.error(error);
+        publicCdnError =
+          error instanceof Error ? error.message : new Error('Unknown error');
+      }
+      timeSync();
+    }
+
+    console.timeEnd('-- CDN Sync');
+    console.log('-- CDN Sync: END =================================');
+
+    return {
+      success: !publicCdnError && !privateCdnError,
+      publicCdnError: publicCdnError,
+      privateCdnError: privateCdnError,
+    };
+  };
+}

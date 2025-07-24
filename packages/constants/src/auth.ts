@@ -8,6 +8,7 @@ export enum UserRole {
   Student = 'student',
   Professor = 'professor',
   Community = 'community',
+  Contributor = 'contributor',
   Admin = 'admin',
   Superadmin = 'superadmin',
 }
@@ -22,4 +23,7 @@ export enum UserPermission {
   Quizzes = 'admin:quizzes',
   Coupons = 'admin:coupons',
   Tutorials = 'admin:tutorials',
+  // Contribute app permissions
+  ContributeReviewer = 'contribute:reviewer',
+  ContributeAssign = 'contribute:assign',
 }

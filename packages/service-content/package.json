@@ -4,6 +4,7 @@
     "@blms/database": "workspace:*",
     "@blms/s3": "workspace:*",
     "@blms/service-common": "workspace:*",
+    "@trpc/server": "^11.1.2",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "marked": "^16.0.0",

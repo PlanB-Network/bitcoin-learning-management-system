@@ -1,77 +1,172 @@
-import type { SessionData, UserDetails } from '@blms/types';
-import { useQuery } from '@tanstack/react-query';
+import type {
+  JoinedBlogLight,
+  JoinedCourse,
+  JoinedTutorialLight,
+  SessionData,
+  UserAccountSettings,
+  UserDetails,
+} from '@blms/types';
 import type { PropsWithChildren } from 'react';
-import { createContext, useCallback, useEffect, useState } from 'react';
-import { useTRPC } from '#src/utils/trpc.js';
+import { createContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { trpcClient } from '#src/utils/trpc.js';
+
+interface Session {
+  user: SessionData;
+}
 
 interface AppContext {
   // User
   user: UserDetails | null | undefined;
   setUser: (user: UserDetails | null) => void;
-  refetchUserDetails: () => Promise<void>;
+
+  // Account settings
+  accountSettings: UserAccountSettings | null;
+  setAccountSettings: (settings: UserAccountSettings | null) => void;
+
+  // Fetch functions
+  fetchUserDetailsAndSettings: () => Promise<void>;
 
   // Session
-  session: SessionData | null | undefined;
-  setSession: (session: SessionData | null) => void;
+  session: Session | null | undefined;
+  setSession: (session: Session | null) => void;
+
+  // Tutorials
+  tutorials: JoinedTutorialLight[] | null;
+  setTutorials: (tutorials: JoinedTutorialLight[] | null) => void;
+
+  // Courses
+  courses: JoinedCourse[] | null;
+  setCourses: (courses: JoinedCourse[] | null) => void;
+
+  // Blog
+  blogs: JoinedBlogLight[] | null;
+  setBlogs: (blogs: JoinedBlogLight[] | null) => void;
+
+  // Register Toast
+  hasSeenRegisterToast: boolean;
+  setHasSeenRegisterToast: (value: boolean) => void;
+
+  university: string | null;
+  setUniversity: (university: string | null) => void;
 }
 
 export const AppContext = createContext<AppContext>({
-  refetchUserDetails: async () => {},
-
-  // Session
+  accountSettings: null,
+  blogs: null,
+  courses: null,
+  fetchUserDetailsAndSettings: async () => {},
+  hasSeenRegisterToast: false,
   session: undefined,
+  setAccountSettings: () => {},
+  setBlogs: () => {},
+  setCourses: () => {},
+  setHasSeenRegisterToast: () => {},
   setSession: () => {},
+  setTutorials: () => {},
+  setUniversity: async () => {},
   setUser: () => {},
-  // User
+  tutorials: null,
+  university: null,
   user: undefined,
 });
 
 export const AppContextProvider = ({ children }: PropsWithChildren) => {
-  const trpc = useTRPC();
+  const { i18n } = useTranslation();
 
   const [user, setUser] = useState<UserDetails | null | undefined>(undefined);
-  const [session, setSession] = useState<SessionData | null | undefined>(
-    undefined,
+  const [accountSettings, setAccountSettings] =
+    useState<UserAccountSettings | null>(null);
+  const [session, setSession] = useState<Session | null | undefined>(undefined);
+  const [tutorials, setTutorials] = useState<JoinedTutorialLight[] | null>(
+    null,
   );
+  const [courses, setCourses] = useState<JoinedCourse[] | null>(null);
+  const [blogs, setBlogs] = useState<JoinedBlogLight[] | null>(null);
 
-  const sessionQuery = useQuery(trpc.user.getSession.queryOptions());
+  const [hasSeenRegisterToast, setHasSeenRegisterToast] =
+    useState<boolean>(false);
 
-  const isUserQueryEnabled = sessionQuery.isSuccess && !!sessionQuery.data;
+  const [university, setUniversity] = useState<string | null>(null);
 
-  const userQuery = useQuery({
-    ...trpc.user.getDetails.queryOptions(),
-    enabled: isUserQueryEnabled,
-    refetchInterval: 5 * 60 * 1000,
-    refetchOnWindowFocus: false, // 5 minutes
-    retry: 1,
-  });
+  const fetchUserDetailsAndSettings = async () => {
+    try {
+      let currentSession = session;
 
-  const refetchUserDetails = useCallback(
-    async () => void (await userQuery.refetch()),
-    [userQuery],
-  );
+      if (!currentSession) {
+        const sessionData = await trpcClient.user.getSession.query();
+        if (sessionData?.uid && sessionData.role) {
+          currentSession = { user: sessionData };
+          setSession(currentSession);
+        } else {
+          setSession(null);
+          setUser(null);
+          setAccountSettings(null);
+          return;
+        }
+      }
 
-  useEffect(() => {
-    if (sessionQuery.isSuccess) {
-      setSession(sessionQuery.data);
-    } else {
+      const detailsData = await trpcClient.user.getDetails.query();
+      setUser(detailsData ?? null);
+
+      const accountSettingsData =
+        await trpcClient.user.getAccountSettings.query();
+      setAccountSettings(accountSettingsData ?? null);
+    } catch {
       setSession(null);
+      setUser(null);
+      setAccountSettings(null);
     }
-  }, [sessionQuery.isSuccess, sessionQuery.data]);
+  };
 
   useEffect(() => {
-    if (isUserQueryEnabled && userQuery.isSuccess) {
-      setUser(userQuery.data);
-    } else {
-      setUser(null);
-    }
-  }, [isUserQueryEnabled, userQuery.isSuccess, userQuery.data]);
+    fetchUserDetailsAndSettings();
+
+    trpcClient.content.getTutorials
+      .query({
+        language: i18n.language,
+      })
+      .then((data) => data ?? null)
+      .then(setTutorials)
+      .catch(() => null);
+
+    trpcClient.content.getCourses
+      .query({
+        language: i18n.language,
+      })
+      .then((data) => data ?? null)
+      .then(setCourses)
+      .catch(() => null);
+
+    trpcClient.content.getBlogs
+      .query({
+        language: i18n.language,
+      })
+      .then((data) => {
+        return data ?? null;
+      })
+      .then(setBlogs)
+      .catch(() => {});
+  }, [i18n.language]);
 
   const appContext: AppContext = {
-    refetchUserDetails,
+    accountSettings,
+    blogs,
+    courses,
+    fetchUserDetailsAndSettings,
+    hasSeenRegisterToast,
     session,
+    setAccountSettings,
+    setBlogs,
+    setCourses,
+    setHasSeenRegisterToast,
     setSession,
+    setTutorials,
+    setUniversity,
     setUser,
+    tutorials,
+    university,
     user,
   };
 

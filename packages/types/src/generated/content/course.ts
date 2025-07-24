@@ -125,6 +125,12 @@ export interface CourseAssignment {
   telegramUrl: string | null;
 }
 
+export interface ReviewerLanguages {
+  reviewerId: string;
+  languageCode: string;
+  proficiencyLevel: number;
+}
+
 export interface JoinedCoursePartLocalized {
   courseId: string;
   language: string;
@@ -510,5 +516,27 @@ export interface MinimalCourseAssignmentWithStudents {
     grade: number | null;
     uid: string;
     username: string;
+  }[];
+}
+
+export interface BasicCourse {
+  id: string;
+  index: string;
+  topic: string;
+  originalLanguage: string;
+  isArchived: boolean;
+  publishedAt: Date | null;
+  lastCommit: string;
+  name: string;
+  goal: string;
+}
+
+export interface CourseInfo {
+  id: string;
+  index: string;
+  name: string;
+  languages: {
+    code: string;
+    name: string;
   }[];
 }

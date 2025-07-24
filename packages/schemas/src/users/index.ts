@@ -12,3 +12,4 @@ export * from './notification.js';
 export * from './payment.js';
 export * from './timestamps.js';
 export * from './token.js';
+export * from './translations.js';

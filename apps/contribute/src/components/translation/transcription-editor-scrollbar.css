@@ -1,0 +1,21 @@
+.textarea-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the entire scrollbar */
+}
+
+.textarea-scrollbar::-webkit-scrollbar-track {
+  background: #e5e5e5; /* Track background */
+  border-radius: 3px; /* Rounded corners on track */
+}
+
+.textarea-scrollbar::-webkit-scrollbar-thumb {
+  background: #ff975c; /* Scrollbar thumb color */
+  border-radius: 3px; /* Rounded corners on thumb */
+}
+
+/* Firefox support */
+@supports (-moz-appearance: none) {
+  .textarea-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #ff975c #e5e5e5;
+  }
+}

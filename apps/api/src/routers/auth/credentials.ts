@@ -39,7 +39,7 @@ export const credentialsAuthRouter = createTRPCRouter({
       if (ctx.req.session.uid) {
         ctx.log('----- User is already logged in');
         ctx.log('----- Clear user session');
-        ctx.req.session.destroy((err) => {
+        ctx.req.session.destroy((err: any) => {
           if (err)
             throw new TRPCError({
               code: 'INTERNAL_SERVER_ERROR',

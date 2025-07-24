@@ -53,3 +53,7 @@ logs
 *.asc
 
 storybook-static
+.cursor
+
+Language-Toolkit
+my-scripts
