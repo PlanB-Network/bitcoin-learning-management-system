@@ -210,7 +210,6 @@ export const PaymentDescription = ({
         </div>
 
         <div className="flex flex-col gap-2">
-          {/* Todo : a generic component should not reference a specific one */}
           {children}
 
           {paidPriceDollars !== 0 && <TaxWarningText className="lg:hidden" />}

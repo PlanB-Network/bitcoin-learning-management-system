@@ -67,7 +67,6 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
     close: closeAuthModal,
   } = useDisclosure();
 
-  // TODO refactor prop drilling
   return (
     <div
       id="bcertevents"

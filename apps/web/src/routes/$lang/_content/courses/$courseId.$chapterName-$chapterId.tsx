@@ -125,7 +125,10 @@ const TimelineSmall = ({
             'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-1 shadow-course-navigation-sm mt-2.5 mb-3 gap-4',
           )}
         >
-          {/* TODO */}
+          {/*
+           * TODO: Refactor nav logic : edge cases (first chapter, course root) make this messy
+           * goToChapterParameters always returns a chapterId, even when not needed ?
+           */}
           <Link
             to={
               chapter.part.partIndex === 1 && chapter.chapterIndex === 1
@@ -141,7 +144,7 @@ const TimelineSmall = ({
             {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
           </h2>
 
-          {/* TODO */}
+          {/* TODO : see above */}
           <Link
             to={
               chapter.part.partIndex === chapter.course.parts.length &&
