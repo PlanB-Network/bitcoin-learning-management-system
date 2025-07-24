@@ -99,7 +99,9 @@ services:
       test: ['CMD', 'nc', '-zv', 'localhost', '8181']
 
   contribute:
-    <<: [*defaults, *base]
+    <<: *defaults
+    build: .
+    user: "${UID:-1000}:${GID:-1000}"
     command: pnpm turbo run dev --env-mode=loose --filter='@blms/contribute'
     ports:
       - 8280:8280
