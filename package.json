@@ -46,6 +46,7 @@
     "generate-types": "turbo run generate-types",
     "knip": "knip",
     "lint": "biome check . --diagnostic-level=warn",
+    "lint-all": "biome check .",
     "lint:fix": "biome check . --write --diagnostic-level=warn",
     "nuke": "pnpm clear && rm -r .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm install && pnpm build:packages",
     "prepare": "[ -z \"$CI\" ] && husky || echo 'Skipping husky in CI'",
