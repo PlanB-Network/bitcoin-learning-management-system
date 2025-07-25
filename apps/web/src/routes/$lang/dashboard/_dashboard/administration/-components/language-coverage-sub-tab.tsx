@@ -1,9 +1,8 @@
-import { TableBody, TableCell, TableRow } from '@blms/ui';
-import { useMemo, useState } from 'react';
-import type { ReactNode } from 'react';
-import SwapIcon from '#src/assets/translation/swap.svg';
-
 import type { AdminContentManagementCourse } from '@blms/types';
+import { TableBody, TableCell, TableRow } from '@blms/ui';
+import type { ReactNode } from 'react';
+import { useMemo, useState } from 'react';
+import SwapIcon from '#src/assets/translation/swap.svg';
 import {
   SharedTable,
   SharedTableHead,

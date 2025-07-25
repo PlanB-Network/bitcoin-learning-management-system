@@ -1,20 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-
-import { Loader } from '@blms/ui';
-
-import { ContributorsSubTab } from './contributors-sub-tab.tsx';
-import { CoursesSubTab } from './courses-sub-tab.tsx';
-import { LanguageCoverageSubTab } from './language-coverage-sub-tab.tsx';
-import { MetricCard } from './metric-card.tsx';
-
 import type {
   AdminContentManagementCourse,
   AdminUserManagement,
 } from '@blms/types';
+import { Loader } from '@blms/ui';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import BookIcon from '#src/assets/translation/book.svg';
 import TranslateIcon from '#src/assets/translation/translate.svg';
 import { trpcClient } from '#src/utils/trpc.js';
+import { ContributorsSubTab } from './contributors-sub-tab.tsx';
+import { CoursesSubTab } from './courses-sub-tab.tsx';
+import { LanguageCoverageSubTab } from './language-coverage-sub-tab.tsx';
+import { MetricCard } from './metric-card.tsx';
 
 interface LanguageInfo {
   code: string;

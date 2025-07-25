@@ -13,9 +13,8 @@ import {
 } from '@blms/ui';
 import { useMemo, useState } from 'react';
 import { HiOutlineDownload } from 'react-icons/hi';
-import FilterIcon from '#src/assets/translation/filter_orange.svg';
-
 import XLSX from 'xlsx';
+import FilterIcon from '#src/assets/translation/filter_orange.svg';
 import {
   SharedTable,
   SharedTableHead,

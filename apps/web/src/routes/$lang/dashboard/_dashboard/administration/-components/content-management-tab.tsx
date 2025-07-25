@@ -1,8 +1,3 @@
-import { useNavigate } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
-import type { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-
 import {
   Button,
   Loader,
@@ -11,7 +6,14 @@ import {
   TableRow,
   TextTag,
 } from '@blms/ui';
-
+import { useNavigate } from '@tanstack/react-router';
+import type { ReactNode } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import SwapIcon from '#src/assets/translation/swap.svg';
+// Import filter icon
+import { SearchBar } from '#src/components/ui/search-bar.tsx';
+import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 import {
   SharedTable,
@@ -20,11 +22,6 @@ import {
 } from '../../-components/shared-table-header.tsx';
 import { AssignCourseModal } from './assign-course-modal.tsx';
 import { ReassignCourseModal } from './reassign-course-modal.tsx';
-
-import SwapIcon from '#src/assets/translation/swap.svg';
-// Import filter icon
-import { SearchBar } from '#src/components/ui/search-bar.tsx';
-import { getLanguageName } from '#src/utils/i18n.ts';
 
 type SortField =
   | 'index'

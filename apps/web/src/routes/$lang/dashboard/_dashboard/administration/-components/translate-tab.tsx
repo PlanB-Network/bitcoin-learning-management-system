@@ -1,9 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import SwapIcon from '#src/assets/translation/swap.svg';
-import { SearchBar } from '#src/components/ui/search-bar.tsx';
-
+import type { CourseWithTodoTranslations } from '@blms/types';
 import {
   Button,
   Loader,
@@ -12,8 +7,11 @@ import {
   TableRow,
   TextTag,
 } from '@blms/ui';
-
-import type { CourseWithTodoTranslations } from '@blms/types';
+import type { ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import SwapIcon from '#src/assets/translation/swap.svg';
+import { SearchBar } from '#src/components/ui/search-bar.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 
 import {

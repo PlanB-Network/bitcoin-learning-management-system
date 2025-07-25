@@ -1,13 +1,12 @@
-import { CourseDetailsPage } from '@blms/ui';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
 import type {
   CourseDetails,
   CourseInfo,
   CourseTranslationDetailsServiceResponse,
 } from '@blms/types';
+import { CourseDetailsPage } from '@blms/ui';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 import { trpcClient } from '#src/utils/trpc.js';
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 

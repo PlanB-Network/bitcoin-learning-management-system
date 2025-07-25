@@ -1,20 +1,17 @@
+import { AssignmentStatus, UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared/auth';
+import { Loader, TabsContent } from '@blms/ui';
 import {
-  Outlet,
   createFileRoute,
+  Outlet,
   useLocation,
   useNavigate,
 } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { Loader, TabsContent } from '@blms/ui';
-
-import { AppContext } from '#src/providers/context.js';
-
-import { AssignmentStatus, UserRole } from '@blms/constants';
-import { canAccess } from '@blms/shared/auth';
 import { SearchBar } from '#src/components/ui/search-bar.tsx';
 import { ToggleSwitch } from '#src/components/ui/toggle-switch.tsx';
+import { AppContext } from '#src/providers/context.js';
 import { ContentManagementTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/content-management-tab.tsx';
 import { TranslateTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/translate-tab.tsx';
 import { TranslationPanelHeader } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-panel-header.tsx';

@@ -1,28 +1,29 @@
+import { getStatusBadgeClass, getStatusText } from '@blms/shared';
+import type { UserTranslationDetailsServiceResponse } from '@blms/types';
+import {
+  Button,
+  Loader,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextTag,
+} from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import type { UserTranslationDetailsServiceResponse } from '@blms/types';
-import { Button, Loader, TableBody, TableCell, TableRow } from '@blms/ui';
-
-import { formatDate } from '#src/utils/date.ts';
-import { trpcClient } from '#src/utils/trpc.js';
-
-import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
-import {
-  SharedTable,
-  SharedTableHead,
-  SharedTableHeader,
-} from '../../../-components/shared-table-header.tsx';
-
-import { getStatusBadgeClass, getStatusText } from '@blms/shared';
 import BookIcon from '#src/assets/translation/book_black.svg';
 import CalendarIcon from '#src/assets/translation/calendar.svg';
 import ProfileIcon from '#src/assets/translation/contributor.svg';
 import GridIcon from '#src/assets/translation/grid_view.svg';
 import LeftArrowIcon from '#src/assets/translation/left_arrow.svg';
-
-import { TextTag } from '@blms/ui';
+import { formatDate } from '#src/utils/date.ts';
+import { trpcClient } from '#src/utils/trpc.js';
+import {
+  SharedTable,
+  SharedTableHead,
+  SharedTableHeader,
+} from '../../../-components/shared-table-header.tsx';
+import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId',
