@@ -39,9 +39,9 @@ import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
 import HeartPixel from '#src/assets/icons/pixelated/heart_speaking.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import { GeneralPaymentModal } from '#src/components/GeneralPaymentModal/payment-modal/general-payment-modal.tsx';
-import { fixEmbedUrl } from '#src/components/Markdown/conference-markdown-body.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { SummerSchoolWithdrawButton } from './summer-school-withdraw-button.tsx';
 

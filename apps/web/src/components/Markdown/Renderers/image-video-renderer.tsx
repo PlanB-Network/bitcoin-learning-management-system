@@ -1,36 +1,7 @@
 import { t } from 'i18next';
 import ReactPlayer from 'react-player';
 import VideoSVG from '#src/assets/resources/video.svg?react';
-
-const fixEmbedUrl = (src: string) => {
-  if (src.includes('embed')) {
-    return src;
-  }
-
-  switch (true) {
-    case src.includes('youtu.be'): {
-      return src.replace('youtu.be/', 'youtube.com/embed/');
-    }
-    case src.includes('youtube.com/live/'): {
-      return src.replace('youtube.com/live/', 'youtube.com/embed/');
-    }
-    case src.includes('youtube.com'): {
-      return src.replace('youtube.com/', 'youtube.com/embed/');
-    }
-    case src.includes('peertube.planb.network'): {
-      return src.replace(
-        'peertube.planb.network/videos/',
-        'peertube.planb.network/videos/embed/',
-      );
-    }
-    case src.includes('makertube.net'): {
-      return src.replace('makertube.net/w/', 'makertube.net/videos/embed/');
-    }
-    default: {
-      return src;
-    }
-  }
-};
+import { fixEmbedUrl } from '#src/utils/misc.ts';
 
 export const ImageVideoRenderer = ({
   header,

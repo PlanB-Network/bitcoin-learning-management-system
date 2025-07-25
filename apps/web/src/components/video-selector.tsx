@@ -10,8 +10,8 @@ import { t } from 'i18next';
 import React, { useMemo, useState } from 'react';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
+import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { fixEmbedUrl } from './Markdown/conference-markdown-body.tsx';
 
 export const VideoSelector = ({
   videoId,
