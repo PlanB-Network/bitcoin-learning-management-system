@@ -67,3 +67,21 @@ export const fixEmbedUrl = (src: string) => {
     }
   }
 };
+
+export const isUrlFromValidVideoPlatform = (src: string) => {
+  return (
+    doesVideoUrlWorkWithReactPlayer(src) ||
+    src.startsWith('https://www.rumble.com') ||
+    src.startsWith('https://rumble.com') ||
+    src.startsWith('https://peertube.planb.network')
+  );
+};
+
+export const doesVideoUrlWorkWithReactPlayer = (src: string) => {
+  return (
+    src.startsWith('https://www.youtube.com') ||
+    src.startsWith('https://youtube.com') ||
+    src.startsWith('https://www.youtu.be') ||
+    src.startsWith('https://youtu.be')
+  );
+};

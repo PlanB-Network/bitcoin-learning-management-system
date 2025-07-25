@@ -1,7 +1,11 @@
 import { t } from 'i18next';
 import ReactPlayer from 'react-player';
 import VideoSVG from '#src/assets/resources/video.svg?react';
-import { fixEmbedUrl } from '#src/utils/misc.ts';
+import {
+  doesVideoUrlWorkWithReactPlayer,
+  fixEmbedUrl,
+  isUrlFromValidVideoPlatform,
+} from '#src/utils/misc.ts';
 
 export const ImageVideoRenderer = ({
   header,
@@ -14,11 +18,7 @@ export const ImageVideoRenderer = ({
 }) => {
   if (!src) return null;
 
-  if (
-    src.includes('youtube.com') ||
-    src.includes('youtu.be') ||
-    src?.includes('rumble.com')
-  ) {
+  if (isUrlFromValidVideoPlatform(src)) {
     return (
       <div className="mx-auto mb-2 max-w-full rounded-lg pb-6">
         {header === 'logo' && (
@@ -43,7 +43,7 @@ export const ImageVideoRenderer = ({
         )}
 
         <div className="relative pt-[56.25%]">
-          {src?.includes('youtube.com') || src?.includes('youtu.be') ? (
+          {doesVideoUrlWorkWithReactPlayer(src) ? (
             <ReactPlayer
               width={'100%'}
               height={'100%'}
