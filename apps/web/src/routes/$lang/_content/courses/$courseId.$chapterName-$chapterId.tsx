@@ -466,8 +466,10 @@ function shuffleArray<T>(array: T[]): T[] {
 function CourseChapter() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
-  const { session } = useContext(AppContext);
+  const { session, courses } = useContext(AppContext);
   const isLoggedIn = !!session;
+
+  const course = courses?.find((c) => c.id === params.courseId);
 
   const [isContentExpanded, setIsContentExpanded] = useState(true);
 
@@ -508,10 +510,13 @@ function CourseChapter() {
   );
 
   const { data: proofreading } = useQuery(
-    trpc.content.getProofreading.queryOptions({
-      courseId: params.courseId,
-      language: i18n.language,
-    }),
+    trpc.content.getProofreading.queryOptions(
+      {
+        courseId: params.courseId,
+        language: i18n.language,
+      },
+      { enabled: !course?.requiresPayment },
+    ),
   );
 
   const { data: quizzArray } = useQuery(
