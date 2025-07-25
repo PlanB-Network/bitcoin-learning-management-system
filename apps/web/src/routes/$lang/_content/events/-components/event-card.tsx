@@ -285,11 +285,9 @@ export const EventCard = ({
               {t('events.card.bookSeat')}
             </Button>
           ) : (
-            <>
-              <span className="italic max-sm:body-12px">
-                {t('events.card.eventFull')}
-              </span>
-            </>
+            <span className="italic max-sm:body-12px">
+              {t('events.card.eventFull')}
+            </span>
           ))}
 
         {isBookableInPersonEvent &&

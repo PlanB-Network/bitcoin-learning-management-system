@@ -73,7 +73,6 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
     close: closeAuthModal,
   } = useDisclosure();
 
-  // TODO refactor prop drilling
   return (
     <div className="text-white mb-7 md:mb-14">
       {paymentModalData.eventId &&

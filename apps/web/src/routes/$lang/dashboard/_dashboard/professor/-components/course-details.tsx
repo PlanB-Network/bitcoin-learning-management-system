@@ -1,4 +1,4 @@
-import type { CourseResponse, JoinedCourse } from '@blms/types';
+import type { JoinedCourse } from '@blms/types';
 import { cn, ListItem } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
@@ -147,9 +147,8 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
         </div>
       </div>
 
-      {/* TODO: check why we need type */}
-      {isFetched && (
-        <CourseCurriculum course={courseWithDetails as CourseResponse}>
+      {isFetched && courseWithDetails && (
+        <CourseCurriculum course={courseWithDetails}>
           <h4 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
             {t('dashboard.teacher.courses.curriculum')}
           </h4>

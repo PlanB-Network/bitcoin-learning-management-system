@@ -73,14 +73,7 @@ export const SingleTrialExamPresentation = ({
     });
   }
 
-  let nbQuestion = examInfo?.nbQuestions ?? 0;
-
-  // TODO remove hardcoded data when quiz questions are in the data repo
-  if (chapter.chapterId === '6065ea4e-2675-11f0-b6ab-bb5e1522cb78') {
-    nbQuestion = 25;
-  } else if (chapter.chapterId === '9a307a50-2675-11f0-a893-57c148082c1f') {
-    nbQuestion = 50;
-  }
+  const nbQuestion = examInfo?.nbQuestions ?? 0;
 
   useEffect(() => {
     if (startExamAttempt.isSuccess) {

@@ -16,7 +16,6 @@ export const createPublishScheduledCourseAnnouncement = (
       `Publishing scheduled course announcement with ID: ${scheduledAnnouncementId}`,
     );
 
-    // TODO: handle summer school selected students
     const result = await postgres.exec(
       publishScheduledCourseAnnouncementQuery({ scheduledAnnouncementId }),
     );
