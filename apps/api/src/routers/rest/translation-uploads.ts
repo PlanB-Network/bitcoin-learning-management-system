@@ -22,6 +22,14 @@ import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
+// Allowed hostnames for remote zip downloads
+const ALLOWED_DOWNLOAD_HOSTNAMES = (
+  process.env.ALLOWED_DOWNLOAD_HOSTNAMES ?? 'workspace.planb.network'
+)
+  .split(',')
+  .map((h) => h.trim())
+  .filter(Boolean);
+
 const mimeFromName = (name: string) =>
   name.toLowerCase().endsWith('.pptx')
     ? 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
@@ -83,6 +91,26 @@ const receiveUploadForm = (req: any) => {
       if (urlField && typeof urlField === 'string' && urlField.trim().length) {
         try {
           const remoteUrl = urlField.trim();
+
+          // Validate URL against allowlist to prevent SSRF
+          let hostname: string;
+          try {
+            hostname = new URL(remoteUrl).hostname;
+          } catch {
+            reject(new BadRequest('Invalid URL provided'));
+            return;
+          }
+
+          const allowed = ALLOWED_DOWNLOAD_HOSTNAMES.some(
+            (allowedHost) =>
+              hostname === allowedHost || hostname.endsWith(`.${allowedHost}`),
+          );
+
+          if (!allowed) {
+            reject(new BadRequest('URL host is not allowed'));
+            return;
+          }
+
           const response = await fetch(remoteUrl);
           if (!response.ok) {
             throw new Error(`HTTP ${response.status}`);
@@ -120,7 +148,9 @@ const receiveUploadForm = (req: any) => {
             const entryPath = path.resolve(tempDir, entry.entryName);
             // Validate that the resolved path is within the tempDir
             if (!entryPath.startsWith(tempDir)) {
-              console.warn(`Skipping potentially unsafe entry: ${entry.entryName}`);
+              console.warn(
+                `Skipping potentially unsafe entry: ${entry.entryName}`,
+              );
               continue;
             }
             fs.mkdirSync(path.dirname(entryPath), { recursive: true });
@@ -465,7 +495,7 @@ export const createRestTranslationUploadRoutes = async (
         );
         partId = mapping.partId;
         chapterId = mapping.chapterId;
-      } catch (err) {
+      } catch (_err) {
         // Skip chapters that don't exist in DB
         console.warn(
           `Skipping upload for unmapped part ${partIndex} chapter ${chapterIndex}`,
