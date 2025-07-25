@@ -117,7 +117,12 @@ const receiveUploadForm = (req: any) => {
           const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'upload-'));
           for (const entry of zip.getEntries()) {
             if (entry.isDirectory) continue;
-            const entryPath = path.join(tempDir, entry.entryName);
+            const entryPath = path.resolve(tempDir, entry.entryName);
+            // Validate that the resolved path is within the tempDir
+            if (!entryPath.startsWith(tempDir)) {
+              console.warn(`Skipping potentially unsafe entry: ${entry.entryName}`);
+              continue;
+            }
             fs.mkdirSync(path.dirname(entryPath), { recursive: true });
             fs.writeFileSync(entryPath, entry.getData());
 
