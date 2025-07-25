@@ -94,10 +94,19 @@ const receiveUploadForm = (req: any) => {
 
           // Validate URL against allowlist to prevent SSRF
           let hostname: string;
+          let protocol: string;
           try {
-            hostname = new URL(remoteUrl).hostname;
+            const parsed = new URL(remoteUrl);
+            hostname = parsed.hostname;
+            protocol = parsed.protocol;
           } catch {
             reject(new BadRequest('Invalid URL provided'));
+            return;
+          }
+
+          // Enforce HTTPS scheme only
+          if (protocol !== 'https:') {
+            reject(new BadRequest('Only HTTPS URLs are allowed'));
             return;
           }
 
