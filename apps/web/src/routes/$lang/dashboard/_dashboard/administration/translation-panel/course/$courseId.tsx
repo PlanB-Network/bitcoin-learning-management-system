@@ -3,10 +3,10 @@ import type {
   CourseInfo,
   CourseTranslationDetailsServiceResponse,
 } from '@blms/types';
-import { CourseDetailsPage } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { CourseDetailsPage } from '#src/components/CourseDetails/course-details-page.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 

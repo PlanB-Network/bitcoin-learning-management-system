@@ -1,8 +1,8 @@
 import { getStatusText } from '@blms/shared';
 import type { CourseDetails, CourseInfo } from '@blms/types';
+import { Loader } from '@blms/ui';
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { Loader } from '../../bases/loader.js';
 import { ChaptersTable } from './chapters-table.js';
 import { CourseHeader } from './course-header.js';
 import { CourseProgressBar } from './course-progress-bar.js';

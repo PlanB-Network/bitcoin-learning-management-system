@@ -85,8 +85,8 @@
     "passwordRequired": "Password is required",
     "passwordResetError": "Password reset error",
     "passwordResetSent": "Password reset email has been sent to your inbox (if the email address exists in our database).",
-    "passwordSuccessfullyChanged": "Your password has been successfully changed. You can now log in with your new password.",
     "passwordsDontMatch": "Passwords don't match",
+    "passwordSuccessfullyChanged": "Your password has been successfully changed. You can now log in with your new password.",
     "resetPassword": "Reset your password",
     "sendLink": "Send me a link",
     "signIn": "Sign In",
@@ -260,9 +260,9 @@
       "notTranslatedYet": "We're sorry, but the final exam feature is not yet available in your selected language. You may choose to switch to another language to continue.",
       "oneMinuteLeft": "You only have 1 minute left",
       "oopsFailed": "Oops, it seems that you <0>failed</0> the final exam.",
+      "passed": "Passed",
       "passExam": "Pass the exam",
       "passRate": "The pass rate is 80%.",
-      "passed": "Passed",
       "planBTimeStamp": "At Plan ₿ Network, we secure your diploma using the time-stamping technology backed by blockchain.",
       "quitWithoutSubmitting": "Oups, it seems that you left the page without submitting your answers. This cancels the test.",
       "readyToTest": "Ready to test your knowledge?",
@@ -298,13 +298,13 @@
       "tamperProof": "Tamper-Proof: Blockchain ensures no one can alter or fake your credentials.",
       "testKnowledge": "Now that you've completed this course, let's test your knowledge.",
       "testResults": "Test results",
+      "timerStart": "Once you click Start, a timer of {{minutes}} minutes will begin.",
       "timeStampBenefits": "Why it’s important :",
-      "timeStampHow": "How it works :",
-      "timeStampHowDescription": "When your diploma is issued, a unique digital \"fingerprint\" is created and stored on the blockchain, ensuring that the record is permanent and tamper-proof. Any attempt to alter your diploma will break the link, revealing the change.",
       "timeStamped": "time-stamped.",
       "timeStampedNoDot": "time-stamped",
+      "timeStampHow": "How it works :",
+      "timeStampHowDescription": "When your diploma is issued, a unique digital \"fingerprint\" is created and stored on the blockchain, ensuring that the record is permanent and tamper-proof. Any attempt to alter your diploma will break the link, revealing the change.",
       "timeStamping": "time-stamping",
-      "timerStart": "Once you click Start, a timer of {{minutes}} minutes will begin.",
       "tryAgain": "Try again",
       "tryOneMoreTime": "Try one more time!",
       "verifyDisplayName": "Before starting, please verify your display name below, as it will be used to generate your diploma.",
@@ -415,7 +415,6 @@
   "dashboard": {
     "account": "Account",
     "adminPanel": {
-      "translation": "Translation panel",
       "accessGranted": "Access granted",
       "bookings": "Bookings",
       "bookingsPanel": "Bookings panel",
@@ -433,302 +432,6 @@
         "viewCV": "View CV"
       },
       "confirmRemoval": "Confirm removal",
-      "translationPanel": {
-        "title": "Admin translation panel",
-        "admin": "ADMIN",
-        "tabs": {
-          "requests": "Requests",
-          "contentManagement": "Content management",
-          "userManagement": "User management",
-          "reports": "Reports",
-          "translate": "Translate"
-        },
-        "pendingTranslationRequests": "Pending translation requests",
-        "toggle": {
-          "pendingRequest": "Pending request",
-          "rejectedRequests": "Rejected requests"
-        },
-        "searchPlaceholder": "Search...",
-        "table": {
-          "username": "Username",
-          "index": "Index",
-          "course": "Course",
-          "language": "Language",
-          "actions": "Actions"
-        },
-        "actions": {
-          "accept": "Accept",
-          "reject": "Reject",
-          "delete": "Delete"
-        },
-        "modal": {
-          "acceptTranslationRequest": "Accept Translation Request",
-          "doYouWantToAcceptRequest": "Do you want to accept this translation request?",
-          "course": "Course",
-          "contributor": "Contributor",
-          "language": "Language",
-          "cancel": "Cancel",
-          "acceptRequest": "Accept Request",
-          "accepting": "Accepting...",
-          "requestAcceptedSuccess": "You accepted the translation request!",
-          "close": "Close",
-          "requestAcceptedMessage": "The contributor has been notified and can now start working on the translation.",
-          "provideRejectionReason": "Please provide a reason for rejecting this request",
-          "reasonForRejection": "Reason for rejection",
-          "reasonPlaceholder": "Write your explanation here...",
-          "submitRejection": "Submit",
-          "rejecting": "Rejecting...",
-          "requestRejectedSuccess": "Request rejected successfully"
-        },
-        "userManagement": {
-          "title": "User Management",
-          "description": "Manage contributors and their translation assignments",
-          "addContributor": "Add contributor",
-          "contributorInformation": "Contributor information",
-          "chapters": "Chapters",
-          "courses": "Courses",
-          "table": {
-            "startDate": "Start date",
-            "username": "Username",
-            "assignedCourses": "Assigned courses",
-            "language": "Language",
-            "actions": "Action"
-          },
-          "actions": {
-            "viewDetails": "View details",
-            "backToList": "Back to user list",
-            "backToUsers": "Back to users"
-          },
-          "noUsers": "No contributors found",
-          "modal": {
-            "title": "User Details",
-            "userInfo": "User Information",
-            "assignments": "Assignment History",
-            "noAssignments": "No assignments found"
-          },
-          "status": {
-            "todo": "To Do",
-            "readyForReview": "Ready for Review",
-            "underReview": "Under Review",
-            "reviewed": "Reviewed",
-            "published": "Published",
-            "rejected": "Rejected"
-          }
-        },
-        "addContributor": {
-          "title": "Add Contributor",
-          "findContributor": "Find a contributor",
-          "language": "Language",
-          "selectLanguage": "Select a language",
-          "assign": "Assign",
-          "confirm": "Confirm",
-          "assigning": "Assigning...",
-          "assignmentSuccess": "Contributors assigned successfully!",
-          "noUsers": "No users available",
-          "searchUsers": "Search users...",
-          "selectedUsers": "Selected Users:",
-          "assignedLanguages": "Already assigned languages",
-          "addLanguage": "Add another language"
-        },
-        "noResultsFound": "No results found",
-        "status": {
-          "assigned": "Assigned",
-          "inProgress": "In Progress",
-          "completed": "Completed",
-          "todo": "To Do",
-          "underReview": "Under Review",
-          "readyForReview": "Ready for Review"
-        },
-        "messages": {
-          "noPendingRequests": "No pending translation requests found.",
-          "noRejectedRequests": "No rejected translation requests found.",
-          "noPendingRequestsSearch": "No pending translation requests found matching \"{{query}}\".",
-          "noRejectedRequestsSearch": "No rejected translation requests found matching \"{{query}}\"."
-        },
-        "comingSoon": {
-          "userManagement": "User management functionality coming soon...",
-          "courses": "Courses view coming soon",
-          "coverage": "Language coverage view coming soon"
-        },
-        "reports": {
-          "proofreadCourses": "Proofread courses",
-          "totalLanguages": "Total languages",
-          "languagesProofread": "Languages proofread",
-          "tabs": {
-            "contributors": "Contributors",
-            "courses": "Courses",
-            "coverage": "Language coverage"
-          },
-          "filterByLanguage": "Filter by language",
-          "contributors": {
-            "title": "Contributors",
-            "startDate": "Start date",
-            "username": "Username",
-            "assignedCourses": "Assigned courses",
-            "completedCourses": "Completed courses",
-            "languages": "Languages",
-            "totalReward": "Total reward"
-          },
-          "noContributors": "No contributors found",
-          "comingSoon": {
-            "courses": "Courses view coming soon",
-            "coverage": "Language coverage view coming soon"
-          },
-          "courses": {
-            "filterByCourse": "Filter by course",
-            "contributor": "Contributor",
-            "progress": "Progress %",
-            "lastUpdated": "Last updated"
-          },
-          "table": {
-            "contributor": "Contributor",
-            "progress": "Progress %",
-            "lastUpdated": "Last updated"
-          },
-          "noCourses": "No courses found",
-          "languageCoverage": {
-            "inProgress": "In progress",
-            "completed": "Completed",
-            "notStarted": "Not started",
-            "totalCourses": "Total courses"
-          },
-          "noLanguages": "No languages found",
-          "generalReport": "General Report",
-          "dateFilter": "Date filter",
-          "downloadData": "Download Data",
-          "year": "Year",
-          "chooseYear": "Which year do you want to consider?",
-          "fromMonth": "From",
-          "fromMonthPlaceholder": "From which month?",
-          "toMonth": "To",
-          "toMonthPlaceholder": "To which month?"
-        },
-        "contentManagement": {
-          "title": "Content Management",
-          "description": "Assign and manage course translations to contributors",
-          "noCourses": "No courses available for translation management",
-          "noCoursesFiltered": "No courses found matching your filters",
-          "notAssigned": "Not assigned",
-          "table": {
-            "index": "Index",
-            "course": "Course",
-            "language": "Language",
-            "status": "Status",
-            "contributor": "Contributor",
-            "progress": "Progress",
-            "actions": "Actions"
-          },
-          "status": {
-            "readyForReview": "Ready for review",
-            "underReview": "Under review",
-            "notAssigned": "Not assigned",
-            "assigned": "Assigned"
-          },
-          "actions": {
-            "view": "View",
-            "assign": "Assign",
-            "reassign": "Reassign",
-            "backToContentManagement": "Back to content management"
-          },
-          "assignModal": {
-            "title": "Assign Course to Contributor",
-            "assigningCourse": "Assigning course:",
-            "courseInfo": "Course Information",
-            "selectContributor": "Select Contributor",
-            "chooseContributor": "Choose a contributor...",
-            "cancel": "Cancel",
-            "assign": "Assign",
-            "assigning": "Assigning...",
-            "assignmentSuccess": "Course assigned successfully!"
-          },
-          "reassignModal": {
-            "title": "Reassign Course to New Contributor",
-            "reassigningCourse": "Reassigning course:",
-            "currentlyAssignedTo": "Currently assigned to:",
-            "courseInfo": "Course Information",
-            "selectNewContributor": "Select New Contributor",
-            "chooseNewContributor": "Choose a new contributor...",
-            "cancel": "Cancel",
-            "reassign": "Reassign",
-            "reassigning": "Reassigning...",
-            "reassignmentSuccess": "Course reassigned successfully!",
-            "warning": {
-              "title": "Important Note",
-              "description": "Chapters and parts that have already been reviewed will keep their reviewed status and will not be reassigned."
-            }
-          }
-        },
-        "courseDetails": {
-          "courseInformation": "Course Information",
-          "courseIndex": "Course Index",
-          "courseName": "Course Name",
-          "language": "Language",
-          "translationStatus": "Translation Status",
-          "assignedTo": "Assigned To",
-          "progress": "Progress",
-          "chaptersCompleted": "chapters completed",
-          "chaptersAndProgress": "Chapters and Progress",
-          "noChapters": "No chapters found for this course",
-          "partTitle": "Part {{index}}: {{title}}",
-          "chapterIndex": "Chapter",
-          "chapterTitle": "Title",
-          "status": "Status",
-          "actions": "Actions",
-          "currentContributor": "Current contributor",
-          "noContributor": "No contributor assigned",
-          "errorLoadingDetails": "Error loading course details"
-        },
-        "courseNotFound": "Course not found",
-        "translate": {
-          "title": "Translate Courses",
-          "description": "Start translations for courses that need to be translated into specific languages.",
-          "noCourses": "No courses need translation at the moment.",
-          "table": {
-            "index": "Index",
-            "course": "Course",
-            "todoLanguages": "Languages to Translate",
-            "totalLanguages": "Total Languages",
-            "actions": "Actions"
-          },
-          "actions": {
-            "translate": "Translate"
-          },
-          "selectLanguagesModal": {
-            "title": "Select Languages to Translate",
-            "course": "Course:",
-            "originalLanguage": "Original language:",
-            "selectLanguages": "Select languages to translate:",
-            "noLanguagesAvailable": "No languages available for translation.",
-            "uploadFiles": "Upload Supporting Files (Optional)",
-            "audioFile": "Audio File",
-            "chooseAudioFile": "Choose Audio",
-            "noAudioFileSelected": "No audio file selected",
-            "audioFileInfo": "Supported formats: MP3, WAV, M4A (Max 50MB)",
-            "invalidAudioFile": "Please select a valid audio file.",
-            "audioFileTooLarge": "Audio file is too large. Maximum size is 50MB.",
-            "pptxFile": "PowerPoint File",
-            "choosePptxFile": "Choose PPTX",
-            "noPptxFileSelected": "No PowerPoint file selected",
-            "pptxFileInfo": "Only .pptx files are supported (Max 100MB)",
-            "invalidPptxFile": "Please select a valid PowerPoint (.pptx) file.",
-            "pptxFileTooLarge": "PowerPoint file is too large. Maximum size is 100MB.",
-            "cancel": "Cancel",
-            "startTranslation": "Start Translation",
-            "startingTranslation": "Starting...",
-            "startSuccess": "Translation started successfully!",
-            "existingUploadsInfo": "Original files already uploaded. You can start translation without uploading them again. Uploading new files will overwrite existing ones.",
-            "overwriteWarning": "Existing files will be replaced.",
-            "missingFilesError": "Please upload the translation files or provide a URL before starting the translation.",
-            "uploadFolder": "Upload folder (PPTX + TXT)",
-            "chooseFolder": "Choose folder",
-            "chooseZip": "Choose ZIP",
-            "noZipSelected": "No ZIP selected",
-            "noFolderSelected": "No folder selected",
-            "folderUrl": "Folder URL",
-            "useEnglishLabel": "The course has already been translated into English. Use the English version as source?"
-          }
-        }
-      },
       "coupons": {
         "cancel": "Cancel",
         "close": "Close",
@@ -762,11 +465,11 @@
         "forWhichEvent": "For which event?",
         "generateCode": "Generate code",
         "generateCodes": "Generate codes",
+        "generatedCode": "Generated code",
+        "generatedCodes": "Generated codes",
         "generateDiscountCode": "Generate a discount code",
         "generateNew": "Generate new code",
         "generateNewCodes": "Generate new codes",
-        "generatedCode": "Generated code",
-        "generatedCodes": "Generated codes",
         "maximumNumberOfUse": "Maximum number of use",
         "mobileSort": {
           "az": "A-z",
@@ -813,6 +516,303 @@
       "seeOrEdit": "See or edit",
       "selectProfessor": "Select professor",
       "selectRole": "Select role",
+      "translation": "Translation panel",
+      "translationPanel": {
+        "actions": {
+          "accept": "Accept",
+          "delete": "Delete",
+          "reject": "Reject"
+        },
+        "addContributor": {
+          "addLanguage": "Add another language",
+          "assign": "Assign",
+          "assignedLanguages": "Already assigned languages",
+          "assigning": "Assigning...",
+          "assignmentSuccess": "Contributors assigned successfully!",
+          "confirm": "Confirm",
+          "findContributor": "Find a contributor",
+          "language": "Language",
+          "noUsers": "No users available",
+          "searchUsers": "Search users...",
+          "selectedUsers": "Selected Users:",
+          "selectLanguage": "Select a language",
+          "title": "Add Contributor"
+        },
+        "admin": "ADMIN",
+        "comingSoon": {
+          "courses": "Courses view coming soon",
+          "coverage": "Language coverage view coming soon",
+          "userManagement": "User management functionality coming soon..."
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Assign",
+            "backToContentManagement": "Back to content management",
+            "reassign": "Reassign",
+            "view": "View"
+          },
+          "assignModal": {
+            "assign": "Assign",
+            "assigning": "Assigning...",
+            "assigningCourse": "Assigning course:",
+            "assignmentSuccess": "Course assigned successfully!",
+            "cancel": "Cancel",
+            "chooseContributor": "Choose a contributor...",
+            "courseInfo": "Course Information",
+            "selectContributor": "Select Contributor",
+            "title": "Assign Course to Contributor"
+          },
+          "description": "Assign and manage course translations to contributors",
+          "noCourses": "No courses available for translation management",
+          "noCoursesFiltered": "No courses found matching your filters",
+          "notAssigned": "Not assigned",
+          "reassignModal": {
+            "cancel": "Cancel",
+            "chooseNewContributor": "Choose a new contributor...",
+            "courseInfo": "Course Information",
+            "currentlyAssignedTo": "Currently assigned to:",
+            "reassign": "Reassign",
+            "reassigning": "Reassigning...",
+            "reassigningCourse": "Reassigning course:",
+            "reassignmentSuccess": "Course reassigned successfully!",
+            "selectNewContributor": "Select New Contributor",
+            "title": "Reassign Course to New Contributor",
+            "warning": {
+              "description": "Chapters and parts that have already been reviewed will keep their reviewed status and will not be reassigned.",
+              "title": "Important Note"
+            }
+          },
+          "status": {
+            "assigned": "Assigned",
+            "notAssigned": "Not assigned",
+            "readyForReview": "Ready for review",
+            "underReview": "Under review"
+          },
+          "table": {
+            "actions": "Actions",
+            "contributor": "Contributor",
+            "course": "Course",
+            "index": "Index",
+            "language": "Language",
+            "progress": "Progress",
+            "status": "Status"
+          },
+          "title": "Content Management"
+        },
+        "courseDetails": {
+          "actions": "Actions",
+          "assignedTo": "Assigned To",
+          "chapterIndex": "Chapter",
+          "chaptersAndProgress": "Chapters and Progress",
+          "chaptersCompleted": "chapters completed",
+          "chapterTitle": "Title",
+          "courseIndex": "Course Index",
+          "courseInformation": "Course Information",
+          "courseName": "Course Name",
+          "currentContributor": "Current contributor",
+          "errorLoadingDetails": "Error loading course details",
+          "language": "Language",
+          "noChapters": "No chapters found for this course",
+          "noContributor": "No contributor assigned",
+          "partTitle": "Part {{index}}: {{title}}",
+          "progress": "Progress",
+          "status": "Status",
+          "translationStatus": "Translation Status"
+        },
+        "courseNotFound": "Course not found",
+        "messages": {
+          "noPendingRequests": "No pending translation requests found.",
+          "noPendingRequestsSearch": "No pending translation requests found matching \"{{query}}\".",
+          "noRejectedRequests": "No rejected translation requests found.",
+          "noRejectedRequestsSearch": "No rejected translation requests found matching \"{{query}}\"."
+        },
+        "modal": {
+          "accepting": "Accepting...",
+          "acceptRequest": "Accept Request",
+          "acceptTranslationRequest": "Accept Translation Request",
+          "cancel": "Cancel",
+          "close": "Close",
+          "contributor": "Contributor",
+          "course": "Course",
+          "doYouWantToAcceptRequest": "Do you want to accept this translation request?",
+          "language": "Language",
+          "provideRejectionReason": "Please provide a reason for rejecting this request",
+          "reasonForRejection": "Reason for rejection",
+          "reasonPlaceholder": "Write your explanation here...",
+          "rejecting": "Rejecting...",
+          "requestAcceptedMessage": "The contributor has been notified and can now start working on the translation.",
+          "requestAcceptedSuccess": "You accepted the translation request!",
+          "requestRejectedSuccess": "Request rejected successfully",
+          "submitRejection": "Submit"
+        },
+        "noResultsFound": "No results found",
+        "pendingTranslationRequests": "Pending translation requests",
+        "reports": {
+          "chooseYear": "Which year do you want to consider?",
+          "comingSoon": {
+            "courses": "Courses view coming soon",
+            "coverage": "Language coverage view coming soon"
+          },
+          "contributors": {
+            "assignedCourses": "Assigned courses",
+            "completedCourses": "Completed courses",
+            "languages": "Languages",
+            "startDate": "Start date",
+            "title": "Contributors",
+            "totalReward": "Total reward",
+            "username": "Username"
+          },
+          "courses": {
+            "contributor": "Contributor",
+            "filterByCourse": "Filter by course",
+            "lastUpdated": "Last updated",
+            "progress": "Progress %"
+          },
+          "dateFilter": "Date filter",
+          "downloadData": "Download Data",
+          "filterByLanguage": "Filter by language",
+          "fromMonth": "From",
+          "fromMonthPlaceholder": "From which month?",
+          "generalReport": "General Report",
+          "languageCoverage": {
+            "completed": "Completed",
+            "inProgress": "In progress",
+            "notStarted": "Not started",
+            "totalCourses": "Total courses"
+          },
+          "languagesProofread": "Languages proofread",
+          "noContributors": "No contributors found",
+          "noCourses": "No courses found",
+          "noLanguages": "No languages found",
+          "proofreadCourses": "Proofread courses",
+          "table": {
+            "contributor": "Contributor",
+            "lastUpdated": "Last updated",
+            "progress": "Progress %"
+          },
+          "tabs": {
+            "contributors": "Contributors",
+            "courses": "Courses",
+            "coverage": "Language coverage"
+          },
+          "toMonth": "To",
+          "toMonthPlaceholder": "To which month?",
+          "totalLanguages": "Total languages",
+          "year": "Year"
+        },
+        "searchPlaceholder": "Search...",
+        "status": {
+          "assigned": "Assigned",
+          "completed": "Completed",
+          "inProgress": "In Progress",
+          "readyForReview": "Ready for Review",
+          "todo": "To Do",
+          "underReview": "Under Review"
+        },
+        "table": {
+          "actions": "Actions",
+          "course": "Course",
+          "index": "Index",
+          "language": "Language",
+          "username": "Username"
+        },
+        "tabs": {
+          "contentManagement": "Content management",
+          "reports": "Reports",
+          "requests": "Requests",
+          "translate": "Translate",
+          "userManagement": "User management"
+        },
+        "title": "Admin translation panel",
+        "toggle": {
+          "pendingRequest": "Pending request",
+          "rejectedRequests": "Rejected requests"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Translate"
+          },
+          "description": "Start translations for courses that need to be translated into specific languages.",
+          "noCourses": "No courses need translation at the moment.",
+          "selectLanguagesModal": {
+            "audioFile": "Audio File",
+            "audioFileInfo": "Supported formats: MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Audio file is too large. Maximum size is 50MB.",
+            "cancel": "Cancel",
+            "chooseAudioFile": "Choose Audio",
+            "chooseFolder": "Choose folder",
+            "choosePptxFile": "Choose PPTX",
+            "chooseZip": "Choose ZIP",
+            "course": "Course:",
+            "existingUploadsInfo": "Original files already uploaded. You can start translation without uploading them again. Uploading new files will overwrite existing ones.",
+            "folderUrl": "Folder URL",
+            "invalidAudioFile": "Please select a valid audio file.",
+            "invalidPptxFile": "Please select a valid PowerPoint (.pptx) file.",
+            "missingFilesError": "Please upload the translation files or provide a URL before starting the translation.",
+            "noAudioFileSelected": "No audio file selected",
+            "noFolderSelected": "No folder selected",
+            "noLanguagesAvailable": "No languages available for translation.",
+            "noPptxFileSelected": "No PowerPoint file selected",
+            "noZipSelected": "No ZIP selected",
+            "originalLanguage": "Original language:",
+            "overwriteWarning": "Existing files will be replaced.",
+            "pptxFile": "PowerPoint File",
+            "pptxFileInfo": "Only .pptx files are supported (Max 100MB)",
+            "pptxFileTooLarge": "PowerPoint file is too large. Maximum size is 100MB.",
+            "selectLanguages": "Select languages to translate:",
+            "startingTranslation": "Starting...",
+            "startSuccess": "Translation started successfully!",
+            "startTranslation": "Start Translation",
+            "title": "Select Languages to Translate",
+            "uploadFiles": "Upload Supporting Files (Optional)",
+            "uploadFolder": "Upload folder (PPTX + TXT)",
+            "useEnglishLabel": "The course has already been translated into English. Use the English version as source?"
+          },
+          "table": {
+            "actions": "Actions",
+            "course": "Course",
+            "index": "Index",
+            "todoLanguages": "Languages to Translate",
+            "totalLanguages": "Total Languages"
+          },
+          "title": "Translate Courses"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Back to user list",
+            "backToUsers": "Back to users",
+            "viewDetails": "View details"
+          },
+          "addContributor": "Add contributor",
+          "chapters": "Chapters",
+          "contributorInformation": "Contributor information",
+          "courses": "Courses",
+          "description": "Manage contributors and their translation assignments",
+          "modal": {
+            "assignments": "Assignment History",
+            "noAssignments": "No assignments found",
+            "title": "User Details",
+            "userInfo": "User Information"
+          },
+          "noUsers": "No contributors found",
+          "status": {
+            "published": "Published",
+            "readyForReview": "Ready for Review",
+            "rejected": "Rejected",
+            "reviewed": "Reviewed",
+            "todo": "To Do",
+            "underReview": "Under Review"
+          },
+          "table": {
+            "actions": "Action",
+            "assignedCourses": "Assigned courses",
+            "language": "Language",
+            "startDate": "Start date",
+            "username": "Username"
+          },
+          "title": "User Management"
+        }
+      },
       "tutorialAnalytics": "Tutorial analytics",
       "tutorialAnalyticsDescription": "Here you can check and compare all tutorials on the platform.",
       "tutorialsManagementPanel": "Tutorials management panel",
@@ -830,11 +830,11 @@
       "pickADate": "Pick a date",
       "publicationDate": "Date of publication"
     },
+    "backToDashboard": "Back to dashboard",
     "bCert": {
       "grade": "Grade",
       "noResults": "There are no grades or certificates associated with this account yet.\nIf you passed an exam and your results are not available after an extended period, please <0>reach out to us</0> for assistance."
     },
-    "backToDashboard": "Back to dashboard",
     "booking": {
       "accessLive": "Access the live",
       "billingSubtitle": "Download the invoices from your bookings here.",
@@ -864,8 +864,8 @@
       "personalCalendar": "Personal calendar"
     },
     "careerPortal": {
-      "acceptTermsAndConditions": "I have read and I accept the terms and conditions",
       "acceptedFormat": "File format accepted: pdf / Maximum file size: 10 MB.",
+      "acceptTermsAndConditions": "I have read and I accept the terms and conditions",
       "add": "Add",
       "allowReceivingEmails": "I agree to receive emails from Plan ₿ Network about potential job opportunities",
       "applicationComplete": "Your application is <highlight>Complete</highlight>",
@@ -913,8 +913,8 @@
       "expectedSalaryPlaceholder": "Monthly salary: 2.5K net",
       "expectedSalarySubLabel": "Depending on your profile, tell us your hourly rate or month salary expectations. Please specify if it's net or gross.",
       "fileTooLarge": "Selected file is too large",
-      "fileUploadError": "There was an error while uploading your file. Please try again.",
       "fileUploaded": "CV uploaded successfully!",
+      "fileUploadError": "There was an error while uploading your file. Please try again.",
       "firstName": "First name (or pseudo)",
       "followProcess": "Follow this step-by-step process to submit your CV and job information.",
       "fullTime": "Full time",
@@ -979,7 +979,6 @@
         "uxResearcher": "UX Researcher"
       },
       "languageLevel": "Level of proficiency",
-      "languageLevelSubLabel": "Select the level that best corresponds to your skills.",
       "languageLevels": {
         "advanced": "Advanced (Confidence & accuracy)",
         "beginner": "Beginner (Limited understanding)",
@@ -987,6 +986,7 @@
         "fluent": "Fluent (Native-level)",
         "intermediate": "Intermediate (Comfortable communication)"
       },
+      "languageLevelSubLabel": "Select the level that best corresponds to your skills.",
       "languageRequired": "Add at least one language.",
       "languageSkills": "Language skills",
       "languageSkillsSubtitle": "Let us know what languages you speak and write, and their corresponding level of proficiency.",
@@ -1015,13 +1015,13 @@
         "yes": "Yes, with pleasure"
       },
       "roleLevel": "Level of experience",
-      "roleLevelSubLabel": "Select the level that best corresponds to your skills.",
       "roleLevels": {
         "junior": "Junior (1 to 3 years)",
         "mid": "Mid-level (3 to 5 years)",
         "senior": "Senior (5+ years)",
         "student": "Student (0 year)"
       },
+      "roleLevelSubLabel": "Select the level that best corresponds to your skills.",
       "roleRequired": "Add at least one role.",
       "seeOrEditProfile": "See or edit profile",
       "selectJobTitle": "Select a job title",
@@ -1067,11 +1067,11 @@
       "coursesCompleted": "Courses completed",
       "diplomaReleaseDescription": "Once all classes are completed, you’ll be awarded a diploma for successfully completing the course. Diplomas will be available for download here after the last class and the completion of the conclusion chapter.",
       "diplomaReleaseTitle": "Diploma release",
-      "examScore": "Score:",
       "exams": "Exams",
+      "examScore": "Score:",
       "feedbacks": "Here you can check and edit the ratings and feedback you've given to this course.",
-      "fileUploadError": "There was an error while uploading your",
       "fileUploaded": "Your work was uploaded successfully!",
+      "fileUploadError": "There was an error while uploading your",
       "finalAverageGradeDescription": "You can find your final average grade in the Exam & Diploma section of your dashboard.",
       "finalGradeSummary": "Final grade summary",
       "finalScore": "Final score",
@@ -1091,10 +1091,10 @@
       "planbSchoolExamDescription": "The Plan ₿ Biz School 2025 program consists of two phases. In the first phase, you will take two online exams, specifically the mid-term and the final one: they are single-attempt, timed tests you can complete at any time during a three-day availability period. After the first phase, students will be selected based on their rankings to move on to the second phase, which involves a project assignment: an individual task provided by a Bitcoin company. You can find more details about it in the Assignment tab.\n\nThe final grade will be calculated as a weighted average of the three tests. Students who reach a score above 80% will receive a diploma, and the top-ranking students will also have the chance to participate in the Summer School in Lugano, in July.",
       "planbSchoolGeneralInformation": "The Plan ₿ Biz School 2025 program consists of two phases. In the first phase, you will take two online exams, specifically the mid-term and the final one: they are single-attempt, timed tests you can complete at any time during a three-day availability period. After the first phase, students will be selected based on their rankings to move on to the second phase, which involves a project assignment: an individual task provided by a Bitcoin company. You can find more details about it in the Assignment tab.\n\nThe final grade will be calculated as a weighted average of the three tests. Students who reach a score above {{threshold}}% will receive a diploma, and the top-ranking students will also have the chance to participate in the Summer School in Lugano, in July.",
       "projectRankingInstructions": "Project Ranking Instructions:",
-      "rankProjectPreferences": "Rank your project preferences",
       "ranking": "Ranking",
       "rankingInstructions": "Order the proposed projects according to your preferences (number 1 being your top choice). This ranking will enable us to assign you the most suitable project. Students with higher scores will have their selection considered first.",
       "rankingOnly24Hours": "The ranking portal will be open only for 24 hours, on June 2nd from 00:00 to 23:59 (UTC+2).",
+      "rankProjectPreferences": "Rank your project preferences",
       "ratingsAndFeedbacks": "Ratings & Feedbacks",
       "readAssignment": "Read assignment",
       "saveList": "Save list",
@@ -1172,8 +1172,11 @@
       "emailChangeConfirmation": "A confirmation email for your email change has been sent, please check your inbox to confirm.",
       "emailChangeRateLimitError": "You've recently updated your email. Please wait a few minutes before trying again.",
       "notificationSettings": {
+        "assignedAt": "Assigned at",
+        "completedAt": "Completed at",
         "coursesOption": "Updates about courses you enrolled in",
         "description": "You can customize your notification settings below. ",
+        "displayName": "Display name",
         "emailPreferencesDescription": "Here you can choose the types of emails you'd like to receive from us. These preferences only apply to the email address associated with this link.",
         "emailPreferencesError": "There was an error while trying to retrieve your email preferences. Please make sure that the link you followed is correct.",
         "emailPreferencesSavedSuccessfully": "Your email preferences were updated successfully.",
@@ -1181,18 +1184,15 @@
         "emailTitle": "What types of notifications would you like to receive by email?",
         "emailWarning": "Warning! No email address is linked to your account. Please add it in your profile section.",
         "eventsOption": "Updates about events you booked",
+        "filter": "Filter",
         "generalOption": "General information and news about Plan ₿ Network",
         "goToProfile": "Go to Profile",
         "loadEmailSettingsError": "Sorry, we could not load your email preferences.",
         "loadEmailSettingsErrorDescription": "Please ensure the link you used is complete and correct.",
         "loadEmailSettingsErrorManage": "If you have access to your account, you can also manage settings directly in your dashboard:",
         "none": "None",
-        "assignedAt": "Assigned at",
-        "completedAt": "Completed at",
-        "displayName": "Display name",
-        "role": "Role",
-        "filter": "Filter",
         "platformTitle": "What types of notifications would you like to receive on this platform?",
+        "role": "Role",
         "settingsSaved": "Your settings were saved successfully!",
         "title": "Notification settings"
       },
@@ -1537,6 +1537,20 @@
     "socialStudiesDescription": "Study the impact of Bitcoin on society.",
     "teachersDescription": "Get to know our academy teachers"
   },
+  "months": {
+    "april": "April",
+    "august": "August",
+    "december": "December",
+    "february": "February",
+    "january": "January",
+    "july": "July",
+    "june": "June",
+    "march": "March",
+    "may": "May",
+    "november": "November",
+    "october": "October",
+    "september": "September"
+  },
   "movies": {
     "goToMovie": "Go to movie",
     "pageTitle": "Movies & Documentaries",
@@ -1577,8 +1591,8 @@
     "markAsRead": "Mark as read",
     "monthsAgo": "{{months}} month{{s}} ago",
     "noRecentNotifications": "You have no recent notifications at the moment.",
-    "noUnreadNotifications": "No more unread notifications",
     "notifications": "Notifications",
+    "noUnreadNotifications": "No more unread notifications",
     "planBNews": "Plan ₿ News",
     "read": "Read",
     "results": "Your ₿-CERT results are out!",
@@ -1906,8 +1920,8 @@
     "all": "All",
     "amount": "Amount",
     "author": "Author",
-    "bCert": "₿-CERT",
     "back": "Back",
+    "bCert": "₿-CERT",
     "beginner": "Beginner",
     "billing": "Billing",
     "bitcoin": "Bitcoin",
@@ -1964,9 +1978,9 @@
     "hours": "hours",
     "hybrid": "Hybrid",
     "id": "ID",
-    "inReview": "In review",
     "incomplete": "Incomplete",
     "inperson": "In-person",
+    "inReview": "In review",
     "intermediate": "Intermediate",
     "invoice": "Invoice",
     "language": "Language",
@@ -1999,8 +2013,8 @@
     "newsletter": "Newsletter",
     "next": "Next",
     "no": "No",
-    "none": "None",
     "nodeNetwork": "Node Network",
+    "none": "None",
     "notApplicable": "Not applicable",
     "on": "on",
     "onChainAddress": "On chain address",
@@ -2076,19 +2090,5 @@
     "pageTitle": "Youtube Channels",
     "view": "View Youtube Channel",
     "watchTrailer": "Watch the trailer"
-  },
-  "months": {
-    "january": "January",
-    "february": "February",
-    "march": "March",
-    "april": "April",
-    "may": "May",
-    "june": "June",
-    "july": "July",
-    "august": "August",
-    "september": "September",
-    "october": "October",
-    "november": "November",
-    "december": "December"
   }
 }

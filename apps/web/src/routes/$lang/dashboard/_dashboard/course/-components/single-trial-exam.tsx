@@ -226,24 +226,6 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
             />
           );
         })}
-        {course.isPlanbSchool &&
-          (courseProgress ? (
-            <AssignmentItem
-              title={t('dashboard.course.assignmentTitle')}
-              description={t('dashboard.course.individualWork')}
-              weight={assignmentWeight}
-              startDate={new Date('2024-06-02')}
-              endDate={new Date('2024-06-18T23:59:00')}
-              score={
-                typeof assignmentScore === 'number' && assignmentScore >= 0
-                  ? assignmentScore
-                  : undefined
-              }
-              isGradePublished={course.isAssignmentGradingPublished}
-            />
-          ) : (
-            <Loader />
-          ))}
       </div>
     </section>
   );
