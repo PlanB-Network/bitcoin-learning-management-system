@@ -9,12 +9,14 @@ import {
   contentCourseTranslationChapters,
   contentCourseTranslationSlides,
   contentCourseTranslations,
+  contentCourseUploads,
   usersLanguages,
   usersReviewerLanguages,
   usersTranslationAssignments,
   usersTranslationChapterAssignments,
   usersTranslationReviews,
 } from '@blms/database';
+
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
@@ -55,6 +57,8 @@ export const usersTranslationChapterAssignmentsSchema = createSelectSchema(
 export const usersTranslationReviewsSchema = createSelectSchema(
   usersTranslationReviews,
 );
+export const courseTranslationUploadSchema =
+  createSelectSchema(contentCourseUploads);
 
 // Schema for simple course translation response (only courseId and language)
 export const courseTranslationResponseSchema = courseTranslationSchema.pick({
@@ -260,10 +264,51 @@ export const courseWithTodoTranslationsSchema = courseBasicSchema
   .merge(
     z.object({
       courseName: z.string(),
+      originalLanguage: z.string(),
       todoLanguages: z.array(z.string()),
       totalLanguages: z.number(),
     }),
   );
+// Schema for course translation uploads - based on database schema
+export const courseTranslationUploadResponseSchema =
+  courseTranslationUploadSchema.pick({
+    id: true,
+    courseId: true,
+    originalLanguage: true,
+    translationLanguages: true,
+    uploaderId: true,
+    partId: true,
+    chapterId: true,
+    pptxFileUrl: true,
+    textFileUrl: true,
+    uploadSuccess: true,
+    errorMessage: true,
+    createdAt: true,
+    updatedAt: true,
+  });
+
+// Input schema for creating translation uploads - API interface
+export const createCourseTranslationUploadInputSchema = z.object({
+  courseId: z.string(),
+  languages: z.array(z.string()),
+  pptxFileUrl: z.string().optional(),
+  textFileUrl: z.string().optional(),
+});
+
+// Input schema for updating translation upload - API interface
+export const updateCourseTranslationUploadInputSchema = z.object({
+  id: z.string(),
+  pptxFileUrl: z.string().optional(),
+  textFileUrl: z.string().optional(),
+  uploadSuccess: z.boolean().optional(),
+  errorMessage: z.string().optional(),
+});
+
+// Input schema for starting translation (updating status to in_progress) - API interface
+export const startTranslationInputSchema = z.object({
+  courseId: z.string(),
+  languages: z.array(z.string()),
+});
 
 // Schema for course translation slide - based on database schema
 export const courseTranslationSlideSchema = courseTranslationSlidesSchema
@@ -286,8 +331,6 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
       pptValidated: z.boolean(),
       transcriptionValidated: z.boolean(),
       audioValidated: z.boolean(),
-      audioTries: z.number(),
-      professorName: z.string().nullable(),
       status: translationStatusEnum,
     }),
   );
@@ -346,7 +389,6 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   pptValidated: z.boolean().optional(),
   transcriptionValidated: z.boolean().optional(),
   audioValidated: z.boolean().optional(),
-  audioTries: z.number().optional(),
 });
 
 // Schema for chapter progress in course translation overview - based on chapter schema

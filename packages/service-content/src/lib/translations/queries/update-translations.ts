@@ -62,6 +62,40 @@ export const updateCourseTranslationToUnderReviewQuery = (
 };
 
 /**
+ * Query to update course translation status to "ready_for_review"
+ */
+export const updateCourseTranslationToReadyForReviewQuery = (
+  courseId: string,
+  languages: string[],
+) => {
+  return sql`
+    UPDATE content.course_translations
+    SET
+      status = 'ready_for_review'::translation_status,
+      updated_at = NOW()
+    WHERE course_id = ${courseId} AND language = ANY(${languages})
+      AND status = 'in_progress'::translation_status
+  `;
+};
+
+/**
+ * Query to update course translation chapters status to "ready_for_review"
+ */
+export const updateCourseTranslationChaptersToReadyForReviewQuery = (
+  courseId: string,
+  languages: string[],
+) => {
+  return sql`
+    UPDATE content.course_translation_chapters
+    SET
+      status = 'ready_for_review'::translation_status,
+      updated_at = NOW()
+    WHERE course_id = ${courseId} AND language = ANY(${languages})
+      AND status = 'in_progress'::translation_status
+  `;
+};
+
+/**
  * Query to update course translation chapters status to "under_review"
  */
 export const updateCourseTranslationChaptersToUnderReviewQuery = (
@@ -139,5 +173,26 @@ export const startCourseTranslationsQuery = (
       status,
       created_at AS "createdAt",
       updated_at AS "updatedAt"
+  `;
+};
+
+/**
+ * Query to start translations for chapters by updating status from 'todo' to 'in_progress' for multiple languages
+ */
+export const startCourseTranslationChaptersQuery = (
+  courseId: string,
+  languages: string[],
+) => {
+  const languageList = languages.map((lang) => lang.toLowerCase());
+
+  return sql`
+    UPDATE content.course_translation_chapters
+    SET
+      status = ${TranslationStatus.InProgress},
+      updated_at = NOW()
+    WHERE
+      course_id = ${courseId}
+      AND language = ANY(${languageList})
+      AND status = ${TranslationStatus.Todo}
   `;
 };

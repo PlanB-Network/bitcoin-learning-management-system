@@ -156,6 +156,11 @@ services:
       - ONLYOFFICE_TIMEOUT_CONVERSION=120000
       - ONLYOFFICE_MAX_FILE_SIZE=104857600
       - ONLYOFFICE_MAX_TEMPLATE_SIZE=104857600
+      - LT_BASE_URL=http://localhost:8000
+      - LT_CLIENT_ID=none
+      - LT_CLIENT_SEC=none
+      - ALLOWED_DOWNLOAD_HOSTNAMES=workspace.planb.network
+
     extra_hosts:
       - "host.docker.internal:host-gateway"
     healthcheck:

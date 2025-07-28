@@ -2,13 +2,14 @@ import type {
   AvailableCourseTranslation,
   CourseTranslationStatus,
 } from '@blms/types';
-
 import type { Dependencies } from '../../dependencies.js';
+
 import {
   getAdminContentManagementCoursesQuery,
   getAvailableCourseTranslationsQuery,
   getCoursesReadyForReviewQuery,
   getCourseTranslationStatusQuery,
+  getReportsCoursesQuery,
   getTranslationProgressQuery,
   getUserContributionsUnderReviewQuery,
   getUserCourseTranslationsQuery,
@@ -78,20 +79,16 @@ export const createGetCoursesReadyForReview = ({ postgres }: Dependencies) => {
  * Service to get user's contributions under review (status = 'under_review' or 'assigned' with matching contributor_id)
  * These are the courses that should be displayed in "yourContributions"
  */
-export const createGetUserContributionsUnderReview = (
-  dependencies: Dependencies,
-) => {
-  return async (language: string, userUid: string) => {
-    try {
-      const result = await dependencies.postgres.exec(
-        getUserContributionsUnderReviewQuery(language, userUid),
-      );
-
-      return result;
-    } catch (error) {
-      console.error('getUserContributionsUnderReview - Error:', error);
-      throw error;
-    }
+export const createGetUserContributionsUnderReview = ({
+  postgres,
+}: Dependencies) => {
+  return async (
+    language: string,
+    userUid: string,
+  ): Promise<AvailableCourseTranslation[]> => {
+    return postgres.exec(
+      getUserContributionsUnderReviewQuery(language, userUid),
+    );
   };
 };
 
@@ -115,6 +112,23 @@ export const createGetAdminContentManagementCourses = ({
   return async (language?: string, topic?: string) => {
     const results = await postgres.exec(
       getAdminContentManagementCoursesQuery(language, topic),
+    );
+
+    return results.map((row: any) => ({
+      ...row,
+      topic: row.courseTopic,
+    }));
+  };
+};
+
+/**
+ * Service to get all courses for reports tab
+ * This includes all course translations for comprehensive reporting
+ */
+export const createGetReportsCourses = ({ postgres }: Dependencies) => {
+  return async (language?: string, topic?: string) => {
+    const results = await postgres.exec(
+      getReportsCoursesQuery(language, topic),
     );
 
     return results.map((row: any) => ({

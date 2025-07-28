@@ -27,6 +27,8 @@ import {
   createGetCourseTranslationDetails,
   createGetCourseTranslationSlides,
   createGetCourseTranslationStatus,
+  createGetCourseTranslationUploads,
+  createGetReportsCourses,
   createGetTranslationProgress,
   createGetUserContributionsUnderReview,
   createGetUserCourseTranslations,
@@ -185,6 +187,16 @@ const getTranslationProgressProcedure = publicProcedure
     );
   });
 
+// Check if uploads exist for a course
+const hasCourseUploadsProcedure = publicProcedure
+  .input(z.object({ courseId: z.string() }))
+  .output(z.object({ exists: z.boolean() }))
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationUploads(ctx.dependencies)(
+      input.courseId,
+    ).then((rows) => ({ exists: rows.length > 0 }));
+  });
+
 // Admin content management endpoints
 const getAdminContentManagementCoursesProcedure = adminProcedure
   .input(
@@ -198,6 +210,24 @@ const getAdminContentManagementCoursesProcedure = adminProcedure
   )
   .query(({ ctx, input }) => {
     return createGetAdminContentManagementCourses(ctx.dependencies)(
+      input.language,
+      input.topic,
+    );
+  });
+
+// Reports courses endpoint - includes all courses for comprehensive reporting
+const getReportsCoursesProcedure = adminProcedure
+  .input(
+    z.object({
+      language: z.string().optional(),
+      topic: z.string().optional(),
+    }),
+  )
+  .output<Parser<AdminContentManagementCourse[]>>(
+    adminContentManagementCourseSchema.array(),
+  )
+  .query(({ ctx, input }) => {
+    return createGetReportsCourses(ctx.dependencies)(
       input.language,
       input.topic,
     );
@@ -286,8 +316,10 @@ export const translationsRouter = createTRPCRouter({
   getCoursesReadyForReview: getCoursesReadyForReviewProcedure,
   getUserContributionsUnderReview: getUserContributionsUnderReviewProcedure,
   getTranslationProgress: getTranslationProgressProcedure,
+  hasCourseUploads: hasCourseUploadsProcedure,
   // Admin content management endpoints
   getAdminContentManagementCourses: getAdminContentManagementCoursesProcedure,
+  getReportsCourses: getReportsCoursesProcedure,
   getContentManagementTopics: getContentManagementTopicsProcedure,
   getCourseDetails: getCourseTranslationDetailsProcedure,
   getCourseLanguages: getCourseLanguagesProcedure,

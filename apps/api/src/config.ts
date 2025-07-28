@@ -82,12 +82,12 @@ export const postgres: PostgresClientConfig = {
 
 export const sync: GitHubSyncConfig = {
   cdnPath: getenv('CDN_PATH', '/tmp/cdn'),
-  githubAccessToken: getenv('GITHUB_ACCESS_TOKEN', null),
-  privateRepositoryBranch: getenv('PRIVATE_DATA_REPOSITORY_BRANCH', 'main'),
-  privateRepositoryUrl: getenv('PRIVATE_DATA_REPOSITORY_URL', null),
-  publicRepositoryBranch: getenv('DATA_REPOSITORY_BRANCH', 'main'),
-  publicRepositoryUrl: getenv('DATA_REPOSITORY_URL'),
   syncPath: getenv('SYNC_PATH', '/tmp/sync'),
+  publicRepositoryUrl: getenv('DATA_REPOSITORY_URL'),
+  publicRepositoryBranch: getenv('DATA_REPOSITORY_BRANCH', 'main'),
+  privateRepositoryUrl: getenv('PRIVATE_DATA_REPOSITORY_URL', null),
+  privateRepositoryBranch: getenv('PRIVATE_DATA_REPOSITORY_BRANCH', 'main'),
+  githubAccessToken: getenv('GITHUB_ACCESS_TOKEN', null),
 };
 
 export const session: SessionConfig = {

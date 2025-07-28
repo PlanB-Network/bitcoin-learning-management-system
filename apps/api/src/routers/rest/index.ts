@@ -11,6 +11,7 @@ import { createRestSyncRoutes } from './sync.js';
 import { createRestTranslationAudioRoutes } from './translation-audio.js';
 import { createRestTranslationDownloadRoutes } from './translation-downloads.js';
 // import { createRestTranslationUploadRoutes } from './translation-uploads.js';
+import { createRestTranslationUploadRoutes } from './translation-uploads.js';
 
 export const createRestRouter = async (
   dependencies: Dependencies,
@@ -21,6 +22,7 @@ export const createRestRouter = async (
   await createRestTranslationDownloadRoutes(dependencies, router);
   await createRestTranslationAudioRoutes(dependencies, router);
   // await createRestTranslationUploadRoutes(dependencies, router);
+  await createRestTranslationUploadRoutes(dependencies, router);
   createRestMetadataRoutes(dependencies, router);
   createRestPaymentRoutes(dependencies, router);
   createRestSyncRoutes(dependencies, router);

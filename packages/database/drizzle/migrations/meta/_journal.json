@@ -911,6 +911,13 @@
       "when": 1753190889934,
       "tag": "0129_flashy_white_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 130,
+      "version": "7",
+      "when": 1753436358466,
+      "tag": "0130_narrow_true_believers",
+      "breakpoints": true
     }
   ]
 }

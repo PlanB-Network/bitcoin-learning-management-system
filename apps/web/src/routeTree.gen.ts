@@ -54,6 +54,7 @@ import { Route as LangDashboardDashboardProfessorCoursesRouteImport } from './ro
 import { Route as LangDashboardDashboardCourseCompletedRouteImport } from './routes/$lang/dashboard/_dashboard/course/completed';
 import { Route as LangDashboardDashboardCourseCourseIdRouteImport } from './routes/$lang/dashboard/_dashboard/course/$courseId';
 import { Route as LangDashboardDashboardAdministrationTutorialsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/tutorials';
+import { Route as LangDashboardDashboardAdministrationTranslationPanelRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel';
 import { Route as LangDashboardDashboardAdministrationRoleRouteImport } from './routes/$lang/dashboard/_dashboard/administration/role';
 import { Route as LangDashboardDashboardAdministrationCouponsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/coupons';
 import { Route as LangDashboardDashboardAdministrationCareersRouteImport } from './routes/$lang/dashboard/_dashboard/administration/careers';
@@ -84,6 +85,8 @@ import { Route as LangContentMiscPublicCommunicationBlogsAndNewsIndexRouteImport
 import { Route as LangContentTutorialsCategorySubcategoryNameIdRouteImport } from './routes/$lang/_content/tutorials/$category/$subcategory.$name-$id';
 import { Route as LangContentMiscPublicCommunicationLegalsNameRouteImport } from './routes/$lang/_content/_misc/public-communication/legals/$name';
 import { Route as LangContentMiscPublicCommunicationBlogsAndNewsCategoryRouteImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/$category';
+import { Route as LangDashboardDashboardAdministrationTranslationPanelUserUserIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId';
+import { Route as LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId';
 import { Route as LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRouteImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
 
 const LangDashboardRouteImport = createFileRoute('/$lang/dashboard')();
@@ -343,6 +346,12 @@ const LangDashboardDashboardAdministrationTutorialsRoute =
     path: '/administration/tutorials',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
+const LangDashboardDashboardAdministrationTranslationPanelRoute =
+  LangDashboardDashboardAdministrationTranslationPanelRouteImport.update({
+    id: '/administration/translation-panel',
+    path: '/administration/translation-panel',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
 const LangDashboardDashboardAdministrationRoleRoute =
   LangDashboardDashboardAdministrationRoleRouteImport.update({
     id: '/administration/role',
@@ -523,6 +532,24 @@ const LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute =
     path: '/$lang/public-communication/blogs-and-news/$category',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute =
+  LangDashboardDashboardAdministrationTranslationPanelUserUserIdRouteImport.update(
+    {
+      id: '/user/$userId',
+      path: '/user/$userId',
+      getParentRoute: () =>
+        LangDashboardDashboardAdministrationTranslationPanelRoute,
+    } as any,
+  );
+const LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute =
+  LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRouteImport.update(
+    {
+      id: '/course/$courseId',
+      path: '/course/$courseId',
+      getParentRoute: () =>
+        LangDashboardDashboardAdministrationTranslationPanelRoute,
+    } as any,
+  );
 const LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute =
   LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRouteImport.update(
     {
@@ -581,6 +608,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
+  '/$lang/dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
@@ -607,6 +635,8 @@ export interface FileRoutesByFullPath {
   '/$lang/public-communication/blogs-and-news': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/public-communication/legals/': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
   '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
+  '/$lang/dashboard/administration/translation-panel/course/$courseId': typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
+  '/$lang/dashboard/administration/translation-panel/user/$userId': typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
 }
 export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
@@ -655,6 +685,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
+  '/$lang/dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
@@ -681,6 +712,8 @@ export interface FileRoutesByTo {
   '/$lang/public-communication/blogs-and-news': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/public-communication/legals': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
   '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
+  '/$lang/dashboard/administration/translation-panel/course/$courseId': typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
+  '/$lang/dashboard/administration/translation-panel/user/$userId': typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -733,6 +766,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/_dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
   '/$lang/dashboard/_dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
+  '/$lang/dashboard/_dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   '/$lang/dashboard/_dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/_dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/_dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
@@ -759,6 +793,8 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/public-communication/blogs-and-news/': typeof LangContentMiscPublicCommunicationBlogsAndNewsIndexRoute;
   '/$lang/_content/_misc/public-communication/legals/': typeof LangContentMiscPublicCommunicationLegalsIndexRoute;
   '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId': typeof LangContentMiscPublicCommunicationBlogsAndNewsArticleBlogNameBlogIdRoute;
+  '/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId': typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
+  '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId': typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -811,6 +847,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/careers'
     | '/$lang/dashboard/administration/coupons'
     | '/$lang/dashboard/administration/role'
+    | '/$lang/dashboard/administration/translation-panel'
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
@@ -836,7 +873,9 @@ export interface FileRouteTypes {
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/public-communication/blogs-and-news'
     | '/$lang/public-communication/legals/'
-    | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
+    | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId'
+    | '/$lang/dashboard/administration/translation-panel/course/$courseId'
+    | '/$lang/dashboard/administration/translation-panel/user/$userId';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/$lang'
@@ -885,6 +924,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/careers'
     | '/$lang/dashboard/administration/coupons'
     | '/$lang/dashboard/administration/role'
+    | '/$lang/dashboard/administration/translation-panel'
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
@@ -910,7 +950,9 @@ export interface FileRouteTypes {
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/public-communication/blogs-and-news'
     | '/$lang/public-communication/legals'
-    | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
+    | '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId'
+    | '/$lang/dashboard/administration/translation-panel/course/$courseId'
+    | '/$lang/dashboard/administration/translation-panel/user/$userId';
   id:
     | '__root__'
     | '/$lang/'
@@ -962,6 +1004,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/administration/careers'
     | '/$lang/dashboard/_dashboard/administration/coupons'
     | '/$lang/dashboard/_dashboard/administration/role'
+    | '/$lang/dashboard/_dashboard/administration/translation-panel'
     | '/$lang/dashboard/_dashboard/administration/tutorials'
     | '/$lang/dashboard/_dashboard/course/$courseId'
     | '/$lang/dashboard/_dashboard/course/completed'
@@ -987,7 +1030,9 @@ export interface FileRouteTypes {
     | '/$lang/_content/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/_content/_misc/public-communication/blogs-and-news/'
     | '/$lang/_content/_misc/public-communication/legals/'
-    | '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
+    | '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId'
+    | '/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId'
+    | '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -1357,6 +1402,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardAdministrationTutorialsRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
+    '/$lang/dashboard/_dashboard/administration/translation-panel': {
+      id: '/$lang/dashboard/_dashboard/administration/translation-panel';
+      path: '/administration/translation-panel';
+      fullPath: '/$lang/dashboard/administration/translation-panel';
+      preLoaderRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
     '/$lang/dashboard/_dashboard/administration/role': {
       id: '/$lang/dashboard/_dashboard/administration/role';
       path: '/administration/role';
@@ -1567,6 +1619,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId': {
+      id: '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId';
+      path: '/user/$userId';
+      fullPath: '/$lang/dashboard/administration/translation-panel/user/$userId';
+      preLoaderRoute: typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRouteImport;
+      parentRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRoute;
+    };
+    '/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId': {
+      id: '/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId';
+      path: '/course/$courseId';
+      fullPath: '/$lang/dashboard/administration/translation-panel/course/$courseId';
+      preLoaderRoute: typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRouteImport;
+      parentRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRoute;
+    };
     '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId': {
       id: '/$lang/_content/_misc/public-communication/blogs-and-news/article/$blogName-$blogId';
       path: '/$lang/public-communication/blogs-and-news/article/$blogName-$blogId';
@@ -1576,6 +1642,24 @@ declare module '@tanstack/react-router' {
     };
   }
 }
+
+interface LangDashboardDashboardAdministrationTranslationPanelRouteChildren {
+  LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute: typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
+  LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute: typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
+}
+
+const LangDashboardDashboardAdministrationTranslationPanelRouteChildren: LangDashboardDashboardAdministrationTranslationPanelRouteChildren =
+  {
+    LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute:
+      LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute,
+    LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute:
+      LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute,
+  };
+
+const LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren =
+  LangDashboardDashboardAdministrationTranslationPanelRoute._addFileChildren(
+    LangDashboardDashboardAdministrationTranslationPanelRouteChildren,
+  );
 
 interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardBookingsRoute: typeof LangDashboardDashboardBookingsRoute;
@@ -1590,6 +1674,7 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardAdministrationCareersRoute: typeof LangDashboardDashboardAdministrationCareersRoute;
   LangDashboardDashboardAdministrationCouponsRoute: typeof LangDashboardDashboardAdministrationCouponsRoute;
   LangDashboardDashboardAdministrationRoleRoute: typeof LangDashboardDashboardAdministrationRoleRoute;
+  LangDashboardDashboardAdministrationTranslationPanelRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   LangDashboardDashboardAdministrationTutorialsRoute: typeof LangDashboardDashboardAdministrationTutorialsRoute;
   LangDashboardDashboardCourseCourseIdRoute: typeof LangDashboardDashboardCourseCourseIdRoute;
   LangDashboardDashboardCourseCompletedRoute: typeof LangDashboardDashboardCourseCompletedRoute;
@@ -1619,6 +1704,8 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
       LangDashboardDashboardAdministrationCouponsRoute,
     LangDashboardDashboardAdministrationRoleRoute:
       LangDashboardDashboardAdministrationRoleRoute,
+    LangDashboardDashboardAdministrationTranslationPanelRoute:
+      LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren,
     LangDashboardDashboardAdministrationTutorialsRoute:
       LangDashboardDashboardAdministrationTutorialsRoute,
     LangDashboardDashboardCourseCourseIdRoute:

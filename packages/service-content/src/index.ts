@@ -14,5 +14,6 @@ export * from './lib/quizzes/questions/services/index.js';
 export * from './lib/resources/services/index.js';
 export * from './lib/search.js';
 export * from './lib/translations/services/index.js';
+export * from './lib/translations/services/index.js';
 export * from './lib/tutorials/services/index.js';
 export * from './lib/videos/services/index.js';
