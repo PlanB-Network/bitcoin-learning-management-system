@@ -1,3 +1,5 @@
+const VERSION = 'v2';
+
 self.addEventListener('install', (_event) => {
   self.skipWaiting();
 });
