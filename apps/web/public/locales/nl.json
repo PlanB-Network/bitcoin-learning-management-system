@@ -311,7 +311,8 @@
       "weight": "Gewicht: {{weight}}%",
       "whyTimeStamp": "Je Diploma Tijdstempelen:\nWaarom Het Belangrijk Is",
       "wishTryAgain": "Als je het opnieuw wilt proberen, is het examen over 24 uur beschikbaar.",
-      "yesSubmit": "Ja, indienen"
+      "yesSubmit": "Ja, indienen",
+      "reviewTest": "Beoordeling"
     },
     "explorer": {
       "buildPath": "Bouw je eigen reis",
@@ -814,7 +815,8 @@
       "viewScoreSummary": "Bekijk scoreoverzicht",
       "wellDoneCompleting": "Goed gedaan met het afronden en slagen voor deze cursus! \nHier is je welverdiende diploma",
       "yourProject": "Jouw project",
-      "yourProjectAssignment": "Jouw projectopdracht"
+      "yourProjectAssignment": "Jouw projectopdracht",
+      "assignmentNotAccessible": "De opdracht is al begonnen en is niet meer toegankelijk."
     },
     "courses": "Cursussen",
     "credentials": {
@@ -978,7 +980,10 @@
         "studentsGraduated": "Afgestudeerde studenten",
         "summerStudents": "Zomerschool",
         "thresholdToPass": "Slaaggrens",
-        "writeAnnouncement": "Schrijf een aankondiging"
+        "writeAnnouncement": "Schrijf een aankondiging",
+        "averageAttempts": "Gemiddeld aantal pogingen",
+        "questionsInExam": "Vragen in het examen",
+        "totalQuestions": "Totaal aantal vragen"
       },
       "profile": {
         "description": "Jouw beschrijving",
@@ -1747,7 +1752,8 @@
     "viewMore": "Bekijk meer",
     "wallets": "Wallets",
     "weight": "Gewicht",
-    "yes": "Ja"
+    "yes": "Ja",
+    "review": "Beoordeling"
   },
   "videoSelector": {
     "language": {

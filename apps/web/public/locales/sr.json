@@ -3,14 +3,14 @@
     "activeContributors": "Aktivni saradnici",
     "commitmentContent": "Mi imamo sledeće obaveze prema Bitcoin zajednici:\n • Ostati otvorenog koda\n • Pružiti visokokvalitetan edukativni sadržaj\n • Prevesti naš sadržaj na što više jezika\n • Podržati Bitcoin kreatore na njihovom preduzetničkom putovanju",
     "commitmentTitle": "Naše obaveze",
-    "coreTeamAjelexRole": "Koordinator za nodove",
+    "coreTeamAjelexRole": "Koordinator za čvorove",
     "coreTeamAsioRole": "Koordinator za obrazovanje",
     "coreTeamContent": "Plan ₿ Mreža je kolektiv sačinjen od stotine saradnika, nastavnika, lidera zajednice, dizajnera, programera i organizatora. Veliko hvala brojnim ljudima koji su učinili PlanB realnošću i nastavljaju to da čine svakog dana. (Lista saradnika uskoro dolazi)",
     "coreTeamGiacomoRole": "Direktor i suosnivač",
     "coreTeamRogzyRole": "Menadžer proizvoda & suosnivač",
     "coreTeamTitle": "Osnovni tim",
     "corporateContact": "Kontakt informacije:",
-    "corporateContent": "PlanB Mreža je zajednički projekat tri entiteta fokusirana na razvoj Bitcoina. U nastojanju da prošire obrazovnje vezano za Bitcoin, odlučili su da sarađuju kako bi formirali PlanB Mrežu. Od tada su i mnogi drugi entiteti odlučili da doprinesu i udruže snage u cilju da se obrazovanje o Bitcoinu proširi svetom, Iz tog razloga, dugujemo im veliku zahvalnost.",
+    "corporateContent": "PlanB Mreža je zajednički projekat tri entiteta fokusirana na razvoj Bitcoina. U nastojanju da prošire obrazovanje vezano za Bitcoin, odlučili su da sarađuju kako bi formirali PlanB Mrežu. Od tada su i mnogi drugi entiteti odlučili da doprinesu i udruže snage u cilju da se obrazovanje o Bitcoinu proširi svetom, Iz tog razloga, dugujemo im veliku zahvalnost.",
     "corporateTitle": "Korporacije iza projekta",
     "description": "PlanB Mreža pomaže zajednicama širom sveta da se organizuju kako bi pružile bolje obrazovanje. Platforma razvija neophodne alate za postizanje tog cilja, kroz online akademiju, portal sa priručnicima, obrazovni set alata vezanih za Bitcoin i portal sa resursima.",
     "manifesto": "Verujemo u decentralizovanu budućnost koju Bitcoin nudi.\n\nNaša misija je da u narednih deset godina Bitcoin predstavimo milijardi ljudi. Naši alati su obrazovanje i informisanje.\n\nPodržavamo lokalne zajednice Bitcoinera pružajući javno-dostupan obrazovni sadržaj i nudeći mrežu mentora za Bitcoin.\n\nNaša filozofija je inspirisana manifestom cypherpunka. Baš kao što su oni zagovarali privatnost, mi zagovaramo obrazovanje. Verujemo da je znanje temelj slobode i promene.\n\nMi smo isključivo za Bitcoin.\n\nZalažemo se za individualnu odgovornost i nezavisnost koju pruža posedovanje sopstvenih ključeva.\n\nPodstičemo verifikaciju, a ne slepo poverenje.\n\nVerujemo da popravljajući novac, popravljamo svet.\n\nMi smo decentralizovani i otvorenog koda, čime eliminišemo postojanje najslabije karike u sajber bezbednosti.\n\nPodstičemo slobodno širenje našeg sadržaja.\n\nTežimo svetu koji funkcioniše odozdo prema gore, gde je pojedinac u centru.\n\nVršimo pojednostavljenje, obrazujemo, delimo.\n\nPridružite nam se u našoj misiji da \"orange pill-ujemo\" svet.\n",
@@ -311,7 +311,8 @@
       "weight": "Težina: {{weight}}%",
       "whyTimeStamp": "Vremensko obeležavanje Vaše diplome:\nZašto je to važno",
       "wishTryAgain": "Ako želite da pokušate ponovo, ispit će biti dostupan za 24 časa.",
-      "yesSubmit": "Da, potvrdi"
+      "yesSubmit": "Da, potvrdi",
+      "reviewTest": "Ocena"
     },
     "explorer": {
       "buildPath": "Izgradite svoj put \"niz zečju rupu\"",
@@ -814,7 +815,8 @@
       "viewScoreSummary": "Pregledajte rezime ocena",
       "wellDoneCompleting": "Svaka čast na završetku i prođenom kursu!\nOvo je Vaša zaslužena diploma",
       "yourProject": "Vaš projekat",
-      "yourProjectAssignment": "Vaš projektni zadatak"
+      "yourProjectAssignment": "Vaš projektni zadatak",
+      "assignmentNotAccessible": "Zadatak je već započet i više nije dostupan."
     },
     "courses": "Kursevi",
     "credentials": {
@@ -931,20 +933,21 @@
         "announcementsUpcomingDescription": "Ovde su buduća obaveštenja koje ste napisali i zakazali.",
         "assignment": "Zadatak",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertDescription2": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Nakon što su sve ocene unete, kliknite na \"Objavi sve ocene\" da biste ih sve odjednom objavili.\nMolimo vas da prethodno proverite ocene, jer više neće biti moguće izmeniti ih nakon što su objavljene. ",
+          "alertDescription2": "Ocene zadatka moraju biti objavljene pre 22. juna u ponoć (CET).",
+          "alertTitle": "Ocenjivanje zadatka",
+          "confirmPublication": "Potvrdite objavljivanje",
+          "confirmPublicationDescription": "Nakon objavljivanja ocena, nema povratka jer više neće biti moguće menjati ih.",
+          "confirmPublicationTitle": "Da li ste proverili da nema grešaka?",
+          "description": "Studenti su podeljeni po grupama zadatka.",
+          "grade100": "Ocena (/100)",
+          "gradesPublished": "Ocene su objavljene.",
+          "missingGradesDescription": "Ako su ocene objavljene, one koje nedostaju biće zamenjene sa 0/100.",
+          "missingGradesTitle": "Još uvek nedostaje {{count}} ocena!",
+          "publishAllGrades": "Objavi sve ocene",
+          "studentDisplayName": "Student (ime za prikaz)",
+          "title": "Ocene zadatka",
+          "courseAssignment": "Zadatak na kursu"
         },
         "assignmentStudents": "Projektni zadatak",
         "courseDetails": "Detalji kursa",
@@ -968,7 +971,9 @@
         "reviews": "Recenzije",
         "selectCourse": "Izaberite kurs",
         "summerStudents": "Letnja škola",
-        "writeAnnouncement": "Napišite obaveštenje"
+        "writeAnnouncement": "Napišite obaveštenje",
+        "averageAttempts": "Prosečni pokušaji",
+        "averageDuration": "Prosečno trajanje"
       },
       "menu": "Meni za Nastavnika",
       "profile": {
