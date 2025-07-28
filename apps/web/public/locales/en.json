@@ -1588,6 +1588,7 @@
     "dashboardDescription": "Here are your latest notifications. They are automatically removed one month after you’ve seen them.",
     "daysAgo": "{{days}} days ago",
     "hoursAgo": "{{hours}} hours ago",
+    "newVersionAvailable": "A new version of the Plan ₿ Network platform is available. Please refresh the page to update.",
     "markAsRead": "Mark as read",
     "monthsAgo": "{{months}} month{{s}} ago",
     "noRecentNotifications": "You have no recent notifications at the moment.",
