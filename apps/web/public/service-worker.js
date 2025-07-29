@@ -1,4 +1,4 @@
-const VERSION = '002';
+const VERSION = 'commithash';
 
 self.addEventListener('install', (_event) => {
   self.skipWaiting();
