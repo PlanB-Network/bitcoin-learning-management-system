@@ -40,11 +40,13 @@ interface TranslationRequest {
 interface TranslationRequestsTableProps {
   status: 'requested' | 'rejected';
   searchQuery?: string;
+  onPendingCountChange?: (count: number) => void;
 }
 
 export const TranslationRequestsTable = ({
   status,
   searchQuery = '',
+  onPendingCountChange,
 }: TranslationRequestsTableProps) => {
   const { t } = useTranslation();
   const [processingRequests, setProcessingRequests] = useState<Set<string>>(
@@ -85,9 +87,17 @@ export const TranslationRequestsTable = ({
           },
         );
       setRequests((data || []) as TranslationRequest[]);
+
+      // Notify parent about pending count when in requested status
+      if (status === 'requested') {
+        onPendingCountChange?.(data?.length ?? 0);
+      }
     } catch (error) {
       console.error('Error fetching translation requests:', error);
       setRequests([]);
+      if (status === 'requested') {
+        onPendingCountChange?.(0);
+      }
     } finally {
       setIsLoading(false);
     }

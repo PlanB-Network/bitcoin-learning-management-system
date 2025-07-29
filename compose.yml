@@ -61,6 +61,10 @@ services:
       POSTGRES_HOST: postgres
       TYPESENSE_NODES: http://typesense:8108
       ONLYOFFICE_URL: ${ONLYOFFICE_URL:-http://onlyoffice}
+      LT_BASE_URL: http://localhost:8000
+      LT_CLIENT_ID: none
+      LT_CLIENT_SEC: none
+      ALLOWED_DOWNLOAD_HOSTNAMES: workspace.planb.network
     volumes:
       - ./apps/api:/home/node/apps/api
       - /home/node/apps/api/node_modules/
@@ -156,10 +160,6 @@ services:
       - ONLYOFFICE_TIMEOUT_CONVERSION=120000
       - ONLYOFFICE_MAX_FILE_SIZE=104857600
       - ONLYOFFICE_MAX_TEMPLATE_SIZE=104857600
-      - LT_BASE_URL=http://localhost:8000
-      - LT_CLIENT_ID=none
-      - LT_CLIENT_SEC=none
-      - ALLOWED_DOWNLOAD_HOSTNAMES=workspace.planb.network
 
     extra_hosts:
       - "host.docker.internal:host-gateway"

@@ -61,9 +61,26 @@ export const ContributorAssignmentModal = ({
   // Fetch languages when modal opens
   const fetchLanguages = async () => {
     try {
-      const response =
-        await trpcClient.user.translation.getAvailableLanguages.query();
-      setLanguages(response);
+      // Fetch full language list and courses with TODO translations in parallel
+      const [allLanguages, todoCourses] = await Promise.all([
+        trpcClient.user.translation.getAvailableLanguages.query(),
+        trpcClient.content.getCoursesWithTodoTranslations.query(),
+      ]);
+
+      // Build a unique set of language codes that still have 'todo' translations
+      const todoLanguageSet = new Set<string>();
+      (todoCourses || []).forEach((course: any) => {
+        (course.todoLanguages || []).forEach((code: string) =>
+          todoLanguageSet.add(code),
+        );
+      });
+
+      // Keep only languages present in the TODO set
+      const filteredLanguages = (allLanguages || []).filter((lang: any) =>
+        todoLanguageSet.has(lang.code),
+      );
+
+      setLanguages(filteredLanguages);
     } catch (error) {
       console.error('Error fetching languages:', error);
       setErrorMessage('Failed to fetch languages');

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BookIcon from '#src/assets/translation/book.svg';
 import TranslateIcon from '#src/assets/translation/translate.svg';
+import { SubTabsSwitch } from '#src/components/ui/sub-tabs-switch.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 import { ContributorsSubTab } from './contributors-sub-tab.tsx';
 import { CoursesSubTab } from './courses-sub-tab.tsx';
@@ -157,41 +158,33 @@ export const ReportsTab = () => {
       </div>
 
       {/* Sub tabs */}
-      <div className="flex w-fit mb-6 bg-gray-100 p-1 rounded-md">
-        <button
-          type="button"
-          onClick={() => setSubTab('contributors')}
-          className={`px-4 py-2 text-sm font-medium rounded transition-colors ${
-            subTab === 'contributors'
-              ? 'bg-orange-500 text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          {t('dashboard.adminPanel.translationPanel.reports.tabs.contributors')}
-        </button>
-        <button
-          type="button"
-          onClick={() => setSubTab('courses')}
-          className={`px-4 py-2 text-sm font-medium rounded transition-colors ${
-            subTab === 'courses'
-              ? 'bg-orange-500 text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          {t('dashboard.adminPanel.translationPanel.reports.tabs.courses')}
-        </button>
-        <button
-          type="button"
-          onClick={() => setSubTab('coverage')}
-          className={`px-4 py-2 text-sm font-medium rounded transition-colors ${
-            subTab === 'coverage'
-              ? 'bg-orange-500 text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          {t('dashboard.adminPanel.translationPanel.reports.tabs.coverage')}
-        </button>
-      </div>
+      <SubTabsSwitch
+        tabs={[
+          {
+            id: 'contributors',
+            label: t(
+              'dashboard.adminPanel.translationPanel.reports.tabs.contributors',
+            ),
+          },
+          {
+            id: 'courses',
+            label: t(
+              'dashboard.adminPanel.translationPanel.reports.tabs.courses',
+            ),
+          },
+          {
+            id: 'coverage',
+            label: t(
+              'dashboard.adminPanel.translationPanel.reports.tabs.coverage',
+            ),
+          },
+        ]}
+        activeTab={subTab}
+        onChange={(id) =>
+          setSubTab(id as 'contributors' | 'courses' | 'coverage')
+        }
+        className="mb-6"
+      />
 
       {/* Contributors sub-tab */}
       {subTab === 'contributors' && (

@@ -178,6 +178,7 @@ export const UserManagementTab = () => {
             {t('dashboard.adminPanel.translationPanel.userManagement.title')}
           </h2>
           <Button
+            size="s"
             onClick={() => setIsModalOpen(true)}
             className="bg-orange-500 hover:bg-orange-600 text-white flex items-center gap-2"
           >
@@ -189,12 +190,6 @@ export const UserManagementTab = () => {
             <span className="text-lg">+</span>
           </Button>
         </div>
-
-        <p className="text-gray-600">
-          {t(
-            'dashboard.adminPanel.translationPanel.userManagement.description',
-          )}
-        </p>
 
         {/* Search */}
         <SearchBar
@@ -236,9 +231,11 @@ export const UserManagementTab = () => {
             onSort={() => handleSort('assignedCourses')}
             sortIcon={getSortIcon('assignedCourses')}
           >
-            {t(
-              'dashboard.adminPanel.translationPanel.userManagement.table.assignedCourses',
-            )}
+            <span className="whitespace-nowrap">
+              {t(
+                'dashboard.adminPanel.translationPanel.userManagement.table.assignedCourses',
+              )}
+            </span>
           </SharedTableHead>
           <SharedTableHead
             className="w-56"

@@ -14,7 +14,7 @@ export const CourseStatusBadge: React.FC<CourseStatusBadgeProps> = ({
 }) => {
   return (
     <span
-      className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md ${getStatusBadgeClass(
+      className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md whitespace-nowrap ${getStatusBadgeClass(
         status,
       )} ${className}`}
     >

@@ -1,4 +1,4 @@
-import { AssignmentStatus, UserRole } from '@blms/constants';
+import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared/auth';
 import { Loader, TabsContent } from '@blms/ui';
 import {
@@ -7,17 +7,13 @@ import {
   useLocation,
   useNavigate,
 } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { SearchBar } from '#src/components/ui/search-bar.tsx';
-import { ToggleSwitch } from '#src/components/ui/toggle-switch.tsx';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '#src/providers/context.js';
 import { ContentManagementTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/content-management-tab.tsx';
 import { TranslateTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/translate-tab.tsx';
 import { TranslationPanelHeader } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-panel-header.tsx';
-import { trpcClient } from '#src/utils/trpc.js';
 import { ReportsTab } from './-components/reports-tab.tsx';
-import { TranslationRequestsTable } from './-components/translation-requests-table.tsx';
+import { RequestsTab } from './-components/requests-tab.tsx';
 import { UserManagementTab } from './-components/user-management-tab.tsx';
 
 export const Route = createFileRoute(
@@ -27,7 +23,6 @@ export const Route = createFileRoute(
 });
 
 function DashboardAdministrationTranslationPanel() {
-  const { t } = useTranslation();
   const { user } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,29 +35,7 @@ function DashboardAdministrationTranslationPanel() {
   // Get current tab from URL search params or default to 'requests'
   const currentTab = (location.search as any)?.tab || 'requests';
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showRejectedRequests, setShowRejectedRequests] = useState(false);
-  const [pendingCount, setPendingCount] = useState<number>(0);
-
-  // Fetch number of pending requests
-  const fetchPendingCount = async () => {
-    try {
-      const data =
-        await trpcClient.user.translation.getTranslationAssignmentRequests.query(
-          {
-            status: AssignmentStatus.Requested,
-          },
-        );
-      setPendingCount(data?.length ?? 0);
-    } catch (err) {
-      console.error('[TranslationPanel] Failed fetching pending count', err);
-      setPendingCount(0);
-    }
-  };
-
-  useEffect(() => {
-    fetchPendingCount();
-  }, []);
+  // RequestsTab handles its own state and data fetching
 
   // Redirect if user doesn't have access
   useEffect(() => {
@@ -88,53 +61,8 @@ function DashboardAdministrationTranslationPanel() {
     <div className="flex flex-col gap-6 lg:gap-8">
       <TranslationPanelHeader activeTab={currentTab}>
         {/* Requests Tab */}
-        <TabsContent value="requests" className="space-y-6 mt-6">
-          <div className="space-y-6">
-            {/* Section Header with Badge */}
-            <div className="flex items-center gap-3">
-              <h2 className="title-large-sb-24px text-dashboardSectionTitle">
-                {t(
-                  'dashboard.adminPanel.translationPanel.pendingTranslationRequests',
-                )}
-              </h2>
-              {pendingCount > 0 && (
-                <span className="inline-flex items-center justify-center bg-maroon-9 text-white text-sm font-semibold px-2.5 py-0.5 rounded-full min-w-[1rem] h-5">
-                  {pendingCount}
-                </span>
-              )}
-            </div>
-
-            {/* Toggle Switch */}
-            <div className="flex items-center">
-              <ToggleSwitch
-                checked={showRejectedRequests}
-                onChange={setShowRejectedRequests}
-                leftLabel={t(
-                  'dashboard.adminPanel.translationPanel.toggle.pendingRequest',
-                )}
-                rightLabel={t(
-                  'dashboard.adminPanel.translationPanel.toggle.rejectedRequests',
-                )}
-                className="w-fit"
-              />
-            </div>
-
-            {/* Search Bar */}
-            <SearchBar
-              value={searchQuery}
-              onChange={setSearchQuery}
-              placeholder={t(
-                'dashboard.adminPanel.translationPanel.searchPlaceholder',
-              )}
-              className="max-w-lg"
-            />
-
-            {/* Requests Table */}
-            <TranslationRequestsTable
-              status={showRejectedRequests ? 'rejected' : 'requested'}
-              searchQuery={searchQuery}
-            />
-          </div>
+        <TabsContent value="requests" className="mt-6">
+          <RequestsTab />
         </TabsContent>
 
         {/* Content Management Tab */}
