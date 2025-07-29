@@ -185,3 +185,5 @@ export const CommunitiesMap = ({ communities }: CommunitiesMapProps) => {
     />
   );
 };
+
+export default CommunitiesMap;

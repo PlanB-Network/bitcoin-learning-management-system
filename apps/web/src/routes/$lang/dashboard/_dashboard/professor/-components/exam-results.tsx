@@ -24,7 +24,6 @@ import {
   TbFileTypeXls,
   TbWeight,
 } from 'react-icons/tb';
-import XLSX from 'xlsx';
 
 import { formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -311,8 +310,8 @@ const FinalResultsSummary = ({
       </div>
       {teacherLedCourseGradesAndSummary && (
         <button
-          onClick={() =>
-            downloadConsolidatedGrades(
+          onClick={async () =>
+            await downloadConsolidatedGrades(
               teacherLedCourseGradesAndSummary,
               singleTrialExams,
               hasAssignment,
@@ -447,10 +446,10 @@ const ExamCard = ({
           (examGrades && examGrades.length > 0)) &&
           areResultsPublished && (
             <button
-              onClick={() =>
+              onClick={async () =>
                 assignmentGrades.length > 0
-                  ? downloadAssignmentGrades(assignmentGrades)
-                  : downloadExamGrades(
+                  ? await downloadAssignmentGrades(assignmentGrades)
+                  : await downloadExamGrades(
                       examGrades,
                       name,
                       (type === 'single-trial'
@@ -719,9 +718,11 @@ const calculateAverageAttemptsPerUser = (
   return totalAttempts / usernames.length;
 };
 
-const downloadAssignmentGrades = (
+const downloadAssignmentGrades = async (
   assignmentGrades: MinimalAssignmentGrade[],
 ) => {
+  const XLSX = await import('xlsx');
+
   const rows = assignmentGrades
     .filter((grade) => grade.assignmentGrade !== null && grade.username)
     .map((grade) => ({
@@ -746,13 +747,15 @@ const downloadAssignmentGrades = (
   XLSX.writeFile(workbook, 'assignment_grades.xlsx', { compression: true });
 };
 
-const downloadExamGrades = (
+const downloadExamGrades = async (
   examGrades: MinimalCourseExamAttemptWithUsername[],
   examName: string,
   totalQuestions: number,
   questionsStatistics: ExamQuestionStatistics[] = [],
   isMultiAttempts = false,
 ) => {
+  const XLSX = await import('xlsx');
+
   const gradesRows = examGrades
     .filter((grade) => grade.username && grade.score !== null)
     .map((grade) => {
@@ -874,13 +877,15 @@ const downloadExamGrades = (
   });
 };
 
-const downloadConsolidatedGrades = (
+const downloadConsolidatedGrades = async (
   teacherLedCourseGradesAndSummary: CourseWithSingleTrialExamsGradesAndSummary,
   singleTrialExams: JoinedCourseChapter[],
   hasAssignment: boolean,
   assignmentWeight: number,
   courseName: string,
 ) => {
+  const XLSX = await import('xlsx');
+
   const allUsernames = new Set<string>();
 
   if (teacherLedCourseGradesAndSummary?.examsGrades) {

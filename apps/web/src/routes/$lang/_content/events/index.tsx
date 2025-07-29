@@ -2,7 +2,7 @@ import type { JoinedEvent } from '@blms/types';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import React, { Suspense, useContext, useEffect, useState } from 'react';
+import { lazy, Suspense, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
@@ -18,7 +18,9 @@ import { EventPaymentModal } from './-components/event-payment-modal.tsx';
 import { EventsGrid } from './-components/events-grid.tsx';
 import { EventsPassed } from './-components/events-passed.tsx';
 
-const EventsMap = React.lazy(() => import('./-components/events-map.tsx'));
+const EventsMap = lazy(
+  () => import('#src/routes/$lang/_content/events/-components/events-map.tsx'),
+);
 
 export const Route = createFileRoute('/$lang/_content/events/')({
   component: Events,
