@@ -33,13 +33,16 @@ root.render(
   </StrictMode>,
 );
 
-let refreshing = false;
-
 // The event listener that is fired when the service worker updates
-navigator.serviceWorker.addEventListener('controllerchange', () => {
-  if (refreshing) return;
-  window.location.reload();
-  refreshing = true;
+navigator.serviceWorker.addEventListener('controllerchange', (e) => {
+  customToast(t('notifications.newVersionAvailable'), {
+    color: 'primary',
+    time: 10000,
+    closeButton: false,
+    onClick: () => {
+      window.location.reload();
+    },
+  });
 });
 
 if ('serviceWorker' in navigator) {
@@ -47,25 +50,9 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register('/service-worker.js')
       .then((registration) => {
-        registration.onupdatefound = () => {
-          const installingWorker = registration.installing;
-          if (installingWorker) {
-            installingWorker.onstatechange = () => {
-              if (installingWorker.state === 'installed') {
-                if (navigator.serviceWorker.controller) {
-                  customToast(t('notifications.newVersionAvailable'), {
-                    color: 'primary',
-                    time: 5000,
-                    closeButton: false,
-                    onClick: () => {
-                      installingWorker?.postMessage({ action: 'skipWaiting' });
-                    },
-                  });
-                }
-              }
-            };
-          }
-        };
+        setInterval(() => {
+          registration.update();
+        }, 10 * 1000);
       })
       .catch((error) =>
         console.error('Service Worker registration failed:', error),

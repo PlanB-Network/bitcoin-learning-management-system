@@ -1,4 +1,4 @@
-const VERSION = 'v2';
+const VERSION = '002';
 
 self.addEventListener('install', (_event) => {
   self.skipWaiting();
