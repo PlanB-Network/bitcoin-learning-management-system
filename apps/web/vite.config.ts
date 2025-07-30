@@ -2,6 +2,7 @@
 
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
+// import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -24,11 +25,18 @@ export default defineConfig({
       root: './',
     }),
     tanstackRouter({
-      // TODO: Enable when https://github.com/TanStack/router/issues/2317 is fixed
+      // If set to true, creates several issues with the router / i18n
       autoCodeSplitting: false,
       target: 'react',
     }),
     react(),
+
+    // Useful for analyzing bundle size
+    // visualizer({
+    //   filename: 'dist/stats.html',
+    //   open: true,
+    //   gzipSize: true,
+    // }),
   ],
 
   root: process.cwd(),

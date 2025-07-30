@@ -2,7 +2,8 @@ import type { CourseChapterResponse, JoinedQuizQuestion } from '@blms/types';
 import { Button, cn, Loader, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
-import React, {
+import {
+  lazy,
   memo,
   Suspense,
   useContext,
@@ -47,10 +48,6 @@ import { CourseExamWorkflow } from './$courseId/-components/course-exam/course-e
 import { CourseReviewComponent } from './$courseId/-components/course-review-component.tsx';
 import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam/single-trial-exam-workflow.tsx';
 
-const CoursesMarkdownBody = React.lazy(
-  () => import('#src/components/Markdown/courses-markdown-body.js'),
-);
-
 export const Route = createFileRoute(
   '/$lang/_content/courses/$courseId/$chapterName-$chapterId',
 )({
@@ -87,6 +84,10 @@ export const Route = createFileRoute(
     }),
   },
 });
+
+const CoursesMarkdownBody = lazy(
+  () => import('#src/components/Markdown/courses-markdown-body.tsx'),
+);
 
 const TimelineSmall = ({
   chapter,
@@ -346,14 +347,12 @@ const TimelineBig = ({
 
 const Header = ({ chapter }: { chapter: CourseChapterResponse }) => {
   return (
-    <>
-      <div>
-        <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
-          {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
-        </h2>
-        <div className="h-px bg-newGray-4 mt-2.5 max-sm:hidden" />
-      </div>
-    </>
+    <div>
+      <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
+        {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
+      </h2>
+      <div className="h-px bg-newGray-4 mt-2.5 max-sm:hidden" />
+    </div>
   );
 };
 

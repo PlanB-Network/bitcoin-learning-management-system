@@ -1,12 +1,11 @@
 import { Button, cn, Loader } from '@blms/ui';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { Suspense, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import SearchErrorIcon from '#src/assets/icons/search-error.svg';
-import GlossaryMarkdownBody from '#src/components/Markdown/glossary-markdown-body.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
@@ -21,6 +20,10 @@ import { SearchResult } from './-components/search-result.tsx';
 export const Route = createFileRoute('/$lang/_content/search/')({
   component: SearchPage,
 });
+
+const GlossaryMarkdownBody = lazy(
+  () => import('#src/components/Markdown/glossary-markdown-body.tsx'),
+);
 
 function SearchPage() {
   const { t, i18n } = useTranslation();

@@ -3,15 +3,18 @@ import {
   Button,
   CollapsibleDropdown,
   Loader,
-  RatingChart,
   Slider,
   StarRating,
   TextTag,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { trpc } from '#src/utils/trpc.ts';
+
+const RatingChart = lazy(() =>
+  import('@blms/ui').then((module) => ({ default: module.RatingChart })),
+);
 
 export const CourseReview = ({ courseId }: { courseId: string }) => {
   const { data: reviews, isFetched } = useQuery(
@@ -232,7 +235,9 @@ const SliderGradeSection = ({
         className="mt-10"
       >
         <div className="px-5 pt-5 pb-8">
-          <RatingChart chartData={chartData} />
+          <Suspense fallback={<Loader size="s" />}>
+            <RatingChart chartData={chartData} />
+          </Suspense>
         </div>
       </CollapsibleDropdown>
       <div className="h-px bg-newGray-4 w-full px-5 my-4" />
@@ -341,7 +346,9 @@ const GeneralGradeSection = ({ ratings }: { ratings: number[] }) => {
         className="mt-2.5 lg:mt-1.5 max-w-[464px]"
       >
         <div className="px-5 pt-5 pb-8">
-          <RatingChart chartData={chartData} />
+          <Suspense fallback={<Loader size="s" />}>
+            <RatingChart chartData={chartData} />
+          </Suspense>
         </div>
       </CollapsibleDropdown>
       <div className="h-px bg-newGray-4 w-full max-w-[416px] px-5 my-10 lg:mt-4" />

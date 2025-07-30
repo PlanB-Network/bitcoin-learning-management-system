@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TbArrowsSort } from 'react-icons/tb';
-import XLSX from 'xlsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -62,7 +61,9 @@ function AdminCareers() {
     setSortedCareerProfiles(sortedProfiles);
   };
 
-  const downloadCareerProfiles = (profiles: JoinedCareerProfile[]) => {
+  const downloadCareerProfiles = async (profiles: JoinedCareerProfile[]) => {
+    const XLSX = await import('xlsx');
+
     if (!profiles || profiles.length === 0) return;
 
     const data = profiles.map((profile) => {
@@ -193,8 +194,8 @@ function AdminCareers() {
                 variant="primary"
                 size="m"
                 className="w-fit"
-                onClick={() => {
-                  downloadCareerProfiles(careerProfiles || []);
+                onClick={async () => {
+                  await downloadCareerProfiles(careerProfiles || []);
                 }}
               >
                 {t('dashboard.adminPanel.careers.downloadSpreadsheet')}

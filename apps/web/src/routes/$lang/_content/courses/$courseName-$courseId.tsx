@@ -17,6 +17,7 @@ import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { last } from 'lodash-es';
 import React, {
   type JSX,
+  lazy,
   memo,
   Suspense,
   useContext,
@@ -35,7 +36,6 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
-import PresentationMarkdownBody from '#src/components/Markdown/presentation-markdown-body.tsx';
 import { LinkRenderer } from '#src/components/Markdown/Renderers/link-renderer.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
@@ -52,6 +52,10 @@ import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
+
+const PresentationMarkdownBody = lazy(
+  () => import('#src/components/Markdown/presentation-markdown-body.tsx'),
+);
 
 export const Route = createFileRoute(
   '/$lang/_content/courses/$courseName-$courseId',

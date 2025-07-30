@@ -1,16 +1,21 @@
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageLayout } from '#src/components/page-layout.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { ProjectCard } from '../resources/-components/cards/project-card.js';
-import { CommunitiesMap } from './-components/communities-map.tsx';
 
 export const Route = createFileRoute('/$lang/_content/_misc/node-network')({
   component: NodeNetwork,
 });
+
+const CommunitiesMap = lazy(
+  () =>
+    import('#src/routes/$lang/_content/_misc/-components/communities-map.tsx'),
+);
 
 const normalizeText = (text: string): string => {
   return text
@@ -71,7 +76,9 @@ function NodeNetwork() {
         </p>
 
         <div className="w-full  mt-10">
-          <CommunitiesMap communities={filteredCommunities} />
+          <Suspense fallback={<Loader size={'s'} />}>
+            <CommunitiesMap communities={filteredCommunities} />
+          </Suspense>
         </div>
 
         <div>

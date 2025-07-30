@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
 import lostRabbit from '#src/assets/icons/404.svg';
 
 export function NotFoundDashboard() {
