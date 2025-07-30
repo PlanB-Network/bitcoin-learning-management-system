@@ -1265,7 +1265,8 @@
     "upcomingEvent": "Предстоящее событие",
     "weeksAgo": "{{weeks}} неделю{{с}} назад",
     "yearsAgo": "{{years}} год{{с}} назад",
-    "yesterday": "Вчера"
+    "yesterday": "Вчера",
+    "newVersionAvailable": "Доступна новая версия платформы Plan ₿ Сети. Пожалуйста, обновите страницу для обновления."
   },
   "payment": {
     "haveReductionCode": "У вас есть код снижения стоимости?",
@@ -1730,5 +1731,19 @@
     "pageTitle": "",
     "view": "",
     "watchTrailer": ""
+  },
+  "months": {
+    "april": "Апрель",
+    "march": "Март",
+    "august": "Август",
+    "december": "Декабрь",
+    "february": "Февраль",
+    "january": "Январь",
+    "july": "Июль",
+    "june": "Июнь",
+    "may": "Май",
+    "november": "Ноябрь",
+    "october": "Октябрь",
+    "september": "Сентябрь"
   }
 }

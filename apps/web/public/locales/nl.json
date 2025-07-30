@@ -522,7 +522,23 @@
       "upcomingBookings": "Aankomende boekingen",
       "type": "Type",
       "upcomingBookingsSubtitle": "Hier kun je de lijst met deelnemers voor alle fysieke evenementen downloaden.",
-      "userRolesAllocation": "Toewijzing van gebruikersrollen"
+      "userRolesAllocation": "Toewijzing van gebruikersrollen",
+      "translation": "Vertaalomgeving",
+      "translationPanel": {
+        "actions": {
+          "accept": "Accepteer",
+          "delete": "Verwijder",
+          "reject": "Afwijzen"
+        },
+        "addContributor": {
+          "addLanguage": "Voeg een andere taal toe",
+          "assign": "Toewijzen",
+          "assignedLanguages": "Reeds toegewezen talen",
+          "assigning": "Toewijzen...",
+          "title": "Bijdrager toevoegen"
+        },
+        "admin": "BEHEERDER"
+      }
     },
     "announcements": {
       "groups": {

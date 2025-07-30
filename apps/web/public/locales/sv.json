@@ -452,60 +452,60 @@
         "discountValuePlaceholder": "exempel: 20 för 20%",
         "downloadImage": "Ladda ner bild",
         "downloadImages": "Ladda ner bilder",
-        "explanation": "",
+        "explanation": "Generera och hantera rabattkoder för evenemang och kurser - antingen engångsanvändning för stipendier eller liknande fall, eller flergångsanvändning för marknadsföringskampanjer.",
         "filters": {
-          "all": "",
-          "courses": "",
-          "events": "",
-          "multiUse": "",
-          "singleUse": ""
+          "all": "Alla",
+          "courses": "Kurser",
+          "events": "Events",
+          "multiUse": "Multianvändning",
+          "singleUse": "För engångsbruk"
         },
-        "forWhat": "",
-        "forWhichCourse": "",
-        "forWhichEvent": "",
-        "generateCode": "",
-        "generateCodes": "",
-        "generateDiscountCode": "",
-        "generatedCode": "",
-        "generatedCodes": "",
-        "generateNew": "",
-        "generateNewCodes": "",
-        "maximumNumberOfUse": "",
+        "forWhat": "För vilken typ av produkt?",
+        "forWhichCourse": "För vilken kurs?",
+        "forWhichEvent": "För vilket event?",
+        "generateCode": "Generera kod",
+        "generateCodes": "Generera koder",
+        "generateDiscountCode": "Generera en rabattkod",
+        "generatedCode": "Genererad kod",
+        "generatedCodes": "Genererade koder",
+        "generateNew": "Generera ny kod",
+        "generateNewCodes": "Generera nya koder",
+        "maximumNumberOfUse": "Maximalt antal användningar",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "A-ö",
+          "highLow": "Hög - Låg",
+          "lowHigh": "Låg - Hög",
+          "sortBy": "Sortera efter",
+          "za": "ö-A"
         },
-        "noCouponsFound": "",
-        "numberOfCodes": "",
-        "numberOfCodesPlaceholder": "",
-        "productCourse": "",
-        "productEvent": "",
-        "selectCourse": "",
-        "selectEvent": "",
+        "noCouponsFound": "Inga kuponger hittades.",
+        "numberOfCodes": "Hur många koder vill du generera?",
+        "numberOfCodesPlaceholder": "skriv ett nummer",
+        "productCourse": "Kurs",
+        "productEvent": "Event",
+        "selectCourse": "Välj kurs",
+        "selectEvent": "Välj event",
         "tableHead": {
-          "actions": "",
-          "code": "",
-          "discount": "",
-          "maxUses": "",
-          "name": "",
-          "owner": "",
-          "total": "",
-          "type": "",
-          "uses": "",
-          "value": ""
+          "actions": "Åtgärder",
+          "code": "Kod",
+          "discount": "Rabatt",
+          "maxUses": "Max. användningar",
+          "name": "Namn",
+          "owner": "Ägare",
+          "total": "Totalt",
+          "type": "Typ",
+          "uses": "Använd",
+          "value": "Värde"
         }
       },
-      "coursesIndexes": "",
+      "coursesIndexes": "Kursindexer",
       "date": "Datum",
-      "deleteRole": "",
-      "discountCodes": "",
+      "deleteRole": "Ta bort roll",
+      "discountCodes": "Rabattkoder",
       "downloadList": "Ladda ner lista",
-      "editRole": "",
+      "editRole": "Redigera roll",
       "githubLink": "Github-länk",
-      "hasAccessTo": "",
+      "hasAccessTo": "Har tillgång till:",
       "listOfParticipants": "Deltagarlista",
       "makeProfessor": "Gör till lärare",
       "nameOfEvent": "Namn på event",
@@ -515,23 +515,320 @@
       "searchByNameOrCategory": "Sök per namn eller kategori",
       "seeOrEdit": "Visa eller redigera",
       "selectProfessor": "Välj lärare",
-      "selectRole": "",
+      "selectRole": "Välj roll",
       "tutorialAnalytics": "Analys av tutorials",
       "tutorialAnalyticsDescription": "Här kan du se och jämföra alla tutorials på plattformen.",
       "tutorialsManagementPanel": "Panel för hantering av tutorials",
       "type": "Typ",
       "upcomingBookings": "Kommande bokningar",
       "upcomingBookingsSubtitle": "Här kan du ladda ner listan över deltagare för alla fysiska events.",
-      "userRolesAllocation": "Tilldelning av användarroller"
+      "userRolesAllocation": "Tilldelning av användarroller",
+      "translationPanel": {
+        "actions": {
+          "delete": "Radera",
+          "accept": "Acceptera",
+          "reject": "Avvisa"
+        },
+        "addContributor": {
+          "addLanguage": "Lägg till ett annat språk",
+          "assign": "Tilldela",
+          "assignedLanguages": "Redan tilldelade språk",
+          "assigning": "Tilldelar...",
+          "assignmentSuccess": "Bidragsgivare tilldelade framgångsrikt!",
+          "confirm": "Bekräfta",
+          "findContributor": "Hitta en bidragsgivare",
+          "language": "Språk",
+          "noUsers": "Inga användare tillgängliga",
+          "selectLanguage": "Välj ett språk",
+          "title": "Lägg till bidragsgivare",
+          "searchUsers": "Sök användare...",
+          "selectedUsers": "Valda användare:"
+        },
+        "admin": "ADMINISTRATÖR",
+        "comingSoon": {
+          "courses": "Kursvy kommer snart",
+          "userManagement": "Användarhanteringsfunktion kommer snart...",
+          "coverage": "Språktäckningsvy kommer snart"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Tilldela",
+            "backToContentManagement": "Tillbaka till innehållshantering",
+            "reassign": "Omtilldela",
+            "view": "Visa"
+          },
+          "assignModal": {
+            "assign": "Tilldela",
+            "assigning": "Tilldelar...",
+            "assigningCourse": "Tilldelar kurs:",
+            "cancel": "Avbryt",
+            "chooseContributor": "Välj en bidragsgivare...",
+            "courseInfo": "Kursinformation",
+            "selectContributor": "Välj bidragsgivare",
+            "title": "Tilldela kurs till bidragsgivare",
+            "assignmentSuccess": "Kursen tilldelades framgångsrikt!"
+          },
+          "noCourses": "Inga kurser tillgängliga för översättningshantering",
+          "noCoursesFiltered": "Inga kurser hittades som matchar dina filter",
+          "reassignModal": {
+            "cancel": "Avbryt",
+            "courseInfo": "Kursinformation",
+            "currentlyAssignedTo": "För närvarande tilldelad till:",
+            "reassign": "Omtilldela",
+            "reassigning": "Omtilldelar...",
+            "reassigningCourse": "Omtilldelning av kurs:",
+            "reassignmentSuccess": "Kursen omtilldelades framgångsrikt!",
+            "selectNewContributor": "Välj ny bidragsgivare",
+            "title": "Omtilldela kurs till ny bidragsgivare",
+            "warning": {
+              "description": "Kapitel och delar som redan har granskats kommer att behålla sin granskade status och kommer inte att omfördelas.",
+              "title": "Viktig notering"
+            },
+            "chooseNewContributor": "Välj en ny bidragsgivare..."
+          },
+          "status": {
+            "assigned": "Tilldelad",
+            "notAssigned": "Ej tilldelad",
+            "underReview": "Under granskning",
+            "readyForReview": "Redo för granskning"
+          },
+          "table": {
+            "actions": "Åtgärder",
+            "contributor": "Bidragsgivare",
+            "course": "Kurs",
+            "index": "Index",
+            "language": "Språk",
+            "progress": "Framsteg",
+            "status": "Status"
+          },
+          "title": "Innehållshantering",
+          "description": "Tilldela och hantera kursöversättningar till bidragsgivare",
+          "notAssigned": "Ej tilldelad"
+        },
+        "courseDetails": {
+          "actions": "Åtgärder",
+          "chapterIndex": "Kapitel",
+          "chaptersAndProgress": "Kapitel och framsteg",
+          "chaptersCompleted": "kapitel slutförda",
+          "chapterTitle": "Titel",
+          "courseIndex": "Kursindex",
+          "courseInformation": "Kursinformation",
+          "errorLoadingDetails": "Fel vid inläsning av kursdetaljer",
+          "language": "Språk",
+          "noChapters": "Inga kapitel hittades för denna kurs",
+          "progress": "Framsteg",
+          "status": "Status",
+          "translationStatus": "Översättningsstatus",
+          "courseName": "Kursnamn",
+          "currentContributor": "Aktuell bidragsgivare",
+          "assignedTo": "Tilldelad till",
+          "noContributor": "Ingen bidragsgivare tilldelad",
+          "partTitle": "Del {{index}}: {{title}}"
+        },
+        "courseNotFound": "Kursen hittades inte",
+        "messages": {
+          "noPendingRequests": "Inga väntande översättningsförfrågningar hittades.",
+          "noPendingRequestsSearch": "Inga väntande översättningsförfrågningar hittades som matchar \"{{query}}\".",
+          "noRejectedRequests": "Inga avvisade översättningsförfrågningar hittades.",
+          "noRejectedRequestsSearch": "Inga avvisade översättningsförfrågningar hittades som matchar \"{{query}}\"."
+        },
+        "modal": {
+          "cancel": "Avbryt",
+          "close": "Stäng",
+          "contributor": "Bidragsgivare",
+          "course": "Kurs",
+          "doYouWantToAcceptRequest": "Vill du acceptera denna översättningsförfrågan?",
+          "language": "Språk",
+          "provideRejectionReason": "Vänligen ange en anledning till att du avvisar denna förfrågan",
+          "reasonForRejection": "Anledning till avslag",
+          "rejecting": "Avvisar...",
+          "requestAcceptedMessage": "Bidragsgivaren har meddelats och kan nu börja arbeta med översättningen.",
+          "requestAcceptedSuccess": "Du accepterade översättningsförfrågan!",
+          "requestRejectedSuccess": "Förfrågan avvisades",
+          "accepting": "Accepterar...",
+          "acceptRequest": "Godkänn förfrågan",
+          "acceptTranslationRequest": "Godkänn översättningsförfrågan",
+          "reasonPlaceholder": "Skriv din förklaring här...",
+          "submitRejection": "Skicka in"
+        },
+        "noResultsFound": "Inga resultat hittades",
+        "pendingTranslationRequests": "Väntande översättningsförfrågningar",
+        "reports": {
+          "comingSoon": {
+            "courses": "Kursvy kommer snart",
+            "coverage": "Språktäckningsvy kommer snart"
+          },
+          "contributors": {
+            "assignedCourses": "Tilldelade kurser",
+            "completedCourses": "Slutförda kurser",
+            "languages": "Språk",
+            "startDate": "Startdatum",
+            "title": "Bidragsgivare",
+            "totalReward": "Total belöning",
+            "username": "Användarnamn"
+          },
+          "courses": {
+            "contributor": "Bidragsgivare",
+            "filterByCourse": "Filtrera efter kurs",
+            "lastUpdated": "Senast uppdaterad",
+            "progress": "Framsteg %"
+          },
+          "dateFilter": "Datumfilter",
+          "downloadData": "Ladda ner data",
+          "fromMonth": "Från",
+          "fromMonthPlaceholder": "Från vilken månad?",
+          "generalReport": "Allmän rapport",
+          "languageCoverage": {
+            "completed": "Slutförd",
+            "notStarted": "Ej påbörjade",
+            "totalCourses": "Totala kurser",
+            "inProgress": "Pågående"
+          },
+          "languagesProofread": "Korrekturlästa språk",
+          "noContributors": "Inga bidragsgivare hittades",
+          "noCourses": "Inga kurser hittades",
+          "table": {
+            "contributor": "Bidragsgivare",
+            "lastUpdated": "Senast uppdaterad",
+            "progress": "Framsteg %"
+          },
+          "tabs": {
+            "contributors": "Bidragsgivare",
+            "courses": "Kurser",
+            "coverage": "Språktäckning"
+          },
+          "toMonth": "Till",
+          "toMonthPlaceholder": "Till vilken månad?",
+          "totalLanguages": "Totalt antal språk",
+          "year": "År",
+          "filterByLanguage": "Filtrera efter språk",
+          "noLanguages": "Inga språk hittades",
+          "proofreadCourses": "Korrekturlästa kurser",
+          "chooseYear": "Vilket år vill du överväga?"
+        },
+        "searchPlaceholder": "Sök...",
+        "status": {
+          "assigned": "Tilldelad",
+          "completed": "Slutförd",
+          "inProgress": "Pågående",
+          "readyForReview": "Redo för granskning",
+          "todo": "Att göra",
+          "underReview": "Under granskning"
+        },
+        "table": {
+          "actions": "Åtgärder",
+          "course": "Kurs",
+          "index": "Index",
+          "language": "Språk",
+          "username": "Användarnamn"
+        },
+        "tabs": {
+          "contentManagement": "Innehållshantering",
+          "reports": "Rapporter",
+          "requests": "Förfrågningar",
+          "translate": "Översätt",
+          "userManagement": "Användarhantering"
+        },
+        "title": "Admin översättningspanel",
+        "toggle": {
+          "pendingRequest": "Väntande förfrågan",
+          "rejectedRequests": "Avvisade förfrågningar"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Översätt"
+          },
+          "description": "Börja översätta för kurser som behöver översättas till specifika språk.",
+          "noCourses": "Inga kurser behöver översättning för tillfället.",
+          "selectLanguagesModal": {
+            "audioFile": "Ljudfil",
+            "audioFileInfo": "Format som stöds: MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Ljudfilen är för stor. Maximal storlek är 50MB.",
+            "cancel": "Avbryt",
+            "chooseAudioFile": "Välj ljudfil",
+            "chooseFolder": "Välj mapp",
+            "choosePptxFile": "Välj PPTX",
+            "chooseZip": "Välj ZIP",
+            "course": "Kurs:",
+            "folderUrl": "Mapp-URL",
+            "invalidAudioFile": "Vänligen välj en giltig ljudfil.",
+            "noAudioFileSelected": "Ingen ljudfil vald",
+            "noFolderSelected": "Ingen mapp vald",
+            "noPptxFileSelected": "Ingen PowerPoint-fil vald",
+            "noZipSelected": "Ingen ZIP vald",
+            "originalLanguage": "Ursprungsspråk:",
+            "overwriteWarning": "Befintliga filer kommer att ersättas.",
+            "pptxFile": "PowerPoint-fil",
+            "pptxFileTooLarge": "PowerPoint-filen är för stor. Maximal storlek är 100MB.",
+            "selectLanguages": "Välj språk att översätta:",
+            "startingTranslation": "Startar...",
+            "startSuccess": "Översättningen har startat!",
+            "startTranslation": "Börja översättning",
+            "title": "Välj språk att översätta",
+            "uploadFiles": "Ladda upp filer som stöds (valfritt)",
+            "uploadFolder": "Ladda upp mapp (PPTX + TXT)",
+            "existingUploadsInfo": "Originalfiler har redan laddats upp. Du kan börja översätta utan att ladda upp dem igen. Uppladdning av nya filer kommer att skriva över de befintliga.",
+            "missingFilesError": "Vänligen ladda upp översättningsfilerna eller ange en URL innan du startar översättningen.",
+            "invalidPptxFile": "Vänligen välj en giltig PowerPoint (.pptx) fil.",
+            "noLanguagesAvailable": "Inga språk tillgängliga för översättning.",
+            "pptxFileInfo": "Endast .pptx-filer stöds (Max 100MB)",
+            "useEnglishLabel": "Kursen har redan översatts till engelska. Använd den engelska versionen som källa?"
+          },
+          "table": {
+            "actions": "Åtgärder",
+            "course": "Kurs",
+            "index": "Index",
+            "todoLanguages": "Språk att översätta",
+            "totalLanguages": "Totalt antal språk"
+          },
+          "title": "Översätt kurser"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Tillbaka till användarlistan",
+            "backToUsers": "Tillbaka till användare",
+            "viewDetails": "Visa detaljer"
+          },
+          "addContributor": "Lägg till bidragsgivare",
+          "chapters": "Kapitel",
+          "contributorInformation": "Information om bidragsgivare",
+          "courses": "Kurser",
+          "modal": {
+            "assignments": "Uppdragshistorik",
+            "noAssignments": "Inga uppdrag hittades",
+            "title": "Användaruppgifter",
+            "userInfo": "Användarinformation"
+          },
+          "noUsers": "Inga bidragsgivare hittades",
+          "status": {
+            "published": "Publicerad",
+            "readyForReview": "Redo för granskning",
+            "rejected": "Avvisad",
+            "reviewed": "Granskad",
+            "todo": "Att göra",
+            "underReview": "Under granskning"
+          },
+          "table": {
+            "actions": "Åtgärd",
+            "assignedCourses": "Tilldelade kurser",
+            "language": "Språk",
+            "username": "Användarnamn",
+            "startDate": "Startdatum"
+          },
+          "title": "Användarhantering",
+          "description": "Hantera bidragsgivare och deras översättningsuppdrag"
+        }
+      },
+      "translation": "Översättningspanel"
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "Studenter valda för projektuppgiften",
+        "all": "Alla registrerade studenter",
+        "summer": "Studenter utvalda för sommarskolan"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "Välj ett datum",
+      "publicationDate": "Publiceringsdatum"
     },
     "backToDashboard": "Tillbaka till kontrollpanelen",
     "bCert": {
@@ -542,11 +839,11 @@
       "accessLive": "Tillgång till det livesända provet",
       "billingSubtitle": "Ladda ner fakturorna från dina bokningar här.",
       "billingTitle": "Betalningshistorik",
-      "cancelBookingTitle": "",
+      "cancelBookingTitle": "Är du säker på att du vill avboka denna bokning?",
       "invoiceDate": "Datum",
       "invoiceTitle": "Titel",
       "invoiceType": "Typ",
-      "noGoBack": "",
+      "noGoBack": "Nej, gå tillbaka",
       "noInvoice": "Du har för närvarande inga fakturor.",
       "noTicket": "Du har för närvarande inga biljetter.",
       "pastTicketTitle": "Tidigare bokningar",
@@ -556,13 +853,13 @@
       "ticketType": "Typ",
       "upcomingTicketSubtitle": "Ladda ner din biljett här för att delta på ditt kommande event. Kom ihåg att ta med den för inträde.",
       "upcomingTicketTitle": "Kommande bokningar",
-      "yesCancel": ""
+      "yesCancel": "Ja, avbryt"
     },
     "calendar": {
       "calendar": "Kalender",
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "Klasser",
+        "event": "Events"
       },
       "personalCalendar": "Personlig kalender"
     },
@@ -571,8 +868,8 @@
       "acceptTermsAndConditions": "Jag har läst och jag accepterar de allmänna villkoren",
       "add": "Lägg till",
       "allowReceivingEmails": "Jag godkänner att ta emot e-post från Plan ₿ Network om potentiella jobbmöjligheter",
-      "applicationComplete": "",
-      "applicationIncomplete": "",
+      "applicationComplete": "Din ansökan är <highlight>slutförd</highlight>",
+      "applicationIncomplete": "Din ansökan är <highlight>ofullständig</highlight>",
       "applicationSaved": "Din ansökan är sparad!",
       "availability": "Din tillgänglighet",
       "availabilityStart": "När kan du börja?",
@@ -587,7 +884,7 @@
       "bitcoinRelatedExperience": "Erfarenhet relaterad till Bitcoin",
       "bitcoinRelatedExperienceSubtitle": "Vänligen dela lite information om ditt engagemang inom Bitcoin-initiativ.",
       "cannotUndo": "Denna åtgärd kan inte ångras.",
-      "chooseFile": "",
+      "chooseFile": "Välj fil",
       "companySizePreference": "Vilken företagsstorlek föredrar du?",
       "companySizePreferenceSubLabel": "Du kan välja flera svar.",
       "companySizeRequired": "Välj minst en företagsstorlek.",
@@ -697,7 +994,7 @@
       "legalInformation": "Juridisk information",
       "legalInformationSubtitle": "Vänligen acceptera villkoren nedan, så att vi kan matcha dina färdigheter och erfarenheter med jobbmöjligheter från våra affärspartners.",
       "legalTerms": "Juridiska villkor",
-      "lookingForJob": "",
+      "lookingForJob": "Vi letar för närvarande efter jobbmöjligheter åt dig.",
       "maxCharacters": "Max {{characters}} tecken",
       "maxRoles": "Du kan välja upp till max 3 jobbtitlar.",
       "motivation": "Motivation",
@@ -705,7 +1002,7 @@
       "motivationLetterPlaceholder": "Vad är din motivation?",
       "motivationLetterSubLabel": "Du kan skriva några ord nedan för att beskriva din erfarenhet och motivation.",
       "motivationSubtitle": "Du kan berika din ansökan med ett presentationsbrev, för att ge oss mer sammanhang om dig och din jobbsökning.",
-      "noFileSelected": "",
+      "noFileSelected": "Ingen fil vald",
       "other": "Annat",
       "partTime": "Deltid",
       "personalInformation": "Personliga uppgifter",
@@ -746,10 +1043,10 @@
       "yourRoles": "Dina jobbpositioner"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
+      "announcement": "Meddelande",
+      "assignment": "Uppgift",
+      "assignmentCompletedDescription": "Din projektuppgift har lämnats in och granskas just nu.\nDitt betyg kommer att synas här efter betygsättning.",
+      "assignmentCompletedTitle": "Uppgift slutförd",
       "assignmentDescription": "",
       "assignmentInformation": "",
       "assignmentTitle": "",
