@@ -65,6 +65,7 @@ services:
       LT_CLIENT_ID: none
       LT_CLIENT_SEC: none
       ALLOWED_DOWNLOAD_HOSTNAMES: workspace.planb.network
+      CONVERT_API_SECRET: none
     volumes:
       - ./apps/api:/home/node/apps/api
       - /home/node/apps/api/node_modules/
