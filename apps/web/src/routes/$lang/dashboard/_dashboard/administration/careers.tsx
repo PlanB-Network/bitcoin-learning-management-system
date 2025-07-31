@@ -685,4 +685,5 @@ const generateCandidateFilePdf = async (
   const blob = doc.output('blob');
   const blobUrl = URL.createObjectURL(blob);
   window.open(blobUrl, '_blank');
+  URL.revokeObjectURL(blobUrl);
 };
