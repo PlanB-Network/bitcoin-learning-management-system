@@ -311,7 +311,8 @@
       "weight": "Kaal: {{weight}}%",
       "whyTimeStamp": "Oma diplomile ajatempli lisamine:\nMiks see oluline on",
       "wishTryAgain": "Juhul kui soovite uuesti proovida, on eksam saadaval 24 tunni pärast.",
-      "yesSubmit": "Jah, esita"
+      "yesSubmit": "Jah, esita",
+      "reviewTest": "Arvustus"
     },
     "explorer": {
       "buildPath": "Raja iseenda tee jäneseurgu",
@@ -521,7 +522,304 @@
       "type": "Tüüp",
       "upcomingBookings": "Eelseisvad broneeringud",
       "upcomingBookingsSubtitle": "Siit saate alla laadida osalejate nimekirja kõigi kohapealsete ürituste kohta.",
-      "userRolesAllocation": "Kasutaja rollide jaotus"
+      "userRolesAllocation": "Kasutaja rollide jaotus",
+      "translationPanel": {
+        "contentManagement": {
+          "assignModal": {
+            "assigningCourse": "Kursuse määramine:",
+            "chooseContributor": "Valige panustaja...",
+            "assign": "Määra",
+            "assigning": "Määramine...",
+            "cancel": "Tühista",
+            "courseInfo": "Kursuse informatsioon",
+            "selectContributor": "Vali panustaja",
+            "assignmentSuccess": "Kursus edukalt määratud!",
+            "title": "Määra kursus panustajale"
+          },
+          "actions": {
+            "assign": "Määra",
+            "reassign": "Määra ümber",
+            "view": "Vaade",
+            "backToContentManagement": "Tagasi sisuhalduse juurde"
+          },
+          "reassignModal": {
+            "reassign": "Määra ümber",
+            "cancel": "Tühista",
+            "reassigning": "Ümbermääramine...",
+            "courseInfo": "Kursuse informatsioon",
+            "reassigningCourse": "Kursuse ümbermääramine:",
+            "warning": {
+              "title": "Oluline märkus",
+              "description": "Juba üle vaadatud peatükid ja osad säilitavad oma ülevaadatud staatuse ega määrata uuesti."
+            },
+            "currentlyAssignedTo": "Praegu määratud:",
+            "reassignmentSuccess": "Kursus edukalt ümbermääratud!",
+            "selectNewContributor": "Valige uus panustaja",
+            "chooseNewContributor": "Valige uus panustaja...",
+            "title": "Määra kursus uuele panustajale ümber"
+          },
+          "table": {
+            "language": "Keel",
+            "actions": "Tegevused",
+            "contributor": "Panustaja",
+            "course": "Kursus",
+            "index": "Indeks",
+            "progress": "Progress",
+            "status": "Staatus"
+          },
+          "notAssigned": "Pole määratud",
+          "status": {
+            "assigned": "Määratud",
+            "notAssigned": "Pole määratud",
+            "underReview": "Hindamisel",
+            "readyForReview": "Valmis ülevaatamiseks"
+          },
+          "title": "Sisuhaldus",
+          "noCourses": "Ühtegi kursust pole tõlkehalduse jaoks saadaval",
+          "noCoursesFiltered": "Teie filtritele vastavaid kursusi ei leitud",
+          "description": "Määra ja halda panustajate kursuse tõlkeid"
+        },
+        "courseNotFound": "Kursust ei leitud",
+        "actions": {
+          "accept": "Nõustu",
+          "delete": "Kustuta",
+          "reject": "Keeldu"
+        },
+        "courseDetails": {
+          "chaptersCompleted": "läbitud peatükid",
+          "chaptersAndProgress": "Peatükid ja progress",
+          "actions": "Tegevused",
+          "chapterIndex": "Peatükk",
+          "chapterTitle": "Pealkiri",
+          "language": "Keel",
+          "assignedTo": "Määratud",
+          "courseIndex": "Kursuse indeks",
+          "courseInformation": "Kursuse informatsioon",
+          "courseName": "Kursuse nimi",
+          "currentContributor": "Praegune panustaja",
+          "noContributor": "Ühtegi kaastöötajat pole määratud",
+          "partTitle": "Osa {{index}}: {{title}}",
+          "errorLoadingDetails": "Viga kursuse üksikasjade laadimisel",
+          "progress": "Progress",
+          "status": "Staatus",
+          "translationStatus": "Tõlkestaatus",
+          "noChapters": "Selle kursuse jaoks ei leitud ühtegi peatükki"
+        },
+        "reports": {
+          "fromMonthPlaceholder": "Millisest kuust alates?",
+          "languageCoverage": {
+            "notStarted": "Pole alustatud",
+            "completed": "Lõpetatud",
+            "inProgress": "Pooleli",
+            "totalCourses": "Kogu kursuste arv"
+          },
+          "contributors": {
+            "title": "Panustajad",
+            "languages": "Keeled",
+            "assignedCourses": "Määratud kursused",
+            "completedCourses": "Läbitud kursused",
+            "startDate": "Alguskuupäev",
+            "username": "Kasutajanimi",
+            "totalReward": "Kogu preemia"
+          },
+          "tabs": {
+            "contributors": "Panustajad",
+            "courses": "Kursused",
+            "coverage": "Keelte kaetus"
+          },
+          "courses": {
+            "contributor": "Panustaja",
+            "lastUpdated": "Viimati uuendatud",
+            "progress": "Progress %",
+            "filterByCourse": "Filtreeri kursuse järgi"
+          },
+          "fromMonth": "Alates",
+          "table": {
+            "contributor": "Panustaja",
+            "lastUpdated": "Viimati uuendatud",
+            "progress": "Progress %"
+          },
+          "toMonth": "Kuni",
+          "year": "Aasta",
+          "dateFilter": "Kuupäeva filter",
+          "downloadData": "Laadige andmed alla",
+          "generalReport": "Üldine aruanne",
+          "languagesProofread": "Keeli toimetatud",
+          "proofreadCourses": "Toimetatud kursused",
+          "totalLanguages": "Keeli kokku",
+          "filterByLanguage": "Filtreeri keele järgi",
+          "noContributors": "Ühtegi panustajat ei leitud",
+          "noCourses": "Kursusi ei leitud",
+          "noLanguages": "Ühtegi keelt ei leitud",
+          "toMonthPlaceholder": "Millisele kuuni?",
+          "comingSoon": {
+            "courses": "Kursuste vaade tuleb varsti",
+            "coverage": "Keelekatvuse vaade tuleb peagi"
+          },
+          "chooseYear": "Millist aastat soovite arvesse võtta?"
+        },
+        "translate": {
+          "selectLanguagesModal": {
+            "noFolderSelected": "Ühtegi kausta pole valitud",
+            "course": "Kursus:",
+            "startingTranslation": "Algamas...",
+            "cancel": "Tühista",
+            "audioFile": "Helifail",
+            "chooseAudioFile": "Vali heli",
+            "chooseFolder": "Vali kaust",
+            "choosePptxFile": "Vali PPTX",
+            "chooseZip": "Vali ZIP",
+            "folderUrl": "Kausta URL",
+            "originalLanguage": "Originaalkeel:",
+            "noZipSelected": "ZIP-i pole valitud",
+            "pptxFile": "PowerPointi fail",
+            "startTranslation": "Alusta tõlkimisega",
+            "startSuccess": "Tõlkimisega edukalt alustatud!",
+            "noAudioFileSelected": "Ühtegi helifaili pole valitud",
+            "noPptxFileSelected": "Ühtegi PowerPointi faili pole valitud",
+            "noLanguagesAvailable": "Ühtegi keelt pole tõlkimiseks saadaval.",
+            "invalidAudioFile": "Palun valige kehtiv helifail.",
+            "audioFileInfo": "Toetatud formaadid: MP3, WAV, M4A (maksimaalselt 50MB)",
+            "invalidPptxFile": "Palun valige kehtiv PowerPointi (.pptx) fail.",
+            "audioFileTooLarge": "Helifail on liiga suur. Maksimaalne suurus on 50MB.",
+            "missingFilesError": "Palun laadige üles tõlkefailid või esitage URL enne tõlkimise alustamist.",
+            "existingUploadsInfo": "Originaalfailid on juba üles laetud. Saate tõlget alustada ilma neid uuesti üles laadimata. Uute failide üleslaadimine kirjutab olemasolevad üle.",
+            "selectLanguages": "Valige tõlgitavad keeled:",
+            "title": "Valige tõlgitavad keeled",
+            "uploadFiles": "Laadige üles toetavad failid (valikuline)",
+            "overwriteWarning": "Olemasolevad failid asendatakse.",
+            "uploadFolder": "Laadi üles kaust (PPTX + TXT)",
+            "pptxFileInfo": "Ainult .pptx faile toetatakse (maksimaalselt 100MB)",
+            "pptxFileTooLarge": "PowerPointi fail on liiga suur. Maksimaalne suurus on 100MB.",
+            "useEnglishLabel": "Kursus on juba inglise keelde tõlgitud. Kasutame inglisekeelset versiooni allikana?"
+          },
+          "actions": {
+            "translate": "Tõlgi"
+          },
+          "table": {
+            "actions": "Tegevused",
+            "course": "Kursus",
+            "index": "Indeks",
+            "totalLanguages": "Keeli kokku",
+            "todoLanguages": "Tõlgitavad keeled"
+          },
+          "title": "Tõlgi kursuseid",
+          "noCourses": "Ükski kursus ei vaja hetkel tõlkimist.",
+          "description": "Alustage kursuste tõlkimist, mis vajavad tõlkimist konkreetsetesse keeltesse."
+        },
+        "userManagement": {
+          "contributorInformation": "Panustaja teave",
+          "status": {
+            "readyForReview": "Valmis ülevaatamiseks",
+            "published": "Avaldatud",
+            "rejected": "Tagasi lükatud",
+            "reviewed": "Üle vaadatud",
+            "todo": "Teha",
+            "underReview": "Hindamisel"
+          },
+          "table": {
+            "language": "Keel",
+            "actions": "Tegevus",
+            "username": "Kasutajanimi",
+            "assignedCourses": "Määratud kursused",
+            "startDate": "Alguskuupäev"
+          },
+          "chapters": "Peatükid",
+          "courses": "Kursused",
+          "actions": {
+            "viewDetails": "Vaata üksikasju",
+            "backToUsers": "Tagasi kasutajate juurde",
+            "backToList": "Tagasi kasutajate nimekirja juurde"
+          },
+          "addContributor": "Lisa panustaja",
+          "modal": {
+            "assignments": "Ülesannete ajalugu",
+            "title": "Kasutaja üksikasjad",
+            "userInfo": "Kasutaja teave",
+            "noAssignments": "Ülesandeid ei leitud"
+          },
+          "noUsers": "Ühtegi panustajat ei leitud",
+          "title": "Kasutajate haldus",
+          "description": "Halda panustajaid ja nende tõlkeülesandeid"
+        },
+        "modal": {
+          "accepting": "Aktsepteerimine...",
+          "cancel": "Tühista",
+          "close": "Sulge",
+          "contributor": "Panustaja",
+          "course": "Kursus",
+          "language": "Keel",
+          "rejecting": "Keeldumine...",
+          "submitRejection": "Esita",
+          "acceptRequest": "Nõustu taotlusega",
+          "acceptTranslationRequest": "Nõustu tõlkepäringuga",
+          "reasonForRejection": "Tagasilükkamise põhjus",
+          "requestRejectedSuccess": "Päring lükati edukalt tagasi",
+          "reasonPlaceholder": "Kirjutage oma selgitus siia...",
+          "requestAcceptedSuccess": "Te nõustusite tõlkepäringuga!",
+          "doYouWantToAcceptRequest": "Kas soovite selle tõlkepäringu vastu võtta?",
+          "provideRejectionReason": "Palun esitage põhjus selle taotluse tagasilükkamiseks",
+          "requestAcceptedMessage": "Panustajat on teavitatud ja saab nüüd tõlkimisega alustada."
+        },
+        "addContributor": {
+          "assign": "Määra",
+          "assigning": "Määramine...",
+          "confirm": "Kinnita",
+          "language": "Keel",
+          "searchUsers": "Otsi kasutajaid...",
+          "selectedUsers": "Valitud kasutajad:",
+          "title": "Lisa panustaja",
+          "addLanguage": "Lisage veel üks keel",
+          "assignedLanguages": "Juba määratud keeled",
+          "assignmentSuccess": "Panustaja on edukalt määratud!",
+          "findContributor": "Leia panustaja",
+          "noUsers": "Ühtegi kasutajat pole saadaval",
+          "selectLanguage": "Vali keel"
+        },
+        "admin": "ADMIN",
+        "comingSoon": {
+          "courses": "Kursuste vaade tuleb varsti",
+          "coverage": "Keelekatvuse vaade tuleb peagi",
+          "userManagement": "Kasutajate haldamise funktsionaalsus tuleb peagi..."
+        },
+        "noResultsFound": "Tulemusi ei leitud",
+        "pendingTranslationRequests": "Ootel olevad tõlkepäringud",
+        "searchPlaceholder": "Otsi...",
+        "status": {
+          "assigned": "Määratud",
+          "completed": "Lõpetatud",
+          "inProgress": "Pooleli",
+          "todo": "Teha",
+          "underReview": "Hindamisel",
+          "readyForReview": "Valmis ülevaatamiseks"
+        },
+        "table": {
+          "actions": "Tegevused",
+          "course": "Kursus",
+          "index": "Indeks",
+          "language": "Keel",
+          "username": "Kasutajanimi"
+        },
+        "tabs": {
+          "reports": "Aruanded",
+          "requests": "Taotlused",
+          "translate": "Tõlgi",
+          "contentManagement": "Sisuhaldus",
+          "userManagement": "Kasutajate haldus"
+        },
+        "toggle": {
+          "pendingRequest": "Ootel taotlus",
+          "rejectedRequests": "Tagasi lükatud taotlused"
+        },
+        "title": "Administraatori tõlkepaneel",
+        "messages": {
+          "noRejectedRequests": "Tagasilükatud tõlkepäringuid ei leitud.",
+          "noPendingRequests": "Ootel olevaid tõlkepäringuid ei leitud.",
+          "noPendingRequestsSearch": "Ootel olevaid tõlkepäringuid mis vastaksid \"{{query}}\" ei leitud.",
+          "noRejectedRequestsSearch": "Tagasilükatud tõlkepäringuid mis vastaksid \"{{query}}\"ei leitud."
+        }
+      },
+      "translation": "Tõlkepaneel"
     },
     "announcements": {
       "groups": {
@@ -814,7 +1112,8 @@
       "viewScoreSummary": "Vaadake skoori kokkuvõtet",
       "wellDoneCompleting": "Tubli töö käesoleva kursuse lõpetamisel ja läbimisel! \nSiin on teie vääriliselt teenitud diplom",
       "yourProject": "Teie projekt",
-      "yourProjectAssignment": "Teie projekti ülesanne"
+      "yourProjectAssignment": "Teie projekti ülesanne",
+      "assignmentNotAccessible": "Ülesanne on juba alanud ja pole enam kättesaadav."
     },
     "courses": "Kursused",
     "credentials": {
@@ -890,7 +1189,12 @@
         "none": "Puudub",
         "platformTitle": "Mis laadi teateid soovite sellel platvormil saada?",
         "settingsSaved": "Teie seaded salvestati edukalt!",
-        "title": "Teavituste seaded"
+        "title": "Teavituste seaded",
+        "assignedAt": "Määramisaeg",
+        "completedAt": "Lõpetamise aeg",
+        "displayName": "Kuvanimi",
+        "filter": "Filter",
+        "role": "Roll"
       },
       "password": "Parool",
       "personalInformation": "Minu isiklik teave",
@@ -978,7 +1282,10 @@
         "studentsGraduated": "Lõpetanud õpilasi",
         "summerStudents": "Suvekool",
         "thresholdToPass": "Läbimise lävi",
-        "writeAnnouncement": "Kirjutage teadaanne"
+        "writeAnnouncement": "Kirjutage teadaanne",
+        "averageAttempts": "Katseid keskmiselt",
+        "questionsInExam": "Eksamis olevad küsimused",
+        "totalQuestions": "Küsimuste koguarv"
       },
       "menu": "Õpetaja menüü",
       "profile": {
@@ -1283,7 +1590,8 @@
     "upcomingEvent": "Tulevane üritus",
     "weeksAgo": "{{weeks}} nädal{{s}} tagasi",
     "yearsAgo": "{{years}} aasta{{s}} tagasi",
-    "yesterday": "Eile"
+    "yesterday": "Eile",
+    "newVersionAvailable": "Plan ₿ Network platvormi uus versioon on saadaval. Palun värskendage lehte, et uuendada."
   },
   "payment": {
     "haveReductionCode": "Kas teil on sooduskood?",
@@ -1760,11 +2068,28 @@
     "viewMore": "Vaata rohkem",
     "wallets": "Rahakotid",
     "weight": "Kaal",
-    "yes": "Jah"
+    "yes": "Jah",
+    "actions": "Tegevused",
+    "none": "Puudub",
+    "review": "Arvustus"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube'i kanalid",
     "view": "Vaata Youtube'i kanalit",
     "watchTrailer": "Vaata treilerit"
+  },
+  "months": {
+    "april": "Aprill",
+    "august": "August",
+    "december": "Detsember",
+    "february": "Veebruar",
+    "january": "Jaanuar",
+    "july": "Juuli",
+    "june": "Juuni",
+    "march": "Märts",
+    "may": "Mai",
+    "november": "November",
+    "october": "Oktoober",
+    "september": "September"
   }
 }

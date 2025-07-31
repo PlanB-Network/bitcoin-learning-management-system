@@ -1047,8 +1047,8 @@
       "assignment": "Uppgift",
       "assignmentCompletedDescription": "Din projektuppgift har lämnats in och granskas just nu.\nDitt betyg kommer att synas här efter betygsättning.",
       "assignmentCompletedTitle": "Uppgift slutförd",
-      "assignmentDescription": "",
-      "assignmentInformation": "",
+      "assignmentDescription": "Projektuppgiften markerar den andra fasen av Plan ₿ Biz School-programmet och den är endast tillgänglig för studenter som framgångsrikt har slutfört den första fasen. Enligt deras ranking och preferenser kommer varje student att tilldelas ett projekt utvecklat av ett Bitcoin-företag, som måste lämnas in senast den 18 juni.\nStudenter kommer att förbereda uppgiften från den 2 juni till den 18 juni, med möjlighet att få mentorskap från en representant av företaget.\n\nProjekten kommer att betygsättas av företaget, och poängen kommer att påverka det slutliga betyget. Endast de högst rankade studenterna kommer att bjudas in att delta i sommarskolan i Lugano, Schweiz, från den 23 juli till den 30 juli 2025.",
+      "assignmentInformation": "Uppgiftsinformation",
       "assignmentTitle": "",
       "checkDetailsCompleted": "Här kan du se alla detaljer angående denna kurs som du har slutfört.",
       "completionDiploma": "Slutdiplom",
@@ -1467,9 +1467,9 @@
     "description2": "",
     "planBLabs": "",
     "presentation": {
-      "link": "",
-      "subtitle": "",
-      "title": ""
+      "link": "Upptäck Plan ₿ Labs",
+      "subtitle": "Gå med i ett labb för att lära dig, diskutera och växa!",
+      "title": "Förbättra dina Bitcoin-färdigheter!"
     },
     "title": ""
   },
