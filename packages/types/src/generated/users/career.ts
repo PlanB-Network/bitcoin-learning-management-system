@@ -95,4 +95,13 @@ export interface JoinedCareerProfile {
     level: CareerRoleLevel;
     roleId: string;
   }[];
+  courses?:
+    | {
+        courseId: string;
+        progressPercentage: number;
+        totalScore?: number | undefined;
+        ranking?: number | undefined;
+        totalStudents?: number | undefined;
+      }[]
+    | undefined;
 }
