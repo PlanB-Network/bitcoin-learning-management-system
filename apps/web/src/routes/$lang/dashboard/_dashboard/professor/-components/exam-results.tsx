@@ -715,7 +715,7 @@ const calculateAverageAttemptsPerUser = (
   if (usernames.length === 0) return 0;
 
   const totalAttempts = examGrades.length;
-  return totalAttempts / usernames.length;
+  return Math.round((totalAttempts / usernames.length) * 10) / 10;
 };
 
 const downloadAssignmentGrades = async (
