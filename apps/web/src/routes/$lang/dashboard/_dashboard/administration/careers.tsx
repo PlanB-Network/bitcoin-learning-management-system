@@ -316,7 +316,7 @@ function AdminCareers() {
                       tableHeaderClasses,
                     )}
                   >
-                    {t('auth.emailAddress')}
+                    {t('dashboard.adminPanel.careers.file')}
                   </th>
                 </tr>
               </thead>
