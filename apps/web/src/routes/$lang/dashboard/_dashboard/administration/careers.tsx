@@ -1,13 +1,19 @@
-import type { JoinedCareerProfile } from '@blms/types';
+import type {
+  JobTitle,
+  JoinedCareerProfile,
+  JoinedCourse,
+  Language,
+} from '@blms/types';
 import { Button, cn, Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { type TFunction, t } from 'i18next';
+import { useContext, useEffect, useState } from 'react';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TbArrowsSort } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -17,6 +23,8 @@ export const Route = createFileRoute(
 });
 
 function AdminCareers() {
+  const { courses } = useContext(AppContext);
+
   const [sortedCareerProfiles, setSortedCareerProfiles] = useState<
     JoinedCareerProfile[] | []
   >([]);
@@ -90,31 +98,27 @@ function AdminCareers() {
         .join('\n');
 
       return {
-        'Availability Start': profile.availabilityStart,
+        'First Name': profile.firstName,
+        'Last Name': profile.lastName,
+        Country: profile.country,
+        Roles: rolesText,
+        Email: profile.email,
+        LinkedIn: profile.linkedin || 'N/A',
+        GitHub: profile.github || 'N/A',
+        Telegram: profile.telegram || 'N/A',
+        Languages: languagesText,
         'Bitcoin Community': profile.isBitcoinCommunityParticipant
           ? 'yes'
           : 'no',
-        'Bitcoin Community Text': profile.bitcoinCommunityText,
         'Bitcoin Projects': profile.isBitcoinProjectParticipant ? 'yes' : 'no',
-        'Bitcoin Projects Text': profile.bitcoinProjectText,
         'Company Sizes': companySizesText,
-        Country: profile.country,
-        'Created At': profile.createdAt,
-        'CV URL': `https://planb.network${profile.cvUrl}`,
-        'Edited At': profile.editedAt,
-        Email: profile.email,
-        'Expected Salary': profile.expectedSalary,
-        'First Name': profile.firstName,
         'Full-Time Available': profile.isAvailableFullTime ? 'yes' : 'no',
-        GitHub: profile.github || 'N/A',
-        Languages: languagesText,
-        'Last Name': profile.lastName,
-        LinkedIn: profile.linkedin || 'N/A',
-        'Motivation Letter': profile.motivationLetter,
-        'Other Contact': profile.otherContact || 'N/A',
         'Remote Work Preference': profile.remoteWorkPreference,
-        Roles: rolesText,
-        Telegram: profile.telegram || 'N/A',
+        'Expected Salary': profile.expectedSalary,
+        'Availability Start': profile.availabilityStart,
+        'CV URL': `https://planb.network${profile.cvUrl}`,
+        'Created At': profile.createdAt,
+        'Edited At': profile.editedAt,
       };
     });
 
@@ -125,24 +129,20 @@ function AdminCareers() {
       { wch: 12 }, // First Name
       { wch: 12 }, // Last Name
       { wch: 12 }, // Country
+      { wch: 30 }, // Roles
       { wch: 20 }, // Email
       { wch: 15 }, // LinkedIn
       { wch: 15 }, // GitHub
       { wch: 15 }, // Telegram
-      { wch: 15 }, // Other Contact
       { wch: 30 }, // Languages
       { wch: 10 }, // Bitcoin Community
-      { wch: 30 }, // Bitcoin Community Text
       { wch: 10 }, // Bitcoin Projects
-      { wch: 30 }, // Bitcoin Projects Text
-      { wch: 30 }, // Roles
       { wch: 25 }, // Company Sizes
       { wch: 10 }, // Full-Time Available
       { wch: 20 }, // Remote Work Preference
       { wch: 15 }, // Expected Salary
       { wch: 15 }, // Availability Start
       { wch: 40 }, // CV URL
-      { wch: 50 }, // Motivation Letter
       { wch: 15 }, // Created At
       { wch: 15 }, // Edited At
     ];
@@ -364,7 +364,23 @@ function AdminCareers() {
                           {t('dashboard.adminPanel.careers.viewCV')}
                         </a>
                       </td>
-                      <td className="py-3.5 align-top">{profile.email}</td>
+                      <td className="py-3.5 align-top">
+                        <button
+                          className="underline text-newBlack-5 hover:text-darkOrange-5"
+                          onClick={() =>
+                            generateCandidateFilePdf(
+                              profile,
+                              jobTitles || [],
+                              languages || [],
+                              t,
+                              courses,
+                            )
+                          }
+                          type="button"
+                        >
+                          {t('dashboard.adminPanel.careers.candidateFile')}
+                        </button>
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -402,7 +418,7 @@ function AdminCareers() {
                         );
                       })}
                     </section>
-                    <div className="flex w-full justify-between items-center mt-auto">
+                    <div className="flex w-full justify-between items-center mt-auto gap-4">
                       <a
                         href={`${profile.cvUrl}`}
                         target="_blank"
@@ -412,11 +428,27 @@ function AdminCareers() {
                         <Button
                           variant="ghost"
                           size="s"
-                          className="w-fit !text-newBlack-5 !font-normal underline"
+                          className="w-fit !text-newBlack-5 !font-normal underline px-0"
                         >
                           {t('dashboard.adminPanel.careers.viewCV')}
                         </Button>
                       </a>
+                      <Button
+                        variant="ghost"
+                        size="s"
+                        className="w-fit !text-newBlack-5 !font-normal underline !px-0"
+                        onClick={() =>
+                          generateCandidateFilePdf(
+                            profile,
+                            jobTitles || [],
+                            languages || [],
+                            t,
+                            courses,
+                          )
+                        }
+                      >
+                        {t('dashboard.adminPanel.careers.candidateFile')}
+                      </Button>
                       <span className="text-newBlack-5 body-14px">
                         {new Date(profile.editedAt).toLocaleDateString(
                           undefined,
@@ -452,3 +484,206 @@ function AdminCareers() {
     </>
   );
 }
+
+const generateCandidateFilePdf = async (
+  profile: JoinedCareerProfile,
+  jobTitles: JobTitle[],
+  languages: Language[],
+  t: TFunction<'translation', undefined>,
+  courses: JoinedCourse[] | null,
+) => {
+  const { jsPDF } = await import('jspdf');
+
+  const doc = new jsPDF({
+    orientation: 'p',
+    unit: 'mm',
+    format: 'a4',
+  });
+
+  let y = 20;
+  const x = 15;
+  const lineHeight = 5;
+  const sectionSpacing = 2;
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const maxWidth = doc.internal.pageSize.getWidth() - 2 * x;
+
+  const addData = (title: string, value: string | null | undefined) => {
+    if (
+      value === null ||
+      value === undefined ||
+      value === '' ||
+      (Array.isArray(value) && value.length === 0)
+    ) {
+      return; // Skip empty values
+    }
+
+    const valueStr = String(value).replace(/₿/g, 'B');
+
+    doc.setFont('helvetica', 'bold');
+    const titleLines = doc.splitTextToSize(title, maxWidth);
+    doc.setFont('helvetica', 'normal');
+    const valueLines = doc.splitTextToSize(valueStr, maxWidth);
+
+    const requiredHeight =
+      (titleLines.length + valueLines.length) * lineHeight + sectionSpacing;
+
+    if (y + requiredHeight > pageHeight - x) {
+      doc.addPage();
+      y = 20;
+    }
+
+    // title (question)
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text(title, x, y);
+    y += lineHeight * titleLines.length;
+
+    // value
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.text(valueLines, x, y);
+    y += lineHeight * valueLines.length + sectionSpacing;
+  };
+
+  // Header
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.text(
+    `${profile.firstName || ''} ${profile.lastName || ''}${profile.country ? ` - ${profile.country}` : ''}`.trim(),
+    doc.internal.pageSize.getWidth() / 2,
+    15,
+    { align: 'center' },
+  );
+  y = 30;
+
+  addData('Email:', profile.email);
+  addData('LinkedIn:', profile.linkedin);
+  addData('GitHub:', profile.github);
+  addData('Telegram:', profile.telegram);
+  addData('Other contact:', profile.otherContact);
+
+  const languagesText =
+    profile.languages.length > 0
+      ? profile.languages
+          .map((lang) => {
+            const language = languages?.find(
+              (l) => l.code === lang.languageCode,
+            );
+            return `${language?.name || lang.languageCode}: ${t(
+              `dashboard.careerPortal.languageLevels.${lang.level}`,
+            )}`;
+          })
+          .sort((a, b) => a.localeCompare(b))
+          .join('\n')
+      : null;
+  addData('Languages:', languagesText);
+
+  if (profile.isBitcoinCommunityParticipant && profile.bitcoinCommunityText) {
+    addData('Community involvement details:', profile.bitcoinCommunityText);
+  }
+
+  if (profile.isBitcoinProjectParticipant && profile.bitcoinProjectText) {
+    addData('Project involvement details:', profile.bitcoinProjectText);
+  }
+
+  const rolesText =
+    profile.roles.length > 0
+      ? profile.roles
+          .map((role) => {
+            const jobTitle = jobTitles?.find((jt) => jt.id === role.roleId);
+            return `${
+              jobTitle
+                ? t(`dashboard.careerPortal.jobTitles.${jobTitle.name}`)
+                : role.roleId
+            }: ${t(`dashboard.careerPortal.roleLevels.${role.level}`)}`;
+          })
+          .sort((a, b) => a.localeCompare(b))
+          .join('\n')
+      : null;
+  addData('Target roles (experience):', rolesText);
+
+  const companySizesText =
+    profile.companySizes.length > 0
+      ? profile.companySizes
+          .map((size) => t(`dashboard.careerPortal.companySizes.${size}`))
+          .join(', ')
+      : null;
+  addData('Preferred company sizes:', companySizesText);
+
+  addData(
+    'Availability:',
+    profile.isAvailableFullTime ? 'Full-time' : 'Part-time',
+  );
+
+  addData(
+    'Availability start date:',
+    profile.availabilityStart ? profile.availabilityStart : null,
+  );
+
+  addData(
+    'Remote work preference:',
+    profile.remoteWorkPreference
+      ? t(
+          `dashboard.careerPortal.remoteWorkPreferences.${profile.remoteWorkPreference}`,
+        )
+      : null,
+  );
+
+  addData('Expected salary:', profile.expectedSalary);
+
+  addData(
+    'CV:',
+    profile.cvUrl ? `${window.location.origin}${profile.cvUrl}` : null,
+  );
+
+  addData('Motivation letter:', profile.motivationLetter);
+
+  const coursesText =
+    courses && profile.courses && profile.courses.length > 0
+      ? profile.courses
+          .map((course) => {
+            const courseDetails = courses.find((c) => c.id === course.courseId);
+            return { ...course, courseDetails };
+          })
+          .filter(
+            (course) =>
+              course.courseDetails &&
+              (course.progressPercentage === 100 ||
+                course.courseDetails.teachingFormat === 'professor_led'),
+          )
+          .sort((a, b) => {
+            if (a.courseDetails && b.courseDetails) {
+              const aIndex =
+                Number.parseInt(a.courseDetails.index.replace(/\D/g, ''), 10) ||
+                0;
+              const bIndex =
+                Number.parseInt(b.courseDetails.index.replace(/\D/g, ''), 10) ||
+                0;
+
+              if (aIndex === bIndex) {
+                return (a.courseDetails.index || '').localeCompare(
+                  b.courseDetails.index || '',
+                );
+              }
+
+              return aIndex - bIndex;
+            }
+            return 0;
+          })
+          .map((course) => {
+            const { courseDetails } = course;
+            return `${courseDetails?.name} (${courseDetails?.index.toLocaleUpperCase()})${
+              course.totalScore !== undefined
+                ? `\n• Grade: ${course.totalScore}/100`
+                : ''
+            }${course.ranking !== undefined ? `\n• Ranking: ${course.ranking}/${course.totalStudents}` : ''}`;
+          })
+          .join('\n\n')
+      : null;
+  addData('Courses completed:', coursesText);
+
+  const blob = doc.output('blob');
+  const blobUrl = URL.createObjectURL(blob);
+  window.open(blobUrl, '_blank');
+  URL.revokeObjectURL(blobUrl);
+};

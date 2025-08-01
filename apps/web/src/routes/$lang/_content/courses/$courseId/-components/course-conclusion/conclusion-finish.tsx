@@ -38,12 +38,8 @@ export const ConclusionFinish = ({
 
   return (
     <>
-      {!isProfessorLed && (
-        <>
-          <Professor course={course} addThanksTipping />
-          {!course.requiresPayment && <Credits course={course} />}
-        </>
-      )}
+      {!isProfessorLed && <Professor course={course} addThanksTipping />}
+      {!course.requiresPayment && <Credits course={course} />}
       {hasSingleTrialExamOrAssignment ? (
         hasPassedCourseThreshold ? (
           <DiplomaTeacherLed course={course} />

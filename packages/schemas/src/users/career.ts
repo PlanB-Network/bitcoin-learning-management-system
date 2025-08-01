@@ -46,5 +46,15 @@ export const joinedCareerProfileSchema = careerProfileSchema.merge(
         roleId: true,
       })
       .array(),
+    courses: z
+      .object({
+        courseId: z.string(),
+        progressPercentage: z.number(),
+        totalScore: z.number().optional(),
+        ranking: z.number().optional(),
+        totalStudents: z.number().optional(),
+      })
+      .array()
+      .optional(),
   }),
 );
