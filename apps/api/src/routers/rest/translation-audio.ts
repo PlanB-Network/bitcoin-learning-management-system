@@ -1,6 +1,7 @@
 import {
   type CourseProfessor,
   createGetCourseProfessors,
+  createUpdateSlideAudioStatus,
 } from '@blms/service-content';
 import type { Router } from 'express';
 
@@ -19,10 +20,43 @@ import { expressAuthMiddleware } from '#src/middlewares/auth.js';
  * It returns the task information coming from the Language-Toolkit so the
  * caller can poll for completion if desired.
  */
+// In-memory store for tracking audio generation tasks
+const audioTasks = new Map<
+  string,
+  {
+    courseId: string;
+    partId: string;
+    chapterId: string;
+    slideId: string;
+    fileName: string;
+    language: string;
+    outputKey: string;
+    userId: string;
+    createdAt: number;
+  }
+>();
+
+// Clean up old task records every 30 minutes
+setInterval(
+  () => {
+    const now = Date.now();
+    const maxAge = 30 * 60 * 1000; // 30 minutes
+    for (const [taskId, data] of audioTasks.entries()) {
+      if (now - data.createdAt > maxAge) {
+        audioTasks.delete(taskId);
+      }
+    }
+  },
+  30 * 60 * 1000,
+);
+
 export const createRestTranslationAudioRoutes = async (
   dependencies: Dependencies,
   router: Router,
 ) => {
+  const updateSlideAudioStatus = createUpdateSlideAudioStatus(
+    dependencies as any,
+  );
   /**
    * Start audio generation for a slide.
    *
@@ -189,6 +223,27 @@ export const createRestTranslationAudioRoutes = async (
 
         const taskInfo = await ttsResp.json();
 
+        // Store task information for completion tracking
+        if ((taskInfo as any)?.task_id) {
+          audioTasks.set((taskInfo as any).task_id, {
+            courseId,
+            partId,
+            chapterId,
+            slideId,
+            fileName,
+            language,
+            outputKey,
+            userId: req.session.uid!,
+            createdAt: Date.now(),
+          });
+          console.log('Stored audio task for tracking:', {
+            taskId: (taskInfo as any).task_id,
+            courseId,
+            slideId,
+            outputKey,
+          });
+        }
+
         res.json({
           message: 'Audio generation task started',
           outputKey,
@@ -253,6 +308,41 @@ export const createRestTranslationAudioRoutes = async (
         }
 
         const body = await statusResp.json();
+
+        // Check if task is completed and update database
+        if ((body as any)?.status === 'completed') {
+          const taskData = audioTasks.get(taskId);
+          if (taskData) {
+            console.log('Audio task completed, updating database:', {
+              taskId,
+              audioPath: taskData.outputKey,
+              courseId: taskData.courseId,
+              slideId: taskData.slideId,
+            });
+
+            try {
+              await updateSlideAudioStatus(
+                taskData.courseId,
+                taskData.language,
+                taskData.partId,
+                taskData.chapterId,
+                taskData.slideId,
+                taskData.outputKey,
+              );
+              console.log(
+                'Successfully updated audio_resource_path in database',
+              );
+
+              // Clean up task record
+              audioTasks.delete(taskId);
+            } catch (error) {
+              console.error('Error updating audio_resource_path:', error);
+            }
+          } else {
+            console.warn('Completed task not found in tracking map:', taskId);
+          }
+        }
+
         res.json(body);
       } catch (err) {
         next(err);

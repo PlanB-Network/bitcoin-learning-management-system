@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { Readable } from 'node:stream';
+import { sql } from '@blms/database';
 import { NoSuchKey } from '@blms/s3';
 import {
   createGetPptxAvailableLanguages,
@@ -354,30 +355,44 @@ export const createRestTranslationDownloadRoutes = async (
           return;
         }
 
-        const { courseId, slideId, language, partId, chapterId, fileName } =
-          tokenData as any;
+        const { courseId, slideId, language, chapterId } = tokenData as any;
 
-        // Path format used by the contribute front-end for generated pptx files
-        const baseKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/pptx/${fileName}.pptx`;
-        const proofreadKey = baseKey.replace(
-          `${fileName}.pptx`,
-          `${fileName}-proofread.pptx`,
-        );
+        // Query the database to get the ppt_resource_path (same as pptx-by-path endpoint)
+        const slideQuery = sql`
+          SELECT ppt_resource_path, course_id, language, chapter_id, slide_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
 
-        let key = proofreadKey;
-        let head = await dependencies.s3.head(key).catch(() => null);
+        const result = await dependencies.postgres.exec(slideQuery);
 
-        if (!head) {
-          key = baseKey;
-          head = await dependencies.s3.head(key).catch(() => null);
-        }
-
-        if (!head) {
-          res.status(404).send('File not found');
+        if (!result || result.length === 0) {
+          res.status(404).send('Slide not found');
           return;
         }
 
-        const stream = await dependencies.s3.getStream(key);
+        const pptResourcePath =
+          result[0].pptResourcePath || result[0].ppt_resource_path;
+
+        if (!pptResourcePath) {
+          res.status(404).send('PPT resource path not found');
+          return;
+        }
+
+        // Use the ppt_resource_path directly as the S3 key
+        const head = await dependencies.s3
+          .head(pptResourcePath)
+          .catch(() => null);
+
+        if (!head) {
+          res.status(404).send('File not found in S3');
+          return;
+        }
+
+        const stream = await dependencies.s3.getStream(pptResourcePath);
 
         res.setHeader(
           'Content-Type',
@@ -404,41 +419,72 @@ export const createRestTranslationDownloadRoutes = async (
   );
 
   router.get(
-    '/translation-downloads/audio/:courseId/:language/:partId/:chapterId/:slideId/:fileName',
+    '/translation-downloads/audio/:courseId/:language/:chapterId/:slideId',
     expressAuthMiddleware,
     async (req, res, next) => {
       try {
-        const { courseId, language, partId, chapterId, slideId, fileName } =
-          req.params as any;
+        const { courseId, language, chapterId, slideId } = req.params as any;
 
-        if (
-          !courseId ||
-          !language ||
-          !partId ||
-          !chapterId ||
-          !slideId ||
-          !fileName
-        ) {
+        if (!courseId || !language || !chapterId || !slideId) {
           throw new BadRequest('Missing required path parameters');
         }
 
-        // We support either .mp3 (preferred) or legacy .m4a encodings
-        // <courseId>/<language>/<partId>/<chapterId>/<slideId>/audio/<slideId>.(mp3|m4a)
-        const buildKey = (ext: 'mp3' | 'm4a') =>
-          `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/audio/${fileName}.${ext}`;
+        console.log('Audio by path request:', {
+          courseId,
+          language,
+          chapterId,
+          slideId,
+        });
 
-        let key = buildKey('mp3');
-        let head = await dependencies.s3.head(key).catch(() => null);
+        // Query the database to get the audio_resource_path
+        const slideQuery = sql`
+          SELECT audio_resource_path, course_id, language, chapter_id, slide_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
 
-        // Fallback to .m4a if mp3 is not found
-        if (!head) {
-          key = buildKey('m4a');
-          head = await dependencies.s3.head(key).catch(() => null);
+        const result = await dependencies.postgres.exec(slideQuery);
+
+        console.log('Audio database query result:', result);
+
+        if (!result || result.length === 0) {
+          console.log('No slide found in database for audio:', {
+            courseId,
+            language,
+            chapterId,
+            slideId,
+          });
+          res.status(404).send('Slide not found');
+          return;
         }
+
+        const audioResourcePath =
+          result[0].audioResourcePath || result[0].audio_resource_path;
+        if (!audioResourcePath) {
+          console.log(
+            'Audio resource path not found (normal if not generated yet)',
+          );
+          res.status(404).send('Audio not generated yet');
+          return;
+        }
+
+        console.log(
+          'Using audio_resource_path from database:',
+          audioResourcePath,
+        );
+
+        // Use the audio_resource_path directly as the S3 key
+        const head = await dependencies.s3
+          .head(audioResourcePath)
+          .catch(() => null);
 
         // File does not exist – 404 early
         if (!head?.contentLength) {
-          res.status(404).send('Not found');
+          console.log('Audio file not found in S3:', audioResourcePath);
+          res.status(404).send('Audio file not found');
           return;
         }
 
@@ -449,7 +495,7 @@ export const createRestTranslationDownloadRoutes = async (
         // No range header – stream full file as before
         // -----------------------------
         if (!range) {
-          const stream = await dependencies.s3.getStream(key);
+          const stream = await dependencies.s3.getStream(audioResourcePath);
 
           if (!stream) {
             res.status(404).send('Not found');
@@ -489,7 +535,11 @@ export const createRestTranslationDownloadRoutes = async (
 
         const chunkSize = end - start + 1;
 
-        const stream = await dependencies.s3.getRangeStream(key, start, end);
+        const stream = await dependencies.s3.getRangeStream(
+          audioResourcePath,
+          start,
+          end,
+        );
 
         if (!stream) {
           res.status(404).send('Not found');
@@ -528,6 +578,21 @@ export const createRestTranslationDownloadRoutes = async (
         'Access-Control-Allow-Headers',
         'Content-Type, Authorization',
       );
+      res.status(200).end();
+    },
+  );
+
+  // Handle CORS preflight requests for direct PPTX downloads
+  router.options(
+    '/translation-downloads/pptx-by-path/:courseId/:language/:chapterId/:slideId',
+    (_req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+      res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Content-Type, Authorization, Cookie',
+      );
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
       res.status(200).end();
     },
   );
@@ -718,6 +783,98 @@ export const createRestTranslationDownloadRoutes = async (
         res.json({ languages });
       } catch (error) {
         req.log('Error:', error);
+        next(error);
+      }
+    },
+  );
+
+  // Serve PPTX files directly using ppt_resource_path from database
+  // No auth required since database lookup provides security
+  router.get(
+    '/translation-downloads/pptx-by-path/:courseId/:language/:chapterId/:slideId',
+    async (req, res, next) => {
+      try {
+        const { courseId, language, chapterId, slideId } = req.params as any;
+
+        if (!courseId || !language || !chapterId || !slideId) {
+          throw new BadRequest('Missing required path parameters');
+        }
+
+        console.log('PPTX by path request:', {
+          courseId,
+          language,
+          chapterId,
+          slideId,
+        });
+
+        // Query the database to get the ppt_resource_path
+        const slideQuery = sql`
+          SELECT ppt_resource_path, course_id, language, chapter_id, slide_id, part_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
+
+        const result = await dependencies.postgres.exec(slideQuery);
+
+        if (!result || result.length === 0) {
+          res.status(404).send('Slide not found');
+          return;
+        }
+
+        const pptResourcePath =
+          result[0].pptResourcePath || result[0].ppt_resource_path;
+
+        if (!pptResourcePath) {
+          res.status(404).send('PPT resource path not found');
+          return;
+        }
+
+        // Use the ppt_resource_path directly as the S3 key
+        const head = await dependencies.s3
+          .head(pptResourcePath)
+          .catch(() => null);
+
+        if (!head) {
+          res.status(404).send('File not found in S3');
+          return;
+        }
+
+        const stream = await dependencies.s3.getStream(pptResourcePath);
+
+        if (!stream) {
+          res.status(404).send('Failed to get file stream');
+          return;
+        }
+
+        // Add CORS headers to allow OnlyOffice to access the files
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        res.setHeader(
+          'Access-Control-Allow-Headers',
+          'Content-Type, Authorization, Cookie',
+        );
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+        res.setHeader(
+          'Content-Type',
+          head?.contentType ||
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        );
+        if (head?.contentLength) {
+          res.setHeader('Content-Length', String(head.contentLength));
+        }
+
+        stream!.pipe(res);
+      } catch (error) {
+        console.error('PPTX by path endpoint error:', error);
+        req.log('Error:', error);
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('File not found');
+          return;
+        }
         next(error);
       }
     },

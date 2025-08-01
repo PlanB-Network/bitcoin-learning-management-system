@@ -14,49 +14,45 @@ interface PptLinkProps {
   // removed onSaveChanges and hasUnsavedChanges props
 }
 
-// Build the API URL that proxies the PPTX through the backend instead of exposing the raw S3 bucket.
+// Build the API URL that uses ppt_resource_path from database
 const buildPptxApiUrl = (
   courseId: string,
-  partId: string,
+  language: string,
   chapterId: string,
   slideId: string,
-  fileName: string,
-  lang: string,
 ): string => {
-  // New schema: /api/translation-downloads/pptx/<courseId>/<lang>/<partId>/<chapterId>/<slideId>/<fileName>`
-  return `/api/translation-downloads/pptx/${courseId}/${lang}/${partId}/${chapterId}/${slideId}/${fileName}`;
+  // New endpoint that uses ppt_resource_path from database
+  return `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
 };
 
 export const PptLinkSection: React.FC<PptLinkProps> = ({
   courseId,
-  partId,
+  partId: _partId,
   chapterId,
   slideId,
-  fileName,
+  fileName: _fileName,
   language,
   onValidate,
   validated,
   leftComponent,
   // removed onSaveChanges and hasUnsavedChanges destructuring
 }) => {
-  const [exists, setExists] = useState<boolean | null>(null);
+  const [_exists, setExists] = useState<boolean | null>(null);
 
-  const url = buildPptxApiUrl(
-    courseId,
-    partId,
-    chapterId,
-    slideId,
-    fileName,
-    language,
-  );
+  const url = buildPptxApiUrl(courseId, language, chapterId, slideId);
 
   useEffect(() => {
     let cancelled = false;
     setExists(null);
 
     fetch(url, { method: 'GET', headers: { Range: 'bytes=0-0' } })
-      .then((res) => !cancelled && setExists(res.ok))
-      .catch(() => !cancelled && setExists(false));
+      .then((res) => {
+        if (!cancelled) setExists(res.ok);
+      })
+      .catch((err) => {
+        console.error('PPTX availability error:', err);
+        if (!cancelled) setExists(false);
+      });
     return () => {
       cancelled = true;
     };

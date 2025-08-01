@@ -18,4 +18,3 @@ ALTER TABLE "content"."course_translation_uploads" ADD CONSTRAINT "course_transl
 ALTER TABLE "content"."course_translation_uploads" ADD CONSTRAINT "course_translation_uploads_uploader_id_accounts_uid_fk" FOREIGN KEY ("uploader_id") REFERENCES "users"."accounts"("uid") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "content"."course_translation_uploads" ADD CONSTRAINT "course_translation_uploads_part_id_course_parts_part_id_fk" FOREIGN KEY ("part_id") REFERENCES "content"."course_parts"("part_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "content"."course_translation_uploads" ADD CONSTRAINT "course_translation_uploads_chapter_id_course_chapters_chapter_id_fk" FOREIGN KEY ("chapter_id") REFERENCES "content"."course_chapters"("chapter_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "content"."course_translation_slides" DROP COLUMN "audio_tries";

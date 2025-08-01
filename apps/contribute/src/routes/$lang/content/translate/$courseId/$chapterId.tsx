@@ -24,7 +24,8 @@ import {
   type OnlyOfficeSlideEditorRef,
 } from '#src/components/translation/onlyoffice-slide-editor.tsx';
 import { PptLinkSection } from '#src/components/translation/ppt-link.tsx';
-import { TranscriptionEditor } from '#src/components/translation/transcription-editor.tsx';
+import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
+import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { VideoGenerationModal } from '#src/components/video-generation-modal.tsx';
 
 import { BackLink } from '#src/molecules/backlink.tsx';
@@ -66,7 +67,7 @@ interface CourseTranslationSlide {
   audioResourcePath: string | null;
   originalContent: string | null;
   translatedContent: string | null;
-  professorName: string | null;
+  professorName?: string | null;
   status: string;
   createdAt: Date;
   updatedAt: Date;
@@ -184,8 +185,13 @@ function ChapterTranslationPage() {
   // OnlyOffice editor ref for manual saving
   const onlyOfficeEditorRef = useRef<OnlyOfficeSlideEditorRef>(null);
 
-  // Get target language - for now, default to French
-  const targetLanguage = 'fr';
+  // Get target language from route params or localStorage (aligned with slideIndex.tsx)
+  const targetLanguage =
+    Route.useSearch()?.targetLanguage ||
+    (typeof window !== 'undefined'
+      ? localStorage.getItem('targetLanguage')
+      : null) ||
+    'fr';
   // Determine original & target language names for display
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
   const originalLanguageName = getLanguageName(originalLanguageCode);
@@ -271,9 +277,9 @@ function ChapterTranslationPage() {
       try {
         let resp: any;
         try {
-          resp = await trpcClient.content.getCourseLanguagesPublic.query({
-            id: courseId,
-          });
+          resp = await (
+            trpcClient as any
+          ).content.getCourseLanguagesPublic.query({ id: courseId });
         } catch (_e: any) {
           resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
             id: courseId,
@@ -283,7 +289,9 @@ function ChapterTranslationPage() {
         const originalLang = courseData?.originalLanguage ?? 'en';
         const codesSet = new Set<string>();
         if (resp?.languages?.length) {
-          for (const l of resp.languages) codesSet.add(l.code);
+          for (const l of resp.languages) {
+            codesSet.add(l.code);
+          }
         }
         codesSet.add(originalLang);
         const codes = Array.from(codesSet);
@@ -328,7 +336,6 @@ function ChapterTranslationPage() {
     chapterId,
     courseData,
     currentSlideIndex,
-    selectedOriginalTranscriptLanguage,
     chapterData?.slides?.[currentSlideIndex]?.slideId,
   ]);
 
@@ -1290,10 +1297,11 @@ function ChapterTranslationPage() {
 
           <div className="mb-6">
             <OnlyOfficeSlideEditor
+              key={`${courseId}-${chapterId}-${currentSlide?.slideId}-${targetLanguage}`}
               ref={onlyOfficeEditorRef}
               fileUrl={
                 currentSlide
-                  ? `/api/translation-downloads/pptx/${courseId}/${targetLanguage}/${currentSlide.partId}/${chapterId}/${currentSlide.slideId}/${fileBaseName}`
+                  ? `/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`
                   : null
               }
               className="w-full"
@@ -1307,37 +1315,39 @@ function ChapterTranslationPage() {
             />
           </div>
 
-          <PptLinkSection
-            courseId={courseId}
-            partId={currentSlide?.partId ?? ''}
-            chapterId={chapterId}
-            slideId={currentSlide?.slideId ?? ''}
-            fileName={fileBaseName}
-            language={targetLanguage}
-            onValidate={handleValidatePresentation}
-            validated={validationStates.presentationValidated}
-            leftComponent={
-              <Link
-                to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
-                params={{
-                  lang: i18n.language,
-                  courseId,
-                  chapterId,
-                  slideIndex: String(currentSlideIndex),
-                }}
-                className="md:hidden"
-              >
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="s"
-                  className="text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
+          {currentSlide?.slideId && currentSlide?.partId && (
+            <PptLinkSection
+              courseId={courseId}
+              partId={currentSlide.partId}
+              chapterId={chapterId}
+              slideId={currentSlide.slideId}
+              fileName={fileBaseName}
+              language={targetLanguage}
+              onValidate={handleValidatePresentation}
+              validated={validationStates.presentationValidated}
+              leftComponent={
+                <Link
+                  to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
+                  params={{
+                    lang: i18n.language,
+                    courseId,
+                    chapterId,
+                    slideIndex: String(currentSlideIndex),
+                  }}
+                  className="md:hidden"
                 >
-                  {versionLabel}
-                </Button>
-              </Link>
-            }
-          />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="s"
+                    className="text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
+                  >
+                    {versionLabel}
+                  </Button>
+                </Link>
+              }
+            />
+          )}
         </div>
       </div>
 
@@ -1358,28 +1368,145 @@ function ChapterTranslationPage() {
           })}
         </p>
 
-        <TranscriptionEditor
-          originalContent={displayedOriginalTranscript || ''}
-          translatedContent={currentSlide?.translatedContent || ''}
-          onTranslationChange={(value) =>
-            currentSlide && handleTranslationChange(currentSlide.slideId, value)
-          }
-          onGenerateAudio={handleGenerateAudio}
-          onValidateTranscription={handleValidateTranscription}
-          transcriptionValidated={validationStates.transcriptionValidated}
-          sourceLanguageOptions={transcriptLanguageAvailability}
-          sourceLanguageLoading={transcriptLanguagesLoading}
-          selectedSourceLanguage={selectedOriginalTranscriptLanguage}
-          onSourceLanguageChange={(code) =>
-            setSelectedOriginalTranscriptLanguage(code)
-          }
-          generateDisabled={audioAttempts >= MAX_AUDIO_TRIES}
-          triesLabel={
-            audioAttempts >= MAX_AUDIO_TRIES
-              ? 'You have no more tries'
-              : `Limit ${audioAttempts}/${MAX_AUDIO_TRIES} tries`
-          }
-        />
+        <div
+          style={{
+            backgroundColor: '#F5F5F5',
+            border: '1px solid #CCCCCC',
+            borderRadius: '8px',
+            padding: '20px',
+            boxShadow: '0px 1px 1px 0px #00000040',
+          }}
+        >
+          {/* Language Toggle */}
+          <div className="mb-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4">
+              {/* Source language selector */}
+              <div className="flex items-center gap-[10px]">
+                <span
+                  className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                  style={{ fontFamily: 'Rubik, sans-serif' }}
+                >
+                  {t('translate.language', { defaultValue: 'Language' })}
+                </span>
+                <LanguageDropdown
+                  options={transcriptLanguageAvailability ?? []}
+                  loading={transcriptLanguagesLoading}
+                  value={selectedOriginalTranscriptLanguage ?? ''}
+                  onChange={(code: string) => {
+                    const availability = transcriptLanguageAvailability.find(
+                      (l) => l.code === code,
+                    );
+                    if (availability?.available) {
+                      setSelectedOriginalTranscriptLanguage(code);
+                    }
+                  }}
+                  selectClassName="w-full sm:w-[225px]"
+                />
+              </div>
+              {/* Target language information (visible only on large screens) */}
+              <div className="hidden lg:flex items-center gap-2 lg:justify-start justify-start">
+                <span className="text-gray-400">⇄</span>
+                <span
+                  className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                  style={{ fontFamily: 'Rubik, sans-serif' }}
+                >
+                  {t('translate.translateTo', { defaultValue: 'Translate to' })}
+                </span>
+                <span className="text-orange-500 text-base sm:text-lg md:text-xl">
+                  {targetLanguageName}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Side-by-side Translation Text Areas */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* Original Content */}
+            <div
+              className="bg-white rounded-lg p-4 min-h-[200px]"
+              style={{ border: '1px solid #CCCCCC' }}
+            >
+              <div className="text-sm leading-relaxed text-gray-900 whitespace-pre-line">
+                {displayedOriginalTranscript ||
+                  t('translate.noTranscriptionAvailable', {
+                    defaultValue: 'No transcription available',
+                  })}
+              </div>
+            </div>
+
+            {/* Target language information (visible on small screens, outside the box) */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <span className="text-gray-400">⇄</span>
+              <span
+                className="text-base font-semibold text-gray-900"
+                style={{ fontFamily: 'Rubik, sans-serif' }}
+              >
+                {t('translate.translateTo', { defaultValue: 'Translate to' })}
+              </span>
+              <span className="text-orange-500 text-base">
+                {targetLanguageName}
+              </span>
+            </div>
+
+            {/* Translated Content */}
+            <div
+              className="bg-white rounded-lg p-4 min-h-[200px]"
+              style={{ border: '1px solid #CCCCCC' }}
+            >
+              <textarea
+                value={currentSlide?.translatedContent || ''}
+                onChange={(e) =>
+                  currentSlide &&
+                  handleTranslationChange(currentSlide.slideId, e.target.value)
+                }
+                placeholder={t('translate.enterTranslation', {
+                  defaultValue: 'Enter your translation here...',
+                })}
+                className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-sm leading-relaxed bg-transparent text-gray-900 textarea-scrollbar"
+                style={{ width: 'calc(100% + 18px)', marginRight: '-18px' }}
+              />
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-6">
+            {/* Left group: Generate audio + tries label */}
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+              <Button
+                onClick={handleGenerateAudio}
+                size="m"
+                variant="primary"
+                disabled={
+                  audioAttempts >= MAX_AUDIO_TRIES ||
+                  !validationStates.transcriptionValidated
+                }
+                className={`shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-sm sm:text-base md:text-lg leading-none font-medium ${
+                  audioAttempts >= MAX_AUDIO_TRIES ||
+                  !validationStates.transcriptionValidated
+                    ? 'opacity-60 cursor-not-allowed'
+                    : ''
+                }`}
+              >
+                {t('translate.generateAudio', {
+                  defaultValue: 'Generate audio',
+                })}
+              </Button>
+              <span className="text-orange-600 text-sm md:self-center">
+                {audioAttempts >= MAX_AUDIO_TRIES
+                  ? 'You have no more tries'
+                  : `Limit ${audioAttempts}/${MAX_AUDIO_TRIES} tries`}
+              </span>
+            </div>
+
+            <ValidationCheckbox
+              checked={validationStates.transcriptionValidated}
+              onToggle={handleValidateTranscription}
+              label={t('translate.validateTranscription', {
+                defaultValue: 'Validate transcription',
+              })}
+            />
+          </div>
+        </div>
 
         {/* Max tries reached notice */}
         {audioAttempts >= MAX_AUDIO_TRIES && (
@@ -1394,18 +1521,18 @@ function ChapterTranslationPage() {
           </p>
         )}
 
-        <AudioPlayer
-          courseId={courseId}
-          partId={currentSlide?.partId ?? ''}
-          chapterId={chapterId}
-          slideId={currentSlide?.slideId ?? ''}
-          fileName={fileBaseName}
-          language={targetLanguage}
-          validated={validationStates.audioValidated}
-          onValidate={handleValidateAudio}
-          generating={audioGenerating}
-          version={audioVersion}
-        />
+        {currentSlide?.slideId && (
+          <AudioPlayer
+            courseId={courseId}
+            chapterId={chapterId}
+            slideId={currentSlide.slideId}
+            language={targetLanguage}
+            validated={validationStates.audioValidated}
+            onValidate={handleValidateAudio}
+            generating={audioGenerating}
+            version={audioVersion}
+          />
+        )}
       </div>
 
       {/* Action Button - Next Slide or Create Video */}

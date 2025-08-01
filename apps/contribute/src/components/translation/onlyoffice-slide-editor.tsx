@@ -198,43 +198,33 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             ? 'host.docker.internal:3000'
             : 'api:3000';
 
-          // Kick off DocsAPI loading and token request concurrently
-          const tokenPromise = fetch('/api/translation-downloads/pptx-token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              courseId,
-              partId,
-              chapterId,
-              slideId,
-              language,
-              fileName,
-            }),
-          });
+          // Use direct download URL instead of token system to avoid authentication issues
+          let absoluteFileUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
 
-          const [, tokenResp] = await Promise.all([
-            loadDocsAPI(),
-            tokenPromise,
-          ]);
+          // Load DocsAPI and check if file exists
+          await loadDocsAPI();
 
-          if (!tokenResp.ok) {
-            if (tokenResp.status === 404) {
-              console.warn('PPTX file not found (token endpoint)');
+          // Test if file exists by making a HEAD request
+          const testResp = await fetch(absoluteFileUrl, { method: 'HEAD' });
+          if (!testResp.ok) {
+            if (testResp.status === 404) {
+              console.warn('PPTX file not found (direct endpoint)');
               setLoadingState('file-not-found');
             } else {
-              console.error('Failed to obtain OnlyOffice download token');
+              console.error('Failed to access PPTX file');
               setLoadingState('error');
             }
             return;
           }
-
-          const { downloadUrl } = await tokenResp.json();
-
-          let absoluteFileUrl: string = downloadUrl as string;
           if (isHybridDev) {
-            absoluteFileUrl = absoluteFileUrl
-              .replace('localhost:3000', apiHost)
-              .replace('127.0.0.1:3000', apiHost);
+            // Convert to absolute URL for OnlyOffice in Docker
+            const protocol = window.location.protocol;
+            absoluteFileUrl = `${protocol}//${apiHost}${absoluteFileUrl}`;
+          } else {
+            // Convert to full URL for production
+            const protocol = window.location.protocol;
+            const host = window.location.host;
+            absoluteFileUrl = `${protocol}//${host}${absoluteFileUrl}`;
           }
 
           // Generate a stable *unique* document key. Must be 1-20 ASCII chars.
@@ -255,13 +245,6 @@ const OnlyOfficeSlideEditorInner = forwardRef<
 
           const documentKey = hashFn(rawKey).substring(0, 20);
           documentKeyRef.current = documentKey;
-
-          console.log('OnlyOffice initialization params:', {
-            editorId: editorId.current,
-            documentKey,
-            absoluteFileUrl,
-            apiHost,
-          });
 
           // OnlyOffice configuration
           const config: any = {
@@ -655,15 +638,22 @@ const OnlyOfficeSlideEditorInner = forwardRef<
   },
 );
 
-// Memoize to avoid React re-rendering (and diffing) the DOM altered by OnlyOffice once mounted.
+// Force remount when slide changes to avoid DOM reconciliation issues
 export const OnlyOfficeSlideEditor = memo(
   OnlyOfficeSlideEditorInner,
-  (prev, next) =>
-    prev.fileUrl === next.fileUrl &&
-    prev.language === next.language &&
-    prev.slideId === next.slideId &&
-    prev.chapterId === next.chapterId &&
-    prev.partId === next.partId &&
-    prev.courseId === next.courseId &&
-    prev.mode === next.mode,
+  (prev, next) => {
+    // Force remount if slide changes to prevent React DOM reconciliation errors
+    if (prev.slideId !== next.slideId) {
+      return false;
+    }
+
+    return (
+      prev.fileUrl === next.fileUrl &&
+      prev.language === next.language &&
+      prev.chapterId === next.chapterId &&
+      prev.partId === next.partId &&
+      prev.courseId === next.courseId &&
+      prev.mode === next.mode
+    );
+  },
 );

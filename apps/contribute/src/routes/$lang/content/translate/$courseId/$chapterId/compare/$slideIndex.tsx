@@ -7,7 +7,8 @@ import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_o
 import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { OnlyOfficeSlideEditor } from '#src/components/translation/onlyoffice-slide-editor.tsx';
-import { LanguageDropdown, ValidationCheckbox } from '#src/components/ui';
+import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
+import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
@@ -111,7 +112,12 @@ function CompareSlidePage() {
   const [_hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
 
   const numericSlideIndex = Number(slideIndex);
-  const targetLanguage = Route.useSearch()?.targetLanguage || 'fr';
+  const targetLanguage =
+    Route.useSearch()?.targetLanguage ||
+    (typeof window !== 'undefined'
+      ? localStorage.getItem('targetLanguage')
+      : null) ||
+    'fr';
 
   // New helper to fetch language availability from the backend (single request)
   const fetchSlideLanguageAvailability = async (
@@ -622,7 +628,7 @@ function CompareSlidePage() {
     );
   }
 
-  if (error || !chapterData || !currentSlide) {
+  if (error || !chapterData) {
     return (
       <PageLayout
         title="Error"
@@ -632,7 +638,7 @@ function CompareSlidePage() {
       >
         <div className="text-center">
           <div className="text-red-600 mb-4">
-            Error: {error ?? 'Data not found'}
+            Error: {error ?? 'Chapter data not found'}
           </div>
           <button
             type="button"
@@ -641,6 +647,35 @@ function CompareSlidePage() {
           >
             Retry
           </button>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  if (!currentSlide) {
+    return (
+      <PageLayout
+        title="Error"
+        variant="light"
+        footerVariant="light"
+        className="flex justify-center items-center min-h-screen"
+      >
+        <div className="text-center">
+          <div className="text-red-600 mb-4">
+            Slide not found. Index: {slideIndex} (Numeric: {numericSlideIndex})
+            <br />
+            Available slides: {chapterData?.slides?.length || 0}
+            <br />
+            Slide IDs:{' '}
+            {chapterData?.slides?.map((s) => s.slideId).join(', ') || 'none'}
+          </div>
+          <Link
+            to="/$lang/content/translate/$courseId/$chapterId"
+            params={{ lang, courseId, chapterId }}
+            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 inline-block"
+          >
+            Go Back to Chapter
+          </Link>
         </div>
       </PageLayout>
     );
@@ -823,7 +858,7 @@ function CompareSlidePage() {
                   key={`original-${selectedOriginalLanguage}-${currentSlide?.slideId ?? ''}`}
                   fileUrl={
                     currentSlide
-                      ? `/api/translation-downloads/pptx/${courseId}/${originalLanguage}/${currentSlide.partId}/${chapterId}/${currentSlide.slideId}/${fileBaseName}`
+                      ? `/api/translation-downloads/pptx-by-path/${courseId}/${originalLanguage}/${chapterId}/${currentSlide.slideId}`
                       : null
                   }
                   className="w-full"
@@ -873,7 +908,7 @@ function CompareSlidePage() {
                   key={`proofread-${targetLanguage}-${currentSlide?.slideId ?? ''}`}
                   fileUrl={
                     currentSlide
-                      ? `/api/translation-downloads/pptx/${courseId}/${targetLanguage}/${currentSlide.partId}/${chapterId}/${currentSlide.slideId}/${fileBaseName}-proofread`
+                      ? `/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`
                       : null
                   }
                   className="w-full"
@@ -918,7 +953,7 @@ function CompareSlidePage() {
                       options={transcriptLanguageAvailability}
                       loading={transcriptLanguagesLoading}
                       value={selectedOriginalTranscriptLanguage}
-                      onChange={(code) => {
+                      onChange={(code: string) => {
                         const availability =
                           transcriptLanguageAvailability.find(
                             (l) => l.code === code,

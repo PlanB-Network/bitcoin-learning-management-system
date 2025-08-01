@@ -15,10 +15,8 @@ import PlayIcon from '#src/assets/icons/play.svg';
 
 interface AudioPlayerProps {
   courseId: string;
-  partId: string;
   chapterId: string;
   slideId: string;
-  fileName: string;
   language: string;
   onValidate: () => void;
   validated: boolean;
@@ -26,27 +24,23 @@ interface AudioPlayerProps {
   version?: number;
 }
 
-// Build the API URL that proxies the audio through the backend instead of exposing the raw S3 bucket.
+// Build the API URL that uses audio_resource_path from the database
 const buildAudioApiUrl = (
   courseId: string,
-  partId: string,
   chapterId: string,
   slideId: string,
-  fileName: string,
   lang: string,
   version?: number,
 ): string => {
-  // New schema: /api/translation-downloads/audio/<courseId>/<lang>/<partId>/<chapterId>/<slideId>/<fileName>`
-  const base = `/api/translation-downloads/audio/${courseId}/${lang}/${partId}/${chapterId}/${slideId}/${fileName}`;
+  // New endpoint that reads audio_resource_path from course_translation_slides table
+  const base = `/api/translation-downloads/audio/${courseId}/${lang}/${chapterId}/${slideId}`;
   return version ? `${base}?v=${version}` : base;
 };
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   courseId,
-  partId,
   chapterId,
   slideId,
-  fileName,
   language,
   onValidate,
   validated,
@@ -108,15 +102,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   }, []);
 
   // Build audio URL early so hooks below can use it safely
-  const url = buildAudioApiUrl(
-    courseId,
-    partId,
-    chapterId,
-    slideId,
-    fileName,
-    language,
-    version,
-  );
+  const url = buildAudioApiUrl(courseId, chapterId, slideId, language, version);
 
   // Fetch & decode audio ONCE to build a high-resolution amplitude array.
   useEffect(() => {
