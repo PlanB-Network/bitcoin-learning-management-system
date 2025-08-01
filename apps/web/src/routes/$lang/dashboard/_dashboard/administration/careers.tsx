@@ -549,13 +549,14 @@ const generateCandidateFilePdf = async (
   doc.setFontSize(18);
   doc.setFont('helvetica', 'bold');
   doc.text(
-    `${profile.firstName || ''} ${profile.lastName || ''}${profile.country ? ` - ${profile.country}` : ''}`.trim(),
+    `${profile.firstName || ''} ${profile.lastName || ''}`.trim(),
     doc.internal.pageSize.getWidth() / 2,
     15,
     { align: 'center' },
   );
   y = 30;
 
+  addData('Country:', profile.country);
   addData('Email:', profile.email);
   addData('LinkedIn:', profile.linkedin);
   addData('GitHub:', profile.github);
@@ -673,10 +674,11 @@ const generateCandidateFilePdf = async (
           .map((course) => {
             const { courseDetails } = course;
             return `${courseDetails?.name} (${courseDetails?.index.toLocaleUpperCase()})${
-              course.totalScore !== undefined
+              course.totalScore !== undefined &&
+              course.courseDetails?.teachingFormat === 'professor_led'
                 ? `\n• Grade: ${course.totalScore}/100`
                 : ''
-            }${course.ranking !== undefined ? `\n• Ranking: ${course.ranking}/${course.totalStudents}` : ''}`;
+            }${course.ranking !== undefined && course.courseDetails?.teachingFormat === 'professor_led' ? `\n• Ranking: ${course.ranking}/${course.totalStudents}` : ''}`;
           })
           .join('\n\n')
       : null;
