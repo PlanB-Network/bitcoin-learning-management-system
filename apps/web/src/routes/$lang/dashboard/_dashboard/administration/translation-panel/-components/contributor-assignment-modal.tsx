@@ -1,7 +1,7 @@
+import { LANGUAGES_MAP } from '@blms/shared';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineViewGrid } from 'react-icons/hi';
-
 import CrossIcon from '#src/assets/icons/cross_red.svg';
 import ProfileIcon from '#src/assets/icons/groups.svg';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
@@ -61,26 +61,16 @@ export const ContributorAssignmentModal = ({
   // Fetch languages when modal opens
   const fetchLanguages = async () => {
     try {
-      // Fetch full language list and courses with TODO translations in parallel
-      const [allLanguages, todoCourses] = await Promise.all([
-        trpcClient.user.translation.getAvailableLanguages.query(),
-        trpcClient.content.getCoursesWithTodoTranslations.query(),
-      ]);
-
-      // Build a unique set of language codes that still have 'todo' translations
-      const todoLanguageSet = new Set<string>();
-      (todoCourses || []).forEach((course: any) => {
-        (course.todoLanguages || []).forEach((code: string) =>
-          todoLanguageSet.add(code),
-        );
-      });
-
-      // Keep only languages present in the TODO set
-      const filteredLanguages = (allLanguages || []).filter((lang: any) =>
-        todoLanguageSet.has(lang.code),
+      // Construit la liste des langues à partir de LANGUAGES_MAP partagé
+      const allLanguages = Object.entries(LANGUAGES_MAP).map(
+        ([code, name]) => ({
+          code,
+          name,
+        }),
       );
 
-      setLanguages(filteredLanguages);
+      // Nous exclurons plus tard celles déjà assignées dans le <select>
+      setLanguages(allLanguages);
     } catch (error) {
       console.error('Error fetching languages:', error);
       setErrorMessage('Failed to fetch languages');

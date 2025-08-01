@@ -54,7 +54,7 @@ export const getCourseTranslationSlidesQuery = (
     WHERE cts.course_id = ${courseId}
       AND cts.language = LOWER(${language})
       AND cts.chapter_id = ${chapterId}
-    ORDER BY cts.slide_id
+    ORDER BY cts.slide_number
   `;
 };
 
@@ -78,6 +78,7 @@ export const getChapterTranslationContextQuery = (
       cc.chapter_id AS "chapterId",
       cc.chapter_index AS "chapterIndex",
       ccl_en.title AS "chapterTitle",
+      c.original_language AS "originalLanguage",
       ct.status AS "translationStatus",
       ctc.status AS "chapterTranslationStatus"
     FROM content.courses c

@@ -1,5 +1,5 @@
 import { getStatusText } from '@blms/shared';
-import type { CourseDetails, CourseInfo } from '@blms/types';
+import type { CourseDetails, CourseLanguageInfo } from '@blms/types';
 import { Loader } from '@blms/ui';
 import type React from 'react';
 import { useEffect, useState } from 'react';
@@ -9,7 +9,7 @@ import { CourseProgressBar } from './course-progress-bar.js';
 import { LanguageSelector } from './language-selector.js';
 
 interface CourseDetailsQueries {
-  getCourseLanguages: (params: { id: string }) => Promise<CourseInfo>;
+  getCourseLanguages: (params: { id: string }) => Promise<CourseLanguageInfo>;
   getCourseDetails: (params: {
     id: string;
     language: string;
@@ -66,7 +66,7 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
   const { courseId, language = 'fr' } = options;
 
   // State for course languages
-  const [courseInfo, setCourseInfo] = useState<CourseInfo | null>(null);
+  const [courseInfo, setCourseInfo] = useState<CourseLanguageInfo | null>(null);
   const [courseInfoLoading, setCourseInfoLoading] = useState(true);
   const [courseInfoError, setCourseInfoError] = useState<any>(null);
 
@@ -122,6 +122,11 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
     fetchCourseDetails();
   }, [courseId, selectedLanguage]);
 
+  // Sync selectedLanguage with props when language changes
+  useEffect(() => {
+    setSelectedLanguage(language);
+  }, [language]);
+
   const handleLanguageChange = (languageCode: string) => {
     setSelectedLanguage(languageCode);
     onLanguageChange?.(options.courseId, languageCode);
@@ -158,13 +163,9 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
         }}
       >
         <LanguageSelector
-          languages={courseInfo.languages.map((l) => ({
-            translationStatus: 'todo',
-            assigneeId: null,
-            assigneeUsername: null,
-            assigneeDisplayName: null,
-            ...l,
-          }))}
+          languages={courseInfo.languages.filter(
+            (l) => l.translationStatus !== 'published',
+          )}
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
           languageLabel={labels.language}

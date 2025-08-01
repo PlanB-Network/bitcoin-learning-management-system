@@ -8,6 +8,7 @@ interface TranslationPanelHeaderProps {
   showTabs?: boolean;
   children?: React.ReactNode;
   isUserDetailsPage?: boolean;
+  customTitle?: string;
 }
 
 export const TranslationPanelHeader = ({
@@ -15,6 +16,7 @@ export const TranslationPanelHeader = ({
   showTabs = true,
   children,
   isUserDetailsPage = false,
+  customTitle,
 }: TranslationPanelHeaderProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ export const TranslationPanelHeader = ({
       {/* Header */}
       <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
         <h1 className="display-small-32px">
-          {t('dashboard.adminPanel.translationPanel.title')}
+          {customTitle || t('dashboard.adminPanel.translationPanel.title')}
         </h1>
         <TextTag
           size={isTablet ? 'verySmall' : 'small'}

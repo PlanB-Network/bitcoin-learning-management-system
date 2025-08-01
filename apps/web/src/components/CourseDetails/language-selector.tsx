@@ -1,5 +1,5 @@
-import { isLanguageClickable } from '@blms/shared';
 import type { CourseLanguage } from '@blms/types';
+import { Button } from '@blms/ui';
 import type React from 'react';
 
 interface LanguageSelectorProps {
@@ -24,25 +24,39 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
       </span>
       <div className="flex flex-wrap gap-2 mt-2">
         {languages.map((lang) => {
-          const isClickable = isLanguageClickable(lang.translationStatus);
           const isSelected = lang.code === selectedLanguage;
+          const isDisabled = ['todo', 'in_progress'].includes(
+            lang.translationStatus,
+          );
+
+          // Determine button variant based on status
+          let variant: 'primary' | 'outline' | 'ghost' = 'outline';
+          if (['todo', 'in_progress'].includes(lang.translationStatus)) {
+            variant = 'ghost'; // Grayed out and non-clickable
+          } else if (
+            ['ready_for_review', 'under_review', 'reviewed'].includes(
+              lang.translationStatus,
+            )
+          ) {
+            variant = isSelected ? 'primary' : 'outline'; // Orange and clickable
+          }
 
           return (
-            <button
+            <Button
               key={lang.code}
-              type="button"
-              onClick={() => isClickable && onLanguageChange(lang.code)}
-              disabled={!isClickable}
-              className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
-                isSelected && isClickable
-                  ? 'bg-orange-500 text-white border-orange-500'
-                  : isClickable
-                    ? 'bg-white text-orange-500 border-orange-500 hover:bg-orange-500 hover:text-white'
-                    : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-              }`}
+              variant={variant}
+              size="s"
+              onClick={() => {
+                if (!isDisabled) {
+                  onLanguageChange(lang.code);
+                }
+              }}
+              disabled={isDisabled}
+              className="capitalize"
+              style={isDisabled ? { pointerEvents: 'none', opacity: 0.5 } : {}}
             >
               {lang.name || lang.code.toUpperCase()}
-            </button>
+            </Button>
           );
         })}
       </div>

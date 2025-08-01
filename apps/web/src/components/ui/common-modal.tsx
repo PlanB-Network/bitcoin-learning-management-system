@@ -19,7 +19,6 @@ export const CommonModal: React.FC<CommonModalProps> = ({
   icon,
   children,
   actions,
-  isSuccess = false,
   errorMessage,
   maxWidth = 'max-w-md',
 }) => {

@@ -22,6 +22,7 @@ export interface ChapterTranslationContext {
   chapterId: string;
   chapterIndex: number;
   chapterTitle: string;
+  originalLanguage: string;
   translationStatus: string;
   chapterTranslationStatus: string;
 }

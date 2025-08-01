@@ -1,6 +1,6 @@
 import type {
   CourseDetails,
-  CourseInfo,
+  CourseLanguageInfo,
   CourseTranslationDetailsServiceResponse,
 } from '@blms/types';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
@@ -28,7 +28,9 @@ function CourseDetailsComponent() {
   const { t } = useTranslation();
 
   const queries = {
-    getCourseLanguages: async (params: { id: string }): Promise<CourseInfo> => {
+    getCourseLanguages: async (params: {
+      id: string;
+    }): Promise<CourseLanguageInfo> => {
       const response =
         await trpcClient.content.getCourseLanguages.query(params);
       return {
@@ -36,9 +38,20 @@ function CourseDetailsComponent() {
         index: response.index,
         name: response.name || 'Unknown Course',
         languages: response.languages.map(
-          (l: { code: string; name: string | null }) => ({
+          (l: {
+            code: string;
+            name: string | null;
+            translationStatus: string;
+            assigneeId: string | null;
+            assigneeUsername: string | null;
+            assigneeDisplayName: string | null;
+          }) => ({
             code: l.code,
             name: l.name ?? '',
+            translationStatus: l.translationStatus,
+            assigneeId: l.assigneeId,
+            assigneeUsername: l.assigneeUsername,
+            assigneeDisplayName: l.assigneeDisplayName,
           }),
         ),
       };
@@ -79,8 +92,11 @@ function CourseDetailsComponent() {
   };
 
   const handleChapterAction = (chapterId: string) => {
-    console.log('View chapter details:', chapterId);
-    // TODO: Implement navigation to chapter details
+    navigate({
+      to: '/$lang/dashboard/administration/translation-panel/chapter/$chapterId',
+      params: { chapterId },
+      search: { courseId, language },
+    });
   };
 
   // Navigation breadcrumb

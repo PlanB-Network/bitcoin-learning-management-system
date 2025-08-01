@@ -307,6 +307,27 @@ const getCourseTranslationChapterProgressProcedure = contributorProcedure
     return createGetCourseTranslationChapterProgress(ctx.dependencies)(input);
   });
 
+// Admin aliases (reuse same handlers)
+const adminGetCourseTranslationSlidesProcedure = adminProcedure
+  .input(getCourseTranslationSlidesInputSchema)
+  .output(chapterTranslationDataSchema)
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationSlides(ctx.dependencies)(input);
+  });
+
+const adminUpdateCourseTranslationSlideProcedure = adminProcedure
+  .input(updateCourseTranslationSlideInputSchema)
+  .output(courseTranslationSlideSchema)
+  .mutation(({ ctx, input }) => {
+    return createUpdateCourseTranslationSlide(ctx.dependencies)(input);
+  });
+
+const adminGetCourseTranslationChapterProgressProcedure = adminProcedure
+  .input(getCourseTranslationChapterProgressInputSchema)
+  .query(({ ctx, input }) => {
+    return createGetCourseTranslationChapterProgress(ctx.dependencies)(input);
+  });
+
 export const translationsRouter = createTRPCRouter({
   getAvailableCourseTranslations: getAvailableCourseTranslationsProcedure,
   getUserCourseTranslations: getUserCourseTranslationsProcedure,
@@ -330,4 +351,9 @@ export const translationsRouter = createTRPCRouter({
   updateCourseTranslationSlide: updateCourseTranslationSlideProcedure,
   getCourseTranslationChapterProgress:
     getCourseTranslationChapterProgressProcedure,
+  // Admin slide endpoints
+  adminGetCourseTranslationSlides: adminGetCourseTranslationSlidesProcedure,
+  adminUpdateCourseTranslationSlide: adminUpdateCourseTranslationSlideProcedure,
+  adminGetCourseTranslationChapterProgress:
+    adminGetCourseTranslationChapterProgressProcedure,
 });

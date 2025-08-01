@@ -359,6 +359,7 @@ export const chapterTranslationContextSchema = courseBasicSchema
       courseName: z.string(),
       partTitle: z.string(),
       chapterTitle: z.string(),
+      originalLanguage: z.string(),
       translationStatus: z.string(),
       chapterTranslationStatus: z.string(),
     }),

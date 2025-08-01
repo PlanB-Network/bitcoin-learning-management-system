@@ -7,6 +7,7 @@ import { createRestEventRoutes } from './events.js';
 import { createRestFilesRoutes } from './files.js';
 import { createRestMetadataRoutes } from './metadata.js';
 import { createRestPaymentRoutes } from './payment.js';
+import { createRestPngViewerRoutes } from './png-viewer.js';
 import { createRestSyncRoutes } from './sync.js';
 import { createRestTranslationAudioRoutes } from './translation-audio.js';
 import { createRestTranslationDownloadRoutes } from './translation-downloads.js';
@@ -20,6 +21,7 @@ export const createRestRouter = async (
 
   await createRestFilesRoutes(dependencies, router);
   await createRestTranslationDownloadRoutes(dependencies, router);
+  await createRestPngViewerRoutes(dependencies, router);
   await createRestTranslationAudioRoutes(dependencies, router);
   // await createRestTranslationUploadRoutes(dependencies, router);
   await createRestTranslationUploadRoutes(dependencies, router);

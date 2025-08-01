@@ -14,13 +14,12 @@ import {
   createUpdateCourseTranslationUpload,
 } from '@blms/service-content';
 import AdmZip from 'adm-zip';
-
 import type { Router } from 'express';
 import formidable from 'formidable';
-
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { convertPptxToPngs } from '#src/utils/convert-api.js';
 
 // Allowed hostnames for remote zip downloads
 const ALLOWED_DOWNLOAD_HOSTNAMES = (
@@ -231,10 +230,10 @@ async function insertSlidesFromManifest(
 
           const { pptx: pptxFile, text: textFile } = filePair;
 
-          // Derive slide number from filename part after '_'
+          // Derive slide number from filename part after the last '_' before the extension
           let slideNumber = 0;
           try {
-            const match = /_(\d+)\./.exec(textFile);
+            const match = /_(\d+)(?=\.[^.]+$)/.exec(textFile);
             if (match) slideNumber = Number(match[1]);
           } catch {}
 
@@ -536,6 +535,21 @@ export const createRestTranslationUploadRoutes = async (
           contentType:
             'application/vnd.openxmlformats-officedocument.presentationml.presentation',
         });
+
+        // After successful upload → convert to PNG slides via ConvertAPI
+        try {
+          const pptxDirPrefix = pptxKey.substring(
+            0,
+            pptxKey.lastIndexOf('/') + 1,
+          );
+          const baseNameNoExt = base.replace(/\.pptx$/i, '');
+          await convertPptxToPngs(dependencies, pptxDirPrefix, baseNameNoExt);
+        } catch (err) {
+          console.error(
+            '[UPLOAD] Failed to convert PPTX to PNGs via ConvertAPI',
+            err,
+          );
+        }
       }
 
       // each txt => one DB row
