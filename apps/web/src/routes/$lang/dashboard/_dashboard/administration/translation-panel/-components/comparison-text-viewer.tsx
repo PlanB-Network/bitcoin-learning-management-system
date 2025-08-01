@@ -32,7 +32,7 @@ export function ComparisonTextViewer({
             className="text-base font-semibold text-gray-900"
             style={{ fontFamily: 'Rubik, sans-serif' }}
           >
-            Language :
+            {t('translate.language', { defaultValue: 'Language' })} :
           </span>
           <span
             className="text-orange-500 text-base"

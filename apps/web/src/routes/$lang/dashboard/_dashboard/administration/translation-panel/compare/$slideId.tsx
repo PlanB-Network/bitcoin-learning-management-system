@@ -119,7 +119,10 @@ function PngComparisonPage() {
           onClick={handleBack}
           className="flex items-center gap-1 text-orange-600 hover:text-orange-700 text-sm mb-6"
         >
-          ← {t('words.back')}
+          ←{' '}
+          {t('translate.comparison.backToChapter', {
+            defaultValue: 'Back to chapter',
+          })}
         </button>
 
         {/* Course and Chapter Header */}

@@ -355,14 +355,18 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             >
               <img
                 src={isPlaying ? PauseIcon : PlayIcon}
-                alt={isPlaying ? 'Pause' : 'Play'}
+                alt={
+                  isPlaying
+                    ? t('translate.pause', { defaultValue: 'Pause' })
+                    : t('translate.play', { defaultValue: 'Play' })
+                }
                 className="w-[34px] h-[35px]"
               />
             </button>
           ) : (
             <img
               src={PlayIcon}
-              alt="Play"
+              alt={t('translate.play', { defaultValue: 'Play' })}
               className="w-[34px] h-[35px] opacity-30"
             />
           )}
@@ -423,7 +427,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           >
             <img
               src={Back15Icon}
-              alt="Rewind 15 seconds"
+              alt={t('translate.rewind15Seconds', {
+                defaultValue: 'Rewind 15 seconds',
+              })}
               className="w-[22px] h-[23.5px]"
             />
           </button>
@@ -446,7 +452,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           >
             <img
               src={Forward15Icon}
-              alt="Forward 15 seconds"
+              alt={t('translate.forward15Seconds', {
+                defaultValue: 'Forward 15 seconds',
+              })}
               className="w-[22px] h-[23.5px]"
             />
           </button>

@@ -172,7 +172,9 @@ function ChapterDetailsPage() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>Back to course</title>
+            <title>
+              {t('translate.backToCourse', { defaultValue: 'Back to course' })}
+            </title>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -267,7 +269,11 @@ function ChapterDetailsPage() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <title>Previous arrow</title>
+                <title>
+                  {t('translate.slideNavigation.previous', {
+                    defaultValue: 'Previous',
+                  })}
+                </title>
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -275,7 +281,11 @@ function ChapterDetailsPage() {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              <span>{t('words.previous', { defaultValue: 'Previous' })}</span>
+              <span>
+                {t('translate.slideNavigation.previous', {
+                  defaultValue: 'Previous',
+                })}
+              </span>
             </button>
 
             <div className="flex items-center space-x-4">
@@ -294,14 +304,20 @@ function ChapterDetailsPage() {
               disabled={slideIndex >= data.slides.length - 1}
               className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-gray-400 transition-colors"
             >
-              <span>{t('words.next', { defaultValue: 'Next' })}</span>
+              <span>
+                {t('translate.slideNavigation.next', { defaultValue: 'Next' })}
+              </span>
               <svg
                 className="w-4 h-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <title>Next arrow</title>
+                <title>
+                  {t('translate.slideNavigation.next', {
+                    defaultValue: 'Next',
+                  })}
+                </title>
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

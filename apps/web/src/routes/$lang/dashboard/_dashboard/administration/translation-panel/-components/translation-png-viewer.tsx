@@ -164,7 +164,11 @@ export function PngViewer({
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <title>Image not found</title>
+                        <title>
+                          {t('translate.imageNotFound', {
+                            defaultValue: 'Image not found',
+                          })}
+                        </title>
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -174,7 +178,10 @@ export function PngViewer({
                       </svg>
                     </div>
                     <p className="text-sm text-gray-600">
-                      Slide {currentSlideIndex + 1} not available
+                      {t('translate.slideNotAvailable', {
+                        defaultValue: 'Slide {{slideNumber}} not available',
+                        slideNumber: currentSlideIndex + 1,
+                      })}
                     </p>
                   </div>
                 </div>
@@ -191,7 +198,11 @@ export function PngViewer({
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <title>No slides found</title>
+                  <title>
+                    {t('translate.noSlidesFound', {
+                      defaultValue: 'No slides found',
+                    })}
+                  </title>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

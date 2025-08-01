@@ -126,7 +126,7 @@ export function ComparisonPngViewer({
           className="text-base font-semibold text-gray-900"
           style={{ fontFamily: 'Rubik, sans-serif' }}
         >
-          Language :
+          {t('translate.language', { defaultValue: 'Language' })} :
         </span>
         <span
           className="text-orange-500 text-base"
@@ -173,7 +173,11 @@ export function ComparisonPngViewer({
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <title>Image not found</title>
+                        <title>
+                          {t('translate.imageNotFound', {
+                            defaultValue: 'Image not found',
+                          })}
+                        </title>
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -183,8 +187,17 @@ export function ComparisonPngViewer({
                       </svg>
                     </div>
                     <p className="text-sm text-gray-600">
-                      {forceType === 'original' ? 'Original' : 'Translated'}{' '}
-                      slide {currentSlideIndex + 1} not available
+                      {forceType === 'original'
+                        ? t('translate.comparison.originalVersion', {
+                            defaultValue: 'Original Version',
+                          })
+                        : t('translate.comparison.translatedVersion', {
+                            defaultValue: 'Translated Version',
+                          })}{' '}
+                      {t('translate.slideNotAvailable', {
+                        defaultValue: 'Slide {{slideNumber}} not available',
+                        slideNumber: currentSlideIndex + 1,
+                      })}
                     </p>
                   </div>
                 </div>
@@ -201,7 +214,11 @@ export function ComparisonPngViewer({
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <title>No slides found</title>
+                  <title>
+                    {t('translate.noSlidesFound', {
+                      defaultValue: 'No slides found',
+                    })}
+                  </title>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
