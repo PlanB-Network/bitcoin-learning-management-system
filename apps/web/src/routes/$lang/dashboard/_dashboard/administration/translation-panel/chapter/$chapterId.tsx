@@ -1,18 +1,21 @@
 import type { ChapterTranslationData, CourseDetails } from '@blms/types';
 import { Loader } from '@blms/ui';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import React, { useEffect, useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTranslationPanelNavigation } from '#src/hooks/use-translation-panel-navigation.ts';
 import { EnhancedContributorCard } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/contributor-information-card.tsx';
 import { TranslationAudioSection } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-audio-section.tsx';
 import { PngViewer } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-png-viewer.tsx';
 import { TranslationTextViewer } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-text-viewer.tsx';
+import {
+  calculateSlideIndex,
+  generateFileBaseName,
+} from '#src/utils/translation-panel.ts';
 import { trpcClient } from '#src/utils/trpc.js';
+import { SlideNavigation } from '../-components/slide-navigation.tsx';
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 
-// ------------------
-// Route
-// ------------------
 export const Route = createFileRoute(
   '/$lang/dashboard/_dashboard/administration/translation-panel/chapter/$chapterId',
 )({
@@ -28,30 +31,23 @@ export const Route = createFileRoute(
 function ChapterDetailsPage() {
   const { chapterId } = Route.useParams();
   const { courseId, language, slide } = Route.useSearch();
-  const navigate = useNavigate();
   const { t } = useTranslation();
+  const { navigateToCourse, navigateToComparison } =
+    useTranslationPanelNavigation({ courseId, language });
 
   const [data, setData] = useState<ChapterTranslationData | null>(null);
   const [courseDetails, setCourseDetails] = useState<CourseDetails | null>(
     null,
   );
-  const [slideIndex, setSlideIndex] = useState(() => {
-    const num = Number(slide);
-    return isNaN(num) || num <= 0 ? 0 : num - 1;
-  });
+  const [slideIndex, setSlideIndex] = useState(() =>
+    calculateSlideIndex(slide),
+  );
 
-  // Compute base file name (e.g. 1.2_0) that matches naming convention for audio/PPTX resources
-  const fileBaseName = React.useMemo(() => {
-    if (!data) return '';
-    const partIdx = data.context.partIndex;
-    const chapIdx = data.context.chapterIndex;
-    const current = data.slides?.[slideIndex];
-    if (!current) return '';
-    const idx = current.slideNumber ? current.slideNumber - 1 : slideIndex;
-    return `${partIdx}.${chapIdx}_${idx}`;
-  }, [data, slideIndex]);
+  const fileBaseName = useMemo(
+    () => generateFileBaseName(data, slideIndex),
+    [data, slideIndex],
+  );
   const [loading, setLoading] = useState(true);
-  // Removed pngAvailability state - passed directly to PngViewer
 
   // Fetch data
   useEffect(() => {
@@ -72,19 +68,7 @@ function ChapterDetailsPage() {
         ]);
         if (!cancelled) {
           setData(slidesResp as ChapterTranslationData);
-          // courseResp is already in the correct CourseTranslationDetailsServiceResponse format
-          const adaptedCourseDetails: CourseDetails = {
-            id: courseResp.id,
-            index: courseResp.index,
-            courseName: courseResp.courseName,
-            translationStatus: courseResp.translationStatus,
-            assigneeDisplayName: courseResp.assigneeDisplayName,
-            progress: courseResp.progress,
-            totalChapters: courseResp.totalChapters,
-            completedChapters: courseResp.completedChapters,
-            parts: courseResp.parts,
-          };
-          setCourseDetails(adaptedCourseDetails);
+          setCourseDetails(courseResp as CourseDetails);
         }
       } catch (err) {
         console.error('Error loading chapter details', err);
@@ -102,31 +86,34 @@ function ChapterDetailsPage() {
   // Removed PNG availability fetch - PngViewer handles this internally
 
   useEffect(() => {
-    const num = Number(slide);
-    setSlideIndex(isNaN(num) || num <= 0 ? 0 : num - 1);
-  }, [data, slide]);
+    setSlideIndex(calculateSlideIndex(slide));
+  }, [slide]);
 
   // Removed pngAvailability effect - no longer needed
 
-  // Breadcrumb back to course
   const handleBack = () => {
-    navigate({
-      to: '/$lang/dashboard/administration/translation-panel/course/$courseId',
-      params: { courseId },
-      search: { language },
-    });
+    navigateToCourse(courseId, language);
   };
 
-  // Navigate to comparison page
   const handleCompare = () => {
     const currentSlide = data?.slides?.[slideIndex];
     if (currentSlide) {
-      navigate({
-        to: '/$lang/dashboard/administration/translation-panel/compare/$slideId',
-        params: { slideId: currentSlide.slideId },
-        search: { courseId, language, chapterId, partId: currentSlide.partId },
-      });
+      navigateToComparison(
+        currentSlide.slideId,
+        currentSlide.partId,
+        chapterId,
+      );
     }
+  };
+
+  const handlePreviousSlide = () => {
+    setSlideIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleNextSlide = () => {
+    setSlideIndex((prev) =>
+      data && prev < data.slides.length - 1 ? prev + 1 : prev,
+    );
   };
 
   if (loading) {
@@ -150,7 +137,7 @@ function ChapterDetailsPage() {
   // Find current chapter status and creation date
   const currentChapter = courseDetails?.parts
     ?.flatMap((part) => part.chapters)
-    ?.find((chapter) => chapter.chapterId === chapterId);
+    .find((chapter) => chapter.chapterId === chapterId);
 
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
@@ -212,7 +199,7 @@ function ChapterDetailsPage() {
         </div>
 
         {/* PNG Viewer - Interface slides */}
-        {currentSlide && currentSlide.pptResourcePath && (
+        {currentSlide?.pptResourcePath && (
           <div className="mt-6">
             <PngViewer
               courseId={courseId}
@@ -254,79 +241,14 @@ function ChapterDetailsPage() {
           </div>
         )}
 
-        {/* Navigation Buttons - Bottom of Page */}
-        {data && data.slides.length > 1 && (
-          <div className="mt-8 flex justify-between items-center bg-white border rounded-lg p-4">
-            <button
-              type="button"
-              onClick={() => setSlideIndex((prev) => Math.max(prev - 1, 0))}
-              disabled={slideIndex === 0}
-              className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-gray-400 transition-colors"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <title>
-                  {t('translate.slideNavigation.previous', {
-                    defaultValue: 'Previous',
-                  })}
-                </title>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              <span>
-                {t('translate.slideNavigation.previous', {
-                  defaultValue: 'Previous',
-                })}
-              </span>
-            </button>
-
-            <div className="flex items-center space-x-4">
-              <span className="text-sm font-medium text-gray-900">
-                {slideIndex + 1} / {data.slides.length}
-              </span>
-            </div>
-
-            <button
-              type="button"
-              onClick={() =>
-                setSlideIndex((prev) =>
-                  prev < data.slides.length - 1 ? prev + 1 : prev,
-                )
-              }
-              disabled={slideIndex >= data.slides.length - 1}
-              className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-gray-400 transition-colors"
-            >
-              <span>
-                {t('translate.slideNavigation.next', { defaultValue: 'Next' })}
-              </span>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <title>
-                  {t('translate.slideNavigation.next', {
-                    defaultValue: 'Next',
-                  })}
-                </title>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
+        {/* Navigation Buttons */}
+        {data && (
+          <SlideNavigation
+            currentSlide={slideIndex}
+            totalSlides={data.slides.length}
+            onPrevious={handlePreviousSlide}
+            onNext={handleNextSlide}
+          />
         )}
       </TranslationPanelHeader>
     </div>

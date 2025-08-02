@@ -1,7 +1,7 @@
 import { Tabs, TabsList, TabsTrigger, TextTag } from '@blms/ui';
-import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { useTranslationPanelNavigation } from '#src/hooks/use-translation-panel-navigation.ts';
 
 interface TranslationPanelHeaderProps {
   activeTab?: 'requests' | 'content' | 'users' | 'reports' | 'translate';
@@ -19,16 +19,12 @@ export const TranslationPanelHeader = ({
   customTitle,
 }: TranslationPanelHeaderProps) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const isTablet = useSmaller('lg');
   const isMobile = useSmaller('md');
+  const { navigateToMain } = useTranslationPanelNavigation({});
 
   const handleTabChange = (tab: string) => {
-    // Navigate to the main translation panel with the selected tab
-    navigate({
-      to: '/$lang/dashboard/administration/translation-panel',
-      search: { tab },
-    });
+    navigateToMain(tab);
   };
 
   return (

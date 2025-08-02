@@ -1,11 +1,17 @@
 import type { ChapterTranslationData } from '@blms/types';
 import { Loader } from '@blms/ui';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubTabsSwitch } from '#src/components/ui/sub-tabs-switch.tsx';
-import { ComparisonPngViewer } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/comparison-png-viewer.tsx';
-import { ComparisonTextViewer } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/comparison-text-viewer.tsx';
+import { useTranslationPanelNavigation } from '#src/hooks/use-translation-panel-navigation.ts';
+import { ComparisonContent } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/comparison-content.tsx';
+import { ComparisonHeader } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/comparison-header.tsx';
+import {
+  findSlideById,
+  findSlideIndexById,
+  getOriginalLanguage,
+} from '#src/utils/translation-panel.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 import { TranslationPanelHeader } from '../-components/translation-panel-header.tsx';
 
@@ -23,9 +29,12 @@ export const Route = createFileRoute(
 
 function PngComparisonPage() {
   const { slideId } = Route.useParams();
-  const { courseId, language, chapterId, partId } = Route.useSearch();
-  const navigate = useNavigate();
+  const { courseId, language, chapterId } = Route.useSearch();
   const { t } = useTranslation();
+  const { navigateToChapter } = useTranslationPanelNavigation({
+    courseId,
+    language,
+  });
 
   const [data, setData] = useState<ChapterTranslationData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -33,6 +42,15 @@ function PngComparisonPage() {
     'presentations',
   );
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  // Memoized computations
+  const currentSlide = useMemo(() => {
+    return data ? findSlideById(data.slides, slideId) : null;
+  }, [data, slideId]);
+
+  const originalLanguage = useMemo(() => {
+    return data ? getOriginalLanguage(data.context) : 'en';
+  }, [data]);
 
   // Fetch slide data
   useEffect(() => {
@@ -61,27 +79,24 @@ function PngComparisonPage() {
     return () => {
       cancelled = true;
     };
-  }, [courseId, language, chapterId, slideId, partId]);
+  }, [courseId, language, chapterId]);
 
   // After data is loaded, fix the current slide index to the array position
   useEffect(() => {
     if (!data) return;
-    const currentSlideArrayIndex = data.slides.findIndex(
-      (slide) => slide.slideId === slideId,
-    );
-    if (currentSlideArrayIndex !== -1) {
-      setCurrentSlideIndex(currentSlideArrayIndex);
+    const slideArrayIndex = findSlideIndexById(data.slides, slideId);
+    if (slideArrayIndex !== -1) {
+      setCurrentSlideIndex(slideArrayIndex);
     }
   }, [data, slideId]);
 
-  // Navigate back to chapter, keep current slide number based on array position
   const handleBack = () => {
-    const slideNumber = currentSlideIndex + 1; // Use array position like in $chapterId
-    navigate({
-      to: '/$lang/dashboard/administration/translation-panel/chapter/$chapterId',
-      params: { chapterId },
-      search: { courseId, language, slide: slideNumber },
-    });
+    const slideNumber = currentSlideIndex + 1;
+    navigateToChapter(chapterId, slideNumber);
+  };
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId as 'presentations' | 'content');
   };
 
   if (loading) {
@@ -100,7 +115,7 @@ function PngComparisonPage() {
     );
   }
 
-  const currentSlide = data.slides.find((slide) => slide.slideId === slideId);
+  // currentSlide is now computed via useMemo
 
   if (!currentSlide) {
     return (
@@ -113,41 +128,14 @@ function PngComparisonPage() {
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
       <TranslationPanelHeader activeTab="content" showTabs={false}>
-        {/* Breadcrumb */}
-        <button
-          type="button"
-          onClick={handleBack}
-          className="flex items-center gap-1 text-orange-600 hover:text-orange-700 text-sm mb-6"
-        >
-          ←{' '}
-          {t('translate.comparison.backToChapter', {
-            defaultValue: 'Back to chapter',
-          })}
-        </button>
-
-        {/* Course and Chapter Header */}
-        <div className="flex items-center justify-between mb-6">
-          {/* Left side: Course info */}
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-800 rounded-md uppercase">
-              {data.context.courseIndex}
-            </span>
-            <h1 className="title-large-sb-24px text-dashboardSectionTitle">
-              {data.context.courseName}
-            </h1>
-          </div>
-
-          {/* Right side: Chapter info */}
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-black">
-              {data.context.partIndex}.{data.context.chapterIndex}
-            </span>
-            <span className="text-gray-400">•</span>
-            <span className="text-sm font-bold text-black">
-              {data.context.chapterTitle}
-            </span>
-          </div>
-        </div>
+        <ComparisonHeader
+          onBack={handleBack}
+          courseIndex={data.context.courseIndex}
+          courseName={data.context.courseName}
+          partIndex={data.context.partIndex}
+          chapterIndex={data.context.chapterIndex}
+          chapterTitle={data.context.chapterTitle}
+        />
 
         {/* Tabs */}
         <SubTabsSwitch
@@ -166,68 +154,20 @@ function PngComparisonPage() {
             },
           ]}
           activeTab={activeTab}
-          onChange={(id) => setActiveTab(id as any)}
+          onChange={handleTabChange}
           className="mb-1"
         />
 
         {/* Tab Content */}
-        {activeTab === 'presentations' && currentSlide && (
-          <div className="mt-2 space-y-6">
-            {/* Original Version */}
-            <div className="space-y-4">
-              <ComparisonPngViewer
-                courseId={courseId}
-                language={(data.context as any).originalLanguage || 'en'}
-                originalLanguage={
-                  (data.context as any).originalLanguage || 'en'
-                }
-                partId={currentSlide.partId}
-                chapterId={chapterId}
-                slideId={currentSlide.slideId}
-                fileName={currentSlide.pptResourcePath as string}
-                displaySlideNumber={currentSlide.slideNumber}
-                initialSlideNumber={currentSlideIndex + 1}
-                forceType="original"
-              />
-            </div>
-
-            {/* Translated Version */}
-            <div className="space-y-4">
-              <ComparisonPngViewer
-                courseId={courseId}
-                language={language}
-                originalLanguage={
-                  (data.context as any).originalLanguage || 'en'
-                }
-                partId={currentSlide.partId}
-                chapterId={chapterId}
-                slideId={currentSlide.slideId}
-                fileName={currentSlide.pptResourcePath as string}
-                displaySlideNumber={currentSlide.slideNumber}
-                initialSlideNumber={currentSlideIndex + 1}
-                forceType="translated"
-              />
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'content' && currentSlide && (
-          <div className="mt-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Original Content */}
-              <ComparisonTextViewer
-                content={currentSlide.originalContent}
-                language={(data.context as any).originalLanguage}
-              />
-
-              {/* Translated Content */}
-              <ComparisonTextViewer
-                content={currentSlide.translatedContent}
-                language={language}
-              />
-            </div>
-          </div>
-        )}
+        <ComparisonContent
+          activeTab={activeTab}
+          currentSlide={currentSlide}
+          courseId={courseId}
+          language={language}
+          originalLanguage={originalLanguage}
+          chapterId={chapterId}
+          currentSlideIndex={currentSlideIndex}
+        />
       </TranslationPanelHeader>
     </div>
   );
