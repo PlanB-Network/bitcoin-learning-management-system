@@ -1,6 +1,6 @@
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
+
 import {
   createCreateCourseTranslationUpload,
   createDeleteCourseTranslationUploadsByCourseId,
@@ -13,15 +13,31 @@ import {
   createStartTranslations,
   createUpdateCourseTranslationUpload,
 } from '@blms/service-content';
-import AdmZip from 'adm-zip';
 import type { Router } from 'express';
 import formidable from 'formidable';
+
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 import { convertPptxToPngs } from '#src/utils/convert-api.js';
+import {
+  blobToString,
+  buildS3Key,
+  buildS3Keys,
+  type ChapterGroup,
+  categorizeFile,
+  downloadRemoteFile,
+  extractProfessorName,
+  extractSlideNumber,
+  fetchWithRetries,
+  logMissingSlideContent,
+  parseChapterKey,
+  processZipFiles,
+  TRANSLATION_UPLOAD_CONSTANTS,
+  type UploadFormData,
+} from '#src/utils/translation-upload-helpers.js';
 
-// Allowed hostnames for remote zip downloads
+// Constants
 const ALLOWED_DOWNLOAD_HOSTNAMES = (
   process.env.ALLOWED_DOWNLOAD_HOSTNAMES ?? 'workspace.planb.network'
 )
@@ -29,18 +45,8 @@ const ALLOWED_DOWNLOAD_HOSTNAMES = (
   .map((h) => h.trim())
   .filter(Boolean);
 
-const mimeFromName = (name: string) =>
-  name.toLowerCase().endsWith('.pptx')
-    ? 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
-    : 'text/plain';
-
-const receiveUploadForm = (req: any) => {
-  return new Promise<{
-    courseId: string;
-    languages: string[];
-    files: formidable.File[];
-    useEnglish?: boolean;
-  }>((resolve, reject) => {
+const receiveUploadForm = (req: any): Promise<UploadFormData> => {
+  return new Promise<UploadFormData>((resolve, reject) => {
     const form = formidable({ multiples: true, keepExtensions: true });
 
     form.parse(req, async (err, fields, files) => {
@@ -89,53 +95,11 @@ const receiveUploadForm = (req: any) => {
       // If an URL is provided instead of direct file upload, download it as a temporary zip
       if (urlField && typeof urlField === 'string' && urlField.trim().length) {
         try {
-          const remoteUrl = urlField.trim();
-
-          // Validate URL against allowlist to prevent SSRF
-          let hostname: string;
-          let protocol: string;
-          try {
-            const parsed = new URL(remoteUrl);
-            hostname = parsed.hostname;
-            protocol = parsed.protocol;
-          } catch {
-            reject(new BadRequest('Invalid URL provided'));
-            return;
-          }
-
-          // Enforce HTTPS scheme only
-          if (protocol !== 'https:') {
-            reject(new BadRequest('Only HTTPS URLs are allowed'));
-            return;
-          }
-
-          const allowed = ALLOWED_DOWNLOAD_HOSTNAMES.some(
-            (allowedHost) =>
-              hostname === allowedHost || hostname.endsWith(`.${allowedHost}`),
+          const remoteFile = await downloadRemoteFile(
+            urlField.trim(),
+            ALLOWED_DOWNLOAD_HOSTNAMES,
           );
-
-          if (!allowed) {
-            reject(new BadRequest('URL host is not allowed'));
-            return;
-          }
-
-          const response = await fetch(remoteUrl);
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
-
-          // Write response body to a temp file (assume zip)
-          const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'remote-'));
-          const tempZipPath = path.join(tempDir, 'download.zip');
-          const arrayBuf = await response.arrayBuffer();
-          fs.writeFileSync(tempZipPath, Buffer.from(arrayBuf));
-
-          const synthetic: any = {
-            filepath: tempZipPath,
-            originalFilename: 'download.zip',
-            mimetype: 'application/zip',
-          };
-          fileList.push(synthetic as formidable.File);
+          fileList.push(remoteFile);
         } catch (e) {
           console.error('Failed to download remote zip', e);
           reject(new BadRequest('Failed to download remote zip'));
@@ -143,43 +107,7 @@ const receiveUploadForm = (req: any) => {
         }
       }
 
-      // Detect .zip files, extract entries into temp dir and push as synthetic files
-      const zipFiles = fileList.filter((f) =>
-        f.originalFilename?.toLowerCase().endsWith('.zip'),
-      );
-      for (const zipFile of zipFiles) {
-        try {
-          const zip = new AdmZip(zipFile.filepath);
-          const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'upload-'));
-          for (const entry of zip.getEntries()) {
-            if (entry.isDirectory) continue;
-            const entryPath = path.resolve(tempDir, entry.entryName);
-            // Validate that the resolved path is within the tempDir
-            if (!entryPath.startsWith(tempDir)) {
-              console.warn(
-                `Skipping potentially unsafe entry: ${entry.entryName}`,
-              );
-              continue;
-            }
-            fs.mkdirSync(path.dirname(entryPath), { recursive: true });
-            fs.writeFileSync(entryPath, entry.getData());
-
-            // Create a minimal formidable.File-like object
-            const synthetic: any = {
-              filepath: entryPath,
-              originalFilename: entry.entryName,
-              mimetype: mimeFromName(entry.entryName),
-            };
-            fileList.push(synthetic as formidable.File);
-          }
-        } catch (e) {
-          console.error('Failed to extract zip', e);
-        }
-      }
-      // Remove original zip files from list
-      const finalFiles = fileList.filter(
-        (f) => !f.originalFilename?.toLowerCase().endsWith('.zip'),
-      );
+      const finalFiles = await processZipFiles(fileList);
 
       // Parse optional useEnglish flag
       let useEnglishOverride: boolean | undefined;
@@ -230,77 +158,44 @@ async function insertSlidesFromManifest(
 
           const { pptx: pptxFile, text: textFile } = filePair;
 
-          // Derive slide number from filename part after the last '_' before the extension
-          let slideNumber = 0;
-          try {
-            const match = /_(\d+)(?=\.[^.]+$)/.exec(textFile);
-            if (match) slideNumber = Number(match[1]);
-          } catch {}
-
-          // Build S3 keys for original and translated text and pptx
-          const translatedPptKey = pptxFile
-            ? `contribute/${courseId}/${langKey}/${partId}/${chapterId}/${slideId}/pptx/${pptxFile}`
-            : null;
-          const translatedTextKey = `contribute/${courseId}/${langKey}/${partId}/${chapterId}/${slideId}/text/${textFile}`;
-          const originalTextKey = `contribute/${courseId}/${originalLanguage}/${partId}/${chapterId}/text/${textFile}`;
-
-          // Helper to safely fetch blob, returning null if key not found
-          const safeGetBlob = async (key: string | null) => {
-            if (!key) return null;
-            try {
-              return await dependencies.s3.getBlob(key);
-            } catch (err: any) {
-              if (err?.name === 'NoSuchKey') {
-                return null;
-              }
-              console.error('[S3] Error fetching key', key, err);
-              return null;
-            }
-          };
-
-          const MAX_RETRIES = 6;
-          const RETRY_DELAY_MS = 3000;
-
-          let [origBlob, transBlob] = await Promise.all([
-            safeGetBlob(originalTextKey),
-            safeGetBlob(translatedTextKey),
-          ]);
-
-          let attempt = 0;
-          while ((!origBlob || !transBlob) && attempt < MAX_RETRIES) {
-            attempt += 1;
-            await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
-            if (!origBlob) origBlob = await safeGetBlob(originalTextKey);
-            if (!transBlob) transBlob = await safeGetBlob(translatedTextKey);
-          }
-
-          if (!origBlob || !transBlob) {
-            console.warn('[UPLOAD] Missing slide content after retries', {
+          const slideNumber = extractSlideNumber(textFile);
+          const { translatedPptKey, translatedTextKey, originalTextKey } =
+            buildS3Keys(
               courseId,
-              lang: langKey,
+              langKey,
               partId,
               chapterId,
               slideId,
-              originalKey: originalTextKey,
-              translatedKey: translatedTextKey,
-              pptKey: translatedPptKey,
-              missingOriginal: !origBlob,
-              missingTranslated: !transBlob,
-              attempts: attempt,
-            });
+              originalLanguage,
+              pptxFile,
+              textFile,
+            );
+
+          const { origBlob, transBlob } = await fetchWithRetries(
+            dependencies,
+            originalTextKey!,
+            translatedTextKey!,
+          );
+
+          if (!origBlob || !transBlob) {
+            logMissingSlideContent(
+              courseId,
+              langKey,
+              partId,
+              chapterId,
+              slideId,
+              originalTextKey!,
+              translatedTextKey!,
+              translatedPptKey,
+              origBlob,
+              transBlob,
+              TRANSLATION_UPLOAD_CONSTANTS.MAX_RETRIES,
+            );
           }
 
-          const toStr = (b: Uint8Array | null) =>
-            b ? Buffer.from(b).toString('utf-8') : null;
-
-          const originalContent = toStr(origBlob);
-          const translatedContent = toStr(transBlob);
-
-          // Extract professor name (second segment before underscore) from file name
-          const baseTxtName = path.basename(textFile);
-          const nameSegments = baseTxtName.split('_');
-          const professorName =
-            nameSegments.length >= 3 ? nameSegments[1] : null;
+          const originalContent = blobToString(origBlob);
+          const translatedContent = blobToString(transBlob);
+          const professorName = extractProfessorName(textFile);
 
           await insertSlide(
             courseId,
@@ -418,49 +313,19 @@ export const createRestTranslationUploadRoutes = async (
       return { message: 'Translation started without new uploads' } as const;
     }
 
-    // Organise files per chapter key "part.chapter"
-    interface ChapterGroup {
-      pptx?: formidable.File;
-      txts: formidable.File[];
-    }
+    // Organize files per chapter key "part.chapter"
     const chapterGroups = new Map<string, ChapterGroup>();
-
-    const pathSeparator = /[\\/]/;
 
     for (const file of files) {
       const relativePath = file.originalFilename ?? (file as any).newFilename;
-      const segments = relativePath.split(pathSeparator);
+      const chapterInfo = parseChapterKey(relativePath);
 
-      let partIndex: number | null = null;
-      let chapterIndex: number | null = null;
-
-      // Try to find a directory segment like "1.2"
-      const partChapSegment = segments.find((s: string) =>
-        /^\d+\.\d+$/.test(s),
-      );
-      if (partChapSegment) {
-        const m = /^(\d+)\.(\d+)$/.exec(partChapSegment);
-        if (m) {
-          partIndex = Number(m[1]);
-          chapterIndex = Number(m[2]);
-        }
-      }
-
-      // Fallback: look at the filename itself (before first underscore or dot)
-      if (partIndex === null || chapterIndex === null) {
-        const baseName = segments[segments.length - 1]; // e.g. 1.2_0.txt
-        const m2 = /^(\d+)\.(\d+)/.exec(baseName);
-        if (m2) {
-          partIndex = Number(m2[1]);
-          chapterIndex = Number(m2[2]);
-        }
-      }
-
-      if (partIndex === null || chapterIndex === null) {
+      if (!chapterInfo) {
         // Skip files not matching expected pattern
         continue;
       }
 
+      const { partIndex, chapterIndex } = chapterInfo;
       const key = `${partIndex}.${chapterIndex}`;
 
       let group = chapterGroups.get(key);
@@ -469,15 +334,10 @@ export const createRestTranslationUploadRoutes = async (
         chapterGroups.set(key, group);
       }
 
-      if (
-        file.mimetype?.includes('presentation') ||
-        file.originalFilename?.endsWith('.pptx')
-      ) {
+      const fileType = categorizeFile(file);
+      if (fileType === 'pptx') {
         group.pptx = file;
-      } else if (
-        file.mimetype?.startsWith('text') ||
-        file.originalFilename?.endsWith('.txt')
-      ) {
+      } else if (fileType === 'txt') {
         group.txts.push(file);
       }
     }
@@ -511,29 +371,24 @@ export const createRestTranslationUploadRoutes = async (
         continue;
       }
 
-      // Build base key path helper
-      const buildKey = (
-        type: 'pptx' | 'text',
-        partId: string,
-        chapterId: string,
-        filename: string,
-      ) =>
-        `contribute/${courseId}/${originalLanguage}/${partId}/${chapterId}/${type}/${filename}`;
-
       let pptxKey: string | undefined;
 
       // upload pptx once per chapter (or skip if absent)
       if (group.pptx) {
         const pptFile = group.pptx;
-        const base = (pptFile.originalFilename ?? 'upload.pptx')
-          .split(pathSeparator)
-          .pop()!;
-        pptxKey = buildKey('pptx', partId, chapterId, base);
+        const base = path.basename(pptFile.originalFilename ?? 'upload.pptx');
+        pptxKey = buildS3Key(
+          'pptx',
+          courseId,
+          originalLanguage,
+          partId,
+          chapterId,
+          base,
+        );
         const stream = fs.createReadStream(pptFile.filepath);
 
         await dependencies.s3.upload(pptxKey, stream, {
-          contentType:
-            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+          contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.PPTX,
         });
 
         // After successful upload → convert to PNG slides via ConvertAPI
@@ -554,14 +409,19 @@ export const createRestTranslationUploadRoutes = async (
 
       // each txt => one DB row
       for (const txt of group.txts) {
-        const baseTxt = (txt.originalFilename ?? 'slide.txt')
-          .split(pathSeparator)
-          .pop()!;
-        const txtKey = buildKey('text', partId, chapterId, baseTxt);
+        const baseTxt = path.basename(txt.originalFilename ?? 'slide.txt');
+        const txtKey = buildS3Key(
+          'text',
+          courseId,
+          originalLanguage,
+          partId,
+          chapterId,
+          baseTxt,
+        );
         const stream = fs.createReadStream(txt.filepath);
 
         await dependencies.s3.upload(txtKey, stream, {
-          contentType: 'text/plain',
+          contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.TEXT,
         });
 
         const uploadRecord = await (createUpload as any)(
