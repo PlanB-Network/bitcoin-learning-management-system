@@ -6,6 +6,7 @@ import {
   checkCourseTranslationExistsQuery,
   checkExistingAssignmentQuery,
   checkUserTranslationAssignmentQuery,
+  createChapterAssignmentsQuery,
   createCourseTranslationQuery,
   createTranslationAssignmentQuery,
   getAssignmentDetailsByIdQuery,
@@ -168,6 +169,9 @@ export const createUpdateTranslationAssignmentStatus = ({
           });
         }
 
+        const assignment = assignmentDetails[0];
+        console.log('[DEBUG] Assignment details:', assignment);
+
         // Update assignment status
         const results = await postgres.exec(
           updateTranslationAssignmentStatusQuery(
@@ -176,6 +180,65 @@ export const createUpdateTranslationAssignmentStatus = ({
             rejectionReason,
           ),
         );
+
+        // If status is being set to 'assigned', create or update chapter assignments
+        console.log('[DEBUG] Status received:', status);
+        if (status === 'assigned') {
+          console.log('[DEBUG] Creating chapter assignments for:', {
+            courseId: assignment.courseId,
+            language: assignment.language,
+            assigneeId: assignment.assigneeId,
+            assignerId: assignment.assignerId,
+          });
+          try {
+            // Check if course translation exists, if not create it
+            const existingTranslation = await postgres.exec(
+              checkCourseTranslationExistsQuery(
+                assignment.courseId,
+                assignment.language,
+              ),
+            );
+
+            if (existingTranslation.length === 0) {
+              console.log(
+                '[DEBUG] Course translation does not exist, creating...',
+              );
+              // Create the course translation entry
+              await postgres.exec(
+                createCourseTranslationQuery(
+                  assignment.courseId,
+                  assignment.language,
+                ),
+              );
+
+              // Populate course_translation_chapters
+              await postgres.exec(
+                populateCourseTranslationChaptersQuery(
+                  assignment.courseId,
+                  assignment.language,
+                ),
+              );
+              console.log('[DEBUG] Course translation and chapters created');
+            }
+
+            const chapterResults = await postgres.exec(
+              createChapterAssignmentsQuery(
+                assignment.courseId,
+                assignment.language,
+                assignment.assigneeId,
+                assignment.assignerId,
+              ),
+            );
+            console.log('[DEBUG] Chapter assignments created:', chapterResults);
+          } catch (chapterError) {
+            console.error(
+              '[ERROR] Failed to create chapter assignments:',
+              chapterError,
+            );
+            // Don't fail the entire operation if chapter assignments fail
+            // This ensures backward compatibility
+          }
+        }
 
         return results[0] as TranslationAssignment;
       });

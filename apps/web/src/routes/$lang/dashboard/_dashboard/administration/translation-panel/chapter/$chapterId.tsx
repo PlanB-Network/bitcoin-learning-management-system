@@ -3,7 +3,7 @@ import { Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { EnhancedContributorCard } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/enhanced-contributor-card.tsx';
+import { EnhancedContributorCard } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/contributor-information-card.tsx';
 import { TranslationAudioSection } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-audio-section.tsx';
 import { PngViewer } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-png-viewer.tsx';
 import { TranslationTextViewer } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-text-viewer.tsx';
