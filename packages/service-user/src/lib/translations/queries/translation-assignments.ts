@@ -194,6 +194,26 @@ export const updateTranslationAssignmentStatusQuery = (
 };
 
 /**
+ * Query to delete a translation assignment
+ */
+export const deleteTranslationAssignmentQuery = (assignmentId: string) => {
+  return sql`
+    DELETE FROM users.translation_assignments
+    WHERE id = ${assignmentId}
+    RETURNING
+      id,
+      course_id AS "courseId",
+      language,
+      assignee_id AS "assigneeId",
+      assigner_id AS "assignerId",
+      status,
+      assigned_at AS "assignedAt",
+      completed_at AS "completedAt",
+      rejection_reason AS "rejectionReason"
+  `;
+};
+
+/**
  * Query to get all translation assignment requests (for admins)
  */
 export const getTranslationAssignmentRequestsQuery = (status?: string) => {

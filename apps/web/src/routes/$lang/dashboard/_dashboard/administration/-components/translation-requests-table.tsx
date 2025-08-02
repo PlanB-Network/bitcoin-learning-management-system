@@ -301,9 +301,9 @@ export const TranslationRequestsTable = ({
     setProcessingRequests((prev) => new Set(prev).add(requestId));
 
     try {
-      // For now, we'll use the same function with a different status
-      // This might need to be updated based on the actual API implementation
-      await updateAssignmentStatus(requestId, 'deleted');
+      await trpcClient.user.translation.deleteTranslationAssignment.mutate({
+        assignmentId: requestId,
+      });
       // Refetch data after deletion
       refetch();
     } catch (error: any) {

@@ -9,6 +9,7 @@ import {
   createChapterAssignmentsQuery,
   createCourseTranslationQuery,
   createTranslationAssignmentQuery,
+  deleteTranslationAssignmentQuery,
   getAssignmentDetailsByIdQuery,
   getTranslationAssignmentRequestsQuery,
   getUserTranslationAssignmentsQuery,
@@ -249,6 +250,38 @@ export const createUpdateTranslationAssignmentStatus = ({
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to update translation assignment status',
+      });
+    }
+  };
+};
+
+/**
+ * Service to delete a translation assignment
+ */
+export const createDeleteTranslationAssignment = ({
+  postgres,
+}: Dependencies) => {
+  return async (assignmentId: string): Promise<TranslationAssignment> => {
+    try {
+      const results = await postgres.exec(
+        deleteTranslationAssignmentQuery(assignmentId),
+      );
+
+      if (!results.length) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'Translation assignment not found',
+        });
+      }
+
+      return results[0] as TranslationAssignment;
+    } catch (error) {
+      if (error instanceof TRPCError) {
+        throw error;
+      }
+      throw new TRPCError({
+        code: 'INTERNAL_SERVER_ERROR',
+        message: 'Failed to delete translation assignment',
       });
     }
   };

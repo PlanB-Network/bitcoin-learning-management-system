@@ -9,6 +9,7 @@ import {
   createAssignCourseToContributor,
   createAssignLanguageToContributor,
   createCheckUserTranslationAssignment,
+  createDeleteTranslationAssignment,
   createGetAdminUserManagement,
   createGetAllUsers,
   createGetAvailableContributors,
@@ -106,6 +107,18 @@ const updateTranslationAssignmentStatusProcedure = adminProcedure
       status: input.status,
       rejectionReason: input.rejectionReason,
     });
+  });
+
+// Delete translation assignment
+const deleteTranslationAssignmentProcedure = adminProcedure
+  .input(z.object({ assignmentId: z.string() }))
+  .output<Parser<ServiceTranslationAssignment>>(
+    serviceTranslationAssignmentSchema,
+  )
+  .mutation(({ ctx, input }) => {
+    return createDeleteTranslationAssignment(ctx.dependencies)(
+      input.assignmentId,
+    );
   });
 
 // Get all translation assignment requests (for admins)
@@ -279,6 +292,7 @@ export const userTranslationRouter = createTRPCRouter({
   requestTranslationAssignment: requestTranslationAssignmentProcedure,
   getUserTranslationAssignments: getUserTranslationAssignmentsProcedure,
   updateTranslationAssignmentStatus: updateTranslationAssignmentStatusProcedure,
+  deleteTranslationAssignment: deleteTranslationAssignmentProcedure,
   getTranslationAssignmentRequests: getTranslationAssignmentRequestsProcedure,
   checkUserTranslationAssignment: checkUserTranslationAssignmentProcedure,
   // User management endpoints
