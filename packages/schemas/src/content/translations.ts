@@ -159,6 +159,12 @@ export const updateTranslationStatusInputSchema = z.object({
   status: translationStatusEnum,
 });
 
+export const updateCourseTranslationStatusInputSchema = z.object({
+  courseId: z.string(),
+  language: z.string(),
+  status: translationStatusEnum,
+});
+
 // Course details schemas for course management UI - these are service response schemas, keep as z.object for now
 export const courseLanguageSchema = z.object({
   code: z.string(),

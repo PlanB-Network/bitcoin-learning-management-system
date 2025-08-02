@@ -1,3 +1,4 @@
+import { AssignmentStatus, TranslationStatus } from '@blms/constants';
 import type {
   CoursePartDetails,
   CourseResponse,
@@ -43,6 +44,9 @@ function ProofreadCoursePage() {
   const [course, setCourse] = useState<CourseResponse | null>(null);
   const [chapterProgress, setChapterProgress] = useState<ChapterProgress[]>([]);
   const [loading, setLoading] = useState(true);
+  const [targetLanguage] = useState<string>(() => {
+    return localStorage.getItem('targetLanguage') || 'fr';
+  });
 
   // Check if we have a chapterId in params (which means we're on a chapter route)
   const chapterId = 'chapterId' in params ? params.chapterId : undefined;
@@ -81,7 +85,10 @@ function ProofreadCoursePage() {
     const fetchCourseData = async () => {
       try {
         setLoading(true);
-        console.log('Fetching course data for:', { courseId, language: 'fr' });
+        console.log('Fetching course data for:', {
+          courseId,
+          language: targetLanguage,
+        });
 
         // Fetch course data and chapter progress in parallel
         const [courseData, progressData] = await Promise.all([
@@ -91,7 +98,7 @@ function ProofreadCoursePage() {
           }),
           trpcClient.content.getCourseTranslationChapterProgress.query({
             courseId,
-            language: 'fr', // Default to French for now
+            language: targetLanguage,
           }),
         ]);
 
@@ -105,6 +112,9 @@ function ProofreadCoursePage() {
         if (progressData) {
           setChapterProgress(progressData);
         }
+
+        // Check and update course translation status to "under_review" if needed
+        await checkAndUpdateTranslationStatus();
       } catch (error) {
         console.error('Error fetching course data:', error);
       } finally {
@@ -112,8 +122,56 @@ function ProofreadCoursePage() {
       }
     };
 
+    const checkAndUpdateTranslationStatus = async () => {
+      try {
+        // Check the user's translation assignment for this course/language
+        const userAssignment =
+          await trpcClient.user.translation.checkUserTranslationAssignment.query(
+            {
+              courseId,
+              language: targetLanguage,
+            },
+          );
+
+        console.log('Current user assignment:', userAssignment);
+
+        // If user has an assignment with status "assigned", update it to "in_progress"
+        // This marks that they've started proofreading
+        if (
+          userAssignment &&
+          userAssignment.status === AssignmentStatus.Assigned
+        ) {
+          console.log(
+            'Updating assignment status to in_progress and course status to under_review',
+          );
+
+          // Update both assignment status and course translation status
+          await Promise.all([
+            // Update assignment status to in_progress
+            trpcClient.user.translation.startTranslation.mutate({
+              courseId,
+              language: targetLanguage,
+            }),
+            // Update course translation status to under_review
+            trpcClient.content.updateCourseTranslationStatus.mutate({
+              courseId,
+              language: targetLanguage,
+              status: TranslationStatus.UnderReview,
+            }),
+          ]);
+
+          console.log(
+            'Successfully updated assignment status to in_progress and course status to under_review',
+          );
+        }
+      } catch (error) {
+        console.error('Error checking/updating translation status:', error);
+        // Don't block the page loading if status update fails
+      }
+    };
+
     fetchCourseData();
-  }, [courseId, isOnChapterRoute]);
+  }, [courseId, isOnChapterRoute, targetLanguage]);
 
   // ALL function definitions must be defined every render
   const getStatusText = (status: string) => {

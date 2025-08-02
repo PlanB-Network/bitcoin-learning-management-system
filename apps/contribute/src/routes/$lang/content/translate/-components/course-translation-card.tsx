@@ -172,8 +172,8 @@ export const CourseTranslationCard = ({
     if (assignmentStatus === 'requested') {
       return;
     }
-    // If assigned, navigate to proofreading interface
-    if (assignmentStatus === 'assigned') {
+    // If assigned or in_progress, navigate to proofreading interface
+    if (assignmentStatus === 'assigned' || assignmentStatus === 'in_progress') {
       navigate({
         to: '/$lang/content/translate/$courseId',
         params: {
@@ -193,8 +193,11 @@ export const CourseTranslationCard = ({
       if (assignmentStatus === 'requested') {
         return;
       }
-      // If assigned, navigate to proofreading interface
-      if (assignmentStatus === 'assigned') {
+      // If assigned or in_progress, navigate to proofreading interface
+      if (
+        assignmentStatus === 'assigned' ||
+        assignmentStatus === 'in_progress'
+      ) {
         navigate({
           to: '/$lang/content/translate/$courseId',
           params: {
@@ -260,6 +263,11 @@ export const CourseTranslationCard = ({
     if (assignmentStatus === 'assigned') {
       return t('translate.startTranslating'); // "Start proofreading"
     }
+    if (assignmentStatus === 'in_progress') {
+      return t('translate.continueTranslating', {
+        defaultValue: 'Continue proofreading',
+      }); // "Continue proofreading"
+    }
     if (assignmentStatus === 'requested') {
       return t('translate.requestAlreadySent'); // "Request already sent"
     }
@@ -267,7 +275,10 @@ export const CourseTranslationCard = ({
   };
 
   // Determine if button should be clickable
-  const isButtonClickable = assignmentStatus === 'assigned' || !hasAssignment;
+  const isButtonClickable =
+    assignmentStatus === 'assigned' ||
+    assignmentStatus === 'in_progress' ||
+    !hasAssignment;
 
   // Get assignment status display text and styling
   const getAssignmentDisplay = () => {
@@ -275,6 +286,12 @@ export const CourseTranslationCard = ({
       return {
         text: t('translate.assigned'),
         className: 'bg-orange-200 text-orange-800',
+      };
+    }
+    if (assignmentStatus === 'in_progress') {
+      return {
+        text: t('translate.inProgress', { defaultValue: 'In Progress' }),
+        className: 'bg-blue-200 text-blue-800',
       };
     }
     if (assignmentStatus === 'requested') {
