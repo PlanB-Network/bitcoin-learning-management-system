@@ -62,7 +62,7 @@ interface CourseTranslationSlide {
   pptValidated?: boolean;
   transcriptionValidated?: boolean;
   audioValidated?: boolean;
-  audioTries?: number;
+  audioTries: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -453,13 +453,58 @@ function ChapterTranslationPage() {
     }
   }, [fetchChapterData, isCompareRoute]);
 
+  // Set slide status to under_review when user starts working on a ready_for_review slide
+  useEffect(() => {
+    const setSlideUnderReview = async () => {
+      if (!chapterData || isCompareRoute) return;
+
+      const currentSlide = chapterData.slides[currentSlideIndex];
+      if (!currentSlide || currentSlide.status !== 'ready_for_review') return;
+
+      try {
+        await trpcClient.content.updateCourseTranslationSlide.mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          status: TranslationStatus.UnderReview,
+        } as any);
+
+        // Update local state to reflect the change
+        setChapterData((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            slides: prev.slides.map((slide) =>
+              slide.slideId === currentSlide.slideId
+                ? { ...slide, status: TranslationStatus.UnderReview }
+                : slide,
+            ),
+          };
+        });
+      } catch (error) {
+        console.error('Error setting slide to under_review:', error);
+      }
+    };
+
+    setSlideUnderReview();
+  }, [
+    chapterData,
+    currentSlideIndex,
+    courseId,
+    targetLanguage,
+    chapterId,
+    isCompareRoute,
+  ]);
+
   const handleTranslationChange = (
     slideId: string,
     translatedContent: string,
   ) => {
     if (!chapterData) return;
 
-    let previouslyValidated = false;
+    let previouslyTranscriptionValidated = false;
+    let previouslyAudioValidated = false;
     setChapterData((prev) => {
       if (!prev) return prev;
 
@@ -471,7 +516,12 @@ function ChapterTranslationPage() {
                 ...slide,
                 translatedContent,
                 transcriptionValidated: (() => {
-                  previouslyValidated = slide.transcriptionValidated ?? false;
+                  previouslyTranscriptionValidated =
+                    slide.transcriptionValidated ?? false;
+                  return false;
+                })(),
+                audioValidated: (() => {
+                  previouslyAudioValidated = slide.audioValidated ?? false;
                   return false;
                 })(),
               }
@@ -484,10 +534,13 @@ function ChapterTranslationPage() {
     setValidationStates((prev) => ({
       ...prev,
       transcriptionValidated: false,
+      audioValidated: false,
     }));
 
-    // If the transcript was previously validated, immediately mark it unvalidated in DB
-    if (previouslyValidated) {
+    // If the transcript or audio was previously validated, immediately mark them unvalidated in DB
+    // Also reset audio tries since the transcription has changed
+    // Explicitly maintain under_review status while contributor is working
+    if (previouslyTranscriptionValidated || previouslyAudioValidated) {
       trpcClient.content.updateCourseTranslationSlide
         .mutate({
           courseId,
@@ -495,9 +548,11 @@ function ChapterTranslationPage() {
           chapterId,
           slideId,
           transcriptionValidated: false,
+          audioValidated: false,
+          status: TranslationStatus.UnderReview,
         } as any)
         .catch((err) =>
-          console.error('Error auto-unvalidating transcript', err),
+          console.error('Error auto-unvalidating transcript and audio', err),
         );
     }
 
@@ -517,7 +572,7 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         translatedContent: currentSlide.translatedContent || '',
-        status: TranslationStatus.InProgress,
+        status: TranslationStatus.UnderReview,
         transcriptionValidated: false,
       } as any);
 
@@ -555,6 +610,7 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         pptValidated: true,
+        status: TranslationStatus.UnderReview,
       } as any);
 
       // Update local state
@@ -575,12 +631,14 @@ function ChapterTranslationPage() {
 
     try {
       // Update database to mark as unvalidated
+      // Explicitly maintain under_review status while contributor is working
       await trpcClient.content.updateCourseTranslationSlide.mutate({
         courseId,
         language: targetLanguage,
         chapterId,
         slideId: currentSlide.slideId,
         pptValidated: false,
+        status: TranslationStatus.UnderReview,
       } as any);
 
       // Update local state
@@ -633,6 +691,7 @@ function ChapterTranslationPage() {
       const newAttempts = audioAttempts + 1;
 
       // Mark audio as unvalidated in DB immediately and store attempts
+      // Explicitly maintain under_review status while contributor is working
       try {
         await trpcClient.content.updateCourseTranslationSlide.mutate({
           courseId,
@@ -641,6 +700,7 @@ function ChapterTranslationPage() {
           slideId: currentSlide.slideId,
           audioValidated: false,
           audioTries: newAttempts,
+          status: TranslationStatus.UnderReview,
         } as any);
       } catch (err) {
         console.warn('Failed to mark audio unvalidated', err);
@@ -716,7 +776,7 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         translatedContent: currentSlide.translatedContent || '',
-        status: TranslationStatus.InProgress,
+        status: TranslationStatus.UnderReview,
         transcriptionValidated: true,
       } as any);
 
@@ -749,14 +809,49 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         audioValidated: true,
+        status: TranslationStatus.UnderReview,
       } as any);
     } catch (error) {
       console.error('Error validating audio:', error);
     }
   };
 
-  const handleNextSlide = () => {
+  const handleNextSlide = async () => {
     if (!chapterData || !courseData) return;
+
+    const currentSlide = chapterData.slides[currentSlideIndex];
+
+    // Mark current slide as reviewed if all validations are complete and status is under_review
+    if (
+      currentSlide &&
+      allValidationsComplete &&
+      currentSlide.status === 'under_review'
+    ) {
+      try {
+        await trpcClient.content.updateCourseTranslationSlide.mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          status: TranslationStatus.Reviewed,
+        } as any);
+
+        // Update local state to reflect the change
+        setChapterData((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            slides: prev.slides.map((slide) =>
+              slide.slideId === currentSlide.slideId
+                ? { ...slide, status: TranslationStatus.Reviewed }
+                : slide,
+            ),
+          };
+        });
+      } catch (error) {
+        console.error('Error marking slide as reviewed:', error);
+      }
+    }
 
     // If there are more slides in the current chapter, just go to the next one
     if (currentSlideIndex < chapterData.slides.length - 1) {
@@ -803,6 +898,42 @@ function ChapterTranslationPage() {
   };
 
   const handleCreateVideo = async () => {
+    if (!chapterData) return;
+
+    const currentSlide = chapterData.slides[currentSlideIndex];
+
+    // Mark current slide as reviewed if all validations are complete and status is under_review
+    if (
+      currentSlide &&
+      allValidationsComplete &&
+      currentSlide.status === 'under_review'
+    ) {
+      try {
+        await trpcClient.content.updateCourseTranslationSlide.mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          status: TranslationStatus.Reviewed,
+        } as any);
+
+        // Update local state to reflect the change
+        setChapterData((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            slides: prev.slides.map((slide) =>
+              slide.slideId === currentSlide.slideId
+                ? { ...slide, status: TranslationStatus.Reviewed }
+                : slide,
+            ),
+          };
+        });
+      } catch (error) {
+        console.error('Error marking slide as reviewed:', error);
+      }
+    }
+
     setIsVideoModalOpen(true);
     setVideoGenerationProgress(0);
 

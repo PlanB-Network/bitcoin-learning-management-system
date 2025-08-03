@@ -116,11 +116,34 @@ export const updateCourseTranslationSlideQuery = (
     UPDATE content.course_translation_slides
     SET
       translated_content = COALESCE(${translatedContent}, translated_content),
-      status = COALESCE(${status}::translation_status, status),
       ppt_validated = COALESCE(${pptValidated}, ppt_validated),
       transcription_validated = COALESCE(${transcriptionValidated}, transcription_validated),
       audio_validated = COALESCE(${audioValidated}, audio_validated),
       audio_tries = COALESCE(${audioTries}, audio_tries),
+      status = CASE
+        -- If status is explicitly provided, use it
+        WHEN ${status}::translation_status IS NOT NULL THEN ${status}::translation_status
+        -- If all three validations are true, set to ready_for_review (only if not already under_review or reviewed)
+        WHEN COALESCE(${pptValidated}, ppt_validated) = true 
+          AND COALESCE(${transcriptionValidated}, transcription_validated) = true 
+          AND COALESCE(${audioValidated}, audio_validated) = true 
+          AND status NOT IN ('under_review', 'reviewed')
+        THEN 'ready_for_review'::translation_status
+        -- If any validation becomes false and status is ready_for_review, set to in_progress
+        WHEN (COALESCE(${pptValidated}, ppt_validated) = false 
+          OR COALESCE(${transcriptionValidated}, transcription_validated) = false 
+          OR COALESCE(${audioValidated}, audio_validated) = false)
+          AND status = 'ready_for_review'
+        THEN 'in_progress'::translation_status
+        -- If any validation becomes false and status is under_review, keep under_review (contributor is working)
+        WHEN (COALESCE(${pptValidated}, ppt_validated) = false 
+          OR COALESCE(${transcriptionValidated}, transcription_validated) = false 
+          OR COALESCE(${audioValidated}, audio_validated) = false)
+          AND status = 'under_review'
+        THEN 'under_review'::translation_status
+        -- Otherwise keep the current status
+        ELSE status
+      END,
       updated_at = NOW()
     WHERE course_id = ${courseId}
       AND language = LOWER(${language})

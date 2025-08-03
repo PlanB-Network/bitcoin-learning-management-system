@@ -337,6 +337,7 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
       pptValidated: z.boolean(),
       transcriptionValidated: z.boolean(),
       audioValidated: z.boolean(),
+      audioTries: z.number(),
       status: translationStatusEnum,
     }),
   );
@@ -396,6 +397,7 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   pptValidated: z.boolean().optional(),
   transcriptionValidated: z.boolean().optional(),
   audioValidated: z.boolean().optional(),
+  audioTries: z.number().optional(),
 });
 
 // Schema for chapter progress in course translation overview - based on chapter schema

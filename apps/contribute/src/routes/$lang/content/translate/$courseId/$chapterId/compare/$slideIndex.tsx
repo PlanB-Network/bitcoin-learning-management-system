@@ -433,7 +433,8 @@ function CompareSlidePage() {
   const handleTranslatedChange = (value: string) => {
     if (!currentSlide) return;
 
-    const wasValidated = transcriptionValidated;
+    const wasTranscriptionValidated = transcriptionValidated;
+    const wasAudioValidated = currentSlide.audioValidated ?? false;
 
     setTranslatedText(value);
     setHasUnsavedChanges(true);
@@ -445,15 +446,21 @@ function CompareSlidePage() {
         ...prev,
         slides: prev.slides.map((s) =>
           s.slideId === currentSlide.slideId
-            ? { ...s, translatedContent: value, transcriptionValidated: false }
+            ? {
+                ...s,
+                translatedContent: value,
+                transcriptionValidated: false,
+                audioValidated: false,
+              }
             : s,
         ),
       };
     });
 
-    if (wasValidated) {
+    if (wasTranscriptionValidated || wasAudioValidated) {
       setTranscriptionValidated(false);
-      // Immediately mark as unvalidated in DB
+      // Immediately mark both transcription and audio as unvalidated in DB
+      // Explicitly maintain under_review status while contributor is working
       trpcClient.content.updateCourseTranslationSlide
         .mutate({
           courseId,
@@ -461,9 +468,11 @@ function CompareSlidePage() {
           chapterId,
           slideId: currentSlide.slideId,
           transcriptionValidated: false,
+          audioValidated: false,
+          status: TranslationStatus.UnderReview,
         } as any)
         .catch((err) =>
-          console.error('Error auto-unvalidating transcript', err),
+          console.error('Error auto-unvalidating transcript and audio', err),
         );
     }
   };
@@ -477,7 +486,7 @@ function CompareSlidePage() {
         chapterId,
         slideId: currentSlide.slideId,
         translatedContent: translatedText,
-        status: TranslationStatus.InProgress,
+        status: TranslationStatus.UnderReview,
         transcriptionValidated: true,
       } as any);
 
