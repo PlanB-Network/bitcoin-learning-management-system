@@ -87,7 +87,7 @@ function ChapterTranslationPage() {
   const [courseData, setCourseData] = useState<any>(null);
   const [totalChapters, setTotalChapters] = useState<number>(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [_hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -861,6 +861,23 @@ function ChapterTranslationPage() {
         });
       } catch (error) {
         console.error('Error marking slide as reviewed:', error);
+      }
+    }
+
+    // If this is the last slide of the last chapter, mark the translation assignment as completed
+    if (isLastSlideOfCourse) {
+      try {
+        await trpcClient.user.translation.completeTranslation.mutate({
+          courseId,
+          language: targetLanguage,
+        });
+        console.log('Translation assignment marked as completed');
+      } catch (error) {
+        console.error(
+          'Error marking translation assignment as completed:',
+          error,
+        );
+        // Don't block video generation if this fails
       }
     }
 

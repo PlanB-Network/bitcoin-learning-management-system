@@ -58,19 +58,9 @@ function ProofreadCoursePage() {
     (ch) => ch.status === 'completed',
   ).length;
 
-  const totalStepsInCourse = chapterProgress.reduce(
-    (sum, ch) => sum + ((ch as any).totalSteps ?? (ch.totalSlides || 0) * 3),
-    0,
-  );
-  const completedStepsInCourse = chapterProgress.reduce(
-    (sum, ch) =>
-      sum + ((ch as any).validatedSteps ?? (ch.completedSlides || 0) * 3),
-    0,
-  );
-
   const progressPercentage =
-    totalStepsInCourse > 0
-      ? Math.round((completedStepsInCourse / totalStepsInCourse) * 100)
+    totalChapters > 0
+      ? Math.round((completedChapters / totalChapters) * 100)
       : 0;
 
   // ALL useEffect hooks must be called every render
