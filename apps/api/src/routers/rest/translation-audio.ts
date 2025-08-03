@@ -99,6 +99,8 @@ export const createRestTranslationAudioRoutes = async (
           throw new BadRequest('Missing required parameters');
         }
 
+        // Note: slideId comes from database via frontend, should have proper UUID format with dashes
+
         // Expected S3 key for the generated MP3
         const outputKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/audio/${fileName}.mp3`;
 
@@ -236,12 +238,10 @@ export const createRestTranslationAudioRoutes = async (
             userId: req.session.uid!,
             createdAt: Date.now(),
           });
-          console.log('Stored audio task for tracking:', {
-            taskId: (taskInfo as any).task_id,
-            courseId,
-            slideId,
-            outputKey,
-          });
+          console.log(
+            'Started audio generation task:',
+            (taskInfo as any).task_id,
+          );
         }
 
         res.json({

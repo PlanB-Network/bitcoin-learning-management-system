@@ -167,6 +167,8 @@ export const createRestTranslationDownloadRoutes = async (
           );
 
           try {
+            // Note: slideId comes from OnlyOffice callback URL parameters
+
             // Validate and download the document from OnlyOffice
             assertOnlyofficeUrl(url);
             const response = await fetch(url);
@@ -429,13 +431,6 @@ export const createRestTranslationDownloadRoutes = async (
           throw new BadRequest('Missing required path parameters');
         }
 
-        console.log('Audio by path request:', {
-          courseId,
-          language,
-          chapterId,
-          slideId,
-        });
-
         // Query the database to get the audio_resource_path
         const slideQuery = sql`
           SELECT audio_resource_path, course_id, language, chapter_id, slide_id
@@ -448,15 +443,7 @@ export const createRestTranslationDownloadRoutes = async (
 
         const result = await dependencies.postgres.exec(slideQuery);
 
-        console.log('Audio database query result:', result);
-
         if (!result || result.length === 0) {
-          console.log('No slide found in database for audio:', {
-            courseId,
-            language,
-            chapterId,
-            slideId,
-          });
           res.status(404).send('Slide not found');
           return;
         }
@@ -464,17 +451,9 @@ export const createRestTranslationDownloadRoutes = async (
         const audioResourcePath =
           result[0].audioResourcePath || result[0].audio_resource_path;
         if (!audioResourcePath) {
-          console.log(
-            'Audio resource path not found (normal if not generated yet)',
-          );
           res.status(404).send('Audio not generated yet');
           return;
         }
-
-        console.log(
-          'Using audio_resource_path from database:',
-          audioResourcePath,
-        );
 
         // Use the audio_resource_path directly as the S3 key
         const head = await dependencies.s3
@@ -483,7 +462,6 @@ export const createRestTranslationDownloadRoutes = async (
 
         // File does not exist – 404 early
         if (!head?.contentLength) {
-          console.log('Audio file not found in S3:', audioResourcePath);
           res.status(404).send('Audio file not found');
           return;
         }
@@ -799,13 +777,6 @@ export const createRestTranslationDownloadRoutes = async (
         if (!courseId || !language || !chapterId || !slideId) {
           throw new BadRequest('Missing required path parameters');
         }
-
-        console.log('PPTX by path request:', {
-          courseId,
-          language,
-          chapterId,
-          slideId,
-        });
 
         // Query the database to get the ppt_resource_path
         const slideQuery = sql`
