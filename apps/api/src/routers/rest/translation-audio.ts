@@ -1,6 +1,5 @@
 import {
-  type CourseProfessor,
-  createGetCourseProfessors,
+  createGetSlideProfessor,
   createUpdateSlideAudioStatus,
 } from '@blms/service-content';
 import type { Router } from 'express';
@@ -69,6 +68,9 @@ export const createRestTranslationAudioRoutes = async (
    *  - language       : ISO-639-1 language code (target language)
    *  - text           : string – translated transcript that must be voiced
    *  - voiceId        : optional – ElevenLabs voice_id to pass through
+   *
+   * Note: Professor name for voice matching is automatically retrieved from
+   * the course_translation_slides table using the provided slide identifiers.
    */
   router.post(
     '/translation-audio/generate',
@@ -84,7 +86,6 @@ export const createRestTranslationAudioRoutes = async (
           language,
           text,
           voiceId,
-          professor,
         } = req.body as Record<string, string | undefined>;
 
         if (
@@ -104,45 +105,19 @@ export const createRestTranslationAudioRoutes = async (
         // Expected S3 key for the generated MP3
         const outputKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/audio/${fileName}.mp3`;
 
-        // Determine professor information for voice matching
-        let professors: Array<{
-          id: string;
-          name: string;
-          isCoordinator: boolean;
-        }> = [];
+        // Get professor name from the course_translation_slides table
+        const getSlideProfessor = createGetSlideProfessor(dependencies as any);
+        const professorName = await getSlideProfessor({
+          courseId,
+          language,
+          partId,
+          chapterId,
+          slideId,
+        });
 
-        if (professor) {
-          // Use the professor name provided by the client (slide-level)
-          professors = [
-            {
-              id: 'slide',
-              name: professor,
-              isCoordinator: true,
-            },
-          ];
-          console.log(`Using professor from slide payload: ${professor}`);
-        } else {
-          // Fallback to course-level professors
-          const getCourseProfessors = createGetCourseProfessors(
-            dependencies as any,
-          );
-          const courseProfs = await getCourseProfessors(courseId);
-          professors = courseProfs.map((p: CourseProfessor) => ({
-            id: p.id,
-            name: p.name,
-            isCoordinator: p.isCoordinator,
-          }));
-
-          console.log(
-            'Found %d professors for course %s:',
-            professors.length,
-            courseId,
-            professors.map(
-              (p) =>
-                `${p.name} (${p.isCoordinator ? 'coordinator' : 'associated'})`,
-            ),
-          );
-        }
+        console.log(
+          `Using professor from slide data: ${professorName || 'none found'}`,
+        );
 
         // Base URL of the Language-Toolkit API (default to local dev instance)
         const toolkitUrl = process.env.LTK_URL ?? 'http://localhost:8000';
@@ -192,14 +167,9 @@ export const createRestTranslationAudioRoutes = async (
           ttsBody.voice_id = voiceId;
         }
 
-        // Add professor information for voice matching (if no explicit voice_id)
-        if (professors.length > 0) {
-          // Convert camelCase fields back to snake_case for Language-Toolkit compatibility
-          ttsBody.professors = professors.map((prof) => ({
-            id: prof.id,
-            name: prof.name,
-            is_coordinator: prof.isCoordinator,
-          }));
+        // Add professor name for voice matching (if no explicit voice_id and professor found)
+        if (professorName) {
+          ttsBody.professor = professorName;
         }
 
         console.log('Sending TTS request to Language-Toolkit:', {
@@ -248,11 +218,11 @@ export const createRestTranslationAudioRoutes = async (
           message: 'Audio generation task started',
           outputKey,
           toolkitTask: taskInfo,
-          professorsFound: professors.length,
+          professorFound: !!professorName,
           voiceSelectionMethod: voiceId
             ? 'explicit_voice_id'
-            : professors.length > 0
-              ? 'professor_matching'
+            : professorName
+              ? 'slide_professor_matching'
               : 'default_fallback',
         });
       } catch (err) {
