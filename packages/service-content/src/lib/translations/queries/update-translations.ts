@@ -113,6 +113,23 @@ export const updateCourseTranslationChaptersToUnderReviewQuery = (
 };
 
 /**
+ * Query to update course translation status to "reviewed"
+ */
+export const updateCourseTranslationToReviewedQuery = (
+  courseId: string,
+  language: string,
+) => {
+  return sql`
+    UPDATE content.course_translations
+    SET
+      status = 'reviewed'::translation_status,
+      updated_at = NOW()
+    WHERE course_id = ${courseId} AND language = LOWER(${language})
+    RETURNING *
+  `;
+};
+
+/**
  * Query to create or initialize course translations
  */
 export const createCourseTranslationsInitQuery = (
