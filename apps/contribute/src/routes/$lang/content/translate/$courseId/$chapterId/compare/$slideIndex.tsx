@@ -7,6 +7,7 @@ import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_o
 import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { OnlyOfficeSlideEditor } from '#src/components/translation/onlyoffice-slide-editor.tsx';
+import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
@@ -110,6 +111,9 @@ function CompareSlidePage() {
   const [transcriptionValidated, setTranscriptionValidated] =
     useState<boolean>(false);
   const [_hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
+
+  // PPT validation state for the second editor
+  const [pptValidated, setPptValidated] = useState<boolean>(false);
 
   const numericSlideIndex = Number(slideIndex);
   const targetLanguage =
@@ -423,6 +427,7 @@ function CompareSlidePage() {
     if (currentSlide) {
       setTranslatedText(currentSlide.translatedContent ?? '');
       setTranscriptionValidated(currentSlide.transcriptionValidated ?? false);
+      setPptValidated(currentSlide.pptValidated ?? false);
       setHasUnsavedChanges(false);
     }
   }, [currentSlide]);
@@ -885,51 +890,21 @@ function CompareSlidePage() {
 
           {/* Proofread (bottom) */}
           <div>
-            <div
-              style={{
-                backgroundColor: '#F5F5F5',
-                border: '1px solid #D1D5DB',
-                borderRadius: '8px',
-                padding: '20px',
-                boxShadow: '0px 1px 1px 0px #00000040',
-              }}
-            >
-              {/* Language info header */}
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-[10px]">
-                  <span
-                    className="text-[18px] font-semibold text-gray-900"
-                    style={{ fontFamily: 'Rubik, sans-serif' }}
-                  >
-                    {t('translate.language', { defaultValue: 'Language' })}
-                  </span>
-                  <span
-                    className="text-orange-500 text-[18px]"
-                    style={{ fontFamily: 'Rubik, sans-serif' }}
-                  >
-                    {targetLanguageName}
-                  </span>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <OnlyOfficeSlideEditor
-                  key={`proofread-${targetLanguage}-${currentSlide?.slideId ?? ''}`}
-                  fileUrl={
-                    currentSlide
-                      ? `/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`
-                      : null
-                  }
-                  className="w-full"
-                  courseId={courseId}
-                  partId={currentSlide?.partId}
-                  chapterId={chapterId}
-                  slideId={currentSlide?.slideId}
-                  fileName={`${fileBaseName}-proofread`}
-                  language={targetLanguage}
-                />
-              </div>
-            </div>
+            {currentSlide && (
+              <ValidatedPptEditor
+                courseId={courseId}
+                chapterId={chapterId}
+                slideId={currentSlide.slideId}
+                partId={currentSlide.partId}
+                fileName={`${fileBaseName}-proofread`}
+                language={targetLanguage}
+                validated={pptValidated}
+                onValidationChange={setPptValidated}
+                fileUrl={`/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`}
+                languageLabel={targetLanguageName}
+                mode="edit"
+              />
+            )}
           </div>
         </div>
 

@@ -7,7 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from '@tanstack/react-router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BookClosedIcon from '#src/assets/icons/book_closed.svg';
@@ -19,11 +19,7 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { AudioPlayer } from '#src/components/translation/audio-player.tsx';
-import {
-  OnlyOfficeSlideEditor,
-  type OnlyOfficeSlideEditorRef,
-} from '#src/components/translation/onlyoffice-slide-editor.tsx';
-import { PptLinkSection } from '#src/components/translation/ppt-link.tsx';
+import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { VideoGenerationModal } from '#src/components/video-generation-modal.tsx';
@@ -62,7 +58,7 @@ interface CourseTranslationSlide {
   pptValidated?: boolean;
   transcriptionValidated?: boolean;
   audioValidated?: boolean;
-  audioTries: number;
+  audioTries?: number;
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
@@ -181,9 +177,6 @@ function ChapterTranslationPage() {
   // Video generation modal state
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [videoGenerationProgress, setVideoGenerationProgress] = useState(0);
-
-  // OnlyOffice editor ref for manual saving
-  const onlyOfficeEditorRef = useRef<OnlyOfficeSlideEditorRef>(null);
 
   // Get target language from route params or localStorage (aligned with slideIndex.tsx)
   const targetLanguage =
@@ -559,30 +552,6 @@ function ChapterTranslationPage() {
     setHasUnsavedChanges(true);
   };
 
-  const _handleSaveChanges = async () => {
-    if (!chapterData || !hasUnsavedChanges) return;
-
-    try {
-      const currentSlide = chapterData.slides[currentSlideIndex];
-      if (!currentSlide) return;
-
-      await trpcClient.content.updateCourseTranslationSlide.mutate({
-        courseId,
-        language: targetLanguage,
-        chapterId,
-        slideId: currentSlide.slideId,
-        translatedContent: currentSlide.translatedContent || '',
-        status: TranslationStatus.UnderReview,
-        transcriptionValidated: false,
-      } as any);
-
-      setHasUnsavedChanges(false);
-      console.log('Changes saved successfully');
-    } catch (error) {
-      console.error('Error saving changes:', error);
-    }
-  };
-
   const handleValidatePresentation = async () => {
     console.log('Validate presentation clicked');
 
@@ -592,15 +561,6 @@ function ChapterTranslationPage() {
 
     try {
       console.log('Starting presentation validation process...');
-
-      // First, save the current document using OnlyOffice
-      if (onlyOfficeEditorRef.current) {
-        console.log('Triggering OnlyOffice save...');
-        await onlyOfficeEditorRef.current.saveDocument();
-        console.log('OnlyOffice save completed');
-      } else {
-        console.warn('OnlyOffice editor ref not available');
-      }
 
       // Then update the validation state in the database
       console.log('Updating database validation state...');
@@ -618,36 +578,6 @@ function ChapterTranslationPage() {
       console.log('Presentation validation completed successfully');
     } catch (error) {
       console.error('Error validating presentation:', error);
-    }
-  };
-
-  // Handle document modification (auto-uncheck validation)
-  const handleDocumentModified = async () => {
-    console.log('Document modified - unchecking validation');
-
-    if (!chapterData) return;
-    const currentSlide = chapterData.slides[currentSlideIndex];
-    if (!currentSlide) return;
-
-    try {
-      // Update database to mark as unvalidated
-      // Explicitly maintain under_review status while contributor is working
-      await trpcClient.content.updateCourseTranslationSlide.mutate({
-        courseId,
-        language: targetLanguage,
-        chapterId,
-        slideId: currentSlide.slideId,
-        pptValidated: false,
-        status: TranslationStatus.UnderReview,
-      } as any);
-
-      // Update local state
-      setValidationStates((prev) => ({
-        ...prev,
-        presentationValidated: false,
-      }));
-    } catch (error) {
-      console.error('Error updating validation state:', error);
     }
   };
 
@@ -1324,8 +1254,6 @@ function ChapterTranslationPage() {
               {chapterData!.slides.map((slide, slideIndex) => {
                 const _isCompleted = slideIndex < currentSlideIndex;
                 const _isCurrent = slideIndex === currentSlideIndex;
-                const _isFirst = slideIndex === 0;
-                const _isLast = slideIndex === chapterData!.slides.length - 1;
 
                 return (
                   <div
@@ -1362,101 +1290,59 @@ function ChapterTranslationPage() {
           })}
         </p>
 
-        {/* --- ONLYOFFICE (Beta) Duplicate Editor --- */}
-        <div
-          style={{
-            backgroundColor: '#F5F5F5',
-            border: '1px solid #D1D5DB',
-            borderRadius: '8px',
-            padding: '20px',
-            boxShadow: '0px 1px 1px 0px #00000040',
-            marginTop: '40px',
-          }}
-        >
-          {/* OnlyOffice header removed per UI request */}
-          {/* Language info header (inside PPT box) */}
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-[10px]">
-              <span
-                className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {t('translate.originalLanguage', {
-                  defaultValue: 'Language',
-                })}
-              </span>
-              <span
-                className="text-orange-500 text-base sm:text-lg md:text-xl"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {originalLanguageName}
-              </span>
-              <span className="text-gray-400">⇄</span>
-              <span
-                className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {t('translate.translateTo', { defaultValue: 'Translate to' })}
-              </span>
-              <span
-                className="text-orange-500 text-base sm:text-lg md:text-xl"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {targetLanguageName}
-              </span>
-            </div>
-            <Link
-              to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
-              params={{
-                lang: i18n.language,
-                courseId,
-                chapterId,
-                slideIndex: String(currentSlideIndex),
-              }}
-              className="hidden md:block"
-            >
-              <Button
-                type="button"
-                variant="outline"
-                size="s"
-                className="text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
-              >
-                {versionLabel}
-              </Button>
-            </Link>
-          </div>
-
-          <div className="mb-6">
-            <OnlyOfficeSlideEditor
-              key={`${courseId}-${chapterId}-${currentSlide?.slideId}-${targetLanguage}`}
-              ref={onlyOfficeEditorRef}
-              fileUrl={
-                currentSlide
-                  ? `/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`
-                  : null
-              }
-              className="w-full"
-              onDocumentModified={handleDocumentModified}
-              courseId={courseId}
-              partId={currentSlide?.partId}
-              chapterId={chapterId}
-              slideId={currentSlide?.slideId}
-              fileName={fileBaseName}
-              language={targetLanguage}
-            />
-          </div>
-
-          {currentSlide?.slideId && currentSlide?.partId && (
-            <PptLinkSection
-              courseId={courseId}
-              partId={currentSlide.partId}
-              chapterId={chapterId}
-              slideId={currentSlide.slideId}
-              fileName={fileBaseName}
-              language={targetLanguage}
-              onValidate={handleValidatePresentation}
-              validated={validationStates.presentationValidated}
-              leftComponent={
+        {currentSlide && (
+          <ValidatedPptEditor
+            courseId={courseId}
+            chapterId={chapterId}
+            slideId={currentSlide.slideId}
+            partId={currentSlide.partId}
+            fileName={fileBaseName}
+            language={targetLanguage}
+            validated={validationStates.presentationValidated}
+            onValidationChange={(validated) =>
+              setValidationStates((prev) => ({
+                ...prev,
+                presentationValidated: validated,
+              }))
+            }
+            fileUrl={`/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`}
+            showLanguageHeader={false}
+            showValidationCheckbox={true}
+            onValidate={handleValidatePresentation}
+            className="mt-10"
+            headerContent={
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-[10px]">
+                  <span
+                    className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {t('translate.originalLanguage', {
+                      defaultValue: 'Language',
+                    })}
+                  </span>
+                  <span
+                    className="text-orange-500 text-base sm:text-lg md:text-xl"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {originalLanguageName}
+                  </span>
+                  <span className="text-gray-400">⇄</span>
+                  <span
+                    className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {t('translate.translateTo', {
+                      defaultValue: 'Translate to',
+                    })}
+                  </span>
+                  <span
+                    className="text-orange-500 text-base sm:text-lg md:text-xl"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {targetLanguageName}
+                  </span>
+                </div>
                 <Link
                   to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
                   params={{
@@ -1465,7 +1351,7 @@ function ChapterTranslationPage() {
                     chapterId,
                     slideIndex: String(currentSlideIndex),
                   }}
-                  className="md:hidden"
+                  className="hidden md:block"
                 >
                   <Button
                     type="button"
@@ -1476,10 +1362,31 @@ function ChapterTranslationPage() {
                     {versionLabel}
                   </Button>
                 </Link>
-              }
-            />
-          )}
-        </div>
+              </div>
+            }
+            rightComponent={
+              <Link
+                to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
+                params={{
+                  lang: i18n.language,
+                  courseId,
+                  chapterId,
+                  slideIndex: String(currentSlideIndex),
+                }}
+                className="md:hidden"
+              >
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="s"
+                  className="text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
+                >
+                  {versionLabel}
+                </Button>
+              </Link>
+            }
+          />
+        )}
       </div>
 
       {/* Review Transcription & Generate Audio Section */}
