@@ -79,9 +79,30 @@ export const getStatusText = (
 };
 
 export const isLanguageClickable = (status: string): boolean => {
-  return ['ready_for_review', 'under_review', 'reviewed', 'published'].includes(
-    status,
-  );
+  return [
+    'todo',
+    'ready_for_review',
+    'under_review',
+    'reviewed',
+    'published',
+  ].includes(status);
+};
+
+export const getLanguageButtonVariant = (
+  status: string,
+  isSelected: boolean,
+): 'primary' | 'outline' | 'ghost' => {
+  if (['todo', 'in_progress'].includes(status)) {
+    return 'ghost'; // Grayed out and non-clickable
+  }
+  if (['ready_for_review', 'under_review', 'reviewed'].includes(status)) {
+    return isSelected ? 'primary' : 'outline'; // Orange and clickable
+  }
+  return 'outline'; // Fallback
+};
+
+export const isLanguageDisabled = (status: string): boolean => {
+  return ['todo', 'in_progress'].includes(status);
 };
 
 export const getProgressPercentage = (status: string): string => {

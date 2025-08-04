@@ -203,7 +203,11 @@ export const createChapterAssignmentsQuery = (
     ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO UPDATE SET
       assigner_id = EXCLUDED.assigner_id,
       assigned_at = NOW(),
-      status = 'assigned'::assignment_status
+      status = CASE
+        WHEN users.translation_chapter_assignments.status IN ('completed', 'reviewed', 'published')
+        THEN users.translation_chapter_assignments.status
+        ELSE 'assigned'::assignment_status
+      END
   `;
 };
 
@@ -273,6 +277,10 @@ export const updateChapterAssignmentsQuery = (
     ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) DO UPDATE SET
       assigner_id = EXCLUDED.assigner_id,
       assigned_at = NOW(),
-      status = 'assigned'::assignment_status
+      status = CASE
+        WHEN users.translation_chapter_assignments.status IN ('completed', 'reviewed', 'published')
+        THEN users.translation_chapter_assignments.status
+        ELSE 'assigned'::assignment_status
+      END
   `;
 };

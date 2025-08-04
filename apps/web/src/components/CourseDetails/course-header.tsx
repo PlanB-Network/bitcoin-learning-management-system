@@ -55,7 +55,7 @@ export const CourseHeader: React.FC<CourseHeaderProps> = ({
       {/* Course Title with Index */}
       <div className="flex items-center gap-4 mb-6">
         <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-800 rounded-md">
-          {courseIndex}
+          {courseIndex.toUpperCase()}
         </span>
         <h1 className="title-large-sb-24px text-dashboardSectionTitle">
           {courseName}

@@ -16,6 +16,7 @@ export const insertCourseTranslationSlideQuery = (
   pptResourcePath: string | null,
   originalContent: string | null,
   translatedContent: string | null,
+  status = 'ready_for_review',
 ) => {
   return sql<CourseTranslationSlide[]>`
     INSERT INTO content.course_translation_slides (
@@ -30,6 +31,7 @@ export const insertCourseTranslationSlideQuery = (
       original_content,
       translated_content,
       ai_translated_content,
+      status,
       created_at,
       updated_at
     ) VALUES (
@@ -44,6 +46,7 @@ export const insertCourseTranslationSlideQuery = (
       ${originalContent},
       ${translatedContent},
       ${translatedContent},
+      ${status}::translation_status,
       NOW(),
       NOW()
     ) ON CONFLICT DO NOTHING

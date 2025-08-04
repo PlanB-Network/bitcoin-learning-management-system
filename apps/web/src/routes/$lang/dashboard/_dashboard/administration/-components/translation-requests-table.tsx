@@ -40,11 +40,13 @@ interface TranslationRequest {
 interface TranslationRequestsTableProps {
   status: 'requested' | 'rejected';
   searchQuery?: string;
+  onPendingCountChange?: (count: number) => void;
 }
 
 export const TranslationRequestsTable = ({
   status,
   searchQuery = '',
+  onPendingCountChange,
 }: TranslationRequestsTableProps) => {
   const { t } = useTranslation();
   const [processingRequests, setProcessingRequests] = useState<Set<string>>(
@@ -85,9 +87,17 @@ export const TranslationRequestsTable = ({
           },
         );
       setRequests((data || []) as TranslationRequest[]);
+
+      // Notify parent about pending count when in requested status
+      if (status === 'requested') {
+        onPendingCountChange?.(data?.length ?? 0);
+      }
     } catch (error) {
       console.error('Error fetching translation requests:', error);
       setRequests([]);
+      if (status === 'requested') {
+        onPendingCountChange?.(0);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -291,9 +301,9 @@ export const TranslationRequestsTable = ({
     setProcessingRequests((prev) => new Set(prev).add(requestId));
 
     try {
-      // For now, we'll use the same function with a different status
-      // This might need to be updated based on the actual API implementation
-      await updateAssignmentStatus(requestId, 'deleted');
+      await trpcClient.user.translation.deleteTranslationAssignment.mutate({
+        assignmentId: requestId,
+      });
       // Refetch data after deletion
       refetch();
     } catch (error: any) {

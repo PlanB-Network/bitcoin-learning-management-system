@@ -194,6 +194,26 @@ export const updateTranslationAssignmentStatusQuery = (
 };
 
 /**
+ * Query to delete a translation assignment
+ */
+export const deleteTranslationAssignmentQuery = (assignmentId: string) => {
+  return sql`
+    DELETE FROM users.translation_assignments
+    WHERE id = ${assignmentId}
+    RETURNING
+      id,
+      course_id AS "courseId",
+      language,
+      assignee_id AS "assigneeId",
+      assigner_id AS "assignerId",
+      status,
+      assigned_at AS "assignedAt",
+      completed_at AS "completedAt",
+      rejection_reason AS "rejectionReason"
+  `;
+};
+
+/**
  * Query to get all translation assignment requests (for admins)
  */
 export const getTranslationAssignmentRequestsQuery = (status?: string) => {
@@ -275,17 +295,24 @@ export const createChapterAssignmentsQuery = (
   assignerId: string,
 ) => {
   return sql`
-    INSERT INTO users.translation_chapter_assignments (course_id, language, chapter_id, assignee_id, assigner_id, status)
+    INSERT INTO users.translation_chapter_assignments (course_id, language, part_id, chapter_id, assignee_id, assigner_id, status)
     SELECT
       ${courseId},
       LOWER(${language}),
+      ch.part_id,
       ch.chapter_id,
       ${assigneeId},
       ${assignerId},
       'assigned'::assignment_status
     FROM content.course_chapters ch
     WHERE ch.course_id = ${courseId}
-    ON CONFLICT (course_id, language, chapter_id, assignee_id) DO NOTHING
+    ON CONFLICT (course_id, language, part_id, chapter_id, assignee_id) 
+    DO UPDATE SET 
+      status = CASE 
+        WHEN users.translation_chapter_assignments.status = 'requested'::assignment_status 
+        THEN 'assigned'::assignment_status
+        ELSE users.translation_chapter_assignments.status
+      END
     RETURNING *
   `;
 };
@@ -371,7 +398,11 @@ export const populateCourseTranslationChaptersQuery = (
  */
 export const getAssignmentDetailsByIdQuery = (assignmentId: string) => {
   return sql`
-    SELECT course_id, language, assignee_id, assigner_id
+    SELECT 
+      course_id AS "courseId", 
+      language, 
+      assignee_id AS "assigneeId", 
+      assigner_id AS "assignerId"
     FROM users.translation_assignments
     WHERE id = ${assignmentId}
   `;

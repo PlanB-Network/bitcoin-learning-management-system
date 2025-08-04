@@ -2571,6 +2571,7 @@ export const contentCourseTranslationSlides = content.table(
     originalContent: t.text(),
     translatedContent: t.text(),
     aiTranslatedContent: t.text(''),
+    audioTries: t.integer().default(0).notNull(),
     status: translationStatusEnum().default(TranslationStatus.Todo).notNull(),
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),

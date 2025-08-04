@@ -216,7 +216,8 @@ export const getAdminContentManagementCoursesQuery = (
       ct.language,
       ct.status,
       CASE
-        WHEN ta.status IS NOT NULL THEN 'assigned'
+        -- Mark as assigned only when the assignment has been accepted or is actively in progress
+        WHEN ta.status IN ('assigned', 'in_progress') THEN 'assigned'
         ELSE 'not_assigned'
       END AS "isAssigned",
       ct.created_at AS "createdAt",
@@ -257,8 +258,9 @@ export const getAdminContentManagementCoursesQuery = (
       c.index, c.topic, cl.name, ta.id, ta.assignee_id, ta.assigner_id, ta.status,
       ta.assigned_at, ta.completed_at, ua.username, ua.display_name
     ORDER BY
+      -- Treat courses with no assignment or merely a requested assignment as unassigned
       CASE
-        WHEN ta.status IS NULL THEN 0  -- Unassigned courses first
+        WHEN ta.status IS NULL OR ta.status = 'requested' THEN 0  -- Unassigned courses first
         ELSE 1
       END,
       ct.updated_at DESC
@@ -288,7 +290,8 @@ export const getReportsCoursesQuery = (language?: string, topic?: string) => {
       ct.language,
       ct.status,
       CASE
-        WHEN ta.status IS NOT NULL THEN 'assigned'
+        -- Mark as assigned only when the assignment has been accepted or is actively in progress
+        WHEN ta.status IN ('assigned', 'in_progress') THEN 'assigned'
         ELSE 'not_assigned'
       END AS "isAssigned",
       ct.created_at AS "createdAt",
@@ -329,8 +332,9 @@ export const getReportsCoursesQuery = (language?: string, topic?: string) => {
       c.index, c.topic, cl.name, ta.id, ta.assignee_id, ta.assigner_id, ta.status,
       ta.assigned_at, ta.completed_at, ua.username, ua.display_name
     ORDER BY
+      -- Treat courses with no assignment or merely a requested assignment as unassigned
       CASE
-        WHEN ta.status IS NULL THEN 0  -- Unassigned courses first
+        WHEN ta.status IS NULL OR ta.status = 'requested' THEN 0  -- Unassigned courses first
         ELSE 1
       END,
       ct.updated_at DESC

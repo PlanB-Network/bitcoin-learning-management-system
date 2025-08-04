@@ -475,6 +475,7 @@ export interface ChapterTranslationContext {
   courseName: string;
   partTitle: string;
   chapterTitle: string;
+  originalLanguage: string;
   translationStatus: string;
   chapterTranslationStatus: string;
 }

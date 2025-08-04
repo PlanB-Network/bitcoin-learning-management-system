@@ -1,7 +1,7 @@
+import { LANGUAGES_MAP } from '@blms/shared';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HiOutlineViewGrid } from 'react-icons/hi';
-
 import CrossIcon from '#src/assets/icons/cross_red.svg';
 import ProfileIcon from '#src/assets/icons/groups.svg';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
@@ -61,9 +61,16 @@ export const ContributorAssignmentModal = ({
   // Fetch languages when modal opens
   const fetchLanguages = async () => {
     try {
-      const response =
-        await trpcClient.user.translation.getAvailableLanguages.query();
-      setLanguages(response);
+      // Construit la liste des langues à partir de LANGUAGES_MAP partagé
+      const allLanguages = Object.entries(LANGUAGES_MAP).map(
+        ([code, name]) => ({
+          code,
+          name,
+        }),
+      );
+
+      // Nous exclurons plus tard celles déjà assignées dans le <select>
+      setLanguages(allLanguages);
     } catch (error) {
       console.error('Error fetching languages:', error);
       setErrorMessage('Failed to fetch languages');

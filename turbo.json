@@ -46,7 +46,9 @@
     "TYPESENSE_NODES",
     "LT_BASE_URL",
     "LT_CLIENT_ID",
-    "LT_CLIENT_SECRET"
+    "LT_CLIENT_SECRET",
+    "ALLOWED_DOWNLOAD_HOSTNAMES",
+    "CONVERT_API_SECRET"
   ],
   "tasks": {
     "//#lint": {},

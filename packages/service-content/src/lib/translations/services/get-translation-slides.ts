@@ -22,6 +22,7 @@ export interface ChapterTranslationContext {
   chapterId: string;
   chapterIndex: number;
   chapterTitle: string;
+  originalLanguage: string;
   translationStatus: string;
   chapterTranslationStatus: string;
 }
@@ -211,6 +212,7 @@ export const createInsertCourseTranslationSlide = ({
     pptResourcePath: string | null,
     originalContent: string | null,
     translatedContent: string | null,
+    status = 'ready_for_review',
   ) => {
     await postgres.exec(
       insertCourseTranslationSlideQuery(
@@ -224,6 +226,7 @@ export const createInsertCourseTranslationSlide = ({
         pptResourcePath,
         originalContent,
         translatedContent,
+        status,
       ),
     );
   };

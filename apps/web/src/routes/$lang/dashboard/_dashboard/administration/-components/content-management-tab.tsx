@@ -211,38 +211,25 @@ export const ContentManagementTab = () => {
     <div className="space-y-6">
       {/* Header Section */}
       <div className="flex flex-col gap-4">
-        <h2 className="title-large-sb-24px text-dashboardSectionTitle">
-          {t('dashboard.adminPanel.translationPanel.contentManagement.title')}
-        </h2>
-
-        <p className="text-gray-600">
-          {t(
-            'dashboard.adminPanel.translationPanel.contentManagement.description',
-          )}
-        </p>
-
         {/* Topics Filter */}
         <div className="flex flex-wrap gap-2">
-          <span className="text-sm font-medium text-gray-700 self-center mr-2">
+          <span className="text-sm font-bold text-black self-center mr-2">
             {t('filters.topics')}
           </span>
           {topicOptions.map((topic) => (
-            <button
+            <Button
               key={topic}
-              type="button"
+              variant={selectedTopic === topic ? 'primary' : 'outline'}
+              size="s"
               onClick={() => setSelectedTopic(topic)}
-              className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
-                selectedTopic === topic
-                  ? 'bg-newOrange-1 text-white border-newOrange-1'
-                  : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400'
-              }`}
+              className="capitalize"
             >
               {topic === 'all'
                 ? t('words.all')
                 : topic === 'socialStudies'
                   ? t('words.socialStudies')
                   : topic}
-            </button>
+            </Button>
           ))}
         </div>
 

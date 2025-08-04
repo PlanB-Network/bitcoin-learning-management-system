@@ -543,8 +543,7 @@
         "admin": "ADMIN",
         "comingSoon": {
           "courses": "Courses view coming soon",
-          "coverage": "Language coverage view coming soon",
-          "userManagement": "User management functionality coming soon..."
+          "coverage": "Language coverage view coming soon"
         },
         "contentManagement": {
           "actions": {
@@ -623,10 +622,10 @@
         },
         "courseNotFound": "Course not found",
         "messages": {
-          "noPendingRequests": "No pending translation requests found.",
-          "noPendingRequestsSearch": "No pending translation requests found matching \"{{query}}\".",
-          "noRejectedRequests": "No rejected translation requests found.",
-          "noRejectedRequestsSearch": "No rejected translation requests found matching \"{{query}}\"."
+          "noPendingRequests": "No pending proofreading requests found.",
+          "noPendingRequestsSearch": "No pending proofreading requests found matching \"{{query}}\".",
+          "noRejectedRequests": "No rejected proofreading requests found.",
+          "noRejectedRequestsSearch": "No rejected proofreading requests found matching \"{{query}}\"."
         },
         "modal": {
           "acceptRequest": "Accept Request",
@@ -648,7 +647,7 @@
           "submitRejection": "Submit"
         },
         "noResultsFound": "No results found",
-        "pendingTranslationRequests": "Pending translation requests",
+        "pendingTranslationRequests": "Pending proofreading requests",
         "reports": {
           "chooseYear": "Which year do you want to consider?",
           "comingSoon": {
@@ -777,7 +776,41 @@
             "todoLanguages": "Languages to Translate",
             "totalLanguages": "Total Languages"
           },
-          "title": "Translate Courses"
+          "title": "Translate Courses",
+          "backToCourse": "Back to course",
+          "chapterTitle": "Chapter Title",
+          "compare": "Compare",
+          "compareTooltip": "Compare original and proofread versions",
+          "compareDisabledTooltip": "Proofread version not available",
+          "language": "Language",
+          "translateTo": "Translate to",
+          "noOriginalContent": "No original content",
+          "noContentAvailable": "No content available",
+          "originalContent": "Original Content",
+          "presentations": "Presentations",
+          "textContent": "Text Content",
+          "slideNotFound": "Slide not found",
+          "unknownContributor": "Unknown",
+          "slideNavigation": {
+            "previous": "Previous",
+            "next": "Next",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "comparison": {
+            "originalVersion": "Original Version",
+            "translatedVersion": "Translated Version",
+            "backToChapter": "Back to chapter"
+          },
+          "loadingPresentation": "Loading presentation...",
+          "noPngSlides": "No PNG slides available for this presentation",
+          "slideNotAvailable": "Slide {{slideNumber}} not available",
+          "imageNotFound": "Image not found",
+          "noSlidesFound": "No slides found",
+          "changeSpeed": "Change playback speed",
+          "play": "Play",
+          "pause": "Pause",
+          "rewind15Seconds": "Rewind 15 seconds",
+          "forward15Seconds": "Forward 15 seconds"
         },
         "userManagement": {
           "actions": {
@@ -789,7 +822,6 @@
           "chapters": "Chapters",
           "contributorInformation": "Contributor information",
           "courses": "Courses",
-          "description": "Manage contributors and their translation assignments",
           "modal": {
             "assignments": "Assignment History",
             "noAssignments": "No assignments found",
@@ -812,7 +844,7 @@
             "startDate": "Start date",
             "username": "Username"
           },
-          "title": "User Management"
+          "title": "Contributors"
         }
       },
       "tutorialAnalytics": "Tutorial analytics",

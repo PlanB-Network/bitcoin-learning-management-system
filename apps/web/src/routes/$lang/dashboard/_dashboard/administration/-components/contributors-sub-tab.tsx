@@ -40,7 +40,6 @@ export interface ContributorsSubTabProps {
 
 export const ContributorsSubTab = ({
   contributors,
-  languages,
   courses,
   getLanguageName,
   t,
@@ -49,6 +48,18 @@ export const ContributorsSubTab = ({
   /* Local state & derived data                                    */
   /* ------------------------------------------------------------- */
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
+
+  // Get unique languages from contributors
+  const availableLanguages = useMemo(() => {
+    const allLanguages = new Set<string>();
+    contributors.forEach((contributor) => {
+      contributor.languages?.forEach((lang) => allLanguages.add(lang));
+    });
+    return Array.from(allLanguages).map((code) => ({
+      code,
+      name: getLanguageName(code),
+    }));
+  }, [contributors, getLanguageName]);
 
   const filteredContributors = useMemo(() => {
     if (selectedLanguage === 'all') return contributors;
@@ -170,7 +181,7 @@ export const ContributorsSubTab = ({
               <SelectItem key="all" value="all">
                 {t('words.all')}
               </SelectItem>
-              {languages.map((lang) => (
+              {availableLanguages.map((lang) => (
                 <SelectItem key={lang.code} value={lang.code}>
                   {lang.name}
                 </SelectItem>
