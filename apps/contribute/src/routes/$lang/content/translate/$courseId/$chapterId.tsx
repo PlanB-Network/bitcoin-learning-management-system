@@ -783,6 +783,38 @@ function ChapterTranslationPage() {
       }
     }
 
+    // Generate PNG image for the current slide before navigating
+    try {
+      console.log('Generating PNG for current slide...');
+      const pngResponse = await fetch(
+        '/api/translation-downloads/generate-png',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            courseId,
+            partId: currentSlide.partId,
+            chapterId,
+            slideId: currentSlide.slideId,
+            language: targetLanguage,
+          }),
+        },
+      );
+
+      if (pngResponse.ok) {
+        const pngResult = await pngResponse.json();
+        console.log('PNG generation successful:', pngResult);
+      } else {
+        console.warn('PNG generation failed:', await pngResponse.text());
+      }
+    } catch (error) {
+      console.error('Error generating PNG:', error);
+      // Don't block navigation if PNG generation fails
+    }
+
     // If there are more slides in the current chapter, just go to the next one
     if (currentSlideIndex < chapterData.slides.length - 1) {
       setCurrentSlideIndex(currentSlideIndex + 1);

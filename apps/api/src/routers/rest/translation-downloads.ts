@@ -10,6 +10,7 @@ import type { Router } from 'express';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { convertSlideToProofreadPngs } from '#src/utils/convert-api.js';
 
 // Added SSRF-protection: OnlyOffice base URL and validator
 const ONLYOFFICE_BASE_URL =
@@ -205,6 +206,91 @@ export const createRestTranslationDownloadRoutes = async (
         console.error('OnlyOffice callback error:', error);
         // Even on error, return success to prevent OnlyOffice warnings
         res.json({ error: 0 });
+      }
+    },
+  );
+
+  // Generate PNG images from PPTX endpoint
+  router.post(
+    '/translation-downloads/generate-png',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      try {
+        const { courseId, partId, chapterId, slideId, language } = req.body;
+        const userId = req.session.uid;
+
+        if (!courseId || !partId || !chapterId || !slideId || !language) {
+          throw new BadRequest(
+            'Missing required parameters: courseId, partId, chapterId, slideId, language',
+          );
+        }
+
+        if (!userId) {
+          throw new BadRequest('User not authenticated');
+        }
+
+        console.log('Generating PNG for slide:', {
+          courseId,
+          partId,
+          chapterId,
+          slideId,
+          language,
+        });
+
+        // Get the PPTX path from the database
+        const slideQuery = sql`
+          SELECT ppt_resource_path, slide_number, cc.chapter_index, cp.part_index
+          FROM content.course_translation_slides cts
+          JOIN content.course_chapters cc ON cts.chapter_id = cc.chapter_id
+          JOIN content.course_parts cp ON cts.part_id = cp.part_id
+          WHERE cts.course_id = ${courseId}
+            AND cts.language = ${language}
+            AND cts.chapter_id = ${chapterId}
+            AND cts.slide_id = ${slideId}
+        `;
+
+        const result = await dependencies.postgres.exec(slideQuery);
+        if (!result || result.length === 0) {
+          throw new BadRequest('Slide not found');
+        }
+
+        const slide = result[0];
+        const pptResourcePath = slide.ppt_resource_path;
+        const slideNumber = slide.slide_number;
+        const partIndex = slide.part_index;
+        const chapterIndex = slide.chapter_index;
+
+        if (!pptResourcePath) {
+          throw new BadRequest('PPTX resource path not found for this slide');
+        }
+
+        console.log('Original PPTX path:', pptResourcePath);
+
+        // Build base filename (same logic as used in frontend for fileBaseName)
+        const slideIndex = slideNumber ? slideNumber - 1 : 0; // Convert 1-based to 0-based
+        const baseNameNoExt = `${partIndex}.${chapterIndex}_${slideIndex}`;
+
+        // Build S3 directory path - same structure as audio and pptx
+        const s3KeyDir = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/`;
+
+        // Generate PNG images using ConvertAPI (proofread version only)
+        await convertSlideToProofreadPngs(
+          dependencies,
+          s3KeyDir,
+          baseNameNoExt,
+          pptResourcePath,
+        );
+
+        console.log('PNG generation completed successfully');
+
+        res.json({
+          success: true,
+          message: 'PNG images generated successfully',
+          s3Path: `${s3KeyDir}png/`,
+        });
+      } catch (error) {
+        console.error('Error generating PNG images:', error);
+        next(error);
       }
     },
   );
