@@ -739,8 +739,7 @@
             "noAssignments": "Ülesandeid ei leitud"
           },
           "noUsers": "Ühtegi panustajat ei leitud",
-          "title": "Kasutajate haldus",
-          "description": "Halda panustajaid ja nende tõlkeülesandeid"
+          "title": "Kasutajate haldus"
         },
         "modal": {
           "accepting": "Aktsepteerimine...",
@@ -779,8 +778,7 @@
         "admin": "ADMIN",
         "comingSoon": {
           "courses": "Kursuste vaade tuleb varsti",
-          "coverage": "Keelekatvuse vaade tuleb peagi",
-          "userManagement": "Kasutajate haldamise funktsionaalsus tuleb peagi..."
+          "coverage": "Keelekatvuse vaade tuleb peagi"
         },
         "noResultsFound": "Tulemusi ei leitud",
         "pendingTranslationRequests": "Ootel olevad tõlkepäringud",
