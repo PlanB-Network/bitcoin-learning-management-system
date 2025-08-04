@@ -235,13 +235,13 @@
       "examAndDiploma": "Esame & Diploma",
       "examAvailabilityDetails": "Se l'esame non viene superato durante il periodo di disponibilità sulla piattaforma, lo studente riceverà automaticamente il punteggio 0.",
       "examCertificateCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ottenuto il certificato del corso \"{{courseName}}\".",
-      "examDetails": "L'esame ha 40 domande a scelta multipla, ognuna con una sola risposta corretta. Puoi cambiare le tue risposte in qualsiasi momento prima di inviare il test, finché il timer è in funzione.",
+      "examDetails": "L'esame ha {{nb}} domande a scelta multipla che prevedono una sola risposta corretta. Puoi cambiare le tue risposte in qualsiasi momento prima di inviare il test, finché il timer è in funzione.",
       "examNotPassed": "Devi sostenere l'esame finale e ottenere un punteggio superiore all'80% per ottenere il tuo diploma e completare completamente il corso. Questo diploma sarà <0>timbrato</0> per garantirne l'autenticità.",
       "explanations": "Spiegazioni:",
       "failed": "Non superato",
       "failedDiploma": "Devi ottenere più dell'80% all'esame finale per ottenere il tuo diploma e completare interamente il corso. Puoi ripetere l'esame dopo 24 ore.",
       "finalExam": "Esame finale",
-      "finalScore": "",
+      "finalScore": "Punteggio finale",
       "findInformationChapter": "Trova ulteriori informazioni in questo capitolo:",
       "futureProof": "Future-Proof: il tuo titolo di studio è permanentemente protetto e sempre valido.",
       "getCertificate": "Ottieni il certificato",
@@ -254,7 +254,7 @@
       "letsConclude": "Tutto fatto, concludi",
       "nbMinutes": "{{nb}} minuti",
       "nbQuestions": "{{nb}} domande",
-      "nextChapter": "",
+      "nextChapter": "Prossimo capitolo",
       "noGoBack": "No, torna indietro",
       "notTranslatedYet": "Ci dispiace, ma l'esame finale non è ancora disponibile nella lingua da te selezionata. Potresti scegliere un'altra lingua per continuare.",
       "oneMinuteLeft": "Ti resta solo 1 minuto",
@@ -264,13 +264,13 @@
       "passRate": "La soglia di successo è dell'80%.",
       "planBTimeStamp": "In Plan ₿ Network, proteggiamo il tuo titolo di studio utilizzando la tecnologia di timestamp supportata dalla blockchain.",
       "quitWithoutSubmitting": "Ops, sembra che tu abbia lasciato la pagina senza inviare le tue risposte. Questo annulla il test.",
-      "readyToTest": "",
+      "readyToTest": "Pronto a testare la tue conoscenze?",
       "receiveDiploma": "Ricevi il tuo certificato",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "Risposte corrette",
+        "incorrect": "Risposte sbagliate",
+        "questions": "Risposte fornite",
+        "time": "Tempo utilizzato"
       },
       "retakeExam": "Ripeti l'esame",
       "retakeInstructions": "Hai 20 minuti per rispondere a 40 domande, ognuna con una sola risposta corretta. Puoi alternare le domande e inviare le tue risposte alla fine.",
@@ -283,19 +283,19 @@
       "skipExamDescription": "Puoi anche saltare l'esame e procedere direttamente alla conclusione cliccando il pulsante qui sotto.",
       "skipExamGoConclusion": "Salta l'esame, vai alla conclusione",
       "skipGoConclusion": "Salta, vai alla conclusione",
-      "solidEffort": "",
+      "solidEffort": "Congratulazioni per il tuo impegno nel completare il corso. \nAnche se non hai superato l'esame, ogni passo rappresenta i tuoi progressi. \nContinua ad avanzare nel tuo percorso di apprendimento!",
       "startExam": "Inizia l'esame",
       "submit": "Invia",
       "successDiploma": "Congratulazioni! Hai superato l'esame con successo. \nIl tuo certificato è disponibile nel tuo pannello studenti. È stato <0>timbrato</0> per garantirne l'autenticità.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Congratulazioni! Hai superato il corso con successo.\nIl tuo diploma è ora disponibile nel tuo pannello studenti.",
       "successDiplomaTimeStamped": "Congratulazioni! Hai superato l'esame con successo.\nIl tuo diploma sarà disponibile nel tuo pannello studenti circa 10 ore dopo aver sostenuto l'esame. Questo ritardo è dovuto alla tecnologia di <0>timestamp</0>, che ne garantisce l'autenticità.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Congratulazioni per aver completato il corso.\nHai superato con successo la soglia di approvazione per questo corso e ora sei diplomato.\nPuoi trovare il diploma nella tua dashboard.",
       "sureSubmit": "Sei sicuro di inviare il tuo esame?",
       "takeExam": "Fai l'esame",
       "tamperProof": "A prova di manomissione: La blockchain garantisce che nessuno possa alterare o falsificare le tue credenziali.",
       "testKnowledge": "Ora che hai completato questo corso, metti alla prova cosa hai imparato.",
       "testResults": "Risultati del test",
-      "timerStart": "Una volta che fai clic su Start, inizierà un timer di 20 minuti.",
+      "timerStart": "Una volta che fai clic su Start, partirà un timer di {{minutes}} minuti.",
       "timeStampBenefits": "Perché è importante:",
       "timeStamped": "provvisto di timestamp.",
       "timeStampedNoDot": "con timestamp",
@@ -305,11 +305,14 @@
       "tryAgain": "Prova ancora",
       "tryOneMoreTime": "Prova ancora una volta!",
       "verifyDisplayName": "Prima di iniziare, controlla il tuo nome visualizzato di seguito, poiché sarà quello utilizzato per generare il tuo diploma.",
-      "viewExam": "",
+      "viewExam": "Visualizza test",
       "weight": "Peso: {{weight}}%",
       "whyTimeStamp": "Datazione del tuo diploma:\nPerché è importante",
       "wishTryAgain": "Puoi ripetere l'esame dopo 24 ore.",
-      "yesSubmit": "Sì, invia"
+      "yesSubmit": "Sì, invia",
+      "examResults": "Risultati dell'esame",
+      "reviewTest": "Rivedi",
+      "scoreAndDiploma": "Punteggio & Diploma"
     },
     "explorer": {
       "buildPath": "Dai forma al tuo viaggio",
@@ -426,7 +429,9 @@
         "profession": "Professione",
         "resultsRemaining": "{{results}} risultati rimasti",
         "seeMore": "Vedi di più",
-        "viewCV": "Visualizza CV"
+        "viewCV": "Visualizza CV",
+        "candidateFile": "File del candidato",
+        "file": "File"
       },
       "confirmRemoval": "Conferma rimozione",
       "coupons": {
@@ -469,13 +474,13 @@
         "generateNewCodes": "Genera nuovi codici",
         "maximumNumberOfUse": "Numero massimo di utilizzi",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "A-z",
+          "highLow": "Import Alto - Basso",
+          "lowHigh": "Importo Basso - Alto",
+          "sortBy": "Ordina per",
+          "za": "z-A"
         },
-        "noCouponsFound": "",
+        "noCouponsFound": "Non ci sono coupon.",
         "numberOfCodes": "Quanti codici sconto vuoi generare?",
         "numberOfCodesPlaceholder": "digita un numero",
         "productCourse": "Corso",
@@ -519,7 +524,49 @@
       "type": "Tipo",
       "upcomingBookings": "Prenotazioni in arrivo",
       "upcomingBookingsSubtitle": "Qui puoi scaricare l'elenco dei partecipanti per tutti gli eventi dal vivo.",
-      "userRolesAllocation": "Assegnazione dei ruoli utente"
+      "userRolesAllocation": "Assegnazione dei ruoli utente",
+      "translation": "Pannello delle traduzioni",
+      "translationPanel": {
+        "actions": {
+          "accept": "Accetta",
+          "delete": "Elimina",
+          "reject": "Rifiuta"
+        },
+        "addContributor": {
+          "addLanguage": "Aggiungi un'altra lingua",
+          "assign": "Assegna",
+          "assignedLanguages": "Lingue già assegnate",
+          "assigning": "Sto assegnando...",
+          "assignmentSuccess": "Attività assegnate con successo!",
+          "confirm": "Conferma",
+          "findContributor": "Trova un collaboratore",
+          "language": "Lingua",
+          "noUsers": "Nessun utente disponibile",
+          "searchUsers": "Cerca utenti...",
+          "selectLanguage": "Seleziona una lingua",
+          "selectedUsers": "Utenti selezionati:",
+          "title": "Aggiungi Contributor"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Assegna",
+            "backToContentManagement": "Torna al pannello dei contenuti",
+            "reassign": "Riassegna",
+            "view": "Visualizza"
+          },
+          "assignModal": {
+            "assign": "Assegna",
+            "assigning": "Assegnazione in corso...",
+            "assigningCourse": "Assegnazione del corso:",
+            "assignmentSuccess": "Corso assegnato con successo!"
+          }
+        },
+        "admin": "AMMINISTRATORE",
+        "comingSoon": {
+          "courses": "Lista dei corsi in arrivo",
+          "coverage": "Lista delle lingue assegnate in arrivo"
+        }
+      }
     },
     "announcements": {
       "groups": {
