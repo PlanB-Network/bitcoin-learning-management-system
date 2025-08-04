@@ -7,6 +7,7 @@ import type {
 import { Button, cn, Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
+import DOMPurify from 'dompurify';
 import { type TFunction, t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { HiOutlineDownload } from 'react-icons/hi';
@@ -573,12 +574,6 @@ const generateCandidateFilePdf = async (
           margin-bottom: 10px;
         }
 
-        @media (max-width: 780px) {
-          .contact-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
         .course-item {
           margin-bottom: 8px;
           padding: 8px;
@@ -831,7 +826,7 @@ const generateCandidateFilePdf = async (
             ? `
           <div class="field">
             <span class="field-label">Expected salary:</span>
-            <span class="field-value">${profile.expectedSalary.replace(/₿/g, 'B')}</span>
+            <span class="field-value">${profile.expectedSalary}</span>
           </div>
         `
             : ''
@@ -932,11 +927,17 @@ const generateCandidateFilePdf = async (
       }
     </body>
     </html>
-  `.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+  `;
+
+  const sanitizedHtmlContent = DOMPurify.sanitize(htmlContent, {
+    WHOLE_DOCUMENT: true,
+    ADD_TAGS: ['style'],
+    ADD_ATTR: ['onclick'],
+  });
 
   const newWindow = window.open('', '_blank');
   if (newWindow) {
-    newWindow.document.write(htmlContent);
+    newWindow.document.write(sanitizedHtmlContent);
     newWindow.document.close();
   }
 };
