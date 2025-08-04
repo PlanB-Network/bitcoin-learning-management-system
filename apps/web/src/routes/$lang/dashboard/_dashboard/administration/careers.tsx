@@ -492,200 +492,451 @@ const generateCandidateFilePdf = async (
   t: TFunction<'translation', undefined>,
   courses: JoinedCourse[] | null,
 ) => {
-  const { jsPDF } = await import('jspdf');
+  const htmlContent = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${profile.firstName} ${profile.lastName} - Career Profile</title>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+CJK+SC:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-  const doc = new jsPDF({
-    orientation: 'p',
-    unit: 'mm',
-    format: 'a4',
-  });
+        body {
+          font-family: 'Noto Sans', 'Noto Sans CJK SC', 'Noto Sans Arabic', Arial, sans-serif;
+          font-size: 12px;
+          line-height: 1.4;
+          color: #333;
+          background: white;
+          padding: 10mm;
+          width: fit-content;
+          max-width: 780px;
+        }
 
-  let y = 20;
-  const x = 15;
-  const lineHeight = 5;
-  const sectionSpacing = 2;
-  const pageHeight = doc.internal.pageSize.getHeight();
-  const maxWidth = doc.internal.pageSize.getWidth() - 2 * x;
+        @media (max-width: 780px) {
+          body {
+            padding: 5mm;
+            padding-top: 10mm;
+          }
+        }
 
-  const addData = (title: string, value: string | null | undefined) => {
-    if (
-      value === null ||
-      value === undefined ||
-      value === '' ||
-      (Array.isArray(value) && value.length === 0)
-    ) {
-      return; // Skip empty values
-    }
+        .header {
+          margin-bottom: 10px;
+        }
 
-    const valueStr = String(value).replace(/₿/g, 'B');
+        .header h1 {
+          font-size: 24px;
+          font-weight: 600;
+          color: #ff5c00;
+        }
 
-    doc.setFont('helvetica', 'bold');
-    const titleLines = doc.splitTextToSize(title, maxWidth);
-    doc.setFont('helvetica', 'normal');
-    const valueLines = doc.splitTextToSize(valueStr, maxWidth);
+        .section {
+          margin-bottom: 10px;
+          break-inside: avoid;
+        }
 
-    const requiredHeight =
-      (titleLines.length + valueLines.length) * lineHeight + sectionSpacing;
+        .section-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #ff5c00;
+          margin-bottom: 8px;
+          padding-bottom: 4px;
+        }
 
-    if (y + requiredHeight > pageHeight - x) {
-      doc.addPage();
-      y = 20;
-    }
+        .field {
+          margin-bottom: 12px;
+          break-inside: avoid;
+        }
 
-    // title (question)
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text(title, x, y);
-    y += lineHeight * titleLines.length;
+        .field-label {
+          font-weight: 600;
+          color: #555;
+          margin-bottom: 4px;
+          display: block;
+        }
 
-    // value
-    doc.setFontSize(11);
-    doc.setFont('helvetica', 'normal');
-    doc.text(valueLines, x, y);
-    y += lineHeight * valueLines.length + sectionSpacing;
-  };
+        .field-value {
+          color: #333;
+          white-space: pre-line;
+          word-wrap: break-word;
+        }
 
-  // Header
-  doc.setFontSize(18);
-  doc.setFont('helvetica', 'bold');
-  doc.text(
-    `${profile.firstName || ''} ${profile.lastName || ''}`.trim(),
-    doc.internal.pageSize.getWidth() / 2,
-    15,
-    { align: 'center' },
-  );
-  y = 30;
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 4px;
+          margin-bottom: 10px;
+        }
 
-  addData('Country:', profile.country);
-  addData('Email:', profile.email);
-  addData('LinkedIn:', profile.linkedin);
-  addData('GitHub:', profile.github);
-  addData('Telegram:', profile.telegram);
-  addData('Other contact:', profile.otherContact);
+        @media (max-width: 780px) {
+          .contact-grid {
+            grid-template-columns: 1fr;
+          }
+        }
 
-  const languagesText =
-    profile.languages.length > 0
-      ? profile.languages
-          .map((lang) => {
-            const language = languages?.find(
-              (l) => l.code === lang.languageCode,
-            );
-            return `${language?.name || lang.languageCode}: ${t(
-              `dashboard.careerPortal.languageLevels.${lang.level}`,
-            )}`;
-          })
-          .sort((a, b) => a.localeCompare(b))
-          .join('\n')
-      : null;
-  addData('Languages:', languagesText);
+        .course-item {
+          margin-bottom: 8px;
+          padding: 8px;
+          background: #f8f9fa;
+          border-left: 3px solid #ff5c00;
+        }
 
-  if (profile.isBitcoinCommunityParticipant && profile.bitcoinCommunityText) {
-    addData('Community involvement details:', profile.bitcoinCommunityText);
-  }
+        .course-name {
+          font-weight: 600;
+        }
 
-  if (profile.isBitcoinProjectParticipant && profile.bitcoinProjectText) {
-    addData('Project involvement details:', profile.bitcoinProjectText);
-  }
+        .course-details {
+          font-size: 12px;
+          color: #666;
+          margin-top: 2px;
+        }
 
-  const rolesText =
-    profile.roles.length > 0
-      ? profile.roles
-          .map((role) => {
-            const jobTitle = jobTitles?.find((jt) => jt.id === role.roleId);
-            return `${
-              jobTitle
-                ? t(`dashboard.careerPortal.jobTitles.${jobTitle.name}`)
-                : role.roleId
-            }: ${t(`dashboard.careerPortal.roleLevels.${role.level}`)}`;
-          })
-          .sort((a, b) => a.localeCompare(b))
-          .join('\n')
-      : null;
-  addData('Target roles (experience):', rolesText);
+        @media print {
+          body { margin: 0; padding: 15mm; }
+          .section { page-break-inside: avoid; }
+        }
 
-  const companySizesText =
-    profile.companySizes.length > 0
-      ? profile.companySizes
-          .map((size) => t(`dashboard.careerPortal.companySizes.${size}`))
-          .join(', ')
-      : null;
-  addData('Preferred company sizes:', companySizesText);
+        @page {
+          size: A4;
+          margin: 15mm;
+        }
 
-  addData(
-    'Availability:',
-    profile.isAvailableFullTime ? 'Full-time' : 'Part-time',
-  );
+        .no-print {
+          display: none;
+        }
 
-  addData(
-    'Availability start date:',
-    profile.availabilityStart ? profile.availabilityStart : null,
-  );
+        @media screen {
+          .no-print {
+            display: block;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+          }
 
-  addData(
-    'Remote work preference:',
-    profile.remoteWorkPreference
-      ? t(
-          `dashboard.careerPortal.remoteWorkPreferences.${profile.remoteWorkPreference}`,
-        )
-      : null,
-  );
+          .print-button {
+            background: #ff5c00;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+            width: fit-content;
+          }
 
-  addData('Expected salary:', profile.expectedSalary);
+          .print-button:hover {
+            background: #ff792e;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="no-print">
+        <button class="print-button" onclick="window.print()">Download</button>
+        <button class="print-button" onclick="window.close()">X</button>
+      </div>
 
-  addData(
-    'CV:',
-    profile.cvUrl ? `${window.location.origin}${profile.cvUrl}` : null,
-  );
+      <div class="header">
+        <h1>${profile.firstName || ''} ${profile.lastName || ''}</h1>
+      </div>
 
-  addData('Motivation letter:', profile.motivationLetter);
+      <div class="section">
+        ${
+          profile.country
+            ? `
+          <div class="field">
+            <span class="field-label">Country:</span>
+            <span class="field-value">${profile.country}</span>
+          </div>
+        `
+            : ''
+        }
 
-  const coursesText =
-    courses && profile.courses && profile.courses.length > 0
-      ? profile.courses
-          .map((course) => {
-            const courseDetails = courses.find((c) => c.id === course.courseId);
-            return { ...course, courseDetails };
-          })
-          .filter(
-            (course) =>
-              course.courseDetails &&
-              (course.progressPercentage === 100 ||
-                course.courseDetails.teachingFormat === 'professor_led'),
-          )
-          .sort((a, b) => {
-            if (a.courseDetails && b.courseDetails) {
-              const aIndex =
-                Number.parseInt(a.courseDetails.index.replace(/\D/g, ''), 10) ||
-                0;
-              const bIndex =
-                Number.parseInt(b.courseDetails.index.replace(/\D/g, ''), 10) ||
-                0;
+        ${
+          profile.email
+            ? `
+          <div class="field">
+            <span class="field-label">Email:</span>
+            <span class="field-value">${profile.email}</span>
+          </div>
+        `
+            : ''
+        }
 
-              if (aIndex === bIndex) {
-                return (a.courseDetails.index || '').localeCompare(
-                  b.courseDetails.index || '',
+        ${
+          profile.linkedin
+            ? `
+          <div class="field">
+            <span class="field-label">LinkedIn:</span>
+            <span class="field-value">${profile.linkedin}</span>
+          </div>
+        `
+            : ''
+        }
+
+        ${
+          profile.github
+            ? `
+          <div class="field">
+            <span class="field-label">GitHub:</span>
+            <span class="field-value">${profile.github}</span>
+          </div>
+        `
+            : ''
+        }
+
+        ${
+          profile.telegram
+            ? `
+          <div class="field">
+            <span class="field-label">Telegram:</span>
+            <span class="field-value">${profile.telegram}</span>
+          </div>
+        `
+            : ''
+        }
+
+        ${
+          profile.otherContact
+            ? `
+          <div class="field">
+            <span class="field-label">Other contact:</span>
+            <span class="field-value">${profile.otherContact}</span>
+          </div>
+        `
+            : ''
+        }
+      </div>
+
+      ${
+        profile.languages && profile.languages.length > 0
+          ? `
+        <div class="section">
+          <div class="section-title">Languages</div>
+          <div class="languages-list">
+            ${profile.languages
+              .map((lang) => {
+                const language = languages?.find(
+                  (l) => l.code === lang.languageCode,
                 );
+                return `<div class="field-value">• ${language?.name || lang.languageCode}: ${t(`dashboard.careerPortal.languageLevels.${lang.level}`)}</div>`;
+              })
+              .join('')}
+              </div>
+            </div>
+            `
+          : ''
+      }
+
+            ${
+              profile.bitcoinCommunityText || profile.bitcoinProjectText
+                ? `
+            <div class="section">
+            <div class="section-title">Bitcoin related experience</div>
+              ${
+                profile.bitcoinCommunityText
+                  ? `
+              <div class="field">
+                <span class="field-label">Community involvement:</span>
+                <span class="field-value">${profile.bitcoinCommunityText}</span>
+              </div>
+              `
+                  : ''
               }
-
-              return aIndex - bIndex;
-            }
-            return 0;
-          })
-          .map((course) => {
-            const { courseDetails } = course;
-            return `${courseDetails?.name} (${courseDetails?.index.toLocaleUpperCase()})${
-              course.totalScore !== undefined &&
-              course.courseDetails?.teachingFormat === 'professor_led'
-                ? `\n• Grade: ${course.totalScore}/100`
+              ${
+                profile.bitcoinProjectText
+                  ? `
+              <div class="field">
+                <span class="field-label">Project involvement:</span>
+                <span class="field-value">${profile.bitcoinProjectText}</span>
+              </div>
+              `
+                  : ''
+              }
+            </div>
+            `
                 : ''
-            }${course.ranking !== undefined && course.courseDetails?.teachingFormat === 'professor_led' ? `\n• Ranking: ${course.ranking}/${course.totalStudents}` : ''}`;
-          })
-          .join('\n\n')
-      : null;
-  addData('Courses completed:', coursesText);
+            }
 
-  const blob = doc.output('blob');
-  const blobUrl = URL.createObjectURL(blob);
-  window.open(blobUrl, '_blank');
-  URL.revokeObjectURL(blobUrl);
+            ${
+              profile.roles && profile.roles.length > 0
+                ? `
+            <div class="section">
+              <div class="section-title">Job search</div>
+              <div class="roles-list">
+              ${profile.roles
+                .map((role) => {
+                  const jobTitle = jobTitles?.find(
+                    (jt) => jt.id === role.roleId,
+                  );
+                  return `<div class="field-value">• ${jobTitle ? t(`dashboard.careerPortal.jobTitles.${jobTitle.name}`) : role.roleId}: ${t(`dashboard.careerPortal.roleLevels.${role.level}`)}</div>`;
+                })
+                .join('')}
+          </div>
+        </div>
+      `
+                : ''
+            }
+
+      ${
+        profile.companySizes && profile.companySizes.length > 0
+          ? `
+        <div class="section">
+          <div class="field">
+            <span class="field-label">Preferred company sizes:</span>
+            <span class="field-value">${profile.companySizes.map((size) => t(`dashboard.careerPortal.companySizes.${size}`)).join(', ')}</span>
+          </div>
+        </div>
+      `
+          : ''
+      }
+
+      <div class="section">
+        <div class="field">
+          <span class="field-label">Availability:</span>
+          <span class="field-value">${profile.isAvailableFullTime ? 'Full-time' : 'Part-time'}</span>
+        </div>
+
+        ${
+          profile.availabilityStart
+            ? `
+          <div class="field">
+            <span class="field-label">Available from:</span>
+            <span class="field-value">${profile.availabilityStart}</span>
+          </div>
+        `
+            : ''
+        }
+
+        ${
+          profile.remoteWorkPreference
+            ? `
+          <div class="field">
+            <span class="field-label">Remote work preference:</span>
+            <span class="field-value">${t(`dashboard.careerPortal.remoteWorkPreferences.${profile.remoteWorkPreference}`)}</span>
+          </div>
+        `
+            : ''
+        }
+
+        ${
+          profile.expectedSalary
+            ? `
+          <div class="field">
+            <span class="field-label">Expected salary:</span>
+            <span class="field-value">${profile.expectedSalary.replace(/₿/g, 'B')}</span>
+          </div>
+        `
+            : ''
+        }
+      </div>
+
+      ${
+        profile.cvUrl
+          ? `
+        <div class="section">
+        <div class="section-title">CV</div>
+          <div class="field">
+            <span class="field-label">Link to CV:</span>
+            <a href="${window.location.origin}${profile.cvUrl}" target="_blank" noreferrer class="field-value">${window.location.origin}${profile.cvUrl}</a>
+          </div>
+        </div>
+      `
+          : ''
+      }
+
+      ${
+        profile.motivationLetter
+          ? `
+        <div class="section">
+          <div class="field">
+            <span class="field-label">Motivation letter:</span>
+            <span class="field-value">${profile.motivationLetter}</span>
+          </div>
+        </div>
+      `
+          : ''
+      }
+
+      ${
+        courses && profile.courses && profile.courses.length > 0
+          ? `
+        <div class="section">
+          <div class="section-title">Completed courses</div>
+          <div class="courses-list">
+            ${profile.courses
+              .map((course) => {
+                const courseDetails = courses.find(
+                  (c) => c.id === course.courseId,
+                );
+                return { ...course, courseDetails };
+              })
+              .filter(
+                (course) =>
+                  course.courseDetails &&
+                  (course.progressPercentage === 100 ||
+                    course.courseDetails.teachingFormat === 'professor_led'),
+              )
+              .sort((a, b) => {
+                if (a.courseDetails && b.courseDetails) {
+                  const aIndex =
+                    Number.parseInt(
+                      a.courseDetails.index.replace(/\D/g, ''),
+                      10,
+                    ) || 0;
+                  const bIndex =
+                    Number.parseInt(
+                      b.courseDetails.index.replace(/\D/g, ''),
+                      10,
+                    ) || 0;
+                  if (aIndex === bIndex) {
+                    return (a.courseDetails.index || '').localeCompare(
+                      b.courseDetails.index || '',
+                    );
+                  }
+                  return aIndex - bIndex;
+                }
+                return 0;
+              })
+              .map(
+                (course) => `
+                <div class="course-item">
+                  <div class="course-name">${course.courseDetails?.name} (${course.courseDetails?.index.toUpperCase()})</div>
+                  ${
+                    course.totalScore !== undefined &&
+                    course.courseDetails?.teachingFormat === 'professor_led'
+                      ? `<div class="course-details">Grade: ${course.totalScore}/100</div>`
+                      : ''
+                  }
+                  ${
+                    course.ranking !== undefined &&
+                    course.courseDetails?.teachingFormat === 'professor_led'
+                      ? `<div class="course-details">Ranking: ${course.ranking}/${course.totalStudents}</div>`
+                      : ''
+                  }
+                </div>
+              `,
+              )
+              .join('')}
+          </div>
+        </div>
+      `
+          : ''
+      }
+    </body>
+    </html>
+  `.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+
+  const newWindow = window.open('', '_blank');
+  if (newWindow) {
+    newWindow.document.write(htmlContent);
+    newWindow.document.close();
+  }
 };
