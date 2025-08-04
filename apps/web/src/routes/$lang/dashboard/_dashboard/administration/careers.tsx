@@ -493,7 +493,8 @@ const generateCandidateFilePdf = async (
   t: TFunction<'translation', undefined>,
   courses: JoinedCourse[] | null,
 ) => {
-  const htmlContent = `
+  const htmlContent = DOMPurify.sanitize(
+    `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -634,8 +635,8 @@ const generateCandidateFilePdf = async (
     </head>
     <body>
       <div class="no-print">
-        <button class="print-button" onclick="window.print()">Download</button>
-        <button class="print-button" onclick="window.close()">X</button>
+        <button class="print-button" id="print-btn">Download</button>
+        <button class="print-button" id="close-btn">X</button>
       </div>
 
       <div class="header">
@@ -903,7 +904,7 @@ const generateCandidateFilePdf = async (
               .map(
                 (course) => `
                 <div class="course-item">
-                  <div class="course-name">${course.courseDetails?.name} (${course.courseDetails?.index.toUpperCase()})</div>
+                  <div class="course-name">${course.courseDetails?.name} (${course.courseDetails?.index?.toUpperCase()})</div>
                   ${
                     course.totalScore !== undefined &&
                     course.courseDetails?.teachingFormat === 'professor_led'
@@ -927,17 +928,24 @@ const generateCandidateFilePdf = async (
       }
     </body>
     </html>
-  `;
-
-  const sanitizedHtmlContent = DOMPurify.sanitize(htmlContent, {
-    WHOLE_DOCUMENT: true,
-    ADD_TAGS: ['style'],
-    ADD_ATTR: ['onclick'],
-  });
+  `,
+    {
+      WHOLE_DOCUMENT: true,
+      ADD_TAGS: ['style'],
+    },
+  );
 
   const newWindow = window.open('', '_blank');
   if (newWindow) {
-    newWindow.document.write(sanitizedHtmlContent);
+    newWindow.document.write(htmlContent);
     newWindow.document.close();
+    const printBtn = newWindow.document.getElementById('print-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => newWindow.print());
+    }
+    const closeBtn = newWindow.document.getElementById('close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => newWindow.close());
+    }
   }
 };
