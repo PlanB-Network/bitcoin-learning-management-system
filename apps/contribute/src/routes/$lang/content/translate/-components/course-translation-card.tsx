@@ -1,5 +1,5 @@
 import type { BasicCourse } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, Flag } from '@blms/ui';
 import { useNavigate } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { Image } from '#src/components/image.tsx';
 import { TranslationRequestModal } from '#src/components/translation-request-modal.tsx';
-import Flag from '#src/molecules/Flag/index.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';

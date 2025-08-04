@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MainLayout } from '#src/components/layouts/main-layout.tsx';
 import { trpcClient } from '#src/utils/trpc.ts';
-// Removed Flag import because flags are no longer displayed
 
 export const Route = createFileRoute('/$lang/')({
   component: ContributePage,
