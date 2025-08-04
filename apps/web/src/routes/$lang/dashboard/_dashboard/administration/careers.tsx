@@ -493,14 +493,32 @@ const generateCandidateFilePdf = async (
   t: TFunction<'translation', undefined>,
   courses: JoinedCourse[] | null,
 ) => {
-  const htmlContent = DOMPurify.sanitize(
-    `
+  const sanitizedProfile = {
+    firstName: DOMPurify.sanitize(profile.firstName || ''),
+    lastName: DOMPurify.sanitize(profile.lastName || ''),
+    country: DOMPurify.sanitize(profile.country || ''),
+    email: DOMPurify.sanitize(profile.email || ''),
+    linkedin: DOMPurify.sanitize(profile.linkedin || ''),
+    github: DOMPurify.sanitize(profile.github || ''),
+    telegram: DOMPurify.sanitize(profile.telegram || ''),
+    otherContact: DOMPurify.sanitize(profile.otherContact || ''),
+    bitcoinCommunityText: DOMPurify.sanitize(
+      profile.bitcoinCommunityText || '',
+    ),
+    bitcoinProjectText: DOMPurify.sanitize(profile.bitcoinProjectText || ''),
+    availabilityStart: DOMPurify.sanitize(profile.availabilityStart || ''),
+    expectedSalary: DOMPurify.sanitize(profile.expectedSalary || ''),
+    cvUrl: DOMPurify.sanitize(profile.cvUrl || ''),
+    motivationLetter: DOMPurify.sanitize(profile.motivationLetter || ''),
+  };
+
+  const htmlContent = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>${profile.firstName} ${profile.lastName} - Career Profile</title>
+      <title>${sanitizedProfile.firstName} ${sanitizedProfile.lastName} - Career Profile</title>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+CJK+SC:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
       <style>
         * {
@@ -640,71 +658,71 @@ const generateCandidateFilePdf = async (
       </div>
 
       <div class="header">
-        <h1>${profile.firstName || ''} ${profile.lastName || ''}</h1>
+        <h1>${sanitizedProfile.firstName || ''} ${sanitizedProfile.lastName || ''}</h1>
       </div>
 
       <div class="section">
         ${
-          profile.country
+          sanitizedProfile.country
             ? `
           <div class="field">
             <span class="field-label">Country:</span>
-            <span class="field-value">${profile.country}</span>
+            <span class="field-value">${sanitizedProfile.country}</span>
           </div>
         `
             : ''
         }
 
         ${
-          profile.email
+          sanitizedProfile.email
             ? `
           <div class="field">
             <span class="field-label">Email:</span>
-            <span class="field-value">${profile.email}</span>
+            <span class="field-value">${sanitizedProfile.email}</span>
           </div>
         `
             : ''
         }
 
         ${
-          profile.linkedin
+          sanitizedProfile.linkedin
             ? `
           <div class="field">
             <span class="field-label">LinkedIn:</span>
-            <span class="field-value">${profile.linkedin}</span>
+            <span class="field-value">${sanitizedProfile.linkedin}</span>
           </div>
         `
             : ''
         }
 
         ${
-          profile.github
+          sanitizedProfile.github
             ? `
           <div class="field">
             <span class="field-label">GitHub:</span>
-            <span class="field-value">${profile.github}</span>
+            <span class="field-value">${sanitizedProfile.github}</span>
           </div>
         `
             : ''
         }
 
         ${
-          profile.telegram
+          sanitizedProfile.telegram
             ? `
           <div class="field">
             <span class="field-label">Telegram:</span>
-            <span class="field-value">${profile.telegram}</span>
+            <span class="field-value">${sanitizedProfile.telegram}</span>
           </div>
         `
             : ''
         }
 
         ${
-          profile.otherContact
+          sanitizedProfile.otherContact
             ? `
           <div class="field">
             <span class="field-label">Other contact:</span>
-            <span class="field-value">${profile.otherContact}</span>
+            <span class="field-value">${sanitizedProfile.otherContact}</span>
           </div>
         `
             : ''
@@ -732,26 +750,27 @@ const generateCandidateFilePdf = async (
       }
 
             ${
-              profile.bitcoinCommunityText || profile.bitcoinProjectText
+              sanitizedProfile.bitcoinCommunityText ||
+              sanitizedProfile.bitcoinProjectText
                 ? `
             <div class="section">
             <div class="section-title">Bitcoin related experience</div>
               ${
-                profile.bitcoinCommunityText
+                sanitizedProfile.bitcoinCommunityText
                   ? `
               <div class="field">
                 <span class="field-label">Community involvement:</span>
-                <span class="field-value">${profile.bitcoinCommunityText}</span>
+                <span class="field-value">${sanitizedProfile.bitcoinCommunityText}</span>
               </div>
               `
                   : ''
               }
               ${
-                profile.bitcoinProjectText
+                sanitizedProfile.bitcoinProjectText
                   ? `
               <div class="field">
                 <span class="field-label">Project involvement:</span>
-                <span class="field-value">${profile.bitcoinProjectText}</span>
+                <span class="field-value">${sanitizedProfile.bitcoinProjectText}</span>
               </div>
               `
                   : ''
@@ -801,11 +820,11 @@ const generateCandidateFilePdf = async (
         </div>
 
         ${
-          profile.availabilityStart
+          sanitizedProfile.availabilityStart
             ? `
           <div class="field">
             <span class="field-label">Available from:</span>
-            <span class="field-value">${profile.availabilityStart}</span>
+            <span class="field-value">${sanitizedProfile.availabilityStart}</span>
           </div>
         `
             : ''
@@ -823,11 +842,11 @@ const generateCandidateFilePdf = async (
         }
 
         ${
-          profile.expectedSalary
+          sanitizedProfile.expectedSalary
             ? `
           <div class="field">
             <span class="field-label">Expected salary:</span>
-            <span class="field-value">${profile.expectedSalary}</span>
+            <span class="field-value">${sanitizedProfile.expectedSalary}</span>
           </div>
         `
             : ''
@@ -835,13 +854,13 @@ const generateCandidateFilePdf = async (
       </div>
 
       ${
-        profile.cvUrl
+        sanitizedProfile.cvUrl
           ? `
         <div class="section">
         <div class="section-title">CV</div>
           <div class="field">
             <span class="field-label">Link to CV:</span>
-            <a href="${window.location.origin}${profile.cvUrl}" target="_blank" noreferrer class="field-value">${window.location.origin}${profile.cvUrl}</a>
+            <a href="${window.location.origin}${sanitizedProfile.cvUrl}" target="_blank" noopener noreferrer class="field-value">${window.location.origin}${sanitizedProfile.cvUrl}</a>
           </div>
         </div>
       `
@@ -849,12 +868,12 @@ const generateCandidateFilePdf = async (
       }
 
       ${
-        profile.motivationLetter
+        sanitizedProfile.motivationLetter
           ? `
         <div class="section">
           <div class="field">
             <span class="field-label">Motivation letter:</span>
-            <span class="field-value">${profile.motivationLetter}</span>
+            <span class="field-value">${sanitizedProfile.motivationLetter}</span>
           </div>
         </div>
       `
@@ -928,12 +947,7 @@ const generateCandidateFilePdf = async (
       }
     </body>
     </html>
-  `,
-    {
-      WHOLE_DOCUMENT: true,
-      ADD_TAGS: ['style'],
-    },
-  );
+  `;
 
   const newWindow = window.open('', '_blank');
   if (newWindow) {
