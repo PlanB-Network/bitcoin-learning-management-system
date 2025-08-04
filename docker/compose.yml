@@ -25,6 +25,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"  # Binds only to localhost
 
   api:
     <<: *defaults
