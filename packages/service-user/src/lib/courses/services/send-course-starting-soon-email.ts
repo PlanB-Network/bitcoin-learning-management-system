@@ -4,7 +4,7 @@ import type { Dependencies } from '../../../dependencies.js';
 import { getUsersAccountSettingsQuery } from '../../account/queries/get-account-settings.js';
 import { getUsersByIdsQuery } from '../../account/queries/get-user.js';
 import { createSendEmail } from '../../account/services/email.js';
-import { getCourseLocalized } from '../queries/get-course.js';
+import { getCourseInfo, getCourseLocalized } from '../queries/get-course.js';
 
 interface SendStartingSoonEmailParams {
   uids: string[];
@@ -28,10 +28,19 @@ export const createSendCourseStartingSoonEmail = (
     const { postgres, config } = dependencies;
 
     try {
-      const course = await getCourseLocalized('en', courseId).then(firstRow);
-
+      const course = await getCourseInfo(courseId).then(firstRow);
       if (!course) {
         console.error(`No course found with ID: ${courseId}`);
+        return;
+      }
+
+      const courseLocalized = await getCourseLocalized(
+        course.originalLanguage,
+        courseId,
+      ).then(firstRow);
+
+      if (!courseLocalized) {
+        console.error(`No course localized found with ID: ${courseId}`);
         return;
       }
 
@@ -84,7 +93,7 @@ export const createSendCourseStartingSoonEmail = (
       }
 
       const sendEmail = createSendEmail({ config });
-      const courseName = course.name;
+      const courseName = courseLocalized.name;
       const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}${courseName} - Class starting soon`;
       const joinClassLink = `${config.domainUrl}/courses/${courseId}/${chapterId}`;
 

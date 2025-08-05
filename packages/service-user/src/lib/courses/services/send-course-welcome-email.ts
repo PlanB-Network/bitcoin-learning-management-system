@@ -23,7 +23,7 @@ export const createSendCourseWelcomeEmail = (
         .exec(getCourseInfo(courseId))
         .then(firstRow);
 
-      if (!courseInfo || !courseInfo.isPlanbSchool) {
+      if (!courseInfo || !courseInfo.requiresPayment) {
         return;
       }
 
@@ -38,7 +38,7 @@ export const createSendCourseWelcomeEmail = (
       }
 
       const courseLocalized = await postgres
-        .exec(getCourseLocalized('en', courseId))
+        .exec(getCourseLocalized(courseInfo.originalLanguage, courseId))
         .then(firstRow);
 
       if (!courseLocalized) {

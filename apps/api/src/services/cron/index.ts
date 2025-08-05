@@ -272,7 +272,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
     ctx.crons.addTask('sun4pm', async () => {
       console.log('[cron]', new Date(), 'Starting weekly recap email cron job');
-      const courses = await getCourses('en');
+      const courses = await getCourses();
       if (courses.length === 0) return;
 
       const startDate = new Date();
@@ -283,9 +283,12 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       endDate.setHours(0, 0, 0, 0);
 
       for (const course of courses) {
-        if (!course.isPlanbSchool) continue;
+        if (course.teachingFormat !== 'professor_led') continue;
 
-        const chapters = await getCourseChapters(course.id, 'en');
+        const chapters = await getCourseChapters(
+          course.id,
+          course.originalLanguage,
+        );
         if (chapters.length === 0) continue;
 
         const chaptersStartingSoon = chapters.filter((chapter) => {
