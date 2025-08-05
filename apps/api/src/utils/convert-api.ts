@@ -101,12 +101,54 @@ export const convertPptxToPngs = async (
   }
 };
 
+// Helper function to discover files by extension in a directory
+const discoverFileByExtension = async (
+  s3: Dependencies['s3'],
+  directoryPath: string,
+  extension: string,
+  suffix?: string,
+): Promise<string | null> => {
+  try {
+    // List all objects in the directory using the S3 list method
+    const objectKeys = await s3.list(directoryPath);
+
+    if (!objectKeys || objectKeys.length === 0) {
+      return null;
+    }
+
+    // Filter by extension and suffix
+    const matchingFiles = objectKeys.filter((key: string) => {
+      const fileName = key.split('/').pop() || '';
+      const hasCorrectExtension = fileName
+        .toLowerCase()
+        .endsWith(`.${extension.toLowerCase()}`);
+
+      if (!hasCorrectExtension) return false;
+
+      // If suffix is specified, check for it
+      if (suffix) {
+        const baseNameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
+        return baseNameWithoutExt
+          .toLowerCase()
+          .endsWith(`-${suffix.toLowerCase()}`);
+      }
+
+      return true;
+    });
+
+    // Return the first matching file
+    return matchingFiles.length > 0 ? matchingFiles[0] : null;
+  } catch (_error) {
+    return null;
+  }
+};
+
 /**
- * Convert PPTX to PNG for slide translations - uses the exact PPTX path from database
+ * Convert PPTX to PNG for slide translations - discovers the proofread PPTX using directory-based search
  * @param dependencies - Application dependencies including S3 client
  * @param s3KeyDir - S3 directory prefix ending with '/' for PNG output
  * @param baseNameNoExt - Base filename without extension for PNG naming
- * @param pptxPath - Full S3 path to the PPTX file (should be proofread version)
+ * @param pptxPath - Full S3 path to the original PPTX file (used to determine directory)
  */
 export const convertSlideToProofreadPngs = async (
   dependencies: Dependencies,
@@ -136,12 +178,30 @@ export const convertSlideToProofreadPngs = async (
       return;
     }
 
-    // Use the proofread version of the PPTX
-    const proofreadPptxPath = pptxPath.replace('.pptx', '-proofread.pptx');
+    // Extract directory path from the pptx_resource_path to discover proofread version
+    const directoryPath = pptxPath.substring(0, pptxPath.lastIndexOf('/') + 1);
     console.log(
-      '[ConvertAPI] Looking for proofread PPTX at:',
-      proofreadPptxPath,
+      '[ConvertAPI] Searching for proofread PPTX in directory:',
+      directoryPath,
     );
+
+    // Discover proofread version using the same logic as translation-downloads endpoints
+    const proofreadPptxPath = await discoverFileByExtension(
+      dependencies.s3,
+      directoryPath,
+      'pptx',
+      'proofread',
+    );
+
+    if (!proofreadPptxPath) {
+      console.error(
+        '[ConvertAPI] Proofread PPTX not found in directory:',
+        directoryPath,
+      );
+      return;
+    }
+
+    console.log('[ConvertAPI] Found proofread PPTX at:', proofreadPptxPath);
 
     // Retrieve the PPTX from S3
     const pptxBytes = await dependencies.s3.getBlob(proofreadPptxPath);
@@ -183,9 +243,23 @@ export const convertSlideToProofreadPngs = async (
     let result: any;
     try {
       result = JSON.parse(rawResp);
+      // Log response metadata without file content
+      const resultSummary = {
+        Files: result.Files
+          ? result.Files.map((file: any) => ({
+              FileName: file.FileName,
+              FileSize: file.FileData ? file.FileData.length : 0,
+              // Omit FileData to avoid logging base64 content
+            }))
+          : [],
+        // Include other non-file fields
+        ...Object.fromEntries(
+          Object.entries(result).filter(([key]) => key !== 'Files'),
+        ),
+      };
       console.log(
         '[ConvertAPI] Parsed response:',
-        JSON.stringify(result, null, 2),
+        JSON.stringify(resultSummary, null, 2),
       );
     } catch {
       console.error(
@@ -221,7 +295,19 @@ export const convertSlideToProofreadPngs = async (
         'bytes',
       );
 
-      const imgKey = `${s3KeyDir}png/${baseNameNoExt}_${slideIndex}.png`;
+      // Use original filename from ppt_resource_path with -proofread suffix for consistency
+      const originalFileName =
+        pptxPath.split('/').pop()?.replace('.pptx', '') || baseNameNoExt;
+      const proofreadBaseName = originalFileName.endsWith('-proofread')
+        ? originalFileName
+        : `${originalFileName}-proofread`;
+
+      // For single slide presentations, use just -proofread.png suffix without slide index
+      // For multi-slide presentations, append slide index
+      const imgKey =
+        result.Files.length === 1
+          ? `${s3KeyDir}png/${proofreadBaseName}.png`
+          : `${s3KeyDir}png/${proofreadBaseName}_${slideIndex}.png`;
       console.log('[ConvertAPI] Uploading to S3 key:', imgKey);
 
       await dependencies.s3.upload(imgKey, Readable.from(imgBuf), {

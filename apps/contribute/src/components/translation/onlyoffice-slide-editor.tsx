@@ -198,7 +198,7 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             ? 'host.docker.internal:3000'
             : 'api:3000';
 
-          // Use direct download URL instead of token system to avoid authentication issues
+          // TEMPORARY: Use old endpoint structure until backend implements discovery endpoints
           let absoluteFileUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
 
           // Load DocsAPI and check if file exists

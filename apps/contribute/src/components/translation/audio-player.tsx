@@ -12,9 +12,11 @@ import CampaignIcon from '#src/assets/icons/campaign.svg';
 import Forward15Icon from '#src/assets/icons/forward_15.svg';
 import PauseIcon from '#src/assets/icons/pause.svg';
 import PlayIcon from '#src/assets/icons/play.svg';
+import { buildAudioUrl } from '#src/utils/index.ts';
 
 interface AudioPlayerProps {
   courseId: string;
+  partId: string;
   chapterId: string;
   slideId: string;
   language: string;
@@ -24,21 +26,25 @@ interface AudioPlayerProps {
   version?: number;
 }
 
-// Build the API URL that uses audio_resource_path from the database
+// Build the API URL using the new file discovery approach
 const buildAudioApiUrl = (
   courseId: string,
+  partId: string,
   chapterId: string,
   slideId: string,
   lang: string,
   version?: number,
 ): string => {
-  // New endpoint that reads audio_resource_path from course_translation_slides table
-  const base = `/api/translation-downloads/audio/${courseId}/${lang}/${chapterId}/${slideId}`;
-  return version ? `${base}?v=${version}` : base;
+  // Use the utility function for consistent URL building
+  const base = buildAudioUrl(courseId, lang, partId, chapterId, slideId);
+  const url = version ? `${base}?v=${version}` : base;
+
+  return url;
 };
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   courseId,
+  partId,
   chapterId,
   slideId,
   language,
@@ -102,7 +108,14 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   }, []);
 
   // Build audio URL early so hooks below can use it safely
-  const url = buildAudioApiUrl(courseId, chapterId, slideId, language, version);
+  const url = buildAudioApiUrl(
+    courseId,
+    partId,
+    chapterId,
+    slideId,
+    language,
+    version,
+  );
 
   // Fetch & decode audio ONCE to build a high-resolution amplitude array.
   useEffect(() => {

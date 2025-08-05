@@ -11,6 +11,7 @@ import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-ed
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { buildPptxUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -872,7 +873,13 @@ function CompareSlidePage() {
                   key={`original-${selectedOriginalLanguage}-${currentSlide?.slideId ?? ''}`}
                   fileUrl={
                     currentSlide
-                      ? `/api/translation-downloads/pptx-by-path/${courseId}/${originalLanguage}/${chapterId}/${currentSlide.slideId}`
+                      ? buildPptxUrl(
+                          courseId,
+                          originalLanguage,
+                          currentSlide.partId,
+                          chapterId,
+                          currentSlide.slideId,
+                        )
                       : null
                   }
                   className="w-full"
@@ -896,11 +903,18 @@ function CompareSlidePage() {
                 chapterId={chapterId}
                 slideId={currentSlide.slideId}
                 partId={currentSlide.partId}
-                fileName={`${fileBaseName}-proofread`}
+                fileName="proofread"
                 language={targetLanguage}
                 validated={pptValidated}
                 onValidationChange={setPptValidated}
-                fileUrl={`/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`}
+                fileUrl={buildPptxUrl(
+                  courseId,
+                  targetLanguage,
+                  currentSlide.partId,
+                  chapterId,
+                  currentSlide.slideId,
+                  'proofread',
+                )}
                 languageLabel={targetLanguageName}
                 mode="edit"
               />

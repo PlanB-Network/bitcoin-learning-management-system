@@ -26,6 +26,7 @@ import { VideoGenerationModal } from '#src/components/video-generation-modal.tsx
 
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { buildPptxUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -91,7 +92,7 @@ function ChapterTranslationPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Base file name (e.g. 1.1_0) used for PPTX/Audio resources – must be computed on every render
+  // Note: fileBaseName is no longer used for file URLs but kept for audio generation API compatibility
   const fileBaseName = React.useMemo(() => {
     if (!chapterData) return '';
     const partIdx = chapterData.context.partIndex;
@@ -552,7 +553,7 @@ function ChapterTranslationPage() {
     setHasUnsavedChanges(true);
   };
 
-  const handleValidatePresentation = async () => {
+  const _handleValidatePresentation = async () => {
     console.log('Validate presentation clicked');
 
     if (!chapterData) return;
@@ -562,7 +563,7 @@ function ChapterTranslationPage() {
     try {
       console.log('Starting presentation validation process...');
 
-      // Then update the validation state in the database
+      // Update the validation state in the database
       console.log('Updating database validation state...');
       await trpcClient.content.updateCourseTranslationSlide.mutate({
         courseId,
@@ -1345,7 +1346,7 @@ function ChapterTranslationPage() {
             chapterId={chapterId}
             slideId={currentSlide.slideId}
             partId={currentSlide.partId}
-            fileName={fileBaseName}
+            fileName="proofread"
             language={targetLanguage}
             validated={validationStates.presentationValidated}
             onValidationChange={(validated) =>
@@ -1354,10 +1355,15 @@ function ChapterTranslationPage() {
                 presentationValidated: validated,
               }))
             }
-            fileUrl={`/api/translation-downloads/pptx-by-path/${courseId}/${targetLanguage}/${chapterId}/${currentSlide.slideId}`}
+            fileUrl={buildPptxUrl(
+              courseId,
+              targetLanguage,
+              currentSlide.partId,
+              chapterId,
+              currentSlide.slideId,
+            )}
             showLanguageHeader={false}
             showValidationCheckbox={true}
-            onValidate={handleValidatePresentation}
             className="mt-10"
             headerContent={
               <div className="flex items-center justify-between">
@@ -1611,6 +1617,7 @@ function ChapterTranslationPage() {
         {currentSlide?.slideId && (
           <AudioPlayer
             courseId={courseId}
+            partId={currentSlide.partId}
             chapterId={chapterId}
             slideId={currentSlide.slideId}
             language={targetLanguage}

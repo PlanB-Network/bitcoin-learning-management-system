@@ -148,14 +148,15 @@ export const createRestTranslationDownloadRoutes = async (
     async (req, res, _next) => {
       try {
         console.log('OnlyOffice callback received:', req.body);
+        console.log('OnlyOffice callback query params:', req.query);
 
         const { status, url } = req.body;
         const { courseId, partId, chapterId, slideId, language, fileName } =
           req.query as any;
 
-        // Handle forcesave operations (status 6 = forcesave)
+        // Handle forcesave operations (status 6 = forcesave) and regular saves (status 2 = ready for saving)
         if (
-          status === 6 &&
+          (status === 6 || status === 2) &&
           courseId &&
           partId &&
           chapterId &&
@@ -164,7 +165,7 @@ export const createRestTranslationDownloadRoutes = async (
           fileName
         ) {
           console.log(
-            `OnlyOffice callback: Forcesave requested for ${courseId}/${slideId}/${language}`,
+            `OnlyOffice callback: Document save requested (status: ${status}) for ${courseId}/${slideId}/${language}`,
           );
 
           try {
@@ -184,9 +185,86 @@ export const createRestTranslationDownloadRoutes = async (
 
             // Save to S3, replacing the existing file
             // Save as a new "proofread" revision so the original remains untouched
-            const proofreadFileName = fileName.endsWith('-proofread')
-              ? fileName
-              : `${fileName}-proofread`;
+            // Extract original filename from ppt_resource_path to maintain consistency
+            console.log(
+              `[PPTX Callback] Query parameters: courseId=${courseId}, language=${language}, chapterId=${chapterId}, slideId=${slideId}`,
+            );
+
+            // Get ppt_resource_path from the database
+            const slideQuery = sql`
+              SELECT ppt_resource_path, course_id, language, chapter_id, slide_id
+              FROM content.course_translation_slides
+              WHERE course_id = ${courseId}
+                AND language = ${language}
+                AND chapter_id = ${chapterId}
+                AND slide_id = ${slideId}
+            `;
+
+            const slideResult = await dependencies.postgres.exec(slideQuery);
+            console.log(
+              '[PPTX Callback] Database query result:',
+              JSON.stringify(slideResult, null, 2),
+            );
+
+            // Check all possible field name variations
+            const firstRow = slideResult?.[0];
+            const pptResourcePath =
+              firstRow?.ppt_resource_path || firstRow?.pptResourcePath;
+
+            console.log(
+              '[PPTX Callback] First row keys:',
+              firstRow ? Object.keys(firstRow) : 'No first row',
+            );
+            console.log(
+              '[PPTX Callback] Extracted ppt_resource_path:',
+              pptResourcePath,
+            );
+
+            console.log(
+              `[PPTX Callback] Request fileName from frontend: ${fileName}`,
+            );
+            console.log(
+              `[PPTX Callback] ppt_resource_path from DB: ${pptResourcePath}`,
+            );
+
+            if (!pptResourcePath) {
+              console.error(
+                `[PPTX Callback] No ppt_resource_path found in database for courseId=${courseId}, language=${language}, chapterId=${chapterId}, slideId=${slideId}`,
+              );
+              // Return error - we cannot proceed without the original file path
+              return res.json({
+                error: 1,
+                message: 'Original PPT resource path not found',
+              });
+            }
+
+            // Extract the exact original filename from ppt_resource_path (this is the authoritative source)
+            const originalFileName = pptResourcePath
+              .split('/')
+              .pop()
+              ?.replace('.pptx', '');
+            console.log(
+              `[PPTX Callback] Extracted original filename from ppt_resource_path: ${originalFileName}`,
+            );
+
+            if (!originalFileName) {
+              console.error(
+                `[PPTX Callback] Failed to extract filename from ppt_resource_path: ${pptResourcePath}`,
+              );
+              return res.json({
+                error: 1,
+                message: 'Failed to extract original filename',
+              });
+            }
+
+            // Create proofread version using the exact original filename with -proofread suffix
+            const proofreadFileName = originalFileName.endsWith('-proofread')
+              ? originalFileName
+              : `${originalFileName}-proofread`;
+
+            console.log(
+              `[PPTX Callback] Final proofreadFileName: ${proofreadFileName}`,
+            );
 
             const s3Key = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/pptx/${proofreadFileName}.pptx`;
             await dependencies.s3.upload(s3Key, documentStream, {
@@ -194,7 +272,9 @@ export const createRestTranslationDownloadRoutes = async (
                 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
             });
 
-            console.log(`Successfully saved document to S3: ${s3Key}`);
+            console.log(
+              `[PPTX Callback] Successfully saved document to S3: ${s3Key}`,
+            );
           } catch (saveError) {
             console.error('Error saving document to S3:', saveError);
           }
@@ -255,10 +335,12 @@ export const createRestTranslationDownloadRoutes = async (
         }
 
         const slide = result[0];
-        const pptResourcePath = slide.ppt_resource_path;
-        const slideNumber = slide.slide_number;
-        const partIndex = slide.part_index;
-        const chapterIndex = slide.chapter_index;
+
+        const pptResourcePath =
+          slide.pptResourcePath || slide.ppt_resource_path;
+        const slideNumber = slide.slideNumber || slide.slide_number;
+        const partIndex = slide.partIndex || slide.part_index;
+        const chapterIndex = slide.chapterIndex || slide.chapter_index;
 
         if (!pptResourcePath) {
           throw new BadRequest('PPTX resource path not found for this slide');
@@ -852,19 +934,64 @@ export const createRestTranslationDownloadRoutes = async (
     },
   );
 
-  // Serve PPTX files directly using ppt_resource_path from database
-  // No auth required since database lookup provides security
+  // NEW: File discovery endpoints - find files by extension in resource directory
+
+  // Helper function to discover files by extension in a directory
+  const discoverFileByExtension = async (
+    s3: typeof dependencies.s3,
+    directoryPath: string,
+    extension: string,
+    suffix?: string,
+  ): Promise<string | null> => {
+    try {
+      // List all objects in the directory using the S3 list method
+      const objectKeys = await s3.list(directoryPath);
+
+      if (!objectKeys || objectKeys.length === 0) {
+        return null;
+      }
+
+      // Filter by extension and suffix
+      const matchingFiles = objectKeys.filter((key: string) => {
+        const fileName = key.split('/').pop() || '';
+        const hasCorrectExtension = fileName
+          .toLowerCase()
+          .endsWith(`.${extension.toLowerCase()}`);
+
+        if (!hasCorrectExtension) return false;
+
+        // If suffix is specified, check for it
+        if (suffix) {
+          const baseNameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
+          return baseNameWithoutExt
+            .toLowerCase()
+            .endsWith(`-${suffix.toLowerCase()}`);
+        }
+
+        return true;
+      });
+
+      // Return the first matching file
+      return matchingFiles.length > 0 ? matchingFiles[0] : null;
+    } catch (_error) {
+      return null;
+    }
+  };
+
+  // PPTX Discovery Endpoint
   router.get(
-    '/translation-downloads/pptx-by-path/:courseId/:language/:chapterId/:slideId',
+    '/translation-downloads/pptx-by-discovery/:courseId/:language/:partId/:chapterId/:slideId',
     async (req, res, next) => {
       try {
-        const { courseId, language, chapterId, slideId } = req.params as any;
+        const { courseId, language, partId, chapterId, slideId } =
+          req.params as any;
+        const { suffix } = req.query as any;
 
-        if (!courseId || !language || !chapterId || !slideId) {
+        if (!courseId || !language || !partId || !chapterId || !slideId) {
           throw new BadRequest('Missing required path parameters');
         }
 
-        // Query the database to get the ppt_resource_path
+        // First, get the ppt_resource_path from database to know the directory
         const slideQuery = sql`
           SELECT ppt_resource_path, course_id, language, chapter_id, slide_id, part_id
           FROM content.course_translation_slides
@@ -889,9 +1016,30 @@ export const createRestTranslationDownloadRoutes = async (
           return;
         }
 
-        // Use the ppt_resource_path directly as the S3 key
+        // Extract directory path from the ppt_resource_path
+        // Example: contribute/courseId/language/partId/chapterId/slideId/pptx/filename.pptx
+        // We want: contribute/courseId/language/partId/chapterId/slideId/pptx/
+        const directoryPath = pptResourcePath.substring(
+          0,
+          pptResourcePath.lastIndexOf('/') + 1,
+        );
+
+        // Discover PPTX file with optional suffix
+        const discoveredKey = await discoverFileByExtension(
+          dependencies.s3,
+          directoryPath,
+          'pptx',
+          suffix,
+        );
+
+        if (!discoveredKey) {
+          res.status(404).send('PPTX file not found');
+          return;
+        }
+
+        // Get file and stream it
         const head = await dependencies.s3
-          .head(pptResourcePath)
+          .head(discoveredKey)
           .catch(() => null);
 
         if (!head) {
@@ -899,7 +1047,394 @@ export const createRestTranslationDownloadRoutes = async (
           return;
         }
 
-        const stream = await dependencies.s3.getStream(pptResourcePath);
+        const stream = await dependencies.s3.getStream(discoveredKey);
+
+        if (!stream) {
+          res.status(404).send('Failed to get file stream');
+          return;
+        }
+
+        // Add CORS headers
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        res.setHeader(
+          'Access-Control-Allow-Headers',
+          'Content-Type, Authorization, Cookie',
+        );
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+        res.setHeader(
+          'Content-Type',
+          head?.contentType ||
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        );
+        if (head?.contentLength) {
+          res.setHeader('Content-Length', String(head.contentLength));
+        }
+
+        stream!.pipe(res);
+      } catch (error) {
+        console.error('PPTX discovery endpoint error:', error);
+        req.log('Error:', error);
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('File not found');
+          return;
+        }
+        next(error);
+      }
+    },
+  );
+
+  // MP3 Discovery Endpoint
+  router.get(
+    '/translation-downloads/mp3-by-discovery/:courseId/:language/:partId/:chapterId/:slideId',
+    async (req, res, next) => {
+      try {
+        const { courseId, language, partId, chapterId, slideId } =
+          req.params as any;
+
+        if (!courseId || !language || !partId || !chapterId || !slideId) {
+          throw new BadRequest('Missing required path parameters');
+        }
+
+        // Get the audio_resource_path from database (if it exists) to determine directory
+        // If not, construct expected directory path
+        const slideQuery = sql`
+          SELECT audio_resource_path, ppt_resource_path, course_id, language, chapter_id, slide_id, part_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
+
+        const result = await dependencies.postgres.exec(slideQuery);
+
+        if (!result || result.length === 0) {
+          res.status(404).send('Slide not found');
+          return;
+        }
+
+        const audioResourcePath =
+          result[0].audioResourcePath || result[0].audio_resource_path;
+        const pptResourcePath =
+          result[0].pptResourcePath || result[0].ppt_resource_path;
+
+        let directoryPath: string;
+
+        if (audioResourcePath) {
+          // Use existing audio path to determine directory
+          directoryPath = audioResourcePath.substring(
+            0,
+            audioResourcePath.lastIndexOf('/') + 1,
+          );
+        } else if (pptResourcePath) {
+          // Derive directory from ppt path (replace /pptx/ with /mp3/)
+          const pptDir = pptResourcePath.substring(
+            0,
+            pptResourcePath.lastIndexOf('/') + 1,
+          );
+          directoryPath = pptDir.replace('/pptx/', '/mp3/');
+        } else {
+          // Construct expected directory path
+          directoryPath = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/mp3/`;
+        }
+
+        // Discover MP3 file
+        const discoveredKey = await discoverFileByExtension(
+          dependencies.s3,
+          directoryPath,
+          'mp3',
+        );
+
+        if (!discoveredKey) {
+          res.status(404).send('Audio file not found');
+          return;
+        }
+
+        // Get file and stream it (with range support like existing audio endpoint)
+        const head = await dependencies.s3
+          .head(discoveredKey)
+          .catch(() => null);
+
+        if (!head?.contentLength) {
+          res.status(404).send('Audio file not found');
+          return;
+        }
+
+        // Handle HTTP Range requests (copied from existing audio endpoint)
+        const range = req.headers.range;
+
+        if (!range) {
+          const stream = await dependencies.s3.getStream(discoveredKey);
+
+          if (!stream) {
+            res.status(404).send('Not found');
+            return;
+          }
+
+          res.setHeader('Content-Type', head?.contentType || 'audio/mp3');
+          res.setHeader('Content-Length', String(head.contentLength));
+          res.setHeader('Accept-Ranges', 'bytes');
+
+          return void stream!.pipe(res);
+        }
+
+        // Range header present - parse and stream partial content
+        const byteRange = /bytes=(\d+)-(\d*)/.exec(range);
+
+        if (!byteRange) {
+          res.status(416).send('Invalid range');
+          return;
+        }
+
+        const start = Number(byteRange[1]);
+        const endRaw = byteRange[2];
+        const end = endRaw ? Number(endRaw) : head.contentLength - 1;
+
+        if (
+          Number.isNaN(start) ||
+          Number.isNaN(end) ||
+          start > end ||
+          end >= head.contentLength
+        ) {
+          res.status(416).send('Requested range not satisfiable');
+          return;
+        }
+
+        const chunkSize = end - start + 1;
+
+        const stream = await dependencies.s3.getRangeStream(
+          discoveredKey,
+          start,
+          end,
+        );
+
+        if (!stream) {
+          res.status(404).send('Not found');
+          return;
+        }
+
+        res.status(206);
+        res.setHeader('Content-Type', head?.contentType || 'audio/mp3');
+        res.setHeader('Content-Length', String(chunkSize));
+        res.setHeader(
+          'Content-Range',
+          `bytes ${start}-${end}/${head.contentLength}`,
+        );
+        res.setHeader('Accept-Ranges', 'bytes');
+
+        stream!.pipe(res);
+        return;
+      } catch (error) {
+        console.error('MP3 discovery endpoint error:', error);
+        req.log('Error:', error);
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('Not found');
+          return;
+        }
+        next(error);
+      }
+    },
+  );
+
+  // PNG Discovery Endpoint
+  router.get(
+    '/translation-downloads/png-by-discovery/:courseId/:language/:partId/:chapterId/:slideId',
+    async (req, res, next) => {
+      try {
+        const { courseId, language, partId, chapterId, slideId } =
+          req.params as any;
+
+        if (!courseId || !language || !partId || !chapterId || !slideId) {
+          throw new BadRequest('Missing required path parameters');
+        }
+
+        // Get the ppt_resource_path from database to determine directory structure
+        const slideQuery = sql`
+          SELECT ppt_resource_path, course_id, language, chapter_id, slide_id, part_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
+
+        const result = await dependencies.postgres.exec(slideQuery);
+
+        if (!result || result.length === 0) {
+          res.status(404).send('Slide not found');
+          return;
+        }
+
+        const pptResourcePath =
+          result[0].pptResourcePath || result[0].ppt_resource_path;
+
+        let directoryPath: string;
+
+        if (pptResourcePath) {
+          // Derive directory from ppt path (replace /pptx/ with /png/)
+          const pptDir = pptResourcePath.substring(
+            0,
+            pptResourcePath.lastIndexOf('/') + 1,
+          );
+          directoryPath = pptDir.replace('/pptx/', '/png/');
+        } else {
+          // Construct expected directory path
+          directoryPath = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/png/`;
+        }
+
+        // Discover PNG file
+        const discoveredKey = await discoverFileByExtension(
+          dependencies.s3,
+          directoryPath,
+          'png',
+        );
+
+        if (!discoveredKey) {
+          res.status(404).send('PNG file not found');
+          return;
+        }
+
+        // Get file and stream it
+        const head = await dependencies.s3
+          .head(discoveredKey)
+          .catch(() => null);
+
+        if (!head) {
+          res.status(404).send('File not found in S3');
+          return;
+        }
+
+        const stream = await dependencies.s3.getStream(discoveredKey);
+
+        if (!stream) {
+          res.status(404).send('Failed to get file stream');
+          return;
+        }
+
+        res.setHeader('Content-Type', head?.contentType || 'image/png');
+        if (head?.contentLength) {
+          res.setHeader('Content-Length', String(head.contentLength));
+        }
+
+        stream!.pipe(res);
+      } catch (error) {
+        console.error('PNG discovery endpoint error:', error);
+        req.log('Error:', error);
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('File not found');
+          return;
+        }
+        next(error);
+      }
+    },
+  );
+
+  // Serve PPTX files directly using ppt_resource_path from database
+  // No auth required since database lookup provides security
+  router.get(
+    '/translation-downloads/pptx-by-path/:courseId/:language/:chapterId/:slideId',
+    async (req, res, next) => {
+      try {
+        const { courseId, language, chapterId, slideId } = req.params as any;
+
+        if (!courseId || !language || !chapterId || !slideId) {
+          throw new BadRequest('Missing required path parameters');
+        }
+
+        // Query the database to get the ppt_resource_path and ppt_validated status
+        const slideQuery = sql`
+          SELECT ppt_resource_path, ppt_validated, course_id, language, chapter_id, slide_id, part_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
+
+        const result = await dependencies.postgres.exec(slideQuery);
+
+        if (!result || result.length === 0) {
+          res.status(404).send('Slide not found');
+          return;
+        }
+
+        const pptResourcePath =
+          result[0].pptResourcePath || result[0].ppt_resource_path;
+        const pptValidated = result[0].pptValidated || result[0].ppt_validated;
+
+        console.log(
+          `[PPTX by path] Query params: courseId=${courseId}, language=${language}, chapterId=${chapterId}, slideId=${slideId}`,
+        );
+        console.log(
+          `[PPTX by path] pptResourcePath: ${pptResourcePath}, pptValidated: ${pptValidated}`,
+        );
+
+        if (!pptResourcePath) {
+          res.status(404).send('PPT resource path not found');
+          return;
+        }
+
+        // If ppt_validated is true, try to serve the proofread version first
+        let keyToServe = pptResourcePath;
+
+        if (pptValidated) {
+          // Extract original filename from ppt_resource_path and build proofread key
+          const originalFileName = pptResourcePath
+            .split('/')
+            .pop()
+            ?.replace('.pptx', '');
+          if (originalFileName) {
+            const proofreadFileName = originalFileName.endsWith('-proofread')
+              ? originalFileName
+              : `${originalFileName}-proofread`;
+
+            // Build proofread S3 key by replacing the filename
+            const proofreadKey = pptResourcePath.replace(
+              /\/[^/]+\.pptx$/,
+              `/${proofreadFileName}.pptx`,
+            );
+
+            // Check if proofread version exists
+            const proofreadHead = await dependencies.s3
+              .head(proofreadKey)
+              .catch((error) => {
+                console.log(
+                  `[PPTX by path] Proofread version check failed for ${proofreadKey}:`,
+                  error?.message || 'Unknown error',
+                );
+                return null;
+              });
+            if (proofreadHead) {
+              keyToServe = proofreadKey;
+              console.log(
+                `[PPTX by path] Serving proofread version: ${proofreadKey}, size: ${proofreadHead.contentLength} bytes`,
+              );
+            } else {
+              console.log(
+                `[PPTX by path] Proofread version not found, serving original: ${pptResourcePath}`,
+              );
+            }
+          }
+        }
+
+        // Use the determined S3 key
+        console.log(`[PPTX by path] Final key to serve: ${keyToServe}`);
+        const head = await dependencies.s3.head(keyToServe).catch(() => null);
+
+        if (!head) {
+          console.log(
+            `[PPTX by path] ERROR: Final key not found in S3: ${keyToServe}`,
+          );
+          res.status(404).send('File not found in S3');
+          return;
+        }
+
+        console.log(
+          `[PPTX by path] Final file exists, size: ${head.contentLength} bytes, content-type: ${head.contentType}`,
+        );
+        const stream = await dependencies.s3.getStream(keyToServe);
 
         if (!stream) {
           res.status(404).send('Failed to get file stream');
