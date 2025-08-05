@@ -429,7 +429,9 @@
         "profession": "Beroep",
         "resultsRemaining": "{{results}} resterende resultaten",
         "seeMore": "Zie meer",
-        "viewCV": "Bekijk CV"
+        "viewCV": "Bekijk CV",
+        "candidateFile": "Kandidatenbestand",
+        "file": "Bestand"
       },
       "confirmRemoval": "Verwijderen bevestigen",
       "coupons": {
@@ -535,9 +537,322 @@
           "assign": "Toewijzen",
           "assignedLanguages": "Reeds toegewezen talen",
           "assigning": "Toewijzen...",
-          "title": "Bijdrager toevoegen"
+          "title": "Bijdrager toevoegen",
+          "assignmentSuccess": "Bijdragers succesvol toegewezen!",
+          "confirm": "Bevestigen",
+          "findContributor": "Vind een bijdrager",
+          "language": "Taal",
+          "noUsers": "Geen gebruikers beschikbaar",
+          "searchUsers": "Zoek gebruikers...",
+          "selectLanguage": "Selecteer een taal",
+          "selectedUsers": "Geselecteerde gebruikers:"
         },
-        "admin": "BEHEERDER"
+        "admin": "BEHEERDER",
+        "comingSoon": {
+          "courses": "Cursusoverzicht binnenkort beschikbaar",
+          "coverage": "Taaldekkingsoverzicht binnenkort beschikbaar"
+        },
+        "contentManagement": {
+          "actions": {
+            "backToContentManagement": "Terug naar contentbeheer",
+            "assign": "Toewijzen",
+            "reassign": "Opnieuw toewijzen",
+            "view": "Bekijken"
+          },
+          "assignModal": {
+            "assign": "Toewijzen",
+            "assigning": "Toewijzen...",
+            "assigningCourse": "Cursus toewijzen:",
+            "assignmentSuccess": "Cursus succesvol toegewezen!",
+            "cancel": "Annuleren",
+            "chooseContributor": "Kies een bijdrager...",
+            "courseInfo": "Cursusinformatie",
+            "selectContributor": "Selecteer bijdrager",
+            "title": "Cursus toewijzen aan bijdrager"
+          },
+          "table": {
+            "progress": "Progressie",
+            "status": "Status",
+            "actions": "Acties",
+            "contributor": "Bijdrager",
+            "course": "Cursus",
+            "index": "Index",
+            "language": "Taal"
+          },
+          "title": "Contentbeheer",
+          "description": "Cursusvertalingen toewijzen en beheren voor bijdragers",
+          "noCourses": "Geen cursussen beschikbaar voor vertaalbeheer",
+          "noCoursesFiltered": "Geen cursussen gevonden die overeenkomen met je filters",
+          "notAssigned": "Niet toegewezen",
+          "reassignModal": {
+            "cancel": "Annuleren",
+            "chooseNewContributor": "Kies een nieuwe bijdrager...",
+            "courseInfo": "Cursusinformatie",
+            "currentlyAssignedTo": "Momenteel toegewezen aan:",
+            "reassign": "Opnieuw toewijzen",
+            "reassigning": "Opnieuw toewijzen...",
+            "reassigningCourse": "Cursus opnieuw toewijzen:",
+            "reassignmentSuccess": "Cursus succesvol opnieuw toegewezen!",
+            "selectNewContributor": "Selecteer Nieuwe Bijdrager",
+            "title": "Wijs cursus opnieuw toe aan nieuwe bijdrager",
+            "warning": {
+              "description": "Hoofdstukken en onderdelen die al zijn beoordeeld, behouden hun beoordeelde status en worden niet opnieuw toegewezen.",
+              "title": "Belangrijke Opmerking"
+            }
+          },
+          "status": {
+            "assigned": "Toegewezen",
+            "notAssigned": "Niet toegewezen",
+            "readyForReview": "Klaar voor beoordeling",
+            "underReview": "In beoordeling"
+          }
+        },
+        "courseDetails": {
+          "chaptersCompleted": "voltooide hoofdstukken",
+          "actions": "Acties",
+          "assignedTo": "Toegewezen aan",
+          "chapterIndex": "Hoofdstuk",
+          "chaptersAndProgress": "Hoofdstukken en Progressie",
+          "courseIndex": "Cursusindex",
+          "courseInformation": "Cursusinformatie",
+          "courseName": "Cursusnaam",
+          "chapterTitle": "Titel",
+          "currentContributor": "Huidige bijdrager",
+          "errorLoadingDetails": "Fout bij het laden van cursusgegevens",
+          "language": "Taal",
+          "noChapters": "Geen hoofdstukken gevonden voor deze cursus",
+          "noContributor": "Geen bijdrager toegewezen",
+          "partTitle": "Deel {{index}}: {{title}}",
+          "progress": "Progressie",
+          "status": "Status",
+          "translationStatus": "Vertalingsstatus"
+        },
+        "courseNotFound": "Cursus niet gevonden",
+        "messages": {
+          "noPendingRequests": "Geen openstaande proefleesverzoeken gevonden.",
+          "noPendingRequestsSearch": "Geen openstaande proefleesverzoeken gevonden die overeenkomen met \"{{query}}\".",
+          "noRejectedRequests": "Geen afgewezen proefleesverzoeken gevonden.",
+          "noRejectedRequestsSearch": "Geen afgewezen proefleesverzoeken gevonden die overeenkomen met \"{{query}}\"."
+        },
+        "reports": {
+          "comingSoon": {
+            "courses": "Cursusoverzicht binnenkort beschikbaar",
+            "coverage": "Taaldekkingsoverzicht binnenkort beschikbaar"
+          },
+          "contributors": {
+            "assignedCourses": "Toegewezen cursussen",
+            "username": "Gebruikersnaam",
+            "completedCourses": "Voltooide cursussen",
+            "languages": "Talen",
+            "startDate": "Startdatum",
+            "title": "Bijdragers",
+            "totalReward": "Totale beloning"
+          },
+          "languageCoverage": {
+            "inProgress": "In uitvoering",
+            "completed": "Voltooid",
+            "notStarted": "Niet begonnen",
+            "totalCourses": "Totale cursussen"
+          },
+          "courses": {
+            "contributor": "Bijdrager",
+            "filterByCourse": "Filter op cursus",
+            "lastUpdated": "Laatst bijgewerkt",
+            "progress": "Progressie %"
+          },
+          "dateFilter": "Datumfilter",
+          "downloadData": "Gegevens downloaden",
+          "filterByLanguage": "Filter op taal",
+          "fromMonth": "Van",
+          "fromMonthPlaceholder": "Vanaf welke maand?",
+          "generalReport": "Algemeen Rapport",
+          "languagesProofread": "Proefgelezen talen",
+          "noContributors": "Geen bijdragers gevonden",
+          "noCourses": "Geen cursussen gevonden",
+          "noLanguages": "Geen talen gevonden",
+          "proofreadCourses": "Proefgelezen cursussen",
+          "table": {
+            "contributor": "Bijdrager",
+            "lastUpdated": "Laatst bijgewerkt",
+            "progress": "Progressie %"
+          },
+          "tabs": {
+            "contributors": "Bijdragers",
+            "courses": "Cursussen",
+            "coverage": "Taaldekking"
+          },
+          "toMonth": "Naar",
+          "toMonthPlaceholder": "Tot welke maand?",
+          "totalLanguages": "Totaal aantal talen",
+          "year": "Jaar",
+          "chooseYear": "Welk jaar wil je meenemen?"
+        },
+        "tabs": {
+          "reports": "Rapporten",
+          "contentManagement": "Contentbeheer",
+          "requests": "Verzoeken",
+          "translate": "Vertaal",
+          "userManagement": "Gebruikersbeheer"
+        },
+        "searchPlaceholder": "Zoeken...",
+        "status": {
+          "assigned": "Toegewezen",
+          "completed": "Voltooid",
+          "inProgress": "In uitvoering",
+          "readyForReview": "Klaar voor beoordeling",
+          "underReview": "In beoordeling",
+          "todo": "Te Doen"
+        },
+        "table": {
+          "actions": "Acties",
+          "course": "Cursus",
+          "index": "Index",
+          "language": "Taal",
+          "username": "Gebruikersnaam"
+        },
+        "title": "Beheerders vertaalpaneel",
+        "toggle": {
+          "pendingRequest": "Openstaand verzoek",
+          "rejectedRequests": "Afgewezen verzoeken"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Vertaal"
+          },
+          "comparison": {
+            "backToChapter": "Terug naar hoofdstuk",
+            "originalVersion": "Originele versie",
+            "translatedVersion": "Vertaalde versie"
+          },
+          "loadingPresentation": "Presentatie laden...",
+          "noPngSlides": "Geen PNG-dia's beschikbaar voor deze presentatie",
+          "slideNotAvailable": "Dia {{slideNumber}} niet beschikbaar",
+          "imageNotFound": "Afbeelding niet gevonden",
+          "noSlidesFound": "Geen dia's gevonden",
+          "changeSpeed": "Afspeelsnelheid veranderen",
+          "play": "Afspelen",
+          "pause": "Pauzeren",
+          "forward15Seconds": "15 seconden vooruit",
+          "rewind15Seconds": "15 seconden terug",
+          "description": "Start met het vertalen van cursussen die naar specifieke talen vertaald moeten worden.",
+          "noCourses": "Er zijn op dit moment geen cursussen die vertaald moeten worden.",
+          "selectLanguagesModal": {
+            "audioFile": "Audiobestand",
+            "audioFileInfo": "Ondersteunde formaten: MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Het audiobestand is te groot. De maximale grootte is 50MB.",
+            "cancel": "Annuleren",
+            "chooseAudioFile": "Kies Audiobestand",
+            "chooseFolder": "Kies map",
+            "choosePptxFile": "Kies PPTX",
+            "chooseZip": "Kies ZIP",
+            "course": "Cursus:",
+            "existingUploadsInfo": "Originele bestanden zijn al geüpload. Je kunt met de vertaling beginnen zonder ze opnieuw te uploaden. Het uploaden van nieuwe bestanden zal de bestaande bestanden overschrijven.",
+            "folderUrl": "Map URL",
+            "invalidAudioFile": "Selecteer een geldig audiobestand.",
+            "invalidPptxFile": "Selecteer een geldig PowerPoint (.pptx) bestand.",
+            "missingFilesError": "Upload de vertaalbestanden of geef een URL op voordat jet met de vertaling begint.",
+            "noAudioFileSelected": "Geen audiobestand geselecteerd",
+            "noFolderSelected": "Geen map geselecteerd",
+            "noLanguagesAvailable": "Geen talen beschikbaar voor vertaling.",
+            "noPptxFileSelected": "Geen PowerPoint-bestand geselecteerd",
+            "noZipSelected": "Geen ZIP geselecteerd",
+            "overwriteWarning": "Bestaande bestanden zullen worden vervangen.",
+            "pptxFileInfo": "Alleen .pptx-bestanden worden ondersteund (Max 100MB)",
+            "pptxFileTooLarge": "PowerPoint-bestand is te groot. Maximale grootte is 100MB.",
+            "selectLanguages": "Selecteer de talen om te vertalen:",
+            "startSuccess": "Vertaling succesvol gestart!",
+            "startTranslation": "Vertaling starten",
+            "startingTranslation": "Bezig met starten...",
+            "uploadFiles": "Upload Ondersteunende Bestanden (Optioneel)",
+            "uploadFolder": "Map uploaden (PPTX + TXT)",
+            "useEnglishLabel": "De cursus is al naar het Engels vertaald. Wil je de Engelse versie gebruiken?",
+            "title": "Selecteer de talen om te vertalen",
+            "pptxFile": "PowerPoint-bestand",
+            "originalLanguage": "Oorspronkelijke taal:"
+          },
+          "table": {
+            "actions": "Acties",
+            "course": "Cursus",
+            "index": "Index",
+            "todoLanguages": "Te vertalen talen",
+            "totalLanguages": "Totaal aantal talen"
+          },
+          "title": "Cursussen vertalen",
+          "backToCourse": "Terug naar cursus",
+          "chapterTitle": "Hoofdstuktitel",
+          "compare": "Vergelijken",
+          "compareTooltip": "Vergelijk originele en nagekeken versies",
+          "compareDisabledTooltip": "Proefgelezen versie niet beschikbaar",
+          "language": "Taal",
+          "translateTo": "Vertalen naar",
+          "noOriginalContent": "Geen originele content",
+          "noContentAvailable": "Geen content beschikbaar",
+          "originalContent": "Originele content",
+          "presentations": "Presentaties",
+          "textContent": "Tekstinhoud",
+          "slideNotFound": "Dia niet gevonden",
+          "unknownContributor": "Onbekend",
+          "slideNavigation": {
+            "previous": "Vorige",
+            "next": "Volgende",
+            "slideCounter": "{{current}} / {{total}}"
+          }
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Terug naar gebruikerslijst",
+            "backToUsers": "Terug naar gebruikers",
+            "viewDetails": "Bekijk details"
+          },
+          "addContributor": "Bijdrager toevoegen",
+          "chapters": "Hoofdstukken",
+          "contributorInformation": "Informatie over bijdrager",
+          "courses": "Cursussen",
+          "modal": {
+            "assignments": "Toewijzingsgeschiedenis",
+            "noAssignments": "Geen toewijzingen gevonden",
+            "title": "Gebruikersgegevens",
+            "userInfo": "Gebruikersinformatie"
+          },
+          "noUsers": "Geen bijdragers gevonden",
+          "status": {
+            "published": "Gepubliceerd",
+            "readyForReview": "Klaar voor beoordeling",
+            "rejected": "Afgewezen",
+            "reviewed": "Beoordeeld",
+            "todo": "Te Doen",
+            "underReview": "In beoordeling"
+          },
+          "table": {
+            "actions": "Actie",
+            "assignedCourses": "Toegewezen cursussen",
+            "language": "Taal",
+            "startDate": "Startdatum",
+            "username": "Gebruikersnaam"
+          },
+          "title": "Bijdragers"
+        },
+        "modal": {
+          "acceptRequest": "Verzoek accepteren",
+          "acceptTranslationRequest": "Vertaalverzoek accepteren",
+          "accepting": "Accepteren...",
+          "cancel": "Annuleren",
+          "close": "Sluiten",
+          "contributor": "Bijdrager",
+          "course": "Cursus",
+          "doYouWantToAcceptRequest": "Wil je dit vertaalverzoek accepteren?",
+          "language": "Taal",
+          "provideRejectionReason": "Geef een reden op voor het afwijzen van dit verzoek",
+          "reasonForRejection": "Reden voor afwijzing",
+          "reasonPlaceholder": "Schrijf hier je toelichting...",
+          "rejecting": "Afwijzen...",
+          "requestAcceptedMessage": "De bijdrager is op de hoogte gebracht en kan nu beginnen met de vertaling.",
+          "requestAcceptedSuccess": "Je hebt het vertaalverzoek geaccepteerd!",
+          "requestRejectedSuccess": "Verzoek succesvol afgewezen",
+          "submitRejection": "Indienen"
+        },
+        "noResultsFound": "Geen resultaten gevonden",
+        "pendingTranslationRequests": "Openstaande proefleesverzoeken"
       }
     },
     "announcements": {
@@ -908,7 +1223,12 @@
         "emailPreferencesSavedSuccessfully": "Je e-mailvoorkeuren zijn succesvol bijgewerkt.",
         "emailPreferencesTitle": "Beheer je Plan ₿ Network e-mailvoorkeuren",
         "emailTitle": "Welke soort meldingen wil je per e-mail ontvangen?",
-        "emailWarning": "Waarschuwing! Er is geen e-mailadres gekoppeld aan je account. Voeg dit toe in je profielsectie."
+        "emailWarning": "Waarschuwing! Er is geen e-mailadres gekoppeld aan je account. Voeg dit toe in je profielsectie.",
+        "assignedAt": "Toegewezen op",
+        "completedAt": "Voltooid op",
+        "displayName": "Weergavenaam",
+        "filter": "Filter",
+        "role": "Rol"
       },
       "password": "Wachtwoord",
       "personalInformation": "Mijn persoonlijke informatie",
@@ -1295,7 +1615,8 @@
     "unread": "Ongelezen",
     "weeksAgo": "{{weeks}} week geleden",
     "yearsAgo": "{{years}} jaar geleden",
-    "yesterday": "Gisteren"
+    "yesterday": "Gisteren",
+    "newVersionAvailable": "Een nieuwe versie van het Plan ₿ Network platform is beschikbaar. Vernieuw de pagina om te updaten."
   },
   "nodeNetwork": {
     "description1": "Wij geloven dat onderwijs niet alleen online moet plaatsvinden, maar ook in fysieke ruimtes. Om dit te bereiken, beheert Plan ₿ Network een netwerk van hubs over de hele wereld om denkers, ondernemers en docenten te verwelkomen die de vooruitgang van Bitcoin en vrijheidstechnologieën bevorderen.",
@@ -1769,7 +2090,9 @@
     "wallets": "Wallets",
     "weight": "Gewicht",
     "yes": "Ja",
-    "review": "Beoordeling"
+    "review": "Beoordeling",
+    "actions": "Acties",
+    "none": "Geen"
   },
   "videoSelector": {
     "language": {
@@ -1788,5 +2111,19 @@
     "pageTitle": "Youtube Kanalen",
     "view": "Bekijk Youtube Kanaal",
     "watchTrailer": "Bekijk de trailer"
+  },
+  "months": {
+    "april": "April",
+    "august": "Augustus",
+    "december": "December",
+    "february": "Februari",
+    "january": "Januari",
+    "july": "Juli",
+    "june": "Juni",
+    "march": "Maart",
+    "may": "Mei",
+    "november": "November",
+    "october": "Oktober",
+    "september": "September"
   }
 }
