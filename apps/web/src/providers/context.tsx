@@ -160,7 +160,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     };
 
     checkUrlForUniversity();
-  }, []);
+  }, [university]);
 
   useEffect(() => {
     fetchUserDetailsAndSettings();
@@ -265,7 +265,7 @@ const setStoredUniversity = (university: string | null): void => {
     } else {
       localStorage.removeItem(UNIVERSITY_STORAGE_KEY);
     }
-  } catch {
-    console.error('Failed to set university in localStorage');
+  } catch (err) {
+    console.error('Failed to set university in localStorage:', err);
   }
 };
