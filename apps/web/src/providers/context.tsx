@@ -65,7 +65,7 @@ export const AppContext = createContext<AppContext>({
   setHasSeenRegisterToast: () => {},
   setSession: () => {},
   setTutorials: () => {},
-  setUniversity: async () => {},
+  setUniversity: () => {},
   setUser: () => {},
   tutorials: null,
   university: null,
@@ -88,7 +88,14 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
 
-  const [university, setUniversity] = useState<string | null>(null);
+  const [university, setUniversityState] = useState<string | null>(() => {
+    return getStoredUniversity();
+  });
+
+  const setUniversity = (university: string | null) => {
+    setUniversityState(university);
+    setStoredUniversity(university);
+  };
 
   const fetchUserDetailsAndSettings = async () => {
     try {
@@ -140,6 +147,20 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       channel.close();
     };
   }, []);
+
+  // Listen for university updates from URL parameters across the app
+  useEffect(() => {
+    const checkUrlForUniversity = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const universityParam = urlParams.get('university');
+
+      if (universityParam && universityParam !== university) {
+        setUniversity(universityParam);
+      }
+    };
+
+    checkUrlForUniversity();
+  }, [university]);
 
   useEffect(() => {
     fetchUserDetailsAndSettings();
@@ -194,4 +215,57 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   return (
     <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
   );
+};
+
+// University tracker utilities
+const UNIVERSITY_STORAGE_KEY = 'university';
+const UNIVERSITY_TTL_DAYS = 30;
+
+interface UniversityTrackerData {
+  university: string;
+  timestamp: number;
+  expiresAt: number;
+}
+
+const getStoredUniversity = (): string | null => {
+  try {
+    const stored = localStorage.getItem(UNIVERSITY_STORAGE_KEY);
+    if (!stored) return null;
+
+    const data: UniversityTrackerData = JSON.parse(stored);
+    const now = Date.now();
+
+    if (now > data.expiresAt) {
+      localStorage.removeItem(UNIVERSITY_STORAGE_KEY);
+      return null;
+    }
+
+    return data.university;
+  } catch {
+    try {
+      localStorage.removeItem(UNIVERSITY_STORAGE_KEY);
+    } catch {}
+    return null;
+  }
+};
+
+const setStoredUniversity = (university: string | null): void => {
+  try {
+    if (university) {
+      const now = Date.now();
+      const expiresAt = now + UNIVERSITY_TTL_DAYS * 24 * 60 * 60 * 1000;
+
+      const data: UniversityTrackerData = {
+        university,
+        timestamp: now,
+        expiresAt,
+      };
+
+      localStorage.setItem(UNIVERSITY_STORAGE_KEY, JSON.stringify(data));
+    } else {
+      localStorage.removeItem(UNIVERSITY_STORAGE_KEY);
+    }
+  } catch (err) {
+    console.error('Failed to set university in localStorage:', err);
+  }
 };

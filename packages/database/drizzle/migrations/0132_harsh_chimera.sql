@@ -1,0 +1,1 @@
+ALTER TABLE "users"."accounts" DROP CONSTRAINT "accounts_university_unique";
