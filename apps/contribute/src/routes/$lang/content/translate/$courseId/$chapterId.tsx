@@ -113,6 +113,14 @@ function ChapterTranslationPage() {
     audioValidated: false,
   });
 
+  // Track PPT validation changes per slide during current session
+  const [pptValidationChanges, setPptValidationChanges] = useState<
+    Record<string, boolean>
+  >({});
+
+  // Track PPT saving loading state to prevent premature navigation
+  const [pptSaving, setPptSaving] = useState(false);
+
   // -----------------------------
   // Audio generation attempts per slide (max 3)
   // -----------------------------
@@ -197,11 +205,12 @@ function ChapterTranslationPage() {
     ? 'EN version'
     : `${originalLanguageCode.toUpperCase()} version`;
 
-  // Check if all validations are complete for the current slide
+  // Check if all validations are complete for the current slide and PPT is not being saved
   const allValidationsComplete =
     validationStates.presentationValidated &&
     validationStates.transcriptionValidated &&
-    validationStates.audioValidated;
+    validationStates.audioValidated &&
+    !pptSaving;
 
   // Check if this is the last slide
   const isLastSlide = chapterData
@@ -244,6 +253,33 @@ function ChapterTranslationPage() {
       return cumulative - 1; // zero-based index of last chapter in this part
     });
   }, [courseData]);
+
+  // Find first incomplete slide when chapter data loads initially
+  useEffect(() => {
+    if (!chapterData || currentSlideIndex !== 0) return;
+
+    // Find first slide that doesn't have all validations complete
+    const firstIncompleteSlideIndex = chapterData.slides.findIndex((slide) => {
+      return !(
+        slide.pptValidated &&
+        slide.transcriptionValidated &&
+        slide.audioValidated
+      );
+    });
+
+    // If we found an incomplete slide and it's not the first one, navigate to it
+    if (firstIncompleteSlideIndex > 0) {
+      console.log(
+        `Starting at first incomplete slide: ${firstIncompleteSlideIndex + 1}/${chapterData.slides.length}`,
+      );
+      setCurrentSlideIndex(firstIncompleteSlideIndex);
+    } else if (firstIncompleteSlideIndex === -1) {
+      // All slides are complete, start at the last slide
+      console.log('All slides are complete, starting at last slide');
+      setCurrentSlideIndex(chapterData.slides.length - 1);
+    }
+    // If firstIncompleteSlideIndex === 0, we're already at the right slide
+  }, [chapterData, currentSlideIndex]);
 
   // Sync validation states with current slide data
   useEffect(() => {
@@ -784,36 +820,46 @@ function ChapterTranslationPage() {
       }
     }
 
-    // Generate PNG image for the current slide before navigating
-    try {
-      console.log('Generating PNG for current slide...');
-      const pngResponse = await fetch(
-        '/api/translation-downloads/generate-png',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify({
-            courseId,
-            partId: currentSlide.partId,
-            chapterId,
-            slideId: currentSlide.slideId,
-            language: targetLanguage,
-          }),
-        },
+    // Generate PNG image for the current slide only if PPT was re-validated during this session
+    // Run in background without blocking navigation
+    const shouldGeneratePng =
+      pptValidationChanges[currentSlide.slideId] === true;
+
+    if (shouldGeneratePng) {
+      console.log(
+        'Starting PNG generation in background (PPT was re-validated)...',
       );
 
-      if (pngResponse.ok) {
-        const pngResult = await pngResponse.json();
-        console.log('PNG generation successful:', pngResult);
-      } else {
-        console.warn('PNG generation failed:', await pngResponse.text());
-      }
-    } catch (error) {
-      console.error('Error generating PNG:', error);
-      // Don't block navigation if PNG generation fails
+      // Run PNG generation in background without awaiting
+      fetch('/api/translation-downloads/generate-png', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          courseId,
+          partId: currentSlide.partId,
+          chapterId,
+          slideId: currentSlide.slideId,
+          language: targetLanguage,
+        }),
+      })
+        .then(async (pngResponse) => {
+          if (pngResponse.ok) {
+            const pngResult = await pngResponse.json();
+            console.log('PNG generation successful:', pngResult);
+          } else {
+            console.warn('PNG generation failed:', await pngResponse.text());
+          }
+        })
+        .catch((error) => {
+          console.error('Error generating PNG:', error);
+        });
+    } else {
+      console.log(
+        'Skipping PNG generation - PPT was not re-validated during this session',
+      );
     }
 
     // If there are more slides in the current chapter, just go to the next one
@@ -825,6 +871,15 @@ function ChapterTranslationPage() {
         transcriptionValidated: false,
         audioValidated: false,
       });
+
+      // Clear the PPT validation change tracking for the previous slide
+      if (currentSlide) {
+        setPptValidationChanges((prev) => {
+          const updated = { ...prev };
+          delete updated[currentSlide.slideId];
+          return updated;
+        });
+      }
       return;
     }
 
@@ -1349,12 +1404,20 @@ function ChapterTranslationPage() {
             fileName="proofread"
             language={targetLanguage}
             validated={validationStates.presentationValidated}
-            onValidationChange={(validated) =>
+            onValidationChange={(validated) => {
               setValidationStates((prev) => ({
                 ...prev,
                 presentationValidated: validated,
-              }))
-            }
+              }));
+
+              // Track that PPT validation was changed during this session for this slide
+              if (currentSlide) {
+                setPptValidationChanges((prev) => ({
+                  ...prev,
+                  [currentSlide.slideId]: true,
+                }));
+              }
+            }}
             fileUrl={buildPptxUrl(
               courseId,
               targetLanguage,
@@ -1440,6 +1503,7 @@ function ChapterTranslationPage() {
                 </Button>
               </Link>
             }
+            onLoadingStateChange={setPptSaving}
           />
         )}
       </div>

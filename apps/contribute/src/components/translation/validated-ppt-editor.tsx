@@ -1,6 +1,6 @@
 import { TranslationStatus } from '@blms/constants';
 import type React from 'react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -34,6 +34,8 @@ interface ValidatedPptEditorProps {
   headerContent?: React.ReactNode;
   // Custom validation handler (for cases where parent wants to handle validation)
   onValidate?: () => void;
+  // Loading state change callback
+  onLoadingStateChange?: (loading: boolean) => void;
 }
 
 export function ValidatedPptEditor({
@@ -56,9 +58,11 @@ export function ValidatedPptEditor({
   rightComponent,
   headerContent,
   onValidate,
+  onLoadingStateChange,
 }: ValidatedPptEditorProps) {
   const { t } = useTranslation();
   const onlyOfficeEditorRef = useRef<OnlyOfficeSlideEditorRef>(null);
+  const [isValidating, setIsValidating] = useState(false);
 
   const handleValidatePresentation = async () => {
     // If custom validation handler is provided, use that instead
@@ -68,15 +72,24 @@ export function ValidatedPptEditor({
     }
 
     console.log('Validate presentation clicked');
+    setIsValidating(true);
+    onLoadingStateChange?.(true);
 
     try {
       console.log('Starting presentation validation process...');
 
-      // First, save the current document using OnlyOffice
+      // First, save the current document using OnlyOffice and wait for S3 upload
       if (onlyOfficeEditorRef.current && mode === 'edit') {
-        console.log('Triggering OnlyOffice save...');
-        await onlyOfficeEditorRef.current.saveDocument();
-        console.log('OnlyOffice save completed');
+        console.log('Triggering OnlyOffice save and waiting for S3 upload...');
+        try {
+          await onlyOfficeEditorRef.current.saveDocument();
+          console.log('OnlyOffice save and S3 upload completed');
+        } catch (error) {
+          console.error('OnlyOffice save/S3 upload failed:', error);
+          setIsValidating(false);
+          onLoadingStateChange?.(false);
+          throw error;
+        }
       } else {
         console.warn('OnlyOffice editor ref not available or in view mode');
       }
@@ -97,6 +110,9 @@ export function ValidatedPptEditor({
       console.log('Presentation validation completed successfully');
     } catch (error) {
       console.error('Error validating presentation:', error);
+    } finally {
+      setIsValidating(false);
+      onLoadingStateChange?.(false);
     }
   };
 
@@ -198,6 +214,8 @@ export function ValidatedPptEditor({
               label={t('translate.validatePresentation', {
                 defaultValue: 'Validate presentation PPT',
               })}
+              loading={isValidating}
+              disabled={isValidating}
             />
             {rightComponent}
           </div>

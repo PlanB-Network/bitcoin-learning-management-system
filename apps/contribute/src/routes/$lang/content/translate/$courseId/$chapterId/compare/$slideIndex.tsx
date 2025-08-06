@@ -116,6 +116,9 @@ function CompareSlidePage() {
   // PPT validation state for the second editor
   const [pptValidated, setPptValidated] = useState<boolean>(false);
 
+  // Track PPT saving loading state to prevent premature navigation
+  const [pptSaving, setPptSaving] = useState(false);
+
   const numericSlideIndex = Number(slideIndex);
   const targetLanguage =
     Route.useSearch()?.targetLanguage ||
@@ -917,6 +920,7 @@ function CompareSlidePage() {
                 )}
                 languageLabel={targetLanguageName}
                 mode="edit"
+                onLoadingStateChange={setPptSaving}
               />
             )}
           </div>
@@ -1038,18 +1042,32 @@ function CompareSlidePage() {
 
       {/* Go Back Button */}
       <div className="flex justify-end mt-12">
-        <Link
-          to="/$lang/content/translate/$courseId/$chapterId"
-          params={{ lang, courseId, chapterId }}
-        >
+        {pptSaving ? (
           <Button
             variant="primary"
             size="m"
-            className="flex gap-[10px] text-[18px] leading-[18px] font-medium"
+            disabled
+            className="flex gap-[10px] text-[18px] leading-[18px] font-medium opacity-60"
+            title={t('translate.waitingForSave', {
+              defaultValue: 'Waiting for PPT save to complete...',
+            })}
           >
             {t('translate.goBack', { defaultValue: 'Go back' })} ←
           </Button>
-        </Link>
+        ) : (
+          <Link
+            to="/$lang/content/translate/$courseId/$chapterId"
+            params={{ lang, courseId, chapterId }}
+          >
+            <Button
+              variant="primary"
+              size="m"
+              className="flex gap-[10px] text-[18px] leading-[18px] font-medium"
+            >
+              {t('translate.goBack', { defaultValue: 'Go back' })} ←
+            </Button>
+          </Link>
+        )}
       </div>
     </PageLayout>
   );
