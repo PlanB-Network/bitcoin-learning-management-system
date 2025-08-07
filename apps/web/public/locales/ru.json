@@ -1273,7 +1273,7 @@
     "daysAgo": "{{days}} дней назад",
     "hoursAgo": "{{hours}} несколько часов назад",
     "markAsRead": "Отметить как прочитанное",
-    "monthsAgo": "{{months}} месяц{{{s}} назад",
+    "monthsAgo": "{{months}} месяц{{s}} назад",
     "noRecentNotifications": "В данный момент у вас нет последних уведомлений.",
     "notifications": "Уведомления",
     "noUnreadNotifications": "Больше никаких непрочитанных уведомлений",
