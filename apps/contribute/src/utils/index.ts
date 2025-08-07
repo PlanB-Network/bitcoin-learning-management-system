@@ -62,8 +62,16 @@ export const buildTranslationFileUrl = (
   suffix?: string,
   fallbackToOld = !USE_FILE_DISCOVERY,
 ): string => {
-  // Use fallback to old endpoint structure until backend is ready
-  if (fallbackToOld || !USE_FILE_DISCOVERY) {
+  // For audio files we always want to use discovery-based URLs so that the
+  // frontend can fetch freshly-generated MP3s that live in the new directory
+  // structure (which includes the partId). For all other file types we keep the
+  // current behaviour (go through legacy routes when USE_FILE_DISCOVERY is
+  // disabled or when explicit fallback is requested).
+
+  const shouldUseLegacyRoute =
+    fileType !== 'mp3' && (fallbackToOld || !USE_FILE_DISCOVERY);
+
+  if (shouldUseLegacyRoute) {
     const oldUrl = `/api/translation-downloads/${fileType}-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
     const suffixParam = suffix ? `?suffix=${encodeURIComponent(suffix)}` : '';
     const url = `${oldUrl}${suffixParam}`;
@@ -103,16 +111,20 @@ export const buildPptxUrl = (
   );
 };
 
-/**
- * Build audio file URL (MP3)
- */
+// Build audio file URL (MP3).
+// We ALWAYS prefer the new discovery-based endpoints for audio, because newly
+// generated audio files are stored under the discovery directory structure that
+// includes the partId. For backward-compatibility callers can still override by
+// passing `true` for the optional fallbackToOld argument.
 export const buildAudioUrl = (
   courseId: string,
   language: string,
   partId: string,
   chapterId: string,
   slideId: string,
-  fallbackToOld?: boolean,
+  // Default to discovery (false) so that audio generation + playback work even
+  // when USE_FILE_DISCOVERY is disabled for other asset types.
+  fallbackToOld = false,
 ): string => {
   return buildTranslationFileUrl(
     courseId,
