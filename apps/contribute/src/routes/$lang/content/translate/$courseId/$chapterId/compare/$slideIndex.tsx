@@ -398,7 +398,7 @@ function CompareSlidePage() {
         footerVariant="light"
         className="flex justify-center items-center min-h-screen"
       >
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500" />
+        <LoadingSpinner size="md" />
         <div className="mt-4 text-gray-600">Loading compare view…</div>
       </PageLayout>
     );

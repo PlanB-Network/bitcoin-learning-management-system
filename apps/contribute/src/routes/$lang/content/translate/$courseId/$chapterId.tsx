@@ -21,6 +21,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { AudioPlayer } from '#src/components/translation/audio-player.tsx';
 import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
+import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { VideoGenerationModal } from '#src/components/video-generation-modal.tsx';
 import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
@@ -1117,7 +1118,7 @@ function ChapterTranslationPage() {
         footerVariant="light"
         className="flex justify-center items-center min-h-screen"
       >
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500" />
+        <LoadingSpinner size="md" />
         <div className="mt-4 text-gray-600">Loading chapter data...</div>
       </PageLayout>
     );

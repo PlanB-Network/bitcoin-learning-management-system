@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import { ChaptersTable } from '#src/components/CourseDetails/chapters-table.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { trpcClient } from '#src/utils/trpc.ts';
 
@@ -257,7 +258,7 @@ function ProofreadCoursePage() {
         footerVariant="light"
         className="flex justify-center items-center min-h-screen"
       >
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500" />
+        <LoadingSpinner size="md" />
       </PageLayout>
     );
   }

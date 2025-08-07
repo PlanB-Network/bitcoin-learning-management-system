@@ -119,6 +119,7 @@ const deleteTranslationAssignmentProcedure = adminProcedure
     return createDeleteTranslationAssignment(ctx.dependencies)(
       input.assignmentId,
     );
+  });
 // Start translation (contributor can update their own assignment to in_progress)
 const startTranslationProcedure = contributorProcedure
   .input(z.object({ courseId: z.string(), language: z.string() }))
