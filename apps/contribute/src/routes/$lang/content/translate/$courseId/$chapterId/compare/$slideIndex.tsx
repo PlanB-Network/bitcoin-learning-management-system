@@ -1,17 +1,18 @@
 import { TranslationStatus } from '@blms/constants';
 import { Button } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { OnlyOfficeSlideEditor } from '#src/components/translation/onlyoffice-slide-editor.tsx';
 import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
+import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
-import { buildPptxUrl } from '#src/utils/index.ts';
+import { buildPptxUrl, buildTranslationFileUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -119,6 +120,10 @@ function CompareSlidePage() {
   // Track PPT saving loading state to prevent premature navigation
   const [pptSaving, setPptSaving] = useState(false);
 
+  // PNG loading state
+  const [pngLoading, setPngLoading] = useState(true);
+  const [pngError, setPngError] = useState<string | null>(null);
+
   const numericSlideIndex = Number(slideIndex);
   const targetLanguage =
     Route.useSearch()?.targetLanguage ||
@@ -127,42 +132,52 @@ function CompareSlidePage() {
       : null) ||
     'fr';
 
-  // New helper to fetch language availability from the backend (single request)
-  const fetchSlideLanguageAvailability = async (
-    courseId: string,
-    partId: string,
-    chapterId: string,
-    slideId: string,
-  ): Promise<string[]> => {
-    try {
-      const url = `/api/translation-downloads/pptx-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('Failed to fetch availability');
-      const data = (await resp.json()) as { languages: string[] };
-      return data.languages ?? [];
-    } catch (err) {
-      console.warn('Could not fetch language availability', err);
-      return [];
-    }
-  };
+  // Memoized to keep stable identity across renders and avoid infinite effect loops
+  const fetchSlideLanguageAvailability = useCallback(
+    async (
+      courseId: string,
+      partId: string,
+      chapterId: string,
+      slideId: string,
+    ): Promise<string[]> => {
+      try {
+        const url = `/api/translation-downloads/pptx-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
+        const resp = await fetch(url);
+        if (!resp.ok) {
+          throw new Error('Failed to fetch availability');
+        }
+        const data = (await resp.json()) as { languages: string[] };
+        return data.languages ?? [];
+      } catch (err) {
+        console.warn('Could not fetch language availability', err);
+        return [];
+      }
+    },
+    [],
+  );
   // Helper to fetch transcript language availability (checks DB)
-  const fetchSlideTranscriptLanguageAvailability = async (
-    courseId: string,
-    partId: string,
-    chapterId: string,
-    slideId: string,
-  ): Promise<string[]> => {
-    try {
-      const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('Failed to fetch transcript availability');
-      const data = (await resp.json()) as { languages: string[] };
-      return data.languages ?? [];
-    } catch (err) {
-      console.warn('Could not fetch transcript language availability', err);
-      return [];
-    }
-  };
+  const fetchSlideTranscriptLanguageAvailability = useCallback(
+    async (
+      courseId: string,
+      partId: string,
+      chapterId: string,
+      slideId: string,
+    ): Promise<string[]> => {
+      try {
+        const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
+        const resp = await fetch(url);
+        if (!resp.ok) {
+          throw new Error('Failed to fetch transcript availability');
+        }
+        const data = (await resp.json()) as { languages: string[] };
+        return data.languages ?? [];
+      } catch (err) {
+        console.warn('Could not fetch transcript language availability', err);
+        return [];
+      }
+    },
+    [],
+  );
   // UPDATED: Fetch languages and check availability
   useEffect(() => {
     const fetchAvailableLanguages = async () => {
@@ -185,6 +200,7 @@ function CompareSlidePage() {
         if (resp?.languages?.length) {
           // Always ensure the course original language is present in the dropdown
           const originalLang = courseData?.originalLanguage ?? 'en';
+
           const codesSet = new Set<string>(
             resp.languages.map((l: any) => l.code),
           );
@@ -210,31 +226,34 @@ function CompareSlidePage() {
 
             setLanguageAvailability(languageAvailabilityResults);
 
-            // Set default selected language to first available one, preferring 'en'
-            if (!selectedOriginalLanguage) {
-              const availableLanguages = languageAvailabilityResults.filter(
-                (l) => l.available,
+            // Set default selected language to first available one
+            // Check if current selection is available, if not, reset it
+            const availableLanguages = languageAvailabilityResults.filter(
+              (l) => l.available,
+            );
+
+            const currentSelectionAvailable =
+              selectedOriginalLanguage &&
+              availableLanguages.find(
+                (l) => l.code === selectedOriginalLanguage,
               );
+
+            if (!selectedOriginalLanguage || !currentSelectionAvailable) {
               if (availableLanguages.length > 0) {
-                const defaultLang =
-                  availableLanguages.find((l) => l.code === 'en')?.code ||
-                  availableLanguages[0].code;
-                setSelectedOriginalLanguage(defaultLang);
+                // Prefer English if available, otherwise use first available language
+                const englishAvailable = availableLanguages.find(
+                  (l) => l.code === 'en',
+                );
+                const defaultLanguage = englishAvailable
+                  ? 'en'
+                  : availableLanguages[0].code;
+                setSelectedOriginalLanguage(defaultLanguage);
               }
             }
           } else {
-            // If we don't have slide data yet, assume all languages are available
-            const allLanguages = codes.map((lang) => ({
-              code: lang,
-              name: getLanguageName(lang),
-              available: true,
-            }));
-            setLanguageAvailability(allLanguages);
-
-            if (!selectedOriginalLanguage) {
-              const defaultLang = codes.includes('en') ? 'en' : codes[0];
-              setSelectedOriginalLanguage(defaultLang);
-            }
+            // If we don't have slide data yet, don't assume any languages are available
+            // Keep loading state until we can actually check availability
+            return;
           }
           setLanguagesLoading(false);
           return;
@@ -270,29 +289,65 @@ function CompareSlidePage() {
 
         setLanguageAvailability(fallbackAvailabilityResults);
 
-        if (!selectedOriginalLanguage) {
-          const availableLanguages = fallbackAvailabilityResults.filter(
-            (l) => l.available,
-          );
+        const availableLanguages = fallbackAvailabilityResults.filter(
+          (l) => l.available,
+        );
+
+        const currentSelectionAvailable =
+          selectedOriginalLanguage &&
+          availableLanguages.find((l) => l.code === selectedOriginalLanguage);
+
+        if (!selectedOriginalLanguage || !currentSelectionAvailable) {
           if (availableLanguages.length > 0) {
-            const defaultLang =
-              availableLanguages.find((l) => l.code === 'en')?.code ||
-              availableLanguages[0].code;
-            setSelectedOriginalLanguage(defaultLang);
+            // Prefer English if available, otherwise use first available language
+            const englishAvailable = availableLanguages.find(
+              (l) => l.code === 'en',
+            );
+            const defaultLanguage = englishAvailable
+              ? 'en'
+              : availableLanguages[0].code;
+            setSelectedOriginalLanguage(defaultLanguage);
           }
         }
       } else {
-        const fallbackAvailability = fallbackLanguages.map((lang) => ({
-          code: lang,
-          name: getLanguageName(lang),
-          available: true,
-        }));
-        setLanguageAvailability(fallbackAvailability);
+        // Also check availability for fallback languages
+        if (chapterData?.slides?.[numericSlideIndex]) {
+          const currentSlide = chapterData.slides[numericSlideIndex];
 
-        if (!selectedOriginalLanguage) {
-          setSelectedOriginalLanguage(
-            _hasEnglishVersion ? 'en' : originalLanguageCode,
+          const availableCodes = await fetchSlideLanguageAvailability(
+            courseId,
+            currentSlide.partId,
+            chapterId,
+            currentSlide.slideId,
           );
+
+          const fallbackAvailabilityResults = fallbackLanguages.map((lang) => ({
+            code: lang,
+            name: getLanguageName(lang),
+            available: availableCodes.includes(lang),
+          }));
+
+          setLanguageAvailability(fallbackAvailabilityResults);
+
+          const availableLanguages = fallbackAvailabilityResults.filter(
+            (l) => l.available,
+          );
+
+          if (!selectedOriginalLanguage) {
+            if (availableLanguages.length > 0) {
+              // Prefer English if available, otherwise use first available language
+              const englishAvailable = availableLanguages.find(
+                (l) => l.code === 'en',
+              );
+              const defaultLanguage = englishAvailable
+                ? 'en'
+                : availableLanguages[0].code;
+              setSelectedOriginalLanguage(defaultLanguage);
+            }
+          }
+        } else {
+          // No slide data and no course languages - can't determine availability
+          return;
         }
       }
 
@@ -302,7 +357,15 @@ function CompareSlidePage() {
     fetchAvailableLanguages();
     // We deliberately exclude courseData from deps to avoid double-call; courseId is sufficient.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [courseId, chapterData, numericSlideIndex]);
+  }, [
+    courseId,
+    chapterData,
+    numericSlideIndex,
+    chapterId,
+    courseData?.originalLanguage,
+    selectedOriginalLanguage,
+    fetchSlideLanguageAvailability,
+  ]);
 
   // ----------------------------
   // Fetch transcript language availability
@@ -372,6 +435,10 @@ function CompareSlidePage() {
     chapterId,
     numericSlideIndex,
     chapterData?.slides?.[numericSlideIndex]?.slideId,
+    chapterData?.slides?.[numericSlideIndex],
+    courseData?.originalLanguage,
+    selectedOriginalTranscriptLanguage,
+    fetchSlideTranscriptLanguageAvailability,
   ]);
 
   // ----------------------------
@@ -421,6 +488,7 @@ function CompareSlidePage() {
     courseData,
     transcriptContentCache,
     chapterData?.slides?.[numericSlideIndex]?.slideId,
+    chapterData?.slides?.[numericSlideIndex],
   ]);
 
   // Compute derived values once we have data
@@ -433,6 +501,10 @@ function CompareSlidePage() {
       setTranscriptionValidated(currentSlide.transcriptionValidated ?? false);
       setPptValidated(currentSlide.pptValidated ?? false);
       setHasUnsavedChanges(false);
+
+      // Reset PNG loading state
+      setPngLoading(true);
+      setPngError(null);
     }
   }, [currentSlide]);
 
@@ -569,18 +641,6 @@ function CompareSlidePage() {
     fetchData();
   }, [courseId, chapterId, targetLanguage]);
 
-  // Compute file base name (same logic as parent page)
-  const fileBaseName = React.useMemo(() => {
-    if (!chapterData || !currentSlide) return '';
-    const partIdx = chapterData.context.partIndex;
-    const chapIdx = chapterData.context.chapterIndex;
-    // Convert 1-based slideNumber from database to 0-based for filename
-    const slideIdx = currentSlide.slideNumber
-      ? currentSlide.slideNumber - 1
-      : numericSlideIndex;
-    return `${partIdx}.${chapIdx}_${slideIdx}`;
-  }, [chapterData, currentSlide, numericSlideIndex]);
-
   // Original language handling
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
   const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
@@ -590,24 +650,37 @@ function CompareSlidePage() {
 
   // Initialize selected language when data loads
   React.useEffect(() => {
-    if (
-      courseData &&
-      !selectedOriginalLanguage &&
-      availableLanguages.length > 0
-    ) {
-      // Default to English if available, otherwise use first available language
-      const defaultLanguage =
-        availableLanguages.find((l) => l.code === 'en')?.code ||
-        availableLanguages[0].code;
-      setSelectedOriginalLanguage(defaultLanguage);
+    if (courseData && availableLanguages.length > 0) {
+      // Check if current selection is available, if not, reset it
+      const currentSelectionAvailable =
+        selectedOriginalLanguage &&
+        availableLanguages.find((l) => l.code === selectedOriginalLanguage);
+
+      if (!selectedOriginalLanguage || !currentSelectionAvailable) {
+        // Prefer English if available, otherwise use first available language
+        if (availableLanguages.length > 0) {
+          const englishAvailable = availableLanguages.find(
+            (l) => l.code === 'en',
+          );
+          const defaultLanguage = englishAvailable
+            ? 'en'
+            : availableLanguages[0].code;
+          setSelectedOriginalLanguage(defaultLanguage);
+        }
+      }
     }
   }, [courseData, selectedOriginalLanguage, availableLanguages]);
 
   const originalLanguage =
-    selectedOriginalLanguage ||
-    availableLanguages.find((l) => l.code === 'en')?.code ||
-    availableLanguages[0]?.code ||
-    originalLanguageCode;
+    selectedOriginalLanguage &&
+    availableLanguages.some(
+      (l) => l.code === selectedOriginalLanguage && l.available,
+    )
+      ? selectedOriginalLanguage
+      : availableLanguages.length > 0
+        ? availableLanguages[0]?.code
+        : originalLanguageCode;
+
   const _originalLanguageName = getLanguageName(originalLanguage);
   const targetLanguageName = getLanguageName(targetLanguage);
 
@@ -815,6 +888,9 @@ function CompareSlidePage() {
                           (l) => l.code === selectedLang,
                         );
                         if (langAvailability?.available) {
+                          // Reset loading state when changing language
+                          setPngLoading(true);
+                          setPngError(null);
                           setSelectedOriginalLanguage(selectedLang);
                         }
                       }}
@@ -871,29 +947,79 @@ function CompareSlidePage() {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <OnlyOfficeSlideEditor
-                  key={`original-${selectedOriginalLanguage}-${currentSlide?.slideId ?? ''}`}
-                  fileUrl={
-                    currentSlide
-                      ? buildPptxUrl(
-                          courseId,
-                          originalLanguage,
-                          currentSlide.partId,
-                          chapterId,
-                          currentSlide.slideId,
-                        )
-                      : null
-                  }
-                  className="w-full"
-                  courseId={courseId}
-                  partId={currentSlide?.partId}
-                  chapterId={chapterId}
-                  slideId={currentSlide?.slideId}
-                  fileName={fileBaseName}
-                  language={originalLanguage}
-                  mode="view"
-                />
+              {/* PNG Image */}
+              <div className="mb-6 flex justify-center min-h-[200px]">
+                {currentSlide && (
+                  <div className="relative w-full flex justify-center">
+                    {/* Loading Spinner */}
+                    {(pngLoading || languagesLoading) && !pngError && (
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <LoadingSpinner size="md" className="h-auto" />
+                      </div>
+                    )}
+
+                    {/* Only render image when we have confirmed the language is available */}
+                    {!languagesLoading &&
+                      originalLanguage &&
+                      availableLanguages.length > 0 &&
+                      availableLanguages.some(
+                        (l) => l.code === originalLanguage && l.available,
+                      ) && (
+                        <img
+                          key={`${currentSlide.slideId}-${originalLanguage}`}
+                          data-slide-png
+                          src={buildTranslationFileUrl(
+                            courseId,
+                            originalLanguage,
+                            currentSlide.partId,
+                            chapterId,
+                            currentSlide.slideId,
+                            'png',
+                            'proofread',
+                          )}
+                          alt={`Slide ${numericSlideIndex + 1} - ${getLanguageName(originalLanguage)}`}
+                          className={`max-w-full h-auto border border-gray-300 rounded-lg shadow-sm transition-opacity duration-200 ${
+                            pngLoading || pngError ? 'opacity-0' : 'opacity-100'
+                          }`}
+                          onError={(e) => {
+                            setPngLoading(false);
+                            setPngError(
+                              `Failed to load image from: ${e.currentTarget.src}`,
+                            );
+                          }}
+                          onLoad={(e) => {
+                            // Check if image has valid dimensions
+                            if (
+                              e.currentTarget.naturalWidth === 0 ||
+                              e.currentTarget.naturalHeight === 0
+                            ) {
+                              setPngError(
+                                'Image loaded but has invalid dimensions',
+                              );
+                            } else {
+                              setPngError(null);
+                            }
+
+                            setPngLoading(false);
+                          }}
+                        />
+                      )}
+
+                    {/* Error Display */}
+                    {pngError && (
+                      <div className="flex items-center justify-center p-4 text-red-600 bg-red-50 border border-red-300 rounded-lg">
+                        <div className="text-center">
+                          <div className="mb-2">
+                            Failed to load presentation image
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            {pngError}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

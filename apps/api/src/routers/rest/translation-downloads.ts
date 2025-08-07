@@ -1245,6 +1245,7 @@ export const createRestTranslationDownloadRoutes = async (
       try {
         const { courseId, language, partId, chapterId, slideId } =
           req.params as any;
+        const { suffix } = req.query as any;
 
         if (!courseId || !language || !partId || !chapterId || !slideId) {
           throw new BadRequest('Missing required path parameters');
@@ -1284,11 +1285,12 @@ export const createRestTranslationDownloadRoutes = async (
           directoryPath = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/png/`;
         }
 
-        // Discover PNG file
+        // Discover PNG file with optional suffix
         const discoveredKey = await discoverFileByExtension(
           dependencies.s3,
           directoryPath,
           'png',
+          suffix,
         );
 
         if (!discoveredKey) {
@@ -1462,6 +1464,123 @@ export const createRestTranslationDownloadRoutes = async (
         stream!.pipe(res);
       } catch (error) {
         console.error('PPTX by path endpoint error:', error);
+        req.log('Error:', error);
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('File not found');
+          return;
+        }
+        next(error);
+      }
+    },
+  );
+
+  // Simple PNG by path endpoint - direct S3 path construction
+  router.get(
+    '/translation-downloads/png-by-path/:courseId/:language/:chapterId/:slideId',
+    async (req, res, next) => {
+      try {
+        const { courseId, language, chapterId, slideId } = req.params as any;
+        const { suffix } = req.query as any;
+
+        if (!courseId || !language || !chapterId || !slideId) {
+          throw new BadRequest('Missing required path parameters');
+        }
+
+        // Get partId from database - we need this for the S3 path
+        // First try to find the slide for the requested language
+        const slideQuery = sql`
+          SELECT part_id, ppt_resource_path
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
+
+        let result = await dependencies.postgres.exec(slideQuery);
+
+        // If not found for the requested language, try to find any slide for the same course/chapter/slide
+        // to get the partId and base filename structure
+        if (!result || result.length === 0) {
+          const fallbackQuery = sql`
+            SELECT part_id, ppt_resource_path
+            FROM content.course_translation_slides
+            WHERE course_id = ${courseId}
+              AND chapter_id = ${chapterId}
+              AND slide_id = ${slideId}
+            LIMIT 1
+          `;
+
+          result = await dependencies.postgres.exec(fallbackQuery);
+
+          if (!result || result.length === 0) {
+            res.status(404).send('Slide not found');
+            return;
+          }
+        }
+
+        const partId = result[0].part_id || result[0].partId;
+        const pptResourcePath =
+          result[0].ppt_resource_path || result[0].pptResourcePath;
+
+        if (!partId) {
+          res.status(404).send('Part ID not found');
+          return;
+        }
+
+        // Extract filename from ppt_resource_path to maintain consistency
+        let baseFileName = 'slide'; // fallback
+        if (pptResourcePath) {
+          const extractedFileName = pptResourcePath
+            .split('/')
+            .pop()
+            ?.replace('.pptx', '');
+          if (extractedFileName) {
+            baseFileName = extractedFileName;
+          }
+        }
+
+        // Build PNG filename: baseFileName + suffix + .png
+        const pngFileName = suffix
+          ? `${baseFileName}-${suffix}.png`
+          : `${baseFileName}.png`;
+
+        // Direct S3 path construction following your example:
+        // contribute/courseId/language/partId/chapterId/slideId/png/filename-proofread.png
+        const pngKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/png/${pngFileName}`;
+
+        // Check if PNG file exists in S3
+        const head = await dependencies.s3.head(pngKey).catch(() => null);
+
+        if (!head) {
+          res.status(404).send('PNG file not found');
+          return;
+        }
+
+        const stream = await dependencies.s3.getStream(pngKey);
+
+        if (!stream) {
+          res.status(404).send('Failed to get PNG stream');
+          return;
+        }
+
+        // Add CORS headers
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        res.setHeader(
+          'Access-Control-Allow-Headers',
+          'Content-Type, Authorization, Cookie',
+        );
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+        res.setHeader('Content-Type', head?.contentType || 'image/png');
+        if (head?.contentLength) {
+          res.setHeader('Content-Length', String(head.contentLength));
+        }
+
+        stream!.pipe(res);
+      } catch (error) {
+        console.error('PNG by path endpoint error:', error);
         req.log('Error:', error);
         if (error instanceof NoSuchKey) {
           res.status(404).send('File not found');

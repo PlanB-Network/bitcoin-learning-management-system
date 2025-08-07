@@ -46,7 +46,7 @@ export const isUUID = (value: unknown) =>
 
 // Configuration flag to switch between old and new file discovery approach
 // Set to true to use the new file discovery endpoints
-export const USE_FILE_DISCOVERY = true;
+export const USE_FILE_DISCOVERY = false;
 
 /**
  * Build translation file URL by discovering files with specific extension and suffix
