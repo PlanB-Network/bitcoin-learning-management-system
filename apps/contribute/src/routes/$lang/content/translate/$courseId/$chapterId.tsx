@@ -23,7 +23,7 @@ import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-ed
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { VideoGenerationModal } from '#src/components/video-generation-modal.tsx';
-
+import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { buildPptxUrl } from '#src/utils/index.ts';
@@ -33,6 +33,12 @@ export const Route = createFileRoute(
   '/$lang/content/translate/$courseId/$chapterId',
 )({
   component: ChapterTranslationPage,
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      targetLanguage: search.targetLanguage as string,
+      startAtLastSlide: search.startAtLastSlide as boolean,
+    };
+  },
 });
 
 interface ChapterTranslationContext {
@@ -78,6 +84,7 @@ interface ChapterTranslationData {
 function ChapterTranslationPage() {
   const { t, i18n } = useTranslation();
   const { courseId, chapterId } = Route.useParams();
+  const searchParams = Route.useSearch();
   const location = useLocation();
   const isCompareRoute = location.pathname.includes('/compare/');
 
@@ -88,9 +95,9 @@ function ChapterTranslationPage() {
   const [courseData, setCourseData] = useState<any>(null);
   const [totalChapters, setTotalChapters] = useState<number>(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [_hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   // Note: fileBaseName is no longer used for file URLs but kept for audio generation API compatibility
   const fileBaseName = React.useMemo(() => {
@@ -135,42 +142,26 @@ function ChapterTranslationPage() {
   // ----------------------------
   // Original transcript language selector (same logic as compare view)
   // ----------------------------
-  interface LanguageAvailability {
-    code: string;
-    name: string;
-    available: boolean;
-  }
 
   const [
     selectedOriginalTranscriptLanguage,
     setSelectedOriginalTranscriptLanguage,
   ] = useState<string>('');
-  const [transcriptLanguageAvailability, setTranscriptLanguageAvailability] =
-    useState<LanguageAvailability[]>([]);
-  const [transcriptLanguagesLoading, setTranscriptLanguagesLoading] =
-    useState(false);
+  const {
+    options: transcriptLanguageAvailability,
+    loading: transcriptLanguagesLoading,
+  } = useTranscriptAvailability({
+    courseId,
+    partId: chapterData?.slides?.[currentSlideIndex]?.partId ?? '',
+    chapterId,
+    slideId: chapterData?.slides?.[currentSlideIndex]?.slideId ?? '',
+    originalLanguage: courseData?.originalLanguage ?? 'en',
+  });
   const [transcriptContentCache, setTranscriptContentCache] = useState<
     Record<string, string | null>
   >({});
 
-  // Helper to fetch availability per slide
-  const fetchSlideTranscriptLanguageAvailability = async (
-    courseId: string,
-    partId: string,
-    chapterId: string,
-    slideId: string,
-  ): Promise<string[]> => {
-    try {
-      const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('Failed to fetch transcript availability');
-      const data = (await resp.json()) as { languages: string[] };
-      return data.languages ?? [];
-    } catch (err) {
-      console.warn('Could not fetch transcript language availability', err);
-      return [];
-    }
-  };
+  // Removed redundant helper function – replaced by shared hook
 
   // Load attempts whenever slide changes
   useEffect(() => {
@@ -189,7 +180,7 @@ function ChapterTranslationPage() {
 
   // Get target language from route params or localStorage (aligned with slideIndex.tsx)
   const targetLanguage =
-    Route.useSearch()?.targetLanguage ||
+    searchParams?.targetLanguage ||
     (typeof window !== 'undefined'
       ? localStorage.getItem('targetLanguage')
       : null) ||
@@ -216,6 +207,9 @@ function ChapterTranslationPage() {
   const isLastSlide = chapterData
     ? currentSlideIndex === chapterData.slides.length - 1
     : false;
+
+  // Check if this is the first slide
+  const isFirstSlide = currentSlideIndex === 0;
 
   // Check if this is the last chapter in the course
   const isLastChapter = React.useMemo(() => {
@@ -256,7 +250,15 @@ function ChapterTranslationPage() {
 
   // Find first incomplete slide when chapter data loads initially
   useEffect(() => {
-    if (!chapterData || currentSlideIndex !== 0) return;
+    if (!chapterData || !initialLoad) return;
+
+    // Check if we should start at the last slide (coming from previous chapter navigation)
+    if (searchParams?.startAtLastSlide) {
+      console.log('Starting at last slide (from previous chapter navigation)');
+      setCurrentSlideIndex(chapterData.slides.length - 1);
+      setInitialLoad(false);
+      return;
+    }
 
     // Find first slide that doesn't have all validations complete
     const firstIncompleteSlideIndex = chapterData.slides.findIndex((slide) => {
@@ -279,95 +281,34 @@ function ChapterTranslationPage() {
       setCurrentSlideIndex(chapterData.slides.length - 1);
     }
     // If firstIncompleteSlideIndex === 0, we're already at the right slide
-  }, [chapterData, currentSlideIndex]);
 
-  // Sync validation states with current slide data
+    setInitialLoad(false);
+  }, [chapterData, initialLoad, searchParams?.startAtLastSlide]);
+
+  // Track the current slide ID to detect when we actually change slides
+  const [previousSlideId, setPreviousSlideId] = useState<string | null>(null);
+
+  // Sync validation states with current slide data only when slide actually changes
   useEffect(() => {
     if (!chapterData) return;
     const slide = chapterData.slides[currentSlideIndex];
     if (!slide) return;
-    setValidationStates({
-      presentationValidated: slide.pptValidated ?? false,
-      transcriptionValidated: slide.transcriptionValidated ?? false,
-      audioValidated: slide.audioValidated ?? false,
-    });
 
-    // Reset source transcript cache when slide changes
-    setTranscriptContentCache({});
-  }, [chapterData, currentSlideIndex]);
+    // Only update validation states if this is a new slide or first load
+    if (slide.slideId !== previousSlideId) {
+      setValidationStates({
+        presentationValidated: slide.pptValidated ?? false,
+        transcriptionValidated: slide.transcriptionValidated ?? false,
+        audioValidated: slide.audioValidated ?? false,
+      });
+      setPreviousSlideId(slide.slideId);
 
-  // ----------------------------
-  // Fetch transcript language availability for current slide
-  // ----------------------------
-  useEffect(() => {
-    const fetchTranscriptLanguages = async () => {
-      if (!chapterData) return;
-      setTranscriptLanguagesLoading(true);
+      // Reset source transcript cache when slide changes
+      setTranscriptContentCache({});
+    }
+  }, [chapterData, currentSlideIndex, previousSlideId]);
 
-      try {
-        let resp: any;
-        try {
-          resp = await (
-            trpcClient as any
-          ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (_e: any) {
-          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
-            id: courseId,
-          });
-        }
-
-        const originalLang = courseData?.originalLanguage ?? 'en';
-        const codesSet = new Set<string>();
-        if (resp?.languages?.length) {
-          for (const l of resp.languages) {
-            codesSet.add(l.code);
-          }
-        }
-        codesSet.add(originalLang);
-        const codes = Array.from(codesSet);
-
-        const slide = chapterData.slides[currentSlideIndex];
-        if (slide) {
-          const availableCodes = await fetchSlideTranscriptLanguageAvailability(
-            courseId,
-            slide.partId,
-            chapterId,
-            slide.slideId,
-          );
-
-          const availability = codes.map((lang) => ({
-            code: lang,
-            name: getLanguageName(lang),
-            available: availableCodes.includes(lang) || lang === originalLang,
-          }));
-
-          setTranscriptLanguageAvailability(availability);
-
-          if (!selectedOriginalTranscriptLanguage) {
-            const available = availability.filter((l) => l.available);
-            if (available.length > 0) {
-              const defaultLang =
-                available.find((l) => l.code === 'en')?.code ||
-                available[0].code;
-              setSelectedOriginalTranscriptLanguage(defaultLang);
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('Could not fetch transcript languages', err);
-      } finally {
-        setTranscriptLanguagesLoading(false);
-      }
-    };
-
-    fetchTranscriptLanguages();
-  }, [
-    courseId,
-    chapterId,
-    courseData,
-    currentSlideIndex,
-    chapterData?.slides?.[currentSlideIndex]?.slideId,
-  ]);
+  // Transcript language availability now handled by useTranscriptAvailability – legacy effect removed
 
   // ----------------------------
   // Load transcript content for selected language
@@ -416,7 +357,7 @@ function ChapterTranslationPage() {
     courseId,
     chapterId,
     transcriptContentCache,
-    chapterData?.slides?.[currentSlideIndex]?.slideId,
+    chapterData,
   ]);
 
   const displayedOriginalTranscript =
@@ -444,6 +385,7 @@ function ChapterTranslationPage() {
     try {
       setLoading(true);
       setError(null);
+      setInitialLoad(true); // Reset initial load flag when fetching new chapter data
 
       // Fetch both chapter data and course data in parallel
       const [chapterDataResp, courseDataResp] = await Promise.all([
@@ -560,7 +502,7 @@ function ChapterTranslationPage() {
       };
     });
 
-    // Reflect immediately in checkbox UI
+    // Reflect immediately in checkbox UI, but preserve presentationValidated
     setValidationStates((prev) => ({
       ...prev,
       transcriptionValidated: false,
@@ -585,8 +527,6 @@ function ChapterTranslationPage() {
           console.error('Error auto-unvalidating transcript and audio', err),
         );
     }
-
-    setHasUnsavedChanges(true);
   };
 
   const _handleValidatePresentation = async () => {
@@ -752,7 +692,7 @@ function ChapterTranslationPage() {
         transcriptionValidated: true,
       }));
 
-      setHasUnsavedChanges(false);
+      // setHasUnsavedChanges(false); // removed unused state
 
       console.log('Transcription validated and saved successfully');
     } catch (error) {
@@ -913,6 +853,47 @@ function ChapterTranslationPage() {
       });
     }
     // If there is no next chapter, do nothing here. The UI will offer to create the video.
+  };
+
+  const handlePreviousSlide = () => {
+    if (!chapterData) return;
+
+    // If there are previous slides in the current chapter, just go to the previous one
+    if (currentSlideIndex > 0) {
+      setCurrentSlideIndex(currentSlideIndex - 1);
+      return;
+    }
+
+    // We are on the first slide of the current chapter
+    // Determine if there is a previous chapter in the course
+    if (!courseData) return;
+
+    const allChapters = courseData.parts.flatMap((part: any) =>
+      part.chapters.map((chapter: any) => ({
+        ...chapter,
+        partIndex: part.partIndex,
+        partId: part.partId,
+      })),
+    );
+
+    const currentChapterIndex = allChapters.findIndex(
+      (chapter: any) => chapter.chapterId === chapterId,
+    );
+
+    if (currentChapterIndex > 0) {
+      // Navigate to the last slide of the previous chapter
+      const previousChapter = allChapters[currentChapterIndex - 1];
+      navigate({
+        to: '/$lang/content/translate/$courseId/$chapterId',
+        params: {
+          lang: i18n.language,
+          courseId,
+          chapterId: previousChapter.chapterId,
+        },
+        search: { startAtLastSlide: true }, // Add a search param to indicate starting at last slide
+      });
+    }
+    // If there is no previous chapter, do nothing (first slide of first chapter)
   };
 
   const handleCreateVideo = async () => {
@@ -1693,48 +1674,68 @@ function ChapterTranslationPage() {
         )}
       </div>
 
-      {/* Action Button - Next Slide or Create Video */}
+      {/* Action Buttons - Previous and Next Slide or Create Video */}
       {chapterData && (
-        <div className="flex justify-end">
-          {isLastSlideOfCourse ? (
-            <Button
-              onClick={handleCreateVideo}
-              disabled={!allValidationsComplete}
-              size="m"
-              variant="primary"
-              className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
-              title={
-                !allValidationsComplete
-                  ? t('translate.completeAllValidations', {
-                      defaultValue:
-                        'Please complete all validations before proceeding',
-                    })
-                  : undefined
-              }
-            >
-              {t('translate.createVideo', { defaultValue: 'Create video' })}
-              <span>✓</span>
-            </Button>
-          ) : (
-            <Button
-              onClick={handleNextSlide}
-              disabled={!allValidationsComplete}
-              size="m"
-              variant="primary"
-              className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
-              title={
-                !allValidationsComplete
-                  ? t('translate.completeAllValidations', {
-                      defaultValue:
-                        'Please complete all validations before proceeding to the next slide',
-                    })
-                  : undefined
-              }
-            >
-              {t('translate.nextSlide', { defaultValue: 'Next slide' })}
-              <span>→</span>
-            </Button>
-          )}
+        <div className="flex justify-between items-center">
+          {/* Previous Slide Button */}
+          <div className="flex justify-start">
+            {!isFirstSlide && (
+              <Button
+                onClick={handlePreviousSlide}
+                size="m"
+                variant="outline"
+                className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
+              >
+                <span>←</span>
+                {t('translate.previousSlide', {
+                  defaultValue: 'Previous slide',
+                })}
+              </Button>
+            )}
+          </div>
+
+          {/* Next Slide or Create Video Button */}
+          <div className="flex justify-end">
+            {isLastSlideOfCourse ? (
+              <Button
+                onClick={handleCreateVideo}
+                disabled={!allValidationsComplete}
+                size="m"
+                variant="primary"
+                className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
+                title={
+                  !allValidationsComplete
+                    ? t('translate.completeAllValidations', {
+                        defaultValue:
+                          'Please complete all validations before proceeding',
+                      })
+                    : undefined
+                }
+              >
+                {t('translate.createVideo', { defaultValue: 'Create video' })}
+                <span>✓</span>
+              </Button>
+            ) : (
+              <Button
+                onClick={handleNextSlide}
+                disabled={!allValidationsComplete}
+                size="m"
+                variant="primary"
+                className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
+                title={
+                  !allValidationsComplete
+                    ? t('translate.completeAllValidations', {
+                        defaultValue:
+                          'Please complete all validations before proceeding to the next slide',
+                      })
+                    : undefined
+                }
+              >
+                {t('translate.nextSlide', { defaultValue: 'Next slide' })}
+                <span>→</span>
+              </Button>
+            )}
+          </div>
         </div>
       )}
 

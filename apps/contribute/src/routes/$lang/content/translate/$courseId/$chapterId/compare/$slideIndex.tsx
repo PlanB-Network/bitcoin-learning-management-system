@@ -1,16 +1,18 @@
 import { TranslationStatus } from '@blms/constants';
 import { Button } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
-import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
+// DroplistArrowIcon no longer needed after migration to LanguageDropdown
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
 import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
+import { useLanguageAvailability } from '#src/hooks/useLanguageAvailability.ts';
+import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { buildPptxUrl, buildTranslationFileUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
@@ -78,7 +80,6 @@ function CompareSlidePage() {
     null,
   );
   const [courseData, setCourseData] = useState<any>(null);
-  const [_totalChapters, setTotalChapters] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'presentation' | 'transcription'>(
@@ -86,11 +87,15 @@ function CompareSlidePage() {
   );
   const [selectedOriginalLanguage, setSelectedOriginalLanguage] =
     useState<string>('');
-  // UPDATED STATE: track language availability instead of just available languages
-  const [languageAvailability, setLanguageAvailability] = useState<
-    LanguageAvailability[]
-  >([]);
-  const [languagesLoading, setLanguagesLoading] = useState(false);
+  // replace state for language availability with new hook output
+  const { options: languageAvailability, loading: languagesLoading } =
+    useLanguageAvailability({
+      courseId,
+      partId: chapterData?.slides?.[Number(slideIndex)]?.partId ?? '',
+      chapterId,
+      slideId: chapterData?.slides?.[Number(slideIndex)]?.slideId ?? '',
+      originalLanguage: courseData?.originalLanguage ?? 'en',
+    });
   // ----------------------------
   // State for transcript language selection
   // ----------------------------
@@ -98,10 +103,17 @@ function CompareSlidePage() {
     selectedOriginalTranscriptLanguage,
     setSelectedOriginalTranscriptLanguage,
   ] = useState<string>('');
-  const [transcriptLanguageAvailability, setTranscriptLanguageAvailability] =
-    useState<LanguageAvailability[]>([]);
-  const [transcriptLanguagesLoading, setTranscriptLanguagesLoading] =
-    useState(false);
+  // Transcript language availability via shared hook
+  const {
+    options: transcriptLanguageAvailability,
+    loading: transcriptLanguagesLoading,
+  } = useTranscriptAvailability({
+    courseId,
+    partId: chapterData?.slides?.[Number(slideIndex)]?.partId ?? '',
+    chapterId,
+    slideId: chapterData?.slides?.[Number(slideIndex)]?.slideId ?? '',
+    originalLanguage: courseData?.originalLanguage ?? 'en',
+  });
   const [transcriptContentCache, setTranscriptContentCache] = useState<
     Record<string, string | null>
   >({});
@@ -112,7 +124,8 @@ function CompareSlidePage() {
   const [translatedText, setTranslatedText] = useState<string>('');
   const [transcriptionValidated, setTranscriptionValidated] =
     useState<boolean>(false);
-  const [_hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
+  // setHasUnsavedChanges state removed – following setter calls commented out
+  /* setHasUnsavedChanges(false); */
 
   // PPT validation state for the second editor
   const [pptValidated, setPptValidated] = useState<boolean>(false);
@@ -132,314 +145,9 @@ function CompareSlidePage() {
       : null) ||
     'fr';
 
-  // Memoized to keep stable identity across renders and avoid infinite effect loops
-  const fetchSlideLanguageAvailability = useCallback(
-    async (
-      courseId: string,
-      partId: string,
-      chapterId: string,
-      slideId: string,
-    ): Promise<string[]> => {
-      try {
-        const url = `/api/translation-downloads/pptx-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-        const resp = await fetch(url);
-        if (!resp.ok) {
-          throw new Error('Failed to fetch availability');
-        }
-        const data = (await resp.json()) as { languages: string[] };
-        return data.languages ?? [];
-      } catch (err) {
-        console.warn('Could not fetch language availability', err);
-        return [];
-      }
-    },
-    [],
-  );
-  // Helper to fetch transcript language availability (checks DB)
-  const fetchSlideTranscriptLanguageAvailability = useCallback(
-    async (
-      courseId: string,
-      partId: string,
-      chapterId: string,
-      slideId: string,
-    ): Promise<string[]> => {
-      try {
-        const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-        const resp = await fetch(url);
-        if (!resp.ok) {
-          throw new Error('Failed to fetch transcript availability');
-        }
-        const data = (await resp.json()) as { languages: string[] };
-        return data.languages ?? [];
-      } catch (err) {
-        console.warn('Could not fetch transcript language availability', err);
-        return [];
-      }
-    },
-    [],
-  );
-  // UPDATED: Fetch languages and check availability
-  useEffect(() => {
-    const fetchAvailableLanguages = async () => {
-      setLanguagesLoading(true);
+  // Removed redundant helper functions now superseded by shared hooks
 
-      try {
-        // Prefer public endpoint (works for any user)
-        let resp: any;
-        try {
-          resp = await (
-            trpcClient as any
-          ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (_e: any) {
-          // If public endpoint unavailable (older backend) or we are admin using secured route
-          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
-            id: courseId,
-          });
-        }
-
-        if (resp?.languages?.length) {
-          // Always ensure the course original language is present in the dropdown
-          const originalLang = courseData?.originalLanguage ?? 'en';
-
-          const codesSet = new Set<string>(
-            resp.languages.map((l: any) => l.code),
-          );
-          codesSet.add(originalLang);
-          const codes = Array.from(codesSet);
-
-          // Check availability via backend endpoint
-          if (chapterData?.slides?.[numericSlideIndex]) {
-            const currentSlide = chapterData.slides[numericSlideIndex];
-
-            const availableCodes = await fetchSlideLanguageAvailability(
-              courseId,
-              currentSlide.partId,
-              chapterId,
-              currentSlide.slideId,
-            );
-
-            const languageAvailabilityResults = codes.map((lang) => ({
-              code: lang,
-              name: getLanguageName(lang),
-              available: availableCodes.includes(lang),
-            }));
-
-            setLanguageAvailability(languageAvailabilityResults);
-
-            // Set default selected language to first available one
-            // Check if current selection is available, if not, reset it
-            const availableLanguages = languageAvailabilityResults.filter(
-              (l) => l.available,
-            );
-
-            const currentSelectionAvailable =
-              selectedOriginalLanguage &&
-              availableLanguages.find(
-                (l) => l.code === selectedOriginalLanguage,
-              );
-
-            if (!selectedOriginalLanguage || !currentSelectionAvailable) {
-              if (availableLanguages.length > 0) {
-                // Prefer English if available, otherwise use first available language
-                const englishAvailable = availableLanguages.find(
-                  (l) => l.code === 'en',
-                );
-                const defaultLanguage = englishAvailable
-                  ? 'en'
-                  : availableLanguages[0].code;
-                setSelectedOriginalLanguage(defaultLanguage);
-              }
-            }
-          } else {
-            // If we don't have slide data yet, don't assume any languages are available
-            // Keep loading state until we can actually check availability
-            return;
-          }
-          setLanguagesLoading(false);
-          return;
-        }
-      } catch (err) {
-        // Not authorized or endpoint unavailable – log and continue with fallback
-        console.warn('Could not fetch course languages, falling back', err);
-      }
-
-      // Fallback: use original language + English (if available)
-      const originalLanguageCode = courseData?.originalLanguage ?? 'en';
-      const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
-      const fallbackLanguages = _hasEnglishVersion
-        ? [originalLanguageCode, 'en']
-        : [originalLanguageCode];
-
-      // Check availability for fallback languages
-      if (chapterData?.slides?.[numericSlideIndex]) {
-        const currentSlide = chapterData.slides[numericSlideIndex];
-
-        const availableCodes = await fetchSlideLanguageAvailability(
-          courseId,
-          currentSlide.partId,
-          chapterId,
-          currentSlide.slideId,
-        );
-
-        const fallbackAvailabilityResults = fallbackLanguages.map((lang) => ({
-          code: lang,
-          name: getLanguageName(lang),
-          available: availableCodes.includes(lang),
-        }));
-
-        setLanguageAvailability(fallbackAvailabilityResults);
-
-        const availableLanguages = fallbackAvailabilityResults.filter(
-          (l) => l.available,
-        );
-
-        const currentSelectionAvailable =
-          selectedOriginalLanguage &&
-          availableLanguages.find((l) => l.code === selectedOriginalLanguage);
-
-        if (!selectedOriginalLanguage || !currentSelectionAvailable) {
-          if (availableLanguages.length > 0) {
-            // Prefer English if available, otherwise use first available language
-            const englishAvailable = availableLanguages.find(
-              (l) => l.code === 'en',
-            );
-            const defaultLanguage = englishAvailable
-              ? 'en'
-              : availableLanguages[0].code;
-            setSelectedOriginalLanguage(defaultLanguage);
-          }
-        }
-      } else {
-        // Also check availability for fallback languages
-        if (chapterData?.slides?.[numericSlideIndex]) {
-          const currentSlide = chapterData.slides[numericSlideIndex];
-
-          const availableCodes = await fetchSlideLanguageAvailability(
-            courseId,
-            currentSlide.partId,
-            chapterId,
-            currentSlide.slideId,
-          );
-
-          const fallbackAvailabilityResults = fallbackLanguages.map((lang) => ({
-            code: lang,
-            name: getLanguageName(lang),
-            available: availableCodes.includes(lang),
-          }));
-
-          setLanguageAvailability(fallbackAvailabilityResults);
-
-          const availableLanguages = fallbackAvailabilityResults.filter(
-            (l) => l.available,
-          );
-
-          if (!selectedOriginalLanguage) {
-            if (availableLanguages.length > 0) {
-              // Prefer English if available, otherwise use first available language
-              const englishAvailable = availableLanguages.find(
-                (l) => l.code === 'en',
-              );
-              const defaultLanguage = englishAvailable
-                ? 'en'
-                : availableLanguages[0].code;
-              setSelectedOriginalLanguage(defaultLanguage);
-            }
-          }
-        } else {
-          // No slide data and no course languages - can't determine availability
-          return;
-        }
-      }
-
-      setLanguagesLoading(false);
-    };
-
-    fetchAvailableLanguages();
-    // We deliberately exclude courseData from deps to avoid double-call; courseId is sufficient.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    courseId,
-    chapterData,
-    numericSlideIndex,
-    chapterId,
-    courseData?.originalLanguage,
-    selectedOriginalLanguage,
-    fetchSlideLanguageAvailability,
-  ]);
-
-  // ----------------------------
-  // Fetch transcript language availability
-  // ----------------------------
-  useEffect(() => {
-    const fetchTranscriptLanguages = async () => {
-      setTranscriptLanguagesLoading(true);
-      try {
-        let resp: any;
-        try {
-          resp = await (
-            trpcClient as any
-          ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (_e: any) {
-          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
-            id: courseId,
-          });
-        }
-
-        const originalLang = courseData?.originalLanguage ?? 'en';
-        const codesSet = new Set<string>();
-        if (resp?.languages?.length) {
-          for (const l of resp.languages) {
-            codesSet.add(l.code);
-          }
-        }
-        codesSet.add(originalLang);
-        const codes = Array.from(codesSet);
-
-        if (chapterData?.slides?.[numericSlideIndex]) {
-          const currentSlide = chapterData.slides[numericSlideIndex];
-          const availableCodes = await fetchSlideTranscriptLanguageAvailability(
-            courseId,
-            currentSlide.partId,
-            chapterId,
-            currentSlide.slideId,
-          );
-
-          const availability = codes.map((lang) => ({
-            code: lang,
-            name: getLanguageName(lang),
-            available: availableCodes.includes(lang) || lang === originalLang,
-          }));
-
-          setTranscriptLanguageAvailability(availability);
-
-          if (!selectedOriginalTranscriptLanguage) {
-            const available = availability.filter((l) => l.available);
-            if (available.length > 0) {
-              const defaultLang =
-                available.find((l) => l.code === 'en')?.code ||
-                available[0].code;
-              setSelectedOriginalTranscriptLanguage(defaultLang);
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('Could not fetch transcript languages', err);
-      } finally {
-        setTranscriptLanguagesLoading(false);
-      }
-    };
-
-    fetchTranscriptLanguages();
-  }, [
-    courseId,
-    chapterId,
-    numericSlideIndex,
-    chapterData?.slides?.[numericSlideIndex]?.slideId,
-    chapterData?.slides?.[numericSlideIndex],
-    courseData?.originalLanguage,
-    selectedOriginalTranscriptLanguage,
-    fetchSlideTranscriptLanguageAvailability,
-  ]);
+  // Transcript language availability now provided by useTranscriptAvailability – removed legacy effect
 
   // ----------------------------
   // Load transcript content for selected language
@@ -500,11 +208,7 @@ function CompareSlidePage() {
       setTranslatedText(currentSlide.translatedContent ?? '');
       setTranscriptionValidated(currentSlide.transcriptionValidated ?? false);
       setPptValidated(currentSlide.pptValidated ?? false);
-      setHasUnsavedChanges(false);
-
-      // Reset PNG loading state
-      setPngLoading(true);
-      setPngError(null);
+      // setHasUnsavedChanges(false); // removed unused state
     }
   }, [currentSlide]);
 
@@ -518,7 +222,7 @@ function CompareSlidePage() {
     const wasAudioValidated = currentSlide.audioValidated ?? false;
 
     setTranslatedText(value);
-    setHasUnsavedChanges(true);
+    // setHasUnsavedChanges(true); // removed unused state
 
     // Update local chapterData so UI reflects edits immediately
     setChapterData((prev) => {
@@ -572,7 +276,7 @@ function CompareSlidePage() {
       } as any);
 
       setTranscriptionValidated(true);
-      setHasUnsavedChanges(false);
+      // setHasUnsavedChanges(false); // removed unused state
 
       // Sync local state
       setChapterData((prev) => {
@@ -624,11 +328,7 @@ function CompareSlidePage() {
         setCourseData(courseResp);
 
         if (courseResp?.parts) {
-          const chaptersCount = courseResp.parts.reduce(
-            (total: number, part: any) => total + (part.chapters?.length || 0),
-            0,
-          );
-          setTotalChapters(chaptersCount);
+          // previously computed total chapters; removed unused state
         }
       } catch (err) {
         console.error('Error fetching compare page data', err);
@@ -674,7 +374,8 @@ function CompareSlidePage() {
   const originalLanguage =
     selectedOriginalLanguage &&
     availableLanguages.some(
-      (l) => l.code === selectedOriginalLanguage && l.available,
+      (l: LanguageAvailability) =>
+        l.code === selectedOriginalLanguage && l.available,
     )
       ? selectedOriginalLanguage
       : availableLanguages.length > 0
@@ -685,25 +386,9 @@ function CompareSlidePage() {
   const targetLanguageName = getLanguageName(targetLanguage);
 
   // Overall chapter index for progress (copied logic)
-  const _overallChapterNumber = React.useMemo(() => {
-    if (!courseData) return 0;
-    const chaptersInCourse = courseData.parts.flatMap(
-      (part: any) => part.chapters,
-    );
-    const index = chaptersInCourse.findIndex(
-      (ch: any) => ch.chapterId === chapterId,
-    );
-    return index >= 0 ? index + 1 : 0;
-  }, [courseData, chapterId]);
+  // _overallChapterNumber removed – variable was unused
 
-  const _partEndIndexes = React.useMemo(() => {
-    if (!courseData) return [] as number[];
-    let cumulative = 0;
-    return courseData.parts.map((part: any) => {
-      cumulative += part.chapters?.length || 0;
-      return cumulative - 1;
-    });
-  }, [courseData]);
+  // _partEndIndexes removed – variable was unused
 
   if (loading) {
     return (
@@ -877,73 +562,23 @@ function CompareSlidePage() {
                   >
                     {t('translate.language', { defaultValue: 'Language' })}
                   </span>
-                  {/* Custom select with dropdown arrow */}
-                  <div className="relative">
-                    <select
-                      value={selectedOriginalLanguage}
-                      onChange={(e) => {
-                        const selectedLang = e.target.value;
-                        // Only allow selection of available languages
-                        const langAvailability = languageAvailability.find(
-                          (l) => l.code === selectedLang,
-                        );
-                        if (langAvailability?.available) {
-                          // Reset loading state when changing language
-                          setPngLoading(true);
-                          setPngError(null);
-                          setSelectedOriginalLanguage(selectedLang);
-                        }
-                      }}
-                      disabled={languagesLoading}
-                      className={`appearance-none bg-white border border-[#CCCCCC] rounded-[10px] text-sm text-orange-500 w-full sm:w-[225px] h-[34px] pl-8 pr-3 py-1 ${
-                        languagesLoading ? 'opacity-50 cursor-not-allowed' : ''
-                      }`}
-                    >
-                      {languagesLoading ? (
-                        <option value="">
-                          {t('translate.loadingLanguages', {
-                            defaultValue: 'Loading languages...',
-                          })}
-                        </option>
-                      ) : languageAvailability.length === 0 ? (
-                        <option value="">
-                          {t('translate.noLanguagesAvailable', {
-                            defaultValue: 'No languages available',
-                          })}
-                        </option>
-                      ) : (
-                        languageAvailability.map((lang) => (
-                          <option
-                            key={lang.code}
-                            value={lang.code}
-                            disabled={!lang.available}
-                            className={`${lang.available ? 'text-gray-900' : 'text-gray-400 cursor-not-allowed'}`}
-                            style={{
-                              color: lang.available ? 'inherit' : '#9CA3AF',
-                              cursor: lang.available
-                                ? 'pointer'
-                                : 'not-allowed',
-                            }}
-                          >
-                            {lang.name}
-                            {!lang.available && ' (Not available)'}
-                          </option>
-                        ))
-                      )}
-                    </select>
-                    {/* Black arrow icon or loading spinner */}
-                    {languagesLoading ? (
-                      <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-                        <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-orange-500" />
-                      </div>
-                    ) : (
-                      <img
-                        src={DroplistArrowIcon}
-                        alt="Dropdown arrow"
-                        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-[11px] h-[7px]"
-                      />
-                    )}
-                  </div>
+                  {/* Unified dropdown component */}
+                  <LanguageDropdown
+                    options={languageAvailability}
+                    loading={languagesLoading}
+                    value={selectedOriginalLanguage}
+                    onChange={(code: string) => {
+                      const langAvailability = languageAvailability.find(
+                        (l) => l.code === code,
+                      );
+                      if (langAvailability?.available) {
+                        setPngLoading(true);
+                        setPngError(null);
+                        setSelectedOriginalLanguage(code);
+                      }
+                    }}
+                    selectClassName="w-full sm:w-[225px]"
+                  />
                 </div>
               </div>
 
@@ -963,7 +598,8 @@ function CompareSlidePage() {
                       originalLanguage &&
                       availableLanguages.length > 0 &&
                       availableLanguages.some(
-                        (l) => l.code === originalLanguage && l.available,
+                        (l: LanguageAvailability) =>
+                          l.code === originalLanguage && l.available,
                       ) && (
                         <img
                           key={`${currentSlide.slideId}-${originalLanguage}`}
