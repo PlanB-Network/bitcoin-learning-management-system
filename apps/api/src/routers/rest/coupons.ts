@@ -43,7 +43,7 @@ export const createRestCouponsRoutes = (
     const role = req.session.role;
     const permissions = req.session.permissions;
 
-    if (!canAccess(UserRole.Admin)({ permissions, role })) {
+    if (!canAccess(UserRole.Professor)({ permissions, role })) {
       throw new Unauthorized('Insufficient permissions');
     }
 
