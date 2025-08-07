@@ -17,6 +17,10 @@ export const createCheckCoordinator = ({
     courseId,
     code,
   }: CheckCoordinatorParams): Promise<boolean> => {
+    if (!courseId && !code) {
+      return false;
+    }
+
     const teacher = await postgres
       .exec(getUserProfessorIdQuery(userId))
       .then(firstRow)
@@ -27,7 +31,7 @@ export const createCheckCoordinator = ({
         SELECT cp.professor_id as id
         FROM content.course_professors cp
         ${code ? sql`JOIN content.coupon_code cc ON cc.item_id = cp.course_id` : sql``}
-        WHERE ${courseId ? sql`cp.course_id = ${courseId}` : code ? sql`cc.code = ${code}` : sql``}
+        WHERE ${code ? sql`cc.code = ${code}` : sql`cp.course_id = ${courseId}`}
           AND cp.professor_id = ${teacher.professorId}
           AND cp.is_coordinator = true
         LIMIT 1
