@@ -1,4 +1,3 @@
-export { Breadcrumb } from './breadcrumb.tsx';
 export { EmptyState } from './empty-state.tsx';
 export { InfoBanner } from './info-banner.tsx';
 export { LanguageDropdown } from './language-dropdown.tsx';
