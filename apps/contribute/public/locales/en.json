@@ -1,32 +1,8 @@
 {
-  "about": {
-    "activeContributors": "Active contributors",
-    "commitmentContent": "We have the following commitments towards the bitcoin community: \n • Remain open-source \n • Provide high-quality educational content \n • Proofread our content in as many languages as possible \n • Support Bitcoin entrepreneurs in their journey",
-    "commitmentTitle": "Our commitments",
-    "coportateContact": "Contact information:",
-    "coreTeamAjelexRole": "Node coordinator",
-    "coreTeamAsioRole": "Educational coordinator",
-    "coreTeamContent": "Plan ₿ Network is a collective of hundreds of contributors, teachers, community leaders, designers, developers, and organizers. Special thanks go to the numerous people who have made Plan ₿ a reality and continue to do so each day. (Wall of contributors coming soon)",
-    "coreTeamGiacomoRole": "Director and Co-founder",
-    "coreTeamRogzyRole": "Product manager & Co-founder",
-    "coreTeamTitle": "The core team",
-    "corporateContent": "Plan ₿ Network is the joint project of three entities focused on Bitcoin development. In an effort to make the Bitcoin education layers scale, they decided to collaborate to form Plan ₿ Network. Since then, many other entities have decided to contribute and join forces to help us bring Bitcoin education to the world. For this reason, a huge thank-you is due to them.",
-    "corporateTitle": "Corporations behind the project",
-    "description": "Plan ₿ Network helps communities worldwide to get organized in order to provide better education. The platform develops the necessary tools towards that goal, through the online academy, the tutorials portal, the Bitcoin educational toolkit and the resource portal.",
-    "manifesto": "We believe in the decentralized future that Bitcoin offers.\n\nOur mission is to introduce Bitcoin to a billion people by a decade's time. Our tools are education and information. \n\nWe support local communities of Bitcoiners by providing open-source educational content and offering a network of Bitcoin mentors.\n\nOur philosophy is inspired by the cypherpunk manifesto. Just as they championed privacy, we champion education. In fact, we believe that knowledge is the foundation of freedom and change.\n\nWe are Bitcoin-only. \n\nWe advocate for individual responsibility and the independence offered by owning your own keys. \n\nWe urge verification, not blind trust. \n\nWe believe that by fixing the money, we can fix the world.\n\nWe are decentralized and open-source, avoiding any single point of failure. \n\nWe encourage the free dissemination of our content. \n\nWe aspire to a world that operates from the bottom up, where the individual is at the center.\n\nWe simplify, we educate, we share. \n\nJoin us in our mission to orange-pill the world.\n",
-    "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. In order to do it, we collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
-    "missionContent2": "We centralize knowledge so we can share it in the best possible way, using a simple, multilingual GitHub repository and an E-learning platform. We also assist local Bitcoin hubs in their development by providing the right tools for their talents to grow.",
-    "missionTitle": "Our mission",
-    "storyContent": "Plan ₿ Network is an initiative that supports Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of community. Together, they've decided to build the Plan ₿ Network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
-    "storyTitle": "Our story",
-    "subtitle": "Want to orange pill the world? Join Plan ₿ Network.",
-    "title": "About Plan ₿ Network"
-  },
   "accessType": {
     "hybrid": "In-person & online",
     "online": "Online",
-    "physical": "In-person",
-    "replay": "Replay"
+    "physical": "In-person"
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
@@ -93,316 +69,18 @@
     "trackProgress": "Create an account or log in to keep track of your progress",
     "tryAgain": "Try again"
   },
-  "bCert": {
-    "bCertDescription": "The ₿-CERT is the ultimate Bitcoin test designed to evaluate your knowledge of Bitcoin and its related topics. If you score more than 80%, you will earn a ₿-CERT certificate that can prove your expertise within the Bitcoin industry, opening doors to various job positions in the field.",
-    "bookExam": "Book a test session",
-    "challengeYourself": "Challenge yourself and assess your level",
-    "checkout": "Check out the ₿-CERT",
-    "download": "Download certificate",
-    "knowledgeableBitcoin": "How much do you know about Bitcoin?",
-    "noBookExam": "There is no test session planned yet.",
-    "organizeDescription": "Great idea! If your community is part of Plan ₿ Network, you can organize a ₿-CERT session at your hub.\nPlease read the <0>charter</0> to ensure you meet the mandatory conditions for hosting the test. If you qualify, you can schedule it and add the event to the platform.",
-    "organizeExam": "Organize a session",
-    "organizeSessionConditions": "Please read the <0>charter</0> to ensure you meet the mandatory conditions for hosting the test.\nIf you qualify, we will be happy to plan a session for your local community with you.\nPlease contact us using your preferred method.",
-    "organizeSessionHub": "Organize a ₿-CERT test session at your local hub",
-    "organizeSubtitle": "Orange pilling a billion people is not easy",
-    "organizeTitle": "Do you want to organize a ₿-CERT test session at your hub?",
-    "pageSubtitle": "Global adoption through centralized open-source education",
-    "pageTitle": "Take the ₿-CERT test",
-    "readChart": "Read the charter",
-    "tweetText": "Thrilled to have passed the ₿-CERT at @planb_network with a score of {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Verify the authenticity of your certificate"
-  },
   "bet": {
-    "contributeButton": "Help & Contribute",
-    "contributeDescription": "If you either want to add, edit or proofread some content, your help will be welcome!",
-    "contributeTitle": "Want to contribute?",
-    "educationalContent": {
-      "description": "The items below can be used for educational events and purposes.",
-      "title": "Educational Content"
-    },
-    "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards that goal, we've developed an extendible database to host educational content. Here, Bitcoin educators can freely drop and access content as needed. We don't need to reinvent the wheel every time, so let's work together to centralize the useful resources is one toolkit!",
-    "pageTitle": "Bitcoin Educational Toolkit",
-    "visualContent": {
-      "description": "The images below can be used for your own creations.",
-      "title": "Visual Content"
-    }
+    "pageTitle": "Bitcoin Educational Toolkit"
   },
   "conferences": {
-    "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",
-    "backConferences": "Back to conferences",
-    "conferenceName": "Conference name",
-    "conferencesSinceGenesis": "Bitcoin Conferences Archive since the Genesis Block",
-    "description": "Conferences play a crucial role in the Bitcoin industry, forming an essential part of every Bitcoiner's educational journey. For that reason, we created this tool to help you easily navigate through hundreds of Bitcoin events.",
-    "details": {
-      "findReplay": "Find a replay",
-      "nextVideo": "Next video",
-      "previousVideo": "Previous video",
-      "selectStage": "Select a stage",
-      "selectVideo": "Select a video",
-      "watchReplay": "Watch the replay"
-    },
-    "language": "Language",
-    "latestConferences": "Latest conferences",
-    "location": "Location",
-    "noConferences": "No conferences added for {{year}} yet.",
-    "pageTitle": "Conference replays",
-    "planBConferences": "Plan ₿ conferences",
-    "topics": "Topics"
+    "pageTitle": "Conference replays"
   },
   "courses": {
-    "chapter": {
-      "detail": {
-        "bookSeat": "Book your seat",
-        "cancelBooking": "Cancel booking",
-        "classIsFull": "Class is already full",
-        "p1content": "Make sure to book your seat",
-        "p1heading": "Are you planning to attend this lesson in person?",
-        "p2content": "No problem! The lesson will be live-streamed on this page and available for replay afterward.",
-        "p2heading": "You can't make it in person?",
-        "ticketDownload": "Download ticket",
-        "title": "Class details"
-      },
-      "finishCourse": "Finish the course",
-      "live": {
-        "stayTuned": "The live session will start 30 minutes before the class begins. Stay tuned!",
-        "title": "Live video"
-      },
-      "next": "Complete chapter",
-      "nextLesson": "Next lesson will be",
-      "thanksTip": "Want to show your appreciation?\nYou can support the author with a tip."
-    },
-    "conclusion": {
-      "completedChaptersHeadline": "All chapters are now completed!",
-      "completedFeedbackHeadline": "Thank you for your feedback!\nIt is very important for us, so we really appreciate it.",
-      "completedFeedbackSubHeadline": "You can edit your ratings and comments anytime in your dashboard.",
-      "congratulationsEnd": "Congratulations, you have reached the end of the course",
-      "finalStep": "This was the final step to mark this course as completed in your dashboard, before continuing your journey!",
-      "stepsToComplete": "These are the steps to mark this course as completed in your dashboard, before continuing your journey!",
-      "takeFinalExam": "Now that you have completed all chapters, it's time to take the final exam to test your knowledge.",
-      "unlockFeatures1": "To unlock all features and keep track of your progress, you need an account.",
-      "unlockFeatures2": "Please be aware that we do not collect any personal data nor use cookies."
-    },
     "details": {
-      "associatedProfessors": "Associated professors",
-      "attendInPersonWarning": "If you intend to attend this class in person, make sure to book your seat. In any case, the lesson will be live-streamed and available for replay.",
-      "buyCourse": "Buy the course",
-      "buyInPersonCourse": "Buy in-person course",
-      "buyOnlineCourse": "Buy online course",
-      "collaborativeEffort": "Every content on the platform is the result of a collaborative effort: each lesson, proofreading, and revision is made possible by the work of contributors. For this reason, we are always looking for proofreaders who can review our content in many languages. If you want to participate in the proofreading process, please reach out in our <0>Telegram</0> group and read our <1>tutorial</1>.\n\nWe remind you that this content is open-source - licensed under <2>CC BY-SA</2>  - so it can be freely shared and used, as long as the original source is credited.",
-      "coordinatedBy": "This course is coordinated by",
-      "courseAddedToDashboard": "This course has been added to your student dashboard",
-      "curriculum": "Curriculum",
-      "description": "Description",
-      "hasBeenProofreadBy": "This course has been proofread by",
-      "hasNotBeenProofread": "This course has not been proofread yet",
-      "inPersonAccess": "You need to download your ticket to access the in-person class.",
-      "learning": "Learning path",
-      "mobile": {
-        "hours": "{{hours}} hours"
-      },
-      "objectives": "Objectives",
-      "objectivesTitle": "What you will learn:",
-      "otherCourses": "Other courses",
-      "otherCoursesInterest": "Other courses you may be interested in",
-      "paidCourse": "Premium",
-      "pastEditionsRatings": "Past Editions Ratings",
-      "premiumContentNeedsLogin": "You need to be logged in to access this course.",
-      "premiumContentNeedsPayment": "This course is part of a premium program.",
-      "premiumContentNeedsPaymentAction": "Go to course homepage",
-      "startCourse": "Start the course",
-      "taughtBy": "This course is taught by",
-      "teacherLed": "Professor-led",
-      "thanksTipping": "You can say thanks by tipping the professor."
-    },
-    "exam": {
-      "answersReview": "Answers review",
-      "availableDashboard": "It will be available in your dashboard in about 10 hours.",
-      "availableDashboardTimestamped": "Your diploma is available in your dashboard.",
-      "bCertCompletionText": "Plan ₿ Network is pleased to congratulate {{username}} on being awarded the ₿-CERT test certificate.",
-      "buttonTextBCert": "Learn more",
-      "certificateAvailable": "It will be available about 10 hours after submission.",
-      "certificateGeneration": "Your diploma is being generated and ",
-      "certificatePageOtherCourses": "Other related courses",
-      "completed": "Exam completed!",
-      "congratulations": "Congratulations, you've reached the end of this course!",
-      "congratulationsPassed": "Congratulations, you <0>passed</0> the final exam!",
-      "courseDiploma": "Course diploma",
-      "courseNotFound": "Course not found",
-      "dontGiveUpTryAgain": "Don't give up!\nYou can try again after 24 hours.",
-      "dontWorry": "Don't worry about making mistakes; this test is designed to reinforce your learning. If you don't pass, you can retake it after 24 hours.",
-      "dontWorryRetake": "Don't worry, you can retake the exam after 24 hours.",
-      "examAndDiploma": "Exam & Diploma",
-      "examAvailabilityDetails": "If the exam is not passed during its availability period on the platform, the student will automatically receive a grade of 0.",
-      "examCertificateCompletionText": "Plan ₿ Network is pleased to congratulate {{username}} on being awarded the \"{{courseName}}\" course diploma.",
-      "examDetails": "The exam consists of {{nb}} multiple-choice questions, each with one correct answer. You can change your answers at any time before submitting, as long as the timer is running.",
-      "examNotPassed": "You need to take the final exam and to score over 80% to get your diploma and complete the course entirely. This diploma will be <0>time-stamped</0> to ensure its authenticity.",
-      "explanations": "Explanations:",
-      "failed": "Failed",
-      "failedDiploma": "You have to score over 80% at the final exam to get your diploma and complete the course entirely. You can retake the exam after 24 hours.",
-      "finalExam": "Final exam",
-      "findInformationChapter": "Find more information in this chapter :",
-      "futureProof": "Future-Proof: Your diploma is permanently protected and always valid.",
-      "getCertificate": "Get my diploma",
-      "globallyRecognized": "Globally Recognized: Blockchain-backed credentials are trusted worldwide.",
-      "goBack": "Go back",
-      "goConclusion": "Go to conclusion",
-      "goodLuck": "Good luck!",
-      "instantVerification": "Instant Verification: Employers can easily verify your diploma authenticity and issue date.",
-      "instructions": "Instructions:",
-      "letsConclude": "All done, let's conclude",
-      "nbMinutes": "{{nb}} minutes",
-      "nextChapter": "Next chapter",
-      "nbQuestions": "{{nb}} questions",
-      "noGoBack": "No, go back",
-      "notTranslatedYet": "We're sorry, but the final exam feature is not yet available in your selected language. You may choose to switch to another language to continue.",
-      "oneMinuteLeft": "You only have 1 minute left",
-      "oopsFailed": "Oops, it seems that you <0>failed</0> the final exam.",
-      "passExam": "Pass the exam",
-      "passRate": "The pass rate is 80%.",
-      "passed": "Passed",
-      "planBTimeStamp": "At Plan ₿ Network, we secure your diploma using the time-stamping technology backed by blockchain.",
-      "quitWithoutSubmitting": "Oups, it seems that you left the page without submitting your answers. This cancels the test.",
-      "readyToTest": "Ready to test your knowledge?",
-      "receiveDiploma": "Receive your diploma",
-      "results": {
-        "correct": "Correct answers",
-        "incorrect": "Incorrect answers",
-        "questions": "Questions answered",
-        "time": "Time used"
-      },
-      "retakeExam": "Retake the exam",
-      "retakeInstructions": "You have 20 minutes to answer 40 questions, each with only one correct answer. You can navigate between questions and submit your answers at the end.",
-      "sameRules": "You are about to retake the final exam. The rules remain the same.",
-      "score": "Your score is",
-      "singleAttempt": "Single-attempt exam",
-      "singleAttemptAvailability": "This exam is available online from {{date}}",
-      "singleAttemptPrecaution": "Before starting, please ensure that your connection is stable. Since this is a one-attempt exam, if you get disconnected, you will not be able to try again.",
-      "skipExam": "Skip exam",
-      "skipExamDescription": "You can also skip the exam and proceed directly to the conclusion by clicking the button below.",
-      "skipExamGoConclusion": "Skip exam, go to conclusion",
-      "skipGoConclusion": "Skip, go to conclusion",
-      "startExam": "Start exam",
-      "submit": "Submit",
-      "successDiploma": "Congrats! You have successfully passed the exam. \nYour diploma is available in your student dashboard. It has been <0>time-stamped</0> to ensure its authenticity.",
-      "successDiplomaTimeStamped": "Congrats! You have successfully passed the exam. \nYour diploma will be available in your student dashboard around 10 hours after the moment you took the exam. This delay is due to <0>time-stamping</0> technology, which ensures its authenticity.",
-      "sureSubmit": "Are you sure you want to submit your exam?",
-      "takeExam": "Take the test",
-      "tamperProof": "Tamper-Proof: Blockchain ensures no one can alter or fake your credentials.",
-      "testKnowledge": "Now that you've completed this course, let's test your knowledge.",
-      "testResults": "Test results",
-      "timeStampBenefits": "Why it's important :",
-      "timeStampHow": "How it works :",
-      "timeStampHowDescription": "When your diploma is issued, a unique digital \"fingerprint\" is created and stored on the blockchain, ensuring that the record is permanent and tamper-proof. Any attempt to alter your diploma will break the link, revealing the change.",
-      "timeStamped": "time-stamped.",
-      "timeStampedNoDot": "time-stamped",
-      "timeStamping": "time-stamping",
-      "timerStart": "Once you click Start, a timer of {{minutes}} minutes will begin.",
-      "tryAgain": "Try again",
-      "tryOneMoreTime": "Try one more time!",
-      "verifyDisplayName": "Before starting, please verify your display name below, as it will be used to generate your diploma.",
-      "viewExam": "View the test",
-      "weight": "Weight: {{weight}}%",
-      "whyTimeStamp": "Time-Stamping Your Diploma:\nWhy It Matters",
-      "wishTryAgain": "If you wish to try again, the exam will be available in 24 hours.",
-      "yesSubmit": "Yes, submit"
+      "paidCourse": "Premium"
     },
     "explorer": {
-      "buildPath": "Build your own journey",
-      "comingSoon": "coming soon",
-      "exploreCourses": "Explore Plan ₿ Courses",
-      "findCourses": "Find the perfect course for your needs thanks to the Course Selection Tool",
-      "goal": "Goal:",
-      "journey": "Bitcoin is a journey, not a destination",
-      "pageDescription": "Plan ₿ Academy offers a vast range of courses on Bitcoin, both free and premium, from beginner to expert. Led by experts or self-paced, they adapt to every learning style. Our mission is simple: to make Bitcoin knowledge clear, engaging, and accessible to all!",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "The Plan ₿ School, led by Giacomo Zucco, offers intensive three-month educational programs designed to bridge the gap between learning and real-world applications. Beyond traditional classes, students engage in company-led practical projects and a first-class bootcamp dedicated to top performers. Only the best talents advance after two competitive selection rounds, ensuring that the final top students get fully equipped to launch their careers in the Bitcoin industry.",
       "seeCourse": "Discover the course"
-    },
-    "format": {
-      "hybrid": "In-person/online",
-      "inperson": "In-person",
-      "online": "Online"
-    },
-    "part": {
-      "count": "Part {{count}}"
-    },
-    "payment": {
-      "accessibility": "Accessibility",
-      "accessibility_forever": "Forever",
-      "amount": "Amount",
-      "back_course": "Back to course",
-      "book_description": "Please review the venue details provided. Once the booking is confirmed, you will receive a confirmation ticket and a QR code to present at the classroom.",
-      "checkoutError": "An error occurred during the checkout process.\nPlease try again.",
-      "courseType": "Type of course",
-      "date": "Date",
-      "downloadCurriculum": "Download curriculum",
-      "duration": "Duration",
-      "hybridDescription": "Please review the course details provided.\nEach lesson takes place in person on the specified dates and locations. All classes are always live-streamed and recorded for replay.\n\nIn-person attendance is managed per lesson, so we kindly ask you to book your seat every time you wish to attend physically.",
-      "inPersonCallout": "You are about to purchase <strong>in-person</strong> access to this course.",
-      "inPersonDescription": "Please review the course details provided. Once the booking is confirmed, you will receive a confirmation ticket and a QR code to present at the classroom.",
-      "invoiceId": "Tx ID",
-      "onlineCallout": "You are about to purchase <strong>online</strong> access to this course.",
-      "onlineDescription": "Each session is live-streamed on the platform.\nThis purchase will grant you access to live-streams and replay videos.",
-      "payment_details": "Payment details",
-      "payment_successful": "Payment successful!",
-      "qr_unified": "This QR code is unified, so it accepts lightning and on-chain payments.",
-      "teacher": "Teacher",
-      "teachers": "Teachers",
-      "time": "Time"
-    },
-    "quizz": {
-      "clickOnPie": "Click on the pie chart to check the right answer",
-      "quizz": "Quiz",
-      "quizzResults": "Quiz results",
-      "quizzReview": "Quiz review",
-      "resultCongrats": "Congratulations, you did well!",
-      "resultItsOk": "Don't give up, you'll do better next time!",
-      "resultNotBad": "Not too bad!",
-      "resultPerfect": "Absolutely perfect! Congratulations!"
-    },
-    "review": {
-      "asExpected": "as expected",
-      "commentAdmin": "Comment to the admin team (private)",
-      "commentAdminMobile": "Private comment to the admin team",
-      "commentPublic": "Comment (public)",
-      "commentPublicMobile": "Public comment",
-      "commentTeacher": "Comment to the teacher (private)",
-      "commentTeacherMobile": "Private comment to the teacher",
-      "difficulty": "Difficulty",
-      "displayOutOf": "displayed out of",
-      "editReview": "Edit review",
-      "faithful": "Aligned with objectives?",
-      "feedback": "Feedback",
-      "feedbackDescription1": "Please rate your experience in the section below.",
-      "feedbackDescription2": "Note that teachers will not have access to individual evaluations.",
-      "feedbackSessionTitle": "Please help us improve our courses by giving your feedback.",
-      "fieldRequired": "This field is required",
-      "generalGrade": "General grade",
-      "length": "Length",
-      "loadMoreComments": "Load more comments",
-      "neutral": "neutral",
-      "no": "no",
-      "notReally": "no, not really",
-      "quality": "Quality",
-      "ratingsAndReviews": "Ratings & reviews",
-      "recommend": "Would you recommend it?",
-      "saveReview": "Save review",
-      "skip": "Skip review",
-      "soAndSo": "so and so",
-      "submitReview": "Submit review",
-      "thankYou": "Thank you for your review! It's taken into account",
-      "tooEasy": "too easy",
-      "tooHard": "too hard",
-      "tooLong": "too long",
-      "tooShort": "too short",
-      "veryBad": "very bad",
-      "veryGood": "very good",
-      "whatStudentsSay": "What students say about this course",
-      "whatStudentsSayPasEdition": "What students say about past editions",
-      "writeThoughts": "Here you can write your thoughts",
-      "yesOfCourse": "yes, of course",
-      "yesVeryMuch": "yes, very much"
     }
   },
   "dashboard": {
@@ -938,96 +616,15 @@
       }
     }
   },
-  "events": {
-    "card": {
-      "bookLive": "Book live",
-      "bookSeat": "Book a seat",
-      "buyReplay": "Buy replay",
-      "buyVideo": "Buy video",
-      "eventFull": "Event is full",
-      "free": "free",
-      "limited": "limited to",
-      "online": "online",
-      "people": "people",
-      "purchased": "Purchased",
-      "seatBooked": "Seat booked",
-      "unlimited": "unlimited",
-      "visitWebsite": "Visit website",
-      "watchLive": "Watch live",
-      "watchReplay": "Watch replay"
-    },
-    "errors": {
-      "premiumContentNeedsLogin": "You need to be logged in to access this event.",
-      "premiumContentNeedsPayment": "This event is part of a premium program.",
-      "premiumContentNeedsPaymentAction": "Go to events page"
-    },
-    "main": {
-      "currentEvents": "Events happening right now",
-      "upcomingEvents": "Upcoming events"
-    },
-    "missed": {
-      "missedH1": "Past events to replay",
-      "missedP1": "Did you miss an event?",
-      "missedP2": "No worries! We store all the replays of past events that took place in the Network, allowing everyone can catch up freely on what they missed."
-    },
-    "newEvent": {
-      "button": "Add my event",
-      "description": "Of course! All Bitcoin events can increase their visibility here, so every initiative to create a new event is more than welcome!",
-      "subtitle": "Orange pilling a billion people is not easy",
-      "title": "Want to add your event?"
-    },
-    "pageDescription": "Want to talk about Bitcoin in real time? Here, you can find all the events supported by the Plan ₿ Network communities. Whether you want to listen to a lecture, discuss Bitcoin over a drink, or take an exam to assess your knowledge, you will find the right event here through the Plan ₿ Network.",
-    "pageSubtitle": "Bottom-up adoption enhanced by a strong network",
-    "pageTitle": "Looking for a Bitcoin event to attend?",
-    "payment": {
-      "access_online_successful": "When the event starts, log onto the platform and start live streaming via the event page.",
-      "access_physical_successful": "You can download your ticket here, or download it later in your dashboard.",
-      "access_type": "Type of access",
-      "additional_free_description": "This event is free so you will not be charged to book this seat.",
-      "address": "Address",
-      "back_events": "Back to events",
-      "book_seat": "Book a seat",
-      "callout_book_online": "You are about to book online access to this event.",
-      "callout_book_physical": "You are about to book <highlight>in-person access</highlight> to this event.",
-      "callout_book_replay": "You are about to book access to the replay video of this event.",
-      "callout_purchase_online": "You are about to purchase <highlight>online access</highlight> to this event.",
-      "callout_purchase_physical": "You are about to purchase <highlight>in-person access</highlight> to this event.",
-      "callout_purchase_replay": "You are about to purchase access to the replay video of this event.",
-      "date": "Date",
-      "description_free_physical": "Please review the venue details provided. Once the booking is confirmed, you will receive a confirmation ticket and a QR code, to present at the event. ",
-      "description_online": "Please review the date and time of the event provided. When the time comes, log in to the platform to access the live stream via the event page.",
-      "description_physical": "Please review the venue details provided. Once the booking is confirmed, you will receive a confirmation ticket and a QR code, to present at the event.\n\nThis ticket will also give you access to the live stream and replay video, if any.",
-      "download_ticket": "Download your ticket",
-      "language": "Language spoken",
-      "limitation": "Limitation",
-      "limitedSeats": "Seats are limited. Please cancel your booking in case you cannot attend.",
-      "max_capacity": "Max capacity of",
-      "payment_successful": "Booking successful.",
-      "time": "Time"
-    },
-    "tcDisclaimer": "I agree that my information may be shared with organizers for venue access purposes.",
-    "tcMustBeAccepted": "You must accept the terms and conditions to proceed"
-  },
   "filters": {
     "categories": "Categories",
     "levels": "Levels",
     "resources": "Resources",
     "topics": "Topics"
   },
-  "glossary": {
-    "anotherWord": "Search for another word",
-    "creditsLoic": "<0>Credits</0>: Bitcoin Dictionary written by <1>Loïc Morel (Pandul)</1>, available on this <2>Github repository</2>.",
-    "definition": "Definition",
-    "filterBar": "Find the word you need right here",
-    "keepLooking": "Want to keep searching?",
-    "loadMoreWords": "Load more words",
-    "needHelp": "Need help defining a technical word?",
-    "notTranslated": "The data in the glossary has not yet been proofread.\nIf you would like to help, feel free to contribute on our",
-    "pageTitle": "Bitcoin Glossary",
-    "placeHolder": "What is this?",
-    "randomSearch": "Random search",
-    "relatedWords": "Related words:",
-    "term": "Term"
+  "footer": {
+    "helpCenter": "Help center",
+    "visitPlanB": "Visit Plan ₿ Network"
   },
   "home": {
     "aboutUsSection": {
@@ -1050,22 +647,6 @@
       "noDateAvailable": "No date available",
       "seeAll": "See all"
     },
-    "courseSection": {
-      "checkAllCourses": "Check all courses",
-      "upcomingCourseDescription": "Find out the latest courses released onto the platform. Learning never stops!",
-      "upcomingCourseTitle": "Upcoming & new courses"
-    },
-    "eventSection": {
-      "checkEvents": "Check all events",
-      "eventTitle": "A Global Bitcoin Network of Educators",
-      "hottestEvent": "Hottest bitcoin event"
-    },
-    "header": {
-      "content": "Plan ₿ Network aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For learners and educators",
-      "globalNetwork": "A Global Bitcoin Network",
-      "welcome": "Welcome to Plan ₿ Network"
-    },
     "languageSection": {
       "availableLanguages": "Available languages",
       "availableLanguagesVariation": "Languages available: ",
@@ -1073,54 +654,13 @@
       "link": "Help us proofread the academy",
       "subtitle": "Everything is proofread into local languages!",
       "title": "No language barrier here."
-    },
-    "patreonSection": {
-      "content": "The Plan ₿ Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible!",
-      "title": "Together, let's make Bitcoin education better!"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin is constantly evolving, with the emergence of new actors, solutions, protocols, and technological breakthroughs. Thus, it can be challenging to maintain an accurate and up-to-date database of quality tutorials. Here at Plan ₿, we have achieved just that. Whether you are a beginner or an advanced user, you can navigate hundreds of tutorials to explore our industry according to your needs.",
-      "link": "See all tutorials",
-      "link2": "See all resources",
-      "subtitle1": "Bitcoin education made simple.",
-      "title": "Centralize knowledge to distribute it better"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "What Bitcoiners say about us",
-      "title": "Wall of love"
     }
   },
   "imagesAlt": {
-    "bookCover": "a book cover",
-    "contributorHeart": "a heart for nice contributor",
-    "orangePill": "an orange pill",
-    "printedCircuits": "printed circuit",
-    "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "sthRepresentingCompany": "something representing the company",
-    "underConstructionImage": "Illustration of several rabbits working on a construction site"
+    "rabbit404": "a rabbit shining a flashlight on a 404 sign"
   },
   "labs": {
-    "coordinatedBy": "This lab is coordinated by",
-    "description1": "Plan ₿ Labs are study groups designed to provide students with regular practical and interactive classes. Through these study groups, students and professors engage in discussions, debating the latest research, solving real-world challenges, and applying theoretical concepts.",
-    "description2": "Join the Lab that aligns with your field of study and enhance your learning experience!",
-    "planBLabs": "Plan ₿ Labs",
-    "presentation": {
-      "link": "Discover Plan ₿ Labs",
-      "subtitle": "Join a lab to learn, discuss and grow!",
-      "title": "Level up your Bitcoin skills!"
-    },
-    "title": "Practical and interactive classes for continuous learning"
-  },
-  "lectures": {
-    "buyVideoToUnlock": "Buy the video to unlock it",
-    "checkFullCourse": "Check out the full course",
-    "lecturePartCourse": "This lecture replay is part of the <0>{{courseTitle}}</0> course.\nDive into the full course to master the entire concept and unlock your full potential!",
-    "pageTitle": "Lecture Replays",
-    "partCourse": "This lecture is part of the course:",
-    "watchLecture": "Watch the lecture replay"
-  },
-  "library": {
-    "pageTitle": "Bitcoin Library"
+    "planBLabs": "Plan ₿ Labs"
   },
   "menu": {
     "bCertDescription": "Pass the ₿-CERT test to assess your Bitcoin level",
@@ -1149,30 +689,10 @@
     "aboutDescription": "Learn more about Plan ₿ Network and our mission",
     "about": "About"
   },
-  "movies": {
-    "goToMovie": "Go to movie",
-    "pageTitle": "Movies & Documentaries",
-    "watchTrailer": "Watch the trailer"
-  },
-  "nodeNetwork": {
-    "description1": "We believe that education should not only take place online but also in physical spaces. To achieve this, Plan ₿ Network manages a network of hubs around the world to welcome thinkers, entrepreneurs and educators fostering the advancement of Bitcoin and freedom technologies.",
-    "descriptionExtend": "Our first step is to invite communities with physical spaces, which we refer to as the \"full nodes\" of our network, to join us. In the future, as our network strengthens, we will extend this invitation to more initiatives worldwide. If you share our values, please reach out to our representatives to join our network and help build the best Bitcoin education possible.",
-    "pageSubtitle": "Want to orange pill the world? Join Plan ₿ Network.",
-    "pageTitle": "Explore Plan ₿ Node Network"
-  },
   "notFound": {
     "here": "Here",
     "pageSubtitle": "Seems like someone fell too deep into the rabbit hole and got lost. To come back to the surface, click",
     "pageTitle": "Oops."
-  },
-  "notification": {
-    "types": {
-      "assignment": "Assignment",
-      "calendar": "Calendar alert",
-      "celebration": "Celebration",
-      "general": "General information",
-      "warning": "Warning"
-    }
   },
   "notifications": {
     "bCertResults": "Your ₿-CERT results are out!",
@@ -1204,199 +724,135 @@
     "yearsAgo": "{{years}} year{{s}} ago",
     "yesterday": "Yesterday"
   },
-  "payment": {
-    "haveReductionCode": "Do you have a reduction code?",
-    "insertReductionCode": "Insert your reduction code",
-    "payByCard": "Pay by Card",
-    "payWithBitcoin": "Pay with Bitcoin",
-    "terms": "See our <0>general terms</0> and conditions for refund details",
-    "total": "Total"
-  },
-  "placeholders": {
-    "selectTimeZone": "Select timezone"
-  },
-  "podcast": {
-    "check": "Check the podcast"
-  },
-  "podcasts": {
-    "pageTitle": "Bitcoin Podcasts"
-  },
-  "professors": {
-    "navigationTitles": {
-      "all": "All",
-      "lecturers": "Lecturers",
-      "teachers": "Teachers",
-      "tutorialCreators": "Tutorial creators"
-    },
-    "pageSubtitle": "All our professors are volunteers and passionate Bitcoiners. You can send them a donation to show your appreciation.",
-    "pageTitle": "Professors",
-    "tips": {
-      "authorSupport": "Support the author with a tip",
-      "noTipsYet": "This professor does not accept donations at the moment.",
-      "thanks": "Thank you for supporting {{name}}'s work!",
-      "thanksNoName": "Thank you for supporting my work!"
-    }
-  },
-  "projects": {
-    "languages": "Languages",
-    "networkStrength": "The strength of a network lies in its members",
-    "noRelatedEvents": "There are no upcoming events related to this educator at the moment.",
-    "otherCommunities": "Explore Plan ₿ Communities",
-    "pageTitle": "Bitcoin Projects",
-    "related": "Related",
-    "relatedEvents": "Related upcoming events"
-  },
-  "proofreading": {
-    "completed": "Proofreading completed",
-    "description": "The original text was proofread by AI, but it also needs human review to ensure language accuracy.",
-    "descriptionOriginalLanguage": "Even if this content is in its original language, it needs human review to ensure language accuracy.",
-    "inProgress": "Proofreading in progress",
-    "reviewEarn": "Review and earn sats",
-    "rewardsText": "*Rewards may vary based on the $ exchange rate",
-    "status": "Proofreading status",
-    "thanks": "A big thank you goes to our amazing reviewers!"
-  },
-  "publicCommunication": {
-    "blogCategories": {
-      "all": "All",
-      "content": "Content",
-      "feature": "Feature",
-      "network": "Network"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Read article",
-      "blogSidebarTitle": "Previous {{category}} Posts",
-      "blogSidebarTitleForAll": "Previous Posts",
-      "errorMessageNotFound": "Blog not found.",
-      "featuredArticleTitleText": "Latest article released",
-      "filterText": "Filter by topic :",
-      "noArticlesText": "There are no blog posts at this time.",
-      "pastArticleSubtitleText": "Past articles"
-    },
-    "blogPost": "Blogs & News",
-    "description": "Plan ₿ Network is proud to adhere to open-source standards and maintain transparency throughout its journey",
-    "goBackButtons": {
-      "simpleGoBack": "Back to all articles"
-    },
-    "legal": "Legal info",
-    "legalSections": {
-      "contact": "Contact",
-      "legalNotice": "Legal notice",
-      "privacyPolicy": "Privacy policy",
-      "termsOfSale": "Terms of sale"
-    },
-    "title": "Public communication"
-  },
   "resources": {
-    "articles": {
-      "title": "Articles"
-    },
-    "bet": {
-      "title": "Educational Toolkit"
-    },
-    "books": {
-      "author": "Author: ",
-      "title": "Library"
-    },
     "channels": {
-      "noYoutubeChannels": "There are currently no Youtube Channels for selected language.",
       "title": "Youtube Channels"
     },
-    "conferences": {
-      "title": "Conference replays"
-    },
-    "github": "All data is managed through a single open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
-    "glossary": {
-      "title": "Glossary"
-    },
     "lectures": {
-      "noLectures": "There are currently no Lecture Replays for selected language.",
       "title": "Lecture Replays"
     },
     "movies": {
-      "noMovies": "There are currently no Movies or Documentaries for selected language.",
       "title": "Movies & Documentaries"
     },
-    "newsletter": {
-      "check": "Check the newsletter"
-    },
     "newsletters": {
-      "author": "Author : ",
-      "level": "Level :",
-      "noNewsletters": "There are currently no newsletters for selected language.",
-      "subtitle": "<0>Other newsletters</0> you may like",
       "title": "Newsletters"
-    },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To help you in your journey, we've compiled a vast array of resources including books, podcasts, videos and conferences replays. This portal gathers all the information in one Github repository to help you grasp a better understanding of the Bitcoin ecosystem.",
-    "pageSubtitle": "Centralize knowledge to distribute it better",
-    "pageSubtitleBooks": "<0>Other books</0> you may like",
-    "pageSubtitleChannels": "<0>Other Youtube Channels</0> you may like",
-    "pageSubtitleLectures": "<0>Other Lecture Replays</0> you may like",
-    "pageSubtitlePodcast": "<0>Other podcasts</0> you may like",
-    "pageTitle": "Welcome to the Resource Portal",
-    "podcasts": {
-      "noPodcasts": "There are currently no podcasts for selected language.",
-      "title": "Podcasts"
-    },
-    "projects": {
-      "title": "Projects"
-    },
-    "searchFilterName": "Search by name",
-    "toggleFreeOnly": "Free only",
-    "toggleLabelAll": "All",
-    "toggleLabelSelectedLanguage": "Selected language"
+    }
   },
   "search": {
-    "all": "All",
-    "book": "Book",
-    "books": "Books",
-    "categories": "Categories",
-    "conference": "Conference",
-    "conference_replay": "Conference replay",
-    "conference_replays": "Conference replays",
-    "course": "Course",
-    "course_chapter": "Course chapter",
-    "course_part": "Course part",
-    "courses": "Courses",
-    "event": "Event",
-    "events": "Events",
-    "explorer": {
-      "subtitle": "What are you looking for?",
-      "title": "Search Portal"
-    },
-    "filterByType": "Filter by type",
-    "glossary_word": "Glossary word",
-    "glossary_words": "Glossary words",
-    "languageSelected": "Language selected: {{language}}",
-    "lecture_replay": "Lecture replay",
-    "lecture_replays": "Lecture replays",
-    "loadMoreResults": "See more results",
-    "newsletter": "Newsletter",
-    "newsletters": "Newsletters",
-    "podcast": "Podcast",
-    "podcasts": "Podcasts",
-    "professor": "Professor",
-    "professors": "Professors",
-    "project": "Project",
-    "projects": "Projects",
-    "resultEmpty": "Oops! We couldn't find anything matching your search. Check your spelling, try different keywords, or select another category.",
-    "resultError": "Something went wrong. Please try again.",
-    "resultInfo": "Found {{count}} results in {{time}}ms",
-    "results": "Results",
-    "resultsRemaining": "{{count}} results remaining",
-    "search": "Search",
-    "searchResult": "Search results",
-    "startSearch": "Start your search to see results here",
-    "tutorial": "Tutorial",
-    "tutorials": "Tutorials",
-    "youtube_channel": "Youtube channel",
-    "youtube_channels": "Youtube channels"
+    "search": "Search"
   },
-  "settings": {
-    "changeDisplayName": "Change display name",
-    "changeEmail": "Change email",
-    "changePassword": "Change password",
-    "changeProfilePicture": "Change profile picture"
+  "translate": {
+    "makingBitcoinEducationGlobal": "Making Bitcoin Education Global",
+    "bitcoinTranslationCommunity": "Bitcoin Proofreading Community",
+    "bridgingLanguageGaps": "Bridging language gaps, one video at a time.",
+    "backToLanguages": "Back to Languages",
+    "backToSection": "Back to courses",
+    "selectCourseToTranslate": "Select a course to proofread",
+    "youCanSelectOnlyOneCourse": "You can select only one course at a time to begin proofreading its content",
+    "noCoursesAvailableForTranslation": "No courses available for proofreading in this language yet",
+    "translateCourse": "Proofread Course",
+    "translateCourses": "Proofread Courses",
+    "translateContent": "Sending proofreading request",
+    "coursesToTranslate": "Courses to proofread",
+    "yourContributions": "Your contributions",
+    "startTranslating": "Start proofreading",
+    "noContributionsYet": "You haven't contributed to any proofreading yet",
+    "courseNotFound": "Course not found",
+    "courseNotFoundDescription": "We couldn't find the course you're looking for. It may have been removed or is not available for proofreading.",
+    "backToCourses": "Back to courses",
+    "translationNotFound": "Proofreading not available",
+    "translationNotFoundDescription": "There's no proofreading available for this course in the selected language yet.",
+    "startNewTranslation": "Start new proofreading",
+    "translationProgress": "Proofreading progress",
+    "translationType": "Proofreading type",
+    "translationVideo": "Proofreading video",
+    "completed": "completed",
+    "targetLanguage": "Target language",
+    "courseParts": "Course parts",
+    "noCoursePartsFound": "No course parts found for proofreading",
+    "chapters": "chapters",
+    "languageMissing": "Is your language missing? Let us know!",
+    "helpExpandBitcoinEducation": "If your language isn't listed, feel free to reach out! We can work together to add it on the platform.",
+    "contactUs": "Contact us",
+    "noteFewCourses": "Note: you can access the English version of some courses alongside the original language content for better understanding.",
+    "status": {
+      "published": "Published",
+      "validated": "Validated",
+      "under_review": "Under review",
+      "in_progress": "In progress",
+      "draft": "Draft"
+    },
+    "viewTranslation": "View proofreading",
+    "continueTranslation": "Continue proofreading",
+    "translatePart": "Proofread part",
+    "originalLanguage": "Original language",
+    "selectSection": "Select a section to proofread",
+    "sectionSelectionInfo": "Choose which section of the platform you want to proofread. You can work on one section at a time.",
+    "translateSection": "Proofread section",
+    "comingSoon": "COMING SOON",
+    "translations": "Translations",
+    "translated": "proofread",
+    "selectSectionToTranslate": "Select a section to proofread",
+    "progressionDeLaTraduction": "Progression de la traduction",
+    "requesting": "Sending...",
+    "requestSent": "✓ Request Sent",
+    "requestTranslation": "Send Request",
+    "requestAlreadySent": "Request in review",
+    "assigned": "Assigned",
+    "notAssigned": "Not assigned",
+    "modal": {
+      "requestToProofreadCourse": "Ask to proofread this course",
+      "doYouWantToSendRequest": "Would you like to send a proofreading request?",
+      "course": "Course",
+      "originalLanguage": "Original language",
+      "languageToProofread": "Language to proofread",
+      "englishContentIncluded": "English content included",
+      "sendRequest": "Send request",
+      "cancel": "Cancel",
+      "close": "Close",
+      "requestSentSuccess": "Your proofreading request was sent",
+      "onceRequestApproved": "Once your request is approved, you'll be able to start proofreading this course. You'll be notified as soon as it's accepted."
+    },
+    "joinOurProofreaders": "Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!",
+    "courseProofreadingProgress": "Course proofreading progress",
+    "ofChaptersCompleted": "of {{count}} chapters completed",
+    "review": "Review",
+    "resume": "Resume",
+    "proofread": "Proofread",
+    "videoGeneration": {
+      "completed": "Great job! Thank you for proofreading this course!",
+      "title": "Video creation progress",
+      "progress": "progress",
+      "completedMessage": "No need to wait! Feel free to review the next course now.",
+      "backToCourse": "Back to course",
+      "nextChapter": "Next chapter"
+    },
+    "progress": "Progress",
+    "slides": "Slides",
+    "chapterTranslation": "Chapter translation",
+    "coursePresentation": "Course presentation",
+    "reviewAndEditSlides": "Review and edit each slide, making the necessary adjustments. Once you're finished, select 'Validate Presentation' to save your changes.",
+    "translateTo": "Translate to",
+    "enVersion": "EN version",
+    "saveChanges": "Save changes",
+    "validatePresentationPPT": "Validate presentation PPT",
+    "reviewTranscriptionGenerateAudio": "Review transcription & generate audio",
+    "reviewTranscriptionInstructions": "Translate and type the transcription of the lecture in your language. Then, select Generate Audio to create an automatic audio version of your transcription. Once generated, listen to the audio to ensure accuracy and validate it using Validate Audio. If needed, you can regenerate the audio to make adjustments. You can do this up to 3 times.",
+    "language": "Language",
+    "generateAudio": "Generate audio",
+    "editTranscript": "Edit transcript",
+    "enterTranslation": "Enter your translation here...",
+    "validateTranscription": "Validate transcription",
+    "validateAudio": "Validate audio",
+    "reviewInstructions": "Review the transcription, make any necessary corrections and then generate the audio.\nIf the audio has an issue that is not related to the transcription, you can report the problem",
+    "createVideo": "Create video",
+    "nextSlide": "Next slide",
+    "completeAllValidations": "Please complete all validations before proceeding",
+    "slideNotFound": "⚠️ Slide not found",
+    "slideNotFoundDescription": "This slide file doesn't exist. Please contact support for assistance.",
+    "audioNotFoundDescription": "Audio file not found. Please contact support for assistance.",
+    "seeMore": "See more",
+    "note": "Note: you can access the English version of some courses alongside the original language content for better understanding.\nIf you can't find any courses translated into your language, please "
   },
   "tutorials": {
     "approvedByCreator": "Approved by the creator",
@@ -1481,14 +937,6 @@
       "title": "Wallet"
     },
     "writtenBy": "This tutorial has been written by"
-  },
-  "underConstruction": {
-    "github": "GitHub",
-    "itemNotFound": "{{item}} not found",
-    "itemNotFoundOrTranslated": "{{item}} not found, or not proofread in your language",
-    "p1": "A rabbit has tumbled down a hole. Because of this unexpected adventure, this page is under a bit of construction at the moment. We apologize for any inconvenience. Our team is in full gear to complete this page. If you're interested in lending a hand, please don't hesitate to click here:",
-    "p2": "and consider joining our community!",
-    "pageTitle": "Oops."
   },
   "words": {
     "about": "About",
@@ -1659,127 +1107,5 @@
     "completed": "Completed",
     "inProgress": "In Progress",
     "notStarted": "Not Started"
-  },
-  "youtubeChannels": {
-    "pageTitle": "Youtube Channels",
-    "view": "View Youtube Channel",
-    "watchTrailer": "Watch the trailer"
-  },
-  "translate": {
-    "makingBitcoinEducationGlobal": "Making Bitcoin Education Global",
-    "bitcoinTranslationCommunity": "Bitcoin Proofreading Community",
-    "bridgingLanguageGaps": "Bridging language gaps, one video at a time.",
-    "backToLanguages": "Back to Languages",
-    "backToSection": "Back to courses",
-    "selectCourseToTranslate": "Select a course to proofread",
-    "youCanSelectOnlyOneCourse": "You can select only one course at a time to begin proofreading its content",
-    "noCoursesAvailableForTranslation": "No courses available for proofreading in this language yet",
-    "translateCourse": "Proofread Course",
-    "translateCourses": "Proofread Courses",
-    "translateContent": "Sending proofreading request",
-    "coursesToTranslate": "Courses to proofread",
-    "yourContributions": "Your contributions",
-    "startTranslating": "Start proofreading",
-    "noContributionsYet": "You haven't contributed to any proofreading yet",
-    "courseNotFound": "Course not found",
-    "courseNotFoundDescription": "We couldn't find the course you're looking for. It may have been removed or is not available for proofreading.",
-    "backToCourses": "Back to courses",
-    "translationNotFound": "Proofreading not available",
-    "translationNotFoundDescription": "There's no proofreading available for this course in the selected language yet.",
-    "startNewTranslation": "Start new proofreading",
-    "translationProgress": "Proofreading progress",
-    "translationType": "Proofreading type",
-    "translationVideo": "Proofreading video",
-    "completed": "completed",
-    "targetLanguage": "Target language",
-    "courseParts": "Course parts",
-    "noCoursePartsFound": "No course parts found for proofreading",
-    "chapters": "chapters",
-    "languageMissing": "Is your language missing? Let us know!",
-    "helpExpandBitcoinEducation": "If your language isn't listed, feel free to reach out! We can work together to add it on the platform.",
-    "contactUs": "Contact us",
-    "noteFewCourses": "Note: you can access the English version of some courses alongside the original language content for better understanding.",
-    "status": {
-      "published": "Published",
-      "validated": "Validated",
-      "under_review": "Under review",
-      "in_progress": "In progress",
-      "draft": "Draft"
-    },
-    "viewTranslation": "View proofreading",
-    "continueTranslation": "Continue proofreading",
-    "translatePart": "Proofread part",
-    "originalLanguage": "Original language",
-    "selectSection": "Select a section to proofread",
-    "sectionSelectionInfo": "Choose which section of the platform you want to proofread. You can work on one section at a time.",
-    "translateSection": "Proofread section",
-    "comingSoon": "COMING SOON",
-    "translations": "Translations",
-    "translated": "proofread",
-    "selectSectionToTranslate": "Select a section to proofread",
-    "progressionDeLaTraduction": "Progression de la traduction",
-    "requesting": "Sending...",
-    "requestSent": "✓ Request Sent",
-    "requestTranslation": "Send Request",
-    "requestAlreadySent": "Request in review",
-    "assigned": "Assigned",
-    "notAssigned": "Not assigned",
-    "modal": {
-      "requestToProofreadCourse": "Ask to proofread this course",
-      "doYouWantToSendRequest": "Would you like to send a proofreading request?",
-      "course": "Course",
-      "originalLanguage": "Original language",
-      "languageToProofread": "Language to proofread",
-      "englishContentIncluded": "English content included",
-      "sendRequest": "Send request",
-      "cancel": "Cancel",
-      "close": "Close",
-      "requestSentSuccess": "Your proofreading request was sent",
-      "onceRequestApproved": "Once your request is approved, you'll be able to start proofreading this course. You'll be notified as soon as it's accepted."
-    },
-    "joinOurProofreaders": "Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!",
-    "courseProofreadingProgress": "Course proofreading progress",
-    "ofChaptersCompleted": "of {{count}} chapters completed",
-    "review": "Review",
-    "resume": "Resume",
-    "proofread": "Proofread",
-    "videoGeneration": {
-      "completed": "Great job! Thank you for proofreading this course!",
-      "title": "Video creation progress",
-      "progress": "progress",
-      "completedMessage": "No need to wait! Feel free to review the next course now.",
-      "backToCourse": "Back to course",
-      "nextChapter": "Next chapter"
-    },
-    "progress": "Progress",
-    "slides": "Slides",
-    "chapterTranslation": "Chapter translation",
-    "coursePresentation": "Course presentation",
-    "reviewAndEditSlides": "Review and edit each slide, making the necessary adjustments. Once you're finished, select 'Validate Presentation' to save your changes.",
-    "translateTo": "Translate to",
-    "enVersion": "EN version",
-    "saveChanges": "Save changes",
-    "validatePresentationPPT": "Validate presentation PPT",
-    "reviewTranscriptionGenerateAudio": "Review transcription & generate audio",
-    "reviewTranscriptionInstructions": "Translate and type the transcription of the lecture in your language. Then, select Generate Audio to create an automatic audio version of your transcription. Once generated, listen to the audio to ensure accuracy and validate it using Validate Audio. If needed, you can regenerate the audio to make adjustments. You can do this up to 3 times.",
-    "language": "Language",
-    "generateAudio": "Generate audio",
-    "editTranscript": "Edit transcript",
-    "enterTranslation": "Enter your translation here...",
-    "validateTranscription": "Validate transcription",
-    "validateAudio": "Validate audio",
-    "reviewInstructions": "Review the transcription, make any necessary corrections and then generate the audio.\nIf the audio has an issue that is not related to the transcription, you can report the problem",
-    "createVideo": "Create video",
-    "nextSlide": "Next slide",
-    "completeAllValidations": "Please complete all validations before proceeding",
-    "slideNotFound": "⚠️ Slide not found",
-    "slideNotFoundDescription": "This slide file doesn't exist. Please contact support for assistance.",
-    "audioNotFoundDescription": "Audio file not found. Please contact support for assistance.",
-    "seeMore": "See more",
-    "note": "Note: you can access the English version of some courses alongside the original language content for better understanding.\nIf you can't find any courses translated into your language, please "
-  },
-  "footer": {
-    "helpCenter": "Help center",
-    "visitPlanB": "Visit Plan ₿ Network"
   }
 }

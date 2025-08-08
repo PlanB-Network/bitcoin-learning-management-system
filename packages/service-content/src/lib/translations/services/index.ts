@@ -7,6 +7,7 @@ export {
 } from './course-translation-uploads.js';
 export { createGetCourseOriginalLanguage } from './get-course-original-language.js';
 export * from './get-courses-with-todo-translations.js';
+export { createGetSlideProfessor } from './get-slide-professor.js';
 export * from './get-translation-audio.js';
 export * from './get-translation-downloads.js';
 export {

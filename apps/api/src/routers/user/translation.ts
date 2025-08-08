@@ -89,7 +89,7 @@ const getUserTranslationAssignmentsProcedure = contributorProcedure
     });
   });
 
-// Update translation assignment status
+// Update translation assignment status (admin only)
 const updateTranslationAssignmentStatusProcedure = adminProcedure
   .input(
     z.object({
@@ -119,6 +119,97 @@ const deleteTranslationAssignmentProcedure = adminProcedure
     return createDeleteTranslationAssignment(ctx.dependencies)(
       input.assignmentId,
     );
+  });
+// Start translation (contributor can update their own assignment to in_progress)
+const startTranslationProcedure = contributorProcedure
+  .input(z.object({ courseId: z.string(), language: z.string() }))
+  .output<Parser<ServiceTranslationAssignment>>(
+    serviceTranslationAssignmentSchema,
+  )
+  .mutation(async ({ ctx, input }) => {
+    const userId = ctx.user?.uid;
+    if (!userId) {
+      throw new TRPCError({
+        code: 'UNAUTHORIZED',
+        message: 'User not authenticated',
+      });
+    }
+
+    // First check if user has an assignment for this course/language
+    const userAssignment = await createCheckUserTranslationAssignment(
+      ctx.dependencies,
+    )({
+      userId,
+      courseId: input.courseId,
+      language: input.language,
+    });
+
+    if (!userAssignment) {
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'No translation assignment found for this user and course',
+      });
+    }
+
+    if (userAssignment.status !== 'assigned') {
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message:
+          'Can only start translation when assignment status is "assigned"',
+      });
+    }
+
+    // Update the assignment status to in_progress
+    return createUpdateTranslationAssignmentStatus(ctx.dependencies)({
+      assignmentId: userAssignment.id,
+      status: 'in_progress',
+    });
+  });
+
+// Complete translation (contributor can update their own assignment to completed)
+const completeTranslationProcedure = contributorProcedure
+  .input(z.object({ courseId: z.string(), language: z.string() }))
+  .output<Parser<ServiceTranslationAssignment>>(
+    serviceTranslationAssignmentSchema,
+  )
+  .mutation(async ({ ctx, input }) => {
+    const userId = ctx.user?.uid;
+    if (!userId) {
+      throw new TRPCError({
+        code: 'UNAUTHORIZED',
+        message: 'User not authenticated',
+      });
+    }
+
+    // First check if user has an assignment for this course/language
+    const userAssignment = await createCheckUserTranslationAssignment(
+      ctx.dependencies,
+    )({
+      userId,
+      courseId: input.courseId,
+      language: input.language,
+    });
+
+    if (!userAssignment) {
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'No translation assignment found for this user and course',
+      });
+    }
+
+    if (userAssignment.status !== 'in_progress') {
+      throw new TRPCError({
+        code: 'BAD_REQUEST',
+        message:
+          'Can only complete translation when assignment status is "in_progress"',
+      });
+    }
+
+    // Update the assignment status to completed
+    return createUpdateTranslationAssignmentStatus(ctx.dependencies)({
+      assignmentId: userAssignment.id,
+      status: 'completed',
+    });
   });
 
 // Get all translation assignment requests (for admins)
@@ -293,6 +384,8 @@ export const userTranslationRouter = createTRPCRouter({
   getUserTranslationAssignments: getUserTranslationAssignmentsProcedure,
   updateTranslationAssignmentStatus: updateTranslationAssignmentStatusProcedure,
   deleteTranslationAssignment: deleteTranslationAssignmentProcedure,
+  startTranslation: startTranslationProcedure,
+  completeTranslation: completeTranslationProcedure,
   getTranslationAssignmentRequests: getTranslationAssignmentRequestsProcedure,
   checkUserTranslationAssignment: checkUserTranslationAssignmentProcedure,
   // User management endpoints

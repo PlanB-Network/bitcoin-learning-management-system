@@ -155,6 +155,7 @@ export interface CourseTranslationSlides {
   originalContent: string | null;
   translatedContent: string | null;
   aiTranslatedContent: string | null;
+  audioTries: number;
   status:
     | 'todo'
     | 'in_progress'
@@ -339,6 +340,12 @@ export interface UpdateTranslationStatusInput {
   status: unknown;
 }
 
+export interface UpdateCourseTranslationStatusInput {
+  courseId: string;
+  language: string;
+  status: unknown;
+}
+
 export interface CourseLanguage {
   code: string;
   name: string | null;
@@ -461,6 +468,7 @@ export interface CourseTranslationSlide {
   pptValidated: boolean;
   transcriptionValidated: boolean;
   audioValidated: boolean;
+  audioTries: number;
   status: unknown;
 }
 
@@ -501,6 +509,7 @@ export interface UpdateCourseTranslationSlideInput {
   pptValidated?: boolean | undefined;
   transcriptionValidated?: boolean | undefined;
   audioValidated?: boolean | undefined;
+  audioTries?: number | undefined;
 }
 
 export interface ChapterProgress {

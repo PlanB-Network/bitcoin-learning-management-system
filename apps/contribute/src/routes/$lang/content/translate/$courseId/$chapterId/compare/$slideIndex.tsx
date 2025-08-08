@@ -3,12 +3,18 @@ import { Button } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
-import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
+// DroplistArrowIcon no longer needed after migration to LanguageDropdown
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { OnlyOfficeSlideEditor } from '#src/components/translation/onlyoffice-slide-editor.tsx';
-import { LanguageDropdown, ValidationCheckbox } from '#src/components/ui';
+import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
+import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
+import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
+import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
+import { useLanguageAvailability } from '#src/hooks/useLanguageAvailability.ts';
+import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { buildPptxUrl, buildTranslationFileUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -74,7 +80,6 @@ function CompareSlidePage() {
     null,
   );
   const [courseData, setCourseData] = useState<any>(null);
-  const [_totalChapters, setTotalChapters] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'presentation' | 'transcription'>(
@@ -82,11 +87,15 @@ function CompareSlidePage() {
   );
   const [selectedOriginalLanguage, setSelectedOriginalLanguage] =
     useState<string>('');
-  // UPDATED STATE: track language availability instead of just available languages
-  const [languageAvailability, setLanguageAvailability] = useState<
-    LanguageAvailability[]
-  >([]);
-  const [languagesLoading, setLanguagesLoading] = useState(false);
+  // replace state for language availability with new hook output
+  const { options: languageAvailability, loading: languagesLoading } =
+    useLanguageAvailability({
+      courseId,
+      partId: chapterData?.slides?.[Number(slideIndex)]?.partId ?? '',
+      chapterId,
+      slideId: chapterData?.slides?.[Number(slideIndex)]?.slideId ?? '',
+      originalLanguage: courseData?.originalLanguage ?? 'en',
+    });
   // ----------------------------
   // State for transcript language selection
   // ----------------------------
@@ -94,10 +103,17 @@ function CompareSlidePage() {
     selectedOriginalTranscriptLanguage,
     setSelectedOriginalTranscriptLanguage,
   ] = useState<string>('');
-  const [transcriptLanguageAvailability, setTranscriptLanguageAvailability] =
-    useState<LanguageAvailability[]>([]);
-  const [transcriptLanguagesLoading, setTranscriptLanguagesLoading] =
-    useState(false);
+  // Transcript language availability via shared hook
+  const {
+    options: transcriptLanguageAvailability,
+    loading: transcriptLanguagesLoading,
+  } = useTranscriptAvailability({
+    courseId,
+    partId: chapterData?.slides?.[Number(slideIndex)]?.partId ?? '',
+    chapterId,
+    slideId: chapterData?.slides?.[Number(slideIndex)]?.slideId ?? '',
+    originalLanguage: courseData?.originalLanguage ?? 'en',
+  });
   const [transcriptContentCache, setTranscriptContentCache] = useState<
     Record<string, string | null>
   >({});
@@ -108,257 +124,30 @@ function CompareSlidePage() {
   const [translatedText, setTranslatedText] = useState<string>('');
   const [transcriptionValidated, setTranscriptionValidated] =
     useState<boolean>(false);
-  const [_hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
+  // setHasUnsavedChanges state removed – following setter calls commented out
+  /* setHasUnsavedChanges(false); */
+
+  // PPT validation state for the second editor
+  const [pptValidated, setPptValidated] = useState<boolean>(false);
+
+  // Track PPT saving loading state to prevent premature navigation
+  const [pptSaving, setPptSaving] = useState(false);
+
+  // PNG loading state
+  const [pngLoading, setPngLoading] = useState(true);
+  const [pngError, setPngError] = useState<string | null>(null);
 
   const numericSlideIndex = Number(slideIndex);
-  const targetLanguage = Route.useSearch()?.targetLanguage || 'fr';
+  const targetLanguage =
+    Route.useSearch()?.targetLanguage ||
+    (typeof window !== 'undefined'
+      ? localStorage.getItem('targetLanguage')
+      : null) ||
+    'fr';
 
-  // New helper to fetch language availability from the backend (single request)
-  const fetchSlideLanguageAvailability = async (
-    courseId: string,
-    partId: string,
-    chapterId: string,
-    slideId: string,
-  ): Promise<string[]> => {
-    try {
-      const url = `/api/translation-downloads/pptx-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('Failed to fetch availability');
-      const data = (await resp.json()) as { languages: string[] };
-      return data.languages ?? [];
-    } catch (err) {
-      console.warn('Could not fetch language availability', err);
-      return [];
-    }
-  };
-  // Helper to fetch transcript language availability (checks DB)
-  const fetchSlideTranscriptLanguageAvailability = async (
-    courseId: string,
-    partId: string,
-    chapterId: string,
-    slideId: string,
-  ): Promise<string[]> => {
-    try {
-      const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('Failed to fetch transcript availability');
-      const data = (await resp.json()) as { languages: string[] };
-      return data.languages ?? [];
-    } catch (err) {
-      console.warn('Could not fetch transcript language availability', err);
-      return [];
-    }
-  };
-  // UPDATED: Fetch languages and check availability
-  useEffect(() => {
-    const fetchAvailableLanguages = async () => {
-      setLanguagesLoading(true);
+  // Removed redundant helper functions now superseded by shared hooks
 
-      try {
-        // Prefer public endpoint (works for any user)
-        let resp: any;
-        try {
-          resp = await (
-            trpcClient as any
-          ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (_e: any) {
-          // If public endpoint unavailable (older backend) or we are admin using secured route
-          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
-            id: courseId,
-          });
-        }
-
-        if (resp?.languages?.length) {
-          // Always ensure the course original language is present in the dropdown
-          const originalLang = courseData?.originalLanguage ?? 'en';
-          const codesSet = new Set<string>(
-            resp.languages.map((l: any) => l.code),
-          );
-          codesSet.add(originalLang);
-          const codes = Array.from(codesSet);
-
-          // Check availability via backend endpoint
-          if (chapterData?.slides?.[numericSlideIndex]) {
-            const currentSlide = chapterData.slides[numericSlideIndex];
-
-            const availableCodes = await fetchSlideLanguageAvailability(
-              courseId,
-              currentSlide.partId,
-              chapterId,
-              currentSlide.slideId,
-            );
-
-            const languageAvailabilityResults = codes.map((lang) => ({
-              code: lang,
-              name: getLanguageName(lang),
-              available: availableCodes.includes(lang),
-            }));
-
-            setLanguageAvailability(languageAvailabilityResults);
-
-            // Set default selected language to first available one, preferring 'en'
-            if (!selectedOriginalLanguage) {
-              const availableLanguages = languageAvailabilityResults.filter(
-                (l) => l.available,
-              );
-              if (availableLanguages.length > 0) {
-                const defaultLang =
-                  availableLanguages.find((l) => l.code === 'en')?.code ||
-                  availableLanguages[0].code;
-                setSelectedOriginalLanguage(defaultLang);
-              }
-            }
-          } else {
-            // If we don't have slide data yet, assume all languages are available
-            const allLanguages = codes.map((lang) => ({
-              code: lang,
-              name: getLanguageName(lang),
-              available: true,
-            }));
-            setLanguageAvailability(allLanguages);
-
-            if (!selectedOriginalLanguage) {
-              const defaultLang = codes.includes('en') ? 'en' : codes[0];
-              setSelectedOriginalLanguage(defaultLang);
-            }
-          }
-          setLanguagesLoading(false);
-          return;
-        }
-      } catch (err) {
-        // Not authorized or endpoint unavailable – log and continue with fallback
-        console.warn('Could not fetch course languages, falling back', err);
-      }
-
-      // Fallback: use original language + English (if available)
-      const originalLanguageCode = courseData?.originalLanguage ?? 'en';
-      const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
-      const fallbackLanguages = _hasEnglishVersion
-        ? [originalLanguageCode, 'en']
-        : [originalLanguageCode];
-
-      // Check availability for fallback languages
-      if (chapterData?.slides?.[numericSlideIndex]) {
-        const currentSlide = chapterData.slides[numericSlideIndex];
-
-        const availableCodes = await fetchSlideLanguageAvailability(
-          courseId,
-          currentSlide.partId,
-          chapterId,
-          currentSlide.slideId,
-        );
-
-        const fallbackAvailabilityResults = fallbackLanguages.map((lang) => ({
-          code: lang,
-          name: getLanguageName(lang),
-          available: availableCodes.includes(lang),
-        }));
-
-        setLanguageAvailability(fallbackAvailabilityResults);
-
-        if (!selectedOriginalLanguage) {
-          const availableLanguages = fallbackAvailabilityResults.filter(
-            (l) => l.available,
-          );
-          if (availableLanguages.length > 0) {
-            const defaultLang =
-              availableLanguages.find((l) => l.code === 'en')?.code ||
-              availableLanguages[0].code;
-            setSelectedOriginalLanguage(defaultLang);
-          }
-        }
-      } else {
-        const fallbackAvailability = fallbackLanguages.map((lang) => ({
-          code: lang,
-          name: getLanguageName(lang),
-          available: true,
-        }));
-        setLanguageAvailability(fallbackAvailability);
-
-        if (!selectedOriginalLanguage) {
-          setSelectedOriginalLanguage(
-            _hasEnglishVersion ? 'en' : originalLanguageCode,
-          );
-        }
-      }
-
-      setLanguagesLoading(false);
-    };
-
-    fetchAvailableLanguages();
-    // We deliberately exclude courseData from deps to avoid double-call; courseId is sufficient.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [courseId, chapterData, numericSlideIndex]);
-
-  // ----------------------------
-  // Fetch transcript language availability
-  // ----------------------------
-  useEffect(() => {
-    const fetchTranscriptLanguages = async () => {
-      setTranscriptLanguagesLoading(true);
-      try {
-        let resp: any;
-        try {
-          resp = await (
-            trpcClient as any
-          ).content.getCourseLanguagesPublic.query({ id: courseId });
-        } catch (_e: any) {
-          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
-            id: courseId,
-          });
-        }
-
-        const originalLang = courseData?.originalLanguage ?? 'en';
-        const codesSet = new Set<string>();
-        if (resp?.languages?.length) {
-          for (const l of resp.languages) {
-            codesSet.add(l.code);
-          }
-        }
-        codesSet.add(originalLang);
-        const codes = Array.from(codesSet);
-
-        if (chapterData?.slides?.[numericSlideIndex]) {
-          const currentSlide = chapterData.slides[numericSlideIndex];
-          const availableCodes = await fetchSlideTranscriptLanguageAvailability(
-            courseId,
-            currentSlide.partId,
-            chapterId,
-            currentSlide.slideId,
-          );
-
-          const availability = codes.map((lang) => ({
-            code: lang,
-            name: getLanguageName(lang),
-            available: availableCodes.includes(lang) || lang === originalLang,
-          }));
-
-          setTranscriptLanguageAvailability(availability);
-
-          if (!selectedOriginalTranscriptLanguage) {
-            const available = availability.filter((l) => l.available);
-            if (available.length > 0) {
-              const defaultLang =
-                available.find((l) => l.code === 'en')?.code ||
-                available[0].code;
-              setSelectedOriginalTranscriptLanguage(defaultLang);
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('Could not fetch transcript languages', err);
-      } finally {
-        setTranscriptLanguagesLoading(false);
-      }
-    };
-
-    fetchTranscriptLanguages();
-  }, [
-    courseId,
-    chapterId,
-    numericSlideIndex,
-    chapterData?.slides?.[numericSlideIndex]?.slideId,
-  ]);
+  // Transcript language availability now provided by useTranscriptAvailability – removed legacy effect
 
   // ----------------------------
   // Load transcript content for selected language
@@ -407,6 +196,7 @@ function CompareSlidePage() {
     courseData,
     transcriptContentCache,
     chapterData?.slides?.[numericSlideIndex]?.slideId,
+    chapterData?.slides?.[numericSlideIndex],
   ]);
 
   // Compute derived values once we have data
@@ -417,7 +207,8 @@ function CompareSlidePage() {
     if (currentSlide) {
       setTranslatedText(currentSlide.translatedContent ?? '');
       setTranscriptionValidated(currentSlide.transcriptionValidated ?? false);
-      setHasUnsavedChanges(false);
+      setPptValidated(currentSlide.pptValidated ?? false);
+      // setHasUnsavedChanges(false); // removed unused state
     }
   }, [currentSlide]);
 
@@ -427,10 +218,11 @@ function CompareSlidePage() {
   const handleTranslatedChange = (value: string) => {
     if (!currentSlide) return;
 
-    const wasValidated = transcriptionValidated;
+    const wasTranscriptionValidated = transcriptionValidated;
+    const wasAudioValidated = currentSlide.audioValidated ?? false;
 
     setTranslatedText(value);
-    setHasUnsavedChanges(true);
+    // setHasUnsavedChanges(true); // removed unused state
 
     // Update local chapterData so UI reflects edits immediately
     setChapterData((prev) => {
@@ -439,15 +231,21 @@ function CompareSlidePage() {
         ...prev,
         slides: prev.slides.map((s) =>
           s.slideId === currentSlide.slideId
-            ? { ...s, translatedContent: value, transcriptionValidated: false }
+            ? {
+                ...s,
+                translatedContent: value,
+                transcriptionValidated: false,
+                audioValidated: false,
+              }
             : s,
         ),
       };
     });
 
-    if (wasValidated) {
+    if (wasTranscriptionValidated || wasAudioValidated) {
       setTranscriptionValidated(false);
-      // Immediately mark as unvalidated in DB
+      // Immediately mark both transcription and audio as unvalidated in DB
+      // Explicitly maintain under_review status while contributor is working
       trpcClient.content.updateCourseTranslationSlide
         .mutate({
           courseId,
@@ -455,9 +253,11 @@ function CompareSlidePage() {
           chapterId,
           slideId: currentSlide.slideId,
           transcriptionValidated: false,
+          audioValidated: false,
+          status: TranslationStatus.UnderReview,
         } as any)
         .catch((err) =>
-          console.error('Error auto-unvalidating transcript', err),
+          console.error('Error auto-unvalidating transcript and audio', err),
         );
     }
   };
@@ -471,12 +271,12 @@ function CompareSlidePage() {
         chapterId,
         slideId: currentSlide.slideId,
         translatedContent: translatedText,
-        status: TranslationStatus.InProgress,
+        status: TranslationStatus.UnderReview,
         transcriptionValidated: true,
       } as any);
 
       setTranscriptionValidated(true);
-      setHasUnsavedChanges(false);
+      // setHasUnsavedChanges(false); // removed unused state
 
       // Sync local state
       setChapterData((prev) => {
@@ -528,11 +328,7 @@ function CompareSlidePage() {
         setCourseData(courseResp);
 
         if (courseResp?.parts) {
-          const chaptersCount = courseResp.parts.reduce(
-            (total: number, part: any) => total + (part.chapters?.length || 0),
-            0,
-          );
-          setTotalChapters(chaptersCount);
+          // previously computed total chapters; removed unused state
         }
       } catch (err) {
         console.error('Error fetching compare page data', err);
@@ -545,18 +341,6 @@ function CompareSlidePage() {
     fetchData();
   }, [courseId, chapterId, targetLanguage]);
 
-  // Compute file base name (same logic as parent page)
-  const fileBaseName = React.useMemo(() => {
-    if (!chapterData || !currentSlide) return '';
-    const partIdx = chapterData.context.partIndex;
-    const chapIdx = chapterData.context.chapterIndex;
-    // Convert 1-based slideNumber from database to 0-based for filename
-    const slideIdx = currentSlide.slideNumber
-      ? currentSlide.slideNumber - 1
-      : numericSlideIndex;
-    return `${partIdx}.${chapIdx}_${slideIdx}`;
-  }, [chapterData, currentSlide, numericSlideIndex]);
-
   // Original language handling
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
   const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
@@ -566,47 +350,45 @@ function CompareSlidePage() {
 
   // Initialize selected language when data loads
   React.useEffect(() => {
-    if (
-      courseData &&
-      !selectedOriginalLanguage &&
-      availableLanguages.length > 0
-    ) {
-      // Default to English if available, otherwise use first available language
-      const defaultLanguage =
-        availableLanguages.find((l) => l.code === 'en')?.code ||
-        availableLanguages[0].code;
-      setSelectedOriginalLanguage(defaultLanguage);
+    if (courseData && availableLanguages.length > 0) {
+      // Check if current selection is available, if not, reset it
+      const currentSelectionAvailable =
+        selectedOriginalLanguage &&
+        availableLanguages.find((l) => l.code === selectedOriginalLanguage);
+
+      if (!selectedOriginalLanguage || !currentSelectionAvailable) {
+        // Prefer English if available, otherwise use first available language
+        if (availableLanguages.length > 0) {
+          const englishAvailable = availableLanguages.find(
+            (l) => l.code === 'en',
+          );
+          const defaultLanguage = englishAvailable
+            ? 'en'
+            : availableLanguages[0].code;
+          setSelectedOriginalLanguage(defaultLanguage);
+        }
+      }
     }
   }, [courseData, selectedOriginalLanguage, availableLanguages]);
 
   const originalLanguage =
-    selectedOriginalLanguage ||
-    availableLanguages.find((l) => l.code === 'en')?.code ||
-    availableLanguages[0]?.code ||
-    originalLanguageCode;
+    selectedOriginalLanguage &&
+    availableLanguages.some(
+      (l: LanguageAvailability) =>
+        l.code === selectedOriginalLanguage && l.available,
+    )
+      ? selectedOriginalLanguage
+      : availableLanguages.length > 0
+        ? availableLanguages[0]?.code
+        : originalLanguageCode;
+
   const _originalLanguageName = getLanguageName(originalLanguage);
   const targetLanguageName = getLanguageName(targetLanguage);
 
   // Overall chapter index for progress (copied logic)
-  const _overallChapterNumber = React.useMemo(() => {
-    if (!courseData) return 0;
-    const chaptersInCourse = courseData.parts.flatMap(
-      (part: any) => part.chapters,
-    );
-    const index = chaptersInCourse.findIndex(
-      (ch: any) => ch.chapterId === chapterId,
-    );
-    return index >= 0 ? index + 1 : 0;
-  }, [courseData, chapterId]);
+  // _overallChapterNumber removed – variable was unused
 
-  const _partEndIndexes = React.useMemo(() => {
-    if (!courseData) return [] as number[];
-    let cumulative = 0;
-    return courseData.parts.map((part: any) => {
-      cumulative += part.chapters?.length || 0;
-      return cumulative - 1;
-    });
-  }, [courseData]);
+  // _partEndIndexes removed – variable was unused
 
   if (loading) {
     return (
@@ -616,13 +398,13 @@ function CompareSlidePage() {
         footerVariant="light"
         className="flex justify-center items-center min-h-screen"
       >
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500" />
+        <LoadingSpinner size="md" />
         <div className="mt-4 text-gray-600">Loading compare view…</div>
       </PageLayout>
     );
   }
 
-  if (error || !chapterData || !currentSlide) {
+  if (error || !chapterData) {
     return (
       <PageLayout
         title="Error"
@@ -632,7 +414,7 @@ function CompareSlidePage() {
       >
         <div className="text-center">
           <div className="text-red-600 mb-4">
-            Error: {error ?? 'Data not found'}
+            Error: {error ?? 'Chapter data not found'}
           </div>
           <button
             type="button"
@@ -641,6 +423,35 @@ function CompareSlidePage() {
           >
             Retry
           </button>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  if (!currentSlide) {
+    return (
+      <PageLayout
+        title="Error"
+        variant="light"
+        footerVariant="light"
+        className="flex justify-center items-center min-h-screen"
+      >
+        <div className="text-center">
+          <div className="text-red-600 mb-4">
+            Slide not found. Index: {slideIndex} (Numeric: {numericSlideIndex})
+            <br />
+            Available slides: {chapterData?.slides?.length || 0}
+            <br />
+            Slide IDs:{' '}
+            {chapterData?.slides?.map((s) => s.slideId).join(', ') || 'none'}
+          </div>
+          <Link
+            to="/$lang/content/translate/$courseId/$chapterId"
+            params={{ lang, courseId, chapterId }}
+            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 inline-block"
+          >
+            Go Back to Chapter
+          </Link>
         </div>
       </PageLayout>
     );
@@ -751,141 +562,129 @@ function CompareSlidePage() {
                   >
                     {t('translate.language', { defaultValue: 'Language' })}
                   </span>
-                  {/* Custom select with dropdown arrow */}
-                  <div className="relative">
-                    <select
-                      value={selectedOriginalLanguage}
-                      onChange={(e) => {
-                        const selectedLang = e.target.value;
-                        // Only allow selection of available languages
-                        const langAvailability = languageAvailability.find(
-                          (l) => l.code === selectedLang,
-                        );
-                        if (langAvailability?.available) {
-                          setSelectedOriginalLanguage(selectedLang);
-                        }
-                      }}
-                      disabled={languagesLoading}
-                      className={`appearance-none bg-white border border-[#CCCCCC] rounded-[10px] text-sm text-orange-500 w-full sm:w-[225px] h-[34px] pl-8 pr-3 py-1 ${
-                        languagesLoading ? 'opacity-50 cursor-not-allowed' : ''
-                      }`}
-                    >
-                      {languagesLoading ? (
-                        <option value="">
-                          {t('translate.loadingLanguages', {
-                            defaultValue: 'Loading languages...',
-                          })}
-                        </option>
-                      ) : languageAvailability.length === 0 ? (
-                        <option value="">
-                          {t('translate.noLanguagesAvailable', {
-                            defaultValue: 'No languages available',
-                          })}
-                        </option>
-                      ) : (
-                        languageAvailability.map((lang) => (
-                          <option
-                            key={lang.code}
-                            value={lang.code}
-                            disabled={!lang.available}
-                            className={`${lang.available ? 'text-gray-900' : 'text-gray-400 cursor-not-allowed'}`}
-                            style={{
-                              color: lang.available ? 'inherit' : '#9CA3AF',
-                              cursor: lang.available
-                                ? 'pointer'
-                                : 'not-allowed',
-                            }}
-                          >
-                            {lang.name}
-                            {!lang.available && ' (Not available)'}
-                          </option>
-                        ))
-                      )}
-                    </select>
-                    {/* Black arrow icon or loading spinner */}
-                    {languagesLoading ? (
-                      <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-                        <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-orange-500" />
-                      </div>
-                    ) : (
-                      <img
-                        src={DroplistArrowIcon}
-                        alt="Dropdown arrow"
-                        className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-[11px] h-[7px]"
-                      />
-                    )}
-                  </div>
+                  {/* Unified dropdown component */}
+                  <LanguageDropdown
+                    options={languageAvailability}
+                    loading={languagesLoading}
+                    value={selectedOriginalLanguage}
+                    onChange={(code: string) => {
+                      const langAvailability = languageAvailability.find(
+                        (l) => l.code === code,
+                      );
+                      if (langAvailability?.available) {
+                        setPngLoading(true);
+                        setPngError(null);
+                        setSelectedOriginalLanguage(code);
+                      }
+                    }}
+                    selectClassName="w-full sm:w-[225px]"
+                  />
                 </div>
               </div>
 
-              <div className="mb-6">
-                <OnlyOfficeSlideEditor
-                  key={`original-${selectedOriginalLanguage}-${currentSlide?.slideId ?? ''}`}
-                  fileUrl={
-                    currentSlide
-                      ? `/api/translation-downloads/pptx/${courseId}/${originalLanguage}/${currentSlide.partId}/${chapterId}/${currentSlide.slideId}/${fileBaseName}`
-                      : null
-                  }
-                  className="w-full"
-                  courseId={courseId}
-                  partId={currentSlide?.partId}
-                  chapterId={chapterId}
-                  slideId={currentSlide?.slideId}
-                  fileName={fileBaseName}
-                  language={originalLanguage}
-                  mode="view"
-                />
+              {/* PNG Image */}
+              <div className="mb-6 flex justify-center min-h-[200px]">
+                {currentSlide && (
+                  <div className="relative w-full flex justify-center">
+                    {/* Loading Spinner */}
+                    {(pngLoading || languagesLoading) && !pngError && (
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <LoadingSpinner size="md" className="h-auto" />
+                      </div>
+                    )}
+
+                    {/* Only render image when we have confirmed the language is available */}
+                    {!languagesLoading &&
+                      originalLanguage &&
+                      availableLanguages.length > 0 &&
+                      availableLanguages.some(
+                        (l: LanguageAvailability) =>
+                          l.code === originalLanguage && l.available,
+                      ) && (
+                        <img
+                          key={`${currentSlide.slideId}-${originalLanguage}`}
+                          data-slide-png
+                          src={buildTranslationFileUrl(
+                            courseId,
+                            originalLanguage,
+                            currentSlide.partId,
+                            chapterId,
+                            currentSlide.slideId,
+                            'png',
+                            'proofread',
+                          )}
+                          alt={`Slide ${numericSlideIndex + 1} - ${getLanguageName(originalLanguage)}`}
+                          className={`max-w-full h-auto border border-gray-300 rounded-lg shadow-sm transition-opacity duration-200 ${
+                            pngLoading || pngError ? 'opacity-0' : 'opacity-100'
+                          }`}
+                          onError={(e) => {
+                            setPngLoading(false);
+                            setPngError(
+                              `Failed to load image from: ${e.currentTarget.src}`,
+                            );
+                          }}
+                          onLoad={(e) => {
+                            // Check if image has valid dimensions
+                            if (
+                              e.currentTarget.naturalWidth === 0 ||
+                              e.currentTarget.naturalHeight === 0
+                            ) {
+                              setPngError(
+                                'Image loaded but has invalid dimensions',
+                              );
+                            } else {
+                              setPngError(null);
+                            }
+
+                            setPngLoading(false);
+                          }}
+                        />
+                      )}
+
+                    {/* Error Display */}
+                    {pngError && (
+                      <div className="flex items-center justify-center p-4 text-red-600 bg-red-50 border border-red-300 rounded-lg">
+                        <div className="text-center">
+                          <div className="mb-2">
+                            Failed to load presentation image
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            {pngError}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
           {/* Proofread (bottom) */}
           <div>
-            <div
-              style={{
-                backgroundColor: '#F5F5F5',
-                border: '1px solid #D1D5DB',
-                borderRadius: '8px',
-                padding: '20px',
-                boxShadow: '0px 1px 1px 0px #00000040',
-              }}
-            >
-              {/* Language info header */}
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-[10px]">
-                  <span
-                    className="text-[18px] font-semibold text-gray-900"
-                    style={{ fontFamily: 'Rubik, sans-serif' }}
-                  >
-                    {t('translate.language', { defaultValue: 'Language' })}
-                  </span>
-                  <span
-                    className="text-orange-500 text-[18px]"
-                    style={{ fontFamily: 'Rubik, sans-serif' }}
-                  >
-                    {targetLanguageName}
-                  </span>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <OnlyOfficeSlideEditor
-                  key={`proofread-${targetLanguage}-${currentSlide?.slideId ?? ''}`}
-                  fileUrl={
-                    currentSlide
-                      ? `/api/translation-downloads/pptx/${courseId}/${targetLanguage}/${currentSlide.partId}/${chapterId}/${currentSlide.slideId}/${fileBaseName}-proofread`
-                      : null
-                  }
-                  className="w-full"
-                  courseId={courseId}
-                  partId={currentSlide?.partId}
-                  chapterId={chapterId}
-                  slideId={currentSlide?.slideId}
-                  fileName={`${fileBaseName}-proofread`}
-                  language={targetLanguage}
-                />
-              </div>
-            </div>
+            {currentSlide && (
+              <ValidatedPptEditor
+                courseId={courseId}
+                chapterId={chapterId}
+                slideId={currentSlide.slideId}
+                partId={currentSlide.partId}
+                fileName="proofread"
+                language={targetLanguage}
+                validated={pptValidated}
+                onValidationChange={setPptValidated}
+                fileUrl={buildPptxUrl(
+                  courseId,
+                  targetLanguage,
+                  currentSlide.partId,
+                  chapterId,
+                  currentSlide.slideId,
+                  'proofread',
+                )}
+                languageLabel={targetLanguageName}
+                mode="edit"
+                onLoadingStateChange={setPptSaving}
+              />
+            )}
           </div>
         </div>
 
@@ -918,7 +717,7 @@ function CompareSlidePage() {
                       options={transcriptLanguageAvailability}
                       loading={transcriptLanguagesLoading}
                       value={selectedOriginalTranscriptLanguage}
-                      onChange={(code) => {
+                      onChange={(code: string) => {
                         const availability =
                           transcriptLanguageAvailability.find(
                             (l) => l.code === code,
@@ -1005,18 +804,32 @@ function CompareSlidePage() {
 
       {/* Go Back Button */}
       <div className="flex justify-end mt-12">
-        <Link
-          to="/$lang/content/translate/$courseId/$chapterId"
-          params={{ lang, courseId, chapterId }}
-        >
+        {pptSaving ? (
           <Button
             variant="primary"
             size="m"
-            className="flex gap-[10px] text-[18px] leading-[18px] font-medium"
+            disabled
+            className="flex gap-[10px] text-[18px] leading-[18px] font-medium opacity-60"
+            title={t('translate.waitingForSave', {
+              defaultValue: 'Waiting for PPT save to complete...',
+            })}
           >
             {t('translate.goBack', { defaultValue: 'Go back' })} ←
           </Button>
-        </Link>
+        ) : (
+          <Link
+            to="/$lang/content/translate/$courseId/$chapterId"
+            params={{ lang, courseId, chapterId }}
+          >
+            <Button
+              variant="primary"
+              size="m"
+              className="flex gap-[10px] text-[18px] leading-[18px] font-medium"
+            >
+              {t('translate.goBack', { defaultValue: 'Go back' })} ←
+            </Button>
+          </Link>
+        )}
       </div>
     </PageLayout>
   );

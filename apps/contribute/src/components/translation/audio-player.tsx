@@ -12,13 +12,13 @@ import CampaignIcon from '#src/assets/icons/campaign.svg';
 import Forward15Icon from '#src/assets/icons/forward_15.svg';
 import PauseIcon from '#src/assets/icons/pause.svg';
 import PlayIcon from '#src/assets/icons/play.svg';
+import { buildAudioUrl } from '#src/utils/index.ts';
 
 interface AudioPlayerProps {
   courseId: string;
   partId: string;
   chapterId: string;
   slideId: string;
-  fileName: string;
   language: string;
   onValidate: () => void;
   validated: boolean;
@@ -26,19 +26,20 @@ interface AudioPlayerProps {
   version?: number;
 }
 
-// Build the API URL that proxies the audio through the backend instead of exposing the raw S3 bucket.
+// Build the API URL using the new file discovery approach
 const buildAudioApiUrl = (
   courseId: string,
   partId: string,
   chapterId: string,
   slideId: string,
-  fileName: string,
   lang: string,
   version?: number,
 ): string => {
-  // New schema: /api/translation-downloads/audio/<courseId>/<lang>/<partId>/<chapterId>/<slideId>/<fileName>`
-  const base = `/api/translation-downloads/audio/${courseId}/${lang}/${partId}/${chapterId}/${slideId}/${fileName}`;
-  return version ? `${base}?v=${version}` : base;
+  // Use the utility function for consistent URL building
+  const base = buildAudioUrl(courseId, lang, partId, chapterId, slideId);
+  const url = version ? `${base}?v=${version}` : base;
+
+  return url;
 };
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
@@ -46,7 +47,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   partId,
   chapterId,
   slideId,
-  fileName,
   language,
   onValidate,
   validated,
@@ -113,7 +113,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     partId,
     chapterId,
     slideId,
-    fileName,
     language,
     version,
   );

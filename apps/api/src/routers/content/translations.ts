@@ -13,6 +13,7 @@ import {
   getCourseTranslationChapterProgressInputSchema,
   getCourseTranslationSlidesInputSchema,
   updateCourseTranslationSlideInputSchema,
+  updateCourseTranslationStatusInputSchema,
   updateTranslationStatusInputSchema,
 } from '@blms/schemas';
 import {
@@ -114,6 +115,41 @@ const createCourseTranslationProcedure = contributorProcedure
 // Update translation status
 const updateTranslationStatusProcedure = contributorProcedure
   .input(updateTranslationStatusInputSchema)
+  .output<Parser<AvailableCourseTranslation>>(availableCourseTranslationSchema)
+  .mutation(async ({ ctx, input }) => {
+    // Check if user has basic permission to update translations
+    const user = ctx.user;
+    const hasBasePermission =
+      user?.role === UserRole.Admin ||
+      user?.role === UserRole.Superadmin ||
+      user?.role === UserRole.Contributor ||
+      user?.role === UserRole.Community;
+
+    if (!hasBasePermission) {
+      throw new TRPCError({
+        code: 'FORBIDDEN',
+        message: 'You do not have permission to update translation status',
+      });
+    }
+
+    // Only admin or superadmin can publish
+    if (
+      input.status === TranslationStatus.Published &&
+      user?.role !== UserRole.Admin &&
+      user?.role !== UserRole.Superadmin
+    ) {
+      throw new TRPCError({
+        code: 'FORBIDDEN',
+        message: 'Only admins can publish translations',
+      });
+    }
+
+    return createUpdateTranslationStatus(ctx.dependencies)(input);
+  });
+
+// Update course-level translation status
+const updateCourseTranslationStatusProcedure = contributorProcedure
+  .input(updateCourseTranslationStatusInputSchema)
   .output<Parser<AvailableCourseTranslation>>(availableCourseTranslationSchema)
   .mutation(async ({ ctx, input }) => {
     // Check if user has basic permission to update translations
@@ -334,6 +370,7 @@ export const translationsRouter = createTRPCRouter({
   getCourseTranslationStatus: getCourseTranslationStatusProcedure,
   createCourseTranslation: createCourseTranslationProcedure,
   updateTranslationStatus: updateTranslationStatusProcedure,
+  updateCourseTranslationStatus: updateCourseTranslationStatusProcedure,
   getCoursesReadyForReview: getCoursesReadyForReviewProcedure,
   getUserContributionsUnderReview: getUserContributionsUnderReviewProcedure,
   getTranslationProgress: getTranslationProgressProcedure,

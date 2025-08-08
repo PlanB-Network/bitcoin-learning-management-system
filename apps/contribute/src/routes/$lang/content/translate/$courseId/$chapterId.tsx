@@ -7,7 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from '@tanstack/react-router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BookClosedIcon from '#src/assets/icons/book_closed.svg';
@@ -19,22 +19,27 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { AudioPlayer } from '#src/components/translation/audio-player.tsx';
-import {
-  OnlyOfficeSlideEditor,
-  type OnlyOfficeSlideEditorRef,
-} from '#src/components/translation/onlyoffice-slide-editor.tsx';
-import { PptLinkSection } from '#src/components/translation/ppt-link.tsx';
-import { TranscriptionEditor } from '#src/components/translation/transcription-editor.tsx';
+import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
+import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
+import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
+import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { VideoGenerationModal } from '#src/components/video-generation-modal.tsx';
-
+import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { buildPptxUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
   '/$lang/content/translate/$courseId/$chapterId',
 )({
   component: ChapterTranslationPage,
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      targetLanguage: search.targetLanguage as string,
+      startAtLastSlide: search.startAtLastSlide as boolean,
+    };
+  },
 });
 
 interface ChapterTranslationContext {
@@ -66,7 +71,7 @@ interface CourseTranslationSlide {
   audioResourcePath: string | null;
   originalContent: string | null;
   translatedContent: string | null;
-  professorName: string | null;
+  professorName?: string | null;
   status: string;
   createdAt: Date;
   updatedAt: Date;
@@ -80,6 +85,7 @@ interface ChapterTranslationData {
 function ChapterTranslationPage() {
   const { t, i18n } = useTranslation();
   const { courseId, chapterId } = Route.useParams();
+  const searchParams = Route.useSearch();
   const location = useLocation();
   const isCompareRoute = location.pathname.includes('/compare/');
 
@@ -90,11 +96,11 @@ function ChapterTranslationPage() {
   const [courseData, setCourseData] = useState<any>(null);
   const [totalChapters, setTotalChapters] = useState<number>(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [initialLoad, setInitialLoad] = useState(true);
 
-  // Base file name (e.g. 1.1_0) used for PPTX/Audio resources – must be computed on every render
+  // Note: fileBaseName is no longer used for file URLs but kept for audio generation API compatibility
   const fileBaseName = React.useMemo(() => {
     if (!chapterData) return '';
     const partIdx = chapterData.context.partIndex;
@@ -115,6 +121,14 @@ function ChapterTranslationPage() {
     audioValidated: false,
   });
 
+  // Track PPT validation changes per slide during current session
+  const [pptValidationChanges, setPptValidationChanges] = useState<
+    Record<string, boolean>
+  >({});
+
+  // Track PPT saving loading state to prevent premature navigation
+  const [pptSaving, setPptSaving] = useState(false);
+
   // -----------------------------
   // Audio generation attempts per slide (max 3)
   // -----------------------------
@@ -129,42 +143,26 @@ function ChapterTranslationPage() {
   // ----------------------------
   // Original transcript language selector (same logic as compare view)
   // ----------------------------
-  interface LanguageAvailability {
-    code: string;
-    name: string;
-    available: boolean;
-  }
 
   const [
     selectedOriginalTranscriptLanguage,
     setSelectedOriginalTranscriptLanguage,
   ] = useState<string>('');
-  const [transcriptLanguageAvailability, setTranscriptLanguageAvailability] =
-    useState<LanguageAvailability[]>([]);
-  const [transcriptLanguagesLoading, setTranscriptLanguagesLoading] =
-    useState(false);
+  const {
+    options: transcriptLanguageAvailability,
+    loading: transcriptLanguagesLoading,
+  } = useTranscriptAvailability({
+    courseId,
+    partId: chapterData?.slides?.[currentSlideIndex]?.partId ?? '',
+    chapterId,
+    slideId: chapterData?.slides?.[currentSlideIndex]?.slideId ?? '',
+    originalLanguage: courseData?.originalLanguage ?? 'en',
+  });
   const [transcriptContentCache, setTranscriptContentCache] = useState<
     Record<string, string | null>
   >({});
 
-  // Helper to fetch availability per slide
-  const fetchSlideTranscriptLanguageAvailability = async (
-    courseId: string,
-    partId: string,
-    chapterId: string,
-    slideId: string,
-  ): Promise<string[]> => {
-    try {
-      const url = `/api/translation-downloads/transcript-availability/${courseId}/${partId}/${chapterId}/${slideId}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('Failed to fetch transcript availability');
-      const data = (await resp.json()) as { languages: string[] };
-      return data.languages ?? [];
-    } catch (err) {
-      console.warn('Could not fetch transcript language availability', err);
-      return [];
-    }
-  };
+  // Removed redundant helper function – replaced by shared hook
 
   // Load attempts whenever slide changes
   useEffect(() => {
@@ -181,11 +179,13 @@ function ChapterTranslationPage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [videoGenerationProgress, setVideoGenerationProgress] = useState(0);
 
-  // OnlyOffice editor ref for manual saving
-  const onlyOfficeEditorRef = useRef<OnlyOfficeSlideEditorRef>(null);
-
-  // Get target language - for now, default to French
-  const targetLanguage = 'fr';
+  // Get target language from route params or localStorage (aligned with slideIndex.tsx)
+  const targetLanguage =
+    searchParams?.targetLanguage ||
+    (typeof window !== 'undefined'
+      ? localStorage.getItem('targetLanguage')
+      : null) ||
+    'fr';
   // Determine original & target language names for display
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
   const originalLanguageName = getLanguageName(originalLanguageCode);
@@ -197,16 +197,20 @@ function ChapterTranslationPage() {
     ? 'EN version'
     : `${originalLanguageCode.toUpperCase()} version`;
 
-  // Check if all validations are complete for the current slide
+  // Check if all validations are complete for the current slide and PPT is not being saved
   const allValidationsComplete =
     validationStates.presentationValidated &&
     validationStates.transcriptionValidated &&
-    validationStates.audioValidated;
+    validationStates.audioValidated &&
+    !pptSaving;
 
   // Check if this is the last slide
   const isLastSlide = chapterData
     ? currentSlideIndex === chapterData.slides.length - 1
     : false;
+
+  // Check if this is the first slide
+  const isFirstSlide = currentSlideIndex === 0;
 
   // Check if this is the last chapter in the course
   const isLastChapter = React.useMemo(() => {
@@ -245,92 +249,67 @@ function ChapterTranslationPage() {
     });
   }, [courseData]);
 
-  // Sync validation states with current slide data
+  // Find first incomplete slide when chapter data loads initially
+  useEffect(() => {
+    if (!chapterData || !initialLoad) return;
+
+    // Check if we should start at the last slide (coming from previous chapter navigation)
+    if (searchParams?.startAtLastSlide) {
+      console.log('Starting at last slide (from previous chapter navigation)');
+      setCurrentSlideIndex(chapterData.slides.length - 1);
+      setInitialLoad(false);
+      return;
+    }
+
+    // Find first slide that doesn't have all validations complete
+    const firstIncompleteSlideIndex = chapterData.slides.findIndex((slide) => {
+      return !(
+        slide.pptValidated &&
+        slide.transcriptionValidated &&
+        slide.audioValidated
+      );
+    });
+
+    // If we found an incomplete slide and it's not the first one, navigate to it
+    if (firstIncompleteSlideIndex > 0) {
+      console.log(
+        `Starting at first incomplete slide: ${firstIncompleteSlideIndex + 1}/${chapterData.slides.length}`,
+      );
+      setCurrentSlideIndex(firstIncompleteSlideIndex);
+    } else if (firstIncompleteSlideIndex === -1) {
+      // All slides are complete, start at the last slide
+      console.log('All slides are complete, starting at last slide');
+      setCurrentSlideIndex(chapterData.slides.length - 1);
+    }
+    // If firstIncompleteSlideIndex === 0, we're already at the right slide
+
+    setInitialLoad(false);
+  }, [chapterData, initialLoad, searchParams?.startAtLastSlide]);
+
+  // Track the current slide ID to detect when we actually change slides
+  const [previousSlideId, setPreviousSlideId] = useState<string | null>(null);
+
+  // Sync validation states with current slide data only when slide actually changes
   useEffect(() => {
     if (!chapterData) return;
     const slide = chapterData.slides[currentSlideIndex];
     if (!slide) return;
-    setValidationStates({
-      presentationValidated: slide.pptValidated ?? false,
-      transcriptionValidated: slide.transcriptionValidated ?? false,
-      audioValidated: slide.audioValidated ?? false,
-    });
 
-    // Reset source transcript cache when slide changes
-    setTranscriptContentCache({});
-  }, [chapterData, currentSlideIndex]);
+    // Only update validation states if this is a new slide or first load
+    if (slide.slideId !== previousSlideId) {
+      setValidationStates({
+        presentationValidated: slide.pptValidated ?? false,
+        transcriptionValidated: slide.transcriptionValidated ?? false,
+        audioValidated: slide.audioValidated ?? false,
+      });
+      setPreviousSlideId(slide.slideId);
 
-  // ----------------------------
-  // Fetch transcript language availability for current slide
-  // ----------------------------
-  useEffect(() => {
-    const fetchTranscriptLanguages = async () => {
-      if (!chapterData) return;
-      setTranscriptLanguagesLoading(true);
+      // Reset source transcript cache when slide changes
+      setTranscriptContentCache({});
+    }
+  }, [chapterData, currentSlideIndex, previousSlideId]);
 
-      try {
-        let resp: any;
-        try {
-          resp = await trpcClient.content.getCourseLanguagesPublic.query({
-            id: courseId,
-          });
-        } catch (_e: any) {
-          resp = await (trpcClient as any).content.getCourseLanguages?.query?.({
-            id: courseId,
-          });
-        }
-
-        const originalLang = courseData?.originalLanguage ?? 'en';
-        const codesSet = new Set<string>();
-        if (resp?.languages?.length) {
-          for (const l of resp.languages) codesSet.add(l.code);
-        }
-        codesSet.add(originalLang);
-        const codes = Array.from(codesSet);
-
-        const slide = chapterData.slides[currentSlideIndex];
-        if (slide) {
-          const availableCodes = await fetchSlideTranscriptLanguageAvailability(
-            courseId,
-            slide.partId,
-            chapterId,
-            slide.slideId,
-          );
-
-          const availability = codes.map((lang) => ({
-            code: lang,
-            name: getLanguageName(lang),
-            available: availableCodes.includes(lang) || lang === originalLang,
-          }));
-
-          setTranscriptLanguageAvailability(availability);
-
-          if (!selectedOriginalTranscriptLanguage) {
-            const available = availability.filter((l) => l.available);
-            if (available.length > 0) {
-              const defaultLang =
-                available.find((l) => l.code === 'en')?.code ||
-                available[0].code;
-              setSelectedOriginalTranscriptLanguage(defaultLang);
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('Could not fetch transcript languages', err);
-      } finally {
-        setTranscriptLanguagesLoading(false);
-      }
-    };
-
-    fetchTranscriptLanguages();
-  }, [
-    courseId,
-    chapterId,
-    courseData,
-    currentSlideIndex,
-    selectedOriginalTranscriptLanguage,
-    chapterData?.slides?.[currentSlideIndex]?.slideId,
-  ]);
+  // Transcript language availability now handled by useTranscriptAvailability – legacy effect removed
 
   // ----------------------------
   // Load transcript content for selected language
@@ -379,7 +358,7 @@ function ChapterTranslationPage() {
     courseId,
     chapterId,
     transcriptContentCache,
-    chapterData?.slides?.[currentSlideIndex]?.slideId,
+    chapterData,
   ]);
 
   const displayedOriginalTranscript =
@@ -407,6 +386,7 @@ function ChapterTranslationPage() {
     try {
       setLoading(true);
       setError(null);
+      setInitialLoad(true); // Reset initial load flag when fetching new chapter data
 
       // Fetch both chapter data and course data in parallel
       const [chapterDataResp, courseDataResp] = await Promise.all([
@@ -446,13 +426,58 @@ function ChapterTranslationPage() {
     }
   }, [fetchChapterData, isCompareRoute]);
 
+  // Set slide status to under_review when user starts working on a ready_for_review slide
+  useEffect(() => {
+    const setSlideUnderReview = async () => {
+      if (!chapterData || isCompareRoute) return;
+
+      const currentSlide = chapterData.slides[currentSlideIndex];
+      if (!currentSlide || currentSlide.status !== 'ready_for_review') return;
+
+      try {
+        await trpcClient.content.updateCourseTranslationSlide.mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          status: TranslationStatus.UnderReview,
+        } as any);
+
+        // Update local state to reflect the change
+        setChapterData((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            slides: prev.slides.map((slide) =>
+              slide.slideId === currentSlide.slideId
+                ? { ...slide, status: TranslationStatus.UnderReview }
+                : slide,
+            ),
+          };
+        });
+      } catch (error) {
+        console.error('Error setting slide to under_review:', error);
+      }
+    };
+
+    setSlideUnderReview();
+  }, [
+    chapterData,
+    currentSlideIndex,
+    courseId,
+    targetLanguage,
+    chapterId,
+    isCompareRoute,
+  ]);
+
   const handleTranslationChange = (
     slideId: string,
     translatedContent: string,
   ) => {
     if (!chapterData) return;
 
-    let previouslyValidated = false;
+    let previouslyTranscriptionValidated = false;
+    let previouslyAudioValidated = false;
     setChapterData((prev) => {
       if (!prev) return prev;
 
@@ -464,7 +489,12 @@ function ChapterTranslationPage() {
                 ...slide,
                 translatedContent,
                 transcriptionValidated: (() => {
-                  previouslyValidated = slide.transcriptionValidated ?? false;
+                  previouslyTranscriptionValidated =
+                    slide.transcriptionValidated ?? false;
+                  return false;
+                })(),
+                audioValidated: (() => {
+                  previouslyAudioValidated = slide.audioValidated ?? false;
                   return false;
                 })(),
               }
@@ -473,14 +503,17 @@ function ChapterTranslationPage() {
       };
     });
 
-    // Reflect immediately in checkbox UI
+    // Reflect immediately in checkbox UI, but preserve presentationValidated
     setValidationStates((prev) => ({
       ...prev,
       transcriptionValidated: false,
+      audioValidated: false,
     }));
 
-    // If the transcript was previously validated, immediately mark it unvalidated in DB
-    if (previouslyValidated) {
+    // If the transcript or audio was previously validated, immediately mark them unvalidated in DB
+    // Also reset audio tries since the transcription has changed
+    // Explicitly maintain under_review status while contributor is working
+    if (previouslyTranscriptionValidated || previouslyAudioValidated) {
       trpcClient.content.updateCourseTranslationSlide
         .mutate({
           courseId,
@@ -488,40 +521,16 @@ function ChapterTranslationPage() {
           chapterId,
           slideId,
           transcriptionValidated: false,
+          audioValidated: false,
+          status: TranslationStatus.UnderReview,
         } as any)
         .catch((err) =>
-          console.error('Error auto-unvalidating transcript', err),
+          console.error('Error auto-unvalidating transcript and audio', err),
         );
     }
-
-    setHasUnsavedChanges(true);
   };
 
-  const _handleSaveChanges = async () => {
-    if (!chapterData || !hasUnsavedChanges) return;
-
-    try {
-      const currentSlide = chapterData.slides[currentSlideIndex];
-      if (!currentSlide) return;
-
-      await trpcClient.content.updateCourseTranslationSlide.mutate({
-        courseId,
-        language: targetLanguage,
-        chapterId,
-        slideId: currentSlide.slideId,
-        translatedContent: currentSlide.translatedContent || '',
-        status: TranslationStatus.InProgress,
-        transcriptionValidated: false,
-      } as any);
-
-      setHasUnsavedChanges(false);
-      console.log('Changes saved successfully');
-    } catch (error) {
-      console.error('Error saving changes:', error);
-    }
-  };
-
-  const handleValidatePresentation = async () => {
+  const _handleValidatePresentation = async () => {
     console.log('Validate presentation clicked');
 
     if (!chapterData) return;
@@ -531,16 +540,7 @@ function ChapterTranslationPage() {
     try {
       console.log('Starting presentation validation process...');
 
-      // First, save the current document using OnlyOffice
-      if (onlyOfficeEditorRef.current) {
-        console.log('Triggering OnlyOffice save...');
-        await onlyOfficeEditorRef.current.saveDocument();
-        console.log('OnlyOffice save completed');
-      } else {
-        console.warn('OnlyOffice editor ref not available');
-      }
-
-      // Then update the validation state in the database
+      // Update the validation state in the database
       console.log('Updating database validation state...');
       await trpcClient.content.updateCourseTranslationSlide.mutate({
         courseId,
@@ -548,6 +548,7 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         pptValidated: true,
+        status: TranslationStatus.UnderReview,
       } as any);
 
       // Update local state
@@ -555,34 +556,6 @@ function ChapterTranslationPage() {
       console.log('Presentation validation completed successfully');
     } catch (error) {
       console.error('Error validating presentation:', error);
-    }
-  };
-
-  // Handle document modification (auto-uncheck validation)
-  const handleDocumentModified = async () => {
-    console.log('Document modified - unchecking validation');
-
-    if (!chapterData) return;
-    const currentSlide = chapterData.slides[currentSlideIndex];
-    if (!currentSlide) return;
-
-    try {
-      // Update database to mark as unvalidated
-      await trpcClient.content.updateCourseTranslationSlide.mutate({
-        courseId,
-        language: targetLanguage,
-        chapterId,
-        slideId: currentSlide.slideId,
-        pptValidated: false,
-      } as any);
-
-      // Update local state
-      setValidationStates((prev) => ({
-        ...prev,
-        presentationValidated: false,
-      }));
-    } catch (error) {
-      console.error('Error updating validation state:', error);
     }
   };
 
@@ -626,6 +599,7 @@ function ChapterTranslationPage() {
       const newAttempts = audioAttempts + 1;
 
       // Mark audio as unvalidated in DB immediately and store attempts
+      // Explicitly maintain under_review status while contributor is working
       try {
         await trpcClient.content.updateCourseTranslationSlide.mutate({
           courseId,
@@ -634,6 +608,7 @@ function ChapterTranslationPage() {
           slideId: currentSlide.slideId,
           audioValidated: false,
           audioTries: newAttempts,
+          status: TranslationStatus.UnderReview,
         } as any);
       } catch (err) {
         console.warn('Failed to mark audio unvalidated', err);
@@ -709,7 +684,7 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         translatedContent: currentSlide.translatedContent || '',
-        status: TranslationStatus.InProgress,
+        status: TranslationStatus.UnderReview,
         transcriptionValidated: true,
       } as any);
 
@@ -718,7 +693,7 @@ function ChapterTranslationPage() {
         transcriptionValidated: true,
       }));
 
-      setHasUnsavedChanges(false);
+      // setHasUnsavedChanges(false); // removed unused state
 
       console.log('Transcription validated and saved successfully');
     } catch (error) {
@@ -742,14 +717,91 @@ function ChapterTranslationPage() {
         chapterId,
         slideId: currentSlide.slideId,
         audioValidated: true,
+        status: TranslationStatus.UnderReview,
       } as any);
     } catch (error) {
       console.error('Error validating audio:', error);
     }
   };
 
-  const handleNextSlide = () => {
+  const handleNextSlide = async () => {
     if (!chapterData || !courseData) return;
+
+    const currentSlide = chapterData.slides[currentSlideIndex];
+
+    // Mark current slide as reviewed if all validations are complete and status is under_review
+    if (
+      currentSlide &&
+      allValidationsComplete &&
+      currentSlide.status === 'under_review'
+    ) {
+      try {
+        await trpcClient.content.updateCourseTranslationSlide.mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          status: TranslationStatus.Reviewed,
+        } as any);
+
+        // Update local state to reflect the change
+        setChapterData((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            slides: prev.slides.map((slide) =>
+              slide.slideId === currentSlide.slideId
+                ? { ...slide, status: TranslationStatus.Reviewed }
+                : slide,
+            ),
+          };
+        });
+      } catch (error) {
+        console.error('Error marking slide as reviewed:', error);
+      }
+    }
+
+    // Generate PNG image for the current slide only if PPT was re-validated during this session
+    // Run in background without blocking navigation
+    const shouldGeneratePng =
+      pptValidationChanges[currentSlide.slideId] === true;
+
+    if (shouldGeneratePng) {
+      console.log(
+        'Starting PNG generation in background (PPT was re-validated)...',
+      );
+
+      // Run PNG generation in background without awaiting
+      fetch('/api/translation-downloads/generate-png', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          courseId,
+          partId: currentSlide.partId,
+          chapterId,
+          slideId: currentSlide.slideId,
+          language: targetLanguage,
+        }),
+      })
+        .then(async (pngResponse) => {
+          if (pngResponse.ok) {
+            const pngResult = await pngResponse.json();
+            console.log('PNG generation successful:', pngResult);
+          } else {
+            console.warn('PNG generation failed:', await pngResponse.text());
+          }
+        })
+        .catch((error) => {
+          console.error('Error generating PNG:', error);
+        });
+    } else {
+      console.log(
+        'Skipping PNG generation - PPT was not re-validated during this session',
+      );
+    }
 
     // If there are more slides in the current chapter, just go to the next one
     if (currentSlideIndex < chapterData.slides.length - 1) {
@@ -760,6 +812,15 @@ function ChapterTranslationPage() {
         transcriptionValidated: false,
         audioValidated: false,
       });
+
+      // Clear the PPT validation change tracking for the previous slide
+      if (currentSlide) {
+        setPptValidationChanges((prev) => {
+          const updated = { ...prev };
+          delete updated[currentSlide.slideId];
+          return updated;
+        });
+      }
       return;
     }
 
@@ -795,7 +856,101 @@ function ChapterTranslationPage() {
     // If there is no next chapter, do nothing here. The UI will offer to create the video.
   };
 
+  const handlePreviousSlide = () => {
+    if (!chapterData) return;
+
+    // If there are previous slides in the current chapter, just go to the previous one
+    if (currentSlideIndex > 0) {
+      setCurrentSlideIndex(currentSlideIndex - 1);
+      return;
+    }
+
+    // We are on the first slide of the current chapter
+    // Determine if there is a previous chapter in the course
+    if (!courseData) return;
+
+    const allChapters = courseData.parts.flatMap((part: any) =>
+      part.chapters.map((chapter: any) => ({
+        ...chapter,
+        partIndex: part.partIndex,
+        partId: part.partId,
+      })),
+    );
+
+    const currentChapterIndex = allChapters.findIndex(
+      (chapter: any) => chapter.chapterId === chapterId,
+    );
+
+    if (currentChapterIndex > 0) {
+      // Navigate to the last slide of the previous chapter
+      const previousChapter = allChapters[currentChapterIndex - 1];
+      navigate({
+        to: '/$lang/content/translate/$courseId/$chapterId',
+        params: {
+          lang: i18n.language,
+          courseId,
+          chapterId: previousChapter.chapterId,
+        },
+        search: { startAtLastSlide: true }, // Add a search param to indicate starting at last slide
+      });
+    }
+    // If there is no previous chapter, do nothing (first slide of first chapter)
+  };
+
   const handleCreateVideo = async () => {
+    if (!chapterData) return;
+
+    const currentSlide = chapterData.slides[currentSlideIndex];
+
+    // Mark current slide as reviewed if all validations are complete and status is under_review
+    if (
+      currentSlide &&
+      allValidationsComplete &&
+      currentSlide.status === 'under_review'
+    ) {
+      try {
+        await trpcClient.content.updateCourseTranslationSlide.mutate({
+          courseId,
+          language: targetLanguage,
+          chapterId,
+          slideId: currentSlide.slideId,
+          status: TranslationStatus.Reviewed,
+        } as any);
+
+        // Update local state to reflect the change
+        setChapterData((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            slides: prev.slides.map((slide) =>
+              slide.slideId === currentSlide.slideId
+                ? { ...slide, status: TranslationStatus.Reviewed }
+                : slide,
+            ),
+          };
+        });
+      } catch (error) {
+        console.error('Error marking slide as reviewed:', error);
+      }
+    }
+
+    // If this is the last slide of the last chapter, mark the translation assignment as completed
+    if (isLastSlideOfCourse) {
+      try {
+        await trpcClient.user.translation.completeTranslation.mutate({
+          courseId,
+          language: targetLanguage,
+        });
+        console.log('Translation assignment marked as completed');
+      } catch (error) {
+        console.error(
+          'Error marking translation assignment as completed:',
+          error,
+        );
+        // Don't block video generation if this fails
+      }
+    }
+
     setIsVideoModalOpen(true);
     setVideoGenerationProgress(0);
 
@@ -963,7 +1118,7 @@ function ChapterTranslationPage() {
         footerVariant="light"
         className="flex justify-center items-center min-h-screen"
       >
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500" />
+        <LoadingSpinner size="md" />
         <div className="mt-4 text-gray-600">Loading chapter data...</div>
       </PageLayout>
     );
@@ -1186,8 +1341,6 @@ function ChapterTranslationPage() {
               {chapterData!.slides.map((slide, slideIndex) => {
                 const _isCompleted = slideIndex < currentSlideIndex;
                 const _isCurrent = slideIndex === currentSlideIndex;
-                const _isFirst = slideIndex === 0;
-                const _isLast = slideIndex === chapterData!.slides.length - 1;
 
                 return (
                   <div
@@ -1224,99 +1377,94 @@ function ChapterTranslationPage() {
           })}
         </p>
 
-        {/* --- ONLYOFFICE (Beta) Duplicate Editor --- */}
-        <div
-          style={{
-            backgroundColor: '#F5F5F5',
-            border: '1px solid #D1D5DB',
-            borderRadius: '8px',
-            padding: '20px',
-            boxShadow: '0px 1px 1px 0px #00000040',
-            marginTop: '40px',
-          }}
-        >
-          {/* OnlyOffice header removed per UI request */}
-          {/* Language info header (inside PPT box) */}
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-[10px]">
-              <span
-                className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {t('translate.originalLanguage', {
-                  defaultValue: 'Language',
-                })}
-              </span>
-              <span
-                className="text-orange-500 text-base sm:text-lg md:text-xl"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {originalLanguageName}
-              </span>
-              <span className="text-gray-400">⇄</span>
-              <span
-                className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {t('translate.translateTo', { defaultValue: 'Translate to' })}
-              </span>
-              <span
-                className="text-orange-500 text-base sm:text-lg md:text-xl"
-                style={{ fontFamily: 'Rubik, sans-serif' }}
-              >
-                {targetLanguageName}
-              </span>
-            </div>
-            <Link
-              to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
-              params={{
-                lang: i18n.language,
-                courseId,
-                chapterId,
-                slideIndex: String(currentSlideIndex),
-              }}
-              className="hidden md:block"
-            >
-              <Button
-                type="button"
-                variant="outline"
-                size="s"
-                className="text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
-              >
-                {versionLabel}
-              </Button>
-            </Link>
-          </div>
-
-          <div className="mb-6">
-            <OnlyOfficeSlideEditor
-              ref={onlyOfficeEditorRef}
-              fileUrl={
-                currentSlide
-                  ? `/api/translation-downloads/pptx/${courseId}/${targetLanguage}/${currentSlide.partId}/${chapterId}/${currentSlide.slideId}/${fileBaseName}`
-                  : null
-              }
-              className="w-full"
-              onDocumentModified={handleDocumentModified}
-              courseId={courseId}
-              partId={currentSlide?.partId}
-              chapterId={chapterId}
-              slideId={currentSlide?.slideId}
-              fileName={fileBaseName}
-              language={targetLanguage}
-            />
-          </div>
-
-          <PptLinkSection
+        {currentSlide && (
+          <ValidatedPptEditor
             courseId={courseId}
-            partId={currentSlide?.partId ?? ''}
             chapterId={chapterId}
-            slideId={currentSlide?.slideId ?? ''}
-            fileName={fileBaseName}
+            slideId={currentSlide.slideId}
+            partId={currentSlide.partId}
+            fileName="proofread"
             language={targetLanguage}
-            onValidate={handleValidatePresentation}
             validated={validationStates.presentationValidated}
-            leftComponent={
+            onValidationChange={(validated) => {
+              setValidationStates((prev) => ({
+                ...prev,
+                presentationValidated: validated,
+              }));
+
+              // Track that PPT validation was changed during this session for this slide
+              if (currentSlide) {
+                setPptValidationChanges((prev) => ({
+                  ...prev,
+                  [currentSlide.slideId]: true,
+                }));
+              }
+            }}
+            fileUrl={buildPptxUrl(
+              courseId,
+              targetLanguage,
+              currentSlide.partId,
+              chapterId,
+              currentSlide.slideId,
+            )}
+            showLanguageHeader={false}
+            showValidationCheckbox={true}
+            className="mt-10"
+            headerContent={
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-[10px]">
+                  <span
+                    className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {t('translate.originalLanguage', {
+                      defaultValue: 'Language',
+                    })}
+                  </span>
+                  <span
+                    className="text-orange-500 text-base sm:text-lg md:text-xl"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {originalLanguageName}
+                  </span>
+                  <span className="text-gray-400">⇄</span>
+                  <span
+                    className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {t('translate.translateTo', {
+                      defaultValue: 'Translate to',
+                    })}
+                  </span>
+                  <span
+                    className="text-orange-500 text-base sm:text-lg md:text-xl"
+                    style={{ fontFamily: 'Rubik, sans-serif' }}
+                  >
+                    {targetLanguageName}
+                  </span>
+                </div>
+                <Link
+                  to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
+                  params={{
+                    lang: i18n.language,
+                    courseId,
+                    chapterId,
+                    slideIndex: String(currentSlideIndex),
+                  }}
+                  className="hidden md:block"
+                >
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="s"
+                    className="text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
+                  >
+                    {versionLabel}
+                  </Button>
+                </Link>
+              </div>
+            }
+            rightComponent={
               <Link
                 to="/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex"
                 params={{
@@ -1337,8 +1485,9 @@ function ChapterTranslationPage() {
                 </Button>
               </Link>
             }
+            onLoadingStateChange={setPptSaving}
           />
-        </div>
+        )}
       </div>
 
       {/* Review Transcription & Generate Audio Section */}
@@ -1358,28 +1507,145 @@ function ChapterTranslationPage() {
           })}
         </p>
 
-        <TranscriptionEditor
-          originalContent={displayedOriginalTranscript || ''}
-          translatedContent={currentSlide?.translatedContent || ''}
-          onTranslationChange={(value) =>
-            currentSlide && handleTranslationChange(currentSlide.slideId, value)
-          }
-          onGenerateAudio={handleGenerateAudio}
-          onValidateTranscription={handleValidateTranscription}
-          transcriptionValidated={validationStates.transcriptionValidated}
-          sourceLanguageOptions={transcriptLanguageAvailability}
-          sourceLanguageLoading={transcriptLanguagesLoading}
-          selectedSourceLanguage={selectedOriginalTranscriptLanguage}
-          onSourceLanguageChange={(code) =>
-            setSelectedOriginalTranscriptLanguage(code)
-          }
-          generateDisabled={audioAttempts >= MAX_AUDIO_TRIES}
-          triesLabel={
-            audioAttempts >= MAX_AUDIO_TRIES
-              ? 'You have no more tries'
-              : `Limit ${audioAttempts}/${MAX_AUDIO_TRIES} tries`
-          }
-        />
+        <div
+          style={{
+            backgroundColor: '#F5F5F5',
+            border: '1px solid #CCCCCC',
+            borderRadius: '8px',
+            padding: '20px',
+            boxShadow: '0px 1px 1px 0px #00000040',
+          }}
+        >
+          {/* Language Toggle */}
+          <div className="mb-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4">
+              {/* Source language selector */}
+              <div className="flex items-center gap-[10px]">
+                <span
+                  className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                  style={{ fontFamily: 'Rubik, sans-serif' }}
+                >
+                  {t('translate.language', { defaultValue: 'Language' })}
+                </span>
+                <LanguageDropdown
+                  options={transcriptLanguageAvailability ?? []}
+                  loading={transcriptLanguagesLoading}
+                  value={selectedOriginalTranscriptLanguage ?? ''}
+                  onChange={(code: string) => {
+                    const availability = transcriptLanguageAvailability.find(
+                      (l) => l.code === code,
+                    );
+                    if (availability?.available) {
+                      setSelectedOriginalTranscriptLanguage(code);
+                    }
+                  }}
+                  selectClassName="w-full sm:w-[225px]"
+                />
+              </div>
+              {/* Target language information (visible only on large screens) */}
+              <div className="hidden lg:flex items-center gap-2 lg:justify-start justify-start">
+                <span className="text-gray-400">⇄</span>
+                <span
+                  className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                  style={{ fontFamily: 'Rubik, sans-serif' }}
+                >
+                  {t('translate.translateTo', { defaultValue: 'Translate to' })}
+                </span>
+                <span className="text-orange-500 text-base sm:text-lg md:text-xl">
+                  {targetLanguageName}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Side-by-side Translation Text Areas */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* Original Content */}
+            <div
+              className="bg-white rounded-lg p-4 min-h-[200px]"
+              style={{ border: '1px solid #CCCCCC' }}
+            >
+              <div className="text-sm leading-relaxed text-gray-900 whitespace-pre-line">
+                {displayedOriginalTranscript ||
+                  t('translate.noTranscriptionAvailable', {
+                    defaultValue: 'No transcription available',
+                  })}
+              </div>
+            </div>
+
+            {/* Target language information (visible on small screens, outside the box) */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <span className="text-gray-400">⇄</span>
+              <span
+                className="text-base font-semibold text-gray-900"
+                style={{ fontFamily: 'Rubik, sans-serif' }}
+              >
+                {t('translate.translateTo', { defaultValue: 'Translate to' })}
+              </span>
+              <span className="text-orange-500 text-base">
+                {targetLanguageName}
+              </span>
+            </div>
+
+            {/* Translated Content */}
+            <div
+              className="bg-white rounded-lg p-4 min-h-[200px]"
+              style={{ border: '1px solid #CCCCCC' }}
+            >
+              <textarea
+                value={currentSlide?.translatedContent || ''}
+                onChange={(e) =>
+                  currentSlide &&
+                  handleTranslationChange(currentSlide.slideId, e.target.value)
+                }
+                placeholder={t('translate.enterTranslation', {
+                  defaultValue: 'Enter your translation here...',
+                })}
+                className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-sm leading-relaxed bg-transparent text-gray-900 textarea-scrollbar"
+                style={{ width: 'calc(100% + 18px)', marginRight: '-18px' }}
+              />
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 md:gap-6">
+            {/* Left group: Generate audio + tries label */}
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+              <Button
+                onClick={handleGenerateAudio}
+                size="m"
+                variant="primary"
+                disabled={
+                  audioAttempts >= MAX_AUDIO_TRIES ||
+                  !validationStates.transcriptionValidated
+                }
+                className={`shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-sm sm:text-base md:text-lg leading-none font-medium ${
+                  audioAttempts >= MAX_AUDIO_TRIES ||
+                  !validationStates.transcriptionValidated
+                    ? 'opacity-60 cursor-not-allowed'
+                    : ''
+                }`}
+              >
+                {t('translate.generateAudio', {
+                  defaultValue: 'Generate audio',
+                })}
+              </Button>
+              <span className="text-orange-600 text-sm md:self-center">
+                {audioAttempts >= MAX_AUDIO_TRIES
+                  ? 'You have no more tries'
+                  : `Limit ${audioAttempts}/${MAX_AUDIO_TRIES} tries`}
+              </span>
+            </div>
+
+            <ValidationCheckbox
+              checked={validationStates.transcriptionValidated}
+              onToggle={handleValidateTranscription}
+              label={t('translate.validateTranscription', {
+                defaultValue: 'Validate transcription',
+              })}
+            />
+          </div>
+        </div>
 
         {/* Max tries reached notice */}
         {audioAttempts >= MAX_AUDIO_TRIES && (
@@ -1394,62 +1660,83 @@ function ChapterTranslationPage() {
           </p>
         )}
 
-        <AudioPlayer
-          courseId={courseId}
-          partId={currentSlide?.partId ?? ''}
-          chapterId={chapterId}
-          slideId={currentSlide?.slideId ?? ''}
-          fileName={fileBaseName}
-          language={targetLanguage}
-          validated={validationStates.audioValidated}
-          onValidate={handleValidateAudio}
-          generating={audioGenerating}
-          version={audioVersion}
-        />
+        {currentSlide?.slideId && (
+          <AudioPlayer
+            courseId={courseId}
+            partId={currentSlide.partId}
+            chapterId={chapterId}
+            slideId={currentSlide.slideId}
+            language={targetLanguage}
+            validated={validationStates.audioValidated}
+            onValidate={handleValidateAudio}
+            generating={audioGenerating}
+            version={audioVersion}
+          />
+        )}
       </div>
 
-      {/* Action Button - Next Slide or Create Video */}
+      {/* Action Buttons - Previous and Next Slide or Create Video */}
       {chapterData && (
-        <div className="flex justify-end">
-          {isLastSlideOfCourse ? (
-            <Button
-              onClick={handleCreateVideo}
-              disabled={!allValidationsComplete}
-              size="m"
-              variant="primary"
-              className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
-              title={
-                !allValidationsComplete
-                  ? t('translate.completeAllValidations', {
-                      defaultValue:
-                        'Please complete all validations before proceeding',
-                    })
-                  : undefined
-              }
-            >
-              {t('translate.createVideo', { defaultValue: 'Create video' })}
-              <span>✓</span>
-            </Button>
-          ) : (
-            <Button
-              onClick={handleNextSlide}
-              disabled={!allValidationsComplete}
-              size="m"
-              variant="primary"
-              className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
-              title={
-                !allValidationsComplete
-                  ? t('translate.completeAllValidations', {
-                      defaultValue:
-                        'Please complete all validations before proceeding to the next slide',
-                    })
-                  : undefined
-              }
-            >
-              {t('translate.nextSlide', { defaultValue: 'Next slide' })}
-              <span>→</span>
-            </Button>
-          )}
+        <div className="flex justify-between items-center">
+          {/* Previous Slide Button */}
+          <div className="flex justify-start">
+            {!isFirstSlide && (
+              <Button
+                onClick={handlePreviousSlide}
+                size="m"
+                variant="outline"
+                className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium text-orange-500 border-orange-500 bg-transparent hover:bg-orange-50"
+              >
+                <span>←</span>
+                {t('translate.previousSlide', {
+                  defaultValue: 'Previous slide',
+                })}
+              </Button>
+            )}
+          </div>
+
+          {/* Next Slide or Create Video Button */}
+          <div className="flex justify-end">
+            {isLastSlideOfCourse ? (
+              <Button
+                onClick={handleCreateVideo}
+                disabled={!allValidationsComplete}
+                size="m"
+                variant="primary"
+                className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
+                title={
+                  !allValidationsComplete
+                    ? t('translate.completeAllValidations', {
+                        defaultValue:
+                          'Please complete all validations before proceeding',
+                      })
+                    : undefined
+                }
+              >
+                {t('translate.createVideo', { defaultValue: 'Create video' })}
+                <span>✓</span>
+              </Button>
+            ) : (
+              <Button
+                onClick={handleNextSlide}
+                disabled={!allValidationsComplete}
+                size="m"
+                variant="primary"
+                className="shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-[18px] leading-[18px] font-medium"
+                title={
+                  !allValidationsComplete
+                    ? t('translate.completeAllValidations', {
+                        defaultValue:
+                          'Please complete all validations before proceeding to the next slide',
+                      })
+                    : undefined
+                }
+              >
+                {t('translate.nextSlide', { defaultValue: 'Next slide' })}
+                <span>→</span>
+              </Button>
+            )}
+          </div>
         </div>
       )}
 

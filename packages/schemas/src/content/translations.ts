@@ -159,6 +159,12 @@ export const updateTranslationStatusInputSchema = z.object({
   status: translationStatusEnum,
 });
 
+export const updateCourseTranslationStatusInputSchema = z.object({
+  courseId: z.string(),
+  language: z.string(),
+  status: translationStatusEnum,
+});
+
 // Course details schemas for course management UI - these are service response schemas, keep as z.object for now
 export const courseLanguageSchema = z.object({
   code: z.string(),
@@ -331,6 +337,7 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
       pptValidated: z.boolean(),
       transcriptionValidated: z.boolean(),
       audioValidated: z.boolean(),
+      audioTries: z.number(),
       status: translationStatusEnum,
     }),
   );
@@ -390,6 +397,7 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   pptValidated: z.boolean().optional(),
   transcriptionValidated: z.boolean().optional(),
   audioValidated: z.boolean().optional(),
+  audioTries: z.number().optional(),
 });
 
 // Schema for chapter progress in course translation overview - based on chapter schema

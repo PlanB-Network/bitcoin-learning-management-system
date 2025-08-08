@@ -1,5 +1,5 @@
 import type { BasicCourse } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, Flag } from '@blms/ui';
 import { useNavigate } from '@tanstack/react-router';
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { Image } from '#src/components/image.tsx';
 import { TranslationRequestModal } from '#src/components/translation-request-modal.tsx';
-import Flag from '#src/molecules/Flag/index.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
@@ -172,8 +171,8 @@ export const CourseTranslationCard = ({
     if (assignmentStatus === 'requested') {
       return;
     }
-    // If assigned, navigate to proofreading interface
-    if (assignmentStatus === 'assigned') {
+    // If assigned or in_progress, navigate to proofreading interface
+    if (assignmentStatus === 'assigned' || assignmentStatus === 'in_progress') {
       navigate({
         to: '/$lang/content/translate/$courseId',
         params: {
@@ -193,8 +192,11 @@ export const CourseTranslationCard = ({
       if (assignmentStatus === 'requested') {
         return;
       }
-      // If assigned, navigate to proofreading interface
-      if (assignmentStatus === 'assigned') {
+      // If assigned or in_progress, navigate to proofreading interface
+      if (
+        assignmentStatus === 'assigned' ||
+        assignmentStatus === 'in_progress'
+      ) {
         navigate({
           to: '/$lang/content/translate/$courseId',
           params: {
@@ -260,6 +262,11 @@ export const CourseTranslationCard = ({
     if (assignmentStatus === 'assigned') {
       return t('translate.startTranslating'); // "Start proofreading"
     }
+    if (assignmentStatus === 'in_progress') {
+      return t('translate.continueTranslating', {
+        defaultValue: 'Continue proofreading',
+      }); // "Continue proofreading"
+    }
     if (assignmentStatus === 'requested') {
       return t('translate.requestAlreadySent'); // "Request already sent"
     }
@@ -267,7 +274,10 @@ export const CourseTranslationCard = ({
   };
 
   // Determine if button should be clickable
-  const isButtonClickable = assignmentStatus === 'assigned' || !hasAssignment;
+  const isButtonClickable =
+    assignmentStatus === 'assigned' ||
+    assignmentStatus === 'in_progress' ||
+    !hasAssignment;
 
   // Get assignment status display text and styling
   const getAssignmentDisplay = () => {
@@ -275,6 +285,12 @@ export const CourseTranslationCard = ({
       return {
         text: t('translate.assigned'),
         className: 'bg-orange-200 text-orange-800',
+      };
+    }
+    if (assignmentStatus === 'in_progress') {
+      return {
+        text: t('translate.inProgress', { defaultValue: 'In Progress' }),
+        className: 'bg-blue-200 text-blue-800',
       };
     }
     if (assignmentStatus === 'requested') {

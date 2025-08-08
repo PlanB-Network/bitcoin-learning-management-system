@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root';
+import { Route as IndexRouteImport } from './routes/index';
 import { Route as LangIndexRouteImport } from './routes/$lang/index';
 import { Route as LangContentIndexRouteImport } from './routes/$lang/content/index';
 import { Route as LangContentEditRouteImport } from './routes/$lang/content/edit';
@@ -18,6 +19,11 @@ import { Route as LangContentTranslateCourseIdRouteImport } from './routes/$lang
 import { Route as LangContentTranslateCourseIdChapterIdRouteImport } from './routes/$lang/content/translate/$courseId/$chapterId';
 import { Route as LangContentTranslateCourseIdChapterIdCompareSlideIndexRouteImport } from './routes/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any);
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
   path: '/$lang/',
@@ -64,6 +70,7 @@ const LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute =
   } as any);
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute;
   '/$lang': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
@@ -74,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex': typeof LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute;
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute;
   '/$lang': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
@@ -85,6 +93,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
+  '/': typeof IndexRoute;
   '/$lang/': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
@@ -97,6 +106,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
+    | '/'
     | '/$lang'
     | '/$lang/content/create'
     | '/$lang/content/edit'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
   fileRoutesByTo: FileRoutesByTo;
   to:
+    | '/'
     | '/$lang'
     | '/$lang/content/create'
     | '/$lang/content/edit'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
   id:
     | '__root__'
+    | '/'
     | '/$lang/'
     | '/$lang/content/create'
     | '/$lang/content/edit'
@@ -128,6 +140,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute;
   LangIndexRoute: typeof LangIndexRoute;
   LangContentCreateRoute: typeof LangContentCreateRoute;
   LangContentEditRoute: typeof LangContentEditRoute;
@@ -138,6 +151,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$lang/': {
       id: '/$lang/';
       path: '/$lang';
@@ -228,6 +248,7 @@ const LangContentTranslateCourseIdRouteWithChildren =
   );
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   LangIndexRoute: LangIndexRoute,
   LangContentCreateRoute: LangContentCreateRoute,
   LangContentEditRoute: LangContentEditRoute,

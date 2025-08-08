@@ -82,84 +82,157 @@ const OnlyOfficeSlideEditorInner = forwardRef<
     const cleanupRef = useRef<(() => void) | null>(null);
 
     // Expose saveDocument method to parent component
-    useImperativeHandle(ref, () => ({
-      saveDocument: async () => {
-        if (
-          !editorInstanceRef.current ||
-          !courseId ||
-          !partId ||
-          !chapterId ||
-          !slideId ||
-          !language ||
-          !fileName
-        ) {
-          console.error(
-            'Editor not initialized or missing required parameters',
-          );
-          return;
-        }
-
-        try {
-          console.log('Initiating manual save for:', {
-            courseId,
+    useImperativeHandle(
+      ref,
+      () => ({
+        saveDocument: async () => {
+          console.log('saveDocument called - checking editor state:', {
+            editorInstance: !!editorInstanceRef.current,
+            loadingState,
+            documentKey: documentKeyRef.current,
             slideId,
-            language,
           });
 
-          isSavingRef.current = true;
-
-          const documentKey = documentKeyRef.current;
-          if (!documentKey) {
+          if (loadingState !== 'ready') {
             console.error(
-              'Document key not available – editor may not have initialised yet',
+              'Editor not ready for saving. Current state:',
+              loadingState,
             );
-            return;
+            throw new Error(
+              `Editor not ready for saving. State: ${loadingState}`,
+            );
           }
-          const commandUrl = '/api/translation-downloads/pptx-forcesave';
 
-          const commandBody = {
-            documentKey,
-            courseId,
-            partId,
-            chapterId,
-            slideId,
-            language,
-            fileName,
-          };
-
-          console.log('Sending forcesave command via proxy:', commandBody);
-
-          const response = await fetch(commandUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(commandBody),
-            credentials: 'include',
-          });
-
-          const result = await response.json();
-          console.log('Forcesave command result:', result);
-
-          if (result.error === 0) {
-            console.log(
-              'Manual save requested successfully - waiting for callback...',
+          if (!editorInstanceRef.current) {
+            console.error(
+              'Editor instance not available - editor may have been destroyed or not fully initialized',
             );
+            console.error('Current state:', {
+              loadingState,
+              documentKey: documentKeyRef.current,
+              slideId,
+              courseId,
+            });
+            throw new Error('Editor instance not available');
+          }
 
-            setTimeout(() => {
-              isSavingRef.current = false;
-              console.log('Manual save process completed');
-            }, 5000);
-          } else {
-            console.error('Forcesave command failed:', result);
+          if (
+            !courseId ||
+            !partId ||
+            !chapterId ||
+            !slideId ||
+            !language ||
+            !fileName
+          ) {
+            console.error('Missing required parameters for save:', {
+              courseId: !!courseId,
+              partId: !!partId,
+              chapterId: !!chapterId,
+              slideId: !!slideId,
+              language: !!language,
+              fileName: !!fileName,
+            });
+            throw new Error('Missing required parameters for save');
+          }
+
+          try {
+            console.log('Initiating manual save for:', {
+              courseId,
+              slideId,
+              language,
+            });
+
+            isSavingRef.current = true;
+
+            const documentKey = documentKeyRef.current;
+            if (!documentKey) {
+              console.error(
+                'Document key not available – editor may not have initialised yet',
+              );
+              return;
+            }
+            const commandUrl = '/api/translation-downloads/pptx-forcesave';
+
+            const commandBody = {
+              documentKey,
+              courseId,
+              partId,
+              chapterId,
+              slideId,
+              language,
+              fileName,
+            };
+
+            console.log('Sending forcesave command via proxy:', commandBody);
+
+            const response = await fetch(commandUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(commandBody),
+              credentials: 'include',
+            });
+
+            const result = await response.json();
+            console.log('Forcesave command result:', result);
+
+            if (result.error === 0) {
+              console.log(
+                'Manual save requested successfully - waiting for S3 upload completion...',
+              );
+
+              // Poll for S3 upload completion instead of using arbitrary timeout
+              let uploadCompleted = false;
+              let pollAttempts = 0;
+              const maxPollAttempts = 30; // 30 seconds max wait time
+
+              while (!uploadCompleted && pollAttempts < maxPollAttempts) {
+                await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1 second
+                pollAttempts++;
+
+                try {
+                  // Check if the file exists in S3 by making a HEAD request to the proofread endpoint
+                  const proofreadUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}?version=proofread`;
+                  const headResponse = await fetch(proofreadUrl, {
+                    method: 'HEAD',
+                  });
+
+                  if (headResponse.ok) {
+                    console.log(
+                      `S3 upload completed after ${pollAttempts} seconds`,
+                    );
+                    uploadCompleted = true;
+                  } else {
+                    console.log(
+                      `S3 upload still in progress... attempt ${pollAttempts}`,
+                    );
+                  }
+                } catch (error) {
+                  console.warn('Error checking S3 upload status:', error);
+                }
+              }
+
+              if (!uploadCompleted) {
+                console.warn(
+                  `S3 upload may still be in progress after ${maxPollAttempts} seconds`,
+                );
+              }
+            } else {
+              console.error('Forcesave command failed:', result);
+              throw new Error(`Forcesave failed: ${result.error}`);
+            }
+          } catch (error) {
+            console.error('Error during manual save:', error);
+            isSavingRef.current = false;
+            throw error;
+          } finally {
             isSavingRef.current = false;
           }
-        } catch (error) {
-          console.error('Error during manual save:', error);
-          isSavingRef.current = false;
-        }
-      },
-    }));
+        },
+      }),
+      [courseId, partId, chapterId, slideId, language, fileName, loadingState],
+    );
 
     useEffect(() => {
       if (!fileUrl) {
@@ -198,50 +271,39 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             ? 'host.docker.internal:3000'
             : 'api:3000';
 
-          // Kick off DocsAPI loading and token request concurrently
-          const tokenPromise = fetch('/api/translation-downloads/pptx-token', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              courseId,
-              partId,
-              chapterId,
-              slideId,
-              language,
-              fileName,
-            }),
-          });
+          // TEMPORARY: Use old endpoint structure until backend implements discovery endpoints
+          let absoluteFileUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
 
-          const [, tokenResp] = await Promise.all([
-            loadDocsAPI(),
-            tokenPromise,
-          ]);
+          // Load DocsAPI and check if file exists
+          await loadDocsAPI();
 
-          if (!tokenResp.ok) {
-            if (tokenResp.status === 404) {
-              console.warn('PPTX file not found (token endpoint)');
+          // Test if file exists by making a HEAD request
+          const testResp = await fetch(absoluteFileUrl, { method: 'HEAD' });
+          if (!testResp.ok) {
+            if (testResp.status === 404) {
+              console.warn('PPTX file not found (direct endpoint)');
               setLoadingState('file-not-found');
             } else {
-              console.error('Failed to obtain OnlyOffice download token');
+              console.error('Failed to access PPTX file');
               setLoadingState('error');
             }
             return;
           }
-
-          const { downloadUrl } = await tokenResp.json();
-
-          let absoluteFileUrl: string = downloadUrl as string;
           if (isHybridDev) {
-            absoluteFileUrl = absoluteFileUrl
-              .replace('localhost:3000', apiHost)
-              .replace('127.0.0.1:3000', apiHost);
+            // Convert to absolute URL for OnlyOffice in Docker
+            const protocol = window.location.protocol;
+            absoluteFileUrl = `${protocol}//${apiHost}${absoluteFileUrl}`;
+          } else {
+            // Convert to full URL for production
+            const protocol = window.location.protocol;
+            const host = window.location.host;
+            absoluteFileUrl = `${protocol}//${host}${absoluteFileUrl}`;
           }
 
-          // Generate a stable *unique* document key. Must be 1-20 ASCII chars.
-          // We create a short deterministic hash of the raw identifier to
-          // guarantee uniqueness across languages/slides while respecting the
-          // 20-char limit imposed by Document Server.
-          const rawKey = `${courseId}-${partId}-${chapterId}-${slideId}-${language}`;
+          // Generate a unique document key for each editing session. Must be 1-20 ASCII chars.
+          // Include timestamp to avoid OnlyOffice caching conflicts when returning to same slide
+          const timestamp = Date.now().toString(36); // Convert to base36 for compactness
+          const rawKey = `${courseId}-${partId}-${chapterId}-${slideId}-${language}-${timestamp}`;
 
           const hashFn = (str: string) => {
             // 32-bit FNV-1a hash for good distribution and speed.
@@ -256,12 +318,12 @@ const OnlyOfficeSlideEditorInner = forwardRef<
           const documentKey = hashFn(rawKey).substring(0, 20);
           documentKeyRef.current = documentKey;
 
-          console.log('OnlyOffice initialization params:', {
-            editorId: editorId.current,
+          console.log(
+            'Generated document key:',
             documentKey,
-            absoluteFileUrl,
-            apiHost,
-          });
+            'for slide:',
+            slideId,
+          );
 
           // OnlyOffice configuration
           const config: any = {
@@ -362,7 +424,10 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             width: '100%',
             events: {
               onAppReady: () => {
-                console.log('OnlyOffice editor is ready');
+                console.log(
+                  'OnlyOffice editor is ready, instance:',
+                  !!editorInstanceRef.current,
+                );
                 if (isMounted) {
                   setLoadingState('ready');
                 }
@@ -401,6 +466,27 @@ const OnlyOfficeSlideEditorInner = forwardRef<
               onRequestClose: () => {
                 console.log('OnlyOffice requesting close');
                 return false;
+              },
+              onRequestRefreshFile: (event: any) => {
+                console.log(
+                  'OnlyOffice requesting file refresh due to version conflict:',
+                  event,
+                );
+                // Force refresh by reloading the editor with a new document key
+                if (
+                  editorInstanceRef.current &&
+                  typeof editorInstanceRef.current.refreshFile === 'function'
+                ) {
+                  try {
+                    editorInstanceRef.current.refreshFile();
+                    console.log('Document refreshed successfully');
+                  } catch (error) {
+                    console.error('Failed to refresh document:', error);
+                    // Fallback: recreate the editor
+                    window.location.reload();
+                  }
+                }
+                return true;
               },
             },
             token: '',
@@ -462,9 +548,11 @@ const OnlyOfficeSlideEditorInner = forwardRef<
               // Update local state immediately
               if (isMounted) setLoadingState('ready');
               return; // Skip full re-initialisation
-            } catch (err) {
-              console.warn('Hot-swap failed, recreating editor', err);
-              // If hot-swap fails, destroy and recreate below
+            } catch (_err) {
+              console.log(
+                'Hot-swap failed (expected when using timestamp-based keys), recreating editor',
+              );
+              // If hot-swap fails, destroy and recreate below - this is expected behavior
               try {
                 editorInstanceRef.current.destroy?.();
               } catch (_) {
@@ -503,6 +591,13 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 editorInstanceRef.current = new (
                   window as any
                 ).DocsAPI.DocEditor(editorId.current, config);
+
+                console.log(
+                  'OnlyOffice editor instance created:',
+                  !!editorInstanceRef.current,
+                  'for slide:',
+                  slideId,
+                );
               } catch (error) {
                 console.error('Error creating OnlyOffice editor:', error);
                 if (isMounted) {
@@ -515,6 +610,10 @@ const OnlyOfficeSlideEditorInner = forwardRef<
           // Store cleanup function
           cleanupRef.current = () => {
             if (editorInstanceRef.current) {
+              console.log(
+                'Destroying OnlyOffice editor instance for slide:',
+                slideId,
+              );
               try {
                 if (
                   typeof editorInstanceRef.current.destroyEditor === 'function'
@@ -529,6 +628,10 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 console.warn('Error destroying OnlyOffice editor:', error);
               }
               editorInstanceRef.current = null;
+              console.log(
+                'OnlyOffice editor instance set to null for slide:',
+                slideId,
+              );
             }
           };
         } catch (error) {
@@ -655,15 +758,22 @@ const OnlyOfficeSlideEditorInner = forwardRef<
   },
 );
 
-// Memoize to avoid React re-rendering (and diffing) the DOM altered by OnlyOffice once mounted.
+// Force remount when slide changes to avoid DOM reconciliation issues
 export const OnlyOfficeSlideEditor = memo(
   OnlyOfficeSlideEditorInner,
-  (prev, next) =>
-    prev.fileUrl === next.fileUrl &&
-    prev.language === next.language &&
-    prev.slideId === next.slideId &&
-    prev.chapterId === next.chapterId &&
-    prev.partId === next.partId &&
-    prev.courseId === next.courseId &&
-    prev.mode === next.mode,
+  (prev, next) => {
+    // Force remount if slide changes to prevent React DOM reconciliation errors
+    if (prev.slideId !== next.slideId) {
+      return false;
+    }
+
+    return (
+      prev.fileUrl === next.fileUrl &&
+      prev.language === next.language &&
+      prev.chapterId === next.chapterId &&
+      prev.partId === next.partId &&
+      prev.courseId === next.courseId &&
+      prev.mode === next.mode
+    );
+  },
 );

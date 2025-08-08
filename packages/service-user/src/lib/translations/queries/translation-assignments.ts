@@ -135,21 +135,33 @@ export const updateTranslationAssignmentStatusQuery = (
 ) => {
   if (status === 'completed') {
     return sql`
-      UPDATE users.translation_assignments
-      SET
-        status = ${status},
-        completed_at = NOW()
-      WHERE id = ${assignmentId}
-      RETURNING
-        id,
-        course_id AS "courseId",
-        language,
-        assignee_id AS "assigneeId",
-        assigner_id AS "assignerId",
-        status,
-        assigned_at AS "assignedAt",
-        completed_at AS "completedAt",
-        rejection_reason AS "rejectionReason"
+      WITH updated_assignment AS (
+        UPDATE users.translation_assignments
+        SET
+          status = ${status},
+          completed_at = NOW()
+        WHERE id = ${assignmentId}
+        RETURNING
+          id,
+          course_id AS "courseId",
+          language,
+          assignee_id AS "assigneeId",
+          assigner_id AS "assignerId",
+          status,
+          assigned_at AS "assignedAt",
+          completed_at AS "completedAt",
+          rejection_reason AS "rejectionReason"
+      ),
+      updated_course_translation AS (
+        UPDATE content.course_translations
+        SET
+          status = 'reviewed'::translation_status,
+          updated_at = NOW()
+        WHERE course_id = (SELECT "courseId" FROM updated_assignment)
+          AND language = (SELECT language FROM updated_assignment)
+        RETURNING course_id, language, status
+      )
+      SELECT * FROM updated_assignment
     `;
   }
 

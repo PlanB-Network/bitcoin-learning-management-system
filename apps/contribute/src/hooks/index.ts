@@ -4,3 +4,7 @@ export { useGreater } from './use-greater.ts';
 export { useNavigateMisc } from './use-navigate-misc.ts';
 export { useSmaller } from './use-smaller.ts';
 export { useTranslatePage } from './use-translate-page.ts';
+export { useCourseLanguages } from './useCourseLanguages.ts';
+export { useLanguageAvailability } from './useLanguageAvailability.ts';
+export { useSlideAvailability } from './useSlideAvailability.ts';
+export { useTranscriptAvailability } from './useTranscriptAvailability.ts';

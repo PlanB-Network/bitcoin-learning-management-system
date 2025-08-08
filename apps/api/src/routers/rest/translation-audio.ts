@@ -1,6 +1,6 @@
 import {
-  type CourseProfessor,
-  createGetCourseProfessors,
+  createGetSlideProfessor,
+  createUpdateSlideAudioStatus,
 } from '@blms/service-content';
 import type { Router } from 'express';
 
@@ -19,10 +19,43 @@ import { expressAuthMiddleware } from '#src/middlewares/auth.js';
  * It returns the task information coming from the Language-Toolkit so the
  * caller can poll for completion if desired.
  */
+// In-memory store for tracking audio generation tasks
+const audioTasks = new Map<
+  string,
+  {
+    courseId: string;
+    partId: string;
+    chapterId: string;
+    slideId: string;
+    fileName: string;
+    language: string;
+    outputKey: string;
+    userId: string;
+    createdAt: number;
+  }
+>();
+
+// Clean up old task records every 30 minutes
+setInterval(
+  () => {
+    const now = Date.now();
+    const maxAge = 30 * 60 * 1000; // 30 minutes
+    for (const [taskId, data] of audioTasks.entries()) {
+      if (now - data.createdAt > maxAge) {
+        audioTasks.delete(taskId);
+      }
+    }
+  },
+  30 * 60 * 1000,
+);
+
 export const createRestTranslationAudioRoutes = async (
   dependencies: Dependencies,
   router: Router,
 ) => {
+  const updateSlideAudioStatus = createUpdateSlideAudioStatus(
+    dependencies as any,
+  );
   /**
    * Start audio generation for a slide.
    *
@@ -35,6 +68,9 @@ export const createRestTranslationAudioRoutes = async (
    *  - language       : ISO-639-1 language code (target language)
    *  - text           : string – translated transcript that must be voiced
    *  - voiceId        : optional – ElevenLabs voice_id to pass through
+   *
+   * Note: Professor name for voice matching is automatically retrieved from
+   * the course_translation_slides table using the provided slide identifiers.
    */
   router.post(
     '/translation-audio/generate',
@@ -50,7 +86,6 @@ export const createRestTranslationAudioRoutes = async (
           language,
           text,
           voiceId,
-          professor,
         } = req.body as Record<string, string | undefined>;
 
         if (
@@ -65,48 +100,24 @@ export const createRestTranslationAudioRoutes = async (
           throw new BadRequest('Missing required parameters');
         }
 
+        // Note: slideId comes from database via frontend, should have proper UUID format with dashes
+
         // Expected S3 key for the generated MP3
         const outputKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/audio/${fileName}.mp3`;
 
-        // Determine professor information for voice matching
-        let professors: Array<{
-          id: string;
-          name: string;
-          isCoordinator: boolean;
-        }> = [];
+        // Get professor name from the course_translation_slides table
+        const getSlideProfessor = createGetSlideProfessor(dependencies as any);
+        const professorName = await getSlideProfessor({
+          courseId,
+          language,
+          partId,
+          chapterId,
+          slideId,
+        });
 
-        if (professor) {
-          // Use the professor name provided by the client (slide-level)
-          professors = [
-            {
-              id: 'slide',
-              name: professor,
-              isCoordinator: true,
-            },
-          ];
-          console.log(`Using professor from slide payload: ${professor}`);
-        } else {
-          // Fallback to course-level professors
-          const getCourseProfessors = createGetCourseProfessors(
-            dependencies as any,
-          );
-          const courseProfs = await getCourseProfessors(courseId);
-          professors = courseProfs.map((p: CourseProfessor) => ({
-            id: p.id,
-            name: p.name,
-            isCoordinator: p.isCoordinator,
-          }));
-
-          console.log(
-            'Found %d professors for course %s:',
-            professors.length,
-            courseId,
-            professors.map(
-              (p) =>
-                `${p.name} (${p.isCoordinator ? 'coordinator' : 'associated'})`,
-            ),
-          );
-        }
+        console.log(
+          `Using professor from slide data: ${professorName || 'none found'}`,
+        );
 
         // Base URL of the Language-Toolkit API (default to local dev instance)
         const toolkitUrl = process.env.LTK_URL ?? 'http://localhost:8000';
@@ -156,14 +167,9 @@ export const createRestTranslationAudioRoutes = async (
           ttsBody.voice_id = voiceId;
         }
 
-        // Add professor information for voice matching (if no explicit voice_id)
-        if (professors.length > 0) {
-          // Convert camelCase fields back to snake_case for Language-Toolkit compatibility
-          ttsBody.professors = professors.map((prof) => ({
-            id: prof.id,
-            name: prof.name,
-            is_coordinator: prof.isCoordinator,
-          }));
+        // Add professor name for voice matching (if no explicit voice_id and professor found)
+        if (professorName) {
+          ttsBody.professor = professorName;
         }
 
         console.log('Sending TTS request to Language-Toolkit:', {
@@ -189,15 +195,34 @@ export const createRestTranslationAudioRoutes = async (
 
         const taskInfo = await ttsResp.json();
 
+        // Store task information for completion tracking
+        if ((taskInfo as any)?.task_id) {
+          audioTasks.set((taskInfo as any).task_id, {
+            courseId,
+            partId,
+            chapterId,
+            slideId,
+            fileName,
+            language,
+            outputKey,
+            userId: req.session.uid!,
+            createdAt: Date.now(),
+          });
+          console.log(
+            'Started audio generation task:',
+            (taskInfo as any).task_id,
+          );
+        }
+
         res.json({
           message: 'Audio generation task started',
           outputKey,
           toolkitTask: taskInfo,
-          professorsFound: professors.length,
+          professorFound: !!professorName,
           voiceSelectionMethod: voiceId
             ? 'explicit_voice_id'
-            : professors.length > 0
-              ? 'professor_matching'
+            : professorName
+              ? 'slide_professor_matching'
               : 'default_fallback',
         });
       } catch (err) {
@@ -253,6 +278,41 @@ export const createRestTranslationAudioRoutes = async (
         }
 
         const body = await statusResp.json();
+
+        // Check if task is completed and update database
+        if ((body as any)?.status === 'completed') {
+          const taskData = audioTasks.get(taskId);
+          if (taskData) {
+            console.log('Audio task completed, updating database:', {
+              taskId,
+              audioPath: taskData.outputKey,
+              courseId: taskData.courseId,
+              slideId: taskData.slideId,
+            });
+
+            try {
+              await updateSlideAudioStatus(
+                taskData.courseId,
+                taskData.language,
+                taskData.partId,
+                taskData.chapterId,
+                taskData.slideId,
+                taskData.outputKey,
+              );
+              console.log(
+                'Successfully updated audio_resource_path in database',
+              );
+
+              // Clean up task record
+              audioTasks.delete(taskId);
+            } catch (error) {
+              console.error('Error updating audio_resource_path:', error);
+            }
+          } else {
+            console.warn('Completed task not found in tracking map:', taskId);
+          }
+        }
+
         res.json(body);
       } catch (err) {
         next(err);

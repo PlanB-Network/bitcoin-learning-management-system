@@ -42,7 +42,7 @@ export const createUpdateSlideAudioStatus = ({ postgres }: Dependencies) => {
       UPDATE content.course_translation_slides
       SET
         audio_resource_path = ${audioPath},
-        audio_tries = COALESCE(${audioTries}, audio_tries + 1),
+        audio_tries = COALESCE(${audioTries}, audio_tries),
         audio_validated = true,
         updated_at = NOW()
       WHERE course_id = ${courseId}
