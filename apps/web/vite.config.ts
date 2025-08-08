@@ -11,7 +11,7 @@ const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
 export default defineConfig({
   assetsInclude: [UI_PACKAGE_ASSETS],
-  base: '/',
+  base: './',
   build: {
     chunkSizeWarningLimit: 600,
     cssCodeSplit: true,
