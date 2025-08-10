@@ -390,8 +390,8 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                   url: '',
                   text: '',
                 },
-                hideRightMenu: false,
-                hideRulers: false,
+                hideRightMenu: true,
+                hideRulers: true,
                 integrationMode: 'embed',
                 macros: false,
                 macrosMode: 'warn',
@@ -410,8 +410,8 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 },
                 reviewDisplay: 'original',
                 trackChanges: false,
-                hideNotes: false,
-                uiTheme: 'theme-classic-light',
+                hideNotes: true,
+                uiTheme: 'theme-gray',
                 toolbar: {
                   file: {
                     save: false,

@@ -14,7 +14,7 @@ import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { useLanguageAvailability } from '#src/hooks/useLanguageAvailability.ts';
 import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
 import { getLanguageName } from '#src/utils/i18n.ts';
-import { buildPptxUrl, buildTranslationFileUrl } from '#src/utils/index.ts';
+import { buildPngUrl, buildPptxUrl } from '#src/utils/index.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -343,7 +343,7 @@ function CompareSlidePage() {
 
   // Original language handling
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
-  const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
+  // removed unused: const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
 
   // Get available languages from the languageAvailability state
   const availableLanguages = languageAvailability.filter((l) => l.available);
@@ -382,7 +382,7 @@ function CompareSlidePage() {
         ? availableLanguages[0]?.code
         : originalLanguageCode;
 
-  const _originalLanguageName = getLanguageName(originalLanguage);
+  // removed unused: const _originalLanguageName = getLanguageName(originalLanguage);
   const targetLanguageName = getLanguageName(targetLanguage);
 
   // Overall chapter index for progress (copied logic)
@@ -604,14 +604,12 @@ function CompareSlidePage() {
                         <img
                           key={`${currentSlide.slideId}-${originalLanguage}`}
                           data-slide-png
-                          src={buildTranslationFileUrl(
+                          src={buildPngUrl(
                             courseId,
                             originalLanguage,
                             currentSlide.partId,
                             chapterId,
                             currentSlide.slideId,
-                            'png',
-                            'proofread',
                           )}
                           alt={`Slide ${numericSlideIndex + 1} - ${getLanguageName(originalLanguage)}`}
                           className={`max-w-full h-auto border border-gray-300 rounded-lg shadow-sm transition-opacity duration-200 ${

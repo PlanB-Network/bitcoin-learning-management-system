@@ -139,7 +139,7 @@ services:
   # ONLYOFFICE Document Server for rich PPTX editing
   onlyoffice:
     <<: *defaults
-    image: onlyoffice/documentserver:latest
+    image: onlyoffice/documentserver:9.0
     ports:
       - 80:80
     environment:

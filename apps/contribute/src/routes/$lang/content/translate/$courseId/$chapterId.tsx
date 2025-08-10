@@ -1671,6 +1671,7 @@ function ChapterTranslationPage() {
             onValidate={handleValidateAudio}
             generating={audioGenerating}
             version={audioVersion}
+            audioResourcePath={currentSlide.audioResourcePath}
           />
         )}
       </div>
