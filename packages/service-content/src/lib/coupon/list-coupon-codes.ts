@@ -9,6 +9,8 @@ interface ListOptions {
   singleUse: boolean | null;
   sortBy: string;
   sortDirection: 'asc' | 'desc';
+  itemId?: string;
+  uid?: string;
 }
 
 const getCouponCodes = (options: ListOptions) => {
@@ -37,6 +39,8 @@ const getCouponCodes = (options: ListOptions) => {
       LEFT JOIN users.accounts ON accounts.uid = coupon_code.uid
       WHERE deleted_at IS NULL
       ${options.singleUse === null ? sql`` : options.singleUse ? sql`AND max_uses = 1` : sql`AND max_uses > 1`}
+      ${options.itemId ? sql`AND LOWER(item_id) = LOWER(${options.itemId})` : sql``}
+      ${options.uid ? sql`AND coupon_code.uid = ${options.uid}` : sql``}
       ${sort ? sql`ORDER BY ${sort} ${dir}` : sql``}
       LIMIT ${options.limit}
       OFFSET ${(options.page - 1) * options.limit}

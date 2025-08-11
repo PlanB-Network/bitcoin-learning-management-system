@@ -21,6 +21,7 @@ import { trpc } from '#src/utils/trpc.js';
 import { CourseAnnouncements } from './-components/course-announcements.tsx';
 import { CourseAssignment } from './-components/course-assignment.tsx';
 import { CourseDetails } from './-components/course-details.tsx';
+import { CourseDiscount } from './-components/course-discount.tsx';
 import { CourseReview } from './-components/course-review.tsx';
 import { ExamResults } from './-components/exam-results.tsx';
 
@@ -209,6 +210,16 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
               text: t('courses.exam.examResults'),
               value: 'examResults',
             },
+            ...(course.requiresPayment
+              ? [
+                  {
+                    active: 'discount' === currentTab,
+                    key: 'discount',
+                    text: t('dashboard.adminPanel.discountCodes'),
+                    value: 'discount',
+                  },
+                ]
+              : []),
           ]}
           size={isMobile ? 's' : 'm'}
           className="max-md:mx-4"
@@ -225,8 +236,11 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         <TabsContent value="assignment" className="max-md:px-4">
           <CourseAssignment courseId={course.id} />
         </TabsContent>
-        <TabsContent value="examResults">
+        <TabsContent value="examResults" className="max-md:px-4">
           <ExamResults courseId={course.id} />
+        </TabsContent>
+        <TabsContent value="discount">
+          <CourseDiscount courseId={course.id} />
         </TabsContent>
       </Tabs>
     </TabsContent>

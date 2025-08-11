@@ -1,7 +1,9 @@
+import { UserRole } from '@blms/constants';
 import { sql } from '@blms/database';
 import { nanoid } from '@blms/service-common';
 import type { CouponCode } from '@blms/types';
 import type { Dependencies } from '../dependencies.js';
+import { createCheckCoordinator } from '../professors/services/check-coordinator.js';
 
 interface Options {
   singleUse: boolean;
@@ -15,7 +17,19 @@ interface Options {
 export const createCreateCouponCode = ({
   postgres,
 }: Pick<Dependencies, 'postgres'>) => {
-  return (options: Options, uid: string) => {
+  return async (options: Options, uid: string, role?: UserRole) => {
+    if (role === UserRole.Professor) {
+      const isCourseCoordinator = await createCheckCoordinator({ postgres })({
+        userId: uid,
+        courseId: options.itemId,
+      });
+      if (!isCourseCoordinator) {
+        throw new Error(
+          'Teacher is not the coordinator of the course associated with this coupon code.',
+        );
+      }
+    }
+
     console.log('Creating coupon code', options);
 
     // Single-use coupon
