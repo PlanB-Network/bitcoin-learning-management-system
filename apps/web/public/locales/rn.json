@@ -309,7 +309,10 @@
       "weight": "Uburemere: {{weight}}%",
       "whyTimeStamp": "Gushira-igihe(Time-Stamping ) kumpamyabushobozi yawe:\nKubera iki arivyingenzi",
       "wishTryAgain": "Nimba ushaka kugerageza ukundi, ikibazo kizoboneka inyuma y’amasaha 24.",
-      "yesSubmit": "Ego, rungika"
+      "yesSubmit": "Ego, rungika",
+      "examResults": "Inyishu z'ikibazo",
+      "scoreAndDiploma": "Amanota & Impamyabumenyi",
+      "reviewTest": "Isuzuma"
     },
     "explorer": {
       "buildPath": "Wubake urugendo rwawe",
@@ -426,7 +429,9 @@
         "profession": "Umwuga",
         "resultsRemaining": "Hasigaye inyishu {{results}}",
         "seeMore": "Raba vyinshi",
-        "viewCV": "Raba CV(Incamake y’ico urico)"
+        "viewCV": "Raba CV(Incamake y’ico urico)",
+        "candidateFile": "Idosiye y’umukandida",
+        "file": "Idosiye"
       },
       "confirmRemoval": "Emeza ko ushaka gukuraho",
       "coupons": {
@@ -469,25 +474,25 @@
         "generateNewCodes": "Tunganya amakode mashasha",
         "maximumNumberOfUse": "Ibiharuro ntarengwa bikoreshwa",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "A-z",
+          "highLow": "Hejuru - Hasi",
+          "lowHigh": "Hasi - Hejuru",
+          "sortBy": "Guhitamwo hakwirikijwe",
+          "za": "z-A"
         },
-        "noCouponsFound": "",
-        "numberOfCodes": "",
-        "numberOfCodesPlaceholder": "",
-        "productCourse": "",
-        "productEvent": "",
-        "selectCourse": "",
-        "selectEvent": "",
+        "noCouponsFound": "Nta tike yabonetse.",
+        "numberOfCodes": "Ni kode zingahe wipfuza gukora?",
+        "numberOfCodesPlaceholder": "Andika igiharuro",
+        "productCourse": "Icigwa",
+        "productEvent": "Igikorwa",
+        "selectCourse": "Hitamwo icigwa",
+        "selectEvent": "Hitamwo igikorwa",
         "tableHead": {
-          "actions": "",
-          "code": "",
-          "discount": "",
-          "maxUses": "",
-          "name": "",
+          "actions": "Ibikorwa",
+          "code": "Kode",
+          "discount": "Kugabanya igiciro",
+          "maxUses": "Incuro ntarengwa z’ikoreshwa",
+          "name": "Izina",
           "owner": "Nyeneyo",
           "total": "Igitigiri cose",
           "type": "Ubwoko",
@@ -499,27 +504,77 @@
       "date": "Itariki",
       "deleteRole": "Futa uruhara",
       "discountCodes": "Amakode y'ukugabanya",
-      "downloadList": "",
-      "editRole": "",
-      "githubLink": "",
-      "hasAccessTo": "",
-      "listOfParticipants": "",
-      "makeProfessor": "",
-      "nameOfEvent": "",
-      "participants": "",
-      "professorName": "",
-      "removeTeacherDescription": "",
-      "searchByNameOrCategory": "",
-      "seeOrEdit": "",
-      "selectProfessor": "",
-      "selectRole": "",
+      "downloadList": "Teresharija urutonde",
+      "editRole": "Hindura uruhara",
+      "githubLink": "Linki igitwara kuri Github",
+      "hasAccessTo": "Afise uburenganzira bwo gushika kuri:",
+      "listOfParticipants": "Urutonde rw’abitabiriye",
+      "makeProfessor": "Guhindura umuntu umwigisha mukuru",
+      "nameOfEvent": "Izina ry’Igikorwa",
+      "participants": "Abitabiriye",
+      "professorName": "Izina ry’umwigisha mukuru",
+      "removeTeacherDescription": "Wavyiyumviyeko neza ko ushaka gukura uyu mwarimu?",
+      "searchByNameOrCategory": "Rondera hakoreshejwe izina canke ubwoko",
+      "seeOrEdit": "Raba canke hindura",
+      "selectProfessor": "Hitamwo umwigisha mukuru",
+      "selectRole": "Hitamwo uruhara",
       "tutorialAnalytics": "",
       "tutorialAnalyticsDescription": "",
       "tutorialsManagementPanel": "",
       "type": "",
       "upcomingBookings": "",
       "upcomingBookingsSubtitle": "",
-      "userRolesAllocation": ""
+      "userRolesAllocation": "",
+      "translation": "Aho gusobanurira",
+      "translationPanel": {
+        "actions": {
+          "accept": "Emeza",
+          "delete": "Futa",
+          "reject": "Hakana"
+        },
+        "contentManagement": {
+          "actions": {
+            "backToContentManagement": "Garuka ku gucunga ivy'inyandiko",
+            "view": "Raba",
+            "assign": "Bihe umuntu",
+            "reassign": "Subira utange"
+          },
+          "assignModal": {
+            "assign": "Ha umuntu",
+            "assigning": "Uri guha...",
+            "assigningCourse": "Uri guha inyigisho:",
+            "assignmentSuccess": "Inyigisho yatanzwe neza!",
+            "cancel": "Hagarika",
+            "chooseContributor": "Hitamwo uwugira icafashije...",
+            "courseInfo": "Amakuru y’icigwa",
+            "selectContributor": "Hitamwo uwuterera",
+            "title": "Ha umufasha icigwa"
+          },
+          "description": "Ha kandi ucunge ubusobanuzi bw’inyigisho ku bafasha",
+          "noCourses": "Nta nyigisho zihari zo gucungwa mu busobanuzi",
+          "noCoursesFiltered": "Nta nyigisho zabonetse zihuye n’ivyo wasanzwe warondeye"
+        },
+        "addContributor": {
+          "addLanguage": "Ongerako urundi rurimi",
+          "assign": "Ha umuntu",
+          "assignedLanguages": "Indimi zamaze guherezwa",
+          "assigning": "Uri guha...",
+          "assignmentSuccess": "Abafasha bahawe uruhara neza!",
+          "confirm": "Emeza",
+          "findContributor": "Rondera umuntu afasha igikorwa",
+          "language": "Ururimi",
+          "noUsers": "Nta babikoresha bahari",
+          "searchUsers": "Kurondera abakoresha...",
+          "selectLanguage": "Hitamwo ururimi",
+          "selectedUsers": "Ababikoresha bahiswemwo:",
+          "title": "Ongerako uwufasha igikorwa"
+        },
+        "admin": "UMUYOBOZI",
+        "comingSoon": {
+          "courses": "Ahokurabira ivyigwa harashika vuba",
+          "coverage": "Aho kurabira uko indimi zifashe hazoshika vuba"
+        }
+      }
     },
     "announcements": {
       "groups": {
