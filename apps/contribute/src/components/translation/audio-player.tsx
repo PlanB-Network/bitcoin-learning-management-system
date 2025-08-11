@@ -119,6 +119,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     version,
   );
 
+  // Reset waveform when URL changes to ensure fresh waveform for each slide
+  useEffect(() => {
+    setRawHeights(null);
+  }, [url]);
+
   // Fetch & decode audio ONCE to build a high-resolution amplitude array.
   useEffect(() => {
     if (exists !== true || duration === 0 || rawHeights) return;
