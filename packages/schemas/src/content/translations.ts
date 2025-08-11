@@ -327,6 +327,7 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
     pptResourcePath: true,
     audioResourcePath: true,
     originalContent: true,
+    aiTranslatedContent: true,
     translatedContent: true,
     createdAt: true,
     updatedAt: true,

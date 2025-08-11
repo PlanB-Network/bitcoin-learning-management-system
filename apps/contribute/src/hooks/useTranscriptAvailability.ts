@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
+import type { LanguageOption, TranscriptHook } from '#src/types/language.ts';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { getDefaultTranscriptLanguageCode } from '#src/utils/language-utils.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 import { useCourseLanguages } from './useCourseLanguages.ts';
 import { useSlideAvailability } from './useSlideAvailability.ts';
@@ -10,22 +12,6 @@ interface Params {
   chapterId: string;
   slideId: string;
   originalLanguage: string;
-}
-
-export interface TranscriptHook {
-  options: LanguageOption[];
-  loading: boolean;
-  error: Error | null;
-  selected: string;
-  setSelected: (lang: string) => void;
-  contentCache: Record<string, string | null>;
-  ensureContentLoaded: (lang: string) => Promise<void>;
-}
-
-export interface LanguageOption {
-  code: string;
-  name: string;
-  available: boolean;
 }
 
 /**
@@ -54,17 +40,19 @@ export function useTranscriptAvailability(params: Params): TranscriptHook {
   });
 
   const options = useMemo<LanguageOption[]>(() => {
-    const set = new Set<string>(courseCodes);
+    const set = new Set<string>([...courseCodes, ...availableCodes]);
     set.add(originalLanguage);
     return Array.from(set).map((code) => ({
       code,
       name: getLanguageName(code),
+      // Original is always selectable; targets depend on backend availability
       available: availableCodes.includes(code) || code === originalLanguage,
     }));
   }, [courseCodes, availableCodes, originalLanguage]);
 
-  const firstAvailable =
-    options.find((o) => o.available)?.code ?? originalLanguage;
+  const firstAvailable = useMemo(() => {
+    return getDefaultTranscriptLanguageCode(options, originalLanguage);
+  }, [options, originalLanguage]);
   const [selected, setSelected] = useState<string>(firstAvailable);
   const [contentCache, setContentCache] = useState<
     Record<string, string | null>
@@ -84,9 +72,11 @@ export function useTranscriptAvailability(params: Params): TranscriptHook {
         chapterId,
       } as any);
       const slide = resp?.slides?.find((s: any) => s.slideId === slideId);
+      // Use AI translated content as the source for target languages
+      const ai = (slide as any)?.aiTranslatedContent;
       setContentCache((prev) => ({
         ...prev,
-        [lang]: slide?.translatedContent ?? null,
+        [lang]: typeof ai === 'string' && ai.length > 0 ? ai : null,
       }));
     } catch (err) {
       console.warn('Failed to load transcript content', err);

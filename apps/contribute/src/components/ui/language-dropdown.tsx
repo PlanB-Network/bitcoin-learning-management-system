@@ -1,11 +1,6 @@
 import type { FC } from 'react';
 import DroplistArrowIcon from '#src/assets/icons/droplist_arrow_balck.svg';
-
-export interface LanguageOption {
-  code: string;
-  name: string;
-  available: boolean;
-}
+import type { LanguageOption } from '#src/types/language.ts';
 
 interface LanguageDropdownProps {
   options: LanguageOption[];
@@ -13,6 +8,10 @@ interface LanguageDropdownProps {
   value: string;
   onChange: (code: string) => void;
   selectClassName?: string;
+  /** Course original language code to annotate the option */
+  originalCode?: string;
+  /** Target language code (the one being worked on) to annotate the option */
+  targetCode?: string;
 }
 
 export const LanguageDropdown: FC<LanguageDropdownProps> = ({
@@ -21,6 +20,8 @@ export const LanguageDropdown: FC<LanguageDropdownProps> = ({
   value,
   onChange,
   selectClassName = '',
+  originalCode,
+  targetCode,
 }) => {
   return (
     <div className="relative">
@@ -53,7 +54,14 @@ export const LanguageDropdown: FC<LanguageDropdownProps> = ({
               }}
             >
               {lang.name}
-              {!lang.available && ' (Not available)'}
+              {(() => {
+                // Annotate Original / Target / Translated
+                if (originalCode && lang.code === originalCode)
+                  return ' — Original';
+                if (targetCode && lang.code === targetCode) return ' — Target';
+                if (lang.available) return ' — Translated';
+                return ' — Not available';
+              })()}
             </option>
           ))
         )}

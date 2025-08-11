@@ -28,6 +28,7 @@ import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.
 import { BackLink } from '#src/molecules/backlink.tsx';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { buildPptxUrl } from '#src/utils/index.ts';
+import { getDefaultTranscriptLanguageCode } from '#src/utils/language-utils.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -161,6 +162,14 @@ function ChapterTranslationPage() {
   const [transcriptContentCache, setTranscriptContentCache] = useState<
     Record<string, string | null>
   >({});
+
+  // Determine default transcript language using shared logic
+  const transcriptDefaultCode = React.useMemo(() => {
+    return getDefaultTranscriptLanguageCode(
+      transcriptLanguageAvailability,
+      courseData?.originalLanguage ?? 'en',
+    );
+  }, [transcriptLanguageAvailability, courseData]);
 
   // Removed redundant helper function – replaced by shared hook
 
@@ -316,10 +325,12 @@ function ChapterTranslationPage() {
   // ----------------------------
   useEffect(() => {
     const loadTranscriptContent = async () => {
-      if (!selectedOriginalTranscriptLanguage) return;
+      const effective =
+        selectedOriginalTranscriptLanguage || transcriptDefaultCode;
+      if (!effective) return;
       if (!chapterData) return;
 
-      const lang = selectedOriginalTranscriptLanguage;
+      const lang = effective;
       const slide = chapterData.slides[currentSlideIndex];
       if (!slide) return;
 
@@ -342,7 +353,8 @@ function ChapterTranslationPage() {
         const otherSlide = resp?.slides?.[currentSlideIndex];
         setTranscriptContentCache((prev) => ({
           ...prev,
-          [lang]: otherSlide?.translatedContent ?? null,
+          // For target languages show AI generated content to proofread
+          [lang]: (otherSlide as any)?.aiTranslatedContent ?? null,
         }));
       } catch (err) {
         console.warn('Could not load transcript content', err);
@@ -353,19 +365,62 @@ function ChapterTranslationPage() {
     loadTranscriptContent();
   }, [
     selectedOriginalTranscriptLanguage,
+    transcriptDefaultCode,
     currentSlideIndex,
-    courseData,
     courseId,
     chapterId,
     transcriptContentCache,
     chapterData,
   ]);
 
+  const effectiveTranscriptLang =
+    selectedOriginalTranscriptLanguage || transcriptDefaultCode || '';
   const displayedOriginalTranscript =
-    selectedOriginalTranscriptLanguage ===
-    (courseData?.originalLanguage ?? 'en')
+    effectiveTranscriptLang === (courseData?.originalLanguage ?? 'en')
       ? chapterData?.slides?.[currentSlideIndex]?.originalContent
-      : transcriptContentCache[selectedOriginalTranscriptLanguage];
+      : transcriptContentCache[effectiveTranscriptLang];
+
+  // Initialize transcript language selection when availability is ready
+  useEffect(() => {
+    if (
+      !selectedOriginalTranscriptLanguage &&
+      transcriptLanguageAvailability.length > 0 &&
+      courseData
+    ) {
+      // Only select languages that are actually available, prioritize original language
+      const originalCode = courseData.originalLanguage ?? 'en';
+      const original = transcriptLanguageAvailability.find(
+        (o) => o.code === originalCode && o.available,
+      )?.code;
+      const english = transcriptLanguageAvailability.find(
+        (o) => o.code === 'en' && o.available,
+      )?.code;
+      const any = transcriptLanguageAvailability.find((o) => o.available)?.code;
+
+      // Priority: original language first, then English, then any available
+      const selectedCode = original || english || any || '';
+      if (selectedCode) {
+        setSelectedOriginalTranscriptLanguage(selectedCode);
+      }
+    }
+  }, [
+    transcriptLanguageAvailability,
+    selectedOriginalTranscriptLanguage,
+    courseData,
+  ]);
+
+  // Loading state for transcript content: when a non-original language is selected but not yet cached
+  const selectedTranscriptIsOriginal =
+    selectedOriginalTranscriptLanguage ===
+    (courseData?.originalLanguage ?? 'en');
+  const transcriptHasCacheEntry = selectedOriginalTranscriptLanguage
+    ? Object.hasOwn(transcriptContentCache, selectedOriginalTranscriptLanguage)
+    : false;
+  const isTranscriptLoading = Boolean(
+    (!selectedOriginalTranscriptLanguage ||
+      (!selectedTranscriptIsOriginal && !transcriptHasCacheEntry)) &&
+      !transcriptLanguagesLoading,
+  );
 
   // Scroll to top when slide changes
   useEffect(() => {
@@ -1530,7 +1585,11 @@ function ChapterTranslationPage() {
                 <LanguageDropdown
                   options={transcriptLanguageAvailability ?? []}
                   loading={transcriptLanguagesLoading}
-                  value={selectedOriginalTranscriptLanguage ?? ''}
+                  value={
+                    selectedOriginalTranscriptLanguage ||
+                    transcriptDefaultCode ||
+                    ''
+                  }
                   onChange={(code: string) => {
                     const availability = transcriptLanguageAvailability.find(
                       (l) => l.code === code,
@@ -1566,10 +1625,14 @@ function ChapterTranslationPage() {
               style={{ border: '1px solid #CCCCCC' }}
             >
               <div className="text-sm leading-relaxed text-gray-900 whitespace-pre-line">
-                {displayedOriginalTranscript ||
-                  t('translate.noTranscriptionAvailable', {
-                    defaultValue: 'No transcription available',
-                  })}
+                {isTranscriptLoading
+                  ? t('translate.loadingTranscription', {
+                      defaultValue: 'Loading transcription…',
+                    })
+                  : displayedOriginalTranscript ||
+                    t('translate.noTranscriptionAvailable', {
+                      defaultValue: 'No transcription available',
+                    })}
               </div>
             </div>
 

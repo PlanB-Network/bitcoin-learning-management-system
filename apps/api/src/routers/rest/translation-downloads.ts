@@ -743,67 +743,6 @@ export const createRestTranslationDownloadRoutes = async (
     },
   );
 
-  // OnlyOffice callback endpoint for document saves
-  router.post('/onlyoffice-callback', async (req, res, _next) => {
-    try {
-      const { status, url, key } = req.body;
-
-      console.log('OnlyOffice callback:', { status, url, key });
-
-      // Status codes:
-      // 1 - document is being edited
-      // 2 - document is ready for saving
-      // 3 - document saving error has occurred
-      // 4 - document is closed with no changes
-      // 6 - document is being edited, but the current document state is saved
-      // 7 - error has occurred while force saving the document
-
-      if (status === 2 || status === 3 || status === 6 || status === 7) {
-        if (status === 2 || status === 6) {
-          // Document is ready for saving or force save
-          if (url) {
-            try {
-              // Validate and download the updated document from OnlyOffice
-              assertOnlyofficeUrl(url);
-              const response = await fetch(url);
-              if (response.ok) {
-                const buffer = await response.arrayBuffer();
-                const stream = new Readable();
-                stream.push(Buffer.from(buffer));
-                stream.push(null);
-
-                // Extract courseId and slideId from the document key
-                // The key was generated from the fileUrl path
-                const decodedKey = atob(
-                  key.padEnd(key.length + ((4 - (key.length % 4)) % 4), '='),
-                );
-                console.log('Decoded key:', decodedKey);
-
-                // For now, we'll just log the save - in production you'd want to:
-                // 1. Parse the courseId, slideId, language from the key
-                // 2. Save the updated file back to S3
-                // 3. Update the database with the new version
-
-                console.log('Document saved successfully');
-              }
-            } catch (error) {
-              console.error('Error saving document:', error);
-            }
-          }
-        }
-
-        // Always respond with success to OnlyOffice
-        res.json({ error: 0 });
-      } else {
-        // Document is being edited or no changes
-        res.json({ error: 0 });
-      }
-    } catch (error) {
-      console.error('OnlyOffice callback error:', error);
-      res.json({ error: 1 });
-    }
-  });
-
   // Stream translated PPTX files stored in S3 to the client
   router.get(
     '/translation-downloads/pptx/:courseId/:language/:partId/:chapterId/:slideId/:fileName',
@@ -942,6 +881,7 @@ export const createRestTranslationDownloadRoutes = async (
     directoryPath: string,
     extension: string,
     suffix?: string,
+    index?: number,
   ): Promise<string | null> => {
     try {
       // List all objects in the directory using the S3 list method
@@ -951,7 +891,7 @@ export const createRestTranslationDownloadRoutes = async (
         return null;
       }
 
-      // Filter by extension and suffix
+      // Filter by extension and optional suffix or index
       const matchingFiles = objectKeys.filter((key: string) => {
         const fileName = key.split('/').pop() || '';
         const hasCorrectExtension = fileName
@@ -960,7 +900,15 @@ export const createRestTranslationDownloadRoutes = async (
 
         if (!hasCorrectExtension) return false;
 
-        // If suffix is specified, check for it
+        // If index is specified, prefer exact _<index> match (before extension)
+        if (typeof index === 'number' && Number.isFinite(index)) {
+          const baseNameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
+          return (
+            baseNameWithoutExt.match(new RegExp(`_(?:${index})$`, 'i')) != null
+          );
+        }
+
+        // If suffix is specified, check for it (e.g. -proofread)
         if (suffix) {
           const baseNameWithoutExt = fileName.replace(/\.[^/.]+$/, '');
           return baseNameWithoutExt
@@ -1245,7 +1193,21 @@ export const createRestTranslationDownloadRoutes = async (
       try {
         const { courseId, language, partId, chapterId, slideId } =
           req.params as any;
-        const { suffix } = req.query as any;
+        const { suffix, index } = req.query as any;
+        const indexNum =
+          typeof index !== 'undefined' && index !== null && `${index}` !== ''
+            ? Number(index)
+            : undefined;
+
+        console.log('[PNG Discovery] Start', {
+          courseId,
+          language,
+          partId,
+          chapterId,
+          slideId,
+          suffix: suffix ?? null,
+          index: indexNum ?? null,
+        });
 
         if (!courseId || !language || !partId || !chapterId || !slideId) {
           throw new BadRequest('Missing required path parameters');
@@ -1262,16 +1224,16 @@ export const createRestTranslationDownloadRoutes = async (
         `;
 
         const result = await dependencies.postgres.exec(slideQuery);
-
-        if (!result || result.length === 0) {
-          res.status(404).send('Slide not found');
-          return;
-        }
+        console.log(
+          '[PNG Discovery] DB rows',
+          Array.isArray(result) ? result.length : 0,
+        );
 
         const pptResourcePath =
-          result[0].pptResourcePath || result[0].ppt_resource_path;
+          result?.[0]?.pptResourcePath || result?.[0]?.ppt_resource_path;
 
         let directoryPath: string;
+        let alternateDirectoryPath: string | null = null;
 
         if (pptResourcePath) {
           // Derive directory from ppt path (replace /pptx/ with /png/)
@@ -1280,20 +1242,186 @@ export const createRestTranslationDownloadRoutes = async (
             pptResourcePath.lastIndexOf('/') + 1,
           );
           directoryPath = pptDir.replace('/pptx/', '/png/');
+          // Some originals store PNG files directly under /pptx/ – keep as fallback
+          alternateDirectoryPath = pptDir; // points to /pptx/
+          console.log(
+            '[PNG Discovery] Derived directories from pptResourcePath',
+            {
+              pptResourcePath,
+              directoryPath,
+              alternateDirectoryPath,
+            },
+          );
         } else {
           // Construct expected directory path
           directoryPath = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/png/`;
+          // And a corresponding fallback pointing to /pptx/
+          alternateDirectoryPath = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/pptx/`;
+          console.log(
+            '[PNG Discovery] Constructed directories (no pptResourcePath)',
+            {
+              directoryPath,
+              alternateDirectoryPath,
+            },
+          );
         }
 
         // Discover PNG file with optional suffix
-        const discoveredKey = await discoverFileByExtension(
+        let discoveredKey = await discoverFileByExtension(
           dependencies.s3,
           directoryPath,
           'png',
           suffix,
+          indexNum,
         );
+        console.log('[PNG Discovery] Try directoryPath result', {
+          directoryPath,
+          discovered: Boolean(discoveredKey),
+          key: discoveredKey ?? null,
+        });
+        // Fallback: some PNGs might be directly under /pptx/
+        if (!discoveredKey && alternateDirectoryPath) {
+          discoveredKey = await discoverFileByExtension(
+            dependencies.s3,
+            alternateDirectoryPath,
+            'png',
+            suffix,
+            indexNum,
+          );
+          console.log('[PNG Discovery] Try alternateDirectoryPath result', {
+            alternateDirectoryPath,
+            discovered: Boolean(discoveredKey),
+            key: discoveredKey ?? null,
+          });
+        }
+        // Special handling for original language storage layout – PNGs may live under
+        // contribute/<courseId>/<language>/<partId>/<chapterId>/pptx/ (no slideId)
+        if (!discoveredKey) {
+          const originalDirNoSlide = `contribute/${courseId}/${language}/${partId}/${chapterId}/pptx/`;
+          discoveredKey = await discoverFileByExtension(
+            dependencies.s3,
+            originalDirNoSlide,
+            'png',
+            suffix,
+            indexNum,
+          );
+          console.log('[PNG Discovery] Try originalDirNoSlide result', {
+            originalDirNoSlide,
+            discovered: Boolean(discoveredKey),
+            key: discoveredKey ?? null,
+          });
+        }
+
+        // Final fallback: search across all slideId directories under chapter for PNGs in /pptx/
+        if (!discoveredKey) {
+          const chapterParentDir = `contribute/${courseId}/${language}/${partId}/${chapterId}/`;
+          try {
+            const keys = await dependencies.s3.list(chapterParentDir);
+            console.log('[PNG Discovery] Parent directory list count', {
+              chapterParentDir,
+              total: Array.isArray(keys) ? keys.length : 0,
+            });
+            const candidates = keys.filter((key: string) => {
+              // Only consider PNGs that live under a /pptx/ subdirectory
+              if (!key.toLowerCase().endsWith('.png')) return false;
+              if (!key.includes('/pptx/')) return false;
+              // If suffix requested (e.g., proofread), enforce it
+              if (suffix) {
+                const base = key
+                  .split('/')
+                  .pop()!
+                  .replace(/\.[^/.]+$/, '');
+                if (!base.toLowerCase().endsWith(`-${suffix.toLowerCase()}`)) {
+                  return false;
+                }
+              }
+              // If index requested, ensure filename ends with _<index>
+              if (typeof indexNum === 'number' && Number.isFinite(indexNum)) {
+                const base = key
+                  .split('/')
+                  .pop()!
+                  .replace(/\.[^/.]+$/, '');
+                if (new RegExp(`_(?:${indexNum})$`, 'i').test(base)) {
+                  return true;
+                }
+                return false;
+              }
+              return true;
+            });
+            console.log('[PNG Discovery] Parent candidates', {
+              count: candidates.length,
+              sample: candidates.slice(0, 5),
+            });
+            if (candidates.length > 0) {
+              discoveredKey = candidates[0];
+            }
+          } catch {
+            // ignore
+          }
+        }
+
+        // If still not found and an index was provided, try index+1 to accommodate 1-based naming
+        if (
+          !discoveredKey &&
+          typeof indexNum === 'number' &&
+          Number.isFinite(indexNum)
+        ) {
+          console.log('[PNG Discovery] Trying index+1 fallback', {
+            baseIndexTried: indexNum,
+          });
+          const tryIndex = indexNum + 1;
+          const tryDirs = [
+            directoryPath,
+            alternateDirectoryPath,
+            `contribute/${courseId}/${language}/${partId}/${chapterId}/pptx/`,
+          ].filter(Boolean) as string[];
+          for (const dir of tryDirs) {
+            const key = await discoverFileByExtension(
+              dependencies.s3,
+              dir,
+              'png',
+              suffix,
+              tryIndex,
+            );
+            if (key) {
+              console.log('[PNG Discovery] index+1 match', { dir, key });
+              discoveredKey = key;
+              break;
+            }
+          }
+          if (!discoveredKey) {
+            // Parent-wide scan with index+1
+            const chapterParentDir = `contribute/${courseId}/${language}/${partId}/${chapterId}/`;
+            try {
+              const keys = await dependencies.s3.list(chapterParentDir);
+              const match = keys.find((key: string) => {
+                if (!key.toLowerCase().endsWith('.png')) return false;
+                if (!key.includes('/pptx/')) return false;
+                const base = key
+                  .split('/')
+                  .pop()!
+                  .replace(/\.[^/.]+$/, '');
+                if (
+                  suffix &&
+                  !base.toLowerCase().endsWith(`-${suffix.toLowerCase()}`)
+                )
+                  return false;
+                return new RegExp(`_(?:${tryIndex})$`, 'i').test(base);
+              });
+              if (match) discoveredKey = match;
+              console.log('[PNG Discovery] Parent scan index+1', {
+                chapterParentDir,
+                found: Boolean(match),
+                key: match ?? null,
+              });
+            } catch {
+              // ignore
+            }
+          }
+        }
 
         if (!discoveredKey) {
+          console.log('[PNG Discovery] Not found after all attempts');
           res.status(404).send('PNG file not found');
           return;
         }
@@ -1304,13 +1432,25 @@ export const createRestTranslationDownloadRoutes = async (
           .catch(() => null);
 
         if (!head) {
+          console.log('[PNG Discovery] Head failed for discovered key', {
+            discoveredKey,
+          });
           res.status(404).send('File not found in S3');
           return;
         }
 
+        console.log('[PNG Discovery] Success', {
+          discoveredKey,
+          contentLength: head?.contentLength ?? null,
+          contentType: head?.contentType ?? null,
+        });
         const stream = await dependencies.s3.getStream(discoveredKey);
 
         if (!stream) {
+          console.log(
+            '[PNG Discovery] Failed to get stream for discovered key',
+            { discoveredKey },
+          );
           res.status(404).send('Failed to get file stream');
           return;
         }

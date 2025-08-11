@@ -61,6 +61,7 @@ export const buildTranslationFileUrl = (
   fileType: 'pptx' | 'mp3' | 'png',
   suffix?: string,
   fallbackToOld = !USE_FILE_DISCOVERY,
+  index?: number,
 ): string => {
   // For audio files we always want to use discovery-based URLs so that the
   // frontend can fetch freshly-generated MP3s that live in the new directory
@@ -81,8 +82,13 @@ export const buildTranslationFileUrl = (
 
   // New discovery-based URL structure: courseId/language/partId/chapterId/slideId
   const baseUrl = `/api/translation-downloads/${fileType}-by-discovery`;
-  const suffixParam = suffix ? `?suffix=${encodeURIComponent(suffix)}` : '';
-  const url = `${baseUrl}/${courseId}/${language}/${partId}/${chapterId}/${slideId}${suffixParam}`;
+  const query: string[] = [];
+  if (suffix) query.push(`suffix=${encodeURIComponent(suffix)}`);
+  if (typeof index === 'number' && Number.isFinite(index)) {
+    query.push(`index=${encodeURIComponent(String(index))}`);
+  }
+  const qs = query.length ? `?${query.join('&')}` : '';
+  const url = `${baseUrl}/${courseId}/${language}/${partId}/${chapterId}/${slideId}${qs}`;
 
   return url;
 };
@@ -148,6 +154,7 @@ export const buildPngUrl = (
   chapterId: string,
   slideId: string,
   fallbackToOld?: boolean,
+  index?: number,
 ): string => {
   return buildTranslationFileUrl(
     courseId,
@@ -158,5 +165,26 @@ export const buildPngUrl = (
     'png',
     undefined,
     fallbackToOld,
+    index,
   );
+};
+
+/**
+ * Build PNG discovery URL (bypasses legacy routing regardless of USE_FILE_DISCOVERY)
+ */
+export const buildPngUrlDiscovery = (
+  courseId: string,
+  language: string,
+  partId: string,
+  chapterId: string,
+  slideId: string,
+  index?: number,
+): string => {
+  const baseUrl = '/api/translation-downloads/png-by-discovery';
+  const query: string[] = [];
+  if (typeof index === 'number' && Number.isFinite(index)) {
+    query.push(`index=${encodeURIComponent(String(index))}`);
+  }
+  const qs = query.length ? `?${query.join('&')}` : '';
+  return `${baseUrl}/${courseId}/${language}/${partId}/${chapterId}/${slideId}${qs}`;
 };
