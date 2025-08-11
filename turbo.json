@@ -66,6 +66,10 @@
       "cache": false,
       "dependsOn": ["^clear"]
     },
+    "compile": {
+      "dependsOn": ["^build", "^compile"],
+      "outputs": ["dist/**"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
