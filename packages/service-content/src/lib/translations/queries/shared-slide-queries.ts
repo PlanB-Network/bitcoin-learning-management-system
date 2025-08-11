@@ -1,5 +1,10 @@
 import { sql } from '@blms/database';
-import { normalizeLanguageCode } from '#src/utils/language-utils.ts';
+
+/**
+ * Normalizes language code to lowercase for consistent database queries
+ */
+const normalizeLanguageCode = (language: string): string =>
+  language.toLowerCase();
 
 /**
  * Shared database query utilities for translation slides
