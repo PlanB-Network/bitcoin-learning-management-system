@@ -113,7 +113,15 @@ const OnlyOfficeSlideEditorInner = forwardRef<
               slideId,
               courseId,
             });
-            throw new Error('Editor instance not available');
+
+            // Wait a short moment and retry once in case the editor is still initializing
+            await new Promise((resolve) => setTimeout(resolve, 500));
+
+            if (!editorInstanceRef.current) {
+              throw new Error('Editor instance not available after retry');
+            }
+
+            console.log('Editor instance became available after retry');
           }
 
           if (
@@ -218,6 +226,35 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                   `S3 upload may still be in progress after ${maxPollAttempts} seconds`,
                 );
               }
+            } else if (result.error === 1) {
+              // Error 1: Document key unknown - try alternative save method
+              console.warn(
+                'Forcesave failed with error 1 (document key unknown), trying alternative save method',
+              );
+
+              try {
+                // Try using the built-in OnlyOffice save functionality
+                if (typeof editorInstanceRef.current?.save === 'function') {
+                  console.log(
+                    'Attempting to trigger built-in OnlyOffice save...',
+                  );
+                  editorInstanceRef.current.save();
+
+                  // Wait a bit for the save to process
+                  await new Promise((resolve) => setTimeout(resolve, 2000));
+                  console.log('Built-in save triggered successfully');
+                } else {
+                  throw new Error('Built-in save method not available');
+                }
+              } catch (saveError) {
+                console.error(
+                  'Alternative save method also failed:',
+                  saveError,
+                );
+                throw new Error(
+                  `Forcesave failed with error 1 and alternative save failed: ${saveError}`,
+                );
+              }
             } else {
               console.error('Forcesave command failed:', result);
               throw new Error(`Forcesave failed: ${result.error}`);
@@ -233,6 +270,38 @@ const OnlyOfficeSlideEditorInner = forwardRef<
       }),
       [courseId, partId, chapterId, slideId, language, fileName, loadingState],
     );
+
+    // Cleanup expired OnlyOffice sessions on component mount
+    useEffect(() => {
+      const cleanupExpiredSessions = () => {
+        const maxSessionAge = 20 * 60 * 1000; // 20 minutes
+        const currentTime = Date.now();
+
+        // Get all sessionStorage keys that match our pattern
+        for (let i = 0; i < sessionStorage.length; i++) {
+          const key = sessionStorage.key(i);
+          if (key?.startsWith('onlyoffice_session_')) {
+            try {
+              const sessionData = JSON.parse(
+                sessionStorage.getItem(key) || '{}',
+              );
+              if (
+                sessionData.timestamp &&
+                currentTime - sessionData.timestamp > maxSessionAge
+              ) {
+                console.log('Cleaning up expired session:', key);
+                sessionStorage.removeItem(key);
+              }
+            } catch (_error) {
+              // Invalid JSON, remove the key
+              sessionStorage.removeItem(key);
+            }
+          }
+        }
+      };
+
+      cleanupExpiredSessions();
+    }, []);
 
     useEffect(() => {
       if (!fileUrl) {
@@ -300,22 +369,61 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             absoluteFileUrl = `${protocol}//${host}${absoluteFileUrl}`;
           }
 
-          // Generate a unique document key for each editing session. Must be 1-20 ASCII chars.
-          // Include timestamp to avoid OnlyOffice caching conflicts when returning to same slide
-          const timestamp = Date.now().toString(36); // Convert to base36 for compactness
-          const rawKey = `${courseId}-${partId}-${chapterId}-${slideId}-${language}-${timestamp}`;
+          // Generate session-based document key with timestamp to avoid conflicts
+          // Each session gets a unique key to prevent version conflicts
+          const sessionKey = `${courseId}-${partId}-${chapterId}-${slideId}-${language}`;
+          const sessionTimestamp = Date.now();
 
-          const hashFn = (str: string) => {
-            // 32-bit FNV-1a hash for good distribution and speed.
-            let hash = 2166136261;
-            for (let i = 0; i < str.length; i++) {
-              hash ^= str.charCodeAt(i);
-              hash = (hash * 16777619) >>> 0; // >>> 0 ensures unsigned 32-bit
+          // Check for existing session in sessionStorage and clean up old ones
+          const sessionStorageKey = `onlyoffice_session_${sessionKey}`;
+          const existingSession = sessionStorage.getItem(sessionStorageKey);
+
+          let documentKey: string;
+
+          if (existingSession) {
+            const sessionData = JSON.parse(existingSession);
+            const sessionAge = sessionTimestamp - sessionData.timestamp;
+            const maxSessionAge = 20 * 60 * 1000; // 20 minutes in milliseconds
+
+            // If session is older than 20 minutes, create a new one
+            if (sessionAge > maxSessionAge) {
+              console.log('Previous session expired, creating new session');
+              documentKey =
+                `${sessionTimestamp.toString(36).substring(-8)}${Math.random().toString(36).substring(2, 6)}`.substring(
+                  0,
+                  20,
+                );
+              sessionStorage.setItem(
+                sessionStorageKey,
+                JSON.stringify({
+                  documentKey,
+                  timestamp: sessionTimestamp,
+                }),
+              );
+            } else {
+              // Reuse existing session key
+              documentKey = sessionData.documentKey;
+              console.log('Reusing existing session key:', documentKey);
             }
-            return hash.toString(36); // base-36 yields compact alphanum string
-          };
+          } else {
+            // Create new session
+            documentKey =
+              `${sessionTimestamp.toString(36).substring(-8)}${Math.random().toString(36).substring(2, 6)}`.substring(
+                0,
+                20,
+              );
+            sessionStorage.setItem(
+              sessionStorageKey,
+              JSON.stringify({
+                documentKey,
+                timestamp: sessionTimestamp,
+              }),
+            );
+            console.log('Created new session key:', documentKey);
+          }
 
-          const documentKey = hashFn(rawKey).substring(0, 20);
+          // Only update the key if it's different to avoid unnecessary recreations
+          const previousKey = documentKeyRef.current;
           documentKeyRef.current = documentKey;
 
           console.log(
@@ -495,7 +603,16 @@ const OnlyOfficeSlideEditorInner = forwardRef<
           // -------------------------------------------------
           // 3️⃣   Re-use existing editor instance if possible
           // -------------------------------------------------
-          if (editorInstanceRef.current) {
+          if (editorInstanceRef.current && previousKey === documentKey) {
+            // Same document key, no need to recreate editor
+            console.log(
+              'Document key unchanged, keeping existing editor instance',
+            );
+            if (isMounted) setLoadingState('ready');
+            return;
+          }
+
+          if (editorInstanceRef.current && previousKey !== documentKey) {
             try {
               const inst: any = editorInstanceRef.current;
 
@@ -506,6 +623,9 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 try {
                   inst.replaceDocument(config);
                   swapped = true;
+                  console.log(
+                    'Successfully hot-swapped document using replaceDocument',
+                  );
                 } catch (e) {
                   console.warn(
                     'replaceDocument failed, will try alternative path',
@@ -519,6 +639,9 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 try {
                   inst.loadDocument(config.document, config.editorConfig);
                   swapped = true;
+                  console.log(
+                    'Successfully hot-swapped document using loadDocument',
+                  );
                 } catch (e) {
                   console.warn(
                     'loadDocument failed, fallback to setDocumentConfig',
@@ -536,29 +659,32 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                     inst.refresh();
                   }
                   swapped = true;
+                  console.log(
+                    'Successfully hot-swapped document using setDocumentConfig',
+                  );
                 } catch (e) {
                   console.warn('setDocumentConfig fallback failed', e);
                 }
               }
 
-              if (!swapped) {
-                throw new Error('No supported hot-swap method succeeded');
+              if (swapped) {
+                // Update local state immediately
+                if (isMounted) setLoadingState('ready');
+                return; // Skip full re-initialisation
               }
-
-              // Update local state immediately
-              if (isMounted) setLoadingState('ready');
-              return; // Skip full re-initialisation
+              throw new Error('No supported hot-swap method succeeded');
             } catch (_err) {
               console.log(
-                'Hot-swap failed (expected when using timestamp-based keys), recreating editor',
+                'Hot-swap failed, recreating editor for new document key:',
+                documentKey,
               );
-              // If hot-swap fails, destroy and recreate below - this is expected behavior
+              // If hot-swap fails, destroy and recreate below
               try {
                 editorInstanceRef.current.destroy?.();
               } catch (_) {
                 /* ignore */
               }
-              editorInstanceRef.current = null;
+              // Don't immediately set to null - will be set properly after new editor creation
             }
           }
 
@@ -572,7 +698,6 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 // Prevent duplicate editors if the effect reruns quickly
                 if (editorInstanceRef.current) {
                   editorInstanceRef.current.destroy?.();
-                  editorInstanceRef.current = null;
                 }
 
                 console.log(
@@ -588,9 +713,14 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                   return;
                 }
 
-                editorInstanceRef.current = new (
-                  window as any
-                ).DocsAPI.DocEditor(editorId.current, config);
+                // Create the editor instance
+                const newEditorInstance = new (window as any).DocsAPI.DocEditor(
+                  editorId.current,
+                  config,
+                );
+
+                // Set the reference immediately after creation
+                editorInstanceRef.current = newEditorInstance;
 
                 console.log(
                   'OnlyOffice editor instance created:',
@@ -600,6 +730,7 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 );
               } catch (error) {
                 console.error('Error creating OnlyOffice editor:', error);
+                editorInstanceRef.current = null;
                 if (isMounted) {
                   setLoadingState('error');
                 }
@@ -655,6 +786,14 @@ const OnlyOfficeSlideEditorInner = forwardRef<
 
         // Clear references
         documentKeyRef.current = null;
+
+        // Clean up session storage entry for this slide
+        if (courseId && partId && chapterId && slideId && language) {
+          const sessionKey = `${courseId}-${partId}-${chapterId}-${slideId}-${language}`;
+          const sessionStorageKey = `onlyoffice_session_${sessionKey}`;
+          sessionStorage.removeItem(sessionStorageKey);
+          console.log('Cleaned up session storage for slide:', slideId);
+        }
       };
     }, [
       fileUrl,
