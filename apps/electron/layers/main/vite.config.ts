@@ -1,7 +1,9 @@
 import { builtinModules } from 'module';
 import { join } from 'path';
-import { node } from '../../.electron-vendors.cache.json';
 
+// import { node } from '../../.electron-vendors.cache.json';
+
+const node = 22;
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../../');
 

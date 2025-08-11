@@ -1,8 +1,10 @@
 import { builtinModules } from 'module';
 import { join } from 'path';
 import dts from 'vite-plugin-dts';
-import { chrome } from '../../.electron-vendors.cache.json';
 
+// import { chrome } from '../../.electron-vendors.cache.json';
+
+const chrome = 139;
 const PACKAGE_ROOT = __dirname;
 const PROJECT_ROOT = join(PACKAGE_ROOT, '../..');
 
