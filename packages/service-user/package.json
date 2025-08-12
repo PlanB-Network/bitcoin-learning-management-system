@@ -13,7 +13,7 @@
     "pdf-lib": "^1.17.1",
     "qr-image": "^3.2.0",
     "sharp": "^0.34.3",
-    "stripe": "^18.3.0",
+    "stripe": "^18.4.0",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
