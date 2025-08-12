@@ -11,7 +11,7 @@
     "mocha": "^11.7.1",
     "tsx": "^4.20.3",
     "turbo": "^2.5.5",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "license": "MIT",
   "lint-staged": {
