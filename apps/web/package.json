@@ -20,7 +20,7 @@
     "date-fns-tz": "^3.2.0",
     "dompurify": "^3.2.6",
     "embla-carousel-react": "^8.6.0",
-    "i18next": "^25.3.2",
+    "i18next": "^25.3.4",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",
     "lodash-es": "^4.17.21",
