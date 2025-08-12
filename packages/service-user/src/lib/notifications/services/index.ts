@@ -5,5 +5,6 @@ export * from './insert-scheduled-course-announcement.js';
 export * from './insert-user-notifications.js';
 export * from './mark-user-notifications-as-read.js';
 export * from './publish-scheduled-course-announcement.js';
+export * from './teacher-notifications-service.js';
 export * from './update-scheduled-course-announcement.js';
 export * from './user-notifications-service.js';

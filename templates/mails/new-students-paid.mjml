@@ -1,0 +1,68 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Rubik" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" />
+    <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'IBM Plex Sans', Rubik, Arial, sans-serif" color="#000000" />
+      <mj-text font-size="16px" line-height="24px" letter-spacing="0.10px" />
+      <mj-button border-radius="16px" background-color="#FF5C00" color="#ffffff" font-weight="500" font-size="20px" font-family="Rubik, Arial, sans-serif" />
+    </mj-attributes>
+    <mj-style>
+      .main-title div {
+        font-size: 24px !important;
+        font-weight: 400 !important;
+        line-height: 38.40px !important;
+        font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+
+    <!-- Logo -->
+    <mj-section padding-top="40px" padding-bottom="20px">
+      <mj-column>
+        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/60c4ab01-f068-4c89-8535-0a83955e19fa/528x98.png" alt="Logo" width="264px" align="center" padding="0" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Header -->
+    <mj-section padding-top="20px" padding-bottom="16px">
+      <mj-column>
+        <mj-text align="center" padding-bottom="10px" css-class="main-title">
+          New registration for your course
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Text -->
+    <mj-section padding-top="30px" padding-bottom="42px">
+      <mj-column width="90%">
+        <mj-text font-weight="400" padding="0">
+          Hi {{teacherName}},<br/><br/>Good news! {{newStudentsCount}} new student(s) have registered for your course {{courseName}}.<br/>You can view their details in your dashboard.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Dashboard -->
+    <mj-section padding-top="0px" padding-bottom="42px">
+      <mj-column width="90%">
+        <mj-button href="{{dashboardLink}}" align="left" padding="0" inner-padding="14px 18px">
+          Go to dashboard
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <!-- Signature -->
+    <mj-section padding-top="0px" padding-bottom="0px">
+      <mj-column width="90%">
+        <mj-text font-weight="400" padding="0" padding-bottom="20px">
+          Thanks for teaching with us!
+        </mj-text>
+        <mj-text font-weight="400" padding="0">
+          Best regards,<br />
+          The Plan ₿ Network Team
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
