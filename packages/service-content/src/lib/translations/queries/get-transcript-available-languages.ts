@@ -13,7 +13,12 @@ export const getTranscriptAvailableLanguagesQuery = (
       AND part_id = ${partId}
       AND chapter_id = ${chapterId}
       AND slide_id = ${slideId}
-      AND translated_content IS NOT NULL
-      AND translated_content <> ''
+      AND (
+        -- Treat original language as always available when original_content exists
+        (language = (SELECT original_language FROM content.courses WHERE id = ${courseId}) AND original_content IS NOT NULL AND original_content <> '')
+        OR
+        -- For target languages, availability is based on ai_translated_content
+        (language <> (SELECT original_language FROM content.courses WHERE id = ${courseId}) AND ai_translated_content IS NOT NULL AND ai_translated_content <> '')
+      )
   `;
 };

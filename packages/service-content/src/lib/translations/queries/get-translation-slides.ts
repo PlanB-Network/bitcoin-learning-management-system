@@ -1,6 +1,12 @@
 import type { TranslationStatus } from '@blms/constants';
 import { sql } from '@blms/database';
 
+/**
+ * Normalizes language code to lowercase for consistent database queries
+ */
+const normalizeLanguageCode = (language: string): string =>
+  language.toLowerCase();
+
 export interface CourseTranslationSlide {
   courseId: string;
   language: string;
@@ -16,6 +22,7 @@ export interface CourseTranslationSlide {
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
+  aiTranslatedContent: string | null;
   translatedContent: string | null;
   status: TranslationStatus;
   createdAt: Date;
@@ -46,13 +53,14 @@ export const getCourseTranslationSlidesQuery = (
       cts.audio_resource_path AS "audioResourcePath",
       cts.professor_name AS "professorName",
       cts.original_content AS "originalContent",
+      cts.ai_translated_content AS "aiTranslatedContent",
       cts.translated_content AS "translatedContent",
       cts.status,
       cts.created_at AS "createdAt",
       cts.updated_at AS "updatedAt"
     FROM content.course_translation_slides cts
     WHERE cts.course_id = ${courseId}
-      AND cts.language = LOWER(${language})
+      AND cts.language = ${normalizeLanguageCode(language)}
       AND cts.chapter_id = ${chapterId}
     ORDER BY cts.slide_number
   `;
@@ -87,9 +95,9 @@ export const getChapterTranslationContextQuery = (
     LEFT JOIN content.courses_localized cl_en ON cl_en.course_id = c.id AND cl_en.language = 'en'
     LEFT JOIN content.course_parts_localized cpl_en ON cpl_en.part_id = cp.part_id AND cpl_en.language = 'en'
     LEFT JOIN content.course_chapters_localized ccl_en ON ccl_en.chapter_id = cc.chapter_id AND ccl_en.language = 'en'
-    LEFT JOIN content.course_translations ct ON ct.course_id = c.id AND ct.language = LOWER(${language})
+    LEFT JOIN content.course_translations ct ON ct.course_id = c.id AND ct.language = ${normalizeLanguageCode(language)}
     LEFT JOIN content.course_translation_chapters ctc ON ctc.course_id = c.id
-      AND ctc.language = LOWER(${language})
+      AND ctc.language = ${normalizeLanguageCode(language)}
       AND ctc.chapter_id = cc.chapter_id
     WHERE c.id = ${courseId}
       AND cc.chapter_id = ${chapterId}
@@ -124,20 +132,20 @@ export const updateCourseTranslationSlideQuery = (
         -- If status is explicitly provided, use it
         WHEN ${status}::translation_status IS NOT NULL THEN ${status}::translation_status
         -- If all three validations are true, set to ready_for_review (only if not already under_review or reviewed)
-        WHEN COALESCE(${pptValidated}, ppt_validated) = true 
-          AND COALESCE(${transcriptionValidated}, transcription_validated) = true 
-          AND COALESCE(${audioValidated}, audio_validated) = true 
+        WHEN COALESCE(${pptValidated}, ppt_validated) = true
+          AND COALESCE(${transcriptionValidated}, transcription_validated) = true
+          AND COALESCE(${audioValidated}, audio_validated) = true
           AND status NOT IN ('under_review', 'reviewed')
         THEN 'ready_for_review'::translation_status
         -- If any validation becomes false and status is ready_for_review, set to in_progress
-        WHEN (COALESCE(${pptValidated}, ppt_validated) = false 
-          OR COALESCE(${transcriptionValidated}, transcription_validated) = false 
+        WHEN (COALESCE(${pptValidated}, ppt_validated) = false
+          OR COALESCE(${transcriptionValidated}, transcription_validated) = false
           OR COALESCE(${audioValidated}, audio_validated) = false)
           AND status = 'ready_for_review'
         THEN 'in_progress'::translation_status
         -- If any validation becomes false and status is under_review, keep under_review (contributor is working)
-        WHEN (COALESCE(${pptValidated}, ppt_validated) = false 
-          OR COALESCE(${transcriptionValidated}, transcription_validated) = false 
+        WHEN (COALESCE(${pptValidated}, ppt_validated) = false
+          OR COALESCE(${transcriptionValidated}, transcription_validated) = false
           OR COALESCE(${audioValidated}, audio_validated) = false)
           AND status = 'under_review'
         THEN 'under_review'::translation_status
@@ -146,7 +154,7 @@ export const updateCourseTranslationSlideQuery = (
       END,
       updated_at = NOW()
     WHERE course_id = ${courseId}
-      AND language = LOWER(${language})
+      AND language = ${normalizeLanguageCode(language)}
       AND chapter_id = ${chapterId}
       AND slide_id = ${slideId}
     RETURNING *
@@ -198,7 +206,7 @@ export const getCourseTranslationChapterProgressQuery = (
         )                                   AS completed_validations
       FROM content.course_translation_slides cts
       WHERE cts.course_id = ${courseId}
-        AND cts.language = LOWER(${language})
+        AND cts.language = ${normalizeLanguageCode(language)}
       GROUP BY cts.chapter_id, cts.part_id
     ),
     chapter_details AS (

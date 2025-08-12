@@ -24,6 +24,7 @@ interface AudioPlayerProps {
   validated: boolean;
   generating?: boolean;
   version?: number;
+  audioResourcePath?: string | null;
 }
 
 // Build the API URL using the new file discovery approach
@@ -52,6 +53,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   validated,
   generating = false,
   version = 0,
+  audioResourcePath,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [exists, setExists] = useState<boolean | null>(null);
@@ -116,6 +118,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     language,
     version,
   );
+
+  // Reset waveform when URL changes to ensure fresh waveform for each slide
+  useEffect(() => {
+    setRawHeights(null);
+  }, [url]);
 
   // Fetch & decode audio ONCE to build a high-resolution amplitude array.
   useEffect(() => {
@@ -183,6 +190,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       setExists(null);
       return; // wait until generation finished
     }
+    // If there is no audio resource path in DB, absence of audio is normal.
+    // Skip probing S3 to avoid transient "checking" state.
+    if (!audioResourcePath) {
+      setExists(false);
+      return;
+    }
+
     let cancelled = false;
     setExists(null);
 
@@ -193,7 +207,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     return () => {
       cancelled = true;
     };
-  }, [url, generating]);
+  }, [url, generating, audioResourcePath]);
 
   // Load audio when exists
   useEffect(() => {
@@ -328,7 +342,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           })}
         </p>
       )}
-      {exists === false && !generating && (
+      {exists === false && !generating && !!audioResourcePath && (
         <div
           className="flex items-center gap-2 text-sm mb-2"
           style={{ color: '#92400e' }}

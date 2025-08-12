@@ -24,6 +24,9 @@ interface TranscriptionEditorProps {
   triesLabel?: string;
   /** Disable Generate Audio button when tries exhausted */
   generateDisabled?: boolean;
+  /** Codes for annotating labels */
+  originalCode?: string;
+  targetCode?: string;
 }
 
 /**
@@ -44,6 +47,8 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
   onSourceLanguageChange,
   triesLabel = 'Limit 0/3 tries',
   generateDisabled = false,
+  originalCode,
+  targetCode,
 }) => {
   const { t } = useTranslation();
 
@@ -74,6 +79,8 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
               value={selectedSourceLanguage ?? ''}
               onChange={(code: string) => onSourceLanguageChange?.(code)}
               selectClassName="w-full sm:w-[225px]"
+              originalCode={originalCode}
+              targetCode={targetCode}
             />
           </div>
           {/* Target language information (visible only on large screens) */}
@@ -85,9 +92,12 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
             >
               {t('translate.translateTo', { defaultValue: 'Translate to' })}
             </span>
-            {/* TODO: make target language dynamic */}
             <span className="text-orange-500 text-base sm:text-lg md:text-xl">
-              Italiano
+              {targetCode
+                ? t(`languages.${targetCode}`, {
+                    defaultValue: targetCode.toUpperCase(),
+                  })
+                : 'Target Language'}
             </span>
           </div>
         </div>
@@ -114,7 +124,13 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
           >
             {t('translate.translateTo', { defaultValue: 'Translate to' })}
           </span>
-          <span className="text-orange-500 text-base">Italiano</span>
+          <span className="text-orange-500 text-base">
+            {targetCode
+              ? t(`languages.${targetCode}`, {
+                  defaultValue: targetCode.toUpperCase(),
+                })
+              : 'Target Language'}
+          </span>
         </div>
 
         {/* Translated Content */}

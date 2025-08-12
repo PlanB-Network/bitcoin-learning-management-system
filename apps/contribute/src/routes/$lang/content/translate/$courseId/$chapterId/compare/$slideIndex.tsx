@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
-// DroplistArrowIcon no longer needed after migration to LanguageDropdown
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
 import { LanguageDropdown } from '#src/components/ui/language-dropdown.tsx';
@@ -13,8 +12,10 @@ import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
 import { ValidationCheckbox } from '#src/components/ui/validation-checkbox.tsx';
 import { useLanguageAvailability } from '#src/hooks/useLanguageAvailability.ts';
 import { useTranscriptAvailability } from '#src/hooks/useTranscriptAvailability.ts';
+import type { LanguageOption } from '#src/types/language.ts';
 import { getLanguageName } from '#src/utils/i18n.ts';
-import { buildPptxUrl, buildTranslationFileUrl } from '#src/utils/index.ts';
+import { buildPngUrlDiscovery, buildPptxUrl } from '#src/utils/index.ts';
+import { getDefaultTranscriptLanguageCode } from '#src/utils/language-utils.ts';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute(
@@ -65,13 +66,6 @@ interface ChapterTranslationData {
   slides: CourseTranslationSlide[];
 }
 
-// NEW: Interface to track language availability
-interface LanguageAvailability {
-  code: string;
-  name: string;
-  available: boolean;
-}
-
 function CompareSlidePage() {
   const { t } = useTranslation();
   const { courseId, chapterId, slideIndex, lang } = Route.useParams();
@@ -95,6 +89,7 @@ function CompareSlidePage() {
       chapterId,
       slideId: chapterData?.slides?.[Number(slideIndex)]?.slideId ?? '',
       originalLanguage: courseData?.originalLanguage ?? 'en',
+      slideIndex: Number(slideIndex),
     });
   // ----------------------------
   // State for transcript language selection
@@ -118,6 +113,14 @@ function CompareSlidePage() {
     Record<string, string | null>
   >({});
 
+  // Default transcript code using shared logic
+  const transcriptDefaultCode = React.useMemo(() => {
+    return getDefaultTranscriptLanguageCode(
+      transcriptLanguageAvailability,
+      courseData?.originalLanguage ?? 'en',
+    );
+  }, [transcriptLanguageAvailability, courseData]);
+
   // ----------------------------
   // Target transcription editing & validation state
   // ----------------------------
@@ -136,6 +139,8 @@ function CompareSlidePage() {
   // PNG loading state
   const [pngLoading, setPngLoading] = useState(true);
   const [pngError, setPngError] = useState<string | null>(null);
+  // Attempt index for original-language PNG resolution (0: index, 1: index+1)
+  const [pngAttempt, setPngAttempt] = useState<number>(0);
 
   const numericSlideIndex = Number(slideIndex);
   const targetLanguage =
@@ -154,9 +159,11 @@ function CompareSlidePage() {
   // ----------------------------
   useEffect(() => {
     const loadTranscriptContent = async () => {
-      if (!selectedOriginalTranscriptLanguage) return;
+      const effective =
+        selectedOriginalTranscriptLanguage || transcriptDefaultCode;
+      if (!effective) return;
 
-      const lang = selectedOriginalTranscriptLanguage;
+      const lang = effective;
       const slideRef = chapterData?.slides?.[numericSlideIndex];
 
       if (!slideRef) return;
@@ -180,7 +187,8 @@ function CompareSlidePage() {
         const slide = resp?.slides?.[numericSlideIndex];
         setTranscriptContentCache((prev) => ({
           ...prev,
-          [lang]: slide?.translatedContent ?? null,
+          // For target languages show AI generated content to proofread
+          [lang]: (slide as any)?.aiTranslatedContent ?? null,
         }));
       } catch (err) {
         console.warn('Could not load transcript content', err);
@@ -190,13 +198,43 @@ function CompareSlidePage() {
     loadTranscriptContent();
   }, [
     selectedOriginalTranscriptLanguage,
+    transcriptDefaultCode,
     numericSlideIndex,
     courseId,
     chapterId,
-    courseData,
+    // Avoid resetting cache during context updates; rely on selected language and index
+    // courseData,
     transcriptContentCache,
     chapterData?.slides?.[numericSlideIndex]?.slideId,
     chapterData?.slides?.[numericSlideIndex],
+  ]);
+
+  // Initialize transcript language selection when availability is ready
+  useEffect(() => {
+    if (
+      !selectedOriginalTranscriptLanguage &&
+      transcriptLanguageAvailability.length > 0
+    ) {
+      // Only select languages that are actually available
+      const english = transcriptLanguageAvailability.find(
+        (o) => o.code === 'en' && o.available,
+      )?.code;
+      const original = transcriptLanguageAvailability.find(
+        (o) => o.code === (courseData?.originalLanguage ?? 'en') && o.available,
+      )?.code;
+      const any = transcriptLanguageAvailability.find((o) => o.available)?.code;
+
+      // Only set if we have an available option, don't fallback to unavailable languages
+      const selectedCode = english || original || any || '';
+      if (selectedCode) {
+        setSelectedOriginalTranscriptLanguage(selectedCode);
+      }
+    }
+  }, [
+    transcriptLanguageAvailability,
+    selectedOriginalTranscriptLanguage,
+    courseData,
+    transcriptDefaultCode,
   ]);
 
   // Compute derived values once we have data
@@ -300,11 +338,24 @@ function CompareSlidePage() {
   };
 
   // Determine transcript to display based on selection
+  const effectiveTranscriptLang =
+    selectedOriginalTranscriptLanguage || transcriptDefaultCode || '';
   const displayedOriginalTranscript =
-    selectedOriginalTranscriptLanguage ===
-    (courseData?.originalLanguage ?? 'en')
+    effectiveTranscriptLang === (courseData?.originalLanguage ?? 'en')
       ? currentSlide?.originalContent
-      : transcriptContentCache[selectedOriginalTranscriptLanguage];
+      : transcriptContentCache[effectiveTranscriptLang];
+
+  // Loading state for transcript content: when a non-original language is selected but not yet cached
+  const selectedTranscriptIsOriginal =
+    effectiveTranscriptLang === (courseData?.originalLanguage ?? 'en');
+  const transcriptHasCacheEntry = effectiveTranscriptLang
+    ? Object.hasOwn(transcriptContentCache, effectiveTranscriptLang)
+    : false;
+  const isTranscriptLoading = Boolean(
+    (!effectiveTranscriptLang ||
+      (!selectedTranscriptIsOriginal && !transcriptHasCacheEntry)) &&
+      !transcriptLanguagesLoading,
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -343,7 +394,6 @@ function CompareSlidePage() {
 
   // Original language handling
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
-  const _hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
 
   // Get available languages from the languageAvailability state
   const availableLanguages = languageAvailability.filter((l) => l.available);
@@ -357,16 +407,14 @@ function CompareSlidePage() {
         availableLanguages.find((l) => l.code === selectedOriginalLanguage);
 
       if (!selectedOriginalLanguage || !currentSelectionAvailable) {
-        // Prefer English if available, otherwise use first available language
-        if (availableLanguages.length > 0) {
-          const englishAvailable = availableLanguages.find(
-            (l) => l.code === 'en',
-          );
-          const defaultLanguage = englishAvailable
-            ? 'en'
-            : availableLanguages[0].code;
-          setSelectedOriginalLanguage(defaultLanguage);
-        }
+        // Prefer English if available, else original if available, else first available
+        const english = availableLanguages.find((l) => l.code === 'en')?.code;
+        const original = availableLanguages.find(
+          (l) => l.code === (courseData?.originalLanguage ?? ''),
+        )?.code;
+        const any = availableLanguages[0]?.code;
+        const fallback = english || original || any || '';
+        if (fallback) setSelectedOriginalLanguage(fallback);
       }
     }
   }, [courseData, selectedOriginalLanguage, availableLanguages]);
@@ -374,21 +422,14 @@ function CompareSlidePage() {
   const originalLanguage =
     selectedOriginalLanguage &&
     availableLanguages.some(
-      (l: LanguageAvailability) =>
-        l.code === selectedOriginalLanguage && l.available,
+      (l: LanguageOption) => l.code === selectedOriginalLanguage && l.available,
     )
       ? selectedOriginalLanguage
       : availableLanguages.length > 0
         ? availableLanguages[0]?.code
         : originalLanguageCode;
 
-  const _originalLanguageName = getLanguageName(originalLanguage);
   const targetLanguageName = getLanguageName(targetLanguage);
-
-  // Overall chapter index for progress (copied logic)
-  // _overallChapterNumber removed – variable was unused
-
-  // _partEndIndexes removed – variable was unused
 
   if (loading) {
     return (
@@ -567,6 +608,8 @@ function CompareSlidePage() {
                     options={languageAvailability}
                     loading={languagesLoading}
                     value={selectedOriginalLanguage}
+                    originalCode={courseData?.originalLanguage ?? 'en'}
+                    targetCode={targetLanguage}
                     onChange={(code: string) => {
                       const langAvailability = languageAvailability.find(
                         (l) => l.code === code,
@@ -598,48 +641,73 @@ function CompareSlidePage() {
                       originalLanguage &&
                       availableLanguages.length > 0 &&
                       availableLanguages.some(
-                        (l: LanguageAvailability) =>
+                        (l: LanguageOption) =>
                           l.code === originalLanguage && l.available,
-                      ) && (
-                        <img
-                          key={`${currentSlide.slideId}-${originalLanguage}`}
-                          data-slide-png
-                          src={buildTranslationFileUrl(
-                            courseId,
-                            originalLanguage,
-                            currentSlide.partId,
-                            chapterId,
-                            currentSlide.slideId,
-                            'png',
-                            'proofread',
-                          )}
-                          alt={`Slide ${numericSlideIndex + 1} - ${getLanguageName(originalLanguage)}`}
-                          className={`max-w-full h-auto border border-gray-300 rounded-lg shadow-sm transition-opacity duration-200 ${
-                            pngLoading || pngError ? 'opacity-0' : 'opacity-100'
-                          }`}
-                          onError={(e) => {
-                            setPngLoading(false);
-                            setPngError(
-                              `Failed to load image from: ${e.currentTarget.src}`,
-                            );
-                          }}
-                          onLoad={(e) => {
-                            // Check if image has valid dimensions
-                            if (
-                              e.currentTarget.naturalWidth === 0 ||
-                              e.currentTarget.naturalHeight === 0
-                            ) {
+                      ) &&
+                      (() => {
+                        const isOriginalSelected =
+                          originalLanguage ===
+                          (courseData?.originalLanguage ?? 'en');
+                        const baseIndex =
+                          currentSlide.slideNumber != null
+                            ? Math.max(
+                                0,
+                                (currentSlide.slideNumber as number) - 1,
+                              )
+                            : numericSlideIndex;
+                        const indexParam = isOriginalSelected
+                          ? baseIndex + (pngAttempt === 1 ? 1 : 0)
+                          : undefined;
+                        return (
+                          <img
+                            key={`${currentSlide.slideId}-${originalLanguage}`}
+                            data-slide-png
+                            src={buildPngUrlDiscovery(
+                              courseId,
+                              originalLanguage,
+                              currentSlide.partId,
+                              chapterId,
+                              currentSlide.slideId,
+                              indexParam,
+                            )}
+                            alt={`Slide ${numericSlideIndex + 1} - ${getLanguageName(originalLanguage)}`}
+                            className={`max-w-full h-auto border border-gray-300 rounded-lg shadow-sm transition-opacity duration-200 ${
+                              pngLoading || pngError
+                                ? 'opacity-0'
+                                : 'opacity-100'
+                            }`}
+                            onError={(e) => {
+                              // Fallback: try index+1 for original language pattern
+                              const isOriginal = isOriginalSelected;
+                              if (isOriginal && pngAttempt === 0) {
+                                setPngAttempt(1);
+                                setPngError(null);
+                                setPngLoading(true);
+                                return;
+                              }
+                              setPngLoading(false);
                               setPngError(
-                                'Image loaded but has invalid dimensions',
+                                `Failed to load image from: ${e.currentTarget.src}`,
                               );
-                            } else {
-                              setPngError(null);
-                            }
-
-                            setPngLoading(false);
-                          }}
-                        />
-                      )}
+                            }}
+                            onLoad={(e) => {
+                              // Check if image has valid dimensions
+                              if (
+                                e.currentTarget.naturalWidth === 0 ||
+                                e.currentTarget.naturalHeight === 0
+                              ) {
+                                setPngError(
+                                  'Image loaded but has invalid dimensions',
+                                );
+                              } else {
+                                setPngError(null);
+                              }
+                              setPngAttempt(0);
+                              setPngLoading(false);
+                            }}
+                          />
+                        );
+                      })()}
 
                     {/* Error Display */}
                     {pngError && (
@@ -717,6 +785,8 @@ function CompareSlidePage() {
                       options={transcriptLanguageAvailability}
                       loading={transcriptLanguagesLoading}
                       value={selectedOriginalTranscriptLanguage}
+                      originalCode={courseData?.originalLanguage ?? 'en'}
+                      targetCode={targetLanguage}
                       onChange={(code: string) => {
                         const availability =
                           transcriptLanguageAvailability.find(
@@ -734,10 +804,14 @@ function CompareSlidePage() {
 
               <div className="bg-white border rounded-lg p-4 min-h-[200px]">
                 <div className="text-gray-700 whitespace-pre-wrap">
-                  {displayedOriginalTranscript ??
-                    t('translate.noTranscriptionAvailable', {
-                      defaultValue: 'No transcription available',
-                    })}
+                  {isTranscriptLoading
+                    ? t('translate.loadingTranscription', {
+                        defaultValue: 'Loading transcription…',
+                      })
+                    : (displayedOriginalTranscript ??
+                      t('translate.noTranscriptionAvailable', {
+                        defaultValue: 'No transcription available',
+                      }))}
                 </div>
               </div>
             </div>

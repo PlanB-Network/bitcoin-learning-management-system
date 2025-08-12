@@ -26,7 +26,6 @@ CREATE TABLE "content"."course_translation_slides" (
 	"ppt_validated" boolean DEFAULT false NOT NULL,
 	"transcription_validated" boolean DEFAULT false NOT NULL,
 	"audio_validated" boolean DEFAULT false NOT NULL,
-	"audio_tries" integer DEFAULT 0 NOT NULL,
 	"ppt_resource_path" text,
 	"audio_resource_path" text,
 	"original_content" text,
