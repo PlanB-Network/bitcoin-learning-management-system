@@ -189,5 +189,3 @@ export const TranslationRequestModal = ({
     </div>
   );
 };
-
-export default TranslationRequestModal;

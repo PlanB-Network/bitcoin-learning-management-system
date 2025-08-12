@@ -20,8 +20,6 @@ export const Route = createFileRoute('/$lang/content/translate/')({
   component: TranslateCoursesPage,
 });
 
-export default Route;
-
 function TranslateCoursesPage() {
   const { t } = useTranslation();
   const {
