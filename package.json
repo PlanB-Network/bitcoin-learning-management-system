@@ -26,6 +26,7 @@
     "build": "turbo run build --cache-dir=.turbo",
     "build-types": "turbo run build-types",
     "build:packages": "turbo run build --filter='./packages/*'",
+    "build:web": "turbo run build --filter='@blms/web'",
     "check-boundaries": "turbo boundaries",
     "check-types": "turbo run check-types",
     "clear": "turbo run clear",
