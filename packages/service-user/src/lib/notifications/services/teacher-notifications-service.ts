@@ -21,12 +21,17 @@ export const createTeacherNotificationsService = async (ctx: Dependencies) => {
     courseId: string,
     interval: '24 hours' | '1 month' = '24 hours',
   ) => {
+    const intervalSql =
+      interval === '24 hours'
+        ? sql`NOW() - INTERVAL '24 hours'`
+        : sql`NOW() - INTERVAL '1 month'`;
+
     const result = await ctx.postgres.exec(
       sql`
       SELECT COUNT(*) AS count
       FROM users.course_progress cp
       WHERE cp.course_id = ${courseId}
-      AND cp.start_date >= ${interval === '24 hours' ? sql`NOW() - INTERVAL '24 hours'` : sql`NOW() - INTERVAL '1 month'`}
+      AND cp.start_date >= ${intervalSql}
       `,
     );
 
