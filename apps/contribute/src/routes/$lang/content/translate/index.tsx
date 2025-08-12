@@ -4,17 +4,15 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
-import {
-  CourseGrid,
-  EmptyState,
-  InfoBanner,
-  LoadingSpinner,
-  MainLayout,
-  ToggleSwitch,
-  TopicFilter,
-} from '#src/components/index.ts';
+import { CourseGrid } from '#src/components/course-grid.tsx';
+import { MainLayout } from '#src/components/layouts/main-layout.tsx';
 import { RequestSentModal } from '#src/components/request-sent-modal.tsx';
+import { EmptyState } from '#src/components/ui/empty-state.tsx';
 import { ExpandableInfoBanner } from '#src/components/ui/expandable-info-banner.tsx';
+import { InfoBanner } from '#src/components/ui/info-banner.tsx';
+import { LoadingSpinner } from '#src/components/ui/loading-spinner.tsx';
+import { ToggleSwitch } from '#src/components/ui/toggle-switch.tsx';
+import { TopicFilter } from '#src/components/ui/topic-filter.tsx';
 import { useTranslatePage } from '#src/hooks/index.ts';
 import { filterCoursesByTopic } from '#src/utils/course-filters.ts';
 

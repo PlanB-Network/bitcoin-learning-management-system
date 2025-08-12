@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
-import { MainLayout, SectionCard } from '#src/components/index.ts';
+import { MainLayout } from '#src/components/layouts/main-layout.tsx';
+import { SectionCard } from '#src/components/section-card.tsx';
 import { trpcClient } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute('/$lang/content/')({
