@@ -461,6 +461,7 @@ export interface CourseTranslationSlide {
   pptResourcePath: string | null;
   audioResourcePath: string | null;
   originalContent: string | null;
+  aiTranslatedContent: string | null;
   translatedContent: string | null;
   createdAt: Date;
   updatedAt: Date;

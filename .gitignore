@@ -47,6 +47,7 @@ Thumbs.db
 .vite
 out
 tsconfig.*.tsbuildinfo
+tsconfig.tsbuildinfo
 *storybook.log
 *.cpuprofile
 logs
