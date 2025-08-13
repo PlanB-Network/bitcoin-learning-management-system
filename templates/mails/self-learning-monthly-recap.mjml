@@ -43,7 +43,7 @@
           <br />· {{newStudentsCount}} new student(s)
           <br />· {{newGraduatedStudentsCount}} new graduation(s)
           <br />· {{newReviewsCount}} new review(s)
-          <br />· average course rating {{averageRating}}.
+          <br />· current course rating {{averageRating}} / 5.
           <br /><br />You can find more details in your dashboard.
         </mj-text>
       </mj-column>

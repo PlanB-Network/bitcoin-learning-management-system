@@ -327,7 +327,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const sendNewStudentsDailyRecapEmail =
       createSendCoordinatorNewStudentsDailyRecapEmail(ctx);
 
-    ctx.crons.addTask('daily_20_gmt', async () => {
+    ctx.crons.addTask('daily_16_gmt', async () => {
       console.log(
         '[cron] Running daily mail recap to course coordinators about new enrolled students',
       );
@@ -370,7 +370,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const sendSelfPacedCourseMonthlySummaryEmail =
       createSendSelfPacedCourseMonthlySummaryEmail(ctx);
 
-    ctx.crons.addTask('monthly_1st_20_gmt', async () => {
+    ctx.crons.addTask('monthly_1st_16_gmt', async () => {
       console.log(
         '[cron] Running monthly mail recap to course coordinators about new enrolled students, graduated students, reviews and ratings',
       );
