@@ -17,7 +17,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
@@ -28,6 +28,7 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { goToChapterParameters } from '#src/utils/courses.js';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -59,6 +60,8 @@ export function CourseReviewComponent({
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const { refetchCourses } = useContext(AppContext);
+
   const { data: fetchedCourseReview, isFetched: isReviewFetched } = useQuery(
     trpc.user.courses.getCourseReview.queryOptions(
       {
@@ -85,6 +88,7 @@ export function CourseReviewComponent({
       onSuccess: () => {
         if (isConclusionReview && onReviewSuccess) {
           onReviewSuccess();
+          refetchCourses();
         }
       },
     }),
