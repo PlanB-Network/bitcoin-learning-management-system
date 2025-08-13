@@ -17,9 +17,14 @@ function DashboardCourses() {
   const navigate = useNavigate();
   const { session, courses } = useContext(AppContext);
 
-  const { data: progress } = useQuery(
-    trpc.user.courses.getProgress.queryOptions(),
-  );
+  const { data: progress } = useQuery({
+    ...trpc.user.courses.getProgress.queryOptions(),
+    staleTime: 0,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+  });
+
+  console.log(progress);
 
   const filteredCourses = courses
     ? courses.filter((course) => {
