@@ -22,7 +22,7 @@ export async function pdfThumbnail(pdf: Readonly<Buffer>): Promise<Buffer> {
 
   const viewport = page.getViewport({ scale: 1 });
 
-  // @ts-ignore
+  // @ts-expect-error
   const canvasAndContext = pdfDocument.canvasFactory.create(
     viewport.width,
     viewport.height,

@@ -68,7 +68,6 @@ export const MenuElement = ({
   );
 
   return 'path' in element ? (
-    // @ts-ignore
     <Link
       className="block w-full text-black"
       to={element.path}

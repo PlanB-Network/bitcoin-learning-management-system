@@ -139,7 +139,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
         const arrayBuffer = await resp.arrayBuffer();
 
         const AudioContextClass: typeof AudioContext =
-          // @ts-ignore legacy Safari
+          // legacy Safari
           window.AudioContext || (window as any).webkitAudioContext;
         const audioCtx = new AudioContextClass();
 

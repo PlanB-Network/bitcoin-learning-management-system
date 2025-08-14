@@ -371,8 +371,7 @@ export const SelectLanguagesModal = ({
             ref={folderInputRef}
             type="file"
             multiple
-            /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-            // @ts-ignore - non-standard attribute for folder selection
+            // non-standard attribute for folder selection
             {...{ webkitdirectory: 'true', directory: 'true' }}
             className="hidden"
             onChange={handleFolderChange}

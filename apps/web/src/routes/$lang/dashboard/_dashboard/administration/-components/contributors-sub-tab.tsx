@@ -53,6 +53,7 @@ export const ContributorsSubTab = ({
   const availableLanguages = useMemo(() => {
     const allLanguages = new Set<string>();
     contributors.forEach((contributor) => {
+      // biome-ignore lint/suspicious/useIterableCallbackReturn: todo fix this
       contributor.languages?.forEach((lang) => allLanguages.add(lang));
     });
     return Array.from(allLanguages).map((code) => ({

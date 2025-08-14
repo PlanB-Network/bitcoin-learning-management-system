@@ -7,18 +7,18 @@
     "ignoreUnknown": false,
     "includes": [
       "**",
-      "!**/out/**",
-      "!**/dist/**",
-      "!**/node_modules/**",
+      "!**/out",
+      "!**/dist",
+      "!**/node_modules",
       "!**/routeTree.gen.ts",
-      "!**/.turbo/**",
-      "!**/.tanstack/**",
+      "!**/.turbo",
+      "!**/.tanstack",
       "!**/packages/database/drizzle/migrations/**/*",
       "!**/packages/types/src/generated/**/*",
-      "!**/node_modules/**",
-      "!**/apps/**/node_modules/**",
-      "!**/packages/**/node_modules/**",
-      "!**/packages/ui/storybook-static/**"
+      "!**/node_modules",
+      "!**/apps/**/node_modules",
+      "!**/packages/**/node_modules",
+      "!**/packages/ui/storybook-static"
     ]
   },
   "formatter": {
@@ -37,9 +37,14 @@
       "a11y": {
         "noStaticElementInteractions": "off" // To remove
       },
+      "complexity": {
+        "noImportantStyles": "off"
+      },
       "correctness": {
+        "noNestedComponentDefinitions": "off", // To check
         "noUnusedImports": "error",
-        "useExhaustiveDependencies": "info"
+        "useExhaustiveDependencies": "info",
+        "useUniqueElementIds": "off" // To remove
       },
       "recommended": true,
       "style": {
@@ -57,7 +62,8 @@
       },
       "suspicious": {
         "noDuplicateProperties": "off", //To remove
-        "noExplicitAny": "off"
+        "noExplicitAny": "off",
+        "noUnknownAtRules": "off" // To remove
       }
     }
   },
