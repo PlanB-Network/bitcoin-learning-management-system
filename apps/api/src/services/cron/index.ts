@@ -18,9 +18,12 @@ import {
   createInsertUserNotifications,
   createProcessTeacherLedCoursesWithConclusionIn24Hours,
   createPublishScheduledCourseAnnouncement,
+  createSendCoordinatorNewStudentsDailyRecapEmail,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
+  createSendSelfPacedCourseMonthlySummaryEmail,
   createStartCourse,
+  createTeacherNotificationsService,
   createUpdateCoursePayment,
   createUpdateEventPayment,
   createUserNotificationsService,
@@ -31,6 +34,8 @@ import type { Dependencies } from '#src/dependencies.js';
 export const registerCronTasks = async (ctx: Dependencies) => {
   const timestampService = await createExamTimestampService(ctx);
   const userNotificationsService = await createUserNotificationsService(ctx);
+  const teacherNotificationsService =
+    await createTeacherNotificationsService(ctx);
   const refreshCoursesRatings = createRefreshCoursesRatings(ctx);
 
   // One time exec - index content in the search engine 30 seconds after the server starts
@@ -272,7 +277,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
 
     ctx.crons.addTask('sun4pm', async () => {
       console.log('[cron]', new Date(), 'Starting weekly recap email cron job');
-      const courses = await getCourses('en');
+      const courses = await getCourses();
       if (courses.length === 0) return;
 
       const startDate = new Date();
@@ -283,9 +288,12 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       endDate.setHours(0, 0, 0, 0);
 
       for (const course of courses) {
-        if (!course.isPlanbSchool) continue;
+        if (course.teachingFormat !== 'professor_led') continue;
 
-        const chapters = await getCourseChapters(course.id, 'en');
+        const chapters = await getCourseChapters(
+          course.id,
+          course.originalLanguage,
+        );
         if (chapters.length === 0) continue;
 
         const chaptersStartingSoon = chapters.filter((chapter) => {
@@ -309,6 +317,112 @@ export const registerCronTasks = async (ctx: Dependencies) => {
           });
         }
       }
+    });
+  }
+
+  // Once a day, loop on paid courses, checking if there are new students enrolled. If so, send a mail to coordinators
+  {
+    const getCourses = createGetCourses(ctx);
+
+    const sendNewStudentsDailyRecapEmail =
+      createSendCoordinatorNewStudentsDailyRecapEmail(ctx);
+
+    ctx.crons.addTask('daily_16_gmt', async () => {
+      console.log(
+        '[cron] Running daily mail recap to course coordinators about new enrolled students',
+      );
+      const courses = await getCourses();
+
+      const paidCourses = courses.filter((course) => course.requiresPayment);
+
+      for (const course of paidCourses) {
+        const coordinators =
+          await teacherNotificationsService.getCourseCoordinatorsInfos(
+            course.id,
+          );
+
+        if (!coordinators || coordinators.length === 0) continue;
+
+        const newStudentsCount =
+          await teacherNotificationsService.getNewStudentsCount(
+            course.id,
+            '24 hours',
+          );
+
+        if (newStudentsCount === 0) continue;
+
+        await sendNewStudentsDailyRecapEmail({
+          courseName: course.name,
+          coordinators,
+          newStudentsCount,
+        });
+      }
+      console.log(
+        '[cron] Finished sending daily mail recap to course coordinators about new enrolled students',
+      );
+    });
+  }
+
+  // Once a month, loop on self-learning courses. Send a mail to coordinators with number of new students, number of graduated students (i.e students who completed the exam), number of new reviews and average rating of the course
+  {
+    const getCourses = createGetCourses(ctx);
+
+    const sendSelfPacedCourseMonthlySummaryEmail =
+      createSendSelfPacedCourseMonthlySummaryEmail(ctx);
+
+    ctx.crons.addTask('monthly_1st_16_gmt', async () => {
+      console.log(
+        '[cron] Running monthly mail recap to course coordinators about new enrolled students, graduated students, reviews and ratings',
+      );
+      const courses = await getCourses();
+
+      const selfPacedCourses = courses.filter(
+        (course) => course.teachingFormat === 'self_paced',
+      );
+
+      for (const course of selfPacedCourses) {
+        const coordinators =
+          await teacherNotificationsService.getCourseCoordinatorsInfos(
+            course.id,
+          );
+
+        if (!coordinators || coordinators.length === 0) continue;
+
+        const newStudentsCount =
+          await teacherNotificationsService.getNewStudentsCount(
+            course.id,
+            '1 month',
+          );
+
+        const newGraduatedStudentsCount =
+          await teacherNotificationsService.getNewSucceededExamsCount(
+            course.id,
+          );
+
+        const newReviewsCount =
+          await teacherNotificationsService.getNewCourseReviewsCount(course.id);
+
+        if (
+          newStudentsCount === 0 &&
+          newGraduatedStudentsCount === 0 &&
+          newReviewsCount === 0
+        )
+          continue;
+
+        const averageRating = course.averageRating.toFixed(2) || '0.00';
+
+        await sendSelfPacedCourseMonthlySummaryEmail({
+          courseName: course.name,
+          coordinators,
+          newStudentsCount,
+          newGraduatedStudentsCount,
+          newReviewsCount,
+          averageRating,
+        });
+      }
+      console.log(
+        '[cron] Finished sending monthly mail recap to course coordinators about new enrolled students, graduated students, reviews and ratings',
+      );
     });
   }
 

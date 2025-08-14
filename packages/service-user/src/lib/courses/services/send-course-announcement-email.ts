@@ -6,7 +6,7 @@ import { getUsersByIdsQuery } from '../../account/queries/get-user.js';
 import { createSendEmail } from '../../account/services/email.js';
 import { getPublishedScheduledCourseAnnouncementByIdQuery } from '../../notifications/queries/get-scheduled-course-announcement.js';
 import { createUserNotificationsService } from '../../notifications/services/user-notifications-service.js';
-import { getCourseLocalized } from '../queries/get-course.js';
+import { getCourseInfo, getCourseLocalized } from '../queries/get-course.js';
 
 interface SendAnnouncementEmailParams {
   announcementId: string;
@@ -43,19 +43,30 @@ export const createSendCourseAnnouncementEmail = (
         return;
       }
 
-      const course = await getCourseLocalized(
-        'en',
-        announcementInfo.courseId,
-      ).then(firstRow);
+      const course = await getCourseInfo(announcementInfo.courseId).then(
+        firstRow,
+      );
 
       if (!course) {
         console.error(`No course found with ID: ${announcementInfo.courseId}`);
         return;
       }
 
+      const courseLocalized = await getCourseLocalized(
+        course.originalLanguage,
+        announcementInfo.courseId,
+      ).then(firstRow);
+
+      if (!courseLocalized) {
+        console.error(
+          `No localized course information found for course ID: ${announcementInfo.courseId}`,
+        );
+        return;
+      }
+
       const uidsSubscribedToCourse =
         await userNotificationsService.getUidsByCourse(
-          course.courseId,
+          course.id,
           false,
           announcementInfo.studentGroup === 'assignment',
           announcementInfo.studentGroup === 'summer',
@@ -117,8 +128,8 @@ export const createSendCourseAnnouncementEmail = (
       }
 
       const sendEmail = createSendEmail({ config });
-      const courseName = course.name;
-      const courseId = course.courseId;
+      const courseName = courseLocalized.name;
+      const courseId = courseLocalized.courseId;
       const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}${courseName} - Special announcement`;
       const announcementText = announcementInfo.content
         .split('\n')
