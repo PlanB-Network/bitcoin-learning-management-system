@@ -71,43 +71,16 @@ export const ExamSession = ({
       (answer) => answer.order !== -1,
     );
 
-    const maxRetries = 3;
-    let retryCount = 0;
-
-    const attemptSubmit = async (): Promise<void> => {
-      try {
-        await completeExamAttempt.mutateAsync({
-          answers: validAnswers.map((answer) => ({
-            order: answer.order,
-            questionId: answer.questionId,
-          })),
-          chapterId: chapter.chapterId,
-          courseId: chapter.courseId,
-          examId: examResults?.id ?? '',
-        });
-      } catch (error) {
-        retryCount++;
-        if (retryCount < maxRetries) {
-          await new Promise((resolve) =>
-            setTimeout(resolve, 2 ** retryCount * 1000),
-          );
-          return attemptSubmit();
-        }
-        throw error;
-      }
-    };
-
-    try {
-      await attemptSubmit();
-    } catch (error) {
-      console.error(
-        'Failed to submit exam after',
-        maxRetries,
-        'attempts:',
-        error,
-      );
-    }
-  }, [chapter, completeExamAttempt, selectedAnswers, examResults?.id]);
+    await completeExamAttempt.mutateAsync({
+      answers: validAnswers.map((answer) => ({
+        order: answer.order,
+        questionId: answer.questionId,
+      })),
+      chapterId: chapter.chapterId,
+      courseId: chapter.courseId,
+      examId: examResults?.id ?? '',
+    });
+  }, [chapter, completeExamAttempt, selectedAnswers]);
 
   const handleAnswerClick = (questionIndex: number, answerIndex: number) => {
     setSelectedAnswers((prev) => {
