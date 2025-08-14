@@ -1,8 +1,8 @@
 {
   "devDependencies": {
-    "@biomejs/biome": "^2.1.4",
+    "@biomejs/biome": "2.1.4",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.16.4",
+    "@types/node": "^22.17.1",
     "dotenv-cli": "^10.0.0",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
