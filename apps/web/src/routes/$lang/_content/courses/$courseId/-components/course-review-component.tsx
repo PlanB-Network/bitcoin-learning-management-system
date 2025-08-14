@@ -85,10 +85,10 @@ export function CourseReviewComponent({
 
   const saveCourseReview = useMutation(
     trpc.user.courses.saveCourseReview.mutationOptions({
-      onSuccess: () => {
+      onSuccess: async () => {
         if (isConclusionReview && onReviewSuccess) {
           onReviewSuccess();
-          refetchCourses();
+          await refetchCourses();
         }
       },
     }),

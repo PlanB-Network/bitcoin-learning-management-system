@@ -24,8 +24,6 @@ function DashboardCourses() {
     refetchOnWindowFocus: true,
   });
 
-  console.log(progress);
-
   const filteredCourses = courses
     ? courses.filter((course) => {
         const inProgress = (progress ?? []).some(
