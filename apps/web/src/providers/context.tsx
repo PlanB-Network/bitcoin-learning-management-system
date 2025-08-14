@@ -7,7 +7,7 @@ import type {
   UserDetails,
 } from '@blms/types';
 import type { PropsWithChildren } from 'react';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { trpcClient } from '#src/utils/trpc.js';
@@ -39,6 +39,7 @@ interface AppContext {
   // Courses
   courses: JoinedCourse[] | null;
   setCourses: (courses: JoinedCourse[] | null) => void;
+  refetchCourses: () => Promise<void>;
 
   // Blog
   blogs: JoinedBlogLight[] | null;
@@ -58,6 +59,7 @@ export const AppContext = createContext<AppContext>({
   courses: null,
   fetchUserDetailsAndSettings: async () => {},
   hasSeenRegisterToast: false,
+  refetchCourses: async () => {},
   session: undefined,
   setAccountSettings: () => {},
   setBlogs: () => {},
@@ -126,6 +128,17 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       setAccountSettings(null);
     }
   };
+
+  const refetchCourses = useCallback(async () => {
+    try {
+      const data = await trpcClient.content.getCourses.query({
+        language: i18n.language,
+      });
+      setCourses(data ?? null);
+    } catch (error) {
+      console.error('Failed to refetch courses:', error);
+    }
+  }, [i18n.language]);
 
   // Listen for logout events from other tabs
   useEffect(() => {
@@ -198,6 +211,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     courses,
     fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
+    refetchCourses,
     session,
     setAccountSettings,
     setBlogs,

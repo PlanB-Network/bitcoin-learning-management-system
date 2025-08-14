@@ -405,8 +405,6 @@ const ExamCard = ({
         ? assignmentPublished && assignmentGrades.length > 0
         : true;
 
-  const averageDuration = calculateAverageDuration(examGrades);
-
   const averageScore =
     assignmentGrades && assignmentGrades.length > 0
       ? calculateAssignmentAverageScore(assignmentGrades)
@@ -431,6 +429,13 @@ const ExamCard = ({
     type === 'multi-attempts'
       ? multiAttemptsExamQuestionsStatistics?.length || 0
       : examInfo?.nbQuestions || 0;
+
+  const averageDuration = calculateAverageDuration(
+    examGrades,
+    Math.round(
+      questionsInExam * (60 / DURATION_CALCULATION_QUESTIONS_PER_MINUTE),
+    ),
+  );
 
   if (!isExamInfoFetched && type === 'single-trial') {
     return <Loader />;
@@ -651,6 +656,7 @@ const sanitizeFilename = (filename: string) => {
 
 const calculateAverageDuration = (
   examGrades: MinimalCourseExamAttemptWithUsername[],
+  maxDuration: number,
 ) => {
   const validDurations = examGrades
     .filter((grade) => grade.finishedAt && grade.startedAt)
@@ -664,9 +670,12 @@ const calculateAverageDuration = (
 
   if (validDurations.length === 0) return undefined;
 
-  return Math.round(
-    validDurations.reduce((acc, duration) => acc + duration, 0) /
-      validDurations.length,
+  return Math.min(
+    Math.round(
+      validDurations.reduce((acc, duration) => acc + duration, 0) /
+        validDurations.length,
+    ),
+    maxDuration,
   );
 };
 
@@ -761,10 +770,15 @@ const downloadExamGrades = async (
     .map((grade) => {
       let duration = null;
       if (grade.finishedAt && grade.startedAt) {
-        duration = Math.round(
-          (new Date(grade.finishedAt).getTime() -
-            new Date(grade.startedAt).getTime()) /
-            1000,
+        duration = Math.min(
+          Math.round(
+            (new Date(grade.finishedAt).getTime() -
+              new Date(grade.startedAt).getTime()) /
+              1000,
+          ),
+          Math.round(
+            (totalQuestions * 60) / DURATION_CALCULATION_QUESTIONS_PER_MINUTE,
+          ),
         );
       }
 

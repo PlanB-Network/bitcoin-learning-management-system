@@ -106,6 +106,7 @@ export const ExamSession = ({
   const secondsSinceStart = Math.round(
     (now.getTime() - new Date(startedAt).getTime()) / 1000,
   );
+
   const timeLeftInSeconds = Math.max(
     0,
     questions.length * EXAM_QUESTION_DURATION_SECONDS -

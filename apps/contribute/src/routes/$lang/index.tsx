@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { TbArrowRight } from 'react-icons/tb';
 import { MainLayout } from '#src/components/layouts/main-layout.tsx';
 import { trpcClient } from '#src/utils/trpc.ts';
 
@@ -173,7 +173,7 @@ function ContributePage() {
                 className="inline-flex items-center px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors whitespace-nowrap shrink-0"
               >
                 {t('translate.contactUs')}{' '}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <TbArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
           </div>
