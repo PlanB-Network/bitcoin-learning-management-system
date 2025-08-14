@@ -358,7 +358,7 @@
       "time": "Temps"
     },
     "quizz": {
-      "clickOnPie": "Cliquez sur le camembert pour vérifier la bonne réponse",
+      "clickOnPie": "Cliquez sur le camembert pour découvrir la bonne réponse",
       "quizz": "Quiz",
       "quizzResults": "Résultats du quiz",
       "quizzReview": "Évaluation du quiz",
@@ -516,7 +516,7 @@
       "selectProfessor": "Sélectionnez professeur",
       "selectRole": "Sélectionnez le rôle",
       "tutorialAnalytics": "Analytique de tutoriel",
-      "tutorialAnalyticsDescription": "Ici, vous pouvez vérifier et comparer tous les tutoriels sur la plateforme.",
+      "tutorialAnalyticsDescription": "Ici, vous pouvez découvrir et comparer tous les tutoriels sur la plateforme.",
       "tutorialsManagementPanel": "Panneau de gestion des tutoriels",
       "type": "Type",
       "upcomingBookings": "Réservations à venir",
@@ -753,7 +753,7 @@
       "assignmentInformation": "Informations sur la mission",
       "assignmentScore": "Score du devoir",
       "assignmentTitle": "Mission du projet",
-      "checkDetailsCompleted": "Ici, vous pouvez vérifier tous les détails concernant le cours que vous avez terminé.",
+      "checkDetailsCompleted": "Ici, vous pouvez consulter tous les détails concernant ce cours que vous avez terminé.",
       "completionDiploma": "Diplôme final",
       "completionExamInfo": "Vous devez terminer l'examen pour accéder à cette fonctionnalité.",
       "conclusionHeadline": "Voici un résumé de ce que vous avez appris. Si certains chapitres sont manquants ou n'ont pas été validés correctement, c'est maintenant le moment de le faire, soit en revenant pour apprendre, soit en appuyant sur le bouton terminer.",
@@ -770,7 +770,7 @@
       "diplomaReleaseTitle": "Délivrance du diplôme",
       "exams": "Examens",
       "examScore": "Score :",
-      "feedbacks": "Un chapitre à la fin du cours est consacré aux retours. Si vous souhaitez donner votre avis maintenant, vous pouvez le faire ici.",
+      "feedbacks": "Ici, vous pouvez consulter et modifier les notes et les retours que vous avez donnés à ce cours.",
       "fileUploaded": "Votre travail a été téléchargé avec succès !",
       "fileUploadError": "Il y a eu une erreur lors du téléchargement de votre",
       "finalAverageGradeDescription": "Vous pouvez trouver votre note moyenne finale dans la section Examen & Diplôme de votre tableau de bord.",
@@ -837,7 +837,7 @@
     "myCourses": {
       "completeAll": "Complétez tout",
       "completed": "Terminé",
-      "completedCoursesDescription": "Ici vous pouvez vérifier vos cours terminés.",
+      "completedCoursesDescription": "Ici, vous pouvez consulter vos cours terminés.",
       "completedCoursesTitle": "Cours terminés",
       "courseDashboard": "Tableau de bord du cours",
       "detailsAndCertificate": "Détails & certificat",
@@ -870,7 +870,7 @@
       "displayName": "Nom d'affichage",
       "edit": "Éditer",
       "email": "Email",
-      "emailChangeConfirmation": "Un email de confirmation pour le changement de votre email a été envoyé, veuillez vérifier votre boîte de réception pour confirmer.",
+      "emailChangeConfirmation": "Un email de confirmation pour le changement de votre email a été envoyé, veuillez consulter votre boîte de réception pour confirmer.",
       "emailChangeRateLimitError": "Vous avez récemment mis à jour votre e-mail. Veuillez attendre quelques minutes avant de réessayer.",
       "notificationSettings": {
         "coursesOption": "Mises à jour sur les cours auxquels vous vous êtes inscrit",
@@ -1001,7 +1001,7 @@
       },
       "reviews": {
         "checkComments": "Ici, vous pouvez lire les commentaires donnés par les étudiants. Les commentaires sont triés par date.",
-        "checkReviews": "Ici, vous pouvez vérifier les notes et les avis que votre cours a reçus.",
+        "checkReviews": "Ici, vous pouvez consulter les notes et les avis que votre cours a reçus.",
         "noReviewsYet": "Ce cours n'a pas encore reçu d'avis et de notes.",
         "privateComment": "Commentaire privé",
         "publicComment": "Commentaire public",
@@ -1134,12 +1134,12 @@
       "seeAll": "Voir tout"
     },
     "courseSection": {
-      "checkAllCourses": "Vérifiez tous les cours",
+      "checkAllCourses": "Explorez tous les cours",
       "upcomingCourseDescription": "Découvrez les derniers cours publiés sur la plateforme. L'apprentissage ne s'arrête jamais !",
       "upcomingCourseTitle": "Cours à venir et nouveaux cours"
     },
     "eventSection": {
-      "checkEvents": "Vérifiez tous les événements",
+      "checkEvents": "Explorez tous les événements",
       "eventTitle": "Un Réseau Mondial d'Éducateurs Bitcoin",
       "hottestEvent": "L'événement Bitcoin le plus chaud"
     },
@@ -1298,7 +1298,7 @@
     "selectTimeZone": "Sélectionner le fuseau horaire"
   },
   "podcast": {
-    "check": "Vérifiez le podcast"
+    "check": "Explorez le podcast"
   },
   "podcasts": {
     "pageTitle": "Le portail Podcast"

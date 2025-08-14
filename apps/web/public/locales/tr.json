@@ -241,7 +241,7 @@
       "failed": "Başarısız",
       "failedDiploma": "Diplomanızı alıp kursu tamamen tamamlamak için final sınavında %80'in üzerinde bir puan almanız gerekiyor. Sınavı 24 saat sonra tekrar yapabilirsiniz.",
       "finalExam": "Final sınav",
-      "finalScore": "",
+      "finalScore": "Final skor",
       "findInformationChapter": "Bu bölümde daha fazla bilgi bulun:",
       "futureProof": "Future-Proof: Diplomanız sürekli korunur ve her zaman geçerlidir.",
       "getCertificate": "Diplomamı al",
@@ -283,13 +283,13 @@
       "skipExamDescription": "Aşağıdaki düğmeye tıklayarak sınavı atlayabilir ve doğrudan sonuca geçebilirsiniz.",
       "skipExamGoConclusion": "Sınavı atla, sonuca git",
       "skipGoConclusion": "Atla, sonuca git",
-      "solidEffort": "",
+      "solidEffort": "Kursu tamamladığınız için tebrikler, sağlam bir çaba gösterdiniz.\nBu sefer geçemediniz ama her adım ilerlemeyi oluşturur.\nÖğrenme yolculuğunuzda ilerlemeye devam edin!",
       "startExam": "Sınavı başlat",
       "submit": "Gönder",
       "successDiploma": "Tebrikler! Sınavı başarıyla geçtiniz.\nDiplomanız öğrenci panelinizde mevcut. Orijinalliğini garanti etmek için <0>zaman damgası</0> konulmuştur.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Tebrikler! Kursu başarıyla tamamladınız. \nDiplomanız artık öğrenci panelinizde mevcut.",
       "successDiplomaTimeStamped": "Tebrikler! Sınavı başarıyla geçtiniz.\nDiplomanız, sınavı aldıktan yaklaşık 10 saat sonra öğrenci panelinizde mevcut olacak. Bu gecikme, özgünlüğünü sağlayan <0>zaman damgalama</0> teknolojisi nedeniyledir.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Kursu tamamladığınız için tebrikler.\nBu kurs için geçme eşiğini başarıyla karşıladınız ve artık mezun oldunuz.\nDiplomanızı kontrol panelinizde bulabilirsiniz.",
       "sureSubmit": "Sınavınızı göndermek istediğinizden emin misiniz?",
       "takeExam": "Sınavı yap",
       "tamperProof": "Müdahale edilemez: Blockchain, kimsenin sizin kimlik bilgilerinizi değiştirmesini veya sahtelemesini engeller.",
@@ -309,7 +309,10 @@
       "weight": "Ağırlık: {{weight}}%",
       "whyTimeStamp": "Diplomanızın Zaman Damgası:\nNeden Önemlidir",
       "wishTryAgain": "Sınavı 24 saat sonra tekrar deneyebilirsiniz.",
-      "yesSubmit": "Evet, gönder"
+      "yesSubmit": "Evet, gönder",
+      "reviewTest": "İnceleme",
+      "scoreAndDiploma": "Skor & Diploma",
+      "examResults": "Sınav sonuçları"
     },
     "explorer": {
       "buildPath": "Kendi yolculuğunu oluştur",
@@ -426,7 +429,9 @@
         "profession": "Meslek",
         "resultsRemaining": "{{results}} sonuç kaldı",
         "seeMore": "Daha fazla görüntüle",
-        "viewCV": "CV Görüntüle"
+        "viewCV": "CV Görüntüle",
+        "candidateFile": "Aday dosyası",
+        "file": "Dosya"
       },
       "confirmRemoval": "Kaldırmayı onayla",
       "coupons": {
@@ -519,7 +524,261 @@
       "type": "Tür",
       "upcomingBookings": "Yaklaşan rezervasyonlar",
       "upcomingBookingsSubtitle": "Buradan tüm yüz yüze etkinlikler için katılımcı listesini indirebilirsiniz.",
-      "userRolesAllocation": "Kullanıcı rollerinin tahsisi"
+      "userRolesAllocation": "Kullanıcı rollerinin tahsisi",
+      "translation": "Çeviri paneli",
+      "translationPanel": {
+        "actions": {
+          "accept": "Kabul et",
+          "delete": "Sil",
+          "reject": "Reddet"
+        },
+        "addContributor": {
+          "addLanguage": "Bir başka dil ekleyin",
+          "assign": "Ata",
+          "assignedLanguages": "Önceden atanmış diller",
+          "assigning": "Atama yapılıyor...",
+          "assignmentSuccess": "Katılımcılar başarıyla atandı!",
+          "confirm": "Onayla",
+          "findContributor": "Bir katılımcı bulun",
+          "selectLanguage": "Bir dil seçin",
+          "language": "Dil",
+          "noUsers": "Kullanıcı bulunamadı",
+          "searchUsers": "Kullanıcıları ara...",
+          "selectedUsers": "Seçilen Kullanıcılar:",
+          "title": "Katılımcı ekle"
+        },
+        "contentManagement": {
+          "actions": {
+            "reassign": "Yeniden atama",
+            "view": "Görünüm",
+            "assign": "Ata",
+            "backToContentManagement": "İçerik yönetimine geri dön"
+          },
+          "assignModal": {
+            "assign": "Ata",
+            "assigning": "Atama yapılıyor...",
+            "assigningCourse": "Ders Atama:",
+            "assignmentSuccess": "Ders başarıyla atandı!",
+            "cancel": "İptal",
+            "chooseContributor": "Bir katılımcı seçin...",
+            "courseInfo": "Ders Bilgisi",
+            "selectContributor": "Katılımcı Seç",
+            "title": "Katılımcıya Kurs Ata"
+          },
+          "description": "Katılımcılara kurs çevirilerini atayın ve yönetin",
+          "table": {
+            "index": "İndeks",
+            "actions": "Eylemler",
+            "contributor": "Katılımcı",
+            "course": "Kurs",
+            "language": "Dil",
+            "progress": "İlerleme",
+            "status": "Durum"
+          },
+          "status": {
+            "assigned": "Atanan",
+            "notAssigned": "Atanmamış",
+            "readyForReview": "İncelemeye hazır",
+            "underReview": "İnceleme altında"
+          },
+          "noCourses": "Çeviri yönetimi için kullanılabilir kurs yok",
+          "noCoursesFiltered": "Filtrelerinize uyan bir kurs bulunamadı",
+          "notAssigned": "Atanmamış",
+          "reassignModal": {
+            "cancel": "İptal",
+            "chooseNewContributor": "Yeni bir katılımcı seçin...",
+            "currentlyAssignedTo": "Şu anda atanmış durumda:",
+            "reassign": "Yeniden atama",
+            "reassigning": "Yeniden atama yapılıyor...",
+            "reassigningCourse": "Dersi yeniden atama:",
+            "reassignmentSuccess": "Kurs başarıyla yeniden atandı!",
+            "selectNewContributor": "Yeni Katılımcı Seç",
+            "title": "Kursu Yeni Katkıda Bulunana Ata",
+            "warning": {
+              "description": "Daha önce gözden geçirilmiş olan bölümler ve kısımlar, gözden geçirilmiş durumlarını koruyacak ve yeniden atama yapılmayacaktır.",
+              "title": "Önemli Not"
+            },
+            "courseInfo": "Ders Bilgisi"
+          },
+          "title": "İçerik Yönetimi"
+        },
+        "admin": "YÖNETİCİ",
+        "comingSoon": {
+          "courses": "Dersler görünümü yakında geliyor",
+          "coverage": "Dil kapsama görünümü yakında geliyor"
+        },
+        "courseDetails": {
+          "chapterTitle": "Başlık",
+          "actions": "Eylemler",
+          "assignedTo": "Atanan Kişi",
+          "chapterIndex": "Bölüm",
+          "chaptersAndProgress": "Bölümler ve İlerleme",
+          "courseIndex": "Ders İndeksi",
+          "courseInformation": "Ders Bilgisi",
+          "courseName": "Ders Adı",
+          "currentContributor": "Mevcut katılımcı",
+          "errorLoadingDetails": "Ders detayları yüklenirken hata oluştu",
+          "chaptersCompleted": "bölümler tamamlandı",
+          "language": "Dil",
+          "partTitle": "Bölüm {{index}}: {{title}}",
+          "progress": "İlerleme",
+          "status": "Durum",
+          "translationStatus": "Çeviri Durumu",
+          "noContributor": "Atanan bir katkıda bulunan yok",
+          "noChapters": "Bu kurs için hiç bölüm bulunamadı"
+        },
+        "pendingTranslationRequests": "Bekleyen metin düzeltme istekleri",
+        "reports": {
+          "fromMonthPlaceholder": "Hangi aydan?",
+          "table": {
+            "progress": "İlerleme %",
+            "contributor": "Katılımcı",
+            "lastUpdated": "Son güncelleme"
+          },
+          "year": "Yıl",
+          "chooseYear": "Hangi yılı göz önünde bulundurmak istersiniz?",
+          "comingSoon": {
+            "courses": "Dersler görünümü yakında geliyor",
+            "coverage": "Dil kapsama görünümü yakında geliyor"
+          },
+          "contributors": {
+            "assignedCourses": "Atanan dersler",
+            "completedCourses": "Tamamlanan kurslar",
+            "languages": "Diller",
+            "startDate": "Başlangıç tarihi",
+            "title": "Katılımcılar",
+            "totalReward": "Toplam ödül",
+            "username": "Kullanıcı Adı"
+          },
+          "courses": {
+            "contributor": "Katılımcı",
+            "filterByCourse": "Kursa göre filtrele",
+            "lastUpdated": "Son güncelleme",
+            "progress": "İlerleme %"
+          },
+          "dateFilter": "Tarih filtresi",
+          "downloadData": "Veri İndir",
+          "filterByLanguage": "Dil tarafından filtrele",
+          "fromMonth": "İtibaren",
+          "generalReport": "Genel Rapor",
+          "languageCoverage": {
+            "completed": "Tamamlandı",
+            "inProgress": "Devam ediyor",
+            "notStarted": "Başlanmadı",
+            "totalCourses": "Toplam kurslar"
+          },
+          "languagesProofread": "Dil düzeltmeleri",
+          "noContributors": "Katılımcı bulunamadı",
+          "noLanguages": "Hiçbir dil bulunamadı",
+          "proofreadCourses": "Düzeltme kursları",
+          "tabs": {
+            "contributors": "Katılımcılar",
+            "courses": "Kurslar",
+            "coverage": "Dil kapsamı"
+          },
+          "toMonth": "Kime",
+          "toMonthPlaceholder": "Hangi aya?",
+          "totalLanguages": "Toplam diller",
+          "noCourses": "Kurs bulunamadı"
+        },
+        "status": {
+          "underReview": "İnceleme Altında",
+          "assigned": "Atanan",
+          "completed": "Tamamlandı",
+          "inProgress": "Devam Ediyor",
+          "readyForReview": "İncelemeye hazır",
+          "todo": "Yapılacaklar"
+        },
+        "translate": {
+          "compare": "Karşılaştır",
+          "description": "Belirli dillere çevrilmesi gereken kurslar için çevirilere başlayın.",
+          "compareDisabledTooltip": "Düzeltme sürümü mevcut değil",
+          "actions": {
+            "translate": "Çevir"
+          },
+          "backToCourse": "Kurslara geri dön",
+          "changeSpeed": "Oynatma hızını değiştir",
+          "chapterTitle": "Bölüm Başlığı",
+          "compareTooltip": "Orijinal ve düzeltilmiş sürümleri karşılaştırın",
+          "comparison": {
+            "backToChapter": "Bölüme geri dön",
+            "originalVersion": "Orijinal Versiyon",
+            "translatedVersion": "Çevrilmiş Sürüm"
+          },
+          "forward15Seconds": "15 saniye ileri",
+          "imageNotFound": "Görüntü bulunamadı",
+          "language": "Dil",
+          "loadingPresentation": "Sunum yükleniyor...",
+          "noContentAvailable": "İçerik mevcut değil",
+          "noCourses": "Şu anda çeviriye ihtiyaç duyulan bir kurs yok.",
+          "noOriginalContent": "Orijinal içerik yok",
+          "noPngSlides": "Bu sunum için kullanılabilir PNG slaytlar yok",
+          "noSlidesFound": "Hiç slayt bulunamadı",
+          "originalContent": "Orijinal İçerik",
+          "pause": "Duraklat",
+          "play": "Oynat",
+          "presentations": "Sunumlar",
+          "rewind15Seconds": "15 saniye geri sar",
+          "selectLanguagesModal": {
+            "audioFile": "Ses Dosyası",
+            "audioFileInfo": "Desteklenen formatlar: MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Ses dosyası çok büyük. Maksimum boyut 50MB'dir.",
+            "cancel": "İptal",
+            "chooseAudioFile": "Ses Seçin",
+            "chooseFolder": "Dosya seçin",
+            "choosePptxFile": "PPTX'yi Seçin",
+            "chooseZip": "ZIP Seçin",
+            "course": "Kurs:"
+          }
+        },
+        "courseNotFound": "Kurs bulunamadı",
+        "messages": {
+          "noPendingRequestsSearch": "\"{{query}}\" ile eşleşen ve beklemekte olan metin düzeltme talebi bulunamadı.",
+          "noRejectedRequests": "Reddedilen düzeltme talebi bulunamadı.",
+          "noRejectedRequestsSearch": "\"{{query}}\" ile eşleşen reddedilmiş düzeltme talebi bulunamadı.",
+          "noPendingRequests": "Bekleyen düzeltme talebi bulunamadı."
+        },
+        "modal": {
+          "acceptTranslationRequest": "Çeviri İsteğini Kabul Et",
+          "accepting": "Kabul ediliyor...",
+          "cancel": "İptal",
+          "close": "Kapat",
+          "contributor": "Katılımcı",
+          "acceptRequest": "İsteği Kabul Et",
+          "requestRejectedSuccess": "İstek başarıyla reddedildi",
+          "course": "Kurs",
+          "doYouWantToAcceptRequest": "Bu çeviri isteğini kabul etmek istiyor musunuz?",
+          "language": "Dil",
+          "provideRejectionReason": "Lütfen bu talebi reddetme nedeninizi belirtin",
+          "reasonForRejection": "Reddetme nedeni",
+          "reasonPlaceholder": "Buraya açıklamanızı yazın...",
+          "rejecting": "Reddediliyor...",
+          "requestAcceptedMessage": "Katılımcıya bildirim yapıldı ve artık çeviri üzerinde çalışmaya başlayabilir.",
+          "requestAcceptedSuccess": "Çeviri talebini kabul ettiniz!",
+          "submitRejection": "Gönder"
+        },
+        "noResultsFound": "Sonuç bulunamadı",
+        "searchPlaceholder": "Ara...",
+        "table": {
+          "actions": "Eylemler",
+          "course": "Kurs",
+          "index": "İndeks",
+          "language": "Dil",
+          "username": "Kullanıcı Adı"
+        },
+        "tabs": {
+          "contentManagement": "İçerik Yönetimi",
+          "reports": "Raporlar",
+          "requests": "Talepler",
+          "translate": "çevir",
+          "userManagement": "Kullanıcı yönetimi"
+        },
+        "title": "Yönetici çeviri paneli",
+        "toggle": {
+          "pendingRequest": "Bekleyen istek",
+          "rejectedRequests": "Reddedilen istekler"
+        }
+      }
     },
     "announcements": {
       "groups": {
