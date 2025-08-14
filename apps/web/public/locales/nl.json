@@ -1356,7 +1356,10 @@
         "tutorialAnalyticsDescription": "Hier vind je analyses van de tutorials die je hebt gemaakt en gepubliceerd op het platform.",
         "yourTutorials": "Jouw tutorials"
       },
-      "menu": "Docent menu"
+      "menu": "Docent menu",
+      "discount": {
+        "description": "Hier kun je kortingscodes genereren en beheren voor deze cursus - zowel eenmalig codes voor studiebeurzen of vergelijkbare gevallen, als herbruikbare codes voor marketingcampagnes."
+      }
     }
   },
   "events": {

@@ -552,7 +552,40 @@
           },
           "description": "Ha kandi ucunge ubusobanuzi bw’inyigisho ku bafasha",
           "noCourses": "Nta nyigisho zihari zo gucungwa mu busobanuzi",
-          "noCoursesFiltered": "Nta nyigisho zabonetse zihuye n’ivyo wasanzwe warondeye"
+          "noCoursesFiltered": "Nta nyigisho zabonetse zihuye n’ivyo wasanzwe warondeye",
+          "notAssigned": "Ntihashinzwe",
+          "reassignModal": {
+            "chooseNewContributor": "Hitamwo uwundi azofasha...",
+            "warning": {
+              "description": "Ibice n’inyandiko bimaze gusuzumwa bizokomeza kugira icemezo c’ukusuzumwe kandi ntibizoherezwa ubundi bushasha.",
+              "title": "urwandiko rukenewe"
+            },
+            "cancel": "Guhagarika",
+            "courseInfo": "Amakuru y’inyigisho",
+            "currentlyAssignedTo": "Ushinzwe ubu ku:",
+            "reassign": "Gutanga bundi bushasha",
+            "reassigning": "Hariko haratangwa bundi bushasha...",
+            "reassigningCourse": "Hariko haratangwa izindi nyigisho:",
+            "reassignmentSuccess": "Inyigisho zatanzwe neza!",
+            "selectNewContributor": "Hitamwo uwundi azofasha",
+            "title": "Tanga inyigisho ku wundi azofasha"
+          },
+          "status": {
+            "assigned": "Ushinzwe",
+            "notAssigned": "Ntihashinzwe",
+            "readyForReview": "Vyiteguye gusuzumwa",
+            "underReview": "Biriko birasuzumwa"
+          },
+          "table": {
+            "actions": "Ibikorwa",
+            "contributor": "Umufasha",
+            "course": "Icigwa",
+            "index": "Urutonde",
+            "language": "Ururimi",
+            "progress": "Intambwe",
+            "status": "Uburyo bimeze"
+          },
+          "title": "Ubuyobozi bw’ibiri munyandiko"
         },
         "addContributor": {
           "addLanguage": "Ongerako urundi rurimi",
@@ -573,34 +606,257 @@
         "comingSoon": {
           "courses": "Ahokurabira ivyigwa harashika vuba",
           "coverage": "Aho kurabira uko indimi zifashe hazoshika vuba"
+        },
+        "courseDetails": {
+          "courseInformation": "Amakuru y’inyigisho",
+          "actions": "Ibikorwa",
+          "assignedTo": "Yashinzwe kuri",
+          "chapterIndex": "Ikigabane",
+          "chaptersAndProgress": "Ibigabane n’Intambwe",
+          "chaptersCompleted": "Ibigabane vyarangiye",
+          "courseIndex": "Urutonde rw’inyigisho",
+          "courseName": "Izina ry'inyigisho",
+          "currentContributor": "Uwuriko araterera ubu",
+          "chapterTitle": "Umutwe w'ijambo",
+          "errorLoadingDetails": "Habaye ikosa mu kwuzuza ivyerekeye inyigisho",
+          "language": "Ururimi",
+          "noChapters": "Nta bigabane vyabonetse kuri iyi nyigisho",
+          "noContributor": "Nta wuterera yashinzwe",
+          "partTitle": "Igice {{index}}: {{title}}",
+          "progress": "Intambwe",
+          "status": "Intumbero",
+          "translationStatus": "Intumbero y’ubusobanuzi"
+        },
+        "courseNotFound": "Inyigisho ntiyabonetse",
+        "messages": {
+          "noPendingRequests": "Nta bisabwa vyo gusuzuma vyasigaye vyabonetse.",
+          "noPendingRequestsSearch": "Nta bisabwa vyo gusuzuma vyasigaye bihuye na «{{query}}» vyabonetse.",
+          "noRejectedRequests": "Nta bisabwa vyo gusuzuma bitemewe vyabonetse.",
+          "noRejectedRequestsSearch": "Nta bisabwa vyo gusuzuma bitemewe bihuye na «{{query}}» vyabonetse."
+        },
+        "modal": {
+          "acceptRequest": "Emera Ibisabwa",
+          "acceptTranslationRequest": "Emera Ibisabwa vy’ugusobanura",
+          "accepting": "Biriko biremerwa...",
+          "cancel": "Hagarika",
+          "close": "Ugara",
+          "contributor": "Uwuterera igikorwa",
+          "course": "Inyigisho",
+          "doYouWantToAcceptRequest": "Urashaka kwemera iki gisabwa co gusobanura?",
+          "language": "Ururimi",
+          "provideRejectionReason": "Tugusabe utange impamvu yo kwanka iki gisabwa",
+          "reasonForRejection": "Impamvu yo kwanka",
+          "reasonPlaceholder": "Andika insiguro yawe aha...",
+          "rejecting": "Biriko biranka...",
+          "requestAcceptedMessage": "Uwuterera igikorwa yaramenyeshejwe kandi ubu ashobora gutangura gukora ku gusobanura.",
+          "requestAcceptedSuccess": "Wemeye igisabwa co gusobanura!",
+          "requestRejectedSuccess": "Ibisabwa vyankiwe neza",
+          "submitRejection": "Shikiriza"
+        },
+        "reports": {
+          "comingSoon": {
+            "courses": "Uburyo bwo kuraba inyigisho buzokwerekwa vuba cane",
+            "coverage": "Uburyo bwo kuraba ubwoko bw’indimi buzokwerekwa vuba cane"
+          },
+          "chooseYear": "Ni umwaka uwuhe ushaka gufatirako?",
+          "contributors": {
+            "assignedCourses": "Inyigisho zatanzwe",
+            "completedCourses": "Inyigisho zarangiye",
+            "languages": "Indimi",
+            "startDate": "Itariki yo gutangura",
+            "title": "Ubaterera igikorwa",
+            "totalReward": "Agashimwe kose",
+            "username": "Izina rikoreshwa"
+          },
+          "courses": {
+            "contributor": "Uwuterera igikorwa",
+            "filterByCourse": "Hitamwo hakurikijwe inyigisho",
+            "lastUpdated": "Ivyongeweko bwa nyuma",
+            "progress": "Intambwe %"
+          },
+          "dateFilter": "Hitamwo hakurikijwe itariki",
+          "downloadData": "Teresharija amakuru",
+          "filterByLanguage": "Hitamwo hakurikijwe ururimi",
+          "fromMonth": "Guhera",
+          "fromMonthPlaceholder": "Uhereye ku kwezi ukuhe?",
+          "generalReport": "Icegeranyo cose hamwe",
+          "languageCoverage": {
+            "completed": "Vyararangiye",
+            "inProgress": "Biriko birakorwa",
+            "notStarted": "Nta vyatanguwe",
+            "totalCourses": "Inyigiho zose hamwe"
+          },
+          "languagesProofread": "Indimi zasuzumwe",
+          "noContributors": "Nta baterera igikorwa babonetse",
+          "noCourses": "Nta nyigisho zabonetse",
+          "noLanguages": "Nta ndimi zabonetse",
+          "proofreadCourses": "Inyigisho zasuzumwe",
+          "table": {
+            "contributor": "Awuterera igikorwa",
+            "lastUpdated": "Ivyongeweko bwa nyuma",
+            "progress": "Intambwe %"
+          },
+          "tabs": {
+            "contributors": "Abaterera igikorwa",
+            "courses": "Inyigisho",
+            "coverage": "Ikwirakwizwa ry’indimi"
+          },
+          "toMonth": "Gushika",
+          "toMonthPlaceholder": "Ugushika ku kwezi ukuhe?",
+          "totalLanguages": "Indimi zose",
+          "year": "Umwaka"
+        },
+        "noResultsFound": "Nta bisubizo vyabonetse",
+        "pendingTranslationRequests": "Ibisabwa vyo gusuzuma birindiriye",
+        "searchPlaceholder": "Rondera...",
+        "status": {
+          "assigned": "Yashinzwe",
+          "completed": "Vyararangiye",
+          "inProgress": "Biriko birakorwa",
+          "readyForReview": "Birageze gusuzumwa",
+          "todo": "Bikorwa",
+          "underReview": "Biriko birasuzumwa"
+        },
+        "table": {
+          "actions": "Ibikorwa",
+          "course": "Inyigisho",
+          "index": "Urukwirikirane",
+          "language": "Ururimi",
+          "username": "Izina rikoreshwa"
+        },
+        "tabs": {
+          "contentManagement": "Ubuyobozi bw’inyandiko",
+          "reports": "Icegeranyo",
+          "requests": "Ibisabwa",
+          "translate": "Sobanura",
+          "userManagement": "Ubuyobozi bw’abakoresha"
+        },
+        "title": "Ubuyobozi bw'ahagenewe gusobanura",
+        "toggle": {
+          "pendingRequest": "Igisabwa kirindiriye",
+          "rejectedRequests": "Ibisabwa bitemewe"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Sobanura"
+          },
+          "backToCourse": "Garuka ku nyigisho",
+          "changeSpeed": "Hindura umuvuduko wo gusubiramwo",
+          "chapterTitle": "Umutwe w'ijambo ry'ikigabane",
+          "compare": "Gereranya",
+          "compareDisabledTooltip": "Inyandiko yasuzumwe ntiraboneka",
+          "compareTooltip": "Geraranya inyandiko ya mbere n’iyo yasuzumwe",
+          "comparison": {
+            "backToChapter": "Garuka ku kigabane",
+            "originalVersion": "Inyandiko ya Mbere",
+            "translatedVersion": "Inyandiko Yasobanuwe"
+          },
+          "description": "Tangura gusobanura inyigisho zikeneye gusobanurwa mu ndimi zimwe zimwe.",
+          "forward15Seconds": "Raba imbere amasegonda 15",
+          "imageNotFound": "Isanamu ntiyabonetse",
+          "language": "Ururimi",
+          "loadingPresentation": "Insiguro iriko iraza...",
+          "noCourses": "Nta nyigisho zikeneye gusobanurwa muri iki gihe.",
+          "noContentAvailable": "Ntanyandiko ziraboneka",
+          "noOriginalContent": "Nta nyandiko zarizihasanzwe",
+          "noPngSlides": "Nta mashusho ya PNG aboneka kurizinonsiguro",
+          "noSlidesFound": "Nta rukwirikirane rw'isiguro rwabonetse",
+          "pause": "Akaruhuko",
+          "originalContent": "Inyandiko zarizihasanzwe",
+          "play": "Tangura",
+          "presentations": "Insiguro kumashusho",
+          "rewind15Seconds": "Subira inyuma amasegonda 15",
+          "selectLanguagesModal": {
+            "audioFile": "Dosiyo y’ijwi",
+            "audioFileInfo": "Imiterere yemewe: MP3, WAV, M4A (Ntirenza 50MB)",
+            "audioFileTooLarge": "Dosiyo y’ijwi irarenze. Ubunini butarengwa ni 50MB.",
+            "cancel": "Hagarika",
+            "chooseAudioFile": "Hitemo Ijwi",
+            "chooseFolder": "Hitemwo Dosiye",
+            "choosePptxFile": "Hitamwo PPTX",
+            "chooseZip": "Hitamwo ZIP",
+            "course": "Inyigisho:",
+            "existingUploadsInfo": "Amadosiye ya mbere yarashizweho. Urashobora gutangura guhindura utabashije kuyasubira gushiraho. Gushiraho amadosiye mashasha azosubirira ayahari.",
+            "folderUrl": "URL ya dosiye",
+            "invalidAudioFile": "Tugusabe uhitemwo dosiye y’ijwi ikora.",
+            "invalidPptxFile": "Tugusabe uhitemwo dosiye ya PowerPoint (.pptx) ikwiriye.",
+            "missingFilesError": "Tugusabe shira amadosiye asobanuye canke utange URL imbere yo gutangura gusobanura.",
+            "noAudioFileSelected": "Nta dosiye y’ijwi yahiswemwo",
+            "noFolderSelected": "Nta dosiye yahiswemwo",
+            "noLanguagesAvailable": "Nta ndimi ziboneka zo gusobanurwa.",
+            "noPptxFileSelected": "Nta dosiye ya PowerPoint yahiswemwo",
+            "originalLanguage": "Ururimi rwatanguye:",
+            "overwriteWarning": "Amadosiye asanzwe ahari azosubirirwa.",
+            "pptxFile": "Dosiye ya PowerPoint",
+            "noZipSelected": "Nta dosiye ya ZIP yahiswemwo",
+            "pptxFileInfo": "Hemerwa gusa amadosiye ya .pptx (Atarenza 100MB)",
+            "pptxFileTooLarge": "Dosiye ya PowerPoint irarenze. Ubunini butarengwa ni 100MB.",
+            "selectLanguages": "Hitamwo indimi zo gusobanurwamwo:",
+            "startSuccess": "Gusobanura vyatanguye neza!",
+            "startTranslation": "Tangura gusobanura",
+            "startingTranslation": "Biriko biratangura...",
+            "title": "Hitamwo Indimi zo Gusobanurwamwo",
+            "uploadFiles": "Shiraho Amadosiye Ashigikira (Ubishatse)",
+            "uploadFolder": "Shiraho dosiye (PPTX + TXT)",
+            "useEnglishLabel": "Inyigisho yaramaze gusobanurwa mu Congereza. Ushaka gukoresha inyandiko y’icongereza nk’isoko?"
+          },
+          "slideNavigation": {
+            "next": "Ibikwirikira",
+            "previous": "Ivyatanguye",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Ishusho {{slideNumber}} ntiyabonetse",
+          "slideNotFound": "Ishusho ntiyabonetse",
+          "table": {
+            "actions": "Ibikorwa",
+            "course": "Inyigisho",
+            "index": "Urukwirikirane",
+            "todoLanguages": "Indimi zo Gusobanuramwo",
+            "totalLanguages": "Indimi zose hamwe"
+          },
+          "textContent": "Ibiri mu nyandiko",
+          "title": "Sobanura Inyigisho",
+          "translateTo": "Sobanura ujanye mu",
+          "unknownContributor": "Ntibizwi"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Garuka ku rutonde rw’abakoresha",
+            "backToUsers": "Garuka ku bakoresha",
+            "viewDetails": "Reba ibibisigura vyisanzuye"
+          },
+          "addContributor": "Ongerako uwuterera igikorwa",
+          "chapters": "Ibigabane",
+          "contributorInformation": "Amakuru y’uwuterera igikorwa",
+          "courses": "Inyigisho"
         }
       }
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "Abanyeshure bahiswemwo ku mugambi uzotangwa",
+        "all": "Abanyeshure bose biyandikishije",
+        "summer": "Abanyeshure bahiswemwo ku mashure y’ici"
       },
       "pickADate": "",
       "publicationDate": ""
     },
-    "backToDashboard": "",
+    "backToDashboard": "Subira ku rubuga nyamukuru",
     "bCert": {
       "grade": "",
-      "noResults": ""
+      "noResults": "nta manota canke impapuro z'icemezo vyari vyarabitswe kuri iyi konti gushika ubu\nnyimba warakoze ikibazo ariko ivyavuyemwo bitaraboneka haciye igihe kirekire, urashobora <0>kutwandikira<0>kugira tugufashe."
     },
     "booking": {
-      "accessLive": "",
-      "billingSubtitle": "",
-      "billingTitle": "",
-      "cancelBookingTitle": "",
-      "invoiceDate": "",
-      "invoiceTitle": "",
-      "invoiceType": "",
-      "noGoBack": "",
-      "noInvoice": "",
-      "noTicket": "",
+      "accessLive": "Injira mu kiganiro c'ako kanya",
+      "billingSubtitle": "kurura fagitire z'ivyabitswe vyawe ngaha.",
+      "billingTitle": "Amateka yo kwishurwa",
+      "cancelBookingTitle": "uri murkuri ushaka guhagarika iri fatisha ryawe?",
+      "invoiceDate": "Itariki",
+      "invoiceTitle": "Umutwe",
+      "invoiceType": "Ubwoko",
+      "noGoBack": "Oya, subira inyuma",
+      "noInvoice": "Ubu nta fagitire ugifise.",
+      "noTicket": "Ubu nta tike ufise.",
       "pastTicketTitle": "",
       "ticketDate": "",
       "ticketLocation": "",
