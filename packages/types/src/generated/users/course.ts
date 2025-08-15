@@ -260,3 +260,11 @@ export interface ExamQuestionStatistics {
   totalAnswers: number;
   isArchived: boolean;
 }
+
+export interface CourseActivity {
+  displayName: string;
+  type: 'enrolled' | 'graduated' | 'review';
+  date: Date;
+  withComment: boolean;
+  score: number | null;
+}

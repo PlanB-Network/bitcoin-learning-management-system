@@ -109,7 +109,7 @@ const CourseExamsTable = ({
   return (
     <div className="max-w-[948px] mt-2.5 md:mt-12">
       <div className="flex flex-col gap-3">
-        <div className="flex justify-between body-14px-medium md:body-16px-medium text-dashboardSectionTitle mx-2.5">
+        <div className="flex justify-between body-14px-medium md:body-medium-16px text-dashboardSectionTitle mx-2.5">
           <span className="w-[180px] pl-1 max-md:mr-auto">
             {t('words.date')}
           </span>
@@ -302,7 +302,7 @@ const CourseExamsTable = ({
                         </div>
 
                         <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
-                          <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
+                          <span className="whitespace-pre-line text-center body-14px-medium md:body-medium-16px text-newBlack-1">
                             {t('courses.exam.certificateGeneration')}
                             <TimeStampDialog />{' '}
                             {t('courses.exam.certificateAvailable')}
@@ -324,7 +324,7 @@ const CourseExamsTable = ({
                       </div>
                       {!examResults.some((e) => e.succeeded) && (
                         <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
-                          <span className="whitespace-pre-line text-center body-14px-medium md:body-16px-medium text-newBlack-1">
+                          <span className="whitespace-pre-line text-center body-14px-medium md:body-medium-16px text-newBlack-1">
                             {t('courses.exam.dontGiveUpTryAgain')}
                           </span>
                           <img src={SandClockGif} alt="Time" />

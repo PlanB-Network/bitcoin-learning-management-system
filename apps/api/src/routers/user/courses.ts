@@ -2,6 +2,7 @@ import { ExamType } from '@blms/constants';
 
 import {
   checkoutDataSchema,
+  courseActivitySchema,
   courseExamInfoSchema,
   courseExamResultsExtendedSchema,
   courseExamResultsSchema,
@@ -27,6 +28,7 @@ import {
   createCompleteExamAttempt,
   createGetAllSucceededUserExams,
   createGetAllUserCourseExamsResults,
+  createGetCourseRecentActivity,
   createGetCourseReview,
   createGetEnrolledStudentsCount,
   createGetExamInfo,
@@ -41,6 +43,7 @@ import {
   createGetTeacherLedCourseDiplomaTimestamp,
   createGetTeacherLedCourseGrades,
   createGetUserChapter,
+  createGetUserChapterAttendance,
   createGetUserDetailsByCertificateId,
   createSaveCourseAssignmentGrade,
   createSaveCourseAssignmentSubmissionTime,
@@ -58,6 +61,7 @@ import {
 } from '@blms/service-user';
 import type {
   CheckoutData,
+  CourseActivity,
   CourseExamInfo,
   CourseExamResults,
   CourseExamResultsExtended,
@@ -375,6 +379,17 @@ const getUserChapterProcedure = studentProcedure
     }),
   );
 
+const getUserChapterAttendanceProcedure = professorProcedure
+  .input(
+    z.object({
+      chapterId: z.string(),
+    }),
+  )
+  .output<Parser<string[]>>(z.string().array())
+  .query(({ ctx, input }) =>
+    createGetUserChapterAttendance(ctx.dependencies)(input.chapterId),
+  );
+
 const getCourseReviewProcedure = studentProcedure
   .input(z.object({ courseId: z.string() }))
   .output<Parser<CourseReview | null>>(courseReviewSchema.nullable())
@@ -620,6 +635,17 @@ const withdrawUserFromCourseFinalLessonProcedure = studentProcedure
     });
   });
 
+const getCourseRecentActivityProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+    }),
+  )
+  .output<Parser<CourseActivity[]>>(courseActivitySchema.array())
+  .query(({ ctx, input }) => {
+    return createGetCourseRecentActivity(ctx.dependencies)(input.courseId);
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -627,6 +653,7 @@ export const userCoursesRouter = createTRPCRouter({
   downloadChapterTicket: downloadChapterTicketProcedure,
   getAllSucceededUserExams: getAllSucceededUserExamsProcedure,
   getAllUserCourseExamResults: getAllUserCourseExamResultsProcedure,
+  getCourseRecentActivity: getCourseRecentActivityProcedure,
   getCourseReview: getCourseReviewProcedure,
   getEnrolledStudentsCount: getEnrolledStudentsCountProcedure,
   getExamInfo: getExamInfoProcedure,
@@ -644,6 +671,7 @@ export const userCoursesRouter = createTRPCRouter({
   getTeacherLedCourseGrades: getGetTeacherLedCourseGradesProcedure,
   getMultiAttemptExamCourseGrades: getMultiAttemptsExamCourseGradesProcedure,
   getUserChapter: getUserChapterProcedure,
+  getUserChapterAttendance: getUserChapterAttendanceProcedure,
   getUserDetailsByCertificateId: getUserDetailsByCertificateIdProcedure,
   saveCourseAssignmentGrade: saveCourseAssignmentGradeProcedure,
   saveCourseAssignmentSubmissionTime: saveAssignmentSubmissionTimeProcedure,

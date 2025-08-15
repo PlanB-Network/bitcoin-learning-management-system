@@ -98,7 +98,7 @@ export const CourseTable = ({
           maxHeightClass="max-h-[665px]"
           className="size-full border-spacing-2"
         >
-          <TableCaption className="max-2xl:hidden !body-16px-medium text-black mt-8">
+          <TableCaption className="max-2xl:hidden !body-medium-16px text-black mt-8">
             {t('dashboard.myCourses.newCourses')}
           </TableCaption>
           {/* Table Header */}

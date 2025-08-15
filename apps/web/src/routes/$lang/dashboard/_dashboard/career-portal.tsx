@@ -446,7 +446,7 @@ function CareerPortal() {
                   </p>
                 </>
               ) : (
-                <p className="w-full text-center text-black body-16px-medium md:label-medium-med-16px mb-6 md:mb-15 whitespace-pre-line">
+                <p className="w-full text-center text-black body-medium-16px md:label-medium-med-16px mb-6 md:mb-15 whitespace-pre-line">
                   {t('dashboard.careerPortal.followProcess')}
                 </p>
               )}

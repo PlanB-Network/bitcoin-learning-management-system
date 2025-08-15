@@ -75,7 +75,7 @@ export const CollapsibleDropdown = ({
                 className: cn(icon.props?.className),
               })
             : null}
-          <span className="body-14px-medium md:body-16px-medium">{title}</span>
+          <span className="body-14px-medium md:body-medium-16px">{title}</span>
         </div>
         <TbChevronDown
           size={20}

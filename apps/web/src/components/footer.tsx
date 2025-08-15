@@ -123,7 +123,7 @@ const NavigationSection = ({
   textSecondaryClass: string;
 }) => (
   <div className="flex flex-col gap-0.5 md:gap-2">
-    <h4 className="body-16px-medium">{title}</h4>
+    <h4 className="body-medium-16px">{title}</h4>
     <ul
       className={cn(
         'flex flex-col gap-1 md:gap-0.5 body-16px capitalize',
@@ -221,7 +221,7 @@ const SocialNetworksDesktop = ({
 
   return (
     <div className="flex flex-col gap-2 max-md:hidden">
-      <h4 className="body-16px-medium">{t('footer.followUsOn')}</h4>
+      <h4 className="body-medium-16px">{t('footer.followUsOn')}</h4>
       <ul
         className={cn(
           'flex flex-col gap-0.5 body-16px',

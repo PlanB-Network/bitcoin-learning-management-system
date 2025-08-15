@@ -78,7 +78,7 @@ export const LectureBuy = ({
         )}
       <div className="flex gap-2 md:gap-7 items-center max-md:justify-between">
         <div className="flex max-md:flex-col md:gap-1 text-darkOrange-5 ">
-          <span className="body-16px-medium md:title-large-sb-24px">
+          <span className="body-medium-16px md:title-large-sb-24px">
             ${dollarPrice}
           </span>
           <span className="max-md:hidden title-large-24px">·</span>

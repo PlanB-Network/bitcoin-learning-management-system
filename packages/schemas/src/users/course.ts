@@ -193,3 +193,11 @@ export const examQuestionStatisticsSchema = z.object({
   totalAnswers: z.number(),
   isArchived: z.boolean(),
 });
+
+export const courseActivitySchema = z.object({
+  displayName: z.string(),
+  type: z.enum(['enrolled', 'graduated', 'review']),
+  date: z.date(),
+  withComment: z.boolean(),
+  score: z.number().nullable(),
+});

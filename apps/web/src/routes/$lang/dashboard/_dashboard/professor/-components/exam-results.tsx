@@ -28,7 +28,7 @@ import {
 import { formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-const SELF_PACED_PASSING_THRESHOLD = 80;
+export const SELF_PACED_PASSING_THRESHOLD = 80;
 const DEFAULT_ASSIGNMENT_WEIGHT = 40;
 const MAX_QUESTIONS_IN_MULTI_ATTEMPT_EXAM = 40;
 const DURATION_CALCULATION_QUESTIONS_PER_MINUTE = 2;
@@ -119,9 +119,9 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
     thresholdToPass: isProfessorLedCourse
       ? course?.passingGradeThreshold || 0
       : SELF_PACED_PASSING_THRESHOLD,
-    totalStudents:
-      enrolledStudentsCount ||
-      selfPacedCourseGradesAndSummary?.totalStudentsTakingExam,
+    totalStudents: isProfessorLedCourse
+      ? enrolledStudentsCount
+      : selfPacedCourseGradesAndSummary?.totalStudentsTakingExam,
   };
 
   if (!course) {
@@ -158,10 +158,7 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   const multiAttemptsExamItems = multiAttemptExams.map((exam, index) => ({
     data: {
       chapterId: exam.chapterId,
-      examGrades:
-        selfPacedCourseGradesAndSummary?.examsGrades.filter(
-          (grade) => grade.chapterId === exam.chapterId,
-        ) || undefined,
+      examGrades: selfPacedCourseGradesAndSummary?.examsGrades || undefined,
       index,
       language: course.originalLanguage,
       type: 'multi-attempts' as const,
@@ -285,22 +282,22 @@ const FinalResultsSummary = ({
         {t('dashboard.teacher.courses.finalAverageResults')}
       </h2>
       <div className="flex flex-wrap gap-x-12 md:gap-x-2 items-center justify-center w-full">
-        {finalResultsInfos.totalStudents &&
-        finalResultsInfos.totalStudents > 0 ? (
-          <DashGauge
-            total={finalResultsInfos.totalStudents}
-            completed={finalResultsInfos.graduatedStudents}
-            label={t('dashboard.teacher.courses.studentsGraduated')}
-            variant="orange"
-            size="l"
-          />
-        ) : null}
         <RadialGauge
           percentage={finalResultsInfos.averageScore}
           label={t('dashboard.teacher.courses.averageScore')}
           variant="green"
           size="l"
         />
+        {finalResultsInfos.totalStudents &&
+        finalResultsInfos.totalStudents > 0 ? (
+          <DashGauge
+            total={finalResultsInfos.totalStudents}
+            completed={finalResultsInfos.graduatedStudents}
+            label={t('dashboard.teacher.courses.successRate')}
+            variant="orange"
+            size="l"
+          />
+        ) : null}
         <RadialGauge
           percentage={finalResultsInfos.thresholdToPass || 0}
           label={t('dashboard.teacher.courses.thresholdToPass')}
@@ -467,7 +464,7 @@ const ExamCard = ({
                     )
               }
               type="button"
-              className="body-16px-medium text-newBlack-5 flex items-center gap-2"
+              className="body-medium-16px text-newBlack-5 flex items-center gap-2"
             >
               <span className="max-md:hidden">
                 {t('dashboard.teacher.courses.exportExamData')}
@@ -545,21 +542,21 @@ const ExamCard = ({
             </h5>
 
             <div className="flex items-center gap-2 flex-wrap max-md:w-full">
-              <RadialGauge
-                percentage={averageScore}
-                label={t('dashboard.teacher.courses.averageScore')}
-                variant="green"
-                showBackground
-              />
-
               {type === 'assignment' || type === 'single-trial' ? (
                 <RadialGauge
-                  percentage={medianScore || 0}
-                  label={t('dashboard.teacher.courses.medianScore')}
-                  variant="purple"
+                  percentage={averageScore}
+                  label={t('dashboard.teacher.courses.averageScore')}
+                  variant="green"
                   showBackground
                 />
               ) : null}
+
+              <RadialGauge
+                percentage={medianScore || 0}
+                label={t('dashboard.teacher.courses.medianScore')}
+                variant={type === 'multi-attempts' ? 'green' : 'purple'}
+                showBackground
+              />
 
               {type === 'multi-attempts' && (
                 <SegmentedGauge

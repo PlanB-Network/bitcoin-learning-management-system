@@ -23,14 +23,19 @@ export const createGetMultiAttemptsExamCourseGrades = ({
           SELECT
             AVG(score) as average
           FROM users.exam_attempts
-          WHERE course_id = ${options.courseId};
+          WHERE course_id = ${options.courseId}
+            AND finalized = true;
         `,
     );
 
-    const graduatedStudentsAmount = examsGrades.filter(
-      (grade) =>
-        grade.score !== null && grade.score >= options.passingThreshold,
-    ).length;
+    const graduatedStudentsAmount = new Set(
+      examsGrades
+        .filter(
+          (grade) =>
+            grade.score !== null && grade.score >= options.passingThreshold,
+        )
+        .map((grade) => grade.uid),
+    ).size;
 
     const totalStudentsTakingExam = examsGrades.filter(
       (grade, index, array) =>

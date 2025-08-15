@@ -23,7 +23,7 @@ export const createGetTeacherLedCourseGrades = ({ postgres }: Dependencies) => {
       getAllAssignmentsGradesQuery(options.courseId),
     );
 
-    const averageAndMedianTotalScore = await postgres.exec(
+    const averageTotalScore = await postgres.exec(
       sql<{ average: number }[]>`
           SELECT
             AVG(total_score) as average
@@ -44,7 +44,7 @@ export const createGetTeacherLedCourseGrades = ({ postgres }: Dependencies) => {
 
     return {
       assignmentGrades,
-      averageTotalScore: averageAndMedianTotalScore[0].average || 0,
+      averageTotalScore: averageTotalScore[0].average || 0,
       examsGrades,
       graduatedStudentsAmount: graduatedStudentsAmount[0].count || 0,
     };
