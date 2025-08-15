@@ -349,27 +349,42 @@ function CourseDetails() {
                 leftText={t('words.price')}
                 rightText={
                   course.onlinePriceDollars && course.inpersonPriceDollars ? (
-                    <p>
+                    <div>
                       <p>
-                        ${course.inpersonPriceDollars}{' '}
+                        {course.inpersonPriceDollars}${' '}
+                        <span className="text-newGray-2 font-normal">
+                          (+{t('words.taxes')})
+                        </span>{' '}
                         <span className="font-normal lowercase">
                           ({t('words.inperson')})
                         </span>
                       </p>
                       <p>
-                        ${course.onlinePriceDollars}{' '}
+                        {course.onlinePriceDollars}${' '}
+                        <span className="text-newGray-2 font-normal">
+                          (+{t('words.taxes')})
+                        </span>{' '}
                         <span className="font-normal lowercase">
                           ({t('words.online')})
                         </span>
                       </p>
-                    </p>
+                    </div>
                   ) : (
                     <>
-                      {course.onlinePriceDollars || course.inpersonPriceDollars
-                        ? course.inpersonPriceDollars
-                          ? `${course.inpersonPriceDollars}$`
-                          : `${course.onlinePriceDollars}$`
-                        : t('words.free')}
+                      {course.onlinePriceDollars ||
+                      course.inpersonPriceDollars ? (
+                        course.inpersonPriceDollars ? (
+                          <span>
+                            {course.inpersonPriceDollars}$ <TaxesSpan />
+                          </span>
+                        ) : (
+                          <span>
+                            {course.onlinePriceDollars}$ <TaxesSpan />
+                          </span>
+                        )
+                      ) : (
+                        t('words.free')
+                      )}
                     </>
                   )
                 }
@@ -381,9 +396,13 @@ function CourseDetails() {
               <ListItem
                 leftText={t('words.price')}
                 rightText={
-                  course.onlinePriceDollars
-                    ? `${course.onlinePriceDollars}$`
-                    : t('words.free')
+                  course.onlinePriceDollars ? (
+                    <span>
+                      {course.onlinePriceDollars}$ <TaxesSpan />
+                    </span>
+                  ) : (
+                    t('words.free')
+                  )
                 }
                 variant="light"
                 hasIncreasedPadding
@@ -393,9 +412,13 @@ function CourseDetails() {
               <ListItem
                 leftText={t('words.price')}
                 rightText={
-                  course.inpersonPriceDollars
-                    ? `${course.inpersonPriceDollars}$`
-                    : t('words.free')
+                  course.inpersonPriceDollars ? (
+                    <span>
+                      {course.inpersonPriceDollars}$ <TaxesSpan />
+                    </span>
+                  ) : (
+                    t('words.free')
+                  )
                 }
                 variant="light"
                 hasIncreasedPadding
@@ -983,3 +1006,11 @@ const DescriptionAndObjectives = memo(
     );
   },
 );
+
+const TaxesSpan = () => {
+  const { t } = useTranslation();
+
+  return (
+    <span className="text-newGray-2 font-normal">(+{t('words.taxes')})</span>
+  );
+};
