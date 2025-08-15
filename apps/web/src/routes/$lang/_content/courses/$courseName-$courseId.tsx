@@ -351,19 +351,13 @@ function CourseDetails() {
                   course.onlinePriceDollars && course.inpersonPriceDollars ? (
                     <div>
                       <p>
-                        {course.inpersonPriceDollars}${' '}
-                        <span className="text-newGray-2 font-normal">
-                          (+{t('words.taxes')})
-                        </span>{' '}
+                        {course.inpersonPriceDollars}$ <TaxesSpan />{' '}
                         <span className="font-normal lowercase">
                           ({t('words.inperson')})
                         </span>
                       </p>
                       <p>
-                        {course.onlinePriceDollars}${' '}
-                        <span className="text-newGray-2 font-normal">
-                          (+{t('words.taxes')})
-                        </span>{' '}
+                        {course.onlinePriceDollars}$ <TaxesSpan />{' '}
                         <span className="font-normal lowercase">
                           ({t('words.online')})
                         </span>
