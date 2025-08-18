@@ -15,7 +15,9 @@ import { convertSlideToProofreadPngs } from '#src/utils/convert-api.js';
 // Added SSRF-protection: OnlyOffice base URL and validator
 const ONLYOFFICE_BASE_URL =
   process.env.ONLYOFFICE_URL ||
-  (process.env.DOCKER ? 'http://onlyoffice' : 'http://localhost:80');
+  (process.env.DOCKER
+    ? 'http://host.docker.internal:80'
+    : 'http://localhost:80');
 const ONLYOFFICE_HOSTNAME = new URL(ONLYOFFICE_BASE_URL).hostname;
 
 function assertOnlyofficeUrl(input: string): void {

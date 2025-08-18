@@ -120,7 +120,7 @@ export const createRestTranslationAudioRoutes = async (
         );
 
         // Base URL of the Language-Toolkit API (default to local dev instance)
-        const toolkitUrl = process.env.LTK_URL ?? 'http://localhost:8000';
+        const toolkitUrl = process.env.LT_BASE_URL ?? 'http://localhost:8000';
 
         // ------------------------------------------------------------------
         // 1. Get an auth token for Language-Toolkit
@@ -139,8 +139,8 @@ export const createRestTranslationAudioRoutes = async (
             // In dev mode Language-Toolkit accepts any credentials if none
             // are configured. These can be set to anything or wired through env.
             body: new URLSearchParams({
-              username: process.env.LTK_CLIENT_ID ?? 'blms-app',
-              password: process.env.LTK_CLIENT_SECRET ?? 'blms-secret',
+              username: process.env.LT_CLIENT_ID ?? 'blms-app',
+              password: process.env.LT_CLIENT_SECRET ?? 'blms-secret',
             }),
           });
 
@@ -242,7 +242,7 @@ export const createRestTranslationAudioRoutes = async (
         const { taskId } = req.params as { taskId: string };
         if (!taskId) throw new BadRequest('taskId missing');
 
-        const toolkitUrl = process.env.LTK_URL ?? 'http://localhost:8000';
+        const toolkitUrl = process.env.LT_BASE_URL ?? 'http://localhost:8000';
 
         // Acquire token (reuse static token logic)
         let accessToken: string | undefined = process.env.LTK_STATIC_TOKEN;
@@ -253,8 +253,8 @@ export const createRestTranslationAudioRoutes = async (
               'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
-              username: process.env.LTK_CLIENT_ID ?? 'blms-app',
-              password: process.env.LTK_CLIENT_SECRET ?? 'blms-secret',
+              username: process.env.LT_CLIENT_ID ?? 'blms-app',
+              password: process.env.LT_CLIENT_SECRET ?? 'blms-secret',
             }),
           });
           if (!tokenResp.ok) {

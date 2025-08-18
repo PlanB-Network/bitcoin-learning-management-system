@@ -48,7 +48,8 @@
     "LT_CLIENT_ID",
     "LT_CLIENT_SECRET",
     "ALLOWED_DOWNLOAD_HOSTNAMES",
-    "CONVERT_API_SECRET"
+    "CONVERT_API_SECRET",
+    "ONLYOFFICE_URL"
   ],
   "tasks": {
     "//#lint": {},

@@ -54,7 +54,7 @@ export const createGenerateCourseVideo = (deps: Dependencies) => {
     }
 
     const outputKey = `contribute/${courseId}/${language}/video.mp4`;
-    const toolkitUrl = process.env.LTK_URL ?? 'http://localhost:8000';
+    const toolkitUrl = process.env.LT_BASE_URL ?? 'http://localhost:8000';
 
     console.log(`Generating course video for ${courseId} in ${language}`);
     console.log(`Toolkit URL: ${toolkitUrl}`);
@@ -89,9 +89,9 @@ export const createGenerateCourseVideo = (deps: Dependencies) => {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: new URLSearchParams({
-            // In dev Toolkit accepts arbitrary creds if none configured
-            username: process.env.LTK_CLIENT_ID ?? 'blms-app',
-            password: process.env.LTK_CLIENT_SECRET ?? 'blms-secret',
+            // In dev Toolkit accepts arbitrary credentials if none configured
+            username: process.env.LT_CLIENT_ID ?? 'blms-app',
+            password: process.env.LT_CLIENT_SECRET ?? 'blms-secret',
           }),
         });
 

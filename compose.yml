@@ -62,7 +62,7 @@ services:
       HOST: 0.0.0.0
       POSTGRES_HOST: postgres
       TYPESENSE_NODES: http://typesense:8108
-      ONLYOFFICE_URL: ${ONLYOFFICE_URL:-http://onlyoffice}
+      ONLYOFFICE_URL: ${ONLYOFFICE_URL:-http://localhost:80}
     volumes:
       - ./apps/api:/home/node/apps/api
       - /home/node/apps/api/node_modules/
@@ -107,7 +107,7 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     command: pnpm turbo run dev --env-mode=loose --filter='@blms/contribute'
     environment:
-      VITE_ONLYOFFICE_API_URL: ${VITE_ONLYOFFICE_API_URL:-http://onlyoffice/web-apps/apps/api/documents/api.js}
+      VITE_ONLYOFFICE_API_URL: ${VITE_ONLYOFFICE_API_URL:-http://localhost:80/web-apps/apps/api/documents/api.js}
     ports:
       - 8280:8280
     volumes:
