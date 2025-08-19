@@ -28,7 +28,10 @@ function assertOnlyofficeUrl(input: string): void {
     throw new BadRequest('Invalid OnlyOffice URL');
   }
 
-  if (parsed.hostname !== ONLYOFFICE_HOSTNAME) {
+  if (
+    process.env.NODE_ENV !== 'development' &&
+    parsed.hostname !== ONLYOFFICE_HOSTNAME
+  ) {
     throw new BadRequest('Untrusted OnlyOffice host');
   }
 }
@@ -175,12 +178,14 @@ export const createRestTranslationDownloadRoutes = async (
 
             // Validate and download the document from OnlyOffice
             assertOnlyofficeUrl(url);
+            console.log('====== 1', url);
             const response = await fetch(url);
             if (!response.ok) {
               throw new Error(
                 `Failed to download document: ${response.statusText}`,
               );
             }
+            console.log('====== 2');
 
             const documentBuffer = await response.arrayBuffer();
             const documentStream = Readable.from(Buffer.from(documentBuffer));
