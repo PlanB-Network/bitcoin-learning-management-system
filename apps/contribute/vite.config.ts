@@ -53,12 +53,12 @@ export default defineConfig({
 
       // ONLYOFFICE Document Server static assets
       '/web-apps': {
-        target: `http://${process.env.DOCKER ? 'onlyoffice' : 'localhost'}`,
+        target: `http://${process.env.DOCKER ? 'host.docker.internal:80' : 'localhost'}`,
         changeOrigin: true,
       },
       // Versioned resource folder (e.g. /9.0.2-abcdef123/)
       '^/\\d+\\.\\d+\\.\\d+.*': {
-        target: `http://${process.env.DOCKER ? 'onlyoffice' : 'localhost'}`,
+        target: `http://${process.env.DOCKER ? 'host.docker.internal' : 'localhost'}`,
         changeOrigin: true,
       },
     },

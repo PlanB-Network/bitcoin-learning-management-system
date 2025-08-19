@@ -155,7 +155,13 @@ export const createRestTranslationDownloadRoutes = async (
         console.log('OnlyOffice callback received:', req.body);
         console.log('OnlyOffice callback query params:', req.query);
 
-        const { status, url } = req.body;
+        let { status, url } = req.body;
+
+        // TODO temporary fix!
+        if (typeof url === 'string') {
+          url = url.replace(/^http:\/\/localhost/, ONLYOFFICE_BASE_URL);
+        }
+
         const { courseId, partId, chapterId, slideId, language, fileName } =
           req.query as any;
 
