@@ -851,6 +851,7 @@
     "slideNotFound": "⚠️ Slide not found",
     "slideNotFoundDescription": "This slide file doesn't exist. Please contact support for assistance.",
     "audioNotFoundDescription": "Audio file not found. Please contact support for assistance.",
+    "audioValidationInstruction": "Listen to the complete audio to automatically validate it",
     "seeMore": "See more",
     "note": "Note: you can access the English version of some courses alongside the original language content for better understanding.\nIf you can't find any courses translated into your language, please "
   },

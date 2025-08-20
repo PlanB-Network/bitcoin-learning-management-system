@@ -226,6 +226,63 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                   `S3 upload may still be in progress after ${maxPollAttempts} seconds`,
                 );
               }
+            } else if (result.error === 4) {
+              // Error 4: No changes, nothing to save
+              // Use backend to copy current version as proofread
+              console.log(
+                'No changes detected - requesting backend to create proofread copy...',
+              );
+
+              try {
+                const copyResponse = await fetch(
+                  '/api/translation-downloads/pptx-create-proofread-copy',
+                  {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      courseId,
+                      partId,
+                      chapterId,
+                      slideId,
+                      language,
+                      fileName,
+                    }),
+                    credentials: 'include',
+                  },
+                );
+
+                if (!copyResponse.ok) {
+                  throw new Error(
+                    `Failed to create proofread copy: ${copyResponse.status}`,
+                  );
+                }
+
+                const copyResult = await copyResponse.json();
+                console.log('Proofread copy created successfully:', copyResult);
+
+                // Verify the proofread version exists
+                await new Promise((resolve) => setTimeout(resolve, 1000)); // Brief delay for S3 consistency
+                const verifyUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}?version=proofread`;
+                const verifyResponse = await fetch(verifyUrl, {
+                  method: 'HEAD',
+                  credentials: 'include',
+                });
+
+                if (verifyResponse.ok) {
+                  console.log('Proofread version verified successfully');
+                } else {
+                  console.warn(
+                    'Could not verify proofread version, but creation succeeded',
+                  );
+                }
+              } catch (copyError) {
+                console.error('Error creating proofread copy:', copyError);
+                throw new Error(
+                  `Failed to create proofread version: ${copyError}`,
+                );
+              }
             } else if (result.error === 1) {
               // Error 1: Document key unknown - try alternative save method
               console.warn(
@@ -359,9 +416,11 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             return;
           }
           if (isHybridDev) {
-            // Convert to absolute URL for OnlyOffice in Docker
+            // In development, OnlyOffice runs in Docker and needs to access the API
+            // using host.docker.internal to maintain hostname consistency for callbacks
             const protocol = window.location.protocol;
-            absoluteFileUrl = `${protocol}//${apiHost}${absoluteFileUrl}`;
+            // Use host.docker.internal for OnlyOffice to ensure consistent hostname in callbacks
+            absoluteFileUrl = `${protocol}//host.docker.internal:3000${absoluteFileUrl}`;
           } else {
             // Convert to full URL for production
             const protocol = window.location.protocol;
