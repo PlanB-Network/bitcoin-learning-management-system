@@ -558,13 +558,50 @@
             "assign": "Assegna",
             "assigning": "Assegnazione in corso...",
             "assigningCourse": "Assegnazione del corso:",
-            "assignmentSuccess": "Corso assegnato con successo!"
-          }
+            "assignmentSuccess": "Corso assegnato con successo!",
+            "cancel": "Annulla",
+            "chooseContributor": "Scegli un contributor...",
+            "courseInfo": "Informazioni sul corso",
+            "selectContributor": "Seleziona Contributor",
+            "title": "Assegna il corso a questo Contributor"
+          },
+          "description": "Gestisci le traduzioni e assegna i proofreading ai contributors",
+          "noCourses": "Nessun corso disponibile",
+          "noCoursesFiltered": "Nessun corso corrispondente ai tuoi filtri",
+          "notAssigned": "Non assegnato",
+          "reassignModal": {
+            "cancel": "Annulla",
+            "chooseNewContributor": "Scegli un nuovo contributor...",
+            "courseInfo": "Informazioni sul corso",
+            "currentlyAssignedTo": "Attualmente assegnato a:",
+            "reassign": "Riassegna",
+            "reassigning": "Processo in corso...",
+            "reassigningCourse": "Riassegnazione del corso:",
+            "reassignmentSuccess": "Corso riassegnato con successo!"
+          },
+          "table": {
+            "contributor": "Contributor",
+            "course": "Corso",
+            "index": "Indice",
+            "language": "Lingua",
+            "progress": "Avanzamento",
+            "status": "Stato"
+          },
+          "title": "Gestione dei contenuti"
         },
         "admin": "AMMINISTRATORE",
         "comingSoon": {
           "courses": "Lista dei corsi in arrivo",
           "coverage": "Lista delle lingue assegnate in arrivo"
+        },
+        "courseDetails": {
+          "actions": "Azioni",
+          "assignedTo": "Assegnato a",
+          "chapterIndex": "Capitolo",
+          "chapterTitle": "Titolo",
+          "chaptersAndProgress": "Capitoli e Avanzamento",
+          "chaptersCompleted": "capitoli completati",
+          "courseIndex": "Indice dei corsi"
         }
       }
     },
