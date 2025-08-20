@@ -1196,6 +1196,26 @@
       "yourCertificate": "Your certificate",
       "yourProgress": "Your progress :"
     },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Announce a change",
+          "attendanceList": "Attendance list",
+          "courseEnded": "This course has ended.",
+          "courseNotStarted": "This course hasn’t started yet.",
+          "enrolledStudents": "Enrolled students",
+          "hasEnrolled": "has enrolled",
+          "hasGraduated": "has graduated with a score of {{score}}%",
+          "hasLeftReview": "has left a review",
+          "hasLeftReviewAndComment": "has left a review and a comment",
+          "notifyStudents": "Something changed? Notify your students.",
+          "overallPerformance": "Overall performance",
+          "recentActivity": "Recent activity",
+          "studentsRegistered": "Students registered",
+          "upcomingClass": "Upcoming class"
+        }
+      }
+    },
     "profile": {
       "cancel": "Cancel",
       "change": "Change",
@@ -1309,6 +1329,7 @@
         "noPastAnnouncement": "YOU HAVE NO past announcement at the moment.",
         "noWrittenAnnouncement": "You have no written announcement at the moment.",
         "objectives": "Objectives",
+        "overview": "Overview",
         "proposeNewCourse": "Propose a new course",
         "questionsInExam": "Questions in the exam",
         "quickRecap": "Here you can find all the general information regarding this course.",
@@ -1316,6 +1337,7 @@
         "reviews": "Reviews",
         "selectCourse": "Select course",
         "studentsGraduated": "Students graduated",
+        "successRate": "Success rate",
         "summerStudents": "Summer School",
         "thresholdToPass": "Threshold to pass",
         "totalQuestions": "Total number of questions",
@@ -2018,6 +2040,7 @@
     "id": "ID",
     "inReview": "In review",
     "incomplete": "Incomplete",
+    "info": "Info",
     "inperson": "In-person",
     "intermediate": "Intermediate",
     "invoice": "Invoice",
@@ -2077,6 +2100,7 @@
     "public": "Public communication",
     "publicationDate": "Publication date:",
     "questions": "Questions",
+    "rating": "Rating",
     "ratings": "Ratings",
     "register": "Register",
     "required": "Required",
@@ -2089,6 +2113,7 @@
     "search": "Search",
     "security": "Security",
     "selectedAmount": "{{amount}} selected",
+    "showMore": "",
     "skip": "Skip",
     "socialStudies": "Social studies",
     "start": "Start",

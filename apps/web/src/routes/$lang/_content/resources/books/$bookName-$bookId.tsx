@@ -85,7 +85,7 @@ function Book() {
     return (
       book?.description && (
         <article>
-          <h3 className="mb-4 lg:mb-5 body-16px-medium md:subtitle-large-med-20px text-white md:text-newGray-3">
+          <h3 className="mb-4 lg:mb-5 body-medium-16px md:subtitle-large-med-20px text-white md:text-newGray-3">
             {t('words.abstract')}
           </h3>
           <p className="line-clamp-[20] max-w-[772px] text-white body-14px lg:body-16px whitespace-pre-line">

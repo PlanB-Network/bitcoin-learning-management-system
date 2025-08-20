@@ -81,6 +81,7 @@
 
   --color-neutral-50: #f6f6f6;
   --color-neutral-100: #e5e5e5;
+  --color-neutral-400: #999999;
 
   --color-red-1: #ffdad3;
   --color-red-2: #ffb5a7;
@@ -469,10 +470,6 @@
 
 @utility body-16px {
   @apply text-base font-normal leading-normal tracking-015px;
-}
-
-@utility body-16px-medium {
-  @apply text-base font-medium leading-[150%] tracking-015px;
 }
 
 @utility body-medium-16px {

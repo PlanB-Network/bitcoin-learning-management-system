@@ -67,7 +67,7 @@ const AlertTitle = React.forwardRef<
   <h5
     ref={ref}
     className={cn(
-      'mb-1 md:mb-4 body-14px-medium md:body-16px-medium text-darkOrange-9 flex items-center gap-3 md:gap-2',
+      'mb-1 md:mb-4 body-14px-medium md:body-medium-16px text-darkOrange-9 flex items-center gap-3 md:gap-2',
       className,
     )}
     {...props}

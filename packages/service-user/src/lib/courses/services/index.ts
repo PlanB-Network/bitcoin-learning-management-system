@@ -6,6 +6,7 @@ export * from './course-certificate-service.js';
 export * from './final-lesson.js';
 export * from './generate-chapter-ticket.js';
 export * from './get-certificate-details.js';
+export * from './get-course-activity.js';
 export * from './get-course-review.js';
 export * from './get-diploma-timestamp.js';
 export * from './get-enrolled-students-count.js';

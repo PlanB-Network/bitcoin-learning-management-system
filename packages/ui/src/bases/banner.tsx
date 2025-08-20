@@ -3,13 +3,14 @@ import * as React from 'react';
 import type { IconType } from 'react-icons/lib';
 import { cn } from '../lib/utils.ts';
 
-const bannerVariants = cva('relative w-full rounded-lg border p-4', {
+const bannerVariants = cva('relative w-full rounded-lg border p-6', {
   defaultVariants: {
     variant: 'success',
   },
   variants: {
     variant: {
       success: 'bg-brightGreen-1 border-brightGreen-2 text-brightGreen-8',
+      info: 'bg-maroon-1 border-maroon-2 text-maroon-7',
     },
   },
 });
@@ -31,7 +32,7 @@ const Banner = React.forwardRef<
       )}
       {...props}
     >
-      {icon && <span className="size-9 flex items-center mr-4">{icon}</span>}
+      {icon && <span className="size-9 flex items-center mr-5">{icon}</span>}
       <div>{props.children}</div>
     </header>
   );
@@ -45,7 +46,7 @@ const BannerTitle = React.forwardRef<
   <h5
     ref={ref}
     className={cn(
-      ' flex items-center md:text-xl font-medium gap-0 md:gap-2',
+      'flex items-center body-medium-16px md:subtitle-large-med-20px gap-0 md:gap-2',
       className,
     )}
     {...props}

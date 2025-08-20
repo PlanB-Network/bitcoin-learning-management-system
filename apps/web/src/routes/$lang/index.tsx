@@ -214,7 +214,7 @@ function Home() {
         <h2 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
           {t('home.courseSection.upcomingCourseTitle')}
         </h2>
-        <p className="text-darkOrange-5 body-16px-medium lg:title-large-sb-24px text-center lg:text-start  mb-8">
+        <p className="text-darkOrange-5 body-medium-16px lg:title-large-sb-24px text-center lg:text-start  mb-8">
           {t('home.courseSection.upcomingCourseDescription')}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 justify-center">
@@ -511,7 +511,7 @@ function Home() {
           </p>
           <p
             className={cn(
-              'max-w-[45rem] body-16px-medium lg:display-semibold-40px',
+              'max-w-[45rem] body-medium-16px lg:display-semibold-40px',
             )}
           >
             {t('home.tutorialSection.subtitle1')}
@@ -591,7 +591,7 @@ function Home() {
               <p className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-start">
                 {t('home.languageSection.title')}
               </p>
-              <p className="text-darkOrange-5 body-16px-medium  lg:display-semibold-40px text-center lg:text-start">
+              <p className="text-darkOrange-5 body-medium-16px  lg:display-semibold-40px text-center lg:text-start">
                 {t('home.languageSection.subtitle')}
               </p>
               <p
@@ -713,7 +713,7 @@ function Home() {
           <h3 className="text-white subtitle-large-med-20px lg:display-semibold-40px text-center lg:text-end">
             {t('home.blogSection.blogTitle')}
           </h3>
-          <p className="text-darkOrange-5 text-center lg:text-end body-16px-medium lg:title-large-sb-24px mb-8">
+          <p className="text-darkOrange-5 text-center lg:text-end body-medium-16px lg:title-large-sb-24px mb-8">
             {t('home.blogSection.description')}
           </p>
 

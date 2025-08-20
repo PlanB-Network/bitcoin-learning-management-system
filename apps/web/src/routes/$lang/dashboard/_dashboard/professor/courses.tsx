@@ -22,6 +22,7 @@ import { CourseAnnouncements } from './-components/course-announcements.tsx';
 import { CourseAssignment } from './-components/course-assignment.tsx';
 import { CourseDetails } from './-components/course-details.tsx';
 import { CourseDiscount } from './-components/course-discount.tsx';
+import { CourseOverview } from './-components/course-overview.tsx';
 import { CourseReview } from './-components/course-review.tsx';
 import { ExamResults } from './-components/exam-results.tsx';
 
@@ -157,26 +158,27 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
   const isMobile = useSmaller('md');
   const { t } = useTranslation();
 
-  const [currentTab, setCurrentTab] = useState('details');
+  const [currentTab, setCurrentTab] = useState('overview');
 
   const onTabChange = (value: string) => {
     setCurrentTab(value);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <TabsContent value={course.index}>
       <Tabs
-        defaultValue="details"
+        defaultValue="overview"
         value={currentTab}
         onValueChange={onTabChange}
       >
         <TabsListUnderlined
           tabs={[
             {
-              active: 'details' === currentTab,
-              key: 'details',
-              text: t('dashboard.teacher.courses.courseDetails'),
-              value: 'details',
+              active: 'overview' === currentTab,
+              key: 'overview',
+              text: t('dashboard.teacher.courses.overview'),
+              value: 'overview',
             },
             {
               active: 'review' === currentTab,
@@ -220,12 +222,18 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
                   },
                 ]
               : []),
+            {
+              active: 'details' === currentTab,
+              key: 'details',
+              text: t('dashboard.teacher.courses.courseDetails'),
+              value: 'details',
+            },
           ]}
           size={isMobile ? 's' : 'm'}
           className="max-md:mx-4"
         />
-        <TabsContent value="details" className="max-md:px-4">
-          <CourseDetails course={course} />
+        <TabsContent value="overview" className="max-md:px-4">
+          <CourseOverview courseId={course.id} setTab={onTabChange} />
         </TabsContent>
         <TabsContent value="review" className="max-md:px-4">
           <CourseReview courseId={course.id} />
@@ -241,6 +249,9 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         </TabsContent>
         <TabsContent value="discount">
           <CourseDiscount courseId={course.id} />
+        </TabsContent>
+        <TabsContent value="details" className="max-md:px-4">
+          <CourseDetails course={course} />
         </TabsContent>
       </Tabs>
     </TabsContent>

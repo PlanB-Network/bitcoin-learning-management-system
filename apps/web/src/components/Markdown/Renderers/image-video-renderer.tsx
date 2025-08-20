@@ -20,7 +20,7 @@ export const ImageVideoRenderer = ({
 
   if (isUrlFromValidVideoPlatform(src)) {
     return (
-      <div className="mx-auto mb-2 max-w-full rounded-lg pb-6">
+      <div className="mx-auto mb-2 max-w-full rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4">
         {header === 'logo' && (
           <div className="flex items-center">
             <VideoSVG className="mb-2 ml-4 size-10" />
@@ -70,7 +70,7 @@ export const ImageVideoRenderer = ({
 
   return (
     <img
-      className="mx-auto flex justify-center rounded-lg pb-6 last:pb-0"
+      className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4"
       src={src}
       alt={alt}
     />

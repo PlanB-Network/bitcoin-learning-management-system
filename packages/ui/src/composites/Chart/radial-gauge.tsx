@@ -4,6 +4,13 @@ import StarGauge from '#src/assets/charts/stars.svg';
 import { cn } from '#src/lib/utils.ts';
 
 const gaugeVariantStyles = {
+  blue: {
+    // TODO : update blue colors in global.css
+    background: 'stroke-newBlue-1', // Unfilled
+    foreground: 'stroke-newBlue-1', // Filled
+    needle: 'stroke-newBlue-1',
+    text: 'text-newBlue-1',
+  },
   green: {
     background: 'stroke-brightGreen-2', // Unfilled
     foreground: 'stroke-brightGreen-4', // Filled
@@ -32,7 +39,7 @@ const gaugeVariantStyles = {
 
 const customGaugeVariantStyles = {
   blue: {
-    text: 'text-[#0A69DA]',
+    text: 'text-newBlue-1',
   },
 };
 
@@ -48,7 +55,7 @@ const gaugeContainerVariants = cva(
     },
     variants: {
       size: {
-        l: 'w-full max-w-54 md:max-w-[336px] md:px-14 py-7 flex-col',
+        l: 'w-full max-w-54 md:max-w-[336px] py-5 md:px-14 md:py-7 flex-col',
         m: 'w-full md:w-40 px-3 py-5 md:flex-col',
       },
     },
@@ -133,13 +140,17 @@ const GaugeContainer = ({
 export interface RadialGaugeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof gaugeContainerVariants> {
-  percentage: number;
+  // Either percentage OR value/total should be provided
+  percentage?: number;
+  value?: number;
+  total?: number;
   label: string;
   subLabel?: string;
   variant?: GaugeVariant;
   filledColorTransparent?: boolean;
   size?: 'm' | 'l';
   showBackground?: boolean;
+  hideGauge?: boolean;
 }
 
 export interface DashGaugeProps
@@ -176,18 +187,44 @@ export interface CustomGaugeProps
   showBackground?: boolean;
 }
 
+export interface HiddenGaugeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof gaugeContainerVariants> {
+  value: number;
+  label: string;
+  subLabel?: string;
+  variant?: GaugeVariant;
+  size?: 'm' | 'l';
+  showBackground?: boolean;
+}
+
 const RadialGauge = ({
   className,
   percentage,
+  value,
+  total,
   label,
   subLabel,
   filledColorTransparent = false,
   variant = 'green',
   size = 'm',
   showBackground = false,
+  hideGauge = false,
   ...props
 }: RadialGaugeProps) => {
-  const clampedPercentage = Math.min(100, Math.max(0, percentage));
+  let calculatedPercentage: number;
+
+  if (value !== undefined && total !== undefined) {
+    calculatedPercentage = total > 0 ? (value / total) * 100 : 0;
+  } else if (value !== undefined && total === undefined) {
+    calculatedPercentage = value;
+  } else if (percentage !== undefined) {
+    calculatedPercentage = percentage;
+  } else {
+    calculatedPercentage = 0;
+  }
+
+  const clampedPercentage = Math.min(100, Math.max(0, calculatedPercentage));
   const colorClasses = gaugeVariantStyles[variant];
 
   const circumference = GAUGE_RADIUS * Math.PI;
@@ -216,8 +253,12 @@ const RadialGauge = ({
       <MobileLabel label={label} colorClasses={colorClasses} size={size} />
 
       <div className={getSvgContainerClasses(size)}>
+        {/* Gauge */}
         {/* biome-ignore lint/a11y/noSvgWithoutTitle: explanation */}
-        <svg viewBox={SVG_VIEWBOX} className="w-full">
+        <svg
+          viewBox={SVG_VIEWBOX}
+          className={cn('w-full', hideGauge && 'opacity-0')}
+        >
           {/* Unfilled */}
           <path
             d={arcPath}
@@ -255,10 +296,24 @@ const RadialGauge = ({
 
         {/* Text */}
         <div className={cn(colorClasses.text, getTextContainerClasses(size))}>
-          <span className={getMainTextClasses(size)}>
-            {Math.round(clampedPercentage)}
-          </span>
-          <span className="label-large-med-20px leading-0">%</span>
+          {value !== undefined && total !== undefined ? (
+            // Display value/total format
+            <>
+              <span className={getMainTextClasses(size)}>{value}</span>
+              <span className="label-large-med-20px leading-0">/{total}</span>
+            </>
+          ) : value !== undefined && total === undefined ? (
+            // Display raw value
+            <span className={getMainTextClasses(size)}>{value}</span>
+          ) : (
+            // Display percentage format
+            <>
+              <span className={getMainTextClasses(size)}>
+                {Math.round(clampedPercentage)}
+              </span>
+              <span className="label-large-med-20px leading-0">%</span>
+            </>
+          )}
         </div>
       </div>
       <span className={cn(getLabelTextClasses(size), colorClasses.text)}>

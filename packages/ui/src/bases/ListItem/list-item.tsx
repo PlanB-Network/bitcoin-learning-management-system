@@ -3,6 +3,7 @@ import { cva } from 'class-variance-authority';
 import type React from 'react';
 
 interface ListItemProps {
+  icon?: React.ReactNode;
   leftText: string;
   rightText: string | React.ReactNode;
   isMobileOnly?: boolean;
@@ -12,7 +13,7 @@ interface ListItemProps {
   className?: string;
   rightTextClassName?: string;
   leftTextClassName?: string;
-  variant?: 'dark' | 'light' | 'lightMaroon';
+  variant?: 'dark' | 'light' | 'lightMaroon' | 'grey';
 }
 
 const listItemVariant = cva(
@@ -42,6 +43,7 @@ const listItemVariant = cva(
         dark: 'border-white/10',
         light: 'border-newGray-4',
         lightMaroon: 'border-black/10',
+        grey: 'border-newGray-6',
       },
       wrapOnMobile: {
         false: '',
@@ -51,21 +53,25 @@ const listItemVariant = cva(
   },
 );
 
-const leftTextListItemVariant = cva('leading-relaxed tracking-[0.08px]', {
-  defaultVariants: {
-    variant: 'dark',
-  },
-  variants: {
-    variant: {
-      dark: 'text-white/70',
-      light: 'text-newBlack-4',
-      lightMaroon: 'text-maroon-8',
+const leftTextListItemVariant = cva(
+  'flex items-center gap-2 leading-relaxed tracking-[0.08px]',
+  {
+    defaultVariants: {
+      variant: 'dark',
+    },
+    variants: {
+      variant: {
+        dark: 'text-white/70',
+        light: 'text-newBlack-4',
+        lightMaroon: 'text-maroon-8',
+        grey: 'text-newGray-1',
+      },
     },
   },
-});
+);
 
 const rightTextListItemVariant = cva(
-  'font-medium leading-relaxed tracking-[0.08px] text-right',
+  'font-medium leading-relaxed tracking-[0.08px]',
   {
     defaultVariants: {
       variant: 'dark',
@@ -75,12 +81,14 @@ const rightTextListItemVariant = cva(
         dark: 'text-white',
         light: 'text-newBlack-1',
         lightMaroon: 'text-maroon-11',
+        grey: 'text-newBlack-3',
       },
     },
   },
 );
 
 export const ListItem = ({
+  icon,
   leftText,
   rightText,
   isMobileOnly,
@@ -108,12 +116,14 @@ export const ListItem = ({
       <span
         className={cn(leftTextListItemVariant({ variant }), leftTextClassName)}
       >
+        {icon}
         {leftText}
       </span>
       <span
         className={cn(
           rightTextListItemVariant({ variant }),
           rightTextClassName,
+          wrapOnMobile ? 'max-md:w-full md:text-right' : 'text-right',
         )}
       >
         {rightText}
