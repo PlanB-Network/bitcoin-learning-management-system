@@ -128,6 +128,9 @@ export const createRestTranslationDownloadRoutes = async (
 
         // Build command service URL from trusted base
         const onlyofficeUrl = `${ONLYOFFICE_BASE_URL.replace(/\/$/, '')}/coauthoring/CommandService.ashx`;
+        console.log('OnlyOffice command URL:', onlyofficeUrl);
+        console.log('Command body:', JSON.stringify(commandBody, null, 2));
+
         const commandResponse = await fetch(onlyofficeUrl, {
           method: 'POST',
           headers: {
@@ -135,6 +138,27 @@ export const createRestTranslationDownloadRoutes = async (
           },
           body: JSON.stringify(commandBody),
         });
+
+        console.log(
+          'OnlyOffice command response status:',
+          commandResponse.status,
+        );
+        console.log(
+          'OnlyOffice command response headers:',
+          Object.fromEntries(commandResponse.headers.entries()),
+        );
+
+        if (!commandResponse.ok) {
+          const errorText = await commandResponse.text();
+          console.error(
+            'OnlyOffice command failed with status:',
+            commandResponse.status,
+          );
+          console.error('OnlyOffice error response:', errorText);
+          throw new Error(
+            `OnlyOffice command failed: ${commandResponse.status} - ${errorText}`,
+          );
+        }
 
         const result = await commandResponse.json();
         console.log('OnlyOffice forcesave result:', result);
@@ -155,12 +179,7 @@ export const createRestTranslationDownloadRoutes = async (
         console.log('OnlyOffice callback received:', req.body);
         console.log('OnlyOffice callback query params:', req.query);
 
-        let { status, url } = req.body;
-
-        // TODO temporary fix!
-        if (typeof url === 'string') {
-          url = url.replace(/^http:\/\/localhost/, ONLYOFFICE_BASE_URL);
-        }
+        const { status, url } = req.body;
 
         const { courseId, partId, chapterId, slideId, language, fileName } =
           req.query as any;
@@ -299,6 +318,125 @@ export const createRestTranslationDownloadRoutes = async (
         console.error('OnlyOffice callback error:', error);
         // Even on error, return success to prevent OnlyOffice warnings
         res.json({ error: 0 });
+      }
+    },
+  );
+
+  // Create proofread copy endpoint - copies current PPTX as proofread version
+  router.post(
+    '/translation-downloads/pptx-create-proofread-copy',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      try {
+        const { courseId, partId, chapterId, slideId, language, fileName } =
+          req.body;
+        const userId = req.session.uid;
+
+        if (
+          !courseId ||
+          !partId ||
+          !chapterId ||
+          !slideId ||
+          !language ||
+          !fileName
+        ) {
+          throw new BadRequest(
+            'Missing required parameters: courseId, partId, chapterId, slideId, language, fileName',
+          );
+        }
+
+        if (!userId) {
+          throw new BadRequest('User not authenticated');
+        }
+
+        console.log('Creating proofread copy for:', {
+          courseId,
+          partId,
+          chapterId,
+          slideId,
+          language,
+          fileName,
+        });
+
+        // Get the original ppt_resource_path from database
+        const slideQuery = sql`
+          SELECT ppt_resource_path, course_id, language, chapter_id, slide_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `;
+
+        const result = await dependencies.postgres.exec(slideQuery);
+        if (!result || result.length === 0) {
+          throw new BadRequest('Slide not found');
+        }
+
+        const pptResourcePath =
+          result[0].pptResourcePath || result[0].ppt_resource_path;
+        if (!pptResourcePath) {
+          throw new BadRequest('Original PPTX resource path not found');
+        }
+
+        console.log('Original PPTX path:', pptResourcePath);
+
+        // Check if original file exists
+        const originalHead = await dependencies.s3
+          .head(pptResourcePath)
+          .catch(() => null);
+        if (!originalHead) {
+          throw new BadRequest('Original PPTX file not found in S3');
+        }
+
+        // Extract original filename and create proofread version
+        const originalFileName = pptResourcePath
+          .split('/')
+          .pop()
+          ?.replace('.pptx', '');
+        if (!originalFileName) {
+          throw new BadRequest(
+            'Failed to extract filename from ppt_resource_path',
+          );
+        }
+
+        const proofreadFileName = originalFileName.endsWith('-proofread')
+          ? originalFileName
+          : `${originalFileName}-proofread`;
+
+        // Build proofread S3 key
+        const proofreadKey = `contribute/${courseId}/${language}/${partId}/${chapterId}/${slideId}/pptx/${proofreadFileName}.pptx`;
+
+        console.log('Creating proofread copy:', {
+          originalPath: pptResourcePath,
+          proofreadPath: proofreadKey,
+          originalFileName,
+          proofreadFileName,
+        });
+
+        // Copy the original file to proofread location using stream
+        const sourceStream = await dependencies.s3.getStream(pptResourcePath);
+        if (!sourceStream) {
+          throw new BadRequest('Failed to get source file stream');
+        }
+
+        await dependencies.s3.upload(proofreadKey, sourceStream, {
+          contentType:
+            originalHead.contentType ||
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        });
+
+        console.log('Proofread copy created successfully');
+
+        res.json({
+          success: true,
+          message: 'Proofread copy created successfully',
+          originalPath: pptResourcePath,
+          proofreadPath: proofreadKey,
+        });
+      } catch (error) {
+        console.error('Error creating proofread copy:', error);
+        next(error);
       }
     },
   );

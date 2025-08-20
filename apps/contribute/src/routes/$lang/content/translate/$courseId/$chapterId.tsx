@@ -171,8 +171,6 @@ function ChapterTranslationPage() {
     );
   }, [transcriptLanguageAvailability, courseData]);
 
-  // Removed redundant helper function – replaced by shared hook
-
   // Load attempts whenever slide changes
   useEffect(() => {
     if (!chapterData) return;
@@ -317,8 +315,6 @@ function ChapterTranslationPage() {
       setTranscriptContentCache({});
     }
   }, [chapterData, currentSlideIndex, previousSlideId]);
-
-  // Transcript language availability now handled by useTranscriptAvailability – legacy effect removed
 
   // ----------------------------
   // Load transcript content for selected language
@@ -661,6 +657,7 @@ function ChapterTranslationPage() {
           language: targetLanguage,
           chapterId,
           slideId: currentSlide.slideId,
+          transcriptionValidated: false,
           audioValidated: false,
           audioTries: newAttempts,
           status: TranslationStatus.UnderReview,
@@ -711,8 +708,12 @@ function ChapterTranslationPage() {
         setTimeout(poll, 3000);
       }
 
-      // Optimistically reset validation until user reviews the new audio
-      setValidationStates((prev) => ({ ...prev, audioValidated: false }));
+      // Reset validation states - user must re-validate transcription and new audio
+      setValidationStates((prev) => ({
+        ...prev,
+        transcriptionValidated: false,
+        audioValidated: false,
+      }));
     } catch (error) {
       console.error('Error generating audio:', error);
     }
@@ -747,8 +748,6 @@ function ChapterTranslationPage() {
         ...prev,
         transcriptionValidated: true,
       }));
-
-      // setHasUnsavedChanges(false); // removed unused state
 
       console.log('Transcription validated and saved successfully');
     } catch (error) {
@@ -1096,8 +1095,6 @@ function ChapterTranslationPage() {
       }
     }, 5000);
   };
-
-  // Removed simulateVideoGeneration – progress will no longer be faked on errors.
 
   const handleCloseVideoModal = () => {
     setIsVideoModalOpen(false);

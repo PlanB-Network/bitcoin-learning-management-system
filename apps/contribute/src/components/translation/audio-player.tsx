@@ -192,7 +192,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     }
     // If there is no audio resource path in DB, absence of audio is normal.
     // Skip probing S3 to avoid transient "checking" state.
-    if (!audioResourcePath) {
+    // Exception: if version > 0, it means new audio was generated, so check anyway
+    if (!audioResourcePath && version === 0) {
       setExists(false);
       return;
     }
@@ -207,7 +208,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     return () => {
       cancelled = true;
     };
-  }, [url, generating, audioResourcePath]);
+  }, [url, generating, audioResourcePath, version]);
 
   // Load audio when exists
   useEffect(() => {
@@ -471,10 +472,16 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           </button>
         </div>
 
-        {/* Download button removed */}
+        {/* Audio validation instruction */}
+        {exists && (
+          <p className="text-gray-600 mt-4 mb-2 text-center">
+            {t('translate.audioValidationInstruction', {
+              defaultValue:
+                'Listen to the complete audio to automatically validate it',
+            })}
+          </p>
+        )}
       </div>
-
-      {/* Auto-validation indicator removed */}
 
       {/* Report issue button */}
       <a

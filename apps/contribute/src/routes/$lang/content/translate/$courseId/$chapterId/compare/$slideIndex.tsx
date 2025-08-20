@@ -127,7 +127,6 @@ function CompareSlidePage() {
   const [translatedText, setTranslatedText] = useState<string>('');
   const [transcriptionValidated, setTranscriptionValidated] =
     useState<boolean>(false);
-  // setHasUnsavedChanges state removed – following setter calls commented out
   /* setHasUnsavedChanges(false); */
 
   // PPT validation state for the second editor
@@ -149,10 +148,6 @@ function CompareSlidePage() {
       ? localStorage.getItem('targetLanguage')
       : null) ||
     'fr';
-
-  // Removed redundant helper functions now superseded by shared hooks
-
-  // Transcript language availability now provided by useTranscriptAvailability – removed legacy effect
 
   // ----------------------------
   // Load transcript content for selected language
@@ -246,7 +241,6 @@ function CompareSlidePage() {
       setTranslatedText(currentSlide.translatedContent ?? '');
       setTranscriptionValidated(currentSlide.transcriptionValidated ?? false);
       setPptValidated(currentSlide.pptValidated ?? false);
-      // setHasUnsavedChanges(false); // removed unused state
     }
   }, [currentSlide]);
 
@@ -260,7 +254,6 @@ function CompareSlidePage() {
     const wasAudioValidated = currentSlide.audioValidated ?? false;
 
     setTranslatedText(value);
-    // setHasUnsavedChanges(true); // removed unused state
 
     // Update local chapterData so UI reflects edits immediately
     setChapterData((prev) => {
@@ -314,7 +307,6 @@ function CompareSlidePage() {
       } as any);
 
       setTranscriptionValidated(true);
-      // setHasUnsavedChanges(false); // removed unused state
 
       // Sync local state
       setChapterData((prev) => {
@@ -379,7 +371,6 @@ function CompareSlidePage() {
         setCourseData(courseResp);
 
         if (courseResp?.parts) {
-          // previously computed total chapters; removed unused state
         }
       } catch (err) {
         console.error('Error fetching compare page data', err);
@@ -505,8 +496,6 @@ function CompareSlidePage() {
       maxWidth="max-w-7xl"
       paddingXClasses="px-4"
     >
-      {/* Header Section removed */}
-
       {/* Navigation and Course Header */}
       <div className="flex flex-col gap-10 mb-10">
         <div className="flex items-center gap-1 text-base">

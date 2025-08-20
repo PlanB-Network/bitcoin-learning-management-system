@@ -722,6 +722,7 @@
     "slideNotFound": "⚠️ Diapositive non trouvée",
     "slideNotFoundDescription": "Ce fichier de diapositive n'existe pas. Veuillez contacter le support pour obtenir de l'aide.",
     "audioNotFoundDescription": "Fichier audio introuvable. Veuillez contacter le support pour obtenir de l'aide.",
+    "audioValidationInstruction": "Écoutez l'audio complet pour le valider automatiquement",
     "seeMore": "Voir plus"
   },
   "tutorials": {

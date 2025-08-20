@@ -83,13 +83,9 @@ function ChapterDetailsPage() {
     };
   }, [courseId, language, chapterId]);
 
-  // Removed PNG availability fetch - PngViewer handles this internally
-
   useEffect(() => {
     setSlideIndex(calculateSlideIndex(slide));
   }, [slide]);
-
-  // Removed pngAvailability effect - no longer needed
 
   const handleBack = () => {
     navigateToCourse(courseId, language);
