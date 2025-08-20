@@ -14,6 +14,7 @@ import { FlyingMenuSubSection } from './flying-menu-sub-section.tsx';
 export interface FlyingMenuProps {
   section: NavigationSection;
   variant?: 'dark' | 'light';
+  rtl?: boolean;
 }
 
 interface SectionTitleProps {
@@ -21,6 +22,7 @@ interface SectionTitleProps {
   variant?: 'dark' | 'light';
   addArrow?: boolean;
   isOpen?: boolean;
+  rtl?: boolean;
 }
 
 const SectionTitle = ({
@@ -28,6 +30,7 @@ const SectionTitle = ({
   variant = 'dark',
   addArrow,
   isOpen,
+  rtl,
 }: SectionTitleProps) => {
   const variantMap = {
     dark: 'text-white',
@@ -39,12 +42,22 @@ const SectionTitle = ({
       <Link
         className={cn(
           'text-base font-medium leading-[144%] flex items-center gap-1.5',
+          rtl && 'flex-row-reverse text-right',
           variantMap[variant],
         )}
         to={section.path as '/'}
       >
+        {rtl && addArrow && (
+          <MdKeyboardArrowDown
+            size={24}
+            className={cn(
+              'transition-transform ease-in-out',
+              isOpen && '-rotate-180',
+            )}
+          />
+        )}
         {section.title}
-        {addArrow && (
+        {!rtl && addArrow && (
           <MdKeyboardArrowDown
             size={24}
             className={cn(
@@ -64,7 +77,10 @@ const SectionTitle = ({
         onClick={() => {
           section.action();
         }}
-        className="inline-flex cursor-pointer items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg"
+        className={cn(
+          'inline-flex cursor-pointer items-center gap-x-1 text-base font-semibold leading-6 lg:text-lg',
+          rtl && 'flex-row-reverse text-right',
+        )}
       >
         {section.title}
       </button>
@@ -72,7 +88,11 @@ const SectionTitle = ({
   }
 };
 
-export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
+export const FlyingMenuSection = ({
+  section,
+  variant,
+  rtl,
+}: FlyingMenuProps) => {
   const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<number | null>(null);
@@ -108,9 +128,10 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
         className={cn(
           'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
           open && 'bg-white/20',
+          rtl && 'text-red-5',
         )}
       >
-        <SectionTitle section={section} variant={variant} />
+        <SectionTitle section={section} variant={variant} rtl={rtl} />
       </div>
     );
   }
@@ -124,6 +145,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
           className={cn(
             'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
             open && 'bg-white/20',
+            rtl && 'text-red-5',
           )}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -133,6 +155,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
             variant={variant}
             addArrow
             isOpen={open}
+            rtl={rtl}
           />
         </div>
       </PopoverTrigger>
@@ -148,6 +171,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
           className={cn(
             'flex-auto overflow-hidden rounded-[20px]',
             variant === 'light' ? 'bg-darkOrange-2' : 'bg-newBlack-3',
+            rtl ? 'text-red-5' : '',
           )}
         >
           <div className="flex flex-row gap-4 my-5 mx-4">
@@ -199,6 +223,7 @@ export const FlyingMenuSection = ({ section, variant }: FlyingMenuProps) => {
                     <MenuElement
                       element={subSectionOrElement}
                       variant={variant}
+                      isMultipleSubSectionChildren={hasMultipleSubSection}
                     />
                   </div>
                 );

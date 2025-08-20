@@ -1,12 +1,12 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FiChevronDown } from 'react-icons/fi';
-
 import { useDisclosure } from '../../../hooks/use-disclosure.ts';
+import { isRTL } from '../../../utils/i18n.ts';
 import { compose } from '../../../utils/index.ts';
 import type { NavigationSectionMobile } from '../props.ts';
-
 import { MobileMenuSectionElement } from './mobile-menu-section-elements.tsx';
 
 export interface MobileMenuSectionProps {
@@ -14,6 +14,8 @@ export interface MobileMenuSectionProps {
 }
 
 export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
+  const { i18n } = useTranslation();
+  const rtl = isRTL(i18n.language);
   const { toggle, isOpen } = useDisclosure();
   const titleClass = section.title === 'login' ? '' : 'italic';
   const sectionTitle = useMemo(() => {
@@ -84,9 +86,10 @@ export const MobileMenuSection = ({ section }: MobileMenuSectionProps) => {
         )}
         <span className="truncate">{section.title}</span>
         <FiChevronDown
-          className={compose(
-            'p-0 m-0 w-6 h-6 duration-300 ml-auto',
+          className={cn(
+            'p-0 m-0 w-6 h-6 duration-300',
             isOpen ? 'rotate-180' : 'rotate-0',
+            rtl ? 'mr-auto' : 'ml-auto',
           )}
         />
       </button>
