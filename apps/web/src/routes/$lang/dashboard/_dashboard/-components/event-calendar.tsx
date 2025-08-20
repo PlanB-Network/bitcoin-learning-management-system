@@ -127,6 +127,7 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
       }
       scrollToTime={scrollToTime}
       showAllEvents={true}
+      showMultiDayTimes={true}
     />
   );
 };

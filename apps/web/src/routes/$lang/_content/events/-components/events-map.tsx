@@ -22,8 +22,9 @@ import type {
 } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
-import type { Components } from 'react-big-calendar';
+import type { View as CalendarView, Components } from 'react-big-calendar';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { CiShare2 } from 'react-icons/ci';
@@ -31,7 +32,8 @@ import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.tsx';
-import CustomToolbar from '#src/components/Calendar/custom-toolbar.js';
+import { CustomEventWeek } from '#src/components/Calendar/custom-event-week.tsx';
+import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import { EventCard } from './event-card.tsx';
@@ -199,6 +201,24 @@ function createMarker(group: EventGroup) {
   });
 }
 
+function getInitialCalendarState() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const dateParam = urlParams.get('date');
+  const viewParam = (urlParams.get('view') as CalendarView) || 'month';
+
+  const view: CalendarView = ['month', 'week'].includes(viewParam)
+    ? viewParam
+    : 'month';
+
+  const date = dateParam ? new Date(dateParam) : new Date();
+
+  if (Number.isNaN(date.getTime())) {
+    return { date: new Date(), view: 'month' as CalendarView };
+  }
+
+  return { date, view };
+}
+
 const EventsMap = ({
   events,
   eventPayments,
@@ -241,27 +261,82 @@ const EventsMap = ({
 
   const [mapInstance, setMapInstance] = useState<OpenLayerMap | null>(null);
 
-  function prepareShareUrl(map: OpenLayerMap): void {
-    const view = map.getView();
-    const center = view.getCenter();
+  function prepareShareUrl(map: OpenLayerMap) {
+    const newUrl = new URL(window.location.href);
 
-    if (center) {
-      const [lng, lat] = transform(center, 'EPSG:3857', 'EPSG:4326');
-      const zoom = view.getZoom();
+    newUrl.searchParams.delete('lat');
+    newUrl.searchParams.delete('lng');
+    newUrl.searchParams.delete('zoom');
+    newUrl.searchParams.delete('city');
+    newUrl.searchParams.delete('date');
+    newUrl.searchParams.delete('view');
 
-      const newUrl = new URL(window.location.href);
-      newUrl.searchParams.set('lat', lat.toFixed(6));
-      newUrl.searchParams.set('lng', lng.toFixed(6));
-      newUrl.searchParams.set('zoom', zoom?.toString() ?? '3');
+    if (selectedEventGroup) {
+      newUrl.searchParams.set(
+        'city',
+        encodeURIComponent(selectedEventGroup.location.name),
+      );
+    } else {
+      const view = map.getView();
+      const center = view.getCenter();
 
-      setShareUrl(newUrl.toString());
-      setShareModalOpen(true);
+      if (center) {
+        const [lng, lat] = transform(center, 'EPSG:3857', 'EPSG:4326');
+        const zoom = view.getZoom();
+
+        newUrl.searchParams.set('lat', lat.toFixed(6));
+        newUrl.searchParams.set('lng', lng.toFixed(6));
+        newUrl.searchParams.set('zoom', zoom?.toString() ?? '3');
+      }
     }
+
+    if (calendarView !== 'month') {
+      newUrl.searchParams.set('view', calendarView);
+    }
+
+    const dateFormat = calendarView === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd';
+    newUrl.searchParams.set('date', format(calendarDate, dateFormat));
+
+    setShareUrl(newUrl.toString());
+    setShareModalOpen(true);
   }
 
   const [groups, setGroups] = useState<Map<string, EventGroup>>();
 
   // [MAP] Geo effect
+  function getInitialStateFromUrl(): {
+    mapState: MapState;
+    selectedCity: string | null;
+  } {
+    const urlParams = new URLSearchParams(window.location.search);
+    const city = urlParams.get('city');
+
+    if (city) {
+      const defaultCoordinates = latLonToCoordinate([-21.269531, 34.29847]);
+      return {
+        mapState: {
+          center: defaultCoordinates,
+          zoom: 6,
+        },
+        selectedCity: decodeURIComponent(city),
+      };
+    }
+
+    const lat = Number.parseFloat(urlParams.get('lat') ?? '34.298470');
+    const lng = Number.parseFloat(urlParams.get('lng') ?? '-21.269531');
+    const zoom = Number.parseFloat(urlParams.get('zoom') ?? '3');
+
+    const initialCoordinates = latLonToCoordinate([lng, lat]);
+
+    return {
+      mapState: {
+        center: initialCoordinates,
+        zoom: zoom,
+      },
+      selectedCity: null,
+    };
+  }
+
   useEffect(() => {
     const groups = groupCountries(events ?? [], eventsLocations ?? [], filter);
     if (!groups) {
@@ -269,17 +344,28 @@ const EventsMap = ({
     }
 
     let state = mapState;
-    if (!state) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const lat = Number.parseFloat(urlParams.get('lat') ?? '34.298470');
-      const lng = Number.parseFloat(urlParams.get('lng') ?? '-21.269531');
-      const zoom = Number.parseFloat(urlParams.get('zoom') ?? '3');
+    let initialSelectedCity: string | null = null;
 
-      const initialCoordinates = latLonToCoordinate([lng, lat]);
-      state = {
-        center: initialCoordinates,
-        zoom: zoom,
-      };
+    if (!state) {
+      const initialState = getInitialStateFromUrl();
+      initialSelectedCity = initialState.selectedCity;
+
+      if (initialSelectedCity) {
+        const targetGroup = groups.find(
+          (g) => g.location.name === initialSelectedCity,
+        );
+        if (targetGroup) {
+          state = {
+            center: latLonToCoordinate(targetGroup.coordinate),
+            zoom: 6,
+          };
+          setSelectedEventGroup(targetGroup);
+        } else {
+          state = initialState.mapState;
+        }
+      } else {
+        state = initialState.mapState;
+      }
 
       setMapState(state);
       setGroups(new Map(groups.map((g) => [g.location.name, g])));
@@ -339,13 +425,26 @@ const EventsMap = ({
   /*
    * Calendar
    */
+  const [calendarState, setCalendarState] = useState(getInitialCalendarState);
+  const { date: calendarDate, view: calendarView } = calendarState;
+  const [dateRange, setDateRange] = useState('');
 
-  const [monthShift, setMonthShift] = useState(0);
+  const handleNavigate = (newDate: Date) => {
+    setCalendarState((prevState) => ({ ...prevState, date: newDate }));
+  };
 
-  const getDate = () => {
-    const date = new Date();
-    date.setMonth(date.getMonth() + monthShift);
-    return date;
+  const handleView = (newView: CalendarView) => {
+    setCalendarState((prevState) => ({ ...prevState, view: newView }));
+  };
+
+  const handlePrevNext = (direction: number) => {
+    const newDate = new Date(calendarDate);
+    if (calendarView === 'month') {
+      newDate.setMonth(newDate.getMonth() + direction);
+    } else {
+      newDate.setDate(newDate.getDate() + 7 * direction);
+    }
+    handleNavigate(newDate);
   };
 
   const locales = {
@@ -361,8 +460,13 @@ const EventsMap = ({
   });
 
   const weekComponents: Components<CalendarEvent> = {
+    event: CustomEventWeek,
+    week: {
+      header: CustomWeekHeader,
+    },
+  };
+  const monthComponents: Components<CalendarEvent> = {
     event: CustomEventMonth,
-    toolbar: CustomToolbar,
   };
 
   const [calendarEvents, setCalendarEvents] = useState<CalendarEvent[]>();
@@ -409,6 +513,42 @@ const EventsMap = ({
   useEffect(() => {
     setFilter(courseTypes);
   }, []);
+
+  const handleRangeChange = (range: Date[] | { start: Date; end: Date }) => {
+    if (Array.isArray(range)) {
+      const start = format(range[0], 'd');
+      const end = format(range[range.length - 1], 'd');
+      const monthStart = format(range[0], 'MMMM');
+      const monthEnd = format(range[range.length - 1], 'MMMM');
+      if (monthStart === monthEnd) {
+        setDateRange(`${monthStart} ${start} - ${end}`);
+      } else {
+        setDateRange(`${monthStart} ${start} - ${monthEnd} ${end}`);
+      }
+    } else {
+      setDateRange(format(range.start, 'MMMM yyyy'));
+    }
+  };
+
+  useEffect(() => {
+    if (calendarView === 'month') {
+      setDateRange(format(calendarDate, 'MMMM yyyy'));
+    } else if (calendarView === 'week') {
+      const weekStart = startOfWeek(calendarDate, { locale: undefined });
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekEnd.getDate() + 6);
+      const start = format(weekStart, 'd');
+      const end = format(weekEnd, 'd');
+      const monthStart = format(weekStart, 'MMMM');
+      const monthEnd = format(weekEnd, 'MMMM');
+      if (monthStart === monthEnd) {
+        setDateRange(`${monthStart} ${start} - ${end}`);
+      } else {
+        setDateRange(`${monthStart} ${start} - ${monthEnd} ${end}`);
+      }
+    }
+  }, [calendarView, calendarDate]);
+
   return (
     <div className="bg-gray-100 rounded-xl">
       <div className="flex ">
@@ -420,38 +560,55 @@ const EventsMap = ({
           )}
         >
           <div className="flex justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
-            <div>
-              Calendar -{' '}
-              {monthShift === 0
-                ? 'This month'
-                : monthShift === -1
-                  ? 'Last month'
-                  : monthShift === 1
-                    ? 'Next month'
-                    : monthShift > 0
-                      ? `In ${monthShift} months`
-                      : `${-monthShift} months ago`}
+            {/* View switcher */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => handleView('month')}
+                  className={cn(
+                    'border rounded-lg py-1 px-3',
+                    calendarView === 'month'
+                      ? 'bg-darkOrange-5 text-white border-darkOrange-5'
+                      : 'bg-white',
+                  )}
+                >
+                  {t('words.month')}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleView('week')}
+                  className={cn(
+                    'border rounded-lg py-1 px-3',
+                    calendarView === 'week'
+                      ? 'bg-darkOrange-5 text-white border-darkOrange-5'
+                      : 'bg-white',
+                  )}
+                >
+                  {t('words.week')}
+                </button>
+              </div>
             </div>
 
             {/* Date controls */}
             <div className="flex items-center gap-1 font-normal">
               <button
                 type="button"
-                onClick={() => setMonthShift(monthShift - 1)}
+                onClick={() => handlePrevNext(-1)}
                 className="border bg-white rounded-lg p-1"
               >
                 <BsChevronLeft className="size-6 p-1" />
               </button>
               <button
                 type="button"
-                onClick={() => setMonthShift(0)}
+                onClick={() => handleNavigate(new Date())}
                 className="border bg-white rounded-lg py-1 px-3"
               >
-                Today
+                {dateRange}
               </button>
               <button
                 type="button"
-                onClick={() => setMonthShift(monthShift + 1)}
+                onClick={() => handlePrevNext(1)}
                 className="border bg-white rounded-lg p-1"
               >
                 <BsChevronRight className="size-6 p-1" />
@@ -461,12 +618,12 @@ const EventsMap = ({
 
           <div className="border-b-rounded-xl overflow-hidden">
             <div className="text-gray-500 text-center w-full">
-              <div className="h-96 xl:h-[32rem] w-[850px]">
+              <div className="h-96 xl:h-[34rem] w-[850px]">
                 <Calendar
                   localizer={localizer}
                   events={calendarEvents}
-                  onView={() => {}}
-                  view="month"
+                  view={calendarView}
+                  onView={handleView}
                   toolbar={false}
                   onSelectEvent={({ id }) => {
                     const event = events.find((e) => e.id === id);
@@ -478,7 +635,6 @@ const EventsMap = ({
                         event.addressLine1 && groups?.get(event.addressLine1);
 
                       if (group) {
-                        console.log('Group', group);
                         setMapState({
                           center: latLonToCoordinate(group.coordinate),
                           zoom: 4,
@@ -490,11 +646,15 @@ const EventsMap = ({
                     height: 'inherit',
                     width: '100%',
                   }}
-                  date={getDate()}
-                  onNavigate={() => {}}
+                  date={calendarDate}
+                  onNavigate={handleNavigate}
                   eventPropGetter={customEventGetter}
-                  components={weekComponents}
+                  components={
+                    calendarView === 'month' ? monthComponents : weekComponents
+                  }
                   showAllEvents={true}
+                  showMultiDayTimes={true}
+                  onRangeChange={handleRangeChange}
                 />
               </div>
             </div>
@@ -502,7 +662,7 @@ const EventsMap = ({
         </div>
 
         {/* MAP */}
-        <div className="relative flex-1">
+        <div className="relative flex-1 overflow-hidden">
           <div className="flex items-center justify-center md:justify-start h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
             <div>
               <div className="hidden sm:flex items-center mr-6">
@@ -510,7 +670,7 @@ const EventsMap = ({
               </div>
             </div>
 
-            <div className="flex gap-3 md:gap-4 font-light">
+            <div className="flex gap-3 md:gap-4 font-light overflow-x-auto no-scrollbar">
               {courseTypes.map((f) => (
                 <button
                   key={f}
@@ -519,7 +679,7 @@ const EventsMap = ({
                   className={cn(
                     'text-xs md:text-base border-b border-transparent capitalize',
                     filter.includes(f)
-                      ? 'border-newOrange-1 font-semibold'
+                      ? 'border-darkOrange-5 font-semibold'
                       : '',
                   )}
                 >
@@ -527,15 +687,13 @@ const EventsMap = ({
                 </button>
               ))}
             </div>
-
-            <div>{/* Keep for spacing  */}</div>
           </div>
 
           <div
             id="ol-map"
             className={cn(
-              'w-full h-96 xl:h-[32rem] overflow-hidden',
-              !(selectedEventGroup || filter.length > 0) &&
+              'w-full h-96 xl:h-[34rem] overflow-hidden',
+              !selectedEventGroup &&
                 (mode === DisplayMode.Calendar
                   ? 'rounded-br-xl'
                   : 'rounded-b-xl'),
@@ -555,9 +713,9 @@ const EventsMap = ({
             <button
               type="button"
               onClick={() => mapInstance && prepareShareUrl(mapInstance)}
-              className="bg-orange-500 text-white px-3 py-2 rounded-lg shadow-md hover:bg-blue-900 flex items-center gap-2"
+              className="bg-darkOrange-5 text-white px-3 py-2 rounded-lg shadow-md hover:bg-darkOrange-6 flex items-center gap-2"
             >
-              <p>Share</p>
+              <p>{t('words.share')}</p>
               <CiShare2 />
             </button>
           </div>
@@ -586,13 +744,13 @@ const EventsMap = ({
                 <>
                   <BsChevronLeft className="size-4" />
 
-                  <span>Full map</span>
+                  <span>{t('events.calendar.fullMap')}</span>
                 </>
               ) : (
                 <>
                   <BsChevronRight className="size-4" />
 
-                  <span>Display Calendar</span>
+                  <span>{t('events.calendar.displayCalendar')}</span>
                 </>
               )}
             </Button>
@@ -634,7 +792,7 @@ const EventsMap = ({
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-5 justify-center">
+        <div className="flex flex-wrap gap-5 justify-center mt-2">
           {cards?.length ? (
             cards.map((event, index) => (
               <EventCard
@@ -652,7 +810,7 @@ const EventsMap = ({
             ))
           ) : (
             <div className="text-gray-500 text-center w-full mb-4">
-              No events found
+              {t('events.calendar.noEventsFound')}
             </div>
           )}
         </div>

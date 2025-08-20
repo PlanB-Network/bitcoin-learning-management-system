@@ -1385,6 +1385,18 @@
     }
   },
   "events": {
+    "calendar": {
+      "displayCalendar": "Display Calendar",
+      "fullMap": "Full map",
+      "hideCalendar": "Hide calendar",
+      "inXMonths": "In {{number}} months",
+      "lastMonth": "Last month",
+      "nextMonth": "Next month",
+      "noEventsFound": "No events found",
+      "thisMonth": "This month",
+      "today": "Today",
+      "xMonthsAgo": "{{number}} months ago"
+    },
     "card": {
       "bookLive": "Book live",
       "bookSeat": "Book a seat",
@@ -2068,6 +2080,7 @@
     "mentor": "Mentor",
     "mining": "Mining",
     "mode": "Mode",
+    "month": "Month",
     "movie": "Movie",
     "name": "Name",
     "network": "Network",
@@ -2113,6 +2126,7 @@
     "search": "Search",
     "security": "Security",
     "selectedAmount": "{{amount}} selected",
+    "share": "Share",
     "showMore": "",
     "skip": "Skip",
     "socialStudies": "Social studies",
@@ -2147,6 +2161,7 @@
     "view": "View",
     "viewMore": "View more",
     "wallets": "Wallets",
+    "week": "Week",
     "weight": "Weight",
     "yes": "Yes"
   },
