@@ -9,9 +9,9 @@
     "js-yaml": "^4.1.0",
     "marked": "^16.1.2",
     "remove-markdown": "^0.6.2",
-    "typesense": "^2.0.3",
+    "typesense": "~2.0.3",
     "uuid": "^11.1.0",
-    "zod": "^3.25.76"
+    "zod": "~3.25.76"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",

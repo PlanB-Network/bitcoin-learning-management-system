@@ -19,7 +19,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "zod": "^3.25.76"
+    "zod": "~3.25.76"
   },
   "devDependencies": {
     "@blms/types": "workspace:*"

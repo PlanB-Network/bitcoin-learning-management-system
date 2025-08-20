@@ -11,7 +11,7 @@
     "mocha": "^11.7.1",
     "tsx": "^4.20.4",
     "turbo": "^2.5.5",
-    "typescript": "5.9.2"
+    "typescript": "~5.9.2"
   },
   "license": "MIT",
   "lint-staged": {
@@ -20,7 +20,7 @@
     ]
   },
   "name": "blms",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.0",
   "private": true,
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",

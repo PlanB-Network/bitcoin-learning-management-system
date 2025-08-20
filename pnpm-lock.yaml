@@ -42,7 +42,7 @@ importers:
         specifier: ^2.5.5
         version: 2.5.5
       typescript:
-        specifier: 5.9.2
+        specifier: ~5.9.2
         version: 5.9.2
 
   apps/api:
@@ -120,10 +120,10 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       typesense:
-        specifier: ^2.0.3
+        specifier: ~2.0.3
         version: 2.0.3(@babel/runtime@7.28.3)
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
     devDependencies:
       '@blms/types':
@@ -214,7 +214,7 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
     devDependencies:
       '@blms/api':
@@ -297,7 +297,7 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       typescript:
-        specifier: 5.9.2
+        specifier: ~5.9.2
         version: 5.9.2
       vite:
         specifier: ~7.1.2
@@ -438,7 +438,7 @@ importers:
         specifier: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
         version: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
     devDependencies:
       '@blms/api':
@@ -583,13 +583,13 @@ importers:
         specifier: ~0.7.1
         version: 0.7.1(drizzle-orm@0.44.4(@libsql/client-wasm@0.14.0)(gel@2.0.2)(knex@3.1.0(pg@8.16.3))(pg@8.16.3)(postgres@3.4.7))(zod@3.25.76)
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
 
   packages/service-common:
     dependencies:
       pdfjs-dist:
-        specifier: 5.3.93
+        specifier: ~5.3.93
         version: 5.3.93
     devDependencies:
       '@blms/types':
@@ -626,13 +626,13 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2
       typesense:
-        specifier: ^2.0.3
+        specifier: ~2.0.3
         version: 2.0.3(@babel/runtime@7.28.3)
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
     devDependencies:
       '@blms/types':
@@ -648,7 +648,7 @@ importers:
   packages/service-language-toolkit:
     dependencies:
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
     devDependencies:
       '@blms/types':
@@ -728,16 +728,16 @@ importers:
         specifier: ^1.18.2
         version: 1.18.2
       typescript:
-        specifier: 5.9.2
+        specifier: ~5.9.2
         version: 5.9.2
       typesense:
-        specifier: ^2.0.3
+        specifier: ~2.0.3
         version: 2.0.3(@babel/runtime@7.28.3)
       zod:
-        specifier: ^3.25.76
+        specifier: ~3.25.76
         version: 3.25.76
       zod-to-ts:
-        specifier: ^1.2.0
+        specifier: ~1.2.0
         version: 1.2.0(typescript@5.9.2)(zod@3.25.76)
 
   packages/ui:
