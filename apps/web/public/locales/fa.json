@@ -45,18 +45,18 @@
     "emailAddress": "آدرس ایمیل",
     "emailTip": "ایمیل اجباری نیست: ولی اگر گذرواژه‌ی خود را فراموش کنید به‌درد می‌خورد!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validateChange": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "تغییر ایمیل تأیید شد",
+      "emailValidated": "ایمیل تأیید شد",
+      "errorValidatingEmail": "خطا در تایید ایمیل",
+      "errorValidatingEmailChange": "خطا در تایید تغییر ایمیل",
+      "errorValidatingEmailChangeDescription": "در هنگام تایید تغییر ایمیل شما خطایی رخ داد، به نظر می‌رسد که لینک منقضی شده یا قبلا مورد استفاده قرار گرفته است. لطفا دوباره تلاش کنید.",
+      "errorValidatingEmailDescription": "در هنگام تایید ایمیل شما خطایی رخ داد، به نظر می‌رسد که لینک منقضی شده یا قبلا مورد استفاده قرار گرفته است. لطفا دوباره تلاش کنید.",
+      "successfullyChanged": "ایمیل شما با موفقیت به {{email}} تغییر یافته است.",
+      "successfullyValidated": "ایمیل شما با موفقیت تایید شد.",
+      "validateChange": "تایید تغییر ایمیل",
+      "validatingEmail": "تایید ایمیل",
+      "validatingEmailChange": "تایید تغییر ایمیل",
+      "wontTakeLong": "زمان زیادی نخواهد برد ..."
     },
     "errors": {
       "displayNameTooShort": "نام نمایشی باید حداقل شامل 2 کاراکتر باشد.",
@@ -224,7 +224,7 @@
       "certificateAvailable": "حدود 8 ساعت پس از ارسال در دسترس خواهد قرار گرفت.",
       "certificateGeneration": "گواهینامه شما در حال انتشار است و ",
       "certificatePageOtherCourses": "دوره‌های مرتبط دیگر",
-      "completed": "",
+      "completed": "امتحان به پایان رسید!",
       "congratulations": "تبریک می‌گوییم، شما به پایان این دوره رسیدید!",
       "congratulationsPassed": "تبریک می‌گوییم، شما در امتحان نهایی قبول شدید!",
       "courseDiploma": "گواهینامه‌ دوره",
@@ -233,7 +233,7 @@
       "dontWorry": "نگران اشتباهات‌تان نباشید؛ این آزمون به تقویت یادگیری شما کمک می‌کند. اگر در آزمون قبول نشدید، می‌توانید بعد از 24 ساعت دوباره در آن شرکت کنید.",
       "dontWorryRetake": "نگران نباشید، شما می‌توانید بعد از 24 ساعت دوباره در امتحان شرکت کنید.",
       "examAndDiploma": "آزمون و دیپلم",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "اگر طی دوره زمانی موجود بر روی پلترفم، امتحان با موفقیت گذرانده نشود، دانشجو به طور خودکار نمره 0 دریافت خواهد کرد.",
       "examCertificateCompletionText": "شبکه ₿ Plan از تبریک گفتن به {{username}} برای دریافت گواهینامه آزمون {{courseName}} خرسند است.",
       "examDetails": "آزمون {{nb}} سوال چند گزینه‌ای دارد، هر کدام از سوالات یک پاسخ صحیح دارد. شما می‌توانید پاسخ‌های خود را هر زمان قبل از ارسال نهایی تغییر دهید، تا زمانی که زمان آزمون به پایان نرسیده باشد.",
       "examNotPassed": "شما باید در امتحان نهایی شرکت کنید و بیش از 80٪ نمره را کسب کنید تا گواهینامه خود را دریافت کنید و دوره را کاملا تکمیل کنید. برای تضمین اصالت این گواهینامه از<0>مهر زمان</0> استفاده خواهد شد.",
@@ -241,7 +241,7 @@
       "failed": "ناموفق",
       "failedDiploma": "برای دریافت گواهینامه و کامل کردن دوره باید در امتحان نهایی بیش از 80 درصد نمره را کسب کنید. شما می‌توانید بعد از 24 ساعت دوباره در امتحان شرکت کنید.",
       "finalExam": "امتحان نهایی",
-      "finalScore": "",
+      "finalScore": "نتیجه نهایی",
       "findInformationChapter": "در این فصل اطلاعات بیشتری پیدا کسب کنید:",
       "futureProof": "آینده-محافظت شده: مدرک شما به طور دائم محافظت می‌شود و برای همیشه معتبر خواهد ماند.",
       "getCertificate": "گواهینامه خود را دریافت کنید",
@@ -252,9 +252,9 @@
       "instantVerification": "تأیید فوری: کارفرمایان به راحتی می‌توانند اصالت و تاریخ صدور دیپلم شما را بررسی کنند.",
       "instructions": "دستورالعمل‌ها:",
       "letsConclude": "همه چیز به پایان رسید، بیایید مطالب را جمع بندی کنیم",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}} دقیقه",
+      "nbQuestions": "{{nb}} سوالات",
+      "nextChapter": "فصل بعدی",
       "noGoBack": "نه، به عقب بازگرد",
       "notTranslatedYet": "متاسفیم، اما ویژگی امتحان نهایی هنوز در زبان انتخابی شما موجود نیست. شما می‌توانید زبان انتخابی‌تان را به زبان دیگری تغییر دهید تا ادامه دهید.",
       "oneMinuteLeft": "فقط 1 دقیقه زمان باقی مانده است",
@@ -264,32 +264,32 @@
       "passRate": "نرخ قبولی 80 درصد است.",
       "planBTimeStamp": "در شبکه ₿ Plan، ما با استفاده از تکنولوژی برچسب-زمانی که توسط بلاکچین پشتیبانی می‌شود، به مدرک شما اعتبار می‌بخشیم.",
       "quitWithoutSubmitting": "اوه، به نظر می‌رسد که شما صفحه امتحان را بدون ارسال پاسخ‌هایتان ترک کردید. این کار باعث لغو امتحان می‌شود.",
-      "readyToTest": "",
+      "readyToTest": "آماده هستید تا دانش شما را بسنجیم؟",
       "receiveDiploma": "گواهینامه خود را دریافت کنید",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "پاسخ‌های صحیح",
+        "incorrect": "پاسخ‌های نادرست",
+        "questions": "سوالات پاسخ داده شد",
+        "time": "زمان استفاده شده"
       },
       "retakeExam": "دوباره در امتحان شرکت کنید",
       "retakeInstructions": "شما 20 دقیقه فرصت دارید تا به 40 سوال پاسخ دهید، هر سوال فقط یک پاسخ صحیح دارد. شما می توانید بین سوالات جابجا شوید و در پایان پاسخ‌های خود را ارسال نمایید.",
       "sameRules": "شما در حال تکرار امتحان نهایی هستید. قوانین همچنان بدون تغییر هستند.",
       "score": "امتیاز شما",
-      "singleAttempt": "",
-      "singleAttemptAvailability": "",
-      "singleAttemptPrecaution": "",
+      "singleAttempt": "امتحان تک دفعه‌ای",
+      "singleAttemptAvailability": "این امتحان از {{date}} به صورت آنلاین در دسترس است",
+      "singleAttemptPrecaution": "قبل از شروع، لطفا مطمئن شوید که اتصال اینترنت شما پایدار است. از آنجا که این یک امتحان تک دفعه‌ای است، اگر اتصال‌تان قطع شود، نمی توانید دوباره تلاش کنید.",
       "skipExam": "از امتحان صرف نظر کنید",
       "skipExamDescription": "همچنین می‌توانید از آزمون صرف نظر کنید و با کلیک کردن روی دکمه زیر مستقیما به صفحه نتیجه بروید.",
       "skipExamGoConclusion": "از امتحان صرف نظر کنید، به قسمت نتیجه بروید",
       "skipGoConclusion": "از امتحان صرف نظر کنید، به قسمت نتیجه بروید",
-      "solidEffort": "",
+      "solidEffort": "تبریک می‌گم که دوره را تمام کردید، شما تلاشی جدی انجام دادید.\nهرچند که این بار قادر به قبولی نبودید، هر گامی که برمی‌دارید پیشرفت به حساب میاد.\nدر مسیر یادگیری‌تون رو به جلو حرکت کنید!",
       "startExam": "شروع امتحان",
       "submit": "ارسال",
       "successDiploma": "تبریک! شما با موفقیت امتحان را گذراندید.\nدیپلم شما در داشبورد دانشجویی شما موجود است. برای تضمین اصالت آن، <0>برچسب زمان</0> به آن زده شده است.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "تبریک! شما با موفقیت دوره را سپری کردید.\nدیپلم شما اکنون در داشبورد دانشجویی شما موجود است.",
       "successDiplomaTimeStamped": "تبریک! شما با موفقیت امتحان را گذراندید.\nدیپلم شما حدود 10 ساعت پس از زمانی که در امتحان شرکت کردید، در داشبورد دانشجویی شما در دسترس خواهد بود. این تاخیر به دلیل فناوری <0>زمان-برچسب</0> است که اصالت آن را تضمین می‌کند.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "بابت تکمیل دوره تبریک می گم.\nشما با موفقیت حد نصاب را برای این دوره برآورده کردید و حالا فارغ التحصیل شده‌اید.\nشما می‌توانید دیپلم خود را در داشبورد خود پیدا کنید.",
       "sureSubmit": "آیا مطمئن هستید که می‌خواهید پاسخ‌های خود در امتحان را ارسال کنید؟",
       "takeExam": "در امتحان شرکت کنید",
       "tamperProof": "ضد تقلب: بلاکچین اطمینان می‌دهد که هیچ کس نمی‌تواند مدرک شما را تغییر دهد یا جعل کند.",
@@ -305,11 +305,14 @@
       "tryAgain": "دوباره تلاش کنید",
       "tryOneMoreTime": "یک بار دیگر تلاش کن!",
       "verifyDisplayName": "لطفا قبل از شروع، نام نمایشی خود را که در زیر آمده است تأیید نمایید، زیرا از آن جهت چاپ در دیپلم شما استفاده خواهد شد.",
-      "viewExam": "",
-      "weight": "",
+      "viewExam": "مشاهده آزمون",
+      "weight": "وزن: {{weight}}%",
       "whyTimeStamp": "ثبت زمان مدرک تحصیلی شما:\nچرا این موضوع مهم است",
       "wishTryAgain": "اگر می‌خواهید دوباره تلاش کنید، امتحان در 24 ساعت آینده در دسترس خواهد بود.",
-      "yesSubmit": "بله، ارسال"
+      "yesSubmit": "بله، ارسال",
+      "examResults": "نتایج امتحان",
+      "reviewTest": "بررسی",
+      "scoreAndDiploma": "نمره و دیپلم"
     },
     "explorer": {
       "buildPath": "مسیر خود را بسازید",
@@ -426,7 +429,9 @@
         "profession": "حرفه",
         "resultsRemaining": "{{results}} نتیجه باقی مانده",
         "seeMore": "بیشتر مشاهده کنید",
-        "viewCV": "مشاهده رزومه"
+        "viewCV": "مشاهده رزومه",
+        "candidateFile": "فایل متقاضی",
+        "file": "فایل"
       },
       "confirmRemoval": "تایید حذف",
       "coupons": {
@@ -469,13 +474,13 @@
         "generateNewCodes": "کدهای تازه ایجاد کن",
         "maximumNumberOfUse": "بیشترین تعداد کاربرد",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "الف-ی",
+          "highLow": "بالا - پایین",
+          "lowHigh": "پایین - بالا",
+          "sortBy": "مرتب سازی بر اساس",
+          "za": "ی-الف"
         },
-        "noCouponsFound": "",
+        "noCouponsFound": "کوپنی یافت نشد.",
         "numberOfCodes": "چند کد می‌خواهید ایجاد کنید؟",
         "numberOfCodesPlaceholder": "یک عدد وارد کنید",
         "productCourse": "دوره",
@@ -519,7 +524,103 @@
       "type": "نوع",
       "upcomingBookings": "رزروهای آینده",
       "upcomingBookingsSubtitle": "در اینجا می‌توانید لیست شرکت کنندگان در تمام رویدادهای حضوری را دانلود کنید.",
-      "userRolesAllocation": "تخصیص نقش‌های کاربر"
+      "userRolesAllocation": "تخصیص نقش‌های کاربر",
+      "translation": "پنل ترجمه",
+      "translationPanel": {
+        "actions": {
+          "accept": "پذیرفتن",
+          "delete": "حذف",
+          "reject": "رد کردن"
+        },
+        "addContributor": {
+          "addLanguage": "یک زبان دیگر اضافه کنید",
+          "assign": "تخصیص دادن",
+          "assignedLanguages": "زبان‌های اختصاص یافته شده",
+          "assigning": "در حال اختصاص دادن ...",
+          "assignmentSuccess": "مشارکت کنندگان با موفقیت اختصاص یافتند!",
+          "confirm": "تأیید",
+          "findContributor": "یافتن یک مشارکت کننده",
+          "language": "زبان",
+          "noUsers": "کاربری در دسترس نیست",
+          "searchUsers": "کاربران را جستجو کنید ...",
+          "selectLanguage": "انتخاب یک زبان",
+          "selectedUsers": "کاربران انتخاب شده:",
+          "title": "افزودن مشارکت کننده"
+        },
+        "admin": "ادمین",
+        "comingSoon": {
+          "courses": "مشاهده لیست دوره‌ها به زودی ممکن می‌شود",
+          "coverage": "دیدگاه ترجمه‌ی زبان به زودی منتشر می‌شود"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "تخصیص دادن",
+            "backToContentManagement": "بازگشت به مدیریت محتوا",
+            "reassign": "تخصیص دادن مجدد",
+            "view": "مشاهده"
+          },
+          "assignModal": {
+            "assign": "تخصیص دادن",
+            "assigning": "در حال اختصاص دادن ...",
+            "assigningCourse": "تخصیص دوره:",
+            "assignmentSuccess": "دوره با موفقیت اختصاص یافت!",
+            "cancel": "لغو",
+            "chooseContributor": "یک مشارکت کننده انتخاب کنید...",
+            "courseInfo": "اطلاعات دوره",
+            "selectContributor": "انتخاب یک مشارکت کننده",
+            "title": "اختصاص دادن دوره به یک مشارکت کننده"
+          },
+          "description": "مدیریت ترجمه‌ی دوره‌ها و اختصاص آن به ترجمه کنندگان",
+          "noCourses": "هیچ دوره‌ای موجود نیست.",
+          "noCoursesFiltered": "هیچ دوره‌ای مطابق با فیلترهای شما یافت نشد",
+          "notAssigned": "تخصیص داده نشده",
+          "reassignModal": {
+            "cancel": "لغو",
+            "chooseNewContributor": "یک مشارکت کننده جدید انتخاب کنید ...",
+            "courseInfo": "اطلاعات دوره",
+            "currentlyAssignedTo": "در حال حاضر تخصیص داده شده به:",
+            "reassign": "تخصیص دادن مجدد",
+            "reassigning": "در حال تخصیص دادن مجدد ...",
+            "reassigningCourse": "تخصیص مجدد دوره:",
+            "reassignmentSuccess": "دوره با موفقیت مجددا تخصیص داده شد!",
+            "selectNewContributor": "انتخاب مشارکت کننده جدید",
+            "title": "تخصیص دادن دوره به یک مشارکت کننده جدید",
+            "warning": {
+              "description": "فصل‌ها و بخش‌هایی که قبلا بازبینی شده‌اند، وضعیت بازبینی شده خود را حفظ می‌کنند و دوباره تخصیص داده نمی‌شوند.",
+              "title": "یادداشت مهم"
+            }
+          },
+          "status": {
+            "assigned": "تخصیص داده شده",
+            "notAssigned": "تخصیص داده نشده",
+            "readyForReview": "آماده جهت بررسی",
+            "underReview": "در دست بررسی"
+          },
+          "table": {
+            "actions": "اقدامات",
+            "contributor": "مشارکت کننده",
+            "course": "دوره",
+            "index": "فهرست",
+            "language": "زبان",
+            "progress": "پیشرفت",
+            "status": "وضعیت"
+          },
+          "title": "مدیریت محتوا"
+        },
+        "courseDetails": {
+          "actions": "اقدامات",
+          "assignedTo": "تخصیص داده شده به",
+          "chapterIndex": "فصل",
+          "chapterTitle": "عنوان",
+          "chaptersAndProgress": "فصل‌ها و پیشرفت",
+          "chaptersCompleted": "فصل های تکمیل شده",
+          "courseIndex": "فهرست دوره",
+          "courseInformation": "اطلاعات دوره",
+          "courseName": "نام دوره",
+          "currentContributor": "مشارکت کننده فعلی",
+          "errorLoadingDetails": "خطا در بارگیری جزئیات دوره"
+        }
+      }
     },
     "announcements": {
       "groups": {

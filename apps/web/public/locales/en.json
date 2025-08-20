@@ -563,9 +563,9 @@
             "selectContributor": "Select Contributor",
             "title": "Assign Course to Contributor"
           },
-          "description": "Assign and manage course translations to contributors",
-          "noCourses": "No courses available for translation management",
-          "noCoursesFiltered": "No courses found matching your filters",
+          "description": "Manage course translations and assign to contributors",
+          "noCourses": "No courses available",
+          "noCoursesFiltered": "No courses matching your filters",
           "notAssigned": "Not assigned",
           "reassignModal": {
             "cancel": "Cancel",

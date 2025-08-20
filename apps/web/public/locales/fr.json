@@ -311,7 +311,8 @@
       "weight": "Poids : {{weight}}%",
       "whyTimeStamp": "Horodatage de votre diplôme :\nPourquoi c'est important",
       "wishTryAgain": "Si vous souhaitez réessayer, l'examen sera disponible dans 24 heures.",
-      "yesSubmit": "Oui, soumettre"
+      "yesSubmit": "Oui, soumettre",
+      "reviewTest": "Revoir"
     },
     "explorer": {
       "buildPath": "Construisez votre propre chemin dans le terrier du lapin",
@@ -428,7 +429,9 @@
         "profession": "Carrière",
         "resultsRemaining": "{{results}} résultats restants",
         "seeMore": "Voir plus",
-        "viewCV": "Voir le CV"
+        "viewCV": "Voir le CV",
+        "candidateFile": "Fichier du candidat",
+        "file": "Fichier"
       },
       "confirmRemoval": "Confirmer la suppression",
       "coupons": {
@@ -521,7 +524,336 @@
       "type": "Type",
       "upcomingBookings": "Réservations à venir",
       "upcomingBookingsSubtitle": "Ici, vous pouvez télécharger la liste des participants pour tous les événements en personne.",
-      "userRolesAllocation": "Attribution des rôles utilisateur"
+      "userRolesAllocation": "Attribution des rôles utilisateur",
+      "translation": "Tableau de traduction",
+      "translationPanel": {
+        "actions": {
+          "accept": "Accepter",
+          "delete": "Supprimer",
+          "reject": "Rejeter"
+        },
+        "addContributor": {
+          "addLanguage": "Ajouter une autre langue",
+          "assign": "Attribuer",
+          "assignedLanguages": "Langues déjà attribuées",
+          "assigning": "Attribution...",
+          "assignmentSuccess": "Contributeurs assignés avec succès !",
+          "confirm": "Confirmer",
+          "findContributor": "Trouver un contributeur",
+          "language": "Langue",
+          "noUsers": "Aucun utilisateur disponible",
+          "searchUsers": "Rechercher des utilisateurs...",
+          "selectLanguage": "Sélectionner une langue",
+          "selectedUsers": "Utilisateurs sélectionnés :",
+          "title": "Ajouter un contributeur"
+        },
+        "contentManagement": {
+          "description": "Gérer les traductions de cours et les attribuer aux contributeurs",
+          "noCourses": "Aucun cours disponible",
+          "noCoursesFiltered": "Aucun cours trouvé correspondant à vos filtres",
+          "notAssigned": "Non attribué",
+          "reassignModal": {
+            "cancel": "Annuler",
+            "chooseNewContributor": "Choisir un nouveau contributeur...",
+            "courseInfo": "Informations sur le cours",
+            "currentlyAssignedTo": "Actuellement attribué à :",
+            "reassign": "Réattribuer",
+            "reassigning": "Réattribution...",
+            "reassigningCourse": "Réattribution du cours :",
+            "reassignmentSuccess": "Cours réattribué avec succès !",
+            "selectNewContributor": "Sélectionner un nouveau contributeur",
+            "title": "Réattribuer le cours à un nouveau contributeur",
+            "warning": {
+              "description": "Les chapitres et parties déjà relus conserveront leur statut de relecture et ne seront pas réattribués.",
+              "title": "Note importante"
+            }
+          },
+          "status": {
+            "assigned": "Attribué",
+            "notAssigned": "Non attribué",
+            "readyForReview": "Prêt pour relecture",
+            "underReview": "En cours de relecture"
+          },
+          "table": {
+            "actions": "Actions",
+            "contributor": "Contributeur",
+            "course": "Cours",
+            "index": "Index",
+            "language": "Langue",
+            "progress": "Progrès",
+            "status": "Statut"
+          },
+          "title": "Gestion de contenu",
+          "actions": {
+            "assign": "Attribuer",
+            "backToContentManagement": "Retour à la gestion de contenu",
+            "reassign": "Réattribuer",
+            "view": "Voir"
+          },
+          "assignModal": {
+            "assign": "Attribuer",
+            "assigning": "Attribution...",
+            "assigningCourse": "Attribution du cours :",
+            "assignmentSuccess": "Cours attribué avec succès !",
+            "cancel": "Annuler",
+            "chooseContributor": "Choisir un contributeur...",
+            "courseInfo": "Informations sur le cours",
+            "selectContributor": "Sélectionner le contributeur",
+            "title": "Attribuer le cours au contributeur"
+          }
+        },
+        "courseDetails": {
+          "actions": "Actions",
+          "assignedTo": "Attribué à",
+          "chapterIndex": "Chapitre",
+          "chapterTitle": "Titre",
+          "chaptersAndProgress": "Chapitres et Progrès",
+          "chaptersCompleted": "chapitres terminés",
+          "courseIndex": "Index des cours",
+          "courseInformation": "Informations sur le cours",
+          "courseName": "Nom du cours",
+          "currentContributor": "Contributeur actuel",
+          "errorLoadingDetails": "Erreur de chargement des détails du cours",
+          "language": "Langue",
+          "noChapters": "Aucun chapitre trouvé pour ce cours",
+          "noContributor": "Aucun contributeur attribué",
+          "partTitle": "Partie {{index}}: {{title}}",
+          "progress": "Progrès",
+          "status": "Statut",
+          "translationStatus": "Statut de la traduction"
+        },
+        "courseNotFound": "Cours non trouvé",
+        "messages": {
+          "noPendingRequests": "Aucune demande de relecture en attente trouvée.",
+          "noPendingRequestsSearch": "Aucune demande de relecture en attente correspondant à \"{{query}}\" n'a été trouvée.",
+          "noRejectedRequests": "Aucune demande de relecture rejetée trouvée.",
+          "noRejectedRequestsSearch": "Aucune demande de relecture rejetée trouvée correspondant à \"{{query}}\"."
+        },
+        "modal": {
+          "acceptRequest": "Accepter la demande",
+          "acceptTranslationRequest": "Accepter la demande de traduction",
+          "accepting": "Acceptation...",
+          "cancel": "Annuler",
+          "close": "Fermer",
+          "contributor": "Contributeur",
+          "course": "Cours",
+          "doYouWantToAcceptRequest": "Voulez-vous accepter cette demande de traduction ?",
+          "language": "Langue",
+          "provideRejectionReason": "Veuillez fournir une raison pour rejeter cette demande",
+          "reasonForRejection": "Raison du rejet",
+          "reasonPlaceholder": "Rédigez votre explication ici...",
+          "rejecting": "Rejet en cours...",
+          "requestAcceptedMessage": "Le contributeur a été informé et peut maintenant commencer à travailler sur la traduction.",
+          "requestAcceptedSuccess": "Vous avez accepté la demande de traduction !",
+          "requestRejectedSuccess": "Demande rejetée avec succès",
+          "submitRejection": "Soumettre"
+        },
+        "noResultsFound": "Aucun résultat trouvé",
+        "pendingTranslationRequests": "Demandes de relecture en attente",
+        "reports": {
+          "chooseYear": "Quelle année voulez-vous prendre en compte ?",
+          "comingSoon": {
+            "courses": "Vue des cours bientôt disponible",
+            "coverage": "Vue de la couverture linguistique bientôt disponible"
+          },
+          "contributors": {
+            "assignedCourses": "Cours attribués",
+            "completedCourses": "Cours terminés",
+            "languages": "Langues",
+            "startDate": "Date de début",
+            "title": "Contributeurs",
+            "totalReward": "Récompense totale",
+            "username": "Nom d'utilisateur"
+          },
+          "courses": {
+            "contributor": "Contributeur",
+            "filterByCourse": "Filtrer par cours",
+            "lastUpdated": "Dernière mise à jour",
+            "progress": "Progression %"
+          },
+          "dateFilter": "Filtre de date",
+          "downloadData": "Télécharger les données",
+          "filterByLanguage": "Filtrer par langue",
+          "fromMonth": "De",
+          "fromMonthPlaceholder": "À partir de quel mois ?",
+          "generalReport": "Rapport Général",
+          "languageCoverage": {
+            "completed": "Terminé",
+            "inProgress": "En cours",
+            "notStarted": "Non commencé",
+            "totalCourses": "Nombre total de cours"
+          },
+          "languagesProofread": "Langues relues",
+          "noContributors": "Aucun contributeur trouvé",
+          "noCourses": "Aucun cours trouvé",
+          "noLanguages": "Aucune langue trouvée",
+          "proofreadCourses": "Cours relus",
+          "table": {
+            "contributor": "Contributeur",
+            "lastUpdated": "Dernière mise à jour",
+            "progress": "Progression %"
+          },
+          "tabs": {
+            "contributors": "Contributeurs",
+            "courses": "Cours",
+            "coverage": "Couverture linguistique"
+          },
+          "toMonth": "À",
+          "toMonthPlaceholder": "Jusqu’à quel mois ?",
+          "totalLanguages": "Langues totales",
+          "year": "Année"
+        },
+        "searchPlaceholder": "Rechercher...",
+        "status": {
+          "assigned": "Attribué",
+          "completed": "Terminé",
+          "inProgress": "En cours",
+          "readyForReview": "Prêt pour relecture",
+          "todo": "À faire",
+          "underReview": "En cours de relecture"
+        },
+        "table": {
+          "actions": "Actions",
+          "course": "Cours",
+          "index": "Index",
+          "language": "Langue",
+          "username": "Nom d'utilisateur"
+        },
+        "admin": "ADMINISTRATEUR",
+        "comingSoon": {
+          "courses": "Vue des cours bientôt disponible",
+          "coverage": "Vue de la couverture linguistique bientôt disponible"
+        },
+        "tabs": {
+          "contentManagement": "Gestion du contenu",
+          "reports": "Rapports",
+          "requests": "Demandes",
+          "translate": "Traduire",
+          "userManagement": "Gestion des utilisateurs"
+        },
+        "title": "Panneau d’administration des traductions",
+        "toggle": {
+          "pendingRequest": "Demande en attente",
+          "rejectedRequests": "Demandes rejetées"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Traduire"
+          },
+          "backToCourse": "Retour au cours",
+          "changeSpeed": "Changer la vitesse de lecture",
+          "chapterTitle": "Titre du chapitre",
+          "compare": "Comparer",
+          "compareDisabledTooltip": "Version relue non disponible",
+          "compareTooltip": "Comparer les versions originales et relues",
+          "comparison": {
+            "backToChapter": "Retour au chapitre",
+            "originalVersion": "Version originale",
+            "translatedVersion": "Version traduite"
+          },
+          "description": "Commencer les traductions pour les cours devant être traduits dans des langues spécifiques.",
+          "forward15Seconds": "Avancer de 15 secondes",
+          "imageNotFound": "Image introuvable",
+          "language": "Langue",
+          "loadingPresentation": "Chargement de la présentation...",
+          "noContentAvailable": "Aucun contenu disponible",
+          "noCourses": "Aucun cours n'a besoin de traduction pour le moment.",
+          "noOriginalContent": "Aucun contenu original",
+          "noPngSlides": "Aucune diapositive PNG disponible pour cette présentation",
+          "noSlidesFound": "Aucune diapositive trouvée",
+          "originalContent": "Contenu original",
+          "pause": "Pause",
+          "play": "Lecture",
+          "presentations": "Présentations",
+          "rewind15Seconds": "Reculer de 15 secondes",
+          "selectLanguagesModal": {
+            "audioFile": "Fichier audio",
+            "audioFileInfo": "Formats pris en charge : MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Le fichier audio est trop grand. La taille maximale est de 50 Mo.",
+            "cancel": "Annuler",
+            "chooseAudioFile": "Choisir l'audio",
+            "chooseFolder": "Choisir un dossier",
+            "choosePptxFile": "Choisir un PPTX",
+            "chooseZip": "Choisir un ZIP",
+            "course": "Cours :",
+            "existingUploadsInfo": "Fichiers originaux déjà téléversés. Vous pouvez commencer la traduction sans les téléverser de nouveau. Le téléversement de nouveaux fichiers écrasera les fichiers existants.",
+            "folderUrl": "URL du dossier",
+            "invalidAudioFile": "Veuillez sélectionner un fichier audio valide.",
+            "invalidPptxFile": "Veuillez sélectionner un fichier PowerPoint (.pptx) valide.",
+            "missingFilesError": "Veuillez téléverser les fichiers de traduction ou fournir une URL avant de commencer la traduction.",
+            "noAudioFileSelected": "Aucun fichier audio sélectionné",
+            "noFolderSelected": "Aucun dossier sélectionné",
+            "noLanguagesAvailable": "Aucune langue disponible pour la traduction.",
+            "noPptxFileSelected": "Aucun fichier PowerPoint sélectionné",
+            "noZipSelected": "Aucun ZIP sélectionné",
+            "originalLanguage": "Langue d'origine",
+            "overwriteWarning": "Les fichiers existants seront remplacés.",
+            "pptxFile": "Fichier PowerPoint",
+            "pptxFileInfo": "Seuls les fichiers .pptx sont pris en charge (Max 100 Mo)",
+            "pptxFileTooLarge": "Le fichier PowerPoint est trop volumineux. La taille maximale est de 100 Mo.",
+            "selectLanguages": "Sélectionnez les langues à traduire :",
+            "startSuccess": "La traduction a commencé avec succès !",
+            "startTranslation": "Commencer la traduction",
+            "startingTranslation": "Démarrage...",
+            "title": "Sélectionnez les langues à traduire :",
+            "uploadFiles": "Téléverser des fichiers complémentaires (optionnel)",
+            "uploadFolder": "Téléverser un dossier (PPTX + TXT)",
+            "useEnglishLabel": "Le cours a déjà été traduit en anglais. Utiliser la version anglaise comme source ?"
+          },
+          "slideNavigation": {
+            "next": "Suivant",
+            "previous": "Précédent",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Diapositive {{slideNumber}} non disponible",
+          "slideNotFound": "Diapositive introuvable",
+          "table": {
+            "actions": "Actions",
+            "course": "Cours",
+            "index": "Index",
+            "todoLanguages": "Langues à traduire",
+            "totalLanguages": "Nombre total de langues"
+          },
+          "textContent": "Contenu du texte",
+          "title": "Traduire les cours",
+          "translateTo": "Traduire en",
+          "unknownContributor": "Inconnu"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Retour à la liste des utilisateurs",
+            "backToUsers": "Retour aux utilisateurs",
+            "viewDetails": "Voir les détails"
+          },
+          "addContributor": "Ajouter un contributeur",
+          "chapters": "Chapitres",
+          "contributorInformation": "Informations sur le contributeur",
+          "courses": "Cours",
+          "modal": {
+            "assignments": "Historique des attributions",
+            "noAssignments": "Aucune attribution trouvée",
+            "title": "Détails de l'utilisateur",
+            "userInfo": "Informations Utilisateur"
+          },
+          "noUsers": "Aucun contributeur trouvé",
+          "status": {
+            "published": "Publié",
+            "readyForReview": "Prêt pour relecture",
+            "rejected": "Rejeté",
+            "reviewed": "Relu",
+            "todo": "À faire",
+            "underReview": "En cours de relecture"
+          },
+          "table": {
+            "actions": "Action",
+            "assignedCourses": "Cours attribués",
+            "language": "Langue",
+            "startDate": "Date de début",
+            "username": "Nom d'utilisateur"
+          },
+          "title": "Contributeurs"
+        }
+      }
     },
     "announcements": {
       "groups": {
@@ -814,7 +1146,8 @@
       "viewScoreSummary": "Voir le résumé des scores",
       "wellDoneCompleting": "Félicitations pour avoir terminé et réussi ce cours !\nVoici votre diplôme bien mérité",
       "yourProject": "Votre projet",
-      "yourProjectAssignment": "Votre affectation de projet"
+      "yourProjectAssignment": "Votre affectation de projet",
+      "assignmentNotAccessible": "L’attribution a déjà commencé et n’est plus accessible."
     },
     "courses": "Cours",
     "credentials": {
@@ -890,7 +1223,12 @@
         "none": "Aucun",
         "platformTitle": "Quels types de notifications souhaitez-vous recevoir sur cette plateforme ?",
         "settingsSaved": "Vos paramètres ont été enregistrés avec succès !",
-        "title": "Paramètres de notification"
+        "title": "Paramètres de notification",
+        "assignedAt": "Attribué à",
+        "completedAt": "Terminé à",
+        "displayName": "Nom d'affichage",
+        "filter": "Filtre",
+        "role": "Rôle"
       },
       "password": "Mot de passe",
       "personalInformation": "Mes informations personnelles",
@@ -978,7 +1316,10 @@
         "studentsGraduated": "Étudiants diplômés",
         "summerStudents": "Summer School",
         "thresholdToPass": "Seuil à franchir",
-        "writeAnnouncement": "Écrire une annonce"
+        "writeAnnouncement": "Écrire une annonce",
+        "averageAttempts": "Moyenne des tentatives",
+        "questionsInExam": "Questions dans l'examen",
+        "totalQuestions": "Nombre total de questions"
       },
       "menu": "Menu enseignant",
       "profile": {
@@ -1015,6 +1356,9 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Ici, vous pouvez trouver des analyses sur les tutoriels que vous avez créés et publiés sur la plateforme.",
         "yourTutorials": "Vos tutoriels"
+      },
+      "discount": {
+        "description": "Ici, vous pouvez générer et gérer les codes de réduction pour ce cours - soit à usage unique pour des bourses ou des cas similaires, soit à usage multiple pour des campagnes marketing."
       }
     }
   },
@@ -1283,7 +1627,8 @@
     "upcomingEvent": "Événement à venir",
     "weeksAgo": "Il y a {{weeks}} semaine{{s}}",
     "yearsAgo": "Il y a {{years}} an{{s}}",
-    "yesterday": "Hier"
+    "yesterday": "Hier",
+    "newVersionAvailable": "Une nouvelle version de la plateforme Plan ₿ Network est disponible. Veuillez rafraîchir la page pour la mettre à jour."
   },
   "payment": {
     "haveReductionCode": "Avez-vous un code de réduction ?",
@@ -1760,11 +2105,29 @@
     "viewMore": "Voir plus",
     "wallets": "Portefeuilles",
     "weight": "Poids",
-    "yes": "Oui"
+    "yes": "Oui",
+    "actions": "Actions",
+    "none": "Aucun",
+    "review": "Relecture",
+    "taxes": "taxes"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
     "view": "Voir la chaîne Youtube",
     "watchTrailer": "Regardez la bande-annonce"
+  },
+  "months": {
+    "april": "Avril",
+    "august": "Août",
+    "december": "Décembre",
+    "february": "Février",
+    "january": "Janvier",
+    "july": "Juillet",
+    "june": "Juin",
+    "march": "Mars",
+    "may": "Mai",
+    "november": "Novembre",
+    "october": "Octobre",
+    "september": "Septembre"
   }
 }
