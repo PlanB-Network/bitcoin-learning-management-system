@@ -1,64 +1,52 @@
-import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
-import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
-import PlanBLogoWhite from '../../../assets/logo/planb_logo_horizontal_white_whitepill.svg?react';
-import { isRTL } from '../../../utils/i18n.ts';
+import {
+  TbLayoutSidebar,
+  TbLayoutSidebarLeftExpandFilled,
+} from 'react-icons/tb';
+import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black.svg?react';
 import { MetaElements } from '../meta-elements.tsx';
 import type { NavigationSection } from '../props.ts';
-
-import { FlyingMenuSection } from './flying-menu-section.tsx';
 
 export interface FlyingMenuProps {
   sections: NavigationSection[];
   onClickLogin: () => void;
   onClickRegister: () => void;
-  variant?: 'light' | 'dark';
-  notificationPanelVariant?: 'light' | 'dark';
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (open: boolean) => void;
 }
 
 export const FlyingMenu = ({
-  sections,
   onClickRegister,
   onClickLogin,
-  variant = 'dark',
-  notificationPanelVariant = 'dark',
+  isSidebarOpen,
+  setIsSidebarOpen,
 }: FlyingMenuProps) => {
   const { i18n } = useTranslation();
   const rtl = isRTL(i18n.language);
   return (
-    <nav
-      className={cn(
-        'flex w-full flex-row items-center justify-between max-lg:hidden',
-      )}
-    >
-      <Link to="/" className="mr-auto">
-        {variant === 'light' ? (
-          <PlanBLogoWhite className="h-auto lg:w-32 xl:w-40" />
+    <nav className="flex w-full flex-row items-center justify-between max-lg:hidden">
+      <div className="flex items-center gap-4 px-4 py-3">
+        {isSidebarOpen ? (
+          <TbLayoutSidebar
+            size={24}
+            className="text-[#ACACAC] cursor-pointer"
+            onClick={() => setIsSidebarOpen(false)}
+          />
         ) : (
-          <PlanBLogoOrange className="h-auto lg:w-32 xl:w-40" />
+          <TbLayoutSidebarLeftExpandFilled
+            size={24}
+            className="text-[#ACACAC] cursor-pointer"
+            onClick={() => setIsSidebarOpen(true)}
+          />
         )}
-      </Link>
-      <ul
-        className={cn(
-          'mx-auto flex flex-row items-center gap-2 xl:gap-5 rounded-xl px-3 py-2.5',
-          variant === 'light'
-            ? 'bg-darkOrange-2 text-black'
-            : 'bg-newBlack-3 text-white',
-          rtl && 'flex-row-reverse',
-        )}
-      >
-        {sections.map((section) => (
-          <li key={section.id} className={rtl ? 'text-right' : ''}>
-            <FlyingMenuSection section={section} variant={variant} rtl={rtl} />
-          </li>
-        ))}
-      </ul>
+        <Link to="/">
+          <PlanBLogoBlack className="h-auto w-31" />
+        </Link>
+      </div>
+
       <MetaElements
         onClickLogin={onClickLogin}
         onClickRegister={onClickRegister}
-        variant={variant}
-        notificationPanelVariant={notificationPanelVariant}
       />
     </nav>
   );

@@ -73,7 +73,7 @@ export default function QuizzCardQuestion({
                     'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
-                        ? 'bg-brightGreen-4'
+                        ? 'bg-green-300'
                         : 'bg-red-4'
                       : 'bg-newGray-5 md:group-hover:bg-newGray-3',
                   )}
@@ -85,7 +85,7 @@ export default function QuizzCardQuestion({
                     'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
-                        ? 'bg-brightGreen-3 !font-semibold'
+                        ? 'bg-green-200 !font-semibold'
                         : 'bg-red-3 !font-semibold'
                       : 'bg-white md:group-hover:bg-newGray-5',
                   )}

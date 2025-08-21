@@ -1632,6 +1632,26 @@
     "pageTitle": "Movies & Documentaries",
     "watchTrailer": "Watch the trailer"
   },
+  "navbar": {
+    "analytics": "Analytics",
+    "bookings": "Bookings",
+    "career": "Career",
+    "discountCode": "Discount codes",
+    "learnAnytimeDescription": "Self-paced courses",
+    "learnAnytimeTitle": "Learn anytime",
+    "manageCourses": "Manage courses",
+    "myCalendar": "My calendar",
+    "myCareer": "My career",
+    "myCourses": "My courses",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Learn",
+      "teach": "Teach"
+    },
+    "translationPanel": "Translation panel",
+    "tutorials": "Tutorials",
+    "userRolesAllocation": "User roles allocation"
+  },
   "nodeNetwork": {
     "description1": "We believe that education should not only take place online but also in physical spaces. To achieve this, Plan ₿ Network manages a network of hubs around the world to welcome thinkers, entrepreneurs and educators fostering the advancement of Bitcoin and freedom technologies.",
     "descriptionExtend": "Our first step is to invite communities with physical spaces, which we refer to as the \"full nodes\" of our network, to join us. In the future, as our network strengthens, we will extend this invitation to more initiatives worldwide. If you share our values, please reach out to our representatives to join our network and help build the best Bitcoin education possible.",

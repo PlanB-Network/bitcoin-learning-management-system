@@ -99,7 +99,7 @@ function PlanBLabs() {
   const lastSession = lab?.sessions?.at(0);
 
   return (
-    <MainLayout variant="dark" footerVariant="dark">
+    <MainLayout>
       {/* Header */}
       <div className="flex flex-col items-center mt-12 text-center gap-6 self-center">
         <div className="flex flex-col items-center md:gap-6 md:flex-row lg:w-[800px] px-4">

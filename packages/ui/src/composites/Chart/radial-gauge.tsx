@@ -12,10 +12,10 @@ const gaugeVariantStyles = {
     text: 'text-newBlue-1',
   },
   green: {
-    background: 'stroke-brightGreen-2', // Unfilled
-    foreground: 'stroke-brightGreen-4', // Filled
-    needle: 'stroke-brightGreen-7',
-    text: 'text-brightGreen-6',
+    background: 'stroke-green-100', // Unfilled
+    foreground: 'stroke-green-300', // Filled
+    needle: 'stroke-green-600',
+    text: 'text-green-500',
   },
   orange: {
     background: 'stroke-darkOrange-1', // Unfilled

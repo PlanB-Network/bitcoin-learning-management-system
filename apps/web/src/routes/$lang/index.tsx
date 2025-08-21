@@ -66,7 +66,7 @@ function Home() {
 
   const Page = () => {
     return (
-      <MainLayout footerVariant="dark">
+      <MainLayout>
         <div className="bg-black flex flex-col text-white md:px-8 lg:px-12">
           <HeaderSection />
           <NumberSection />

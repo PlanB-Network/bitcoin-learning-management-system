@@ -202,7 +202,7 @@ function ResetPasswordPage() {
   };
 
   return (
-    <MainLayout footerVariant="dark">
+    <MainLayout>
       <div className="font-primary bg-black flex size-full flex-col items-center space-y-16 p-10 text-blue-700">
         <section className="max-w-4xl text-white flex min-h-[50vh] flex-col items-center justify-center">
           {validationMessages[pageState]}

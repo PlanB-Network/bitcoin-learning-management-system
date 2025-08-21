@@ -94,16 +94,14 @@ export const CourseExamResult = ({
                     {t('courses.exam.score')}{' '}
                     <span
                       className={
-                        examResults.succeeded
-                          ? 'text-brightGreen-5'
-                          : 'text-red-5'
+                        examResults.succeeded ? 'text-green-400' : 'text-red-5'
                       }
                     >
                       {examResults.score}%
                     </span>
                   </span>
                   {examResults.succeeded ? (
-                    <SuccessParty className="size-7 md:size-20 fill-brightGreen-5" />
+                    <SuccessParty className="size-7 md:size-20 fill-green-400" />
                   ) : (
                     <img
                       src={FaceFailed}

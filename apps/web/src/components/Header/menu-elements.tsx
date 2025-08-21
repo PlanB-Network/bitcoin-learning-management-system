@@ -6,14 +6,12 @@ import type { NavigationElement } from './props.ts';
 
 export interface MenuElementProps {
   element: NavigationElement;
-  variant?: 'dark' | 'light';
   isMultipleSubSectionChildren?: boolean;
   rtl?: boolean;
 }
 
 export const MenuElement = ({
   element,
-  variant,
   isMultipleSubSectionChildren,
   rtl,
 }: MenuElementProps) => {
@@ -22,46 +20,27 @@ export const MenuElement = ({
       <div
         key={element.id}
         className={cn(
-          'group flex w-full cursor-pointer gap-5 rounded-md py-2 px-2.5',
-          variant === 'light' ? 'hover:bg-darkOrange-1' : 'hover:bg-white/10',
-          rtl && 'flex-row-reverse',
+          'group flex w-full cursor-pointer gap-5 rounded-md py-2 px-2.5 hover:bg-darkOrange-1',
         )}
       >
         {element.icon && (
           <div className="flex flex-none items-center justify-center">
             <img
               src={element.icon}
-              className={cn(
-                'size-[30px]',
-                variant === 'light'
-                  ? 'text-black brightness-0'
-                  : 'text-white filter-white',
-              )}
+              className="size-[30px] text-black brightness-0"
               aria-hidden="true"
               alt=""
             />
           </div>
         )}
-        <div
-          className={cn(
-            'flex flex-col items-start justify-center truncate',
-            rtl && 'items-end',
-          )}
-        >
-          <h5
-            className={cn(
-              'text-lg leading-normal tracking-015px',
-              variant === 'light' ? 'text-black' : 'text-white',
-              rtl && 'text-right',
-            )}
-          >
+        <div className="flex flex-col items-start justify-center truncate">
+          <h5 className="text-lg leading-normal tracking-015px text-black">
             {element.title}
           </h5>
           {element.description && (
             <p
               className={cn(
-                'truncate desktop-typo1 max-w-full',
-                variant === 'light' ? 'text-black' : 'text-newGray-2',
+                'truncate desktop-typo1 max-w-full text-black',
                 isMultipleSubSectionChildren
                   ? 'w-40 xl:w-[240px] 2xl:w-[316px]'
                   : 'w-[316px]',
@@ -74,7 +53,7 @@ export const MenuElement = ({
         </div>
       </div>
     ),
-    [element, variant, isMultipleSubSectionChildren, rtl],
+    [element, isMultipleSubSectionChildren],
   );
 
   return 'path' in element ? (

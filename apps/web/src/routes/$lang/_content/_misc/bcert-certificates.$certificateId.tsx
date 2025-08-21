@@ -46,7 +46,7 @@ function Certificate() {
   }
 
   return (
-    <PageLayout footerVariant="dark" variant="dark" maxWidth="max-w-[1392px]">
+    <PageLayout maxWidth="max-w-[1392px]">
       <h2 className="text-center display-small-32px lg:display-large">
         {t('words.bCert')}
       </h2>

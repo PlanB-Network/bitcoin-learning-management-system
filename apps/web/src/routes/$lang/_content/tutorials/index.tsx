@@ -27,7 +27,7 @@ function TutorialExplorer() {
   const isFetchedTutorials = tutorials && tutorials.length > 0;
 
   return (
-    <MainLayout footerVariant="dark">
+    <MainLayout>
       <PageMeta
         title={`${SITE_NAME} - ${t('tutorials.pageTitle')}`}
         description={t('tutorials.pageDescription')}

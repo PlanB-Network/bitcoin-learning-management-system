@@ -769,7 +769,7 @@ const StepsContent = ({
             icon={
               hasPassedCourseThreshold ? (
                 <SuccessParty
-                  className={cn(stepMessageIconClass, 'fill-brightGreen-5')}
+                  className={cn(stepMessageIconClass, 'fill-green-400')}
                 />
               ) : (
                 <Certificate
@@ -798,9 +798,7 @@ const StepsContent = ({
                       <span
                         className={cn(
                           'font-semibold',
-                          hasExamSucceeded
-                            ? 'text-brightGreen-5'
-                            : 'text-red-5',
+                          hasExamSucceeded ? 'text-green-400' : 'text-red-5',
                         )}
                       >
                         {previousExamResults.score}%
@@ -818,7 +816,7 @@ const StepsContent = ({
               hasExamResults ? (
                 hasExamSucceeded ? (
                   <SuccessParty
-                    className={cn(stepMessageIconClass, 'fill-brightGreen-5')}
+                    className={cn(stepMessageIconClass, 'fill-green-400')}
                   />
                 ) : (
                   <FailurePixel

@@ -117,37 +117,33 @@ const ContributorsNames = ({
     if (mode === 'dark') {
       if (index === 0)
         return contributors.length > 2
-          ? 'text-brightGreen-7'
+          ? 'text-green-600'
           : contributors.length > 0
             ? 'text-darkOrange-3'
             : 'text-darkOrange-6';
       if (index === 1)
         return contributors.length > 2
-          ? 'text-brightGreen-7'
+          ? 'text-green-600'
           : contributors.length > 1
             ? 'text-darkOrange-3'
             : 'text-darkOrange-6';
       if (index === 2)
-        return contributors.length > 2
-          ? 'text-brightGreen-7'
-          : 'text-darkOrange-6';
+        return contributors.length > 2 ? 'text-green-600' : 'text-darkOrange-6';
     } else {
       if (index === 0)
         return contributors.length > 2
-          ? 'text-brightGreen-10'
+          ? 'text-green-900'
           : contributors.length > 0
             ? 'text-darkOrange-5'
             : 'text-darkOrange-8';
       if (index === 1)
         return contributors.length > 2
-          ? 'text-brightGreen-10'
+          ? 'text-green-900'
           : contributors.length > 1
             ? 'text-darkOrange-5'
             : 'text-darkOrange-8';
       if (index === 2)
-        return contributors.length > 2
-          ? 'text-brightGreen-10'
-          : 'text-darkOrange-8';
+        return contributors.length > 2 ? 'text-green-900' : 'text-darkOrange-8';
     }
     return '';
   };
@@ -244,7 +240,7 @@ export const ProofreadingProgress = ({
               mode === 'dark'
                 ? 'bg-newBlack-3'
                 : contributorsLength > 2
-                  ? 'bg-brightGreen-1'
+                  ? 'bg-green-50'
                   : 'bg-darkOrange-0',
             )}
           >
@@ -275,7 +271,7 @@ export const ProofreadingProgress = ({
                     mode === 'dark'
                       ? 'bg-white/15 text-newGray-4'
                       : contributorsLength > 2
-                        ? 'bg-brightGreen-2 text-brightGreen-7'
+                        ? 'bg-green-100 text-green-600'
                         : 'bg-[#ff5c00]/15 text-darkOrange-6',
                   )}
                 >
@@ -390,7 +386,7 @@ export const ProofreadingDesktop = ({
         mode === 'dark'
           ? 'bg-newBlack-3'
           : contributorsLength > 2
-            ? 'bg-brightGreen-1'
+            ? 'bg-green-50'
             : 'bg-darkOrange-0',
         standalone
           ? 'p-5 w-fit max-w-[282px] flex'
@@ -426,7 +422,7 @@ export const ProofreadingDesktop = ({
               mode === 'dark'
                 ? 'bg-white/15 text-newGray-4'
                 : contributorsLength > 2
-                  ? 'bg-brightGreen-2 text-brightGreen-7'
+                  ? 'bg-green-100 text-green-600'
                   : 'bg-[#ff5c00]/15 text-darkOrange-6',
             )}
           >

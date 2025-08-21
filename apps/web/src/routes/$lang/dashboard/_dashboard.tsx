@@ -4,7 +4,6 @@ import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { MainLayout } from '#src/components/main-layout.js';
 import { NotFoundDashboard } from '#src/components/not-found-dashboard.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.js';
-import { MenuDashboard } from './_dashboard/-components/menu-dashboard.tsx';
 
 export const Route = createFileRoute('/$lang/dashboard/_dashboard')({
   component: Dashboard,
@@ -33,7 +32,7 @@ function Dashboard() {
   }
 
   return isMobile ? (
-    <MainLayout variant="light" showFooter={false} headerVariant="light">
+    <MainLayout>
       <div>
         <div className={cn('bg-white text-black', padding)}>
           <Outlet />
@@ -41,10 +40,9 @@ function Dashboard() {
       </div>
     </MainLayout>
   ) : (
-    <MainLayout variant="gray" headerVariant="light">
-      <div className="flex flex-row text-white mt-3 mx-4">
-        <MenuDashboard location={location} />
-        <div className="bg-white rounded-xl lg:ml-4 p-8 text-black lg:min-h-full w-full">
+    <MainLayout>
+      <div className="flex flex-row text-white">
+        <div className="bg-white rounded-xl p-8 text-black lg:min-h-full w-full">
           <Outlet />
         </div>
       </div>

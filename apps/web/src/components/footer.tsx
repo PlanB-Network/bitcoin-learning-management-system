@@ -5,11 +5,6 @@ import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
 import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
-import PlanBLogoWhite from '../assets/logo/planb_logo_horizontal_white_orangepill_gradient.svg';
-
-interface FooterProps {
-  variant?: 'light' | 'dark';
-}
 
 const SOCIAL_LINKS = [
   {
@@ -50,17 +45,14 @@ const SOCIAL_LINKS = [
   },
 ];
 
-export const Footer = ({ variant = 'light' }: FooterProps) => {
+export const Footer = () => {
   const { t } = useTranslation();
 
-  const isLight = variant === 'light';
-  const backgroundClass =
-    variant === 'dark' ? 'bg-white text-newBlack-2' : 'bg-black text-white';
-  const textSecondaryClass = isLight ? 'text-newGray-4' : 'text-newBlack-5';
-  const logoBottomBgClass = isLight ? 'bg-newBlack-3' : 'bg-newGray-6';
+  const backgroundClass = 'bg-white text-newBlack-2';
+  const textSecondaryClass = 'text-newBlack-5';
 
   return (
-    <footer className="pt-16 md:pt-24 lg:pt-32 w-full">
+    <footer className="pt-4 w-full">
       <div className={cn('flex w-full flex-col', backgroundClass)}>
         <div className="flex max-md:flex-col w-full p-4 pb-8 md:py-12 md:px-0 max-md:gap-4">
           <div className="w-full flex max-md:flex-col justify-center gap-6 md:gap-28">
@@ -87,12 +79,12 @@ export const Footer = ({ variant = 'light' }: FooterProps) => {
               textSecondaryClass={textSecondaryClass}
             />
 
-            <SocialNetworksDesktop variant={variant} />
+            <SocialNetworksDesktop />
           </div>
 
           <div className="w-full flex flex-col md:hidden gap-4">
-            <DividerSimple mode={isLight ? 'dark' : 'light'} />
-            <SocialNetworksMobile variant={variant} />
+            <DividerSimple mode={'light'} />
+            <SocialNetworksMobile />
           </div>
         </div>
       </div>
@@ -100,11 +92,11 @@ export const Footer = ({ variant = 'light' }: FooterProps) => {
       <div
         className={cn(
           'flex w-full justify-center py-6 md:py-5',
-          logoBottomBgClass,
+          backgroundClass,
         )}
       >
         <img
-          src={isLight ? PlanBLogoWhite : PlanBLogoBlack}
+          src={PlanBLogoBlack}
           alt="Logo Plan ₿ Network"
           className="w-26 md:w-30"
         />
@@ -179,17 +171,8 @@ const SocialLink = ({
   </a>
 );
 
-const SocialNetworksMobile = ({
-  variant,
-}: {
-  variant: FooterProps['variant'];
-}) => {
+const SocialNetworksMobile = () => {
   const iconSize = 18;
-  const iconClasses = cn(
-    variant === 'light'
-      ? 'text-newGray-4 stroke-newGray-4'
-      : 'text-newBlack-5 stroke-newBlack-5',
-  );
 
   return (
     <div className="flex gap-5 mx-auto">
@@ -201,33 +184,21 @@ const SocialNetworksMobile = ({
           label={label}
           isReactIcon={isReactIcon}
           iconSize={iconSize}
-          iconClasses={iconClasses}
+          iconClasses={'text-newBlack-5 stroke-newBlack-5'}
         />
       ))}
     </div>
   );
 };
 
-const SocialNetworksDesktop = ({
-  variant,
-}: {
-  variant: FooterProps['variant'];
-}) => {
+const SocialNetworksDesktop = () => {
   const { t } = useTranslation();
   const iconSize = 18;
-  const iconClasses = cn(
-    variant === 'light' ? 'stroke-newGray-4' : 'stroke-newBlack-5',
-  );
 
   return (
     <div className="flex flex-col gap-2 max-md:hidden">
       <h4 className="body-medium-16px">{t('footer.followUsOn')}</h4>
-      <ul
-        className={cn(
-          'flex flex-col gap-0.5 body-16px',
-          variant === 'light' ? 'text-newGray-4' : 'text-newBlack-5',
-        )}
-      >
+      <ul className={'flex flex-col gap-0.5 body-16px text-newBlack-5'}>
         {SOCIAL_LINKS.map(({ href, icon, label, isReactIcon }) => (
           <li key={href}>
             <SocialLink
@@ -236,7 +207,7 @@ const SocialNetworksDesktop = ({
               label={label}
               isReactIcon={isReactIcon}
               iconSize={iconSize}
-              iconClasses={iconClasses}
+              iconClasses={'stroke-newBlack-5'}
               showLabel={true}
             />
           </li>

@@ -66,7 +66,7 @@ function SingleBlogDetail() {
   }, [blog, isFetched, navigate, params.bookName]);
 
   return (
-    <PageLayout variant="light" footerVariant="light">
+    <PageLayout>
       {!isFetched && <Loader size={'s'} />}
       {blog && (
         <>

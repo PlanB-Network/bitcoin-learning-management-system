@@ -63,7 +63,7 @@ export const CourseTable = ({
     const { progressPercentage } = progressForCourse;
     if (progressPercentage === 100)
       return {
-        bgColor: 'bg-brightGreen-4 hover:bg-brightGreen-5',
+        bgColor: 'bg-green-300 hover:bg-green-400',
         text: t('dashboard.myCourses.completed'),
       };
     if (progressPercentage >= 0)

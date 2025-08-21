@@ -17,7 +17,7 @@ export const TutorialLikes = ({
         {tutorial.likeCount}
       </span>
       <span className="flex items-center">
-        <MdThumbUp className="text-brightGreen-5 size-[18px] lg:size-[21px]" />
+        <MdThumbUp className="text-green-400 size-[18px] lg:size-[21px]" />
         <span
           className={cn(
             'w-[70px] rounded-full h-2 mx-2 max-md:hidden',
