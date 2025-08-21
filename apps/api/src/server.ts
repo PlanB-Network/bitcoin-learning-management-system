@@ -42,12 +42,15 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     const path = req.path;
     const method = req.method;
     const sessionId = req.session?.id || '';
+    const uid = req.session?.uid || '';
 
     req.id ||= req.header('x-request-id') || genRequestId();
     req.log = (...a: any[]) => console.log(`[request] ${req.id}`, ...a);
 
     if (!path.includes('getUserNotifications')) {
-      req.log(`${method} ${path} (${req.ip}) session=${sessionId} `);
+      req.log(
+        `${method} ${path} (ip=${req.ip})${uid && ` session=${sessionId} uid=${uid}`}`,
+      );
     }
 
     // Log response time

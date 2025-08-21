@@ -122,6 +122,40 @@ services:
     volumes:
       - ./data/typesense:/usr/share/typesense/data
 
+  # ONLYOFFICE Document Server for rich PPTX editing
+  onlyoffice:
+    <<: *defaults
+    image: onlyoffice/documentserver:9.0
+    environment:
+      - ONLYOFFICE_HTTPS_HSTS_ENABLED=false
+      - ONLYOFFICE_HTTPS_HSTS_MAXAGE=31536000
+      - JWT_ENABLED=false
+      - JWT_SECRET=
+      - JWT_HEADER=Authorization
+      - JWT_IN_BODY=true
+      - WOPI_ENABLED=false
+      - USE_UNAUTHORIZED_STORAGE=true
+      - ONLYOFFICE_DEFAULT_FORMATS=docx;xlsx;pptx
+      - ALLOW_PRIVATE_IP_ADDRESS=true
+      - ALLOW_HTTP_REQUEST_TO_EDIT_DOCUMENT=true
+      - ALLOW_META_IP_ADDRESS=true
+      - DENY_EMBEDDED_FONTS=false
+      - ONLYOFFICE_TIMEOUT_DOWNLOAD=120000
+      - ONLYOFFICE_MAX_PROCESSES=10
+      - ONLYOFFICE_TIMEOUT_CONVERSION=120000
+      - ONLYOFFICE_MAX_FILE_SIZE=104857600
+      - ONLYOFFICE_MAX_TEMPLATE_SIZE=104857600
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.university-onlyoffice-${ENV}.rule=Host(`onlyoffice.${DOMAIN}`)
+      - traefik.http.routers.university-onlyoffice-${ENV}.entrypoints=https
+      - traefik.http.routers.university-onlyoffice-${ENV}.tls=true
+      - traefik.http.routers.university-onlyoffice-${ENV}.middlewares=university-web-${ENV}-compress
+      - traefik.http.middlewares.university-onlyoffice-${ENV}-compress.compress=true
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '80']
+
 networks:
   default:
     name: ${DOCKER_NETWORK}
