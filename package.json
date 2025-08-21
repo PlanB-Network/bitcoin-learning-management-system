@@ -2,15 +2,15 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.17.1",
+    "@types/node": "^24.3.0",
     "dotenv-cli": "^10.0.0",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
-    "knip": "^5.62.0",
+    "knip": "^5.63.0",
     "lint-staged": "^16.1.5",
     "mocha": "^11.7.1",
     "tsx": "^4.20.4",
-    "turbo": "^2.5.5",
+    "turbo": "^2.5.6",
     "typescript": "~5.9.2"
   },
   "license": "MIT",
