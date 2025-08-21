@@ -11,6 +11,12 @@ x-defaults: &defaults
     POSTGRES_HOST: postgres
     POSTGRES_PORT: 5432
 
+  healthcheck: &healthcheck
+    interval: 15s
+    timeout: 7s
+    retries: 3
+    start_period: 10s
+
   logging:
     driver: 'json-file'
     options:
