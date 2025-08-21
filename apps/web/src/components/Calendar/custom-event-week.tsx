@@ -21,7 +21,7 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
       break;
     }
     default: {
-      cssClasses = 'bg-darkGreen-6 text-darkGreen-1';
+      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
       break;
     }
   }
@@ -30,27 +30,26 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
     <div
       className={`${cssClasses}`}
       style={{
-        // maxHeight: `${isSelected ? '100%' : ''}`,
-        height: `${isSelected ? 'fit-content' : '100%'}`,
-        overflow: `${isSelected ? 'hidden' : 'hidden'}`,
-        padding: '10px',
-        paddingLeft: 8,
-        paddingTop: 8,
+        padding: '10px 8px',
         width: '100%',
       }}
-      onPointerEnter={() => {
-        setIsSelected(!isSelected);
+      onMouseEnter={() => {
+        setIsSelected(true);
       }}
-      onPointerLeave={() => {
-        setIsSelected(!isSelected);
+      onMouseLeave={() => {
+        setIsSelected(false);
       }}
     >
       <div className="flex flex-row text-sm pl-1">
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
       </div>
       <div className="font-semibold text-sm">{event.title}</div>
-      <div className="text-sm">{event.organizer}</div>
-      <div className="text-sm">{event.addressLine1}</div>
+      {isSelected && (
+        <>
+          <div className="text-sm">{event.organizer}</div>
+          <div className="text-sm">{event.addressLine1}</div>
+        </>
+      )}
     </div>
   );
 };
