@@ -12,6 +12,7 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   it: 'Italiano',
   ja: '日本語',
   nbno: 'Norsk bokmål',
+  nl: 'Nederlands',
   pl: 'Polski',
   pt: 'Português',
   ru: 'Русский',

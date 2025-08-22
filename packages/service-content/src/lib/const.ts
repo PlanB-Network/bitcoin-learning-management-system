@@ -32,6 +32,7 @@ export const ISO_639_LANGUAGES = {
   it: 'it',
   ja: 'ja',
   'nb-no': 'nn',
+  nl: 'nl',
   pt: 'po',
   pl: 'pl',
   ru: 'ru',
