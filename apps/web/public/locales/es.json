@@ -490,7 +490,7 @@
         "tableHead": {
           "actions": "Acciones",
           "code": "Código",
-          "discount": "",
+          "discount": "Descuento",
           "maxUses": "",
           "name": "",
           "owner": "",
@@ -595,7 +595,7 @@
       "calendar": "Calendario",
       "eventType": {
         "class": "",
-        "event": ""
+        "event": "Eventos"
       },
       "personalCalendar": "Calendario personal"
     },

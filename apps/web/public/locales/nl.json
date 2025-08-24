@@ -1319,7 +1319,9 @@
         "writeAnnouncement": "Schrijf een aankondiging",
         "averageAttempts": "Gemiddeld aantal pogingen",
         "questionsInExam": "Vragen in het examen",
-        "totalQuestions": "Totaal aantal vragen"
+        "totalQuestions": "Totaal aantal vragen",
+        "overview": "Overzicht",
+        "successRate": "Succespercentage"
       },
       "profile": {
         "description": "Jouw beschrijving",
@@ -1359,6 +1361,26 @@
       "menu": "Docent menu",
       "discount": {
         "description": "Hier kun je kortingscodes genereren en beheren voor deze cursus - zowel eenmalig codes voor studiebeurzen of vergelijkbare gevallen, als herbruikbare codes voor marketingcampagnes."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Kondig een verandering aan",
+          "attendanceList": "Aanwezigheidslijst",
+          "courseEnded": "Deze cursus is afgelopen.",
+          "courseNotStarted": "Deze cursus is nog niet begonnen.",
+          "enrolledStudents": "Ingeschreven studenten",
+          "hasEnrolled": "heeft zich ingeschreven",
+          "hasGraduated": "is geslaagd met een score van {{score}}%",
+          "hasLeftReview": "heeft een beoordeling achtergelaten",
+          "hasLeftReviewAndComment": "heeft een beoordeling en een opmerking achtergelaten",
+          "notifyStudents": "Iets veranderd? Informeer je studenten.",
+          "overallPerformance": "Algemene prestatie",
+          "recentActivity": "Recente activiteit",
+          "studentsRegistered": "Geregistreerde studenten",
+          "upcomingClass": "Aankomende les"
+        }
       }
     }
   },
@@ -1430,7 +1452,19 @@
     "pageSubtitle": "Bottom-up adoptie versterkt door een sterk netwerk",
     "pageTitle": "Op zoek naar een Bitcoin-evenement om bij te wonen?",
     "tcDisclaimer": "Ik ga ermee akkoord dat mijn informatie gedeeld mag worden met organisatoren voor toegangsdoeleinden tot de locatie.",
-    "tcMustBeAccepted": "Je moet de algemene voorwaarden accepteren om verder te gaan"
+    "tcMustBeAccepted": "Je moet de algemene voorwaarden accepteren om verder te gaan",
+    "calendar": {
+      "displayCalendar": "Kalender Weergeven",
+      "fullMap": "Volledige kaart",
+      "hideCalendar": "Kalender verbergen",
+      "inXMonths": "In {{number}} maanden",
+      "lastMonth": "Vorige maand",
+      "nextMonth": "Volgende maand",
+      "noEventsFound": "Geen evenementen gevonden",
+      "thisMonth": "Deze maand",
+      "today": "Vandaag",
+      "xMonthsAgo": "{{number}} maanden geleden"
+    }
   },
   "glossary": {
     "creditsLoic": "<0>Credits</0>: Bitcoin Woordenboek geschreven door <1>Loïc Morel (Pandul)</1>, beschikbaar op deze <2>Github repository</2>.",
@@ -2095,7 +2129,13 @@
     "yes": "Ja",
     "review": "Beoordeling",
     "actions": "Acties",
-    "none": "Geen"
+    "none": "Geen",
+    "info": "Informatie",
+    "month": "Maand",
+    "rating": "Beoordeling",
+    "share": "Delen",
+    "taxes": "belastingen",
+    "week": "Week"
   },
   "videoSelector": {
     "language": {
