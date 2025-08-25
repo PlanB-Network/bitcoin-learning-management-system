@@ -49,7 +49,7 @@ services:
       - ./key.asc:/tmp/key.asc:ro
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-api-${ENV}.rule=(Host(`${DOMAIN}`) && PathPrefix(`/api`))
+      - traefik.http.routers.university-api-${ENV}.rule=((Host(`${DOMAIN}`) || Host(`contribute.${DOMAIN}`)) && PathPrefix(`/api`))
       - traefik.http.routers.university-api-${ENV}.entrypoints=https
       - traefik.http.routers.university-api-${ENV}.tls=true
       - traefik.http.services.university-api-${ENV}.loadbalancer.server.port=3000
