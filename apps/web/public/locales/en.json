@@ -579,7 +579,7 @@
             "selectNewContributor": "Select New Contributor",
             "title": "Reassign Course to New Contributor",
             "warning": {
-              "description": "Chapters and parts that have already been reviewed will keep their reviewed status and will not be reassigned.",
+              "description": "Chapters already reviewed will not be reassigned.",
               "title": "Important Note"
             }
           },
@@ -613,7 +613,7 @@
           "currentContributor": "Current contributor",
           "errorLoadingDetails": "Error loading course details",
           "language": "Language",
-          "noChapters": "No chapters found for this course",
+          "noChapters": "No chapters available for this course",
           "noContributor": "No contributor assigned",
           "partTitle": "Part {{index}}: {{title}}",
           "progress": "Progress",
@@ -622,14 +622,14 @@
         },
         "courseNotFound": "Course not found",
         "messages": {
-          "noPendingRequests": "No pending proofreading requests found.",
-          "noPendingRequestsSearch": "No pending proofreading requests found matching \"{{query}}\".",
-          "noRejectedRequests": "No rejected proofreading requests found.",
-          "noRejectedRequestsSearch": "No rejected proofreading requests found matching \"{{query}}\"."
+          "noPendingRequests": "No more pending proofreading requests.",
+          "noPendingRequestsSearch": "No proofreading requests matching \"{{query}}\".",
+          "noRejectedRequests": "There are no declined proofreading requests.",
+          "noRejectedRequestsSearch": "No declined proofreading requests matching \"{{query}}\"."
         },
         "modal": {
           "acceptRequest": "Accept Request",
-          "acceptTranslationRequest": "Accept Translation Request",
+          "acceptTranslationRequest": "Accept Proofreading Request",
           "accepting": "Accepting...",
           "cancel": "Cancel",
           "close": "Close",

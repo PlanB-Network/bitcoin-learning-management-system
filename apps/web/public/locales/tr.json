@@ -1319,7 +1319,9 @@
         "questionsInExam": "Sınavdaki sorular",
         "studentsGraduated": "Mezun olan Öğrenciler",
         "thresholdToPass": "Geçiş eşiği",
-        "totalQuestions": "Toplam soru sayısı"
+        "totalQuestions": "Toplam soru sayısı",
+        "overview": "Genel Bakış",
+        "successRate": "Başarı oranı"
       },
       "menu": "Öğretmen menüsü",
       "profile": {
@@ -1360,6 +1362,26 @@
       "discount": {
         "description": "Burada bu kurs için indirim kodları oluşturabilir ve yönetebilirsiniz - burslar veya benzer durumlar için tek kullanımlık veya pazarlama kampanyaları için çoklu kullanımlı."
       }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Bir değişikliği duyurun",
+          "attendanceList": "Katılım listesi",
+          "courseEnded": "Bu kurs sona erdi.",
+          "courseNotStarted": "Bu kurs henüz başlamadı.",
+          "enrolledStudents": "Kayıtlı öğrenciler",
+          "hasEnrolled": "kaydoldu",
+          "hasGraduated": "{{score}}% puan ile mezun oldu",
+          "hasLeftReview": "bir değerlendirme bıraktı",
+          "hasLeftReviewAndComment": "Bir değerlendirme ve yorum bıraktı",
+          "notifyStudents": "Bir şey değişti mi? Öğrencilerinizi bilgilendirin.",
+          "overallPerformance": "Genel performans",
+          "recentActivity": "Son etkinlik",
+          "studentsRegistered": "Kayıtlı öğrenciler",
+          "upcomingClass": "Yaklaşan ders"
+        }
+      }
     }
   },
   "events": {
@@ -1387,39 +1409,39 @@
     },
     "main": {
       "currentEvents": "Şu anda devam eden etkinlikler",
-      "upcomingEvents": ""
+      "upcomingEvents": "Gelecek etkinlikler"
     },
     "missed": {
-      "missedH1": "",
-      "missedP1": "",
-      "missedP2": ""
+      "missedH1": "Tekrar oynatılacak geçmiş etkinlikler",
+      "missedP1": "Bir etkinliği mi kaçırdınız?",
+      "missedP2": "Endişelenme! Ağımızda gerçekleşen geçmiş etkinliklerin tüm tekrarlarını saklıyoruz, böylece herkes kaçırdıkları konuları özgürce yakalayabilir."
     },
     "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "",
-      "title": ""
+      "button": "Etkinliğimi ekle",
+      "description": "Elbette! Tüm Bitcoin etkinlikleri burada görünürlüklerini artırabilir, dolayısıyla yeni bir etkinlik oluşturma girişimi fazlasıyla hoş karşılanır!",
+      "subtitle": "Bir milyar kişiyi turuncu haplamak kolay değil",
+      "title": "Etkinliğinizi eklemek ister misiniz?"
     },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
+    "pageDescription": "Canlı olarak Bitcoin hakkında konuşmak ister misiniz? İşte, Plan ₿ Network toplulukları tarafından desteklenen bütün etkinlikleri burada bulabilirsiniz. Bir konferansı dinlemek, bir içecek eşliğinde Bitcoin hakkında tartışmak ya da bilginizi değerlendirmek için bir sınav yapmak isterseniz, doğru etkinliği Plan ₿ Network aracılığıyla burada bulabilirsiniz.",
+    "pageSubtitle": "Güçlü bir ağ tarafından desteklenen alttan üste yayılma",
+    "pageTitle": "Bir Bitcoin etkinliğine mi katılmak istiyorsunuz?",
     "payment": {
-      "access_online_successful": "",
-      "access_physical_successful": "",
-      "access_type": "",
-      "additional_free_description": "",
-      "address": "",
-      "back_events": "",
-      "book_seat": "",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
-      "date": "",
-      "description_free_physical": "",
-      "description_online": "",
+      "access_online_successful": "Etkinlik başladığında, platforma giriş yapın ve etkinlik sayfası üzerinden canlı yayına başlayın.",
+      "access_physical_successful": "Biletinizi buradan indirebilir veya daha sonra kontrol panelinizden indirebilirsiniz.",
+      "access_type": "Erişim türü",
+      "additional_free_description": "Bu etkinlik ücretsizdir, bu yüzden bu koltuğu rezerve etmek için ücret alınmayacaktır.",
+      "address": "Adres",
+      "back_events": "Etkinliklere geri dön",
+      "book_seat": "Bir koltuk ayırt",
+      "callout_book_online": "Bu etkinliğe çevrimiçi erişim rezervasyonu yapmak üzeresiniz.",
+      "callout_book_physical": "Bu etkinliğe <highlight>yüz yüze erişim</highlight> rezervasyonu yapmak üzeresiniz.",
+      "callout_book_replay": "Bu etkinliğin tekrar izleme videosuna erişim ayırtmak üzeresiniz.",
+      "callout_purchase_online": "Bu etkinliğe <highlight>çevrimiçi erişim</highlight> satın almaya hazırsınız.",
+      "callout_purchase_physical": "Bu etkinliğe <highlight>yüz yüze erişim</highlight> satın almak üzeresiniz.",
+      "callout_purchase_replay": "Bu etkinliğin tekrar videosuna erişim satın almaya hazırsınız.",
+      "date": "Tarih",
+      "description_free_physical": "Lütfen sağlanan mekan detaylarını gözden geçirin. Rezervasyon onaylandığında, etkinlikte sunmanız için bir onay bileti ve bir QR kodu alacaksınız. ",
+      "description_online": "Lütfen sağlanan etkinlik tarihini ve saatini gözden geçirin. Zamanı geldiğinde, canlı yayına etkinlik sayfası üzerinden erişim sağlamak için platforma giriş yapın.",
       "description_physical": "",
       "download_ticket": "",
       "language": "",
@@ -1430,7 +1452,18 @@
       "time": ""
     },
     "tcDisclaimer": "",
-    "tcMustBeAccepted": ""
+    "tcMustBeAccepted": "",
+    "calendar": {
+      "displayCalendar": "Takvimi Görüntüle",
+      "fullMap": "Tam harita",
+      "hideCalendar": "Takvimi gizle",
+      "inXMonths": "{{number}} ay içinde",
+      "lastMonth": "Geçen ay",
+      "nextMonth": "Gelecek ay",
+      "thisMonth": "Bu ay",
+      "today": "Bugün",
+      "xMonthsAgo": "{{number}} ay önce"
+    }
   },
   "filters": {
     "categories": "",

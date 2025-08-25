@@ -429,7 +429,9 @@
         "profession": "Profesija",
         "resultsRemaining": "Preostalo {{results}} rezultata",
         "seeMore": "Vidi još",
-        "viewCV": "Pogledaj biografiju"
+        "viewCV": "Pogledaj biografiju",
+        "candidateFile": "Dokument kandidata",
+        "file": "Dokument"
       },
       "confirmRemoval": "Potvrdite uklanjanje",
       "coupons": {
@@ -522,7 +524,264 @@
       "type": "Tip",
       "upcomingBookings": "Predstojeće rezervacije",
       "upcomingBookingsSubtitle": "Ovde možete preuzeti listu učesnika za sve događaje uživo.",
-      "userRolesAllocation": "Dodela korisničkih uloga"
+      "userRolesAllocation": "Dodela korisničkih uloga",
+      "translation": "Panel za prevod",
+      "translationPanel": {
+        "actions": {
+          "accept": "Prihvati",
+          "delete": "Obriši",
+          "reject": "Odbij"
+        },
+        "addContributor": {
+          "addLanguage": "Dodajte još jedan jezik",
+          "assign": "Dodeli",
+          "assignedLanguages": "Već dodeljeni jezici",
+          "assigning": "Dodeljivanje...",
+          "assignmentSuccess": "Saradnici su uspešno dodeljeni!",
+          "confirm": "Potvrdi",
+          "findContributor": "Pronađite saradnika",
+          "language": "Jezik",
+          "noUsers": "Nema dostupnih korisnika",
+          "searchUsers": "Pretraga saradnika...",
+          "selectLanguage": "Izaberite jezik",
+          "selectedUsers": "Izabrani korisnici:",
+          "title": "Dodaj saradnika"
+        },
+        "admin": "ADMIN",
+        "comingSoon": {
+          "courses": "Prikaz kurseva uskoro dolazi",
+          "coverage": "Prikaz pokrivenosti jezika će biti uskoro"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Dodeli",
+            "backToContentManagement": "Nazad na upravljanje sadržajem",
+            "reassign": "Ponovno dodeli",
+            "view": "Pogledajte"
+          },
+          "assignModal": {
+            "assign": "Dodeli",
+            "assigning": "Dodeljivanje...",
+            "assigningCourse": "Dodeljivanje kursa:",
+            "assignmentSuccess": "Kurs uspešno dodeljen!",
+            "cancel": "Otkaži",
+            "chooseContributor": "Izaberite saradnika...",
+            "courseInfo": "Informacije o kursu",
+            "selectContributor": "Izaberite saradnika",
+            "title": "Dodeli kurs saradniku"
+          },
+          "description": "Upravljajte prevodima kursa i dodelite ih saradnicima",
+          "noCourses": "Nema dostupnih kurseva",
+          "noCoursesFiltered": "Nema kurseva koji odgovaraju vašim filterima",
+          "notAssigned": "Nedodeljen",
+          "reassignModal": {
+            "cancel": "Otkaži",
+            "chooseNewContributor": "Izaberite novog saradnika...",
+            "courseInfo": "Informacije o kursu",
+            "currentlyAssignedTo": "Trenutno dodeljeno:",
+            "reassign": "Ponovo dodeli",
+            "reassigning": "Ponovno dodeljivanje...",
+            "reassigningCourse": "Ponovno dodeljivanje kursa:",
+            "reassignmentSuccess": "Kurs uspešno dodeljen!",
+            "selectNewContributor": "Izaberite novog saradnika",
+            "title": "Dodeli kurs novom saradniku",
+            "warning": {
+              "description": "Poglavlja koja su već pregledana neće biti ponovo dodeljena.",
+              "title": "Važna napomena"
+            }
+          },
+          "status": {
+            "assigned": "Dodeljen",
+            "notAssigned": "Nedodeljen",
+            "readyForReview": "Spreman za pregled",
+            "underReview": "U razmatranju"
+          },
+          "table": {
+            "actions": "Akcije",
+            "contributor": "Saradnik",
+            "course": "Kurs",
+            "index": "Indeks",
+            "language": "Jezik",
+            "progress": "Napredak",
+            "status": "Status"
+          },
+          "title": "Upravljanje sadržajem"
+        },
+        "courseDetails": {
+          "actions": "Akcije",
+          "assignedTo": "Dodeljeno",
+          "chapterIndex": "Poglavlje",
+          "chapterTitle": "Naslov",
+          "chaptersAndProgress": "Poglavlja i napredak",
+          "chaptersCompleted": "završena poglavlja",
+          "courseIndex": "Indeks kurseva",
+          "courseInformation": "Informacije o kursu",
+          "courseName": "Naziv kursa",
+          "currentContributor": "Trenutni saradnik",
+          "errorLoadingDetails": "Greška pri učitavanju detalja o kursu",
+          "language": "Jezik",
+          "noChapters": "Nema dostupnih poglavlja za ovaj kurs",
+          "noContributor": "Nijedan saradnik nije dodeljen",
+          "partTitle": "Deo {{index}}: {{title}}",
+          "progress": "Napredak",
+          "status": "Status",
+          "translationStatus": "Status prevoda"
+        },
+        "courseNotFound": "Kurs nije pronađen",
+        "messages": {
+          "noPendingRequests": "Nema više zahteva koji čekaju na lekturu.",
+          "noPendingRequestsSearch": "Nema zahteva za lekturu koji odgovaraju \"{{query}}\".",
+          "noRejectedRequests": "Nema odbijenih zahteva za lekturu.",
+          "noRejectedRequestsSearch": "Nema odbijenih zahteva za lekturu koji odgovaraju \"{{query}}\"."
+        },
+        "modal": {
+          "acceptRequest": "Prihvati zahtev",
+          "acceptTranslationRequest": "Prihvati zahtev za lekturu",
+          "accepting": "Prihvatanje...",
+          "cancel": "Otkaži",
+          "close": "Zatvori",
+          "contributor": "Saradnik",
+          "course": "Kurs",
+          "doYouWantToAcceptRequest": "Da li želite da prihvatite ovaj zahtev za prevod?",
+          "language": "Jezik",
+          "provideRejectionReason": "Molim vas da navedete razlog za odbijanje ovog zahteva",
+          "reasonForRejection": "Razlog za odbijanje",
+          "reasonPlaceholder": "Napišite svoje objašnjenje ovde...",
+          "rejecting": "Odbijanje...",
+          "requestAcceptedMessage": "Sardnik je obavešten i sada može da počne da radi na prevodu.",
+          "requestAcceptedSuccess": "Prihvatili ste zahtev za prevod!",
+          "requestRejectedSuccess": "Zahtev je uspešno odbijen",
+          "submitRejection": "Podnesi"
+        },
+        "noResultsFound": "Nema pronađenih rezultata",
+        "pendingTranslationRequests": "Zahtevi za lekturu na čekanju",
+        "reports": {
+          "chooseYear": "Koju godinu želite da razmotrite?",
+          "comingSoon": {
+            "courses": "Prikaz kurseva uskoro dolazi",
+            "coverage": "Prikaz pokrivenosti jezika dolazi uskoro"
+          },
+          "contributors": {
+            "assignedCourses": "Dodeljeni kursevi",
+            "completedCourses": "Završeni kursevi",
+            "languages": "Jezici",
+            "startDate": "Datum početka",
+            "title": "Saradnici",
+            "totalReward": "Ukupna nagrada",
+            "username": "Korisničko ime"
+          },
+          "courses": {
+            "contributor": "Saradnik",
+            "filterByCourse": "Filtriraj po kursu",
+            "lastUpdated": "Poslednje ažurirano",
+            "progress": "Napredak %"
+          },
+          "dateFilter": "Filter za datum",
+          "downloadData": "Preuzmi podatake",
+          "filterByLanguage": "Filtriraj po jeziku",
+          "fromMonth": "Od",
+          "fromMonthPlaceholder": "Od kog meseca?",
+          "generalReport": "Opšti izveštaj",
+          "languageCoverage": {
+            "completed": "Kompletirano",
+            "inProgress": "U toku",
+            "notStarted": "Nije započeto",
+            "totalCourses": "Ukupno kurseva"
+          },
+          "languagesProofread": "Lekturisani jezici",
+          "noContributors": "Nijedan saradnik nije pronađen",
+          "noCourses": "Nijedan kurs nije pronađen",
+          "noLanguages": "Nijedan jezik nije pronađen",
+          "proofreadCourses": "Lekturisani kursevi",
+          "table": {
+            "contributor": "Saradnik",
+            "lastUpdated": "Poslednje ažurirano",
+            "progress": "Napredak %"
+          },
+          "tabs": {
+            "contributors": "Saradnici",
+            "courses": "Kursevi",
+            "coverage": "Pokrivenost jezika"
+          },
+          "toMonth": "Do",
+          "toMonthPlaceholder": "Do kog meseca?",
+          "totalLanguages": "Ukupan broj jezika",
+          "year": "Godina"
+        },
+        "searchPlaceholder": "Pretraga...",
+        "status": {
+          "assigned": "Dodeljen",
+          "completed": "Kompletirano",
+          "inProgress": "U toku",
+          "readyForReview": "Spreman za pregled",
+          "todo": "Za uraditi",
+          "underReview": "U pregledu"
+        },
+        "table": {
+          "actions": "Akcije",
+          "course": "Kurs",
+          "index": "Indeks",
+          "language": "Jezik",
+          "username": "Korisničko ime"
+        },
+        "tabs": {
+          "contentManagement": "Upravljanje sadržajem",
+          "reports": "Izveštaji",
+          "requests": "Zahtevi",
+          "translate": "Prevedi",
+          "userManagement": "Upravljanje korisnicima"
+        },
+        "title": "Admin panel za prevod",
+        "toggle": {
+          "pendingRequest": "Zahtev na čekanju",
+          "rejectedRequests": "Odbijeni zahtevi"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Prevedi"
+          },
+          "backToCourse": "Nazad na kurs",
+          "changeSpeed": "Promenite brzinu reprodukcije",
+          "chapterTitle": "Naslov poglavlja",
+          "compare": "Uporedi",
+          "compareDisabledTooltip": "Verzija za lekturu nije dostupna",
+          "compareTooltip": "Uporedite originalnu i lektorisane verzije",
+          "comparison": {
+            "backToChapter": "Nazad na poglavlje",
+            "originalVersion": "Originalna verzija",
+            "translatedVersion": "Prevedena verzija"
+          },
+          "description": "Pokrenite prevode za kurseve koji treba da budu prevedeni na određene jezike.",
+          "forward15Seconds": "Napred 15 sekundi",
+          "imageNotFound": "Slika nije pronađena",
+          "language": "Jezik",
+          "loadingPresentation": "Učitavanje prezentacije...",
+          "noContentAvailable": "Nema dostupnog sadržaja",
+          "noCourses": "Trenutno nema kurseva koji zahtevaju prevod.",
+          "noOriginalContent": "Nema orginalnog sadržaja",
+          "noPngSlides": "Nema dostupnih PNG slajdova za ovu prezentaciju",
+          "noSlidesFound": "Nije pronađen nijedan slajd",
+          "originalContent": "Originalni sadržaj",
+          "pause": "Pauziraj",
+          "play": "Pusti",
+          "presentations": "Prezentacije",
+          "rewind15Seconds": "Premotaj 15 sekundi",
+          "selectLanguagesModal": {
+            "audioFile": "Audio fajl",
+            "audioFileInfo": "Podržani formati: MP3, WAV, M4A (Maksimalno 50MB)",
+            "audioFileTooLarge": "Audio fajl je prevelik. Maksimalna veličina je 50MB.",
+            "cancel": "Otkaži",
+            "chooseAudioFile": "Izaberite zvuk",
+            "chooseFolder": "Izaberite datoteku",
+            "choosePptxFile": "Izaberite PPTX",
+            "chooseZip": "Izaberite ZIP",
+            "course": "Kurs:",
+            "existingUploadsInfo": "Originalni fajlovi su već otpremljeni. Možete započeti prevod bez ponovnog otpremanja. Otpremanje novih fajlova će prebrisati postojeće.",
+            "folderUrl": "URL adresa fascikle",
+            "invalidAudioFile": "Molimo vas, izaberite validan audio fajl."
+          }
+        }
+      }
     },
     "announcements": {
       "groups": {

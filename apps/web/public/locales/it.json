@@ -577,7 +577,13 @@
             "reassign": "Riassegna",
             "reassigning": "Processo in corso...",
             "reassigningCourse": "Riassegnazione del corso:",
-            "reassignmentSuccess": "Corso riassegnato con successo!"
+            "reassignmentSuccess": "Corso riassegnato con successo!",
+            "selectNewContributor": "Seleziona un nuovo contributor",
+            "title": "Riassegna il corso al nuovo contributor",
+            "warning": {
+              "description": "I capitoli già revisionati non saranno assegnati nuovamente.",
+              "title": "Nota Importante"
+            }
           },
           "table": {
             "contributor": "Contributor",
@@ -585,9 +591,16 @@
             "index": "Indice",
             "language": "Lingua",
             "progress": "Avanzamento",
-            "status": "Stato"
+            "status": "Stato",
+            "actions": "Azioni"
           },
-          "title": "Gestione dei contenuti"
+          "title": "Gestione dei contenuti",
+          "status": {
+            "assigned": "Assegnato",
+            "notAssigned": "Non assegnato",
+            "readyForReview": "Pronto per la revisione",
+            "underReview": "In revisione"
+          }
         },
         "admin": "AMMINISTRATORE",
         "comingSoon": {
@@ -601,7 +614,34 @@
           "chapterTitle": "Titolo",
           "chaptersAndProgress": "Capitoli e Avanzamento",
           "chaptersCompleted": "capitoli completati",
-          "courseIndex": "Indice dei corsi"
+          "courseIndex": "Indice dei corsi",
+          "courseInformation": "Informazioni sul corso",
+          "courseName": "Titolo del corso",
+          "currentContributor": "Contributor attuale",
+          "errorLoadingDetails": "Errore nel caricamento dei dettagli",
+          "language": "Lingua",
+          "noChapters": "Nessun capitolo disponibile per questo corso",
+          "noContributor": "Nessun contributor associato",
+          "partTitle": "Parte {{index}}: {{title}}",
+          "progress": "Avanzamento",
+          "status": "Stato",
+          "translationStatus": "Stato della traduzione"
+        },
+        "courseNotFound": "Corso non trovato",
+        "messages": {
+          "noPendingRequests": "Nessuna richiesta di correzione in sospeso.",
+          "noPendingRequestsSearch": "Nessuna richiesta di proofreading corrispondente a \"{{query}}\".",
+          "noRejectedRequests": "Non ci sono richieste di proofreading rifiutate.",
+          "noRejectedRequestsSearch": "Nessuna richiesta di proofreading declinata corrispondente a \"{{query}}\"."
+        },
+        "modal": {
+          "acceptRequest": "Accetta Richiesta",
+          "acceptTranslationRequest": "Accetta la richiesta di proofreading",
+          "accepting": "Stai accettando...",
+          "cancel": "Annulla",
+          "close": "Chiudi",
+          "contributor": "Contributor",
+          "course": "Corso"
         }
       }
     },
