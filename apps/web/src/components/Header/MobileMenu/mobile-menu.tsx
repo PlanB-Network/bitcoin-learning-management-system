@@ -158,10 +158,10 @@ export const MobileMenu = ({
 
       <nav
         className={cn(
-          'flex flex-col fixed top-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2',
+          'flex flex-col fixed top-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2 border-darkOrange-4 dark:border-newBlack-4',
           rtl
-            ? 'right-0 border-l border-darkOrange-4 dark:border-l dark:border-newBlack-4'
-            : 'left-0 border-r border-darkOrange-4 dark:border-r dark:border-newBlack-4',
+            ? 'right-0 border-l dark:border-l'
+            : 'left-0 border-r dark:border-r',
           isMobileMenuOpen
             ? 'translate-x-0'
             : rtl
@@ -195,7 +195,7 @@ export const MobileMenu = ({
           <IoMdClose
             size={24}
             className={cn(
-              'text-newGray-3 shrink-0 cursor-pointer',
+              'text-maroon-7 dark:text-newGray-3 shrink-0 cursor-pointer',
               rtl ? 'mr-auto' : 'ml-auto',
             )}
             onClick={toggleMobileMenu}

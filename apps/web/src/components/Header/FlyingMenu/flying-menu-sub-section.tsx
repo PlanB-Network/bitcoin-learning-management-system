@@ -25,7 +25,6 @@ export const FlyingMenuSubSection = ({
             'text-lg font-primary font-semibold',
             'items' in subSection ? 'mb-4 px-2' : '',
             variant === 'light' ? 'text-black' : 'text-white',
-            rtl ? 'text-red-5' : '',
           )}
         >
           {subSection.title}

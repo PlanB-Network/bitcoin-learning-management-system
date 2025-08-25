@@ -128,7 +128,6 @@ export const FlyingMenuSection = ({
         className={cn(
           'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
           open && 'bg-white/20',
-          rtl && 'text-red-5',
         )}
       >
         <SectionTitle section={section} variant={variant} rtl={rtl} />
@@ -171,7 +170,6 @@ export const FlyingMenuSection = ({
           className={cn(
             'flex-auto overflow-hidden rounded-[20px]',
             variant === 'light' ? 'bg-darkOrange-2' : 'bg-newBlack-3',
-            rtl ? 'text-red-5' : '',
           )}
         >
           <div className="flex flex-row gap-4 my-5 mx-4">
@@ -223,7 +221,6 @@ export const FlyingMenuSection = ({
                     <MenuElement
                       element={subSectionOrElement}
                       variant={variant}
-                      isMultipleSubSectionChildren={hasMultipleSubSection}
                     />
                   </div>
                 );
