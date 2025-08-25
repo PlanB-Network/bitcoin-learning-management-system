@@ -4,6 +4,12 @@ export const loadDocsAPI = (() => {
 
   const production = location.hostname !== 'localhost';
 
+  // Allow override via env var, otherwise default to localhost path (dev)
+  const src = production
+    ? `${location.origin.replace('contribute', 'onlyoffice')}/web-apps/apps/api/documents/api.js`
+    : (import.meta.env?.VITE_ONLYOFFICE_API_URL ??
+      'http://localhost/web-apps/apps/api/documents/api.js');
+
   return (): Promise<void> => {
     // If DocsAPI is already on window, resolve immediately
     if (typeof (window as any).DocsAPI !== 'undefined') {
@@ -15,12 +21,6 @@ export const loadDocsAPI = (() => {
 
     promise = new Promise<void>((resolve, reject) => {
       const script = document.createElement('script');
-
-      // Allow override via env var, otherwise default to localhost path (dev)
-      const src = production
-        ? `${location.origin.replace('contribute', 'onlyoffice')}/web-apps/apps/api/documents/api.js`
-        : (import.meta.env?.VITE_ONLYOFFICE_API_URL ??
-          'http://localhost/web-apps/apps/api/documents/api.js');
 
       script.src = src;
       script.async = true;
