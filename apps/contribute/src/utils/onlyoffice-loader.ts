@@ -2,7 +2,9 @@ export const loadDocsAPI = (() => {
   // Cached promise so multiple callers share the same loading process
   let promise: Promise<void> | null = null;
 
-  return function loadDocsAPI(): Promise<void> {
+  const production = location.hostname !== 'localhost';
+
+  return (): Promise<void> => {
     // If DocsAPI is already on window, resolve immediately
     if (typeof (window as any).DocsAPI !== 'undefined') {
       return Promise.resolve();
@@ -13,10 +15,13 @@ export const loadDocsAPI = (() => {
 
     promise = new Promise<void>((resolve, reject) => {
       const script = document.createElement('script');
+
       // Allow override via env var, otherwise default to localhost path (dev)
-      const src =
-        (import.meta as any).env?.VITE_ONLYOFFICE_API_URL ??
-        'http://localhost/web-apps/apps/api/documents/api.js';
+      const src = production
+        ? `${location.origin.replace('contribute', 'onlyoffice')}/web-apps/apps/api/documents/api.js`
+        : (import.meta.env?.VITE_ONLYOFFICE_API_URL ??
+          'http://localhost/web-apps/apps/api/documents/api.js');
+
       script.src = src;
       script.async = true;
       script.onload = () => resolve();
