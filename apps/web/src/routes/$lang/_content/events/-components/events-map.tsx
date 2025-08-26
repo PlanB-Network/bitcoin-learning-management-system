@@ -22,6 +22,7 @@ import type {
 } from '@blms/types';
 import { Button, cn } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
+import { fr } from 'date-fns/locale';
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import type { View as CalendarView, Components } from 'react-big-calendar';
@@ -272,6 +273,8 @@ const EventsMap = ({
     'conference',
     'exam',
     'meetup',
+    'workshop',
+    'course',
   ];
 
   const [mapInstance, setMapInstance] = useState<OpenLayerMap | null>(null);
@@ -548,7 +551,7 @@ const EventsMap = ({
     if (calendarView === 'month') {
       setDateRange(format(calendarDate, 'MMMM yyyy'));
     } else if (calendarView === 'week') {
-      const weekStart = startOfWeek(calendarDate, { locale: undefined });
+      const weekStart = startOfWeek(calendarDate, { locale: fr });
       const weekEnd = new Date(weekStart);
       weekEnd.setDate(weekEnd.getDate() + 6);
       const start = format(weekStart, 'd');

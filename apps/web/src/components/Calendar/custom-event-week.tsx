@@ -1,7 +1,7 @@
+import { cn } from '@blms/ui';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
-
 import type { CalendarEvent } from './calendar-event.js';
 
 type CustomEventProps = EventProps<CalendarEvent>;
@@ -24,11 +24,7 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
 
   return (
     <div
-      className={`${cssClasses}`}
-      style={{
-        padding: '10px 8px',
-        width: '100%',
-      }}
+      className={cn('p-1', cssClasses)}
       onMouseEnter={() => {
         setIsSelected(true);
       }}
@@ -36,7 +32,7 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
         setIsSelected(false);
       }}
     >
-      <div className="flex flex-row text-xs">
+      <div className="flex flex-row text-[10px]">
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
       </div>
       <div className="font-semibold text-xs">{event.title}</div>
