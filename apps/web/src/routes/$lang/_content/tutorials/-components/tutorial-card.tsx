@@ -3,21 +3,20 @@ import { cn, Image, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { MdThumbDown, MdThumbUp } from 'react-icons/md';
 import { assetUrl } from '#src/utils/index.js';
+import { formatNameForURL } from '#src/utils/string.ts';
 
 export const TutorialCard = ({
   tutorial,
-  href,
   dark = false,
   addMargin,
 }: {
   tutorial: JoinedTutorialLight;
-  href: string;
   dark?: boolean;
   addMargin?: boolean;
 }) => {
   return (
     <Link
-      to={href}
+      to={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${formatNameForURL(tutorial.name)}-${tutorial.id}`}
       rel="noreferrer"
       className={cn(
         'flex items-center w-full rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 overflow-hidden',

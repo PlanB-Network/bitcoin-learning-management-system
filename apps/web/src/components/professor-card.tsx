@@ -77,7 +77,6 @@ export const ProfessorCardReduced = ({
     >
       <Link
         to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
-        target="_blank"
         className={cn(
           'rounded-[20px] flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[200px] p-2.5 relative overflow-hidden w-[280px]',
           mobileSize === 'small' &&

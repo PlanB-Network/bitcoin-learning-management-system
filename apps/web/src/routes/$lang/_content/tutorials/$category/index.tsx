@@ -174,7 +174,6 @@ function TutorialCategory() {
                               <TutorialCard
                                 key={tutorial.id}
                                 tutorial={tutorial}
-                                href={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
                               />
                             ))}
                         </div>
