@@ -35,7 +35,7 @@ export const tRPCClientOptions = {
           ? 'http://planbtest.network/api/trpc'
           : import.meta.env.VITE_PEAR_ENVIRONMENT === 'mainnet'
             ? 'http://planb.network/api/trpc'
-            : 'api/trpc',
+            : '/api/trpc',
     }),
   ],
 };
