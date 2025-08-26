@@ -30,7 +30,12 @@ export const tRPCClientOptions = {
         });
       },
       transformer: superjson,
-      url: '/api/trpc',
+      url:
+        import.meta.env.VITE_PEAR_ENVIRONMENT === 'testnet'
+          ? 'http://planbtest.network/api/trpc'
+          : import.meta.env.VITE_PEAR_ENVIRONMENT === 'mainnet'
+            ? 'http://planb.network/api/trpc'
+            : 'api/trpc',
     }),
   ],
 };

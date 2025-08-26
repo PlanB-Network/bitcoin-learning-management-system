@@ -118,3 +118,10 @@ Once done, create the associated types running :
 To use studio run `pnpm dev:db:studio`
 
 To open psql, run `docker exec -it bitcoin-learning-management-system-postgres-1 psql -U postgres -d postgres`
+
+## Run the app through pear runtime (on testnet)
+
+Open two terminals in `apps/web `folder.
+
+In terminal 1 run `VITE_PEAR_ENVIRONMENT=testnet npx vite build --watch --mode development`
+In terminal 2 run `pear run -d ./dist`

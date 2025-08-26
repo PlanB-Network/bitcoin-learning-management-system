@@ -38,9 +38,8 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
   if (href && children === href) {
     const tutorial = getTutorial(href, tutorials ?? []);
     if (tutorial) {
-      return <TutorialCard tutorial={tutorial} href={href} addMargin />;
+      return <TutorialCard tutorial={tutorial} addMargin />;
     }
-
     const course = getCourse(href, courses ?? []);
     if (course) {
       return (

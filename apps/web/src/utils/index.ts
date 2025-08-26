@@ -1,15 +1,22 @@
 export { trpc } from './trpc.ts';
 
-let customCdnUrl = window.localStorage.getItem('cdnUrl');
+const customCdnUrl = window.localStorage.getItem('cdnUrl');
 
-Object.defineProperty(window, 'setCustomCdnUrl', {
-  value: (url: string) => {
-    // biome-ignore lint/suspicious/noAssignInExpressions: explanation
-    window.localStorage.setItem('cdnUrl', (customCdnUrl = url));
-  },
-});
+// Object.defineProperty(window, 'setCustomCdnUrl', {
+//   value: (url: string) => {
+//     // biome-ignore lint/suspicious/noAssignInExpressions: explanation
+//     window.localStorage.setItem('cdnUrl', (customCdnUrl = url));
+//   },
+// });
 
 export const cdnUrl = (path: string) => {
+  if (import.meta.env.VITE_PEAR_ENVIRONMENT === 'testnet') {
+    return `https://planbtest.network/cdn/${path}`;
+  }
+  if (import.meta.env.VITE_PEAR_ENVIRONMENT === 'mainnet') {
+    return `https://planb.network/cdn/${path}`;
+  }
+
   return customCdnUrl ? `${customCdnUrl}/${path}` : `/cdn/${path}`;
 };
 

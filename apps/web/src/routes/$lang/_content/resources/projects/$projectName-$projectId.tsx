@@ -318,12 +318,7 @@ function Project() {
               </h3>
               <div className="flex flex-wrap gap-2 md:gap-x-0 md:gap-y-6 justify-center max-w-[840px]">
                 {filteredTutorials.map((tutorial) => (
-                  <TutorialCard
-                    href={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${tutorial.name}-${tutorial.id}`}
-                    dark
-                    tutorial={tutorial}
-                    key={tutorial.id}
-                  />
+                  <TutorialCard dark tutorial={tutorial} key={tutorial.id} />
                 ))}
               </div>
             </div>

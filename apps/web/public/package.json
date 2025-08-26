@@ -1,0 +1,18 @@
+{
+  "main": ".",
+  "pear": {
+    "name": "plan-b-pear",
+    "type": "desktop",
+    "gui": {
+      "height": "1200",
+      "width": "1400"
+    },
+    "links": [
+      "https://*",
+      "http://*",
+      "https://planb.network",
+      "https://planbtest.network",
+      "http://localhost"
+    ]
+  }
+}

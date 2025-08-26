@@ -12,6 +12,26 @@ const root = ReactDOM.createRoot(
   document.querySelector('#root') as HTMLElement,
 );
 
+interface Pear {
+  updates: (callback: () => void) => void;
+  reload: () => void;
+}
+
+declare global {
+  interface Window {
+    Pear?: Pear;
+  }
+}
+
+if (window.Pear) {
+  window.Pear.updates(() => {
+    // Wait to try fix issues with reloading
+    setTimeout(() => {
+      window.Pear?.reload();
+    }, 1000);
+  });
+}
+
 root.render(
   <StrictMode>
     <Suspense
