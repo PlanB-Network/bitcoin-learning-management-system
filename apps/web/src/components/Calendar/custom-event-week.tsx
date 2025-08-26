@@ -12,10 +12,6 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
   let cssClasses: string;
 
   switch (event.type) {
-    case 'event': {
-      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
-      break;
-    }
     case 'class': {
       cssClasses = 'bg-darkOrange-0 text-darkOrange-5';
       break;
@@ -40,14 +36,14 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
         setIsSelected(false);
       }}
     >
-      <div className="flex flex-row text-sm pl-1">
+      <div className="flex flex-row text-xs">
         {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
       </div>
-      <div className="font-semibold text-sm">{event.title}</div>
+      <div className="font-semibold text-xs">{event.title}</div>
       {isSelected && (
         <>
-          <div className="text-sm">{event.organizer}</div>
-          <div className="text-sm">{event.addressLine1}</div>
+          <div className="text-xs">{event.organizer}</div>
+          <div className="text-xs">{event.addressLine1}</div>
         </>
       )}
     </div>

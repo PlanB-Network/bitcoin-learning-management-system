@@ -33,7 +33,6 @@ import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.tsx';
 import { CustomEventWeek } from '#src/components/Calendar/custom-event-week.tsx';
-import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import { EventCard } from './event-card.tsx';
@@ -63,6 +62,8 @@ interface EventsMapProps {
     React.SetStateAction<PaymentModalDataModel>
   >;
   conversionRate: number | null;
+  showMap?: boolean;
+  fixedCalendarDate?: string;
 }
 
 interface MapState {
@@ -201,7 +202,17 @@ function createMarker(group: EventGroup) {
   });
 }
 
-function getInitialCalendarState() {
+function getInitialCalendarState(fixedCalendarDate?: string) {
+  if (fixedCalendarDate) {
+    const fixedDate = new Date(fixedCalendarDate);
+    if (!Number.isNaN(fixedDate.getTime())) {
+      return {
+        date: fixedDate,
+        view: 'week' as CalendarView,
+      };
+    }
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
   const dateParam = urlParams.get('date');
   const viewParam = (urlParams.get('view') as CalendarView) || 'month';
@@ -228,8 +239,12 @@ const EventsMap = ({
   setIsPaymentModalOpen,
   setPaymentModalData,
   conversionRate,
+  showMap = true,
+  fixedCalendarDate,
 }: EventsMapProps) => {
-  const [mode, setMode] = useState<DisplayMode>(DisplayMode.Map);
+  const [mode, setMode] = useState<DisplayMode>(
+    showMap ? DisplayMode.Map : DisplayMode.Calendar,
+  );
   const [isShareModalOpen, setShareModalOpen] = useState(false);
   const [shareUrl, setShareUrl] = useState('');
 
@@ -425,7 +440,9 @@ const EventsMap = ({
   /*
    * Calendar
    */
-  const [calendarState, setCalendarState] = useState(getInitialCalendarState);
+  const [calendarState, setCalendarState] = useState(() =>
+    getInitialCalendarState(fixedCalendarDate),
+  );
   const { date: calendarDate, view: calendarView } = calendarState;
   const [dateRange, setDateRange] = useState('');
 
@@ -456,14 +473,11 @@ const EventsMap = ({
     getDay,
     locales,
     parse,
-    startOfWeek,
+    startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
   });
 
   const weekComponents: Components<CalendarEvent> = {
     event: CustomEventWeek,
-    week: {
-      header: CustomWeekHeader,
-    },
   };
   const monthComponents: Components<CalendarEvent> = {
     event: CustomEventMonth,
@@ -550,7 +564,12 @@ const EventsMap = ({
   }, [calendarView, calendarDate]);
 
   return (
-    <div className="bg-gray-100 rounded-xl">
+    <div
+      className={cn(
+        'bg-gray-100 rounded-xl overflow-hidden',
+        showMap ? '' : 'max-lg:hidden',
+      )}
+    >
       <div className="flex ">
         {/* CALENDAR */}
         <div
@@ -618,7 +637,13 @@ const EventsMap = ({
 
           <div className="border-b-rounded-xl overflow-hidden">
             <div className="text-gray-500 text-center w-full">
-              <div className="h-96 xl:h-[34rem] w-[850px]">
+              <div
+                className={cn(
+                  showMap
+                    ? 'h-96 xl:h-[34rem] w-[850px]'
+                    : 'h-96 xl:h-[27rem] w-full',
+                )}
+              >
                 <Calendar
                   localizer={localizer}
                   events={calendarEvents}
@@ -652,6 +677,7 @@ const EventsMap = ({
                   components={
                     calendarView === 'month' ? monthComponents : weekComponents
                   }
+                  timeslots={2}
                   showAllEvents={true}
                   showMultiDayTimes={true}
                   onRangeChange={handleRangeChange}
@@ -662,100 +688,102 @@ const EventsMap = ({
         </div>
 
         {/* MAP */}
-        <div className="relative flex-1 overflow-hidden">
-          <div className="flex items-center justify-center md:justify-start h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
-            <div>
-              <div className="hidden sm:flex items-center mr-6">
-                <HiOutlineAdjustmentsHorizontal className="size-6 stroke-[1.5]" />
+        {showMap ? (
+          <div className="relative flex-1 overflow-hidden">
+            <div className="flex items-center justify-center md:justify-start h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
+              <div>
+                <div className="hidden sm:flex items-center mr-6">
+                  <HiOutlineAdjustmentsHorizontal className="size-6 stroke-[1.5]" />
+                </div>
+              </div>
+
+              <div className="flex gap-3 md:gap-4 font-light overflow-x-auto no-scrollbar">
+                {courseTypes.map((f) => (
+                  <button
+                    key={f}
+                    type="button"
+                    onClick={() => onFilterClick(f)}
+                    className={cn(
+                      'text-xs md:text-base border-b border-transparent capitalize',
+                      filter.includes(f)
+                        ? 'border-darkOrange-5 font-semibold'
+                        : '',
+                    )}
+                  >
+                    {f}s
+                  </button>
+                ))}
               </div>
             </div>
 
-            <div className="flex gap-3 md:gap-4 font-light overflow-x-auto no-scrollbar">
-              {courseTypes.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  onClick={() => onFilterClick(f)}
-                  className={cn(
-                    'text-xs md:text-base border-b border-transparent capitalize',
-                    filter.includes(f)
-                      ? 'border-darkOrange-5 font-semibold'
-                      : '',
-                  )}
-                >
-                  {f}s
-                </button>
-              ))}
+            <div
+              id="ol-map"
+              className={cn(
+                'w-full h-96 xl:h-[34rem] overflow-hidden',
+                !selectedEventGroup &&
+                  (mode === DisplayMode.Calendar
+                    ? 'rounded-br-xl'
+                    : 'rounded-b-xl'),
+              )}
+            >
+              <style>
+                {`
+              #ol-map .ol-zoom {
+                top: 1rem;
+                right: 1rem;
+                left: auto;
+              }
+            `}
+              </style>
+            </div>
+            <div className="absolute bottom-2 right-2">
+              <button
+                type="button"
+                onClick={() => mapInstance && prepareShareUrl(mapInstance)}
+                className="bg-darkOrange-5 text-white px-3 py-2 rounded-lg shadow-md hover:bg-darkOrange-6 flex items-center gap-2"
+              >
+                <p>{t('words.share')}</p>
+                <CiShare2 />
+              </button>
+            </div>
+
+            <ShareModal
+              isOpen={isShareModalOpen}
+              url={shareUrl}
+              onClose={() => setShareModalOpen(false)}
+            />
+
+            {/* Switch mode */}
+            <div className="absolute top-20 left-2 z-10 hidden xl:block">
+              <Button
+                variant="primary"
+                size="s"
+                className="h-8 border border-darkOrange-5 flex gap-2"
+                onClick={() =>
+                  setMode(
+                    mode === DisplayMode.Calendar
+                      ? DisplayMode.Map
+                      : DisplayMode.Calendar,
+                  )
+                }
+              >
+                {mode === DisplayMode.Calendar ? (
+                  <>
+                    <BsChevronLeft className="size-4" />
+
+                    <span>{t('events.calendar.fullMap')}</span>
+                  </>
+                ) : (
+                  <>
+                    <BsChevronRight className="size-4" />
+
+                    <span>{t('events.calendar.displayCalendar')}</span>
+                  </>
+                )}
+              </Button>
             </div>
           </div>
-
-          <div
-            id="ol-map"
-            className={cn(
-              'w-full h-96 xl:h-[34rem] overflow-hidden',
-              !selectedEventGroup &&
-                (mode === DisplayMode.Calendar
-                  ? 'rounded-br-xl'
-                  : 'rounded-b-xl'),
-            )}
-          >
-            <style>
-              {`
-      #ol-map .ol-zoom {
-        top: 1rem;
-        right: 1rem;
-        left: auto;
-      }
-    `}
-            </style>
-          </div>
-          <div className="absolute bottom-2 right-2">
-            <button
-              type="button"
-              onClick={() => mapInstance && prepareShareUrl(mapInstance)}
-              className="bg-darkOrange-5 text-white px-3 py-2 rounded-lg shadow-md hover:bg-darkOrange-6 flex items-center gap-2"
-            >
-              <p>{t('words.share')}</p>
-              <CiShare2 />
-            </button>
-          </div>
-
-          <ShareModal
-            isOpen={isShareModalOpen}
-            url={shareUrl}
-            onClose={() => setShareModalOpen(false)}
-          />
-
-          {/* Switch mode */}
-          <div className="absolute top-20 left-2 z-10 hidden xl:block">
-            <Button
-              variant="primary"
-              size="s"
-              className="h-8 border border-darkOrange-5 flex gap-2"
-              onClick={() =>
-                setMode(
-                  mode === DisplayMode.Calendar
-                    ? DisplayMode.Map
-                    : DisplayMode.Calendar,
-                )
-              }
-            >
-              {mode === DisplayMode.Calendar ? (
-                <>
-                  <BsChevronLeft className="size-4" />
-
-                  <span>{t('events.calendar.fullMap')}</span>
-                </>
-              ) : (
-                <>
-                  <BsChevronRight className="size-4" />
-
-                  <span>{t('events.calendar.displayCalendar')}</span>
-                </>
-              )}
-            </Button>
-          </div>
-        </div>
+        ) : null}
       </div>
 
       {/* Event cards */}
@@ -772,7 +800,13 @@ const EventsMap = ({
             )}
           </div>
 
-          <button type="button" onClick={() => setSelectedEventGroup(null)}>
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedEventGroup(null);
+              setCalendarCard(null);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
