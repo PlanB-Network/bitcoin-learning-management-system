@@ -12,16 +12,12 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
   let cssClasses: string;
 
   switch (event.type) {
-    case 'event': {
-      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
-      break;
-    }
     case 'class': {
       cssClasses = 'bg-darkOrange-0 text-darkOrange-5';
       break;
     }
     default: {
-      cssClasses = 'bg-darkGreen-6 text-darkGreen-1';
+      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
       break;
     }
   }

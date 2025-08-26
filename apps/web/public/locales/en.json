@@ -1463,6 +1463,9 @@
       "payment_successful": "Booking successful.",
       "time": "Time"
     },
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Week"
+    },
     "tcDisclaimer": "I agree that my information may be shared with organizers for venue access purposes.",
     "tcMustBeAccepted": "You must accept the terms and conditions to proceed"
   },

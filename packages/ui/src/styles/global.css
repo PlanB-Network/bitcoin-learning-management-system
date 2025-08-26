@@ -762,7 +762,7 @@
 
 @media (min-width: 1024px) {
   .rbc-calendar {
-    max-width: min(calc(100vw - 380px), 1000px) !important;
+    max-width: 100% !important;
   }
 
   .rbc-toolbar {
@@ -779,15 +779,26 @@
   flex: none !important;
 }
 
+.rbc-events-container {
+  margin-right: 0px !important;
+}
+
 .rbc-event {
   padding: 0 !important;
   border: 0 !important;
   overflow: visible !important;
-  background-color: var(--color-newGray-5);
+  background-color: var(--color-newGray-5) !important;
 }
-.rcb-event-content:hover {
-  background-color: var(--color-white) !important;
-  color: var(--color-white) !important;
+
+.rbc-event-content:has(:hover) {
+  background-color: #00000010 !important;
+}
+
+.rbc-event-content > *:hover {
+  position: relative;
+  z-index: 1000 !important;
+  width: 180px !important;
+  height: 100% !important;
 }
 
 .rbc-event-label {

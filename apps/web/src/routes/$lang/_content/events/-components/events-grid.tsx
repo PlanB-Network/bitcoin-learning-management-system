@@ -1,8 +1,7 @@
 import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
+import { cn } from '@blms/ui';
 import { useTranslation } from 'react-i18next';
-
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
-
 import { EventCard } from './event-card.tsx';
 
 interface EventsGridProps {
@@ -16,6 +15,7 @@ interface EventsGridProps {
     React.SetStateAction<PaymentModalDataModel>
   >;
   conversionRate: number | null;
+  hideTitle?: boolean;
 }
 
 export const EventsGrid = ({
@@ -27,6 +27,7 @@ export const EventsGrid = ({
   setIsPaymentModalOpen,
   setPaymentModalData,
   conversionRate,
+  hideTitle = false,
 }: EventsGridProps) => {
   const { t } = useTranslation();
 
@@ -47,11 +48,18 @@ export const EventsGrid = ({
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-lg text-center font-medium sm:text-xl sm:text-left">
-        {t('events.main.upcomingEvents')}
-      </h2>
+      {!hideTitle && (
+        <h2 className="text-lg text-center font-medium sm:text-xl sm:text-left">
+          {t('events.main.upcomingEvents')}
+        </h2>
+      )}
 
-      <div className="flex flex-wrap justify-center gap-5 lg:gap-7 mt-6 md:mt-12 mx-auto">
+      <div
+        className={cn(
+          'flex flex-wrap justify-center gap-5 lg:gap-7 mx-auto',
+          hideTitle ? '' : 'mt-6 md:mt-12',
+        )}
+      >
         {sortedEvents?.map((event) => (
           <EventCard
             event={event}

@@ -51,7 +51,7 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
     getDay,
     locales,
     parse,
-    startOfWeek,
+    startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
   });
 
   const weekComponents: Components<CalendarEvent> = {
