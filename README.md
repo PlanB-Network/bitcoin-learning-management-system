@@ -107,7 +107,7 @@ This will add a new migration script, then you have to run it :
 
 `pnpm run dev:db:migrate`
 
-Once the database is updated, add new schemas, if needed, in the schema pacakge.
+Once the database is updated, add new schemas, if needed, in the schema package.
 
 Once done, create the associated types running :
 
@@ -121,7 +121,6 @@ To open psql, run `docker exec -it bitcoin-learning-management-system-postgres-1
 
 ## Run the app through pear runtime (on testnet)
 
-Open two terminals in `apps/web `folder.
+Run `pnpm build`
 
-In terminal 1 run `VITE_PEAR_ENVIRONMENT=testnet npx vite build --watch --mode development`
-In terminal 2 run `pear run -d ./dist`
+Then run `pnpm pear:testnet`
