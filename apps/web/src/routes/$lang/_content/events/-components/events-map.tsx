@@ -44,13 +44,7 @@ enum DisplayMode {
   Map = 'map',
 }
 
-type CourseType =
-  | 'course'
-  | 'lecture'
-  | 'conference'
-  | 'exam'
-  | 'meetup'
-  | 'workshop';
+type CourseType = 'lecture' | 'conference' | 'exam' | 'meetup' | 'workshop';
 
 interface EventsMapProps {
   events: JoinedEvent[];
@@ -274,7 +268,6 @@ const EventsMap = ({
     'exam',
     'meetup',
     'workshop',
-    'course',
   ];
 
   const [mapInstance, setMapInstance] = useState<OpenLayerMap | null>(null);
@@ -434,7 +427,11 @@ const EventsMap = ({
     }
 
     if (selectedEventGroup) {
-      setCards(selectedEventGroup.events);
+      setCards(
+        [...selectedEventGroup.events].sort((a, b) => {
+          return a.startDate.getTime() - b.startDate.getTime();
+        }),
+      );
     } else {
       setCards(null);
     }
@@ -684,6 +681,18 @@ const EventsMap = ({
                   showAllEvents={true}
                   showMultiDayTimes={true}
                   onRangeChange={handleRangeChange}
+                  scrollToTime={
+                    fixedCalendarDate
+                      ? new Date(
+                          calendarDate.getFullYear(),
+                          calendarDate.getMonth(),
+                          calendarDate.getDate(),
+                          8,
+                          0,
+                          0,
+                        )
+                      : undefined
+                  }
                 />
               </div>
             </div>
