@@ -190,19 +190,28 @@ export const filterAndRandomizeCourses = (
   const pool = [...otherCourses];
   const results: JoinedCourse[] = [];
 
-  results.push(
-    pickRandom(sameTopicSameLevel.length ? sameTopicSameLevel : pool)!,
+  const randomSameTopicSameLevel = pickRandom(
+    sameTopicSameLevel.length ? sameTopicSameLevel : pool,
   );
-  results.push(
-    pickRandom(
-      differentTopicSameOrLowerLevel.length
-        ? differentTopicSameOrLowerLevel
-        : pool,
-    )!,
-  );
-  results.push(
-    pickRandom(sameTopicHigherLevel.length ? sameTopicHigherLevel : pool)!,
-  );
+  if (randomSameTopicSameLevel) {
+    results.push(randomSameTopicSameLevel);
+  }
 
-  return results.filter(Boolean);
+  const randomDifferentTopicSameOrLowerLevel = pickRandom(
+    differentTopicSameOrLowerLevel.length
+      ? differentTopicSameOrLowerLevel
+      : pool,
+  );
+  if (randomDifferentTopicSameOrLowerLevel) {
+    results.push(randomDifferentTopicSameOrLowerLevel);
+  }
+
+  const randomSameTopicHigherLevel = pickRandom(
+    sameTopicHigherLevel.length ? sameTopicHigherLevel : pool,
+  );
+  if (randomSameTopicHigherLevel) {
+    results.push(randomSameTopicHigherLevel);
+  }
+
+  return results;
 };
