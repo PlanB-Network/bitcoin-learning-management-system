@@ -46,13 +46,15 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     const method = req.method;
     const sessionId = req.session?.id || '';
     const uid = req.session?.uid || '';
+    const ip =
+      req.header('x-real-ip') || req.header('x-forwarded-for') || req.ip;
 
     req.id ||= req.header('x-request-id') || genRequestId();
     req.log = (...a: any[]) => console.log(`[request] ${req.id}`, ...a);
 
     if (!path.includes('getUserNotifications')) {
       req.log(
-        `${method} ${path} (ip=${req.ip})${uid && ` session=${sessionId} uid=${uid}`}`,
+        `${method} ${path} (ip=${ip})${uid && ` session=${sessionId} uid=${uid}`}`,
       );
     }
 
