@@ -193,7 +193,7 @@ const OverallPerformance = ({ course }: { course: CourseResponse }) => {
         {/* Rating */}
         {courseInfos.averageRating && courseInfos.averageRating > 0 ? (
           <RadialGauge
-            value={courseInfos.averageRating}
+            value={Math.round(courseInfos.averageRating * 100) / 100}
             total={5}
             label={t('words.rating')}
             variant="green"
