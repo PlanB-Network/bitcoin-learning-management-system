@@ -238,7 +238,7 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         <TabsContent value="review" className="max-md:px-4">
           <CourseReview
             courseId={course.id}
-            averageRating={course.averageRating}
+            averageRating={Math.round(course.averageRating * 100) / 100}
           />
         </TabsContent>
         <TabsContent value="announcement" className="max-md:px-4">

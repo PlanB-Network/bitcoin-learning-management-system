@@ -433,7 +433,7 @@ function CourseDetails() {
               rightText={
                 <div className="flex gap-2.5 items-center">
                   <StarRating
-                    rating={course.averageRating}
+                    rating={Math.round(course.averageRating * 100) / 100}
                     starSize={isMobile ? 35 : 30}
                   />
                   {reviews?.general && reviews.general.length > 0 && (
@@ -884,7 +884,7 @@ function CourseDetails() {
             {reviews && (
               <RatingsAndReviews
                 reviews={reviews}
-                averageRating={course.averageRating}
+                averageRating={Math.round(course.averageRating * 100) / 100}
               />
             )}
             <Footer />
