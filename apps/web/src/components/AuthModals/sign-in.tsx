@@ -79,7 +79,7 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
     [credentialsLogin],
   );
 
-  const isPearApp = !import.meta.env.VITE_PEAR_ENVIRONMENT;
+  const isPearApp = import.meta.env.VITE_PEAR_ENVIRONMENT;
 
   if (isPearApp) {
     return (
