@@ -20,6 +20,9 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const app = express();
   const router = Router();
 
+  // Trust IP information from proxy (e.g. when behind Cloudflare)
+  app.set('trust proxy', true);
+
   // Parse JSON bodies
   app.use(
     json({
