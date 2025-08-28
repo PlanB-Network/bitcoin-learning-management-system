@@ -433,18 +433,7 @@ function CourseDetails() {
               rightText={
                 <div className="flex gap-2.5 items-center">
                   <StarRating
-                    rating={
-                      reviews?.general && reviews.general.length > 0
-                        ? Number(
-                            (
-                              reviews?.general.reduce(
-                                (acc, rating) => acc + rating,
-                                0,
-                              ) / reviews.general.length
-                            ).toFixed(1),
-                          )
-                        : 0
-                    }
+                    rating={course.averageRating}
                     starSize={isMobile ? 35 : 30}
                   />
                   {reviews?.general && reviews.general.length > 0 && (
@@ -531,16 +520,13 @@ function CourseDetails() {
 
   const RatingsAndReviews = ({
     reviews,
+    averageRating,
   }: {
     reviews: CourseReviewsExtended;
+    averageRating: number;
   }) => {
     const numberOfReviews = reviews.general.length;
-    const averageRating = Number(
-      (
-        reviews.general.reduce((acc, rating) => acc + rating, 0) /
-        numberOfReviews
-      ).toFixed(1),
-    );
+
     const maxRating = 5;
 
     const feedbacksWithComments = reviews.feedbacks.filter(
@@ -895,7 +881,12 @@ function CourseDetails() {
             <Divider className="my-6 lg:my-9" width="w-full" />
             <Professors course={course} />
             <Divider className="my-6 lg:my-9" width="w-full" />
-            {reviews && <RatingsAndReviews reviews={reviews} />}
+            {reviews && (
+              <RatingsAndReviews
+                reviews={reviews}
+                averageRating={course.averageRating}
+              />
+            )}
             <Footer />
             <CoursePaymentModal
               course={course}

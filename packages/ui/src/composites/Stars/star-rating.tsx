@@ -19,8 +19,10 @@ export const StarRating = ({
   className,
 }: StarRatingProps) => {
   const fullStars = Math.floor(rating);
-  const partialStar = rating - fullStars;
+  const partialStar = Math.round((rating - fullStars) * 100) / 100;
   const stars = [];
+
+  console.log('rating, full, partial', rating, fullStars, partialStar);
 
   for (let i = 0; i < fullStars; i++) {
     stars.push(

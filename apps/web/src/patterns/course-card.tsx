@@ -43,6 +43,8 @@ export const CourseCard = ({
 }) => {
   const maxRating = 5;
 
+  console.log(course.name, ' - averageRating :', course.averageRating);
+
   return (
     <Link
       key={course.id}
