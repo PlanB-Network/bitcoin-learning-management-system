@@ -14,6 +14,7 @@ import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { TbExternalLink } from 'react-icons/tb';
 import { z } from 'zod';
 import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
@@ -78,82 +79,105 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
     [credentialsLogin],
   );
 
-  return (
-    <>
+  const isPearApp = !import.meta.env.VITE_PEAR_ENVIRONMENT;
+
+  if (isPearApp) {
+    return (
       <BasicModal
         trigger={<button type="button" className="hidden" />}
-        title={t('menu.login')}
         open={isOpen}
         onOpenChange={onClose}
-        contentClassName="!max-w-xs md:!max-w-fit"
+        contentClassName="!max-w-xs md:!max-w-96"
       >
-        <Form {...methods}>
-          <form
-            onSubmit={methods.handleSubmit(handleLogin)}
-            className="flex w-full flex-col items-center"
+        <div className="flex flex-col gap-8">
+          <p className="font-medium text-xl">{t('auth.loginNotAvailable1')}</p>
+          <p className="font-medium text-xl">{t('auth.loginNotAvailable2')}</p>
+          <a
+            className="flex flex-row gap-2 justify-center items-center text-newOrange-1"
+            href="https://planb.network"
           >
-            <FormField
-              control={methods.control}
-              name="username"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 w-full md:w-80 text-center">
-                  <FormLabel>{t('dashboard.profile.username')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="username"
-                      {...field}
-                      error={fieldState.error?.message || null}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={methods.control}
-              name="password"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 my-2 w-full md:w-80 text-center">
-                  <FormLabel>{t('dashboard.profile.password')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="password"
-                      type="password"
-                      {...field}
-                      error={fieldState.error?.message || null}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <Button type="submit" className="my-8">
-              {t('menu.login')}
-            </Button>
-
-            <p className="mobile-body2 md:desktop-body1 text-center">
-              {t('auth.noAccountYet')}
-              <button
-                type="button"
-                onClick={() => goTo(AuthModalState.Register)}
-                className="ml-1 cursor-pointer underline italic"
-              >
-                {t('auth.createOne')}
-              </button>
-            </p>
-
-            <p className="mb-0 mt-2 text-xs">
-              <button
-                type="button"
-                onClick={() => goTo(AuthModalState.PasswordReset)}
-                className="cursor-pointer border-none bg-transparent text-xs underline"
-              >
-                {t('auth.forgottenPassword')}
-              </button>
-            </p>
-          </form>
-        </Form>
+            <span className="text-lg">planB.network</span>
+            <TbExternalLink size={24} />
+          </a>
+        </div>
       </BasicModal>
-    </>
+    );
+  }
+
+  return (
+    <BasicModal
+      trigger={<button type="button" className="hidden" />}
+      title={t('menu.login')}
+      open={isOpen}
+      onOpenChange={onClose}
+      contentClassName="!max-w-xs md:!max-w-fit"
+    >
+      <Form {...methods}>
+        <form
+          onSubmit={methods.handleSubmit(handleLogin)}
+          className="flex w-full flex-col items-center"
+        >
+          <FormField
+            control={methods.control}
+            name="username"
+            render={({ field, fieldState }) => (
+              <FormItem className="space-y-2 w-full md:w-80 text-center">
+                <FormLabel>{t('dashboard.profile.username')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="username"
+                    {...field}
+                    error={fieldState.error?.message || null}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={methods.control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <FormItem className="space-y-2 my-2 w-full md:w-80 text-center">
+                <FormLabel>{t('dashboard.profile.password')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="password"
+                    type="password"
+                    {...field}
+                    error={fieldState.error?.message || null}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <Button type="submit" className="my-8">
+            {t('menu.login')}
+          </Button>
+
+          <p className="mobile-body2 md:desktop-body1 text-center">
+            {t('auth.noAccountYet')}
+            <button
+              type="button"
+              onClick={() => goTo(AuthModalState.Register)}
+              className="ml-1 cursor-pointer underline italic"
+            >
+              {t('auth.createOne')}
+            </button>
+          </p>
+
+          <p className="mb-0 mt-2 text-xs">
+            <button
+              type="button"
+              onClick={() => goTo(AuthModalState.PasswordReset)}
+              className="cursor-pointer border-none bg-transparent text-xs underline"
+            >
+              {t('auth.forgottenPassword')}
+            </button>
+          </p>
+        </form>
+      </Form>
+    </BasicModal>
   );
 };

@@ -75,6 +75,8 @@
       "invalid": "The token is invalid",
       "notFound": "The token was not found"
     },
+    "loginNotAvailable1": "Login features are not available in the desktop app just yet.",
+    "loginNotAvailable2": "You can visit our website to log in and access your account.",
     "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
     "newPassword": "New password",
     "noAccountNeeded": "No need for an account to start learning at Plan ₿ Network!",
