@@ -82,7 +82,10 @@ export const LanguageSelector = ({
           <CiGlobe size={24} />
           <MdKeyboardArrowDown
             size={32}
-            className="transition-transform ease-in-out"
+            className={cn(
+              'transition-transform ease-in-out',
+              i18n.dir() === 'rtl' && 'rotate-180',
+            )}
           />
         </button>
       </PopoverTrigger>
@@ -90,13 +93,20 @@ export const LanguageSelector = ({
         className={cn(
           'flex flex-col items-center justify-center absolute z-50 bg-darkOrange-11 rounded-2xl w-[816px] px-8 py-6 max-h-fit overflow-y-scroll no-scrollbar',
           direction === 'down'
-            ? 'top-7 -right-12'
+            ? i18n.dir() === 'rtl'
+              ? 'top-7 -left-12'
+              : 'top-7 -right-12'
             : 'bottom-16 left-1/2 -translate-x-1/2',
           variantSelectorMapClass[variant],
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        <span className="w-full text-center text-sm tracking-[1.12px] uppercase mb-6">
+        <span
+          className={cn(
+            'w-full text-center text-sm tracking-[1.12px] uppercase mb-6',
+            i18n.dir() === 'rtl' && 'direction-rtl',
+          )}
+        >
           {t('home.languageSection.availableLanguages')}
         </span>
         <div className="gap-4 grid grid-cols-4">
@@ -106,6 +116,7 @@ export const LanguageSelector = ({
               type="button"
               className={cn(
                 'flex items-center px-4 py-2 rounded-md hover:bg-white/10 w-44',
+                i18n.dir() === 'rtl' && 'flex-row-reverse',
                 activeLanguage.toLowerCase() === language.toLowerCase() &&
                   'border rounded-lg border-darkOrange-5 dark gap-2 justify-between',
               )}
@@ -193,7 +204,12 @@ export const LanguageSelectorMobile = ({
             open && 'rounded-t-none pt-4',
           )}
         >
-          <span className="text-lg leading-normal font-medium text-wrap">
+          <span
+            className={cn(
+              'text-lg leading-normal font-medium text-wrap',
+              i18n.dir() === 'rtl' && 'text-right',
+            )}
+          >
             {t('menu.chooseLanguage')}
           </span>
           <MdKeyboardArrowUp
@@ -201,13 +217,18 @@ export const LanguageSelectorMobile = ({
             className={cn(
               'transition-transform ease-in-out shrink-0',
               open && 'rotate-180',
+              i18n.dir() === 'rtl' && 'rotate-0',
             )}
           />
         </button>
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-13 left-1/2 -translate-x-1/2 gap-5 px-3 pt-4 max-h-[calc(100dvh-84px)]',
+          'flex flex-col absolute z-50 bg-[#f39561] dark:bg-[#5f5f5f] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-13',
+          i18n.dir() === 'rtl'
+            ? 'right-1/2 translate-x-1/2'
+            : 'left-1/2 -translate-x-1/2',
+          'gap-5 px-3 pt-4 max-h-[calc(100dvh-84px)]',
           mode === 'dark' && 'dark',
         )}
         addAnimation={false}

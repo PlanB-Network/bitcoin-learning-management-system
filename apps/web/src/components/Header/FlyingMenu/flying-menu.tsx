@@ -30,10 +30,9 @@ export const FlyingMenu = ({
     <nav
       className={cn(
         'flex w-full flex-row items-center justify-between max-lg:hidden',
-        rtl && 'flex-row-reverse text-red-5',
       )}
     >
-      <Link to="/" className={rtl ? 'ml-auto' : 'mr-auto'}>
+      <Link to="/" className="mr-auto">
         {variant === 'light' ? (
           <PlanBLogoWhite className="h-auto lg:w-32 xl:w-40" />
         ) : (
@@ -46,6 +45,7 @@ export const FlyingMenu = ({
           variant === 'light'
             ? 'bg-darkOrange-2 text-black'
             : 'bg-newBlack-3 text-white',
+          rtl && 'flex-row-reverse',
         )}
       >
         {sections.map((section) => (

@@ -144,7 +144,6 @@ export const FlyingMenuSection = ({
           className={cn(
             'relative px-2 xl:px-4 py-1.5 rounded-lg hover:bg-white/20',
             open && 'bg-white/20',
-            rtl && 'text-red-5',
           )}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -160,8 +159,14 @@ export const FlyingMenuSection = ({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex absolute z-10 mt-8 -left-16 rounded-[20px]',
-          hasMultipleSubSection ? '-left-40 xl:-left-72' : '',
+          'flex absolute z-10 mt-8 rounded-[20px]',
+          rtl
+            ? hasMultipleSubSection
+              ? '-right-40 xl:-right-72'
+              : '-right-16'
+            : hasMultipleSubSection
+              ? '-left-40 xl:-left-72'
+              : '-left-16',
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -172,11 +177,19 @@ export const FlyingMenuSection = ({
             variant === 'light' ? 'bg-darkOrange-2' : 'bg-newBlack-3',
           )}
         >
-          <div className="flex flex-row gap-4 my-5 mx-4">
+          <div
+            className={cn(
+              'flex flex-row gap-4 my-5 mx-4',
+              rtl && 'flex-row-reverse',
+            )}
+          >
             {section.id === 'courses' && highlightedCourse && (
               <Link
                 to={`/courses/${highlightedCourse.id}`}
-                className="w-[253px] mr-2  relative hover:border bg-maroon-10 border-darkOrange-5 hover:shadow-sm-section rounded-md overflow-hidden"
+                className={cn(
+                  'w-[253px] mr-2  relative hover:border bg-maroon-10 border-darkOrange-5 hover:shadow-sm-section rounded-md overflow-hidden',
+                  rtl && 'mr-2 ml-2',
+                )}
               >
                 <span className="absolute uppercase bg-white border border-white text-black body-semibold-12px rounded-br-[8px] py-1 px-2.5 z-10">
                   {t('words.startHere')}
@@ -215,12 +228,14 @@ export const FlyingMenuSection = ({
                     subSection={subSectionOrElement}
                     variant={variant}
                     hasMultipleSubSection={hasMultipleSubSection}
+                    rtl={rtl}
                   />
                 ) : (
                   <div className="mx-2 my-4" key={subSectionOrElement.id}>
                     <MenuElement
                       element={subSectionOrElement}
                       variant={variant}
+                      rtl={rtl}
                     />
                   </div>
                 );
