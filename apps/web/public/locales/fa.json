@@ -618,18 +618,251 @@
           "courseInformation": "اطلاعات دوره",
           "courseName": "نام دوره",
           "currentContributor": "مشارکت کننده فعلی",
-          "errorLoadingDetails": "خطا در بارگیری جزئیات دوره"
+          "errorLoadingDetails": "خطا در بارگیری جزئیات دوره",
+          "language": "زبان",
+          "noChapters": "برای این دوره، فصلی در دسترس نیست",
+          "noContributor": "هیچ مشارکت کننده‌ای تعیین نشده است",
+          "partTitle": "قسمت {{index}}: {{title}}",
+          "progress": "پیشرفت",
+          "status": "وضعیت",
+          "translationStatus": "وضعیت ترجمه"
+        },
+        "courseNotFound": "دوره یافت نشد",
+        "messages": {
+          "noPendingRequests": "درخواست بررسی دیگری برای این دوره وجود ندارد.",
+          "noPendingRequestsSearch": "هیچ درخواستی مطابق جستجوی \"{{query}}\" یافت نشد.",
+          "noRejectedRequests": "درخواست‌های رد شده‌ی تصحیح نوشتار وجود ندارد.",
+          "noRejectedRequestsSearch": "هیچ درخواست رد شده‌ای مطابق جستجوی \"{{query}}\" یافت نشد."
+        },
+        "modal": {
+          "acceptRequest": "پذیرفتن درخواست",
+          "acceptTranslationRequest": "درخواستویرایش نهایی ترجمه را بپذیرید",
+          "accepting": "در حال پذیرفتن ...",
+          "cancel": "لغو کردن",
+          "close": "بستن",
+          "contributor": "مشارکت کننده",
+          "course": "دوره",
+          "doYouWantToAcceptRequest": "آیا می خواهید این درخواست ترجمه را بپذیرید؟",
+          "language": "زبان",
+          "provideRejectionReason": "لطفا دلیل رد کردن این درخواست را ارائه دهید",
+          "reasonForRejection": "دلیل رد کردن",
+          "reasonPlaceholder": "توضیحات خود را در اینجا بنویسید ...",
+          "rejecting": "رد کردن ...",
+          "requestAcceptedMessage": "مشارکت کننده مطلع شده و حالا می‌تواند ترجمه را شروع کند.",
+          "requestAcceptedSuccess": "شما درخواست ترجمه را پذیرفتید!",
+          "requestRejectedSuccess": "درخواست با موفقیت رد شد",
+          "submitRejection": "ارسال"
+        },
+        "noResultsFound": "نتیجه‌ای یافت نشد",
+        "pendingTranslationRequests": "درخواست‌های ویرایش نهایی ترجمه‌ی در انتظار",
+        "reports": {
+          "chooseYear": "کدام سال را می‌خواهید در نظر بگیرید؟",
+          "comingSoon": {
+            "courses": "مشاهده لیست دوره‌ها به زودی ممکن می‌شود",
+            "coverage": "لیست زبان‌های پوشش داده شده به زودی منتشر می‌شود"
+          },
+          "contributors": {
+            "assignedCourses": "دوره‌های اختصاص داده شده",
+            "completedCourses": "دوره‌های تکمیل شده",
+            "languages": "زبان‌ها",
+            "startDate": "تاریخ شروع",
+            "title": "مشارکت کنندگان",
+            "totalReward": "میزان کل جایزه",
+            "username": "نام کاربری"
+          },
+          "courses": {
+            "contributor": "مشارکت کننده",
+            "filterByCourse": "فیلتر بر اساس دوره",
+            "lastUpdated": "آخرین به روز رسانی",
+            "progress": "درصد پیشرفت"
+          },
+          "dateFilter": "فیلتر تاریخ",
+          "downloadData": "دانلود داده‌ها",
+          "filterByLanguage": "فیلتر بر اساس زبان",
+          "fromMonth": "از",
+          "fromMonthPlaceholder": "از کدام ماه؟",
+          "generalReport": "گزارش عمومی",
+          "languageCoverage": {
+            "completed": "تکمیل شده",
+            "inProgress": "در حال پیشروی",
+            "notStarted": "شروع نشده است",
+            "totalCourses": "دوره‌های کلی"
+          },
+          "languagesProofread": "زبان‌های ویرایش نهایی ترجمه",
+          "noContributors": "هیچ مشارکت کننده‌ای پیدا نشد",
+          "noCourses": "هیچ دوره‌ای یافت نشد",
+          "noLanguages": "هیچ زبانی یافت نشد",
+          "proofreadCourses": "دوره‌های ویرایش نهایی متن",
+          "table": {
+            "contributor": "مشارکت کننده",
+            "lastUpdated": "آخرین به روز رسانی",
+            "progress": "درصد پیشرفت"
+          },
+          "tabs": {
+            "contributors": "مشارکت کنندگان",
+            "courses": "دوره‌ها",
+            "coverage": "زبان‌های پوشش داده شده"
+          },
+          "toMonth": "به",
+          "toMonthPlaceholder": "به کدام ماه؟",
+          "totalLanguages": "زبان‌های کلی",
+          "year": "سال"
+        },
+        "searchPlaceholder": "جستجو ...",
+        "status": {
+          "assigned": "تخصیص داده شده",
+          "completed": "تکمیل شده",
+          "inProgress": "در حال پیشروی",
+          "readyForReview": "آماده جهت بررسی",
+          "todo": "کارهای قابل انجام",
+          "underReview": "در حال بررسی"
+        },
+        "table": {
+          "actions": "اقدامات",
+          "course": "دوره",
+          "index": "فهرست",
+          "language": "زبان",
+          "username": "نام کاربری"
+        },
+        "tabs": {
+          "contentManagement": "مدیریت محتوا",
+          "reports": "گزارش‌ها",
+          "requests": "درخواست‌ها",
+          "translate": "ترجمه",
+          "userManagement": "مدیریت کاربران"
+        },
+        "title": "پنل مدیریت ترجمه",
+        "toggle": {
+          "pendingRequest": "درخواست در انتظار",
+          "rejectedRequests": "درخواست‌های رد شده"
+        },
+        "translate": {
+          "actions": {
+            "translate": "ترجمه"
+          },
+          "backToCourse": "بازگشت به دوره",
+          "changeSpeed": "تغییر سرعت پخش",
+          "chapterTitle": "عنوان فصل",
+          "compare": "مقایسه",
+          "compareDisabledTooltip": "نسخه ویرایش نهایی شده در دسترس نیست",
+          "compareTooltip": "مقایسه نسخه اصلی و نسخه ویرایش شده",
+          "comparison": {
+            "backToChapter": "بازگشت به فصل",
+            "originalVersion": "نسخه اصلی",
+            "translatedVersion": "نسخه ترجمه شده"
+          },
+          "description": "شروع ترجمه دوره‌هایی که باید به زبان‌هایی خاص ترجمه شوند.",
+          "forward15Seconds": "15 ثانیه پیشروی",
+          "imageNotFound": "تصویر یافت نشد",
+          "language": "زبان",
+          "loadingPresentation": "بارگذاری ارائه ...",
+          "noContentAvailable": "محتوایی موجود نیست",
+          "noCourses": "در حال حاضر هیچ دوره‌ای نیاز به ترجمه ندارد.",
+          "noOriginalContent": "بدون محتوای اورجینال",
+          "noPngSlides": "برای این ارائه هیچ اسلاید PNG موجود نیست",
+          "noSlidesFound": "هیچ اسلایدی یافت نشد",
+          "originalContent": "محتوای اورجینال",
+          "pause": "توقف",
+          "play": "پخش",
+          "presentations": "ارائه‌ها",
+          "rewind15Seconds": "15 ثانیه بازگشت",
+          "selectLanguagesModal": {
+            "audioFile": "فایل صوتی",
+            "audioFileInfo": "فرمت‌های پشتیبانی شده: MP3، WAV، M4A (حداکثر 50MB)",
+            "audioFileTooLarge": "فایل صوتی بیش از حد بزرگ است. حداکثر اندازه 50 مگابایت است.",
+            "cancel": "لغو کردن",
+            "chooseAudioFile": "انتخاب صدا",
+            "chooseFolder": "انتخاب فولدر",
+            "choosePptxFile": "انتخاب فایل PPTX",
+            "chooseZip": "انتخاب فایل ZIP",
+            "course": "دوره:",
+            "existingUploadsInfo": "فایل‌های اصلی بارگذاری شده‌اند. شما می‌توانید بدون بارگذاری مجدد آن‌ها، ترجمه را شروع کنید.فایل‌های جدید بارگذاری شده، جایگزین فایل‌های موجود خواهد شد.",
+            "folderUrl": "فولدر URL",
+            "invalidAudioFile": "لطفا یک فایل صوتی معتبر انتخاب کنید.",
+            "invalidPptxFile": "لطفا یک فایل PowerPoint معتبر (.pptx) انتخاب کنید.",
+            "missingFilesError": "لطفا فایل‌های ترجمه را بارگذاری کنید یا قبل از شروع ترجمه یک فایل URL ارائه دهید.",
+            "noAudioFileSelected": "هیچ فایل صوتی انتخاب نشده است",
+            "noFolderSelected": "هیچ فولدری انتخاب نشده است",
+            "noLanguagesAvailable": "هیچ زبانی برای ترجمه در دسترس نیست.",
+            "noPptxFileSelected": "هیچ فایل PowerPoint ای انتخاب نشده است",
+            "noZipSelected": "هیچ فایل فشرده‌ای انتخاب نشده است",
+            "originalLanguage": "زبان اصلی:",
+            "overwriteWarning": "فایل‌های موجود جایگزین خواهند شد.",
+            "pptxFile": "فایل پاورپوینت",
+            "pptxFileInfo": "فقط فایل‌های .pptx پشتیبانی می‌شوند (حداکثر 100 مگابایت)",
+            "pptxFileTooLarge": "فایل پاورپوینت خیلی بزرگ است. حداکثر اندازه 100 مگابایت است.",
+            "selectLanguages": "انتخاب زبان برای ترجمه:",
+            "startSuccess": "ترجمه با موفقیت شروع شد!",
+            "startTranslation": "شروع ترجمه",
+            "startingTranslation": "در حال شروع ...",
+            "title": "انتخاب زبان برای ترجمه:",
+            "uploadFiles": "بارگذاری فایل‌های پشتیبان (اختیاری)",
+            "uploadFolder": "بارگذاری فایل (PPTX + TXT)",
+            "useEnglishLabel": "دوره قبلا به زبان انگلیسی ترجمه شده است. از نسخه انگلیسی به عنوان منبع استفاده می‌کنید؟"
+          },
+          "slideNavigation": {
+            "next": "بعدی",
+            "previous": "قبلی",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "اسلاید {{slideNumber}} در دسترس نیست",
+          "slideNotFound": "اسلاید پیدا نشد",
+          "table": {
+            "actions": "اقدامات",
+            "course": "دوره",
+            "index": "فهرست",
+            "todoLanguages": "زبان‌ها برای ترجمه",
+            "totalLanguages": "زبان‌های کلی"
+          },
+          "textContent": "متن محتوا",
+          "title": "ترجمه دوره‌ها",
+          "translateTo": "ترجمه به",
+          "unknownContributor": "ناشناخته"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "بازگشت به لیست کاربران",
+            "backToUsers": "بازگشت به کاربران",
+            "viewDetails": "مشاهده جزئیات"
+          },
+          "addContributor": "افزودن مشارکت کننده",
+          "chapters": "فصل‌ها",
+          "contributorInformation": "اطلاعات مشارکت کننده",
+          "courses": "دوره‌ها",
+          "modal": {
+            "assignments": "تاریخچه تکلیف",
+            "noAssignments": "هیچ تکلیفی یافت نشد",
+            "title": "جزئیات کاربر",
+            "userInfo": "اطلاعات کاربر"
+          },
+          "noUsers": "هیچ مشارکت کننده‌ای پیدا نشد",
+          "status": {
+            "published": "منتشر شده",
+            "readyForReview": "آماده جهت بازبینی",
+            "rejected": "رد شده",
+            "reviewed": "بررسی شده",
+            "todo": "کارهای قابل انجام",
+            "underReview": "در حال بررسی"
+          },
+          "table": {
+            "actions": "اقدام",
+            "assignedCourses": "دوره‌های اختصاص داده شده",
+            "language": "زبان",
+            "startDate": "تاریخ شروع",
+            "username": "نام کاربری"
+          },
+          "title": "مشارکت کنندگان"
         }
       }
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "دانشجویان انتخاب شده برای تکلیف پروژه",
+        "all": "همه دانشجویان ثبت نام شده",
+        "summer": "دانشجویان انتخاب شده برای مدرسه تابستانی"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "یک تاریخ انتخاب کنید",
+      "publicationDate": "تاریخ انتشار"
     },
     "backToDashboard": "بازگشت به داشبورد",
     "bCert": {
@@ -659,8 +892,8 @@
     "calendar": {
       "calendar": "تقویم",
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "کلاس‌ها",
+        "event": "رویدادها"
       },
       "personalCalendar": "تقویم شخصی"
     },
@@ -844,51 +1077,51 @@
       "yourRoles": "عنوان‌های شغلی شما"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
+      "announcement": "اعلان‌ها",
+      "assignment": "تکلیف",
+      "assignmentCompletedDescription": "تکلیف پروژه شما با موفقیت بارگذاری شده و در حال بررسی است.\nنمره شما پس از ارزیابی در اینجا قابل مشاهده خواهد بود.",
+      "assignmentCompletedTitle": "تکلیف به پایان رسید",
       "assignmentDescription": "",
-      "assignmentInformation": "",
-      "assignmentTitle": "",
+      "assignmentInformation": "اطلاعات تکلیف",
+      "assignmentTitle": "تکلیف پروژه",
       "checkDetailsCompleted": "در اینجا می‌توانید تمام جزئیات مربوط به دوره‌ای که تکمیل کرده‌اید را بررسی کنید.",
       "completionDiploma": "دیپلم اتمام دوره",
       "completionExamInfo": "در اینجا می‌توانید اطلاعات مربوط به امتحان نهایی در پایان این دوره را پیدا کنید.",
       "conclusionHeadline": "این قسمت خلاصه‌ای است از آنچه تا کنون یاد گرفته‌اید. اگر برخی از سر فصل‌ها از دست رفته‌اند یا به درستی تثبیت نشده‌اند، حالا زمان آن است که این کار را انجام دهید، یا با برگشت به یادگیری، یا با فشار دادن دکمه تکمیل.",
-      "conclusionNotReleased": "",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "conclusionNotReleased": "قسمت نتیجه‌گیری در روز آخرین کلاس باز خواهد شد.",
+      "confirmList": "تأیید لیست",
+      "confirmNoEditable": "پس از تأیید، این لیست از ترجیحات دیگر قابل ویرایش نخواهد بود.",
+      "confirmNoEditableFile": "پس از ارسال، دیگر نمی‌توانید فایل خود را ویرایش کنید.",
+      "confirmSubmission": "تایید ارسال",
+      "congratulationsPassed": "تبریک! شما با موفقیت قبول شدید!",
       "coordinator": "هماهنگ‌کننده‌ی دوره",
-      "courseCalendar": "",
+      "courseCalendar": "تقویم دوره",
       "coursesCompleted": "دوره‌های تکمیل شده",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "diplomaReleaseDescription": "پس از اتمام تمامی کلاس‌ها، دیپلم با موفقیت سپری کردن دوره به شما اعطا خواهد شد. دیپلم‌ها پس از آخرین کلاس و اتمام فصل نتیجه‌گیری برای دانلود در اینجا موجود خواهند بود.",
+      "diplomaReleaseTitle": "انتشار دیپلم",
+      "examScore": "نمره:",
+      "exams": "امتحانات",
       "feedbacks": "یک قسمت در پایان دوره به ارائه بازخوردها اختصاص یافته است. اگر مایلید بازخورد خود را هم اکنون ارائه دهید، می توانید در این قسمت این کار را انجام دهید.",
-      "fileUploadError": "",
-      "fileUploaded": "",
-      "finalAverageGradeDescription": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
-      "generalInformation": "",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
+      "fileUploadError": "هنگام بارگذاری فایل شما خطایی رخ داد",
+      "fileUploaded": "فایل شما با موفقیت بارگذاری شد!",
+      "finalAverageGradeDescription": "شما می‌توانید نمره میانگین نهایی خود را در بخش امتحان و دیپلم داشبورد خود مشاهده کنید.",
+      "finalGradeSummary": "خلاصه نمره نهایی",
+      "finalScore": "نمره نهایی",
+      "generalInformation": "اطلاعات عمومی",
+      "individualWork": "کار فردی",
+      "isSubmissionFinal": "آیا ارسال شما نهایی است؟",
+      "joinTelegramGroup": "به گروه تلگرام بپیوندید",
+      "keepEditing": "به ویرایش ادامه دهید",
+      "keepMovingForward": "در حالی که این بار قبول نشدید، برداشتن هر گام پیشرفت به همراه دارد.\nدر مسیر یادگیری خود رو به جلو حرکت کنید!",
+      "leastPreferred": "کم‌تر ترجیح داده شده",
+      "listSaved": "لیست ترجیحات شما ذخیره شده است.",
+      "listSavedComeTomorrow": "لیست ترجیحات شما ذخیره شده است.\nفردا به اینجا برگردید تا ببینید چه پروژه‌ای به شما اختصاص یافته است.",
+      "mostPreferred": "محبوب‌ترین",
+      "mustBePdf": "فایل شما باید PDF باشد. اگر نیاز به ارسال فایل اضافی دارید، لطفا لینک آن را درون فایل PDF خود اضافه کنید.",
+      "notSelectedAssignment": "متاسفانه، شما برای شرکت در تکلیف پروژه انتخاب نشده‌اید.\nشما همچنان می‌توانید دروس دوره را دنبال کنید.",
       "planbSchoolExamDescription": "",
       "planbSchoolGeneralInformation": "",
-      "projectRankingInstructions": "",
+      "projectRankingInstructions": "دستورالعمل‌های رتبه‌بندی پروژه:",
       "ranking": "",
       "rankingInstructions": "",
       "rankingOnly24Hours": "",
@@ -907,7 +1140,10 @@
       "thresholdToPass": "",
       "tweetText": "مفتخرم که دوره {{courseIndex}} را در @planb_network تکمیل کرده‌ام و با کسب نمره {{score}} از 100 در امتحان نهایی، گواهینامه خود را دریافت کرده‌ام! {{emoji}}\n\n{{certificateUrl}}",
       "viewFinalGrade": "",
-      "yourProject": ""
+      "yourProject": "",
+      "assignmentNotAccessible": "تکلیف از قبل آغاز شده و دیگر قابل دسترسی نیست.",
+      "assignmentScore": "نمره تکلیف",
+      "gaveSolidEffort": "شما تلاش جدی انجام دادید!"
     },
     "courses": "دوره‌ها",
     "credentials": {

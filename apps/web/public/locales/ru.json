@@ -646,6 +646,112 @@
           "provideRejectionReason": "Пожалуйста, укажите причину отклонения этого запроса",
           "reasonForRejection": "Причина отклонения",
           "reasonPlaceholder": "Напишите своё объяснение здесь…"
+        },
+        "reports": {
+          "languageCoverage": {
+            "completed": "Завершено",
+            "inProgress": "В процессе",
+            "notStarted": "Не начато",
+            "totalCourses": "Общее количество курсов"
+          },
+          "languagesProofread": "Вычитка языков",
+          "noContributors": "Участники не найдены",
+          "noCourses": "Курсы не найдены",
+          "noLanguages": "Языки не найдены",
+          "proofreadCourses": "Вычитка курсов",
+          "table": {
+            "contributor": "Участник",
+            "lastUpdated": "Последнее обновление",
+            "progress": "Прогресс %"
+          },
+          "tabs": {
+            "contributors": "Участники",
+            "courses": "Курсы",
+            "coverage": "Поддержка языков"
+          },
+          "toMonth": "К",
+          "toMonthPlaceholder": "К какому месяцу?",
+          "totalLanguages": "Всего языков",
+          "year": "Год"
+        },
+        "searchPlaceholder": "Поиск…",
+        "status": {
+          "assigned": "Назначен",
+          "completed": "Завершено",
+          "inProgress": "В процессе",
+          "readyForReview": "Готов к проверке",
+          "todo": "К выполнению",
+          "underReview": "На проверке"
+        },
+        "table": {
+          "actions": "Акции",
+          "course": "Курс",
+          "index": "Индекс",
+          "language": "Язык",
+          "username": "Имя пользователя"
+        },
+        "tabs": {
+          "contentManagement": "Управление контентом"
+        },
+        "translate": {
+          "selectLanguagesModal": {
+            "audioFile": "Аудио файл",
+            "audioFileTooLarge": "Аудиофайл слишком большой. Максимальный размер — 50 МБ.",
+            "cancel": "Отмена",
+            "chooseAudioFile": "Выбрать аудио",
+            "chooseFolder": "Выбрать папку",
+            "choosePptxFile": "Выбрать PPTX",
+            "chooseZip": "Выбрать ZIP",
+            "course": "Курс:",
+            "existingUploadsInfo": "Оригинальные файлы уже загружены. Вы можете начать перевод без повторной загрузки. Загрузка новых файлов перезапишет существующие.",
+            "folderUrl": "URL папки",
+            "invalidAudioFile": "Пожалуйста, выберите корректный аудиофайл.",
+            "invalidPptxFile": "Выберите правильный файл PowerPoint (.pptx).",
+            "missingFilesError": "Пожалуйста, загрузите файлы перевода или укажите URL перед началом перевода.",
+            "noAudioFileSelected": "Аудиофайл не выбран",
+            "noFolderSelected": "Папка не выбрана",
+            "noLanguagesAvailable": "Нет доступных языков для перевода.",
+            "noPptxFileSelected": "Файл PowerPoint не выбран",
+            "noZipSelected": "ZIP-файл не выбран",
+            "originalLanguage": "Исходный язык:",
+            "overwriteWarning": "Существующие файлы будут заменены.",
+            "pptxFile": "PowerPoint файл",
+            "pptxFileInfo": "Поддерживаются только файлы .pptx (максимальный размер — 100 МБ)",
+            "pptxFileTooLarge": "Файл PowerPoint слишком большой. Максимальный размер — 100 МБ.",
+            "selectLanguages": "Выберите языки для перевода:",
+            "startSuccess": "Перевод успешно запущен!",
+            "startTranslation": "Начать перевод",
+            "startingTranslation": "Запуск…",
+            "title": "Выберите языки для перевода",
+            "uploadFiles": "Загрузите вспомогательные файлы (необязательно)",
+            "uploadFolder": "Загрузить папку (PPTX + TXT)",
+            "useEnglishLabel": "Курс уже переведён на английский. Использовать английскую версию как исходную?"
+          },
+          "slideNavigation": {
+            "next": "Следующий",
+            "previous": "Предыдущий",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Слайд {{slideNumber}} недоступен",
+          "slideNotFound": "Слайд не найден",
+          "table": {
+            "actions": "Действия",
+            "course": "Курс",
+            "index": "Индекс",
+            "todoLanguages": "Языки для перевода",
+            "totalLanguages": "Всего языков"
+          },
+          "textContent": "Текстовое содержимое",
+          "title": "Перевести курсы",
+          "translateTo": "Перевести на",
+          "unknownContributor": "Неизвестно"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Назад к списку пользователей",
+            "backToUsers": "Назад к пользователям",
+            "viewDetails": "Просмотреть детали"
+          }
         }
       },
       "translation": "Панель перевода"

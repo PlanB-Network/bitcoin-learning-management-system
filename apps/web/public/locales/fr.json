@@ -1400,7 +1400,7 @@
       "subtitle": "Orangepill un milliard de personnes n'est pas facile",
       "title": "Voulez-vous ajouter votre événement ?"
     },
-    "pageDescription": "Vous souhaitez parler de Bitcoin en temps réel ? Retrouvez ici tous les événements soutenus par les communautés de Plan ₿ Network. Que vous souhaitiez écouter une conférence, discuter de Bitcoin autour d'un verre ou passer un examen pour évaluer vos connaissances, vous trouverez ici l'événement qui vous convient via Plan ₿ Network.",
+    "pageDescription": "Vous souhaitez parler de Bitcoin en temps réel ? Retrouvez ici tous les événements soutenus par les communautés de Plan ₿ Network. Que vous souhaitiez écouter un séminaire, discuter de Bitcoin autour d'un verre ou passer un examen pour évaluer vos connaissances, vous trouverez ici l'événement qui vous convient via Plan ₿ Network.",
     "pageSubtitle": "Adoption ascendante améliorée par un réseau solide",
     "pageTitle": "Vous cherchez un événement Bitcoin auquel assister ?",
     "payment": {
@@ -1541,10 +1541,10 @@
   "lectures": {
     "buyVideoToUnlock": "Achetez la vidéo pour la déverrouiller",
     "checkFullCourse": "Découvrez le cours complet",
-    "lecturePartCourse": "Cette rediffusion de conférence fait partie du cours <0>{{courseTitle}}</0>.\nPlongez dans le cours complet pour maîtriser l'ensemble du concept et libérer votre plein potentiel !",
-    "pageTitle": "Reprises de conférences",
-    "partCourse": "Cette conférence fait partie du cours :",
-    "watchLecture": "Regardez la rediffusion de la conférence"
+    "lecturePartCourse": "Cette rediffusion de séminaire fait partie du cours <0>{{courseTitle}}</0>.\nPlongez dans le cours complet pour maîtriser l'ensemble du concept et libérer votre plein potentiel !",
+    "pageTitle": "Rediffusion des séminaires",
+    "partCourse": "Ce séminaire fait partie du cours :",
+    "watchLecture": "Regardez la rediffusion du séminaire"
   },
   "library": {
     "pageTitle": "La bibliothèque Bitcoin"
@@ -1558,7 +1558,7 @@
     "chooseLanguage": "Choisissez une langue",
     "conferencesDescription": "Collection de rediffusions de conférences Bitcoin depuis le Bloc Genesis",
     "glossaryDescription": "Comprendre le langage du Bitcoin",
-    "lecturesDescription": "Revoir les conférences enregistrées d'experts Bitcoin",
+    "lecturesDescription": "Revoir les séminaires enregistrés d'experts de Bitcoin",
     "libraryDescription": "Découvrez beaucoup de livres pour améliorer vos connaissances",
     "login": "Se connecter",
     "miningCourseDescription": "Comprenez les processus, les outils et l'industrie derrière le minage de Bitcoin.",
@@ -1737,8 +1737,8 @@
       "title": "Glossaire"
     },
     "lectures": {
-      "noLectures": "Il n'y a actuellement aucune rediffusion de conférence pour la langue sélectionnée.",
-      "title": "Reprises de conférences"
+      "noLectures": "Il n'y a actuellement aucune rediffusion de séminaires pour la langue sélectionnée.",
+      "title": "Rediffusion des séminaires"
     },
     "movies": {
       "noMovies": "Il n'y a actuellement aucun film ou documentaire pour la langue sélectionnée.",
@@ -1758,7 +1758,7 @@
     "pageSubtitle": "Centraliser les connaissances pour mieux les diffuser",
     "pageSubtitleBooks": "<0>D'autres livres</0> que vous pourriez aimer",
     "pageSubtitleChannels": "<0>Autres chaînes Youtube</0> que vous pourriez aimer",
-    "pageSubtitleLectures": "<0>Autres rediffusions de conférences</0> qui pourraient vous intéresser",
+    "pageSubtitleLectures": "<0>Autres rediffusions de séminaires</0> qui pourraient vous intéresser",
     "pageSubtitlePodcast": "<0>D'autres podcasts</0> que vous pourriez aimer",
     "pageTitle": "Ressources",
     "podcasts": {
@@ -1795,8 +1795,8 @@
     "glossary_word": "Mot du glossaire",
     "glossary_words": "Mots du glossaire",
     "languageSelected": "Langue sélectionnée : {{language}}",
-    "lecture_replay": "Rediffusion de conférence",
-    "lecture_replays": "Rediffusion de conférences",
+    "lecture_replay": "Rediffusion de séminaire",
+    "lecture_replays": "Rediffusion des séminaires",
     "loadMoreResults": "Voir plus de résultats",
     "newsletter": "Newsletter",
     "newsletters": "Newsletters",
@@ -2007,8 +2007,8 @@
     "intermediate": "Intermédiaire",
     "invoice": "Facture",
     "language": "Langue",
-    "lecture": "Conférence",
-    "lectures": "Conférences",
+    "lecture": "Séminaire",
+    "lectures": "Séminaires",
     "level": {
       "advanced": "Avancé",
       "beginner": "Débutant",

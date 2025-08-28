@@ -594,7 +594,7 @@
     "calendar": {
       "calendar": "Calendario",
       "eventType": {
-        "class": "",
+        "class": "Clases",
         "event": "Eventos"
       },
       "personalCalendar": "Calendario personal"
@@ -728,7 +728,7 @@
       "languageSkillsSubtitle": "",
       "lastName": "",
       "legalInformation": "",
-      "legalInformationSubtitle": "",
+      "legalInformationSubtitle": "Por favor, acepta los términos y condiciones a continuación, para que podamos relacionar tus habilidades y experiencias con las oportunidades laborales de nuestros socios comerciales.",
       "legalTerms": "",
       "lookingForJob": "",
       "maxCharacters": "",
@@ -781,7 +781,7 @@
     "course": {
       "announcement": "",
       "assignment": "",
-      "assignmentCompletedDescription": "",
+      "assignmentCompletedDescription": "Tu asignación de proyecto se ha enviado correctamente y está en revisión.\nTu calificación será visible aquí una vez que se haya evaluado.",
       "assignmentCompletedTitle": "",
       "assignmentDescription": "",
       "assignmentInformation": "",
@@ -799,20 +799,20 @@
       "coordinator": "",
       "courseCalendar": "",
       "coursesCompleted": "Cursos completados",
-      "diplomaReleaseDescription": "",
+      "diplomaReleaseDescription": "Una vez que todas las clases estén completadas, recibirás un diploma por haber finalizado con éxito el curso. Los diplomas estarán disponibles para descargar aquí después de la última clase y de completar el capítulo de conclusión.",
       "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "examScore": "Puntuación:",
+      "exams": "Exámenes",
       "feedbacks": "Un capítulo al final del curso está dedicado a las reseñas. Si deseas dar tu reseña ahora, puedes hacerlo aquí.",
       "fileUploadError": "",
       "fileUploaded": "",
-      "finalAverageGradeDescription": "",
+      "finalAverageGradeDescription": "Puedes encontrar tu calificación final promedio en la sección de Examen y Diploma de tu panel.",
       "finalGradeSummary": "",
       "finalScore": "",
       "generalInformation": "",
       "individualWork": "",
       "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
+      "joinTelegramGroup": "Unirse al grupo de Telegram",
       "keepEditing": "",
       "keepMovingForward": "",
       "leastPreferred": "",
@@ -820,13 +820,13 @@
       "listSavedComeTomorrow": "",
       "mostPreferred": "",
       "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "planbSchoolExamDescription": "",
+      "notSelectedAssignment": "Lamentablemente, no has sido seleccionado para participar en la Asignación de Proyecto.\nAún puedes continuar siguiendo las clases del curso",
+      "planbSchoolExamDescription": "El programa Plan ₿ Biz School 2025 consta de dos fases. En la primera fase, realizarás dos exámenes en línea: el parcial y el final. Son pruebas cronometradas de un solo intento que puedes completar en cualquier momento durante un período de disponibilidad de tres días. Después de la primera fase, los estudiantes serán seleccionados según su clasificación para pasar a la segunda fase, que consiste en una asignación de proyecto: una tarea individual proporcionada por una empresa de Bitcoin. Puedes encontrar más detalles en la pestaña de Asignación.\n\nLa calificación final se calculará como un promedio ponderado de los tres exámenes. Los estudiantes que obtengan una puntuación superior al 80 % recibirán un diploma, y los estudiantes mejor clasificados también tendrán la oportunidad de participar en la Summer School en Lugano, en julio.",
       "planbSchoolGeneralInformation": "",
       "projectRankingInstructions": "",
       "ranking": "",
       "rankingInstructions": "",
-      "rankingOnly24Hours": "",
+      "rankingOnly24Hours": "El portal de clasificación estará abierto solo por 24 horas, el 2 de junio, de 00:00 a 23:59 (UTC+2).",
       "rankProjectPreferences": "",
       "ratingsAndFeedbacks": "Calificaciones y Reseñas",
       "readAssignment": "",
@@ -860,7 +860,7 @@
       "yourCertificate": "Tu certificado"
     },
     "goToDashboard": "",
-    "goToHomepage": "",
+    "goToHomepage": "Ir a la página principal",
     "logout": "Cerrar sesión",
     "myCourses": {
       "completeAll": "Completa todo",
@@ -883,7 +883,7 @@
       "seeDetails": "Ver detalles",
       "seeProgress": "para ver tu progreso aquí.",
       "seeTheCourse": "Ver el curso",
-      "shareOn": "",
+      "shareOn": "Compartir en",
       "startCourse": "Inicia o termina un curso",
       "verify": "Verifica la autenticidad de tu diploma",
       "viewDetails": "Ver detalles",
@@ -929,7 +929,7 @@
       "save": "Guardar",
       "saving": "Guardando…",
       "security": "Seguridad",
-      "securitySettings": "",
+      "securitySettings": "Configuración de seguridad",
       "settings": "",
       "username": "Nombre de usuario"
     },
@@ -1078,19 +1078,19 @@
     "pageSubtitle": "Adopción de abajo hacia arriba, potenciada por una red sólida",
     "pageTitle": "¿Buscas un evento de Bitcoin al cual asistir?",
     "payment": {
-      "access_online_successful": "",
-      "access_physical_successful": "",
+      "access_online_successful": "Cuando comience el evento, inicia sesión en la plataforma y empieza a transmitir en vivo desde la página del evento.",
+      "access_physical_successful": "Puedes descargar tu entrada aquí o hacerlo más tarde desde tu panel.",
       "access_type": "Tipo de acceso",
       "additional_free_description": "Este evento es gratuito, por lo que no hay costo por reservar este asiento. Sin embargo, por favor, asegúrate de asistir, ya que el número de asientos es limitado.",
       "address": "Dirección",
       "back_events": "Regresar a eventos",
       "book_seat": "Reservar asiento",
-      "callout_book_online": "",
+      "callout_book_online": "Estás a punto de reservar el acceso en línea a este evento.",
       "callout_book_physical": "",
-      "callout_book_replay": "",
+      "callout_book_replay": "Está a punto de reservar el acceso a la grabación de este evento.",
       "callout_purchase_online": "",
       "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
+      "callout_purchase_replay": "Estás a punto de comprar el acceso a la grabación de este evento.",
       "date": "Fecha",
       "description_free_physical": "Por favor revisa los detalles proporcionados del lugar.\nUna vez que la reserva esté confirmada, emitiremos un boleto de confirmación y un código QR para presentar en el evento.",
       "description_online": "Por favor revisa la fecha y hora del evento proporcionada.\nCuando llegue el momento, inicia sesión en la plataforma para acceder a la transmisión en vivo a través de la página del evento.",
@@ -1098,13 +1098,23 @@
       "download_ticket": "Descarga tu boleto",
       "language": "Idioma",
       "limitation": "Limitación",
-      "limitedSeats": "",
+      "limitedSeats": "Los asientos son limitados. Por favor, cancela tu reserva si no puedes asistir.",
       "max_capacity": "Capacidad máxima de",
       "payment_successful": "¡Reservación exitosa!",
       "time": "Hora"
     },
-    "tcDisclaimer": "",
-    "tcMustBeAccepted": ""
+    "tcDisclaimer": "Acepto que mi información pueda ser compartida con los organizadores para fines de acceso al lugar.",
+    "tcMustBeAccepted": "Debes aceptar los términos y condiciones para continuar",
+    "calendar": {
+      "displayCalendar": "Mostrar calendario",
+      "fullMap": "Mapa completo",
+      "hideCalendar": "Ocultar calendario",
+      "lastMonth": "Mes pasado",
+      "nextMonth": "Próximo mes",
+      "noEventsFound": "No se encontraron eventos",
+      "thisMonth": "Este mes",
+      "today": "Hoy"
+    }
   },
   "filters": {
     "categories": "Categorías",
@@ -1198,16 +1208,16 @@
     "underConstructionImage": "Ilustración de varios conejos trabajando en un sitio de construcción"
   },
   "labs": {
-    "coordinatedBy": "",
-    "description1": "",
-    "description2": "",
-    "planBLabs": "",
+    "coordinatedBy": "Este Lab está coordinado por",
+    "description1": "Los Plan ₿ Labs son grupos de estudio diseñados para ofrecer a los estudiantes clases prácticas e interactivas de forma regular. A través de estos grupos, estudiantes y profesores participan en debates sobre las últimas investigaciones, resuelven retos del mundo real y aplican conceptos teóricos. Únete al Lab que se alinee con tu área de estudio y enriquece tu experiencia de aprendizaje.",
+    "description2": "¡Únete al Lab que se alinee con tu área de estudio y mejora tu experiencia de aprendizaje!",
+    "planBLabs": "Plan ₿ Labs",
     "presentation": {
-      "link": "",
-      "subtitle": "",
-      "title": ""
+      "link": "Descubre Plan ₿ Labs",
+      "subtitle": "¡Únete a un laboratorio para aprender, debatir y crecer!",
+      "title": "¡Potencia tus habilidades en Bitcoin!"
     },
-    "title": ""
+    "title": "Clases prácticas e interactivas para un aprendizaje continuo"
   },
   "lectures": {
     "buyVideoToUnlock": "Compra el video para desbloquearlo",
@@ -1223,17 +1233,17 @@
   "menu": {
     "bCertDescription": "Aprueba el examen el ₿-CERT para demostrar tu nivel de Bitcoin",
     "betDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
-    "bitcoinDescription": "",
-    "businessDescription": "",
-    "channelsDescription": "",
-    "chooseLanguage": "",
+    "bitcoinDescription": "Aprende sobre Bitcoin desde lo básico hasta lo avanzado.",
+    "businessDescription": "Descubre el uso de Bitcoin en el comercio.",
+    "channelsDescription": "Accede a nuestra selección exclusiva de canales de YouTube para aprender sobre Bitcoin",
+    "chooseLanguage": "Elige un idioma",
     "conferencesDescription": "Colección de repeticiones de conferencias de Bitcoin desde el Bloque Génesis",
     "glossaryDescription": "Entiende el lenguaje de Bitcoin",
-    "lecturesDescription": "",
+    "lecturesDescription": "Revisa las clases grabadas de expertos en Bitcoin",
     "libraryDescription": "Descubre una gran cantidad de libros para mejorar tu conocimiento",
     "login": "Iniciar Sesión",
-    "miningCourseDescription": "",
-    "moviesDescription": "",
+    "miningCourseDescription": "Comprende los procesos, herramientas e industria detrás de la minería de Bitcoin.",
+    "moviesDescription": "Descubre historias fascinantes y exploraciones profundas sobre la evolución e impacto de Bitcoin",
     "newsletterDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
     "nodeNetworkDescription": "Únete a la red global de la comunidad de Plan ₿",
     "planBLabsDescription": "Únete al grupo de estudio para continuar aprendiendo sobre Lightning, Minería y Privacidad",
@@ -1279,7 +1289,7 @@
     "calendar_24h": "",
     "calendar_24h_in_person_event": "",
     "calendar_48h_online_event": "",
-    "dashboardDescription": "",
+    "dashboardDescription": "Aquí están tus notificaciones más recientes. Se eliminan automáticamente un mes después de que las hayas visto.",
     "daysAgo": "",
     "hoursAgo": "",
     "markAsRead": "",
@@ -1298,7 +1308,8 @@
     "upcomingEvent": "",
     "weeksAgo": "",
     "yearsAgo": "",
-    "yesterday": ""
+    "yesterday": "",
+    "newVersionAvailable": "Hay una nueva versión de la plataforma Plan ₿ Network disponible. Por favor, actualiza la página para actualizarla."
   },
   "payment": {
     "haveReductionCode": "¿Tienes un código de descuento?",
@@ -1482,7 +1493,7 @@
     "results": "Resultados",
     "resultsRemaining": "{{count}} resultados restantes",
     "search": "",
-    "searchResult": "",
+    "searchResult": "Resultados de la búsqueda",
     "startSearch": "",
     "tutorial": "",
     "tutorials": "",
@@ -1499,19 +1510,19 @@
     "approvedByCreator": "Aprobado por el creador",
     "backTutorials": "Regresar a todos los tutoriales",
     "business": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "¿Quieres integrar Bitcoin en tu negocio? Esta categoría reúne todos los tutoriales diseñados para profesionales. Ya sea para configurar un sistema de punto de venta y aceptar pagos en Bitcoin fácilmente, o para agregar y gestionar bitcoins en la tesorería de tu empresa, aquí encontrarás información técnica y práctica esencial.",
+      "shortDescription": "Aceptar pagos con Bitcoin y administrarlos en la tesorería de tu empresa",
+      "title": "Empresas"
     },
     "computer-security": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "La seguridad informática es esencial para todo Bitcoiner. En esta categoría encontrarás tutoriales sobre herramientas fundamentales y prácticas generales para proteger tu entorno digital. Sistemas operativos, navegadores seguros, gestores de contraseñas, sistemas de autenticación, VPNs y soluciones de comunicación encriptada: todos los recursos presentados aquí tienen como objetivo mejorar tu seguridad y privacidad.",
+      "shortDescription": "Herramientas esenciales para proteger tu seguridad y privacidad digital",
+      "title": "Seguridad informática"
     },
     "contribution": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "¿Quieres contribuir a la plataforma de código abierto de Plan ₿ Network? En esta categoría aprenderás cómo redactar y publicar un nuevo tutorial, revisar o corregir contenidos, o agregar nuevos recursos útiles para la comunidad. Estos tutoriales te brindarán la oportunidad de participar en la educación sobre Bitcoin y enriquecer nuestra base de conocimientos compartida.",
+      "shortDescription": "Contribuye a la plataforma de código abierto de Plan ₿ Network",
+      "title": "Contribución"
     },
     "details": {
       "author": "Autor: ",
@@ -1607,7 +1618,7 @@
     "book": "Libro",
     "booked": "Reservado",
     "bookings": "Reservas",
-    "business": "",
+    "business": "Empresas",
     "calendar": "",
     "cancel": "Cancelar",
     "careerPortal": "",
@@ -1670,7 +1681,7 @@
       "beginner": "Principiante",
       "beginnerFriendly": "Amigable para principiantes",
       "developer": "Desarrollador",
-      "expert": "",
+      "expert": "Experto",
       "intermediate": "Intermedio",
       "level": "Nivel",
       "levels": "Niveles",
@@ -1690,7 +1701,7 @@
     "name": "",
     "network": "Red",
     "newsletter": "Boletín informativo",
-    "next": "",
+    "next": "Siguiente",
     "no": "",
     "nodeNetwork": "Red de nodo",
     "notApplicable": "",
@@ -1757,11 +1768,29 @@
     "view": "Ver",
     "viewMore": "Ver más",
     "wallets": "Billeteras",
-    "yes": "Sí"
+    "yes": "Sí",
+    "share": "Compartir"
   },
   "youtubeChannels": {
     "pageTitle": "Canales de Youtube",
     "view": "Ver Canal de Youtube",
     "watchTrailer": "Ver el tráiler"
+  },
+  "footer": {
+    "followUsOn": "Síguenos en"
+  },
+  "months": {
+    "april": "Abril",
+    "august": "Agosto",
+    "december": "Diciembre",
+    "february": "Febrero",
+    "january": "Enero",
+    "july": "Julio",
+    "june": "Junio",
+    "march": "Marzo",
+    "may": "Mayo",
+    "november": "Noviembre",
+    "october": "Octubre",
+    "september": "Septiembre"
   }
 }
