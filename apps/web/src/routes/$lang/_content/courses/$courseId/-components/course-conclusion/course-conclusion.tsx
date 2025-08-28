@@ -84,7 +84,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
   const { data: courseReview } = useQuery(
     trpc.user.courses.getCourseReview.queryOptions(
       { courseId: course?.id || '' },
-      { enabled: step >= 1 },
+      { enabled: step >= 1, staleTime: 0 },
     ),
   );
 
