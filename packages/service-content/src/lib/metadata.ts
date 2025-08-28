@@ -1,6 +1,7 @@
 import { createGetBlog } from './blogs/services/get-blog.js';
 import { createGetCourseChapterMeta } from './courses/services/get-course-chapter-meta.js';
 import { createGetCourseMeta } from './courses/services/get-course-meta.js';
+import { createGetCertificateImgKeyByExamAttemptId } from './courses/services/get-diploma-img-key.js';
 import type { Dependencies } from './dependencies.js';
 import { createGetBook } from './resources/services/get-book.js';
 import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
@@ -82,6 +83,9 @@ export const createGetMetadata = (dependencies: Dependencies) => {
 
   // Tutorials
   const getTutorialMeta = createGetTutorialMeta(dependencies);
+
+  // Certificates
+  const getImageKey = createGetCertificateImgKeyByExamAttemptId(dependencies);
 
   const getCourseMetadata = async (
     lang: string,
@@ -196,19 +200,38 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     return meta(tutorial.title, tutorial.description, DEFAULT_IMAGE, language);
   };
 
-  const getExamCertificateMetadata = (
+  const getExamCertificateMetadata = async (
+    lang: string,
+    parts: string[],
+  ): Promise<Metadata> => {
+    const [examId] = parts;
+    if (!examId) {
+      return defaultMeta(lang);
+    }
+
+    const imgKey = await getImageKey(examId);
+
+    return meta(
+      DEFAULT.title,
+      DEFAULT.description,
+      `/api/files/${imgKey}`,
+      DEFAULT.lang,
+    );
+  };
+
+  const getTeacherLedCourseCertificateMetadata = (
     lang: string,
     parts: string[],
   ): Metadata => {
-    const [examId] = parts;
-    if (!examId) {
+    const [certificateId] = parts;
+    if (!certificateId) {
       return defaultMeta(lang);
     }
 
     return meta(
       DEFAULT.title,
       DEFAULT.description,
-      `/api/files/certificates/${examId}.png`,
+      `/api/files/certificates/${certificateId}.png`,
       DEFAULT.lang,
     );
   };
@@ -266,7 +289,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         return getExamCertificateMetadata(lang, rest); //
       }
       case 'course-diplomas': {
-        return getExamCertificateMetadata(lang, rest); //
+        return getTeacherLedCourseCertificateMetadata(lang, rest); //
       }
       case 'bcert-certificates': {
         return getBcertCertificateMetadata(lang, rest); //

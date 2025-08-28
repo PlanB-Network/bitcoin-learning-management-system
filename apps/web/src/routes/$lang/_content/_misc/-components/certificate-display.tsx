@@ -21,7 +21,7 @@ interface CertificateDisplayProps {
 
 export const CertificateDisplay = ({
   certificateId,
-  isCourseWithSingleTrialExam = false,
+  isCourseWithSingleTrialExam,
 }: CertificateDisplayProps) => {
   const { courses } = useContext(AppContext);
   const { t } = useTranslation();
@@ -29,10 +29,9 @@ export const CertificateDisplay = ({
   const { data: userDetails, isFetched } = useQuery(
     trpc.user.courses.getUserDetailsByCertificateId.queryOptions({
       certificateId: certificateId,
-      isCourseWithSingleTrialExam: isCourseWithSingleTrialExam,
+      isCourseWithSingleTrialExam: isCourseWithSingleTrialExam ?? false,
     }),
   );
-
   if (!isFetched) {
     return <Loader size="s" />;
   }
@@ -76,7 +75,7 @@ export const CertificateDisplay = ({
           {/* Certificate */}
           <div className="relative z-10 flex justify-center">
             <img
-              src={`/api/files/certificates/${certificateId}.png`}
+              src={`/api/files/${userDetails?.imgKey}`}
               alt="Certificate"
               className="w-full max-w-[842px] shadow-l-section"
             />
@@ -145,14 +144,11 @@ const CourseSection = ({ course }: { course: JoinedCourse }) => {
   );
 };
 
-export const filterAndRandomizeCourses = <
-  T extends { id: string; language: string; topic: string; level: string },
->(
-  currentCourse: T,
-  allCourses: T[],
-): T[] => {
-  const { i18n } = useTranslation();
-  const language = i18n.language;
+export const filterAndRandomizeCourses = (
+  currentCourse: JoinedCourse,
+  allCourses: JoinedCourse[],
+): JoinedCourse[] => {
+  const language = currentCourse.language;
 
   if (!allCourses || allCourses.length === 0) {
     return [];
@@ -161,6 +157,10 @@ export const filterAndRandomizeCourses = <
   const otherCourses = allCourses.filter(
     (c) => c.id !== currentCourse.id && c.language === language,
   );
+
+  if (otherCourses.length === 0) {
+    return [];
+  }
 
   const courseLevels = ['beginner', 'intermediate', 'advanced', 'expert'];
 
@@ -181,18 +181,28 @@ export const filterAndRandomizeCourses = <
       courseLevels.indexOf(c.level) > courseLevels.indexOf(currentCourse.level),
   );
 
-  const getRandomCourse = (courses: T[]): T =>
-    courses[Math.floor(Math.random() * courses.length)];
+  const pickRandom = (pool: JoinedCourse[]): JoinedCourse | null => {
+    if (pool.length === 0) return null;
+    const idx = Math.floor(Math.random() * pool.length);
+    return pool.splice(idx, 1)[0];
+  };
 
-  return [
-    sameTopicSameLevel.length > 0
-      ? getRandomCourse(sameTopicSameLevel)
-      : getRandomCourse(allCourses),
-    differentTopicSameOrLowerLevel.length > 0
-      ? getRandomCourse(differentTopicSameOrLowerLevel)
-      : getRandomCourse(allCourses),
-    sameTopicHigherLevel.length > 0
-      ? getRandomCourse(sameTopicHigherLevel)
-      : getRandomCourse(allCourses),
-  ];
+  const pool = [...otherCourses];
+  const results: JoinedCourse[] = [];
+
+  results.push(
+    pickRandom(sameTopicSameLevel.length ? sameTopicSameLevel : pool)!,
+  );
+  results.push(
+    pickRandom(
+      differentTopicSameOrLowerLevel.length
+        ? differentTopicSameOrLowerLevel
+        : pool,
+    )!,
+  );
+  results.push(
+    pickRandom(sameTopicHigherLevel.length ? sameTopicHigherLevel : pool)!,
+  );
+
+  return results.filter(Boolean);
 };
