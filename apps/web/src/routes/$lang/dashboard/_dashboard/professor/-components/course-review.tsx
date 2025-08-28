@@ -16,7 +16,13 @@ const RatingChart = lazy(() =>
   import('@blms/ui').then((module) => ({ default: module.RatingChart })),
 );
 
-export const CourseReview = ({ courseId }: { courseId: string }) => {
+export const CourseReview = ({
+  courseId,
+  averageRating,
+}: {
+  courseId: string;
+  averageRating: number;
+}) => {
   const { data: reviews, isFetched } = useQuery(
     trpc.content.getTeacherCourseReviews.queryOptions(
       {
@@ -45,7 +51,10 @@ export const CourseReview = ({ courseId }: { courseId: string }) => {
       )}
       {isFetched && reviews?.general && reviews?.general.length > 0 && (
         <>
-          <GeneralGradeSection ratings={reviews.general} />
+          <GeneralGradeSection
+            ratings={reviews.general}
+            averageRating={averageRating}
+          />
 
           <div className="flex flex-wrap gap-8 lg:gap-12 lg:mt-10 justify-center">
             <div className="flex flex-col gap-8 lg:gap-12 w-full max-w-[464px]">
@@ -315,13 +324,14 @@ const ReviewSlider = ({
   );
 };
 
-const GeneralGradeSection = ({ ratings }: { ratings: number[] }) => {
+const GeneralGradeSection = ({
+  ratings,
+  averageRating,
+}: {
+  ratings: number[];
+  averageRating: number;
+}) => {
   const numberOfReviews = ratings.length;
-  const averageRating = Number(
-    (
-      ratings.reduce((acc, rating) => acc + rating, 0) / numberOfReviews
-    ).toFixed(1),
-  );
   const maxRating = 5;
 
   const chartData = Array.from({ length: maxRating }, (_, i) => ({

@@ -236,7 +236,10 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
           <CourseOverview courseId={course.id} setTab={onTabChange} />
         </TabsContent>
         <TabsContent value="review" className="max-md:px-4">
-          <CourseReview courseId={course.id} />
+          <CourseReview
+            courseId={course.id}
+            averageRating={course.averageRating}
+          />
         </TabsContent>
         <TabsContent value="announcement" className="max-md:px-4">
           <CourseAnnouncements courseId={course.id} />

@@ -505,7 +505,7 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
   .input(
     z.object({
       certificateId: z.string(),
-      isCourseWithSingleTrialExam: z.boolean().optional().default(false),
+      isCourseWithSingleTrialExam: z.boolean(),
     }),
   )
   .output(
@@ -513,6 +513,7 @@ const getUserDetailsByCertificateIdProcedure = publicProcedure
       courseId: z.string(),
       displayName: z.string(),
       uid: z.string(),
+      imgKey: z.string().nullable(),
     }),
   )
   .query(({ ctx, input }) => {
