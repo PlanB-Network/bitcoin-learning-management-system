@@ -11,7 +11,7 @@ export const TutorialTile = ({
   return (
     <div
       key={tutorial.id}
-      className="flex flex-col gap-2 items-center justify-center w-20 lg:w-24 h-full"
+      className="flex flex-col gap-2 items-center justify-start w-20 lg:w-24"
     >
       <Link
         to={`/tutorials/$category/$subcategory/${tutorial.name}-${tutorial.id}`}
