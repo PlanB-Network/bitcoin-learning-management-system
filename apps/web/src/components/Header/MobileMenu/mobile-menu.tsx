@@ -185,18 +185,14 @@ export const MobileMenu = ({
           />
           <Link
             to="/"
-            className={cn(
-              'text-lg font-medium leading-normal',
-              rtl ? 'mr-5' : 'ml-5',
-            )}
+            className={cn('text-lg font-medium leading-normal ml-5')}
           >
             {t('words.home')}
           </Link>
           <IoMdClose
             size={24}
             className={cn(
-              'text-maroon-7 dark:text-newGray-3 shrink-0 cursor-pointer',
-              rtl ? 'mr-auto' : 'ml-auto',
+              'text-maroon-7 dark:text-newGray-3 shrink-0 cursor-pointer ml-auto',
             )}
             onClick={toggleMobileMenu}
           />

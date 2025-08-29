@@ -93,9 +93,7 @@ export const LanguageSelector = ({
         className={cn(
           'flex flex-col items-center justify-center absolute z-50 bg-darkOrange-11 rounded-2xl w-[816px] px-8 py-6 max-h-fit overflow-y-scroll no-scrollbar',
           direction === 'down'
-            ? i18n.dir() === 'rtl'
-              ? 'top-7 -left-12'
-              : 'top-7 -right-12'
+            ? 'top-7 -right-12'
             : 'bottom-16 left-1/2 -translate-x-1/2',
           variantSelectorMapClass[variant],
         )}
@@ -217,7 +215,6 @@ export const LanguageSelectorMobile = ({
             className={cn(
               'transition-transform ease-in-out shrink-0',
               open && 'rotate-180',
-              i18n.dir() === 'rtl' && 'rotate-0',
             )}
           />
         </button>

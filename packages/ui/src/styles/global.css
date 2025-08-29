@@ -175,7 +175,6 @@
   --font-body: SpaceMono;
   --font-mono: Manrope;
   --font-poppins: Poppins;
-  --font-vazirmatn: Vazirmatn;
 
   --shadow-md-dark:
     0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
@@ -286,10 +285,6 @@
     font-family: var(--font-primary), sans-serif;
   }
 
-  [dir="rtl"] * {
-    font-family: var(--font-vazirmatn), var(--font-primary), sans-serif;
-  }
-
   *,
   :before,
   :after {
@@ -372,29 +367,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Vazirmatn";
-  font-weight: 400;
-  font-style: normal;
-  src: url("../assets/fonts/vazirmatn/Vazirmatn-Regular.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Vazirmatn";
-  font-weight: 500;
-  font-style: normal;
-  src: url("../assets/fonts/vazirmatn/Vazirmatn-Medium.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Vazirmatn";
-  font-weight: 700;
-  font-style: normal;
-  src: url("../assets/fonts/vazirmatn/Vazirmatn-Bold.ttf") format("truetype");
-  font-display: swap;
-}
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;

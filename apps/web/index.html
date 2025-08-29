@@ -1,7 +1,5 @@
-<!doctype html>
-    document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
-    document.documentElement.setAttribute("data-lang", userLang.split("-")[0]);
-  </script>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Plan ₿ Network</title>
@@ -10,7 +8,10 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#FF5C00" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <link rel="apple-touch-icon" href="/icons/192.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="/icons/512.png" />
     <script
@@ -19,9 +20,20 @@
       data-website-id="a7bef474-fe47-4500-97c9-c1d03f90635a"
     ></script>
   </head>
-  <body style="background-color: black;">
+  <body style="background-color: black">
     <div id="root" style="">
-        <img loading="lazy" alt="Orange pill" src="./src/assets/icons/footer_pill.webp?no-inline" style="width: 200px;position:absolute;left:50%;top:50%;transform: translate(-50%, -50%);">
+      <img
+        loading="lazy"
+        alt="Orange pill"
+        src="./src/assets/icons/footer_pill.webp?no-inline"
+        style="
+          width: 200px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        "
+      />
     </div>
     <script type="module" src="./src/main.tsx"></script>
   </body>
