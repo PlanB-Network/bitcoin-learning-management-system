@@ -18,7 +18,7 @@ const toastVariants = cva('md:!w-[299px] focus:ring-1 focus:ring-newGray-2', {
       primary:
         '!bg-darkOrange-0 dark:!bg-darkOrange-10 hover:!bg-darkOrange-1 hover:dark:!bg-darkOrange-9 focus:!bg-darkOrange-1 focus:dark:!bg-darkOrange-9',
       success:
-        '!bg-brightGreen-1 dark:!bg-brightGreen-9 hover:!bg-brightGreen-2 hover:dark:!bg-brightGreen-8 focus:!bg-brightGreen-2 focus:dark:!bg-brightGreen-8',
+        '!bg-green-50 dark:!bg-green-800 hover:!bg-green-100 hover:dark:!bg-green-700 focus:!bg-green-100 focus:dark:!bg-green-700',
       warning:
         '!bg-red-1 dark:!bg-red-9 hover:!bg-red-2 hover:dark:!bg-red-8 focus:!bg-red-2 focus:dark:!bg-red-8',
     },
@@ -50,7 +50,7 @@ const iconVariants = cva('shrink-0', {
     color: {
       neutral: '!text-newGray-3 dark:!text-newGray-2',
       primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
-      success: '!text-brightGreen-4 dark:!text-brightGreen-6',
+      success: '!text-green-300 dark:!text-green-500',
       warning: '!text-red-5',
     },
     mode: {
@@ -69,7 +69,7 @@ const progressBarVariants = cva('', {
     color: {
       neutral: '!bg-newGray-3 dark:!bg-newGray-2',
       primary: '!bg-darkOrange-4 dark:!bg-darkOrange-6',
-      success: '!bg-brightGreen-4 dark:!bg-brightGreen-6',
+      success: '!bg-green-300 dark:!bg-green-500',
       warning: '!bg-red-5',
     },
     mode: {
@@ -88,7 +88,7 @@ const toastCloseButtonVariants = cva('shrink-0', {
     color: {
       neutral: '!text-newGray-3 dark:!text-newGray-2',
       primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
-      success: '!text-brightGreen-4 dark:!text-brightGreen-6',
+      success: '!text-green-300 dark:!text-green-500',
       warning: '!text-red-5',
     },
     mode: {

@@ -9,7 +9,7 @@ const bannerVariants = cva('relative w-full rounded-lg border p-6', {
   },
   variants: {
     variant: {
-      success: 'bg-brightGreen-1 border-brightGreen-2 text-brightGreen-8',
+      success: 'bg-green-50 border-green-100 text-green-700',
       info: 'bg-maroon-1 border-maroon-2 text-maroon-7',
     },
   },

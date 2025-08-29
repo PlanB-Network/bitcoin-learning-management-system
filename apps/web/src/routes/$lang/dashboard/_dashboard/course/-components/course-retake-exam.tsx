@@ -172,7 +172,7 @@ const CourseExamsTable = ({
                   <span
                     className={cn(
                       'md:text-center font-medium w-[70px] md:w-[130px]',
-                      exam.succeeded ? 'text-brightGreen-6' : 'text-red-5',
+                      exam.succeeded ? 'text-green-500' : 'text-red-5',
                     )}
                   >
                     {exam.score}%
@@ -181,7 +181,7 @@ const CourseExamsTable = ({
                     <span
                       className={cn(
                         'max-md:hidden body-16px italic',
-                        exam.succeeded ? 'text-brightGreen-6' : 'text-red-5',
+                        exam.succeeded ? 'text-green-500' : 'text-red-5',
                       )}
                     >
                       {exam.succeeded

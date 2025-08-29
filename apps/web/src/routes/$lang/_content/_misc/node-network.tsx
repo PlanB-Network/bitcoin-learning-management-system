@@ -68,7 +68,6 @@ function NodeNetwork() {
       title={t('nodeNetwork.pageTitle')}
       subtitle={t('nodeNetwork.pageSubtitle')}
       description={t('nodeNetwork.description1')}
-      footerVariant="dark"
     >
       <div className="flex flex-col items-center text-white px-4 sm:px-10">
         <p className="px-2 max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px]  mt-1 md:mt-0 max-md:hidden">

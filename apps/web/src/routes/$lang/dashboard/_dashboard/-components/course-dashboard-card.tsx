@@ -38,7 +38,7 @@ export const CourseDashboardCard = ({
     const { progressPercentage } = progress;
     if (progressPercentage === 100) {
       return {
-        bgColor: 'bg-brightGreen-4',
+        bgColor: 'bg-green-300',
         text: t('dashboard.myCourses.completed'),
       };
     }

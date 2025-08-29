@@ -91,11 +91,7 @@ function ChangeEmailPreferences() {
   if (!isFetched) return null;
 
   return (
-    <PageLayout
-      variant="light"
-      footerVariant="light"
-      className="max-w-xl mx-auto"
-    >
+    <PageLayout className="max-w-xl mx-auto">
       <h1 className="title-medium-sb-18px md:title-large-sb-24px mb-4 md:mb-8 text-newBlack-1">
         {t('dashboard.profile.notificationSettings.emailPreferencesTitle')}
       </h1>

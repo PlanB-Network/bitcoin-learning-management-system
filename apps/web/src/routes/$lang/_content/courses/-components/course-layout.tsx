@@ -7,7 +7,7 @@ export const CourseLayout = ({
   children: JSX.Element | JSX.Element[];
 }) => {
   return (
-    <MainLayout variant="light">
+    <MainLayout>
       <div className="flex flex-col grow w-full bg-white relative">
         {children}
       </div>

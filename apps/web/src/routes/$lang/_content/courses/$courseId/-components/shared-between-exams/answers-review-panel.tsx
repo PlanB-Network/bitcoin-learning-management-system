@@ -35,8 +35,8 @@ export const AnswersReviewPanel = ({
               'size-8 md:size-10 flex justify-center items-center border border-newGray-1 rounded-lg label-medium-med-16px md:title-large-24px text-newBlack-1',
               q.userAnswer === q.answers.find((ans) => ans.correctAnswer)?.order
                 ? selectedQuestion === index
-                  ? 'bg-brightGreen-4'
-                  : 'bg-brightGreen-2 hover:bg-brightGreen-4'
+                  ? 'bg-green-300'
+                  : 'bg-green-100 hover:bg-green-300'
                 : selectedQuestion === index
                   ? 'bg-red-4'
                   : 'bg-red-2 hover:bg-red-4',

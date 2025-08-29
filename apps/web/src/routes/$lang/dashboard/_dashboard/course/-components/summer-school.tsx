@@ -95,7 +95,7 @@ export const SummerSchool = ({ courseId }: { courseId: string }) => {
             <>
               <Banner
                 variant="success"
-                icon={<CheckPixel className="fill-brightGreen-6" />}
+                icon={<CheckPixel className="fill-green-500" />}
               >
                 <BannerTitle>You've successfully enrolled!</BannerTitle>
               </Banner>
@@ -120,7 +120,7 @@ export const SummerSchool = ({ courseId }: { courseId: string }) => {
           ) : (
             <Banner
               variant="success"
-              icon={<SuccessParty className="fill-brightGreen-6" />}
+              icon={<SuccessParty className="fill-green-500" />}
             >
               <BannerTitle>
                 Congratulations! You have been selected to participate in the

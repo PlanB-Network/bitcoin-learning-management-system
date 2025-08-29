@@ -119,7 +119,7 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
           <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
             <div className="flex flex-col items-center gap-5">
               {hasPassed && (
-                <SuccessExam className="size-7 md:size-9 fill-brightGreen-6" />
+                <SuccessExam className="size-7 md:size-9 fill-green-500" />
               )}
               <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
                 {hasPassed
@@ -131,7 +131,7 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
               <div className={scoreAndRankingClasses}>
                 <span
                   className={cn(
-                    hasPassed ? 'text-brightGreen-6' : 'text-red-5',
+                    hasPassed ? 'text-green-500' : 'text-red-5',
                     'title-large-sb-24px md:display-small-med-32px',
                   )}
                 >

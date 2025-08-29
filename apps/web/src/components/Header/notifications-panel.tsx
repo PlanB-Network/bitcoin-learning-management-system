@@ -6,6 +6,7 @@ import { t } from 'i18next';
 import { useContext, useState } from 'react';
 import { FaBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
+import { TbBell } from 'react-icons/tb';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
 import {
   getNotificationContent,
@@ -19,20 +20,13 @@ import { trpc } from '#src/utils/trpc.ts';
 interface NotificationItemProps {
   notification: JoinedUserNotification;
   onClose?: () => void;
-  mode?: 'dark' | 'light';
 }
 
 interface NotificationsPanelProps {
   className?: string;
-  variant?: 'light' | 'dark';
-  headerVariant?: 'light' | 'dark';
 }
 
-export const NotificationsPanel = ({
-  className,
-  variant = 'dark',
-  headerVariant = 'dark',
-}: NotificationsPanelProps) => {
+export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { userNotifications, fetchUserNotifications } =
@@ -55,10 +49,6 @@ export const NotificationsPanel = ({
     markNotificationsAsRead.mutate({ notificationIds: [id] });
   };
 
-  if (!isOpen && unreadNotifications.length === 0) {
-    return null;
-  }
-
   return (
     <>
       <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -66,20 +56,20 @@ export const NotificationsPanel = ({
           <button
             type="button"
             className={cn(
-              'max-lg:hidden group z-50 flex size-13 items-center justify-center gap-2 rounded-2xl text-sm font-semibold outline-hidden transition-all hover:bg-darkOrange-4 hover:dark:bg-newBlack-3 lg:gap-2.5 relative',
+              'max-lg:hidden group z-50 flex items-center justify-center text-sm font-semibold outline-hidden transition-all lg:gap-2.5 relative',
               className,
-              headerVariant === 'dark' && 'dark',
             )}
             aria-label="Toggle notifications panel"
           >
-            <FaBell className="text-newBlack-1 dark:text-white" size={20} />
-            <div className="absolute top-4 right-3 rounded-full size-3 bg-darkOrange-2 dark:bg-darkOrange-5" />
+            <TbBell className="text-newGray-1" size={24} />
+            {unreadNotifications.length > 0 && (
+              <div className="absolute top-0.5 right-0.5 rounded-full size-2.5 bg-darkOrange-2" />
+            )}
           </button>
         </PopoverTrigger>
         <PopoverContent
           className={cn(
-            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 dark:bg-newBlack-3 border border-newGray-5 dark:border-newBlack-4 shadow-course-navigation-sm',
-            variant === 'dark' && 'dark',
+            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 border border-newGray-5 shadow-course-navigation-sm',
           )}
           onClick={(e) => e.stopPropagation()}
         >
@@ -92,7 +82,6 @@ export const NotificationsPanel = ({
                   key={notification.id}
                   notification={notification}
                   onClose={() => handleCloseNotification(notification.id)}
-                  mode={variant === 'dark' ? 'dark' : 'light'}
                 />
               ))}
             </div>
@@ -100,7 +89,7 @@ export const NotificationsPanel = ({
             {unreadNotifications.length > 5 && <ViewMoreButton />}
 
             {!hasUnreadNotifications && (
-              <p className="w-full p-4 text-center text-newBlack-1 dark:text-newGray-6 subtitle-small-caps-14px">
+              <p className="w-full p-4 text-center text-newBlack-1 subtitle-small-caps-14px">
                 {t('notifications.noUnreadNotifications')}
               </p>
             )}
@@ -114,36 +103,29 @@ export const NotificationsPanel = ({
         className={cn(
           'lg:hidden flex items-center justify-center relative',
           className,
-          variant === 'dark' && 'dark',
         )}
         aria-label="View notifications"
       >
-        <FaBell className="text-newBlack-1 dark:text-white" size={24} />
-        <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2 dark:bg-darkOrange-5" />
+        <FaBell className="text-newBlack-1 " size={24} />
+        <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2" />
       </Link>
     </>
   );
 };
 
-const NotificationItem = ({
-  notification,
-  onClose,
-  mode = 'dark',
-}: NotificationItemProps) => {
+const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const tagVariant =
     isHovered || isTeacherAnnouncementType(notification.type)
       ? 'orange'
       : 'grey';
-  const tagMode = mode === 'dark' ? 'dark100' : 'light100';
 
   return (
     <div
       className={cn(
         'group flex w-full items-start self-stretch',
-        isHovered &&
-          'bg-darkOrange-0 dark:bg-darkOrange-10 border-l border-darkOrange-4 dark:border-darkOrange-6',
+        isHovered && 'bg-darkOrange-0 border-l border-darkOrange-4 ',
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -165,11 +147,11 @@ const NotificationItem = ({
                   'size-full',
                   isTeacherAnnouncementType(notification.type)
                     ? 'text-darkOrange-6'
-                    : 'text-newBlack-1 dark:text-newGray-4',
+                    : 'text-newBlack-1',
                 ),
               )}
             </div>
-            <TextTag variant={tagVariant} mode={tagMode} size="verySmall">
+            <TextTag variant={tagVariant} mode="light100" size="verySmall">
               {getNotificationTitle(
                 notification.type,
                 notification.courseId || undefined,
@@ -178,7 +160,7 @@ const NotificationItem = ({
           </div>
           <div className="size-2 rounded-full bg-darkOrange-5" />
         </div>
-        <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6 line-clamp-6 whitespace-pre-line">
+        <p className="self-stretch body-14px text-newBlack-1 line-clamp-6 whitespace-pre-line">
           {notification.content ||
             getNotificationContent(
               notification.type,
@@ -196,7 +178,7 @@ const NotificationItem = ({
               e.stopPropagation();
               onClose();
             }}
-            className="flex size-5 items-center justify-center text-newGray-1 hover:text-newGray-2 dark:text-newGray-3 dark:hover:text-newGray-4"
+            className="flex size-5 items-center justify-center text-newGray-1 hover:text-newGray-2"
             aria-label="Dismiss notification"
           >
             <IoMdClose className="size-full" />
@@ -209,13 +191,13 @@ const NotificationItem = ({
 
 const NotificationsHeader = () => {
   return (
-    <div className="flex w-full items-center justify-between self-stretch px-5 py-2 border-b border-newGray-4 dark:border-newGray-1">
-      <h3 className="flex subtitle-large-18px text-newBlack-5 dark:text-white">
+    <div className="flex w-full items-center justify-between self-stretch px-5 py-2 border-b border-newGray-4">
+      <h3 className="flex subtitle-large-18px text-newBlack-5">
         {t('notifications.notifications')}
       </h3>
       <Link
         to="/dashboard/notifications"
-        className="flex items-center justify-center gap-2.5 overflow-hidden rounded-lg px-2.5 text-base font-normal text-newBlack-5 dark:text-white hover:text-darkOrange-5 underline"
+        className="flex items-center justify-center gap-2.5 overflow-hidden rounded-lg px-2.5 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline"
       >
         {t('home.blogSection.seeAll')}
       </Link>
@@ -227,7 +209,7 @@ const ViewMoreButton = () => {
   return (
     <Link
       to="/dashboard/notifications"
-      className="flex w-full items-center px-4 py-3 text-base font-normal text-newBlack-5 dark:text-white hover:text-darkOrange-5 underline border-t border-newGray-4 dark:border-newGray-1"
+      className="flex w-full items-center px-4 py-3 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline border-t border-newGray-4"
     >
       {t('words.viewMore')}
     </Link>

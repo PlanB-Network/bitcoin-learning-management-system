@@ -3,7 +3,7 @@ import { NotFoundDashboard } from './not-found-dashboard.tsx';
 
 export function NotFound() {
   return (
-    <MainLayout footerVariant="dark">
+    <MainLayout>
       <NotFoundDashboard />
     </MainLayout>
   );

@@ -86,7 +86,7 @@ export const CourseTableMobile = ({
 
     if (progressPercentage === 100) {
       return {
-        bgColor: isSelected ? 'bg-brightGreen-5' : 'bg-brightGreen-4',
+        bgColor: isSelected ? 'bg-green-400' : 'bg-green-300',
         text: t('dashboard.myCourses.completed'),
       };
     }
@@ -229,7 +229,7 @@ export const CourseTableMobile = ({
                               }
                             }}
                           >
-                            <span className="text-center text-brightGreen-11 body-medium-12px uppercase !leading-[110%]">
+                            <span className="text-center text-green-950 body-medium-12px uppercase !leading-[110%]">
                               {course.index.slice(0, 3)}
                               <br />
                               {course.index.slice(3)}

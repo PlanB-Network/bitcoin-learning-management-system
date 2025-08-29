@@ -51,6 +51,14 @@ interface AppContext {
 
   university: string | null;
   setUniversity: (university: string | null) => void;
+
+  // Sidebar open state
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (isOpen: boolean) => void;
+
+  // Sidebar current tab
+  currentSidebarTab: string;
+  setCurrentSidebarTab: (tab: string) => void;
 }
 
 export const AppContext = createContext<AppContext>({
@@ -59,6 +67,8 @@ export const AppContext = createContext<AppContext>({
   courses: null,
   fetchUserDetailsAndSettings: async () => {},
   hasSeenRegisterToast: false,
+  isSidebarOpen: false,
+  currentSidebarTab: 'learn',
   refetchCourses: async () => {},
   session: undefined,
   setAccountSettings: () => {},
@@ -68,6 +78,8 @@ export const AppContext = createContext<AppContext>({
   setSession: () => {},
   setTutorials: () => {},
   setUniversity: () => {},
+  setIsSidebarOpen: () => {},
+  setCurrentSidebarTab: () => {},
   setUser: () => {},
   tutorials: null,
   university: null,
@@ -89,6 +101,10 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+
+  const [currentSidebarTab, setCurrentSidebarTab] = useState<string>('learn');
 
   const [university, setUniversityState] = useState<string | null>(() => {
     return getStoredUniversity();
@@ -211,6 +227,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     courses,
     fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
+    isSidebarOpen,
+    currentSidebarTab,
     refetchCourses,
     session,
     setAccountSettings,
@@ -220,6 +238,8 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     setSession,
     setTutorials,
     setUniversity,
+    setIsSidebarOpen,
+    setCurrentSidebarTab,
     setUser,
     tutorials,
     university,

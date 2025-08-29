@@ -14,8 +14,6 @@ const BlogsAndNewsLayout = ({ children }: BlogsAndNewsLayoutProps) => {
 
   return (
     <PageLayout
-      variant="light"
-      footerVariant="light"
       title={t('publicCommunication.title')}
       description={t('publicCommunication.description')}
     >

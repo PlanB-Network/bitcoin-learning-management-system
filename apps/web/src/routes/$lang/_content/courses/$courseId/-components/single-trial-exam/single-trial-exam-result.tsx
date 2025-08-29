@@ -47,7 +47,7 @@ export const SingleTrialExamResult = ({
         <>
           <section className="flex flex-col w-full">
             <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-2 md:gap-8 bg-newGray-6 rounded-[20px] shadow-course-navigation w-full self-center">
-              <SuccessExam className="size-7 md:size-10 fill-brightGreen-5" />
+              <SuccessExam className="size-7 md:size-10 fill-green-400" />
               <p className="text-newBlack-1 label-medium-16px md:title-large-24px !font-semibold max-md:w-[194px] text-center">
                 {t('courses.exam.completed')}
               </p>

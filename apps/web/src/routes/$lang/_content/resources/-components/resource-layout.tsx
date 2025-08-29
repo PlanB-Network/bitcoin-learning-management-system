@@ -45,7 +45,7 @@ export const ResourceLayout = ({
   showResourcesDropdownMenu = true,
 }: Props) => {
   return (
-    <MainLayout footerVariant="dark">
+    <MainLayout>
       <div
         className={cn(
           'flex h-fit justify-center p-4 md:p-10 relative',

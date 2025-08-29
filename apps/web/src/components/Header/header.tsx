@@ -8,7 +8,6 @@ import { TbWorld } from 'react-icons/tb';
 import miningSvg from '#src/assets/courses/mining.svg';
 import bitcoinSvg from '#src/assets/icons/bitcoin.svg';
 import businessSvg from '#src/assets/icons/business.svg';
-import profileLogInBlack from '#src/assets/icons/profile_log_in_black.svg';
 import profileLogInWhite from '#src/assets/icons/profile_log_in_white.svg';
 import protocolSvg from '#src/assets/icons/protocol.svg';
 import searchMobileSvg from '#src/assets/icons/search-mobile.svg';
@@ -34,14 +33,11 @@ import { MobileMenu } from './MobileMenu/mobile-menu.tsx';
 import type { NavigationSection, NavigationSectionMobile } from './props.ts';
 
 interface HeaderProps {
-  variant?: 'light' | 'dark';
-  notificationPanelVariant?: 'light' | 'dark';
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (isOpen: boolean) => void;
 }
 
-export const Header = ({
-  variant = 'dark',
-  notificationPanelVariant = 'dark',
-}: HeaderProps) => {
+export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
   const { t } = useTranslation();
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
@@ -367,8 +363,7 @@ export const Header = ({
             toggleMobileMenu();
           },
           id: 'dashboard',
-          mobileIcon:
-            variant === 'light' ? profileLogInBlack : profileLogInWhite,
+          mobileIcon: profileLogInWhite,
           removeFilterOnIcon: true,
           title: t('dashboard.studentDashboard'),
         }
@@ -379,8 +374,7 @@ export const Header = ({
             toggleMobileMenu();
           },
           id: 'login',
-          mobileIcon:
-            variant === 'light' ? profileLogInBlack : profileLogInWhite,
+          mobileIcon: profileLogInWhite,
           removeFilterOnIcon: true,
           title: t('menu.login'),
         },
@@ -395,8 +389,7 @@ export const Header = ({
   return (
     <header
       className={cn(
-        'sticky left-0 top-0 z-40 flex w-full flex-row justify-between py-3 px-4 lg:min-h-24 lg:px-12 lg:py-3',
-        variant === 'light' ? 'bg-darkOrange-5' : 'bg-headerDark',
+        'fixed left-1/2 top-0 z-40 flex w-full max-w-[1440px] -translate-x-1/2 flex-row justify-between py-3 px-4 bg-header',
       )}
     >
       <FlyingMenu
@@ -409,8 +402,8 @@ export const Header = ({
           openAuthModal();
         }}
         sections={desktopSections}
-        variant={variant}
-        notificationPanelVariant={notificationPanelVariant}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
       />
 
       <MobileMenu
@@ -419,7 +412,6 @@ export const Header = ({
           openAuthModal();
         }}
         sections={[...mobileSections]}
-        variant={variant}
         isMobileMenuOpen={isMobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
         isMobileDashboardMenuOpen={isMobileDashboardMenuOpen}

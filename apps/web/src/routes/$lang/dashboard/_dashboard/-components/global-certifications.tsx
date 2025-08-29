@@ -208,7 +208,7 @@ const BCertResult = ({
         <td
           className={cn(
             'font-medium items-center pl-3 py-4',
-            hasPassed ? 'text-brightGreen-6' : 'text-red-5',
+            hasPassed ? 'text-green-500' : 'text-red-5',
           )}
         >
           {(examScore * 100) / (bcertResult.results.length * 20)}%
@@ -216,7 +216,7 @@ const BCertResult = ({
         <td
           className={cn(
             'italic pl-3 md:pl-8 py-4 max-md:hidden',
-            hasPassed ? 'text-brightGreen-6' : 'text-red-5',
+            hasPassed ? 'text-green-500' : 'text-red-5',
           )}
         >
           {hasPassed ? t('words.passed') : t('words.failed')}

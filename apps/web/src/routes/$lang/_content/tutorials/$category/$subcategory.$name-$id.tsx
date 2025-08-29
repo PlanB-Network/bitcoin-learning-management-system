@@ -414,10 +414,8 @@ function TutorialDetails() {
                 isLoggedIn ? handleLike() : openAuthModal();
               }}
               className={cn(
-                'py-3.5 px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-brightGreen-6 focus:border-brightGreen-8',
-                isLiked.liked
-                  ? 'bg-brightGreen-1'
-                  : 'hover:bg-brightGreen-1 bg-white',
+                'py-3.5 px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-green-500 focus:border-green-700',
+                isLiked.liked ? 'bg-green-50' : 'hover:bg-green-50 bg-white',
               )}
             >
               <img src={ThumbUp} alt="" className="size-9 md:size-12" />
@@ -443,7 +441,7 @@ function TutorialDetails() {
   };
   const isOriginalLanguage = tutorial?.language === tutorial?.originalLanguage;
   return (
-    <MainLayout variant="light">
+    <MainLayout>
       <TutorialLayout
         currentCategory={tutorial?.category}
         currentSubcategory={tutorial?.subcategory}

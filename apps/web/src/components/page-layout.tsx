@@ -10,8 +10,6 @@ interface Props {
   subtitle?: string;
   description?: string;
   link?: string;
-  variant?: 'light' | 'dark';
-  footerVariant?: 'dark' | 'light';
   children?: ReactNode;
   className?: string;
   maxWidth?: string;
@@ -24,8 +22,6 @@ export const PageLayout = ({
   subtitle,
   description,
   link,
-  variant = 'dark',
-  footerVariant = 'dark',
   children,
   className,
   maxWidth = 'max-w-6xl',
@@ -33,7 +29,7 @@ export const PageLayout = ({
   hideDescriptionOnMobile = true,
 }: Props) => {
   return (
-    <MainLayout variant={variant} footerVariant={footerVariant}>
+    <MainLayout>
       <div
         className={cn('flex h-fit justify-center', className, paddingXClasses)}
       >

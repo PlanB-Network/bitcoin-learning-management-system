@@ -977,7 +977,7 @@ const DescriptionAndObjectives = memo(
         {course.presentationMarkdown ? (
           <>
             <Divider width="w-full" className="mt-9 max-md:mb-6" />
-            <section className="text-blue-1000 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
+            <section className="text-blue-950 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
               <Suspense fallback={<Loader size={'s'} />}>
                 <PresentationMarkdownBody
                   content={course.presentationMarkdown}

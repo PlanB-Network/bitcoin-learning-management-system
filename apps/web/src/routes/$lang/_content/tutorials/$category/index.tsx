@@ -102,7 +102,7 @@ function TutorialCategory() {
   };
 
   return (
-    <MainLayout variant="light">
+    <MainLayout>
       <TutorialLayout currentCategory={category}>
         <PageMeta
           title={`${SITE_NAME} - ${capitalize(tutorialCategory!.name)}`}
