@@ -38,6 +38,12 @@ export const LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT = [
   'zh-Hant',
 ];
 
+export const RTL_LANGUAGES = ['ar', 'fa', 'he', 'ur', 'ps', 'dv', 'ku', 'yi'];
+
+export function isRTL(lang: string): boolean {
+  return RTL_LANGUAGES.includes(lang.split('-')[0]);
+}
+
 export const getLanguageName = (language: string) =>
   LANGUAGES_MAP[language.replace('-', '').toLowerCase()] ?? language;
 

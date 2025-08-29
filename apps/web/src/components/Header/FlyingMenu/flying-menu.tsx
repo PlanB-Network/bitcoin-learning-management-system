@@ -1,8 +1,9 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-
+import { useTranslation } from 'react-i18next';
 import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import PlanBLogoWhite from '../../../assets/logo/planb_logo_horizontal_white_whitepill.svg?react';
+import { isRTL } from '../../../utils/i18n.ts';
 import { MetaElements } from '../meta-elements.tsx';
 import type { NavigationSection } from '../props.ts';
 
@@ -23,8 +24,14 @@ export const FlyingMenu = ({
   variant = 'dark',
   notificationPanelVariant = 'dark',
 }: FlyingMenuProps) => {
+  const { i18n } = useTranslation();
+  const rtl = isRTL(i18n.language);
   return (
-    <nav className="flex w-full flex-row items-center justify-between max-lg:hidden">
+    <nav
+      className={cn(
+        'flex w-full flex-row items-center justify-between max-lg:hidden',
+      )}
+    >
       <Link to="/" className="mr-auto">
         {variant === 'light' ? (
           <PlanBLogoWhite className="h-auto lg:w-32 xl:w-40" />
@@ -38,11 +45,12 @@ export const FlyingMenu = ({
           variant === 'light'
             ? 'bg-darkOrange-2 text-black'
             : 'bg-newBlack-3 text-white',
+          rtl && 'flex-row-reverse',
         )}
       >
         {sections.map((section) => (
-          <li key={section.id}>
-            <FlyingMenuSection section={section} variant={variant} />
+          <li key={section.id} className={rtl ? 'text-right' : ''}>
+            <FlyingMenuSection section={section} variant={variant} rtl={rtl} />
           </li>
         ))}
       </ul>

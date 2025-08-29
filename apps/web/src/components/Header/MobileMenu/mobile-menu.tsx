@@ -12,6 +12,7 @@ import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
 import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black_blackpill.svg?react';
 import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
+import { isRTL } from '../../../utils/i18n.ts';
 import { LanguageSelectorMobile } from '../language-selector.tsx';
 import { NotificationsPanel } from '../notifications-panel.tsx';
 import type { NavigationSectionMobile } from '../props.ts';
@@ -36,7 +37,8 @@ export const MobileMenu = ({
   isMobileDashboardMenuOpen,
   toggleDashboardMenu,
 }: MobileMenuProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const rtl = isRTL(i18n.language);
   const { session, user } = useContext(AppContext);
   const isLoggedIn = !!session;
 
@@ -156,8 +158,15 @@ export const MobileMenu = ({
 
       <nav
         className={cn(
-          'flex flex-col fixed top-0 left-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2  border-r border-darkOrange-4 dark:border-r dark:border-newBlack-4',
-          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
+          'flex flex-col fixed top-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2 border-darkOrange-4 dark:border-newBlack-4',
+          rtl
+            ? 'right-0 border-l dark:border-l'
+            : 'left-0 border-r dark:border-r',
+          isMobileMenuOpen
+            ? 'translate-x-0'
+            : rtl
+              ? 'translate-x-full'
+              : '-translate-x-full',
           variant === 'dark' && 'dark',
         )}
         ref={mobileMenuRef}
@@ -174,12 +183,21 @@ export const MobileMenu = ({
             size={25}
             onClick={toggleMobileMenu}
           />
-          <Link to="/" className="ml-5 text-lg font-medium leading-normal">
+          <Link
+            to="/"
+            className={cn(
+              'text-lg font-medium leading-normal',
+              rtl ? 'mr-5' : 'ml-5',
+            )}
+          >
             {t('words.home')}
           </Link>
           <IoMdClose
             size={24}
-            className="text-maroon-7 dark:text-newGray-3 shrink-0 ml-auto cursor-pointer"
+            className={cn(
+              'text-maroon-7 dark:text-newGray-3 shrink-0 cursor-pointer',
+              rtl ? 'mr-auto' : 'ml-auto',
+            )}
             onClick={toggleMobileMenu}
           />
         </div>

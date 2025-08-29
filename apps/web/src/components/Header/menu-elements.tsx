@@ -8,12 +8,14 @@ export interface MenuElementProps {
   element: NavigationElement;
   variant?: 'dark' | 'light';
   isMultipleSubSectionChildren?: boolean;
+  rtl?: boolean;
 }
 
 export const MenuElement = ({
   element,
   variant,
   isMultipleSubSectionChildren,
+  rtl,
 }: MenuElementProps) => {
   const item = useMemo(
     () => (
@@ -22,6 +24,7 @@ export const MenuElement = ({
         className={cn(
           'group flex w-full cursor-pointer gap-5 rounded-md py-2 px-2.5',
           variant === 'light' ? 'hover:bg-darkOrange-1' : 'hover:bg-white/10',
+          rtl && 'flex-row-reverse',
         )}
       >
         {element.icon && (
@@ -39,11 +42,17 @@ export const MenuElement = ({
             />
           </div>
         )}
-        <div className="flex flex-col items-start justify-center truncate">
+        <div
+          className={cn(
+            'flex flex-col items-start justify-center truncate',
+            rtl && 'items-end',
+          )}
+        >
           <h5
             className={cn(
               'text-lg leading-normal tracking-015px',
               variant === 'light' ? 'text-black' : 'text-white',
+              rtl && 'text-right',
             )}
           >
             {element.title}
@@ -56,6 +65,7 @@ export const MenuElement = ({
                 isMultipleSubSectionChildren
                   ? 'w-40 xl:w-[240px] 2xl:w-[316px]'
                   : 'w-[316px]',
+                rtl && 'text-right',
               )}
             >
               {element.description}
@@ -64,7 +74,7 @@ export const MenuElement = ({
         </div>
       </div>
     ),
-    [element, variant, isMultipleSubSectionChildren],
+    [element, variant, isMultipleSubSectionChildren, rtl],
   );
 
   return 'path' in element ? (

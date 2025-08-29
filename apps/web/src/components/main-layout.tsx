@@ -2,6 +2,7 @@ import { cn, customToast, ScrollToTopButton } from '@blms/ui';
 import { type JSX, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
+import { isRTL } from '../utils/i18n.ts';
 import { Footer } from './footer.tsx';
 import { Header } from './Header/header.tsx';
 
@@ -20,7 +21,7 @@ export const MainLayout = ({
   footerVariant,
   headerVariant,
 }: MainLayoutProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const box = useRef<HTMLDivElement | null>(null);
 
   const bgColorClasses = {
@@ -57,6 +58,7 @@ export const MainLayout = ({
         bgColorClasses[variant],
       )}
       ref={box}
+      dir={isRTL(i18n.language) ? 'rtl' : 'ltr'}
     >
       {/* Display titlebar on pear app */}
       {import.meta.env.VITE_PEAR_ENVIRONMENT ? (
