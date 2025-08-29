@@ -202,40 +202,41 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
       style={{ willChange: 'width' }}
     >
       {user &&
-        (canAccess(UserRole.Admin)(user) || canAccess(UserRole.Professor)) && (
-          <SegmentedControl
-            variant="outline"
-            defaultValue={'learn'}
-            value={currentTab}
-            className={cn(isSidebarOpen ? '' : 'hidden')}
-          >
-            {canAccess(UserRole.Admin)(user) && (
-              <SegmentedControlItem
-                value={'admin'}
-                key={'admin'}
-                onClick={() => setCurrentTab('admin')}
-              >
-                <p className="w-29">{t('navbar.tabs.admin')}</p>
-              </SegmentedControlItem>
-            )}
-            {user?.professorId && canAccess(UserRole.Professor)(user) && (
-              <SegmentedControlItem
-                value={'teach'}
-                key={'teach'}
-                onClick={() => setCurrentTab('teach')}
-              >
-                <p className="w-29">{t('navbar.tabs.teach')}</p>
-              </SegmentedControlItem>
-            )}
+      (canAccess(UserRole.Admin)(user) ||
+        canAccess(UserRole.Professor)(user)) ? (
+        <SegmentedControl
+          variant="outline"
+          defaultValue={'learn'}
+          value={currentTab}
+          className={cn(isSidebarOpen ? '' : 'hidden')}
+        >
+          {canAccess(UserRole.Admin)(user) && (
             <SegmentedControlItem
-              value={'learn'}
-              key={'learn'}
-              onClick={() => setCurrentTab('learn')}
+              value={'admin'}
+              key={'admin'}
+              onClick={() => setCurrentTab('admin')}
             >
-              <p className="w-29">{t('navbar.tabs.learn')}</p>
+              <p className="w-29">{t('navbar.tabs.admin')}</p>
             </SegmentedControlItem>
-          </SegmentedControl>
-        )}
+          )}
+          {user?.professorId && canAccess(UserRole.Professor)(user) && (
+            <SegmentedControlItem
+              value={'teach'}
+              key={'teach'}
+              onClick={() => setCurrentTab('teach')}
+            >
+              <p className="w-29">{t('navbar.tabs.teach')}</p>
+            </SegmentedControlItem>
+          )}
+          <SegmentedControlItem
+            value={'learn'}
+            key={'learn'}
+            onClick={() => setCurrentTab('learn')}
+          >
+            <p className="w-29">{t('navbar.tabs.learn')}</p>
+          </SegmentedControlItem>
+        </SegmentedControl>
+      ) : null}
 
       {currentTab === 'learn' && (
         <>
