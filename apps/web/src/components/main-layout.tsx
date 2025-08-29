@@ -195,7 +195,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
   return (
     <nav
       className={cn(
-        'fixed flex flex-col top-18 px-4 h-[calc(100vh-[72px])] overflow-y-auto max-lg:hidden no-scrollbar transition-all ease-in-out gap-3',
+        'fixed flex flex-col top-18 px-4 h-[calc(100vh-72px)] overflow-y-auto max-lg:hidden no-scrollbar transition-all ease-in-out gap-3',
         isSidebarOpen ? openWidth : closedWidth,
       )}
       // help the browser optimize the animation
