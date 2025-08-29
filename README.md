@@ -4,7 +4,7 @@ This is the repository for the Plan B Network website. The goal of this project 
 
 The repository holding the data for this project is [here](https://github.com/PlanB-Network/bitcoin-educational-content).
 
-We are looking for contributors! If you want to help or learn more about the project, please reach out to us on [Twitter](https://twitter.com/planb_network) or [Discord](https://discord.com/invite/CHvZAhJCBh).
+We are looking for contributors! If you want to help or learn more about the project, please reach out to us on [X/Twitter](https://x.com/planb_network) or [Discord](https://discord.com/invite/CHvZAhJCBh).
 
 ## Development - Run the project locally
 
