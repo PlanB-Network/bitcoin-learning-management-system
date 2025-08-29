@@ -21,8 +21,6 @@ export const FlyingMenu = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }: FlyingMenuProps) => {
-  const { i18n } = useTranslation();
-  const rtl = isRTL(i18n.language);
   return (
     <nav className="flex w-full flex-row items-center justify-between max-lg:hidden">
       <div className="flex items-center gap-4 px-4 py-3">
