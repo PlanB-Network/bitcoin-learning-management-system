@@ -1,3 +1,5 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import type {
   JoinedBlogLight,
   JoinedCourse,
@@ -9,7 +11,6 @@ import type {
 import type { PropsWithChildren } from 'react';
 import { createContext, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { trpcClient } from '#src/utils/trpc.js';
 
 interface Session {
@@ -102,9 +103,10 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
   const [currentSidebarTab, setCurrentSidebarTab] = useState<string>('learn');
+  const [hasInitializedTab, setHasInitializedTab] = useState<boolean>(false);
 
   const [university, setUniversityState] = useState<string | null>(() => {
     return getStoredUniversity();
@@ -221,6 +223,18 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       .catch(() => {});
   }, [i18n.language]);
 
+  useEffect(() => {
+    if (user !== undefined && !hasInitializedTab) {
+      const defaultTab = getDefaultTabForUser(user);
+      setCurrentSidebarTab(defaultTab);
+      setHasInitializedTab(true);
+    }
+  }, [user, hasInitializedTab]);
+
+  useEffect(() => {
+    setHasInitializedTab(false);
+  }, [user?.uid]);
+
   const appContext: AppContext = {
     accountSettings,
     blogs,
@@ -302,4 +316,13 @@ const setStoredUniversity = (university: string | null): void => {
   } catch (err) {
     console.error('Failed to set university in localStorage:', err);
   }
+};
+
+// Helper function to determine the correct tab based on user role
+const getDefaultTabForUser = (user: UserDetails | null | undefined): string => {
+  if (!user) return 'learn';
+
+  if (canAccess(UserRole.Admin)(user)) return 'admin';
+  if (canAccess(UserRole.Professor)(user)) return 'teach';
+  return 'learn';
 };

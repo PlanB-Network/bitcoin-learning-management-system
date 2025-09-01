@@ -252,66 +252,71 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                 !window.location.pathname.includes('/dashboard')
               }
               isSidebarOpen={isSidebarOpen}
+              isMain
             />
           </div>
           {isLoggedIn && (
             <>
               <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-              <SideBarItem
-                icon={Pages}
-                iconColor="blue"
-                label={t('navbar.myCourses')}
-                link="/dashboard/courses"
-                isActive={window.location.pathname.includes(
-                  '/dashboard/course',
-                )}
-                isSidebarOpen={isSidebarOpen}
-              />
-              <SideBarItem
-                icon={Calendar}
-                iconColor="green"
-                label={t('navbar.myCalendar')}
-                link="/dashboard/calendar"
-                isActive={window.location.pathname.includes(
-                  '/dashboard/calendar',
-                )}
-                isSidebarOpen={isSidebarOpen}
-              />
-              {user?.boughtCourses.some((courseId) =>
-                COURSES_CAREER_ACCESS.includes(courseId),
-              ) ? (
+              <div className="flex flex-col gap-1">
                 <SideBarItem
-                  icon={Luggage}
-                  iconColor="purple"
-                  label={t('navbar.myCareer')}
-                  link="/dashboard/career-portal"
+                  icon={Pages}
+                  iconColor="blue"
+                  label={t('navbar.myCourses')}
+                  link="/dashboard/courses"
                   isActive={window.location.pathname.includes(
-                    '/dashboard/career-portal',
+                    '/dashboard/course',
                   )}
                   isSidebarOpen={isSidebarOpen}
                 />
-              ) : null}
+                <SideBarItem
+                  icon={Calendar}
+                  iconColor="green"
+                  label={t('navbar.myCalendar')}
+                  link="/dashboard/calendar"
+                  isActive={window.location.pathname.includes(
+                    '/dashboard/calendar',
+                  )}
+                  isSidebarOpen={isSidebarOpen}
+                />
+                {user?.boughtCourses.some((courseId) =>
+                  COURSES_CAREER_ACCESS.includes(courseId),
+                ) ? (
+                  <SideBarItem
+                    icon={Luggage}
+                    iconColor="purple"
+                    label={t('navbar.myCareer')}
+                    link="/dashboard/career-portal"
+                    isActive={window.location.pathname.includes(
+                      '/dashboard/career-portal',
+                    )}
+                    isSidebarOpen={isSidebarOpen}
+                  />
+                ) : null}
+              </div>
               <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-              <SideBarItem
-                icon={Ticket}
-                iconColor="yellow"
-                label={'TEMP - Bookings'}
-                link="/dashboard/bookings"
-                isActive={window.location.pathname.includes(
-                  '/dashboard/bookings',
-                )}
-                isSidebarOpen={isSidebarOpen}
-              />
-              <SideBarItem
-                icon={Medal}
-                iconColor="purple"
-                label={'TEMP - Credentials'}
-                link="/dashboard/credentials"
-                isActive={window.location.pathname.includes(
-                  '/dashboard/credentials',
-                )}
-                isSidebarOpen={isSidebarOpen}
-              />
+              <div className="flex flex-col gap-1">
+                <SideBarItem
+                  icon={Ticket}
+                  iconColor="yellow"
+                  label={'TEMP - Bookings'}
+                  link="/dashboard/bookings"
+                  isActive={window.location.pathname.includes(
+                    '/dashboard/bookings',
+                  )}
+                  isSidebarOpen={isSidebarOpen}
+                />
+                <SideBarItem
+                  icon={Medal}
+                  iconColor="purple"
+                  label={'TEMP - Credentials'}
+                  link="/dashboard/credentials"
+                  isActive={window.location.pathname.includes(
+                    '/dashboard/credentials',
+                  )}
+                  isSidebarOpen={isSidebarOpen}
+                />
+              </div>
             </>
           )}
 
@@ -358,42 +363,46 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
 
       {currentTab === 'teach' && (
         <>
-          <SideBarItem
-            icon={BookOpen}
-            iconColor="orange"
-            label={t('navbar.manageCourses')}
-            link="/dashboard/professor/courses"
-            isActive={window.location.pathname.includes(
-              '/dashboard/professor/courses',
-            )}
-            isSidebarOpen={isSidebarOpen}
-          />
-          <SideBarItem
-            icon={Target}
-            iconColor="green"
-            label={t('navbar.analytics')}
-            link="/dashboard/professor/tutorials"
-            isActive={window.location.pathname.includes(
-              '/dashboard/professor/tutorials',
-            )}
-            isSidebarOpen={isSidebarOpen}
-          />
+          <div className="flex flex-col gap-1">
+            <SideBarItem
+              icon={BookOpen}
+              iconColor="orange"
+              label={t('navbar.manageCourses')}
+              link="/dashboard/professor/courses"
+              isActive={window.location.pathname.includes(
+                '/dashboard/professor/courses',
+              )}
+              isSidebarOpen={isSidebarOpen}
+            />
+            <SideBarItem
+              icon={Target}
+              iconColor="green"
+              label={t('navbar.analytics')}
+              link="/dashboard/professor/tutorials"
+              isActive={window.location.pathname.includes(
+                '/dashboard/professor/tutorials',
+              )}
+              isSidebarOpen={isSidebarOpen}
+            />
+          </div>
           <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-          <SideBarItem
-            icon={PeopleFrame}
-            iconColor="yellow"
-            label={'TEMP - Teacher profile'}
-            link="/dashboard/professor/profile"
-            isActive={window.location.pathname.includes(
-              '/dashboard/professor/profile',
-            )}
-            isSidebarOpen={isSidebarOpen}
-          />
+          <div className="flex flex-col gap-1">
+            <SideBarItem
+              icon={PeopleFrame}
+              iconColor="yellow"
+              label={'TEMP - Teacher profile'}
+              link="/dashboard/professor/profile"
+              isActive={window.location.pathname.includes(
+                '/dashboard/professor/profile',
+              )}
+              isSidebarOpen={isSidebarOpen}
+            />
+          </div>
         </>
       )}
 
       {currentTab === 'admin' && (
-        <>
+        <div className="flex flex-col gap-1">
           <SideBarItem
             icon={PeopleFrame}
             iconColor="orange"
@@ -454,7 +463,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
             )}
             isSidebarOpen={isSidebarOpen}
           />
-        </>
+        </div>
       )}
     </nav>
   );
@@ -470,6 +479,7 @@ interface SideBarItemProps {
   link: string;
   isActive?: boolean;
   isSidebarOpen: boolean;
+  isMain?: boolean;
 }
 
 const iconVariants = cva('shrink-0', {
@@ -513,6 +523,7 @@ export const SideBarItem = ({
   link,
   isActive = false,
   isSidebarOpen,
+  isMain = false,
 }: SideBarItemProps) => {
   const IconComponent = icon;
 
@@ -520,12 +531,17 @@ export const SideBarItem = ({
     <Link
       to={link}
       className={cn(
-        'flex items-center p-3 hover:bg-white transition-all rounded-lg',
+        'flex items-center justify-center p-3 hover:bg-white rounded-lg',
         isActive ? 'bg-white' : 'bg-transparent',
-        isSidebarOpen ? 'gap-3' : 'gap-0',
+        isSidebarOpen ? (isMain ? 'gap-3' : 'gap-4') : 'gap-0',
       )}
     >
-      <div className={cn('size-8', iconBgVariants({ color: iconColor }))}>
+      <div
+        className={cn(
+          isMain ? 'size-8' : 'size-6',
+          iconBgVariants({ color: iconColor }),
+        )}
+      >
         <IconComponent
           className={cn('size-full p-1', iconVariants({ color: iconColor }))}
         />

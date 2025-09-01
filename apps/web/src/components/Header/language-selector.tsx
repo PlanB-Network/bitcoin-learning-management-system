@@ -60,7 +60,7 @@ export const LanguageSelector = ({
             className,
           )}
         >
-          <TbLanguage size={24} />
+          <TbLanguage strokeWidth={1.5} size={24} />
         </button>
       </PopoverTrigger>
       <PopoverContent

@@ -61,9 +61,9 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
             )}
             aria-label="Toggle notifications panel"
           >
-            <TbBell className="text-newGray-1" size={24} />
+            <TbBell strokeWidth={1.5} className="text-newGray-1" size={24} />
             {unreadNotifications.length > 0 && (
-              <div className="absolute top-0.5 right-0.5 rounded-full size-2.5 bg-darkOrange-2" />
+              <div className="absolute top-0.5 right-0.5 rounded-full size-2.5 bg-orange-500" />
             )}
           </button>
         </PopoverTrigger>

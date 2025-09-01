@@ -35,7 +35,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-4 ml-auto max-lg:mx-auto">
       <Link className="cursor-pointer" to={`/${i18n.language}/search`}>
-        <TbSearch size={24} className="text-newGray-1" />
+        <TbSearch size={24} strokeWidth={1.5} className="text-newGray-1" />
       </Link>
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
       <div className="h-4.5 w-px bg-neutral-200" />
@@ -85,7 +85,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
             }}
             className={'cursor-pointer text-newGray-1'}
           >
-            <TbLogout size={24} />
+            <TbLogout strokeWidth={1.5} size={24} />
           </button>
         </>
       )}
