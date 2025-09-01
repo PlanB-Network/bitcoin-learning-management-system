@@ -40,7 +40,7 @@ const ScrollToTopButton = () => {
 
   return (
     <div
-      className="fixed bottom-10 right-10 z-50 transition-opacity duration-1000 ease-in-out"
+      className="fixed bottom-10 min-[1440px]:right-[calc((100vw-1440px)/2+40px)] right-10 z-50 transition-opacity duration-1000 ease-in-out"
       style={{
         opacity: isVisible ? 1 : 0,
         visibility: isVisible ? 'visible' : 'hidden',
