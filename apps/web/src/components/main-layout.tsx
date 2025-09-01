@@ -373,6 +373,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                 '/dashboard/professor/courses',
               )}
               isSidebarOpen={isSidebarOpen}
+              isMain
             />
             <SideBarItem
               icon={Target}
@@ -383,6 +384,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                 '/dashboard/professor/tutorials',
               )}
               isSidebarOpen={isSidebarOpen}
+              isMain
             />
           </div>
           <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
@@ -396,6 +398,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                 '/dashboard/professor/profile',
               )}
               isSidebarOpen={isSidebarOpen}
+              isMain
             />
           </div>
         </>
@@ -412,6 +415,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/role',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={ProjectPen}
@@ -422,6 +426,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/translation-panel',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={Ticket}
@@ -432,6 +437,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/tutorials',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={Luggage}
@@ -442,6 +448,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/bookings',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={Dollar}
@@ -452,6 +459,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/careers',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={Discount}
@@ -462,6 +470,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/coupons',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
         </div>
       )}
@@ -554,12 +563,13 @@ export const SideBarItem = ({
         )}
       >
         <div className="flex flex-col whitespace-nowrap">
-          {description ? (
+          {description || isMain ? (
             <>
               <span
                 className={cn(
-                  'text-lg leading-none text-newBlack-1',
+                  'text-lg text-newBlack-1',
                   isActive && 'font-medium',
+                  description && 'leading-none',
                 )}
               >
                 {label}
