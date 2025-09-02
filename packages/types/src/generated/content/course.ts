@@ -46,6 +46,7 @@ export interface Course {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  type: 'practice' | 'theory';
 }
 
 export interface CourseLocalized {
@@ -207,6 +208,7 @@ export interface MinimalJoinedCourse {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  type: 'practice' | 'theory';
   hasAssignment: boolean;
   assignmentStartDate: Date | null;
   assignmentEndDate: Date | null;
@@ -257,6 +259,7 @@ export interface JoinedCourseProfessorId {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  type: 'practice' | 'theory';
   hasAssignment: boolean;
   assignmentStartDate: Date | null;
   assignmentEndDate: Date | null;
@@ -309,6 +312,7 @@ export interface JoinedCourse {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  type: 'practice' | 'theory';
   hasAssignment: boolean;
   assignmentStartDate: Date | null;
   assignmentEndDate: Date | null;
@@ -406,6 +410,7 @@ export interface CourseResponse {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  type: 'practice' | 'theory';
   hasAssignment: boolean;
   assignmentStartDate: Date | null;
   assignmentEndDate: Date | null;

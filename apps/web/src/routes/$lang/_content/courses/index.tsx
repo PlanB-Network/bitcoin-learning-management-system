@@ -7,7 +7,6 @@ import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
 import { LabsPresentation } from '#src/components/labs-presentation.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
 import { AppContext } from '#src/providers/context.tsx';
-import { CourseSelector } from './-components/course-selector.tsx';
 import { CoursesGallery } from './-components/courses-gallery.tsx';
 
 export const Route = createFileRoute('/$lang/_content/courses/')({
@@ -63,15 +62,6 @@ function CoursesExplorer() {
         </div>
       </div>
       <div className="border-t border-newGray-1 max-w-[300px] md:max-w-[730px] xl:max-w-[1115px] w-full mx-auto" />
-
-      {filteredCourses && (
-        <div className="max-w-[1227px] mx-auto">
-          <p className="mobile-h3 md:desktop-h6 max-w-[451px] text-center mx-auto mt-6 mb-5 md:mt-16 md:mb-10">
-            {t('courses.explorer.findCourses')}
-          </p>
-          <CourseSelector courses={filteredCourses} />
-        </div>
-      )}
     </PageLayout>
   );
 }

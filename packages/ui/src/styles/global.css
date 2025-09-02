@@ -123,8 +123,13 @@
   --color-neutral-50: #f6f6f6;
   --color-neutral-100: #e5e5e5;
   --color-neutral-200: #cccccc;
+  --color-neutral-300: #b2b2b2;
   --color-neutral-400: #999999;
+  --color-neutral-500: #808080;
   --color-neutral-600: #666666;
+  --color-neutral-700: #4d4d4d;
+  --color-neutral-800: #333333;
+  --color-neutral-900: #1a1a1a;
 
   --color-red-1: #ffdad3;
   --color-red-2: #ffb5a7;
@@ -394,8 +399,32 @@
   @apply text-base font-medium leading-tight -tracking-015px;
 }
 
+@utility body-extra-small {
+  @apply text-xs font-normal leading-[133%] tracking-[-0.12px];
+}
+
+@utility body-extra-small-bold {
+  @apply text-xs font-medium leading-[133%] tracking-[-0.12px];
+}
+
 @utility body-large {
   @apply text-lg font-normal leading-[133%] tracking-[-0.18px];
+}
+
+@utility body-small {
+  @apply text-sm font-normal leading-[143%] tracking-[-0.14px];
+}
+
+@utility body-small-bold {
+  @apply text-sm font-medium leading-[143%] tracking-[-0.14px];
+}
+
+@utility display-base {
+  @apply text-3xl font-semibold leading-tight tracking-[-0.32px];
+}
+
+@utility display-large {
+  @apply text-5xl leading-[116%] font-semibold tracking-[-0.48px];
 }
 
 @utility display-medium {
@@ -404,6 +433,30 @@
 
 @utility display-small {
   @apply text-2xl font-semibold leading-[133%] tracking-[-0.24px];
+}
+
+@utility dropdown-small {
+  @apply text-sm font-normal leading-[110%] tracking-015px;
+}
+
+@utility label {
+  @apply text-lg font-normal leading-[133%] tracking-[-0.18px];
+}
+
+@utility label-strong {
+  @apply text-lg font-medium leading-[133%] tracking-[-0.18px];
+}
+
+@utility subtitle-base {
+  @apply text-xl font-medium leading-[160%] tracking-[-0.2px];
+}
+
+@utility title-base {
+  @apply text-xl font-medium leading-[160%] tracking-[-0.2px];
+}
+
+@utility title-large {
+  @apply text-3xl font-medium leading-tight tracking-[-0.32px];
 }
 
 @utility title-medium {
@@ -516,10 +569,6 @@
 
 @utility body-medium-16px {
   @apply text-base font-medium leading-normal tracking-015px;
-}
-
-@utility display-large {
-  @apply text-5xl leading-[116%] font-normal tracking-normal;
 }
 
 @utility display-large-med-48px {

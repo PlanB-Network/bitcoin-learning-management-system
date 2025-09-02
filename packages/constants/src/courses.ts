@@ -15,6 +15,11 @@ export enum CoursePaymentMethod {
   Free = 'free',
 }
 
+export enum CourseType {
+  Practice = 'practice',
+  Theory = 'theory',
+}
+
 export enum CourseLevel {
   Beginner = 'beginner',
   Intermediate = 'intermediate',

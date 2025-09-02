@@ -3,23 +3,26 @@ import { ListItem } from '@blms/ui';
 import { t } from 'i18next';
 
 export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
-  <section className="flex flex-col md:border-t border-white/10 md:mb-8">
+  <section className="flex flex-col md:mb-8">
     <ListItem
       leftText={t('words.professor')}
       rightText={course.mainProfessors
         .map((professor) => professor.name)
         .join(', ')}
       className="lg:py-1"
+      variant="light"
     />
     <ListItem
       leftText={t('words.level.level')}
       rightText={t(`words.level.${course.level}`)}
       className="lg:py-1"
+      variant="light"
     />
     <ListItem
       leftText={t('words.duration')}
       rightText={`${course.hours} ${t('words.hours')}`}
       className="lg:py-1"
+      variant="light"
     />
     <ListItem
       leftText={t('words.price')}
@@ -31,12 +34,7 @@ export const CourseInfoSection = ({ course }: { course: JoinedCourse }) => (
           : t('words.free')
       }
       className="lg:py-1"
-    />
-    <ListItem
-      leftText={t('words.courseId')}
-      rightText={course.index.toUpperCase()}
-      isDesktopOnly
-      className="lg:py-1"
+      variant="light"
     />
   </section>
 );

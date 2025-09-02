@@ -25,8 +25,6 @@ export const PageHeader = ({
   removeTopMargin?: boolean;
   increaseHorizontalPadding?: boolean;
 }) => {
-  const isSubsectionTitle = !subtitle;
-
   return (
     <div
       className={cn(
@@ -41,16 +39,14 @@ export const PageHeader = ({
       )}
     >
       {subtitle && (
-        <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-015px max-md:mb-2 mb-1">
-          {subtitle}
-        </h1>
+        <h1 className="title-base text-black max-md:mb-2 mb-1">{subtitle}</h1>
       )}
       {link ? (
         <Link to={link}>
-          <PageTitle title={title} isSubsectionTitle={isSubsectionTitle} />
+          <PageTitle title={title} />
         </Link>
       ) : (
-        <PageTitle title={title} isSubsectionTitle={isSubsectionTitle} />
+        <PageTitle title={title} />
       )}
       {hasGithubDescription ? (
         <>
@@ -95,7 +91,7 @@ export const PageHeader = ({
         description && (
           <p
             className={cn(
-              'max-w-4xl mx-auto text-center subtitle-medium-16px md:desktop-subtitle1 text-newGray-1 mt-1 md:mt-6',
+              'body-large text-neutral-600 mt-1 md:mt-6',
               hideDescriptionOnMobile
                 ? 'max-md:hidden'
                 : 'max-md:pb-12 max-md:border-b border-newGray-1 max-md:mt-5',
@@ -109,23 +105,8 @@ export const PageHeader = ({
   );
 };
 
-const PageTitle = ({
-  title,
-  isSubsectionTitle,
-}: {
-  title: string;
-  isSubsectionTitle: boolean;
-}) => {
+export const PageTitle = ({ title }: { title: string }) => {
   return (
-    <h2
-      className={cn(
-        isSubsectionTitle
-          ? 'text-lg md:text-[40px] text-darkOrange-5 tracking-[0.25px] font-medium'
-          : 'text-[32px] md:text-6xl text-white md:font-light md:tracking-[-0.5px]',
-        'text-center leading-[120%]',
-      )}
-    >
-      {title}
-    </h2>
+    <h2 className={cn('display-base md:display-large text-black')}>{title}</h2>
   );
 };

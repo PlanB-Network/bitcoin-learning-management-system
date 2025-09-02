@@ -54,6 +54,7 @@ interface CourseMain {
   published_at?: string;
   format: string;
   teaching_format: string;
+  type: string;
   online_price_dollars?: number;
   inperson_price_dollars?: number;
   paid_description?: string;
@@ -415,6 +416,7 @@ export const createUpdateCourses = ({
             is_planb_school: false,
             requires_payment: false,
             teaching_format: 'self_paced',
+            type: 'theory',
           };
 
           parsedCourse = { ...defaults, ...parsedCourse };
@@ -448,6 +450,7 @@ export const createUpdateCourses = ({
                    published_at,
                    format,
                    teaching_format,
+                   type,
                    online_price_dollars,
                    inperson_price_dollars,
                    paid_description,
@@ -487,6 +490,7 @@ export const createUpdateCourses = ({
                   ${parsedCourse.published_at},
                   ${parsedCourse.format},
                   ${parsedCourse.teaching_format},
+                  ${parsedCourse.type},
                   ${parsedCourse.online_price_dollars},
                   ${parsedCourse.inperson_price_dollars},
                   ${parsedCourse.paid_description},
@@ -525,6 +529,7 @@ export const createUpdateCourses = ({
                   published_at = EXCLUDED.published_at,
                   format = EXCLUDED.format,
                   teaching_format = EXCLUDED.teaching_format,
+                  type = EXCLUDED.type,
                   online_price_dollars = EXCLUDED.online_price_dollars,
                   inperson_price_dollars = EXCLUDED.inperson_price_dollars,
                   paid_description = EXCLUDED.paid_description,
