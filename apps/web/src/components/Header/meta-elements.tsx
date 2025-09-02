@@ -9,9 +9,9 @@ import { useSmaller } from '#src/hooks/use-smaller.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.ts';
-import SignInIconLight from '../../assets/icons/profile_log_in.svg';
 import SignInIconBlue from '../../assets/icons/sign-in-blue.svg';
 import SignInIconGreen from '../../assets/icons/sign-in-green.svg';
+import SignInIconOrange from '../../assets/icons/sign-in-orange.svg';
 import { LanguageSelector } from './language-selector.tsx';
 import { NotificationsPanel } from './notifications-panel.tsx';
 
@@ -70,7 +70,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
                       ? SignInIconBlue
                       : isUserProfessor
                         ? SignInIconGreen
-                        : SignInIconLight
+                        : SignInIconOrange
                 }
                 alt={t('auth.signIn')}
                 className={'rounded-full size-8'}
