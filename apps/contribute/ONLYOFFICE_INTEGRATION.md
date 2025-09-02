@@ -91,8 +91,8 @@ User clicks "Validate Presentation"
 
 **Environment Detection:**
 ```typescript
-const isHybridDev = window.location.hostname === 'localhost';
-const apiHost = isHybridDev ? 'host.docker.internal:3000' : 'api:3000';
+const isLocalhost = window.location.hostname === 'localhost';
+const apiHost = isLocalhost ? 'host.docker.internal:3000' : 'api:3000';
 ```
 
 **Manual Save Implementation:**

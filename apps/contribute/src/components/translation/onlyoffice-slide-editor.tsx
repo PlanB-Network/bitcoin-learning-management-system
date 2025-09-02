@@ -390,12 +390,13 @@ const OnlyOfficeSlideEditorInner = forwardRef<
           }
 
           // Determine API host for callback URLs
-          const isHybridDev =
+          const isLocalhost =
             window.location.hostname === 'localhost' ||
             window.location.hostname === '127.0.0.1';
-          const apiHost = isHybridDev
+
+          const apiHost = isLocalhost
             ? 'host.docker.internal:3000'
-            : 'api:3000';
+            : `${window.location.host}`;
 
           // TEMPORARY: Use old endpoint structure until backend implements discovery endpoints
           let absoluteFileUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
@@ -415,7 +416,7 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             }
             return;
           }
-          if (isHybridDev) {
+          if (isLocalhost) {
             // In development, OnlyOffice runs in Docker and needs to access the API
             // using host.docker.internal to maintain hostname consistency for callbacks
             const protocol = window.location.protocol;
