@@ -26,6 +26,7 @@ import { Route as LangDashboardDashboardCoursesRouteImport } from './routes/$lan
 import { Route as LangDashboardDashboardCareerPortalRouteImport } from './routes/$lang/dashboard/_dashboard/career-portal';
 import { Route as LangDashboardDashboardCalendarRouteImport } from './routes/$lang/dashboard/_dashboard/calendar';
 import { Route as LangDashboardDashboardBookingsRouteImport } from './routes/$lang/dashboard/_dashboard/bookings';
+import { Route as LangContentEventsPlanBWeekRouteImport } from './routes/$lang/_content/events/plan-b-week';
 import { Route as LangContentEventsEventIdRouteImport } from './routes/$lang/_content/events/$eventId';
 import { Route as LangContentCoursesBtc105RouteImport } from './routes/$lang/_content/courses/btc105';
 import { Route as LangContentCoursesCourseNameCourseIdRouteImport } from './routes/$lang/_content/courses/$courseName-$courseId';
@@ -181,6 +182,12 @@ const LangDashboardDashboardBookingsRoute =
     id: '/bookings',
     path: '/bookings',
     getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
+const LangContentEventsPlanBWeekRoute =
+  LangContentEventsPlanBWeekRouteImport.update({
+    id: '/$lang/_content/events/plan-b-week',
+    path: '/$lang/events/plan-b-week',
+    getParentRoute: () => rootRouteImport,
   } as any);
 const LangContentEventsEventIdRoute =
   LangContentEventsEventIdRouteImport.update({
@@ -590,6 +597,7 @@ export interface FileRoutesByFullPath {
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
+  '/$lang/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
@@ -671,6 +679,7 @@ export interface FileRoutesByTo {
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
+  '/$lang/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
@@ -752,6 +761,7 @@ export interface FileRoutesById {
   '/$lang/_content/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/_content/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/_content/events/$eventId': typeof LangContentEventsEventIdRoute;
+  '/$lang/_content/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
   '/$lang/dashboard/_dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/_dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/_dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
@@ -835,6 +845,7 @@ export interface FileRouteTypes {
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
+    | '/$lang/events/plan-b-week'
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
@@ -916,6 +927,7 @@ export interface FileRouteTypes {
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
+    | '/$lang/events/plan-b-week'
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
@@ -996,6 +1008,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/courses/$courseName-$courseId'
     | '/$lang/_content/courses/btc105'
     | '/$lang/_content/events/$eventId'
+    | '/$lang/_content/events/plan-b-week'
     | '/$lang/dashboard/_dashboard/bookings'
     | '/$lang/dashboard/_dashboard/calendar'
     | '/$lang/dashboard/_dashboard/career-portal'
@@ -1078,6 +1091,7 @@ export interface RootRouteChildren {
   LangContentCoursesCourseNameCourseIdRoute: typeof LangContentCoursesCourseNameCourseIdRoute;
   LangContentCoursesBtc105Route: typeof LangContentCoursesBtc105Route;
   LangContentEventsEventIdRoute: typeof LangContentEventsEventIdRoute;
+  LangContentEventsPlanBWeekRoute: typeof LangContentEventsPlanBWeekRoute;
   LangContentCoursesIndexRoute: typeof LangContentCoursesIndexRoute;
   LangContentEventsIndexRoute: typeof LangContentEventsIndexRoute;
   LangContentResourcesIndexRoute: typeof LangContentResourcesIndexRoute;
@@ -1237,6 +1251,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$lang/dashboard/bookings';
       preLoaderRoute: typeof LangDashboardDashboardBookingsRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/_content/events/plan-b-week': {
+      id: '/$lang/_content/events/plan-b-week';
+      path: '/$lang/events/plan-b-week';
+      fullPath: '/$lang/events/plan-b-week';
+      preLoaderRoute: typeof LangContentEventsPlanBWeekRouteImport;
+      parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/events/$eventId': {
       id: '/$lang/_content/events/$eventId';
@@ -1819,6 +1840,7 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentCoursesCourseNameCourseIdRoute,
   LangContentCoursesBtc105Route: LangContentCoursesBtc105Route,
   LangContentEventsEventIdRoute: LangContentEventsEventIdRoute,
+  LangContentEventsPlanBWeekRoute: LangContentEventsPlanBWeekRoute,
   LangContentCoursesIndexRoute: LangContentCoursesIndexRoute,
   LangContentEventsIndexRoute: LangContentEventsIndexRoute,
   LangContentResourcesIndexRoute: LangContentResourcesIndexRoute,
