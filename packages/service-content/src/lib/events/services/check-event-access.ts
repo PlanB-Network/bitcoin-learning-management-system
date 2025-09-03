@@ -5,7 +5,7 @@ import type { Dependencies } from '../../dependencies.js';
 
 interface EventAccessResponse extends Pick<Event, 'id'> {
   uid: string | null;
-  allowed: string;
+  allowed: boolean;
 }
 
 export const createCheckEventAccess = ({ postgres }: Dependencies) => {
@@ -16,7 +16,7 @@ export const createCheckEventAccess = ({ postgres }: Dependencies) => {
         SELECT
             e.id,
             CASE
-                WHEN e.book_in_person = false THEN true
+                WHEN e.price_dollars IS NULL OR e.price_dollars = 0 THEN true
                 WHEN ue.uid IS NOT NULL AND ue.booked = true THEN true
                 WHEN ep.uid IS NOT NULL AND ep.payment_status = 'paid' THEN true
                 ELSE false
