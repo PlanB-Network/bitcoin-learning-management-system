@@ -18,6 +18,7 @@ const ONLYOFFICE_BASE_URL =
   (process.env.DOCKER
     ? 'http://host.docker.internal:80'
     : 'http://localhost:80');
+
 const ONLYOFFICE_HOSTNAME = new URL(ONLYOFFICE_BASE_URL).hostname;
 
 function assertOnlyofficeUrl(input: string): void {
@@ -125,6 +126,8 @@ export const createRestTranslationDownloadRoutes = async (
             fileName,
           }),
         };
+
+        console.log('OnlyOffice URL:', ONLYOFFICE_BASE_URL);
 
         // Build command service URL from trusted base
         const onlyofficeUrl = `${ONLYOFFICE_BASE_URL.replace(/\/$/, '')}/coauthoring/CommandService.ashx`;
