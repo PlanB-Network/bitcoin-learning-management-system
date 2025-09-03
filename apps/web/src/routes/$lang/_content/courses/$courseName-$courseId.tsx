@@ -992,7 +992,7 @@ const DescriptionAndObjectives = memo(
   },
 );
 
-const TaxesSpan = () => {
+export const TaxesSpan = () => {
   const { t } = useTranslation();
 
   return (
