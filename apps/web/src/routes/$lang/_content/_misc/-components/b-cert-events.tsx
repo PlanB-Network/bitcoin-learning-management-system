@@ -73,46 +73,45 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
       className="text-white mb-6 md:mb-24 md:scroll-mt-32 scroll-mt-20"
     >
       {paymentModalData.eventId &&
-        paymentModalData.satsPrice &&
-        paymentModalData.dollarPrice &&
-        paymentModalData.accessType &&
-        paymentModalData.satsPrice > 0 &&
-        payingEvent && (
-          <EventPaymentModal
-            eventId={paymentModalData.eventId}
-            event={payingEvent}
-            accessType={paymentModalData.accessType}
-            satsPrice={paymentModalData.satsPrice}
-            dollarPrice={paymentModalData.dollarPrice}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              refetchEventPayments();
-              setPaymentModalData({
-                accessType: null,
-                dollarPrice: null,
-                eventId: null,
-                satsPrice: null,
-              });
-              setIsPaymentModalOpen(false);
-            }}
-          />
-        )}
+      paymentModalData.satsPrice &&
+      paymentModalData.dollarPrice &&
+      paymentModalData.accessType &&
+      paymentModalData.satsPrice > 0 &&
+      payingEvent ? (
+        <EventPaymentModal
+          eventId={paymentModalData.eventId}
+          event={payingEvent}
+          accessType={paymentModalData.accessType}
+          satsPrice={paymentModalData.satsPrice}
+          dollarPrice={paymentModalData.dollarPrice}
+          isOpen={isPaymentModalOpen}
+          onClose={() => {
+            refetchEventPayments();
+            setPaymentModalData({
+              accessType: null,
+              dollarPrice: null,
+              eventId: null,
+              satsPrice: null,
+            });
+            setIsPaymentModalOpen(false);
+          }}
+        />
+      ) : null}
       {paymentModalData.eventId &&
-        paymentModalData.satsPrice === 0 &&
-        paymentModalData.accessType &&
-        payingEvent && (
-          <EventBookModal
-            event={payingEvent}
-            accessType={paymentModalData.accessType}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              setIsPaymentModalOpen(false);
-              refetchEventPayments();
-              refetchUserEvents();
-            }}
-          />
-        )}
-
+      paymentModalData.dollarPrice === 0 &&
+      paymentModalData.accessType &&
+      payingEvent ? (
+        <EventBookModal
+          event={payingEvent}
+          accessType={paymentModalData.accessType}
+          isOpen={isPaymentModalOpen}
+          onClose={() => {
+            setIsPaymentModalOpen(false);
+            refetchEventPayments();
+            refetchUserEvents();
+          }}
+        />
+      ) : null}
       <div className="flex flex-col">
         <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-14">
           {t('bCert.bookExam')}
@@ -129,7 +128,7 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
                 setIsPaymentModalOpen={setIsPaymentModalOpen}
                 setPaymentModalData={setPaymentModalData}
                 conversionRate={conversionRate}
-                key={event.name}
+                key={event.id}
               />
             ))}
           </div>
@@ -140,7 +139,6 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
           </p>
         )}
       </div>
-
       {isAuthModalOpen && (
         <AuthModal
           isOpen={isAuthModalOpen}
