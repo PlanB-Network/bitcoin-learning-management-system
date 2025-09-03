@@ -91,7 +91,9 @@
     "sendLink": "Invia un link",
     "signIn": "Registrati",
     "trackProgress": "Crea un account o accedi per tenere traccia dei tuoi progressi",
-    "tryAgain": "Prova ancora"
+    "tryAgain": "Prova ancora",
+    "loginNotAvailable1": "Le funzionalità di accesso non sono ancora disponibili nell'app per desktop.",
+    "loginNotAvailable2": "Puoi visitare il nostro sito web per autenticarti e accedere al tuo account."
   },
   "bCert": {
     "bCertDescription": "Il ₿-CERT è il massimo test su Bitcoin creato per valutare il livello di conoscenze su Bitcoin e i relativi argomenti. Se superi l'80% di risposte esatte, otterrai un certificato ₿-CERT che può provare le tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
@@ -641,7 +643,68 @@
           "cancel": "Annulla",
           "close": "Chiudi",
           "contributor": "Contributor",
-          "course": "Corso"
+          "course": "Corso",
+          "doYouWantToAcceptRequest": "Vuoi accettare questa richiesta di traduzione?",
+          "language": "Lingua",
+          "provideRejectionReason": "Si prega di fornire una motivazione per il rifiuto di questa richiesta",
+          "reasonForRejection": "Motivo del rifiuto",
+          "reasonPlaceholder": "Scrivi la tua spiegazione qui...",
+          "rejecting": "Rifiutando...",
+          "requestAcceptedMessage": "Il collaboratore è stato notificato e può ora iniziare a lavorare sulla traduzione.",
+          "requestAcceptedSuccess": "Hai accettato la richiesta di traduzione!",
+          "requestRejectedSuccess": "Richiesta rifiutata con successo",
+          "submitRejection": "Invia"
+        },
+        "noResultsFound": "Nessun risultato trovato",
+        "pendingTranslationRequests": "Richieste di revisione in attesa",
+        "reports": {
+          "chooseYear": "Quale anno vuoi considerare?",
+          "comingSoon": {
+            "courses": "Lista dei corsi in arrivo",
+            "coverage": "Lista delle lingue assegnate in arrivo"
+          },
+          "contributors": {
+            "assignedCourses": "Corsi assegnati",
+            "completedCourses": "Corsi completati",
+            "languages": "Lingue",
+            "startDate": "Data di inizio",
+            "title": "Collaboratori",
+            "totalReward": "Ricompensa totale",
+            "username": "Nome utente"
+          },
+          "courses": {
+            "contributor": "Collaboratore",
+            "filterByCourse": "Filtra per corso",
+            "lastUpdated": "Ultimo aggiornamento",
+            "progress": "Progresso %"
+          },
+          "dateFilter": "Filtra per data",
+          "downloadData": "Scarica Dati",
+          "filterByLanguage": "Filtra per lingua",
+          "fromMonth": "Da",
+          "fromMonthPlaceholder": "Da quale mese?",
+          "generalReport": "Rapporto Generale",
+          "languageCoverage": {
+            "completed": "Completato",
+            "inProgress": "In corso",
+            "notStarted": "Non iniziato",
+            "totalCourses": "Corsi totali"
+          },
+          "languagesProofread": "Lingue revisionate",
+          "noContributors": "Nessun collaboratore trovato",
+          "noCourses": "Nessun corso trovato",
+          "noLanguages": "Nessuna lingua trovata",
+          "proofreadCourses": "Corsi revisionati",
+          "table": {
+            "contributor": "Collaboratore",
+            "lastUpdated": "Ultimo aggiornamento",
+            "progress": "Progresso %"
+          },
+          "tabs": {
+            "contributors": "Collaboratori",
+            "courses": "Corsi",
+            "coverage": "Copertura linguistica"
+          }
         }
       }
     },

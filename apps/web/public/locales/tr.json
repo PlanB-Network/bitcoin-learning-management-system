@@ -91,17 +91,19 @@
     "sendLink": "Bana bir link gönder",
     "signIn": "Oturum Aç",
     "trackProgress": "İlerlemelerinizi takip etmek için giriş yapın veya bir hesap oluşturun",
-    "tryAgain": "Tekrar deneyin"
+    "tryAgain": "Tekrar deneyin",
+    "loginNotAvailable1": "Masaüstü uygulamasında henüz giriş özellikleri mevcut değil.",
+    "loginNotAvailable2": "Web sitemizi ziyaret ederek hesabınıza giriş yapabilir ve erişim sağlayabilirsiniz."
   },
   "bCert": {
     "bCertDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
     "bookExam": "Bir sınav oturumu ayırtın",
-    "challengeYourself": "Kendine meydan oku ve seviyeni belirle!",
+    "challengeYourself": "Kendine meydan oku ve seviyeni belirle",
     "checkout": "B-Sertifikasını kontrol et",
     "download": "Sertifika indir",
     "knowledgeableBitcoin": "Bitcoin hakkında bilgili misiniz?",
     "noBookExam": "Henüz planlanmış bir sınav oturumu yok.",
-    "organizeDescription": "Sorun değil! Topluluğunuz Plan B Network parçasıysa, merkezinizde bir sınav oturumu düzenlemek mümkündür. Bir sınavı ağırlayabilmeniz için zorunlu koşullara uyup uymadığınızdan emin olmak için lütfen tabloyu okuyun. Bu koşulları yerine getirebiliyorsanız, oturumunuzu planlayabilir ve onu platforma ekleyebilirsiniz.",
+    "organizeDescription": "Sorun değil! Topluluğunuz Plan B Network parçasıysa, merkezinizde bir sınav oturumu düzenlemek mümkündür.\n Bir sınavı ağırlayabilmeniz için zorunlu koşullara uyup uymadığınızdan emin olmak için lütfen tabloyu okuyun. Bu koşulları yerine getirebiliyorsanız, oturumunuzu planlayabilir ve onu platforma ekleyebilirsiniz.",
     "organizeExam": "Bir sınav düzenle",
     "organizeSessionConditions": "Lütfen testi düzenleme konusundaki zorunlu şartları karşıladığınızdan emin olmak için <0>tüzüğü</0> okuyun.\nEğer uygunsa, yerel topluluğunuz için sizinle bir oturum planlamaktan memnuniyet duyarız.\nLütfen tercih ettiğiniz yöntemle bizimle iletişime geçin.",
     "organizeSessionHub": "Yerel merkezinizde bir ₿-CERT test oturumu düzenleyin",
@@ -321,7 +323,7 @@
       "findCourses": "İhtiyaçlarınıza uygun mükemmel kursu Kurs Seçim Aracı sayesinde bulun",
       "goal": "Hedef:",
       "journey": "Bitcoin bir yolculuktur, varış noktası değil",
-      "pageDescription": "Plan ₿ Akademisi, dünya çapında Bitcoin eğitimini basitleştirmeyi hedefliyor. Çeşitli alanlardan uzmanlar tarafından hazırlanan akademimiz, Bitcoin'in her yönünü açıklığa kavuşturmayı amaçlayan kapsamlı bir ders yelpazesi sunmaktadır. Başlangıç seviyesinden uzmana kadar, kendi hızınızda ya da bir profesör tarafından haftalık olarak takip edildiğiniz, akademinin Bitcoin'in geniş dünyasını daha derin bir şekilde anlamanıza yardımcı olmasını umuyoruz. Kurslarımızın birçoğu tamamen ücretsizdir, böylece herkes, her yerde, kaliteli eğitime erişebilir.",
+      "pageDescription": "Plan ₿ Akademisi, dünya çapında Bitcoin eğitimini basitleştirmeyi hedefliyor. Çeşitli alanlardan uzmanlar tarafından hazırlanan akademimiz, Bitcoin'in her yönünü açıklığa kavuşturmayı amaçlayan kapsamlı bir ders yelpazesi sunmaktadır. Başlangıç seviyesinden uzmana kadar, kendi hızınızda ya da bir profesör tarafından haftalık olarak takip edildiğiniz, akademinin Bitcoin'in geniş dünyasını daha derin bir şekilde anlamanıza yardımcı olmasını umuyoruz. Kurslarımızın birçoğu tamamen ücretsizdir, böylece herkes, her yerde, kaliteli eğitime erişebilir!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Plan ₿ School, Giacomo Zucco tarafından yönetilen, öğrenme ile gerçek hayattaki uygulamalar arasındaki boşluğu doldurmayı amaçlayan üç aylık yoğun eğitim programları sunmaktadır. Geleneksel derslerin ötesinde, öğrenciler şirket liderliğindeki pratik projelerde yer alır ve en iyi performans gösterenlere yönelik birinci sınıf bir bootcamp'e katılır. Sadece en iyi yetenekler, iki rekabetçi seçim turundan sonra ilerler, bu da son üst düzey öğrencilerin Bitcoin endüstrisinde kariyerlerini başlatmak için tamamen donanımlı hale geldiğini garanti eder.",
       "seeCourse": "Kursu keşfedin"
@@ -1143,7 +1145,7 @@
       "yourProject": "Projeniz",
       "assignmentScore": "Ödev puanı",
       "assignmentNotAccessible": "Görev zaten başlamış ve artık erişilebilir değil.",
-      "wellDoneCompleting": "Bu kursu tamamlayıp geçtiğiniz için tebrikler!\nİşte hak ettiğiniz diploma.",
+      "wellDoneCompleting": "Bu kursu tamamlayıp geçtiğiniz için tebrikler!\nİşte hak ettiğiniz diploma",
       "gaveSolidEffort": "Sağlam bir çaba gösterdiniz!",
       "tweetTextCourseDiploma": "@planb_network üzerinde {{courseCoordinator}} tarafından verilen {{courseName}} kursunu tamamladığım için çok heyecanlıyım ve diplomamı kazandım!\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "Puan özeti görüntüle",
@@ -1183,7 +1185,7 @@
       "notStarted": "Başlanmadı",
       "notValidated": "Doğrulanmamış",
       "price": "Fiyat :",
-      "professor": "Profesör",
+      "professor": "Profesör:",
       "resumeLesson": "Derse devam et",
       "seeDetails": "Detayları görün",
       "seeProgress": "buradaki ilerlemenizi görün.",
@@ -1452,7 +1454,7 @@
       "time": "Zaman"
     },
     "tcDisclaimer": "Bilgilerimin mekan erişim amaçları için organizatörlerle paylaşılmasını kabul ediyorum.",
-    "tcMustBeAccepted": "Devam etmek için şartları ve koşulları kabul etmelisiniz.",
+    "tcMustBeAccepted": "Devam etmek için şartları ve koşulları kabul etmelisiniz",
     "calendar": {
       "displayCalendar": "Takvimi Görüntüle",
       "fullMap": "Tam harita",
@@ -1464,6 +1466,9 @@
       "today": "Bugün",
       "xMonthsAgo": "{{number}} ay önce",
       "noEventsFound": "Hiçbir etkinlik bulunamadı"
+    },
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Haftası"
     }
   },
   "filters": {
@@ -1480,7 +1485,7 @@
     "keepLooking": "Aramaya devam etmek ister misin?",
     "loadMoreWords": "Daha fazla kelime yükle",
     "needHelp": "Teknik bir kelimeyi tanımlamada yardım mı gerekiyor?",
-    "notTranslated": "Sözlükteki veriler henüz çevrilmemiş. \nEğer yardımcı olmak isterseniz, lütfen katkıda bulunmak için başvurun.",
+    "notTranslated": "Sözlükteki veriler henüz çevrilmemiş. \nEğer yardımcı olmak isterseniz, lütfen katkıda bulunmak için başvurun",
     "pageTitle": "Bitcoin Terimleri",
     "placeHolder": "Bu nedir?",
     "randomSearch": "Rastgele arama",
@@ -1491,12 +1496,12 @@
     "aboutUsSection": {
       "bitcoinFocusContent": "Temel katmandan çevresindeki eşler arası iletişimlere kadar Bitcoin devrimini keşfediyoruz.",
       "bitcoinFocusTitle": "Bitcoin odaklı",
-      "communityContent": "Öncelikle, Bitcoin yolculuğunda birbirimize yardımcı olan bir meraklılar topluluğuyuz.",
+      "communityContent": "Öncelikle, Bitcoin yolculuğunda birbirimize yardımcı olan bir meraklılar topluluğuyuz",
       "communityTitle": "Topluluk",
       "content": "Plan ₿ Network, dünya çapında Bitcoin eğitimini destekler. Eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk oluşturmaya odaklanan tutkulu Bitcoin şirketlerinin bir işbirliğini temsil eder. Birlikte, Bitcoin ekosistemine büyüme için gerekli araçları sağlamak amacıyla bu girişimi başlatmışlardır.",
-      "openSourceContent": "Bilginin serbest akışını teşvik ediyoruz ve açık kaynak çözümlerini destekliyoruz.",
+      "openSourceContent": "Bilginin serbest akışını teşvik ediyoruz ve açık kaynak çözümlerini destekliyoruz",
       "openSourceTitle": "Açık kaynak",
-      "privacyContent": "Gizliliğin, ilerleme için hayati öneme sahip en temel insan haklarından biri olduğuna inanıyoruz.",
+      "privacyContent": "Gizliliğin, ilerleme için hayati öneme sahip en temel insan haklarından biri olduğuna inanıyoruz",
       "privacyTitle": "Gizlilik",
       "subtitle": "Hakkımızda",
       "title": "Biz kimiz?"
@@ -1570,7 +1575,7 @@
     "title": "Sürekli öğrenme için pratik ve interaktif dersler"
   },
   "lectures": {
-    "buyVideoToUnlock": "Videoyu kilidini açmak için satın alın.",
+    "buyVideoToUnlock": "Videoyu kilidini açmak için satın alın",
     "checkFullCourse": "Tam kursu kontrol edin",
     "lecturePartCourse": "Bu ders tekrarı <0>{{courseTitle}}</0> kursunun bir parçasıdır.\nTüm konuyu kavramak ve tam potansiyelinizi açığa çıkarmak için tam kursa dalın!",
     "pageTitle": "Ders Tekrarları",
@@ -1581,24 +1586,24 @@
     "pageTitle": "Bitcoin Kütüphanesi"
   },
   "menu": {
-    "bCertDescription": "₿-CERT testini geçerek Bitcoin seviyenizi değerlendirin.",
+    "bCertDescription": "₿-CERT testini geçerek Bitcoin seviyenizi değerlendirin",
     "betDescription": "Eğitim projeleriniz için kullanabileceğiniz içerik koleksiyonu",
     "bitcoinDescription": "Bitcoin'i temellerden ileri düzey uygulamalara kadar öğrenin.",
     "businessDescription": "Ticarette Bitcoin kullanımını ortaya çıkarın.",
-    "channelsDescription": "Bitcoin hakkında bilgi edinmek için özel Youtube kanallarımıza erişin.",
+    "channelsDescription": "Bitcoin hakkında bilgi edinmek için özel Youtube kanallarımıza erişin",
     "chooseLanguage": "Bir dil seçin",
     "conferencesDescription": "Genesis Block'tan bu yana Bitcoin konferansı tekrarlarının koleksiyonu",
     "glossaryDescription": "Bitcoin dilini anlayın",
     "lecturesDescription": "Bitcoin uzmanlarından kaydedilmiş dersleri tekrar izleyin",
-    "libraryDescription": "Bilginizi artırmak için bol miktarda kitap keşfedin.",
+    "libraryDescription": "Bilginizi artırmak için bol miktarda kitap keşfedin",
     "login": "Giriş Yap",
     "miningCourseDescription": "Bitcoin madenciliğinin arkasındaki süreçleri, araçları ve endüstriyi anlayın.",
     "moviesDescription": "Bitcoin'in evrimi ve etkisinin derinlemesine keşiflerinin yanı sıra büyüleyici hikayeleri keşfedin",
     "newsletterDescription": "Eğitim projeleriniz için kullanabileceğiniz içerik koleksiyonu",
     "nodeNetworkDescription": "Plan ₿ global topluluk ağına katılın",
-    "planBLabsDescription": "Lightning, Madencilik ve Gizlilik hakkında öğrenmeye devam etmek için bir çalışma grubuna katılın.",
+    "planBLabsDescription": "Lightning, Madencilik ve Gizlilik hakkında öğrenmeye devam etmek için bir çalışma grubuna katılın",
     "podcastsDescription": "Podcast'lar aracılığıyla Bitcoin ekosistemini keşfedin",
-    "projectsDescription": "Bitcoin'i iyileştirmeye ve benimsenmesini artırmaya katkıda bulunan şirketler ve projeler hakkında bilgi edinin.",
+    "projectsDescription": "Bitcoin'i iyileştirmeye ve benimsenmesini artırmaya katkıda bulunan şirketler ve projeler hakkında bilgi edinin",
     "protocolDescription": "Bitcoin ağını çalıştıran temel kuralları keşfedin.",
     "publicDescription": "Kamuoyu iletişim makalelerini keşfedin",
     "securityDescription": "Bitcoin varlıklarınızı koruma tekniklerini öğrenin.",
@@ -1667,7 +1672,7 @@
     "payByCard": "Kart ile Öde",
     "payWithBitcoin": "Bitcoin ile öde",
     "taxesMayApply": "Ödeme sırasında vergiler uygulanabilir",
-    "terms": "<0>Genel şartlarımızı</0> ve iade detayları için koşullarımızı görün.",
+    "terms": "<0>Genel şartlarımızı</0> ve iade detayları için koşullarımızı görün",
     "total": "Total"
   },
   "placeholders": {
@@ -1905,7 +1910,7 @@
       "title": "Nodlar"
     },
     "pageDescription": "Bitcoin geniş bir endüstri olup, her geçen gün daha da genişlemektedir. Sizin için bu konudaki çeşitli çözümlerle ilgili birçok eğitimi topladık ve düzenleme yaptık. Bu, Bitcoin ile ilgili tüm alanları keşfetmenize yardımcı olacaktır.",
-    "pageSubtitle": "Bitcoin'in geniş ekosistemini keşfederek onun gizemlerini çözün.",
+    "pageSubtitle": "Bitcoin'in geniş ekosistemini keşfederek onun gizemlerini çözün",
     "pageTitle": "Öğretici derslerimizi keşfedin",
     "privacy": {
       "description": "Gizlilik temel bir haktır. Gizliliğin varsayılan olduğu bir dünyaya özlem duysak da, yaşadığımız gerçeklik bu değil. Size en iyi uygulamaları açıklamaya çalışacağız, size eğitimlerle yardımcı olacağız ve verileriniz konusunda daha egemen bir yola çıkmanızı sağlayacağız.",
@@ -2168,5 +2173,25 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "navbar": {
+    "analytics": "Analiz",
+    "bookings": "Rezervasyonlar",
+    "career": "Kariyer",
+    "discountCode": "İndirim kodları",
+    "learnAnytimeDescription": "Kendi hızında kurslar",
+    "learnAnytimeTitle": "Dilediğin zaman öğrenin",
+    "manageCourses": "Kursları yönet",
+    "myCalendar": "Takvimim",
+    "myCareer": "Kariyerim",
+    "myCourses": "Kurslarım",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Öğren",
+      "teach": "Öğret"
+    },
+    "translationPanel": "Çeviri paneli",
+    "tutorials": "Eğitimler",
+    "userRolesAllocation": "Kullanıcı rollerinin tahsisi"
   }
 }

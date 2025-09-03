@@ -91,7 +91,9 @@
     "sendLink": "Envoyez-moi un lien",
     "signIn": "S'inscrire",
     "trackProgress": "Créez un compte ou connectez-vous pour suivre votre progression",
-    "tryAgain": "Réessayez"
+    "tryAgain": "Réessayez",
+    "loginNotAvailable1": "Les fonctionnalités de connexion ne sont pas encore disponibles dans l'application de bureau.",
+    "loginNotAvailable2": "Vous pouvez visiter notre site web pour vous connecter et accéder à votre compte."
   },
   "bCert": {
     "bCertDescription": "Le ₿-CERT est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
@@ -396,7 +398,7 @@
       "recommend": "Le recommanderiez-vous ?",
       "saveReview": "Enregistrer l'avis",
       "skip": "Passez la revue",
-      "soAndSo": "untel et untel",
+      "soAndSo": "neutre",
       "submitReview": "Soumettre un avis",
       "thankYou": "Merci pour votre évaluation ! Elle est prise en compte",
       "tooEasy": "trop facile",
@@ -1319,7 +1321,9 @@
         "writeAnnouncement": "Écrire une annonce",
         "averageAttempts": "Moyenne des tentatives",
         "questionsInExam": "Questions dans l'examen",
-        "totalQuestions": "Nombre total de questions"
+        "totalQuestions": "Nombre total de questions",
+        "overview": "Vue d'ensemble",
+        "successRate": "Taux de réussite"
       },
       "menu": "Menu enseignant",
       "profile": {
@@ -1359,6 +1363,26 @@
       },
       "discount": {
         "description": "Ici, vous pouvez générer et gérer les codes de réduction pour ce cours - soit à usage unique pour des bourses ou des cas similaires, soit à usage multiple pour des campagnes marketing."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Annoncer un changement",
+          "attendanceList": "Liste de présence",
+          "courseEnded": "Ce cours est terminé.",
+          "courseNotStarted": "Ce cours n'a pas encore commencé.",
+          "enrolledStudents": "Étudiants inscrits",
+          "hasEnrolled": "s'est inscrit",
+          "hasGraduated": "est diplômé avec un score de {{score}} %",
+          "hasLeftReview": "a laissé un avis",
+          "hasLeftReviewAndComment": "a laissé un avis et un commentaire",
+          "notifyStudents": "Quelque chose a changé ? Informez vos étudiants.",
+          "overallPerformance": "Performance globale",
+          "recentActivity": "Activité récente",
+          "studentsRegistered": "Étudiants inscrits",
+          "upcomingClass": "Classe à venir"
+        }
       }
     }
   },
@@ -1430,7 +1454,22 @@
       "time": "Temps"
     },
     "tcDisclaimer": "Je suis d'accord pour que mes informations soient partagées avec les organisateurs à des fins d'accès au lieu.",
-    "tcMustBeAccepted": "Vous devez accepter les termes et conditions pour continuer"
+    "tcMustBeAccepted": "Vous devez accepter les termes et conditions pour continuer",
+    "calendar": {
+      "displayCalendar": "Afficher le calendrier",
+      "fullMap": "Carte complète",
+      "hideCalendar": "Masquer le calendrier",
+      "inXMonths": "Dans {{number}} mois",
+      "lastMonth": "Le mois dernier",
+      "nextMonth": "Le mois prochain",
+      "noEventsFound": "Aucun événement trouvé",
+      "thisMonth": "Ce mois-ci",
+      "today": "Aujourd'hui",
+      "xMonthsAgo": "il y a {{number}} mois"
+    },
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Week"
+    }
   },
   "filters": {
     "categories": "Catégories",
@@ -2109,7 +2148,12 @@
     "actions": "Actions",
     "none": "Aucun",
     "review": "Relecture",
-    "taxes": "taxes"
+    "taxes": "taxes",
+    "info": "Info",
+    "month": "Mois",
+    "rating": "Évaluations",
+    "share": "Partager",
+    "week": "Semaine"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
