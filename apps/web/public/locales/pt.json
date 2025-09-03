@@ -23,10 +23,10 @@
     "title": "Sobre a Rede Plan ₿"
   },
   "accessType": {
-    "hybrid": "",
-    "online": "",
-    "physical": "",
-    "replay": ""
+    "hybrid": "Pessoalmente & online",
+    "online": "Online",
+    "physical": "Pessoalmente",
+    "replay": "Replay"
   },
   "auth": {
     "accountCreated": "A tua conta foi criada, {{userName}}!",
@@ -45,18 +45,18 @@
     "emailAddress": "Endereço de email",
     "emailTip": "O email não é obrigatório, mas pode ser útil caso te esqueças da palavra-passe!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validateChange": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "Alteração de Email validada",
+      "emailValidated": "Email validado",
+      "errorValidatingEmail": "Erro validando email",
+      "errorValidatingEmailChange": "Erro validando mudança de email",
+      "errorValidatingEmailChangeDescription": "Ocorreu um erro ao validar sua alteração de email, parece que o link expirou ou já foi usado. Por favor, tente novamente.",
+      "errorValidatingEmailDescription": "Ocorreu um erro ao validar sua alteração de email, parece que o link expirou ou já foi usado. Por favor, tente novamente.",
+      "successfullyChanged": "Seu email foi alterado com sucesso para {{email}}.",
+      "successfullyValidated": "Seu email foi validado com sucesso.",
+      "validateChange": "Validando a alteração de email",
+      "validatingEmail": "Validando email",
+      "validatingEmailChange": "Validando a alteração de email",
+      "wontTakeLong": "Isso não vai demorar muito..."
     },
     "errors": {
       "displayNameTooShort": "Nome deve conter pelo menos 2 caracteres.",
@@ -91,7 +91,9 @@
     "sendLink": "Envia-me um link",
     "signIn": "Login",
     "trackProgress": "Cria conta ou faz login para acompanhares o teu progresso",
-    "tryAgain": "Tenta novamente"
+    "tryAgain": "Tenta novamente",
+    "loginNotAvailable1": "Os recursos de login ainda não estão disponíveis no aplicativo de desktop.",
+    "loginNotAvailable2": "Você pode visitar nosso site para fazer login e acessar sua conta."
   },
   "bCert": {
     "bCertDescription": "O ₿-CERT é o exame final de Bitcoin concebido para avaliar o teu conhecimento sobre Bitcoin e temas relacionados. Se obteres mais de 80%, recebes o certificado ₿-CERT que valida a tua especialização na indústria Bitcoin, abrindo portas para várias posições de trabalho na área.",
@@ -173,25 +175,25 @@
       "thanksTip": "Queres agradecer? Deixa uma gorjeta."
     },
     "conclusion": {
-      "completedChaptersHeadline": "",
-      "completedFeedbackHeadline": "",
-      "completedFeedbackSubHeadline": "",
-      "congratulationsEnd": "",
-      "finalStep": "",
-      "stepsToComplete": "",
-      "takeFinalExam": "",
-      "unlockFeatures1": "",
-      "unlockFeatures2": ""
+      "completedChaptersHeadline": "Todos os capítulos estão agora completos!",
+      "completedFeedbackHeadline": "Obrigado pelo seu feedback!\nÉ muito importante para nós, ficamos muito felizes com isso.",
+      "completedFeedbackSubHeadline": "Você pode ajustar suas classificações e comentários a qualquer momento em seu painel.",
+      "congratulationsEnd": "Parabéns, você chegou ao fim do curso",
+      "finalStep": "Este foi o último passo para marcar este curso como concluído em seu painel, antes de continuar sua jornada!",
+      "stepsToComplete": "Estas são as etapas para marcar este curso como concluído em seu painel, antes de continuar sua jornada!",
+      "takeFinalExam": "Agora que você concluiu todos os capítulos, é hora de fazer o exame final para testar seu conhecimento.",
+      "unlockFeatures1": "Para desbloquear todos os recursos e acompanhar seu progresso, você precisa de uma conta.",
+      "unlockFeatures2": "Esteja ciente de que não coletamos dados pessoais nem usamos cookies."
     },
     "details": {
-      "associatedProfessors": "",
-      "attendInPersonWarning": "",
+      "associatedProfessors": "Professores associados",
+      "attendInPersonWarning": "Se você pretende assistir pessoalmente a essa aula, reserve seu assento. De qualquer forma, a lição será transmitida ao vivo e disponível para reprodução.",
       "buyCourse": "Comprar este curso",
-      "buyInPersonCourse": "",
-      "buyOnlineCourse": "",
-      "collaborativeEffort": "",
-      "coordinatedBy": "",
-      "courseAddedToDashboard": "",
+      "buyInPersonCourse": "Comprar curso presencial",
+      "buyOnlineCourse": "Comprar curso online",
+      "collaborativeEffort": "Todo conteúdo da plataforma é o resultado de um esforço colaborativo: cada lição, tradução e revisão só foram possíveis pelo trabalho dos colaboradores. Por esse motivo, estamos sempre procurando revisores que possam revisar nosso conteúdo em vários idiomas. Se você deseja participar do processo de revisão, entre em contato com nosso grupo <0>Telegram</0> e leia nosso <1>tutorial</1>.\n\nLembramos que esse conteúdo é de código aberto - licenciado em  <2>CC BY-SA</2>  -  para que ele possa ser compartilhado e usado gratuitamente, desde que a fonte original seja creditada.",
+      "coordinatedBy": "Esse curso é coordenado por",
+      "courseAddedToDashboard": "Este curso foi adicionado ao seu painel de estudantes",
       "curriculum": "Currículo",
       "description": "Description",
       "hasBeenProofreadBy": "",

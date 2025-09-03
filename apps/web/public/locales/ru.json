@@ -1039,25 +1039,25 @@
       "summerSchool": "Летняя школа",
       "surePreferenceList": "Вы уверены, что ваш список предпочтений окончательный?",
       "thresholdToPass": "Порог для прохождения: {{threshold}}%",
-      "tweetText": "В восторге от завершения курса {{courseIndex}} на @planb_network и получения диплома с результатом {{score}}/100 на финальном экзамене! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "tweetText": "Рад завершить курс №{{courseIndex}} в @planb_network и получить диплом с результатом {{score}}/100 на финальном экзамене! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "viewFinalGrade": "Просмотр итоговой оценки",
       "yourProject": "Ваш проект",
       "tweetTextCourseDiploma": "Я очень рад, что закончил курс {{courseName}}, который вел {{courseCoordinator}} на @planb_network, и получил диплом!\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "Просмотреть сводку оценок",
-      "wellDoneCompleting": "Отличная работа по завершению и успешной сдаче курса!\nВот ваш заслуженный диплом.",
+      "wellDoneCompleting": "Поздравляем с успешным завершением курса!\nВот ваш заслуженный диплом.",
       "yourProjectAssignment": "Ваше проектное задание",
       "gaveSolidEffort": "Вы хорошо постарались!"
     },
     "courses": "Курсы",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "Здесь вы можете найти подробную информацию о ваших заказах и оценках за прошлые и будущие ₿-CERT-тесты.\n₿-ТЕСТ - это табличный тест, организованный сетью Plan ₿ для оценки вашего уровня знаний о bitcoin и связанных с ним темах.",
+      "bCertSubtitle": "Здесь вы можете найти подробную информацию о ваших заказах и оценках за прошлые и будущие ₿-CERT-тесты.\n₿-ТЕСТ - это письменный тест, организованный сетью Plan ₿ для оценки вашего уровня знаний о bitcoin и связанных с ним темах.",
       "beingGraded": "Ваш экзамен находится на проверке. Результаты будут доступны через 1–2 недели.",
       "completionDiplomas": "Дипломы об окончании обучения",
       "courseDiplomas": "Дипломы о прохождении курсов",
       "courseDiplomasSubtitle": "Здесь вы найдете подробную информацию обо всех экзаменах, которые вы сдали после прохождения курса на платформе.",
       "downloadTicket": "Загрузить билет",
-      "globalCertifications": "Глобальные сертификаты",
+      "globalCertifications": "Все сертификаты",
       "retakeExam": "Пересдать экзамен",
       "seatBooked": "Ваше место на экзаменационной сессии забронировано",
       "takePlaceAt": "Сессия пройдет по адресу:",
@@ -1255,6 +1255,15 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Здесь вы можете найти аналитику по учебным материалам, которые вы создали и опубликовали на платформе.",
         "yourTutorials": "Ваши учебные пособия"
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Сообщить об изменении",
+          "attendanceList": "Журнал посещаемости",
+          "courseEnded": "Этот курс завершён."
+        }
       }
     }
   },
