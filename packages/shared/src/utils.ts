@@ -19,6 +19,7 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   srlatn: 'Srpski',
   sv: 'Svenska',
   sw: 'Kiswahili',
+  tr: 'Türkçe',
   vi: 'Tiếng Việt',
   zhhans: '简体中文',
   zhhant: '繁體中文',

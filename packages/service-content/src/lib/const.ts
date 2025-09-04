@@ -38,6 +38,7 @@ export const ISO_639_LANGUAGES = {
   ru: 'ru',
   'sr-Latn': 'sr',
   sv: 'sv',
+  tr: 'tr',
   vi: 'vi',
   'zh-hans': 'zh',
 } as const;
