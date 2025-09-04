@@ -211,7 +211,7 @@ function EventDetails() {
   };
 
   return (
-    <MainLayout variant="light">
+    <MainLayout>
       <div>
         {event &&
         paymentModalData.eventId &&
