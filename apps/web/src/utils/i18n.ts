@@ -27,6 +27,7 @@ export const LANGUAGES = [
   'sr-Latn',
   'sv',
   'sw',
+  'tr',
   'vi',
   'zh-Hans',
   'zh-Hant',
