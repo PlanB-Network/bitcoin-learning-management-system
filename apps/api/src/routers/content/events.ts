@@ -7,7 +7,6 @@ import {
   createGetUpcomingEventsBooking,
 } from '@blms/service-content';
 import type { JoinedEvent } from '@blms/types';
-import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
 import { adminProcedure } from '#src/procedures/protected.js';
@@ -36,14 +35,7 @@ const getEventProcedure = publicProcedure
       uid,
     );
 
-    if (!status.allowed) {
-      throw new TRPCError({
-        cause: 'Payment required to access this chapter',
-        code: uid ? 'FORBIDDEN' : 'UNAUTHORIZED',
-      });
-    }
-
-    return createGetEvent(ctx.dependencies)(input.id);
+    return createGetEvent(ctx.dependencies)(input.id, status.allowed);
   });
 
 const getUpcomingEventProcedure = publicProcedure

@@ -75,9 +75,9 @@
       "invalid": "The token is invalid",
       "notFound": "The token was not found"
     },
+    "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
     "loginNotAvailable1": "Login features are not available in the desktop app just yet.",
     "loginNotAvailable2": "You can visit our website to log in and access your account.",
-    "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
     "newPassword": "New password",
     "noAccountNeeded": "No need for an account to start learning at Plan ₿ Network!",
     "noAccountYet": "Don't have an account?",
@@ -1421,6 +1421,14 @@
       "premiumContentNeedsPayment": "This event is part of a premium program.",
       "premiumContentNeedsPaymentAction": "Go to events page"
     },
+    "eventInfos": {
+      "eventBooked": "Event booked",
+      "eventType": "Event type",
+      "numberOfSpots": "Number of spots",
+      "onlineAndInPerson": "Online and in-person",
+      "secureYourSpot": "Secure your spot",
+      "whatsPlanned": "What's planned"
+    },
     "main": {
       "currentEvents": "Events happening right now",
       "upcomingEvents": "Upcoming events"
@@ -2004,6 +2012,7 @@
     "bitcoin": "Bitcoin",
     "book": "Book",
     "booked": "Booked",
+    "booking": "Booking",
     "bookings": "Bookings",
     "business": "Business",
     "calendar": "Calendar",
@@ -2047,6 +2056,7 @@
     "filter": "Filter",
     "finish": "Finish",
     "free": "Free",
+    "full": "Full",
     "github": "Github",
     "glossary": "Glossary",
     "goal": "Goal",
@@ -2108,6 +2118,7 @@
     "podcasts": "Podcasts",
     "previous": "Previous",
     "price": "Price",
+    "pricing": "Pricing",
     "producer": "Producer",
     "professor": "Professor",
     "professors": "Professors",

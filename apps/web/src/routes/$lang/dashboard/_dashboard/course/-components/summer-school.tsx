@@ -431,7 +431,7 @@ function WhatsIncluded({
   );
 }
 
-function ListElement({
+export function ListElement({
   icon,
   children,
 }: {
@@ -449,7 +449,7 @@ function ListElement({
   );
 }
 
-function ListElement2({
+export function ListElement2({
   icon,
   leftText,
   children,
@@ -460,14 +460,12 @@ function ListElement2({
 }) {
   const Icon = icon;
   return (
-    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4 my-2">
+    <article className="flex max-md:flex-wrap items-center justify-between gap-2 md:gap-4 py-1 md:py-2 border-b border-neutral-50 last:border-b-0">
       <div className="flex flex-row gap-2 items-center text-newGray-1">
         <Icon className="size-6" />
-        <span className="text-sm md:text-base">{leftText}</span>
+        <span className="body-large">{leftText}</span>
       </div>
-      <p className="text-sm md:text-lg text-newBlack-3 md:text-right">
-        {children}
-      </p>
-    </div>
+      <p className="body-large text-newBlack-3 text-right">{children}</p>
+    </article>
   );
 }

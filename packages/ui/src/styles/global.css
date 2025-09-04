@@ -82,6 +82,7 @@
   --color-neutral-50: #f6f6f6;
   --color-neutral-100: #e5e5e5;
   --color-neutral-400: #999999;
+  --color-neutral-600: #666666;
 
   --color-red-1: #ffdad3;
   --color-red-2: #ffb5a7;
@@ -255,9 +256,6 @@
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
@@ -370,6 +368,30 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
+}
+
+@utility body-base-bold {
+  @apply text-base font-medium leading-tight -tracking-015px;
+}
+
+@utility body-large {
+  @apply text-lg font-normal leading-[133%] tracking-[-0.18px];
+}
+
+@utility display-medium {
+  @apply text-4xl font-semibold leading-[120%] tracking-[-0.4px];
+}
+
+@utility display-small {
+  @apply text-2xl font-semibold leading-[133%] tracking-[-0.24px];
+}
+
+@utility title-medium {
+  @apply text-2xl font-medium leading-[133%] tracking-[-0.24px];
+}
+
+@utility title-small {
+  @apply text-lg font-medium leading-[133%] tracking-[-0.18px];
 }
 
 @utility desktop-body1 {
