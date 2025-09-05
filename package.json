@@ -54,7 +54,7 @@
     "lint-all": "biome check .",
     "lint:fix": "biome check . --write --diagnostic-level=warn",
     "nuke": "pnpm clear && rm -r .turbo && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm install && pnpm build:packages",
-    "pear:testnet": "pnpm pear:build:testnet && pnpm pear:run:testnet",
+    "pear:testnet": "bun i && pnpm pear:build:testnet && pnpm pear:run:testnet",
     "pear:build:testnet": "cd apps/web && VITE_PEAR_ENVIRONMENT=testnet npx vite build --mode development --config vite.pear.config.ts",
     "pear:run:testnet": "cd apps/web && pear run -d ./dist",
     "prepare": "[ -z \"$CI\" ] && husky || echo 'Skipping husky in CI'",
