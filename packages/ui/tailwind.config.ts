@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss';
 
-import baseConfig from './tailwind.config-base.js';
-
 export default {
   content: ['./src/**/*.{ts,tsx,mdx}', './storybook/**/*.{ts,tsx}'],
-  presets: [baseConfig],
+  darkMode: 'selector',
+  plugins: [require('tailwindcss-animate')],
+  theme: {},
 } satisfies Config;
