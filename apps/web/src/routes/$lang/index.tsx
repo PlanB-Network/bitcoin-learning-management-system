@@ -28,6 +28,7 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { AboutUs } from '#src/components/about-us.tsx';
 import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
+import { PearVideoTest } from '#src/components/pear-video-test.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
 import CategoryItemList from '#src/patterns/category-item.tsx';
@@ -68,6 +69,7 @@ function Home() {
     return (
       <MainLayout>
         <div className="bg-black flex flex-col text-white md:px-8 lg:px-12">
+          {import.meta.env.VITE_PEAR_ENVIRONMENT ? <PearVideoTest /> : null}
           <HeaderSection />
           <NumberSection />
           <CourseSection />
