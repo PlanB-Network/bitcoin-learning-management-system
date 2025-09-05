@@ -182,7 +182,7 @@ export const getFormattedUnit = (
 ) => {
   let prefix = '';
   if (amount > 0 && amount < 0.01) {
-    // biome-ignore lint/style/noParameterAssign: <explanation>
+    // biome-ignore lint/style/noParameterAssign: ok
     amount = 0.01;
     prefix = '< ';
   }

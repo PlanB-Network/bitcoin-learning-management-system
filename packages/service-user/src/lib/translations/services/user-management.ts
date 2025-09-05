@@ -157,7 +157,7 @@ export const createAssignCourseToContributor = ({ postgres }: Dependencies) => {
       }
 
       // Use proper transaction handling
-      return await postgres.begin(async (transaction: any) => {
+      return await postgres.begin(async (_transaction: any) => {
         // Create the assignment with 'assigned' status
         const result = await postgres.exec(
           createTranslationAssignmentQuery(
@@ -209,7 +209,7 @@ export const createReassignCourseToContributor = ({
     assignerId: string;
   }) => {
     try {
-      return await postgres.begin(async (transaction: any) => {
+      return await postgres.begin(async (_transaction: any) => {
         // Get the course and language from the assignment
         const assignmentInfo = await postgres.exec(
           getAssignmentInfoQuery(assignmentId),

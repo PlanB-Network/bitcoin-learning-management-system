@@ -26,7 +26,7 @@ export const createCreateCourseTranslation = ({ postgres }: Dependencies) => {
     language: string;
   }): Promise<AvailableCourseTranslation> => {
     try {
-      return await postgres.begin(async (transaction) => {
+      return await postgres.begin(async (_transaction) => {
         // Create course_translations entry if it doesn't exist
         await postgres.exec(
           createCourseTranslationsInitQuery(courseId, language),

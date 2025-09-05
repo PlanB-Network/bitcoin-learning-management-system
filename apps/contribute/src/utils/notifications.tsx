@@ -48,8 +48,6 @@ export const getNotificationRedirect = (
   type: string,
   courseId?: string,
   chapterId?: string,
-  eventId?: string,
-  blogId?: string,
 ) => {
   switch (type) {
     case NotificationType.Calendar24HoursCourse:
@@ -72,7 +70,7 @@ export const getNotificationRedirect = (
   }
 };
 
-export const getNotificationTitle = (type: string, courseId?: string) => {
+export const getNotificationTitle = (type: string) => {
   switch (type) {
     case NotificationType.Calendar24HoursCourse:
     case NotificationType.Calendar5MinutesCourse:
@@ -100,12 +98,7 @@ export const getNotificationTitle = (type: string, courseId?: string) => {
   }
 };
 
-export const getNotificationContent = (
-  type: string,
-  chapterId?: string,
-  eventId?: string,
-  blogId?: string,
-) => {
+export const getNotificationContent = (type: string) => {
   switch (type) {
     case NotificationType.Calendar24HoursCourse:
       return t('notifications.courseStarting24h');

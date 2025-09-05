@@ -186,13 +186,7 @@ const NotificationItem = ({
           <div className="size-2 rounded-full bg-darkOrange-5" />
         </div>
         <p className="self-stretch body-14px text-newBlack-1 dark:text-newGray-6 line-clamp-6 whitespace-pre-line">
-          {notification.content ||
-            getNotificationContent(
-              notification.type,
-              notification.chapterId || undefined,
-              notification.eventId || undefined,
-              notification.blogId || undefined,
-            )}
+          {notification.content || getNotificationContent(notification.type)}
         </p>
       </Link>
       {onClose && (

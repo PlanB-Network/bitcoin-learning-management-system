@@ -1,3 +1,4 @@
+// biome-ignore lint/correctness/noUnusedVariables: todo
 const VERSION = 'commithash';
 
 self.addEventListener('install', (_event) => {

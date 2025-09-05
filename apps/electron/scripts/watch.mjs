@@ -21,7 +21,7 @@ function setupMainPackageWatcher({ resolvedUrls }) {
   process.env.VITE_DEV_SERVER_URL = resolvedUrls.local[0];
 
   /** @type {ChildProcess | null} */
-  const electronApp = null;
+  // const electronApp = null;
   console.log(electronPath);
 
   // return build({

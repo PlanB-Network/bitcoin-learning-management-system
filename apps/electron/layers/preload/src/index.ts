@@ -3,7 +3,7 @@
  */
 
 import { contextBridge } from 'electron';
-// biome-ignore lint/correctness/noUnusedImports: <explanation>
+// biome-ignore lint/correctness/noUnusedImports: todo
 import * as fs from 'fs';
 import { sha256sum } from '/@/sha256sum';
 

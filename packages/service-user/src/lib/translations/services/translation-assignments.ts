@@ -49,7 +49,7 @@ export const createRequestTranslationAssignment = ({
     userId: string;
   }): Promise<TranslationAssignment> => {
     try {
-      return await postgres.begin(async (transaction) => {
+      return await postgres.begin(async (_transaction) => {
         // Check if user already has an assignment for this course-language combination
         const existingAssignment = await postgres.exec(
           checkExistingAssignmentQuery(courseId, language, userId),
@@ -132,7 +132,7 @@ export const createGetUserTranslationAssignments = ({
       );
 
       return results as TranslationAssignment[];
-    } catch (error) {
+    } catch (_error) {
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to fetch user translation assignments',
@@ -157,7 +157,7 @@ export const createUpdateTranslationAssignmentStatus = ({
     rejectionReason?: string;
   }): Promise<TranslationAssignment> => {
     try {
-      return await postgres.begin(async (transaction) => {
+      return await postgres.begin(async (_transaction) => {
         // Retrieve assignment details
         const assignmentDetails = await postgres.exec(
           getAssignmentDetailsByIdQuery(assignmentId),
@@ -308,7 +308,7 @@ export const createCheckUserTranslationAssignment = ({
       );
 
       return results.length > 0 ? (results[0] as TranslationAssignment) : null;
-    } catch (error) {
+    } catch (_error) {
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to check user translation assignment',
@@ -330,7 +330,7 @@ export const createGetTranslationAssignmentRequests = ({
       );
 
       return results as TranslationAssignment[];
-    } catch (error) {
+    } catch (_error) {
       throw new TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'Failed to fetch translation assignment requests',
