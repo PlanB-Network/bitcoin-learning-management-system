@@ -14,6 +14,7 @@ const root = ReactDOM.createRoot(
 interface Pear {
   updates: (callback: () => void) => void;
   reload: () => void;
+  config: any;
 }
 
 declare global {

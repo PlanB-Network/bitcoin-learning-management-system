@@ -8,7 +8,7 @@
     "types": ["vite/client"]
   },
   "extends": "../../tsconfig.json",
-  "include": ["src", "global.d.ts", "pear.d.ts"],
+  "include": ["src", "global.d.ts", "pear.d.ts", "corestore.d.ts"],
   "references": [
     {
       "path": "../api/tsconfig.trpc.json"
