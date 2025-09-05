@@ -21,6 +21,8 @@ export default defineConfig({
       output: {
         inlineDynamicImports: true,
       },
+      // Externalize any Node.js built-in modules
+      external: ['fs'],
     },
   },
   plugins: [

@@ -143,6 +143,7 @@
         "@trpc/client": "^11.5.0",
         "@trpc/server": "^11.5.0",
         "@trpc/tanstack-react-query": "^11.5.0",
+        "bare-path": "^3.0.0",
         "class-variance-authority": "^0.7.1",
         "corestore": "^7.4.5",
         "cropperjs": "^1.6.2",
