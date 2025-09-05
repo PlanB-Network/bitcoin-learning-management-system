@@ -21,6 +21,10 @@
   },
   "name": "blms",
   "packageManager": "pnpm@10.15.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "private": true,
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",
