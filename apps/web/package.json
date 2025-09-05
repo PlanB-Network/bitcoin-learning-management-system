@@ -41,6 +41,7 @@
     "rehype-unwrap-images": "1.0.0",
     "remark-gfm": "^4.0.1",
     "remark-math": "6.0.0",
+    "sass-embedded": "^1.92.0",
     "superjson": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
