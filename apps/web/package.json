@@ -42,6 +42,7 @@
     "remark-gfm": "^4.0.1",
     "remark-math": "6.0.0",
     "superjson": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
     "zod": "~3.25.76"
   },
