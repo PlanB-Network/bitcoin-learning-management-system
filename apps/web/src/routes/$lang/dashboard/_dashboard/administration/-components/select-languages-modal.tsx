@@ -22,6 +22,7 @@ interface ModalState {
   folderError: string;
   hasExisting: boolean;
   overwriteWarning: boolean;
+  uploadType: 'folder' | 'zip' | 'url' | null;
 }
 
 const initialState: ModalState = {
@@ -32,6 +33,7 @@ const initialState: ModalState = {
   folderError: '',
   hasExisting: false,
   overwriteWarning: false,
+  uploadType: null,
 };
 
 export const SelectLanguagesModal = ({
@@ -70,7 +72,7 @@ export const SelectLanguagesModal = ({
           console.error('Error checking existing uploads', e),
         );
     }
-  }, [isOpen]);
+  }, [isOpen, course.id]);
 
   // Function to get language names from the fetched languages data
   const languageMap = useMemo(() => {
@@ -106,6 +108,7 @@ export const SelectLanguagesModal = ({
         selectedFiles: files,
         folderError: '',
         overwriteWarning: prev.hasExisting,
+        uploadType: 'folder',
       }));
       // Clear any previously entered URL
       setFolderUrl('');
@@ -124,6 +127,7 @@ export const SelectLanguagesModal = ({
         selectedFiles: files,
         folderError: '',
         overwriteWarning: prev.hasExisting,
+        uploadType: 'zip',
       }));
       // Clear URL when ZIP chosen
       setFolderUrl('');
@@ -142,23 +146,63 @@ export const SelectLanguagesModal = ({
   // URL input state
   const [folderUrl, setFolderUrl] = useState('');
 
+  // URL validation
+  const isValidUrl = useCallback((url: string) => {
+    try {
+      const parsed = new URL(url);
+      return parsed.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  }, []);
+
+  const handleUrlChange = useCallback(
+    (url: string) => {
+      setFolderUrl(url);
+      if (url.trim()) {
+        setState((prev) => ({
+          ...prev,
+          selectedFiles: [],
+          uploadType: 'url',
+          folderError:
+            !isValidUrl(url) && url.length > 0
+              ? 'Please enter a valid HTTPS URL'
+              : '',
+        }));
+      } else {
+        setState((prev) => ({
+          ...prev,
+          uploadType: null,
+          folderError: '',
+        }));
+      }
+    },
+    [isValidUrl],
+  );
+
   const handleStartTranslation = useCallback(async () => {
     // User must have chosen at least one language AND (uploaded files OR previous uploads exist OR provided URL)
     const readyToStart =
       state.selectedLanguages.length > 0 &&
       (state.hasExisting ||
         state.selectedFiles.length > 0 ||
-        folderUrl.trim().length > 0);
+        (folderUrl.trim().length > 0 && isValidUrl(folderUrl)));
 
     if (!readyToStart) {
       // Set error message prompting user to upload files first
+      let errorMessage =
+        t(
+          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.missingFilesError',
+        ) ||
+        'Please upload translation files or provide a valid HTTPS URL before starting.';
+
+      if (folderUrl.trim().length > 0 && !isValidUrl(folderUrl)) {
+        errorMessage = 'Please enter a valid HTTPS URL';
+      }
+
       setState((prev) => ({
         ...prev,
-        folderError:
-          t(
-            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.missingFilesError',
-          ) ||
-          'Please upload translation files or provide a URL before starting.',
+        folderError: errorMessage,
       }));
       return;
     }
@@ -268,7 +312,7 @@ export const SelectLanguagesModal = ({
 
       try {
         const translationResponse = await fetch(
-          `/api/start-translation/${uploadResult.uploadId}`,
+          `/api/start-translation/${uploadResult!.uploadId}`,
           {
             method: 'POST',
             headers: {
@@ -313,7 +357,7 @@ export const SelectLanguagesModal = ({
         }
 
         // Show unified success message including upload and translation start
-        const successMessage = uploadResult.filesUploaded
+        const successMessage = uploadResult!.filesUploaded
           ? t(
               'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadAndTranslationStarted',
             ) ||
@@ -377,6 +421,7 @@ export const SelectLanguagesModal = ({
     onSuccess,
     folderUrl,
     t,
+    isValidUrl,
   ]);
 
   // Determine if translation can start (for button disabled state)
@@ -384,10 +429,11 @@ export const SelectLanguagesModal = ({
     state.selectedLanguages.length > 0 &&
     (state.hasExisting ||
       state.selectedFiles.length > 0 ||
-      folderUrl.trim().length > 0);
+      (folderUrl.trim().length > 0 && isValidUrl(folderUrl)));
 
   const handleClose = useCallback(() => {
     setState(initialState);
+    setFolderUrl('');
     onClose();
   }, [onClose]);
 
@@ -498,7 +544,14 @@ export const SelectLanguagesModal = ({
           />
 
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+            <div
+              className={cn(
+                'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
+                state.uploadType === 'folder'
+                  ? 'border-orange-500 bg-orange-50'
+                  : 'border-gray-300',
+              )}
+            >
               <button
                 type="button"
                 onClick={handleFolderInputClick}
@@ -509,7 +562,7 @@ export const SelectLanguagesModal = ({
                 )}
               </button>
               <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.selectedFiles.length > 0
+                {state.uploadType === 'folder' && state.selectedFiles.length > 0
                   ? `${state.selectedFiles.length} files selected`
                   : t(
                       'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
@@ -517,7 +570,14 @@ export const SelectLanguagesModal = ({
               </span>
             </div>
 
-            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+            <div
+              className={cn(
+                'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
+                state.uploadType === 'zip'
+                  ? 'border-orange-500 bg-orange-50'
+                  : 'border-gray-300',
+              )}
+            >
               <button
                 type="button"
                 onClick={handleZipInputClick}
@@ -528,8 +588,8 @@ export const SelectLanguagesModal = ({
                 )}
               </button>
               <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.selectedFiles.length > 0
-                  ? `${state.selectedFiles.length} file(s) selected`
+                {state.uploadType === 'zip' && state.selectedFiles.length > 0
+                  ? `${state.selectedFiles.length} ZIP file(s) selected`
                   : t(
                       'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
                     )}
@@ -565,14 +625,12 @@ export const SelectLanguagesModal = ({
               id="folderUrl"
               type="url"
               value={folderUrl}
-              onChange={(e) => {
-                setFolderUrl(e.target.value);
-                // Clear selected files when URL provided
-                if (e.target.value) {
-                  setState((prev) => ({ ...prev, selectedFiles: [] }));
-                }
-              }}
+              onChange={(e) => handleUrlChange(e.target.value)}
               placeholder="https://..."
+              className={cn(
+                state.uploadType === 'url' && 'border-orange-500 bg-orange-50',
+                state.folderError && folderUrl && 'border-red-500',
+              )}
             />
           </div>
         </div>

@@ -267,6 +267,26 @@ async function insertSlidesFromManifest(
   }
 }
 
+/**
+ * Transform language codes for the Language Toolkit API
+ * Some languages need to be mapped to specific regional variants
+ */
+const transformLanguageCodesForAPI = (languages: string[]): string[] => {
+  const transformed = languages.map((lang) => {
+    // Transform Portuguese from 'pt' to 'pt-pt' for the API
+    if (lang === 'pt') {
+      console.log('[Translation] Transforming language code: pt -> pt-pt');
+      return 'pt-pt';
+    }
+    return lang;
+  });
+
+  console.log(
+    `[Translation] Language codes: ${languages.join(', ')} -> ${transformed.join(', ')}`,
+  );
+  return transformed;
+};
+
 export const createRestTranslationUploadRoutes = async (
   dependencies: Dependencies,
   router: Router,
@@ -290,6 +310,41 @@ export const createRestTranslationUploadRoutes = async (
   const getUploadByIdService = createGetCourseTranslationUploadById(
     dependencies as any,
   );
+
+  /**
+   * Delete all S3 files for a course in English language
+   */
+  const deleteS3FilesForCourse = async (
+    courseId: string,
+    originalLanguage = 'en',
+  ) => {
+    try {
+      // List all files in the course's English folder
+      const prefix = `contribute/${courseId}/${originalLanguage}/`;
+      const fileKeys = await dependencies.s3.list(prefix);
+
+      if (fileKeys && fileKeys.length > 0) {
+        console.log(
+          `[UPLOAD] Deleting ${fileKeys.length} existing files for course ${courseId}`,
+        );
+
+        // Delete each file
+        for (const fileKey of fileKeys) {
+          await dependencies.s3.delete(fileKey);
+        }
+
+        console.log(
+          `[UPLOAD] Successfully deleted all files for course ${courseId}`,
+        );
+      }
+    } catch (error) {
+      console.error(
+        `[UPLOAD] Error deleting S3 files for course ${courseId}:`,
+        error,
+      );
+      // Don't throw - continue with upload even if deletion fails
+    }
+  };
 
   const processFileUpload = async (
     uid: string,
@@ -323,12 +378,26 @@ export const createRestTranslationUploadRoutes = async (
       };
     }
 
-    // If new files are provided and uploads already exist, overwrite by deleting old rows
+    // If new files are provided and uploads already exist, overwrite by deleting old rows AND S3 files
     if (filesProvided && existingUploads.length > 0) {
+      // Delete S3 files first
+      await deleteS3FilesForCourse(courseId, originalLanguage);
+
+      // Then delete database records
       await deleteUploadsService(courseId);
     }
 
     const files = initialFiles;
+
+    // Log extracted files for debugging
+    console.log(
+      `[UPLOAD] Processing ${files.length} files for course ${courseId}`,
+    );
+    for (const file of files) {
+      console.log(
+        `[UPLOAD] File: ${file.originalFilename}, MIME: ${file.mimetype}`,
+      );
+    }
 
     // Organize files per chapter key "part.chapter"
     const chapterGroups = new Map<string, ChapterGroup>();
@@ -339,6 +408,9 @@ export const createRestTranslationUploadRoutes = async (
 
       if (!chapterInfo) {
         // Skip files not matching expected pattern
+        console.warn(
+          `[UPLOAD] Skipping file (no chapter pattern): ${relativePath}`,
+        );
         continue;
       }
 
@@ -402,6 +474,19 @@ export const createRestTranslationUploadRoutes = async (
           chapterId,
           base,
         );
+        console.log(`[UPLOAD] Uploading PPTX to S3: ${pptxKey}`);
+
+        // Check file size before upload
+        const stats = fs.statSync(pptFile.filepath);
+        console.log(`[UPLOAD] PPTX file size: ${stats.size} bytes`);
+
+        if (stats.size === 0) {
+          console.error(
+            `[UPLOAD] PPTX file is empty: ${pptFile.originalFilename}`,
+          );
+          continue;
+        }
+
         const stream = fs.createReadStream(pptFile.filepath);
 
         await dependencies.s3.upload(pptxKey, stream, {
@@ -410,12 +495,14 @@ export const createRestTranslationUploadRoutes = async (
 
         // After successful upload → convert to PNG slides via ConvertAPI
         try {
+          console.log(`[UPLOAD] Starting PPTX conversion for: ${pptxKey}`);
           // Pass the exact pptxKey that was used for upload
           // ConvertAPI should use this exact key to find the file
           await convertPptxToPngs(dependencies, pptxKey);
+          console.log(`[UPLOAD] PPTX conversion completed for: ${pptxKey}`);
         } catch (err) {
           console.error(
-            '[UPLOAD] Failed to convert PPTX to PNGs via ConvertAPI',
+            `[UPLOAD] Failed to convert PPTX to PNGs via ConvertAPI for ${pptxKey}:`,
             err,
           );
         }
@@ -502,7 +589,7 @@ export const createRestTranslationUploadRoutes = async (
       const taskId = await dependencies.languageToolkit.translateCourse({
         course_id: courseId,
         source_lang: 'en',
-        target_langs: languages,
+        target_langs: transformLanguageCodesForAPI(languages),
       });
 
       if (!taskId) {
@@ -565,8 +652,12 @@ export const createRestTranslationUploadRoutes = async (
       );
     }
 
-    // If new files are provided and uploads already exist, overwrite by deleting old rows
+    // If new files are provided and uploads already exist, overwrite by deleting old rows AND S3 files
     if (filesProvided && existingUploads.length > 0) {
+      // Delete S3 files first
+      await deleteS3FilesForCourse(courseId, originalLanguage);
+
+      // Then delete database records
       await deleteUploadsService(courseId);
     }
 
@@ -632,6 +723,9 @@ export const createRestTranslationUploadRoutes = async (
 
       if (!chapterInfo) {
         // Skip files not matching expected pattern
+        console.warn(
+          `[UPLOAD] Skipping file (no chapter pattern): ${relativePath}`,
+        );
         continue;
       }
 
@@ -695,6 +789,19 @@ export const createRestTranslationUploadRoutes = async (
           chapterId,
           base,
         );
+        console.log(`[UPLOAD] Uploading PPTX to S3: ${pptxKey}`);
+
+        // Check file size before upload
+        const stats = fs.statSync(pptFile.filepath);
+        console.log(`[UPLOAD] PPTX file size: ${stats.size} bytes`);
+
+        if (stats.size === 0) {
+          console.error(
+            `[UPLOAD] PPTX file is empty: ${pptFile.originalFilename}`,
+          );
+          continue;
+        }
+
         const stream = fs.createReadStream(pptFile.filepath);
 
         await dependencies.s3.upload(pptxKey, stream, {
@@ -753,7 +860,7 @@ export const createRestTranslationUploadRoutes = async (
       const secondTaskId = await dependencies.languageToolkit.translateCourse({
         course_id: courseId,
         source_lang: 'en',
-        target_langs: languages,
+        target_langs: transformLanguageCodesForAPI(languages),
       });
 
       if (!secondTaskId) {

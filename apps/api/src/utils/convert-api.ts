@@ -37,11 +37,13 @@ export const convertPptxToPngs = async (
     const s3KeyDir = pptxKey.substring(0, pptxKey.lastIndexOf('/') + 1);
 
     // Retrieve the PPTX from S3
+    console.log(`[ConvertAPI] Retrieving PPTX from S3: ${pptxKey}`);
     const pptxBytes = await dependencies.s3.getBlob(pptxKey);
     if (!pptxBytes) {
       console.error('[ConvertAPI] PPTX not found for conversion:', pptxKey);
       return;
     }
+    console.log(`[ConvertAPI] PPTX retrieved, size: ${pptxBytes.length} bytes`);
 
     // Prepare multipart/form-data payload for ConvertAPI
     const form = new FormData();

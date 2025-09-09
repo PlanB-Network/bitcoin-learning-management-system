@@ -122,7 +122,20 @@ export const processZipFiles = async (
       for (const entry of zip.getEntries()) {
         if (entry.isDirectory) continue;
 
-        const entryPath = path.resolve(tempDir, entry.entryName);
+        // Skip macOS system files and hidden files
+        if (
+          entry.entryName.includes('__MACOSX/') ||
+          entry.entryName.includes('/.DS_Store') ||
+          path.basename(entry.entryName).startsWith('._')
+        ) {
+          console.log(`[ZIP] Skipping macOS system file: ${entry.entryName}`);
+          continue;
+        }
+
+        // Extract just the filename, not the full path
+        const fileName = path.basename(entry.entryName);
+        const entryPath = path.join(tempDir, fileName);
+
         // Validate that the resolved path is within the tempDir
         if (!entryPath.startsWith(tempDir)) {
           console.warn(`Skipping potentially unsafe entry: ${entry.entryName}`);
@@ -130,13 +143,19 @@ export const processZipFiles = async (
         }
 
         fs.mkdirSync(path.dirname(entryPath), { recursive: true });
-        fs.writeFileSync(entryPath, entry.getData());
+        const fileData = entry.getData();
+        fs.writeFileSync(entryPath, fileData);
 
+        // Use the full entry name to preserve the chapter structure (e.g., "1.2/presentation.pptx")
         extractedFiles.push({
           filepath: entryPath,
-          originalFilename: entry.entryName,
+          originalFilename: entry.entryName, // Keep the full path for chapter detection
           mimetype: mimeFromName(entry.entryName),
         } as formidable.File);
+
+        console.log(
+          `[ZIP] Extracted: ${entry.entryName} -> ${fileName} (${fileData.length} bytes)`,
+        );
       }
     } catch (e) {
       console.error('Failed to extract zip', e);
