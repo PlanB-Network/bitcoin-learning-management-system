@@ -75,6 +75,11 @@ export const createLanguageToolkitClient = (
     }
     try {
       const token = await ensureToken();
+
+      // Add a timeout to prevent hanging on large course translations
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout for initial request
+
       const resp = await fetchImpl(`${cfg.baseUrl}/translate/course_s3`, {
         method: 'POST',
         headers: {
@@ -82,18 +87,38 @@ export const createLanguageToolkitClient = (
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
+
       if (!resp.ok) {
-        console.error('[LT] translate/course_s3 failed', resp.status);
-        return null;
+        const errorText = await resp.text().catch(() => 'Unknown error');
+        console.error(
+          '[LT] translate/course_s3 failed',
+          resp.status,
+          errorText,
+        );
+
+        // Throw error with details for proper error handling
+        throw new Error(
+          `Translation API failed with status ${resp.status}: ${errorText}`,
+        );
       }
 
       const dataSchema = z.object({ task_id: z.string().optional() });
       const data = dataSchema.parse(await resp.json());
       return data.task_id ?? null;
     } catch (e) {
+      // Re-throw to allow caller to handle the error appropriately
+      if (e instanceof Error) {
+        if (e.name === 'AbortError') {
+          throw new Error('Translation request timed out after 30 seconds');
+        }
+        throw e;
+      }
       console.error('[LT] translateCourse error', e);
-      return null;
+      throw new Error('Failed to start translation');
     }
   };
 
@@ -110,24 +135,57 @@ export const createLanguageToolkitClient = (
         });
         if (!resp.ok) {
           console.error('[LT] Task poll failed', resp.status);
-          return null;
+          throw new Error(`Failed to poll task status: ${resp.status}`);
         }
         const dataSchema = z.object({
           status: z.string(),
           manifest: z.unknown().optional(),
+          error: z.union([z.string(), z.null()]).optional(),
         });
-        const data = dataSchema.parse(await resp.json());
+        const rawResponse = await resp.json();
+        console.log(
+          `[LT] Polling task ${taskId}, attempt ${attempt + 1}, response:`,
+          rawResponse,
+        );
+
+        const data = dataSchema.parse(rawResponse);
+
+        // Handle different task statuses
         if (data.status === 'completed') {
+          console.log(`[LT] Task ${taskId} completed successfully`);
           return data.manifest ?? null;
         }
+        if (data.status === 'failed') {
+          const errorMsg = data.error || 'Translation task failed';
+          console.error('[LT] Task failed:', errorMsg);
+          throw new Error(errorMsg);
+        }
+
+        // If status is 'pending' or 'processing', continue polling
+        console.log(
+          `[LT] Task ${taskId} still ${data.status}, continuing to poll...`,
+        );
       } catch (err) {
+        // Re-throw to allow caller to handle the error
+        if (err instanceof Error) {
+          // If it's a Zod error, log more details for debugging
+          if (err.name === 'ZodError') {
+            console.error('[LT] Zod parsing error for task response:', err);
+            console.error(
+              '[LT] This might be due to unexpected API response format',
+            );
+          }
+          throw err;
+        }
         console.error('[LT] Error polling task', err);
-        return null;
+        throw new Error('Failed to poll task status');
       }
       await new Promise((r) => setTimeout(r, intervalMs));
     }
-    console.warn('[LT] Task polling timed out');
-    return null;
+    console.warn('[LT] Task polling timed out after', maxAttempts, 'attempts');
+    throw new Error(
+      `Task polling timed out after ${(maxAttempts * intervalMs) / 1000} seconds`,
+    );
   };
 
   return {

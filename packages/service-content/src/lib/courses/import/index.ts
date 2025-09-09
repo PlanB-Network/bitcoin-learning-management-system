@@ -744,19 +744,17 @@ export const createUpdateCourses = ({
 
             const parts = extractParts(header.content);
             // Populate translation tables for this course and language
-            // Insert or update course translation as 'published' since we have localized content
+            // Insert course translation as 'todo'
             await transaction`
               INSERT INTO content.course_translations (course_id, language, status, created_at, updated_at)
               VALUES (
                 ${courseId},
                 ${file.language},
-                'published'::translation_status,
+                'todo'::translation_status,
                 NOW(),
                 NOW()
               )
-              ON CONFLICT (course_id, language) DO UPDATE SET
-                status = 'published'::translation_status,
-                updated_at = NOW()
+              ON CONFLICT (course_id, language) DO NOTHING
             `;
 
             // Ensure we have translation entries for all missing languages as 'todo'

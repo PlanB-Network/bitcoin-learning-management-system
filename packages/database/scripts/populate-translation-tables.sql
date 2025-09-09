@@ -6,7 +6,7 @@ INSERT INTO content.course_translations (course_id, language, status, created_at
 SELECT DISTINCT
     c.id,
     'en',
-    'published'::translation_status,
+    'todo'::translation_status,
     NOW(),
     NOW()
 FROM content.courses c
@@ -32,10 +32,7 @@ SELECT
     ct.language,
     cc.part_id,
     cc.chapter_id,
-    CASE
-        WHEN ct.language = 'en' THEN 'published'::translation_status
-        ELSE 'todo'::translation_status
-    END,
+    'todo'::translation_status,
     NOW(),
     NOW()
 FROM content.course_translations ct

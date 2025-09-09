@@ -8,13 +8,11 @@ const CONVERT_API_SECRET = process.env.CONVERT_API_SECRET;
 /**
  * Convert a PPTX file to PNG images using ConvertAPI and upload them to S3
  * @param dependencies - Application dependencies including S3 client
- * @param s3KeyDir - S3 directory prefix ending with '/'
- * @param baseNameNoExt - Base filename without extension
+ * @param pptxKey - Complete S3 key for the PPTX file
  */
 export const convertPptxToPngs = async (
   dependencies: Dependencies,
-  s3KeyDir: string, // dir prefix ending with '/'
-  baseNameNoExt: string,
+  pptxKey: string,
 ) => {
   try {
     if (!CONVERT_API_SECRET) {
@@ -33,7 +31,10 @@ export const convertPptxToPngs = async (
       return;
     }
 
-    const pptxKey = `${s3KeyDir}${baseNameNoExt}.pptx`;
+    // Extract filename and directory from the pptxKey
+    const fileName = pptxKey.split('/').pop() || 'presentation.pptx';
+    const baseNameNoExt = fileName.replace(/\.pptx$/i, '');
+    const s3KeyDir = pptxKey.substring(0, pptxKey.lastIndexOf('/') + 1);
 
     // Retrieve the PPTX from S3
     const pptxBytes = await dependencies.s3.getBlob(pptxKey);
@@ -47,7 +48,7 @@ export const convertPptxToPngs = async (
     const blob = new Blob([pptxBytes], {
       type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
     });
-    form.append('file', blob, `${baseNameNoExt}.pptx`);
+    form.append('file', blob, fileName);
 
     // Build the ConvertAPI URL with validation
     const apiUrl = `https://v2.convertapi.com/convert/pptx/to/png?Secret=${CONVERT_API_SECRET}`;
