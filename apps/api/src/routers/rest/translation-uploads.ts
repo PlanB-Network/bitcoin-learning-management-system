@@ -154,7 +154,7 @@ async function pollTranslationTask(
       throw new Error('Translation task did not return expected data');
     }
   } catch (error) {
-    console.error(`[Translation] Error processing course ${courseId}:`, error);
+    console.error('[Translation] Error processing course %s:', courseId, error);
 
     // Only reset status if it's a real translation failure, not a parsing error
     const shouldResetStatus =
