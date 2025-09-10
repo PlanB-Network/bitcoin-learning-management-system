@@ -17,7 +17,7 @@ import { TbChevronRight } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.js';
 import { AppContext } from '#src/providers/context.tsx';
 import { assetUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
+import { formatNameForURL, normalizeString } from '#src/utils/string.ts';
 import { CourseInfoSection } from './-components/course-info-section.tsx';
 import { levels, sortCoursesByLevel } from './-utils/course-utils.tsx';
 
@@ -38,8 +38,11 @@ function CourseSelector() {
         .filter(
           (course) =>
             course.isArchived === false &&
-            course.language.toLowerCase() === i18n.language.toLowerCase() &&
-            course.teachingFormat === 'self_paced',
+            normalizeString(course.language) ===
+              normalizeString(i18n.language) &&
+            course.teachingFormat === 'self_paced' &&
+            (!course.paymentExpirationDate ||
+              course.paymentExpirationDate > new Date()),
         )
         .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)))
         .sort((a, b) =>
@@ -55,9 +58,13 @@ function CourseSelector() {
   const [activeCourse, setActiveCourse] = useState<JoinedCourse | null>(null);
 
   useEffect(() => {
-    if (courses) {
-      setTopics([...new Set(courses.map((course) => course.topic))].sort());
-      setTopicCourses(courses.filter((course) => course.topic === activeTopic));
+    if (filteredCourses) {
+      setTopics(
+        [...new Set(filteredCourses.map((course) => course.topic))].sort(),
+      );
+      setTopicCourses(
+        filteredCourses.filter((course) => course.topic === activeTopic),
+      );
     }
   }, [courses, activeTopic]);
 
