@@ -197,7 +197,12 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     }
 
     const tutorial = await getTutorialMeta({ id, language });
-    return meta(tutorial.title, tutorial.description, DEFAULT_IMAGE, language);
+    return meta(
+      `Tutorial - ${tutorial.title}`,
+      tutorial.description,
+      DEFAULT_IMAGE,
+      language,
+    );
   };
 
   const getExamCertificateMetadata = async (

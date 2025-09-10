@@ -3,13 +3,14 @@ import { Button, cn, Image, ListItem, StarRating, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
+import { TbChevronRight } from 'react-icons/tb';
+import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
 import PlanBSchoolLogo from '#src/assets/logo/planb_school.svg';
 import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
-const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
+const courseCardStyles = cva('group flex flex-col w-full md:h-[388px]', {
   defaultVariants: {
     borderRadius: 'courses',
     color: 'primary',
@@ -17,11 +18,11 @@ const courseCardStyles = cva('group flex flex-col w-full md:h-[472px] p-2.5', {
   },
   variants: {
     borderRadius: {
-      courses: 'rounded-[10px] md:rounded-[20px]',
+      courses: 'rounded-2xl',
     },
     color: {
       featured: 'bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section',
-      primary: 'bg-newGray-5 dark:bg-maroon-10',
+      primary: 'bg-transparent border border-neutral-100 dark:bg-maroon-10',
     },
     mode: {
       dark: 'dark',
@@ -41,16 +42,11 @@ export const CourseCard = ({
   mode?: 'light' | 'dark';
   className?: string;
 }) => {
-  const maxRating = 5;
-
   return (
     <Link
       key={course.id}
       to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
-      className={cn(
-        'flex w-full max-md:max-w-[500px] max-md:mx-auto md:w-[340px]',
-        className,
-      )}
+      className={cn('flex w-full max-md:mx-auto md:w-[256px]', className)}
     >
       <article
         className={`overflow-hidden ${courseCardStyles({
@@ -60,14 +56,14 @@ export const CourseCard = ({
       >
         {/* Badge for Featured Card */}
         {featured && (
-          <span className="absolute uppercase -top-px -left-px bg-white border border-white text-black body-semibold-12px md:title-medium-sb-18px rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-1 px-2.5 md:py-2.5 md:px-4 md:rounded-br-[20px] z-10">
+          <span className="absolute uppercase -top-px -left-px bg-white border border-white text-black body-semibold-12px md:title-medium-sb-18px rounded-tl-2xl py-1 px-2.5 md:py-2.5 md:px-4 rounded-br-2xl z-10">
             {t('words.startHere')}
           </span>
         )}
 
         <Image
-          width={320}
-          height={224}
+          width={256}
+          height={193}
           loading="lazy"
           src={assetUrl(
             `courses/${course.index}`,
@@ -76,10 +72,10 @@ export const CourseCard = ({
           )}
           alt={course.name}
           breakpoints={{ default: 320 }}
-          className="max-md:hidden rounded-md mb-2.5 object-cover [overflow-clip-margin:_unset] object-center max-h-72 group-hover:max-h-44 transition-[max-height] duration-300 ease-linear"
+          className="max-md:hidden rounded-2xl mb-2 object-cover [overflow-clip-margin:_unset] object-center max-h-[193px] group-hover:max-h-[152px] transition-[max-height] ease-in-out"
         />
 
-        <div className="flex md:flex-col max-md:gap-2.5 max-md:mb-2.5 md:mb-2">
+        <div className="flex md:flex-col max-md:gap-2 max-md:mb-2 md:mb-2 md:px-4">
           <Image
             width={124}
             height={98}
@@ -91,11 +87,17 @@ export const CourseCard = ({
             )}
             alt={course.name}
             breakpoints={{ default: 124 }}
-            className="md:hidden rounded-md w-31 object-cover [overflow-clip-margin:_unset] object-center"
+            className="md:hidden rounded-tl-2xl w-31 object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">
-            <span className="max-md:flex flex-col md:mb-2 !line-clamp-2 font-medium leading-[120%] tracking-015px md:desktop-h6 text-maroon-11 dark:text-white md:align-top mb-2 lg:mb-0">
+            <span className="max-md:flex flex-col !line-clamp-1 md:!line-clamp-2 title-base text-maroon-11 dark:text-white md:align-top mb-2 lg:mb-0">
               {course.name}
+            </span>
+            <span className="flex items-center gap-1 md:hidden mb-2.5">
+              <HalfFilledStar className="size-5" />
+              <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
+                {course.averageRating.toFixed(1)}
+              </span>
             </span>
             <div className="flex flex-col flex-wrap gap-2.5 md:mt-auto">
               <div className="flex md:items-center gap-1.5 md:gap-2 order-2 md:order-1">
@@ -105,38 +107,34 @@ export const CourseCard = ({
                   mode={mode}
                   className="uppercase"
                 >
-                  {course.index === 'btc101'
-                    ? t('words.start')
-                    : t(`words.level.${course.level}`)}
+                  {t(`words.level.${course.level}`)}
                 </TextTag>
-                <TextTag
-                  size="verySmall"
-                  variant="lightMaroon"
-                  mode={mode}
-                  className="uppercase"
-                >
-                  {course.requiresPayment
-                    ? t('courses.details.paidCourse')
-                    : t('words.free')}
-                </TextTag>
-              </div>
-              <div className="flex order-1 md:order-2">
-                <StarRating
-                  rating={Number(course.averageRating.toFixed(1))}
-                  totalStars={maxRating}
-                  starSize={20}
-                  className="gap-2"
-                />
+                {course.requiresPayment && (
+                  <TextTag
+                    size="verySmall"
+                    variant="yellow"
+                    mode={mode}
+                    className="uppercase"
+                  >
+                    {t('courses.details.paidCourse')}
+                  </TextTag>
+                )}
+                <span className="flex items-center gap-1 max-md:hidden">
+                  <HalfFilledStar className="size-5" />
+                  <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
+                    {course.averageRating.toFixed(1)}
+                  </span>
+                </span>
               </div>
             </div>
           </div>
         </div>
-        <div className="relative">
-          <p className="text-maroon-8 dark:text-maroon-4 md:leading-relaxed md:tracking-[0.08px] line-clamp-3 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute duration-300">
+        <div className="relative px-2 max-md:pb-2 md:px-4">
+          <p className="text-neutral-400 dark:text-maroon-4 body-small line-clamp-3 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute">
             {course.goal}
           </p>
         </div>
-        <div className="max-md:hidden relative">
+        <div className="max-md:hidden relative md:px-4">
           <div className="flex flex-col transition-opacity opacity-0 md:group-hover:opacity-100 absolute md:group-hover:static duration-0 md:group-hover:duration-150">
             <ListItem
               leftText={t('words.professor')}
@@ -157,18 +155,15 @@ export const CourseCard = ({
           </div>
         </div>
         <div className="max-md:hidden relative flex justify-center w-full mt-auto">
-          <div className="absolute w-full bottom-0">
+          <div className="absolute w-full bottom-0 px-4 pb-4">
             <Button
               variant="primary"
               size="m"
-              className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-300"
+              className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-150"
             >
               {t('courses.explorer.seeCourse')}
-              <FaArrowRightLong
-                className={cn(
-                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                  'group-hover:ml-3',
-                )}
+              <TbChevronRight
+                className={cn('inline-flex whitespace-nowrap ml-3')}
               />
             </Button>
           </div>
@@ -193,10 +188,10 @@ export const CourseCardExtended = ({
     >
       <article
         className={
-          'overflow-hidden group flex flex-col w-full max-md:max-w-[500px] max-md:mx-auto md:h-[472px] p-2.5 bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section rounded-[10px] md:rounded-[20px] relative'
+          'overflow-hidden group flex flex-col w-full max-md:max-w-[500px] max-md:mx-auto md:h-[472px] p-2.5 bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section rounded-[10px] md:rounded-2xl relative'
         }
       >
-        <span className="absolute uppercase -top-px -left-px bg-white border border-white rounded-tl-[10px] md:rounded-tl-[20px] rounded-br-[10px] py-1 px-2.5 md:py-2.5 md:px-4 md:rounded-br-[20px] z-10 shrink-0 max-md:w-[95px]">
+        <span className="absolute uppercase -top-px -left-px bg-white border border-white rounded-tl-[10px] md:rounded-tl-2xl rounded-br-[10px] py-1 px-2.5 md:py-2.5 md:px-4 md:rounded-br-2xl z-10 shrink-0 max-md:w-[95px]">
           <Image
             src={PlanBSchoolLogo}
             alt="Plan B School"
@@ -205,7 +200,7 @@ export const CourseCardExtended = ({
           />
         </span>
 
-        <div className="flex flex-col md:flex-row gap-2.5 md:gap-5 h-full md:max-h-[270px] md:group-hover:max-h-[250px] transition-[max-height] ease-linear overflow-hidden">
+        <div className="flex flex-col md:flex-row gap-2.5 md:gap-5 h-full md:max-h-[270px] md:group-hover:max-h-[250px] transition-[max-height] ease-in-out overflow-hidden">
           <Image
             width={320}
             height={224}
@@ -320,14 +315,11 @@ export const CourseCardExtended = ({
             <Button
               variant="primary"
               size="m"
-              className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-300"
+              className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-150"
             >
               {t('courses.explorer.seeCourse')}
-              <FaArrowRightLong
-                className={cn(
-                  'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 md:group-hover:max-w-96 md:group-hover:opacity-100',
-                  'md:group-hover:ml-3',
-                )}
+              <TbChevronRight
+                className={cn('inline-flex whitespace-nowrap ml-3')}
               />
             </Button>
           </div>

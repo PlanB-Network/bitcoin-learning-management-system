@@ -3,7 +3,6 @@ import useEmblaCarousel, {
 } from 'embla-carousel-react';
 import * as React from 'react';
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-
 import { cn } from '#src/index.ts';
 import { Button } from './button.tsx';
 
@@ -183,7 +182,7 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        'min-w-0 shrink-0 grow-0 basis-full',
+        'min-w-0 shrink-0 grow-0',
         orientation === 'horizontal' ? 'pl-5' : 'pt-4',
         className,
       )}
@@ -210,9 +209,10 @@ const CarouselPrevious = React.forwardRef<
         className={cn(
           'absolute size-[25px] md:size-10 rounded-full',
           orientation === 'horizontal'
-            ? 'left-3 top-1/2 -translate-y-1/2 md:-left-4 lg:-left-9 xl:-left-12'
+            ? '-left-3 top-1/2 -translate-y-1/2'
             : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
           className,
+          !canScrollPrev && '!hidden',
         )}
         disabled={!canScrollPrev}
         onClick={scrollPrev}
@@ -244,9 +244,10 @@ const CarouselNext = React.forwardRef<
         className={cn(
           'absolute size-[25px] md:size-10 rounded-full',
           orientation === 'horizontal'
-            ? 'right-3 top-1/2 -translate-y-1/2 md:-right-4 lg:-right-9 xl:-right-12'
+            ? '-right-3 top-1/2 -translate-y-1/2'
             : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
           className,
+          !canScrollNext && '!hidden',
         )}
         disabled={!canScrollNext}
         onClick={scrollNext}
@@ -260,6 +261,21 @@ const CarouselNext = React.forwardRef<
 );
 CarouselNext.displayName = 'CarouselNext';
 
+const CarouselFadeEdges = () => {
+  const { canScrollPrev, canScrollNext } = useCarousel();
+
+  return (
+    <>
+      {canScrollPrev && (
+        <div className="pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-white to-transparent" />
+      )}
+      {canScrollNext && (
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent" />
+      )}
+    </>
+  );
+};
+
 export {
   type CarouselApi,
   Carousel,
@@ -267,4 +283,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselFadeEdges,
 };

@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { PageHeader } from '#src/components/page-header.tsx';
 
 import { MainLayout } from './main-layout.tsx';
+import { SecondaryNavbar } from './ui/secondary-navbar.tsx';
 
 interface Props {
   title?: string;
@@ -15,6 +16,7 @@ interface Props {
   maxWidth?: string;
   paddingXClasses?: string;
   hideDescriptionOnMobile?: boolean;
+  tabs?: { id: string; label: string; href: string }[];
 }
 
 export const PageLayout = ({
@@ -24,16 +26,18 @@ export const PageLayout = ({
   link,
   children,
   className,
-  maxWidth = 'max-w-6xl',
-  paddingXClasses = 'px-2 md:px-10',
+  paddingXClasses = 'px-3 lg:px-10',
   hideDescriptionOnMobile = true,
+  tabs = [],
 }: Props) => {
   return (
     <MainLayout>
+      {/** biome-ignore lint/complexity/noUselessFragments: <type issue> */}
+      {tabs.length > 0 ? <SecondaryNavbar tabs={tabs} /> : <></>}
       <div
         className={cn('flex h-fit justify-center', className, paddingXClasses)}
       >
-        <div className={cn('w-full', maxWidth)}>
+        <div className={cn('w-full')}>
           {title && (
             <PageHeader
               title={title}
@@ -43,7 +47,7 @@ export const PageLayout = ({
               hideDescriptionOnMobile={hideDescriptionOnMobile}
             />
           )}
-          {children && <div className="my-4 sm:my-6">{children}</div>}
+          {children && <div className="my-4 lg:my-6">{children}</div>}
         </div>
       </div>
     </MainLayout>

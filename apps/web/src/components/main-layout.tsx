@@ -107,7 +107,7 @@ export const MainLayout = ({
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="flex w-full flex-grow overflow-hidden">
+      <div className="flex w-full flex-grow overflow-hidden max-lg:mt-16">
         {/* Sidebar */}
         <SideBar isSidebarOpen={isSidebarOpen} />
 
@@ -246,11 +246,8 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               iconColor="orange"
               label={t('navbar.learnAnytimeTitle')}
               description={t('navbar.learnAnytimeDescription')}
-              link="/courses"
-              isActive={
-                window.location.pathname.includes('/courses') &&
-                !window.location.pathname.includes('/dashboard')
-              }
+              link="/learn-anytime"
+              isActive={window.location.pathname.includes('/learn-anytime')}
               isSidebarOpen={isSidebarOpen}
               isMain
             />

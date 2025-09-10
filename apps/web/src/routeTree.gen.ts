@@ -17,6 +17,7 @@ import { Route as LangDashboardDashboardIndexRouteImport } from './routes/$lang/
 import { Route as LangContentTutorialsIndexRouteImport } from './routes/$lang/_content/tutorials/index';
 import { Route as LangContentSearchIndexRouteImport } from './routes/$lang/_content/search/index';
 import { Route as LangContentResourcesIndexRouteImport } from './routes/$lang/_content/resources/index';
+import { Route as LangContentLearnAnytimeIndexRouteImport } from './routes/$lang/_content/learn-anytime/index';
 import { Route as LangContentEventsIndexRouteImport } from './routes/$lang/_content/events/index';
 import { Route as LangContentCoursesIndexRouteImport } from './routes/$lang/_content/courses/index';
 import { Route as LangDashboardDashboardProfileRouteImport } from './routes/$lang/dashboard/_dashboard/profile';
@@ -26,6 +27,7 @@ import { Route as LangDashboardDashboardCoursesRouteImport } from './routes/$lan
 import { Route as LangDashboardDashboardCareerPortalRouteImport } from './routes/$lang/dashboard/_dashboard/career-portal';
 import { Route as LangDashboardDashboardCalendarRouteImport } from './routes/$lang/dashboard/_dashboard/calendar';
 import { Route as LangDashboardDashboardBookingsRouteImport } from './routes/$lang/dashboard/_dashboard/bookings';
+import { Route as LangContentLearnAnytimeCourseSelectorRouteImport } from './routes/$lang/_content/learn-anytime/course-selector';
 import { Route as LangContentEventsPlanBWeekRouteImport } from './routes/$lang/_content/events/plan-b-week';
 import { Route as LangContentEventsEventIdRouteImport } from './routes/$lang/_content/events/$eventId';
 import { Route as LangContentCoursesBtc105RouteImport } from './routes/$lang/_content/courses/btc105';
@@ -131,6 +133,12 @@ const LangContentResourcesIndexRoute =
     path: '/$lang/resources/',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangContentLearnAnytimeIndexRoute =
+  LangContentLearnAnytimeIndexRouteImport.update({
+    id: '/$lang/_content/learn-anytime/',
+    path: '/$lang/learn-anytime/',
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const LangContentEventsIndexRoute = LangContentEventsIndexRouteImport.update({
   id: '/$lang/_content/events/',
   path: '/$lang/events/',
@@ -182,6 +190,12 @@ const LangDashboardDashboardBookingsRoute =
     id: '/bookings',
     path: '/bookings',
     getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
+const LangContentLearnAnytimeCourseSelectorRoute =
+  LangContentLearnAnytimeCourseSelectorRouteImport.update({
+    id: '/$lang/_content/learn-anytime/course-selector',
+    path: '/$lang/learn-anytime/course-selector',
+    getParentRoute: () => rootRouteImport,
   } as any);
 const LangContentEventsPlanBWeekRoute =
   LangContentEventsPlanBWeekRouteImport.update({
@@ -598,6 +612,7 @@ export interface FileRoutesByFullPath {
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
   '/$lang/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
+  '/$lang/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
@@ -607,6 +622,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/profile': typeof LangDashboardDashboardProfileRoute;
   '/$lang/courses': typeof LangContentCoursesIndexRoute;
   '/$lang/events': typeof LangContentEventsIndexRoute;
+  '/$lang/learn-anytime': typeof LangContentLearnAnytimeIndexRoute;
   '/$lang/resources': typeof LangContentResourcesIndexRoute;
   '/$lang/search': typeof LangContentSearchIndexRoute;
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
@@ -680,6 +696,7 @@ export interface FileRoutesByTo {
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
   '/$lang/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
+  '/$lang/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
@@ -689,6 +706,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/profile': typeof LangDashboardDashboardProfileRoute;
   '/$lang/courses': typeof LangContentCoursesIndexRoute;
   '/$lang/events': typeof LangContentEventsIndexRoute;
+  '/$lang/learn-anytime': typeof LangContentLearnAnytimeIndexRoute;
   '/$lang/resources': typeof LangContentResourcesIndexRoute;
   '/$lang/search': typeof LangContentSearchIndexRoute;
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
@@ -762,6 +780,7 @@ export interface FileRoutesById {
   '/$lang/_content/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/_content/events/$eventId': typeof LangContentEventsEventIdRoute;
   '/$lang/_content/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
+  '/$lang/_content/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
   '/$lang/dashboard/_dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/_dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/_dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
@@ -771,6 +790,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/profile': typeof LangDashboardDashboardProfileRoute;
   '/$lang/_content/courses/': typeof LangContentCoursesIndexRoute;
   '/$lang/_content/events/': typeof LangContentEventsIndexRoute;
+  '/$lang/_content/learn-anytime/': typeof LangContentLearnAnytimeIndexRoute;
   '/$lang/_content/resources/': typeof LangContentResourcesIndexRoute;
   '/$lang/_content/search/': typeof LangContentSearchIndexRoute;
   '/$lang/_content/tutorials/': typeof LangContentTutorialsIndexRoute;
@@ -846,6 +866,7 @@ export interface FileRouteTypes {
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
     | '/$lang/events/plan-b-week'
+    | '/$lang/learn-anytime/course-selector'
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
@@ -855,6 +876,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/profile'
     | '/$lang/courses'
     | '/$lang/events'
+    | '/$lang/learn-anytime'
     | '/$lang/resources'
     | '/$lang/search'
     | '/$lang/tutorials'
@@ -928,6 +950,7 @@ export interface FileRouteTypes {
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
     | '/$lang/events/plan-b-week'
+    | '/$lang/learn-anytime/course-selector'
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
@@ -937,6 +960,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/profile'
     | '/$lang/courses'
     | '/$lang/events'
+    | '/$lang/learn-anytime'
     | '/$lang/resources'
     | '/$lang/search'
     | '/$lang/tutorials'
@@ -1009,6 +1033,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/courses/btc105'
     | '/$lang/_content/events/$eventId'
     | '/$lang/_content/events/plan-b-week'
+    | '/$lang/_content/learn-anytime/course-selector'
     | '/$lang/dashboard/_dashboard/bookings'
     | '/$lang/dashboard/_dashboard/calendar'
     | '/$lang/dashboard/_dashboard/career-portal'
@@ -1018,6 +1043,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/profile'
     | '/$lang/_content/courses/'
     | '/$lang/_content/events/'
+    | '/$lang/_content/learn-anytime/'
     | '/$lang/_content/resources/'
     | '/$lang/_content/search/'
     | '/$lang/_content/tutorials/'
@@ -1092,8 +1118,10 @@ export interface RootRouteChildren {
   LangContentCoursesBtc105Route: typeof LangContentCoursesBtc105Route;
   LangContentEventsEventIdRoute: typeof LangContentEventsEventIdRoute;
   LangContentEventsPlanBWeekRoute: typeof LangContentEventsPlanBWeekRoute;
+  LangContentLearnAnytimeCourseSelectorRoute: typeof LangContentLearnAnytimeCourseSelectorRoute;
   LangContentCoursesIndexRoute: typeof LangContentCoursesIndexRoute;
   LangContentEventsIndexRoute: typeof LangContentEventsIndexRoute;
+  LangContentLearnAnytimeIndexRoute: typeof LangContentLearnAnytimeIndexRoute;
   LangContentResourcesIndexRoute: typeof LangContentResourcesIndexRoute;
   LangContentSearchIndexRoute: typeof LangContentSearchIndexRoute;
   LangContentTutorialsIndexRoute: typeof LangContentTutorialsIndexRoute;
@@ -1189,6 +1217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentResourcesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/_content/learn-anytime/': {
+      id: '/$lang/_content/learn-anytime/';
+      path: '/$lang/learn-anytime';
+      fullPath: '/$lang/learn-anytime';
+      preLoaderRoute: typeof LangContentLearnAnytimeIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$lang/_content/events/': {
       id: '/$lang/_content/events/';
       path: '/$lang/events';
@@ -1251,6 +1286,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$lang/dashboard/bookings';
       preLoaderRoute: typeof LangDashboardDashboardBookingsRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/_content/learn-anytime/course-selector': {
+      id: '/$lang/_content/learn-anytime/course-selector';
+      path: '/$lang/learn-anytime/course-selector';
+      fullPath: '/$lang/learn-anytime/course-selector';
+      preLoaderRoute: typeof LangContentLearnAnytimeCourseSelectorRouteImport;
+      parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/events/plan-b-week': {
       id: '/$lang/_content/events/plan-b-week';
@@ -1841,8 +1883,11 @@ const rootRouteChildren: RootRouteChildren = {
   LangContentCoursesBtc105Route: LangContentCoursesBtc105Route,
   LangContentEventsEventIdRoute: LangContentEventsEventIdRoute,
   LangContentEventsPlanBWeekRoute: LangContentEventsPlanBWeekRoute,
+  LangContentLearnAnytimeCourseSelectorRoute:
+    LangContentLearnAnytimeCourseSelectorRoute,
   LangContentCoursesIndexRoute: LangContentCoursesIndexRoute,
   LangContentEventsIndexRoute: LangContentEventsIndexRoute,
+  LangContentLearnAnytimeIndexRoute: LangContentLearnAnytimeIndexRoute,
   LangContentResourcesIndexRoute: LangContentResourcesIndexRoute,
   LangContentSearchIndexRoute: LangContentSearchIndexRoute,
   LangContentTutorialsIndexRoute: LangContentTutorialsIndexRoute,

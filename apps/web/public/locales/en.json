@@ -153,6 +153,7 @@
     "topics": "Topics"
   },
   "courses": {
+    "allCourses": "All courses",
     "chapter": {
       "detail": {
         "bookSeat": "Book your seat",
@@ -185,6 +186,8 @@
       "unlockFeatures1": "To unlock all features and keep track of your progress, you need an account.",
       "unlockFeatures2": "Please be aware that we do not collect any personal data nor use cookies."
     },
+    "continueLeftOff": "Continue where you left off",
+    "courseSelector": "Course selector",
     "details": {
       "associatedProfessors": "Associated professors",
       "attendInPersonWarning": "If you intend to attend this class in person, make sure to book your seat. In any case, the lesson will be live-streamed and available for replay.",
@@ -319,6 +322,7 @@
     "explorer": {
       "buildPath": "Build your own journey",
       "comingSoon": "coming soon",
+      "discover": "Discover",
       "exploreCourses": "Explore Plan ₿ Courses",
       "findCourses": "Find the perfect course for your needs thanks to the Course Selection Tool",
       "goal": "Goal:",
@@ -326,13 +330,14 @@
       "pageDescription": "Plan ₿ Academy offers a vast range of courses on Bitcoin, both free and premium, from beginner to expert. Led by experts or self-paced, they adapt to every learning style. Our mission is simple: to make Bitcoin knowledge clear, engaging, and accessible to all!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "The Plan ₿ School, led by Giacomo Zucco, offers intensive three-month educational programs designed to bridge the gap between learning and real-world applications. Beyond traditional classes, students engage in company-led practical projects and a first-class bootcamp dedicated to top performers. Only the best talents advance after two competitive selection rounds, ensuring that the final top students get fully equipped to launch their careers in the Bitcoin industry.",
-      "seeCourse": "Discover the course"
+      "seeCourse": "See the course"
     },
     "format": {
       "hybrid": "In-person/online",
       "inperson": "In-person",
       "online": "Online"
     },
+    "noCoursesFound": "No courses found. Try adjusting your filters.",
     "part": {
       "count": "Part {{count}}"
     },
@@ -360,6 +365,7 @@
       "teachers": "Teachers",
       "time": "Time"
     },
+    "plusXMore": "+{{count}} more",
     "quizz": {
       "clickOnPie": "Click on the pie chart to check the right answer",
       "quizz": "Quiz",
@@ -412,7 +418,8 @@
       "writeThoughts": "Here you can write your thoughts",
       "yesOfCourse": "yes, of course",
       "yesVeryMuch": "yes, very much"
-    }
+    },
+    "selectATopic": "Select a topic"
   },
   "dashboard": {
     "account": "Account",
@@ -777,6 +784,7 @@
             "invalidAudioFile": "Please select a valid audio file.",
             "invalidPptxFile": "Please select a valid PowerPoint (.pptx) file.",
             "missingFilesError": "Please upload the translation files or provide a URL before starting the translation.",
+            "networkError": "Network error occurred. Please check your connection and try again.",
             "noAudioFileSelected": "No audio file selected",
             "noFolderSelected": "No folder selected",
             "noLanguagesAvailable": "No languages available for translation.",
@@ -787,22 +795,21 @@
             "pptxFile": "PowerPoint File",
             "pptxFileInfo": "Only .pptx files are supported (Max 100MB)",
             "pptxFileTooLarge": "PowerPoint file is too large. Maximum size is 100MB.",
+            "processingStarted": "Translation started! The process may take several minutes for large courses.",
             "selectLanguages": "Select languages to translate:",
             "startSuccess": "Translation started successfully!",
             "startTranslation": "Start Translation",
             "startingTranslation": "Uploading files...",
-            "timeoutError": "Translation request timed out. The course content might be too large. Please try again or contact support.",
-            "translationFailed": "Translation failed. Please check the logs and try again.",
-            "uploadError": "Upload failed. Please check your files and try again.",
-            "uploadTimeoutError": "Upload timed out after 10 minutes. Please try with smaller files or check your connection.",
-            "networkError": "Network error occurred. Please check your connection and try again.",
-            "processingStarted": "Translation started! The process may take several minutes for large courses.",
-            "uploadAndTranslationStarted": "Files uploaded and translation started! The process may take several minutes for large courses.",
-            "uploadingFiles": "Uploading files...",
             "startingTranslationStep": "Starting translation...",
+            "timeoutError": "Translation request timed out. The course content might be too large. Please try again or contact support.",
             "title": "Select Languages to Translate",
+            "translationFailed": "Translation failed. Please check the logs and try again.",
+            "uploadAndTranslationStarted": "Files uploaded and translation started! The process may take several minutes for large courses.",
+            "uploadError": "Upload failed. Please check your files and try again.",
             "uploadFiles": "Upload Supporting Files (Optional)",
             "uploadFolder": "Upload folder (PPTX + TXT)",
+            "uploadTimeoutError": "Upload timed out after 10 minutes. Please try with smaller files or check your connection.",
+            "uploadingFiles": "Uploading files...",
             "useEnglishLabel": "The course has already been translated into English. Use the English version as source?"
           },
           "slideNavigation": {
@@ -2084,6 +2091,7 @@
     "exam": "Exam",
     "failed": "Failed",
     "filter": "Filter",
+    "filters": "Filters",
     "finish": "Finish",
     "free": "Free",
     "full": "Full",
@@ -2146,6 +2154,7 @@
     "password": "Password",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
+    "practice": "Practice",
     "previous": "Previous",
     "price": "Price",
     "pricing": "Pricing",
@@ -2163,13 +2172,16 @@
     "ratings": "Ratings",
     "register": "Register",
     "required": "Required",
+    "resetAll": "Reset all",
     "resources": "Resources",
     "results": "Results",
+    "resume": "Resume",
     "review": "Review",
     "role": "Role",
     "save": "Save",
     "saving": "Saving...",
     "search": "Search",
+    "searchTripleDot": "Search...",
     "security": "Security",
     "selectedAmount": "{{amount}} selected",
     "share": "Share",
@@ -2187,16 +2199,19 @@
     "teacher": "Teacher",
     "telegram": "Telegram",
     "termsAndConditions": "Terms and conditions",
+    "theory": "Theory",
     "ticket": "Ticket",
     "tickets": "Tickets",
     "time": "Time",
     "timeZone": "Timezone",
     "title": "Title",
     "to": "to",
+    "topic": "Topic",
     "topics": "Topics",
     "total": "Total",
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
+    "type": "Type",
     "unavailable": "Unavailable",
     "unified": "Unified",
     "update": "Update",
@@ -2205,6 +2220,7 @@
     "users": "Users",
     "video": "Video",
     "view": "View",
+    "viewAll": "View all",
     "viewMore": "View more",
     "wallets": "Wallets",
     "week": "Week",

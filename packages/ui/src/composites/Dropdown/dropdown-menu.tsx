@@ -19,7 +19,7 @@ const dropdownButtonVariant = cva(
       },
       variant: {
         dark: 'bg-darkOrange-11 border-darkOrange-9',
-        light: 'bg-newGray-6 border-newGray-4',
+        light: 'bg-neutral-50 border-none',
       },
     },
   },
@@ -34,7 +34,7 @@ const dropdownContainerVariant = cva(
     variants: {
       variant: {
         dark: 'bg-darkOrange-11 border-darkOrange-9',
-        light: 'bg-newGray-6 border-newGray-4',
+        light: 'bg-neutral-50 border-none',
       },
     },
   },
@@ -47,6 +47,8 @@ interface DropdownMenuProps
   itemsList: ItemProps[];
   maxWidth?: string;
   variant?: 'dark' | 'light';
+  placeholder?: string;
+  forcePlaceholder?: boolean;
 }
 
 interface ItemProps {
@@ -61,6 +63,8 @@ export const DropdownMenu = ({
   maxWidth = 'max-w-[400px]',
   variant = 'dark',
   className,
+  placeholder,
+  forcePlaceholder = false,
   ...props
 }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -108,15 +112,18 @@ export const DropdownMenu = ({
           >
             <span
               className={cn(
-                'font-medium leading-[140%] tracking-015px text-start truncate text-darkOrange-5',
+                'dropdown-small text-start truncate',
+                variant === 'light' && forcePlaceholder
+                  ? 'text-neutral-700'
+                  : 'text-black',
               )}
             >
-              {activeItem}
+              {forcePlaceholder ? (placeholder ?? activeItem) : activeItem}
             </span>
 
             <MdKeyboardArrowDown
               className={cn(
-                'ml-auto size-6 transition-transform ease-in-out text-darkOrange-5',
+                'ml-auto size-6 transition-transform ease-in-out text-neutral-400',
                 isOpen ? '-rotate-180' : 'rotate-0',
               )}
             />
@@ -129,9 +136,7 @@ export const DropdownMenu = ({
             disabled
           >
             <span
-              className={cn(
-                'font-medium leading-[140%] tracking-015px text-start text-darkOrange-5',
-              )}
+              className={cn('dropdown-small text-start truncate text-black')}
             >
               {activeItem}
             </span>

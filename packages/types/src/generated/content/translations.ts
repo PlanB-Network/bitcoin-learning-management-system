@@ -73,6 +73,7 @@ export interface CourseBasic {
   sumOfAllRating: number;
   teachingFormat: 'self_paced' | 'professor_led';
   topic: string;
+  type: 'practice' | 'theory';
 }
 
 export interface CoursesLocalized {

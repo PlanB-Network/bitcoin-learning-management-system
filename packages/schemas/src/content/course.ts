@@ -132,6 +132,7 @@ export const minimalJoinedCourseSchema = courseSchema
     sumOfAllRating: true,
     teachingFormat: true,
     topic: true,
+    type: true,
     hasAssignment: true,
     assignmentStartDate: true,
     assignmentEndDate: true,

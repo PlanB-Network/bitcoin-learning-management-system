@@ -8,6 +8,7 @@ import {
   CourseFormat,
   CoursePaymentFormat,
   CoursePaymentMethod,
+  CourseType,
   EventType,
   ExamType,
   GeneralPaymentItem,
@@ -913,6 +914,7 @@ export const teachingFormatEnum = pgNativeEnum(
   'teaching_format',
   TeachingFormat,
 );
+export const typeFormatEnum = pgNativeEnum('course_type', CourseType);
 
 export const contentCourses = content.table('courses', (t) => ({
   areScoresCalculated: t.boolean().default(false).notNull(),
@@ -968,6 +970,7 @@ export const contentCourses = content.table('courses', (t) => ({
     .default(TeachingFormat.SelfPaced)
     .notNull(),
   topic: t.text().notNull(),
+  type: typeFormatEnum().default(CourseType.Theory).notNull(),
 }));
 
 export const contentCoursesLocalized = content.table(

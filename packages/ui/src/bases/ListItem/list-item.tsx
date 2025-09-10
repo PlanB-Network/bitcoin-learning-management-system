@@ -17,7 +17,7 @@ interface ListItemProps {
 }
 
 const listItemVariant = cva(
-  'text-base flex items-center justify-between &:not(:last-child):border-b md:gap-2',
+  'text-base flex items-center justify-between border-b last:border-b-0 md:gap-2',
   {
     defaultVariants: {
       hasIncreasedPadding: false,
@@ -41,7 +41,7 @@ const listItemVariant = cva(
       },
       variant: {
         dark: 'border-white/10',
-        light: 'border-newGray-4',
+        light: 'border-black/10',
         lightMaroon: 'border-black/10',
         grey: 'border-newGray-6',
       },
@@ -62,7 +62,7 @@ const leftTextListItemVariant = cva(
     variants: {
       variant: {
         dark: 'text-white/70',
-        light: 'text-newBlack-4',
+        light: 'text-neutral-400',
         lightMaroon: 'text-maroon-8',
         grey: 'text-newGray-1',
       },
@@ -79,7 +79,7 @@ const rightTextListItemVariant = cva(
     variants: {
       variant: {
         dark: 'text-white',
-        light: 'text-newBlack-1',
+        light: 'text-black',
         lightMaroon: 'text-maroon-11',
         grey: 'text-newBlack-3',
       },
