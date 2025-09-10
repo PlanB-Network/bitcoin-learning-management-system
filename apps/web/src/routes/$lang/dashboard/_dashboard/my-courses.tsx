@@ -8,7 +8,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { CourseTable } from './-components/course-table.tsx';
 import { CourseTableMobile } from './-components/course-table-mobile.tsx';
 
-export const Route = createFileRoute('/$lang/dashboard/_dashboard/courses')({
+export const Route = createFileRoute('/$lang/dashboard/_dashboard/my-courses')({
   component: DashboardCourses,
 });
 

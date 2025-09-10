@@ -55,7 +55,7 @@ function DashboardProfessorCourses() {
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Professor)(session?.user)) {
-      navigate({ to: '/dashboard/courses' });
+      navigate({ to: '/dashboard/my-courses' });
     }
   }, [session]);
 

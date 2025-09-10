@@ -43,7 +43,7 @@ export const createSendSelfPacedCourseMonthlySummaryEmail = (
         await sendEmail({
           data: {
             courseName: courseName,
-            dashboardLink: `${config.domainUrl}/dashboard/courses/`,
+            dashboardLink: `${config.domainUrl}/dashboard/my-courses/`,
             newStudentsCount: newStudentsCount,
             newGraduatedStudentsCount: newGraduatedStudentsCount,
             newReviewsCount: newReviewsCount,

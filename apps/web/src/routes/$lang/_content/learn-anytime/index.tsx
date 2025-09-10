@@ -251,7 +251,7 @@ function AllCourses() {
             {inProgressCourses.length > 2 && (
               <div className="ml-auto">
                 <Link
-                  to="/dashboard/courses"
+                  to="/dashboard/my-courses"
                   className="body-small-bold text-black pr-8"
                 >
                   {t('courses.plusXMore', {

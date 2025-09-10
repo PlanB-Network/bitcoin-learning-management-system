@@ -24,7 +24,7 @@ function DashboardProfessorTutorials() {
       session?.user.role !== 'superadmin' &&
       session?.user.role !== 'professor'
     ) {
-      navigate({ to: '/dashboard/courses' });
+      navigate({ to: '/dashboard/my-courses' });
     }
   }, [session]);
 

@@ -6,5 +6,5 @@ export const Route = createFileRoute('/$lang/dashboard/_dashboard/')({
 });
 
 function CourseDetails() {
-  return <Navigate to="/dashboard/courses" replace={true} />;
+  return <Navigate to="/dashboard/my-courses" replace={true} />;
 }

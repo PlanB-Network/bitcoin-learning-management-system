@@ -51,7 +51,7 @@ export const ConclusionFinish = ({
       <OtherCourses course={course} />
       {session?.user && (
         <Link
-          to="/dashboard/courses"
+          to="/dashboard/my-courses"
           className="max-md:hidden mt-8 inline-flex"
         >
           <ButtonWithArrow variant="primary" size="l">

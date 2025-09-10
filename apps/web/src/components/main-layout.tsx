@@ -60,7 +60,7 @@ export const MainLayout = ({
         imgSrc: SignInIconLight,
         mode: 'light',
         onClick: () => {
-          window.location.href = '/dashboard/courses';
+          window.location.href = '/dashboard/my-courses';
         },
         time: 5000,
       });
@@ -262,7 +262,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                   icon={Pages}
                   iconColor="blue"
                   label={t('navbar.myCourses')}
-                  link="/dashboard/courses"
+                  link="/dashboard/my-courses"
                   isActive={window.location.pathname.includes(
                     '/dashboard/course',
                   )}

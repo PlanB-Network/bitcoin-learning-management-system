@@ -423,7 +423,7 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
           isOpen={isAuthModalOpen}
           onClose={closeAuthModal}
           initialState={authMode}
-          redirectTo={'/dashboard/courses'}
+          redirectTo={'/dashboard/my-courses'}
         />
       )}
     </header>

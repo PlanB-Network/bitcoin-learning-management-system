@@ -142,7 +142,7 @@ export const MenuDashboard = ({
             {
               onClick: toggleMobileMenu,
               text: t('words.dashboard'),
-              to: '/dashboard/courses',
+              to: '/dashboard/my-courses',
             },
             ...(inProgressCourses ?? []),
             ...(completedCourses && completedCourses.length > 0

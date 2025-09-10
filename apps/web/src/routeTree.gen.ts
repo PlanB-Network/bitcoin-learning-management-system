@@ -22,8 +22,8 @@ import { Route as LangContentEventsIndexRouteImport } from './routes/$lang/_cont
 import { Route as LangContentCoursesIndexRouteImport } from './routes/$lang/_content/courses/index';
 import { Route as LangDashboardDashboardProfileRouteImport } from './routes/$lang/dashboard/_dashboard/profile';
 import { Route as LangDashboardDashboardNotificationsRouteImport } from './routes/$lang/dashboard/_dashboard/notifications';
+import { Route as LangDashboardDashboardMyCoursesRouteImport } from './routes/$lang/dashboard/_dashboard/my-courses';
 import { Route as LangDashboardDashboardCredentialsRouteImport } from './routes/$lang/dashboard/_dashboard/credentials';
-import { Route as LangDashboardDashboardCoursesRouteImport } from './routes/$lang/dashboard/_dashboard/courses';
 import { Route as LangDashboardDashboardCareerPortalRouteImport } from './routes/$lang/dashboard/_dashboard/career-portal';
 import { Route as LangDashboardDashboardCalendarRouteImport } from './routes/$lang/dashboard/_dashboard/calendar';
 import { Route as LangDashboardDashboardBookingsRouteImport } from './routes/$lang/dashboard/_dashboard/bookings';
@@ -161,16 +161,16 @@ const LangDashboardDashboardNotificationsRoute =
     path: '/notifications',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
+const LangDashboardDashboardMyCoursesRoute =
+  LangDashboardDashboardMyCoursesRouteImport.update({
+    id: '/my-courses',
+    path: '/my-courses',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
 const LangDashboardDashboardCredentialsRoute =
   LangDashboardDashboardCredentialsRouteImport.update({
     id: '/credentials',
     path: '/credentials',
-    getParentRoute: () => LangDashboardDashboardRoute,
-  } as any);
-const LangDashboardDashboardCoursesRoute =
-  LangDashboardDashboardCoursesRouteImport.update({
-    id: '/courses',
-    path: '/courses',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
 const LangDashboardDashboardCareerPortalRoute =
@@ -616,8 +616,8 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
-  '/$lang/dashboard/courses': typeof LangDashboardDashboardCoursesRoute;
   '/$lang/dashboard/credentials': typeof LangDashboardDashboardCredentialsRoute;
+  '/$lang/dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
   '/$lang/dashboard/profile': typeof LangDashboardDashboardProfileRoute;
   '/$lang/courses': typeof LangContentCoursesIndexRoute;
@@ -700,8 +700,8 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
-  '/$lang/dashboard/courses': typeof LangDashboardDashboardCoursesRoute;
   '/$lang/dashboard/credentials': typeof LangDashboardDashboardCredentialsRoute;
+  '/$lang/dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
   '/$lang/dashboard/profile': typeof LangDashboardDashboardProfileRoute;
   '/$lang/courses': typeof LangContentCoursesIndexRoute;
@@ -784,8 +784,8 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/bookings': typeof LangDashboardDashboardBookingsRoute;
   '/$lang/dashboard/_dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/_dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
-  '/$lang/dashboard/_dashboard/courses': typeof LangDashboardDashboardCoursesRoute;
   '/$lang/dashboard/_dashboard/credentials': typeof LangDashboardDashboardCredentialsRoute;
+  '/$lang/dashboard/_dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/_dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
   '/$lang/dashboard/_dashboard/profile': typeof LangDashboardDashboardProfileRoute;
   '/$lang/_content/courses/': typeof LangContentCoursesIndexRoute;
@@ -870,8 +870,8 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
-    | '/$lang/dashboard/courses'
     | '/$lang/dashboard/credentials'
+    | '/$lang/dashboard/my-courses'
     | '/$lang/dashboard/notifications'
     | '/$lang/dashboard/profile'
     | '/$lang/courses'
@@ -954,8 +954,8 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/bookings'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
-    | '/$lang/dashboard/courses'
     | '/$lang/dashboard/credentials'
+    | '/$lang/dashboard/my-courses'
     | '/$lang/dashboard/notifications'
     | '/$lang/dashboard/profile'
     | '/$lang/courses'
@@ -1037,8 +1037,8 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/bookings'
     | '/$lang/dashboard/_dashboard/calendar'
     | '/$lang/dashboard/_dashboard/career-portal'
-    | '/$lang/dashboard/_dashboard/courses'
     | '/$lang/dashboard/_dashboard/credentials'
+    | '/$lang/dashboard/_dashboard/my-courses'
     | '/$lang/dashboard/_dashboard/notifications'
     | '/$lang/dashboard/_dashboard/profile'
     | '/$lang/_content/courses/'
@@ -1252,18 +1252,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardNotificationsRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
+    '/$lang/dashboard/_dashboard/my-courses': {
+      id: '/$lang/dashboard/_dashboard/my-courses';
+      path: '/my-courses';
+      fullPath: '/$lang/dashboard/my-courses';
+      preLoaderRoute: typeof LangDashboardDashboardMyCoursesRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
     '/$lang/dashboard/_dashboard/credentials': {
       id: '/$lang/dashboard/_dashboard/credentials';
       path: '/credentials';
       fullPath: '/$lang/dashboard/credentials';
       preLoaderRoute: typeof LangDashboardDashboardCredentialsRouteImport;
-      parentRoute: typeof LangDashboardDashboardRoute;
-    };
-    '/$lang/dashboard/_dashboard/courses': {
-      id: '/$lang/dashboard/_dashboard/courses';
-      path: '/courses';
-      fullPath: '/$lang/dashboard/courses';
-      preLoaderRoute: typeof LangDashboardDashboardCoursesRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
     '/$lang/dashboard/_dashboard/career-portal': {
@@ -1780,8 +1780,8 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardBookingsRoute: typeof LangDashboardDashboardBookingsRoute;
   LangDashboardDashboardCalendarRoute: typeof LangDashboardDashboardCalendarRoute;
   LangDashboardDashboardCareerPortalRoute: typeof LangDashboardDashboardCareerPortalRoute;
-  LangDashboardDashboardCoursesRoute: typeof LangDashboardDashboardCoursesRoute;
   LangDashboardDashboardCredentialsRoute: typeof LangDashboardDashboardCredentialsRoute;
+  LangDashboardDashboardMyCoursesRoute: typeof LangDashboardDashboardMyCoursesRoute;
   LangDashboardDashboardNotificationsRoute: typeof LangDashboardDashboardNotificationsRoute;
   LangDashboardDashboardProfileRoute: typeof LangDashboardDashboardProfileRoute;
   LangDashboardDashboardIndexRoute: typeof LangDashboardDashboardIndexRoute;
@@ -1804,9 +1804,9 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
     LangDashboardDashboardCalendarRoute: LangDashboardDashboardCalendarRoute,
     LangDashboardDashboardCareerPortalRoute:
       LangDashboardDashboardCareerPortalRoute,
-    LangDashboardDashboardCoursesRoute: LangDashboardDashboardCoursesRoute,
     LangDashboardDashboardCredentialsRoute:
       LangDashboardDashboardCredentialsRoute,
+    LangDashboardDashboardMyCoursesRoute: LangDashboardDashboardMyCoursesRoute,
     LangDashboardDashboardNotificationsRoute:
       LangDashboardDashboardNotificationsRoute,
     LangDashboardDashboardProfileRoute: LangDashboardDashboardProfileRoute,

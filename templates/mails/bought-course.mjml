@@ -62,7 +62,7 @@
     <mj-section padding-top="20px" padding-bottom="40px" padding-left="20px" padding-right="20px">
       <mj-column>
         <mj-button
-          href="https://planb.network/en/dashboard/courses"
+          href="https://planb.network/en/dashboard/my-courses"
           align="center"
           padding="0"
           inner-padding="14px 18px">

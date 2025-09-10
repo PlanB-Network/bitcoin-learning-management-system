@@ -37,7 +37,7 @@ export const createSendCoordinatorNewStudentsDailyRecapEmail = (
         await sendEmail({
           data: {
             courseName: courseName,
-            dashboardLink: `${config.domainUrl}/dashboard/courses/`,
+            dashboardLink: `${config.domainUrl}/dashboard/my-courses/`,
             newStudentsCount: newStudentsCount,
             subject: subject,
             teacherName: coordinator.displayName,
