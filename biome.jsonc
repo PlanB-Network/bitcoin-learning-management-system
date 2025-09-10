@@ -34,11 +34,17 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "a11y": {},
-      "complexity": {},
+      "a11y": {
+        "noStaticElementInteractions": "off" // To remove
+      },
+      "complexity": {
+        "noImportantStyles": "off"
+      },
       "correctness": {
+        "noNestedComponentDefinitions": "off", // To check
         "noUnusedImports": "error",
-        "useExhaustiveDependencies": "info"
+        "useExhaustiveDependencies": "info",
+        "useUniqueElementIds": "off" // To remove
       },
       "recommended": true,
       "style": {
@@ -55,7 +61,9 @@
         "useSingleVarDeclarator": "error"
       },
       "suspicious": {
-        "noExplicitAny": "off"
+        "noDuplicateProperties": "off", //To remove
+        "noExplicitAny": "off",
+        "noUnknownAtRules": "off" // To remove
       }
     }
   },
