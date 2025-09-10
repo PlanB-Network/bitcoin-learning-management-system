@@ -52,7 +52,7 @@ export const Footer = () => {
   const textSecondaryClass = 'text-newBlack-5';
 
   return (
-    <footer className="pt-4 w-full">
+    <footer className="pt-3 lg:pt-6 w-full">
       <div className={cn('flex w-full flex-col', backgroundClass)}>
         <div className="flex max-md:flex-col w-full p-4 pb-8 md:py-12 md:px-0 max-md:gap-4">
           <div className="w-full flex max-md:flex-col justify-center gap-6 md:gap-28">

@@ -403,7 +403,10 @@ function AllCourses() {
                   <h2 className="title-base md:title-large mb-2 md:mb-4 text-black">
                     {topic.name}
                   </h2>
-                  <Carousel className="max-md:hidden">
+                  <Carousel
+                    className="max-md:hidden"
+                    opts={{ slidesToScroll: 3, duration: 14 }}
+                  >
                     <CarouselContent className="">
                       {topicCourses.map((course) => (
                         <CarouselItem key={course.id}>
