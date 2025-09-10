@@ -355,7 +355,7 @@ function EventDetails() {
                 {event.description && (
                   <section className="flex flex-col w-full gap-2">
                     <p className="body-base-bold">{t('words.description')}</p>
-                    <p className="bg-white px-5 py-4 rounded-2xl text-newBlack-3 body-large">
+                    <p className="bg-white px-5 py-4 rounded-2xl text-newBlack-3 body-large whitespace-pre-line">
                       {event.description}
                     </p>
                   </section>
