@@ -10,7 +10,7 @@ import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
-const courseCardStyles = cva('group flex flex-col w-full md:h-[388px]', {
+const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
   defaultVariants: {
     borderRadius: 'courses',
     color: 'primary',
@@ -130,7 +130,7 @@ export const CourseCard = ({
           </div>
         </div>
         <div className="relative px-2 max-md:pb-2 md:px-4">
-          <p className="text-neutral-400 dark:text-maroon-4 body-small line-clamp-3 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute">
+          <p className="text-neutral-400 dark:text-maroon-4 body-small line-clamp-3 md:line-clamp-5 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute">
             {course.goal}
           </p>
         </div>

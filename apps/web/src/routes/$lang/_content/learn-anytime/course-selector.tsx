@@ -102,9 +102,9 @@ function CourseSelector() {
                 activeTopic !== topic && setActiveCourse(null);
               }}
               className={cn(
-                'flex items-center justify-between text-black text-lg leading-snug font-medium w-full py-2 px-3 uppercase text-start rounded-md',
+                'flex items-center justify-between text-black text-lg leading-snug w-full py-2 px-3 uppercase text-start rounded-md',
                 activeTopic === topic
-                  ? 'bg-neutral-100'
+                  ? 'bg-neutral-100 font-medium'
                   : 'hover:bg-neutral-50',
               )}
             >
@@ -137,9 +137,9 @@ function CourseSelector() {
                         type="button"
                         onClick={() => setActiveCourse(course)}
                         className={cn(
-                          'text-black text-lg leading-snug font-medium w-full py-2 px-3 uppercase text-start rounded-md',
+                          'text-black text-lg leading-snug w-full py-2 px-3 text-start rounded-md',
                           activeCourse?.id === course.id
-                            ? 'bg-neutral-100'
+                            ? 'bg-neutral-100 font-medium'
                             : 'hover:bg-neutral-50',
                         )}
                       >

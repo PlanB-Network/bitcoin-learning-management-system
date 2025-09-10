@@ -5,28 +5,25 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { DropdownItem } from './dropdown-item.tsx';
 
-const dropdownButtonVariant = cva(
-  'flex items-center gap-4 px-4 pt-3 pb-2 w-full',
-  {
-    defaultVariants: {
-      isOpen: false,
-      variant: 'dark',
+const dropdownButtonVariant = cva('flex items-center gap-4 px-4 py-3 w-full', {
+  defaultVariants: {
+    isOpen: false,
+    variant: 'dark',
+  },
+  variants: {
+    isOpen: {
+      false: 'rounded-xl border',
+      true: 'rounded-t-xl border-x border-t',
     },
-    variants: {
-      isOpen: {
-        false: 'rounded-xl border',
-        true: 'rounded-t-xl border-x border-t',
-      },
-      variant: {
-        dark: 'bg-darkOrange-11 border-darkOrange-9',
-        light: 'bg-neutral-50 border-none',
-      },
+    variant: {
+      dark: 'bg-darkOrange-11 border-darkOrange-9',
+      light: 'bg-neutral-50 border-none',
     },
   },
-);
+});
 
 const dropdownContainerVariant = cva(
-  'absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-2 rounded-b-xl border-x border-b z-10 overflow-auto no-scrollbar',
+  'absolute left-1/2 -translate-x-1/2 w-full max-w-[400px] max-h-[366px] px-2 pb-3 rounded-b-xl border-x border-b z-10 overflow-auto no-scrollbar',
   {
     defaultVariants: {
       variant: 'dark',

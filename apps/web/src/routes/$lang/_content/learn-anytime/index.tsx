@@ -480,7 +480,8 @@ const SearchInput = ({
   return (
     <div
       className={cn(
-        'relative max-w-40 lg:max-w-56 h-8 lg:h-11 w-full',
+        'relative h-8 lg:h-11 w-full transition-[min-width] ease-in-out min-w-0 max-w-40 lg:max-w-56 focus-within:min-w-[200px]',
+        searchTerm && 'min-w-[200px]',
         className,
       )}
     >

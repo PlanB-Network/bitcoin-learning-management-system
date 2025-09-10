@@ -47,8 +47,8 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
 
               <div
                 className={cn(
-                  'absolute bottom-0.5 left-0 h-1 w-full rounded-full bg-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
-                  isActive && 'scale-x-100',
+                  'absolute bottom-0 left-0 h-1 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
+                  isActive && 'scale-x-100 bg-orange-500',
                 )}
               />
             </Link>
