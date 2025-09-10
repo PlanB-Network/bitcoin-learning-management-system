@@ -90,7 +90,7 @@ export const CourseCard = ({
             className="md:hidden rounded-tl-2xl w-31 object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">
-            <span className="max-md:flex flex-col !line-clamp-1 md:!line-clamp-2 title-base text-maroon-11 dark:text-white md:align-top mb-2 lg:mb-0">
+            <span className="max-md:flex flex-col !line-clamp-1 md:!line-clamp-2 title-base text-maroon-11 dark:text-white md:align-top mb-2 md:mb-0">
               {course.name}
             </span>
             <span className="flex items-center gap-1 md:hidden mb-2.5">
