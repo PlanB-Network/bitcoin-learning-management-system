@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
-
+import faviconDev from '#src/assets/logo/favicon-dev.svg';
 import { SITE_NAME } from '#src/utils/meta.js';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 
 interface PageMetaProps {
   title?: string;
@@ -42,6 +43,9 @@ const PageMeta = ({
       {title && <meta name="twitter:title" content={title} />}
       {description && (
         <meta name="twitter:description" content={newDescription} />
+      )}
+      {isTestnetOrDevelopmentEnvironment() && (
+        <link rel="icon" type="image/svg+xml" href={faviconDev} />
       )}
     </Helmet>
   );
