@@ -10,7 +10,10 @@ export const getCoursesWithTodoTranslationsQuery = () => {
         ct.course_id,
         ARRAY_AGG(ct.language ORDER BY ct.language) AS todo_languages
       FROM content.course_translations ct
+      JOIN content.courses c ON ct.course_id = c.id
       WHERE ct.status = 'todo'
+        AND ct.language != c.original_language
+        AND ct.language != 'en'
       GROUP BY ct.course_id
     ),
     course_total_languages AS (
@@ -18,7 +21,10 @@ export const getCoursesWithTodoTranslationsQuery = () => {
         ct.course_id,
         COUNT(*) AS total_languages
       FROM content.course_translations ct
+      JOIN content.courses c ON ct.course_id = c.id
       WHERE ct.status = 'todo'
+        AND ct.language != c.original_language
+        AND ct.language != 'en'
       GROUP BY ct.course_id
     )
     SELECT

@@ -22,8 +22,7 @@ interface ModalState {
   folderError: string;
   hasExisting: boolean;
   overwriteWarning: boolean;
-  hasEnglishTranslation: boolean;
-  useEnglish: boolean;
+  uploadType: 'folder' | 'zip' | 'url' | null;
 }
 
 const initialState: ModalState = {
@@ -34,8 +33,7 @@ const initialState: ModalState = {
   folderError: '',
   hasExisting: false,
   overwriteWarning: false,
-  hasEnglishTranslation: false,
-  useEnglish: false,
+  uploadType: null,
 };
 
 export const SelectLanguagesModal = ({
@@ -46,28 +44,6 @@ export const SelectLanguagesModal = ({
 }: SelectLanguagesModalProps) => {
   const { t } = useTranslation();
   const [state, setState] = useState<ModalState>(initialState);
-
-  /* ------------------------------------------------------------- */
-  /* Check if English translation is published                      */
-  /* ------------------------------------------------------------- */
-  useEffect(() => {
-    const fetchEnglish = async () => {
-      if (course.originalLanguage?.toLowerCase() === 'en') return;
-      try {
-        const data =
-          await trpcClient.content.getAvailableCourseTranslations.query({
-            language: 'en',
-            courseId: course.id,
-          });
-        if (data && data.length > 0) {
-          setState((prev) => ({ ...prev, hasEnglishTranslation: true }));
-        }
-      } catch (err) {
-        console.error('Failed fetching English translation info', err);
-      }
-    };
-    fetchEnglish();
-  }, [course.id, course.originalLanguage]);
 
   const folderInputRef = useRef<HTMLInputElement>(null);
   const zipInputRef = useRef<HTMLInputElement>(null);
@@ -96,7 +72,7 @@ export const SelectLanguagesModal = ({
           console.error('Error checking existing uploads', e),
         );
     }
-  }, [isOpen]);
+  }, [isOpen, course.id]);
 
   // Function to get language names from the fetched languages data
   const languageMap = useMemo(() => {
@@ -132,6 +108,7 @@ export const SelectLanguagesModal = ({
         selectedFiles: files,
         folderError: '',
         overwriteWarning: prev.hasExisting,
+        uploadType: 'folder',
       }));
       // Clear any previously entered URL
       setFolderUrl('');
@@ -150,6 +127,7 @@ export const SelectLanguagesModal = ({
         selectedFiles: files,
         folderError: '',
         overwriteWarning: prev.hasExisting,
+        uploadType: 'zip',
       }));
       // Clear URL when ZIP chosen
       setFolderUrl('');
@@ -168,29 +146,71 @@ export const SelectLanguagesModal = ({
   // URL input state
   const [folderUrl, setFolderUrl] = useState('');
 
+  // URL validation
+  const isValidUrl = useCallback((url: string) => {
+    try {
+      const parsed = new URL(url);
+      return parsed.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  }, []);
+
+  const handleUrlChange = useCallback(
+    (url: string) => {
+      setFolderUrl(url);
+      if (url.trim()) {
+        setState((prev) => ({
+          ...prev,
+          selectedFiles: [],
+          uploadType: 'url',
+          folderError:
+            !isValidUrl(url) && url.length > 0
+              ? 'Please enter a valid HTTPS URL'
+              : '',
+        }));
+      } else {
+        setState((prev) => ({
+          ...prev,
+          uploadType: null,
+          folderError: '',
+        }));
+      }
+    },
+    [isValidUrl],
+  );
+
   const handleStartTranslation = useCallback(async () => {
     // User must have chosen at least one language AND (uploaded files OR previous uploads exist OR provided URL)
     const readyToStart =
       state.selectedLanguages.length > 0 &&
       (state.hasExisting ||
         state.selectedFiles.length > 0 ||
-        folderUrl.trim().length > 0);
+        (folderUrl.trim().length > 0 && isValidUrl(folderUrl)));
 
     if (!readyToStart) {
       // Set error message prompting user to upload files first
+      let errorMessage =
+        t(
+          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.missingFilesError',
+        ) ||
+        'Please upload translation files or provide a valid HTTPS URL before starting.';
+
+      if (folderUrl.trim().length > 0 && !isValidUrl(folderUrl)) {
+        errorMessage = 'Please enter a valid HTTPS URL';
+      }
+
       setState((prev) => ({
         ...prev,
-        folderError:
-          t(
-            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.missingFilesError',
-          ) ||
-          'Please upload translation files or provide a URL before starting.',
+        folderError: errorMessage,
       }));
       return;
     }
 
     setState((prev) => ({ ...prev, isStarting: true }));
+
     try {
+      // Step 1: Upload files
       const formData = new FormData();
       formData.append('courseId', course.id);
       formData.append('languages', JSON.stringify(state.selectedLanguages));
@@ -203,35 +223,192 @@ export const SelectLanguagesModal = ({
         formData.append('url', folderUrl);
       }
 
-      // Append useEnglish flag if relevant
-      if (state.hasEnglishTranslation) {
-        formData.append('useEnglish', state.useEnglish ? 'true' : 'false');
+      // Create AbortController with extended timeout for file uploads
+      const uploadController = new AbortController();
+      const uploadTimeoutId = setTimeout(
+        () => {
+          uploadController.abort();
+        },
+        10 * 60 * 1000,
+      ); // 10 minutes timeout for uploads
+
+      let uploadResult: { uploadId: string; filesUploaded: number } | undefined;
+      try {
+        const uploadResponse = await fetch('/api/upload-translation-files', {
+          method: 'POST',
+          body: formData,
+          credentials: 'include',
+          signal: uploadController.signal,
+        });
+
+        clearTimeout(uploadTimeoutId);
+
+        if (!uploadResponse.ok) {
+          let errorMessage = uploadResponse.statusText;
+          try {
+            const errorData = await uploadResponse.json();
+            if (errorData.message) {
+              errorMessage = errorData.message;
+            }
+          } catch {
+            // If error response is not JSON, use default message
+          }
+
+          // Show upload-specific error notification
+          customToast(
+            errorMessage.includes('timeout') ||
+              errorMessage.includes('timed out')
+              ? t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadTimeoutError',
+                ) ||
+                  'Upload timed out after 10 minutes. Please try with smaller files or check your connection.'
+              : t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadError',
+                ) || `Upload failed: ${errorMessage}`,
+            { color: 'warning' },
+          );
+
+          return;
+        }
+
+        uploadResult = await uploadResponse.json();
+
+        // Upload completed successfully - proceed to translation step without notification
+        // (final notification will be shown after translation starts)
+      } catch (uploadError) {
+        clearTimeout(uploadTimeoutId);
+        console.error('Error during file upload:', uploadError);
+
+        // Handle upload-specific errors
+        if (uploadError instanceof Error) {
+          if (uploadError.name === 'AbortError') {
+            customToast(
+              t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadTimeoutError',
+              ) ||
+                'Upload timed out after 10 minutes. Please try with smaller files or check your connection.',
+              { color: 'warning' },
+            );
+          } else {
+            customToast(
+              t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadError',
+              ) || 'Upload failed. Please check your files and try again.',
+              { color: 'warning' },
+            );
+          }
+        }
+        return;
       }
 
-      const response = await fetch('/api/translation-uploads', {
-        method: 'POST',
-        body: formData,
-        credentials: 'include',
-      });
+      // Step 2: Start translation
+      const translationController = new AbortController();
+      const translationTimeoutId = setTimeout(
+        () => {
+          translationController.abort();
+        },
+        10 * 60 * 1000,
+      ); // 10 minutes timeout for translation process
 
-      if (!response.ok) {
-        throw new Error(`Upload failed: ${response.statusText}`);
-      }
+      try {
+        const translationResponse = await fetch(
+          `/api/start-translation/${uploadResult!.uploadId}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              languages: state.selectedLanguages,
+            }),
+            credentials: 'include',
+            signal: translationController.signal,
+          },
+        );
 
-      customToast(
-        t(
-          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.startSuccess',
-        ),
-        { color: 'success' },
-      );
+        clearTimeout(translationTimeoutId);
 
-      if (onSuccess) {
-        onSuccess();
-      } else {
-        onClose();
+        if (!translationResponse.ok) {
+          let errorMessage = translationResponse.statusText;
+          try {
+            const errorData = await translationResponse.json();
+            if (errorData.message) {
+              errorMessage = errorData.message;
+            }
+          } catch {
+            // If error response is not JSON, use default message
+          }
+
+          // Show translation-specific error notification
+          customToast(
+            errorMessage.includes('timeout') ||
+              errorMessage.includes('timed out')
+              ? t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.timeoutError',
+                ) ||
+                  'Translation request timed out. Please try again or contact support.'
+              : t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationFailed',
+                ) || `Translation failed: ${errorMessage}`,
+            { color: 'warning' },
+          );
+
+          return;
+        }
+
+        // Show unified success message including upload and translation start
+        const successMessage = uploadResult!.filesUploaded
+          ? t(
+              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadAndTranslationStarted',
+            ) ||
+            'Files uploaded and translation started! The process may take several minutes for large courses. You can close this modal and check back later.'
+          : t(
+              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.processingStarted',
+            ) ||
+            'Translation started! The process may take several minutes for large courses. You can close this modal and check back later.';
+
+        customToast(successMessage, { color: 'success' });
+
+        if (onSuccess) {
+          onSuccess();
+        } else {
+          onClose();
+        }
+      } catch (translationError) {
+        clearTimeout(translationTimeoutId);
+        console.error('Error during translation start:', translationError);
+
+        // Handle translation-specific errors
+        if (translationError instanceof Error) {
+          if (translationError.name === 'AbortError') {
+            customToast(
+              t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.timeoutError',
+              ) ||
+                'Translation request timed out. Please try again or contact support.',
+              { color: 'warning' },
+            );
+          } else {
+            customToast(
+              t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationFailed',
+              ) || 'Failed to start translation. Please try again.',
+              { color: 'warning' },
+            );
+          }
+        }
       }
     } catch (error) {
-      console.error('Error starting translation:', error);
+      console.error('Error in translation process:', error);
+
+      // Show general error notification
+      customToast(
+        t(
+          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.networkError',
+        ) ||
+          'Network error occurred. Please check your connection and try again.',
+        { color: 'warning' },
+      );
     } finally {
       setState((prev) => ({ ...prev, isStarting: false }));
     }
@@ -244,8 +421,7 @@ export const SelectLanguagesModal = ({
     onSuccess,
     folderUrl,
     t,
-    state.hasEnglishTranslation,
-    state.useEnglish,
+    isValidUrl,
   ]);
 
   // Determine if translation can start (for button disabled state)
@@ -253,33 +429,13 @@ export const SelectLanguagesModal = ({
     state.selectedLanguages.length > 0 &&
     (state.hasExisting ||
       state.selectedFiles.length > 0 ||
-      folderUrl.trim().length > 0);
+      (folderUrl.trim().length > 0 && isValidUrl(folderUrl)));
 
   const handleClose = useCallback(() => {
     setState(initialState);
+    setFolderUrl('');
     onClose();
   }, [onClose]);
-
-  /* ------------------------------------------------------------- */
-  /* Checkbox for using English                                     */
-  /* ------------------------------------------------------------- */
-  const englishCheckboxSection = state.hasEnglishTranslation ? (
-    <div className="flex items-center gap-2">
-      <input
-        id="use-english-checkbox"
-        type="checkbox"
-        checked={state.useEnglish}
-        onChange={() =>
-          setState((prev) => ({ ...prev, useEnglish: !prev.useEnglish }))
-        }
-      />
-      <label htmlFor="use-english-checkbox" className="text-sm text-gray-700">
-        {t(
-          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.useEnglishLabel',
-        )}
-      </label>
-    </div>
-  ) : null;
 
   return (
     <CommonModal
@@ -309,7 +465,12 @@ export const SelectLanguagesModal = ({
               )}
             </span>
             <p className="text-base font-semibold">
-              {getLanguageNameFromData((course as any).originalLanguage)}
+              {getLanguageNameFromData(course.originalLanguage)}
+            </p>
+            <p className="text-xs text-gray-600 mt-1">
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.englishFilesRequired',
+              ) || 'Please upload files in English only'}
             </p>
           </div>
         </div>
@@ -355,9 +516,6 @@ export const SelectLanguagesModal = ({
           )}
         </div>
 
-        {/* English checkbox */}
-        {englishCheckboxSection}
-
         {/* Upload Section & Notice */}
         <div className="space-y-4">
           <h3 className="text-sm font-medium text-gray-700 text-center">
@@ -386,7 +544,14 @@ export const SelectLanguagesModal = ({
           />
 
           <div className="flex flex-col md:flex-row gap-3">
-            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+            <div
+              className={cn(
+                'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
+                state.uploadType === 'folder'
+                  ? 'border-orange-500 bg-orange-50'
+                  : 'border-gray-300',
+              )}
+            >
               <button
                 type="button"
                 onClick={handleFolderInputClick}
@@ -397,7 +562,7 @@ export const SelectLanguagesModal = ({
                 )}
               </button>
               <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.selectedFiles.length > 0
+                {state.uploadType === 'folder' && state.selectedFiles.length > 0
                   ? `${state.selectedFiles.length} files selected`
                   : t(
                       'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
@@ -405,7 +570,14 @@ export const SelectLanguagesModal = ({
               </span>
             </div>
 
-            <div className="flex items-center rounded-lg overflow-hidden border border-gray-300 hover:shadow-sm">
+            <div
+              className={cn(
+                'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
+                state.uploadType === 'zip'
+                  ? 'border-orange-500 bg-orange-50'
+                  : 'border-gray-300',
+              )}
+            >
               <button
                 type="button"
                 onClick={handleZipInputClick}
@@ -416,8 +588,8 @@ export const SelectLanguagesModal = ({
                 )}
               </button>
               <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.selectedFiles.length > 0
-                  ? `${state.selectedFiles.length} file(s) selected`
+                {state.uploadType === 'zip' && state.selectedFiles.length > 0
+                  ? `${state.selectedFiles.length} ZIP file(s) selected`
                   : t(
                       'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
                     )}
@@ -453,14 +625,12 @@ export const SelectLanguagesModal = ({
               id="folderUrl"
               type="url"
               value={folderUrl}
-              onChange={(e) => {
-                setFolderUrl(e.target.value);
-                // Clear selected files when URL provided
-                if (e.target.value) {
-                  setState((prev) => ({ ...prev, selectedFiles: [] }));
-                }
-              }}
+              onChange={(e) => handleUrlChange(e.target.value)}
               placeholder="https://..."
+              className={cn(
+                state.uploadType === 'url' && 'border-orange-500 bg-orange-50',
+                state.folderError && folderUrl && 'border-red-500',
+              )}
             />
           </div>
         </div>

@@ -173,3 +173,32 @@ export const createSetTranslationsReadyForReview = ({
     );
   };
 };
+
+/**
+ * Service to reset translations back to 'todo' status in case of failure
+ */
+export const createResetTranslationsToTodo = ({ postgres }: Dependencies) => {
+  return async (courseId: string, languages: string[]) => {
+    try {
+      // Update course_translations back to 'todo' status
+      for (const lang of languages) {
+        await postgres.exec(
+          updateTranslationStatusQuery(
+            courseId,
+            lang,
+            'todo' as TranslationStatus,
+          ),
+        );
+      }
+      console.log(
+        `[Translation] Reset ${languages.join(', ')} translations to 'todo' for course ${courseId}`,
+      );
+    } catch (error) {
+      console.error(
+        '[Translation] Failed to reset translations to todo:',
+        error,
+      );
+      throw error;
+    }
+  };
+};
