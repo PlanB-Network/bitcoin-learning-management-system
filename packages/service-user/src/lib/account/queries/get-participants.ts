@@ -51,5 +51,6 @@ export const getEventParticipants = () => {
     LEFT JOIN
       users.accounts AS ua ON ep.uid = ua.uid
     WHERE ev.start_date > NOW() - INTERVAL '1 DAY'
+      and ep.payment_status = 'paid'
   `;
 };
