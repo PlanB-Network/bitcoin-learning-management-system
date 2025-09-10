@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import faviconDev from '#src/assets/logo/favicon-dev.svg';
 import { SITE_NAME } from '#src/utils/meta.js';
-import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
+import {
+  isDevelopmentEnvironment,
+  isTestnetOrDevelopmentEnvironment,
+} from '#src/utils/misc.ts';
 
 interface PageMetaProps {
   title?: string;
@@ -28,7 +31,16 @@ const PageMeta = ({
   return (
     <Helmet>
       {/* Standard metadata tags */}
-      {title && <title>{title}</title>}
+      {title && (
+        <title>
+          {isDevelopmentEnvironment()
+            ? 'DEV - '
+            : isTestnetOrDevelopmentEnvironment()
+              ? 'TESTNET - '
+              : ''}
+          {title}
+        </title>
+      )}
       {description && <meta name="description" content={newDescription} />}
       {/* Facebook tags */}
       <meta property="og:site_name" content={SITE_NAME} />
