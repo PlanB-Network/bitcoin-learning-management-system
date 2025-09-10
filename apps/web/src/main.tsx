@@ -25,7 +25,11 @@ declare global {
 }
 
 if (window.Pear) {
+  document.body.classList.add('is-pear-context');
+
   window.Pear.updates(() => {
+    console.log('Pear update detected, reloading app...');
+
     // Wait to try fix issues with reloading
     setTimeout(() => {
       window.Pear?.reload();

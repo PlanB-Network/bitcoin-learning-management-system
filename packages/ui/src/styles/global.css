@@ -1636,3 +1636,14 @@
 .search-results mark {
   @apply bg-darkOrange-8 text-white;
 }
+
+/* .is-pear-context > #root > div > header { */
+.is-pear-context {
+  .pt-if-pear {
+    @apply pt-24;
+  }
+
+  .mt-if-pear {
+    @apply mt-24;
+  }
+}

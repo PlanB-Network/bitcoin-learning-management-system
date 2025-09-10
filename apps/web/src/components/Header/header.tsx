@@ -389,7 +389,7 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
   return (
     <header
       className={cn(
-        'fixed left-1/2 top-0 z-40 flex w-full max-w-[1440px] -translate-x-1/2 flex-row justify-between py-3 px-4 bg-header',
+        'pt-if-pear fixed left-1/2 top-0 z-40 flex w-full max-w-[1440px] -translate-x-1/2 flex-row justify-between py-3 px-4 bg-header',
       )}
     >
       <FlyingMenu

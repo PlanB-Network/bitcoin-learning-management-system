@@ -2,19 +2,21 @@
 
 // import Hyperblobs from 'hyperblobs';
 // import Hyperswarm from 'hyperswarm';
-import path from 'bare-path';
-import Corestore from 'corestore';
+// import path from 'bare-path';
+// import Corestore from 'corestore';
 
 export const PearVideoTest = async () => {
   // const key = '';
   // const blobJson = '';
   const blobUrl = '';
 
+  console.log('PEAR VIDEO TEST', window.Pear?.config.storage);
+
   if (window.Pear) {
-    const store = new Corestore(
-      path.join(window.Pear.config.storage, 'storage'),
-    );
-    await store.ready();
+    // const store = new Corestore(
+    //   // path.join(window.Pear.config.storage, 'storage'),
+    // );
+    // await store.ready();
     // const swarm = new Hyperswarm();
     // const core = store.get({ key: b4a.from(key, 'hex') });
     // await core.ready();
