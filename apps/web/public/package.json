@@ -14,5 +14,11 @@
       "https://planbtest.network",
       "http://localhost"
     ]
+  },
+  "dependencies": {
+    "b4a": "^1.7.1",
+    "corestore": "^7.4.5",
+    "hyperblobs": "^2.8.0",
+    "hyperswarm": "^4.14.0"
   }
 }

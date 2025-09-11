@@ -1,16 +1,49 @@
 // import b4a from 'b4a';
 
-// import Hyperblobs from 'hyperblobs';
-// import Hyperswarm from 'hyperswarm';
-// import path from 'bare-path';
-// import Corestore from 'corestore';
+import b4a from 'b4a';
+import Corestore from 'corestore';
+import Hyperblobs from 'hyperblobs';
+import Hyperswarm from 'hyperswarm';
+import path from 'path';
+
+declare global {
+  interface Window {
+    PearTools: {
+      Corestore: typeof Corestore;
+      Hyperswarm: typeof Hyperswarm;
+      Hyperblobs: typeof Hyperblobs;
+      path: typeof path;
+      b4a: typeof b4a;
+    };
+  }
+}
+
+window.PearTools = {
+  Corestore,
+  Hyperswarm,
+  Hyperblobs,
+  path,
+  b4a,
+};
 
 export const PearVideoTest = async () => {
   // const key = '';
   // const blobJson = '';
   const blobUrl = '';
 
-  console.log('PEAR VIDEO TEST', window.Pear?.config.storage);
+  const videoKey =
+    '7ee3369e3c75e2df7df3e339146637d26b1d82a4db08f3b91306b13638778835';
+  const blobId = {
+    byteOffset: 26765946,
+    blockOffset: 410,
+    blockLength: 205,
+    byteLength: 13382973,
+  };
+
+  console.log('PEAR VIDEO TEST', window.Pear?.config.storage, {
+    videoKey,
+    blobId,
+  });
 
   if (window.Pear) {
     // const store = new Corestore(

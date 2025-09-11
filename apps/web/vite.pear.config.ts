@@ -1,5 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 
+import { builtinModules } from 'node:module';
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
@@ -8,22 +9,41 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
+const pearsModules: string[] = [
+  'corestore',
+  'hypercore',
+  'hyperswarm',
+  'hyperblobs',
+  'b4a',
+];
+
+const nativeModules = [
+  ...pearsModules,
+  ...builtinModules.flatMap((m) => [m, `@${m}`, `@types/${m}`]),
+];
+
 export default defineConfig({
   assetsInclude: [UI_PACKAGE_ASSETS],
   base: '/',
   build: {
     chunkSizeWarningLimit: 600,
+    minify: false,
     cssCodeSplit: true,
     outDir: 'dist',
     reportCompressedSize: true,
     target: 'esnext',
     rollupOptions: {
       output: {
-        inlineDynamicImports: true,
+        inlineDynamicImports: false,
       },
       // Externalize any Node.js built-in modules
-      external: ['fs'],
+      external: [...nativeModules],
     },
+  },
+  optimizeDeps: {
+    exclude: [
+      ...nativeModules, //
+    ],
   },
   plugins: [
     svgr(),
