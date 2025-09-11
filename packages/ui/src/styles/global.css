@@ -395,6 +395,10 @@
   padding-inline: 2rem;
 }
 
+@utility body-base {
+  @apply text-base font-normal leading-tight -tracking-015px;
+}
+
 @utility body-base-bold {
   @apply text-base font-medium leading-tight -tracking-015px;
 }

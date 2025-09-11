@@ -8,10 +8,8 @@ import { IoMdClose } from 'react-icons/io';
 import { AppContext } from '#src/providers/context.js';
 import { MenuDashboard } from '#src/routes/$lang/dashboard/_dashboard/-components/menu-dashboard.tsx';
 import { getPictureUrl } from '#src/services/user.js';
-import SignInIconDark from '../../../assets/icons/profile_log_in_dark.svg';
 import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
-import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black_blackpill.svg?react';
-import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
+import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black.svg?react';
 import { isRTL } from '../../../utils/i18n.ts';
 import { LanguageSelectorMobile } from '../language-selector.tsx';
 import { NotificationsPanel } from '../notifications-panel.tsx';
@@ -21,7 +19,6 @@ import { MobileMenuSection } from './mobile-menu-section.tsx';
 export interface MobileMenuProps {
   sections: NavigationSectionMobile[];
   onClickLogin: () => void;
-  variant?: 'light' | 'dark';
   isMobileMenuOpen: boolean;
   toggleMobileMenu: () => void;
   isMobileDashboardMenuOpen: boolean;
@@ -31,7 +28,6 @@ export interface MobileMenuProps {
 export const MobileMenu = ({
   sections,
   onClickLogin,
-  variant = 'dark',
   isMobileMenuOpen,
   toggleMobileMenu,
   isMobileDashboardMenuOpen,
@@ -100,17 +96,13 @@ export const MobileMenu = ({
                 transition: 'transform 0.4s, color 0.2s',
               }}
               size={25}
-              color={variant === 'dark' ? '#fff' : '#000'}
+              color="#000"
               onClick={toggleMobileMenu}
             />
           </div>
 
           <Link to="/" className="w-fit">
-            {variant === 'light' ? (
-              <PlanBLogoBlack className="h-[25px] w-auto" />
-            ) : (
-              <PlanBLogoOrange className="h-[25px] w-auto" />
-            )}
+            <PlanBLogoBlack className="h-[25px] w-auto" />
           </Link>
         </div>
 
@@ -125,13 +117,7 @@ export const MobileMenu = ({
                   className="cursor-pointer text-white"
                 >
                   <img
-                    src={
-                      pictureUrl
-                        ? pictureUrl
-                        : variant === 'light'
-                          ? SignInIconLight
-                          : SignInIconDark
-                    }
+                    src={pictureUrl ? pictureUrl : SignInIconLight}
                     alt={t('auth.signIn')}
                     className="size-8 rounded-full"
                   />
@@ -146,7 +132,7 @@ export const MobileMenu = ({
                 className="cursor-pointer text-white"
               >
                 <img
-                  src={variant === 'light' ? SignInIconLight : SignInIconDark}
+                  src={SignInIconLight}
                   alt={t('auth.signIn')}
                   className="size-8"
                 />
@@ -158,20 +144,17 @@ export const MobileMenu = ({
 
       <nav
         className={cn(
-          'flex flex-col fixed top-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2 dark:bg-newBlack-2 border-darkOrange-4 dark:border-newBlack-4',
-          rtl
-            ? 'right-0 border-l dark:border-l'
-            : 'left-0 border-r dark:border-r',
+          'flex flex-col fixed top-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2  border-darkOrange-4',
+          rtl ? 'right-0 border-l' : 'left-0 border-r',
           isMobileMenuOpen
             ? 'translate-x-0'
             : rtl
               ? 'translate-x-full'
               : '-translate-x-full',
-          variant === 'dark' && 'dark',
         )}
         ref={mobileMenuRef}
       >
-        <div className="flex items-center w-full px-4 py-4 text-newBlack-1 dark:text-white">
+        <div className="flex items-center w-full px-4 py-4 text-newBlack-1 ">
           <HiMiniBars3
             className={cn(
               'cursor-pointer',
@@ -191,9 +174,7 @@ export const MobileMenu = ({
           </Link>
           <IoMdClose
             size={24}
-            className={cn(
-              'text-maroon-7 dark:text-newGray-3 shrink-0 cursor-pointer ml-auto',
-            )}
+            className={cn('text-maroon-7 shrink-0 cursor-pointer ml-auto')}
             onClick={toggleMobileMenu}
           />
         </div>
@@ -210,7 +191,6 @@ export const MobileMenu = ({
           className={cn(
             'flex flex-col fixed top-0 right-0 items-center w-[90%] max-w-[440px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden border-l border-darkOrange-8',
             isMobileDashboardMenuOpen ? 'translate-x-0' : 'translate-x-full',
-            variant === 'dark' && 'dark',
           )}
           ref={dashboardMenuRef}
         >

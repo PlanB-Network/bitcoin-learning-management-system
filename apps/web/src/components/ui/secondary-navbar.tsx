@@ -39,15 +39,15 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
               className={cn(
                 'relative pb-2 group',
                 isActive
-                  ? 'text-newBlack-1 body-small-bold lg:label-strong'
-                  : 'body-small lg:label text-newBlack-3 group-hover:text-newBlack-1',
+                  ? 'text-newBlack-1 body-base-bold lg:label-strong'
+                  : 'body-base lg:label text-newBlack-3 group-hover:text-newBlack-1',
               )}
             >
               {t(tab.label)}
 
               <div
                 className={cn(
-                  'absolute bottom-0 left-0 h-1 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
+                  'absolute bottom-0 left-0 h-0.5 lg:h-1 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
                   isActive && 'scale-x-100 bg-orange-500',
                 )}
               />

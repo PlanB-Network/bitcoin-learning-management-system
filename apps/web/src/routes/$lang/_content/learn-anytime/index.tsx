@@ -213,10 +213,10 @@ function AllCourses() {
               if (!course) return null;
               return (
                 <article
-                  className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8"
+                  className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2"
                   key={course.id}
                 >
-                  <span className="body-small-bold md:subtitle-base text-black ">
+                  <span className="body-small-bold md:subtitle-base text-black">
                     {course.name}
                   </span>
                   <div className="flex items-center gap-3 md:gap-12 xl:w-full xl:max-w-[463px]">
@@ -276,7 +276,7 @@ function AllCourses() {
           className="p-2 rounded-lg bg-neutral-50 text-neutral-400 flex items-center gap-2"
           type="button"
         >
-          <span className="dropdown-small">{t('words.filters')}</span>
+          <span className="body-base">{t('words.filters')}</span>
           {isFilterOpen ? (
             <TbX size={16} />
           ) : (
@@ -291,8 +291,8 @@ function AllCourses() {
           isFilterOpen ? 'max-lg:mb-2' : 'max-lg:hidden',
         )}
       >
-        <div className="lg:hidden flex justify-between items-center w-full mb-1">
-          <span className="body-extra-small-bold text-neutral-700 px-1">
+        <div className="lg:hidden flex justify-between items-center w-full mb-1 px-1">
+          <span className="body-small-bold text-neutral-700">
             {t('words.filters')}
           </span>
           {showResetFiltersButton && (
@@ -304,7 +304,7 @@ function AllCourses() {
                 setActivePrice('all');
                 setSearchTerm('');
               }}
-              className="body-extra-small-bold text-orange-500"
+              className="body-small-bold text-orange-500"
               type="button"
             >
               {t('words.resetAll')}
@@ -433,12 +433,12 @@ function AllCourses() {
                       />
                     ))}
                     {!isExpanded && topicCourses.length > 4 && (
-                      <div className="w-full relative flex items-center justify-center">
+                      <div className="w-full relative flex items-center justify-center my-2">
                         <div className="absolute w-full h-px bg-orange-50" />
 
                         <button
                           onClick={() => toggleExpand(topic.id)}
-                          className="relative z-10 rounded-full flex items-center gap-2 px-3 py-1 text-orange-500 bg-orange-50 body-small-bold"
+                          className="relative z-10 rounded-full flex items-center gap-2 px-3 py-2 text-orange-500 bg-orange-50 body-extra-small-bold"
                           type="button"
                         >
                           <TbChevronsDown size={16} />
@@ -480,7 +480,7 @@ const SearchInput = ({
   return (
     <div
       className={cn(
-        'relative h-8 lg:h-11 w-full transition-[min-width] ease-in-out min-w-0 max-w-40 lg:max-w-56 focus-within:min-w-[200px]',
+        'relative h-9 lg:h-11 w-full transition-[min-width] ease-in-out min-w-0 max-w-40 lg:max-w-56 focus-within:min-w-[200px]',
         searchTerm && 'min-w-[200px]',
         className,
       )}
@@ -490,7 +490,7 @@ const SearchInput = ({
         placeholder={t('words.searchTripleDot')}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="dropdown-small w-full h-full px-3 pr-9 bg-neutral-50 rounded-xl text-neutral-600 placeholder:text-neutral-400 outline-none border border-transparent focus:border-neutral-300"
+        className="body-base lg:dropdown-small w-full h-full px-3 pr-9 bg-neutral-50 rounded-lg lg:rounded-xl text-neutral-600 placeholder:text-neutral-400 outline-none border border-transparent focus:border-neutral-300"
       />
 
       <div className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400">

@@ -109,7 +109,7 @@ export const DropdownMenu = ({
           >
             <span
               className={cn(
-                'dropdown-small text-start truncate',
+                'body-small lg:dropdown-small text-start truncate',
                 variant === 'light' && forcePlaceholder
                   ? 'text-neutral-700'
                   : 'text-black',
