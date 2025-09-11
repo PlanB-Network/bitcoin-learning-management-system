@@ -1747,6 +1747,11 @@
   @apply bg-darkOrange-8 text-white;
 }
 
+#pear-ctrl-container {
+  -webkit-app-region : drag;
+}
+
+
 /* .is-pear-context > #root > div > header { */
 .is-pear-context {
   .pt-if-pear {

@@ -96,7 +96,10 @@ export const MainLayout = ({
     <div className="flex flex-col bg-header w-full max-w-[1920px] mx-auto relative">
       {/* Display titlebar on pear app */}
       {import.meta.env.VITE_PEAR_ENVIRONMENT ? (
-        <div className="fixed top-0 left-0 w-full h-[50px] bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50">
+        <div
+          id="pear-ctrl-container"
+          className="fixed top-0 left-0 w-full pt-4 pb-5 px-2 bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50"
+        >
           <pear-ctrl data-platform="darwin" className="" />
         </div>
       ) : null}
