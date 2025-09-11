@@ -73,7 +73,6 @@ export const ResourceLayout = ({
               hasGithubDescription={true}
               addedCredits={addCredits}
               hideOnMobile={hidePageHeaderMobile}
-              increaseHorizontalPadding={maxWidth === '1360'}
             />
           )}
 

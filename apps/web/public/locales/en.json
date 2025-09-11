@@ -28,6 +28,9 @@
     "physical": "In-person",
     "replay": "Replay"
   },
+  "account": {
+    "account": "Account"
+  },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
     "alreadyHaveAccount": "Already have an account?",
@@ -1407,6 +1410,7 @@
     }
   },
   "events": {
+    "addEvent": "Add event",
     "calendar": {
       "displayCalendar": "Display Calendar",
       "fullMap": "Full map",
@@ -1458,6 +1462,7 @@
       "missedP1": "Did you miss an event?",
       "missedP2": "No worries! We store all the replays of past events that took place in the Network, allowing everyone can catch up freely on what they missed."
     },
+    "myTickets": "My tickets",
     "newEvent": {
       "button": "Add my event",
       "description": "Of course! All Bitcoin events can increase their visibility here, so every initiative to create a new event is more than welcome!",
@@ -1497,7 +1502,17 @@
       "pageTitle": "Plan ₿ Week"
     },
     "tcDisclaimer": "I agree that my information may be shared with organizers for venue access purposes.",
-    "tcMustBeAccepted": "You must accept the terms and conditions to proceed"
+    "tcMustBeAccepted": "You must accept the terms and conditions to proceed",
+    "types": {
+      "plurals": {
+        "conference": "conferences",
+        "exam": "exams",
+        "lecture": "lectures",
+        "meetup": "meetups",
+        "workshop": "workshops"
+      }
+    },
+    "upcomingEvents": "Upcoming events"
   },
   "filters": {
     "categories": "Categories",
@@ -2037,6 +2052,7 @@
     "abstract": "Abstract",
     "academy": "Academy",
     "access": "Access",
+    "account": "Account",
     "action": "Action",
     "actions": "Actions",
     "admin": "Admin",
@@ -2114,6 +2130,7 @@
     "inperson": "In-person",
     "intermediate": "Intermediate",
     "invoice": "Invoice",
+    "invoices": "Invoices",
     "language": "Language",
     "lecture": "Lecture",
     "lectures": "Lectures",
@@ -2134,6 +2151,7 @@
     "linkedin": "Linkedin",
     "lnurlAuth": "LNURL Auth",
     "location": "Location",
+    "map": "Map",
     "members": " Members",
     "mentor": "Mentor",
     "mining": "Mining",
@@ -2190,12 +2208,13 @@
     "searchTripleDot": "Search...",
     "security": "Security",
     "selectedAmount": "{{amount}} selected",
+    "settings": "Settings",
     "share": "Share",
     "showMore": "",
     "skip": "Skip",
     "socialStudies": "Social studies",
     "start": "Start",
-    "startHere": "Start here!",
+    "startHere": "Start here",
     "status": "Status",
     "structure": "Structure",
     "student": "Student",

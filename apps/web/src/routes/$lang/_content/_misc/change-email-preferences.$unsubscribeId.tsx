@@ -10,7 +10,7 @@ import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { isUUID } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { FormCheckboxGroup } from '../../dashboard/_dashboard/profile.tsx';
+import { FormCheckboxGroup } from '../../account/settings.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/change-email-preferences/$unsubscribeId',
@@ -159,7 +159,7 @@ function ChangeEmailPreferences() {
             )}
           </p>
           <ButtonWithArrow asChild size="s" className="self-center mt-4 w-fit">
-            <Link to="/dashboard/profile">
+            <Link to="/account">
               {t('dashboard.profile.notificationSettings.goToProfile')}
             </Link>
           </ButtonWithArrow>

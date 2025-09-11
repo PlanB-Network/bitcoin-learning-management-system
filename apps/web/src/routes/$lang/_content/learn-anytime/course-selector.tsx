@@ -125,7 +125,7 @@ function CourseSelector() {
           <nav className="flex flex-col gap-8">
             {levels.map((level) => (
               <div key={level} className="flex flex-col gap-1">
-                <h4 className="uppercase text-xl leading-normal font-medium text-orange-500 w-60 px-4">
+                <h4 className="uppercase subtitle-small text-orange-500 w-60 px-4 py-1">
                   {t(`words.level.${level}`)}
                 </h4>
                 <div className="flex flex-col gap-2.5">

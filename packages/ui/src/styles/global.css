@@ -84,6 +84,18 @@
   --color-green-900: #044a03;
   --color-green-950: #023402;
 
+  --color-brown-50: #fbfaf9;
+  --color-brown-100: #f2efed;
+  --color-brown-200: #eae4e1;
+  --color-brown-300: #c8bcb4;
+  --color-brown-400: #bbaba2;
+  --color-brown-500: #a18c7f;
+  --color-brown-600: #876d5d;
+  --color-brown-700: #695142;
+  --color-brown-800: #49372c;
+  --color-brown-900: #2b1f18;
+  --color-brown-950: #100a07;
+
   --color-newOrange-1: #ff5c00;
   --color-newOrange-2: #ff6c1a;
   --color-newOrange-3: #ff7c33;
@@ -465,6 +477,10 @@
 
 @utility subtitle-base {
   @apply text-xl font-medium leading-[160%] tracking-[-0.2px];
+}
+
+@utility subtitle-small {
+  @apply text-base font-medium leading-tight tracking-[-0.16px];
 }
 
 @utility title-base {
@@ -901,10 +917,10 @@
   background-color: #00000010 !important;
 }
 
-.rbc-event-content > *:hover {
+.rbc-time-view .rbc-event-content > *:hover {
   position: relative;
   z-index: 1000 !important;
-  width: 180px !important;
+  width: 200px !important;
   height: 100% !important;
 }
 

@@ -16,10 +16,12 @@ import {
 } from 'react-icons/tb';
 import { z } from 'zod';
 import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
-import { MainLayout } from '#src/components/main-layout.js';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
@@ -47,6 +49,8 @@ export const Route = createFileRoute('/$lang/_content/events/$eventId')({
 });
 
 function EventDetails() {
+  const isMobile = useSmaller('md');
+
   const params = Route.useParams();
 
   const [paymentModalData, setPaymentModalData] =
@@ -162,6 +166,8 @@ function EventDetails() {
           (userBookedTheEvent ? null : (
             <Button
               variant={event.bookInPerson ? 'outline' : 'primary'}
+              size={isMobile ? 'm' : 'xl'}
+              className="w-full"
               onClick={() => {
                 if (isLoggedIn) {
                   setPaymentModalData({
@@ -185,6 +191,8 @@ function EventDetails() {
           (event?.remainingSeats && event.remainingSeats > 0 ? (
             <Button
               variant="primary"
+              size={isMobile ? 'm' : 'xl'}
+              className="w-full"
               onClick={() => {
                 if (isLoggedIn) {
                   setPaymentModalData({
@@ -202,16 +210,37 @@ function EventDetails() {
               {t('events.card.bookSeat')}
             </Button>
           ) : (
-            <Button variant="primary" size={'s'} disabled>
+            <Button
+              variant="primary"
+              size={isMobile ? 'm' : 'xl'}
+              className="w-full"
+              disabled
+            >
               {t('words.full')}
             </Button>
           ))}
+
+        {event.websiteUrl && (
+          <Button
+            variant="primary"
+            size={isMobile ? 'm' : 'xl'}
+            className="w-full"
+            asChild
+          >
+            <a href={event.websiteUrl} target="_blank" rel="noreferrer">
+              {t('events.card.visitWebsite')}
+            </a>
+          </Button>
+        )}
       </>
     );
   };
 
   return (
-    <MainLayout>
+    <PageLayout
+      layoutSize="wide"
+      backLink={{ text: t('words.events'), href: '/events' }}
+    >
       <div>
         {event &&
         paymentModalData.eventId &&
@@ -257,7 +286,7 @@ function EventDetails() {
         ) : null}
       </div>
 
-      <div className="flex flex-col items-center mt-8 md:mt-12 w-full max-w-3xl mx-auto px-4">
+      <div className="flex flex-col items-center w-full">
         {!isFetched && (
           <div className="flex flex-col flex-1 justify-center items-center size-full">
             <Loader size={'s'} />
@@ -280,9 +309,13 @@ function EventDetails() {
                 <h1 className="display-small sm:display-medium text-newBlack-1">
                   {event.name}
                 </h1>
-                <span className="title-small md:title-medium text-neutral-600">
-                  {event.projectName}
-                </span>
+                {event.projectId === 'cd62a137-baad-4133-b90d-711963e510c7' ? (
+                  <PlanBLogoBlack className="h-auto w-32.5" />
+                ) : (
+                  <span className="title-small md:title-medium text-neutral-600">
+                    {event.projectName}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -422,16 +455,17 @@ function EventDetails() {
                   </div>
                 </section>
 
-                {((event.bookInPerson &&
-                  eventPayment?.withPhysical !== true &&
-                  userEvent?.withPhysical !== true) ||
+                {(event.websiteUrl ||
+                  (event.bookInPerson &&
+                    eventPayment?.withPhysical !== true &&
+                    userEvent?.withPhysical !== true) ||
                   (dollarPrice > 0 && !userBookedTheEvent)) && (
                   <section className="flex flex-col w-full gap-2">
                     <p className="body-base-bold">
                       {t('events.eventInfos.secureYourSpot')}
                     </p>
 
-                    <div className="flex max-md:flex-col gap-4 justify-center items-center">
+                    <div className="flex max-md:flex-col gap-2 md:gap-4 justify-center items-center">
                       <EventButtons />
                     </div>
                   </section>
@@ -441,6 +475,7 @@ function EventDetails() {
                   userEvent?.withPhysical === true) && (
                   <Button
                     variant="primary"
+                    size={isMobile ? 'm' : 'xl'}
                     onClick={async () => {
                       const base64 = await downloadTicketAsync({
                         eventId: event.id,
@@ -471,7 +506,7 @@ function EventDetails() {
           </div>
         )}
 
-        {isFetched && event && (
+        {isFetched && videoUrl && (
           <div className="flex flex-col gap-6 w-full items-center mt-6 md:mt-8">
             {videoUrl && (
               <iframe
@@ -502,6 +537,6 @@ function EventDetails() {
           />
         )}
       </div>
-    </MainLayout>
+    </PageLayout>
   );
 }

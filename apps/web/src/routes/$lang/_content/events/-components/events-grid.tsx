@@ -1,34 +1,14 @@
-import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
+import type { JoinedEvent } from '@blms/types';
 import { cn } from '@blms/ui';
 import { useTranslation } from 'react-i18next';
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { EventCard } from './event-card.tsx';
 
 interface EventsGridProps {
   events: JoinedEvent[];
-  eventPayments: EventPayment[] | undefined;
-  userEvents: UserEvent[] | undefined;
-  openAuthModal: () => void;
-  isLoggedIn: boolean;
-  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setPaymentModalData: React.Dispatch<
-    React.SetStateAction<PaymentModalDataModel>
-  >;
-  conversionRate: number | null;
   hideTitle?: boolean;
 }
 
-export const EventsGrid = ({
-  events,
-  eventPayments,
-  userEvents,
-  openAuthModal,
-  isLoggedIn,
-  setIsPaymentModalOpen,
-  setPaymentModalData,
-  conversionRate,
-  hideTitle = false,
-}: EventsGridProps) => {
+export const EventsGrid = ({ events, hideTitle = false }: EventsGridProps) => {
   const { t } = useTranslation();
 
   let upcomingEvents: JoinedEvent[] = [];
@@ -49,29 +29,18 @@ export const EventsGrid = ({
   return (
     <div className="flex flex-col">
       {!hideTitle && (
-        <h2 className="text-lg text-center font-medium sm:text-xl sm:text-left">
+        <h2 className="title-base sm:title-large sm:text-center text-black mt-6">
           {t('events.main.upcomingEvents')}
         </h2>
       )}
 
       <div
         className={cn(
-          'flex flex-wrap justify-center gap-5 lg:gap-7 mx-auto',
-          hideTitle ? '' : 'mt-6 md:mt-12',
+          'flex flex-wrap justify-center gap-2 lg:gap-6 mx-auto mt-4 sm:mt-6',
         )}
       >
         {sortedEvents?.map((event) => (
-          <EventCard
-            event={event}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-            conversionRate={conversionRate}
-            key={event.name}
-          />
+          <EventCard event={event} key={event.name} />
         ))}
       </div>
     </div>

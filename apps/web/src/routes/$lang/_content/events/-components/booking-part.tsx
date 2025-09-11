@@ -23,9 +23,13 @@ export const BookingPart = ({
 
   const { user } = useContext(AppContext);
 
+  const sortedTickets = tickets.sort(
+    (a, b) => b.date.getTime() - a.date.getTime(),
+  );
+
   return (
     <>
-      {tickets.length > 0 ? (
+      {sortedTickets.length > 0 ? (
         <>
           <div className="hidden md:flex flex-row gap-4 font-medium text-newBlack-1 my-4">
             <span className="w-[150px] flex-none">
@@ -44,7 +48,7 @@ export const BookingPart = ({
               {t('words.ticket')}
             </span>
           </div>
-          {tickets.map((ticket) => {
+          {sortedTickets.map((ticket) => {
             const location = ticket.isInPerson
               ? ticket.location
               : t('words.online');

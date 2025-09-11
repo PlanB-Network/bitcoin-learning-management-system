@@ -10,9 +10,6 @@ export const PageHeader = ({
   hasGithubDescription = false,
   addedCredits = false,
   hideOnMobile,
-  hideDescriptionOnMobile = true,
-  removeTopMargin,
-  increaseHorizontalPadding,
 }: {
   title: string;
   subtitle?: string;
@@ -21,22 +18,10 @@ export const PageHeader = ({
   hasGithubDescription?: boolean;
   addedCredits?: boolean;
   hideOnMobile?: boolean;
-  hideDescriptionOnMobile?: boolean;
-  removeTopMargin?: boolean;
-  increaseHorizontalPadding?: boolean;
 }) => {
   return (
     <div
-      className={cn(
-        'flex flex-col',
-        hideOnMobile && 'max-md:hidden',
-        removeTopMargin ? '' : 'mt-5 md:mt-10',
-        !hideDescriptionOnMobile
-          ? 'px-0'
-          : increaseHorizontalPadding
-            ? 'max-lg:px-6'
-            : 'max-lg:px-4',
-      )}
+      className={cn('flex flex-col', hideOnMobile && 'max-md:hidden', 'px-0')}
     >
       {subtitle && (
         <h1 className="title-base text-black max-md:mb-2 mb-1">{subtitle}</h1>
@@ -91,10 +76,8 @@ export const PageHeader = ({
         description && (
           <p
             className={cn(
-              'body-large text-neutral-600 mt-1 md:mt-6',
-              hideDescriptionOnMobile
-                ? 'max-md:hidden'
-                : 'max-md:pb-12 max-md:border-b border-newGray-1 max-md:mt-5',
+              'body-large text-neutral-600',
+              'max-md:pb-12 max-md:border-b border-newGray-1 max-md:mt-5',
             )}
           >
             {description}
@@ -107,6 +90,8 @@ export const PageHeader = ({
 
 export const PageTitle = ({ title }: { title: string }) => {
   return (
-    <h2 className={cn('display-base md:display-large text-black')}>{title}</h2>
+    <h2 className={cn('display-base md:display-large text-black mb-2 md:mb-6')}>
+      {title}
+    </h2>
   );
 };

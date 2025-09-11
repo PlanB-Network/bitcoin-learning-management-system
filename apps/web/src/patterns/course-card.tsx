@@ -6,7 +6,7 @@ import { t } from 'i18next';
 import { TbChevronRight } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
 import { assetUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.ts';
+import { formatNameForURL, normalizeString } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
   defaultVariants: {
@@ -52,13 +52,6 @@ export const CourseCard = ({
           mode,
         })} relative`}
       >
-        {/* Badge for Featured Card */}
-        {featured && (
-          <span className="absolute uppercase -top-px -left-px bg-white border border-white text-black body-semibold-12px md:title-medium-sb-18px rounded-tl-2xl py-1 px-2.5 md:py-2.5 md:px-4 rounded-br-2xl z-10">
-            {t('words.startHere')}
-          </span>
-        )}
-
         <Image
           width={256}
           height={193}
@@ -92,14 +85,25 @@ export const CourseCard = ({
               {course.name}
             </span>
             <div className="flex md:items-center flex-wrap gap-1.5 md:gap-2 order-2 md:order-1">
-              <TextTag
-                size="verySmall"
-                variant="lightMaroon"
-                mode={mode}
-                className="uppercase"
-              >
-                {t(`words.level.${course.level}`)}
-              </TextTag>
+              {normalizeString(course.index) === 'btc101' ? (
+                <TextTag
+                  size="verySmall"
+                  variant="green"
+                  mode={mode}
+                  className="uppercase"
+                >
+                  {t('words.startHere')}
+                </TextTag>
+              ) : (
+                <TextTag
+                  size="verySmall"
+                  variant="lightMaroon"
+                  mode={mode}
+                  className="uppercase"
+                >
+                  {t(`words.level.${course.level}`)}
+                </TextTag>
+              )}
               {course.requiresPayment && (
                 <TextTag
                   size="verySmall"

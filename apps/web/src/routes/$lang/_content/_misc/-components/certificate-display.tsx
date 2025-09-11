@@ -46,7 +46,7 @@ export const CertificateDisplay = ({
     : null;
 
   return (
-    <PageLayout maxWidth="max-w-[1392px]">
+    <PageLayout>
       <h2 className="text-center display-small-32px lg:display-large">
         {t('courses.exam.courseDiploma')}
       </h2>

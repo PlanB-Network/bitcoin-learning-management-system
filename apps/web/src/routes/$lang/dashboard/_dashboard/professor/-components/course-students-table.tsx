@@ -113,7 +113,9 @@ export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
       const anyScores = students.some(
         (student) => student.totalScore !== null || student.examScore !== null,
       );
-      setHasScores(anyScores);
+      if (anyScores) {
+        setHasScores(true);
+      }
     }
   }, [students]);
 
@@ -293,16 +295,13 @@ export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
                   </TextTag>
                 </TableCell>
 
-                {hasScores &&
-                  (student.totalScore !== null ||
-                    student.examScore !== null) && (
-                    <TableCell>
-                      {student.totalScore !== null
-                        ? student.totalScore
-                        : student.examScore}
-                      /100
-                    </TableCell>
-                  )}
+                {hasScores && (
+                  <TableCell>
+                    {(student.totalScore ?? student.examScore) !== null
+                      ? `${student.totalScore ?? student.examScore}/100`
+                      : 'N/A'}
+                  </TableCell>
+                )}
 
                 <TableCell>
                   {getNotificationDateString(student.lastActive)}

@@ -9,6 +9,7 @@ export * from './bases/button-arrow.tsx';
 export * from './bases/calendar.tsx';
 export * from './bases/card.tsx';
 export * from './bases/carousel.tsx';
+export * from './bases/category-switcher.tsx';
 export * from './bases/charts.tsx';
 export * from './bases/checkbox.tsx';
 export * from './bases/collapsible.tsx';

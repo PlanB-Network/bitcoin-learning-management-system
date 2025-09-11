@@ -1,53 +1,12 @@
 import type { JoinedEvent } from '@blms/types';
-import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
-import { useContext, useEffect, useState } from 'react';
-import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
-import { AuthModalState } from '#src/components/AuthModals/props.js';
-import { useDisclosure } from '#src/hooks/use-disclosure.js';
-import { AppContext } from '#src/providers/context.js';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
-import { trpc } from '#src/utils/trpc.js';
-import { EventBookModal } from '../../events/-components/event-book-modal.js';
 import { EventCard } from '../../events/-components/event-card.js';
-import { EventPaymentModal } from '../../events/-components/event-payment-modal.js';
 
 interface ProjectEventsProps {
   events: JoinedEvent[];
 }
 
 export const ProjectEvents = ({ events }: ProjectEventsProps) => {
-  const { session } = useContext(AppContext);
-  const { conversionRate } = useContext(ConversionRateContext);
-
-  const isLoggedIn = !!session;
-
-  const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
-    trpc.user.events.getEventPayment.queryOptions(undefined, {
-      enabled: isLoggedIn,
-    }),
-  );
-
-  const { data: userEvents, refetch: refetchUserEvents } = useQuery(
-    trpc.user.events.getUserEvents.queryOptions(undefined, {
-      enabled: isLoggedIn,
-    }),
-  );
-
-  const [paymentModalData, setPaymentModalData] =
-    useState<PaymentModalDataModel>({
-      accessType: null,
-      dollarPrice: null,
-      eventId: null,
-      satsPrice: null,
-    });
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-
-  const payingEvent: JoinedEvent | undefined = events?.find(
-    (e) => e.id === paymentModalData.eventId,
-  );
-
   const sortedEvents = [...events]
     .filter((event) => {
       const now = Date.now();
@@ -57,65 +16,8 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
     })
     .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      refetchEventPayments();
-      refetchUserEvents();
-    }
-  }, [isLoggedIn, refetchEventPayments, refetchUserEvents]);
-
-  // TODO Refactor this auth stuff
-  const authMode = AuthModalState.SignIn;
-
-  const {
-    open: openAuthModal,
-    isOpen: isAuthModalOpen,
-    close: closeAuthModal,
-  } = useDisclosure();
-
   return (
     <div className="text-white mb-7 md:mb-14">
-      {paymentModalData.eventId &&
-        paymentModalData.satsPrice &&
-        paymentModalData.dollarPrice &&
-        paymentModalData.accessType &&
-        paymentModalData.satsPrice > 0 &&
-        payingEvent && (
-          <EventPaymentModal
-            eventId={paymentModalData.eventId}
-            event={payingEvent}
-            accessType={paymentModalData.accessType}
-            satsPrice={paymentModalData.satsPrice}
-            dollarPrice={paymentModalData.dollarPrice}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              refetchEventPayments();
-              setPaymentModalData({
-                accessType: null,
-                dollarPrice: null,
-                eventId: null,
-                satsPrice: null,
-              });
-              setIsPaymentModalOpen(false);
-            }}
-          />
-        )}
-      {paymentModalData.eventId &&
-        paymentModalData.satsPrice === 0 &&
-        paymentModalData.accessType &&
-        payingEvent && (
-          <EventBookModal
-            event={payingEvent}
-            accessType={paymentModalData.accessType}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              setIsPaymentModalOpen(false);
-              refetchEventPayments();
-              refetchUserEvents();
-            }}
-          />
-        )}
-
       <div className="flex flex-col">
         <h3 className="mobile-h3 md:desktop-h4 text-center mb-2.5 md:mb-9">
           {t('projects.relatedEvents')}
@@ -124,17 +26,7 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
         {sortedEvents.length > 0 && (
           <div className="flex flex-wrap justify-center gap-5 lg:gap-7 mx-auto">
             {sortedEvents?.map((event) => (
-              <EventCard
-                event={event}
-                eventPayments={eventPayments}
-                userEvents={userEvents}
-                openAuthModal={openAuthModal}
-                isLoggedIn={isLoggedIn}
-                setIsPaymentModalOpen={setIsPaymentModalOpen}
-                setPaymentModalData={setPaymentModalData}
-                conversionRate={conversionRate}
-                key={event.name}
-              />
+              <EventCard event={event} key={event.name} />
             ))}
           </div>
         )}
@@ -144,14 +36,6 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
           </p>
         )}
       </div>
-
-      {isAuthModalOpen && (
-        <AuthModal
-          isOpen={isAuthModalOpen}
-          onClose={closeAuthModal}
-          initialState={authMode}
-        />
-      )}
     </div>
   );
 };

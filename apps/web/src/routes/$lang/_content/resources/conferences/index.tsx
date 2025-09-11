@@ -17,7 +17,9 @@ export const Route = createFileRoute('/$lang/_content/resources/conferences/')({
 
 function Conferences() {
   const isScreenMd = useGreater('md');
-  const [activeYear, setActiveYear] = useState('2024');
+  const [activeYear, setActiveYear] = useState(
+    new Date().getFullYear().toString(),
+  );
   const [filteredConferences, setFilteredConferences] =
     useState<JoinedConference[]>();
   const [latestConferences, setLatestConferences] =

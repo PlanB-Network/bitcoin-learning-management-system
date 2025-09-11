@@ -5,7 +5,7 @@ import * as React from 'react';
 import { cn } from '../lib/utils.js';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none w-fit',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden disabled:pointer-events-none w-fit',
   {
     defaultVariants: {
       size: 'm',
@@ -41,6 +41,8 @@ const buttonVariants = cva(
           'bg-newGray-4 dark:bg-white text-newBlack-1 shadow-button dark:disabled:bg-newBlack-3 disabled:!text-newGray-2 dark:disabled:text-newGray-1',
         tertiary:
           'shadow-button border bg-newGray-5 text-newGray-1 border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
+        newTertiary:
+          'bg-neutral-50 text-black hover:bg-neutral-100 focus-visible:border-5 focus-visible:border-neutral-100 disabled:opacity-30',
         transparent: 'bg-white/30 text-white shadow-button',
       },
     },
