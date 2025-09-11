@@ -169,7 +169,7 @@ export const MainLayout = ({
           )}
           style={{ willChange: 'margin-left' }}
         >
-          <main className="flex grow flex-col bg-white pb-12 lg:pb-34">
+          <main className="flex grow flex-col bg-white pb-16 lg:pb-40">
             {children}
           </main>
           {showFooter && <Footer />}

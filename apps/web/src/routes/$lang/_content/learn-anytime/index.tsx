@@ -287,7 +287,7 @@ function AllCourses() {
 
       <div
         className={cn(
-          'lg:ml-auto flex max-lg:flex-col lg:items-center lg:justify-end gap-1 lg:gap-2 lg:max-w-200 lg:w-full max-lg:border border-neutral-100 max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90 max-lg:mx-auto',
+          'lg:ml-auto flex max-lg:flex-col lg:items-center lg:justify-end gap-1 lg:gap-2 lg:max-w-200 lg:w-full max-lg:border border-neutral-100 max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90 max-lg:mx-auto lg:mt-4',
           isFilterOpen ? 'max-lg:mb-2' : 'max-lg:hidden',
         )}
       >

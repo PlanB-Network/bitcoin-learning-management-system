@@ -47,7 +47,7 @@ export const PageLayout = ({
               hideDescriptionOnMobile={hideDescriptionOnMobile}
             />
           )}
-          {children && <div className="my-4 lg:my-6">{children}</div>}
+          {children && <div className="mt-4 lg:mt-12">{children}</div>}
         </div>
       </div>
     </MainLayout>
