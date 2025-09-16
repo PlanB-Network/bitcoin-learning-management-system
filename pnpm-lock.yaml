@@ -619,6 +619,9 @@ importers:
       '@blms/service-common':
         specifier: workspace:*
         version: link:../service-common
+      '@blms/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@trpc/server':
         specifier: ^11.5.0
         version: 11.5.0(typescript@5.9.2)

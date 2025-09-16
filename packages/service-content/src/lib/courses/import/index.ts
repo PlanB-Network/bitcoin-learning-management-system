@@ -1,4 +1,5 @@
 import { firstRow, sql } from '@blms/database';
+import { LANGUAGES_MAP } from '@blms/shared';
 import type {
   ChangedAsset,
   ChangedFile,
@@ -762,23 +763,35 @@ export const createUpdateCourses = ({
               ON CONFLICT (course_id, language) DO NOTHING
             `;
 
-            // Ensure we have translation entries for all missing languages as 'todo'
-            await transaction`
-              INSERT INTO content.course_translations (course_id, language, status, created_at, updated_at)
-              SELECT
-                ${courseId},
-                languages.language,
-                'todo'::translation_status,
-                NOW(),
-                NOW()
-              FROM (
-                SELECT DISTINCT language FROM content.courses_localized
-              ) languages
-              WHERE NOT EXISTS (
-                SELECT 1 FROM content.course_translations ct
-                WHERE ct.course_id = ${courseId} AND ct.language = languages.language
-              )
-            `;
+            // Ensure we have translation entries for all LANGUAGES_MAP languages as 'todo'
+            // Get all language codes from LANGUAGES_MAP
+            const allLanguageCodes = Object.keys(LANGUAGES_MAP);
+
+            // Get the course's original language to exclude it from todo translations
+            const courseInfo = await transaction<
+              { original_language: string }[]
+            >`
+              SELECT original_language 
+              FROM content.courses 
+              WHERE id = ${courseId}
+            `.then(firstRow);
+
+            // Insert translation entries for all languages in a single query
+            // Exclude the course's original language and use ON CONFLICT to avoid duplicates
+            if (courseInfo) {
+              await transaction`
+                INSERT INTO content.course_translations (course_id, language, status, created_at, updated_at)
+                SELECT
+                  ${courseId},
+                  language,
+                  'todo'::translation_status,
+                  NOW(),
+                  NOW()
+                FROM unnest(${allLanguageCodes}::text[]) AS language
+                WHERE language != ${courseInfo.original_language}
+                ON CONFLICT (course_id, language) DO NOTHING
+              `;
+            }
 
             if (parts.length > 0) {
               if (fileIndex === 0) {
