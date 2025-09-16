@@ -41,15 +41,12 @@ services:
 
   cdn:
     <<: *defaults
-    image: nginx:latest
+    image: nginx:1.29.1-alpine
     ports:
       - 8080:80
     volumes:
       - ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf
       - cdn:/var/www/cdn
-    healthcheck:
-      <<: *healthcheck
-      test: ['CMD', 'nc', '-zv', 'localhost', '80']
 
   api:
     <<: [*defaults, *base]
