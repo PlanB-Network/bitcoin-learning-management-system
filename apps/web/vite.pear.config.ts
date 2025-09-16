@@ -11,9 +11,10 @@ const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
 
 const pearsModules: string[] = [
   'corestore',
+  'debounceify',
   'hypercore',
   'hyperswarm',
-  'hyperblobs',
+  'hyperdrive',
   'b4a',
 ];
 

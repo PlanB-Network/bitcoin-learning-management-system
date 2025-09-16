@@ -1,9 +1,11 @@
-import b4a from 'b4a';
-import Hyperblobs from 'hyperblobs';
 import { useEffect, useState } from 'react';
 import { getPearInstance } from '../services/pear.js';
 
-export const PearVideoTest = () => {
+interface PearVideoTestProps {
+  videoKey: string;
+}
+
+export const PearVideoTest = ({ videoKey }: PearVideoTestProps) => {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [status, setStatus] = useState<string>('Initializing...');
 
@@ -11,27 +13,15 @@ export const PearVideoTest = () => {
     const loadVideo = async () => {
       try {
         setStatus('Getting Pear instance...');
-        const { store, swarm } = await getPearInstance();
+        console.info('Getting Pear instance...');
+        const { drive } = await getPearInstance();
 
-        const videoKey =
-          '7ee3369e3c75e2df7df3e339146637d26b1d82a4db08f3b91306b13638778835';
+        setStatus('Downloading video file...');
+        console.info('Downloading video with key:', videoKey);
 
-        const blobId = {
-          byteOffset: 40148919,
-          blockOffset: 615,
-          blockLength: 145,
-          byteLength: 9464036,
-        };
+        const buf = await drive.get(videoKey);
 
-        const core = store!.get({ key: b4a.from(videoKey, 'hex') });
-        await core.ready();
-
-        swarm!.join(core.discoveryKey);
-
-        const blobs = new Hyperblobs(core);
-
-        setStatus('Waiting for blob...');
-        const buf = await blobs.get(blobId, { wait: true, timeout: 30_000 });
+        console.info('Video file downloaded, size:', buf.length);
 
         setStatus('Blob downloaded, creating URL...');
         const blob = new Blob([buf], { type: 'video/mp4' });
