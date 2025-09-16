@@ -81,8 +81,14 @@
 
   --color-neutral-50: #f6f6f6;
   --color-neutral-100: #e5e5e5;
+  --color-neutral-200: #cccccc;
+  --color-neutral-300: #b2b2b2;
   --color-neutral-400: #999999;
+  --color-neutral-500: #808080;
   --color-neutral-600: #666666;
+  --color-neutral-700: #4d4d4d;
+  --color-neutral-800: #333333;
+  --color-neutral-900: #1a1a1a;
 
   --color-red-1: #ffdad3;
   --color-red-2: #ffb5a7;
@@ -107,6 +113,18 @@
   --color-yellow-9: #80520d;
   --color-yellow-10: #633f08;
   --color-yellow-11: #482c04;
+
+  --color-yellow-50: #fff0d9;
+  --color-yellow-100: #ffe0b2;
+  --color-yellow-200: #ffcc80;
+  --color-yellow-300: #ffbd59;
+  --color-yellow-400: #ffa826;
+  --color-yellow-500: #de9220;
+  --color-yellow-600: #be7c19;
+  --color-yellow-700: #9e6713;
+  --color-yellow-800: #80520d;
+  --color-yellow-900: #633f08;
+  --color-yellow-950: #482c04;
 
   --color-green-100: #edf7f2;
   --color-green-200: #c9e8d8;
@@ -378,6 +396,14 @@
   @apply text-lg font-normal leading-[133%] tracking-[-0.18px];
 }
 
+@utility display-base {
+  @apply text-3xl font-semibold leading-tight tracking-[-0.32px];
+}
+
+@utility display-large {
+  @apply text-5xl leading-[116%] font-semibold tracking-[-0.48px];
+}
+
 @utility display-medium {
   @apply text-4xl font-semibold leading-[120%] tracking-[-0.4px];
 }
@@ -496,10 +522,6 @@
 
 @utility body-medium-16px {
   @apply text-base font-medium leading-normal tracking-015px;
-}
-
-@utility display-large {
-  @apply text-5xl leading-[116%] font-normal tracking-normal;
 }
 
 @utility display-large-med-48px {

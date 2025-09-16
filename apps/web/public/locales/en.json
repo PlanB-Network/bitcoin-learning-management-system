@@ -1269,6 +1269,7 @@
     "teacher": {
       "courses": {
         "allStudents": "All students",
+        "amountPaid": "Amount paid",
         "analytics": "Analytics",
         "announcementModal": {
           "contentLabel": "Text of the announcement",
@@ -1325,6 +1326,7 @@
         "finalAverageResults": "Final average results",
         "finalScore": "Final score",
         "goal": "Goal",
+        "lastActive": "Last active",
         "makeModifications": "Need to make modifications?",
         "medianScore": "Median score",
         "noExamLinked": "There is currently no exam linked to this course. If you want to create an exam, please contact us.",
@@ -1339,6 +1341,7 @@
         "reviews": "Reviews",
         "selectCourse": "Select course",
         "studentsGraduated": "Students graduated",
+        "studentsList": "Students list",
         "successRate": "Success rate",
         "summerStudents": "Summer School",
         "thresholdToPass": "Threshold to pass",
@@ -2027,6 +2030,7 @@
     "communities": "Communities",
     "company": "Company",
     "complete": "Complete",
+    "completed": "Completed",
     "conference": "Conference",
     "congrats": "Congrats!",
     "content": "Content",
@@ -2050,6 +2054,7 @@
     "duration": "Duration",
     "edit": "Edit",
     "email": "Email",
+    "enrolled": "Enrolled",
     "events": "Events",
     "exam": "Exam",
     "failed": "Failed",
@@ -2137,6 +2142,7 @@
     "results": "Results",
     "review": "Review",
     "role": "Role",
+    "sats": "Sats",
     "save": "Save",
     "saving": "Saving...",
     "search": "Search",

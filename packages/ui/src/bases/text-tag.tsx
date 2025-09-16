@@ -34,6 +34,7 @@ const textTagVariants = cva(
           'bg-maroon-1 text-maroon-8 dark:bg-maroon-8 dark:text-white [&.light100]:bg-maroon-2 [&.dark100]:bg-maroon-8 [&.dark100]:text-white',
         orange:
           'bg-darkOrange-0 text-darkOrange-7 dark:bg-darkOrange-8 dark:text-darkOrange-2 [&.light100]:bg-darkOrange-1 [&.dark100]:bg-darkOrange-8 [&.dark100]:text-darkOrange-2',
+        yellow: 'bg-yellow-100 text-yellow-8',
         withoutFill:
           'bg-transparent text-newBlack-5 dark:text-newGray-3 [&.dark100]:text-newGray-4',
       },

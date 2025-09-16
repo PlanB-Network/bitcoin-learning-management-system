@@ -201,3 +201,14 @@ export const courseActivitySchema = z.object({
   withComment: z.boolean(),
   score: z.number().nullable(),
 });
+
+export const courseStudentSchema = z.object({
+  uid: z.string(),
+  displayName: z.string(),
+  amount: z.number().nullable(),
+  method: z.enum(['sbp', 'stripe', 'free']).nullable(),
+  courseProgress: z.number(),
+  totalScore: z.number().nullable(),
+  examScore: z.number().nullable(),
+  lastActive: z.date(),
+});

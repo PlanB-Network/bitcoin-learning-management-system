@@ -24,6 +24,7 @@ import { CourseDetails } from './-components/course-details.tsx';
 import { CourseDiscount } from './-components/course-discount.tsx';
 import { CourseOverview } from './-components/course-overview.tsx';
 import { CourseReview } from './-components/course-review.tsx';
+import { CourseStudentsList } from './-components/course-students.tsx';
 import { ExamResults } from './-components/exam-results.tsx';
 
 export const Route = createFileRoute(
@@ -181,6 +182,12 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
               value: 'overview',
             },
             {
+              active: 'students' === currentTab,
+              key: 'students',
+              text: t('words.students'),
+              value: 'students',
+            },
+            {
               active: 'review' === currentTab,
               key: 'review',
               text: t('dashboard.teacher.courses.reviews'),
@@ -234,6 +241,9 @@ const CourseTabContent = ({ course }: { course: JoinedCourse }) => {
         />
         <TabsContent value="overview" className="max-md:px-4">
           <CourseOverview courseId={course.id} setTab={onTabChange} />
+        </TabsContent>
+        <TabsContent value="students" className="max-md:px-4">
+          <CourseStudentsList course={course} />
         </TabsContent>
         <TabsContent value="review" className="max-md:px-4">
           <CourseReview
