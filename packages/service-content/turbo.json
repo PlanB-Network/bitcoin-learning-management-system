@@ -5,6 +5,7 @@
     "build": {
       "dependsOn": [
         "@blms/types#build",
+        "@blms/shared#build",
         "@blms/database#build",
         "@blms/service-common#build"
       ],
@@ -13,6 +14,7 @@
     "build-types": {
       "dependsOn": [
         "@blms/types#build-types",
+        "@blms/shared#build-types",
         "@blms/database#build-types",
         "@blms/service-common#build-types"
       ],
@@ -21,6 +23,7 @@
     "check-types": {
       "dependsOn": [
         "@blms/types#build-types",
+        "@blms/shared#build-types",
         "@blms/database#build-types",
         "@blms/service-common#build-types"
       ]
