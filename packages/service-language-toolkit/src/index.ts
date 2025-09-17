@@ -78,7 +78,7 @@ export const createLanguageToolkitClient = (
 
       // Add a timeout to prevent hanging on large course translations
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout for initial request
+      const timeoutId = setTimeout(() => controller.abort(), 240000); // 240 second timeout for initial request (2 minutes)
 
       const resp = await fetchImpl(`${cfg.baseUrl}/translate/course_s3`, {
         method: 'POST',
@@ -113,7 +113,7 @@ export const createLanguageToolkitClient = (
       // Re-throw to allow caller to handle the error appropriately
       if (e instanceof Error) {
         if (e.name === 'AbortError') {
-          throw new Error('Translation request timed out after 30 seconds');
+          throw new Error('Translation request timed out after 240 seconds');
         }
         throw e;
       }
