@@ -1046,10 +1046,7 @@ export const createRestTranslationUploadRoutes = async (
         // Get fresh token using the same logic as the client
         const params = new URLSearchParams();
         params.append('username', process.env.LT_CLIENT_ID || '');
-        params.append(
-          'password',
-          process.env.LT_CLIENT_SECRET || '',
-        );
+        params.append('password', process.env.LT_CLIENT_SECRET || '');
 
         const tokenRes = await fetch(`${baseUrl}/token`, {
           method: 'POST',
