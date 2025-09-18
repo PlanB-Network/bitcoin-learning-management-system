@@ -1038,18 +1038,15 @@ export const createRestTranslationUploadRoutes = async (
       try {
         // Use the languageToolkit client to check status
         // We'll create a simple wrapper since the client doesn't expose this directly
-        const baseUrl = process.env.LANGUAGE_TOOLKIT_BASE_URL;
+        const baseUrl = process.env.LT_BASE_URL;
         if (!baseUrl) {
           throw new Error('Language toolkit base URL not configured');
         }
 
         // Get fresh token using the same logic as the client
         const params = new URLSearchParams();
-        params.append('username', process.env.LANGUAGE_TOOLKIT_CLIENT_ID || '');
-        params.append(
-          'password',
-          process.env.LANGUAGE_TOOLKIT_CLIENT_SECRET || '',
-        );
+        params.append('username', process.env.LT_CLIENT_ID || '');
+        params.append('password', process.env.LT_CLIENT_SECRET || '');
 
         const tokenRes = await fetch(`${baseUrl}/token`, {
           method: 'POST',
