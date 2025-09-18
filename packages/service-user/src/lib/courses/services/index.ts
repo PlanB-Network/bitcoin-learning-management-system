@@ -17,6 +17,7 @@ export * from './get-multi-attempts-exams.js';
 export * from './get-payment.js';
 export * from './get-pending-payment.js';
 export * from './get-progress.js';
+export * from './get-students.js';
 export * from './get-succeeded-results.js';
 export * from './get-teacher-led-exams.js';
 export * from './get-user-chapter.js';

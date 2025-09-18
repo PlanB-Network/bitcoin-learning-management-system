@@ -1,4 +1,4 @@
-import { ExamType } from '@blms/constants';
+import { ExamType, SortDirection } from '@blms/constants';
 
 import {
   checkoutDataSchema,
@@ -10,6 +10,7 @@ import {
   courseProgressExtendedSchema,
   courseProgressSchema,
   courseReviewSchema,
+  courseStudentSchema,
   courseSucceededExamSchema,
   courseUserChapterSchema,
   courseWithMultiAttemptsExamGradesAndSummarySchema,
@@ -40,6 +41,7 @@ import {
   createGetPayments,
   createGetProgress,
   createGetSingleTrialExamQuestionStatistics,
+  createGetStudentsByCourseId,
   createGetTeacherLedCourseDiplomaTimestamp,
   createGetTeacherLedCourseGrades,
   createGetUserChapter,
@@ -69,6 +71,7 @@ import type {
   CourseProgress,
   CourseProgressExtended,
   CourseReview,
+  CourseStudent,
   CourseSucceededExam,
   CourseUserChapter,
   CourseWithMultiAttemptsExamGradesAndSummary,
@@ -647,6 +650,61 @@ const getCourseRecentActivityProcedure = professorProcedure
     return createGetCourseRecentActivity(ctx.dependencies)(input.courseId);
   });
 
+const getStudentsByCourseIdProcedure = professorProcedure
+  .input(
+    z.object({
+      courseId: z.string(),
+      cursor: z
+        .object({
+          uid: z.string(),
+          value: z.union([z.string(), z.number()]),
+        })
+        .optional(),
+      limit: z.number(),
+      search: z.string(),
+      orderDirection: z
+        .nativeEnum(SortDirection)
+        .optional()
+        .default(SortDirection.Asc),
+      orderField: z
+        .enum([
+          'displayName',
+          'amount',
+          'courseProgress',
+          'totalScore',
+          'lastActive',
+        ])
+        .optional()
+        .default('displayName'),
+    }),
+  )
+  .output<
+    Parser<{
+      students: CourseStudent[];
+      nextCursor: { uid: string; value: string | number } | null;
+    }>
+  >(
+    z.object({
+      nextCursor: z
+        .object({
+          uid: z.string(),
+          value: z.union([z.string(), z.number()]),
+        })
+        .nullable(),
+      students: courseStudentSchema.array(),
+    }),
+  )
+  .query(({ ctx, input }) => {
+    return createGetStudentsByCourseId(ctx.dependencies)({
+      courseId: input.courseId,
+      cursor: input.cursor,
+      limit: input.limit,
+      orderDirection: input.orderDirection,
+      orderField: input.orderField,
+      search: input.search,
+    });
+  });
+
 export const userCoursesRouter = createTRPCRouter({
   completeAllChapters: completeAllChaptersProcedure,
   completeChapter: completeChapterProcedure,
@@ -667,6 +725,7 @@ export const userCoursesRouter = createTRPCRouter({
     getSingleTrialExamQuestionStatisticsProcedure,
   getMultiAttemptsExamQuestionStatistics:
     getMultiAttemptsExamQuestionStatisticsProcedure,
+  getStudentsByCourseId: getStudentsByCourseIdProcedure,
   getTeacherLedCourseDiplomaTimestamp:
     getTeacherLedCourseDiplomaTimestampProcedure,
   getTeacherLedCourseGrades: getGetTeacherLedCourseGradesProcedure,
