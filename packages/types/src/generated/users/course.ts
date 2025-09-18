@@ -268,3 +268,14 @@ export interface CourseActivity {
   withComment: boolean;
   score: number | null;
 }
+
+export interface CourseStudent {
+  uid: string;
+  displayName: string;
+  amount: number | null;
+  method: ('sbp' | 'stripe' | 'free') | null;
+  courseProgress: number;
+  totalScore: number | null;
+  examScore: number | null;
+  lastActive: Date;
+}
