@@ -169,9 +169,7 @@ export const MainLayout = ({
           )}
           style={{ willChange: 'margin-left' }}
         >
-          <main className="flex grow flex-col bg-white pb-16 lg:pb-40">
-            {children}
-          </main>
+          <main className="flex grow flex-col bg-white">{children}</main>
           {showFooter && <Footer />}
 
           <ScrollToTopButton />
@@ -295,16 +293,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               </div>
               <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
               <div className="flex flex-col gap-1">
-                <SideBarItem
-                  icon={Ticket}
-                  iconColor="yellow"
-                  label={'TEMP - Bookings'}
-                  link="/dashboard/bookings"
-                  isActive={window.location.pathname.includes(
-                    '/dashboard/bookings',
-                  )}
-                  isSidebarOpen={isSidebarOpen}
-                />
                 <SideBarItem
                   icon={Medal}
                   iconColor="purple"

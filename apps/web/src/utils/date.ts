@@ -144,6 +144,62 @@ export function formatTimeRange(
   }
 }
 
+export function formatShortDateRange(
+  from: Date | string | number | undefined,
+  to: Date | string | number | undefined,
+  timezone?: string,
+  locale = getEffectiveLocale(),
+): string {
+  if (!from || !to) return '';
+
+  const start = new Date(from);
+  const end = new Date(to);
+  const tz = getEffectiveTimezone(timezone);
+
+  const formatter = new Intl.DateTimeFormat(locale, {
+    month: 'short',
+    day: 'numeric',
+    timeZone: tz,
+  });
+
+  if (typeof (formatter as any).formatRange === 'function') {
+    return (formatter as any).formatRange(start, end);
+  }
+
+  const sameMonth = start.getMonth() === end.getMonth();
+  const sameYear = start.getFullYear() === end.getFullYear();
+
+  if (sameYear && sameMonth) {
+    const month = new Intl.DateTimeFormat(locale, {
+      month: 'short',
+      timeZone: tz,
+    }).format(start);
+    return `${month} ${start.getDate()}–${end.getDate()}`;
+  }
+
+  if (sameYear) {
+    const startFmt = new Intl.DateTimeFormat(locale, {
+      month: 'short',
+      day: 'numeric',
+      timeZone: tz,
+    });
+    const endFmt = new Intl.DateTimeFormat(locale, {
+      month: 'short',
+      day: 'numeric',
+      timeZone: tz,
+    });
+    return `${startFmt.format(start)}–${endFmt.format(end)}`;
+  }
+
+  const fullFmt = new Intl.DateTimeFormat(locale, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: tz,
+  });
+  return `${fullFmt.format(start)}–${fullFmt.format(end)}`;
+}
+
 export function formatHourRange(
   from: Date | string | number | undefined,
   to: Date | string | number | undefined,

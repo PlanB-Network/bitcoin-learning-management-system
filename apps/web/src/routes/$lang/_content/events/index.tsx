@@ -1,22 +1,12 @@
-import type { JoinedEvent } from '@blms/types';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { lazy, Suspense, useContext, useEffect, useState } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
-import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { PageLayout } from '#src/components/page-layout.js';
-import { useDisclosure } from '#src/hooks/use-disclosure.js';
-import { AppContext } from '#src/providers/context.js';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
+import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.js';
-import { CurrentEvents } from './-components/current-events.tsx';
-import { EventBookModal } from './-components/event-book-modal.tsx';
-import { EventPaymentModal } from './-components/event-payment-modal.tsx';
 import { EventsGrid } from './-components/events-grid.tsx';
-import { EventsPassed } from './-components/events-passed.tsx';
 
 const EventsMap = lazy(
   () => import('#src/routes/$lang/_content/events/-components/events-map.tsx'),
@@ -30,9 +20,7 @@ function Events() {
   const { t } = useTranslation();
 
   const { session } = useContext(AppContext);
-  const { conversionRate } = useContext(ConversionRateContext);
-
-  const isLoggedIn = !!session;
+  const isLoggedIn = !!session?.user;
 
   const queryOpts = {
     refetchOnMount: false, // 10 minutes
@@ -45,185 +33,37 @@ function Events() {
     trpc.content.getRecentEvents.queryOptions(undefined, queryOpts),
   );
 
-  const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
-    trpc.user.events.getEventPayment.queryOptions(undefined, {
-      ...queryOpts,
-      enabled: isLoggedIn,
-    }),
-  );
-
-  const { data: userEvents, refetch: refetchUserEvents } = useQuery(
-    trpc.user.events.getUserEvents.queryOptions(undefined, {
-      ...queryOpts,
-      enabled: isLoggedIn,
-    }),
-  );
-
-  const [paymentModalData, setPaymentModalData] =
-    useState<PaymentModalDataModel>({
-      accessType: null,
-      dollarPrice: null,
-      eventId: null,
-      satsPrice: null,
-    });
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-
-  const payingEvent: JoinedEvent | undefined = events?.find(
-    (e) => e.id === paymentModalData.eventId,
-  );
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      refetchEventPayments();
-      refetchUserEvents();
-    }
-  }, [isLoggedIn, refetchEventPayments, refetchUserEvents]);
-
-  const authMode = AuthModalState.SignIn;
-
-  const {
-    open: openAuthModal,
-    isOpen: isAuthModalOpen,
-    close: closeAuthModal,
-  } = useDisclosure();
-
   return (
     <PageLayout
-      title={t('events.pageTitle')}
-      subtitle={t('events.pageSubtitle')}
-      description={t('events.pageDescription')}
-      maxWidth="max-w-full"
-      paddingXClasses="px-0"
+      title={t('words.events')}
+      actionButtons={[
+        {
+          text: t('events.addEvent'),
+          href: '/tutorials/contribution/resource/add-event-1d3df554-c2d8-4e93-853f-58f672c5e097',
+        },
+      ]}
+      tabs={
+        isLoggedIn
+          ? [
+              { id: 'events', label: t('words.events'), href: '/events' },
+              {
+                id: 'my-tickets',
+                label: t('events.myTickets'),
+                href: '/events/my-tickets',
+              },
+            ]
+          : []
+      }
     >
-      {paymentModalData.eventId &&
-        paymentModalData.satsPrice &&
-        paymentModalData.dollarPrice &&
-        paymentModalData.accessType &&
-        paymentModalData.satsPrice > 0 &&
-        payingEvent && (
-          <EventPaymentModal
-            eventId={paymentModalData.eventId}
-            event={payingEvent}
-            accessType={paymentModalData.accessType}
-            satsPrice={paymentModalData.satsPrice}
-            dollarPrice={paymentModalData.dollarPrice}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              refetchEventPayments();
-              setPaymentModalData({
-                accessType: null,
-                dollarPrice: null,
-                eventId: null,
-                satsPrice: null,
-              });
-              setIsPaymentModalOpen(false);
-            }}
-          />
-        )}
-      {paymentModalData.eventId &&
-        paymentModalData.satsPrice === 0 &&
-        paymentModalData.accessType &&
-        payingEvent && (
-          <EventBookModal
-            event={payingEvent}
-            accessType={paymentModalData.accessType}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              setIsPaymentModalOpen(false);
-              refetchEventPayments();
-              refetchUserEvents();
-            }}
-          />
-        )}
-      <div className="max-w-[1440px] w-full flex flex-col gap-6 px-3 pt-2.5 mx-auto md:gap-15 md:px-10 mt-6 md:mt-15">
-        {!isFetched && <Loader size={'s'} />}
-        {events && (
-          <CurrentEvents
-            events={events}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            conversionRate={conversionRate}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-            headingColor="text-darkOrange-5"
-            headingText={t('events.main.currentEvents')}
-            headingClass="text-lg  font-medium md:text-2xl md:font-normal md:tracking-[0.25px] "
-          />
-        )}
+      {!isFetched && <Loader size={'s'} />}
+      {events && (
+        <>
+          <Suspense fallback={<Loader size={'s'} />}>
+            <EventsMap events={events} />
+          </Suspense>
 
-        {events && (
-          <>
-            <Suspense fallback={<Loader size={'s'} />}>
-              <EventsMap
-                events={events}
-                eventPayments={eventPayments}
-                userEvents={userEvents}
-                conversionRate={conversionRate}
-                openAuthModal={openAuthModal}
-                isLoggedIn={isLoggedIn}
-                setIsPaymentModalOpen={setIsPaymentModalOpen}
-                setPaymentModalData={setPaymentModalData}
-              />
-            </Suspense>
-
-            <EventsGrid
-              events={events}
-              eventPayments={eventPayments}
-              userEvents={userEvents}
-              conversionRate={conversionRate}
-              openAuthModal={openAuthModal}
-              isLoggedIn={isLoggedIn}
-              setIsPaymentModalOpen={setIsPaymentModalOpen}
-              setPaymentModalData={setPaymentModalData}
-            />
-          </>
-        )}
-        <div className="h-px w-2/5 bg-newBlack-5 mx-auto sm:w-full" />
-        {/* Add my event */}
-        <div className="flex flex-col justify-center items-center max-sm:p-4 p-0 max-sm:border max-sm:border-darkOrange-5 max-sm:rounded-2xl max-w-2xl mx-auto">
-          <p className="text-darkOrange-5 text-center text-xl font-semibold leading-tight max-sm:hidden mb-2">
-            {t('events.newEvent.subtitle')}
-          </p>
-          <h2 className="text-darkOrange-5 sm:text-white text-2xl sm:text-[40px] text-center font-medium sm:font-normal leading-tight sm:tracking-[0.25px] mb-6 sm:mb-2">
-            {t('events.newEvent.title')}
-          </h2>
-          <p className="text-white text-center sm:text-xl sm:leading-snug max-sm:tracking-015px mb-6 sm:mb-10">
-            {t('events.newEvent.description')}
-          </p>
-          <a
-            className="px-2 sm:px-4 py-3 bg-darkOrange-5 text-white rounded-md sm:rounded-2xl flex justify-center items-center sm:text-xl sm:leading-normal font-medium active:scale-95"
-            href="https://workspace.planb.network/apps/forms/s/AdXeMipQ7xrrXNyrtyZ2sCLs"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('events.newEvent.button')}
-          </a>
-        </div>
-      </div>
-
-      <div>
-        {!isFetched && <Loader size={'s'} />}
-        {events && (
-          <EventsPassed
-            events={events}
-            eventPayments={eventPayments}
-            userEvents={userEvents}
-            conversionRate={conversionRate}
-            openAuthModal={openAuthModal}
-            isLoggedIn={isLoggedIn}
-            setIsPaymentModalOpen={setIsPaymentModalOpen}
-            setPaymentModalData={setPaymentModalData}
-          />
-        )}
-      </div>
-      {isAuthModalOpen && (
-        <AuthModal
-          isOpen={isAuthModalOpen}
-          onClose={closeAuthModal}
-          initialState={authMode}
-        />
+          <EventsGrid events={events} />
+        </>
       )}
     </PageLayout>
   );

@@ -42,7 +42,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
       {isLoggedIn && !isMobile && (
         <>
           <NotificationsPanel />
-          <Link className="flex gap-2" to="/dashboard/profile">
+          <Link className="flex gap-2" to="/account">
             <button
               type="button"
               className={cn(

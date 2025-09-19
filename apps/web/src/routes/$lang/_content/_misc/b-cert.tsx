@@ -72,11 +72,7 @@ function BCert() {
   }, [isFetched]);
 
   return (
-    <PageLayout
-      title={t('bCert.pageTitle')}
-      subtitle={t('bCert.pageSubtitle')}
-      maxWidth="max-w-[1380px]"
-    >
+    <PageLayout title={t('bCert.pageTitle')} subtitle={t('bCert.pageSubtitle')}>
       <div className="flex max-lg:flex-col justify-center items-center gap-6 lg:gap-20 my-6 md:mt-14 lg:mb-14">
         <img
           src={bCertsImage}

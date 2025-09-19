@@ -126,26 +126,28 @@ function AllCourses() {
     return courses
       .filter(
         (course) =>
-          course.isArchived === false &&
-          normalizeString(course.language) === normalizeString(i18n.language) &&
-          course.teachingFormat === 'self_paced' &&
-          (!course.paymentExpirationDate ||
-            course.paymentExpirationDate > new Date()) &&
-          (activeTopic === 'all'
-            ? true
-            : normalizeString(course.topic) === activeTopic) &&
-          (activeLevel === 'all' ? true : course.level === activeLevel) &&
-          (activeType === 'all' ? true : course.type === activeType) &&
-          (activePrice === 'all'
-            ? true
-            : activePrice === 'free'
-              ? course.requiresPayment === false
-              : course.requiresPayment === true) &&
-          (searchTerm === ''
-            ? true
-            : normalizeString(course.name).includes(
-                normalizeString(searchTerm),
-              )),
+          (course.isArchived === false &&
+            normalizeString(course.language) ===
+              normalizeString(i18n.language) &&
+            course.teachingFormat === 'self_paced' &&
+            (!course.paymentExpirationDate ||
+              course.paymentExpirationDate > new Date()) &&
+            (activeTopic === 'all'
+              ? true
+              : normalizeString(course.topic) === activeTopic) &&
+            (activeLevel === 'all' ? true : course.level === activeLevel) &&
+            (activeType === 'all' ? true : course.type === activeType) &&
+            (activePrice === 'all'
+              ? true
+              : activePrice === 'free'
+                ? course.requiresPayment === false
+                : course.requiresPayment === true) &&
+            (searchTerm === ''
+              ? true
+              : normalizeString(course.name).includes(
+                  normalizeString(searchTerm),
+                ))) ||
+          normalizeString(course.goal).includes(normalizeString(searchTerm)),
       )
       .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)));
   }, [
@@ -180,10 +182,7 @@ function AllCourses() {
 
   if (!courses) {
     return (
-      <PageLayout
-        title={t('courses.allCourses')}
-        hideDescriptionOnMobile={false}
-      >
+      <PageLayout title={t('courses.allCourses')}>
         <Loader size="s" />
       </PageLayout>
     );

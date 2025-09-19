@@ -1,21 +1,10 @@
-import type { EventPayment, JoinedEvent, UserEvent } from '@blms/types';
+import type { JoinedEvent } from '@blms/types';
 import { useTranslation } from 'react-i18next';
-
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 
 import { EventCard } from './event-card.tsx';
 
 interface CurrentEventsProps {
   events: JoinedEvent[];
-  eventPayments: EventPayment[] | undefined;
-  userEvents: UserEvent[] | undefined;
-  openAuthModal: () => void;
-  isLoggedIn: boolean;
-  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setPaymentModalData: React.Dispatch<
-    React.SetStateAction<PaymentModalDataModel>
-  >;
-  conversionRate: number | null;
   headingColor: string;
   headingText: string;
   headingClass?: string;
@@ -25,13 +14,6 @@ interface CurrentEventsProps {
 
 export const CurrentEvents = ({
   events,
-  eventPayments,
-  userEvents,
-  openAuthModal,
-  isLoggedIn,
-  setIsPaymentModalOpen,
-  setPaymentModalData,
-  conversionRate,
   headingColor,
   headingText,
   headingClass = '',
@@ -80,30 +62,11 @@ export const CurrentEvents = ({
         <div className="flex flex-wrap justify-center gap-10 mt-2 lg:mt-7 mx-auto sm:p-4 sm:shadow-l-section sm:rounded-[20px] sm:border-2 sm:border-newOrange-1">
           {liveEvents.length > 0
             ? liveEvents.map((event) => (
-                <EventCard
-                  event={event}
-                  eventPayments={eventPayments}
-                  userEvents={userEvents}
-                  isLive={true}
-                  openAuthModal={openAuthModal}
-                  isLoggedIn={isLoggedIn}
-                  setIsPaymentModalOpen={setIsPaymentModalOpen}
-                  setPaymentModalData={setPaymentModalData}
-                  conversionRate={conversionRate}
-                  key={event.name}
-                />
+                <EventCard event={event} key={event.name} />
               ))
             : nearestUpcomingEvent && (
                 <EventCard
                   event={nearestUpcomingEvent}
-                  eventPayments={eventPayments}
-                  userEvents={userEvents}
-                  isLive={false}
-                  openAuthModal={openAuthModal}
-                  isLoggedIn={isLoggedIn}
-                  setIsPaymentModalOpen={setIsPaymentModalOpen}
-                  setPaymentModalData={setPaymentModalData}
-                  conversionRate={conversionRate}
                   key={nearestUpcomingEvent.name}
                 />
               )}

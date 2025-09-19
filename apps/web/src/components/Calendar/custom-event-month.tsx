@@ -24,9 +24,8 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
 
   return (
     <div
-      className={`${cssClasses} flex flex-col h-[30px] hover:size-auto hover:relative hover:z-20 transition-all duration-200`}
+      className={`${cssClasses} flex flex-col hover:z-20`}
       style={{
-        overflow: isSelected ? 'visible' : 'hidden',
         padding: '10px',
         paddingLeft: 8,
         paddingTop: 8,

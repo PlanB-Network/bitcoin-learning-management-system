@@ -94,12 +94,7 @@ function SearchPage() {
   };
 
   return (
-    <PageLayout
-      paddingXClasses="px-0"
-      maxWidth="max-w-[3000px]"
-      title={t('search.explorer.title')}
-      subtitle={' '}
-    >
+    <PageLayout title={t('search.explorer.title')} subtitle={' '}>
       <div className="max-w-6xl pb-8 text-white sm:mx-auto min-h-80">
         <h2 className="text-orange-500 text-center text-xl mt-5 lg:mt-16">
           {t('search.explorer.subtitle')}

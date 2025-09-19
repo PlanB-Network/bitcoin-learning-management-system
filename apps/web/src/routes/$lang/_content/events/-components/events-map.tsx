@@ -14,49 +14,60 @@ import { Icon, Style } from 'ol/style.js';
 import View from 'ol/View.js';
 import 'ol/ol.css';
 
-import type {
-  EventLocation,
-  EventPayment,
-  JoinedEvent,
-  UserEvent,
-} from '@blms/types';
-import { Button, cn } from '@blms/ui';
+import type { EventLocation, JoinedEvent } from '@blms/types';
+import {
+  CategorySwitcher,
+  CategorySwitcherBar,
+  cn,
+  SegmentedControl,
+  SegmentedControlItem,
+} from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { fr } from 'date-fns/locale';
 import { t } from 'i18next';
+import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import type { View as CalendarView, Components } from 'react-big-calendar';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import { CiShare2 } from 'react-icons/ci';
-import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
+import type { IconType } from 'react-icons/lib';
+import {
+  TbCertificate2,
+  TbChevronLeft,
+  TbChevronRight,
+  TbFriends,
+  TbPodium,
+  TbPresentation,
+  TbTools,
+} from 'react-icons/tb';
+// import { CiShare2 } from 'react-icons/ci';
+// import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.tsx';
 import { CustomEventWeek } from '#src/components/Calendar/custom-event-week.tsx';
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { EventCard } from './event-card.tsx';
-import ShareModal from './modal-link-sharing.tsx';
+
+// import ShareModal from './modal-link-sharing.tsx';
 
 enum DisplayMode {
   Calendar = 'calendar',
   Map = 'map',
 }
 
-type CourseType = 'lecture' | 'conference' | 'exam' | 'meetup' | 'workshop';
+type EventType = 'lecture' | 'conference' | 'exam' | 'meetup' | 'workshop';
+
+const EVENT_TYPE_ICONS: Record<EventType, IconType> = {
+  lecture: TbPodium,
+  conference: TbPresentation,
+  exam: TbCertificate2,
+  meetup: TbFriends,
+  workshop: TbTools,
+};
 
 interface EventsMapProps {
   events: JoinedEvent[];
-  eventPayments: EventPayment[] | undefined;
-  userEvents: UserEvent[] | undefined;
-  openAuthModal: () => void;
-  isLoggedIn: boolean;
-  setIsPaymentModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setPaymentModalData: React.Dispatch<
-    React.SetStateAction<PaymentModalDataModel>
-  >;
-  conversionRate: number | null;
   showMap?: boolean;
   fixedCalendarDate?: string;
 }
@@ -227,21 +238,14 @@ function getInitialCalendarState(fixedCalendarDate?: string) {
 
 const EventsMap = ({
   events,
-  eventPayments,
-  userEvents,
-  openAuthModal,
-  isLoggedIn,
-  setIsPaymentModalOpen,
-  setPaymentModalData,
-  conversionRate,
   showMap = true,
   fixedCalendarDate,
 }: EventsMapProps) => {
   const [mode, setMode] = useState<DisplayMode>(
     showMap ? DisplayMode.Map : DisplayMode.Calendar,
   );
-  const [isShareModalOpen, setShareModalOpen] = useState(false);
-  const [shareUrl, setShareUrl] = useState('');
+  // const [isShareModalOpen, setShareModalOpen] = useState(false);
+  // const [shareUrl, setShareUrl] = useState('');
 
   const queryOpts = {
     refetchOnMount: false, // 10 minutes
@@ -261,8 +265,8 @@ const EventsMap = ({
   const [selectedEventGroup, setSelectedEventGroup] =
     useState<EventGroup | null>(null);
   const [mapState, setMapState] = useState<MapState>();
-  const [filter, setFilter] = useState<readonly CourseType[]>([]);
-  const courseTypes: readonly CourseType[] = [
+  const [filter, setFilter] = useState<readonly EventType[]>([]);
+  const eventTypes: readonly EventType[] = [
     'lecture',
     'conference',
     'exam',
@@ -270,47 +274,47 @@ const EventsMap = ({
     'workshop',
   ];
 
-  const [mapInstance, setMapInstance] = useState<OpenLayerMap | null>(null);
+  // const [mapInstance, setMapInstance] = useState<OpenLayerMap | null>(null);
 
-  function prepareShareUrl(map: OpenLayerMap) {
-    const newUrl = new URL(window.location.href);
+  // function prepareShareUrl(map: OpenLayerMap) {
+  //   const newUrl = new URL(window.location.href);
 
-    newUrl.searchParams.delete('lat');
-    newUrl.searchParams.delete('lng');
-    newUrl.searchParams.delete('zoom');
-    newUrl.searchParams.delete('city');
-    newUrl.searchParams.delete('date');
-    newUrl.searchParams.delete('view');
+  //   newUrl.searchParams.delete('lat');
+  //   newUrl.searchParams.delete('lng');
+  //   newUrl.searchParams.delete('zoom');
+  //   newUrl.searchParams.delete('city');
+  //   newUrl.searchParams.delete('date');
+  //   newUrl.searchParams.delete('view');
 
-    if (selectedEventGroup) {
-      newUrl.searchParams.set(
-        'city',
-        encodeURIComponent(selectedEventGroup.location.name),
-      );
-    } else {
-      const view = map.getView();
-      const center = view.getCenter();
+  //   if (selectedEventGroup) {
+  //     newUrl.searchParams.set(
+  //       'city',
+  //       encodeURIComponent(selectedEventGroup.location.name),
+  //     );
+  //   } else {
+  //     const view = map.getView();
+  //     const center = view.getCenter();
 
-      if (center) {
-        const [lng, lat] = transform(center, 'EPSG:3857', 'EPSG:4326');
-        const zoom = view.getZoom();
+  //     if (center) {
+  //       const [lng, lat] = transform(center, 'EPSG:3857', 'EPSG:4326');
+  //       const zoom = view.getZoom();
 
-        newUrl.searchParams.set('lat', lat.toFixed(6));
-        newUrl.searchParams.set('lng', lng.toFixed(6));
-        newUrl.searchParams.set('zoom', zoom?.toString() ?? '3');
-      }
-    }
+  //       newUrl.searchParams.set('lat', lat.toFixed(6));
+  //       newUrl.searchParams.set('lng', lng.toFixed(6));
+  //       newUrl.searchParams.set('zoom', zoom?.toString() ?? '3');
+  //     }
+  //   }
 
-    if (calendarView !== 'month') {
-      newUrl.searchParams.set('view', calendarView);
-    }
+  //   if (calendarView !== 'month') {
+  //     newUrl.searchParams.set('view', calendarView);
+  //   }
 
-    const dateFormat = calendarView === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd';
-    newUrl.searchParams.set('date', format(calendarDate, dateFormat));
+  //   const dateFormat = calendarView === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd';
+  //   newUrl.searchParams.set('date', format(calendarDate, dateFormat));
 
-    setShareUrl(newUrl.toString());
-    setShareModalOpen(true);
-  }
+  //   setShareUrl(newUrl.toString());
+  //   setShareModalOpen(true);
+  // }
 
   const [groups, setGroups] = useState<Map<string, EventGroup>>();
 
@@ -388,7 +392,7 @@ const EventsMap = ({
       view: new View(state),
     });
 
-    setMapInstance(map);
+    // setMapInstance(map);
 
     for (const group of groups) {
       map.addLayer(createMarker(group));
@@ -487,13 +491,13 @@ const EventsMap = ({
 
   const getFilteredCalendarEvents = (
     events: JoinedEvent[],
-    filter: readonly CourseType[],
+    filter: readonly EventType[],
   ) => {
     return events
       .filter((event) => {
         return (
           event.type !== null &&
-          (filter.length === 0 || filter.includes(event.type as CourseType))
+          (filter.length === 0 || filter.includes(event.type as EventType))
         );
       })
       .map<CalendarEvent>((data: JoinedEvent) => ({
@@ -515,7 +519,7 @@ const EventsMap = ({
     }
   }, [events, filter]);
 
-  const onFilterClick = (course: CourseType) => {
+  const onFilterClick = (course: EventType) => {
     setFilter((prev) =>
       prev.includes(course)
         ? prev.filter((f) => f !== course)
@@ -523,10 +527,6 @@ const EventsMap = ({
     );
     setCalendarCard(null);
   };
-
-  useEffect(() => {
-    setFilter(courseTypes);
-  }, []);
 
   const handleRangeChange = (range: Date[] | { start: Date; end: Date }) => {
     if (Array.isArray(range)) {
@@ -566,84 +566,101 @@ const EventsMap = ({
   return (
     <div
       className={cn(
-        'bg-gray-100 rounded-xl overflow-hidden',
-        showMap ? '' : 'max-lg:hidden',
+        'rounded-[20px] xl:border border-neutral-100 xl:p-2.5 w-full max-xl:mt-4',
+        showMap ? '' : 'max-xl:hidden',
       )}
     >
-      <div className="flex ">
+      {/* Switch mode */}
+      <SegmentedControl
+        variant="outline"
+        defaultValue={DisplayMode.Map}
+        value={mode}
+        className={cn('max-xl:hidden mx-auto mb-4.5')}
+      >
+        <SegmentedControlItem
+          value={DisplayMode.Map}
+          key={DisplayMode.Map}
+          onClick={() => setMode(DisplayMode.Map)}
+        >
+          <p className="w-35">{t('words.map')}</p>
+        </SegmentedControlItem>
+        <SegmentedControlItem
+          value={DisplayMode.Calendar}
+          key={DisplayMode.Calendar}
+          onClick={() => setMode(DisplayMode.Calendar)}
+        >
+          <p className="w-35">{t('words.calendar')}</p>
+        </SegmentedControlItem>
+      </SegmentedControl>
+      <div className="flex">
         {/* CALENDAR */}
         <div
           className={cn(
-            'flex-1',
+            'flex-1 relative border border-neutral-100 rounded-[20px] overflow-hidden',
             mode === DisplayMode.Calendar ? '' : 'hidden',
           )}
         >
-          <div className="flex justify-between items-center h-16 rounded-t-xl border-b px-6 font-semibold text-gray-800">
-            {/* View switcher */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1">
+          <div className={cn('flex justify-between items-center p-4 gap-4')}>
+            {/* Event type filter */}
+            <EventTypeFilter
+              eventTypes={eventTypes}
+              filter={filter}
+              onFilterClick={onFilterClick}
+            />
+
+            <div className="flex items-center gap-9 shrink-0">
+              {/* View switcher */}
+              <SegmentedControl
+                variant="outline"
+                value={calendarView}
+                defaultValue="month"
+              >
+                <SegmentedControlItem
+                  value="month"
+                  key="month"
+                  onClick={() => handleView('month')}
+                >
+                  <span className="w-19">{t('words.month')}</span>
+                </SegmentedControlItem>
+                <SegmentedControlItem
+                  value="week"
+                  key="week"
+                  onClick={() => handleView('week')}
+                >
+                  <span className="w-19">{t('words.week')}</span>
+                </SegmentedControlItem>
+              </SegmentedControl>
+
+              {/* Date controls */}
+              <div className="flex items-center gap-1 font-normal">
                 <button
                   type="button"
-                  onClick={() => handleView('month')}
-                  className={cn(
-                    'border rounded-lg py-1 px-3',
-                    calendarView === 'month'
-                      ? 'bg-darkOrange-5 text-white border-darkOrange-5'
-                      : 'bg-white',
-                  )}
+                  onClick={() => handlePrevNext(-1)}
+                  className="border border-neutral-200 rounded-lg grid place-content-center h-8 w-9"
                 >
-                  {t('words.month')}
+                  <TbChevronLeft className="size-4 text-newBlack-4" />
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleView('week')}
-                  className={cn(
-                    'border rounded-lg py-1 px-3',
-                    calendarView === 'week'
-                      ? 'bg-darkOrange-5 text-white border-darkOrange-5'
-                      : 'bg-white',
-                  )}
+                  onClick={() => handleNavigate(new Date())}
+                  className="border border-neutral-200 text-newBlack-4 text-sm leading-normal rounded-lg grid place-content-center h-8 px-2.5"
                 >
-                  {t('words.week')}
+                  {dateRange}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handlePrevNext(1)}
+                  className="border border-neutral-200 rounded-lg grid place-content-center h-8 w-9"
+                >
+                  <TbChevronRight className="size-4 text-newBlack-4" />
                 </button>
               </div>
-            </div>
-
-            {/* Date controls */}
-            <div className="flex items-center gap-1 font-normal">
-              <button
-                type="button"
-                onClick={() => handlePrevNext(-1)}
-                className="border bg-white rounded-lg p-1"
-              >
-                <BsChevronLeft className="size-6 p-1" />
-              </button>
-              <button
-                type="button"
-                onClick={() => handleNavigate(new Date())}
-                className="border bg-white rounded-lg py-1 px-3"
-              >
-                {dateRange}
-              </button>
-              <button
-                type="button"
-                onClick={() => handlePrevNext(1)}
-                className="border bg-white rounded-lg p-1"
-              >
-                <BsChevronRight className="size-6 p-1" />
-              </button>
             </div>
           </div>
 
           <div className="border-b-rounded-xl overflow-hidden">
             <div className="text-gray-500 text-center w-full">
-              <div
-                className={cn(
-                  showMap
-                    ? 'h-96 xl:h-[34rem] w-[850px]'
-                    : 'h-96 xl:h-[27rem] w-full',
-                )}
-              >
+              <div className={cn('xl:h-[586px] w-full')}>
                 <Calendar
                   localizer={localizer}
                   events={calendarEvents}
@@ -701,54 +718,39 @@ const EventsMap = ({
 
         {/* MAP */}
         {showMap ? (
-          <div className="relative flex-1 overflow-hidden">
-            <div className="flex items-center justify-center md:justify-start h-16 rounded-t-xl border-b px-1 md:px-6 font-semibold text-gray-800">
-              <div>
-                <div className="hidden sm:flex items-center mr-6">
-                  <HiOutlineAdjustmentsHorizontal className="size-6 stroke-[1.5]" />
-                </div>
-              </div>
-
-              <div className="flex gap-3 md:gap-4 font-light overflow-x-auto no-scrollbar">
-                {courseTypes.map((f) => (
-                  <button
-                    key={f}
-                    type="button"
-                    onClick={() => onFilterClick(f)}
-                    className={cn(
-                      'text-xs md:text-base border-b border-transparent capitalize',
-                      filter.includes(f)
-                        ? 'border-darkOrange-5 font-semibold'
-                        : '',
-                    )}
-                  >
-                    {f}s
-                  </button>
-                ))}
-              </div>
+          <div
+            className={cn(
+              'relative flex-1 overflow-hidden w-full',
+              mode === DisplayMode.Map ? '' : 'hidden',
+            )}
+          >
+            <div className="absolute top-3 xl:top-4 z-10 max-w-full px-0.5 xl:px-4">
+              <EventTypeFilter
+                eventTypes={eventTypes}
+                filter={filter}
+                onFilterClick={onFilterClick}
+              />
             </div>
 
             <div
               id="ol-map"
               className={cn(
-                'w-full h-96 xl:h-[34rem] overflow-hidden',
-                !selectedEventGroup &&
-                  (mode === DisplayMode.Calendar
-                    ? 'rounded-br-xl'
-                    : 'rounded-b-xl'),
+                'w-full overflow-hidden rounded-2xl h-[419px] xl:h-[586px]',
               )}
             >
               <style>
                 {`
               #ol-map .ol-zoom {
-                top: 1rem;
-                right: 1rem;
-                left: auto;
+                bottom: 1rem;
+                top: auto;
+                left: 1rem;
               }
             `}
               </style>
             </div>
-            <div className="absolute bottom-2 right-2">
+
+            {/* Share button -> Need to discuss to know if we remove it entirely */}
+            {/* <div className="absolute bottom-2 right-2">
               <button
                 type="button"
                 onClick={() => mapInstance && prepareShareUrl(mapInstance)}
@@ -759,50 +761,18 @@ const EventsMap = ({
               </button>
             </div>
 
-            <ShareModal
+           <ShareModal
               isOpen={isShareModalOpen}
               url={shareUrl}
               onClose={() => setShareModalOpen(false)}
-            />
-
-            {/* Switch mode */}
-            <div className="absolute top-20 left-2 z-10 hidden xl:block">
-              <Button
-                variant="primary"
-                size="s"
-                className="h-8 border border-darkOrange-5 flex gap-2"
-                onClick={() =>
-                  setMode(
-                    mode === DisplayMode.Calendar
-                      ? DisplayMode.Map
-                      : DisplayMode.Calendar,
-                  )
-                }
-              >
-                {mode === DisplayMode.Calendar ? (
-                  <>
-                    <BsChevronLeft className="size-4" />
-
-                    <span>{t('events.calendar.fullMap')}</span>
-                  </>
-                ) : (
-                  <>
-                    <BsChevronRight className="size-4" />
-
-                    <span>{t('events.calendar.displayCalendar')}</span>
-                  </>
-                )}
-              </Button>
-            </div>
+            /> */}
           </div>
         ) : null}
       </div>
-
-      {/* Event cards */}
       <div
         className={cn(
-          'p-4 border-t',
-          calendarCard || selectedEventGroup ? 'rounded-b-xl pb-4' : 'hidden',
+          'p-4',
+          selectedEventGroup || calendarCard ? 'rounded-b-xl pb-4' : 'hidden',
         )}
       >
         <div className="flex justify-between font-semibold text-gray-800">
@@ -843,13 +813,6 @@ const EventsMap = ({
             cards.map((event, index) => (
               <EventCard
                 event={event}
-                eventPayments={eventPayments}
-                userEvents={userEvents}
-                openAuthModal={openAuthModal}
-                isLoggedIn={isLoggedIn}
-                setIsPaymentModalOpen={setIsPaymentModalOpen}
-                setPaymentModalData={setPaymentModalData}
-                conversionRate={conversionRate}
                 // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={index}
               />
@@ -862,6 +825,35 @@ const EventsMap = ({
         </div>
       </div>
     </div>
+  );
+};
+
+interface CourseFilterProps {
+  eventTypes: readonly EventType[];
+  filter: readonly EventType[];
+  onFilterClick: (course: EventType) => void;
+}
+
+const EventTypeFilter = ({
+  eventTypes,
+  filter,
+  onFilterClick,
+}: CourseFilterProps) => {
+  const isMobile = useSmaller('md');
+
+  return (
+    <CategorySwitcherBar>
+      {eventTypes.map((f) => (
+        <CategorySwitcher
+          key={f}
+          onClick={() => onFilterClick(f)}
+          isActive={filter.includes(f)}
+          text={capitalize(t(`events.types.plurals.${f}`))}
+          size={isMobile ? 's' : 'm'}
+          icon={EVENT_TYPE_ICONS[f]}
+        />
+      ))}
+    </CategorySwitcherBar>
   );
 };
 

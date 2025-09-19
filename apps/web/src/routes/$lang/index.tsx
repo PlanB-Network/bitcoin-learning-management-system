@@ -9,7 +9,7 @@ import {
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineRight } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
@@ -24,17 +24,12 @@ import TwitterMirBtc from '#src/assets/home/twitter_mir_btc.jpeg?no-inline';
 import TwitterScuba from '#src/assets/home/twitter_scuba.jpeg?no-inline';
 import WorldMap from '#src/assets/home/world-map.png?no-inline';
 import HeaderPill from '#src/assets/icons/footer_pill.webp?no-inline';
-import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
-import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { AboutUs } from '#src/components/about-us.tsx';
 import { BCertPresentation } from '#src/components/b-cert-presentation.tsx';
-import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
 import CategoryItemList from '#src/patterns/category-item.tsx';
 import { LanguageSelectorHomepage } from '#src/patterns/language-selector-homepage.tsx';
 import { AppContext } from '#src/providers/context.tsx';
-import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
-import type { PaymentModalDataModel } from '#src/services/utils.tsx';
 import { LANGUAGES } from '#src/utils/i18n.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
@@ -42,8 +37,6 @@ import { trpc } from '#src/utils/trpc.ts';
 import { MainLayout } from '../../components/main-layout.tsx';
 import { CourseCard } from '../../patterns/course-card.tsx';
 import { CurrentEvents } from './_content/events/-components/current-events.tsx';
-import { EventBookModal } from './_content/events/-components/event-book-modal.tsx';
-import { EventPaymentModal } from './_content/events/-components/event-payment-modal.tsx';
 
 const titleCss = 'md:text-3xl font-semibold';
 const paragraphCss = 'text-sm text-gray-400 sm:text-sm lg:text-base';
@@ -243,17 +236,6 @@ function Home() {
   };
 
   const EventSection = () => {
-    const { session } = useContext(AppContext);
-    const { conversionRate } = useContext(ConversionRateContext);
-
-    const isLoggedIn = !!session;
-
-    const {
-      open: openAuthModal,
-      isOpen: isAuthModalOpen,
-      close: closeAuthModal,
-    } = useDisclosure();
-
     const queryOpts = {
       refetchOnMount: false, // 10 minutes
       refetchOnReconnect: false,
@@ -268,35 +250,6 @@ function Home() {
       ),
     );
 
-    const { data: eventPayments, refetch: refetchEventPayments } = useQuery(
-      trpc.user.events.getEventPayment.queryOptions(undefined, {
-        ...queryOpts,
-        enabled: isLoggedIn,
-      }),
-    );
-
-    const { data: userEvents, refetch: refetchUserEvents } = useQuery(
-      trpc.user.events.getUserEvents.queryOptions(undefined, {
-        ...queryOpts,
-        enabled: isLoggedIn,
-      }),
-    );
-
-    const authMode = AuthModalState.SignIn;
-
-    const [paymentModalData, setPaymentModalData] =
-      useState<PaymentModalDataModel>({
-        accessType: null,
-        dollarPrice: null,
-        eventId: null,
-        satsPrice: null,
-      });
-
-    const payingEvent =
-      event?.id === paymentModalData.eventId ? event : undefined;
-
-    const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-
     return (
       <section className="lg:-mx-12 md:-mx-8 mt-7 lg:h-[913px] lg:mt-27">
         <div className="bg-home-gradient-mobile lg:bg-home-gradient h-full">
@@ -309,70 +262,15 @@ function Home() {
               alt=""
               className="mx-auto 2xl:self-center lg:mx-0 object-cover w-full lg:w-[1213px] lg:h-[641px] [overflow-clip-margin:_unset] lg:mt-30"
             />
-
-            {paymentModalData.eventId &&
-              paymentModalData.satsPrice &&
-              paymentModalData.dollarPrice &&
-              paymentModalData.accessType &&
-              paymentModalData.satsPrice > 0 &&
-              payingEvent && (
-                <EventPaymentModal
-                  eventId={paymentModalData.eventId}
-                  event={payingEvent}
-                  accessType={paymentModalData.accessType}
-                  satsPrice={paymentModalData.satsPrice}
-                  dollarPrice={paymentModalData.dollarPrice}
-                  isOpen={isPaymentModalOpen}
-                  onClose={() => {
-                    refetchEventPayments();
-                    setPaymentModalData({
-                      accessType: null,
-                      dollarPrice: null,
-                      eventId: null,
-                      satsPrice: null,
-                    });
-                    setIsPaymentModalOpen(false);
-                  }}
-                />
-              )}
-            {paymentModalData.eventId &&
-              paymentModalData.satsPrice === 0 &&
-              paymentModalData.accessType &&
-              payingEvent && (
-                <EventBookModal
-                  event={payingEvent}
-                  accessType={paymentModalData.accessType}
-                  isOpen={isPaymentModalOpen}
-                  onClose={() => {
-                    setIsPaymentModalOpen(false);
-                    refetchEventPayments();
-                    refetchUserEvents();
-                  }}
-                />
-              )}
             <div className="flex lg:absolute top-0 right-0 lg:right-80 2xl:right-96 mt-2 lg:mt-[160px] mx-auto lg:mx-0">
               {isFetched && event && (
                 <CurrentEvents
                   events={[event]}
-                  eventPayments={eventPayments}
-                  userEvents={userEvents}
-                  openAuthModal={openAuthModal}
-                  isLoggedIn={isLoggedIn}
-                  conversionRate={conversionRate}
-                  setIsPaymentModalOpen={setIsPaymentModalOpen}
-                  setPaymentModalData={setPaymentModalData}
                   headingColor="text-white"
                   headingText={t('home.eventSection.hottestEvent')}
                   headingClass="!body-14px lg:!display-small-32px"
                   showUpcomingIfNone={true}
                   showDivider={false}
-                />
-              )}
-              {isAuthModalOpen && (
-                <AuthModal
-                  isOpen={isAuthModalOpen}
-                  onClose={closeAuthModal}
-                  initialState={authMode}
                 />
               )}
             </div>

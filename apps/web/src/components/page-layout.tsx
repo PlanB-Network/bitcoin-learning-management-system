@@ -1,8 +1,9 @@
-import { cn } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
-
+import { TbChevronLeft } from 'react-icons/tb';
 import { PageHeader } from '#src/components/page-header.tsx';
-
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { MainLayout } from './main-layout.tsx';
 import { SecondaryNavbar } from './ui/secondary-navbar.tsx';
 
@@ -13,10 +14,10 @@ interface Props {
   link?: string;
   children?: ReactNode;
   className?: string;
-  maxWidth?: string;
-  paddingXClasses?: string;
-  hideDescriptionOnMobile?: boolean;
   tabs?: { id: string; label: string; href: string }[];
+  backLink?: { text: string; href: string };
+  actionButtons?: { text: string; onClick?: () => void; href?: string }[];
+  layoutSize?: 'base' | 'wide' | 'max';
 }
 
 export const PageLayout = ({
@@ -26,16 +27,64 @@ export const PageLayout = ({
   link,
   children,
   className,
-  paddingXClasses = 'px-3 lg:px-10',
-  hideDescriptionOnMobile = true,
   tabs = [],
+  backLink,
+  actionButtons = [],
+  layoutSize = 'max',
 }: Props) => {
+  const isMobile = useSmaller('md');
+
+  const layoutSizeClassesMap = {
+    base: 'max-w-[736px]',
+    wide: 'max-w-[896px]',
+    max: '',
+  };
+
   return (
     <MainLayout>
-      {/** biome-ignore lint/complexity/noUselessFragments: <type issue> */}
-      {tabs.length > 0 ? <SecondaryNavbar tabs={tabs} /> : <></>}
+      {/** biome-ignore lint/complexity/noUselessFragments: <N/A> */}
+      <>
+        {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
+        {backLink && (
+          <Link
+            className="w-fit flex items-center p-4 text-neutral-500 body-small-bold"
+            to={backLink.href}
+          >
+            <TbChevronLeft size={24} className="shrink-0" />
+            {backLink.text}
+          </Link>
+        )}
+
+        {actionButtons.map((button) => (
+          <div
+            key={button.text}
+            className="flex items-center gap-1 ml-auto p-2 md:my-2"
+          >
+            {button.href ? (
+              <Button variant="newTertiary" size={isMobile ? 's' : 'm'} asChild>
+                <Link to={button.href} target="_blank" rel="noreferrer">
+                  {button.text}
+                </Link>
+              </Button>
+            ) : (
+              <Button
+                variant="newTertiary"
+                size={isMobile ? 's' : 'm'}
+                onClick={button.onClick}
+              >
+                {button.text}
+              </Button>
+            )}
+          </div>
+        ))}
+      </>
       <div
-        className={cn('flex h-fit justify-center', className, paddingXClasses)}
+        className={cn(
+          'flex h-fit justify-center px-3 md:px-12 pb-16 md:pb-40 mx-auto w-full',
+          layoutSizeClassesMap[layoutSize],
+          className,
+          actionButtons.length > 0 ? 'pt-2' : 'pt-4 md:pt-12',
+        )}
       >
         <div className={cn('w-full')}>
           {title && (
@@ -44,10 +93,9 @@ export const PageLayout = ({
               subtitle={subtitle}
               description={description}
               link={link}
-              hideDescriptionOnMobile={hideDescriptionOnMobile}
             />
           )}
-          {children && <div className="mt-4 lg:mt-12">{children}</div>}
+          {children && <div>{children}</div>}
         </div>
       </div>
     </MainLayout>
