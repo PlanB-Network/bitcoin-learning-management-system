@@ -25,7 +25,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
-import { formatDateRange, formatHourRange } from '#src/utils/date.ts';
+import { formatDateRange, formatTimeRange } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
@@ -150,10 +150,11 @@ function EventDetails() {
     );
   const timeString =
     event &&
-    formatHourRange(
+    formatTimeRange(
       event.startDate,
       event.endDate,
       event.timezone ?? undefined,
+      undefined,
       true,
     );
 

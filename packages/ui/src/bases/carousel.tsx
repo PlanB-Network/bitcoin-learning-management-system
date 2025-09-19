@@ -135,7 +135,7 @@ const Carousel = React.forwardRef<
         <section
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn('relative max-w-[1216px]', className)}
+          className={cn('relative', className)}
           aria-roledescription="carousel"
           {...props}
         >

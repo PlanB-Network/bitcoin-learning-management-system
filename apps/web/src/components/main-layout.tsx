@@ -94,7 +94,7 @@ export const MainLayout = ({
   const openMargin = 'lg:ml-[276px]';
 
   return (
-    <div className="text-white flex flex-col bg-header w-full max-w-[1440px] mx-auto relative">
+    <div className="text-white flex flex-col bg-header w-full max-w-[1920px] mx-auto relative">
       {/* Display titlebar on pear app */}
       {import.meta.env.VITE_PEAR_ENVIRONMENT ? (
         <div className="fixed top-0 left-0 w-full h-[50px] bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50">
@@ -117,8 +117,8 @@ export const MainLayout = ({
           className={cn(
             'hidden lg:block fixed top-18 w-6 h-6 z-50',
             isSidebarOpen
-              ? 'min-[1440px]:left-[calc((100vw-1440px)/2+268px)] left-[276px]'
-              : 'min-[1440px]:left-[calc((100vw-1440px)/2+78px)] left-[86px]',
+              ? 'min-[1920px]:left-[calc((100vw-1920px)/2+268px)] left-[276px]'
+              : 'min-[1920px]:left-[calc((100vw-1920px)/2+78px)] left-[86px]',
             isResizing ? 'transition-none' : 'transition-all ease-in-out',
           )}
           style={{
@@ -141,8 +141,8 @@ export const MainLayout = ({
           className={cn(
             'hidden lg:block fixed top-18 w-6 h-6 z-50 -scale-x-100',
             isSidebarOpen
-              ? 'min-[1440px]:right-[calc((100vw-1440px)/2-9px)] right-0'
-              : 'min-[1440px]:right-[calc((100vw-1440px)/2-9px)] right-0',
+              ? 'min-[1920px]:right-[calc((100vw-1920px)/2-9px)] right-0'
+              : 'min-[1920px]:right-[calc((100vw-1920px)/2-9px)] right-0',
             isResizing ? 'transition-none' : 'transition-all ease-in-out',
           )}
           style={{

@@ -94,19 +94,35 @@ export function formatTimeRange(
   to: Date | string | number | undefined,
   timezone?: string,
   locale = getEffectiveLocale(),
+  shortenRange = false,
 ) {
-  if (!from || !to) {
-    return '';
-  }
+  if (!from || !to) return '';
+
   const start = new Date(from);
   const end = new Date(to);
 
+  const tz = getEffectiveTimezone(timezone);
+
+  // ─── Shortened format ───
+  if (shortenRange) {
+    const shortFormatter = new Intl.DateTimeFormat(locale, {
+      day: 'numeric',
+      month: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: tz,
+    });
+
+    return `${shortFormatter.format(start)} - ${shortFormatter.format(end)}`;
+  }
+
+  // ─── Full format with formatRange (if available) ───
   const baseFormatter = new Intl.DateTimeFormat(locale, {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
     month: 'long',
-    timeZone: getEffectiveTimezone(timezone),
+    timeZone: tz,
     year: 'numeric',
   });
 
@@ -142,6 +158,13 @@ export function formatTimeRange(
     });
     return `${startFormatter.format(start)} – ${endFormatter.format(end)}`;
   }
+
+  const fullFormatter = new Intl.DateTimeFormat(locale, {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+  return `${fullFormatter.format(start)} – ${fullFormatter.format(end)}`;
 }
 
 export function formatShortDateRange(
