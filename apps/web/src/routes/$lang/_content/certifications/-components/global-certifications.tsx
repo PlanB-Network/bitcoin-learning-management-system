@@ -1,15 +1,15 @@
 import type { JoinedBCertResults, Ticket } from '@blms/types';
-import { Button, ButtonWithArrow, cn, Loader } from '@blms/ui';
+import { Button, ButtonWithArrow, cn, EmptyState, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { useContext, useEffect, useState } from 'react';
-import { Trans } from 'react-i18next';
 import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload, FiLoader } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IoReload } from 'react-icons/io5';
+import { TbFileCertificate } from 'react-icons/tb';
 import DummyBCert from '#src/assets/about/dummy-bcert.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
@@ -89,32 +89,30 @@ export const GlobalCertifications = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-8 mt-10">
-      <section className="flex flex-col">
-        <h4 className="mobile-h3 md:desktop-h6 mb-4">
-          {t('dashboard.credentials.bCert')}
-        </h4>
-        <p className="mobile-body2 md:desktop-body1 text-newBlack-4 whitespace-pre-line">
-          {t('dashboard.credentials.bCertSubtitle')}
-        </p>
+    <div className="flex flex-col mt-5 md:mt-8">
+      {exams && exams.length > 0 && (
+        <>
+          <h4 className="text-newBlack-1 title-large-sb-24px">
+            {t('dashboard.credentials.bCert')}
+          </h4>
+          <p className="text-dashboardSectionText body-16px mt-4">
+            {t('dashboard.credentials.bCertSubtitle')}
+          </p>
 
-        <div className="mt-10">
-          <table className="overflow-scroll table-auto w-full max-w-5xl md:min-w-[600px]">
+          <table className="overflow-scroll table-auto w-full text-black mt-5 md:mt-8">
             <TableHead />
             <tbody>
-              {exams &&
-                exams.length > 0 &&
-                exams.map((exam, index) => {
-                  return (
-                    <BCertResult
-                      key={exam.id}
-                      bcertResult={exam}
-                      handleExamOpen={handleExamOpen}
-                      index={index}
-                      isExamOpen={isExamOpen}
-                    />
-                  );
-                })}
+              {exams.map((exam, index) => {
+                return (
+                  <BCertResult
+                    key={exam.id}
+                    bcertResult={exam}
+                    handleExamOpen={handleExamOpen}
+                    index={index}
+                    isExamOpen={isExamOpen}
+                  />
+                );
+              })}
 
               {examTickets &&
                 examTickets.length > 0 &&
@@ -129,16 +127,26 @@ export const GlobalCertifications = () => {
                     />
                   );
                 })}
-
-              {exams && exams.length === 0 && <NoResults />}
             </tbody>
             <TableFooter
               isLastElementSelected={isLastElementSelected}
               hasOneElementOpen={hasOneElementOpen}
             />
           </table>
-        </div>
-      </section>
+        </>
+      )}
+
+      {exams && exams.length === 0 && (
+        <EmptyState
+          title={t('dashboard.credentials.noCertificatesAvailable')}
+          description={t('dashboard.credentials.getGlobalRecognition')}
+          linkButton={{
+            href: '/certifications/b-cert',
+            label: t('dashboard.credentials.exploreBCert'),
+          }}
+          icon={TbFileCertificate}
+        />
+      )}
     </div>
   );
 };
@@ -213,14 +221,6 @@ const BCertResult = ({
         >
           {(examScore * 100) / (bcertResult.results.length * 20)}%
         </td>
-        <td
-          className={cn(
-            'italic pl-3 md:pl-8 py-4 max-md:hidden',
-            hasPassed ? 'text-green-500' : 'text-red-5',
-          )}
-        >
-          {hasPassed ? t('words.passed') : t('words.failed')}
-        </td>
         <td className="py-4">
           <div>
             <IoIosArrowDown
@@ -236,8 +236,10 @@ const BCertResult = ({
       {isExamOpen[index] && (
         <tr className="bg-newGray-6">
           {hasPassed ? (
+            // biome-ignore lint/complexity/noUselessFragments: <N/A>
             <>
               {isMobile ? (
+                // biome-ignore lint/complexity/noUselessFragments: <N/A>
                 <>
                   <td colSpan={4} className="px-2">
                     <BcertDetails
@@ -394,8 +396,10 @@ const BCertResult = ({
               )}
             </>
           ) : (
+            // biome-ignore lint/complexity/noUselessFragments: <N/A>
             <>
               {isMobile ? (
+                // biome-ignore lint/complexity/noUselessFragments: <N/A>
                 <>
                   <td className="px-2" colSpan={4}>
                     <div className="flex flex-col md:flex-row gap-6">
@@ -417,6 +421,7 @@ const BCertResult = ({
                   </td>
                 </>
               ) : (
+                // biome-ignore lint/complexity/noUselessFragments: <N/A>
                 <>
                   <td className="pt-6" colSpan={6}>
                     <div className="flex flex-col md:flex-row gap-6">
@@ -618,26 +623,6 @@ const ExamTicket = ({
   );
 };
 
-const NoResults = () => {
-  return (
-    <tr>
-      <td
-        className="text-newBlack-4 whitespace-pre-line text-center pt-6"
-        colSpan={6}
-      >
-        <Trans i18nKey="dashboard.bCert.noResults">
-          <a
-            href="mailto:contact@planb.network"
-            className="underline underline-offset-2 hover:text-darkOrange-5"
-          >
-            reach out to us
-          </a>
-        </Trans>
-      </td>
-    </tr>
-  );
-};
-
 const TableHead = () => {
   const isMobile = useSmaller('md');
 
@@ -661,7 +646,6 @@ const TableHead = () => {
           <th className="w-[8%] desktop-typo2 pl-3">
             {t('dashboard.bCert.grade')}
           </th>
-          <th className="w-[15%] desktop-typo2 pl-3">{t('words.status')}</th>
         </tr>
       )}
     </thead>

@@ -133,7 +133,12 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
     !hasAssignment &&
     multiAttemptExams.length === 0
   ) {
-    return <EmptyState message={t('dashboard.teacher.courses.noExamLinked')} />;
+    return (
+      <EmptyState
+        className="mt-3 lg:mt-6"
+        title={t('dashboard.teacher.courses.noExamLinked')}
+      />
+    );
   }
 
   const singleTrialExamItems = singleTrialExams.map((exam, index) => ({

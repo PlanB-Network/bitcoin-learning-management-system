@@ -1,5 +1,7 @@
 import type { JoinedEvent } from '@blms/types';
+import { EmptyState } from '@blms/ui';
 import { t } from 'i18next';
+import { TbCertificateOff } from 'react-icons/tb';
 import { EventCard } from '../../events/-components/event-card.tsx';
 
 interface BCertEventsProps {
@@ -12,25 +14,21 @@ export const BCertEvents = ({ events }: BCertEventsProps) => {
   );
 
   return (
-    <div
-      id="bcertevents"
-      className="text-white mb-6 md:mb-24 md:scroll-mt-32 scroll-mt-20"
-    >
-      <div className="flex flex-col">
-        <h3 className="mobile-h2 md:desktop-h4 text-center mb-6 md:mb-14">
-          {t('bCert.bookExam')}
-        </h3>
+    <div id="bcertevents">
+      <div className="flex flex-col gap-2 md:gap-6 mt-10 md:mt-12">
+        <h3 className="title-large text-black">{t('bCert.bookExam')}</h3>
         {sortedEvents.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-5 lg:gap-7 mx-auto">
+          <div className="flex flex-col md:flex-row flex-wrap gap-2 lg:gap-4">
             {sortedEvents?.map((event) => (
               <EventCard event={event} key={event.id} />
             ))}
           </div>
         )}
         {sortedEvents.length === 0 && (
-          <p className="mobile-h4 md:desktop-h5 text-center">
-            {t('bCert.noBookExam')}
-          </p>
+          <EmptyState
+            title={t('bCert.noTestSessions')}
+            icon={TbCertificateOff}
+          />
         )}
       </div>
     </div>

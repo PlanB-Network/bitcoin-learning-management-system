@@ -19,9 +19,11 @@ function DashboardBookings() {
 
   const { session } = useContext(AppContext);
 
-  const { data: tickets, refetch: refetchTickets } = useQuery(
-    trpc.user.billing.getTickets.queryOptions(),
-  );
+  const { data: tickets, refetch: refetchTickets } = useQuery({
+    ...trpc.user.billing.getTickets.queryOptions(),
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
+  });
 
   const now = new Date();
 

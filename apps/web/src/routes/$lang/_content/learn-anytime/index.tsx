@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
   cn,
   DropdownMenu,
+  EmptyState,
   Loader,
   Progress,
 } from '@blms/ui';
@@ -19,6 +20,7 @@ import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbAdjustmentsHorizontal,
+  TbBooksOff,
   TbChevronsDown,
   TbSearch,
   TbX,
@@ -181,6 +183,14 @@ function AllCourses() {
     );
   }, [activeTopic, activeLevel, activeType, activePrice, searchTerm]);
 
+  const resetFilters = () => {
+    setActiveTopic('all');
+    setActiveLevel('all');
+    setActiveType('all');
+    setActivePrice('all');
+    setSearchTerm('');
+  };
+
   if (!courses) {
     return (
       <PageLayout title={t('courses.allCourses')}>
@@ -298,11 +308,7 @@ function AllCourses() {
           {showResetFiltersButton && (
             <button
               onClick={() => {
-                setActiveTopic('all');
-                setActiveLevel('all');
-                setActiveType('all');
-                setActivePrice('all');
-                setSearchTerm('');
+                resetFilters();
               }}
               className="body-small-bold text-orange-500"
               type="button"
@@ -452,15 +458,25 @@ function AllCourses() {
             })}
         </div>
       ) : (
-        <div className="flex flex-wrap gap-2 md:gap-4 mt-6">
+        <div className="mt-6">
           {filteredCourses.length === 0 ? (
-            <p className="body-base-bold text-black">
-              {t('courses.noCoursesFound')}
-            </p>
+            <EmptyState
+              title={t('courses.noCoursesFound')}
+              description={t('courses.tryAdjustingFilters')}
+              actionButton={{
+                onClick: () => {
+                  resetFilters();
+                },
+                label: t('words.resetFilters'),
+              }}
+              icon={TbBooksOff}
+            />
           ) : (
-            filteredCourses.map((course) => (
-              <CourseCard key={course.id} course={course} mode="light" />
-            ))
+            <div className="flex flex-wrap gap-2 md:gap-4">
+              {filteredCourses.map((course) => (
+                <CourseCard key={course.id} course={course} mode="light" />
+              ))}
+            </div>
           )}
         </div>
       )}
