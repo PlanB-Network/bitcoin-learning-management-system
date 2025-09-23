@@ -609,28 +609,6 @@ const EventsMap = ({
             />
 
             <div className="flex items-center gap-9 shrink-0">
-              {/* View switcher */}
-              <SegmentedControl
-                variant="outline"
-                value={calendarView}
-                defaultValue="month"
-              >
-                <SegmentedControlItem
-                  value="month"
-                  key="month"
-                  onClick={() => handleView('month')}
-                >
-                  <span className="w-19">{t('words.month')}</span>
-                </SegmentedControlItem>
-                <SegmentedControlItem
-                  value="week"
-                  key="week"
-                  onClick={() => handleView('week')}
-                >
-                  <span className="w-19">{t('words.week')}</span>
-                </SegmentedControlItem>
-              </SegmentedControl>
-
               {/* Date controls */}
               <div className="flex items-center gap-1 font-normal">
                 <button
@@ -655,6 +633,29 @@ const EventsMap = ({
                   <TbChevronRight className="size-4 text-newBlack-4" />
                 </button>
               </div>
+
+              {/* View switcher */}
+              <SegmentedControl
+                variant="outline"
+                value={calendarView}
+                defaultValue="month"
+                size="sm"
+              >
+                <SegmentedControlItem
+                  value="month"
+                  key="month"
+                  onClick={() => handleView('month')}
+                >
+                  <span className="w-19">{t('words.month')}</span>
+                </SegmentedControlItem>
+                <SegmentedControlItem
+                  value="week"
+                  key="week"
+                  onClick={() => handleView('week')}
+                >
+                  <span className="w-19">{t('words.week')}</span>
+                </SegmentedControlItem>
+              </SegmentedControl>
             </div>
           </div>
 

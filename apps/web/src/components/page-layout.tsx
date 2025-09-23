@@ -16,7 +16,9 @@ interface Props {
   className?: string;
   tabs?: { id: string; label: string; href: string }[];
   backLink?: { text: string; href: string };
-  actionButtons?: { text: string; onClick?: () => void; href?: string }[];
+  actionButtons?:
+    | { text: string; onClick?: () => void; href?: string }[]
+    | React.ReactNode[];
   layoutSize?: 'base' | 'wide' | 'max';
 }
 
@@ -35,8 +37,8 @@ export const PageLayout = ({
   const isMobile = useSmaller('md');
 
   const layoutSizeClassesMap = {
-    base: 'max-w-[736px]',
-    wide: 'max-w-[896px]',
+    base: 'max-w-[832px]',
+    wide: 'max-w-[992px]',
     max: '',
   };
 
@@ -54,29 +56,43 @@ export const PageLayout = ({
             {backLink.text}
           </Link>
         )}
+        <div className="flex items-center gap-1 ml-auto p-2">
+          {actionButtons.map((button, index) => {
+            if (
+              typeof button === 'object' &&
+              button !== null &&
+              'text' in button
+            ) {
+              return (
+                // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+                <div key={index}>
+                  {button.href ? (
+                    <Button
+                      variant="newTertiary"
+                      size={isMobile ? 's' : 'm'}
+                      asChild
+                    >
+                      <Link to={button.href} target="_blank" rel="noreferrer">
+                        {button.text}
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="newTertiary"
+                      size={isMobile ? 's' : 'm'}
+                      onClick={button.onClick}
+                    >
+                      {button.text}
+                    </Button>
+                  )}
+                </div>
+              );
+            }
 
-        {actionButtons.map((button) => (
-          <div
-            key={button.text}
-            className="flex items-center gap-1 ml-auto p-2 md:my-2"
-          >
-            {button.href ? (
-              <Button variant="newTertiary" size={isMobile ? 's' : 'm'} asChild>
-                <Link to={button.href} target="_blank" rel="noreferrer">
-                  {button.text}
-                </Link>
-              </Button>
-            ) : (
-              <Button
-                variant="newTertiary"
-                size={isMobile ? 's' : 'm'}
-                onClick={button.onClick}
-              >
-                {button.text}
-              </Button>
-            )}
-          </div>
-        ))}
+            // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+            return <div key={index}>{button}</div>;
+          })}
+        </div>
       </>
       <div
         className={cn(

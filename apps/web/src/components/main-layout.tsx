@@ -291,19 +291,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                   />
                 ) : null}
               </div>
-              <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-              <div className="flex flex-col gap-1">
-                <SideBarItem
-                  icon={Medal}
-                  iconColor="purple"
-                  label={'TEMP - Credentials'}
-                  link="/dashboard/credentials"
-                  isActive={window.location.pathname.includes(
-                    '/dashboard/credentials',
-                  )}
-                  isSidebarOpen={isSidebarOpen}
-                />
-              </div>
             </>
           )}
 
@@ -339,9 +326,9 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
             <SideBarItem
               icon={Medal}
               iconColor="green"
-              label={t('words.bCert')}
-              link="/b-cert"
-              isActive={window.location.pathname.includes('/b-cert')}
+              label={t('words.certifications')}
+              link="/certifications/b-cert"
+              isActive={window.location.pathname.includes('certifications')}
               isSidebarOpen={isSidebarOpen}
             />
           </div>

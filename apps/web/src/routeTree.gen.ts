@@ -25,7 +25,6 @@ import { Route as LangContentEventsIndexRouteImport } from './routes/$lang/_cont
 import { Route as LangContentCoursesIndexRouteImport } from './routes/$lang/_content/courses/index';
 import { Route as LangDashboardDashboardNotificationsRouteImport } from './routes/$lang/dashboard/_dashboard/notifications';
 import { Route as LangDashboardDashboardMyCoursesRouteImport } from './routes/$lang/dashboard/_dashboard/my-courses';
-import { Route as LangDashboardDashboardCredentialsRouteImport } from './routes/$lang/dashboard/_dashboard/credentials';
 import { Route as LangDashboardDashboardCareerPortalRouteImport } from './routes/$lang/dashboard/_dashboard/career-portal';
 import { Route as LangDashboardDashboardCalendarRouteImport } from './routes/$lang/dashboard/_dashboard/calendar';
 import { Route as LangContentLearnAnytimeCourseSelectorRouteImport } from './routes/$lang/_content/learn-anytime/course-selector';
@@ -34,10 +33,11 @@ import { Route as LangContentEventsMyTicketsRouteImport } from './routes/$lang/_
 import { Route as LangContentEventsEventIdRouteImport } from './routes/$lang/_content/events/$eventId';
 import { Route as LangContentCoursesBtc105RouteImport } from './routes/$lang/_content/courses/btc105';
 import { Route as LangContentCoursesCourseNameCourseIdRouteImport } from './routes/$lang/_content/courses/$courseName-$courseId';
+import { Route as LangContentCertificationsMyCertificatesRouteImport } from './routes/$lang/_content/certifications/my-certificates';
+import { Route as LangContentCertificationsBCertRouteImport } from './routes/$lang/_content/certifications/b-cert';
 import { Route as LangContentMiscUnderConstructionRouteImport } from './routes/$lang/_content/_misc/under-construction';
 import { Route as LangContentMiscNodeNetworkRouteImport } from './routes/$lang/_content/_misc/node-network';
 import { Route as LangContentMiscManifestoRouteImport } from './routes/$lang/_content/_misc/manifesto';
-import { Route as LangContentMiscBCertRouteImport } from './routes/$lang/_content/_misc/b-cert';
 import { Route as LangContentMiscAboutRouteImport } from './routes/$lang/_content/_misc/about';
 import { Route as LangContentTutorialsCategoryIndexRouteImport } from './routes/$lang/_content/tutorials/$category/index';
 import { Route as LangContentResourcesProjectsIndexRouteImport } from './routes/$lang/_content/resources/projects/index';
@@ -178,12 +178,6 @@ const LangDashboardDashboardMyCoursesRoute =
     path: '/my-courses',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
-const LangDashboardDashboardCredentialsRoute =
-  LangDashboardDashboardCredentialsRouteImport.update({
-    id: '/credentials',
-    path: '/credentials',
-    getParentRoute: () => LangDashboardDashboardRoute,
-  } as any);
 const LangDashboardDashboardCareerPortalRoute =
   LangDashboardDashboardCareerPortalRouteImport.update({
     id: '/career-portal',
@@ -232,6 +226,18 @@ const LangContentCoursesCourseNameCourseIdRoute =
     path: '/$lang/courses/$courseName-$courseId',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangContentCertificationsMyCertificatesRoute =
+  LangContentCertificationsMyCertificatesRouteImport.update({
+    id: '/$lang/_content/certifications/my-certificates',
+    path: '/$lang/certifications/my-certificates',
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const LangContentCertificationsBCertRoute =
+  LangContentCertificationsBCertRouteImport.update({
+    id: '/$lang/_content/certifications/b-cert',
+    path: '/$lang/certifications/b-cert',
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const LangContentMiscUnderConstructionRoute =
   LangContentMiscUnderConstructionRouteImport.update({
     id: '/$lang/_content/_misc/under-construction',
@@ -250,11 +256,6 @@ const LangContentMiscManifestoRoute =
     path: '/$lang/manifesto',
     getParentRoute: () => rootRouteImport,
   } as any);
-const LangContentMiscBCertRoute = LangContentMiscBCertRouteImport.update({
-  id: '/$lang/_content/_misc/b-cert',
-  path: '/$lang/b-cert',
-  getParentRoute: () => rootRouteImport,
-} as any);
 const LangContentMiscAboutRoute = LangContentMiscAboutRouteImport.update({
   id: '/$lang/_content/_misc/about',
   path: '/$lang/about',
@@ -618,10 +619,11 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/account': typeof LangAccountIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
-  '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
+  '/$lang/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
+  '/$lang/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
@@ -630,7 +632,6 @@ export interface FileRoutesByFullPath {
   '/$lang/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
-  '/$lang/dashboard/credentials': typeof LangDashboardDashboardCredentialsRoute;
   '/$lang/dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
   '/$lang/courses': typeof LangContentCoursesIndexRoute;
@@ -704,10 +705,11 @@ export interface FileRoutesByTo {
   '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
   '/$lang/account': typeof LangAccountIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
-  '/$lang/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
+  '/$lang/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
+  '/$lang/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
@@ -716,7 +718,6 @@ export interface FileRoutesByTo {
   '/$lang/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
   '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
-  '/$lang/dashboard/credentials': typeof LangDashboardDashboardCredentialsRoute;
   '/$lang/dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
   '/$lang/courses': typeof LangContentCoursesIndexRoute;
@@ -790,10 +791,11 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/account/': typeof LangAccountIndexRoute;
   '/$lang/_content/_misc/about': typeof LangContentMiscAboutRoute;
-  '/$lang/_content/_misc/b-cert': typeof LangContentMiscBCertRoute;
   '/$lang/_content/_misc/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/_content/_misc/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/_content/_misc/under-construction': typeof LangContentMiscUnderConstructionRoute;
+  '/$lang/_content/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
+  '/$lang/_content/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
   '/$lang/_content/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/_content/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/_content/events/$eventId': typeof LangContentEventsEventIdRoute;
@@ -802,7 +804,6 @@ export interface FileRoutesById {
   '/$lang/_content/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
   '/$lang/dashboard/_dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/_dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
-  '/$lang/dashboard/_dashboard/credentials': typeof LangDashboardDashboardCredentialsRoute;
   '/$lang/dashboard/_dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/_dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
   '/$lang/_content/courses/': typeof LangContentCoursesIndexRoute;
@@ -878,10 +879,11 @@ export interface FileRouteTypes {
     | '/$lang/dashboard'
     | '/$lang/account'
     | '/$lang/about'
-    | '/$lang/b-cert'
     | '/$lang/manifesto'
     | '/$lang/node-network'
     | '/$lang/under-construction'
+    | '/$lang/certifications/b-cert'
+    | '/$lang/certifications/my-certificates'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
@@ -890,7 +892,6 @@ export interface FileRouteTypes {
     | '/$lang/learn-anytime/course-selector'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
-    | '/$lang/dashboard/credentials'
     | '/$lang/dashboard/my-courses'
     | '/$lang/dashboard/notifications'
     | '/$lang/courses'
@@ -964,10 +965,11 @@ export interface FileRouteTypes {
     | '/$lang/dashboard'
     | '/$lang/account'
     | '/$lang/about'
-    | '/$lang/b-cert'
     | '/$lang/manifesto'
     | '/$lang/node-network'
     | '/$lang/under-construction'
+    | '/$lang/certifications/b-cert'
+    | '/$lang/certifications/my-certificates'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
@@ -976,7 +978,6 @@ export interface FileRouteTypes {
     | '/$lang/learn-anytime/course-selector'
     | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
-    | '/$lang/dashboard/credentials'
     | '/$lang/dashboard/my-courses'
     | '/$lang/dashboard/notifications'
     | '/$lang/courses'
@@ -1049,10 +1050,11 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard'
     | '/$lang/account/'
     | '/$lang/_content/_misc/about'
-    | '/$lang/_content/_misc/b-cert'
     | '/$lang/_content/_misc/manifesto'
     | '/$lang/_content/_misc/node-network'
     | '/$lang/_content/_misc/under-construction'
+    | '/$lang/_content/certifications/b-cert'
+    | '/$lang/_content/certifications/my-certificates'
     | '/$lang/_content/courses/$courseName-$courseId'
     | '/$lang/_content/courses/btc105'
     | '/$lang/_content/events/$eventId'
@@ -1061,7 +1063,6 @@ export interface FileRouteTypes {
     | '/$lang/_content/learn-anytime/course-selector'
     | '/$lang/dashboard/_dashboard/calendar'
     | '/$lang/dashboard/_dashboard/career-portal'
-    | '/$lang/dashboard/_dashboard/credentials'
     | '/$lang/dashboard/_dashboard/my-courses'
     | '/$lang/dashboard/_dashboard/notifications'
     | '/$lang/_content/courses/'
@@ -1136,10 +1137,11 @@ export interface RootRouteChildren {
   LangDashboardRoute: typeof LangDashboardRouteWithChildren;
   LangAccountIndexRoute: typeof LangAccountIndexRoute;
   LangContentMiscAboutRoute: typeof LangContentMiscAboutRoute;
-  LangContentMiscBCertRoute: typeof LangContentMiscBCertRoute;
   LangContentMiscManifestoRoute: typeof LangContentMiscManifestoRoute;
   LangContentMiscNodeNetworkRoute: typeof LangContentMiscNodeNetworkRoute;
   LangContentMiscUnderConstructionRoute: typeof LangContentMiscUnderConstructionRoute;
+  LangContentCertificationsBCertRoute: typeof LangContentCertificationsBCertRoute;
+  LangContentCertificationsMyCertificatesRoute: typeof LangContentCertificationsMyCertificatesRoute;
   LangContentCoursesCourseNameCourseIdRoute: typeof LangContentCoursesCourseNameCourseIdRoute;
   LangContentCoursesBtc105Route: typeof LangContentCoursesBtc105Route;
   LangContentEventsEventIdRoute: typeof LangContentEventsEventIdRoute;
@@ -1300,13 +1302,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardMyCoursesRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
-    '/$lang/dashboard/_dashboard/credentials': {
-      id: '/$lang/dashboard/_dashboard/credentials';
-      path: '/credentials';
-      fullPath: '/$lang/dashboard/credentials';
-      preLoaderRoute: typeof LangDashboardDashboardCredentialsRouteImport;
-      parentRoute: typeof LangDashboardDashboardRoute;
-    };
     '/$lang/dashboard/_dashboard/career-portal': {
       id: '/$lang/dashboard/_dashboard/career-portal';
       path: '/career-portal';
@@ -1363,6 +1358,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentCoursesCourseNameCourseIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/_content/certifications/my-certificates': {
+      id: '/$lang/_content/certifications/my-certificates';
+      path: '/$lang/certifications/my-certificates';
+      fullPath: '/$lang/certifications/my-certificates';
+      preLoaderRoute: typeof LangContentCertificationsMyCertificatesRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/_content/certifications/b-cert': {
+      id: '/$lang/_content/certifications/b-cert';
+      path: '/$lang/certifications/b-cert';
+      fullPath: '/$lang/certifications/b-cert';
+      preLoaderRoute: typeof LangContentCertificationsBCertRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$lang/_content/_misc/under-construction': {
       id: '/$lang/_content/_misc/under-construction';
       path: '/$lang/under-construction';
@@ -1382,13 +1391,6 @@ declare module '@tanstack/react-router' {
       path: '/$lang/manifesto';
       fullPath: '/$lang/manifesto';
       preLoaderRoute: typeof LangContentMiscManifestoRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    '/$lang/_content/_misc/b-cert': {
-      id: '/$lang/_content/_misc/b-cert';
-      path: '/$lang/b-cert';
-      fullPath: '/$lang/b-cert';
-      preLoaderRoute: typeof LangContentMiscBCertRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/_misc/about': {
@@ -1820,7 +1822,6 @@ const LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren =
 interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardCalendarRoute: typeof LangDashboardDashboardCalendarRoute;
   LangDashboardDashboardCareerPortalRoute: typeof LangDashboardDashboardCareerPortalRoute;
-  LangDashboardDashboardCredentialsRoute: typeof LangDashboardDashboardCredentialsRoute;
   LangDashboardDashboardMyCoursesRoute: typeof LangDashboardDashboardMyCoursesRoute;
   LangDashboardDashboardNotificationsRoute: typeof LangDashboardDashboardNotificationsRoute;
   LangDashboardDashboardIndexRoute: typeof LangDashboardDashboardIndexRoute;
@@ -1842,8 +1843,6 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
     LangDashboardDashboardCalendarRoute: LangDashboardDashboardCalendarRoute,
     LangDashboardDashboardCareerPortalRoute:
       LangDashboardDashboardCareerPortalRoute,
-    LangDashboardDashboardCredentialsRoute:
-      LangDashboardDashboardCredentialsRoute,
     LangDashboardDashboardMyCoursesRoute: LangDashboardDashboardMyCoursesRoute,
     LangDashboardDashboardNotificationsRoute:
       LangDashboardDashboardNotificationsRoute,
@@ -1914,10 +1913,12 @@ const rootRouteChildren: RootRouteChildren = {
   LangDashboardRoute: LangDashboardRouteWithChildren,
   LangAccountIndexRoute: LangAccountIndexRoute,
   LangContentMiscAboutRoute: LangContentMiscAboutRoute,
-  LangContentMiscBCertRoute: LangContentMiscBCertRoute,
   LangContentMiscManifestoRoute: LangContentMiscManifestoRoute,
   LangContentMiscNodeNetworkRoute: LangContentMiscNodeNetworkRoute,
   LangContentMiscUnderConstructionRoute: LangContentMiscUnderConstructionRoute,
+  LangContentCertificationsBCertRoute: LangContentCertificationsBCertRoute,
+  LangContentCertificationsMyCertificatesRoute:
+    LangContentCertificationsMyCertificatesRoute,
   LangContentCoursesCourseNameCourseIdRoute:
     LangContentCoursesCourseNameCourseIdRoute,
   LangContentCoursesBtc105Route: LangContentCoursesBtc105Route,

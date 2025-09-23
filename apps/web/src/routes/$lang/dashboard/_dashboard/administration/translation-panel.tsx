@@ -23,7 +23,7 @@ export const Route = createFileRoute(
 });
 
 function DashboardAdministrationTranslationPanel() {
-  const { user } = useContext(AppContext);
+  const { session } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -38,21 +38,16 @@ function DashboardAdministrationTranslationPanel() {
   // Get current tab from URL search params or default to 'requests'
   const currentTab = (location.search as any)?.tab || 'requests';
 
-  // RequestsTab handles its own state and data fetching
-
-  // Redirect if user doesn't have access
   useEffect(() => {
-    if (user && !canAccess(UserRole.Admin)(user)) {
-      navigate({ to: '/$lang/dashboard' });
+    if (!session) {
+      navigate({ to: '/' });
+    } else if (!canAccess(UserRole.Admin)(session?.user)) {
+      navigate({ to: '/dashboard/my-courses' });
     }
-  }, [user, navigate]);
+  }, [session]);
 
-  if (!user || !canAccess(UserRole.Admin)(user)) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <Loader />
-      </div>
-    );
+  if (!session) {
+    return <Loader />;
   }
 
   // If we're on a child route, render the child component
