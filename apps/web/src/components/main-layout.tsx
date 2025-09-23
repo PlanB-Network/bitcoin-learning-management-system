@@ -164,12 +164,14 @@ export const MainLayout = ({
         {/* Main frame */}
         <div
           className={cn(
-            'flex flex-col w-full lg:mt-18 lg:min-h-[calc(100vh-72px)] overflow-hidden transition-all ease-in-out',
+            'flex flex-col w-full lg:mt-18 overflow-hidden transition-all ease-in-out',
             isSidebarOpen ? openMargin : closedMargin,
           )}
           style={{ willChange: 'margin-left' }}
         >
-          <main className="flex grow flex-col bg-white">{children}</main>
+          <main className="flex grow flex-col bg-white min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-72px)]">
+            {children}
+          </main>
           {showFooter && <Footer />}
 
           <ScrollToTopButton />

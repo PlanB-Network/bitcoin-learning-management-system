@@ -12,7 +12,7 @@ export const CourseDiplomas = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-  const { session } = useContext(AppContext);
+  const { session, courses } = useContext(AppContext);
 
   const { data: examResults, isFetched } = useQuery(
     trpc.user.courses.getAllSucceededUserExams.queryOptions({
@@ -47,6 +47,9 @@ export const CourseDiplomas = () => {
             <TableHead />
             <tbody>
               {examResults.map((exam, index) => {
+                const course = courses?.find((c) => c.id === exam.courseId);
+                if (!course) return null;
+
                 return (
                   <tr
                     // biome-ignore lint/suspicious/noArrayIndexKey: explanation
@@ -58,7 +61,7 @@ export const CourseDiplomas = () => {
                     </td>
                     <td className="px-1.5">
                       <span>{exam.courseName}</span> -{' '}
-                      <span className="uppercase">{exam.courseId}</span>
+                      <span className="uppercase">{course.index}</span>
                     </td>
                     <td className="px-1.5 font-medium">{`${exam.score}%`}</td>
                     <td className="px-1.5 py-2">
