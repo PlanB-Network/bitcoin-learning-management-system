@@ -1,6 +1,7 @@
 import type {
   FragmentLoaderContext,
-  LoaderContext,
+  LoaderCallbacks,
+  LoaderResponse,
   LoaderStats,
   PlaylistLoaderContext,
 } from 'hls.js';
@@ -42,7 +43,7 @@ const createStats = (): LoaderStats => ({
  * @param drive The Pear drive instance.
  * @returns The Loader class built with dependencies in closure.
  */
-const createPearLoaderClass = (drive: any) => {
+const createPearLoaderClass = (drive: any, turnToString: boolean) => {
   // The class is now defined inside the factory.
   // It has access to 'drive' from its parent scope (closure).
   class PearAssetLoader<
@@ -51,27 +52,79 @@ const createPearLoaderClass = (drive: any) => {
     public context: C | null = null;
     public stats: LoaderStats = createStats();
 
-    public load(context: LoaderContext, config: any, callbacks: any) {
+    public load(context: C, _config: any, callbacks: LoaderCallbacks<C>) {
       const url = new URL(context.url);
+
+      const start = context.rangeStart || 0;
+      const end = context.rangeEnd || undefined;
+
+      // Handle range requests
+      if (start && typeof end === 'number' && end > start) {
+        console.log(
+          `PearAssetLoader: Loading key ${url.pathname} from Pear Drive (${start}-${end})`,
+        );
+
+        const rs = drive.createReadStream(url.pathname, {
+          start,
+          end: end - 1,
+        });
+
+        const chunks: Buffer[] = [];
+        let loaded = 0;
+
+        rs.on('data', (chunk: Buffer) => {
+          chunks.push(chunk);
+          loaded += chunk.length;
+          this.stats.loaded = loaded;
+        });
+
+        rs.on('end', () => {
+          const buffer = Buffer.concat(chunks);
+
+          const response: LoaderResponse = {
+            url: context.url,
+            data: turnToString ? buffer.toString() : buffer,
+          };
+
+          callbacks.onSuccess(response, this.stats, context, undefined);
+        });
+
+        rs.on('error', (err: any) => {
+          console.error(
+            `PearAssetLoader Error: Failed to load key ${url.pathname}`,
+            err,
+          );
+          callbacks.onError(err, context, {}, this.stats);
+        });
+
+        return; // Exit after setting up the stream
+      }
 
       console.log(
         `PearAssetLoader: Loading key ${url.pathname} from Pear Drive`,
-        config,
       );
 
+      // Full read if no rangeStart / rangeEnd specified
       drive
         .get(url.pathname) // Use 'drive' from closure
-        .then((buffer: Uint8Array | null) => {
-          if (buffer === null) throw new Error('Buffer is null.');
-          const response = { url: context.url, data: buffer };
-          callbacks.onSuccess(response, this.stats, context);
+        .then((buffer: Buffer | null) => {
+          if (buffer === null) {
+            throw new Error('Buffer is null.');
+          }
+
+          const response: LoaderResponse = {
+            url: context.url,
+            data: turnToString ? buffer.toString() : buffer,
+          };
+
+          callbacks.onSuccess(response, this.stats, context, undefined);
         })
         .catch((err: any) => {
           console.error(
             `PearAssetLoader Error: Failed to load key ${url.pathname}`,
             err,
           );
-          callbacks.onError(err, context, {});
+          callbacks.onError(err, context, {}, this.stats);
         });
     }
 
@@ -108,12 +161,11 @@ export const PearVideoTest = ({ videoKey }: PearVideoTestProps) => {
           setStatus('Initializing HLS player...');
           console.info('Initializing HLS player...');
 
-          // We call the factory to get our custom Loader class
-          const PearLoader = createPearLoaderClass(drive);
-
           hls = new Hls({
-            pLoader: PearLoader,
-            fLoader: PearLoader,
+            pLoader: createPearLoaderClass(drive, true),
+            fLoader: createPearLoaderClass(drive, false),
+            // progressive: true,
+            debug: false,
           });
 
           hls.attachMedia(videoRef.current);
