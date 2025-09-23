@@ -1,5 +1,7 @@
 export { trpc } from './trpc.ts';
 
+import { pearEnvironment } from '../env.ts';
+
 const customCdnUrl = window.localStorage.getItem('cdnUrl');
 
 // Object.defineProperty(window, 'setCustomCdnUrl', {
@@ -10,10 +12,11 @@ const customCdnUrl = window.localStorage.getItem('cdnUrl');
 // });
 
 export const cdnUrl = (path: string) => {
-  if (import.meta.env.VITE_PEAR_ENVIRONMENT === 'testnet') {
+  if (pearEnvironment === 'testnet') {
     return `https://planbtest.network/cdn/${path}`;
   }
-  if (import.meta.env.VITE_PEAR_ENVIRONMENT === 'mainnet') {
+
+  if (pearEnvironment === 'mainnet') {
     return `https://planb.network/cdn/${path}`;
   }
 
