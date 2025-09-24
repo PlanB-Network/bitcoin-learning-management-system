@@ -87,7 +87,7 @@ function DashboardProfessorProfile() {
           {t('dashboard.teacher.profile.account')}
         </h3>
         <TextTag
-          size={window.innerWidth < 1024 ? 'verySmall' : 'small'}
+          size={window.innerWidth < 1024 ? 'small' : 'base'}
           className="uppercase w-fit"
         >
           {t('dashboard.teacher.profile.teacher')}
@@ -141,10 +141,9 @@ function DashboardProfessorProfile() {
                     ? professor.tags.map((tag) => (
                         <TextTag
                           key={tag}
-                          size={
-                            window.innerWidth < 1024 ? 'verySmall' : 'small'
-                          }
+                          size={window.innerWidth < 1024 ? 'small' : 'base'}
                           className="capitalize"
+                          mode="light100"
                         >
                           {tag}
                         </TextTag>

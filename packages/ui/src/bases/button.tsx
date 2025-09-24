@@ -37,8 +37,7 @@ const buttonVariants = cva(
           'text-white border border-newGray-2 hover:border-white transition-colors disabled:!text-newBlack-5 disabled:!border-newBlack-5',
         primary:
           'bg-primary text-white shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
-        secondary:
-          'bg-newGray-4 dark:bg-white text-newBlack-1 shadow-button dark:disabled:bg-newBlack-3 disabled:!text-newGray-2 dark:disabled:text-newGray-1',
+        secondary: 'bg-orange-50 text-orange-500',
         tertiary:
           'shadow-button border bg-newGray-5 text-newGray-1 border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
         newTertiary:
@@ -65,7 +64,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       asChild = false,
-      mode = 'dark',
+      mode = 'light',
       rounded,
       glowing,
       disabled,

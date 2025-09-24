@@ -51,7 +51,7 @@ export const LectureBuy = ({
   }
 
   return (
-    <div className="md:mt-4">
+    <div>
       {paymentModalData.eventId &&
         paymentModalData.satsPrice &&
         paymentModalData.dollarPrice &&
@@ -76,7 +76,7 @@ export const LectureBuy = ({
             }}
           />
         )}
-      <div className="flex gap-2 md:gap-7 items-center max-md:justify-between">
+      <div className="flex max-md:flex-col gap-2 md:gap-7 md:items-center">
         <div className="flex max-md:flex-col md:gap-1 text-darkOrange-5 ">
           <span className="body-medium-16px md:title-large-sb-24px">
             ${dollarPrice}
@@ -108,9 +108,10 @@ export const LectureBuy = ({
                 openAuthModalContext(AuthModalState.SignIn);
               }
             }}
+            className="max-md:w-full max-md:max-w-[351px]"
           >
             <IoMdLock size={24} className="shrink-0 mr-2" />
-            {t('events.card.buyVideo')}
+            {t('events.card.buyLecture')}
           </Button>
         )}
       </div>

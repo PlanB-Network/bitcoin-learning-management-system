@@ -22,10 +22,7 @@ export const DashboardTutorialsPanel = ({
             ? t('dashboard.teacher.tutorials.yourTutorials')
             : t('dashboard.adminPanel.tutorialsManagementPanel')}
         </h1>
-        <TextTag
-          size={isTablet ? 'verySmall' : 'small'}
-          className="uppercase w-fit"
-        >
+        <TextTag size={isTablet ? 'small' : 'base'} className="uppercase w-fit">
           {professorId ? t('words.teacher') : t('words.admin')}
         </TextTag>
       </div>

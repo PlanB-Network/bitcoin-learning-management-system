@@ -1,30 +1,16 @@
-import {
-  BackLink,
-  Button,
-  Card,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  Flag,
-  Loader,
-  TextTag,
-} from '@blms/ui';
+import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { useGreater } from '#src/hooks/use-greater.js';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
-import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
-import { SuggestedHeader } from '../-components/suggested-header.tsx';
+import { ResourceDetails } from '../-components/resource-details.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/movies/$movieTitle-$movieId',
@@ -66,8 +52,6 @@ function Movie() {
     trpc.content.getMovies.queryOptions({}),
   );
 
-  const isScreenMd = useGreater('sm');
-
   useEffect(() => {
     if (movie && params.movieTitle !== formatNameForURL(movie.title)) {
       navigate({
@@ -77,205 +61,60 @@ function Movie() {
     }
   }, [movie, isFetched, navigateTo404, navigate, params.movieTitle]);
 
-  function displayAbstract() {
-    return (
-      <article>
-        <h3 className="mb-4 lg:mb-5 body-medium-16px md:subtitle-large-med-20px text-white md:text-newGray-3">
-          {t('words.abstract')}
-        </h3>
-        <p className="line-clamp-[20] max-w-[772px] text-white body-14px whitespace-pre-line lg:body-16px">
-          {movie?.description}
-        </p>
-      </article>
-    );
-  }
-
   const shuffledSuggestedMovies = useShuffleSuggestedContent(
     suggestedMovies ?? [],
     movie,
   );
 
   return (
-    <ResourceLayout
-      link={'/resources/movies'}
-      activeCategory="movies"
-      showPageHeader={false}
-      showResourcesDropdownMenu={true}
+    <PageLayout
+      backLink={{
+        href: '/resources/movies',
+        text: t('resources.movies.title'),
+      }}
+      layoutSize="base"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !movie && (
-        <div className="max-w-[768px] mx-auto text-white">
+        <div>
           {t('underConstruction.itemNotFoundOrTranslated', {
             item: t('words.movie'),
           })}
         </div>
       )}
       {movie && (
-        <>
-          <div className="flex-col">
-            <BackLink
-              to={'/resources/movies'}
-              label={t('resources.movies.title')}
-            />
-
-            <article className="w-full">
-              <Card
-                className="md:mx-auto w-full max-w-[1179px]"
-                withPadding={false}
-                paddingClass="p-5 md:p-12"
-                color="orange"
-              >
-                <div className="w-full flex flex-col md:flex-row gap-5 lg:gap-10">
-                  <div className="flex flex-col items-center gap-5 md:gap-7 relative">
-                    <div className="relative">
-                      <img
-                        className="max-w-[219px] mx-auto object-cover [overflow-clip-margin:_unset] lg:max-w-[347px] md:mx-0 shadow-course-navigation"
-                        alt={'Movie thumbnail'}
-                        src={resourceImgUrl(movie)}
-                      />
-                      <Flag
-                        code={movie.language}
-                        size="m"
-                        className="shrink-0 md:!hidden !absolute top-3 right-3"
-                      />
-                    </div>
-                    <div className="flex flex-row justify-evenly md:flex-col lg:flex-row">
-                      {movie?.platform && (
-                        <Link to={movie.platform} target="_blank">
-                          <Button
-                            size={isScreenMd ? 'l' : 's'}
-                            variant="primary"
-                            className="mx-2"
-                          >
-                            {t('movies.goToMovie')}
-                          </Button>
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="w-full max-w-2xl flex flex-col md:mt-0">
-                    <div className="flex flex-col">
-                      <div className="flex justify-between items-center gap-2 w-full lg:mb-5">
-                        <h2 className="title-large-24px lg:display-small-med-32px text-white max-md:mb-4">
-                          {movie.title}
-                        </h2>
-                        <Flag
-                          code={movie.language}
-                          size="xl"
-                          className="shrink-0 max-md:!hidden"
-                        />
-                      </div>
-
-                      {(movie.author || movie.duration) && (
-                        <div className="flex flex-col max-md:gap-1">
-                          {movie.author && (
-                            <span className="text-newGray-3 subtitle-small-med-14px lg:subtitle-large-med-20px">
-                              {t('words.producer')}:{' '}
-                              <span className="text-white">{movie.author}</span>
-                            </span>
-                          )}
-                          {movie.duration && (
-                            <span className="text-newGray-3 subtitle-small-med-14px lg:subtitle-large-med-20px">
-                              {t('words.duration')}:{' '}
-                              <span className="text-white">
-                                {`${Math.floor(movie.duration / 60)}h ${(movie.duration % 60).toString().padStart(2, '0')}m`}
-                              </span>
-                            </span>
-                          )}
-                        </div>
-                      )}
-
-                      <div className="flex flex-wrap gap-3 my-4">
-                        {movie.tags
-                          ?.filter(
-                            (tag: string) =>
-                              tag && tag.toLowerCase() !== 'null',
-                          )
-                          .map((tag: string) => (
-                            <TextTag
-                              key={tag}
-                              size="small"
-                              variant="lightMaroon"
-                              mode="dark"
-                            >
-                              {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                            </TextTag>
-                          ))}
-                      </div>
-                    </div>
-
-                    {isScreenMd && displayAbstract()}
-                  </div>
-                </div>
-
-                {!isScreenMd && displayAbstract()}
-              </Card>
-            </article>
-          </div>
-
-          <div className="flex flex-col mt-8 lg:mt-25 w-full">
-            <h3 className="subtitle-medium-16px lg:display-small-32px text-white mb-5 lg:mb-8">
-              {t('movies.watchTrailer')}
-            </h3>
-
-            <div className="mx-auto max-w-full w-full aspect-video">
-              <iframe
-                width={'100%'}
-                height={'100%'}
-                className="mx-auto rounded-lg"
-                src={fixEmbedUrl(movie?.trailer ?? '')}
-                title="Movie Trailer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-          </div>
-
-          <section className="mt-8 lg:mt-25">
-            <SuggestedHeader
-              text="resources.pageSubtitleMovies"
-              placeholder="Other movies"
-            />
-
-            <Carousel>
-              <CarouselContent>
-                {isFetchedSuggested ? (
-                  shuffledSuggestedMovies.slice(0, 10).map((suggestedMovie) => {
-                    const isMovie = 'title' in suggestedMovie;
-                    if (isMovie) {
-                      return (
-                        <CarouselItem
-                          key={suggestedMovie.id}
-                          className="basis-1/2 md:basis-1/4 text-white size-full bg-gradient-to-r max-w-[282px] max-h-[400px] rounded-[10px]"
-                        >
-                          <Link
-                            to={`/resources/movies/${formatNameForURL(suggestedMovie.title)}-${suggestedMovie.id}`}
-                          >
-                            <div className="relative h-full">
-                              <img
-                                className="size-full min-h-[198px] max-h-[198px] lg:min-h-[400px] md:max-h-[400px] object-cover [overflow-clip-margin:_unset] rounded-[10px]"
-                                alt={suggestedMovie.title}
-                                src={resourceImgUrl(suggestedMovie)}
-                              />
-                            </div>
-                          </Link>
-                        </CarouselItem>
-                      );
-                    }
-                    return null;
-                  })
-                ) : (
-                  <Loader size={'s'} />
-                )}
-              </CarouselContent>
-              <CarouselPrevious className="*:size-5 md:*:size-8" />
-              <CarouselNext className="*:size-5 md:*:size-8" />
-            </Carousel>
-          </section>
-        </>
+        <ResourceDetails
+          title={movie.title}
+          subtitle={movie.author || ''}
+          language={movie.language}
+          button={
+            movie.platform
+              ? {
+                  href: movie.platform,
+                  label: t('movies.checkTheMovie'),
+                }
+              : undefined
+          }
+          tags={movie.tags}
+          imgSrc={resourceImgUrl(movie)}
+          abstract={movie.description || ''}
+          suggestedHeaderText="resources.pageSubtitleMovies"
+          suggestedResources={
+            isFetchedSuggested
+              ? shuffledSuggestedMovies.map((suggestedMovie) => {
+                  const isMovie = 'title' in suggestedMovie;
+                  return {
+                    title: isMovie ? suggestedMovie.title || '' : '',
+                    href: isMovie
+                      ? `/resources/movies/${formatNameForURL(suggestedMovie.title)}-${suggestedMovie.id}`
+                      : '',
+                    imgSrc: isMovie ? resourceImgUrl(suggestedMovie) : '',
+                  };
+                })
+              : undefined
+          }
+        />
       )}
-    </ResourceLayout>
+    </PageLayout>
   );
 }

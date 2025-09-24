@@ -538,7 +538,7 @@ function CouponCard({ coupon, onViewClick, onDeleteClick }: CouponCardProps) {
         <h3 className="subtitle-medium-med-16px break-all pr-2 max-w-[calc(100%-60px)]">
           {coupon.code}
         </h3>
-        <TextTag size="small" variant="grey" mode="light" className="shrink-0">
+        <TextTag size="base" variant="grey" mode="light" className="shrink-0">
           {coupon.reductionPercentage}%
         </TextTag>
       </div>

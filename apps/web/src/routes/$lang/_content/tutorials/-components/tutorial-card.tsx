@@ -92,9 +92,9 @@ export const TutorialCard = ({
           {tutorial.tags.map((tag) => (
             <TextTag
               key={tag}
-              size="verySmall"
+              size="small"
               variant={dark ? 'lightMaroon' : 'grey'}
-              mode={dark ? 'dark' : 'light'}
+              mode={dark ? 'dark' : 'light100'}
               className="text-nowrap"
             >
               {tag}

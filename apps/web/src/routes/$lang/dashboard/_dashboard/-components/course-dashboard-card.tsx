@@ -73,19 +73,19 @@ export const CourseDashboardCard = ({
       <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 2xl:pb-7 px-2.5 pb-2.5 gap-2 md:gap-4">
         <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
           <div className="flex flex-wrap gap-2 max-2xl:order-2 max-md:hidden">
-            <TextTag size={'verySmall'} variant="grey" className="uppercase">
+            <TextTag size={'small'} variant="grey" className="uppercase">
               {course.index}
             </TextTag>
-            <TextTag size={'verySmall'} variant="orange" className="uppercase">
+            <TextTag size={'small'} variant="orange" className="uppercase">
               {course.requiresPayment
                 ? t('courses.details.paidCourse')
                 : t('words.free')}
             </TextTag>
-            <TextTag size={'verySmall'} className="uppercase">
+            <TextTag size={'small'} className="uppercase">
               {t(`courses.format.${course.format}`)}
             </TextTag>
             {beginnerFriendlyCourses.has(course.index) && (
-              <TextTag size={'verySmall'} variant="green" className="uppercase">
+              <TextTag size={'small'} variant="green" className="uppercase">
                 {t('words.level.beginner')}
               </TextTag>
             )}

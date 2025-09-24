@@ -490,7 +490,7 @@ function AllCourses() {
   );
 }
 
-const SearchInput = ({
+export const SearchInput = ({
   searchTerm,
   setSearchTerm,
   className,

@@ -1,6 +1,7 @@
 import { cva } from 'class-variance-authority';
 import { useRef } from 'react';
 import type { IconType } from 'react-icons/lib';
+import { cn } from '#src/lib/utils.ts';
 
 export const CategorySwitcherBar = ({
   children,
@@ -80,7 +81,7 @@ const categorySwitcherVariant = cva('flex gap-1 items-center rounded-full', {
     },
     isActive: {
       true: 'text-white bg-orange-500',
-      false: 'text-neutral-700 bg-white',
+      false: 'text-neutral-700',
     },
   },
 });
@@ -91,16 +92,25 @@ export const CategorySwitcher = ({
   isActive,
   onClick,
   size = 'm',
+  inactiveBackgroundColor,
 }: {
   text: string;
   icon?: IconType;
   isActive: boolean;
   onClick: () => void;
   size?: 'm' | 's';
+  inactiveBackgroundColor?: string;
 }) => {
   return (
     <button
-      className={categorySwitcherVariant({ size, isActive })}
+      className={cn(
+        categorySwitcherVariant({ size, isActive }),
+        !isActive
+          ? inactiveBackgroundColor
+            ? inactiveBackgroundColor
+            : 'bg-white'
+          : '',
+      )}
       onClick={onClick}
       aria-pressed={isActive}
       type="button"

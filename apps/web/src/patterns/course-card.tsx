@@ -87,7 +87,7 @@ export const CourseCard = ({
             <div className="flex md:items-center flex-wrap gap-1.5 md:gap-2 order-2 md:order-1">
               {normalizeString(course.index) === 'btc101' ? (
                 <TextTag
-                  size="verySmall"
+                  size="small"
                   variant="green"
                   mode={mode}
                   className="uppercase"
@@ -96,7 +96,7 @@ export const CourseCard = ({
                 </TextTag>
               ) : (
                 <TextTag
-                  size="verySmall"
+                  size="small"
                   variant="lightMaroon"
                   mode={mode}
                   className="uppercase"
@@ -106,7 +106,7 @@ export const CourseCard = ({
               )}
               {course.requiresPayment && (
                 <TextTag
-                  size="verySmall"
+                  size="small"
                   variant="yellow"
                   mode={mode}
                   className="uppercase"

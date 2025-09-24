@@ -1,22 +1,22 @@
 import type { JoinedConference } from '@blms/types';
-import { HorizontalCard, Loader, VerticalCard } from '@blms/ui';
+import { Button, cn, EmptyState, Image, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 import { useEffect, useState } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
-import { useGreater } from '#src/hooks/use-greater.ts';
+import { TbCalendarOff, TbChevronRight } from 'react-icons/tb';
+import OrangePill from '#src/assets/icons/orange_pill_color.svg?react';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { assetUrl, trpc } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
 import { ConferencesTable } from '../-components/tables/conferences-table.tsx';
+import { resourcesTabs } from '../index.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/conferences/')({
   component: Conferences,
 });
 
 function Conferences() {
-  const isScreenMd = useGreater('md');
   const [activeYear, setActiveYear] = useState(
     new Date().getFullYear().toString(),
   );
@@ -64,127 +64,54 @@ function Conferences() {
     );
   }, [conferences, activeYear]);
 
-  const { t } = useTranslation();
-
   return (
-    <ResourceLayout
-      title={t('conferences.pageTitle')}
-      activeCategory="conferences"
-      maxWidth="1360"
-      className="mx-0 px-0"
+    <PageLayout
+      title={t('resources.conferences.title')}
+      tabs={resourcesTabs}
+      layoutSize="wide"
+      actionButtons={[
+        {
+          text: t('resources.conferences.addConference'),
+          href: '/tutorials/contribution/resource/add-conference-replay-3282deba-16ab-4dd9-8357-680902bfb527',
+        },
+      ]}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 text-white gap-3 md:gap-7 mx-4">
-        <div className="flex flex-col gap-1 md:gap-4 md:col-span-1 xl:col-span-2">
-          <h3 className="md:text-xl font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-015px max-md:text-center">
+      <div className="flex flex-wrap gap-4 mt-4 sm:mt-2 max-lg:hidden">
+        <div className="flex flex-col gap-1 sm:gap-4">
+          <h3 className="title-small text-black">
             {t('conferences.latestConferences')}
           </h3>
-          <div className="grid max-md:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-2.5 md:gap-8 h-full">
+          <div className="flex flex-wrap gap-2.5 sm:gap-1 h-full">
             {!isFetched && <Loader size={'s'} />}
             {latestConferences && latestConferences.length > 0 && (
               <>
-                <VerticalCard
-                  imageSrc={assetUrl(
-                    latestConferences[0].path,
-                    'thumbnail.webp',
-                  )}
-                  imgClassName="w-full mb-1"
-                  title={latestConferences[0].name}
-                  subtitle={latestConferences[0].location}
-                  buttonText={t('events.card.watchReplay')}
-                  buttonVariant="primary"
-                  buttonLink={
-                    latestConferences[0].stages.length > 0
-                      ? `/resources/conferences/${formatNameForURL(latestConferences[0].name)}-${latestConferences[0].id}`
-                      : ''
-                  }
-                  languages={latestConferences[0].languages}
-                  isScreenMd={isScreenMd}
-                />
-                <VerticalCard
-                  imageSrc={assetUrl(
-                    latestConferences[1].path,
-                    'thumbnail.webp',
-                  )}
-                  imgClassName="w-full mb-1"
-                  title={latestConferences[1].name}
-                  subtitle={latestConferences[1].location}
-                  buttonText={t('events.card.watchReplay')}
-                  buttonVariant="primary"
-                  buttonLink={
-                    latestConferences[1].stages.length > 0
-                      ? `/resources/conferences/${formatNameForURL(latestConferences[1].name)}-${latestConferences[1].id}`
-                      : ''
-                  }
-                  languages={latestConferences[1].languages}
-                  className="md:hidden xl:flex"
-                  isScreenMd={isScreenMd}
-                />
+                <ConferenceCard conference={latestConferences[0]} />
+                <ConferenceCard conference={latestConferences[1]} />
               </>
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-1 md:gap-4 md:col-span-1 lg:col-span-2">
-          <h3 className="md:text-xl font-medium leading-snug md:leading-relaxed tracking-[0.17px] md:tracking-015px max-md:text-center">
+        <div className="flex flex-col gap-1 sm:gap-4">
+          <h3 className="title-small text-black flex items-center gap-1">
+            <OrangePill className="w-2 h-auto" />
             {t('conferences.planBConferences')}
           </h3>
-          <div className="grid max-md:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2.5 md:gap-8 h-full">
+          <div className="flex flex-wrap gap-2.5 sm:gap-1 h-full">
             {!isFetched && <Loader size={'s'} />}
             {latestPlanBConferences && latestPlanBConferences.length > 0 && (
               <>
-                <VerticalCard
-                  imageSrc={assetUrl(
-                    latestPlanBConferences[0].path,
-                    'thumbnail.webp',
-                  )}
-                  imgClassName="w-full mb-1"
-                  title={latestPlanBConferences[0].name}
-                  subtitle={latestPlanBConferences[0].location}
-                  buttonText={t('events.card.watchReplay')}
-                  buttonVariant="primary"
-                  buttonLink={
-                    latestPlanBConferences[0].stages.length > 0
-                      ? `/resources/conferences/${formatNameForURL(latestPlanBConferences[0].name)}-${latestPlanBConferences[0].id}`
-                      : ''
-                  }
-                  languages={latestPlanBConferences[0].languages}
-                  isScreenMd={isScreenMd}
-                />
-                <VerticalCard
-                  imageSrc={assetUrl(
-                    latestPlanBConferences[1].path,
-                    'thumbnail.webp',
-                  )}
-                  imgClassName="w-full mb-1"
-                  title={latestPlanBConferences[1].name}
-                  subtitle={latestPlanBConferences[1].location}
-                  buttonText={t('events.card.watchReplay')}
-                  buttonVariant="primary"
-                  buttonLink={
-                    latestPlanBConferences[1].stages.length > 0
-                      ? `/resources/conferences/${formatNameForURL(latestPlanBConferences[1].name)}-${latestPlanBConferences[1].id}`
-                      : ''
-                  }
-                  languages={latestPlanBConferences[1].languages}
-                  className="md:hidden lg:flex"
-                  isScreenMd={isScreenMd}
-                />
+                <ConferenceCard conference={latestPlanBConferences[0]} />
+                <ConferenceCard conference={latestPlanBConferences[1]} />
               </>
             )}
           </div>
         </div>
       </div>
 
-      <div className="h-px bg-newBlack-5 md:bg-white/25 mt-3 mb-8 md:mt-10 md:mb-15 mx-4" />
-
       {/* Timeline and table */}
-      <div className="flex flex-col justify-center items-center text-center mx-4">
-        <h2 className="text-darkOrange-5 text-2xl md:text-[34px] leading-normal md:leading-tight md:tracking-[0.25px]">
-          {t('conferences.conferencesSinceGenesis')}
-        </h2>
-        <p className="text-white leading-[175%] tracking-015px max-w-[817px] max-md:hidden mt-5">
-          {t('conferences.description')}
-        </p>
-      </div>
+      <h2 className="text-black title-large max-sm:hidden mt-8 mb-4">
+        {t('conferences.conferencesGenesis')}
+      </h2>
       <ConferencesTimeLine
         activeYear={activeYear}
         setActiveYear={setActiveYear}
@@ -193,42 +120,75 @@ function Conferences() {
       {filteredConferences && filteredConferences.length > 0 && (
         <>
           <ConferencesTable conferences={filteredConferences} />
-          <div className="lg:hidden flex justify-center items-stretch flex-wrap gap-4 mx-4 mt-8">
+          <div className="xl:hidden flex flex-wrap sm:gap-6 sm:justify-center mt-6">
             {filteredConferences?.map((conference) => (
-              <HorizontalCard
-                key={conference.id}
-                title={conference.name}
-                subtitle={conference.location}
-                buttonText={t('events.card.watchReplay')}
-                buttonVariant="primary"
-                buttonLink={
-                  conference.stages.length > 0
-                    ? `/resources/conferences/${formatNameForURL(conference.name)}-${conference.id}`
-                    : ''
-                }
-                languages={conference.languages}
-              />
+              <ConferenceCard conference={conference} key={conference.id} />
             ))}
           </div>
         </>
       )}
 
       {filteredConferences && filteredConferences.length === 0 && isFetched && (
-        <p className="text-newGray-2 text-center mx-auto w-full mt-5 md:mt-10">
-          {t('conferences.noConferences', { year: activeYear })}
-        </p>
+        <EmptyState
+          title={t('conferences.noConferences', { year: activeYear })}
+          icon={TbCalendarOff}
+          className="mt-6 sm:mt-8"
+        />
       )}
-
-      <p className="text-newGray-2 text-center mx-auto w-full mt-5 md:mt-10">
-        <Trans i18nKey="conferences.addConferences">
-          <a
-            className="underline underline-offset-2 hover:text-darkOrange-5"
-            href="https://github.com/PlanB-Network/bitcoin-educational-content"
-          >
-            Github Repository
-          </a>
-        </Trans>
-      </p>
-    </ResourceLayout>
+    </PageLayout>
   );
 }
+
+export const ConferenceCard = ({
+  conference,
+}: {
+  conference: JoinedConference;
+}) => {
+  const GeneralInfos = () => {
+    return (
+      <div className="flex flex-col justify-between sm:p-4 sm:pt-0 flex-grow sm:gap-7">
+        <div className="flex flex-col gap-1 max-sm:grow max-sm:justify-center">
+          <span className="title-small sm:title-base text-maroon-11 line-clamp-2">
+            {conference.name}
+          </span>
+
+          <span className="text-newBlack-3 body-small sm:body-base">
+            {conference.location}
+          </span>
+        </div>
+        <Button asChild className="mt-auto w-full max-sm:hidden">
+          <Link to={`/resources/conferences/${conference.id}`}>
+            {t('events.card.watchReplay')}
+          </Link>
+        </Button>
+      </div>
+    );
+  };
+
+  return (
+    <article
+      className={cn(
+        'flex justify-between max-sm:items-center w-full sm:w-60 sm:border border-neutral-100 rounded-lg sm:rounded-2xl max-sm:p-2',
+      )}
+    >
+      <div className="flex max-sm:gap-2 sm:flex-col flex-grow">
+        <div className="w-22 sm:w-full overflow-hidden max-sm:rounded-lg sm:rounded-t-2xl sm:rounded-b-lg relative sm:mb-2 max-sm:shrink-0">
+          <Image
+            breakpoints={{ default: 88, sm: 240 }}
+            width="240"
+            height="135"
+            loading="lazy"
+            src={assetUrl(conference.path, 'thumbnail.webp')}
+            alt={conference.name || 'Conference image'}
+            className="object-cover [overflow-clip-margin:_unset] aspect-[88/56] sm:aspect-[240/135] sm:w-full h-full max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg"
+          />
+        </div>
+        <GeneralInfos />
+      </div>
+      <TbChevronRight
+        className="text-neutral-300 sm:hidden shrink-0"
+        size={20}
+      />
+    </article>
+  );
+};

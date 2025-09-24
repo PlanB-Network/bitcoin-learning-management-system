@@ -35,7 +35,7 @@ export const TranslationPanelHeader = ({
           {customTitle || t('dashboard.adminPanel.translationPanel.title')}
         </h1>
         <TextTag
-          size={isTablet ? 'verySmall' : 'small'}
+          size={isTablet ? 'small' : 'base'}
           className="uppercase w-fit bg-newOrange-1 text-white"
         >
           {t('dashboard.adminPanel.translationPanel.admin')}

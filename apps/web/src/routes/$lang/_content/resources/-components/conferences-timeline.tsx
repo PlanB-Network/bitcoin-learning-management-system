@@ -1,7 +1,6 @@
-import { cn } from '@blms/ui';
+import { CategorySwitcher } from '@blms/ui';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
-import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 
 interface ConferenceTimeLineProps {
   activeYear: string;
@@ -15,24 +14,13 @@ export const ConferencesTimeLine = ({
   const currentYear = new Date().getFullYear();
   const years = Array.from(
     { length: currentYear - 2008 },
-    (_v, i) => `${2009 + i}`,
+    (_v, i) => `${currentYear - i}`,
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    breakpoints: {
-      '(min-width: 768px)': { containScroll: 'trimSnaps' },
-    },
-    containScroll: false,
-    startIndex: years.indexOf('2024') - 1,
+    containScroll: 'trimSnaps',
+    startIndex: years.indexOf(currentYear.toString()) - 1,
   });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev(false);
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext(false);
-  }, [emblaApi]);
 
   const scrollTo = useCallback(
     (slideIndex: number) => {
@@ -42,57 +30,23 @@ export const ConferencesTimeLine = ({
   );
 
   return (
-    <div className="flex relative w-full max-w-[914px] mx-auto mt-8 gap-2 max-md:bg-darkOrange-11 max-md:py-4 max-md:shadow-sm-card-dark">
-      <button
-        type="button"
-        onClick={scrollPrev}
-        className="max-md:hidden p-3 rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
-        onMouseMoveCapture={scrollPrev}
-      >
-        <RxCaretLeft size={24} />
-      </button>
+    <div className="flex items-center w-full">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-2">
           {years.map((year, index) => (
-            <button
+            <CategorySwitcher
               key={year}
-              type="button"
+              text={year}
+              isActive={activeYear === year}
               onClick={() => {
                 setActiveYear(year);
                 scrollTo(index);
               }}
-              className={cn(
-                'p-4 rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 text-lg font-medium leading-none transition-colors',
-                activeYear === year ? 'bg-white text-darkOrange-5' : '',
-              )}
-            >
-              {year}
-            </button>
+              inactiveBackgroundColor="bg-neutral-50"
+            />
           ))}
         </div>
-        <div className="absolute h-full w-20 min-[1900px]:w-40 top-0 left-0 flex justify-center items-center bg-gradient-to-r from-[#A4A4A4]/75 to-transparent z-10 md:hidden">
-          <RxCaretLeft
-            size={40}
-            className="text-white hover:text-newOrange-1 hover:cursor-pointer z-10 transition-colors"
-            onClick={scrollPrev}
-          />
-        </div>
-        <div className="absolute h-full w-20 min-[1900px]:w-40 top-0 right-0 flex justify-center items-center bg-gradient-to-r from-transparent to-[#A4A4A4]/75 z-10 md:hidden">
-          <RxCaretRight
-            size={40}
-            className="text-white hover:text-newOrange-1 hover:cursor-pointer z-10 transition-colors"
-            onClick={scrollNext}
-          />
-        </div>
       </div>
-      <button
-        type="button"
-        onClick={scrollNext}
-        className="max-md:hidden p-3 rounded-lg bg-newBlack-3 text-darkOrange-7 hover:bg-white hover:text-darkOrange-5 leading-none transition-colors"
-        onMouseMoveCapture={scrollNext}
-      >
-        <RxCaretRight size={24} />
-      </button>
     </div>
   );
 };

@@ -49,10 +49,7 @@ function DashboardAdministrationRole() {
         <h1 className="display-small-32px">
           {t('dashboard.adminPanel.userRolesAllocation')}
         </h1>
-        <TextTag
-          size={isTablet ? 'verySmall' : 'small'}
-          className="uppercase w-fit"
-        >
+        <TextTag size={isTablet ? 'small' : 'base'} className="uppercase w-fit">
           {t('words.admin')}
         </TextTag>
       </div>

@@ -175,7 +175,7 @@ const WrittenFeedbacks = ({
                 &quot;{feedback.publicComment || "User didn't add comment."}
                 &quot;
               </p>
-              <TextTag size={'verySmall'} className="self-end">
+              <TextTag size={'small'} className="self-end">
                 {t('dashboard.teacher.reviews.publicComment')}
               </TextTag>
             </div>
@@ -185,7 +185,7 @@ const WrittenFeedbacks = ({
                 {feedback.teacherComment || "User didn't add comment."}
                 &quot;
               </p>
-              <TextTag size={'verySmall'} mode="dark" className="self-end">
+              <TextTag size={'small'} mode="dark" className="self-end">
                 {t('dashboard.teacher.reviews.privateComment')}
               </TextTag>
             </div>

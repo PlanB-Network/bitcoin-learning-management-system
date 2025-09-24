@@ -5,13 +5,14 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
-import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
 import { GlossaryList } from '../-components/glossary-list.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
+import { resourcesTabs } from '../index.tsx';
 
 const GlossaryMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/glossary-markdown-body.js'),
@@ -71,17 +72,6 @@ function GlossaryWord() {
     setSelectedLetter(letter === selectedLetter ? null : letter);
   };
 
-  const getRandomWord = () => {
-    if (glossaryWords && glossaryWords.length > 0) {
-      const filteredWords = glossaryWords.filter(
-        (word) => word.fileName !== glossaryWord?.fileName,
-      );
-      return filteredWords[Math.floor(Math.random() * filteredWords.length)]
-        .fileName;
-    }
-    return '';
-  };
-
   useEffect(() => {
     if (glossaryWord && isFetched) {
       if (glossaryWords) {
@@ -98,11 +88,10 @@ function GlossaryWord() {
   const isOriginalLanguage =
     glossaryWord?.language === glossaryWord?.originalLanguage;
   return (
-    <ResourceLayout
-      link={'/resources/glossary'}
-      activeCategory="glossary"
-      showPageHeader={false}
-      backToCategoryButton
+    <PageLayout
+      title={isFetched ? glossaryWord?.term : 'resources.glossary.title'}
+      tabs={resourcesTabs}
+      layoutSize="base"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
@@ -110,7 +99,7 @@ function GlossaryWord() {
           {proofreading ? (
             <ProofreadingProgress
               isOriginalLanguage={isOriginalLanguage}
-              mode="dark"
+              mode="light"
               proofreadingData={{
                 contributors: proofreading.contributorNames,
                 reward: proofreading.reward,
@@ -119,10 +108,7 @@ function GlossaryWord() {
           ) : (
             <></>
           )}
-          <div className="flex flex-col items-center justify-center w-full max-w-[721px] mx-auto px-4">
-            <h2 className="w-full mobile-h2 md:desktop-h4 uppercase text-darkOrange-5 mb-5">
-              {glossaryWord?.term}
-            </h2>
+          <div className="flex flex-col w-full md:mt-4 mt-2">
             <Suspense fallback={<Loader size={'s'} />}>
               <GlossaryMarkdownBody
                 content={glossaryWord?.definition || ''}
@@ -132,10 +118,10 @@ function GlossaryWord() {
 
             {relatedWords.length > 0 && (
               <>
-                <p className="text-white md:text-lg font-medium self-start mt-5">
+                <p className="text-black md:text-lg font-medium self-start mt-5">
                   {t('glossary.relatedWords')}
                 </p>
-                <ul className="list-disc list-inside text-white self-start">
+                <ul className="list-disc list-inside text-black self-start">
                   {relatedWords.map((word) => (
                     <li className="ml-2 md:ml-6 py-2" key={word.fileName}>
                       <Link
@@ -150,19 +136,18 @@ function GlossaryWord() {
                 </ul>
               </>
             )}
-            <div className="w-full h-px bg-newBlack-5 my-6 md:mt-20" />
-            <GlossaryFilterBar
-              onChange={setSearchTerm}
-              value={searchTerm}
-              isOnWordPage
-              randomWord={getRandomWord()}
+            <div className="w-full h-px bg-neutral-100 my-6 md:mt-12 md:mb-16" />
+            <SearchInput
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              className="ml-auto"
             />
             <AlphabetGlossary
               onLetterSelect={handleLetterSelection}
               selectedLetter={selectedLetter}
             />
           </div>
-          <div className="px-4 mx-auto w-full">
+          <div className="w-full">
             {glossaryWords && (
               <GlossaryList
                 glossaryTerms={glossaryWords.filter(
@@ -175,6 +160,6 @@ function GlossaryWord() {
           </div>
         </>
       )}
-    </ResourceLayout>
+    </PageLayout>
   );
 }

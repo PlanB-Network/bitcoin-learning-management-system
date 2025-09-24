@@ -1,16 +1,4 @@
-import type { JoinedEvent } from '@blms/types';
-import {
-  BackLink,
-  Card,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  Flag,
-  Loader,
-  TextTag,
-} from '@blms/ui';
+import { Flag, Image, Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
@@ -19,19 +7,14 @@ import { z } from 'zod';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import BookOpen from '#src/assets/resources/library.svg';
 import VideoPreview from '#src/assets/resources/preview-video.webp?no-inline';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
-import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
-import { LectureCard } from '../-components/cards/lecture-card.js';
 import { LectureBuy } from '../-components/lecture-buy.js';
-import { ResourceLayout } from '../-components/resource-layout.js';
-import { SuggestedHeader } from '../-components/suggested-header.js';
 
 export const Route = createFileRoute(
   '/$lang/_content/resources/lectures/$lectureName-$lectureId',
@@ -90,23 +73,20 @@ function Lecture() {
       payment.paymentStatus === 'paid' && payment.eventId === lecture?.id,
   );
 
-  const { data: suggestedLectures, isFetched: isFetchedSuggested } = useQuery(
-    trpc.content.getLectures.queryOptions({}),
-  );
-
   const navigate = useNavigate();
-
-  const isMobile = useSmaller('md');
-
-  const shuffledSuggestedLectures = useShuffleSuggestedContent(
-    suggestedLectures ?? [],
-    lecture,
-  );
 
   const lectureDuration =
     lecture?.endDate && lecture?.startDate
       ? `${Math.floor((new Date(lecture.endDate).getTime() - new Date(lecture.startDate).getTime()) / (1000 * 60 * 60))}h ${Math.floor(((new Date(lecture.endDate).getTime() - new Date(lecture.startDate).getTime()) % (1000 * 60 * 60)) / (1000 * 60))}m`
       : null;
+
+  const lectureDate =
+    lecture &&
+    new Date(lecture.startDate).toLocaleDateString(i18n.language, {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
 
   useEffect(() => {
     if (eventPayment) refetchLecture();
@@ -121,251 +101,141 @@ function Lecture() {
     }
   }, [lecture, isFetched, navigate, params.bookName]);
   return (
-    <ResourceLayout
-      link={'/resources/lectures'}
-      activeCategory="lectures"
-      showPageHeader={false}
-      showResourcesDropdownMenu={true}
+    <PageLayout
+      backLink={{
+        href: '/resources/lectures',
+        text: t('resources.lectures.title'),
+      }}
+      layoutSize="base"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !lecture && (
-        <div className="max-w-[768px] mx-auto text-white">
+        <div>
           {t('underConstruction.itemNotFoundOrTranslated', {
             item: t('words.lecture'),
           })}
         </div>
       )}
+
       {lecture && (
-        <div className="flex-col">
-          <BackLink
-            to={'/resources/lectures'}
-            label={t('resources.lectures.title')}
-          />
-
-          <article className="w-full">
-            <Card
-              className="md:mx-auto w-full"
-              withPadding={false}
-              paddingClass="p-4 md:p-7"
-              color="orange"
-            >
-              <div className="w-full flex flex-col md:flex-row gap-6 lg:gap-10">
-                <div className="flex flex-col items-center shrink-0 relative rounded-[10px] lg:rounded-[20px] max-md:shadow-course-navigation max-md:w-fit mx-auto">
-                  <img
-                    className="w-full max-w-[256px] mx-auto object-cover [overflow-clip-margin:_unset] rounded-[10px] lg:rounded-[20px] lg:max-w-[457px]"
-                    alt={t('imagesAlt.bookCover')}
-                    src={resourceImgUrl(lecture)}
+        <div className="w-full flex flex-col gap-6">
+          <article className="flex flex-col w-full gap-6 md:gap-7.5">
+            <Image
+              breakpoints={{ default: 736 }}
+              className="w-full rounded-lg"
+              alt={lecture.name || 'Lecture'}
+              src={resourceImgUrl(lecture)}
+            />
+            <div className="flex flex-col gap-6 md:gap-5.5 w-full">
+              <div className="flex flex-col md:gap-1.5 w-full">
+                <h1 className="title-small md:display-medium flex gap-2 w-full justify-between items-center">
+                  {lecture.name}
+                  <Flag
+                    code={lecture.languages[0]}
+                    size="l"
+                    className="shrink-0 max-md:!hidden"
                   />
-                  <div className="shrink-0 md:hidden absolute top-3 right-3 flex flex-col gap-1 p-1 bg-white rounded-xs">
-                    {lecture.languages.map((language) => (
-                      <Flag key={language} code={language} size="m" />
-                    ))}
-                  </div>
-                  {!isMobile && !!lecture?.priceDollars && (
-                    <LectureBuy
-                      lecture={lecture}
-                      eventPayment={eventPayment}
-                      refetchEventPayments={refetchEventPayments}
-                    />
-                  )}
-                </div>
+                </h1>
+                {lecture.professorName && (
+                  <span className="body-base md:title-medium text-neutral-600">
+                    {lecture.professorName}
+                  </span>
+                )}
+                <span className="body-base md:title-medium text-neutral-600 max-md:mt-6">
+                  {`${lectureDuration} · ${lectureDate}`}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1">
+                {lecture?.tags.map((tag) => (
+                  <TextTag
+                    key={tag}
+                    size="base"
+                    color="grey"
+                    className="capitalize"
+                  >
+                    {tag}
+                  </TextTag>
+                ))}
+              </div>
+              {!!lecture?.priceDollars && (
+                <LectureBuy
+                  lecture={lecture}
+                  eventPayment={eventPayment}
+                  refetchEventPayments={refetchEventPayments}
+                />
+              )}
+            </div>
+          </article>
 
-                <div className="w-full max-w-2xl flex flex-col justify-between gap-6 md:gap-4 self-stretch">
-                  <div className="flex flex-col gap-3">
-                    <div className="flex justify-between items-center gap-4 w-full">
-                      <h2 className="title-large-24px lg:display-small-med-32px text-white">
-                        {lecture.name}
-                      </h2>
-                      <Flag
-                        code={lecture.languages[0]}
-                        size="xl"
-                        className="shrink-0 max-md:!hidden"
-                      />
-                    </div>
-
-                    <span className="text-white subtitle-large-18px lg:title-large-24px">
-                      {lecture.professorName || lecture.projectName}
-                    </span>
-
-                    <div className="flex max-md:flex-col gap-1 md:gap-12">
-                      {lectureDuration && (
-                        <span className="text-newGray-3 subtitle-small-med-14px lg:subtitle-large-med-20px">
-                          {t('words.duration')}:{' '}
-                          <span className="text-white">{lectureDuration}</span>
-                        </span>
-                      )}
-                      {lecture.startDate && (
-                        <span className="text-newGray-3 subtitle-small-med-14px lg:subtitle-large-med-20px">
-                          {t('words.date')}:{' '}
-                          <span className="text-white">
-                            {new Date(lecture.startDate).toLocaleDateString(
-                              i18n.language,
-                              {
-                                day: '2-digit',
-                                month: 'short',
-                                year: 'numeric',
-                              },
-                            )}
-                          </span>
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {lecture.tags.map((tag) => (
-                        <TextTag
-                          key={tag}
-                          size="small"
-                          variant="lightMaroon"
-                          mode="dark"
-                        >
-                          {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                        </TextTag>
-                      ))}
-                    </div>
-                  </div>
-
-                  {relatedCourse && (
-                    <div className="flex flex-col gap-2 md:gap-3">
-                      <p className="text-maroon-2 subtitle-small-caps-14px md:subtitle-medium-caps-18px">
-                        {t('lectures.partCourse')}
-                      </p>
-                      <div className="flex max-md:flex-col flex-wrap gap-1 md:gap-2">
-                        <TextTag
-                          size={isMobile ? 'verySmall' : 'small'}
-                          variant="darkMaroon"
-                          mode="dark"
-                        >
-                          {addSpaceToCourseIndex(
-                            relatedCourse.index,
-                          ).toUpperCase()}
-                        </TextTag>
-                        <Link
-                          to={`/courses/${relatedCourse.id}`}
-                          className="text-white body-14px-medium md:subtitle-large-med-20px"
-                        >
-                          {relatedCourse.name}
-                        </Link>
-                      </div>
-                    </div>
-                  )}
-
-                  {isMobile && !!lecture?.priceDollars && (
-                    <LectureBuy
-                      lecture={lecture}
-                      eventPayment={eventPayment}
-                      refetchEventPayments={refetchEventPayments}
-                    />
-                  )}
+          <div className="flex flex-col w-full gap-1">
+            <h3 className="subtitle-base md:title-base">
+              {t('lectures.watchLecture')}
+            </h3>
+            {!lecture?.replayUrl &&
+            !lecture?.liveUrl &&
+            lecture?.priceDollars &&
+            lecture.priceDollars > 0 ? (
+              <div className="relative w-full">
+                <img src={VideoPreview} alt="Video preview" />
+                <div className="absolute -top-3 left-1 md:top-7 md:left-4 flex gap-3 items-center">
+                  <img
+                    src={LockGif}
+                    alt="Locked"
+                    className="w-11 md:w-[62px] shrink-0"
+                  />
+                  <span className="title-large-24px text-white max-md:hidden">
+                    {t('lectures.buyVideoToUnlock')}
+                  </span>
                 </div>
               </div>
-            </Card>
-          </article>
+            ) : (
+              <div className="mx-auto max-w-full w-full aspect-video">
+                <iframe
+                  width={'100%'}
+                  height={'100%'}
+                  className="mx-auto rounded-lg"
+                  src={fixEmbedUrl(
+                    lecture?.replayUrl || lecture?.liveUrl || '',
+                  )}
+                  title="Lecture replay"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            )}
+          </div>
+
+          {relatedCourse && (
+            <section className="w-full flex flex-col gap-2">
+              <div className="flex items-center gap-2.5">
+                <img
+                  src={BookOpen}
+                  className="size-5 lg:size-6 shrink-0"
+                  alt="BookOpen"
+                />
+                <h3 className="text-darkOrange-5 body-base-bold md:display-small">
+                  {t('lectures.checkFullCourse')}
+                </h3>
+              </div>
+              <p className="md:whitespace-pre-line body-14px md:subtitle-medium-16px mb-5">
+                <Trans
+                  i18nKey={'lectures.lecturePartCourse'}
+                  values={{ courseTitle: relatedCourse.name }}
+                >
+                  <Link
+                    to={`/courses/${relatedCourse.id}`}
+                    className="font-semibold"
+                  >
+                    Course
+                  </Link>
+                </Trans>
+              </p>
+              <CourseCard course={relatedCourse} mode="light" />
+            </section>
+          )}
         </div>
       )}
-
-      <div className="flex flex-col mt-8 md:mt-20 w-full gap-4 md:gap-8">
-        <h3 className="subtitle-medium-16px lg:display-small-32px text-white">
-          {t('lectures.watchLecture')}
-        </h3>
-        {!lecture?.replayUrl &&
-        !lecture?.liveUrl &&
-        lecture?.priceDollars &&
-        lecture.priceDollars > 0 ? (
-          <div className="relative w-full">
-            <img src={VideoPreview} alt="Video preview" />
-            <div className="absolute -top-3 left-1 md:top-7 md:left-4 flex gap-3 items-center">
-              <img
-                src={LockGif}
-                alt="Locked"
-                className="w-11 md:w-[62px] shrink-0"
-              />
-              <span className="title-large-24px text-white max-md:hidden">
-                {t('lectures.buyVideoToUnlock')}
-              </span>
-            </div>
-          </div>
-        ) : (
-          <div className="mx-auto max-w-full w-full aspect-video">
-            <iframe
-              width={'100%'}
-              height={'100%'}
-              className="mx-auto rounded-lg"
-              src={fixEmbedUrl(lecture?.replayUrl || lecture?.liveUrl || '')}
-              title="Lecture replay"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
-        )}
-      </div>
-
-      {relatedCourse && (
-        <section className="w-full flex flex-col mt-8 md:mt-20 justify-center items-center">
-          <div className="flex max-md:flex-col items-center justify-center md:justify-start mb-2 lg:mb-4 mx-auto w-fit">
-            <img
-              src={BookOpen}
-              className="size-5 lg:size-8 mr-3 my-1 shrink-0"
-              alt="BookOpen"
-            />
-            <h3 className="items-center title-small-med-16px md:title-large-24px font-medium mt-1 text-darkOrange-5">
-              {t('lectures.checkFullCourse')}
-            </h3>
-          </div>
-          <p className="text-white md:whitespace-pre-line text-center body-medium-14px md:subtitle-medium-16px  mb-5 md:mb-12">
-            <Trans
-              i18nKey={'lectures.lecturePartCourse'}
-              values={{ courseTitle: relatedCourse.name }}
-            >
-              <Link
-                to={`/courses/${relatedCourse.id}`}
-                className="font-semibold"
-              >
-                Course
-              </Link>
-            </Trans>
-          </p>
-          <CourseCard course={relatedCourse} />
-        </section>
-      )}
-
-      <section className="mt-8 lg:mt-20">
-        <SuggestedHeader
-          text="resources.pageSubtitleLectures"
-          placeholder="Other lectures"
-        />
-
-        <Carousel>
-          <CarouselContent>
-            {isFetchedSuggested ? (
-              shuffledSuggestedLectures.slice(0, 10).map((suggestedLecture) => {
-                const isLecture = 'name' in suggestedLecture;
-                if (isLecture) {
-                  return (
-                    <CarouselItem
-                      key={suggestedLecture.id}
-                      className="text-white bg-gradient-to-r size-full max-w-[157px] lg:max-w-[315px] rounded-[10px]"
-                    >
-                      <Link to={`/resources/lectures/${suggestedLecture.id}`}>
-                        <LectureCard
-                          key={suggestedLecture.id}
-                          lecture={suggestedLecture as JoinedEvent}
-                        />
-                      </Link>
-                    </CarouselItem>
-                  );
-                }
-                return null;
-              })
-            ) : (
-              <Loader size={'s'} />
-            )}
-          </CarouselContent>
-          <CarouselPrevious className="*:size-5 md:*:size-8" />
-          <CarouselNext className="*:size-5 md:*:size-8" />
-        </Carousel>
-      </section>
-    </ResourceLayout>
+    </PageLayout>
   );
 }

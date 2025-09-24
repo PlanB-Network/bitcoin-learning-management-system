@@ -151,7 +151,7 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
                 ),
               )}
             </div>
-            <TextTag variant={tagVariant} mode="light100" size="verySmall">
+            <TextTag variant={tagVariant} mode="light100" size="small">
               {getNotificationTitle(
                 notification.type,
                 notification.courseId || undefined,

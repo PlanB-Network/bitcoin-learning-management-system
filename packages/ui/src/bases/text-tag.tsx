@@ -9,7 +9,7 @@ const textTagVariants = cva(
   {
     defaultVariants: {
       mode: 'light',
-      size: 'small',
+      size: 'base',
       variant: 'grey',
     },
     variants: {
@@ -20,16 +20,15 @@ const textTagVariants = cva(
         light100: 'light100',
       },
       size: {
-        small: 'px-2 py-1 subtitle-medium-16px rounded-lg',
-        verySmall:
-          'px-1 py-px text-xs leading-[166%] tracking-[0.4px] rounded-[5px]',
+        base: 'px-3 py-2 body-small-bold rounded-full',
+        small: 'p-1 body-extra-small-bold rounded-full',
       },
       variant: {
         darkMaroon:
           'bg-maroon-2 text-maroon-8 dark:bg-maroon-9 dark:text-white [&.light100]:bg-maroon-3',
         green:
           'bg-green-50 text-green-700 dark:bg-green-800 dark:text-green-100 [&.light100]:bg-green-100 [&.dark100]:bg-green-800 [&.dark100]:text-green-100',
-        grey: 'bg-newGray-5 text-newBlack-4 dark:bg-newBlack-3 dark:text-newGray-4 [&.light100]:bg-newGray-4 [&.dark100]:bg-newBlack-5 [&.dark100]:text-newGray-5',
+        grey: 'bg-neutral-50 text-neutral-800 dark:bg-newBlack-3 dark:text-newGray-4 [&.light100]:bg-newGray-4 [&.dark100]:bg-newBlack-5 [&.dark100]:text-newGray-5',
         lightMaroon:
           'bg-maroon-1 text-maroon-8 dark:bg-maroon-8 dark:text-white [&.light100]:bg-maroon-2 [&.dark100]:bg-maroon-8 [&.dark100]:text-white',
         orange:

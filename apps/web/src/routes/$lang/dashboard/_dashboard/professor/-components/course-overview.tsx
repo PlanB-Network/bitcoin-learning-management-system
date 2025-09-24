@@ -463,7 +463,7 @@ const ActivityItem = ({ activity }: { activity: CourseActivity }) => {
         <div className="flex items-center justify-between gap-1.5 max-md:w-full">
           <div className="flex items-center gap-2 py-1">
             <ActivityIcon type={type} withComment={withComment} />
-            <TextTag size="verySmall" variant="grey" mode="light">
+            <TextTag size="small" variant="grey" mode="light">
               {displayName}
             </TextTag>
           </div>

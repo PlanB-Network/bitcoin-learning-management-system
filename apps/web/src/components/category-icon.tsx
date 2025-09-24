@@ -17,7 +17,7 @@ export const CategoryIcon = ({
     return (
       <div
         className={cn(
-          'relative flex size-[30px] shrink-0 md:size-[45px]',
+          'relative flex size-[30px] shrink-0 md:size-[40px]',
           className,
         )}
       >

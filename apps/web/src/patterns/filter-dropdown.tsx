@@ -255,7 +255,7 @@ export const FilterDropdown = ({
                     key={`${category}-${option}`}
                     variant="lightMaroon"
                     mode="dark"
-                    size="verySmall"
+                    size="small"
                     className="text-nowrap capitalize"
                   >
                     <span>

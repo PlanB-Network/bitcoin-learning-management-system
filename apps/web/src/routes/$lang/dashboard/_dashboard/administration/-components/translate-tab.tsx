@@ -307,7 +307,7 @@ export const TranslateTab = () => {
             {sortedCourses.map((course: CourseWithTodoTranslations) => (
               <TableRow key={course.id}>
                 <TableCell className="font-medium">
-                  <TextTag size="verySmall" variant="grey">
+                  <TextTag size="small" variant="grey">
                     {course.index.toUpperCase()}
                   </TextTag>
                 </TableCell>

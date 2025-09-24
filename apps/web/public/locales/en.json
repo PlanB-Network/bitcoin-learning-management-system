@@ -128,19 +128,20 @@
     "contributeTitle": "Want to contribute?",
     "educationalContent": {
       "description": "The items below can be used for educational events and purposes.",
-      "title": "Educational Content"
+      "title": "Educational content"
     },
     "pageDescription": "Mass adoption is not easy. To move closer and more rapidly towards that goal, we've developed an extendible database to host educational content. Here, Bitcoin educators can freely drop and access content as needed. We don't need to reinvent the wheel every time, so let's work together to centralize the useful resources is one toolkit!",
     "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
       "description": "The images below can be used for your own creations.",
-      "title": "Visual Content"
+      "title": "Visual content"
     }
   },
   "conferences": {
     "addConferences": "Feel free to add any missing conferences via this <0>Github</0> repository.",
     "backConferences": "Back to conferences",
     "conferenceName": "Conference name",
+    "conferencesGenesis": "Conferences since Genesis Block",
     "conferencesSinceGenesis": "Bitcoin Conferences Archive since the Genesis Block",
     "description": "Conferences play a crucial role in the Bitcoin industry, forming an essential part of every Bitcoiner's educational journey. For that reason, we created this tool to help you easily navigate through hundreds of Bitcoin events.",
     "details": {
@@ -1442,6 +1443,7 @@
     "card": {
       "bookLive": "Book live",
       "bookSeat": "Book a seat",
+      "buyLecture": "Buy lecture",
       "buyReplay": "Buy replay",
       "buyVideo": "Buy video",
       "eventFull": "Event is full",
@@ -1552,6 +1554,7 @@
     "placeHolder": "What is this?",
     "randomSearch": "Random search",
     "relatedWords": "Related words:",
+    "showMoreWords": "Show more words",
     "term": "Term"
   },
   "home": {
@@ -1687,6 +1690,7 @@
     "september": "September"
   },
   "movies": {
+    "checkTheMovie": "Check the movie",
     "goToMovie": "Go to movie",
     "pageTitle": "Movies & Documentaries",
     "watchTrailer": "Watch the trailer"
@@ -1853,17 +1857,20 @@
       "title": "Articles"
     },
     "bet": {
-      "title": "Educational Toolkit"
+      "addEducationKit": "Add education kit",
+      "title": "Education kits"
     },
     "books": {
+      "addBook": "Add book",
       "author": "Author: ",
-      "title": "Library"
+      "title": "Books"
     },
     "channels": {
       "noYoutubeChannels": "There are currently no Youtube Channels for selected language.",
-      "title": "Youtube Channels"
+      "title": "Youtube channels"
     },
     "conferences": {
+      "addConference": "Add conference replay",
       "title": "Conference replays"
     },
     "github": "All data is managed through a single open-source <0>Github</0> repository. Feel free to contribute and add any missing content.",
@@ -1872,11 +1879,11 @@
     },
     "lectures": {
       "noLectures": "There are currently no Lecture Replays for selected language.",
-      "title": "Lecture Replays"
+      "title": "Lecture replays"
     },
     "movies": {
       "noMovies": "There are currently no Movies or Documentaries for selected language.",
-      "title": "Movies & Documentaries"
+      "title": "Movies"
     },
     "newsletter": {
       "check": "Check the newsletter"
@@ -1896,10 +1903,13 @@
     "pageSubtitlePodcast": "<0>Other podcasts</0> you may like",
     "pageTitle": "Welcome to the Resource Portal",
     "podcasts": {
+      "addPodcast": "Add podcast",
+      "checkThePodcast": "Check the podcast",
       "noPodcasts": "There are currently no podcasts for selected language.",
       "title": "Podcasts"
     },
     "projects": {
+      "addProjects": "Add project",
       "title": "Projects"
     },
     "searchFilterName": "Search by name",
@@ -2231,7 +2241,6 @@
     "selectedAmount": "{{amount}} selected",
     "settings": "Settings",
     "share": "Share",
-    "showMore": "",
     "skip": "Skip",
     "socialStudies": "Social studies",
     "start": "Start",

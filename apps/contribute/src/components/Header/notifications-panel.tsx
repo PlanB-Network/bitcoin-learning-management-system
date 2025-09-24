@@ -176,7 +176,7 @@ const NotificationItem = ({
                 ),
               )}
             </div>
-            <TextTag variant={tagVariant} mode={tagMode} size="verySmall">
+            <TextTag variant={tagVariant} mode={tagMode} size="small">
               {getNotificationTitle(
                 notification.type,
                 notification.courseId || undefined,

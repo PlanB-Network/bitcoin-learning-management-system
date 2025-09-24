@@ -1,8 +1,7 @@
 import { cn } from '@blms/ui';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { useEffect, useRef, useState } from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-
+import { TbChevronDown } from 'react-icons/tb';
 import { DropdownItem } from './dropdown-item.tsx';
 
 const dropdownButtonVariant = cva('flex items-center gap-4 px-4 py-3 w-full', {
@@ -118,9 +117,9 @@ export const DropdownMenu = ({
               {forcePlaceholder ? (placeholder ?? activeItem) : activeItem}
             </span>
 
-            <MdKeyboardArrowDown
+            <TbChevronDown
               className={cn(
-                'ml-auto size-6 transition-transform ease-in-out text-neutral-400',
+                'ml-auto size-6 transition-transform ease-in-out text-neutral-400 shrink-0',
                 isOpen ? '-rotate-180' : 'rotate-0',
               )}
             />
