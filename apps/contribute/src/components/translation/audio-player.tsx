@@ -124,6 +124,27 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     setRawHeights(null);
   }, [url]);
 
+  // Clear waveform and audio state when audio is not available or during generation
+  useEffect(() => {
+    if (generating || !audioResourcePath || exists === false) {
+      // Stop and reset any currently loaded audio
+      if (audioRef.current) {
+        try {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+        } catch {
+          // ignore
+        }
+        audioRef.current = null;
+      }
+      // Reset playback and waveform state
+      setIsPlaying(false);
+      setCurrentTime(0);
+      setDuration(0);
+      setRawHeights(null);
+    }
+  }, [generating, audioResourcePath, exists]);
+
   // Fetch & decode audio ONCE to build a high-resolution amplitude array.
   useEffect(() => {
     if (exists !== true || duration === 0 || rawHeights) return;

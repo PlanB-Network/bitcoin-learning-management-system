@@ -141,6 +141,9 @@ function ChapterTranslationPage() {
   const [audioGenerating, setAudioGenerating] = useState(false);
   const [audioVersion, setAudioVersion] = useState(0);
 
+  // Lock Generate button after a generation until transcript is changed and re-validated
+  const [generateLocked, setGenerateLocked] = useState<boolean>(false);
+
   // ----------------------------
   // Original transcript language selector (same logic as compare view)
   // ----------------------------
@@ -180,6 +183,9 @@ function ChapterTranslationPage() {
     // Initialise attempts from the database field only – no cookie/sessionStorage fallback
     const fromDb = slide.audioTries ?? 0;
     setAudioAttempts(fromDb);
+    // Initialize generate lock based on persisted baseline for this slide
+    const baseline = readLastGeneration();
+    setGenerateLocked(Boolean(baseline && baseline.satisfied === false));
   }, [chapterData, currentSlideIndex]);
 
   // Video generation modal state
@@ -197,6 +203,52 @@ function ChapterTranslationPage() {
   const originalLanguageCode = courseData?.originalLanguage ?? 'en';
   const originalLanguageName = getLanguageName(originalLanguageCode);
   const targetLanguageName = getLanguageName(targetLanguage);
+
+  // Helpers to persist baseline transcript at generation time per slide
+  type LastGenerationBaseline = {
+    transcript: string;
+    time: number;
+    satisfied: boolean;
+  };
+  const buildSlideStorageKey = React.useCallback(() => {
+    const slide = chapterData?.slides?.[currentSlideIndex];
+    if (!slide) return '';
+    return `blms:lastGen:${courseId}:${targetLanguage}:${slide.partId}:${chapterId}:${slide.slideId}`;
+  }, [chapterData, currentSlideIndex, courseId, targetLanguage, chapterId]);
+
+  const readLastGeneration =
+    React.useCallback((): LastGenerationBaseline | null => {
+      if (typeof window === 'undefined') return null;
+      const key = buildSlideStorageKey();
+      if (!key) return null;
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw) as LastGenerationBaseline;
+        if (!parsed || typeof parsed.transcript !== 'string') return null;
+        return parsed;
+      } catch {
+        return null;
+      }
+    }, [buildSlideStorageKey]);
+
+  const writeLastGeneration = React.useCallback(
+    (value: LastGenerationBaseline | null) => {
+      if (typeof window === 'undefined') return;
+      const key = buildSlideStorageKey();
+      if (!key) return;
+      try {
+        if (value === null) {
+          localStorage.removeItem(key);
+        } else {
+          localStorage.setItem(key, JSON.stringify(value));
+        }
+      } catch {
+        // ignore storage errors
+      }
+    },
+    [buildSlideStorageKey],
+  );
 
   // Determine if an English version exists – for now assume true when original language is not English
   const hasEnglishVersion = originalLanguageCode.toLowerCase() !== 'en';
@@ -527,8 +579,9 @@ function ChapterTranslationPage() {
   ) => {
     if (!chapterData) return;
 
-    let previouslyTranscriptionValidated = false;
-    let previouslyAudioValidated = false;
+    // Capture current UI validation states to decide DB unvalidation
+    const wasTranscriptionValidated = validationStates.transcriptionValidated;
+    const wasAudioValidated = validationStates.audioValidated;
     setChapterData((prev) => {
       if (!prev) return prev;
 
@@ -539,15 +592,8 @@ function ChapterTranslationPage() {
             ? {
                 ...slide,
                 translatedContent,
-                transcriptionValidated: (() => {
-                  previouslyTranscriptionValidated =
-                    slide.transcriptionValidated ?? false;
-                  return false;
-                })(),
-                audioValidated: (() => {
-                  previouslyAudioValidated = slide.audioValidated ?? false;
-                  return false;
-                })(),
+                transcriptionValidated: false,
+                audioValidated: false,
               }
             : slide,
         ),
@@ -561,10 +607,9 @@ function ChapterTranslationPage() {
       audioValidated: false,
     }));
 
-    // If the transcript or audio was previously validated, immediately mark them unvalidated in DB
-    // Also reset audio tries since the transcription has changed
+    // If the transcript or audio was previously validated in UI, immediately mark them unvalidated in DB
     // Explicitly maintain under_review status while contributor is working
-    if (previouslyTranscriptionValidated || previouslyAudioValidated) {
+    if (wasTranscriptionValidated || wasAudioValidated) {
       trpcClient.content.updateCourseTranslationSlide
         .mutate({
           courseId,
@@ -581,37 +626,11 @@ function ChapterTranslationPage() {
     }
   };
 
-  const _handleValidatePresentation = async () => {
-    console.log('Validate presentation clicked');
-
-    if (!chapterData) return;
-    const currentSlide = chapterData.slides[currentSlideIndex];
-    if (!currentSlide) return;
-
-    try {
-      console.log('Starting presentation validation process...');
-
-      // Update the validation state in the database
-      console.log('Updating database validation state...');
-      await trpcClient.content.updateCourseTranslationSlide.mutate({
-        courseId,
-        language: targetLanguage,
-        chapterId,
-        slideId: currentSlide.slideId,
-        pptValidated: true,
-        status: TranslationStatus.UnderReview,
-      } as any);
-
-      // Update local state
-      setValidationStates((prev) => ({ ...prev, presentationValidated: true }));
-      console.log('Presentation validation completed successfully');
-    } catch (error) {
-      console.error('Error validating presentation:', error);
-    }
-  };
+  // Note: presentation validation is handled inline via ValidatedPptEditor.onValidationChange
 
   const handleGenerateAudio = async () => {
     if (audioAttempts >= MAX_AUDIO_TRIES) return;
+    if (audioGenerating) return; // Prevent multiple concurrent triggers
 
     console.log('Generate audio clicked');
 
@@ -620,6 +639,20 @@ function ChapterTranslationPage() {
     if (!currentSlide) return;
 
     try {
+      // Disable the Generate Audio button immediately
+      setAudioGenerating(true);
+
+      // Persist baseline transcript and lock further generations until change + re-validation
+      if (currentSlide) {
+        const currentTranscript = currentSlide.translatedContent || '';
+        writeLastGeneration({
+          transcript: currentTranscript,
+          time: Date.now(),
+          satisfied: false,
+        });
+        setGenerateLocked(true);
+      }
+
       const response = await fetch('/api/translation-audio/generate', {
         method: 'POST',
         headers: {
@@ -657,7 +690,6 @@ function ChapterTranslationPage() {
           language: targetLanguage,
           chapterId,
           slideId: currentSlide.slideId,
-          transcriptionValidated: false,
           audioValidated: false,
           audioTries: newAttempts,
           status: TranslationStatus.UnderReview,
@@ -669,12 +701,24 @@ function ChapterTranslationPage() {
       // Update local attempts state (no persistence to cookies / sessionStorage)
       setAudioAttempts(newAttempts);
 
+      // Keep local slide data in sync to avoid resetting attempts via effects
+      setChapterData((prev) => {
+        if (!prev) return prev;
+        const slideIdToUpdate = currentSlide.slideId;
+        return {
+          ...prev,
+          slides: prev.slides.map((s) =>
+            s.slideId === slideIdToUpdate
+              ? { ...s, audioTries: newAttempts }
+              : s,
+          ),
+        };
+      });
+
       const toolkitTaskId = data.toolkitTask?.task_id;
 
       // Start polling Language-Toolkit status if task_id present
       if (toolkitTaskId) {
-        setAudioGenerating(true);
-
         const pollStart = Date.now();
 
         const poll = async () => {
@@ -706,16 +750,20 @@ function ChapterTranslationPage() {
         };
 
         setTimeout(poll, 3000);
+      } else {
+        // No task id returned – re-enable the button to avoid permanent lock
+        setAudioGenerating(false);
       }
 
-      // Reset validation states - user must re-validate transcription and new audio
+      // Reset validation states - user must re-validate the new audio only
       setValidationStates((prev) => ({
         ...prev,
-        transcriptionValidated: false,
         audioValidated: false,
       }));
     } catch (error) {
       console.error('Error generating audio:', error);
+      // Re-enable on error to allow retry
+      setAudioGenerating(false);
     }
   };
 
@@ -734,6 +782,20 @@ function ChapterTranslationPage() {
     }
 
     try {
+      // Block re-validation if no change since last generation
+      const baseline = readLastGeneration();
+      const currentText = currentSlide.translatedContent || '';
+      if (
+        baseline &&
+        baseline.satisfied === false &&
+        currentText === baseline.transcript
+      ) {
+        console.warn(
+          'Cannot validate transcription: no changes since last audio generation',
+        );
+        return;
+      }
+
       await trpcClient.content.updateCourseTranslationSlide.mutate({
         courseId,
         language: targetLanguage,
@@ -742,14 +804,46 @@ function ChapterTranslationPage() {
         translatedContent: currentSlide.translatedContent || '',
         status: TranslationStatus.UnderReview,
         transcriptionValidated: true,
+        audioValidated: false,
       } as any);
 
       setValidationStates((prev) => ({
         ...prev,
         transcriptionValidated: true,
+        // Force re-validation of audio after transcript validation
+        audioValidated: false,
       }));
 
+      // Reset audio player view: clear local audio path and reset version so it hides until regeneration
+      setAudioVersion(0);
+
+      // Also sync local slide state so subsequent edits detect prior validation
+      setChapterData((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          slides: prev.slides.map((s) =>
+            s.slideId === currentSlide.slideId
+              ? {
+                  ...s,
+                  transcriptionValidated: true,
+                  translatedContent: currentSlide.translatedContent || '',
+                  audioValidated: false,
+                  audioResourcePath: null,
+                }
+              : s,
+          ),
+        };
+      });
+
       console.log('Transcription validated and saved successfully');
+
+      // If transcript differs from baseline, mark requirement satisfied and unlock generation
+      const afterBaseline = readLastGeneration();
+      if (afterBaseline && currentText !== afterBaseline.transcript) {
+        writeLastGeneration({ ...afterBaseline, satisfied: true });
+        setGenerateLocked(false);
+      }
     } catch (error) {
       console.error('Error saving transcription:', error);
       // You might want to show an error message to the user here
@@ -773,6 +867,19 @@ function ChapterTranslationPage() {
         audioValidated: true,
         status: TranslationStatus.UnderReview,
       } as any);
+
+      // Sync local slide state so it's reflected immediately
+      setChapterData((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          slides: prev.slides.map((s) =>
+            s.slideId === currentSlide.slideId
+              ? { ...s, audioValidated: true }
+              : s,
+          ),
+        };
+      });
     } catch (error) {
       console.error('Error validating audio:', error);
     }
@@ -1676,12 +1783,16 @@ function ChapterTranslationPage() {
                 size="m"
                 variant="primary"
                 disabled={
+                  audioGenerating ||
                   audioAttempts >= MAX_AUDIO_TRIES ||
-                  !validationStates.transcriptionValidated
+                  !validationStates.transcriptionValidated ||
+                  generateLocked
                 }
                 className={`shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-sm sm:text-base md:text-lg leading-none font-medium ${
+                  audioGenerating ||
                   audioAttempts >= MAX_AUDIO_TRIES ||
-                  !validationStates.transcriptionValidated
+                  !validationStates.transcriptionValidated ||
+                  generateLocked
                     ? 'opacity-60 cursor-not-allowed'
                     : ''
                 }`}

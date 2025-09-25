@@ -205,9 +205,24 @@ export const createRestTranslationDownloadRoutes = async (
             // Note: slideId comes from OnlyOffice callback URL parameters
 
             // Validate and download the document from OnlyOffice
-            assertOnlyofficeUrl(url);
-            console.log('====== 1', url);
-            const response = await fetch(url);
+            // OnlyOffice may return callback URLs with host "localhost" which
+            // is not reachable from within the API container. Rewrite the host
+            // to the configured ONLYOFFICE_BASE_URL while preserving path/query.
+            const originalUrl = new URL(url);
+            const baseUrl = new URL(ONLYOFFICE_BASE_URL);
+            const effectiveUrl = new URL(url);
+            if (originalUrl.host !== baseUrl.host) {
+              effectiveUrl.protocol = baseUrl.protocol;
+              effectiveUrl.host = baseUrl.host;
+            }
+
+            // SSRF guard against unexpected hosts (in non-dev)
+            assertOnlyofficeUrl(
+              `${effectiveUrl.protocol}//${effectiveUrl.host}`,
+            );
+
+            console.log('====== 1', effectiveUrl.toString());
+            const response = await fetch(effectiveUrl);
             if (!response.ok) {
               throw new Error(
                 `Failed to download document: ${response.statusText}`,

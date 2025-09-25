@@ -1,7 +1,8 @@
 import { Button } from '@blms/ui';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
-import { LanguageDropdown, ValidationCheckbox } from '../ui/index.ts';
+import { LanguageDropdown } from '../ui/language-dropdown.tsx';
+import { ValidationCheckbox } from '../ui/validation-checkbox.tsx';
 
 interface LanguageOption {
   code: string;
@@ -16,6 +17,8 @@ interface TranscriptionEditorProps {
   onGenerateAudio: () => void;
   onValidateTranscription: () => void;
   transcriptionValidated: boolean;
+  /** Whether audio generation is currently in progress to immediately disable button */
+  generating?: boolean;
   // New props for dynamic source language selector
   sourceLanguageOptions?: LanguageOption[];
   sourceLanguageLoading?: boolean;
@@ -41,6 +44,7 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
   onGenerateAudio,
   onValidateTranscription,
   transcriptionValidated,
+  generating = false,
   sourceLanguageOptions,
   sourceLanguageLoading = false,
   selectedSourceLanguage,
@@ -158,8 +162,8 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
             onClick={onGenerateAudio}
             size="m"
             variant="primary"
-            disabled={generateDisabled || !transcriptionValidated}
-            className={`shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-sm sm:text-base md:text-lg leading-none font-medium ${generateDisabled || !transcriptionValidated ? 'opacity-60 cursor-not-allowed' : ''}`}
+            disabled={generating || generateDisabled || !transcriptionValidated}
+            className={`shadow-[0_2px_3px_rgba(0,0,0,0.25)] flex gap-[10px] text-sm sm:text-base md:text-lg leading-none font-medium ${generating || generateDisabled || !transcriptionValidated ? 'opacity-60 cursor-not-allowed' : ''}`}
           >
             {t('translate.generateAudio', { defaultValue: 'Generate audio' })}
           </Button>
