@@ -91,7 +91,9 @@
     "sendLink": "Ndungikira linki",
     "signIn": "Injira",
     "trackProgress": "Kora ikonti canke winjire kugira ukurikirane intambwe zawe",
-    "tryAgain": "Subira ugerageze"
+    "tryAgain": "Subira ugerageze",
+    "loginNotAvailable1": "Ibikorwa vyo kwinjiramwo (Login) ntibiraboneka muri porogaramu yo kuri mudasobwa gushika ubu.",
+    "loginNotAvailable2": "Urashobora kuraba runo rubuga kugira winjire kandi ukabone konti yawe."
   },
   "bCert": {
     "bCertDescription": "₿-CERT ni ikibazo ca nyuma cikwije ca Bitcoin kigenewe gusuzuma ubumenyi bwawe ku bijanye na Bitcoin hamwe n’ibijanye nicocigwa. Iyo ushikanye hejuru ya 80%, uzoronka impamyabushobozi ya ₿-CERT yerekana ubuhinga bwawe mu bijanye n'uruganda rwa Bitcoin, kikazoshobora kwugurura amarembo y’akazi atandukanye mu buhinga bwa Bitcoin.",
@@ -1319,7 +1321,9 @@
         "questionsInExam": "Ibibazo biri mu kibazo",
         "studentsGraduated": "Abanyeshure barangije amashure",
         "thresholdToPass": "Urwego rwo gutsinda",
-        "totalQuestions": "Igiharuro cose c’ibibazo"
+        "totalQuestions": "Igiharuro cose c’ibibazo",
+        "overview": "Murirusangi",
+        "successRate": "Igipimo co gutsinda"
       },
       "menu": "Ikarata y’umwarimu",
       "profile": {
@@ -1359,6 +1363,26 @@
       },
       "discount": {
         "description": "Aha ushobora gukora no gucunga amacode y’ugusubira ku giciro cakino cigwa - yaba ayakoreshwa rimwe ku banyeshure bahawe buruse canke mu bindi bihe bimeze kimwe, canke akoreshwa kenshi mu bikorwa vyo kwamamaza."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Gutangaza impinduka",
+          "attendanceList": "Urutonde rw'abitabiriye",
+          "courseEnded": "Kino cigwa caheze.",
+          "courseNotStarted": "Kino cigwa ntikiratangutra.",
+          "enrolledStudents": "Abanyeshure bariyandikishije",
+          "hasEnrolled": "Yariyandikishije",
+          "hasGraduated": "Yarangije ishure afise amanota angana na {{score}}%",
+          "hasLeftReview": "Yasize inyigisho zogusubiramwo",
+          "hasLeftReviewAndComment": "Yasizeho isuzuma n'iciyumviro",
+          "notifyStudents": "Hari icahindutse? Menyesha abanyeshure bawe.",
+          "overallPerformance": "Uko vyagenze muri rusangi",
+          "recentActivity": "Ibikorwa bishasha",
+          "studentsRegistered": "Abanyeshure biyandikishije",
+          "upcomingClass": "Icirwa kizokwirikira"
+        }
       }
     }
   },
@@ -1430,7 +1454,30 @@
       "time": "Umwanya"
     },
     "tcDisclaimer": "Nemeye ko amakuru yanje ashobora gusangirwa n’abategura igikorwa kugira ngo mbone uburyo bwo kwinjira ahazobera igikorwa.",
-    "tcMustBeAccepted": "Ugomba kwemera amategeko n’amabwirizwa kugira uronke uburyo bwo gukubandanya"
+    "tcMustBeAccepted": "Ugomba kwemera amategeko n’amabwirizwa kugira uronke uburyo bwo gukubandanya",
+    "calendar": {
+      "displayCalendar": "Erekana Ikarangamisi",
+      "fullMap": "Ikarita yose",
+      "hideCalendar": "Nyegeza Ikirangamisi",
+      "inXMonths": "Mu mezi {{number}}",
+      "lastMonth": "Ukwezi guheze",
+      "nextMonth": "Ukwezi kuzoza",
+      "noEventsFound": "Nta bikorwa vyabonetse",
+      "thisMonth": "Kuno kwezi",
+      "today": "Uno musi",
+      "xMonthsAgo": "Haheze amezi {{number}}"
+    },
+    "eventInfos": {
+      "eventBooked": "Igikorwa caramaze gufatwa",
+      "eventType": "Ubwoko bw'igikorwa",
+      "numberOfSpots": "Igitigiri c'ibibanza",
+      "onlineAndInPerson": "Ku murongo hamwe n'ikibiriraho",
+      "secureYourSpot": "Bikisha ikibanza cawe",
+      "whatsPlanned": "Ibitegekanijwe"
+    },
+    "planBWeek": {
+      "pageTitle": "Iyinga ya Plan ₿"
+    }
   },
   "filters": {
     "categories": "Ubwoko",
@@ -2093,7 +2140,14 @@
     "review": "Gusubiramwo",
     "structure": "Inyubako",
     "taxes": "Amatagisi",
-    "weight": "Uburemere"
+    "weight": "Uburemere",
+    "booking": "Kwiyandikisha",
+    "full": "Yuzuye",
+    "info": "Inkuru",
+    "month": "Ukwezi",
+    "pricing": "Igiciro",
+    "rating": "Gutanga amanota",
+    "share": "Gusangira"
   },
   "youtubeChannels": {
     "pageTitle": "Imihora ya Youtube",
@@ -2129,5 +2183,25 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "navbar": {
+    "analytics": "Isesengura ry’ivyegeranyo",
+    "bookings": "Kubikisha ahantu",
+    "career": "Umwuga",
+    "discountCode": "Amakode y’igabanyamafaranga",
+    "learnAnytimeDescription": "Ivyigwa wiyigisha",
+    "learnAnytimeTitle": "Iga igihe ushakiye",
+    "manageCourses": "Shiraho kandi usuzume ivyigwa",
+    "myCalendar": "Ikirangamisi canje",
+    "myCareer": "Umwuga wanje",
+    "myCourses": "Ivyigwa vyanje",
+    "tabs": {
+      "admin": "Umuyobozi",
+      "learn": "Iga",
+      "teach": "Igisha"
+    },
+    "translationPanel": "Agace k’ugusobanura",
+    "tutorials": "Inyigisho",
+    "userRolesAllocation": "Gutanga imyanya y’abakoresha"
   }
 }

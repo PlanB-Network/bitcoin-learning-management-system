@@ -326,7 +326,8 @@
       "pageDescription": "Plan ₿ Academy offre un'ampia gamma di corsi su Bitcoin, sia gratuiti che a pagamento, da principianti a esperti. Ci sono corsi guidati da esperti del settore, o altri che si possono seguire in autonomia, adattandosi a ogni stile di apprendimento. La nostra missione è semplice: rendere lo studio di Bitcoin chiaro, coinvolgente e accessibile a tutti!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "La Plan ₿ School, guidata da Giacomo Zucco, offre programmi educativi intensivi di tre mesi progettati per colmare il divario tra l'apprendimento e le applicazioni reali. Oltre alle classi tradizionali, gli studenti si impegnano in progetti pratici guidati dalle aziende e in un bootcamp di prima classe dedicato ai migliori performer. Solo i migliori talenti avanzano dopo due round di selezione competitivi, garantendo che i migliori studenti finali siano completamente attrezzati per lanciare la loro carriera nell'industria del Bitcoin.",
-      "seeCourse": "Scopri il corso"
+      "seeCourse": "Scopri il corso",
+      "discover": "Scopri di più"
     },
     "format": {
       "hybrid": "Di persona/online",
@@ -412,7 +413,13 @@
       "writeThoughts": "Qui puoi scrivere i tuoi pensieri",
       "yesOfCourse": "sì, certo",
       "yesVeryMuch": "sì, molto"
-    }
+    },
+    "allCourses": "Tutti i corsi",
+    "continueLeftOff": "Continua da dove hai lasciato",
+    "courseSelector": "Ricerca corsi",
+    "noCoursesFound": "Nessun corso trovato. Prova a modificare i tuoi filtri.",
+    "plusXMore": "+ altri {{count}}",
+    "selectATopic": "Scegli un argomento"
   },
   "dashboard": {
     "account": "Account",
@@ -704,6 +711,90 @@
             "contributors": "Collaboratori",
             "courses": "Corsi",
             "coverage": "Copertura linguistica"
+          },
+          "toMonth": "A",
+          "toMonthPlaceholder": "Fino a quale mese?",
+          "totalLanguages": "Lingue in totale",
+          "year": "Anno"
+        },
+        "searchPlaceholder": "Cerca...",
+        "status": {
+          "assigned": "Assegnato",
+          "completed": "Completato",
+          "inProgress": "In corso",
+          "readyForReview": "Pronto per la revisione",
+          "todo": "Da correggere",
+          "underReview": "In revisione"
+        },
+        "table": {
+          "index": "Indice",
+          "language": "Lingua",
+          "username": "Nome utente",
+          "actions": "Azioni",
+          "course": "Corso"
+        },
+        "tabs": {
+          "contentManagement": "Content management",
+          "reports": "Report",
+          "requests": "Richieste",
+          "translate": "Traduci",
+          "userManagement": "User management"
+        },
+        "title": "Pannello delle traduzioni",
+        "toggle": {
+          "pendingRequest": "Richiesta in sospeso",
+          "rejectedRequests": "Richieste declinate"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Traduci"
+          },
+          "backToCourse": "Torna al corso",
+          "changeSpeed": "Cambia la velocità di riproduzione",
+          "chapterTitle": "Titolo del Capitolo",
+          "compare": "Confronta",
+          "compareDisabledTooltip": "Versione revisionata non disponibile",
+          "compareTooltip": "Confronta la versione originale con quella revisionata",
+          "comparison": {
+            "backToChapter": "Torna al capitolo",
+            "originalVersion": "Versione originale",
+            "translatedVersion": "Versione tradotta"
+          },
+          "description": "Inizia a tradurre i corsi in lingue specifiche.",
+          "forward15Seconds": "Avanza 15 secondi",
+          "imageNotFound": "Immagine non trovata",
+          "language": "Lingua",
+          "loadingPresentation": "Caricamento presentazione...",
+          "noContentAvailable": "Nessun contenuto disponibile",
+          "noCourses": "Nessuna traduzione necessaria al momento.",
+          "noOriginalContent": "Nessun contenuto originale",
+          "noPngSlides": "Non ci sono slide in PNG per questa presentazione",
+          "noSlidesFound": "Nessuna slide trovata",
+          "originalContent": "Contenuto originale",
+          "pause": "Pausa",
+          "play": "Riproduci",
+          "presentations": "Presentazioni",
+          "rewind15Seconds": "Riavvolgi di 15 secondi",
+          "selectLanguagesModal": {
+            "audioFile": "File audio",
+            "audioFileInfo": "Formati supportati: MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Il file audio è troppo grande. La dimensione massima è 50MB.",
+            "cancel": "Annulla",
+            "chooseAudioFile": "Seleziona Audio",
+            "chooseFolder": "Seleziona cartella",
+            "choosePptxFile": "Seleziona PPTX",
+            "chooseZip": "Seleziona ZIP",
+            "course": "Corso:",
+            "englishFilesRequired": "Assicurarti che i file caricati siano esclusivamente in inglese",
+            "existingUploadsInfo": "I file originali sono già stati caricati. Puoi tradurli senza doverli aggiungere di nuovo. Il caricamento di nuovi file sovrascriverà quelli esistenti.",
+            "folderUrl": "URL della cartella",
+            "invalidAudioFile": "Seleziona un file audio valido.",
+            "invalidPptxFile": "Seleziona un file PowerPoint (.pptx) valido.",
+            "missingFilesError": "Caricare i file da tradurre o inserisci un URL prima di iniziare la traduzione.",
+            "networkError": "Si è verificato un errore di rete. Controlla la tua connessione e riprova.",
+            "noAudioFileSelected": "Nessun file audio selezionato",
+            "noFolderSelected": "Nessuna cartella selezionata",
+            "noLanguagesAvailable": "Nessuna lingua disponibile per la traduzione."
           }
         }
       }
@@ -1914,5 +2005,8 @@
     "pageTitle": "Canali Youtube",
     "view": "Visualizza il canale Youtube",
     "watchTrailer": "Guarda il trailer"
+  },
+  "account": {
+    "account": "Account"
   }
 }
