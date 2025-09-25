@@ -326,7 +326,8 @@
       "pageDescription": "L'Académie Plan ₿ met à disposition une vaste sélection de cours sur Bitcoin, gratuits et premium, pour les débutants comme pour les experts. Que vous soyez guidé par des experts ou que vous appreniez à votre propre rythme, nos cours s'adaptent à tous les modes d'apprentissage. Notre mission est simple : rendre les connaissances sur Bitcoin claires, captivantes et accessibles à tous !",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Plan ₿ School, dirigée par Giacomo Zucco, propose des programmes éducatifs intensifs de trois mois conçus pour combler le fossé entre l'apprentissage et les applications concrètes. Au-delà des cours traditionnels, les étudiants participent à des projets pratiques dirigés par des entreprises et à un bootcamp de première classe dédié aux meilleurs performeurs. Seuls les meilleurs talents avancent après deux tours de sélection compétitifs, garantissant que les meilleurs étudiants finaux sont entièrement équipés pour lancer leur carrière dans l'industrie du Bitcoin.",
-      "seeCourse": "Découvrir le cours"
+      "seeCourse": "Découvrir le cours",
+      "discover": "Découvrir"
     },
     "format": {
       "hybrid": "En personne/en ligne",
@@ -412,7 +413,13 @@
       "writeThoughts": "Ici vous pouvez écrire vos pensées",
       "yesOfCourse": "oui, bien sûr",
       "yesVeryMuch": "oui, beaucoup"
-    }
+    },
+    "allCourses": "Tous les cours",
+    "continueLeftOff": "Continuez là où vous vous étiez arrêté",
+    "courseSelector": "Sélecteur de cours",
+    "noCoursesFound": "Aucun cours trouvé. Essayez d'ajuster vos filtres.",
+    "plusXMore": "+{{count}} de plus",
+    "selectATopic": "Sélectionnez un sujet"
   },
   "dashboard": {
     "account": "Compte",
@@ -800,7 +807,17 @@
             "title": "Sélectionnez les langues à traduire :",
             "uploadFiles": "Téléverser des fichiers complémentaires (optionnel)",
             "uploadFolder": "Téléverser un dossier (PPTX + TXT)",
-            "useEnglishLabel": "Le cours a déjà été traduit en anglais. Utiliser la version anglaise comme source ?"
+            "useEnglishLabel": "Le cours a déjà été traduit en anglais. Utiliser la version anglaise comme source ?",
+            "englishFilesRequired": "Veuillez télécharger des fichiers en anglais uniquement",
+            "networkError": "Une erreur de réseau s'est produite. Veuillez vérifier votre connexion et réessayer.",
+            "processingStarted": "La traduction a commencé ! Le processus peut prendre plusieurs minutes pour les grands cours.",
+            "startingTranslationStep": "Démarrage de la traduction...",
+            "timeoutError": "La demande de traduction a expiré. Le contenu du cours pourrait être trop volumineux. Veuillez réessayer ou contacter le support.",
+            "translationFailed": "Échec de la traduction. Veuillez vérifier les journaux et réessayer.",
+            "uploadAndTranslationStarted": "Les fichiers ont été téléchargés et la traduction a commencé ! Le processus peut prendre plusieurs minutes pour les grands cours.",
+            "uploadError": "Le téléchargement a échoué. Veuillez vérifier vos fichiers et réessayer.",
+            "uploadTimeoutError": "Le téléversement a expiré après 10 minutes. Veuillez réessayer avec des fichiers plus petits ou vérifier votre connexion.",
+            "uploadingFiles": "Téléversement des fichiers..."
           },
           "slideNavigation": {
             "next": "Suivant",
@@ -1469,6 +1486,14 @@
     },
     "planBWeek": {
       "pageTitle": "Plan ₿ Week"
+    },
+    "eventInfos": {
+      "eventBooked": "Événement réservé",
+      "eventType": "Type d'événement",
+      "numberOfSpots": "Nombre de places",
+      "onlineAndInPerson": "En ligne et en présentiel",
+      "secureYourSpot": "Réservez votre place",
+      "whatsPlanned": "Ce qui est prévu"
     }
   },
   "filters": {
@@ -2153,7 +2178,19 @@
     "month": "Mois",
     "rating": "Évaluations",
     "share": "Partager",
-    "week": "Semaine"
+    "week": "Semaine",
+    "booking": "Réservation",
+    "filters": "Filtres",
+    "full": "Complet",
+    "practice": "Pratique",
+    "pricing": "Tarification",
+    "resetAll": "Tout réinitialiser",
+    "resume": "Reprendre",
+    "searchTripleDot": "Rechercher...",
+    "theory": "Théorie",
+    "topic": "Sujet",
+    "type": "Type",
+    "viewAll": "Voir tout"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
@@ -2173,5 +2210,25 @@
     "november": "Novembre",
     "october": "Octobre",
     "september": "Septembre"
+  },
+  "navbar": {
+    "analytics": "Analytique",
+    "bookings": "Réservations",
+    "career": "Carrière",
+    "discountCode": "Codes de réduction",
+    "learnAnytimeDescription": "Cours en autonomie",
+    "learnAnytimeTitle": "Apprenez à tout moment",
+    "manageCourses": "Gérer les cours",
+    "myCalendar": "Mon calendrier",
+    "myCareer": "Ma carrière",
+    "myCourses": "Mes cours",
+    "tabs": {
+      "admin": "Administrateur",
+      "learn": "Apprendre",
+      "teach": "Enseigner"
+    },
+    "translationPanel": "Tableau de traduction",
+    "tutorials": "Tutoriels",
+    "userRolesAllocation": "Attribution des rôles de l'utilisateur"
   }
 }

@@ -91,7 +91,9 @@
     "sendLink": "Kirim tautan ke saya",
     "signIn": "Masuk",
     "trackProgress": "Buat akun atau masuk untuk tetap mengikuti progres anda",
-    "tryAgain": "Coba lagi"
+    "tryAgain": "Coba lagi",
+    "loginNotAvailable1": "Fitur login belum tersedia di aplikasi desktop untuk saat ini.",
+    "loginNotAvailable2": "Anda dapat mengunjungi situs web kami untuk masuk dan mengakses akun Anda."
   },
   "bCert": {
     "bCertDescription": "₿-CERT merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Bila Anda lulus dengan skor di atas 80%, Anda akan mendapat sertifikat ₿-CERT, yang dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
@@ -241,7 +243,7 @@
       "failed": "Gagal",
       "failedDiploma": "Untuk mendapatkan diploma Anda, Anda perlu mengikuti ujian akhir dan mendapatkan skor lebih dari 80% serta menyelesaikan kursus. Anda dapat mengikuti tes ini lagi setelah 24 jam.",
       "finalExam": "Ujian akhir",
-      "finalScore": "",
+      "finalScore": "Skor akhir",
       "findInformationChapter": "Temukan informasi lebih lanjut dalam bab ini :",
       "futureProof": "Bukti Masa Depan: Gelar Anda dilindungi secara permanen dan selalu valid.",
       "getCertificate": "Dapatkan sertifikat saya",
@@ -283,11 +285,11 @@
       "skipExamDescription": "Anda juga dapat melewati ujian dan langsung melanjutkan ke kesimpulan dengan mengklik tombol di bawah ini.",
       "skipExamGoConclusion": "Lewati ujian, lanjutkan ke kesimpulan",
       "skipGoConclusion": "Lewati, pergi ke kesimpulan",
-      "solidEffort": "",
+      "solidEffort": "Selamat! Anda telah menyelesaikan kursus ini, Anda telah memberikan usaha yang luar biasa. \nMeskipun kali ini Anda tidak lulus, setiap langkah yang Anda ambil adalah sebuah kemajuan. \nTeruslah maju dalam perjalanan belajar Anda!",
       "startExam": "Mulai ujian",
       "submit": "Kirim",
       "successDiploma": "Selamat! Anda telah sukses lulus ujian.\nDiploma Anda dapat diakses di dasbor pelajar Anda. Diploma sudah diberi <0>stempel waktu</0> untuk memastikan keasliannya.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Selamat! Anda telah berhasil lulus kursus ini.\nDiploma Anda sekarang tersedia di dasbor siswa Anda.",
       "successDiplomaTimeStamped": "Selamat! Anda telah sukses lulus ujian.\nDiploma Anda dapat diakses di dasbor pelajar Anda 10 jam setelah Anda mengikuti ujian. Hal ini dikarenakan teknologi <0>stempel waktu</0> yang digunakan untuk memastikan keasliannya.",
       "successfulPassedThreshold": "",
       "sureSubmit": "Apakah anda yakin untuk mengirimkan ujian anda ?",
@@ -309,7 +311,10 @@
       "weight": "Berat: {{weight}} %",
       "whyTimeStamp": "Cap Waktu pada Gelar Anda:\nMengapa Ini Penting",
       "wishTryAgain": "Anda dapat mengikuti ujian ulang setelah 24 jam.",
-      "yesSubmit": "Ya, kirimkan"
+      "yesSubmit": "Ya, kirimkan",
+      "examResults": "Hasil Ujian",
+      "reviewTest": "Ulasan",
+      "scoreAndDiploma": "Nilai & Diploma"
     },
     "explorer": {
       "buildPath": "Bangunlah jalanmu sendiri untuk menjelajah lebih dalam",
@@ -407,7 +412,10 @@
       "writeThoughts": "Di sini anda dapat menulis pemikiran Anda",
       "yesOfCourse": "ya, tentu saja",
       "yesVeryMuch": "sangat, iya"
-    }
+    },
+    "allCourses": "Semua kursus",
+    "continueLeftOff": "Lanjutkan pembelajaran Anda",
+    "courseSelector": "Pemilihan kursus"
   },
   "dashboard": {
     "account": "Akun",
@@ -1727,5 +1735,8 @@
     "pageTitle": "Saluran Youtube",
     "view": "Lihat Saluran Youtube",
     "watchTrailer": "Tonton cuplikannya"
+  },
+  "account": {
+    "account": "Akun"
   }
 }

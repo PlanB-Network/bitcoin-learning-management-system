@@ -1,6 +1,6 @@
 {
   "about": {
-    "activeContributors": "活動的な貢献メンバー",
+    "activeContributors": "活動的な貢献者",
     "commitmentContent": "ビットコインコミュニティに対する私たちのコミットメント： \n • オープンソースであり続ける \n • 質の高い教育コンテンツを提供する \n • コンテンツをできるだけ多くの言語に翻訳する \n • ビットコイン起業家の旅をサポートする",
     "commitmentTitle": "私たちのコミットメント",
     "coreTeamAjelexRole": "ノードコーディネーター",
@@ -45,18 +45,18 @@
     "emailAddress": "メールアドレス",
     "emailTip": "メールアドレスは必須ではありませんが、パスワードを忘れた場合に役立ちます！",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validateChange": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "メールアドレス変更の確認が完了しました",
+      "emailValidated": "有効なメールアドレスう",
+      "errorValidatingEmail": "メールアドレスの検証エラー",
+      "errorValidatingEmailChange": "メールアドレス変更の検証エラー",
+      "errorValidatingEmailChangeDescription": "メールアドレス変更の確認中にエラーが発生しました。リンクの有効期限が切れているか、既に使用された可能性があります。もう一度お試しください。",
+      "errorValidatingEmailDescription": "メールアドレスの検証中にエラーが発生しました。リンクの有効期限が切れているか、既に使用された可能性があります。もう一度お試しください。",
+      "successfullyChanged": "メールアドレスが{{email}}に変更されました。",
+      "successfullyValidated": "メールアドレスの確認が完了しました。",
+      "validateChange": "メールアドレス変更の確認",
+      "validatingEmail": "メールアドレスの検証",
+      "validatingEmailChange": "メールアドレス変更の確認",
+      "wontTakeLong": "長くはかかりません…"
     },
     "errors": {
       "displayNameTooShort": "表示名は2文字以上にしてください。",
@@ -91,7 +91,9 @@
     "sendLink": "リンクを送信する",
     "signIn": "サインイン",
     "trackProgress": "アカウントを作成するか、ログインして進捗状況を確認してください",
-    "tryAgain": "再トライ"
+    "tryAgain": "再トライ",
+    "loginNotAvailable1": "デスクトップアプリでは、現時点でログイン機能をご利用いただけません。",
+    "loginNotAvailable2": "ウェブサイトにアクセスしてログインすることで、アカウントをご利用いただけます。"
   },
   "bCert": {
     "bCertDescription": "₿-CERT は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 ₿-CERT 認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
@@ -101,7 +103,7 @@
     "download": "認定証をダウンロードする",
     "knowledgeableBitcoin": "ビットコインに詳しいですか？",
     "noBookExam": "まだ試験セッションの予定はありません。",
-    "organizeDescription": "素晴らしいアイデアです！あなたのコミュニティが Plan ₿ Network の一部なら、地域で ₿-CERT 試験セッションを主催することができます。憲章をお読みいただき、主催のための必須条件を満たしているか確認してください。 条件を満たしていれば、セッションスケジュールを組み、プラットフォームに追加することができます。",
+    "organizeDescription": "素晴らしいアイデアです！あなたのコミュニティがPlan ₿ Networkに参加している場合、ハブで₿-CERTセッションを開催できます。\nテスト開催の必須条件を満たしていることを確認するため、<0>憲章</0>をお読みください。条件を満たしている場合は、日程を設定し、イベントをプラットフォームに追加できます。",
     "organizeExam": "セッションを主催する",
     "organizeSessionConditions": "試験を主催するための必須条件を満たしていることを確認するために<0>憲章</0>をお読みください。\n条件を満たしている方には、地域コミュニティでのセッションを一緒に企画しましょう。\nご希望の方法でご連絡ください。",
     "organizeSessionHub": "あなたの地域で ₿-CERT 試験セッションを開催する",
@@ -111,7 +113,11 @@
     "pageTitle": "₿-CERT 試験を受ける",
     "readChart": "憲章を読む",
     "tweetText": "Plan ₿ Network (@planb_network) の ₿-CERT 試験に100点中{{score}}点の成績で合格できて、とてもうれしいです{{emoji}}\n\n{{certificateUrl}}",
-    "verify": "認定証の信頼性を確認する"
+    "verify": "認定証の信頼性を確認する",
+    "hostSessionConditions": "手順は以下の通りです：\n\n1. <0>憲章</0>を読む – コミュニティが必須の開催条件を満たしていることを確認してください\n2. 計画とスケジュール設定 – 条件を満たしている場合、日程を選びセッションを設定してください\n3. イベントを公開する   – 参加者が参加できるようPlan ₿ Networkプラットフォームに追加するため、ご連絡ください",
+    "myCertificates": "認定証",
+    "noTestSessions": "現在、試験セッションは利用できません",
+    "wantHostSession": "あなたの地域で₿-CERT試験セッションを開催してみませんか？"
   },
   "bet": {
     "contributeButton": "ヘルプと貢献について",
@@ -194,7 +200,7 @@
       "courseAddedToDashboard": "このコースは学生ダッシュボードに追加されました",
       "curriculum": "カリキュラム",
       "description": "説明",
-      "hasBeenProofreadBy": "このコースの校正は",
+      "hasBeenProofreadBy": "このコースの校正者：",
       "hasNotBeenProofread": "このコースはまだ校正されていません",
       "inPersonAccess": "直接参加される場合は、チケットをダウンロードする必要があります。",
       "learning": "学習の記録",
@@ -224,7 +230,7 @@
       "certificateAvailable": "提出から約10時間後に利用可能となります。",
       "certificateGeneration": "あなたの修了証書は発行済かつ ",
       "certificatePageOtherCourses": "その他の関連コース",
-      "completed": "",
+      "completed": "試験完了！",
       "congratulations": "おめでとうございます。このコースはこれで完了です！",
       "congratulationsPassed": "おめでとうございます。あなたは最終試験に<0>合格</0>しました！",
       "courseDiploma": "コース修了証書",
@@ -233,7 +239,7 @@
       "dontWorry": "このテストは学習の強化に役立ちます。 もし合格できなくても、24時間後に再トライすることができます。",
       "dontWorryRetake": "ご心配なく、24時間後に再トライすることができます。",
       "examAndDiploma": "試験と修了証書",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "プラットフォーム上で試験が利用可能な期間内に合格しなかった場合、学生は自動的に0点の評価を受けます。",
       "examCertificateCompletionText": "Plan ₿ Network は、{{username}}が「{{courseName}}」コースの修了証書を授与されたことを祝福いたします。",
       "examDetails": "試験は{{nb}} 問の多肢選択式で、各問題の正解は1つです。 タイ��ーが作動している限り、提出前にいつでも解答を変更することができます。",
       "examNotPassed": "最終試験を受け、80％以上の得点を取れば修了証書を取得し、コースを完全に完了することができます。 この修了証書には<0>タイムスタンプ</0>が押され、真正性を保証します。",
@@ -241,7 +247,7 @@
       "failed": "不合格",
       "failedDiploma": "修了証書を取得し、コースを完全に完了するには、最終試験で80％以上の点数を取らなければいけません。 24時間後に再試験を受けることができます。",
       "finalExam": "最終試験",
-      "finalScore": "",
+      "finalScore": "最終スコア",
       "findInformationChapter": "詳しくはこの章をご覧ください：",
       "futureProof": "将来証明： あなたの学位は永久に保護され、常に有効です。",
       "getCertificate": "修了証書を取得する",
@@ -252,9 +258,9 @@
       "instantVerification": "即時検証： 雇用主は、あなたの学位が真正であることや発行日を簡単に確認することができます。",
       "instructions": "指示：",
       "letsConclude": "すべて完了です。結論に進みましょう",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}}分",
+      "nbQuestions": "{{nb}} の質問",
+      "nextChapter": "次の章",
       "noGoBack": "いいえ、戻る",
       "notTranslatedYet": "申し訳ございませんが、選択された言語での最終試験はまだご利用いただけません。 他の言語に切り替えて続けてください。",
       "oneMinuteLeft": "残りあと1分",
@@ -264,13 +270,13 @@
       "passRate": "合格率80％です。",
       "planBTimeStamp": "Plan ₿ Network では、ブロックチェーンに裏打ちされたタイムスタンプ技術を用いて、あなたの学位を保護します。",
       "quitWithoutSubmitting": "おっと、あなたは答えを提出せずにページを去ったようです。 テストはキャンセルされます。",
-      "readyToTest": "",
+      "readyToTest": "知識を試す準備はできていますか？",
       "receiveDiploma": "修了証書を受け取る",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "正解",
+        "incorrect": "不正解",
+        "questions": "質問への回答",
+        "time": "使用時間"
       },
       "retakeExam": "再トライ",
       "retakeInstructions": "20分間で40問の問題に答えなければなりません。 問題は何度でも表示でき、最後に答えを提出することができます。",
@@ -283,13 +289,13 @@
       "skipExamDescription": "下のボタンをクリックすると、試験をスキップして直接結論に進むこともできます。",
       "skipExamGoConclusion": "試験をスキップして結論へ",
       "skipGoConclusion": "スキップしてまとめを見る",
-      "solidEffort": "",
+      "solidEffort": "コース修了おめでとう。しっかり取り組まれましたね。\n今回は合格できませんでしたが、一歩一歩が前進につながります。\n学びの旅をこれからも続けていきましょう！",
       "startExam": "試験を開始する",
       "submit": "提出する",
       "successDiploma": "おめでとう！あなたは無事に試験に合格しました。 \n修了証書は学生ダッシュボードで確認できます。これには<0>タイムスタンプが押されています。",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "おめでとう！あなたはコースを無事に修了しました。\n修了証書は学生ダッシュボードで確認できます。",
       "successDiplomaTimeStamped": "おめでとう！ あなたは無事に試験に合格しました。 \n修了証書は、受験後約10時間後に受講者ダッシュボードに表示されます。 この遅延は、<0>タイムスタンプ</0>技術によるもので、その真正性を保証するものです。",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "コース修了おめでとう。\nあなたはこのコースの合格基準を満たし、無事に卒業しました。\n修了証書はダッシュボードでご確認いただけます。",
       "sureSubmit": "試験を提出してもよろしいでしょうか？",
       "takeExam": "試験を受ける",
       "tamperProof": "いたずら防止： ブロックチェーンは、誰もあなたのクレデンシャルを改ざんしたり偽造したりできないことを保証します。",
@@ -305,11 +311,14 @@
       "tryAgain": "再トライ",
       "tryOneMoreTime": "もう一度トライしてみましょう！",
       "verifyDisplayName": "修了証書を作成するために使用されます。開始する前に、以下の表示名を確認してください。",
-      "viewExam": "",
-      "weight": "",
+      "viewExam": "テストを表示",
+      "weight": "重要度： {{weight}}%",
       "whyTimeStamp": "学位にタイムスタンプを押す\nこれが重要な理由",
       "wishTryAgain": "24時間後に再試験を受けることができます。",
-      "yesSubmit": "はい、提出します"
+      "yesSubmit": "はい、提出します",
+      "examResults": "試験結果",
+      "reviewTest": "レビュー",
+      "scoreAndDiploma": "スコアと修了証書"
     },
     "explorer": {
       "buildPath": "ラビットホールで自分だけの道を作ろう",
@@ -321,7 +330,8 @@
       "pageDescription": "Plan ₿ アカデミーは、世界中のビットコイン教育をシンプルにすることを目的としています。 様々な分野の専門家にキュレーションされた当アカデミーは、ビットコインのあらゆる側面を解明するための包括的なコースを提供しています。\n初心者から専門家まで、ご自身のペースで、あるいは毎週講師がフォローする形で、当アカデミーがビットコインの広大な世界をより深く理解する一助となれば幸いです。 私たちのコースの多くは、誰もが、どこにいても、質の高い教育にアクセスできるように無料で提供されています。",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Giacomo Zucco氏が主導する Plan ₿ Schoolは、学習と実社会での応用のギャップを埋めるためにデザインされた3ヶ月の集中教育プログラムを提供しています。 伝統的な授業だけでなく、学生たちは企業主導の実践的プロジェクトや、トップパフォーマー専用のファーストクラスブートキャンプに取り組みます。 2回の競争的な選考を経て優秀な人材だけが進級し、最終的にトップクラスの学生がビットコイン業界でのキャリアをスタートさせるための完全装備を手に入れられます。",
-      "seeCourse": "コースを探す"
+      "seeCourse": "コースを探す",
+      "discover": "発見する"
     },
     "format": {
       "hybrid": "直接参加／オンライン",
@@ -407,7 +417,14 @@
       "writeThoughts": "ここにあなたの意見を投稿することができます",
       "yesOfCourse": "はい、もちろんです",
       "yesVeryMuch": "はい、とてもそうです"
-    }
+    },
+    "allCourses": "すべてのコース",
+    "continueLeftOff": "中断場所から再開",
+    "courseSelector": "コース選択ツール",
+    "noCoursesFound": "コースが見つかりません。検索条件を変更してみてください。",
+    "plusXMore": "+{{count}}件以上",
+    "selectATopic": "トピックを選択",
+    "tryAdjustingFilters": "検索条件を変更してみてください"
   },
   "dashboard": {
     "account": "アカウント",
@@ -426,7 +443,9 @@
         "profession": "職業",
         "resultsRemaining": "{{results}}の残り結果",
         "seeMore": "さらに見る",
-        "viewCV": "履歴書を見る"
+        "viewCV": "履歴書を見る",
+        "candidateFile": "この文字列は管理ダッシュボードに表示され、学生が就職活動のためにアップロードしたファイルを確認するために使用されます",
+        "file": "これは単に「ファイル」であり、学生がインポートしたPDFを示すものです"
       },
       "confirmRemoval": "削除する",
       "coupons": {
@@ -469,13 +488,13 @@
         "generateNewCodes": "新しいコードを生成する",
         "maximumNumberOfUse": "最大使用回数",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "五十音順",
+          "highLow": "降順",
+          "lowHigh": "昇順",
+          "sortBy": "並べ替え：",
+          "za": "逆五十音順"
         },
-        "noCouponsFound": "",
+        "noCouponsFound": "クーポンが見つかりませんでした。",
         "numberOfCodes": "生成したいコード数は？",
         "numberOfCodesPlaceholder": "番号を入力する",
         "productCourse": "コース",
@@ -519,7 +538,123 @@
       "type": "種類",
       "upcomingBookings": "今後の予約状況",
       "upcomingBookingsSubtitle": "ここでは、すべての直接参加イベントの参加者リストをダウンロードできます。",
-      "userRolesAllocation": "ユーザーの役割分担"
+      "userRolesAllocation": "ユーザーの役割分担",
+      "translation": "翻訳パネル",
+      "translationPanel": {
+        "actions": {
+          "accept": "同意",
+          "delete": "削除",
+          "reject": "拒否"
+        },
+        "addContributor": {
+          "addLanguage": "別の言語を追加する",
+          "assign": "アサイン",
+          "assignedLanguages": "アサイン済の言語",
+          "assigning": "アサイン中...",
+          "assignmentSuccess": "貢献者が正常にアサインされました！",
+          "confirm": "確認",
+          "findContributor": "貢献者を探す",
+          "language": "言語",
+          "noUsers": "貢献者がいません",
+          "searchUsers": "貢献者を検索中...",
+          "selectLanguage": "言語選択",
+          "selectedUsers": "選択された貢献者：",
+          "title": "貢献者を追加"
+        },
+        "admin": "管理者",
+        "comingSoon": {
+          "courses": "コース一覧は近日公開予定",
+          "coverage": "言語対応状況の表示機能はまもなく提供開始"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "アサイン",
+            "backToContentManagement": "コンテンツ管理に戻る",
+            "reassign": "再アサイン",
+            "view": "表示"
+          },
+          "assignModal": {
+            "assign": "アサイン",
+            "assigning": "アサイン中...",
+            "assigningCourse": "アサインされたコース：",
+            "assignmentSuccess": "コースがアサインされました！",
+            "cancel": "キャンセル",
+            "chooseContributor": "貢献者を選択...",
+            "courseInfo": "コース情報",
+            "selectContributor": "貢献者を選択",
+            "title": "貢献者にコースをアサイン"
+          },
+          "description": "コース翻訳の管理と翻訳者のアサイン",
+          "noCourses": "開講中のコースはありません",
+          "noCoursesFiltered": "指定した条件に一致するコースはありません",
+          "notAssigned": "未アサイン",
+          "reassignModal": {
+            "cancel": "キャンセル",
+            "chooseNewContributor": "新しい貢献メンバーを選択...",
+            "courseInfo": "コース情報",
+            "currentlyAssignedTo": "現在のアサイン先：",
+            "reassign": "再アサイン",
+            "reassigning": "再アサイン中...",
+            "reassigningCourse": "再アサイン中のコース：",
+            "reassignmentSuccess": "コースの再アサインが正常に完了しました！",
+            "selectNewContributor": "新規貢献メンバーを選択",
+            "title": "コースを新しい貢献メンバーに再アサイン",
+            "warning": {
+              "description": "レビュー済みの章は再アサインされません。",
+              "title": "重要なお知らせ"
+            }
+          },
+          "status": {
+            "assigned": "アサイン済み",
+            "notAssigned": "未アサイン",
+            "readyForReview": "レビューの準備が整いました",
+            "underReview": "レビュー中"
+          },
+          "table": {
+            "actions": "アクション",
+            "contributor": "貢献メンバー",
+            "course": "コース",
+            "index": "索引",
+            "language": "言語",
+            "progress": "進行中",
+            "status": "ステータス"
+          },
+          "title": "コンテンツ管理"
+        },
+        "courseDetails": {
+          "actions": "アクション",
+          "assignedTo": "アサイン先：",
+          "chapterIndex": "章",
+          "chapterTitle": "タイトル",
+          "chaptersAndProgress": "章と進捗",
+          "chaptersCompleted": "完了した章",
+          "courseIndex": "コース索引",
+          "courseInformation": "コース情報",
+          "courseName": "コース名",
+          "currentContributor": "現在の貢献者",
+          "errorLoadingDetails": "コース詳細の読み込みに失敗しました",
+          "language": "言語",
+          "noChapters": "このコースには利用可能な章がありません",
+          "noContributor": "アサインされている貢献者はいません",
+          "partTitle": "節{{index}}：{{title}}",
+          "progress": "進捗状況",
+          "status": "ステータス",
+          "translationStatus": "翻訳状況"
+        },
+        "courseNotFound": "コースが見つかりません",
+        "messages": {
+          "noPendingRequests": "保留中の校正リクエストはありません。",
+          "noPendingRequestsSearch": "\"{{query}}\"に一致する校正リクエストはありません。",
+          "noRejectedRequests": "拒否された校正リクエストはありません。",
+          "noRejectedRequestsSearch": "\"{{query}}\"に一致する拒否された校正リクエストはありません。"
+        },
+        "modal": {
+          "acceptRequest": "リクエストを許可",
+          "acceptTranslationRequest": "校正リクエストを許可",
+          "accepting": "許可中...",
+          "cancel": "キャンセル"
+        }
+      }
     },
     "announcements": {
       "groups": {
@@ -845,7 +980,7 @@
       "professor": "講師：",
       "resumeLesson": "Resume the lesson",
       "seeDetails": "詳細を見る",
-      "seeProgress": "進捗状況はコチラ。",
+      "seeProgress": "進捗状況をここから見る。",
       "seeTheCourse": "コースを見る",
       "shareOn": "共有する：",
       "startCourse": "コースの開始または完了する",
@@ -853,7 +988,7 @@
       "viewDetails": "詳細を見る",
       "whereYouAre": "あなたがどこにいるのか見てみましょう！",
       "yourCertificate": "認定証",
-      "yourProgress": "あなたの進捗："
+      "yourProgress": "あなたの進捗状況："
     },
     "profile": {
       "cancel": "キャンセル",
@@ -1033,7 +1168,7 @@
       "missedP2": "心配ありません！ ネットワーク内で行われた過去のイベントのリプレイをすべて保存していますので、見逃したイベントを自由にキャッチアップすることができます。"
     },
     "newEvent": {
-      "button": "イベントを追加する",
+      "button": "イベントを追加",
       "description": "もちろんです！すべてのビットコインイベントはここで広めることができるますので、新しいイベントの追加するのは大歓迎です : )",
       "subtitle": "世界中の人々にビットコインを広めよう",
       "title": "イベントを追加しますか？"
@@ -1464,7 +1599,7 @@
     "backTutorials": "すべてのチュートリアルに戻る",
     "business": {
       "description": "",
-      "shortDescription": "",
+      "shortDescription": "ビットコイン決済の受け入れと財務管理",
       "title": ""
     },
     "computer-security": {
@@ -1674,7 +1809,7 @@
     "producer": "プロデューサー",
     "professor": "講師",
     "professors": "講師陣",
-    "progress": "進捗",
+    "progress": "進捗状況",
     "project": "プロジェクト",
     "projects": "プロジェクト",
     "protocol": "プロトコル",
@@ -1727,5 +1862,8 @@
     "pageTitle": "Youtubeチャンネル",
     "view": "Youtubeチャンネルを見る",
     "watchTrailer": "予告編を見る"
+  },
+  "account": {
+    "account": "アカウント"
   }
 }

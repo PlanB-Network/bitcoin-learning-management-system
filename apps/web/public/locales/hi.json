@@ -45,18 +45,18 @@
     "emailAddress": "ईमेल पता",
     "emailTip": "ईमेल अनिवार्य नहीं है: यदि आप अपना पासवर्ड भूल जाते हैं तो यह तब उपयोगी हो सकता है!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validateChange": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "ईमेल परिवर्तन सत्यापित हुआ",
+      "emailValidated": "ईमेल सत्यापित किया गया है",
+      "errorValidatingEmail": "ईमेल सत्यापन में गड़बड़ी",
+      "errorValidatingEmailChange": "ईमेल परिवर्तन के सत्यापन में गड़बड़ी",
+      "errorValidatingEmailChangeDescription": "आपके ईमेल परिवर्तन के सत्यापन करते समय गड़बड़ी हुई है, ऐसा लगता है कि लिंक का समय समाप्त हो चुका है या पहले ही इसका उपयोग किया जा चुका है। कृपया पुनः प्रयास करें।",
+      "errorValidatingEmailDescription": "आपके ईमेल परिवर्तन के सत्यापन करते समय गड़बड़ी हुई है, ऐसा लगता है कि लिंक का समय समाप्त हो चुका है या पहले ही इसका उपयोग किया जा चुका है। कृपया पुनः प्रयास करें।",
+      "successfullyChanged": "आपका ईमेल सफलतापूर्वक {{email}} में बदल दिया गया है।",
+      "successfullyValidated": "आपका ईमेल सफलतापूर्वक सत्यापित किया गया है।",
+      "validateChange": "ईमेल परिवर्तन की पुष्टि की जा रही है",
+      "validatingEmail": "ईमेल सत्यापन किया जा रहा है",
+      "validatingEmailChange": "ईमेल परिवर्तन का सत्यापन किया जा रहा है",
+      "wontTakeLong": "इसमें ज्यादा समय नहीं लगेगा..।"
     },
     "errors": {
       "displayNameTooShort": "प्रदर्शित नाम में कम से कम 2 अक्षर होने चाहिए।",
@@ -91,7 +91,9 @@
     "sendLink": "मुझे एक लिंक भेजें",
     "signIn": "साइन इन करें",
     "trackProgress": "अपनी प्रगति का हिसाब रखने के लिए एक खाता बनाएं या लॉग इन करें",
-    "tryAgain": "पुनः प्रयास करें"
+    "tryAgain": "पुनः प्रयास करें",
+    "loginNotAvailable1": "अभी तक डेस्कटॉप ऐप में लॉगिन सुविधाएँ उपलब्ध नहीं हैं।",
+    "loginNotAvailable2": "आप हमारी वेबसाइट पर जाकर लॉग इन कर सकते हैं और अपने खाते का उपयोग कर सकते हैं।"
   },
   "bCert": {
     "bCertDescription": "₿-CERT एक महत्वपूर्ण बिटकॉइन परीक्षा है, जो आपकी बिटकॉइन और इससे जुड़े विषयों की जानकारी को परखने के लिए बनाई गई है। यदि आप 80% से अधिक अंक प्राप्त करते हैं, तो आपको ₿-CERT प्रमाणपत्र मिलेगा, जो बिटकॉइन उद्योग में आपकी विशेषज्ञता साबित कर सकता है और इस क्षेत्र में विभिन्न नौकरियों के अवसर खोल सकता है।",
@@ -111,7 +113,10 @@
     "pageTitle": "₿-CERT परीक्षण सत्र में भाग लें",
     "readChart": "घोषणापत्र पढ़ें",
     "tweetText": "मैं @planb_network में {{score}}/100 अंकों के साथ ₿-CERT पास करके बहुत खुश हूँ! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "अपने प्रमाण पत्र की प्रामाणिकता की जांच करें"
+    "verify": "अपने प्रमाण पत्र की प्रामाणिकता की जांच करें",
+    "myCertificates": "मेरे प्रमाणपत्र",
+    "noTestSessions": "वर्तमान में कोई परीक्षा सत्र उपलब्ध नहीं हैं",
+    "wantHostSession": "क्या अपने स्थानीय केंद्र में एक ₿-CERT परीक्षा सत्र की मेजबानी करना चाहते हैं?"
   },
   "bet": {
     "contributeButton": "सहायता और योगदान करें",
@@ -224,7 +229,7 @@
       "certificateAvailable": "यह जमा करने के लगभग 10 घंटे बाद उपलब्ध होगा।",
       "certificateGeneration": "आपका डिप्लोमा बनाया जा रहा है और ",
       "certificatePageOtherCourses": "अन्य संबंधित पाठ्यक्रम",
-      "completed": "",
+      "completed": "परीक्षा समाप्त हुई!",
       "congratulations": "बधाई हो, आप सफलतापूर्वक इस पाठ्यक्रम के अंत तक पहुंच चुके है!",
       "congratulationsPassed": "बधाई हो, आपने अंतिम परीक्षा <0> पास </0> कर ली है!",
       "courseDiploma": "पाठ्यक्रम डिप्लोमा",
@@ -233,7 +238,7 @@
       "dontWorry": "गलती करने की चिंता न करें; यह परीक्षा आपके सीखने को मजबूत करने के लिए बनाई गई है। अगर आप पास नहीं होते, तो 24 घंटे बाद इसे फिर से दे सकते हैं।",
       "dontWorryRetake": "चिंता ना करें, आप 24 घंटे बाद फिर से परीक्षा दे सकते हैं।",
       "examAndDiploma": "परीक्षा और डिप्लोमा",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "यदि परीक्षा की उपलब्धता अवधि के दौरान छात्र प्लेटफॉर्म पर उतीर्ण नहीं होता है, तो छात्र स्वतः रूप से 0 श्रेणी प्राप्त करेगा।",
       "examCertificateCompletionText": "Plan ₿ Network \"{{courseName}}\" पाठ्यक्रम डिप्लोमा प्राप्त करने पर {{username}} को बधाई देने में खुशी महसूस करता है।",
       "examDetails": "परीक्षा में {{nb}}  बहुवैकल्पिक प्रश्न हैं, जिनमें से हर एक का सिर्फ एक सही उत्तर है। जब तक टाइमर चालू है, आप अपने उत्तर कभी भी बदल सकते हैं।",
       "examNotPassed": "आपको डिप्लोमा पाने और कोर्स पूरा करने के लिए अंतिम परीक्षा देनी होगी, और 80% से ज़्यादा अंक लाने होंगे। इस डिप्लोमा पर इसकी प्रामाणिकता सुनिश्चित करने के लिए <0>समय-मुद्रण (टाइम स्टैंप)</0> लगा होगा।",
@@ -241,7 +246,7 @@
       "failed": "विफल",
       "failedDiploma": "डिप्लोमा पाने और पाठ्यक्रम को पूरी तरह समाप्त करने के लिए आपको अंतिम परीक्षा में 80% से ज्यादा अंक लाने होंगे। आप 24 घंटे बाद फिर से परीक्षा दे सकते हैं।",
       "finalExam": "अंतिम परीक्षा",
-      "finalScore": "",
+      "finalScore": "अंतिम प्राप्तांक",
       "findInformationChapter": "इस अध्याय में अधिक जानकारी पाएं :",
       "futureProof": "भविष्य-सुरक्षित: आपका डिप्लोमा स्थायी रूप से सुरक्षित है और हमेशा मान्य रहेगा।",
       "getCertificate": "मेरा डिप्लोमा प्राप्त करें",
@@ -252,9 +257,9 @@
       "instantVerification": "तत्काल सत्यापन: नियोक्ता आसानी से आपके डिप्लोमा की प्रामाणिकता और जारी करने की तारीख की पुष्टि कर सकते हैं।",
       "instructions": "निर्देश:",
       "letsConclude": "सब हो गया, आइए समाप्त करें",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}} मिनट",
+      "nbQuestions": "{{nb}} प्रश्न",
+      "nextChapter": "अगला अध्याय",
       "noGoBack": "नहीं, वापस जायें",
       "notTranslatedYet": "माफ करें, लेकिन अंतिम परीक्षा सुविधा अभी आपकी चुनी हुई भाषा में उपलब्ध नहीं है। आप जारी रखने के लिए किसी अन्य भाषा का चयन कर सकते हैं।",
       "oneMinuteLeft": "आपके पास केवल 1 मिनट बचा है",
@@ -264,13 +269,13 @@
       "passRate": "उत्तीर्ण होने की दर 80% है।",
       "planBTimeStamp": "Plan ₿ Network में, हम आपकी डिप्लोमा को ब्लॉकचेन द्वारा समर्थित टाइम-स्टैम्पिंग (समय-मुद्रण) तकनीक से सुरक्षित करते हैं।",
       "quitWithoutSubmitting": "ओह! ऐसा लगता है कि आपने जवाब जमा किए बिना ही पेज छोड़ दिया। इससे परीक्षण रद्द हो गया।",
-      "readyToTest": "",
+      "readyToTest": "क्या आप अपने ज्ञान की परीक्षा के लिए तैयार हैं?",
       "receiveDiploma": "अपना डिप्लोमा प्राप्त करें",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "सही उत्तर",
+        "incorrect": "गलत उत्तर",
+        "questions": "प्रश्नों का उत्तर दिया",
+        "time": "समय"
       },
       "retakeExam": "फिर से परीक्षा दें",
       "retakeInstructions": "आपके पास 40 प्रश्नों के उत्तर देने के लिए 20 मिनट का समय हैं। हर प्रश्न का केवल एक सही उत्तर है। आप आगे पीछे के प्रश्नों के बीच जा सकते हैं और अंत में अपने उत्तर जमा कर सकते हैं।",
@@ -278,18 +283,18 @@
       "score": "आपके अंक है",
       "singleAttempt": "एकल प्रयास परीक्षा",
       "singleAttemptAvailability": "यह परीक्षा ऑनलाइन उपलब्ध है: {{date}} पर",
-      "singleAttemptPrecaution": "",
+      "singleAttemptPrecaution": "शुरू करने से पहले, कृपया सुनिश्चित करें कि आपका इंटरनेट कनेक्शन स्थिर है। यह एक ही बार दी जाने वाली परीक्षा है, अगर कनेक्शन बाधित होता है, तो आप दोबारा कोशिश नहीं कर पाएंगे।",
       "skipExam": "परीक्षा छोड़ दें",
       "skipExamDescription": "आप नीचे दिए गए बटन पर क्लिक कर परीक्षा छोड़कर सीधे निष्कर्ष पर जा सकते हैं।",
       "skipExamGoConclusion": "परीक्षा छोड़ें, निष्कर्ष पर जाएं",
       "skipGoConclusion": "आगे बढ़ें, निष्कर्ष पर जाएं",
-      "solidEffort": "",
+      "solidEffort": "बधाई हो, आपने पाठ्यक्रम पूरा कर लिया, आपने काफ़ी मेहनत की।\nइस बार आप उतीर्ण नहीं हुए, लेकिन हर कदम प्रगति की ओर है।\nअपनी सीखने की यात्रा को जारी रखें!",
       "startExam": "परीक्षा शुरू करें",
       "submit": "जमा करें",
       "successDiploma": "बधाई हो! आपने परीक्षा सफलतापूर्वक पास कर ली है।\nआपका डिप्लोमा आपके शिक्षार्थी डैशबोर्ड में उपलब्ध है। इसकी प्रामाणिकता सुनिश्चित करने के लिए इसे <0>टाइम-स्टैम्प (समय-मुद्रित)</0> किया गया है।",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "बधाई हो! आपने पाठ्यक्रम में सफलतापूर्वक उतीर्ण हो चुके है। \nअब आपका डिप्लोमा आपके छात्र डैशबोर्ड में उपलब्ध है।",
       "successDiplomaTimeStamped": "बधाई हो! आप सफलतापूर्वक परीक्षा पास कर चुके हैं। \nआपका डिप्लोमा आपके शिक्षार्थी डैशबोर्ड में परीक्षा देने के करीब 10 घंटे बाद उपलब्ध होगा। यह देरी <0>टाइम-स्टैम्प (समय-मुद्रित)</0> तकनीक के कारण है, जो इसकी विश्वसनीयता सुनिश्चित करती है।",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "बधाई हो, आपने पाठ्यक्रम पूरा कर लिया है!\nआपने इस पाठ्यक्रम में उतीर्ण होने की सीमा को सफलतापूर्वक पूरा किया और अब आप स्नातक हैं।\nआप अपना डिप्लोमा अपने डैशबोर्ड में पा सकते हैं।",
       "sureSubmit": "क्या आप वाकई अपनी परीक्षा जमा करना चाहते हैं?",
       "takeExam": "परीक्षा दें",
       "tamperProof": "छेड़छाड़-रोधी: ब्लॉकचेन यह सुनिश्चित करता है कि कोई भी आपके प्रमाण पत्रों को बदल या नकली नहीं बना सकता।",
@@ -305,11 +310,14 @@
       "tryAgain": "पुनः प्रयास करें",
       "tryOneMoreTime": "एक बार फिर से प्रयास करें!",
       "verifyDisplayName": "शुरू करने से पहले, कृपया नीचे अपना प्रदर्शित नाम जांच लें, क्योंकि इसका उपयोग आपका डिप्लोमा बनाने के लिए किया जाएगा।",
-      "viewExam": "",
-      "weight": "",
+      "viewExam": "परीक्षा देखें",
+      "weight": "वजन: {{weight}}%",
       "whyTimeStamp": "अपने डिप्लोमा को समय-मुद्रित करना:\nयह क्यों महत्वपूर्ण है",
       "wishTryAgain": "यदि आप पुनः प्रयास करना चाहते हैं, तो परीक्षा 24 घंटे में उपलब्ध होगी।",
-      "yesSubmit": "हां, जमा करें"
+      "yesSubmit": "हां, जमा करें",
+      "examResults": "परीक्षा परिणाम",
+      "reviewTest": "समीक्षा",
+      "scoreAndDiploma": "प्राप्तांक और डिप्लोमा"
     },
     "explorer": {
       "buildPath": "अपनी खुद की यात्रा बनाएं",
@@ -321,7 +329,8 @@
       "pageDescription": "Plan ₿ अकादमी का लक्ष्य दुनिया भर में बिटकॉइन शिक्षा को सरल बनाना है। विभिन्न क्षेत्रों के विशेषज्ञों द्वारा तैयार किए गए हमारे पाठ्यक्रम बिटकॉइन के हर पहलू को स्पष्ट करने के लिए बनाए गए हैं।\nचाहे आप शुरुआत कर रहे हों या फिर आप विशेषज्ञ बनना चाहते हों, अपनी गति से सीखें या साप्ताहिक रूप से प्रोफेसर के मार्गदर्शन में, हमारी अकादमी आपकी बिटकॉइन की समझ को गहरा करने में मदद कर सकती है। हमारे कई पाठ्यक्रम पूरी तरह निःशुल्क हैं, ताकि कोई भी, कहीं भी, गुणवत्तापूर्ण शिक्षा प्राप्त कर सके।",
       "planbSchool": "Plan ₿ विद्यालय",
       "planbSchoolHeadline": "Plan ₿ स्कूल, जिसे जियाकोमो जुको चलाते हैं, तीन महीने का गहन शैक्षिक कार्यक्रम प्रदान करता है, जो सीखने और वास्तविक दुनिया के उपयोग के बीच की दूरी को कम करने के लिए बनाया गया है। पारंपरिक कक्षाओं के अलावा, शिक्षार्थी कंपनियों द्वारा संचालित व्यावहारिक परियोजनाओं में भाग लेते हैं और उत्कृष्ट प्रदर्शन करने वालों के लिए एक विशेष बूटकैम्प में शामिल होते हैं। केवल सबसे प्रतिभाशाली शिक्षार्थी दो कठिन चयन चरणों को पार करने के बाद आगे बढ़ते हैं, जिससे अंतिम चयनित छात्र बिटकॉइन उद्योग में अपना करियर शुरू करने के लिए पूरी तरह तैयार हो जाते हैं।",
-      "seeCourse": "पाठ्यक्रम की जांच-पड़ताल करें"
+      "seeCourse": "पाठ्यक्रम की जांच-पड़ताल करें",
+      "discover": "खोजिए"
     },
     "format": {
       "hybrid": "प्रत्यक्ष/ऑनलाइन",
@@ -407,7 +416,14 @@
       "writeThoughts": "यहां आप अपने विचार लिख सकते हैं",
       "yesOfCourse": "हां, ज़रूर",
       "yesVeryMuch": "हां, बिल्कुल"
-    }
+    },
+    "allCourses": "सभी पाठ्यक्रम",
+    "continueLeftOff": "जहां आपने छोड़ा था वहां से आगे जारी रखें",
+    "courseSelector": "पाठ्यक्रम चयन",
+    "noCoursesFound": "कोई पाठ्यक्रम नहीं मिला। अपने फ़िल्टर को बदलने का प्रयास करें।",
+    "plusXMore": "+{{count}} अधिक",
+    "selectATopic": "एक विषय चुनें",
+    "tryAdjustingFilters": "अपने फ़िल्टर में बदलाव करने की कोशिश करें"
   },
   "dashboard": {
     "account": "खाता",
@@ -426,7 +442,9 @@
         "profession": "पेशा",
         "resultsRemaining": "{{results}} परिणाम शेष हैं",
         "seeMore": "और देखें",
-        "viewCV": "बायोडाटा (सीवी) देखें"
+        "viewCV": "बायोडाटा (सीवी) देखें",
+        "candidateFile": "उम्मीदवार के फ़ाइल",
+        "file": "फ़ाइल"
       },
       "confirmRemoval": "हटाने की पुष्टि करें",
       "coupons": {
@@ -469,13 +487,13 @@
         "generateNewCodes": "नया कोड उत्पन्न करें",
         "maximumNumberOfUse": "अधिकतम उपयोग की संख्या",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "ए-ज़ेड",
+          "highLow": "उच्च - निम्न",
+          "lowHigh": "निम्न - उच्च",
+          "sortBy": "द्वारा क्रमबद्ध करें",
+          "za": "जेड-ए"
         },
-        "noCouponsFound": "",
+        "noCouponsFound": "कोई कूपन नहीं मिले।",
         "numberOfCodes": "आप कितने कोड उत्पन्न करना चाहते हैं?",
         "numberOfCodesPlaceholder": "एक संख्या टाइप करें",
         "productCourse": "पाठ्यक्रम",
@@ -519,16 +537,281 @@
       "type": "प्रकार",
       "upcomingBookings": "आगामी बुकिंग्स",
       "upcomingBookingsSubtitle": "यहां आप सभी प्रत्यक्ष कार्यक्रमों के लिए प्रतिभागियों की सूची डाउनलोड कर सकते हैं।",
-      "userRolesAllocation": "उपयोगकर्ता भूमिकाओं का वितरण"
+      "userRolesAllocation": "उपयोगकर्ता भूमिकाओं का वितरण",
+      "translation": "अनुवाद पैनल",
+      "translationPanel": {
+        "actions": {
+          "accept": "स्वीकार करें",
+          "delete": "रद्द करें",
+          "reject": "अस्वीकार करें"
+        },
+        "addContributor": {
+          "addLanguage": "एक और भाषा जोड़ें",
+          "assign": "सौंपें",
+          "assignedLanguages": "पहले से सौंपे गये भाषाएँ",
+          "assigning": "नियुक्त किया जा रहा है..।",
+          "assignmentSuccess": "योगदानकर्ता सफलतापूर्वक नियुक्त किया गया!",
+          "confirm": "पुष्टि करें",
+          "findContributor": "एक योगदानकर्ता ढूंढें",
+          "language": "भाषा",
+          "noUsers": "कोई उपयोगकर्ता उपलब्ध नहीं हैं",
+          "searchUsers": "उपयोगकर्ताओं खोजें..।",
+          "selectLanguage": "एक भाषा चुनें",
+          "selectedUsers": "चयनित उपयोगकर्ता:",
+          "title": "योगदानकर्ता जोड़ें"
+        },
+        "admin": "व्यवस्थापक",
+        "comingSoon": {
+          "coverage": "भाषा कवरेज दृश्य जल्द ही आ रहा है",
+          "courses": "पाठ्यक्रम दृश्य जल्द ही आ रहा है"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "नियुक्त करें",
+            "backToContentManagement": "सामग्री प्रबंधन पर वापस",
+            "reassign": "पुनः नियुक्त करें",
+            "view": "देखें"
+          },
+          "assignModal": {
+            "assign": "नियुक्त करें",
+            "assigning": "नियुक्त किया जा रहा है..।",
+            "assigningCourse": "पाठ्यक्रम नियुक्त किया जा रहा है:",
+            "assignmentSuccess": "पाठ्यक्रम सफलतापूर्वक नियुक्त किया गया!",
+            "cancel": "रद्द करें",
+            "chooseContributor": "एक योगदानकर्ता चुनें..।",
+            "courseInfo": "पाठ्यक्रम की जानकारी",
+            "selectContributor": "योगदानकर्ता चुनें",
+            "title": "योगदानकर्ता को पाठ्यक्रम सौंपें"
+          },
+          "description": "पाठ्यक्रम अनुवाद को प्रबंधित करें और योगदानकर्ताओं को सौंपें",
+          "noCourses": "कोई पाठ्यक्रम उपलब्ध नहीं हैं",
+          "noCoursesFiltered": "आपके फ़िल्टर से मेल खाते कोई भी पाठ्यक्रम नहीं हैं",
+          "notAssigned": "नहीं निर्धारित",
+          "reassignModal": {
+            "cancel": "रद्द करें",
+            "chooseNewContributor": "एक योगदानकर्ता चुनें.।",
+            "courseInfo": "पाठ्यक्रम की जानकारी",
+            "currentlyAssignedTo": "को वर्तमान में निर्धारित कर दिया गया है:",
+            "reassign": "पुनः नियुक्त करें",
+            "reassigning": "पुनः नियुक्त किया जा रहा है.।",
+            "reassigningCourse": "पाठ्यक्रम पुनः सौंपा जा रहा है:",
+            "reassignmentSuccess": "पाठ्यक्रम सफलतापूर्वक पुनः सौंपा गया!",
+            "selectNewContributor": "नया योगदानकर्ता चुनें"
+          }
+        },
+        "courseDetails": {
+          "chaptersCompleted": "अध्याय पूरे हुए",
+          "courseIndex": "पाठ्यक्रम सूची",
+          "courseInformation": "पाठ्यक्रम की जानकारी",
+          "courseName": "पाठ्यक्रम का नाम",
+          "currentContributor": "वर्तमान योगदानकर्ता",
+          "errorLoadingDetails": "पाठ्यक्रम विवरण लोड करने में गड़बड़ी",
+          "language": "भाषा",
+          "noChapters": "इस पाठ्यक्रम के लिए कोई अध्याय उपलब्ध नहीं हैं",
+          "noContributor": "कोई योगदानकर्ता नियुक्त नहीं किया गया है",
+          "partTitle": "भाग {{index}}: {{title}}",
+          "progress": "प्रगति",
+          "status": "स्थिति",
+          "translationStatus": "अनुवाद की स्थिति",
+          "chaptersAndProgress": "अध्याय और प्रगति"
+        },
+        "courseNotFound": "पाठ्यक्रम उपलब्ध नहीं है",
+        "messages": {
+          "noPendingRequests": "और कोई सत्यापन अनुरोध बाकी नहीं है।",
+          "noPendingRequestsSearch": "\"{{query}}\" से मिलते-जुलते कोई सत्यापन अनुरोध उपलब्ध नहीं है।",
+          "noRejectedRequests": "और कोई सत्यापन अनुरोध अस्वीकृत नहीं है।",
+          "noRejectedRequestsSearch": "\"{{query}}\" से मिलते-जुलते कोई अस्वीकृत सत्यापन अनुरोध उपलब्ध नहीं है।"
+        },
+        "modal": {
+          "acceptRequest": "अनुरोध स्वीकार करें",
+          "acceptTranslationRequest": "सत्यापन का अनुरोध स्वीकार करें",
+          "accepting": "स्वीकार किया जा रहा है..।",
+          "cancel": "रद्द करें",
+          "close": "बंद करें",
+          "contributor": "योगदानकर्ता",
+          "course": "पाठ्यक्रम",
+          "doYouWantToAcceptRequest": "क्या आप इस अनुवाद अनुरोध को स्वीकार करना चाहते हैं?",
+          "language": "भाषा",
+          "provideRejectionReason": "कृपया इस अनुरोध को अस्वीकार करने का कारण बताएं",
+          "reasonForRejection": "अस्वीकरण का कारण",
+          "reasonPlaceholder": "अपनी व्याख्या यहां लिखें..।",
+          "rejecting": "अस्वीकार किया जा रहा है..।",
+          "requestAcceptedMessage": "योगदानकर्ता को सूचित कर दिया गया है और अब वह अनुवाद का काम शुरू कर सकता है।",
+          "requestAcceptedSuccess": "आपने अनुवाद का अनुरोध स्वीकार किया है!",
+          "requestRejectedSuccess": "अनुरोध सफलतापूर्वक अस्वीकृत किया गया",
+          "submitRejection": "जमा करें"
+        },
+        "noResultsFound": "कोई परिणाम नहीं मिला",
+        "pendingTranslationRequests": "लंबित सत्यापन अनुरोध",
+        "reports": {
+          "chooseYear": "आप किस वर्ष को ध्यान में रखना चाहते हैं?",
+          "comingSoon": {
+            "courses": "पाठ्यक्रम दृश्य जल्द ही आ रहा है"
+          },
+          "languageCoverage": {
+            "completed": "पूरा हुआ",
+            "inProgress": "प्रगति में",
+            "notStarted": "शुरू नहीं हुआ",
+            "totalCourses": "कुल पाठ्यक्रम"
+          },
+          "languagesProofread": "भाषाएँ सत्यापित की गई",
+          "noContributors": "कोई योगदानकर्ता नहीं मिले",
+          "noCourses": "कोई पाठ्यक्रम नहीं मिला",
+          "noLanguages": "कोई भाषाएं नहीं मिलीं",
+          "proofreadCourses": "सत्यापित पाठ्यक्रम",
+          "table": {
+            "contributor": "योगदानकर्ता",
+            "progress": "प्रगति %"
+          },
+          "contributors": {
+            "assignedCourses": "निर्धारित पाठ्यक्रम",
+            "completedCourses": "पूरे किए गए पाठ्यक्रम",
+            "languages": "भाषाएँ",
+            "startDate": "आरंभ की तारीख",
+            "title": "योगदानकर्ता",
+            "totalReward": "कुल पुरस्कार"
+          },
+          "courses": {
+            "contributor": "योगदानकर्ता",
+            "lastUpdated": "आख़िरी बार सुधारा गया",
+            "progress": "प्रगति %"
+          },
+          "downloadData": "जानकारी डाउनलोड करें",
+          "fromMonth": "से",
+          "fromMonthPlaceholder": "किस महीने से?",
+          "generalReport": "सामान्य रिपोर्ट",
+          "tabs": {
+            "contributors": "योगदानकर्ता",
+            "courses": "पाठ्यक्रम"
+          },
+          "toMonthPlaceholder": "किस महीने के लिए?",
+          "totalLanguages": "कुल भाषाएँ",
+          "year": "वर्ष"
+        },
+        "status": {
+          "assigned": "सौंप दिया गया",
+          "completed": "पाठ्यक्रम समाप्त किया गया",
+          "inProgress": "कार्य प्रगति पर है",
+          "readyForReview": "समीक्षा के लिए तैयार",
+          "underReview": "समीक्षा जारी है",
+          "todo": "करने के लिए"
+        },
+        "table": {
+          "course": "पाठ्यक्रम",
+          "index": "अनुक्रमणिका",
+          "language": "भाषा",
+          "username": "यूज़रनेम"
+        },
+        "tabs": {
+          "contentManagement": "सामग्री प्रबंधन",
+          "requests": "अनुरोध",
+          "translate": "अनुवाद करें",
+          "userManagement": "उपयोगकर्ता प्रबंधन",
+          "reports": "रिपोर्ट"
+        },
+        "title": "व्यवस्थापक अनुवाद पैनल",
+        "toggle": {
+          "pendingRequest": "लंबित अनुरोध",
+          "rejectedRequests": "अस्वीकृत अनुरोध"
+        },
+        "translate": {
+          "actions": {
+            "translate": "अनुवाद करें"
+          },
+          "noSlidesFound": "कोई स्लाइड नहीं मिले",
+          "originalContent": "मूल सामग्री",
+          "pause": "रोकें",
+          "play": "चालू करें",
+          "presentations": "प्रस्तुतियां",
+          "rewind15Seconds": "15 सेकंड पीछे जाएं",
+          "selectLanguagesModal": {
+            "audioFileInfo": "समर्थित प्रारूप: एमपी3, वैव, एम4ए (अधिकतम 50 एमबी)",
+            "course": "पाठ्यक्रम:",
+            "englishFilesRequired": "कृपया सुनिश्चित करें कि सभी अपलोड की गई फ़ाइलें केवल अंग्रेजी में हैं",
+            "existingUploadsInfo": "मूल फ़ाइलें पहले ही अपलोड कर दी गई हैं। आप इन्हें फिर से जोड़े बिना अनुवाद शुरू कर सकते हैं। नई फ़ाइलों को अपलोड करने से मौजूदा फ़ाइल ओवरराइट हो जाएंगी।",
+            "folderUrl": "फ़ोल्डर URL",
+            "invalidAudioFile": "कृपया एक वैध ऑडियो फ़ाइल चुनें।",
+            "invalidPptxFile": "कृपया एक मान्य पावरपॉइंट (.pptx) फ़ाइल चुनें।",
+            "missingFilesError": "कृपया अनुवाद की गई फ़ाइलें अपलोड करें या अनुवाद शुरू करने से पहले URL प्रदान करें।",
+            "networkError": "नेटवर्क में गड़बड़ी हुई है। कृपया अपने कनेक्शन की जांच करें और पुन: प्रयास करें।",
+            "noAudioFileSelected": "कोई ऑडियो फ़ाइल नहीं चुना गया",
+            "noFolderSelected": "कोई फ़ोल्डर नहीं चुना गया",
+            "noLanguagesAvailable": "अनुवाद के लिए कोई भी भाषा उपलब्ध नहीं हैं।",
+            "noPptxFileSelected": "कोई पॉवरपॉइंट फ़ाइल नहीं चुनी गई है",
+            "originalLanguage": "मूल भाषा:",
+            "uploadAndTranslationStarted": "फ़ाइलें अपलोड की गईं और अनुवाद शुरू हो गया! बड़े पाठ्यक्रमों के लिए प्रक्रिया में कई मिनट लग सकता है।",
+            "uploadError": "अपलोड विफल रहा। कृपया अपनी फ़ाइलों की जांच करें और पुनः प्रयास करें।",
+            "uploadFiles": "सहायक फ़ाइलें अपलोड करें (वैकल्पिक)",
+            "uploadFolder": "फ़ोल्डर अपलोड करें (PPTX + TXT)",
+            "uploadTimeoutError": "अपलोड 10 मिनट के बाद रुक गया। कृपया छोटी फ़ाइलों के साथ प्रयास करें या अपने इंटरनेट की जाँच करें।",
+            "uploadingFiles": "फ़ाइलें अपलोड हो रहे हैं..।",
+            "useEnglishLabel": "पाठ्यक्रम पहले ही अंग्रेजी में अनुवादित कर दिया गया है। अंग्रेजी संस्करण को स्रोत के रूप में उपयोग करें?"
+          },
+          "slideNavigation": {
+            "next": "अगला",
+            "previous": "पिछला",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "स्लाइड {{slideNumber}} उपलब्ध नहीं है",
+          "slideNotFound": "स्लाइड नहीं मिला",
+          "table": {
+            "actions": "कार्य",
+            "course": "पाठ्यक्रम",
+            "index": "अनुक्रमणिका",
+            "todoLanguages": "अनुवाद करने के लिए भाषाएँ",
+            "totalLanguages": "कुल भाषाएँ"
+          },
+          "title": "पाठ्यक्रमों को अनुवाद करें",
+          "translateTo": "में अनुवाद करें",
+          "unknownContributor": "अज्ञात",
+          "backToCourse": "कोर्स पर वापस",
+          "changeSpeed": "प्लेबैक स्पीड बदलें",
+          "chapterTitle": "अध्याय का शीर्षक",
+          "compare": "तुलना करें",
+          "compareDisabledTooltip": "संशोधित संस्करण उपलब्ध नहीं है",
+          "compareTooltip": "मूल और सम्पादित संस्करणों की तुलना करें",
+          "comparison": {
+            "backToChapter": "अध्याय पर वापस",
+            "originalVersion": "मूल संस्करण",
+            "translatedVersion": "अनुवादित संस्करण"
+          },
+          "description": "विशिष्ट भाषाओं में पाठ्यक्रमों का अनुवाद शुरू करें।",
+          "forward15Seconds": "15 सेकंड आगे बढ़ें",
+          "imageNotFound": "चित्रण नहीं मिली",
+          "language": "भाषा",
+          "loadingPresentation": "प्रस्तुति लोड हो रही है..।"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "उपयोगकर्ता सूची पर वापस जाएं",
+            "backToUsers": "उपयोगकर्ताओं के पास वापस जाएं"
+          },
+          "noUsers": "कोई योगदानकर्ता नहीं मिले",
+          "status": {
+            "published": "प्रकाशित",
+            "readyForReview": "समीक्षा के लिए तैयार",
+            "rejected": "अस्वीकृत",
+            "reviewed": "समीक्षित",
+            "underReview": "समीक्षा जारी है"
+          },
+          "table": {
+            "assignedCourses": "निर्धारित पाठ्यक्रम",
+            "language": "भाषा",
+            "startDate": "आरंभ की तारीख"
+          },
+          "title": "योगदानकर्ता"
+        },
+        "searchPlaceholder": "खोजें..।"
+      }
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "परियोजना कार्य के लिए चयनित छात्र",
+        "all": "सभी छात्र पंजीकृत हैं",
+        "summer": "ग्रीष्मकालीन स्कूल के लिए चयनित छात्र"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "तारीख चुनें",
+      "publicationDate": "प्रकाशन की तारीख"
     },
     "backToDashboard": "डैशबोर्ड पर वापस जाएँ",
     "bCert": {
@@ -558,8 +841,8 @@
     "calendar": {
       "calendar": "कैलेंडर",
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "कक्षाएं",
+        "event": "कार्यक्रम"
       },
       "personalCalendar": "व्यक्तिगत कैलेंडर"
     },
@@ -743,55 +1026,55 @@
       "yourRoles": "आपके नौकरी के पद"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
-      "assignmentDescription": "",
-      "assignmentInformation": "",
-      "assignmentTitle": "",
+      "announcement": "घोषणा",
+      "assignment": "कार्यभार",
+      "assignmentCompletedDescription": "आपकी परियोजना असाइनमेंट सफलतापूर्वक जमा कर दी गई है और समीक्षा के अंतर्गत है।\nआपकी श्रेणी मूल्यांकन के बाद यहाँ दिखाई देगा।",
+      "assignmentCompletedTitle": "कार्यभार सम्पन्न हुआ",
+      "assignmentDescription": "परियोजना असाइनमेंट प्लान ₿ व्यापार विद्यालय कार्यक्रम के दूसरे चरण को चिह्नित करता है और यह केवल उन छात्रों के लिए उपलब्ध है जिन्होंने पहले चरण को सफलतापूर्वक पूरा किया है। उनकी रैंकिंग और प्राथमिकताओं के अनुसार, प्रत्येक छात्र को एक बिटकॉइन कंपनी द्वारा विकसित परियोजना सौंपी जाएगी, जिसे 18 जून तक जमा करना होगा। \nछात्र 2 जून से 18 जून तक असाइनमेंट तैयार करेंगे, और इस दौरान कंपनी के प्रतिनिधि से मेंटरशिप प्राप्त करने की संभावना होगी।\n\nपरियोजनाओं को कंपनी द्वारा श्रेणिगत किया जाएगा, और स्कोर अंतिम ग्रेड पर प्रभाव डालेंगे। केवल शीर्ष-रैंक वाले छात्रों को लुगानो, स्विट्जरलैंड, 23 जुलाई से 30 जुलाई, 2025 तक की ग्रीष्मकालीन स्कूल में भाग लेने के लिए आमंत्रित किया जाएगा।",
+      "assignmentInformation": "कार्यभार की जानकारी",
+      "assignmentTitle": "परियोजना कार्यभार",
       "checkDetailsCompleted": "यहां आप इस पाठ्यक्रम के बारे में सभी विवरण देख सकते हैं जिसे आपने पूरा किया है।",
       "completionDiploma": "डिप्लोमा प्रमाणपत्र",
       "completionExamInfo": "आपको इस सुविधा का इस्तेमाल करने के लिए परीक्षा पूरी करनी होगी।",
       "conclusionHeadline": "यह आपके द्वारा सीखी गई चीजों का सारांश है। यदि कुछ अध्याय छूट गए हैं या सही से जांचे नहीं गए हैं, तो अभी उन्हें पूरा करने का समय है। आप वापस जाकर सीख सकते हैं या \"पूरा करें\" बटन दबा सकते हैं।",
-      "conclusionNotReleased": "",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "conclusionNotReleased": "निष्कर्ष अंतिम कक्षा के दिन खोला जाएगा।",
+      "confirmList": "सूची की पुष्टि करें",
+      "confirmNoEditable": "एक बार पुष्टि होने पर, इस प्राथमिकता सूची आगे संपादन योग्य नहीं होगा।",
+      "confirmNoEditableFile": "एक बार जमा कर देने के बाद, आप अपनी फ़ाइल में संपादन नहीं कर पाएंगे।",
+      "confirmSubmission": "प्रस्तुति की पुष्टि करें",
+      "congratulationsPassed": "बधाई हो! आप सफलतापूर्वक उतीर्ण हो गए हैं!",
       "coordinator": "पाठ्यक्रम समन्वयक",
-      "courseCalendar": "",
+      "courseCalendar": "पाठ्यक्रम कैलेंडर",
       "coursesCompleted": "पाठ्यक्रम पूरे किए गए",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "diplomaReleaseDescription": "सभी कक्षाएं पूरी होने के बाद, आपको पाठ्यक्रम सफलतापूर्वक पूरा करने के लिए एक डिप्लोमा प्रदान किया जाएगा। अंतिम कक्षा और अंतिम अध्याय पूरा होने के बाद डिप्लोमा यहां डाउनलोड के लिए उपलब्ध होंगे।",
+      "diplomaReleaseTitle": "डिप्लोमा जारी",
+      "examScore": "प्राप्तांक:",
+      "exams": "परीक्षा",
       "feedbacks": "यहां आप इस पाठ्यक्रम के लिए दिए गए अपने मूल्यांकन और प्रतिक्रिया की जांच कर सकते हैं और उन्हें संपादित कर सकते हैं।",
-      "fileUploadError": "",
-      "fileUploaded": "",
-      "finalAverageGradeDescription": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
-      "generalInformation": "",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
+      "fileUploadError": "आपका अपलोड करते समय एक गड़बड़ी हुई थी",
+      "fileUploaded": "आपका काम सफलतापूर्वक अपलोड किया गया!",
+      "finalAverageGradeDescription": "आप अपने डैशबोर्ड के परीक्षा और डिप्लोमा अनुभाग में अपना अंतिम औसत श्रेणी ढूंढ सकते हैं।",
+      "finalGradeSummary": "अंतिम श्रेणी सारांश",
+      "finalScore": "अंतिम प्राप्तांक",
+      "generalInformation": "सामान्य जानकारी",
+      "individualWork": "व्यक्तिगत कार्य",
+      "isSubmissionFinal": "क्या आपका प्रस्तुतिकरण अंतिम है?",
+      "joinTelegramGroup": "टेलीग्राम समूह में शामिल हों",
+      "keepEditing": "संपादन जारी रखें",
+      "keepMovingForward": "यद्यपि इस बार सफलता नहीं मिली, परंतु प्रत्येक प्रयास प्रगति की ओर एक कदम है।\nअपने अध्ययन-पथ पर निरंतर अग्रसर रहिए!",
+      "leastPreferred": "सबसे कम पसंद किया गया",
+      "listSaved": "आपकी प्राथमिकता सूची सुरक्षित कर ली गई है।",
+      "listSavedComeTomorrow": "आपकी प्राथमिकताओं की सूची सुरक्षित कर ली गई है। \nकल यहाँ लौटें और जानें कि आपको किस परियोजना का काम सौंपा गया है।",
+      "mostPreferred": "सबसे अधिक पसंद किया गया",
+      "mustBePdf": "आपकी फ़ाइल PDF प्रारूप में होनी चाहिए। यदि आपको एक अतिरिक्त फ़ाइल जमा करने की आवश्यकता है, तो कृपया अपनी PDF के अंदर उसके लिंक को शामिल करें।",
+      "notSelectedAssignment": "दुर्भाग्यवश, आपको परियोजना कार्यभार में भाग लेने के लिए नहीं चुना गया है।\nआप फिर भी पाठ्यक्रमों के व्याख्यानों का पालन कर सकते हैं",
       "planbSchoolExamDescription": "",
       "planbSchoolGeneralInformation": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
+      "projectRankingInstructions": "परियोजना रैंकिंग निर्देश:",
+      "ranking": "श्रेणी",
       "rankingInstructions": "",
       "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "rankProjectPreferences": "अपनी परियोजना प्राथमिकताओं को श्रेणिगत करें",
       "ratingsAndFeedbacks": "मूल्यांकन और प्रतिक्रियाएं",
       "readAssignment": "",
       "saveList": "",
@@ -800,13 +1083,20 @@
       "submitBefore": "",
       "submitFileNamingFormat": "",
       "submitReviewInfo": "इस सुविधा का उपयोग करने के लिए आपको एक समीक्षा जमा करनी होगी।",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
+      "submitYourWork": "अपना काम जमा करें",
+      "summerSchool": "ग्रीष्मकालीन विद्यालय",
+      "surePreferenceList": "क्या आप निश्चित हैं कि आपकी पसंद की सूची में अब कोई बदलाव नहीं होगा?",
+      "thresholdToPass": "उत्तीर्ण होने की सीमा: {{threshold}}%",
       "tweetText": "@planb_network\" पर {{courseIndex}} पाठ्यक्रम पूरा करके और अंतिम परीक्षा में {{score}}/100 अंक के साथ डिप्लोमा प्राप्त कर बेहद उत्साहित हूँ! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
-      "yourProject": ""
+      "viewFinalGrade": "अंतिम प्राप्तांक देखें",
+      "yourProject": "आपकी परियोजना",
+      "assignmentNotAccessible": "कार्यभार पहले ही शुरू हो चुका है और अब उपलब्ध नहीं है।",
+      "assignmentScore": "कार्यभार प्राप्तांक",
+      "tweetTextCourseDiploma": "मुझे खुशी है कि मैंने @planb_network पर {{courseCoordinator}} द्वारा पढ़ाया गया पाठ्यक्रम {{courseName}} पूरा किया है और मेरा डिप्लोमा प्राप्त किया!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "प्राप्तांक सारांश देखें",
+      "wellDoneCompleting": "इस पाठ्यक्रम को पूरा करने और उतीर्ण होने पर बहुत बधाई! \nयह रहा आपका योग्यतापूर्ण अर्जित डिप्लोमा",
+      "yourProjectAssignment": "आपका परियोजना कार्यभार",
+      "gaveSolidEffort": "आपने इसमें एक मजबूत प्रयास किया!"
     },
     "courses": "पाठ्यक्रम",
     "credentials": {
@@ -823,8 +1113,8 @@
       "takePlaceAt": "सत्र का आयोजन होगा यहाँ",
       "yourCertificate": "आपका प्रमाणपत्र"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "डैशबोर्ड पर जाएं",
+    "goToHomepage": "मुख्य पृष्ठ पर जाएं",
     "logout": "लॉग आउट करें",
     "myCourses": {
       "completeAll": "सभी पूरा करें",
@@ -863,17 +1153,17 @@
       "edit": "संपादित करें",
       "email": "ईमेल",
       "emailChangeConfirmation": "आपके ईमेल परिवर्तन की पुष्टि के लिए एक ईमेल भेजा गया है, कृपया पुष्टि करने के लिए अपना इनबॉक्स देखें।",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "आपने हाल ही में अपना ईमेल अपडेट किया है। कृपया फिर से प्रयास करने से पहले कुछ समय प्रतीक्षा करें।",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
+        "coursesOption": "आपके द्वारा नामांकित पाठ्यक्रमों से जुड़ी नवीनतम जानकारियाँ",
+        "description": "आप नीचे अपनी सूचना सेटिंग्स अपनी पसंद के अनुसार बदल सकते हैं। ",
+        "emailPreferencesDescription": "यहाँ आप तय कर सकते हैं कि हमें आपको किस प्रकार के ईमेल भेजने चाहिए। ये पसंदें केवल उसी ईमेल पते पर लागू होंगी जो इस लिंक से जुड़ा है।",
+        "emailPreferencesError": "आपकी ईमेल प्राथमिकताएँ प्राप्त करने की कोशिश करते समय एक गड़बड़ी हुई थी। कृपया सुनिश्चित करें कि आपके द्वारा फ़ॉलो किया गया लिंक सही है।",
+        "emailPreferencesSavedSuccessfully": "आपकी ईमेल प्राथमिकताएं सफलतापूर्वक अपडेट की गईं।",
+        "emailPreferencesTitle": "अपने प्लान ₿ नेटवर्क ईमेल प्राथमिकताएँ प्रबंधित करें",
+        "emailTitle": "आप ईमेल द्वारा किस प्रकार की सूचनाएं प्राप्त करना चाहेंगे?",
+        "emailWarning": "चेतावनी! आपके खाते के साथ कोई ईमेल पता जुड़ा नहीं है। कृपया इसे अपने प्रोफ़ाइल खंड में जोड़ें।",
+        "eventsOption": "आपके द्वारा बुक किए गए कार्यक्रमों से जुड़ी ताज़ा जानकारी",
         "generalOption": "",
         "goToProfile": "",
         "loadEmailSettingsError": "",
@@ -882,7 +1172,10 @@
         "none": "",
         "platformTitle": "",
         "settingsSaved": "",
-        "title": ""
+        "title": "",
+        "completedAt": "में पूरा किया गया",
+        "displayName": "प्रदर्शित नाम",
+        "filter": "फ़िल्टर"
       },
       "password": "पासवर्ड",
       "personalInformation": "मेरी व्यक्तिगत जानकारी",
@@ -928,15 +1221,16 @@
           "alertTitle": "",
           "confirmPublication": "",
           "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "confirmPublicationTitle": "क्या आपने सत्यापित किया है कि कोई गड़बड़ी नहीं है?",
+          "description": "छात्रों को कार्यभार समूहों द्वारा व्यवस्थित किया जाता है।",
+          "grade100": "प्राप्तांक (/100)",
+          "gradesPublished": "प्राप्तांक या श्रेणी प्रकाशित किए गए हैं।",
+          "missingGradesDescription": "यदि प्राप्तांक प्रकाशित किये जाते हैं, तो उन अनुपस्थित प्राप्तांक को 0/100 से बदल दिया जाएगा।",
+          "missingGradesTitle": "अभी भी {{count}} प्राप्तांक गायब हैं!",
+          "publishAllGrades": "सभी प्राप्तांक प्रकाशित करें",
+          "studentDisplayName": "छात्र (प्रदर्शित नाम)",
+          "title": "कार्यभार प्राप्तांक",
+          "courseAssignment": "पाठ्यक्रम कार्यभार"
         },
         "assignmentStudents": "",
         "courseDetails": "पाठ्यक्रम विवरण",
@@ -951,16 +1245,23 @@
         "examResults": "परीक्षा परिणाम",
         "goal": "लक्ष्य",
         "makeModifications": "क्या संशोधन करने की आवश्यकता है?",
-        "noPastAnnouncement": "",
+        "noPastAnnouncement": "आपके पास इस समय कोई पहली की गई घोषणा नहीं है।",
         "noWrittenAnnouncement": "",
         "objectives": "लक्ष्य",
         "proposeNewCourse": "एक नया पाठ्यक्रम प्रस्तावित करें",
         "quickRecap": "यहां आपको इस पाठ्यक्रम से संबंधित सामान्य जानकारियां मिलेंगी।",
         "reviewInfos": "यहाँ आप अपने समन्वित प्रत्येक पाठ्यक्रम की पूरी जानकारी की समीक्षा और नियंत्रण कर सकते हैं।",
         "reviews": "समीक्षाएं",
-        "selectCourse": "",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "selectCourse": "पाठ्यक्रम चुनें",
+        "summerStudents": "ग्रीष्मकालीन विद्यालय",
+        "writeAnnouncement": "एक घोषणा लिखें",
+        "medianScore": "माध्यिका अंक",
+        "noExamLinked": "वर्तमान में इस पाठ्यक्रम से जुड़ी हुई कोई परीक्षा उपलब्ध नहीं है। यदि आप परीक्षा में शामिल होना चाहते हैं, तो कृपया हमसे संपर्क करें।",
+        "studentsGraduated": "स्नातक हुए छात्र",
+        "studentsList": "छात्रों की सूची",
+        "successRate": "सफलता दर",
+        "thresholdToPass": "उत्तीर्ण होने की सीमा",
+        "totalQuestions": "प्रश्नों की कुल संख्या"
       },
       "menu": "शिक्षक विकल्प सूची",
       "profile": {
@@ -997,6 +1298,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "यहाँ आप अपने बनाए और प्लेटफॉर्म पर प्रकाशित किए गए मार्गदर्शिका का विश्लेषण देख सकते हैं।",
         "yourTutorials": "आपके मार्गदर्शिकाएँ"
+      },
+      "discount": {
+        "description": "यहाँ आप इस पाठ्यक्रम के लिए छूट कोड बना और प्रबंधित कर सकते हैं — चाहे वह एक बार इस्तेमाल होने वाला हो (जैसे छात्रवृत्ति या ऐसे ही मामलों के लिए) या कई बार इस्तेमाल होने वाला हो (जैसे मार्केटिंग अभियानों के लिए)।"
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "एक परिवर्तन की घोषणा करें",
+          "attendanceList": "उपस्थिति सूची",
+          "courseEnded": "यह पाठ्यक्रम समाप्त हो चुका है।",
+          "courseNotStarted": "यह पाठ्यक्रम अभी तक शुरू नहीं हुआ है।",
+          "enrolledStudents": "नामांकित छात्र",
+          "hasEnrolled": "ने नामांकन कराया है",
+          "hasGraduated": "{{score}}% अंक के साथ स्नातकोत्तर हुआ है",
+          "hasLeftReview": "ने समीक्षा छोड़ी है",
+          "hasLeftReviewAndComment": "ने समीक्षा और टिप्पणी छोड़ी है",
+          "notifyStudents": "क्या कुछ बदलाव हुआ है? अपने छात्रों को सूचित करें।",
+          "overallPerformance": "समग्र प्रदर्शन",
+          "recentActivity": "हाल की गतिविधि",
+          "studentsRegistered": "पंजीकृत किए गए छात्र",
+          "upcomingClass": "आगामी कक्षा"
+        }
       }
     }
   },
@@ -1068,7 +1392,27 @@
       "time": "समय"
     },
     "tcDisclaimer": "मैं सहमत हूँ कि मेरी जानकारी आयोजकों के साथ जगह में प्रवेश के लिए साझा की जा सकती है।",
-    "tcMustBeAccepted": "खरीदारी जारी रखने के लिए आपको शर्तें स्वीकार करनी होंगी"
+    "tcMustBeAccepted": "खरीदारी जारी रखने के लिए आपको शर्तें स्वीकार करनी होंगी",
+    "addEvent": "कार्यक्रम जोड़ें",
+    "calendar": {
+      "displayCalendar": "कैलेंडर प्रदर्शित करें",
+      "fullMap": "संपूर्ण मानचित्र",
+      "hideCalendar": "कैलेंडर छुपाएं",
+      "inXMonths": "{{number}} महीनों में",
+      "lastMonth": "पिछले महीने",
+      "nextMonth": "अगले महीने",
+      "noEventsFound": "कोई कार्यक्रम नहीं मिले",
+      "thisMonth": "इस महीने",
+      "today": "आज",
+      "xMonthsAgo": "{{number}} महीने पहले"
+    },
+    "eventInfos": {
+      "eventBooked": "कार्यक्रम बुक किया गया है",
+      "eventType": "कार्यक्रम का प्रकार",
+      "onlineAndInPerson": "ऑनलाइन और व्यक्तिगत तौर पर",
+      "secureYourSpot": "अपना स्थान सुरक्षित करें",
+      "whatsPlanned": "क्या योजनाबद्ध है"
+    }
   },
   "filters": {
     "categories": "श्रेणियाँ",
@@ -1227,54 +1571,55 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "कार्यभार",
+      "calendar": "कैलेंडर अलर्ट",
+      "celebration": "उत्सव",
+      "general": "सामान्य जानकारी",
+      "warning": "चेतावनी"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "hoursAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "stayUpToDate": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "आपके ₿-CERT परिणाम घोषित हो गए हैं!",
+    "blogNotTranslated": "क्षमा करें, यह नई ब्लॉग पोस्ट अभी तक आपकी वर्तमान भाषा में अनुवादित नहीं हुई है।",
+    "bookYourSeat": "यदि आप व्यक्तिगत रूप से उपस्थित होना चाहते हैं तो अपनी सीट बुक करें!",
+    "calendar_5m": "कक्षा 5 मिनट में शुरू हो रही है! अब शामिल होने के लिए यहां क्लिक करें।",
+    "calendar_5m_online_event": "समय हो चुका है! {{eventName}} 5 मिनट में शुरू हो रहा है। अब शामिल होने के लिए यहां क्लिक करें!",
+    "calendar_24h": "अगली कक्षा कल {{ formattedTime }} से होगी।",
+    "calendar_24h_in_person_event": "{{eventName}} कल, {{formattedTime}} से {{addressLine}} तक होगा। सुनिश्चित करें कि आपने उपस्थित होने के लिए अपना टिकट डाउनलोड कर लिया है!",
+    "calendar_48h_online_event": "{{eventName}} जल्द ही आ रहा है! यह {{date}} को निर्धारित किया गया है, {{formattedTime}} से। ",
+    "dashboardDescription": "ये आपकी नवीनतम सूचनाएं हैं। ये आपके द्वारा देखे जाने के एक महीने बाद ख़ुद-ब-ख़ुद हटा दी जाती हैं।",
+    "daysAgo": "{{days}} दिन पहले",
+    "hoursAgo": "{{hours}} घंटे पहले",
+    "markAsRead": "पढ़ा हुआ चिह्नित करें",
+    "monthsAgo": "{{months}} महीने {{s}} पहले",
+    "noRecentNotifications": "आपके पास इस समय कोई हाल की सूचनाएं नहीं हैं।",
+    "notifications": "सूचनाएं",
+    "noUnreadNotifications": "अब और कोई अपठित सूचनाएं नहीं हैं",
+    "planBNews": "प्लान ₿ समाचार",
+    "read": "पढ़ें",
+    "results": "आपके ₿-CERT परिणाम घोषित हो गए हैं!",
+    "select": "चुनें",
+    "selectAll": "सब चुनें",
+    "stayUpToDate": "नवीनतम जानकारी पाते रहें!",
+    "today": "आज",
+    "unread": "अपठित",
+    "upcomingEvent": "आगामी कार्यक्रम",
+    "weeksAgo": "{{weeks}} सप्ताह {{s}} पहले",
+    "yearsAgo": "{{years}} वर्ष {{s}} पहले",
+    "yesterday": "कल",
+    "newVersionAvailable": "प्लान ₿ नेटवर्क प्लेटफॉर्म का एक नया संस्करण उपलब्ध है। कृपया अपडेट करने के लिए पेज को रिफ्रेश करें।"
   },
   "payment": {
     "haveReductionCode": "क्या आपके पास छूट के लिए कोई कोड है?",
     "insertReductionCode": "अपना कटौती कोड डालें",
     "payByCard": "कार्ड द्वारा भुगतान करें",
     "payWithBitcoin": "बिटकॉइन के द्वारा भुगतान करें",
-    "taxesMayApply": "",
+    "taxesMayApply": "चेकआउट पर कर लागू हो सकते हैं",
     "terms": "हमारी <0>सामान्य नियम</0> और शर्तों में रिफंड विवरण देखें",
     "total": "कुल"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "समय क्षेत्र चुनें"
   },
   "podcast": {
     "check": "पॉडकास्ट की जांच करें"
@@ -1721,11 +2066,51 @@
     "view": "देखें",
     "viewMore": "और देखें",
     "wallets": "बटुए (वॉलेट्स)",
-    "yes": "हाँ"
+    "yes": "हाँ",
+    "academy": "अकादमी",
+    "account": "खाता"
   },
   "youtubeChannels": {
     "pageTitle": "यूट्यूब चैनल",
     "view": "यूट्यूब चैनल देखें",
     "watchTrailer": "ट्रेलर देखें"
+  },
+  "months": {
+    "october": "अक्टूबर",
+    "september": "सितंबर"
+  },
+  "navbar": {
+    "analytics": "एनालिटिक्स",
+    "bookings": "आरक्षण",
+    "career": "व्यवसाय",
+    "discountCode": "डिस्काउंट कोड",
+    "learnAnytimeDescription": "स्वतंत्र गति के पाठ्यक्रम",
+    "learnAnytimeTitle": "किसी भी समय सीखें",
+    "manageCourses": "पाठ्यक्रम प्रबंधित करें",
+    "myCalendar": "मेरा कैलेंडर",
+    "myCareer": "मेरा व्यवसाय",
+    "myCourses": "मेरे पाठ्यक्रम",
+    "tabs": {
+      "admin": "व्यवस्थापक",
+      "learn": "सीखें",
+      "teach": "सिखायें"
+    },
+    "translationPanel": "अनुवाद पैनल",
+    "tutorials": "मार्गदर्शिका"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "एआई अनुवाद",
+      "language": "भाषा",
+      "original": "मूल भाषा"
+    },
+    "player": {
+      "peertube": "पीरट्यूब",
+      "player": "प्लेयर",
+      "youtube": "यूट्यूब"
+    }
+  },
+  "account": {
+    "account": "खाता"
   }
 }
