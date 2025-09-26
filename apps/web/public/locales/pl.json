@@ -1107,7 +1107,7 @@
     },
     "blogSection": {
       "blogTitle": "Co nowego w sieci Plan ₿?",
-      "description": "Nadal ulepszamy platformę, treści i naszą sieć - sprawdź!",
+      "description": "Nadal ulepszamy platformę, treści i naszą sieć - sprawdź jak!",
       "noBlogsAvailable": "Brak dostępnych blogów.",
       "noDateAvailable": "Brak dostępnej daty",
       "seeAll": "Zobacz wszystko"
@@ -1115,7 +1115,7 @@
     "courseSection": {
       "checkAllCourses": "Sprawdź wszystkie kursy",
       "upcomingCourseDescription": "Bądź na bieżąco z najnowszymi kursami dodawanymi do platformy. Nauka nigdy się nie kończy!",
-      "upcomingCourseTitle": "Nadchodzące i nowe kursy"
+      "upcomingCourseTitle": "Nowe i nadchodzące kursy"
     },
     "eventSection": {
       "checkEvents": "Sprawdź wszystkie wydarzenia",
@@ -1131,7 +1131,7 @@
     "languageSection": {
       "availableLanguages": "Dostępne języki",
       "availableLanguagesVariation": "Dostępne języki: ",
-      "content1": "W Plan ₿ uważamy, że Bitcoin to międzynarodowa rewolucja, która dotyczy każdego. Aby umożliwić jej dotarcie do miliardów ludzi, projektujemy tę platformę tak, aby była wielojęzyczna i przystępna dla każdego. Obecnie platforma obsługuje {{nb}} języków, a każdego miesiąca dodajemy kolejne. Aby było to możliwe, korzystamy z kombinacji AI i pasji bitcoinerów na całym świecie. Ty też możesz zacząć tworzyć swoją własną lokalną sieć w swoim kraju!",
+      "content1": "W sieci Plan ₿ uważamy, że Bitcoin to międzynarodowa rewolucja, która dotyczy każdego. Aby umożliwić jej dotarcie do miliardów ludzi, projektujemy tę platformę tak, aby była wielojęzyczna i przystępna dla każdego. Obecnie platforma obsługuje {{nb}} języków, a każdego miesiąca dodajemy kolejne. Aby było to możliwe, korzystamy z kombinacji AI i pasji bitcoinerów na całym świecie. Ty też możesz zacząć tworzyć swoją własną lokalną sieć w swoim kraju!",
       "link": "Pomóż nam w tłumaczeniu akademii",
       "subtitle": "Wszystko tłumaczone jest na języki lokalne!",
       "title": "Nie ma tutaj barier językowych."
@@ -1284,7 +1284,7 @@
   },
   "professors": {
     "navigationTitles": {
-      "all": "Wszystkie",
+      "all": "Wszyscy",
       "lecturers": "Prelegenci",
       "teachers": "Nauczyciele",
       "tutorialCreators": "Twórcy kursów"
@@ -1450,8 +1450,8 @@
     "startSearch": "Rozpocznij swoje wyszukiwanie, aby zobaczyć wyniki tutaj",
     "tutorial": "Tutorial",
     "tutorials": "Tutoriale",
-    "youtube_channel": "Kanał Youtube",
-    "youtube_channels": "Kanały Youtube"
+    "youtube_channel": "Kanał na Youtube",
+    "youtube_channels": "Kanały na Youtube"
   },
   "settings": {
     "changeDisplayName": "Zmień wyświetlaną nazwę",

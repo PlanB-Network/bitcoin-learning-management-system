@@ -113,7 +113,11 @@
     "pageTitle": "Passer le ₿-CERT",
     "readChart": "Lire la charte",
     "tweetText": "Fier d'avoir réussi le ₿-CERT de @planb_network avec un score de {{score}}/100 ! {{emoji}}\n\n{{certificateUrl}}",
-    "verify": "Vérifiez l'authenticité de votre certificat"
+    "verify": "Vérifiez l'authenticité de votre certificat",
+    "hostSessionConditions": "Voici comment faire :\n\n1. Lisez la <0>Charte</0> - Assurez-vous que votre communauté répond aux conditions d'hébergement obligatoires\n2. Planifiez & Programmez - Si vous êtes éligible, choisissez une date et organisez la session\n3. Publiez Votre Événement - Contactez-nous pour l'ajouter à la plateforme Plan ₿ Network afin que des personnes puissent participer",
+    "myCertificates": "Mes certificats",
+    "noTestSessions": "Aucune session de test actuellement disponible",
+    "wantHostSession": "Vous souhaitez organiser une session de test ₿-CERT dans votre hub local ?"
   },
   "bet": {
     "contributeButton": "Aider et contribuer",
@@ -419,7 +423,8 @@
     "courseSelector": "Sélecteur de cours",
     "noCoursesFound": "Aucun cours trouvé. Essayez d'ajuster vos filtres.",
     "plusXMore": "+{{count}} de plus",
-    "selectATopic": "Sélectionnez un sujet"
+    "selectATopic": "Sélectionnez un sujet",
+    "tryAdjustingFilters": "Essayez d'ajuster vos filtres"
   },
   "dashboard": {
     "account": "Compte",
@@ -1181,7 +1186,13 @@
       "retakeExam": "Repasser l'examen",
       "seatBooked": "Votre place à la session d'examen est réservée",
       "takePlaceAt": "La session aura lieu à :",
-      "yourCertificate": "Votre certificat"
+      "yourCertificate": "Votre certificat",
+      "completeACourse": "Terminez un cours pour obtenir votre premier !",
+      "exploreBCert": "Découvrez le ₿-CERT",
+      "exploreCourses": "Explorez les cours",
+      "getGlobalRecognition": "Obtenez une reconnaissance mondiale avec un ₿-CERT",
+      "noCertificatesAvailable": "Aucun certificat disponible",
+      "noDiplomasAvailable": "Aucun diplôme disponible pour le moment"
     },
     "goToDashboard": "Aller au tableau de bord",
     "goToHomepage": "Aller à la page d'accueil",
@@ -1340,7 +1351,10 @@
         "questionsInExam": "Questions dans l'examen",
         "totalQuestions": "Nombre total de questions",
         "overview": "Vue d'ensemble",
-        "successRate": "Taux de réussite"
+        "successRate": "Taux de réussite",
+        "amountPaid": "Montant payé",
+        "lastActive": "Dernière activité",
+        "studentsList": "Liste des étudiants"
       },
       "menu": "Menu enseignant",
       "profile": {
@@ -1494,7 +1508,19 @@
       "onlineAndInPerson": "En ligne et en présentiel",
       "secureYourSpot": "Réservez votre place",
       "whatsPlanned": "Ce qui est prévu"
-    }
+    },
+    "addEvent": "Ajouter un événement",
+    "myTickets": "Mes billets",
+    "types": {
+      "plurals": {
+        "conference": "conférences",
+        "exam": "examens",
+        "lecture": "séminaires",
+        "meetup": "meetups",
+        "workshop": "ateliers"
+      }
+    },
+    "upcomingEvents": "Événements à venir"
   },
   "filters": {
     "categories": "Catégories",
@@ -2190,7 +2216,17 @@
     "theory": "Théorie",
     "topic": "Sujet",
     "type": "Type",
-    "viewAll": "Voir tout"
+    "viewAll": "Voir tout",
+    "account": "Compte",
+    "certifications": "Certifications",
+    "completed": "Terminé",
+    "enrolled": "Inscrit",
+    "invoices": "Factures",
+    "map": "Carte",
+    "myCertificates": "Mes certificats",
+    "resetFilters": "Réinitialiser les filtres",
+    "sats": "Sats",
+    "settings": "Paramètres"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
@@ -2230,5 +2266,8 @@
     "translationPanel": "Tableau de traduction",
     "tutorials": "Tutoriels",
     "userRolesAllocation": "Attribution des rôles de l'utilisateur"
+  },
+  "account": {
+    "account": "Compte"
   }
 }
