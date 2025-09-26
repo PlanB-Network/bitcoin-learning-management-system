@@ -91,7 +91,9 @@
     "sendLink": "Envíame un enlace",
     "signIn": "Iniciar sesión",
     "trackProgress": "Crea una cuenta o inicia sesión para llevar un seguimiento de tu progreso.",
-    "tryAgain": "Inténtalo de nuevo"
+    "tryAgain": "Inténtalo de nuevo",
+    "loginNotAvailable1": "Las funciones de inicio de sesión aún no están disponibles en la aplicación de escritorio.",
+    "loginNotAvailable2": "Puedes visitar nuestro sitio web para iniciar sesión y acceder a tu cuenta."
   },
   "bCert": {
     "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a empresas y puestos en esa industria.",

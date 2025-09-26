@@ -73,7 +73,7 @@
       "consumed": "使用済みのトークンです",
       "expired": "トークンの有効期限が切れています",
       "invalid": "無効なトークンです",
-      "notFound": "トークンが見つかりませんでした"
+      "notFound": "該当するトークンが見つかりませんでした"
     },
     "lnurlAuthDescription": "ライトニングウォレットでQRコードをスキャンしてログインしてください！",
     "newPassword": "新しいパスワード",
@@ -234,7 +234,7 @@
       "congratulations": "おめでとうございます。このコースはこれで完了です！",
       "congratulationsPassed": "おめでとうございます。あなたは最終試験に<0>合格</0>しました！",
       "courseDiploma": "コース修了証書",
-      "courseNotFound": "コースが見つかりませでした",
+      "courseNotFound": "該当するコースが見つかりませでした",
       "dontGiveUpTryAgain": "あきらめないで！\n24時間後に再トライしてください。",
       "dontWorry": "このテストは学習の強化に役立ちます。 もし合格できなくても、24時間後に再トライすることができます。",
       "dontWorryRetake": "ご心配なく、24時間後に再トライすることができます。",
@@ -311,7 +311,7 @@
       "tryAgain": "再トライ",
       "tryOneMoreTime": "もう一度トライしてみましょう！",
       "verifyDisplayName": "修了証書を作成するために使用されます。開始する前に、以下の表示名を確認してください。",
-      "viewExam": "テストを表示",
+      "viewExam": "試験を表示",
       "weight": "重要度： {{weight}}%",
       "whyTimeStamp": "学位にタイムスタンプを押す\nこれが重要な理由",
       "wishTryAgain": "24時間後に再試験を受けることができます。",
@@ -421,7 +421,7 @@
     "allCourses": "すべてのコース",
     "continueLeftOff": "中断場所から再開",
     "courseSelector": "コース選択ツール",
-    "noCoursesFound": "コースが見つかりません。検索条件を変更してみてください。",
+    "noCoursesFound": "該当するコースが見つかりませんでした",
     "plusXMore": "+{{count}}件以上",
     "selectATopic": "トピックを選択",
     "tryAdjustingFilters": "検索条件を変更してみてください"
@@ -494,7 +494,7 @@
           "sortBy": "並べ替え：",
           "za": "逆五十音順"
         },
-        "noCouponsFound": "クーポンが見つかりませんでした。",
+        "noCouponsFound": "該当するクーポンが見つかりませんでした。",
         "numberOfCodes": "生成したいコード数は？",
         "numberOfCodesPlaceholder": "番号を入力する",
         "productCourse": "コース",
@@ -549,7 +549,7 @@
         "addContributor": {
           "addLanguage": "別の言語を追加する",
           "assign": "アサイン",
-          "assignedLanguages": "アサイン済の言語",
+          "assignedLanguages": "アサイン済みの言語",
           "assigning": "アサイン中...",
           "assignmentSuccess": "貢献者が正常にアサインされました！",
           "confirm": "確認",
@@ -563,7 +563,7 @@
         },
         "admin": "管理者",
         "comingSoon": {
-          "courses": "コース一覧は近日公開予定",
+          "courses": "コース一覧は近日公開予定です",
           "coverage": "言語対応状況の表示機能はまもなく提供開始"
         },
         "contentManagement": {
@@ -590,15 +590,15 @@
           "notAssigned": "未アサイン",
           "reassignModal": {
             "cancel": "キャンセル",
-            "chooseNewContributor": "新しい貢献メンバーを選択...",
+            "chooseNewContributor": "新しい貢献者を選択...",
             "courseInfo": "コース情報",
             "currentlyAssignedTo": "現在のアサイン先：",
             "reassign": "再アサイン",
             "reassigning": "再アサイン中...",
             "reassigningCourse": "再アサイン中のコース：",
             "reassignmentSuccess": "コースの再アサインが正常に完了しました！",
-            "selectNewContributor": "新規貢献メンバーを選択",
-            "title": "コースを新しい貢献メンバーに再アサイン",
+            "selectNewContributor": "新しい貢献者を選択",
+            "title": "コースを新しい貢献者に再アサイン",
             "warning": {
               "description": "レビュー済みの章は再アサインされません。",
               "title": "重要なお知らせ"
@@ -612,7 +612,7 @@
           },
           "table": {
             "actions": "アクション",
-            "contributor": "貢献メンバー",
+            "contributor": "貢献者",
             "course": "コース",
             "index": "索引",
             "language": "言語",
@@ -641,7 +641,7 @@
           "status": "ステータス",
           "translationStatus": "翻訳状況"
         },
-        "courseNotFound": "コースが見つかりません",
+        "courseNotFound": "該当するコースが見つかりませんでした",
         "messages": {
           "noPendingRequests": "保留中の校正リクエストはありません。",
           "noPendingRequestsSearch": "\"{{query}}\"に一致する校正リクエストはありません。",
@@ -652,13 +652,110 @@
           "acceptRequest": "リクエストを許可",
           "acceptTranslationRequest": "校正リクエストを許可",
           "accepting": "許可中...",
-          "cancel": "キャンセル"
-        }
+          "cancel": "キャンセル",
+          "close": "閉じる",
+          "contributor": "貢献者",
+          "course": "コース",
+          "doYouWantToAcceptRequest": "この翻訳リクエストを許可しますか？",
+          "language": "言語",
+          "provideRejectionReason": "このリクエストを拒否する理由を教えてください",
+          "reasonForRejection": "拒否理由",
+          "reasonPlaceholder": "ここに理由を書いてください...",
+          "rejecting": "拒否中...",
+          "requestAcceptedMessage": "貢献者には通知済みです。翻訳作業を開始できます。",
+          "requestAcceptedSuccess": "翻訳リクエストを許可しました！",
+          "requestRejectedSuccess": "リクエストは正常に拒否されました",
+          "submitRejection": "送信"
+        },
+        "pendingTranslationRequests": "校正待ちのリクエスト",
+        "tabs": {
+          "requests": "リクエスト"
+        },
+        "toggle": {
+          "pendingRequest": "保留中のリクエスト",
+          "rejectedRequests": "拒否されたリクエスト"
+        },
+        "translate": {
+          "selectLanguagesModal": {
+            "timeoutError": "翻訳リクエストがタイムアウトしました。コースコンテンツが大きすぎる可能性があります。再度お試しいただくか、サポートまでお問い合わせください。"
+          }
+        },
+        "noResultsFound": "該当する結果が見つかりませんでした",
+        "reports": {
+          "chooseYear": "どの年を考慮したいですか？",
+          "comingSoon": {
+            "courses": "コース一覧は近日公開予定です",
+            "coverage": "言語対応状況の表示機能はまもなく提供開始されます"
+          },
+          "contributors": {
+            "assignedCourses": "アサインされたコース",
+            "completedCourses": "完了したコース",
+            "languages": "言語",
+            "startDate": "開始日",
+            "title": "貢献者",
+            "totalReward": "総合報酬",
+            "username": "ユーザー名"
+          },
+          "languageCoverage": {
+            "completed": "完了済み",
+            "inProgress": "進行中",
+            "notStarted": "未開始",
+            "totalCourses": "全コース"
+          },
+          "courses": {
+            "contributor": "貢献者",
+            "filterByCourse": "コースで絞り込む",
+            "lastUpdated": "最終更新日",
+            "progress": "進捗率"
+          },
+          "dateFilter": "日付で絞り込む",
+          "downloadData": "データをダウンロード",
+          "filterByLanguage": "言語で絞り込む",
+          "fromMonth": "開始月",
+          "fromMonthPlaceholder": "どの月からですか？",
+          "generalReport": "総合レポート",
+          "languagesProofread": "言語校正",
+          "noContributors": "該当する貢献者が見つかりませんでした",
+          "noCourses": "該当するコースが見つかりませんでした",
+          "noLanguages": "該当する言語が見つかりませんでした",
+          "proofreadCourses": "校正コース",
+          "table": {
+            "contributor": "貢献者",
+            "lastUpdated": "最終更新日",
+            "progress": "進捗率"
+          },
+          "tabs": {
+            "contributors": "貢献者",
+            "courses": "コース",
+            "coverage": "言語対応の範囲"
+          },
+          "toMonth": "期間：",
+          "toMonthPlaceholder": "どの月まで？",
+          "totalLanguages": "総言語数",
+          "year": "年"
+        },
+        "status": {
+          "readyForReview": "レビューの準備が整いました",
+          "underReview": "レビュー中",
+          "completed": "完了済み",
+          "assigned": "アサイン済み"
+        },
+        "userManagement": {
+          "actions": {
+            "viewDetails": "詳細を見る"
+          },
+          "status": {
+            "readyForReview": "レビューの準備が整いました",
+            "reviewed": "レビュー済み",
+            "underReview": "レビュー中"
+          }
+        },
+        "searchPlaceholder": "検索中..."
       }
     },
     "announcements": {
       "groups": {
-        "active": "プロジェクト課題参加学生",
+        "active": "プロジェクト課題に選ばれた学生",
         "all": "全登録学生",
         "summer": "サマースクール参加学生"
       },
@@ -880,8 +977,8 @@
     "course": {
       "announcement": "アナウンス",
       "assignment": "課題",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
+      "assignmentCompletedDescription": "プロジェクト課題の提出が完了し、現在レビュー中です。\n採点後、こちらで成績を確認できます。",
+      "assignmentCompletedTitle": "課題完了",
       "assignmentDescription": "このプロジェクト課題は、Plan ₿ Biz Schoolプログラムの第2フェーズを示すもので、第1フェーズから選抜された学生を対象としています。 生徒の順位と希望に応じて、ビットコイン企業が立案したプロジェクト課題が与えられます。 この個人プロジェクトベースの課題は、6月2日から6月12日までの10日間にわたって行われます。\n課題中、各企業の代表者から指導を受けます。 生徒は6月12日までに作品を完成させ、評価のために提出しなければなりません。\n\nプロジェクトは企業ごとに採点されます。 この点数は最終成績にカウントされます。 成績上位者のみが、2025年7月23日から7月30日までスイスのルガーノで開催されるサマースクールに招待されます。",
       "assignmentInformation": "課題情報",
       "assignmentTitle": "",
@@ -1017,7 +1114,8 @@
         "none": "なし",
         "platformTitle": "このプラットフォームでどのような通知を受け取りたいですか？",
         "settingsSaved": "",
-        "title": "通知設定"
+        "title": "通知設定",
+        "filter": "フィルター"
       },
       "password": "パスワード",
       "personalInformation": "個人情報",
@@ -1356,8 +1454,8 @@
     "pageTitle": "Plan ₿ ノードネットワークを探求しよう"
   },
   "notFound": {
-    "here": "こちら",
-    "pageSubtitle": "ラビットホールの奥深くで迷子になったようです。こちらクリックして地上に戻る：",
+    "here": "コチラ",
+    "pageSubtitle": "ラビットホールの奥深くで迷子になったようです。こちらをクリックして地上に戻る：",
     "pageTitle": "おっと。"
   },
   "notification": {
@@ -1448,7 +1546,7 @@
     "descriptionOriginalLanguage": "このページがオリジナルの言語で書かれていたとしても、正確性を確保するには人間によるレビューが必要です。",
     "inProgress": "校正中",
     "reviewEarn": "レビューでsats獲得",
-    "rewardsText": "*報酬は為替レートによって変動する可能性があります",
+    "rewardsText": "※報酬はドル為替レートによって変動する可能性があります",
     "status": "校正状況",
     "thanks": "素晴らしいレビュアーの方々に心から感謝します！"
   },
@@ -1465,7 +1563,7 @@
       "blogSidebarTitleForAll": "",
       "errorMessageNotFound": "記事は見つかりませんでした。",
       "featuredArticleTitleText": "最新記事",
-      "filterText": "トピックでフィルタ ：",
+      "filterText": "トピックで絞り込む ：",
       "noArticlesText": "現在、ブログ記事はありません。",
       "pastArticleSubtitleText": "過去記事"
     },
@@ -1856,7 +1954,9 @@
     "view": "表示",
     "viewMore": "もっと見る",
     "wallets": "ウォレット",
-    "yes": "はい"
+    "yes": "はい",
+    "filters": "フィルター",
+    "resetFilters": "フィルターをリセット"
   },
   "youtubeChannels": {
     "pageTitle": "Youtubeチャンネル",

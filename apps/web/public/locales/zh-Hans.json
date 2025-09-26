@@ -113,7 +113,11 @@
     "pageTitle": "参加₿-CERT考试",
     "readChart": "阅读章程",
     "tweetText": "很高兴成功通过了在@planb_network的₿-CERT考试，得分为{{score}}/100! {{emoji}} #₿-CERT证书\n\n{{certificateUrl}}",
-    "verify": "验证您的证书的真实性"
+    "verify": "验证您的证书的真实性",
+    "hostSessionConditions": "操作步骤如下：\n\n1. 请阅读<0>宪章</0> - 确保您的社区满足主办条件\n2. 计划和安排 - 如果您符合资格，请选择日期并准备活动\n3. 发布您的活动 - 与我们联系，将其添加到Plan ₿ Network平台，以便人们可以加入",
+    "myCertificates": "我的证书",
+    "noTestSessions": "当前没有可参加的考试",
+    "wantHostSession": "想要在您的当地中心组织₿-CERT考试吗？"
   },
   "bet": {
     "contributeButton": "帮助和贡献",
@@ -419,7 +423,8 @@
     "courseSelector": "课程选择器",
     "noCoursesFound": "未找到课程。尝试调整您的筛选条件。",
     "plusXMore": "+{{count}} 门课程",
-    "selectATopic": "选择一个主题"
+    "selectATopic": "选择一个主题",
+    "tryAdjustingFilters": "尝试调整您的筛选条件"
   },
   "dashboard": {
     "account": "账户",
@@ -1181,7 +1186,13 @@
       "retakeExam": "重新参加考试",
       "seatBooked": "您的考试座位已预订好",
       "takePlaceAt": "考试将在...举行",
-      "yourCertificate": "您的证书"
+      "yourCertificate": "您的证书",
+      "completeACourse": "完成课程以获得您的第一个证书！",
+      "exploreBCert": "探索₿-CERT",
+      "exploreCourses": "探索课程",
+      "getGlobalRecognition": "通过₿-CERT获得全球认可",
+      "noCertificatesAvailable": "暂无证书",
+      "noDiplomasAvailable": "暂时没有可用的文凭"
     },
     "goToDashboard": "前往仪表板",
     "goToHomepage": "前往主页",
@@ -2196,7 +2207,10 @@
     "account": "账户",
     "invoices": "发票",
     "map": "地图",
-    "settings": "设置"
+    "settings": "设置",
+    "certifications": "认证",
+    "myCertificates": "我的证书",
+    "resetFilters": "重置筛选条件"
   },
   "youtubeChannels": {
     "pageTitle": "YouTube频道",
