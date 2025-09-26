@@ -9,8 +9,8 @@
     "knip": "^5.63.0",
     "lint-staged": "^16.1.5",
     "mocha": "^11.7.1",
-    "tsx": "^4.20.4",
-    "turbo": "^2.5.6",
+    "tsx": "^4.20.6",
+    "turbo": "^2.5.8",
     "typescript": "~5.9.2"
   },
   "license": "MIT",
@@ -20,7 +20,7 @@
     ]
   },
   "name": "blms",
-  "packageManager": "pnpm@10.15.0",
+  "packageManager": "pnpm@10.17.1",
   "workspaces": [
     "packages/*",
     "apps/*"

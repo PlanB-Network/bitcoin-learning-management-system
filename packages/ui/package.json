@@ -38,7 +38,7 @@
     "@storybook/addon-onboarding": "^9.1.2",
     "@storybook/react-vite": "^9.1.2",
     "@tailwindcss/postcss": "^4.1.12",
-    "@types/react": "~19.1.10",
+    "@types/react": "~19.1.13",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "prop-types": "^15.8.1",
