@@ -1,4 +1,4 @@
-import { ExamType, SortDirection } from '@blms/constants';
+import { ExamType, SortDirection, TeachingFormat } from '@blms/constants';
 
 import {
   checkoutDataSchema,
@@ -124,13 +124,21 @@ const completeAllChaptersProcedure = studentProcedure
   );
 
 const getProgressProcedure = studentProcedure
-  .input(z.object({ courseId: z.string() }).optional())
+  .input(
+    z
+      .object({
+        courseId: z.string().optional(),
+        teachingFormat: z.nativeEnum(TeachingFormat).optional(),
+      })
+      .optional(),
+  )
   .output<Parser<CourseProgressExtended[]>>(
     courseProgressExtendedSchema.array(),
   )
   .query(({ ctx, input }) =>
     createGetProgress(ctx.dependencies)({
       courseId: input?.courseId || '',
+      teachingFormat: input?.teachingFormat,
       uid: ctx.user.uid,
     }),
   );

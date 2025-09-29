@@ -1,3 +1,4 @@
+import { TeachingFormat } from '@blms/constants';
 import {
   Button,
   Carousel,
@@ -44,9 +45,14 @@ function AllCourses() {
   const isLoggedIn = !!session?.user;
 
   const { data: coursesProgress } = useQuery(
-    trpc.user.courses.getProgress.queryOptions(undefined, {
-      enabled: isLoggedIn,
-    }),
+    trpc.user.courses.getProgress.queryOptions(
+      {
+        teachingFormat: TeachingFormat.SelfPaced,
+      },
+      {
+        enabled: isLoggedIn,
+      },
+    ),
   );
 
   const inProgressCourses = useMemo(() => {

@@ -1,7 +1,12 @@
+import type { TeachingFormat } from '@blms/constants';
 import { sql } from '@blms/database';
 import type { CourseProgress } from '@blms/types';
 
-export const getProgressQuery = (uid: string, courseId?: string) => {
+export const getProgressQuery = (
+  uid: string,
+  courseId?: string,
+  teachingFormat?: TeachingFormat,
+) => {
   return sql<
     Array<
       CourseProgress & {
@@ -20,7 +25,8 @@ export const getProgressQuery = (uid: string, courseId?: string) => {
       ) as total_chapters
     FROM users.course_progress cp
     JOIN content.courses c ON c.id = cp.course_id
+      ${teachingFormat ? sql`AND c.teaching_format = ${teachingFormat}` : sql``}
     WHERE cp.uid = ${uid}
-    ${courseId ? sql`AND cp.course_id = ${courseId}` : sql``};
+      ${courseId ? sql`AND cp.course_id = ${courseId}` : sql``};
   `;
 };
