@@ -113,7 +113,8 @@
     "pageTitle": "Faz o teste ₿-CERT",
     "readChart": "Lê o regulamento",
     "tweetText": "Empolgado por ter passado no ₿-CERT da @planb_network com a pontuação de {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Verifica a autenticidade do teu certificado"
+    "verify": "Verifica a autenticidade do teu certificado",
+    "hostSessionConditions": "Veja como:\n\n1. Leia o <0>Regulamento</0> – Verifique que a sua comunidade atende aos requisitos obrigatórios para organizar o exame\n2. Planeje & Marque – Se você for aceito, escolha uma data e prepare para a sessão\n3. Publique o seu Evento – Entre em contato conosco para ser adicionado na plataforma da Plan ₿ Network para que as pessoas possam se inscrever"
   },
   "bet": {
     "contributeButton": "Ajuda e contribui",
@@ -1729,5 +1730,8 @@
     "pageTitle": "",
     "view": "",
     "watchTrailer": ""
+  },
+  "account": {
+    "account": "Conta"
   }
 }

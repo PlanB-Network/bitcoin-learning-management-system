@@ -113,7 +113,11 @@
     "pageTitle": "Ikuti ujian ₿-CERT",
     "readChart": "Silakan baca piagam",
     "tweetText": "Senang sekali bisa lulus ₿-CERT di @planb_network dengan skor {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Verifikasi keaslian sertifikat Anda"
+    "verify": "Verifikasi keaslian sertifikat Anda",
+    "hostSessionConditions": "Berikut caranya:\n\n1. Baca <0>Charter</0> - Pastikan komunitas Anda memenuhi syarat hosting yang diwajibkan\n2. Rencanakan & Jadwalkan - Jika Anda memenuhi syarat, pilih tanggal dan siapkan sesi\n3. Publikasikan Acara Anda - Hubungi kami untuk menambahkannya ke platform Plan ₿ Network sehingga orang dapat bergabung",
+    "myCertificates": "Sertifikat Saya",
+    "noTestSessions": "Tidak ada sesi tes yang tersedia saat ini",
+    "wantHostSession": "Ingin mengadakan sesi ujian ₿-CERT di hub lokal Anda?"
   },
   "bet": {
     "contributeButton": "Bantu & kontribusi",
@@ -291,7 +295,7 @@
       "successDiploma": "Selamat! Anda telah sukses lulus ujian.\nDiploma Anda dapat diakses di dasbor pelajar Anda. Diploma sudah diberi <0>stempel waktu</0> untuk memastikan keasliannya.",
       "successDiplomaTeacherLed": "Selamat! Anda telah berhasil lulus kursus ini.\nDiploma Anda sekarang tersedia di dasbor siswa Anda.",
       "successDiplomaTimeStamped": "Selamat! Anda telah sukses lulus ujian.\nDiploma Anda dapat diakses di dasbor pelajar Anda 10 jam setelah Anda mengikuti ujian. Hal ini dikarenakan teknologi <0>stempel waktu</0> yang digunakan untuk memastikan keasliannya.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Selamat atas penyelesaian kursusnya.\nAnda telah berhasil mencapai garis akhir kelulusan untuk kursus ini dan sekarang Anda sudah lulus.\nAnda dapat menemukan gelar diploma Anda di dashboard Anda.",
       "sureSubmit": "Apakah anda yakin untuk mengirimkan ujian anda ?",
       "takeExam": "Ikuti ujian",
       "tamperProof": "Anti Rusak: Blockchain memastikan tidak ada yang dapat mengubah atau memalsukan kredensial anda.",
@@ -326,7 +330,8 @@
       "pageDescription": "Plan ₿ Academy menawarkan berbagai macam kursus tentang Bitcoin, baik yang gratis maupun yang premium, mulai dari pemula hingga ahli. Dipandu oleh para ahli atau belajar mandiri, mereka beradaptasi dengan setiap gaya belajar. Misi kami sederhana: membuat pengetahuan Bitcoin menjadi jelas, menarik, dan dapat diakses oleh semua orang!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Plan ₿ School, yang dipimpin oleh Giacomo Zucco, menawarkan program pendidikan intensif selama tiga bulan yang dirancang untuk menjembatani kesenjangan antara pembelajaran dan aplikasi di dunia nyata. Di luar kelas tradisional, para siswa terlibat dalam proyek-proyek praktis yang dipimpin oleh perusahaan dan pelatihan kelas satu yang didedikasikan untuk siswa berprestasi. Hanya talenta terbaik yang akan maju setelah melalui dua tahap seleksi yang kompetitif, untuk memastikan bahwa siswa terbaik yang terpilih memiliki bekal yang cukup untuk memulai karir mereka di industri Bitcoin.",
-      "seeCourse": "Lihat kursus"
+      "seeCourse": "Lihat kursus",
+      "discover": "Temukan"
     },
     "format": {
       "hybrid": "Secara langsung/online",
@@ -415,7 +420,11 @@
     },
     "allCourses": "Semua kursus",
     "continueLeftOff": "Lanjutkan pembelajaran Anda",
-    "courseSelector": "Pemilihan kursus"
+    "courseSelector": "Pemilihan kursus",
+    "noCoursesFound": "Tidak ada kursus yang ditemukan",
+    "plusXMore": "+{{count}} lagi",
+    "selectATopic": "Pilih topik",
+    "tryAdjustingFilters": "Coba sesuaikan filter Anda"
   },
   "dashboard": {
     "account": "Akun",
@@ -434,7 +443,9 @@
         "profession": "Profesi",
         "resultsRemaining": "{{results}} hasil yang tersisa",
         "seeMore": "Lihat lebih lanjut",
-        "viewCV": "Lihat CV"
+        "viewCV": "Lihat CV",
+        "candidateFile": "File dari kandidat",
+        "file": "Berkas (File)"
       },
       "confirmRemoval": "Konfirmasi penghapusan",
       "coupons": {
@@ -527,7 +538,262 @@
       "type": "Jenis",
       "upcomingBookings": "Pemesanan yang akan datang",
       "upcomingBookingsSubtitle": "Di sini anda dapat mengunduh daftar peserta untuk semua acara tatap muka.",
-      "userRolesAllocation": "Alokasi peran pengguna"
+      "userRolesAllocation": "Alokasi peran pengguna",
+      "translation": "Panel terjemahan",
+      "translationPanel": {
+        "actions": {
+          "accept": "Terima",
+          "delete": "Hapus",
+          "reject": "Tolak"
+        },
+        "addContributor": {
+          "addLanguage": "Tambahkan bahasa lain",
+          "assign": "Menentukan",
+          "assignedLanguages": "Bahasa yang sudah ditetapkan",
+          "assigning": "Menetapkan...",
+          "assignmentSuccess": "Kontributor berhasil ditugaskan!",
+          "confirm": "Konfirmasi",
+          "findContributor": "Temukan kontributor",
+          "language": "Bahasa",
+          "noUsers": "Tidak ada pengguna yang tersedia",
+          "searchUsers": "Cari pengguna...",
+          "selectLanguage": "Pilih bahasa",
+          "selectedUsers": "Pengguna Terpilih:",
+          "title": "Tambah Kontributor"
+        },
+        "admin": "ADMIN",
+        "comingSoon": {
+          "courses": "Daftar kursus yang segera hadir",
+          "coverage": "Daftar cakupan bahasa yang segera hadir"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Menentukan",
+            "backToContentManagement": "Kembali ke manajemen konten",
+            "reassign": "Menentukan ulang",
+            "view": "Lihat"
+          },
+          "assignModal": {
+            "assign": "Menentukan",
+            "assigning": "Menentukan...",
+            "assigningCourse": "Menentukan kursus :",
+            "assignmentSuccess": "Kursus berhasil ditentukan!",
+            "cancel": "Batal",
+            "chooseContributor": "Pilih kontributor...",
+            "courseInfo": "Informasi Kursus",
+            "selectContributor": "Pilih Kontributor",
+            "title": "Tetapkan Kursus untuk Kontributor"
+          },
+          "description": "Kelola terjemahan kursus dan tugaskan kepada kontributor",
+          "noCourses": "Tidak ada kursus yang tersedia.",
+          "noCoursesFiltered": "Tidak ada kursus yang cocok dengan kriteria Anda",
+          "notAssigned": "Tidak ditugaskan",
+          "reassignModal": {
+            "cancel": "Batal",
+            "chooseNewContributor": "Pilih kontributor baru...",
+            "courseInfo": "Informasi Kursus",
+            "currentlyAssignedTo": "Sekarang ditugaskan kepada:",
+            "reassign": "Menentukan ulang",
+            "reassigning": "Menentukan...",
+            "reassigningCourse": "Menentukan kursus :",
+            "reassignmentSuccess": "Kursus berhasil ditentukan!",
+            "selectNewContributor": "Pilih Kontributor Baru",
+            "title": "Menentukan Kursus untuk Kontributor Baru",
+            "warning": {
+              "description": "Bab-bab yang sudah ditinjau tidak akan ditugaskan kembali.",
+              "title": "Catatan Penting"
+            }
+          },
+          "status": {
+            "assigned": "Terpilih",
+            "notAssigned": "Tidak terpilih",
+            "readyForReview": "Siap untuk ditinjau",
+            "underReview": "Sedang ditinjau"
+          },
+          "table": {
+            "actions": "Tindakan",
+            "contributor": "Kontributor",
+            "course": "Kursus",
+            "index": "Indeks",
+            "language": "Bahasa",
+            "progress": "Kemajuan",
+            "status": "Status"
+          },
+          "title": "Manajemen Konten"
+        },
+        "courseDetails": {
+          "actions": "Tindakan",
+          "assignedTo": "Ditugaskan kepada",
+          "chapterIndex": "Bab",
+          "chapterTitle": "Judul",
+          "chaptersAndProgress": "Bab dan Perkembangan",
+          "chaptersCompleted": "bab yang telah selesai",
+          "courseIndex": "Indeks kursus",
+          "courseInformation": "Informasi Kursus",
+          "courseName": "Nama Kursus",
+          "currentContributor": "Kontributor saat ini",
+          "errorLoadingDetails": "Kesalahan dalam memuat detail kursus",
+          "language": "Bahasa",
+          "noChapters": "Tidak ada bab tersedia untuk kursus ini",
+          "noContributor": "Tidak ada kontributor yang terpilih",
+          "partTitle": "Bagian {{index}}: {{title}}",
+          "progress": "Perkembangan",
+          "status": "Status",
+          "translationStatus": "Status Terjemahan"
+        },
+        "modal": {
+          "language": "Bahasa",
+          "course": "Kursus",
+          "contributor": "Kontributor",
+          "close": "Tutup",
+          "cancel": "Batal",
+          "accepting": "Menerima...",
+          "acceptRequest": "Terima Permintaan",
+          "acceptTranslationRequest": "Terima Permintaan Proofreading",
+          "doYouWantToAcceptRequest": "Apakah Anda menerima permintaan terjemahan ini?",
+          "provideRejectionReason": "Tolong berikan alasan menolak permintaan ini.",
+          "reasonForRejection": "Alasan penolakan",
+          "reasonPlaceholder": "Tulis penjelasan Anda di sini...",
+          "rejecting": "Menolak...",
+          "requestAcceptedMessage": "Kontributor telah diberitahu dan sekarang dapat mulai mengerjakan terjemahannya.",
+          "requestAcceptedSuccess": "Anda telah menerima permintaan terjemahan!",
+          "requestRejectedSuccess": "Permintaan berhasil ditolak.",
+          "submitRejection": "Kirim"
+        },
+        "courseNotFound": "Kursus tidak ditemukan",
+        "messages": {
+          "noPendingRequests": "Tidak ada lagi permintaan proofreading yang tertunda.",
+          "noPendingRequestsSearch": "Tidak ada permintaan proofreading yang cocok dengan \"{{query}}\".",
+          "noRejectedRequests": "Tidak ada permintaan proofreading yang ditolak.",
+          "noRejectedRequestsSearch": "Tidak ada permintaan proofreading yang ditolak yang sesuai dengan \"{{query}}\"."
+        },
+        "noResultsFound": "Tidak ada hasil yang ditemukan",
+        "pendingTranslationRequests": "Permintaan proofreading yang tertunda",
+        "reports": {
+          "chooseYear": "Tahun berapa yang Anda maksud?",
+          "comingSoon": {
+            "courses": "Daftar kursus yang segera hadir",
+            "coverage": "Daftar cakupan bahasa yang segera hadir"
+          },
+          "contributors": {
+            "assignedCourses": "Kursus yang ditentukan",
+            "completedCourses": "Kursus yang telah selesai",
+            "languages": "Bahasa",
+            "startDate": "Tanggal mulai",
+            "title": "Kontributor",
+            "totalReward": "Total hadiah",
+            "username": "Nama pengguna"
+          },
+          "courses": {
+            "contributor": "Kontributor",
+            "filterByCourse": "Filter berdasarkan kursus",
+            "lastUpdated": "Terakhir diperbarui",
+            "progress": "Perkembangan %"
+          },
+          "dateFilter": "Filter tanggal",
+          "downloadData": "Unduh Data",
+          "filterByLanguage": "Filter berdasarkan bahasa",
+          "fromMonth": "Dari",
+          "fromMonthPlaceholder": "Dari bulan apa?",
+          "generalReport": "Laporan Umum",
+          "languageCoverage": {
+            "completed": "Selesai",
+            "inProgress": "Sedang berlangsung",
+            "notStarted": "Belum dimulai",
+            "totalCourses": "Total kursus"
+          },
+          "languagesProofread": "Bahasa yang terkoreksi",
+          "noContributors": "Tidak ada kontributor yang ditemukan",
+          "noCourses": "Tidak ada kursus yang ditemukan",
+          "noLanguages": "Tidak ada bahasa yang ditemukan",
+          "proofreadCourses": "Kursus yang terkoreksi",
+          "table": {
+            "contributor": "Kontributor",
+            "lastUpdated": "Terakhir diperbarui",
+            "progress": "Perkembangan %"
+          },
+          "tabs": {
+            "contributors": "Kontributor",
+            "courses": "Kursus",
+            "coverage": "Cakupan bahasa"
+          },
+          "toMonth": "Sampai pada",
+          "toMonthPlaceholder": "Ke bulan berapa?",
+          "totalLanguages": "Total bahasa",
+          "year": "Tahun"
+        },
+        "searchPlaceholder": "Mencari...",
+        "status": {
+          "assigned": "Terpilih",
+          "completed": "Selesai",
+          "inProgress": "Sedang berlangsung",
+          "readyForReview": "Siap untuk Ditinjau",
+          "todo": "Yang Harus Dilakukan",
+          "underReview": "Sedang ditinjau"
+        },
+        "table": {
+          "actions": "Tindakan",
+          "course": "Kursus",
+          "index": "Indeks",
+          "language": "Bahasa",
+          "username": "Nama pengguna"
+        },
+        "tabs": {
+          "contentManagement": "Manajemen konten",
+          "reports": "Laporan",
+          "requests": "Permintaan",
+          "translate": "Terjemahkan",
+          "userManagement": "Manajemen pengguna"
+        },
+        "title": "Panel terjemahan Admin",
+        "toggle": {
+          "pendingRequest": "Permintaan tertunda",
+          "rejectedRequests": "Permintaan yang ditolak"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Terjemahkan"
+          },
+          "backToCourse": "Kembali ke kursus",
+          "changeSpeed": "Ubah kecepatan pemutaran",
+          "chapterTitle": "Judul Bab",
+          "compare": "Bandingkan",
+          "compareDisabledTooltip": "Versi yang telah dikoreksi tidak tersedia",
+          "compareTooltip": "Bandingkan versi asli dan versi yang telah dikoreksi",
+          "comparison": {
+            "backToChapter": "Kembali ke bab",
+            "originalVersion": "Versi Asli",
+            "translatedVersion": "Versi Terjemahan"
+          },
+          "description": "Mulai menerjemahkan kursus ke dalam bahasa-bahasa tertentu.",
+          "forward15Seconds": "Maju 15 detik",
+          "imageNotFound": "Gambar tidak ditemukan",
+          "language": "Bahasa",
+          "loadingPresentation": "Memuat presentasi...",
+          "noContentAvailable": "Tidak ada konten tersedia",
+          "noCourses": "Tidak ada kursus yang membutuhkan terjemahan saat ini.",
+          "noOriginalContent": "Tidak ada konten asli",
+          "noPngSlides": "Tidak ada slide PNG tersedia untuk presentasi ini",
+          "noSlidesFound": "Tidak ada slide yang ditemukan",
+          "originalContent": "Konten Asli",
+          "pause": "Jeda",
+          "play": "Mulai",
+          "presentations": "Presentasi",
+          "rewind15Seconds": "Mundur 15 detik",
+          "selectLanguagesModal": {
+            "audioFile": "File Suara",
+            "audioFileInfo": "Format yang didukung: MP3, WAV, M4A (Maksimal 50MB)",
+            "audioFileTooLarge": "File audio terlalu besar. Ukuran maksimum adalah 50MB."
+          }
+        },
+        "userManagement": {
+          "table": {
+            "startDate": "Tanggal mulai",
+            "username": "Nama pengguna"
+          },
+          "title": "Kontributor"
+        }
+      }
     },
     "announcements": {
       "groups": {
@@ -753,33 +1019,33 @@
     "course": {
       "announcement": "Pengumuman",
       "assignment": "Penugasan",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
+      "assignmentCompletedDescription": "Tugas proyek Anda telah berhasil dikirim dan sedang dalam peninjauan.\nNilai Anda akan muncul di sini setelah penilaian selesai.",
+      "assignmentCompletedTitle": "Tugas selesai",
       "assignmentDescription": "Penugasan proyek ini menandai tahap kedua dari program Plan ₿ Biz School, terbuka untuk siswa yang terpilih dari tahap pertama. Berdasarkan peringkat dan preferensi siswa, ia akan dikaitkan dengan tugas proyek yang dirancang oleh perusahaan Bitcoin. Tugas berbasis proyek individu ini akan berlangsung selama 10 hari, dari tanggal 2 Juni hingga 12 Juni.\nSelama pengerjaan tugas, mereka akan dibimbing oleh perwakilan dari perusahaan. Pada tanggal 12 Juni, para siswa harus menyelesaikan dan menyerahkan hasil kerja mereka untuk dievaluasi.\n\nProyek-proyek tersebut akan dinilai oleh perusahaan. Nilai ini akan diperhitungkan untuk nilai akhir. Hanya siswa dengan peringkat teratas yang akan diundang untuk berpartisipasi dalam Sekolah Musim Panas di Lugano, Swiss, dari tanggal 23 Juli hingga 30 Juli 2025.",
       "assignmentInformation": "Informasi penugasan",
-      "assignmentTitle": "",
+      "assignmentTitle": "Tugas proyek",
       "checkDetailsCompleted": "Di sini Anda dapat memeriksa semua detail mengenai kursus yang telah anda selesaikan.",
       "completionDiploma": "Ijazah penyelesaian",
       "completionExamInfo": "Anda harus menyelesaikan ujian untuk dapat mengakses fitur ini.",
       "conclusionHeadline": "Berikut ini adalah ringkasan dari apa yang telah anda pelajari. Jika ada beberapa bab yang terlewatkan atau belum divalidasi dengan benar, sekaranglah waktunya untuk melakukannya, baik dengan kembali belajar, atau dengan menekan tombol selesaikan.",
       "conclusionNotReleased": "Kesimpulan akan dibuka pada hari terakhir kelas.",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "confirmList": "Konfirmasi daftar",
+      "confirmNoEditable": "Setelah dikonfirmasi, daftar preferensi ini tidak akan bisa diubah lagi.",
+      "confirmNoEditableFile": "Setelah terkirim, Anda tidak akan dapat lagi mengedit file Anda.",
+      "confirmSubmission": "Konfirmasi pengiriman",
+      "congratulationsPassed": "Selamat! Anda telah berhasil lulus!",
       "coordinator": "Koordinator kursus",
       "courseCalendar": "Kalender kursus",
       "coursesCompleted": "Kursus selesai",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
+      "diplomaReleaseDescription": "Setelah semua kelas selesai, Anda akan diberikan gelar diploma sebagai tanda berhasil menyelesaikan kursus. Gelar diploma akan tersedia untuk diunduh di sini setelah kelas terakhir dan penyelesaian bab penutup.",
+      "diplomaReleaseTitle": "Penerbitan gelar diploma",
       "examScore": "Skor:",
       "exams": "Ujian",
       "feedbacks": "Di sini anda dapat memeriksa dan mengedit penilaian dan umpan balik yang telah anda berikan untuk kursus ini.",
-      "fileUploadError": "",
-      "fileUploaded": "",
-      "finalAverageGradeDescription": "",
-      "finalGradeSummary": "",
+      "fileUploadError": "Terjadi kesalahan saat mengunggah file Anda",
+      "fileUploaded": "Pekerjaan Anda berhasil diunggah!",
+      "finalAverageGradeDescription": "Anda dapat menemukan nilai rata-rata akhir Anda di bagian Ujian & Diploma pada dashboard Anda.",
+      "finalGradeSummary": "Ringkasan nilai akhir",
       "finalScore": "",
       "generalInformation": "Informasi umum",
       "individualWork": "",
@@ -814,7 +1080,9 @@
       "thresholdToPass": "",
       "tweetText": "Senang sekali telah menyelesaikan {{courseIndex}} di @planb_network dan mendapatkan ijazah dengan nilai {{score}}/100 pada ujian akhir!{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "viewFinalGrade": "",
-      "yourProject": ""
+      "yourProject": "",
+      "assignmentNotAccessible": "Tugas sudah dimulai dan tidak dapat diakses lagi.",
+      "assignmentScore": "Skor tugas"
     },
     "courses": "Kursus",
     "credentials": {
@@ -1729,7 +1997,8 @@
     "view": "Tampilan",
     "viewMore": "Lihat lebih",
     "wallets": "Dompet",
-    "yes": "Ya"
+    "yes": "Ya",
+    "type": "Jenis"
   },
   "youtubeChannels": {
     "pageTitle": "Saluran Youtube",
