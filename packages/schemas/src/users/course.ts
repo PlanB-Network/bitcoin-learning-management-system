@@ -9,7 +9,6 @@ import {
 } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
 import { courseChapterSchema } from '../content/index.js';
 
 export const courseProgressSchema = createSelectSchema(usersCourseProgress);

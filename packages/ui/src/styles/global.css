@@ -487,6 +487,10 @@
   @apply text-xl font-medium leading-[160%] tracking-[-0.2px];
 }
 
+@utility title-extra-large {
+  @apply text-4xl font-medium leading-tight tracking-[-0.4px];
+}
+
 @utility title-large {
   @apply text-3xl font-medium leading-tight tracking-[-0.32px];
 }

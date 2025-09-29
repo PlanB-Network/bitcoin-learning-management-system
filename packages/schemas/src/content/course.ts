@@ -1,4 +1,4 @@
-import { CourseLevel } from '@blms/constants';
+import { CourseLevel, TeachingFormat } from '@blms/constants';
 import {
   contentCourseChapters,
   contentCourseChaptersLocalized,
@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { formattedProfessorSchema } from './professor.js';
 
 export const courseLevelSchema = z.nativeEnum(CourseLevel);
+export const teachingFormatSchema = z.nativeEnum(TeachingFormat);
 
 export const courseSchema = createSelectSchema(contentCourses);
 export const courseLocalizedSchema = createSelectSchema(

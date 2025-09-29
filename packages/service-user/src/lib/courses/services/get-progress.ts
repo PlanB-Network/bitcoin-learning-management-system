@@ -1,5 +1,5 @@
+import type { TeachingFormat } from '@blms/constants';
 import type { CourseProgressExtended } from '@blms/types';
-
 import type { Dependencies } from '../../../dependencies.js';
 import { getCompletedChaptersQuery } from '../queries/get-completed-chapters.js';
 import { getNextChaptersQuery } from '../queries/get-next-chapters.js';
@@ -8,14 +8,18 @@ import { getProgressQuery } from '../queries/get-progress.js';
 interface Options {
   uid: string;
   courseId?: string;
+  teachingFormat?: TeachingFormat;
 }
 
 export const createGetProgress = ({ postgres }: Dependencies) => {
   return async ({
     uid,
     courseId,
+    teachingFormat,
   }: Options): Promise<CourseProgressExtended[]> => {
-    const progress = await postgres.exec(getProgressQuery(uid, courseId));
+    const progress = await postgres.exec(
+      getProgressQuery(uid, courseId, teachingFormat),
+    );
     const completedChapters = await postgres.exec(
       getCompletedChaptersQuery(uid),
     );

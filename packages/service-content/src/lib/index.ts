@@ -131,6 +131,16 @@ export const createProcessContentFiles = (
       time();
     }
 
+    // Sync events
+    {
+      const events = groupByEvent(filteredFiles, errors);
+      const time = timeLog(events.length, 'event');
+      for (const event of events) {
+        await updateEvents(event, errors);
+      }
+      time();
+    }
+
     // Sync resources
     {
       const resources = groupByResource(filteredFiles, errors);
@@ -201,16 +211,6 @@ export const createProcessContentFiles = (
       const time = timeLog(quizQuestions.length, 'quiz question');
       for (const quizQuestion of quizQuestions) {
         await updateQuizQuestions(quizQuestion, errors);
-      }
-      time();
-    }
-
-    // Sync events
-    {
-      const events = groupByEvent(filteredFiles, errors);
-      const time = timeLog(events.length, 'event');
-      for (const event of events) {
-        await updateEvents(event, errors);
       }
       time();
     }
