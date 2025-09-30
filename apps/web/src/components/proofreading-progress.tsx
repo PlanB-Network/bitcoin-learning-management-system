@@ -199,7 +199,7 @@ interface ProofreadingData {
 }
 
 export const ProofreadingProgress = ({
-  mode = 'dark',
+  mode = 'light',
   proofreadingData,
   isOriginalLanguage,
 }: {
@@ -225,7 +225,7 @@ export const ProofreadingProgress = ({
         <DialogTrigger asChild>
           <button
             type="button"
-            className="button-class absolute right-1 top-1 lg:hidden"
+            className="button-class absolute right-1 top-10 lg:hidden"
             aria-label="Open Proofreading Progress Dialog"
           >
             <SmallProgressImage progress={contributorsLength} />
@@ -353,7 +353,7 @@ export const ProofreadingProgress = ({
 export const ProofreadingDesktop = ({
   proofreadingData,
   variant = 'horizontal',
-  mode = 'dark',
+  mode = 'light',
   isOriginalLanguage,
   standalone,
   className,
@@ -390,7 +390,7 @@ export const ProofreadingDesktop = ({
             : 'bg-darkOrange-0',
         standalone
           ? 'p-5 w-fit max-w-[282px] flex'
-          : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-4 justify-start items-start inline-flex hover:min-h-[231px]',
+          : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-14 justify-start items-start inline-flex hover:min-h-[231px]',
         className,
       )}
     >
