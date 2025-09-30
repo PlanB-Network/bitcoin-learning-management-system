@@ -18,7 +18,7 @@ const paragraphStyles = cva('text-base tracking-wide', {
       default: 'text-blue-950 body-16px font-[450]',
       general: 'text-blue-950 text-base tracking-wide font-[450]',
       glossary:
-        'mobile-body2 md:desktop-body1 text-white my-3 last:mb-0 font-[450]',
+        'mobile-body2 md:desktop-body1 text-black my-3 last:mb-0 font-[450]',
     },
   },
 });

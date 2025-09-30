@@ -1,15 +1,18 @@
-import { LANGUAGES_MAP } from '@blms/shared';
-import { Flag, Loader, Switch, VerticalCard } from '@blms/ui';
+import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
+import {
+  LanguageResourcesSectionHeader,
+  SelectedLanguageSwitcher,
+} from '../-components/selected-language-switcher.tsx';
+import { resourcesTabs } from '../index.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/movies/')({
   component: Movies,
@@ -17,8 +20,7 @@ export const Route = createFileRoute('/$lang/_content/resources/movies/')({
 
 function Movies() {
   const { t, i18n } = useTranslation();
-  const isMobile = useSmaller('md');
-  const [showLocalOnly, setShowLocalOnly] = useState(true);
+  const [showLocalOnly, setShowLocalOnly] = useState(false);
 
   const { data: movies, isFetched } = useQuery(
     trpc.content.getMovies.queryOptions({}, { staleTime: 300_000 }),
@@ -41,51 +43,36 @@ function Movies() {
   const isEnglishLanguage = i18n.language === 'en';
 
   return (
-    <ResourceLayout title={t('movies.pageTitle')} activeCategory="movies">
-      <div className="flex flex-col gap-4 md:gap-9 mt-4 md:mt-12 mx-auto">
-        <div className="flex items-center gap-1 md:gap-2.5 pb-2 md:pb-2.5 border-b border-b-newGray-1">
-          <span className="label-small-12px md:label-large-med-20px text-white">
-            {t('resources.toggleLabelAll')}
-          </span>
-          <Switch onCheckedChange={handleSwitchChange} defaultChecked />
-          <span className="label-small-12px md:label-large-med-20px text-white">
-            {t('resources.toggleLabelSelectedLanguage')}
-          </span>
-        </div>
+    <PageLayout
+      title={t('resources.movies.title')}
+      tabs={resourcesTabs}
+      layoutSize="base"
+    >
+      <div className="flex flex-col max-sm:mt-4 mt-2">
+        <SelectedLanguageSwitcher
+          handleSwitchChange={handleSwitchChange}
+          showLocalOnly={showLocalOnly}
+        />
 
-        {showLocalOnly && (
-          <div className="flex items-center gap-3">
-            <Flag
-              code={i18n.language}
-              size={isMobile ? 'm' : 'l'}
-              className="shrink-0 !rounded-none mb-0.5 md:mb-0"
-            />
-            <span className="text-white subtitle-medium-caps-18px md:subtitle-large-caps-22px">
-              {LANGUAGES_MAP[i18n.language] || 'Language'}
-            </span>
-          </div>
-        )}
-
-        <div className="flex flex-wrap max-md:justify-center gap-4 md:gap-11">
+        <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
           {!isFetched && <Loader size="s" />}
           {sortedMovies?.length ? (
             sortedMovies.map((movie) => (
-              <Fragment key={movie.id}>
-                <Link
-                  to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
-                  params={{
-                    movieId: movie.id.toString(),
-                  }}
-                  className="grow md:grow-0"
-                >
-                  <ResourceCard
-                    name={movie.title}
-                    author={movie.author}
-                    imageSrc={resourceImgUrl(movie)}
-                    language={movie.language}
-                  />
-                </Link>
-              </Fragment>
+              <Link
+                to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
+                params={{
+                  movieId: movie.id.toString(),
+                }}
+                className="max-sm:w-full"
+                key={movie.id}
+              >
+                <ResourceCard
+                  name={movie.title}
+                  author={movie.author}
+                  imageSrc={resourceImgUrl(movie)}
+                  language={movie.language}
+                />
+              </Link>
             ))
           ) : (
             <p className="text-center text-gray-500">
@@ -96,52 +83,29 @@ function Movies() {
 
         {showLocalOnly && !isEnglishLanguage && englishMovies.length > 0 && (
           <section>
-            <div className="flex items-center gap-3 pt-6 border-t border-t-newGray-1 mb-4 md:mb-9">
-              <Flag
-                code="en"
-                size={isMobile ? 'm' : 'l'}
-                className="shrink-0 !rounded-none mb-0.5 md:mb-0"
-              />
-              <span className="text-white subtitle-medium-caps-18px md:subtitle-large-caps-22px">
-                {LANGUAGES_MAP.en}
-              </span>
-            </div>
-            <div className="flex flex-wrap gap-4 md:gap-11">
+            <LanguageResourcesSectionHeader language="en" />
+            <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
               {englishMovies.map((movie) => (
-                <Fragment key={movie.id}>
-                  <Link
-                    to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
-                    params={{
-                      movieId: movie.id.toString(),
-                    }}
-                    key={movie.id}
-                    className="grow md:grow-0 max-md:hidden"
-                  >
-                    <ResourceCard
-                      name={movie.title}
-                      author={movie.author}
-                      imageSrc={resourceImgUrl(movie)}
-                      language={movie.language}
-                    />
-                  </Link>
-                  <VerticalCard
+                <Link
+                  to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
+                  params={{
+                    movieId: movie.id.toString(),
+                  }}
+                  key={movie.id}
+                  className="max-sm:w-full"
+                >
+                  <ResourceCard
+                    name={movie.title}
+                    author={movie.author}
                     imageSrc={resourceImgUrl(movie)}
-                    title={movie.title}
-                    subtitle={movie.author}
-                    buttonVariant="primary"
-                    buttonLink={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
-                    buttonText={t('words.viewMore')}
-                    languages={[movie.language]}
-                    className="md:hidden w-[137px]"
-                    flagsOnMobile
-                    isScreenMd={!isMobile}
+                    language={movie.language}
                   />
-                </Fragment>
+                </Link>
               ))}
             </div>
           </section>
         )}
       </div>
-    </ResourceLayout>
+    </PageLayout>
   );
 }

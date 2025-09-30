@@ -88,7 +88,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                 <div className="flex flex-col gap-2.5 md:p-4">
                   <div className="flex gap-3 items-center">
                     {getNotificationIcon(announcement.type)}
-                    <TextTag mode="light" size="verySmall" variant="grey">
+                    <TextTag mode="light" size="small" variant="grey">
                       {t(
                         `dashboard.teacher.courses.${announcement.studentGroup}Students`,
                       )}
@@ -174,7 +174,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
               <article className="w-full flex flex-col px-4 max-md:py-1.5 md:py-4">
                 <div className="flex gap-3 items-center">
                   {getNotificationIcon(announcement.type)}
-                  <TextTag mode="light" size="verySmall" variant="grey">
+                  <TextTag mode="light" size="small" variant="grey">
                     {t(
                       `dashboard.teacher.courses.${announcement.studentGroup}Students`,
                     )}

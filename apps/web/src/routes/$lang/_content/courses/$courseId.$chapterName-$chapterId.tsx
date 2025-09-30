@@ -183,7 +183,7 @@ const TimelineBig = ({
   return (
     <div className="mb-0 w-full max-w-[1102px] max-sm:hidden mt-10 px-5 md:px-2">
       <h1 className="flex items-center gap-5">
-        <TextTag size="small" variant="grey" mode="light" className="uppercase">
+        <TextTag size="base" variant="grey" mode="light" className="uppercase">
           {addSpaceToCourseIndex(chapter.course.index)}
         </TextTag>
         <Link

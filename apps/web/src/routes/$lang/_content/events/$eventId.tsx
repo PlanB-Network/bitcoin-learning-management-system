@@ -239,7 +239,7 @@ function EventDetails() {
 
   return (
     <PageLayout
-      layoutSize="wide"
+      layoutSize="base"
       backLink={{ text: t('words.events'), href: '/events' }}
     >
       <div>

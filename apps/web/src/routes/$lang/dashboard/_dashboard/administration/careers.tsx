@@ -166,7 +166,7 @@ function AdminCareers() {
           {t('words.careerPortal')}
         </h1>
         <TextTag
-          size={isMobile ? 'verySmall' : 'small'}
+          size={isMobile ? 'small' : 'base'}
           mode="light"
           variant="grey"
           className="uppercase"

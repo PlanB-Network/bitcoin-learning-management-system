@@ -4,11 +4,13 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { assetUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
+import { resourcesTabs } from '../index.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/books/')({
   component: Books,
@@ -34,37 +36,54 @@ function Books() {
     : [];
 
   return (
-    <ResourceLayout
-      title={t('library.pageTitle')}
-      filterBar={{
-        onChange: setSearchTerm,
-      }}
-      activeCategory="books"
+    <PageLayout
+      title={t('resources.books.title')}
+      tabs={resourcesTabs}
+      layoutSize="base"
+      actionButtons={[
+        {
+          text: t('resources.books.addBook'),
+          href: '/tutorials/contribution/resource/add-book-d3bd9f9a-1859-4d81-8c55-0b720a8740c9',
+        },
+      ]}
     >
-      <div className="flex flex-wrap md:justify-center gap-4 md:gap-10 mt-6 md:mt-12 mx-auto">
-        {!isFetched && <Loader size={'s'} />}
-        {sortedBooks
-          .filter((book) =>
-            book.title.toLowerCase().includes(searchTerm.toLowerCase()),
-          )
-          .map((book) => (
-            <Link
-              to={`/resources/books/${formatNameForURL(book.title)}-${book.id}`}
-              params={{
-                bookId: book.id.toString(),
-              }}
-              key={book.id}
-              className="grow"
-            >
-              <ResourceCard
-                name={book.title}
-                author={book.author}
-                imageSrc={book.cover && assetUrl(book.path, book.cover)}
-                year={book.publicationYear}
-              />
-            </Link>
-          ))}
-      </div>
-    </ResourceLayout>
+      {!isFetched && <Loader size={'s'} />}
+      {isFetched && (
+        <>
+          <SearchInput
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
+          />
+          <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
+            {sortedBooks
+              .filter(
+                (book) =>
+                  book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  book.description
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase()),
+              )
+              .map((book) => (
+                <Link
+                  to={`/resources/books/${formatNameForURL(book.title)}-${book.id}`}
+                  params={{
+                    bookId: book.id.toString(),
+                  }}
+                  key={book.id}
+                  className="max-sm:w-full"
+                >
+                  <ResourceCard
+                    name={book.title}
+                    author={book.author}
+                    imageSrc={book.cover && assetUrl(book.path, book.cover)}
+                    year={book.publicationYear}
+                  />
+                </Link>
+              ))}
+          </div>
+        </>
+      )}
+    </PageLayout>
   );
 }

@@ -1,27 +1,19 @@
 import type { ConferenceStageVideo } from '@blms/types';
-import {
-  BackLink,
-  Button,
-  Card,
-  cn,
-  DropdownMenu,
-  Loader,
-  TextTag,
-} from '@blms/ui';
+import { Button, CategorySwitcher, DropdownMenu, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BsLink, BsTwitterX } from 'react-icons/bs';
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
-import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
+import { TbBrandX, TbLink } from 'react-icons/tb';
 import { z } from 'zod';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
+import { ResourceDetails } from '../-components/resource-details.tsx';
 
 const ConferencesMarkdownBody = React.lazy(
   () => import('#src/components/Markdown/conference-markdown-body.js'),
@@ -83,6 +75,8 @@ function getVideoIdNumber(video: ConferenceStageVideo) {
 }
 
 function Conference() {
+  const isMobile = useSmaller('md');
+
   const [activeStage, setActiveStage] = useState(0);
   const [activeVideo, setActiveVideo] = useState(0);
   const navigate = useNavigate();
@@ -168,16 +162,16 @@ function Conference() {
   }, [conference, isFetched, navigateTo404, navigate, params.conferenceName]);
 
   return (
-    <ResourceLayout
-      activeCategory="conferences"
-      showPageHeader={false}
-      backToCategoryButton={true}
-      maxWidth="1360"
-      showResourcesDropdownMenu={false}
+    <PageLayout
+      backLink={{
+        href: '/resources/conferences',
+        text: t('conferences.pageTitle'),
+      }}
+      layoutSize="base"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !conference && (
-        <div className="max-w-[768px] mx-auto text-white">
+        <div>
           {t('underConstruction.itemNotFoundOrTranslated', {
             item: t('words.conference'),
           })}
@@ -187,7 +181,7 @@ function Conference() {
         <>
           {proofreading ? (
             <ProofreadingProgress
-              mode="dark"
+              mode="light"
               proofreadingData={{
                 contributors: proofreading.contributorNames,
                 reward: proofreading.reward,
@@ -198,138 +192,84 @@ function Conference() {
             <></>
           )}
 
-          {/* Top part */}
-          <BackLink
-            to={'/resources/conferences'}
-            label={t('conferences.pageTitle')}
+          <ResourceDetails
+            title={conference.name}
+            imgSrc={resourceImgUrl(conference)}
+            subtitle={`${conference.location} · ${conference.year}`}
+            mediaLinks={[
+              ...(conference.websiteUrl
+                ? [
+                    {
+                      icon: TbLink,
+                      href: conference.websiteUrl,
+                    },
+                  ]
+                : []),
+              ...(conference.twitterUrl
+                ? [
+                    {
+                      icon: TbBrandX,
+                      href: conference.twitterUrl,
+                    },
+                  ]
+                : []),
+            ]}
+            tags={conference.tags}
           />
-          <Card
-            className="md:mx-auto w-full !rounded-[10px] !md:rounded-[20px]"
-            withPadding={false}
-            paddingClass="p-5 md:p-7"
-            color="orange"
-          >
-            <div className="flex flex-col lg:flex-row justify-center items-center w-full gap-5 lg:gap-10">
-              <div className="lg:order-2 w-full max-w-full">
-                <img
-                  src={resourceImgUrl(conference)}
-                  alt={conference.name}
-                  className="w-full object-cover aspect-[915/388] rounded-2xl"
-                />
-              </div>
-              <div className="lg:max-w-[560px] lg:order-1 text-white w-full">
-                <h2 className="title-large-24px lg:display-small-med-32px text-white">
-                  {conference.name}
-                </h2>
-                <span className="text-newGray-4 label-medium-16px sm:desktop-h8">
-                  {conference.location} · {conference.year}
-                </span>
-                {(conference.twitterUrl || conference.websiteUrl) && (
-                  <div className="flex flex-wrap items-center gap-4 mt-4">
-                    {conference.twitterUrl && (
-                      <a
-                        href={conference.twitterUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <BsTwitterX className="size-4 md:size-6" />
-                      </a>
-                    )}
-                    {conference.websiteUrl && (
-                      <a
-                        href={conference.websiteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <BsLink className="size-4 md:size-6" />
-                      </a>
-                    )}
-                  </div>
-                )}
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 mt-5 md:mt-6">
-                  {conference.tags.map((tag) => (
-                    <TextTag
-                      key={tag}
-                      size="small"
-                      variant="lightMaroon"
-                      mode="dark"
-                    >
-                      {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                    </TextTag>
-                  ))}
-                </div>
-                <p className="max-lg:hidden body-16px text-white mt-6 text-justify whitespace-pre-line">
-                  {conference.description}
-                </p>
-              </div>
-            </div>
-          </Card>
+
+          <p className="whitespace-pre-line body-base text-justify max-md:hidden mt-6">
+            {conference.description}
+          </p>
 
           {/* Stage and Video Selectors */}
           {/* Desktop */}
-          <div className="flex flex-col gap-11 max-md:hidden mt-10">
-            <div className="flex flex-col gap-5">
-              <span className="desktop-h7 text-white">
+          <div className="flex flex-col gap-10 max-md:hidden mt-10">
+            <div className="flex flex-col gap-2">
+              <span className="label-strong">
                 {t('conferences.details.selectStage')}
               </span>
-              <div className="flex flex-wrap p-2 gap-4 bg-newBlack-2 rounded-[20px] w-fit">
+              <div className="flex items-center flex-wrap gap-2">
                 {conference.stages.map((stage, index) => {
-                  return index === activeStage ? (
-                    <Button
-                      key={`${stage.name}_${index}`}
-                      variant="primary"
-                      size="l"
-                      className="capitalize"
-                    >
-                      {stage.name}
-                    </Button>
-                  ) : (
-                    <button
-                      key={`${stage.name}_${index}`}
-                      type="button"
-                      onClick={() => {
-                        setActiveVideo(0);
-                        setActiveStage(index);
-                      }}
-                      className="p-4 text-newGray-1 text-lg leading-normal font-medium capitalize"
-                    >
-                      {stage.name}
-                    </button>
+                  return (
+                    <CategorySwitcher
+                      onClick={
+                        index !== activeStage
+                          ? () => {
+                              setActiveVideo(0);
+                              setActiveStage(index);
+                            }
+                          : () => {}
+                      }
+                      text={stage.name}
+                      isActive={index === activeStage}
+                      key={`${stage.name}`}
+                      inactiveBackgroundColor="bg-neutral-50"
+                    />
                   );
                 })}
               </div>
             </div>
-            <div id="video" className="flex flex-col gap-5">
-              <span className="desktop-h7 text-white">
+            <div id="video" className="flex flex-col gap-2">
+              <span className="label-strong">
                 {t('conferences.details.selectVideo')}
               </span>
-              <div className="flex flex-wrap gap-4 px-2.5 pb-5 max-h-[228px] overflow-auto scrollbar-dark scroll-smooth">
+              <div className="flex items-center flex-wrap gap-2">
                 {sortVideos(conference.stages[activeStage].videos).map(
                   (video, index) => {
-                    const videoName =
-                      video.name.length > 50
-                        ? `${video.name.slice(0, 47).trim()}...`
-                        : video.name;
-
-                    return index === activeVideo ? (
-                      <Button
-                        key={`${video.name}_${index}`}
-                        variant="primary"
-                        size="l"
-                        className="capitalize"
-                      >
-                        {video.name}
-                      </Button>
-                    ) : (
-                      <Button
-                        key={`${video.name}_${index}`}
-                        variant="outline"
-                        size="l"
-                        onClick={() => setActiveVideo(index)}
-                        className="capitalize"
-                      >
-                        {videoName}
-                      </Button>
+                    return (
+                      <CategorySwitcher
+                        onClick={
+                          index !== activeVideo
+                            ? () => {
+                                setActiveVideo(index);
+                              }
+                            : () => {}
+                        }
+                        text={video.name}
+                        isActive={index === activeVideo}
+                        key={`${video.name}`}
+                        inactiveBackgroundColor="bg-neutral-50"
+                      />
                     );
                   },
                 )}
@@ -339,8 +279,8 @@ function Conference() {
 
           {/* Stage and Video Selectors */}
           {/* Mobile */}
-          <div className="flex flex-col gap-4 md:hidden mt-7 mb-9">
-            <h3 className="mobile-subtitle1 text-white mb-2.5">
+          <div className="flex flex-col gap-2 md:hidden mt-8">
+            <h3 className="body-small-bold">
               {t('conferences.details.findReplay')}
             </h3>
             <DropdownMenu
@@ -354,7 +294,7 @@ function Conference() {
                   },
                 };
               })}
-              className="lg:hidden"
+              variant="light"
             />
             <DropdownMenu
               activeItem={
@@ -368,7 +308,7 @@ function Conference() {
                   };
                 },
               )}
-              className="lg:hidden"
+              variant="light"
             />
           </div>
 
@@ -377,16 +317,13 @@ function Conference() {
             onKeyDown={(event) => handleKeyDownVideo(event)}
             tabIndex={-1}
             role="presentation"
-            className="outline-hidden"
+            className="outline-hidden mt-8 md:mt-10"
           >
-            <div className="flex flex-col mt-6 w-full">
-              <h3 className="text-[40px] text-white leading-tight tracking-[0.25px] mb-6 max-md:hidden">
+            <div className="flex flex-col w-full">
+              <h3 className="title-large max-md:hidden">
                 {conference.stages[activeStage].videos[activeVideo].name}
               </h3>
-              <h3 className="mobile-subtitle1 text-white mb-2.5 md:hidden">
-                {t('conferences.details.watchReplay')}
-              </h3>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-10 md:mt-4">
                 <MarkdownContent
                   rawContent={
                     conference.stages[activeStage].videos[activeVideo]
@@ -396,21 +333,15 @@ function Conference() {
               </div>
             </div>
 
-            <div className="flex w-full mt-4 md:mt-11">
+            <div className="flex w-full mt-0.5 md:mt-5">
               {/* Desktop */}
               {activeVideo > 0 && (
                 <Button
-                  variant="secondary"
-                  size="l"
-                  className="mr-auto max-sm:hidden"
+                  variant="ghost"
+                  size={isMobile ? 's' : 'l'}
+                  className="mr-auto"
                   onClick={() => setActiveVideo((v) => v - 1)}
                 >
-                  <FaArrowLeftLong
-                    className={cn(
-                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                      'group-hover:mr-3',
-                    )}
-                  />
                   {t('conferences.details.previousVideo')}
                 </Button>
               )}
@@ -418,60 +349,18 @@ function Conference() {
               {activeVideo <
                 conference.stages[activeStage].videos.length - 1 && (
                 <Button
-                  variant="secondary"
-                  size="l"
-                  className="ml-auto max-sm:hidden"
+                  variant="ghost"
+                  size={isMobile ? 's' : 'l'}
+                  className="ml-auto"
                   onClick={() => setActiveVideo((v) => v + 1)}
                 >
                   {t('conferences.details.nextVideo')}
-                  <FaArrowRightLong
-                    className={cn(
-                      'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                      'group-hover:ml-3',
-                    )}
-                  />
-                </Button>
-              )}
-
-              {/* Mobile */}
-              {activeVideo > 0 && (
-                <Button
-                  variant="secondary"
-                  size="s"
-                  className="mr-auto sm:hidden"
-                  onClick={() => setActiveVideo((v) => v - 1)}
-                >
-                  <span className="flex gap-2 justify-center items-center">
-                    <GrLinkPrevious size={16} /> Previous
-                  </span>
-                </Button>
-              )}
-
-              {activeVideo <
-                conference.stages[activeStage].videos.length - 1 && (
-                <Button
-                  variant="secondary"
-                  size="s"
-                  className="ml-auto sm:hidden"
-                  onClick={() => setActiveVideo((v) => v + 1)}
-                >
-                  <span className="flex gap-2 justify-center items-center">
-                    Next <GrLinkNext size={16} />
-                  </span>
                 </Button>
               )}
             </div>
           </div>
-
-          <div className="flex justify-center">
-            <Link to="/resources/conferences">
-              <Button variant="outlineWhite" className="mt-10">
-                {t('conferences.backConferences')}
-              </Button>
-            </Link>
-          </div>
         </>
       )}
-    </ResourceLayout>
+    </PageLayout>
   );
 }

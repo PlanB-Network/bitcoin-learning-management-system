@@ -28,7 +28,7 @@ const GlossaryMarkdownBody = ({
           </LinkRenderer>
         ),
         blockquote: ({ children }) => (
-          <BlockquoteRenderer mode={'dark'}>{children}</BlockquoteRenderer>
+          <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
         ),
         code: ({ className, children }) => (
           <CodeRenderer className={className} intent="glossary">
@@ -36,23 +36,23 @@ const GlossaryMarkdownBody = ({
           </CodeRenderer>
         ),
         h2: ({ children }) => (
-          <h2 className="mt-6 text-xl font-semibold text-white sm:mt-10 sm:text-2xl">
+          <h2 className="mt-6 text-xl font-semibold text-black sm:mt-10 sm:text-2xl">
             <div className="flex w-auto items-center">{children}</div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
+          <h3 className="ml-2 text-xl font-semibold text-black">{children}</h3>
         ),
         img: ({ src, alt }) => (
           <ImageVideoRenderer header="none" src={src} alt={alt} />
         ),
         li: ({ children }) => (
-          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-white font-[450]">
+          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-black font-[450]">
             {children}
           </li>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
+          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-black py-1 font-[450]">
             {children}
           </ol>
         ),
@@ -65,7 +65,7 @@ const GlossaryMarkdownBody = ({
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-white py-1 font-[450]">
+          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-black py-1 font-[450]">
             {children}
           </ul>
         ),

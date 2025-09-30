@@ -3,11 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { AlphabetGlossary } from '../-components/alphabet-glossary.tsx';
-import { GlossaryFilterBar } from '../-components/glossary-filter-bar.tsx';
 import { GlossaryList } from '../-components/glossary-list.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
+import { resourcesTabs } from '../index.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/glossary/')({
   component: Glossary,
@@ -24,32 +25,23 @@ function Glossary() {
     }),
   );
 
-  const getRandomWord = () => {
-    if (glossaryWords && glossaryWords.length > 0) {
-      return glossaryWords[Math.floor(Math.random() * glossaryWords.length)]
-        .fileName;
-    }
-    return '';
-  };
-
   const handleLetterSelection = (letter: string) => {
     setSelectedLetter(letter === selectedLetter ? null : letter);
   };
 
   return (
-    <ResourceLayout
-      title={t('glossary.pageTitle')}
-      activeCategory="glossary"
-      maxWidth="1360"
-      addCredits
+    <PageLayout
+      title={t('resources.glossary.title')}
+      tabs={resourcesTabs}
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
-        <div className="flex items-center flex-col px-4">
-          <GlossaryFilterBar
-            onChange={setSearchTerm}
-            value={searchTerm}
-            randomWord={getRandomWord()}
+        <div className="flex flex-col max-sm:mt-4 mt-2">
+          <SearchInput
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            className="ml-auto"
           />
           <AlphabetGlossary
             onLetterSelect={handleLetterSelection}
@@ -62,20 +54,8 @@ function Glossary() {
               searchTerm={searchTerm}
             />
           )}
-          {glossaryWords && glossaryWords.length === 0 && (
-            <p className="text-center mt-10 text-white max-w-2xl mobile-body2 md:desktop-body1 whitespace-pre-line">
-              {t('glossary.notTranslated')}{' '}
-              <a
-                className="underline underline-offset-2 hover:text-darkOrange-5"
-                href="https://github.com/PlanB-Network/bitcoin-educational-content"
-              >
-                {t('underConstruction.github')}
-              </a>
-              .
-            </p>
-          )}
         </div>
       )}
-    </ResourceLayout>
+    </PageLayout>
   );
 }

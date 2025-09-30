@@ -1,4 +1,5 @@
 import { cn, Flag, Image } from '@blms/ui';
+import { TbChevronRight } from 'react-icons/tb';
 
 interface ResourceCardProps {
   imageSrc?: string | null;
@@ -6,7 +7,6 @@ interface ResourceCardProps {
   author?: string;
   year?: number | null;
   language?: string;
-  level?: string;
   className?: string;
 }
 
@@ -14,64 +14,51 @@ export const ResourceCard = (props: ResourceCardProps) => {
   return (
     <div
       className={cn(
-        'max-md:h-full md:relative group min-w-[288px] min-[622px]:max-w-[288px] md:min-w-[250px] md:max-w-[254px] flex md:flex-col gap-4 md:gap-8 px-2 py-1.5 md:p-0 hover:bg-darkOrange-10 hover:shadow-sm-card-dark border grow shrink-0 border-transparent hover:border-darkOrange-6 rounded-2xl transition-all overflow-hidden',
+        'max-sm:h-full sm:relative group w-full sm:min-w-[228px] sm:max-w-[228px] flex sm:flex-col max-sm:gap-3 p-2 sm:p-0 border-2 grow shrink-0 border-transparent hover:border-orange-500 rounded-2xl overflow-hidden items-center',
         props.className,
       )}
     >
       <Image
-        breakpoints={{ default: 84, md: 256 }}
+        breakpoints={{ default: 84, sm: 256 }}
         width="256"
         height="256"
-        className="aspect-square object-contain w-21 md:w-full md:group-hover:blur-[10px] md:group-hover:brightness-[0.2] transition-all"
+        className="aspect-square object-contain w-14 sm:w-full"
         src={props.imageSrc ? props.imageSrc : ''}
         alt={props.name}
         loading="lazy"
       />
-      <div className="md:absolute w-full flex md:justify-center md:items-center flex-col gap-2 md:gap-4 md:px-4 md:text-center md:size-full md:group-hover:bg-darkOrange-9/20 md:opacity-0 md:group-hover:opacity-100 transition-all">
-        <span className="text-white leading-[160%] text-sm font-medium md:subtitle-large-med-20px line-clamp-3 md:line-clamp-2">
+      <div className="text-black sm:absolute w-full flex sm:justify-center sm:items-center flex-col sm:gap-4 sm:px-3 sm:text-center sm:size-full sm:group-hover:bg-white/90 sm:opacity-0 sm:group-hover:opacity-100 sm:group-hover:backdrop-blur-[2px]">
+        <span className="body-base-bold line-clamp-3 sm:line-clamp-2">
           {props.name}
         </span>
-        <div className="flex justify-between flex-row items-center gap-1">
+        <div className="flex justify-between flex-row items-center gap-2">
           {(props.author || props.year) && (
-            <span className="text-white text-xs md:subtitle-medium-med-16px transition-all line-clamp-1 md:line-clamp-2">
+            <span className="body-small line-clamp-1 sm:line-clamp-2">
               {props.author}
               {props.year && (
                 <>
                   <span> · </span>
-                  <span className="text-white/75 md:text-white font-light transition-all">
-                    {props.year}
-                  </span>
+                  <span>{props.year}</span>
                 </>
               )}
             </span>
           )}
-          {props.language && (
-            <Flag
-              code={props.language}
-              size="s"
-              className="shrink-0 md:!hidden"
-            />
-          )}
         </div>
 
-        <div className="flex md:flex-col gap-4 max-md:hidden">
-          {props.level && (
-            <p className="subtitle-medium-med-16px text-newGray-3">
-              Level : {''}
-              <span className="subtitle-medium-med-16px text-white capitalize">
-                {props.level}
-              </span>
-            </p>
-          )}
+        <div className="flex sm:flex-col gap-4 max-sm:hidden">
           {props.language && (
             <Flag
               code={props.language}
               size="l"
-              className="md:!self-center shrink-0"
+              className="sm:!self-center shrink-0"
             />
           )}
         </div>
       </div>
+      <TbChevronRight
+        className="text-neutral-300 sm:hidden shrink-0"
+        size={20}
+      />
     </div>
   );
 };

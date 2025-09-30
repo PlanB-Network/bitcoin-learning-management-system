@@ -14,11 +14,17 @@ export const EventsGrid = ({ events, hideTitle = false }: EventsGridProps) => {
   let upcomingEvents: JoinedEvent[] = [];
 
   if (events) {
-    upcomingEvents = events?.filter((event) => {
-      const now = Date.now();
-      const startDate = event.startDate.getTime();
+    const now = new Date();
 
-      return now < startDate;
+    upcomingEvents = events.filter((event) => {
+      const start = new Date(event.startDate);
+      const end = event.endDate ? new Date(event.endDate) : null;
+
+      if (end) {
+        return end >= now;
+      }
+
+      return start >= new Date(now.setHours(0, 0, 0, 0));
     });
   }
 

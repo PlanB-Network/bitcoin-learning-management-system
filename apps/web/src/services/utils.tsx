@@ -77,6 +77,11 @@ export const TUTORIALS_CATEGORIES = [
 
 export const RESOURCES_CATEGORIES = [
   {
+    image: projectSvg,
+    name: 'projects',
+    unreleased: false,
+  },
+  {
     image: librarySvg,
     name: 'books',
     unreleased: false,
@@ -84,31 +89,6 @@ export const RESOURCES_CATEGORIES = [
   {
     image: podcastSvg,
     name: 'podcasts',
-    unreleased: false,
-  },
-  {
-    image: conferenceSvg,
-    name: 'conferences',
-    unreleased: false,
-  },
-  {
-    image: projectSvg,
-    name: 'projects',
-    unreleased: false,
-  },
-  {
-    image: toolkitSvg,
-    name: 'bet',
-    unreleased: false,
-  },
-  {
-    image: glossarySvg,
-    name: 'glossary',
-    unreleased: false,
-  },
-  {
-    image: webSvg,
-    name: 'newsletters',
     unreleased: false,
   },
   {
@@ -122,8 +102,28 @@ export const RESOURCES_CATEGORIES = [
     unreleased: false,
   },
   {
+    image: conferenceSvg,
+    name: 'conferences',
+    unreleased: false,
+  },
+  {
+    image: webSvg,
+    name: 'newsletters',
+    unreleased: false,
+  },
+  {
     image: movieSvg,
     name: 'movies',
+    unreleased: false,
+  },
+  {
+    image: toolkitSvg,
+    name: 'bet',
+    unreleased: false,
+  },
+  {
+    image: glossarySvg,
+    name: 'glossary',
     unreleased: false,
   },
 ] as const;

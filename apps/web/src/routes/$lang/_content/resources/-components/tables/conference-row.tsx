@@ -1,7 +1,6 @@
-import { Button, cn, Flag, TextTag } from '@blms/ui';
+import { Button, Flag, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { FaArrowRightLong } from 'react-icons/fa6';
 
 interface ConferenceRowProps {
   name: string;
@@ -19,46 +18,33 @@ export const ConferenceRow = ({
   link,
 }: ConferenceRowProps) => {
   return (
-    <tr>
-      <td className="desktop-h5 py-5 pr-4 capitalize">{name}</td>
-      <td className="desktop-h8 py-5 pr-4 text-newGray-1">{location}</td>
-      <td className="py-5 pr-4">
-        <div className="flex gap-4 flex-wrap items-center">
+    <tr className="border-t border-neutral-100">
+      <td className="body-large py-5 pr-2.5 capitalize">{name}</td>
+      <td className="body-base py-5 pr-2.5 text-neutral-500">{location}</td>
+      <td className="py-5 pr-2.5">
+        <div className="flex gap-2 flex-wrap items-center">
           {tags.map((tag) => (
-            <TextTag mode="dark" className="capitalize" key={tag}>
+            <TextTag mode="light" className="capitalize" size="base" key={tag}>
               {tag}
             </TextTag>
           ))}
         </div>
       </td>
       <td className="py-5">
-        <div className="flex justify-center items-center mx-auto flex-wrap gap-2.5">
+        <div className="flex items-center flex-wrap gap-2">
           {languages?.slice(0, 2).map((language) => (
-            <span
-              key={language}
-              className="flex justify-center items-center p-2 bg-newBlack-3 rounded-md h-fit"
-            >
-              <Flag code={language} size="l" />
-            </span>
+            <Flag key={language} code={language} size="l" />
           ))}
         </div>
       </td>
       <td className="py-5">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-end items-center">
           {link ? (
-            <Link to={link} className="min-w-fit">
-              <Button variant="primary">
-                {t('events.card.watchReplay')}
-                <FaArrowRightLong
-                  className={cn(
-                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                    'group-hover:ml-3',
-                  )}
-                />
-              </Button>
-            </Link>
+            <Button variant="primary" asChild>
+              <Link to={link}>{t('events.card.watchReplay')}</Link>
+            </Button>
           ) : (
-            <Button variant="primary" disabled className="min-w-fit">
+            <Button variant="primary" disabled>
               {t('events.card.watchReplay')}
             </Button>
           )}

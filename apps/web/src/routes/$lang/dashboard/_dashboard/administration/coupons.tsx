@@ -219,7 +219,7 @@ function AdminCoupons() {
             {t('dashboard.adminPanel.discountCodes')}
           </h1>
           <TextTag
-            size={isMobile ? 'verySmall' : 'small'}
+            size={isMobile ? 'small' : 'base'}
             mode="light"
             variant="grey"
             className="uppercase"
@@ -740,7 +740,7 @@ function CouponCard({
         <h3 className="subtitle-medium-med-16px break-all pr-2 max-w-[calc(100%-60px)]">
           {coupon.code}
         </h3>
-        <TextTag size="small" variant="grey" mode="light" className="shrink-0">
+        <TextTag size="base" variant="grey" mode="light" className="shrink-0">
           {coupon.reductionPercentage}%
         </TextTag>
       </div>

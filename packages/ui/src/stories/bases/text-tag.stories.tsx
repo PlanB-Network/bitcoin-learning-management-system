@@ -16,8 +16,8 @@ const meta: Meta<typeof TextTag> = {
     },
     size: {
       control: 'select',
-      defaultValue: 'small',
-      options: ['small', 'verySmall'],
+      defaultValue: 'base',
+      options: ['small', 'base'],
     },
     variant: {
       control: 'select',
@@ -59,7 +59,7 @@ export const DefaultGreySmall: Story = {
 export const VerySmallSize: Story = {
   args: {
     children: 'Very Small Tag',
-    size: 'verySmall',
+    size: 'small',
   },
 };
 
@@ -102,7 +102,7 @@ export const GreyModeLight100: Story = {
   args: {
     children: 'Light100',
     mode: 'light100',
-    size: 'small',
+    size: 'base',
     variant: 'grey',
   },
   name: 'Grey Light100',
@@ -112,7 +112,7 @@ export const GreyModeDark: Story = {
   args: {
     children: 'Mode Dark',
     mode: 'dark',
-    size: 'small',
+    size: 'base',
     variant: 'grey',
   },
   name: 'Grey Dark',
@@ -122,7 +122,7 @@ export const GreyModeDark100: Story = {
   args: {
     children: 'Mode Dark100',
     mode: 'dark100',
-    size: 'small',
+    size: 'base',
     variant: 'grey',
   },
   name: 'Grey Dark100',
@@ -132,7 +132,7 @@ export const OrangeModeDark: Story = {
   args: {
     children: 'Orange Dark',
     mode: 'dark',
-    size: 'small',
+    size: 'base',
     variant: 'orange',
   },
   name: 'Orange Dark',
@@ -142,7 +142,7 @@ export const OrangeModeDark100: Story = {
   args: {
     children: 'Orange Dark100',
     mode: 'dark100',
-    size: 'small',
+    size: 'base',
     variant: 'orange',
   },
   name: 'Orange Dark100',

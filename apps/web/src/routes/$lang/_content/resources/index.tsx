@@ -1,8 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Trans, useTranslation } from 'react-i18next';
-
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
+import { TbChevronRight } from 'react-icons/tb';
+import { CategoryIcon } from '#src/components/category-icon.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import CategoryContainer from '#src/patterns/category-container.tsx';
 import { RESOURCES_CATEGORIES } from '#src/services/utils.js';
 
 export const Route = createFileRoute('/$lang/_content/resources/')({
@@ -14,26 +14,40 @@ function Resources() {
 
   return (
     <PageLayout
-      layoutSize="max"
-      title={t('resources.pageTitle')}
-      subtitle={t('resources.pageSubtitle')}
-      description={t('resources.pageDescription')}
+      title={t('words.resources')}
+      tabs={resourcesTabs}
+      layoutSize="base"
     >
-      <CategoryContainer
-        categories={[...RESOURCES_CATEGORIES]}
-        baseUrl="/resources"
-        getTitle={(category) => t(`resources.${category.name}.title`)}
-      />
-      <p className="max-w-3xl mx-auto leading-snug md:leading-relaxed tracking-015px max-md:text-newGray-3 md:text-xl md:font-medium text-center mt-8 md:mt-16 px-8">
-        <Trans i18nKey="resources.github" className="">
-          <a
-            className="underline underline-offset-2 hover:text-darkOrange-5"
-            href="https://github.com/PlanB-Network/bitcoin-educational-content"
-          >
-            Github Repository
-          </a>
-        </Trans>
-      </p>
+      {RESOURCES_CATEGORIES.map((category) => (
+        <Link
+          to={`/resources/${category.name}`}
+          key={category.name}
+          className="w-full flex items-center justify-between px-2 py-4 hover:bg-neutral-50 rounded-2xl"
+        >
+          <div className="flex gap-6 items-center">
+            <CategoryIcon src={category.image} variant="resources" />
+            <span className="body-base-bold md:subtitle-base text-black">
+              {t(`resources.${category.name}.title`)}
+            </span>
+          </div>
+          <TbChevronRight className="text-neutral-300" size={20} />
+        </Link>
+      ))}
     </PageLayout>
   );
 }
+
+export const resourcesTabs = [
+  {
+    id: 'all',
+    label: 'words.all',
+    href: '/resources',
+  },
+  ...RESOURCES_CATEGORIES.map((resourceCategory) => {
+    return {
+      id: resourceCategory.name,
+      label: `resources.${resourceCategory.name}.title`,
+      href: `/resources/${resourceCategory.name}`,
+    };
+  }),
+];

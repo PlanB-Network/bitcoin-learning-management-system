@@ -69,7 +69,7 @@ export const CourseCurriculum = ({
                   <TextTag
                     variant="orange"
                     mode="light100"
-                    size={isTablet ? 'verySmall' : 'small'}
+                    size={isTablet ? 'small' : 'base'}
                     className="flex gap-2.5 w-fit font-medium shrink-0"
                   >
                     <span className="max-lg:hidden">
@@ -150,7 +150,7 @@ export const CourseCurriculum = ({
                           <TextTag
                             variant={displayNotStarted ? 'green' : 'orange'}
                             mode="light100"
-                            size={isTablet ? 'verySmall' : 'small'}
+                            size={isTablet ? 'small' : 'base'}
                             className="flex gap-2.5 w-fit font-medium shrink-0"
                           >
                             <span className="max-lg:hidden">
@@ -167,7 +167,7 @@ export const CourseCurriculum = ({
                         <TextTag
                           variant={'orange'}
                           mode="light100"
-                          size={isTablet ? 'verySmall' : 'small'}
+                          size={isTablet ? 'small' : 'base'}
                           className="flex gap-2.5 w-fit font-medium shrink-0"
                         >
                           <span className="max-lg:hidden">

@@ -313,7 +313,7 @@ export const ContentManagementTab = () => {
                   className="border-b border-gray-100 hover:bg-gray-50"
                 >
                   <TableCell className="py-4 font-medium text-gray-900">
-                    <TextTag size="verySmall" variant="grey">
+                    <TextTag size="small" variant="grey">
                       {course.index?.toUpperCase()}
                     </TextTag>
                   </TableCell>

@@ -361,7 +361,7 @@ const NotificationItem = ({
                   : '',
               )}
               <TextTag
-                size="verySmall"
+                size="small"
                 variant={
                   (!isMobile && notification.id === hoveredNotification) ||
                   isTeacherAnnouncementType(notification.type)

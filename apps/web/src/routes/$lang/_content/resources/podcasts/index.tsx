@@ -1,15 +1,18 @@
-import { LANGUAGES_MAP } from '@blms/shared';
-import { Flag, Loader, Switch } from '@blms/ui';
+import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
-import { ResourceLayout } from '../-components/resource-layout.tsx';
+import {
+  LanguageResourcesSectionHeader,
+  SelectedLanguageSwitcher,
+} from '../-components/selected-language-switcher.tsx';
+import { resourcesTabs } from '../index.tsx';
 
 export const Route = createFileRoute('/$lang/_content/resources/podcasts/')({
   component: Podcasts,
@@ -17,8 +20,7 @@ export const Route = createFileRoute('/$lang/_content/resources/podcasts/')({
 
 function Podcasts() {
   const { t, i18n } = useTranslation();
-  const isMobile = useSmaller('md');
-  const [showLocalOnly, setShowLocalOnly] = useState(true);
+  const [showLocalOnly, setShowLocalOnly] = useState(false);
 
   const { data: podcasts, isFetched } = useQuery(
     trpc.content.getPodcasts.queryOptions({}, { staleTime: 300_000 }),
@@ -41,32 +43,24 @@ function Podcasts() {
   const isEnglishLanguage = i18n.language === 'en';
 
   return (
-    <ResourceLayout title={t('podcasts.pageTitle')} activeCategory="podcasts">
-      <div className="flex flex-col gap-4 md:gap-9 mt-4 md:mt-12 mx-auto">
-        <div className="flex items-center gap-1 md:gap-2.5 pb-2 md:pb-2.5 border-b border-b-newGray-1">
-          <span className="label-small-12px md:label-large-med-20px text-white">
-            {t('resources.toggleLabelAll')}
-          </span>
-          <Switch onCheckedChange={handleSwitchChange} defaultChecked />
-          <span className="label-small-12px md:label-large-med-20px text-white">
-            {t('resources.toggleLabelSelectedLanguage')}
-          </span>
-        </div>
+    <PageLayout
+      title={t('resources.podcasts.title')}
+      tabs={resourcesTabs}
+      layoutSize="base"
+      actionButtons={[
+        {
+          text: t('resources.podcasts.addPodcast'),
+          href: '/tutorials/contribution/resource/add-podcast-7d66c440-d5f6-4a1f-b3f0-14ca4664f1c4',
+        },
+      ]}
+    >
+      <div className="flex flex-col max-sm:mt-4 mt-2">
+        <SelectedLanguageSwitcher
+          handleSwitchChange={handleSwitchChange}
+          showLocalOnly={showLocalOnly}
+        />
 
-        {showLocalOnly && (
-          <div className="flex items-center gap-3">
-            <Flag
-              code={i18n.language}
-              size={isMobile ? 'm' : 'l'}
-              className="shrink-0 !rounded-none mb-0.5 md:mb-0"
-            />
-            <span className="text-white subtitle-medium-caps-18px md:subtitle-large-caps-22px">
-              {LANGUAGES_MAP[i18n.language] || 'Language'}
-            </span>
-          </div>
-        )}
-
-        <div className="flex flex-wrap gap-4 md:gap-11">
+        <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
           {!isFetched && <Loader size="s" />}
           {sortedPodcasts?.length ? (
             sortedPodcasts.map((podcast) => (
@@ -76,7 +70,7 @@ function Podcasts() {
                   podcastId: podcast.id.toString(),
                 }}
                 key={podcast.id}
-                className="grow md:grow-0"
+                className="max-sm:w-full"
               >
                 <ResourceCard
                   name={podcast.name}
@@ -95,17 +89,8 @@ function Podcasts() {
 
         {showLocalOnly && !isEnglishLanguage && englishPodcasts.length > 0 && (
           <section>
-            <div className="flex items-center gap-3 pt-6 border-t border-t-newGray-1 mb-4 md:mb-9">
-              <Flag
-                code="en"
-                size={isMobile ? 'm' : 'l'}
-                className="shrink-0 !rounded-none mb-0.5 md:mb-0"
-              />
-              <span className="text-white subtitle-medium-caps-18px md:subtitle-large-caps-22px">
-                {LANGUAGES_MAP.en}
-              </span>
-            </div>
-            <div className="flex flex-wrap gap-4 md:gap-11">
+            <LanguageResourcesSectionHeader language="en" />
+            <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
               {englishPodcasts.map((podcast) => (
                 <Link
                   to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
@@ -113,7 +98,7 @@ function Podcasts() {
                     podcastId: podcast.id.toString(),
                   }}
                   key={podcast.id}
-                  className="grow md:grow-0"
+                  className="max-sm:w-full"
                 >
                   <ResourceCard
                     name={podcast.name}
@@ -127,6 +112,6 @@ function Podcasts() {
           </section>
         )}
       </div>
-    </ResourceLayout>
+    </PageLayout>
   );
 }

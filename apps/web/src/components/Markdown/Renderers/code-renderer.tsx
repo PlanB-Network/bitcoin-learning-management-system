@@ -12,7 +12,7 @@ const codeStyles = cva('text-base tracking-wide', {
     intent: {
       default: 'bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm',
       glossary:
-        'bg-white/20 px-1.5 rounded-lg font-mono inline-block text-sm text-white',
+        'bg-black/20 px-1.5 rounded-lg font-mono inline-block text-sm text-black',
     },
   },
 });

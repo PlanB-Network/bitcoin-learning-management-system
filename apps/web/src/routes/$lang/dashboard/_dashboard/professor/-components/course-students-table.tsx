@@ -277,7 +277,7 @@ export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
 
                 <TableCell>
                   <TextTag
-                    size={isMobile ? 'verySmall' : 'small'}
+                    size={isMobile ? 'small' : 'base'}
                     mode="light"
                     variant={
                       hasStudentCompletedCourse

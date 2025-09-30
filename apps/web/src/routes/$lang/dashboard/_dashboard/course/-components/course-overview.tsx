@@ -262,7 +262,7 @@ const CourseAnnouncementItem = ({
                 announcement.type,
                 'size-[18px] md:size-6 text-darkOrange-6',
               )}
-              <TextTag size="verySmall" variant="orange" mode="light100">
+              <TextTag size="small" variant="orange" mode="light100">
                 {getNotificationTitle(
                   announcement.type,
                   announcement.courseId ?? undefined,

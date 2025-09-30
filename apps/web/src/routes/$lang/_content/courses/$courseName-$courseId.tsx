@@ -254,7 +254,7 @@ function CourseDetails() {
         </div>
         <div className="mt-6 md:mt-4 flex flex-wrap gap-2 items-center">
           <TextTag
-            size={isMobile ? 'verySmall' : 'small'}
+            size={isMobile ? 'small' : 'base'}
             variant="orange"
             className="uppercase"
           >
@@ -262,15 +262,12 @@ function CourseDetails() {
               ? t('courses.details.paidCourse')
               : t('words.free')}
           </TextTag>
-          <TextTag
-            size={isMobile ? 'verySmall' : 'small'}
-            className="uppercase"
-          >
+          <TextTag size={isMobile ? 'small' : 'base'} className="uppercase">
             {t(`courses.format.${course.format}`)}
           </TextTag>
           {beginnerFriendlyCourses.includes(course.index) && (
             <TextTag
-              size={isMobile ? 'verySmall' : 'small'}
+              size={isMobile ? 'small' : 'base'}
               variant="green"
               className="uppercase"
             >

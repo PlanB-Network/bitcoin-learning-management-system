@@ -371,7 +371,7 @@ export const TranslationRequestsTable = ({
                     {request.assigneeUsername}
                   </TableCell>
                   <TableCell className="py-4">
-                    <TextTag size="verySmall" variant="grey">
+                    <TextTag size="small" variant="grey">
                       {request.index.toUpperCase()}
                     </TextTag>
                   </TableCell>

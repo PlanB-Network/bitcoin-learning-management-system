@@ -38,7 +38,7 @@ export function UserInformationCard({
             </div>
             <div className="flex flex-wrap gap-1 mt-4 w-full">
               {userDetails.languages.map((language) => (
-                <TextTag key={language} size="verySmall" variant="orange">
+                <TextTag key={language} size="small" variant="orange">
                   {getLanguageName(language)}
                 </TextTag>
               ))}
