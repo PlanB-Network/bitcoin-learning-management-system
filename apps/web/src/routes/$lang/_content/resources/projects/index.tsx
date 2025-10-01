@@ -92,7 +92,7 @@ function Projects() {
                     />
                   </h3>
                 </summary>
-                <div className="p-4 max-sm:grid grid-cols-2 sm:flex flex-row flex-wrap max-sm:items-center gap-3 sm:gap-6 w-full">
+                <div className="p-4 max-md:grid grid-cols-2 md:flex flex-row flex-wrap max-md:items-center gap-3 md:gap-6 w-full">
                   {filteredProjects.map((project) => (
                     <Link
                       to={`/resources/projects/${formatNameForURL(project.name)}-${project.id}`}

@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { TbCalendarOff, TbChevronRight } from 'react-icons/tb';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { assetUrl, trpc } from '#src/utils/index.ts';
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
 import { ConferencesTable } from '../-components/tables/conferences-table.tsx';
@@ -144,6 +145,10 @@ export const ConferenceCard = ({
 }: {
   conference: JoinedConference;
 }) => {
+  const isSmaller = useSmaller('sm');
+
+  const Wrapper = isSmaller ? Link : 'article';
+
   const GeneralInfos = () => {
     return (
       <div className="flex flex-col justify-between sm:p-4 sm:pt-0 flex-grow sm:gap-7">
@@ -165,30 +170,35 @@ export const ConferenceCard = ({
     );
   };
 
+  const content = (
+    <div className="flex max-sm:gap-2 sm:flex-col flex-grow">
+      <div className="w-22 sm:w-full overflow-hidden max-sm:rounded-lg sm:rounded-t-2xl sm:rounded-b-lg relative sm:mb-2 max-sm:shrink-0">
+        <Image
+          breakpoints={{ default: 88, sm: 240 }}
+          width="240"
+          height="135"
+          loading="lazy"
+          src={assetUrl(conference.path, 'thumbnail.webp')}
+          alt={conference.name || 'Conference image'}
+          className="object-cover [overflow-clip-margin:_unset] aspect-[88/56] sm:aspect-[240/135] sm:w-full h-full max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg"
+        />
+      </div>
+      <GeneralInfos />
+    </div>
+  );
+
   return (
-    <article
+    <Wrapper
+      to={isSmaller ? `/resources/conferences/${conference.id}` : undefined}
       className={cn(
         'flex justify-between max-sm:items-center w-full sm:w-60 sm:border border-neutral-100 rounded-lg sm:rounded-2xl max-sm:p-2',
       )}
     >
-      <div className="flex max-sm:gap-2 sm:flex-col flex-grow">
-        <div className="w-22 sm:w-full overflow-hidden max-sm:rounded-lg sm:rounded-t-2xl sm:rounded-b-lg relative sm:mb-2 max-sm:shrink-0">
-          <Image
-            breakpoints={{ default: 88, sm: 240 }}
-            width="240"
-            height="135"
-            loading="lazy"
-            src={assetUrl(conference.path, 'thumbnail.webp')}
-            alt={conference.name || 'Conference image'}
-            className="object-cover [overflow-clip-margin:_unset] aspect-[88/56] sm:aspect-[240/135] sm:w-full h-full max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg"
-          />
-        </div>
-        <GeneralInfos />
-      </div>
+      {content}
       <TbChevronRight
         className="text-neutral-300 sm:hidden shrink-0"
         size={20}
       />
-    </article>
+    </Wrapper>
   );
 };
