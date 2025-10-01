@@ -19,6 +19,7 @@ export const ConferencesTimeLine = ({
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     containScroll: 'trimSnaps',
+    dragFree: true,
     startIndex: years.indexOf(currentYear.toString()) - 1,
   });
 
