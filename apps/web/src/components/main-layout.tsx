@@ -185,6 +185,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
   const {
     user,
     session,
+    tutorials,
     currentSidebarTab: currentTab,
     setCurrentSidebarTab: setCurrentTab,
   } = useContext(AppContext);
@@ -193,6 +194,11 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
 
   const closedWidth = 'lg:w-[86px]';
   const openWidth = 'lg:w-[276px]';
+
+  const hasWrittenTutorials =
+    user?.professorId && tutorials
+      ? tutorials.some((tutorial) => tutorial.professorId === user.professorId)
+      : false;
 
   return (
     <nav
@@ -360,17 +366,19 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
             isSidebarOpen={isSidebarOpen}
             isMain
           />
-          <SideBarItem
-            icon={Target}
-            iconColor="green"
-            label={t('navbar.analytics')}
-            link="/dashboard/professor/tutorials"
-            isActive={window.location.pathname.includes(
-              '/dashboard/professor/tutorials',
-            )}
-            isSidebarOpen={isSidebarOpen}
-            isMain
-          />
+          {hasWrittenTutorials && (
+            <SideBarItem
+              icon={Target}
+              iconColor="green"
+              label={t('words.tutorials')}
+              link="/dashboard/professor/tutorials"
+              isActive={window.location.pathname.includes(
+                '/dashboard/professor/tutorials',
+              )}
+              isSidebarOpen={isSidebarOpen}
+              isMain
+            />
+          )}
         </div>
       )}
 
