@@ -1,11 +1,12 @@
 import type { Ticket } from '@blms/types';
-import { BasicModal, Button, Card, DialogClose } from '@blms/ui';
+import { BasicModal, Button, Card, DialogClose, EmptyState } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
+import { TbTicketOff } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate, formatHourRange } from '#src/utils/date.js';
@@ -102,7 +103,11 @@ export const BookingPart = ({
           })}
         </>
       ) : (
-        <p className="mt-4">{t('dashboard.booking.noTicket')}</p>
+        <EmptyState
+          title={t('dashboard.booking.noTicket')}
+          icon={TbTicketOff}
+          className="mt-4"
+        />
       )}
     </>
   );
