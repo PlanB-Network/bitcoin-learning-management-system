@@ -792,6 +792,14 @@
   );
 }
 
+@utility bg-vertical-orange-gradient {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 92, 0, 0) 84.72%,
+    rgba(255, 92, 0, 0.05) 100%
+  );
+}
+
 @utility filter-white {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(805%)
     hue-rotate(185deg) brightness(105%) contrast(101%);

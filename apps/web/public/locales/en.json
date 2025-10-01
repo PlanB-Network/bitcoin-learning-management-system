@@ -348,8 +348,9 @@
     },
     "learnAnytime": {
       "allOtherTitle": "All other live classes",
-      "secondaryTitle": "Become employable in Bitcoin-focused Companies.",
-      "title": "Plan ₿ official annual program"
+      "liveClasses": "Live classes",
+      "secondaryTitle": "Become employable in Bitcoin-focused companies.",
+      "title": "Plan ₿ official annual programs"
     },
     "noCoursesFound": "No courses found",
     "part": {

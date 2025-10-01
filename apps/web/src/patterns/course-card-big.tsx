@@ -1,7 +1,9 @@
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { cn, Image } from '@blms/ui';
+import { ButtonWithArrow, cn, Flag, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
+import { TbCalendarEvent, TbChevronRight, TbClock } from 'react-icons/tb';
+import { formatShortDateRange } from '#src/utils/date.ts';
 import { assetUrl, resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
@@ -26,6 +28,8 @@ export const CourseCardBig = ({
   featured?: boolean;
   className?: string;
 }) => {
+  const dateString = formatShortDateRange(course.startDate, course.endDate);
+
   return (
     <Link
       key={course.id}
@@ -33,26 +37,24 @@ export const CourseCardBig = ({
       className={cn('flex w-full max-md:mx-auto]', className)}
     >
       <article
-        className={`flex flex-row overflow-hidden h-[284px] ${courseCardStyles({
+        className={`flex flex-row w-full md:h-[284px] ${courseCardStyles({
           color: featured ? 'featured' : 'primary',
         })}`}
       >
         <DesktopCourseThumbnail course={course} />
 
-        <div className="w-full">
-          <div className="flex md:flex-col max-md:items-center">
-            <MobileCourseThumbnail course={course} />
-          </div>
+        <div className="grow min-w-0">
+          <MobileCourseThumbnail course={course} />
 
-          <div className=" flex  flex-col p-4 h-full">
-            <span className="max-md:flex flex-col !line-clamp-2 title-extra-large md:align-top mb-2 md:mb-0">
+          <div className="flex flex-col p-4 h-full w-full">
+            <span className="mt-2 flex flex-col w-full line-clamp-2 title-medium md:title-extra-large align-top mb-2 md:mb-0 text-nowrap">
               {course.name}
             </span>
-            <p className="text-neutral-600 text-base line-clamp-3">
+            <p className="text-neutral-600 body-small md:body-base md:line-clamp-3">
               {course.goal}
             </p>
 
-            <div className="flex flex-row my-2">
+            <div className="flex flex-row my-4">
               {course.mainProfessors.map((professor) => (
                 <Image
                   key={professor.id}
@@ -65,19 +67,55 @@ export const CourseCardBig = ({
                 />
               ))}
 
-              <span className="ml-1">
+              <span className="ml-2">
                 {course.mainProfessors.map((professor) => professor.name)}
               </span>
             </div>
 
-            <div className="mt-auto flex flew-row justify-between">
-              <p>Online | City</p>
-              <div>
-                <span>Dates</span>
-                <span className="ml-4">{`${course.hours} hours`}</span>
+            <div className="w-full md:mt-auto flex flex-col flex-wrap md:flex-row max-md:gap-4 text-nowrap mx-2 justify-between overflow-hidden border-t-1 border-neutral-50 pt-5">
+              <div className="grow-3 body-base-bold flex flew-row gap-1">
+                {course.format === 'online' || course.format === 'hybrid' ? (
+                  <span>Online</span>
+                ) : null}
+                {course.format === 'hybrid' ? (
+                  <span className="text-neutral-100">|</span>
+                ) : null}
+                {course.format === 'inperson' || course.format === 'hybrid' ? (
+                  <div className="flex flex-row gap-2">
+                    <Flag
+                      code={'ch'}
+                      size="s"
+                      className="self-center"
+                      isRound={true}
+                    />
+                    <span>{course.addressLine1}</span>
+                  </div>
+                ) : null}
               </div>
+              <div className="grow-1 flex flex-row gap-2 items-center">
+                <TbCalendarEvent className="h-5 w-5 text-brown-400" />
+                <span className="body-base-bold text-brown-800 ">
+                  {dateString}
+                </span>
+              </div>
+              <div className="max-md:hidden flex flex-row gap-2 items-center">
+                <TbClock className="h-5 w-5 text-brown-400" />
+                <span className="body-base-bold text-brown-800">{`${course.hours} hours`}</span>
+              </div>
+
+              <ButtonWithArrow
+                content="p-12 m-12"
+                variant="primary"
+                className="md:hidden w-full"
+                size={'m'}
+              >
+                Discover<span className="ml-2">{'>'}</span>
+              </ButtonWithArrow>
             </div>
           </div>
+        </div>
+        <div className="max-md:hidden self-center mx-4 w-fit">
+          <TbChevronRight className="h-5 w-5 text-neutral-700" />
         </div>
       </article>
     </Link>
@@ -91,8 +129,6 @@ const DesktopCourseThumbnail = ({
 }) => {
   return (
     <Image
-      width={338}
-      height={284}
       loading="lazy"
       src={assetUrl(
         `courses/${course.index}`,
@@ -101,7 +137,7 @@ const DesktopCourseThumbnail = ({
       )}
       alt={course.name}
       breakpoints={{ default: 320 }}
-      className="max-md:hidden object-cover [overflow-clip-margin:_unset]"
+      className="max-md:hidden lg:w-[338px] object-cover [overflow-clip-margin:_unset]"
     />
   );
 };
@@ -112,18 +148,19 @@ const MobileCourseThumbnail = ({
   course: JoinedCourse | CourseResponse;
 }) => {
   return (
-    <Image
-      width={124}
-      height={98}
-      loading="lazy"
-      src={assetUrl(
-        `courses/${course.index}`,
-        'thumbnail.webp',
-        course.lastCommit,
-      )}
-      alt={course.name}
-      breakpoints={{ default: 124 }}
-      className="md:hidden rounded-tl-2xl w-31 object-cover [overflow-clip-margin:_unset] object-center"
-    />
+    <div className="w-full">
+      <Image
+        loading="lazy"
+        width={'full'}
+        src={assetUrl(
+          `courses/${course.index}`,
+          'thumbnail.webp',
+          course.lastCommit,
+        )}
+        alt={course.name}
+        breakpoints={{ default: 500 }}
+        className="md:hidden rounded-tl-2xl h-[172px] w-full "
+      />
+    </div>
   );
 };

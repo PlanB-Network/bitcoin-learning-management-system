@@ -917,6 +917,7 @@ export const teachingFormatEnum = pgNativeEnum(
 export const typeFormatEnum = pgNativeEnum('course_type', CourseType);
 
 export const contentCourses = content.table('courses', (t) => ({
+  addressLine1: t.varchar('address_line_1', { length: 100 }),
   areScoresCalculated: t.boolean().default(false).notNull(),
   assignmentDescription: t.text(),
   assignmentEndDate: t.timestamp({ withTimezone: true }),

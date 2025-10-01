@@ -19,6 +19,7 @@ export const getCourseQuery = (id: string, language?: string) => {
       c.format,
       c.teaching_format,
       c.type,
+      c.address_line_1,
       c.online_price_dollars,
       c.inperson_price_dollars,
       c.paid_description,

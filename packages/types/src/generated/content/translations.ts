@@ -34,6 +34,7 @@ export interface CourseTranslationChapter {
 }
 
 export interface CourseBasic {
+  addressLine1: string | null;
   areScoresCalculated: boolean;
   assignmentDescription: string | null;
   assignmentEndDate: Date | null;
