@@ -28,7 +28,7 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { FaLock } from 'react-icons/fa';
 import { FiLoader } from 'react-icons/fi';
-import { IoCheckmark } from 'react-icons/io5';
+import { TbCheck } from 'react-icons/tb';
 import ReactMarkdown from 'react-markdown';
 import { z } from 'zod';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
@@ -963,7 +963,7 @@ const DescriptionAndObjectives = memo(
             <ul className="flex flex-col gap-4 md:gap-6">
               {course.objectives?.map((goal) => (
                 <li className="flex gap-2.5 text-newBlack-1" key={goal}>
-                  <IoCheckmark size={isMobile ? 18 : 24} className="shrink-0" />
+                  <TbCheck size={isMobile ? 18 : 24} className="shrink-0" />
                   <span className="body-16px md:label-large-20px">{goal}</span>
                 </li>
               ))}

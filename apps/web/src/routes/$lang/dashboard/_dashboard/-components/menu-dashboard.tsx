@@ -12,13 +12,8 @@ import { BsMortarboard } from 'react-icons/bs';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { FaRegBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
-import {
-  IoLogOutOutline,
-  IoPersonOutline,
-  IoTicketOutline,
-} from 'react-icons/io5';
 import { LuPencilRuler, LuShieldAlert } from 'react-icons/lu';
-import { TbBriefcase2 } from 'react-icons/tb';
+import { TbBriefcase2, TbLogout, TbTicket, TbUser } from 'react-icons/tb';
 import pill from '#src/assets/icons/orange_pill_color_gradient.svg';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.js';
@@ -168,7 +163,7 @@ export const MenuDashboard = ({
         <Link to={bookingsPath}>
           <MenuItem
             text={t('words.bookings')}
-            icon={<IoTicketOutline size={24} />}
+            icon={<TbTicket size={24} />}
             active={pathname.includes(bookingsPath)}
             onClick={toggleMobileMenu}
           />
@@ -205,7 +200,7 @@ export const MenuDashboard = ({
         <Link to={profilePath}>
           <MenuItem
             text={t('dashboard.account')}
-            icon={<IoPersonOutline size={24} />}
+            icon={<TbUser size={24} />}
             active={pathname.includes(profilePath)}
             onClick={toggleMobileMenu}
           />
@@ -220,7 +215,7 @@ export const MenuDashboard = ({
             <Link to={professorProfilePath}>
               <MenuItem
                 text={t('dashboard.profile.profile')}
-                icon={<IoPersonOutline size={24} />}
+                icon={<TbUser size={24} />}
                 active={pathname.includes(professorProfilePath)}
                 onClick={toggleMobileMenu}
               />
@@ -287,7 +282,7 @@ export const MenuDashboard = ({
               <Link to={adminBookingsPath}>
                 <MenuItem
                   text={t('dashboard.adminPanel.bookings')}
-                  icon={<IoTicketOutline size={24} />}
+                  icon={<TbTicket size={24} />}
                   active={pathname.includes(adminBookingsPath)}
                   onClick={toggleMobileMenu}
                 />
@@ -297,7 +292,7 @@ export const MenuDashboard = ({
               <Link to={adminCouponsPath}>
                 <MenuItem
                   text={t('dashboard.adminPanel.discountCodes')}
-                  icon={<IoTicketOutline size={24} />}
+                  icon={<TbTicket size={24} />}
                   active={pathname.includes(adminCouponsPath)}
                   onClick={toggleMobileMenu}
                 />
@@ -326,7 +321,7 @@ export const MenuDashboard = ({
           }}
           className="flex gap-2.5 w-fit my-4"
         >
-          <IoLogOutOutline size={24} />
+          <TbLogout size={24} />
           <span>{t('dashboard.logout')}</span>
         </Button>
       </div>

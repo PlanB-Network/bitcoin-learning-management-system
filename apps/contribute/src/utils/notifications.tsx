@@ -3,9 +3,9 @@ import { cn } from '@blms/ui';
 import { t } from 'i18next';
 import { AiOutlineTrophy, AiOutlineWarning } from 'react-icons/ai';
 import { BiBookBookmark } from 'react-icons/bi';
-import { IoMegaphoneOutline } from 'react-icons/io5';
 import { LuCalendarDays, LuStar } from 'react-icons/lu';
 import { MdAccessAlarm } from 'react-icons/md';
+import { TbSpeakerphone } from 'react-icons/tb';
 
 export const isTeacherAnnouncementType = (type: string) => {
   return [
@@ -30,7 +30,7 @@ export const getNotificationIcon = (type: string, className?: string) => {
       return <MdAccessAlarm className={classes} />;
     case NotificationType.General:
     case NotificationType.Blog:
-      return <IoMegaphoneOutline className={classes} />;
+      return <TbSpeakerphone className={classes} />;
     case NotificationType.Assignment:
       return <BiBookBookmark className={classes} />;
     case NotificationType.Celebration:

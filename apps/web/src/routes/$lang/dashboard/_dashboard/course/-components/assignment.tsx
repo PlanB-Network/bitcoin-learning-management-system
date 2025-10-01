@@ -22,20 +22,17 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { BiPencil } from 'react-icons/bi';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FaTelegram } from 'react-icons/fa6';
-import {
-  IoCheckmark,
-  IoCheckmarkOutline,
-  IoWarningOutline,
-} from 'react-icons/io5';
 import type { IconType } from 'react-icons/lib';
 import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import {
   TbAlertOctagon,
+  TbAlertTriangle,
   TbArrowBackUp,
   TbBook2,
   TbBuildingSkyscraper,
   TbCalendar,
+  TbCheck,
   TbUser,
   TbWeight,
 } from 'react-icons/tb';
@@ -107,7 +104,7 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
         customToast(t('dashboard.course.listSaved'), {
           closeButton: true,
           color: 'success',
-          icon: IoCheckmark,
+          icon: TbCheck,
           mode: 'light',
           time: 5000,
         });
@@ -279,7 +276,7 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
         customToast(t('dashboard.course.fileUploaded'), {
           closeButton: true,
           color: 'success',
-          icon: IoCheckmarkOutline,
+          icon: TbCheck,
           mode: 'light',
         });
       } catch (_error) {
@@ -287,7 +284,7 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
         customToast(t('dashboard.careerPortal.fileUploadError'), {
           closeButton: true,
           color: 'warning',
-          icon: IoWarningOutline,
+          icon: TbAlertTriangle,
           mode: 'light',
         });
       } finally {
@@ -905,7 +902,7 @@ const ConfirmAssignmentsOrderDialog = ({
             onClick={onConfirm}
           >
             {t('dashboard.course.confirmList')}
-            <IoCheckmark className="ml-2.5" />
+            <TbCheck className="ml-2.5" />
           </Button>
         </DialogClose>
         <DialogClose asChild>
@@ -965,7 +962,7 @@ const ConfirmSubmissionDialog = ({
             onClick={onConfirm}
           >
             {t('dashboard.course.confirmSubmission')}{' '}
-            <IoCheckmark className="ml-2.5" />
+            <TbCheck className="ml-2.5" />
           </Button>
         </DialogClose>
         <DialogClose asChild>

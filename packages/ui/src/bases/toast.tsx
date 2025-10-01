@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 import type { MouseEventHandler } from 'react';
-import { IoCloseOutline } from 'react-icons/io5';
 import type { IconType } from 'react-icons/lib';
+import { TbX } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 
 export { ToastContainer } from 'react-toastify';
@@ -212,10 +212,7 @@ const ToastCloseButton = ({
     aria-label="Close toast"
     tabIndex={0}
   >
-    <IoCloseOutline
-      size={24}
-      className={toastCloseButtonVariants({ color, mode })}
-    />
+    <TbX size={24} className={toastCloseButtonVariants({ color, mode })} />
   </button>
 );
 

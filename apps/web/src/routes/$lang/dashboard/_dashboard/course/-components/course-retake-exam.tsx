@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
-import { IoReload } from 'react-icons/io5';
+import { TbReload } from 'react-icons/tb';
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
 import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-satoshi.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
@@ -353,7 +353,7 @@ const CourseExamsTable = ({
                               }
                             >
                               {t('courses.exam.retakeExam')}
-                              <IoReload size={isMobile ? 18 : 24} />
+                              <TbReload size={isMobile ? 18 : 24} />
                             </Button>
                           </Link>
                         </div>

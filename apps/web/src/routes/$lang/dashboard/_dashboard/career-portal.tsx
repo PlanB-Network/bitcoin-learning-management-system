@@ -42,8 +42,8 @@ import { BiPlus } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { ImCheckmark } from 'react-icons/im';
 import { IoMdCheckmarkCircle } from 'react-icons/io';
-import { IoCheckmarkOutline, IoWarningOutline } from 'react-icons/io5';
 import { MdOutlineEdit } from 'react-icons/md';
+import { TbAlertTriangle, TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
@@ -249,14 +249,14 @@ function CareerPortal() {
         customToast(t('dashboard.careerPortal.fileUploaded'), {
           closeButton: true,
           color: 'success',
-          icon: IoCheckmarkOutline,
+          icon: TbCheck,
           mode: 'light',
         });
       } else {
         customToast(t('dashboard.careerPortal.fileUploadError'), {
           closeButton: true,
           color: 'warning',
-          icon: IoWarningOutline,
+          icon: TbAlertTriangle,
           mode: 'light',
         });
       }
@@ -410,7 +410,7 @@ function CareerPortal() {
               customToast(t('dashboard.careerPortal.applicationSaved'), {
                 closeButton: true,
                 color: 'success',
-                icon: IoCheckmarkOutline,
+                icon: TbCheck,
                 mode: 'light',
               });
             }

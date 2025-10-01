@@ -18,7 +18,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { IoCheckmarkOutline } from 'react-icons/io5';
+import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -155,7 +155,7 @@ const NotificationSettings = () => {
         customToast(t('dashboard.profile.notificationSettings.settingsSaved'), {
           closeButton: true,
           color: 'success',
-          icon: IoCheckmarkOutline,
+          icon: TbCheck,
           mode: 'light',
         });
       },

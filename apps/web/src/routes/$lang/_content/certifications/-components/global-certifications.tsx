@@ -8,8 +8,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload, FiLoader } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
-import { IoReload } from 'react-icons/io5';
-import { TbFileCertificate } from 'react-icons/tb';
+import { TbFileCertificate, TbReload } from 'react-icons/tb';
 import DummyBCert from '#src/assets/about/dummy-bcert.webp?no-inline';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
@@ -185,7 +184,7 @@ const BCertResult = ({
           variant="primary"
         >
           {t('dashboard.credentials.retakeExam')}
-          <IoReload size={isMobile ? 18 : 24} />
+          <TbReload size={isMobile ? 18 : 24} />
         </Button>
       </Link>
     );

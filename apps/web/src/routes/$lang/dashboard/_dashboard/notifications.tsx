@@ -9,9 +9,9 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineTrophy, AiOutlineWarning } from 'react-icons/ai';
 import { BiBookBookmark } from 'react-icons/bi';
-import { IoMailOpenSharp, IoMegaphoneOutline } from 'react-icons/io5';
 import { LuCalendarDays, LuStar } from 'react-icons/lu';
 import { MdAccessAlarm } from 'react-icons/md';
+import { TbMailOpenedFilled, TbSpeakerphone } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
@@ -314,7 +314,7 @@ const NotificationItem = ({
             transform: `translateX(${MAX_SWIPE - touchDeltaX}px)`,
           }}
         >
-          <IoMailOpenSharp size={24} />
+          <TbMailOpenedFilled size={24} />
           <span>{t('notifications.read')}</span>
         </div>
       )}
@@ -580,7 +580,7 @@ export const getNotificationIcon = (type: string, className?: string) => {
       return <MdAccessAlarm className={classes} />;
     case NotificationType.General:
     case NotificationType.Blog:
-      return <IoMegaphoneOutline className={classes} />;
+      return <TbSpeakerphone className={classes} />;
     case NotificationType.Assignment:
       return <BiBookBookmark className={classes} />;
     case NotificationType.Celebration:

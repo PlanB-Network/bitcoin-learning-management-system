@@ -2,7 +2,7 @@ import { Button } from '@blms/ui';
 import { useLocation } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IoLogOutOutline } from 'react-icons/io5';
+import { TbLogout } from 'react-icons/tb';
 import SearchIcon from '#src/assets/icons/search.svg';
 import SearchIconBlack from '#src/assets/icons/search-black.svg';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -79,7 +79,7 @@ export const MetaElements = ({
                     : 'bg-newBlack-3 text-white hover:bg-darkHover'
                 }`}
               >
-                <IoLogOutOutline size={24} />
+                <TbLogout size={24} />
               </button>
             ) : (
               <button type="button" className="cursor-pointer text-white">

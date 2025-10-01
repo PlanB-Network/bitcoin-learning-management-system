@@ -21,7 +21,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { IoCheckmark } from 'react-icons/io5';
+import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
@@ -228,7 +228,7 @@ export function CourseReviewComponent({
                         closeButton: true,
                         closeOnClick: true,
                         color: 'success',
-                        icon: IoCheckmark,
+                        icon: TbCheck,
                         mode: 'light',
                         time: 3000,
                       });

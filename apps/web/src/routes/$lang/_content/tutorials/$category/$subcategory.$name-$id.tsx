@@ -6,7 +6,7 @@ import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { memo, Suspense, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { IoCheckmark } from 'react-icons/io5';
+import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
@@ -335,7 +335,7 @@ function TutorialDetails() {
           customToast(t('tutorials.details.ratingSuccess'), {
             closeButton: true,
             color: 'success',
-            icon: IoCheckmark,
+            icon: TbCheck,
             mode: 'light',
             time: 5000,
           });
