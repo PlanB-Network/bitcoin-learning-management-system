@@ -1,3 +1,5 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import {
   Button,
   Checkbox,
@@ -20,7 +22,6 @@ import { IoCheckmarkOutline } from 'react-icons/io5';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
-
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 import { ChangePasswordModal } from '../dashboard/_dashboard/-components/change-password-modal.tsx';
@@ -31,7 +32,7 @@ export const Route = createFileRoute('/$lang/account/settings')({
 
 function AccountSettings() {
   const navigate = useNavigate();
-  const { session } = useContext(AppContext);
+  const { session, user } = useContext(AppContext);
 
   const {
     open: openChangePasswordModal,
@@ -55,6 +56,15 @@ function AccountSettings() {
       title={t('words.settings')}
       tabs={[
         { id: 'account', label: t('words.account'), href: '/account' },
+        ...(user?.professorId && canAccess(UserRole.Professor)(user)
+          ? [
+              {
+                id: 'teacher-profile',
+                label: t('account.myTeacherProfile'),
+                href: '/account/teacher-profile',
+              },
+            ]
+          : []),
         {
           id: 'settings',
           label: t('words.settings'),
