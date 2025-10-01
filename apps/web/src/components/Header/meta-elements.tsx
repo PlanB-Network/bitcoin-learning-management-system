@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbLogout, TbSearch } from 'react-icons/tb';
+import { TbCalendarMonth, TbLogout, TbSearch } from 'react-icons/tb';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 import { AppContext } from '#src/providers/context.js';
@@ -34,13 +34,20 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
 
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-4 ml-auto max-lg:mx-auto">
-      <Link className="cursor-pointer" to={`/${i18n.language}/search`}>
+      <Link to={`/${i18n.language}/search`}>
         <TbSearch size={24} strokeWidth={1.5} className="text-newGray-1" />
       </Link>
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
       <div className="h-4.5 w-px bg-neutral-200" />
       {isLoggedIn && !isMobile && (
         <>
+          <Link to={'/dashboard/calendar'}>
+            <TbCalendarMonth
+              size={24}
+              strokeWidth={1.5}
+              className="text-newGray-1"
+            />
+          </Link>
           <NotificationsPanel />
           <Link className="flex gap-2" to="/account">
             <button
@@ -83,7 +90,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
             onClick={async () => {
               await logout();
             }}
-            className={'cursor-pointer text-newGray-1'}
+            className={'text-newGray-1'}
           >
             <TbLogout strokeWidth={1.5} size={24} />
           </button>

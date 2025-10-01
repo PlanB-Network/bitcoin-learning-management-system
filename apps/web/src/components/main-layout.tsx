@@ -14,7 +14,6 @@ import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
-import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
 import Dollar from '#src/assets/icons/pixelated/navbar/dollar.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
@@ -281,16 +280,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                   link="/dashboard/my-courses"
                   isActive={window.location.pathname.includes(
                     '/dashboard/course',
-                  )}
-                  isSidebarOpen={isSidebarOpen}
-                />
-                <SideBarItem
-                  icon={Calendar}
-                  iconColor="green"
-                  label={t('navbar.myCalendar')}
-                  link="/dashboard/calendar"
-                  isActive={window.location.pathname.includes(
-                    '/dashboard/calendar',
                   )}
                   isSidebarOpen={isSidebarOpen}
                 />
