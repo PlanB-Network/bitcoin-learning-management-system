@@ -21,6 +21,8 @@ interface OnlyOfficeSlideEditorProps {
   className?: string;
   /** Callback when document is modified */
   onDocumentModified?: () => void;
+  /** Callback with OnlyOffice document dirty state (true = unsaved changes) */
+  onDocumentStateChange?: (isDirty: boolean) => void;
   /** Course ID for manual saving */
   courseId?: string;
   /** Part ID for manual saving */
@@ -57,6 +59,7 @@ const OnlyOfficeSlideEditorInner = forwardRef<
       fileUrl,
       className,
       onDocumentModified,
+      onDocumentStateChange,
       courseId,
       partId,
       chapterId,
@@ -70,6 +73,7 @@ const OnlyOfficeSlideEditorInner = forwardRef<
     const containerRef = useRef<HTMLDivElement>(null);
     const editorInstanceRef = useRef<any>(null);
     const documentKeyRef = useRef<string | null>(null);
+    const isDocumentDirtyRef = useRef<boolean>(false);
     // Track manual save status without triggering React re-renders (DOM reconciliation issues)
     const isSavingRef = useRef(false);
     const [loadingState, setLoadingState] = useState<
@@ -152,6 +156,39 @@ const OnlyOfficeSlideEditorInner = forwardRef<
 
             isSavingRef.current = true;
 
+            // Ensure in-editor changes are flushed to the Document Server before forcing a save.
+            // This prevents saving the original file without recent edits when autosave is disabled.
+            try {
+              if (typeof editorInstanceRef.current?.save === 'function') {
+                console.log('Triggering in-editor save to flush changes...');
+                editorInstanceRef.current.save();
+                // Give the editor a brief moment to transmit changes to the server
+                await new Promise((resolve) => setTimeout(resolve, 1200));
+              }
+            } catch (flushErr) {
+              console.warn(
+                'Failed to trigger in-editor save (will proceed with forcesave):',
+                flushErr,
+              );
+            }
+
+            // Wait until OnlyOffice reports no pending changes (best-effort, max ~5s)
+            try {
+              const waitForStable = async () =>
+                await new Promise<void>((resolve) => {
+                  const start = Date.now();
+                  const check = () => {
+                    if (!isDocumentDirtyRef.current) return resolve();
+                    if (Date.now() - start > 5000) return resolve();
+                    setTimeout(check, 150);
+                  };
+                  check();
+                });
+              await waitForStable();
+            } catch (_e) {
+              // ignore
+            }
+
             const documentKey = documentKeyRef.current;
             if (!documentKey) {
               console.error(
@@ -200,10 +237,11 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 pollAttempts++;
 
                 try {
-                  // Check if the file exists in S3 by making a HEAD request to the proofread endpoint
-                  const proofreadUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}?version=proofread`;
-                  const headResponse = await fetch(proofreadUrl, {
+                  // Check if the proofread file exists in S3 using discovery (independent of DB flags)
+                  const proofreadDiscoveryUrl = `/api/translation-downloads/pptx-by-discovery/${courseId}/${language}/${partId}/${chapterId}/${slideId}?suffix=proofread`;
+                  const headResponse = await fetch(proofreadDiscoveryUrl, {
                     method: 'HEAD',
+                    credentials: 'include',
                   });
 
                   if (headResponse.ok) {
@@ -398,23 +436,35 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             ? 'host.docker.internal:3000'
             : `${window.location.host}`;
 
-          // TEMPORARY: Use old endpoint structure until backend implements discovery endpoints
-          let absoluteFileUrl = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
+          // Prefer latest proofread version if it exists (even when not validated)
+          // Try discovery endpoint for -proofread first, then fallback to by-path original
+          let absoluteFileUrl: string;
+          const discoveryProofread = `/api/translation-downloads/pptx-by-discovery/${courseId}/${language}/${partId}/${chapterId}/${slideId}?suffix=proofread`;
+          const byPathOriginal = `/api/translation-downloads/pptx-by-path/${courseId}/${language}/${chapterId}/${slideId}`;
 
           // Load DocsAPI and check if file exists
           await loadDocsAPI();
 
-          // Test if file exists by making a HEAD request
-          const testResp = await fetch(absoluteFileUrl, { method: 'HEAD' });
-          if (!testResp.ok) {
-            if (testResp.status === 404) {
-              console.warn('PPTX file not found (direct endpoint)');
-              setLoadingState('file-not-found');
-            } else {
-              console.error('Failed to access PPTX file');
-              setLoadingState('error');
+          // Test if proofread exists first; if not, try original
+          let testResp = await fetch(discoveryProofread, { method: 'HEAD' });
+          if (testResp.ok) {
+            absoluteFileUrl = discoveryProofread;
+          } else {
+            const fallbackResp = await fetch(byPathOriginal, {
+              method: 'HEAD',
+            });
+            if (!fallbackResp.ok) {
+              if (fallbackResp.status === 404) {
+                console.warn('PPTX file not found (proofread and original)');
+                setLoadingState('file-not-found');
+              } else {
+                console.error('Failed to access PPTX file');
+                setLoadingState('error');
+              }
+              return;
             }
-            return;
+            absoluteFileUrl = byPathOriginal;
+            testResp = fallbackResp;
           }
           if (isLocalhost) {
             // In development, OnlyOffice runs in Docker and needs to access the API
@@ -601,8 +651,18 @@ const OnlyOfficeSlideEditorInner = forwardRef<
                 }
               },
               onDocumentStateChange: (event: any) => {
+                // event.data === true means there are unsaved changes (dirty)
+                const isDirty = Boolean(event?.data);
+                isDocumentDirtyRef.current = isDirty;
                 console.log('Document state changed:', event);
-                if (onDocumentModified) {
+                if (typeof onDocumentStateChange === 'function') {
+                  try {
+                    onDocumentStateChange(isDirty);
+                  } catch {
+                    /* ignore */
+                  }
+                }
+                if (isDirty && onDocumentModified) {
                   onDocumentModified();
                 }
               },

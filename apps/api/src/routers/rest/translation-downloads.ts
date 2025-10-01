@@ -12,29 +12,42 @@ import { BadRequest } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 import { convertSlideToProofreadPngs } from '#src/utils/convert-api.js';
 
-// Added SSRF-protection: OnlyOffice base URL and validator
+// Added SSRF-protection: OnlyOffice base URL and trusted URL builder
 const ONLYOFFICE_BASE_URL =
   process.env.ONLYOFFICE_URL ||
   (process.env.DOCKER
     ? 'http://host.docker.internal:80'
     : 'http://localhost:80');
 
-const ONLYOFFICE_HOSTNAME = new URL(ONLYOFFICE_BASE_URL).hostname;
+// Allow-list of OnlyOffice download path prefixes provided in callbacks
+// Based on OnlyOffice Document Server behavior where files are served from /cache/files/
+const ALLOWED_ONLYOFFICE_PATH_PREFIXES = ['/cache/files/'];
 
-function assertOnlyofficeUrl(input: string): void {
+function buildTrustedOnlyofficeFetchUrl(untrustedUrl: string): URL {
   let parsed: URL;
   try {
-    parsed = new URL(input);
+    parsed = new URL(untrustedUrl);
   } catch {
-    throw new BadRequest('Invalid OnlyOffice URL');
+    throw new BadRequest('Invalid OnlyOffice callback URL');
   }
 
-  if (
-    process.env.NODE_ENV !== 'development' &&
-    parsed.hostname !== ONLYOFFICE_HOSTNAME
-  ) {
-    throw new BadRequest('Untrusted OnlyOffice host');
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+    throw new BadRequest('Invalid OnlyOffice URL protocol');
   }
+
+  const isAllowedPath = ALLOWED_ONLYOFFICE_PATH_PREFIXES.some((prefix) =>
+    parsed.pathname.startsWith(prefix),
+  );
+  if (!isAllowedPath) {
+    throw new BadRequest('Untrusted OnlyOffice URL path');
+  }
+
+  // Always anchor to the configured OnlyOffice base host to avoid SSRF via DNS/host changes
+  const base = new URL(ONLYOFFICE_BASE_URL);
+  const trusted = new URL(base.toString());
+  trusted.pathname = parsed.pathname;
+  trusted.search = parsed.search;
+  return trusted;
 }
 
 // In-memory store for temporary download tokens (in production, use Redis)
@@ -134,13 +147,25 @@ export const createRestTranslationDownloadRoutes = async (
         console.log('OnlyOffice command URL:', onlyofficeUrl);
         console.log('Command body:', JSON.stringify(commandBody, null, 2));
 
-        const commandResponse = await fetch(onlyofficeUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(commandBody),
-        });
+        // Disallow redirects and apply a short timeout for defense in depth
+        let commandResponse: any;
+        {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 10000);
+          try {
+            commandResponse = await fetch(onlyofficeUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(commandBody),
+              redirect: 'error',
+              signal: controller.signal,
+            });
+          } finally {
+            clearTimeout(timeout);
+          }
+        }
 
         console.log(
           'OnlyOffice command response status:',
@@ -205,9 +230,20 @@ export const createRestTranslationDownloadRoutes = async (
             // Note: slideId comes from OnlyOffice callback URL parameters
 
             // Validate and download the document from OnlyOffice
-            assertOnlyofficeUrl(url);
-            console.log('====== 1', url);
-            const response = await fetch(url);
+            // OnlyOffice may return callback URLs with host "localhost" which
+            // is not reachable from within the API container. Rewrite the host
+            // to the configured ONLYOFFICE_BASE_URL while preserving path/query.
+            const trustedUrl = buildTrustedOnlyofficeFetchUrl(url);
+
+            console.log('====== 1', trustedUrl.toString());
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 10000);
+            const response = await fetch(trustedUrl.toString(), {
+              method: 'GET',
+              redirect: 'error',
+              signal: controller.signal,
+            });
+            clearTimeout(timeout);
             if (!response.ok) {
               throw new Error(
                 `Failed to download document: ${response.statusText}`,

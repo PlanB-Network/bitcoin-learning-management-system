@@ -63,6 +63,7 @@ export function ValidatedPptEditor({
   const { t } = useTranslation();
   const onlyOfficeEditorRef = useRef<OnlyOfficeSlideEditorRef>(null);
   const [isValidating, setIsValidating] = useState(false);
+  const [isDocDirty, setIsDocDirty] = useState(false);
 
   const handleValidatePresentation = async () => {
     // If custom validation handler is provided, use that instead
@@ -72,6 +73,12 @@ export function ValidatedPptEditor({
     }
 
     console.log('Validate presentation clicked');
+    // Prevent validation while editor reports pending unsaved changes
+    if (isDocDirty) {
+      console.warn('Blocking validation: document still has unsaved changes');
+      return;
+    }
+
     setIsValidating(true);
     onLoadingStateChange?.(true);
 
@@ -187,6 +194,7 @@ export function ValidatedPptEditor({
           onDocumentModified={
             mode === 'edit' ? handleDocumentModified : undefined
           }
+          onDocumentStateChange={(dirty) => setIsDocDirty(dirty)}
           courseId={courseId}
           partId={partId}
           chapterId={chapterId}
@@ -215,7 +223,7 @@ export function ValidatedPptEditor({
                 defaultValue: 'Validate presentation PPT',
               })}
               loading={isValidating}
-              disabled={isValidating}
+              disabled={isValidating || isDocDirty}
             />
             {rightComponent}
           </div>

@@ -43,7 +43,9 @@ export const createUpdateSlideAudioStatus = ({ postgres }: Dependencies) => {
       SET
         audio_resource_path = ${audioPath},
         audio_tries = COALESCE(${audioTries}, audio_tries),
-        audio_validated = true,
+        -- Do NOT auto-validate on generation completion. Validation must occur
+        -- only after the user listens to the full audio in the UI.
+        audio_validated = false,
         updated_at = NOW()
       WHERE course_id = ${courseId}
         AND language = LOWER(${language})

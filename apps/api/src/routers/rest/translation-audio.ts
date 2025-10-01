@@ -266,22 +266,41 @@ export const createRestTranslationAudioRoutes = async (
           accessToken = tokenJson.access_token;
         }
 
+        const taskData = audioTasks.get(taskId);
+
         const statusResp = await fetch(`${toolkitUrl}/tasks/${taskId}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
 
+        let body: any | null = null;
+
         if (!statusResp.ok) {
           const txt = await statusResp.text();
-          throw new InternalServerError(`Toolkit status error: ${txt}`);
-        }
 
-        const body = await statusResp.json();
+          // Fallback handling: Some Language-Toolkit deployments use multiple workers.
+          // The in-memory task registry can be worker-local, so GET /tasks/:id may 404
+          // even though the task completed and wrote the S3 object.
+          if (statusResp.status === 404 && taskData?.outputKey) {
+            try {
+              await (dependencies as any).s3.head(taskData.outputKey);
+              // Object exists in S3 → treat as completed
+              body = { status: 'completed', task_id: taskId };
+            } catch (_e) {
+              // Object not found yet → report pending to avoid surfacing 5xx to the client
+              body = { status: 'pending', task_id: taskId };
+            }
+          } else {
+            // Unknown error from toolkit – return graceful pending state
+            body = { status: 'pending', task_id: taskId, error: txt };
+          }
+        } else {
+          body = await statusResp.json();
+        }
 
         // Check if task is completed and update database
         if ((body as any)?.status === 'completed') {
-          const taskData = audioTasks.get(taskId);
           if (taskData) {
             console.log('Audio task completed, updating database:', {
               taskId,
