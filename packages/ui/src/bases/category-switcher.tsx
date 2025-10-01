@@ -93,13 +93,15 @@ export const CategorySwitcher = ({
   onClick,
   size = 'm',
   inactiveBackgroundColor,
+  className,
 }: {
-  text: string;
+  text?: string;
   icon?: IconType;
   isActive: boolean;
   onClick: () => void;
   size?: 'm' | 's';
   inactiveBackgroundColor?: string;
+  className?: string;
 }) => {
   return (
     <button
@@ -110,6 +112,7 @@ export const CategorySwitcher = ({
             ? inactiveBackgroundColor
             : 'bg-white'
           : '',
+        className,
       )}
       onClick={onClick}
       aria-pressed={isActive}

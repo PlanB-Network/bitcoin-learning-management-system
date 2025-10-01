@@ -1,6 +1,14 @@
-import { CategorySwitcher } from '@blms/ui';
-import useEmblaCarousel from 'embla-carousel-react';
-import { useCallback } from 'react';
+import {
+  Carousel,
+  type CarouselApi,
+  CarouselContent,
+  CarouselFadeEdges,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CategorySwitcher,
+} from '@blms/ui';
+import { useEffect, useMemo, useState } from 'react';
 
 interface ConferenceTimeLineProps {
   activeYear: string;
@@ -12,42 +20,56 @@ export const ConferencesTimeLine = ({
   setActiveYear,
 }: ConferenceTimeLineProps) => {
   const currentYear = new Date().getFullYear();
-  const years = Array.from(
-    { length: currentYear - 2008 },
-    (_v, i) => `${currentYear - i}`,
+  const years = useMemo(
+    () =>
+      Array.from(
+        { length: currentYear - 2008 },
+        (_v, i) => `${currentYear - i}`,
+      ),
+    [currentYear],
   );
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    containScroll: 'trimSnaps',
-    dragFree: true,
-    startIndex: years.indexOf(currentYear.toString()) - 1,
-  });
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const startIndex = Math.max(years.indexOf(currentYear.toString()) - 1, 0);
 
-  const scrollTo = useCallback(
-    (slideIndex: number) => {
-      if (emblaApi) emblaApi.scrollTo(slideIndex);
-    },
-    [emblaApi],
-  );
+  useEffect(() => {
+    if (!carouselApi) return;
+    const index = years.indexOf(activeYear);
+    if (index >= 0) carouselApi.scrollTo(index);
+  }, [activeYear, carouselApi, years]);
 
   return (
-    <div className="flex items-center w-full">
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-2">
-          {years.map((year, index) => (
+    <Carousel
+      className="w-full"
+      opts={{
+        startIndex,
+        containScroll: 'trimSnaps',
+        slidesToScroll: 5,
+        dragFree: true,
+        align: 'start',
+      }}
+      setApi={setCarouselApi}
+    >
+      <CarouselContent className="gap-2 px-5">
+        {years.map((year) => (
+          <CarouselItem key={year} className="basis-auto grow-0 shrink-0 pl-0">
             <CategorySwitcher
-              key={year}
               text={year}
               isActive={activeYear === year}
-              onClick={() => {
-                setActiveYear(year);
-                scrollTo(index);
-              }}
+              onClick={() => setActiveYear(year)}
               inactiveBackgroundColor="bg-neutral-50"
             />
-          ))}
-        </div>
-      </div>
-    </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      <CarouselPrevious
+        variant="primary"
+        rounded
+        className="z-10 max-md:hidden"
+      />
+      <CarouselNext variant="primary" rounded className="z-10 max-md:hidden" />
+      <CarouselFadeEdges />
+    </Carousel>
   );
 };

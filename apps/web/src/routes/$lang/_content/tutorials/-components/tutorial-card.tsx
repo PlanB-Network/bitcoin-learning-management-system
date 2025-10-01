@@ -1,144 +1,44 @@
 import type { JoinedTutorialLight } from '@blms/types';
-import { cn, Image, TextTag } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { MdThumbDown, MdThumbUp } from 'react-icons/md';
+import { TbChevronRight } from 'react-icons/tb';
 import { assetUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 
 export const TutorialCard = ({
   tutorial,
-  dark = false,
   addMargin,
 }: {
   tutorial: JoinedTutorialLight;
-  dark?: boolean;
   addMargin?: boolean;
 }) => {
   return (
     <Link
       to={`/tutorials/${tutorial.category}/${tutorial.subcategory}/${formatNameForURL(tutorial.name)}-${tutorial.id}`}
-      rel="noreferrer"
+      key={tutorial.id}
       className={cn(
-        'flex items-center w-full rounded-lg md:rounded-[20px] p-1.5 md:p-4 gap-2.5 md:gap-6 overflow-hidden',
-        dark
-          ? 'bg-maroon-10 text-white hover:shadow-sm-card-dark'
-          : 'bg-newGray-6 text-newBlack-3 md:shadow-course-navigation shadow-course-navigation-sm md:border hover:shadow-sm-card-light',
+        'w-full flex items-center justify-between p-2 hover:bg-neutral-50 rounded-2xl',
         addMargin && 'my-2',
       )}
     >
-      <Image
-        breakpoints={{ default: 60, md: 80 }}
-        src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
-        alt={tutorial.name}
-        className="size-15 md:size-20 rounded-full shrink-0"
-      />
-      <div className="flex flex-col overflow-hidden w-full">
-        <span
-          className={cn(
-            'max-md:mobile-subtitle1 capitalize text-xl font-semibold  md:mb-1 line-clamp-2',
-            dark ? 'text-white' : 'text-darkOrange-5',
-          )}
-        >
-          {tutorial.title}
-        </span>
-        <span
-          className={cn(
-            'text-xs font-light mb-2 max-md:hidden',
-            dark ? 'text-maroon-4' : 'text-newBlack-3',
-          )}
-        >
-          {tutorial.description}
-        </span>
-        <div className="md:hidden">
-          <span className="flex gap-1 md:gap-3 items-center my-1">
-            <span
-              className={cn(
-                'text-base md:label-large-20px',
-                dark ? 'text-white' : 'text-black',
-              )}
-            >
-              {tutorial.likeCount}
-            </span>
-            <span className="flex items-center">
-              <MdThumbUp className="text-green-400 size-[18px] lg:size-[21px]" />
-              <span
-                className={cn(
-                  'w-[70px] rounded-full h-2 mx-2 max-md:hidden',
-                  tutorial.likeCount === 0 &&
-                    tutorial.dislikeCount === 0 &&
-                    'bg-newGray-3',
-                )}
-                style={
-                  tutorial.likeCount > 0 || tutorial.dislikeCount > 0
-                    ? {
-                        background: `linear-gradient(to right, #19C315 ${(tutorial.likeCount / (tutorial.likeCount + tutorial.dislikeCount)) * 100}%, #FF0000 ${(tutorial.likeCount / (tutorial.likeCount + tutorial.dislikeCount)) * 100}%)`,
-                      }
-                    : {}
-                }
-              />
-              <div
-                className={`h-2 mx-3 w-px md:hidden ${dark ? 'bg-white' : 'bg-black'}`}
-              />
-              <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
-            </span>
-            <span
-              className={`text-${dark ? 'white' : 'black'} text-base md:label-large-20px`}
-            >
-              {tutorial.dislikeCount}
-            </span>
+      <div className="flex gap-6 items-center">
+        <Image
+          src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
+          alt={tutorial.name}
+          breakpoints={{ default: 48, md: 80 }}
+          loading="lazy"
+          className="object-cover [overflow-clip-margin:_unset] aspect-square rounded-lg md:rounded-2xl"
+        />
+        <div className="flex flex-col gap-2">
+          <span className="body-base-bold md:subtitle-base text-black">
+            {tutorial.title}
+          </span>
+          <span className="body-base text-newBlack-3 max-md:hidden line-clamp-2">
+            {tutorial.description}
           </span>
         </div>
-        <span className="flex gap-1.5 md:gap-4 w-full overflow-hidden">
-          {tutorial.tags.map((tag) => (
-            <TextTag
-              key={tag}
-              size="small"
-              variant={dark ? 'lightMaroon' : 'grey'}
-              mode={dark ? 'dark' : 'light100'}
-              className="text-nowrap"
-            >
-              {tag}
-            </TextTag>
-          ))}
-        </span>
       </div>
-      <span className="flex flex-col max-md:hidden w-fit min-w-[187px] ml-auto h-full justify-between items-end">
-        <span className="flex gap-1 md:gap-3 items-center my-1 mt-auto">
-          <span
-            className={`text-${dark ? 'white' : 'black'} text-base md:label-large-20px`}
-          >
-            {tutorial.likeCount}
-          </span>
-          <span className="flex items-center">
-            <MdThumbUp className="text-green-400 size-[18px] lg:size-[21px]" />
-            <span
-              className={cn(
-                'w-[70px] rounded-full h-2 mx-2 max-md:hidden',
-                tutorial.likeCount === 0 &&
-                  tutorial.dislikeCount === 0 &&
-                  'bg-newGray-3',
-              )}
-              style={
-                tutorial.likeCount > 0 || tutorial.dislikeCount > 0
-                  ? {
-                      background: `linear-gradient(to right, #19C315 ${(tutorial.likeCount / (tutorial.likeCount + tutorial.dislikeCount)) * 100}%, #ff0000 ${(tutorial.likeCount / (tutorial.likeCount + tutorial.dislikeCount)) * 100}%)`,
-                    }
-                  : {}
-              }
-            />
-
-            <div
-              className={`h-2 mx-3 w-px md:hidden ${dark ? 'bg-white' : 'bg-black'}`}
-            />
-            <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
-          </span>
-          <span
-            className={`text-${dark ? 'white' : 'black'} text-base md:label-large-20px`}
-          >
-            {tutorial.dislikeCount}
-          </span>
-        </span>
-      </span>
+      <TbChevronRight className="text-neutral-300 shrink-0" size={20} />
     </Link>
   );
 };

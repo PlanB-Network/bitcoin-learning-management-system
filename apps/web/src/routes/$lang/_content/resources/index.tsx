@@ -30,7 +30,7 @@ function Resources() {
               {t(`resources.${category.name}.title`)}
             </span>
           </div>
-          <TbChevronRight className="text-neutral-300" size={20} />
+          <TbChevronRight className="text-neutral-300 shrink-0" size={20} />
         </Link>
       ))}
     </PageLayout>
