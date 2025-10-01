@@ -14,8 +14,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { HiCheck } from 'react-icons/hi2';
 import { IoIosArrowForward } from 'react-icons/io';
+import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
@@ -790,7 +790,7 @@ function CourseChapter() {
                                   className="flex items-center gap-2.5 text-black "
                                   key={goal}
                                 >
-                                  <HiCheck className="shrink-0 size-[18px] lg:size-6" />
+                                  <TbCheck className="shrink-0 size-[18px] lg:size-6" />
                                   <span className="body-14px lg:label-large-20px">
                                     {capitalizeFirstWord(goal)}
                                   </span>

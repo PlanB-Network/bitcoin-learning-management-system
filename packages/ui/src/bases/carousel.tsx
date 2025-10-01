@@ -2,7 +2,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
 import * as React from 'react';
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { TbChevronLeft, TbChevronRight } from 'react-icons/tb';
 import { cn } from '#src/index.ts';
 import { Button } from './button.tsx';
 
@@ -218,7 +218,7 @@ const CarouselPrevious = React.forwardRef<
         onClick={scrollPrev}
         {...props}
       >
-        <RiArrowLeftSLine />
+        <TbChevronLeft />
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -253,7 +253,7 @@ const CarouselNext = React.forwardRef<
         onClick={scrollNext}
         {...props}
       >
-        <RiArrowRightSLine />
+        <TbChevronRight />
         <span className="sr-only">Next slide</span>
       </Button>
     );

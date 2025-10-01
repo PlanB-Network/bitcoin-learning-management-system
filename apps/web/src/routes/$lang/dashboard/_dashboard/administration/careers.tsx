@@ -10,9 +10,8 @@ import { createFileRoute } from '@tanstack/react-router';
 import DOMPurify from 'dompurify';
 import { type TFunction, t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
-import { HiOutlineDownload } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { TbArrowsSort } from 'react-icons/tb';
+import { TbArrowsSort, TbDownload } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -200,7 +199,7 @@ function AdminCareers() {
                 }}
               >
                 {t('dashboard.adminPanel.careers.downloadSpreadsheet')}
-                <HiOutlineDownload className="ml-2" size={24} />
+                <TbDownload className="ml-2" size={24} />
               </Button>
               <span className="body-14px md:subtitle-medium-16px text-newBlack-2">
                 {t('dashboard.adminPanel.careers.lastUpdated')}:{' '}

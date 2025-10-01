@@ -1,7 +1,7 @@
 import { LANGUAGES_MAP } from '@blms/shared';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiOutlineViewGrid } from 'react-icons/hi';
+import { TbLayoutGrid } from 'react-icons/tb';
 import CrossIcon from '#src/assets/icons/cross_red.svg';
 import ProfileIcon from '#src/assets/icons/groups.svg';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
@@ -220,7 +220,7 @@ export const ContributorAssignmentModal = ({
         title={t(
           'dashboard.adminPanel.translationPanel.addContributor.assignmentSuccess',
         )}
-        icon={<HiOutlineViewGrid />}
+        icon={<TbLayoutGrid />}
         maxWidth="max-w-2xl"
         actions={
           <button
@@ -242,7 +242,7 @@ export const ContributorAssignmentModal = ({
       isOpen={isOpen}
       onClose={handleClose}
       title={t('dashboard.adminPanel.translationPanel.addContributor.title')}
-      icon={<HiOutlineViewGrid />}
+      icon={<TbLayoutGrid />}
       errorMessage={errorMessage}
       maxWidth="max-w-2xl"
       actions={

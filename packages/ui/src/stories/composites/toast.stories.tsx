@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import {
-  RiCheckLine,
-  RiErrorWarningLine,
-  RiInformationLine,
-} from 'react-icons/ri';
+import { TbCheck, TbExclamationCircle, TbInfoCircle } from 'react-icons/tb';
 import { Button } from '../../bases/button.tsx';
 import { customToast, ToastContainer } from '../../bases/toast.tsx';
 
@@ -53,7 +49,7 @@ export const Default: Story = {
           onClick={() =>
             customToast('This is a warning toast!', {
               color: 'warning',
-              icon: RiErrorWarningLine,
+              icon: TbExclamationCircle,
             })
           }
         >
@@ -64,7 +60,7 @@ export const Default: Story = {
           onClick={() =>
             customToast('Operation successful!', {
               color: 'success',
-              icon: RiCheckLine,
+              icon: TbCheck,
             })
           }
         >
@@ -75,7 +71,7 @@ export const Default: Story = {
           onClick={() =>
             customToast('A neutral informational message.', {
               color: 'neutral',
-              icon: RiInformationLine,
+              icon: TbInfoCircle,
             })
           }
         >
@@ -99,7 +95,7 @@ export const Default: Story = {
             onClick={() =>
               customToast('This is a dark mode warning toast!', {
                 color: 'warning',
-                icon: RiErrorWarningLine,
+                icon: TbExclamationCircle,
                 mode: 'dark',
               })
             }
@@ -112,7 +108,7 @@ export const Default: Story = {
             onClick={() =>
               customToast('Dark mode operation successful!', {
                 color: 'success',
-                icon: RiCheckLine,
+                icon: TbCheck,
                 mode: 'dark',
               })
             }
@@ -125,7 +121,7 @@ export const Default: Story = {
             onClick={() =>
               customToast('Dark mode informational message.', {
                 color: 'neutral',
-                icon: RiInformationLine,
+                icon: TbInfoCircle,
                 mode: 'dark',
               })
             }

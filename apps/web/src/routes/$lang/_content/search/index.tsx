@@ -3,8 +3,8 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { lazy, Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
+import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import SearchErrorIcon from '#src/assets/icons/search-error.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -167,7 +167,7 @@ function SearchPage() {
                       variant="ghost"
                       onClick={() => setFiltersOpen(!filtersOpen)}
                     >
-                      <HiOutlineAdjustmentsHorizontal className="size-6 stroke-[1.5]" />
+                      <TbAdjustmentsHorizontal className="size-6 stroke-[1.5]" />
 
                       <p className={cn(filtersOpen && 'underline')}>
                         {t('search.filterByType')}

@@ -30,9 +30,9 @@ import {
 import type { IconType } from 'react-icons/lib';
 import { LuCircleAlert, LuGripVertical } from 'react-icons/lu';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
-import { RiArrowGoBackFill } from 'react-icons/ri';
 import {
   TbAlertOctagon,
+  TbArrowBackUp,
   TbBook2,
   TbBuildingSkyscraper,
   TbCalendar,
@@ -974,7 +974,7 @@ const ConfirmSubmissionDialog = ({
             size={isMobile ? 'm' : 'l'}
             className="w-fit"
           >
-            {t('courses.exam.goBack')} <RiArrowGoBackFill className="ml-2.5" />
+            {t('courses.exam.goBack')} <TbArrowBackUp className="ml-2.5" />
           </Button>
         </DialogClose>
       </div>

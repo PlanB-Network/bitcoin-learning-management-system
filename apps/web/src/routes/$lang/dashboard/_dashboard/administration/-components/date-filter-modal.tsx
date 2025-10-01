@@ -9,7 +9,7 @@ import {
 } from '@blms/ui';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiOutlineDownload } from 'react-icons/hi';
+import { TbDownload } from 'react-icons/tb';
 import XLSX from 'xlsx';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
 
@@ -142,7 +142,7 @@ export const DateFilterModal = ({
             className="flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white"
           >
             {t('dashboard.adminPanel.translationPanel.reports.downloadData')}
-            <HiOutlineDownload className="w-4 h-4" />
+            <TbDownload className="w-4 h-4" />
           </Button>
         </>
       }

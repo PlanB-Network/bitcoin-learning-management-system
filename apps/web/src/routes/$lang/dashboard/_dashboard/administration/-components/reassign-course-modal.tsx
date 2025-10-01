@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiExclamation, HiOutlineViewGrid } from 'react-icons/hi';
-
+import { TbAlertTriangleFilled, TbLayoutGrid } from 'react-icons/tb';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 
@@ -83,7 +82,7 @@ export const ReassignCourseModal = ({
         title={t(
           'dashboard.adminPanel.translationPanel.contentManagement.reassignModal.reassignmentSuccess',
         )}
-        icon={<HiOutlineViewGrid />}
+        icon={<TbLayoutGrid />}
         actions={
           <button
             type="button"
@@ -106,7 +105,7 @@ export const ReassignCourseModal = ({
       title={t(
         'dashboard.adminPanel.translationPanel.contentManagement.reassignModal.title',
       )}
-      icon={<HiOutlineViewGrid />}
+      icon={<TbLayoutGrid />}
       errorMessage={errorMessage}
       actions={
         <>
@@ -191,7 +190,7 @@ export const ReassignCourseModal = ({
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
           <div className="flex">
             <div className="flex-shrink-0">
-              <HiExclamation className="h-5 w-5 text-yellow-400" />
+              <TbAlertTriangleFilled className="h-5 w-5 text-yellow-400" />
             </div>
             <div className="ml-3">
               <h3 className="text-sm font-medium text-yellow-800">

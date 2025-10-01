@@ -39,8 +39,6 @@ import {
   TbPresentation,
   TbTools,
 } from 'react-icons/tb';
-// import { CiShare2 } from 'react-icons/ci';
-// import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { customEventGetter } from '#src/components/Calendar/custom-event-getter.js';
 import { CustomEventMonth } from '#src/components/Calendar/custom-event-month.tsx';

@@ -2,8 +2,7 @@ import type { CourseWithTodoTranslations } from '@blms/types';
 import { cn, customToast, Input, Loader } from '@blms/ui';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiOutlineTranslate } from 'react-icons/hi';
-
+import { TbLanguage } from 'react-icons/tb';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 
@@ -441,7 +440,7 @@ export const SelectLanguagesModal = ({
     <CommonModal
       isOpen={isOpen}
       onClose={handleClose}
-      icon={<HiOutlineTranslate className="text-2xl text-orange-500" />}
+      icon={<TbLanguage className="text-2xl text-orange-500" />}
       title={t(
         'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.title',
       )}

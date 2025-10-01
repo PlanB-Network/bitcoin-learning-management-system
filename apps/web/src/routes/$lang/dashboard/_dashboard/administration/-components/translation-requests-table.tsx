@@ -10,7 +10,7 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { HiOutlineChatAlt2, HiOutlineViewGrid } from 'react-icons/hi';
+import { TbLayoutGrid, TbMessages } from 'react-icons/tb';
 // Import the correct logo asset
 import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
 import { getLanguageName } from '#src/utils/i18n.ts';
@@ -491,7 +491,7 @@ export const TranslationRequestsTable = ({
                   </h2>
 
                   <div className="text-orange-500 text-4xl mb-6">
-                    <HiOutlineViewGrid />
+                    <TbLayoutGrid />
                   </div>
 
                   <button
@@ -511,7 +511,7 @@ export const TranslationRequestsTable = ({
                   </h2>
 
                   <div className="text-orange-500 text-4xl mb-6">
-                    <HiOutlineViewGrid />
+                    <TbLayoutGrid />
                   </div>
 
                   {/* Error message */}
@@ -582,7 +582,7 @@ export const TranslationRequestsTable = ({
                   </h2>
 
                   <div className="text-orange-500 text-4xl mb-6">
-                    <HiOutlineChatAlt2 />
+                    <TbMessages />
                   </div>
 
                   <button
@@ -602,7 +602,7 @@ export const TranslationRequestsTable = ({
                   </h2>
 
                   <div className="text-orange-500 text-4xl mb-6">
-                    <HiOutlineChatAlt2 />
+                    <TbMessages />
                   </div>
 
                   {/* Error message */}
@@ -701,7 +701,7 @@ export const TranslationRequestsTable = ({
               </h2>
 
               <div className="text-orange-500 text-4xl mb-6">
-                <HiOutlineChatAlt2 />
+                <TbMessages />
               </div>
 
               <button

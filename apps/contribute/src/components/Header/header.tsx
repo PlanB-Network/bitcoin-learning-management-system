@@ -3,8 +3,7 @@ import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LuMessageSquareMore } from 'react-icons/lu';
 import { MdOutlineSchool, MdPeopleAlt } from 'react-icons/md';
-import { RiFlaskLine } from 'react-icons/ri';
-import { TbWorld } from 'react-icons/tb';
+import { TbFlask, TbWorld } from 'react-icons/tb';
 import miningSvg from '#src/assets/courses/mining.svg';
 import bitcoinSvg from '#src/assets/icons/bitcoin.svg';
 import businessSvg from '#src/assets/icons/business.svg';
@@ -357,7 +356,7 @@ export const Header = ({
           title: t('labs.planBLabs'),
           description: t('menu.planBLabsDescription'),
           path: '/plan-b-labs',
-          icon: <RiFlaskLine size={20} className="shrink-0" />,
+          icon: <TbFlask size={20} className="shrink-0" />,
         },
         {
           id: 'public-release',

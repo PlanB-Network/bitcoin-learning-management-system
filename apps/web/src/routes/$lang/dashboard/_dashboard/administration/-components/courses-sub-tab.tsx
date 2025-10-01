@@ -12,7 +12,7 @@ import {
   TableRow,
 } from '@blms/ui';
 import { useMemo, useState } from 'react';
-import { HiOutlineDownload } from 'react-icons/hi';
+import { TbDownload } from 'react-icons/tb';
 import XLSX from 'xlsx';
 import FilterIcon from '#src/assets/translation/filter_orange.svg';
 import {
@@ -147,7 +147,7 @@ export const CoursesSubTab = ({
               onClick={downloadGeneralReport}
             >
               {t('dashboard.adminPanel.translationPanel.reports.generalReport')}
-              <HiOutlineDownload className="w-4 h-4 ml-1" />
+              <TbDownload className="w-4 h-4 ml-1" />
             </Button>
           </div>
         </div>

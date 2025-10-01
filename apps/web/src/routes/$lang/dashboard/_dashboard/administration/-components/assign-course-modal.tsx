@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiOutlineViewGrid } from 'react-icons/hi';
-
+import { TbLayoutGrid } from 'react-icons/tb';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
 import { trpcClient } from '#src/utils/trpc.js';
 
@@ -84,7 +83,7 @@ export const AssignCourseModal = ({
         title={t(
           'dashboard.adminPanel.translationPanel.contentManagement.assignModal.assignmentSuccess',
         )}
-        icon={<HiOutlineViewGrid />}
+        icon={<TbLayoutGrid />}
         actions={
           <button
             type="button"
@@ -107,7 +106,7 @@ export const AssignCourseModal = ({
       title={t(
         'dashboard.adminPanel.translationPanel.contentManagement.assignModal.title',
       )}
-      icon={<HiOutlineViewGrid />}
+      icon={<TbLayoutGrid />}
       errorMessage={errorMessage}
       actions={
         <>
