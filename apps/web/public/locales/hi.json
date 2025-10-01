@@ -424,7 +424,12 @@
     "noCoursesFound": "कोई पाठ्यक्रम नहीं मिला। अपने फ़िल्टर को बदलने का प्रयास करें।",
     "plusXMore": "+{{count}} अधिक",
     "selectATopic": "एक विषय चुनें",
-    "tryAdjustingFilters": "अपने फ़िल्टर में बदलाव करने की कोशिश करें"
+    "tryAdjustingFilters": "अपने फ़िल्टर में बदलाव करने की कोशिश करें",
+    "learnAnytime": {
+      "allOtherTitle": "अन्य सभी लाइव कक्षाएं",
+      "secondaryTitle": "बिटकॉइन-केंद्रित कंपनियों में रोजगार योग्य बनें।",
+      "title": "प्लान ₿ आधिकारिक वार्षिक कार्यक्रम"
+    }
   },
   "dashboard": {
     "account": "खाता",
@@ -1151,7 +1156,7 @@
       "rankingOnly24Hours": "रैंकिंग पोर्टल केवल 24 घंटे के लिए, जून 2 को 00:00 से 23:59 (यूटीसी+2) तक खुला रहेगा।",
       "rankProjectPreferences": "अपनी परियोजना प्राथमिकताओं को श्रेणिगत करें",
       "ratingsAndFeedbacks": "मूल्यांकन और प्रतिक्रियाएं",
-      "readAssignment": "कार्यभार पढ़ें",
+      "readAssignment": "कार्यभार के बारे में अधिक पढ़ें",
       "saveList": "सूची सुरक्षित करें",
       "shareOnSocials": "सोशल्स पर साझा करें:",
       "submissionInstructions": "जमा करने के निर्देश",
@@ -1160,7 +1165,7 @@
       "submitReviewInfo": "इस सुविधा का उपयोग करने के लिए आपको एक समीक्षा जमा करनी होगी।",
       "submitYourWork": "अपना काम जमा करें",
       "summerSchool": "ग्रीष्मकालीन विद्यालय",
-      "surePreferenceList": "क्या आप निश्चित हैं कि आपकी पसंद की सूची में अब कोई बदलाव नहीं होगा?",
+      "surePreferenceList": "क्या आप निश्चित हैं कि आपकी प्राथमिकता की सूची में अब कोई बदलाव नहीं होगा?",
       "thresholdToPass": "उत्तीर्ण होने की सीमा: {{threshold}}%",
       "tweetText": "@planb_network\" पर {{courseIndex}} पाठ्यक्रम पूरा करके और अंतिम परीक्षा में {{score}}/100 अंक के साथ डिप्लोमा प्राप्त कर बेहद उत्साहित हूँ! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "viewFinalGrade": "अंतिम प्राप्तांक देखें",
@@ -2249,7 +2254,9 @@
     },
     "translationPanel": "अनुवाद पैनल",
     "tutorials": "मार्गदर्शिका",
-    "userRolesAllocation": "उपयोगकर्ता भूमिकाओं का वितरण"
+    "userRolesAllocation": "उपयोगकर्ता भूमिकाओं का वितरण",
+    "liveClassesDescription": "शिक्षक-निर्देशित पाठ्यक्रम",
+    "liveClassesTitle": "लाइव कक्षाएं"
   },
   "videoSelector": {
     "language": {

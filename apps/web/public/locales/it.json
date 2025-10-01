@@ -39,7 +39,7 @@
     "confirmation": "Conferma",
     "createAccount": "Registrati",
     "createOne": "Registrati qui!",
-    "dashboardUnlocked": "La tua bacheca studente è sbloccata!",
+    "dashboardUnlocked": "La tua dashboard studente è sbloccata!",
     "didYouKnow": "Lo sapevi?",
     "displayName": "Nome visualizzato",
     "emailAddress": "Indirizzo e-mail",
@@ -197,7 +197,7 @@
       "buyOnlineCourse": "Acquista corso online",
       "collaborativeEffort": "Questo corso è il risultato di una collaborazione di intenti: ogni lezione, traduzione e revisione è resa possibile dal lavoro di diversi collaboratori. Per questo motivo, siamo sempre alla ricerca di correttori di bozze che possano rivedere i nostri contenuti in molte lingue. Se vuoi partecipare al processo di correzione, scrivici nel nostro gruppo Telegram e leggi il nostro tutorial.\n\nTi ricordiamo che questo contenuto è open-source - concesso con la licenza <0>CC BY-SA</0> - quindi può essere liberamente condiviso e utilizzato, purché la fonte originale venga citata.\n\nUn ringraziamento speciale per il loro lavoro su questo corso va ai seguenti proofreader: ",
       "coordinatedBy": "Questo corso è coordinato da",
-      "courseAddedToDashboard": "Questo corso è stato aggiunto al tuo pannello studente",
+      "courseAddedToDashboard": "Questo corso è stato aggiunto alla tua dashboard",
       "curriculum": "Curriculum",
       "description": "Descrizione",
       "hasBeenProofreadBy": "Questo corso è stato revisionato da",
@@ -223,7 +223,7 @@
     },
     "exam": {
       "answersReview": "Revisione delle risposte",
-      "availableDashboard": "Sarà disponibile nel tuo pannello studente tra circa 10 ore.",
+      "availableDashboard": "Sarà disponibile nella tua dashboard tra circa 10 ore.",
       "availableDashboardTimestamped": "Il tuo certificato è disponibile nella tua dashboard..",
       "bCertCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ricevuto il certificato del ₿-CERT.",
       "buttonTextBCert": "Ulteriori informazioni",
@@ -292,9 +292,9 @@
       "solidEffort": "Congratulazioni per il tuo impegno nel completare il corso. \nAnche se non hai superato l'esame, ogni passo rappresenta i tuoi progressi. \nContinua ad avanzare nel tuo percorso di apprendimento!",
       "startExam": "Inizia l'esame",
       "submit": "Invia",
-      "successDiploma": "Congratulazioni! Hai superato l'esame con successo. \nIl tuo certificato è disponibile nel tuo pannello studenti. È stato <0>timbrato</0> per garantirne l'autenticità.",
-      "successDiplomaTeacherLed": "Congratulazioni! Hai superato il corso con successo.\nIl tuo diploma è ora disponibile nel tuo pannello studenti.",
-      "successDiplomaTimeStamped": "Congratulazioni! Hai superato l'esame con successo.\nIl tuo diploma sarà disponibile nel tuo pannello studenti circa 10 ore dopo aver sostenuto l'esame. Questo ritardo è dovuto alla tecnologia di <0>timestamp</0>, che ne garantisce l'autenticità.",
+      "successDiploma": "Congratulazioni! Hai superato l'esame con successo. \nIl tuo certificato è disponibile nella tua dashboard. È stato <0>timbrato</0> per garantirne l'autenticità.",
+      "successDiplomaTeacherLed": "Congratulazioni! Hai superato il corso con successo.\nIl tuo diploma è ora disponibile nella tua dashboard.",
+      "successDiplomaTimeStamped": "Congratulazioni! Hai superato l'esame con successo.\nIl tuo diploma sarà disponibile nella tua dashboard circa 10 ore dopo aver sostenuto l'esame. Questo ritardo è dovuto alla tecnologia di <0>timestamp</0>, che ne garantisce l'autenticità.",
       "successfulPassedThreshold": "Congratulazioni per aver completato il corso.\nHai superato con successo la soglia di approvazione per questo corso e ora sei diplomato.\nPuoi trovare il diploma nella tua dashboard.",
       "sureSubmit": "Sei sicuro di inviare il tuo esame?",
       "takeExam": "Fai l'esame",
@@ -424,7 +424,12 @@
     "noCoursesFound": "Nessun corso trovato. Prova a modificare i tuoi filtri.",
     "plusXMore": "+ altri {{count}}",
     "selectATopic": "Scegli un argomento",
-    "tryAdjustingFilters": "Prova a modificare i tuoi filtri"
+    "tryAdjustingFilters": "Prova a modificare i tuoi filtri",
+    "learnAnytime": {
+      "allOtherTitle": "Tutte le altre lezioni dal vivo",
+      "secondaryTitle": "Diventa un candidato ideale le aziende focalizzate su Bitcoin.",
+      "title": "Programma annuale ufficiale di Plan ₿"
+    }
   },
   "dashboard": {
     "account": "Account",
@@ -539,7 +544,7 @@
       "upcomingBookings": "Prenotazioni in arrivo",
       "upcomingBookingsSubtitle": "Qui puoi scaricare l'elenco dei partecipanti per tutti gli eventi dal vivo.",
       "userRolesAllocation": "Assegnazione dei ruoli utente",
-      "translation": "Pannello delle traduzioni",
+      "translation": "Dashboard delle traduzioni",
       "translationPanel": {
         "actions": {
           "accept": "Accetta",
@@ -745,7 +750,7 @@
           "translate": "Traduci",
           "userManagement": "User management"
         },
-        "title": "Pannello delle traduzioni",
+        "title": "Dashboard delle traduzioni",
         "toggle": {
           "pendingRequest": "Richiesta in sospeso",
           "rejectedRequests": "Richieste declinate"
@@ -932,7 +937,7 @@
       "availability": "La tua disponibilità",
       "availabilityStart": "Quando puoi iniziare?",
       "availabilityStartPlaceholder": "Data",
-      "beAware": "Siate consapevoli che Plan ₿ Network raccoglierà e conserverà i vostri dati solo per scopi di reclutamento. I dati vengono elaborati e condivisi con i nostri partner commerciali in conformità con le disposizioni del Regolamento Generale sulla Protezione dei Dati dell'UE (GDPR). Clicca <0>qui</0> per saperne di più sulla nostra Informativa sulla Privacy dei Candidati.",
+      "beAware": "Plan ₿ Network raccoglierà e conserverà i vostri dati solo per scopi di reclutamento. I dati vengono elaborati e condivisi con i nostri partner commerciali in conformità con le disposizioni del Regolamento Generale sulla Protezione dei Dati dell'UE (GDPR). Clicca <0>qui</0> per sapere di più sulla nostra Informativa sulla Privacy dei Candidati.",
       "bitcoinCommunityParticipant": "Fai parte di una comunità Bitcoin?",
       "bitcoinCommunityText": "Se sì, quale, e in che modo ne sei coinvolto?\nQuesta comunità fa parte della rete di Plan ₿ Network?",
       "bitcoinProjectParticipant": "Hai contribuito attivamente a qualche progetto Bitcoin? \n(in passato o attualmente)",
@@ -974,7 +979,7 @@
       "fileUploadError": "Si è verificato un errore durante il caricamento del tuo file. Per favore, riprova.",
       "fileUploaded": "CV caricato con successo!",
       "firstName": "Nome (o pseudonimo)",
-      "followProcess": "Segui questo processo passo dopo passo per inviare il tuo CV e le esperienze lavorative.",
+      "followProcess": "Segui questo processo passo dopo passo per inviare il tuo CV e inserire le tue esperienze di lavoro.",
       "fullTime": "A tempo pieno",
       "invalidFile": "Formato file non valido",
       "jobCategories": {
@@ -1145,29 +1150,33 @@
       "notSelectedAssignment": "Purtroppo, non sei stato selezionato per partecipare alla fase del Project Assignment. \nPuoi comunque continuare a seguire le lezioni del corso.",
       "planbSchoolExamDescription": "Il programma della Plan ₿ Biz School 2025 si compone di due fasi. Nella prima fase, sosterrai due esami online, precisamente quello intermedio e quello finale: si tratta di test cronometrati che prevedono un tentativo unico, e che puoi completare in qualsiasi momento durante un periodo di disponibilità di tre giorni. Dopo la prima fase, gli studenti saranno selezionati in base al loro punteggio per passare alla seconda fase, che prevede l'assegnazione di un progetto: un compito individuale ideato da un'azienda Bitcoin. Puoi trovare ulteriori dettagli a riguardo nella scheda Assignment.\n\nIl voto finale verrà calcolato come media ponderata dei tre test. Gli studenti che raggiungeranno un punteggio superiore all'80% riceveranno un diploma: tra questi, gli studenti con il punteggio più alto avranno anche la possibilità di partecipare alla Summer School di Lugano a luglio.",
       "planbSchoolGeneralInformation": "Il programma della Plan ₿ Biz School 2025 si compone di due fasi. Nella prima fase, sosterrai due esami online, precisamente quello intermedio e quello finale: si tratta di test cronometrati che prevedono un tentativo unico, e che puoi completare in qualsiasi momento durante un periodo di disponibilità di tre giorni. Dopo la prima fase, gli studenti saranno selezionati in base al loro punteggio per passare alla seconda fase, che prevede l'assegnazione di un progetto: un compito individuale ideato da un'azienda Bitcoin. Puoi trovare ulteriori dettagli a riguardo nella scheda Assignment.\n\nIl voto finale verrà calcolato come media ponderata dei tre test. Gli studenti che raggiungeranno un punteggio superiore a {{threshold}}% riceveranno un diploma: tra questi, gli studenti con il punteggio più alto avranno anche la possibilità di partecipare alla Summer School di Lugano a luglio.",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "projectRankingInstructions": "Istruzioni per classificare i progetti:",
+      "ranking": "Classifica",
+      "rankingInstructions": "Ordina i progetti proposti in base alle tue preferenze (il numero 1 è la tua scelta principale): questa classificazione ci consentirà di assegnare il progetto più adatto a te. La selezione degli studenti con i punteggi più alti verrà considerata per prima.",
+      "rankingOnly24Hours": "Il portale con i punteggi rimarrà aperto solo per 24 ore, il 2 giugno dalle 00:00 alle 23:59 (UTC+2).",
+      "rankProjectPreferences": "Elenca i tuoi progetti preferiti",
       "ratingsAndFeedbacks": "Valutazioni e feedback",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "Leggi di più sul progetto",
+      "saveList": "Salva lista",
       "shareOnSocials": "Condividi sui social:",
-      "submissionInstructions": "",
-      "submitBefore": "",
-      "submitFileNamingFormat": "",
+      "submissionInstructions": "Istruzioni per il caricamento",
+      "submitBefore": "Devi consegnare il tuo lavoro entro il {{date}} alle {{hour}}. I progetti ricevuti dopo questa scadenza non saranno valutati.",
+      "submitFileNamingFormat": "Il tuo file deve essere nominato usando il seguente formato:\n<0>nomeazienda_nomeutente.pdf</0>.\nRimuovi tutti gli spazi dal nome dell'azienda, inserisci il tuo nome utente usato sulla piattaforma planB.network e controlla gli errori di battitura.",
       "submitReviewInfo": "Devi completare l'esame per avere accesso a questa funzione.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
+      "submitYourWork": "Invia il tuo progetto",
+      "summerSchool": "Summer School",
+      "surePreferenceList": "Sei sicuro della tua lista di preferenze?",
+      "thresholdToPass": "Soglia di superamento: {{threshold}}%",
       "tweetText": "Felice di aver completato il corso {{courseIndex}} su @planb_network e aver ottenuto la certificazione con un punteggio di {{score}}/100 all'esame finale! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
-      "yourProject": "",
+      "viewFinalGrade": "Visualizza voto finale",
+      "yourProject": "Il tuo progetto",
       "assignmentNotAccessible": "La fase del progetto è già iniziata e non è più accessibile.",
       "assignmentScore": "Punteggio del progetto",
-      "gaveSolidEffort": "Ci hai provato!"
+      "gaveSolidEffort": "Ci hai provato!",
+      "tweetTextCourseDiploma": "Felice di aver completato il corso {{courseName}}, tenuto da {{courseCoordinator}} su @planb_network e di aver ottenuto il mio diploma!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Visualizza il riassunto dei punteggi",
+      "wellDoneCompleting": "Complimenti per aver completato e superato questo corso!\nEcco il tuo ben meritato diploma",
+      "yourProjectAssignment": "Il tuo progetto"
     },
     "courses": "Corsi",
     "credentials": {
@@ -1182,10 +1191,16 @@
       "retakeExam": "Ripeti l'esame",
       "seatBooked": "Il tuo posto alla sessione d'esame è prenotato",
       "takePlaceAt": "La sessione si svolgerà a",
-      "yourCertificate": "Il tuo certificato"
+      "yourCertificate": "Il tuo certificato",
+      "completeACourse": "Completa un corso per ottenere il tuo primo diploma!",
+      "exploreBCert": "Esplora il ₿-CERT",
+      "exploreCourses": "Esplora i corsi",
+      "getGlobalRecognition": "Ottieni un riconoscimento globale con un certificato ₿-CERT",
+      "noCertificatesAvailable": "Nessun certificato disponibile",
+      "noDiplomasAvailable": "Nessun diploma disponibile al momento"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "Vai alla dashboard",
+    "goToHomepage": "Vai alla homepage",
     "logout": "Disconnetti",
     "myCourses": {
       "completeAll": "Completa tutto",
@@ -1258,7 +1273,7 @@
       "settings": "",
       "username": "Nome utente"
     },
-    "studentDashboard": "Pannello dello studente",
+    "studentDashboard": "Dashboard dello studente",
     "teacher": {
       "courses": {
         "allStudents": "",
@@ -1358,6 +1373,15 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Qui puoi trovare dei dati sui tutorial che hai creato e pubblicato sulla piattaforma.",
         "yourTutorials": "I tuoi tutorial"
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "hasGraduated": "ha ottenuto il diploma con un punteggio del {{score}}%",
+          "hasLeftReview": "ha lasciato una recensione",
+          "hasLeftReviewAndComment": "ha lasciato una recensione e un commento"
+        }
       }
     }
   },
