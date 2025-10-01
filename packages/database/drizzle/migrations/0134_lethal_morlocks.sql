@@ -1,0 +1,1 @@
+ALTER TABLE "content"."courses" ADD COLUMN "address_line_1" varchar(100);

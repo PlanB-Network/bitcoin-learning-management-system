@@ -100,6 +100,7 @@ export const joinedCourseChapterSchema = courseChapterLocalizedSchema
 
 export const minimalJoinedCourseSchema = courseSchema
   .pick({
+    addressLine1: true,
     assignmentWeight: true,
     availableSeats: true,
     contact: true,

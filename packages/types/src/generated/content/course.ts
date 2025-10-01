@@ -5,6 +5,7 @@ import type { CourseLevel, TeachingFormat } from '@blms/constants';
 import type { FormattedProfessor } from './professor.js';
 
 export interface Course {
+  addressLine1: string | null;
   areScoresCalculated: boolean;
   assignmentDescription: string | null;
   assignmentEndDate: Date | null;
@@ -175,6 +176,7 @@ export interface JoinedCourseChapter {
 }
 
 export interface MinimalJoinedCourse {
+  addressLine1: string | null;
   assignmentWeight: number | null;
   availableSeats: number | null;
   contact: string | null;
@@ -226,6 +228,7 @@ export interface MinimalJoinedCourse {
 }
 
 export interface JoinedCourseProfessorId {
+  addressLine1: string | null;
   assignmentWeight: number | null;
   availableSeats: number | null;
   contact: string | null;
@@ -279,6 +282,7 @@ export interface JoinedCourseProfessorId {
 }
 
 export interface JoinedCourse {
+  addressLine1: string | null;
   assignmentWeight: number | null;
   availableSeats: number | null;
   contact: string | null;
@@ -377,6 +381,7 @@ export interface PartWithChapters {
 }
 
 export interface CourseResponse {
+  addressLine1: string | null;
   assignmentWeight: number | null;
   availableSeats: number | null;
   contact: string | null;

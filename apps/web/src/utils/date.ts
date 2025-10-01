@@ -168,8 +168,8 @@ export function formatTimeRange(
 }
 
 export function formatShortDateRange(
-  from: Date | string | number | undefined,
-  to: Date | string | number | undefined,
+  from: Date | string | number | undefined | null,
+  to: Date | string | number | undefined | null,
   timezone?: string,
   locale = getEffectiveLocale(),
 ): string {

@@ -56,6 +56,7 @@ interface CourseMain {
   format: string;
   teaching_format: string;
   type: string;
+  address_city_country: string;
   online_price_dollars?: number;
   inperson_price_dollars?: number;
   paid_description?: string;
@@ -452,6 +453,7 @@ export const createUpdateCourses = ({
                    format,
                    teaching_format,
                    type,
+                   address_line_1,
                    online_price_dollars,
                    inperson_price_dollars,
                    paid_description,
@@ -492,6 +494,7 @@ export const createUpdateCourses = ({
                   ${parsedCourse.format},
                   ${parsedCourse.teaching_format},
                   ${parsedCourse.type},
+                  ${parsedCourse.address_city_country},
                   ${parsedCourse.online_price_dollars},
                   ${parsedCourse.inperson_price_dollars},
                   ${parsedCourse.paid_description},
@@ -531,6 +534,7 @@ export const createUpdateCourses = ({
                   format = EXCLUDED.format,
                   teaching_format = EXCLUDED.teaching_format,
                   type = EXCLUDED.type,
+                  address_line_1 = EXCLUDED.address_line_1,
                   online_price_dollars = EXCLUDED.online_price_dollars,
                   inperson_price_dollars = EXCLUDED.inperson_price_dollars,
                   paid_description = EXCLUDED.paid_description,
@@ -771,8 +775,8 @@ export const createUpdateCourses = ({
             const courseInfo = await transaction<
               { original_language: string }[]
             >`
-              SELECT original_language 
-              FROM content.courses 
+              SELECT original_language
+              FROM content.courses
               WHERE id = ${courseId}
             `.then(firstRow);
 

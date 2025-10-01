@@ -258,7 +258,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               isSidebarOpen={isSidebarOpen}
               isMain
             />
-            {/* <SideBarItem
+            <SideBarItem
               icon={BookOpen}
               iconColor="green"
               label={t('navbar.liveClassesTitle')}
@@ -267,7 +267,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               isActive={window.location.pathname.includes('/live-classes')}
               isSidebarOpen={isSidebarOpen}
               isMain
-            /> */}
+            />
           </div>
           {isLoggedIn && (
             <>
