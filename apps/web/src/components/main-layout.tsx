@@ -348,46 +348,30 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
       )}
 
       {currentTab === 'teach' && (
-        <>
-          <div className="flex flex-col gap-1">
-            <SideBarItem
-              icon={BookOpen}
-              iconColor="orange"
-              label={t('navbar.manageCourses')}
-              link="/dashboard/professor/courses"
-              isActive={window.location.pathname.includes(
-                '/dashboard/professor/courses',
-              )}
-              isSidebarOpen={isSidebarOpen}
-              isMain
-            />
-            <SideBarItem
-              icon={Target}
-              iconColor="green"
-              label={t('navbar.analytics')}
-              link="/dashboard/professor/tutorials"
-              isActive={window.location.pathname.includes(
-                '/dashboard/professor/tutorials',
-              )}
-              isSidebarOpen={isSidebarOpen}
-              isMain
-            />
-          </div>
-          <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-          <div className="flex flex-col gap-1">
-            <SideBarItem
-              icon={PeopleFrame}
-              iconColor="yellow"
-              label={'TEMP - Teacher profile'}
-              link="/dashboard/professor/profile"
-              isActive={window.location.pathname.includes(
-                '/dashboard/professor/profile',
-              )}
-              isSidebarOpen={isSidebarOpen}
-              isMain
-            />
-          </div>
-        </>
+        <div className="flex flex-col gap-1">
+          <SideBarItem
+            icon={BookOpen}
+            iconColor="orange"
+            label={t('navbar.manageCourses')}
+            link="/dashboard/professor/courses"
+            isActive={window.location.pathname.includes(
+              '/dashboard/professor/courses',
+            )}
+            isSidebarOpen={isSidebarOpen}
+            isMain
+          />
+          <SideBarItem
+            icon={Target}
+            iconColor="green"
+            label={t('navbar.analytics')}
+            link="/dashboard/professor/tutorials"
+            isActive={window.location.pathname.includes(
+              '/dashboard/professor/tutorials',
+            )}
+            isSidebarOpen={isSidebarOpen}
+            isMain
+          />
+        </div>
       )}
 
       {currentTab === 'admin' && (

@@ -1,3 +1,5 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
@@ -17,7 +19,7 @@ function Invoices() {
 
   const navigate = useNavigate();
 
-  const { session } = useContext(AppContext);
+  const { session, user } = useContext(AppContext);
 
   const { data: invoices } = useQuery(
     trpc.user.billing.getInvoices.queryOptions({
@@ -41,6 +43,15 @@ function Invoices() {
       title={t('words.invoices')}
       tabs={[
         { id: 'account', label: t('words.account'), href: '/account' },
+        ...(user?.professorId && canAccess(UserRole.Professor)(user)
+          ? [
+              {
+                id: 'teacher-profile',
+                label: t('account.myTeacherProfile'),
+                href: '/account/teacher-profile',
+              },
+            ]
+          : []),
         {
           id: 'settings',
           label: t('words.settings'),

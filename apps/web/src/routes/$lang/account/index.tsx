@@ -1,3 +1,5 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import { Button, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
@@ -68,6 +70,15 @@ function Account() {
       title={t('account.account')}
       tabs={[
         { id: 'account', label: t('words.account'), href: '/account' },
+        ...(user?.professorId && canAccess(UserRole.Professor)(user)
+          ? [
+              {
+                id: 'teacher-profile',
+                label: t('account.myTeacherProfile'),
+                href: '/account/teacher-profile',
+              },
+            ]
+          : []),
         {
           id: 'settings',
           label: t('words.settings'),

@@ -90,7 +90,7 @@ export const MenuDashboard = ({
   const adminTutorialsPath = '/dashboard/administration/tutorials';
   const adminTranslationPanelPath =
     '/dashboard/administration/translation-panel';
-  const professorProfilePath = '/dashboard/professor/profile';
+  const professorProfilePath = '/account/teacher-profile';
   const professorCoursesPath = '/dashboard/professor/courses';
   const professorTutorialsPath = '/dashboard/professor/tutorials';
 
