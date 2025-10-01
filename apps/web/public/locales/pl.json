@@ -91,7 +91,9 @@
     "sendLink": "Wyślij link",
     "signIn": "Zaloguj się",
     "trackProgress": "Stwórz konto lub login, aby śledzić swoje postępy",
-    "tryAgain": "Spróbuj ponownie"
+    "tryAgain": "Spróbuj ponownie",
+    "loginNotAvailable1": "Funkcje logowania nie są jeszcze dostępne w aplikacji na komputer.",
+    "loginNotAvailable2": "Możesz odwiedzić naszą stronę internetową, aby się zalogować i uzyskać dostęp do swojego konta."
   },
   "bCert": {
     "bCertDescription": "₿-CERT to międzynarodowo uznawany egzamin oceniający Twój poziom wiedzy na temat Bitcoina i tematów pokrewnych. Ten rozpoznawany w branży Bitcoin certyfikat potwierdzi poziom Twoich umiejętności i wiedzy , dając Ci dostęp do najlepszych firm i stanowisk.",
@@ -111,7 +113,11 @@
     "pageTitle": "Zdobądź Certyfikat",
     "readChart": "Przeczytaj statut",
     "tweetText": "Cieszę się ze zdobycia certyfikatu ₿-CERT w @planb_network z wynikiem {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Sprawdź autentyczność swojego certyfikatu"
+    "verify": "Sprawdź autentyczność swojego certyfikatu",
+    "hostSessionConditions": "Oto jak to zrobić:\n\n1. Przeczytaj <0>Kartę</0> - Upewnij się, że twoja społeczność spełnia obowiązkowe warunki hostingu\n2. Zaplanuj termin - Jeśli się kwalifikujesz, wybierz datę i zorganizuj sesję\n3. Opublikuj swoje wydarzenie - Skontaktuj się z nami w celu dodania go do platformy Plan ₿ Network, aby ludzie mogli wziąć w nim udział",
+    "myCertificates": "Moje certyfikaty",
+    "noTestSessions": "Obecnie brak dostępnych sesji egzaminacyjnych",
+    "wantHostSession": "Chcesz zorganizować sesję egzaminacyjną ₿-CERT w swoim lokalnym centrum?"
   },
   "bet": {
     "contributeButton": "Pomoc i współpraca",
@@ -148,7 +154,8 @@
     "noConferences": "Nie dodano jeszcze konferencji na rok {{year}}.",
     "pageTitle": "Powtórki z konferencji",
     "planBConferences": "Konferencje sieci Plan B",
-    "topics": "Tematy"
+    "topics": "Tematy",
+    "conferencesGenesis": "Archiwa Konferencji Bitcoina od Bloku Genesis"
   },
   "courses": {
     "chapter": {
@@ -241,7 +248,7 @@
       "failed": "Niepowodzenie",
       "failedDiploma": "Musisz zdobyć ponad 80% punktów na egzaminie końcowym, aby otrzymać dyplom i całkowicie ukończyć kurs. Możesz przystąpić do egzaminu ponownie po 24 godzinach.",
       "finalExam": "Egzamin końcowy",
-      "finalScore": "",
+      "finalScore": "Ocena końcowa",
       "findInformationChapter": "Znajdź więcej informacji w tym rozdziale:",
       "futureProof": "Gwarancja na przyszłość: Twój dyplom jest trwale chroniony i zawsze ważny.",
       "getCertificate": "Odbierz mój dyplom",
@@ -283,13 +290,13 @@
       "skipExamDescription": "Możesz również pominąć egzamin i przejść bezpośrednio do wniosków, klikając przycisk poniżej.",
       "skipExamGoConclusion": "Pomiń egzamin, przejdź do wniosków",
       "skipGoConclusion": "Pomiń, przejdź do wniosków",
-      "solidEffort": "",
+      "solidEffort": "Gratulacje z okazji ukończenia kursu, wykazałeś solidne zaangażowanie. \nMimo, że tym razem nie zdałeś, każdy krok buduje postęp.\nKontynuuj swoją podróż w zdobywaniu wiedzy!",
       "startExam": "Rozpocznij egzamin",
       "submit": "Zatwierdź",
       "successDiploma": "Gratulacje! Pomyślnie zdałeś egzamin. \nTwój dyplom jest dostępny w panelu ucznia. Został <0>opatrzony datą</0>, aby zapewnić jego autentyczność.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Gratulacje! Pomyślnie ukończyłeś kurs. \nTwój dyplom jest teraz dostępny w panelu studenta.",
       "successDiplomaTimeStamped": "Gratulacje! Pomyślnie zdałeś egzamin. \nTwój dyplom będzie dostępny w panelu ucznia około 10 godzin po przystąpieniu do egzaminu. Opóźnienie to związane jest z użyciem technologii <0>stemplowania czasowego</0>, która gwarantuje jego autentyczność.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Gratulacje z okazji ukończenia kursu.\nOsiągnąłeś wynik wymagany do jego zaliczenia.\nDyplom możesz znaleźć na swoim pulpicie.",
       "sureSubmit": "Czy na pewno chcesz przesłać swój egzamin?",
       "takeExam": "Przystąp do egzaminu",
       "tamperProof": "Nie do sfałszowania: Blockchain gwarantuje, że nikt nie może zmienić lub sfałszować twoich danych uwierzytelniających.",
@@ -309,7 +316,10 @@
       "weight": "Wynik: {{weight}}%",
       "whyTimeStamp": "Opatrzenie twojego dyplomu stemplem czasowym: \nDlaczego to ma znaczenie",
       "wishTryAgain": "Jeśli chcesz spróbować ponownie, egzamin będzie dostępny za 24 godziny.",
-      "yesSubmit": "Tak, wyślij"
+      "yesSubmit": "Tak, wyślij",
+      "examResults": "Wyniki egzaminów",
+      "reviewTest": "Przejrzyj odpowiedzi",
+      "scoreAndDiploma": "Wynik i Dyplom"
     },
     "explorer": {
       "buildPath": "Zbuduj własną ścieżkę w głąb króliczej nory",
@@ -321,7 +331,8 @@
       "pageDescription": "Akademia Plan B ma na celu uproszczenie edukacji na temat Bitcoina na całym świecie. Oferujemy szeroki zakres kursów zaprojektowanych przez ekspertów z różnych dziedzin, aby wyjaśnić każdy aspekt Bitcoina.\nWszystko w formacie, który najlepiej pomoże Ci zrozumieć to obszerne zagadnienie – nauka we własnym tempie lub w formie cotygodniowych spotkań z prowadzącycm, poziomy od początkującego do eksperta. Duża część naszych kursów jest całkowicie darmowa, aby każdy, gdziekolwiek jest, mógł mieć dostęp do edukacji.",
       "planbSchool": "Szkoła PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Plan ₿ School, szkoła prowadzona przez Giacomo Zucco, oferuje intensywne trzymiesięczne programy edukacyjne mające na celu zniwelowanie różnicy pomiędzy nauką teoretyczną a praktycznym zastosowaniem wiedzy. Poza tradycyjnymi zajęciami, studenci angażują się w praktyczne projekty prowadzone przez firmy, a najlepsi uczestnicy maja możliwość wzięcia udziału w pierwszorzędnym bootcampie. Tylko najlepsze talenty awansują dalej po dwóch zmuszających do rywalizacji rundach selekcyjnych, co gwarantuje, że najlepsi studenci będą w pełni przygotowani do rozpoczęcia swojej kariery w branży Bitcoin.",
-      "seeCourse": "Zobacz kurs"
+      "seeCourse": "Zobacz kurs",
+      "discover": "Zobacz więcej"
     },
     "format": {
       "hybrid": "Stacjonarne/online",
@@ -407,7 +418,19 @@
       "writeThoughts": "Tutaj możesz napisać, co myślisz",
       "yesOfCourse": "tak, oczywiście",
       "yesVeryMuch": "tak, bardzo"
-    }
+    },
+    "allCourses": "Wszystkie kursy",
+    "continueLeftOff": "Kontynuuj tam, gdzie skończyłeś",
+    "courseSelector": "Wybór kursu",
+    "learnAnytime": {
+      "allOtherTitle": "Wszystkie inne zajęcia na żywo",
+      "secondaryTitle": "Stań się atrakcyjnym kandydatem dla firm skupionych wokół Bitcoina.",
+      "title": "Oficjalny roczny program Planu ₿"
+    },
+    "noCoursesFound": "Nie znaleziono żadnych kursów",
+    "plusXMore": "+{{count}} więcej",
+    "selectATopic": "Wybierz temat",
+    "tryAdjustingFilters": "Spróbuj dostosować swoje filtry"
   },
   "dashboard": {
     "account": "Konto",
@@ -426,7 +449,9 @@
         "profession": "Zawód",
         "resultsRemaining": "Pozostało {{results}} wyników",
         "seeMore": "Zobacz więcej",
-        "viewCV": "Zobacz CV"
+        "viewCV": "Zobacz CV",
+        "candidateFile": "Plik kandydata",
+        "file": "Plik"
       },
       "confirmRemoval": "Potwierdź usunięcie",
       "coupons": {
@@ -519,7 +544,346 @@
       "type": "Typ",
       "upcomingBookings": "Nadchodzące rezerwacje",
       "upcomingBookingsSubtitle": "Tutaj możesz pobrać listę uczestników wszystkich wydarzeń na żywo.",
-      "userRolesAllocation": "Przydział ról użytkowników"
+      "userRolesAllocation": "Przydział ról użytkowników",
+      "translation": "Panel tłumaczeń",
+      "translationPanel": {
+        "actions": {
+          "accept": "Akceptuję",
+          "delete": "Usuń",
+          "reject": "Odrzuć"
+        },
+        "addContributor": {
+          "addLanguage": "Dodaj kolejny język",
+          "assign": "Przydziel",
+          "assignedLanguages": "Języki już przypisane",
+          "assigning": "Przypisywanie...",
+          "assignmentSuccess": "Współtwórców przypisano pomyślnie!",
+          "confirm": "Potwierdź",
+          "findContributor": "Znajdź współtwórcę",
+          "language": "Język",
+          "noUsers": "Brak dostępnych użytkowników",
+          "searchUsers": "Szukaj użytkowników...",
+          "selectedUsers": "Wybrani użytkownicy:",
+          "selectLanguage": "Wybierz język",
+          "title": "Dodaj współtwórcę"
+        },
+        "admin": "ADMIN",
+        "comingSoon": {
+          "courses": "Lista kursów dostępna wkrótce",
+          "coverage": "Lista przypisanych języków dostępna wkrótce"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Przydziel",
+            "backToContentManagement": "Powrót do zarządzania treścią",
+            "reassign": "Przydziel ponownie",
+            "view": "Zobacz"
+          },
+          "assignModal": {
+            "assign": "Przydziel",
+            "assigning": "Przypisywanie...",
+            "assigningCourse": "Przypisany kurs:",
+            "assignmentSuccess": "Kurs przypisany pomyslnie!",
+            "cancel": "Anuluj",
+            "chooseContributor": "Wybierz współtwórcę...",
+            "courseInfo": "Informacje o kursie",
+            "selectContributor": "Wybierz współtwórcę",
+            "title": "Przypisz kurs do współtwórcy"
+          },
+          "description": "Zarządzaj tłumaczeniami kursów i przypisz je do współtwórców",
+          "noCourses": "Brak dostępnych kursów",
+          "noCoursesFiltered": "Brak kursów pasujących do Twoich filtrów",
+          "notAssigned": "Nie przydzielono",
+          "reassignModal": {
+            "cancel": "Anuluj",
+            "chooseNewContributor": "Wybierz nowego współtwórcę...",
+            "courseInfo": "Informacje o kursie",
+            "currentlyAssignedTo": "Obecnie przypisany do:",
+            "reassign": "Przydziel ponownie",
+            "reassigning": "Ponowne przypisywanie...",
+            "reassigningCourse": "Kurs obecnie przypisany do:",
+            "reassignmentSuccess": "Kurs przypisany pomyslnie!",
+            "selectNewContributor": "Wybierz nowego współtwórcę",
+            "title": "Przypisz kurs do nowego współtwórcy",
+            "warning": {
+              "description": "Rozdziały już sprawdzone nie zostaną ponownie przydzielone.",
+              "title": "Ważna uwaga"
+            }
+          },
+          "table": {
+            "actions": "Działania",
+            "contributor": "Współtwórca",
+            "course": "Kurs",
+            "index": "Indeks",
+            "language": "Język",
+            "progress": "Postęp",
+            "status": "Status"
+          },
+          "status": {
+            "assigned": "Przydzielony",
+            "notAssigned": "Nie przydzielony",
+            "readyForReview": "Gotowy do korekty",
+            "underReview": "W trakcie sprawdzania"
+          },
+          "title": "Zarządzanie treścią"
+        },
+        "reports": {
+          "filterByLanguage": "Filtruj według języka",
+          "fromMonth": "Od",
+          "fromMonthPlaceholder": "Od którego miesiąca?",
+          "generalReport": "Raport ogólny",
+          "languageCoverage": {
+            "completed": "Zakończono",
+            "inProgress": "W trakcie",
+            "notStarted": "Nie rozpoczęto",
+            "totalCourses": "Łączna liczba kursów"
+          },
+          "languagesProofread": "Sprawdzone języki",
+          "noContributors": "Nie znaleziono żadnych współtwórców",
+          "noCourses": "Nie znaleziono żadnych kursów",
+          "noLanguages": "Nie znaleziono żadnych języków",
+          "proofreadCourses": "Sprawdzone kursy",
+          "table": {
+            "contributor": "Współtwórca",
+            "lastUpdated": "Ostatnio zaktualizowano",
+            "progress": "Postęp %"
+          },
+          "tabs": {
+            "contributors": "Współtwórcy",
+            "courses": "Kursy",
+            "coverage": "Zakres językowy"
+          },
+          "toMonth": "do",
+          "toMonthPlaceholder": "Do którego miesiąca?",
+          "totalLanguages": "Łączna liczba języków",
+          "year": "Rok",
+          "chooseYear": "Który rok chcesz wziąć pod uwagę?",
+          "comingSoon": {
+            "courses": "Lista kursów dostępna wkrótce",
+            "coverage": "Lista języków dostępna wkrótce"
+          },
+          "contributors": {
+            "assignedCourses": "Przydzielone kursy",
+            "completedCourses": "Ukończone kursy",
+            "languages": "Języki",
+            "startDate": "Data rozpoczęcia",
+            "title": "Współtwórcy",
+            "totalReward": "Nagroda ogółem",
+            "username": "Nazwa użytkownika"
+          },
+          "courses": {
+            "contributor": "Współtwórca",
+            "filterByCourse": "Filtruj według kursu",
+            "lastUpdated": "Ostatnio zaktualizowano",
+            "progress": "Postęp %"
+          },
+          "dateFilter": "Filtruj według daty",
+          "downloadData": "Pobierz Dane"
+        },
+        "searchPlaceholder": "Wyszukiwanie...",
+        "status": {
+          "assigned": "Przydzielony",
+          "completed": "Ukończony",
+          "inProgress": "W trakcie",
+          "readyForReview": "Gotowy do korekty",
+          "todo": "Do zrobienia",
+          "underReview": "W trakcie sprawdzania"
+        },
+        "table": {
+          "actions": "Zadania",
+          "course": "Kurs",
+          "index": "Indeks",
+          "language": "Język",
+          "username": "Nazwa użytkownika"
+        },
+        "tabs": {
+          "contentManagement": "Zarządzanie treścią",
+          "reports": "Raporty",
+          "requests": "Zlecenia",
+          "translate": "Przetłumacz",
+          "userManagement": "Zarządzanie użytkownikami"
+        },
+        "title": "Administracja panelu tłumaczeń",
+        "toggle": {
+          "pendingRequest": "Zlecenie oczekujące",
+          "rejectedRequests": "Odrzucone zlecenia"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Przetłumacz"
+          },
+          "backToCourse": "Powrót do kursu",
+          "changeSpeed": "Zmień prędkość odtwarzania",
+          "chapterTitle": "Tytuł rozdziału",
+          "compare": "Porównaj",
+          "compareDisabledTooltip": "Brak wersji skorygowanej",
+          "compareTooltip": "Porównaj wersję oryginalną i skorygowaną",
+          "comparison": {
+            "backToChapter": "Wróć do poprzedniego rozdziału",
+            "originalVersion": "Wersja oryginalna",
+            "translatedVersion": "Wersja przetłumaczona"
+          },
+          "description": "Zacznij tłumaczyć kursy na konkretne języki.",
+          "forward15Seconds": "Przewiń 15 sekund do przodu",
+          "imageNotFound": "Nie znaleziono obrazu",
+          "language": "Język",
+          "loadingPresentation": "Ładowanie prezentacji...",
+          "noContentAvailable": "Brak treści",
+          "noCourses": "Aktualnie żadne kursy nie wymagają tłumaczenia.",
+          "noOriginalContent": "Brak oryginalnej treści",
+          "noPngSlides": "Brak slajdów PNG dostępnych dla tej prezentacji",
+          "noSlidesFound": "Nie znaleziono slajdów",
+          "originalContent": "Oryginalna treść",
+          "pause": "Pauza",
+          "play": "Start",
+          "presentations": "Prezentacje",
+          "rewind15Seconds": "Przewiń 15 sekund wstecz",
+          "selectLanguagesModal": {
+            "audioFile": "Plik audio",
+            "audioFileInfo": "Obsługiwane formaty: MP3, WAV, M4A (maks. 50MB)",
+            "audioFileTooLarge": "Plik audio jest za duży. Maksymalny rozmiar to 50MB.",
+            "cancel": "Anuluj",
+            "chooseAudioFile": "Wybierz audio",
+            "chooseFolder": "Wybierz folder",
+            "choosePptxFile": "Wybierz PPTX",
+            "chooseZip": "Wybierz ZIP",
+            "course": "Kurs:",
+            "englishFilesRequired": "Upewnij się, że wszystkie przesłane pliki są tylko w języku angielskim",
+            "existingUploadsInfo": "Oryginalne pliki zostały już przesłane. Możesz rozpocząć tłumaczenie bez dodawania ich ponownie. Przesłanie nowych plików spowoduje nadpisanie istniejących.",
+            "folderUrl": "Adres URL folderu",
+            "invalidAudioFile": "Proszę wybrać prawidłowy plik audio.",
+            "invalidPptxFile": "Proszę wybrać prawidłowy plik PowerPoint (.pptx).",
+            "missingFilesError": "Proszę przesłać pliki do tłumaczenia lub podać adres URL przed rozpoczęciem tłumaczenia.",
+            "networkError": "Wystąpił błąd sieci. Sprawdź swoje połączenie i spróbuj ponownie.",
+            "noAudioFileSelected": "Nie wybrano pliku audio",
+            "noFolderSelected": "Nie wybrano folderu",
+            "noLanguagesAvailable": "Brak języków dostępnych do przetłumaczenia.",
+            "noPptxFileSelected": "Nie wybrano pliku PowerPoint",
+            "noZipSelected": "Nie wybrano pliku ZIP",
+            "originalLanguage": "Oryginalny język:",
+            "overwriteWarning": "Istniejące pliki zostaną zastąpione.",
+            "pptxFile": "Plik PowerPoint",
+            "pptxFileInfo": "Obsługiwane są tylko pliki .pptx (maks. 100MB)",
+            "pptxFileTooLarge": "Plik PowerPoint jest zbyt duży. Maksymalny rozmiar to 100MB.",
+            "processingStarted": "Rozpoczęto tłumaczenie! Proces ten w przypadku dużych kursów może potrwać kilka minut.",
+            "selectLanguages": "Wybierz języki do przetłumaczenia:",
+            "startingTranslation": "Przesyłanie plików...",
+            "startingTranslationStep": "Rozpoczęcie tłumaczenia...",
+            "startSuccess": "Tłumaczenie rozpoczęto pomyślnie!",
+            "startTranslation": "Rozpocznij tłumaczenie",
+            "timeoutError": "Upłynął limit czasu żądania tłumaczenia kursu. Jego treść może być zbyt obszerna. Spróbuj ponownie lub skontaktuj się z pomocą techniczną.",
+            "title": "Wybierz języki do przetłumaczenia",
+            "translationFailed": "Przetłumaczenie nie powiodło się. Sprawdź logi i spróbuj ponownie.",
+            "uploadAndTranslationStarted": "Pliki zostały przesłane i rozpoczęto tłumaczenie! Proces ten w przypadku dużych kursów może potrwać kilka minut.",
+            "uploadError": "Przesyłanie nie powiodło się. Sprawdź swoje pliki i spróbuj ponownie.",
+            "uploadFiles": "Prześlij pliki pomocnicze (opcjonalnie)",
+            "uploadFolder": "Prześlij folder (PPTX + TXT)",
+            "uploadingFiles": "Przesyłanie plików...",
+            "uploadTimeoutError": "Po 10 minutach upłynął limit czasu przesyłania plików. Spróbuj użyć mniejszych plików lub sprawdź swoje połączenie.",
+            "useEnglishLabel": "Ten kurs został już przetłumaczony na język angielski. Użyć angielskiej wersji jako wersji źródłowej?"
+          },
+          "slideNavigation": {
+            "next": "Dalej",
+            "previous": "Wstecz",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Slajd {{slideNumber}} nie jest dostępny",
+          "slideNotFound": "Nie znaleziono slajdu",
+          "table": {
+            "actions": "Zadania",
+            "course": "Kurs",
+            "index": "Indeks",
+            "todoLanguages": "Języki do przetłumaczenia",
+            "totalLanguages": "Łączna liczba języków"
+          },
+          "textContent": "Zawartość tekstu",
+          "title": "Przetłumacz kursy",
+          "translateTo": "Przetłumacz na",
+          "unknownContributor": "Nieznany"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Powrót do listy użytkowników",
+            "backToUsers": "Powrót do sekcji dla użytkowników",
+            "viewDetails": "Zobacz szczegóły"
+          },
+          "addContributor": "Dodaj współtwórcę",
+          "chapters": "Rozdziały",
+          "contributorInformation": "Informacje o współtwórcy",
+          "courses": "Kursy",
+          "modal": {
+            "assignments": "Historia zleceń",
+            "noAssignments": "Nie znaleziono zleceń",
+            "title": "Szczegóły użytkownika",
+            "userInfo": "Informacje o użytkowniku"
+          },
+          "noUsers": "Nie znaleziono żadnych współtwórców",
+          "status": {
+            "published": "Opublikowano",
+            "readyForReview": "Gotowy do korekty",
+            "rejected": "Odrzucono",
+            "reviewed": "Sprawdzony",
+            "todo": "Do sprawdzenia",
+            "underReview": "W trakcie korekty"
+          },
+          "table": {
+            "actions": "Działania",
+            "assignedCourses": "Przydzielone kursy",
+            "language": "Język",
+            "startDate": "Data rozpoczęcia",
+            "username": "Nazwa użytkownika"
+          },
+          "title": "Współtwórcy"
+        },
+        "courseDetails": {
+          "actions": "Działania",
+          "assignedTo": "Przypisany do",
+          "chapterIndex": "Rozdział",
+          "chaptersAndProgress": "Rozdziały i Postęp",
+          "chaptersCompleted": "ukończone rozdziały",
+          "chapterTitle": "Tytuł",
+          "courseIndex": "Indeks kursów",
+          "courseInformation": "Informacje o kursie",
+          "courseName": "Nazwa kursu",
+          "currentContributor": "Obecny współautor",
+          "errorLoadingDetails": "Błąd ładowania szczegółów kursu",
+          "language": "Język",
+          "noChapters": "Brak rozdziałów dostępnych dla tego kursu",
+          "noContributor": "Brak przydzielonego współtwórcy",
+          "partTitle": "Część {{index}}: {{title}}",
+          "progress": "Postęp",
+          "status": "Status",
+          "translationStatus": "Status tłumaczenia"
+        },
+        "courseNotFound": "Nie odnaleziono kursu",
+        "messages": {
+          "noPendingRequests": "Nie ma więcej oczekujących zapytań o korektę.",
+          "noPendingRequestsSearch": "Brak zleceń korekty pasujących do \"{{query}}\".",
+          "noRejectedRequests": "Nie ma odrzuconych próśb o korektę.",
+          "noRejectedRequestsSearch": "Brak odrzuconych zleceń korekty pasujących do \"{{query}}\"."
+        },
+        "modal": {
+          "accepting": "Akceptuję...",
+          "acceptRequest": "Zaakceptuj zlecenie",
+          "acceptTranslationRequest": "Zaakceptuj zlecenie korekty",
+          "cancel": "Anuluj",
+          "close": "Zamknij",
+          "contributor": "Współtwórca",
+          "course": "Kurs",
+          "doYouWantToAcceptRequest": "Czy chcesz zaakceptować to zlecenie tłumaczenia?",
+          "language": "Język",
+          "provideRejectionReason": "Proszę podać powód odrzucenia tego zlecenia",
+          "reasonForRejection": "Powód odrzucenia",
+          "reasonPlaceholder": "Napisz swoje wyjaśnienie tutaj...",
+          "rejecting": "Odrzucam...",
+          "requestAcceptedMessage": "Współtwórca został powiadomiony i może teraz zacząć pracę nad tłumaczeniem.",
+          "requestAcceptedSuccess": "Zaakceptowałeś zlecenie tłumaczenia!",
+          "requestRejectedSuccess": "Zlecenie odrzucono pomyślnie",
+          "submitRejection": "Wyślij"
+        },
+        "noResultsFound": "Nie znaleziono wyników",
+        "pendingTranslationRequests": "Oczekujące zlecenia korekty"
+      }
     },
     "announcements": {
       "groups": {
@@ -749,7 +1113,7 @@
       "assignmentCompletedTitle": "Zadanie wykonane",
       "assignmentDescription": "Przydział projektu rozpoczyna drugą fazę programu Plan ₿ Biz School i jest dostępny tylko dla kursantów, którzy pomyślnie ukończyli pierwszą fazę. Każdemu kursantowi, na podstawie jego miejsca w rankingu oraz jego preferencji, zostanie przydzielony projekt opracowany przez firmę z branży Bitcoin, który musi zostać przesłany do dnia 12 czerwca.\nKursanci będą przygotowywać zadanie od 2 do 12 czerwca, będą mieć możliwość skorzystania z pomocy mentora - przedstawiciela firmy.\n\nProjekty będą oceniane przez firmę, a wyniki będą wpływać na ocenę końcową. Tylko najlepiej ocenieni kursanci zostaną zaproszeni do udziału w Szkole Letniej w Lugano w Szwajcarii od 23 do 30 lipca 2025 roku.",
       "assignmentInformation": "Informacje o zadaniu",
-      "assignmentTitle": "",
+      "assignmentTitle": "Przydzielanie projektów",
       "checkDetailsCompleted": "Tutaj możesz sprawdzić wszystkie szczegóły dotyczące kursu, który ukończyłeś.",
       "completionDiploma": "Dyplom ukończenia kursu",
       "completionExamInfo": "Musisz zdać egzamin, aby mieć dostęp do tej funkcji.",
@@ -806,7 +1170,9 @@
       "thresholdToPass": "",
       "tweetText": "Mam ukończony kurs {{courseIndex}} w @planb_network i dyplom z wynikiem {{score}}/100 na egzaminie końcowym! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "viewFinalGrade": "",
-      "yourProject": "Twój projekt"
+      "yourProject": "Twój projekt",
+      "assignmentNotAccessible": "Zlecenie zostało już rozpoczęte i nie jest już dostępne.",
+      "assignmentScore": "Ocena zlecenia"
     },
     "courses": "Kursy",
     "credentials": {
@@ -1695,8 +2061,8 @@
     "start": "Start",
     "startHere": "Zacznij tutaj!",
     "status": "Status",
-    "student": "Uczeń",
-    "students": "Kursanci",
+    "student": "Kursant",
+    "students": "Kursantów",
     "submit": "Wyślij",
     "teacher": "Nauczyciel",
     "telegram": "Telegram",
@@ -1727,5 +2093,8 @@
     "pageTitle": "Kanały na Youtube",
     "view": "Zobacz kanał na Youtube",
     "watchTrailer": "Obejrzyj zwiastun"
+  },
+  "account": {
+    "account": "Konto"
   }
 }

@@ -424,7 +424,12 @@
     "noCoursesFound": "Tidak ada kursus yang ditemukan",
     "plusXMore": "+{{count}} lagi",
     "selectATopic": "Pilih topik",
-    "tryAdjustingFilters": "Coba sesuaikan filter Anda"
+    "tryAdjustingFilters": "Coba sesuaikan filter Anda",
+    "learnAnytime": {
+      "allOtherTitle": "Semua kelas langsung/ online lainnya",
+      "secondaryTitle": "Menjadi layak untuk bekerja di Perusahaan yang berfokus pada Bitcoin.",
+      "title": "Program tahunan resmi Plan ₿"
+    }
   },
   "dashboard": {
     "account": "Akun",
@@ -783,15 +788,99 @@
           "selectLanguagesModal": {
             "audioFile": "File Suara",
             "audioFileInfo": "Format yang didukung: MP3, WAV, M4A (Maksimal 50MB)",
-            "audioFileTooLarge": "File audio terlalu besar. Ukuran maksimum adalah 50MB."
-          }
+            "audioFileTooLarge": "File audio terlalu besar. Ukuran maksimum adalah 50MB.",
+            "cancel": "Batal",
+            "chooseAudioFile": "Pilih Audio",
+            "chooseFolder": "Pilih folder",
+            "choosePptxFile": "Pilih PPTX",
+            "chooseZip": "Pilih ZIP",
+            "course": "Kursus:",
+            "englishFilesRequired": "Pastikan semua file yang diunggah hanya dalam bahasa Inggris saja",
+            "existingUploadsInfo": "File asli sudah diunggah. Anda dapat mulai menerjemahkan tanpa menambahkannya lagi. Mengunggah file baru akan menimpa yang sudah ada.",
+            "folderUrl": "URL Folder",
+            "invalidAudioFile": "Silakan pilih file audio yang valid.",
+            "invalidPptxFile": "Silakan pilih file PowerPoint (.pptx) yang valid.",
+            "missingFilesError": "Silakan unggah file terjemahan atau berikan URL sebelum memulai terjemahan.",
+            "networkError": "Terjadi kesalahan jaringan. Silakan periksa koneksi Anda dan coba lagi.",
+            "noAudioFileSelected": "Tidak ada file audio yang dipilih",
+            "noFolderSelected": "Tidak ada folder yang dipilih",
+            "noLanguagesAvailable": "Tidak ada bahasa yang tersedia untuk diterjemahkan.",
+            "noPptxFileSelected": "Tidak ada file PowerPoint yang dipilih",
+            "noZipSelected": "Tidak ada ZIP yang dipilih",
+            "originalLanguage": "Bahasa asli:",
+            "overwriteWarning": "File yang ada akan digantikan.",
+            "pptxFile": "File PowerPoint",
+            "pptxFileInfo": "Hanya file .pptx yang didukung (Maks 100MB)",
+            "pptxFileTooLarge": "File PowerPoint terlalu besar. Ukuran maksimum adalah 100MB.",
+            "processingStarted": "Penerjemahan dimulai! Proses ini mungkin memakan waktu beberapa menit untuk kursus yang banyak.",
+            "selectLanguages": "Pilih bahasa untuk diterjemahkan:",
+            "startingTranslation": "Mengunggah file...",
+            "startingTranslationStep": "Memulai terjemahan...",
+            "startSuccess": "Terjemahan berhasil dimulai!",
+            "startTranslation": "Mulai Terjemahan",
+            "timeoutError": "Permintaan terjemahan gagal karena waktu habis. Konten kursus mungkin terlalu besar. Silakan coba lagi atau hubungi dukungan.",
+            "title": "Pilih Bahasa yang akan Diterjemahkan",
+            "translationFailed": "Terjemahan gagal. Silakan periksa catatan dan coba lagi.",
+            "uploadAndTranslationStarted": "File diunggah dan penerjemahan dimulai! Proses ini mungkin memerlukan beberapa menit untuk kursus-kursus besar.",
+            "uploadError": "Gagal mengunggah. Silakan periksa file Anda dan coba lagi.",
+            "uploadFiles": "Unggah File Pendukung (Opsional)",
+            "uploadFolder": "Unggah folder (PPTX + TXT)",
+            "uploadingFiles": "Mengunggah file...",
+            "uploadTimeoutError": "Unggah gagal setelah 10 menit. Silakan coba dengan file yang lebih kecil atau periksa koneksi Anda.",
+            "useEnglishLabel": "Kursus ini sudah diterjemahkan ke dalam bahasa Inggris. Gunakan versi bahasa Inggris sebagai sumber"
+          },
+          "slideNavigation": {
+            "next": "Berikutnya",
+            "previous": "Sebelumnya",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Slide {{slideNumber}} tidak tersedia",
+          "slideNotFound": "Slide tidak ditemukan",
+          "table": {
+            "actions": "Tindakan",
+            "course": "Kursus",
+            "index": "Indeks",
+            "todoLanguages": "Bahasa untuk Diterjemahkan",
+            "totalLanguages": "Total bahasa"
+          },
+          "textContent": "Konten Teks",
+          "title": "Terjemahkan Kursus",
+          "translateTo": "Terjemahkan",
+          "unknownContributor": "Tidak diketahui"
         },
         "userManagement": {
           "table": {
             "startDate": "Tanggal mulai",
-            "username": "Nama pengguna"
+            "username": "Nama pengguna",
+            "actions": "Tindakan",
+            "assignedCourses": "Kursus yang ditentukan",
+            "language": "Bahasa"
           },
-          "title": "Kontributor"
+          "title": "Kontributor",
+          "actions": {
+            "backToList": "Kembali ke daftar pengguna",
+            "backToUsers": "Kembali ke pengguna",
+            "viewDetails": "Lihat detail"
+          },
+          "addContributor": "Tambah Kontributor",
+          "chapters": "Bab",
+          "contributorInformation": "Informasi kontributor",
+          "courses": "Kursus",
+          "modal": {
+            "assignments": "Riwayat Tugas",
+            "noAssignments": "Tidak ada tugas yang ditemukan",
+            "title": "Detail Pengguna",
+            "userInfo": "Informasi Pengguna"
+          },
+          "noUsers": "Tidak ada kontributor yang ditemukan",
+          "status": {
+            "published": "Diterbitkan",
+            "readyForReview": "Siap untuk Ditinjau",
+            "rejected": "Ditolak",
+            "reviewed": "Ditinjau",
+            "todo": "Yang Harus Dilakukan",
+            "underReview": "Sedang ditinjau"
+          }
         }
       }
     },
@@ -1046,43 +1135,46 @@
       "fileUploaded": "Pekerjaan Anda berhasil diunggah!",
       "finalAverageGradeDescription": "Anda dapat menemukan nilai rata-rata akhir Anda di bagian Ujian & Diploma pada dashboard Anda.",
       "finalGradeSummary": "Ringkasan nilai akhir",
-      "finalScore": "",
+      "finalScore": "Skor akhir",
       "generalInformation": "Informasi umum",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
+      "individualWork": "Pekerjaan individu",
+      "isSubmissionFinal": "Apakah pengajuan Anda sudah final?",
+      "joinTelegramGroup": "Bergabung dengan Grup Telegram",
+      "keepEditing": "Lanjut Mengedit",
+      "keepMovingForward": "Meski kali ini Anda tidak lulus, setiap langkah membangun kemajuan. \nTeruslah maju dalam perjalanan belajarmu!",
+      "leastPreferred": "Paling tidak disukai",
+      "listSaved": "Daftar preferensi Anda telah disimpan.",
+      "listSavedComeTomorrow": "Daftar preferensi Anda telah disimpan.\nKembali ke sini besok untuk mengetahui Proyek apa yang ditugaskan untuk Anda .",
+      "mostPreferred": "Paling disukai",
+      "mustBePdf": "File Anda harus berupa PDF. Jika Anda perlu mengajukan file tambahan, silakan masukkan link terkait di dalam PDF Anda.",
+      "notSelectedAssignment": "Sayangnya, Anda tidak terpilih untuk berpartisipasi dalam Penugasan Proyek.\nAnda masih dapat melanjutkan mengikuti kuliah kursus.",
       "planbSchoolExamDescription": "Program Plan ₿ Biz School 2025 terdiri dari dua tahap. Pada fase pertama, Anda akan mengikuti dua ujian online, yaitu ujian tengah semester dan ujian akhir: ujian ini merupakan ujian dengan satu kali percobaan dan dapat Anda selesaikan kapan saja selama periode ketersediaan tiga hari. Setelah tahap pertama, siswa akan dipilih berdasarkan peringkat mereka untuk melanjutkan ke tahap kedua, yang melibatkan tugas proyek: tugas individu yang disediakan oleh perusahaan Bitcoin. Anda dapat menemukan detail lebih lanjut tentang hal ini di tab Penugasan.\n\nNilai akhir akan dihitung sebagai rata-rata ditimbang dari ketiga tes tersebut. Siswa yang mencapai nilai di atas 80% akan menerima ijazah, dan siswa dengan nilai tertinggi juga berkesempatan untuk berpartisipasi dalam Sekolah Musim Panas di Lugano, pada bulan Juli.",
-      "planbSchoolGeneralInformation": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "planbSchoolGeneralInformation": "Program Plan ₿ Biz School 2025 terdiri dari dua tahap. Pada fase pertama, Anda akan mengikuti dua ujian online, yaitu ujian tengah semester dan ujian akhir: ujian ini merupakan ujian dengan satu kali percobaan dan dapat Anda selesaikan kapan saja selama tiga hari dalam periode yang disediakan. Setelah tahap pertama, siswa akan dipilih berdasarkan peringkat mereka untuk melanjutkan ke tahap kedua, yang melibatkan tugas proyek: tugas individu yang disediakan oleh perusahaan Bitcoin. Anda dapat menemukan detail lebih lanjut tentang hal ini di tab Penugasan.\n\nNilai akhir akan dihitung sebagai rata-rata ditimbang dari ketiga tes tersebut. Siswa yang mencapai nilai di atas {{threshold}}% akan menerima ijazah, dan siswa dengan nilai tertinggi juga berkesempatan untuk berpartisipasi dalam Sekolah Musim Panas di Lugano, pada bulan Juli.",
+      "projectRankingInstructions": "Instruksi Peringkat Proyek:",
+      "ranking": "Peringkat",
+      "rankingInstructions": "Urutkan proyek yang diajukan sesuai dengan preferensi Anda (nomor 1 adalah pilihan utama Anda). Penentuan peringkat ini akan memfasilitasi penugasan proyek yang paling sesuai untuk Anda. Prioritas pemilihan akan diberikan kepada siswa dengan skor yang lebih tinggi.",
+      "rankingOnly24Hours": "Portal peringkat hanya akan dibuka selama 24 jam, pada tanggal 2 Juni dari 00:00 hingga 23:59 (UTC+2).",
+      "rankProjectPreferences": "Susun peringkat proyek pilihan Anda",
       "ratingsAndFeedbacks": "Penilaian & Umpan Balik",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "Baca lebih lanjut tentang tugas ini",
+      "saveList": "Simpan daftar",
       "shareOnSocials": "Bagikan di media sosial:",
-      "submissionInstructions": "",
-      "submitBefore": "",
-      "submitFileNamingFormat": "",
+      "submissionInstructions": "Instruksi pengajuan",
+      "submitBefore": "Anda harus mengirimkan pekerjaan Anda sebelum {{date}} pada {{hour}}. Pengiriman yang diterima setelah batas waktu ini tidak akan dinilai.",
+      "submitFileNamingFormat": "File Anda harus diberi nama menggunakan format berikut :\n<0>nama_perusahaan_username.pdf</0>.\nHapus semua spasi dari nama perusahaan, gunakan nama pengguna Anda persis seperti di platform planB.network, dan periksa kesalahan ketik.",
       "submitReviewInfo": "Anda harus mengirimkan ulasan untuk dapat mengakses fitur ini.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
+      "submitYourWork": "Kirimkan pekerjaan Anda",
+      "summerSchool": "Sekolah Musim Panas",
+      "surePreferenceList": "Apakah Anda yakin dengan daftar preferensi Anda?",
+      "thresholdToPass": "Ambang batas lulus: {{threshold}}%",
       "tweetText": "Senang sekali telah menyelesaikan {{courseIndex}} di @planb_network dan mendapatkan ijazah dengan nilai {{score}}/100 pada ujian akhir!{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
+      "viewFinalGrade": "Lihat nilai akhir",
       "yourProject": "",
       "assignmentNotAccessible": "Tugas sudah dimulai dan tidak dapat diakses lagi.",
-      "assignmentScore": "Skor tugas"
+      "assignmentScore": "Skor tugas",
+      "gaveSolidEffort": "Kamu telah berusaha keras!",
+      "tweetTextCourseDiploma": "Dengan gembira telah menyelesaikan kursus {{courseName}}, yang diajarkan oleh {{courseCoordinator}} di @planb_network dan telah mendapatkan diplomaku!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Lihat ringkasan nilai"
     },
     "courses": "Kursus",
     "credentials": {
@@ -1344,7 +1436,14 @@
       "time": "Waktu"
     },
     "tcDisclaimer": "Saya setuju bahwa informasi saya dapat dibagikan ke penyelenggara untuk tujuan akses ke tempat acara.",
-    "tcMustBeAccepted": "Anda harus menerima syarat dan ketentuan untuk melanjutkan"
+    "tcMustBeAccepted": "Anda harus menerima syarat dan ketentuan untuk melanjutkan",
+    "types": {
+      "plurals": {
+        "meetup": "pertemuan",
+        "workshop": "Pelatihan"
+      }
+    },
+    "upcomingEvents": "Acara mendatang"
   },
   "filters": {
     "categories": "Kategori",
@@ -1538,14 +1637,15 @@
     "upcomingEvent": "Acara yang akan datang",
     "weeksAgo": "{{weeks}}minggu{{s}}lalu",
     "yearsAgo": "{{years}}tahun{{s}}lalu",
-    "yesterday": "Kemarin"
+    "yesterday": "Kemarin",
+    "newVersionAvailable": "Versi baru dari platform Plan ₿ Network tersedia. Silakan refresh halaman untuk memperbarui."
   },
   "payment": {
     "haveReductionCode": "Punya kode reduksi?",
     "insertReductionCode": "Masukkan kode pengurangan Anda",
     "payByCard": "Bayar dengan Kartu",
     "payWithBitcoin": "Bayar dengan Bitcoin",
-    "taxesMayApply": "",
+    "taxesMayApply": "Pajak mungkin berlaku saat checkout",
     "terms": "Lihat <0>syarat dan ketentuan umum</0> kami untuk detail pengembalian dana",
     "total": "Total"
   },
@@ -1858,12 +1958,12 @@
     "chapters": "Bab",
     "close": "Tutup",
     "communities": "Komunitas",
-    "company": "",
+    "company": "Perusahaan",
     "complete": "Lengkap",
     "conference": "Konferensi",
     "congrats": "Selamat!",
     "content": "Konten",
-    "continue": "",
+    "continue": "Lanjutkan",
     "country": "Negara",
     "course": "Kursus",
     "courseId": "ID Kursus",
@@ -1923,7 +2023,7 @@
     "lnurlAuth": "LNURL Auth",
     "location": "Lokasi",
     "members": " Anggota",
-    "mentor": "",
+    "mentor": "Mentor",
     "mining": "Penambangan",
     "mode": "Mode",
     "movie": "Movie strict-same",
@@ -1933,7 +2033,7 @@
     "next": "Berikutnya",
     "no": "Tidak",
     "nodeNetwork": "Jaringan Node",
-    "notApplicable": "",
+    "notApplicable": "Tidak berlaku",
     "on": "Nyala",
     "onChainAddress": "Alamat jaringan on chain",
     "online": "Daring",
@@ -1981,7 +2081,7 @@
     "tickets": "Tiket",
     "time": "Waktu",
     "timeZone": "Zona waktu",
-    "title": "",
+    "title": "Judul",
     "to": "hingga",
     "topics": "Topik",
     "total": "Total",
@@ -1998,7 +2098,42 @@
     "viewMore": "Lihat lebih",
     "wallets": "Dompet",
     "yes": "Ya",
-    "type": "Jenis"
+    "type": "Jenis",
+    "academy": "Akademi",
+    "account": "Akun",
+    "actions": "Tindakan",
+    "booking": "Pemesanan",
+    "certifications": "Sertifikasi",
+    "completed": "Selesai",
+    "enrolled": "Terdaftar",
+    "filters": "Filter",
+    "full": "Penuh",
+    "info": "Info",
+    "invoices": "Faktur",
+    "map": "Peta",
+    "month": "Bulan",
+    "myCertificates": "Sertifikat saya",
+    "none": "Tidak ada",
+    "practice": "Praktek",
+    "pricing": "Harga",
+    "questions": "Pertanyaan",
+    "rating": "Peringkat",
+    "resetAll": "Atur ulang semua",
+    "resetFilters": "Atur ulang filter",
+    "results": "Hasil",
+    "resume": "Lanjutkan",
+    "review": "Ulasan",
+    "sats": "Sats",
+    "searchTripleDot": "Mencari...",
+    "settings": "Pengaturan",
+    "share": "Bagikan",
+    "structure": "Struktur",
+    "taxes": "pajak",
+    "theory": "Teori",
+    "topic": "Topik",
+    "viewAll": "Lihat semua",
+    "week": "Minggu",
+    "weight": "Berat"
   },
   "youtubeChannels": {
     "pageTitle": "Saluran Youtube",
@@ -2007,5 +2142,57 @@
   },
   "account": {
     "account": "Akun"
+  },
+  "footer": {
+    "followUsOn": "Ikuti kami"
+  },
+  "months": {
+    "april": "April",
+    "august": "Agustus",
+    "december": "Desember",
+    "february": "Februari",
+    "january": "Januari",
+    "july": "Juli",
+    "june": "Juni",
+    "march": "Maret",
+    "may": "Mei",
+    "november": "November",
+    "october": "Oktober",
+    "september": "September"
+  },
+  "navbar": {
+    "analytics": "Analisis",
+    "bookings": "Pemesanan",
+    "career": "Karir",
+    "discountCode": "Kode diskon",
+    "learnAnytimeDescription": "Kursus mandiri",
+    "learnAnytimeTitle": "Belajar kapan saja",
+    "liveClassesDescription": "Kursus yang dipimpin oleh guru",
+    "liveClassesTitle": "Kelas langsung",
+    "manageCourses": "Kelola kursus",
+    "myCalendar": "Kalender saya",
+    "myCareer": "Karir saya",
+    "myCourses": "Kursus saya",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Belajar",
+      "teach": "Mengajar"
+    },
+    "translationPanel": "Panel terjemahan",
+    "tutorials": "Tutorial",
+    "userRolesAllocation": "Alokasi peran pengguna"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Terjemahan AI",
+      "language": "Bahasa",
+      "original": "Bahasa asli"
+    },
+    "player": {
+      "peertube": "Peertube",
+      "player": "Pemutar",
+      "rumble": "Gelombang",
+      "youtube": "Youtube"
+    }
   }
 }
