@@ -21,7 +21,7 @@ const LetterButton = ({
       type="button"
       onClick={() => onClick(letter)}
       className={cn(
-        'flex justify-center items-center shrink-0 size-[25px] text-xs rounded-full',
+        'flex justify-center items-center shrink-0 size-[32px] text-xs rounded-full',
         selectedLetter === letter
           ? 'bg-orange-500 text-white'
           : 'bg-neutral-50 text-neutral-700',
@@ -38,7 +38,7 @@ export const AlphabetGlossary = ({
 }: AlphabetGlossaryProps) => {
   return (
     <div>
-      <div className="hidden sm:flex flex-wrap gap-2 mt-4">
+      <div className="hidden sm:flex flex-wrap gap-1.5 mt-4">
         {[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map((letter) => (
           <LetterButton
             key={letter}

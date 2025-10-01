@@ -33,7 +33,7 @@ function Glossary() {
     <PageLayout
       title={t('resources.glossary.title')}
       tabs={resourcesTabs}
-      layoutSize="wide"
+      layoutSize="base"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
