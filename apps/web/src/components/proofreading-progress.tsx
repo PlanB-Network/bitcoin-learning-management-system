@@ -267,7 +267,7 @@ export const ProofreadingProgress = ({
               <div className="flex flex-col items-start gap-4">
                 <span
                   className={cn(
-                    'px-2 py-1 rounded-md shadow-course-navigation-sm title-medium-sb-18px',
+                    'px-2 py-1 rounded-md title-medium-sb-18px',
                     mode === 'dark'
                       ? 'bg-white/15 text-newGray-4'
                       : contributorsLength > 2
@@ -381,7 +381,7 @@ export const ProofreadingDesktop = ({
   return (
     <div
       className={cn(
-        'group rounded-[20px] shadow-course-navigation gap-2.5',
+        'group rounded-[20px] gap-2.5',
         variant === 'horizontal' ? 'flex-row' : 'flex-col',
         mode === 'dark'
           ? 'bg-newBlack-3'
@@ -418,7 +418,7 @@ export const ProofreadingDesktop = ({
         <div className="flex items-center gap-4">
           <span
             className={cn(
-              'px-2 py-1 rounded-md shadow-course-navigation-sm title-medium-sb-18px',
+              'px-2 py-1 rounded-md title-medium-sb-18px',
               mode === 'dark'
                 ? 'bg-white/15 text-newGray-4'
                 : contributorsLength > 2
