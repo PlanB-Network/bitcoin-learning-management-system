@@ -70,7 +70,7 @@ export const PageLayout = ({
       <>
         <div
           className={cn(
-            'fixed z-30 bg-white top-15 lg:top-18 lg:rounded-t-2xl w-full',
+            'fixed z-30 bg-white top-15 lg:top-18 lg:rounded-t-2xl w-full transition-all',
             isMobile
               ? 'left-0'
               : isSidebarOpen
@@ -78,6 +78,7 @@ export const PageLayout = ({
                 : 'min-[1920px]:left-[calc((100vw-1920px)/2+78px)] left-[86px] max-w-[1834px]',
           )}
           id="navbar-mainframe"
+          style={{ willChange: 'top, left, width, height' }}
         >
           {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
           {backLink && (
