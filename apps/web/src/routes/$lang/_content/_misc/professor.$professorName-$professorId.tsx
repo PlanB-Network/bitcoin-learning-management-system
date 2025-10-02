@@ -127,13 +127,7 @@ function ProfessorDetail() {
 
               <div className="mt-6 flex flex-wrap justify-start gap-6 w-full">
                 {professor.tutorials.map((tutorial) => {
-                  return (
-                    <TutorialCard
-                      tutorial={tutorial}
-                      key={tutorial.id}
-                      dark={true}
-                    />
-                  );
+                  return <TutorialCard tutorial={tutorial} key={tutorial.id} />;
                 })}
               </div>
             </>

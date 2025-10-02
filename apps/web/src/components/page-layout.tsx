@@ -1,6 +1,7 @@
 import { Button, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
+import type { IconType } from 'react-icons/lib';
 import { TbChevronLeft } from 'react-icons/tb';
 import { PageHeader } from '#src/components/page-header.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -20,6 +21,7 @@ interface Props {
     | { text: string; onClick?: () => void; href?: string }[]
     | React.ReactNode[];
   layoutSize?: 'base' | 'wide' | 'max';
+  icon?: IconType | ReactNode;
 }
 
 export const PageLayout = ({
@@ -33,6 +35,7 @@ export const PageLayout = ({
   backLink,
   actionButtons = [],
   layoutSize = 'max',
+  icon: Icon,
 }: Props) => {
   const isMobile = useSmaller('md');
 
@@ -105,14 +108,23 @@ export const PageLayout = ({
         )}
       >
         <div className={cn('w-full')}>
-          {title && (
-            <PageHeader
-              title={title}
-              subtitle={subtitle}
-              description={description}
-              link={link}
-            />
-          )}
+          <div className="flex items-center gap-6">
+            {Icon ? (
+              typeof Icon === 'function' ? (
+                <Icon className="shrink-0 size-8 md:size-10 text-orange-500 mb-2 md:mb-6" />
+              ) : (
+                Icon
+              )
+            ) : null}
+            {title && (
+              <PageHeader
+                title={title}
+                subtitle={subtitle}
+                description={description}
+                link={link}
+              />
+            )}
+          </div>
           {children && <div>{children}</div>}
         </div>
       </div>

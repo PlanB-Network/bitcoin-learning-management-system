@@ -68,49 +68,51 @@ function Projects() {
             setSearchTerm={setSearchTerm}
             className="ml-auto"
           />
-          {categories.map((category) => {
-            const filteredProjects = categorizedProjects[category].filter(
-              (project) =>
-                project.name.toLowerCase().includes(searchTerm.toLowerCase()),
-            );
+          <div className="flex flex-col gap-2 md:gap-5 w-full">
+            {categories.map((category) => {
+              const filteredProjects = categorizedProjects[category].filter(
+                (project) =>
+                  project.name.toLowerCase().includes(searchTerm.toLowerCase()),
+              );
 
-            if (filteredProjects.length === 0) {
-              return null;
-            }
+              if (filteredProjects.length === 0) {
+                return null;
+              }
 
-            return (
-              <details
-                key={category}
-                className="group border border-neutral-100 rounded-2xl w-full hover:cursor-pointer"
-              >
-                <summary className="[&::-webkit-details-marker]:hidden list-none px-4 py-3">
-                  <h3 className="title-medium text-black flex items-center justify-between">
-                    {capitalize(category)}
-                    <MdKeyboardArrowDown
-                      size={24}
-                      className="group-open:-rotate-180 transition-transform ease-in-out"
-                    />
-                  </h3>
-                </summary>
-                <div className="p-4 max-md:grid grid-cols-2 md:flex flex-row flex-wrap max-md:items-center gap-3 md:gap-6 w-full">
-                  {filteredProjects.map((project) => (
-                    <Link
-                      to={`/resources/projects/${formatNameForURL(project.name)}-${project.id}`}
-                      params={{
-                        projectId: project.id.toString(),
-                      }}
-                      key={project.id}
-                    >
-                      <ProjectCard
-                        name={project.name}
-                        logo={resourceImgUrl(project, 'logo.webp')}
+              return (
+                <details
+                  key={category}
+                  className="group border border-neutral-100 rounded-2xl w-full hover:cursor-pointer"
+                >
+                  <summary className="[&::-webkit-details-marker]:hidden list-none px-4 py-3">
+                    <h3 className="title-small md:title-medium text-black flex items-center justify-between">
+                      {capitalize(category)}
+                      <MdKeyboardArrowDown
+                        size={24}
+                        className="group-open:-rotate-180 transition-transform ease-in-out"
                       />
-                    </Link>
-                  ))}
-                </div>
-              </details>
-            );
-          })}
+                    </h3>
+                  </summary>
+                  <div className="p-4 max-md:grid grid-cols-2 md:flex flex-row flex-wrap max-md:items-center gap-3 md:gap-6 w-full">
+                    {filteredProjects.map((project) => (
+                      <Link
+                        to={`/resources/projects/${formatNameForURL(project.name)}-${project.id}`}
+                        params={{
+                          projectId: project.id.toString(),
+                        }}
+                        key={project.id}
+                      >
+                        <ProjectCard
+                          name={project.name}
+                          logo={resourceImgUrl(project, 'logo.webp')}
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                </details>
+              );
+            })}
+          </div>
         </div>
       )}
     </PageLayout>
