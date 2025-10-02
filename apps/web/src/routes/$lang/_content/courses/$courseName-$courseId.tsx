@@ -763,7 +763,7 @@ function CourseDetails() {
                 imgSrc: SignInIconLight,
                 mode: 'light',
                 onClick: () => {
-                  openAuthModalContext(AuthModalState.SignIn);
+                  openAuthModalContext(AuthModalState.Register);
                 },
               });
               setHasSeenRegisterToast(true);
