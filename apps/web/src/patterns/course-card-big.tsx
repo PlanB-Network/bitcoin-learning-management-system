@@ -34,10 +34,10 @@ export const CourseCardBig = ({
     <Link
       key={course.id}
       to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
-      className={cn('flex w-full max-md:mx-auto]', className)}
+      className={cn('flex w-full max-xl:mx-auto max-xl:w-[340px]', className)}
     >
       <article
-        className={`flex flex-row w-full md:h-[284px] ${courseCardStyles({
+        className={`flex flex-row w-full ${courseCardStyles({
           color: featured ? 'featured' : 'primary',
         })}`}
       >
@@ -47,32 +47,32 @@ export const CourseCardBig = ({
           <MobileCourseThumbnail course={course} />
 
           <div className="flex flex-col p-4 h-full w-full">
-            <span className="mt-2 flex flex-col w-full line-clamp-2 title-medium md:title-extra-large align-top mb-2 md:mb-0 text-nowrap">
+            <span className="mt-2 flex flex-col w-full line-clamp-2 title-medium xl:title-extra-large align-top mb-2 xl:mb-0">
               {course.name}
             </span>
-            <p className="text-neutral-600 body-small md:body-base md:line-clamp-3">
+            <p className="text-neutral-600 body-small xl:body-base xl:line-clamp-4">
               {course.goal}
             </p>
 
-            <div className="flex flex-row my-4">
+            <div className="flex flex-row my-4 items-center">
               {course.mainProfessors.map((professor) => (
                 <Image
                   key={professor.id}
                   src={resourceImgUrl(professor, 'profile.webp')}
                   alt={professor.name}
-                  breakpoints={{ default: 69, md: 128 }}
+                  breakpoints={{ default: 69, xl: 128 }}
                   className={cn(
                     'size-6 rounded-full z-10 object-cover [overflow-clip-margin:_unset]',
                   )}
                 />
               ))}
 
-              <span className="ml-2">
+              <span className="ml-2 max-xl:body-small">
                 {course.mainProfessors.map((professor) => professor.name)}
               </span>
             </div>
 
-            <div className="w-full md:mt-auto flex flex-col flex-wrap md:flex-row max-md:gap-4 text-nowrap mx-2 justify-between overflow-hidden border-t-1 border-neutral-50 pt-5">
+            <div className="w-full xl:mt-auto flex flex-col flex-wrap xl:flex-row gap-4 xl:gap-2 text-nowrap mx-2 justify-between overflow-hidden border-t-1 border-neutral-50 pt-5">
               <div className="grow-3 body-base-bold flex flew-row gap-1">
                 {course.format === 'online' || course.format === 'hybrid' ? (
                   <span>Online</span>
@@ -98,7 +98,7 @@ export const CourseCardBig = ({
                   {dateString}
                 </span>
               </div>
-              <div className="max-md:hidden flex flex-row gap-2 items-center">
+              <div className="max-xl:hidden flex flex-row gap-2 items-center">
                 <TbClock className="h-5 w-5 text-brown-400" />
                 <span className="body-base-bold text-brown-800">{`${course.hours} hours`}</span>
               </div>
@@ -106,7 +106,7 @@ export const CourseCardBig = ({
               <ButtonWithArrow
                 content="p-12 m-12"
                 variant="primary"
-                className="md:hidden w-full"
+                className="xl:hidden w-full"
                 size={'m'}
               >
                 Discover<span className="ml-2">{'>'}</span>
@@ -114,7 +114,7 @@ export const CourseCardBig = ({
             </div>
           </div>
         </div>
-        <div className="max-md:hidden self-center mx-4 w-fit">
+        <div className="max-xl:hidden self-center mx-4 w-fit">
           <TbChevronRight className="h-5 w-5 text-neutral-700" />
         </div>
       </article>
@@ -136,8 +136,8 @@ const DesktopCourseThumbnail = ({
         course.lastCommit,
       )}
       alt={course.name}
-      breakpoints={{ default: 320 }}
-      className="max-md:hidden lg:w-[338px] object-cover [overflow-clip-margin:_unset]"
+      breakpoints={{ default: 800 }}
+      className="max-xl:hidden w-[338px] rounded-l-2xl object-cover"
     />
   );
 };
@@ -159,7 +159,7 @@ const MobileCourseThumbnail = ({
         )}
         alt={course.name}
         breakpoints={{ default: 500 }}
-        className="md:hidden rounded-tl-2xl h-[172px] w-full "
+        className="xl:hidden rounded-t-2xl h-[172px] w-full "
       />
     </div>
   );

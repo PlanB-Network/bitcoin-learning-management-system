@@ -1,16 +1,15 @@
 import { TeachingFormat } from '@blms/constants';
-import { Button, EmptyState, Loader, Progress } from '@blms/ui';
+import { Button, Loader, Progress } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbBooksOff } from 'react-icons/tb';
 import banner from '#src/assets/courses/live-classes-banner.webp';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { PageLayout } from '#src/components/page-layout.js';
 import { CourseCardBig } from '#src/patterns/course-card-big.tsx';
 import { AppContext } from '#src/providers/context.tsx';
-// import { normalizeString } from '#src/utils/string.ts';
+import { normalizeString } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute('/$lang/_content/live-classes/')({
@@ -19,8 +18,7 @@ export const Route = createFileRoute('/$lang/_content/live-classes/')({
 
 function AllCourses() {
   const { courses, session } = useContext(AppContext);
-  const { t } = useTranslation();
-  // const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const isLoggedIn = !!session?.user;
 
@@ -69,8 +67,9 @@ function AllCourses() {
         .filter(
           (course) =>
             course.isArchived === false &&
-            // normalizeString(course.language) ===
-            //   normalizeString(i18n.language) &&
+            (normalizeString(course.language) ===
+              normalizeString(i18n.language) ||
+              normalizeString(course.language) === 'en') &&
             course.teachingFormat === 'professor_led' &&
             (!course.paymentExpirationDate ||
               course.paymentExpirationDate > new Date()) &&
@@ -87,11 +86,10 @@ function AllCourses() {
   }
 
   return (
-    <PageLayout className=" max-w-[1067px]">
-      <h1 className="display-small-med-32px font-semibold mb-6 md:mb-12">
-        {t('courses.learnAnytime.liveClasses')}
-      </h1>
-
+    <PageLayout
+      className=" max-w-[1067px]"
+      title={t('courses.liveClasses.liveClasses')}
+    >
       {inProgressCourses.length !== 0 && (
         <div className="flex flex-col w-full gap-4 mb-6 md:mb-12">
           <p className="text-black title-base md:title-medium">
@@ -156,22 +154,25 @@ function AllCourses() {
         </div>
       )}
 
-      <h2 className="md:hidden title-large-sb-24px font-semibold mb-6">
-        {t('courses.learnAnytime.title')}
+      <h2 className="xl:hidden title-large-sb-24px font-semibold mb-6">
+        {t('courses.liveClasses.title')}
       </h2>
 
       <div className="bg-vertical-orange-gradient border-1 border-orange-200 rounded-2xl">
-        <div className="max-md:hidden relative h-[254px] ">
+        <div className="max-xl:hidden relative h-[254px] ">
           <img className="absolute" src={banner} alt="A professor on stage" />
 
           <div className="absolute bottom-2 px-6 w-full">
-            <h2 className="display-large-med-48px max-md:title-large-24px max-md:text-neutral-600 whitespace-nowrap overflow-hidden">
-              {t('courses.learnAnytime.title')}
+            <h2 className="display-large-med-48px">
+              {t('courses.liveClasses.title')}
             </h2>
+            <h3 className="title-large-24px text-neutral-600">
+              {t('courses.liveClasses.secondaryTitle')}
+            </h3>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-4 px-2 md:px-6 pb-2 md:pb-6">
+        <div className="flex flex-wrap gap-2 xl:gap-4 mt-2 xl:mt-4 px-2 xl:px-6 pb-2 xl:pb-6">
           {planbCourses.map((course) => (
             <div key={course.id} className="w-full">
               <CourseCardBig course={course} />
@@ -179,23 +180,24 @@ function AllCourses() {
           ))}
         </div>
       </div>
-      <h2 className="md:hidden mt-6 md:mt-12 max-md:title-large-sb-24px md:display-medium-40px font-semibold">
-        {t('courses.learnAnytime.allOtherTitle')}
-      </h2>
 
-      <div className="mt-2 md:mt-8">
-        {otherCourses.length === 0 ? (
-          <EmptyState title={t('courses.noCoursesFound')} icon={TbBooksOff} />
-        ) : (
-          <div className="flex flex-wrap gap-2 md:gap-8">
-            {otherCourses.map((course) => (
-              <div key={course.id} className="w-full">
-                <CourseCardBig course={course} />
-              </div>
-            ))}
+      {otherCourses.length === 0 ? null : (
+        <>
+          <h2 className="mt-6 xl:mt-12 max-xl:title-large-sb-24px xl:display-medium font-semibold">
+            {t('courses.liveClasses.allOtherTitle')}
+          </h2>
+
+          <div className="mt-2 xl:mt-8">
+            <div className="flex flex-wrap gap-2 xl:gap-8">
+              {otherCourses.map((course) => (
+                <div key={course.id} className="w-full">
+                  <CourseCardBig course={course} />
+                </div>
+              ))}
+            </div>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </PageLayout>
   );
 }
