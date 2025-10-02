@@ -1,5 +1,3 @@
-// 🍐
-
 export const env = import.meta.env;
 
 console.log('Environment Variables:', { ...env });

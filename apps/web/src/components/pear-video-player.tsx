@@ -307,7 +307,7 @@ export const PearVideoPlayer = ({ videoKey }: PearVideoTestProps) => {
 
   return (
     <div>
-      <h1>Pear Video Test</h1>
+      <h1>🍐 Pear Video Test 🍐</h1>
       <p>Status: {status}</p>
 
       <video ref={videoRef} controls autoPlay style={{ width: '800px' }}>
