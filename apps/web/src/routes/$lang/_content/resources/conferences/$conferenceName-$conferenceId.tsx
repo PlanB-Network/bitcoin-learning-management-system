@@ -1,5 +1,5 @@
 import type { ConferenceStageVideo } from '@blms/types';
-import { Button, CategorySwitcher, DropdownMenu, Loader } from '@blms/ui';
+import { CategorySwitcher, DropdownMenu, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import React, { Suspense, useEffect, useState } from 'react';
@@ -9,7 +9,6 @@ import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.js';
@@ -75,8 +74,6 @@ function getVideoIdNumber(video: ConferenceStageVideo) {
 }
 
 function Conference() {
-  const isMobile = useSmaller('md');
-
   const [activeStage, setActiveStage] = useState(0);
   const [activeVideo, setActiveVideo] = useState(0);
   const navigate = useNavigate();
@@ -253,7 +250,7 @@ function Conference() {
               <span className="label-strong">
                 {t('conferences.details.selectVideo')}
               </span>
-              <div className="flex items-center flex-wrap gap-2">
+              <div className="flex items-center flex-wrap gap-2 max-h-32 overflow-y-auto scrollbar-light">
                 {sortVideos(conference.stages[activeStage].videos).map(
                   (video, index) => {
                     return (
@@ -323,7 +320,7 @@ function Conference() {
               <h3 className="title-large max-md:hidden">
                 {conference.stages[activeStage].videos[activeVideo].name}
               </h3>
-              <div className="flex flex-col gap-10 md:mt-4">
+              <div className="flex flex-col">
                 <MarkdownContent
                   rawContent={
                     conference.stages[activeStage].videos[activeVideo]
@@ -331,32 +328,6 @@ function Conference() {
                   }
                 />
               </div>
-            </div>
-
-            <div className="flex w-full mt-0.5 md:mt-5">
-              {/* Desktop */}
-              {activeVideo > 0 && (
-                <Button
-                  variant="ghost"
-                  size={isMobile ? 's' : 'l'}
-                  className="mr-auto"
-                  onClick={() => setActiveVideo((v) => v - 1)}
-                >
-                  {t('conferences.details.previousVideo')}
-                </Button>
-              )}
-
-              {activeVideo <
-                conference.stages[activeStage].videos.length - 1 && (
-                <Button
-                  variant="ghost"
-                  size={isMobile ? 's' : 'l'}
-                  className="ml-auto"
-                  onClick={() => setActiveVideo((v) => v + 1)}
-                >
-                  {t('conferences.details.nextVideo')}
-                </Button>
-              )}
             </div>
           </div>
         </>

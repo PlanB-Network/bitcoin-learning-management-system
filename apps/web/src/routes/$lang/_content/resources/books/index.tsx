@@ -39,7 +39,7 @@ function Books() {
     <PageLayout
       title={t('resources.books.title')}
       tabs={resourcesTabs}
-      layoutSize="base"
+      layoutSize="wide"
       actionButtons={[
         {
           text: t('resources.books.addBook'),
@@ -55,7 +55,7 @@ function Books() {
             setSearchTerm={setSearchTerm}
             className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
           />
-          <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
+          <div className="flex flex-wrap gap-0.5 sm:gap-6">
             {sortedBooks
               .filter(
                 (book) =>

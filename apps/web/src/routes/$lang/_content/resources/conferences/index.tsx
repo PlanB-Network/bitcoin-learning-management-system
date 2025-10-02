@@ -121,7 +121,7 @@ function Conferences() {
       {filteredConferences && filteredConferences.length > 0 && (
         <>
           <ConferencesTable conferences={filteredConferences} />
-          <div className="xl:hidden flex flex-wrap sm:gap-6 sm:justify-center mt-6">
+          <div className="xl:hidden flex flex-wrap sm:gap-6 mt-6">
             {filteredConferences?.map((conference) => (
               <ConferenceCard conference={conference} key={conference.id} />
             ))}

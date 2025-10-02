@@ -294,8 +294,8 @@ function Project() {
       )}
 
       {project?.category === 'communities' && (
-        <div className="flex flex-col gap-1 mt-6 md:mt-7.5">
-          <h3 className="subtitle-base md:title-base">
+        <div className="flex flex-col gap-1 md:gap-7.5 mt-6 md:mt-13.5">
+          <h3 className="subtitle-base md:title-large">
             {t('projects.otherCommunities')}
           </h3>
           <div className="max-md:grid grid-cols-2 md:flex flex-row flex-wrap max-md:items-center gap-3 md:gap-6 w-full">
@@ -327,8 +327,8 @@ const RelatedResource = ({
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col gap-1 mt-6 md:mt-7.5">
-      <h3 className="flex items-center gap-1 subtitle-base md:title-base">
+    <div className="flex flex-col gap-1 md:gap-7.5 mt-6 md:mt-13.5">
+      <h3 className="flex items-center gap-1 subtitle-base md:title-large">
         {t('projects.related')} <span>{category.toLocaleLowerCase()}</span>
       </h3>
       {children}

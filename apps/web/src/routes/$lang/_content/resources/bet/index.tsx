@@ -31,7 +31,7 @@ function BET() {
     <PageLayout
       title={t('resources.bet.title')}
       tabs={resourcesTabs}
-      layoutSize="base"
+      layoutSize="wide"
       actionButtons={[
         {
           text: t('resources.bet.addEducationKit'),

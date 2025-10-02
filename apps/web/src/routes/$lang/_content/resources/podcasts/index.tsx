@@ -46,7 +46,7 @@ function Podcasts() {
     <PageLayout
       title={t('resources.podcasts.title')}
       tabs={resourcesTabs}
-      layoutSize="base"
+      layoutSize="wide"
       actionButtons={[
         {
           text: t('resources.podcasts.addPodcast'),
@@ -60,7 +60,7 @@ function Podcasts() {
           showLocalOnly={showLocalOnly}
         />
 
-        <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
+        <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedPodcasts?.length ? (
             sortedPodcasts.map((podcast) => (

@@ -8,7 +8,7 @@ interface ProjectCardProps {
 
 export const ProjectCard = (props: ProjectCardProps) => {
   return (
-    <div className="flex md:flex-col items-center md:justify-center gap-2 w-full md:w-30">
+    <div className="flex md:flex-col items-center md:justify-center gap-2 w-full md:w-29.5">
       <Image
         breakpoints={{ default: 40, md: 72 }}
         className={cn(

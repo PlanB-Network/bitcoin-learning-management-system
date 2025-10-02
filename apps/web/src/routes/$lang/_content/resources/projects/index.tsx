@@ -48,11 +48,13 @@ function Projects() {
     ...new Set(sortedProjects.map((project) => project.category)),
   ].sort((a, b) => a.localeCompare(b));
 
+  const isSearching = searchTerm.trim().length > 0;
+
   return (
     <PageLayout
       title={t('resources.projects.title')}
       tabs={resourcesTabs}
-      layoutSize="base"
+      layoutSize="wide"
       actionButtons={[
         {
           text: t('resources.projects.addProjects'),
@@ -82,6 +84,7 @@ function Projects() {
               return (
                 <details
                   key={category}
+                  open={isSearching ? true : undefined}
                   className="group border border-neutral-100 rounded-2xl w-full hover:cursor-pointer"
                 >
                   <summary className="[&::-webkit-details-marker]:hidden list-none px-4 py-3">

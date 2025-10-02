@@ -876,7 +876,7 @@
     }
 
     .scrollbar-light {
-      scrollbar-color: var(--color-newOrange-5) var(--color-newGray-5);
+      scrollbar-color: var(--color-orange-500) var(--color-newGray-5);
     }
 
     .scrollbar-light:hover {

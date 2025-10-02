@@ -22,7 +22,7 @@ function Lectures() {
     <PageLayout
       title={t('resources.lectures.title')}
       tabs={resourcesTabs}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size="s" />}
       {isFetched && (

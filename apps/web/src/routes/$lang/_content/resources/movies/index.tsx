@@ -46,7 +46,7 @@ function Movies() {
     <PageLayout
       title={t('resources.movies.title')}
       tabs={resourcesTabs}
-      layoutSize="base"
+      layoutSize="wide"
     >
       <div className="flex flex-col max-sm:mt-4 mt-2">
         <SelectedLanguageSwitcher
@@ -54,7 +54,7 @@ function Movies() {
           showLocalOnly={showLocalOnly}
         />
 
-        <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
+        <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedMovies?.length ? (
             sortedMovies.map((movie) => (

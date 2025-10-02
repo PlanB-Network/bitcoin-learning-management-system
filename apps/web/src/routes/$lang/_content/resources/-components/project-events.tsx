@@ -19,8 +19,8 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
     .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
   return (
-    <div className="flex flex-col gap-1 mt-6 md:mt-7.5">
-      <span className="subtitle-base md:title-base">
+    <div className="flex flex-col gap-1 md:gap-7.5 mt-6 md:mt-13.5">
+      <span className="subtitle-base md:title-large">
         {t('projects.relatedEvents')}
       </span>
 

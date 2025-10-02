@@ -67,11 +67,11 @@ export const ResourceDetails = ({
           />
           <div className="flex flex-col gap-6 md:gap-5.5 w-full">
             <div className="flex flex-col md:gap-1.5 w-full max-md:order-2">
-              <h1 className="max-md:display-small-32px max-md:!font-semibold md:display-medium flex gap-2 w-full justify-between items-center">
+              <h1 className="max-md:display-small-32px max-md:!font-semibold md:display-medium flex gap-4 w-full items-center">
                 {title}
                 {language &&
                   (Array.isArray(language) ? (
-                    <div className="flex flex-col gap-1 shrink-0 max-md:!hidden">
+                    <div className="flex gap-1 shrink-0 max-md:!hidden">
                       {language.slice(0, 2).map((lang) => (
                         <Flag
                           key={lang}
