@@ -156,10 +156,14 @@ function AllCourses() {
       </h2>
 
       <div className="bg-vertical-orange-gradient border-1 border-orange-200 rounded-2xl">
-        <div className="max-lg:hidden relative h-[254px] ">
-          <img className="absolute" src={banner} alt="A professor on stage" />
+        <div className="max-lg:hidden flex flex-col">
+          <img
+            className="w-full object-cover"
+            src={banner}
+            alt="A professor on stage"
+          />
 
-          <div className="absolute bottom-2 px-6 w-full">
+          <div className="bottom-2 px-6 w-full self-end z-50 -mt-16">
             <h2 className="display-base">{t('courses.liveClasses.title')}</h2>
             <h3 className="label-18px text-neutral-600">
               {t('courses.liveClasses.secondaryTitle')}
