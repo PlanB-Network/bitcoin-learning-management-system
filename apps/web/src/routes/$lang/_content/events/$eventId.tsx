@@ -248,7 +248,7 @@ function EventDetails() {
         paymentModalData.satsPrice &&
         paymentModalData.dollarPrice &&
         paymentModalData.accessType &&
-        paymentModalData.satsPrice > 0 ? (
+        paymentModalData.dollarPrice > 0 ? (
           <EventPaymentModal
             eventId={paymentModalData.eventId}
             event={event}
@@ -272,7 +272,7 @@ function EventDetails() {
 
         {event &&
         paymentModalData.eventId &&
-        paymentModalData.satsPrice === 0 &&
+        isFree &&
         paymentModalData.accessType ? (
           <EventBookModal
             event={event}

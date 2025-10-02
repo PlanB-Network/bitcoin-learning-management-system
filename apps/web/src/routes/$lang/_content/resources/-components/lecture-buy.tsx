@@ -53,29 +53,29 @@ export const LectureBuy = ({
   return (
     <div>
       {paymentModalData.eventId &&
-        paymentModalData.satsPrice &&
-        paymentModalData.dollarPrice &&
-        paymentModalData.accessType &&
-        paymentModalData.satsPrice > 0 && (
-          <EventPaymentModal
-            eventId={paymentModalData.eventId}
-            event={lecture}
-            accessType={paymentModalData.accessType}
-            satsPrice={paymentModalData.satsPrice}
-            dollarPrice={paymentModalData.dollarPrice}
-            isOpen={isPaymentModalOpen}
-            onClose={() => {
-              refetchEventPayments();
-              setPaymentModalData({
-                accessType: null,
-                dollarPrice: null,
-                eventId: null,
-                satsPrice: null,
-              });
-              setIsPaymentModalOpen(false);
-            }}
-          />
-        )}
+      paymentModalData.satsPrice &&
+      paymentModalData.dollarPrice &&
+      paymentModalData.accessType &&
+      paymentModalData.dollarPrice > 0 ? (
+        <EventPaymentModal
+          eventId={paymentModalData.eventId}
+          event={lecture}
+          accessType={paymentModalData.accessType}
+          satsPrice={paymentModalData.satsPrice}
+          dollarPrice={paymentModalData.dollarPrice}
+          isOpen={isPaymentModalOpen}
+          onClose={() => {
+            refetchEventPayments();
+            setPaymentModalData({
+              accessType: null,
+              dollarPrice: null,
+              eventId: null,
+              satsPrice: null,
+            });
+            setIsPaymentModalOpen(false);
+          }}
+        />
+      ) : null}
       <div className="flex max-md:flex-col gap-2 md:gap-7 md:items-center">
         <div className="flex max-md:flex-col md:gap-1 text-darkOrange-5 ">
           <span className="body-medium-16px md:title-large-sb-24px">
