@@ -74,8 +74,8 @@ export const PageLayout = ({
             isMobile
               ? 'left-0'
               : isSidebarOpen
-                ? 'min-[1920px]:left-[calc((100vw-1920px)/2+276px)] left-[276px]  max-w-[1644px]'
-                : 'min-[1920px]:left-[calc((100vw-1920px)/2+86px)] left-[86px] max-w-[1834px]',
+                ? 'min-[1920px]:left-[calc((100vw-1920px)/2+268px)] left-[276px] max-w-[1644px]'
+                : 'min-[1920px]:left-[calc((100vw-1920px)/2+78px)] left-[86px] max-w-[1834px]',
           )}
           id="navbar-mainframe"
         >
