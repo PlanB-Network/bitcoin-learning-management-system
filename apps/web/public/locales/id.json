@@ -424,12 +424,7 @@
     "noCoursesFound": "Tidak ada kursus yang ditemukan",
     "plusXMore": "+{{count}} lagi",
     "selectATopic": "Pilih topik",
-    "tryAdjustingFilters": "Coba sesuaikan filter Anda",
-    "learnAnytime": {
-      "allOtherTitle": "Semua kelas langsung/ online lainnya",
-      "secondaryTitle": "Menjadi layak untuk bekerja di Perusahaan yang berfokus pada Bitcoin.",
-      "title": "Program tahunan resmi Plan ₿"
-    }
+    "tryAdjustingFilters": "Coba sesuaikan filter Anda"
   },
   "dashboard": {
     "account": "Akun",

@@ -424,12 +424,7 @@
     "noCoursesFound": "Nessun corso trovato. Prova a modificare i tuoi filtri.",
     "plusXMore": "+ altri {{count}}",
     "selectATopic": "Scegli un argomento",
-    "tryAdjustingFilters": "Prova a modificare i tuoi filtri",
-    "learnAnytime": {
-      "allOtherTitle": "Tutte le altre lezioni dal vivo",
-      "secondaryTitle": "Diventa un candidato ideale le aziende focalizzate su Bitcoin.",
-      "title": "Programma annuale ufficiale di Plan ₿"
-    }
+    "tryAdjustingFilters": "Prova a modificare i tuoi filtri"
   },
   "dashboard": {
     "account": "Account",

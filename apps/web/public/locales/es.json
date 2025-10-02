@@ -424,12 +424,7 @@
     "noCoursesFound": "No se encontraron cursos",
     "plusXMore": "+{{count}} más",
     "selectATopic": "Elegir un tema",
-    "tryAdjustingFilters": "Intenta ajustar tus filtros",
-    "learnAnytime": {
-      "allOtherTitle": "Todas las demás clases en vivo",
-      "secondaryTitle": "Conviértete en empleable en empresas enfocadas en Bitcoin.",
-      "title": "Programa anual oficial Plan ₿"
-    }
+    "tryAdjustingFilters": "Intenta ajustar tus filtros"
   },
   "dashboard": {
     "account": "Cuenta",

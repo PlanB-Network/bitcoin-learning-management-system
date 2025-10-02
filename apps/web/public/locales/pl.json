@@ -422,11 +422,6 @@
     "allCourses": "Wszystkie kursy",
     "continueLeftOff": "Kontynuuj tam, gdzie skończyłeś",
     "courseSelector": "Wybór kursu",
-    "learnAnytime": {
-      "allOtherTitle": "Wszystkie inne zajęcia na żywo",
-      "secondaryTitle": "Stań się atrakcyjnym kandydatem dla firm skupionych wokół Bitcoina.",
-      "title": "Oficjalny roczny program Planu ₿"
-    },
     "noCoursesFound": "Nie znaleziono żadnych kursów",
     "plusXMore": "+{{count}} więcej",
     "selectATopic": "Wybierz temat",
@@ -1123,26 +1118,26 @@
       "confirmNoEditable": "Po zatwierdzeniu nie będzie już można edytować tej listy preferencji.",
       "confirmNoEditableFile": "Po wysłaniu nie będziesz już mógł edytować swojego pliku.",
       "confirmSubmission": "Potwierdź zgłoszenie",
-      "congratulationsPassed": "",
+      "congratulationsPassed": "Gratulacje! Zdałeś z powodzeniem!",
       "coordinator": "Koordynator kursu",
       "courseCalendar": "Kalendarz kursu",
       "coursesCompleted": "Ukończone kursy",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
+      "diplomaReleaseDescription": "Po zakończeniu wszystkich zajęć, otrzymasz dyplom pomyślnego ukończenia kursu. Dyplomy będą dostępne do pobrania tutaj po ostatnich zajęciach i ukończeniu rozdziału końcowego.",
+      "diplomaReleaseTitle": "Wydawanie dyplomów",
       "examScore": "Wynik:",
       "exams": "Egzaminy",
       "feedbacks": "Tutaj możesz sprawdzić i edytować oceny i opinie, które dałeś temu kursowi.",
       "fileUploadError": "Wystąpił błąd podczas przesyłania twojego",
       "fileUploaded": "Twoja praca została przesłana pomyślnie!",
-      "finalAverageGradeDescription": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
+      "finalAverageGradeDescription": "Możesz znaleźć swoją końcową średnią ocenę w sekcji Egzamin & Dyplom na swoim pulpicie.",
+      "finalGradeSummary": "Podsumowanie ocen końcowych",
+      "finalScore": "Ocena końcowa",
       "generalInformation": "Informacje ogólne",
-      "individualWork": "",
+      "individualWork": "Praca indywidualna",
       "isSubmissionFinal": "Czy twoje zgłoszenie jest ostateczne?",
       "joinTelegramGroup": "Dołącz do grupy na Telegramie",
       "keepEditing": "Kontynuuj edytowanie",
-      "keepMovingForward": "",
+      "keepMovingForward": "Chociaż tym razem nie udało Ci się zdać, każdy krok buduje postęp. \nKontynuuj swoją podróż pełną nauki!",
       "leastPreferred": "Najmniej preferowany",
       "listSaved": "Twoja lista preferencji została zapisana.",
       "listSavedComeTomorrow": "Twoja lista preferencji została zapisana.\nJutro w tym miejscu możesz sprawdzić, do którego projektu zostałeś przypisany.",
@@ -1150,9 +1145,9 @@
       "mustBePdf": "Twój plik musi być w formacie PDF. Jeśli musisz przesłać dodatkowy plik, dołącz link do niego wewnątrz swojego dokumentu PDF.",
       "notSelectedAssignment": "Niestety, nie zostałeś wybrany do udziału w projekcie.\nNadal możesz brać udział w wykładach",
       "planbSchoolExamDescription": "Program Plan ₿ Biz School 2025 składa się z dwóch etapów. W pierwszym etapie przystąpisz do dwóch egzaminów online, konkretnie do egzaminu śródrocznego i końcowego: są to testy, do których można podejść tylko raz - w dowolnym momencie w ciągu trzydniowego okresu ich dostępności. Po pierwszym etapie nastapi selekcja kursantów, którzy na podstawie swojego miejsca w rankingu zostana dopuszczeni do etapu drugiego, który obejmuje zadanie projektowe: indywidualne zadanie dostarczone przez firmę z branży Bitcoin. Więcej szczegółów na ten temat można znaleźć w zakładce Zadania.\n\nOcena końcowa będzie obliczana jako średnia ważona z trzech testów. Kursanci, którzy osiągną wynik powyżej 80%, otrzymają dyplom, a kursanci z najwyższymi wynikami będą mieli również szansę wziąć udział w Szkole Letniej w Lugano w lipcu.",
-      "planbSchoolGeneralInformation": "",
+      "planbSchoolGeneralInformation": "Program Plan ₿ Biz School 2025 składa się z dwóch etapów. W pierwszym etapie przystąpisz do dwóch egzaminów online, a konkretnie do egzaminu śródrocznego i końcowego: są to testy, do których można podejść tylko raz - w dowolnym momencie w ciągu trzydniowego okresu ich dostępności. Po pierwszym etapie nastapi selekcja kursantów, którzy na podstawie swojego miejsca w rankingu zostana dopuszczeni do etapu drugiego, który obejmuje zadanie projektowe: indywidualne zadanie dostarczone przez firmę z branży Bitcoin. Więcej szczegółów na ten temat można znaleźć w zakładce Zadania.\n\nOcena końcowa będzie obliczana jako średnia ważona z trzech testów. Kursanci, którzy osiągną wynik powyżej {{threshold}}%, otrzymają dyplom, a kursanci z najwyższymi wynikami będą mieli również szansę wziąć udział w Szkole Letniej w Lugano w lipcu.",
       "projectRankingInstructions": "Instrukcje dotyczące rankingu projektów:",
-      "ranking": "",
+      "ranking": "Ranking",
       "rankingInstructions": "Ułóż zaproponowane projekty według swoich preferencji (numer 1 to twój preferowany wybór). Ranking ten pozwoli nam przypisać ci najodpowiedniejszy projekt. Preferencje kursantów z wyższymi wynikami będą brane pod uwagę jako pierwsze.",
       "rankingOnly24Hours": "Portal rankingowy będzie otwarty tylko przez 24 godziny, 2 czerwca od 00:00 do 23:59 (UTC+2).",
       "rankProjectPreferences": "Wybierz swoje preferencje projektowe",
@@ -1165,14 +1160,19 @@
       "submitFileNamingFormat": "Twój plik musi być nazwany według następującego formatu:\n<0>nazwa_firmy_użytkownik.pdf</0>.\nUsuń wszystkie spacje z nazwy firmy, użyj dokładnej nazwy użytkownika na platformie planB.network i sprawdź, czy nie ma literówek.",
       "submitReviewInfo": "Musisz przesłać opinię, aby mieć dostęp do tej funkcji.",
       "submitYourWork": "Prześlij swoją pracę",
-      "summerSchool": "",
+      "summerSchool": "Szkoła letnia",
       "surePreferenceList": "Czy twoja lista preferencji na pewno jest ostateczna?",
-      "thresholdToPass": "",
+      "thresholdToPass": "Próg zdania: {{threshold}}%",
       "tweetText": "Mam ukończony kurs {{courseIndex}} w @planb_network i dyplom z wynikiem {{score}}/100 na egzaminie końcowym! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
+      "viewFinalGrade": "Zobacz ocenę końcową",
       "yourProject": "Twój projekt",
       "assignmentNotAccessible": "Zlecenie zostało już rozpoczęte i nie jest już dostępne.",
-      "assignmentScore": "Ocena zlecenia"
+      "assignmentScore": "Ocena zlecenia",
+      "gaveSolidEffort": "Dałeś z siebie wszystko!",
+      "tweetTextCourseDiploma": "Zachwycony ukończeniem kursu {{courseName}}, prowadzonego przez {{courseCoordinator}} w @planb_network i zdobyciem mojego dyplomu!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Zobacz podsumowanie wyników",
+      "wellDoneCompleting": "Gratulujemy ukończenia i zaliczenia kursu! \nOto dyplom, na który sobie zapracowałeś",
+      "yourProjectAssignment": "Twoje zadanie projektowe"
     },
     "courses": "Kursy",
     "credentials": {
@@ -1187,7 +1187,13 @@
       "retakeExam": "Podejdź do egzaminu ponownie",
       "seatBooked": "Twoje miejsce na sesji egzaminacyjnej jest zarezerwowane",
       "takePlaceAt": "Sesja egzaminacyjna odbędzie się w",
-      "yourCertificate": "Twój certyfikat"
+      "yourCertificate": "Twój certyfikat",
+      "completeACourse": "Ukończ kurs, aby zdobyć swój pierwszy dyplom!",
+      "exploreBCert": "Odkryj ₿-CERT",
+      "exploreCourses": "Odkryj kursy",
+      "getGlobalRecognition": "Zdobądź globalne uznanie dzięki certyfikatowi ₿-CERT",
+      "noCertificatesAvailable": "Brak dostępnych certyfikatów",
+      "noDiplomasAvailable": "Żadne dyplomy nie są jeszcze dostępne"
     },
     "goToDashboard": "Powrót do pulpitu ucznia",
     "goToHomepage": "Przejdź do strony głównej",
@@ -1239,16 +1245,21 @@
         "emailPreferencesTitle": "Zarządzaj swoimi preferencjami dotyczącymi e-maili w sieci Plan ₿",
         "emailTitle": "Jakiego rodzaju powiadomienia chciałbyś otrzymywać przez e-maila?",
         "emailWarning": "Uwaga! Do Twojego konta nie jest przypisany żaden adres e-mail. Proszę dodać go w sekcji profil.",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "eventsOption": "Aktualizacje na temat wydarzeń, na które zarezerwowałeś miejsce",
+        "generalOption": "Ogólne informacje i najnowsze wiadomości o sieci Plan ₿",
+        "goToProfile": "Przejdź do profilu",
+        "loadEmailSettingsError": "Przepraszamy, nie mogliśmy załadować Twoich preferencji e-mail.",
+        "loadEmailSettingsErrorDescription": "Upewnij się, że użyty przez Ciebie link jest kompletny i poprawny.",
+        "loadEmailSettingsErrorManage": "Jeśli masz dostęp do swojego konta, możesz również zarządzać ustawieniami bezpośrednio na swoim pulpicie:",
+        "none": "Brak",
+        "platformTitle": "Jakiego rodzaju powiadomienia chciałbyś otrzymywać na tej platformie?",
+        "settingsSaved": "Twoje ustawienia zostały zapisane pomyślnie!",
+        "title": "Ustawienia powiadomień",
+        "assignedAt": "Przydzielony do",
+        "completedAt": "Ukończono",
+        "displayName": "Wyświetlana nazwa użytkownika",
+        "filter": "Filtruj",
+        "role": "Rola"
       },
       "password": "Hasło",
       "personalInformation": "Moje dane osobowe",
@@ -1259,74 +1270,92 @@
       "save": "Zapisz",
       "saving": "Zapisywanie…",
       "security": "Bezpieczeństwo",
-      "securitySettings": "",
-      "settings": "",
+      "securitySettings": "Ustawienia bezpieczeństwa",
+      "settings": "Ustawienia",
       "username": "Nazwa użytkownika"
     },
     "studentDashboard": "Panel ucznia",
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "Wszyscy kursanci",
         "analytics": "Analityka",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "Tekst ogłoszenia",
+          "contentPlaceholder": "Proszę wpisać tutaj.",
+          "create": "Stwórz ogłoszenie",
+          "dateLabel": "Data publikacji",
+          "datePlaceholder": "Wybierz termin",
+          "dateRequired": "Termin jest wymagany",
+          "editAnnouncement": "Edytuj ogłoszenie",
+          "groupLabel": "Wybierz grupę kursantów, do której chcesz się zwrócić",
+          "title": "Napisz ogłoszenie",
+          "typeLabel": "Jaki to rodzaj ogłoszenia?",
+          "typePlaceholder": "Wybierz jeden typ"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "Ogłoszenia",
+        "announcementsIntroduction": "Oprócz automatycznych powiadomień o planach lekcji, masz możliwość napisania i zaplanowania dodatkowych ogłoszeń dla swoich uczniów. Na przykład, możesz poinformować ich o zmianach logistycznych lub aktualizacjach z ostatniej chwili.\nUczniowie otrzymają te powiadomienia na platformie, a także pocztą elektroniczną (jeśli aktywują tę opcjonalną funkcję).",
+        "announcementsPast": "Poprzednie ogłoszenia",
+        "announcementsPastDescription": "Poniżej znajduje się lista już opublikowanych ogłoszeń. Lista ta zostanie wyczyszczona po upływie jednego miesiąca.",
+        "announcementsUpcoming": "Przyszłe ogłoszenia",
+        "announcementsUpcomingDescription": "Oto przyszłe ogłoszenia, które napisałeś i zaplanowałeś.",
+        "assignment": "Zadanie",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertDescription2": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Po wprowadzeniu wszystkich ocen, kliknij na \"Opublikuj wszystkie oceny\", aby opublikować je wszystkie naraz. \nProszę zweryfikować oceny przed publikacją, ponieważ po opublikowaniu już nie będą mogły być edytowane. ",
+          "alertDescription2": "Oceny za zadanie muszą zostać opublikowane przed północą 22 czerwca (CET).",
+          "alertTitle": "Ocenianie zadań",
+          "confirmPublication": "Potwierdź publikację",
+          "confirmPublicationDescription": "Po opublikowaniu ocen, nie ma już odwrotu, ponieważ nie będzie już możliwości ich edycji.",
+          "confirmPublicationTitle": "Czy upewniłeś się, że nie ma błędów?",
+          "description": "Studenci są uporządkowani według grup zadań.",
+          "grade100": "Ocena (/100)",
+          "gradesPublished": "Oceny zostały opublikowane.",
+          "missingGradesDescription": "Kiedy oceny zostaną opublikowane, brakujące oceny zostaną zastąpione przez 0/100.",
+          "missingGradesTitle": "Brakuje jeszcze {{count}} ocen!",
+          "publishAllGrades": "Opublikuj wszystkie oceny",
+          "studentDisplayName": "Kursant (Nazwa wyświetlana)",
+          "title": "Oceny z zadań",
+          "courseAssignment": "Zadanie z kursu"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "Przydzielanie projektów",
         "courseDetails": "Szczegóły kursu",
         "courseLongDescription": "Wprowadzenie",
         "courseModification": "Jeśli potrzebujesz pomocy, żeby zedytować coś w kursie, sprawdź w tym <0>poradniku</0>.",
         "coursesManagementPanel": "Panel kursów",
         "curriculum": "Plan kursu",
         "curriculumDescription": "Oto aktualny plan tego kursu.",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "Czy na pewno chcesz usunąć to ogłoszenie?",
+        "deleteAnnouncementWarning": "Ta zmiana jest nieodwracalna",
         "editOnGithub": "Edytuj na Githubie",
         "examResults": "Wyniki egzaminów",
         "goal": "Cel",
         "makeModifications": "Potrzebujesz wprowadzić zmianę?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "Obecnie NIE MASZ ŻADNYCH wcześniejszych ogłoszeń.",
+        "noWrittenAnnouncement": "Nie masz obecnie żadnego pisemnego ogłoszenia.",
         "objectives": "Cele",
         "proposeNewCourse": "Zaproponuj nowy kurs",
         "quickRecap": "Tutaj znajdziesz wszystkie informacje ogólne dotyczące tego kursu.",
         "reviewInfos": "Tutaj możesz kontrolować i przeglądać wszystkie informacje dotyczące każdego kursu, który koordynowałeś.",
         "reviews": "Opinie",
-        "selectCourse": "",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "selectCourse": "Wybierz kurs",
+        "summerStudents": "Szkoła letnia",
+        "writeAnnouncement": "Napisz ogłoszenie",
+        "amountPaid": "Zapłacona kwota",
+        "averageAttempts": "Średnia liczba prób",
+        "averageDuration": "Średni czas trwania",
+        "averageScore": "Średnia ocena",
+        "exportExamData": "Eksportuj dane egzaminacyjne",
+        "finalAverageResults": "Średnie wyniki końcowe",
+        "finalScore": "Ocena końcowa",
+        "lastActive": "Ostatnio aktywny",
+        "medianScore": "Mediana ocen",
+        "noExamLinked": "Obecnie do tego kursu nie jest przypisany żaden egzamin. Jeśli chcesz utworzyć egzamin, skontaktuj się z nami.",
+        "overview": "Przegląd ogólny",
+        "questionsInExam": "Pytania egzaminacyjne",
+        "studentsGraduated": "Kursanci, którzy ukończyli kurs",
+        "studentsList": "Lista kursantów",
+        "successRate": "Wskaźnik zdawalności",
+        "thresholdToPass": "Próg zaliczenia",
+        "totalQuestions": "Łączna liczba pytań"
       },
       "menu": "Menu nauczyciela",
       "profile": {
@@ -1363,6 +1392,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Tutaj znajdziesz analizy dotyczące tutoriali, które stworzyłeś i opublikowałeś na platformie.",
         "yourTutorials": "Twoje tutoriale"
+      },
+      "discount": {
+        "description": "Tutaj możesz wygenerować kody rabatowe na ten kurs i zarządzać nimi - kody mogą być jednorazowe (np. na stypendia) lub wielokrotnego użytku (na kampanie marketingowe)."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Ogłoś zmianę",
+          "attendanceList": "Lista obecności",
+          "courseEnded": "Ten kurs się zakończył.",
+          "courseNotStarted": "Ten kurs jeszcze się nie zaczął.",
+          "enrolledStudents": "Zapisani kursanci",
+          "hasEnrolled": "został zapisany",
+          "hasGraduated": "ukończył kurs z wynikiem {{score}}%",
+          "hasLeftReview": "zostawił opinię",
+          "hasLeftReviewAndComment": "zostawił opinię i komentarz",
+          "notifyStudents": "Coś się zmieniło? Powiadom swoich kursantów.",
+          "overallPerformance": "Ogólny wynik",
+          "recentActivity": "Ostatnia aktywność",
+          "studentsRegistered": "Zarejestrowani kursanci",
+          "upcomingClass": "Nadchodzące zajęcia"
+        }
       }
     }
   },
@@ -1382,7 +1434,8 @@
       "unlimited": "bez ograniczeń",
       "visitWebsite": "Zobacz stronę internetową",
       "watchLive": "Oglądaj na żywo",
-      "watchReplay": "Obejrzyj powtórkę"
+      "watchReplay": "Obejrzyj powtórkę",
+      "buyLecture": "Kup wykład"
     },
     "errors": {
       "premiumContentNeedsLogin": "Musisz być zalogowany, aby uzyskać dostęp do tego wydarzenia.",
@@ -1434,7 +1487,42 @@
       "time": "Godzina"
     },
     "tcDisclaimer": "Zgadzam się na udostępnienie moich informacji organizatorom w celu uzyskania dostępu do miejsca wydarzenia.",
-    "tcMustBeAccepted": "Musisz zaakceptować warunki, aby kontynuować zakup."
+    "tcMustBeAccepted": "Musisz zaakceptować warunki, aby kontynuować zakup.",
+    "addEvent": "Dodaj wydarzenie",
+    "calendar": {
+      "displayCalendar": "Wyświetl Kalendarz",
+      "fullMap": "Kompletna mapa",
+      "hideCalendar": "Ukryj kalendarz",
+      "inXMonths": "Za {{number}} miesięcy",
+      "lastMonth": "W zeszłym miesiącu",
+      "nextMonth": "W przyszłym miesiącu",
+      "noEventsFound": "Nie znaleziono wydarzeń",
+      "thisMonth": "W tym miesiącu",
+      "today": "Dzisiaj",
+      "xMonthsAgo": "{{number}} miesięcy temu"
+    },
+    "eventInfos": {
+      "eventBooked": "Wydarzenie zarezerwowane",
+      "eventType": "Typ wydarzenia",
+      "numberOfSpots": "Liczba miejsc",
+      "onlineAndInPerson": "Online i stacjonarnie",
+      "secureYourSpot": "Zagwarantuj sobie miejsce",
+      "whatsPlanned": "Co jest w planie"
+    },
+    "myTickets": "Moje bilety",
+    "planBWeek": {
+      "pageTitle": "Tydzień sieci Plan ₿"
+    },
+    "types": {
+      "plurals": {
+        "conference": "konferencje",
+        "exam": "egzaminy",
+        "lecture": "wykłady",
+        "meetup": "spotkania",
+        "workshop": "warsztaty"
+      }
+    },
+    "upcomingEvents": "Nadchodzące wydarzenia"
   },
   "filters": {
     "categories": "Kategorie",
@@ -1455,7 +1543,8 @@
     "placeHolder": "Co to jest?",
     "randomSearch": "Wyszukiwanie losowe",
     "relatedWords": "Powiązane słowa:",
-    "term": "Wyrażenie"
+    "term": "Wyrażenie",
+    "showMoreWords": "Załaduj więcej słów"
   },
   "home": {
     "aboutUsSection": {
@@ -1578,7 +1667,8 @@
   "movies": {
     "goToMovie": "Obejrzyj wideo",
     "pageTitle": "Wideo i filmy dokumentalne",
-    "watchTrailer": "Obejrzyj zwiastun"
+    "watchTrailer": "Obejrzyj zwiastun",
+    "checkTheMovie": "Zobacz film"
   },
   "nodeNetwork": {
     "description1": "Wierzymy, że edukacja powinna odbywać się nie tylko online, ale również na żywo. Aby to umożliwić, sieć Plan ₿ zarządza siecią centrów na całym świecie, aby gościć myślicieli, przedsiębiorców i edukatorów, którzy przyczyniają się do rozwoju Bitcoina i technologii wolności.",
@@ -1593,54 +1683,55 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "Zadanie",
+      "calendar": "Przypomnienie z kalendarza",
+      "celebration": "Specjalny dzień",
+      "general": "Informacje ogólne",
+      "warning": "Ostrzeżenie"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "hoursAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "stayUpToDate": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "Twoje wyniki ₿-CERT są już dostępne!",
+    "blogNotTranslated": "Przepraszamy, ten nowy wpis na blogu nie jest jeszcze przetłumaczony na obecnie używany przez Ciebie język.",
+    "bookYourSeat": "Zarezerwuj swoje miejsce, jeśli chcesz uczestniczyć osobiście!",
+    "calendar_5m": "Zajęcia zaczynają się za 5 minut! Kliknij tutaj, aby dołączyć teraz.",
+    "calendar_5m_online_event": "Nadszedł czas! Wydarzenie {{eventName}} zaczyna się za 5 minut. Kliknij tutaj, aby dołączyć teraz!",
+    "calendar_24h": "Następne zajęcia odbędą się jutro od godziny {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Wydarzenie {{eventName}} odbędzie się jutro, od {{formattedTime}} w {{addressLine}}. Upewnij się, że pobrałeś swój bilet, aby wziąć udział w tym wydarzeniu!",
+    "calendar_48h_online_event": "Nadchodzi {{eventName}}! To wydarzenie zaplanowane jest na {{date}}, od godziny {{formattedTime}}. ",
+    "dashboardDescription": "Oto Twoje najnowsze powiadomienia. Są one automatycznie usuwane miesiąc po tym, jak je zobaczysz.",
+    "daysAgo": "{{days}} dni temu",
+    "hoursAgo": "{{hours}} godzin temu",
+    "markAsRead": "Oznacz jako przeczytane",
+    "monthsAgo": "{{months}} miesięcy temu",
+    "noRecentNotifications": "Nie masz obecnie żadnych nowych powiadomień.",
+    "notifications": "Powiadomienia",
+    "noUnreadNotifications": "Nie ma więcej nieprzeczytanych powiadomień",
+    "planBNews": "Wiadomości sieci Plan ₿",
+    "read": "Czytaj",
+    "results": "Twoje wyniki ₿-CERT są już dostępne!",
+    "select": "Wybierz",
+    "selectAll": "Wybierz wszystko",
+    "stayUpToDate": "Bądź na bieżąco!",
+    "today": "Dzisiaj",
+    "unread": "Nieprzeczytane",
+    "upcomingEvent": "Nadchodzące wydarzenie",
+    "weeksAgo": "{{weeks}} tygodni temu",
+    "yearsAgo": "{{years}} lat temu",
+    "yesterday": "Wczoraj",
+    "newVersionAvailable": "Nowa wersja platformy Plan ₿ Network jest już dostępna. Odśwież tę stronę, aby ją zaktualizować."
   },
   "payment": {
     "haveReductionCode": "Masz kod rabatowy?",
     "insertReductionCode": "Wprowadź swój kod zniżkowy",
     "payByCard": "Zapłać kartą",
     "payWithBitcoin": "Zapłać Bitcoinem",
-    "taxesMayApply": "",
+    "taxesMayApply": "Przy kasie może zostać doliczony podatek",
     "terms": "Zobacz nasze <0>ogólne warunki</0> i szczegóły dotyczące zwrotu kosztów",
     "total": "Razem"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Wybierz strefę czasową"
   },
   "podcast": {
     "check": "Posłuchaj podcastu"
@@ -1693,7 +1784,7 @@
     "blogPageStrings": {
       "blogListButtonText": "Czytaj",
       "blogSidebarTitle": "Poprzednie wpisy w kategorii {{category}}",
-      "blogSidebarTitleForAll": "",
+      "blogSidebarTitleForAll": "Poprzednie wpisy",
       "errorMessageNotFound": "Blog nie został znaleziony.",
       "featuredArticleTitleText": "Najnowszy opublikowany artykuł",
       "filterText": "Filtruj według tematu:",
@@ -1719,18 +1810,21 @@
       "title": "Artykuły"
     },
     "bet": {
-      "title": "Zestaw Materiałów Edukacyjnych"
+      "title": "Zestaw Materiałów Edukacyjnych",
+      "addEducationKit": "Dodaj zestaw edukacyjny"
     },
     "books": {
       "author": "Autor: ",
-      "title": "Biblioteka"
+      "title": "Biblioteka",
+      "addBook": "Dodaj książkę"
     },
     "channels": {
       "noYoutubeChannels": "Obecnie nie ma kanałów Youtube dla wybranego języka.",
       "title": "Kanały na Youtube"
     },
     "conferences": {
-      "title": "Powtórki z konferencji"
+      "title": "Powtórki z konferencji",
+      "addConference": "Dodaj powtórkę konferencji"
     },
     "github": "Wszystkie dane są zarządzane za pośrednictwem jednego otwartego repozytorium <0>Github</0>. Zachęcamy do wniesienia własnego wkładu i dodawania brakujących treści.",
     "glossary": {
@@ -1763,10 +1857,13 @@
     "pageTitle": "Witamy w Portalu z Materiałami Edukacyjnymi",
     "podcasts": {
       "noPodcasts": "Obecnie nie ma podcastów dla wybranego języka.",
-      "title": "Podcasty"
+      "title": "Podcasty",
+      "addPodcast": "Dodaj podcast",
+      "checkThePodcast": "Posłuchaj podcastu"
     },
     "projects": {
-      "title": "Projekty"
+      "title": "Projekty",
+      "addProjects": "Dodaj projekt"
     },
     "searchFilterName": "Szukaj według nazwy",
     "toggleFreeOnly": "Tylko darmowe",
@@ -1786,7 +1883,7 @@
     "course_part": "Część kursu",
     "courses": "Kursy",
     "event": "Wydarzenie",
-    "events": "Wydarzenia",
+    "events": "Wydarzeń",
     "explorer": {
       "subtitle": "Czego szukasz?",
       "title": "Portal wyszukiwania"
@@ -1803,7 +1900,7 @@
     "podcast": "Podcast",
     "podcasts": "Podcasty",
     "professor": "Nauczyciel",
-    "professors": "Nauczyciele",
+    "professors": "Nauczycieli",
     "project": "Projekt",
     "projects": "Projekty",
     "resultEmpty": "Ups! Nie mogliśmy znaleźć niczego pasującego do twoich kryteriów wyszukiwania. Sprawdź pisownię, spróbuj innych słów kluczowych lub wybierz inną kategorię.",
@@ -1815,7 +1912,7 @@
     "searchResult": "Wyniki wyszukiwania",
     "startSearch": "Rozpocznij swoje wyszukiwanie, aby zobaczyć wyniki tutaj",
     "tutorial": "Tutorial",
-    "tutorials": "Tutoriale",
+    "tutorials": "Tutoriali",
     "youtube_channel": "Kanał na Youtube",
     "youtube_channels": "Kanały na Youtube"
   },
@@ -1938,7 +2035,7 @@
     "booked": "Zarezerwowano",
     "bookings": "Rezerwacje",
     "business": "Biznes",
-    "calendar": "",
+    "calendar": "Kalendarz",
     "cancel": "Anuluj",
     "careerPortal": "Portal Karier",
     "category": "Kategoria",
@@ -1948,12 +2045,12 @@
     "chapters": "Rozdziały",
     "close": "Zamknij",
     "communities": "Społeczności",
-    "company": "",
+    "company": "Firma",
     "complete": "Zakończone",
     "conference": "Konferencja",
     "congrats": "Gratulacje!",
     "content": "Treść",
-    "continue": "",
+    "continue": "Kontynuuj",
     "country": "Kraj",
     "course": "Kurs",
     "courseId": "ID kursu",
@@ -1962,7 +2059,7 @@
     "credits": "Podziękowania",
     "dashboard": "Pulpit",
     "date": "Data",
-    "day": "",
+    "day": "Dzień",
     "delete": "Usuń",
     "description": "Opis",
     "details": "Szczegóły",
@@ -2013,9 +2110,9 @@
     "lnurlAuth": "LNURL Auth",
     "location": "Miejsce",
     "members": " Członkowie",
-    "mentor": "",
+    "mentor": "Mentor",
     "mining": "Górnictwo",
-    "mode": "",
+    "mode": "Tryb",
     "movie": "Film",
     "name": "Nazwa",
     "network": "Sieć",
@@ -2023,7 +2120,7 @@
     "next": "Dalej",
     "no": "Nie",
     "nodeNetwork": "Sieć węzłów",
-    "notApplicable": "",
+    "notApplicable": "Nie dotyczy",
     "on": "w",
     "onChainAddress": "Adres on chain",
     "online": "Online",
@@ -2032,7 +2129,7 @@
     "paid": "Zapłacono",
     "part": "Część",
     "passed": "Zdany",
-    "password": "",
+    "password": "Hasło",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "previous": "Poprzedni",
@@ -2052,10 +2149,10 @@
     "resources": "Materiały",
     "role": "Rola",
     "save": "Zapisz",
-    "saving": "",
+    "saving": "Zapisywanie...",
     "search": "Wyszukaj",
     "security": "Bezpieczeństwo",
-    "selectedAmount": "",
+    "selectedAmount": "wybrano {{amount}}",
     "skip": "Pomiń",
     "socialStudies": "Nauki społeczne",
     "start": "Start",
@@ -2070,8 +2167,8 @@
     "ticket": "Bilet",
     "tickets": "Bilety",
     "time": "Czas",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "Strefa czasowa",
+    "title": "Tytuł",
     "to": "do",
     "topics": "Tematy",
     "total": "Razem",
@@ -2083,11 +2180,47 @@
     "user": "Użytkownik",
     "username": "Nazwa użytkownika",
     "users": "Użytkownicy",
-    "video": "",
+    "video": "Wideo",
     "view": "Zobacz",
     "viewMore": "Zobacz więcej",
     "wallets": "Portfele",
-    "yes": "Tak"
+    "yes": "Tak",
+    "academy": "Akademia",
+    "account": "Konto",
+    "actions": "Działania",
+    "booking": "Rezerwacja",
+    "certifications": "Certyfikaty",
+    "completed": "Ukończono",
+    "enrolled": "Zapisany",
+    "filters": "Filtry",
+    "full": "Pełny",
+    "info": "Informacje",
+    "invoices": "Faktury",
+    "map": "Mapa",
+    "month": "Miesiąc",
+    "myCertificates": "Moje certyfikaty",
+    "none": "Brak",
+    "pricing": "Cennik",
+    "questions": "Pytania",
+    "rating": "Opinie",
+    "resetAll": "Zresetuj wszystko",
+    "resetFilters": "Zresetuj filtry",
+    "results": "Wyniki",
+    "resume": "Powrót",
+    "review": "Opinia",
+    "sats": "Saty",
+    "searchTripleDot": "Wyszukiwanie...",
+    "settings": "Ustawienia",
+    "share": "Udostępnij",
+    "structure": "Struktura",
+    "taxes": "podatki",
+    "theory": "Teoria",
+    "topic": "Temat",
+    "type": "Typ",
+    "viewAll": "Zobacz wszystko",
+    "week": "Tydzień",
+    "practice": "Ćwiczenia",
+    "weight": "Waga"
   },
   "youtubeChannels": {
     "pageTitle": "Kanały na Youtube",
@@ -2095,6 +2228,59 @@
     "watchTrailer": "Obejrzyj zwiastun"
   },
   "account": {
-    "account": "Konto"
+    "account": "Konto",
+    "myTeacherProfile": "Mój profil nauczyciela"
+  },
+  "footer": {
+    "followUsOn": "Obserwuj nas na"
+  },
+  "months": {
+    "april": "kwiecień",
+    "august": "sierpień",
+    "december": "grudzień",
+    "february": "luty",
+    "january": "styczeń",
+    "july": "lipiec",
+    "june": "czerwiec",
+    "march": "marzec",
+    "may": "maj",
+    "november": "listopad",
+    "october": "październik",
+    "september": "wrzesień"
+  },
+  "navbar": {
+    "analytics": "Analityka",
+    "bookings": "Rezerwacje",
+    "career": "Praca",
+    "discountCode": "Kody rabatowe",
+    "learnAnytimeDescription": "Kursy, które robisz we własnym tempie",
+    "learnAnytimeTitle": "Ucz się w dowolnym momencie",
+    "liveClassesDescription": "Kursy prowadzone przez nauczycieli",
+    "liveClassesTitle": "Zajęcia na żywo",
+    "manageCourses": "Zarządzaj kursami",
+    "myCalendar": "Mój kalendarz",
+    "myCareer": "Moja kariera",
+    "myCourses": "Moje kursy",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Ucz się",
+      "teach": "Nauczaj"
+    },
+    "translationPanel": "Panel tłumaczeń",
+    "tutorials": "Tutoriale",
+    "userRolesAllocation": "Przydział ról użytkowników"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Tłumaczenie wkonane przez AI",
+      "language": "Język",
+      "original": "Oryginalny język"
+    },
+    "player": {
+      "peertube": "Peertube",
+      "player": "Player",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
   }
 }
