@@ -1,10 +1,11 @@
 import { Button, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import type { ReactNode } from 'react';
+import { type ReactNode, useContext, useLayoutEffect, useState } from 'react';
 import type { IconType } from 'react-icons/lib';
 import { TbChevronLeft } from 'react-icons/tb';
 import { PageHeader } from '#src/components/page-header.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { MainLayout } from './main-layout.tsx';
 import { SecondaryNavbar } from './ui/secondary-navbar.tsx';
 
@@ -37,7 +38,8 @@ export const PageLayout = ({
   layoutSize = 'max',
   icon: Icon,
 }: Props) => {
-  const isMobile = useSmaller('md');
+  const { isSidebarOpen } = useContext(AppContext);
+  const isMobile = useSmaller('lg');
 
   const layoutSizeClassesMap = {
     base: 'max-w-[832px]',
@@ -45,22 +47,54 @@ export const PageLayout = ({
     max: '',
   };
 
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    const navbar = document.getElementById('navbar-mainframe');
+    if (!navbar) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setNavbarHeight(entry.target.clientHeight);
+      }
+    });
+
+    resizeObserver.observe(navbar);
+
+    return () => resizeObserver.disconnect();
+  }, []);
+
   return (
     <MainLayout>
       {/** biome-ignore lint/complexity/noUselessFragments: <N/A> */}
       <>
-        {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
-        {backLink && (
-          <Link
-            className="w-fit flex items-center p-4 text-neutral-500 body-small-bold"
-            to={backLink.href}
-          >
-            <TbChevronLeft size={24} className="shrink-0" />
-            {backLink.text}
-          </Link>
-        )}
+        <div
+          className={cn(
+            'fixed z-40 bg-white top-15 lg:top-18 right-0',
+            isMobile
+              ? 'left-0'
+              : isSidebarOpen
+                ? 'left-[276px]'
+                : 'left-[86px]',
+          )}
+          id="navbar-mainframe"
+        >
+          {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
+          {backLink && (
+            <Link
+              className="w-fit flex items-center p-4 text-neutral-500 body-small-bold"
+              to={backLink.href}
+            >
+              <TbChevronLeft size={24} className="shrink-0" />
+              {backLink.text}
+            </Link>
+          )}
+        </div>
         {actionButtons && actionButtons.length > 0 ? (
-          <div className="flex items-center gap-1 ml-auto p-2">
+          <div
+            className="flex items-center gap-1 ml-auto p-2"
+            style={{ marginTop: navbarHeight }}
+          >
             {actionButtons.map((button, index) => {
               if (
                 typeof button === 'object' &&
@@ -106,6 +140,7 @@ export const PageLayout = ({
           className,
           actionButtons.length > 0 ? 'pt-2' : 'pt-4 md:pt-12',
         )}
+        style={{ marginTop: actionButtons.length > 0 ? 0 : navbarHeight }}
       >
         <div className={cn('w-full')}>
           <div className="flex items-center gap-6">
