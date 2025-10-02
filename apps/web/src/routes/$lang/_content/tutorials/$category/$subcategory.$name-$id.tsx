@@ -3,19 +3,16 @@ import { cn, customToast, DividerSimple, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { capitalize } from 'lodash-es';
 import React, { memo, Suspense, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
-// import ApprovedBadge from '#src/assets/tutorials/approved.svg?react';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import PageMeta from '#src/components/Head/PageMeta/index.js';
-import { MainLayout } from '#src/components/main-layout.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import {
   ProofreadingDesktop,
   ProofreadingProgress,
@@ -25,10 +22,8 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { cdnUrl } from '#src/utils/index.js';
-import { SITE_NAME } from '#src/utils/meta.js';
 import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
-import { TutorialLayout } from '../-components/tutorial-layout.tsx';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 
 const TutorialsMarkdownBody = React.lazy(
@@ -66,9 +61,7 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
   return (
     <div>
       <section className="flex justify-between items-end gap-4 w-full border-b md:border-b-2 border-newBlack-3 py-1 md:py-2.5">
-        <h1 className="text-black md:text-5xl md:font-bold md:leading-[116%] display-small-bold-caps-22px md:stroke-gray-200 md:stroke-1">
-          {tutorial.title}
-        </h1>
+        <h1 className="display-small md:display-medium">{tutorial.title}</h1>
         <TutorialLikes tutorial={tutorial} className="max-md:hidden shrink-0" />
       </section>
 
@@ -441,97 +434,80 @@ function TutorialDetails() {
   };
   const isOriginalLanguage = tutorial?.language === tutorial?.originalLanguage;
   return (
-    <MainLayout>
-      <TutorialLayout
-        currentCategory={tutorial?.category}
-        currentSubcategory={tutorial?.subcategory}
-        currentTutorialId={tutorial?.id}
-      >
+    <PageLayout
+      layoutSize="base"
+      backLink={{
+        text: tutorial
+          ? `${t(`tutorials.${tutorial?.category}.title`)}`
+          : t('words.tutorials'),
+        href: tutorial
+          ? `/tutorials/${tutorial?.category}#${tutorial?.subcategory}`
+          : '/tutorials',
+      }}
+    >
+      {!isFetched && <Loader size={'s'} />}
+      {isFetched && !tutorial && (
+        <div className="flex flex-col text-black">
+          {t('underConstruction.itemNotFoundOrTranslated', {
+            item: t('words.tutorial'),
+          })}
+        </div>
+      )}
+      {proofreading ? (
+        <ProofreadingProgress
+          isOriginalLanguage={isOriginalLanguage}
+          mode="light"
+          proofreadingData={{
+            contributors: proofreading.contributorNames,
+            reward: proofreading.reward,
+          }}
+        />
+      ) : (
+        <></>
+      )}
+      {tutorial && (
         <>
-          {!isFetched && <Loader size={'s'} />}
-          {isFetched && !tutorial && (
-            <div className="flex flex-col text-black">
-              {t('underConstruction.itemNotFoundOrTranslated', {
-                item: t('words.tutorial'),
-              })}
-            </div>
-          )}
-          {proofreading ? (
-            <ProofreadingProgress
-              isOriginalLanguage={isOriginalLanguage}
-              mode="light"
-              proofreadingData={{
-                contributors: proofreading.contributorNames,
-                reward: proofreading.reward,
-              }}
-            />
-          ) : (
-            <></>
-          )}
-          {tutorial && (
-            <>
-              <PageMeta
-                title={`${SITE_NAME} - ${tutorial?.title}`}
-                description={capitalize(tutorial?.description || '')}
+          <div className="flex w-full flex-col items-center justify-center">
+            <div className="w-full flex flex-col gap-5 md:gap-7 text-newBlack-1">
+              <Header
+                tutorial={{
+                  ...tutorial,
+                  dislikeCount: likesCounts.dislikeCount,
+                  likeCount: likesCounts.likeCount,
+                }}
               />
-              <div className="-mt-4 mb-4 w-full max-w-5xl md:hidden">
-                <span className="w-full desktop-typo1 text-darkOrange-5">
-                  <Link to="/tutorials">{`${t('words.tutorials')} > `}</Link>
-                  <Link
-                    to={'/tutorials/$category'}
-                    params={{ category: tutorial.category }}
-                    className="capitalize"
+              <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
+                <MarkdownContent tutorial={tutorial} />
+              </div>
+              <LikeDislikeButtons />
+              {tutorial.creditLink && (
+                <span className="w-full flex flex-col gap-4 subtitle-medium-caps-18px subtitle-small-caps-14px text-darkOrange-5 mx-auto">
+                  {t('tutorials.details.source')}
+                  <a
+                    href={tutorial.creditLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="leading-snug tracking-015px underline text-newBlue-1 break-words lowercase max-w-full truncate"
                   >
-                    {`${tutorial.category} > `}
-                  </Link>
-                  <span className="capitalize">{tutorial.title}</span>
+                    {tutorial.creditLink}
+                  </a>
                 </span>
-              </div>
-              <div className="flex w-full flex-col items-center justify-center">
-                <div className="w-full flex flex-col gap-5 md:gap-7 text-newBlack-1 md:max-w-[800px]">
-                  <Header
-                    tutorial={{
-                      ...tutorial,
-                      dislikeCount: likesCounts.dislikeCount,
-                      likeCount: likesCounts.likeCount,
-                    }}
-                  />
-                  <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
-                    <MarkdownContent tutorial={tutorial} />
-                  </div>
-                  <LikeDislikeButtons />
-                  {tutorial.creditLink && (
-                    <span className="w-full flex flex-col gap-4 subtitle-medium-caps-18px subtitle-small-caps-14px text-darkOrange-5 mx-auto">
-                      {t('tutorials.details.source')}
-                      <a
-                        href={tutorial.creditLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="leading-snug tracking-015px underline text-newBlue-1 break-words lowercase max-w-full truncate"
-                      >
-                        {tutorial.creditLink}
-                      </a>
-                    </span>
-                  )}
-                  {tutorial.professor?.id && (
-                    <AuthorDetails tutorial={tutorial} />
-                  )}
-                  <Credits tutorial={tutorial} proofreading={proofreading} />
-                </div>
-              </div>
-
-              {isAuthModalOpen && (
-                <AuthModal
-                  isOpen={isAuthModalOpen}
-                  onClose={closeAuthModal}
-                  initialState={authMode}
-                />
               )}
-            </>
+              {tutorial.professor?.id && <AuthorDetails tutorial={tutorial} />}
+              <Credits tutorial={tutorial} proofreading={proofreading} />
+            </div>
+          </div>
+
+          {isAuthModalOpen && (
+            <AuthModal
+              isOpen={isAuthModalOpen}
+              onClose={closeAuthModal}
+              initialState={authMode}
+            />
           )}
         </>
-      </TutorialLayout>
-    </MainLayout>
+      )}
+    </PageLayout>
   );
 }
 

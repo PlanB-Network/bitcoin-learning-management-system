@@ -47,12 +47,12 @@ const GlossaryMarkdownBody = ({
           <ImageVideoRenderer header="none" src={src} alt={alt} />
         ),
         li: ({ children }) => (
-          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-black font-[450]">
+          <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-black">
             {children}
           </li>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-black py-1 font-[450]">
+          <ol className="flex list-decimal flex-col pl-4 md:pl-10 text-base text-black py-1">
             {children}
           </ol>
         ),
@@ -65,7 +65,7 @@ const GlossaryMarkdownBody = ({
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-black py-1 font-[450]">
+          <ul className="flex list-disc flex-col pl-4 md:pl-10 text-base text-black py-1">
             {children}
           </ul>
         ),

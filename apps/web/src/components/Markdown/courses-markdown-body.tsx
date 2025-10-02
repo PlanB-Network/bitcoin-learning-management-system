@@ -49,10 +49,10 @@ const CoursesMarkdownBody = ({
           <ImageVideoRenderer header="logo" src={src} alt={alt} />
         ),
         li: ({ children }) => (
-          <li className="my-1 body-16px last:mb-0 font-[450]">{children}</li>
+          <li className="my-1 body-16px last:mb-0">{children}</li>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 body-16px font-[450]">
+          <ol className="flex list-decimal flex-col pl-10 body-16px">
             {children}
           </ol>
         ),
@@ -63,7 +63,7 @@ const CoursesMarkdownBody = ({
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 body-16px font-[450]">
+          <ul className="flex list-disc flex-col pl-10 body-16px">
             {children}
           </ul>
         ),

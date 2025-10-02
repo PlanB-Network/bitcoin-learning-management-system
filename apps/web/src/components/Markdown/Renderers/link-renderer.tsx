@@ -15,8 +15,8 @@ const linkStyles = cva('text-base tracking-wide', {
   },
   variants: {
     intent: {
-      default: 'underline text-newBlue-1 font-[450]',
-      general: 'text-blue-500 font-[450]',
+      default: 'underline text-newBlue-1',
+      general: 'text-blue-500',
       glossary: 'underline text-darkOrange-5 hover:font-medium',
     },
   },

@@ -59,12 +59,12 @@ const BlogMarkdownBody = ({
           <ImageVideoRenderer header="text" src={src} alt={alt} />
         ),
         li: ({ children }) => (
-          <li className="leading-relaxed mb-5 text-start text-black font-[450]">
+          <li className="leading-relaxed mb-5 text-start text-black">
             {children}
           </li>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
           </ol>
         ),
@@ -77,7 +77,7 @@ const BlogMarkdownBody = ({
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify font-[450]">
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide md:text-justify">
             {children}
           </ul>
         ),

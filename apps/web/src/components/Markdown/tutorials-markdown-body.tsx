@@ -53,12 +53,10 @@ const TutorialsMarkdownBody = ({
           <ImageVideoRenderer header="logo" src={src} alt={alt} />
         ),
         li: ({ children }) => (
-          <li className="my-1 text-base tracking-wide last:mb-0 font-[450]">
-            {children}
-          </li>
+          <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
         ),
         ol: ({ children }) => (
-          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide font-[450]">
+          <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide">
             {children}
           </ol>
         ),
@@ -69,7 +67,7 @@ const TutorialsMarkdownBody = ({
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         ul: ({ children }) => (
-          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide font-[450]">
+          <ul className="flex list-disc flex-col pl-10 text-base tracking-wide">
             {children}
           </ul>
         ),
