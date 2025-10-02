@@ -86,10 +86,7 @@ function AllCourses() {
   }
 
   return (
-    <PageLayout
-      className=" max-w-[1067px]"
-      title={t('courses.liveClasses.liveClasses')}
-    >
+    <PageLayout title={t('courses.liveClasses.liveClasses')} layoutSize="wide">
       {inProgressCourses.length !== 0 && (
         <div className="flex flex-col w-full gap-4 mb-6 md:mb-12">
           <p className="text-black title-base md:title-medium">
@@ -154,7 +151,7 @@ function AllCourses() {
         </div>
       )}
 
-      <h2 className="xl:hidden title-large-sb-24px font-semibold mb-6">
+      <h2 className="xl:hidden title-large-sb-24px font-semibold mb-2 xl:mb-6">
         {t('courses.liveClasses.title')}
       </h2>
 
@@ -163,16 +160,14 @@ function AllCourses() {
           <img className="absolute" src={banner} alt="A professor on stage" />
 
           <div className="absolute bottom-2 px-6 w-full">
-            <h2 className="display-large-med-48px">
-              {t('courses.liveClasses.title')}
-            </h2>
-            <h3 className="title-large-24px text-neutral-600">
+            <h2 className="display-base">{t('courses.liveClasses.title')}</h2>
+            <h3 className="label-18px text-neutral-600">
               {t('courses.liveClasses.secondaryTitle')}
             </h3>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 xl:gap-4 mt-2 xl:mt-4 px-2 xl:px-6 pb-2 xl:pb-6">
+        <div className="flex flex-wrap gap-4 xl:gap-8 mt-2 xl:mt-4 px-2 xl:px-6 pb-2 xl:pb-6">
           {planbCourses.map((course) => (
             <div key={course.id} className="w-full">
               <CourseCardBig course={course} />
@@ -188,7 +183,7 @@ function AllCourses() {
           </h2>
 
           <div className="mt-2 xl:mt-8">
-            <div className="flex flex-wrap gap-2 xl:gap-8">
+            <div className="flex flex-wrap gap-4 xl:gap-8">
               {otherCourses.map((course) => (
                 <div key={course.id} className="w-full">
                   <CourseCardBig course={course} />

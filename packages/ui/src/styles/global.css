@@ -420,11 +420,11 @@
 }
 
 @utility body-base {
-  @apply text-base font-normal leading-tight -tracking-015px;
+  @apply text-base font-normal leading-tight -tracking-[0.16px];
 }
 
 @utility body-base-bold {
-  @apply text-base font-medium leading-tight -tracking-015px;
+  @apply text-base font-medium leading-tight -tracking-[0.16px];
 }
 
 @utility body-extra-small {
