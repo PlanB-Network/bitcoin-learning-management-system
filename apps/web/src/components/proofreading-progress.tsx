@@ -225,7 +225,7 @@ export const ProofreadingProgress = ({
         <DialogTrigger asChild>
           <button
             type="button"
-            className="button-class absolute right-1 top-10 lg:hidden"
+            className="button-class absolute right-1 top-10 z-30 lg:hidden"
             aria-label="Open Proofreading Progress Dialog"
           >
             <SmallProgressImage progress={contributorsLength} />
@@ -390,7 +390,7 @@ export const ProofreadingDesktop = ({
             : 'bg-darkOrange-0',
         standalone
           ? 'p-5 w-fit max-w-[282px] flex'
-          : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-14 justify-start items-start inline-flex hover:min-h-[231px]',
+          : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-14 justify-start items-start inline-flex hover:min-h-[231px] z-30',
         className,
       )}
     >

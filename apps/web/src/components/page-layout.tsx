@@ -70,12 +70,12 @@ export const PageLayout = ({
       <>
         <div
           className={cn(
-            'fixed z-40 bg-white top-15 lg:top-18 right-0',
+            'fixed z-30 bg-white top-15 lg:top-18 lg:rounded-t-2xl w-full',
             isMobile
               ? 'left-0'
               : isSidebarOpen
-                ? 'left-[276px]'
-                : 'left-[86px]',
+                ? 'min-[1920px]:left-[calc((100vw-1920px)/2+276px)] left-[276px]  max-w-[1644px]'
+                : 'min-[1920px]:left-[calc((100vw-1920px)/2+86px)] left-[86px] max-w-[1834px]',
           )}
           id="navbar-mainframe"
         >
