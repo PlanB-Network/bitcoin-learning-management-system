@@ -78,7 +78,7 @@ export const PageLayout = ({
                 : 'min-[1920px]:left-[calc((100vw-1920px)/2+78px)] left-[86px] max-w-[1834px]',
           )}
           id="navbar-mainframe"
-          style={{ willChange: 'top, left, width, height' }}
+          style={{ willChange: 'left, max-width' }}
         >
           {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
           {backLink && (
