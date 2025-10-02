@@ -1,3 +1,4 @@
+import { LANGUAGES_MAP } from '@blms/shared';
 import type { CourseWithTodoTranslations } from '@blms/types';
 import {
   Button,
@@ -35,9 +36,6 @@ export const TranslateTab = () => {
 
   const [courses, setCourses] = useState<CourseWithTodoTranslations[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [languages, setLanguages] = useState<{ code: string; name: string }[]>(
-    [],
-  );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -65,7 +63,7 @@ export const TranslateTab = () => {
   };
 
   // Fetch courses with todo translations
-  const fetchCourses = async () => {
+  const fetchCourses = useCallback(async () => {
     try {
       setIsLoading(true);
       const data =
@@ -77,42 +75,16 @@ export const TranslateTab = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  // Fetch available languages
-  const fetchLanguages = async () => {
-    try {
-      const data =
-        await trpcClient.user.translation.getAvailableLanguages.query();
-      setLanguages(data || []);
-    } catch (err) {
-      console.error('Error fetching languages:', err);
-    }
-  };
+  }, []);
 
   useEffect(() => {
     fetchCourses();
-    fetchLanguages();
+  }, [fetchCourses]);
+
+  // Use LANGUAGES_MAP directly for language names
+  const getLanguageName = useCallback((code: string): string => {
+    return LANGUAGES_MAP[code] || code;
   }, []);
-
-  // Memoize language name lookup function for better performance
-  const languageMap = useMemo(() => {
-    if (!languages || languages.length === 0) return new Map<string, string>();
-    return new Map(
-      languages.map((lang: { code: string; name: string }) => [
-        lang.code,
-        lang.name || lang.code,
-      ]),
-    );
-  }, [languages]);
-
-  const getLanguageNameFromData = useCallback(
-    (code: string): string => {
-      const name = languageMap.get(code);
-      return typeof name === 'string' && name.length > 0 ? name : code;
-    },
-    [languageMap],
-  );
 
   const handleTranslateClick = useCallback(
     (course: CourseWithTodoTranslations) => {
@@ -321,7 +293,7 @@ export const TranslateTab = () => {
                         key={lang}
                         className="inline-flex items-center px-2 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full"
                       >
-                        {getLanguageNameFromData(lang) || lang}
+                        {getLanguageName(lang)}
                       </span>
                     ))}
                     {course.todoLanguages.length > 3 && (
