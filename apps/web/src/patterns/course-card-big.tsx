@@ -36,7 +36,7 @@ export const CourseCardBig = ({
       key={course.id}
       to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
       className={cn(
-        'flex w-full max-xl:mx-auto max-xl:max-w-[340px]',
+        'flex w-full max-lg:mx-auto max-lg:max-w-[340px]',
         className,
       )}
     >
@@ -51,10 +51,10 @@ export const CourseCardBig = ({
           <MobileCourseThumbnail course={course} />
 
           <div className="flex flex-col p-4 h-full w-full">
-            <span className="mt-4 flex flex-col w-full line-clamp-2 title-medium align-top mb-2 xl:mb-0">
+            <span className="mt-4 flex flex-col w-full line-clamp-2 title-medium align-top mb-2 lg:mb-0">
               {course.name}
             </span>
-            <p className="text-neutral-600 body-small xl:line-clamp-4">
+            <p className="text-neutral-600 body-small lg:line-clamp-4">
               {course.goal}
             </p>
 
@@ -64,19 +64,19 @@ export const CourseCardBig = ({
                   key={professor.id}
                   src={resourceImgUrl(professor, 'profile.webp')}
                   alt={professor.name}
-                  breakpoints={{ default: 69, xl: 128 }}
+                  breakpoints={{ default: 100, lg: 150 }}
                   className={cn(
                     'size-6 rounded-full z-10 object-cover [overflow-clip-margin:_unset]',
                   )}
                 />
               ))}
 
-              <span className="ml-2 max-xl:body-small">
+              <span className="ml-2 max-lg:body-small">
                 {course.mainProfessors.map((professor) => professor.name)}
               </span>
             </div>
 
-            <div className="w-full xl:mt-auto flex flex-col xl:flex-row gap-5 xl:gap-2 text-nowrap justify-between overflow-hidden border-t-1 border-neutral-50 pt-5">
+            <div className="w-full lg:mt-auto flex flex-col flex-wrap lg:flex-row gap-5 lg:gap-2 text-nowrap justify-between overflow-hidden border-t-1 border-neutral-50 pt-5">
               <div className="grow-3 body-base-bold flex flew-row gap-1 mx-2">
                 {course.format === 'online' || course.format === 'hybrid' ? (
                   <span>{t('accessType.online')}</span>
@@ -102,14 +102,14 @@ export const CourseCardBig = ({
                   {dateString}
                 </span>
               </div>
-              <div className="max-xl:hidden flex flex-row gap-2 items-center mx-2">
+              <div className="max-lg:hidden flex flex-row gap-2 items-center mx-2">
                 <TbClock className="h-5 w-5 text-brown-400" />
                 <span className="body-base-bold text-brown-800">{`${course.hours} hours`}</span>
               </div>
 
               <Button
                 variant="primary"
-                className="xl:hidden w-full mt-2"
+                className="lg:hidden w-full mt-2"
                 size={'m'}
               >
                 {t('words.discover')}
@@ -118,7 +118,7 @@ export const CourseCardBig = ({
             </div>
           </div>
         </div>
-        <div className="max-xl:hidden self-center mx-4 w-fit">
+        <div className="max-lg:hidden self-center mx-4 w-fit">
           <TbChevronRight className="h-5 w-5 text-neutral-700" />
         </div>
       </article>
@@ -141,7 +141,7 @@ const DesktopCourseThumbnail = ({
       )}
       alt={course.name}
       breakpoints={{ default: 800 }}
-      className="max-xl:hidden w-[338px] rounded-l-2xl object-cover"
+      className="max-lg:hidden w-[230px] xl:w-[338px] rounded-l-2xl object-cover"
     />
   );
 };
@@ -163,7 +163,7 @@ const MobileCourseThumbnail = ({
         )}
         alt={course.name}
         breakpoints={{ default: 500 }}
-        className="xl:hidden rounded-t-2xl h-[172px] w-full object-cover"
+        className="lg:hidden rounded-t-2xl h-[172px] w-full object-cover"
       />
     </div>
   );

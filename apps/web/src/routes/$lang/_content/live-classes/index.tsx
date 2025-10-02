@@ -151,12 +151,12 @@ function AllCourses() {
         </div>
       )}
 
-      <h2 className="xl:hidden title-large-sb-24px font-semibold mb-2 xl:mb-6">
+      <h2 className="lg:hidden title-large-sb-24px font-semibold mb-2 lg:mb-6">
         {t('courses.liveClasses.title')}
       </h2>
 
       <div className="bg-vertical-orange-gradient border-1 border-orange-200 rounded-2xl">
-        <div className="max-xl:hidden relative h-[254px] ">
+        <div className="max-lg:hidden relative h-[254px] ">
           <img className="absolute" src={banner} alt="A professor on stage" />
 
           <div className="absolute bottom-2 px-6 w-full">
@@ -167,7 +167,7 @@ function AllCourses() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-4 xl:gap-8 mt-2 xl:mt-4 px-2 xl:px-6 pb-2 xl:pb-6">
+        <div className="flex flex-wrap gap-4 lg:gap-8 mt-2 lg:mt-4 px-2 lg:px-6 pb-2 lg:pb-6">
           {planbCourses.map((course) => (
             <div key={course.id} className="w-full">
               <CourseCardBig course={course} />
@@ -178,12 +178,12 @@ function AllCourses() {
 
       {otherCourses.length === 0 ? null : (
         <>
-          <h2 className="mt-6 xl:mt-12 max-xl:title-large-sb-24px xl:display-medium font-semibold">
+          <h2 className="mt-6 lg:mt-12 max-lg:title-large-sb-24px lg:display-medium font-semibold">
             {t('courses.liveClasses.allOtherTitle')}
           </h2>
 
-          <div className="mt-2 xl:mt-8">
-            <div className="flex flex-wrap gap-4 xl:gap-8">
+          <div className="mt-2 lg:mt-8">
+            <div className="flex flex-wrap gap-4 lg:gap-8">
               {otherCourses.map((course) => (
                 <div key={course.id} className="w-full">
                   <CourseCardBig course={course} />
