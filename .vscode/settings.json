@@ -33,6 +33,8 @@
     "getenv",
     "Giacomo",
     "healthcheck",
+    "hyperdht",
+    "hyperdrive",
     "hyperswarm",
     "inperson",
     "lnurl",

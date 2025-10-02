@@ -299,7 +299,7 @@ const createIngestData =
         console.error('[search] Import failed:', error.message);
         console.error(
           '[search] Import result:',
-          error.importResults.filter((r: any) => !r.success),
+          error.importResults?.filter((r: any) => !r.success),
         );
       });
   };
