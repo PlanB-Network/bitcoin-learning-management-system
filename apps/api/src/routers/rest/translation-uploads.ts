@@ -114,70 +114,6 @@ const receiveUploadForm = (req: any): Promise<UploadFormData> => {
 };
 
 /**
- * Async function to poll translation task in background
- */
-async function pollTranslationTask(
-  dependencies: Dependencies,
-  taskId: string,
-  courseId: string,
-  languages: string[],
-  originalLanguage: string,
-  setReadyService: (courseId: string, languages: string[]) => Promise<void>,
-  resetToTodoService: (courseId: string, languages: string[]) => Promise<void>,
-) {
-  try {
-    console.log(`[Translation] Starting background polling for task ${taskId}`);
-
-    // Poll with longer timeout for background processing (up to 10 minutes)
-    const manifest = await dependencies.languageToolkit.pollTask(taskId, {
-      intervalMs: 5000, // Check every 5 seconds
-      maxAttempts: 120, // Maximum 10 minutes (120 * 5s)
-    });
-
-    if (manifest) {
-      await insertSlidesFromManifest(
-        manifest,
-        courseId,
-        originalLanguage,
-        dependencies,
-      );
-
-      const langList = languages.map((l) => l.toLowerCase());
-      await setReadyService(courseId, langList);
-
-      console.log(
-        `[Translation] Successfully completed translation for course ${courseId}`,
-      );
-
-      // TODO: Send success notification (email, websocket, or database flag)
-    } else {
-      throw new Error('Translation task did not return expected data');
-    }
-  } catch (error) {
-    console.error('[Translation] Error processing course %s:', courseId, error);
-
-    // Only reset status if it's a real translation failure, not a parsing error
-    const shouldResetStatus =
-      error instanceof Error &&
-      !error.message.includes('Zod') &&
-      !error.message.includes('parsing');
-
-    if (shouldResetStatus) {
-      await resetToTodoService(courseId, languages);
-      console.log(
-        `[Translation] Status reset to 'todo' for course ${courseId} due to failure`,
-      );
-    } else {
-      console.log(
-        `[Translation] Keeping current status for course ${courseId} due to parsing/non-critical error`,
-      );
-    }
-
-    // TODO: Send failure notification (email, websocket, or database flag)
-  }
-}
-
-/**
  * Read manifest JSON structure and insert slide rows into DB.
  */
 async function insertSlidesFromManifest(
@@ -557,6 +493,92 @@ export const createRestTranslationUploadRoutes = async (
     };
   };
 
+  /**
+   * Background task to start translation and poll for results
+   */
+  async function startAndPollTranslation(
+    dependencies: Dependencies,
+    courseId: string,
+    languages: string[],
+    originalLanguage: string,
+    setReadyService: (courseId: string, languages: string[]) => Promise<void>,
+    resetToTodoService: (
+      courseId: string,
+      languages: string[],
+    ) => Promise<void>,
+  ) {
+    try {
+      console.log(`[Translation] Starting translation for course ${courseId}`);
+
+      const taskId = await dependencies.languageToolkit.translateCourse({
+        course_id: courseId,
+        source_lang: 'en',
+        target_langs: transformLanguageCodesForAPI(languages),
+      });
+
+      if (!taskId) {
+        throw new Error('Failed to get task ID from Language Toolkit');
+      }
+
+      console.log(`[Translation] Got taskId ${taskId}, starting polling`);
+
+      // Poll with longer timeout for background processing (up to 10 minutes)
+      const manifest = await dependencies.languageToolkit.pollTask(taskId, {
+        intervalMs: 5000, // Check every 5 seconds
+        maxAttempts: 120, // Maximum 10 minutes (120 * 5s)
+      });
+
+      if (manifest) {
+        console.log(
+          `[Translation] Received manifest for course ${courseId}, inserting slides into database...`,
+        );
+
+        await insertSlidesFromManifest(
+          manifest,
+          courseId,
+          originalLanguage,
+          dependencies,
+        );
+
+        console.log(
+          `[Translation] Slides inserted successfully for course ${courseId}, setting status to 'ready for review'...`,
+        );
+
+        const langList = languages.map((l) => l.toLowerCase());
+        await setReadyService(courseId, langList);
+
+        console.log(
+          `[Translation] ✓ Successfully completed translation for course ${courseId}, languages: ${languages.join(', ')}`,
+        );
+      } else {
+        throw new Error('Translation task did not return expected data');
+      }
+    } catch (error) {
+      console.error(
+        '[Translation] Error processing course %s:',
+        courseId,
+        error,
+      );
+
+      // Only reset status if it's a real translation failure, not a parsing error
+      const shouldResetStatus =
+        error instanceof Error &&
+        !error.message.includes('Zod') &&
+        !error.message.includes('parsing');
+
+      if (shouldResetStatus) {
+        await resetToTodoService(courseId, languages);
+        console.log(
+          `[Translation] Status reset to 'todo' for course ${courseId} due to failure`,
+        );
+      } else {
+        console.log(
+          `[Translation] Keeping current status for course ${courseId} due to parsing/non-critical error`,
+        );
+      }
+    }
+  }
+
   const startTranslationFromUpload = async (
     uploadId: string,
     languages: string[],
@@ -585,321 +607,33 @@ export const createRestTranslationUploadRoutes = async (
     // Start translations for selected languages
     await startTranslations({ courseId, languages });
 
-    try {
-      const taskId = await dependencies.languageToolkit.translateCourse({
-        course_id: courseId,
-        source_lang: 'en',
-        target_langs: transformLanguageCodesForAPI(languages),
-      });
+    console.log(
+      `[Translation] Launching background translation for course ${courseId}, languages: ${languages.join(', ')}`,
+    );
 
-      if (!taskId) {
-        // If no task ID returned, reset status and throw error
-        await resetToTodoService(courseId, languages);
-        throw new InternalServerError('Failed to start translation task');
-      }
+    // Start async translation and polling in background (fire and forget)
+    // This returns immediately without waiting for the Language Toolkit API
+    startAndPollTranslation(
+      dependencies,
+      courseId,
+      languages,
+      originalLanguage,
+      setReadyService,
+      resetToTodoService,
+    ).catch((error) => {
+      console.error('[Translation] Background translation failed:', error);
+    });
 
-      // Start async polling in background (fire and forget)
-      pollTranslationTask(
-        dependencies,
-        taskId,
-        courseId,
-        languages,
-        originalLanguage,
-        setReadyService,
-        resetToTodoService,
-      ).catch((error) => {
-        console.error('[Translation] Background polling failed:', error);
-      });
+    console.log(
+      `[Translation] API response returned immediately for course ${courseId} with status 'processing'`,
+    );
 
-      return {
-        taskId,
-        courseId,
-        languages,
-        status: 'processing',
-        message: 'Translation started successfully',
-      };
-    } catch (error) {
-      // Reset status on any error during initial request
-      await resetToTodoService(courseId, languages);
-      console.error('[Translation] Error starting translation:', error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(
-          `Failed to start translation: ${error.message}`,
-        );
-      }
-      throw new InternalServerError('Failed to start translation');
-    }
-  };
-
-  const processTranslationUpload = async (
-    uid: string,
-    courseId: string,
-    languages: string[],
-    initialFiles: formidable.File[],
-  ) => {
-    // Check existing uploads for this course
-    const existingUploads = await getUploadsService(courseId);
-
-    // Since we now assume all files are in English, we hardcode the original language
-    const originalLanguage = 'en';
-
-    const filesProvided = initialFiles.length > 0;
-
-    if (!filesProvided && existingUploads.length === 0) {
-      throw new BadRequest(
-        'No files provided and no existing uploads found for this course',
-      );
-    }
-
-    // If new files are provided and uploads already exist, overwrite by deleting old rows AND S3 files
-    if (filesProvided && existingUploads.length > 0) {
-      // Delete S3 files first
-      await deleteS3FilesForCourse(courseId, originalLanguage);
-
-      // Then delete database records
-      await deleteUploadsService(courseId);
-    }
-
-    const files = initialFiles;
-
-    // If no new files provided, directly trigger translations and toolkit, skip upload processing
-    if (!filesProvided) {
-      // Start translations for selected languages
-      await startTranslations({ courseId, languages });
-
-      try {
-        const taskId = await dependencies.languageToolkit.translateCourse({
-          course_id: courseId,
-          source_lang: 'en',
-          target_langs: languages,
-        });
-
-        if (!taskId) {
-          // If no task ID returned, reset status and throw error
-          await resetToTodoService(courseId, languages);
-          throw new InternalServerError('Failed to start translation task');
-        }
-
-        // Start async polling in background (fire and forget)
-        pollTranslationTask(
-          dependencies,
-          taskId,
-          courseId,
-          languages,
-          originalLanguage,
-          setReadyService,
-          resetToTodoService,
-        ).catch((error) => {
-          console.error('[Translation] Background polling failed:', error);
-        });
-
-        // Return immediately with task ID
-        return {
-          message: 'Translation started without new uploads',
-          taskId,
-          status: 'processing',
-        } as const;
-      } catch (error) {
-        // Reset status on any error during initial request
-        await resetToTodoService(courseId, languages);
-        console.error('[Translation] Error starting translation:', error);
-
-        if (error instanceof Error) {
-          throw new InternalServerError(
-            `Failed to start translation: ${error.message}`,
-          );
-        }
-        throw new InternalServerError('Failed to start translation');
-      }
-    }
-
-    // Organize files per chapter key "part.chapter"
-    const chapterGroups = new Map<string, ChapterGroup>();
-
-    for (const file of files) {
-      const relativePath = file.originalFilename ?? (file as any).newFilename;
-      const chapterInfo = parseChapterKey(relativePath);
-
-      if (!chapterInfo) {
-        // Skip files not matching expected pattern
-        console.warn(
-          `[UPLOAD] Skipping file (no chapter pattern): ${relativePath}`,
-        );
-        continue;
-      }
-
-      const { partIndex, chapterIndex } = chapterInfo;
-      const key = `${partIndex}.${chapterIndex}`;
-
-      let group = chapterGroups.get(key);
-      if (!group) {
-        group = { txts: [] };
-        chapterGroups.set(key, group);
-      }
-
-      const fileType = categorizeFile(file);
-      if (fileType === 'pptx') {
-        group.pptx = file;
-      } else if (fileType === 'txt') {
-        group.txts.push(file);
-      }
-    }
-
-    if (chapterGroups.size === 0) {
-      throw new BadRequest('No valid chapter files detected');
-    }
-
-    const uploadResults: any[] = [];
-
-    for (const [key, group] of chapterGroups.entries()) {
-      const [partIdxStr, chapIdxStr] = key.split('.');
-      const partIndex = Number(partIdxStr);
-      const chapterIndex = Number(chapIdxStr);
-
-      let partId: string;
-      let chapterId: string;
-      try {
-        const mapping = await getPartAndChapterIdsService(
-          courseId,
-          partIndex,
-          chapterIndex,
-        );
-        partId = mapping.partId;
-        chapterId = mapping.chapterId;
-      } catch (_err) {
-        // Skip chapters that don't exist in DB
-        console.warn(
-          `Skipping upload for unmapped part ${partIndex} chapter ${chapterIndex}`,
-        );
-        continue;
-      }
-
-      let pptxKey: string | undefined;
-
-      // upload pptx once per chapter (or skip if absent)
-      if (group.pptx) {
-        const pptFile = group.pptx;
-        const base = path.basename(pptFile.originalFilename ?? 'upload.pptx');
-        pptxKey = buildS3Key(
-          'pptx',
-          courseId,
-          originalLanguage,
-          partId,
-          chapterId,
-          base,
-        );
-        console.log(`[UPLOAD] Uploading PPTX to S3: ${pptxKey}`);
-
-        // Check file size before upload
-        const stats = fs.statSync(pptFile.filepath);
-        console.log(`[UPLOAD] PPTX file size: ${stats.size} bytes`);
-
-        if (stats.size === 0) {
-          console.error(
-            `[UPLOAD] PPTX file is empty: ${pptFile.originalFilename}`,
-          );
-          continue;
-        }
-
-        const stream = fs.createReadStream(pptFile.filepath);
-
-        await dependencies.s3.upload(pptxKey, stream, {
-          contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.PPTX,
-        });
-
-        // After successful upload → convert to PNG slides via ConvertAPI
-        try {
-          await convertPptxToPngs(dependencies, pptxKey);
-        } catch (err) {
-          console.error(
-            '[UPLOAD] Failed to convert PPTX to PNGs via ConvertAPI',
-            err,
-          );
-        }
-      }
-
-      // each txt => one DB row
-      for (const txt of group.txts) {
-        const baseTxt = path.basename(txt.originalFilename ?? 'slide.txt');
-        const txtKey = buildS3Key(
-          'text',
-          courseId,
-          originalLanguage,
-          partId,
-          chapterId,
-          baseTxt,
-        );
-        const stream = fs.createReadStream(txt.filepath);
-
-        await dependencies.s3.upload(txtKey, stream, {
-          contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.TEXT,
-        });
-
-        const uploadRecord = await (createUpload as any)(
-          courseId,
-          originalLanguage,
-          languages,
-          uid,
-          partId,
-          chapterId,
-          pptxKey,
-          txtKey,
-        );
-
-        await updateUpload(uploadRecord.id, pptxKey, txtKey, true, undefined);
-        uploadResults.push(uploadRecord);
-      }
-    }
-
-    // Start translations for selected languages
-    await startTranslations({ courseId, languages });
-
-    // Call Language Toolkit to trigger translation
-    try {
-      const secondTaskId = await dependencies.languageToolkit.translateCourse({
-        course_id: courseId,
-        source_lang: 'en',
-        target_langs: transformLanguageCodesForAPI(languages),
-      });
-
-      if (!secondTaskId) {
-        // If no task ID returned, reset status and throw error
-        await resetToTodoService(courseId, languages);
-        throw new InternalServerError('Failed to start translation task');
-      }
-
-      // Start async polling in background (fire and forget)
-      pollTranslationTask(
-        dependencies,
-        secondTaskId,
-        courseId,
-        languages,
-        originalLanguage,
-        setReadyService,
-        resetToTodoService,
-      ).catch((error) => {
-        console.error('[Translation] Background polling failed:', error);
-      });
-
-      // Return immediately with upload results and task ID
-      return {
-        uploads: uploadResults,
-        taskId: secondTaskId,
-        status: 'processing',
-      };
-    } catch (error) {
-      // Reset status on any error during initial request
-      await resetToTodoService(courseId, languages);
-      console.error('[Translation] Error starting translation:', error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(
-          `Failed to start translation: ${error.message}`,
-        );
-      }
-      throw new InternalServerError('Failed to start translation');
-    }
+    return {
+      courseId,
+      languages,
+      status: 'processing',
+      message: 'Translation started successfully',
+    };
   };
 
   // Endpoint 1: Upload files only
@@ -944,25 +678,6 @@ export const createRestTranslationUploadRoutes = async (
       } catch (error) {
         next(error);
       }
-    },
-  );
-
-  // Legacy endpoint (kept for backward compatibility)
-  router.post(
-    '/translation-uploads',
-    expressAuthMiddleware,
-    (req, res, next) => {
-      const uid = req.session.uid;
-      if (!uid) {
-        return next(new InternalServerError('User session missing'));
-      }
-
-      receiveUploadForm(req)
-        .then(({ courseId, languages, files: initialFiles }) =>
-          processTranslationUpload(uid, courseId, languages, initialFiles),
-        )
-        .then((result) => res.json(result))
-        .catch(next);
     },
   );
 

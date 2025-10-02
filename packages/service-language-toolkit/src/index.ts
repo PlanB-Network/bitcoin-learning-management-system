@@ -50,7 +50,13 @@ export const createLanguageToolkitClient = (
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params,
     });
-    if (!res.ok) throw new Error('LT token fetch failed');
+
+    if (!res.ok) {
+      const errorText = await res.text().catch(() => 'Unable to read response');
+      throw new Error(
+        `LT token fetch failed: ${res.status} ${res.statusText} - ${errorText}`,
+      );
+    }
 
     const dataSchema = z.object({
       access_token: z.string(),
@@ -134,20 +140,26 @@ export const createLanguageToolkitClient = (
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!resp.ok) {
-          console.error('[LT] Task poll failed', resp.status);
-          throw new Error(`Failed to poll task status: ${resp.status}`);
+          // Non-OK responses might be temporary (503, 500, etc.)
+          // Log and continue polling instead of throwing
+          console.warn(
+            `[LT] Task poll returned ${resp.status} on attempt ${attempt + 1}, will retry...`,
+          );
+          await new Promise((r) => setTimeout(r, intervalMs));
+          continue;
         }
-        const dataSchema = z.object({
-          status: z.string(),
-          manifest: z.unknown().optional(),
-          error: z.union([z.string(), z.null()]).optional(),
-        });
+
         const rawResponse = await resp.json();
         console.log(
           `[LT] Polling task ${taskId}, attempt ${attempt + 1}, response:`,
           rawResponse,
         );
 
+        const dataSchema = z.object({
+          status: z.string(),
+          manifest: z.unknown().optional(),
+          error: z.union([z.string(), z.null()]).optional(),
+        });
         const data = dataSchema.parse(rawResponse);
 
         // Handle different task statuses
@@ -156,6 +168,7 @@ export const createLanguageToolkitClient = (
           return data.manifest ?? null;
         }
         if (data.status === 'failed') {
+          // Task definitively failed - this is a critical error
           const errorMsg = data.error || 'Translation task failed';
           console.error('[LT] Task failed:', errorMsg);
           throw new Error(errorMsg);
@@ -166,23 +179,55 @@ export const createLanguageToolkitClient = (
           `[LT] Task ${taskId} still ${data.status}, continuing to poll...`,
         );
       } catch (err) {
-        // Re-throw to allow caller to handle the error
+        // Check if this is a critical error (task failed) or a recoverable error
         if (err instanceof Error) {
-          // If it's a Zod error, log more details for debugging
+          // Critical errors that should stop polling immediately
+          if (
+            err.message.includes('Translation task failed') ||
+            err.message.includes('Task failed')
+          ) {
+            throw err;
+          }
+
+          // Recoverable errors (network issues, parsing errors, etc.)
+          // Log and continue polling
           if (err.name === 'ZodError') {
-            console.error('[LT] Zod parsing error for task response:', err);
-            console.error(
-              '[LT] This might be due to unexpected API response format',
+            console.warn(
+              `[LT] Zod parsing error on attempt ${attempt + 1}, will retry:`,
+              err.message,
+            );
+          } else if (
+            err.name === 'AbortError' ||
+            err.message.includes('fetch')
+          ) {
+            console.warn(
+              `[LT] Network error on attempt ${attempt + 1}, will retry:`,
+              err.message,
+            );
+          } else {
+            console.warn(
+              `[LT] Error polling task on attempt ${attempt + 1}, will retry:`,
+              err.message,
             );
           }
-          throw err;
+
+          // Continue to next attempt instead of throwing
+          await new Promise((r) => setTimeout(r, intervalMs));
+          continue;
         }
-        console.error('[LT] Error polling task', err);
-        throw new Error('Failed to poll task status');
+
+        // Unknown error type - log and continue
+        console.warn(
+          `[LT] Unknown error polling task on attempt ${attempt + 1}, will retry`,
+        );
+        await new Promise((r) => setTimeout(r, intervalMs));
+        continue;
       }
       await new Promise((r) => setTimeout(r, intervalMs));
     }
-    console.warn('[LT] Task polling timed out after', maxAttempts, 'attempts');
+
+    // Exhausted all attempts
+    console.error('[LT] Task polling timed out after', maxAttempts, 'attempts');
     throw new Error(
       `Task polling timed out after ${(maxAttempts * intervalMs) / 1000} seconds`,
     );

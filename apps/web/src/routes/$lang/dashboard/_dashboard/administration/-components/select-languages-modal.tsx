@@ -1,6 +1,7 @@
+import { LANGUAGES_MAP } from '@blms/shared';
 import type { CourseWithTodoTranslations } from '@blms/types';
 import { cn, customToast, Input, Loader } from '@blms/ui';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbLanguage } from 'react-icons/tb';
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
@@ -16,7 +17,6 @@ interface SelectLanguagesModalProps {
 interface ModalState {
   selectedLanguages: string[];
   isStarting: boolean;
-  languages: Array<{ code: string; name: string }>;
   selectedFiles: File[];
   folderError: string;
   hasExisting: boolean;
@@ -27,7 +27,6 @@ interface ModalState {
 const initialState: ModalState = {
   selectedLanguages: [],
   isStarting: false,
-  languages: [],
   selectedFiles: [],
   folderError: '',
   hasExisting: false,
@@ -47,21 +46,9 @@ export const SelectLanguagesModal = ({
   const folderInputRef = useRef<HTMLInputElement>(null);
   const zipInputRef = useRef<HTMLInputElement>(null);
 
-  // Fetch languages data
+  // Check for existing uploads
   useEffect(() => {
-    const fetchLanguages = async () => {
-      try {
-        const data =
-          await trpcClient.user.translation.getAvailableLanguages.query();
-        setState((prev) => ({ ...prev, languages: data || [] }));
-      } catch (error) {
-        console.error('Error fetching languages:', error);
-        setState((prev) => ({ ...prev, languages: [] }));
-      }
-    };
-
     if (isOpen) {
-      fetchLanguages();
       trpcClient.content.hasCourseUploads
         .query({ courseId: course.id })
         .then((info: { exists: boolean }) => {
@@ -73,19 +60,10 @@ export const SelectLanguagesModal = ({
     }
   }, [isOpen, course.id]);
 
-  // Function to get language names from the fetched languages data
-  const languageMap = useMemo(() => {
-    if (!state.languages || state.languages.length === 0)
-      return new Map<string, string>();
-    return new Map(state.languages.map((lang) => [lang.code, lang.name]));
-  }, [state.languages]);
-
-  const getLanguageNameFromData = useCallback(
-    (code: string) => {
-      return languageMap.get(code) ?? code;
-    },
-    [languageMap],
-  );
+  // Use LANGUAGES_MAP directly for language names
+  const getLanguageName = useCallback((code: string): string => {
+    return LANGUAGES_MAP[code] || code;
+  }, []);
 
   const handleLanguageToggle = useCallback((language: string) => {
     setState((prev) => ({
@@ -300,14 +278,11 @@ export const SelectLanguagesModal = ({
         return;
       }
 
-      // Step 2: Start translation
+      // Step 2: Start translation (returns immediately with taskId)
       const translationController = new AbortController();
-      const translationTimeoutId = setTimeout(
-        () => {
-          translationController.abort();
-        },
-        10 * 60 * 1000,
-      ); // 10 minutes timeout for translation process
+      const translationTimeoutId = setTimeout(() => {
+        translationController.abort();
+      }, 30 * 1000); // 30 seconds timeout (API returns immediately)
 
       try {
         const translationResponse = await fetch(
@@ -354,6 +329,9 @@ export const SelectLanguagesModal = ({
 
           return;
         }
+
+        // Translation started successfully (response doesn't include taskId as it's handled server-side)
+        await translationResponse.json();
 
         // Show unified success message including upload and translation start
         const successMessage = uploadResult!.filesUploaded
@@ -464,7 +442,7 @@ export const SelectLanguagesModal = ({
               )}
             </span>
             <p className="text-base font-semibold">
-              {getLanguageNameFromData(course.originalLanguage)}
+              {getLanguageName(course.originalLanguage)}
             </p>
             <p className="text-xs text-gray-600 mt-1">
               {t(
@@ -507,7 +485,7 @@ export const SelectLanguagesModal = ({
                     className="sr-only"
                   />
                   <span className="text-sm font-medium">
-                    {getLanguageNameFromData(language)}
+                    {getLanguageName(language)}
                   </span>
                 </label>
               ))}
