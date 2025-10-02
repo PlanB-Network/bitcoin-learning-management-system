@@ -62,7 +62,7 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
             aria-label="Toggle notifications panel"
           >
             <TbBell strokeWidth={1.5} className="text-newGray-1" size={24} />
-            {unreadNotifications.length > 0 && (
+            {hasUnreadNotifications && (
               <div className="absolute top-0.5 right-0.5 rounded-full size-2.5 bg-orange-500" />
             )}
           </button>
@@ -107,7 +107,9 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
         aria-label="View notifications"
       >
         <FaBell className="text-newBlack-1 " size={24} />
-        <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2" />
+        {hasUnreadNotifications && (
+          <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2" />
+        )}
       </Link>
     </>
   );
