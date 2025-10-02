@@ -15,6 +15,7 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   nl: 'Nederlands',
   pl: 'Polski',
   pt: 'Português',
+  rn: 'Ikirundi',
   ru: 'Русский',
   srlatn: 'Srpski',
   sv: 'Svenska',

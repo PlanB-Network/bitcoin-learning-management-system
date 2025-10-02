@@ -24,6 +24,7 @@ export const LANGUAGES = [
   'pt',
   'pl',
   'ru',
+  'rn',
   'sr-Latn',
   'sv',
   'sw',
