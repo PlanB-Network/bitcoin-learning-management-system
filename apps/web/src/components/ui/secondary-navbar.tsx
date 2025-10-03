@@ -3,7 +3,6 @@ import { Link, useRouterState } from '@tanstack/react-router';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbDotsVertical } from 'react-icons/tb';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 interface Tab {
   id: string;
@@ -12,8 +11,21 @@ interface Tab {
 }
 
 export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
-  const isMobile = useSmaller('lg');
+  if (tabs.length === 0) return null;
 
+  return (
+    <>
+      <div className="hidden lg:block w-full">
+        <SecondaryNavbarDesktop tabs={tabs} />
+      </div>
+      <div className="block lg:hidden w-full">
+        <SecondaryNavbarMobile tabs={tabs} />
+      </div>
+    </>
+  );
+};
+
+const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
   const { t, i18n } = useTranslation();
   const routerState = useRouterState();
   const pathname = routerState.location.pathname;
@@ -43,7 +55,7 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
           newOverflowIndex = i;
           break;
         }
-        totalWidth += tabWidth + (isMobile ? 18 : 24);
+        totalWidth += tabWidth + 24;
       }
 
       if (newOverflowIndex !== overflowIndex) {
@@ -56,7 +68,7 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
 
     window.addEventListener('resize', calculateTabs);
     return () => window.removeEventListener('resize', calculateTabs);
-  }, [tabs, overflowIndex, isMobile]);
+  }, [tabs, overflowIndex]);
 
   useEffect(() => {
     if (!isPopoverOpen) return;
@@ -98,26 +110,26 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
 
   return (
     <div
-      className="w-full flex items-center border-b border-neutral-100 px-3 lg:px-6 pt-2 lg:pt-4 relative"
+      className="w-full flex items-center border-b border-neutral-100 px-6 pt-4 relative"
       role="tablist"
       ref={containerRef}
     >
       {/* Do not remove - necessary for overflow behavior */}
-      <div className="absolute opacity-0 -z-50 overflow-hidden gap-4.5 lg:gap-6">
+      <div className="absolute opacity-0 -z-50 overflow-hidden gap-6">
         {tabs.map((tab, index) => (
           <span
             key={tab.id}
             ref={(el) => {
               tabRefs.current[index] = el;
             }}
-            className="body-base-bold lg:label-strong text-nowrap"
+            className="label-strong text-nowrap"
           >
             {t(tab.label)}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center gap-4.5 lg:gap-6">
+      <div className="flex items-center gap-6">
         {visibleTabs.map((tab) => {
           const isActive = activeTab?.id === tab.id;
 
@@ -128,14 +140,14 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
               className={cn(
                 'relative pb-2 group text-nowrap',
                 isActive
-                  ? 'text-newBlack-1 body-base-bold lg:label-strong'
-                  : 'body-base lg:label text-newBlack-3 group-hover:text-newBlack-1',
+                  ? 'text-newBlack-1 label-strong'
+                  : 'label text-newBlack-3 group-hover:text-newBlack-1',
               )}
             >
               {t(tab.label)}
               <div
                 className={cn(
-                  'absolute bottom-0 left-0 h-0.5 lg:h-1 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
+                  'absolute bottom-0 left-0 h-1 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
                   isActive && 'scale-x-100 bg-orange-500',
                 )}
               />
@@ -162,7 +174,7 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
             {isPopoverOpen && (
               <div
                 ref={popoverRef}
-                className="w-fit absolute top-full -right-3 bg-white border border-neutral-100 rounded-lg z-10 p-2 flex flex-col gap-3"
+                className="w-fit absolute top-full -right-3 bg-white border border-neutral-100 rounded-lg z-10 p-2 flex flex-col"
                 role="menu"
               >
                 {overflowTabs.map((tab) => {
@@ -173,16 +185,16 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
                       to={tab.href}
                       onClick={() => setIsPopoverOpen(false)}
                       className={cn(
-                        'text-nowrap pl-2.5 relative group',
+                        'text-nowrap pl-2.5 py-2 relative group',
                         isActive
-                          ? 'text-newBlack-1 body-base-bold lg:label-strong'
-                          : 'body-base lg:label text-newBlack-3 group-hover:text-newBlack-1',
+                          ? 'text-newBlack-1 label-strong'
+                          : 'label text-newBlack-3 group-hover:text-newBlack-1',
                       )}
                     >
                       {t(tab.label)}
                       <div
                         className={cn(
-                          'absolute left-0 top-0 h-full w-1 rounded-full bg-orange-100 scale-y-0 group-hover:scale-y-100 transition-transform origin-center duration-75',
+                          'absolute left-0 top-0 h-6 my-2 w-1 rounded-full bg-orange-100 scale-y-0 group-hover:scale-y-100 transition-transform origin-center duration-75',
                           isActive && 'scale-y-100 bg-orange-500',
                         )}
                       />
@@ -194,6 +206,54 @@ export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
           </div>
         )}
       </div>
+    </div>
+  );
+};
+
+const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
+  const { t, i18n } = useTranslation();
+  const routerState = useRouterState();
+  const pathname = routerState.location.pathname;
+
+  const activeTab = tabs.reduce<Tab | null>((best, tab) => {
+    const tabPath = `/${i18n.language}${tab.href}`;
+    if (pathname === tabPath || pathname.startsWith(tabPath + '/')) {
+      if (!best || tabPath.length > `/${i18n.language}${best.href}`.length) {
+        return tab;
+      }
+    }
+    return best;
+  }, null);
+
+  return (
+    <div
+      className="w-full flex items-center border-b border-neutral-100 px-3 pt-2 relative gap-4.5 overflow-x-scroll no-scrollbar"
+      role="tablist"
+    >
+      {tabs.map((tab) => {
+        const isActive = activeTab?.id === tab.id;
+
+        return (
+          <Link
+            key={tab.id}
+            to={tab.href}
+            className={cn(
+              'relative pb-2 group text-nowrap',
+              isActive
+                ? 'text-newBlack-1 body-base-bold'
+                : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
+            )}
+          >
+            {t(tab.label)}
+            <div
+              className={cn(
+                'absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
+                isActive && 'scale-x-100 bg-orange-500',
+              )}
+            />
+          </Link>
+        );
+      })}
     </div>
   );
 };

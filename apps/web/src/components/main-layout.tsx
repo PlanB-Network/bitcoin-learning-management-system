@@ -106,7 +106,7 @@ export const MainLayout = ({
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="flex w-full flex-grow overflow-hidden max-lg:mt-16">
+      <div className="flex w-full flex-grow overflow-hidden">
         {/* Sidebar */}
         <SideBar isSidebarOpen={isSidebarOpen} />
 
@@ -163,7 +163,7 @@ export const MainLayout = ({
         {/* Main frame */}
         <div
           className={cn(
-            'flex flex-col w-full lg:mt-18 overflow-hidden transition-all ease-in-out',
+            'flex flex-col w-full overflow-hidden transition-all ease-in-out',
             isSidebarOpen ? openMargin : closedMargin,
           )}
           style={{ willChange: 'margin-left' }}
