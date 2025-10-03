@@ -18,8 +18,8 @@
       "type": "image/png"
     }
   ],
-  "name": "Create TanStack App Sample",
-  "short_name": "TanStack App",
+  "name": "Plan ₿ Network - Contribute",
+  "short_name": "Contribute",
   "start_url": ".",
-  "theme_color": "#000000"
+  "theme_color": "rgb(255 92 0)"
 }

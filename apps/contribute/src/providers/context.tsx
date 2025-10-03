@@ -1,7 +1,5 @@
 import type {
-  JoinedBlogLight,
   JoinedCourse,
-  JoinedTutorialLight,
   SessionData,
   UserAccountSettings,
   UserDetails,
@@ -32,43 +30,26 @@ interface AppContext {
   session: Session | null | undefined;
   setSession: (session: Session | null) => void;
 
-  // Tutorials
-  tutorials: JoinedTutorialLight[] | null;
-  setTutorials: (tutorials: JoinedTutorialLight[] | null) => void;
-
   // Courses
   courses: JoinedCourse[] | null;
   setCourses: (courses: JoinedCourse[] | null) => void;
 
-  // Blog
-  blogs: JoinedBlogLight[] | null;
-  setBlogs: (blogs: JoinedBlogLight[] | null) => void;
-
   // Register Toast
   hasSeenRegisterToast: boolean;
   setHasSeenRegisterToast: (value: boolean) => void;
-
-  university: string | null;
-  setUniversity: (university: string | null) => void;
 }
 
 export const AppContext = createContext<AppContext>({
   accountSettings: null,
-  blogs: null,
   courses: null,
   fetchUserDetailsAndSettings: async () => {},
   hasSeenRegisterToast: false,
   session: undefined,
   setAccountSettings: () => {},
-  setBlogs: () => {},
   setCourses: () => {},
   setHasSeenRegisterToast: () => {},
   setSession: () => {},
-  setTutorials: () => {},
-  setUniversity: async () => {},
   setUser: () => {},
-  tutorials: null,
-  university: null,
   user: undefined,
 });
 
@@ -79,16 +60,10 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   const [accountSettings, setAccountSettings] =
     useState<UserAccountSettings | null>(null);
   const [session, setSession] = useState<Session | null | undefined>(undefined);
-  const [tutorials, setTutorials] = useState<JoinedTutorialLight[] | null>(
-    null,
-  );
   const [courses, setCourses] = useState<JoinedCourse[] | null>(null);
-  const [blogs, setBlogs] = useState<JoinedBlogLight[] | null>(null);
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
-
-  const [university, setUniversity] = useState<string | null>(null);
 
   const fetchUserDetailsAndSettings = async () => {
     try {
@@ -123,14 +98,6 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     fetchUserDetailsAndSettings();
 
-    trpcClient.content.getTutorials
-      .query({
-        language: i18n.language,
-      })
-      .then((data) => data ?? null)
-      .then(setTutorials)
-      .catch(() => null);
-
     trpcClient.content.getCourses
       .query({
         language: i18n.language,
@@ -138,35 +105,19 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       .then((data) => data ?? null)
       .then(setCourses)
       .catch(() => null);
-
-    trpcClient.content.getBlogs
-      .query({
-        language: i18n.language,
-      })
-      .then((data) => {
-        return data ?? null;
-      })
-      .then(setBlogs)
-      .catch(() => {});
   }, [i18n.language]);
 
   const appContext: AppContext = {
     accountSettings,
-    blogs,
     courses,
     fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
     session,
     setAccountSettings,
-    setBlogs,
     setCourses,
     setHasSeenRegisterToast,
     setSession,
-    setTutorials,
-    setUniversity,
     setUser,
-    tutorials,
-    university,
     user,
   };
 
