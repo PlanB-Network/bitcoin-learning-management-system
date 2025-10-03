@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
-import { FlyingMenu } from './FlyingMenu/flying-menu.tsx';
-import { MobileMenu } from './MobileMenu/mobile-menu.tsx';
+import { FlyingMenu } from './flying-menu.tsx';
+import { MobileMenu } from './mobile-menu.tsx';
 
 interface HeaderProps {
   variant?: 'light' | 'dark';
@@ -17,8 +17,6 @@ export const Header = ({
   notificationPanelVariant = 'dark',
 }: HeaderProps) => {
   const { i18n } = useTranslation();
-  const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
-    useDisclosure();
 
   const {
     open: openAuthModal,
@@ -55,9 +53,6 @@ export const Header = ({
           setAuthMode(AuthModalState.SignIn);
           openAuthModal();
         }}
-        variant={variant}
-        isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
       />
       {isAuthModalOpen && (
         <AuthModal
