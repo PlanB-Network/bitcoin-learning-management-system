@@ -1,4 +1,5 @@
 import { TranslationStatus } from '@blms/constants';
+import type { ChapterTranslationData } from '@blms/types';
 import { Button } from '@blms/ui';
 import {
   createFileRoute,
@@ -9,14 +10,11 @@ import {
 } from '@tanstack/react-router';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import BookClosedIcon from '#src/assets/icons/book_closed.svg';
 import BreadcrumbArrowIcon from '#src/assets/icons/breadcrumb_navigation_arrow_orange.svg';
 import CheckCircleGrayIcon from '#src/assets/icons/check_circle_gray.svg';
 import CheckCircleOrangeIcon from '#src/assets/icons/check_circle_orange.svg';
-// DroplistArrowIcon moved inside TranscriptionEditor component
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
-
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { AudioPlayer } from '#src/components/translation/audio-player.tsx';
 import { ValidatedPptEditor } from '#src/components/translation/validated-ppt-editor.tsx';
@@ -42,46 +40,6 @@ export const Route = createFileRoute(
     };
   },
 });
-
-interface ChapterTranslationContext {
-  courseId: string;
-  courseIndex: string;
-  courseName: string;
-  partId: string;
-  partIndex: number;
-  partTitle: string;
-  chapterId: string;
-  chapterIndex: number;
-  chapterTitle: string;
-  translationStatus: string;
-  chapterTranslationStatus: string;
-}
-
-interface CourseTranslationSlide {
-  courseId: string;
-  language: string;
-  partId: string;
-  chapterId: string;
-  slideId: string;
-  slideNumber?: number;
-  pptValidated?: boolean;
-  transcriptionValidated?: boolean;
-  audioValidated?: boolean;
-  audioTries?: number;
-  pptResourcePath: string | null;
-  audioResourcePath: string | null;
-  originalContent: string | null;
-  translatedContent: string | null;
-  professorName?: string | null;
-  status: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-interface ChapterTranslationData {
-  context: ChapterTranslationContext;
-  slides: CourseTranslationSlide[];
-}
 
 function ChapterTranslationPage() {
   const { t, i18n } = useTranslation();

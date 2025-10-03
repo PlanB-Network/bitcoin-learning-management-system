@@ -1,7 +1,11 @@
 import type { TranslationStatus } from '@blms/constants';
+import type {
+  ChapterProgress,
+  ChapterTranslationContext,
+  ChapterTranslationData,
+} from '@blms/types';
 import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../dependencies.js';
-
 import {
   type CourseTranslationSlide,
   getChapterTranslationContextQuery,
@@ -10,40 +14,6 @@ import {
   updateCourseTranslationSlideQuery,
 } from '../queries/get-translation-slides.js';
 import { insertCourseTranslationSlideQuery } from '../queries/insert-course-translation-slide.js';
-
-export interface ChapterTranslationContext {
-  id: string;
-  courseId: string;
-  courseIndex: string;
-  courseName: string;
-  partId: string;
-  partIndex: number;
-  partTitle: string;
-  chapterId: string;
-  chapterIndex: number;
-  chapterTitle: string;
-  originalLanguage: string;
-  translationStatus: string;
-  chapterTranslationStatus: string;
-}
-
-export interface ChapterTranslationData {
-  context: ChapterTranslationContext;
-  slides: CourseTranslationSlide[];
-}
-
-export interface ChapterProgress {
-  chapterId: string;
-  chapterIndex: number;
-  chapterTitle: string;
-  partIndex: number;
-  partId: string;
-  totalSlides: number;
-  completedSlides: number;
-  inProgressSlides: number;
-  todoSlides: number;
-  status: 'completed' | 'in-progress' | 'not-started';
-}
 
 /**
  * Service to get course translation slides for a specific chapter

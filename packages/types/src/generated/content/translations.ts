@@ -469,6 +469,7 @@ export interface CourseTranslationSlide {
   translatedContent: string | null;
   createdAt: Date;
   updatedAt: Date;
+  professorName: string | null;
   slideNumber: number;
   pptValidated: boolean;
   transcriptionValidated: boolean;

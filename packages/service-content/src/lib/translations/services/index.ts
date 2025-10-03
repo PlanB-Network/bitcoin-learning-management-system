@@ -11,9 +11,6 @@ export { createGetSlideProfessor } from './get-slide-professor.js';
 export * from './get-translation-audio.js';
 export * from './get-translation-downloads.js';
 export {
-  type ChapterProgress,
-  type ChapterTranslationContext,
-  type ChapterTranslationData,
   createGetCourseTranslationChapterProgress,
   createGetCourseTranslationSlides,
   createInsertCourseTranslationSlide,

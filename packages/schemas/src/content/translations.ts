@@ -331,6 +331,7 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
     translatedContent: true,
     createdAt: true,
     updatedAt: true,
+    professorName: true,
   })
   .merge(
     z.object({

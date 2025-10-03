@@ -1,5 +1,6 @@
 import { AssignmentStatus, TranslationStatus } from '@blms/constants';
 import type {
+  ChapterProgress,
   CoursePartDetails,
   CourseResponse,
   JoinedCourseChapter,
@@ -23,19 +24,6 @@ import { trpcClient } from '#src/utils/trpc.ts';
 export const Route = createFileRoute('/$lang/content/translate/$courseId')({
   component: ProofreadCoursePage,
 });
-
-interface ChapterProgress {
-  chapterId: string;
-  chapterIndex: number;
-  chapterTitle: string;
-  partIndex: number;
-  partId: string;
-  totalSlides: number;
-  completedSlides: number;
-  inProgressSlides: number;
-  todoSlides: number;
-  status: 'completed' | 'in-progress' | 'not-started';
-}
 
 function ProofreadCoursePage() {
   const { t, i18n } = useTranslation();
