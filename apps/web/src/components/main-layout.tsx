@@ -163,7 +163,7 @@ export const MainLayout = ({
         {/* Main frame */}
         <div
           className={cn(
-            'flex flex-col w-full overflow-hidden transition-all ease-in-out',
+            'flex flex-col w-full overflow-hidden transition-all ease-in-out mt-15 lg:mt-18',
             isSidebarOpen ? openMargin : closedMargin,
           )}
           style={{ willChange: 'margin-left' }}

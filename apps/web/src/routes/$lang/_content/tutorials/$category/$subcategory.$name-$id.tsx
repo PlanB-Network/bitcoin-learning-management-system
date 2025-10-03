@@ -437,12 +437,8 @@ function TutorialDetails() {
     <PageLayout
       layoutSize="base"
       backLink={{
-        text: tutorial
-          ? `${t(`tutorials.${tutorial?.category}.title`)}`
-          : t('words.tutorials'),
-        href: tutorial
-          ? `/tutorials/${tutorial?.category}#${tutorial?.subcategory}`
-          : '/tutorials',
+        text: `${t(`tutorials.${params.category}.title`)}`,
+        href: `/tutorials/${params.category}#${params.subcategory}`,
       }}
     >
       {!isFetched && <Loader size={'s'} />}
