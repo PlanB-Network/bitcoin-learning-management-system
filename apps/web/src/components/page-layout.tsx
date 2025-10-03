@@ -1,6 +1,6 @@
 import { Button, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { type ReactNode, useContext, useLayoutEffect, useState } from 'react';
+import { type ReactNode, useContext } from 'react';
 import type { IconType } from 'react-icons/lib';
 import { TbChevronLeft } from 'react-icons/tb';
 import { PageHeader } from '#src/components/page-header.tsx';
@@ -39,7 +39,7 @@ export const PageLayout = ({
   icon: Icon,
 }: Props) => {
   const { isSidebarOpen } = useContext(AppContext);
-  const isMobile = useSmaller('lg');
+  const isMobile = useSmaller('lg') || window.innerWidth < 1024;
 
   const layoutSizeClassesMap = {
     base: 'max-w-[832px]',
@@ -47,22 +47,7 @@ export const PageLayout = ({
     max: '',
   };
 
-  const [navbarHeight, setNavbarHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const navbar = document.getElementById('navbar-mainframe');
-    if (!navbar) return;
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setNavbarHeight(entry.target.clientHeight);
-      }
-    });
-
-    resizeObserver.observe(navbar);
-
-    return () => resizeObserver.disconnect();
-  }, []);
+  const navbarHeight = tabs.length > 0 || backLink ? (isMobile ? 37 : 48) : 0;
 
   return (
     <MainLayout>
@@ -70,15 +55,15 @@ export const PageLayout = ({
       <>
         <div
           className={cn(
-            'fixed z-30 bg-white top-15 lg:top-18 lg:rounded-t-2xl w-full transition-all',
+            'fixed z-30 bg-white top-15 lg:top-18 lg:rounded-t-2xl',
             isMobile
-              ? 'left-0'
+              ? 'left-0 right-0'
               : isSidebarOpen
-                ? 'min-[1920px]:left-[calc((100%-1920px)/2+276px)] left-[276px] max-w-[1644px]'
-                : 'min-[1920px]:left-[calc((100%-1920px)/2+86px)] left-[86px] max-w-[1834px]',
+                ? 'min-[1920px]:left-[calc((100%-1920px)/2+276px)] left-[276px] min-[1920px]:right-[calc((100%-1920px)/2)] right-0 transition-all'
+                : 'min-[1920px]:left-[calc((100%-1920px)/2+86px)] left-[86px] min-[1920px]:right-[calc((100%-1920px)/2)] right-0 transition-all',
           )}
           id="navbar-mainframe"
-          style={{ willChange: 'left, max-width' }}
+          style={{ willChange: 'left, right' }}
         >
           {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
           {backLink && (
