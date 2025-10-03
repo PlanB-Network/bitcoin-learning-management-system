@@ -1,15 +1,5 @@
 import type { JoinedTutorialLight } from '@blms/types';
 
-import webSvg from '#src/assets/icons/world-pixelated.svg';
-import conferenceSvg from '#src/assets/resources/conference.svg';
-import glossarySvg from '#src/assets/resources/glossary.svg';
-import lectureSvg from '#src/assets/resources/lecture.svg';
-import librarySvg from '#src/assets/resources/library.svg';
-import movieSvg from '#src/assets/resources/movie.svg';
-import podcastSvg from '#src/assets/resources/podcast.svg';
-import projectSvg from '#src/assets/resources/project.svg';
-import toolkitSvg from '#src/assets/resources/toolkit.svg';
-import youtubeSvg from '#src/assets/resources/youtube.svg';
 import businessSvg from '#src/assets/tutorials/business.svg';
 import computerSecuritySvg from '#src/assets/tutorials/computer-security.svg';
 import contributionSvg from '#src/assets/tutorials/contribution.svg';
@@ -72,59 +62,6 @@ export const TUTORIALS_CATEGORIES = [
     image: contributionSvg,
     subcategories: ['content', 'resource', 'others'],
     route: '/tutorials/contribution',
-  },
-] as const;
-
-export const RESOURCES_CATEGORIES = [
-  {
-    name: 'books',
-    image: librarySvg,
-    unreleased: false,
-  },
-  {
-    name: 'podcasts',
-    image: podcastSvg,
-    unreleased: false,
-  },
-  {
-    name: 'conferences',
-    image: conferenceSvg,
-    unreleased: false,
-  },
-  {
-    name: 'projects',
-    image: projectSvg,
-    unreleased: false,
-  },
-  {
-    name: 'bet',
-    image: toolkitSvg,
-    unreleased: false,
-  },
-  {
-    name: 'glossary',
-    image: glossarySvg,
-    unreleased: false,
-  },
-  {
-    name: 'newsletters',
-    image: webSvg,
-    unreleased: false,
-  },
-  {
-    name: 'channels',
-    image: youtubeSvg,
-    unreleased: false,
-  },
-  {
-    name: 'lectures',
-    image: lectureSvg,
-    unreleased: false,
-  },
-  {
-    name: 'movies',
-    image: movieSvg,
-    unreleased: false,
   },
 ] as const;
 

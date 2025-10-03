@@ -14,11 +14,8 @@ import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black_bla
 import PlanBLogoOrange from '../../../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
 import { LanguageSelectorMobile } from '../language-selector.tsx';
 import { NotificationsPanel } from '../notifications-panel.tsx';
-import type { NavigationSectionMobile } from '../props.ts';
-import { MobileMenuSection } from './mobile-menu-section.tsx';
 
 export interface MobileMenuProps {
-  sections: NavigationSectionMobile[];
   onClickLogin: () => void;
   variant?: 'light' | 'dark';
   isMobileMenuOpen: boolean;
@@ -26,7 +23,6 @@ export interface MobileMenuProps {
 }
 
 export const MobileMenu = ({
-  sections,
   onClickLogin,
   variant = 'dark',
   isMobileMenuOpen,
@@ -158,11 +154,7 @@ export const MobileMenu = ({
             onClick={toggleMobileMenu}
           />
         </div>
-        <ul className="list-none w-full px-4 flex flex-col gap-2.5 my-[15px]">
-          {sections.map((section) => (
-            <MobileMenuSection section={section} key={section.id} />
-          ))}
-        </ul>
+
         <LanguageSelectorMobile mode={variant} />
       </nav>
     </>
