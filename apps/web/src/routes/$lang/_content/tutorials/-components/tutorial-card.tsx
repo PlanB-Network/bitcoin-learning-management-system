@@ -25,9 +25,9 @@ export const TutorialCard = ({
         <Image
           src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
           alt={tutorial.name}
-          breakpoints={{ default: 48, md: 80 }}
+          breakpoints={{ default: 96, md: 160 }}
           loading="lazy"
-          className="object-cover [overflow-clip-margin:_unset] aspect-square rounded-lg md:rounded-2xl"
+          className="object-cover [overflow-clip-margin:_unset] aspect-square rounded-lg md:rounded-2xl size-12 md:size-20"
         />
         <div className="flex flex-col gap-2">
           <span className="body-base-bold md:subtitle-base text-black">
