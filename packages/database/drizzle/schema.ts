@@ -6,6 +6,7 @@ import {
   CareerRemote,
   CareerRoleLevel,
   CourseFormat,
+  CourseLevel,
   CoursePaymentFormat,
   CoursePaymentMethod,
   CourseType,
@@ -915,6 +916,7 @@ export const teachingFormatEnum = pgNativeEnum(
   TeachingFormat,
 );
 export const typeFormatEnum = pgNativeEnum('course_type', CourseType);
+export const courseLevelEnum = pgNativeEnum('course_level', CourseLevel);
 
 export const contentCourses = content.table('courses', (t) => ({
   addressLine1: t.varchar('address_line_1', { length: 100 }),
@@ -947,7 +949,8 @@ export const contentCourses = content.table('courses', (t) => ({
 
   lastUpdated: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
 
-  level: t.varchar({ length: 255 }).notNull(),
+  level: courseLevelEnum().notNull(),
+
   numberOfRating: t.integer().default(0).notNull(),
   onlinePriceDollars: t.integer(),
   originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),

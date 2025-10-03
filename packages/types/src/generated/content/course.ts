@@ -29,7 +29,7 @@ export interface Course {
   lastCommit: string;
   lastSync: Date;
   lastUpdated: Date;
-  level: string;
+  level: CourseLevel;
   numberOfRating: number;
   onlinePriceDollars: number | null;
   originalLanguage: string;

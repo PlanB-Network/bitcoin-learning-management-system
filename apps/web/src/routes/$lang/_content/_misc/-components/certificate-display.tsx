@@ -1,4 +1,6 @@
 /** biome-ignore-all lint/correctness/useHookAtTopLevel: TODO check */
+
+import { CourseLevel } from '@blms/constants';
 import type { JoinedCourse } from '@blms/types';
 import { Button, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -162,7 +164,7 @@ export const filterAndRandomizeCourses = (
     return [];
   }
 
-  const courseLevels = ['beginner', 'intermediate', 'advanced', 'expert'];
+  const courseLevels = Object.values(CourseLevel);
 
   const sameTopicSameLevel = otherCourses.filter(
     (c) => c.topic === currentCourse.topic && c.level === currentCourse.level,

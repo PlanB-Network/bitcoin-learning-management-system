@@ -946,6 +946,13 @@
       "when": 1759305514473,
       "tag": "0134_lethal_morlocks",
       "breakpoints": true
+    },
+    {
+      "idx": 135,
+      "version": "7",
+      "when": 1759419776435,
+      "tag": "0135_easy_black_queen",
+      "breakpoints": true
     }
   ]
 }

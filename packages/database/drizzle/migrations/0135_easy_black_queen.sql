@@ -1,0 +1,2 @@
+CREATE TYPE "public"."course_level" AS ENUM('beginner', 'intermediate', 'advanced', 'expert');--> statement-breakpoint
+ALTER TABLE "content"."courses" ALTER COLUMN "level" SET DATA TYPE "public"."course_level" USING "level"::"public"."course_level";

@@ -1,3 +1,4 @@
+import { CourseLevel } from '@blms/constants';
 import { BTC101ID } from '@blms/shared';
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
 import {
@@ -25,8 +26,6 @@ export const courseCategoriesDashboard = [
   'security',
   'social studies',
 ];
-
-const levels = ['beginner', 'intermediate', 'advanced', 'expert'];
 
 export const CourseTable = ({
   courses,
@@ -120,7 +119,7 @@ export const CourseTable = ({
 
           {/* Table Body */}
           <TableBody className="bg-newGray-6 p-1 gap-1">
-            {levels.map((level) => (
+            {Object.values(CourseLevel).map((level) => (
               <TableRow key={level}>
                 <TableCell className="p-1 !bg-white lg:w-[37px]">
                   <div className="capitalize desktop-caption1 text-black py-px px-1 bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] [transform:rotate(180deg)]">

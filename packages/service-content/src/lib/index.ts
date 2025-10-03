@@ -131,22 +131,22 @@ export const createProcessContentFiles = (
       time();
     }
 
-    // Sync events
-    {
-      const events = groupByEvent(filteredFiles, errors);
-      const time = timeLog(events.length, 'event');
-      for (const event of events) {
-        await updateEvents(event, errors);
-      }
-      time();
-    }
-
     // Sync resources
     {
       const resources = groupByResource(filteredFiles, errors);
       const time = timeLog(resources.length, 'resource');
       for (const resource of resources) {
         await updateResources(resource, errors);
+      }
+      time();
+    }
+
+    // Sync events
+    {
+      const events = groupByEvent(filteredFiles, errors);
+      const time = timeLog(events.length, 'event');
+      for (const event of events) {
+        await updateEvents(event, errors);
       }
       time();
     }

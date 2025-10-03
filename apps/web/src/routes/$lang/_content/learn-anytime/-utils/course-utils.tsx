@@ -1,6 +1,7 @@
+import { CourseLevel } from '@blms/constants';
 import type { JoinedCourse } from '@blms/types';
 
-export const levels = ['beginner', 'intermediate', 'advanced', 'expert'];
+export const levels = Object.values(CourseLevel);
 
 export const sortCoursesByLevel = (courses: JoinedCourse[]) => {
   return courses.sort((a, b) => {

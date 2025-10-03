@@ -25,8 +25,6 @@ export enum CourseLevel {
   Intermediate = 'intermediate',
   Advanced = 'advanced',
   Expert = 'expert',
-  Wizard = 'wizard',
-  Developer = 'developer',
 }
 
 export enum TeachingFormat {
