@@ -22,7 +22,7 @@ export const ResourceCard = (props: ResourceCardProps) => {
         breakpoints={{ default: 84, sm: 256 }}
         width="256"
         height="256"
-        className="aspect-square object-contain w-14 sm:w-full"
+        className="aspect-square object-contain w-14 sm:w-full border-[0.5px] border-neutral-100 rounded-lg md:rounded-2xl"
         src={props.imageSrc ? props.imageSrc : ''}
         alt={props.name}
         loading="lazy"

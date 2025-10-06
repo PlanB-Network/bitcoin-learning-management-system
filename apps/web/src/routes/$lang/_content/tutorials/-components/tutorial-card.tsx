@@ -29,7 +29,7 @@ export const TutorialCard = ({
           loading="lazy"
           className="object-cover [overflow-clip-margin:_unset] aspect-square rounded-lg md:rounded-2xl size-12 md:size-20 border-[0.5px] border-neutral-100"
         />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-0.5">
           <span className="body-base-bold md:subtitle-base text-black">
             {tutorial.title}
           </span>
