@@ -61,7 +61,7 @@ export const ResourceDetails = ({
         <div className="flex max-md:flex-col md:items-center gap-6 md:gap-4">
           <Image
             breakpoints={{ default: 232 }}
-            className="max-md:mx-auto max-md:aspect-auto max-md:max-w-50 md:w-58 h-auto md:max-h-54 object-cover [overflow-clip-margin:_unset] rounded-xl"
+            className="max-md:mx-auto max-md:aspect-auto max-md:max-w-50 md:w-58 h-auto md:max-h-54 object-cover [overflow-clip-margin:_unset] border-[0.5px] border-neutral-100 rounded-lg md:rounded-2xl"
             alt={title}
             src={imgSrc}
           />
