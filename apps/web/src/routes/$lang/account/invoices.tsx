@@ -39,7 +39,7 @@ function Invoices() {
 
   return (
     <PageLayout
-      layoutSize="max"
+      layoutSize="wide"
       title={t('words.invoices')}
       tabs={[
         { id: 'account', label: t('words.account'), href: '/account' },

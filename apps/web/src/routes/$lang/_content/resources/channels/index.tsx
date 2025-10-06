@@ -7,6 +7,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import {
   LanguageResourcesSectionHeader,
@@ -21,6 +22,7 @@ export const Route = createFileRoute('/$lang/_content/resources/channels/')({
 function YoutubeChannels() {
   const { t, i18n } = useTranslation();
   const [showLocalOnly, setShowLocalOnly] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { data: youtubeChannels, isFetched } = useQuery(
     trpc.content.getYoutubeChannels.queryOptions({}, { staleTime: 300_000 }),
@@ -52,7 +54,12 @@ function YoutubeChannels() {
       tabs={resourcesTabs}
       layoutSize="wide"
     >
-      <div className="flex flex-col max-sm:mt-4 mt-2">
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
+      />
+      <div className="flex flex-col">
         <SelectedLanguageSwitcher
           handleSwitchChange={handleSwitchChange}
           showLocalOnly={showLocalOnly}
@@ -61,22 +68,28 @@ function YoutubeChannels() {
         <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedYoutubeChannels?.length ? (
-            sortedYoutubeChannels.map((youtubeChannel) => (
-              <Link
-                to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
-                params={{
-                  youtubeChannelId: youtubeChannel.id.toString(),
-                }}
-                className="max-sm:w-full"
-                key={youtubeChannel.id}
-              >
-                <ResourceCard
-                  name={youtubeChannel.name}
-                  imageSrc={resourceImgUrl(youtubeChannel)}
-                  language={youtubeChannel.language}
-                />
-              </Link>
-            ))
+            sortedYoutubeChannels
+              .filter((youtubeChannel) =>
+                youtubeChannel.name
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase()),
+              )
+              .map((youtubeChannel) => (
+                <Link
+                  to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
+                  params={{
+                    youtubeChannelId: youtubeChannel.id.toString(),
+                  }}
+                  className="max-sm:w-full"
+                  key={youtubeChannel.id}
+                >
+                  <ResourceCard
+                    name={youtubeChannel.name}
+                    imageSrc={resourceImgUrl(youtubeChannel)}
+                    language={youtubeChannel.language}
+                  />
+                </Link>
+              ))
           ) : (
             <p className="text-center text-gray-500">
               {t('resources.channels.noYoutubeChannels')}
@@ -89,23 +102,29 @@ function YoutubeChannels() {
           englishYoutubeChannels.length > 0 && (
             <section>
               <LanguageResourcesSectionHeader language="en" />
-              <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
-                {englishYoutubeChannels.map((youtubeChannel) => (
-                  <Link
-                    to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
-                    params={{
-                      youtubeChannelId: youtubeChannel.id.toString(),
-                    }}
-                    key={youtubeChannel.id}
-                    className="max-sm:w-full"
-                  >
-                    <ResourceCard
-                      name={youtubeChannel.name}
-                      imageSrc={resourceImgUrl(youtubeChannel)}
-                      language={youtubeChannel.language}
-                    />
-                  </Link>
-                ))}
+              <div className="flex flex-wrap gap-0.5 sm:gap-6">
+                {englishYoutubeChannels
+                  .filter((youtubeChannel) =>
+                    youtubeChannel.name
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase()),
+                  )
+                  .map((youtubeChannel) => (
+                    <Link
+                      to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
+                      params={{
+                        youtubeChannelId: youtubeChannel.id.toString(),
+                      }}
+                      key={youtubeChannel.id}
+                      className="max-sm:w-full"
+                    >
+                      <ResourceCard
+                        name={youtubeChannel.name}
+                        imageSrc={resourceImgUrl(youtubeChannel)}
+                        language={youtubeChannel.language}
+                      />
+                    </Link>
+                  ))}
               </div>
             </section>
           )}

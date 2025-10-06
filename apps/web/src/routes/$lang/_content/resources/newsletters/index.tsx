@@ -7,6 +7,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.js';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import {
   LanguageResourcesSectionHeader,
@@ -20,6 +21,7 @@ export const Route = createFileRoute('/$lang/_content/resources/newsletters/')({
 
 function Newsletter() {
   const { t, i18n } = useTranslation();
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { data: newsletters, isFetched } = useQuery(
     trpc.content.getNewsletters.queryOptions({}, { staleTime: 300_000 }),
@@ -51,7 +53,12 @@ function Newsletter() {
       tabs={resourcesTabs}
       layoutSize="wide"
     >
-      <div className="flex flex-col max-sm:mt-4 mt-2">
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
+      />
+      <div className="flex flex-col">
         <SelectedLanguageSwitcher
           handleSwitchChange={handleSwitchChange}
           showLocalOnly={showLocalOnly}
@@ -61,25 +68,31 @@ function Newsletter() {
           <div className="flex flex-wrap gap-0.5 sm:gap-6">
             {!isFetched && <Loader size="s" />}
             {sortedNewsletters?.length ? (
-              sortedNewsletters.map((newsletter) => (
-                <Link
-                  to={`/resources/newsletters/${formatNameForURL(
-                    newsletter.title,
-                  )}-${newsletter.id}`}
-                  params={{
-                    newsletterId: newsletter.id.toString(),
-                  }}
-                  key={`${newsletter.id}`}
-                  className="max-sm:w-full"
-                >
-                  <ResourceCard
-                    name={newsletter.title}
-                    author={newsletter.author}
-                    imageSrc={resourceImgUrl(newsletter)}
-                    language={newsletter.language}
-                  />
-                </Link>
-              ))
+              sortedNewsletters
+                .filter((newsletter) =>
+                  newsletter.title
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase()),
+                )
+                .map((newsletter) => (
+                  <Link
+                    to={`/resources/newsletters/${formatNameForURL(
+                      newsletter.title,
+                    )}-${newsletter.id}`}
+                    params={{
+                      newsletterId: newsletter.id.toString(),
+                    }}
+                    key={`${newsletter.id}`}
+                    className="max-sm:w-full"
+                  >
+                    <ResourceCard
+                      name={newsletter.title}
+                      author={newsletter.author}
+                      imageSrc={resourceImgUrl(newsletter)}
+                      language={newsletter.language}
+                    />
+                  </Link>
+                ))
             ) : (
               <p className="text-center text-gray-500">
                 {t('resources.newsletters.noNewsletters')}
@@ -93,26 +106,32 @@ function Newsletter() {
           englishNewsletters.length > 0 && (
             <section>
               <LanguageResourcesSectionHeader language="en" />
-              <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
-                {englishNewsletters.map((newsletter) => (
-                  <Link
-                    to={`/resources/newsletters/${formatNameForURL(
-                      newsletter.title,
-                    )}-${newsletter.id}`}
-                    params={{
-                      newsletterId: newsletter.id.toString(),
-                    }}
-                    key={newsletter.id}
-                    className="max-sm:w-full"
-                  >
-                    <ResourceCard
-                      name={newsletter.title}
-                      author={newsletter.author}
-                      imageSrc={resourceImgUrl(newsletter)}
-                      language={newsletter.language}
-                    />
-                  </Link>
-                ))}
+              <div className="flex flex-wrap gap-0.5 sm:gap-6">
+                {englishNewsletters
+                  .filter((newsletter) =>
+                    newsletter.title
+                      ?.toLowerCase()
+                      .includes(searchTerm.toLowerCase()),
+                  )
+                  .map((newsletter) => (
+                    <Link
+                      to={`/resources/newsletters/${formatNameForURL(
+                        newsletter.title,
+                      )}-${newsletter.id}`}
+                      params={{
+                        newsletterId: newsletter.id.toString(),
+                      }}
+                      key={newsletter.id}
+                      className="max-sm:w-full"
+                    >
+                      <ResourceCard
+                        name={newsletter.title}
+                        author={newsletter.author}
+                        imageSrc={resourceImgUrl(newsletter)}
+                        language={newsletter.language}
+                      />
+                    </Link>
+                  ))}
               </div>
             </section>
           )}

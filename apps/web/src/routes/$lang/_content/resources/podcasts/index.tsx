@@ -7,6 +7,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import {
   LanguageResourcesSectionHeader,
@@ -21,6 +22,7 @@ export const Route = createFileRoute('/$lang/_content/resources/podcasts/')({
 function Podcasts() {
   const { t, i18n } = useTranslation();
   const [showLocalOnly, setShowLocalOnly] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { data: podcasts, isFetched } = useQuery(
     trpc.content.getPodcasts.queryOptions({}, { staleTime: 300_000 }),
@@ -54,7 +56,12 @@ function Podcasts() {
         },
       ]}
     >
-      <div className="flex flex-col max-sm:mt-4 mt-2">
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
+      />
+      <div className="flex flex-col">
         <SelectedLanguageSwitcher
           handleSwitchChange={handleSwitchChange}
           showLocalOnly={showLocalOnly}
@@ -63,35 +70,11 @@ function Podcasts() {
         <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedPodcasts?.length ? (
-            sortedPodcasts.map((podcast) => (
-              <Link
-                to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
-                params={{
-                  podcastId: podcast.id.toString(),
-                }}
-                key={podcast.id}
-                className="max-sm:w-full"
-              >
-                <ResourceCard
-                  name={podcast.name}
-                  author={podcast.host}
-                  imageSrc={resourceImgUrl(podcast, 'logo.webp')}
-                  language={podcast.language}
-                />
-              </Link>
-            ))
-          ) : (
-            <p className="text-center text-gray-500">
-              {t('resources.podcasts.noPodcasts')}
-            </p>
-          )}
-        </div>
-
-        {showLocalOnly && !isEnglishLanguage && englishPodcasts.length > 0 && (
-          <section>
-            <LanguageResourcesSectionHeader language="en" />
-            <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
-              {englishPodcasts.map((podcast) => (
+            sortedPodcasts
+              .filter((podcast) =>
+                podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
+              )
+              .map((podcast) => (
                 <Link
                   to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
                   params={{
@@ -107,7 +90,39 @@ function Podcasts() {
                     language={podcast.language}
                   />
                 </Link>
-              ))}
+              ))
+          ) : (
+            <p className="text-center text-gray-500">
+              {t('resources.podcasts.noPodcasts')}
+            </p>
+          )}
+        </div>
+
+        {showLocalOnly && !isEnglishLanguage && englishPodcasts.length > 0 && (
+          <section>
+            <LanguageResourcesSectionHeader language="en" />
+            <div className="flex flex-wrap gap-0.5 sm:gap-6">
+              {englishPodcasts
+                .filter((podcast) =>
+                  podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
+                )
+                .map((podcast) => (
+                  <Link
+                    to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
+                    params={{
+                      podcastId: podcast.id.toString(),
+                    }}
+                    key={podcast.id}
+                    className="max-sm:w-full"
+                  >
+                    <ResourceCard
+                      name={podcast.name}
+                      author={podcast.host}
+                      imageSrc={resourceImgUrl(podcast, 'logo.webp')}
+                      language={podcast.language}
+                    />
+                  </Link>
+                ))}
             </div>
           </section>
         )}

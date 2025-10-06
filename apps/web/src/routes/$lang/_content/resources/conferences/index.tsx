@@ -171,16 +171,14 @@ export const ConferenceCard = ({
   };
 
   const content = (
-    <div className="flex max-sm:gap-2 sm:flex-col flex-grow">
+    <div className="flex max-sm:gap-2 sm:flex-col flex-grow w-full">
       <div className="w-22 sm:w-full overflow-hidden max-sm:rounded-lg sm:rounded-t-2xl sm:rounded-b-lg relative sm:mb-2 max-sm:shrink-0">
         <Image
-          breakpoints={{ default: 88, sm: 240 }}
-          width="240"
-          height="135"
+          breakpoints={{ default: 180, sm: 480 }}
           loading="lazy"
           src={assetUrl(conference.path, 'thumbnail.webp')}
           alt={conference.name || 'Conference image'}
-          className="object-cover [overflow-clip-margin:_unset] aspect-[88/56] sm:aspect-[240/135] sm:w-full h-full max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg"
+          className="object-cover [overflow-clip-margin:_unset] aspect-[88/56] sm:aspect-[240/135] sm:w-full max-sm:h-full max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg"
         />
       </div>
       <GeneralInfos />

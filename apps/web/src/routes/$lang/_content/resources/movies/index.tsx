@@ -7,6 +7,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import {
   LanguageResourcesSectionHeader,
@@ -21,6 +22,7 @@ export const Route = createFileRoute('/$lang/_content/resources/movies/')({
 function Movies() {
   const { t, i18n } = useTranslation();
   const [showLocalOnly, setShowLocalOnly] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { data: movies, isFetched } = useQuery(
     trpc.content.getMovies.queryOptions({}, { staleTime: 300_000 }),
@@ -48,7 +50,12 @@ function Movies() {
       tabs={resourcesTabs}
       layoutSize="wide"
     >
-      <div className="flex flex-col max-sm:mt-4 mt-2">
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
+      />
+      <div className="flex flex-col">
         <SelectedLanguageSwitcher
           handleSwitchChange={handleSwitchChange}
           showLocalOnly={showLocalOnly}
@@ -57,23 +64,27 @@ function Movies() {
         <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedMovies?.length ? (
-            sortedMovies.map((movie) => (
-              <Link
-                to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
-                params={{
-                  movieId: movie.id.toString(),
-                }}
-                className="max-sm:w-full"
-                key={movie.id}
-              >
-                <ResourceCard
-                  name={movie.title}
-                  author={movie.author}
-                  imageSrc={resourceImgUrl(movie)}
-                  language={movie.language}
-                />
-              </Link>
-            ))
+            sortedMovies
+              .filter((movie) =>
+                movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+              )
+              .map((movie) => (
+                <Link
+                  to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
+                  params={{
+                    movieId: movie.id.toString(),
+                  }}
+                  className="max-sm:w-full"
+                  key={movie.id}
+                >
+                  <ResourceCard
+                    name={movie.title}
+                    author={movie.author}
+                    imageSrc={resourceImgUrl(movie)}
+                    language={movie.language}
+                  />
+                </Link>
+              ))
           ) : (
             <p className="text-center text-gray-500">
               {t('resources.movies.noMovies')}
@@ -84,24 +95,28 @@ function Movies() {
         {showLocalOnly && !isEnglishLanguage && englishMovies.length > 0 && (
           <section>
             <LanguageResourcesSectionHeader language="en" />
-            <div className="flex flex-wrap gap-0.5 sm:gap-6 sm:justify-center">
-              {englishMovies.map((movie) => (
-                <Link
-                  to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
-                  params={{
-                    movieId: movie.id.toString(),
-                  }}
-                  key={movie.id}
-                  className="max-sm:w-full"
-                >
-                  <ResourceCard
-                    name={movie.title}
-                    author={movie.author}
-                    imageSrc={resourceImgUrl(movie)}
-                    language={movie.language}
-                  />
-                </Link>
-              ))}
+            <div className="flex flex-wrap gap-0.5 sm:gap-6">
+              {englishMovies
+                .filter((movie) =>
+                  movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+                )
+                .map((movie) => (
+                  <Link
+                    to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
+                    params={{
+                      movieId: movie.id.toString(),
+                    }}
+                    key={movie.id}
+                    className="max-sm:w-full"
+                  >
+                    <ResourceCard
+                      name={movie.title}
+                      author={movie.author}
+                      imageSrc={resourceImgUrl(movie)}
+                      language={movie.language}
+                    />
+                  </Link>
+                ))}
             </div>
           </section>
         )}
