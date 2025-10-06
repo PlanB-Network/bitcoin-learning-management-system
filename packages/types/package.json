@@ -3,7 +3,7 @@
     "@blms/constants": "workspace:*",
     "@blms/schemas": "workspace:*",
     "@types/express-session": "^1.18.2",
-    "typescript": "~5.9.2",
+    "typescript": "~5.9.3",
     "typesense": "~2.0.3",
     "zod": "~3.25.76",
     "zod-to-ts": "~1.2.0"

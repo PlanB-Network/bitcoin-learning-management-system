@@ -1,12 +1,12 @@
 {
   "dependencies": {
     "@blms/constants": "workspace:*",
-    "dotenv": "^17.2.1",
-    "drizzle-orm": "^0.44.4",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.6",
     "postgres": "3.4.7"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.31.4",
+    "drizzle-kit": "^0.31.5",
     "pg": "^8.16.3"
   },
   "exports": {
