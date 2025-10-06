@@ -223,11 +223,11 @@ const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
 
 export const TopicTags = ({ professor }: ProfessorCardProps) => {
   return (
-    <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs text-white">
+    <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs">
       {professor.tags?.map((tag) => (
         <span
           key={tag}
-          className="flex items-center desktop-typo1  px-2 py-1 rounded-lg bg-[#FFFFFF40] capitalize"
+          className="flex items-center desktop-typo1  px-2 py-1 rounded-lg bg-accent capitalize"
         >
           {tag}
         </span>

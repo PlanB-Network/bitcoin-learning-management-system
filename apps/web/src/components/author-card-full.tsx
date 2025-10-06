@@ -34,7 +34,7 @@ export const AuthorCardFull = ({
     <div {...props}>
       <article className="flex flex-col md:p-0 gap-5">
         <div className="flex max-md:flex-col max-md:gap-4 md:items-top gap-7">
-          <div className="rounded-[20px] bg-white p-2 shrink-0 w-[280px] h-fit">
+          <div className="rounded-[20px] p-2 shrink-0 w-[280px] h-fit">
             <Link
               to={`/professor/${formatNameForURL(professor?.name || '')}-${professor?.id}`}
               className="rounded-[20px] flex flex-col items-center  bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[250px] p-2.5 relative overflow-hidden"
@@ -58,10 +58,10 @@ export const AuthorCardFull = ({
                   {/* Courses */}
                   {professor?.coursesCount > 0 && (
                     <div className="flex flex-col gap">
-                      <span className="text-5xl leading-[116%] text-center text-white">
+                      <span className="text-5xl leading-[116%] text-center">
                         {professor?.coursesCount}
                       </span>
-                      <span className="font-semibold leading-[133%] text-center text-white">
+                      <span className="font-semibold leading-[133%] text-center">
                         {t('words.courses')}
                       </span>
                     </div>
@@ -69,10 +69,10 @@ export const AuthorCardFull = ({
                   {/* Tutorials */}
                   {professor?.tutorialsCount > 0 && (
                     <div className="flex flex-col gap">
-                      <span className="text-5xl leading-[116%] text-center text-white">
+                      <span className="text-5xl leading-[116%] text-center">
                         {professor?.tutorialsCount}
                       </span>
-                      <span className="font-semibold leading-[133%] text-center text-white">
+                      <span className="font-semibold leading-[133%] text-center">
                         {t('words.tutorials')}
                       </span>
                     </div>
@@ -80,10 +80,10 @@ export const AuthorCardFull = ({
                   {/* Lectures */}
                   {professor?.lecturesCount > 0 && (
                     <div className="flex flex-col gap">
-                      <span className="text-5xl leading-[116%] text-center text-white">
+                      <span className="text-5xl leading-[116%] text-center">
                         {professor?.lecturesCount}
                       </span>
-                      <span className="font-semibold leading-[133%] text-center text-white">
+                      <span className="font-semibold leading-[133%] text-center">
                         {t('words.lectures')}
                       </span>
                     </div>
@@ -115,8 +115,8 @@ export const AuthorCardFull = ({
             </div>
           </div>
 
-          <div className="flex flex-col items-start align-top">
-            <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm text-white sm:gap-5 sm:text-2xl max-w-[296px] lg:max-w-[596px]">
+          <div className="flex flex-col items-start align-top text-black">
+            <div className="flex flex-wrap content-center items-center gap-2 self-stretch text-sm sm:gap-5 sm:text-2xl max-w-[296px] lg:max-w-[596px]">
               <p className="text-sm md:text-base">{professor.bio}</p>
             </div>
             <div className="items-start m-0">
