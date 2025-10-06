@@ -45,18 +45,18 @@
     "emailAddress": "이메일 주소",
     "emailTip": "이메일은 필수가 아니지만, 비밀번호를 잊어버린 경우에 유용할 수 있습니다!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validateChange": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "이메일 변경 확인 완료",
+      "emailValidated": "이메일 확인 완료",
+      "errorValidatingEmail": "이메일 확인 오류",
+      "errorValidatingEmailChange": "이메일 변경 확인 오류",
+      "errorValidatingEmailChangeDescription": "이메일 변경 확인 과정에서 오류가 발생했습니다. 링크가 만료되었거나 이미 사용된 것으로 보입니다. 다시 시도해 주세요.",
+      "errorValidatingEmailDescription": "이메일 변경 확인 과정에서 오류가 발생했습니다. 링크가 만료되었거나 이미 사용된 것으로 보입니다. 다시 시도해 주세요.",
+      "successfullyChanged": "귀하의 이메일 주소가 {{email}}으로 변경되었습니다.",
+      "successfullyValidated": "귀하의 이메일 주소가 성공적으로 인증되었습니다.",
+      "validateChange": "이메일 변경 확인",
+      "validatingEmail": "이메일 확인",
+      "validatingEmailChange": "이메일 변경 확인",
+      "wontTakeLong": "그리 오래 걸리지 않을겁니다.."
     },
     "errors": {
       "displayNameTooShort": "표시 이름은 최소 2자 이상 포함해야 합니다.",
@@ -91,7 +91,9 @@
     "sendLink": "링크를 보내주세요.",
     "signIn": "로그인",
     "trackProgress": "계정을 생성하거나 로그인하여 진행 상황을 확인하세요.",
-    "tryAgain": "다시 시도해보세요"
+    "tryAgain": "다시 시도해보세요",
+    "loginNotAvailable1": "데스크톱 앱에서는 아직 로그인 기능을 사용할 수 없습니다.",
+    "loginNotAvailable2": "저희 웹사이트를 방문하셔서 로그인하고 계정에 접근할 수 있습니다."
   },
   "bCert": {
     "bCertDescription": "₿-인증서는 비트코인 및 관련 주제에 대한 이해 수준을 평가하는 국제적으로 인정받은 시험입니다. 이 인증서를 취득하면 비트코인 산업에서의 기술과 지식을 입증할 수 있습니다.",
@@ -111,7 +113,10 @@
     "pageTitle": "₿-CERT 시험을 보세요",
     "readChart": "헌장을 읽어보세요",
     "tweetText": "플랜 ₿ 네트워크(@planb_network)의 ₿-CERT 시험에서 {{score}}/100점으로 합격하여 정말 기쁩니다! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "₿-CERT 인증서의 진위성을 확인하세요"
+    "verify": "₿-CERT 인증서의 진위성을 확인하세요",
+    "myCertificates": "내 자격증",
+    "noTestSessions": "현재 사용가능한 테스트 세션이 없습니다.",
+    "wantHostSession": "지역 허브에서 ₿-CERT 테스트 세션을 열고 싶으신가요?"
   },
   "bet": {
     "contributeButton": "도움 & 기여",
@@ -148,7 +153,8 @@
     "noConferences": "아직 {{year}}에 대한 컨퍼런스가 추가되지 않았습니다.",
     "pageTitle": "컨퍼런스 리플레이",
     "planBConferences": "플랜 ₿ 컨퍼런스들",
-    "topics": "주제들"
+    "topics": "주제들",
+    "conferencesGenesis": "제네시스 블록부터 시작된 컨퍼런스들"
   },
   "courses": {
     "chapter": {
@@ -224,7 +230,7 @@
       "certificateAvailable": "시험 인증서는 제출 후 약 10시간 뒤에 이용 가능합니다.",
       "certificateGeneration": "당신의 졸업장이 생성 중입니다 ",
       "certificatePageOtherCourses": "기타 관련 코스",
-      "completed": "",
+      "completed": "시험이 끝났습니다!",
       "congratulations": "이 코스의 끝에 도달하셨습니다! 기쁘게 축하드립니다!",
       "congratulationsPassed": "축하드립니다. 최종 시험에 <0>합격</0>하셨습니다!",
       "courseDiploma": "코스 디플로마",
@@ -233,7 +239,7 @@
       "dontWorry": "틀려도 걱정마세요! 이 시험은 학습을 강화하는 데 도움이 되며 통과하지 못해도 24시간 후에 다시 볼 수 있습니다.",
       "dontWorryRetake": "걱정마세요! 24시간 후에 시험을 다시 볼 수 있습니다.",
       "examAndDiploma": "시험 & 디플로마",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "플랫폼에서 시험 기간 내에 시험에 합격하지 못 할 경우, 학생은 자동으로 0점을 받게 됩니다.",
       "examCertificateCompletionText": "플랜₿ 네트워크는 {{username}}님이 \"{{courseName}}\" 코스 디플로마를 수상하신 것을 기쁘게 축하드립니다!",
       "examDetails": "시험은 {{nb}} 개의 객관식 질문으로 구성되며, 각 질문마다 정답이 하나 있습니다. 타이머가 작동 중이라면 제출 전 언제든지 답변을 변경할 수 있습니다.",
       "examNotPassed": "최종 시험을 치르고 80% 이상 득점해야 디플로마를 받으며 코스를 완전히 마칠 수 있습니다. 이 디플로마는 <0>0-time-stamped</0>로 진위 여부를 보장합니다.",
@@ -241,7 +247,7 @@
       "failed": "아쉽게도 시험에 통과하지 못했습니다",
       "failedDiploma": "최종 시험에서 80% 이상 득점해야 디플로마를 받고 코스를 완전히 마칠 수 있습니다. 다만, 24시간 후에 시험을 다시 볼 수 있습니다.",
       "finalExam": "최종 시험",
-      "finalScore": "",
+      "finalScore": "최종점수",
       "findInformationChapter": "자세한 내용은 이 챕터에서 확인할 수 있습니다:",
       "futureProof": "미래 보장: 당신의 디플로마는 영구히 보호되며 항상 유효합니다.",
       "getCertificate": "디플로마 받기",
@@ -252,9 +258,9 @@
       "instantVerification": "즉시 확인: 고용주가 귀하의 디플로마 진위와 발행 날짜를 쉽게 확인할 수 있습니다.",
       "instructions": "시험 시작 전 안내:",
       "letsConclude": "모두 완료되었습니다. 결론으로 넘어갑시다.",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}}분",
+      "nbQuestions": "{{nb}} 문항들",
+      "nextChapter": "다음 챕터",
       "noGoBack": "뒤로 가기",
       "notTranslatedYet": "죄송합니다. 최종 시험은 아직 선택하신 언어로 제공되지 않습니다. 계속하려면 다른 언어로 변경하실 수 있습니다.",
       "oneMinuteLeft": "1분 남았습니다",
@@ -264,32 +270,32 @@
       "passRate": "합격률은 80%입니다.",
       "planBTimeStamp": "플랜₿ 네트워크에서는 블록체인 기반 타임스탬핑 기술을 사용하여 학위를 안전하게 보호합니다.",
       "quitWithoutSubmitting": "잠깐! 답변을 제출하지 않고 페이지를 떠난 것 같습니다. 이로 인해 시험이 취소됩니다.",
-      "readyToTest": "",
+      "readyToTest": "지식을 테스트할 준비가 되셨나요?",
       "receiveDiploma": "당신의 디플로마를 수령하세요",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "맞힌 문항들",
+        "incorrect": "틀린 문항들",
+        "questions": "질문에 대한 답변",
+        "time": "쓴 시간"
       },
       "retakeExam": "시험 재도전",
       "retakeInstructions": "20분 동안 40개의 질문에 답변할 수 있습니다. 각 질문은 정답이 하나뿐입니다. 질문 사이를 이동하고 끝에서 답변을 제출할 수 있습니다.",
       "sameRules": "최종 시험을 다시 보려 합니다. 규칙은 그대로 유지됩니다.",
       "score": "시험 점수는:",
-      "singleAttempt": "",
-      "singleAttemptAvailability": "",
-      "singleAttemptPrecaution": "",
+      "singleAttempt": "단일 기회 시험",
+      "singleAttemptAvailability": "이 시험은 {{date}} 부터 온라인에서 응시 할 수 있습니다",
+      "singleAttemptPrecaution": "시작하기 전에 연결 상태가 안정적인지 확인해 주십시오. 이 시험은 한 번만 응시할 수 있으므로, 연결이 끊어지면 다시 시도할 수 없습니다.",
       "skipExam": "시험 스킵",
       "skipExamDescription": "아래 버튼을 클릭하면 시험을 건너뛰고 바로 코스 결론섹션으로 이동할 수 있습니다.",
       "skipExamGoConclusion": "시험 건너뛰고 결론으로 이동",
       "skipGoConclusion": "코스 진행 요약 보기",
-      "solidEffort": "",
+      "solidEffort": "과정을 완수하신 것을 축하합니다. 정말 열심히 노력하셨습니다.\n이번에는 합격하지 못했지만, 모든 단계가 성공의 밑거름이 됩니다.\n학습여정을 계속해서 나아가세요!",
       "startExam": "시험 시작하기",
       "submit": "제출하기",
       "successDiploma": "축하합니다! 시험을 통과했습니다.\n디플로마는 학생 대시보드에서 확인할 수 있으며, <0>타임스탬프</0>가 적용되어 신뢰성을 보장합니다.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "축하합니다! 강의를 성공적으로 이수하셨습니다.\n졸업장은 학생 대시보드에서 확인하실 수 있습니다.",
       "successDiplomaTimeStamped": "축하합니다! 시험에 성공적으로 통과했습니다.\n당신의 디플로마는 시험 시작 시간 기준 10시간 후 학습 대시보드에서 확인할 수 있습니다. 이 지연은 <0>타임스탬핑</0> 기술 때문이며, 디플로마의 진위성을 보장하기 위한 것입니다.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "강의 수료를 축하합니다.\n본 과정의 합격 기준을 성공적으로 충족하셨으며, 졸업하셨습니다.\n졸업장은 대시보드에서 확인하실 수 있습니다.",
       "sureSubmit": "시험을 제출하시겠습니까?",
       "takeExam": "시험 보기",
       "tamperProof": "변조 방지: 블록체인은 누구도 당신의 자격 증명을 변경하거나 위조할 수 없도록 보장합니다.",
@@ -305,11 +311,14 @@
       "tryAgain": "시험 재도전",
       "tryOneMoreTime": "한 번 더 도전해 봅시다!",
       "verifyDisplayName": "시작하기 전에, 아래에 표시 이름을 확인해 주세요. 이 이름은 당신의 디플로마를 생성하는 데 사용됩니다.",
-      "viewExam": "",
+      "viewExam": "시험 보기",
       "weight": "",
       "whyTimeStamp": "타임스탬프된 디플로마:\n중요한 이유",
       "wishTryAgain": "시험을 다시 보고 싶다면 24시간 후에 가능합니다.",
-      "yesSubmit": "네, 제출합니다"
+      "yesSubmit": "네, 제출합니다",
+      "examResults": "시험 결과",
+      "scoreAndDiploma": "점수 및 성적증명서",
+      "reviewTest": "리뷰"
     },
     "explorer": {
       "buildPath": "래빗홀을 탐험하며 자신만의 학습 여정을 만들어보세요!",
@@ -321,7 +330,8 @@
       "pageDescription": "Plan ₿ 아카데미는 전 세계적으로 비트코인 교육을 단순화하고자 합니다. 다양한 분야의 전문가들이 선별한 강의들이 Plan ₿ 아카데미에서 제공됩니다.\n초보자부터 전문가까지 스스로 학습하거나 교수님의 주간 강의를 따라갈 수 있습니다. 비트코인의 광대한 세계에 대한 더 깊은 이해를 얻는 데 도움을 줄 수 있기를 바랍니다. 이 강의 중 많은 것은 완전히 무료로, 어디에 있든 누구나 양질의 교육에 접근할 수 있도록 설계되었습니다.",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Giacomo Zucco가 이끄는 Plan ₿ School은 학습과 실전 적용 사이의 격차를 해소하기 위해 설계된 3개월 인텐시브 프로그램을 제공합니다. 전통적인 강의뿐만 아니라, 학생들은 기업 주도로 진행되는 실무 프로젝트에 참여하고, 최고 성과자들을 위한 퍼스트 클래스 부트캠프에서 경쟁력을 키웁니다. 두 차례의 경쟁 선발 과정을 거쳐 최우수 학생들만이 마지막 단계에 도달하며, 이를 통해 비트코인 산업에서 성공적인 경력을 시작할 수 있도록 철저한 준비를 갖추게 됩니다.",
-      "seeCourse": "코스 보기"
+      "seeCourse": "코스 보기",
+      "discover": "다른 자료 살펴보기"
     },
     "format": {
       "hybrid": "대면/온라인",
@@ -407,7 +417,20 @@
       "writeThoughts": "코스에 대한 생각을 자유롭게 적어보세요",
       "yesOfCourse": "네, 당연하죠",
       "yesVeryMuch": "네, 매우 그렇습니다"
-    }
+    },
+    "allCourses": "모든 강좌들",
+    "continueLeftOff": "마지막 지점부터 계속 진행하기",
+    "liveClasses": {
+      "allOtherTitle": "다른 모든 실시간 수업들",
+      "liveClasses": "실시간 수업들",
+      "secondaryTitle": "비트코인 중심 기업에 필요한 취업 역량을 갖추세요.",
+      "title": "Plan ₿ 공식 연간 프로그램"
+    },
+    "courseSelector": "강좌 선택기",
+    "noCoursesFound": "필터에 맞는 강좌가 없습니다.",
+    "plusXMore": "+{{count}} 개 더 보기",
+    "selectATopic": "주제를 선택하세요",
+    "tryAdjustingFilters": "필터를 조정해보시겠어요?"
   },
   "dashboard": {
     "account": "계정",
@@ -426,7 +449,9 @@
         "profession": "직업",
         "resultsRemaining": "결과 {{results}}개 남음",
         "seeMore": "더 보기",
-        "viewCV": "이력서 보기"
+        "viewCV": "이력서 보기",
+        "candidateFile": "후보파일",
+        "file": "파일"
       },
       "confirmRemoval": "삭제 확인",
       "coupons": {
@@ -469,13 +494,13 @@
         "generateNewCodes": "새 코드 생성하기",
         "maximumNumberOfUse": "사용 가능한 최대 횟수",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "알파벳순",
+          "highLow": "할인률 높은순",
+          "lowHigh": "할인률 낮은순",
+          "sortBy": "정렬 방식",
+          "za": "역 알파벳순"
         },
-        "noCouponsFound": "",
+        "noCouponsFound": "쿠폰을 찾지 못했습니다.",
         "numberOfCodes": "몇 개의 코드를 생성할까요?",
         "numberOfCodesPlaceholder": "숫자를 입력하십시오.",
         "productCourse": "코스",
@@ -519,7 +544,26 @@
       "type": "유형",
       "upcomingBookings": "다가오는 예약",
       "upcomingBookingsSubtitle": "모든 대면 이벤트 참가자 목록을 다운로드할 수 있습니다.",
-      "userRolesAllocation": "사용자 역할 할당"
+      "userRolesAllocation": "사용자 역할 할당",
+      "translationPanel": {
+        "addContributor": {
+          "language": "언어",
+          "addLanguage": "다른 언어 추가하기",
+          "assign": "등록하기",
+          "assignedLanguages": "이미 등록된 언어들",
+          "assigning": "등록중입니다...",
+          "assignmentSuccess": "성공적으로 기여자를 등록했습니다!",
+          "confirm": "확인",
+          "findContributor": "기여자 찾기",
+          "noUsers": "사용자가 없습니다",
+          "searchUsers": "유저를 검색중입니다..."
+        },
+        "actions": {
+          "accept": "승인하기",
+          "delete": "삭제하기"
+        }
+      },
+      "translation": "번역 패널"
     },
     "announcements": {
       "groups": {
@@ -1727,5 +1771,9 @@
     "pageTitle": "유튜브 채널",
     "view": "유튜브 채널 보기",
     "watchTrailer": "예고편 보기"
+  },
+  "account": {
+    "account": "계정",
+    "myTeacherProfile": "선생님의 프로필"
   }
 }

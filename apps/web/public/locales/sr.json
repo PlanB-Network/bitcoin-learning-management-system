@@ -91,10 +91,12 @@
     "sendLink": "Pošalji mi link",
     "signIn": "Prijavite se",
     "trackProgress": "Kreirajte nalog ili se prijavite da biste pratili svoj napredak",
-    "tryAgain": "Pokušajte ponovo"
+    "tryAgain": "Pokušajte ponovo",
+    "loginNotAvailable1": "Funkcije za prijavljivanje još uvek nisu dostupne na desktop aplikaciji.",
+    "loginNotAvailable2": "Možete posetiti našu web stranicu kako biste se prijavili i pristupili svom nalogu."
   },
   "bCert": {
-    "bCertDescription": "₿ -sertifikat je međunarodno priznat ispit za procenu Vašeg nivoa znanja o Bitcoinu i povezanih tema. Ovaj sertifikat će Vam omogućiti da dokažete svoje veštine i znanje u Bitcoin industriji, pružajući Vam pristup kompanijama i pozicijama u toj industriji.",
+    "bCertDescription": "₿-CERT je vrhunski Bitcoin test osmišljen da proceni tvoje znanje o Bitcoinu i povezanim temama.\n\nOstvari više od 80% poena i osvoji svoj ₿-CERT sertifikat koji dokazuje tvoju stručnost u Bitcoin industriji i otvara ti vrata ka poslovima u toj oblasti.",
     "bookExam": "Zakažite ispit",
     "challengeYourself": "Prihvati izazov i oceni svoj nivo",
     "checkout": "Pogledajte ₿ sertifikat",
@@ -111,7 +113,11 @@
     "pageTitle": "Polažite za ₿ Sertifikat",
     "readChart": "Pročitajte poglavlje",
     "tweetText": "Oduševljen/a sam što sam položio/la ₿-sertifikat na @planb_network sa rezultatom {{score}}/100! {{emoji}}#BCERT\n\n{{certificateUrl}}",
-    "verify": "Proverite autentičnost svog sertifikata"
+    "verify": "Proverite autentičnost svog sertifikata",
+    "hostSessionConditions": "Evo kako:\n\n1. Pročitajte <0>Povelju</0> - Proverite da li vaša zajednica ispunjava obavezne uslove za hosting\n2. Planirajte i zakazujte - Ako se kvalifikujete, odaberite datum i postavite sesiju\n3. Objavite svoj događaj - Kontaktirajte nas da biste ga dodali na platformu Plan ₿ Network kako bi ljudi mogli da se pridruže",
+    "myCertificates": "Moji sertifikati",
+    "noTestSessions": "Trenutno nema dostupnih test sesija",
+    "wantHostSession": "Želite da organizujte ₿-CERT test sesiju u Vašem lokalnom centru?"
   },
   "bet": {
     "contributeButton": "Pomozi i doprinesi",
@@ -148,7 +154,8 @@
     "noConferences": "Još uvek nisu dodate konferencije za {{year}}.",
     "pageTitle": "Reprize konferencija",
     "planBConferences": "Plan B konferencije",
-    "topics": "Teme"
+    "topics": "Teme",
+    "conferencesGenesis": "Konferencije od Genezis bloka"
   },
   "courses": {
     "chapter": {
@@ -324,7 +331,8 @@
       "pageDescription": "Plan ₿ Academy nudi širok izbor kurseva o Bitcoin-u, kako besplatnih tako i premium, i za sve nivoe – od početnika do eksperata. Kurseve vode stručnjaci ili su prilagođeni samostalnom učenju, kako bi odgovarali različitim stilovima učenja. Naša misija je jednostavna: da znanje o Bitcoinu učinimo jasnim, zanimljivim i dostupnim svima!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Plan ₿ School, koju vodi Đakomo Zuko, nudi intenzivne troemesečne obrazovne programe dizajnirane da premoste jaz između učenja i stvarnih svetskih primena. Osim tradicionalnih časova, studenti se bave praktičnim projektima vođenim od strane kompanija i prvoklasnim bootcampom posvećenim najboljim studentima. Samo najbolji talenti napreduju nakon dva konkurentska kruga selekcije, osiguravajući da konačni top studenti budu potpuno opremljeni za pokretanje svojih karijera u Bitcoin industriji.",
-      "seeCourse": "Otkrijte kurs"
+      "seeCourse": "Otkrijte kurs",
+      "discover": "Otkrijte"
     },
     "format": {
       "hybrid": "Uživo/online",
@@ -410,7 +418,20 @@
       "writeThoughts": "Ovde možete pisati svoja razmišljanja",
       "yesOfCourse": "da, naravno",
       "yesVeryMuch": "da, veoma mnogo"
-    }
+    },
+    "allCourses": "Svi kursevi",
+    "continueLeftOff": "Nastavite gde ste stali",
+    "courseSelector": "Izbor kursa",
+    "liveClasses": {
+      "allOtherTitle": "Svi ostali časovi uživo",
+      "liveClasses": "Časovi uživo",
+      "secondaryTitle": "Postanite zaposleni u kompanijama fokusiranim na Bitcoin.",
+      "title": "Plan ₿ zvanični godišnji programi"
+    },
+    "noCoursesFound": "Nijedan kurs nije pronađen",
+    "plusXMore": "+{{count}} više",
+    "selectATopic": "Izaberite temu",
+    "tryAdjustingFilters": "Pokušajte da prilagodite svoje filtere"
   },
   "dashboard": {
     "account": "Nalog",
@@ -491,7 +512,7 @@
           "actions": "Akcije",
           "code": "Kod",
           "discount": "Popust",
-          "maxUses": "",
+          "maxUses": "Maks. upotrebe",
           "name": "Ime",
           "owner": "Vlasnik",
           "total": "Ukupno",
@@ -778,7 +799,60 @@
             "course": "Kurs:",
             "existingUploadsInfo": "Originalni fajlovi su već otpremljeni. Možete započeti prevod bez ponovnog otpremanja. Otpremanje novih fajlova će prebrisati postojeće.",
             "folderUrl": "URL adresa fascikle",
-            "invalidAudioFile": "Molimo vas, izaberite validan audio fajl."
+            "invalidAudioFile": "Molimo vas, izaberite validan audio fajl.",
+            "englishFilesRequired": "Molim vas obezbedite da su sve otpremljene datoteke samo na engleskom jeziku",
+            "invalidPptxFile": "Molimo izaberite važeću PowerPoint (.pptx) datoteku.",
+            "missingFilesError": "Molim vas otpremite datoteke za prevod ili pružite URL pre nego što započnete sa prevodom.",
+            "networkError": "Došlo je do greške u mreži. Proverite svoju internet vezu i pokušajte ponovo.",
+            "noAudioFileSelected": "Nije izabran audio fajl",
+            "noFolderSelected": "Nije izabran folder",
+            "noLanguagesAvailable": "Nema dostupnih jezika za prevod.",
+            "noPptxFileSelected": "Nije odabrana PowerPoint datoteka",
+            "noZipSelected": "Nije izabran ZIP",
+            "originalLanguage": "Originalni jezik:",
+            "overwriteWarning": "Postojeće datoteke će biti zamenjene.",
+            "pptxFile": "PowerPoint datoteka",
+            "pptxFileInfo": "Podržani su samo .pptx datoteke (Max 100MB)",
+            "pptxFileTooLarge": "PowerPoint fajl je prevelik. Maksimalna veličina je 100MB.",
+            "processingStarted": "Prevod je započet. Proces može trajati nekoliko minuta za velike kurseve.",
+            "selectLanguages": "Izaberite jezike za prevod:",
+            "startingTranslation": "Otpremanje datoteka...",
+            "startingTranslationStep": "Započinjanje prevoda...",
+            "startSuccess": "Prevod je uspešno započet!",
+            "startTranslation": "Započnite sa prevodom",
+            "timeoutError": "Zahtev za prevod je istekao. Sadržaj kursa može biti previše obiman. Pokušajte ponovo ili kontaktirajte podršku.",
+            "title": "Izaberite jezike za prevod",
+            "translationFailed": "Prevod nije uspeo. Molim Vas proverite logove i pokušajte ponovo.",
+            "uploadAndTranslationStarted": "Datototeke su otrpemljene i prevod je započeo! Proces može trajati nekoliko minuta za obimnije kurseve.",
+            "uploadError": "Otrpemanje nije uspelo. Molim Vas proverite svoje datoteke i pokušajte ponovo.",
+            "uploadFiles": "Otpremite dodatne datoteke (Opciono)",
+            "uploadFolder": "Otpremite folder (PPTX + TXT)",
+            "uploadingFiles": "Otpremanje datoteka...",
+            "uploadTimeoutError": "Otpremanje je isteklo posle 10 minuta. Molimo vas da probate sa manjim datotekama ili proverite svoju internet vezu.",
+            "useEnglishLabel": "Kurs je već preveden na engleski. Da li da koristim englesku verziju kao izvor?"
+          },
+          "slideNavigation": {
+            "next": "Sledeći",
+            "previous": "Prethodni",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Slajd {{slideNumber}} nije dostupan",
+          "slideNotFound": "Slajd nije pronađen",
+          "table": {
+            "actions": "Akcije",
+            "course": "Kurs",
+            "index": "Indeks",
+            "todoLanguages": "Jezici za prevod",
+            "totalLanguages": "Svi jezici"
+          },
+          "textContent": "Sadržaj teksta",
+          "title": "Prevedi kurseve",
+          "translateTo": "Prevedi na",
+          "unknownContributor": "Nepoznato"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Nazad na listu korisnika"
           }
         }
       }
@@ -1048,9 +1122,9 @@
       "listSavedComeTomorrow": "Vaša lista preferencija je sačuvana. \nVratite se ovde sutra da otkrijete na koji ste projekat dodeljeni.",
       "mostPreferred": "Najviše preferirano",
       "mustBePdf": "Vaša datoteka mora biti PDF. Ako treba da pošaljete dodatnu datoteku, molimo vas da unutar vašeg PDF-a uključite link ka njoj.",
-      "notSelectedAssignment": "Nažalost, niste izabrani da učestvujete u izradi projekta.\nMožete i dalje nastaviti da pratite predavanja na kursu",
+      "notSelectedAssignment": "Nažalost, niste izabrani da učestvujete u projektnom zadatku.\nIpak, možeš nastaviti da pratiš predavanja na kursu.",
       "planbSchoolExamDescription": "Program Plan ₿ Biz škole 2025 sastoji se od dve faze. U prvoj fazi, polagaćete dva online ispita, konkretno prvi i završni: to su testovi sa jednim pokušajem, koje možete završiti u bilo kom trenutku tokom trodnevnog perioda dostupnosti. Nakon prve faze, studenti će biti odabrani na osnovu svojih rangova da pređu na drugu fazu, koja uključuje projektni zadatak: individualni zadatak koji pruža Bitcoin kompanija. Više detalja o tome možete pronaći na kartici zadatka.\n\nKonačna ocena će se izračunati kao ponderisani prosek tri testa. Studenti koji dostignu rezultat iznad 80% dobiće diplomu, a studenti sa najvišim rangom će takođe imati priliku da učestvuju u Letnjoj školi u Luganu, u julu.",
-      "planbSchoolGeneralInformation": "Program Plan ₿ Biz škole 2025 sastoji se od dve faze. U prvoj fazi, polagaćete dva online ispita, konkretno prvi i završni: to su testovi sa jednim pokušajem, koje možete završiti u bilo kom trenutku tokom trodnevnog perioda dostupnosti. Nakon prve faze, studenti će biti odabrani na osnovu svojih rangova da pređu na drugu fazu, koja uključuje projektni zadatak: individualni zadatak koji pruža Bitcoin kompanija. Više detalja o tome možete pronaći na kartici zadatka.\n\nKonačna ocena će se izračunati kao ponderisani prosek tri testa. Studenti koji dostignu rezultat iznad  {{threshold}}% dobiće diplomu, a studenti sa najvišim rangom će takođe imati priliku da učestvuju u Letnjoj školi u Luganu, u julu.",
+      "planbSchoolGeneralInformation": "Program Plan ₿ Biz škole 2025 sastoji se od dve faze. U prvoj fazi, polagaćete dva online ispita, konkretno prvi i završni: to su testovi sa jednim pokušajem, koje možete završiti u bilo kom trenutku tokom trodnevnog perioda dostupnosti. Nakon prve faze, studenti će biti odabrani na osnovu svojih rangova da pređu na drugu fazu, koja uključuje projektni zadatak: individualni zadatak koji pruža Bitcoin kompanija. Više detalja o tome možete pronaći na kartici zadatka.\n\nKonačna ocena će se izračunati kao ponderisani prosek tri testa. Studenti koji dostignu rezultat iznad {{threshold}}% dobiće diplomu, a studenti sa najvišim rangom će takođe imati priliku da učestvuju u Letnjoj školi u Luganu, u julu.",
       "projectRankingInstructions": "Uputstva za rangiranje projekata:",
       "ranking": "Rangiranje",
       "rankingInstructions": "Poručite predložene projekte prema vašim preferencijama (broj 1 je vaš prvi izbor). Ovo rangiranje će nam omogućiti da vam dodelimo najprikladniji projekat. Studenti sa višim ocenama će imati prednost pri izboru.",
@@ -1061,7 +1135,7 @@
       "saveList": "Sačuvajte listu",
       "shareOnSocials": "Podelite na društvenim mrežama:",
       "submissionInstructions": "Uputstva za podnošenje",
-      "submitBefore": "Morate predati svoj rad pre <0>18. juna u 23:59 (UTC+2)</0>. Radovi primljeni nakon ovog roka neće biti ocenjeni.",
+      "submitBefore": "Morate predati svoj rad pre {{date}} u {{hour}}. Radovi primljeni nakon ovog roka neće biti ocenjeni.",
       "submitFileNamingFormat": "Vaša datoteka mora biti imenovana koristeći sledeći format:\n<0>ime_firme_korisničko_ime.pdf</0>.\nUklonite sve razmake iz imena firme, koristite tačno korisničko ime na platformi planB.network i proverite da li ima grešaka u kucanju.",
       "submitReviewInfo": "Morate poslati recenziju da biste imali pristup ovoj funkciji.",
       "submitYourWork": "Predajte svoj rad",
@@ -1080,7 +1154,7 @@
     "courses": "Kursevi",
     "credentials": {
       "bCert": "₿-Sertifikat",
-      "bCertSubtitle": "Ovde možete pronaći detalje o Vašim rezervacijama i ocenama Vaših prošlih i budućih ₿-Sertifikata. \n₿-Sertifikat je ispit koji organizuje Plan ₿ Network kako bi se procenio Vaš nivo znanja o Bitcoinu i povezanim temama.",
+      "bCertSubtitle": "Ovde možete pronaći detalje o Vašim rezervacijama i ocenama Vaših prošlih i budućih ₿-Sertifikata. ₿-Sertifikat je ispit koji organizuje Plan ₿ Network kako bi se procenio Vaš nivo znanja o Bitcoinu i povezanim temama.",
       "beingGraded": "Vaš ispit se ocenjuje. Rezultati bi trebalo da budu dostupni za 1 ili 2 nedelje.",
       "completionDiplomas": "Diplome o završetku",
       "courseDiplomas": "Diplome kurseva",
@@ -1965,7 +2039,7 @@
     "skip": "Preskoči",
     "socialStudies": "Društvene studije",
     "start": "Početak",
-    "startHere": "Počnite ovde!",
+    "startHere": "Počnite ovde",
     "status": "Status",
     "student": "Student",
     "students": "Studenti",
@@ -1999,5 +2073,9 @@
     "pageTitle": "Youtube Kanali",
     "view": "Pogledajte Youtube kanal",
     "watchTrailer": "Pogledajte trejler"
+  },
+  "account": {
+    "account": "Nalog",
+    "myTeacherProfile": "Moj nastavnički profil"
   }
 }
