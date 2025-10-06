@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom/client';
 import { routeTree } from './routeTree.gen.js';
 import { TRPCProvider, trpcClient } from './utils/trpc.ts';
 
+import '../../../packages/ui/src/styles/global.css';
+
 // Create a new router instance
 const router = createRouter({
   routeTree,

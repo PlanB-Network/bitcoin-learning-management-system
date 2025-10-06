@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { BackLink, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
@@ -9,7 +10,6 @@ import { PageLayout } from '#src/components/page-layout.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { isUUID } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 import { CourseCard } from '../../../../patterns/course-card.tsx';
 import { LectureCard } from '../resources/-components/cards/lecture-card.tsx';

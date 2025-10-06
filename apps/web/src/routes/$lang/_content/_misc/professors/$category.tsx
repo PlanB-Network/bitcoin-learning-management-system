@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { DropdownMenu, Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
@@ -5,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.js';
 import { ProfessorCard } from '#src/components/professor-card.js';
-import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 import { professorTabs } from '../-utils/professor-utils.tsx';
 

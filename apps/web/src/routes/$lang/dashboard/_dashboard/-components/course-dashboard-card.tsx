@@ -1,13 +1,12 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
 import { ButtonWithArrow, cn, Progress, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT } from '#src/utils/i18n.ts';
 import { assetUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 
 export const CourseDashboardCard = ({
   course,

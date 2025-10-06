@@ -1,4 +1,4 @@
-import { LANGUAGES_MAP } from '@blms/shared';
+import { formatNameForURL, LANGUAGES_MAP } from '@blms/shared';
 import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
 import {
   Button,
@@ -48,7 +48,6 @@ import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';

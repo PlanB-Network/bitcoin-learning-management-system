@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { JoinedBook } from '@blms/types';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -6,7 +7,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { assetUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';

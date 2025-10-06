@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { useNavigate } from '@tanstack/react-router';
 import { Attribution, defaults as defaultControls, Zoom } from 'ol/control.js';
 import Feature from 'ol/Feature.js';
@@ -12,9 +13,7 @@ import { Vector as VectorSource } from 'ol/source.js';
 import { Circle as CircleStyle, Fill, Icon, Style } from 'ol/style.js';
 import View from 'ol/View.js';
 import { useEffect } from 'react';
-
 import OrangePillPath from '#src/assets/icons/orange_pill_color.svg';
-import { formatNameForURL } from '#src/utils/string.ts';
 
 interface CommunitiesMapProps {
   communities: Array<{

@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
 import {
   Collapsible,
@@ -8,9 +9,7 @@ import {
 import { Link } from '@tanstack/react-router';
 import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
-
 import { addSpaceToCourseIndex } from '#src/utils/courses.js';
-import { formatNameForURL } from '#src/utils/string.ts';
 
 interface Chapter {
   title: string;

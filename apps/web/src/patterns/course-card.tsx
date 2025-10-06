@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, cn, Image, ListItem, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -6,7 +7,7 @@ import { t } from 'i18next';
 import { TbChevronRight } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
 import { assetUrl } from '#src/utils/index.js';
-import { formatNameForURL, normalizeString } from '#src/utils/string.ts';
+import { normalizeString } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
   defaultVariants: {

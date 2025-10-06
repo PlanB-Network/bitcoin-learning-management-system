@@ -1,5 +1,5 @@
+import { formatNameForURL } from '@blms/shared';
 import type { FullProfessor } from '@blms/types';
-
 import {
   ButtonWithArrow,
   DividerVertical,
@@ -26,7 +26,6 @@ import { AuthorCard } from '#src/components/author-card.tsx';
 import { MainLayout } from '#src/components/main-layout.js';
 import { formatDate, formatHourRange, userTimeZone } from '#src/utils/date.ts';
 import { cdnUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 const GlossaryMarkdownBody = React.lazy(

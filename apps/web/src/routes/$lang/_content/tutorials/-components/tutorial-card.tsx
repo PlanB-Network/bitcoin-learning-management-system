@@ -1,9 +1,9 @@
+import { formatNameForURL } from '@blms/shared';
 import type { JoinedTutorialLight } from '@blms/types';
 import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { TbChevronRight } from 'react-icons/tb';
 import { assetUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.ts';
 
 export const TutorialCard = ({
   tutorial,
