@@ -1,7 +1,7 @@
 import type { Invoice } from '@blms/types';
-import { Card } from '@blms/ui';
+import { Card, EmptyState } from '@blms/ui';
 import { useTranslation } from 'react-i18next';
-
+import { TbFileInvoice } from 'react-icons/tb';
 import { formatDate } from '#src/utils/date.js';
 
 export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
@@ -94,7 +94,11 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
               })}
             </>
           ) : (
-            <p className="mt-4">{t('dashboard.booking.noInvoice')}</p>
+            <EmptyState
+              title={t('dashboard.booking.noInvoice')}
+              icon={TbFileInvoice}
+              className="mt-4"
+            />
           )}
         </div>
       )}
