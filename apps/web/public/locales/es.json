@@ -43,7 +43,7 @@
     "didYouKnow": "¿Lo sabías?",
     "displayName": "Nombre para mostrar",
     "emailAddress": "Dirección de correo electrónico",
-    "emailTip": "El correo electrónico no es obligatorio, pero puede ser útil en caso de olvidar la contraseña :)",
+    "emailTip": "No se requiere el correo electrónico, pero puede servirte en caso de que olvides tu contraseña!",
     "emailValidation": {
       "emailChangeValidated": "Cambio de correo electrónico validado",
       "emailValidated": "Correo electrónico validado",
@@ -90,20 +90,20 @@
     "resetPassword": "Restablece tu contraseña",
     "sendLink": "Envíame un enlace",
     "signIn": "Iniciar sesión",
-    "trackProgress": "Crea una cuenta o inicia sesión para llevar un seguimiento de tu progreso.",
+    "trackProgress": "Crea una cuenta o inicia sesión para llevar un seguimiento de tu progreso",
     "tryAgain": "Inténtalo de nuevo",
     "loginNotAvailable1": "Las funciones de inicio de sesión aún no están disponibles en la aplicación de escritorio.",
     "loginNotAvailable2": "Puedes visitar nuestro sitio web para iniciar sesión y acceder a tu cuenta."
   },
   "bCert": {
-    "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados. Este certificado te permitirá demostrar tus habilidades y conocimientos en la industria de Bitcoin, dándote acceso a empresas y puestos en esa industria.",
+    "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados.\nObtén un puntaje mayor a 80% para ganar tu certificado ₿-CERT que te permitirá demostrar tus conocimientos en la industria de Bitcoin, dándote acceso a puestos de trabajo en la industria.",
     "bookExam": "Reserva una sesión de examen",
-    "challengeYourself": "¡Desafíate a ti mismo y afirma tu nivel!",
+    "challengeYourself": "Desafíate a ti mismo y afirma tu nivel",
     "checkout": "Echa un vistazo al ₿-CERT",
     "download": "Descargar certificado",
     "knowledgeableBitcoin": "¿Cuánto sabes sobre Bitcoin?",
     "noBookExam": "Aún no se ha planificado ninguna sesión de examen.",
-    "organizeDescription": "¡No hay problema! Si tu comunidad es parte de Plan ₿ Network, puedes organizar una sesión de examen en tu centro. Por favor, lee el estatuto para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
+    "organizeDescription": "¡Gran idea! Si tu comunidad es parte de Plan ₿ Network, puedes organizar una sesión de ₿-CERT en tu hub.\nPor favor, lee el <0>estatuto</0>para asegurarte de que puedes cumplir con las condiciones obligatorias para albergar un examen. Si puedes cumplirlas, entonces puedes programar tu sesión y añadirla a la plataforma.",
     "organizeExam": "Organiza un examen",
     "organizeSessionConditions": "Por favor, lee <0>guía</0> para asegurarte de que cumples con las condiciones obligatorias para albergar la prueba.\nSi calificas, con gusto planificaremos contigo una sesión contigo tu comunidad local.\nPor favor, contáctanos usando el método que prefieras.",
     "organizeSessionHub": "Organiza una sesión de prueba ₿-CERT en tu centro local",
@@ -154,7 +154,8 @@
     "noConferences": "Aún no se han añadido conferencias para {{year}}.",
     "pageTitle": "Repeticiones de conferencias",
     "planBConferences": "Conferencias de Plan B",
-    "topics": "Temas"
+    "topics": "Temas",
+    "conferencesGenesis": "Conferencias desde el Bloque Génesis"
   },
   "courses": {
     "chapter": {
@@ -174,7 +175,7 @@
         "stayTuned": "La sesión en vivo comenzará 30 minutos antes de que comience la clase. ¡Mantente pendiente!",
         "title": "Video en vivo"
       },
-      "next": "Completado, pasar al siguiente capítulo.",
+      "next": "Capítulo completo",
       "nextLesson": "La próxima lección será",
       "thanksTip": "¿Te gustaría demostrar tu aprecio?\nPuedes apoyar al autor con una propina."
     },
@@ -424,7 +425,13 @@
     "noCoursesFound": "No se encontraron cursos",
     "plusXMore": "+{{count}} más",
     "selectATopic": "Elegir un tema",
-    "tryAdjustingFilters": "Intenta ajustar tus filtros"
+    "tryAdjustingFilters": "Intenta ajustar tus filtros",
+    "liveClasses": {
+      "allOtherTitle": "Todas las demás clases en vivo",
+      "liveClasses": "Clases en vivo",
+      "secondaryTitle": "Conviértete en cotratable en empresas enfocadas en Bitcoin.",
+      "title": "Programas anuales oficiales de Plan ₿"
+    }
   },
   "dashboard": {
     "account": "Cuenta",
@@ -1433,7 +1440,8 @@
       "unlimited": "sin límite",
       "visitWebsite": "Visitar el sitio web",
       "watchLive": "Mirar en vivo",
-      "watchReplay": "Mirar la repetición"
+      "watchReplay": "Mirar la repetición",
+      "buyLecture": "Comprar clase"
     },
     "errors": {
       "premiumContentNeedsLogin": "Necesitas iniciar sesión para acceder a este evento.",
@@ -1541,7 +1549,8 @@
     "placeHolder": "¿Qué es esto?",
     "randomSearch": "Búsqueda aleatoria",
     "relatedWords": "Palabras relacionadas:",
-    "term": "Término"
+    "term": "Término",
+    "showMoreWords": "Mostrar más palabras"
   },
   "home": {
     "aboutUsSection": {
@@ -1664,7 +1673,8 @@
   "movies": {
     "goToMovie": "Ve a la película",
     "pageTitle": "Películas y Documentales",
-    "watchTrailer": "Ver el trailer"
+    "watchTrailer": "Ver el trailer",
+    "checkTheMovie": "Revisa la película"
   },
   "nodeNetwork": {
     "description1": "Creemos que la educación no solo debe llevarse a cabo en línea, sino también en espacios físicos. Para lograr esto, Plan ₿ Network gestiona una red de centros alrededor del mundo para dar la bienvenida a pensadores, emprendedores y educadores que fomentan el avance de Bitcoin y las tecnologías de la libertad.",
@@ -1806,18 +1816,21 @@
       "title": "Artículos"
     },
     "bet": {
-      "title": "Kit de herramientas educativas"
+      "title": "Kit de herramientas educativas",
+      "addEducationKit": "Añadir kit educativo"
     },
     "books": {
       "author": "Autor : ",
-      "title": "Librería"
+      "title": "Librería",
+      "addBook": "Añadir libro"
     },
     "channels": {
       "noYoutubeChannels": "Actualmente no hay canales de YouTube para el idioma seleccionado.",
       "title": "Canales de Youtube"
     },
     "conferences": {
-      "title": "Repeticiones de conferencias"
+      "title": "Repeticiones de conferencias",
+      "addConference": "Añadir repetición de conferencia"
     },
     "github": "Todos esta información se gestiona a través de un repositorio <0>Github</0> de código abierto. Siéntete libre de contribuir y agregar cualquier contenido que falte.",
     "glossary": {
@@ -1850,10 +1863,13 @@
     "pageTitle": "Recursos",
     "podcasts": {
       "noPodcasts": "Actualmente no hay podcasts disponibles para el idioma seleccionado.",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "Añadir podcast",
+      "checkThePodcast": "Revisar el podcast"
     },
     "projects": {
-      "title": "Proyectos"
+      "title": "Proyectos",
+      "addProjects": "Añadir proyecto"
     },
     "searchFilterName": "Buscar por nombre",
     "toggleFreeOnly": "Gratis",
@@ -2210,7 +2226,8 @@
     "type": "Tipo",
     "viewAll": "Ver todo",
     "week": "Semana",
-    "weight": "Peso"
+    "weight": "Peso",
+    "seeAll": "Ver todo"
   },
   "youtubeChannels": {
     "pageTitle": "Canales de Youtube",
@@ -2235,7 +2252,8 @@
     "september": "Septiembre"
   },
   "account": {
-    "account": "Cuenta"
+    "account": "Cuenta",
+    "myTeacherProfile": "Mi perfil de profesor"
   },
   "navbar": {
     "analytics": "Analítica",

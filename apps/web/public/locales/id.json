@@ -154,7 +154,8 @@
     "noConferences": "Belum ada konferensi yang ditambahkan ke {{year}}.",
     "pageTitle": "Tayangan ulang konferensi",
     "planBConferences": "Konferensi Plan ₿",
-    "topics": "Topik"
+    "topics": "Topik",
+    "conferencesGenesis": "Konferensi sejak Blok Genesis"
   },
   "courses": {
     "chapter": {
@@ -424,7 +425,13 @@
     "noCoursesFound": "Tidak ada kursus yang ditemukan",
     "plusXMore": "+{{count}} lagi",
     "selectATopic": "Pilih topik",
-    "tryAdjustingFilters": "Coba sesuaikan filter Anda"
+    "tryAdjustingFilters": "Coba sesuaikan filter Anda",
+    "liveClasses": {
+      "allOtherTitle": "Semua kelas langsung/ online lainnya",
+      "liveClasses": "Kelas langsung / online",
+      "secondaryTitle": "Menjadi layak untuk bekerja di Perusahaan yang berfokus pada Bitcoin.",
+      "title": "Program tahunan resmi Plan ₿"
+    }
   },
   "dashboard": {
     "account": "Akun",
@@ -1164,12 +1171,14 @@
       "thresholdToPass": "Ambang batas lulus: {{threshold}}%",
       "tweetText": "Senang sekali telah menyelesaikan {{courseIndex}} di @planb_network dan mendapatkan ijazah dengan nilai {{score}}/100 pada ujian akhir!{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
       "viewFinalGrade": "Lihat nilai akhir",
-      "yourProject": "",
+      "yourProject": "Proyek Anda",
       "assignmentNotAccessible": "Tugas sudah dimulai dan tidak dapat diakses lagi.",
       "assignmentScore": "Skor tugas",
       "gaveSolidEffort": "Kamu telah berusaha keras!",
       "tweetTextCourseDiploma": "Dengan gembira telah menyelesaikan kursus {{courseName}}, yang diajarkan oleh {{courseCoordinator}} di @planb_network dan telah mendapatkan diplomaku!\n#PBNDiploma\n\n{{certificateUrl}}",
-      "viewScoreSummary": "Lihat ringkasan nilai"
+      "viewScoreSummary": "Lihat ringkasan nilai",
+      "wellDoneCompleting": "Selamat atas penyelesaian dan kelulusan dari kursus ini!\nBerikut adalah gelar diploma yang pantas Anda terima.",
+      "yourProjectAssignment": "Tugas proyek Anda"
     },
     "courses": "Kursus",
     "credentials": {
@@ -1184,7 +1193,13 @@
       "retakeExam": "Ikuti ujian ulang",
       "seatBooked": "Kursi anda pada sesi ujian sudah dipesan",
       "takePlaceAt": "Sesi ini akan berlangsung di",
-      "yourCertificate": "Sertifikat anda"
+      "yourCertificate": "Sertifikat anda",
+      "completeACourse": "Selesaikan kursus untuk mendapatkan gelar diploma pertama Anda!",
+      "exploreBCert": "Jelajahi ₿-CERT",
+      "exploreCourses": "Jelajahi semua kursus",
+      "getGlobalRecognition": "Dapatkan pengakuan global dengan sertifikat ₿-CERT",
+      "noCertificatesAvailable": "Tidak ada sertifikat yang tersedia",
+      "noDiplomasAvailable": "Belum ada progam diploma yang tersedia"
     },
     "goToDashboard": "Buka dasbor",
     "goToHomepage": "Pergi ke beranda",
@@ -1245,7 +1260,12 @@
         "none": "Tidak ada",
         "platformTitle": "Jenis notifikasi apa yang ingin Anda terima di platform ini?",
         "settingsSaved": "Pengaturan Anda berhasil disimpan!",
-        "title": "Pengaturan pemberitahuan"
+        "title": "Pengaturan pemberitahuan",
+        "assignedAt": "Ditugaskan di",
+        "completedAt": "Selesai pada",
+        "displayName": "Nama yang ditampilkan",
+        "filter": "Filter",
+        "role": "Peran"
       },
       "password": "Kata sandi",
       "personalInformation": "Informasi pribadiku",
@@ -1284,22 +1304,23 @@
         "announcementsPastDescription": "Di bawah ini adalah daftar pengumuman yang telah dipublikasikan. Daftar ini akan dihapus setelah satu bulan.",
         "announcementsUpcoming": "Pengumuman yang akan datang",
         "announcementsUpcomingDescription": "Di bawah ini adalah pengumuman yang akan datang yang Anda tulis dan jadwalkan.",
-        "assignment": "",
+        "assignment": "Tugas",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertDescription2": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Setelah semua nilai telah diinputkan, klik pada \"Publikasikan semua nilai\" untuk mempublikasikan semuanya sekaligus.\nHarap periksa nilai sebelumnya, karena nilai tidak akan dapat diubah lagi setelah dipublikasikan. ",
+          "alertDescription2": "Nilai tugas harus diterbitkan sebelum 22 Juni tengah malam (CET).",
+          "alertTitle": "Penilaian tugas",
+          "confirmPublication": "Konfirmasi publikasi",
+          "confirmPublicationDescription": "Setelah nilai dipublikasikan, tidak ada jalan kembali   karena nilai tidak akan bisa diubah lagi.",
+          "confirmPublicationTitle": "Apakah proses verifikasi Anda tidak ada kesalahan?",
+          "description": "Siswa dikelompokkan berdasarkan kelompok tugas.",
+          "grade100": "Nilai (/100)",
+          "gradesPublished": "Nilai sudah dipublikasikan.",
+          "missingGradesDescription": "Jika nilai sudah dipublikasikan, nilai yang hilang akan diganti dengan 0/100.",
+          "missingGradesTitle": "Masih ada {{count}} nilai yang hilang!",
+          "publishAllGrades": "Publikasikan semua nilai",
+          "studentDisplayName": "Mahasiswa (Nama yang ditampilkan)",
+          "title": "Nilai tugas",
+          "courseAssignment": "Tugas kursus"
         },
         "assignmentStudents": "Penugasan Proyek",
         "courseDetails": "Detail kursus",
@@ -1323,7 +1344,24 @@
         "reviews": "Ulasan",
         "selectCourse": "Pilih kursus",
         "summerStudents": "Sekolah musim panas",
-        "writeAnnouncement": "Tulis pengumuman"
+        "writeAnnouncement": "Tulis pengumuman",
+        "amountPaid": "Jumlah yang dibayar",
+        "averageAttempts": "Daya rata-rata",
+        "averageDuration": "Durasi rata-rata",
+        "averageScore": "Skor rata-rata",
+        "exportExamData": "Ekspor data ujian",
+        "finalAverageResults": "Hasil rata-rata akhir",
+        "finalScore": "Skor akhir",
+        "lastActive": "Terakhir aktif",
+        "medianScore": "Skor median",
+        "noExamLinked": "Saat ini tidak ada ujian yang terhubung dengan kursus ini. Jika Anda ingin membuat ujian, silakan hubungi kami.",
+        "overview": "Ikhtisar",
+        "questionsInExam": "Pertanyaan dalam ujian",
+        "studentsGraduated": "Siswa lulus",
+        "studentsList": "Daftar siswa",
+        "successRate": "Tingkat keberhasilan",
+        "thresholdToPass": "Ambang batas untuk lulus",
+        "totalQuestions": "Jumlah total pertanyaan"
       },
       "menu": "Menu guru",
       "profile": {
@@ -1360,6 +1398,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Di sini anda dapat menemukan analisis pada tutorial yang telah anda buat dan yang sudah dipublikasikan di platform.",
         "yourTutorials": "Tutorial anda"
+      },
+      "discount": {
+        "description": "Buat dan kelola kode diskon untuk acara dan kursus - baik sekali pakai untuk beasiswa atau kasus serupa, atau berbagai penggunaan untuk kampanye pemasaran."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Pengumuman perubahan",
+          "attendanceList": "Daftar kehadiran",
+          "courseEnded": "Kursus ini telah berakhir.",
+          "courseNotStarted": "Kursus ini belum dimulai.",
+          "enrolledStudents": "Mahasiswa yang terdaftar",
+          "hasEnrolled": "telah mendaftar",
+          "hasGraduated": "telah lulus dengan skor {{score}}%",
+          "hasLeftReview": "telah memberikan ulasan",
+          "hasLeftReviewAndComment": "telah memberikan ulasan dan komentar",
+          "notifyStudents": "Ada yang berubah? Beri tahu siswa Anda.",
+          "overallPerformance": "Kinerja keseluruhan",
+          "recentActivity": "Aktivitas terbaru",
+          "studentsRegistered": "Mahasiswa terdaftar",
+          "upcomingClass": "Kelas yang akan datang"
+        }
       }
     }
   },
@@ -1379,7 +1440,8 @@
       "unlimited": "tidak terbatas",
       "visitWebsite": "Kunjungi situs web",
       "watchLive": "Tonton secara langsung",
-      "watchReplay": "Tonton siaran ulangnya"
+      "watchReplay": "Tonton siaran ulangnya",
+      "buyLecture": "Beli kuliah"
     },
     "errors": {
       "premiumContentNeedsLogin": "Anda harus masuk untuk mengakses acara ini.",
@@ -1435,10 +1497,38 @@
     "types": {
       "plurals": {
         "meetup": "pertemuan",
-        "workshop": "Pelatihan"
+        "workshop": "Pelatihan",
+        "conference": "konferensi",
+        "exam": "ujian",
+        "lecture": "kuliah"
       }
     },
-    "upcomingEvents": "Acara mendatang"
+    "upcomingEvents": "Acara mendatang",
+    "addEvent": "Tambahkan acara",
+    "calendar": {
+      "displayCalendar": "Tampilkan Kalender",
+      "fullMap": "Peta lengkap",
+      "hideCalendar": "Sembunyikan kalender",
+      "inXMonths": "Dalam {{number}} bulan",
+      "lastMonth": "Bulan lalu",
+      "nextMonth": "Bulan depan",
+      "noEventsFound": "Tidak ada acara yang ditemukan",
+      "thisMonth": "Bulan ini",
+      "today": "Hari ini",
+      "xMonthsAgo": "{{number}} bulan yang lalu"
+    },
+    "eventInfos": {
+      "eventBooked": "Acara sudah dipesan",
+      "eventType": "Jenis acara",
+      "numberOfSpots": "Jumlah tempat",
+      "onlineAndInPerson": "Online dan tatap muka",
+      "secureYourSpot": "Amankan kursi Anda",
+      "whatsPlanned": "Apa yang direncanakan"
+    },
+    "myTickets": "Tiket saya",
+    "planBWeek": {
+      "pageTitle": "Acara mingguan Plan ₿"
+    }
   },
   "filters": {
     "categories": "Kategori",
@@ -1459,7 +1549,8 @@
     "placeHolder": "Apa ini?",
     "randomSearch": "Pencarian acak",
     "relatedWords": "Kata terkait :",
-    "term": "Istilah"
+    "term": "Istilah",
+    "showMoreWords": "Tampilkan lebih banyak kata"
   },
   "home": {
     "aboutUsSection": {
@@ -1582,7 +1673,8 @@
   "movies": {
     "goToMovie": "Pergi ke film",
     "pageTitle": "Film & Dokumenter",
-    "watchTrailer": "Tonton cuplikannya"
+    "watchTrailer": "Tonton cuplikannya",
+    "checkTheMovie": "Periksa filmnya"
   },
   "nodeNetwork": {
     "description1": "Kami percaya bahwa pendidikan seharusnya tidak hanya dilakukan secara online, tetapi juga di ruang-ruang fisik. Untuk mencapai hal ini, Plan ₿ Network mengelola hub jaringan di seluruh dunia untuk menyambut para pemikir, pengusaha, dan pendidik yang mendorong kemajuan teknologi Bitcoin dan kebebasan.",
@@ -1724,18 +1816,21 @@
       "title": "Artikel"
     },
     "bet": {
-      "title": "Perangkat Pembelajaran"
+      "title": "Perangkat Pembelajaran",
+      "addEducationKit": "Tambahkan paket pendidikan"
     },
     "books": {
       "author": "Penulis : ",
-      "title": "Perpustakaan"
+      "title": "Perpustakaan",
+      "addBook": "Tambahkan buku"
     },
     "channels": {
       "noYoutubeChannels": "Saat ini tidak ada Saluran Youtube untuk bahasa yang dipilih.",
       "title": "Chanel Youtube"
     },
     "conferences": {
-      "title": "Pemutaran ulang konferensi"
+      "title": "Pemutaran ulang konferensi",
+      "addConference": "Tambakan pemutaran ulang konferensi"
     },
     "github": "Semua data ini dikelola via satu repositori <0>Github</0> yang bersifat open-source. Jangan ragu untuk berkontribusi dan menambahkan konten yang belum ada.",
     "glossary": {
@@ -1768,15 +1863,19 @@
     "pageTitle": "Selamat datang di Portal Sumber Daya",
     "podcasts": {
       "noPodcasts": "Saat ini tidak ada podcast untuk bahasa yang dipilih.",
-      "title": "Podcast"
+      "title": "Podcast",
+      "addPodcast": "Tambahkan podcast",
+      "checkThePodcast": "Periksa podcast"
     },
     "projects": {
-      "title": "Proyek"
+      "title": "Proyek",
+      "addProjects": "Tambahkan proyek"
     },
     "searchFilterName": "Cari berdasarkan nama",
     "toggleFreeOnly": "Hanya yang gratis",
     "toggleLabelAll": "Semua",
-    "toggleLabelSelectedLanguage": "Bahasa yang dipilih"
+    "toggleLabelSelectedLanguage": "Bahasa yang dipilih",
+    "pageSubtitleMovies": "<0>Film lainnya</0> yang mungkin Anda suka"
   },
   "search": {
     "all": "Semua",
@@ -2128,7 +2227,9 @@
     "topic": "Topik",
     "viewAll": "Lihat semua",
     "week": "Minggu",
-    "weight": "Berat"
+    "weight": "Berat",
+    "seeAll": "Lihat semua",
+    "discover": "Temukan"
   },
   "youtubeChannels": {
     "pageTitle": "Saluran Youtube",
@@ -2136,7 +2237,8 @@
     "watchTrailer": "Tonton cuplikannya"
   },
   "account": {
-    "account": "Akun"
+    "account": "Akun",
+    "myTeacherProfile": "Profil guru"
   },
   "footer": {
     "followUsOn": "Ikuti kami"
