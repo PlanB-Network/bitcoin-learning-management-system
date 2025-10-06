@@ -21,7 +21,7 @@ interface Props {
   actionButtons?:
     | { text: string; onClick?: () => void; href?: string }[]
     | React.ReactNode[];
-  layoutSize?: 'base' | 'wide' | 'max';
+  layoutSize?: 'small' | 'base' | 'wide' | 'max';
   icon?: IconType | ReactNode;
 }
 
@@ -42,6 +42,7 @@ export const PageLayout = ({
   const isMobile = useSmaller('lg') || window.innerWidth < 1024;
 
   const layoutSizeClassesMap = {
+    small: 'max-w-[440px]',
     base: 'max-w-[832px]',
     wide: 'max-w-[1112px]',
     max: '',

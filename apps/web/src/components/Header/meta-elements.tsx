@@ -3,12 +3,11 @@ import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbCalendarMonth, TbLogout, TbSearch } from 'react-icons/tb';
+import { TbCalendarMonth, TbSearch } from 'react-icons/tb';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
-import { logout } from '#src/utils/session-utils.ts';
 import SignInIconBlue from '../../assets/icons/sign-in-blue.svg';
 import SignInIconGreen from '../../assets/icons/sign-in-green.svg';
 import SignInIconOrange from '../../assets/icons/sign-in-orange.svg';
@@ -84,16 +83,6 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
               />
             </button>
           </Link>
-
-          <button
-            type="button"
-            onClick={async () => {
-              await logout();
-            }}
-            className={'text-newGray-1'}
-          >
-            <TbLogout strokeWidth={1.5} size={24} />
-          </button>
         </>
       )}
 

@@ -5,11 +5,13 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
+import { TbLogout } from 'react-icons/tb';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
+import { logout } from '#src/utils/session-utils.ts';
 import { ChangeDisplayNameModal } from '../dashboard/_dashboard/-components/change-display-name-modal.tsx';
 import { ChangeEmailModal } from '../dashboard/_dashboard/-components/change-email-modal.tsx';
 import { ChangePictureModal } from '../dashboard/_dashboard/-components/change-picture-modal.tsx';
@@ -66,7 +68,7 @@ function Account() {
 
   return (
     <PageLayout
-      layoutSize="base"
+      layoutSize="small"
       title={t('account.account')}
       tabs={[
         { id: 'account', label: t('words.account'), href: '/account' },
@@ -196,6 +198,17 @@ function Account() {
             </div>
           </div>
         </div>
+
+        <Button
+          variant="newTertiary"
+          onClick={async () => {
+            await logout();
+          }}
+          className="flex items-center gap-2 mt-8 md:mt-12 w-full"
+        >
+          {t('dashboard.logout')}
+          <TbLogout size={16} />
+        </Button>
       </div>
 
       <ChangeDisplayNameModal
