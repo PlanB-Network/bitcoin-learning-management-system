@@ -116,8 +116,8 @@ export const MainLayout = ({
           className={cn(
             'hidden lg:block fixed top-18 w-6 h-6 z-50',
             isSidebarOpen
-              ? 'min-[1920px]:left-[calc((100%-1920px)/2+276px)] left-[276px]'
-              : 'min-[1920px]:left-[calc((100%-1920px)/2+86px)] left-[86px]',
+              ? 'min-[1934px]:left-[calc((100%-1920px)/2+276px)] left-[276px]'
+              : 'min-[1934px]:left-[calc((100%-1920px)/2+86px)] left-[86px]',
             isResizing ? 'transition-none' : 'transition-all ease-in-out',
           )}
           style={{
@@ -140,8 +140,8 @@ export const MainLayout = ({
           className={cn(
             'hidden lg:block fixed top-18 w-6 h-6 z-50 -scale-x-100',
             isSidebarOpen
-              ? 'min-[1920px]:right-[calc((100%-1920px)/2)] right-0'
-              : 'min-[1920px]:right-[calc((100%-1920px)/2)] right-0',
+              ? 'min-[1934px]:right-[calc((100%-1920px)/2)] right-0'
+              : 'min-[1934px]:right-[calc((100%-1920px)/2)] right-0',
             isResizing ? 'transition-none' : 'transition-all ease-in-out',
           )}
           style={{

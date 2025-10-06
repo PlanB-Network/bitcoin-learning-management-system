@@ -59,8 +59,8 @@ export const PageLayout = ({
             isMobile
               ? 'left-0 right-0'
               : isSidebarOpen
-                ? 'min-[1920px]:left-[calc((100%-1920px)/2+276px)] left-[276px] min-[1920px]:right-[calc((100%-1920px)/2)] right-0 transition-all'
-                : 'min-[1920px]:left-[calc((100%-1920px)/2+86px)] left-[86px] min-[1920px]:right-[calc((100%-1920px)/2)] right-0 transition-all',
+                ? 'min-[1934px]:left-[calc((100%-1920px)/2+276px)] left-[276px] min-[1934px]:right-[calc((100%-1920px)/2)] right-0 transition-all'
+                : 'min-[1934px]:left-[calc((100%-1920px)/2+86px)] left-[86px] min-[1934px]:right-[calc((100%-1920px)/2)] right-0 transition-all',
           )}
           id="navbar-mainframe"
           style={{ willChange: 'left, right' }}
