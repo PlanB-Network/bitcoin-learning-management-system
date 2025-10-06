@@ -225,10 +225,65 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
     return best;
   }, null);
 
+  const elRef = useRef<HTMLDivElement | null>(null);
+  const dragging = useRef(false);
+  const moved = useRef(false);
+  const startX = useRef(0);
+  const startScroll = useRef(0);
+
+  const preventClick = useRef(false);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    const el = elRef.current;
+    if (!el) return;
+
+    preventClick.current = false;
+
+    dragging.current = true;
+    moved.current = false;
+    startX.current = e.clientX;
+    startScroll.current = el.scrollLeft;
+    (e.target as Element).setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const el = elRef.current;
+    if (!el || !dragging.current) return;
+    const dx = e.clientX - startX.current;
+    if (Math.abs(dx) > 5) moved.current = true;
+    el.scrollLeft = startScroll.current - dx;
+  };
+
+  const endDrag = (e: React.PointerEvent) => {
+    if (dragging.current && moved.current) {
+      preventClick.current = true;
+    }
+    dragging.current = false;
+    try {
+      (e.target as Element).releasePointerCapture(e.pointerId);
+    } catch {}
+  };
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (preventClick.current) {
+      e.stopPropagation();
+      e.preventDefault();
+      preventClick.current = false;
+    }
+  };
+
   return (
     <div
-      className="w-full flex items-center border-b border-neutral-100 px-3 pt-2 relative gap-4.5 overflow-x-scroll no-scrollbar"
+      className="w-full flex items-center border-b border-neutral-100 px-3 pt-2 gap-4.5 overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing select-none"
       role="tablist"
+      ref={elRef}
+      style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onPointerLeave={endDrag}
+      onClickCapture={onClickCapture}
     >
       {tabs.map((tab) => {
         const isActive = activeTab?.id === tab.id;
@@ -243,6 +298,7 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
                 ? 'text-newBlack-1 body-base-bold'
                 : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
             )}
+            onDragStart={(e: React.DragEvent) => e.preventDefault()}
           >
             {t(tab.label)}
             <div
