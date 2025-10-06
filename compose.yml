@@ -117,6 +117,23 @@ services:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '8280']
 
+  network:
+    <<: *defaults
+    build: .
+    user: "${UID:-1000}:${GID:-1000}"
+    command: pnpm turbo run dev --env-mode=loose --filter='@blms/network'
+    ports:
+      - 8383:8383
+    volumes:
+      - ./apps/network:/home/node/apps/network
+      - ./packages:/home/node/packages
+      - /home/node/apps/network/node_modules/
+    depends_on:
+      - api
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'nc', '-zv', 'localhost', '8383']
+
   # https://typesense.org
   typesense:
     image: typesense/typesense:28.0

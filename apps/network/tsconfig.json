@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "esnext"],
+    "noEmit": true,
+    "sourceMap": true,
+    "types": ["vite/client"]
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src", "global.d.ts", "pear.d.ts"],
+  "references": [
+    {
+      "path": "../api/tsconfig.trpc.json"
+    }
+  ]
+}
