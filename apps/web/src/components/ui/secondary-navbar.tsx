@@ -215,6 +215,9 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
   const routerState = useRouterState();
   const pathname = routerState.location.pathname;
 
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
   const activeTab = tabs.reduce<Tab | null>((best, tab) => {
     const tabPath = `/${i18n.language}${tab.href}`;
     if (pathname === tabPath || pathname.startsWith(tabPath + '/')) {
@@ -232,6 +235,49 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
   const startScroll = useRef(0);
 
   const preventClick = useRef(false);
+
+  const checkScroll = () => {
+    const el = elRef.current;
+    if (!el) return;
+
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const el = elRef.current;
+    if (!el) return;
+
+    el.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+
+    return () => {
+      el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, [tabs]);
+
+  useEffect(() => {
+    const el = elRef.current;
+    if (!el || !activeTab) return;
+
+    const activeTabEl = el.querySelector(
+      `a[href='${activeTab.href}']`,
+    ) as HTMLElement | null;
+    if (!activeTabEl) return;
+
+    const elRect = el.getBoundingClientRect();
+    const tabRect = activeTabEl.getBoundingClientRect();
+
+    const tabCenter = tabRect.left + tabRect.width / 2;
+    const elCenter = elRect.left + elRect.width / 2;
+    const scrollOffset = tabCenter - elCenter;
+
+    el.scrollBy({
+      left: scrollOffset,
+    });
+  }, [activeTab]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     const el = elRef.current;
@@ -273,43 +319,51 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
   };
 
   return (
-    <div
-      className="w-full flex items-center border-b border-neutral-100 px-3 pt-2 gap-4.5 overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing select-none"
-      role="tablist"
-      ref={elRef}
-      style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={endDrag}
-      onPointerCancel={endDrag}
-      onPointerLeave={endDrag}
-      onClickCapture={onClickCapture}
-    >
-      {tabs.map((tab) => {
-        const isActive = activeTab?.id === tab.id;
+    <div className="w-full relative">
+      {canScrollLeft && (
+        <div className="pointer-events-none absolute top-0 left-0 h-full w-12 bg-gradient-to-r from-white to-transparent z-10" />
+      )}
+      {canScrollRight && (
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-white to-transparent z-10" />
+      )}
+      <div
+        className="w-full flex items-center border-b border-neutral-100 px-3 pt-2 gap-4.5 overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing select-none"
+        role="tablist"
+        ref={elRef}
+        style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onPointerLeave={endDrag}
+        onClickCapture={onClickCapture}
+      >
+        {tabs.map((tab) => {
+          const isActive = activeTab?.id === tab.id;
 
-        return (
-          <Link
-            key={tab.id}
-            to={tab.href}
-            className={cn(
-              'relative pb-2 group text-nowrap',
-              isActive
-                ? 'text-newBlack-1 body-base-bold'
-                : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
-            )}
-            onDragStart={(e: React.DragEvent) => e.preventDefault()}
-          >
-            {t(tab.label)}
-            <div
+          return (
+            <Link
+              key={tab.id}
+              to={tab.href}
               className={cn(
-                'absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
-                isActive && 'scale-x-100 bg-orange-500',
+                'relative pb-2 group text-nowrap',
+                isActive
+                  ? 'text-newBlack-1 body-base-bold'
+                  : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
               )}
-            />
-          </Link>
-        );
-      })}
+              onDragStart={(e: React.DragEvent) => e.preventDefault()}
+            >
+              {t(tab.label)}
+              <div
+                className={cn(
+                  'absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
+                  isActive && 'scale-x-100 bg-orange-500',
+                )}
+              />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -353,7 +353,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/professor/courses',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
           {hasWrittenTutorials && (
             <SideBarItem
@@ -365,7 +364,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                 '/dashboard/professor/tutorials',
               )}
               isSidebarOpen={isSidebarOpen}
-              isMain
             />
           )}
         </div>
@@ -382,7 +380,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/role',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
           <SideBarItem
             icon={ProjectPen}
@@ -393,7 +390,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/translation-panel',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
           <SideBarItem
             icon={Ticket}
@@ -404,7 +400,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/tutorials',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
           <SideBarItem
             icon={Luggage}
@@ -415,7 +410,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/bookings',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
           <SideBarItem
             icon={Dollar}
@@ -426,7 +420,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/careers',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
           <SideBarItem
             icon={Discount}
@@ -437,7 +430,6 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               '/dashboard/administration/coupons',
             )}
             isSidebarOpen={isSidebarOpen}
-            isMain
           />
         </div>
       )}
