@@ -74,7 +74,7 @@ export const getPearInstance = () => {
       const foundPeers = store.findingPeers();
 
       const key = b4a.from(
-        'ce227451c202ac32bb8fef5d44ac718750189427618e6604c33e25cf8ae35abf',
+        'db0768c0afce76543c92bfaf69c619de0ad3f36bba2e609e918a7c4d262dcb74',
         'hex',
       );
 

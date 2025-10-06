@@ -57,6 +57,7 @@
     "pear:testnet": "bun i && pnpm pear:build:testnet && pnpm pear:run:testnet",
     "pear:build:testnet": "cd apps/web && pnpm run pear:build:testnet",
     "pear:run:testnet": "cd apps/web && pnpm run pear:run:testnet",
+    "pear:stage:testnet": "cd apps/web && pnpm run pear:stage:testnet",
     "prepare": "[ -z \"$CI\" ] && husky || echo 'Skipping husky in CI'",
     "sync-ts-references": "./scripts/sync-ts-references.ts && biome format --write .",
     "test": "turbo run test",

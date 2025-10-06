@@ -16,6 +16,8 @@ const pearsModules: string[] = [
   'hyperswarm',
   'hyperdrive',
   'b4a',
+  'pear-bridge',
+  'pear-electron',
 ];
 
 const nativeModules = [
