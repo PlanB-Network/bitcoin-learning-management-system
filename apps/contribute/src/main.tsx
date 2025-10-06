@@ -2,7 +2,6 @@ import { Loader } from '@blms/ui';
 import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import { App } from './App.tsx';
 import { AppProvider } from './providers/app.tsx';
 import './utils/i18n';
 
@@ -22,7 +21,7 @@ root.render(
       }
     >
       <AppProvider>
-        <App />
+        <div />
       </AppProvider>
     </Suspense>
   </StrictMode>,

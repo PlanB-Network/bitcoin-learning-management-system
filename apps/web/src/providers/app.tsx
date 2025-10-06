@@ -61,18 +61,6 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
 
   const queryClient = getQueryClient();
 
-  // const { trpcQueryClient, trpcClient } = useTrpc();
-  // const [queryClient] = useState(
-  //   () =>
-  //     new QueryClient({
-  //       defaultOptions: {
-  //         queries: {
-  //           retry: 1,
-  //         },
-  //       },
-  //     }),
-  // );
-
   const locationLanguage = ((l) =>
     l && (LANGUAGES.includes(l) ? l : undefined))(
     location.pathname.split('/')[1],

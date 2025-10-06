@@ -1,7 +1,6 @@
 import { StrictMode, Suspense } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import { App } from './app.tsx';
 import { AppProvider } from './providers/app.tsx';
 import './utils/i18n';
 import OrangePill from '#src/assets/icons/footer_pill.webp?no-inline';
@@ -45,7 +44,7 @@ root.render(
       }
     >
       <AppProvider>
-        <App />
+        <div />
       </AppProvider>
     </Suspense>
   </StrictMode>,

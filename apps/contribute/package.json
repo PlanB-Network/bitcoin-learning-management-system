@@ -1,27 +1,17 @@
 {
-  "name": "@blms/contribute",
-  "version": "0.0.1",
-  "type": "module",
-  "imports": {
-    "#src/*": "./src/*"
-  },
-  "scripts": {
-    "build": "vite build --mode production",
-    "dev": "vite serve --mode development",
-    "lint": "biome check .",
-    "type-check": "tsc --build",
-    "check-types": "tsc --noEmit --project tsconfig.app.json",
-    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.app.json | head -n 12 > performance.log",
-    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo"
-  },
   "dependencies": {
     "@blms/constants": "workspace:*",
     "@blms/shared": "workspace:*",
     "@blms/ui": "workspace:*",
     "@hookform/resolvers": "^5.2.2",
     "@react-hooks-library/core": "^0.6.2",
+    "@tanstack/react-devtools": "^0.7.2",
     "@tanstack/react-query": "^5.90.2",
+    "@tanstack/react-query-devtools": "^5.90.2",
     "@tanstack/react-router": "^1.132.41",
+    "@tanstack/react-router-devtools": "^1.132.41",
+    "@tanstack/router-devtools": "^1.132.41",
+    "@tanstack/router-plugin": "^1.132.41",
     "@trpc/client": "^11.6.0",
     "@trpc/server": "^11.6.0",
     "@trpc/tanstack-react-query": "^11.6.0",
@@ -43,9 +33,6 @@
     "@blms/api": "workspace:*",
     "@blms/types": "workspace:*",
     "@tailwindcss/postcss": "^4.1.14",
-    "@tanstack/react-query-devtools": "^5.90.2",
-    "@tanstack/router-devtools": "^1.132.41",
-    "@tanstack/router-plugin": "^1.132.41",
     "@types/react": "~19.2.0",
     "@types/react-dom": "~19.2.0",
     "@types/react-syntax-highlighter": "~15.5.13",
@@ -57,5 +44,20 @@
     "vite": "~7.1.9",
     "vite-plugin-svgr": "^4.5.0",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "name": "@blms/contribute",
+  "scripts": {
+    "build": "vite build --mode production",
+    "check-types": "tsc --noEmit --project tsconfig.app.json",
+    "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
+    "dev": "vite serve --mode development",
+    "lint": "biome check .",
+    "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.app.json | head -n 12 > performance.log",
+    "type-check": "tsc --build"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
