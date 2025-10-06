@@ -232,7 +232,7 @@ function PlanBLabs() {
               <div className="flex flex-col max-w-[1200px] w-full md:flex-row px-4 self-center mt-7 lg:mt-14 pt-6 gap-6">
                 {/* Next session */}
                 <div className="relative w-full max-w-[800px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
-                  <div className="absolute -mt-8 bg-black px-4 text-2xl lg:text-3xl xl:text-4xl italic text-darkOrange-6">
+                  <div className="absolute -mt-8 bg-white px-4 text-2xl lg:text-3xl xl:text-4xl italic text-darkOrange-6">
                     Next session
                   </div>
 
@@ -291,13 +291,13 @@ function PlanBLabs() {
                 <div className="relative md:w-[400px] border-l-2 border-newBlack-5 p-4 max-lg:mt-7">
                   {/* Top border */}
                   <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
-                  <div className="absolute -mt-8 bg-black px-4 text-xl lg:text-2xl xl:text-4xl italic text-newGray-2 font-light">
+                  <div className="absolute -mt-8 bg-white px-4 text-xl lg:text-2xl xl:text-4xl italic text-newGray-2 font-light">
                     Previous sessions
                   </div>
                   <div className="mt-2 lg:mt-8 flex flex-col gap-4">
                     {lab?.sessions.slice(1, 9).map((session) => (
                       <div className="flex flex-col" key={session.id}>
-                        <span className="text-white uppercase">
+                        <span className="uppercase">
                           {'> '}
                           {formatDate(session.startDate)}
                         </span>
@@ -351,11 +351,11 @@ function PlanBLabs() {
 
 const Professor = ({ professor }: { professor: FullProfessor }) => {
   return (
-    <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-7 md:mt-16 text-white">
+    <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-7 md:mt-16">
       <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
         {t('words.professor')}
       </h4>
-      <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-white">
+      <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px">
         {t('labs.coordinatedBy')}{' '}
         <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
           <Link
