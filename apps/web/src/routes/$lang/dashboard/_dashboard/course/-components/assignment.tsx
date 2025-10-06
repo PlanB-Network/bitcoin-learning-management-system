@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseAssignment } from '@blms/types';
 import {
   Alert,
@@ -43,7 +44,6 @@ import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { WeightIndicator } from '../../professor/-components/exam-results.tsx';
 

@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { Flag, Image, Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
@@ -13,7 +14,6 @@ import { AppContext } from '#src/providers/context.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { LectureBuy } from '../-components/lecture-buy.js';
 
 export const Route = createFileRoute(

@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
 import { useContext } from 'react';
@@ -5,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { IoIosArrowForward } from 'react-icons/io';
 import { AppContext } from '#src/providers/context.js';
 import { formatMonthAndYear } from '#src/utils/date.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import MessageIcon from '../../../../../../assets/icons/icon-message.svg';
 
 interface BlogSidebarProps {

@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { JoinedCourse } from '@blms/types';
 import {
   Button,
@@ -17,7 +18,7 @@ import { TbChevronRight } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.js';
 import { AppContext } from '#src/providers/context.tsx';
 import { assetUrl } from '#src/utils/index.ts';
-import { formatNameForURL, normalizeString } from '#src/utils/string.ts';
+import { normalizeString } from '#src/utils/string.ts';
 import { CourseInfoSection } from './-components/course-info-section.tsx';
 import { levels, sortCoursesByLevel } from './-utils/course-utils.tsx';
 

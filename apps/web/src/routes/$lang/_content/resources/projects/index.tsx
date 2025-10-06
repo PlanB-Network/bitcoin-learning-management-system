@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
@@ -7,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { SearchInput } from '../../learn-anytime/index.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';

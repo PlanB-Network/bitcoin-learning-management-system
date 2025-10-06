@@ -1,9 +1,9 @@
+import { formatNameForURL } from '@blms/shared';
 import type { FullProfessor } from '@blms/types';
 import { Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { resourceImgUrl } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.js';
 import DonateLightning from '../assets/icons/tips-icon.svg';
 import { useDisclosure } from '../hooks/index.ts';
 import { SocialLinks, TopicTags } from './professor-card.tsx';

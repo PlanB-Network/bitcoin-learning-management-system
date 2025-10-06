@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { FormattedProfessor } from '@blms/types';
 import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -6,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { TbBrandLinkedin } from 'react-icons/tb';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.ts';
 import NostrIcon from '../assets/icons/nostr-primary.svg';
 import DonateLightning from '../assets/icons/tips-icon.svg';
 import WebIcon from '../assets/icons/world-primary.svg';

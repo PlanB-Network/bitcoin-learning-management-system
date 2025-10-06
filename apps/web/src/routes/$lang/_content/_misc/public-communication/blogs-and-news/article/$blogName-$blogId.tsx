@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { Button, cn, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
@@ -6,10 +7,9 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.js';
-import { FeaturedCard } from '#src/patterns/featured-card.js';
+import { FeaturedCard } from '#src/patterns/featured-card.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { cdnUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import BlogSidebar from '../../../-components/public-communication/blog-sidebar.tsx';
 import Breadcrumbs from '../../../-components/public-communication/breadcrumbs.tsx';

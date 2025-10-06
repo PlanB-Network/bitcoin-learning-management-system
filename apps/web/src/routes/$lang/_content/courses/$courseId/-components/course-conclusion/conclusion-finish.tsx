@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { ButtonWithArrow, DividerSimple } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -15,7 +16,6 @@ import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { filterAndRandomizeCourses } from '#src/routes/$lang/_content/_misc/-components/certificate-display.tsx';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { TimeStampDialog } from '../course-exam/course-exam-result.tsx';
 

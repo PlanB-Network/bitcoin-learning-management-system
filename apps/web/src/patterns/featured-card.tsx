@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
 import { TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -7,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.ts';
 
 interface FeaturedCardProps {
   category: string;

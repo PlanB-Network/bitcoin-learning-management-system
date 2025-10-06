@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { ConferenceStageVideo } from '@blms/types';
 import { CategorySwitcher, DropdownMenu, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -11,7 +12,6 @@ import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.js';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
 const ConferencesMarkdownBody = React.lazy(

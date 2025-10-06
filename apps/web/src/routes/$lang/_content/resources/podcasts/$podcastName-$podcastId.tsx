@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
@@ -9,7 +10,6 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
 export const Route = createFileRoute(

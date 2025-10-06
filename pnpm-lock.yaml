@@ -280,6 +280,18 @@ importers:
 
   apps/network:
     dependencies:
+      '@blms/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@blms/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+      '@blms/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@react-hooks-library/core':
+        specifier: ^0.6.2
+        version: 0.6.2(react@19.2.0)
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.14(vite@7.1.9(@types/node@22.18.8)(jiti@2.6.1)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
@@ -310,12 +322,45 @@ importers:
       '@trpc/tanstack-react-query':
         specifier: ^11.6.0
         version: 11.6.0(@tanstack/react-query@5.90.2(react@19.2.0))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      i18next:
+        specifier: ^25.5.3
+        version: 25.5.3(typescript@5.9.3)
       react:
         specifier: ^19.2.0
         version: 19.2.0
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
+      react-i18next:
+        specifier: ^15.7.4
+        version: 15.7.4(i18next@25.5.3(typescript@5.9.3))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.2.0)
+      react-markdown:
+        specifier: ^10.1.0
+        version: 10.1.0(@types/react@19.2.0)(react@19.2.0)
+      react-player:
+        specifier: 3.3.1
+        version: 3.3.1(@types/react-dom@19.2.0(@types/react@19.2.0))(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-syntax-highlighter:
+        specifier: 15.6.1
+        version: 15.6.1(react@19.2.0)
+      rehype-mathjax:
+        specifier: ^7.1.0
+        version: 7.1.0
+      rehype-unwrap-images:
+        specifier: 1.0.0
+        version: 1.0.0
+      remark-gfm:
+        specifier: ^4.0.1
+        version: 4.0.1
+      remark-math:
+        specifier: 6.0.0
+        version: 6.0.0
       superjson:
         specifier: ^2.2.2
         version: 2.2.2
@@ -331,6 +376,9 @@ importers:
       vite-tsconfig-paths:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.9.3)(vite@7.1.9(@types/node@22.18.8)(jiti@2.6.1)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
+      zod:
+        specifier: ~3.25.76
+        version: 3.25.76
     devDependencies:
       '@blms/api':
         specifier: workspace:*
@@ -356,6 +404,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.0
         version: 19.2.0(@types/react@19.2.0)
+      '@types/react-syntax-highlighter':
+        specifier: ~15.5.13
+        version: 15.5.13
       '@vitejs/plugin-react':
         specifier: ^5.0.4
         version: 5.0.4(vite@7.1.9(@types/node@22.18.8)(jiti@2.6.1)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))

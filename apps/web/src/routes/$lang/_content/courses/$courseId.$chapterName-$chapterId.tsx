@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseChapterResponse, JoinedQuizQuestion } from '@blms/types';
 import { Button, cn, Loader, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -33,11 +34,7 @@ import {
 } from '#src/utils/courses.js';
 import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
-import {
-  capitalizeFirstWord,
-  formatNameForURL,
-  joinWords,
-} from '#src/utils/string.js';
+import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
 import { ClassDetails } from './-components/class-details.tsx';
 import { CourseLayout } from './-components/course-layout.tsx';
 import { LiveVideo } from './-components/live-video.tsx';

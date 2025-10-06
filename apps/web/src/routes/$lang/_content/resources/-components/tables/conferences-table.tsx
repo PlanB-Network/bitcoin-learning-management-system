@@ -1,7 +1,6 @@
+import { formatNameForURL } from '@blms/shared';
 import type { JoinedConference } from '@blms/types';
 import { t } from 'i18next';
-
-import { formatNameForURL } from '#src/utils/string.ts';
 
 import { ConferenceRow } from './conference-row.tsx';
 

@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
@@ -5,7 +6,6 @@ import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageLayout } from '#src/components/page-layout.js';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
-import { formatNameForURL } from '#src/utils/string.ts';
 import { ProjectCard } from '../resources/-components/cards/project-card.js';
 
 export const Route = createFileRoute('/$lang/_content/_misc/node-network')({

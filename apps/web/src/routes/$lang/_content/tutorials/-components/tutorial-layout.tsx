@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import {
   Collapsible,
   CollapsibleContent,
@@ -8,10 +9,7 @@ import { Link } from '@tanstack/react-router';
 import { type JSX, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
-
 import { AppContext } from '#src/providers/context.js';
-
-import { formatNameForURL } from '#src/utils/string.ts';
 import {
   extractSubCategories,
   TUTORIALS_CATEGORIES,

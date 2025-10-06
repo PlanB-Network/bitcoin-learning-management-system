@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { GetTutorialResponse, JoinedProofreading } from '@blms/types';
 import { cn, customToast, DividerSimple, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -22,7 +23,6 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { cdnUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.js';
 import { trpc } from '#src/utils/trpc.js';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 

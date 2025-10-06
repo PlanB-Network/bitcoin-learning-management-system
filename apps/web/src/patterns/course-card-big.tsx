@@ -1,3 +1,4 @@
+import { formatNameForURL } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, cn, Flag, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -6,7 +7,6 @@ import { t } from 'i18next';
 import { TbCalendarEvent, TbChevronRight, TbClock } from 'react-icons/tb';
 import { formatShortDateRange } from '#src/utils/date.ts';
 import { assetUrl, resourceImgUrl } from '#src/utils/index.js';
-import { formatNameForURL } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full rounded-2xl', {
   defaultVariants: {
