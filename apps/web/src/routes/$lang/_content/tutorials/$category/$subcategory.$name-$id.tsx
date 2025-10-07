@@ -397,7 +397,7 @@ function TutorialDetails() {
     return (
       <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-newGray-6 w-[290px] md:w-fit rounded-[15px] md:rounded-[30px] px-7 py-5 md:pb-4 border border-newGray-5 shadow-course-navigation-sm-accent text-black mx-auto md:my-7">
         <span className="title-medium-sb-18px md:title-large-sb-24px text-center text-newBlack-1">
-          {t('tutorials.details.didHelp')}
+          {t('tutorials.details.didThisWork')}
         </span>
         <div className="flex items-center justify-between py-2.5 gap-6 md:gap-10">
           {isFetched && tutorial && (
