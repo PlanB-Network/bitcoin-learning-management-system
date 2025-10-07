@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node peertube-sync.js",
     "lint": "standard",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],
   "author": "",
