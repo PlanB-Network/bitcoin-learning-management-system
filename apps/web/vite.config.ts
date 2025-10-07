@@ -2,12 +2,24 @@
 
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
-// import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const UI_PACKAGE_ASSETS = '../../packages/ui/src/assets';
+
+// Modules to be treated as external during the build
+const externalModules: string[] = [
+  // Pears modules
+  'corestore',
+  'debounceify',
+  'hypercore',
+  'hyperswarm',
+  'hyperdrive',
+
+  // Node.js built-in modules
+  'path',
+];
 
 export default defineConfig({
   assetsInclude: [UI_PACKAGE_ASSETS],
@@ -18,6 +30,9 @@ export default defineConfig({
     outDir: 'dist',
     reportCompressedSize: true,
     target: 'esnext',
+    rollupOptions: {
+      external: [...externalModules],
+    },
   },
   plugins: [
     svgr(),
