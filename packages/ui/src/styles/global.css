@@ -1748,9 +1748,8 @@
 }
 
 #pear-ctrl-container {
-  -webkit-app-region : drag;
+  -webkit-app-region: drag;
 }
-
 
 /* .is-pear-context > #root > div > header { */
 .is-pear-context {
