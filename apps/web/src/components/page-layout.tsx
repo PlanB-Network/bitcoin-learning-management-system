@@ -56,7 +56,7 @@ export const PageLayout = ({
       <>
         <div
           className={cn(
-            'fixed z-30 bg-white top-15 lg:top-18 lg:rounded-t-2xl',
+            'fixed z-30 bg-white top-14 lg:top-18 lg:rounded-t-2xl',
             isMobile
               ? 'left-0 right-0'
               : isSidebarOpen

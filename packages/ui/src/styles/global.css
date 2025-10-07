@@ -373,7 +373,7 @@
 
 @keyframes sidebar-marquee {
   from {
-    transform: translateX(5px);
+    transform: translateX(0px);
   }
   to {
     transform: translateX(var(--marquee-translate, 0px));
@@ -840,8 +840,8 @@
   .marquee-active {
     animation-name: sidebar-marquee;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-direction: forwards;
     animation-fill-mode: forwards;
   }
 

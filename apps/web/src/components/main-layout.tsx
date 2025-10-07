@@ -12,8 +12,10 @@ import { cva } from 'class-variance-authority';
 import { type JSX, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
+import { TbSearch } from 'react-icons/tb';
 import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
+import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
 import Dollar from '#src/assets/icons/pixelated/navbar/dollar.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
@@ -27,6 +29,7 @@ import Target from '#src/assets/icons/pixelated/navbar/target.svg?react';
 import TasksList from '#src/assets/icons/pixelated/navbar/tasks_list.svg?react';
 import Ticket from '#src/assets/icons/pixelated/navbar/ticket.svg?react';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { isPearApp } from '../env.ts';
 import { Footer } from './footer.tsx';
@@ -112,7 +115,7 @@ export const MainLayout = ({
 
       <div className="flex w-full flex-grow overflow-hidden">
         {/* Sidebar */}
-        <SideBar isSidebarOpen={isSidebarOpen} />
+        <SideBar isSidebarOpen={isSidebarOpen} className="max-lg:hidden" />
 
         {/* Rounded border illusion hack */}
         {/* Left */}
@@ -184,7 +187,13 @@ export const MainLayout = ({
   );
 };
 
-const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
+export const SideBar = ({
+  isSidebarOpen,
+  className,
+}: {
+  isSidebarOpen: boolean;
+  className?: string;
+}) => {
   const {
     user,
     session,
@@ -194,6 +203,8 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
   } = useContext(AppContext);
   const { t } = useTranslation();
   const isLoggedIn = !!session?.user;
+
+  const isMobile = useSmaller('lg') || window.innerWidth < 1024;
 
   const closedWidth = 'lg:w-[86px]';
   const openWidth = 'lg:w-[276px]';
@@ -206,8 +217,9 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
   return (
     <nav
       className={cn(
-        'pt-if-pear fixed flex flex-col top-18 px-4 h-[calc(100vh-72px)] overflow-y-auto max-lg:hidden no-scrollbar transition-all ease-in-out gap-3',
+        'pt-if-pear lg:fixed flex flex-col top-18 lg:px-4 h-full lg:h-[calc(100vh-72px)] overflow-y-auto no-scrollbar transition-all ease-in-out gap-3 max-lg:w-full',
         isSidebarOpen ? openWidth : closedWidth,
+        className,
       )}
       // help the browser optimize the animation
       style={{ willChange: 'width' }}
@@ -220,6 +232,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
           defaultValue={'learn'}
           value={currentTab}
           className={cn(isSidebarOpen ? '' : 'hidden')}
+          size={isMobile ? 'sm' : 'default'}
         >
           {canAccess(UserRole.Admin)(user) && (
             <SegmentedControlItem
@@ -283,7 +296,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
                   label={t('navbar.myCourses')}
                   link="/dashboard/my-courses"
                   isActive={window.location.pathname.includes(
-                    '/dashboard/course',
+                    '/dashboard/my-courses',
                   )}
                   isSidebarOpen={isSidebarOpen}
                 />
@@ -342,6 +355,17 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
               isActive={window.location.pathname.includes('certifications')}
               isSidebarOpen={isSidebarOpen}
             />
+            {isLoggedIn && (
+              <SideBarItem
+                icon={Calendar}
+                iconColor="blue"
+                label={t('words.calendar')}
+                link="/calendar"
+                isActive={window.location.pathname.includes('/calendar')}
+                isSidebarOpen={isSidebarOpen}
+                className="lg:hidden"
+              />
+            )}
           </div>
         </>
       )}
@@ -437,6 +461,19 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
           />
         </div>
       )}
+
+      <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8] lg:hidden" />
+      <Link
+        className="flex gap-4 items-center p-3 py-2 w-full hover:bg-white rounded-lg lg:hidden"
+        to="/search"
+      >
+        <TbSearch
+          size={24}
+          className="shrink-0 text-neutral-500"
+          strokeWidth={1.5}
+        />
+        <span className="text-sm leading-relaxed">{t('words.search')}</span>
+      </Link>
     </nav>
   );
 };
@@ -452,6 +489,7 @@ interface SideBarItemProps {
   isActive?: boolean;
   isSidebarOpen: boolean;
   isMain?: boolean;
+  className?: string;
 }
 
 const iconVariants = cva('shrink-0', {
@@ -496,6 +534,7 @@ export const SideBarItem = ({
   isActive = false,
   isSidebarOpen,
   isMain = false,
+  className,
 }: SideBarItemProps) => {
   const IconComponent = icon;
 
@@ -506,7 +545,7 @@ export const SideBarItem = ({
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [translatePx, setTranslatePx] = useState(0);
 
-  const singleDirectionDurationSec = 1.5;
+  const singleDirectionDurationSec = 0.75;
 
   useEffect(() => {
     const measure = () => {
@@ -523,7 +562,7 @@ export const SideBarItem = ({
 
       if (textWidth > containerWidth + 1) {
         setIsOverflowing(true);
-        setTranslatePx(textWidth - containerWidth + 5);
+        setTranslatePx(textWidth - containerWidth);
       } else {
         setIsOverflowing(false);
         setTranslatePx(0);
@@ -549,14 +588,15 @@ export const SideBarItem = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        'flex items-center justify-center p-3 hover:bg-white rounded-lg',
+        'flex items-center p-3 hover:bg-white rounded-lg',
         isActive ? 'bg-white' : 'bg-transparent',
-        isSidebarOpen ? (isMain ? 'gap-3' : 'gap-4') : 'gap-0',
+        isSidebarOpen ? (isMain ? 'gap-3' : 'gap-3 lg:gap-4') : 'gap-0',
+        className,
       )}
     >
       <div
         className={cn(
-          isMain ? 'size-8' : 'size-6',
+          isMain ? 'size-8' : 'size-8 lg:size-6',
           iconBgVariants({ color: iconColor }),
         )}
       >
@@ -568,7 +608,7 @@ export const SideBarItem = ({
       <div
         className={cn(
           'overflow-hidden transition-all',
-          isSidebarOpen ? 'w-[200px] ml-2' : 'w-0 ml-0 opacity-0',
+          isSidebarOpen ? 'w-full lg:ml-2' : 'w-0 ml-0 opacity-0',
         )}
       >
         <div className="flex flex-col whitespace-nowrap">
@@ -591,13 +631,12 @@ export const SideBarItem = ({
                     } as React.CSSProperties
                   }
                   className={cn(
-                    'inline-block align-middle whitespace-nowrap',
+                    'align-middle whitespace-nowrap',
                     !isHovered && isOverflowing
-                      ? 'overflow-hidden truncate block'
-                      : '',
-                    isHovered && isOverflowing ? 'marquee-active' : '',
+                      ? 'truncate block'
+                      : 'marquee-active inline-block',
                     isActive && 'font-medium',
-                    'text-lg text-newBlack-1',
+                    'text-lg text-newBlack-1 max-lg:leading-none',
                   )}
                 >
                   {label}

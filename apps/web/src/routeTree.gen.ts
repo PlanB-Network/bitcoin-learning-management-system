@@ -12,6 +12,7 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { Route as rootRouteImport } from './routes/__root';
 import { Route as LangIndexRouteImport } from './routes/$lang/index';
+import { Route as LangCalendarIndexRouteImport } from './routes/$lang/calendar/index';
 import { Route as LangAccountIndexRouteImport } from './routes/$lang/account/index';
 import { Route as LangDashboardDashboardRouteImport } from './routes/$lang/dashboard/_dashboard';
 import { Route as LangAccountTeacherProfileRouteImport } from './routes/$lang/account/teacher-profile';
@@ -28,7 +29,6 @@ import { Route as LangContentCoursesIndexRouteImport } from './routes/$lang/_con
 import { Route as LangDashboardDashboardNotificationsRouteImport } from './routes/$lang/dashboard/_dashboard/notifications';
 import { Route as LangDashboardDashboardMyCoursesRouteImport } from './routes/$lang/dashboard/_dashboard/my-courses';
 import { Route as LangDashboardDashboardCareerPortalRouteImport } from './routes/$lang/dashboard/_dashboard/career-portal';
-import { Route as LangDashboardDashboardCalendarRouteImport } from './routes/$lang/dashboard/_dashboard/calendar';
 import { Route as LangContentLearnAnytimeCourseSelectorRouteImport } from './routes/$lang/_content/learn-anytime/course-selector';
 import { Route as LangContentEventsPlanBWeekRouteImport } from './routes/$lang/_content/events/plan-b-week';
 import { Route as LangContentEventsMyTicketsRouteImport } from './routes/$lang/_content/events/my-tickets';
@@ -107,6 +107,11 @@ const LangDashboardRoute = LangDashboardRouteImport.update({
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
   path: '/$lang/',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const LangCalendarIndexRoute = LangCalendarIndexRouteImport.update({
+  id: '/$lang/calendar/',
+  path: '/$lang/calendar/',
   getParentRoute: () => rootRouteImport,
 } as any);
 const LangAccountIndexRoute = LangAccountIndexRouteImport.update({
@@ -195,12 +200,6 @@ const LangDashboardDashboardCareerPortalRoute =
   LangDashboardDashboardCareerPortalRouteImport.update({
     id: '/career-portal',
     path: '/career-portal',
-    getParentRoute: () => LangDashboardDashboardRoute,
-  } as any);
-const LangDashboardDashboardCalendarRoute =
-  LangDashboardDashboardCalendarRouteImport.update({
-    id: '/calendar',
-    path: '/calendar',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
 const LangContentLearnAnytimeCourseSelectorRoute =
@@ -626,6 +625,7 @@ export interface FileRoutesByFullPath {
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/account': typeof LangAccountIndexRoute;
+  '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
@@ -638,7 +638,6 @@ export interface FileRoutesByFullPath {
   '/$lang/events/my-tickets': typeof LangContentEventsMyTicketsRoute;
   '/$lang/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
   '/$lang/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
-  '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
   '/$lang/dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
@@ -713,6 +712,7 @@ export interface FileRoutesByTo {
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
   '/$lang/account': typeof LangAccountIndexRoute;
+  '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
@@ -725,7 +725,6 @@ export interface FileRoutesByTo {
   '/$lang/events/my-tickets': typeof LangContentEventsMyTicketsRoute;
   '/$lang/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
   '/$lang/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
-  '/$lang/dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
   '/$lang/dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
@@ -800,6 +799,7 @@ export interface FileRoutesById {
   '/$lang/dashboard': typeof LangDashboardRouteWithChildren;
   '/$lang/dashboard/_dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/account/': typeof LangAccountIndexRoute;
+  '/$lang/calendar/': typeof LangCalendarIndexRoute;
   '/$lang/_content/_misc/about': typeof LangContentMiscAboutRoute;
   '/$lang/_content/_misc/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/_content/_misc/node-network': typeof LangContentMiscNodeNetworkRoute;
@@ -812,7 +812,6 @@ export interface FileRoutesById {
   '/$lang/_content/events/my-tickets': typeof LangContentEventsMyTicketsRoute;
   '/$lang/_content/events/plan-b-week': typeof LangContentEventsPlanBWeekRoute;
   '/$lang/_content/learn-anytime/course-selector': typeof LangContentLearnAnytimeCourseSelectorRoute;
-  '/$lang/dashboard/_dashboard/calendar': typeof LangDashboardDashboardCalendarRoute;
   '/$lang/dashboard/_dashboard/career-portal': typeof LangDashboardDashboardCareerPortalRoute;
   '/$lang/dashboard/_dashboard/my-courses': typeof LangDashboardDashboardMyCoursesRoute;
   '/$lang/dashboard/_dashboard/notifications': typeof LangDashboardDashboardNotificationsRoute;
@@ -889,6 +888,7 @@ export interface FileRouteTypes {
     | '/$lang/account/teacher-profile'
     | '/$lang/dashboard'
     | '/$lang/account'
+    | '/$lang/calendar'
     | '/$lang/about'
     | '/$lang/manifesto'
     | '/$lang/node-network'
@@ -901,7 +901,6 @@ export interface FileRouteTypes {
     | '/$lang/events/my-tickets'
     | '/$lang/events/plan-b-week'
     | '/$lang/learn-anytime/course-selector'
-    | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
     | '/$lang/dashboard/my-courses'
     | '/$lang/dashboard/notifications'
@@ -976,6 +975,7 @@ export interface FileRouteTypes {
     | '/$lang/account/teacher-profile'
     | '/$lang/dashboard'
     | '/$lang/account'
+    | '/$lang/calendar'
     | '/$lang/about'
     | '/$lang/manifesto'
     | '/$lang/node-network'
@@ -988,7 +988,6 @@ export interface FileRouteTypes {
     | '/$lang/events/my-tickets'
     | '/$lang/events/plan-b-week'
     | '/$lang/learn-anytime/course-selector'
-    | '/$lang/dashboard/calendar'
     | '/$lang/dashboard/career-portal'
     | '/$lang/dashboard/my-courses'
     | '/$lang/dashboard/notifications'
@@ -1062,6 +1061,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard'
     | '/$lang/dashboard/_dashboard'
     | '/$lang/account/'
+    | '/$lang/calendar/'
     | '/$lang/_content/_misc/about'
     | '/$lang/_content/_misc/manifesto'
     | '/$lang/_content/_misc/node-network'
@@ -1074,7 +1074,6 @@ export interface FileRouteTypes {
     | '/$lang/_content/events/my-tickets'
     | '/$lang/_content/events/plan-b-week'
     | '/$lang/_content/learn-anytime/course-selector'
-    | '/$lang/dashboard/_dashboard/calendar'
     | '/$lang/dashboard/_dashboard/career-portal'
     | '/$lang/dashboard/_dashboard/my-courses'
     | '/$lang/dashboard/_dashboard/notifications'
@@ -1150,6 +1149,7 @@ export interface RootRouteChildren {
   LangAccountTeacherProfileRoute: typeof LangAccountTeacherProfileRoute;
   LangDashboardRoute: typeof LangDashboardRouteWithChildren;
   LangAccountIndexRoute: typeof LangAccountIndexRoute;
+  LangCalendarIndexRoute: typeof LangCalendarIndexRoute;
   LangContentMiscAboutRoute: typeof LangContentMiscAboutRoute;
   LangContentMiscManifestoRoute: typeof LangContentMiscManifestoRoute;
   LangContentMiscNodeNetworkRoute: typeof LangContentMiscNodeNetworkRoute;
@@ -1224,6 +1224,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang';
       fullPath: '/$lang';
       preLoaderRoute: typeof LangIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/calendar/': {
+      id: '/$lang/calendar/';
+      path: '/$lang/calendar';
+      fullPath: '/$lang/calendar';
+      preLoaderRoute: typeof LangCalendarIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/account/': {
@@ -1336,13 +1343,6 @@ declare module '@tanstack/react-router' {
       path: '/career-portal';
       fullPath: '/$lang/dashboard/career-portal';
       preLoaderRoute: typeof LangDashboardDashboardCareerPortalRouteImport;
-      parentRoute: typeof LangDashboardDashboardRoute;
-    };
-    '/$lang/dashboard/_dashboard/calendar': {
-      id: '/$lang/dashboard/_dashboard/calendar';
-      path: '/calendar';
-      fullPath: '/$lang/dashboard/calendar';
-      preLoaderRoute: typeof LangDashboardDashboardCalendarRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
     '/$lang/_content/learn-anytime/course-selector': {
@@ -1842,7 +1842,6 @@ const LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren =
   );
 
 interface LangDashboardDashboardRouteChildren {
-  LangDashboardDashboardCalendarRoute: typeof LangDashboardDashboardCalendarRoute;
   LangDashboardDashboardCareerPortalRoute: typeof LangDashboardDashboardCareerPortalRoute;
   LangDashboardDashboardMyCoursesRoute: typeof LangDashboardDashboardMyCoursesRoute;
   LangDashboardDashboardNotificationsRoute: typeof LangDashboardDashboardNotificationsRoute;
@@ -1861,7 +1860,6 @@ interface LangDashboardDashboardRouteChildren {
 
 const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
   {
-    LangDashboardDashboardCalendarRoute: LangDashboardDashboardCalendarRoute,
     LangDashboardDashboardCareerPortalRoute:
       LangDashboardDashboardCareerPortalRoute,
     LangDashboardDashboardMyCoursesRoute: LangDashboardDashboardMyCoursesRoute,
@@ -1932,6 +1930,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangAccountTeacherProfileRoute: LangAccountTeacherProfileRoute,
   LangDashboardRoute: LangDashboardRouteWithChildren,
   LangAccountIndexRoute: LangAccountIndexRoute,
+  LangCalendarIndexRoute: LangCalendarIndexRoute,
   LangContentMiscAboutRoute: LangContentMiscAboutRoute,
   LangContentMiscManifestoRoute: LangContentMiscManifestoRoute,
   LangContentMiscNodeNetworkRoute: LangContentMiscNodeNetworkRoute,
