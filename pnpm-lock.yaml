@@ -522,6 +522,9 @@ importers:
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.2.0)
+      hls.js:
+        specifier: ^1.6.13
+        version: 1.6.13
       hyperblobs:
         specifier: ^2.8.0
         version: 2.8.0
@@ -5704,8 +5707,8 @@ packages:
   hls-video-element@1.5.7:
     resolution: {integrity: sha512-R+uYimNZQndT2iqBgW7Gm0KiHT6pmlt5tnT63rYIcqOEcKD59M6pmdwqtX2vKPfHo+1ACM14Fy9JF1YMwlrLdQ==}
 
-  hls.js@1.6.12:
-    resolution: {integrity: sha512-Pz+7IzvkbAht/zXvwLzA/stUHNqztqKvlLbfpq6ZYU68+gZ+CZMlsbQBPUviRap+3IQ41E39ke7Ia+yvhsehEQ==}
+  hls.js@1.6.13:
+    resolution: {integrity: sha512-hNEzjZNHf5bFrUNvdS4/1RjIanuJ6szpWNfTaX5I6WfGynWXGT7K/YQLYtemSvFExzeMdgdE4SsyVLJbd5PcZA==}
 
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
@@ -9961,7 +9964,7 @@ snapshots:
 
   '@mux/playback-core@0.30.1':
     dependencies:
-      hls.js: 1.6.12
+      hls.js: 1.6.13
       mux-embed: 5.11.0
 
   '@napi-rs/canvas-android-arm64@0.1.77':
@@ -14079,10 +14082,10 @@ snapshots:
   hls-video-element@1.5.7:
     dependencies:
       custom-media-element: 1.4.5
-      hls.js: 1.6.12
+      hls.js: 1.6.13
       media-tracks: 0.3.3
 
-  hls.js@1.6.12: {}
+  hls.js@1.6.13: {}
 
   hmac-drbg@1.0.1:
     dependencies:
