@@ -1,3 +1,4 @@
+import { TeachingFormat } from '@blms/constants';
 import { formatNameForURL, LANGUAGES_MAP } from '@blms/shared';
 import type { CourseResponse, CourseReviewsExtended } from '@blms/types';
 import {
@@ -37,6 +38,7 @@ import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { LinkRenderer } from '#src/components/Markdown/Renderers/link-renderer.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
@@ -49,7 +51,6 @@ import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
-import { CourseLayout } from './-components/course-layout.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
 
 const PresentationMarkdownBody = lazy(
@@ -834,7 +835,24 @@ function CourseDetails() {
   };
 
   return (
-    <CourseLayout>
+    <PageLayout
+      layoutSize="wide"
+      className="relative"
+      backLink={
+        isFetched && course
+          ? {
+              text:
+                course?.teachingFormat === TeachingFormat.ProfessorLed
+                  ? t('navbar.liveClassesTitle')
+                  : t('navbar.learnAnytimeTitle'),
+              href:
+                course?.teachingFormat === TeachingFormat.ProfessorLed
+                  ? '/live-classes'
+                  : '/learn-anytime',
+            }
+          : undefined
+      }
+    >
       <PageMeta
         title={`${SITE_NAME} - ${course?.name}`}
         description={course?.goal}
@@ -851,14 +869,14 @@ function CourseDetails() {
       <div className="text-newBlack-1">
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !course && (
-          <div className="flex size-full max-w-[1222px] flex-col items-start justify-center px-4 pt-3 sm:items-center md:pt-10">
+          <div className="flex size-full flex-col items-start justify-center sm:items-center">
             {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.course'),
             })}
           </div>
         )}
         {course && (
-          <div className="flex size-full max-w-[1222px] flex-col items-start justify-center px-4 pt-3 sm:items-center md:pt-10 mx-auto">
+          <div className="flex size-full flex-col items-start justify-center sm:items-center mx-auto">
             <Header course={course} />
             <CourseInfo course={course} />
             <Divider className="mt-6 mb-9 max-lg:hidden" width="w-full" />
@@ -910,7 +928,7 @@ function CourseDetails() {
       ) : (
         <div />
       )}
-    </CourseLayout>
+    </PageLayout>
   );
 }
 

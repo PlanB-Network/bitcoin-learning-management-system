@@ -679,13 +679,13 @@ function CourseChapter() {
       />
       <div className="text-black flex flex-col grow">
         {!isFetched && (
-          <div className="flex flex-col flex-1 justify-center items-center size-full">
+          <div className="flex flex-col flex-1 items-center size-full">
             <Loader size={'s'} />
           </div>
         )}
 
         {isFetched && isError && error.data?.code === 'UNAUTHORIZED' && (
-          <div className="flex flex-col flex-1 justify-center items-center size-full">
+          <div className="flex flex-col flex-1 items-center size-full">
             <div>{t('courses.details.premiumContentNeedsLogin')}</div>
             <div>
               <Button
@@ -702,7 +702,7 @@ function CourseChapter() {
         )}
 
         {isFetched && isError && error.data?.code === 'FORBIDDEN' && (
-          <div className="flex flex-col flex-1 justify-center items-center size-full">
+          <div className="flex flex-col flex-1 items-center size-full">
             <div>{t('courses.details.premiumContentNeedsPayment')}</div>
             <div>
               <Link
@@ -717,14 +717,14 @@ function CourseChapter() {
         )}
 
         {isFetched && !isError && !chapter && (
-          <div className="flex size-full flex-col items-start justify-center px-2 py-6 sm:items-center sm:py-10">
+          <div className="flex size-full flex-col items-start px-2 py-6 sm:items-center sm:py-10">
             {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.chapter'),
             })}
           </div>
         )}
         {chapter && (
-          <div className="flex size-full flex-col items-center justify-center">
+          <div className="flex size-full flex-col items-center">
             {/* Desktop */}
             <TimelineBig chapter={chapter} professor={computerProfessor} />
             {/* Mobile */}
