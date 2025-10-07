@@ -371,6 +371,15 @@
   }
 }
 
+@keyframes sidebar-marquee {
+  from {
+    transform: translateX(5px);
+  }
+  to {
+    transform: translateX(var(--marquee-translate, 0px));
+  }
+}
+
 .start-animation {
   animation: expandWidth 2.1s forwards;
 }
@@ -824,6 +833,14 @@
 }
 
 @layer utilities {
+  .marquee-active {
+    animation-name: sidebar-marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

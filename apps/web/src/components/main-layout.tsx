@@ -495,9 +495,55 @@ export const SideBarItem = ({
 }: SideBarItemProps) => {
   const IconComponent = icon;
 
+  const labelContainerRef = useRef<HTMLDivElement | null>(null);
+  const labelTextRef = useRef<HTMLSpanElement | null>(null);
+
+  const [isHovered, setIsHovered] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const [translatePx, setTranslatePx] = useState(0);
+
+  const singleDirectionDurationSec = 1.5;
+
+  useEffect(() => {
+    const measure = () => {
+      const cont = labelContainerRef.current;
+      const txt = labelTextRef.current;
+      if (!cont || !txt) {
+        setIsOverflowing(false);
+        setTranslatePx(0);
+        return;
+      }
+
+      const containerWidth = cont.clientWidth;
+      const textWidth = txt.scrollWidth;
+
+      if (textWidth > containerWidth + 1) {
+        setIsOverflowing(true);
+        setTranslatePx(textWidth - containerWidth + 5);
+      } else {
+        setIsOverflowing(false);
+        setTranslatePx(0);
+      }
+    };
+
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    if (labelContainerRef.current) ro.observe(labelContainerRef.current);
+    if (labelTextRef.current) ro.observe(labelTextRef.current);
+    window.addEventListener('resize', measure);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', measure);
+    };
+  }, [label, isSidebarOpen]);
+
   return (
     <Link
       to={link}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={cn(
         'flex items-center justify-center p-3 hover:bg-white rounded-lg',
         isActive ? 'bg-white' : 'bg-transparent',
@@ -517,22 +563,42 @@ export const SideBarItem = ({
 
       <div
         className={cn(
-          'overflow-hidden transition-all ',
+          'overflow-hidden transition-all',
           isSidebarOpen ? 'w-[200px] ml-2' : 'w-0 ml-0 opacity-0',
         )}
       >
         <div className="flex flex-col whitespace-nowrap">
           {description || isMain ? (
             <>
-              <span
-                className={cn(
-                  'text-lg text-newBlack-1',
-                  isActive && 'font-medium',
-                  description && 'leading-none',
-                )}
+              <div
+                ref={labelContainerRef}
+                className={cn('relative w-full overflow-hidden')}
+                aria-hidden={false}
               >
-                {label}
-              </span>
+                <span
+                  ref={labelTextRef}
+                  style={
+                    {
+                      ['--marquee-translate' as string]: `-${translatePx}px`,
+                      animationDuration:
+                        isHovered && isOverflowing
+                          ? `${singleDirectionDurationSec}s`
+                          : undefined,
+                    } as React.CSSProperties
+                  }
+                  className={cn(
+                    'inline-block align-middle whitespace-nowrap',
+                    !isHovered && isOverflowing
+                      ? 'overflow-hidden truncate block'
+                      : '',
+                    isHovered && isOverflowing ? 'marquee-active' : '',
+                    isActive && 'font-medium',
+                    'text-lg text-newBlack-1',
+                  )}
+                >
+                  {label}
+                </span>
+              </div>
 
               <span className="text-[10px] text-newBlack-1/30 leading-[120%]">
                 {description}
