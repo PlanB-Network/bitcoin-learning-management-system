@@ -1,4 +1,4 @@
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
 
 interface CommonModalProps {
   isOpen: boolean;

@@ -30,7 +30,7 @@ export const ModalBookDescription = ({
 
   return (
     <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8">
-      <PlanBLogo className="h-auto max-lg:hidden" width={240} />
+      <PlanBLogo className="w-60 h-auto max-lg:hidden" />
       <PaymentCallout description={callout} />
       <div className="w-full flex flex-col">
         {splitDescription ? (

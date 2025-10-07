@@ -183,7 +183,7 @@ export const PaymentDescription = ({
   return (
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-4 md:gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto pr-4">
-        <PlanBLogo className="h-auto max-lg:hidden" width={240} />
+        <PlanBLogo className="w-60 h-auto max-lg:hidden" />
         {callout ? <PaymentCallout description={callout} /> : null}
         <div className="w-full flex flex-col">
           {splitDescription?.map((desc) => (

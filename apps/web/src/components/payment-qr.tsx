@@ -26,7 +26,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
   return (
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 md:gap-8 max-lg:pb-6 max-lg:pt-8 mt-auto mb-4">
-        <PlanBLogo className="h-auto" width={240} />
+        <PlanBLogo className="w-60 h-auto" />
         <span className="text-center text-sm lg:text-base">
           {t('courses.payment.qr_unified')}
         </span>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
-import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black.svg';
 
 const SOCIAL_LINKS = [
   {

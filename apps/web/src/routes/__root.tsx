@@ -3,7 +3,7 @@ import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import type { i18n } from 'i18next';
 import { LANGUAGES } from '#src/utils/i18n.ts';
-import PlanBLogoOrange from '../assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
+import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
 import { router } from './-router.tsx';
 
 // Create a root route
@@ -30,7 +30,7 @@ export const Route = createRootRouteWithContext<{
     return (
       <div className="flex flex-col p-4 text-white">
         <a href="/">
-          <PlanBLogoOrange className="h-auto lg:w-32 xl:w-40" />
+          <PlanBLogo className="h-auto lg:w-32 xl:w-40" />
         </a>
         <span className="mt-6">An error occurred : {error.message} </span>
         <a className="text-orange-500" href="/">

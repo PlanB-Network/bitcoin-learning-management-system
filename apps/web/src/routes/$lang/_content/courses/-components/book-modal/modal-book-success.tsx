@@ -36,7 +36,7 @@ export const ModalBookSuccess = ({
 
   return (
     <div className="items-center justify-center w-60 lg:w-[450px] flex flex-col gap-6">
-      <PlanBLogo className="h-auto" width={240} />
+      <PlanBLogo className="w-60 h-auto" />
       <div className="items-center justify-center flex flex-col gap-6">
         <div className="flex flex-col text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
           <span className="text-base text-center">
@@ -56,7 +56,7 @@ export const ModalBookSuccess = ({
         </div>
       </div>
 
-      <div className="flex gap-5">
+      <div className="flex gap-5 flex-wrap justify-center">
         <Button
           variant="outline"
           onClick={() => {

@@ -19,7 +19,7 @@ export const ModalPaymentSuccess = ({
   return (
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
-        <PlanBLogo className="h-auto" width={240} />
+        <PlanBLogo className="w-60 h-auto" />
         <div className="items-center justify-center flex flex-col gap-6">
           <span className="text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
             {t('courses.payment.payment_successful')}
