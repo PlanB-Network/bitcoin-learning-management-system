@@ -12,6 +12,8 @@ import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { isPearApp } from '../env.ts';
+import { PearVideoPlayer } from './pear-video-player.tsx';
 
 export const VideoSelector = ({
   videoId,
@@ -21,7 +23,7 @@ export const VideoSelector = ({
   language: string;
 }) => {
   const {
-    data: videos,
+    data: _videos,
     isLoading,
     error,
   } = useQuery(
@@ -35,6 +37,31 @@ export const VideoSelector = ({
       },
     ),
   );
+
+  const videos = useMemo(() => {
+    if (!_videos) {
+      return [];
+    }
+
+    if (!isPearApp) {
+      return _videos;
+    }
+
+    const pearsVideos = [];
+
+    for (const video of _videos) {
+      if (video.provider === VideoProvider.Peertube) {
+        pearsVideos.push({
+          ...video,
+          provider: VideoProvider.Pears,
+        });
+      }
+    }
+
+    console.log('Augmented videos:', [...pearsVideos, ..._videos]);
+
+    return [...pearsVideos, ..._videos];
+  }, [_videos]);
 
   const providers = useMemo(
     () => Array.from(new Set(videos?.map((v) => v.provider) ?? [])),
@@ -251,6 +278,15 @@ function DisplayVideo({
             title={title}
             allowFullScreen
           />
+        </div>
+      );
+    }
+    case VideoProvider.Pears: {
+      const videoKey = `/videos/${idFromProvider}/master.m3u8`;
+
+      return (
+        <div className="">
+          <PearVideoPlayer videoKey={videoKey} />
         </div>
       );
     }

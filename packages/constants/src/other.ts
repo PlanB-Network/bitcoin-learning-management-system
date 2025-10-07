@@ -4,6 +4,7 @@ export enum SortDirection {
 }
 
 export enum VideoProvider {
+  Pears = 'pears',
   Peertube = 'peertube',
   Rumble = 'rumble',
   Youtube = 'youtube',

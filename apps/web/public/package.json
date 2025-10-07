@@ -1,5 +1,5 @@
 {
-  "main": ".",
+  "type": "module",
   "pear": {
     "name": "plan-b-pear",
     "type": "desktop",
@@ -13,6 +13,17 @@
       "https://planb.network",
       "https://planbtest.network",
       "http://localhost"
-    ]
+    ],
+    "routes": ".",
+    "pre": "pear-electron/pre"
+  },
+  "dependencies": {
+    "b4a": "^1.7.1",
+    "corestore": "^7.4.5",
+    "debounceify": "^1.1.0",
+    "hyperdrive": "^13.0.1",
+    "hyperswarm": "^4.14.0",
+    "pear-bridge": "^1.2.4",
+    "pear-electron": "^1.7.22"
   }
 }

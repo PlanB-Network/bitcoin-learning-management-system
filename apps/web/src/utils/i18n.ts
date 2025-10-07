@@ -4,7 +4,8 @@ import Detector from 'i18next-browser-languagedetector';
 import type { HttpBackendOptions } from 'i18next-http-backend';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
-import { build } from './cache.ts';
+
+import { build } from '../env.ts';
 
 export const LANGUAGES = [
   'cs',

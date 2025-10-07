@@ -28,6 +28,7 @@ import TasksList from '#src/assets/icons/pixelated/navbar/tasks_list.svg?react';
 import Ticket from '#src/assets/icons/pixelated/navbar/ticket.svg?react';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.tsx';
+import { isPearApp } from '../env.ts';
 import { Footer } from './footer.tsx';
 import { Header } from './Header/header.tsx';
 
@@ -95,8 +96,11 @@ export const MainLayout = ({
   return (
     <div className="flex flex-col bg-header w-full max-w-[1920px] mx-auto relative">
       {/* Display titlebar on pear app */}
-      {import.meta.env.VITE_PEAR_ENVIRONMENT ? (
-        <div className="fixed top-0 left-0 w-full h-[50px] bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50">
+      {isPearApp ? (
+        <div
+          id="pear-ctrl-container"
+          className="fixed top-0 left-0 w-full pt-4 pb-5 px-2 bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50"
+        >
           <pear-ctrl data-platform="darwin" className="" />
         </div>
       ) : null}
@@ -168,7 +172,7 @@ export const MainLayout = ({
           )}
           style={{ willChange: 'margin-left' }}
         >
-          <main className="flex grow flex-col bg-white min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-72px)] w-full relative">
+          <main className="mt-if-pear flex grow flex-col bg-white min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-72px)] w-full relative">
             {children}
           </main>
           {showFooter && <Footer />}
@@ -202,7 +206,7 @@ const SideBar = ({ isSidebarOpen }: { isSidebarOpen: boolean }) => {
   return (
     <nav
       className={cn(
-        'fixed flex flex-col top-18 px-4 h-[calc(100vh-72px)] overflow-y-auto max-lg:hidden no-scrollbar transition-all ease-in-out gap-3',
+        'pt-if-pear fixed flex flex-col top-18 px-4 h-[calc(100vh-72px)] overflow-y-auto max-lg:hidden no-scrollbar transition-all ease-in-out gap-3',
         isSidebarOpen ? openWidth : closedWidth,
       )}
       // help the browser optimize the animation

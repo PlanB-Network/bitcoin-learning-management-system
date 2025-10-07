@@ -5,6 +5,7 @@ import {
   createTRPCOptionsProxy,
 } from '@trpc/tanstack-react-query';
 import superjson from 'superjson';
+import { pearEnvironment } from '../env.ts';
 
 export const { TRPCProvider, useTRPC, useTRPCClient } =
   createTRPCContext<AppRouter>();
@@ -31,9 +32,9 @@ export const tRPCClientOptions = {
       },
       transformer: superjson,
       url:
-        import.meta.env.VITE_PEAR_ENVIRONMENT === 'testnet'
+        pearEnvironment === 'testnet'
           ? 'http://planbtest.network/api/trpc'
-          : import.meta.env.VITE_PEAR_ENVIRONMENT === 'mainnet'
+          : pearEnvironment === 'mainnet'
             ? 'http://planb.network/api/trpc'
             : '/api/trpc',
     }),

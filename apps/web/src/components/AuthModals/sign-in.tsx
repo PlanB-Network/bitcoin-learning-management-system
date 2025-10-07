@@ -16,6 +16,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { TbExternalLink } from 'react-icons/tb';
 import { z } from 'zod';
+import { isPearApp } from '../../env.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
 
@@ -78,8 +79,6 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
     },
     [credentialsLogin],
   );
-
-  const isPearApp = import.meta.env.VITE_PEAR_ENVIRONMENT;
 
   if (isPearApp) {
     return (
