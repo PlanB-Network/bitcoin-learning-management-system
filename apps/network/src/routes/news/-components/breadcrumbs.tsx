@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { IoIosArrowForward } from 'react-icons/io';
+import { TbChevronLeft } from 'react-icons/tb';
 
 const Breadcrumbs = ({ blogTitle }: { blogTitle: string }) => {
   const { t } = useTranslation();
@@ -10,20 +10,12 @@ const Breadcrumbs = ({ blogTitle }: { blogTitle: string }) => {
   }
 
   return (
-    <nav className="breadcrumbs">
-      <ol className="breadcrumb flex flex-row items-center mb-5">
-        <li className="breadcrumb-item text-black text-sm">
-          <Link className="text-sm" to="/news">
-            {t('publicCommunication.blogPost')}
-          </Link>
-        </li>
-
-        <IoIosArrowForward size={14} className="text-black mx-1" />
-        <li className="breadcrumb-item text-newBlack-5 text-sm truncate w-[150px] lg:w-auto">
-          {blogTitle}
-        </li>
-      </ol>
-    </nav>
+    <div className="flex items-center text-newGray-5 mb-4">
+      <TbChevronLeft size={24} className=" mx-1" />
+      <Link className="body-small-bold" to="/news">
+        {t('news.news')}
+      </Link>
+    </div>
   );
 };
 

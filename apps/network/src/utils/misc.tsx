@@ -115,26 +115,3 @@ export function formatMonthAndYear(
     year: 'numeric',
   }).format(new Date(value));
 }
-
-export const blogTabs = [
-  {
-    href: '/news/',
-    id: 'all',
-    label: 'publicCommunication.blogCategories.all',
-  },
-  {
-    href: '/news/content',
-    id: 'content',
-    label: 'publicCommunication.blogCategories.content',
-  },
-  {
-    href: '/news/feature',
-    id: 'feature',
-    label: 'publicCommunication.blogCategories.feature',
-  },
-  {
-    href: '/news/network',
-    id: 'network',
-    label: 'publicCommunication.blogCategories.network',
-  },
-];

@@ -37,7 +37,7 @@ export const Route = createFileRoute('/news/article/$blogName-$blogId')({
 });
 
 function SingleBlogDetail() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const params = Route.useParams();
   const blogId = params.blogId;
@@ -45,7 +45,7 @@ function SingleBlogDetail() {
   const { data: blog, isFetched } = useQuery(
     trpc.content.getBlog.queryOptions({
       id: blogId,
-      language: i18n.language,
+      language: 'en',
     }),
   );
 
@@ -67,11 +67,11 @@ function SingleBlogDetail() {
         <>
           <Breadcrumbs blogTitle={blog.title} />
 
-          <div className="text-start flex flex-col mx-auto lg:mx-0 md:flex-row w-full justify-between md:max-w-[1120px] align-top border-b-2 lg:border-b-0">
-            <FeaturedCard category={blog.category} blog={blog} />
+          <div className="text-start flex flex-col mx-auto lg:mx-0 md:flex-row w-full justify-between align-top border-b-2 lg:border-b-0">
+            <FeaturedCard blog={blog} variant="secondary" />
           </div>
 
-          <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row md:max-w-[1120px]">
+          <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row">
             <div className="flex flex-col flex-1 border-b-2 md:border-b-0 py-4 lg:py-0">
               <Suspense fallback={<Loader variant="black" size={'s'} />}>
                 <BlogMarkdownBody
@@ -97,7 +97,7 @@ function SingleBlogDetail() {
                     'group-hover:max-w-96 group-hover:opacity-100 group-hover:mr-3',
                   )}
                 />
-                {t('publicCommunication.goBackButtons.simpleGoBack')}
+                {t('news.backToAll')}
               </Button>
             </Link>
           </div>

@@ -200,7 +200,10 @@
     "words.wallets"
   ],
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": ["apps/web/public/locales"],
+  "i18n-ally.localesPaths": [
+    "apps/web/public/locales",
+    "apps/network/public/locales"
+  ],
   "i18n-ally.sortKeys": true,
   "i18n-ally.sourceLanguage": "en",
   "search.exclude": {

@@ -16,6 +16,8 @@
     "@trpc/tanstack-react-query": "^11.6.0",
     "class-variance-authority": "^0.7.1",
     "i18next": "^25.5.3",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "i18next-http-backend": "^3.0.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-i18next": "^15.7.4",

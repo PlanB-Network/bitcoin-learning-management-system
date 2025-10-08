@@ -10,11 +10,11 @@ export interface VerticalCardProps {
   subtitle?: string;
   category?: string;
   excerpt?: string;
-  cardColor?: 'grey' | 'maroon' | 'orange' | 'lightgrey';
+  cardColor?: 'black' | 'grey' | 'maroon' | 'orange' | 'lightgrey';
   onHoverCardColorChange?: boolean;
   buttonText?: string;
   buttonIcon?: JSX.Element;
-  buttonVariant: ButtonProps['variant'];
+  buttonVariant?: ButtonProps['variant'];
   buttonMode?: ButtonProps['mode'];
   buttonLink?: string;
   secondaryButtonText?: string;
@@ -30,7 +30,7 @@ export interface VerticalCardProps {
   externalLink?: boolean;
   onHoverArrow?: boolean;
   tags?: string[];
-  languages: string[] | null;
+  languages?: string[] | null;
   className?: string;
   imgClassName?: string;
   bodyClassName?: string;
@@ -72,6 +72,7 @@ export const VerticalCard = ({
   isScreenMd = true,
 }: VerticalCardProps) => {
   const cardColorClasses = {
+    black: 'bg-black',
     grey: 'bg-newBlack-2',
     lightgrey: 'bg-newGray-6',
     maroon: 'bg-darkOrange-7',
@@ -79,6 +80,7 @@ export const VerticalCard = ({
   };
 
   const hoverCardColorClasses = {
+    black: 'hover:bg-newBlack-3',
     grey: 'hover:bg-newBlack-3',
     lightgrey: 'bg-newGray-5',
     maroon: 'hover:bg-darkOrange-8',
@@ -86,13 +88,15 @@ export const VerticalCard = ({
   };
 
   const subtitleColorClasses = {
-    grey: 'text-newGray-4',
+    black: 'text-darkOrange-5',
+    grey: 'text-darkOrange-5',
     lightgrey: 'text-darkOrange-5',
     maroon: 'text-newGray-6',
     orange: 'text-newGray-6',
   };
 
   const titleColorClasses = {
+    black: 'text-white',
     grey: 'text-white',
     lightgrey: 'text-black',
     maroon: 'text-white',
@@ -159,7 +163,7 @@ export const VerticalCard = ({
           {category && (
             <span
               className={cn(
-                'mobile-caption1 md:desktop-body1 capitalize',
+                'mobile-caption1 md:desktop-body1 capitalize !font-semibold',
                 subtitleColorClasses[cardColor],
               )}
             >

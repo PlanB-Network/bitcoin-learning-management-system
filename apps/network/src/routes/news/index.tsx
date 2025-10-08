@@ -1,69 +1,31 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { blogTabs } from '#src/utils/misc.tsx';
+import { createFileRoute } from '@tanstack/react-router';
+import { t } from 'i18next';
+import { Trans } from 'react-i18next';
+import networkHeaderImage from '#src/assets/network-header.png';
+import { Hero } from '#src/components/hero.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { BlogList } from './-components/blog-list.tsx';
-import { DropdownMenu } from './-components/dropdown-menu.tsx';
-import NewsLayout from './-layout.tsx';
 
 export const Route = createFileRoute('/news/')({
   component: BlogsNews,
 });
 
 function BlogsNews() {
-  const { t } = useTranslation();
-  const [selectedMainTab, setSelectedMainTab] = useState(blogTabs[0].id);
-
-  const handleMainTabChange = (id: string) => {
-    setSelectedMainTab(id);
-  };
-
-  const dropdownItems = blogTabs.map((tab) => ({
-    link: tab.href,
-    name: t(tab.label),
-    onClick: () => handleMainTabChange(tab.id),
-  }));
-
-  const activeItem = dropdownItems.find(
-    (item) =>
-      item.name ===
-      t(blogTabs.find((tab) => tab.id === selectedMainTab)?.label ?? ''),
-  );
-
   return (
-    <NewsLayout>
-      <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">
-        {/* Desktop view */}
-        <div className="hidden lg:flex space-x-5">
-          {blogTabs.map((tab) => (
-            <Link
-              key={tab.id}
-              to={tab.href}
-              className={`lg:px-4 lg:py-3.5 lg:text-xl font-normal text-base py-2 px-2.5 transition-all duration-300 border-b-4 ${
-                selectedMainTab === tab.id
-                  ? 'border-darkOrange-5 text-black font-bold'
-                  : 'border-darkOrange-0 text-dashboardSectionText opacity-50'
-              }`}
-              onClick={() => handleMainTabChange(tab.id)}
-            >
-              {t(tab.label)}
-            </Link>
-          ))}
-        </div>
+    <PageLayout>
+      <div className="flex flex-col text-center lg:justify-start lg:text-start space-x-5 mt-5">
+        <Hero
+          titleElement={
+            <Trans i18nKey="news.title">
+              <span className="font-semibold">Network</span>
+            </Trans>
+          }
+          subtitle={t('news.subtitle')}
+          imageUrl={networkHeaderImage}
+        />
 
-        {/* Mobile view */}
-        <div className="mb-5 lg:hidden max-w-[280px] mx-auto w-full">
-          <DropdownMenu
-            activeItem={activeItem ? activeItem.name : ''}
-            itemsList={dropdownItems}
-            variant="gray"
-          />
-        </div>
+        <BlogList />
       </div>
-      {/* Blog List */}
-      <div className="flex flex-row text-center lg:justify-start lg:text-start space-x-5 mt-5">
-        <BlogList category={selectedMainTab} />
-      </div>
-    </NewsLayout>
+    </PageLayout>
   );
 }

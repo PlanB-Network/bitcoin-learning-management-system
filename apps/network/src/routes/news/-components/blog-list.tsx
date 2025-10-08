@@ -1,17 +1,14 @@
 import { formatNameForURL } from '@blms/shared';
 import { VerticalCard } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { useGreater } from '#src/hooks/use-greater.ts';
 import { resourceImgUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import { FeaturedCard } from './featured-card.js';
 
-interface BlogListProps {
-  category: string;
-}
-
-export const BlogList = ({ category }: BlogListProps) => {
+export const BlogList = () => {
   const isScreenMd = useGreater('md');
 
   const { data: blogs } = useQuery(
@@ -31,10 +28,7 @@ export const BlogList = ({ category }: BlogListProps) => {
     return <div />;
   }
 
-  const filteredBlogs =
-    category === 'all'
-      ? blogs
-      : blogs.filter((blog) => blog.category === category);
+  const filteredBlogs = blogs;
 
   const sortedBlogs = filteredBlogs.sort((a, b) => {
     const dateA = new Date(a.date);
@@ -44,47 +38,35 @@ export const BlogList = ({ category }: BlogListProps) => {
 
   if (sortedBlogs.length === 0) {
     return (
-      <p className="text-black p-14 justify-center text-4xl font-medium mx-auto">
-        {t('publicCommunication.blogPageStrings.noArticlesText')}
+      <p className=" p-14 justify-center text-4xl font-medium mx-auto">
+        {t('news.noNews')}
       </p>
     );
   }
 
   return (
-    <div className="mx-auto max-w-[1120px]">
-      <h3 className="text-black desktop-h7 mb-4">
-        {t('publicCommunication.blogPageStrings.featuredArticleTitleText')}
-      </h3>
-      <FeaturedCard category={category} background="gray" />
+    <div className="mx-auto mt-20 max-w-[1120px]">
+      <FeaturedCard variant="main" />
 
       {sortedBlogs.length > 1 && (
-        <div>
-          <h3 className="text-black desktop-h7 mb-4">
-            {t('publicCommunication.blogPageStrings.pastArticleSubtitleText')}
-          </h3>
-          <div className="text-black grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {sortedBlogs.slice(1).map((blog) => (
+        <div className=" grid grid-cols-2 lg:grid-cols-3 gap-4 px-12">
+          {sortedBlogs.slice(1).map((blog) => (
+            <Link
+              to={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
+              key={blog.id}
+            >
               <VerticalCard
-                key={blog.id}
                 imageSrc={resourceImgUrl(blog)}
                 imgClassName="w-full !rounded-b-0 rounded-t-[10px] lg:rounded-[10px] mb-1"
                 title={blog.title}
-                languages={[]}
-                cardColor="lightgrey"
-                className="text-start shadow-course-navigation"
-                buttonVariant="primary"
-                buttonMode="dark"
-                buttonText={t(
-                  'publicCommunication.blogPageStrings.blogListButtonText',
-                )}
-                buttonLink={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
-                tags={blog.tags}
+                cardColor="grey"
+                className="text-start shadow-course-navigation h-full"
                 category={blog.category}
                 excerpt={blog.description ?? ''}
                 isScreenMd={isScreenMd}
               />
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
       )}
     </div>

@@ -13,7 +13,7 @@ export const PageLayout = ({ children, className }: Props) => {
     <div className="bg-black text-white">
       <div
         className={cn(
-          'flex h-fit justify-center px-3 md:px-12 pb-16 md:pb-40 mx-auto w-full',
+          'flex h-fit justify-center px-3 md:px-12 pb-16 md:pb-40 mx-auto w-full max-w-[1440px]',
           className,
         )}
       >

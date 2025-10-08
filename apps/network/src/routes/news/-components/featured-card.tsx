@@ -1,6 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
 import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
-import { TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
@@ -9,28 +8,27 @@ import { formatDate, resourceImgUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
 interface FeaturedCardProps {
-  category: string;
-  background?: 'gray';
+  variant?: 'main' | 'secondary';
   blog?: JoinedBlog | JoinedBlogLight;
 }
 
 const cardStyles = cva(
-  'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-2 py-2 lg:p-5 w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-center',
+  'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-2 py-2 lg:p-5 w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-start',
   {
     defaultVariants: {
-      background: 'gray',
+      background: 'main',
     },
     variants: {
       background: {
-        gray: 'bg-newGray-6',
+        main: 'border-orange-500 border-[1px]',
+        secondary: '',
       },
     },
   },
 );
 
 export const FeaturedCard = ({
-  category,
-  background,
+  variant: background,
   blog,
 }: FeaturedCardProps) => {
   const { data: blogs } = useQuery(
@@ -53,8 +51,7 @@ export const FeaturedCard = ({
   let latestBlog = blog;
 
   if (!latestBlog) {
-    const filteredBlogs =
-      category === 'all' ? blogs : blogs.filter((b) => b.category === category);
+    const filteredBlogs = blogs;
 
     const sortedBlogs = filteredBlogs.sort((a, b) => {
       const dateA = new Date(a.date).getTime();
@@ -76,38 +73,26 @@ export const FeaturedCard = ({
         className="w-full max-w-[738px] order-2 md:order-1"
       >
         <Link
+          className="self-start justify-self-start"
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
-          <h2 className="text-darkOrange-5 mb-2 lg:mb-5 mobile-h2 lg:display-small-32px">
+          <h2 className="mb-2 lg:mb-5 mobile-h2 lg:display-small-32px">
             {latestBlog.title}
           </h2>
           <div className="flex flex-row gap-2.5 mb-2 lg:mb-5 items-center">
-            <span className="text-black font-medium text-sm lg:title-large-24px">
+            <span className="font-medium text-sm lg:title-large-24px">
               {latestBlog.author}
             </span>
-            <span className="text-newBlack-5">•</span>
-            <span className="text-black lg:text-2xl font-medium lg:font-normal text-sm">
+            <span className="text-gray-200">•</span>
+            <span className="text-gray-200 lg:text-2xl font-medium lg:font-normal text-sm">
               {latestBlog.date
                 ? formatDate(latestBlog.date)
                 : t('home.blogSection.noDateAvailable')}
             </span>
           </div>
-          {latestBlog.tags && (
-            <div className="flex flex-row flex-wrap gap-2 md:gap-4 mb-2 lg:mb-5">
-              {latestBlog.tags.map((tag) => (
-                <TextTag
-                  key={tag}
-                  variant="grey"
-                  className="capitalize"
-                  mode="light100"
-                >
-                  {tag}
-                </TextTag>
-              ))}
-            </div>
-          )}
+
           <div>
-            <p className="text-black max-md:hidden line-clamp-3 body-16px">
+            <p className="text-gray-300 max-md:hidden body-16px">
               {latestBlog.description}
             </p>
           </div>

@@ -1,0 +1,14 @@
+{
+  "academy": {
+    "title": "Academy title EN"
+  },
+  "news": {
+    "title": "Latest news of the <0>Network</0>",
+    "subtitle": "At Plan B Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check our latest news !",
+    "noNews": "There are no news at this time.",
+    "readArticle": "Read article",
+    "previousNews": "Previous news",
+    "backToAll": "Back to all articles",
+    "news": "News"
+  }
+}

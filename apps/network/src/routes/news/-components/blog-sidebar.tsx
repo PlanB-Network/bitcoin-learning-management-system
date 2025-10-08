@@ -41,28 +41,14 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
   );
 
   return (
-    <div className="mx-auto bg-newGray-6 p-2.5 rounded-2xl">
+    <div className="mx-auto p-2.5 rounded-2xl">
       <div className="flex flex-row items-center py-5 gap-5 border-b border-newGray-4">
-        {/* <img className="size-[35px] ml-2.5" src={MessageIcon} alt="" /> */}
-
         <h3 className="text-black subtitle-large-18px capitalize">
-          {currentCategory === 'all' ? (
-            // biome-ignore lint/complexity/noUselessFragments: todo
-            <>
-              {t('publicCommunication.blogPageStrings.blogSidebarTitleForAll')}
-            </>
-          ) : (
-            // biome-ignore lint/complexity/noUselessFragments: todo
-            <>
-              {t('publicCommunication.blogPageStrings.blogSidebarTitle', {
-                category: currentCategory,
-              })}
-            </>
-          )}
+          {t('news.previousNews')}
         </h3>
       </div>
 
-      <ul className="text-black list-none">
+      <ul className="list-none">
         {filteredBlogs.map((blog) => (
           <li key={blog.id} className="flex flex-row items-center">
             <Link

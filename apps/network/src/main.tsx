@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom/client';
 import { routeTree } from './routeTree.gen.js';
 import { TRPCProvider, trpcClient } from './utils/trpc.ts';
 
-import '../../../packages/ui/src/styles/global.css';
+import './utils/i18n';
 
+import '../../../packages/ui/src/styles/global.css';
 // Create a new router instance
 const router = createRouter({
   routeTree,
@@ -54,16 +55,16 @@ function getQueryClient() {
 const queryClient = getQueryClient();
 
 // Render the app
-const rootElement = document.getElementById('app');
-if (rootElement && !rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-          <RouterProvider router={router} />
-        </TRPCProvider>
-      </QueryClientProvider>
-    </StrictMode>,
-  );
-}
+const root = ReactDOM.createRoot(
+  document.querySelector('#root') as HTMLElement,
+);
+
+root.render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+        <RouterProvider router={router} />
+      </TRPCProvider>
+    </QueryClientProvider>
+  </StrictMode>,
+);
