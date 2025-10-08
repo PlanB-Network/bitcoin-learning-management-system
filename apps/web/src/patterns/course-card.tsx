@@ -33,7 +33,7 @@ const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
 export const CourseCard = ({
   course,
   featured = false,
-  mode = 'dark',
+  mode = 'light',
   className,
 }: {
   course: JoinedCourse | CourseResponse;
