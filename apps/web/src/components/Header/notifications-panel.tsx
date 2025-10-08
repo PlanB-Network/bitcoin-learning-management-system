@@ -4,7 +4,6 @@ import { useMutation } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useState } from 'react';
-import { FaBell } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
 import { TbBell } from 'react-icons/tb';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
@@ -106,9 +105,9 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
         )}
         aria-label="View notifications"
       >
-        <FaBell className="text-newBlack-1 " size={24} />
+        <TbBell className="text-neutral-500 stroke-[1.5px]" size={24} />
         {hasUnreadNotifications && (
-          <div className="absolute top-0 -right-0.5 rounded-full size-3.5 bg-darkOrange-2" />
+          <div className="absolute top-0 -right-0.5 rounded-full size-2.5 bg-darkOrange-2" />
         )}
       </Link>
     </>

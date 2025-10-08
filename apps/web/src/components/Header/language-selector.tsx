@@ -3,8 +3,7 @@ import { Button, cn, Popover, PopoverContent, PopoverTrigger } from '@blms/ui';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
-import { MdKeyboardArrowUp, MdOutlineCheck } from 'react-icons/md';
-import { TbLanguage } from 'react-icons/tb';
+import { TbCheck, TbChevronUp, TbLanguage } from 'react-icons/tb';
 import { LangContext } from '#src/providers/app.js';
 import { router } from '#src/routes/-router.js';
 import { LANGUAGES } from '../../utils/i18n.ts';
@@ -98,7 +97,7 @@ export const LanguageSelector = ({
                   language}
               </span>
               {activeLanguage.toLowerCase() === language.toLowerCase() && (
-                <MdOutlineCheck size={20} className="text-darkOrange-5" />
+                <TbCheck size={20} className="text-darkOrange-5" />
               )}
             </button>
           ))}
@@ -149,8 +148,8 @@ export const LanguageSelectorMobile = () => {
   };
 
   const sortedLanguages = [...LANGUAGES].sort((a, b) => {
-    if (a.toLowerCase() === activeLanguage.toLowerCase()) return 1;
-    if (b.toLowerCase() === activeLanguage.toLowerCase()) return -1;
+    if (a.toLowerCase() === activeLanguage.toLowerCase()) return -1;
+    if (b.toLowerCase() === activeLanguage.toLowerCase()) return 1;
 
     const nameA = LANGUAGES_MAP[a.toLowerCase().replaceAll('-', '')] || a;
     const nameB = LANGUAGES_MAP[b.toLowerCase().replaceAll('-', '')] || b;
@@ -163,20 +162,23 @@ export const LanguageSelectorMobile = () => {
         <button
           type="button"
           className={cn(
-            'group flex justify-between items-center gap-4 px-3 py-2.5 outline-hidden rounded-lg mt-auto mx-auto w-[280px] bg-[#f39561] text-darkOrange-11 ',
-            open && 'rounded-t-none pt-4',
+            'group flex justify-between items-center px-3 py-2 outline-hidden w-[287px] mt-auto',
+            open && 'pt-2 bg-white rounded-lg rounded-t-none',
           )}
         >
-          <span
-            className={cn(
-              'text-lg leading-normal font-medium text-wrap',
-              i18n.dir() === 'rtl' && 'text-right',
-            )}
-          >
-            {t('menu.chooseLanguage')}
-          </span>
-          <MdKeyboardArrowUp
-            size={24}
+          <div className="flex items-center gap-4">
+            <TbLanguage className="text-neutral-500 shrink-0" size={24} />
+            <span
+              className={cn(
+                'body-small-bold',
+                i18n.dir() === 'rtl' && 'text-right',
+              )}
+            >
+              {t('words.language')}
+            </span>
+          </div>
+          <TbChevronUp
+            size={16}
             className={cn(
               'transition-transform ease-in-out shrink-0',
               open && 'rotate-180',
@@ -185,12 +187,12 @@ export const LanguageSelectorMobile = () => {
         </button>
       </PopoverTrigger>
       <PopoverContent
+        data-popover-content
         className={cn(
-          'flex flex-col absolute z-50 bg-[#f39561] rounded-none !rounded-t-lg w-[280px] overflow-scroll no-scrollbar !shadow-none bottom-13',
+          'flex flex-col absolute z-50 w-[287px] overflow-scroll no-scrollbar !shadow-none bottom-10 bg-white rounded-lg rounded-b-none pb-2 max-h-[min(calc(100dvh-84px),488px)]',
           i18n.dir() === 'rtl'
             ? 'right-1/2 translate-x-1/2'
             : 'left-1/2 -translate-x-1/2',
-          'gap-5 px-3 pt-4 max-h-[calc(100dvh-84px)]',
         )}
         addAnimation={false}
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
@@ -200,7 +202,7 @@ export const LanguageSelectorMobile = () => {
             key={language}
             type="button"
             onClick={() => changeLanguage(language)}
-            className={cn('flex items-center gap-4 w-full')}
+            className={cn('flex w-full px-4 py-3')}
             aria-label={`Change language to ${
               LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
               language
@@ -208,15 +210,15 @@ export const LanguageSelectorMobile = () => {
           >
             <span
               className={cn(
-                'flex capitalize label-medium-med-16px text-darkOrange-11 w-fit',
+                'flex body-small text-black w-full justify-between items-center',
                 activeLanguage.toLowerCase() === language.toLowerCase() &&
-                  'border rounded-lg border-darkOrange-5 gap-2 justify-between px-2.5 py-2',
+                  'font-semibold',
               )}
             >
               {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
                 language}
               {activeLanguage.toLowerCase() === language.toLowerCase() && (
-                <MdOutlineCheck size={20} className="text-darkOrange-5" />
+                <TbCheck size={16} className="text-green-500" />
               )}
             </span>
           </button>

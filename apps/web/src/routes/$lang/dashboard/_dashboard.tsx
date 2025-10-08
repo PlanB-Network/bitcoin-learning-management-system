@@ -2,12 +2,12 @@ import { cn } from '@blms/ui';
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 
 import { MainLayout } from '#src/components/main-layout.js';
-import { NotFoundDashboard } from '#src/components/not-found-dashboard.tsx';
+import { NotFound } from '#src/components/not-found.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 
 export const Route = createFileRoute('/$lang/dashboard/_dashboard')({
   component: Dashboard,
-  notFoundComponent: NotFoundDashboard,
+  notFoundComponent: NotFound,
 });
 
 function Dashboard() {

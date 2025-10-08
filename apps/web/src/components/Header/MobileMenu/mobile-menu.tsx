@@ -1,70 +1,50 @@
-import { cn } from '@blms/ui';
-import { Link, useLocation } from '@tanstack/react-router';
+import { Button, cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HiMiniBars3 } from 'react-icons/hi2';
-import { IoMdClose } from 'react-icons/io';
-
+import { TbMenu, TbX } from 'react-icons/tb';
+import { SideBar } from '#src/components/main-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
-import { MenuDashboard } from '#src/routes/$lang/dashboard/_dashboard/-components/menu-dashboard.tsx';
-import { getPictureUrl } from '#src/services/user.js';
-import SignInIconLight from '../../../assets/icons/profile_log_in_light.svg';
 import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black.svg?react';
-import { isRTL } from '../../../utils/i18n.ts';
 import { LanguageSelectorMobile } from '../language-selector.tsx';
+import { UserRoleAvatar } from '../meta-elements.tsx';
 import { NotificationsPanel } from '../notifications-panel.tsx';
-import type { NavigationSectionMobile } from '../props.ts';
-import { MobileMenuSection } from './mobile-menu-section.tsx';
 
 export interface MobileMenuProps {
-  sections: NavigationSectionMobile[];
   onClickLogin: () => void;
   isMobileMenuOpen: boolean;
   toggleMobileMenu: () => void;
-  isMobileDashboardMenuOpen: boolean;
-  toggleDashboardMenu: () => void;
 }
 
 export const MobileMenu = ({
-  sections,
   onClickLogin,
   isMobileMenuOpen,
   toggleMobileMenu,
-  isMobileDashboardMenuOpen,
-  toggleDashboardMenu,
 }: MobileMenuProps) => {
-  const { t, i18n } = useTranslation();
-  const rtl = isRTL(i18n.language);
-  const { session, user } = useContext(AppContext);
+  const { t } = useTranslation();
+  const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const dashboardMenuRef = useRef<HTMLDivElement>(null);
-
-  const pictureUrl = getPictureUrl(user);
-
-  const location = useLocation();
 
   useEffect(() => {
-    document.body.style.overflow =
-      isMobileMenuOpen || isMobileDashboardMenuOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
 
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      if (!mobileMenuRef.current || !isMobileMenuOpen) return;
+
       if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target as Node) &&
-        isMobileMenuOpen
-      )
-        toggleMobileMenu();
-      if (
-        dashboardMenuRef.current &&
-        !dashboardMenuRef.current.contains(event.target as Node) &&
-        isMobileDashboardMenuOpen
-      )
-        toggleDashboardMenu();
+        mobileMenuRef.current.contains(target) ||
+        target?.closest('[data-popover-content]')
+      ) {
+        return;
+      }
+
+      toggleMobileMenu();
     };
 
-    if (isMobileMenuOpen || isMobileDashboardMenuOpen) {
+    if (isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -73,133 +53,55 @@ export const MobileMenu = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [
-    isMobileMenuOpen,
-    isMobileDashboardMenuOpen,
-    toggleMobileMenu,
-    toggleDashboardMenu,
-  ]);
+  }, [isMobileMenuOpen, toggleMobileMenu]);
 
   return (
     <>
       <div className="flex w-full items-center justify-between lg:hidden">
-        <div className="flex items-center gap-2.5">
-          <div
-            className={cn('shrink-0 min-w-8', isMobileMenuOpen && 'opacity-0')}
-          >
-            <HiMiniBars3
-              className={cn(
-                'cursor-pointer text-white',
-                isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
-              )}
-              style={{
-                transition: 'transform 0.4s, color 0.2s',
-              }}
-              size={25}
-              color="#000"
-              onClick={toggleMobileMenu}
-            />
-          </div>
+        <Link to="/" className="w-fit">
+          <PlanBLogoBlack className="h-5 w-auto" />
+        </Link>
 
-          <Link to="/" className="w-fit">
-            <PlanBLogoBlack className="h-[25px] w-auto" />
-          </Link>
-        </div>
-
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           {isLoggedIn ? (
-            <>
+            <div className="flex items-center gap-3">
               <NotificationsPanel />
-              <div className="text-sm font-semibold shrink-0 min-w-8">
-                <button
-                  type="button"
-                  onClick={toggleDashboardMenu}
-                  className="cursor-pointer text-white"
-                >
-                  <img
-                    src={pictureUrl ? pictureUrl : SignInIconLight}
-                    alt={t('auth.signIn')}
-                    className="size-8 rounded-full"
-                  />
-                </button>
-              </div>
-            </>
-          ) : (
-            <div className="text-sm font-semibold shrink-0 min-w-8">
-              <button
-                type="button"
-                onClick={onClickLogin}
-                className="cursor-pointer text-white"
-              >
-                <img
-                  src={SignInIconLight}
-                  alt={t('auth.signIn')}
-                  className="size-8"
-                />
-              </button>
+              <div className="h-4.5 w-px bg-neutral-200" />
+              <UserRoleAvatar isShort />
             </div>
+          ) : (
+            <Button variant="primary" size="s" rounded onClick={onClickLogin}>
+              {t('auth.signIn')}
+            </Button>
           )}
+          <TbMenu
+            onClick={toggleMobileMenu}
+            className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0"
+          />
         </div>
       </div>
 
+      {isMobileMenuOpen && (
+        <div className="fixed top-0 left-0 w-full h-dvh bg-neutral-400/80 z-10 lg:hidden" />
+      )}
+
       <nav
         className={cn(
-          'flex flex-col fixed top-0 items-center w-[90%] max-w-[440px] h-dvh pb-5 duration-300 overflow-scroll no-scrollbar lg:hidden bg-darkOrange-2  border-darkOrange-4',
-          rtl ? 'right-0 border-l' : 'left-0 border-r',
-          isMobileMenuOpen
-            ? 'translate-x-0'
-            : rtl
-              ? 'translate-x-full'
-              : '-translate-x-full',
+          'flex flex-col fixed top-0 right-0 items-center w-full max-w-[327px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden bg-header p-5 pt-3 rounded-l-3xl z-20',
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full',
         )}
         ref={mobileMenuRef}
       >
-        <div className="flex items-center w-full px-4 py-4 text-newBlack-1 ">
-          <HiMiniBars3
-            className={cn(
-              'cursor-pointer',
-              isMobileMenuOpen ? 'rotate-90' : 'rotate-0',
-            )}
-            style={{
-              transition: 'transform 0.4s, color 0.2s',
-            }}
-            size={25}
+        <div className="ml-auto mb-6 flex items-center gap-2">
+          {isLoggedIn && <UserRoleAvatar />}
+          <TbX
             onClick={toggleMobileMenu}
-          />
-          <Link
-            to="/"
-            className={cn('text-lg font-medium leading-normal ml-5')}
-          >
-            {t('words.home')}
-          </Link>
-          <IoMdClose
-            size={24}
-            className={cn('text-maroon-7 shrink-0 cursor-pointer ml-auto')}
-            onClick={toggleMobileMenu}
+            className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0"
           />
         </div>
-        <ul className="list-none w-full px-4 flex flex-col gap-2.5 my-4">
-          {sections.map((section) => (
-            <MobileMenuSection section={section} key={section.id} />
-          ))}
-        </ul>
+        <SideBar isSidebarOpen={true} />
         <LanguageSelectorMobile />
       </nav>
-
-      {isLoggedIn && (
-        <nav
-          className={cn(
-            'flex flex-col fixed top-0 right-0 items-center w-[90%] max-w-[440px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden border-l border-darkOrange-8',
-            isMobileDashboardMenuOpen ? 'translate-x-0' : 'translate-x-full',
-          )}
-          ref={dashboardMenuRef}
-        >
-          <MenuDashboard
-            location={location}
-            toggleMobileMenu={toggleDashboardMenu}
-          />
-        </nav>
-      )}
     </>
   );
 };

@@ -5,10 +5,8 @@ import {
 } from 'react-icons/tb';
 import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black.svg?react';
 import { MetaElements } from '../meta-elements.tsx';
-import type { NavigationSection } from '../props.ts';
 
 export interface FlyingMenuProps {
-  sections: NavigationSection[];
   onClickLogin: () => void;
   onClickRegister: () => void;
   isSidebarOpen: boolean;
