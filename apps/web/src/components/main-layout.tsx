@@ -631,12 +631,11 @@ export const SideBarItem = ({
                     } as React.CSSProperties
                   }
                   className={cn(
-                    'align-middle whitespace-nowrap',
-                    !isHovered && isOverflowing
-                      ? 'truncate block'
-                      : 'marquee-active inline-block',
+                    'align-middle whitespace-nowrap text-lg text-newBlack-1 max-lg:leading-none',
+                    isHovered && isOverflowing
+                      ? 'marquee-active inline-block'
+                      : 'truncate block',
                     isActive && 'font-medium',
-                    'text-lg text-newBlack-1 max-lg:leading-none',
                   )}
                 >
                   {label}

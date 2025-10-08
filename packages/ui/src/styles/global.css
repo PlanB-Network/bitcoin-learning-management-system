@@ -841,7 +841,7 @@
     animation-name: sidebar-marquee;
     animation-timing-function: linear;
     animation-iteration-count: 1;
-    animation-direction: forwards;
+    animation-direction: normal;
     animation-fill-mode: forwards;
   }
 
