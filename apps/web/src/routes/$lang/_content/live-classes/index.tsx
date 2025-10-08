@@ -163,7 +163,7 @@ function AllCourses() {
             alt="A professor on stage"
           />
 
-          <div className="bottom-2 px-6 w-full self-end z-50 -mt-16">
+          <div className="bottom-2 px-6 w-full self-end z-10 -mt-16">
             <h2 className="display-base">{t('courses.liveClasses.title')}</h2>
             <h3 className="label-18px text-neutral-600">
               {t('courses.liveClasses.secondaryTitle')}
