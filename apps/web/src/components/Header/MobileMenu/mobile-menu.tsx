@@ -100,7 +100,7 @@ export const MobileMenu = ({
           />
         </div>
         <SideBar isSidebarOpen={true} />
-        <LanguageSelectorMobile />
+        <LanguageSelectorMobile isMobileMenuOpen={isMobileMenuOpen} />
       </nav>
     </>
   );

@@ -1,6 +1,6 @@
 import { LANGUAGES_MAP } from '@blms/shared';
 import { Button, cn, Popover, PopoverContent, PopoverTrigger } from '@blms/ui';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { TbCheck, TbChevronUp, TbLanguage } from 'react-icons/tb';
@@ -123,7 +123,11 @@ export const LanguageSelector = ({
   );
 };
 
-export const LanguageSelectorMobile = () => {
+export const LanguageSelectorMobile = ({
+  isMobileMenuOpen,
+}: {
+  isMobileMenuOpen?: boolean;
+}) => {
   const { t, i18n } = useTranslation();
   const { setCurrentLanguage } = useContext(LangContext);
 
@@ -155,6 +159,12 @@ export const LanguageSelectorMobile = () => {
     const nameB = LANGUAGES_MAP[b.toLowerCase().replaceAll('-', '')] || b;
     return nameA.localeCompare(nameB);
   });
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      setOpen(false);
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
