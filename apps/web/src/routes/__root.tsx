@@ -28,7 +28,7 @@ export const Route = createRootRouteWithContext<{
   ),
   errorComponent: function ErrorComp({ error }) {
     return (
-      <div className="flex flex-col p-4 text-white">
+      <div className="flex flex-col p-4">
         <a href="/">
           <PlanBLogo className="h-auto lg:w-32 xl:w-40" />
         </a>
