@@ -5,7 +5,9 @@ import Corestore from 'corestore';
 import debounceify from 'debounceify';
 import Hyperdrive from 'hyperdrive';
 import Hyperswarm from 'hyperswarm';
-import { join } from 'path';
+
+// import { join } from 'path';
+const join = (...parts: string[]) => parts.join('/');
 
 // We no longer store a boolean, but the initialization promise itself.
 let initializationPromise: Promise<{
