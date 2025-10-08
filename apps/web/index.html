@@ -14,11 +14,17 @@
     />
     <link rel="apple-touch-icon" href="/icons/192.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="/icons/512.png" />
-    <script
-      async
-      src="https://umami.planb.network/script.js"
-      data-website-id="a7bef474-fe47-4500-97c9-c1d03f90635a"
-    ></script>
+
+    <script lang="javascript">
+      // Include umami only on planb.network domains
+      if (/^planb/i.test(location.hostname)) {
+        const script = document.createElement('script');
+        script.setAttribute('src', 'https://umami.planb.network/script.js');
+        script.setAttribute('data-website-id', 'a7bef474-fe47-4500-97c9-c1d03f90635a');
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    </script>
   </head>
   <body style="background-color: black">
     <div id="root" style="">

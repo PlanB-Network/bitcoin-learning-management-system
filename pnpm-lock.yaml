@@ -552,6 +552,9 @@ importers:
       password-validator:
         specifier: ^5.3.0
         version: 5.3.0
+      pear-updates:
+        specifier: ^1.1.0
+        version: 1.1.0
       qrcode.react:
         specifier: ^4.2.0
         version: 4.2.0(react@19.2.0)
@@ -4167,6 +4170,10 @@ packages:
   bare-path@3.0.0:
     resolution: {integrity: sha512-tyfW2cQcB5NN8Saijrhqn0Zh7AnFNsnczRcuWODH0eYAXBsJ5gVxAUuNr7tsHSC6IZ77cA0SitzT+s47kot8Mw==}
 
+  bare-pipe@4.0.7:
+    resolution: {integrity: sha512-y8C6MWpr6EnzUJ1naE04VNTwM1AW3e6abkEDxgQkcTUVPPpHijxld1zpPT1RjWdPuA0TEc8UvEgMtWomnl5X9A==}
+    engines: {bare: '>=1.16.0'}
+
   bare-semver@1.0.1:
     resolution: {integrity: sha512-UtggzHLiTrmFOC/ogQ+Hy7VfoKoIwrP1UFcYtTxoCUdLtsIErT8+SWtOC2DH/snT9h+xDrcBEPcwKei1mzemgg==}
 
@@ -5489,6 +5496,9 @@ packages:
 
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
+
+  framed-stream@1.0.1:
+    resolution: {integrity: sha512-x0At1ETY20yXARxM6Qr5BGasgPpD0/HVYDyA7Uiaf9LfSqrb8p/F9i0s2/8YoeHkZcJeKsnwWBrnJCfZZoxHjA==}
 
   fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
@@ -6924,6 +6934,18 @@ packages:
     resolution: {integrity: sha512-w3fQKVL1oGn8FRyx5JUG5tnbblggDqyx2XzA5brsJ5hSuS+I0NdnJANhmeWKLjotdbPQucLBug5t0MeWr0AAdg==}
     engines: {node: '>=20.16.0 || >=22.3.0'}
 
+  pear-ipc@6.6.1:
+    resolution: {integrity: sha512-AckFrfVrjBtt/teAxawPITQ0N55RHVLRkecwb8Chpp7cGtmCszaDifm+eOx/mxibcoyGqz3+42ZOTp4qL3nkcQ==}
+
+  pear-messages@1.0.5:
+    resolution: {integrity: sha512-2kCw5lnnFxBZ+d4wz8L+AmKi25M0rwdgPWsMTGLBbmkyKmaPVBQBpG8ZktsFwVPGBSLu9dFtGC79VYYDSaA3Vw==}
+
+  pear-ref@1.0.2:
+    resolution: {integrity: sha512-IUGGSULYVF6jfdtsHY0XOokMp1v1KI89q8yPhsnqrLFf+Wq8EEOD0capny8gqXyu0eGkIh753X1cFUVL36n7FA==}
+
+  pear-updates@1.1.0:
+    resolution: {integrity: sha512-cD759YRSDFLqlr7sM44imVtdQTc18hflvV2v4ENtoBoKfrLnn5HWklsbgTYfE82az7G+3qaE1JBCtBih/W5dvg==}
+
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
 
@@ -8062,6 +8084,9 @@ packages:
 
   timeout-refresh@2.0.1:
     resolution: {integrity: sha512-SVqEcMZBsZF9mA78rjzCrYrUs37LMJk3ShZ851ygZYW1cMeIjs9mL57KO6Iv5mmjSQnOe/29/VAfGXo+oRCiVw==}
+
+  tiny-buffer-rpc@2.3.1:
+    resolution: {integrity: sha512-oJvKOwEKYAt3IwqX9TOI76DaLKebbWyf3/A723mSw1Vm2qKswV21w0Qc34sSJ1bbBQTmo9IT7ToA7diwz4sgCg==}
 
   tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
@@ -12341,6 +12366,14 @@ snapshots:
     dependencies:
       bare-os: 3.6.2
 
+  bare-pipe@4.0.7:
+    dependencies:
+      bare-events: 2.6.1
+      bare-stream: 2.7.0(bare-events@2.6.1)
+    transitivePeerDependencies:
+      - bare-buffer
+      - react-native-b4a
+
   bare-semver@1.0.1: {}
 
   bare-stream@2.7.0(bare-events@2.6.1):
@@ -13817,6 +13850,13 @@ snapshots:
   forwarded@0.2.0: {}
 
   fraction.js@4.3.7: {}
+
+  framed-stream@1.0.1:
+    dependencies:
+      b4a: 1.7.1
+      streamx: 2.22.1
+    transitivePeerDependencies:
+      - react-native-b4a
 
   fresh@0.5.2: {}
 
@@ -15701,6 +15741,43 @@ snapshots:
     optionalDependencies:
       '@napi-rs/canvas': 0.1.77
 
+  pear-ipc@6.6.1:
+    dependencies:
+      bare-fs: 4.2.3
+      bare-os: 3.6.2
+      bare-path: 3.0.0
+      bare-pipe: 4.0.7
+      framed-stream: 1.0.1
+      fs-native-extensions: 1.4.3
+      ready-resource: 1.2.0
+      streamx: 2.22.1
+      tiny-buffer-rpc: 2.3.1
+      which-runtime: 1.3.1
+    transitivePeerDependencies:
+      - bare-buffer
+      - react-native-b4a
+
+  pear-messages@1.0.5:
+    dependencies:
+      b4a: 1.7.1
+      pear-ipc: 6.6.1
+      pear-ref: 1.0.2
+      sodium-native: 5.0.8
+    transitivePeerDependencies:
+      - bare-buffer
+      - react-native-b4a
+
+  pear-ref@1.0.2:
+    dependencies:
+      bare-events: 2.6.1
+
+  pear-updates@1.1.0:
+    dependencies:
+      pear-messages: 1.0.5
+    transitivePeerDependencies:
+      - bare-buffer
+      - react-native-b4a
+
   performance-now@2.1.0: {}
 
   pg-cloudflare@1.2.7:
@@ -17086,6 +17163,15 @@ snapshots:
   time-ordered-set@2.0.1: {}
 
   timeout-refresh@2.0.1: {}
+
+  tiny-buffer-rpc@2.3.1:
+    dependencies:
+      b4a: 1.7.1
+      compact-encoding: 2.16.1
+      safety-catch: 1.0.2
+      streamx: 2.22.1
+    transitivePeerDependencies:
+      - react-native-b4a
 
   tiny-invariant@1.3.3: {}
 

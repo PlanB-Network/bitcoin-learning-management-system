@@ -169,7 +169,7 @@ const createPearFragmentLoaderClass = (drive: any) => {
 };
 
 export const PearVideoPlayer = ({ videoKey }: PearVideoTestProps) => {
-  const [status, setStatus] = useState<string>('Initializing...');
+  const [status, setStatus] = useState<string | null>('Initializing...');
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Quality levels for HLS
@@ -221,7 +221,8 @@ export const PearVideoPlayer = ({ videoKey }: PearVideoTestProps) => {
           });
 
           hls.on(Hls.Events.MANIFEST_PARSED, (_event, data) => {
-            setStatus('Video ready. Starting playback...');
+            // setStatus('Video ready. Starting playback...');
+            setStatus(null);
             console.info('Video ready. Starting playback...', { data });
             setLevels(data.levels); // Store quality levels
             videoRef.current?.play();
@@ -307,9 +308,6 @@ export const PearVideoPlayer = ({ videoKey }: PearVideoTestProps) => {
 
   return (
     <div>
-      <h1>🍐 Pear Video Test 🍐</h1>
-      <p>Status: {status}</p>
-
       <video ref={videoRef} controls autoPlay style={{ width: '800px' }}>
         <track
           kind="captions"
@@ -320,21 +318,29 @@ export const PearVideoPlayer = ({ videoKey }: PearVideoTestProps) => {
         />
       </video>
 
+      {status && (
+        <div className="p-2 border-x border-newGray-4">Status: {status}</div>
+      )}
+
       {/* Quality selector */}
       {levels.length > 1 && (
-        <select
-          onChange={(e) =>
-            handleLevelChange(Number.parseInt(e.target.value, 10))
-          }
-        >
-          <option value={-1}>Auto</option>
-          {levels.map((level, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: test
-            <option key={index} value={index}>
-              {level.height}p ({Math.round(level.bitrate / 1000)} kbps)
-            </option>
-          ))}
-        </select>
+        <div className="border-x border-newGray-4 p-2 flex gap-2 items-center">
+          <span>Quality:</span>
+
+          <select
+            onChange={(e) =>
+              handleLevelChange(Number.parseInt(e.target.value, 10))
+            }
+          >
+            <option value={-1}>Auto</option>
+            {levels.map((level, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: test
+              <option key={index} value={index}>
+                {level.height}p ({Math.round(level.bitrate / 1000)} kbps)
+              </option>
+            ))}
+          </select>
+        </div>
       )}
     </div>
   );

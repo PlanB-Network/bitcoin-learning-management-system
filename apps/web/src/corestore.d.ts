@@ -1,3 +1,4 @@
+declare module 'pear-updates';
 declare module 'corestore';
 declare module 'debounceify';
 declare module 'hyperdrive';
