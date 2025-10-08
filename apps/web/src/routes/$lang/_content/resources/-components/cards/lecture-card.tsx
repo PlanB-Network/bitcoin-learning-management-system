@@ -55,7 +55,7 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
     <Link
       to={`/resources/lectures/${lecture.id}`}
       className={cn(
-        'flex justify-between max-sm:items-center w-full sm:w-60 sm:border border-neutral-100 rounded-lg sm:rounded-2xl',
+        'flex justify-between max-sm:items-center w-full sm:w-60 sm:border border-neutral-100 rounded-lg sm:rounded-2xl hover:bg-neutral-50',
       )}
     >
       <div className="flex max-sm:gap-2 sm:flex-col flex-grow">

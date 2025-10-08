@@ -189,7 +189,7 @@ export const ConferenceCard = ({
     <Wrapper
       to={isSmaller ? `/resources/conferences/${conference.id}` : undefined}
       className={cn(
-        'flex justify-between max-sm:items-center w-full sm:w-60 sm:border border-neutral-100 rounded-lg sm:rounded-2xl max-sm:p-2',
+        'flex justify-between max-sm:items-center w-full sm:w-60 sm:border border-neutral-100 rounded-lg sm:rounded-2xl max-sm:p-2 hover:bg-neutral-50',
       )}
     >
       {content}
