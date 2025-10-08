@@ -63,7 +63,6 @@ export const Footer = () => {
                 { label: t('words.tutorials'), to: '/tutorials' },
                 { label: t('words.resources'), to: '/resources' },
                 { label: t('words.professors'), to: '/professors' },
-                { label: t('words.bCert'), to: '/b-cert' },
                 { label: t('labs.planBLabs'), to: '/plan-b-labs' },
               ]}
               textSecondaryClass={textSecondaryClass}

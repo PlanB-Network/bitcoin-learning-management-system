@@ -50,11 +50,8 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
   );
 
   return (
-    <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-8 max-w-[900px]">
-      <div className="flex flex-col w-full max-md:px-4">
-        <p className="body-14px md:body-16px">
-          {t('dashboard.teacher.courses.announcementsIntroduction')}
-        </p>
+    <div className="flex flex-col text-dashboardSectionTitle w-full">
+      <div className="flex flex-col w-full">
         <Button
           variant="primary"
           rounded={false}
@@ -152,12 +149,12 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
           ))}
         </div>
       ) : (
-        <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
+        <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
           {t('dashboard.teacher.courses.noWrittenAnnouncement')}
         </p>
       )}
 
-      <div className="flex flex-col w-full max-md:px-4">
+      <div className="flex flex-col w-full">
         <h2 className="text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24p mt-8">
           {t('dashboard.teacher.courses.announcementsPast')}
         </h2>
@@ -194,7 +191,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
           ))}
         </div>
       ) : (
-        <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
+        <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
           {t('dashboard.teacher.courses.noPastAnnouncement')}
         </p>
       )}

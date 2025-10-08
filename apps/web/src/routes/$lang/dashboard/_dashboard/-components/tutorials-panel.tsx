@@ -16,16 +16,21 @@ export const DashboardTutorialsPanel = ({
 
   return (
     <>
-      <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-        <h1 className="display-small-32px">
-          {professorId
-            ? t('dashboard.teacher.tutorials.yourTutorials')
-            : t('dashboard.adminPanel.tutorialsManagementPanel')}
-        </h1>
-        <TextTag size={isTablet ? 'small' : 'base'} className="uppercase w-fit">
-          {professorId ? t('words.teacher') : t('words.admin')}
-        </TextTag>
-      </div>
+      {!professorId && (
+        <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
+          <h1 className="display-small-32px">
+            {professorId
+              ? t('dashboard.teacher.tutorials.yourTutorials')
+              : t('dashboard.adminPanel.tutorialsManagementPanel')}
+          </h1>
+          <TextTag
+            size={isTablet ? 'small' : 'base'}
+            className="uppercase w-fit"
+          >
+            {professorId ? t('words.teacher') : t('words.admin')}
+          </TextTag>
+        </div>
+      )}
 
       <div className="w-full max-w-[1070px]">
         <h2 className="mb-4 text-dashboardSectionTitle title-large-sb-24px">

@@ -42,7 +42,7 @@ export const PageLayout = ({
   const isMobile = useSmaller('lg') || window.innerWidth < 1024;
 
   const layoutSizeClassesMap = {
-    small: 'max-w-[440px]',
+    small: 'max-w-[536px]',
     base: 'max-w-[832px]',
     wide: 'max-w-[1112px]',
     max: '',

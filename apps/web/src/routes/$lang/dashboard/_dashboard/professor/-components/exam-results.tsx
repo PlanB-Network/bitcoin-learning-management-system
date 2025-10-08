@@ -206,7 +206,7 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   });
 
   return (
-    <div className="flex flex-col w-full max-w-[1066px] p-4 gap-4 md:border border-newGray-5 bg-white rounded-2xl mt-3 md:mt-8">
+    <div className="flex flex-col w-full md:p-4 gap-4 md:border border-newGray-5 bg-white rounded-2xl">
       {((isCourseConclusionReleased && teacherLedCourseGradesAndSummary) ||
         (multiAttemptExams.length > 0 && selfPacedCourseGradesAndSummary)) && (
         <FinalResultsSummary

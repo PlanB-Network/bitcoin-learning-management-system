@@ -2,6 +2,7 @@ import type { CourseReviewsExtended } from '@blms/types';
 import {
   Button,
   CollapsibleDropdown,
+  EmptyState,
   Loader,
   Slider,
   StarRating,
@@ -10,6 +11,7 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { lazy, Suspense, useState } from 'react';
+import { TbMessageOff } from 'react-icons/tb';
 import { trpc } from '#src/utils/trpc.ts';
 
 const RatingChart = lazy(() =>
@@ -35,19 +37,14 @@ export const CourseReview = ({
   );
 
   return (
-    <section className="flex flex-col mt-6 lg:mt-10">
-      <h2 className="subtitle-large-med-20px lg:title-large-sb-24px text-dashboardSectionTitle lg:text-center">
-        {t('dashboard.teacher.reviews.reviewsAndGrading')}
-      </h2>
-      <p className="body-16px text-dashboardSectionText/75 mt-4 lg:text-center">
-        {t('dashboard.teacher.reviews.checkReviews')}
-      </p>
-
+    <section className="flex flex-col">
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !reviews && (
-        <p className="body-16px text-dashboardSectionText/75 mt-4 lg:text-center">
-          {t('dashboard.teacher.reviews.noReviewsYet')}
-        </p>
+        <EmptyState
+          title={t('dashboard.teacher.reviews.noReviewsYet')}
+          icon={TbMessageOff}
+          className="mt-4"
+        />
       )}
       {isFetched && reviews?.general && reviews?.general.length > 0 && (
         <>

@@ -121,7 +121,7 @@ export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
 
   return (
     <>
-      <div className="relative w-full max-w-[224px] mb-6 mt-4">
+      <div className="relative w-full max-w-[224px] mb-6">
         <input
           type="text"
           placeholder={`${t('words.search')}...`}

@@ -3,6 +3,7 @@ import { canAccess } from '@blms/shared/auth';
 import { Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { DashboardTutorialsPanel } from '../-components/tutorials-panel.tsx';
 
@@ -30,8 +31,10 @@ function DashboardAdministrationTutorials() {
   }
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-10">
-      <DashboardTutorialsPanel />
-    </div>
+    <PageLayout layoutSize="wide">
+      <div className="flex flex-col gap-4 lg:gap-10">
+        <DashboardTutorialsPanel />
+      </div>
+    </PageLayout>
   );
 }

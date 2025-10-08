@@ -12,6 +12,7 @@ import { BiBookBookmark } from 'react-icons/bi';
 import { LuCalendarDays, LuStar } from 'react-icons/lu';
 import { MdAccessAlarm } from 'react-icons/md';
 import { TbMailOpenedFilled, TbSpeakerphone } from 'react-icons/tb';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
@@ -27,21 +28,13 @@ export const Route = createFileRoute(
 
 function NotificationsDashboard() {
   return (
-    <>
-      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText max-md:px-4">
-        {t('notifications.notifications')}
-      </h1>
-
-      <h2 className="mobile-h3 md:subtitle-large-med-20px text-newBlack-1 mt-5 md:mt-8 max-md:px-4">
-        {t('notifications.stayUpToDate')}
-      </h2>
-
-      <p className="desktop-typo1 md:body-16px text-newBlack-1 mt-2.5 md:mt-4 max-md:px-4">
-        {t('notifications.dashboardDescription')}
-      </p>
-
+    <PageLayout
+      layoutSize="max"
+      title={t('notifications.notifications')}
+      description={t('notifications.dashboardDescription')}
+    >
       <NotificationsTable />
-    </>
+    </PageLayout>
   );
 }
 

@@ -1,6 +1,8 @@
 import { Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { DashboardTutorialsPanel } from '../-components/tutorials-panel.tsx';
 
@@ -12,6 +14,7 @@ export const Route = createFileRoute(
 
 function DashboardProfessorTutorials() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const { user, session } = useContext(AppContext);
 
@@ -33,8 +36,13 @@ function DashboardProfessorTutorials() {
   }
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-10">
-      <DashboardTutorialsPanel professorId={user?.professorId ?? undefined} />
-    </div>
+    <PageLayout
+      title={t('dashboard.teacher.tutorials.yourTutorials')}
+      layoutSize="wide"
+    >
+      <div className="flex flex-col gap-4 lg:gap-10">
+        <DashboardTutorialsPanel professorId={user?.professorId ?? undefined} />
+      </div>
+    </PageLayout>
   );
 }

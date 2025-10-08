@@ -59,14 +59,7 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
 
   return (
     <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-10">
-      <h2 className="mb-2.5 lg:mb-4 text-dashboardSectionTitle title-medium-sb-18px lg:title-large-sb-24px">
-        {course.name}
-      </h2>
-      <p className="text-dashboardSectionText/75 body-14px lg:body-16px">
-        {t('dashboard.teacher.courses.quickRecap')}
-      </p>
-
-      <div className="flex flex-col gap-6 mb-5 mt-6 lg:mb-8 lg:mt-10 lg:bg-newGray-6 lg:shadow-course-navigation lg:rounded-[20px] lg:p-5 max-w-xl lg:max-w-5xl">
+      <div className="flex flex-col gap-6 mb-5 lg:mb-8 lg:bg-newGray-6 lg:shadow-course-navigation lg:rounded-[20px] lg:p-5 max-w-xl lg:max-w-5xl">
         {/* Course details section */}
         <div className="flex flex-col gap-5 lg:gap-10 w-full items-center">
           <div className="flex max-lg:flex-col items-center justify-center w-full gap-x-15 gap-y-5">

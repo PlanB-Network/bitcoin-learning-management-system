@@ -22,6 +22,7 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import PageMeta from '#src/components/Head/PageMeta/index.js';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -36,7 +37,6 @@ import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { SITE_NAME } from '#src/utils/meta.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
 import { ClassDetails } from './-components/class-details.tsx';
-import { CourseLayout } from './-components/course-layout.tsx';
 import { LiveVideo } from './-components/live-video.tsx';
 import { NavigationPanel } from './-components/navigation-panel.tsx';
 import QuizzCard, { type Question } from './-components/quizz/quizz-card.tsx';
@@ -650,7 +650,7 @@ function CourseChapter() {
   }, [chapter, isLoggedIn, isAroundLiveTime]);
 
   return (
-    <CourseLayout>
+    <PageLayout layoutSize="max">
       {proofreading ? (
         <ProofreadingProgress
           isOriginalLanguage={isOriginalLanguage}
@@ -881,6 +881,6 @@ function CourseChapter() {
           />
         )}
       </div>
-    </CourseLayout>
+    </PageLayout>
   );
 }

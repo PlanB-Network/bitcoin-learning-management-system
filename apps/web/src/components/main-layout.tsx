@@ -12,7 +12,7 @@ import { cva } from 'class-variance-authority';
 import { type JSX, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
-import { TbSearch } from 'react-icons/tb';
+import { TbPointFilled, TbSearch } from 'react-icons/tb';
 import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
 import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
@@ -198,6 +198,7 @@ export const SideBar = ({
     user,
     session,
     tutorials,
+    courses,
     currentSidebarTab: currentTab,
     setCurrentSidebarTab: setCurrentTab,
   } = useContext(AppContext);
@@ -213,6 +214,13 @@ export const SideBar = ({
     user?.professorId && tutorials
       ? tutorials.some((tutorial) => tutorial.professorId === user.professorId)
       : false;
+
+  const professorCourses =
+    courses &&
+    user?.professorId &&
+    user?.professorCourses
+      .map((course) => courses.find((c) => c.id === course))
+      .filter((c) => c !== undefined);
 
   return (
     <nav
@@ -372,16 +380,69 @@ export const SideBar = ({
 
       {currentTab === 'teach' && (
         <div className="flex flex-col gap-1">
-          <SideBarItem
-            icon={BookOpen}
-            iconColor="orange"
-            label={t('navbar.manageCourses')}
-            link="/dashboard/professor/courses"
-            isActive={window.location.pathname.includes(
-              '/dashboard/professor/courses',
-            )}
-            isSidebarOpen={isSidebarOpen}
-          />
+          {professorCourses && professorCourses.length > 0 && (
+            <SideBarItem
+              icon={BookOpen}
+              iconColor="orange"
+              label={t('navbar.manageCourses')}
+              isActive={window.location.pathname.includes(
+                '/dashboard/professor/manage-courses',
+              )}
+              isSidebarOpen={isSidebarOpen}
+              subElements={
+                <div className="flex flex-col w-full gap-0.5">
+                  {professorCourses.map((course) => (
+                    <Link
+                      key={course!.id}
+                      to={`/dashboard/professor/manage-courses/${course.id}/overview`}
+                      className={cn(
+                        'flex items-center gap px-2 py-3 w-full text-neutral-800 hover:bg-neutral-50 hover:text-black rounded-lg',
+                        window.location.pathname.includes(
+                          `/dashboard/professor/manage-courses/${course!.id}`,
+                        ) && 'bg-neutral-50 text-black',
+                      )}
+                    >
+                      <TbPointFilled
+                        className={cn(
+                          'shrink-0',
+                          (() => {
+                            const now = new Date();
+                            const start = course.startDate
+                              ? new Date(course.startDate)
+                              : null;
+                            const end = course.endDate
+                              ? new Date(course.endDate)
+                              : null;
+
+                            if (course.teachingFormat === 'self_paced') {
+                              return 'text-yellow-400';
+                            }
+
+                            if (start && now < start) {
+                              return 'text-brown-300';
+                            }
+
+                            if (end && now > end) {
+                              return 'text-green-300';
+                            }
+
+                            return 'text-yellow-400';
+                          })(),
+                        )}
+                        size={16}
+                      />
+                      <span
+                        className="pl-2 body-small truncate"
+                        title={course!.name}
+                      >
+                        {course.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              }
+            />
+          )}
           {hasWrittenTutorials && (
             <SideBarItem
               icon={Target}
@@ -485,11 +546,12 @@ interface SideBarItemProps {
   iconColor: IconColor;
   label: string;
   description?: string;
-  link: string;
+  link?: string;
   isActive?: boolean;
   isSidebarOpen: boolean;
   isMain?: boolean;
   className?: string;
+  subElements?: JSX.Element | JSX.Element[];
 }
 
 const iconVariants = cva('shrink-0', {
@@ -535,6 +597,7 @@ export const SideBarItem = ({
   isSidebarOpen,
   isMain = false,
   className,
+  subElements,
 }: SideBarItemProps) => {
   const IconComponent = icon;
 
@@ -582,82 +645,105 @@ export const SideBarItem = ({
     };
   }, [label, isSidebarOpen]);
 
+  const wrapperClassName = cn(
+    'flex flex-col p-3 hover:bg-white rounded-lg',
+    isActive ? 'bg-white' : 'bg-transparent',
+    isSidebarOpen ? (isMain ? 'gap-3' : 'gap-3 lg:gap-4') : 'gap-0',
+    className,
+  );
+
+  const inner = (
+    <>
+      <div className="flex items-center">
+        <div
+          className={cn(
+            isMain ? 'size-8' : 'size-8 lg:size-6',
+            iconBgVariants({ color: iconColor }),
+          )}
+        >
+          <IconComponent
+            className={cn('size-full p-1', iconVariants({ color: iconColor }))}
+          />
+        </div>
+
+        <div
+          className={cn(
+            'overflow-hidden transition-all',
+            isSidebarOpen ? 'w-full ml-3 lg:ml-2' : 'w-0 ml-0 opacity-0',
+          )}
+        >
+          <div className="flex flex-col whitespace-nowrap">
+            {description || isMain ? (
+              <>
+                <div
+                  ref={labelContainerRef}
+                  className={cn('relative w-full overflow-hidden')}
+                  aria-hidden={false}
+                >
+                  <span
+                    ref={labelTextRef}
+                    style={
+                      {
+                        ['--marquee-translate' as string]: `-${translatePx}px`,
+                        animationDuration:
+                          isHovered && isOverflowing
+                            ? `${singleDirectionDurationSec}s`
+                            : undefined,
+                      } as React.CSSProperties
+                    }
+                    className={cn(
+                      'align-middle whitespace-nowrap text-lg text-newBlack-1 max-lg:leading-none',
+                      isHovered && isOverflowing
+                        ? 'marquee-active inline-block'
+                        : 'truncate block',
+                      isActive && 'font-medium',
+                    )}
+                  >
+                    {label}
+                  </span>
+                </div>
+
+                <span className="text-[10px] text-newBlack-1/30 leading-[120%]">
+                  {description}
+                </span>
+              </>
+            ) : (
+              <span
+                className={cn(
+                  'text-newBlack-1',
+                  isActive ? 'subtitle-small-med-14px' : 'subtitle-small-14px',
+                )}
+              >
+                {label}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+      {isSidebarOpen && subElements}
+    </>
+  );
+
+  if (subElements) {
+    return (
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={wrapperClassName}
+      >
+        {inner}
+      </div>
+    );
+  }
+
   return (
     <Link
       to={link}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={cn(
-        'flex items-center p-3 hover:bg-white rounded-lg',
-        isActive ? 'bg-white' : 'bg-transparent',
-        isSidebarOpen ? (isMain ? 'gap-3' : 'gap-3 lg:gap-4') : 'gap-0',
-        className,
-      )}
+      className={wrapperClassName}
     >
-      <div
-        className={cn(
-          isMain ? 'size-8' : 'size-8 lg:size-6',
-          iconBgVariants({ color: iconColor }),
-        )}
-      >
-        <IconComponent
-          className={cn('size-full p-1', iconVariants({ color: iconColor }))}
-        />
-      </div>
-
-      <div
-        className={cn(
-          'overflow-hidden transition-all',
-          isSidebarOpen ? 'w-full lg:ml-2' : 'w-0 ml-0 opacity-0',
-        )}
-      >
-        <div className="flex flex-col whitespace-nowrap">
-          {description || isMain ? (
-            <>
-              <div
-                ref={labelContainerRef}
-                className={cn('relative w-full overflow-hidden')}
-                aria-hidden={false}
-              >
-                <span
-                  ref={labelTextRef}
-                  style={
-                    {
-                      ['--marquee-translate' as string]: `-${translatePx}px`,
-                      animationDuration:
-                        isHovered && isOverflowing
-                          ? `${singleDirectionDurationSec}s`
-                          : undefined,
-                    } as React.CSSProperties
-                  }
-                  className={cn(
-                    'align-middle whitespace-nowrap text-lg text-newBlack-1 max-lg:leading-none',
-                    isHovered && isOverflowing
-                      ? 'marquee-active inline-block'
-                      : 'truncate block',
-                    isActive && 'font-medium',
-                  )}
-                >
-                  {label}
-                </span>
-              </div>
-
-              <span className="text-[10px] text-newBlack-1/30 leading-[120%]">
-                {description}
-              </span>
-            </>
-          ) : (
-            <span
-              className={cn(
-                'text-newBlack-1',
-                isActive ? 'subtitle-small-med-14px' : 'subtitle-small-14px',
-              )}
-            >
-              {label}
-            </span>
-          )}
-        </div>
-      </div>
+      {inner}
     </Link>
   );
 };
