@@ -104,7 +104,7 @@ export const MainLayout = ({
           id="pear-ctrl-container"
           className="fixed top-0 left-0 w-full pt-4 pb-5 px-2 bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50"
         >
-          <pear-ctrl data-platform="darwin" className="" />
+          <pear-ctrl />
         </div>
       ) : null}
 
@@ -133,7 +133,7 @@ export const MainLayout = ({
         >
           <svg
             viewBox="0 0 24 24"
-            className="w-full h-full fill-header"
+            className="hide-if-pear w-full h-full fill-header"
             aria-hidden="true"
           >
             <path
@@ -157,7 +157,7 @@ export const MainLayout = ({
         >
           <svg
             viewBox="0 0 24 24"
-            className="w-full h-full fill-header"
+            className="hide-if-pear w-full h-full fill-header"
             aria-hidden="true"
           >
             <path

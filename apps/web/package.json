@@ -91,9 +91,9 @@
     "dev": "vite serve --mode development",
     "pear:build:testnet": "VITE_PEAR_ENVIRONMENT=testnet npx vite build --mode development --config vite.pear.config.ts",
     "postpear:build:testnet": "cd dist && npm i",
-    "pear:run:testnet": "pear run --dev ./dist",
-    "pear:stage:testnet": "pear stage dev ./dist",
-    "pear:seed:testnet": "pear seed dev ./dist",
+    "pear:run": "pear run --dev ./dist",
+    "pear:stage": "pear stage dev ./dist",
+    "pear:seed": "pear seed dev ./dist",
     "lint": "biome check .",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.app.json | head -n 12 > performance.log",
     "type-check": "tsc --build"

@@ -1755,7 +1755,6 @@
   -webkit-app-region: drag;
 }
 
-/* .is-pear-context > #root > div > header { */
 .is-pear-context {
   .pt-if-pear {
     @apply pt-24;
@@ -1763,5 +1762,9 @@
 
   .mt-if-pear {
     @apply mt-24;
+  }
+
+  .hide-if-pear {
+    @apply hidden;
   }
 }
