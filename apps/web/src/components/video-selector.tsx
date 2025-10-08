@@ -7,13 +7,12 @@ import {
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
-import React, { useMemo, useState } from 'react';
+import React, { lazy, Suspense, useMemo, useState } from 'react';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { isPearApp } from '../env.ts';
-import { PearVideoPlayer } from './pear-video-player.tsx';
 
 export const VideoSelector = ({
   videoId,
@@ -284,9 +283,25 @@ function DisplayVideo({
     case VideoProvider.Pears: {
       const videoKey = `/videos/${idFromProvider}/master.m3u8`;
 
+      if (!isPearApp) {
+        return (
+          <div className="my-4 text-center text-red-500">
+            Pears videos are only available in the Pears app.
+          </div>
+        );
+      }
+
+      const PearVideoPlayer = lazy(() =>
+        import('./pear-video-player.tsx').then((mod) => ({
+          default: mod.PearVideoPlayer,
+        })),
+      );
+
       return (
         <div className="">
-          <PearVideoPlayer videoKey={videoKey} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <PearVideoPlayer videoKey={videoKey} />
+          </Suspense>
         </div>
       );
     }
