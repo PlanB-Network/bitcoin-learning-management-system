@@ -18,6 +18,9 @@ const externalModules: string[] = [
   'hypercore',
   'hyperswarm',
   'hyperdrive',
+
+  // Node built-in modules
+  'path',
 ];
 
 export default defineConfig({
@@ -37,7 +40,7 @@ export default defineConfig({
     // Resolve empty modules for built-in modules
     alias: externalModules.reduce(
       (acc, mod) => {
-        acc[mod] = path.resolve(__dirname, './empty-module.js');
+        acc[mod] = path.resolve(__dirname, './vite.empty-module.js');
         return acc;
       },
       {} as Record<string, string>,
