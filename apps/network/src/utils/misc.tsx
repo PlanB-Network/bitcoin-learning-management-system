@@ -118,22 +118,22 @@ export function formatMonthAndYear(
 
 export const blogTabs = [
   {
-    href: '/blog/',
+    href: '/news/',
     id: 'all',
     label: 'publicCommunication.blogCategories.all',
   },
   {
-    href: '/blog/content',
+    href: '/news/content',
     id: 'content',
     label: 'publicCommunication.blogCategories.content',
   },
   {
-    href: '/blog/feature',
+    href: '/news/feature',
     id: 'feature',
     label: 'publicCommunication.blogCategories.feature',
   },
   {
-    href: '/blog/network',
+    href: '/news/network',
     id: 'network',
     label: 'publicCommunication.blogCategories.network',
   },

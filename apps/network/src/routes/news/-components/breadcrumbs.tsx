@@ -13,7 +13,7 @@ const Breadcrumbs = ({ blogTitle }: { blogTitle: string }) => {
     <nav className="breadcrumbs">
       <ol className="breadcrumb flex flex-row items-center mb-5">
         <li className="breadcrumb-item text-black text-sm">
-          <Link className="text-sm" to="/blog">
+          <Link className="text-sm" to="/news">
             {t('publicCommunication.blogPost')}
           </Link>
         </li>

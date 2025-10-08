@@ -66,7 +66,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
         {filteredBlogs.map((blog) => (
           <li key={blog.id} className="flex flex-row items-center">
             <Link
-              to={`/blog/article/${formatNameForURL(blog.title)}-${blog.id}`}
+              to={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
               className="flex items-center justify-between py-3 text-start lg:px-2.5 w-full max-w-[354px]"
             >
               <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">

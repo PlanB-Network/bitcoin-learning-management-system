@@ -14,10 +14,10 @@ import Breadcrumbs from '../-components/breadcrumbs.tsx';
 import { FeaturedCard } from '../-components/featured-card.tsx';
 
 const BlogMarkdownBody = React.lazy(
-  () => import('#src/routes/blog/-components/markdown/blog-markdown-body.tsx'),
+  () => import('#src/routes/news/-components/markdown/blog-markdown-body.tsx'),
 );
 
-export const Route = createFileRoute('/blog/article/$blogName-$blogId')({
+export const Route = createFileRoute('/news/article/$blogName-$blogId')({
   component: SingleBlogDetail,
   params: {
     parse: (params) => {
@@ -55,7 +55,7 @@ function SingleBlogDetail() {
     if (blog && params.blogName !== formatNameForURL(blog.title)) {
       navigate({
         replace: true,
-        to: `/blog/article/${formatNameForURL(blog.title)}-${blog.id}`,
+        to: `/news/article/${formatNameForURL(blog.title)}-${blog.id}`,
       });
     }
   }, [blog, navigate, params.blogName]);
@@ -89,7 +89,7 @@ function SingleBlogDetail() {
             </div>
           </div>
           <div className="flex w-max-[135px] mt-6 max-md:justify-center">
-            <Link to="/blog">
+            <Link to="/news">
               <Button variant="primary" className="group">
                 <FaArrowLeftLong
                   className={cn(

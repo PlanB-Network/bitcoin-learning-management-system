@@ -1,37 +1,18 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
 import { blogTabs } from '#src/utils/misc.tsx';
 import { BlogList } from './-components/blog-list.tsx';
 import { DropdownMenu } from './-components/dropdown-menu.tsx';
-import BlogsAndNewsLayout from './-layout.tsx';
+import NewsLayout from './-layout.tsx';
 
-export const Route = createFileRoute('/blog/$category')({
-  component: BlogsCategory,
-  params: {
-    parse: (params) => ({
-      category: z.string().parse(params.category),
-    }),
-    stringify: ({ category }) => ({
-      category: `${category}`,
-    }),
-  },
+export const Route = createFileRoute('/news/')({
+  component: BlogsNews,
 });
 
-function BlogsCategory() {
+function BlogsNews() {
   const { t } = useTranslation();
-  const params = Route.useParams();
-
-  const [selectedMainTab, setSelectedMainTab] = useState(
-    params.category || blogTabs[0].id,
-  );
-
-  useEffect(() => {
-    if (params.category && selectedMainTab !== params.category) {
-      setSelectedMainTab(params.category);
-    }
-  }, [params.category, selectedMainTab]);
+  const [selectedMainTab, setSelectedMainTab] = useState(blogTabs[0].id);
 
   const handleMainTabChange = (id: string) => {
     setSelectedMainTab(id);
@@ -50,7 +31,7 @@ function BlogsCategory() {
   );
 
   return (
-    <BlogsAndNewsLayout>
+    <NewsLayout>
       <div className="flex flex-row mx-auto justify-center lg:pb-14 lg:mt-7 lg:space-x-5 transition-all mb-6 duration-300">
         {/* Desktop view */}
         <div className="hidden lg:flex space-x-5">
@@ -71,7 +52,7 @@ function BlogsCategory() {
         </div>
 
         {/* Mobile view */}
-        <div className="flex lg:hidden md:mb-3 w-full">
+        <div className="mb-5 lg:hidden max-w-[280px] mx-auto w-full">
           <DropdownMenu
             activeItem={activeItem ? activeItem.name : ''}
             itemsList={dropdownItems}
@@ -79,12 +60,10 @@ function BlogsCategory() {
           />
         </div>
       </div>
-
+      {/* Blog List */}
       <div className="flex flex-row text-center lg:justify-start lg:text-start space-x-5 mt-5">
         <BlogList category={selectedMainTab} />
       </div>
-    </BlogsAndNewsLayout>
+    </NewsLayout>
   );
 }
-
-export default BlogsCategory;

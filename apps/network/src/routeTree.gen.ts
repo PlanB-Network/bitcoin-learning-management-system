@@ -9,78 +9,142 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root';
+import { Route as HubsRouteImport } from './routes/hubs';
+import { Route as FundsRouteImport } from './routes/funds';
+import { Route as AboutRouteImport } from './routes/about';
 import { Route as IndexRouteImport } from './routes/index';
-import { Route as BlogIndexRouteImport } from './routes/blog/index';
-import { Route as BlogCategoryRouteImport } from './routes/blog/$category';
-import { Route as BlogArticleBlogNameBlogIdRouteImport } from './routes/blog/article/$blogName-$blogId';
+import { Route as NewsIndexRouteImport } from './routes/news/index';
+import { Route as NewsCategoryRouteImport } from './routes/news/$category';
+import { Route as NewsArticleBlogNameBlogIdRouteImport } from './routes/news/article/$blogName-$blogId';
 
+const HubsRoute = HubsRouteImport.update({
+  id: '/hubs',
+  path: '/hubs',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const FundsRoute = FundsRouteImport.update({
+  id: '/funds',
+  path: '/funds',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any);
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any);
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
   getParentRoute: () => rootRouteImport,
 } as any);
-const BlogCategoryRoute = BlogCategoryRouteImport.update({
-  id: '/blog/$category',
-  path: '/blog/$category',
+const NewsCategoryRoute = NewsCategoryRouteImport.update({
+  id: '/news/$category',
+  path: '/news/$category',
   getParentRoute: () => rootRouteImport,
 } as any);
-const BlogArticleBlogNameBlogIdRoute =
-  BlogArticleBlogNameBlogIdRouteImport.update({
-    id: '/blog/article/$blogName-$blogId',
-    path: '/blog/article/$blogName-$blogId',
+const NewsArticleBlogNameBlogIdRoute =
+  NewsArticleBlogNameBlogIdRouteImport.update({
+    id: '/news/article/$blogName-$blogId',
+    path: '/news/article/$blogName-$blogId',
     getParentRoute: () => rootRouteImport,
   } as any);
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
-  '/blog/$category': typeof BlogCategoryRoute;
-  '/blog': typeof BlogIndexRoute;
-  '/blog/article/$blogName-$blogId': typeof BlogArticleBlogNameBlogIdRoute;
+  '/about': typeof AboutRoute;
+  '/funds': typeof FundsRoute;
+  '/hubs': typeof HubsRoute;
+  '/news/$category': typeof NewsCategoryRoute;
+  '/news': typeof NewsIndexRoute;
+  '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute;
-  '/blog/$category': typeof BlogCategoryRoute;
-  '/blog': typeof BlogIndexRoute;
-  '/blog/article/$blogName-$blogId': typeof BlogArticleBlogNameBlogIdRoute;
+  '/about': typeof AboutRoute;
+  '/funds': typeof FundsRoute;
+  '/hubs': typeof HubsRoute;
+  '/news/$category': typeof NewsCategoryRoute;
+  '/news': typeof NewsIndexRoute;
+  '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   '/': typeof IndexRoute;
-  '/blog/$category': typeof BlogCategoryRoute;
-  '/blog/': typeof BlogIndexRoute;
-  '/blog/article/$blogName-$blogId': typeof BlogArticleBlogNameBlogIdRoute;
+  '/about': typeof AboutRoute;
+  '/funds': typeof FundsRoute;
+  '/hubs': typeof HubsRoute;
+  '/news/$category': typeof NewsCategoryRoute;
+  '/news/': typeof NewsIndexRoute;
+  '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
     | '/'
-    | '/blog/$category'
-    | '/blog'
-    | '/blog/article/$blogName-$blogId';
+    | '/about'
+    | '/funds'
+    | '/hubs'
+    | '/news/$category'
+    | '/news'
+    | '/news/article/$blogName-$blogId';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/blog/$category' | '/blog' | '/blog/article/$blogName-$blogId';
+  to:
+    | '/'
+    | '/about'
+    | '/funds'
+    | '/hubs'
+    | '/news/$category'
+    | '/news'
+    | '/news/article/$blogName-$blogId';
   id:
     | '__root__'
     | '/'
-    | '/blog/$category'
-    | '/blog/'
-    | '/blog/article/$blogName-$blogId';
+    | '/about'
+    | '/funds'
+    | '/hubs'
+    | '/news/$category'
+    | '/news/'
+    | '/news/article/$blogName-$blogId';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
-  BlogCategoryRoute: typeof BlogCategoryRoute;
-  BlogIndexRoute: typeof BlogIndexRoute;
-  BlogArticleBlogNameBlogIdRoute: typeof BlogArticleBlogNameBlogIdRoute;
+  AboutRoute: typeof AboutRoute;
+  FundsRoute: typeof FundsRoute;
+  HubsRoute: typeof HubsRoute;
+  NewsCategoryRoute: typeof NewsCategoryRoute;
+  NewsIndexRoute: typeof NewsIndexRoute;
+  NewsArticleBlogNameBlogIdRoute: typeof NewsArticleBlogNameBlogIdRoute;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/hubs': {
+      id: '/hubs';
+      path: '/hubs';
+      fullPath: '/hubs';
+      preLoaderRoute: typeof HubsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/funds': {
+      id: '/funds';
+      path: '/funds';
+      fullPath: '/funds';
+      preLoaderRoute: typeof FundsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/about': {
+      id: '/about';
+      path: '/about';
+      fullPath: '/about';
+      preLoaderRoute: typeof AboutRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/': {
       id: '/';
       path: '/';
@@ -88,25 +152,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/blog/': {
-      id: '/blog/';
-      path: '/blog';
-      fullPath: '/blog';
-      preLoaderRoute: typeof BlogIndexRouteImport;
+    '/news/': {
+      id: '/news/';
+      path: '/news';
+      fullPath: '/news';
+      preLoaderRoute: typeof NewsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/blog/$category': {
-      id: '/blog/$category';
-      path: '/blog/$category';
-      fullPath: '/blog/$category';
-      preLoaderRoute: typeof BlogCategoryRouteImport;
+    '/news/$category': {
+      id: '/news/$category';
+      path: '/news/$category';
+      fullPath: '/news/$category';
+      preLoaderRoute: typeof NewsCategoryRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/blog/article/$blogName-$blogId': {
-      id: '/blog/article/$blogName-$blogId';
-      path: '/blog/article/$blogName-$blogId';
-      fullPath: '/blog/article/$blogName-$blogId';
-      preLoaderRoute: typeof BlogArticleBlogNameBlogIdRouteImport;
+    '/news/article/$blogName-$blogId': {
+      id: '/news/article/$blogName-$blogId';
+      path: '/news/article/$blogName-$blogId';
+      fullPath: '/news/article/$blogName-$blogId';
+      preLoaderRoute: typeof NewsArticleBlogNameBlogIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
   }
@@ -114,9 +178,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogCategoryRoute: BlogCategoryRoute,
-  BlogIndexRoute: BlogIndexRoute,
-  BlogArticleBlogNameBlogIdRoute: BlogArticleBlogNameBlogIdRoute,
+  AboutRoute: AboutRoute,
+  FundsRoute: FundsRoute,
+  HubsRoute: HubsRoute,
+  NewsCategoryRoute: NewsCategoryRoute,
+  NewsIndexRoute: NewsIndexRoute,
+  NewsArticleBlogNameBlogIdRoute: NewsArticleBlogNameBlogIdRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

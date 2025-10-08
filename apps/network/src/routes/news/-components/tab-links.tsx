@@ -14,7 +14,7 @@ export const TabLinks: React.FC = () => {
 
   const mainTabs: Tab[] = [
     {
-      href: '/blog',
+      href: '/news',
       id: 'tab1',
       label: 'publicCommunication.blogPost',
     },

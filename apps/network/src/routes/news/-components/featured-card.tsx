@@ -76,7 +76,7 @@ export const FeaturedCard = ({
         className="w-full max-w-[738px] order-2 md:order-1"
       >
         <Link
-          to={`/blog/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
+          to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
           <h2 className="text-darkOrange-5 mb-2 lg:mb-5 mobile-h2 lg:display-small-32px">
             {latestBlog.title}
@@ -116,7 +116,7 @@ export const FeaturedCard = ({
       <div className="mb-3 md:mr-5 lg:mr-0 lg:ml-5 lg:mb-0 w-fit mx-auto order-1 md:order-2">
         <Link
           key={latestBlog.id}
-          to={`/blog/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
+          to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
           <img
             className="rounded-xs lg:rounded-[20px] lg:max-w-[404px]"

@@ -77,7 +77,7 @@ export const BlogList = ({ category }: BlogListProps) => {
                 buttonText={t(
                   'publicCommunication.blogPageStrings.blogListButtonText',
                 )}
-                buttonLink={`/blog/article/${formatNameForURL(blog.title)}-${blog.id}`}
+                buttonLink={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
                 tags={blog.tags}
                 category={blog.category}
                 excerpt={blog.description ?? ''}

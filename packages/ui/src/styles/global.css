@@ -472,6 +472,10 @@
   @apply text-2xl font-semibold leading-[133%] tracking-[-0.24px];
 }
 
+@utility display-extra-small {
+  @apply text-xl font-semibold leading-[160%] tracking-[-0.2px];
+}
+
 @utility dropdown-small {
   @apply text-sm font-normal leading-[110%] tracking-015px;
 }
