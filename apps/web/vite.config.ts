@@ -1,7 +1,9 @@
 /// <reference types="vite-plugin-svgr/client" />
+/// <reference types="@types/node" />
 
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -16,9 +18,6 @@ const externalModules: string[] = [
   'hypercore',
   'hyperswarm',
   'hyperdrive',
-
-  // Node.js built-in modules
-  'path',
 ];
 
 export default defineConfig({
@@ -33,6 +32,16 @@ export default defineConfig({
     rollupOptions: {
       external: [...externalModules],
     },
+  },
+  resolve: {
+    // Resolve empty modules for built-in modules
+    alias: externalModules.reduce(
+      (acc, mod) => {
+        acc[mod] = path.resolve(__dirname, './empty-module.js');
+        return acc;
+      },
+      {} as Record<string, string>,
+    ),
   },
   plugins: [
     svgr(),
