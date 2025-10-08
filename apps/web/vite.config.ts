@@ -4,6 +4,7 @@
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -22,6 +23,24 @@ const externalModules: string[] = [
   // Node built-in modules
   'path',
 ];
+
+/**
+ * Custom plugin to mock backend-specific modules during the build.
+ */
+function emptyModulesPlugin(): Plugin {
+  const mockModulePath = path.resolve(__dirname, './src/mocks/empty-module.js');
+
+  return {
+    name: 'empty-module',
+    resolveId(source) {
+      if (externalModules.includes(source)) {
+        return mockModulePath;
+      }
+
+      return null;
+    },
+  };
+}
 
 export default defineConfig({
   assetsInclude: [UI_PACKAGE_ASSETS],
@@ -47,6 +66,7 @@ export default defineConfig({
     ),
   },
   plugins: [
+    emptyModulesPlugin(),
     svgr(),
     tsconfigPaths({
       root: './',
