@@ -117,22 +117,20 @@ export function ProfessorCategoryPage() {
         </TabsList>
       </Tabs>
 
-      <div className="items-center justify-center">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-15 lg:grid-cols-3 max-w-[300px] sm:max-w-[500px] md:max-w-[760px] lg:max-w-[1020px] mx-auto mt-4 lg:mt-8">
-          {!isFetched && <Loader size={'s'} />}
-          {sortedProfessors?.map((professor) => (
-            <Link
-              to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
-              key={professor.id}
-              className="h-auto w-full sm:w-auto"
-              hash={`${params.category}`}
-            >
-              <div className="h-full">
-                <ProfessorCard professor={professor} className="h-full" />
-              </div>
-            </Link>
-          ))}
-        </div>
+      <div className="flex flex-wrap gap-4 lg:gap-8 mx-auto mt-4 lg:mt-8 justify-center">
+        {!isFetched && <Loader size={'s'} />}
+        {sortedProfessors?.map((professor) => (
+          <Link
+            to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
+            key={professor.id}
+            className="h-auto w-full sm:w-auto"
+            hash={`${params.category}`}
+          >
+            <div className="h-full">
+              <ProfessorCard professor={professor} className="h-full" />
+            </div>
+          </Link>
+        ))}
       </div>
     </PageLayout>
   );

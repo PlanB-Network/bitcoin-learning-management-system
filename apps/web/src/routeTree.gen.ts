@@ -56,7 +56,6 @@ import { Route as LangContentMiscPublicCommunicationIndexRouteImport } from './r
 import { Route as LangContentMiscProfessorsIndexRouteImport } from './routes/$lang/_content/_misc/professors/index';
 import { Route as LangContentMiscPlanBLabsIndexRouteImport } from './routes/$lang/_content/_misc/plan-b-labs/index';
 import { Route as LangDashboardDashboardProfessorTutorialsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/tutorials';
-import { Route as LangDashboardDashboardProfessorCoursesRouteImport } from './routes/$lang/dashboard/_dashboard/professor/courses';
 import { Route as LangDashboardDashboardCourseCompletedRouteImport } from './routes/$lang/dashboard/_dashboard/course/completed';
 import { Route as LangDashboardDashboardCourseCourseIdRouteImport } from './routes/$lang/dashboard/_dashboard/course/$courseId';
 import { Route as LangDashboardDashboardAdministrationTutorialsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/tutorials';
@@ -91,6 +90,14 @@ import { Route as LangContentMiscPublicCommunicationBlogsAndNewsIndexRouteImport
 import { Route as LangContentTutorialsCategorySubcategoryNameIdRouteImport } from './routes/$lang/_content/tutorials/$category/$subcategory.$name-$id';
 import { Route as LangContentMiscPublicCommunicationLegalsNameRouteImport } from './routes/$lang/_content/_misc/public-communication/legals/$name';
 import { Route as LangContentMiscPublicCommunicationBlogsAndNewsCategoryRouteImport } from './routes/$lang/_content/_misc/public-communication/blogs-and-news/$category';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdReviewRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/review';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdResultsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/results';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/overview';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/discount';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/details';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/assignment';
+import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/announcement';
 import { Route as LangDashboardDashboardAdministrationTranslationPanelUserUserIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId';
 import { Route as LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId';
 import { Route as LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/compare/$slideId';
@@ -363,12 +370,6 @@ const LangDashboardDashboardProfessorTutorialsRoute =
     path: '/professor/tutorials',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
-const LangDashboardDashboardProfessorCoursesRoute =
-  LangDashboardDashboardProfessorCoursesRouteImport.update({
-    id: '/professor/courses',
-    path: '/professor/courses',
-    getParentRoute: () => LangDashboardDashboardRoute,
-  } as any);
 const LangDashboardDashboardCourseCompletedRoute =
   LangDashboardDashboardCourseCompletedRouteImport.update({
     id: '/course/completed',
@@ -573,6 +574,68 @@ const LangContentMiscPublicCommunicationBlogsAndNewsCategoryRoute =
     path: '/$lang/public-communication/blogs-and-news/$category',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/students',
+      path: '/professor/manage-courses/$courseId/students',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
+const LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdReviewRouteImport.update({
+    id: '/professor/manage-courses/$courseId/review',
+    path: '/professor/manage-courses/$courseId/review',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
+const LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdResultsRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/results',
+      path: '/professor/manage-courses/$courseId/results',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
+const LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/overview',
+      path: '/professor/manage-courses/$courseId/overview',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
+const LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/discount',
+      path: '/professor/manage-courses/$courseId/discount',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
+const LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/details',
+      path: '/professor/manage-courses/$courseId/details',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
+const LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/assignment',
+      path: '/professor/manage-courses/$courseId/assignment',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
+const LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute =
+  LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRouteImport.update(
+    {
+      id: '/professor/manage-courses/$courseId/announcement',
+      path: '/professor/manage-courses/$courseId/announcement',
+      getParentRoute: () => LangDashboardDashboardRoute,
+    } as any,
+  );
 const LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute =
   LangDashboardDashboardAdministrationTranslationPanelUserUserIdRouteImport.update(
     {
@@ -678,7 +741,6 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
-  '/$lang/dashboard/professor/courses': typeof LangDashboardDashboardProfessorCoursesRoute;
   '/$lang/dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
   '/$lang/plan-b-labs': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/professors': typeof LangContentMiscProfessorsIndexRoute;
@@ -704,6 +766,14 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/administration/translation-panel/compare/$slideId': typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
   '/$lang/dashboard/administration/translation-panel/course/$courseId': typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
   '/$lang/dashboard/administration/translation-panel/user/$userId': typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/announcement': typeof LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/assignment': typeof LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/details': typeof LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/discount': typeof LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/overview': typeof LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/results': typeof LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/review': typeof LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/students': typeof LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute;
 }
 export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
@@ -763,7 +833,6 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
-  '/$lang/dashboard/professor/courses': typeof LangDashboardDashboardProfessorCoursesRoute;
   '/$lang/dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
   '/$lang/plan-b-labs': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/professors': typeof LangContentMiscProfessorsIndexRoute;
@@ -789,6 +858,14 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/administration/translation-panel/compare/$slideId': typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
   '/$lang/dashboard/administration/translation-panel/course/$courseId': typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
   '/$lang/dashboard/administration/translation-panel/user/$userId': typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/announcement': typeof LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/assignment': typeof LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/details': typeof LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/discount': typeof LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/overview': typeof LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/results': typeof LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/review': typeof LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute;
+  '/$lang/dashboard/professor/manage-courses/$courseId/students': typeof LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -852,7 +929,6 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
   '/$lang/dashboard/_dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/_dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
-  '/$lang/dashboard/_dashboard/professor/courses': typeof LangDashboardDashboardProfessorCoursesRoute;
   '/$lang/dashboard/_dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
   '/$lang/_content/_misc/plan-b-labs/': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/_content/_misc/professors/': typeof LangContentMiscProfessorsIndexRoute;
@@ -878,6 +954,14 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/administration/translation-panel/compare/$slideId': typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
   '/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId': typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
   '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId': typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/announcement': typeof LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/assignment': typeof LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/details': typeof LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/discount': typeof LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/overview': typeof LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/results': typeof LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/review': typeof LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute;
+  '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students': typeof LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -941,7 +1025,6 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
-    | '/$lang/dashboard/professor/courses'
     | '/$lang/dashboard/professor/tutorials'
     | '/$lang/plan-b-labs'
     | '/$lang/professors'
@@ -966,7 +1049,15 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/translation-panel/chapter/$chapterId'
     | '/$lang/dashboard/administration/translation-panel/compare/$slideId'
     | '/$lang/dashboard/administration/translation-panel/course/$courseId'
-    | '/$lang/dashboard/administration/translation-panel/user/$userId';
+    | '/$lang/dashboard/administration/translation-panel/user/$userId'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/announcement'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/assignment'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/details'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/discount'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/overview'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/results'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/review'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/students';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/$lang'
@@ -1026,7 +1117,6 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/tutorials'
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
-    | '/$lang/dashboard/professor/courses'
     | '/$lang/dashboard/professor/tutorials'
     | '/$lang/plan-b-labs'
     | '/$lang/professors'
@@ -1051,7 +1141,15 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/translation-panel/chapter/$chapterId'
     | '/$lang/dashboard/administration/translation-panel/compare/$slideId'
     | '/$lang/dashboard/administration/translation-panel/course/$courseId'
-    | '/$lang/dashboard/administration/translation-panel/user/$userId';
+    | '/$lang/dashboard/administration/translation-panel/user/$userId'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/announcement'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/assignment'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/details'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/discount'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/overview'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/results'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/review'
+    | '/$lang/dashboard/professor/manage-courses/$courseId/students';
   id:
     | '__root__'
     | '/$lang/'
@@ -1114,7 +1212,6 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/administration/tutorials'
     | '/$lang/dashboard/_dashboard/course/$courseId'
     | '/$lang/dashboard/_dashboard/course/completed'
-    | '/$lang/dashboard/_dashboard/professor/courses'
     | '/$lang/dashboard/_dashboard/professor/tutorials'
     | '/$lang/_content/_misc/plan-b-labs/'
     | '/$lang/_content/_misc/professors/'
@@ -1139,7 +1236,15 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/administration/translation-panel/chapter/$chapterId'
     | '/$lang/dashboard/_dashboard/administration/translation-panel/compare/$slideId'
     | '/$lang/dashboard/_dashboard/administration/translation-panel/course/$courseId'
-    | '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId';
+    | '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/announcement'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/assignment'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/details'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/discount'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/overview'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/results'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/review'
+    | '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -1534,13 +1639,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardProfessorTutorialsRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
-    '/$lang/dashboard/_dashboard/professor/courses': {
-      id: '/$lang/dashboard/_dashboard/professor/courses';
-      path: '/professor/courses';
-      fullPath: '/$lang/dashboard/professor/courses';
-      preLoaderRoute: typeof LangDashboardDashboardProfessorCoursesRouteImport;
-      parentRoute: typeof LangDashboardDashboardRoute;
-    };
     '/$lang/dashboard/_dashboard/course/completed': {
       id: '/$lang/dashboard/_dashboard/course/completed';
       path: '/course/completed';
@@ -1779,6 +1877,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscPublicCommunicationBlogsAndNewsCategoryRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students';
+      path: '/professor/manage-courses/$courseId/students';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/students';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/review': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/review';
+      path: '/professor/manage-courses/$courseId/review';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/review';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdReviewRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/results': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/results';
+      path: '/professor/manage-courses/$courseId/results';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/results';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdResultsRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/overview': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/overview';
+      path: '/professor/manage-courses/$courseId/overview';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/overview';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/discount': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/discount';
+      path: '/professor/manage-courses/$courseId/discount';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/discount';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/details': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/details';
+      path: '/professor/manage-courses/$courseId/details';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/details';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/assignment': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/assignment';
+      path: '/professor/manage-courses/$courseId/assignment';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/assignment';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
+    '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/announcement': {
+      id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/announcement';
+      path: '/professor/manage-courses/$courseId/announcement';
+      fullPath: '/$lang/dashboard/professor/manage-courses/$courseId/announcement';
+      preLoaderRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
     '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId': {
       id: '/$lang/dashboard/_dashboard/administration/translation-panel/user/$userId';
       path: '/user/$userId';
@@ -1854,8 +2008,15 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardAdministrationTutorialsRoute: typeof LangDashboardDashboardAdministrationTutorialsRoute;
   LangDashboardDashboardCourseCourseIdRoute: typeof LangDashboardDashboardCourseCourseIdRoute;
   LangDashboardDashboardCourseCompletedRoute: typeof LangDashboardDashboardCourseCompletedRoute;
-  LangDashboardDashboardProfessorCoursesRoute: typeof LangDashboardDashboardProfessorCoursesRoute;
   LangDashboardDashboardProfessorTutorialsRoute: typeof LangDashboardDashboardProfessorTutorialsRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute;
 }
 
 const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
@@ -1882,10 +2043,24 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
       LangDashboardDashboardCourseCourseIdRoute,
     LangDashboardDashboardCourseCompletedRoute:
       LangDashboardDashboardCourseCompletedRoute,
-    LangDashboardDashboardProfessorCoursesRoute:
-      LangDashboardDashboardProfessorCoursesRoute,
     LangDashboardDashboardProfessorTutorialsRoute:
       LangDashboardDashboardProfessorTutorialsRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute,
   };
 
 const LangDashboardDashboardRouteWithChildren =

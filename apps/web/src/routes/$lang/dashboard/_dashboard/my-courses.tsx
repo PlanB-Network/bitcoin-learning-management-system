@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTable } from './-components/course-table.tsx';
@@ -52,12 +53,17 @@ function DashboardCourses() {
   }
 
   return (
-    <div className="max-xl:max-w-[698px] flex flex-col max-lg:mx-auto">
-      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-4 md:mb-5 xl:mb-10">
-        {t('dashboard.myCourses.courseDashboard')}
-      </h1>
-      <CourseTable courses={filteredCourses} progress={progress || []} />
-      <CourseTableMobile courses={filteredCourses} progress={progress || []} />
-    </div>
+    <PageLayout
+      title={t('dashboard.myCourses.courseDashboard')}
+      layoutSize="max"
+    >
+      <div className="max-xl:max-w-[698px] flex flex-col max-lg:mx-auto">
+        <CourseTable courses={filteredCourses} progress={progress || []} />
+        <CourseTableMobile
+          courses={filteredCourses}
+          progress={progress || []}
+        />
+      </div>
+    </PageLayout>
   );
 }

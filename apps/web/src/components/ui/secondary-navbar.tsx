@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbDotsVertical } from 'react-icons/tb';
 
-interface Tab {
+export interface Tab {
   id: string;
   label: string;
   href: string;

@@ -29,12 +29,7 @@ export const PageHeader = ({
         <PageTitle title={title} />
       )}
       {description && (
-        <p
-          className={cn(
-            'body-large text-neutral-600',
-            'max-md:pb-12 max-md:border-b border-newGray-1 max-md:mt-5',
-          )}
-        >
+        <p className={cn('body-small md:body-large text-neutral-600')}>
           {description}
         </p>
       )}

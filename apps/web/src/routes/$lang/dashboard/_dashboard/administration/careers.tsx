@@ -1,3 +1,5 @@
+import { UserPermission, UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import type {
   JobTitle,
   JoinedCareerProfile,
@@ -6,12 +8,13 @@ import type {
 } from '@blms/types';
 import { Button, cn, Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import DOMPurify from 'dompurify';
 import { type TFunction, t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TbArrowsSort, TbDownload } from 'react-icons/tb';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -24,6 +27,8 @@ export const Route = createFileRoute(
 
 function AdminCareers() {
   const { courses } = useContext(AppContext);
+  const { session } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const [sortedCareerProfiles, setSortedCareerProfiles] = useState<
     JoinedCareerProfile[] | []
@@ -48,6 +53,17 @@ function AdminCareers() {
       sortCareerProfiles(careerProfiles, sortBy, sortingOrder);
     }
   }, [careerProfiles, sortBy, sortingOrder]);
+
+  useEffect(() => {
+    if (session === undefined) return;
+    if (!session) {
+      navigate({ to: '/' });
+    } else if (
+      !canAccess(UserRole.Admin, UserPermission.Career)(session?.user)
+    ) {
+      navigate({ to: '/dashboard/my-courses' });
+    }
+  }, [session]);
 
   const sortCareerProfiles = (
     profiles: JoinedCareerProfile[],
@@ -159,7 +175,7 @@ function AdminCareers() {
     'text-dashboardSectionTitle leading-normal !font-medium tracking-015px';
 
   return (
-    <>
+    <PageLayout layoutSize="wide">
       <div className="flex gap-2.5 md:gap-5 mb-5">
         <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText">
           {t('words.careerPortal')}
@@ -481,7 +497,7 @@ function AdminCareers() {
             )}
           </>
         )}
-    </>
+    </PageLayout>
   );
 }
 

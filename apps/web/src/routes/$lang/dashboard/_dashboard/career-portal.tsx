@@ -45,6 +45,7 @@ import { IoMdCheckmarkCircle } from 'react-icons/io';
 import { MdOutlineEdit } from 'react-icons/md';
 import { TbAlertTriangle, TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -389,786 +390,802 @@ function CareerPortal() {
   const inputRowMarginClasses = 'mb-5 md:mb-4';
 
   return (
-    <div className="max-w-[1066px] flex flex-col">
-      <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-4 md:mb-10">
-        {t('words.careerPortal')}
-      </h1>
-      {showLoader && <Loader />}
+    <PageLayout title={t('words.careerPortal')} layoutSize="max">
+      <div className="max-w-[1066px] flex flex-col">
+        <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-4 md:mb-10">
+          {t('words.careerPortal')}
+        </h1>
+        {showLoader && <Loader />}
 
-      {step > 0 && (
-        <>
-          <StepsProcess currentStep={step} validatedSteps={validatedSteps} />
-          <StepsProcessMobile currentStep={step} />
-        </>
-      )}
+        {step > 0 && (
+          <>
+            <StepsProcess currentStep={step} validatedSteps={validatedSteps} />
+            <StepsProcessMobile currentStep={step} />
+          </>
+        )}
 
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(() => {
-            updateCareerProfile.mutate(form.getValues());
-            if (step === 4) {
-              customToast(t('dashboard.careerPortal.applicationSaved'), {
-                closeButton: true,
-                color: 'success',
-                icon: TbCheck,
-                mode: 'light',
-              });
-            }
-          }, console.error)}
-        >
-          {/* Step 0 */}
-          {!showLoader && step === 0 && (
-            <>
-              <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-4">
-                {t('dashboard.careerPortal.welcome')}
-              </h2>
-              <p className="text-black body-14px md:label-medium-16px mb-6 md:mb-15">
-                {t('dashboard.careerPortal.description')}
-              </p>
-              {existingCareerProfile ? (
-                <>
-                  <p className="bg-newGray-6 text-center text-lg font-medium text-newBlack-1 px-4 py-2 md:px-8 md:py-4 rounded-[16px] border-b border-b-newGray-4 uppercase w-fit mx-auto mb-2">
-                    <Trans
-                      i18nKey={
-                        validatedSteps === 4
-                          ? 'dashboard.careerPortal.applicationComplete'
-                          : 'dashboard.careerPortal.applicationIncomplete'
-                      }
-                      components={{
-                        highlight: <span className="text-darkOrange-5" />,
-                      }}
-                    />
-                  </p>
-                  <p className="w-full text-center text-newBlack-5 body-16px md:label-medium-16px mb-6 md:mb-15 whitespace-pre-line">
-                    {validatedSteps === 4
-                      ? t('dashboard.careerPortal.lookingForJob')
-                      : t('dashboard.careerPortal.followProcess')}
-                  </p>
-                </>
-              ) : (
-                <p className="w-full text-center text-black body-medium-16px md:label-medium-med-16px mb-6 md:mb-15 whitespace-pre-line">
-                  {t('dashboard.careerPortal.followProcess')}
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(() => {
+              updateCareerProfile.mutate(form.getValues());
+              if (step === 4) {
+                customToast(t('dashboard.careerPortal.applicationSaved'), {
+                  closeButton: true,
+                  color: 'success',
+                  icon: TbCheck,
+                  mode: 'light',
+                });
+              }
+            }, console.error)}
+          >
+            {/* Step 0 */}
+            {!showLoader && step === 0 && (
+              <>
+                <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-4">
+                  {t('dashboard.careerPortal.welcome')}
+                </h2>
+                <p className="text-black body-14px md:label-medium-16px mb-6 md:mb-15">
+                  {t('dashboard.careerPortal.description')}
                 </p>
-              )}
+                {existingCareerProfile ? (
+                  <>
+                    <p className="bg-newGray-6 text-center text-lg font-medium text-newBlack-1 px-4 py-2 md:px-8 md:py-4 rounded-[16px] border-b border-b-newGray-4 uppercase w-fit mx-auto mb-2">
+                      <Trans
+                        i18nKey={
+                          validatedSteps === 4
+                            ? 'dashboard.careerPortal.applicationComplete'
+                            : 'dashboard.careerPortal.applicationIncomplete'
+                        }
+                        components={{
+                          highlight: <span className="text-darkOrange-5" />,
+                        }}
+                      />
+                    </p>
+                    <p className="w-full text-center text-newBlack-5 body-16px md:label-medium-16px mb-6 md:mb-15 whitespace-pre-line">
+                      {validatedSteps === 4
+                        ? t('dashboard.careerPortal.lookingForJob')
+                        : t('dashboard.careerPortal.followProcess')}
+                    </p>
+                  </>
+                ) : (
+                  <p className="w-full text-center text-black body-medium-16px md:label-medium-med-16px mb-6 md:mb-15 whitespace-pre-line">
+                    {t('dashboard.careerPortal.followProcess')}
+                  </p>
+                )}
 
-              <StepsProcess
-                currentStep={step}
-                validatedSteps={validatedSteps}
-              />
+                <StepsProcess
+                  currentStep={step}
+                  validatedSteps={validatedSteps}
+                />
 
-              {!existingCareerProfile && (
-                <ButtonWithArrow
-                  variant="primary"
-                  mode="light"
-                  size="m"
-                  onClick={() => createCareerProfile.mutate()}
-                  className="mb-5 md:mb-7 mx-auto"
-                  type="button"
-                >
-                  {t('dashboard.careerPortal.startApplication')}
-                </ButtonWithArrow>
-              )}
-              {existingCareerProfile && (
-                <div className="flex max-md:flex-col items-center justify-center gap-4 md:gap-7 mb-5 md:mb-7 mx-auto">
-                  <Button
+                {!existingCareerProfile && (
+                  <ButtonWithArrow
                     variant="primary"
                     mode="light"
                     size="m"
-                    onClick={() =>
-                      setStep(validatedSteps === 4 ? 1 : validatedSteps + 1)
-                    }
+                    onClick={() => createCareerProfile.mutate()}
+                    className="mb-5 md:mb-7 mx-auto"
                     type="button"
                   >
-                    {t('dashboard.careerPortal.seeOrEditProfile')}
-                    <MdOutlineEdit className="ml-2" />
-                  </Button>
-                  <DeleteProfileDialog
-                    onConfirm={() => deleteCareerProfile.mutate()}
+                    {t('dashboard.careerPortal.startApplication')}
+                  </ButtonWithArrow>
+                )}
+                {existingCareerProfile && (
+                  <div className="flex max-md:flex-col items-center justify-center gap-4 md:gap-7 mb-5 md:mb-7 mx-auto">
+                    <Button
+                      variant="primary"
+                      mode="light"
+                      size="m"
+                      onClick={() =>
+                        setStep(validatedSteps === 4 ? 1 : validatedSteps + 1)
+                      }
+                      type="button"
+                    >
+                      {t('dashboard.careerPortal.seeOrEditProfile')}
+                      <MdOutlineEdit className="ml-2" />
+                    </Button>
+                    <DeleteProfileDialog
+                      onConfirm={() => deleteCareerProfile.mutate()}
+                    />
+                  </div>
+                )}
+                <p className="max-w-[738px] mx-auto text-newBlack-4 text-center body-14px">
+                  <Trans i18nKey={'dashboard.careerPortal.beAware'}>
+                    <a
+                      href="https://workspace.planb.network/s/EKLJPd8YnH3ooft"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="body-14px-medium hover:text-darkOrange-5"
+                    >
+                      here
+                    </a>
+                  </Trans>
+                </p>
+              </>
+            )}
+
+            {/* Step 1 - Personal information */}
+            {!showLoader && step === 1 && (
+              <>
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.personalInformation')}
+                  subtitle={t(
+                    'dashboard.careerPortal.personalInformationSubtitle',
+                  )}
+                />
+                <div className={cn(inputRowFlexClasses, inputRowMarginClasses)}>
+                  <FormText
+                    id="firstName"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.firstName')}
+                    placeholder="Satoshi"
+                    type="text"
+                    mandatory
+                  />
+                  <FormText
+                    id="lastName"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.lastName')}
+                    placeholder="Nakamoto"
+                    type="text"
                   />
                 </div>
-              )}
-              <p className="max-w-[738px] mx-auto text-newBlack-4 text-center body-14px">
-                <Trans i18nKey={'dashboard.careerPortal.beAware'}>
-                  <a
-                    href="https://workspace.planb.network/s/EKLJPd8YnH3ooft"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="body-14px-medium hover:text-darkOrange-5"
-                  >
-                    here
-                  </a>
-                </Trans>
-              </p>
-            </>
-          )}
-
-          {/* Step 1 - Personal information */}
-          {!showLoader && step === 1 && (
-            <>
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.personalInformation')}
-                subtitle={t(
-                  'dashboard.careerPortal.personalInformationSubtitle',
-                )}
-              />
-              <div className={cn(inputRowFlexClasses, inputRowMarginClasses)}>
-                <FormText
-                  id="firstName"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.firstName')}
-                  placeholder="Satoshi"
-                  type="text"
-                  mandatory
-                />
-                <FormText
-                  id="lastName"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.lastName')}
-                  placeholder="Nakamoto"
-                  type="text"
-                />
-              </div>
-              <div>
-                <FormText
-                  id="country"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.countryResidence')}
-                  placeholder={t('words.country')}
-                  type="text"
-                  mandatory
-                />
-              </div>
-
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.contactInformation')}
-                subtitle={t(
-                  'dashboard.careerPortal.contactInformationSubtitle',
-                )}
-                className="mt-5 md:mt-10"
-              />
-              <div className={cn(inputRowFlexClasses, inputRowMarginClasses)}>
-                <FormText
-                  id="email"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.emailAddress')}
-                  placeholder={t('dashboard.careerPortal.emailPlaceholder')}
-                  type="text"
-                  mandatory
-                />
-              </div>
-              <div className={cn(inputRowFlexClasses, inputRowMarginClasses)}>
-                <FormText
-                  id="linkedin"
-                  control={form.control}
-                  label={t('words.linkedin')}
-                  placeholder={t('words.username')}
-                  type="text"
-                />
-                <FormText
-                  id="github"
-                  control={form.control}
-                  label={t('words.github')}
-                  placeholder={t('words.username')}
-                  type="text"
-                />
-              </div>
-              <div className={cn(inputRowFlexClasses)}>
-                <FormText
-                  id="telegram"
-                  control={form.control}
-                  label={t('words.telegram')}
-                  placeholder={`@${t('words.username')}`}
-                  type="text"
-                />
-                <FormText
-                  id="other"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.other')}
-                  placeholder={t('words.username')}
-                  type="text"
-                />
-              </div>
-
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.languageSkills')}
-                subtitle={t('dashboard.careerPortal.languageSkillsSubtitle')}
-                className="mt-5 md:mt-10"
-              />
-
-              <section>
-                <div className="w-full flex max-md:flex-col gap-5 md:gap-15 md:items-center">
-                  <div className="w-full max-w-xs md:max-w-[450px] flex flex-col gap-2">
-                    <FormHeader
-                      label={t('dashboard.careerPortal.selectLanguage')}
-                      mandatory
-                    />
-                    <Select
-                      onValueChange={(value) => {
-                        setSelectedLanguage(value);
-                      }}
-                    >
-                      <SelectTrigger className="w-full" mode="light">
-                        <SelectValue
-                          placeholder={t(
-                            'dashboard.careerPortal.selectLanguage',
-                          )}
-                        />
-                      </SelectTrigger>
-                      <SelectContent mode="light">
-                        {sortedLanguages.map((language) => (
-                          <SelectItem
-                            key={language.code}
-                            value={language.code}
-                            className="text-sm truncate leading-[120%]"
-                          >
-                            {language.nativeName}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <Button
-                    variant="primary"
-                    mode="light"
-                    size={isMobile ? 'm' : 's'}
-                    className="max-md:w-full max-md:max-w-xs md:self-end flex gap-2.5"
-                    type="button"
-                    onClick={() => {
-                      languageSkillsAppend({
-                        languageCode: selectedLanguage,
-                        level: CareerLanguageLevel.Beginner,
-                      });
-                    }}
-                    disabled={
-                      form
-                        .getValues()
-                        .languages.some(
-                          (lang) => lang.languageCode === selectedLanguage,
-                        ) || selectedLanguage === ''
-                    }
-                  >
-                    {t('dashboard.careerPortal.add')} <BiPlus />
-                  </Button>
+                <div>
+                  <FormText
+                    id="country"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.countryResidence')}
+                    placeholder={t('words.country')}
+                    type="text"
+                    mandatory
+                  />
                 </div>
 
-                {form.formState.errors.languages && (
-                  <FormMessage className="mt-2">
-                    {t('dashboard.careerPortal.languageRequired')}
-                  </FormMessage>
-                )}
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.contactInformation')}
+                  subtitle={t(
+                    'dashboard.careerPortal.contactInformationSubtitle',
+                  )}
+                  className="mt-5 md:mt-10"
+                />
+                <div className={cn(inputRowFlexClasses, inputRowMarginClasses)}>
+                  <FormText
+                    id="email"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.emailAddress')}
+                    placeholder={t('dashboard.careerPortal.emailPlaceholder')}
+                    type="text"
+                    mandatory
+                  />
+                </div>
+                <div className={cn(inputRowFlexClasses, inputRowMarginClasses)}>
+                  <FormText
+                    id="linkedin"
+                    control={form.control}
+                    label={t('words.linkedin')}
+                    placeholder={t('words.username')}
+                    type="text"
+                  />
+                  <FormText
+                    id="github"
+                    control={form.control}
+                    label={t('words.github')}
+                    placeholder={t('words.username')}
+                    type="text"
+                  />
+                </div>
+                <div className={cn(inputRowFlexClasses)}>
+                  <FormText
+                    id="telegram"
+                    control={form.control}
+                    label={t('words.telegram')}
+                    placeholder={`@${t('words.username')}`}
+                    type="text"
+                  />
+                  <FormText
+                    id="other"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.other')}
+                    placeholder={t('words.username')}
+                    type="text"
+                  />
+                </div>
 
-                {languageSkillsFields.length > 0 && (
-                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
-                    <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
-                      {t('dashboard.careerPortal.yourLanguages')}
-                    </h3>
-                    {languageSkillsFields.map((field, index) => (
-                      <div
-                        key={field.languageCode}
-                        className="flex max-md:flex-col gap-1 md:gap-7"
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.languageSkills')}
+                  subtitle={t('dashboard.careerPortal.languageSkillsSubtitle')}
+                  className="mt-5 md:mt-10"
+                />
+
+                <section>
+                  <div className="w-full flex max-md:flex-col gap-5 md:gap-15 md:items-center">
+                    <div className="w-full max-w-xs md:max-w-[450px] flex flex-col gap-2">
+                      <FormHeader
+                        label={t('dashboard.careerPortal.selectLanguage')}
+                        mandatory
+                      />
+                      <Select
+                        onValueChange={(value) => {
+                          setSelectedLanguage(value);
+                        }}
                       >
-                        <span className="w-full md:min-w-[194px] md:max-w-[194px] subtitle-large-18px md:subtitle-medium-med-16px text-black">
-                          {
-                            sortedLanguages?.find(
-                              (language) =>
-                                language.code === field.languageCode,
-                            )?.nativeName
-                          }
-                        </span>
-                        <FormSelect
-                          {...form}
-                          id={`languages[${index}].level`}
-                          control={form.control}
-                          label={t('dashboard.careerPortal.languageLevel')}
-                          subLabel={t(
-                            'dashboard.careerPortal.languageLevelSubLabel',
-                          )}
-                          options={Object.values(CareerLanguageLevel).map(
-                            (level) => ({
-                              label: t(
-                                `dashboard.careerPortal.languageLevels.${level}`,
-                              ),
-                              value: level,
-                            }),
-                          )}
-                          className="w-full md:max-w-[450px]"
-                          mandatory
-                        />
-                        <div className="flex w-full">
-                          <span className="w-full max-w-[224px] md:hidden" />
-                          <Button
-                            className="md:self-end max-md:mt-3 md:ml-auto flex gap-2.5 shrink-0"
-                            type="button"
-                            variant="outline"
-                            mode="light"
-                            size="s"
-                            onClick={() => languageSkillsRemove(index)}
-                          >
-                            {t('words.delete')}
-                            <FaRegTrashAlt />
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </section>
+                        <SelectTrigger className="w-full" mode="light">
+                          <SelectValue
+                            placeholder={t(
+                              'dashboard.careerPortal.selectLanguage',
+                            )}
+                          />
+                        </SelectTrigger>
+                        <SelectContent mode="light">
+                          {sortedLanguages.map((language) => (
+                            <SelectItem
+                              key={language.code}
+                              value={language.code}
+                              className="text-sm truncate leading-[120%]"
+                            >
+                              {language.nativeName}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.bitcoinRelatedExperience')}
-                subtitle={t(
-                  'dashboard.careerPortal.bitcoinRelatedExperienceSubtitle',
-                )}
-                className="mt-5 md:mt-10"
-              />
-
-              <div className="flex flex-col gap-7 md:gap-5">
-                <FormSwitch
-                  id="isBitcoinCommunityParticipant"
-                  control={form.control}
-                  label={t(
-                    'dashboard.careerPortal.bitcoinCommunityParticipant',
-                  )}
-                  trueText={t('words.yes')}
-                  falseText={t('words.no')}
-                />
-                <FormText
-                  id="bitcoinCommunityText"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.bitcoinCommunityText')}
-                  placeholder="..."
-                  type="area"
-                />
-                <FormSwitch
-                  id="isBitcoinProjectParticipant"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.bitcoinProjectParticipant')}
-                  trueText={t('words.yes')}
-                  falseText={t('words.no')}
-                />
-                <FormText
-                  id="bitcoinProjectText"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.bitcoinProjectText')}
-                  subLabel={t('dashboard.careerPortal.bitcoinProjectSubLabel')}
-                  placeholder={t(
-                    'dashboard.careerPortal.bitcoinProjectPlaceholder',
-                  )}
-                  type="area"
-                />
-              </div>
-
-              <ButtonWithArrow
-                variant="primary"
-                mode="light"
-                size="m"
-                className="ml-auto mt-5 md:mt-10"
-                type="submit"
-              >
-                {t('words.next')}
-              </ButtonWithArrow>
-            </>
-          )}
-
-          {/* Step 2 - Job search */}
-          {!showLoader && step === 2 && (
-            <>
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.jobSearch')}
-                subtitle={t('dashboard.careerPortal.jobSearchSubtitle')}
-              />
-
-              <section className="mb-5 md:mb-10">
-                <div className="w-full flex max-md:flex-col gap-5 md:gap-15 md:items-center">
-                  <div className="w-full max-w-xs md:max-w-[450px] flex flex-col gap-2">
-                    <FormHeader
-                      label={t('dashboard.careerPortal.selectRole')}
-                      subLabel={t('dashboard.careerPortal.selectRoleSubLabel')}
-                      mandatory
-                    />
-                    <Select
-                      onValueChange={(value) => {
-                        setSelectedRole(value);
+                    <Button
+                      variant="primary"
+                      mode="light"
+                      size={isMobile ? 'm' : 's'}
+                      className="max-md:w-full max-md:max-w-xs md:self-end flex gap-2.5"
+                      type="button"
+                      onClick={() => {
+                        languageSkillsAppend({
+                          languageCode: selectedLanguage,
+                          level: CareerLanguageLevel.Beginner,
+                        });
                       }}
+                      disabled={
+                        form
+                          .getValues()
+                          .languages.some(
+                            (lang) => lang.languageCode === selectedLanguage,
+                          ) || selectedLanguage === ''
+                      }
                     >
-                      <SelectTrigger className="w-full" mode="light">
-                        <SelectValue
-                          placeholder={t(
-                            'dashboard.careerPortal.selectJobTitle',
-                          )}
-                        />
-                      </SelectTrigger>
-                      <SelectContent mode="light">
-                        {Object.entries(sortedJobsByCategory ?? {}).map(
-                          ([category, jobTitles]) => (
-                            <SelectGroup key={category} className="mb-2">
-                              <SelectLabel>
-                                {t(
-                                  `dashboard.careerPortal.jobCategories.${category}`,
-                                )}
-                              </SelectLabel>
-                              {jobTitles.map((jobTitle) => (
-                                <SelectItem
-                                  key={jobTitle.id}
-                                  value={jobTitle.id}
-                                  className="text-sm truncate leading-[120%]"
-                                >
-                                  {t(
-                                    `dashboard.careerPortal.jobTitles.${jobTitle.name}`,
-                                  )}
-                                </SelectItem>
-                              ))}
-                            </SelectGroup>
-                          ),
+                      {t('dashboard.careerPortal.add')} <BiPlus />
+                    </Button>
+                  </div>
+
+                  {form.formState.errors.languages && (
+                    <FormMessage className="mt-2">
+                      {t('dashboard.careerPortal.languageRequired')}
+                    </FormMessage>
+                  )}
+
+                  {languageSkillsFields.length > 0 && (
+                    <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
+                      <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
+                        {t('dashboard.careerPortal.yourLanguages')}
+                      </h3>
+                      {languageSkillsFields.map((field, index) => (
+                        <div
+                          key={field.languageCode}
+                          className="flex max-md:flex-col gap-1 md:gap-7"
+                        >
+                          <span className="w-full md:min-w-[194px] md:max-w-[194px] subtitle-large-18px md:subtitle-medium-med-16px text-black">
+                            {
+                              sortedLanguages?.find(
+                                (language) =>
+                                  language.code === field.languageCode,
+                              )?.nativeName
+                            }
+                          </span>
+                          <FormSelect
+                            {...form}
+                            id={`languages[${index}].level`}
+                            control={form.control}
+                            label={t('dashboard.careerPortal.languageLevel')}
+                            subLabel={t(
+                              'dashboard.careerPortal.languageLevelSubLabel',
+                            )}
+                            options={Object.values(CareerLanguageLevel).map(
+                              (level) => ({
+                                label: t(
+                                  `dashboard.careerPortal.languageLevels.${level}`,
+                                ),
+                                value: level,
+                              }),
+                            )}
+                            className="w-full md:max-w-[450px]"
+                            mandatory
+                          />
+                          <div className="flex w-full">
+                            <span className="w-full max-w-[224px] md:hidden" />
+                            <Button
+                              className="md:self-end max-md:mt-3 md:ml-auto flex gap-2.5 shrink-0"
+                              type="button"
+                              variant="outline"
+                              mode="light"
+                              size="s"
+                              onClick={() => languageSkillsRemove(index)}
+                            >
+                              {t('words.delete')}
+                              <FaRegTrashAlt />
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </section>
+
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.bitcoinRelatedExperience')}
+                  subtitle={t(
+                    'dashboard.careerPortal.bitcoinRelatedExperienceSubtitle',
+                  )}
+                  className="mt-5 md:mt-10"
+                />
+
+                <div className="flex flex-col gap-7 md:gap-5">
+                  <FormSwitch
+                    id="isBitcoinCommunityParticipant"
+                    control={form.control}
+                    label={t(
+                      'dashboard.careerPortal.bitcoinCommunityParticipant',
+                    )}
+                    trueText={t('words.yes')}
+                    falseText={t('words.no')}
+                  />
+                  <FormText
+                    id="bitcoinCommunityText"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.bitcoinCommunityText')}
+                    placeholder="..."
+                    type="area"
+                  />
+                  <FormSwitch
+                    id="isBitcoinProjectParticipant"
+                    control={form.control}
+                    label={t(
+                      'dashboard.careerPortal.bitcoinProjectParticipant',
+                    )}
+                    trueText={t('words.yes')}
+                    falseText={t('words.no')}
+                  />
+                  <FormText
+                    id="bitcoinProjectText"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.bitcoinProjectText')}
+                    subLabel={t(
+                      'dashboard.careerPortal.bitcoinProjectSubLabel',
+                    )}
+                    placeholder={t(
+                      'dashboard.careerPortal.bitcoinProjectPlaceholder',
+                    )}
+                    type="area"
+                  />
+                </div>
+
+                <ButtonWithArrow
+                  variant="primary"
+                  mode="light"
+                  size="m"
+                  className="ml-auto mt-5 md:mt-10"
+                  type="submit"
+                >
+                  {t('words.next')}
+                </ButtonWithArrow>
+              </>
+            )}
+
+            {/* Step 2 - Job search */}
+            {!showLoader && step === 2 && (
+              <>
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.jobSearch')}
+                  subtitle={t('dashboard.careerPortal.jobSearchSubtitle')}
+                />
+
+                <section className="mb-5 md:mb-10">
+                  <div className="w-full flex max-md:flex-col gap-5 md:gap-15 md:items-center">
+                    <div className="w-full max-w-xs md:max-w-[450px] flex flex-col gap-2">
+                      <FormHeader
+                        label={t('dashboard.careerPortal.selectRole')}
+                        subLabel={t(
+                          'dashboard.careerPortal.selectRoleSubLabel',
                         )}
-                      </SelectContent>
-                    </Select>
+                        mandatory
+                      />
+                      <Select
+                        onValueChange={(value) => {
+                          setSelectedRole(value);
+                        }}
+                      >
+                        <SelectTrigger className="w-full" mode="light">
+                          <SelectValue
+                            placeholder={t(
+                              'dashboard.careerPortal.selectJobTitle',
+                            )}
+                          />
+                        </SelectTrigger>
+                        <SelectContent mode="light">
+                          {Object.entries(sortedJobsByCategory ?? {}).map(
+                            ([category, jobTitles]) => (
+                              <SelectGroup key={category} className="mb-2">
+                                <SelectLabel>
+                                  {t(
+                                    `dashboard.careerPortal.jobCategories.${category}`,
+                                  )}
+                                </SelectLabel>
+                                {jobTitles.map((jobTitle) => (
+                                  <SelectItem
+                                    key={jobTitle.id}
+                                    value={jobTitle.id}
+                                    className="text-sm truncate leading-[120%]"
+                                  >
+                                    {t(
+                                      `dashboard.careerPortal.jobTitles.${jobTitle.name}`,
+                                    )}
+                                  </SelectItem>
+                                ))}
+                              </SelectGroup>
+                            ),
+                          )}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <Button
+                      variant="primary"
+                      mode="light"
+                      size={isMobile ? 'm' : 's'}
+                      className="max-md:w-full max-md:max-w-xs md:self-end flex gap-2.5"
+                      type="button"
+                      onClick={() => {
+                        rolesAppend({
+                          level: CareerRoleLevel.Student,
+                          roleId: selectedRole,
+                        });
+                      }}
+                      disabled={
+                        form
+                          .getValues()
+                          .roles.some((r) => r.roleId === selectedRole) ||
+                        selectedRole === '' ||
+                        rolesFields.length === 3
+                      }
+                    >
+                      {t('dashboard.careerPortal.add')} <BiPlus />
+                    </Button>
                   </div>
 
+                  {form.formState.errors.roles && (
+                    <FormMessage className="mt-2">
+                      {t('dashboard.careerPortal.roleRequired')}
+                    </FormMessage>
+                  )}
+
+                  {form.getValues().roles.length === 3 && (
+                    <FormMessage className="mt-2">
+                      {t('dashboard.careerPortal.maxRoles')}
+                    </FormMessage>
+                  )}
+
+                  {rolesFields.length > 0 && (
+                    <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
+                      <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
+                        {t('dashboard.careerPortal.yourRoles')}
+                      </h3>
+                      {rolesFields.map((field, index) => (
+                        <div
+                          key={field.roleId}
+                          className="flex max-md:flex-col gap-1 md:gap-7"
+                        >
+                          <span className="w-full md:min-w-[194px] md:max-w-[194px] subtitle-large-18px md:subtitle-medium-med-16px text-black">
+                            {t(
+                              `dashboard.careerPortal.jobTitles.${
+                                sortedJobTitles?.find(
+                                  (jobTitle) => jobTitle.id === field.roleId,
+                                )?.name
+                              }`,
+                            )}
+                          </span>
+                          <FormSelect
+                            {...form}
+                            id={`roles[${index}].level`}
+                            control={form.control}
+                            label={t('dashboard.careerPortal.roleLevel')}
+                            subLabel={t(
+                              'dashboard.careerPortal.roleLevelSubLabel',
+                            )}
+                            options={Object.values(CareerRoleLevel).map(
+                              (roleLevel) => ({
+                                label: t(
+                                  `dashboard.careerPortal.roleLevels.${roleLevel}`,
+                                ),
+                                value: roleLevel,
+                              }),
+                            )}
+                            className="w-full md:max-w-[450px]"
+                            mandatory
+                          />
+                          <div className="flex w-full">
+                            <span className="w-full max-w-[224px] md:hidden" />
+                            <Button
+                              className="md:self-end max-md:mt-3 md:ml-auto flex gap-2.5 shrink-0"
+                              type="button"
+                              variant="outline"
+                              mode="light"
+                              size="s"
+                              onClick={() => rolesRemove(index)}
+                            >
+                              {t('words.delete')}
+                              <FaRegTrashAlt />
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </section>
+
+                <FormCheckboxGroup
+                  id="companySizes"
+                  control={form.control}
+                  label={t('dashboard.careerPortal.companySizePreference')}
+                  subLabel={t(
+                    'dashboard.careerPortal.companySizePreferenceSubLabel',
+                  )}
+                  options={Object.values(CareerCompanySize).map(
+                    (companySize) => ({
+                      label: t(
+                        `dashboard.careerPortal.companySizes.${companySize}`,
+                      ),
+                      value: companySize,
+                    }),
+                  )}
+                  mandatory
+                  addNoPreferenceButton
+                />
+
+                <div className="flex flex-col mt-5 md:mt-10 gap-5 md:gap-10">
+                  <FormRadio
+                    id="isAvailableFullTime"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.availability')}
+                    options={[
+                      {
+                        label: t('dashboard.careerPortal.fullTime'),
+                        value: true,
+                      },
+                      {
+                        label: t('dashboard.careerPortal.partTime'),
+                        value: false,
+                      },
+                    ]}
+                    mandatory
+                  />
+
+                  <FormSelect
+                    id="remoteWorkPreference"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.remoteWorkPreference')}
+                    options={Object.values(CareerRemote).map((remote) => ({
+                      label: t(
+                        `dashboard.careerPortal.remoteWorkPreferences.${remote}`,
+                      ),
+                      value: remote,
+                    }))}
+                    mandatory
+                  />
+
+                  <FormText
+                    id="expectedSalary"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.expectedSalary')}
+                    subLabel={t(
+                      'dashboard.careerPortal.expectedSalarySubLabel',
+                    )}
+                    placeholder={t(
+                      'dashboard.careerPortal.expectedSalaryPlaceholder',
+                    )}
+                    type="text"
+                    hasMaxWidth={true}
+                  />
+                  <FormText
+                    id="availabilityStart"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.availabilityStart')}
+                    placeholder={t(
+                      'dashboard.careerPortal.availabilityStartPlaceholder',
+                    )}
+                    type="text"
+                    hasMaxWidth={true}
+                  />
+                </div>
+
+                <div className="flex w-full justify-between items-center mt-5 md:mt-10">
                   <Button
+                    variant="outline"
+                    mode="light"
+                    size="m"
+                    onClick={() => setStep(1)}
+                    type="button"
+                  >
+                    {t('words.previous')}
+                  </Button>
+
+                  <ButtonWithArrow
                     variant="primary"
                     mode="light"
-                    size={isMobile ? 'm' : 's'}
-                    className="max-md:w-full max-md:max-w-xs md:self-end flex gap-2.5"
-                    type="button"
-                    onClick={() => {
-                      rolesAppend({
-                        level: CareerRoleLevel.Student,
-                        roleId: selectedRole,
-                      });
+                    size="m"
+                    type="submit"
+                  >
+                    {t('words.next')}
+                  </ButtonWithArrow>
+                </div>
+              </>
+            )}
+
+            {/* Step 3 - CV upload */}
+            {!showLoader && step === 3 && (
+              <>
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.cvUpload')}
+                  subtitle={t('dashboard.careerPortal.cvUploadSubtitle')}
+                />
+
+                <div className="flex flex-col gap-1 md:gap-2 mb-5 md:mb-10">
+                  {/* Hidden file input */}
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    ref={fileInputRef}
+                    className="hidden"
+                    onChange={(e) => {
+                      handleCVUpload(e);
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setSelectedFileName(file.name);
+                      }
                     }}
-                    disabled={
-                      form
-                        .getValues()
-                        .roles.some((r) => r.roleId === selectedRole) ||
-                      selectedRole === '' ||
-                      rolesFields.length === 3
-                    }
-                  >
-                    {t('dashboard.careerPortal.add')} <BiPlus />
-                  </Button>
-                </div>
-
-                {form.formState.errors.roles && (
-                  <FormMessage className="mt-2">
-                    {t('dashboard.careerPortal.roleRequired')}
-                  </FormMessage>
-                )}
-
-                {form.getValues().roles.length === 3 && (
-                  <FormMessage className="mt-2">
-                    {t('dashboard.careerPortal.maxRoles')}
-                  </FormMessage>
-                )}
-
-                {rolesFields.length > 0 && (
-                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
-                    <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
-                      {t('dashboard.careerPortal.yourRoles')}
-                    </h3>
-                    {rolesFields.map((field, index) => (
-                      <div
-                        key={field.roleId}
-                        className="flex max-md:flex-col gap-1 md:gap-7"
-                      >
-                        <span className="w-full md:min-w-[194px] md:max-w-[194px] subtitle-large-18px md:subtitle-medium-med-16px text-black">
-                          {t(
-                            `dashboard.careerPortal.jobTitles.${
-                              sortedJobTitles?.find(
-                                (jobTitle) => jobTitle.id === field.roleId,
-                              )?.name
-                            }`,
-                          )}
-                        </span>
-                        <FormSelect
-                          {...form}
-                          id={`roles[${index}].level`}
-                          control={form.control}
-                          label={t('dashboard.careerPortal.roleLevel')}
-                          subLabel={t(
-                            'dashboard.careerPortal.roleLevelSubLabel',
-                          )}
-                          options={Object.values(CareerRoleLevel).map(
-                            (roleLevel) => ({
-                              label: t(
-                                `dashboard.careerPortal.roleLevels.${roleLevel}`,
-                              ),
-                              value: roleLevel,
-                            }),
-                          )}
-                          className="w-full md:max-w-[450px]"
-                          mandatory
-                        />
-                        <div className="flex w-full">
-                          <span className="w-full max-w-[224px] md:hidden" />
-                          <Button
-                            className="md:self-end max-md:mt-3 md:ml-auto flex gap-2.5 shrink-0"
-                            type="button"
-                            variant="outline"
-                            mode="light"
-                            size="s"
-                            onClick={() => rolesRemove(index)}
-                          >
-                            {t('words.delete')}
-                            <FaRegTrashAlt />
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
+                  />
+                  <div className="flex items-center rounded-[10px] overflow-hidden max-w-[614px] w-full hover:shadow-course-navigation-sm h-[46px]">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                    >
+                      {t('dashboard.careerPortal.chooseFile')}
+                    </button>
+                    <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
+                      {selectedFileName ||
+                        t('dashboard.careerPortal.noFileSelected')}
+                    </span>
                   </div>
-                )}
-              </section>
-
-              <FormCheckboxGroup
-                id="companySizes"
-                control={form.control}
-                label={t('dashboard.careerPortal.companySizePreference')}
-                subLabel={t(
-                  'dashboard.careerPortal.companySizePreferenceSubLabel',
-                )}
-                options={Object.values(CareerCompanySize).map(
-                  (companySize) => ({
-                    label: t(
-                      `dashboard.careerPortal.companySizes.${companySize}`,
-                    ),
-                    value: companySize,
-                  }),
-                )}
-                mandatory
-                addNoPreferenceButton
-              />
-
-              <div className="flex flex-col mt-5 md:mt-10 gap-5 md:gap-10">
-                <FormRadio
-                  id="isAvailableFullTime"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.availability')}
-                  options={[
-                    {
-                      label: t('dashboard.careerPortal.fullTime'),
-                      value: true,
-                    },
-                    {
-                      label: t('dashboard.careerPortal.partTime'),
-                      value: false,
-                    },
-                  ]}
-                  mandatory
-                />
-
-                <FormSelect
-                  id="remoteWorkPreference"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.remoteWorkPreference')}
-                  options={Object.values(CareerRemote).map((remote) => ({
-                    label: t(
-                      `dashboard.careerPortal.remoteWorkPreferences.${remote}`,
-                    ),
-                    value: remote,
-                  }))}
-                  mandatory
-                />
-
-                <FormText
-                  id="expectedSalary"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.expectedSalary')}
-                  subLabel={t('dashboard.careerPortal.expectedSalarySubLabel')}
-                  placeholder={t(
-                    'dashboard.careerPortal.expectedSalaryPlaceholder',
+                  <p className="body-14px text-newGray-1">
+                    {t('dashboard.careerPortal.acceptedFormat')}
+                  </p>
+                  {cvErrorMessage && (
+                    <FormMessage>{cvErrorMessage}</FormMessage>
                   )}
-                  type="text"
-                  hasMaxWidth={true}
-                />
-                <FormText
-                  id="availabilityStart"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.availabilityStart')}
-                  placeholder={t(
-                    'dashboard.careerPortal.availabilityStartPlaceholder',
+                  {form.formState.errors.cvUrl && (
+                    <FormMessage>
+                      {t('dashboard.careerPortal.cvRequired')}
+                    </FormMessage>
                   )}
-                  type="text"
-                  hasMaxWidth={true}
-                />
-              </div>
-
-              <div className="flex w-full justify-between items-center mt-5 md:mt-10">
-                <Button
-                  variant="outline"
-                  mode="light"
-                  size="m"
-                  onClick={() => setStep(1)}
-                  type="button"
-                >
-                  {t('words.previous')}
-                </Button>
-
-                <ButtonWithArrow
-                  variant="primary"
-                  mode="light"
-                  size="m"
-                  type="submit"
-                >
-                  {t('words.next')}
-                </ButtonWithArrow>
-              </div>
-            </>
-          )}
-
-          {/* Step 3 - CV upload */}
-          {!showLoader && step === 3 && (
-            <>
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.cvUpload')}
-                subtitle={t('dashboard.careerPortal.cvUploadSubtitle')}
-              />
-
-              <div className="flex flex-col gap-1 md:gap-2 mb-5 md:mb-10">
-                {/* Hidden file input */}
-                <input
-                  type="file"
-                  accept=".pdf"
-                  ref={fileInputRef}
-                  className="hidden"
-                  onChange={(e) => {
-                    handleCVUpload(e);
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      setSelectedFileName(file.name);
-                    }
-                  }}
-                />
-                <div className="flex items-center rounded-[10px] overflow-hidden max-w-[614px] w-full hover:shadow-course-navigation-sm h-[46px]">
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
-                  >
-                    {t('dashboard.careerPortal.chooseFile')}
-                  </button>
-                  <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
-                    {selectedFileName ||
-                      t('dashboard.careerPortal.noFileSelected')}
-                  </span>
                 </div>
-                <p className="body-14px text-newGray-1">
-                  {t('dashboard.careerPortal.acceptedFormat')}
-                </p>
-                {cvErrorMessage && <FormMessage>{cvErrorMessage}</FormMessage>}
-                {form.formState.errors.cvUrl && (
-                  <FormMessage>
-                    {t('dashboard.careerPortal.cvRequired')}
-                  </FormMessage>
-                )}
-              </div>
 
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.motivation')}
-                subtitle={t('dashboard.careerPortal.motivationSubtitle')}
-              />
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.motivation')}
+                  subtitle={t('dashboard.careerPortal.motivationSubtitle')}
+                />
 
-              <FormText
-                id="motivationLetter"
-                control={form.control}
-                label={t('dashboard.careerPortal.motivationLetter')}
-                subLabel={t('dashboard.careerPortal.motivationLetterSubLabel')}
-                placeholder={t(
-                  'dashboard.careerPortal.motivationLetterPlaceholder',
-                )}
-                type="area"
-                hasMaxWidth={false}
-                mandatory
-              />
-
-              <div className="flex w-full justify-between items-center mt-5 md:mt-10">
-                <Button
-                  variant="outline"
-                  mode="light"
-                  size="m"
-                  onClick={() => setStep(2)}
-                  type="button"
-                >
-                  {t('words.previous')}
-                </Button>
-
-                <ButtonWithArrow
-                  variant="primary"
-                  mode="light"
-                  size="m"
-                  type="submit"
-                >
-                  {t('words.next')}
-                </ButtonWithArrow>
-              </div>
-            </>
-          )}
-
-          {/* Step 4 - Legal terms */}
-          {!showLoader && step === 4 && (
-            <>
-              <TitleAndSubtitle
-                title={t('dashboard.careerPortal.legalInformation')}
-                subtitle={t('dashboard.careerPortal.legalInformationSubtitle')}
-              />
-
-              <article className="w-full bg-newGray-6 p-5 mt-5 md:mt-10 rounded-[10px] flex flex-col gap-5 md:gap-10">
-                <h3 className="subtitle-medium-med-16px md:subtitle-large-med-20px text-dashboardSectionText">
-                  {t('dashboard.careerPortal.termsAndConditions')}
-                </h3>
-                {/* TODO: add markdown support and backend automation of terms and conditions retrieval + handle language */}
-                <p className="text-newBlack-1 label-medium-16px whitespace-pre-line pr-3.5 md:pr-10 max-h-[439px] md:max-h-[385px] overflow-y-scroll scrollbar-light">
-                  <TermsAndConditions />
-                </p>
-              </article>
-
-              <div className="flex flex-col gap-4 mt-5 md:mt-10">
-                <FormCheckbox
-                  id="areTermsAccepted"
+                <FormText
+                  id="motivationLetter"
                   control={form.control}
-                  label={t('dashboard.careerPortal.acceptTermsAndConditions')}
+                  label={t('dashboard.careerPortal.motivationLetter')}
+                  subLabel={t(
+                    'dashboard.careerPortal.motivationLetterSubLabel',
+                  )}
+                  placeholder={t(
+                    'dashboard.careerPortal.motivationLetterPlaceholder',
+                  )}
+                  type="area"
+                  hasMaxWidth={false}
                   mandatory
                 />
 
-                <FormCheckbox
-                  id="allowReceivingEmails"
-                  control={form.control}
-                  label={t('dashboard.careerPortal.allowReceivingEmails')}
-                  mandatory
+                <div className="flex w-full justify-between items-center mt-5 md:mt-10">
+                  <Button
+                    variant="outline"
+                    mode="light"
+                    size="m"
+                    onClick={() => setStep(2)}
+                    type="button"
+                  >
+                    {t('words.previous')}
+                  </Button>
+
+                  <ButtonWithArrow
+                    variant="primary"
+                    mode="light"
+                    size="m"
+                    type="submit"
+                  >
+                    {t('words.next')}
+                  </ButtonWithArrow>
+                </div>
+              </>
+            )}
+
+            {/* Step 4 - Legal terms */}
+            {!showLoader && step === 4 && (
+              <>
+                <TitleAndSubtitle
+                  title={t('dashboard.careerPortal.legalInformation')}
+                  subtitle={t(
+                    'dashboard.careerPortal.legalInformationSubtitle',
+                  )}
                 />
-              </div>
 
-              <div className="flex w-full justify-between items-center mt-5 md:mt-10">
-                <Button
-                  variant="outline"
-                  mode="light"
-                  size="m"
-                  onClick={() => setStep(3)}
-                  type="button"
-                >
-                  {t('words.previous')}
-                </Button>
+                <article className="w-full bg-newGray-6 p-5 mt-5 md:mt-10 rounded-[10px] flex flex-col gap-5 md:gap-10">
+                  <h3 className="subtitle-medium-med-16px md:subtitle-large-med-20px text-dashboardSectionText">
+                    {t('dashboard.careerPortal.termsAndConditions')}
+                  </h3>
+                  {/* TODO: add markdown support and backend automation of terms and conditions retrieval + handle language */}
+                  <p className="text-newBlack-1 label-medium-16px whitespace-pre-line pr-3.5 md:pr-10 max-h-[439px] md:max-h-[385px] overflow-y-scroll scrollbar-light">
+                    <TermsAndConditions />
+                  </p>
+                </article>
 
-                <ButtonWithArrow
-                  variant="primary"
-                  mode="light"
-                  size="m"
-                  type="submit"
-                  disabled={
-                    form.getValues().areTermsAccepted === false ||
-                    form.getValues().allowReceivingEmails === false
-                  }
-                >
-                  {isMobile
-                    ? t('words.next')
-                    : t('dashboard.careerPortal.completeApplication')}
-                </ButtonWithArrow>
-              </div>
-            </>
-          )}
-        </form>
-      </Form>
-    </div>
+                <div className="flex flex-col gap-4 mt-5 md:mt-10">
+                  <FormCheckbox
+                    id="areTermsAccepted"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.acceptTermsAndConditions')}
+                    mandatory
+                  />
+
+                  <FormCheckbox
+                    id="allowReceivingEmails"
+                    control={form.control}
+                    label={t('dashboard.careerPortal.allowReceivingEmails')}
+                    mandatory
+                  />
+                </div>
+
+                <div className="flex w-full justify-between items-center mt-5 md:mt-10">
+                  <Button
+                    variant="outline"
+                    mode="light"
+                    size="m"
+                    onClick={() => setStep(3)}
+                    type="button"
+                  >
+                    {t('words.previous')}
+                  </Button>
+
+                  <ButtonWithArrow
+                    variant="primary"
+                    mode="light"
+                    size="m"
+                    type="submit"
+                    disabled={
+                      form.getValues().areTermsAccepted === false ||
+                      form.getValues().allowReceivingEmails === false
+                    }
+                  >
+                    {isMobile
+                      ? t('words.next')
+                      : t('dashboard.careerPortal.completeApplication')}
+                  </ButtonWithArrow>
+                </div>
+              </>
+            )}
+          </form>
+        </Form>
+      </div>
+    </PageLayout>
   );
 }
 

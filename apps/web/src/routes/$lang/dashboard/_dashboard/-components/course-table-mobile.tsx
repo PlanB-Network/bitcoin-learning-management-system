@@ -264,8 +264,8 @@ export const CourseTableMobile = ({
               ))}
           </CarouselContent>
 
-          <CarouselPrevious variant="carouselDashboard" className="-left-4" />
-          <CarouselNext variant="carouselDashboard" className="-right-4" />
+          <CarouselPrevious variant="carouselDashboard" className="-left-2" />
+          <CarouselNext variant="carouselDashboard" className="-right-2" />
         </Carousel>
       </div>
     </section>

@@ -10,6 +10,7 @@ import {
   TextTag,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -34,31 +35,12 @@ import { trpc } from '#src/utils/trpc.ts';
 import { getNotificationDateString } from '../../notifications.tsx';
 import { SELF_PACED_PASSING_THRESHOLD } from './exam-results.tsx';
 
-export const CourseOverview = ({
-  courseId,
-  setTab,
-}: {
-  courseId: string;
-  setTab: (value: string) => void;
-}) => {
-  const { i18n } = useTranslation();
-
-  const { data: course } = useQuery(
-    trpc.content.getCourse.queryOptions({
-      id: courseId,
-      language: i18n.language,
-    }),
-  );
-
-  if (!course) {
-    return null;
-  }
-
+export const CourseOverview = ({ course }: { course: CourseResponse }) => {
   return (
-    <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-6 max-w-[1066px]">
+    <div className="flex flex-col text-dashboardSectionTitle w-full">
       <CourseStatusBanner course={course} />
       <OverallPerformance course={course} />
-      <UpcomingClass course={course} setTab={setTab} />
+      <UpcomingClass course={course} />
       <CourseRecentActivity courseId={course.id} />
     </div>
   );
@@ -205,13 +187,7 @@ const OverallPerformance = ({ course }: { course: CourseResponse }) => {
   );
 };
 
-const UpcomingClass = ({
-  course,
-  setTab,
-}: {
-  course: CourseResponse;
-  setTab: (value: string) => void;
-}) => {
+const UpcomingClass = ({ course }: { course: CourseResponse }) => {
   const isMobile = useSmaller('md');
 
   const [isExpanded, setIsExpanded] = useState(true);
@@ -394,12 +370,12 @@ const UpcomingClass = ({
           <TbSpeakerphone size={24} className="text-neutral-400" />
           {t('dashboard.professor.courses.overview.notifyStudents')}
         </span>
-        <Button
-          variant="primary"
-          size={'m'}
-          onClick={() => setTab('announcement')}
-        >
-          {t('dashboard.professor.courses.overview.announceChange')}
+        <Button variant="primary" size={'m'} asChild>
+          <Link
+            to={`/dashboard/professor/manage-courses/${course.id}/announcement`}
+          >
+            {t('dashboard.professor.courses.overview.announceChange')}
+          </Link>
         </Button>
       </div>
     </section>

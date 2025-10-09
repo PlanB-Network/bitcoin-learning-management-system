@@ -11,6 +11,7 @@ import {
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { RoleAllocationTable } from '../-components/role-allocation-table.tsx';
@@ -32,6 +33,7 @@ function DashboardAdministrationRole() {
   const isTablet = useSmaller('lg');
 
   useEffect(() => {
+    if (session === undefined) return;
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Superadmin)(session?.user)) {
@@ -44,38 +46,43 @@ function DashboardAdministrationRole() {
   }
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-8">
-      <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
-        <h1 className="display-small-32px">
-          {t('dashboard.adminPanel.userRolesAllocation')}
-        </h1>
-        <TextTag size={isTablet ? 'small' : 'base'} className="uppercase w-fit">
-          {t('words.admin')}
-        </TextTag>
-      </div>
+    <PageLayout layoutSize="wide">
+      <div className="flex flex-col gap-4 lg:gap-8">
+        <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
+          <h1 className="display-small-32px">
+            {t('dashboard.adminPanel.userRolesAllocation')}
+          </h1>
+          <TextTag
+            size={isTablet ? 'small' : 'base'}
+            className="uppercase w-fit"
+          >
+            {t('words.admin')}
+          </TextTag>
+        </div>
 
-      <Tabs defaultValue="users" className="w-full max-w-[900px]">
-        <TabsList size={isMobile ? 's' : 'm'}>
-          <TabsTrigger value="users" size={isMobile ? 's' : 'm'}>
-            {t('words.users')}
-          </TabsTrigger>
-          <TabsTrigger value="professors" size={isMobile ? 's' : 'm'}>
-            {t('words.professors')}
-          </TabsTrigger>
-          <TabsTrigger value="admins" size={isMobile ? 's' : 'm'}>
-            {t('words.admins')}
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="users">
-          <RoleAllocationTable userRole={UserRole.Student} />
-        </TabsContent>
-        <TabsContent value="professors">
-          <RoleAllocationTable userRole={UserRole.Professor} />
-        </TabsContent>
-        <TabsContent value="admins">
-          <RoleAllocationTable userRole={UserRole.Admin} />
-        </TabsContent>
-      </Tabs>
-    </div>
+        <Tabs defaultValue="users" className="w-full max-w-[900px]">
+          <TabsList size={isMobile ? 's' : 'm'}>
+            <TabsTrigger value="users" size={isMobile ? 's' : 'm'}>
+              {t('words.users')}
+            </TabsTrigger>
+            <TabsTrigger value="professors" size={isMobile ? 's' : 'm'}>
+              {t('words.professors')}
+            </TabsTrigger>
+            <TabsTrigger value="admins" size={isMobile ? 's' : 'm'}>
+              {t('words.admins')}
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="users">
+            <RoleAllocationTable userRole={UserRole.Student} />
+          </TabsContent>
+          <TabsContent value="professors">
+            <RoleAllocationTable userRole={UserRole.Professor} />
+          </TabsContent>
+          <TabsContent value="admins">
+            <RoleAllocationTable userRole={UserRole.Admin} />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </PageLayout>
   );
 }

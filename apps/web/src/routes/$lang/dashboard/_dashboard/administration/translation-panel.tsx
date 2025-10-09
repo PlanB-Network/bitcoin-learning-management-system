@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { ContentManagementTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/content-management-tab.tsx';
 import { TranslateTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/translate-tab.tsx';
@@ -39,6 +40,7 @@ function DashboardAdministrationTranslationPanel() {
   const currentTab = (location.search as any)?.tab || 'requests';
 
   useEffect(() => {
+    if (session === undefined) return;
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Admin)(session?.user)) {
@@ -56,30 +58,32 @@ function DashboardAdministrationTranslationPanel() {
   }
 
   return (
-    <div className="flex flex-col gap-6 lg:gap-8">
-      <TranslationPanelHeader activeTab={currentTab}>
-        {/* Requests Tab */}
-        <TabsContent value="requests" className="mt-6">
-          <RequestsTab />
-        </TabsContent>
+    <PageLayout layoutSize="wide">
+      <div className="flex flex-col gap-6 lg:gap-8">
+        <TranslationPanelHeader activeTab={currentTab}>
+          {/* Requests Tab */}
+          <TabsContent value="requests" className="mt-6">
+            <RequestsTab />
+          </TabsContent>
 
-        {/* Content Management Tab */}
-        <TabsContent value="content" className="mt-6">
-          <ContentManagementTab />
-        </TabsContent>
+          {/* Content Management Tab */}
+          <TabsContent value="content" className="mt-6">
+            <ContentManagementTab />
+          </TabsContent>
 
-        <TabsContent value="users" className="mt-6">
-          <UserManagementTab />
-        </TabsContent>
+          <TabsContent value="users" className="mt-6">
+            <UserManagementTab />
+          </TabsContent>
 
-        <TabsContent value="reports" className="mt-6">
-          <ReportsTab />
-        </TabsContent>
+          <TabsContent value="reports" className="mt-6">
+            <ReportsTab />
+          </TabsContent>
 
-        <TabsContent value="translate" className="mt-6">
-          <TranslateTab />
-        </TabsContent>
-      </TranslationPanelHeader>
-    </div>
+          <TabsContent value="translate" className="mt-6">
+            <TranslateTab />
+          </TabsContent>
+        </TranslationPanelHeader>
+      </div>
+    </PageLayout>
   );
 }

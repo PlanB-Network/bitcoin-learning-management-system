@@ -148,16 +148,7 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
   };
 
   return (
-    <section className="flex flex-col gap-4 lg:gap-8 max-lg:px-4 mt-3 md:mt-8">
-      <div className="flex flex-col">
-        <h2 className="subtitle-large-med-20px lg:title-large-sb-24px text-dashboardSectionTitle">
-          {t('dashboard.adminPanel.discountCodes')}
-        </h2>
-        <p className="body-16px text-dashboardSectionText/75 mt-4">
-          {t('dashboard.teacher.discount.description')}
-        </p>
-      </div>
-
+    <section className="flex flex-col gap-4 lg:gap-8 mt-3 md:mt-8">
       <Button
         className="w-fit gap-1"
         variant="primary"
