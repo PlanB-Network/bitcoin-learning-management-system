@@ -8,7 +8,7 @@ export default function DesktopMenu() {
         <img className="" src={Logo} alt="" loading="lazy" />
       </Link>
       <div className="flex flew-row gap-16">
-        <Link to="/">Academy</Link>
+        <Link to="/academy">Academy</Link>
         <Link to="/hubs">Hubs</Link>
         <Link to="/funds">Funds</Link>
       </div>

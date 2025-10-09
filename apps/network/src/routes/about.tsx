@@ -98,15 +98,6 @@ function RouteComponent() {
             ))}
           </div>
         </PageBlock>
-
-        <div className="shadow-top-bottom-box py-24">
-          <PageBlock>
-            <p>OOOO</p>
-            <p>OOOO</p>
-            <p>OOOO</p>
-            <p>OOOO</p>
-          </PageBlock>
-        </div>
       </div>
     </PageLayout>
   );

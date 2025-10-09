@@ -49,7 +49,7 @@ export const Hero = ({
         <img
           src={imageUrl}
           alt="Hero background"
-          className="w-full h-auto object-cover"
+          className="max-lg:mt-6 w-full h-auto object-cover"
         />
         {subtitleUnderImage ? (
           <p

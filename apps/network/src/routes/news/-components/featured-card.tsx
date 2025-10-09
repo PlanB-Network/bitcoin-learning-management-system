@@ -1,5 +1,6 @@
 import { formatNameForURL } from '@blms/shared';
 import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
+import { cn } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
@@ -13,7 +14,10 @@ interface FeaturedCardProps {
 }
 
 const cardStyles = cva(
-  'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row justify-center px-2 py-2 lg:p-5 w-full max-w-[290px] md:max-w-[1178px] rounded-xs md:rounded-[30px] items-start',
+  cn(
+    'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row',
+    'justify-center px-2 py-2 lg:p-5 w-full rounded-xs md:rounded-[30px] items-start',
+  ),
   {
     defaultVariants: {
       background: 'main',
@@ -68,10 +72,7 @@ export const FeaturedCard = ({
 
   return (
     <div className={cardStyles({ background })}>
-      <div
-        key={latestBlog.id}
-        className="w-full max-w-[738px] order-2 md:order-1"
-      >
+      <div key={latestBlog.id} className="w-full order-2 md:order-1">
         <Link
           className="self-start justify-self-start"
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
@@ -104,7 +105,7 @@ export const FeaturedCard = ({
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
         >
           <img
-            className="rounded-xs lg:rounded-[20px] lg:max-w-[404px]"
+            className="rounded-xs lg:rounded-[20px] lg:max-w-[500px]"
             src={resourceImgUrl(latestBlog)}
             alt={latestBlog.title}
           />
