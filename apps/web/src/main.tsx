@@ -6,33 +6,65 @@ import './utils/i18n';
 import OrangePill from '#src/assets/icons/footer_pill.webp?no-inline';
 
 import '../../../packages/ui/src/styles/global.css';
+import { isPearApp } from './env.ts';
 
 const root = ReactDOM.createRoot(
   document.querySelector('#root') as HTMLElement,
 );
 
 interface Pear {
+  versions: () => Promise<{ runtimes: { pear: string; bare: string } }>;
   updates: (callback: () => void) => void;
   reload: () => void;
   config: any;
 }
 
 declare global {
+  const Pear: Pear | undefined;
+
   interface Window {
     Pear?: Pear;
   }
 }
 
-if (window.Pear) {
+// Pear update handling
+if (isPearApp && typeof Pear !== 'undefined') {
   document.body.classList.add('is-pear-context');
 
-  window.Pear.updates(() => {
-    console.log('Pear update detected, reloading app...');
+  Pear.versions().then((versions) => {
+    console.log('Running in Pear context', JSON.stringify(versions, null, 2));
 
-    // Wait to try fix issues with reloading
-    setTimeout(() => {
-      window.Pear?.reload();
-    }, 1000);
+    const pearVersion = versions.runtimes.pear;
+
+    // v1
+    if (pearVersion?.startsWith('1')) {
+      Pear.updates(() => {
+        console.log('Pear (v1) update detected, reloading app...');
+
+        setTimeout(() => Pear.reload(), 1000);
+      });
+    }
+
+    // v2
+    else if (pearVersion?.startsWith('2')) {
+      import('pear-updates')
+        .then((module) => module.default)
+        .then((updates) => {
+          updates(() => {
+            console.log('Pear (v2) update detected, reloading app...');
+
+            // Wait to try fix issues with reloading
+            // https://docs.pears.com/pear-runtime/migration#pear
+            setTimeout(() => location.reload(), 1000);
+          });
+        })
+        .catch((err) => console.error('Failed to load pear-updates', err));
+    }
+
+    // Unknown version
+    else {
+      console.warn('Unknown Pear version, skipping auto updates', pearVersion);
+    }
   });
 }
 

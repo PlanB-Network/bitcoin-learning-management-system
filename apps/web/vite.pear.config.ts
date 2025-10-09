@@ -18,6 +18,7 @@ const pearsModules: string[] = [
   'b4a',
   'pear-bridge',
   'pear-electron',
+  'pear-updates',
 ];
 
 const nativeModules = [
@@ -31,13 +32,14 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 600,
     minify: false,
+
     cssCodeSplit: true,
     outDir: 'dist',
     reportCompressedSize: true,
     target: 'esnext',
     rollupOptions: {
       output: {
-        inlineDynamicImports: false,
+        inlineDynamicImports: true, // Pear v2 requires this to work properly
       },
       // Externalize any Node.js built-in modules
       external: [...nativeModules],

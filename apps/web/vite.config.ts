@@ -18,6 +18,7 @@ const externalModules: string[] = [
   'hypercore',
   'hyperswarm',
   'hyperdrive',
+  'pear-updates',
 
   // Node built-in modules
   'path',
