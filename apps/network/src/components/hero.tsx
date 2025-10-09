@@ -1,15 +1,15 @@
 import { cn } from '@blms/ui';
 import type React from 'react'; // React is required for React.ReactNode
+import PageBlock from './page-block.tsx';
 
 interface HeroProps {
-  /** The content for the main title, can be a string or a React element. */
   titleElement: React.ReactNode;
-  /** The subtitle text. */
   subtitle: string;
-  /** The source URL for the hero image. */
-  imageUrl?: string;
-  /** Optional class name for the container. */
+  imageUrl: string;
   className?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
+  subtitleUnderImage?: boolean;
 }
 
 export const Hero = ({
@@ -17,22 +17,51 @@ export const Hero = ({
   subtitle,
   imageUrl,
   className = '',
+  titleClassName = 'max-w-[55%]',
+  subtitleClassName = 'max-w-[50%]',
+  subtitleUnderImage = false,
 }: HeroProps) => {
   return (
-    <div className={cn('relative flex flex-col', className)}>
-      {/* Conditionally render the image if imageUrl is provided */}
-      {imageUrl && (
+    <PageBlock>
+      <div
+        className={cn('relative flex flex-col tracking-[-0.4px]', className)}
+      >
+        <div className="lg:absolute left-2 flex flex-col gap-4 lg:gap-8 xl:gap-20 h-full">
+          <h1
+            className={cn(
+              'lg:mt-12 text-5xl lg:text-6xl xl:text-8xl lg:leading-16 xl:leading-24 font-light text-left',
+              titleClassName,
+            )}
+          >
+            {titleElement}
+          </h1>
+          {subtitleUnderImage ? null : (
+            <p
+              className={cn(
+                'title-small lg:title-medium text-left',
+                subtitleClassName,
+              )}
+            >
+              {subtitle}
+            </p>
+          )}
+        </div>
         <img
           src={imageUrl}
-          alt="Hero background" // Always include a descriptive alt text
-          className=" w-full h-auto object-cover mb-4"
+          alt="Hero background"
+          className="w-full h-auto object-cover"
         />
-      )}
-
-      <div className="absolute left-2 max-w-[470px] flex flex-col gap-20 h-full">
-        <h1 className="text-7xl leading-24">{titleElement}</h1>
-        <p className="title-medium">{subtitle}</p>
+        {subtitleUnderImage ? (
+          <p
+            className={cn(
+              'title-small lg:title-medium text-left',
+              subtitleClassName,
+            )}
+          >
+            {subtitle}
+          </p>
+        ) : null}
       </div>
-    </div>
+    </PageBlock>
   );
 };

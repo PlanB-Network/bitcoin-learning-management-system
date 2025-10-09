@@ -75,6 +75,10 @@ const getEffectiveLocale = () => {
     effectiveLocale = 'en-GB';
   }
 
+  if (!effectiveLocale.includes('en') || !effectiveLocale.includes('it')) {
+    effectiveLocale = 'en-GB';
+  }
+
   return effectiveLocale;
 };
 

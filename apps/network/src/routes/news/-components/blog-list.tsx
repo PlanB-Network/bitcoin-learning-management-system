@@ -60,7 +60,7 @@ export const BlogList = () => {
                 imgClassName="w-full !rounded-b-0 rounded-t-[10px] lg:rounded-[10px] mb-1"
                 title={blog.title}
                 cardColor="grey"
-                className="text-start shadow-course-navigation h-full"
+                className="text-start shadow-course-navigation h-full border-[1px] border-transparent hover:border-orange-500"
                 category={blog.category}
                 excerpt={blog.description ?? ''}
                 isScreenMd={isScreenMd}

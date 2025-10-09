@@ -250,6 +250,7 @@
   --shadow-sm: 0px 2px 4px -2px rgba(0, 0, 0, 0.1);
   --shadow-lg:
     0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-top-bottom-box: 0px 4px 60px 0px #ff5c00;
 
   --tracking-015px: 0.15px;
 
@@ -761,6 +762,17 @@
 
 @utility blockquote-desktop {
   @apply text-lg font-semibold text-center not-italic;
+}
+
+@utility bg-gradient-network-lr {
+  border-radius: 40px;
+  /* First linear gradient (overlay) */
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    /* Second linear gradient (effect) */
+    linear-gradient(270deg, rgba(65, 24, 0, 0) 23.92%, #411800 100.02%),
+    /* Background settings */
+    black -113.997px 0px / 110.92% 100% no-repeat;
 }
 
 @utility bg-gradient-diagonal {

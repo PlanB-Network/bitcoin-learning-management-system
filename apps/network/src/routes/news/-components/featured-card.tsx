@@ -20,7 +20,7 @@ const cardStyles = cva(
     },
     variants: {
       background: {
-        main: 'border-orange-500 border-[1px]',
+        main: 'border-orange-500 border-[1px] hover:shadow-orange-600 shadow-md',
         secondary: '',
       },
     },
@@ -80,7 +80,7 @@ export const FeaturedCard = ({
             {latestBlog.title}
           </h2>
           <div className="flex flex-row gap-2.5 mb-2 lg:mb-5 items-center">
-            <span className="font-medium text-sm lg:title-large-24px">
+            <span className="!font-semibold text-sm lg:title-large-24px">
               {latestBlog.author}
             </span>
             <span className="text-gray-200">•</span>
