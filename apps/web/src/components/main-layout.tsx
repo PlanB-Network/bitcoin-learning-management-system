@@ -102,7 +102,7 @@ export const MainLayout = ({
       {isPearApp ? (
         <div
           id="pear-ctrl-container"
-          className="fixed top-0 left-0 w-full pt-4 pb-5 px-2 bg-[#ff5c00c3] shadow-lg shadow-gray-700/50 z-50"
+          className="fixed top-0 left-0 w-full pt-4 pb-5 px-2 bg-[#ff5c00c3] z-50"
         >
           <pear-ctrl />
         </div>
