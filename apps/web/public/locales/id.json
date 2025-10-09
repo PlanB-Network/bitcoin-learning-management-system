@@ -1953,7 +1953,8 @@
       "ratingSuccess": "Terima kasih atas penilaian Anda!",
       "source": "Sumber asli :",
       "tutorialName": "Nama tutorial",
-      "writtenBy": "Tutorial ini ditulis oleh :"
+      "writtenBy": "Tutorial ini ditulis oleh :",
+      "didThisWork": "Apakah ini berfungsi dengan baik untuk Anda?"
     },
     "exchange": {
       "description": "Bursa pertukaran adalah salah satu dari pintu masuk dan keluar antara mata uang trandisional Anda (euro, dolar) dan dunia bitcoin. Bursa pertukaran dapat diatur untuk memenuhi kebijakan KYC (Know Your Customer) atau dapat bersifat peer-to-peer dan anonim. Setiap bursa pertukaran mempunyai fitur, struktur biaya, likuiditas, dan dukungan pelanggan yang berbeda-beda. Tiap bitcoiner dapat menggunakan bursa yang berbeda sesuai dengan kebutuhan dan keyakinan mereka.",
@@ -2289,7 +2290,8 @@
       "peertube": "Peertube",
       "player": "Pemutar",
       "rumble": "Gelombang",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Pir 🍐"
     }
   }
 }

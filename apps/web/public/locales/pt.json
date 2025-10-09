@@ -114,7 +114,10 @@
     "readChart": "Lê o regulamento",
     "tweetText": "Empolgado por ter passado no ₿-CERT da @planb_network com a pontuação de {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
     "verify": "Verifica a autenticidade do teu certificado",
-    "hostSessionConditions": "Veja como:\n\n1. Leia o <0>Regulamento</0> – Verifique que a sua comunidade atende aos requisitos obrigatórios para organizar o exame\n2. Planeje & Marque – Se você for aceito, escolha uma data e prepare para a sessão\n3. Publique o seu Evento – Entre em contato conosco para ser adicionado na plataforma da Plan ₿ Network para que as pessoas possam se inscrever"
+    "hostSessionConditions": "Veja como:\n\n1. Leia o <0>Regulamento</0> – Verifique que a sua comunidade atende aos requisitos obrigatórios para organizar o exame\n2. Planeje & Marque – Se você for aceito, escolha uma data e prepare para a sessão\n3. Publique o seu Evento – Entre em contato conosco para ser adicionado na plataforma da Plan ₿ Network para que as pessoas possam se inscrever",
+    "myCertificates": "Meus certificados",
+    "noTestSessions": "Não há exames disponíveis atualmente",
+    "wantHostSession": "Deseja organizar uma sessão do exame ₿-CERT no seu grupo local?"
   },
   "bet": {
     "contributeButton": "Ajuda e contribui",
@@ -151,7 +154,8 @@
     "noConferences": "Nenhuma conferência acrescentada para {{year}} ainda.",
     "pageTitle": "Reprises das Conferências",
     "planBConferences": "Conferências do Plano B",
-    "topics": "Tópicos"
+    "topics": "Tópicos",
+    "conferencesGenesis": "Conferências desde o Bloco Gênesis"
   },
   "courses": {
     "chapter": {
@@ -197,9 +201,9 @@
       "courseAddedToDashboard": "Este curso foi adicionado ao seu painel de estudantes",
       "curriculum": "Currículo",
       "description": "Description",
-      "hasBeenProofreadBy": "",
-      "hasNotBeenProofread": "",
-      "inPersonAccess": "",
+      "hasBeenProofreadBy": "Este curso foi revisado por",
+      "hasNotBeenProofread": "Este curso ainda não foi revisado",
+      "inPersonAccess": "Você precisa baixar o ingresso para a aula presencial",
       "learning": "",
       "mobile": {
         "hours": "{{hours}} horas"
@@ -410,7 +414,10 @@
       "writeThoughts": "",
       "yesOfCourse": "",
       "yesVeryMuch": ""
-    }
+    },
+    "allCourses": "Todos os cursos",
+    "continueLeftOff": "Continue de onde parou",
+    "courseSelector": "Seletor de cursos"
   },
   "dashboard": {
     "account": "Conta",
@@ -1732,6 +1739,7 @@
     "watchTrailer": ""
   },
   "account": {
-    "account": "Conta"
+    "account": "Conta",
+    "myTeacherProfile": "Meu perfil de professor"
   }
 }

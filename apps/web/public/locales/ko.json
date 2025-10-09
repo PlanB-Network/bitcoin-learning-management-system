@@ -116,7 +116,8 @@
     "verify": "₿-CERT 인증서의 진위성을 확인하세요",
     "myCertificates": "내 자격증",
     "noTestSessions": "현재 사용가능한 테스트 세션이 없습니다.",
-    "wantHostSession": "지역 허브에서 ₿-CERT 테스트 세션을 열고 싶으신가요?"
+    "wantHostSession": "지역 허브에서 ₿-CERT 테스트 세션을 열고 싶으신가요?",
+    "hostSessionConditions": "방법:\n\n1. 다음 조건을 <0>읽어보세요</0> –커뮤니티가 필수 호스팅 조건을 충족하는지 확인하세요.\n2. 계획 & 일정 – 자격을 충족한다면 해당 날짜를 선택하고 세션 설정을 하세요.\n3. 당신의 이벤트를 공개하세요. 사람들이 Plan ₿ Network 플랫폼에서 보고 참석하게 하기 위해 우리에게 연락하세요."
   },
   "bet": {
     "contributeButton": "도움 & 기여",
@@ -312,7 +313,7 @@
       "tryOneMoreTime": "한 번 더 도전해 봅시다!",
       "verifyDisplayName": "시작하기 전에, 아래에 표시 이름을 확인해 주세요. 이 이름은 당신의 디플로마를 생성하는 데 사용됩니다.",
       "viewExam": "시험 보기",
-      "weight": "",
+      "weight": "무게: {{무게}}%",
       "whyTimeStamp": "타임스탬프된 디플로마:\n중요한 이유",
       "wishTryAgain": "시험을 다시 보고 싶다면 24시간 후에 가능합니다.",
       "yesSubmit": "네, 제출합니다",
@@ -556,23 +557,343 @@
           "confirm": "확인",
           "findContributor": "기여자 찾기",
           "noUsers": "사용자가 없습니다",
-          "searchUsers": "유저를 검색중입니다..."
+          "searchUsers": "유저를 검색중입니다...",
+          "selectedUsers": "선택된 사용자:",
+          "selectLanguage": "언어 선택",
+          "title": "기여자 추가"
         },
         "actions": {
           "accept": "승인하기",
-          "delete": "삭제하기"
+          "delete": "삭제하기",
+          "reject": "거절"
+        },
+        "admin": "관리자",
+        "comingSoon": {
+          "courses": "곧 공개될 수업 보기",
+          "coverage": "언어 지원 현황은 곧 제공 예정입니다"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "할당",
+            "backToContentManagement": "컨텐츠 관리로 돌아가기",
+            "reassign": "재할당",
+            "view": "보기"
+          },
+          "assignModal": {
+            "assign": "할당",
+            "assigning": "등록중입니다...",
+            "assignmentSuccess": "성공적으로 과정을 등록했습니다!",
+            "cancel": "취소",
+            "chooseContributor": "기여자를 선택하세요...",
+            "courseInfo": "과정 정보",
+            "selectContributor": "기여자 선택",
+            "title": "기여자에게 강좌 할당하기",
+            "assigningCourse": "강좌 할당:"
+          },
+          "description": "강좌 번역을 관리하고 기여자에게 할당",
+          "noCourses": "사용 가능한 강좌가 없습니다",
+          "noCoursesFiltered": "필터와 일치하는 코스가 없습니다.",
+          "notAssigned": "할당되지 않음",
+          "reassignModal": {
+            "cancel": "취소",
+            "chooseNewContributor": "새로운 기여자를 선택하세요...",
+            "courseInfo": "과정 정보",
+            "currentlyAssignedTo": "현재 배정된 곳:",
+            "reassign": "재할당",
+            "reassigning": "재할당 중...",
+            "reassigningCourse": "과정 재배정:",
+            "reassignmentSuccess": "성공적으로 과정을 재등록했습니다!",
+            "selectNewContributor": "새로운 기여자 선택",
+            "title": "새 기여자에게 강좌 재할당하기",
+            "warning": {
+              "description": "이미 검토된 챕터는 재할당되지 않습니다.",
+              "title": "중요 사항"
+            }
+          },
+          "status": {
+            "assigned": "등록 된",
+            "notAssigned": "등록 되지 않음",
+            "readyForReview": "검토 준비 완료",
+            "underReview": "검토 중"
+          },
+          "table": {
+            "actions": "행동들",
+            "contributor": "기여자",
+            "course": "과정",
+            "index": "인덱스",
+            "language": "언어",
+            "progress": "과정",
+            "status": "상태"
+          },
+          "title": "콘텐츠 관리"
+        },
+        "courseDetails": {
+          "actions": "행동들",
+          "assignedTo": "에게 할당 된",
+          "chapterIndex": "챕터",
+          "chaptersAndProgress": "챕터와 진행 상황",
+          "chaptersCompleted": "완료된 챕터들",
+          "chapterTitle": "제목",
+          "courseIndex": "강좌 번호",
+          "courseInformation": "강좌 정보",
+          "courseName": "강좌 이름",
+          "currentContributor": "최근 기여자",
+          "errorLoadingDetails": "강좌 세부 정보를 불러오는 중 오류가 발생했습니다.",
+          "language": "언어",
+          "noChapters": "이 과정에서 이용 가능한 챕터가 없습니다",
+          "noContributor": "배정된 기여자 없음",
+          "partTitle": "파트 {{index}}: {{title}}",
+          "progress": "과정",
+          "status": "상태",
+          "translationStatus": "번역 상태"
+        },
+        "courseNotFound": "강좌를 찾을 수 없습니다",
+        "messages": {
+          "noPendingRequests": "더 이상 대기 중인 교정 요청이 없습니다.",
+          "noPendingRequestsSearch": "\"{{query}}\"과 일치하는 교정 요청이 없습니다.",
+          "noRejectedRequests": "거절된 교정 요청이 없습니다.",
+          "noRejectedRequestsSearch": "\"{{query}}\"과 일치하는 교정 요청이 없습니다."
+        },
+        "modal": {
+          "accepting": "승인중...",
+          "acceptRequest": "요청을 수락합니다",
+          "acceptTranslationRequest": "교정 요청을 수락합니다",
+          "cancel": "취소",
+          "close": "닫기",
+          "contributor": "기여자",
+          "course": "과정",
+          "doYouWantToAcceptRequest": "이 번역 요청을 수락하시겠습니까?",
+          "language": "언어",
+          "provideRejectionReason": "이 요청을 거부하는 이유를 제공해 주세요",
+          "reasonForRejection": "거절 사유",
+          "reasonPlaceholder": "여기에 설명을 작성하세요...",
+          "rejecting": "거절중...",
+          "requestAcceptedMessage": "기여자에게 알려졌으며 이제 번역 작업을 시작할 수 있습니다.",
+          "requestAcceptedSuccess": "번역 요청을 수락하셨습니다!",
+          "requestRejectedSuccess": "요청이 성공적으로 거부되었습니다",
+          "submitRejection": "제출"
+        },
+        "noResultsFound": "결과를 찾을 수 없습니다",
+        "pendingTranslationRequests": "대기 중인 교정 요청들",
+        "reports": {
+          "chooseYear": "어떤 연도를 고려하고 싶으신가요?",
+          "comingSoon": {
+            "courses": "곧 공개될 수업 보기",
+            "coverage": "언어 범위가 곧 제공됩니다"
+          },
+          "contributors": {
+            "assignedCourses": "할당된 과정들",
+            "completedCourses": "완료된 코스",
+            "languages": "언어들",
+            "startDate": "시작 날짜",
+            "title": "기여자들",
+            "totalReward": "전체 보상",
+            "username": "사용자 이름"
+          },
+          "courses": {
+            "contributor": "기여자",
+            "filterByCourse": "과정별로 필터링하기",
+            "lastUpdated": "최근 업데이트",
+            "progress": "진행률 %"
+          },
+          "dateFilter": "날짜 필터",
+          "downloadData": "데이터 다운로드",
+          "filterByLanguage": "언어 별로 필터링하기",
+          "fromMonth": "부터",
+          "fromMonthPlaceholder": "어느 달부터인가요?",
+          "generalReport": "일반 보고서",
+          "languageCoverage": {
+            "completed": "완료된",
+            "inProgress": "진행 중",
+            "notStarted": "아직 시작하지 않음",
+            "totalCourses": "모든 강좌들"
+          },
+          "languagesProofread": "언어 교정",
+          "noContributors": "기여자를 찾을 수 없습니다",
+          "noCourses": "강좌를 찾을 수 없습니다",
+          "noLanguages": "언어를 찾을 수 없습니다",
+          "proofreadCourses": "교정 과정",
+          "table": {
+            "contributor": "기여자",
+            "lastUpdated": "최근 업데이트",
+            "progress": "진행률 %"
+          },
+          "tabs": {
+            "contributors": "기여자들",
+            "courses": "강의들",
+            "coverage": "언어 지원 범위"
+          },
+          "toMonth": "까지",
+          "toMonthPlaceholder": "어느 달까지?",
+          "totalLanguages": "지원 언어 수",
+          "year": "년도"
+        },
+        "status": {
+          "assigned": "할당됨",
+          "completed": "완료됨",
+          "inProgress": "진행 중",
+          "todo": "해야할 일",
+          "underReview": "리뷰 진행중인",
+          "readyForReview": "검토 준비 완료"
+        },
+        "table": {
+          "actions": "작업들",
+          "course": "강좌",
+          "index": "목차",
+          "language": "언어",
+          "username": "사용자명"
+        },
+        "tabs": {
+          "contentManagement": "컨텐츠 관리",
+          "reports": "보고서",
+          "requests": "요청",
+          "translate": "번역",
+          "userManagement": "사용자 관리"
+        },
+        "searchPlaceholder": "검색...",
+        "translate": {
+          "actions": {
+            "translate": "번역"
+          },
+          "selectLanguagesModal": {
+            "cancel": "취소",
+            "course": "과정:",
+            "overwriteWarning": "기존에 있던 파일은 대체됩니다.",
+            "pptxFile": "파워포인트(PPT) 파일",
+            "pptxFileInfo": ".pptx 파일만 지원됩니다 (최대 100MB)",
+            "pptxFileTooLarge": "PowerPoint 파일 용량이 초과되었습니다. 최대 크기는 100MB입니다.",
+            "processingStarted": "번역 시작되었습니다! 대용량 강의의 경우 몇 분이 소요될 수 있습니다.",
+            "selectLanguages": "번역할 언어를 선택하세요:",
+            "startingTranslation": "파일 업로드 중...",
+            "startingTranslationStep": "번역 시작...",
+            "startSuccess": "번역이 성공적으로 시작되었습니다!",
+            "startTranslation": "번역 시작",
+            "timeoutError": "번역 요청이 시간 초과되었습니다. 강의 콘텐츠가 너무 클 수 있습니다. 다시 시도하거나 지원팀에 문의해 주세요.",
+            "title": "번역할 언어를 선택하세요",
+            "translationFailed": "번역에 실패했습니다. 로그를 확인하고 다시 시도해 주세요.",
+            "uploadAndTranslationStarted": "파일이 업로드되었으며 번역이 시작되었습니다! 대용량 강의의 경우 처리 과정에 몇 분이 소요될 수 있습니다.",
+            "uploadError": "업로드에 실패했습니다. 파일을 확인하고 다시 시도해 주세요.",
+            "uploadFiles": "지원 파일 업로드 (선택 사항)",
+            "uploadFolder": "업로드 폴더 (PPTX + TXT)",
+            "uploadingFiles": "파일 업로드 중...",
+            "uploadTimeoutError": "업로드가 10분 후에 시간 초과되었습니다. 용량이 더 작은 파일로 시도하거나 연결 상태를 확인해 주세요.",
+            "useEnglishLabel": "해당 과정은 이미 영어로 번역되었습니다. 영어 버전을 원본으로 사용할까요?",
+            "audioFile": "오디오 파일",
+            "audioFileInfo": "지원되는 포맷: MP3, WAV, M4A (최대 50MB)",
+            "audioFileTooLarge": "오디오 파일 크기가 너무 큽니다. 최대 크기는 50MB입니다.",
+            "chooseAudioFile": "오디오 선택",
+            "chooseFolder": "폴더 선택",
+            "choosePptxFile": "PPTX 선택",
+            "chooseZip": "압축파일 선택",
+            "englishFilesRequired": "업로드된 파일은 반드시 영어로만 작성되어야 합니다",
+            "existingUploadsInfo": "원본 파일은 이미 업로드되었습니다. 다시 업로드하지 않고 바로 번역을 시작할 수 있습니다. 새 파일을 업로드하면 기존 파일이 덮어쓰기됩니다.",
+            "folderUrl": "폴더 URL",
+            "invalidAudioFile": "유효한 오디오 파일을 선택해 주십시오.",
+            "invalidPptxFile": "유효한 PowerPoint (.pptx) 파일을 선택하십시오.",
+            "missingFilesError": "번역을 시작하기 전에 번역 파일을 업로드하거나 URL을 제공해 주세요.",
+            "networkError": "네트워크 오류가 발생했습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
+            "noAudioFileSelected": "선택된 오디오 파일이 없습니다",
+            "noFolderSelected": "선택된 폴더가 없습니다",
+            "noLanguagesAvailable": "번역 가능한 언어가 없습니다.",
+            "noPptxFileSelected": "선택된 파워포인트 파일이 없습니다",
+            "noZipSelected": "선택된 ZIP이 없습니다",
+            "originalLanguage": "원래 언어:"
+          },
+          "table": {
+            "actions": "행동",
+            "course": "과정",
+            "index": "목차",
+            "todoLanguages": "번역할 언어",
+            "totalLanguages": "전체 언어"
+          },
+          "unknownContributor": "알 수 없음",
+          "slideNavigation": {
+            "previous": "기존",
+            "next": "다음",
+            "slideCounter": "{{현재}} / {{전체}}"
+          },
+          "slideNotAvailable": "슬라이드 {{slideNumber}}를 사용할 수 없습니다",
+          "slideNotFound": "슬라이드를 찾을 수 없습니다",
+          "title": "강의 번역",
+          "translateTo": "번역하기",
+          "backToCourse": "강좌로 돌아가기",
+          "changeSpeed": "재생속도 변경",
+          "chapterTitle": "챕터 제목",
+          "compare": "비교하기",
+          "compareTooltip": "번역 교정본이랑 원본을 비교하기",
+          "comparison": {
+            "backToChapter": "이전 장으로 돌아가기",
+            "originalVersion": "원본",
+            "translatedVersion": "번역본"
+          },
+          "description": "특정 언어의 강좌 번역을 시작하세요.",
+          "forward15Seconds": "15초 건너뛰기",
+          "imageNotFound": "이미지를 찾을 수 없습니다",
+          "language": "언어",
+          "loadingPresentation": "프레젠테이션을 로딩중입니다...",
+          "noContentAvailable": "사용가능한 컨텐츠 없음",
+          "noCourses": "현재 번역이 필요한 강좌가 없습니다.",
+          "noOriginalContent": "원본 컨텐츠 없음",
+          "noPngSlides": "이 프레젠테이션에 사용할 수 있는 PNG 슬라이드가 없습니다",
+          "noSlidesFound": "슬라이드를 찾을 수 없습니다",
+          "originalContent": "원본 컨텐츠",
+          "pause": "일시정지",
+          "play": "재생",
+          "presentations": "프레젠테이션",
+          "rewind15Seconds": "15초 되감기",
+          "compareDisabledTooltip": "교정된 버전이 없습니다",
+          "textContent": "텍스트 내용"
+        },
+        "userManagement": {
+          "chapters": "장",
+          "courses": "과정",
+          "status": {
+            "published": "게시됨",
+            "rejected": "거절됨",
+            "reviewed": "검토됨",
+            "readyForReview": "검토 준비 완료",
+            "todo": "할 일",
+            "underReview": "검토 중"
+          },
+          "table": {
+            "actions": "작업",
+            "language": "언어",
+            "username": "닉네임",
+            "assignedCourses": "할당된 과정들",
+            "startDate": "시작 날짜"
+          },
+          "title": "참여자",
+          "actions": {
+            "backToList": "사용자 목록으로 돌아가기",
+            "backToUsers": "사용자에게 돌아가기",
+            "viewDetails": "상세 정보 보기"
+          },
+          "addContributor": "참여자 추가",
+          "contributorInformation": "참여자 정보",
+          "modal": {
+            "assignments": "과제 기록",
+            "noAssignments": "할당된 과제가 없습니다",
+            "title": "사용자 세부 정보",
+            "userInfo": "사용자 정보"
+          },
+          "noUsers": "기여자를 찾을 수 없습니다"
+        },
+        "title": "관리자 번역 패널",
+        "toggle": {
+          "pendingRequest": "대기중인 요청",
+          "rejectedRequests": "거절된 요청"
         }
       },
       "translation": "번역 패널"
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "프로젝트 과제에 선정된 학생들",
+        "all": "모든 학생이 등록되었습니다",
+        "summer": "여름 학교에 선발된 학생들"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "날짜를 선택하십시오",
+      "publicationDate": "출판 날짜"
     },
     "backToDashboard": "대시보드 돌아가기",
     "bCert": {
@@ -602,8 +923,8 @@
     "calendar": {
       "calendar": "캘린더",
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "수업",
+        "event": "행사"
       },
       "personalCalendar": "개인 캘린더"
     },
@@ -787,70 +1108,77 @@
       "yourRoles": "지원한 직무"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
-      "assignmentDescription": "",
-      "assignmentInformation": "",
-      "assignmentTitle": "",
+      "announcement": "공지사항",
+      "assignment": "과제",
+      "assignmentCompletedDescription": "당신의 프로젝트 과제가 성공적으로 제출되었으며 검토 중입니다.\n성적 채점 후 이곳에 표시될 것입니다.",
+      "assignmentCompletedTitle": "과제 완료",
+      "assignmentDescription": "프로젝트 과제는 Plan ₿ Biz School 프로그램의 두 번째 단계를 표시하며, 이는 첫 번째 단계를 성공적으로 완료한 학생에게만 제공됩니다. 랭킹 및 선호도에 따라 각 학생에게 비트코인 회사에서 개발한 프로젝트가 할당되며, 이는 6월 18일까지 제출해야 합니다.\n학생들은 6월 2일부터 6월18일까지 과제를 준비하며, 회사의 대표로부터 멘토쉽을 받을 가능성이 있습니다.\n\n프로젝트는 회사에 의해 채점되며, 점수는 최종 성적에 영향을 미칩니다. 오직 최상위 학생들만이 2025년 7월 23일부터 7월 30일까지 스위스 루가노에서 열리는 여름 학교에 참여하도록 초대받습니다.",
+      "assignmentInformation": "과제 정보",
+      "assignmentTitle": "프로젝트 과제",
       "checkDetailsCompleted": "이 코스에 대한 모든 세부 정보를 확인할 수 있습니다.",
       "completionDiploma": "완료 증명서",
       "completionExamInfo": "이 기능을 사용하려면 시험을 완료해야 합니다.",
       "conclusionHeadline": "학습한 내용을 요약한 페이지입니다. 일부 챕터를 놓쳤거나 올바르게 확인되지 않았다면, 지금 복습하거나 ‘완료’ 버튼을 눌러 마무리하세요.",
-      "conclusionNotReleased": "",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "conclusionNotReleased": "결론은 마지막 수업 날에 공개될 것입니다.",
+      "confirmList": "승인 목록",
+      "confirmNoEditable": "일단 확인되면, 이 선호 목록은 더 이상 편집할 수 없게 됩니다.",
+      "confirmNoEditableFile": "제출하면 더 이상 파일을 편집할 수 없게 됩니다.",
+      "confirmSubmission": "제출 확인",
+      "congratulationsPassed": "축하합니다! 성공적으로 통과하셨습니다!",
       "coordinator": "코스 코디네이터",
-      "courseCalendar": "",
+      "courseCalendar": "강의 일정",
       "coursesCompleted": "완료한 코스",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "diplomaReleaseDescription": "모든 수업이 종료되면, 강좌를 성공적으로 완료한 것을 인정하는 졸업장이 수여됩니다. 졸업장은 마지막 수업 후 및 마무리 장이 완료된 후 여기에서 다운로드 받을 수 있습니다.",
+      "diplomaReleaseTitle": "학위증 발급",
+      "examScore": "점수:",
+      "exams": "시험",
       "feedbacks": "이 코스에 대한 평점과 피드백을 확인하고 수정할 수 있습니다.",
-      "fileUploadError": "",
-      "fileUploaded": "",
-      "finalAverageGradeDescription": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
-      "generalInformation": "",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "planbSchoolExamDescription": "",
-      "planbSchoolGeneralInformation": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "fileUploadError": "파일 업로드 중 오류가 발생했습니다",
+      "fileUploaded": "당신의 작업이 성공적으로 업로드되었습니다!",
+      "finalAverageGradeDescription": "당신의 최종 평균 성적은 대시보드의 시험 및 졸업증 섹션에서 확인할 수 있습니다.",
+      "finalGradeSummary": "최종 성적 요약",
+      "finalScore": "최종점수",
+      "generalInformation": "일반 정보",
+      "individualWork": "개인 작업",
+      "isSubmissionFinal": "최종 제출인가요?",
+      "joinTelegramGroup": "텔레그램 그룹에 가입하십시오",
+      "keepEditing": "계속 편집하세요",
+      "keepMovingForward": "이번에는 통과하지 못했지만, 모든 단계에서 성장하고 있습니다.\n배움을 포기하지 말고 계속 나아가세요!",
+      "leastPreferred": "가장 선호하지 않는",
+      "listSaved": "당신의 선호 목록이 저장되었습니다.",
+      "listSavedComeTomorrow": "당신의 선호 목록이 저장되었습니다. \n내일 여기로 돌아와서 할당된 프로젝트가 무엇인지 확인하십시오.",
+      "mostPreferred": "가장 선호하는",
+      "mustBePdf": "파일은 PDF 형식이어야 합니다. 추가 파일을 제출해야하는 경우, 해당 링크를 PDF 내에 삽입해주세요.",
+      "notSelectedAssignment": "불행히도 당신은 프로젝트 과제에 참여하도록 선택되지 않았습니다.\n그래도 강의를 계속 들을 수 있습니다.",
+      "planbSchoolExamDescription": "Plan ₿ Biz School 2025 프로그램은 두 단계로 구성됩니다. 첫 번째 단계에서는 중간 시험과 기말 시험이라는 두 가지 온라인 시험을 치를 것입니다. 이 시험들은 한 번만 시도할 수 있으며, 시간이 정해져 있고, 3일 동안 언제든지 완료할 수 있는 테스트입니다. 첫 번째 단계가 끝나면, 학생들은 성적 순위에 따라 두 번째 단계로 진행할 수 있는 자격을 얻게 됩니다. 두 번째 단계는 비트코인 회사가 제공하는 개인 과제인 프로젝트 과제가 포함되어 있습니다. Assignment 탭에서 그에 대한 자세한 내용을 확인할 수 있습니다.\n\n최종 학점은 세 테스트의 가중 평균으로 계산됩니다. 80% 이상의 점수를 받은 학생들은 수료증을 받을 수 있으며, 상위 랭킹의 학생들은 루가노에서 7월에 열리는 여름학교에 참가할 기회도 얻게 됩니다.",
+      "planbSchoolGeneralInformation": "Plan ₿ Biz School 2025 프로그램은 두 단계로 구성됩니다. 첫 번째 단계에서는 중간 시험과 기말 시험이라는 두 가지 온라인 시험을 치를 것입니다. 이 시험들은 한 번만 시도할 수 있으며, 시간이 정해져 있고, 3일 동안 언제든지 완료할 수 있는 테스트입니다. 첫 번째 단계가 끝나면, 학생들은 성적 순위에 따라 두 번째 단계로 진행할 수 있는 자격을 얻게 됩니다. 두 번째 단계는 비트코인 회사가 제공하는 개인 과제인 프로젝트 과제가 포함되어 있습니다. Assignment 탭에서 그에 대한 자세한 내용을 확인할 수 있습니다.\n\n최종 학점은 세 테스트의 가중 평균으로 계산됩니다. 80% 이상의 점수를 받은 학생들은 수료증을 받을 수 있으며, 상위 랭킹의 학생들은 루가노에서 7월에 열리는 여름학교에 참가할 기회도 얻게 됩니다.",
+      "projectRankingInstructions": "프로젝트 상위 지시사항:",
+      "ranking": "순위",
+      "rankingInstructions": "제안된 프로젝트를 선호도에 따라 순서대로 정렬해주세요 (1번이 가장 선호하는 선택지입니다). 이 순위는 우리가 당신에게 가장 적합한 프로젝트를 할당하는데 도움이 될 것입니다. 점수가 높은 학생들의 선택은 먼저 고려될 것입니다.",
+      "rankingOnly24Hours": "순위 포털은 6월 2일 00:00부터 23:59까지 (UTC+2)만 24시간 열립니다.",
+      "rankProjectPreferences": "당신의 프로젝트 선호도 순서를 매기세요",
       "ratingsAndFeedbacks": "평점 및 피드백",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "과제에 대해 더 알아보기",
+      "saveList": "목록 저장",
       "shareOnSocials": "SNS에서 공유:",
-      "submissionInstructions": "",
-      "submitBefore": "",
-      "submitFileNamingFormat": "",
+      "submissionInstructions": "제출 지시사항",
+      "submitBefore": "당신의 작업물은 {{date}}에 {{hour}}까지 제출해야 합니다. 이 시간 이후에 접수된 제출물은 채점되지 않을 것입니다.",
+      "submitFileNamingFormat": "다음 형식을 사용하여 파일 이름을 지정해야 합니다 :\n<0>회사_사용자명.pdf</0>.\n회사 이름에서 모든 공백을 제거하고, planB.network 플랫폼에서의 정확한 사용자명을 사용하십시오. 철자 또한 확인해 주세요.",
       "submitReviewInfo": "이 기능을 사용하려면 리뷰를 제출해야 합니다.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
+      "submitYourWork": "당신의 작업을 제출하십시오",
+      "summerSchool": "여름 학교",
+      "surePreferenceList": "당신의 선호 목록에 대해 확신하십니까?",
+      "thresholdToPass": "통과하기 위한 임계 값: {{threshold}}%",
       "tweetText": "@planb_network에서 {{courseIndex}} 코스를 완료하고 디플로마를 받게 되어 기쁩니다! 기말 시험 점수: {{score}}/100! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
-      "yourProject": ""
+      "viewFinalGrade": "최종 성적 보기",
+      "yourProject": "당신의 프로젝트",
+      "assignmentNotAccessible": "과제는 이미 시작되어 더 이상 접근할 수 없습니다.",
+      "assignmentScore": "과제 점수",
+      "gaveSolidEffort": "당신은 정말 열심히 노력했어요!",
+      "tweetTextCourseDiploma": "@planb_network에서 {{courseCoordinator}}에 의해 가르쳐지는 코스 {{courseName}}를 완료하고 수료증을 받게 되어 매우 기쁩니다!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "점수 요약 보기",
+      "wellDoneCompleting": "이 과정을 완료하고 통과한 것을 축하드립니다!\n당신이 충분히 받을 자격이 있는 디플로마입니다",
+      "yourProjectAssignment": "당신의 프로젝트 과제"
     },
     "courses": "코스",
     "credentials": {
@@ -865,10 +1193,16 @@
       "retakeExam": "시험 재응시",
       "seatBooked": "시험 세션이 예약되었습니다",
       "takePlaceAt": "세션이 다음 장소에서 진행됩니다:",
-      "yourCertificate": "당신의 증명서"
+      "yourCertificate": "당신의 증명서",
+      "completeACourse": "첫 번째 디플로마를 얻기 위한 과정을 완료하세요!",
+      "exploreBCert": "₿-CERT 탐색하기",
+      "exploreCourses": "강좌 탐색",
+      "getGlobalRecognition": "₿-CERT 자격증으로 글로벌 세계에서 인정받으세요",
+      "noCertificatesAvailable": "자격증이 없습니다",
+      "noDiplomasAvailable": "아직 졸업장이 없습니다"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "대시보드로 이동하기",
+    "goToHomepage": "홈페이지로 이동하기",
     "logout": "로그아웃",
     "myCourses": {
       "completeAll": "모두 완료하기",
@@ -907,26 +1241,31 @@
       "edit": "편집",
       "email": "이메일",
       "emailChangeConfirmation": "이메일 변경 확인 메일이 발송되었습니다. 인박스를 확인해 주세요.",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "최근에 이메일을 업데이트하셨습니다. 다시 시도하시기 전에 잠시 기다려 주십시오.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "coursesOption": "등록한 강좌에 대한 업데이트",
+        "description": "아래에서 알림 설정을 맞춤 설정할 수 있습니다. ",
+        "emailPreferencesDescription": "여기에서 저희로부터 받고 싶은 이메일 유형을 선택하실 수 있습니다. 이 설정은 이 링크와 연결된 이메일 주소에만 적용됩니다.",
+        "emailPreferencesError": "이메일 설정 정보를 불러오는 과정에서 오류가 발생했습니다. 접속하신 링크가 정확한지 다시 한번 확인해 주십시오.",
+        "emailPreferencesSavedSuccessfully": "귀하의 이메일 설정이 성공적으로 업데이트 되었습니다.",
+        "emailPreferencesTitle": "플랜 ₿ 네트워크 이메일 설정 관리",
+        "emailTitle": "이메일로 어떤 종류의 알림을 받고 싶으신가요?",
+        "emailWarning": "경고! 귀하의 계정에 이메일 주소가 연결되어 있지 않습니다. 프로필 섹션에서 추가해 주세요.",
+        "eventsOption": "예약한 이벤트에 관한 업데이트들",
+        "generalOption": "플랜 ₿ 네트워크에 관한 일반 정보 및 최신 소식",
+        "goToProfile": "프로필로 이동",
+        "loadEmailSettingsError": "죄송합니다, 이메일 설정을 불러올 수 없습니다.",
+        "loadEmailSettingsErrorDescription": "사용하신 링크가 완전하고 정확한지 확인해 주십시오.",
+        "loadEmailSettingsErrorManage": "계정에 접근할 수 있다면, 대시보드에서 직접 설정을 관리할 수도 있습니다:",
+        "none": "없음",
+        "platformTitle": "이 플랫폼에서 어떤 유형의 알림을 받고 싶으신가요?",
+        "settingsSaved": "설정이 성공적으로 저장되었습니다!",
+        "title": "알림 설정",
+        "filter": "필터",
+        "role": "역할",
+        "assignedAt": "할당 됨",
+        "completedAt": "완료됨",
+        "displayName": "표시되는 이름"
       },
       "password": "비밀번호",
       "personalInformation": "개인 정보",
@@ -937,14 +1276,14 @@
       "save": "저장",
       "saving": "저장 중…",
       "security": "보안",
-      "securitySettings": "",
-      "settings": "",
+      "securitySettings": "보안 설정",
+      "settings": "설정",
       "username": "사용자 이름"
     },
     "studentDashboard": "학생 대시보드",
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "모든 학생들",
         "analytics": "분석",
         "announcementModal": {
           "contentLabel": "",
@@ -959,13 +1298,13 @@
           "typeLabel": "",
           "typePlaceholder": ""
         },
-        "announcements": "",
+        "announcements": "공지사항",
         "announcementsIntroduction": "",
         "announcementsPast": "",
         "announcementsPastDescription": "",
         "announcementsUpcoming": "",
         "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "assignment": "과제",
         "assignmentGrade": {
           "alertDescription": "",
           "alertDescription2": "",
@@ -1004,7 +1343,8 @@
         "reviews": "리뷰",
         "selectCourse": "",
         "summerStudents": "",
-        "writeAnnouncement": ""
+        "writeAnnouncement": "",
+        "overview": "개요"
       },
       "menu": "강사 메뉴",
       "profile": {
@@ -1041,6 +1381,25 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "여기에서 당신이 작성하여 게시한 튜토리얼의 분석을 확인할 수 있습니다.",
         "yourTutorials": "당신의 튜토리얼"
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "변경사항 공지하기",
+          "attendanceList": "참석자 명단",
+          "courseEnded": "본 강좌는 종료되었습니다.",
+          "courseNotStarted": "이 강좌는 아직 시작되지 않았습니다.",
+          "enrolledStudents": "등록한 학생들",
+          "hasGraduated": "{{score}}%의 점수로 졸업하였습니다",
+          "hasLeftReview": "이(가) 리뷰를 남겼습니다",
+          "hasLeftReviewAndComment": "이(가) 리뷰와 댓글을 남겼습니다",
+          "notifyStudents": "뭔가 변경되었나요? 학생들에게 알리세요.",
+          "overallPerformance": "전체적인 성과",
+          "recentActivity": "최근 활동",
+          "studentsRegistered": "등록된 학생들",
+          "upcomingClass": "예정된 수업"
+        }
       }
     }
   },
@@ -1112,7 +1471,10 @@
       "time": "시간"
     },
     "tcDisclaimer": "장소에 액세스할 목적으로 내 정보가 주최자와 공유됨에 동의합니다.",
-    "tcMustBeAccepted": "구매를 진행하려면 약관에 동의해야 합니다."
+    "tcMustBeAccepted": "구매를 진행하려면 약관에 동의해야 합니다.",
+    "calendar": {
+      "today": "오늘"
+    }
   },
   "filters": {
     "categories": "카테고리",
@@ -1271,11 +1633,11 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
+      "assignment": "과제",
       "calendar": "",
-      "celebration": "",
+      "celebration": "축하",
       "general": "",
-      "warning": ""
+      "warning": "경고"
     }
   },
   "notifications": {
@@ -1293,20 +1655,20 @@
     "markAsRead": "",
     "monthsAgo": "",
     "noRecentNotifications": "",
-    "notifications": "",
+    "notifications": "알림",
     "noUnreadNotifications": "",
     "planBNews": "",
-    "read": "",
+    "read": "읽다",
     "results": "",
-    "select": "",
+    "select": "선택",
     "selectAll": "",
     "stayUpToDate": "",
-    "today": "",
-    "unread": "",
+    "today": "오늘",
+    "unread": "읽지 않음",
     "upcomingEvent": "",
     "weeksAgo": "",
     "yearsAgo": "",
-    "yesterday": ""
+    "yesterday": "어제"
   },
   "payment": {
     "haveReductionCode": "할인 코드 있나요?",
@@ -1626,12 +1988,12 @@
     "chapters": "챕터",
     "close": "닫기",
     "communities": "커뮤니티",
-    "company": "",
+    "company": "회사",
     "complete": "완료",
     "conference": "컨퍼런스",
     "congrats": "축하해요!",
     "content": "콘텐츠",
-    "continue": "",
+    "continue": "계속",
     "country": "국가",
     "course": "코스",
     "courseId": "코스 ID",
@@ -1640,7 +2002,7 @@
     "credits": "크레딧",
     "dashboard": "대시보드",
     "date": "날짜",
-    "day": "",
+    "day": "날",
     "delete": "삭제",
     "description": "코스 설명",
     "details": "세부 사항",
@@ -1691,7 +2053,7 @@
     "lnurlAuth": "LNURL 인증",
     "location": "위치",
     "members": " 회원",
-    "mentor": "",
+    "mentor": "멘토",
     "mining": "마이닝",
     "mode": "모드",
     "movie": "영화",
@@ -1710,7 +2072,7 @@
     "paid": "프리미엄",
     "part": "부분",
     "passed": "통과",
-    "password": "",
+    "password": "비밀번호",
     "podcast": "팟캐스트",
     "podcasts": "팟캐스트",
     "previous": "이전",
@@ -1730,7 +2092,7 @@
     "resources": "자료",
     "role": "역할",
     "save": "저장",
-    "saving": "",
+    "saving": "저장 중...",
     "search": "검색",
     "security": "보안",
     "selectedAmount": "",
@@ -1748,8 +2110,8 @@
     "ticket": "티켓",
     "tickets": "티켓",
     "time": "시간",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "시간대",
+    "title": "제목",
     "to": "에",
     "topics": "주제",
     "total": "총액",
@@ -1761,11 +2123,27 @@
     "user": "사용자",
     "username": "사용자 이름",
     "users": "사용자",
-    "video": "",
+    "video": "영상",
     "view": "보기",
     "viewMore": "더 보기",
     "wallets": "지갑",
-    "yes": "네"
+    "yes": "네",
+    "questions": "질문",
+    "results": "결과",
+    "structure": "구조",
+    "weight": "무게",
+    "academy": "아카데미",
+    "review": "리뷰",
+    "actions": "작업",
+    "none": "없음",
+    "taxes": "세금",
+    "info": "정보",
+    "rating": "평점",
+    "month": "월",
+    "share": "공유",
+    "week": "주",
+    "booking": "예약",
+    "full": "전체"
   },
   "youtubeChannels": {
     "pageTitle": "유튜브 채널",
@@ -1775,5 +2153,41 @@
   "account": {
     "account": "계정",
     "myTeacherProfile": "선생님의 프로필"
+  },
+  "videoSelector": {
+    "language": {
+      "language": "언어"
+    },
+    "player": {
+      "player": "플레이어",
+      "rumble": "럼블",
+      "youtube": "유튜브",
+      "peertube": "피어튜브"
+    }
+  },
+  "months": {
+    "april": "4월",
+    "august": "8월",
+    "december": "12월",
+    "february": "2월",
+    "january": "1월",
+    "july": "7월",
+    "june": "6월",
+    "march": "3월",
+    "may": "5월",
+    "november": "11월",
+    "october": "10월",
+    "september": "9월"
+  },
+  "navbar": {
+    "analytics": "분석",
+    "bookings": "예약",
+    "career": "경력",
+    "tabs": {
+      "admin": "관리자",
+      "learn": "학습",
+      "teach": "강의"
+    },
+    "tutorials": "튜토리얼"
   }
 }

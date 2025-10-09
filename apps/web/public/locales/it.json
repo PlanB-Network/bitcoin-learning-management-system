@@ -154,7 +154,8 @@
     "noConferences": "Non sono state ancora aggiunte conferenze per il {{year}}.",
     "pageTitle": "Registrazioni conferenze",
     "planBConferences": "Conferenze di Plan ₿",
-    "topics": "Argomenti"
+    "topics": "Argomenti",
+    "conferencesGenesis": "Conferenze dal Blocco Genesi"
   },
   "courses": {
     "chapter": {
@@ -424,7 +425,13 @@
     "noCoursesFound": "Nessun corso trovato. Prova a modificare i tuoi filtri.",
     "plusXMore": "+ altri {{count}}",
     "selectATopic": "Scegli un argomento",
-    "tryAdjustingFilters": "Prova a modificare i tuoi filtri"
+    "tryAdjustingFilters": "Prova a modificare i tuoi filtri",
+    "liveClasses": {
+      "allOtherTitle": "Altre lezioni live",
+      "liveClasses": "Corsi Premium",
+      "secondaryTitle": "Diventa un candidato ideale per le aziende che lavorano su Bitcoin.",
+      "title": "Programma annuale ufficiale di Plan ₿"
+    }
   },
   "dashboard": {
     "account": "Account",
@@ -1234,7 +1241,7 @@
       "edit": "Modifica",
       "email": "Email",
       "emailChangeConfirmation": "E' stata inviata una email di conferma, controlla la tua posta in arrivo per confermare il cambio.",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "Hai appena aggiornato la tua email. Attendi qualche minuto prima di provare nuovamente.",
       "notificationSettings": {
         "coursesOption": "",
         "description": "",
@@ -1247,13 +1254,14 @@
         "eventsOption": "",
         "generalOption": "",
         "goToProfile": "",
-        "loadEmailSettingsError": "",
+        "loadEmailSettingsError": "Siamo spiacenti, non siamo riusciti a caricare le tue preferenze email.",
         "loadEmailSettingsErrorDescription": "",
         "loadEmailSettingsErrorManage": "",
         "none": "",
         "platformTitle": "",
         "settingsSaved": "",
-        "title": ""
+        "title": "",
+        "assignedAt": "Assegnato a"
       },
       "password": "Password",
       "personalInformation": "Le mie informazioni personali",
@@ -1291,7 +1299,7 @@
         "announcementsPast": "",
         "announcementsPastDescription": "",
         "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
+        "announcementsUpcomingDescription": "Di seguito sono riportati gli annunci che hai programmato per il futuro.",
         "assignment": "",
         "assignmentGrade": {
           "alertDescription": "",
@@ -1375,7 +1383,18 @@
         "overview": {
           "hasGraduated": "ha ottenuto il diploma con un punteggio del {{score}}%",
           "hasLeftReview": "ha lasciato una recensione",
-          "hasLeftReviewAndComment": "ha lasciato una recensione e un commento"
+          "hasLeftReviewAndComment": "ha lasciato una recensione e un commento",
+          "announceChange": "Annuncia un cambiamento",
+          "attendanceList": "Elenco di presenze",
+          "courseEnded": "Questo corso è terminato.",
+          "courseNotStarted": "Questo corso non è ancora iniziato.",
+          "enrolledStudents": "Studenti iscritti",
+          "hasEnrolled": "si è iscritto/a",
+          "notifyStudents": "È cambiato qualcosa? Avvisa i tuoi studenti.",
+          "overallPerformance": "Risultato complessivo",
+          "recentActivity": "Attività recenti",
+          "studentsRegistered": "Studenti registrati",
+          "upcomingClass": "Prossima lezione"
         }
       }
     }
@@ -1448,7 +1467,19 @@
       "time": "Orario"
     },
     "tcDisclaimer": "Accetto che le mie informazioni possano essere condivise con gli organizzatori per facilitare l'accesso all'evento.",
-    "tcMustBeAccepted": "Devi accettare i termini per procedere con l'acquisto"
+    "tcMustBeAccepted": "Devi accettare i termini per procedere con l'acquisto",
+    "calendar": {
+      "fullMap": "Mappa completa",
+      "displayCalendar": "Visualizza Calendario",
+      "hideCalendar": "Nascondi calendario",
+      "inXMonths": "Tra {{number}} mesi",
+      "lastMonth": "Il mese scorso",
+      "nextMonth": "Il mese prossimo",
+      "noEventsFound": "Nessun evento trovato",
+      "thisMonth": "Questo mese",
+      "today": "Oggi",
+      "xMonthsAgo": "{{number}} mesi fa"
+    }
   },
   "filters": {
     "categories": "Categorie",
@@ -1608,7 +1639,7 @@
   "notification": {
     "types": {
       "assignment": "",
-      "calendar": "",
+      "calendar": "Avviso del calendario",
       "celebration": "",
       "general": "",
       "warning": ""
@@ -1618,11 +1649,11 @@
     "bCertResults": "",
     "blogNotTranslated": "",
     "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
+    "calendar_5m": "La lezione inizia tra 5 minuti! Clicca qui per unirti ora.",
+    "calendar_5m_online_event": "È ora! L'evento {{eventName}} inizia tra 5 minuti. Clicca qui per partecipare ora!",
+    "calendar_24h": "La prossima lezione sarà domani dalle {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "L'evento {{eventName}} avrà luogo domani, dalle {{formattedTime}} alle {{addressLine}}. Assicurati di scaricare il tuo biglietto per partecipare!",
+    "calendar_48h_online_event": "L'evento {{eventName}} si avvicina! È programmato per {{date}}, a partire da {{formattedTime}}. ",
     "dashboardDescription": "",
     "daysAgo": "",
     "hoursAgo": "",
@@ -1952,7 +1983,7 @@
     "booked": "Prenotato",
     "bookings": "Prenotazioni",
     "business": "Business",
-    "calendar": "",
+    "calendar": "Calendario",
     "cancel": "Annulla",
     "careerPortal": "Portale Carriera",
     "category": "Categoria",
@@ -2101,7 +2132,9 @@
     "view": "Vista",
     "viewMore": "Visualizza altro",
     "wallets": "Wallet",
-    "yes": "Sì"
+    "yes": "Sì",
+    "certifications": "Certificazioni",
+    "map": "Mappa"
   },
   "youtubeChannels": {
     "pageTitle": "Canali Youtube",
@@ -2109,6 +2142,14 @@
     "watchTrailer": "Guarda il trailer"
   },
   "account": {
-    "account": "Account"
+    "account": "Account",
+    "myTeacherProfile": "Profilo insegnante"
+  },
+  "navbar": {
+    "liveClassesDescription": "Seguiti da un insegnante",
+    "liveClassesTitle": "Corsi Premium",
+    "learnAnytimeDescription": "Studio autonomo",
+    "learnAnytimeTitle": "Corsi Open Source",
+    "myCalendar": "Il mio calendario"
   }
 }
