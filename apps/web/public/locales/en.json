@@ -1744,7 +1744,7 @@
     "blogNotTranslated": "Sorry, this new blog post is not yet translated in your current language.",
     "bookYourSeat": "Book your seat if you want to attend in person!",
     "calendar_24h": "Next class will be tomorrow from {{ formattedTime }}.",
-    "calendar_24h_in_person_event": "The {{eventName}} will take place tomorrow, from {{formattedTime}} at {{addressLine}}. Make sure to download your ticket to attend!",
+    "calendar_24h_in_person_event": "The event {{eventName}} will take place tomorrow, from {{formattedTime}} at {{addressLine}}. Make sure to download your ticket to attend!",
     "calendar_48h_online_event": "The {{eventName}} is coming up soon! It is scheduled for {{date}}, from {{formattedTime}}. ",
     "calendar_5m": "The class is starting in 5 minutes! Click here to join now.",
     "calendar_5m_online_event": "It’s time! The {{eventName}} is starting in 5 minutes. Click here to join now!",
