@@ -5,6 +5,8 @@ import Hyperswarm from 'hyperswarm';
 
 import postgres from 'postgres';
 
+console.log('Starting PeerTube sync script...', process.env);
+
 const sql = postgres({
   host: process.env.POSTGRES_HOST || 'localhost',
   port: process.env.POSTGRES_PORT

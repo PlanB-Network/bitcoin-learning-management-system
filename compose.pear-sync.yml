@@ -1,0 +1,17 @@
+# sovereign-university % docker compose -f compose.yml -f compose.pear-sync.yml
+
+services:
+  pear-sync:
+    build:
+      context: ./pear-sync
+      dockerfile: docker/Dockerfile
+    volumes:
+      - pear-sync-data:/pear-sync-data
+    environment:
+      - CORESTORE_PATH=/pear-sync-data
+      - POSTGRES_HOST=${POSTGRES_HOST:-host.docker.internal}
+    env_file:
+      - .env
+
+volumes:
+  pear-sync-data:
