@@ -40,6 +40,7 @@ function DashboardAdministrationTranslationPanel() {
   const currentTab = (location.search as any)?.tab || 'requests';
 
   useEffect(() => {
+    if (session === undefined) return;
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Admin)(session?.user)) {

@@ -1,3 +1,5 @@
+import { UserPermission, UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import type {
   JobTitle,
   JoinedCareerProfile,
@@ -6,7 +8,7 @@ import type {
 } from '@blms/types';
 import { Button, cn, Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import DOMPurify from 'dompurify';
 import { type TFunction, t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
@@ -25,6 +27,8 @@ export const Route = createFileRoute(
 
 function AdminCareers() {
   const { courses } = useContext(AppContext);
+  const { session } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const [sortedCareerProfiles, setSortedCareerProfiles] = useState<
     JoinedCareerProfile[] | []
@@ -49,6 +53,17 @@ function AdminCareers() {
       sortCareerProfiles(careerProfiles, sortBy, sortingOrder);
     }
   }, [careerProfiles, sortBy, sortingOrder]);
+
+  useEffect(() => {
+    if (session === undefined) return;
+    if (!session) {
+      navigate({ to: '/' });
+    } else if (
+      !canAccess(UserRole.Admin, UserPermission.Career)(session?.user)
+    ) {
+      navigate({ to: '/dashboard/my-courses' });
+    }
+  }, [session]);
 
   const sortCareerProfiles = (
     profiles: JoinedCareerProfile[],

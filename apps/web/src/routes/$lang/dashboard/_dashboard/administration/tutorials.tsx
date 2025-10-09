@@ -19,6 +19,7 @@ function DashboardAdministrationTutorials() {
   const { session } = useContext(AppContext);
 
   useEffect(() => {
+    if (session === undefined) return;
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Admin)(session?.user)) {

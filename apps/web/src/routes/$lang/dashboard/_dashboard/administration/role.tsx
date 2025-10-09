@@ -33,6 +33,7 @@ function DashboardAdministrationRole() {
   const isTablet = useSmaller('lg');
 
   useEffect(() => {
+    if (session === undefined) return;
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Superadmin)(session?.user)) {

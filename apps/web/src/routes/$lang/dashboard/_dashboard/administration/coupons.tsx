@@ -30,6 +30,7 @@ function AdminCoupons() {
   const { session } = useContext(AppContext);
 
   useEffect(() => {
+    if (session === undefined) return;
     if (!session) {
       console.log('session', session);
       navigate({ to: '/' });

@@ -1,3 +1,5 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
@@ -19,17 +21,13 @@ function DashboardProfessorTutorials() {
   const { user, session } = useContext(AppContext);
 
   useEffect(() => {
-    if (session === null) {
+    if (session === undefined) return;
+    if (!session) {
       navigate({ to: '/' });
-    } else if (
-      session &&
-      session?.user.role !== 'admin' &&
-      session?.user.role !== 'superadmin' &&
-      session?.user.role !== 'professor'
-    ) {
+    } else if (!canAccess(UserRole.Professor)(session.user)) {
       navigate({ to: '/dashboard/my-courses' });
     }
-  }, [session]);
+  }, [navigate, session]);
 
   if (!session) {
     return <Loader />;
