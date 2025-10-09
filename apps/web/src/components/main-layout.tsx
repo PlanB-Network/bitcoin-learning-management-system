@@ -646,7 +646,8 @@ export const SideBarItem = ({
   }, [label, isSidebarOpen]);
 
   const wrapperClassName = cn(
-    'flex flex-col p-3 hover:bg-white rounded-lg',
+    'flex flex-col hover:bg-white rounded-lg',
+    isMain ? 'p-3' : 'px-3 py-2 lg:py-3',
     isActive ? 'bg-white' : 'bg-transparent',
     isSidebarOpen ? (isMain ? 'gap-3' : 'gap-3 lg:gap-4') : 'gap-0',
     className,

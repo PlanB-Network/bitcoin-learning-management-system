@@ -199,7 +199,7 @@ export const LanguageSelectorMobile = ({
       <PopoverContent
         data-popover-content
         className={cn(
-          'flex flex-col absolute z-50 w-[287px] overflow-scroll no-scrollbar !shadow-none bottom-10 bg-white rounded-lg rounded-b-none pb-2 max-h-[min(calc(100dvh-84px),488px)]',
+          'flex flex-col absolute z-50 w-[287px] overflow-scroll no-scrollbar !shadow-none bottom-10 bg-white rounded-lg rounded-b-none pb-2 max-h-[calc(100dvh-120px)]',
           i18n.dir() === 'rtl'
             ? 'right-1/2 translate-x-1/2'
             : 'left-1/2 -translate-x-1/2',

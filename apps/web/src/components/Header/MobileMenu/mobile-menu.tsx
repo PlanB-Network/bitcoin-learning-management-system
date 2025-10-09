@@ -87,7 +87,7 @@ export const MobileMenu = ({
 
       <nav
         className={cn(
-          'flex flex-col fixed top-0 right-0 items-center w-full max-w-[327px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden bg-header p-5 pt-3 rounded-l-3xl z-20',
+          'flex flex-col fixed top-0 right-0 items-center w-full max-w-[327px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden bg-header p-5 pt-3 z-20',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full',
         )}
         ref={mobileMenuRef}
