@@ -65,7 +65,7 @@ services:
       - ./data/cdn:/var/www/cdn
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-cdn-${ENV}.rule=((Host(`${DOMAIN}`) || Host(`contribute.${DOMAIN}`)) && PathPrefix(`/cdn`))
+      - traefik.http.routers.university-cdn-${ENV}.rule=((Host(`${DOMAIN}`) || Host(`contribute.${DOMAIN}`) || Host(`${DOMAIN_ACADEMY}`)) && PathPrefix(`/cdn`))
       - traefik.http.routers.university-cdn-${ENV}.entrypoints=https
       - traefik.http.routers.university-cdn-${ENV}.tls=true
       - traefik.http.routers.university-cdn-${ENV}.middlewares=university-cdn-${ENV}-stripprefix,university-cdn-${ENV}-compress
