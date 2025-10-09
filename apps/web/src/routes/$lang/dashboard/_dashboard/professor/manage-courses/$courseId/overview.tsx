@@ -3,7 +3,6 @@ import { canAccess } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import z from 'zod';
@@ -27,7 +26,7 @@ export const Route = createFileRoute(
 
 function Overview() {
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
   const { session } = useContext(AppContext);
@@ -46,7 +45,7 @@ function Overview() {
     } else if (!canAccess(UserRole.Professor)(session?.user)) {
       navigate({ to: '/dashboard/my-courses' });
     }
-  }, [session]);
+  }, [navigate, session]);
 
   if (!course) {
     return null;

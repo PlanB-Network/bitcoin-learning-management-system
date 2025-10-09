@@ -222,8 +222,18 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
   }
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="flex max-md:flex-col md:justify-between gap-4 md:items-center">
+    <div className="flex flex-col w-full mt-3 md:mt-8">
+      {!course.isAssignmentGradingPublished && (
+        <Alert variant="warning" hasCloseButton>
+          <AlertTitle icon={TbAlertCircle}>
+            {t('dashboard.teacher.courses.assignmentGrade.alertTitle')}
+          </AlertTitle>
+          <AlertDescription className="text-newBlack-2">
+            {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
+          </AlertDescription>
+        </Alert>
+      )}
+      <div className="flex max-md:flex-col md:justify-between gap-4 md:items-center mt-5">
         {!course.isAssignmentGradingPublished && (
           <ConfirmGradingSubmissionDialog
             onConfirm={handleBulkSaveAndPublish}
@@ -240,16 +250,6 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
           />
         )}
       </div>
-      {!course.isAssignmentGradingPublished && (
-        <Alert className="mt-5" variant="warning" hasCloseButton>
-          <AlertTitle icon={TbAlertCircle}>
-            {t('dashboard.teacher.courses.assignmentGrade.alertTitle')}
-          </AlertTitle>
-          <AlertDescription className="text-newBlack-2">
-            {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
-          </AlertDescription>
-        </Alert>
-      )}
       {assignments && assignments.length > 0 && (
         <div className="flex flex-col gap-6 mt-10">
           {assignments.map((assignment) => {

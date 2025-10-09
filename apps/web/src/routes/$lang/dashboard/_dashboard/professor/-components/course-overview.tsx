@@ -371,7 +371,9 @@ const UpcomingClass = ({ course }: { course: CourseResponse }) => {
           {t('dashboard.professor.courses.overview.notifyStudents')}
         </span>
         <Button variant="primary" size={'m'} asChild>
-          <Link to={`/dashboard/professor/${course.id}/announcements`}>
+          <Link
+            to={`/dashboard/professor/manage-courses/${course.id}/announcement`}
+          >
             {t('dashboard.professor.courses.overview.announceChange')}
           </Link>
         </Button>
