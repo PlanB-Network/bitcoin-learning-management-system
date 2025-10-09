@@ -85,6 +85,17 @@ services:
     volumes:
       - ./well-known:/usr/share/nginx/html/.well-known:ro
 
+  network:
+    <<: *defaults
+    image: ghcr.io/planb-network/blms-network:${IMAGE_TAG}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.university-network-${ENV}.rule=Host(`network.${DOMAIN}`)
+      - traefik.http.routers.university-network-${ENV}.entrypoints=https
+      - traefik.http.routers.university-network-${ENV}.tls=true
+      - traefik.http.routers.university-network-${ENV}.middlewares=university-web-${ENV}-compress
+      - traefik.http.middlewares.university-network-${ENV}-compress.compress=true
+
   contribute:
     <<: *defaults
     image: ghcr.io/planb-network/blms-contribute:${IMAGE_TAG}
