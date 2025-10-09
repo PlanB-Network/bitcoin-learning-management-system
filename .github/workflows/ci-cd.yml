@@ -292,6 +292,7 @@ jobs:
     needs:
       - build_api
       - build_web
+      - build_network
       - build_contribute
       - build_design_system
     steps:
