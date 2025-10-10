@@ -75,6 +75,10 @@ const getEffectiveLocale = () => {
     effectiveLocale = 'en-GB';
   }
 
+  if (!effectiveLocale.includes('en') || !effectiveLocale.includes('it')) {
+    effectiveLocale = 'en-GB';
+  }
+
   return effectiveLocale;
 };
 
@@ -115,3 +119,10 @@ export function formatMonthAndYear(
     year: 'numeric',
   }).format(new Date(value));
 }
+
+export const normalizeText = (text: string): string => {
+  return text
+    .trim()
+    .toLowerCase()
+    .replaceAll(/[^\dA-Za-z]/g, '');
+};

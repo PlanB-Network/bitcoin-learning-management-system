@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import PageBlock from '#src/components/page-block.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 
-export const Route = createFileRoute('/hubs')({
+export const Route = createFileRoute('/academy')({
   component: RouteComponent,
 });
 
@@ -11,9 +11,9 @@ function RouteComponent() {
     <PageLayout>
       <div className="text-center">
         <PageBlock>
-          <h1 className="text-4xl font-bold mb-8">Hubs</h1>
+          <h1 className="text-4xl font-bold mb-8">Academy</h1>
           <p className="mb-4">
-            This is the Hubs page. More content coming soon!
+            This is the Academy page. More content coming soon!
           </p>
         </PageBlock>
         <div className="shadow-top-bottom-box py-24">

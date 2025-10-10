@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root';
 import { Route as HubsRouteImport } from './routes/hubs';
 import { Route as FundsRouteImport } from './routes/funds';
+import { Route as AcademyRouteImport } from './routes/academy';
 import { Route as AboutRouteImport } from './routes/about';
 import { Route as IndexRouteImport } from './routes/index';
 import { Route as NewsIndexRouteImport } from './routes/news/index';
@@ -25,6 +26,11 @@ const HubsRoute = HubsRouteImport.update({
 const FundsRoute = FundsRouteImport.update({
   id: '/funds',
   path: '/funds',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const AcademyRoute = AcademyRouteImport.update({
+  id: '/academy',
+  path: '/academy',
   getParentRoute: () => rootRouteImport,
 } as any);
 const AboutRoute = AboutRouteImport.update({
@@ -57,6 +63,7 @@ const NewsArticleBlogNameBlogIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
   '/about': typeof AboutRoute;
+  '/academy': typeof AcademyRoute;
   '/funds': typeof FundsRoute;
   '/hubs': typeof HubsRoute;
   '/news/$category': typeof NewsCategoryRoute;
@@ -66,6 +73,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute;
   '/about': typeof AboutRoute;
+  '/academy': typeof AcademyRoute;
   '/funds': typeof FundsRoute;
   '/hubs': typeof HubsRoute;
   '/news/$category': typeof NewsCategoryRoute;
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   '/': typeof IndexRoute;
   '/about': typeof AboutRoute;
+  '/academy': typeof AcademyRoute;
   '/funds': typeof FundsRoute;
   '/hubs': typeof HubsRoute;
   '/news/$category': typeof NewsCategoryRoute;
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/academy'
     | '/funds'
     | '/hubs'
     | '/news/$category'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/academy'
     | '/funds'
     | '/hubs'
     | '/news/$category'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/academy'
     | '/funds'
     | '/hubs'
     | '/news/$category'
@@ -115,6 +127,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
   AboutRoute: typeof AboutRoute;
+  AcademyRoute: typeof AcademyRoute;
   FundsRoute: typeof FundsRoute;
   HubsRoute: typeof HubsRoute;
   NewsCategoryRoute: typeof NewsCategoryRoute;
@@ -136,6 +149,13 @@ declare module '@tanstack/react-router' {
       path: '/funds';
       fullPath: '/funds';
       preLoaderRoute: typeof FundsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/academy': {
+      id: '/academy';
+      path: '/academy';
+      fullPath: '/academy';
+      preLoaderRoute: typeof AcademyRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/about': {
@@ -179,6 +199,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AcademyRoute: AcademyRoute,
   FundsRoute: FundsRoute,
   HubsRoute: HubsRoute,
   NewsCategoryRoute: NewsCategoryRoute,

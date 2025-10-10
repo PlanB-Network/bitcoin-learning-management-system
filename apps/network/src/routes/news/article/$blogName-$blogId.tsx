@@ -6,6 +6,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { z } from 'zod';
+import PageBlock from '#src/components/page-block.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
 import { cdnUrl, getNameAndIdFromUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.js';
@@ -64,7 +65,7 @@ function SingleBlogDetail() {
     <PageLayout>
       {!isFetched && <Loader size={'s'} />}
       {blog && (
-        <>
+        <PageBlock>
           <Breadcrumbs blogTitle={blog.title} />
 
           <div className="text-start flex flex-col mx-auto lg:mx-0 md:flex-row w-full justify-between align-top border-b-2 lg:border-b-0">
@@ -101,7 +102,7 @@ function SingleBlogDetail() {
               </Button>
             </Link>
           </div>
-        </>
+        </PageBlock>
       )}
     </PageLayout>
   );
