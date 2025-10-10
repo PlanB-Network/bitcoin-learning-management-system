@@ -38,7 +38,6 @@ import { Route as LangContentCoursesCourseNameCourseIdRouteImport } from './rout
 import { Route as LangContentCertificationsMyCertificatesRouteImport } from './routes/$lang/_content/certifications/my-certificates';
 import { Route as LangContentCertificationsBCertRouteImport } from './routes/$lang/_content/certifications/b-cert';
 import { Route as LangContentMiscUnderConstructionRouteImport } from './routes/$lang/_content/_misc/under-construction';
-import { Route as LangContentMiscNodeNetworkRouteImport } from './routes/$lang/_content/_misc/node-network';
 import { Route as LangContentMiscManifestoRouteImport } from './routes/$lang/_content/_misc/manifesto';
 import { Route as LangContentMiscAboutRouteImport } from './routes/$lang/_content/_misc/about';
 import { Route as LangContentTutorialsCategoryIndexRouteImport } from './routes/$lang/_content/tutorials/$category/index';
@@ -261,12 +260,6 @@ const LangContentMiscUnderConstructionRoute =
   LangContentMiscUnderConstructionRouteImport.update({
     id: '/$lang/_content/_misc/under-construction',
     path: '/$lang/under-construction',
-    getParentRoute: () => rootRouteImport,
-  } as any);
-const LangContentMiscNodeNetworkRoute =
-  LangContentMiscNodeNetworkRouteImport.update({
-    id: '/$lang/_content/_misc/node-network',
-    path: '/$lang/node-network',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangContentMiscManifestoRoute =
@@ -691,7 +684,6 @@ export interface FileRoutesByFullPath {
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
-  '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
   '/$lang/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
@@ -785,7 +777,6 @@ export interface FileRoutesByTo {
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/about': typeof LangContentMiscAboutRoute;
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
-  '/$lang/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
   '/$lang/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
@@ -879,7 +870,6 @@ export interface FileRoutesById {
   '/$lang/calendar/': typeof LangCalendarIndexRoute;
   '/$lang/_content/_misc/about': typeof LangContentMiscAboutRoute;
   '/$lang/_content/_misc/manifesto': typeof LangContentMiscManifestoRoute;
-  '/$lang/_content/_misc/node-network': typeof LangContentMiscNodeNetworkRoute;
   '/$lang/_content/_misc/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/_content/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
   '/$lang/_content/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
@@ -975,7 +965,6 @@ export interface FileRouteTypes {
     | '/$lang/calendar'
     | '/$lang/about'
     | '/$lang/manifesto'
-    | '/$lang/node-network'
     | '/$lang/under-construction'
     | '/$lang/certifications/b-cert'
     | '/$lang/certifications/my-certificates'
@@ -1069,7 +1058,6 @@ export interface FileRouteTypes {
     | '/$lang/calendar'
     | '/$lang/about'
     | '/$lang/manifesto'
-    | '/$lang/node-network'
     | '/$lang/under-construction'
     | '/$lang/certifications/b-cert'
     | '/$lang/certifications/my-certificates'
@@ -1162,7 +1150,6 @@ export interface FileRouteTypes {
     | '/$lang/calendar/'
     | '/$lang/_content/_misc/about'
     | '/$lang/_content/_misc/manifesto'
-    | '/$lang/_content/_misc/node-network'
     | '/$lang/_content/_misc/under-construction'
     | '/$lang/_content/certifications/b-cert'
     | '/$lang/_content/certifications/my-certificates'
@@ -1257,7 +1244,6 @@ export interface RootRouteChildren {
   LangCalendarIndexRoute: typeof LangCalendarIndexRoute;
   LangContentMiscAboutRoute: typeof LangContentMiscAboutRoute;
   LangContentMiscManifestoRoute: typeof LangContentMiscManifestoRoute;
-  LangContentMiscNodeNetworkRoute: typeof LangContentMiscNodeNetworkRoute;
   LangContentMiscUnderConstructionRoute: typeof LangContentMiscUnderConstructionRoute;
   LangContentCertificationsBCertRoute: typeof LangContentCertificationsBCertRoute;
   LangContentCertificationsMyCertificatesRoute: typeof LangContentCertificationsMyCertificatesRoute;
@@ -1511,13 +1497,6 @@ declare module '@tanstack/react-router' {
       path: '/$lang/under-construction';
       fullPath: '/$lang/under-construction';
       preLoaderRoute: typeof LangContentMiscUnderConstructionRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    '/$lang/_content/_misc/node-network': {
-      id: '/$lang/_content/_misc/node-network';
-      path: '/$lang/node-network';
-      fullPath: '/$lang/node-network';
-      preLoaderRoute: typeof LangContentMiscNodeNetworkRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/_misc/manifesto': {
@@ -2108,7 +2087,6 @@ const rootRouteChildren: RootRouteChildren = {
   LangCalendarIndexRoute: LangCalendarIndexRoute,
   LangContentMiscAboutRoute: LangContentMiscAboutRoute,
   LangContentMiscManifestoRoute: LangContentMiscManifestoRoute,
-  LangContentMiscNodeNetworkRoute: LangContentMiscNodeNetworkRoute,
   LangContentMiscUnderConstructionRoute: LangContentMiscUnderConstructionRoute,
   LangContentCertificationsBCertRoute: LangContentCertificationsBCertRoute,
   LangContentCertificationsMyCertificatesRoute:

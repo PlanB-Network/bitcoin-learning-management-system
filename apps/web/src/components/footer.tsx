@@ -72,7 +72,6 @@ export const Footer = () => {
               title={t('words.network')}
               links={[
                 { label: t('words.events'), to: '/events' },
-                { label: t('words.nodeNetwork'), to: '/node-network' },
                 { label: t('words.public'), to: '/public-communication' },
               ]}
               textSecondaryClass={textSecondaryClass}

@@ -1665,7 +1665,6 @@
     "miningCourseDescription": "Understand the processes, tools and industry behind the Bitcoin mining.",
     "moviesDescription": "Discover captivating stories and in-depth explorations of Bitcoin evolution and impact",
     "newsletterDescription": "Collection of content that you can use for your educational projects",
-    "nodeNetworkDescription": "Join the Plan ₿ global community network",
     "planBLabsDescription": "Join a study group to continue learning on Lightning, Mining and Privacy",
     "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
     "projectsDescription": "Learn about the companies and projects that contribute to improving Bitcoin and increasing its adoption",
@@ -1716,12 +1715,6 @@
     "translationPanel": "Translation panel",
     "tutorials": "Tutorials",
     "userRolesAllocation": "User roles allocation"
-  },
-  "nodeNetwork": {
-    "description1": "We believe that education should not only take place online but also in physical spaces. To achieve this, Plan ₿ Network manages a network of hubs around the world to welcome thinkers, entrepreneurs and educators fostering the advancement of Bitcoin and freedom technologies.",
-    "descriptionExtend": "Our first step is to invite communities with physical spaces, which we refer to as the \"full nodes\" of our network, to join us. In the future, as our network strengthens, we will extend this invitation to more initiatives worldwide. If you share our values, please reach out to our representatives to join our network and help build the best Bitcoin education possible.",
-    "pageSubtitle": "Want to orange pill the world? Join Plan ₿ Network.",
-    "pageTitle": "Explore Plan ₿ Node Network"
   },
   "notFound": {
     "here": "Here",
@@ -2197,7 +2190,6 @@
     "newsletter": "Newsletter",
     "next": "Next",
     "no": "No",
-    "nodeNetwork": "Node Network",
     "none": "None",
     "notApplicable": "Not applicable",
     "on": "on",
