@@ -289,7 +289,6 @@ jobs:
     name: Build Pear Sync
     if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
     runs-on: ubuntu-latest
-    needs: build_base
     env:
       image: ghcr.io/planb-network/blms-pear-sync
       base: ghcr.io/planb-network/blms-base:${{ github.sha }}
@@ -340,6 +339,7 @@ jobs:
       - build_network
       - build_contribute
       - build_design_system
+      - build_pear_sync
     steps:
       - name: Invoke deployment hook
         uses: distributhor/workflow-webhook@v3
