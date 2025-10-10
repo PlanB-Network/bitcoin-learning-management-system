@@ -1268,12 +1268,10 @@
       "emailChangeRateLimitError": "You've recently updated your email. Please wait a few minutes before trying again.",
       "notificationSettings": {
         "assignedAt": "Assigned at",
-        "completedAt": "Completed at",
         "coursesOption": "Updates about courses you enrolled in",
         "description": "You can customize your notification settings below. ",
         "displayName": "Display name",
         "emailPreferencesDescription": "Here you can choose the types of emails you'd like to receive from us. These preferences only apply to the email address associated with this link.",
-        "emailPreferencesError": "There was an error while trying to retrieve your email preferences. Please make sure that the link you followed is correct.",
         "emailPreferencesSavedSuccessfully": "Your email preferences were updated successfully.",
         "emailPreferencesTitle": "Manage your Plan ₿ Network email preferences",
         "emailTitle": "What types of notifications would you like to receive by email?",
