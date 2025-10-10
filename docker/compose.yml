@@ -145,8 +145,9 @@ services:
     volumes:
       - ./data/typesense:/usr/share/typesense/data
     environment:
-      - POSTGRES_HOST=postgres
-      - CORESTORE_PATH=/pear-sync-data
+      <<: *environment
+      POSTGRES_HOST: postgres
+      CORESTORE_PATH: /pear-sync-data
 
   # ONLYOFFICE Document Server for rich PPTX editing
   onlyoffice:
