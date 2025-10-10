@@ -850,6 +850,7 @@ const EventTypeFilter = ({
           text={capitalize(t(`events.types.plurals.${f}`))}
           size={isMobile ? 's' : 'm'}
           icon={EVENT_TYPE_ICONS[f]}
+          inactiveBackgroundColor="bg-white"
         />
       ))}
     </CategorySwitcherBar>

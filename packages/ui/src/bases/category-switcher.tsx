@@ -95,7 +95,7 @@ export const CategorySwitcher = ({
   isActive,
   onClick,
   size = 'm',
-  inactiveBackgroundColor,
+  inactiveBackgroundColor = 'bg-neutral-50',
   className,
 }: {
   text?: string;
@@ -110,11 +110,7 @@ export const CategorySwitcher = ({
     <button
       className={cn(
         categorySwitcherVariant({ size, isActive }),
-        !isActive
-          ? inactiveBackgroundColor
-            ? inactiveBackgroundColor
-            : 'bg-white'
-          : '',
+        !isActive ? inactiveBackgroundColor : '',
         className,
       )}
       onClick={onClick}

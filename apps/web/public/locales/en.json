@@ -1927,7 +1927,7 @@
     "events": "Events",
     "explorer": {
       "subtitle": "What are you looking for?",
-      "title": "Search Portal"
+      "title": "Search"
     },
     "filterByType": "Filter by type",
     "glossary_word": "Glossary word",
@@ -1948,10 +1948,11 @@
     "resultError": "Something went wrong. Please try again.",
     "resultInfo": "Found {{count}} results in {{time}}ms",
     "results": "Results",
+    "resultsFound": "{{count}} results found",
     "resultsRemaining": "{{count}} results remaining",
     "search": "Search",
     "searchResult": "Search results",
-    "startSearch": "Start your search to see results here",
+    "startSearch": "Start your search",
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
     "youtube_channel": "Youtube channel",

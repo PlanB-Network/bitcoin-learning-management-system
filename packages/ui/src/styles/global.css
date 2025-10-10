@@ -1768,7 +1768,7 @@
 
 /* Search result highlight */
 .search-results mark {
-  @apply bg-darkOrange-8 text-white;
+  @apply bg-orange-100 text-black;
 }
 
 #pear-ctrl-container {
