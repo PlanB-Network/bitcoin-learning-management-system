@@ -139,6 +139,15 @@ services:
     volumes:
       - ./data/typesense:/usr/share/typesense/data
 
+  pear_sync:
+    <<: *defaults
+    image: ghcr.io/planb-network/pear-sync:${IMAGE_TAG}
+    volumes:
+      - ./data/typesense:/usr/share/typesense/data
+    environment:
+      <<: *environment
+      CORESTORE_PATH=/pear-sync-data
+
   # ONLYOFFICE Document Server for rich PPTX editing
   onlyoffice:
     <<: *defaults
