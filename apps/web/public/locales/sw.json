@@ -91,7 +91,9 @@
     "sendLink": "Nitumie kiungo",
     "signIn": "Ingia",
     "trackProgress": "Unda akaunti au ingia kwenye akaunti yako ili kufuatilia maendeleo yako.",
-    "tryAgain": "Jaribu tena"
+    "tryAgain": "Jaribu tena",
+    "loginNotAvailable1": "Vipengele vya kuingia havipo kwenye programu ya kompyuta bado.",
+    "loginNotAvailable2": "Unaweza kutembelea tovuti yetu kuingia na kufikia akaunti yako."
   },
   "bCert": {
     "bCertDescription": "₿-CERT ni mtihani wa mwisho wa Bitcoin uliobuniwa kutathmini ufahamu wako wa Bitcoin na mada zinazohusiana. Ikiwa utapata alama zaidi ya 80%, utapata cheti cha ₿-CERT ambacho kinaweza kuthibitisha ujuzi wako katika sekta ya Bitcoin, kufungua milango kwa nafasi mbalimbali za kazi katika uwanja huo.",
@@ -111,7 +113,11 @@
     "pageTitle": "Chukua mtihani wa ₿-CERT",
     "readChart": "Soma katiba",
     "tweetText": "Nimefurahi sana kupita ₿-CERT kwenye @planb_network na alama ya {{score}}/100! {{emoji}} #BCERT{{certificateUrl}}",
-    "verify": "Thibitisha uhalali wa cheti chako"
+    "verify": "Thibitisha uhalali wa cheti chako",
+    "hostSessionConditions": "Hivi ndivyo utakavyofanya:\n\n\n\n\n\n\n\n1. Soma <0>Hati</0> - Hakikisha jamii yako inatimiza masharti ya lazima ya kupokea\n\n\n\n2. Panga & Ratibu - Kama unastahili, chagua tarehe na andaa kikao\n\n\n\n3. Chapisha Tukio Lako - Wasiliana nasi ili kuliongeza kwenye jukwaa la Plan ₿ Network ili watu wajiunge",
+    "myCertificates": "Vyeti vyangu",
+    "noTestSessions": "Hakuna vikao vya mtihani vinavyopatikana kwa sasa",
+    "wantHostSession": "Unataka kuandaa kikao cha mtihani wa ₿-CERT kwenye kituo chako cha kijamii?"
   },
   "bet": {
     "contributeButton": "Saidia & Changia",
@@ -148,7 +154,8 @@
     "noConferences": "Hakuna mikutano iliyoongezwa kwa {{year}} bado.",
     "pageTitle": "Conferences",
     "planBConferences": "Mikutano ya Plan ₿",
-    "topics": "Mada"
+    "topics": "Mada",
+    "conferencesGenesis": "Mikutano tangu Block ya Mwanzo"
   },
   "courses": {
     "chapter": {
@@ -241,7 +248,7 @@
       "failed": "Imeangukwa",
       "failedDiploma": "Unahitaji kupata zaidi ya asilimia 80 katika mtihani wa mwisho ili upate diploma yako na ukamilishe kozi kikamilifu. Unaweza kurudia mtihani baada ya saa 24.",
       "finalExam": "Mtihani wa mwisho",
-      "finalScore": "",
+      "finalScore": "Matokeo ya mwisho",
       "findInformationChapter": "Pata habari zaidi katika sura hii :",
       "futureProof": "Thibitisha Mustakabali: Diploma yako inalindwa kwa kudumu na daima ni halali.",
       "getCertificate": "Pata diploma yangu",
@@ -283,7 +290,7 @@
       "skipExamDescription": "Unaweza pia kuruka mtihani na kuendelea moja kwa moja kwenye hitimisho kwa kubonyeza kitufe kilicho chini.",
       "skipExamGoConclusion": "Ruka mtihani,enda kwenye hitimisho",
       "skipGoConclusion": "Ruka mtihani,enda kwenye hitimisho",
-      "solidEffort": "",
+      "solidEffort": "Hongera kwa kukamilisha kozi, ulijitahidi vilivyo.\n\nIngawa haukufaulu wakati huu, kila hatua inajenga maendeleo.\n\nEndelea kusonga mbele na safari yako ya kujifunza",
       "startExam": "Anza mtihani",
       "submit": "Wasilisha",
       "successDiploma": "Hongera! Umefaulu mtihani kwa mafanikio.\nDiploma yako inapatikana kwenye dashibodi yako ya mwanafunzi. Imewekwa <0>muhuri wa muda</0> kuhakikisha uhalisi wake.",
@@ -309,7 +316,10 @@
       "weight": "Uzito: {{weight}}%",
       "whyTimeStamp": "Kutia Muhuri kwenye Diploma Yako:Kwa Nini Ina Umuhimu",
       "wishTryAgain": "Ikiwa unataka kujaribu tena, mtihani utapatikana katika masaa 24.",
-      "yesSubmit": "Ndiyo, wasilisha"
+      "yesSubmit": "Ndiyo, wasilisha",
+      "examResults": "Matokeo ya Mitihani",
+      "reviewTest": "Ukaguzi",
+      "scoreAndDiploma": "Alama ya stashahada"
     },
     "explorer": {
       "buildPath": "Jenga safari yako mwenyewe",
@@ -407,7 +417,10 @@
       "writeThoughts": "Hapa unaweza kuandika mawazo yako",
       "yesOfCourse": "ndiyo, bila shaka",
       "yesVeryMuch": "ndiyo, sana sana"
-    }
+    },
+    "allCourses": "Kozi zote",
+    "continueLeftOff": "Endelea kutoka pale ulipoachia",
+    "courseSelector": "Uchaguzi wa kozi"
   },
   "dashboard": {
     "account": "akaunti",
@@ -1728,5 +1741,9 @@
     "pageTitle": "Vituo vya Youtube",
     "view": "Tazama Channel ya Youtube",
     "watchTrailer": "Tazama trela"
+  },
+  "account": {
+    "account": "KICHWA: Sehemu ya akaunti",
+    "myTeacherProfile": "Wasifu wangu wa ualimu"
   }
 }
