@@ -16,7 +16,7 @@ export const SearchResult = ({ item }: SearchResultProps) => {
 
   return (
     <a
-      className="flex gap-2 rounded-2xl px-0.5 py-1 md:px-4 md:py-3 hover:bg-neutral-50 border border-transparent focus:border-orange-500 focus:outline-hidden search-results w-full justify-between items-center"
+      className="flex gap-2 rounded-2xl px-0.5 py-1 md:px-4 md:py-3 hover:bg-neutral-50 border border-transparent focus:bg-neutral-50 focus:border-orange-500 focus:outline-hidden search-results w-full justify-between items-center"
       href={`${item.document.link}#:~:text=${item.highlight.body?.matched_tokens?.[0] ?? item.document.title}`}
       target="_blank"
       rel="noreferrer"

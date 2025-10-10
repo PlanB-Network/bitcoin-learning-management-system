@@ -55,7 +55,7 @@ export const LanguageSelector = ({
         <button
           type="button"
           className={cn(
-            'group z-50 flex place-items-center text-sm font-semibold outline-hidden rounded-2xl transition-all text-newGray-1',
+            'group z-50 flex place-items-center text-sm font-semibold outline-hidden rounded-2xl transition-all text-neutral-500',
             className,
           )}
         >
@@ -64,16 +64,16 @@ export const LanguageSelector = ({
       </PopoverTrigger>
       <PopoverContent
         className={cn(
-          'flex flex-col items-center justify-center absolute z-50 bg-darkOrange-11 rounded-2xl w-[816px] px-8 py-6 max-h-fit overflow-y-scroll no-scrollbar text-darkOrange-10 lg:bg-darkOrange-2',
+          'flex flex-col items-center justify-center absolute z-50 rounded-2xl w-[816px] px-8 py-6 max-h-fit overflow-y-scroll no-scrollbar bg-header border border-brown-200',
           direction === 'down'
-            ? 'top-7 -right-12'
+            ? 'top-4 -right-5'
             : 'bottom-16 left-1/2 -translate-x-1/2',
         )}
         onClick={(e) => e.stopPropagation()}
       >
         <span
           className={cn(
-            'w-full text-center text-sm tracking-[1.12px] uppercase mb-6',
+            'w-full text-center caption-small uppercase mb-6',
             i18n.dir() === 'rtl' && 'direction-rtl',
           )}
         >
@@ -85,19 +85,19 @@ export const LanguageSelector = ({
               key={language}
               type="button"
               className={cn(
-                'flex items-center px-4 py-2 rounded-md hover:bg-white/10 w-44',
+                'flex items-center px-4 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-500 focus:bg-orange-50 focus:text-orange-500 w-44 focus:outline-hidden',
                 i18n.dir() === 'rtl' && 'flex-row-reverse',
                 activeLanguage.toLowerCase() === language.toLowerCase() &&
-                  'border rounded-lg border-darkOrange-5 dark gap-2 justify-between',
+                  'border rounded-lg border-orange-500 dark gap-2 justify-between',
               )}
               onClick={() => changeLanguage(language)}
             >
-              <span className="capitalize leading-normal text-left">
+              <span className="body-base text-left">
                 {LANGUAGES_MAP[language.toLowerCase().replaceAll('-', '')] ||
                   language}
               </span>
               {activeLanguage.toLowerCase() === language.toLowerCase() && (
-                <TbCheck size={20} className="text-darkOrange-5" />
+                <TbCheck size={20} className="text-orange-500" />
               )}
             </button>
           ))}
@@ -106,7 +106,7 @@ export const LanguageSelector = ({
           href="https://github.com/PlanB-Network/bitcoin-educational-content"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 w-full"
+          className="mt-4 w-full"
         >
           <Button variant="secondary" size="m" className="w-full !text-primary">
             {t('home.languageSection.link')}
@@ -199,7 +199,7 @@ export const LanguageSelectorMobile = ({
       <PopoverContent
         data-popover-content
         className={cn(
-          'flex flex-col absolute z-50 w-[287px] overflow-scroll no-scrollbar !shadow-none bottom-10 bg-white rounded-lg rounded-b-none pb-2 max-h-[calc(100dvh-120px)]',
+          'flex flex-col absolute z-50 w-[287px] overflow-scroll no-scrollbar bottom-10 bg-white rounded-lg rounded-b-none pb-2 max-h-[calc(100dvh-120px)]',
           i18n.dir() === 'rtl'
             ? 'right-1/2 translate-x-1/2'
             : 'left-1/2 -translate-x-1/2',

@@ -68,7 +68,7 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
         </PopoverTrigger>
         <PopoverContent
           className={cn(
-            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-newGray-6 border border-newGray-5 shadow-course-navigation-sm',
+            'absolute z-50 w-[390px] p-0 lg:rounded-[12px] h-fit max-h-[782px] overflow-y-scroll no-scrollbar top-7 -right-[50px] bg-header border border-brown-200 ',
           )}
           onClick={(e) => e.stopPropagation()}
         >
