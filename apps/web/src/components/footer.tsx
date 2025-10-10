@@ -72,7 +72,7 @@ export const Footer = () => {
               title={t('words.network')}
               links={[
                 { label: t('words.events'), to: '/events' },
-                { label: t('words.public'), to: '/public-communication' },
+                { label: t('words.legals'), to: '/legals' },
               ]}
               textSecondaryClass={textSecondaryClass}
             />
