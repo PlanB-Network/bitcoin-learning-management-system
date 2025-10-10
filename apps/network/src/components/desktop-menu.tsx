@@ -3,7 +3,7 @@ import Logo from '#src/assets/logo.png?no-inline';
 
 export default function DesktopMenu() {
   return (
-    <div className="mx-4 py-10 sticky top-0 z-50 bg-black flex flex-row justify-between gap-2 display-extra-small">
+    <div className="max-lg:hidden mx-4 py-10 sticky top-0 z-50 bg-black flex flex-row justify-between gap-2 display-extra-small">
       <Link to="/">
         <img className="" src={Logo} alt="" loading="lazy" />
       </Link>

@@ -1,5 +1,6 @@
 import { cn } from '@blms/ui';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { titleCss } from '#src/utils/css.tsx';
 import PageBlock from './page-block.tsx';
 
 type MediaCardProps = {
@@ -39,15 +40,7 @@ export default function MediaCard({
         ].join(' ')}
       >
         <div className="lg:absolute">
-          <h3
-            id="media-card-title"
-            className={cn(
-              'max-lg:display-base lg:text-4xl xl:text-6xl font-semibold lg:tracking-tight whitespace-pre-wrap',
-              titleClassName,
-            )}
-          >
-            {title}
-          </h3>
+          <h3 className={cn(titleCss, titleClassName)}>{title}</h3>
           {subtitleUnderImage && isMobile ? null : (
             <p
               className={cn(
