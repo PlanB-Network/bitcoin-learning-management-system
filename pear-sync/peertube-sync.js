@@ -1,8 +1,9 @@
+import { Stream } from 'node:stream';
+
 import Corestore from 'corestore';
 import DHT from 'hyperdht'; // https://docs.pears.com/building-blocks/hyperdht
 import Hyperdrive from 'hyperdrive';
 import Hyperswarm from 'hyperswarm';
-
 import postgres from 'postgres';
 
 console.log('Starting PeerTube sync script...', process.env);
@@ -147,12 +148,21 @@ for (const id of peerTubeIds) {
       }
 
       // Note: Maybe stream this directly to drive.put in future?
-      const fileBuffer = await res.arrayBuffer();
-      await drive.put(key, Buffer.from(fileBuffer));
-      console.log(
-        now(),
-        `Stored fragmented MP4 as ${key} length=${fileBuffer.byteLength / (1024 * 1024)}MB`,
-      );
+      const source = Stream.Readable.fromWeb(res.body, { signal: ac.signal });
+
+      const destination = drive.createWriteStream(key);
+
+      // Pipe the download stream directly into the drive
+      await new Promise((resolve, reject) => {
+        source.on('error', (err) => reject(err));
+        destination.on('error', (err) => reject(err));
+        destination.on('finish', () => resolve());
+        source.pipe(destination);
+      });
+
+      const size = Number(res.headers.get('content-length'));
+
+      console.log(now(), `Stored fragmented MP4 as ${key} size=${size}`);
     }
 
     console.log(now(), `--- Finished processing video ${id} ---`);

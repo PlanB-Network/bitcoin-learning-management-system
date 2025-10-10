@@ -6,6 +6,7 @@ import debounceify from 'debounceify';
 import Hyperdrive from 'hyperdrive';
 import Hyperswarm from 'hyperswarm';
 import { join } from 'path';
+import { pearSourceKey } from '#src/env.js';
 
 // We no longer store a boolean, but the initialization promise itself.
 let initializationPromise: Promise<{
@@ -73,10 +74,8 @@ export const getPearInstance = () => {
 
       const foundPeers = store.findingPeers();
 
-      const key = b4a.from(
-        'db0768c0afce76543c92bfaf69c619de0ad3f36bba2e609e918a7c4d262dcb74',
-        'hex',
-      );
+      console.log('Using source key:', pearSourceKey);
+      const key = b4a.from(pearSourceKey, 'hex');
 
       const drive = new Hyperdrive(store, key);
 
