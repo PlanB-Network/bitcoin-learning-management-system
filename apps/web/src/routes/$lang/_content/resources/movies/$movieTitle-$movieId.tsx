@@ -72,7 +72,7 @@ function Movie() {
         href: '/resources/movies',
         text: t('resources.movies.title'),
       }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !movie && (

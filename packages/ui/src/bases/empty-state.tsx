@@ -23,7 +23,7 @@ export const EmptyState = ({
   return (
     <div
       className={cn(
-        'border border-neutral-100 rounded-[20px] px-8 py-12 flex flex-col justify-center items-center text-center',
+        'border border-neutral-100 rounded-[20px] px-8 py-12 flex flex-col justify-center items-center text-center w-full',
         className,
       )}
     >

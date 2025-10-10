@@ -1,5 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
-import { Loader } from '@blms/ui';
+import { EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
@@ -38,9 +38,11 @@ function Movies() {
     setShowLocalOnly(checked);
   };
 
-  const sortedMovies = (
-    showLocalOnly ? [...localMovies] : [...(movies ?? [])]
-  ).sort((a, b) => a.title.localeCompare(b.title));
+  const sortedMovies = (showLocalOnly ? [...localMovies] : [...(movies ?? [])])
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .filter((movie) =>
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
 
   const isEnglishLanguage = i18n.language === 'en';
 
@@ -64,31 +66,25 @@ function Movies() {
         <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedMovies?.length ? (
-            sortedMovies
-              .filter((movie) =>
-                movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
-              )
-              .map((movie) => (
-                <Link
-                  to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
-                  params={{
-                    movieId: movie.id.toString(),
-                  }}
-                  className="max-sm:w-full"
-                  key={movie.id}
-                >
-                  <ResourceCard
-                    name={movie.title}
-                    author={movie.author}
-                    imageSrc={resourceImgUrl(movie)}
-                    language={movie.language}
-                  />
-                </Link>
-              ))
+            sortedMovies.map((movie) => (
+              <Link
+                to={`/resources/movies/${formatNameForURL(movie.title)}-${movie.id}`}
+                params={{
+                  movieId: movie.id.toString(),
+                }}
+                className="max-sm:w-full"
+                key={movie.id}
+              >
+                <ResourceCard
+                  name={movie.title}
+                  author={movie.author}
+                  imageSrc={resourceImgUrl(movie)}
+                  language={movie.language}
+                />
+              </Link>
+            ))
           ) : (
-            <p className="text-center text-gray-500">
-              {t('resources.movies.noMovies')}
-            </p>
+            <EmptyState title={t('resources.movies.noMovies')} />
           )}
         </div>
 

@@ -1,5 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
-import { Loader } from '@blms/ui';
+import { EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
@@ -40,7 +40,11 @@ function Podcasts() {
 
   const sortedPodcasts = (
     showLocalOnly ? [...localPodcasts] : [...(podcasts ?? [])]
-  ).sort((a, b) => a.name.localeCompare(b.name));
+  )
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .filter((podcast) =>
+      podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
 
   const isEnglishLanguage = i18n.language === 'en';
 
@@ -70,31 +74,25 @@ function Podcasts() {
         <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedPodcasts?.length ? (
-            sortedPodcasts
-              .filter((podcast) =>
-                podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
-              )
-              .map((podcast) => (
-                <Link
-                  to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
-                  params={{
-                    podcastId: podcast.id.toString(),
-                  }}
-                  key={podcast.id}
-                  className="max-sm:w-full"
-                >
-                  <ResourceCard
-                    name={podcast.name}
-                    author={podcast.host}
-                    imageSrc={resourceImgUrl(podcast, 'logo.webp')}
-                    language={podcast.language}
-                  />
-                </Link>
-              ))
+            sortedPodcasts.map((podcast) => (
+              <Link
+                to={`/resources/podcasts/${formatNameForURL(podcast.name)}-${podcast.id}`}
+                params={{
+                  podcastId: podcast.id.toString(),
+                }}
+                key={podcast.id}
+                className="max-sm:w-full"
+              >
+                <ResourceCard
+                  name={podcast.name}
+                  author={podcast.host}
+                  imageSrc={resourceImgUrl(podcast, 'logo.webp')}
+                  language={podcast.language}
+                />
+              </Link>
+            ))
           ) : (
-            <p className="text-center text-gray-500">
-              {t('resources.podcasts.noPodcasts')}
-            </p>
+            <EmptyState title={t('resources.podcasts.noPodcasts')} />
           )}
         </div>
 

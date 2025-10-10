@@ -106,7 +106,7 @@ function Lecture() {
         href: '/resources/lectures',
         text: t('resources.lectures.title'),
       }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !lecture && (

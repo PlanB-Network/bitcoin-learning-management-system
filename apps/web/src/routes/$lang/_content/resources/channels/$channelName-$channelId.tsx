@@ -72,7 +72,7 @@ function Channel() {
         href: '/resources/channels',
         text: t('resources.channels.title'),
       }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !channel && (

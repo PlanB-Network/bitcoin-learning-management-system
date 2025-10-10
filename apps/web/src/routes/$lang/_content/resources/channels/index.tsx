@@ -1,5 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
-import { Loader } from '@blms/ui';
+import { EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
@@ -44,7 +44,11 @@ function YoutubeChannels() {
 
   const sortedYoutubeChannels = (
     showLocalOnly ? [...localYoutubeChannels] : [...(youtubeChannels ?? [])]
-  ).sort((a, b) => a.name.localeCompare(b.name));
+  )
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .filter((youtubeChannel) =>
+      youtubeChannel.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
 
   const isEnglishLanguage = i18n.language === 'en';
 
@@ -68,32 +72,24 @@ function YoutubeChannels() {
         <div className="flex flex-wrap gap-0.5 sm:gap-6">
           {!isFetched && <Loader size="s" />}
           {sortedYoutubeChannels?.length ? (
-            sortedYoutubeChannels
-              .filter((youtubeChannel) =>
-                youtubeChannel.name
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase()),
-              )
-              .map((youtubeChannel) => (
-                <Link
-                  to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
-                  params={{
-                    youtubeChannelId: youtubeChannel.id.toString(),
-                  }}
-                  className="max-sm:w-full"
-                  key={youtubeChannel.id}
-                >
-                  <ResourceCard
-                    name={youtubeChannel.name}
-                    imageSrc={resourceImgUrl(youtubeChannel)}
-                    language={youtubeChannel.language}
-                  />
-                </Link>
-              ))
+            sortedYoutubeChannels.map((youtubeChannel) => (
+              <Link
+                to={`/resources/channels/${formatNameForURL(youtubeChannel.name)}-${youtubeChannel.id}`}
+                params={{
+                  youtubeChannelId: youtubeChannel.id.toString(),
+                }}
+                className="max-sm:w-full"
+                key={youtubeChannel.id}
+              >
+                <ResourceCard
+                  name={youtubeChannel.name}
+                  imageSrc={resourceImgUrl(youtubeChannel)}
+                  language={youtubeChannel.language}
+                />
+              </Link>
+            ))
           ) : (
-            <p className="text-center text-gray-500">
-              {t('resources.channels.noYoutubeChannels')}
-            </p>
+            <EmptyState title={t('resources.channels.noYoutubeChannels')} />
           )}
         </div>
 

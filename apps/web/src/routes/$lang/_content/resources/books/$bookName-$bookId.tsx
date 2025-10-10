@@ -75,7 +75,7 @@ function Book() {
   return (
     <PageLayout
       backLink={{ href: '/resources/books', text: t('resources.books.title') }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !book && (

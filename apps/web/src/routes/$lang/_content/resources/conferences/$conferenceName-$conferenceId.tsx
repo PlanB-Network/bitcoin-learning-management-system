@@ -164,7 +164,7 @@ function Conference() {
         href: '/resources/conferences',
         text: t('conferences.pageTitle'),
       }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !conference && (

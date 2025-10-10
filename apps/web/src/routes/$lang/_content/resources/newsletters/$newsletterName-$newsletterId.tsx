@@ -84,7 +84,7 @@ function NewsletterDetail() {
         href: '/resources/newsletters',
         text: t('resources.newsletters.title'),
       }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !newsletter && (

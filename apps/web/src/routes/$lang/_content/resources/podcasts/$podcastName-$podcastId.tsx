@@ -72,7 +72,7 @@ function Podcast() {
         href: '/resources/podcasts',
         text: t('resources.podcasts.title'),
       }}
-      layoutSize="base"
+      layoutSize="wide"
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !podcast && (

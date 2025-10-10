@@ -1,5 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
-import { Loader } from '@blms/ui';
+import { EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
@@ -43,7 +43,11 @@ function Newsletter() {
 
   const sortedNewsletters = (
     showLocalOnly ? [...localNewsletters] : [...(newsletters ?? [])]
-  )?.sort((a, b) => a.title.localeCompare(b.title));
+  )
+    ?.sort((a, b) => a.title.localeCompare(b.title))
+    .filter((newsletter) =>
+      newsletter.title?.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
 
   const isEnglishLanguage = i18n.language === 'en';
 
@@ -68,35 +72,27 @@ function Newsletter() {
           <div className="flex flex-wrap gap-0.5 sm:gap-6">
             {!isFetched && <Loader size="s" />}
             {sortedNewsletters?.length ? (
-              sortedNewsletters
-                .filter((newsletter) =>
-                  newsletter.title
-                    ?.toLowerCase()
-                    .includes(searchTerm.toLowerCase()),
-                )
-                .map((newsletter) => (
-                  <Link
-                    to={`/resources/newsletters/${formatNameForURL(
-                      newsletter.title,
-                    )}-${newsletter.id}`}
-                    params={{
-                      newsletterId: newsletter.id.toString(),
-                    }}
-                    key={`${newsletter.id}`}
-                    className="max-sm:w-full"
-                  >
-                    <ResourceCard
-                      name={newsletter.title}
-                      author={newsletter.author}
-                      imageSrc={resourceImgUrl(newsletter)}
-                      language={newsletter.language}
-                    />
-                  </Link>
-                ))
+              sortedNewsletters.map((newsletter) => (
+                <Link
+                  to={`/resources/newsletters/${formatNameForURL(
+                    newsletter.title,
+                  )}-${newsletter.id}`}
+                  params={{
+                    newsletterId: newsletter.id.toString(),
+                  }}
+                  key={`${newsletter.id}`}
+                  className="max-sm:w-full"
+                >
+                  <ResourceCard
+                    name={newsletter.title}
+                    author={newsletter.author}
+                    imageSrc={resourceImgUrl(newsletter)}
+                    language={newsletter.language}
+                  />
+                </Link>
+              ))
             ) : (
-              <p className="text-center text-gray-500">
-                {t('resources.newsletters.noNewsletters')}
-              </p>
+              <EmptyState title={t('resources.newsletters.noNewsletters')} />
             )}
           </div>
         </section>
