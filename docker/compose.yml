@@ -143,7 +143,7 @@ services:
     <<: *defaults
     image: ghcr.io/planb-network/blms-pear-sync:${IMAGE_TAG}
     volumes:
-      - ./data/typesense:/usr/share/typesense/data
+      - ./data/pear-sync-data:/pear-sync-data
     environment:
       <<: *environment
       POSTGRES_HOST: postgres
