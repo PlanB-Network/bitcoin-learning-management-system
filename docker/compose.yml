@@ -141,7 +141,7 @@ services:
 
   pear_sync:
     <<: *defaults
-    image: ghcr.io/planb-network/pear-sync:${IMAGE_TAG}
+    image: ghcr.io/planb-network/blms-pear-sync:${IMAGE_TAG}
     volumes:
       - ./data/typesense:/usr/share/typesense/data
     environment:
