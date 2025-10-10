@@ -41,7 +41,7 @@ const DEFAULT: Metadata = {
   description: "Let's build together the Bitcoin educational layer",
   image: DEFAULT_IMAGE,
   lang: 'en',
-  title: 'Plan ₿ Network',
+  title: 'Plan ₿ Academy',
 };
 
 const defaultMeta = (lang: string): Metadata => ({ ...DEFAULT, lang });

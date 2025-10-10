@@ -95,7 +95,7 @@ export const Footer = () => {
       >
         <img
           src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Network"
+          alt="Logo Plan ₿ Academy"
           className="w-26 md:w-30"
         />
       </div>
