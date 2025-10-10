@@ -3,7 +3,7 @@
     "title": "Our Commitment\nto <0>Freedom</0>",
     "subtitle": "Founded in 2024 by passionate Bitcoiners, the Plan ₿ Network initiative aims to provide tools that support the Bitcoin ecosystem in its growth toward mass adoption",
     "media1title": "A global ecosystem of builders focus on Bitcoin",
-    "media1subtitle": "Plan \u20bf Network is a joint initiative between Tether, Fulgur Ventures, D\u00e9couvreBitcoin, and led by Giacomo Zucco & Rogzy.\u00a0\n\nOur mission is to offer worldwide Bitcoin solutions to make bitcoin mass adoption easier, we focus around three major areas:\n- Academic resources to spread knowledge\n- Community building to stay decentralized\n- Start-up support to drive innovation\n\nOur experts and founders\u2019 network share common values that help guide us throughout our journey.",
+    "media1subtitle": "Plan \u20bf Network is a joint initiative between Tether, Fulgur Ventures, D\u00e9couvreBitcoin, and led by Giacomo Zucco & Rogzy.\u00a0\n\nOur mission is to offer worldwide Bitcoin solutions to make bitcoin mass adoption easier, we focus around three major areas:\n• Academic resources to spread knowledge\n• Community building to stay decentralized\n• Start-up support to drive innovation\n\nOur experts and founders\u2019 network share common values that help guide us throughout our journey.",
     "ourValues": {
       "title": "Our values",
       "1textt": "Bitcoin first",
@@ -29,11 +29,14 @@
   },
   "news": {
     "title": "Latest news of the <0>Network</0>",
-    "subtitle": "At Plan B Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check our latest news !",
+    "subtitle": "At Plan ₿ Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check our latest news !",
     "noNews": "There are no news at this time.",
     "readArticle": "Read article",
     "previousNews": "Previous Network Posts",
     "backToAll": "Back to all articles",
     "news": "News"
+  },
+  "words": {
+    "read": "Read"
   }
 }

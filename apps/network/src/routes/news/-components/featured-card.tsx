@@ -15,8 +15,8 @@ interface FeaturedCardProps {
 
 const cardStyles = cva(
   cn(
-    'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto md:flex-row',
-    'justify-center px-2 py-2 lg:p-5 w-full rounded-xs md:rounded-[30px] items-start',
+    'mb-12 text-start lg:gap-9 shadow-course-navigation flex flex-col mx-auto lg:flex-row',
+    'justify-center px-2 py-2 lg:p-5 w-full rounded-xs md:rounded-[30px] items-start max-lg:max-w-[500px]',
   ),
   {
     defaultVariants: {
@@ -24,7 +24,7 @@ const cardStyles = cva(
     },
     variants: {
       background: {
-        main: 'border-orange-500 border-[1px] hover:shadow-orange-600 shadow-md',
+        main: 'border-orange-500 lg:border-[1px] lg:hover:shadow-orange-600 shadow-md',
         secondary: '',
       },
     },
@@ -72,7 +72,7 @@ export const FeaturedCard = ({
 
   return (
     <div className={cardStyles({ background })}>
-      <div key={latestBlog.id} className="w-full order-2 md:order-1">
+      <div key={latestBlog.id} className="w-full order-2 lg:order-1">
         <Link
           className="self-start justify-self-start"
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
@@ -91,7 +91,6 @@ export const FeaturedCard = ({
                 : t('home.blogSection.noDateAvailable')}
             </span>
           </div>
-
           <div>
             <p className="text-gray-300 max-md:hidden body-16px">
               {latestBlog.description}
@@ -99,7 +98,7 @@ export const FeaturedCard = ({
           </div>
         </Link>
       </div>
-      <div className="mb-3 md:mr-5 lg:mr-0 lg:ml-5 lg:mb-0 w-fit mx-auto order-1 md:order-2">
+      <div className="mb-3 md:mr-5 lg:mr-0 lg:ml-5 lg:mb-0 w-fit mx-auto order-1 lg:order-2">
         <Link
           key={latestBlog.id}
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}

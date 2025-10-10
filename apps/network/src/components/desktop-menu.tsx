@@ -15,7 +15,6 @@ export default function DesktopMenu() {
       <div className="flex flew-row gap-16 text-gray-200">
         <Link to="/about">About</Link>
         <Link to="/news">News</Link>
-        <span>EN</span>
       </div>
     </div>
   );

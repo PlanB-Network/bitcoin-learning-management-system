@@ -1,6 +1,8 @@
 import { cn } from '@blms/ui';
 import type { ReactNode } from 'react';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import DesktopMenu from './desktop-menu.tsx';
+import { MobileMenu } from './mobile-menu.tsx';
 
 interface Props {
   children?: ReactNode;
@@ -8,6 +10,9 @@ interface Props {
 }
 
 export const PageLayout = ({ children, className }: Props) => {
+  const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
+    useDisclosure();
+
   return (
     <div className="bg-black text-white whitespace-pre-wrap">
       <div
@@ -18,6 +23,10 @@ export const PageLayout = ({ children, className }: Props) => {
       >
         <div className="w-full">
           <DesktopMenu />
+          <MobileMenu
+            isMobileMenuOpen={isMobileMenuOpen}
+            toggleMobileMenu={toggleMobileMenu}
+          />
           {children && <div>{children}</div>}
         </div>
       </div>

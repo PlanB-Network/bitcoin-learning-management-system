@@ -47,7 +47,7 @@ export const BlogList = () => {
 
   return (
     <div className="mx-auto mt-20">
-      <PageBlock>
+      <PageBlock className="px-5">
         <FeaturedCard variant="main" />
       </PageBlock>
       <PageBlock>
@@ -62,11 +62,13 @@ export const BlogList = () => {
                   imageSrc={resourceImgUrl(blog)}
                   imgClassName="w-full !rounded-b-0 rounded-t-[10px] lg:rounded-[10px] mb-1"
                   title={blog.title}
-                  cardColor="grey"
+                  cardColor="black"
                   className="text-start shadow-course-navigation h-full border-[1px] border-transparent hover:border-orange-500"
                   category={blog.category}
                   excerpt={blog.description ?? ''}
                   isScreenMd={isScreenMd}
+                  buttonText={t('words.read')}
+                  buttonVariant={'primary'}
                 />
               </Link>
             ))}

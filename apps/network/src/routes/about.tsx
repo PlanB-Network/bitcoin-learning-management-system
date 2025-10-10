@@ -4,6 +4,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/about-header.png';
+import headerSmallImage from '#src/assets/about-header-small.png';
 import media1Image from '#src/assets/about-media-1.png';
 import valuesBitcoinFirstImage from '#src/assets/icons/bitcoin.png';
 import valuesBottomUpImage from '#src/assets/icons/bottom-up.png';
@@ -15,6 +16,7 @@ import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import PageBlock from '#src/components/page-block.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { titleCss } from '#src/utils/css.tsx';
 import { resourceImgUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.ts';
@@ -25,6 +27,7 @@ export const Route = createFileRoute('/about')({
 
 function RouteComponent() {
   const { t } = useTranslation();
+  const isMobile = useSmaller('lg');
 
   const { data: projects, isFetched } = useQuery(
     trpc.content.getProjects.queryOptions({
@@ -169,171 +172,165 @@ function RouteComponent() {
 
   return (
     <PageLayout>
-      <div>
-        <Hero
-          titleElement={
-            <Trans i18nKey="about.title">
-              <span className="font-semibold">Network</span>
-            </Trans>
-          }
-          subtitle={t('about.subtitle')}
-          imageUrl={headerImage}
-          className="mx-10"
-          titleClassName={''}
-          subtitleClassName={'max-w-[85%] lg:max-w-[50%]'}
-        />
-        <MediaCard
-          title={t('about.media1title')}
-          subtext={t('about.media1subtitle')}
-          imageUrl={media1Image}
-          alt="Scenic mountain lake"
-          titleClassName={'lg:max-w-[53%]'}
-          subtitleClassName={'lg:max-w-[50%]'}
-          subtitleUnderImage={true}
-        />
-        <PageBlock>
-          <h2 className="display-medium mb-16 mt-20">
-            {t('about.ourValues.title')}
-          </h2>
-          <div className="flex flex-row flex-wrap gap-4 lg:gap-10 justify-center-safe">
-            {valuesCards.map((card) => (
-              <div
-                className="flex flex-col gap-2 lg:gap-4 w-52 lg:w-[380px] border-[1px] border-orange-600 rounded-3xl p-8 text-left"
-                key={card.title}
-              >
-                <img className="w-12" src={card.imageUrl} alt="" />
-                <p className="uppercase body-small-bold lg:display-small">
-                  {card.title}
-                </p>
-                <p className="body-small lg:text-xl text-gray-300">
-                  {card.subtext}
-                </p>
+      <Hero
+        titleElement={
+          <Trans i18nKey="about.title">
+            <span className="font-semibold">Network</span>
+          </Trans>
+        }
+        subtitle={t('about.subtitle')}
+        imageUrl={isMobile ? headerSmallImage : headerImage}
+        className="mx-10"
+        subtitleClassName={'max-w-[85%] lg:max-w-[50%]'}
+      />
+      <MediaCard
+        title={t('about.media1title')}
+        subtext={t('about.media1subtitle')}
+        imageUrl={media1Image}
+        alt="Scenic mountain lake"
+        titleClassName={'lg:max-w-[53%]'}
+        subtitleClassName={'lg:max-w-[50%]'}
+        subtitleUnderImage={true}
+        className="mt-12"
+      />
+      <PageBlock className="mt-12 lg:mt-24">
+        <h2 className="display-medium mb-8 max-lg:text-center">
+          {t('about.ourValues.title')}
+        </h2>
+        <div className="flex flex-row flex-wrap gap-4 lg:gap-10 justify-center-safe">
+          {valuesCards.map((card) => (
+            <div
+              className="flex flex-col gap-2 lg:gap-4 w-52 lg:w-[380px] border-[1px] border-orange-600 rounded-3xl p-8 text-left"
+              key={card.title}
+            >
+              <img className="w-12" src={card.imageUrl} alt="" />
+              <p className="uppercase body-small-bold lg:display-small">
+                {card.title}
+              </p>
+              <p className="body-small lg:text-xl text-gray-300">
+                {card.subtext}
+              </p>
+            </div>
+          ))}
+        </div>
+      </PageBlock>
+      <PageBlock className="mt-12 lg:mt-24">
+        <h3 className={cn(titleCss, '!text-center')}>
+          {t('about.media2title')}
+        </h3>
+        <p
+          className={cn(
+            'text-center subtitle-base max-md:text-base text-gray-200 lg:mx-48 mt-6 lg:mt-12',
+          )}
+        >
+          {t('about.media2subtitle')}
+        </p>
+      </PageBlock>
+
+      <PageBlock className="mt-8 lg:mt-16">
+        <h2 className="text-center display-medium">{t('about.companies')}</h2>
+        <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
+          {!isFetched && <Loader size={'s'} />}
+          {filteredCompanies.map((company) => {
+            return (
+              <div key={company.id} className="flex flex-col items-center">
+                <ProjectCard
+                  name={company.name}
+                  logo={resourceImgUrl(company, 'logo.webp')}
+                  cardWidth=""
+                />
               </div>
-            ))}
-          </div>
-        </PageBlock>
-        <PageBlock className="mt-12">
-          <h3 className={cn(titleCss, 'text-center')}>
-            {t('about.media2title')}
-          </h3>
-          <p
-            className={cn(
-              'text-center subtitle-base max-md:text-base text-gray-200 lg:mx-48 mt-6 lg:mt-12',
-            )}
-          >
-            {t('about.media2subtitle')}
-          </p>
-        </PageBlock>
+            );
+          })}
+        </div>
+      </PageBlock>
 
-        <PageBlock className="mt-8">
-          <h2 className="text-center display-medium">{t('about.companies')}</h2>
-          <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11 mx-auto">
-            {!isFetched && <Loader size={'s'} />}
-            {filteredCompanies.map((company) => {
-              return (
-                <div key={company.id} className="flex flex-col items-center">
-                  <ProjectCard
-                    name={company.name}
-                    logo={resourceImgUrl(company, 'logo.webp')}
-                    cardWidth=""
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </PageBlock>
+      <PageBlock className="mt-8 lg:mt-16">
+        <h2 className="text-center display-medium">
+          {t('about.networkCollaborators')}
+        </h2>
+        <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
+          {!isFetched && <Loader size={'s'} />}
+          {filteredNetworkCollaborators.map((company) => {
+            return (
+              <div key={company.id} className="flex flex-col items-center">
+                <ProjectCard
+                  name={company.name}
+                  logo={resourceImgUrl(company, 'logo.webp')}
+                  cardWidth=""
+                />
+              </div>
+            );
+          })}
+        </div>
+      </PageBlock>
 
-        <PageBlock className="mt-8">
-          <h2 className="text-center display-medium">
-            {t('about.networkCollaborators')}
-          </h2>
-          <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11 mx-auto">
-            {!isFetched && <Loader size={'s'} />}
-            {filteredNetworkCollaborators.map((company) => {
-              return (
-                <div key={company.id} className="flex flex-col items-center">
-                  <ProjectCard
-                    name={company.name}
-                    logo={resourceImgUrl(company, 'logo.webp')}
-                    cardWidth=""
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </PageBlock>
-
-        <PageBlock className="mt-8">
-          <h2 className="text-center display-medium">
-            {t('about.communities')}
-          </h2>
-          <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11 mx-auto">
-            {!isFetched && <Loader size={'s'} />}
-            {filteredCommunities.map((community) => {
-              return (
-                <div key={community.id} className="flex flex-col items-center">
-                  <ProjectCard
-                    name={community.name}
-                    logo={resourceImgUrl(community, 'logo.webp')}
-                    cardWidth=""
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </PageBlock>
-        <PageBlock className="mt-8">
-          <h2 className="text-center display-medium">
-            {t('about.professors')}
-          </h2>
-          <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11 mx-auto">
-            {!isProfessorsFetched && <Loader size={'s'} />}
-            {professors
-              ? professors.map((professor) => {
-                  return (
-                    <div
-                      key={professor.id}
-                      className="flex flex-col items-center"
-                    >
-                      <ProjectCard
-                        name={professor.name}
-                        logo={resourceImgUrl(professor, 'profile.webp')}
-                        cardWidth=""
-                      />
-                    </div>
-                  );
-                })
-              : null}
-          </div>
-        </PageBlock>
-        <PageBlock className="mt-8">
-          <h2 className="text-center display-medium">
-            {t('about.contributors')}
-          </h2>
-          <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-4 sm:gap-11 mx-auto">
-            {(!isContributorsFetched || !isContribEduFetched) && (
-              <Loader size={'s'} />
-            )}
-            {mergedContributors && Array.isArray(mergedContributors)
-              ? mergedContributors.map((c: any) => (
-                  <Link
-                    key={c.id}
+      <PageBlock className="mt-8 lg:mt-16">
+        <h2 className="text-center display-medium">{t('about.communities')}</h2>
+        <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
+          {!isFetched && <Loader size={'s'} />}
+          {filteredCommunities.map((community) => {
+            return (
+              <div key={community.id} className="flex flex-col items-center">
+                <ProjectCard
+                  name={community.name}
+                  logo={resourceImgUrl(community, 'logo.webp')}
+                  cardWidth=""
+                />
+              </div>
+            );
+          })}
+        </div>
+      </PageBlock>
+      <PageBlock className="mt-8 lg:mt-16">
+        <h2 className="text-center display-medium">{t('about.professors')}</h2>
+        <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
+          {!isProfessorsFetched && <Loader size={'s'} />}
+          {professors
+            ? professors.map((professor) => {
+                return (
+                  <div
+                    key={professor.id}
                     className="flex flex-col items-center"
-                    to={c.html_url}
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     <ProjectCard
-                      name={c.login}
-                      logo={c.avatar_url}
+                      name={professor.name}
+                      logo={resourceImgUrl(professor, 'profile.webp')}
                       cardWidth=""
                     />
-                  </Link>
-                ))
-              : null}
-          </div>
-        </PageBlock>
-      </div>
+                  </div>
+                );
+              })
+            : null}
+        </div>
+      </PageBlock>
+      <PageBlock className="mt-8 lg:mt-16">
+        <h2 className="text-center display-medium">
+          {t('about.contributors')}
+        </h2>
+        <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
+          {(!isContributorsFetched || !isContribEduFetched) && (
+            <Loader size={'s'} />
+          )}
+          {mergedContributors && Array.isArray(mergedContributors)
+            ? mergedContributors.map((c: any) => (
+                <Link
+                  key={c.id}
+                  className="flex flex-col items-center"
+                  to={c.html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <ProjectCard
+                    name={c.login}
+                    logo={c.avatar_url}
+                    cardWidth=""
+                  />
+                </Link>
+              ))
+            : null}
+        </div>
+      </PageBlock>
     </PageLayout>
   );
 }
@@ -346,7 +343,7 @@ interface ProjectCardProps {
 
 export const ProjectCard = (props: ProjectCardProps) => {
   return (
-    <div className="flex flex-col items-center gap-2 w-full">
+    <div className="flex flex-col items-center gap-2 w-[125px]">
       <Image
         breakpoints={{ default: 100 }}
         className={cn(
@@ -356,7 +353,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
         src={props.logo}
         alt={props.name}
       />
-      <span className="body-base-bold md:text-center max-md:line-clamp-2 line-clamp-3">
+      <span className="body-base-bold md:text-center max-md:line-clamp-2 line-clamp-3 text-center">
         {props.name}
       </span>
     </div>

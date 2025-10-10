@@ -48,8 +48,6 @@ export const VerticalCard = ({
   onHoverCardColorChange,
   buttonText,
   buttonIcon,
-  buttonVariant = 'primary',
-  buttonMode,
   buttonLink,
   secondaryButtonText,
   secondaryButtonIcon,
@@ -195,73 +193,12 @@ export const VerticalCard = ({
           )}
         </div>
         <div className="flex flex-wrap max-md:flex-col max-md:justify-center items-center w-full mt-1 md:mt-4 gap-1.5 md:gap-5">
-          {buttonText &&
-            (buttonLink ? (
-              externalLink ? (
-                <a
-                  href={buttonLink}
-                  target="_blank"
-                  className={cn(
-                    secondaryButtonText ? 'max-md:w-full mt-auto' : 'w-full',
-                  )}
-                  rel="noreferrer"
-                >
-                  <Button
-                    variant={buttonVariant}
-                    mode={buttonMode}
-                    size={isScreenMd ? 'm' : 'xs'}
-                    className="w-full mt-auto items-end"
-                  >
-                    {buttonText}
-                    <span className="ml-3">{buttonIcon}</span>
-                    {onHoverArrow ? (
-                      <FaArrowRightLong
-                        className={cn(
-                          'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                          'group-hover:ml-3',
-                        )}
-                      />
-                    ) : null}
-                  </Button>
-                </a>
-              ) : (
-                <Link
-                  to={buttonLink}
-                  className={cn(
-                    secondaryButtonText ? 'max-md:w-full' : 'w-full',
-                  )}
-                >
-                  <Button
-                    variant={buttonVariant}
-                    mode={buttonMode}
-                    size={isScreenMd ? 'm' : 'xs'}
-                    className="w-full"
-                  >
-                    {buttonText}
-                    <span className="ml-3">{buttonIcon}</span>
-                    {onHoverArrow ? (
-                      <FaArrowRightLong
-                        className={cn(
-                          'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                          'group-hover:ml-3',
-                        )}
-                      />
-                    ) : null}
-                  </Button>
-                </Link>
-              )
-            ) : (
-              <Button
-                variant={buttonVariant}
-                mode={buttonMode}
-                size={isScreenMd ? 'm' : 'xs'}
-                disabled
-                className={cn(secondaryButtonText ? 'max-md:w-full' : 'w-full')}
-              >
-                {buttonText}
-                <span className="ml-3">{buttonIcon}</span>
-              </Button>
-            ))}
+          {buttonText && (
+            <Button className="w-full lg:hidden h-8" size={'m'}>
+              {buttonText}
+              <span className="ml-3">{buttonIcon}</span>
+            </Button>
+          )}
           {secondaryButtonText &&
             secondaryLink !== buttonLink &&
             (secondaryLink ? (

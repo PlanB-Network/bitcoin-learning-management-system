@@ -8,6 +8,8 @@ import { TRPCProvider, trpcClient } from './utils/trpc.ts';
 import './utils/i18n';
 
 import '../../../packages/ui/src/styles/global.css';
+import { NotFound } from './components/not-found.tsx';
+
 // Create a new router instance
 const router = createRouter({
   routeTree,
@@ -16,6 +18,7 @@ const router = createRouter({
   scrollRestoration: true,
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
+  defaultNotFoundComponent: NotFound,
 });
 
 // Register the router instance for type safety

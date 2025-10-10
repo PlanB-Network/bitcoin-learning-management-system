@@ -26,7 +26,7 @@ export const Hero = ({
       <div
         className={cn('relative flex flex-col tracking-[-0.4px]', className)}
       >
-        <div className="lg:absolute left-2 flex flex-col gap-4 lg:gap-8 xl:gap-20 h-full">
+        <div className="lg:absolute left-2 flex flex-col gap-8 xl:gap-20 h-full">
           <h1
             className={cn(
               'lg:mt-12 text-5xl lg:text-6xl xl:text-8xl lg:leading-16 xl:leading-24 font-light text-left',

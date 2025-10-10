@@ -7,6 +7,7 @@ type MediaCardProps = {
   title: string;
   subtext: string;
   imageUrl: string;
+  className?: string;
   titleClassName?: string;
   subtitleClassName?: string;
   imageClassName?: string;
@@ -19,6 +20,7 @@ export default function MediaCard({
   title,
   subtext,
   imageUrl,
+  className,
   titleClassName = 'max-w-[55%]',
   subtitleClassName = 'max-w-[50%]',
   imageClassName = 'lg:max-w-[50%]',
@@ -30,7 +32,7 @@ export default function MediaCard({
   const isMobile = useSmaller('lg');
 
   return (
-    <PageBlock>
+    <PageBlock className={className}>
       <fieldset
         aria-labelledby="media-card-title"
         className={[
@@ -44,7 +46,7 @@ export default function MediaCard({
           {subtitleUnderImage && isMobile ? null : (
             <p
               className={cn(
-                'mt-8 max-xl:text-base title-base text-gray-100 whitespace-pre-wrap',
+                'max-lg:text-center mt-8 max-xl:text-base max-lg:font-normal title-base text-gray-100 whitespace-pre-wrap',
                 subtitleClassName,
               )}
             >
@@ -56,7 +58,7 @@ export default function MediaCard({
           src={imageUrl}
           alt={alt}
           className={[
-            'w-full object-cover self-center lg:self-end',
+            'w-full object-cover self-center lg:self-end mt-5',
             'rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none',
             imageClassName,
           ].join(' ')}
@@ -64,7 +66,7 @@ export default function MediaCard({
         {subtitleUnderImage && isMobile ? (
           <p
             className={cn(
-              'mt-8 title-base text-gray-100  whitespace-pre-wrap',
+              'max-lg:text-center mt-8 max-xl:text-base max-lg:font-normal title-base text-gray-100 whitespace-pre-wrap',
               subtitleClassName,
             )}
           >

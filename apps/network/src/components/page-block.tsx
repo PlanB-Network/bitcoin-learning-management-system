@@ -8,7 +8,9 @@ type PageBlockProps = {
 
 export default function PageBlock({ children, className }: PageBlockProps) {
   return (
-    <div className={cn('px-5 md:px-12 max-w-[1320px] mx-auto', className)}>
+    <div
+      className={cn('px-5 md:px-8 lg:px-12 max-w-[1320px] mx-auto', className)}
+    >
       {children && <div>{children}</div>}
     </div>
   );
