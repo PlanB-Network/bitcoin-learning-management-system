@@ -12,8 +12,9 @@ type MediaCardProps = {
   subtitleClassName?: string;
   imageClassName?: string;
   alt?: string;
-  orientation?: 'vertical' | 'horizontal';
+  orientation?: 'left' | 'right';
   subtitleUnderImage?: boolean;
+  BottomElement?: React.ReactNode;
 };
 
 export default function MediaCard({
@@ -23,12 +24,13 @@ export default function MediaCard({
   className,
   titleClassName = 'max-w-[55%]',
   subtitleClassName = 'max-w-[50%]',
-  imageClassName = 'lg:max-w-[50%]',
+  imageClassName = '',
   alt = '',
-  orientation = 'vertical',
+  orientation = 'left',
   subtitleUnderImage = false,
+  BottomElement,
 }: MediaCardProps) {
-  const isHorizontal = orientation === 'horizontal';
+  const isLeft = orientation === 'left';
   const isMobile = useSmaller('lg');
 
   return (
@@ -38,42 +40,84 @@ export default function MediaCard({
         className={[
           'relative h-full w-full rounded-2xl shadow-lg transition-transform',
           'hover:-translate-y-0.5 hover:shadow-xl',
-          isHorizontal ? 'grid md:grid-cols-2' : 'flex flex-col lg:flex-col',
+          'flex flex-col lg:flex-col',
+          'hover:-translate-y-0.5 hover:shadow-xl',
         ].join(' ')}
       >
-        <div className="lg:absolute">
-          <h3 className={cn(titleCss, titleClassName)}>{title}</h3>
+        <div
+          className={cn(
+            'lg:absolute h-full z-10 p-10 flex flex-col justify-between',
+            !isLeft ? ' lg:items-end' : '',
+          )}
+        >
+          <h3
+            className={cn(
+              titleCss,
+              titleClassName,
+              isLeft ? 'lg:text-start' : 'lg:text-end',
+            )}
+          >
+            {title}
+          </h3>
           {subtitleUnderImage && isMobile ? null : (
-            <p
-              className={cn(
-                'max-lg:text-center mt-8 max-xl:text-base max-lg:font-normal title-base text-gray-100 whitespace-pre-wrap',
-                subtitleClassName,
-              )}
-            >
-              {subtext}
-            </p>
+            <BottomStuff
+              bottomElement={BottomElement}
+              subtitleClassName={subtitleClassName}
+              subtext={subtext}
+              isLeft={isLeft}
+            />
           )}
         </div>
+
         <img
           src={imageUrl}
           alt={alt}
           className={[
-            'w-full object-cover self-center lg:self-end mt-5',
-            'rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none',
+            'w-full object-cover self-center max-lg:-mt-20',
+            'rounded-2xl',
+            isLeft ? 'lg:self-end' : 'lg:self-start',
             imageClassName,
           ].join(' ')}
         />
+
         {subtitleUnderImage && isMobile ? (
-          <p
-            className={cn(
-              'max-lg:text-center mt-8 max-xl:text-base max-lg:font-normal title-base text-gray-100 whitespace-pre-wrap',
-              subtitleClassName,
-            )}
-          >
-            {subtext}
-          </p>
+          <BottomStuff
+            bottomElement={BottomElement}
+            subtitleClassName={subtitleClassName}
+            subtext={subtext}
+            isLeft={isLeft}
+          />
         ) : null}
       </fieldset>
     </PageBlock>
+  );
+}
+
+function BottomStuff({
+  bottomElement,
+  subtitleClassName,
+  subtext,
+  isLeft,
+}: {
+  bottomElement?: React.ReactNode;
+  subtitleClassName?: string;
+  subtext?: string;
+  isLeft: boolean;
+}) {
+  return (
+    <>
+      <p
+        className={cn(
+          'text-center max-xl:text-base max-lg:font-normal title-bas text-gray-100 whitespace-pre-wrap',
+          subtitleClassName ?? '',
+          isLeft ? 'lg:text-start' : 'lg:text-end',
+        )}
+      >
+        {subtext}
+      </p>
+      {bottomElement ? (
+        <div className="xl:mb-8 max-lg:mt-8">{bottomElement}</div>
+      ) : null}
+    </>
   );
 }

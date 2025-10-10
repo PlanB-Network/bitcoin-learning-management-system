@@ -215,7 +215,8 @@
   },
   "tailwindCSS.classAttributes": [
     "class",
-    "className",
+    ".*className*",
+    ".*ClassName*",
     "ngClass",
     "class:list",
     ".*Style*",

@@ -189,6 +189,7 @@ function RouteComponent() {
         alt="Scenic mountain lake"
         titleClassName={'lg:max-w-[53%]'}
         subtitleClassName={'lg:max-w-[50%]'}
+        imageClassName="lg:max-w-[50%]"
         subtitleUnderImage={true}
         className="mt-12"
       />
