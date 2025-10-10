@@ -778,8 +778,8 @@ function CourseDetails() {
               ) {
                 customToast(t('courses.details.courseAddedToDashboard'), {
                   closeButton: true,
-                  color: 'primary',
-                  imgSrc: SignInIconLight,
+                  color: 'success',
+                  icon: TbCheck,
                   mode: 'light',
                 });
               }

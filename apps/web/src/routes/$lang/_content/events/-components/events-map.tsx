@@ -337,7 +337,7 @@ const EventsMap = ({
 
     const lat = Number.parseFloat(urlParams.get('lat') ?? '34.298470');
     const lng = Number.parseFloat(urlParams.get('lng') ?? '-21.269531');
-    const zoom = Number.parseFloat(urlParams.get('zoom') ?? '3');
+    const zoom = Number.parseFloat(urlParams.get('zoom') ?? '1');
 
     const initialCoordinates = latLonToCoordinate([lng, lat]);
 

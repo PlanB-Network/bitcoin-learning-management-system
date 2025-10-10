@@ -15,7 +15,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
+import { TbCheck } from 'react-icons/tb';
 import { PaymentDescription } from '#src/components/payment-description.js';
 import { PaymentQr } from '#src/components/payment-qr.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -164,8 +164,8 @@ export const CoursePaymentModal = ({
     if (isPaymentSuccess) {
       customToast(t('courses.details.courseAddedToDashboard'), {
         closeButton: true,
-        color: 'primary',
-        imgSrc: SignInIconLight,
+        color: 'success',
+        icon: TbCheck,
         mode: 'light',
       });
     }
