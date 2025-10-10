@@ -115,12 +115,14 @@ export const CourseCard = ({
                   {t('courses.details.paidCourse')}
                 </TextTag>
               )}
-              <span className="flex items-center gap-1">
-                <HalfFilledStar className="size-5" />
-                <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
-                  {course.averageRating.toFixed(1)}
+              {course.averageRating !== 0 && (
+                <span className="flex items-center gap-1">
+                  <HalfFilledStar className="size-5" />
+                  <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
+                    {course.averageRating.toFixed(1)}
+                  </span>
                 </span>
-              </span>
+              )}
             </div>
           </div>
         </div>
