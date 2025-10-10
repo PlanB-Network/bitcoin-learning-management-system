@@ -13,9 +13,9 @@
       "3text": "Privacy",
       "3subtext": "We consider privacy to be one of the most fundamental human rights and essential for progress",
       "4text": "Freedom focus",
-      "4subtext": "Freedom is the foundation of human progress, shaping our work in peer‑to‑peer technology, ethics, and real‑world solutions",
+      "4subtext": "Freedom is the foundation of human progress, shaping our work in peer-to-peer technology, ethics, and real‑world solutions",
       "5text": "Bottom-up focus",
-      "5subtext": "We design tools for massive, permissionless use, enabling resilience and independence from top‑down attacks",
+      "5subtext": "We design tools for massive, permissionless use, enabling resilience and independence from top-down attacks",
       "6text": "Community",
       "6subtext": "We trust in communities—the backbone of Bitcoin—with plebs everywhere carrying the movement into every village and city"
     },
@@ -26,6 +26,10 @@
     "professors": "Professors",
     "contributors": "Contributors",
     "networkCollaborators": "Network collaborators"
+  },
+  "funds": {
+    "title": "<0>Building</0> the future together ",
+    "subtitle": "We're investing in the future of Bitcoin by supporting companies and startups that drive industry growth. With dedicated funds and an incubator program, we help transform innovative ideas into lasting impact"
   },
   "news": {
     "title": "Latest news of the <0>Network</0>",

@@ -15,7 +15,6 @@ import valuesPrivacyImage from '#src/assets/icons/visibility_off.png';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import PageBlock from '#src/components/page-block.tsx';
-import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { titleCss } from '#src/utils/css.tsx';
 import { resourceImgUrl } from '#src/utils/misc.tsx';
@@ -171,7 +170,7 @@ function RouteComponent() {
   ];
 
   return (
-    <PageLayout>
+    <>
       <Hero
         titleElement={
           <Trans i18nKey="about.title">
@@ -331,7 +330,7 @@ function RouteComponent() {
             : null}
         </div>
       </PageBlock>
-    </PageLayout>
+    </>
   );
 }
 

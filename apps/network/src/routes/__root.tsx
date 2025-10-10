@@ -1,11 +1,15 @@
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
+import { PageLayout } from '#src/components/page-layout.tsx';
 
 export const Route = createRootRoute({
   component: () => (
     <>
-      <Outlet />
+      <PageLayout>
+        <Outlet />
+      </PageLayout>
+
       {process.env.NODE_ENV === 'development' ? (
         <TanStackDevtools
           config={{

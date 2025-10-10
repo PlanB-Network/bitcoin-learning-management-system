@@ -1,31 +1,32 @@
 import { createFileRoute } from '@tanstack/react-router';
-import PageBlock from '#src/components/page-block.tsx';
-import { PageLayout } from '#src/components/page-layout.tsx';
+import { t } from 'i18next';
+import { Trans } from 'react-i18next';
+import headerImage from '#src/assets/funds-header.png';
+import headerSmallImage from '#src/assets/funds-header-small.png';
+import { Hero } from '#src/components/hero.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 export const Route = createFileRoute('/funds')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const isMobile = useSmaller('lg');
+
   return (
-    <PageLayout>
-      <PageBlock>
-        <article className="bg-gradient-network-lr">
-          <h2 className="title-extra-large">The Cyphertank</h2>
-          <p className="subtitle-base text-gray-300 max-w-[500px]">
-            Showcase your startup idea in front of industry leaders like Matt
-            Odell, Paolo Ardoino, and Oleg. Compete for the chance to win
-            $100,000 and make your mark in the global innovation scene. Think
-            you’ve got what it takes to be the next big founder? Step up, pitch
-            your vision, and seize the spotlight.
-          </p>
-          <div className="mt-6">
-            <p>BLA</p>
-            <p>BLA</p>
-            <p>BLA</p>
-          </div>
-        </article>
-      </PageBlock>
-    </PageLayout>
+    <>
+      <Hero
+        titleElement={
+          <Trans i18nKey="funds.title">
+            <span className="font-semibold">Building</span>
+          </Trans>
+        }
+        subtitle={t('funds.subtitle')}
+        imageUrl={isMobile ? headerSmallImage : headerImage}
+        className="mx-10"
+        subtitleClassName={'max-w-[85%] lg:max-w-[50%]'}
+      />
+      <div />
+    </>
   );
 }

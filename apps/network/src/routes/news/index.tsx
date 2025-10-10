@@ -4,7 +4,6 @@ import { Trans } from 'react-i18next';
 import headerImage from '#src/assets/network-header.png';
 import headerSmallImage from '#src/assets/network-header-small.png';
 import { Hero } from '#src/components/hero.tsx';
-import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BlogList } from './-components/blog-list.tsx';
 
@@ -16,7 +15,7 @@ function BlogsNews() {
   const isMobile = useSmaller('lg');
 
   return (
-    <PageLayout>
+    <>
       <Hero
         titleElement={
           <Trans i18nKey="news.title">
@@ -29,6 +28,6 @@ function BlogsNews() {
         subtitleClassName={'max-w-[85%] lg:max-w-[50%]'}
       />
       <BlogList />
-    </PageLayout>
+    </>
   );
 }

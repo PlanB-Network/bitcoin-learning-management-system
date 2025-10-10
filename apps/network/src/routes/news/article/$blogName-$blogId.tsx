@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { z } from 'zod';
 import PageBlock from '#src/components/page-block.tsx';
-import { PageLayout } from '#src/components/page-layout.js';
 import { cdnUrl, getNameAndIdFromUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.js';
 import BlogSidebar from '../-components/blog-sidebar.tsx';
@@ -62,7 +61,7 @@ function SingleBlogDetail() {
   }, [blog, navigate, params.blogName]);
 
   return (
-    <PageLayout>
+    <>
       {!isFetched && <Loader size={'s'} />}
       {blog && (
         <PageBlock>
@@ -104,6 +103,6 @@ function SingleBlogDetail() {
           </div>
         </PageBlock>
       )}
-    </PageLayout>
+    </>
   );
 }

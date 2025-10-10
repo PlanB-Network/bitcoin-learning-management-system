@@ -36,12 +36,7 @@ export const Hero = ({
             {titleElement}
           </h1>
           {subtitleUnderImage ? null : (
-            <p
-              className={cn(
-                'title-small lg:title-medium text-left',
-                subtitleClassName,
-              )}
-            >
+            <p className={cn('title-small lg:title-base', subtitleClassName)}>
               {subtitle}
             </p>
           )}
@@ -52,12 +47,7 @@ export const Hero = ({
           className="max-lg:mt-6 w-full h-auto object-cover"
         />
         {subtitleUnderImage ? (
-          <p
-            className={cn(
-              'title-small lg:title-medium text-left',
-              subtitleClassName,
-            )}
-          >
+          <p className={cn('title-small lg:title-base', subtitleClassName)}>
             {subtitle}
           </p>
         ) : null}
