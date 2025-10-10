@@ -1282,7 +1282,7 @@
         "generalOption": "General information and news about Plan ₿ Network",
         "goToProfile": "Go to Profile",
         "loadEmailSettingsError": "Sorry, we could not load your email preferences.",
-        "loadEmailSettingsErrorDescription": "Please ensure the link you used is complete and correct.",
+        "loadEmailSettingsErrorDescription": "Please ensure the link you used is correct.",
         "loadEmailSettingsErrorManage": "If you have access to your account, you can also manage settings directly in your dashboard:",
         "none": "None",
         "platformTitle": "What types of notifications would you like to receive on this platform?",
@@ -1828,7 +1828,7 @@
       "blogSidebarTitleForAll": "Previous Posts",
       "errorMessageNotFound": "Blog not found.",
       "featuredArticleTitleText": "Latest article released",
-      "filterText": "Filter by topic :",
+      "filterText": "Filter by topic:",
       "noArticlesText": "There are no blog posts at this time.",
       "pastArticleSubtitleText": "Past articles"
     },

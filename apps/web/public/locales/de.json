@@ -424,7 +424,13 @@
     "noCoursesFound": "Keine Kurse gefunden. Versuchen, deine Filter anzupassen.",
     "plusXMore": "+{{count}} weitere",
     "selectATopic": "Wähle ein Thema",
-    "tryAdjustingFilters": "Versuche, deine Filter anzupassen"
+    "tryAdjustingFilters": "Versuche, deine Filter anzupassen",
+    "liveClasses": {
+      "allOtherTitle": "Alle anderen Live-Lektionen",
+      "liveClasses": "Live-Unterricht",
+      "secondaryTitle": "Werde für Bitcoin-orientierte Unternehmen einsetzbar.",
+      "title": "Plan ₿ offizielle Jahresprogramme"
+    }
   },
   "dashboard": {
     "account": "Konto",

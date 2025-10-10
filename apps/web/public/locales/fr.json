@@ -154,7 +154,8 @@
     "noConferences": "Aucune conférence n'a été ajoutée pour {{year}} pour l'instant.",
     "pageTitle": "Rediffusion de conférences",
     "planBConferences": "Conférences Plan ₿",
-    "topics": "Sujets"
+    "topics": "Sujets",
+    "conferencesGenesis": "Conférences depuis le Bloc de Genèse"
   },
   "courses": {
     "chapter": {
@@ -424,7 +425,13 @@
     "noCoursesFound": "Aucun cours trouvé. Essayez d'ajuster vos filtres.",
     "plusXMore": "+{{count}} de plus",
     "selectATopic": "Sélectionnez un sujet",
-    "tryAdjustingFilters": "Essayez d'ajuster vos filtres"
+    "tryAdjustingFilters": "Essayez d'ajuster vos filtres",
+    "liveClasses": {
+      "allOtherTitle": "Tous les autres cours en direct",
+      "liveClasses": "Cours en direct",
+      "secondaryTitle": "Devenez employable dans des entreprises de l'écosystème Bitcoin.",
+      "title": "Programmes annuels officiels de Plan ₿"
+    }
   },
   "dashboard": {
     "account": "Compte",
@@ -1144,7 +1151,7 @@
       "listSavedComeTomorrow": "Votre liste de préférences est enregistrée. \nRevenez ici demain pour découvrir à quel projet vous avez été affecté.",
       "mostPreferred": "Le plus préféré",
       "mustBePdf": "Votre fichier doit être un PDF. Si vous devez soumettre un fichier supplémentaire, veuillez inclure un lien vers celui-ci dans votre PDF.",
-      "notSelectedAssignment": "Malheureusement, vous n'avez pas été sélectionné pour participer à l'attribution du projet.\nVous pouvez toujours continuer à suivre les cours",
+      "notSelectedAssignment": "Malheureusement, vous n'avez pas été sélectionné pour participer à l'attribution du projet.\nVous pouvez toujours continuer à suivre les cours.",
       "planbSchoolExamDescription": "Le programme Plan ₿ Biz School 2025 se compose de deux phases. Dans la première phase, vous passerez deux examens en ligne, spécifiquement l'examen de mi-parcours et le final : ce sont des tests chronométrés à tentative unique que vous pouvez faire à tout moment pendant une période de disponibilité de trois jours. Après la première phase, les étudiants seront sélectionnés en fonction de leur classement pour passer à la deuxième phase, qui implique l'assignation d'un projet : une tâche individuelle fournie par une entreprise Bitcoin. Vous pouvez trouver plus de détails à ce sujet dans l'onglet Assignment.\n\nLa note finale sera calculée comme une moyenne pondérée des trois tests. Les étudiants qui atteignent un score supérieur à 80 % recevront un diplôme, et les étudiants les mieux classés auront également la chance de participer à l'école d'été à Lugano, en juillet.",
       "planbSchoolGeneralInformation": "Le programme Plan ₿ Biz School 2025 se compose de deux phases. Dans la première phase, vous passerez deux examens en ligne, spécifiquement l'examen de mi-parcours et le final : ce sont des tests chronométrés à tentative unique que vous pouvez faire à tout moment pendant une période de disponibilité de trois jours. Après la première phase, les étudiants seront sélectionnés en fonction de leur classement pour passer à la deuxième phase, qui implique l'assignation d'un projet : une tâche individuelle fournie par une entreprise Bitcoin. Vous pouvez trouver plus de détails à ce sujet dans l'onglet Assignment.\n\nLa note finale sera calculée comme une moyenne pondérée des trois tests. Les étudiants qui atteignent un score supérieur à {{threshold}}% recevront un diplôme, et les étudiants les mieux classés auront également la chance de participer à l'école d'été à Lugano, en juillet.",
       "projectRankingInstructions": "Instructions pour le classement des projets :",
@@ -1433,7 +1440,8 @@
       "unlimited": "illimité",
       "visitWebsite": "Visitez le site Web",
       "watchLive": "Regarder en direct",
-      "watchReplay": "Regarder la rediffusion"
+      "watchReplay": "Regarder la rediffusion",
+      "buyLecture": "Acheter un séminaire"
     },
     "errors": {
       "premiumContentNeedsLogin": "Vous devez être connecté pour accéder à cet événement.",
@@ -1544,7 +1552,8 @@
     "placeHolder": "Qu'est-ce que c'est ?",
     "randomSearch": "Recherche aléatoire",
     "relatedWords": "Mots associés :",
-    "term": "Terme"
+    "term": "Terme",
+    "showMoreWords": "Afficher plus de mots"
   },
   "home": {
     "aboutUsSection": {
@@ -1667,7 +1676,8 @@
   "movies": {
     "goToMovie": "Aller au cinéma",
     "pageTitle": "Films & Documentaires",
-    "watchTrailer": "Regardez la bande-annonce"
+    "watchTrailer": "Regardez la bande-annonce",
+    "checkTheMovie": "Regarder le film"
   },
   "nodeNetwork": {
     "description1": "Nous pensons que l'éducation ne doit pas seulement se dérouler en ligne, mais également dans des espaces physiques. Pour y parvenir, Plan ₿ Network gère un réseau de centres dans le monde entier pour accueillir des penseurs, des constructeurs et des éducateurs favorisant l'avancement du Bitcoin et des technologies de la liberté.",
@@ -1809,18 +1819,21 @@
       "title": "Articles"
     },
     "bet": {
-      "title": "Boîte à outils Éducative"
+      "title": "Boîte à outils Éducative",
+      "addEducationKit": "Ajouter un kit éducatif"
     },
     "books": {
       "author": "Auteur : ",
-      "title": "Bibliothèque"
+      "title": "Bibliothèque",
+      "addBook": "Ajouter un livre"
     },
     "channels": {
       "noYoutubeChannels": "Il n'y a actuellement aucune chaîne Youtube pour la langue sélectionnée.",
       "title": "Chaînes Youtube"
     },
     "conferences": {
-      "title": "Rediffusion de conférences"
+      "title": "Rediffusion de conférences",
+      "addConference": "Ajouter une rediffusion de conférence"
     },
     "github": "Toutes ces données sont gérées via un dépôt <0>Github</0> open-source. N'hésitez pas à contribuer et à ajouter tout contenu manquant.",
     "glossary": {
@@ -1853,15 +1866,19 @@
     "pageTitle": "Ressources",
     "podcasts": {
       "noPodcasts": "Il n'y a actuellement aucun podcast pour la langue sélectionnée.",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "Ajouter un podcast",
+      "checkThePodcast": "Écouter le podcast"
     },
     "projects": {
-      "title": "Projets"
+      "title": "Projets",
+      "addProjects": "Ajouter un projet"
     },
     "searchFilterName": "Recherche par nom",
     "toggleFreeOnly": "Gratuit seulement",
     "toggleLabelAll": "Tout",
-    "toggleLabelSelectedLanguage": "Langue sélectionnée"
+    "toggleLabelSelectedLanguage": "Langue sélectionnée",
+    "pageSubtitleMovies": "<0>D'autres films</0> que vous pourriez aimer"
   },
   "search": {
     "all": "Tout",
@@ -1939,7 +1956,8 @@
       "ratingSuccess": "Merci pour votre avis !",
       "source": "Source originale :",
       "tutorialName": "Nom du tutoriel",
-      "writtenBy": "Ce tutoriel a été écrit par :"
+      "writtenBy": "Ce tutoriel a été écrit par :",
+      "didThisWork": "Cela a-t-il bien fonctionné pour vous ?"
     },
     "exchange": {
       "description": "Les échanges sont une des portes d'entrée et de sortie entre votre devise traditionnelle (euro, dollars) et le monde de Bitcoin. Les échanges peuvent être réglementés et KYC (Know Your Client), ou peer-to-peer et anonymes. Chaque échange offrira des fonctionnalités différentes, des structures de frais, de la liquidité et du soutien à la clientèle. Chaque bitcoiner utilisera un différent en fonction de ses besoins et de ses convictions.",
@@ -2017,7 +2035,8 @@
       "peertube": "Peertube",
       "player": "Lecteur vidéo",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Pears 🍐"
     }
   },
   "words": {
@@ -2226,7 +2245,9 @@
     "myCertificates": "Mes certificats",
     "resetFilters": "Réinitialiser les filtres",
     "sats": "Sats",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "discover": "Découvrir",
+    "seeAll": "Voir tout"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
@@ -2265,9 +2286,12 @@
     },
     "translationPanel": "Tableau de traduction",
     "tutorials": "Tutoriels",
-    "userRolesAllocation": "Attribution des rôles de l'utilisateur"
+    "userRolesAllocation": "Attribution des rôles de l'utilisateur",
+    "liveClassesDescription": "Cours encadrés par un enseignant",
+    "liveClassesTitle": "Cours en direct"
   },
   "account": {
-    "account": "Compte"
+    "account": "Compte",
+    "myTeacherProfile": "Mon profil d'enseignant"
   }
 }

@@ -154,7 +154,8 @@
     "noConferences": "尚未为{{year}}添加大会。",
     "pageTitle": "大会回放",
     "planBConferences": "Plan ₿大会",
-    "topics": "主题"
+    "topics": "主题",
+    "conferencesGenesis": "Genesis Block 以来的会议"
   },
   "courses": {
     "chapter": {
@@ -424,7 +425,13 @@
     "noCoursesFound": "未找到课程。尝试调整您的筛选条件。",
     "plusXMore": "+{{count}} 门课程",
     "selectATopic": "选择一个主题",
-    "tryAdjustingFilters": "尝试调整您的筛选条件"
+    "tryAdjustingFilters": "尝试调整您的筛选条件",
+    "liveClasses": {
+      "allOtherTitle": "所有其他的直播课程",
+      "liveClasses": "直播课程",
+      "secondaryTitle": "在以比特币为重点的公司中提高就业能力。",
+      "title": "Plan ₿官方年度计划"
+    }
   },
   "dashboard": {
     "account": "账户",
@@ -1433,7 +1440,8 @@
       "unlimited": "无限的",
       "visitWebsite": "访问网站",
       "watchLive": "观看直播",
-      "watchReplay": "观看回放"
+      "watchReplay": "观看回放",
+      "buyLecture": "购买讲座"
     },
     "errors": {
       "premiumContentNeedsLogin": "您需要登录以参加这个活动。",
@@ -1541,7 +1549,8 @@
     "placeHolder": "这是什么？",
     "randomSearch": "随机搜索",
     "relatedWords": "相关词汇：",
-    "term": "术语"
+    "term": "术语",
+    "showMoreWords": "加载更多单词"
   },
   "home": {
     "aboutUsSection": {
@@ -1664,7 +1673,8 @@
   "movies": {
     "goToMovie": "前往观看电影",
     "pageTitle": "电影与纪录片",
-    "watchTrailer": "观看预告片"
+    "watchTrailer": "观看预告片",
+    "checkTheMovie": "检查电影"
   },
   "nodeNetwork": {
     "description1": "Plan ₿网络支持全球的教育倡议。我们通过我们的平台和实体空间共同创建这些项目的最佳工具。我们一直在寻找新的节点加入我们。如果你想一起创建一个关于比特币的全球分散的教育网络，请联系我们！",
@@ -1806,18 +1816,21 @@
       "title": "文章"
     },
     "bet": {
-      "title": "教育工具"
+      "title": "教育工具",
+      "addEducationKit": "教育工具"
     },
     "books": {
       "author": "作者： ",
-      "title": "资料库"
+      "title": "资料库",
+      "addBook": "添加书籍"
     },
     "channels": {
       "noYoutubeChannels": "目前没有所选语言的YouTube频道。",
       "title": "YouTube频道"
     },
     "conferences": {
-      "title": "大会回放"
+      "title": "大会回放",
+      "addConference": "添加会议回放"
     },
     "github": "所有这些数据都通过一个开源的<0> Github </0>仓库进行管理。欢迎自由贡献并添加任何缺失的内容。",
     "glossary": {
@@ -1850,15 +1863,19 @@
     "pageTitle": "欢迎来到资源门户",
     "podcasts": {
       "noPodcasts": "目前没有所选语言的播客。",
-      "title": "播客"
+      "title": "播客",
+      "addPodcast": "添加播客",
+      "checkThePodcast": "查看播客"
     },
     "projects": {
-      "title": "项目"
+      "title": "项目",
+      "addProjects": "添加项目"
     },
     "searchFilterName": "按照名称搜索",
     "toggleFreeOnly": "仅限免费",
     "toggleLabelAll": "所有",
-    "toggleLabelSelectedLanguage": "所选语言"
+    "toggleLabelSelectedLanguage": "所选语言",
+    "pageSubtitleMovies": "<0>你可能会喜欢的其他电影</0>"
   },
   "search": {
     "all": "所有",
@@ -1936,7 +1953,8 @@
       "ratingSuccess": "谢谢您的评价！",
       "source": "原始资源",
       "tutorialName": "教程名称",
-      "writtenBy": "本教程作者："
+      "writtenBy": "本教程作者：",
+      "didThisWork": "这对你来说效果好吗？"
     },
     "exchange": {
       "description": "交易所是您的传统货币（欧元，美元）与比特币世界之间的进出门户之一。交易所可以是受监管的，也可以是符合KYC（客户了解）规定的，或者是点对点的，匿名的。每个交易所都会提供不同的功能，费用结构，流动性和客户支持。每个比特币用户会根据他们的需求和信念选择不同的交易所。",
@@ -2210,7 +2228,9 @@
     "settings": "设置",
     "certifications": "认证",
     "myCertificates": "我的证书",
-    "resetFilters": "重置筛选条件"
+    "resetFilters": "重置筛选条件",
+    "discover": "了解更多",
+    "seeAll": "查看全部"
   },
   "youtubeChannels": {
     "pageTitle": "YouTube频道",
@@ -2252,7 +2272,9 @@
     },
     "translationPanel": "翻译面板",
     "tutorials": "教程",
-    "userRolesAllocation": "用户角色分配"
+    "userRolesAllocation": "用户角色分配",
+    "liveClassesDescription": "由教师主导的课程",
+    "liveClassesTitle": "直播课程"
   },
   "videoSelector": {
     "language": {
@@ -2264,10 +2286,12 @@
       "peertube": "PeerTube",
       "player": "播放平台",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Pears 🍐"
     }
   },
   "account": {
-    "account": "账户"
+    "account": "账户",
+    "myTeacherProfile": "我的教师简介"
   }
 }

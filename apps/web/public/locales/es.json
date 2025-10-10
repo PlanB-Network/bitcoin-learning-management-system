@@ -1874,7 +1874,8 @@
     "searchFilterName": "Buscar por nombre",
     "toggleFreeOnly": "Gratis",
     "toggleLabelAll": "Todo",
-    "toggleLabelSelectedLanguage": "Idioma seleccionado"
+    "toggleLabelSelectedLanguage": "Idioma seleccionado",
+    "pageSubtitleMovies": "<0>Otras películas</0> que pueden gustarte"
   },
   "search": {
     "all": "Todos",
@@ -1952,7 +1953,8 @@
       "ratingSuccess": "¡Gracias por tu calificación!",
       "source": "Fuente original:",
       "tutorialName": "Nombre del tutorial",
-      "writtenBy": "Este tutorial fue escrito por:"
+      "writtenBy": "Este tutorial fue escrito por:",
+      "didThisWork": "¿Te funcionó bien esto?"
     },
     "exchange": {
       "description": "Los intercambios son una de las puertas de entrada y salida entre tu moneda tradicional (euros, dólares) y el mundo de bitcoin. Los intercambios pueden estar regulados y cumplir con el KYC (Conozca a su cliente), o peer-to-peer y anónimo. Cada intercambio ofrecerá diferentes características, estructuras de tasas, liquidez y soporte al cliente. Cada bitcoiner utilizará uno diferente según sus necesidades y convicciones.",
@@ -2227,7 +2229,8 @@
     "viewAll": "Ver todo",
     "week": "Semana",
     "weight": "Peso",
-    "seeAll": "Ver todo"
+    "seeAll": "Ver todo",
+    "discover": "Descubrir"
   },
   "youtubeChannels": {
     "pageTitle": "Canales de Youtube",
@@ -2260,9 +2263,9 @@
     "bookings": "Reservas",
     "career": "Carrera",
     "discountCode": "Códigos de descuento",
-    "learnAnytimeDescription": "Cursos a tu propio ritmo",
-    "learnAnytimeTitle": "Aprende en cualquier momento",
-    "liveClassesDescription": "Cursos dirigidos por profesores",
+    "learnAnytimeDescription": "Cursos gratuitos",
+    "learnAnytimeTitle": "En línea autónomos",
+    "liveClassesDescription": "Dirigidos por profesores",
     "liveClassesTitle": "Clases en vivo",
     "manageCourses": "Administrar cursos",
     "myCalendar": "Mi calendario",
@@ -2287,7 +2290,8 @@
       "peertube": "Peertube",
       "player": "Reproductor",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Pears 🍐"
     }
   }
 }

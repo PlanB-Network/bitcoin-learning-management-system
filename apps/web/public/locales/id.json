@@ -428,7 +428,7 @@
     "tryAdjustingFilters": "Coba sesuaikan filter Anda",
     "liveClasses": {
       "allOtherTitle": "Semua kelas langsung/ online lainnya",
-      "liveClasses": "Kelas langsung / online",
+      "liveClasses": "Kelas online",
       "secondaryTitle": "Menjadi layak untuk bekerja di Perusahaan yang berfokus pada Bitcoin.",
       "title": "Program tahunan resmi Plan ₿"
     }
@@ -1255,7 +1255,7 @@
         "generalOption": "Informasi umum dan berita tentang Plan ₿ Network",
         "goToProfile": "Buka Profil",
         "loadEmailSettingsError": "Maaf, kami tidak dapat memuat preferensi email Anda.",
-        "loadEmailSettingsErrorDescription": "Pastikan tautan yang Anda gunakan sudah lengkap dan benar.",
+        "loadEmailSettingsErrorDescription": "Pastikan link yang Anda gunakan sudah lengkap dan benar.",
         "loadEmailSettingsErrorManage": "Jika Anda memiliki akses ke akun Anda, Anda juga dapat mengelola pengaturan secara langsung di dasbor:",
         "none": "Tidak ada",
         "platformTitle": "Jenis notifikasi apa yang ingin Anda terima di platform ini?",
@@ -1793,7 +1793,7 @@
       "blogSidebarTitleForAll": "Posting sebelumnya",
       "errorMessageNotFound": "Blog tidak ditemukan.",
       "featuredArticleTitleText": "Artikel terbaru yang dirilis",
-      "filterText": "Saring berdasarkan topik :",
+      "filterText": "Filter berdasarkan topik :",
       "noArticlesText": "Tidak ada postingan blog saat ini.",
       "pastArticleSubtitleText": "Artikel sebelumnya"
     },
@@ -2265,7 +2265,7 @@
     "discountCode": "Kode diskon",
     "learnAnytimeDescription": "Kursus mandiri",
     "learnAnytimeTitle": "Belajar kapan saja",
-    "liveClassesDescription": "Kursus yang dipimpin oleh guru",
+    "liveClassesDescription": "Dibimbing oleh guru",
     "liveClassesTitle": "Kelas langsung",
     "manageCourses": "Kelola kursus",
     "myCalendar": "Kalender saya",

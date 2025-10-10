@@ -428,7 +428,7 @@
     "tryAdjustingFilters": "Prova a modificare i tuoi filtri",
     "liveClasses": {
       "allOtherTitle": "Altre lezioni live",
-      "liveClasses": "Corsi Premium",
+      "liveClasses": "Corsi Live",
       "secondaryTitle": "Diventa un candidato ideale per le aziende che lavorano su Bitcoin.",
       "title": "Programma annuale ufficiale di Plan ₿"
     }
@@ -1243,25 +1243,28 @@
       "emailChangeConfirmation": "E' stata inviata una email di conferma, controlla la tua posta in arrivo per confermare il cambio.",
       "emailChangeRateLimitError": "Hai appena aggiornato la tua email. Attendi qualche minuto prima di provare nuovamente.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
+        "coursesOption": "Aggiornamenti sui corsi a cui hai aderito",
+        "description": "Puoi configurare le tue impostazioni di notifica qui sotto. ",
+        "emailPreferencesDescription": "Qui puoi scegliere che tipo di email vuoi ricevere dalla piattaforma. Queste preferenze si applicano solo all'indirizzo email associato a questo link.",
         "emailPreferencesError": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
+        "emailPreferencesSavedSuccessfully": "Le tue impostazioni email sono state aggiornate correttamente.",
+        "emailPreferencesTitle": "Gestisci le impostazioni email su Plan ₿ Network",
+        "emailTitle": "Quali tipi di notifiche vorresti ricevere via email?",
+        "emailWarning": "Attenzione! Nessun indirizzo email è collegato al tuo account. Per favore aggiungilo nella sezione profilo.",
+        "eventsOption": "Aggiornamenti sugli eventi a cui sei iscritto",
+        "generalOption": "Informazioni generali e notizie su Plan ₿ Network",
+        "goToProfile": "Vai al Profilo",
         "loadEmailSettingsError": "Siamo spiacenti, non siamo riusciti a caricare le tue preferenze email.",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": "",
-        "assignedAt": "Assegnato a"
+        "loadEmailSettingsErrorDescription": "Assicurati che il link che hai utilizzato sia corretto.",
+        "loadEmailSettingsErrorManage": "Se hai accesso al tuo account, puoi anche gestire le impostazioni direttamente dalla tua dashboard:",
+        "none": "Nessuna",
+        "platformTitle": "Quali tipi di notifiche vuoi ricevere su questa piattaforma?",
+        "settingsSaved": "Le tue impostazioni sono state salvate con successo!",
+        "title": "Configurazione delle notifiche",
+        "assignedAt": "Assegnato a",
+        "role": "Ruolo",
+        "displayName": "Nome a display",
+        "filter": "Filtro"
       },
       "password": "Password",
       "personalInformation": "Le mie informazioni personali",
@@ -1272,27 +1275,27 @@
       "save": "Salva",
       "saving": "Salvataggio in corso…",
       "security": "Sicurezza",
-      "securitySettings": "",
-      "settings": "",
+      "securitySettings": "Impostazioni di sicurezza",
+      "settings": "Impostazioni",
       "username": "Nome utente"
     },
     "studentDashboard": "Dashboard dello studente",
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "Tutti gli studenti",
         "analytics": "Analisi",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
+          "contentLabel": "Testo dell'annuncio",
+          "contentPlaceholder": "Per favore scrivi qui.",
+          "create": "Crea annuncio",
+          "dateLabel": "Data di pubblicazione",
+          "datePlaceholder": "Scegli una data",
+          "dateRequired": "È richiesta la data",
+          "editAnnouncement": "Modifica annuncio",
           "groupLabel": "",
           "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "typeLabel": "Di che tipo di annuncio si tratta?",
+          "typePlaceholder": "Seleziona un tipo"
         },
         "announcements": "",
         "announcementsIntroduction": "",
@@ -1339,7 +1342,8 @@
         "reviews": "Recensioni",
         "selectCourse": "",
         "summerStudents": "",
-        "writeAnnouncement": ""
+        "writeAnnouncement": "",
+        "amountPaid": "Importo pagato"
       },
       "menu": "Menu insegnante",
       "profile": {
@@ -1479,7 +1483,20 @@
       "thisMonth": "Questo mese",
       "today": "Oggi",
       "xMonthsAgo": "{{number}} mesi fa"
-    }
+    },
+    "eventInfos": {
+      "eventType": "Tipo di evento"
+    },
+    "types": {
+      "plurals": {
+        "conference": "conferenze",
+        "exam": "esami",
+        "lecture": "lezioni",
+        "meetup": "meetup",
+        "workshop": "workshop"
+      }
+    },
+    "addEvent": "Aggiungi evento"
   },
   "filters": {
     "categories": "Categorie",
@@ -1623,7 +1640,8 @@
   "movies": {
     "goToMovie": "Scopri il film",
     "pageTitle": "Film & Documentari",
-    "watchTrailer": "Guarda il trailer"
+    "watchTrailer": "Guarda il trailer",
+    "checkTheMovie": "Scopri il film"
   },
   "nodeNetwork": {
     "description1": "Riteniamo che l'educazione non debba essere confinata esclusivamente al mondo online, ma debba trovare spazio anche in contesti fisici. Per questo motivo, Plan ₿ Network gestisce una rete di hub distribuiti in tutto il mondo, destinati ad accogliere pensatori, imprenditori ed educatori impegnati a favorire il progresso di Bitcoin e delle tecnologie della libertà.",
@@ -1638,11 +1656,11 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
+      "assignment": "Compito assegnato",
       "calendar": "Avviso del calendario",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "celebration": "Festeggiamento",
+      "general": "Informazioni generali",
+      "warning": "Avvertimento"
     }
   },
   "notifications": {
@@ -1948,7 +1966,7 @@
       "resource": "Risorse"
     },
     "wallet": {
-      "description": "Un wallet Bitcoin è come il tuo portachiavi. Ti permette di spendere e ricevere bitcoin. Ci sono un sacco di diversi tipi di wallet, tutti con diversi casi di utilizzo, funzioni, costi ed esperienze utente. Ogni bitcoiner userà un dispositivo diverso in base alle proprie necessità, livello di esigenza, ed esperienza.",
+      "description": "Un wallet Bitcoin è come il tuo portachiavi. Ti permette di spendere e ricevere bitcoin. Ci sono diversi tipi di wallet, tutti con diversi casi d'uso, funzionalità, costi ed esperienza utente. Ogni bitcoiner userà un dispositivo diverso in base alle proprie necessità, esigenze, ed esperienze.",
       "shortDescription": "Soluzioni di sicurezza e utilizzo dei tuoi bitcoin",
       "title": "Wallet"
     },
@@ -2134,7 +2152,9 @@
     "wallets": "Wallet",
     "yes": "Sì",
     "certifications": "Certificazioni",
-    "map": "Mappa"
+    "map": "Mappa",
+    "type": "Tipo",
+    "searchTripleDot": "Cerca..."
   },
   "youtubeChannels": {
     "pageTitle": "Canali Youtube",
@@ -2147,9 +2167,14 @@
   },
   "navbar": {
     "liveClassesDescription": "Seguiti da un insegnante",
-    "liveClassesTitle": "Corsi Premium",
+    "liveClassesTitle": "Corsi Live",
     "learnAnytimeDescription": "Studio autonomo",
     "learnAnytimeTitle": "Corsi Open Source",
     "myCalendar": "Il mio calendario"
+  },
+  "videoSelector": {
+    "player": {
+      "pears": "Pears 🍐"
+    }
   }
 }

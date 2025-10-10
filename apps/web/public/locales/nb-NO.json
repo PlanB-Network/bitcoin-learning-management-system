@@ -113,7 +113,11 @@
     "pageTitle": "Bestå ₿-CERT",
     "readChart": "Les charteret",
     "tweetText": "Gleder meg over å ha bestått ₿-CERT hos @planb_network med en score på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
-    "verify": "Bekreft ektheten av sertifikatet ditt"
+    "verify": "Bekreft ektheten av sertifikatet ditt",
+    "hostSessionConditions": "Slik gjør du:\n\n1. Les <0>Charteret</0> - Sørg for at samfunnet ditt oppfyller de obligatoriske vertskapsbetingelsene\n2. Planlegg & Sett opp tidsplan - Hvis du kvalifiserer, velg en dato og organiser økten\n3. Publiser arrangementet ditt - Kontakt oss for å legge det til på Plan ₿ Network-plattformen slik at folk kan bli med",
+    "myCertificates": "Mine sertifikater",
+    "noTestSessions": "Ingen testøkter er for øyeblikket tilgjengelige",
+    "wantHostSession": "Vil du være vert for en ₿-CERT testøkt på din lokale hub?"
   },
   "bet": {
     "contributeButton": "Hjelp & Bidra",
@@ -150,7 +154,8 @@
     "noConferences": "Ingen konferanser lagt til for {{year}} ennå.",
     "pageTitle": "Konferanseopptak",
     "planBConferences": "Plan B-konferanser",
-    "topics": "Emner"
+    "topics": "Emner",
+    "conferencesGenesis": "Konferanser siden Genesis-blokken"
   },
   "courses": {
     "chapter": {
@@ -326,7 +331,8 @@
       "pageDescription": "Plan ₿ Academy har som mål å forenkle Bitcoin-utdanning over hele verden. Kuratert av eksperter fra forskjellige felt, tilbyr akademiet vårt et omfattende utvalg av kurs designet for å klargjøre alle aspekter ved Bitcoin.\nFra nybegynner til ekspert, enten i ditt eget tempo eller fulgt ukentlig av en professor, håper vi at akademiet kan hjelpe deg med å få en dypere forståelse av den omfattende verdenen av Bitcoin. Mange av kursene våre er helt gratis, slik at alle, hvor som helst, kan få tilgang til kvalitetsutdanning.",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "Plan ₿ School, ledet av Giacomo Zucco, tilbyr intensive tre måneders utdanningsprogrammer designet for å bygge bro mellom læring og praktiske anvendelser. Utover tradisjonelle klasser, engasjerer studentene seg i bedriftsledede praktiske prosjekter og en førsteklasses bootcamp dedikert til topputøvere. Bare de beste talentene går videre etter to konkurransepregete utvelgelsesrunder, noe som sikrer at de endelige toppstudentene er fullt utrustet til å starte karrierene sine i Bitcoin-industrien.",
-      "seeCourse": "Oppdag kurset"
+      "seeCourse": "Oppdag kurset",
+      "discover": "Oppdag"
     },
     "format": {
       "hybrid": "Fysisk/online",
@@ -412,7 +418,20 @@
       "writeThoughts": "Her kan du skrive tankene dine",
       "yesOfCourse": "ja, selvfølgelig",
       "yesVeryMuch": "ja, veldig mye"
-    }
+    },
+    "allCourses": "Alle kurs",
+    "continueLeftOff": "Fortsett der du slapp",
+    "courseSelector": "Kursvelger",
+    "liveClasses": {
+      "allOtherTitle": "Alle andre aktive klasser",
+      "liveClasses": "Aktive klasser",
+      "secondaryTitle": "Bli attraktiv for arbeidsgivere i Bitcoin-fokuserte selskaper.",
+      "title": "Plan ₿ offisielle årlige programmer"
+    },
+    "noCoursesFound": "Ingen kurs funnet",
+    "plusXMore": "+{{count}} mer",
+    "selectATopic": "Velg et emne",
+    "tryAdjustingFilters": "Prøv å justere filterene dine"
   },
   "dashboard": {
     "account": "Konto",
@@ -604,8 +623,10 @@
             "course": "Kurs",
             "index": "Indeks",
             "language": "Språk",
-            "progress": "Fremgang"
-          }
+            "progress": "Fremgang",
+            "status": "Status"
+          },
+          "title": "Innholdsstyring"
         },
         "reports": {
           "languagesProofread": "Språk korrekturlest",
@@ -680,6 +701,15 @@
           "noCourses": "Ingen kurs trenger oversettelse for øyeblikket.",
           "noOriginalContent": "Ingen originalt innhold",
           "noPngSlides": "Ingen PNG lysbilder tilgjengelig for denne presentasjonen"
+        },
+        "courseDetails": {
+          "actions": "Handlinger",
+          "assignedTo": "Tildelt til",
+          "chapterIndex": "Kapittel",
+          "chapterTitle": "Tittel",
+          "chaptersAndProgress": "Kapitler og Fremgang",
+          "chaptersCompleted": "kapitler fullført",
+          "courseIndex": "Kursindeks"
         }
       }
     },
@@ -1889,5 +1919,9 @@
     "pageTitle": "Youtube-kanaler",
     "view": "Se på Youtube-kanalen",
     "watchTrailer": "Se traileren"
+  },
+  "account": {
+    "account": "Konto",
+    "myTeacherProfile": "Min lærerprofil"
   }
 }

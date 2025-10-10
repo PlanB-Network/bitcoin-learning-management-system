@@ -114,7 +114,7 @@
     "readChart": "閱讀這張圖表",
     "tweetText": "很高興你在@planb_network通過了₿-證書，得分為{{score}}/100！{{emoji}} #BCert\n\n{{certificateUrl}}",
     "verify": "驗證您的證書真實性",
-    "hostSessionConditions": "操作步驟如下：\n\n1. 閱讀 <0>章程</0> – 確保您的社群符合必須的主辦條件\n2. 規劃與安排 – 如果符合資格，選擇日期並設定會議\n3. 發布您的活動  –聯繫我們，將活動加入到 Plan ₿ Network 平台，讓更多人參與",
+    "hostSessionConditions": "操作步驟如下：\n\n1. 閱讀 <0>章節</0> – 確保您的社群符合必須的主辦條件\n2. 規劃與安排 – 如果符合資格，選擇日期並設定會議\n3. 發布您的活動 –聯繫我們，將活動加入到 Plan ₿ Network 平台，讓更多人參與",
     "myCertificates": "我的證書",
     "noTestSessions": "目前沒有可用的測驗時段",
     "wantHostSession": "想在當地舉辦一場 ₿-CERT 測驗嗎？"
@@ -154,7 +154,8 @@
     "noConferences": "暫無{{year}}的會議。",
     "pageTitle": "會議回放",
     "planBConferences": "Plan B 研討會",
-    "topics": "主題"
+    "topics": "主題",
+    "conferencesGenesis": "創世區塊後會議"
   },
   "courses": {
     "chapter": {
@@ -424,7 +425,13 @@
     "noCoursesFound": "未找到課程",
     "plusXMore": "+{{count}} 項更多",
     "selectATopic": "選擇一個主題",
-    "tryAdjustingFilters": "請調整您的篩選器設定"
+    "tryAdjustingFilters": "請調整您的篩選器設定",
+    "liveClasses": {
+      "allOtherTitle": "所有其他的直播課程",
+      "liveClasses": "直播課程",
+      "secondaryTitle": "在比特幣專注的公司中具備求職能力。",
+      "title": "Plan ₿官方年度活動"
+    }
   },
   "dashboard": {
     "account": "帳戶",
@@ -1142,7 +1149,7 @@
       "listSavedComeTomorrow": "您的偏好清單已保存。\n明天請回到這裡查看您被分配到哪個專案。",
       "mostPreferred": "最偏好",
       "mustBePdf": "您的檔案必須是 PDF 格式。如果您需要提交額外的檔案，請在您的 PDF 中附上連結。",
-      "notSelectedAssignment": "很抱歉，您未被選中參與專案作業。\n您仍可以繼續修讀課程講座",
+      "notSelectedAssignment": "很抱歉，您未被選中參與專案作業。\n您仍可以繼續修讀課程講座。",
       "planbSchoolExamDescription": "「Plan ₿ 商學院 2025」學程分為兩個階段。在第一階段，您將需要完成兩場線上考試：期中考與期末考。此為限時測驗，僅有一次作答機會，您可以在為期三天的開放作答期間內，任選時間完成。第一階段結束後，我們將根據學員排名篩選晉級者進入第二階段。此階段包含一項專案任務，是由一間比特幣公司所提供的個人作業。更多詳細資訊，請參見「專案任務」(Assignment) 分頁。\n\n最終總成績將以這三項評核（兩次考試與一份專案）進行加權平均計算。成績達 80% 以上的學員將獲頒結業證書，而排名頂尖者將有機會參加七月於瑞士盧加諾 (Lugano) 舉辦的夏令營。",
       "planbSchoolGeneralInformation": "「Plan ₿ Biz School 2025」課程分為兩個階段。在第一階段，您將參加兩場線上考試，分別為期中考與期末考。這兩場測驗均限時作答且僅有一次機會，您可以在為期三天的指定期間內，任選時間完成。第一階段結束後，將根據學員排名篩選進入第二階段。此階段的內容為一項由比特幣公司所提供的個人專案任務。更多詳細資訊，請參閱「作業」(Assignment) 分頁。\n\n最終總成績將由上述三項評量（期中考、期末考、專案任務）的加權平均計算得出。成績高於 {{threshold}} % 的學員將獲頒結業證書，而排名頂尖的學員更有機會參加七月於瑞士盧加諾 (Lugano) 舉辦的夏令營。",
       "projectRankingInstructions": "專案排名說明：",
@@ -1238,7 +1245,7 @@
       "notificationSettings": {
         "coursesOption": "您已註冊課程的更新資訊",
         "description": "您可以在下方自訂您的通知設定。 ",
-        "emailPreferencesDescription": "您可以在此選擇希望從我們這裡收到的電子郵件類型。這些偏好設定僅適用於與此連結關聯的電子郵件地址。",
+        "emailPreferencesDescription": "您可以在此選擇希望從平台這裡收到的電子郵件類型。這些偏好設定僅適用於與此連結關聯的電子郵件地址。",
         "emailPreferencesError": "嘗試取得您的電子郵件偏好設定時發生錯誤。請確保您所點擊的連結是正確的。",
         "emailPreferencesSavedSuccessfully": "您的電子郵件偏好設定已成功更新。",
         "emailPreferencesTitle": "管理您的 Plan ₿ Network 電子郵件偏好設定",
@@ -1248,7 +1255,7 @@
         "generalOption": "Plan ₿ Network 的一般資訊和新聞",
         "goToProfile": "前往個人資料",
         "loadEmailSettingsError": "抱歉，我們無法載入您的電子郵件偏好設定。",
-        "loadEmailSettingsErrorDescription": "請確保您使用的連結完整且正確。",
+        "loadEmailSettingsErrorDescription": "請確保您使用的連結正確。",
         "loadEmailSettingsErrorManage": "如果您可以存取您的帳戶，您也可以直接在儀表板中管理設定：",
         "none": "無",
         "platformTitle": "您希望在此平台上收到哪些類型的通知？",
@@ -1433,7 +1440,8 @@
       "unlimited": "無限制",
       "visitWebsite": "造訪網站",
       "watchLive": "觀看直播",
-      "watchReplay": "觀看重播"
+      "watchReplay": "觀看重播",
+      "buyLecture": "購買講座"
     },
     "errors": {
       "premiumContentNeedsLogin": "您需要登入才能取得此活動。",
@@ -1541,7 +1549,8 @@
     "placeHolder": "這是什麼？",
     "randomSearch": "隨機搜尋",
     "relatedWords": "相關詞彙：",
-    "term": "術語"
+    "term": "術語",
+    "showMoreWords": "顯示更多"
   },
   "home": {
     "aboutUsSection": {
@@ -1664,7 +1673,8 @@
   "movies": {
     "goToMovie": "去看電影",
     "pageTitle": "電影與紀錄片",
-    "watchTrailer": "觀看預告片"
+    "watchTrailer": "觀看預告片",
+    "checkTheMovie": "查看此電影"
   },
   "nodeNetwork": {
     "description1": "我們相信教育不僅應該在線上進行，也應該在實體空間中發生。為了達成這個目標，Plan ₿ Network 在全球管理一個中心網路，以歡迎思考者、建設者和教育者，共同促進比特幣和自由技術的發展。",
@@ -1693,7 +1703,7 @@
     "calendar_5m": "課程將在5分鐘後開始！點擊這裡立即加入。",
     "calendar_5m_online_event": "時間到了！{{eventName}} 將在5分鐘後開始。點擊這裡立即加入！",
     "calendar_24h": "下一堂課將於明天 {{ formattedTime }} 開始。",
-    "calendar_24h_in_person_event": "{{eventName}} 將於明天 {{formattedTime}} 在 {{addressLine}} 舉行。請務必下載您的票券以參加！",
+    "calendar_24h_in_person_event": "活動 {{eventName}} 將於明天 {{formattedTime}} 在 {{addressLine}} 舉行。請務必下載您的票券以參加！",
     "calendar_48h_online_event": "{{eventName}} 即將舉行！排定於 {{date}} {{formattedTime}} 開始。 ",
     "dashboardDescription": "這是您的最新通知。它們會在您查看後一個月自動移除。",
     "daysAgo": "{{days}} 天前",
@@ -1783,7 +1793,7 @@
       "blogSidebarTitleForAll": "舊文章",
       "errorMessageNotFound": "找不到部落格。",
       "featuredArticleTitleText": "最新發布的文章",
-      "filterText": "按主題篩選：",
+      "filterText": "依照主題篩選：",
       "noArticlesText": "目前沒有任何部落格文章。",
       "pastArticleSubtitleText": "過去的文章"
     },
@@ -1806,18 +1816,21 @@
       "title": "文章"
     },
     "bet": {
-      "title": "教育工具包"
+      "title": "教育工具包",
+      "addEducationKit": "新增教育工具包"
     },
     "books": {
       "author": "作者： ",
-      "title": "資料庫"
+      "title": "資料庫",
+      "addBook": "新增書籍"
     },
     "channels": {
       "noYoutubeChannels": "目前沒有該語言的Youtube頻道。",
       "title": "Youtube 頻道"
     },
     "conferences": {
-      "title": "會議重播"
+      "title": "會議重播",
+      "addConference": "新增會議重播"
     },
     "github": "這裡的所有資料都透過開源的 <0>Github</0> 倉庫進行管理。歡迎隨時貢獻並添加任何缺失的內容。",
     "glossary": {
@@ -1850,15 +1863,19 @@
     "pageTitle": "歡迎來到資源網站",
     "podcasts": {
       "noPodcasts": "目前沒有該語言的 podcasts。",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "新增 Podcast",
+      "checkThePodcast": "查看 Podcast"
     },
     "projects": {
-      "title": "專案"
+      "title": "專案",
+      "addProjects": "新增專案"
     },
     "searchFilterName": "按名稱搜索",
     "toggleFreeOnly": "僅免費",
     "toggleLabelAll": "所有",
-    "toggleLabelSelectedLanguage": "選擇的語言"
+    "toggleLabelSelectedLanguage": "選擇的語言",
+    "pageSubtitleMovies": "你可能會喜歡的<0>其他電影</0>"
   },
   "search": {
     "all": "所有",
@@ -1936,7 +1953,8 @@
       "ratingSuccess": "感謝您的評分！",
       "source": "原始來源：",
       "tutorialName": "課程名稱",
-      "writtenBy": "這個教學資源是由以下人士撰寫的："
+      "writtenBy": "這個教學資源是由以下人士撰寫的：",
+      "didThisWork": "這對你來說效果好嗎？"
     },
     "exchange": {
       "description": "交易所是您在傳統貨幣（如歐元、美元）和比特幣世界之間進出的一個管道。交易所可以是受監管且符合 KYC 要求的，也可以是點對點和匿名的。每個交易所提供不同的功能、費用結構、流動性和客戶服務，每位比特幣使用者會根據自己的需求和理念選擇不同的交易所。",
@@ -2210,7 +2228,9 @@
     "taxes": "稅收",
     "theory": "理論",
     "week": "週",
-    "weight": "權重"
+    "weight": "權重",
+    "discover": "了解更多",
+    "seeAll": "查看全部"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube 頻道",
@@ -2218,7 +2238,8 @@
     "watchTrailer": "觀看預告片"
   },
   "account": {
-    "account": "帳戶"
+    "account": "帳戶",
+    "myTeacherProfile": "我的教師簡介"
   },
   "navbar": {
     "tabs": {
@@ -2238,7 +2259,9 @@
     "myCourses": "我的課程",
     "translationPanel": "翻譯面板",
     "tutorials": "教學指南",
-    "userRolesAllocation": "用戶角色分配"
+    "userRolesAllocation": "用戶角色分配",
+    "liveClassesDescription": "由教师主导的课程",
+    "liveClassesTitle": "直播課程"
   },
   "videoSelector": {
     "language": {
@@ -2250,7 +2273,8 @@
       "youtube": "Youtube",
       "peertube": "Peertube",
       "player": "播放器",
-      "rumble": "Rumble"
+      "rumble": "Rumble",
+      "pears": "Pears 🍐"
     }
   },
   "footer": {
