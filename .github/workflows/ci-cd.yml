@@ -287,7 +287,6 @@ jobs:
 
   build_pear_sync:
     name: Build Pear Sync
-    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
     runs-on: ubuntu-latest
     env:
       image: ghcr.io/planb-network/blms-pear-sync
