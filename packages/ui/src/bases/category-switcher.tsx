@@ -55,7 +55,7 @@ export const CategorySwitcherBar = ({
   return (
     <div
       ref={elRef}
-      className="flex gap-1 md:gap-2 items-center overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none"
+      className="flex gap-2 items-center overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none"
       style={{ touchAction: 'pan-x', WebkitOverflowScrolling: 'touch' }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -69,22 +69,25 @@ export const CategorySwitcherBar = ({
   );
 };
 
-const categorySwitcherVariant = cva('flex gap-1 items-center rounded-full', {
-  defaultVariants: {
-    size: 'm',
-    isActive: false,
-  },
-  variants: {
-    size: {
-      s: 'body-extra-small-bold px-1 py-2',
-      m: 'body-small-bold px-3 py-2',
+const categorySwitcherVariant = cva(
+  'flex gap-1 items-center rounded-full text-nowrap shrink-0',
+  {
+    defaultVariants: {
+      size: 'm',
+      isActive: false,
     },
-    isActive: {
-      true: 'text-white bg-orange-500',
-      false: 'text-neutral-700',
+    variants: {
+      size: {
+        s: 'body-extra-small-bold p-2',
+        m: 'body-small-bold px-3 py-2',
+      },
+      isActive: {
+        true: 'text-white bg-orange-500',
+        false: 'text-neutral-700',
+      },
     },
   },
-});
+);
 
 export const CategorySwitcher = ({
   text,

@@ -3,8 +3,9 @@ import type { JoinedCourse } from '@blms/types';
 import {
   Button,
   ButtonWithArrow,
+  CategorySwitcher,
+  CategorySwitcherBar,
   cn,
-  DropdownMenu,
   Image,
   Loader,
 } from '@blms/ui';
@@ -196,24 +197,27 @@ function CourseSelector() {
 
       {/* Mobile */}
       <section className="lg:hidden flex flex-col max-w-lg mx-auto">
-        <h1 className="display-base text-black mb-5">
+        <h1 className="display-base text-black mb-2">
           {t('courses.courseSelector')}
         </h1>
-        <span className="label-strong text-neutral-800 mb-1">
-          {t('courses.selectATopic')}
-        </span>
         <div className="w-full mb-6">
-          <DropdownMenu
-            activeItem={capitalize(activeTopic)}
-            itemsList={topics
-              .map((topic) => ({
-                name: capitalize(topic),
-                onClick: () => setActiveTopic(topic),
-              }))
-              .filter((topic) => topic.name.toLowerCase() !== activeTopic)}
-            className="lg:hidden"
-            variant="light"
-          />
+          <CategorySwitcherBar>
+            {topics.map((topic) => (
+              <CategorySwitcher
+                key={topic}
+                onClick={() => {
+                  setActiveTopic(topic);
+                  if (activeTopic !== topic) {
+                    setActiveCourse(null);
+                  }
+                }}
+                isActive={topic === activeTopic}
+                text={capitalize(topic)}
+                size="s"
+                inactiveBackgroundColor="bg-neutral-50"
+              />
+            ))}
+          </CategorySwitcherBar>
         </div>
         <div className="flex flex-col gap-6">
           {levels.map((level) => (
