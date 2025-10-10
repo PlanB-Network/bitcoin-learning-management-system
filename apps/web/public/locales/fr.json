@@ -428,7 +428,7 @@
     "tryAdjustingFilters": "Essayez d'ajuster vos filtres",
     "liveClasses": {
       "allOtherTitle": "Tous les autres cours en direct",
-      "liveClasses": "Cours en direct",
+      "liveClasses": "Étudier en direct",
       "secondaryTitle": "Devenez employable dans des entreprises de l'écosystème Bitcoin.",
       "title": "Programmes annuels officiels de Plan ₿"
     }
@@ -2273,8 +2273,8 @@
     "bookings": "Réservations",
     "career": "Carrière",
     "discountCode": "Codes de réduction",
-    "learnAnytimeDescription": "Cours en autonomie",
-    "learnAnytimeTitle": "Apprenez",
+    "learnAnytimeDescription": "Cours à faire à votre rythme",
+    "learnAnytimeTitle": "Étudier en autonomie",
     "manageCourses": "Gérer les cours",
     "myCalendar": "Mon calendrier",
     "myCareer": "Ma carrière",
