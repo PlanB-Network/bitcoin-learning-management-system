@@ -51,36 +51,57 @@ export const Footer = () => {
   const backgroundClass = 'bg-white text-newBlack-2';
   const textSecondaryClass = 'text-newBlack-5';
 
+  const links = [
+    { label: t('words.aboutUs'), to: '/about' },
+    { label: t('words.professors'), to: '/professors' },
+    { label: t('words.planBNetwork'), to: 'https://planb.network' },
+    { label: t('labs.planBLabs'), to: '/plan-b-labs' },
+  ];
+
   return (
-    <footer className="pt-3 lg:pt-6 w-full">
-      <div className={cn('flex w-full flex-col', backgroundClass)}>
-        <div className="flex max-md:flex-col w-full p-4 pb-8 md:py-12 md:px-0 max-md:gap-4">
-          <div className="w-full flex max-md:flex-col justify-center gap-6 md:gap-28">
+    <footer className="pt-3 md:pt-6 w-full">
+      {/* Desktop */}
+      <div
+        className={cn(
+          'flex w-full flex-col max-md:hidden px-6',
+          backgroundClass,
+        )}
+      >
+        <SocialNetworksDesktop />
+        <DividerSimple mode={'light'} />
+        <div className="flex items-center py-4 px-2 justify-between gap-4 flex-wrap">
+          <div className="flex items-center gap-2.5 text-neutral-400">
+            <span className="body-small truncate">
+              Plan ₿ Academy • {new Date().getFullYear()} –{' '}
+              {t('footer.FOSSOpenContent')}
+            </span>
+            <a
+              href="https://github.com/PlanB-Network/bitcoin-educational-content"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BsGithub size={14} />
+            </a>
+          </div>
+          <NavigationSection
+            links={links}
+            textSecondaryClass={'text-neutral-400'}
+          />
+        </div>
+      </div>
+
+      {/* Mobile */}
+      <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
+        <div className="flex flex-col w-full p-4 pt-6 pb-8 gap-6">
+          <div className="w-full flex flex-col justify-center gap-6">
             <NavigationSection
               title={t('words.academy')}
-              links={[
-                { label: t('words.courses'), to: '/courses' },
-                { label: t('words.tutorials'), to: '/tutorials' },
-                { label: t('words.resources'), to: '/resources' },
-                { label: t('words.professors'), to: '/professors' },
-                { label: t('labs.planBLabs'), to: '/plan-b-labs' },
-              ]}
+              links={links}
               textSecondaryClass={textSecondaryClass}
             />
-
-            <NavigationSection
-              title={t('words.network')}
-              links={[
-                { label: t('words.events'), to: '/events' },
-                { label: t('words.legals'), to: '/legals' },
-              ]}
-              textSecondaryClass={textSecondaryClass}
-            />
-
-            <SocialNetworksDesktop />
           </div>
 
-          <div className="w-full flex flex-col md:hidden gap-4">
+          <div className="w-full flex flex-col gap-4">
             <DividerSimple mode={'light'} />
             <SocialNetworksMobile />
           </div>
@@ -89,15 +110,11 @@ export const Footer = () => {
 
       <div
         className={cn(
-          'flex w-full justify-center py-6 md:py-5',
+          'flex w-full justify-center py-6 md:hidden',
           backgroundClass,
         )}
       >
-        <img
-          src={PlanBLogoBlack}
-          alt="Logo Plan ₿ Academy"
-          className="w-26 md:w-30"
-        />
+        <img src={PlanBLogoBlack} alt="Logo Plan ₿ Academy" className="w-26" />
       </div>
     </footer>
   );
@@ -108,15 +125,15 @@ const NavigationSection = ({
   links,
   textSecondaryClass,
 }: {
-  title: string;
+  title?: string;
   links: Array<{ to: string; label: string }>;
   textSecondaryClass: string;
 }) => (
-  <div className="flex flex-col gap-0.5 md:gap-2">
-    <h4 className="body-medium-16px">{title}</h4>
+  <div className="flex max-md:flex-col gap-2 md:items-center shrink-0">
+    {title && <h4 className="body-medium-16px">{title}</h4>}
     <ul
       className={cn(
-        'flex flex-col gap-1 md:gap-0.5 body-16px capitalize',
+        'flex max-md:flex-col gap-3 xl:gap-7 body-16px md:body-small',
         textSecondaryClass,
       )}
     >
@@ -132,26 +149,17 @@ const NavigationSection = ({
 const SocialLink = ({
   href,
   icon: Icon,
-  label,
   isReactIcon,
   iconSize,
   iconClasses,
-  showLabel = false,
 }: {
   href: string;
   icon: React.ElementType;
-  label: string;
   isReactIcon: boolean;
   iconSize?: number;
   iconClasses: string;
-  showLabel?: boolean;
 }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noreferrer"
-    className={showLabel ? 'flex items-center gap-2' : ''}
-  >
+  <a href={href} target="_blank" rel="noreferrer">
     {isReactIcon ? (
       <Icon
         className={cn(iconClasses, iconSize ? `h-${iconSize / 4}` : 'h-4.5')}
@@ -165,7 +173,6 @@ const SocialLink = ({
         )}
       />
     )}
-    {showLabel && <span className="body-16px">{label}</span>}
   </a>
 );
 
@@ -174,12 +181,11 @@ const SocialNetworksMobile = () => {
 
   return (
     <div className="flex gap-5 mx-auto">
-      {SOCIAL_LINKS.map(({ href, icon, label, isReactIcon }) => (
+      {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
         <SocialLink
           key={href}
           href={href}
           icon={icon}
-          label={label}
           isReactIcon={isReactIcon}
           iconSize={iconSize}
           iconClasses={'text-newBlack-5 stroke-newBlack-5'}
@@ -190,23 +196,19 @@ const SocialNetworksMobile = () => {
 };
 
 const SocialNetworksDesktop = () => {
-  const { t } = useTranslation();
   const iconSize = 18;
 
   return (
-    <div className="flex flex-col gap-2 max-md:hidden">
-      <h4 className="body-medium-16px">{t('footer.followUsOn')}</h4>
-      <ul className={'flex flex-col gap-0.5 body-16px text-newBlack-5'}>
-        {SOCIAL_LINKS.map(({ href, icon, label, isReactIcon }) => (
+    <div className="flex flex-col gap-12 max-md:hidden w-full items-center py-6">
+      <ul className={'flex gap-12 text-newBlack-5'}>
+        {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
           <li key={href}>
             <SocialLink
               href={href}
               icon={icon}
-              label={label}
               isReactIcon={isReactIcon}
               iconSize={iconSize}
               iconClasses={'stroke-newBlack-5'}
-              showLabel={true}
             />
           </li>
         ))}

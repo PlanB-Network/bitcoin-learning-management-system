@@ -1540,7 +1540,7 @@
     "topics": "Topics"
   },
   "footer": {
-    "followUsOn": "Follow us on"
+    "FOSSOpenContent": "FOSS & Open content"
   },
   "glossary": {
     "anotherWord": "Search for another word",
@@ -2205,6 +2205,7 @@
     "part": "Part",
     "passed": "Passed",
     "password": "Password",
+    "planBNetwork": "Plan ₿ Network",
     "podcast": "Podcast",
     "podcasts": "Podcasts",
     "practice": "Practice",
