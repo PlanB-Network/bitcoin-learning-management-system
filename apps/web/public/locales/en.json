@@ -17,6 +17,7 @@
     "missionContent1": "Our mission is to support local Bitcoin communities through open-source education and networking. In order to do it, we collect, organize, and create the necessary resources (courses, books, posters, flyers, videos) for the Bitcoin industry to advance.",
     "missionContent2": "We centralize knowledge so we can share it in the best possible way, using a simple, multilingual GitHub repository and an E-learning platform. We also assist local Bitcoin hubs in their development by providing the right tools for their talents to grow.",
     "missionTitle": "Our mission",
+    "readManifesto": "Read our manifesto",
     "storyContent": "Plan ₿ Network is an initiative that supports Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of community. Together, they've decided to build the Plan ₿ Network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "storyTitle": "Our story",
     "subtitle": "Want to orange pill the world? Join Plan ₿ Network.",
@@ -2074,7 +2075,7 @@
   },
   "words": {
     "about": "About",
-    "about-us": "About Us",
+    "aboutUs": "About us",
     "abstract": "Abstract",
     "academy": "Academy",
     "access": "Access",

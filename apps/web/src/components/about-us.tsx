@@ -20,7 +20,7 @@ export const AboutUs = () => {
         alt={t('')}
         loading="lazy"
       />
-      <div className="-mt-9 flex flex-col items-center gap-6 text-center md:flex-row">
+      <div className="-mt-9 flex flex-col gap-6 text-center md:flex-row">
         <div className="flex max-w-sm flex-col items-center">
           <img src={BitcoinCircle} alt="" />
           <div className="mt-2 text-sm font-semibold md:text-2xl">

@@ -3,7 +3,6 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import Corporates from '#src/assets/about/corporates.webp?no-inline';
-import PlanBCircles from '#src/assets/about/planb_circles.webp?no-inline';
 import PpAjelex from '#src/assets/people/ajelex.webp?no-inline';
 import PpAsi0 from '#src/assets/people/asi0.webp?no-inline';
 import Ct01 from '#src/assets/people/contributors/01.webp?no-inline';
@@ -39,59 +38,49 @@ import PpTheom from '#src/assets/people/theo_m.webp?no-inline';
 import PpTheop from '#src/assets/people/theo_p.webp?no-inline';
 import PpTodd from '#src/assets/people/todd.webp?no-inline';
 import { AboutUs } from '#src/components/about-us.tsx';
-import { PageLayout } from '#src/components/page-layout.js';
+import { PageLayout } from '#src/components/page-layout.tsx';
 
 const Mission = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <div className="grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="col-span-1 self-start">
-          <div>
-            <h2 className="mt-12 text-3xl font-semibold uppercase text-orange-500">
-              {t('about.missionTitle')}
-            </h2>
-            <p className="mt-2 text-gray-400">{t('about.missionContent1')}</p>
-            <p className="mt-2 text-gray-400">{t('about.missionContent2')}</p>
-          </div>
-          <div>
-            <h2 className="mt-12 text-3xl font-semibold uppercase text-orange-500">
-              {t('about.commitmentTitle')}
-            </h2>
-            <p className="mt-2 whitespace-pre-line text-gray-400">
-              {t('about.commitmentContent')}
-            </p>
-          </div>
-          <div>
-            <h2 className="mt-12 text-3xl font-semibold uppercase text-orange-500">
-              {t('about.storyTitle')}
-            </h2>
-            <p className="mt-2 whitespace-pre-line text-gray-400">
-              {t('about.storyContent')}{' '}
-              <a
-                className="inline"
-                href="https://youtu.be/niKsUKrV4pU?si=0H9jLJBteDmlsOaH"
-              >
-                https://youtu.be/niKsUKrV4pU?si=0H9jLJBteDmlsOaH
-              </a>
-            </p>
-          </div>
+      <div className="flex flex-col gap-6 mt-8">
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.missionTitle')}
+          </h2>
+          <p className="mt-2 text-gray-400">{t('about.missionContent1')}</p>
+          <p className="mt-2 text-gray-400">{t('about.missionContent2')}</p>
         </div>
-        <div className="col-span-1 mt-32 hidden max-w-md lg:block">
-          <img
-            src={PlanBCircles}
-            className="mt-4 w-full"
-            alt={t('')}
-            loading="lazy"
-          />
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.commitmentTitle')}
+          </h2>
+          <p className="mt-2 whitespace-pre-line text-gray-400">
+            {t('about.commitmentContent')}
+          </p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.storyTitle')}
+          </h2>
+          <p className="mt-2 whitespace-pre-line text-gray-400">
+            {t('about.storyContent')}{' '}
+            <a
+              className="inline"
+              href="https://youtu.be/niKsUKrV4pU?si=0H9jLJBteDmlsOaH"
+            >
+              https://youtu.be/niKsUKrV4pU?si=0H9jLJBteDmlsOaH
+            </a>
+          </p>
         </div>
       </div>
 
-      <div className="mt-12 w-full max-w-5xl self-center">
+      <div className="mt-6 w-full self-center">
         <Link to={'/manifesto'}>
-          <Button variant="primary" className="self-start" glowing={true}>
-            Read our manifesto
+          <Button variant="primary" className="self-start">
+            {t('about.readManifesto')}
           </Button>
         </Link>
       </div>
@@ -103,9 +92,9 @@ const Corporate = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-20 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+    <div className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-2">
       <div>
-        <h2 className="text-3xl font-semibold uppercase text-orange-500">
+        <h2 className="text-3xl font-semibold uppercase">
           {t('about.corporateTitle')}
         </h2>
         <p className="mt-2 text-gray-400">{t('about.corporateContent')}</p>
@@ -131,15 +120,15 @@ const CoreTeam = () => {
 
   return (
     <>
-      <div className="mt-12 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div>
-          <h2 className="text-3xl font-semibold uppercase text-orange-500">
+          <h2 className="text-3xl font-semibold uppercase">
             {t('about.coreTeamTitle')}
           </h2>
           <p className="mt-2 text-gray-400">{t('about.coreTeamContent')}</p>
         </div>
       </div>
-      <div className="mt-6 grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="mt-6 grid w-full grid-cols-1 gap-6 md:grid-cols-2">
         <div className="flex flex-col gap-6">
           <Person
             name="Giacomo"
@@ -173,12 +162,12 @@ const Professors = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-20 flex w-full max-w-5xl  gap-6">
+    <div className="mt-20 flex w-full  gap-6">
       <div>
-        <h2 className="text-3xl font-semibold uppercase text-orange-500">
+        <h2 className="text-3xl font-semibold uppercase">
           {t('words.professors')}
         </h2>
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="mt-6 flex flex-wrap gap-4">
           <img
             className="w-24 rounded-lg"
             src={PpFanis}
@@ -229,11 +218,11 @@ const ActiveContributors = () => {
   const css = 'w-24 h-24 rounded-full';
 
   return (
-    <div className="mt-20 flex w-full max-w-5xl flex-col gap-4">
-      <h2 className="text-3xl font-semibold uppercase text-orange-500">
+    <div className="mt-20 flex w-full flex-col gap-4">
+      <h2 className="text-3xl font-semibold uppercase">
         {t('about.activeContributors')}
       </h2>
-      <div className="mt-8 flex w-full max-w-4xl flex-wrap justify-center gap-4 place-self-center">
+      <div className="mt-6 flex w-full flex-wrap justify-center gap-4 place-self-center">
         <img className={css} src={Ct01} alt="" loading="lazy" />
         <img className={css} src={Ct02} alt="" loading="lazy" />
         <img className={css} src={Ct03} alt="" loading="lazy" />
@@ -270,12 +259,12 @@ function About() {
   return (
     <PageLayout
       title={t('about.title')}
-      subtitle={t('about.subtitle')}
       description={t('about.description')}
+      layoutSize="wide"
     >
-      <div className="flex flex-col items-center px-4">
+      <div className="flex flex-col items-center">
         <Mission />
-        <div className="mt-12 max-w-[70rem]">
+        <div className="mt-12">
           <AboutUs />
         </div>
         <Corporate />
