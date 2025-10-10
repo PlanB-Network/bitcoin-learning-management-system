@@ -77,7 +77,7 @@ services:
     image: ghcr.io/planb-network/blms-web:${IMAGE_TAG}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-web-${ENV}.rule=Host(`${DOMAIN_NETWORK}`) || Host(`${DOMAIN_ACADEMY}`)
+      - traefik.http.routers.university-web-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`)
       - traefik.http.routers.university-web-${ENV}.entrypoints=https
       - traefik.http.routers.university-web-${ENV}.tls=true
       - traefik.http.routers.university-web-${ENV}.middlewares=university-web-${ENV}-compress
