@@ -6,8 +6,6 @@ import Hyperdrive from 'hyperdrive';
 import Hyperswarm from 'hyperswarm';
 import postgres from 'postgres';
 
-console.log('Starting PeerTube sync script...', process.env);
-
 const sql = postgres({
   host: process.env.POSTGRES_HOST || 'localhost',
   port: process.env.POSTGRES_PORT
@@ -22,29 +20,6 @@ const check = await sql`SELECT 1+1 AS result`;
 if (check[0].result !== 2) {
   throw new Error('Database connection failed');
 }
-
-const videos = await sql`
-    SELECT content.courses.id AS "courseId",
-       content.courses.index AS "courseIndex",
-       content.videos.id AS "videoId",
-       content.videos_localized.language AS "videoLanguage",
-       id_from_provider AS "peertubeId"
-      FROM content.videos_localized
-      LEFT JOIN content.videos ON content.videos_localized.id = content.videos.id
-      LEFT JOIN content.courses ON content.videos.course_id = content.courses.id
-      WHERE content.videos_localized.provider = 'peertube'
-`;
-
-console.log('Found', videos.length, 'videos in the database');
-
-const peerTubeIds = videos.map((v) => v.peertubeId).filter((id) => !!id);
-
-console.log(
-  'Syncing',
-  peerTubeIds.length,
-  'videos with PeerTube IDs:',
-  peerTubeIds,
-);
 
 const peerTubeBaseUrl = 'https://peertube.planb.network/api/v1/videos/';
 
@@ -71,109 +46,163 @@ console.info(now(), 'Drive key:', drive.key.toString('hex'));
 // Sync logic
 console.info(now(), 'Starting sync...');
 
-for (const id of peerTubeIds) {
-  try {
-    const url = `${peerTubeBaseUrl}${id}`;
-    console.log(now(), `--- Processing video ${id} ---`);
+const syncedVideos = [];
+let syncRunning = false;
 
-    // Step 1: Fetch video metadata
-    console.log(now(), 'Fetching video metadata from', url);
-    const metaRes = await fetch(url);
-    if (!metaRes.ok)
-      throw new Error(`Failed to fetch metadata: ${metaRes.statusText}`);
-    const metaData = await metaRes.json();
+async function syncCatalog() {
+  if (syncRunning) {
+    console.log('Sync already running, skipping this interval');
+    return;
+  }
 
-    if (!metaData.streamingPlaylists?.[0]?.playlistUrl) {
-      console.warn(now(), `No HLS playlist found for video ${id}. Skipping.`);
-      continue;
-    }
+  syncRunning = true;
 
-    // Step 2: Download and store the master manifest
-    const masterPlaylistUrl = metaData.streamingPlaylists[0].playlistUrl;
-    console.log(now(), 'Fetching master manifest:', masterPlaylistUrl);
-    const masterPlaylistRes = await fetch(masterPlaylistUrl);
-    if (!masterPlaylistRes.ok)
-      throw new Error(
-        `Failed to fetch master manifest: ${masterPlaylistRes.statusText}`,
-      );
-    const masterPlaylistContent = await masterPlaylistRes.text();
+  const videos = await sql`
+    SELECT content.courses.id AS "courseId",
+       content.courses.index AS "courseIndex",
+       content.videos.id AS "videoId",
+       content.videos_localized.language AS "videoLanguage",
+       id_from_provider AS "peertubeId"
+      FROM content.videos_localized
+      LEFT JOIN content.videos ON content.videos_localized.id = content.videos.id
+      LEFT JOIN content.courses ON content.videos.course_id = content.courses.id
+      WHERE content.videos_localized.provider = 'peertube'
+`;
 
-    const masterKey = `/videos/${id}/master.m3u8`;
-    await drive.put(masterKey, Buffer.from(masterPlaylistContent));
-    console.log(
-      now(),
-      `Stored master manifest as ${masterKey} length=${masterPlaylistContent.length}B`,
-    );
+  console.log('Found', videos.length, 'videos in the database');
 
-    // Step 3: Extract, download, and store resolution manifests
-    const resolutionManifestPaths = masterPlaylistContent
-      .split('\n')
-      .filter((line) => line.endsWith('.m3u8'));
+  const peerTubeIds = videos
+    .map((v) => v.peertubeId)
+    .filter((id) => !!id)
+    .filter((id) => !syncedVideos.includes(id));
 
-    for (const path of resolutionManifestPaths) {
-      const resolutionUrl = new URL(path, masterPlaylistUrl).href;
-      console.log(now(), `Fetching resolution manifest: ${resolutionUrl}`);
-      const res = await fetch(resolutionUrl);
-      if (!res.ok) {
-        console.warn(now(), `Could not fetch ${path}, skipping.`);
+  if (peerTubeIds.length === 0) {
+    console.log('No new videos to sync');
+    syncRunning = false;
+    return;
+  }
+
+  console.log(
+    'Syncing',
+    peerTubeIds.length,
+    'videos with PeerTube IDs:',
+    peerTubeIds,
+  );
+
+  for (const id of peerTubeIds) {
+    try {
+      const url = `${peerTubeBaseUrl}${id}`;
+      console.log(now(), `--- Processing video ${id} ---`);
+
+      // Step 1: Fetch video metadata
+      console.log(now(), 'Fetching video metadata from', url);
+      const metaRes = await fetch(url);
+      if (!metaRes.ok)
+        throw new Error(`Failed to fetch metadata: ${metaRes.statusText}`);
+      const metaData = await metaRes.json();
+
+      if (!metaData.streamingPlaylists?.[0]?.playlistUrl) {
+        console.warn(now(), `No HLS playlist found for video ${id}. Skipping.`);
         continue;
       }
 
-      const content = await res.text();
-      const key = `/videos/${id}/${path}`;
-      await drive.put(key, Buffer.from(content));
+      // Step 2: Download and store the master manifest
+      const masterPlaylistUrl = metaData.streamingPlaylists[0].playlistUrl;
+      console.log(now(), 'Fetching master manifest:', masterPlaylistUrl);
+      const masterPlaylistRes = await fetch(masterPlaylistUrl);
+      if (!masterPlaylistRes.ok)
+        throw new Error(
+          `Failed to fetch master manifest: ${masterPlaylistRes.statusText}`,
+        );
+      const masterPlaylistContent = await masterPlaylistRes.text();
+
+      const masterKey = `/videos/${id}/master.m3u8`;
+      await drive.put(masterKey, Buffer.from(masterPlaylistContent));
       console.log(
         now(),
-        `Stored resolution manifest as ${key} length=${content.length}B`,
+        `Stored master manifest as ${masterKey} length=${masterPlaylistContent.length}B`,
+      );
+
+      // Step 3: Extract, download, and store resolution manifests
+      const resolutionManifestPaths = masterPlaylistContent
+        .split('\n')
+        .filter((line) => line.endsWith('.m3u8'));
+
+      for (const path of resolutionManifestPaths) {
+        const resolutionUrl = new URL(path, masterPlaylistUrl).href;
+        console.log(now(), `Fetching resolution manifest: ${resolutionUrl}`);
+        const res = await fetch(resolutionUrl);
+        if (!res.ok) {
+          console.warn(now(), `Could not fetch ${path}, skipping.`);
+          continue;
+        }
+
+        const content = await res.text();
+        const key = `/videos/${id}/${path}`;
+        await drive.put(key, Buffer.from(content));
+        console.log(
+          now(),
+          `Stored resolution manifest as ${key} length=${content.length}B`,
+        );
+      }
+
+      // Step 4: Download and store fragmented MP4 files
+      const filesToDownload = metaData.streamingPlaylists[0].files;
+      for (const file of filesToDownload) {
+        const fileUrl = file.fileUrl;
+        const fileName = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
+        console.log(now(), `Fetching fragmented MP4: ${fileUrl}`);
+
+        const key = `/videos/${id}/${fileName}`;
+        if (await drive.exists(key)) {
+          console.log(now(), `Already have ${fileName}, skipping download.`);
+          continue;
+        }
+
+        const res = await fetch(fileUrl);
+        if (!res.ok) {
+          console.warn(now(), `Could not fetch ${fileName}, skipping.`);
+          continue;
+        }
+
+        // Note: Maybe stream this directly to drive.put in future?
+        const source = Stream.Readable.fromWeb(res.body, { signal: ac.signal });
+
+        const destination = drive.createWriteStream(key);
+
+        // Pipe the download stream directly into the drive
+        await new Promise((resolve, reject) => {
+          source.on('error', (err) => reject(err));
+          destination.on('error', (err) => reject(err));
+          destination.on('finish', () => resolve());
+          source.pipe(destination);
+        });
+
+        const size = Number(res.headers.get('content-length'));
+
+        console.log(now(), `Stored fragmented MP4 as ${key} size=${size}`);
+      }
+
+      console.log(now(), `--- Finished processing video ${id} ---`);
+
+      syncedVideos.push(id);
+    } catch (err) {
+      console.error(
+        now(),
+        `An error occurred while processing video ${id}:`,
+        err.message,
       );
     }
-
-    // Step 4: Download and store fragmented MP4 files
-    const filesToDownload = metaData.streamingPlaylists[0].files;
-    for (const file of filesToDownload) {
-      const fileUrl = file.fileUrl;
-      const fileName = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
-      console.log(now(), `Fetching fragmented MP4: ${fileUrl}`);
-
-      const key = `/videos/${id}/${fileName}`;
-      if (await drive.exists(key)) {
-        console.log(now(), `Already have ${fileName}, skipping download.`);
-        continue;
-      }
-
-      const res = await fetch(fileUrl);
-      if (!res.ok) {
-        console.warn(now(), `Could not fetch ${fileName}, skipping.`);
-        continue;
-      }
-
-      // Note: Maybe stream this directly to drive.put in future?
-      const source = Stream.Readable.fromWeb(res.body, { signal: ac.signal });
-
-      const destination = drive.createWriteStream(key);
-
-      // Pipe the download stream directly into the drive
-      await new Promise((resolve, reject) => {
-        source.on('error', (err) => reject(err));
-        destination.on('error', (err) => reject(err));
-        destination.on('finish', () => resolve());
-        source.pipe(destination);
-      });
-
-      const size = Number(res.headers.get('content-length'));
-
-      console.log(now(), `Stored fragmented MP4 as ${key} size=${size}`);
-    }
-
-    console.log(now(), `--- Finished processing video ${id} ---`);
-  } catch (err) {
-    console.error(
-      now(),
-      `An error occurred while processing video ${id}:`,
-      err.message,
-    );
   }
+
+  syncRunning = false;
 }
+
+// Initial sync
+await syncCatalog();
+
+// Periodic sync every minute
+const timer = setInterval(syncCatalog, 5 * 1000);
 
 swarm.on('error', (err) => console.error(now(), 'Swarm error:', err));
 swarm.on('connection', (conn) => drive.replicate(conn));
@@ -203,7 +232,12 @@ async function teardown() {
     await dht.destroy();
     await swarm.destroy();
 
+    if (timer) {
+      clearInterval(timer);
+    }
+
     console.info('\r', now(), 'Shutdown complete');
+    process.exit(0);
   } else {
     console.info('\r', now(), 'Forcing shutdown');
     process.exit(1);
