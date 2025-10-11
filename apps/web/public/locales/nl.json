@@ -91,7 +91,9 @@
     "sendLink": "Stuur me een link",
     "signIn": "Inloggen",
     "trackProgress": "Maak een account aan of log in om je voortgang bij te houden",
-    "tryAgain": "Probeer het opnieuw"
+    "tryAgain": "Probeer het opnieuw",
+    "loginNotAvailable1": "Inlogfuncties zijn nog niet beschikbaar in de desktop app.",
+    "loginNotAvailable2": "Je kunt onze website bezoeken om in te loggen en toegang te krijgen tot je account."
   },
   "bCert": {
     "bCertDescription": "De ₿-CERT is de ultieme Bitcoin-test, ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren. Als je meer dan 80% scoort, verdien je een ₿-CERT certificaat dat je expertise binnen de Bitcoin-industrie aantoont en deuren kan openen naar verschillende functions in het veld.",
@@ -111,7 +113,11 @@
     "pageTitle": "Doe de ₿-CERT test",
     "readChart": "Lees het handvest",
     "tweetText": "Trost om de ₿-CERT bij @planb_network gehaald te hebben met een score van {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Verifieer de echtheid van je certificaat"
+    "verify": "Verifieer de echtheid van je certificaat",
+    "hostSessionConditions": "Zo doe je dat:\n\n1. Lees het <0>Handvest</0> - Zorg ervoor dat jouw gemeenschap voldoet aan de verplichte hostingvoorwaarden\n2. Plan & Rooster - Als je in aanmerking komt, kies dan een datum en stel de sessie in\n3. Publiceer je evenement - Neem contact met ons op om het toe te voegen aan het Plan ₿ Network platform, zodat mensen kunnen deelnemen",
+    "myCertificates": "Mijn certificaten",
+    "noTestSessions": "Momenteel zijn er geen test sessies beschikbaar",
+    "wantHostSession": "Wil je een ₿-CERT testsessie hosten bij jouw lokale hub?"
   },
   "bet": {
     "contributeButton": "Help & Draag Bij",
@@ -148,7 +154,8 @@
     "noConferences": "Nog geen conferenties toegevoegd voor {{year}}.",
     "pageTitle": "Conferentie herhalingen",
     "planBConferences": "Plan ₿ conferenties",
-    "topics": "Onderwerpen"
+    "topics": "Onderwerpen",
+    "conferencesGenesis": "Conferenties sinds het Genesis-blok"
   },
   "courses": {
     "chapter": {
@@ -324,7 +331,8 @@
       "pageDescription": "Plan ₿ Academy biedt een breed scala aan cursussen over Bitcoin, zowel gratis als premium, van beginner tot expert. Of je nu leert onder begeleiding van experts of in je eigen tempo, er is een passende optie voor elke leerstijl. Onze missie is eenvoudig: kennis over Bitcoin duidelijk, boeiend en toegankelijk maken voor iedereen!",
       "planbSchool": "PLAN ₿ SCHOOL",
       "planbSchoolHeadline": "De Plan ₿ School, onder leiding van Giacomo Zucco, biedt intensieve educatieve programma's van drie maanden die de kloof overbruggen tussen theorie en praktijk. Naast traditionele lessen nemen studenten deel aan praktijkgerichte projecten onder begeleiding van bedrijven en aan een eersteklas bootcamp voor de best presterende deelnemers. Alleen de beste talenten gaan door na twee competitieve selectierondes, zodat de uiteindelijke topstudenten volledig uitgerust zijn om hun carrière in de Bitcoin-industrie te lanceren.",
-      "seeCourse": "Ontdek de cursus"
+      "seeCourse": "Ontdek de cursus",
+      "discover": "Ontdek"
     },
     "format": {
       "hybrid": "Fysiek/online",
@@ -410,7 +418,20 @@
       "writeThoughts": "Hier kun je je gedachten opschrijven",
       "yesOfCourse": "ja, natuurlijk",
       "yesVeryMuch": "ja, heel erg"
-    }
+    },
+    "allCourses": "Alle cursussen",
+    "continueLeftOff": "Ga verder waar je was gebleven",
+    "courseSelector": "Cursusselector",
+    "liveClasses": {
+      "allOtherTitle": "Alle andere live lessen",
+      "liveClasses": "Live lessen",
+      "secondaryTitle": "Word inzetbaar bij Bitcoin-gerichte bedrijven.",
+      "title": "Plan ₿ officiële jaarlijkse programma's"
+    },
+    "noCoursesFound": "Geen cursussen gevonden",
+    "plusXMore": "+{{count}} meer",
+    "selectATopic": "Selecteer een onderwerp",
+    "tryAdjustingFilters": "Probeer je filters aan te passen"
   },
   "dashboard": {
     "account": "Account",
@@ -768,7 +789,11 @@
             "useEnglishLabel": "De cursus is al naar het Engels vertaald. Wil je de Engelse versie gebruiken?",
             "title": "Selecteer de talen om te vertalen",
             "pptxFile": "PowerPoint-bestand",
-            "originalLanguage": "Oorspronkelijke taal:"
+            "originalLanguage": "Oorspronkelijke taal:",
+            "englishFilesRequired": "Zorg ervoor dat alle geüploade bestanden alleen in het Engels zijn",
+            "networkError": "Er is een netwerkfout opgetreden. Controleer je verbinding en probeer het opnieuw.",
+            "processingStarted": "De vertaling is gestart! Dit proces kan enkele minuten duren voor grote cursussen.",
+            "startingTranslationStep": "Begin vertaling..."
           },
           "table": {
             "actions": "Acties",
@@ -2168,5 +2193,9 @@
     "november": "November",
     "october": "Oktober",
     "september": "September"
+  },
+  "account": {
+    "account": "Account",
+    "myTeacherProfile": "Mijn docentenprofiel"
   }
 }
