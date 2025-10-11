@@ -96,7 +96,7 @@
     "loginNotAvailable2": "Je kunt onze website bezoeken om in te loggen en toegang te krijgen tot je account."
   },
   "bCert": {
-    "bCertDescription": "De ₿-CERT is de ultieme Bitcoin-test, ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren. Als je meer dan 80% scoort, verdien je een ₿-CERT certificaat dat je expertise binnen de Bitcoin-industrie aantoont en deuren kan openen naar verschillende functions in het veld.",
+    "bCertDescription": "De ₿-CERT is de ultieme Bitcoin-test, ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren. \n\nAls je meer dan 80% scoort, verdien je een ₿-CERT certificaat dat je expertise binnen de Bitcoin-industrie aantoont en deuren kan openen naar verschillende functions in het veld.",
     "bookExam": "Boek een testsessie",
     "challengeYourself": "Daag jezelf uit en beoordeel je niveau",
     "checkout": "Bekijk de ₿-CERT",
@@ -793,7 +793,13 @@
             "englishFilesRequired": "Zorg ervoor dat alle geüploade bestanden alleen in het Engels zijn",
             "networkError": "Er is een netwerkfout opgetreden. Controleer je verbinding en probeer het opnieuw.",
             "processingStarted": "De vertaling is gestart! Dit proces kan enkele minuten duren voor grote cursussen.",
-            "startingTranslationStep": "Begin vertaling..."
+            "startingTranslationStep": "Begin vertaling...",
+            "timeoutError": "Vertaalverzoek verlopen. De cursusinhoud is mogelijk te groot. Probeer het opnieuw of neem contact op met de ondersteuning.",
+            "translationFailed": "Vertaling mislukt. Controleer de logs en probeer het opnieuw.",
+            "uploadAndTranslationStarted": "Bestanden geüpload en vertaling gestart! Dit proces kan enkele minuten duren voor grote cursussen.",
+            "uploadError": "Upload mislukt. Controleer je bestanden en probeer het opnieuw.",
+            "uploadTimeoutError": "Upload is na 10 minuten verlopen. Probeer het opnieuw met kleinere bestanden of controleer je verbinding.",
+            "uploadingFiles": "Bestanden worden geüpload..."
           },
           "table": {
             "actions": "Acties",
@@ -1177,7 +1183,7 @@
     "courses": "Cursussen",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "Hier vind je de details over je boekingen en resultaten van je vorige en toekomstige ₿-CERT tests.\nDe ₿-TEST is een tabeltoets, georganiseerd door Plan ₿ Network, om je kennis van Bitcoin en gerelateerde onderwerpen te beoordelen.",
+      "bCertSubtitle": "Hier vind je de details over je boekingen en resultaten van je vorige en toekomstige ₿-CERT tests. De ₿-TEST is een tabeltoets, georganiseerd door Plan ₿ Network, om je kennis van Bitcoin en gerelateerde onderwerpen te beoordelen.",
       "beingGraded": "Je examen wordt beoordeeld. De resultaten zouden over 1 of 2 weken beschikbaar moeten zijn.",
       "completionDiplomas": "Diploma's van voltooiing",
       "courseDiplomas": "Cursusdiploma's",
@@ -1187,7 +1193,13 @@
       "retakeExam": "Doe het examen opnieuw",
       "seatBooked": "Jouw plaats voor de examinering is gereserveerd",
       "takePlaceAt": "De sessie zal plaatsvinden op:",
-      "yourCertificate": "Jouw certificaat"
+      "yourCertificate": "Jouw certificaat",
+      "completeACourse": "Voltooi een cursus om je eerste diploma te behalen!",
+      "exploreBCert": "Verken ₿-CERT",
+      "exploreCourses": "Verken cursussen",
+      "getGlobalRecognition": "Krijg wereldwijde erkenning met een ₿-CERT certificaat",
+      "noCertificatesAvailable": "Geen certificaten beschikbaar",
+      "noDiplomasAvailable": "Nog geen diploma's beschikbaar"
     },
     "goToDashboard": "Ga naar dashboard",
     "goToHomepage": "Ga naar homepage",
@@ -1236,14 +1248,14 @@
         "generalOption": "Algemene informatie en nieuws over Plan ₿ Network",
         "goToProfile": "Ga naar Profiel",
         "loadEmailSettingsError": "Sorry, we konden je e-mailvoorkeuren niet laden.",
-        "loadEmailSettingsErrorDescription": "Zorg ervoor dat de link die je hebt gebruikt volledig en correct is.",
+        "loadEmailSettingsErrorDescription": "Controleer of de link die je hebt gebruikt correct is.",
         "loadEmailSettingsErrorManage": "Als je toegang hebt tot je account, kun je alle instellingen direct beheren in je dashboard:",
         "none": "Geen",
         "platformTitle": "Welk soort meldingen wil je ontvangen op dit platform?",
         "settingsSaved": "Je instellingen zijn succesvol opgeslagen!",
         "title": "Notificatie-instellingen",
         "description": "Je kunt hieronder je notificatie-instellingen aanpassen. ",
-        "emailPreferencesDescription": "Hier kun je kiezen welk type e-mails je van ons wilt ontvangen. Deze voorkeuren zijn alleen van toepassing op het e-mailadres dat aan deze link is gekoppeld.",
+        "emailPreferencesDescription": "Hier kun je kiezen welk type e-mails je van het platform wilt ontvangen. Deze voorkeuren zijn alleen van toepassing op het e-mailadres dat aan deze link is gekoppeld.",
         "emailPreferencesError": "Er is een fout opgetreden tijdens het ophalen van je e-mailvoorkeuren. Zorg ervoor dat de link die je heeft gevolgd correct is.",
         "emailPreferencesSavedSuccessfully": "Je e-mailvoorkeuren zijn succesvol bijgewerkt.",
         "emailPreferencesTitle": "Beheer je Plan ₿ Network e-mailvoorkeuren",
@@ -1346,7 +1358,10 @@
         "questionsInExam": "Vragen in het examen",
         "totalQuestions": "Totaal aantal vragen",
         "overview": "Overzicht",
-        "successRate": "Succespercentage"
+        "successRate": "Succespercentage",
+        "amountPaid": "Betaald bedrag",
+        "lastActive": "Laatst actief",
+        "studentsList": "Studentenlijst"
       },
       "profile": {
         "description": "Jouw beschrijving",
@@ -1425,7 +1440,8 @@
       "seatBooked": "Plek gereserveerd",
       "unlimited": "onbeperkt",
       "visitWebsite": "Bezoek website",
-      "watchReplay": "Bekijk herhaling"
+      "watchReplay": "Bekijk herhaling",
+      "buyLecture": "Koop college"
     },
     "errors": {
       "premiumContentNeedsPayment": "Dit evenement maakt deel uit van een premium programma.",
@@ -1489,7 +1505,30 @@
       "thisMonth": "Deze maand",
       "today": "Vandaag",
       "xMonthsAgo": "{{number}} maanden geleden"
-    }
+    },
+    "addEvent": "Evenement toevoegen",
+    "eventInfos": {
+      "eventBooked": "Evenement geboekt",
+      "eventType": "Evenement type",
+      "numberOfSpots": "Aantal plekken",
+      "onlineAndInPerson": "Online en fysiek",
+      "secureYourSpot": "Reserveer je plek",
+      "whatsPlanned": "Wat staat er gepland"
+    },
+    "myTickets": "Mijn tickets",
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Week"
+    },
+    "types": {
+      "plurals": {
+        "conference": "conferenties",
+        "exam": "examens",
+        "lecture": "colleges",
+        "meetup": "bijeenkomsten",
+        "workshop": "workshops"
+      }
+    },
+    "upcomingEvents": "Aankomende evenementen"
   },
   "glossary": {
     "creditsLoic": "<0>Credits</0>: Bitcoin Woordenboek geschreven door <1>Loïc Morel (Pandul)</1>, beschikbaar op deze <2>Github repository</2>.",
@@ -1504,7 +1543,8 @@
     "placeHolder": "Wat is dit?",
     "randomSearch": "Willekeurig zoeken",
     "relatedWords": "Gerelateerde woorden:",
-    "term": "Term"
+    "term": "Term",
+    "showMoreWords": "Toon meer woorden"
   },
   "filters": {
     "categories": "Categorieën",
@@ -1653,7 +1693,7 @@
     "calendar_48h_online_event": "Het evenement {{eventName}} komt er snel aan! Het is gepland op {{date}}, vanaf {{formattedTime}}. ",
     "dashboardDescription": "Dit zijn je nieuwste meldingen. Nadat je ze hebt gezien worden ze na een maand automatisch verwijderd.",
     "upcomingEvent": "Aankomend Evenement",
-    "calendar_24h_in_person_event": "{{eventName}} vindt morgen plaats, vanaf {{formattedTime}} op {{addressLine}}. Vergeet niet je ticket te downloaden zodat je aanwezig kunt zijn!",
+    "calendar_24h_in_person_event": "Het evenement {{eventName}} vindt morgen plaats, vanaf {{formattedTime}} op {{addressLine}}. Vergeet niet je ticket te downloaden zodat je aanwezig kunt zijn!",
     "bCertResults": "Je ₿-CERT resultaten zijn bekend!",
     "blogNotTranslated": "Sorry, deze nieuwe blogpost is nog niet vertaald in je geselecteerde taal.",
     "bookYourSeat": "Reserveer een plek als je persoonlijk wilt deelnemen!",
@@ -1692,7 +1732,8 @@
   "movies": {
     "goToMovie": "Ga naar film",
     "pageTitle": "Films & Documentaires",
-    "watchTrailer": "Bekijk de trailer"
+    "watchTrailer": "Bekijk de trailer",
+    "checkTheMovie": "Bekijk de film"
   },
   "notFound": {
     "here": "Hier",
@@ -1726,14 +1767,17 @@
       "title": "Artikelen"
     },
     "bet": {
-      "title": "Educatieve Toolkit"
+      "title": "Educatieve Toolkit",
+      "addEducationKit": "Educatieve kit toevoegen"
     },
     "books": {
       "author": "Auteur: ",
-      "title": "Bibliotheek"
+      "title": "Bibliotheek",
+      "addBook": "Boek toevoegen"
     },
     "conferences": {
-      "title": "Conferentie herhalingen"
+      "title": "Conferentie herhalingen",
+      "addConference": "Conferentieherhaling toevoegen"
     },
     "glossary": {
       "title": "Woordenlijst"
@@ -1757,15 +1801,19 @@
     "pageTitle": "Welkom bij het Bronnenportaal",
     "podcasts": {
       "noPodcasts": "Er zijn momenteel geen podcasts beschikbaar voor de geselecteerde taal.",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "Podcast toevoegen",
+      "checkThePodcast": "Bekijk de podcast"
     },
     "projects": {
-      "title": "Projecten"
+      "title": "Projecten",
+      "addProjects": "Project toevoegen"
     },
     "searchFilterName": "Zoeken op naam",
     "toggleFreeOnly": "Alleen gratis",
     "toggleLabelAll": "Alle",
-    "toggleLabelSelectedLanguage": "Geselecteerde taal"
+    "toggleLabelSelectedLanguage": "Geselecteerde taal",
+    "pageSubtitleMovies": "<0>Andere films</0> die je misschien leuk vindt"
   },
   "payment": {
     "haveReductionCode": "Heb je een kortingscode?",
@@ -1814,7 +1862,7 @@
       "blogSidebarTitleForAll": "Vorige berichten",
       "errorMessageNotFound": "Blog niet gevonden.",
       "featuredArticleTitleText": "Nieuwst gepubliceerde artikel",
-      "filterText": "Filter op onderwerp :",
+      "filterText": "Filter op onderwerp:",
       "noArticlesText": "Er zijn op dit moment geen blogs.",
       "pastArticleSubtitleText": "Eerdere artikelen"
     },
@@ -1920,7 +1968,8 @@
       "ratingSuccess": "Bedankt voor je beoordeling!",
       "source": "Originele bron:",
       "tutorialName": "Naam van de tutorial",
-      "writtenBy": "Deze tutorial is geschreven door:"
+      "writtenBy": "Deze tutorial is geschreven door:",
+      "didThisWork": "Werkte dit goed voor je?"
     },
     "explorer": {
       "description": "Al deze tutorials zijn geschreven door gepassioneerde en toegewijde bitcoiners die bitcoin-educatie wereldwijd willen verspreiden. Vergeet niet om ze te liken, te beoordelen en ze te belonen met wat sats!",
@@ -2123,7 +2172,7 @@
     "selectedAmount": "{{amount}} geselecteerd",
     "skip": "Overslaan",
     "start": "Start",
-    "startHere": "Start hier!",
+    "startHere": "Start hier",
     "status": "Status",
     "structure": "Structuur",
     "student": "Student",
@@ -2160,7 +2209,31 @@
     "rating": "Beoordeling",
     "share": "Delen",
     "taxes": "belastingen",
-    "week": "Week"
+    "week": "Week",
+    "account": "Account",
+    "booking": "Reservering",
+    "certifications": "Certificeringen",
+    "completed": "Voltooid",
+    "discover": "Ontdek",
+    "enrolled": "Ingeschreven",
+    "filters": "Filters",
+    "full": "Vol",
+    "invoices": "Facturen",
+    "map": "Kaart",
+    "myCertificates": "Mijn certificaten",
+    "practice": "Praktisch",
+    "pricing": "Prijzen",
+    "resetAll": "Alles resetten",
+    "resetFilters": "Filters resetten",
+    "resume": "CV",
+    "sats": "Sats",
+    "searchTripleDot": "Zoeken...",
+    "seeAll": "Alles bekijken",
+    "settings": "Instellingen",
+    "theory": "Theoretisch",
+    "topic": "Onderwerp",
+    "type": "Type",
+    "viewAll": "Bekijk alles"
   },
   "videoSelector": {
     "language": {
@@ -2172,7 +2245,8 @@
       "peertube": "Peertube",
       "rumble": "Rumble",
       "player": "Player",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Pears 🍐"
     }
   },
   "youtubeChannels": {
@@ -2197,5 +2271,27 @@
   "account": {
     "account": "Account",
     "myTeacherProfile": "Mijn docentenprofiel"
+  },
+  "navbar": {
+    "analytics": "Analytics",
+    "bookings": "Reserveringen",
+    "career": "Carrière",
+    "discountCode": "Kortingscodes",
+    "learnAnytimeDescription": "Zelfstudie cursussen",
+    "learnAnytimeTitle": "Leer op je eigen tempo",
+    "liveClassesDescription": "Cursussen onder leiding van een docent",
+    "liveClassesTitle": "Live lessen",
+    "manageCourses": "Beheer cursussen",
+    "myCalendar": "Mijn kalender",
+    "myCareer": "Mijn carrière",
+    "myCourses": "Mijn cursussen",
+    "tabs": {
+      "admin": "Beheerder",
+      "learn": "Leren",
+      "teach": "Lesgeven"
+    },
+    "translationPanel": "Vertaalomgeving",
+    "tutorials": "Tutorials",
+    "userRolesAllocation": "Toewijzing van gebruikersrollen"
   }
 }
