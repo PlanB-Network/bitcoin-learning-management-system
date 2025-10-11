@@ -11,7 +11,7 @@
     "coreTeamTitle": "Kikundi cha msingi",
     "corporateContact": "Maelezo ya mawasiliano:",
     "corporateContent": "Mtandao wa Plan ₿ ni mradi wa ushirikiano wa taasisi tatu zinazojihusisha na maendeleo ya Bitcoin. Katika jitihada za kuongeza uwezo wa tabaka la elimu ya Bitcoin, waliamua kushirikiana kuunda Mtandao wa Plan ₿. Tangu wakati huo, taasisi nyingine nyingi zimeamua kuchangia na kujiunga na jitihada hizi za kuleta elimu ya Bitcoin kwa ulimwengu. Kwa hivyo, tunawashukuru sana kwa mchango wao.",
-    "corporateTitle": "Mashirika nyuma ya mradi huo",
+    "corporateTitle": "Mashirika ya nyuma ya mradi huo",
     "description": "Plan ₿ Network inasaidiya jamii kote ulimwenguni kujiandaa ili kutoa elimu bora. Jukwaa hili linatengeneza zana muhimu kuelekea lengo hilo, kupitia chuo kikuu cha mtandaoni, portal ya mafunzo, seti ya vifaa vya elimu ya Bitcoin na portal ya rasilimali.",
     "manifesto": "Tunaamini katika siku zijazo zilizowekwa madarakani ambazo Bitcoin inatoa.\n\nDhamira yetu ni kutambulisha Bitcoin kwa watu bilioni moja kwa muongo mmoja. Zana zetu ni elimu na habari. \n\nTunasaidia jumuiya za ndani za Bitcoiners kwa kutoa maudhui ya elimu ya chanzo huria na kutoa mtandao wa washauri wa Bitcoin.\n\nFalsafa yetu imechochewa na manifesto ya cypherpunk. Kama vile walivyotetea faragha, tunatetea elimu. Kwa hakika, tunaamini kwamba ujuzi ndio msingi wa uhuru na mabadiliko.\n\nSisi ni Bitcoin-pekee. \n\nTunatetea uwajibikaji wa mtu binafsi na uhuru unaotolewa kwa kumiliki funguo zako mwenyewe. \n\nTunathibitisha kwa haraka, sio uaminifu wa kipofu. \n\nTunaamini kwamba kwa kurekebisha pesa, tunaweza kurekebisha ulimwengu.\n\nTumegatuliwa na chanzo huria, tukiepuka kutofaulu hata kidogo. \n\nTunahimiza utangazaji bila malipo wa maudhui yetu. \n\nTunatamani ulimwengu unaofanya kazi kutoka chini kwenda juu, ambapo mtu binafsi yuko katikati.\n\nTunarahisisha, tunaelimisha, tunashiriki. \n\nJiunge nasi katika dhamira yetu ya kunyunyiza kidonge cha chungwa ulimwenguni.\n",
     "missionContent1": "Dhamira yetu ni kusaidia jumuiya za Bitcoin za ndani kupitia elimu ya chanzo huria na mitandao. Ili kufanya hivyo, tunakusanya, kupanga, na kuunda rasilimali zinazohitajika (kozi, vitabu, mabango, vipeperushi, video) kwa ajili ya sekta ya Bitcoin kuendeleza.",
@@ -37,12 +37,12 @@
     "checkingToken": "kukagua tokeni",
     "checkingTokenExplain": "Tunachunguza ikiwa tokeni ni halali…",
     "confirmation": "Uthibitisho",
-    "createAccount": "Jisajiri",
+    "createAccount": "Jisajili",
     "createOne": "Jisajili hapa!",
     "dashboardUnlocked": "Dashibodi yako ya mwanafunzi sasa inapatikana!",
     "didYouKnow": "Je wajua?",
     "displayName": "Onyesha Jina",
-    "emailAddress": "Adresse email",
+    "emailAddress": "Address email",
     "emailTip": "Barua pepe sio lazima: inaweza kuwa muhimu ikiwa umesahau neno siri lako!",
     "emailValidation": {
       "emailChangeValidated": "Barua pepe iliyobadilishwa imethibitishwa",
@@ -86,7 +86,7 @@
     "passwordResetError": "Hitilafu ya kurejesha nenosiri",
     "passwordResetSent": "Barua pepe ya kubadilisha nenosiri imetumwa kwenye kikasha chako (ikiwa anwani ya barua pepe ipo kwenye hifadhi data yetu).",
     "passwordSuccessfullyChanged": "Neno siri lako limebadilishwa kwa mafanikio. Sasa unaweza kuingia kwa kutumia nenosiri lako jipya.",
-    "passwordsDontMatch": "Manenosiri hayalingani",
+    "passwordsDontMatch": "Maneno ya siri hayalingani",
     "resetPassword": "Weka upya nenosiri lako",
     "sendLink": "Nitumie kiungo",
     "signIn": "Ingia",
@@ -124,11 +124,11 @@
     "contributeDescription": "Ikiwa unataka kuongeza, kuhariri au kutafsiri baadhi ya maudhui, msaada wako utakaribishwa!",
     "contributeTitle": "Unataka kuchangia?",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
+      "description": "Bidhaa hizi zimeandaliwa tayari kutumika kwa shughuli na mahitaji ya kielimu.",
       "title": "Maudhui ya Elimu"
     },
     "pageDescription": "Kupitishwa kwa wingi sio rahisi. Ili kusogea karibu na kwa haraka zaidi kuelekea lengo hilo, tumeunda hifadhidata inayoweza kupanuliwa ili kupangisha maudhui ya elimu. Hapa, waelimishaji wa Bitcoin wanaweza kuacha na kufikia yaliyomo kwa uhuru kama inahitajika. Hatuhitaji kuunda tena gurudumu kila wakati, kwa hivyo tushirikiane kuweka kati nyenzo muhimu ni zana moja ya zana!",
-    "pageTitle": "Bitcoin Educational Toolkit",
+    "pageTitle": "Zana ya Elimu ya Bitcoin",
     "visualContent": {
       "description": "Picha zilizo hapa chini zinaweza kutumika kwa ubunifu wako mwenyewe.",
       "title": "Maudhui Yanayoonekana"
@@ -152,7 +152,7 @@
     "latestConferences": "Mikutano ya hivi karibuni",
     "location": "Mahali",
     "noConferences": "Hakuna mikutano iliyoongezwa kwa {{year}} bado.",
-    "pageTitle": "Conferences",
+    "pageTitle": "Marudio ya mkutano",
     "planBConferences": "Mikutano ya Plan ₿",
     "topics": "Mada",
     "conferencesGenesis": "Mikutano tangu Block ya Mwanzo"
@@ -166,7 +166,7 @@
         "p1content": "Hakikisha unahifadhi kiti chako",
         "p1heading": "Je, unapanga kuhudhuria somo hili kwa ana?",
         "p2content": "Hakuna tatizo! Somo hili litakuwa linaonyeshwa moja kwa moja kwenye ukurasa huu na litapatikana kwa marudio baadaye.",
-        "p2heading": "huwezi kufika  kibinafsi",
+        "p2heading": "Huwezi kuwepo mwenyewe?",
         "ticketDownload": "Pakua tiketi yako",
         "title": "Maelezo ya darasa"
       },
@@ -245,8 +245,8 @@
       "examDetails": "Mtihani una maswali  {{nb}} ya chaguo nyingi, kila moja na jibu sahihi moja. Unaweza kubadilisha majibu yako wakati wowote kabla ya kuwasilisha, mradi kipima muda kinaendelea.",
       "examNotPassed": "Unahitaji kufanya mtihani wa mwisho na kupata zaidi ya asilimia 80 ili upate diploma yako na ukamilishe kabisa kozi. Diploma hii itakuwa na <0>muhtasari wa muda</0> ili kuhakikisha uhalisi wake.",
       "explanations": "Maelezo:",
-      "failed": "Imeangukwa",
-      "failedDiploma": "Unahitaji kupata zaidi ya asilimia 80 katika mtihani wa mwisho ili upate diploma yako na ukamilishe kozi kikamilifu. Unaweza kurudia mtihani baada ya saa 24.",
+      "failed": "Umeangukwa",
+      "failedDiploma": "Unahitajika kupata zaidi ya asilimia 80 katika mtihani wa mwisho ili upate diploma yako na ukamilishe kozi kikamilifu. Unaweza kurudia mtihani baada ya saa 24.",
       "finalExam": "Mtihani wa mwisho",
       "finalScore": "Matokeo ya mwisho",
       "findInformationChapter": "Pata habari zaidi katika sura hii :",
@@ -294,9 +294,9 @@
       "startExam": "Anza mtihani",
       "submit": "Wasilisha",
       "successDiploma": "Hongera! Umefaulu mtihani kwa mafanikio.\nDiploma yako inapatikana kwenye dashibodi yako ya mwanafunzi. Imewekwa <0>muhuri wa muda</0> kuhakikisha uhalisi wake.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Hongera! Umefaulu kikamilisha kozi. \n\nDiploma yako sasa inapatikana kwenye dashibodi yako ya uanafunzi.",
       "successDiplomaTimeStamped": "Hongera! Umefaulu mtihani kwa mafanikio. Diploma yako itapatikana kwenye dashibodi yako ya mwanafunzi takriban saa 10 baada ya wakati ulipochukua mtihani. Kuchelewa huku kunatokana na teknolojia ya <0>kuweka sahihi ya muda</0>, ambayo inahakikisha uhalisi wake.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Hongera kwa kukamilisha kozi.\n\n\n\nUmefanikiwa kufikia kiwango cha chini cha kupita kwa kozi hii na sasa umehitimu.\n\n\n\nUnaweza kupata shahada yako kwenye dashibodi yako.",
       "sureSubmit": "Je, una uhakika unataka kuwasilisha mtihani wako?",
       "takeExam": "Fanya mtihani",
       "tamperProof": "uthibitisho wa kuchezea: Blockchain inahakikisha hakuna mtu anayeweza kubadilisha au kufanya bandia sifa zako.",
@@ -328,10 +328,11 @@
       "findCourses": "Pata kozi kamili kwa mahitaji yako kwa shukrani kwa Zana ya Uchaguzi wa Kozi",
       "goal": "Lengo:",
       "journey": "Bitcoin ni safari, sio mwisho wa safari",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
+      "pageDescription": "Shule ya Plan ₿ Academy inatoa kozi nyingi sana kuhusu Bitcoin, zinazotolewa bure na zile za kulipia, kutoka ngazi ya mwanzilishi hadi mtaalam. Zikiwa zimeongozwa na wataalam au zikiwa zimewekwa kulingana na kasi ya mwanafunzi, zinafaa kulingana na mtindo wa kila mmoja wa kujifunza. Lengo letu ni rahisi: kufanya maarifa ya Bitcoin yawe wazi, yakaribishe na yaweze kupatikana kwa wote!",
       "planbSchool": "Shule ya PLAN ₿",
       "planbSchoolHeadline": "Shule ya Plan ₿, inayoongozwa na Giacomo Zucco, inatoa mipango ya elimu ya kina ya miezi mitatu iliyoundwa kuziba pengo kati ya kujifunza na matumizi ya ulimwengu halisi. Zaidi ya madarasa ya jadi, wanafunzi wanashiriki katika miradi ya vitendo inayoongozwa na kampuni na kambi ya daraja la kwanza iliyotolewa kwa wafanyaji bora. Talanta bora tu ndizo zinazosonga mbele baada ya duru mbili za uteuzi wa ushindani, kuhakikisha kuwa wanafunzi bora wa mwisho wanapata vifaa kamili kuzindua kazi zao katika tasnia ya Bitcoin.",
-      "seeCourse": "Gundua kozi"
+      "seeCourse": "Gundua kozi",
+      "discover": "Gundua"
     },
     "format": {
       "hybrid": "Ana kwa ana/mtandaoni",
@@ -339,7 +340,7 @@
       "online": "Mtandaoni"
     },
     "part": {
-      "count": "Part {{count}}"
+      "count": "Kitengo {{count}}"
     },
     "payment": {
       "accessibility": "Ufikivu",
@@ -349,13 +350,13 @@
       "book_description": "Tafadhali pitia maelezo ya mahali yaliyotolewa.Mara tu uwekaji wako utakaposhughulikiwa, tutakutumia tiketi ya uthibitisho na msimbo wa QR wa kuwasilisha kwenye tukio.",
       "checkoutError": "Kosa limetokea wakati wa mchakato wa kulipa.\nTafadhali jaribu tena.",
       "courseType": "Aina ya kozi",
-      "date": "Date",
+      "date": "Tarehe",
       "downloadCurriculum": "Pakua mtaala",
       "duration": "Muda",
       "hybridDescription": "Tafadhali pitia maelezo ya kozi yaliyotolewa.Kila somo hufanyika ana kwa ana kwenye tarehe na maeneo yaliyoainishwa. Madarasa yote daima hurekodiwa na kupeperushwa moja kwa moja kwa ajili ya kurudiwa.Udhibitisho wa uwepo kwa ana kwa ana unasimamiwa kwa kila somo, kwa hivyo tunakuomba uweke nafasi yako kila wakati unapotaka kuhudhuria kwa mwili.",
       "inPersonCallout": "Unakaribia kununua <strong>ufikiaji wa ana kwa ana</strong> kwenye kozi hii.",
       "inPersonDescription": "Kila kikao kinatokea ana kwa ana kwenye tarehe na maeneo yaliyoainishwa na pia kinaonyeshwa moja kwa moja kwenye jukwaa.\nUnunuzi huu utakupa ufikiaji wa madarasa ya ana kwa ana na ya mtandaoni.\nUsisahau kuhifadhi kiti chako kwa madarasa unayotaka kuhudhuria ana kwa ana.",
-      "invoiceId": "Invoice ID",
+      "invoiceId": "ID ya Ankara",
       "onlineCallout": "Unakaribia kununua <strong>mtandaoni</strong> ufikiaji wa kozi hii.",
       "onlineDescription": "Kila kikao kinatangazwa moja kwa moja kwenye jukwaa.\nUnunuzi huu utakupa ufikiaji wa matangazo ya moja kwa moja na video za marudiano.",
       "payment_details": "Maelezo ya malipo",
@@ -369,10 +370,10 @@
       "clickOnPie": "Bofya kwenye chati ya pai ili kuangalia jibu sahihi",
       "quizz": "Maswali",
       "quizzResults": "Majibu ya maswali",
-      "quizzReview": "Mspitio Mapitio ya maswali",
+      "quizzReview": "Mapitio ya maswali",
       "resultCongrats": "Hongera, umefanya vizuri!",
       "resultItsOk": "Usikate tamaa, utafanya vizuri zaidi wakati ujao!",
-      "resultNotBad": "Si mbaya!",
+      "resultNotBad": "Si mbaya sana!",
       "resultPerfect": "Kamili kabisa! Hongera!"
     },
     "review": {
@@ -395,7 +396,7 @@
       "generalGrade": "Alama kwa jumla",
       "length": "Urefu",
       "loadMoreComments": "Pakia maoni zaidi",
-      "neutral": "usio upande wowote",
+      "neutral": "usio na upendeleo wowote",
       "no": "Hapana",
       "notReally": "hapana, si kweli",
       "quality": "Ubora",
@@ -420,7 +421,17 @@
     },
     "allCourses": "Kozi zote",
     "continueLeftOff": "Endelea kutoka pale ulipoachia",
-    "courseSelector": "Uchaguzi wa kozi"
+    "courseSelector": "Uchaguzi wa kozi",
+    "liveClasses": {
+      "allOtherTitle": "Darasa zote zingine za moja kwa moja",
+      "liveClasses": "Darasa za moja kwa moja",
+      "secondaryTitle": "Kuwa na uwezo wa kuajiriwa kwa kampuni zinazolenga Bitcoin.",
+      "title": "Plan ₿ rasmi wa mipango ya kila mwaka"
+    },
+    "noCoursesFound": "Hakuna kozi zinazopatikana",
+    "plusXMore": "+{{count}} zaidi",
+    "selectATopic": "Chagua mada",
+    "tryAdjustingFilters": "Jaribu kurekebisha vichujio vyako"
   },
   "dashboard": {
     "account": "akaunti",
@@ -432,14 +443,16 @@
         "careers": "Kazi",
         "careersSubtitle": "Hapa unaweza kuona orodha ya washiriki ambao wamekamilisha maombi yao. Unaweza kupata taarifa zote za maombi ndani ya lahajedwali.",
         "cv": "Wasifu wa Kazi",
-        "downloadProfiles": "Pakua lahajedwali",
+        "downloadProfiles": "Pakua spreadsheet",
         "downloadSpreadsheet": "Pakua lahajedwali",
         "lastUpdate": "Mwisho wa kusasisha",
         "lastUpdated": "Imesasishwa mwisho",
         "profession": "Utaalamu",
         "resultsRemaining": "Matokeo {{results}} yaliyosalia",
         "seeMore": "Ona zaidi",
-        "viewCV": "Tazama wasifu wa Kazi"
+        "viewCV": "Tazama wasifu wa Kazi",
+        "candidateFile": "Faili la mgombea",
+        "file": "Faili"
       },
       "confirmRemoval": "Thibitisha kuondoa",
       "coupons": {
@@ -447,7 +460,7 @@
         "close": "Funga",
         "delete": "Futa",
         "deleteDiscountCode": "Futa msimbo wa punguzo",
-        "deleteDiscountCodeConfirm": "Futa msimbo wa punguzo",
+        "deleteDiscountCodeConfirm": "Je, una uhakika unataka kuondoa huu msimbo wa punguzo?",
         "deleteDiscountCodeSuccess": "Msimbo wa punguzo umefutwa",
         "deleteDiscountCodeWarning": "Pindi msimbo huu ukifutwa, hautafanya kazi tena. Mabadiliko haya hayawezi kutenduliwa",
         "discountCode": "Nambari ya punguzo",
@@ -488,7 +501,7 @@
           "sortBy": "Panga kwa",
           "za": "z-A"
         },
-        "noCouponsFound": "Hakuna kuponi zilizopatikana.",
+        "noCouponsFound": "Hakuna coupons zilizopatikana.",
         "numberOfCodes": "Unataka kuzalisha kodi ngapi?",
         "numberOfCodesPlaceholder": "andika namba",
         "productCourse": "Kozi",
@@ -532,7 +545,346 @@
       "type": "Aina",
       "upcomingBookings": "Hifadhi zijazo",
       "upcomingBookingsSubtitle": "Hapa unaweza kupakua orodha ya washiriki kwa matukio yote ya ana kwa ana.",
-      "userRolesAllocation": "Mgao wa majukumu ya mtumiaji"
+      "userRolesAllocation": "Mgao wa majukumu ya mtumiaji",
+      "translation": "Paneli ya kutafsiri",
+      "translationPanel": {
+        "actions": {
+          "accept": "Kubali",
+          "delete": "Futa",
+          "reject": "Kataa"
+        },
+        "addContributor": {
+          "addLanguage": "Ongeza lugha nyingine",
+          "assign": "Kazi ya kuongeza",
+          "assignedLanguages": "Lugha zilizopeanwa tayari",
+          "assigning": "Kugawanya...",
+          "assignmentSuccess": "Wachangiaji wameteuliwa kwa mafanikio!",
+          "confirm": "Thibitisha",
+          "findContributor": "Pata mchangiaji",
+          "language": "Lugha",
+          "noUsers": "Hakuna watumiaji waliopo",
+          "searchUsers": "Tafuta watumiaji...",
+          "selectLanguage": "Chagua lugha",
+          "selectedUsers": "Watumiaji waliochaguliwa:",
+          "title": "Ongeza Mchangiaji"
+        },
+        "admin": "MKURUGENZI",
+        "comingSoon": {
+          "courses": "Mtazamo wa kozi unakuja hivi karibuni",
+          "coverage": "Mwonekano wa utangamano wa lugha unakuja hivi karibuni"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Kazi ya ziada",
+            "backToContentManagement": "Rudi kwenye usimamizi wa maudhui",
+            "reassign": "Gawanya tena",
+            "view": "Angalia"
+          },
+          "assignModal": {
+            "assign": "Kazi ya kuongeza",
+            "assigning": "Kugawanya...",
+            "assigningCourse": "Kugawanya kozi:",
+            "assignmentSuccess": "Kozi imegawanywa kwa mafanikio!",
+            "cancel": "Ghairi",
+            "chooseContributor": "Chagua mchangiaji mgeni...",
+            "courseInfo": "Taarifa za Kozi",
+            "selectContributor": "Chagua Mchangiaji",
+            "title": "Panga Kozi kwa Mchangiaji"
+          },
+          "description": "Dhibiti tafsiri za kozi na uipeane kwa wachangiaji",
+          "noCourses": "Hakuna kozi zinazopatikana",
+          "noCoursesFiltered": "Hakuna kozi zinazoendana na vichujio vyako",
+          "notAssigned": "Haijagawanywa",
+          "reassignModal": {
+            "cancel": "Ghairi",
+            "chooseNewContributor": "Chagua mchangiaji mgeni...",
+            "courseInfo": "Taarifa za Kozi",
+            "currentlyAssignedTo": "Kwa sasa imegawanywa kwa:",
+            "reassign": "Gawanya tena",
+            "reassigning": "Kugawanya upya...",
+            "reassigningCourse": "Kubadilisha kozi:",
+            "reassignmentSuccess": "Kozi imegawanywa kwa mafanikio!",
+            "selectNewContributor": "Chagua Mchangiaji Mpya",
+            "title": "Hamisha Kozi kwa Mchangiaji Mpya",
+            "warning": {
+              "description": "Sura zilizokwisha kukaguliwa hazitagawanywa tena.",
+              "title": "Muhimu kumbuka"
+            }
+          },
+          "status": {
+            "assigned": "Imegawanywa",
+            "notAssigned": "Haijagawanywa",
+            "readyForReview": "Tayari kwa ukaguzi",
+            "underReview": "Chini ya ukaguzi"
+          },
+          "table": {
+            "actions": "Vitendo",
+            "contributor": "Wachangiaji",
+            "course": "Kozi",
+            "index": "Faharisi",
+            "language": "Lugha",
+            "progress": "Maendeleo",
+            "status": "Hali"
+          },
+          "title": "Usimamizi wa Yaliyomo"
+        },
+        "courseDetails": {
+          "actions": "Vitendo",
+          "assignedTo": "Imegawanywa Kwa",
+          "chapterIndex": "Sura",
+          "chapterTitle": "Kichwa",
+          "chaptersAndProgress": "Sura na Maendeleo",
+          "chaptersCompleted": "sura zilizokamilika",
+          "courseIndex": "Fahirisi ya Kozi",
+          "courseInformation": "Taarifa za Kozi",
+          "courseName": "Jina la Kozi",
+          "currentContributor": "Mchangiaji wa sasa",
+          "errorLoadingDetails": "Kosa la kupakia maelezo ya kozi",
+          "language": "Lugha",
+          "noChapters": "Hakuna sura zinazopatikana kwa kozi hii",
+          "noContributor": "Hakuna mchangiaji aliyeteuliwa",
+          "partTitle": "Sehemu {{index}}: {{title}}",
+          "progress": "Maendeleo",
+          "status": "Hali",
+          "translationStatus": "Hali ya kutafsiri"
+        },
+        "courseNotFound": "Kozi haipatikani",
+        "messages": {
+          "noPendingRequests": "Hakuna maombi ya kuhakiki yaliyosalia.",
+          "noPendingRequestsSearch": "Hakuna maombi ya kusoma na kuhariri yaliyokataliwa na yanayolingana na \"{{query}}\".",
+          "noRejectedRequests": "Hakuna maombi ya kusahihisha yaliyokataliwa.",
+          "noRejectedRequestsSearch": "Hakuna maombi ya kusoma na kuhariri yaliyokataliwa na yanayolingana na \"{{query}}\"."
+        },
+        "modal": {
+          "acceptRequest": "Kubali Ombi",
+          "acceptTranslationRequest": "Kubali Ombi la Kuhakiki",
+          "accepting": "Kukubali...",
+          "cancel": "Ghairi",
+          "close": "Funga",
+          "contributor": "Wachangiaji",
+          "course": "Kozi",
+          "doYouWantToAcceptRequest": "Je, unataka kukubali ombi hili la tafsiri?",
+          "language": "Lugha",
+          "provideRejectionReason": "Tafadhali toa sababu ya kukataa ombi hili",
+          "reasonForRejection": "Sababu ya kukataa",
+          "reasonPlaceholder": "Andika maelezo yako hapa...",
+          "rejecting": "Kukataa...",
+          "requestAcceptedMessage": "Mchangiaji amearifiwa na sasa anaweza kuanza kufanya kazi ya tafsiri.",
+          "requestAcceptedSuccess": "Ulikubali ombi la tafsiri!",
+          "requestRejectedSuccess": "Ombi limekataliwa kwa mafanikio",
+          "submitRejection": "Wasilisha"
+        },
+        "noResultsFound": "Hakuna matokeo yaliyopatikana",
+        "pendingTranslationRequests": "Ombi la kusahihisha limekosa kusomwa",
+        "reports": {
+          "chooseYear": "Mwaka upi unaotaka kuuzingatia?",
+          "comingSoon": {
+            "courses": "Mtazamo wa kozi unakuja hivi karibuni",
+            "coverage": "Mwonekano wa utangamano wa lugha unakuja hivi karibuni"
+          },
+          "contributors": {
+            "assignedCourses": "Kozi zilizopangwa",
+            "completedCourses": "Kozi zilizokamilika",
+            "languages": "Lugha",
+            "startDate": "Tarehe ya kuanza",
+            "title": "Wachangiaji",
+            "totalReward": "Jumla ya zawadi",
+            "username": "Jina la mtumiaji"
+          },
+          "courses": {
+            "contributor": "Mchangiaji",
+            "filterByCourse": "Chuja kwa kozi",
+            "lastUpdated": "Mwisho wa usasisho",
+            "progress": "Maendeleo %"
+          },
+          "dateFilter": "Kichujio cha tarehe",
+          "downloadData": "Pakua Data",
+          "filterByLanguage": "Chuja kwa lugha",
+          "fromMonth": "Kutoka",
+          "fromMonthPlaceholder": "Kutoka mwezi upi?",
+          "generalReport": "Ripoti ya Jumla",
+          "languageCoverage": {
+            "completed": "Imekamilika",
+            "inProgress": "Inaendelea",
+            "notStarted": "Haijaanza",
+            "totalCourses": "Kozi zote"
+          },
+          "languagesProofread": "Lugha zilizohakikiwa",
+          "noContributors": "Hakuna wahusika waliochangia wakapatikana",
+          "noCourses": "Hakuna kozi zinazopatikana",
+          "noLanguages": "Hakuna lugha zinazopatikana",
+          "proofreadCourses": "Kozi zilizohakikiwa",
+          "table": {
+            "contributor": "Mchangiaji",
+            "lastUpdated": "Mwisho iliposasishwa",
+            "progress": "Maendeleo %"
+          },
+          "tabs": {
+            "contributors": "Wachangiaji",
+            "courses": "Kozi",
+            "coverage": "Ufafanuzi wa lugha"
+          },
+          "toMonth": "Kwa",
+          "toMonthPlaceholder": "Kwa mwezi upi?",
+          "totalLanguages": "Jumla ya lugha",
+          "year": "Mwaka"
+        },
+        "searchPlaceholder": "Tafuta...",
+        "status": {
+          "assigned": "Imegawanywa",
+          "completed": "Imekamilika",
+          "inProgress": "Inaendelea",
+          "readyForReview": "Tayari kwa Ukaguzi",
+          "todo": "Kufanya",
+          "underReview": "Chini ya Ukaguzi"
+        },
+        "table": {
+          "actions": "Vitendo",
+          "course": "Kozi",
+          "index": "Faharisi",
+          "language": "Lugha",
+          "username": "Jina la mtumiaji"
+        },
+        "tabs": {
+          "contentManagement": "Usimamizi wa yaliyomo",
+          "reports": "Ripoti",
+          "requests": "Maombi",
+          "translate": "Tafsiri",
+          "userManagement": "Usimamizi wa watumiaji"
+        },
+        "title": "Jopo la utafsiri wa msimamizi",
+        "toggle": {
+          "pendingRequest": "Ombi linalosubiri",
+          "rejectedRequests": "Maombi yaliyokataliwa"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Tafsiri"
+          },
+          "backToCourse": "Rudi kwenye kozi",
+          "changeSpeed": "Badilisha kasi ya kurudisha nyuma",
+          "chapterTitle": "Jina la Sura",
+          "compare": "Linganisha",
+          "compareDisabledTooltip": "Toleo la kuhakiki halipatikani",
+          "compareTooltip": "Linganisha toleo la awali na lile lililohakikiwa",
+          "comparison": {
+            "backToChapter": "Rudi kwenye sura",
+            "originalVersion": "Toleo la Awali",
+            "translatedVersion": "Toleo la kutafsiriwa"
+          },
+          "description": "Anza kutafsiri kozi kwa lugha maalum.",
+          "forward15Seconds": "Sogeza mbele sekunde 15",
+          "imageNotFound": "Picha haipatikani",
+          "language": "Lugha",
+          "loadingPresentation": "Inapakia mawasilisho...",
+          "noContentAvailable": "Hakuna maudhui yanayopatikana",
+          "noCourses": "Hakuna kozi zinazohitaji kutafsiriwa kwa sasa.",
+          "noOriginalContent": "Hakuna maudhui ya asili",
+          "noPngSlides": "Hakuna slaidi za PNG zinazopatikana kwa mawasilisho haya",
+          "noSlidesFound": "Hakuna slaidi zilizopatikana",
+          "originalContent": "Yaliyokuwemo asili",
+          "pause": "Sitisha",
+          "play": "Cheza",
+          "presentations": "Maonyesho",
+          "rewind15Seconds": "Rudia sekunde 15 nyuma",
+          "selectLanguagesModal": {
+            "audioFile": "Faili la Sauti",
+            "audioFileInfo": "Muundo unaounga mkono: MP3, WAV, M4A (Upeo 50MB)",
+            "audioFileTooLarge": "Faili la sauti ni kubwa mno. Ukubwa wa juu kabisa ni 50MB.",
+            "cancel": "Ghairi",
+            "chooseAudioFile": "Chagua Sauti",
+            "chooseFolder": "Chagua folda",
+            "choosePptxFile": "Chagua PPTX",
+            "chooseZip": "Chagua ZIP",
+            "course": "Kozi",
+            "englishFilesRequired": "Tafadhali hakikisha kuwa faili zote zilizopakiwa ziko kwa Kiingereza pekee",
+            "existingUploadsInfo": "Faili za awali tayari zimepakiwa. Unaweza kuanza kutafsiri bila kuziongeza tena. Kupakia faili mpya kutaandikisha zile zilizopo.",
+            "folderUrl": "URL ya Folda",
+            "invalidAudioFile": "Tafadhali chagua faili sahihi ya sauti.",
+            "invalidPptxFile": "Tafadhali chagua faili halali la PowerPoint (.pptx).",
+            "missingFilesError": "Tafadhali pakia faili za tafsiri au toa URL kabla ya kuanza kutafsiri.",
+            "networkError": "Kosa la mtandao limetokea. Tafadhali angalia muunganisho wako kisha jaribu tena.",
+            "noAudioFileSelected": "Hakuna faili ya sauti iliyochaguliwa",
+            "noFolderSelected": "Hakuna folda iliyochaguliwa",
+            "noLanguagesAvailable": "Hakuna lugha za tafsiri zinazopatikana.",
+            "noPptxFileSelected": "Hakuna faili ya PowerPoint iliyochaguliwa",
+            "noZipSelected": "Hakuna ZIP iliyochaguliwa",
+            "originalLanguage": "Lugha ya asili:",
+            "overwriteWarning": "Faili zilizopo zitabadilishwa.",
+            "pptxFile": "Faili ya PowerPoint",
+            "pptxFileInfo": "Ni mafaili ya .pptx pekee yanayoungwa mkono (Upeo 100MB)",
+            "pptxFileTooLarge": "Faili la PowerPoint ni kubwa mno. Ukubwa wa juu kabisa ni 100MB.",
+            "processingStarted": "Utaratibu wa kutafsiri umeanza! Mchakato huu unaweza kuchukua muda wa dakika kadhaa kwa kozi kubwa.",
+            "selectLanguages": "Chagua lugha za kutafsiri:",
+            "startSuccess": "Utafsiri umeanza vizuri!",
+            "startTranslation": "Anza Tafsiri",
+            "startingTranslation": "Inapakia faili...",
+            "startingTranslationStep": "Kuanza tafsiri...",
+            "timeoutError": "Ombi la tafsiri limechelewa. Yaliyomo kwenye kozi yanaweza kuwa makubwa mno. Tafadhali jaribu tena au wasiliana ili kupata msaada.",
+            "title": "Chagua Lugha za Kutafsiri",
+            "translationFailed": "Tafsiri imekataa. Tafadhali angalia kumbukumbu na ujaribu tena.",
+            "uploadAndTranslationStarted": "Faili zimepakiwa na tafsiri imeanza! Mchakato unaweza kuchukua dakika kadhaa kwa kozi kubwa.",
+            "uploadError": "Upakiaji umekataa. Tafadhali angalia faili zako halafu jaribu tena.",
+            "uploadFiles": "Pakia Faili za Kusaidia (Hiari)",
+            "uploadFolder": "Pakia folda (PPTX + TXT)",
+            "uploadTimeoutError": "Upakiaji umekadiriwa baada ya dakika 10. Tafadhali jaribu na faili ndogo au angalia muunganisho wako.",
+            "uploadingFiles": "Inapakia faili...",
+            "useEnglishLabel": "Kozi tayari imetafsiriwa kwa Kiingereza. Tumia toleo la Kiingereza kama chanzo?"
+          },
+          "slideNavigation": {
+            "next": "Ifuatayo",
+            "previous": "Awali",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Slide {{slideNumber}} haipatikani",
+          "slideNotFound": "Slide haipatikani",
+          "table": {
+            "actions": "Vitendo",
+            "course": "Kozi",
+            "index": "Faharisi",
+            "todoLanguages": "Lugha za Kutafsiri",
+            "totalLanguages": "Jumla ya Lugha"
+          },
+          "textContent": "Yaliyomo kwenye Maandishi",
+          "title": "Kozi zilizotafsiriwa",
+          "translateTo": "Tafsiri kwenda",
+          "unknownContributor": "Isiyojulikana"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Rudi kwenye orodha ya watumiaji",
+            "backToUsers": "Rudi kwa watumiaji",
+            "viewDetails": "Tazama maelezo"
+          },
+          "addContributor": "Ongeza mchangiaji",
+          "chapters": "Sura",
+          "contributorInformation": "Taarifa za mchangiaji",
+          "courses": "Kozi",
+          "modal": {
+            "assignments": "Historia ya Ugawanyaji",
+            "noAssignments": "Hakuna kazi zinazopatikana",
+            "title": "Maelezo ya Mtumiaji",
+            "userInfo": "Taarifa ya Mtumiaji"
+          },
+          "noUsers": "Hakuna wahusika waliochangia wakapatikana",
+          "status": {
+            "published": "Iliyochapishwa",
+            "readyForReview": "Tayari kwa Ukaguzi",
+            "rejected": "Kukataliwa",
+            "reviewed": "Iliyokaguliwa",
+            "todo": "Kufanya",
+            "underReview": "Chini ya Ukaguzi"
+          },
+          "table": {
+            "actions": "Kufanya",
+            "assignedCourses": "Kozi zilizopangwa",
+            "language": "Lugha",
+            "startDate": "Tarehe ya kuanza",
+            "username": "Jina la mtumiaji"
+          },
+          "title": "Wachangiaji"
+        }
+      }
     },
     "announcements": {
       "groups": {
@@ -762,7 +1114,7 @@
       "assignmentCompletedTitle": "Kazi imekamilika",
       "assignmentDescription": "Uteuzi wa mradi unawakilisha hatua ya pili ya programu ya Shule ya Biashara ya Mpango ₿, inayofunguliwa kwa wanafunzi waliochaguliwa kutoka hatua ya kwanza. Kulingana na cheo cha mwanafunzi na mapendeleo, atapewa uteuzi wa mradi ulioandaliwa na kampuni ya Bitcoin. Uteuzi huu wa mradi wa mtu binafsi utafanyika kwa siku 10, kuanzia Juni 2 hadi Juni 12.\nK throughout uteuzi, watakuwa wakiongozwa na mwakilishi kutoka kampuni. Ifikapo Juni 12, wanafunzi lazima wakamilishe na kuwasilisha kazi zao kwa tathmini.\n\nMiradi itakadiriwa na kampuni. Alama hii itahesabiwa kwa daraja la mwisho. Wanafunzi walio na cheo cha juu tu ndio wataalikwa kushiriki katika Shule ya Majira ya joto huko Lugano, Uswisi, kuanzia Julai 23 hadi Julai 30, 2025.",
       "assignmentInformation": "Taarifa ya kazi",
-      "assignmentTitle": "",
+      "assignmentTitle": "Uteuzi wa Mradi",
       "checkDetailsCompleted": "Hapa unaweza kukagua maelezo yote kuhusu kozi hii uliyoikamilisha.",
       "completionDiploma": "Diploma ya kuhitimu",
       "completionExamInfo": "Unahitaji kukamilisha mtihani ili upate ufikiaji wa kipengele hiki.",
@@ -772,54 +1124,61 @@
       "confirmNoEditable": "Mara ikithibitishwa, orodha hii ya mapendeleo haitakuwa na uwezo wa kuhaririwa tena.",
       "confirmNoEditableFile": "Mara baada ya kuwasilisha, hutaweza tena kuhariri faili lako.",
       "confirmSubmission": "Thibitisha utumaji",
-      "congratulationsPassed": "",
+      "congratulationsPassed": "Hongera! Umefaulu kupita!",
       "coordinator": "Mratibu wa kozi",
       "courseCalendar": "Kalenda ya Kozi",
       "coursesCompleted": "Kozi zilizokamilika",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
+      "diplomaReleaseDescription": "Maradarasa zote zitakapokamilika, utapewa diploma kwa kukamilisha mafanikio ya kozi. Diploma zitapatikana kwa kupakua hapa baada ya darasa la mwisho na kukamilika kwa sura ya mwisho.",
+      "diplomaReleaseTitle": "Utoaji wa Diploma",
       "examScore": "Alama:",
       "exams": "Mitihani",
       "feedbacks": "Hapa unaweza kuangalia na kuhariri ukadiriaji na maoni ambayo umetoa kwa kozi hii.",
       "fileUploadError": "Kulikuwa na hitilafu wakati wa kupakia yako",
       "fileUploaded": "Kazi yako ilipakiwa kwa mafanikio!",
-      "finalAverageGradeDescription": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
+      "finalAverageGradeDescription": "Unaweza kupata alama yako ya wastani mwisho katika sehemu ya Mtihani & Shahada kwenye dashibodi yako.",
+      "finalGradeSummary": "Muhtasari wa daraja la mwisho",
+      "finalScore": "Matokeo ya mwisho",
       "generalInformation": "Taarifa za jumla",
-      "individualWork": "",
+      "individualWork": "Kazi ya mtu mmoja",
       "isSubmissionFinal": "Je, umepeana jibu lako la mwisho?",
       "joinTelegramGroup": "Jiunge na Kikundi cha Telegram",
       "keepEditing": "Endelea kuhariri",
-      "keepMovingForward": "",
+      "keepMovingForward": "Ingawa hukupita wakati huu, kila hatua inajenga maendeleo. Endelea kusonga mbele katika safari yako ya kujifunza!",
       "leastPreferred": "Kupendelea kwa kiwango cha chini",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
+      "listSaved": "Orodha yako ya mapendeleo imehifadhiwa.",
+      "listSavedComeTomorrow": "Orodha yako ya mapendeleo imehifadhiwa. \nRudi hapa kesho kugundua Mradi gani umepewa.",
+      "mostPreferred": "Inayopendelewa zaidi",
+      "mustBePdf": "Faili yako lazima iwe ya PDF. Ikiwa unahitaji kuwasilisha faili ya ziada, tafadhali ingiza kiungo husika ndani ya PDF yako.",
+      "notSelectedAssignment": "Kwa bahati mbaya, haujachaguliwa kushiriki katika Ugawaji wa Mradi. Bado unaweza kuendelea kufuatilia mihadhara ya kozi.",
       "planbSchoolExamDescription": "Mpango wa Shule ya Biashara ya Plan ₿ 2025 unaundwa na awamu mbili. Katika awamu ya kwanza, utafanya mitihani miwili mtandaoni, haswa ya katikati ya muhula na ya mwisho: ni mitihani ya jaribio moja, yenye muda unayoweza kukamilisha wakati wowote wakati wa kipindi cha upatikanaji wa siku tatu. Baada ya awamu ya kwanza, wanafunzi watachaguliwa kulingana na viwango vyao kuendelea kwenye awamu ya pili, ambayo inahusisha kazi ya mradi: kazi ya mtu binafsi inayotolewa na kampuni ya Bitcoin. Unaweza kupata maelezo zaidi kuhusu hilo kwenye tabo ya Kazi.\n\nDaraja la mwisho litahesabiwa kama wastani uliopimwa wa mitihani mitatu. Wanafunzi ambao watafikia alama zaidi ya 80% watapokea diploma, na wanafunzi walio na viwango vya juu pia watakuwa na nafasi ya kushiriki katika Shule ya Majira ya joto huko Lugano, mwezi Julai.",
-      "planbSchoolGeneralInformation": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "planbSchoolGeneralInformation": "Mpango wa Shule ya Biashara ya Plan ₿ 2025 unaundwa na awamu mbili. Katika awamu ya kwanza, utafanya mitihani miwili mtandaoni, haswa ya katikati ya muhula na ya mwisho: ni mitihani ya jaribio moja, yenye muda unaoweza kukamilisha wakati wowote wakati wa kipindi cha upatikanaji wa siku tatu. Baada ya awamu ya kwanza, wanafunzi watachaguliwa kulingana na viwango vyao kuendelea kwenye awamu ya pili, ambayo inahusisha kazi ya mradi: kazi ya mtu binafsi inayotolewa na kampuni ya Bitcoin. Unaweza kupata maelezo zaidi kuhusu hilo kwenye tabo ya Kazi.\n\nDaraja la mwisho litahesabiwa kama wastani uliopimwa wa mitihani mitatu. Wanafunzi ambao watafikia alama zaidi ya 80% watapokea diploma, na wanafunzi walio na viwango vya juu pia watakuwa na nafasi ya kushiriki katika Shule ya Majira ya joto huko Lugano, mwezi wa Julai.",
+      "projectRankingInstructions": "Maagizo ya Ukadiriaji wa Mradi:",
+      "ranking": "Cheo",
+      "rankingInstructions": "Panga miradi iliyopendekezwa kulingana na mapendeleo yako (nambari 1 ikiwa ni chaguo lako la juu). Kupanga hii kunatuwezesha kukuweka kwenye mradi unaoendana nawe zaidi. Wanafunzi wenye alama za juu watafikiriwa kwanza katika uteuzi wao.",
+      "rankingOnly24Hours": "Portal ya viwango itakuwa wazi kwa saa 24 pekee, Juni 2 kutoka 00:00 hadi 23:59 (UTC+2).",
+      "rankProjectPreferences": "Panga vipaumbele vya mradi wako",
       "ratingsAndFeedbacks": "Ukadiriaji na Maoni",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "Soma zaidi kuhusu kazi hiyo",
+      "saveList": "Hifadhi orodha",
       "shareOnSocials": "Shiriki kwenye mitandao ya kijamii:",
-      "submissionInstructions": "",
-      "submitBefore": "",
-      "submitFileNamingFormat": "",
+      "submissionInstructions": "Maagizo ya kuwasilisha",
+      "submitBefore": "Lazima uwasilishe kazi yako kabla ya {{date}} saa {{hour}}. Uwasilishaji utakaopokelewa baada ya muda huu hautahakikiwi.",
+      "submitFileNamingFormat": "Faili yako lazima iitwe kwa kutumia muundo ufuatao:\n<0>jina_la_kampuni_jinalatumia.pdf</0>.\nOndoa nafasi zote kutoka kwa jina la kampuni, tumia jina lako la mtumiaji kwenye jukwaa la planB.network, na uangalie makosa ya chapa.",
       "submitReviewInfo": "Unapaswa kuwasilisha ukaguzi ili kupata ufikiaji wa kipengele hiki.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
+      "submitYourWork": "Wasilisha kazi yako",
+      "summerSchool": "Shule ya Kiangazi",
+      "surePreferenceList": "Je, una uhakika kuhusu orodha yako ya upendeleo?",
+      "thresholdToPass": "Kizingiti cha kupita: {{threshold}}%",
       "tweetText": "Nimefurahi kukamilisha kozi ya {{courseIndex}} katika @planb_network na kupata diploma yangu kwa alama ya {{score}}/100 kwenye mtihani wa mwisho! {{emoji}} #PBNDiploma\n  {{certificateUrl}}",
-      "viewFinalGrade": "",
-      "yourProject": ""
+      "viewFinalGrade": "Tazama matokeo ya mwisho",
+      "yourProject": "Mradi wako",
+      "assignmentNotAccessible": "Kazi tayari imeanza na haiwezi kupatikana tena.",
+      "assignmentScore": "Alama za kazi",
+      "gaveSolidEffort": "Uliipa jitihadi sana!",
+      "tweetTextCourseDiploma": "Nimefurahia kumaliza kozi {{courseName}}, iliyofundishwa na {{courseCoordinator}} kwenye @planb_network na kupata shahada yangu!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Angalia muhtasari wa alama",
+      "wellDoneCompleting": "Hongera kwa kukamilisha na kupita kozi hii!\nHapa ndio hii diploma yako unayostahili",
+      "yourProjectAssignment": "Kazi yako ya mradi"
     },
     "courses": "Kozi",
     "credentials": {
@@ -834,7 +1193,13 @@
       "retakeExam": "Rudia mtihani",
       "seatBooked": "Kiti chako kwenye kikao cha mtihani kimehifadhiwa",
       "takePlaceAt": "Kikao kitafanyika kwenye",
-      "yourCertificate": "Cheti yako"
+      "yourCertificate": "Cheti yako",
+      "completeACourse": "Kamilisha kozi ili upate diploma yako ya kwanza!",
+      "exploreBCert": "Chunguza ₿-CERT",
+      "exploreCourses": "Fafanua kozi",
+      "getGlobalRecognition": "Pata utambuzi wa kimataifa na cheti cha ₿-CERT",
+      "noCertificatesAvailable": "Hakuna vyeti vinavyopatikana",
+      "noDiplomasAvailable": "Hakuna vyeti vilivyopatikana bado"
     },
     "goToDashboard": "Nenda kwenye dashibodi",
     "goToHomepage": "Nenda kwenye ukurasa wa kwanza",
@@ -895,7 +1260,12 @@
         "none": "Hakuna",
         "platformTitle": "Ni aina gani za arifa ungetaka kupokea kwenye jukwaa hili?",
         "settingsSaved": "Mipangilio yako imehifadhiwa kwa mafanikio!",
-        "title": "Mipangilio ya arifa"
+        "title": "Mipangilio ya arifa",
+        "assignedAt": "Amepangiwa kazi katika",
+        "completedAt": "Imekamilika saa",
+        "displayName": "Onyesha Jina",
+        "filter": "Chuja",
+        "role": "Jukumu"
       },
       "password": "Nenosiri",
       "personalInformation": "Taarifa zangu binafsi",
@@ -934,22 +1304,23 @@
         "announcementsPastDescription": "Hapa chini kuna orodha ya tangazo ambazo tayari zimetangazwa. Orodha itafutwa baada ya mwezi mmoja.",
         "announcementsUpcoming": "Matukio yajayo",
         "announcementsUpcomingDescription": "Hapa chini ni matangazo ya baadaye uliyoandika na kupanga.",
-        "assignment": "",
+        "assignment": "Kazi",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertDescription2": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
+          "alertDescription": "Baada ya alama zote kuchapishwa, bonyeza \"Chapisha alama zote\" ili kuchapisha zote kwa pamoja.\nTafadhali hakikisha alama kabla ya kuchapisha, kwa sababu hazitaweza kuhaririwa tena baada ya kuchapishwa. ",
+          "alertDescription2": "Alama za kazi zilizopewa zinapaswa kuchapishwa kabla ya saa sita usiku (CET) ya Juni 22.",
+          "alertTitle": "Ugawaji wa alama za kazi za shule",
+          "confirmPublication": "Thibitisha kuchapishwa",
+          "confirmPublicationDescription": "Baada ya matokeo kuchapishwa, hakuna kurudi nyuma kwa sababu hayataweza kuhaririwa tena.",
+          "confirmPublicationTitle": "Je, umehakikisha hakuna kosa?",
           "description": "Wanafunzi wamepangwa kwa makundi ya kazi.",
           "grade100": "Daraja (/100)",
           "gradesPublished": "Daraja zimetolewa.",
-          "missingGradesDescription": "",
+          "missingGradesDescription": "Ikiwa daraja zitachapishwa, zile zinazokosekana zitabadilishwa na 0/100.",
           "missingGradesTitle": "Bado kuna {{count}} alama zinakosekana!",
           "publishAllGrades": "Chapisha matokeo yote",
           "studentDisplayName": "Mwanafunzi (Jina la kuonyesha)",
-          "title": "Daraja za kazi za nyumbani"
+          "title": "Daraja za kazi za nyumbani",
+          "courseAssignment": "Kazi ya kozi"
         },
         "assignmentStudents": "Uteuzi wa Mradi",
         "courseDetails": "Maelezo ya kozi",
@@ -973,7 +1344,24 @@
         "reviews": "Ukaguzi",
         "selectCourse": "Chagua kozi",
         "summerStudents": "Shule ya Kiangazi",
-        "writeAnnouncement": "Andika tangazo"
+        "writeAnnouncement": "Andika tangazo",
+        "amountPaid": "Kiasi kilicholipwa",
+        "averageAttempts": "Jaribio la wastani",
+        "averageDuration": "Muda wa wastani",
+        "averageScore": "Alama ya wastani",
+        "exportExamData": "Hamisha data ya mtihani",
+        "finalAverageResults": "Matokeo ya wastani ya mwisho",
+        "finalScore": "Matokeo ya mwisho",
+        "lastActive": "Mara ya mwisho mtandaoni",
+        "medianScore": "Alama ya wastani",
+        "noExamLinked": "Hakuna mtihani uliofungamanishwa na kozi hii kwa sasa. Ikiwa unataka kuunda mtihani, tafadhali wasiliana nasi.",
+        "overview": "Muhtasari",
+        "questionsInExam": "Maswali kwa mtihani",
+        "studentsGraduated": "Wanafunzi waliohitimu",
+        "studentsList": "Orodha ya wanafunzi",
+        "successRate": "Kiwango cha mafanikio",
+        "thresholdToPass": "Kizingiti cha kufaulu",
+        "totalQuestions": "Jumla ya maswali"
       },
       "menu": "Menyu ya mwalimu",
       "profile": {
@@ -1010,6 +1398,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Hapa unaweza kupata uchambuzi kuhusu mafunzo uliyounda na kuchapisha kwenye jukwaa.",
         "yourTutorials": "Mafunzo yako"
+      },
+      "discount": {
+        "description": "Zalisha na usimamie nambari za punguzo kwa matukio na kozi - iwe ni matumizi ya mara moja kwa ajili ya ufadhili wa masomo au kesi zinazofanana, au matumizi ya mara nyingi kwa ajili ya kampeni za soko."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Tangaza mabadiliko",
+          "attendanceList": "Orodha ya kuhudhuria",
+          "courseEnded": "Kozi hii imeisha.",
+          "courseNotStarted": "Kozi hii bado haijaanza.",
+          "enrolledStudents": "Wanafunzi waliojiandikisha",
+          "hasEnrolled": "Umejiandikisha",
+          "hasGraduated": "amehitimu na alama ya {{score}}%",
+          "hasLeftReview": "ameacha ukaguzi",
+          "hasLeftReviewAndComment": "ameacha ukaguzi na maoni",
+          "notifyStudents": "Kuna Kitu kimebadilika? Waarifu wanafunzi wako.",
+          "overallPerformance": "Ufanisi wa jumla",
+          "recentActivity": "Shughuli za hivi karibuni",
+          "studentsRegistered": "Wanafunzi waliosajiliwa",
+          "upcomingClass": "Darasa lijalo"
+        }
       }
     }
   },
@@ -1029,7 +1440,8 @@
       "unlimited": "haina kikomo",
       "visitWebsite": "Tembelea tovuti",
       "watchLive": "Tazama moja kwa moja",
-      "watchReplay": "Tazama uchezaji wa marudio"
+      "watchReplay": "Tazama uchezaji wa marudio",
+      "buyLecture": "Nunua mhadhara"
     },
     "errors": {
       "premiumContentNeedsLogin": "Unahitaji kuingia ili kufikia tukio hili.",
@@ -1081,7 +1493,42 @@
       "time": "Muda"
     },
     "tcDisclaimer": "Nakubaliana kuwa taarifa zangu zinaweza kushirikiwa na waandaaji kwa madhumuni ya kupata ufikiaji wa eneo la tukio.",
-    "tcMustBeAccepted": "Lazima ukubali sheria na masharti ili kuendelea"
+    "tcMustBeAccepted": "Lazima ukubali sheria na masharti ili kuendelea",
+    "addEvent": "Ongeza shughuli",
+    "calendar": {
+      "displayCalendar": "Onyesha Kalenda",
+      "fullMap": "Ramani kamili",
+      "hideCalendar": "Ficha kalenda",
+      "inXMonths": "Katika miezi {{number}}",
+      "lastMonth": "Mwezi uliopita",
+      "nextMonth": "Mwezi ujao",
+      "noEventsFound": "Hakuna matukio yaliyopatikana",
+      "thisMonth": "Mwezi huu",
+      "today": "Leo",
+      "xMonthsAgo": "Miezi {{number}} iliyopita"
+    },
+    "eventInfos": {
+      "eventBooked": "Tukio limehifadhiwa",
+      "eventType": "Aina ya tukio",
+      "numberOfSpots": "Idadi ya sehemu",
+      "onlineAndInPerson": "Kwa mtandao na ana kwa ana",
+      "secureYourSpot": "Weka nafasi yako",
+      "whatsPlanned": "Nini kilichopangwa"
+    },
+    "myTickets": "Tiketi zangu",
+    "planBWeek": {
+      "pageTitle": "Wiki ya Plan ₿"
+    },
+    "types": {
+      "plurals": {
+        "conference": "mikutano",
+        "exam": "mitihani",
+        "lecture": "mihadhara",
+        "meetup": "mikutano",
+        "workshop": "warsha za kazi"
+      }
+    },
+    "upcomingEvents": "Shughuli zijazo"
   },
   "filters": {
     "categories": "Jamii",
@@ -1102,7 +1549,8 @@
     "placeHolder": "Hii ni nini?",
     "randomSearch": "Utafutaji wa nasibu",
     "relatedWords": "Maneno yanayohusiana:",
-    "term": "Neno"
+    "term": "Neno",
+    "showMoreWords": "Onyesha maneno zaidi"
   },
   "home": {
     "aboutUsSection": {
@@ -1225,7 +1673,8 @@
   "movies": {
     "goToMovie": "Nenda kwenye sinema",
     "pageTitle": "Filamu na Makala",
-    "watchTrailer": "Tazama trela"
+    "watchTrailer": "Tazama trela",
+    "checkTheMovie": "Kagua filamu"
   },
   "nodeNetwork": {
     "description1": "Tunaamini kwamba elimu haipaswi tu kufanyika mtandaoni lakini pia katika nafasi za kimwili. Ili kufanikisha hili, Plan ₿ Network inasimamia mtandao wa vitovu kote ulimwenguni ili kuwakaribisha wanafikra, wajasiriamali na waelimishaji wanaokuza maendeleo ya Bitcoin na teknolojia ya uhuru.",
@@ -1275,7 +1724,8 @@
     "upcomingEvent": "Tukio Lijalo",
     "weeksAgo": "{{weeks}} wiki{{s}} iliyopita",
     "yearsAgo": "{{years}} mwaka{{s}} uliopita",
-    "yesterday": "Jana"
+    "yesterday": "Jana",
+    "newVersionAvailable": "Toleo jipya la jukwaa la Mtandao wa Plan ₿ linapatikana. Tafadhali tazama upya ukurasa kusasisha."
   },
   "payment": {
     "haveReductionCode": "Je, una msimbo wa kupunguza?",
@@ -1366,18 +1816,21 @@
       "title": "Makala"
     },
     "bet": {
-      "title": "Zana ya Elimu"
+      "title": "Zana ya Elimu",
+      "addEducationKit": "Zana ya Elimu"
     },
     "books": {
       "author": "Mwandishi: ",
-      "title": "Maktaba"
+      "title": "Maktaba",
+      "addBook": "Ongeza kitabu"
     },
     "channels": {
       "noYoutubeChannels": "Kwa sasa hakuna Vituo vya Youtube kwa lugha iliyochaguliwa.",
       "title": "Vituo vya Youtube"
     },
     "conferences": {
-      "title": "Marudio ya mkutano"
+      "title": "Marudio ya mkutano",
+      "addConference": "Ongeza kurudia mkutano"
     },
     "github": "Data zote zinasimamiwa kupitia hifadhidata moja ya wazi ya <0>Github</0>. Jisikie huru kuchangia na kuongeza yaliyokosekana.",
     "glossary": {
@@ -1410,15 +1863,19 @@
     "pageTitle": "Karibu kwenye Tovuti ya Rasilimali",
     "podcasts": {
       "noPodcasts": "Kwa sasa hakuna podikasti za lugha uliyochagua.",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "Ongeza podcast",
+      "checkThePodcast": "Angalia podikasti"
     },
     "projects": {
-      "title": "Miradi"
+      "title": "Miradi",
+      "addProjects": "Ongeza mradi"
     },
     "searchFilterName": "Tafuta kwa jina",
     "toggleFreeOnly": "Bure tu",
     "toggleLabelAll": "Zote",
-    "toggleLabelSelectedLanguage": "Lugha iliyochaguliwa"
+    "toggleLabelSelectedLanguage": "Lugha iliyochaguliwa",
+    "pageSubtitleMovies": "<0>Filamu nyingine</0> unaweza kupenda"
   },
   "search": {
     "all": "Zote",
@@ -1496,7 +1953,8 @@
       "ratingSuccess": "Asante kwa kutoa tathmini yako!",
       "source": "Original source :",
       "tutorialName": "Jina la mafunzo",
-      "writtenBy": "Mwongozo huu uliandikwa na :"
+      "writtenBy": "Mwongozo huu uliandikwa na :",
+      "didThisWork": "Je, hii ilifanya kazi vizuri kwako?"
     },
     "exchange": {
       "description": "Mabadilishano ni mojawapo ya milango ya kuingia na kutoka kati ya sarafu yako ya jadi (euro, dola) na ulimwengu wa bitcoin. Ubadilishanaji unaweza kudhibitiwa na kutii KYC (Mjue Mteja Wako), au kati-ka-mwenzi na bila majina. Kila ubadilishaji utatoa vipengele tofauti, miundo ya ada, ukwasi, na usaidizi kwa wateja. Kila bitcoiner itatumia tofauti kulingana na mahitaji na imani zao.",
@@ -1595,7 +2053,7 @@
     "chapters": "Sura",
     "close": "Funga",
     "communities": "Jumuiya",
-    "company": "",
+    "company": "Kampuni",
     "complete": "Kamilisha",
     "conference": "Mkutano",
     "congrats": "Hongera!",
@@ -1660,7 +2118,7 @@
     "lnurlAuth": "LNURL Auth",
     "location": "Mahali",
     "members": " .Washiriki",
-    "mentor": "",
+    "mentor": "Mshauri",
     "mining": "Kuchimba",
     "mode": "Mfumo",
     "movie": "Filamu",
@@ -1670,7 +2128,7 @@
     "next": "Ifuatayo",
     "no": "Hapana",
     "nodeNetwork": "Node Network",
-    "notApplicable": "",
+    "notApplicable": "Havitumiki",
     "on": "kwenye",
     "onChainAddress": "On chain address",
     "online": "Mtandaoni",
@@ -1718,7 +2176,7 @@
     "tickets": "Tiketi",
     "time": "Muda",
     "timeZone": "Mikanda ya Saa",
-    "title": "",
+    "title": "Kichwa",
     "to": "kwa",
     "topics": "Mada",
     "total": "Jumla",
@@ -1735,7 +2193,44 @@
     "viewMore": "Tazama zaidi",
     "wallets": "Wallets",
     "yes": "Ndiyo",
-    "pricing": "Bei"
+    "pricing": "Bei",
+    "academy": "Chuo Kikuu",
+    "account": "Akaunti",
+    "actions": "Vitendo",
+    "booking": "Hifadhi",
+    "certifications": "Vyeti",
+    "completed": "Imekamilika",
+    "discover": "Gundua",
+    "enrolled": "Umejiandikisha",
+    "filters": "Chuja",
+    "full": "Kamili",
+    "info": "Taarifa",
+    "invoices": "Ankara",
+    "map": "Ramani",
+    "month": "Mwezi",
+    "myCertificates": "Vyeti vyangu",
+    "none": "Hakuna",
+    "practice": "Mazoezi",
+    "questions": "Maswali",
+    "rating": "Viwango",
+    "resetAll": "Anza upya zote",
+    "resetFilters": "Rudisha vichujio",
+    "results": "Matokeo",
+    "resume": "Resume",
+    "review": "Ukaguzi",
+    "sats": "Sats",
+    "searchTripleDot": "Tafuta...",
+    "seeAll": "Ona zote",
+    "settings": "Mipangilio",
+    "share": "Shirikisha",
+    "structure": "Muundo",
+    "taxes": "ushuru",
+    "theory": "Nadharia",
+    "topic": "Mada",
+    "type": "Aina",
+    "viewAll": "Tazama yote",
+    "week": "Wiki",
+    "weight": "Uzito"
   },
   "youtubeChannels": {
     "pageTitle": "Vituo vya Youtube",
@@ -1745,5 +2240,58 @@
   "account": {
     "account": "KICHWA: Sehemu ya akaunti",
     "myTeacherProfile": "Wasifu wangu wa ualimu"
+  },
+  "footer": {
+    "followUsOn": "Tufuate kwenye"
+  },
+  "months": {
+    "april": "Aprili",
+    "august": "Agosti",
+    "december": "Desemba",
+    "february": "Februari",
+    "january": "Januari",
+    "july": "Julai",
+    "june": "Juni",
+    "march": "Machi",
+    "may": "Mei",
+    "november": "Novemba",
+    "october": "Oktoba",
+    "september": "Septemba"
+  },
+  "navbar": {
+    "analytics": "Uchambuzi",
+    "bookings": "Hifadhi",
+    "career": "Kazi",
+    "discountCode": "Nambari za punguzo",
+    "learnAnytimeDescription": "Kozi zinazojiendesha wenyewe",
+    "learnAnytimeTitle": "Jifunze wakati wowote",
+    "liveClassesDescription": "Kozi zinazoongozwa na mwalimu",
+    "liveClassesTitle": "Darasa za moja kwa moja",
+    "manageCourses": "Simamia kozi",
+    "myCalendar": "Kalenda yangu",
+    "myCareer": "Kazi yangu",
+    "myCourses": "Kozi zangu",
+    "tabs": {
+      "admin": "Msimamizi",
+      "learn": "Jifunze",
+      "teach": "Fundisha"
+    },
+    "translationPanel": "Paneli ya kutafsiri",
+    "tutorials": "Mafunzo",
+    "userRolesAllocation": "Mgao wa majukumu ya mtumiaji"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Tafsiri ya AI",
+      "language": "Lugha",
+      "original": "Lugha ya asili:"
+    },
+    "player": {
+      "pears": "Pears🍐",
+      "peertube": "Peertube",
+      "player": "Mchezaji",
+      "rumble": "Mgogoro",
+      "youtube": "Youtube"
+    }
   }
 }
