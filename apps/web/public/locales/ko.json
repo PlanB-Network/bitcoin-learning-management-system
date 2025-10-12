@@ -1316,10 +1316,10 @@
           "grade100": "성적 (/100)",
           "gradesPublished": "성적이 발표되었습니다.",
           "missingGradesDescription": "성적이 공개될 경우, 누락된 성적은 0/100으로 대체됩니다.",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": "",
+          "missingGradesTitle": "아직 {{count}}개의 성적을 제출하지 않았습니다!",
+          "publishAllGrades": "전체 성적 공개",
+          "studentDisplayName": "학생 (Display name)",
+          "title": "과제 점수",
           "courseAssignment": "강좌 채점"
         },
         "assignmentStudents": "",
@@ -1329,7 +1329,7 @@
         "coursesManagementPanel": "코스 패널",
         "curriculum": "코스 커리큘럼",
         "curriculumDescription": "이 코스의 현재 커리큘럼은 다음과 같습니다.",
-        "deleteAnnouncementTitle": "",
+        "deleteAnnouncementTitle": "정말 이 공지사항을 삭제하시겠습니까?",
         "deleteAnnouncementWarning": "",
         "editOnGithub": "GitHub에서 편집",
         "examResults": "시험 결과",
@@ -1346,7 +1346,9 @@
         "summerStudents": "",
         "writeAnnouncement": "",
         "overview": "개요",
-        "amountPaid": "지불된 금액"
+        "amountPaid": "지불된 금액",
+        "averageScore": "평균 점수",
+        "finalScore": "최종 점수"
       },
       "menu": "강사 메뉴",
       "profile": {
@@ -2146,7 +2148,10 @@
     "share": "공유",
     "week": "주",
     "booking": "예약",
-    "full": "전체"
+    "full": "전체",
+    "filters": "필터",
+    "practice": "실습",
+    "searchTripleDot": "검색..."
   },
   "youtubeChannels": {
     "pageTitle": "유튜브 채널",
