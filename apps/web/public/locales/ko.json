@@ -1343,12 +1343,14 @@
         "reviewInfos": "여기에서 구성한 각 코스에 대한 정보를 관리하고 확인할 수 있습니다.",
         "reviews": "리뷰",
         "selectCourse": "",
-        "summerStudents": "",
-        "writeAnnouncement": "",
+        "summerStudents": "여름 학교",
+        "writeAnnouncement": "공지를 작성하세요",
         "overview": "개요",
         "amountPaid": "지불된 금액",
         "averageScore": "평균 점수",
-        "finalScore": "최종 점수"
+        "finalScore": "최종 점수",
+        "thresholdToPass": "합격 기준",
+        "totalQuestions": "총 질문 수"
       },
       "menu": "강사 메뉴",
       "profile": {
