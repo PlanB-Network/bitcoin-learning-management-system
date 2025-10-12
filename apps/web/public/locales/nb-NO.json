@@ -647,7 +647,27 @@
           "toMonth": "Til",
           "toMonthPlaceholder": "Til hvilken måned?",
           "totalLanguages": "Totalt antall språk",
-          "year": "År"
+          "year": "År",
+          "chooseYear": "Hvilket år vurdere du?",
+          "comingSoon": {
+            "courses": "Kursoversikt kommer snart",
+            "coverage": "Oversikt over språkdekning kommer snart"
+          },
+          "contributors": {
+            "assignedCourses": "Tildelte kurs",
+            "completedCourses": "Fullførte kurs",
+            "languages": "Språk",
+            "startDate": "Oppstarts dato",
+            "title": "Bidragsytere",
+            "totalReward": "Total belønning",
+            "username": "Brukernavn"
+          },
+          "courses": {
+            "contributor": "Bidragsyter",
+            "filterByCourse": "Filtrer med utgangspunkt i kurs",
+            "lastUpdated": "Sist oppdatert",
+            "progress": "Framgang %"
+          }
         },
         "searchPlaceholder": "Søk...",
         "status": {
@@ -719,8 +739,37 @@
           "noContributor": "Ingen bidragsyter tildelt",
           "partTitle": "Del {{index}}: {{title}}",
           "progress": "Fremgang",
-          "status": "Status"
-        }
+          "status": "Status",
+          "translationStatus": "Status for oversettelse"
+        },
+        "courseNotFound": "Kurset ble ikke funnet",
+        "messages": {
+          "noPendingRequests": "Ingen flere forespørsler om korrektur venter.",
+          "noPendingRequestsSearch": "Ingen forespørsler med korrektur som passer",
+          "noRejectedRequests": "Det er ingen forespørsler om korrektur som er avslått",
+          "noRejectedRequestsSearch": "Ingen avslåtte forespørsler til korrektur som passer"
+        },
+        "modal": {
+          "acceptRequest": "Godta forespørsel",
+          "acceptTranslationRequest": "Godta Forespørselen ang korrektur",
+          "accepting": "Aksepterer...",
+          "cancel": "Avbryt",
+          "close": "Lukk",
+          "contributor": "Bidragsyter",
+          "course": "Kurs",
+          "doYouWantToAcceptRequest": "Vil du godta denne oversettelsesforespørselen?",
+          "language": "Språk",
+          "provideRejectionReason": "Vennligst oppgi en grunn for å avslå denne forespørselen",
+          "reasonForRejection": "Grunn til avvisning",
+          "reasonPlaceholder": "Skriv forklaringen din her...",
+          "rejecting": "Avviser...",
+          "requestAcceptedMessage": "Bidragsyteren har blitt varslet og kan nå begynne å jobbe med oversettelsen.",
+          "requestAcceptedSuccess": "Du godtok henstillingen ang oversettelsen!",
+          "requestRejectedSuccess": "Forespørselen ble avvist med suksess",
+          "submitRejection": "Send inn"
+        },
+        "noResultsFound": "Ingen resultater funnet",
+        "pendingTranslationRequests": "Forespørsler om korrektur venter"
       }
     },
     "announcements": {
