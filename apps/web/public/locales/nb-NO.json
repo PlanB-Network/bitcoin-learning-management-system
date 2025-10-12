@@ -114,7 +114,7 @@
     "readChart": "Les charteret",
     "tweetText": "Gleder meg over å ha bestått ₿-CERT hos @planb_network med en score på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
     "verify": "Bekreft ektheten av sertifikatet ditt",
-    "hostSessionConditions": "Slik gjør du:\n\n1. Les <0>Charteret</0> - Sørg for at samfunnet ditt oppfyller de obligatoriske vertskapsbetingelsene\n2. Planlegg & Sett opp tidsplan - Hvis du kvalifiserer, velg en dato og organiser økten\n3. Publiser arrangementet ditt - Kontakt oss for å legge det til på Plan ₿ Network-plattformen slik at folk kan bli med",
+    "hostSessionConditions": "Slik gjør du:\n\n1. Les <0>Charter</0> - Sørg for at gruppen din oppfyller de obligatoriske vertskapsbetingelsene\n2. Planlegg & Sett opp tidsplan - Hvis du kvalifiserer, velg en dato og organiser økten\n3. Publiser arrangementet ditt - Kontakt oss for å legge det til på Plan ₿ Network-plattformen slik at folk kan bli med",
     "myCertificates": "Mine sertifikater",
     "noTestSessions": "Ingen testøkter er for øyeblikket tilgjengelige",
     "wantHostSession": "Vil du være vert for en ₿-CERT testøkt på din lokale hub?"
@@ -709,7 +709,17 @@
           "chapterTitle": "Tittel",
           "chaptersAndProgress": "Kapitler og Fremgang",
           "chaptersCompleted": "kapitler fullført",
-          "courseIndex": "Kursindeks"
+          "courseIndex": "Kursindeks",
+          "courseInformation": "Kursinformasjon",
+          "courseName": "Kursnavn",
+          "currentContributor": "Nåværende bidragsyter",
+          "errorLoadingDetails": "Feil ved innlasting av kursdetaljer",
+          "language": "Språk",
+          "noChapters": "Ingen kapitler tilgjengelig for dette kurset",
+          "noContributor": "Ingen bidragsyter tildelt",
+          "partTitle": "Del {{index}}: {{title}}",
+          "progress": "Fremgang",
+          "status": "Status"
         }
       }
     },
