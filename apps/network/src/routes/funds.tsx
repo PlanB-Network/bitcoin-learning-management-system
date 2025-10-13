@@ -1,12 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { Trans } from 'react-i18next';
+import headerImage from '#src/assets/funds/header.png';
+import headerSmallImage from '#src/assets/funds/header-small.png';
 import media2Image from '#src/assets/funds/media-2.png';
 import media2MobileImage from '#src/assets/funds/media-2-mobile.png';
 import media3Image from '#src/assets/funds/media-3.png';
 import media3MobileImage from '#src/assets/funds/media-3-mobile.png';
-import headerImage from '#src/assets/funds-header.png';
-import headerSmallImage from '#src/assets/funds-header-small.png';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import { NetworkButton } from '#src/components/network-button.tsx';

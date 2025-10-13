@@ -1,70 +1,73 @@
 {
   "about": {
-    "title": "Our Commitment\nto <0>Freedom</0>",
-    "subtitle": "Founded in 2024 by passionate Bitcoiners, the Plan ₿ Network initiative aims to provide tools that support the Bitcoin ecosystem in its growth toward mass adoption",
-    "media1title": "A global ecosystem of builders focus on Bitcoin",
-    "media1subtitle": "Plan \u20bf Network is a joint initiative between Tether, Fulgur Ventures, D\u00e9couvreBitcoin, and led by Giacomo Zucco & Rogzy.\u00a0\n\nOur mission is to offer worldwide Bitcoin solutions to make bitcoin mass adoption easier, we focus around three major areas:\n• Academic resources to spread knowledge\n• Community building to stay decentralized\n• Start-up support to drive innovation\n\nOur experts and founders\u2019 network share common values that help guide us throughout our journey.",
-    "ourValues": {
-      "title": "Our values",
-      "1textt": "Bitcoin first",
-      "1subtext": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
-      "2text": "Open source",
-      "2subtext": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
-      "3text": "Privacy",
-      "3subtext": "We consider privacy to be one of the most fundamental human rights and essential for progress",
-      "4text": "Freedom focus",
-      "4subtext": "Freedom is the foundation of human progress, shaping our work in peer-to-peer technology, ethics, and real-world solutions",
-      "5text": "Bottom-up focus",
-      "5subtext": "We design tools for massive, permissionless use, enabling resilience and independence from top-down attacks",
-      "6text": "Community",
-      "6subtext": "We trust in communities—the backbone of Bitcoin—with plebs everywhere carrying the movement into every village and city"
-    },
-    "media2title": "The Plan ₿ Family — a gathering of people working to change the world",
-    "media2subtitle": "At Plan ₿ Network, we believe Bitcoin can change the world for the better. We are also realists, aware that this transformation will require the collective effort of billions of people over decades. \n\nFollowing this vision, we are building a network of partners, builders, communities, and educators who support one another in this common direction",
     "communities": "Partner communities",
     "companies": "Partner companies",
-    "professors": "Professors",
+    "contactText": "To know more about our activities in Lugano, please contact us.",
     "contributors": "Contributors",
-    "networkCollaborators": "Network collaborators"
+    "media1subtitle": "Plan \u20bf Network is a joint initiative between Tether, Fulgur Ventures, D\u00e9couvreBitcoin, and led by Giacomo Zucco & Rogzy.\u00a0\n\nOur mission is to offer worldwide Bitcoin solutions to make bitcoin mass adoption easier, we focus around three major areas:\n• Academic resources to spread knowledge\n• Community building to stay decentralized\n• Start-up support to drive innovation\n\nOur experts and founders\u2019 network share common values that help guide us throughout our journey.",
+    "media1title": "A global ecosystem of builders focus on Bitcoin",
+    "media2subtitle": "At Plan ₿ Network, we believe Bitcoin can change the world for the better. We are also realists, aware that this transformation will require the collective effort of billions of people over decades. \n\nFollowing this vision, we are building a network of partners, builders, communities, and educators who support one another in this common direction",
+    "media2title": "The Plan ₿ Family — a gathering of people working to change the world",
+    "networkCollaborators": "Network collaborators",
+    "ourValues": {
+      "1subtext": "Bitcoin revolution as a whole, from its base layer to various peer-to-peer communications around it",
+      "1textt": "Bitcoin first",
+      "2subtext": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
+      "2text": "Open source",
+      "3subtext": "We consider privacy to be one of the most fundamental human rights and essential for progress",
+      "3text": "Privacy",
+      "4subtext": "Freedom is the foundation of human progress, shaping our work in peer-to-peer technology, ethics, and real-world solutions",
+      "4text": "Freedom focus",
+      "5subtext": "We design tools for massive, permissionless use, enabling resilience and independence from top-down attacks",
+      "5text": "Bottom-up focus",
+      "6subtext": "We trust in communities—the backbone of Bitcoin—with plebs everywhere carrying the movement into every village and city",
+      "6text": "Community",
+      "title": "Our values"
+    },
+    "professors": "Professors",
+    "subtitle": "Founded in 2024 by passionate Bitcoiners, the Plan ₿ Network initiative aims to provide tools that support the Bitcoin ecosystem in its growth toward mass adoption",
+    "title": "Our Commitment\nto <0>Freedom</0>"
   },
   "academy": {
-    "title": "<0>Bitcoin Education</0> for everyone",
-    "subtitle": "We're building a world where everyone can learn Bitcoin — openly, globally, and with purpose. From individuals to institutions, our custom and open-source programs help grow real understanding and adoption of Bitcoin everywhere"
+    "subtitle": "We're building a world where everyone can learn Bitcoin — openly, globally, and with purpose. From individuals to institutions, our custom and open-source programs help grow real understanding and adoption of Bitcoin everywhere",
+    "title": "<0>Bitcoin Education</0> for everyone"
   },
   "funds": {
-    "title": "<0>Building</0> the future together ",
-    "subtitle": "We're investing in the future of Bitcoin by supporting companies and startups that drive industry growth. With dedicated funds and an incubator program, we help transform innovative ideas into lasting impact",
-    "media1title": "The Cyphertank",
     "media1subtitle": "Showcase your startup idea in front of industry leaders like Matt Odell, Paolo Ardoino, and Oleg. Compete for the chance to win $100,000 and make your mark in the global innovation scene.\n\nThink you've got what it takes to be the next big founder? Step up, pitch your vision, and seize the spotlight.",
-    "media2title": "Get funding from the right partners",
+    "media1title": "The Cyphertank",
     "media2subtitle": "We connect founders with leading venture capital funds and grant organizations. In collaboration with PlanB VC Fund, Fulgur Ventures, and other partners, we streamline your application process and make sure your project lands on the right desk.",
+    "media2title": "Get funding from the right partners",
+    "media3subtitle": "A selective program designed for founders ready to take the next step. As a member, you gain access to:\n\n\t• Relocation support in Lugano\n\t• Hands-on training and consulting\n\t• Exclusive research and insights\n\t• Direct connection to our student talent pool\n\t• A powerful network of peers, mentors, and investors\n\t• Creation of tutorial and courses based on your tech stack\n\nJoin our incubator and turn your vision into a thriving venture!",
     "media3title": "Plan ₿ Incubator",
-    "media3subtitle": "A selective program designed for founders ready to take the next step. As a member, you gain access to:\n\n\t• Relocation support in Lugano\n\t• Hands-on training and consulting\n\t• Exclusive research and insights\n\t• Direct connection to our student talent pool\n\t• A powerful network of peers, mentors, and investors\n\t• Creation of tutorial and courses based on your tech stack\n\nJoin our incubator and turn your vision into a thriving venture!"
+    "subtitle": "We're investing in the future of Bitcoin by supporting companies and startups that drive industry growth. With dedicated funds and an incubator program, we help transform innovative ideas into lasting impact",
+    "title": "<0>Building</0> the future together "
   },
   "home": {
     "title": "Scaling Bitcoin adoption"
   },
   "hubs": {
-    "title": "<0>Building</0> the Bitcoin places of tomorrow",
-    "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory."
+    "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory.",
+    "title": "<0>Building</0> the Bitcoin places of tomorrow"
   },
   "menu": {
-    "academy": "Academy",
-    "hubs": "Hubs",
-    "funds": "Funds",
     "about": "About",
+    "academy": "Academy",
+    "funds": "Funds",
+    "hubs": "Hubs",
     "news": "News"
   },
   "news": {
-    "title": "Latest news of the <0>Network</0>",
-    "subtitle": "At Plan ₿ Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check our latest news !",
-    "noNews": "There are no news at this time.",
-    "readArticle": "Read article",
-    "previousNews": "Previous Network Posts",
     "backToAll": "Back to all articles",
-    "news": "News"
+    "news": "News",
+    "noNews": "There are no news at this time.",
+    "pastArticles": "Past articles",
+    "previousNews": "Previous Network Posts",
+    "readArticle": "Read article",
+    "subtitle": "At Plan ₿ Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check our latest news !",
+    "title": "Latest news of the <0>Network</0>"
   },
   "words": {
+    "contactUs": "Contact us",
     "read": "Read"
   }
 }

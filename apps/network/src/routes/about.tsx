@@ -3,15 +3,16 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import headerImage from '#src/assets/about-header.png';
-import headerSmallImage from '#src/assets/about-header-small.png';
-import media1Image from '#src/assets/about-media-1.png';
+import headerImage from '#src/assets/about/header.png';
+import headerSmallImage from '#src/assets/about/header-small.png';
+import media1Image from '#src/assets/about/media-1.png';
 import valuesBitcoinFirstImage from '#src/assets/icons/bitcoin.png';
 import valuesBottomUpImage from '#src/assets/icons/bottom-up.png';
 import valuesFreedomImage from '#src/assets/icons/freedom.png';
 import valuesOpenSourceImage from '#src/assets/icons/github.png';
 import valuesBitcoinFirst2Image from '#src/assets/icons/groups.png';
 import valuesPrivacyImage from '#src/assets/icons/visibility_off.png';
+import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import PageBlock from '#src/components/page-block.tsx';
@@ -179,16 +180,16 @@ function RouteComponent() {
         }
         subtitle={t('about.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
-        className="mx-10"
-        subtitleClassName={'max-w-[85%] lg:max-w-[50%]'}
+        className="lg:mx-10"
+        subtitleClassName={'max-w-[400px]'}
       />
       <MediaCard
         title={t('about.media1title')}
         subtext={t('about.media1subtitle')}
         imageUrl={media1Image}
         alt="Scenic mountain lake"
-        titleClassName={'lg:max-w-[53%]'}
-        subtitleClassName={'lg:max-w-[50%]'}
+        titleClassName={'lg:max-w-[65%]'}
+        subtitleClassName={'lg:max-w-[40%]'}
         imageClassName="lg:max-w-[50%]"
         subtitleUnderImage={true}
         className="mt-12"
@@ -330,6 +331,10 @@ function RouteComponent() {
               ))
             : null}
         </div>
+      </PageBlock>
+
+      <PageBlock className="mt-8 lg:mt-16">
+        <ContactUs text={t('about.contactText')} email="toto@toto.com" />
       </PageBlock>
     </>
   );

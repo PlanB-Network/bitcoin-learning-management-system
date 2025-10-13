@@ -1,5 +1,5 @@
 import { cn } from '@blms/ui';
-import type React from 'react'; // React is required for React.ReactNode
+import type React from 'react';
 import PageBlock from './page-block.tsx';
 
 interface HeroProps {
@@ -17,7 +17,7 @@ export const Hero = ({
   subtitle,
   imageUrl,
   className = '',
-  titleClassName = 'max-w-[55%]',
+  titleClassName = 'max-w-[700px]',
   subtitleClassName = 'max-w-[50%]',
   subtitleUnderImage = false,
 }: HeroProps) => {
