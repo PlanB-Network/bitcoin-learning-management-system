@@ -7,7 +7,6 @@ import {
   cn,
 } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import type { CSSProperties } from 'react';
 import { BsFillCircleFill, BsFillTriangleFill } from 'react-icons/bs';
 import { addSpaceToCourseIndex } from '#src/utils/courses.js';
 
@@ -22,7 +21,6 @@ interface Props {
   course: CourseResponse;
   chapters: JoinedCourseChapter[];
   currentChapter: Chapter;
-  style?: CSSProperties;
 }
 
 const isCurrentChapter = (
@@ -51,13 +49,9 @@ export const NavigationPanel: React.FC<Props> = ({
   course,
   chapters,
   currentChapter,
-  style,
 }: Props) => {
   return (
-    <aside
-      className="bg-white z-10 w-full max-w-[270px] max-h-[80lvh] rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation overflow-y-auto scrollbar-light"
-      style={style}
-    >
+    <aside className="bg-white z-10 w-full max-w-[270px] max-h-[80lvh] rounded-b-2xl border border-darkOrange-0 pt-4 pb-7 px-2.5 shadow-course-navigation overflow-y-auto scrollbar-light">
       <Link
         to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
         className="w-fit cursor-default"
