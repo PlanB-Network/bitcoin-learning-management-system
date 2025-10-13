@@ -70,7 +70,7 @@ export const MobileMenu = ({
               <UserRoleAvatar isShort />
             </div>
           ) : (
-            <Button variant="primary" size="s" rounded onClick={onClickLogin}>
+            <Button variant="primary" size="xs" rounded onClick={onClickLogin}>
               {t('auth.signIn')}
             </Button>
           )}
