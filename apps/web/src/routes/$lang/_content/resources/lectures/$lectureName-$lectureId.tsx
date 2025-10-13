@@ -119,10 +119,10 @@ function Lecture() {
 
       {lecture && (
         <div className="w-full flex flex-col gap-6">
-          <article className="flex flex-col w-full gap-6 md:gap-7.5">
+          <article className="flex max-md:flex-col w-full gap-6 md:gap-7.5">
             <Image
               breakpoints={{ default: 736 }}
-              className="w-full rounded-lg"
+              className="rounded-lg object-contain w-auto max-w-full md:max-h-60 mr-auto"
               alt={lecture.name || 'Lecture'}
               src={resourceImgUrl(lecture)}
             />

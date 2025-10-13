@@ -58,7 +58,7 @@ export const EventCard = ({ event }: EventCardProps) => {
     <Link
       to={`/events/${event.id}`}
       className={cn(
-        'flex flex-col w-full sm:w-64 border border-neutral-100 rounded-2xl',
+        'flex flex-col w-full sm:w-64 border border-neutral-100 rounded-2xl hover:bg-neutral-50',
       )}
     >
       <div className="flex max-sm:gap-2 sm:flex-col flex-grow">

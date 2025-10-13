@@ -29,6 +29,7 @@ import {
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { PageTitle } from '#src/components/page-header.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { normalizeString, toCamelCase } from '#src/utils/string.ts';
@@ -41,6 +42,8 @@ export const Route = createFileRoute('/$lang/_content/learn-anytime/')({
 function AllCourses() {
   const { courses, session } = useContext(AppContext);
   const { i18n } = useTranslation();
+
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
 
   const isLoggedIn = !!session?.user;
 
@@ -255,7 +258,7 @@ function AllCourses() {
                         rounded
                         variant="primary"
                         className="w-full"
-                        size={'m'}
+                        size={isMobile ? 's' : 'm'}
                       >
                         {t('words.resume')}
                       </Button>

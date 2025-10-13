@@ -97,7 +97,7 @@ export const MainLayout = ({
   const openMargin = 'lg:ml-[276px]';
 
   return (
-    <div className="flex flex-col bg-header w-full max-w-[1920px] mx-auto relative">
+    <div className="flex flex-col bg-header w-full mx-auto relative">
       {/* Display titlebar on pear app */}
       {isPearApp ? (
         <div
@@ -122,9 +122,7 @@ export const MainLayout = ({
         <div
           className={cn(
             'hidden lg:block fixed top-18 w-6 h-6 z-50',
-            isSidebarOpen
-              ? 'min-[1934px]:left-[calc((100%-1920px)/2+276px)] left-[276px]'
-              : 'min-[1934px]:left-[calc((100%-1920px)/2+86px)] left-[86px]',
+            isSidebarOpen ? 'left-[276px]' : 'left-[86px]',
             isResizing ? 'transition-none' : 'transition-all ease-in-out',
           )}
           style={{
@@ -145,11 +143,7 @@ export const MainLayout = ({
         {/* Right */}
         <div
           className={cn(
-            'hidden lg:block fixed top-18 w-6 h-6 z-50 -scale-x-100',
-            isSidebarOpen
-              ? 'min-[1934px]:right-[calc((100%-1920px)/2)] right-0'
-              : 'min-[1934px]:right-[calc((100%-1920px)/2)] right-0',
-            isResizing ? 'transition-none' : 'transition-all ease-in-out',
+            'hidden lg:block fixed top-18 w-6 h-6 z-50 -scale-x-100 right-0',
           )}
           style={{
             willChange: 'right',
