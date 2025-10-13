@@ -53,7 +53,7 @@ const dividerSimpleVariant = cva('w-full h-px', {
   variants: {
     mode: {
       dark: 'bg-newGray-1',
-      light: 'bg-newGray-4',
+      light: 'bg-neutral-50',
     },
   },
 });

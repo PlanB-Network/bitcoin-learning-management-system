@@ -1,6 +1,6 @@
 import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
@@ -54,27 +54,64 @@ export const Footer = () => {
   const links = [
     { label: t('words.aboutUs'), to: '/about' },
     { label: t('words.professors'), to: '/professors' },
-    { label: t('words.planBNetwork'), to: 'https://planb.network' },
     { label: t('labs.planBLabs'), to: '/plan-b-labs' },
+    { label: t('words.legal'), to: '/legal' },
   ];
 
   return (
     <footer className="pt-3 md:pt-6 w-full">
       {/* Desktop */}
-      <div
-        className={cn(
-          'flex w-full flex-col max-md:hidden px-6',
-          backgroundClass,
-        )}
-      >
-        <SocialNetworksDesktop />
-        <DividerSimple mode={'light'} />
-        <div className="flex items-center py-4 px-2 justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-2.5 text-neutral-400">
-            <span className="body-small truncate">
-              Plan ₿ Academy • {new Date().getFullYear()} –{' '}
-              {t('footer.FOSSOpenContent')}
-            </span>
+      <div className={cn('w-full max-md:hidden', backgroundClass)}>
+        <div className="flex w-full flex-col max-w-[1644px] mx-auto px-6">
+          <SocialNetworksDesktop />
+          <PartPlanBNetwork />
+          <DividerSimple mode={'light'} />
+          <div className="flex items-center py-4 px-2 justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-2.5 text-neutral-400">
+              <span className="body-small truncate">
+                Plan ₿ Academy • {new Date().getFullYear()} –{' '}
+                {t('footer.FOSSOpenContent')}
+              </span>
+              <a
+                href="https://github.com/PlanB-Network/bitcoin-educational-content"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <BsGithub size={14} />
+              </a>
+            </div>
+            <NavigationSection
+              links={links}
+              textSecondaryClass={'text-neutral-400'}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile */}
+      <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
+        <div className="flex flex-col w-full p-4 pb-0 pt-6 gap-6">
+          <div className="w-full flex flex-col justify-center gap-6">
+            <img
+              src={PlanBLogoBlack}
+              alt="Logo Plan ₿ Academy"
+              className="w-26.5"
+            />
+            <NavigationSection
+              links={links}
+              textSecondaryClass={textSecondaryClass}
+            />
+          </div>
+
+          <div className="w-full flex flex-col">
+            <DividerSimple mode={'light'} className="mb-6" />
+            <SocialNetworksMobile />
+            <PartPlanBNetwork />
+          </div>
+        </div>
+        <div className="flex items-center flex-col gap-1 text-neutral-400 text-center px-2 py-3 border-t border-t-brown-200 body-extra-small">
+          <span className="flex items-center gap-1">
+            {t('footer.FOSSOpenContent')}
             <a
               href="https://github.com/PlanB-Network/bitcoin-educational-content"
               target="_blank"
@@ -82,39 +119,9 @@ export const Footer = () => {
             >
               <BsGithub size={14} />
             </a>
-          </div>
-          <NavigationSection
-            links={links}
-            textSecondaryClass={'text-neutral-400'}
-          />
+          </span>
+          <span>Plan ₿ Academy • {new Date().getFullYear()}</span>
         </div>
-      </div>
-
-      {/* Mobile */}
-      <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
-        <div className="flex flex-col w-full p-4 pt-6 pb-8 gap-6">
-          <div className="w-full flex flex-col justify-center gap-6">
-            <NavigationSection
-              title={t('words.academy')}
-              links={links}
-              textSecondaryClass={textSecondaryClass}
-            />
-          </div>
-
-          <div className="w-full flex flex-col gap-4">
-            <DividerSimple mode={'light'} />
-            <SocialNetworksMobile />
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={cn(
-          'flex w-full justify-center py-6 md:hidden',
-          backgroundClass,
-        )}
-      >
-        <img src={PlanBLogoBlack} alt="Logo Plan ₿ Academy" className="w-26" />
       </div>
     </footer>
   );
@@ -214,5 +221,22 @@ const SocialNetworksDesktop = () => {
         ))}
       </ul>
     </div>
+  );
+};
+
+const PartPlanBNetwork = () => {
+  return (
+    <p className="flex items-center text-center w-fit mx-auto p-4 md:pt-2 md:px-2 body-extra-small md:body-small text-neutral-400 gap-2 max-md:mt-4">
+      <Trans i18nKey="footer.proudlyPartOf">
+        <a
+          href="https://planb.network/"
+          className="text-black body-small md:body-small-bold"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Plan ₿ Network
+        </a>
+      </Trans>
+    </p>
   );
 };
