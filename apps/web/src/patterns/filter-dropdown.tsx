@@ -161,17 +161,17 @@ export const FilterDropdown = ({
             type="button"
             onClick={toggleDropdown}
             className={cn(
-              'absolute md:hidden text-neutral-400 inset-y-0 right-0 flex items-center bg-neutral-100 px-4',
+              'absolute md:hidden text-neutral-400 inset-y-0 right-0 flex items-center justify-center bg-neutral-100 px-3.5',
               isOpen ? 'max-md:rounded-br-none rounded-r-xl' : 'rounded-r-xl',
             )}
           >
-            <TbAdjustmentsHorizontal size={16} />
+            <TbAdjustmentsHorizontal size={18} />
           </button>
         )}
       </div>
 
       {filters && isOpen && (
-        <div className="px-5 py-3 rounded-b-xl border border-neutral-100 md:hidden">
+        <div className="px-5 py-3 rounded-b-xl border border-t-0 border-neutral-100 md:hidden">
           {activeCategory && (
             <div className="grid grid-cols-2 gap-4">
               {filters[activeCategory].map((option) => (

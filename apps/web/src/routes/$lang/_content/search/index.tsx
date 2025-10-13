@@ -3,7 +3,7 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { lazy, Suspense, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbChevronsDown, TbSearchOff } from 'react-icons/tb';
+import { TbChevronsDown, TbLicenseOff } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { FilterDropdown } from '#src/patterns/filter-dropdown.tsx';
@@ -211,7 +211,11 @@ function SearchPage() {
                 ))}
             </ul>
             {lastPage && search.data?.pages?.[0].found === 0 && (
-              <EmptyState title={t('search.resultEmpty')} icon={TbSearchOff} />
+              <EmptyState
+                title={t('search.noResults')}
+                description={t('search.resultEmpty')}
+                icon={TbLicenseOff}
+              />
             )}
             {lastPage.remaining > 0 && (
               <div className="flex flex-col justify-center items-center gap-2 mt-3 md:mt-6 w-full">
