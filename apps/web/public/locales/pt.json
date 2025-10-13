@@ -878,7 +878,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1209,7 +1208,6 @@
     "miningCourseDescription": "",
     "moviesDescription": "",
     "newsletterDescription": "",
-    "nodeNetworkDescription": "Junta-te à rede global das comunidades Bitcoin!",
     "planBLabsDescription": "",
     "podcastsDescription": "Explora o ecossistema bitcoin através de podcasts",
     "projectsDescription": "",
@@ -1223,12 +1221,6 @@
     "goToMovie": "",
     "pageTitle": "",
     "watchTrailer": ""
-  },
-  "nodeNetwork": {
-    "description1": "O nosso sistema financeiro está a desmoronar-se, os nossos alimentos estão a ser envenenados, a nossa liberdade está a ser retirada. Mal podemos esperar por um milagre, temos que criar um lugar seguro para viver. Precisamos criar nosso próprio Plano!",
-    "descriptionExtend": "",
-    "pageSubtitle": "Quer dar a pílula laranja para o mundo? Junte-se a nós.",
-    "pageTitle": "Node Map"
   },
   "notFound": {
     "here": "Aqui",
@@ -1563,7 +1555,6 @@
   },
   "words": {
     "about": "Sobre",
-    "about-us": "Sobre Nós",
     "abstract": "",
     "access": "",
     "action": "",
@@ -1666,7 +1657,6 @@
     "newsletter": "Newsletter",
     "next": "",
     "no": "",
-    "nodeNetwork": "Rede de Nós",
     "notApplicable": "",
     "on": "",
     "onChainAddress": "Endereço On chain",

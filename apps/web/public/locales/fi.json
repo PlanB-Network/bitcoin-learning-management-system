@@ -868,7 +868,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "",
     "moviesDescription": "",
     "newsletterDescription": "",
-    "nodeNetworkDescription": "Liity globaaliin verkostoomme Bitcoin-yhteisöjä!",
     "planBLabsDescription": "",
     "podcastsDescription": "Selaa ja tutki bitcoinin ekosysteemiä podcastien avulla",
     "projectsDescription": "",
@@ -1213,12 +1211,6 @@
     "goToMovie": "",
     "pageTitle": "",
     "watchTrailer": ""
-  },
-  "nodeNetwork": {
-    "description1": "Rahoitusjärjestelmämme on romahtamassa, ruokamme myrkytetään ja vapautemme viedään. Emme voi odottaa ihmettä, vaan meidän täytyy luoda turvallinen paikka elää. Meidän täytyy luoda oma PlanB!",
-    "descriptionExtend": "",
-    "pageSubtitle": "Yhteisömme on vahvuutemme. Meidän tulee yhdistyä globaaliksi bitcoin-yhteisöverkostoksi.",
-    "pageTitle": "Node Kartta"
   },
   "notFound": {
     "here": "Tässä",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "Tietoja",
-    "about-us": "Tietoja meistä",
     "abstract": "",
     "access": "",
     "action": "",
@@ -1656,7 +1647,6 @@
     "newsletter": "Uutiskirjeesi",
     "next": "",
     "no": "",
-    "nodeNetwork": "Node Network",
     "notApplicable": "",
     "on": "päällä",
     "onChainAddress": "",

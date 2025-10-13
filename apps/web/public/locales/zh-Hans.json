@@ -1246,7 +1246,6 @@
         "coursesOption": "关于您所选课程的更新",
         "description": "您可以在下方自定义您的通知设置。 ",
         "emailPreferencesDescription": "您可以在此选择您想接收的邮件类别。所选偏好仅对该链接对应的邮箱生效。",
-        "emailPreferencesError": "在尝试检索您的邮箱偏好设置时出现错误。请确保您所遵循的链接是正确的。",
         "emailPreferencesSavedSuccessfully": "已成功更新您的邮箱偏好。",
         "emailPreferencesTitle": "管理您的Plan ₿ Network邮件偏好设置",
         "emailTitle": "您希望接收哪些类型的邮件通知？",
@@ -1262,7 +1261,6 @@
         "settingsSaved": "已成功保存您的设置！",
         "title": "通知设置",
         "assignedAt": "被分配于",
-        "completedAt": "完成于",
         "displayName": "显示名",
         "filter": "筛选器",
         "role": "角色"
@@ -1660,7 +1658,6 @@
     "miningCourseDescription": "了解比特币挖矿背后的过程、工具和行业。",
     "moviesDescription": "发现引人入胜的故事以及比特币演变和影响的深入探讨",
     "newsletterDescription": "可用作教育项目的内容集合",
-    "nodeNetworkDescription": "加入Plan ₿的全球社区网络",
     "planBLabsDescription": "加入一个学习小组，继续深入了解闪电网络，挖矿和隐私",
     "podcastsDescription": "通过播客探索比特币生态系统",
     "projectsDescription": "了解关于为比特币和其采用做出贡献的公司和项目",
@@ -1675,12 +1672,6 @@
     "pageTitle": "电影与纪录片",
     "watchTrailer": "观看预告片",
     "checkTheMovie": "检查电影"
-  },
-  "nodeNetwork": {
-    "description1": "Plan ₿网络支持全球的教育倡议。我们通过我们的平台和实体空间共同创建这些项目的最佳工具。我们一直在寻找新的节点加入我们。如果你想一起创建一个关于比特币的全球分散的教育网络，请联系我们！",
-    "descriptionExtend": "我们的第一步骤是邀请拥有实体空间的社区加入我们的团队，我们将其称为网络中的“全节点”。随着我们网络的不断增强，往后我们将会邀请世界上的更多倡议项目来加入。如果您认同我们的价值，请联系我们的代表以加入我们的网路，协助我们打造并实现最佳的比特币教育。",
-    "pageSubtitle": "想让全世界接受比特币这枚橙色良药吗？加入Plan ₿网络。",
-    "pageTitle": "探索Plan ₿节点网络"
   },
   "notFound": {
     "here": "这里",
@@ -2024,7 +2015,6 @@
   },
   "words": {
     "about": "关于",
-    "about-us": "关于我们",
     "abstract": "摘要",
     "access": "访问",
     "action": "操作",
@@ -2127,7 +2117,6 @@
     "newsletter": "电子报",
     "next": "下一个",
     "no": "否",
-    "nodeNetwork": "节点网络",
     "notApplicable": "不可适用",
     "on": "上线",
     "onChainAddress": "链上地址",
@@ -2236,9 +2225,6 @@
     "pageTitle": "YouTube频道",
     "view": "查看YouTube频道",
     "watchTrailer": "查看预告片"
-  },
-  "footer": {
-    "followUsOn": "关注我们的"
   },
   "months": {
     "april": "四月",

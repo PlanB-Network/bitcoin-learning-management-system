@@ -1211,7 +1211,6 @@
         "coursesOption": "Ažuriranja o kursevima na koje ste se upisali",
         "description": "Možete prilagoditi obaveštenja u podešavanjima ispod. ",
         "emailPreferencesDescription": "Ovde možete odabrati vrste e-poruka koje želite da primate od nas. Ove preferencije se odnose samo na e-mail adresu povezanu sa ovim linkom.",
-        "emailPreferencesError": "Došlo je do greške prilikom pokušaja preuzimanja vaših postavki za e-poštu. Molimo vas da proverite da li je link koji ste pratili tačan.",
         "emailPreferencesSavedSuccessfully": "Vaše postavke za email su uspešno ažurirane.",
         "emailPreferencesTitle": "Upravljajte svojim postavkama Plan ₿ Network emaila",
         "emailTitle": "Koje vrste obaveštenja biste želeli da primate putem e-pošte?",
@@ -1545,7 +1544,6 @@
     "miningCourseDescription": "Razumite procese, alate i industriju iza rudarenja Bitcoina.",
     "moviesDescription": "Otkrijte zanimljive priče i detaljna istraživanja evolucije i uticaja Bitcoina",
     "newsletterDescription": "Kolekcija sadržaja koju možete koristiti za vaše obrazovne projekte",
-    "nodeNetworkDescription": "Pridružite se globalnoj mreži zajednice Plan ₿",
     "planBLabsDescription": "Pridružite se studijskoj grupi da biste nastavili učenje o Lightning mreži, rudarenju i privatnosi",
     "podcastsDescription": "Istražite Bitcoin ekosistem kroz podkaste",
     "projectsDescription": "Saznajte o kompanijama i projektima koji doprinose poboljšanju Bitcoin-a i povećanju njegovog usvajanja",
@@ -1559,12 +1557,6 @@
     "goToMovie": "Idi na film",
     "pageTitle": "Filmovi & Dokumentarci",
     "watchTrailer": "Pogledajte trejler"
-  },
-  "nodeNetwork": {
-    "description1": "Verujemo da obrazovanje ne bi trebalo da se odvija samo na internetu, već i u fizičkom prostoru. Da bi se to postiglo, Plan ₿ Network upravlja mrežom centara širom sveta kako bi dočekao mislioce, kreatore i edukatore koji podstiču Bitcoin napredak i tehnologije slobode.",
-    "descriptionExtend": "Naš prvi korak je da pozovemo zajednice koje imaju fizički prostor, koje nazivamo \"potpunim čvorovima\" naše mreže, da nam se pridruže. U budućnosti, kako naša mreža bude jačala, proširićemo ovu pozivnicu na više inicijativa širom sveta. Ako delite naše vrednosti, molimo Vas da se obratite našim predstavnicima da se pridružite našoj mreži i pomognete u izgradnji najbolje moguće edukacije o Bitcoin-u.",
-    "pageSubtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se Plan ₿ Network-u.",
-    "pageTitle": "Istražite Plan ₿ Node Network"
   },
   "notFound": {
     "here": "Ovde",
@@ -1899,7 +1891,6 @@
   },
   "words": {
     "about": "O",
-    "about-us": "O nama",
     "abstract": "Apstrakt",
     "access": "Pristup",
     "action": "Akcija",
@@ -2002,7 +1993,6 @@
     "newsletter": "Bilten",
     "next": "Sledeći",
     "no": "Ne",
-    "nodeNetwork": "Mreža čvorova",
     "notApplicable": "",
     "on": "na",
     "onChainAddress": "adresa na chain-u",

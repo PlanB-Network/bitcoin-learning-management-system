@@ -1119,7 +1119,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1450,7 +1449,6 @@
     "miningCourseDescription": "Forstå prosessene, verktøyene og industrien bak Bitcoin-mining.",
     "moviesDescription": "Oppdag fengslende historier og grundige utforskninger av Bitcoins utvikling og innvirkning",
     "newsletterDescription": "Samling av innhold som du kan bruke til dine pedagogiske prosjekter",
-    "nodeNetworkDescription": "Bli med i det globale nettverket for Plan B",
     "planBLabsDescription": "Bli med i en studiegruppe for å fortsette å lære om Lightning, Mining og Personvern",
     "podcastsDescription": "Utforsk bitcoin-økosystemet gjennom podcaster",
     "projectsDescription": "Lær om selskapene og prosjektene som bidrar til å forbedre Bitcoin og øke adopsjonen av det",
@@ -1464,12 +1462,6 @@
     "goToMovie": "Gå på filmen",
     "pageTitle": "Filmer & Dokumentarer",
     "watchTrailer": "Se traileren"
-  },
-  "nodeNetwork": {
-    "description1": "Plan B Network støtter utdanningsinitiativer over hele verden. Vi samarbeider for å skape de beste verktøyene for disse prosjektene, både gjennom plattformen vår og i den fysiske verden. Vi er alltid på utkikk etter nye noder som kan bli med oss. Hvis du vil jobbe sammen for å skape et desentralisert globalt utdanningsnettverk for Bitcoin, ta kontakt!",
-    "descriptionExtend": "Vårt første skritt er å invitere samfunn med fysiske rom, som vi refererer til som \"full nodes\" i nettverket vårt, til å bli med oss. I fremtiden, når nettverket vårt styrkes, vil vi utvide denne invitasjonen til flere initiativer over hele verden. Hvis du deler våre verdier, vennligst ta kontakt med våre representanter for å bli med i nettverket vårt og hjelpe til med å bygge den beste Bitcoin-utdanningen som er mulig.",
-    "pageSubtitle": "Vil du gi verden den oransje pillen? Bli med i PlanB-nettverket.",
-    "pageTitle": "Utforsk Plan B Node-nettverk"
   },
   "notFound": {
     "here": "Her",
@@ -1804,7 +1796,6 @@
   },
   "words": {
     "about": "Om",
-    "about-us": "Om Oss",
     "abstract": "Sammendrag",
     "access": "Tilgang",
     "action": "Handling",
@@ -1907,7 +1898,6 @@
     "newsletter": "Nyhetsbrev",
     "next": "Neste",
     "no": "Nei",
-    "nodeNetwork": "Nodenettverk",
     "notApplicable": "",
     "on": "på",
     "onChainAddress": "On chain-adresse",

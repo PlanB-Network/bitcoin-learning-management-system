@@ -868,7 +868,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "Hiểu về quá trình, công cụ và ngành công nghiệp phía sau hoạt động đào Bitcoin.",
     "moviesDescription": "Khám phá những câu chuyện hấp dẫn và phân tích chuyên sâu về sự phát triển và tác động của Bitcoin",
     "newsletterDescription": "Bộ sưu tập các nội dung mà bạn có thể sử dụng cho các dự án giáo dục của bạn",
-    "nodeNetworkDescription": "Tham gia mạng lưới toàn cầu của các cộng đồng Bitcoin!",
     "planBLabsDescription": "",
     "podcastsDescription": "Khám phá hệ sinh thái Bitcoin thông qua các podcast",
     "projectsDescription": "Tìm hiểu thêm về các công ty và các dự án có đóng góp vào việc cải thiện và thúc đấy sự áp dụng Bitcoin",
@@ -1213,12 +1211,6 @@
     "goToMovie": "Đi tới phim",
     "pageTitle": "Phim & Phim tài liệu",
     "watchTrailer": "Xem trailer"
-  },
-  "nodeNetwork": {
-    "description1": "Hệ thống tài chính của chúng ta đang sụp đổ, thức ăn của chúng ta đang bị nhiễm độc, sự tự do của chúng ta đang bị cướp đi. Chúng ta không thể ngồi chờ một phép màu sẽ xảy ra, chúng ta sẽ phải tạo ra một nơi an toàn để sinh sống. Chúng ta cần tạo ra một kế hoạch B (PlanB) cho chính mình!",
-    "descriptionExtend": "Bước đầu tiên của chúng tôi là mới các cộng đồng với không gian vật lý, điều mà chúng tôi gọi là \"full node\" trong mạng lưới của mình, tham gia với chúng tôi. Trong tương lại, khi mạng lưới mạnh mẽ hơn, chúng tôi sẽ mở rộng lời mời tới các sáng kiến toàn cầu. Nếu bạn chia sẻ các giá trị với chúng tôi, vui lòng liên hệ tới các đại diện của chúng tôi để tham gia vào mạng lưới và giúp đỡ chúng tôi xây dựng nên một mạng lưới giáo dục về Bitcoin tốt nhất có thể.",
-    "pageSubtitle": "Sức mạnh của chúng ta là cộng đồng của mình. Hãy tập hợp với nhau thành một mạng lưới Bitcoin toàn cầu.",
-    "pageTitle": "Bản đồ nút"
   },
   "notFound": {
     "here": "Tại đây",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "Về",
-    "about-us": "Về chúng tôi",
     "abstract": "Tóm tắt",
     "access": "Truy cập",
     "action": "Hành động",
@@ -1656,7 +1647,6 @@
     "newsletter": "Bản tin",
     "next": "Tiếp theo",
     "no": "Không",
-    "nodeNetwork": "Nút mạng",
     "notApplicable": "",
     "on": "trên",
     "onChainAddress": "Địa chỉ on-chain",

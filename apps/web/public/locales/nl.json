@@ -1256,13 +1256,11 @@
         "title": "Notificatie-instellingen",
         "description": "Je kunt hieronder je notificatie-instellingen aanpassen. ",
         "emailPreferencesDescription": "Hier kun je kiezen welk type e-mails je van het platform wilt ontvangen. Deze voorkeuren zijn alleen van toepassing op het e-mailadres dat aan deze link is gekoppeld.",
-        "emailPreferencesError": "Er is een fout opgetreden tijdens het ophalen van je e-mailvoorkeuren. Zorg ervoor dat de link die je heeft gevolgd correct is.",
         "emailPreferencesSavedSuccessfully": "Je e-mailvoorkeuren zijn succesvol bijgewerkt.",
         "emailPreferencesTitle": "Beheer je Plan ₿ Network e-mailvoorkeuren",
         "emailTitle": "Welke soort meldingen wil je per e-mail ontvangen?",
         "emailWarning": "Waarschuwing! Er is geen e-mailadres gekoppeld aan je account. Voeg dit toe in je profielsectie.",
         "assignedAt": "Toegewezen op",
-        "completedAt": "Voltooid op",
         "displayName": "Weergavenaam",
         "filter": "Filter",
         "role": "Rol"
@@ -1552,9 +1550,6 @@
     "resources": "Bronnen",
     "topics": "Onderwerpen"
   },
-  "footer": {
-    "followUsOn": "Volg ons op"
-  },
   "home": {
     "blogSection": {
       "noBlogsAvailable": "Geen blogs beschikbaar.",
@@ -1681,7 +1676,6 @@
     "planBLabsDescription": "Doe mee aan een studiegroep om door te gaan met leren over Lightning, Mining en Privacy",
     "securityDescription": "Beheers de technieken om jouw Bitcoin-bezittingen te beschermen.",
     "newsletterDescription": "Verzameling van inhoud die je kunt gebruiken voor je educatieve projecten",
-    "nodeNetworkDescription": "Word lid van het wereldwijde Plan ₿ network community",
     "podcastsDescription": "Verken het bitcoin-ecosysteem via podcasts",
     "projectsDescription": "Leer over de bedrijven en projecten die bijdragen aan de verbetering van Bitcoin en het vergroten van de adoptie ervan",
     "protocolDescription": "Ontdek de kernregels die het Bitcoin-netwerk aandrijven.",
@@ -1719,12 +1713,6 @@
     "yearsAgo": "{{years}} jaar geleden",
     "yesterday": "Gisteren",
     "newVersionAvailable": "Een nieuwe versie van het Plan ₿ Network platform is beschikbaar. Vernieuw de pagina om te updaten."
-  },
-  "nodeNetwork": {
-    "description1": "Wij geloven dat onderwijs niet alleen online moet plaatsvinden, maar ook in fysieke ruimtes. Om dit te bereiken, beheert Plan ₿ Network een netwerk van hubs over de hele wereld om denkers, ondernemers en docenten te verwelkomen die de vooruitgang van Bitcoin en vrijheidstechnologieën bevorderen.",
-    "descriptionExtend": "Onze eerste stap is communities met fysieke ruimtes, die we de \"full nodes\" van ons netwerk noemen, uitnodigen om zich bij ons aan te sluiten. In de toekomst, naarmate ons netwerk sterker wordt, zullen we deze uitnodiging uitbreiden naar meer initiatieven wereldwijd. Deel je onze waarden? Neem dan contact op met onze vertegenwoordigers om deel uit te maken van ons netwerk en mee te bouwen aan de best mogelijke Bitcoin-educatie.",
-    "pageSubtitle": "Wil je de wereld orange-pillen? Sluit je aan bij Plan ₿ Network.",
-    "pageTitle": "Verken Plan ₿ Node Network"
   },
   "library": {
     "pageTitle": "Bitcoin Bibliotheek"
@@ -2050,7 +2038,6 @@
     "timeZone": "Tijdzone",
     "view": "Bekijken",
     "about": "Over",
-    "about-us": "Over Ons",
     "abstract": "Samenvatting",
     "academy": "Academie",
     "access": "Toegang",
@@ -2137,7 +2124,6 @@
     "network": "Netwerk",
     "next": "Volgende",
     "no": "Nee",
-    "nodeNetwork": "Node Netwerk",
     "notApplicable": "Niet van toepassing",
     "on": "op",
     "onChainAddress": "On-chain adres",

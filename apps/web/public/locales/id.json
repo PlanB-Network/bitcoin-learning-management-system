@@ -1246,7 +1246,6 @@
         "coursesOption": "Pembaruan tentang kursus yang Anda ikuti",
         "description": "Anda dapat menyesuaikan pengaturan notifikasi Anda di bawah ini. ",
         "emailPreferencesDescription": "Di sini Anda dapat memilih jenis email yang ingin Anda terima dari kami. Preferensi ini hanya berlaku untuk alamat email yang terkait dengan tautan ini.",
-        "emailPreferencesError": "Terjadi kesalahan saat mencoba mengambil preferensi email Anda. Pastikan tautan yang Anda ikuti sudah benar.",
         "emailPreferencesSavedSuccessfully": "Preferensi email Anda berhasil diperbarui.",
         "emailPreferencesTitle": "Kelola preferensi email Plan ₿ Network Anda",
         "emailTitle": "Jenis pemberitahuan apa yang ingin Anda terima melalui email?",
@@ -1262,7 +1261,6 @@
         "settingsSaved": "Pengaturan Anda berhasil disimpan!",
         "title": "Pengaturan pemberitahuan",
         "assignedAt": "Ditugaskan di",
-        "completedAt": "Selesai pada",
         "displayName": "Nama yang ditampilkan",
         "filter": "Filter",
         "role": "Peran"
@@ -1660,7 +1658,6 @@
     "miningCourseDescription": "Pahami proses, alat, dan industri di balik penambangan Bitcoin.",
     "moviesDescription": "Temukan kisah-kisah menarik dan eksplorasi mendalam tentang evolusi dan dampak Bitcoin",
     "newsletterDescription": "Koleksi konten yang dapat anda gunakan untuk proyek pendidikan Anda",
-    "nodeNetworkDescription": "Bergabung dengan komunitas jaringan global Plan ₿",
     "planBLabsDescription": "Bergabunglah dengan grup belajar untuk melanjutkan pembelajaran tentang Lightning, Mining, dan Privasi",
     "podcastsDescription": "Jelajahi ekosistem bitcoin melalui podcast",
     "projectsDescription": "Pelajari tentang perusahaan dan proyek yang berkontribusi untuk meningkatkan Bitcoin dan meningkatkan adopsinya",
@@ -1675,12 +1672,6 @@
     "pageTitle": "Film & Dokumenter",
     "watchTrailer": "Tonton cuplikannya",
     "checkTheMovie": "Periksa filmnya"
-  },
-  "nodeNetwork": {
-    "description1": "Kami percaya bahwa pendidikan seharusnya tidak hanya dilakukan secara online, tetapi juga di ruang-ruang fisik. Untuk mencapai hal ini, Plan ₿ Network mengelola hub jaringan di seluruh dunia untuk menyambut para pemikir, pengusaha, dan pendidik yang mendorong kemajuan teknologi Bitcoin dan kebebasan.",
-    "descriptionExtend": "Langkah pertama kami adalah mengundang komunitas-komunitas yang memiliki ruang fisik, yang kami sebut sebagai \"full nodes\" dari jaringan kami, untuk bergabung dengan kami. Di masa depan, seiring dengan semakin kuatnya jaringan kami, kami akan memperluas undangan ini ke lebih banyak inisiatif di seluruh dunia. Jika Anda memiliki nilai-nilai yang sama dengan kami, silakan hubungi perwakilan kami untuk bergabung dengan jaringan kami dan membantu membangun edukasi Bitcoin yang terbaik.",
-    "pageSubtitle": "Ingin memberi pil oranye alias mengedukasi dunia tentang Bitcoin? Bergabunglah dengan Plan ₿ Network.",
-    "pageTitle": "Jelajahi Jaringan Node Plan ₿"
   },
   "notFound": {
     "here": "Disini",
@@ -2024,7 +2015,6 @@
   },
   "words": {
     "about": "Tentang",
-    "about-us": "Tentang Kami",
     "abstract": "Abstrak",
     "access": "Akses",
     "action": "Aksi",
@@ -2127,7 +2117,6 @@
     "newsletter": "Buletin",
     "next": "Berikutnya",
     "no": "Tidak",
-    "nodeNetwork": "Jaringan Node",
     "notApplicable": "Tidak berlaku",
     "on": "Nyala",
     "onChainAddress": "Alamat jaringan on chain",
@@ -2240,9 +2229,6 @@
   "account": {
     "account": "Akun",
     "myTeacherProfile": "Profil guru"
-  },
-  "footer": {
-    "followUsOn": "Ikuti kami"
   },
   "months": {
     "april": "April",

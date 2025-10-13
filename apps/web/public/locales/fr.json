@@ -1246,7 +1246,6 @@
         "coursesOption": "Mises à jour sur les cours auxquels vous vous êtes inscrit",
         "description": "Vous pouvez personnaliser vos paramètres de notification ci-dessous. ",
         "emailPreferencesDescription": "Ici, vous pouvez choisir les types d’e-mails que vous souhaitez recevoir de la plateforme. Ces préférences s’appliquent uniquement à l’adresse e-mail associée à ce lien.",
-        "emailPreferencesError": "Une erreur s'est produite lors de la récupération de vos préférences d'e-mail. Veuillez vous assurer que le lien que vous avez suivi est correct.",
         "emailPreferencesSavedSuccessfully": "Vos préférences d'e-mail ont été mises à jour avec succès.",
         "emailPreferencesTitle": "Gérez vos préférences d'e-mail Plan ₿ Network",
         "emailTitle": "Quels types de notifications souhaitez-vous recevoir par e-mail ?",
@@ -1262,7 +1261,6 @@
         "settingsSaved": "Vos paramètres ont été enregistrés avec succès !",
         "title": "Paramètres de notification",
         "assignedAt": "Attribué à",
-        "completedAt": "Terminé à",
         "displayName": "Nom d'affichage",
         "filter": "Filtre",
         "role": "Rôle"
@@ -1536,9 +1534,6 @@
     "resources": "Ressources",
     "topics": "Sujets"
   },
-  "footer": {
-    "followUsOn": "Suivez-nous sur"
-  },
   "glossary": {
     "anotherWord": "Cherchez un autre mot",
     "creditsLoic": "<0>Crédits</0> : Dictionnaire Bitcoin écrit par <1>Loïc Morel (Pandul)</1>, disponible sur ce <2>dépôt Github</2>.",
@@ -1663,7 +1658,6 @@
     "miningCourseDescription": "Comprenez les processus, les outils et l'industrie derrière le minage de Bitcoin.",
     "moviesDescription": "Découvrez des histoires captivantes et des explorations approfondies de l'évolution et de l'impact du Bitcoin",
     "newsletterDescription": "Collection de contenu que vous pouvez utiliser pour vos projets éducatifs",
-    "nodeNetworkDescription": "Rejoignez le réseau communautaire mondial Plan ₿",
     "planBLabsDescription": "Rejoignez un groupe d'étude pour continuer à apprendre sur le Lightning, le Minage et la Confidentialité",
     "podcastsDescription": "Explorez l'écosystème bitcoin à travers des podcasts",
     "projectsDescription": "Apprenez à connaître les entreprises et les projets qui contribuent à améliorer Bitcoin et à augmenter son adoption",
@@ -1678,12 +1672,6 @@
     "pageTitle": "Films & Documentaires",
     "watchTrailer": "Regardez la bande-annonce",
     "checkTheMovie": "Regarder le film"
-  },
-  "nodeNetwork": {
-    "description1": "Nous pensons que l'éducation ne doit pas seulement se dérouler en ligne, mais également dans des espaces physiques. Pour y parvenir, Plan ₿ Network gère un réseau de centres dans le monde entier pour accueillir des penseurs, des constructeurs et des éducateurs favorisant l'avancement du Bitcoin et des technologies de la liberté.",
-    "descriptionExtend": "Notre première étape consiste à inviter les communautés disposant d’espaces physiques, que nous appelons les « nœuds complets » de notre réseau, à nous rejoindre. À l’avenir, à mesure que notre réseau se renforcera, nous étendrons cette invitation à davantage d’initiatives dans le monde entier. Si vous partagez nos valeurs, n’hésitez pas à contacter nos représentants pour rejoindre notre réseau et contribuer à créer la meilleure éducation possible sur le Bitcoin.",
-    "pageSubtitle": "Vous voulez orange pill le monde ? Rejoignez le réseau Plan ₿.",
-    "pageTitle": "Node Map"
   },
   "notFound": {
     "here": "Ici",
@@ -2041,7 +2029,6 @@
   },
   "words": {
     "about": "À propos de",
-    "about-us": "A Propos",
     "abstract": "Résumé",
     "academy": "Académie",
     "access": "Accès",
@@ -2145,7 +2132,6 @@
     "newsletter": "Newsletter",
     "next": "Prochain",
     "no": "Non",
-    "nodeNetwork": "Réseau de Nodes",
     "notApplicable": "Non applicable",
     "on": "sur",
     "onChainAddress": "Adresse sur la chaîne",

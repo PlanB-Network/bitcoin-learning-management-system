@@ -1246,7 +1246,6 @@
         "coursesOption": "등록한 강좌에 대한 업데이트",
         "description": "아래에서 알림 설정을 맞춤 설정할 수 있습니다. ",
         "emailPreferencesDescription": "여기에서 저희로부터 받고 싶은 이메일 주소를 선택하실 수 있습니다. 이 설정은 이 링크와 연결된 이메일 주소에만 적용됩니다.",
-        "emailPreferencesError": "이메일 설정 정보를 불러오는 과정에서 오류가 발생했습니다. 접속하신 링크가 정확한지 다시 한번 확인해 주십시오.",
         "emailPreferencesSavedSuccessfully": "귀하의 이메일 설정이 성공적으로 업데이트 되었습니다.",
         "emailPreferencesTitle": "플랜 ₿ 네트워크 이메일 설정 관리",
         "emailTitle": "이메일로 어떤 종류의 알림을 받고 싶으신가요?",
@@ -1264,7 +1263,6 @@
         "filter": "필터",
         "role": "역할",
         "assignedAt": "할당 됨",
-        "completedAt": "완료됨",
         "displayName": "표시되는 이름"
       },
       "password": "비밀번호",
@@ -1660,7 +1658,6 @@
     "miningCourseDescription": "비트코인 채굴의 프로세스, 도구, 산업 이해.",
     "moviesDescription": "비트코인의 진화와 영향에 대한 흥미로운 이야기와 심층적인 탐구를 배우기",
     "newsletterDescription": "교육 프로젝트에 사용할 수 있는 콘텐츠 컬렉션",
-    "nodeNetworkDescription": "Plan B Network 글로벌 커뮤니티에 참여하세요",
     "planBLabsDescription": "라이트닝, 채굴, 프라이버시 학습을 계속하기 위해 스터디 그룹에 참여하세요",
     "podcastsDescription": "팟캐스트를 통한 비트코인 생태계 탐색하세요",
     "projectsDescription": "비트코인을 개선하고 채택을 늘리는 데 기여하는 회사와 프로젝트에 대해 알아보기",
@@ -1675,12 +1672,6 @@
     "pageTitle": "영화 & 다큐멘터리",
     "watchTrailer": "예고편 보기",
     "checkTheMovie": "영상을 확인하십시오"
-  },
-  "nodeNetwork": {
-    "description1": "우리는 교육이 온라인뿐만 아니라 오프라인 공간에서도 이루어져야 한다고 믿습니다. 이를 위해 Plan ₿ Network는 전 세계 허브 네트워크를 운영하며 사상가, 기업가, 교육자를 환영하고 비트코인과 자유 기술의 발전을 촉진합니다.",
-    "descriptionExtend": "첫 단계로, 물리적 공간을 가진 커뮤니티, 즉 우리 네트워크의 \"풀 노드\"를 초대합니다. 앞으로 네트워크가 더 강해지면 전 세계 더 많은 이니셔티브에 초대를 확장할 예정입니다. 우리의 가치를 공유한다면, 대표에게 연락해 네트워크에 가입하고 최고의 비트코인 교육을 함께 만들어 주세요.",
-    "pageSubtitle": "세상을 오렌지 필로 물들이고 싶나요? Plan ₿ Network에 참가하세요.",
-    "pageTitle": "Plan ₿ Node Network 탐색하기"
   },
   "notFound": {
     "here": "여기",
@@ -2024,7 +2015,6 @@
   },
   "words": {
     "about": "소개",
-    "about-us": "회사 소개",
     "abstract": "요약",
     "access": "접근",
     "action": "액션",
@@ -2127,7 +2117,6 @@
     "newsletter": "뉴스레터",
     "next": "다음",
     "no": "아니요",
-    "nodeNetwork": "노드 네트워크",
     "notApplicable": "해당 사항 없음",
     "on": "껴짐",
     "onChainAddress": "온체인 주소",
@@ -2290,8 +2279,5 @@
     "myCourses": "내 수업들",
     "translationPanel": "번역 패널",
     "userRolesAllocation": "사용자 역할 할당"
-  },
-  "footer": {
-    "followUsOn": "우리를 팔로우하세요"
   }
 }

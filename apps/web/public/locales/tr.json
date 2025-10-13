@@ -1211,7 +1211,6 @@
         "coursesOption": "Kaydolduğunuz kurslar hakkında güncellemeler",
         "description": "Aşağıdan bildirim ayarlarınızı özelleştirebilirsiniz. ",
         "emailPreferencesDescription": "Buradan bizden almak istediğiniz e-posta türlerini seçebilirsiniz. Bu tercihler yalnızca bu bağlantıyla ilişkilendirilmiş e-posta adresine uygulanır.",
-        "emailPreferencesError": "E-posta tercihlerinizi alırken bir hata oluştu. Lütfen takip ettiğiniz bağlantının doğru olduğundan emin olun.",
         "emailPreferencesSavedSuccessfully": "E-posta tercihleriniz başarıyla güncellendi.",
         "emailPreferencesTitle": "Plan ₿ Network e-posta tercihlerinizi yönetin",
         "emailTitle": "Hangi türde bildirimleri e-posta ile almak istersiniz?",
@@ -1227,7 +1226,6 @@
         "settingsSaved": "Ayarlarınız başarıyla kaydedildi!",
         "title": "Bildirim ayarları",
         "assignedAt": "Atanan Kişi",
-        "completedAt": "Şu tarihte tamamlandı",
         "displayName": "Görünen ad",
         "filter": "Filtre",
         "role": "Rol"
@@ -1600,7 +1598,6 @@
     "miningCourseDescription": "Bitcoin madenciliğinin arkasındaki süreçleri, araçları ve endüstriyi anlayın.",
     "moviesDescription": "Bitcoin'in evrimi ve etkisinin derinlemesine keşiflerinin yanı sıra büyüleyici hikayeleri keşfedin",
     "newsletterDescription": "Eğitim projeleriniz için kullanabileceğiniz içerik koleksiyonu",
-    "nodeNetworkDescription": "Plan ₿ global topluluk ağına katılın",
     "planBLabsDescription": "Lightning, Madencilik ve Gizlilik hakkında öğrenmeye devam etmek için bir çalışma grubuna katılın",
     "podcastsDescription": "Podcast'lar aracılığıyla Bitcoin ekosistemini keşfedin",
     "projectsDescription": "Bitcoin'i iyileştirmeye ve benimsenmesini artırmaya katkıda bulunan şirketler ve projeler hakkında bilgi edinin",
@@ -1614,12 +1611,6 @@
     "goToMovie": "Filme git",
     "pageTitle": "Filmler & Belgeseller",
     "watchTrailer": "Fragmanı izle"
-  },
-  "nodeNetwork": {
-    "description1": "Eğitimin sadece çevrimiçi değil, aynı zamanda fiziksel mekanlarda da gerçekleşmesi gerektiğine inanıyoruz. Bunu başarmak için, Plan ₿ Network, Bitcoin ve özgürlük teknolojilerinin ilerlemesini teşvik eden düşünürleri, girişimcileri ve eğitimcileri ağırlamak üzere dünya çapında bir çok merkez (hub) yönetiyor.",
-    "descriptionExtend": "İlk adımımız, ağımızın \"tam düğümleri\" olarak adlandırdığımız, fiziksel alanlara sahip toplulukları bizimle birleşmeye davet etmektir. Gelecekte, ağımız güçlendikçe, bu daveti tüm dünya genelinde daha fazla girişime genişleteceğiz. Eğer değerlerimizi paylaşıyorsanız, lütfen ağımıza katılmak ve mümkün olan en iyi Bitcoin eğitimini oluşturmak için temsilcilerimize ulaşın.",
-    "pageSubtitle": "Tum dünyayı turuncu haplamak mi istiyorsunuz? Plan ₿ Network'e katılın.",
-    "pageTitle": "Plan ₿ Node Network'ı Keşfedin"
   },
   "notFound": {
     "here": "Burada",
@@ -1955,7 +1946,6 @@
   },
   "words": {
     "about": "Hakkında",
-    "about-us": "Hakkımızda",
     "abstract": "Özet",
     "access": "Erişim",
     "action": "Eylem",
@@ -2058,7 +2048,6 @@
     "newsletter": "Bülten",
     "next": "Sonraki",
     "no": "Hayır",
-    "nodeNetwork": "Node Ağı",
     "notApplicable": "Uygulanamaz",
     "on": "üzerinde",
     "onChainAddress": "Onchain adres",
@@ -2143,9 +2132,6 @@
     "pageTitle": "Youtube kanalları",
     "view": "Youtube Kanalını Görüntüle",
     "watchTrailer": "Fragmanı izle"
-  },
-  "footer": {
-    "followUsOn": "Bizi takip edin"
   },
   "months": {
     "april": "Nisan",

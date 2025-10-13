@@ -1246,7 +1246,6 @@
         "coursesOption": "Actualizaciones sobre los cursos en los que te has inscrito",
         "description": "Puedes personalizar tus ajustes de notificaciones a continuación. ",
         "emailPreferencesDescription": "Aquí puedes elegir los tipos de correos electrónicos que te gustaría recibir de nosotros. Estas preferencias solo se aplican a la dirección de correo electrónico asociada con este enlace.",
-        "emailPreferencesError": "Hubo un error al intentar recuperar tus preferencias de correo electrónico. Por favor, asegúrate de que el enlace que seguistes es correcto.",
         "emailPreferencesSavedSuccessfully": "Tus preferencias de correo electrónico se actualizaron con éxito.",
         "emailPreferencesTitle": "Gestiona tus preferencias de correo electrónico de Plan ₿ Network",
         "emailTitle": "¿Qué tipos de notificaciones te gustaría recibir por correo electrónico?",
@@ -1262,7 +1261,6 @@
         "settingsSaved": "¡Tus configuraciones se guardaron con éxito!",
         "title": "Configuración de notificaciones",
         "assignedAt": "Asignado en",
-        "completedAt": "Completado en",
         "displayName": "Nombre para mostrar",
         "filter": "Filtro",
         "role": "Rol"
@@ -1660,7 +1658,6 @@
     "miningCourseDescription": "Comprende los procesos, herramientas e industria detrás de la minería de Bitcoin.",
     "moviesDescription": "Descubre historias fascinantes y exploraciones profundas sobre la evolución e impacto de Bitcoin",
     "newsletterDescription": "Colección de contenidos que puedes utilizar para tus proyectos educativos",
-    "nodeNetworkDescription": "Únete a la red global de la comunidad de Plan ₿",
     "planBLabsDescription": "Únete al grupo de estudio para continuar aprendiendo sobre Lightning, Minería y Privacidad",
     "podcastsDescription": "Explora el ecosistema Bitcoin a través de podcasts",
     "projectsDescription": "Aprende sobre las empresas y proyectos que contribuyen a mejorar e incrementar la adopción de Bitcoin",
@@ -1675,12 +1672,6 @@
     "pageTitle": "Películas y Documentales",
     "watchTrailer": "Ver el trailer",
     "checkTheMovie": "Revisa la película"
-  },
-  "nodeNetwork": {
-    "description1": "Creemos que la educación no solo debe llevarse a cabo en línea, sino también en espacios físicos. Para lograr esto, Plan ₿ Network gestiona una red de centros alrededor del mundo para dar la bienvenida a pensadores, emprendedores y educadores que fomentan el avance de Bitcoin y las tecnologías de la libertad.",
-    "descriptionExtend": "Nuestro primer paso es invitar a comunidades con espacios físicos, a las que nos referimos como los “nodos completos” de nuestra red, a unirse a nosotros. En el futuro, a medida que nuestra red se fortalezca, ampliaremos esta invitación a más iniciativas en todo el mundo. Si compartes nuestros valores, por favor, contacta a nuestros representantes para unirte a nuestra red y ayudar a construir la mejor educación sobre Bitcoin posible.",
-    "pageSubtitle": "¿Quieres llevar la adopción de Bitcoin al mundo? Únete a Plan ₿ Network.",
-    "pageTitle": "Explora La Red de Nodos de Plan ₿"
   },
   "notFound": {
     "here": "Aquí",
@@ -2024,7 +2015,6 @@
   },
   "words": {
     "about": "Sobre",
-    "about-us": "Sobre nosotros",
     "abstract": "Resumen",
     "access": "Acceder",
     "action": "Acción",
@@ -2127,7 +2117,6 @@
     "newsletter": "Boletín informativo",
     "next": "Siguiente",
     "no": "No",
-    "nodeNetwork": "Red de nodo",
     "notApplicable": "No aplica",
     "on": "en",
     "onChainAddress": "Dirección On-chain",
@@ -2236,9 +2225,6 @@
     "pageTitle": "Canales de Youtube",
     "view": "Ver Canal de Youtube",
     "watchTrailer": "Ver el tráiler"
-  },
-  "footer": {
-    "followUsOn": "Síguenos en"
   },
   "months": {
     "april": "Abril",

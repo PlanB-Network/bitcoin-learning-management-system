@@ -1245,7 +1245,6 @@
         "coursesOption": "Aktualisierungen zu den Kursen, in die du eingeschrieben bist",
         "description": "Du kannst deine Benachrichtigungseinstellungen unten anpassen. ",
         "emailPreferencesDescription": "Hier kannst du auswählen, welche Arten von E-Mails du von uns erhalten möchtest. Diese Einstellungen gelten nur für die E-Mail-Adresse, die mit diesem Link verknüpft ist.",
-        "emailPreferencesError": "Es ist ein Fehler aufgetreten beim Abrufen deiner E-Mail-Einstellungen. Bitte stelle sicher, dass der angeklickte Link korrekt ist.",
         "emailPreferencesSavedSuccessfully": "Deine E-Mail-Einstellungen wurden erfolgreich aktualisiert.",
         "emailPreferencesTitle": "Verwalte deine Plan ₿ Netzwerk E-Mail-Einstellungen",
         "emailTitle": "Welche Arten von Benachrichtigungen möchtest du per E-Mail erhalten?",
@@ -1261,7 +1260,6 @@
         "settingsSaved": "Deine Einstellungen wurden erfolgreich gespeichert!",
         "title": "Benachrichtigungseinstellungen",
         "assignedAt": "Zugewiesen bei",
-        "completedAt": "Abgeschlossen um",
         "displayName": "Name anzeigen",
         "filter": "Filter",
         "role": "Rolle"
@@ -1657,7 +1655,6 @@
     "miningCourseDescription": "Verstehen Sie die Prozesse, Werkzeuge und die Industrie hinter dem Bitcoin-Mining.",
     "moviesDescription": "Entdecken Sie fesselnde Geschichten und eingehende Erkundungen der Entwicklung und der Auswirkungen von Bitcoin",
     "newsletterDescription": "Sammlung von Inhalten, die Sie für Ihre Bildungsprojekte verwenden können",
-    "nodeNetworkDescription": "Treten Sie dem weltweiten Netzwerk der Bitcoin-Community bei",
     "planBLabsDescription": "Tritt einer Studiengruppe bei, um weiter über Lightning, Mining und Privatsphäre zu lernen",
     "podcastsDescription": "Erkunden Sie das Bitcoin-Ökosystem durch Podcasts",
     "projectsDescription": "Erfahren Sie mehr über die Unternehmen und Projekte, die dazu beitragen, Bitcoin zu verbessern und seine Akzeptanz zu erhöhen",
@@ -1671,12 +1668,6 @@
     "goToMovie": "Zum Film gehen",
     "pageTitle": "Filme & Dokumentarfilme",
     "watchTrailer": "Sehen Sie sich den Trailer an"
-  },
-  "nodeNetwork": {
-    "description1": "Wir glauben, dass Bildung nicht nur online stattfinden sollte, sondern auch in physischen Räumen. Um dies zu erreichen, verwaltet das Plan ₿ Network ein Netzwerk von Hubs auf der ganzen Welt, um Denker, Unternehmer und Pädagogen zu empfangen, die den Fortschritt von Bitcoin und Freiheitstechnologien fördern.",
-    "descriptionExtend": "Unser erster Schritt besteht darin, Gemeinden mit physischen Räumen, die wir als „volle Knotenpunkte“ unseres Netzes bezeichnen, einzuladen, sich uns anzuschließen. In der Zukunft, wenn unser Netzwerk stärker wird, werden wir diese Einladung auf weitere Initiativen weltweit ausweiten. Wenn Sie unsere Werte teilen, wenden Sie sich bitte an unsere Vertreter, um unserem Netzwerk beizutreten und dabei zu helfen, die bestmögliche Bitcoin-Ausbildung aufzubauen.",
-    "pageSubtitle": "Möchten Sie die Welt orange pillen? Treten Sie dem PlanB-Netzwerk bei.",
-    "pageTitle": "Erkunden Sie das Plan B Node Netzwerk"
   },
   "notFound": {
     "here": "Hier",
@@ -2012,7 +2003,6 @@
   },
   "words": {
     "about": "Über",
-    "about-us": "Über uns",
     "abstract": "Abstrakt",
     "access": "Zugang",
     "action": "Aktion",
@@ -2115,7 +2105,6 @@
     "newsletter": "Newsletter",
     "next": "Nächste",
     "no": "Nein",
-    "nodeNetwork": "Node Netzwerk",
     "notApplicable": "Nicht anwendbar",
     "on": "auf",
     "onChainAddress": "Auf der Kette Adresse",
@@ -2225,9 +2214,6 @@
   },
   "account": {
     "account": "Konto"
-  },
-  "footer": {
-    "followUsOn": "Folge uns auf"
   },
   "months": {
     "april": "April",
