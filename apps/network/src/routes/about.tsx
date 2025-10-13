@@ -180,7 +180,6 @@ function RouteComponent() {
         }
         subtitle={t('about.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
-        className="lg:mx-10"
         subtitleClassName={'max-w-[400px]'}
       />
       <MediaCard
@@ -188,8 +187,8 @@ function RouteComponent() {
         subtext={t('about.media1subtitle')}
         imageUrl={media1Image}
         alt="Scenic mountain lake"
-        titleClassName={'lg:max-w-[65%]'}
-        subtitleClassName={'lg:max-w-[40%]'}
+        titleClassName={'lg:max-w-[700px]'}
+        subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
         imageClassName="lg:max-w-[50%]"
         subtitleUnderImage={true}
         className="mt-12"
@@ -198,10 +197,10 @@ function RouteComponent() {
         <h2 className="display-medium mb-8 max-lg:text-center">
           {t('about.ourValues.title')}
         </h2>
-        <div className="flex flex-row flex-wrap gap-4 lg:gap-10 justify-center-safe">
+        <div className="flex flex-row flex-wrap gap-2 lg:gap-10 justify-center-safe">
           {valuesCards.map((card) => (
             <div
-              className="flex flex-col gap-2 lg:gap-4 w-52 lg:w-[380px] border-[1px] border-orange-600 rounded-3xl p-8 text-left"
+              className="flex flex-col gap-2 lg:gap-4 w-44 md:w-52 lg:w-[380px] border-[1px] border-orange-600 rounded-3xl p-4 md:p-8 text-left"
               key={card.title}
             >
               <img className="w-12" src={card.imageUrl} alt="" />

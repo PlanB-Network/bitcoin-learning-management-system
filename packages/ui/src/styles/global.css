@@ -769,15 +769,13 @@
 }
 
 @utility bg-network-cards {
-  background:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    linear-gradient(
-      0deg,
-      var(--Brown-900, #2b1f18) 5.36%,
-      rgba(43, 31, 24, 0) 16.85%,
-      rgba(43, 31, 24, 0) 88.13%,
-      var(--Brown-900, #2b1f18) 99.98%
-    );
+  background: linear-gradient(
+    0deg,
+    var(--Brown-900, #2b1f18) 5.36%,
+    #000 16.85%,
+    #000 92.17%,
+    var(--Brown-900, #2b1f18) 99.98%
+  );
 }
 
 @utility bg-gradient-network-lr {

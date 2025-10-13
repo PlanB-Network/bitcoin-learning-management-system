@@ -23,7 +23,6 @@ function RouteComponent() {
         }
         subtitle={t('hubs.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
-        className="mx-10"
         titleClassName="max-w-[65%]"
         subtitleClassName={'max-w-[85%] lg:max-w-[50%]'}
       />

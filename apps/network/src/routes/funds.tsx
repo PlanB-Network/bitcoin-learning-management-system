@@ -34,7 +34,6 @@ function RouteComponent() {
         }
         subtitle={t('funds.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
-        className="mx-10"
         titleClassName={'max-w-[700px]'}
         subtitleClassName={'max-w-[85%] lg:max-w-[450px]'}
       />
@@ -45,41 +44,43 @@ function RouteComponent() {
         alt="Scenic mountain lake"
         titleClassName={'lg:max-w-[53%]'}
         subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
-        imageClassName="lg:w-[50%]"
+        imageClassName=""
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
         BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
-            <div className="flex flex-row gap-2 items-center">
-              <img
-                className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
-                src={personIcon}
-                alt="Person icon"
-              />
-              <span className="title-base xl:title-medium">
-                {t('funds.cyphertankPitch1')}
-              </span>
-            </div>
-            <div className="flex flex-row gap-2 items-center">
-              <img
-                className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
-                src={dollarIcon}
-                alt="Dollar icon"
-              />
-              <span className="title-base xl:title-medium">
-                {t('funds.cyphertankPitch2')}
-              </span>
-            </div>
-            <div className="flex flex-row gap-2 items-center">
-              <img
-                className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
-                src={worldIcon}
-                alt="World icon"
-              />
-              <span className="title-base xl:title-medium">
-                {t('funds.cyphertankPitch3')}
-              </span>
+          <>
+            <div className="flex flex-col gap-1 xl:gap-2">
+              <div className="flex flex-row gap-2 items-center">
+                <img
+                  className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
+                  src={personIcon}
+                  alt="Person icon"
+                />
+                <span className="title-base xl:title-medium">
+                  {t('funds.cyphertankPitch1')}
+                </span>
+              </div>
+              <div className="flex flex-row gap-2 items-center">
+                <img
+                  className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
+                  src={dollarIcon}
+                  alt="Dollar icon"
+                />
+                <span className="title-base xl:title-medium">
+                  {t('funds.cyphertankPitch2')}
+                </span>
+              </div>
+              <div className="flex flex-row gap-2 items-center">
+                <img
+                  className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
+                  src={worldIcon}
+                  alt="World icon"
+                />
+                <span className="title-base xl:title-medium">
+                  {t('funds.cyphertankPitch3')}
+                </span>
+              </div>
             </div>
             <div className="mt-4 flex flex-row xl:flex-col max-lg:self-center gap-4">
               <NetworkButton variant={'secondary'}>Apply now</NetworkButton>
@@ -87,7 +88,7 @@ function RouteComponent() {
                 See next edition
               </NetworkButton>
             </div>
-          </div>
+          </>
         }
       />
       <MediaCard
@@ -101,7 +102,7 @@ function RouteComponent() {
         className="mt-12"
         orientation="right"
         BottomElement={
-          <div className="flex flex-col max-lg:items-center ">
+          <div className="flex flex-col max-lg:items-center">
             <NetworkButton variant={'secondary'}>
               Fundrise capital
             </NetworkButton>

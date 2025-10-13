@@ -30,7 +30,11 @@
   },
   "academy": {
     "subtitle": "We're building a world where everyone can learn Bitcoin — openly, globally, and with purpose. From individuals to institutions, our custom and open-source programs help grow real understanding and adoption of Bitcoin everywhere",
-    "title": "<0>Bitcoin Education</0> for everyone"
+    "title": "<0>Bitcoin Education</0> for everyone",
+    "safestPlace": "The safest place to learn about Bitcoin",
+    "safest1": "Any Topic",
+    "safest2": "Any Level",
+    "safest3": "Any Language"
   },
   "funds": {
     "media1subtitle": "Showcase your startup idea in front of industry leaders like Matt Odell, Paolo Ardoino, and Oleg. Compete for the chance to win $100,000 and make your mark in the global innovation scene.\n\nThink you've got what it takes to be the next big founder? Step up, pitch your vision, and seize the spotlight.",

@@ -24,7 +24,10 @@ export const Hero = ({
   return (
     <PageBlock>
       <div
-        className={cn('relative flex flex-col tracking-[-0.4px]', className)}
+        className={cn(
+          'relative flex flex-col tracking-[-0.4px] lg:mx-10',
+          className,
+        )}
       >
         <div className="lg:absolute left-2 flex flex-col gap-8 xl:gap-20 h-full">
           <h1

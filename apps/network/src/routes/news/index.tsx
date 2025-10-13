@@ -24,9 +24,8 @@ function BlogsNews() {
         }
         subtitle={t('news.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
-        className=""
-        titleClassName={'max-w-[60%]'}
-        subtitleClassName={'max-w-[85%] lg:max-w-[380px]'}
+        titleClassName={'lg:max-w-[60%]'}
+        subtitleClassName={'max-w-[90%] lg:max-w-[380px]'}
       />
       <BlogList />
     </>

@@ -38,10 +38,9 @@ export default function MediaCard({
       <fieldset
         aria-labelledby="media-card-title"
         className={[
-          'relative w-full pb-5 rounded-2xl shadow-lg transition-transform',
+          'relative w-full rounded-2xl shadow-lg transition-transform',
           'hover:-translate-y-0.5 hover:shadow-xl',
           'flex flex-col lg:flex-col',
-          'hover:-translate-y-0.5 hover:shadow-xl',
           'max-lg:bg-network-cards',
         ].join(' ')}
       >
@@ -61,6 +60,7 @@ export default function MediaCard({
           >
             {title}
           </h3>
+
           {subtitleUnderImage && isMobile ? null : (
             <BottomStuff
               bottomElement={BottomElement}
@@ -75,7 +75,7 @@ export default function MediaCard({
           src={imageUrl}
           alt={alt}
           className={[
-            'object-cover self-center max-lg:-mt-8 w-full',
+            'object-cover self-center max-lg:-mt-8 w-full h-full',
             'rounded-2xl',
             isLeft ? 'lg:self-end' : 'lg:self-start',
             imageClassName,
@@ -106,6 +106,7 @@ function BottomStuff({
   subtext?: string;
   isLeft: boolean;
 }) {
+  const isMobile = useSmaller('lg');
   return (
     <>
       <p
@@ -118,8 +119,12 @@ function BottomStuff({
         {subtext}
       </p>
       {bottomElement ? (
-        <div className="xl:mb-8 max-lg:mt-8">{bottomElement}</div>
+        <>
+          {isMobile ? <div className="max-lg:h-4" /> : null}
+          {bottomElement}
+        </>
       ) : null}
+      {isMobile ? <div className="max-lg:h-5" /> : null}
     </>
   );
 }
