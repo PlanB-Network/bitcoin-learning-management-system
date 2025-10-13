@@ -1246,7 +1246,6 @@
         "coursesOption": "您已註冊課程的更新資訊",
         "description": "您可以在下方自訂您的通知設定。 ",
         "emailPreferencesDescription": "您可以在此選擇希望從平台這裡收到的電子郵件類型。這些偏好設定僅適用於與此連結關聯的電子郵件地址。",
-        "emailPreferencesError": "嘗試取得您的電子郵件偏好設定時發生錯誤。請確保您所點擊的連結是正確的。",
         "emailPreferencesSavedSuccessfully": "您的電子郵件偏好設定已成功更新。",
         "emailPreferencesTitle": "管理您的 Plan ₿ Network 電子郵件偏好設定",
         "emailTitle": "您希望透過電子郵件收到哪些類型的通知？",
@@ -1262,7 +1261,6 @@
         "settingsSaved": "您的設定已成功保存！",
         "title": "通知設定",
         "assignedAt": "分配於",
-        "completedAt": "完成於",
         "displayName": "顯示名稱",
         "filter": "篩選",
         "role": "角色"
@@ -1660,7 +1658,6 @@
     "miningCourseDescription": "了解比特幣挖礦背後的流程、工具和產業。",
     "moviesDescription": "探索引人入勝的故事和比特幣演變及影響的深入分析",
     "newsletterDescription": "您可以用於教育專案的內容合集",
-    "nodeNetworkDescription": "加入 Plan ₿ 全球社群網絡",
     "planBLabsDescription": "加入學習小組，繼續學習閃電網路、挖礦和隱私",
     "podcastsDescription": "透過 Podcast 探索比特幣生態系統",
     "projectsDescription": "了解那些致力於改善比特幣並推動其普及的公司和專案",
@@ -1675,12 +1672,6 @@
     "pageTitle": "電影與紀錄片",
     "watchTrailer": "觀看預告片",
     "checkTheMovie": "查看此電影"
-  },
-  "nodeNetwork": {
-    "description1": "我們相信教育不僅應該在線上進行，也應該在實體空間中發生。為了達成這個目標，Plan ₿ Network 在全球管理一個中心網路，以歡迎思考者、建設者和教育者，共同促進比特幣和自由技術的發展。",
-    "descriptionExtend": "我們的第一步是邀請擁有實體空間的社群，這些我們稱之為我們網路的「完整節點」，與我們合作。未來，隨著我們網路的強化，我們將向全球更多的倡議發出這個邀請。如果您贊同我們的價值觀，請聯繫我們的代表，加入我們的網路，共同打造最優質的比特幣教育。",
-    "pageSubtitle": "想要讓全世界認識比特幣嗎？加入 Plan ₿ Network 吧。",
-    "pageTitle": "探索 Plan ₿ 節點網絡"
   },
   "notFound": {
     "here": "這裡",
@@ -2024,7 +2015,6 @@
   },
   "words": {
     "about": "關於",
-    "about-us": "關於我們",
     "abstract": "摘要",
     "access": "取得",
     "action": "行動",
@@ -2127,7 +2117,6 @@
     "newsletter": "電子報",
     "next": "下一個",
     "no": "否",
-    "nodeNetwork": "節點網絡",
     "notApplicable": "不適用",
     "on": "上",
     "onChainAddress": "鏈上地址",
@@ -2276,9 +2265,6 @@
       "rumble": "Rumble",
       "pears": "Pears 🍐"
     }
-  },
-  "footer": {
-    "followUsOn": "追蹤我們"
   },
   "months": {
     "april": "四月",

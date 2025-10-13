@@ -1211,7 +1211,6 @@
         "coursesOption": "Amakuru mashasha ajanye n’amasomo wiyandikishijemwo",
         "description": "Ushobora guhindura uburyo uhabwa amatangazo hasi hano. ",
         "emailPreferencesDescription": "Aha ni ho ushobora guhitamwo ubwoko bwa email wipfuza kuturungikira. Ibi vyifuzo biraba gusa email ihujwe n’iyi linki.",
-        "emailPreferencesError": "Habaye ikosa mu gihe twagerageza kuronka ivyifuzo vyawe bijanye na email. Tugusabe urabe neza ko linki wakurikiyemwo ari yo nyakuri.",
         "emailPreferencesSavedSuccessfully": "Ivyifuzo vyawe bijanye na email vyahinduwe neza.",
         "emailPreferencesTitle": "Shira mu buryo ivyifuzo vyawe vya email kuri Plan ₿ Network",
         "emailTitle": "Ni ubwoko ubuhe bw’amatangazo wipfuza ko akwiyandikira ku email?",
@@ -1227,7 +1226,6 @@
         "settingsSaved": "Imyirondoro yawe yarashinguwe neza!",
         "title": "Imyirondoro y’amatangazo",
         "assignedAt": "Yahawe aho",
-        "completedAt": "Vyarangiye aho",
         "displayName": "Izina ryerakana",
         "filter": "Hitamwo",
         "role": "Inshingano"
@@ -1608,7 +1606,6 @@
     "miningCourseDescription": "Menya ukobigenda, ibikoresho n’inganda biri inyuma gucukura Bitcoin.",
     "moviesDescription": "Rondera inkuru zidasanzwe n’isesengura ryimbitse ry’ukuntu Bitcoin yahindutse kandi igira ingaruka.",
     "newsletterDescription": "Ihuriro ry’ibikubiye vyose ushobora gukoresha mu mumigambi yawe y’inyigisho",
-    "nodeNetworkDescription": "Injira mu muryango mpuzamakungu wa Plan ₿",
     "planBLabsDescription": "Injira mumugwi ry’ivyigwa kugira ubandanye wiga ku bijanye na Lightning, gucukura, n’ugukingira amakuru y'ibanga",
     "podcastsDescription": "Soma vyimbitse ibijanye na Bitcoin biciye mubiganiro vyokuri ngurukanabumenyi",
     "projectsDescription": "Wige ku mashirahamwe n’imigambi itanga ubufasha mu guteza imbere Bitcoin no kongera uko ikoreshwa",
@@ -1622,12 +1619,6 @@
     "goToMovie": "Ngenda kwireresi",
     "pageTitle": "Ireresi & Ibiganiro",
     "watchTrailer": "Raba icitegererezo"
-  },
-  "nodeNetwork": {
-    "description1": "Twemera ko inyigisho zitagombera kuba gusa ku murongo w’Internet, ahubwo no mu bibanza vy’ukuri. Kugira tubigereho, Plan ₿ Network iragenzura imiryango isanzwe ihari kwisi kugira yakire abiyumvira, abanywanyi b’imigambi, n’abarimu bashigikira iterambere rya Bitcoin n’ubuhinga bw’ubwisanzure.",
-    "descriptionExtend": "Intambwe yacu ya mbere ni ugutumira imiryango ifise ibibanza vy’ukuri, dutahura nka ‘full nodes’ z’urubuga rwacu, kugira yinjire muri twe. Mu gihe kizokiza, hamwe n’ukwiyongera kw’urubuga rwacu, tuzotuma iri tangazo rigerwaho n’imishinge myinshi kw’isi hose. Nimba usangiye indangagaciro zacu, tugusabe uhamagare abahagarariye kugira wiyongere mu rubuga rwacu kandi ufashanye mu gushinga inyigisho za Bitcoin nziza cane.",
-    "pageSubtitle": "Uripfuza guha isi ikinini gitukura ‘orange pill’? Injira muri Plan ₿ Network.",
-    "pageTitle": "Ihweze neza urubuga rwa Plan ₿ Node Network"
   },
   "notFound": {
     "here": "Hano",
@@ -1963,7 +1954,6 @@
   },
   "words": {
     "about": "Kuvyerekeye",
-    "about-us": "Ivyerekeye twebwe",
     "abstract": "Incamake",
     "access": "Uruhusha",
     "action": "Igikorwa",
@@ -2066,7 +2056,6 @@
     "newsletter": "Igitangazamakuru c’inkuru nshasha",
     "next": "Igikwirikira",
     "no": "Oya",
-    "nodeNetwork": "Umuryango w'amapfundo (Node Network)",
     "notApplicable": "Ntiriko rikoreshwa",
     "on": "Kuri",
     "onChainAddress": "Aderesi ya On chain",
@@ -2153,9 +2142,6 @@
     "pageTitle": "Imihora ya Youtube",
     "view": "Raba umuhora wa Youtube",
     "watchTrailer": "Reba igice gitangura"
-  },
-  "footer": {
-    "followUsOn": "Dukwirikirane kuri"
   },
   "months": {
     "april": "Ukwakane (Ndamukiza)",

@@ -1246,7 +1246,6 @@
         "coursesOption": "Maelezo kuhusu kozi ulizojiandikisha",
         "description": "Unaweza kubadilisha mipangilio yako ya arifa hapa chini. ",
         "emailPreferencesDescription": "Hapa unaweza kuchagua aina za barua pepe unazotaka kupokea kutoka kwetu. Mapendeleo haya yanatumika kwa anwani ya barua pepe iliyounganishwa na kiungo hiki pekee.",
-        "emailPreferencesError": "Kulikuwa na hitilafu wakati wa kujaribu kupata mapendeleo yako ya barua pepe. Tafadhali hakikisha kuwa kiungo ulichofuata ni sahihi.",
         "emailPreferencesSavedSuccessfully": "Mapendeleo yako ya barua pepe yameboreshwa kwa mafanikio.",
         "emailPreferencesTitle": "Dhibiti mipangilio ya barua pepe ya Mtandao wa Plan ₿",
         "emailTitle": "Ni aina gani za arifa ungetaka kupokea kwa barua pepe?",
@@ -1262,7 +1261,6 @@
         "settingsSaved": "Mipangilio yako imehifadhiwa kwa mafanikio!",
         "title": "Mipangilio ya arifa",
         "assignedAt": "Amepangiwa kazi katika",
-        "completedAt": "Imekamilika saa",
         "displayName": "Onyesha Jina",
         "filter": "Chuja",
         "role": "Jukumu"
@@ -1660,7 +1658,6 @@
     "miningCourseDescription": "Elewa mchakato, zana na sekta nyuma ya uchimbaji wa Bitcoin.",
     "moviesDescription": "Gundua hadithi za kuvutia na uchunguzi wa kina wa maendeleo na athari za Bitcoin",
     "newsletterDescription": "Mkusanyiko wa maudhui ambayo unaweza kutumia kwa miradi yako ya elimu",
-    "nodeNetworkDescription": "Jiunge na Mpango ₿ mtandao wa jumuiya ya kimataifa",
     "planBLabsDescription": "Jiunge na kikundi cha masomo kuendelea kujifunza kuhusu Umeme, Uchimbaji na Faragha",
     "podcastsDescription": "Gundua mfumo ikolojia wa bitcoin kupitia podikasti",
     "projectsDescription": "Jifunze kuhusu kampuni na miradi inayochangia katika kuboresha Bitcoin na kuongeza kupokelewa kwake",
@@ -1675,12 +1672,6 @@
     "pageTitle": "Filamu na Makala",
     "watchTrailer": "Tazama trela",
     "checkTheMovie": "Kagua filamu"
-  },
-  "nodeNetwork": {
-    "description1": "Tunaamini kwamba elimu haipaswi tu kufanyika mtandaoni lakini pia katika nafasi za kimwili. Ili kufanikisha hili, Plan ₿ Network inasimamia mtandao wa vitovu kote ulimwenguni ili kuwakaribisha wanafikra, wajasiriamali na waelimishaji wanaokuza maendeleo ya Bitcoin na teknolojia ya uhuru.",
-    "descriptionExtend": "Hatua yetu ya kwanza ni kualika jumuiya zilizo na nafasi halisi, ambazo tunazirejelea kama \"nodi kamili\" za mtandao wetu, kujiunga nasi. Katika siku zijazo, mtandao wetu unapoimarika, tutasambaza mwaliko huu kwa mipango zaidi duniani kote. Ikiwa unashiriki maadili yetu, tafadhali wasiliana na wawakilishi wetu ili wajiunge na mtandao wetu na kusaidia kujenga elimu bora zaidi ya Bitcoin iwezekanavyo.",
-    "pageSubtitle": "Je! Unataka kuorange pill ulimwenguni? Jiunge na Mpango ₿ Mtandao.",
-    "pageTitle": "Gundua Plan ₿ Node Network"
   },
   "notFound": {
     "here": "Hapa",
@@ -2024,7 +2015,6 @@
   },
   "words": {
     "about": "Kuhusu",
-    "about-us": "Kuhusu Sisi",
     "abstract": "Muhtasari",
     "access": "Ufikiaji",
     "action": "Hatua",
@@ -2127,7 +2117,6 @@
     "newsletter": "Jarida",
     "next": "Ifuatayo",
     "no": "Hapana",
-    "nodeNetwork": "Node Network",
     "notApplicable": "Havitumiki",
     "on": "kwenye",
     "onChainAddress": "On chain address",
@@ -2240,9 +2229,6 @@
   "account": {
     "account": "KICHWA: Sehemu ya akaunti",
     "myTeacherProfile": "Wasifu wangu wa ualimu"
-  },
-  "footer": {
-    "followUsOn": "Tufuate kwenye"
   },
   "months": {
     "april": "Aprili",

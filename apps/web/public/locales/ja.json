@@ -1100,7 +1100,6 @@
         "coursesOption": "登録したコースに関する最新情報",
         "description": "通知設定は以下でカスタマイズできます。 ",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "どのような通知をメールで受け取りたいですか？",
@@ -1432,7 +1431,6 @@
     "miningCourseDescription": "ビットコインマイニングの背後にあるプロセス、ツール、業界を理解する。",
     "moviesDescription": "ビットコインの進化と影響に関する魅力的なストーリーと詳細な調査を発見する",
     "newsletterDescription": "教育プロジェクトに使えるコンテンツ集",
-    "nodeNetworkDescription": "Plan ₿ グローバルコミュニティネットワークに参加しよう",
     "planBLabsDescription": "ライトニング、マイニング、プライバシーに関する学習を継続するための勉強会に参加しよう",
     "podcastsDescription": "ポッドキャストでビットコインエコシステムを探求する",
     "projectsDescription": "ビットコインの改善と普及に貢献する企業やプロジェクトについて学ぶ",
@@ -1446,12 +1444,6 @@
     "goToMovie": "映画を見る",
     "pageTitle": "映画とドキュメンタリー",
     "watchTrailer": "予告編を見る"
-  },
-  "nodeNetwork": {
-    "description1": "私たちは、教育はオンラインだけでなく、物理的なスペースでも行われるべきだと考えています。 これを実現するために、Plan ₿ Network はビットコインとフリーダムテクノロジーの発展を促進する思想家、起業家、教育者を歓迎する世界各地の地域ネットワークを管理しています。",
-    "descriptionExtend": "私たちの最初のステップは、物理的なスペースを持つコミュニティ（私たちはこれをネットワークの「フルノード」と呼んでいる）の参加を呼びかけることです。 将来的には、ネットワークが強化されるにつれて、世界中のより多くのイニシアティブへこの招待状を広げていく予定です。 私たちの価値観に共感していただける方は、ぜひ私たちまでご連絡いただき、私たちのネットワークに参加し、最高のビットコイン教育の構築にご協力ください。",
-    "pageSubtitle": "世界中をオレンジピルしたいですか？ Plan ₿ Network にぜひご参加ください。",
-    "pageTitle": "Plan ₿ ノードネットワークを探求しよう"
   },
   "notFound": {
     "here": "コチラ",
@@ -1786,7 +1778,6 @@
   },
   "words": {
     "about": "概要：",
-    "about-us": "私たちについて",
     "abstract": "要約",
     "access": "アクセス",
     "action": "アクション",
@@ -1889,7 +1880,6 @@
     "newsletter": "ニュースレター",
     "next": "次",
     "no": "いいえ",
-    "nodeNetwork": "ノードネットワーク",
     "notApplicable": "",
     "on": "オン",
     "onChainAddress": "オンチェーンアドレス",

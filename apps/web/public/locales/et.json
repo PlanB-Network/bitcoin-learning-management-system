@@ -1173,7 +1173,6 @@
         "coursesOption": "Uuendused kursustel, kuhu registreerunud olete",
         "description": "Saate oma teavituste seadeid allpool kohandada. ",
         "emailPreferencesDescription": "Siin saate valida, milliseid e-kirju soovite meilt saada. Need eelistused kehtivad ainult selle lingiga seotud e-posti aadressi kohta.",
-        "emailPreferencesError": "Teie e-posti eelistuste hankimisel ilmnes viga. Palun veenduge, et järgisite õiget linki.",
         "emailPreferencesSavedSuccessfully": "Teie e-posti eelistused on edukalt uuendatud.",
         "emailPreferencesTitle": "Halda oma Plan ₿ Network e-posti aadressi eelistusi",
         "emailTitle": "Milliseid teavitusi soovite e-posti teel saada?",
@@ -1189,7 +1188,6 @@
         "settingsSaved": "Teie seaded salvestati edukalt!",
         "title": "Teavituste seaded",
         "assignedAt": "Määramisaeg",
-        "completedAt": "Lõpetamise aeg",
         "displayName": "Kuvanimi",
         "filter": "Filter",
         "role": "Roll"
@@ -1399,9 +1397,6 @@
     "resources": "Materjalid",
     "topics": "Teemad"
   },
-  "footer": {
-    "followUsOn": "Jälgi meid"
-  },
   "glossary": {
     "anotherWord": "Otsi teist sõna",
     "creditsLoic": "<0>Tänusõnad</0>: Bitcoini sõnastiku autor on <1>Loïc Morel (Pandul)</1>, kättesaadav antud <2>GitHubi repositooriumis</2>.",
@@ -1525,7 +1520,6 @@
     "miningCourseDescription": "Mõista Bitcoini kaevandamise protsesse, tööriistu ja tööstust.",
     "moviesDescription": "Avasta paeluvaid jutustusi ja sügavaid uurimusi Bitcoini arengust ja mõjust",
     "newsletterDescription": "Oma haridusprojektide jaoks kasutamiseks mõeldud materjalide kogum",
-    "nodeNetworkDescription": "Liitu Plan B globaalse kogukonna võrgustikuga",
     "planBLabsDescription": "Liitu õppegrupiga, et jätkata õppimist teemadel Lightning, kaevandamine ja privaatsus",
     "podcastsDescription": "Avastage Bitcoini ökosüsteemi taskuhäälingute kaudu",
     "projectsDescription": "Tutvu ettevõtete ja projektidega, mis aitavad Bitcoini arendada ja selle kasutuselevõttu suurendada",
@@ -1539,12 +1533,6 @@
     "goToMovie": "Ava film",
     "pageTitle": "Filmid ja dokumentaalid",
     "watchTrailer": "Vaata treilerit"
-  },
-  "nodeNetwork": {
-    "description1": "Usume, et haridus ei peaks toimuma ainult veebis, vaid ka füüsilistes kohtades. Selle saavutamiseks haldab Plan ₿ Network üle maailma keskustest koosnevat võrgustikku, mis on loodud mõtlejate, ettevõtjate ja koolitajate vastuvõtmiseks, et edendada Bitcoini ja vabadustehnoloogiate arengut.",
-    "descriptionExtend": "Meie esimene samm on kutsuda liituma kogukondi, kellel on füüsilised ruumid, mida nimetame oma võrgustiku \"täis node'deks\". Tulevikus, kui meie võrgustik tugevneb, laiendame seda kutset rohkematele algatustele üle maailma. Kui jagate meie väärtusi, võtke palun ühendust meie esindajatega, et liituda meie võrgustikuga ja aidata luua parimat võimalikku Bitcoini haridust.",
-    "pageSubtitle": "Soovid maailmale oranži pilli pakkuda? Liitu PlanB võrgustikuga.",
-    "pageTitle": "Avastage Plan B sõlmevõrku"
   },
   "notFound": {
     "here": "Siin",
@@ -1893,7 +1881,6 @@
   },
   "words": {
     "about": "Umbes",
-    "about-us": "Meist",
     "abstract": "Kokkuvõte",
     "academy": "Akadeemia",
     "access": "Juurdepääs",
@@ -1997,7 +1984,6 @@
     "newsletter": "Uudiskiri",
     "next": "Järgmine",
     "no": "Ei",
-    "nodeNetwork": "Sõlmede võrk",
     "notApplicable": "Ei rakendu",
     "on": "peal",
     "onChainAddress": "On-chain aadress",

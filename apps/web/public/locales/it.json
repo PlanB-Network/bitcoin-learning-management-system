@@ -1246,7 +1246,6 @@
         "coursesOption": "Aggiornamenti sui corsi a cui hai aderito",
         "description": "Puoi configurare le tue impostazioni di notifica qui sotto. ",
         "emailPreferencesDescription": "Qui puoi scegliere che tipo di email vuoi ricevere dalla piattaforma. Queste preferenze si applicano solo all'indirizzo email associato a questo link.",
-        "emailPreferencesError": "Si è verificato un errore nel recuperare la tua email. Assicurati che il link cliccato sia corretto.",
         "emailPreferencesSavedSuccessfully": "Le tue impostazioni email sono state aggiornate correttamente.",
         "emailPreferencesTitle": "Gestisci le impostazioni email su Plan ₿ Network",
         "emailTitle": "Quali tipi di notifiche vorresti ricevere via email?",
@@ -1627,7 +1626,6 @@
     "miningCourseDescription": "Comprendi i processi, gli strumenti e l'industria dietro il mining di Bitcoin.",
     "moviesDescription": "Scopri delle interessanti storie e degli approfondimenti sull'evoluzione e sull'impatto di Bitcoin",
     "newsletterDescription": "Raccolta di contenuti che puoi utilizzare per i tuoi progetti educativi",
-    "nodeNetworkDescription": "Unisciti alla rete globale delle comunità Plan ₿",
     "planBLabsDescription": "Unisciti a un gruppo di studio per continuare a studiare Lightning, Mining e Privacy",
     "podcastsDescription": "Esplora l'ecosistema bitcoin attraverso podcast",
     "projectsDescription": "Scopri le imprese e i progetti che contribuiscono al miglioramento di Bitcoin e ad incrementare la sua adozione",
@@ -1642,12 +1640,6 @@
     "pageTitle": "Film & Documentari",
     "watchTrailer": "Guarda il trailer",
     "checkTheMovie": "Scopri il film"
-  },
-  "nodeNetwork": {
-    "description1": "Riteniamo che l'educazione non debba essere confinata esclusivamente al mondo online, ma debba trovare spazio anche in contesti fisici. Per questo motivo, Plan ₿ Network gestisce una rete di hub distribuiti in tutto il mondo, destinati ad accogliere pensatori, imprenditori ed educatori impegnati a favorire il progresso di Bitcoin e delle tecnologie della libertà.",
-    "descriptionExtend": "Il nostro primo passo è invitare a unirsi a noi le comunità con spazi fisici, che noi chiamiamo \"full node\" della rete. In futuro, man mano che la nostra rete si rafforza, estenderemo questo invito a più iniziative in tutto il mondo. Se condividi i nostri valori, ti invitiamo a contattare i nostri rappresentanti per unirti alla nostra rete e aiutare a creare la migliore struttura formativa possibile su Bitcoin.",
-    "pageSubtitle": "Vuoi orenge-pillare il mondo? Unisciti a Plan ₿ Network.",
-    "pageTitle": "Naviga sulla rete dei nodi di Plan ₿ Network"
   },
   "notFound": {
     "here": "Qui",
@@ -1982,7 +1974,6 @@
   },
   "words": {
     "about": "Informazioni",
-    "about-us": "Chi Siamo",
     "abstract": "Estratto",
     "access": "Accedi",
     "action": "Azione",
@@ -2085,7 +2076,6 @@
     "newsletter": "Newsletter",
     "next": "Avanti",
     "no": "No",
-    "nodeNetwork": "Rete dei nodi",
     "notApplicable": "",
     "on": "su",
     "onChainAddress": "Indirizzo on chain",

@@ -1211,7 +1211,6 @@
         "coursesOption": "Uppdateringar om kurser du anmält dig till",
         "description": "Du kan anpassa dina aviseringsinställningar nedan. ",
         "emailPreferencesDescription": "Här kan du välja vilka typer av e-postmeddelanden du vill ta emot från oss. Dessa inställningar gäller endast för e-postadressen som är kopplad till denna länk.",
-        "emailPreferencesError": "Det uppstod ett fel när vi försökte hämta dina e-postinställningar. Var god och se till att länken du följde är korrekt.",
         "emailPreferencesSavedSuccessfully": "Dina e-postinställningar har uppdaterats.",
         "emailPreferencesTitle": "Hantera dina e-postinställningar på Plan ₿ Network",
         "emailTitle": "Vilka typer av notifikationer skulle du vilja få via e-post?",
@@ -1227,7 +1226,6 @@
         "settingsSaved": "Dina inställningar har sparats!",
         "title": "Aviseringsinställningar",
         "assignedAt": "Tilldelad vid",
-        "completedAt": "Slutfört vid",
         "displayName": "Visningsnamn",
         "role": "Roll",
         "filter": "Filter"
@@ -1600,7 +1598,6 @@
     "miningCourseDescription": "Förstå processerna, verktygen och industrin bakom Bitcoin-mining.",
     "moviesDescription": "Upptäck fängslande berättelser och djupgående utforskningar av Bitcoins evolution och påverkan",
     "newsletterDescription": "Samling av innehåll som kan användas för dina utbildningsprojekt",
-    "nodeNetworkDescription": "Bli en del av det globala nätverket för Plan ₿-communities",
     "planBLabsDescription": "Gå med i en studiegrupp för att fortsätta lära dig om Lightning, mining och integritet",
     "podcastsDescription": "Utforska bitcoin-ekosystemet genom podcasts",
     "projectsDescription": "Läs om företagen och projekten som bidrar till att förbättra Bitcoin och öka dess användning",
@@ -1614,12 +1611,6 @@
     "goToMovie": "Gå till filmen",
     "pageTitle": "Filmer och dokumentärer",
     "watchTrailer": "Titta på trailern"
-  },
-  "nodeNetwork": {
-    "description1": "Vi tror på att utbildning inte enbart borde ske online utan också i fysiska utrymmen. För att uppnå detta hanterar Plan ₿ Network ett nätverk av hubbar runt om i världen för att välkomna tänkare, entreprenörer och utbildare som främjar utvecklingen av Bitcoin och frihetsteknologier.",
-    "descriptionExtend": "Vårt första steg är att bjuda in communities som har fysiska platser, vilka vi refererar till som \"fulla noder\" i vårt nätverk, att ansluta till oss. I framtiden, när vårt nätverk stärks, kommer vi att utöka denna inbjudan till fler initiativ världen över. Om du delar våra värderingar, vänligen kontakta våra representanter för att ansluta till vårt nätverk och hjälpa till att bygga den bästa möjliga Bitcoin-utbildningen.",
-    "pageSubtitle": "Vill du orange-pilla världen? Gå med i Plan ₿ Network.",
-    "pageTitle": "Utforska Plan ₿ Nodnätverk"
   },
   "notFound": {
     "here": "Här",
@@ -1955,7 +1946,6 @@
   },
   "words": {
     "about": "Om",
-    "about-us": "Om oss",
     "abstract": "Abstrakt",
     "access": "Få tillgång",
     "action": "Åtgärd",
@@ -2058,7 +2048,6 @@
     "newsletter": "Nyhetsbrev",
     "next": "Nästa",
     "no": "Nej",
-    "nodeNetwork": "Nodnätverk",
     "notApplicable": "Ej tillämpligt",
     "on": "på",
     "onChainAddress": "On chain-adress",
@@ -2156,9 +2145,6 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
-  },
-  "footer": {
-    "followUsOn": "Följ oss på"
   },
   "months": {
     "april": "April",

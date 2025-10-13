@@ -868,7 +868,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "",
     "moviesDescription": "",
     "newsletterDescription": "",
-    "nodeNetworkDescription": "",
     "planBLabsDescription": "",
     "podcastsDescription": "",
     "projectsDescription": "",
@@ -1213,12 +1211,6 @@
     "goToMovie": "",
     "pageTitle": "",
     "watchTrailer": ""
-  },
-  "nodeNetwork": {
-    "description1": "",
-    "descriptionExtend": "",
-    "pageSubtitle": "",
-    "pageTitle": ""
   },
   "notFound": {
     "here": "",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "",
-    "about-us": "",
     "abstract": "",
     "access": "",
     "action": "",
@@ -1656,7 +1647,6 @@
     "newsletter": "",
     "next": "",
     "no": "",
-    "nodeNetwork": "",
     "notApplicable": "",
     "on": "",
     "onChainAddress": "",

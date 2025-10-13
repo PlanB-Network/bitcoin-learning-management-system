@@ -868,7 +868,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "Înțelege care sunt procesele, instrumentele și industria din spatele procesului de mining Bitcoin.",
     "moviesDescription": "Descoperă povești captivante și explorări profunde ale evoluției și impactului Bitcoin",
     "newsletterDescription": "Colecție de conținuturi pe care îl poți folosi pentru proiectele tale educaționale",
-    "nodeNetworkDescription": "Alăturați-vă rețelei globale a comunității Plan B",
     "planBLabsDescription": "Alătură-te unui grup de studiu pentru a continua să înveți despre Lightning, Mining și Privacy",
     "podcastsDescription": "Explorează ecosistemul bitcoin prin podcasturi",
     "projectsDescription": "Află despre companiile și proiectele care contribuie la îmbunătățirea Bitcoin și la creșterea adoptării sale",
@@ -1213,12 +1211,6 @@
     "goToMovie": "Mergi la film",
     "pageTitle": "Filme & Documentare",
     "watchTrailer": "Urmărește trailerul"
-  },
-  "nodeNetwork": {
-    "description1": "Credem că educația nu ar trebui să se limiteze doar la mediul online, ci să se extindă și în spațiile fizice. Pentru a atinge acest obiectiv, Plan ₿ Network coordonează o rețea de hub-uri la nivel global pentru a aduna gânditori, constructori și educatori care susțin progresul Bitcoin și al tehnologiilor libertății.",
-    "descriptionExtend": "Primul nostru pas este să invităm să se alăture nouă comunitățile cu spații fizice, pe care le numim \"nodurile complete\" ale rețelei noastre. În viitor, pe măsură ce rețeaua noastră se întărește, vom extinde această invitație către mai multe inițiative la nivel mondial. Dacă împărtășiți valorile noastre, vă rugăm să luați legătura cu reprezentanții noștri pentru a vă alătura rețelei noastre și a ajuta la construirea celei mai bune educații posibile despre Bitcoin.",
-    "pageSubtitle": "Vrei să \"orange pill\"-ezi lumea? Alătură-te de Plan ₿ Network.",
-    "pageTitle": "Explorează rețeaua de noduri Plan ₿"
   },
   "notFound": {
     "here": "Aici",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "Despre",
-    "about-us": "Despre noi",
     "abstract": "Rezumat",
     "access": "Acces",
     "action": "Acțiune",
@@ -1656,7 +1647,6 @@
     "newsletter": "newsletter",
     "next": "Următorul",
     "no": "Nu",
-    "nodeNetwork": "Rețea de noduri",
     "notApplicable": "",
     "on": "pe",
     "onChainAddress": "Adresă On chain",

@@ -1240,7 +1240,6 @@
         "coursesOption": "Aktualizacje dotyczące kursów, na które się zapisałeś",
         "description": "Poniżej możesz dostosować swoje ustawienia dotyczące powiadomień. ",
         "emailPreferencesDescription": "Tutaj możesz wybrać rodzaje e-maili, które chciałbyś od nas otrzymywać. Te preferencje dotyczą tylko adresu e-mail powiązanego z tym linkiem.",
-        "emailPreferencesError": "Wystąpił błąd podczas próby pobrania preferencji dotyczących twojego adresu e-mail. Upewnij się, że użyty przez ciebie link jest poprawny.",
         "emailPreferencesSavedSuccessfully": "Twoje preferencje dotyczące e-maili zostały pomyślnie zaktualizowane.",
         "emailPreferencesTitle": "Zarządzaj swoimi preferencjami dotyczącymi e-maili w sieci Plan ₿",
         "emailTitle": "Jakiego rodzaju powiadomienia chciałbyś otrzymywać przez e-maila?",
@@ -1256,7 +1255,6 @@
         "settingsSaved": "Twoje ustawienia zostały zapisane pomyślnie!",
         "title": "Ustawienia powiadomień",
         "assignedAt": "Przydzielony do",
-        "completedAt": "Ukończono",
         "displayName": "Wyświetlana nazwa użytkownika",
         "filter": "Filtruj",
         "role": "Rola"
@@ -1654,7 +1652,6 @@
     "miningCourseDescription": "Zrozum procesy, narzędzia i branżę stojącą za kopaniem Bitcoinów.",
     "moviesDescription": "Odkryj fascynujące historie i dogłębne badania ewolucji i wpływu Bitcoina",
     "newsletterDescription": "Zbiór treści, które można wykorzystywać do celów edukacyjnych",
-    "nodeNetworkDescription": "Dołącz do globalnej sieci społeczności Plan B",
     "planBLabsDescription": "Dołącz do grupy projektowej, aby kontynuować naukę na temat sieci Lightning, Górnictwa i Prywatności",
     "podcastsDescription": "Poznaj ekosystem Bitcoina słuchając podcastów",
     "projectsDescription": "Dowiedz się więcej o firmach i projektach, które przyczyniają się do udoskonalania Bitcoina i zwiększania jego adopcji",
@@ -1669,12 +1666,6 @@
     "pageTitle": "Wideo i filmy dokumentalne",
     "watchTrailer": "Obejrzyj zwiastun",
     "checkTheMovie": "Zobacz film"
-  },
-  "nodeNetwork": {
-    "description1": "Wierzymy, że edukacja powinna odbywać się nie tylko online, ale również na żywo. Aby to umożliwić, sieć Plan ₿ zarządza siecią centrów na całym świecie, aby gościć myślicieli, przedsiębiorców i edukatorów, którzy przyczyniają się do rozwoju Bitcoina i technologii wolności.",
-    "descriptionExtend": "Naszym pierwszym krokiem jest zaproszenie do naszej sieci społeczności dysponujących przestrzeniami fizycznymi, które nazywamy \"pełnymi węzłami\". W przyszłości, w miarę wzmacniania naszej sieci, rozszerzymy to zaproszenie na więcej inicjatyw na całym świecie. Jeśli podzielasz nasze wartości, skontaktuj się z naszymi przedstawicielami, aby dołączyć do naszej sieci i pomóc budować najlepszą możliwą edukację na temat Bitcoina.",
-    "pageSubtitle": "Chcesz przekonać świat do wzięcia pomarańczowej pigułki? Dołącz do sieci Plan ₿.",
-    "pageTitle": "Odkryj sieć węzłów Plan ₿"
   },
   "notFound": {
     "here": "Tutaj",
@@ -2016,7 +2007,6 @@
   },
   "words": {
     "about": "O nas",
-    "about-us": "O nas",
     "abstract": "Abstrakt",
     "access": "Dostęp",
     "action": "Akcja",
@@ -2119,7 +2109,6 @@
     "newsletter": "Newsletter",
     "next": "Dalej",
     "no": "Nie",
-    "nodeNetwork": "Sieć węzłów",
     "notApplicable": "Nie dotyczy",
     "on": "w",
     "onChainAddress": "Adres on chain",
@@ -2230,9 +2219,6 @@
   "account": {
     "account": "Konto",
     "myTeacherProfile": "Mój profil nauczyciela"
-  },
-  "footer": {
-    "followUsOn": "Obserwuj nas na"
   },
   "months": {
     "april": "kwiecień",

@@ -868,7 +868,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "",
     "moviesDescription": "",
     "newsletterDescription": "",
-    "nodeNetworkDescription": "Shiga cikin cibiyar al'umma ta duniya ta Plan B",
     "planBLabsDescription": "",
     "podcastsDescription": "Bincika tsarin Bitcoin ta hanyar podcasts",
     "projectsDescription": "",
@@ -1213,12 +1211,6 @@
     "goToMovie": "",
     "pageTitle": "",
     "watchTrailer": ""
-  },
-  "nodeNetwork": {
-    "description1": "Plan B Network na goyon bayan shirye-shiryen ilimi a duniya baki ɗaya. Muna haɗin gwiwa don ƙirƙirar mafi kyawun kayan aiki don waɗannan ayyukan, ta hanyar dandamalinmu da kuma a zahiri. Ko yaushe muna neman sababbin nodes don shiga cikinmu. Idan kuna son yin aiki tare don ƙirƙirar hanyar sadarwa ta ilimi ta duniya mai rarrabuwa don Bitcoin, tuntuɓe mu!",
-    "descriptionExtend": "Matakinmu na farko shi ne gayyatar al'ummomi da ke da wurare na zahiri, wanda muke kiran su da \"full nodes\" na cibiyarmu su kasance tare da mu. A nan gaba, yayin da cibiyarmu ke ƙarfafuwa, za mu faɗaɗa wannan gayyata ga ƙarin ƙungiyoyi a duk duniya. Idan kuna raba ƙimominmu, da fatan za ku tuntuɓi wakilanmu don shiga cikin cibiyarmu da taimakawa wajen gina mafi kyawun ilimin Bitcoin da zai yiwu.",
-    "pageSubtitle": "Kuna son kawo canji ga duniya da Bitcoin? Shiga cikin PlanB Network.",
-    "pageTitle": "Bincika Hanyar Node ta Plan B"
   },
   "notFound": {
     "here": "Anan",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "Game da",
-    "about-us": "Game da mu",
     "abstract": "",
     "access": "",
     "action": "",
@@ -1656,7 +1647,6 @@
     "newsletter": "Jaridar Labarai",
     "next": "",
     "no": "",
-    "nodeNetwork": "Hanyar sadarwa ta node",
     "notApplicable": "",
     "on": "akan",
     "onChainAddress": "Adireshin on chain",

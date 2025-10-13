@@ -868,7 +868,6 @@
         "coursesOption": "Aktuální informace o kurzech, ve kterých jste zapsán/a",
         "description": "Nastavení oznámení si můžete přizpůsobit níže. ",
         "emailPreferencesDescription": "Zde si můžete vybrat typy e-mailů, které od nás chcete dostávat. Tyto předvolby se vztahují pouze na e-mailovou adresu spojenou s tímto odkazem.",
-        "emailPreferencesError": "Při pokusu o načtení vašich e-mailových preferencí došlo k chybě. Ujistěte se prosím, že jste klikli na správný odkaz.",
         "emailPreferencesSavedSuccessfully": "Vaše e-mailové preference byly úspěšně aktualizovány.",
         "emailPreferencesTitle": "Spravujte svůj tarif ₿ Předvolby e-mailů sítě",
         "emailTitle": "Jaké typy oznámení chcete dostávat e-mailem?",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "Pochopte procesy, nástroje a odvětví, které stojí za těžbou bitcoinů.",
     "moviesDescription": "Objevte poutavé příběhy a hloubkové zkoumání vývoje a vlivu Bitcoinu",
     "newsletterDescription": "Sbírka obsahu, který můžete použít pro své vzdělávací projekty",
-    "nodeNetworkDescription": "Připojte se ke světové bitcoinové komunitě Plan ₿",
     "planBLabsDescription": "Připojte se ke studijní skupině a pokračujte ve vzdělávání v oblasti Lightningu, těžby a ochrany osobních údajů",
     "podcastsDescription": "Objevte bitcoinový ekosystém pomocí podcastů",
     "projectsDescription": "Zjistěte více o společnostech a projektech, které přispívají ke zlepšení Bitcoinu a zvyšování jeho adopce",
@@ -1213,12 +1211,6 @@
     "goToMovie": "Podívejte se na film",
     "pageTitle": "Filmy & Dokumenty",
     "watchTrailer": "Podívejte se na upoutávku"
-  },
-  "nodeNetwork": {
-    "description1": "Náš finanční systém se hroutí, naše potraviny jsou otrávené, naše svoboda je odňata. Nemůžeme čekat na zázrak, musíme vytvořit bezpečné místo pro život. Musíme si vytvořit vlastní Plan ₿. Plan ₿ spravuje síť center po celém světě, která vítají myslitele, podnikatele a pedagogy podporující rozvoj Bitcoinu a technologií svobody.",
-    "descriptionExtend": "Naším prvním krokem je pozvat komunity s fyzickými prostory, které označujeme jako „plné uzly“ naší sítě, aby se k nám připojily. V budoucnu, jak se naše síť posiluje, rozšíříme tuto pozvánku na další iniciativy po celém světě. Pokud sdílíte naše hodnoty, kontaktujte prosím naše zástupce, abyste se připojili k naší síti a pomohli vybudovat co nejlepší vzdělávání v oblasti Bitcoinu.",
-    "pageSubtitle": "Naší silnou stránkou je naše komunita. Pojďme se sdružit do světové bitcoinové sítě. Připojte se k síti Plan ₿.",
-    "pageTitle": "Prozkoumejte síť uzlů Plan ₿"
   },
   "notFound": {
     "here": "Zde",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "O",
-    "about-us": "O nás",
     "abstract": "Abstrakt",
     "access": "Přístup",
     "action": "Akce",
@@ -1656,7 +1647,6 @@
     "newsletter": "Newsletter",
     "next": "Další",
     "no": "Ne",
-    "nodeNetwork": "Síť uzlů",
     "notApplicable": "Nevztahuje se",
     "on": "na",
     "onChainAddress": "On chain addresa",

@@ -868,7 +868,6 @@
         "coursesOption": "",
         "description": "",
         "emailPreferencesDescription": "",
-        "emailPreferencesError": "",
         "emailPreferencesSavedSuccessfully": "",
         "emailPreferencesTitle": "",
         "emailTitle": "",
@@ -1199,7 +1198,6 @@
     "miningCourseDescription": "",
     "moviesDescription": "",
     "newsletterDescription": "",
-    "nodeNetworkDescription": "Join the global network of Bitcoin communities!",
     "planBLabsDescription": "",
     "podcastsDescription": "Erkunde das Bitcoin-Ökosystem durch Podcasts",
     "projectsDescription": "",
@@ -1213,12 +1211,6 @@
     "goToMovie": "",
     "pageTitle": "",
     "watchTrailer": ""
-  },
-  "nodeNetwork": {
-    "description1": "Our financial system is crumbling, our food is being poisoned, our freedom is being taken away. We can't wait for a miracle, we have to create a safe place to live in. We must create our own PlanB !",
-    "descriptionExtend": "",
-    "pageSubtitle": "هل تطمح لنشر الحبة البرتقالية حول العالم؟ انضم إلى Plan ₿ Network.",
-    "pageTitle": "استكشف شبكة العقد التابعة لـ Plan ₿ Network"
   },
   "notFound": {
     "here": "Hier",
@@ -1553,7 +1545,6 @@
   },
   "words": {
     "about": "Über",
-    "about-us": "Über uns",
     "abstract": "",
     "access": "",
     "action": "",
@@ -1656,7 +1647,6 @@
     "newsletter": "Newsletter",
     "next": "التالي",
     "no": "لا",
-    "nodeNetwork": "Node Network",
     "notApplicable": "",
     "on": "على",
     "onChainAddress": "",
