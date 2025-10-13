@@ -71,7 +71,7 @@ export const EventCard = ({ event }: EventCardProps) => {
             loading="lazy"
             src={resourceImgUrl(event)}
             alt={event.name ? event.name : ''}
-            className="object-cover [overflow-clip-margin:_unset] aspect-[4/3] sm:aspect-[432/308] w-full h-full max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg"
+            className="object-cover [overflow-clip-margin:_unset] aspect-[4/3] sm:aspect-[432/308] w-full h-full max-sm:rounded-l-2xl sm:rounded-t-2xl sm:rounded-b-lg"
           />
           {event.type && (
             <span className="absolute top-2.5 left-2 border border-neutral-100 text-black bg-white rounded-3xl text-sm font-medium leading-snug -tracking-015px px-2 py-1 max-sm:hidden">
