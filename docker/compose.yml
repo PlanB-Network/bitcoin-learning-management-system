@@ -126,7 +126,7 @@ services:
       - CORS=https://testnet.planb.network
       - PROXY_URL=https://testnet-cdn.planb.network
     volumes:
-      - ./corestore:/corestore
+      - ./data/corestore:/corestore
       - ./data/cdn:/data
 
   # https://typesense.org
