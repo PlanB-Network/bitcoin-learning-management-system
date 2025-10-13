@@ -111,13 +111,22 @@ export const createRestCouponsRoutes = (
         return;
       }
 
-      // Convert SVG to PNG
-      const png = await sharp(Buffer.from(svg, 'utf-8')).png({}).toBuffer();
+      try {
+        // Convert SVG to PNG
+        const png = await sharp(Buffer.from(svg, 'utf-8')).png({}).toBuffer();
 
-      res.setHeader('Content-Type', 'image/png');
-      res.setHeader('Content-Disposition', `attachment; filename="coupon.png"`);
-      res.write(png);
-      res.end();
+        res.setHeader('Content-Type', 'image/png');
+        res.setHeader(
+          'Content-Disposition',
+          `attachment; filename="coupon.png"`,
+        );
+
+        res.write(png);
+        res.end();
+      } catch (error) {
+        console.error('Error generating PNG:', error);
+        res.status(500).json({ error: 'Failed to generate PNG' });
+      }
     },
   );
 
