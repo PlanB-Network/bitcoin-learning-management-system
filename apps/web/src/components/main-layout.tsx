@@ -602,7 +602,10 @@ export const SideBarItem = ({
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [translatePx, setTranslatePx] = useState(0);
 
-  const singleDirectionDurationSec = 0.75;
+  const marqueeSpeedPxPerSec = 100;
+  const singleDirectionDurationSec = translatePx
+    ? translatePx / marqueeSpeedPxPerSec
+    : 0.75;
 
   useEffect(() => {
     const measure = () => {
@@ -668,48 +671,42 @@ export const SideBarItem = ({
           )}
         >
           <div className="flex flex-col whitespace-nowrap">
-            {description || isMain ? (
-              <>
-                <div
-                  ref={labelContainerRef}
-                  className={cn('relative w-full overflow-hidden')}
-                  aria-hidden={false}
-                >
-                  <span
-                    ref={labelTextRef}
-                    style={
-                      {
-                        ['--marquee-translate' as string]: `-${translatePx}px`,
-                        animationDuration:
-                          isHovered && isOverflowing
-                            ? `${singleDirectionDurationSec}s`
-                            : undefined,
-                      } as React.CSSProperties
-                    }
-                    className={cn(
-                      'align-middle whitespace-nowrap text-lg text-newBlack-1 max-lg:leading-none',
-                      isHovered && isOverflowing
-                        ? 'marquee-active inline-block'
-                        : 'truncate block',
-                      isActive && 'font-medium',
-                    )}
-                  >
-                    {label}
-                  </span>
-                </div>
-
-                <span className="text-[10px] text-newBlack-1/30 leading-[120%]">
-                  {description}
-                </span>
-              </>
-            ) : (
+            <div
+              ref={labelContainerRef}
+              className={cn('relative w-full overflow-hidden')}
+              aria-hidden={false}
+            >
               <span
+                ref={labelTextRef}
+                style={
+                  {
+                    ['--marquee-translate' as string]: `-${translatePx}px`,
+                    animationDuration:
+                      isHovered && isOverflowing
+                        ? `${singleDirectionDurationSec}s`
+                        : undefined,
+                  } as React.CSSProperties
+                }
                 className={cn(
-                  'text-newBlack-1',
-                  isActive ? 'subtitle-small-med-14px' : 'subtitle-small-14px',
+                  'align-middle whitespace-nowrap max-lg:leading-none text-newBlack-1',
+                  description || isMain
+                    ? 'text-lg'
+                    : isActive
+                      ? 'subtitle-small-med-14px'
+                      : 'subtitle-small-14px',
+                  isHovered && isOverflowing
+                    ? 'marquee-active inline-block'
+                    : 'truncate block',
+                  isActive && 'font-medium',
                 )}
               >
                 {label}
+              </span>
+            </div>
+
+            {description && (
+              <span className="text-[10px] text-newBlack-1/30 leading-[120%]">
+                {description}
               </span>
             )}
           </div>
