@@ -38,22 +38,24 @@ export default function MediaCard({
       <fieldset
         aria-labelledby="media-card-title"
         className={[
-          'relative h-full w-full rounded-2xl shadow-lg transition-transform',
+          'relative w-full pb-5 rounded-2xl shadow-lg transition-transform',
           'hover:-translate-y-0.5 hover:shadow-xl',
           'flex flex-col lg:flex-col',
           'hover:-translate-y-0.5 hover:shadow-xl',
+          'max-lg:bg-network-cards',
         ].join(' ')}
       >
         <div
           className={cn(
-            'lg:absolute h-full z-10 p-10 flex flex-col justify-between',
-            !isLeft ? ' lg:items-end' : '',
+            'lg:absolute h-full z-10 p-5 flex flex-col justify-between',
+            !isLeft ? ' lg:items-end lg:self-end' : '',
           )}
         >
           <h3
             className={cn(
               titleCss,
               titleClassName,
+              'w-full',
               isLeft ? 'lg:text-start' : 'lg:text-end',
             )}
           >
@@ -73,7 +75,7 @@ export default function MediaCard({
           src={imageUrl}
           alt={alt}
           className={[
-            'w-full object-cover self-center max-lg:-mt-20',
+            'object-cover self-center max-lg:-mt-8 w-full',
             'rounded-2xl',
             isLeft ? 'lg:self-end' : 'lg:self-start',
             imageClassName,
@@ -108,7 +110,7 @@ function BottomStuff({
     <>
       <p
         className={cn(
-          'text-center max-xl:text-base max-lg:font-normal title-bas text-gray-100 whitespace-pre-wrap',
+          'text-center text-base lg:text-xl max-lg:font-normal max-lg:mt-8 title-bas text-gray-100 whitespace-pre-wrap',
           subtitleClassName ?? '',
           isLeft ? 'lg:text-start' : 'lg:text-end',
         )}
