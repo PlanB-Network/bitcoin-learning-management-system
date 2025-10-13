@@ -1699,6 +1699,7 @@
     "analytics": "Analytics",
     "bookings": "Bookings",
     "career": "Career",
+    "careers": "Careers",
     "discountCode": "Discount codes",
     "learnAnytimeDescription": "Self-paced courses",
     "learnAnytimeTitle": "Learn anytime",
@@ -1708,6 +1709,7 @@
     "myCalendar": "My calendar",
     "myCareer": "My career",
     "myCourses": "My courses",
+    "myCoursesDescription": "Track your progress",
     "tabs": {
       "admin": "Admin",
       "learn": "Learn",
@@ -1715,6 +1717,7 @@
     },
     "translationPanel": "Translation panel",
     "tutorials": "Tutorials",
+    "tutorialsAnalytics": "Tutorials analytics",
     "userRolesAllocation": "User roles allocation"
   },
   "notFound": {

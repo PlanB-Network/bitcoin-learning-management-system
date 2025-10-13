@@ -50,9 +50,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
-export const Route = createFileRoute(
-  '/$lang/dashboard/_dashboard/career-portal',
-)({
+export const Route = createFileRoute('/$lang/career-portal/')({
   component: CareerPortal,
 });
 
@@ -390,11 +388,8 @@ function CareerPortal() {
   const inputRowMarginClasses = 'mb-5 md:mb-4';
 
   return (
-    <PageLayout title={t('words.careerPortal')} layoutSize="max">
-      <div className="max-w-[1066px] flex flex-col">
-        <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText mb-4 md:mb-10">
-          {t('words.careerPortal')}
-        </h1>
+    <PageLayout title={t('words.careerPortal')} layoutSize="wide">
+      <div className="flex flex-col">
         {showLoader && <Loader />}
 
         {step > 0 && (

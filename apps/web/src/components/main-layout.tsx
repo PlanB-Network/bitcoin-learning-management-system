@@ -17,7 +17,6 @@ import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
 import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
-import Dollar from '#src/assets/icons/pixelated/navbar/dollar.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
 import Medal from '#src/assets/icons/pixelated/navbar/medal.svg?react';
 import Pages from '#src/assets/icons/pixelated/navbar/pages.svg?react';
@@ -266,6 +265,26 @@ export const SideBar = ({
 
       {currentTab === 'learn' && (
         <>
+          {isLoggedIn && (
+            <>
+              <div className="flex flex-col gap-1">
+                <SideBarItem
+                  icon={Pages}
+                  iconColor="orange"
+                  label={t('navbar.myCourses')}
+                  description={t('navbar.myCoursesDescription')}
+                  link="/dashboard/my-courses"
+                  isActive={window.location.pathname.includes(
+                    '/dashboard/my-courses',
+                  )}
+                  isSidebarOpen={isSidebarOpen}
+                  isMain
+                />
+              </div>
+              <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
+            </>
+          )}
+
           <div className="flex flex-col gap-1">
             <SideBarItem
               icon={BookOpen}
@@ -279,7 +298,7 @@ export const SideBar = ({
             />
             <SideBarItem
               icon={BookOpen}
-              iconColor="green"
+              iconColor="orange"
               label={t('navbar.liveClassesTitle')}
               description={t('navbar.liveClassesDescription')}
               link="/live-classes"
@@ -288,37 +307,6 @@ export const SideBar = ({
               isMain
             />
           </div>
-          {isLoggedIn && (
-            <>
-              <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-              <div className="flex flex-col gap-1">
-                <SideBarItem
-                  icon={Pages}
-                  iconColor="blue"
-                  label={t('navbar.myCourses')}
-                  link="/dashboard/my-courses"
-                  isActive={window.location.pathname.includes(
-                    '/dashboard/my-courses',
-                  )}
-                  isSidebarOpen={isSidebarOpen}
-                />
-                {user?.boughtCourses.some((courseId) =>
-                  COURSES_CAREER_ACCESS.includes(courseId),
-                ) ? (
-                  <SideBarItem
-                    icon={Luggage}
-                    iconColor="purple"
-                    label={t('navbar.myCareer')}
-                    link="/dashboard/career-portal"
-                    isActive={window.location.pathname.includes(
-                      '/dashboard/career-portal',
-                    )}
-                    isSidebarOpen={isSidebarOpen}
-                  />
-                ) : null}
-              </div>
-            </>
-          )}
 
           <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
           <div className="flex flex-col gap-1">
@@ -335,7 +323,7 @@ export const SideBar = ({
             />
             <SideBarItem
               icon={BookCover}
-              iconColor="purple"
+              iconColor="blue"
               label={t('words.resources')}
               link="/resources"
               isActive={window.location.pathname.includes('/resources')}
@@ -343,7 +331,7 @@ export const SideBar = ({
             />
             <SideBarItem
               icon={PositionPin}
-              iconColor="yellow"
+              iconColor="blue"
               label={t('words.events')}
               link="/events"
               isActive={window.location.pathname.includes('/events')}
@@ -351,7 +339,7 @@ export const SideBar = ({
             />
             <SideBarItem
               icon={Medal}
-              iconColor="green"
+              iconColor="blue"
               label={t('words.certifications')}
               link="/certifications/b-cert"
               isActive={window.location.pathname.includes('certifications')}
@@ -368,6 +356,18 @@ export const SideBar = ({
                 className="lg:hidden"
               />
             )}
+            {user?.boughtCourses.some((courseId) =>
+              COURSES_CAREER_ACCESS.includes(courseId),
+            ) ? (
+              <SideBarItem
+                icon={Luggage}
+                iconColor="blue"
+                label={t('navbar.careers')}
+                link="/career-portal"
+                isActive={window.location.pathname.includes('/career-portal')}
+                isSidebarOpen={isSidebarOpen}
+              />
+            ) : null}
           </div>
         </>
       )}
@@ -435,18 +435,20 @@ export const SideBar = ({
                   ))}
                 </div>
               }
+              isMain
             />
           )}
           {hasWrittenTutorials && (
             <SideBarItem
               icon={Target}
-              iconColor="green"
-              label={t('words.tutorials')}
+              iconColor="orange"
+              label={t('navbar.tutorialsAnalytics')}
               link="/dashboard/professor/tutorials"
               isActive={window.location.pathname.includes(
                 '/dashboard/professor/tutorials',
               )}
               isSidebarOpen={isSidebarOpen}
+              isMain
             />
           )}
         </div>
@@ -463,56 +465,62 @@ export const SideBar = ({
               '/dashboard/administration/role',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={ProjectPen}
-            iconColor="purple"
+            iconColor="orange"
             label={t('navbar.translationPanel')}
             link="/dashboard/administration/translation-panel"
             isActive={window.location.pathname.includes(
               '/dashboard/administration/translation-panel',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
-            icon={Ticket}
-            iconColor="green"
+            icon={TasksList}
+            iconColor="orange"
             label={t('navbar.tutorials')}
             link="/dashboard/administration/tutorials"
             isActive={window.location.pathname.includes(
               '/dashboard/administration/tutorials',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
-            icon={Luggage}
-            iconColor="blue"
+            icon={Ticket}
+            iconColor="orange"
             label={t('navbar.bookings')}
             link="/dashboard/administration/bookings"
             isActive={window.location.pathname.includes(
               '/dashboard/administration/bookings',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
-            icon={Dollar}
-            iconColor="purple"
+            icon={Luggage}
+            iconColor="orange"
             label={t('navbar.career')}
             link="/dashboard/administration/careers"
             isActive={window.location.pathname.includes(
               '/dashboard/administration/careers',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
           <SideBarItem
             icon={Discount}
-            iconColor="yellow"
+            iconColor="orange"
             label={t('navbar.discountCode')}
             link="/dashboard/administration/coupons"
             isActive={window.location.pathname.includes(
               '/dashboard/administration/coupons',
             )}
             isSidebarOpen={isSidebarOpen}
+            isMain
           />
         </div>
       )}
@@ -533,7 +541,7 @@ export const SideBar = ({
   );
 };
 
-type IconColor = 'orange' | 'blue' | 'purple' | 'yellow' | 'green';
+type IconColor = 'orange' | 'blue';
 
 interface SideBarItemProps {
   icon: IconType | React.FC<React.SVGProps<SVGSVGElement>>;
@@ -551,35 +559,14 @@ interface SideBarItemProps {
 const iconVariants = cva('shrink-0', {
   variants: {
     color: {
-      orange: 'fill-orange-300',
-      blue: 'fill-blue-500',
-      purple: 'fill-purple-500',
-      yellow: 'fill-yellow-500',
-      green: 'fill-green-300',
+      orange: 'fill-orange-400',
+      blue: 'fill-blue-400',
     },
   },
   defaultVariants: {
     color: 'orange',
   },
 });
-
-const iconBgVariants = cva(
-  'shrink-0 flex items-center justify-center rounded-sm',
-  {
-    variants: {
-      color: {
-        orange: 'bg-orange-50',
-        blue: 'bg-blue-50',
-        purple: 'bg-purple-50',
-        yellow: 'bg-yellow-50',
-        green: 'bg-green-50',
-      },
-    },
-    defaultVariants: {
-      color: 'orange',
-    },
-  },
-);
 
 export const SideBarItem = ({
   icon,
@@ -655,19 +642,23 @@ export const SideBarItem = ({
       <div className="flex items-center">
         <div
           className={cn(
-            isMain ? 'size-8' : 'size-8 lg:size-6',
-            iconBgVariants({ color: iconColor }),
+            'shrink-0 flex items-center justify-center rounded-sm',
+            isMain ? 'size-7' : 'size-7 lg:size-6.5',
           )}
         >
           <IconComponent
-            className={cn('size-full p-1', iconVariants({ color: iconColor }))}
+            className={cn('size-full', iconVariants({ color: iconColor }))}
           />
         </div>
 
         <div
           className={cn(
             'overflow-hidden transition-all',
-            isSidebarOpen ? 'w-full ml-3 lg:ml-2' : 'w-0 ml-0 opacity-0',
+            isSidebarOpen
+              ? isMain
+                ? 'w-full ml-3'
+                : 'w-full ml-4'
+              : 'w-0 ml-0 opacity-0',
           )}
         >
           <div className="flex flex-col whitespace-nowrap">
@@ -688,7 +679,7 @@ export const SideBarItem = ({
                   } as React.CSSProperties
                 }
                 className={cn(
-                  'align-middle whitespace-nowrap max-lg:leading-none text-newBlack-1',
+                  'align-middle whitespace-nowrap !leading-none text-newBlack-1',
                   description || isMain
                     ? 'text-lg'
                     : isActive
