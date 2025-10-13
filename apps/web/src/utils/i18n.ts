@@ -20,6 +20,7 @@ export const LANGUAGES = [
   'id',
   'it',
   'ja',
+  'ko',
   'nb-NO',
   'nl',
   'pt',

@@ -11,6 +11,7 @@ export const LANGUAGES_MAP: { [key: string]: string } = {
   id: 'Bahasa indonesia',
   it: 'Italiano',
   ja: '日本語',
+  ko: '한국어',
   nbno: 'Norsk bokmål',
   nl: 'Nederlands',
   pl: 'Polski',
