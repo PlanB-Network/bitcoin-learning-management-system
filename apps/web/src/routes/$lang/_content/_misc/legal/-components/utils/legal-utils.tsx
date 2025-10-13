@@ -1,21 +1,21 @@
 export const legalTabs = [
   {
-    href: '/legals/contact',
+    href: '/legal/contact',
     id: 'contact',
     label: 'publicCommunication.legalSections.contact',
   },
   {
-    href: '/legals/legal-notice',
+    href: '/legal/legal-notice',
     id: 'legal-notice',
     label: 'publicCommunication.legalSections.legalNotice',
   },
   {
-    href: '/legals/privacy-policy',
+    href: '/legal/privacy-policy',
     id: 'privacy-policy',
     label: 'publicCommunication.legalSections.privacyPolicy',
   },
   {
-    href: '/legals/terms-of-sale',
+    href: '/legal/terms-of-sale',
     id: 'terms-of-sale',
     label: 'publicCommunication.legalSections.termsOfSale',
   },

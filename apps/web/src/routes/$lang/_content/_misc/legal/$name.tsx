@@ -7,10 +7,10 @@ import { TbError404 } from 'react-icons/tb';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { trpc } from '#src/utils/trpc.js';
-import { LegalMarkdownComponent } from '../-components/public-communication/legal-markdown.tsx';
-import { legalTabs } from '../-components/utils/public-communication-utils.tsx';
+import { LegalMarkdownComponent } from './-components/legal-markdown.tsx';
+import { legalTabs } from './-components/utils/legal-utils.tsx';
 
-export const Route = createFileRoute('/$lang/_content/_misc/legals/$name')({
+export const Route = createFileRoute('/$lang/_content/_misc/legal/$name')({
   component: LegalInformationTab,
   params: {
     parse: (params) => ({

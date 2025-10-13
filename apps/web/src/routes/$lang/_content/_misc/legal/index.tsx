@@ -1,9 +1,9 @@
 import { createFileRoute, Navigate } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/$lang/_content/_misc/legals/')({
+export const Route = createFileRoute('/$lang/_content/_misc/legal/')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <Navigate to="/legals/contact" replace={true} />;
+  return <Navigate to="/legal/contact" replace={true} />;
 }

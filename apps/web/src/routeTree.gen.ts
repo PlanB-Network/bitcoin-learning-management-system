@@ -8,6 +8,8 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router';
+
 import { Route as rootRouteImport } from './routes/__root';
 import { Route as LangIndexRouteImport } from './routes/$lang/index';
 import { Route as LangCareerPortalIndexRouteImport } from './routes/$lang/career-portal/index';
@@ -51,7 +53,7 @@ import { Route as LangContentResourcesBooksIndexRouteImport } from './routes/$la
 import { Route as LangContentResourcesBetIndexRouteImport } from './routes/$lang/_content/resources/bet/index';
 import { Route as LangContentMiscProfessorsIndexRouteImport } from './routes/$lang/_content/_misc/professors/index';
 import { Route as LangContentMiscPlanBLabsIndexRouteImport } from './routes/$lang/_content/_misc/plan-b-labs/index';
-import { Route as LangContentMiscLegalsIndexRouteImport } from './routes/$lang/_content/_misc/legals/index';
+import { Route as LangContentMiscLegalIndexRouteImport } from './routes/$lang/_content/_misc/legal/index';
 import { Route as LangDashboardDashboardProfessorTutorialsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/tutorials';
 import { Route as LangDashboardDashboardCourseCompletedRouteImport } from './routes/$lang/dashboard/_dashboard/course/completed';
 import { Route as LangDashboardDashboardCourseCourseIdRouteImport } from './routes/$lang/dashboard/_dashboard/course/$courseId';
@@ -77,7 +79,7 @@ import { Route as LangContentMiscResetPasswordTokenRouteImport } from './routes/
 import { Route as LangContentMiscProfessorsCategoryRouteImport } from './routes/$lang/_content/_misc/professors/$category';
 import { Route as LangContentMiscProfessorProfessorNameProfessorIdRouteImport } from './routes/$lang/_content/_misc/professor.$professorName-$professorId';
 import { Route as LangContentMiscPlanBLabsGroupRouteImport } from './routes/$lang/_content/_misc/plan-b-labs/$group';
-import { Route as LangContentMiscLegalsNameRouteImport } from './routes/$lang/_content/_misc/legals/$name';
+import { Route as LangContentMiscLegalNameRouteImport } from './routes/$lang/_content/_misc/legal/$name';
 import { Route as LangContentMiscExamCertificatesCertificateIdRouteImport } from './routes/$lang/_content/_misc/exam-certificates.$certificateId';
 import { Route as LangContentMiscCourseDiplomasCertificateIdRouteImport } from './routes/$lang/_content/_misc/course-diplomas.$certificateId';
 import { Route as LangContentMiscChangeEmailPreferencesUnsubscribeIdRouteImport } from './routes/$lang/_content/_misc/change-email-preferences.$unsubscribeId';
@@ -96,6 +98,13 @@ import { Route as LangDashboardDashboardAdministrationTranslationPanelCourseCour
 import { Route as LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/compare/$slideId';
 import { Route as LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/chapter/$chapterId';
 
+const LangDashboardRouteImport = createFileRoute('/$lang/dashboard')();
+
+const LangDashboardRoute = LangDashboardRouteImport.update({
+  id: '/$lang/dashboard',
+  path: '/$lang/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any);
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
   path: '/$lang/',
@@ -336,10 +345,10 @@ const LangContentMiscPlanBLabsIndexRoute =
     path: '/$lang/plan-b-labs/',
     getParentRoute: () => rootRouteImport,
   } as any);
-const LangContentMiscLegalsIndexRoute =
-  LangContentMiscLegalsIndexRouteImport.update({
-    id: '/$lang/_content/_misc/legals/',
-    path: '/$lang/legals/',
+const LangContentMiscLegalIndexRoute =
+  LangContentMiscLegalIndexRouteImport.update({
+    id: '/$lang/_content/_misc/legal/',
+    path: '/$lang/legal/',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangDashboardDashboardProfessorTutorialsRoute =
@@ -492,10 +501,10 @@ const LangContentMiscPlanBLabsGroupRoute =
     path: '/$lang/plan-b-labs/$group',
     getParentRoute: () => rootRouteImport,
   } as any);
-const LangContentMiscLegalsNameRoute =
-  LangContentMiscLegalsNameRouteImport.update({
-    id: '/$lang/_content/_misc/legals/$name',
-    path: '/$lang/legals/$name',
+const LangContentMiscLegalNameRoute =
+  LangContentMiscLegalNameRouteImport.update({
+    id: '/$lang/_content/_misc/legal/$name',
+    path: '/$lang/legal/$name',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangContentMiscExamCertificatesCertificateIdRoute =
@@ -661,7 +670,7 @@ export interface FileRoutesByFullPath {
   '/$lang/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
   '/$lang/course-diplomas/$certificateId': typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
-  '/$lang/legals/$name': typeof LangContentMiscLegalsNameRoute;
+  '/$lang/legal/$name': typeof LangContentMiscLegalNameRoute;
   '/$lang/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
   '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
@@ -687,7 +696,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
   '/$lang/dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
-  '/$lang/legals': typeof LangContentMiscLegalsIndexRoute;
+  '/$lang/legal': typeof LangContentMiscLegalIndexRoute;
   '/$lang/plan-b-labs': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/professors': typeof LangContentMiscProfessorsIndexRoute;
   '/$lang/resources/bet': typeof LangContentResourcesBetIndexRoute;
@@ -720,6 +729,7 @@ export interface FileRoutesByTo {
   '/$lang/account/invoices': typeof LangAccountInvoicesRoute;
   '/$lang/account/settings': typeof LangAccountSettingsRoute;
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
+  '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
   '/$lang/account': typeof LangAccountIndexRoute;
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/career-portal': typeof LangCareerPortalIndexRoute;
@@ -743,12 +753,11 @@ export interface FileRoutesByTo {
   '/$lang/resources': typeof LangContentResourcesIndexRoute;
   '/$lang/search': typeof LangContentSearchIndexRoute;
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
-  '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
   '/$lang/bcert-certificates/$certificateId': typeof LangContentMiscBcertCertificatesCertificateIdRoute;
   '/$lang/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
   '/$lang/course-diplomas/$certificateId': typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   '/$lang/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
-  '/$lang/legals/$name': typeof LangContentMiscLegalsNameRoute;
+  '/$lang/legal/$name': typeof LangContentMiscLegalNameRoute;
   '/$lang/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
   '/$lang/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
@@ -774,7 +783,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
   '/$lang/dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
-  '/$lang/legals': typeof LangContentMiscLegalsIndexRoute;
+  '/$lang/legal': typeof LangContentMiscLegalIndexRoute;
   '/$lang/plan-b-labs': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/professors': typeof LangContentMiscProfessorsIndexRoute;
   '/$lang/resources/bet': typeof LangContentResourcesBetIndexRoute;
@@ -808,6 +817,7 @@ export interface FileRoutesById {
   '/$lang/account/invoices': typeof LangAccountInvoicesRoute;
   '/$lang/account/settings': typeof LangAccountSettingsRoute;
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
+  '/$lang/dashboard': typeof LangDashboardRouteWithChildren;
   '/$lang/dashboard/_dashboard': typeof LangDashboardDashboardRouteWithChildren;
   '/$lang/account/': typeof LangAccountIndexRoute;
   '/$lang/calendar/': typeof LangCalendarIndexRoute;
@@ -837,7 +847,7 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/change-email-preferences/$unsubscribeId': typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
   '/$lang/_content/_misc/course-diplomas/$certificateId': typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   '/$lang/_content/_misc/exam-certificates/$certificateId': typeof LangContentMiscExamCertificatesCertificateIdRoute;
-  '/$lang/_content/_misc/legals/$name': typeof LangContentMiscLegalsNameRoute;
+  '/$lang/_content/_misc/legal/$name': typeof LangContentMiscLegalNameRoute;
   '/$lang/_content/_misc/plan-b-labs/$group': typeof LangContentMiscPlanBLabsGroupRoute;
   '/$lang/_content/_misc/professor/$professorName-$professorId': typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
   '/$lang/_content/_misc/professors/$category': typeof LangContentMiscProfessorsCategoryRoute;
@@ -863,7 +873,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/course/$courseId': typeof LangDashboardDashboardCourseCourseIdRoute;
   '/$lang/dashboard/_dashboard/course/completed': typeof LangDashboardDashboardCourseCompletedRoute;
   '/$lang/dashboard/_dashboard/professor/tutorials': typeof LangDashboardDashboardProfessorTutorialsRoute;
-  '/$lang/_content/_misc/legals/': typeof LangContentMiscLegalsIndexRoute;
+  '/$lang/_content/_misc/legal/': typeof LangContentMiscLegalIndexRoute;
   '/$lang/_content/_misc/plan-b-labs/': typeof LangContentMiscPlanBLabsIndexRoute;
   '/$lang/_content/_misc/professors/': typeof LangContentMiscProfessorsIndexRoute;
   '/$lang/_content/resources/bet/': typeof LangContentResourcesBetIndexRoute;
@@ -927,7 +937,7 @@ export interface FileRouteTypes {
     | '/$lang/change-email-preferences/$unsubscribeId'
     | '/$lang/course-diplomas/$certificateId'
     | '/$lang/exam-certificates/$certificateId'
-    | '/$lang/legals/$name'
+    | '/$lang/legal/$name'
     | '/$lang/plan-b-labs/$group'
     | '/$lang/professor/$professorName-$professorId'
     | '/$lang/professors/$category'
@@ -953,7 +963,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
     | '/$lang/dashboard/professor/tutorials'
-    | '/$lang/legals'
+    | '/$lang/legal'
     | '/$lang/plan-b-labs'
     | '/$lang/professors'
     | '/$lang/resources/bet'
@@ -986,6 +996,7 @@ export interface FileRouteTypes {
     | '/$lang/account/invoices'
     | '/$lang/account/settings'
     | '/$lang/account/teacher-profile'
+    | '/$lang/dashboard'
     | '/$lang/account'
     | '/$lang/calendar'
     | '/$lang/career-portal'
@@ -1009,12 +1020,11 @@ export interface FileRouteTypes {
     | '/$lang/resources'
     | '/$lang/search'
     | '/$lang/tutorials'
-    | '/$lang/dashboard'
     | '/$lang/bcert-certificates/$certificateId'
     | '/$lang/change-email-preferences/$unsubscribeId'
     | '/$lang/course-diplomas/$certificateId'
     | '/$lang/exam-certificates/$certificateId'
-    | '/$lang/legals/$name'
+    | '/$lang/legal/$name'
     | '/$lang/plan-b-labs/$group'
     | '/$lang/professor/$professorName-$professorId'
     | '/$lang/professors/$category'
@@ -1040,7 +1050,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/course/$courseId'
     | '/$lang/dashboard/course/completed'
     | '/$lang/dashboard/professor/tutorials'
-    | '/$lang/legals'
+    | '/$lang/legal'
     | '/$lang/plan-b-labs'
     | '/$lang/professors'
     | '/$lang/resources/bet'
@@ -1073,6 +1083,7 @@ export interface FileRouteTypes {
     | '/$lang/account/invoices'
     | '/$lang/account/settings'
     | '/$lang/account/teacher-profile'
+    | '/$lang/dashboard'
     | '/$lang/dashboard/_dashboard'
     | '/$lang/account/'
     | '/$lang/calendar/'
@@ -1102,7 +1113,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/change-email-preferences/$unsubscribeId'
     | '/$lang/_content/_misc/course-diplomas/$certificateId'
     | '/$lang/_content/_misc/exam-certificates/$certificateId'
-    | '/$lang/_content/_misc/legals/$name'
+    | '/$lang/_content/_misc/legal/$name'
     | '/$lang/_content/_misc/plan-b-labs/$group'
     | '/$lang/_content/_misc/professor/$professorName-$professorId'
     | '/$lang/_content/_misc/professors/$category'
@@ -1128,7 +1139,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/course/$courseId'
     | '/$lang/dashboard/_dashboard/course/completed'
     | '/$lang/dashboard/_dashboard/professor/tutorials'
-    | '/$lang/_content/_misc/legals/'
+    | '/$lang/_content/_misc/legal/'
     | '/$lang/_content/_misc/plan-b-labs/'
     | '/$lang/_content/_misc/professors/'
     | '/$lang/_content/resources/bet/'
@@ -1162,6 +1173,7 @@ export interface RootRouteChildren {
   LangAccountInvoicesRoute: typeof LangAccountInvoicesRoute;
   LangAccountSettingsRoute: typeof LangAccountSettingsRoute;
   LangAccountTeacherProfileRoute: typeof LangAccountTeacherProfileRoute;
+  LangDashboardRoute: typeof LangDashboardRouteWithChildren;
   LangAccountIndexRoute: typeof LangAccountIndexRoute;
   LangCalendarIndexRoute: typeof LangCalendarIndexRoute;
   LangCareerPortalIndexRoute: typeof LangCareerPortalIndexRoute;
@@ -1187,7 +1199,7 @@ export interface RootRouteChildren {
   LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute: typeof LangContentMiscChangeEmailPreferencesUnsubscribeIdRoute;
   LangContentMiscCourseDiplomasCertificateIdRoute: typeof LangContentMiscCourseDiplomasCertificateIdRoute;
   LangContentMiscExamCertificatesCertificateIdRoute: typeof LangContentMiscExamCertificatesCertificateIdRoute;
-  LangContentMiscLegalsNameRoute: typeof LangContentMiscLegalsNameRoute;
+  LangContentMiscLegalNameRoute: typeof LangContentMiscLegalNameRoute;
   LangContentMiscPlanBLabsGroupRoute: typeof LangContentMiscPlanBLabsGroupRoute;
   LangContentMiscProfessorProfessorNameProfessorIdRoute: typeof LangContentMiscProfessorProfessorNameProfessorIdRoute;
   LangContentMiscProfessorsCategoryRoute: typeof LangContentMiscProfessorsCategoryRoute;
@@ -1204,7 +1216,7 @@ export interface RootRouteChildren {
   LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute: typeof LangContentResourcesNewslettersNewsletterNameNewsletterIdRoute;
   LangContentResourcesPodcastsPodcastNamePodcastIdRoute: typeof LangContentResourcesPodcastsPodcastNamePodcastIdRoute;
   LangContentResourcesProjectsProjectNameProjectIdRoute: typeof LangContentResourcesProjectsProjectNameProjectIdRoute;
-  LangContentMiscLegalsIndexRoute: typeof LangContentMiscLegalsIndexRoute;
+  LangContentMiscLegalIndexRoute: typeof LangContentMiscLegalIndexRoute;
   LangContentMiscPlanBLabsIndexRoute: typeof LangContentMiscPlanBLabsIndexRoute;
   LangContentMiscProfessorsIndexRoute: typeof LangContentMiscProfessorsIndexRoute;
   LangContentResourcesBetIndexRoute: typeof LangContentResourcesBetIndexRoute;
@@ -1223,6 +1235,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/$lang/dashboard': {
+      id: '/$lang/dashboard';
+      path: '/$lang/dashboard';
+      fullPath: '/$lang/dashboard';
+      preLoaderRoute: typeof LangDashboardRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$lang/': {
       id: '/$lang/';
       path: '/$lang';
@@ -1253,7 +1272,7 @@ declare module '@tanstack/react-router' {
     };
     '/$lang/dashboard/_dashboard': {
       id: '/$lang/dashboard/_dashboard';
-      path: '';
+      path: '/$lang/dashboard';
       fullPath: '/$lang/dashboard';
       preLoaderRoute: typeof LangDashboardDashboardRouteImport;
       parentRoute: typeof LangDashboardRoute;
@@ -1517,11 +1536,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscPlanBLabsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/$lang/_content/_misc/legals/': {
-      id: '/$lang/_content/_misc/legals/';
-      path: '/$lang/legals';
-      fullPath: '/$lang/legals';
-      preLoaderRoute: typeof LangContentMiscLegalsIndexRouteImport;
+    '/$lang/_content/_misc/legal/': {
+      id: '/$lang/_content/_misc/legal/';
+      path: '/$lang/legal';
+      fullPath: '/$lang/legal';
+      preLoaderRoute: typeof LangContentMiscLegalIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/dashboard/_dashboard/professor/tutorials': {
@@ -1699,11 +1718,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentMiscPlanBLabsGroupRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/$lang/_content/_misc/legals/$name': {
-      id: '/$lang/_content/_misc/legals/$name';
-      path: '/$lang/legals/$name';
-      fullPath: '/$lang/legals/$name';
-      preLoaderRoute: typeof LangContentMiscLegalsNameRouteImport;
+    '/$lang/_content/_misc/legal/$name': {
+      id: '/$lang/_content/_misc/legal/$name';
+      path: '/$lang/legal/$name';
+      fullPath: '/$lang/legal/$name';
+      preLoaderRoute: typeof LangContentMiscLegalNameRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/_misc/exam-certificates/$certificateId': {
@@ -1828,11 +1847,118 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface LangDashboardDashboardAdministrationTranslationPanelRouteChildren {
+  LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute: typeof LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute;
+  LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute: typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
+  LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute: typeof LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute;
+  LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute: typeof LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute;
+}
+
+const LangDashboardDashboardAdministrationTranslationPanelRouteChildren: LangDashboardDashboardAdministrationTranslationPanelRouteChildren =
+  {
+    LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute:
+      LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute,
+    LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute:
+      LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute,
+    LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute:
+      LangDashboardDashboardAdministrationTranslationPanelCourseCourseIdRoute,
+    LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute:
+      LangDashboardDashboardAdministrationTranslationPanelUserUserIdRoute,
+  };
+
+const LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren =
+  LangDashboardDashboardAdministrationTranslationPanelRoute._addFileChildren(
+    LangDashboardDashboardAdministrationTranslationPanelRouteChildren,
+  );
+
+interface LangDashboardDashboardRouteChildren {
+  LangDashboardDashboardMyCoursesRoute: typeof LangDashboardDashboardMyCoursesRoute;
+  LangDashboardDashboardNotificationsRoute: typeof LangDashboardDashboardNotificationsRoute;
+  LangDashboardDashboardIndexRoute: typeof LangDashboardDashboardIndexRoute;
+  LangDashboardDashboardAdministrationBookingsRoute: typeof LangDashboardDashboardAdministrationBookingsRoute;
+  LangDashboardDashboardAdministrationCareersRoute: typeof LangDashboardDashboardAdministrationCareersRoute;
+  LangDashboardDashboardAdministrationCouponsRoute: typeof LangDashboardDashboardAdministrationCouponsRoute;
+  LangDashboardDashboardAdministrationRoleRoute: typeof LangDashboardDashboardAdministrationRoleRoute;
+  LangDashboardDashboardAdministrationTranslationPanelRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
+  LangDashboardDashboardAdministrationTutorialsRoute: typeof LangDashboardDashboardAdministrationTutorialsRoute;
+  LangDashboardDashboardCourseCourseIdRoute: typeof LangDashboardDashboardCourseCourseIdRoute;
+  LangDashboardDashboardCourseCompletedRoute: typeof LangDashboardDashboardCourseCompletedRoute;
+  LangDashboardDashboardProfessorTutorialsRoute: typeof LangDashboardDashboardProfessorTutorialsRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute;
+  LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute: typeof LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute;
+}
+
+const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
+  {
+    LangDashboardDashboardMyCoursesRoute: LangDashboardDashboardMyCoursesRoute,
+    LangDashboardDashboardNotificationsRoute:
+      LangDashboardDashboardNotificationsRoute,
+    LangDashboardDashboardIndexRoute: LangDashboardDashboardIndexRoute,
+    LangDashboardDashboardAdministrationBookingsRoute:
+      LangDashboardDashboardAdministrationBookingsRoute,
+    LangDashboardDashboardAdministrationCareersRoute:
+      LangDashboardDashboardAdministrationCareersRoute,
+    LangDashboardDashboardAdministrationCouponsRoute:
+      LangDashboardDashboardAdministrationCouponsRoute,
+    LangDashboardDashboardAdministrationRoleRoute:
+      LangDashboardDashboardAdministrationRoleRoute,
+    LangDashboardDashboardAdministrationTranslationPanelRoute:
+      LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren,
+    LangDashboardDashboardAdministrationTutorialsRoute:
+      LangDashboardDashboardAdministrationTutorialsRoute,
+    LangDashboardDashboardCourseCourseIdRoute:
+      LangDashboardDashboardCourseCourseIdRoute,
+    LangDashboardDashboardCourseCompletedRoute:
+      LangDashboardDashboardCourseCompletedRoute,
+    LangDashboardDashboardProfessorTutorialsRoute:
+      LangDashboardDashboardProfessorTutorialsRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdAnnouncementRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdAssignmentRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdDetailsRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdDiscountRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdOverviewRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdResultsRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdReviewRoute,
+    LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute:
+      LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute,
+  };
+
+const LangDashboardDashboardRouteWithChildren =
+  LangDashboardDashboardRoute._addFileChildren(
+    LangDashboardDashboardRouteChildren,
+  );
+
+interface LangDashboardRouteChildren {
+  LangDashboardDashboardRoute: typeof LangDashboardDashboardRouteWithChildren;
+}
+
+const LangDashboardRouteChildren: LangDashboardRouteChildren = {
+  LangDashboardDashboardRoute: LangDashboardDashboardRouteWithChildren,
+};
+
+const LangDashboardRouteWithChildren = LangDashboardRoute._addFileChildren(
+  LangDashboardRouteChildren,
+);
+
 const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangAccountInvoicesRoute: LangAccountInvoicesRoute,
   LangAccountSettingsRoute: LangAccountSettingsRoute,
   LangAccountTeacherProfileRoute: LangAccountTeacherProfileRoute,
+  LangDashboardRoute: LangDashboardRouteWithChildren,
   LangAccountIndexRoute: LangAccountIndexRoute,
   LangCalendarIndexRoute: LangCalendarIndexRoute,
   LangCareerPortalIndexRoute: LangCareerPortalIndexRoute,
@@ -1865,7 +1991,7 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscCourseDiplomasCertificateIdRoute,
   LangContentMiscExamCertificatesCertificateIdRoute:
     LangContentMiscExamCertificatesCertificateIdRoute,
-  LangContentMiscLegalsNameRoute: LangContentMiscLegalsNameRoute,
+  LangContentMiscLegalNameRoute: LangContentMiscLegalNameRoute,
   LangContentMiscPlanBLabsGroupRoute: LangContentMiscPlanBLabsGroupRoute,
   LangContentMiscProfessorProfessorNameProfessorIdRoute:
     LangContentMiscProfessorProfessorNameProfessorIdRoute,
@@ -1897,7 +2023,7 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentResourcesPodcastsPodcastNamePodcastIdRoute,
   LangContentResourcesProjectsProjectNameProjectIdRoute:
     LangContentResourcesProjectsProjectNameProjectIdRoute,
-  LangContentMiscLegalsIndexRoute: LangContentMiscLegalsIndexRoute,
+  LangContentMiscLegalIndexRoute: LangContentMiscLegalIndexRoute,
   LangContentMiscPlanBLabsIndexRoute: LangContentMiscPlanBLabsIndexRoute,
   LangContentMiscProfessorsIndexRoute: LangContentMiscProfessorsIndexRoute,
   LangContentResourcesBetIndexRoute: LangContentResourcesBetIndexRoute,
