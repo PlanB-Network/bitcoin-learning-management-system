@@ -1322,7 +1322,7 @@
           "title": "과제 점수",
           "courseAssignment": "강좌 채점"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "프로젝트 과제",
         "courseDetails": "코스 상세",
         "courseLongDescription": "소개 설명",
         "courseModification": "수업 내용을 편집하는 데 도움이 필요하면 이 <0>튜토리얼</0>을 확인하세요.",
@@ -1330,19 +1330,19 @@
         "curriculum": "코스 커리큘럼",
         "curriculumDescription": "이 코스의 현재 커리큘럼은 다음과 같습니다.",
         "deleteAnnouncementTitle": "정말 이 공지사항을 삭제하시겠습니까?",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementWarning": "이 변화는 되돌릴 수 없습니다",
         "editOnGithub": "GitHub에서 편집",
         "examResults": "시험 결과",
         "goal": "목표",
         "makeModifications": "수정할 필요가 있나요?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "현재 과거의 공지사항이 없습니다.",
+        "noWrittenAnnouncement": "현재 작성된 공지사항이 없습니다.",
         "objectives": "목표",
         "proposeNewCourse": "새 코스 제안하기",
         "quickRecap": "여기에서 이 코스에 대한 모든 일반 정보를 찾을 수 있습니다.",
         "reviewInfos": "여기에서 구성한 각 코스에 대한 정보를 관리하고 확인할 수 있습니다.",
         "reviews": "리뷰",
-        "selectCourse": "",
+        "selectCourse": "코스 선택하기",
         "summerStudents": "여름 학교",
         "writeAnnouncement": "공지를 작성하세요",
         "overview": "개요",
@@ -1350,7 +1350,18 @@
         "averageScore": "평균 점수",
         "finalScore": "최종 점수",
         "thresholdToPass": "합격 기준",
-        "totalQuestions": "총 질문 수"
+        "totalQuestions": "총 질문 수",
+        "averageAttempts": "평균 참여 횟수",
+        "averageDuration": "평균 지속 시간",
+        "exportExamData": "시험 데이터 내보내기",
+        "finalAverageResults": "최종 평균 결과",
+        "lastActive": "마지막 활동",
+        "medianScore": "중앙값 점수",
+        "noExamLinked": "현재 이 과정에 연결된 시험이 없습니다. 시험을 만들고 싶다면, 저희에게 연락해 주세요.",
+        "questionsInExam": "시험 질문 사항",
+        "studentsGraduated": "학생들이 졸업했습니다",
+        "studentsList": "학생 목록",
+        "successRate": "성공률"
       },
       "menu": "강사 메뉴",
       "profile": {
@@ -1387,6 +1398,9 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "여기에서 당신이 작성하여 게시한 튜토리얼의 분석을 확인할 수 있습니다.",
         "yourTutorials": "당신의 튜토리얼"
+      },
+      "discount": {
+        "description": "여기에서 이벤트와 코스를 위한 할인 코드를 생성하고 관리할 수 있습니다 - 한 번만 사용할 수 있는 코드부터, 여러 번 사용 가능한 코드까지 만들 수 있습니다."
       }
     },
     "professor": {
@@ -1426,7 +1440,8 @@
       "unlimited": "무제한",
       "visitWebsite": "웹사이트 보기",
       "watchLive": "라이브 방송 보기",
-      "watchReplay": "리플레이 보기"
+      "watchReplay": "리플레이 보기",
+      "buyLecture": "강의 구매"
     },
     "errors": {
       "premiumContentNeedsLogin": "이 이벤트에 접근하려면 로그인이 필요합니다.",
@@ -1480,8 +1495,40 @@
     "tcDisclaimer": "장소에 액세스할 목적으로 내 정보가 주최자와 공유됨에 동의합니다.",
     "tcMustBeAccepted": "구매를 진행하려면 약관에 동의해야 합니다.",
     "calendar": {
-      "today": "오늘"
-    }
+      "today": "오늘",
+      "displayCalendar": "달력 표시",
+      "fullMap": "전체 지도",
+      "hideCalendar": "달력 숨기기",
+      "inXMonths": "{{number}}개월 후",
+      "lastMonth": "지난 달",
+      "nextMonth": "다음 달",
+      "noEventsFound": "이벤트를 찾을 수 없습니다",
+      "thisMonth": "이번 달",
+      "xMonthsAgo": "{{number}} 개월 전"
+    },
+    "addEvent": "이벤트 추가",
+    "eventInfos": {
+      "eventBooked": "행사 예약 완료",
+      "eventType": "이벤트 종류",
+      "numberOfSpots": "장소 수",
+      "onlineAndInPerson": "온라인 및 대면",
+      "secureYourSpot": "자리를 확보하십시오",
+      "whatsPlanned": "무슨 계획이 있나요"
+    },
+    "myTickets": "내 티켓",
+    "planBWeek": {
+      "pageTitle": "Plan ₿ 주간"
+    },
+    "types": {
+      "plurals": {
+        "conference": "컨퍼런스",
+        "exam": "시험",
+        "lecture": "강의들",
+        "meetup": "모임들",
+        "workshop": "워크숍들"
+      }
+    },
+    "upcomingEvents": "다가오는 이벤트들"
   },
   "filters": {
     "categories": "카테고리",
@@ -1502,7 +1549,8 @@
     "placeHolder": "어떤 용어를 찾고 계신나요?",
     "randomSearch": "랜덤 검색",
     "relatedWords": "관련 단어:",
-    "term": "용어"
+    "term": "용어",
+    "showMoreWords": "더 많은 단어를 보여주세요"
   },
   "home": {
     "aboutUsSection": {
@@ -1625,7 +1673,8 @@
   "movies": {
     "goToMovie": "영화 보러 가기",
     "pageTitle": "영화 & 다큐멘터리",
-    "watchTrailer": "예고편 보기"
+    "watchTrailer": "예고편 보기",
+    "checkTheMovie": "영상을 확인하십시오"
   },
   "nodeNetwork": {
     "description1": "우리는 교육이 온라인뿐만 아니라 오프라인 공간에서도 이루어져야 한다고 믿습니다. 이를 위해 Plan ₿ Network는 전 세계 허브 네트워크를 운영하며 사상가, 기업가, 교육자를 환영하고 비트코인과 자유 기술의 발전을 촉진합니다.",
@@ -1641,53 +1690,54 @@
   "notification": {
     "types": {
       "assignment": "과제",
-      "calendar": "",
+      "calendar": "달력 알림",
       "celebration": "축하",
-      "general": "",
+      "general": "일반 정보",
       "warning": "경고"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "hoursAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
+    "bCertResults": "당신의 ₿-CERT 결과가 나왔습니다!",
+    "blogNotTranslated": "죄송합니다, 이 새로운 블로그 게시물은 아직 해당 언어로 번역되지 않았습니다.",
+    "bookYourSeat": "직접 참석하고 싶다면 좌석을 예약하세요!",
+    "calendar_5m": "수업이 5분 후에 시작됩니다! 지금 참여하려면 여기를 클릭하세요.",
+    "calendar_5m_online_event": "수업 할 시간입니다! {{eventName}}이(가) 5분 후에 시작합니다. 지금 참여하려면 여기를 클릭하세요!",
+    "calendar_24h": "다음 수업은 내일 {{ formattedTime }}부터 입니다.",
+    "calendar_24h_in_person_event": "{{eventName}}행사는 내일, {{formattedTime}}부터 {{addressLine}}까지 진행됩니다. 참석하려면 티켓을 다운로드하세요!",
+    "calendar_48h_online_event": "{{eventName}}가 곧 있습니다! 행사는  {{date}}에 예정되어 있으며, {{formattedTime}}부터 시작됩니다. ",
+    "dashboardDescription": "다음은 최근 알림입니다. 확인한 후 한 달이 지나면 자동으로 삭제됩니다.",
+    "daysAgo": "{{days}}일 전",
+    "hoursAgo": "{{hours}} 시간 전",
+    "markAsRead": "읽음으로 표시",
+    "monthsAgo": "{{months}} 개월 {{s}} 전",
+    "noRecentNotifications": "현재 최근 알림이 없습니다.",
     "notifications": "알림",
-    "noUnreadNotifications": "",
-    "planBNews": "",
+    "noUnreadNotifications": "더 이상 읽지 않은 알림이 없습니다",
+    "planBNews": "Plan ₿ 뉴스",
     "read": "읽다",
-    "results": "",
+    "results": "당신의 ₿-CERT 결과가 나왔습니다!",
     "select": "선택",
-    "selectAll": "",
-    "stayUpToDate": "",
+    "selectAll": "전부 선택",
+    "stayUpToDate": "최신 정보를 받아보세요!",
     "today": "오늘",
     "unread": "읽지 않음",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": "어제"
+    "upcomingEvent": "다가오는 이벤트",
+    "weeksAgo": "{{weeks}} 주 {{s}} 전",
+    "yearsAgo": "{{years}} 년 {{s}} 전",
+    "yesterday": "어제",
+    "newVersionAvailable": "Plan ₿ Network 플랫폼의 새로운 버전이 이용 가능합니다. 업데이트를 위해 페이지를 새로 고치세요."
   },
   "payment": {
     "haveReductionCode": "할인 코드 있나요?",
     "insertReductionCode": "할인 코드를 입력하세요",
     "payByCard": "카드로 결제하기",
     "payWithBitcoin": "비트코인으로 결제하기",
-    "taxesMayApply": "",
+    "taxesMayApply": "체크아웃 시 세금이 부과될 수 있습니다",
     "terms": "환불 세부사항은 <0>일반 약관</0>을 확인하세요",
     "total": "총액"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "시간대 선택"
   },
   "podcast": {
     "check": "팟캐스트 확인하기"
@@ -1766,18 +1816,21 @@
       "title": "기사"
     },
     "bet": {
-      "title": "교육 툴킷"
+      "title": "교육 툴킷",
+      "addEducationKit": "교육 키트 추가"
     },
     "books": {
       "author": "저자: ",
-      "title": "라이브러리"
+      "title": "라이브러리",
+      "addBook": "책 추가"
     },
     "channels": {
       "noYoutubeChannels": "현재 선택한 언어에 대한 유튜브 채널이 없습니다.",
       "title": "유튜브 채널"
     },
     "conferences": {
-      "title": "컨퍼런스 다시보기"
+      "title": "컨퍼런스 다시보기",
+      "addConference": "컨퍼런스 리플레이 추가"
     },
     "github": "모든 데이터는 단일 오픈소스 <0>Github</0> 저장소를 통해 관리됩니다. 자유롭게 기여하여 누락된 콘텐츠를 추가해 주세요.",
     "glossary": {
@@ -1810,15 +1863,19 @@
     "pageTitle": "리소스 포털에 오신 것을 환영합니다",
     "podcasts": {
       "noPodcasts": "현재 선택한 언어에 대한 팟캐스트가 없습니다.",
-      "title": "팟캐스트"
+      "title": "팟캐스트",
+      "addPodcast": "팟캐스트 추가",
+      "checkThePodcast": "팟캐스트 확인하기"
     },
     "projects": {
-      "title": "프로젝트"
+      "title": "프로젝트",
+      "addProjects": "프로젝트 추가"
     },
     "searchFilterName": "이름으로 검색",
     "toggleFreeOnly": "무료만",
     "toggleLabelAll": "모두",
-    "toggleLabelSelectedLanguage": "선택한 언어"
+    "toggleLabelSelectedLanguage": "선택한 언어",
+    "pageSubtitleMovies": "<0>다른 영화</0>가 좋을 수도 있습니다"
   },
   "search": {
     "all": "모두",
@@ -1896,7 +1953,8 @@
       "ratingSuccess": "평가해 주셔서 감사합니다!",
       "source": "원본 출처:",
       "tutorialName": "튜토리얼 이름",
-      "writtenBy": "이 튜토리얼의 저자:"
+      "writtenBy": "이 튜토리얼의 저자:",
+      "didThisWork": "당신에게 좋은 과정이였나요?"
     },
     "exchange": {
       "description": "거래소는 유로, 달러와 같은 전통적인 통화를 비트코인과 교환할 수 있는 주요 관문 중 하나입니다. 거래소는 규제를 따르며 KYC(Know Your Customer) 절차를 요구할 수도 있고, P2P 방식으로 익명성을 유지할 수도 있습니다. 각 거래소는 서로 다른 기능, 수수료 구조, 유동성, 고객 지원을 제공합니다. 각 비트코인 사용자는 자신의 필요와 신념에 따라 적합한 거래소를 선택해야 합니다.",
@@ -2070,7 +2128,7 @@
     "next": "다음",
     "no": "아니요",
     "nodeNetwork": "노드 네트워크",
-    "notApplicable": "",
+    "notApplicable": "해당 사항 없음",
     "on": "껴짐",
     "onChainAddress": "온체인 주소",
     "online": "온라인",
@@ -2102,7 +2160,7 @@
     "saving": "저장 중...",
     "search": "검색",
     "security": "보안",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}} 선택됨",
     "skip": "건너뛰기",
     "socialStudies": "사회과학",
     "start": "시작",
@@ -2153,7 +2211,26 @@
     "full": "전체",
     "filters": "필터",
     "practice": "실습",
-    "searchTripleDot": "검색..."
+    "searchTripleDot": "검색...",
+    "account": "계정",
+    "certifications": "인증서",
+    "completed": "완료된",
+    "discover": "다른 자료 살펴보기",
+    "enrolled": "등록된",
+    "invoices": "청구서",
+    "map": "지도",
+    "myCertificates": "내 자격증",
+    "pricing": "가격 책정",
+    "resetAll": "전체 재설정",
+    "resetFilters": "필터 재설정",
+    "resume": "이력서",
+    "sats": "Sats",
+    "seeAll": "모두 보기",
+    "settings": "설정",
+    "theory": "이론",
+    "topic": "주제",
+    "type": "유형",
+    "viewAll": "모두 보기"
   },
   "youtubeChannels": {
     "pageTitle": "유튜브 채널",
@@ -2166,13 +2243,16 @@
   },
   "videoSelector": {
     "language": {
-      "language": "언어"
+      "language": "언어",
+      "AI": "AI 번역",
+      "original": "원래 언어:"
     },
     "player": {
       "player": "플레이어",
       "rumble": "럼블",
       "youtube": "유튜브",
-      "peertube": "피어튜브"
+      "peertube": "피어튜브",
+      "pears": "피어들🍐"
     }
   },
   "months": {
@@ -2198,6 +2278,20 @@
       "learn": "학습",
       "teach": "강의"
     },
-    "tutorials": "튜토리얼"
+    "tutorials": "튜토리얼",
+    "discountCode": "할인 코드",
+    "learnAnytimeDescription": "자기 주도 학습 코스",
+    "learnAnytimeTitle": "언제든지 배우세요",
+    "liveClassesDescription": "교사 주도의 강좌",
+    "liveClassesTitle": "실시간 수업들",
+    "manageCourses": "강의 관리",
+    "myCalendar": "나의 캘린더",
+    "myCareer": "내 경력",
+    "myCourses": "내 수업들",
+    "translationPanel": "번역 패널",
+    "userRolesAllocation": "사용자 역할 할당"
+  },
+  "footer": {
+    "followUsOn": "우리를 팔로우하세요"
   }
 }
