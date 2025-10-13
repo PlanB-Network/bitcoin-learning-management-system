@@ -107,7 +107,7 @@ export const LanguageSelector = ({
           rel="noopener noreferrer"
           className="mt-4 w-full"
         >
-          <Button variant="primary" size="m" className="w-full">
+          <Button variant="outline" size="m" className="w-full">
             {t('home.languageSection.link')}
             <FaArrowRightLong
               className={cn(
