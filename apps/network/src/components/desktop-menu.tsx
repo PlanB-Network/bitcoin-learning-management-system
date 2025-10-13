@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { t } from 'i18next';
 import Logo from '#src/assets/logo.png?no-inline';
 
 export default function DesktopMenu() {
@@ -7,14 +8,14 @@ export default function DesktopMenu() {
       <Link to="/">
         <img className="" src={Logo} alt="" loading="lazy" />
       </Link>
-      <div className="flex flew-row gap-16">
-        <Link to="/academy">Academy</Link>
-        <Link to="/hubs">Hubs</Link>
-        <Link to="/funds">Funds</Link>
+      <div className="flex flex-row gap-16">
+        <Link to="/academy">{t('menu.academy')}</Link>
+        <Link to="/hubs">{t('menu.hubs')}</Link>
+        <Link to="/funds">{t('menu.funds')}</Link>
       </div>
-      <div className="flex flew-row gap-16 text-gray-200">
-        <Link to="/about">About</Link>
-        <Link to="/news">News</Link>
+      <div className="flex flex-row gap-16 text-gray-200">
+        <Link to="/about">{t('menu.about')}</Link>
+        <Link to="/news">{t('menu.news')}</Link>
       </div>
     </div>
   );

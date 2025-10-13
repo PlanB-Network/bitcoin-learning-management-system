@@ -48,6 +48,13 @@
     "title": "<0>Building</0> the Bitcoin places of tomorrow",
     "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory."
   },
+  "menu": {
+    "academy": "Academy",
+    "hubs": "Hubs",
+    "funds": "Funds",
+    "about": "About",
+    "news": "News"
+  },
   "news": {
     "title": "Latest news of the <0>Network</0>",
     "subtitle": "At Plan ₿ Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check our latest news !",
