@@ -31,7 +31,6 @@ const meta: Meta<typeof ButtonWithArrow> = {
   args: {
     children: 'Click me',
     disabled: false,
-    glowing: false,
     mode: 'light',
     rounded: false,
     size: 'm',
@@ -54,9 +53,6 @@ const meta: Meta<typeof ButtonWithArrow> = {
     disabled: {
       control: 'boolean',
       description: 'Becomes non-interactive.',
-    },
-    glowing: {
-      control: 'boolean',
     },
     mode: {
       control: { type: 'radio' },
@@ -152,19 +148,6 @@ export const Rounded: Story = {
   args: {
     children: 'Rounded',
     rounded: true,
-    variant: 'primary',
-  },
-  render: (args) => (
-    <div className="group/arrow">
-      <ButtonWithArrow {...args} />
-    </div>
-  ),
-};
-
-export const Glowing: Story = {
-  args: {
-    children: 'Glowing',
-    glowing: true,
     variant: 'primary',
   },
   render: (args) => (

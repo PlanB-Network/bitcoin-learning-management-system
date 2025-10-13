@@ -133,7 +133,6 @@ const CourseSection = ({ course }: { course: JoinedCourse }) => {
           variant="primary"
           rounded={false}
           className="mt-8"
-          glowing={false}
           size={buttonSize}
         >
           {t('home.courseSection.checkAllCourses')}

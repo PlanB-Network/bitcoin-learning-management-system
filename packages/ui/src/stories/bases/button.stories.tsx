@@ -31,7 +31,6 @@ const meta: Meta<typeof Button> = {
   args: {
     children: 'Click me',
     disabled: false,
-    glowing: false,
     mode: 'light',
     rounded: false,
     size: 'm',
@@ -54,9 +53,6 @@ const meta: Meta<typeof Button> = {
     disabled: {
       control: 'boolean',
       description: 'Becomes non-interactive.',
-    },
-    glowing: {
-      control: 'boolean',
     },
     mode: {
       control: { type: 'radio' },
@@ -141,14 +137,6 @@ export const Rounded: Story = {
   args: {
     children: 'Rounded',
     rounded: true,
-    variant: 'primary',
-  },
-};
-
-export const Glowing: Story = {
-  args: {
-    children: 'Glowing',
-    glowing: true,
     variant: 'primary',
   },
 };

@@ -36,13 +36,13 @@ const buttonVariants = cva(
         outlineWhite:
           'text-white border border-newGray-2 hover:border-white transition-colors disabled:!text-newBlack-5 disabled:!border-newBlack-5',
         primary:
-          'bg-primary text-white shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
+          'bg-primary text-white disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
         secondary: 'bg-orange-50 text-orange-500',
         tertiary:
-          'shadow-button border bg-newGray-5 text-newGray-1 border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
+          'border bg-newGray-5 text-newGray-1 border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
         newTertiary:
           'bg-neutral-50 text-black hover:bg-neutral-100 focus-visible:border-5 focus-visible:border-neutral-100 disabled:opacity-30',
-        transparent: 'bg-white/30 text-white shadow-button',
+        transparent: 'bg-white/30 text-white',
       },
     },
   },
@@ -54,7 +54,6 @@ export interface ButtonProps
   asChild?: boolean;
   mode?: 'light' | 'dark';
   rounded?: boolean;
-  glowing?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -66,7 +65,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       mode = 'light',
       rounded,
-      glowing,
       disabled,
       ...props
     },
@@ -88,7 +86,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ className, size, variant }),
           ...classes,
           'flex flex-row items-center justify-center transition-colors duration-150 text-wrap',
-          glowing ? 'shadow-md-button' : '',
           'group/arrow',
         )}
         ref={ref}

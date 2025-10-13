@@ -56,7 +56,6 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
           variant="primary"
           rounded={false}
           className="w-fit mt-8"
-          glowing={false}
           size={'m'}
           onClick={() => {
             setAnnouncementToEdit(null);

@@ -41,9 +41,6 @@ export const LanguageSelector = ({
   };
 
   const sortedLanguages = [...LANGUAGES].sort((a, b) => {
-    if (a.toLowerCase() === activeLanguage.toLowerCase()) return -1;
-    if (b.toLowerCase() === activeLanguage.toLowerCase()) return 1;
-
     const nameA = LANGUAGES_MAP[a.toLowerCase().replaceAll('-', '')] || a;
     const nameB = LANGUAGES_MAP[b.toLowerCase().replaceAll('-', '')] || b;
     return nameA.localeCompare(nameB);
@@ -70,6 +67,7 @@ export const LanguageSelector = ({
             : 'bottom-16 left-1/2 -translate-x-1/2',
         )}
         onClick={(e) => e.stopPropagation()}
+        onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <span
           className={cn(
@@ -85,10 +83,11 @@ export const LanguageSelector = ({
               key={language}
               type="button"
               className={cn(
-                'flex items-center px-4 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-500 focus:bg-orange-50 focus:text-orange-500 w-44 focus:outline-hidden',
+                'flex items-center px-4 py-2 rounded-lg w-44 focus:outline-hidden',
                 i18n.dir() === 'rtl' && 'flex-row-reverse',
-                activeLanguage.toLowerCase() === language.toLowerCase() &&
-                  'border rounded-lg border-orange-500 dark gap-2 justify-between',
+                activeLanguage.toLowerCase() === language.toLowerCase()
+                  ? 'border rounded-lg border-orange-500 text-orange-500 dark gap-2 justify-between'
+                  : 'hover:bg-brown-200 focus:bg-brown-200',
               )}
               onClick={() => changeLanguage(language)}
             >
@@ -108,7 +107,7 @@ export const LanguageSelector = ({
           rel="noopener noreferrer"
           className="mt-4 w-full"
         >
-          <Button variant="secondary" size="m" className="w-full !text-primary">
+          <Button variant="primary" size="m" className="w-full">
             {t('home.languageSection.link')}
             <FaArrowRightLong
               className={cn(
