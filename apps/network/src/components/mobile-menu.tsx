@@ -1,7 +1,7 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { TbMenu2, TbX } from 'react-icons/tb';
 import Logo from '#src/assets/logo.png?no-inline';
 
@@ -15,6 +15,8 @@ export const MobileMenu = ({
   toggleMobileMenu,
 }: MobileMenuProps) => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const [isMenuVisible, setIsMenuVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
@@ -44,9 +46,33 @@ export const MobileMenu = ({
     };
   }, [isMobileMenuOpen, toggleMobileMenu]);
 
+  useEffect(() => {
+    const updateMenuVisibility = () => {
+      if (window.scrollY > lastScrollY.current && window.scrollY > 50) {
+        setIsMenuVisible(false);
+      } else {
+        setIsMenuVisible(true);
+      }
+
+      lastScrollY.current = window.scrollY;
+    };
+
+    window.addEventListener('scroll', updateMenuVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', updateMenuVisibility);
+    };
+  }, []);
+
   return (
-    <div className="text-black">
-      <div className="flex w-full items-center justify-between lg:hidden px-2">
+    <div
+      className={cn(
+        'text-black fixed top-0 w-full z-50 bg-black transition-transform duration-300 transform lg:hidden',
+        isMobileMenuOpen ? 'translate-y-0' : '',
+        !isMobileMenuOpen && !isMenuVisible && '-translate-y-full',
+      )}
+    >
+      <div className="flex w-full items-center justify-between px-2">
         <Link to="/" className="w-fit">
           <img className="my-4 h-8 w-auto" src={Logo} alt="" loading="lazy" />
         </Link>

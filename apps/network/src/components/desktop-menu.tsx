@@ -1,12 +1,41 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { useEffect, useRef, useState } from 'react';
 import Logo from '#src/assets/logo.png?no-inline';
 
 export default function DesktopMenu() {
   const linkClassName = 'hover:font-bold';
+  const [isMenuVisible, setIsMenuVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const updateMenuVisibility = () => {
+      if (window.scrollY > lastScrollY.current && window.scrollY > 50) {
+        setIsMenuVisible(false);
+      } else {
+        setIsMenuVisible(true);
+      }
+
+      lastScrollY.current = window.scrollY;
+    };
+
+    window.addEventListener('scroll', updateMenuVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', updateMenuVisibility);
+    };
+  }, []);
 
   return (
-    <div className="max-lg:hidden mx-4 py-10 sticky top-0 z-50 bg-black flex flex-row justify-between gap-2 display-extra-small">
+    <div
+      className={cn(
+        'max-lg:hidden pox-4 py-10 px-4 sticky top-0 z-50 bg-black flex flex-row justify-between gap-2 display-extra-small',
+        'transition-transform duration-300 transform ',
+        isMenuVisible ? 'translate-y-0' : '',
+        !isMenuVisible && !isMenuVisible && '-translate-y-full',
+      )}
+    >
       <Link to="/">
         <img className="" src={Logo} alt="" loading="lazy" />
       </Link>
