@@ -20,6 +20,7 @@ void i18n
         cache: 'no-store',
       },
     },
+    supportedLngs: ['en'],
     debug: false,
     fallbackLng: 'en',
     interpolation: {
