@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden disabled:pointer-events-none w-fit',
+  'whitespace-nowrap rounded-[40px] disabled:pointer-events-none w-fit',
   {
     defaultVariants: {
       size: 'm',
@@ -11,14 +11,7 @@ const buttonVariants = cva(
     },
     variants: {
       size: {
-        carouselSize: 'p-0 text-base md:text-xl',
-        flagsMobile: 'px-2.5 py-3 font-base font-medium',
-        l: 'px-4 py-3 text-xl leading-6 !font-medium',
-        loginButton: 'py-3 px-4 subtitle-medium-16px',
-        m: 'px-3.5 py-3 text-lg leading-5 !font-medium',
-        s: 'px-2.5 py-1.5 text-base leading-5 !font-medium',
-        xl: 'px-12 py-3 text-xl !font-medium',
-        xs: 'px-2 py-1.5 text-xs leading-3 !font-medium',
+        m: 'px-4 py-4 lg:px-6 text-xl lg:text-2xl leading-5 font-medium',
       },
       variant: {
         primary:
@@ -34,34 +27,14 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  mode?: 'light' | 'dark';
-  rounded?: boolean;
-  glowing?: boolean;
 }
 
 const NetworkButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      asChild = false,
-      mode = 'light',
-      rounded,
-      glowing,
-      disabled,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ className, variant, size, asChild = false, disabled, ...props }, ref) => {
     const Comp = 'button';
     const classes = React.useMemo(
-      () => [
-        mode === 'dark' && 'dark',
-        rounded ? '!rounded-full' : '',
-        disabled ? 'cursor-default active:none' : 'active:scale-95',
-      ],
-      [rounded, mode, disabled],
+      () => [disabled ? 'cursor-default active:none' : 'active:scale-95'],
+      [disabled],
     );
 
     return (
@@ -70,7 +43,6 @@ const NetworkButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ className, size, variant }),
           ...classes,
           'flex flex-row items-center justify-center transition-colors duration-150 text-wrap',
-          glowing ? 'shadow-md-button' : '',
           'group/arrow',
         )}
         ref={ref}

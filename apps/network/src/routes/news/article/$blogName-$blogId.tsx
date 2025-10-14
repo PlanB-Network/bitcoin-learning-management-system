@@ -1,11 +1,11 @@
 import { formatNameForURL } from '@blms/shared';
-import { Button, cn, Loader } from '@blms/ui';
+import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import React, { Suspense, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaArrowLeftLong } from 'react-icons/fa6';
 import { z } from 'zod';
+import { NetworkButton } from '#src/components/network-button.tsx';
 import PageBlock from '#src/components/page-block.tsx';
 import { cdnUrl, getNameAndIdFromUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.js';
@@ -90,15 +90,9 @@ function SingleBlogDetail() {
           </div>
           <div className="flex w-max-[135px] mt-6 max-md:justify-center">
             <Link to="/news">
-              <Button variant="primary" className="group">
-                <FaArrowLeftLong
-                  className={cn(
-                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width,opacity] overflow-hidden ease-in-out duration-150',
-                    'group-hover:max-w-96 group-hover:opacity-100 group-hover:mr-3',
-                  )}
-                />
+              <NetworkButton variant="primary" className="group">
                 {t('news.backToAll')}
-              </Button>
+              </NetworkButton>
             </Link>
           </div>
         </PageBlock>

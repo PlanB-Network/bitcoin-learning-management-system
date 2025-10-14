@@ -71,8 +71,8 @@ function RouteComponent() {
           src={media1Image}
           alt="Laptop showing the academy website"
         />
-        <NetworkButton className="justify-self-center z-10 relative md:-mt-6 lg:-mt-12 !text-black">
-          Start learning
+        <NetworkButton className="justify-self-center z-10 relative md:-mt-6 lg:-mt-12">
+          {t('academy.startLearning')}
         </NetworkButton>
       </PageBlock>
 

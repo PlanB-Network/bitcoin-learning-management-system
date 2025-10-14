@@ -1,12 +1,12 @@
 import { formatNameForURL } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { Button, cn, Image, ListItem, TextTag } from '@blms/ui';
+import { cn, Image, ListItem, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useTranslation } from 'react-i18next';
-import { TbChevronRight } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/half-filled-star.svg?react';
 import { assetUrl, normalizeString } from '#src/utils/misc.tsx';
+import { NetworkButton } from '../network-button.tsx';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
   defaultVariants: {
@@ -152,16 +152,13 @@ export const CourseCard = ({
         </div>
         <div className="max-md:hidden relative flex justify-center w-full mt-auto">
           <div className="absolute w-full bottom-0 px-4 pb-4">
-            <Button
+            <NetworkButton
               variant="primary"
               size="m"
               className="w-full absolute md:group-hover:static transition-opacity opacity-0 md:group-hover:opacity-100 duration-0 md:group-hover:duration-150"
             >
               {t('courses.explorer.seeCourse')}
-              <TbChevronRight
-                className={cn('inline-flex whitespace-nowrap ml-3')}
-              />
-            </Button>
+            </NetworkButton>
           </div>
         </div>
       </article>
