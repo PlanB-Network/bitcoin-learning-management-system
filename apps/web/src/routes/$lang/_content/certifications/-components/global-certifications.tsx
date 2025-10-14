@@ -1,7 +1,7 @@
 import type { JoinedBCertResults, Ticket } from '@blms/types';
-import { Button, ButtonWithArrow, cn, EmptyState, Loader } from '@blms/ui';
+import { Button, ButtonWithArrow, cn, EmptyState } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import React, { useContext, useEffect, useState } from 'react';
@@ -19,16 +19,20 @@ import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const GlobalCertifications = () => {
-  const navigate = useNavigate();
-
   const { session } = useContext(AppContext);
 
+  const isLoggedIn = !!session;
+
   const { data: exams } = useQuery(
-    trpc.user.bcert.getBCertResults.queryOptions(),
+    trpc.user.bcert.getBCertResults.queryOptions(undefined, {
+      enabled: isLoggedIn,
+    }),
   );
 
   const { data: examTickets } = useQuery(
-    trpc.user.billing.getExamTickets.queryOptions(),
+    trpc.user.billing.getExamTickets.queryOptions(undefined, {
+      enabled: isLoggedIn,
+    }),
   );
 
   const [isExamOpen, setIsExamOpen] = useState<boolean[]>([]);
@@ -76,16 +80,6 @@ export const GlobalCertifications = () => {
     }
     setIsTicketOpen(results);
   }, [examTickets, exams]);
-
-  useEffect(() => {
-    if (session === null) {
-      navigate({ to: '/' });
-    }
-  }, [session]);
-
-  if (!session) {
-    return <Loader />;
-  }
 
   return (
     <div className="flex flex-col mt-5 md:mt-8">
@@ -135,7 +129,7 @@ export const GlobalCertifications = () => {
         </>
       )}
 
-      {exams && exams.length === 0 && (
+      {(!isLoggedIn || (exams && exams.length === 0)) && (
         <EmptyState
           title={t('dashboard.credentials.noCertificatesAvailable')}
           description={t('dashboard.credentials.getGlobalRecognition')}

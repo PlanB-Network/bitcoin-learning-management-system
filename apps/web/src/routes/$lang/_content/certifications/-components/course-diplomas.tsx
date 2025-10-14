@@ -1,38 +1,34 @@
 import { Button, Card, cn, EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbCertificateOff, TbEye } from 'react-icons/tb';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseDiplomas = () => {
-  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
   const { session, courses } = useContext(AppContext);
 
+  const isLoggedIn = !!session;
+
   const { data: examResults, isFetched } = useQuery(
-    trpc.user.courses.getAllSucceededUserExams.queryOptions({
-      language: i18n.language ?? 'en',
-    }),
+    trpc.user.courses.getAllSucceededUserExams.queryOptions(
+      {
+        language: i18n.language ?? 'en',
+      },
+      {
+        enabled: !!session,
+      },
+    ),
   );
-
-  useEffect(() => {
-    if (session === null) {
-      navigate({ to: '/' });
-    }
-  }, [session]);
-
-  if (!session) {
-    return <Loader />;
-  }
 
   return (
     <div className="flex flex-col mt-5 md:mt-8 text-newBlack-1">
-      {!isFetched && <Loader size={'s'} />}
+      {!isFetched && isLoggedIn && <Loader size={'s'} />}
       {isFetched && examResults && examResults.length > 0 && (
         <>
           <h4 className="text-newBlack-1 title-large-sb-24px">
@@ -119,13 +115,14 @@ export const CourseDiplomas = () => {
         </>
       )}
 
-      {isFetched && examResults && examResults.length === 0 && (
+      {(!isLoggedIn ||
+        (isFetched && examResults && examResults.length === 0)) && (
         <EmptyState
-          title={t('dashboard.credentials.noDiplomasAvailable')}
+          title={t('bCert.noDiplomasAvailable')}
           description={t('dashboard.credentials.completeACourse')}
           linkButton={{
             href: '/learn-anytime',
-            label: t('dashboard.credentials.exploreCourses'),
+            label: t('bCert.chooseCourse'),
           }}
           icon={TbCertificateOff}
         />

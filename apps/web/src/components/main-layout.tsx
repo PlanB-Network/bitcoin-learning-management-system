@@ -341,7 +341,7 @@ export const SideBar = ({
               icon={Medal}
               iconColor="blue"
               label={t('words.certifications')}
-              link="/certifications/b-cert"
+              link="/certifications/certificates"
               isActive={window.location.pathname.includes('certifications')}
               isSidebarOpen={isSidebarOpen}
             />

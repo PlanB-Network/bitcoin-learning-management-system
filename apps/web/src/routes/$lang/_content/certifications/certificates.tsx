@@ -1,51 +1,36 @@
-import { Loader, SegmentedControl, SegmentedControlItem } from '@blms/ui';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
+import { SegmentedControl, SegmentedControlItem } from '@blms/ui';
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { AppContext } from '#src/providers/context.tsx';
 import { CourseDiplomas } from './-components/course-diplomas.tsx';
 import { GlobalCertifications } from './-components/global-certifications.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_content/certifications/my-certificates',
+  '/$lang/_content/certifications/certificates',
 )({
-  component: MyCertificates,
+  component: Certificates,
 });
 
-function MyCertificates() {
+function Certificates() {
   const { t } = useTranslation();
 
-  const navigate = useNavigate();
-
-  const { session } = useContext(AppContext);
-
-  const [currentTab, setCurrentTab] = useState('global');
-
-  useEffect(() => {
-    if (session === null) {
-      navigate({ to: '/' });
-    }
-  }, [session]);
-
-  if (!session) {
-    return <Loader />;
-  }
+  const [currentTab, setCurrentTab] = useState('course');
 
   return (
     <PageLayout
       layoutSize="wide"
-      title={t('words.myCertificates')}
+      title={t('bCert.certificates')}
       tabs={[
+        {
+          id: 'certificates',
+          label: t('bCert.certificates'),
+          href: '/certifications/certificates',
+        },
         {
           id: 'b-cert',
           label: t('words.bCert'),
           href: '/certifications/b-cert',
-        },
-        {
-          id: 'my-certificates',
-          label: t('bCert.myCertificates'),
-          href: '/certifications/my-certificates',
         },
       ]}
     >
@@ -56,6 +41,14 @@ function MyCertificates() {
         className="w-full"
       >
         <SegmentedControlItem
+          value={'course'}
+          key={'course'}
+          onClick={() => setCurrentTab('course')}
+          className="w-full"
+        >
+          <p className="w-full">{t('dashboard.credentials.courseDiplomas')}</p>
+        </SegmentedControlItem>
+        <SegmentedControlItem
           value={'global'}
           key={'global'}
           onClick={() => setCurrentTab('global')}
@@ -64,14 +57,6 @@ function MyCertificates() {
           <p className="w-full">
             {t('dashboard.credentials.globalCertifications')}
           </p>
-        </SegmentedControlItem>
-        <SegmentedControlItem
-          value={'course'}
-          key={'course'}
-          onClick={() => setCurrentTab('course')}
-          className="w-full"
-        >
-          <p className="w-full">{t('dashboard.credentials.courseDiplomas')}</p>
         </SegmentedControlItem>
       </SegmentedControl>
 

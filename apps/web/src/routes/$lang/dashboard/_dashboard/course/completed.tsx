@@ -6,6 +6,7 @@ import { t } from 'i18next';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthorCard } from '#src/components/author-card.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { AppContext } from '#src/providers/context.tsx';
@@ -78,13 +79,11 @@ function DashboardCompletedCourses() {
   };
 
   return (
-    <>
+    <PageLayout
+      layoutSize="wide"
+      title={t('dashboard.course.coursesCompleted')}
+    >
       <div className="flex flex-col gap-4 md:gap-8">
-        <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
-          <h3 className="text-2xl leading-normal text-dashboardSectionTitle md:display-small-32px">
-            {t('dashboard.course.coursesCompleted')}
-          </h3>
-        </div>
         <Tabs
           defaultValue=""
           value={currentTab}
@@ -114,7 +113,7 @@ function DashboardCompletedCourses() {
           ))}
         </Tabs>
       </div>
-    </>
+    </PageLayout>
   );
 }
 

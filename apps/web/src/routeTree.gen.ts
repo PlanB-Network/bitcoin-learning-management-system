@@ -35,7 +35,7 @@ import { Route as LangContentEventsMyTicketsRouteImport } from './routes/$lang/_
 import { Route as LangContentEventsEventIdRouteImport } from './routes/$lang/_content/events/$eventId';
 import { Route as LangContentCoursesBtc105RouteImport } from './routes/$lang/_content/courses/btc105';
 import { Route as LangContentCoursesCourseNameCourseIdRouteImport } from './routes/$lang/_content/courses/$courseName-$courseId';
-import { Route as LangContentCertificationsMyCertificatesRouteImport } from './routes/$lang/_content/certifications/my-certificates';
+import { Route as LangContentCertificationsCertificatesRouteImport } from './routes/$lang/_content/certifications/certificates';
 import { Route as LangContentCertificationsBCertRouteImport } from './routes/$lang/_content/certifications/b-cert';
 import { Route as LangContentMiscUnderConstructionRouteImport } from './routes/$lang/_content/_misc/under-construction';
 import { Route as LangContentMiscManifestoRouteImport } from './routes/$lang/_content/_misc/manifesto';
@@ -238,10 +238,10 @@ const LangContentCoursesCourseNameCourseIdRoute =
     path: '/$lang/courses/$courseName-$courseId',
     getParentRoute: () => rootRouteImport,
   } as any);
-const LangContentCertificationsMyCertificatesRoute =
-  LangContentCertificationsMyCertificatesRouteImport.update({
-    id: '/$lang/_content/certifications/my-certificates',
-    path: '/$lang/certifications/my-certificates',
+const LangContentCertificationsCertificatesRoute =
+  LangContentCertificationsCertificatesRouteImport.update({
+    id: '/$lang/_content/certifications/certificates',
+    path: '/$lang/certifications/certificates',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangContentCertificationsBCertRoute =
@@ -649,7 +649,7 @@ export interface FileRoutesByFullPath {
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
-  '/$lang/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
+  '/$lang/certifications/certificates': typeof LangContentCertificationsCertificatesRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
@@ -737,7 +737,7 @@ export interface FileRoutesByTo {
   '/$lang/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
-  '/$lang/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
+  '/$lang/certifications/certificates': typeof LangContentCertificationsCertificatesRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/events/$eventId': typeof LangContentEventsEventIdRoute;
@@ -826,7 +826,7 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/manifesto': typeof LangContentMiscManifestoRoute;
   '/$lang/_content/_misc/under-construction': typeof LangContentMiscUnderConstructionRoute;
   '/$lang/_content/certifications/b-cert': typeof LangContentCertificationsBCertRoute;
-  '/$lang/_content/certifications/my-certificates': typeof LangContentCertificationsMyCertificatesRoute;
+  '/$lang/_content/certifications/certificates': typeof LangContentCertificationsCertificatesRoute;
   '/$lang/_content/courses/$courseName-$courseId': typeof LangContentCoursesCourseNameCourseIdRoute;
   '/$lang/_content/courses/btc105': typeof LangContentCoursesBtc105Route;
   '/$lang/_content/events/$eventId': typeof LangContentEventsEventIdRoute;
@@ -916,7 +916,7 @@ export interface FileRouteTypes {
     | '/$lang/manifesto'
     | '/$lang/under-construction'
     | '/$lang/certifications/b-cert'
-    | '/$lang/certifications/my-certificates'
+    | '/$lang/certifications/certificates'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
@@ -1004,7 +1004,7 @@ export interface FileRouteTypes {
     | '/$lang/manifesto'
     | '/$lang/under-construction'
     | '/$lang/certifications/b-cert'
-    | '/$lang/certifications/my-certificates'
+    | '/$lang/certifications/certificates'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/events/$eventId'
@@ -1092,7 +1092,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/manifesto'
     | '/$lang/_content/_misc/under-construction'
     | '/$lang/_content/certifications/b-cert'
-    | '/$lang/_content/certifications/my-certificates'
+    | '/$lang/_content/certifications/certificates'
     | '/$lang/_content/courses/$courseName-$courseId'
     | '/$lang/_content/courses/btc105'
     | '/$lang/_content/events/$eventId'
@@ -1181,7 +1181,7 @@ export interface RootRouteChildren {
   LangContentMiscManifestoRoute: typeof LangContentMiscManifestoRoute;
   LangContentMiscUnderConstructionRoute: typeof LangContentMiscUnderConstructionRoute;
   LangContentCertificationsBCertRoute: typeof LangContentCertificationsBCertRoute;
-  LangContentCertificationsMyCertificatesRoute: typeof LangContentCertificationsMyCertificatesRoute;
+  LangContentCertificationsCertificatesRoute: typeof LangContentCertificationsCertificatesRoute;
   LangContentCoursesCourseNameCourseIdRoute: typeof LangContentCoursesCourseNameCourseIdRoute;
   LangContentCoursesBtc105Route: typeof LangContentCoursesBtc105Route;
   LangContentEventsEventIdRoute: typeof LangContentEventsEventIdRoute;
@@ -1410,11 +1410,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentCoursesCourseNameCourseIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/$lang/_content/certifications/my-certificates': {
-      id: '/$lang/_content/certifications/my-certificates';
-      path: '/$lang/certifications/my-certificates';
-      fullPath: '/$lang/certifications/my-certificates';
-      preLoaderRoute: typeof LangContentCertificationsMyCertificatesRouteImport;
+    '/$lang/_content/certifications/certificates': {
+      id: '/$lang/_content/certifications/certificates';
+      path: '/$lang/certifications/certificates';
+      fullPath: '/$lang/certifications/certificates';
+      preLoaderRoute: typeof LangContentCertificationsCertificatesRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/certifications/b-cert': {
@@ -1966,8 +1966,8 @@ const rootRouteChildren: RootRouteChildren = {
   LangContentMiscManifestoRoute: LangContentMiscManifestoRoute,
   LangContentMiscUnderConstructionRoute: LangContentMiscUnderConstructionRoute,
   LangContentCertificationsBCertRoute: LangContentCertificationsBCertRoute,
-  LangContentCertificationsMyCertificatesRoute:
-    LangContentCertificationsMyCertificatesRoute,
+  LangContentCertificationsCertificatesRoute:
+    LangContentCertificationsCertificatesRoute,
   LangContentCoursesCourseNameCourseIdRoute:
     LangContentCoursesCourseNameCourseIdRoute,
   LangContentCoursesBtc105Route: LangContentCoursesBtc105Route,

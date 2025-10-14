@@ -5,6 +5,7 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { addSpaceToCourseIndex } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -124,7 +125,7 @@ function DashboardStudentCourse() {
   };
 
   return (
-    <div>
+    <PageLayout layoutSize="wide">
       {isFetched && course && (
         <div className="flex flex-col gap-4 md:gap-8">
           <div className="flex max-md:flex-col md:items-center gap-2 md:gap-5">
@@ -197,6 +198,6 @@ function DashboardStudentCourse() {
           </Tabs>
         </div>
       )}
-    </div>
+    </PageLayout>
   );
 }

@@ -1,14 +1,13 @@
 import { BasicModal, Button, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { FaTelegram } from 'react-icons/fa6';
 import { MdOutlineEmail } from 'react-icons/md';
 import bCertsImage from '#src/assets/about/bcert-presentation.webp?no-inline';
 import { PageLayout } from '#src/components/page-layout.js';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.js';
 import { BCertEvents } from './-components/b-cert-events.tsx';
 
@@ -21,30 +20,6 @@ function BCert() {
     trpc.content.getRecentEvents.queryOptions(),
   );
   const { t } = useTranslation();
-
-  const { session } = useContext(AppContext);
-  const isLoggedIn = !!session?.user;
-
-  const pageTabs = isLoggedIn
-    ? [
-        {
-          id: 'b-cert',
-          label: t('words.bCert'),
-          href: '/certifications/b-cert',
-        },
-        {
-          id: 'my-certificates',
-          label: t('bCert.myCertificates'),
-          href: '/certifications/my-certificates',
-        },
-      ]
-    : [
-        {
-          id: 'b-cert',
-          label: t('words.bCert'),
-          href: '/certifications/b-cert',
-        },
-      ];
 
   const ONE_HOUR = 60 * 60 * 1000;
   const now = Date.now();
@@ -70,7 +45,18 @@ function BCert() {
     <PageLayout
       layoutSize="wide"
       title={t('bCert.pageTitle')}
-      tabs={pageTabs}
+      tabs={[
+        {
+          id: 'certificates',
+          label: t('bCert.certificates'),
+          href: '/certifications/certificates',
+        },
+        {
+          id: 'b-cert',
+          label: t('words.bCert'),
+          href: '/certifications/b-cert',
+        },
+      ]}
       actionButtons={[<OrganizeDialog key="organize-dialog" />]}
     >
       <div className="flex max-md:flex-col justify-center items-center gap-12 mt-4 md:mt-6">
