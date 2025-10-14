@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { TbArrowUp } from 'react-icons/tb';
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -50,16 +51,16 @@ const ScrollToTopButton = () => {
         <div
           className="absolute inset-0 z-10 scale-[1.15] rounded-full"
           style={{
-            background: `conic-gradient(rgba(255, 92, 0, 1) 0% ${scrollPercentage}%, transparent ${scrollPercentage}% 100%)`,
+            background: `conic-gradient(#FF5C00 0% ${scrollPercentage}%, transparent ${scrollPercentage}% 100%)`,
           }}
         />
 
         <button
           type="button"
           onClick={scrollToTop}
-          className="relative z-20 flex size-12 items-center justify-center rounded-full bg-darkOrange-9 text-white"
+          className="relative z-20 flex size-12 items-center justify-center rounded-full bg-brown-100 text-black"
         >
-          ↑
+          <TbArrowUp size={20} />
         </button>
       </div>
     </div>

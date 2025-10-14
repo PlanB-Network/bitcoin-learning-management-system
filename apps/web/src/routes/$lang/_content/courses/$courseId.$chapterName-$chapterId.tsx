@@ -854,7 +854,7 @@ function CourseChapter() {
                 {!chapter.isCourseExam &&
                   !chapter.isCourseConclusion &&
                   !chapter.isSingleTrialExam && (
-                    <div className="ml-10 mt-7 hidden shrink-0 2xl:block">
+                    <div className="ml-10 mt-7 shrink-0 max-2xl:hidden w-60">
                       {chapters && (
                         <NavigationPanel
                           course={chapter.course}

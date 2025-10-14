@@ -6,6 +6,7 @@ import {
   cn,
 } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
+import { useEffect, useRef, useState } from 'react';
 import { TbPointFilled, TbTriangleInvertedFilled } from 'react-icons/tb';
 
 interface Chapter {
@@ -21,44 +22,54 @@ interface Props {
   currentChapter: Chapter;
 }
 
-const isCurrentChapter = (
-  chapter: JoinedCourseChapter,
-  currentChapter: Chapter,
-) => {
-  return chapter.chapterId === currentChapter.chapterId;
-};
+const isCurrentChapter = (chapter: JoinedCourseChapter, current: Chapter) =>
+  chapter.chapterId === current.chapterId;
 
-const isPastPart = (chapter: JoinedCourseChapter, currentChapter: Chapter) => {
-  return chapter.partIndex <= currentChapter.partIndex;
-};
+const isPastPart = (chapter: JoinedCourseChapter, current: Chapter) =>
+  chapter.partIndex <= current.partIndex;
 
-const isPastChapter = (
-  chapter: JoinedCourseChapter,
-  currentChapter: Chapter,
-) => {
-  return (
-    chapter.partIndex < currentChapter.partIndex ||
-    (chapter.partIndex === currentChapter.partIndex &&
-      chapter.chapterIndex < currentChapter.chapterIndex)
-  );
-};
+const isPastChapter = (chapter: JoinedCourseChapter, current: Chapter) =>
+  chapter.partIndex < current.partIndex ||
+  (chapter.partIndex === current.partIndex &&
+    chapter.chapterIndex < current.chapterIndex);
 
 export const NavigationPanel: React.FC<Props> = ({
   course,
   chapters,
   currentChapter,
 }: Props) => {
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFixed(!entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: '-96px 0px 0px 0px' },
+    );
+    if (sentinelRef.current) observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <aside className="bg-white z-10 w-full max-w-[240px] max-h-[80lvh] rounded-2xl border border-neutral-100 p-4 overflow-y-auto scrollbar-light">
-      <ul className="flex flex-col gap-2">
-        {chapters
-          .filter((chapter) => chapter.chapterIndex === 1)
-          .map((chapterOne) => (
-            <Collapsible
-              key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}
-              defaultOpen={chapterOne.partIndex === currentChapter.partIndex}
-            >
-              <div key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}>
+    <>
+      <div ref={sentinelRef} className="h-0" />
+
+      <aside
+        className={cn(
+          'bg-white z-10 w-full max-w-[240px] max-h-[80lvh] rounded-2xl border border-neutral-100 p-4 overflow-y-auto scrollbar-light transition-all duration-300',
+          isFixed ? 'fixed top-24' : 'relative',
+        )}
+      >
+        <ul className="flex flex-col gap-2">
+          {chapters
+            .filter((ch) => ch.chapterIndex === 1)
+            .map((chapterOne) => (
+              <Collapsible
+                key={`${chapterOne.partIndex}${chapterOne.chapterIndex}`}
+                defaultOpen={chapterOne.partIndex === currentChapter.partIndex}
+              >
                 <CollapsibleTrigger className="group flex justify-start text-left">
                   <li
                     className={cn(
@@ -79,17 +90,17 @@ export const NavigationPanel: React.FC<Props> = ({
                 </CollapsibleTrigger>
                 <CollapsibleContent className="flex flex-col gap-3 mt-2">
                   {chapters
-                    .filter(
-                      (chapter) => chapter.partIndex === chapterOne.partIndex,
-                    )
-                    .map((chapter, index) => (
-                      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
-                      <li key={index + 1000}>
+                    .filter((ch) => ch.partIndex === chapterOne.partIndex)
+                    .map((ch, index) => (
+                      <li
+                        key={`${ch.chapterId}-${index}`}
+                        className="list-none"
+                      >
                         <Link
                           to={'/courses/$courseId/$chapterId'}
                           params={{
-                            chapterId: chapter.chapterId,
                             courseId: course.id,
+                            chapterId: ch.chapterId,
                           }}
                         >
                           <div className="ml-2 flex items-center gap-1">
@@ -97,9 +108,9 @@ export const NavigationPanel: React.FC<Props> = ({
                               size={16}
                               className={cn(
                                 'shrink-0',
-                                isPastChapter(chapter, currentChapter)
+                                isPastChapter(ch, currentChapter)
                                   ? 'text-black'
-                                  : isCurrentChapter(chapter, currentChapter)
+                                  : isCurrentChapter(ch, currentChapter)
                                     ? 'text-orange-500'
                                     : 'text-neutral-400',
                               )}
@@ -107,24 +118,24 @@ export const NavigationPanel: React.FC<Props> = ({
                             <span
                               className={cn(
                                 'body-extra-small hover:text-orange-500',
-                                isPastChapter(chapter, currentChapter)
+                                isPastChapter(ch, currentChapter)
                                   ? 'text-black'
-                                  : isCurrentChapter(chapter, currentChapter)
+                                  : isCurrentChapter(ch, currentChapter)
                                     ? 'text-orange-500'
                                     : 'text-neutral-400',
                               )}
                             >
-                              {chapter.title}
+                              {ch.title}
                             </span>
                           </div>
                         </Link>
                       </li>
                     ))}
                 </CollapsibleContent>
-              </div>
-            </Collapsible>
-          ))}
-      </ul>
-    </aside>
+              </Collapsible>
+            ))}
+        </ul>
+      </aside>
+    </>
   );
 };
