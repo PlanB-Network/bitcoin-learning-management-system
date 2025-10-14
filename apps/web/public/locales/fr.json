@@ -20,7 +20,8 @@
     "storyContent": "Plan ₿ Network est une initiative qui soutient l'éducation autour de Bitcoin dans le monde entier. Il s'agit du croisement de diverses entreprises Bitcoin passionnées axées sur l'éducation, les logiciels open source, les réseaux pair-à-pair et le sens de la communauté. Ensemble, ils ont décidé de construire Plan ₿ Network et d'offrir à l'écosystème Bitcoin les bons outils pour se développer. Notre présentation de la version 2023 est disponible ici.",
     "storyTitle": "Notre histoire",
     "subtitle": "Vous voulez orange pill le monde ? Rejoignez le réseau Plan ₿.",
-    "title": "À propos de Plan ₿ Network"
+    "title": "À propos de Plan ₿ Network",
+    "readManifesto": "Lire notre manifeste"
   },
   "accessType": {
     "hybrid": "En personne & en ligne",
@@ -1798,7 +1799,8 @@
       "contact": "Contact",
       "legalNotice": "Avis juridique",
       "privacyPolicy": "Politique de confidentialité",
-      "termsOfSale": "Conditions de vente"
+      "termsOfSale": "Conditions de vente",
+      "notFound": "Informations légales introuvables"
     },
     "title": "Communication publique"
   },
@@ -1912,7 +1914,9 @@
     "tutorial": "Tutoriel",
     "tutorials": "Tutoriels",
     "youtube_channel": "Chaîne Youtube",
-    "youtube_channels": "Chaînes Youtube"
+    "youtube_channels": "Chaînes Youtube",
+    "noResults": "Aucun résultat",
+    "resultsFound": "{{count}} résultats trouvés"
   },
   "settings": {
     "changeDisplayName": "Changer le nom d'affichage",
@@ -2233,7 +2237,11 @@
     "sats": "Sats",
     "settings": "Paramètres",
     "discover": "Découvrir",
-    "seeAll": "Voir tout"
+    "seeAll": "Voir tout",
+    "aboutUs": "À propos",
+    "legal": "Mentions légales",
+    "legals": "Mentions légales",
+    "planBNetwork": "Plan ₿ Network"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
@@ -2274,10 +2282,17 @@
     "tutorials": "Tutoriels",
     "userRolesAllocation": "Attribution des rôles de l'utilisateur",
     "liveClassesDescription": "Cours encadrés par un enseignant",
-    "liveClassesTitle": "Cours en direct"
+    "liveClassesTitle": "Cours en direct",
+    "careers": "Carrières",
+    "myCoursesDescription": "Suivez vos progrès",
+    "tutorialsAnalytics": "Statistiques des tutoriels"
   },
   "account": {
     "account": "Compte",
     "myTeacherProfile": "Mon profil d'enseignant"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Contenu libre",
+    "proudlyPartOf": "Fièrement membre de <0>Plan ₿ Network</0>"
   }
 }
