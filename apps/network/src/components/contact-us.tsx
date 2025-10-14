@@ -1,5 +1,5 @@
 import { Button, cn } from '@blms/ui';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import emailIcon from '#src/assets/icons/email.svg';
 import PageBlock from './page-block.tsx';
 
@@ -10,6 +10,8 @@ interface ContactUsProps {
 }
 
 export const ContactUs = ({ text, email, className = '' }: ContactUsProps) => {
+  const { t } = useTranslation();
+
   return (
     <PageBlock>
       {/*  */}

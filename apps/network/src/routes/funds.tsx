@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/funds/header.png';
 import headerSmallImage from '#src/assets/funds/header-small.png';
 import media1Image from '#src/assets/funds/media-1.png';
@@ -23,6 +22,8 @@ export const Route = createFileRoute('/funds')({
 });
 
 function RouteComponent() {
+  const { t } = useTranslation();
+
   const isMobile = useSmaller('lg');
 
   return (

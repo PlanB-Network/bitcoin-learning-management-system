@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/academy/header.png';
 import headerSmallImage from '#src/assets/academy/header.png';
 import media1Image from '#src/assets/academy/media-1.png';
@@ -41,6 +40,7 @@ export const Route = createFileRoute('/academy')({
 });
 
 function RouteComponent() {
+  const { t } = useTranslation();
   const isMobile = useSmaller('lg');
 
   return (

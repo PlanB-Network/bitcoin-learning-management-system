@@ -1,10 +1,12 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Logo from '#src/assets/logo.png?no-inline';
 
 export default function DesktopMenu() {
+  const { t } = useTranslation();
+
   const linkClassName = 'hover:font-bold';
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const lastScrollY = useRef(0);

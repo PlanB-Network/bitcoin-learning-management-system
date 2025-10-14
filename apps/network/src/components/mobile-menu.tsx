@@ -1,7 +1,7 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbMenu2, TbX } from 'react-icons/tb';
 import Logo from '#src/assets/logo.png?no-inline';
 
@@ -14,6 +14,8 @@ export const MobileMenu = ({
   isMobileMenuOpen,
   toggleMobileMenu,
 }: MobileMenuProps) => {
+  const { t } = useTranslation();
+
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const lastScrollY = useRef(0);

@@ -3,7 +3,7 @@ import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, cn, Image, ListItem, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { TbChevronRight } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/half-filled-star.svg?react';
 import { assetUrl, normalizeString } from '#src/utils/misc.tsx';
@@ -40,6 +40,8 @@ export const CourseCard = ({
   mode?: 'light' | 'dark';
   className?: string;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Link
       key={course.id}

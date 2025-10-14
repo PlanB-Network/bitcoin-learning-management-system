@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import PageBlock from '#src/components/page-block.tsx';
 
 export const Route = createFileRoute('/')({
@@ -7,6 +7,7 @@ export const Route = createFileRoute('/')({
 });
 
 function IndexComponent() {
+  const { t } = useTranslation();
   return (
     <div className="text-center">
       <PageBlock>
