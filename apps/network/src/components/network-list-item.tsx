@@ -3,22 +3,37 @@ import { cn } from '@blms/ui';
 type NetworkListItemProps = {
   text: string;
   img: string;
+  orientation?: 'left' | 'right';
+  dark?: boolean;
   className?: string;
 };
 
 export default function NetworkListItem({
   text,
   img,
+  orientation = 'left',
+  dark = false,
   className,
 }: NetworkListItemProps) {
   return (
-    <div className={cn('flex flex-row gap-2 items-center', className)}>
+    <div
+      className={cn(
+        'flex gap-2 items-center',
+        orientation === 'left' ? 'flex-row' : 'flex-row-reverse',
+        className,
+      )}
+    >
       <img
-        className="rounded-[10px] p-2 bg-darkOrange-11 border-orange-900 border-[1px] max-xl:size-9"
+        className={cn(
+          'rounded-[10px] p-2 border-[1px] size-9',
+          dark
+            ? 'bg-brown-900 border-brown-800'
+            : 'bg-orange-950 border-orange-900',
+        )}
         src={img}
         alt="World icon"
       />
-      <span className="title-base xl:title-medium">{text}</span>
+      <span className="title-base xl:title-medium mx-2">{text}</span>
     </div>
   );
 }

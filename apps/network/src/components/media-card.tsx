@@ -16,6 +16,7 @@ type MediaCardProps = {
   subtitleUnderImage?: boolean;
   TopElement?: React.ReactNode;
   BottomElement?: React.ReactNode;
+  NoBackground?: boolean;
 };
 
 export default function MediaCard({
@@ -31,6 +32,7 @@ export default function MediaCard({
   subtitleUnderImage = false,
   TopElement,
   BottomElement,
+  NoBackground = false,
 }: MediaCardProps) {
   const isLeft = orientation === 'left';
   const isMobile = useSmaller('lg');
@@ -53,7 +55,7 @@ export default function MediaCard({
         className={[
           'relative w-full rounded-2xl',
           'flex flex-col lg:flex-col',
-          'max-lg:bg-network-cards',
+          NoBackground ? '' : 'max-lg:bg-network-cards',
         ].join(' ')}
       >
         <div

@@ -1,4 +1,5 @@
 import { LANGUAGES_MAP } from '@blms/shared';
+import { cn } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/academy/header.png';
@@ -13,18 +14,27 @@ import media4MobileImage from '#src/assets/academy/media-4-mobile.png';
 import media5Image from '#src/assets/academy/media-5.png';
 import media5MobileImage from '#src/assets/academy/media-5-mobile.png';
 import media6Image from '#src/assets/academy/media-6.png';
+import media7Image from '#src/assets/academy/media-7.png';
+import media8Image from '#src/assets/academy/media-8.png';
 import polytecnicoLogo from '#src/assets/academy/polytecnico-logo.svg';
 import salvador1Image from '#src/assets/academy/salvador-1.png';
 import salvador2Image from '#src/assets/academy/salvador-2.jpg';
 import taipeiLogo from '#src/assets/academy/taipei-logo.svg';
 import barChartIcon from '#src/assets/icons/bar-chart.png';
+import barChartDarkIcon from '#src/assets/icons/bar-chart-dark.svg';
 import bookOpenIcon from '#src/assets/icons/book-open.png';
+import bookOpenDarkIcon from '#src/assets/icons/book-open-dark.svg';
 import bookOpen2Icon from '#src/assets/icons/book-open2.png';
+import calendarIcon from '#src/assets/icons/calendar.svg';
+import calendarDarkIcon from '#src/assets/icons/calendar-dark.svg';
 import certificationIcon from '#src/assets/icons/certification.png';
+import locationIcon from '#src/assets/icons/location.svg';
 import luggageIcon from '#src/assets/icons/luggage.png';
 import personIcon from '#src/assets/icons/person.png';
+import personDarkIcon from '#src/assets/icons/person-dark.svg';
 import replayIcon from '#src/assets/icons/replay.png';
 import ticketIcon from '#src/assets/icons/ticket.png';
+import tvIcon from '#src/assets/icons/tv.svg';
 import BlockTitle from '#src/components/block-title.tsx';
 import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
@@ -150,18 +160,22 @@ function RouteComponent() {
               <NetworkListItem
                 img={bookOpenIcon}
                 text={t('academy.learnLive.list1')}
+                orientation="right"
               />
               <NetworkListItem
                 img={personIcon}
                 text={t('academy.learnLive.list2')}
+                orientation="right"
               />
               <NetworkListItem
                 img={barChartIcon}
                 text={t('academy.learnLive.list3')}
+                orientation="right"
               />
               <NetworkListItem
                 img={bookOpen2Icon}
                 text={t('academy.learnLive.list4')}
+                orientation="right"
               />
             </div>
             <div className="mt-4 flex flex-row max-lg:self-center gap-4">
@@ -178,12 +192,12 @@ function RouteComponent() {
 
       <PageBlock className="mt-14">
         <div className="flex flex-col lg:flex-row max-lg:gap-12">
-          <div className="lg:w-[45%] flex flex-col gap-14">
-            <p className="max-w-[350px] title-extra-large">
+          <div className="lg:w-[45%] flex flex-col gap-14 max-lg:text-center">
+            <p className="lg:max-w-[350px] title-extra-large">
               {t('academy.database.title')}
             </p>
             <p className="title-base">{t('academy.database.subtitle')}</p>
-            <NetworkButton variant={'tertiary'}>
+            <NetworkButton variant={'tertiary'} className="max-lg:self-center">
               {t('academy.database.button')}
             </NetworkButton>
           </div>
@@ -275,7 +289,7 @@ function RouteComponent() {
         alt="Scenic mountain lake"
         titleClassName={'lg:max-w-[53%]'}
         subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
-        imageClassName=""
+        imageClassName="max-md:-mt-38 max-lg:-mt-28"
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
@@ -301,11 +315,11 @@ function RouteComponent() {
         }
       />
 
-      <PageBlock className="bg-network-cards-dark-bottom rounded-[68px]">
+      <PageBlock className="bg-network-cards-dark-bottom rounded-[68px] pb-5 lg:pb-10">
         <p className="title-extra-large uppercase ">
           {t('academy.career.title2')}
         </p>
-        <div className="flex flex-row gap-4 mt-8">
+        <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
           <NetworkCard
             img={replayIcon}
             text={t('academy.career.item1Title')}
@@ -322,10 +336,10 @@ function RouteComponent() {
             subtext={t('academy.career.item3Subtitle')}
           />
         </div>
-        <p className="title-extra-large mt-4 uppercase">
+        <p className="title-medium lg:title-extra-large my-10 lg:my-5 uppercase">
           {t('academy.career.title3')}
         </p>
-        <div className="flex flex-row justify-center gap-4">
+        <div className="flex flex-col lg:flex-row max-lg:items-center justify-center gap-4">
           <NetworkButton variant={'secondary'}>
             {t('academy.career.buttonBusiness')}
           </NetworkButton>
@@ -341,20 +355,22 @@ function RouteComponent() {
         imageUrl={isMobile ? media5MobileImage : media5Image}
         alt="Scenic mountain lake"
         titleClassName={'max-w-[500px]'}
-        subtitleClassName={'max-w-[420px] max-xl:!text-lg text-gray-300'}
-        imageClassName=""
+        subtitleClassName={'lg:max-w-[420px] max-xl:!text-lg text-gray-300'}
+        imageClassName="max-md:-mt-38 max-lg:-mt-28"
         subtitleUnderImage={true}
         className="mt-12"
         orientation="right"
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
-            <NetworkButton>{t('academy.companies.button')}</NetworkButton>
+            <NetworkButton className="max-lg:self-center">
+              {t('academy.companies.button')}
+            </NetworkButton>
           </div>
         }
       />
 
       <PageBlock className="bg-network-cards-dark-bottom rounded-[68px]">
-        <div className="flex flex-row gap-4 mt-8">
+        <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
           <NetworkCard
             img={replayIcon}
             text={t('academy.companies.item1Title')}
@@ -380,30 +396,39 @@ function RouteComponent() {
 
       <MediaCard
         subtext={t('academy.salvador.text')}
-        imageUrl={isMobile ? media5MobileImage : media6Image}
+        imageUrl={isMobile ? media6Image : media6Image}
         alt="Scenic mountain lake"
-        subtitleClassName={'max-w-[600px] max-xl:!text-lg text-gray-300'}
-        imageClassName="max-w-[40%]"
-        subtitleUnderImage={true}
+        subtitleClassName={
+          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
+        }
+        imageClassName="lg:max-w-[40%]"
+        NoBackground={true}
         className="mt-12 pb-12 bg-gradient-network-bt"
         orientation="left"
         TopElement={
-          <div className="flex flex-row justify-between pl-4 mb-4">
+          <div className="flex flex-col-reverse lg:flex-row justify-between pl-4 mb-4">
             <div>
-              <p className={titleCss}>{t('academy.salvador.title')}</p>
-              <p className="title-large text-brown-400 mt-2">
+              <p
+                className={cn(
+                  '!text-start lg:!text-end max-w-[800px]',
+                  titleCss,
+                )}
+              >
+                {t('academy.salvador.title')}
+              </p>
+              <p className="title-large text-brown-400 mt-2 text-start lg:text-end">
                 {t('academy.salvador.subtitle')}
               </p>
             </div>
             <div className="flex flex-row gap-4">
               <img
                 src={salvador1Image}
-                className="h-28 object-cover"
+                className="h-8 lg:h-28 object-cover"
                 alt="Government of El Salvador"
               />
               <img
                 src={salvador2Image}
-                className="h-20 object-cover rounded-full"
+                className="h-8 lg:h-28 object-cover"
                 alt="Node network"
               />
             </div>
@@ -412,7 +437,7 @@ function RouteComponent() {
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
             <NetworkListItem
-              img={bookOpenIcon}
+              img={locationIcon}
               text={t('academy.salvador.list1')}
             />
             <NetworkListItem
@@ -420,11 +445,11 @@ function RouteComponent() {
               text={t('academy.salvador.list2')}
             />
             <NetworkListItem
-              img={barChartIcon}
+              img={luggageIcon}
               text={t('academy.salvador.list3')}
             />
             <NetworkListItem
-              img={bookOpen2Icon}
+              img={calendarIcon}
               text={t('academy.salvador.list4')}
             />
           </div>
@@ -433,25 +458,34 @@ function RouteComponent() {
 
       <MediaCard
         subtext={t('academy.taipei.text')}
-        imageUrl={isMobile ? media5MobileImage : media6Image}
+        imageUrl={isMobile ? media7Image : media7Image}
         alt="Scenic mountain lake"
-        subtitleClassName={'max-w-[600px] max-xl:!text-lg text-gray-300'}
-        imageClassName="max-w-[40%]"
-        subtitleUnderImage={true}
-        className="mt-12 pb-12 bg-gradient-network-bt"
+        subtitleClassName={
+          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
+        }
+        imageClassName="lg:max-w-[40%]"
+        className="mt-12 pb-12 bg-gradient-network-bt-dark"
         orientation="right"
+        NoBackground={true}
         TopElement={
-          <div className="flex flex-row justify-between pl-4 mb-4">
+          <div className="flex flex-col-reverse lg:flex-row justify-between pl-4 mb-4">
             <div className="flex flex-row gap-4">
               <img
                 src={taipeiLogo}
-                className="h-28 object-cover"
-                alt="Logo of polytecnico di Torino"
+                className="h-8 lg:h-28 object-cover"
+                alt="Logo of taipei university"
               />
             </div>
             <div>
-              <p className={titleCss}>{t('academy.taipei.title')}</p>
-              <p className="title-large text-brown-400 mt-2">
+              <p
+                className={cn(
+                  '!text-start lg:!text-end max-w-[800px]',
+                  titleCss,
+                )}
+              >
+                {t('academy.taipei.title')}
+              </p>
+              <p className="title-large text-brown-400 mt-2 text-start lg:text-end">
                 {t('academy.taipei.subtitle')}
               </p>
             </div>
@@ -460,20 +494,28 @@ function RouteComponent() {
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
             <NetworkListItem
-              img={bookOpenIcon}
+              img={barChartDarkIcon}
               text={t('academy.taipei.list1')}
+              dark={true}
+              orientation="right"
             />
             <NetworkListItem
-              img={personIcon}
+              img={personDarkIcon}
               text={t('academy.taipei.list2')}
+              dark={true}
+              orientation="right"
             />
             <NetworkListItem
-              img={barChartIcon}
+              img={bookOpenDarkIcon}
               text={t('academy.taipei.list3')}
+              dark={true}
+              orientation="right"
             />
             <NetworkListItem
-              img={bookOpen2Icon}
+              img={calendarDarkIcon}
               text={t('academy.taipei.list4')}
+              dark={true}
+              orientation="right"
             />
           </div>
         }
@@ -481,25 +523,34 @@ function RouteComponent() {
 
       <MediaCard
         subtext={t('academy.polytecnico.text')}
-        imageUrl={isMobile ? media5MobileImage : media6Image}
+        imageUrl={isMobile ? media8Image : media8Image}
         alt="Scenic mountain lake"
-        subtitleClassName={'max-w-[600px] max-xl:!text-lg text-gray-300'}
-        imageClassName="max-w-[40%]"
-        subtitleUnderImage={true}
+        subtitleClassName={
+          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
+        }
+        imageClassName="lg:max-w-[40%]"
+        NoBackground={true}
         className="mt-12 pb-12 bg-gradient-network-bt"
         orientation="left"
         TopElement={
-          <div className="flex flex-row justify-between pl-4 mb-4">
+          <div className="flex flex-col-reverse lg:flex-row justify-between pl-4 mb-4">
             <div>
-              <p className={titleCss}>{t('academy.polytecnico.title')}</p>
-              <p className="title-large text-brown-400 mt-2">
+              <p
+                className={cn(
+                  '!text-start lg:!text-end max-w-[800px]',
+                  titleCss,
+                )}
+              >
+                {t('academy.polytecnico.title')}
+              </p>
+              <p className="title-large text-brown-400 mt-2 text-start lg:text-end">
                 {t('academy.polytecnico.subtitle')}
               </p>
             </div>
             <div className="flex flex-row gap-4">
               <img
                 src={polytecnicoLogo}
-                className="h-28 object-cover"
+                className="h-8 lg:h-28 object-cover"
                 alt="Logo of polytecnico di Torino"
               />
             </div>
@@ -508,15 +559,15 @@ function RouteComponent() {
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
             <NetworkListItem
-              img={bookOpenIcon}
+              img={personIcon}
               text={t('academy.polytecnico.list1')}
             />
             <NetworkListItem
-              img={personIcon}
+              img={tvIcon}
               text={t('academy.polytecnico.list2')}
             />
             <NetworkListItem
-              img={barChartIcon}
+              img={calendarIcon}
               text={t('academy.polytecnico.list3')}
             />
           </div>

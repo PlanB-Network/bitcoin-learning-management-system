@@ -44,35 +44,29 @@ function RouteComponent() {
         subtext={t('funds.media1subtitle')}
         imageUrl={isMobile ? media1MobileImage : media1Image}
         alt="Scenic mountain lake"
-        titleClassName={'lg:max-w-[53%]'}
-        subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
+        titleClassName={'lg:max-w-[500px]'}
+        subtitleClassName={
+          'lg:max-w-[450px] xl:max-w-[550px] max-xl:!text-lg text-gray-300'
+        }
         imageClassName=""
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
         BottomElement={
-          <>
-            <div className="flex flex-col gap-1 xl:gap-2">
-              <NetworkListItem
-                img={personIcon}
-                text={t('funds.cyphertankPitch1')}
-              />
-              <NetworkListItem
-                img={dollarIcon}
-                text={t('funds.cyphertankPitch2')}
-              />
-              <NetworkListItem
-                img={worldIcon}
-                text={t('funds.cyphertankPitch3')}
-              />
-            </div>
-            <div className="mt-4 flex flex-row xl:flex-col max-lg:self-center gap-4">
-              <NetworkButton variant={'secondary'}>Apply now</NetworkButton>
-              <NetworkButton variant={'tertiary'}>
-                See next edition
-              </NetworkButton>
-            </div>
-          </>
+          <div className="flex flex-col gap-1 xl:gap-2">
+            <NetworkListItem
+              img={personIcon}
+              text={t('funds.cyphertankPitch1')}
+            />
+            <NetworkListItem
+              img={dollarIcon}
+              text={t('funds.cyphertankPitch2')}
+            />
+            <NetworkListItem
+              img={worldIcon}
+              text={t('funds.cyphertankPitch3')}
+            />
+          </div>
         }
       />
 

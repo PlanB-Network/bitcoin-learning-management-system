@@ -35,9 +35,13 @@ export default function BlockTitle({
 
         <img className="h-[400px]" src={curveRight} alt="Right curve" />
       </div>
-      <div className="-mt-40 text-center max-w-[800px] z-10">
-        <h2 className="title-extra-large uppercase">{text}</h2>
-        <h2 className="title-small mt-6 mb-12 ">{subtext}</h2>
+      <div className="-mt-40 text-center z-10 flex flex-col items-center">
+        <h2 className="text-3xl lg:text-6xl font-light uppercase text-orange-500 max-w-[800px]">
+          {text}
+        </h2>
+        <h2 className="body-small lg:title-small mt-6 mb-12 max-w-[550px] px-4 ">
+          {subtext}
+        </h2>
       </div>
     </div>
   );

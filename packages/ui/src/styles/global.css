@@ -806,6 +806,18 @@
     black -113.997px 0px / 110.92% 100% no-repeat;
 }
 
+@utility bg-gradient-network-bt-dark {
+  border-radius: 40px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(1, 2, 5, 0) 0.49%,
+      var(--Brown-800, #49372c) 100.27%
+    ),
+    /* Background settings */
+    black -113.997px 0px / 110.92% 100% no-repeat;
+}
+
 @utility bg-gradient-diagonal {
   background-image: linear-gradient(
     175deg,
