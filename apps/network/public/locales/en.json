@@ -41,6 +41,8 @@
     "blockTitle2Subtext": "The Plan ₿ Programs are designed for individuals who want to professionalize their skills or expand their expertise. From coding and security to marketing and operations, we equip future builders and professionals to thrive in the growing Bitcoin ecosystem.",
     "blockTitle3Text": "Partnerships with institutions",
     "blockTitle3Subtext": "Plan ₿ Academy bring years of expertise to offer institution-grade Bitcoin advisory and training. Globally available, our team designs custom tracks for specific audiences such as law, business, computer science, engineering, and economics. We stand ready to seed and scale public programs, university partnerships, and enterprise integration..",
+    "blockTitle4Text": "Tools for communities",
+    "blockTitle4Subtext": "Over the years, hundreds of Bitcoin communities have flourished across the world. As a decentralized, grassroots movement led by passionate individuals, these communities are the true backbone of our industry.",
     "learnOnline": {
       "title": "Learn Bitcoin Online",
       "subtitle": "Plan ₿ Academy  e-learning platform to offer the best Bitcoin learning experience. With a wide selection of courses, ranging from beginner to expert, on all topics related to Bitcoin, from protocols to mining. We are here to help you better understand the wideness of Bitcoin. Almost everything is free.",
@@ -98,6 +100,23 @@
       "list2": "+1500 students",
       "list3": "7 local educators",
       "list4": "Since 2023"
+    },
+    "taipei": {
+      "title": "Bachelor degree at Taipei University",
+      "subtitle": "Taiwan",
+      "text": "The “Blockchain & Digital Asset” Micro Program is the first in a series of educational programs to be launched at the National Taipei University of Technology (NTUT). Designed for third- and fourth-year undergraduate students, the curriculum and content have been developed in collaboration with Plan B Network.",
+      "list1": "Bachelor Degree",
+      "list2": "+100 students",
+      "list3": "Bitcoin Economics",
+      "list4": "Fall 2025"
+    },
+    "polytecnico": {
+      "title": "Master program at Politecnico Torino",
+      "subtitle": "Italy",
+      "text": "In 2024, we collaborated with the University of Politecnico Torino to provide a 5-month course program that offers an in-depth exploration of Bitcoin technologies. Our support spanned from curriculum guidance to providing trainers. The programs successfully trained more than 50 students.",
+      "list1": "+50 students",
+      "list2": "Online & in-person classes",
+      "list3": "Since 2024"
     },
     "database": {
       "title": "Open-source Educational Database",

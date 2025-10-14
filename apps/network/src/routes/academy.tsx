@@ -13,6 +13,10 @@ import media4MobileImage from '#src/assets/academy/media-4-mobile.png';
 import media5Image from '#src/assets/academy/media-5.png';
 import media5MobileImage from '#src/assets/academy/media-5-mobile.png';
 import media6Image from '#src/assets/academy/media-6.png';
+import polytecnicoLogo from '#src/assets/academy/polytecnico-logo.svg';
+import salvador1Image from '#src/assets/academy/salvador-1.png';
+import salvador2Image from '#src/assets/academy/salvador-2.jpg';
+import taipeiLogo from '#src/assets/academy/taipei-logo.svg';
 import barChartIcon from '#src/assets/icons/bar-chart.png';
 import bookOpenIcon from '#src/assets/icons/book-open.png';
 import bookOpen2Icon from '#src/assets/icons/book-open2.png';
@@ -22,6 +26,7 @@ import personIcon from '#src/assets/icons/person.png';
 import replayIcon from '#src/assets/icons/replay.png';
 import ticketIcon from '#src/assets/icons/ticket.png';
 import BlockTitle from '#src/components/block-title.tsx';
+import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import { NetworkButton } from '#src/components/network-button.tsx';
@@ -195,6 +200,7 @@ function RouteComponent() {
       <BlockTitle
         text={t('academy.blockTitle2Text')}
         subtext={t('academy.blockTitle2Subtext')}
+        direction="right"
       />
 
       <MediaCard
@@ -317,16 +323,24 @@ function RouteComponent() {
         className="mt-12 pb-12 bg-gradient-network-bt"
         orientation="left"
         TopElement={
-          <div className="flex flex-row justify-between pl-4">
+          <div className="flex flex-row justify-between pl-4 mb-4">
             <div>
               <p className={titleCss}>{t('academy.salvador.title')}</p>
-              <p className="title-large text-brown-400">
+              <p className="title-large text-brown-400 mt-2">
                 {t('academy.salvador.subtitle')}
               </p>
             </div>
             <div className="flex flex-row gap-4">
-              <p>IMAGES</p>
-              <p>IMAGES</p>
+              <img
+                src={salvador1Image}
+                className="h-28 object-cover"
+                alt="Government of El Salvador"
+              />
+              <img
+                src={salvador2Image}
+                className="h-20 object-cover rounded-full"
+                alt="Node network"
+              />
             </div>
           </div>
         }
@@ -352,6 +366,107 @@ function RouteComponent() {
         }
       />
 
+      <MediaCard
+        subtext={t('academy.taipei.text')}
+        imageUrl={isMobile ? media5MobileImage : media6Image}
+        alt="Scenic mountain lake"
+        subtitleClassName={'max-w-[600px] max-xl:!text-lg text-gray-300'}
+        imageClassName="max-w-[40%]"
+        subtitleUnderImage={true}
+        className="mt-12 pb-12 bg-gradient-network-bt"
+        orientation="right"
+        TopElement={
+          <div className="flex flex-row justify-between pl-4 mb-4">
+            <div className="flex flex-row gap-4">
+              <img
+                src={taipeiLogo}
+                className="h-28 object-cover"
+                alt="Logo of polytecnico di Torino"
+              />
+            </div>
+            <div>
+              <p className={titleCss}>{t('academy.taipei.title')}</p>
+              <p className="title-large text-brown-400 mt-2">
+                {t('academy.taipei.subtitle')}
+              </p>
+            </div>
+          </div>
+        }
+        BottomElement={
+          <div className="flex flex-col gap-1 xl:gap-2">
+            <NetworkListItem
+              img={bookOpenIcon}
+              text={t('academy.taipei.list1')}
+            />
+            <NetworkListItem
+              img={personIcon}
+              text={t('academy.taipei.list2')}
+            />
+            <NetworkListItem
+              img={barChartIcon}
+              text={t('academy.taipei.list3')}
+            />
+            <NetworkListItem
+              img={bookOpen2Icon}
+              text={t('academy.taipei.list4')}
+            />
+          </div>
+        }
+      />
+
+      <MediaCard
+        subtext={t('academy.polytecnico.text')}
+        imageUrl={isMobile ? media5MobileImage : media6Image}
+        alt="Scenic mountain lake"
+        subtitleClassName={'max-w-[600px] max-xl:!text-lg text-gray-300'}
+        imageClassName="max-w-[40%]"
+        subtitleUnderImage={true}
+        className="mt-12 pb-12 bg-gradient-network-bt"
+        orientation="left"
+        TopElement={
+          <div className="flex flex-row justify-between pl-4 mb-4">
+            <div>
+              <p className={titleCss}>{t('academy.polytecnico.title')}</p>
+              <p className="title-large text-brown-400 mt-2">
+                {t('academy.polytecnico.subtitle')}
+              </p>
+            </div>
+            <div className="flex flex-row gap-4">
+              <img
+                src={polytecnicoLogo}
+                className="h-28 object-cover"
+                alt="Logo of polytecnico di Torino"
+              />
+            </div>
+          </div>
+        }
+        BottomElement={
+          <div className="flex flex-col gap-1 xl:gap-2">
+            <NetworkListItem
+              img={bookOpenIcon}
+              text={t('academy.polytecnico.list1')}
+            />
+            <NetworkListItem
+              img={personIcon}
+              text={t('academy.polytecnico.list2')}
+            />
+            <NetworkListItem
+              img={barChartIcon}
+              text={t('academy.polytecnico.list3')}
+            />
+          </div>
+        }
+      />
+
+      <PageBlock className="mt-8 lg:mt-16">
+        <ContactUs text={t('about.contactText')} email="toto@toto.com" />
+      </PageBlock>
+
+      <BlockTitle
+        text={t('academy.blockTitle4Text')}
+        subtext={t('academy.blockTitle4Subtext')}
+        direction="right"
+      />
       {/* <div className="shadow-top-bottom-box py-24 mt-24"></div>
       <div className="py-24 bg-gradient-network-bt " /> */}
     </>
