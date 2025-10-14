@@ -15,6 +15,7 @@ import valuesPrivacyImage from '#src/assets/icons/visibility_off.png';
 import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
+import NetworkCard from '#src/components/network-card.tsx';
 import PageBlock from '#src/components/page-block.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { titleCss } from '#src/utils/css.tsx';
@@ -199,18 +200,12 @@ function RouteComponent() {
         </h2>
         <div className="flex flex-row flex-wrap gap-2 lg:gap-10 justify-center-safe">
           {valuesCards.map((card) => (
-            <div
-              className="flex flex-col gap-2 lg:gap-4 w-44 md:w-52 lg:w-[380px] border-[1px] border-orange-600 rounded-3xl p-4 md:p-8 text-left"
+            <NetworkCard
+              img={card.imageUrl}
+              text={card.title}
+              subtext={card.subtext}
               key={card.title}
-            >
-              <img className="w-12" src={card.imageUrl} alt="" />
-              <p className="uppercase body-small-bold lg:display-small">
-                {card.title}
-              </p>
-              <p className="body-small lg:text-xl text-gray-300">
-                {card.subtext}
-              </p>
-            </div>
+            />
           ))}
         </div>
       </PageBlock>

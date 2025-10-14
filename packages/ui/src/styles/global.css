@@ -778,6 +778,15 @@
   );
 }
 
+@utility bg-network-cards-dark-bottom {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 2, 5, 0) 0.02%,
+    var(--BLACK, #010205) 92.72%,
+    var(--Orange-950, #411800) 105.96%
+  );
+}
+
 @utility bg-gradient-network-lr {
   border-radius: 40px;
   /* First linear gradient (overlay) */

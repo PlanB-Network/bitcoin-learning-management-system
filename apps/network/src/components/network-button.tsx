@@ -22,7 +22,7 @@ const buttonVariants = cva(
       },
       variant: {
         primary:
-          'bg-primary text-white shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
+          'bg-primary text-black shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
         secondary: 'bg-white  text-headerDark',
         tertiary: 'bg-black !text-white border-2 border-orange-500',
       },

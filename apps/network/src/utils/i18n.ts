@@ -6,39 +6,6 @@ import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 import { build } from './cache.ts';
 
-export const LANGUAGES = [
-  'cs',
-  'de',
-  'en',
-  'es',
-  'et',
-  'fa',
-  'fi',
-  'fr',
-  'hi',
-  'id',
-  'it',
-  'ja',
-  'nb-NO',
-  'nl',
-  'pt',
-  'pl',
-  'ru',
-  'sr-Latn',
-  'sv',
-  'sw',
-  'tr',
-  'vi',
-  'zh-Hans',
-  'zh-Hant',
-];
-
-export const LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT = [
-  'ja',
-  'zh-Hans',
-  'zh-Hant',
-];
-
 export const getLanguageName = (language: string) =>
   LANGUAGES_MAP[language.replace('-', '').toLowerCase()] ?? language;
 
@@ -47,7 +14,6 @@ void i18n
   .use(Backend)
   .use(initReactI18next)
   .init<HttpBackendOptions>({
-    load: 'all',
     backend: {
       loadPath: `/locales/{{lng}}.json${build ? `?c=${build}` : ''}`,
       requestOptions: {
@@ -56,11 +22,12 @@ void i18n
     },
     debug: false,
     fallbackLng: 'en',
-    returnNull: false,
-    returnEmptyString: false,
     interpolation: {
       escapeValue: false,
     },
+    load: 'all',
+    returnEmptyString: false,
+    returnNull: false,
   });
 
 export default i18n;

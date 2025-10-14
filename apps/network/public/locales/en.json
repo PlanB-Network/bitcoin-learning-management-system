@@ -34,7 +34,79 @@
     "safestPlace": "The safest place to learn about Bitcoin",
     "safest1": "Any Topic",
     "safest2": "Any Level",
-    "safest3": "Any Language"
+    "safest3": "Any Language",
+    "blockTitle1Text": "Courses for anyone",
+    "blockTitle1Subtext": "Plan ₿ Academy helps people understand what Bitcoin is, as a money, as a protocol, as a network. Our programs will guide you from the basics to your professionalization into this industry.",
+    "blockTitle2Text": "Professional trainings",
+    "blockTitle2Subtext": "The Plan ₿ Programs are designed for individuals who want to professionalize their skills or expand their expertise. From coding and security to marketing and operations, we equip future builders and professionals to thrive in the growing Bitcoin ecosystem.",
+    "blockTitle3Text": "Partnerships with institutions",
+    "blockTitle3Subtext": "Plan ₿ Academy bring years of expertise to offer institution-grade Bitcoin advisory and training. Globally available, our team designs custom tracks for specific audiences such as law, business, computer science, engineering, and economics. We stand ready to seed and scale public programs, university partnerships, and enterprise integration..",
+    "learnOnline": {
+      "title": "Learn Bitcoin Online",
+      "subtitle": "Plan ₿ Academy  e-learning platform to offer the best Bitcoin learning experience. With a wide selection of courses, ranging from beginner to expert, on all topics related to Bitcoin, from protocols to mining. We are here to help you better understand the wideness of Bitcoin. Almost everything is free.",
+      "list1": "+34 online certified courses",
+      "list2": "+40 professors",
+      "list3": "From beginner to expert",
+      "list4": "Diverse fields of studies",
+      "list5": "90% courses for free",
+      "button": "Browse Online Courses"
+    },
+    "learnLive": {
+      "title": "Learn Bitcoin in a Live Class",
+      "subtitle": "We partner with many expert professors around the world who teach Bitcoin classes, in-person and online, through our e-learning platform",
+      "list1": "Online, in-person or both",
+      "list2": "Led by a professor",
+      "list3": "From beginner to expert",
+      "list4": "Diverse fields of studies",
+      "button1": "Become a teacher",
+      "button2": "Browse Live Classes"
+    },
+    "career": {
+      "title": "Launch your career in the Bitcoin industry",
+      "title2": "Learning journey",
+      "title3": "2 Specializations",
+      "subtitle": "Running from February to July, the Plan ₿ Business and Developer tracks bridge the gap between theory and real-world applications. With in‑depth lectures, company‑driven assignments, and an elite summer school for top performers, it prepares you to step with assurance into the industry.",
+      "list1": "Online | Lugano, Switzerland",
+      "list2": "World-renowned experts",
+      "list3": "February to July 2026",
+      "list4": "Price ?",
+      "item1Title": "Business/Tech sessions",
+      "item1Subtitle": "Learn directly from top industry experts",
+      "item2Title": "Company-led projects",
+      "item2Subtitle": "Work on real-world projects with leading companies",
+      "item3Title": "First-class bootcamp",
+      "item3Subtitle": "Get immersed in Lugano for intensive trainings and network development",
+      "buttonBusiness": "Business Track",
+      "buttonDeveloper": "Developer Track"
+    },
+    "companies": {
+      "title": "Scalable solutions for companies",
+      "subtitle": "We help enterprises build and scale Bitcoin awareness for their teams and customers through tailored education programs such as bootcamps, workshops, on‑demand courses, and executive briefings. Our work combines technical training with governance, compliance, and risk perspectives always aligned with company goals.",
+      "button": "Contact us",
+      "item1Title": "Seminars Organization",
+      "item1Subtitle": "Example of Blockstream's Liquid Bootcamp hosted in Taipei (2024)",
+      "item2Title": "Course Tracks Development",
+      "item2Subtitle": "Example tracks for Blockstream, Breez SDK & Bitcoin Office",
+      "item3Title": "On-demand Tutorials",
+      "item3Subtitle": "Several tutorials for enterprise clients worldwide"
+    },
+    "salvador": {
+      "title": "High-school national program ",
+      "subtitle": "El Salvador",
+      "text": "The Node Nation initiative is a high-school program deployed since 2023 in El Salvador and co-built between Pupusas G. and Plan B Network. This program aimed to set up a Bitcoin node in school to allow student to master Bitcoin knowledge in a highly engaging way. With the help of 7 local educator, this initiative has already been deployed in more than 30 high schools accross the country.",
+      "list1": "30 high schools across the country",
+      "list2": "+1500 students",
+      "list3": "7 local educators",
+      "list4": "Since 2023"
+    },
+    "database": {
+      "title": "Open-source Educational Database",
+      "subtitle": "Plan ₿ Academy represents a global and collective effort towards a better understanding of Bitcoin. In addition to courses, the community helps us gather resources of all kinds, and helps us translate all the content in as many languages as possible.",
+      "button": "Become a contributor",
+      "tutorials": "Tutorials",
+      "resources": "Resources",
+      "languages": "Languages"
+    }
   },
   "funds": {
     "media1subtitle": "Showcase your startup idea in front of industry leaders like Matt Odell, Paolo Ardoino, and Oleg. Compete for the chance to win $100,000 and make your mark in the global innovation scene.\n\nThink you've got what it takes to be the next big founder? Step up, pitch your vision, and seize the spotlight.",

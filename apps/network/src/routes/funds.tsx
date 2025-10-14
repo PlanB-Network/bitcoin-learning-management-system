@@ -15,6 +15,7 @@ import worldIcon from '#src/assets/icons/world.png';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import { NetworkButton } from '#src/components/network-button.tsx';
+import NetworkListItem from '#src/components/network-list-item.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 export const Route = createFileRoute('/funds')({
@@ -51,36 +52,18 @@ function RouteComponent() {
         BottomElement={
           <>
             <div className="flex flex-col gap-1 xl:gap-2">
-              <div className="flex flex-row gap-2 items-center">
-                <img
-                  className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
-                  src={personIcon}
-                  alt="Person icon"
-                />
-                <span className="title-base xl:title-medium">
-                  {t('funds.cyphertankPitch1')}
-                </span>
-              </div>
-              <div className="flex flex-row gap-2 items-center">
-                <img
-                  className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
-                  src={dollarIcon}
-                  alt="Dollar icon"
-                />
-                <span className="title-base xl:title-medium">
-                  {t('funds.cyphertankPitch2')}
-                </span>
-              </div>
-              <div className="flex flex-row gap-2 items-center">
-                <img
-                  className="rounded-[10px] p-2 bg-darkOrange-11 max-xl:size-9"
-                  src={worldIcon}
-                  alt="World icon"
-                />
-                <span className="title-base xl:title-medium">
-                  {t('funds.cyphertankPitch3')}
-                </span>
-              </div>
+              <NetworkListItem
+                img={personIcon}
+                text={t('funds.cyphertankPitch1')}
+              />
+              <NetworkListItem
+                img={dollarIcon}
+                text={t('funds.cyphertankPitch2')}
+              />
+              <NetworkListItem
+                img={worldIcon}
+                text={t('funds.cyphertankPitch3')}
+              />
             </div>
             <div className="mt-4 flex flex-row xl:flex-col max-lg:self-center gap-4">
               <NetworkButton variant={'secondary'}>Apply now</NetworkButton>
@@ -91,6 +74,7 @@ function RouteComponent() {
           </>
         }
       />
+
       <MediaCard
         title={t('funds.media2title')}
         subtext={t('funds.media2subtitle')}
