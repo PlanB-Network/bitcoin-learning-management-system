@@ -337,7 +337,7 @@ const TimelineBig = ({
           </Link>
         )}
       </div>
-      <div className="mt-2 bg-newGray-1 h-px" />
+      <div className="mt-2 bg-neutral-100 h-px" />
     </div>
   );
 };
@@ -348,7 +348,6 @@ const Header = ({ chapter }: { chapter: CourseChapterResponse }) => {
       <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
         {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
       </h2>
-      <div className="h-px bg-newGray-4 mt-2.5 max-sm:hidden" />
     </div>
   );
 };
@@ -754,10 +753,8 @@ function CourseChapter() {
                     sections.length > 0 && (
                       <div
                         className={cn(
-                          'flex flex-col self-stretch rounded-[10px] lg:rounded-[20px] p-4 lg:p-5 shadow-course-navigation',
-                          isContentExpanded
-                            ? 'bg-newGray-6'
-                            : 'bg-newGray-6 h-auto',
+                          'flex flex-col self-stretch rounded-[10px] lg:rounded-[20px] p-4 lg:p-5 bg-header',
+                          isContentExpanded ? '' : 'h-auto',
                         )}
                       >
                         <button
