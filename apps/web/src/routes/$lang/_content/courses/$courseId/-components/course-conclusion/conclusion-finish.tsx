@@ -50,10 +50,7 @@ export const ConclusionFinish = ({
       {course.topic === 'protocol' ? <Labs /> : null}
       <OtherCourses course={course} />
       {session?.user && (
-        <Link
-          to="/dashboard/my-courses"
-          className="max-md:hidden mt-8 inline-flex"
-        >
+        <Link to="/my-courses" className="max-md:hidden mt-8 inline-flex">
           <ButtonWithArrow variant="primary" size="l">
             {t('dashboard.backToDashboard')}
           </ButtonWithArrow>
@@ -290,7 +287,7 @@ const DiplomaSelfPaced = ({
             <Link
               to={
                 examResults?.succeeded
-                  ? '/dashboard/course/$courseId'
+                  ? '/my-courses/$courseId'
                   : '/courses/$courseId/$chapterId'
               }
               hash={examResults?.succeeded ? 'retakeExam' : ''}
@@ -352,7 +349,7 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
           </p>
 
           <Link
-            to={'/dashboard/course/$courseId'}
+            to={'/my-courses/$courseId'}
             hash={'singleTrialExam'}
             params={{
               courseId: course?.id,

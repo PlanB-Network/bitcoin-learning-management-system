@@ -44,7 +44,7 @@ function DashboardAdministrationTranslationPanel() {
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Admin)(session?.user)) {
-      navigate({ to: '/dashboard/my-courses' });
+      navigate({ to: '/my-courses' });
     }
   }, [session]);
 

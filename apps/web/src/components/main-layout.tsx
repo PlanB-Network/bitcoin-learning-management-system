@@ -24,9 +24,9 @@ import PeopleFrame from '#src/assets/icons/pixelated/navbar/people_frame.svg?rea
 import PositionPin from '#src/assets/icons/pixelated/navbar/position_pin.svg?react';
 import ProjectPen from '#src/assets/icons/pixelated/navbar/project_pen.svg?react';
 import Target from '#src/assets/icons/pixelated/navbar/target.svg?react';
-// import Youtube from '#src/assets/icons/pixelated/navbar/streaming.svg?react';
 import TasksList from '#src/assets/icons/pixelated/navbar/tasks_list.svg?react';
 import Ticket from '#src/assets/icons/pixelated/navbar/ticket.svg?react';
+import Youtube from '#src/assets/icons/pixelated/navbar/youtube.svg?react';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
@@ -62,7 +62,7 @@ export const MainLayout = ({
         imgSrc: SignInIconLight,
         mode: 'light',
         onClick: () => {
-          window.location.href = '/dashboard/my-courses';
+          window.location.href = '/my-courses';
         },
         time: 5000,
       });
@@ -273,10 +273,8 @@ export const SideBar = ({
                   iconColor="orange"
                   label={t('navbar.myCourses')}
                   description={t('navbar.myCoursesDescription')}
-                  link="/dashboard/my-courses"
-                  isActive={window.location.pathname.includes(
-                    '/dashboard/my-courses',
-                  )}
+                  link="/my-courses"
+                  isActive={window.location.pathname.includes('/my-courses')}
                   isSidebarOpen={isSidebarOpen}
                   isMain
                 />
@@ -297,7 +295,7 @@ export const SideBar = ({
               isMain
             />
             <SideBarItem
-              icon={BookOpen}
+              icon={Youtube}
               iconColor="orange"
               label={t('navbar.liveClassesTitle')}
               description={t('navbar.liveClassesDescription')}

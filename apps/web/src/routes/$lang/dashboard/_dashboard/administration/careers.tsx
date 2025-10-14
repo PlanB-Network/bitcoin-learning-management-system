@@ -61,7 +61,7 @@ function AdminCareers() {
     } else if (
       !canAccess(UserRole.Admin, UserPermission.Career)(session?.user)
     ) {
-      navigate({ to: '/dashboard/my-courses' });
+      navigate({ to: '/my-courses' });
     }
   }, [session]);
 

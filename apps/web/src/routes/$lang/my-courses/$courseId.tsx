@@ -16,15 +16,17 @@ import { CourseRetakeExam } from './-components/course-retake-exam.tsx';
 import { SingleTrialExam } from './-components/single-trial-exam.tsx';
 import { SummerSchool } from './-components/summer-school.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/dashboard/_dashboard/course/$courseId',
-)({
+export const Route = createFileRoute('/$lang/my-courses/$courseId')({
   component: DashboardStudentCourse,
   params: {
     parse: (params) => ({
+      lang: z.string().parse(params.lang),
       courseId: z.string().parse(params.courseId),
     }),
-    stringify: ({ courseId }) => ({ courseId: `${courseId}` }),
+    stringify: ({ lang, courseId }) => ({
+      lang: `${lang}`,
+      courseId: `${courseId}`,
+    }),
   },
 });
 

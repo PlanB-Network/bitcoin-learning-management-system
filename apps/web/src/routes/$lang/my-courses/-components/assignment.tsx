@@ -45,7 +45,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { WeightIndicator } from '../../professor/-components/exam-results.tsx';
+import { WeightIndicator } from '../../dashboard/_dashboard/professor/-components/exam-results.tsx';
 
 interface RankingItemProps {
   name: string | null;

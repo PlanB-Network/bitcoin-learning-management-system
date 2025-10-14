@@ -43,7 +43,7 @@ function Overview() {
     if (!session) {
       navigate({ to: '/' });
     } else if (!canAccess(UserRole.Professor)(session?.user)) {
-      navigate({ to: '/dashboard/my-courses' });
+      navigate({ to: '/my-courses' });
     }
   }, [navigate, session]);
 

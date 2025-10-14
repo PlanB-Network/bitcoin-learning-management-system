@@ -59,8 +59,6 @@ function AllCourses() {
           (course.endDate ? course.endDate.getTime() > Date.now() : true),
       );
 
-  console.log('planbCourses', planbCourses);
-
   const otherCourses = !courses
     ? []
     : courses
@@ -138,7 +136,7 @@ function AllCourses() {
             {inProgressCourses.length > 2 && (
               <div className="ml-auto">
                 <Link
-                  to="/dashboard/my-courses"
+                  to="/my-courses"
                   className="body-small-bold text-black pr-8"
                 >
                   {t('courses.plusXMore', {

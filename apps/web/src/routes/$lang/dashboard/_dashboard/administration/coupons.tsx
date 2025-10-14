@@ -37,7 +37,7 @@ function AdminCoupons() {
     } else if (
       !canAccess(UserRole.Admin, UserPermission.Coupons)(session?.user)
     ) {
-      navigate({ to: '/dashboard/my-courses' });
+      navigate({ to: '/my-courses' });
     }
   }, [session, navigate]);
 

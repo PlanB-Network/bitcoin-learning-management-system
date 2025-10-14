@@ -92,7 +92,7 @@ function ValidateEmailPage() {
           <Button asChild className="w-fit">
             <Link
               className="cursor-pointer hover:text-orange-500"
-              to={user ? '/dashboard/my-courses' : '/'}
+              to={user ? '/my-courses' : '/'}
             >
               {user
                 ? t('dashboard.goToDashboard')
@@ -114,7 +114,7 @@ function ValidateEmailPage() {
           <Button asChild className="w-fit">
             <Link
               className="cursor-pointer hover:text-orange-500"
-              to={user ? '/dashboard/my-courses' : '/'}
+              to={user ? '/my-courses' : '/'}
             >
               {user
                 ? t('dashboard.goToDashboard')

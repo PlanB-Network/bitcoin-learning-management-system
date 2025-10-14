@@ -4,7 +4,6 @@ import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -91,15 +90,9 @@ export const CourseTable = ({
   }
 
   return (
-    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-4 2xl:gap-16 w-full max-lg:mx-auto max-2xl:max-w-[698px]">
-      <div className="max-w-[698px] max-md:hidden shrink-0">
-        <Table
-          maxHeightClass="max-h-[665px]"
-          className="size-full border-spacing-2"
-        >
-          <TableCaption className="max-2xl:hidden !body-medium-16px text-black mt-8">
-            {t('dashboard.myCourses.newCourses')}
-          </TableCaption>
+    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-4 2xl:gap-16 w-fit max-2xl:max-w-[733px] bg-brown-100 p-2.5 rounded-[20px]">
+      <div className="max-w-[733px] max-md:hidden shrink-0 bg-white px-4 py-8 rounded-xl">
+        <Table maxHeightClass="" className="size-full border-spacing-2">
           {/* Table Header */}
           <TableHeader className="border-none">
             <TableRow>
@@ -145,7 +138,7 @@ export const CourseTable = ({
                       className={`text-center align-middle lg:w-[115px] p-[2.5px] ${categoryIndex % 2 === 0 ? 'bg-newGray-6' : 'bg-[#f7f1e8]'}`}
                     >
                       <div className="grid grid-cols-2 grid-rows-2 gap-1">
-                        {[0, 1, 2, 3].map((i) => {
+                        {[0, 1, 2, 3, 4, 5].map((i) => {
                           const course = coursesForCell[i];
                           const status = getCourseStatus(course?.name);
 

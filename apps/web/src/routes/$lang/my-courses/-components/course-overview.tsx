@@ -15,13 +15,13 @@ import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { trpc } from '#src/utils/trpc.ts';
-import { ProgressBar } from '../../-components/courses-progress-list.js';
-import { EventCalendar } from '../../-components/event-calendar.tsx';
+import { ProgressBar } from '../../dashboard/_dashboard/-components/courses-progress-list.tsx';
+import { EventCalendar } from '../../dashboard/_dashboard/-components/event-calendar.tsx';
 import {
   getNotificationDateString,
   getNotificationIcon,
   getNotificationTitle,
-} from '../../notifications.js';
+} from '../../dashboard/_dashboard/notifications.tsx';
 
 export const CourseOverview = ({ course }: { course: CourseResponse }) => {
   const { data: courseProgress } = useQuery(

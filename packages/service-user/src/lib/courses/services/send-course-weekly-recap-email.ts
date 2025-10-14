@@ -95,7 +95,7 @@ export const createSendCourseWeeklyRecapEmail = (
         await sendEmail({
           data: {
             courseName: courseName,
-            dashboardLink: `${config.domainUrl}/dashboard/course/${course.id}`,
+            dashboardLink: `${config.domainUrl}/my-courses/${course.id}`,
             endDate: weekEndDate.toISOString(),
             startDate: startDate.toISOString(),
             subject: subject,

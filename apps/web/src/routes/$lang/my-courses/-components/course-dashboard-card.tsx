@@ -57,7 +57,7 @@ export const CourseDashboardCard = ({
   const beginnerFriendlyCourses = new Set(['btc101', 'btc102', 'scu101']);
 
   return (
-    <article className="flex flex-row md:max-h-[242px] 2xl:max-h-fit size-full 2xl:flex-col rounded-[10px] border border-black">
+    <article className="flex flex-row md:max-h-fit 2xl:max-h-fit size-full 2xl:flex-col rounded-[10px] border border-black bg-white">
       <span
         className={cn(
           'p-1 md:p-4 title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] 2xl:border-b  2xl:rounded-t-[10px] border-black text-center text-sm',
@@ -71,7 +71,7 @@ export const CourseDashboardCard = ({
       </span>
       <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 2xl:pb-7 px-2.5 pb-2.5 gap-2 md:gap-4">
         <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
-          <div className="flex flex-wrap gap-2 max-2xl:order-2 max-md:hidden">
+          <div className="flex flex-wrap gap-2 max-2xl:order-2 max-md:hidden shrink-0 h-fit">
             <TextTag size={'small'} variant="grey" className="uppercase">
               {course.index}
             </TextTag>
@@ -91,9 +91,7 @@ export const CourseDashboardCard = ({
           </div>
 
           <div className="flex text-start title-small-med-16px md:title-medium-sb-18px max-xl:order-1">
-            <span className="line-clamp-2 md:line-clamp-1 2xl:line-clamp-2">
-              {course.name}
-            </span>
+            <span className="line-clamp-2">{course.name}</span>
           </div>
         </div>
         <div className=" w-full flex flex-row 2xl:flex-col gap-4">
@@ -208,10 +206,7 @@ export const CourseDashboardCard = ({
                       {t('dashboard.myCourses.resumeLesson')}
                     </ButtonWithArrow>
                   </Link>
-                  <Link
-                    className="w-full"
-                    to={`/dashboard/course/${course.id}`}
-                  >
+                  <Link className="w-full" to={`/my-courses/${course.id}`}>
                     <ButtonWithArrow
                       variant="outline"
                       size={isScreenLg ? 'm' : 's'}
@@ -228,11 +223,7 @@ export const CourseDashboardCard = ({
                   <Link
                     className="w-full"
                     // TODO: remove the condition when the course completion page for professor led course is ready
-                    to={
-                      course.teachingFormat === 'professor_led'
-                        ? `/dashboard/course/${course.id}`
-                        : `/dashboard/course/completed#${course.index}`
-                    }
+                    to={`/my-courses/${course.id}`}
                   >
                     <ButtonWithArrow
                       variant="primary"

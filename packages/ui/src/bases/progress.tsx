@@ -33,7 +33,7 @@ const Progress = React.forwardRef<
         className="absolute -bottom-3 md:-bottom-3 z-10 min-w-3 w-[13px] h-8"
         alt="Orange Pill"
         style={{
-          left: `${progressPercentage}%`,
+          left: `${progressPercentage - 2}%`,
         }}
       />
     </ProgressPrimitive.Root>
