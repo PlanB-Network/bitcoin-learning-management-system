@@ -352,7 +352,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
         src={props.logo}
         alt={props.name}
       />
-      <span className="body-base-bold md:text-center max-md:line-clamp-2 line-clamp-3 text-center">
+      <span className="body-base text-gray-200 md:text-center max-md:line-clamp-2 line-clamp-3 text-center">
         {props.name}
       </span>
     </div>

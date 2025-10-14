@@ -54,7 +54,7 @@ function RouteComponent() {
         subtitle={t('academy.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
         titleClassName="max-w-[62%]"
-        subtitleClassName={'max-w-[85%] lg:max-w-[40%]'}
+        subtitleClassName={'max-w-[85%] lg:max-w-[400px]'}
       />
 
       <PageBlock>

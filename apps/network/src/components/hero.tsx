@@ -22,14 +22,14 @@ export const Hero = ({
   subtitleUnderImage = false,
 }: HeroProps) => {
   return (
-    <PageBlock>
+    <PageBlock className="max-w-[1700px]">
       <div
         className={cn(
           'relative flex flex-col tracking-[-0.4px] lg:mx-10',
           className,
         )}
       >
-        <div className="lg:absolute left-2 flex flex-col gap-8 xl:gap-20 h-full">
+        <div className="lg:absolute left-2 flex flex-col gap-8 xl:gap-32 h-full">
           <h1
             className={cn(
               'lg:mt-12 text-5xl lg:text-6xl xl:text-8xl lg:leading-16 xl:leading-24 font-light text-left',
@@ -47,7 +47,7 @@ export const Hero = ({
         <img
           src={imageUrl}
           alt="Hero background"
-          className="max-lg:mt-6 w-full h-auto object-cover"
+          className="max-lg:mt-6 h-[1000px] object-cover"
         />
         {subtitleUnderImage ? (
           <p className={cn('title-small lg:title-base', subtitleClassName)}>
