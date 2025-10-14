@@ -20,7 +20,8 @@
     "storyContent": "Plan ₿ Network è un'iniziativa per supportare l'educazione Bitcoin in tutto il mondo. È l'insieme di varie aziende appassionate di Bitcoin focalizzate sull'istruzione, software open-source, reti peer-to-peer e sull'appartenenza alla comunità. Insieme, hanno deciso di costruire Plan ₿ Network e offrire all'ecosistema Bitcoin gli strumenti giusti per crescere.",
     "storyTitle": "La nostra storia",
     "subtitle": "Vuoi orange-pillare il mondo? Unisciti a Plan ₿ Network.",
-    "title": "Su Plan ₿ Network"
+    "title": "Su Plan ₿ Network",
+    "readManifesto": "Leggi il manifesto"
   },
   "accessType": {
     "hybrid": "Di persona & online",
@@ -125,13 +126,13 @@
     "contributeTitle": "Vuoi contribuire?",
     "educationalContent": {
       "description": "Questo contenuto è destinato ad essere pronto all'uso per eventi ed uso didattico.",
-      "title": "Contenuto Educativo"
+      "title": "Contenuti Educativi"
     },
     "pageDescription": "Non è semplice arrivare all'adozione globale. Per raggiungere questo obiettivo più velocemente, abbiamo creato un database di contenuti educativi. Qui, gli educatori possono aggiungere o accedere ai contenuti liberamente. Non bisogna rifare tutto da capo ogni volta, per cui è importante lavorare insieme per centralizzare le risorse più utili in un unico toolkit!",
     "pageTitle": "Kit Educativo Bitcoin",
     "visualContent": {
       "description": "Le immagini seguenti possono essere usate per le tue creazioni.",
-      "title": "Contenuto Visivo"
+      "title": "Immagini"
     }
   },
   "conferences": {
@@ -1109,11 +1110,11 @@
     },
     "course": {
       "announcement": "Annuncio",
-      "assignment": "Compito",
+      "assignment": "Assignment",
       "assignmentCompletedDescription": "Il tuo progetto è stato inviato con successo ed è in fase di revisione.\nIl tuo voto sarà visibile qui dopo la correzione.",
       "assignmentCompletedTitle": "Progetto completato",
       "assignmentDescription": "Il progetto segna la seconda fase del programma della Plan ₿ Biz School ed è disponibile solo per gli studenti che hanno completato con successo la prima fase. In base alla posizione in classifica e alle proprie preferenze, a ciascuno studente verrà assegnato un progetto sviluppato da un'azienda Bitcoin, che deve essere presentato entro il 18 giugno.\nGli studenti avranno a disposizione il periodo dal 2 al 18 giugno, e avranno la possibilità di chiedere supporto a un rappresentante dell'azienda.\n\nI progetti verranno valutati dall'azienda, e il punteggio ottenuto influenzerà il voto finale. Solo gli studenti con il punteggio più alto saranno invitati a partecipare alla Summer School a Lugano, Svizzera, dal 23 al 30 luglio 2025.",
-      "assignmentInformation": "Informazioni sull'incarico",
+      "assignmentInformation": "Informazioni sull'assignment",
       "assignmentTitle": "Progetto",
       "checkDetailsCompleted": "Qui puoi rivedere tutti i dettagli riguardanti il corso che hai completato.",
       "completionDiploma": "Diplomi",
@@ -1158,7 +1159,7 @@
       "rankingOnly24Hours": "Il portale con i punteggi rimarrà aperto solo per 24 ore, il 2 giugno dalle 00:00 alle 23:59 (UTC+2).",
       "rankProjectPreferences": "Elenca i tuoi progetti preferiti",
       "ratingsAndFeedbacks": "Valutazioni e feedback",
-      "readAssignment": "Leggi di più sul progetto",
+      "readAssignment": "Leggi di più sull'assignment",
       "saveList": "Salva lista",
       "shareOnSocials": "Condividi sui social:",
       "submissionInstructions": "Istruzioni per il caricamento",
@@ -1300,26 +1301,27 @@
         "announcementsIntroduction": "Oltre alle notifiche automatiche relative agli orari delle lezioni, hai l'opzione di scrivere e programmare annunci supplementari per i tuoi studenti. Ad esempio, puoi informarli su cambiamenti logistici o aggiornamenti dell'ultimo minuto.\nGli studenti riceveranno queste notifiche sulla piattaforma, e anche via email (se attivano questa funzione opzionale).",
         "announcementsPast": "Notifiche passate",
         "announcementsPastDescription": "Di seguito sono elencati gli annunci che sono già stati pubblicati. La lista verrà cancellata dopo un mese.",
-        "announcementsUpcoming": "",
+        "announcementsUpcoming": "Prossimi Annunci",
         "announcementsUpcomingDescription": "Di seguito sono riportati gli annunci che hai programmato per il futuro.",
-        "assignment": "",
+        "assignment": "Assignment",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertDescription2": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Dopo aver inserito tutti i voti, fai clic su \"Pubblica voti\" per pubblicarli tutti insieme.\nControlla i voti prima di farlo, perché non saranno più modificabili una volta che sono stati pubblicati. ",
+          "alertDescription2": "I voti degli assignment devono essere pubblicati prima della mezzanotte del 22 Giugno (CET).",
+          "alertTitle": "Valutazione degli assignment",
+          "confirmPublication": "Conferma pubblicazione",
+          "confirmPublicationDescription": "Dopo la pubblicazione dei voti, non c'è più possibilità di tornare indietro perché non saranno più modificabili.",
+          "confirmPublicationTitle": "Hai verificato che non ci sia nessun errore?",
+          "description": "Gli studenti sono ordinati per gruppi di assegnazione.",
+          "grade100": "Voto (/100)",
+          "gradesPublished": "I voti sono stati pubblicati.",
+          "missingGradesDescription": "Se i voti vengono pubblicati, quelli mancanti saranno sostituiti con 0/100.",
+          "missingGradesTitle": "Mancano ancora {{count}} voti da inserire!",
+          "publishAllGrades": "Pubblica tutti i voti",
+          "studentDisplayName": "Studente (Nome visualizzato)",
+          "title": "Valutazione degli assignment",
+          "courseAssignment": "Assignment del corso"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "Project Assignment",
         "courseDetails": "Dettagli del corso",
         "courseLongDescription": "Descrizione introduttiva",
         "courseModification": "Se hai bisogno di aiuto per modificare il corso, leggi questo <0>tutorial</0>.",
@@ -1342,7 +1344,10 @@
         "selectCourse": "",
         "summerStudents": "",
         "writeAnnouncement": "",
-        "amountPaid": "Importo pagato"
+        "amountPaid": "Importo pagato",
+        "averageAttempts": "Tentativi in media",
+        "averageDuration": "Durata media",
+        "averageScore": "Punteggio medio"
       },
       "menu": "Menu insegnante",
       "profile": {
@@ -1590,7 +1595,7 @@
   },
   "labs": {
     "coordinatedBy": "Questo Lab è coordinato da",
-    "description1": "I Plan ₿ Labs sono gruppi di studio progettati per offrire periodicamente classi pratiche e interattive. Attraverso questi gruppi di studio, studenti e professori si portano avanti discussioni e dibattiti sulle ultime ricerche, risolvendo delle sfide legate al mondo reale, e applicandovi anche concetti teorici.",
+    "description1": "I Plan ₿ Labs sono gruppi di studio progettati per offrire periodicamente classi pratiche e interattive. Qui, studenti e professori portano avanti discussioni e dibattiti sulle ultime ricerche, risolvendo alcuni problemi reali, e applicandovi anche concetti teorici.",
     "description2": "Unisciti al Plan ₿ Lab che si allinea con il tuo campo di studio. Migliora la tua esperienza di apprendimento!",
     "planBLabs": "Plan ₿ Labs",
     "presentation": {
@@ -1648,7 +1653,7 @@
   },
   "notification": {
     "types": {
-      "assignment": "Compito assegnato",
+      "assignment": "Assignment",
       "calendar": "Avviso del calendario",
       "celebration": "Festeggiamento",
       "general": "Informazioni generali",
@@ -1706,11 +1711,11 @@
   "professors": {
     "navigationTitles": {
       "all": "Tutti",
-      "lecturers": "Docenti",
+      "lecturers": "Relatori",
       "teachers": "Professori",
-      "tutorialCreators": "Creatori di tutorial"
+      "tutorialCreators": "Scrittori di tutorial"
     },
-    "pageSubtitle": "Tutti i nostri professori sono volontari e appassionati bitcoiner. Puoi contribuire per di dire grazie.",
+    "pageSubtitle": "Tutti i nostri professori sono bitcoiner appassionati che contribuiscono gratuitamente. Puoi mandare loro una donazione per mostrare il tuo apprezzamento.",
     "pageTitle": "Professori",
     "tips": {
       "authorSupport": "Sostieni l'autore con una donazione",
@@ -1723,7 +1728,7 @@
     "languages": "Lingue",
     "networkStrength": "La forza di una rete risiede nei suoi membri",
     "noRelatedEvents": "Non ci sono eventi programmati di questo educatore al momento.",
-    "otherCommunities": "Esplora le comunità Plan ₿",
+    "otherCommunities": "Esplora le community Plan ₿",
     "pageTitle": "Progetti Bitcoin",
     "related": "Correlato",
     "relatedEvents": "Eventi futuri correlati"
@@ -1785,7 +1790,8 @@
       "title": "Canali Youtube"
     },
     "conferences": {
-      "title": "Replay di conferenze"
+      "title": "Replay di conferenze",
+      "addConference": "Aggiungi video di conferenze"
     },
     "github": "Tutti questi dati sono gestiti tramite un unico repository open source <0>Github</0>. Puoi contribuire anche tu aggiungendo eventuali contenuti mancanti.",
     "glossary": {
@@ -1807,7 +1813,7 @@
       "level": "Livello:",
       "noNewsletters": "Al momento non ci sono newsletter per la lingua selezionata.",
       "subtitle": "<0>Altre newsletter</0> che potrebbero interessarti",
-      "title": "Le Newsletter"
+      "title": "Newsletter"
     },
     "pageDescription": "Cercare di capire Bitcoin è come esplorare un labirinto che continua a crescere. Per aiutarti nel tuo viaggio, abbiamo curato una vasta collezione di risorse che includono libri, podcast, video e replay di conferenze. Questo portale raccoglie tutte le informazioni in un unico database su Github per aiutarti a capire meglio l'ecosistema di Bitcoin.",
     "pageSubtitle": "Centralizzare la conoscenza per distribuirla al meglio",
@@ -1821,7 +1827,8 @@
       "title": "Podcast"
     },
     "projects": {
-      "title": "Progetti"
+      "title": "Progetti",
+      "addProjects": "Aggiungi un progetto"
     },
     "searchFilterName": "Cerca per nome",
     "toggleFreeOnly": "Gratis",
@@ -2001,7 +2008,7 @@
     "chapter": "Capitolo",
     "chapters": "Capitoli",
     "close": "Chiudi",
-    "communities": "Le comunità",
+    "communities": "Community",
     "company": "",
     "complete": "Completo",
     "conference": "Conferenza",
@@ -2148,7 +2155,7 @@
   },
   "youtubeChannels": {
     "pageTitle": "Canali Youtube",
-    "view": "Visualizza il canale Youtube",
+    "view": "Vai al canale Youtube",
     "watchTrailer": "Guarda il trailer"
   },
   "account": {
@@ -2156,9 +2163,9 @@
     "myTeacherProfile": "Profilo insegnante"
   },
   "navbar": {
-    "liveClassesDescription": "Seguiti da un insegnante",
+    "liveClassesDescription": "Studia con l'insegnante",
     "liveClassesTitle": "Corsi Live",
-    "learnAnytimeDescription": "Studio autonomo",
+    "learnAnytimeDescription": "Studia quando vuoi",
     "learnAnytimeTitle": "Corsi Open Source",
     "myCalendar": "Il mio calendario"
   },
