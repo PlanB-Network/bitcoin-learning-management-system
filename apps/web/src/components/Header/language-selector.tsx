@@ -83,7 +83,7 @@ export const LanguageSelector = ({
               key={language}
               type="button"
               className={cn(
-                'flex items-center px-4 py-2 rounded-lg w-44 focus:outline-hidden',
+                'flex items-center px-4 py-2 rounded-lg w-44 focus:outline-hidden h-10',
                 i18n.dir() === 'rtl' && 'flex-row-reverse',
                 activeLanguage.toLowerCase() === language.toLowerCase()
                   ? 'border rounded-lg border-orange-500 text-orange-500 dark gap-2 justify-between'
