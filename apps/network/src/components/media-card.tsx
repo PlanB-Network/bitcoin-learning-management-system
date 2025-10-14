@@ -23,8 +23,8 @@ export default function MediaCard({
   subtext,
   imageUrl,
   className,
-  titleClassName = 'max-w-[55%]',
-  subtitleClassName = 'max-w-[50%]',
+  titleClassName = 'max-w-[800px]',
+  subtitleClassName = 'max-w-[700px]',
   imageClassName = '',
   alt = '',
   orientation = 'left',
@@ -58,7 +58,7 @@ export default function MediaCard({
       >
         <div
           className={cn(
-            'lg:absolute h-full z-10 p-5 flex flex-col justify-between',
+            'lg:absolute h-full z-10 p-5 lg:mt-4 flex flex-col justify-between lg:pb-10',
             !isLeft ? ' lg:items-end lg:self-end' : '',
           )}
         >

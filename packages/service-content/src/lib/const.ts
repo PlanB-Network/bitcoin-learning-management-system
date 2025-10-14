@@ -42,7 +42,7 @@ export const ISO_639_LANGUAGES = {
   sv: 'sv',
   tr: 'tr',
   vi: 'vi',
-  'zh-hans': 'zh',
+  zhhans: 'zh-hans',
 } as const;
 
 export type Language = keyof typeof ISO_639_LANGUAGES;

@@ -1,4 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { LANGUAGES_MAP } from '@blms/shared';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/academy/header.png';
 import headerSmallImage from '#src/assets/academy/header.png';
@@ -34,6 +35,7 @@ import NetworkListItem from '#src/components/network-list-item.tsx';
 import PageBlock from '#src/components/page-block.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { titleCss } from '#src/utils/css.tsx';
+import { RESOURCES_TYPES, TUTORIALS_CATEGORIES } from '#src/utils/misc.tsx';
 
 export const Route = createFileRoute('/academy')({
   component: RouteComponent,
@@ -42,6 +44,13 @@ export const Route = createFileRoute('/academy')({
 function RouteComponent() {
   const { t } = useTranslation();
   const isMobile = useSmaller('lg');
+
+  const languageMatch = {
+    nbno: 'nb-NO',
+    srlatn: 'sr-Latn',
+    zhhans: 'zh-Hans',
+    zhhant: 'zh-Hant',
+  } as const;
 
   return (
     <>
@@ -130,8 +139,7 @@ function RouteComponent() {
         subtext={t('academy.learnLive.subtitle')}
         imageUrl={isMobile ? media3MobileImage : media3Image}
         alt="Scenic mountain lake"
-        titleClassName={'lg:max-w-[53%]'}
-        subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
+        subtitleClassName={'lg:max-w-[380px] max-xl:!text-lg text-gray-300'}
         imageClassName=""
         subtitleUnderImage={true}
         className="mt-12"
@@ -179,18 +187,75 @@ function RouteComponent() {
               {t('academy.database.button')}
             </NetworkButton>
           </div>
-          <div className="lg:w-[55%] lg:pl-12">
-            <div className="w-full">
+          <div className="lg:w-[55%] lg:pl-12 flex flex-col gap-8">
+            <div>
               <p className="w-full pb-2 border-b-[1px]  border-white uppercase">
                 {t('academy.database.tutorials')}
               </p>
               <div className="flex flex-row flex-wrap gap-4 mt-4">
-                <NetworkButton variant={'secondary'}>1111111</NetworkButton>
-                <NetworkButton variant={'secondary'}>222222222</NetworkButton>
-                <NetworkButton variant={'secondary'}>3333333333</NetworkButton>
-                <NetworkButton variant={'secondary'}>44444444</NetworkButton>
-                <NetworkButton variant={'secondary'}>55555555555</NetworkButton>
-                <NetworkButton variant={'secondary'}>666</NetworkButton>
+                {TUTORIALS_CATEGORIES.map((category) => (
+                  <Link
+                    key={category}
+                    to={`https://planb.academy/tutorials/${category}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <NetworkButton
+                      variant={'secondary'}
+                      className="capitalize"
+                      size={'s'}
+                    >
+                      {t(`tutorialsCategories.${category}`)}
+                    </NetworkButton>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="w-full pb-2 border-b-[1px]  border-white uppercase">
+                {t('academy.database.resources')}
+              </p>
+              <div className="flex flex-row flex-wrap gap-4 mt-4">
+                {RESOURCES_TYPES.map((resource) => (
+                  <Link
+                    key={resource}
+                    to={`https://planb.academy/resources/${resource}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <NetworkButton
+                      variant={'secondary'}
+                      className="capitalize"
+                      size={'s'}
+                    >
+                      {t(`resourcesTypes.${resource}`)}
+                    </NetworkButton>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="w-full pb-2 border-b-[1px]  border-white uppercase">
+                {t('academy.database.languages')}
+              </p>
+              <div className="flex flex-row flex-wrap gap-4 mt-4">
+                {Object.entries(LANGUAGES_MAP).map((lang) => (
+                  <Link
+                    key={lang}
+                    to={`https://planb.academy/${(languageMatch as Record<string, string>)[lang[0]] || lang[0]}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <NetworkButton
+                      variant={'secondary'}
+                      className="capitalize"
+                      size={'s'}
+                    >
+                      {t(`${lang[1]}`)}
+                    </NetworkButton>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

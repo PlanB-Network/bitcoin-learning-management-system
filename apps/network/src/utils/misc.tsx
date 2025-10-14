@@ -126,3 +126,27 @@ export const normalizeText = (text: string): string => {
     .toLowerCase()
     .replaceAll(/[^\dA-Za-z]/g, '');
 };
+
+export const TUTORIALS_CATEGORIES = [
+  'wallet',
+  'node',
+  'mining',
+  'exchange',
+  'business',
+  'privacy',
+  'computer-security',
+  'contribution',
+] as const;
+
+export const RESOURCES_TYPES = [
+  'projects',
+  'books',
+  'podcasts',
+  'youtube-channels',
+  'lecture-replays',
+  'conference-replays',
+  'newsletters',
+  'movies',
+  'education-kits',
+  'glossary',
+] as const;

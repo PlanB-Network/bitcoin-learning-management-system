@@ -22,7 +22,7 @@ export const Hero = ({
   subtitleUnderImage = false,
 }: HeroProps) => {
   return (
-    <PageBlock className="max-w-[1700px]">
+    <PageBlock className="max-lg:mt-20 max-w-[1700px]">
       <div
         className={cn(
           'relative flex flex-col tracking-[-0.4px] lg:mx-10',
