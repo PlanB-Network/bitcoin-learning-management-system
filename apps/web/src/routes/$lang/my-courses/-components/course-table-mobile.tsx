@@ -169,14 +169,14 @@ export const CourseTableMobile = ({
 
   return (
     <section className="flex flex-col md:hidden max-h-[calc(100dvh-140px)]">
-      <div className="overflow-y-auto no-scrollbar rounded-[10px] w-full max-w-[330px] min-[425px]:max-w-[350px] min-[650px]:max-w-[432px] mx-auto">
+      <div className="overflow-y-auto no-scrollbar rounded-[10px] w-full">
         <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
           <TableHeader className="border-none">
             <TableRow>
               {courseCategoriesDashboard.map((category) => (
                 <TableHead
                   key={category}
-                  className="text-center py-2 w-[35px] min-[425px]:w-[50px] px-1 mx-auto"
+                  className="text-center py-2 w-[clamp(35px,10vw,65px)] px-1 mx-auto"
                 >
                   <div className="w-[30px] max-w-[30px] flex mx-auto">
                     <img
@@ -197,7 +197,7 @@ export const CourseTableMobile = ({
               {courseCategoriesDashboard.map((category) => (
                 <TableCell
                   key={category}
-                  className="align-top text-center px-[2.5px] pb-2 !w-[35px] pt-0"
+                  className="align-top text-center px-[2.5px] pb-2 !w-[clamp(35px,10vw,65px)] pt-0"
                 >
                   <div className="flex flex-col gap-1 min-[650px]:gap-2.5">
                     {(coursesByCategory[category.toLowerCase()] || [])
@@ -221,7 +221,7 @@ export const CourseTableMobile = ({
                             key={course.id}
                             type="button"
                             onClick={() => setSelectedCourse(course.id)}
-                            className={`rounded-md size-[35px] min-[425px]:size-[50px] ${bgColor} ${activeBorder} flex items-center justify-center p-4 mx-auto`}
+                            className={`rounded-md size-[clamp(35px,10vw,65px)] ${bgColor} ${activeBorder} flex items-center justify-center p-4 mx-auto`}
                             tabIndex={0}
                             onKeyDown={(e) => {
                               if (e.key === 'Enter' || e.key === ' ') {

@@ -1,6 +1,7 @@
 import { TeachingFormat } from '@blms/constants';
 import type { CourseProgressExtended } from '@blms/types';
 import {
+  cn,
   Loader,
   Progress,
   SegmentedControl,
@@ -12,6 +13,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTable } from './-components/course-table.tsx';
@@ -25,6 +27,8 @@ function DashboardCourses() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { session, courses } = useContext(AppContext);
+
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
 
   const [currentTab, setCurrentTab] = useState('map');
 
@@ -91,6 +95,9 @@ function DashboardCourses() {
         })
     : [];
 
+  const hasInProgressProfessorLedCourses =
+    filteredInProgressProfessorLedCourses.length > 0;
+
   useEffect(() => {
     if (session === null) {
       navigate({ to: '/' });
@@ -103,10 +110,12 @@ function DashboardCourses() {
 
   return (
     <PageLayout title={t('navbar.myCourses')} layoutSize="max">
-      {filteredInProgressProfessorLedCourses.length > 0 && (
+      {hasInProgressProfessorLedCourses && (
         <>
-          <h2 className="title-large">{t('navbar.liveClassesTitle')}</h2>
-          <div className="flex flex-col gap-4 mt-6 mb-8 w-full">
+          <h2 className="title-base md:title-large max-md:mt-4">
+            {t('navbar.liveClassesTitle')}
+          </h2>
+          <div className="flex flex-col gap-1 md:gap-4 mt-4 md:mt-6 w-full">
             {filteredInProgressProfessorLedCourses.map((courseProgress) => (
               <InProgressCourseCard
                 key={courseProgress.courseId}
@@ -116,13 +125,20 @@ function DashboardCourses() {
           </div>
         </>
       )}
-      <h2 className="title-large">{t('navbar.learnAnytimeTitle')}</h2>
+      <h2
+        className={cn(
+          'title-base md:title-large',
+          hasInProgressProfessorLedCourses ? 'mt-8' : ' max-md:mt-4',
+        )}
+      >
+        {t('navbar.learnAnytimeTitle')}
+      </h2>
       <SegmentedControl
         variant="outline"
         defaultValue={'map'}
         value={currentTab}
-        size={'default'}
-        className="w-full max-w-[442px] my-8"
+        size={isMobile ? 'sm' : 'default'}
+        className="w-full md:max-w-[442px] my-4 md:my-8"
       >
         <SegmentedControlItem
           value={'map'}
@@ -152,7 +168,7 @@ function DashboardCourses() {
         </div>
       )}
       {currentTab === 'list' && (
-        <div className="flex flex-col gap-4 mt-6 mb-8 w-full">
+        <div className="flex flex-col gap-1 md:gap-4 mt-6 w-full">
           {filteredInProgressSelfLearningCourses.map((courseProgress) => (
             <InProgressCourseCard
               key={courseProgress.courseId}
