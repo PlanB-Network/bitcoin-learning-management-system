@@ -146,7 +146,27 @@
   },
   "hubs": {
     "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory.",
-    "title": "<0>Building</0> the Bitcoin places of tomorrow"
+    "title": "<0>Building</0> the Bitcoin places of tomorrow",
+    "blockTitle1Text": "Empowering lugano",
+    "blockTitle1Subtext": "The city of Lugano is the centerpiece of a global digital transformation, spanning tech startups, payments, and digital identity. We aim to provide support and guidance throughout the city’s transformation.",
+    "co-working": {
+      "title": "Bitcoin Coworking Hubs",
+      "subtitle": "Plan ₿ Network supports the growth of Key Bitcoin Hubs around the world, by creating educational events, seminars and networking opportunities. We work in close collaboration with the local Bitcoin community to create synergy among passionate builders, local businesses, and key public actors. \nOur goal is to cultivate a global network of safe spaces where anyone, anywhere, can learn, collaborate, and build with Bitcoin",
+      "hub1Name": "Tokyo Bitcoin Base",
+      "hub1Location": "Tokyo, Japan",
+      "hub2Name": "PoW.space",
+      "hub2Location": "Lugano, Switzerland",
+      "hub3Name": "Tempo House",
+      "hub3Location": "Taipei, Taiwan"
+    },
+    "lugano": {
+      "superTitle": "Supporting Bitcoin activities in Lugano",
+      "superSubtitle": "Plan ₿ Network is very well implanted in the city of Lugano. We work hand in hand with other organizations to develop Bitcoin education and activities in the city.",
+      "title": "Plan ₿ Lugano",
+      "subtitle": "In Lugano, Plan ₿ is bringing Bitcoin and sovereign technologies into everyday life.\nLaunched by the City of Lugano and Tether, the initiative connects adoption, education, and innovation to make the city a place where decentralized technologies can thrive — and where people can discover what a Bitcoin‑powered future looks like",
+      "button": "Learn more",
+      "tag": "Activities"
+    }
   },
   "menu": {
     "about": "About",

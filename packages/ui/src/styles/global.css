@@ -788,7 +788,6 @@
 }
 
 @utility bg-gradient-network-lr {
-  border-radius: 40px;
   /* First linear gradient (overlay) */
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
@@ -798,16 +797,37 @@
     black -113.997px 0px / 110.92% 100% no-repeat;
 }
 
+@utility bg-gradient-network-lr-dark {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(92, 33, 0, 0) 49.97%,
+      rgba(65, 24, 0, 0.8) 60.7%,
+      #411800 67.3%,
+      var(--Brown-950, #100a07) 100.02%
+    ),
+    linear-gradient(
+      270deg,
+      rgba(43, 31, 24, 0) 0%,
+      var(--Brown-900, #2b1f18) 100%
+    );
+}
+
 @utility bg-gradient-network-bt {
-  border-radius: 40px;
   background:
     linear-gradient(180deg, rgba(1, 2, 5, 0) 0.11%, #5c2100 104.27%),
     /* Background settings */
     black -113.997px 0px / 110.92% 100% no-repeat;
 }
+@utility bg-gradient-network-bt-transparent {
+  background: linear-gradient(
+    0deg,
+    var(--Orange-900, #5c2100) -3.77%,
+    rgba(1, 2, 5, 0) 92.25%
+  );
+}
 
 @utility bg-gradient-network-bt-dark {
-  border-radius: 40px;
   background:
     linear-gradient(
       180deg,
