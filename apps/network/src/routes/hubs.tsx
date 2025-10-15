@@ -12,6 +12,7 @@ import BlockTitle from '#src/components/block-title.tsx';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard2 from '#src/components/media-card2.tsx';
 import PageBlock from '#src/components/page-block.tsx';
+import ToolsForCommunities from '#src/components/tools-for-communities.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 export const Route = createFileRoute('/hubs')({
@@ -95,6 +96,8 @@ function RouteComponent() {
         className="mt-24"
         orientation="right"
       />
+
+      <ToolsForCommunities />
     </>
   );
 }

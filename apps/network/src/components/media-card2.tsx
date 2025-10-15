@@ -34,7 +34,7 @@ export default function MediaCard2({
   return (
     <PageBlock
       className={cn(
-        'shadow-lg transition-transform hover:-translate-y-0.5 hover:shadow-xl h-full border-orange-500 bg-gradient-network-bt-transparent',
+        'shadow-lg h-full border-orange-500 bg-gradient-network-bt-transparent',
         isLeft
           ? 'rounded-b-2xl border-b-[1px] border-l-[1px]'
           : 'rounded-b-2xl border-b-[1px] border-r-[1px]',

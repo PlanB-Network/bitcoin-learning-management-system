@@ -42,6 +42,7 @@ import { NetworkButton } from '#src/components/network-button.tsx';
 import NetworkCard from '#src/components/network-card.tsx';
 import NetworkListItem from '#src/components/network-list-item.tsx';
 import PageBlock from '#src/components/page-block.tsx';
+import ToolsForCommunities from '#src/components/tools-for-communities.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { titleCss } from '#src/utils/css.tsx';
 import { RESOURCES_TYPES, TUTORIALS_CATEGORIES } from '#src/utils/misc.tsx';
@@ -523,13 +524,7 @@ function RouteComponent() {
         <ContactUs text={t('about.contactText')} email="toto@toto.com" />
       </PageBlock>
 
-      <BlockTitle
-        text={t('academy.blockTitle4Text')}
-        subtext={t('academy.blockTitle4Subtext')}
-        direction="right"
-      />
-      {/* <div className="shadow-top-bottom-box py-24 mt-24"></div>
-      <div className="py-24 bg-gradient-network-bt " /> */}
+      <ToolsForCommunities />
     </>
   );
 }
