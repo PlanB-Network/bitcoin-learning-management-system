@@ -31,7 +31,7 @@ const ConferencesMarkdownBody = ({
         ),
 
         blockquote: ({ children }) => (
-          <BlockquoteRenderer mode="dark">{children}</BlockquoteRenderer>
+          <BlockquoteRenderer mode="light">{children}</BlockquoteRenderer>
         ),
         code: ({ className, children }) => (
           <CodeRenderer className={className}>{children}</CodeRenderer>

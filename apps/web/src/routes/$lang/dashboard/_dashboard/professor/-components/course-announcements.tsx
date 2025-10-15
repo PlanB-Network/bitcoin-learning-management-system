@@ -123,7 +123,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                     <Button
                       variant="primary"
                       size="s"
-                      mode="dark"
+                      mode="light"
                       onClick={() => {
                         setAnnouncementToEdit(announcement);
                         setIsAnnouncementModalOpen(true);

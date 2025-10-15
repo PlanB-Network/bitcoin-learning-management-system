@@ -1,26 +1,26 @@
 import { formatNameForURL } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { Button, cn, Image, ListItem, TextTag } from '@blms/ui';
+import { Button, cn, DividerSimple, Image, ListItem, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
-import { TbChevronRight } from 'react-icons/tb';
+import { TbChevronRight, TbClock } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
-import { assetUrl } from '#src/utils/index.js';
+import { CourseLevelTag } from '#src/routes/$lang/_content/courses/-components/course-level.tsx';
+import { assetUrl, resourceImgUrl } from '#src/utils/index.js';
 import { normalizeString } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
   defaultVariants: {
     borderRadius: 'courses',
     color: 'primary',
-    mode: 'dark',
+    mode: 'light',
   },
   variants: {
     borderRadius: {
       courses: 'rounded-2xl',
     },
     color: {
-      featured: 'bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section',
       primary: 'bg-transparent border border-neutral-100 dark:bg-maroon-10',
     },
     mode: {
@@ -32,12 +32,10 @@ const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
 
 export const CourseCard = ({
   course,
-  featured = false,
   mode = 'light',
   className,
 }: {
   course: JoinedCourse | CourseResponse;
-  featured?: boolean;
   mode?: 'light' | 'dark';
   className?: string;
 }) => {
@@ -49,7 +47,7 @@ export const CourseCard = ({
     >
       <article
         className={`overflow-hidden ${courseCardStyles({
-          color: featured ? 'featured' : 'primary',
+          color: 'primary',
           mode,
         })} relative`}
       >
@@ -166,6 +164,76 @@ export const CourseCard = ({
           </div>
         </div>
       </article>
+    </Link>
+  );
+};
+
+export const HorizontalCourseCardDesktop = ({
+  course,
+  className,
+}: {
+  course: JoinedCourse | CourseResponse;
+  className?: string;
+}) => {
+  return (
+    <Link
+      key={course.id}
+      to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
+      className={cn(
+        'flex w-full gap-2 border border-neutral-100 rounded-2xl text-black',
+        className,
+      )}
+    >
+      <Image
+        src={assetUrl(
+          `courses/${course.index}`,
+          'thumbnail.webp',
+          course.lastCommit,
+        )}
+        alt={course.name}
+        breakpoints={{ default: 440 }}
+        className="rounded-l-2xl object-cover [overflow-clip-margin:_unset] object-center w-full max-w-[160px] lg:max-w-[216px] shrink-0"
+      />
+      <div className="flex items-center gap-4 px-4 py-2.5 w-full">
+        <div className="flex flex-col w-full">
+          <span className="title-medium">{course.name}</span>
+          <p className="text-neutral-600 mt-1 body-extra-small line-clamp-3">
+            {course.goal}
+          </p>
+          <div className="flex items-center gap-1 mt-4">
+            <Image
+              src={resourceImgUrl(course.mainProfessors[0], 'profile.webp')}
+              alt={course.mainProfessors[0]?.name}
+              breakpoints={{ default: 128 }}
+              className={cn(
+                'size-6 rounded-full z-10 object-cover [overflow-clip-margin:_unset]',
+              )}
+            />
+            <span className="body-small">{course.mainProfessors[0]?.name}</span>
+          </div>
+          <DividerSimple mode="light" className="my-2.5" />
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-6">
+              <CourseLevelTag level={course.level} />
+              <span className="flex items-center p-2 gap-2">
+                <TbClock className="text-brown-400" size={16} />
+                <span className="body-extra-small-bold text-brown-800">
+                  {t('courses.details.mobile.hours', { hours: course.hours })}
+                </span>
+              </span>
+            </div>
+            {course.averageRating !== 0 && (
+              <span className="flex items-center gap-1">
+                <HalfFilledStar className="size-5" />
+                <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
+                  {course.averageRating.toFixed(1)}
+                </span>
+              </span>
+            )}
+          </div>
+        </div>
+        <TbChevronRight className="shrink-0 text-neutral-700" size={20} />
+      </div>
     </Link>
   );
 };

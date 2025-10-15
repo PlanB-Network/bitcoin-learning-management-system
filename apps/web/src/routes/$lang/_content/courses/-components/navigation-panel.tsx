@@ -80,7 +80,7 @@ export const NavigationPanel: React.FC<Props> = ({
                     )}
                   >
                     <TbTriangleInvertedFilled
-                      size={10}
+                      size={8}
                       className="group-data-[state=open]:rotate-0 group-data-[state=closed]:-rotate-90 shrink-0 transition-transform ease-in-out"
                     />
                     <span className="body-extra-small-bold">

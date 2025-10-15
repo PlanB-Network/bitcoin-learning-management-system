@@ -3,7 +3,10 @@ import { cn } from '@blms/ui';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
 import { useContext } from 'react';
-import { CourseCard } from '#src/patterns/course-card.tsx';
+import {
+  CourseCard,
+  HorizontalCourseCardDesktop,
+} from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
@@ -43,8 +46,12 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
     const course = getCourse(href, courses ?? []);
     if (course) {
       return (
-        <div className="w-full max-w-[500px] md:max-w-[340px] max-md:mx-auto py-2 md:py-1 md:mx-2 md:inline-block md:overflow-hidden">
-          <CourseCard course={course} mode="light" />
+        <div className="w-full py-2 md:py-1">
+          <CourseCard course={course} mode="light" className="md:hidden" />
+          <HorizontalCourseCardDesktop
+            course={course}
+            className="max-md:hidden"
+          />
         </div>
       );
     }

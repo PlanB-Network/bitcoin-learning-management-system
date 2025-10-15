@@ -512,7 +512,7 @@ const ConfirmGradingSubmissionDialog = ({
         <Button
           variant="primary"
           size="m"
-          mode="dark"
+          mode="light"
           className="max-md:self-end"
         >
           {t('dashboard.teacher.courses.assignmentGrade.publishAllGrades')}

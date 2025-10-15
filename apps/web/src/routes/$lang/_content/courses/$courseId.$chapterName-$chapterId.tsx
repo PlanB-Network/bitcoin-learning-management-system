@@ -689,7 +689,7 @@ function CourseChapter() {
             <div>
               <Button
                 size="l"
-                mode="dark"
+                mode="light"
                 variant="primary"
                 className="mt-4"
                 onClick={openAuthModal}

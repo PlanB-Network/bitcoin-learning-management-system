@@ -666,7 +666,7 @@ function CourseDetails() {
     return (
       <Button
         size="l"
-        mode="dark"
+        mode="light"
         className="max-lg:my-6 max-lg:!m-2 lg:mt-5 w-full max-lg:max-w-[290px] md:w-fit self-center lg:self-end ml-2"
         variant="outline"
         onClick={async () => {
@@ -812,7 +812,7 @@ function CourseDetails() {
     return hasArrow ? (
       <ButtonWithArrow
         size="l"
-        mode="dark"
+        mode="light"
         variant={variant}
         disabled={isStartOrBuyButtonDisabled}
         className="max-lg:my-6 max-lg:!m-2 lg:mt-5 w-full md:w-fit self-center lg:self-end"
@@ -823,7 +823,7 @@ function CourseDetails() {
     ) : (
       <Button
         size="l"
-        mode="dark"
+        mode="light"
         variant={variant}
         disabled={isStartOrBuyButtonDisabled}
         className="max-lg:my-6 max-lg:!m-2 lg:mt-5 w-full md:w-fit self-center lg:self-end"
