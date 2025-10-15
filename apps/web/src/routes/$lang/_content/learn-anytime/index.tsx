@@ -96,9 +96,32 @@ function AllCourses() {
 
   const uniqueTopics = useMemo(() => {
     if (!courses) return [];
-    return Array.from(new Set(courses.map((c) => c.topic))).sort((a, b) =>
-      a.localeCompare(b),
+
+    const desiredOrder = [
+      'bitcoin',
+      'security',
+      'social studies',
+      'business',
+      'protocol',
+      'mining',
+    ];
+
+    const orderMap = new Map(
+      desiredOrder.map((name, i) => [normalizeString(name), i]),
     );
+
+    const topicsSet = Array.from(new Set(courses.map((c) => c.topic)));
+
+    return topicsSet.sort((a, b) => {
+      const na = normalizeString(a);
+      const nb = normalizeString(b);
+
+      const ia = orderMap.has(na) ? orderMap.get(na)! : Number.MAX_SAFE_INTEGER;
+      const ib = orderMap.has(nb) ? orderMap.get(nb)! : Number.MAX_SAFE_INTEGER;
+
+      if (ia !== ib) return ia - ib;
+      return na.localeCompare(nb);
+    });
   }, [courses]);
 
   const topics = useMemo(
