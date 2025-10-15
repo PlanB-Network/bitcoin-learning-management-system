@@ -41,6 +41,7 @@ function LegalInformationTab() {
     <PageLayout
       title={activeTabLabelKey ? t(activeTabLabelKey) : ''}
       tabs={legalTabs}
+      layoutSize="base"
     >
       {isFetched && !legal ? (
         <EmptyState

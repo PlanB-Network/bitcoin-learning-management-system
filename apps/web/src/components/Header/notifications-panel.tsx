@@ -12,7 +12,7 @@ import {
   getNotificationIcon,
   getNotificationRedirect,
   getNotificationTitle,
-} from '#src/routes/$lang/dashboard/_dashboard/notifications.tsx';
+} from '#src/routes/$lang/notifications/index.tsx';
 import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 

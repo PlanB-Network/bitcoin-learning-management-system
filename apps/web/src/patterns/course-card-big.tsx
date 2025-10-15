@@ -119,7 +119,7 @@ export const CourseCardBig = ({
           </div>
         </div>
         <div className="max-lg:hidden self-center mx-4 w-fit">
-          <TbChevronRight className="h-5 w-5 text-neutral-700" />
+          <TbChevronRight className="h-5 w-5 text-neutral-300" />
         </div>
       </article>
     </Link>

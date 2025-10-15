@@ -15,9 +15,9 @@ import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
 import { TbArrowDown, TbArrowsSort, TbSearch } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { getNotificationDateString } from '#src/routes/$lang/notifications/index.tsx';
 import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { getNotificationDateString } from '../../notifications.tsx';
 
 export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
   const isMobile = useSmaller('md');

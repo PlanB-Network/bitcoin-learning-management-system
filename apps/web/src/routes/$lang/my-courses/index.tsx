@@ -195,7 +195,7 @@ const InProgressCourseCard = ({
   return (
     <Link
       to={`/my-courses/${course.id}`}
-      className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2 max-w-[1097px]"
+      className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2 max-w-[1097px] hover:bg-neutral-50"
       key={course.id}
     >
       <span className="body-small-bold md:subtitle-base text-black">

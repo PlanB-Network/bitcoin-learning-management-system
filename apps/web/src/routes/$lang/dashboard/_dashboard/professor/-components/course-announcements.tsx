@@ -7,12 +7,12 @@ import { BiPencil } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { formatTime } from '#src/utils/date.ts';
-import { trpc } from '#src/utils/trpc.ts';
 import {
   getNotificationDateString,
   getNotificationIcon,
-} from '../../notifications.tsx';
+} from '#src/routes/$lang/notifications/index.tsx';
+import { formatTime } from '#src/utils/date.ts';
+import { trpc } from '#src/utils/trpc.ts';
 import { AnnouncementModal } from './announcement-modal.tsx';
 
 export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {

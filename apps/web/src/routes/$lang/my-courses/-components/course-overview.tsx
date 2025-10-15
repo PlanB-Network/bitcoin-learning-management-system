@@ -21,7 +21,7 @@ import {
   getNotificationDateString,
   getNotificationIcon,
   getNotificationTitle,
-} from '../../dashboard/_dashboard/notifications.tsx';
+} from '../../notifications/index.tsx';
 
 export const CourseOverview = ({ course }: { course: CourseResponse }) => {
   const { data: courseProgress } = useQuery(

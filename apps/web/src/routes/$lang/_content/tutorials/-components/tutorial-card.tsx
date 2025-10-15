@@ -8,9 +8,11 @@ import { assetUrl } from '#src/utils/index.js';
 export const TutorialCard = ({
   tutorial,
   addMargin,
+  addBorder,
 }: {
   tutorial: JoinedTutorialLight;
   addMargin?: boolean;
+  addBorder?: boolean;
 }) => {
   return (
     <Link
@@ -19,6 +21,7 @@ export const TutorialCard = ({
       className={cn(
         'w-full flex items-center justify-between p-2 hover:bg-neutral-50 rounded-2xl',
         addMargin && 'my-2',
+        addBorder && 'border border-neutral-100',
       )}
     >
       <div className="flex gap-6 items-center">

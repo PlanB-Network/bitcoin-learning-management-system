@@ -33,9 +33,9 @@ import { useTranslation } from 'react-i18next';
 import { LuCalendar } from 'react-icons/lu';
 import { z } from 'zod';
 import { AppContext } from '#src/providers/context.tsx';
+import { getNotificationIcon } from '#src/routes/$lang/notifications/index.tsx';
 import { getUTCOffset, timeZones } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { getNotificationIcon } from '../../notifications.tsx';
 
 interface AnnouncementModalProps {
   courseId: string;

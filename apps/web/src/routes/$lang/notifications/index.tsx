@@ -20,9 +20,7 @@ import { formatDate, formatHourRange } from '#src/utils/date.ts';
 import { isTeacherAnnouncementType } from '#src/utils/notifications.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
-export const Route = createFileRoute(
-  '/$lang/dashboard/_dashboard/notifications',
-)({
+export const Route = createFileRoute('/$lang/notifications/')({
   component: NotificationsDashboard,
 });
 

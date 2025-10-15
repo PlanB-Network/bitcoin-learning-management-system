@@ -30,9 +30,9 @@ import {
 import Check from '#src/assets/icons/check_green.svg?react';
 import SandClockIcon from '#src/assets/icons/sandClock/sand clock_bottom.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { getNotificationDateString } from '#src/routes/$lang/notifications/index.tsx';
 import { formatDate, formatHourRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { getNotificationDateString } from '../../notifications.tsx';
 import { SELF_PACED_PASSING_THRESHOLD } from './exam-results.tsx';
 
 export const CourseOverview = ({ course }: { course: CourseResponse }) => {

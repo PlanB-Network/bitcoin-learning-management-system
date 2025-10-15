@@ -180,7 +180,7 @@ export const HorizontalCourseCardDesktop = ({
       key={course.id}
       to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
       className={cn(
-        'flex w-full gap-2 border border-neutral-100 rounded-2xl text-black',
+        'flex w-full gap-2 border border-neutral-100 rounded-2xl text-black hover:bg-neutral-50',
         className,
       )}
     >
@@ -194,7 +194,7 @@ export const HorizontalCourseCardDesktop = ({
         breakpoints={{ default: 440 }}
         className="rounded-l-2xl object-cover [overflow-clip-margin:_unset] object-center w-full max-w-[160px] lg:max-w-[216px] shrink-0"
       />
-      <div className="flex items-center gap-4 px-4 py-2.5 w-full">
+      <div className="flex items-center gap-4 pl-4 pr-2 py-2.5 w-full">
         <div className="flex flex-col w-full">
           <span className="title-medium">{course.name}</span>
           <p className="text-neutral-600 mt-1 body-extra-small line-clamp-3">
@@ -232,7 +232,7 @@ export const HorizontalCourseCardDesktop = ({
             )}
           </div>
         </div>
-        <TbChevronRight className="shrink-0 text-neutral-700" size={20} />
+        <TbChevronRight className="shrink-0 text-neutral-300" size={20} />
       </div>
     </Link>
   );
