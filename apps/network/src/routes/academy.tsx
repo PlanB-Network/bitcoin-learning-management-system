@@ -401,9 +401,9 @@ function RouteComponent() {
           'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
         }
         imageClassName="lg:max-w-[40%]"
-        NoBackground={true}
-        className="mt-12 pb-12 bg-gradient-network-bt"
+        className="mt-12 pb-12"
         orientation="left"
+        BackgroundColor="light"
         TopElement={
           <InstitutionTitleElement
             title={t('academy.salvador.title')}
@@ -442,9 +442,9 @@ function RouteComponent() {
           'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
         }
         imageClassName="lg:max-w-[40%]"
-        className="mt-12 pb-12 bg-gradient-network-bt-dark"
+        className="mt-12 pb-12"
         orientation="right"
-        NoBackground={true}
+        BackgroundColor="dark"
         TopElement={
           <InstitutionTitleElement
             title={t('academy.taipei.title')}
@@ -491,9 +491,9 @@ function RouteComponent() {
           'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
         }
         imageClassName="lg:max-w-[40%]"
-        NoBackground={true}
-        className="mt-12 pb-12 bg-gradient-network-bt"
+        className="mt-12 pb-12"
         orientation="left"
+        BackgroundColor="light"
         TopElement={
           <InstitutionTitleElement
             title={t('academy.polytecnico.title')}

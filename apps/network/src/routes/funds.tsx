@@ -48,10 +48,11 @@ function RouteComponent() {
         subtitleClassName={
           'lg:max-w-[450px] xl:max-w-[550px] max-xl:!text-lg text-gray-300'
         }
-        imageClassName=""
+        imageClassName="max-lg:!-mt-12"
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
+        BackgroundColor="border-dark"
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
             <NetworkListItem
@@ -80,6 +81,7 @@ function RouteComponent() {
         subtitleUnderImage={true}
         className="mt-12"
         orientation="right"
+        BackgroundColor="border-dark"
         BottomElement={
           <div className="flex flex-col max-lg:items-center">
             <NetworkButton variant={'secondary'}>
@@ -100,6 +102,7 @@ function RouteComponent() {
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
+        BackgroundColor="border-dark"
         BottomElement={
           <div className="flex flex-col max-lg:items-center">
             <NetworkButton variant={'secondary'}>Contact us</NetworkButton>

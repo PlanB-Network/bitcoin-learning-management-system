@@ -47,7 +47,7 @@ export const Hero = ({
         <img
           src={imageUrl}
           alt="Hero background"
-          className="max-lg:mt-6 h-[800px] lg:h-[1000px] object-cover"
+          className="max-lg:mt-6  lg:h-[1000px] object-cover"
         />
         {subtitleUnderImage ? (
           <p className={cn('title-small lg:title-base', subtitleClassName)}>
