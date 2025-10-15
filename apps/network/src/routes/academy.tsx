@@ -17,8 +17,7 @@ import media6Image from '#src/assets/academy/media-6.png';
 import media7Image from '#src/assets/academy/media-7.png';
 import media8Image from '#src/assets/academy/media-8.png';
 import polytecnicoLogo from '#src/assets/academy/polytecnico-logo.svg';
-import salvador1Image from '#src/assets/academy/salvador-1.png';
-import salvador2Image from '#src/assets/academy/salvador-2.jpg';
+import salvadorImage from '#src/assets/academy/salvador.png';
 import taipeiLogo from '#src/assets/academy/taipei-logo.svg';
 import barChartIcon from '#src/assets/icons/bar-chart.png';
 import barChartDarkIcon from '#src/assets/icons/bar-chart-dark.svg';
@@ -106,14 +105,16 @@ function RouteComponent() {
         imageUrl={isMobile ? media2MobileImage : media2Image}
         alt="Scenic mountain lake"
         titleClassName={'lg:max-w-[53%]'}
-        subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
+        subtitleClassName={
+          'lg:max-w-[60%] xl:max-w-[52%] max-xl:!text-lg text-gray-300'
+        }
         imageClassName=""
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
         BottomElement={
           <>
-            <div className="flex flex-col gap-1 xl:gap-2">
+            <div className="max-lg:self-center  flex flex-col gap-1 xl:gap-2">
               <NetworkListItem
                 img={bookOpenIcon}
                 text={t('academy.learnOnline.list1')}
@@ -135,7 +136,7 @@ function RouteComponent() {
                 text={t('academy.learnOnline.list5')}
               />
             </div>
-            <div className="mt-4 flex flex-row xl:flex-col max-lg:self-center gap-4">
+            <div className="mt-8 lg:mt-4 lg:mb-0 flex flex-row xl:flex-col max-lg:self-center gap-4">
               <NetworkButton variant={'secondary'}>
                 {t('academy.learnOnline.button')}
               </NetworkButton>
@@ -156,7 +157,7 @@ function RouteComponent() {
         orientation="right"
         BottomElement={
           <>
-            <div className="flex flex-col gap-1 xl:gap-2">
+            <div className="max-lg:self-center flex flex-col gap-1 xl:gap-2">
               <NetworkListItem
                 img={bookOpenIcon}
                 text={t('academy.learnLive.list1')}
@@ -178,10 +179,7 @@ function RouteComponent() {
                 orientation="right"
               />
             </div>
-            <div className="mt-4 flex flex-row max-lg:self-center gap-4">
-              <NetworkButton variant={'tertiary'}>
-                {t('academy.learnLive.button1')}
-              </NetworkButton>
+            <div className="mt-8 lg:mt-4 lg:mb-0 flex flex-row xl:flex-col max-lg:self-center gap-4">
               <NetworkButton variant={'secondary'}>
                 {t('academy.learnLive.button2')}
               </NetworkButton>
@@ -294,7 +292,7 @@ function RouteComponent() {
         className="mt-12"
         orientation="left"
         BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
+          <div className="max-lg:self-center flex flex-col gap-1 xl:gap-2">
             <NetworkListItem
               img={bookOpenIcon}
               text={t('academy.career.list1')}
@@ -316,7 +314,7 @@ function RouteComponent() {
       />
 
       <PageBlock className="bg-network-cards-dark-bottom rounded-[68px] pb-5 lg:pb-10">
-        <p className="title-extra-large uppercase ">
+        <p className="max-lg:mt-10 title-extra-large uppercase ">
           {t('academy.career.title2')}
         </p>
         <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
@@ -406,33 +404,12 @@ function RouteComponent() {
         className="mt-12 pb-12 bg-gradient-network-bt"
         orientation="left"
         TopElement={
-          <div className="flex flex-col-reverse lg:flex-row justify-between pl-4 mb-4">
-            <div>
-              <p
-                className={cn(
-                  '!text-start lg:!text-end max-w-[800px]',
-                  titleCss,
-                )}
-              >
-                {t('academy.salvador.title')}
-              </p>
-              <p className="title-large text-brown-400 mt-2 text-start lg:text-end">
-                {t('academy.salvador.subtitle')}
-              </p>
-            </div>
-            <div className="flex flex-row gap-4">
-              <img
-                src={salvador1Image}
-                className="h-8 lg:h-28 object-cover"
-                alt="Government of El Salvador"
-              />
-              <img
-                src={salvador2Image}
-                className="h-8 lg:h-28 object-cover"
-                alt="Node network"
-              />
-            </div>
-          </div>
+          <InstitutionTitleElement
+            title={t('academy.salvador.title')}
+            subtitle={t('academy.salvador.subtitle')}
+            img={salvadorImage}
+            orientation="left"
+          />
         }
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
@@ -468,28 +445,12 @@ function RouteComponent() {
         orientation="right"
         NoBackground={true}
         TopElement={
-          <div className="flex flex-col-reverse lg:flex-row justify-between pl-4 mb-4">
-            <div className="flex flex-row gap-4">
-              <img
-                src={taipeiLogo}
-                className="h-8 lg:h-28 object-cover"
-                alt="Logo of taipei university"
-              />
-            </div>
-            <div>
-              <p
-                className={cn(
-                  '!text-start lg:!text-end max-w-[800px]',
-                  titleCss,
-                )}
-              >
-                {t('academy.taipei.title')}
-              </p>
-              <p className="title-large text-brown-400 mt-2 text-start lg:text-end">
-                {t('academy.taipei.subtitle')}
-              </p>
-            </div>
-          </div>
+          <InstitutionTitleElement
+            title={t('academy.taipei.title')}
+            subtitle={t('academy.taipei.subtitle')}
+            img={taipeiLogo}
+            orientation="right"
+          />
         }
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
@@ -533,28 +494,12 @@ function RouteComponent() {
         className="mt-12 pb-12 bg-gradient-network-bt"
         orientation="left"
         TopElement={
-          <div className="flex flex-col-reverse lg:flex-row justify-between pl-4 mb-4">
-            <div>
-              <p
-                className={cn(
-                  '!text-start lg:!text-end max-w-[800px]',
-                  titleCss,
-                )}
-              >
-                {t('academy.polytecnico.title')}
-              </p>
-              <p className="title-large text-brown-400 mt-2 text-start lg:text-end">
-                {t('academy.polytecnico.subtitle')}
-              </p>
-            </div>
-            <div className="flex flex-row gap-4">
-              <img
-                src={polytecnicoLogo}
-                className="h-8 lg:h-28 object-cover"
-                alt="Logo of polytecnico di Torino"
-              />
-            </div>
-          </div>
+          <InstitutionTitleElement
+            title={t('academy.polytecnico.title')}
+            subtitle={t('academy.polytecnico.subtitle')}
+            img={polytecnicoLogo}
+            orientation="left"
+          />
         }
         BottomElement={
           <div className="flex flex-col gap-1 xl:gap-2">
@@ -586,5 +531,54 @@ function RouteComponent() {
       {/* <div className="shadow-top-bottom-box py-24 mt-24"></div>
       <div className="py-24 bg-gradient-network-bt " /> */}
     </>
+  );
+}
+
+function InstitutionTitleElement({
+  title,
+  subtitle,
+  img,
+  orientation,
+}: {
+  title: string;
+  subtitle: string;
+  img: string;
+  orientation: 'left' | 'right';
+}) {
+  return (
+    <div
+      className={cn(
+        'flex flex-col justify-between pl-4 mb-4',
+        orientation === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse',
+      )}
+    >
+      <div>
+        <p
+          className={cn(
+            '!text-start max-w-[800px]',
+            'max-lg:!mb-0',
+            titleCss,
+            orientation === 'left' ? 'lg:!text-start' : 'lg:!text-end',
+          )}
+        >
+          {title}
+        </p>
+        <p
+          className={cn(
+            'title-large text-brown-400 mt-2 !text-start',
+            orientation === 'left' ? 'lg:!text-start' : 'lg:!text-end',
+          )}
+        >
+          {subtitle}
+        </p>
+      </div>
+      <div className="flex flex-row gap-4">
+        <img
+          src={img}
+          className="h-12 max-lg:mt-2 lg:h-28 object-cover"
+          alt=""
+        />
+      </div>
+    </div>
   );
 }

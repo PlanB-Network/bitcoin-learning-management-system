@@ -19,7 +19,7 @@ export default function NetworkListItem({
     <div
       className={cn(
         'flex gap-2 items-center',
-        orientation === 'left' ? 'flex-row' : 'flex-row-reverse',
+        orientation === 'left' ? 'flex-row' : 'flex-row lg:flex-row-reverse',
         className,
       )}
     >

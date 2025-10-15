@@ -20,7 +20,7 @@ export default function BlockTitle({
     <div className="flex flex-col w-full items-center ">
       <div
         className={cn(
-          'flex w-full',
+          'flex w-full max-lg:transform scale-y-[0.4]',
           direction === 'left' ? '' : 'transform scale-x-[-1]',
           className,
         )}
@@ -36,10 +36,10 @@ export default function BlockTitle({
         <img className="h-[400px]" src={curveRight} alt="Right curve" />
       </div>
       <div className="-mt-40 text-center z-10 flex flex-col items-center">
-        <h2 className="text-3xl lg:text-6xl font-light uppercase text-orange-500 max-w-[800px]">
+        <h2 className="text-3xl lg:text-6xl font-light uppercase text-orange-500 max-w-[1100px]">
           {text}
         </h2>
-        <h2 className="body-small lg:title-small mt-6 mb-12 max-w-[550px] px-4 ">
+        <h2 className="body-small lg:title-small mt-6 mb-12 max-w-[650px] text-gray-100 px-4 ">
           {subtext}
         </h2>
       </div>

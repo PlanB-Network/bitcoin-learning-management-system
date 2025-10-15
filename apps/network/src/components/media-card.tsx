@@ -38,12 +38,7 @@ export default function MediaCard({
   const isMobile = useSmaller('lg');
 
   return (
-    <PageBlock
-      className={cn(
-        'shadow-lg transition-transform hover:-translate-y-0.5 hover:shadow-xl',
-        className,
-      )}
-    >
+    <PageBlock className={cn('shadow-lg', className)}>
       {TopElement ? (
         <>
           {/* {isMobile ? <div className="max-lg:h-4" /> : null} */}
@@ -92,6 +87,7 @@ export default function MediaCard({
           className={[
             'object-cover self-center max-lg:-mt-8 w-full h-full',
             'rounded-2xl',
+            subtitleUnderImage ? 'max-lg:-mt-28' : '',
             isLeft ? 'lg:self-end' : 'lg:self-start',
             imageClassName,
           ].join(' ')}
