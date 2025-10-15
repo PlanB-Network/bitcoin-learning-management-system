@@ -129,10 +129,6 @@ function RouteComponent() {
                 text={t('academy.learnOnline.list3')}
               />
               <NetworkListItem
-                img={bookOpen2Icon}
-                text={t('academy.learnOnline.list4')}
-              />
-              <NetworkListItem
                 img={ticketIcon}
                 text={t('academy.learnOnline.list5')}
               />
@@ -398,7 +394,7 @@ function RouteComponent() {
         imageUrl={isMobile ? media6Image : media6Image}
         alt="Scenic mountain lake"
         subtitleClassName={
-          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
+          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
         }
         imageClassName="lg:max-w-[40%]"
         className="mt-12 pb-12"
@@ -413,7 +409,7 @@ function RouteComponent() {
           />
         }
         BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
+          <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
             <NetworkListItem
               img={locationIcon}
               text={t('academy.salvador.list1')}
@@ -439,7 +435,7 @@ function RouteComponent() {
         imageUrl={isMobile ? media7Image : media7Image}
         alt="Scenic mountain lake"
         subtitleClassName={
-          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
+          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
         }
         imageClassName="lg:max-w-[40%]"
         className="mt-12 pb-12"
@@ -454,7 +450,7 @@ function RouteComponent() {
           />
         }
         BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
+          <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
             <NetworkListItem
               img={barChartDarkIcon}
               text={t('academy.taipei.list1')}
@@ -488,7 +484,7 @@ function RouteComponent() {
         imageUrl={isMobile ? media8Image : media8Image}
         alt="Scenic mountain lake"
         subtitleClassName={
-          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300'
+          'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
         }
         imageClassName="lg:max-w-[40%]"
         className="mt-12 pb-12"
@@ -503,7 +499,7 @@ function RouteComponent() {
           />
         }
         BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
+          <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
             <NetworkListItem
               img={personIcon}
               text={t('academy.polytecnico.list1')}
@@ -516,12 +512,24 @@ function RouteComponent() {
               img={calendarIcon}
               text={t('academy.polytecnico.list3')}
             />
+            <Link
+              to={
+                'https://www.polito.it/en/education/specializing-master-s-programmes-and-lifelong-learning/executive-courses/executive-courses-catalogue/bitcoin-lightning-network-and-distributed-systems'
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <NetworkListItem
+                img={calendarIcon}
+                text={t('academy.polytecnico.list4')}
+              />
+            </Link>
           </div>
         }
       />
 
       <PageBlock className="mt-8 lg:mt-16">
-        <ContactUs text={t('about.contactText')} email="toto@toto.com" />
+        <ContactUs text={t('academy.contactText')} email="toto@toto.com" />
       </PageBlock>
 
       <ToolsForCommunities />

@@ -6,6 +6,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/about/header.png';
 import headerSmallImage from '#src/assets/about/header-small.png';
 import media1Image from '#src/assets/about/media-1.png';
+import media1SmallImage from '#src/assets/about/media-1-mobile.png';
 import valuesBitcoinFirstImage from '#src/assets/icons/bitcoin.png';
 import valuesBottomUpImage from '#src/assets/icons/bottom-up.png';
 import valuesFreedomImage from '#src/assets/icons/freedom.png';
@@ -189,11 +190,11 @@ function RouteComponent() {
       <MediaCard
         title={t('about.media1title')}
         subtext={t('about.media1subtitle')}
-        imageUrl={media1Image}
+        imageUrl={isMobile ? media1SmallImage : media1Image}
         alt="Scenic mountain lake"
         titleClassName={'lg:max-w-[700px]'}
         subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
-        imageClassName="lg:max-w-[50%]"
+        imageClassName=""
         subtitleUnderImage={true}
         className="mt-12"
       />

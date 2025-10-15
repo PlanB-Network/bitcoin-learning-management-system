@@ -40,7 +40,7 @@ function RouteComponent() {
       <PageBlock className="bg-gradient-network-lr-dark mt-8 p-10">
         <h1 className="title-extra-large">{t('hubs.co-working.title')}</h1>
         <p className="mt-8 max-w-[466px]">{t('hubs.co-working.subtitle')}</p>
-        <div className="flex flew-row justify-between gap-8 mt-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mt-16">
           <CoworkingCard
             img={coworking1Image}
             name={t('hubs.co-working.hub1Name')}
