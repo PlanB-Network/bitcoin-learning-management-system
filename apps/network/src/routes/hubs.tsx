@@ -1,12 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
+import arkLogo from '#src/assets/hubs/ark-logo.png';
 import coworking1Image from '#src/assets/hubs/coworking-1.png';
 import coworking2Image from '#src/assets/hubs/coworking-2.png';
 import coworking3Image from '#src/assets/hubs/coworking-3.png';
+import forumLogo from '#src/assets/hubs/forum-logo.png';
 import headerImage from '#src/assets/hubs/header.png';
 import headerSmallImage from '#src/assets/hubs/header.png';
 import luganoBgImage from '#src/assets/hubs/lugano-bg.png';
 import luganoLogo from '#src/assets/hubs/lugano-planb-logo.png';
+import spritzLogoImage from '#src/assets/hubs/spritz-logo.png';
 import locationImage from '#src/assets/icons/location.svg';
 import BlockTitle from '#src/components/block-title.tsx';
 import { Hero } from '#src/components/hero.tsx';
@@ -38,8 +41,12 @@ function RouteComponent() {
         subtitleClassName={'max-w-[85%] lg:max-w-[450px]'}
       />
       <PageBlock className="bg-gradient-network-lr-dark mt-8 p-10">
-        <h1 className="title-extra-large">{t('hubs.co-working.title')}</h1>
-        <p className="mt-8 max-w-[466px]">{t('hubs.co-working.subtitle')}</p>
+        <h1 className="title-extra-large text-6xl">
+          {t('hubs.co-working.title')}
+        </h1>
+        <p className="mt-8 max-w-[530px] text-gray-200">
+          {t('hubs.co-working.subtitle')}
+        </p>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mt-16">
           <CoworkingCard
             img={coworking1Image}
@@ -81,6 +88,8 @@ function RouteComponent() {
       <MediaCard2
         title={t('hubs.lugano.title')}
         subtext={t('hubs.lugano.subtitle')}
+        buttontext={t('hubs.lugano.button')}
+        tagText={t('hubs.lugano.tag')}
         imageUrl={luganoLogo}
         alt=""
         className="mt-24 z-10 relative"
@@ -89,9 +98,32 @@ function RouteComponent() {
       />
 
       <MediaCard2
-        title={t('hubs.lugano.title')}
-        subtext={t('hubs.lugano.subtitle')}
-        imageUrl={luganoLogo}
+        title={t('hubs.spritz.title')}
+        subtext={t('hubs.spritz.subtitle')}
+        buttontext={t('hubs.spritz.button')}
+        tagText={t('hubs.spritz.tag')}
+        imageUrl={spritzLogoImage}
+        alt=""
+        className="mt-24"
+        orientation="right"
+      />
+
+      <MediaCard2
+        title={t('hubs.forum.title')}
+        subtext={t('hubs.forum.subtitle')}
+        buttontext={t('hubs.forum.button')}
+        tagText={t('hubs.forum.tag')}
+        imageUrl={forumLogo}
+        alt=""
+        className="mt-24"
+        orientation="left"
+      />
+
+      <MediaCard2
+        title={t('hubs.ark.title')}
+        subtext={t('hubs.ark.subtitle')}
+        tagText={t('hubs.ark.tag')}
+        imageUrl={arkLogo}
         alt=""
         className="mt-24"
         orientation="right"

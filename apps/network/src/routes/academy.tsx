@@ -111,6 +111,7 @@ function RouteComponent() {
         }
         imageClassName=""
         subtitleUnderImage={true}
+        BackgroundColor="border-dark"
         className="mt-12"
         orientation="left"
         BottomElement={
@@ -150,6 +151,7 @@ function RouteComponent() {
         subtitleClassName={'lg:max-w-[380px] max-xl:!text-lg text-gray-300'}
         imageClassName=""
         subtitleUnderImage={true}
+        BackgroundColor="border-dark"
         className="mt-12"
         orientation="right"
         BottomElement={
@@ -397,7 +399,7 @@ function RouteComponent() {
           'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
         }
         imageClassName="lg:max-w-[40%]"
-        className="mt-12 pb-12"
+        className="mt-12 pb-12 lg:!rounded-[0px] lg:!rounded-bl-[48px] lg:border-b-[1px] lg:border-l-[1px] border-orange-500"
         orientation="left"
         BackgroundColor="light"
         TopElement={
@@ -438,7 +440,7 @@ function RouteComponent() {
           'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
         }
         imageClassName="lg:max-w-[40%]"
-        className="mt-12 pb-12"
+        className="mt-12 pb-12  lg:!rounded-[0px] lg:!rounded-br-[48px] lg:border-b-[1px] lg:border-r-[1px] border-brown-500"
         orientation="right"
         BackgroundColor="dark"
         TopElement={
@@ -487,7 +489,7 @@ function RouteComponent() {
           'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
         }
         imageClassName="lg:max-w-[40%]"
-        className="mt-12 pb-12"
+        className="mt-12 pb-12  lg:!rounded-[0px] lg:!rounded-bl-[48px] lg:border-b-[1px] lg:border-l-[1px]  border-orange-500"
         orientation="left"
         BackgroundColor="light"
         TopElement={
@@ -551,7 +553,7 @@ function InstitutionTitleElement({
   return (
     <div
       className={cn(
-        'flex flex-col justify-between pl-4 mb-4',
+        'flex flex-col justify-between pl-4',
         orientation === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse',
       )}
     >

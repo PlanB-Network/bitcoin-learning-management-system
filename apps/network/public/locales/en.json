@@ -158,6 +158,11 @@
     "title": "Scaling Bitcoin adoption"
   },
   "hubs": {
+    "ark": {
+      "subtitle": "In collaboration with local start-ups ArkLabs and Boltz, Lugano has become an epicenter for prototyping Layer 3 Bitcoin payment solutions. With numerous merchants already accepting Bitcoin, the city offers the perfect environment for innovation and disruptive opportunities.",
+      "tag": "Technology",
+      "title": "Custom Ark Payment"
+    },
     "blockTitle1Subtext": "The city of Lugano is the centerpiece of a global digital transformation, spanning tech startups, payments, and digital identity. We aim to provide support and guidance throughout the city’s transformation.",
     "blockTitle1Text": "Empowering lugano",
     "co-working": {
@@ -170,6 +175,12 @@
       "subtitle": "Plan ₿ Network supports the growth of key Bitcoin hubs around the world, by creating educational events, seminars and networking opportunities. We work in close collaboration with local Bitcoin communities to create synergy among passionate builders, local businesses, and key public actors. Our goal is to cultivate a global network of safe spaces where anyone, anywhere can learn, collaborate, and build with Bitcoin.",
       "title": "Bitcoin Coworking Hubs"
     },
+    "forum": {
+      "button": "Learn more",
+      "subtitle": "Each year, thousands of the brightest Bitcoin minds gather in Lugano for the annual Plan ₿ Forum. From engaging masterclass sessions to the Italian free stage, exams, and game shows, our team help making the forum better each year. ",
+      "tag": "Conference",
+      "title": "Plan ₿ Forum"
+    },
     "lugano": {
       "button": "Learn more",
       "subtitle": "In Lugano, Plan ₿ is bringing Bitcoin and sovereign technologies into everyday life.\nLaunched by the City of Lugano and Tether, the initiative connects adoption, education, and innovation to make the city a place where decentralized technologies can thrive — and where people can discover what a Bitcoin‑powered future looks like",
@@ -177,6 +188,12 @@
       "superTitle": "Supporting Bitcoin activities in Lugano",
       "tag": "Activities",
       "title": "Plan ₿ Lugano"
+    },
+    "spritz": {
+      "button": "Learn more",
+      "subtitle": "Discover the growing Bitcoin community in Lugano, where weekly meetups,  lectures, and events bring together builders, businesses, and  enthusiasts. We support this vibrant ecosystem as it creates spaces to  learn, share, and explore the possibilities of Bitcoin.",
+      "tag": "Meetup",
+      "title": "Satoshi Spritz"
     },
     "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory.",
     "title": "<0>Building</0> the Bitcoin places of tomorrow"

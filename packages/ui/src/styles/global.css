@@ -827,6 +827,34 @@
   );
 }
 
+@utility bg-gradient-network-tb-transparent {
+  background: linear-gradient(
+    180deg,
+    var(--Orange-900, #5c2100) 0%,
+    rgba(1, 2, 5, 0) 60.1%
+  );
+}
+
+@utility bg-gradient-network-bottom-and-top {
+  background:
+    linear-gradient(180deg, #5c2100 0%, rgba(1, 2, 5, 0) 60.1%, #5c2100 100%),
+    /* Background settings */
+    black -113.997px 0px / 110.92% 100% no-repeat;
+}
+
+@utility bg-gradient-network-bottom-and-top-dark {
+  background:
+    linear-gradient(
+      180deg,
+      #49372c 0%,
+      rgba(1, 2, 5, 0) 24.04%,
+      rgba(1, 2, 5, 0) 79.81%,
+      #49372c 100%
+    ),
+    /* Background settings */
+    black -113.997px 0px / 110.92% 100% no-repeat;
+}
+
 @utility bg-gradient-network-bt-dark {
   background:
     linear-gradient(

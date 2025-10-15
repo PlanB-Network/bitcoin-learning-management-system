@@ -1,11 +1,12 @@
 import { cn } from '@blms/ui';
-import { titleCss } from '#src/utils/css.tsx';
 import { NetworkButton } from './network-button.tsx';
 import PageBlock from './page-block.tsx';
 
 type MediaCard2Props = {
   title: string;
   subtext: string;
+  buttontext?: string;
+  tagText?: string;
   imageUrl: string;
   className?: string;
   titleClassName?: string;
@@ -14,12 +15,13 @@ type MediaCard2Props = {
   alt?: string;
   orientation?: 'left' | 'right';
   subtitleUnderImage?: boolean;
-  NoBackground?: boolean;
 };
 
 export default function MediaCard2({
   title,
   subtext,
+  buttontext,
+  tagText,
   imageUrl,
   className,
   titleClassName = 'max-w-[800px]',
@@ -27,37 +29,47 @@ export default function MediaCard2({
   imageClassName = '',
   alt = '',
   orientation = 'left',
-  NoBackground = false,
 }: MediaCard2Props) {
   const isLeft = orientation === 'left';
 
   return (
     <PageBlock
       className={cn(
-        'shadow-lg h-full border-orange-500 bg-gradient-network-bt-transparent',
+        'shadow-lg h-full border-orange-500 bg-gradient-network-tb-transparent lg:bg-gradient-network-bt-transparent  max-lg:mx-8 max-lg:border-[1px] max-lg:rounded-2xl',
         isLeft
-          ? 'rounded-b-2xl border-b-[1px] border-l-[1px]'
-          : 'rounded-b-2xl border-b-[1px] border-r-[1px]',
+          ? 'lg:rounded-b-2xl lg:border-b-[1px] lg:border-l-[1px]'
+          : 'lg:rounded-b-2xl lg:border-b-[1px] lg:border-r-[1px]',
         className,
       )}
     >
       <fieldset
         aria-labelledby="media-card-title"
         className={[
-          'w-full flex flex-col items-center ',
+          'w-full flex flex-col-reverse lg:flex-col items-center ',
           isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse ',
-          NoBackground ? '' : 'max-lg:bg-network-cards',
         ].join(' ')}
       >
         <div
           className={cn(
-            'w-[50%] h-full z-10 p-5 lg:mt-4 flex flex-col gap-12 lg:pb-10',
+            'lg:w-[50%] h-full z-10 p-5 lg:mt-4 flex flex-col gap-12 lg:pb-10 items-center',
             !isLeft ? ' lg:items-end lg:self-end' : '',
           )}
         >
+          {tagText ? (
+            <NetworkButton
+              className={cn(
+                'max-lg:hidden',
+
+                isLeft ? 'lg:self-start' : 'lg:self-end',
+              )}
+              variant={'tag'}
+            >
+              {tagText}
+            </NetworkButton>
+          ) : null}
           <h3
             className={cn(
-              titleCss,
+              'max-lg:title-large lg:text-6xl xl:text-6xl text-center font-semibold lg:tracking-tight whitespace-pre-wrap',
               titleClassName,
               'w-full',
               isLeft ? 'lg:text-start' : 'lg:text-end',
@@ -68,14 +80,21 @@ export default function MediaCard2({
 
           <p
             className={cn(
-              'text-center text-base lg:text-xl max-lg:font-normal max-lg:mt-8 title-bas text-gray-300 whitespace-pre-wrap',
+              'text-center text-base lg:text-xl max-lg:font-normal title-bas text-gray-300 whitespace-pre-wrap',
               subtitleClassName ?? '',
               isLeft ? 'lg:text-start' : 'lg:text-end',
             )}
           >
             {subtext}
           </p>
-          <NetworkButton variant={'secondary'}>TODO</NetworkButton>
+          {buttontext ? (
+            <NetworkButton
+              className={cn(isLeft ? 'lg:self-start' : 'lg:self-end')}
+              variant={'secondary'}
+            >
+              {buttontext}
+            </NetworkButton>
+          ) : null}
         </div>
         <div
           className={cn(

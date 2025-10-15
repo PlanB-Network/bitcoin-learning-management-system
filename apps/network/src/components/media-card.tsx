@@ -46,7 +46,7 @@ export default function MediaCard({
         BackgroundColor === 'light' ? 'lg:bg-gradient-network-bt' : '',
       )}
     >
-      {TopElement ? (
+      {!isMobile && TopElement ? (
         <>
           {/* {isMobile ? <div className="max-lg:h-4" /> : null} */}
           {TopElement}
@@ -58,12 +58,20 @@ export default function MediaCard({
           'relative w-full rounded-2xl  ',
           'flex flex-col lg:flex-col ',
           BackgroundColor === 'dark'
-            ? 'max-lg:bg-gradient-network-bt-dark'
+            ? 'max-lg:bg-gradient-network-bottom-and-top-dark'
             : '',
-          BackgroundColor === 'light' ? 'max-lg:bg-gradient-network-bt' : '',
+          BackgroundColor === 'light'
+            ? 'max-lg:bg-gradient-network-bottom-and-top'
+            : '',
           BackgroundColor === 'border-dark' ? 'max-lg:bg-network-cards' : '',
         ].join(' ')}
       >
+        {isMobile && TopElement ? (
+          <div className="mt-4">
+            {/* {isMobile ? <div className="max-lg:h-4" /> : null} */}
+            {TopElement}
+          </div>
+        ) : null}
         <div
           className={cn(
             'lg:absolute h-full z-10 p-5 lg:mt-4 flex flex-col justify-between lg:pb-10',
@@ -133,7 +141,7 @@ function BottomStuff({
     <>
       <p
         className={cn(
-          'text-center text-base lg:text-xl max-lg:font-normal max-lg:mt-8 title-bas text-gray-100',
+          'text-center text-base lg:text-xl max-lg:font-normal max-lg:mt-2 title-bas text-gray-100',
           'max-lg:px-4 whitespace-pre-wrap',
           subtitleClassName ?? '',
           isLeft ? 'lg:text-start' : 'lg:text-end',
