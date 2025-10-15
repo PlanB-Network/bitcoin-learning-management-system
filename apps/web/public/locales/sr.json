@@ -20,7 +20,8 @@
     "storyContent": "PlanB Mreža je inicijativa koja podržava obrazovanje o Bitcoinu širom sveta. To je spojrazličitih strastvenih Bitcoin kompanija fokusiranih na obrazovanje, softver otvorenog koda, peer-to-peer mrežu i osećaj zajednice. Zajedno su odlučili da izgrade PlanB Mrežu i ponude Bitcoin ekosistemu prave alate za rast. Naša prezentacija za 2023. godinu dostupna je ovde.",
     "storyTitle": "Naša priča",
     "subtitle": "Želite da \"orange pill-ujete\" svet? Pridružite se Plan ₿ Mreži.",
-    "title": "O Plan B Mreži"
+    "title": "O Plan B Mreži",
+    "readManifesto": "Pročitajte naš manifest"
   },
   "accessType": {
     "hybrid": "Uživo i online",
@@ -117,7 +118,10 @@
     "hostSessionConditions": "Evo kako:\n\n1. Pročitajte <0>Povelju</0> - Proverite da li vaša zajednica ispunjava obavezne uslove za hosting\n2. Planirajte i zakazujte - Ako se kvalifikujete, odaberite datum i postavite sesiju\n3. Objavite svoj događaj - Kontaktirajte nas da biste ga dodali na platformu Plan ₿ Network kako bi ljudi mogli da se pridruže",
     "myCertificates": "Moji sertifikati",
     "noTestSessions": "Trenutno nema dostupnih test sesija",
-    "wantHostSession": "Želite da organizujte ₿-CERT test sesiju u Vašem lokalnom centru?"
+    "wantHostSession": "Želite da organizujte ₿-CERT test sesiju u Vašem lokalnom centru?",
+    "certificates": "Sertifikati",
+    "chooseCourse": "Izaberite kurs",
+    "noDiplomasAvailable": "Diplome nisu još uvek dostupne"
   },
   "bet": {
     "contributeButton": "Pomozi i doprinesi",
@@ -852,8 +856,37 @@
         },
         "userManagement": {
           "actions": {
-            "backToList": "Nazad na listu korisnika"
-          }
+            "backToList": "Nazad na listu korisnika",
+            "backToUsers": "Nazad na korisnike",
+            "viewDetails": "Pogledajte detalje"
+          },
+          "addContributor": "Dodaj saradnika",
+          "chapters": "Poglavlja",
+          "contributorInformation": "Informacije za saradnike",
+          "courses": "Kursevi",
+          "modal": {
+            "assignments": "Istorija zadataka",
+            "noAssignments": "Nema pronađenih zadataka",
+            "title": "Detalji o korisniku",
+            "userInfo": "Korisničke informacije"
+          },
+          "noUsers": "Saradnik nije pronađen",
+          "status": {
+            "published": "Objavljeno",
+            "readyForReview": "Spremno za pregled",
+            "rejected": "Odbijeno",
+            "reviewed": "Pregledano",
+            "todo": "Lista zadataka",
+            "underReview": "Na pregledu"
+          },
+          "table": {
+            "actions": "Radnje",
+            "assignedCourses": "Dodeljeni kursevi",
+            "language": "Jezik",
+            "startDate": "Datum početka",
+            "username": "Korisničko ime"
+          },
+          "title": "Saradnici"
         }
       }
     },
@@ -1164,7 +1197,13 @@
       "retakeExam": "Ponovno polaganje ispita",
       "seatBooked": "Vaše mesto na ispitu je rezervisano",
       "takePlaceAt": "Sesija će se održati u:",
-      "yourCertificate": "Vaš sertifikat"
+      "yourCertificate": "Vaš sertifikat",
+      "completeACourse": "Završite svoj prvi kurs kako biste dobili diplomu ",
+      "exploreBCert": "Istražite ₿-CERT",
+      "exploreCourses": "Istražite kurseve",
+      "getGlobalRecognition": "Steknite globalno priznanje uz ₿-CERT sertifikat",
+      "noCertificatesAvailable": "Nema dostupnih sertifikata",
+      "noDiplomasAvailable": "Još uvek nema dostupnih diploma"
     },
     "goToDashboard": "Otvori kontrolnu tablu",
     "goToHomepage": "Otvori početnu stranicu",
@@ -1224,7 +1263,11 @@
         "none": "Nijedne",
         "platformTitle": "Koje vrste obaveštenja biste želeli da primate na ovoj platformi?",
         "settingsSaved": "Vaša podešavanja su uspešno sačuvana!",
-        "title": "Podešavanje o obaveštenjima"
+        "title": "Podešavanje o obaveštenjima",
+        "assignedAt": "Dodeljeno",
+        "displayName": "Prikazano ime",
+        "filter": "Filter",
+        "role": "Uloga"
       },
       "password": "Lozinka",
       "personalInformation": "Lični podaci",
@@ -1305,7 +1348,22 @@
         "summerStudents": "Letnja škola",
         "writeAnnouncement": "Napišite obaveštenje",
         "averageAttempts": "Prosečni pokušaji",
-        "averageDuration": "Prosečno trajanje"
+        "averageDuration": "Prosečno trajanje",
+        "amountPaid": "Plaćena suma",
+        "averageScore": "Prosečan rezultat",
+        "exportExamData": "Izvezi podatke o ispitu",
+        "finalAverageResults": "Konačni prosečni rezultati",
+        "finalScore": "Ukupan rezultat",
+        "lastActive": "Poslednji put aktivan",
+        "medianScore": "Medijana rezultata",
+        "noExamLinked": "Trenutno ne postoji ispit povezan sa ovim kursom. Ako želite da kreirate ispit, molimo Vas da nas kontaktirate.",
+        "overview": "Pregled",
+        "questionsInExam": "Ispitna pitanja",
+        "studentsGraduated": "Studenti koji su diplomirali",
+        "studentsList": "Lista studenata",
+        "successRate": "Stopa uspešnosti",
+        "thresholdToPass": "Prag za prolaz",
+        "totalQuestions": "Ukupan broj pitanja"
       },
       "menu": "Meni za Nastavnika",
       "profile": {
@@ -1342,6 +1400,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Ovde možete pronaći analitiku o tutorijalima koje ste kreirali i objavili na platformi.",
         "yourTutorials": "Vaši tutorijali"
+      },
+      "discount": {
+        "description": "Ovde možete generisati i upravljati kodovima za popust za ovaj kurs – bilo jednokratnim, namenjenim stipendijama ili sličnim slučajevima, bilo višekratnim, za potrebe marketinških kampanja."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Objavi promenu",
+          "attendanceList": "Lista prisustva",
+          "courseEnded": "Kurs je završen.",
+          "courseNotStarted": "Ovaj kurs još uvek nije započet.",
+          "enrolledStudents": "Upisani studenti",
+          "hasEnrolled": "je upisan",
+          "hasGraduated": "Diplomirao je sa ocenom od {{score}}%",
+          "hasLeftReview": "Ostavio je recenziju",
+          "hasLeftReviewAndComment": "Ostavio je recenziju i komentar",
+          "notifyStudents": "Nešto se promenilo? Obavesti svoje studente.",
+          "overallPerformance": "Ukupni učinak",
+          "recentActivity": "Nedavna aktivnost",
+          "studentsRegistered": "Registrovani studenti",
+          "upcomingClass": "Naredni čas"
+        }
       }
     }
   },
@@ -1361,7 +1442,8 @@
       "unlimited": "neograničeno",
       "visitWebsite": "Posetite veb sajt",
       "watchLive": "Gledajte uživo",
-      "watchReplay": "Pogledajte ponovljeni snimak"
+      "watchReplay": "Pogledajte ponovljeni snimak",
+      "buyLecture": "Kupi pristup predavanju"
     },
     "errors": {
       "premiumContentNeedsLogin": "Morate biti prijavljeni da biste pristupili ovom događaju.",
@@ -1413,7 +1495,42 @@
       "time": "Vreme"
     },
     "tcDisclaimer": "Slažem se da moje informacije mogu biti podeljene sa organizatorima u svrhu pristupa mestu događaja.",
-    "tcMustBeAccepted": "Morate prihvatiti uslove i odredbe da biste nastavili"
+    "tcMustBeAccepted": "Morate prihvatiti uslove i odredbe da biste nastavili",
+    "addEvent": "Dodaj događaj",
+    "calendar": {
+      "displayCalendar": "Prikaži kalendar",
+      "fullMap": "Cela mapa",
+      "hideCalendar": "Sakrij kalendar",
+      "inXMonths": "Za {{number}} meseci",
+      "lastMonth": "Prošli mesec",
+      "nextMonth": "Sledeći mesec",
+      "noEventsFound": "Nema pronađenih događaja",
+      "thisMonth": "Ovog meseca",
+      "today": "Danas",
+      "xMonthsAgo": "Pre {{number}} meseci"
+    },
+    "eventInfos": {
+      "eventBooked": "Događaj rezervisan",
+      "eventType": "Tip događaja",
+      "numberOfSpots": "Broj mesta",
+      "onlineAndInPerson": "Online ili lično",
+      "secureYourSpot": "Obezbedi svoje mesto",
+      "whatsPlanned": "Šta je planirano"
+    },
+    "myTickets": "Moje karte",
+    "planBWeek": {
+      "pageTitle": "Plan ₿ nedelja"
+    },
+    "types": {
+      "plurals": {
+        "conference": "Konferencije",
+        "exam": "Ispiti",
+        "lecture": "Lekcije",
+        "meetup": "Okupljanja",
+        "workshop": "radionice"
+      }
+    },
+    "upcomingEvents": "Predstojeći događaji"
   },
   "filters": {
     "categories": "Kategorije",
@@ -1434,7 +1551,8 @@
     "placeHolder": "Šta je ovo?",
     "randomSearch": "Nasumična pretraga",
     "relatedWords": "Povezane reči:",
-    "term": "Termin"
+    "term": "Termin",
+    "showMoreWords": "Prikaži više reči"
   },
   "home": {
     "aboutUsSection": {
@@ -1556,7 +1674,8 @@
   "movies": {
     "goToMovie": "Idi na film",
     "pageTitle": "Filmovi & Dokumentarci",
-    "watchTrailer": "Pogledajte trejler"
+    "watchTrailer": "Pogledajte trejler",
+    "checkTheMovie": "Pogledaj film"
   },
   "notFound": {
     "here": "Ovde",
@@ -1600,7 +1719,8 @@
     "upcomingEvent": "Predstojeći događaj",
     "weeksAgo": "Pre {{weeks}} nedelja{{s}}",
     "yearsAgo": "Pre {{years}} godina{{s}}",
-    "yesterday": "Juče"
+    "yesterday": "Juče",
+    "newVersionAvailable": "Dostupna je nova verzija platforme Plan ₿ Network. Osvežite stranicu da biste izvršili ažuriranje."
   },
   "payment": {
     "haveReductionCode": "Imate kod za popust ?",
@@ -1682,7 +1802,8 @@
       "contact": "Kontakt",
       "legalNotice": "Pravna napomena",
       "privacyPolicy": "Politika privatnosti",
-      "termsOfSale": "Uslovi prodaje"
+      "termsOfSale": "Uslovi prodaje",
+      "notFound": "Pravne informacije nisu pronađene"
     },
     "title": "Javna komunikacija"
   },
@@ -1691,18 +1812,21 @@
       "title": "Članci"
     },
     "bet": {
-      "title": "Obrazovni komplet alata"
+      "title": "Obrazovni komplet alata",
+      "addEducationKit": "Dodaj obrazovni paket"
     },
     "books": {
       "author": "Kreator : ",
-      "title": "Biblioteka"
+      "title": "Biblioteka",
+      "addBook": "Dodaj knjigu"
     },
     "channels": {
       "noYoutubeChannels": "Trenutno nema Youtube kanala za izabrani jezik.",
       "title": "Youtube Kanali"
     },
     "conferences": {
-      "title": "Reprize konferencija"
+      "title": "Reprize konferencija",
+      "addConference": "Dodaj snimak konferencije"
     },
     "github": "Svi ovi podaci se upravljaju preko jednog otvorenog koda <0>Github</0> repozitorijuma. Slobodno doprinesite i dodajte bilo koji nedostajući sadržaj.",
     "glossary": {
@@ -1735,15 +1859,19 @@
     "pageTitle": "Dobrodošli na portal sa resursima",
     "podcasts": {
       "noPodcasts": "Trenutno nema podcasta za izabrani jezik.",
-      "title": "Podkasti"
+      "title": "Podkasti",
+      "addPodcast": "Dodaj podkast",
+      "checkThePodcast": "Proveri podkast"
     },
     "projects": {
-      "title": "Projekti"
+      "title": "Projekti",
+      "addProjects": "Dodaj projekat"
     },
     "searchFilterName": "Pretražite po imenu",
     "toggleFreeOnly": "Samo besplatno",
     "toggleLabelAll": "Svi",
-    "toggleLabelSelectedLanguage": "Izabrani jezik"
+    "toggleLabelSelectedLanguage": "Izabrani jezik",
+    "pageSubtitleMovies": "<0>Other movies</0> koji bi ti se svideli"
   },
   "search": {
     "all": "Sve",
@@ -1789,7 +1917,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutoriali",
     "youtube_channel": "Youtube kanal",
-    "youtube_channels": "Youtube kanali"
+    "youtube_channels": "Youtube kanali",
+    "noResults": "Nema rezultata",
+    "resultsFound": "{{count}} pronađenih rezultata"
   },
   "settings": {
     "changeDisplayName": "Promeni ime za prikaz",
@@ -1821,7 +1951,8 @@
       "ratingSuccess": "Hvala na vašoj oceni!",
       "source": "Orginalni izvor:",
       "tutorialName": "Naziv tutorijala",
-      "writtenBy": "Ovaj tutorijal je napisao/la :"
+      "writtenBy": "Ovaj tutorijal je napisao/la :",
+      "didThisWork": "Da li Vam je ovo odgovaralo?"
     },
     "exchange": {
       "description": "Menjačnice su jedna od ulaznih i izlaznih vrata između vaše tradicionalne valute (evro, dolari) i sveta bitkoina. One mogu biti regulisane i u skladu sa KYC (Upoznajte svog klijenta) pravilima, ili peer-to-peer i samim tim anonimne. Svaka menjačnica će nuditi različite karakteristike, strukture naknada, likvidnost i podršku korisnicima. Svaki bitkoiner će koristiti drugačiju menjačnicu na osnovu svojih potreba i uverenja.",
@@ -1919,7 +2050,7 @@
     "chapters": "Poglavlja",
     "close": "Zatvori",
     "communities": "Zajednice",
-    "company": "",
+    "company": "Kompanija",
     "complete": "Završi",
     "conference": "Konferencija",
     "congrats": "Čestitam!",
@@ -1984,7 +2115,7 @@
     "lnurlAuth": "LNURL Authentikacija",
     "location": "Lokacija",
     "members": " Članovi",
-    "mentor": "",
+    "mentor": "Mentor",
     "mining": "Rudarenje",
     "mode": "Način",
     "movie": "Film",
@@ -1993,7 +2124,7 @@
     "newsletter": "Bilten",
     "next": "Sledeći",
     "no": "Ne",
-    "notApplicable": "",
+    "notApplicable": "Nije primenljivo",
     "on": "na",
     "onChainAddress": "adresa na chain-u",
     "online": "Na mreži",
@@ -2041,7 +2172,7 @@
     "tickets": "Karte",
     "time": "Vreme",
     "timeZone": "Vremenska zona",
-    "title": "",
+    "title": "Naslov",
     "to": "do",
     "topics": "Teme",
     "total": "Ukupno",
@@ -2057,7 +2188,50 @@
     "view": "Pogledajte",
     "viewMore": "Pogledajte više",
     "wallets": "Novčanici",
-    "yes": "Da"
+    "yes": "Da",
+    "aboutUs": "O nama",
+    "academy": "Akademija",
+    "account": "Nalog",
+    "actions": "Akcije",
+    "booking": "Rezervacija",
+    "certifications": "Sertifikati",
+    "completed": "Završeno",
+    "discover": "Otkrij",
+    "enrolled": "Prijavljen",
+    "filters": "Filteri",
+    "full": "Popunjen",
+    "info": "Informacije",
+    "invoices": "Fakture",
+    "legal": "Pravna informacija",
+    "legals": "Pravne informacije",
+    "list": "Lista",
+    "map": "Mapa",
+    "month": "Mesec",
+    "myCertificates": "Moji sertifikati",
+    "none": "Nema",
+    "planBNetwork": "Plan ₿ Mreža",
+    "practice": "Praktično",
+    "pricing": "Cene",
+    "questions": "Pitanja",
+    "rating": "Rangiranje",
+    "resetAll": "Poništi sve",
+    "resetFilters": "Poništi filtere",
+    "results": "Rezultati",
+    "resume": "Nastavi",
+    "review": "Pregled",
+    "sats": "Satošiji",
+    "searchTripleDot": "Pretraga...",
+    "seeAll": "Vidi sve",
+    "settings": "Podešavanja",
+    "share": "Podeli",
+    "structure": "Struktura",
+    "taxes": "Porezi",
+    "theory": "Teorija",
+    "topic": "Tema",
+    "type": "Vrsta",
+    "viewAll": "Vidi sve",
+    "week": "Nedelja",
+    "weight": "Težina"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube Kanali",
@@ -2067,5 +2241,62 @@
   "account": {
     "account": "Nalog",
     "myTeacherProfile": "Moj nastavnički profil"
+  },
+  "footer": {
+    "FOSSOpenContent": "Otvoreni sadržaj",
+    "proudlyPartOf": "Ponosni deo <0>Plan ₿ Mreže</0>"
+  },
+  "months": {
+    "april": "April",
+    "august": "Avgust",
+    "december": "Decembar",
+    "february": "Februar",
+    "january": "Januar",
+    "july": "Jul",
+    "june": "Jun",
+    "march": "Mart",
+    "may": "Maj",
+    "november": "Novembar",
+    "october": "Oktobar",
+    "september": "Septembar"
+  },
+  "navbar": {
+    "analytics": "Analitika",
+    "bookings": "Rezervacije",
+    "career": "Karijera",
+    "careers": "Karijere",
+    "discountCode": "Kodovi za popust",
+    "learnAnytimeDescription": "Kurs koji se prati sopstvenim tempom",
+    "learnAnytimeTitle": "Uči bilo kada",
+    "liveClassesDescription": "Kursevi sa predavačem",
+    "liveClassesTitle": "Časovi uživo",
+    "manageCourses": "Upravljaj kursevima",
+    "myCalendar": "Moj kalendar",
+    "myCareer": "Moja karijera",
+    "myCourses": "Moji kursevi",
+    "myCoursesDescription": "Pratite svoj napredak",
+    "tabs": {
+      "admin": "Administrator",
+      "learn": "Učenje",
+      "teach": "Podučavanje"
+    },
+    "translationPanel": "Panel za prevod",
+    "tutorials": "Uputstva",
+    "tutorialsAnalytics": "Statistika uputstava",
+    "userRolesAllocation": "Dodela korisničkih uloga"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Prevod uz pomoć AI",
+      "language": "Jezik",
+      "original": "Originalni jezik"
+    },
+    "player": {
+      "pears": "Kruške 🍐",
+      "peertube": "Peertube",
+      "player": "Reproduktor",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
   }
 }

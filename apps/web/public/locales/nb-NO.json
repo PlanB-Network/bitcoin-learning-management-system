@@ -118,7 +118,10 @@
     "hostSessionConditions": "Slik gjør du:\n\n1. Les <0>Charter</0> - Sørg for at gruppen din oppfyller de obligatoriske vertskapsbetingelsene\n2. Planlegg & Sett opp tidsplan - Hvis du kvalifiserer, velg en dato og organiser økten\n3. Publiser arrangementet ditt - Kontakt oss for å legge det til på Plan ₿ Network-plattformen slik at folk kan bli med",
     "myCertificates": "Mine sertifikater",
     "noTestSessions": "Ingen testøkter er for øyeblikket tilgjengelige",
-    "wantHostSession": "Vil du være vert for en ₿-CERT testøkt på din lokale hub?"
+    "wantHostSession": "Vil du være vert for en ₿-CERT testøkt på din lokale hub?",
+    "certificates": "Sertifikater",
+    "chooseCourse": "Velg kurs",
+    "noDiplomasAvailable": "Ingen diplomer tilgjengelige ennå"
   },
   "bet": {
     "contributeButton": "Hjelp & Bidra",
@@ -1242,25 +1245,29 @@
       "edit": "Rediger",
       "email": "Epost",
       "emailChangeConfirmation": "En bekreftelses for endring av epost er sendt, sjekk innboksen din for å bekrefte endringen.",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "Du har nylig oppdatert e-posten din. Vennligst vent noen minutter før du prøver igjen.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "coursesOption": "Oppdateringer om kursene du er påmeldt i",
+        "description": "Du kan tilpasse dine varslingsinnstillinger nedenfor. ",
+        "emailPreferencesDescription": "Her kan du velge hvilke typer e-poster du ønsker å motta fra oss. Disse preferansene gjelder bare for e-postadressen som er assosiert med denne lenken.",
+        "emailPreferencesSavedSuccessfully": "Dine e-postinnstillinger ble oppdatert vellykket.",
+        "emailPreferencesTitle": "Administrer dine Plan ₿ Network e-postpreferanser",
+        "emailTitle": "Hvilke typer meldinger vil du gjerne motta på e-post?",
+        "emailWarning": "Advarsel! Det er ingen e-postadresse knyttet til kontoen din. Vennligst legg den til i profildelen din.",
+        "eventsOption": "Oppdateringer om arrangementer du har bestilt",
+        "generalOption": "Generell informasjon og nyheter om Plan ₿ Network",
+        "goToProfile": "Gå til Profil",
+        "loadEmailSettingsError": "Beklager, vi kunne ikke laste inn dine e-postpreferanser.",
+        "loadEmailSettingsErrorDescription": "Vennligst forsikre deg om at linken du brukte er korrekt.",
+        "loadEmailSettingsErrorManage": "Hvis du har tilgang til kontoen din, kan du også administrere innstillingene direkte i kontrollpanelet ditt:",
+        "none": "Ingen",
+        "platformTitle": "Hvilke typer varsler vil du gjerne motta på denne plattformen?",
+        "settingsSaved": "Innstillingene dine ble lagret!",
+        "title": "Varslingsinnstillinger",
+        "assignedAt": "Tildelt kl",
+        "displayName": "Visningsnavn",
+        "filter": "Filter",
+        "role": "Rolle"
       },
       "password": "Passord",
       "personalInformation": "Min personlige informasjon",
@@ -1271,74 +1278,92 @@
       "save": "Lagre",
       "saving": "Lagrer…",
       "security": "Sikkerhet",
-      "securitySettings": "",
-      "settings": "",
+      "securitySettings": "Sikkerhetsinnstillinger",
+      "settings": "Innstillinger",
       "username": "Brukernavn"
     },
     "studentDashboard": "Studentdashbord",
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "Alle studenter",
         "analytics": "Analyse",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "Kunngjøringesteksten",
+          "contentPlaceholder": "Vennligst skriv her.",
+          "create": "Lag annonsering",
+          "dateLabel": "Publiseringsdato",
+          "datePlaceholder": "Velg en dato",
+          "dateRequired": "Dato er obligatorisk",
+          "editAnnouncement": "Rediger kunngjøring",
+          "groupLabel": "Velg gruppen av studenter du ønsker å henvende deg til",
+          "title": "Skriv en kunngjøring",
+          "typeLabel": "Hva slags kunngjøring er det?",
+          "typePlaceholder": "Velg en type"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "Kunngjøringer",
+        "announcementsIntroduction": "I tillegg til automatisk varsling om timeplaner, har du muligheten til å skrive og planlegge ekstra kunngjøringer for studentene dine. For eksempel kan du informere dem om logistiske endringer, eller nye oppdateringer.\nStudentene vil motta disse varslene på plattformen, og via e-post (hvis de har aktivert denne funksjonen, valgfritt).",
+        "announcementsPast": "Tidligere kunngjøringer",
+        "announcementsPastDescription": "Nedenfor er kunngjøringene, som allerede er publisert, oppført. Listen vil bli tømt etter en måned.",
+        "announcementsUpcoming": "Kommende kunngjøringer",
+        "announcementsUpcomingDescription": "Nedenfor er de kommende kunngjøringene du noterte og planla.",
+        "assignment": "Oppgave",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertDescription2": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Etter at alle karakterene er skrevet inn, klikk på \"Publiser alle karakterer\" for å publisere alle på en gang.\nVennligst verifiser karakterene på forhånd, da de ikke lenger vil være redigerbare etter at de har blitt publisert. ",
+          "alertDescription2": "Oppgavekarakterene må være offentliggjort innen midnatt (CET) den 22. juni.",
+          "alertTitle": "Oppgavevurdering",
+          "confirmPublication": "Bekreft publisering",
+          "confirmPublicationDescription": "Etter at karakterene er publisert, er det ingen vei tilbake, fordi de ikke lenger vil være redigerbare.",
+          "confirmPublicationTitle": "Har du bekreftet at det ikke er noen feil?",
+          "description": "Studenter er organisert etter oppdragsgrupper.",
+          "grade100": "Karakter (/100)",
+          "gradesPublished": "Karakterene er publisert.",
+          "missingGradesDescription": "Hvis karakterer blir offentliggjort, vil de manglende karakterene bli erstattet med 0/100.",
+          "missingGradesTitle": "Det mangler fortsatt {{count}} karakterer!",
+          "publishAllGrades": "Publiser alle karakterer",
+          "studentDisplayName": "Student (Visningsnavn)",
+          "title": "Oppgavekarakterer",
+          "courseAssignment": "Kursoppgave"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "Prosjektoppgave",
         "courseDetails": "Kursdetaljer",
         "courseLongDescription": "Innledende beskrivelse",
         "courseModification": "Hvis du trenger hjelp til å redigere noe i kurset, vennligst sjekk denne <0>tutorial</0>.",
         "coursesManagementPanel": "Kurskontrollpanel",
         "curriculum": "Kursstudieplan",
         "curriculumDescription": "Her er det nåværende studieplan for dette kurset.",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "Er du sikker på at du vil slette denne kunngjøringen?",
+        "deleteAnnouncementWarning": "Denne endringen er irreversibel",
         "editOnGithub": "Rediger på Github",
         "examResults": "Eksamensresultater",
-        "goal": "",
+        "goal": "Mål",
         "makeModifications": "Trenger du å gjøre endringer?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "DU HAR INGEN tidligere kunngjøringer for øyeblikket.",
+        "noWrittenAnnouncement": "Du har ingen skriftlig kunngjøring for øyeblikket.",
         "objectives": "Mål",
         "proposeNewCourse": "Foreslå en ny kurs",
         "quickRecap": "Her kan du finne all generell informasjon om dette kurset.",
         "reviewInfos": "Her kan du kontrollere og gjennomgå all informasjon om hvert kurs du har koordinert.",
         "reviews": "Anmeldelser",
-        "selectCourse": "",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "selectCourse": "Velg kurs",
+        "summerStudents": "Sommerskole",
+        "writeAnnouncement": "Skriv en kunngjøring",
+        "amountPaid": "Beløp betalt",
+        "averageAttempts": "Gjennomsnittlige forsøk",
+        "averageDuration": "Gjennomsnittlig varighet",
+        "averageScore": "Gjennomsnittlig poengsum",
+        "exportExamData": "Eksporter eksamensdata",
+        "finalAverageResults": "Endelige gjennomsnittsresultater",
+        "finalScore": "Sluttresultat",
+        "lastActive": "Sist aktiv",
+        "medianScore": "Medianpoeng",
+        "noExamLinked": "Det er for øyeblikket ingen eksamen knyttet til dette kurset. Hvis du ønsker å opprette en eksamen, vennligst kontakt oss.",
+        "overview": "Oversikt",
+        "questionsInExam": "Spørsmål i eksamen",
+        "studentsGraduated": "Studenter ble uteksaminert",
+        "studentsList": "Studentliste",
+        "successRate": "Suksessrate",
+        "thresholdToPass": "Terskel for å bestå",
+        "totalQuestions": "Totalt antall spørsmål"
       },
       "menu": "Lærer-meny",
       "profile": {
@@ -1375,6 +1400,9 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Her kan du finne analyser av opplæringene du har opprettet og publisert på plattformen.",
         "yourTutorials": "Dine veiledninger"
+      },
+      "discount": {
+        "description": "Her kan du generer og administrer rabattkoder for arrangementer og kurs - enten engangs, for stipend e.l. tilfeller, eller flerbruks for markedsføringskampanjer ect."
       }
     },
     "professor": {
@@ -1414,7 +1442,8 @@
       "unlimited": "ubegrenset",
       "visitWebsite": "Besøk nettside",
       "watchLive": "Se direkte",
-      "watchReplay": "Se opptak"
+      "watchReplay": "Se opptak",
+      "buyLecture": "Kjøp forelesning"
     },
     "errors": {
       "premiumContentNeedsLogin": "Du må være logget inn for å få tilgang til denne hendelsen.",
@@ -1447,12 +1476,12 @@
       "address": "Adresse",
       "back_events": "Tilbake til arrangementer",
       "book_seat": "Bestill plass",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
+      "callout_book_online": "Du er i ferd med å bestille nettbasert tilgang til denne hendelsen.",
+      "callout_book_physical": "Du er i ferd med å bestille <highlight>personlig oppmøte tilgang</highlight> til dette arrangementet.",
+      "callout_book_replay": "Du er i ferd med å bestille tilgang til opptaket av denne hendelsen.",
+      "callout_purchase_online": "Du er i ferd med å kjøpe <highlight>online tilgang</highlight> til denne begivenheten.",
+      "callout_purchase_physical": "Du er i ferd med å kjøpe <highlight>personlig oppmøte</highlight> til denne begivenheten.",
+      "callout_purchase_replay": "Du er i ferd med å kjøpe tilgang til opptaket av denne hendelsen.",
       "date": "Dato",
       "description_free_physical": "Vennligst gjennomgå de oppgitte detaljene for lokalet.\nNår bookingen er bekreftet, vil vi utstede en bekreftelsesbillett og en QR-kode som skal vises på arrangementet.",
       "description_online": "Vennligst sjekk dato og tid for arrangementet som er oppgitt.\nNår tiden kommer, logg inn på plattformen for å få tilgang til direktesendingen via arrangementsiden.",
@@ -1460,13 +1489,48 @@
       "download_ticket": "Last ned billetten din",
       "language": "Språk",
       "limitation": "Begrensning",
-      "limitedSeats": "",
+      "limitedSeats": "Plassene er begrensede. Vennligst avbestill bookingen din hvis du ikke kan delta.",
       "max_capacity": "Maksimum kapasitet",
       "payment_successful": "Bestilling vellykket!",
       "time": "Tid"
     },
-    "tcDisclaimer": "",
-    "tcMustBeAccepted": ""
+    "tcDisclaimer": "Jeg godtar at informasjonen min kan deles med arrangørene for å få tilgang til lokalene.",
+    "tcMustBeAccepted": "Du må akseptere vilkårene og betingelsene for å fortsette",
+    "addEvent": "Legg til arrangement",
+    "calendar": {
+      "displayCalendar": "Vis Kalender",
+      "fullMap": "Fullstendig kart",
+      "hideCalendar": "Skjul kalender",
+      "inXMonths": "Om {{number}} måneder",
+      "lastMonth": "Forrige måned",
+      "nextMonth": "Neste måned",
+      "noEventsFound": "Ingen arrangementer funnet",
+      "thisMonth": "Denne måneden",
+      "today": "I dag",
+      "xMonthsAgo": "{{number}} måneder siden"
+    },
+    "eventInfos": {
+      "eventBooked": "Arrangement booket",
+      "eventType": "Hendelsestype",
+      "numberOfSpots": "Antall plasser",
+      "onlineAndInPerson": "På nett og personlig oppmøte",
+      "secureYourSpot": "Sikre din plass",
+      "whatsPlanned": "Hva er planlagt"
+    },
+    "myTickets": "Mine billetter",
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Uke"
+    },
+    "types": {
+      "plurals": {
+        "conference": "konferanser",
+        "exam": "eksamener",
+        "lecture": "forelesninger",
+        "meetup": "møter",
+        "workshop": "verksteder"
+      }
+    },
+    "upcomingEvents": "Kommende arrangementer"
   },
   "filters": {
     "categories": "Kategorier",
@@ -1487,7 +1551,8 @@
     "placeHolder": "Hva er dette?",
     "randomSearch": "Tilfeldig søk",
     "relatedWords": "Relaterte ord:",
-    "term": "Begrep"
+    "term": "Begrep",
+    "showMoreWords": "Vis flere ord"
   },
   "home": {
     "aboutUsSection": {
@@ -1565,9 +1630,9 @@
     "description2": "Bli med i labben som samsvarer med studiefeltet ditt og forbedre læringsopplevelsen din!",
     "planBLabs": "Plan ₿ Labs",
     "presentation": {
-      "link": "",
-      "subtitle": "",
-      "title": ""
+      "link": "Oppdag Plan ₿ Labs",
+      "subtitle": "Bli med i et forum for å lære, diskutere og vokse!",
+      "title": "Forbedre Bitcoin-ferdighetene dine!"
     },
     "title": "Praktiske og interaktive klasser for kontinuerlig læring"
   },
@@ -1609,7 +1674,8 @@
   "movies": {
     "goToMovie": "Gå på filmen",
     "pageTitle": "Filmer & Dokumentarer",
-    "watchTrailer": "Se traileren"
+    "watchTrailer": "Se traileren",
+    "checkTheMovie": "Se filmen"
   },
   "notFound": {
     "here": "Her",
@@ -1618,54 +1684,55 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "Oppgave",
+      "calendar": "Kalendervarsel",
+      "celebration": "Feiring",
+      "general": "Generell informasjon",
+      "warning": "Advarsel"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "hoursAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "stayUpToDate": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "Dine ₿-CERT-resultater er klare!",
+    "blogNotTranslated": "Beklager, dette nye blogginnlegget er ennå ikke oversatt til ditt språk.",
+    "bookYourSeat": "Reserve plassen din hvis du vil delta personlig!",
+    "calendar_5m": "Undervisningen starter om 5 minutter! Klikk her for å bli med nå.",
+    "calendar_5m_online_event": "Det nærmer seg! {{eventName}} starter om 5 minutter. Klikk her for å bli med nå!",
+    "calendar_24h": "Neste time vil være i morgen fra {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Arrangementet {{eventName}} vil finne sted i morgen, fra {{formattedTime}} på {{addressLine}}. Pass på å laste ned billetten din for å delta!",
+    "calendar_48h_online_event": "{{eventName}} nærmer seg snart! Den er planlagt til {{date}}, fra {{formattedTime}}. ",
+    "dashboardDescription": "Her er dine siste varsler. De blir automatisk fjernet en måned etter at du har sett dem.",
+    "daysAgo": "{{days}} dager siden",
+    "hoursAgo": "{{hours}} timer siden",
+    "markAsRead": "Merk som lest",
+    "monthsAgo": "{{months}} måneder{{s}} siden",
+    "noRecentNotifications": "Du har ingen nylige varsler for øyeblikket.",
+    "notifications": "Varsler",
+    "noUnreadNotifications": "Ingen flere uleste varslinger",
+    "planBNews": "Plan ₿ Nyheter",
+    "read": "Les",
+    "results": "Dine ₿-CERT-resultater er klare!",
+    "select": "Velg",
+    "selectAll": "Velg alle",
+    "stayUpToDate": "Hold deg oppdatert!",
+    "today": "I dag",
+    "unread": "Ulest",
+    "upcomingEvent": "Kommende arrangement",
+    "weeksAgo": "{{weeks}} uker siden",
+    "yearsAgo": "{{years}} år siden",
+    "yesterday": "I går",
+    "newVersionAvailable": "En ny versjon av Plan ₿ Network-plattformen er tilgjengelig. Vennligst oppdater siden for å oppdatere."
   },
   "payment": {
     "haveReductionCode": "Har du en rabattkode?",
-    "insertReductionCode": "",
+    "insertReductionCode": "Sett inn reduksjonskoden din",
     "payByCard": "Betal med kort",
     "payWithBitcoin": "Betal med Bitcoin",
-    "taxesMayApply": "",
+    "taxesMayApply": "Skatter kan påløpe ved utsjekk",
     "terms": "Se våre <0>generelle vilkår</0> og betingelser for detaljer om refusjon",
     "total": "Totalt"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Velg tidssone"
   },
   "podcast": {
     "check": "Sjekk podcasten"
@@ -1718,7 +1785,7 @@
     "blogPageStrings": {
       "blogListButtonText": "Les",
       "blogSidebarTitle": "Tidligere innlegg i nettverket",
-      "blogSidebarTitleForAll": "",
+      "blogSidebarTitleForAll": "Tidligere Innlegg",
       "errorMessageNotFound": "Bloggen ble ikke funnet.",
       "featuredArticleTitleText": "Siste artikkel utgitt",
       "filterText": "Filtrer etter emne :",
@@ -1735,7 +1802,8 @@
       "contact": "Kontakt",
       "legalNotice": "Juridisk merknad",
       "privacyPolicy": "Personvernpolicy",
-      "termsOfSale": "Salgsbetingelser"
+      "termsOfSale": "Salgsbetingelser",
+      "notFound": "Juridisk informasjon ikke funnet"
     },
     "title": "Offentlig kommunikasjon"
   },
@@ -1744,18 +1812,21 @@
       "title": "Artikler"
     },
     "bet": {
-      "title": "Utdanningsverktøy"
+      "title": "Utdanningsverktøy",
+      "addEducationKit": "Legg til utdanningsverktøy"
     },
     "books": {
       "author": "Forfatter : ",
-      "title": "Bibliotek"
+      "title": "Bibliotek",
+      "addBook": "Legg til bok"
     },
     "channels": {
       "noYoutubeChannels": "Det er for øyeblikket ingen Youtube-kanaler for det valgte språket.",
       "title": "Youtube-kanaler"
     },
     "conferences": {
-      "title": "Konferanseopptak"
+      "title": "Konferanseopptak",
+      "addConference": "Legg til konferanseopptak"
     },
     "github": "All denne dataen administreres via ett åpent kildekode <0>Github</0> -lager. Føl deg fri til å bidra og legge til manglende innhold.",
     "glossary": {
@@ -1788,15 +1859,19 @@
     "pageTitle": "Velkommen til ressursportalen",
     "podcasts": {
       "noPodcasts": "Det er for øyeblikket ingen podcaster for valgt språk.",
-      "title": "Podcaster"
+      "title": "Podcaster",
+      "addPodcast": "Legg til podcast",
+      "checkThePodcast": "Sjekk podcasten"
     },
     "projects": {
-      "title": "Prosjekter"
+      "title": "Prosjekter",
+      "addProjects": "Legg til prosjekt"
     },
     "searchFilterName": "Søk etter navn",
     "toggleFreeOnly": "Gratis",
     "toggleLabelAll": "Alt",
-    "toggleLabelSelectedLanguage": "Valgt språk"
+    "toggleLabelSelectedLanguage": "Valgt språk",
+    "pageSubtitleMovies": "<0>Andre filmer</0> du kanskje liker"
   },
   "search": {
     "all": "Alle",
@@ -1842,7 +1917,9 @@
     "tutorial": "Veiledning",
     "tutorials": "Veiledninger",
     "youtube_channel": "Youtube-kanal",
-    "youtube_channels": "Youtube-kanaler"
+    "youtube_channels": "Youtube-kanaler",
+    "noResults": "Ingen resultater",
+    "resultsFound": "{{count}} resultater funnet"
   },
   "settings": {
     "changeDisplayName": "Endre visningsnavn",
@@ -1854,19 +1931,19 @@
     "approvedByCreator": "Godkjent av skaperen",
     "backTutorials": "Tilbake til alle opplæringsprogrammer",
     "business": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "Ønsker du å integrere Bitcoin i virksomheten din? Denne kategorien samler alle veiledninger laget for fagfolk. Enten det er å sette opp et salgspunkt-system for enkelt å godta Bitcoin-betalinger, eller å legge til og administrere bitcoins i selskapets skattekammer, vil du finne nødvendig teknisk og praktisk informasjon her.",
+      "shortDescription": "Å akseptere Bitcoin-betalinger og administrere det i din skattekiste",
+      "title": "Forretning"
     },
     "computer-security": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "Datamaskinsikkerhet er avgjørende for enhver Bitcoiner. I denne kategorien vil du finne veiledninger om viktige verktøy og generelle praksiser for å beskytte ditt digitale miljø. Operativsystemer, sikre nettlesere, passordadministratorer, autentiseringssystemer, VPN-er og krypterte kommunikasjonsløsninger, alle ressursene som presenteres her har som mål å forbedre din sikkerhet og personvern.",
+      "shortDescription": "Essensielle verktøy for å beskytte din digitale sikkerhet og personvern",
+      "title": "Datamaskinsikkerhet"
     },
     "contribution": {
-      "description": "",
-      "shortDescription": "",
-      "title": ""
+      "description": "Vil du bidra til den åpne plattformen til Plan ₿ Network? I denne kategorien vil du lære hvordan du skriver og publiserer en ny opplæring, gjennomgår eller korrekturleser innhold, eller legger til nye nyttige ressurser for fellesskapet. Disse veiledningene vil gi deg muligheten til å engasjere deg i Bitcoin-utdanning og berike vår felles kunnskapsbase.",
+      "shortDescription": "Bidra til Plan ₿ Network open-source plattform",
+      "title": "Bidrag"
     },
     "details": {
       "author": "Forfatter : ",
@@ -1874,7 +1951,8 @@
       "ratingSuccess": "Takk for vurderingen din! Den er tatt i betraktning",
       "source": "Kilde:",
       "tutorialName": "Veiledningsnavn",
-      "writtenBy": "Denne opplæringen ble skrevet av :"
+      "writtenBy": "Denne opplæringen ble skrevet av :",
+      "didThisWork": "Fungerte dette bra for deg?"
     },
     "exchange": {
       "description": "Børser er en av inngangs- og utgangsdørene mellom din tradisjonelle valuta (euro, dollar, kroner) og bitcoin-verdenen. Børser kan være regulerte og KYC (Know Your Customer) kompatible, eller peer-to-peer og anonyme. Hver børs vil tilby forskjellige funksjoner, gebyrstrukturer, likviditet og kundestøtte. Hver bitcoiner vil bruke forskjellige børser basert på deres behov og overbevisninger.",
@@ -1907,25 +1985,25 @@
       "title": "Personvern"
     },
     "subCategories": {
-      "analysis": "",
-      "authentication": "",
-      "backup": "",
-      "bitcoin": "",
-      "centralized": "",
-      "communication": "",
-      "content": "",
-      "data": "",
-      "desktop": "",
-      "hardware": "",
-      "lightning-network": "",
-      "mobile": "",
-      "on-chain": "",
-      "operating system": "",
-      "others": "",
-      "peer-to-peer": "",
-      "point-of-sale": "",
-      "pool": "",
-      "resource": ""
+      "analysis": "Analyse",
+      "authentication": "Autentisering",
+      "backup": "Sikkerhetskopi",
+      "bitcoin": "Bitcoin",
+      "centralized": "Sentralisert",
+      "communication": "Kommunikasjon",
+      "content": "Innhold",
+      "data": "Data",
+      "desktop": "Skrivebord",
+      "hardware": "Maskinvare",
+      "lightning-network": "Lightning-nettverket",
+      "mobile": "Mobil",
+      "on-chain": "På blokkjeden",
+      "operating system": "Operativsystem",
+      "others": "Andre",
+      "peer-to-peer": "Peer-to-peer",
+      "point-of-sale": "Salgspunkt",
+      "pool": "Pool",
+      "resource": "Ressurs"
     },
     "wallet": {
       "description": "En Bitcoin-lommebok er som nøkkelknippet ditt. Den lar deg bruke og motta bitcoin. Det finnes mange forskjellige typer lommebøker, alle med forskjellige bruksområder, funksjoner, kostnader og brukeropplevelser. Hver bitcoiner vil bruke forskjellige enheter basert på deres behov, nivå av krav og erfaring.",
@@ -1962,7 +2040,7 @@
     "booked": "Bestilt",
     "bookings": "Bestillinger",
     "business": "Forretning",
-    "calendar": "",
+    "calendar": "Kalender",
     "cancel": "Avbryt",
     "careerPortal": "Karriereportal",
     "category": "Kategori",
@@ -1972,12 +2050,12 @@
     "chapters": "Kapitler",
     "close": "Lukk",
     "communities": "Fellesskap",
-    "company": "",
+    "company": "Selskap",
     "complete": "Fullfør",
     "conference": "Konferanse",
     "congrats": "Gratulerer!",
     "content": "Innhold",
-    "continue": "",
+    "continue": "Fortsett",
     "country": "Land",
     "course": "Kurs",
     "courseId": "Kurs-ID",
@@ -1986,7 +2064,7 @@
     "credits": "Kreditter",
     "dashboard": "Startside",
     "date": "Dato",
-    "day": "",
+    "day": "Dag",
     "delete": "Slett",
     "description": "Beskrivelse",
     "details": "Detaljer",
@@ -2037,16 +2115,16 @@
     "lnurlAuth": "LNURL-godkjenning",
     "location": "Sted",
     "members": " Medlemmer",
-    "mentor": "",
+    "mentor": "Mentor",
     "mining": "Mining",
-    "mode": "",
+    "mode": "Modus",
     "movie": "Film",
     "name": "Navn",
     "network": "Nettverk",
     "newsletter": "Nyhetsbrev",
     "next": "Neste",
     "no": "Nei",
-    "notApplicable": "",
+    "notApplicable": "Ikke aktuelt",
     "on": "på",
     "onChainAddress": "On chain-adresse",
     "online": "På nett",
@@ -2055,7 +2133,7 @@
     "paid": "Betalt",
     "part": "Del",
     "passed": "Bestått",
-    "password": "",
+    "password": "Passord",
     "podcast": "Podkast",
     "podcasts": "Podcaster",
     "previous": "Forrige",
@@ -2075,10 +2153,10 @@
     "resources": "Ressurser",
     "role": "Rolle",
     "save": "Lagre",
-    "saving": "",
+    "saving": "Lagrer...",
     "search": "Søk",
     "security": "Sikkerhet",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}} valgt",
     "skip": "Hopp over",
     "socialStudies": "Samfunnsfag",
     "start": "Start",
@@ -2093,8 +2171,8 @@
     "ticket": "Billett",
     "tickets": "Billetter",
     "time": "Tid",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "Tidssone",
+    "title": "Tittel",
     "to": "til",
     "topics": "Emner",
     "total": "Totalt",
@@ -2106,11 +2184,53 @@
     "user": "Bruker",
     "username": "Brukernavn",
     "users": "Brukere",
-    "video": "",
+    "video": "Video",
     "view": "Visning",
     "viewMore": "Se mer",
     "wallets": "Lommebøker",
-    "yes": "Ja"
+    "yes": "Ja",
+    "aboutUs": "Om oss",
+    "academy": "Akademi",
+    "account": "Konto",
+    "actions": "Handlinger",
+    "booking": "Bestilling",
+    "certifications": "Sertifiseringer",
+    "completed": "Fullført",
+    "discover": "Oppdag",
+    "enrolled": "Innmeldt",
+    "filters": "Filter",
+    "full": "Full",
+    "info": "Info",
+    "invoices": "Fakturaer",
+    "legal": "Retsliginformasjon",
+    "legals": "Rettslige forhold",
+    "map": "Kart",
+    "month": "Måned",
+    "myCertificates": "Mine sertifikater",
+    "none": "Ingen",
+    "planBNetwork": "Plan ₿ Network",
+    "practice": "Praksis",
+    "pricing": "Prising",
+    "questions": "Spørsmål",
+    "rating": "Vurdering",
+    "resetAll": "Tilbakestill alt",
+    "resetFilters": "Tilbakestill filtre",
+    "results": "Resultater",
+    "resume": "Gjenoppta",
+    "review": "Gjennomgå",
+    "sats": "Sats",
+    "searchTripleDot": "Søk...",
+    "seeAll": "Se alt",
+    "settings": "Innstillinger",
+    "share": "Del",
+    "structure": "Struktur",
+    "taxes": "skatter",
+    "theory": "Teori",
+    "topic": "Emne",
+    "type": "Type",
+    "viewAll": "Se alle",
+    "week": "Uke",
+    "weight": "Vekt"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube-kanaler",
@@ -2120,5 +2240,62 @@
   "account": {
     "account": "Konto",
     "myTeacherProfile": "Min lærerprofil"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS og åpent innhold",
+    "proudlyPartOf": "Stolt del av <0>Plan ₿ Network</0>"
+  },
+  "months": {
+    "april": "April",
+    "august": "August",
+    "december": "Desember",
+    "february": "Februar",
+    "january": "Januar",
+    "july": "Juli",
+    "june": "Juni",
+    "march": "Mars",
+    "may": "Mai",
+    "november": "November",
+    "october": "Oktober",
+    "september": "September"
+  },
+  "navbar": {
+    "analytics": "Analysene",
+    "bookings": "Reservasjoner",
+    "career": "Karriere",
+    "careers": "Karrierer",
+    "discountCode": "Rabattkoder",
+    "learnAnytimeDescription": "Egenstyrte kurs",
+    "learnAnytimeTitle": "Lær når som helst",
+    "liveClassesDescription": "Lærerledede kurs",
+    "liveClassesTitle": "Direktesendte klasser",
+    "manageCourses": "Administrer kurs",
+    "myCalendar": "Kalenderen min",
+    "myCareer": "Min karriere",
+    "myCourses": "Mine kurs",
+    "myCoursesDescription": "Spor fremgangen din",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Lær",
+      "teach": "Undervise"
+    },
+    "translationPanel": "Oversettelsespanel",
+    "tutorials": "Veiledninger",
+    "tutorialsAnalytics": "Analyse av opplæringsprogrammer",
+    "userRolesAllocation": "Tildeling av brukerroller"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "AI Oversettelse",
+      "language": "Språk",
+      "original": "Opprinnelig språk"
+    },
+    "player": {
+      "pears": "Pears 🍐",
+      "peertube": "Peertube",
+      "player": "Spiller",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
   }
 }

@@ -425,7 +425,10 @@
     "noCoursesFound": "Nie znaleziono żadnych kursów",
     "plusXMore": "+{{count}} więcej",
     "selectATopic": "Wybierz temat",
-    "tryAdjustingFilters": "Spróbuj dostosować swoje filtry"
+    "tryAdjustingFilters": "Spróbuj dostosować swoje filtry",
+    "liveClasses": {
+      "liveClasses": "Zajęcia na żywo"
+    }
   },
   "dashboard": {
     "account": "Konto",
@@ -2239,9 +2242,9 @@
     "bookings": "Rezerwacje",
     "career": "Praca",
     "discountCode": "Kody rabatowe",
-    "learnAnytimeDescription": "Kursy, które robisz we własnym tempie",
-    "learnAnytimeTitle": "Ucz się w dowolnym momencie",
-    "liveClassesDescription": "Kursy prowadzone przez nauczycieli",
+    "learnAnytimeDescription": "We własnym tempie",
+    "learnAnytimeTitle": "Samodzielna nauka",
+    "liveClassesDescription": "Z nauczycielem",
     "liveClassesTitle": "Zajęcia na żywo",
     "manageCourses": "Zarządzaj kursami",
     "myCalendar": "Mój kalendarz",
