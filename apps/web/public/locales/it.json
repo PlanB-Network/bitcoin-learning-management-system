@@ -118,7 +118,10 @@
     "hostSessionConditions": "Ecco come fare:\n\n1. Leggi lo <0>Statuto</0> - Assicurati che la tua community soddisfi le condizioni obbligatorie\n2. Pianifica & Programma - Se hai le carte in regola, scegli una data e organizza la sessione di test\n3. Pubblica il Tuo Evento - Contattaci per aggiungerlo alla piattaforma Plan ₿ Network in modo che le persone possano partecipare",
     "myCertificates": "I miei certificati",
     "noTestSessions": "Nessuna sessione di test attualmente disponibile",
-    "wantHostSession": "Vorresti organizzare una sessione di ₿-CERT nel tuo hub locale?"
+    "wantHostSession": "Vorresti organizzare una sessione di ₿-CERT nel tuo hub locale?",
+    "certificates": "Certificati",
+    "chooseCourse": "Scegli il corso",
+    "noDiplomasAvailable": "Nessun diploma disponibile al momento"
   },
   "bet": {
     "contributeButton": "Aiuta e contribuisci",
@@ -1328,26 +1331,39 @@
         "coursesManagementPanel": "Elenco dei corsi",
         "curriculum": "Programma del corso",
         "curriculumDescription": "Ecco il programma attuale di questo corso.",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "Sei sicuro di voler eliminare questo annuncio?",
+        "deleteAnnouncementWarning": "Questa modifica è irreversibile",
         "editOnGithub": "Modifica su Github",
         "examResults": "Risultati dell'esame",
         "goal": "Obiettivo",
         "makeModifications": "Bisogna fare delle modifiche?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "Non hai nessun annuncio passato al momento.",
+        "noWrittenAnnouncement": "Al momento non ci sono annunci scritti.",
         "objectives": "Obiettivi",
         "proposeNewCourse": "Proponi un nuovo corso",
         "quickRecap": "Qui puoi trovare tutte le informazioni riguardanti questo corso.",
         "reviewInfos": "Qui puoi rivedere tutte le informazioni relative a ogni corso che hai coordinato.",
         "reviews": "Recensioni",
-        "selectCourse": "",
-        "summerStudents": "",
-        "writeAnnouncement": "",
+        "selectCourse": "Seleziona corso",
+        "summerStudents": "Summer School",
+        "writeAnnouncement": "Scrivi un annuncio",
         "amountPaid": "Importo pagato",
         "averageAttempts": "Tentativi in media",
         "averageDuration": "Durata media",
-        "averageScore": "Punteggio medio"
+        "averageScore": "Punteggio medio",
+        "finalScore": "Punteggio finale",
+        "lastActive": "Ultima attività",
+        "medianScore": "Punteggio medio",
+        "noExamLinked": "Al momento non c'è nessun esame collegato a questo corso. Se vuoi creare un esame, contattaci.",
+        "overview": "Panoramica",
+        "questionsInExam": "Domande nell'esame",
+        "studentsGraduated": "Studenti diplomati",
+        "studentsList": "Elenco degli studenti",
+        "successRate": "Percentuale di successo",
+        "thresholdToPass": "Soglia da superare",
+        "totalQuestions": "Numero totale di domande",
+        "exportExamData": "Esporta i dati dell'esame",
+        "finalAverageResults": "Risultati medi finali"
       },
       "menu": "Menu insegnante",
       "profile": {
@@ -1384,6 +1400,9 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Qui puoi trovare dei dati sui tutorial che hai creato e pubblicato sulla piattaforma.",
         "yourTutorials": "I tuoi tutorial"
+      },
+      "discount": {
+        "description": "Qui puoi generare e gestire dei codici sconto per eventi e corsi: ad uso singolo per fornire borse di studio o simili, o ad uso multiplo per pubblicizzare eventi."
       }
     },
     "professor": {
@@ -1423,7 +1442,8 @@
       "unlimited": "illimitato",
       "visitWebsite": "Visita il sito",
       "watchLive": "Guarda la live",
-      "watchReplay": "Guarda il replay"
+      "watchReplay": "Guarda il replay",
+      "buyLecture": "Acquista lezione"
     },
     "errors": {
       "premiumContentNeedsLogin": "È necessario accedere per visualizzare questo corso.",
@@ -1489,7 +1509,12 @@
       "xMonthsAgo": "{{number}} mesi fa"
     },
     "eventInfos": {
-      "eventType": "Tipo di evento"
+      "eventType": "Tipo di evento",
+      "eventBooked": "Evento prenotato",
+      "numberOfSpots": "Numero di posti",
+      "onlineAndInPerson": "Online e in presenza",
+      "secureYourSpot": "Assicura il tuo posto",
+      "whatsPlanned": "Cosa è previsto"
     },
     "types": {
       "plurals": {
@@ -1500,7 +1525,12 @@
         "workshop": "workshop"
       }
     },
-    "addEvent": "Aggiungi evento"
+    "addEvent": "Aggiungi evento",
+    "myTickets": "I miei biglietti",
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Week"
+    },
+    "upcomingEvents": "Prossimi eventi"
   },
   "filters": {
     "categories": "Categorie",
@@ -1521,7 +1551,8 @@
     "placeHolder": "Che cos'è questo?",
     "randomSearch": "Ricerca casuale",
     "relatedWords": "Parole correlate:",
-    "term": "Termine"
+    "term": "Termine",
+    "showMoreWords": "Mostra più parole"
   },
   "home": {
     "aboutUsSection": {
@@ -1661,46 +1692,47 @@
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
+    "bCertResults": "I risultati del ₿-CERT sono stati pubblicati!",
+    "blogNotTranslated": "Mi dispiace, questo nuovo post sul blog non è ancora stato tradotto nella lingua selezionata.",
+    "bookYourSeat": "Prenota il tuo posto se vuoi partecipare di persona!",
     "calendar_5m": "La lezione inizia tra 5 minuti! Clicca qui per unirti ora.",
     "calendar_5m_online_event": "È ora! L'evento {{eventName}} inizia tra 5 minuti. Clicca qui per partecipare ora!",
     "calendar_24h": "La prossima lezione sarà domani dalle {{ formattedTime }}.",
     "calendar_24h_in_person_event": "L'evento {{eventName}} avrà luogo domani, dalle {{formattedTime}} alle {{addressLine}}. Assicurati di scaricare il tuo biglietto per partecipare!",
     "calendar_48h_online_event": "L'evento {{eventName}} si avvicina! È programmato per {{date}}, a partire da {{formattedTime}}. ",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "hoursAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "stayUpToDate": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "dashboardDescription": "Ecco le tue ultime notifiche: vengono rimosse automaticamente dopo un mese dalla lettura.",
+    "daysAgo": "{{days}} giorni fa",
+    "hoursAgo": "{{hours}} ore fa",
+    "markAsRead": "Segna come letto",
+    "monthsAgo": "{{months}} mesi fa",
+    "noRecentNotifications": "Non ci sono notifiche recenti.",
+    "notifications": "Notifiche",
+    "noUnreadNotifications": "Non ci sono più notifiche non lette",
+    "planBNews": "Plan ₿ News",
+    "read": "Leggi",
+    "results": "I risultati del ₿-CERT sono stati pubblicati!",
+    "select": "Seleziona",
+    "selectAll": "Seleziona tutte",
+    "stayUpToDate": "Rimani aggiornato!",
+    "today": "Oggi",
+    "unread": "Non lette",
+    "upcomingEvent": "Prossimo evento",
+    "weeksAgo": "{{weeks}} settimana/e fa",
+    "yearsAgo": "{{years}} anno/i fa",
+    "yesterday": "Ieri",
+    "newVersionAvailable": "È disponibile una nuova versione della piattaforma di Plan ₿ Network. Aggiorna la pagina per vederla."
   },
   "payment": {
     "haveReductionCode": "Hai un codice sconto?",
     "insertReductionCode": "Inserisci il tuo codice sconto",
     "payByCard": "Paga con carta",
     "payWithBitcoin": "Paga in Bitcoin",
-    "taxesMayApply": "",
+    "taxesMayApply": "Possono essere applicate delle tasse al momento del pagamento",
     "terms": "Leggi le nostre <0>condizioni generali</0> per i dettagli sul rimborso",
     "total": "Totale"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Seleziona fuso orario"
   },
   "podcast": {
     "check": "Ascolta il podcast"
@@ -1753,7 +1785,7 @@
     "blogPageStrings": {
       "blogListButtonText": "Leggi",
       "blogSidebarTitle": "Post nella categoria {{category}}",
-      "blogSidebarTitleForAll": "",
+      "blogSidebarTitleForAll": "Post precedenti",
       "errorMessageNotFound": "Blog non trovato.",
       "featuredArticleTitleText": "Ultimi articoli pubblicati",
       "filterText": "Filtro per argomento:",
@@ -1770,7 +1802,8 @@
       "contact": "Contatti",
       "legalNotice": "Nota legale",
       "privacyPolicy": "Politica sulla privacy",
-      "termsOfSale": "Condizioni di vendita"
+      "termsOfSale": "Condizioni di vendita",
+      "notFound": "Informazioni legali non trovate"
     },
     "title": "Comunicazione pubblica"
   },
@@ -1779,11 +1812,13 @@
       "title": "Articoli"
     },
     "bet": {
-      "title": "Strumenti Educativi"
+      "title": "Strumenti Educativi",
+      "addEducationKit": "Aggiungi kit didattico"
     },
     "books": {
       "author": "Autore: ",
-      "title": "Libreria"
+      "title": "Libreria",
+      "addBook": "Aggiungi libro"
     },
     "channels": {
       "noYoutubeChannels": "Al momento non ci sono canali Youtube per la lingua selezionata.",
@@ -1824,7 +1859,9 @@
     "pageTitle": "Risorse",
     "podcasts": {
       "noPodcasts": "Al momento non ci sono podcast per la lingua selezionata.",
-      "title": "Podcast"
+      "title": "Podcast",
+      "addPodcast": "Aggiungi podcast",
+      "checkThePodcast": "Ascolta il podcast"
     },
     "projects": {
       "title": "Progetti",
@@ -1833,7 +1870,8 @@
     "searchFilterName": "Cerca per nome",
     "toggleFreeOnly": "Gratis",
     "toggleLabelAll": "Tutti",
-    "toggleLabelSelectedLanguage": "Lingua selezionata"
+    "toggleLabelSelectedLanguage": "Lingua selezionata",
+    "pageSubtitleMovies": "<0>Altri film</0> che potrebbero piacerti"
   },
   "search": {
     "all": "Tutti",
@@ -1879,7 +1917,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutorial",
     "youtube_channel": "Canale Youtube",
-    "youtube_channels": "Canali Youtube"
+    "youtube_channels": "Canali Youtube",
+    "noResults": "Nessun risultato",
+    "resultsFound": "Trovati {{count}} risultati"
   },
   "settings": {
     "changeDisplayName": "Cambia nome visualizzato",
@@ -1911,7 +1951,8 @@
       "ratingSuccess": "Grazie per la valutazione!",
       "source": "Fonte originale :",
       "tutorialName": "Nome del tutorial",
-      "writtenBy": "Questo tutorial è stato scritto da:"
+      "writtenBy": "Questo tutorial è stato scritto da:",
+      "didThisWork": "Ha funzionato bene per te?"
     },
     "exchange": {
       "description": "I mercati sono una delle porte di entrata ed uscita tra la tua valuta tradizionale (euro, dollari) e il mondo bitcoin. I mercati possono essere regolati e KYC (Conoscere il Tuo Cliente), o peer-to-peer e anonimi. Ciasucno offrirà diverse funzionalità, commissioni, liquidità e supporto clienti. Ogni bitcoiner ne utilizzerà uno diverso in base alle sue esigenze e convinzioni.",
@@ -2009,12 +2050,12 @@
     "chapters": "Capitoli",
     "close": "Chiudi",
     "communities": "Community",
-    "company": "",
+    "company": "Azienda",
     "complete": "Completo",
     "conference": "Conferenza",
     "congrats": "Congratulazioni!",
     "content": "Contenuto",
-    "continue": "",
+    "continue": "Continua",
     "country": "Paese",
     "course": "Corso",
     "courseId": "ID corso",
@@ -2023,7 +2064,7 @@
     "credits": "Ringraziamenti",
     "dashboard": "Dashboard",
     "date": "Data",
-    "day": "",
+    "day": "Giorno",
     "delete": "Elimina",
     "description": "Descrizione",
     "details": "Dettagli",
@@ -2074,16 +2115,16 @@
     "lnurlAuth": "LNURL Auth",
     "location": "Luogo",
     "members": " Membri",
-    "mentor": "",
+    "mentor": "Mentore",
     "mining": "Mining",
-    "mode": "",
+    "mode": "Modalità",
     "movie": "Film",
     "name": "Nome",
     "network": "Network",
     "newsletter": "Newsletter",
     "next": "Avanti",
     "no": "No",
-    "notApplicable": "",
+    "notApplicable": "Non applicabile",
     "on": "su",
     "onChainAddress": "Indirizzo on chain",
     "online": "Online",
@@ -2092,7 +2133,7 @@
     "paid": "Premium",
     "part": "Parte",
     "passed": "Superato",
-    "password": "",
+    "password": "Password",
     "podcast": "Podcast",
     "podcasts": "Podcast",
     "previous": "Indietro",
@@ -2112,10 +2153,10 @@
     "resources": "Risorse",
     "role": "Ruolo",
     "save": "Salva",
-    "saving": "",
+    "saving": "Salvataggio...",
     "search": "Ricerca",
     "security": "Sicurezza",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}} selezionato/i",
     "skip": "Salta",
     "socialStudies": "Studi sociali",
     "start": "Inizia",
@@ -2130,8 +2171,8 @@
     "ticket": "Biglietto",
     "tickets": "Biglietti",
     "time": "Orario",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "Fuso orario",
+    "title": "Titolo",
     "to": "a",
     "topics": "Argomenti",
     "total": "Totale",
@@ -2143,7 +2184,7 @@
     "user": "Utente",
     "username": "Nome utente",
     "users": "Utenti",
-    "video": "",
+    "video": "Video",
     "view": "Vista",
     "viewMore": "Visualizza altro",
     "wallets": "Wallet",
@@ -2151,7 +2192,46 @@
     "certifications": "Certificazioni",
     "map": "Mappa",
     "type": "Tipo",
-    "searchTripleDot": "Cerca..."
+    "searchTripleDot": "Cerca...",
+    "full": "Al completo",
+    "info": "Informazioni",
+    "invoices": "Fatture",
+    "legal": "Informazioni legali",
+    "legals": "Informazioni legali",
+    "month": "Mese",
+    "myCertificates": "I miei certificati",
+    "none": "Nessuno",
+    "planBNetwork": "Plan ₿ Network",
+    "practice": "Pratico",
+    "pricing": "Prezzo",
+    "questions": "Domande",
+    "rating": "Valutazione",
+    "resetAll": "Ripristina tutto",
+    "resetFilters": "Reimposta filtri",
+    "results": "Risultati",
+    "resume": "Riprendi",
+    "review": "Ripassa",
+    "sats": "Sats",
+    "seeAll": "Vedi tutti",
+    "settings": "Impostazioni",
+    "share": "Condividi",
+    "structure": "Struttura",
+    "taxes": "tasse",
+    "theory": "Teorico",
+    "topic": "Argomento",
+    "viewAll": "Vedi tutti",
+    "week": "Settimana",
+    "weight": "Peso",
+    "aboutUs": "Chi Siamo",
+    "academy": "Accademia",
+    "account": "Account",
+    "actions": "Azioni",
+    "booking": "Prenotazioni",
+    "completed": "Completato",
+    "discover": "Scopri",
+    "enrolled": "Iscritto",
+    "filters": "Filtri",
+    "list": "Lista"
   },
   "youtubeChannels": {
     "pageTitle": "Canali Youtube",
@@ -2166,12 +2246,57 @@
     "liveClassesDescription": "Studia con l'insegnante",
     "liveClassesTitle": "Corsi Live",
     "learnAnytimeDescription": "Studia quando vuoi",
-    "learnAnytimeTitle": "Corsi Open Source",
-    "myCalendar": "Il mio calendario"
+    "learnAnytimeTitle": "Corsi Online",
+    "myCalendar": "Il mio calendario",
+    "analytics": "Analisi",
+    "bookings": "Prenotazioni",
+    "career": "Carriera",
+    "careers": "Carriere",
+    "discountCode": "Codici sconto",
+    "manageCourses": "Gestisci corsi",
+    "myCareer": "Carriera",
+    "myCourses": "I miei corsi",
+    "myCoursesDescription": "Traccia i tuoi progressi",
+    "tabs": {
+      "admin": "Amministratore",
+      "learn": "Studia",
+      "teach": "Insegna"
+    },
+    "translationPanel": "Dashboard delle traduzioni",
+    "tutorials": "Tutorial",
+    "tutorialsAnalytics": "Analiche sui tutorial",
+    "userRolesAllocation": "Assegnazione dei ruoli utente"
   },
   "videoSelector": {
     "player": {
-      "pears": "Pears 🍐"
+      "pears": "Pears 🍐",
+      "peertube": "Peertube",
+      "player": "Video Player",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    },
+    "language": {
+      "AI": "Traduzione con AI",
+      "language": "Lingua",
+      "original": "Lingua originale"
     }
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Contenuti open-source",
+    "proudlyPartOf": "Sono orgoglioso di far parte di <0>Plan ₿ Network</0>"
+  },
+  "months": {
+    "april": "Aprile",
+    "august": "Agosto",
+    "december": "Dicembre",
+    "february": "Febbraio",
+    "january": "Gennaio",
+    "july": "Luglio",
+    "june": "Giugno",
+    "march": "Marzo",
+    "may": "Maggio",
+    "november": "Novembre",
+    "october": "Ottobre",
+    "september": "Settembre"
   }
 }

@@ -118,7 +118,10 @@
     "hostSessionConditions": "در اینجا چگونگی انجام آن را می‌بینید:\n\n1. <0> اساس‌نامه </0> را بخوانید - اطمینان حاصل کنید که اجتماع شما شرایط میزبانی ضروری را برآورده می‌کند\n2. برنامه‌ریزی و زمان‌بندی - اگر شما واجد شرایط هستید، تاریخ را انتخاب کنید و جلسه را تنظیم نمایید\n3. رویداد خود را منتشر کنید - با ما ارتباط برقرار کنید تا رویداد را در پلتفرم شبکه ₿ Plan منتشر کنیم تا مردم بتوانند به آن بپیوندند.",
     "myCertificates": "گواهینامه‌های من",
     "noTestSessions": "هیچ آزمونی در حال حاضر در دسترس نیست",
-    "wantHostSession": "آیا می‌خواهید یک جلسه تست CERT-₿ را در مرکز محلی خود میزبانی کنید؟"
+    "wantHostSession": "آیا می‌خواهید یک جلسه تست CERT-₿ را در مرکز محلی خود میزبانی کنید؟",
+    "certificates": "گواهی‌نامه‌ها",
+    "chooseCourse": "انتخاب دوره",
+    "noDiplomasAvailable": "هنوز هیچ گواهی‌نامه‌ای در دسترس نیست"
   },
   "bet": {
     "contributeButton": "کمک و مشارکت",
@@ -827,7 +830,10 @@
             "startingTranslationStep": "شروع ترجمه ...",
             "timeoutError": "درخواست ترجمه به موقع انجام نشد. ممکن است محتوای دوره خیلی زیاد باشد. لطفا دوباره تلاش کنید یا با پشتیبانی ارتباط بگیرید.",
             "translationFailed": "ترجمه ناموفق بود. لطفا گزارشات را بررسی و دوباره امتحان کنید.",
-            "uploadAndTranslationStarted": "پرونده‌ها بارگذاری شدند و ترجمه شروع شد! این روند ممکن است برای دوره‌های بزرگ چند دقیقه زمان ببرد."
+            "uploadAndTranslationStarted": "پرونده‌ها بارگذاری شدند و ترجمه شروع شد! این روند ممکن است برای دوره‌های بزرگ چند دقیقه زمان ببرد.",
+            "uploadError": "بارگذاری ناموفق بود. لطفا فایل‌های خود را بررسی کنید و دوباره تلاش نمایید.",
+            "uploadTimeoutError": "زمان مجاز بارگذاری پس از 10 دقیقه به پایان رسید. لطفا با فایل‌های کوچک‌تر تلاش کنید یا اتصال خود را بررسی نمایید.",
+            "uploadingFiles": "بارگذاری فایل‌ها ..."
           },
           "slideNavigation": {
             "next": "بعدی",
@@ -1191,7 +1197,13 @@
       "retakeExam": "دوباره در امتحان شرکت کنید",
       "seatBooked": "صندلی شما در جلسه امتحان رزرو شده است",
       "takePlaceAt": "جلسه در این مکان برگزار خواهد شد",
-      "yourCertificate": "گواهینامه شما"
+      "yourCertificate": "گواهینامه شما",
+      "completeACourse": "دوره اول خود را تکمیل کنید تا گواهی‌نامه دریافت کنید ",
+      "exploreBCert": "کاوش در CERT-₿",
+      "exploreCourses": "بررسی دوره‌ها",
+      "getGlobalRecognition": "با دریافت گواهینامه CERT-₿، در سطح جهانی اعتبار و شناسایی بدست آورید",
+      "noCertificatesAvailable": "هیچ گواهینامه‌ای موجود نیست",
+      "noDiplomasAvailable": "هنوز هیچ گواهی‌نامه‌ای در دسترس نیست"
     },
     "goToDashboard": "برو به داشبورد",
     "goToHomepage": "برو به صفحه اصلی",
@@ -1348,7 +1360,10 @@
         "studentsGraduated": "دانشجویان فارغ التحصیل شده",
         "successRate": "نرخ موفقیت",
         "thresholdToPass": "آستانه جهت قبولی",
-        "totalQuestions": "تعداد کل سوالات"
+        "totalQuestions": "تعداد کل سوالات",
+        "amountPaid": "مبلغ پرداخت شده",
+        "lastActive": "آخرین فعالیت",
+        "studentsList": "لیست دانشجویان"
       },
       "menu": "منوی آموزگار",
       "profile": {
@@ -1427,7 +1442,8 @@
       "unlimited": "نامحدود",
       "visitWebsite": "بازدید از وبسایت",
       "watchLive": "تماشای زنده",
-      "watchReplay": "تماشای بازپخش"
+      "watchReplay": "تماشای بازپخش",
+      "buyLecture": "خرید سخنرانی"
     },
     "errors": {
       "premiumContentNeedsLogin": "برای دسترسی به این رویداد باید وارد حساب‌تان شوید.",
@@ -1494,7 +1510,27 @@
     },
     "planBWeek": {
       "pageTitle": "هفته‌ی ₿ Plan"
-    }
+    },
+    "addEvent": "افزودن رویداد",
+    "eventInfos": {
+      "eventBooked": "رویداد رزرو شد",
+      "eventType": "نوع رویداد",
+      "numberOfSpots": "تعداد جایگاه‌ها",
+      "onlineAndInPerson": "آنلاین و حضوری",
+      "secureYourSpot": "جایگاه خود را رزرو کنید",
+      "whatsPlanned": "چه برنامه‌هایی در نظر گرفته شده است؟"
+    },
+    "myTickets": "بلیط‌های من",
+    "types": {
+      "plurals": {
+        "conference": "کنفرانس‌ها",
+        "exam": "آزمون‌ها",
+        "lecture": "سخنرانی‌ها",
+        "meetup": "ملاقات‌ها",
+        "workshop": "ورکشاپ‌ها"
+      }
+    },
+    "upcomingEvents": "رویدادهای پیشِ رو"
   },
   "filters": {
     "categories": "دسته‌بندی‌ها",
@@ -1515,7 +1551,8 @@
     "placeHolder": "این چیست؟",
     "randomSearch": "جستجوی تصادفی",
     "relatedWords": "کلمات مرتبط:",
-    "term": "مدت"
+    "term": "مدت",
+    "showMoreWords": "نمایش بیشتر کلمات"
   },
   "home": {
     "aboutUsSection": {
@@ -1637,7 +1674,8 @@
   "movies": {
     "goToMovie": "به فیلم برو",
     "pageTitle": "فیلم‌ها و مستند ها",
-    "watchTrailer": "مشاهده تریلر"
+    "watchTrailer": "مشاهده تریلر",
+    "checkTheMovie": "بررسی فیلم"
   },
   "notFound": {
     "here": "اینجا",
@@ -1764,7 +1802,8 @@
       "contact": "تماس",
       "legalNotice": "اخطار قانونی",
       "privacyPolicy": "سیاست حفظ حریم خصوصی",
-      "termsOfSale": "شرایط فروش"
+      "termsOfSale": "شرایط فروش",
+      "notFound": "اطلاعات قانونی یافت نشد"
     },
     "title": "ارتباط عمومی"
   },
@@ -1773,18 +1812,21 @@
       "title": "مقالات"
     },
     "bet": {
-      "title": "کیت آموزشی"
+      "title": "کیت آموزشی",
+      "addEducationKit": "مجموعه آموزشی اضافه کنید"
     },
     "books": {
       "author": "نویسنده: ",
-      "title": "کتابخانه"
+      "title": "کتابخانه",
+      "addBook": "اضافه کردن کتاب"
     },
     "channels": {
       "noYoutubeChannels": "در حال حاضر هیچ کانال یوتیوبی برای زبان انتخاب شده وجود ندارد.",
       "title": "کانال‌های یوتیوب"
     },
     "conferences": {
-      "title": "تکرار کنفرانس‌ها"
+      "title": "تکرار کنفرانس‌ها",
+      "addConference": "اضافه کردن بازپخش کنفرانس"
     },
     "github": "تمام داده‌ها از طریق یک مخزن منبع باز <0>گیت‌هاب</0> مدیریت می‌شوند. به راحتی می‌توانید در افزودن هر محتوایی که از قلم افتاده است مشارکت کنید.",
     "glossary": {
@@ -1817,15 +1859,19 @@
     "pageTitle": "به پورتال منابع خوش آمدید",
     "podcasts": {
       "noPodcasts": "در حال حاضر هیچ پادکستی برای زبان انتخاب شده وجود ندارد.",
-      "title": "پادکست‌ها"
+      "title": "پادکست‌ها",
+      "addPodcast": "اضافه کردن پادکست",
+      "checkThePodcast": "پادکست را بررسی کنید"
     },
     "projects": {
-      "title": "پروژه‌ها"
+      "title": "پروژه‌ها",
+      "addProjects": "اضافه کردن پروژه"
     },
     "searchFilterName": "جستجو بر اساس نام",
     "toggleFreeOnly": "فقط رایگان",
     "toggleLabelAll": "همه",
-    "toggleLabelSelectedLanguage": "زبان انتخاب شده"
+    "toggleLabelSelectedLanguage": "زبان انتخاب شده",
+    "pageSubtitleMovies": "<0>فیلم های دیگری</0> که ممکن است دوست داشته باشید"
   },
   "search": {
     "all": "همه",
@@ -1871,7 +1917,9 @@
     "tutorial": "آموزش",
     "tutorials": "آموزش‌ها",
     "youtube_channel": "کانال یوتیوب",
-    "youtube_channels": "کانال‌های یوتیوب"
+    "youtube_channels": "کانال‌های یوتیوب",
+    "noResults": "نتیجه‌ای یافت نشد",
+    "resultsFound": "{{count}} نتیجه یافت شد"
   },
   "settings": {
     "changeDisplayName": "تغییر نام نمایشی",
@@ -1903,7 +1951,8 @@
       "ratingSuccess": "با تشکر از امتیاز شما!",
       "source": "منبع اصلی:",
       "tutorialName": "نام آموزش",
-      "writtenBy": "این آموزش نوشته شده است توسط :"
+      "writtenBy": "این آموزش نوشته شده است توسط :",
+      "didThisWork": "آیا این برای شما خوب کار کرد؟"
     },
     "exchange": {
       "description": "صرافی‌ها یکی از درگاه‌های ورود و خروج پول سنتی شما (یورو، دلار) و دنیای بیت کوین هستند. صرافی‌ها می‌توانند تنظیم شده و مطابق با KYC (شناخت مشتری) باشند، و یا نفر به نفر، و ناشناس. هر صرافی ویژگی‌ها، ساختار هزینه، نقدینگی و پشتیبانی مشتری متفاوتی را ارائه می‌دهد. هر بیت کوینر بر اساس نیازها و اعتقادات خود از یکی از این صرافی‌ها استفاده می‌کند.",
@@ -2153,7 +2202,35 @@
     "structure": "ساختار",
     "taxes": "مالیات",
     "week": "هفته",
-    "weight": "وزن"
+    "weight": "وزن",
+    "aboutUs": "درباره ما",
+    "account": "حساب کاربری",
+    "booking": "رزرو",
+    "certifications": "گواهینامه‌ها",
+    "completed": "تکمیل شده",
+    "discover": "کشف کردن",
+    "enrolled": "ثبت نام کردید",
+    "filters": "فیلترها",
+    "full": "کامل",
+    "invoices": "فاکتورها",
+    "legal": "قانونی",
+    "legals": "قانونی",
+    "map": "نقشه محل برگذاری",
+    "myCertificates": "گواهینامه‌های من",
+    "planBNetwork": "شبکه ₿ Plan",
+    "practice": "کاربردی",
+    "pricing": "قیمت گذاری",
+    "resetAll": "تنظیم مجدد همه",
+    "resetFilters": "تنظیم مجدد فیلترها",
+    "resume": "رزومه",
+    "sats": "ساتوشی",
+    "searchTripleDot": "جستجو ...",
+    "seeAll": "مشاهده همه",
+    "settings": "تنظیمات",
+    "theory": "نظری",
+    "topic": "موضوع",
+    "type": "نوع",
+    "viewAll": "مشاهده همه"
   },
   "youtubeChannels": {
     "pageTitle": "کانال‌های یوتیوب",
@@ -2192,7 +2269,12 @@
     },
     "translationPanel": "پنل ترجمه",
     "tutorials": "آموزش‌ها",
-    "userRolesAllocation": "تخصیص نقش‌های کاربر"
+    "userRolesAllocation": "تخصیص نقش‌های کاربر",
+    "careers": "شغل و حرفه‌ها",
+    "liveClassesDescription": "دوره‌های آموزشی که با همراهی استاد تدریس می‌شوند",
+    "liveClassesTitle": "کلاس‌های زنده",
+    "myCoursesDescription": "پیشرفت‌های خود را پیگیری کنید",
+    "tutorialsAnalytics": "تجزیه و تحلیل بخش آموزش"
   },
   "videoSelector": {
     "language": {
@@ -2204,11 +2286,16 @@
       "peertube": "Peertube",
       "player": "بازیکن",
       "rumble": "غوغا",
-      "youtube": "یوتیوب"
+      "youtube": "یوتیوب",
+      "pears": "Pears 🍐"
     }
   },
   "account": {
     "account": "حساب کاربری",
     "myTeacherProfile": "پروفایل استاد من"
+  },
+  "footer": {
+    "FOSSOpenContent": "نرم افزارهای آزاد و محتوای باز",
+    "proudlyPartOf": "با افتخار بخشی از <0>Plan ₿ Network</0>"
   }
 }

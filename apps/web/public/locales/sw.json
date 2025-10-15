@@ -20,7 +20,8 @@
     "storyContent": "Plan ₿ Network ni mpango unaosaidia elimu ya Bitcoin duniani kote. Ni mseto wa makampuni mbalimbali ya Bitcoin yenye shauku inayolenga elimu, programu huria, mitandao ya rika hadi rika, na hisia za jumuiya. Kwa pamoja, wameamua kuunda Mpango ₿ Mtandao na kuupa mfumo wa ikolojia wa Bitcoin zana zinazofaa za kukuza. Wasilisho letu la toleo la 2023 linapatikana hapa.",
     "storyTitle": "Hadithi yetu",
     "subtitle": "Je! Unataka kuorange pill ulimwenguni? Jiunge na Mpango ₿ Mtandao.",
-    "title": "Kuhusu Plan ₿ Network"
+    "title": "Kuhusu Plan ₿ Network",
+    "readManifesto": "Soma mikataba yetu"
   },
   "accessType": {
     "hybrid": "Ana kwa ana na mtandaoni",
@@ -117,7 +118,10 @@
     "hostSessionConditions": "Hivi ndivyo utakavyofanya:\n\n\n\n\n\n\n\n1. Soma <0>Hati</0> - Hakikisha jamii yako inatimiza masharti ya lazima ya kupokea\n\n\n\n2. Panga & Ratibu - Kama unastahili, chagua tarehe na andaa kikao\n\n\n\n3. Chapisha Tukio Lako - Wasiliana nasi ili kuliongeza kwenye jukwaa la Plan ₿ Network ili watu wajiunge",
     "myCertificates": "Vyeti vyangu",
     "noTestSessions": "Hakuna vikao vya mtihani vinavyopatikana kwa sasa",
-    "wantHostSession": "Unataka kuandaa kikao cha mtihani wa ₿-CERT kwenye kituo chako cha kijamii?"
+    "wantHostSession": "Unataka kuandaa kikao cha mtihani wa ₿-CERT kwenye kituo chako cha kijamii?",
+    "certificates": "Vyeti",
+    "chooseCourse": "Chagua kozi",
+    "noDiplomasAvailable": "Hakuna vyeti vilivyopatikana bado"
   },
   "bet": {
     "contributeButton": "Saidia & Changia",
@@ -1798,7 +1802,8 @@
       "contact": "Mawasiliano",
       "legalNotice": "Ilani ya kisheria",
       "privacyPolicy": "Sera ya faragha",
-      "termsOfSale": "Masharti ya mauzo"
+      "termsOfSale": "Masharti ya mauzo",
+      "notFound": "Taarifa za kisheria hazikupatikana"
     },
     "title": "Mawasiliano ya umma"
   },
@@ -1912,7 +1917,9 @@
     "tutorial": "Mafunzo",
     "tutorials": "Mafunzo",
     "youtube_channel": "Kituo cha Youtube",
-    "youtube_channels": "Vituo vya Youtube"
+    "youtube_channels": "Vituo vya Youtube",
+    "noResults": "Hakuna matokeo yaliyopatikana",
+    "resultsFound": "Matokeo {{count}} yamepatikana"
   },
   "settings": {
     "changeDisplayName": "Badilisha jina la onyesho",
@@ -2219,7 +2226,12 @@
     "type": "Aina",
     "viewAll": "Tazama yote",
     "week": "Wiki",
-    "weight": "Uzito"
+    "weight": "Uzito",
+    "aboutUs": "Kuhusu Sisi",
+    "legal": "Sheria",
+    "legals": "Sheria",
+    "list": "Orodha",
+    "planBNetwork": "Plan ₿ Mtandao"
   },
   "youtubeChannels": {
     "pageTitle": "Vituo vya Youtube",
@@ -2264,7 +2276,10 @@
     },
     "translationPanel": "Paneli ya kutafsiri",
     "tutorials": "Mafunzo",
-    "userRolesAllocation": "Mgao wa majukumu ya mtumiaji"
+    "userRolesAllocation": "Mgao wa majukumu ya mtumiaji",
+    "careers": "Kazi",
+    "myCoursesDescription": "Fuatilia maendeleo yako",
+    "tutorialsAnalytics": "Uchambuzi wa mafunzo"
   },
   "videoSelector": {
     "language": {
@@ -2279,5 +2294,9 @@
       "rumble": "Mgogoro",
       "youtube": "Youtube"
     }
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Maudhui Wazi",
+    "proudlyPartOf": "Kwa fahari sehemu ya <0>Mtandao wa Mpango ₿</0>"
   }
 }
