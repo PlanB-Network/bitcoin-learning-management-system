@@ -65,7 +65,7 @@ export const CourseCard = ({
           className="max-md:hidden rounded-2xl mb-2 object-cover [overflow-clip-margin:_unset] object-center max-h-[193px] group-hover:max-h-[152px] transition-[max-height] ease-in-out"
         />
 
-        <div className="flex md:flex-col max-md:items-center max-md:gap-2 max-md:mb-2 md:mb-2 md:px-4">
+        <div className="flex md:flex-col max-md:items-center max-md:gap-2 max-md:mb-2 md:mb-2 md:px-4 max-md:pr-2">
           <Image
             width={124}
             height={98}

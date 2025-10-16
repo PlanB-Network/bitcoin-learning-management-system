@@ -272,7 +272,6 @@ export const SideBar = ({
                   icon={Pages}
                   iconColor="orange"
                   label={t('navbar.myCourses')}
-                  description={t('navbar.myCoursesDescription')}
                   link="/my-courses"
                   isActive={window.location.pathname.includes('/my-courses')}
                   isSidebarOpen={isSidebarOpen}
