@@ -169,7 +169,7 @@ function CourseSelector() {
                 )}
                 alt={activeCourse.name}
                 className="rounded-md mb-6"
-                breakpoints={{ default: 512 }}
+                breakpoints={{ default: 700 }}
               />
 
               <span className="text-justify leading-normal tracking-015px text-neutral-500 whitespace-break-spaces mb-5">

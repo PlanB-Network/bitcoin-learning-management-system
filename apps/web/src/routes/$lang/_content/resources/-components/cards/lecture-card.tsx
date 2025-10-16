@@ -61,7 +61,7 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
       <div className="flex max-sm:gap-2 sm:flex-col flex-grow">
         <div className="w-22 sm:w-full overflow-hidden max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg relative sm:mb-2 max-sm:shrink-0">
           <Image
-            breakpoints={{ default: 88, sm: 240 }}
+            breakpoints={{ default: 200, sm: 500 }}
             width="240"
             height="135"
             loading="lazy"

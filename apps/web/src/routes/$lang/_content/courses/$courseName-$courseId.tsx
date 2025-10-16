@@ -248,7 +248,7 @@ function CourseDetails() {
               hideWhenError={true}
               alt={course.name}
               className="max-md:hidden mr-9"
-              breakpoints={{ default: 210 }}
+              breakpoints={{ default: 400 }}
             />
           ) : null}
         </div>
@@ -294,7 +294,7 @@ function CourseDetails() {
           )}
           alt={course.name}
           className="rounded-[20px] w-full lg:max-w-[550px] shrink-1"
-          breakpoints={{ default: 320, lg: 576 }}
+          breakpoints={{ default: 640, lg: 800 }}
         />
 
         <div className="w-full">

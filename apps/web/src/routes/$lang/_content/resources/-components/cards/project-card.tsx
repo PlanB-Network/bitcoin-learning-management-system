@@ -10,7 +10,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <div className="flex md:flex-col items-center md:justify-center gap-2 w-full md:w-29.5">
       <Image
-        breakpoints={{ default: 40, md: 72 }}
+        breakpoints={{ default: 80, md: 160 }}
         className={cn(
           'size-10 md:size-18 rounded-lg',
           props.cardWidth ? props.cardWidth : '',

@@ -44,7 +44,7 @@ export const AuthorCardFull = ({
               </span>
 
               <Image
-                breakpoints={{ default: 128 }}
+                breakpoints={{ default: 300 }}
                 width={128}
                 height={128}
                 src={resourceImgUrl(professor, 'profile.webp')}

@@ -32,7 +32,7 @@ export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
               {professor.name}
             </span>
             <Image
-              breakpoints={{ default: 64, lg: 128 }}
+              breakpoints={{ default: 200, lg: 300 }}
               src={resourceImgUrl(professor, 'profile.webp')}
               alt={professor.name}
               className="size-16 lg:size-32 rounded-full z-10 mt-12 lg:mt-20 object-cover [overflow-clip-margin:_unset]"
@@ -98,7 +98,7 @@ export const ProfessorCardReduced = ({
           alt={professor.name}
           width={128}
           height={128}
-          breakpoints={{ default: 69, md: 128 }}
+          breakpoints={{ default: 200, md: 300 }}
           className={cn(
             'size-32 rounded-full z-10 object-cover [overflow-clip-margin:_unset]',
             mobileSize === 'small' && 'max-md:size-[69px]',

@@ -65,7 +65,7 @@ export const EventCard = ({ event }: EventCardProps) => {
         {/* Image */}
         <div className="w-[112px] sm:w-full overflow-hidden max-sm:rounded-l-lg sm:rounded-t-2xl sm:rounded-b-lg relative sm:mb-2 max-sm:shrink-0">
           <Image
-            breakpoints={{ default: 140, sm: 320 }}
+            breakpoints={{ default: 240, sm: 600 }}
             width="432"
             height="308"
             loading="lazy"

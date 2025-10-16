@@ -298,7 +298,7 @@ function EventDetails() {
           <div className="flex flex-col w-full gap-6 md:gap-8">
             <div className="flex max-sm:flex-col sm:items-center gap-4">
               <Image
-                breakpoints={{ default: 250, sm: 300 }}
+                breakpoints={{ default: 500, sm: 600 }}
                 width="300"
                 height="214"
                 loading="lazy"

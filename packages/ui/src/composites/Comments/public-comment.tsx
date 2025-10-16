@@ -18,7 +18,7 @@ export const PublicComment = ({
     <article className="bg-newGray-6 rounded-lg border border-newGray-5 h-[171px] p-2.5 w-full min-[600px]:max-w-[270px] md:max-w-[322px] flex flex-col gap-1">
       <header className="w-full flex gap-6 items-center shrink-0">
         <Image
-          breakpoints={{ default: 45 }}
+          breakpoints={{ default: 90 }}
           width={45}
           height={45}
           className="size-[45px] rounded-full shrink-0"
