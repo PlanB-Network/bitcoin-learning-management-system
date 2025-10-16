@@ -46,7 +46,7 @@ export const SingleTrialExamResult = ({
       {isExamResultsFetched && examResults && (
         <>
           <section className="flex flex-col w-full">
-            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-2 md:gap-8 bg-newGray-6 rounded-[20px] shadow-course-navigation w-full self-center">
+            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-2 md:gap-8 bg-newGray-6 rounded-[20px] w-full self-center">
               <SuccessExam className="size-7 md:size-10 fill-green-400" />
               <p className="text-newBlack-1 label-medium-16px md:title-large-24px !font-semibold max-md:w-[194px] text-center">
                 {t('courses.exam.completed')}
@@ -114,7 +114,7 @@ export const SingleTrialExamResult = ({
 };
 
 const StatsCard = ({ label, value }: { label: string; value: string }) => (
-  <div className="bg-white p-3 md:p-6 rounded-xl shadow-md flex flex-row md:flex-col items-center md:items-start w-full justify-between md:w-auto">
+  <div className="bg-white p-3 md:p-6 rounded-xl flex flex-row md:flex-col items-center md:items-start w-full justify-between md:w-auto">
     <span className="text-gray-600 text-sm">{label}</span>
     <span className={'text-sm md:text-2xl font-bold text-gray-800 mt-1'}>
       {value}

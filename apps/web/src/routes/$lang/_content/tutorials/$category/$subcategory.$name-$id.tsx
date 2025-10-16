@@ -60,7 +60,7 @@ export const Route = createFileRoute(
 const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
   return (
     <div>
-      <section className="flex justify-between items-end gap-4 w-full border-b md:border-b-2 border-newBlack-3 py-1 md:py-2.5">
+      <section className="flex justify-between items-end gap-4 w-full py-1 md:py-2.5">
         <h1 className="display-small md:display-medium">{tutorial.title}</h1>
         <TutorialLikes tutorial={tutorial} className="max-md:hidden shrink-0" />
       </section>
@@ -108,7 +108,7 @@ const AuthorDetails = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
 
   return (
     <>
-      <DividerSimple />
+      <DividerSimple variant="brown" />
       <section className="w-full flex flex-col">
         <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
           {t('words.author')}
@@ -159,7 +159,7 @@ const Credits = ({
 
   return (
     <>
-      <DividerSimple />
+      <DividerSimple variant="brown" />
       <section className="w-full flex flex-col">
         <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
           {t('words.credits')}

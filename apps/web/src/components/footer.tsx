@@ -65,7 +65,7 @@ export const Footer = () => {
         <div className="flex w-full flex-col max-w-[1644px] mx-auto px-6">
           <SocialNetworksDesktop />
           <PartPlanBNetwork />
-          <DividerSimple mode={'light'} />
+          <DividerSimple />
           <div className="flex items-center py-4 px-2 justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-2.5 text-neutral-400">
               <span className="body-small truncate">
@@ -104,7 +104,7 @@ export const Footer = () => {
           </div>
 
           <div className="w-full flex flex-col">
-            <DividerSimple mode={'light'} className="mb-6" />
+            <DividerSimple className="mb-6" />
             <SocialNetworksMobile />
             <PartPlanBNetwork />
           </div>

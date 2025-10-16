@@ -79,7 +79,7 @@ export const CertificateDisplay = ({
             <img
               src={`/api/files/${userDetails?.imgKey}`}
               alt="Certificate"
-              className="w-full max-w-[842px] shadow-l-section"
+              className="w-full max-w-[842px]"
             />
           </div>
 

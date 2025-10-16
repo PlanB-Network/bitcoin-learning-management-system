@@ -1,7 +1,7 @@
 export const professorTabs = [
   {
     href: '/professors/all',
-    id: 'allProfessors',
+    id: 'all',
     label: 'professors.navigationTitles.all',
   },
   {
@@ -11,7 +11,7 @@ export const professorTabs = [
   },
   {
     href: '/professors/tutorial-creators',
-    id: 'tutorialCreators',
+    id: 'tutorial-creators',
     label: 'professors.navigationTitles.tutorialCreators',
   },
   {

@@ -1,10 +1,15 @@
 import { formatNameForURL } from '@blms/shared';
 import type { FormattedProfessor } from '@blms/types';
-import { cn, Image } from '@blms/ui';
+import { cn, DividerSimple, Image, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { TbBrandLinkedin } from 'react-icons/tb';
+import {
+  TbBook,
+  TbBrandLinkedin,
+  TbChevronRight,
+  TbMicrophone2,
+  TbNotebook,
+} from 'react-icons/tb';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { resourceImgUrl } from '#src/utils/index.js';
 import NostrIcon from '../assets/icons/nostr-primary.svg';
@@ -17,40 +22,80 @@ interface ProfessorCardProps extends React.HTMLProps<HTMLDivElement> {
   professor: FormattedProfessor;
   hasDonateButton?: boolean;
   mobileSize?: 'small' | 'medium';
+  category?: string;
 }
 
-export const ProfessorCard = ({ professor, ...props }: ProfessorCardProps) => {
-  return (
-    <section
-      className="flex flex-wrap w-full p-2 md:p-7 rounded-2xl border-t border-t-newGray-4 bg-newGray-6 shadow-course-navigation mt-8"
-      {...props}
-    >
-      <div className="rounded-[10px] size-full md:rounded-[20px] flex max-md:flex-col md:items-end gap-4 bg-white w-[137px] sm:w-[226px] lg:w-[296px]">
-        <div className="rounded-[10px] size-full md:rounded-[20px] p-1 lg:p-2 border-1 md:border-2 border-white">
-          <div className="rounded-[10px] h-full md:rounded-[20px] py-4 flex flex-col items-center bg-gradient-to-b from-[#411800] to-[#FF5C00] to-[180px] lg:to-[240px] p-2.5 relative overflow-hidden">
-            <span className="max-w-48 mb-8 w-full text-center text-base lg:title-large-sb-24px text-white lg:uppercase z-10 absolute">
-              {professor.name}
-            </span>
-            <Image
-              breakpoints={{ default: 200, lg: 300 }}
-              src={resourceImgUrl(professor, 'profile.webp')}
-              alt={professor.name}
-              className="size-16 lg:size-32 rounded-full z-10 mt-12 lg:mt-20 object-cover [overflow-clip-margin:_unset]"
-            />
-            <div className="flex gap-4 items-end mt-2.5 z-10">
-              <CourseAndTutorials professor={professor} />
-            </div>
-            <div className="hidden lg:flex z-10 flex-col items-center justify-center px-3 py-0">
-              <TopicTags professor={professor} />
-              <SocialLinks professor={professor} />
-            </div>
+export const ProfessorCard = ({ professor, category }: ProfessorCardProps) => {
+  const { t } = useTranslation();
 
-            {/* Background element */}
-            <BackgroundAuthorCardElement />
+  return (
+    <Link
+      to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}${category ? `#${category}` : ''}`}
+      className="flex w-full xl:max-w-[502px] gap-2 border border-neutral-100 rounded-2xl text-black hover:bg-neutral-50"
+    >
+      <Image
+        src={resourceImgUrl(professor, 'profile.webp')}
+        alt={professor.name}
+        breakpoints={{ default: 200, lg: 400 }}
+        className="rounded-l-2xl object-cover [overflow-clip-margin:_unset] object-center w-full max-w-[93px] lg:max-w-[170px] shrink-0 h-20 lg:h-36"
+      />
+      <div className="flex items-center gap-1.5 lg:gap-4 pl-4 pr-2 py-2.5 w-full overflow-hidden">
+        <div className="flex flex-col w-full min-w-0">
+          <span className="w-full subtitle-base lg:line-clamp-1 max-lg:truncate lg:title-medium lg:mt-2">
+            {professor.name}
+          </span>
+          {professor.tags.length > 0 && (
+            <div className="flex items-center gap-2 mt-2 overflow-hidden whitespace-nowrap max-lg:hidden">
+              {professor.tags.slice(0, 3).map((tag) => (
+                <TextTag key={tag} variant="grey" size="small">
+                  {tag}
+                </TextTag>
+              ))}
+            </div>
+          )}
+          <DividerSimple className="mt-3 max-lg:hidden" />
+          <div className="flex items-center gap-3 lg:gap-0 max-lg:mt-2">
+            {professor.coursesCount > 0 && (
+              <span className="flex items-center lg:p-2 lg:px-1 gap-1">
+                <TbBook className="text-brown-400 max-lg:hidden" size={16} />
+                <span className="body-extra-small lg:body-extra-small-bold text-brown-400 lg:text-brown-800">
+                  {t('professors.coursesCount', {
+                    count: professor.coursesCount,
+                  })}
+                </span>
+              </span>
+            )}
+            {professor.tutorialsCount > 0 && (
+              <span className="flex items-center lg:p-2 lg:px-1 gap-1">
+                <TbNotebook
+                  className="text-brown-400 max-lg:hidden"
+                  size={16}
+                />
+                <span className="body-extra-small lg:body-extra-small-bold text-brown-400 lg:text-brown-800">
+                  {t('professors.tutorialsCount', {
+                    count: professor.tutorialsCount,
+                  })}
+                </span>
+              </span>
+            )}
+            {professor.lecturesCount > 0 && (
+              <span className="flex items-center lg:p-2 lg:px-1 gap-1">
+                <TbMicrophone2
+                  className="text-brown-400 max-lg:hidden"
+                  size={16}
+                />
+                <span className="body-extra-small lg:body-extra-small-bold text-brown-400 lg:text-brown-800">
+                  {t('professors.lecturesCount', {
+                    count: professor.lecturesCount,
+                  })}
+                </span>
+              </span>
+            )}
           </div>
         </div>
+        <TbChevronRight className="shrink-0 text-neutral-300" size={20} />
       </div>
-    </section>
+    </Link>
   );
 };
 
@@ -64,6 +109,7 @@ export const ProfessorCardReduced = ({
     isOpen: isTipModalOpen,
     close: closeTipModal,
   } = useDisclosure();
+  const { t } = useTranslation();
 
   const numberCountClass = `text-5xl leading-[116%] text-center text-white${mobileSize === 'small' ? ' max-md:title-large-24px' : ''}`;
   const wordCountClass = `font-semibold leading-[133%] text-center text-white${mobileSize === 'small' ? ' max-md:body-12px' : ''}`;
@@ -182,45 +228,6 @@ export const ProfessorCardReduced = ({
   );
 };
 
-const CourseAndTutorials = ({ professor }: ProfessorCardProps) => {
-  const { t } = useTranslation();
-
-  return (
-    <section className="flex content-center items-center gap-2 lg:gap-x-6 text-white">
-      {professor.coursesCount > 0 && (
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-normal text-2xl lg:text-6xl">
-            {professor.coursesCount}
-          </span>
-          <span className="font-semibold text-xs lg:text-base text-center">
-            {t('words.courses')}
-          </span>
-        </div>
-      )}
-      {professor.tutorialsCount > 0 && (
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-normal text-2xl lg:text-6xl">
-            {professor.tutorialsCount}
-          </span>
-          <span className="font-semibold text-xs lg:text-base text-center">
-            {t('words.tutorials')}
-          </span>
-        </div>
-      )}
-      {professor.lecturesCount > 0 && (
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-normal text-2xl lg:text-6xl">
-            {professor.lecturesCount}
-          </span>
-          <span className="font-semibold text-xs lg:text-base text-center">
-            {t('words.lectures')}
-          </span>
-        </div>
-      )}
-    </section>
-  );
-};
-
 export const TopicTags = ({ professor }: ProfessorCardProps) => {
   return (
     <div className="mt-4 flex flex-wrap lg:mx-auto lg:items-center gap-2.5 lg:justify-center text-xs">
@@ -238,7 +245,7 @@ export const TopicTags = ({ professor }: ProfessorCardProps) => {
 
 export const SocialLinks = ({ professor }: ProfessorCardProps) => {
   return (
-    <div className="mt-4 md:mt-5 flex w-full justify-center px-1 text-primary gap-x-6">
+    <div className="flex items-center gap-4 text-primary max-md:order-2 mt-2 md:mt-2.5">
       {professor.links.twitter && (
         <button
           type="button"
@@ -252,7 +259,7 @@ export const SocialLinks = ({ professor }: ProfessorCardProps) => {
             );
           }}
         >
-          <img src={TwitterIcon} alt="Twitter" className="block" />
+          <img src={TwitterIcon} alt="X" className="block" />
         </button>
       )}
       {professor.links.nostr && (

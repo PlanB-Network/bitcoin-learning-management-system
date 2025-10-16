@@ -48,24 +48,24 @@ export const Divider = ({
 
 const dividerSimpleVariant = cva('w-full h-px', {
   defaultVariants: {
-    mode: 'dark',
+    variant: 'neutral',
   },
   variants: {
-    mode: {
-      dark: 'bg-newGray-1',
-      light: 'bg-neutral-50',
+    variant: {
+      neutral: 'bg-neutral-50',
+      brown: 'bg-brown-100',
     },
   },
 });
 
 export const DividerSimple = ({
   className,
-  mode = 'dark',
+  variant = 'neutral',
 }: {
   className?: string;
-  mode?: 'dark' | 'light';
+  variant?: 'neutral' | 'brown';
 }) => {
-  return <div className={cn(dividerSimpleVariant({ mode }), className)} />;
+  return <div className={cn(dividerSimpleVariant({ variant }), className)} />;
 };
 
 const dividerVerticalVariant = cva('w-px', {

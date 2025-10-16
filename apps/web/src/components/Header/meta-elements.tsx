@@ -49,13 +49,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
 
       {!isLoggedIn && (
         <div className="flex flex-row gap-2 lg:gap-4">
-          <Button
-            size={'s'}
-            variant={'primary'}
-            rounded
-            onClick={onClickLogin}
-            className="shadow-none"
-          >
+          <Button size={'s'} variant={'primary'} rounded onClick={onClickLogin}>
             {t('menu.login')}
           </Button>
         </div>

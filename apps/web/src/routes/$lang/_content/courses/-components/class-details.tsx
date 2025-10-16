@@ -79,7 +79,7 @@ export const ClassDetails = ({
       <span className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newBlack-1">
         {t('courses.chapter.detail.title')}
       </span>
-      <article className="flex flex-col justify-center p-4 gap-5 self-stretch rounded-[12px] bg-newGray-6 shadow-course-navigation-sm body-14px md:label-normal-16px">
+      <article className="flex flex-col justify-center p-4 gap-5 self-stretch rounded-[12px] bg-newGray-6 body-14px md:label-normal-16px">
         <div className="w-full flex max-md:flex-col gap-4 md:gap-2.5 text-newBlack-1">
           {chapter.startDate && (
             <div className="flex max-md:flex-wrap md:flex-col w-full md:max-w-[282px] gap-4 md:gap-1">

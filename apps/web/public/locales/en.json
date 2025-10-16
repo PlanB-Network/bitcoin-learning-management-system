@@ -1788,6 +1788,8 @@
     "pageTitle": "Bitcoin Podcasts"
   },
   "professors": {
+    "coursesCount": "{{count}} courses",
+    "lecturesCount": "{{count}} lectures",
     "navigationTitles": {
       "all": "All",
       "lecturers": "Lecturers",
@@ -1801,7 +1803,8 @@
       "noTipsYet": "This professor does not accept donations at the moment.",
       "thanks": "Thank you for supporting {{name}}'s work!",
       "thanksNoName": "Thank you for supporting my work!"
-    }
+    },
+    "tutorialsCount": "{{count}} tutorials"
   },
   "projects": {
     "languages": "Languages",

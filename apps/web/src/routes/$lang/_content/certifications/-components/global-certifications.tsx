@@ -67,9 +67,6 @@ export const GlobalCertifications = () => {
     isLastElementSelected = true;
   }
 
-  const hasOneElementOpen =
-    isExamOpen.includes(true) || isTicketOpen.includes(true);
-
   useEffect(() => {
     const results = Array.from(
       { length: examTickets?.length ?? 0 },
@@ -121,10 +118,7 @@ export const GlobalCertifications = () => {
                   );
                 })}
             </tbody>
-            <TableFooter
-              isLastElementSelected={isLastElementSelected}
-              hasOneElementOpen={hasOneElementOpen}
-            />
+            <TableFooter isLastElementSelected={isLastElementSelected} />
           </table>
         </>
       )}
@@ -647,10 +641,8 @@ const TableHead = () => {
 
 const TableFooter = ({
   isLastElementSelected,
-  hasOneElementOpen,
 }: {
   isLastElementSelected: boolean;
-  hasOneElementOpen: boolean;
 }) => {
   return (
     <tfoot className="">
@@ -660,7 +652,6 @@ const TableFooter = ({
           className={cn(
             'rounded-b-xl h-4 mb-4 ',
             isLastElementSelected ? 'bg-newGray-6 ' : '',
-            hasOneElementOpen ? 'shadow-lg' : '',
           )}
         />
       </tr>

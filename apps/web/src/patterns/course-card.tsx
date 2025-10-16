@@ -216,7 +216,7 @@ export const HorizontalCourseCardDesktop = ({
             />
             <span className="body-small">{course.mainProfessors[0]?.name}</span>
           </div>
-          <DividerSimple mode="light" className="my-2.5" />
+          <DividerSimple className="my-2.5" />
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-6">
               <CourseLevelTag level={course.level} addPadding />

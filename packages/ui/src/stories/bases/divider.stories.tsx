@@ -75,15 +75,15 @@ export const HorizontalDividerWithText: Story = {
 export const SimpleHorizontalDivider: StoryObj<typeof DividerSimple> = {
   args: {
     className: 'my-4',
-    mode: 'dark',
+    variant: 'neutral',
   },
   argTypes: {
     className: {
       control: 'text',
     },
-    mode: {
+    variant: {
       control: 'select',
-      options: ['dark', 'light'],
+      options: ['neutral', 'brown'],
     },
   },
   name: 'Simple Horizontal Line',

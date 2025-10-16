@@ -73,7 +73,7 @@ function Certificate() {
             <img
               src={`/api/files/${decodeURI(params.certificateId)}.png`}
               alt="Certificate"
-              className="w-full max-w-[842px] shadow-l-section"
+              className="w-full max-w-[842px]"
             />
           </div>
 

@@ -186,7 +186,7 @@ export const ExamSession = ({
   const isMobile = window.innerWidth < 768;
 
   return (
-    <section className="flex flex-col w-full max-w-[1056px] rounded-2xl overflow-hidden shadow-course-navigation border-2 border-newBlack-1">
+    <section className="flex flex-col w-full max-w-[1056px] rounded-2xl overflow-hidden border-2 border-newBlack-1">
       <div className="flex flex-col w-full gap-5 bg-darkOrange-1 border-b-2 border-newBlack-1 px-4 py-2.5 md:px-7 md:py-5">
         <div className="flex w-full items-center gap-1 md:gap-4 ">
           <h2 className="body-medium-16px uppercase md:display-medium-bold-caps-40px text-darkOrange-11">

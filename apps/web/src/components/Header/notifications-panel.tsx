@@ -107,7 +107,7 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
       >
         <TbBell className="text-neutral-500 stroke-[1.5px]" size={24} />
         {hasUnreadNotifications && (
-          <div className="absolute top-0 -right-0.5 rounded-full size-2.5 bg-darkOrange-2" />
+          <div className="absolute top-0 right-0.5 rounded-full size-2.5 bg-orange-500" />
         )}
       </Link>
     </>

@@ -1,7 +1,12 @@
-import { formatNameForURL } from '@blms/shared';
-import { DropdownMenu, Loader, Tabs, TabsList, TabsTrigger } from '@blms/ui';
+import {
+  CategorySwitcher,
+  CategorySwitcherBar,
+  Loader,
+  SegmentedControl,
+  SegmentedControlItem,
+} from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.js';
@@ -34,13 +39,6 @@ export function ProfessorCategoryPage() {
   const activeItem =
     professorTabs.find((tab) => tab.href.includes(params.category)) ||
     professorTabs[0];
-
-  const dropdownItems = professorTabs.map((tab) => ({
-    name: t(tab.label),
-    onClick: () => {
-      navigate({ to: tab.href });
-    },
-  }));
 
   const { data: professors, isFetched } = useQuery(
     trpc.content.getProfessors.queryOptions(
@@ -82,56 +80,56 @@ export function ProfessorCategoryPage() {
   );
 
   return (
-    <PageLayout
-      title={t('professors.pageTitle')}
-      description={t('professors.pageSubtitle')}
-    >
-      <div className="lg:hidden max-w-[280px] mx-auto">
-        <DropdownMenu
-          activeItem={t(activeItem ? activeItem.label : '')}
-          itemsList={dropdownItems}
-          className="lg:hidden"
-          variant="light"
-        />
-      </div>
-      <Tabs
-        defaultValue={activeItem.label}
-        className="w-full hidden lg:flex justify-center mt-7"
+    <PageLayout title={t('professors.pageTitle')} layoutSize="wide">
+      <SegmentedControl
+        variant="outline"
+        value={activeItem?.id ?? professorTabs[0].id}
+        defaultValue={professorTabs[0].id}
+        className="w-full max-lg:hidden mb-6"
       >
-        <TabsList size="l" mode="light">
-          {professorTabs.map((tab) => (
-            <TabsTrigger
-              value={tab.label}
-              key={tab.id}
-              size="l"
-              role="tab"
-              onClick={() => {
-                if (activeItem.href !== tab.href) {
-                  navigate({ to: tab.href });
-                }
-              }}
-            >
-              {t(tab.label)}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+        {professorTabs.map((tab) => (
+          <SegmentedControlItem
+            key={tab.id}
+            value={tab.id}
+            onClick={() => navigate({ to: tab.href })}
+            className="w-full min-w-fit"
+          >
+            {t(tab.label)}
+          </SegmentedControlItem>
+        ))}
+      </SegmentedControl>
 
-      <div className="flex flex-wrap gap-4 lg:gap-8 mx-auto mt-4 lg:mt-8 justify-center">
+      <div className="w-full lg:hidden mb-5">
+        <CategorySwitcherBar>
+          {professorTabs.map((tab) => (
+            <CategorySwitcher
+              key={tab.id}
+              onClick={() => navigate({ to: tab.href })}
+              isActive={activeItem?.id === tab.id}
+              text={t(tab.label)}
+            />
+          ))}
+        </CategorySwitcherBar>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2 lg:gap-3 w-full">
         {!isFetched && <Loader size={'s'} />}
         {sortedProfessors?.map((professor) => (
-          <Link
-            to={`/professor/${formatNameForURL(professor.name)}-${professor.id}`}
+          <ProfessorCard
+            professor={professor}
+            category={
+              activeItem?.id && activeItem.id !== 'all'
+                ? activeItem.id
+                : undefined
+            }
             key={professor.id}
-            className="h-auto w-full sm:w-auto"
-            hash={`${params.category}`}
-          >
-            <div className="h-full">
-              <ProfessorCard professor={professor} className="h-full" />
-            </div>
-          </Link>
+          />
         ))}
       </div>
+
+      <p className="body-extra-small lg:body-small text-neutral-600 text-center mt-4 lg:mt-12">
+        {t('professors.pageSubtitle')}
+      </p>
     </PageLayout>
   );
 }

@@ -11,7 +11,12 @@ import {
   TextTag,
 } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import type { FunctionComponent, SVGProps } from 'react';
+import {
+  type FunctionComponent,
+  isValidElement,
+  type ReactNode,
+  type SVGProps,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -23,19 +28,23 @@ interface ResourceDetailsProps {
   imgSrc: string;
   language?: string | string[];
   subtitle?: string;
-  button?: {
-    label: string;
-    href: string;
-  };
+  button?:
+    | {
+        label: string;
+        href: string;
+      }
+    | ReactNode;
   mediaLinks?: {
     icon: IconType | FunctionComponent<SVGProps<SVGSVGElement>>;
     href: string;
   }[];
   tags?: string[];
   abstract?: string;
+  description?: ReactNode;
   trailer?: string;
   suggestedHeaderText?: string;
   suggestedResources?: { title: string; imgSrc: string; href: string }[];
+  socials?: ReactNode;
 }
 
 export const ResourceDetails = ({
@@ -47,9 +56,11 @@ export const ResourceDetails = ({
   mediaLinks,
   tags,
   abstract,
+  description,
   trailer,
   suggestedHeaderText,
   suggestedResources,
+  socials,
 }: ResourceDetailsProps) => {
   const isMobile = useSmaller('md');
 
@@ -113,6 +124,7 @@ export const ResourceDetails = ({
                   })}
                 </div>
               )}
+              {socials && <div className="max-md:order-2">{socials}</div>}
             </div>
 
             {tags && (
@@ -129,17 +141,26 @@ export const ResourceDetails = ({
                 ))}
               </div>
             )}
-            {button && (
+
+            {isValidElement(button) ? (
+              button
+            ) : typeof button === 'object' &&
+              button !== null &&
+              'href' in button ? (
               <Button
                 variant={'primary'}
                 asChild
                 className="max-md:order-1 max-md:w-full max-md:mx-auto max-md:max-w-88"
               >
-                <a href={button.href} target="_blank" rel="noopener noreferrer">
-                  {button.label}
+                <a
+                  href={(button as any).href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {(button as any).label}
                 </a>
               </Button>
-            )}
+            ) : null}
           </div>
         </div>
         {abstract && (
@@ -151,6 +172,11 @@ export const ResourceDetails = ({
               {abstract}
             </p>
           </div>
+        )}
+        {description && (
+          <p className="body-small md:body-base whitespace-pre-line">
+            {description}
+          </p>
         )}
       </article>
 

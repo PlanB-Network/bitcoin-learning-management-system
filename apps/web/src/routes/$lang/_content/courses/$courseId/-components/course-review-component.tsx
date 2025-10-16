@@ -239,7 +239,7 @@ export function CourseReviewComponent({
                   className={cn(
                     'flex max-lg:flex-col gap-6 lg:gap-10 mt-6',
                     isLockedReview &&
-                      'pointer-events-none bg-newGray-6 shadow-course-navigation blur-[1.5px] rounded-lg md:rounded-[20px] py-5 px-2 relative',
+                      'pointer-events-none bg-newGray-6 blur-[1.5px] rounded-lg md:rounded-[20px] py-5 px-2 relative',
                   )}
                   onClick={() => {
                     formDisabled && openAuthModal();
@@ -261,7 +261,7 @@ export function CourseReviewComponent({
                             <FormControl>
                               <div
                                 className={cn(
-                                  'md:bg-newGray-6 md:py-7 md:rounded-full w-full max-md:max-w-[270px] md:w-fit mx-auto md:px-11 md:shadow-course-navigation',
+                                  'md:bg-newGray-6 md:py-7 md:rounded-full w-full max-md:max-w-[270px] md:w-fit mx-auto md:px-11',
                                   !isEditable && 'pointer-events-none',
                                 )}
                               >

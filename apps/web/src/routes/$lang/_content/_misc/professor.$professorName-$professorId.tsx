@@ -1,19 +1,23 @@
 import { formatNameForURL } from '@blms/shared';
-import { BackLink, Loader } from '@blms/ui';
+import { Button, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { AuthorCardFull } from '#src/components/author-card-full.js';
 import { PageLayout } from '#src/components/page-layout.js';
+import { SocialLinks } from '#src/components/professor-card.tsx';
+import { TipModal } from '#src/components/tip-modal.tsx';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { isUUID } from '#src/utils/index.ts';
+import { isUUID, resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { CourseCard } from '../../../../patterns/course-card.tsx';
 import { LectureCard } from '../resources/-components/cards/lecture-card.tsx';
+import { ResourceDetails } from '../resources/-components/resource-details.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
+import { professorTabs } from './-utils/professor-utils.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/_misc/professor/$professorName-$professorId',
@@ -63,7 +67,17 @@ function ProfessorDetail() {
     ),
   );
 
-  const categoryHash = window.location.hash.replace('#', '') || 'all';
+  const {
+    open: openTipModal,
+    isOpen: isTipModalOpen,
+    close: closeTipModal,
+  } = useDisclosure();
+
+  const categoryHash = window.location.hash.replace('#', '') || '';
+  const activeProfessorTab = professorTabs.find(
+    (tab) => tab.id === categoryHash,
+  );
+  const backLinkText = t(activeProfessorTab?.label ?? 'professors.pageTitle');
 
   const getBacklinkUrl = () => {
     if (categoryHash) {
@@ -86,7 +100,11 @@ function ProfessorDetail() {
   }, [professor, isFetched, navigateTo404, navigate, params.professorName]);
 
   return (
-    <PageLayout className="max-w-[1060px] mx-auto">
+    <PageLayout
+      layoutSize="wide"
+      title={t('professors.pageTitle')}
+      backLink={{ href: getBacklinkUrl(), text: backLinkText }}
+    >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !professor && (
         <div className="w-[850px] mx-auto text-white">
@@ -97,13 +115,21 @@ function ProfessorDetail() {
       )}
       {professor && (
         <div className="flex flex-col items-start">
-          <BackLink to={getBacklinkUrl()} label={t('professors.pageTitle')} />
-          <div className="flex w-full flex-col items-start">
-            <AuthorCardFull
-              professor={professor}
-              className="max-md:mx-auto md:w-full text-white"
-            />
-          </div>
+          <ResourceDetails
+            imgSrc={resourceImgUrl(professor, 'profile.webp')}
+            title={professor.name}
+            description={professor.bio ?? undefined}
+            tags={professor.tags}
+            button={
+              <Button
+                onClick={openTipModal}
+                className="max-md:order-1 max-md:w-full max-md:mx-auto max-md:max-w-88"
+              >
+                {t('professors.tips.authorSupport')}
+              </Button>
+            }
+            socials={<SocialLinks professor={professor} />}
+          />
           {professor.courses.length > 0 && (
             <>
               <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
@@ -143,6 +169,15 @@ function ProfessorDetail() {
                 })}
               </div>
             </>
+          )}
+
+          {isTipModalOpen && (
+            <TipModal
+              isOpen={isTipModalOpen}
+              onClose={closeTipModal}
+              lightningAddress={professor.tips.lightningAddress as string}
+              userName={professor.name}
+            />
           )}
         </div>
       )}

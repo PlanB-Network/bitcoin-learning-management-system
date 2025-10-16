@@ -63,7 +63,7 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="flex max-md:flex-col items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
+          className="flex max-md:flex-col items-center w-full bg-newGray-6 border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
         >
           <img
             src={resourceImgUrl(blog)}

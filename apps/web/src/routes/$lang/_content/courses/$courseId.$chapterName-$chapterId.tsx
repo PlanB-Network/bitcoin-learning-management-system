@@ -120,7 +120,7 @@ const TimelineSmall = ({
 
         <div
           className={cn(
-            'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-1 shadow-course-navigation-sm mt-2.5 mb-3 gap-4',
+            'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-1 mt-2.5 mb-3 gap-4',
           )}
         >
           {/*

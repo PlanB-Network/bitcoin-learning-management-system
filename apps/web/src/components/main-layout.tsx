@@ -3,7 +3,6 @@ import { COURSES_CAREER_ACCESS, canAccess } from '@blms/shared';
 import {
   cn,
   customToast,
-  ScrollToTopButton,
   SegmentedControl,
   SegmentedControlItem,
 } from '@blms/ui';
@@ -173,7 +172,8 @@ export const MainLayout = ({
           </main>
           {showFooter && <Footer />}
 
-          <ScrollToTopButton />
+          {/* Hidden for the moment */}
+          {/* <ScrollToTopButton /> */}
         </div>
       </div>
     </div>

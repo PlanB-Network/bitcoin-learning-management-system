@@ -19,7 +19,7 @@ export const AnswersReviewPanel = ({
     <section
       className={cn(
         'flex flex-col gap-6 md:gap-5 w-full',
-        hasBackground && 'bg-newGray-6 rounded-[20px] shadow-course-navigation',
+        hasBackground && 'bg-newGray-6 rounded-[20px]',
         className,
       )}
     >

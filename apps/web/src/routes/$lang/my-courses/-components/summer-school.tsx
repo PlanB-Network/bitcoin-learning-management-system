@@ -352,7 +352,7 @@ function WhatsIncluded({
           What's included
         </h2>
 
-        <DividerSimple mode={'light'} />
+        <DividerSimple />
 
         <div className="px-4 flex flex-col gap-2">
           <p className="font-medium">Logistics</p>

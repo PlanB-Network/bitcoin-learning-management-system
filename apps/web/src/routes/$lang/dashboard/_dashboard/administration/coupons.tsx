@@ -241,7 +241,7 @@ function AdminCoupons() {
           {t('dashboard.adminPanel.coupons.generateNew')} <LuPlus />
         </Button>
 
-        <DividerSimple mode="light" className="lg:hidden" />
+        <DividerSimple className="lg:hidden" />
 
         <div className="flex flex-wrap gap-2 items-center text-black">
           <FaSliders className="size-6" />

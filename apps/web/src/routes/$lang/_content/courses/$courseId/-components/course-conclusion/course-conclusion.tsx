@@ -551,9 +551,9 @@ const HeaderBox = ({
         className={cn(
           'size-12 md:size-25 border-4 rounded-xl flex flex-col items-center justify-center z-10 shrink-0',
           isDone
-            ? 'border-darkOrange-1 bg-darkOrange-5 shadow-course-navigation-sm'
+            ? 'border-darkOrange-1 bg-darkOrange-5'
             : isCurrentStep
-              ? 'border-darkOrange-5 shadow-sm-card-dark'
+              ? 'border-darkOrange-5'
               : 'border-newGray-5',
         )}
       >
@@ -657,7 +657,7 @@ const StepsContent = ({
     <div
       className={cn(
         shouldApplyContainerStyling
-          ? 'bg-maroon-1 p-2 md:px-7 md:py-8 rounded-[10px] md:rounded-[20px] shadow-course-navigation'
+          ? 'bg-maroon-1 p-2 md:px-7 md:py-8 rounded-[10px] md:rounded-[20px]'
           : '',
       )}
     >
