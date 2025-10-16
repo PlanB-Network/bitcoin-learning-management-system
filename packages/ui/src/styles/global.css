@@ -788,6 +788,16 @@
   );
 }
 
+@utility bg-lugano-section {
+  background: linear-gradient(
+    174deg,
+    var(--ORANGE, rgba(255, 92, 0, 0.4)) 2.69%,
+    rgba(0, 0, 0, 0.4) 35.24%,
+    rgba(0, 0, 0, 0.4) 69.89%,
+    rgba(255, 92, 0, 0.28) 94.89%
+  );
+}
+
 @utility bg-network-cards-dark-bottom {
   background: linear-gradient(
     180deg,
@@ -821,6 +831,28 @@
       rgba(43, 31, 24, 0) 0%,
       var(--Brown-900, #2b1f18) 100%
     );
+}
+
+@utility bg-academy-section1 {
+  background: linear-gradient(
+    174deg,
+    var(--ORANGE, rgba(255, 92, 0, 0.7)) 2.69%,
+    rgba(0, 0, 0, 0.7) 35.24%,
+    rgba(0, 0, 0, 0.7) 69.89%,
+    rgba(255, 92, 0, 0.49) 94.89%
+  );
+}
+
+@utility bg-academy-section2 {
+  background: linear-gradient(
+    186deg,
+    rgba(243, 140, 1, 0.8) -11.95%,
+    #411801 15.3%,
+    #411801 29.78%,
+    #fc9201 50.81%,
+    #411801 81.86%,
+    #000 97.98%
+  );
 }
 
 @utility bg-gradient-network-bt {

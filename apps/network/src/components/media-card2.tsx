@@ -35,10 +35,7 @@ export default function MediaCard2({
   return (
     <PageBlock
       className={cn(
-        'shadow-lg h-full border-orange-500 bg-gradient-network-tb-transparent lg:bg-gradient-network-bt-transparent  max-lg:mx-8 max-lg:border-[1px] max-lg:rounded-2xl',
-        isLeft
-          ? 'lg:rounded-b-2xl lg:border-b-[1px] lg:border-l-[1px]'
-          : 'lg:rounded-b-2xl lg:border-b-[1px] lg:border-r-[1px]',
+        'shadow-lg h-full border-white max-lg:mx-8 lg:border-[1px] rounded-[60px]',
         className,
       )}
     >

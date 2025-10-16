@@ -31,11 +31,10 @@ export default function ToolsForCommunities({
       <BlockTitle
         text={t('community.title')}
         subtext={t('community.subtitle')}
-        direction="right"
       />
 
       <PageBlock>
-        <div className="flex max-lg:flex-col flex-wrap gap-5 lg:justify-center ">
+        <div className="flex max-lg:flex-col flex-wrap gap-5 lg:justify-center items-center">
           <BlockOne />
           <BlockTwo />
           <BlockThree />
@@ -59,7 +58,7 @@ function BlockOne() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="h-fit px-4 flex flex-col border-1 border-orange-500 rounded-[40px] lg:max-w-[650px] bg-[#100600] hover:bg-[#3F1700]">
+      <div className="h-fit px-4 flex flex-col border-1 border-orange-500 rounded-[40px] max-w-[500px] xl:max-w-[650px] bg-[#100600] hover:bg-[#3F1700]">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
           <img
             className="max-lg:h-16 object-cover "
@@ -97,7 +96,7 @@ function BlockTwo() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="px-4 flex flex-col border-1 border-blue-400 rounded-[40px] lg:max-w-[550px] bg-blue-950 hover:bg-[#032042]">
+      <div className="px-4 flex flex-col border-1 border-blue-400 rounded-[40px] max-w-[500px] xl:max-w-[550px] bg-blue-950 hover:bg-[#032042]">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
           <img
             className="max-lg:h-16 object-cover "
@@ -128,7 +127,7 @@ function BlockThree() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="px-4 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[550px] bg-[#1B1000] hover:bg-[#402704]">
+      <div className="xl:-translate-y-20 px-4 flex flex-col border-1 border-yellow-4 rounded-[40px] max-w-[500px] xl:max-w-[550px] bg-[#1B1000] hover:bg-[#402704]">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
           <img
             className="max-lg:h-16 object-cover "
@@ -162,7 +161,7 @@ function BlockFour() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="px-4 flex flex-col border-1 border-purple-400 rounded-[40px] lg:max-w-[550px] bg-purple-950 hover:bg-[#3B0746]">
+      <div className="px-4 flex flex-col border-1 border-purple-400 rounded-[40px] max-w-[500px] xl:max-w-[550px] bg-purple-950 hover:bg-[#3B0746]">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
           <img className="max-lg:h-16 object-cover " src={eventsLogo} alt="" />
           <div className="flex flex-col gap-4 title-large max-w-[330px]">
@@ -192,7 +191,7 @@ function BlockFive() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="px-4 flex flex-col border-1 border-green-400 rounded-[40px] lg:max-w-[550px] bg-[#001700] hover:bg-[#002600]">
+      <div className="px-4 flex flex-col border-1 border-green-400 rounded-[40px] max-w-[500px] xl:max-w-[550px] bg-[#001700] hover:bg-[#002600]">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
           <img className="max-lg:h-16 object-cover " src={safeLogo} alt="" />
           <div className="flex flex-col gap-4 title-large max-w-[330px]">
@@ -229,7 +228,7 @@ function BlockSix() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="px-4 flex flex-col border-1 border-orange-500 rounded-[40px] lg:max-w-[550px] bg-[#100600] hover:bg-orange-950">
+      <div className="px-4 flex flex-col border-1 border-orange-500 rounded-[40px] max-w-[500px] xl:max-w-[550px] bg-[#100600] hover:bg-orange-950">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
           <img className="max-lg:h-16 object-cover " src={testLogo} alt="" />
           <div className="flex flex-col gap-4 title-large max-w-[330px]">
@@ -242,7 +241,7 @@ function BlockSix() {
         </div>
         <div className="flex flex-row pr-10 pl-7">
           <div className="w-[50%]">
-            <span className="max-lg:hidden title-small text-gray-200">
+            <span className="title-small text-gray-200">
               {t('community.box6Subtitle')}
             </span>
           </div>

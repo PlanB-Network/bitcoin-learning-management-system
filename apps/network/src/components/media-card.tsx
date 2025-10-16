@@ -16,7 +16,7 @@ type MediaCardProps = {
   subtitleUnderImage?: boolean;
   TopElement?: React.ReactNode;
   BottomElement?: React.ReactNode;
-  BackgroundColor?: 'dark' | 'light' | 'border-dark' | 'none';
+  BackgroundColor?: 'dark' | 'light' | 'border-dark' | 'transparent' | 'none';
 };
 
 export default function MediaCard({
@@ -44,6 +44,7 @@ export default function MediaCard({
         className,
         BackgroundColor === 'dark' ? 'lg:bg-gradient-network-bt-dark' : '',
         BackgroundColor === 'light' ? 'lg:bg-gradient-network-bt' : '',
+        BackgroundColor === 'transparent' ? 'lg:bg-[#00000088]' : '',
       )}
     >
       {!isMobile && TopElement ? (
@@ -63,6 +64,7 @@ export default function MediaCard({
           BackgroundColor === 'light'
             ? 'max-lg:bg-gradient-network-bottom-and-top'
             : '',
+          BackgroundColor === 'transparent' ? 'max-lg:bg-[#00000088]' : '',
           BackgroundColor === 'border-dark' ? 'max-lg:bg-network-cards' : '',
         ].join(' ')}
       >

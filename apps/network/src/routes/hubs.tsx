@@ -1,3 +1,4 @@
+import { cn } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import arkLogo from '#src/assets/hubs/ark-logo.png';
@@ -40,7 +41,7 @@ function RouteComponent() {
         titleClassName="max-w-[65%]"
         subtitleClassName={'max-w-[85%] lg:max-w-[450px]'}
       />
-      <PageBlock className="bg-gradient-network-lr-dark mt-8 p-10">
+      <PageBlock className="bg-gradient-network-lr-dark mt-8 p-10 rounded-[60px]">
         <h1 className="title-extra-large text-6xl">
           {t('hubs.co-working.title')}
         </h1>
@@ -66,68 +67,67 @@ function RouteComponent() {
         </div>
       </PageBlock>
 
-      <BlockTitle
-        text={t('hubs.blockTitle1Text')}
-        subtext={t('hubs.blockTitle1Subtext')}
-      />
-
-      <PageBlock className="relative !max-w-[1400px]">
+      <div
+        className={
+          'relative py-20 rounded-tl-[200px] rounded-br-[200px] bg-lugano-section mt-40'
+        }
+      >
         <img
-          className="z-0 absolute -ml-12 -mt-10 w-full"
           src={luganoBgImage}
-          alt="Lugano's lake"
+          alt=""
+          className={cn(
+            'border-4 border-newBlue-1 absolute inset-0',
+            'h-full w-full opacity-23 object-cover z-0',
+            'rounded-tl-[200px] rounded-br-[200px]',
+          )}
         />
-        <h2 className="relative z-10 mt-12 title-extra-large text-6xl max-w-[800px]">
-          {t('hubs.lugano.superTitle')}
-        </h2>
-        <p className="relative z-1 title-medium max-w-[600px] mt-8">
-          {t('hubs.lugano.superSubtitle')}
-        </p>
-      </PageBlock>
 
-      <MediaCard2
-        title={t('hubs.lugano.title')}
-        subtext={t('hubs.lugano.subtitle')}
-        buttontext={t('hubs.lugano.button')}
-        tagText={t('hubs.lugano.tag')}
-        imageUrl={luganoLogo}
-        alt=""
-        className="mt-24 z-10 relative"
-        subtitleClassName="!text-gray-100"
-        orientation="left"
-      />
+        <BlockTitle
+          text={t('hubs.blockTitle1Text')}
+          subtext={t('hubs.blockTitle1Subtext')}
+        />
 
-      <MediaCard2
-        title={t('hubs.spritz.title')}
-        subtext={t('hubs.spritz.subtitle')}
-        buttontext={t('hubs.spritz.button')}
-        tagText={t('hubs.spritz.tag')}
-        imageUrl={spritzLogoImage}
-        alt=""
-        className="mt-24"
-        orientation="right"
-      />
-
-      <MediaCard2
-        title={t('hubs.forum.title')}
-        subtext={t('hubs.forum.subtitle')}
-        buttontext={t('hubs.forum.button')}
-        tagText={t('hubs.forum.tag')}
-        imageUrl={forumLogo}
-        alt=""
-        className="mt-24"
-        orientation="left"
-      />
-
-      <MediaCard2
-        title={t('hubs.ark.title')}
-        subtext={t('hubs.ark.subtitle')}
-        tagText={t('hubs.ark.tag')}
-        imageUrl={arkLogo}
-        alt=""
-        className="mt-24"
-        orientation="right"
-      />
+        <MediaCard2
+          title={t('hubs.lugano.title')}
+          subtext={t('hubs.lugano.subtitle')}
+          buttontext={t('hubs.lugano.button')}
+          tagText={t('hubs.lugano.tag')}
+          imageUrl={luganoLogo}
+          alt=""
+          className="mt-24 z-10 relative"
+          subtitleClassName="!text-gray-100"
+          orientation="left"
+        />
+        <MediaCard2
+          title={t('hubs.spritz.title')}
+          subtext={t('hubs.spritz.subtitle')}
+          buttontext={t('hubs.spritz.button')}
+          tagText={t('hubs.spritz.tag')}
+          imageUrl={spritzLogoImage}
+          alt=""
+          className="mt-24"
+          orientation="right"
+        />
+        <MediaCard2
+          title={t('hubs.forum.title')}
+          subtext={t('hubs.forum.subtitle')}
+          buttontext={t('hubs.forum.button')}
+          tagText={t('hubs.forum.tag')}
+          imageUrl={forumLogo}
+          alt=""
+          className="mt-24"
+          orientation="left"
+        />
+        <MediaCard2
+          title={t('hubs.ark.title')}
+          subtext={t('hubs.ark.subtitle')}
+          tagText={t('hubs.ark.tag')}
+          imageUrl={arkLogo}
+          alt=""
+          className="mt-24"
+          orientation="right"
+        />
+      </div>
 
       <ToolsForCommunities />
     </>
