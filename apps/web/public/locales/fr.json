@@ -118,7 +118,10 @@
     "hostSessionConditions": "Voici comment faire :\n\n1. Lisez la <0>Charte</0> - Assurez-vous que votre communauté répond aux conditions d'hébergement obligatoires\n2. Planifiez & Programmez - Si vous êtes éligible, choisissez une date et organisez la session\n3. Publiez Votre Événement - Contactez-nous pour l'ajouter à la plateforme Plan ₿ Network afin que des personnes puissent participer",
     "myCertificates": "Mes certificats",
     "noTestSessions": "Aucune session de test actuellement disponible",
-    "wantHostSession": "Vous souhaitez organiser une session de test ₿-CERT dans votre hub local ?"
+    "wantHostSession": "Vous souhaitez organiser une session de test ₿-CERT dans votre hub local ?",
+    "certificates": "Certificats",
+    "chooseCourse": "Choisissez le cours",
+    "noDiplomasAvailable": "Aucun diplôme disponible pour le moment"
   },
   "bet": {
     "contributeButton": "Aider et contribuer",
@@ -429,7 +432,7 @@
     "tryAdjustingFilters": "Essayez d'ajuster vos filtres",
     "liveClasses": {
       "allOtherTitle": "Tous les autres cours en direct",
-      "liveClasses": "Étudier en direct",
+      "liveClasses": "Cours en direct",
       "secondaryTitle": "Devenez employable dans des entreprises de l'écosystème Bitcoin.",
       "title": "Programmes annuels officiels de Plan ₿"
     }
@@ -2241,7 +2244,8 @@
     "aboutUs": "À propos",
     "legal": "Mentions légales",
     "legals": "Mentions légales",
-    "planBNetwork": "Plan ₿ Network"
+    "planBNetwork": "Plan ₿ Network",
+    "list": "Liste"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",
@@ -2282,7 +2286,7 @@
     "tutorials": "Tutoriels",
     "userRolesAllocation": "Attribution des rôles de l'utilisateur",
     "liveClassesDescription": "Cours encadrés par un enseignant",
-    "liveClassesTitle": "Cours en direct",
+    "liveClassesTitle": "Étudier en direct",
     "careers": "Carrières",
     "myCoursesDescription": "Suivez vos progrès",
     "tutorialsAnalytics": "Statistiques des tutoriels"
