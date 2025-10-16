@@ -1,7 +1,14 @@
 import { CourseLevel } from '@blms/constants';
+import { cn } from '@blms/ui';
 import { useTranslation } from 'react-i18next';
 
-export const CourseLevelTag = ({ level }: { level: CourseLevel }) => {
+export const CourseLevelTag = ({
+  level,
+  addPadding,
+}: {
+  level: CourseLevel;
+  addPadding?: boolean;
+}) => {
   const { t } = useTranslation();
 
   const levelLabels = {
@@ -22,7 +29,7 @@ export const CourseLevelTag = ({ level }: { level: CourseLevel }) => {
   const label = levelLabels[level];
 
   return (
-    <div className="flex items-center gap-2 p-2">
+    <div className={cn('flex items-center gap-2', addPadding && 'p-2')}>
       <div className="w-2.5 flex flex-col justify-center items-center gap-px">
         {[4, 3, 2, 1].map((i) => (
           <div

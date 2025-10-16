@@ -1,13 +1,14 @@
 import { formatNameForURL } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, cn, DividerSimple, Image, ListItem, TextTag } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
 import { TbChevronRight, TbClock } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
 import { CourseLevelTag } from '#src/routes/$lang/_content/courses/-components/course-level.tsx';
-import { assetUrl, resourceImgUrl } from '#src/utils/index.js';
+import { assetUrl, resourceImgUrl, trpc } from '#src/utils/index.js';
 import { normalizeString } from '#src/utils/string.ts';
 
 const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
@@ -94,14 +95,7 @@ export const CourseCard = ({
                   {t('words.startHere')}
                 </TextTag>
               ) : (
-                <TextTag
-                  size="small"
-                  variant="lightMaroon"
-                  mode={mode}
-                  className="uppercase"
-                >
-                  {t(`words.level.${course.level}`)}
-                </TextTag>
+                <CourseLevelTag level={course.level} />
               )}
               {course.requiresPayment && (
                 <TextTag
@@ -175,6 +169,17 @@ export const HorizontalCourseCardDesktop = ({
   course: JoinedCourse | CourseResponse;
   className?: string;
 }) => {
+  const { data: reviews } = useQuery(
+    trpc.content.getPublicCourseReviews.queryOptions(
+      {
+        courseId: course.id,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
+  );
+
   return (
     <Link
       key={course.id}
@@ -214,7 +219,7 @@ export const HorizontalCourseCardDesktop = ({
           <DividerSimple mode="light" className="my-2.5" />
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-6">
-              <CourseLevelTag level={course.level} />
+              <CourseLevelTag level={course.level} addPadding />
               <span className="flex items-center p-2 gap-2">
                 <TbClock className="text-brown-400" size={16} />
                 <span className="body-extra-small-bold text-brown-800">
@@ -228,6 +233,11 @@ export const HorizontalCourseCardDesktop = ({
                 <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
                   {course.averageRating.toFixed(1)}
                 </span>
+                {reviews && (
+                  <span className="text-yellow-500 body-small">
+                    ({reviews.general.length})
+                  </span>
+                )}
               </span>
             )}
           </div>
