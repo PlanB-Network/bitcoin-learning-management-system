@@ -98,7 +98,7 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
 
       {/* Mobile - Link only */}
       <Link
-        to="/dashboard/notifications"
+        to="/notifications"
         className={cn(
           'lg:hidden flex items-center justify-center relative',
           className,
@@ -197,7 +197,7 @@ const NotificationsHeader = () => {
         {t('notifications.notifications')}
       </h3>
       <Link
-        to="/dashboard/notifications"
+        to="/notifications"
         className="flex items-center justify-center gap-2.5 overflow-hidden rounded-lg px-2.5 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline"
       >
         {t('home.blogSection.seeAll')}
@@ -209,7 +209,7 @@ const NotificationsHeader = () => {
 const ViewMoreButton = () => {
   return (
     <Link
-      to="/dashboard/notifications"
+      to="/notifications"
       className="flex w-full items-center px-4 py-3 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline border-t border-newGray-4"
     >
       {t('words.viewMore')}

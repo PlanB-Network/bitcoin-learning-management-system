@@ -607,7 +607,7 @@ export const getNotificationRedirect = (
     case NotificationType.General:
       return `/my-courses/${courseId}`;
     default:
-      return '/dashboard/notifications';
+      return '/notifications';
   }
 };
 
