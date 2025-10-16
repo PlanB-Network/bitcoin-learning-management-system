@@ -20,7 +20,8 @@
     "storyContent": "Plan ₿ network adalah sebuah inisiatif yang bertujuan untuk mendukung edukasi Bitcoin di seluruh dunia. Jaringan ini adalah gabungan dari berbagai perusahaan yang memiliki dedikasi terhadap Bitcoin, serta berfokus pada pendidikan, open-source software, jaringan peer-to-peer dan kebersamaan dalam komunitas. Bersama, mereka memutuskan untuk membangun Plan ₿ network dan menyediakan sumber daya yang tepat bagi ekosistem Bitcoin untuk bertumbuh. Presentasi perilisan kami pada tahun 2023 dapat Anda temukan di sini.",
     "storyTitle": "Sejarah kami",
     "subtitle": "Ingin memberi pil oranye pada dunia? Bergabunglah dengan Plan ₿ Network.",
-    "title": "Tentang Plan ₿ Network"
+    "title": "Tentang Plan ₿ Network",
+    "readManifesto": "Baca manifesto kami"
   },
   "accessType": {
     "hybrid": "Secara langsung & online",
@@ -117,7 +118,10 @@
     "hostSessionConditions": "Berikut caranya:\n\n1. Baca <0>Charter</0> - Pastikan komunitas Anda memenuhi syarat hosting yang diwajibkan\n2. Rencanakan & Jadwalkan - Jika Anda memenuhi syarat, pilih tanggal dan siapkan sesi\n3. Publikasikan Acara Anda - Hubungi kami untuk menambahkannya ke platform Plan ₿ Network sehingga orang dapat bergabung",
     "myCertificates": "Sertifikat Saya",
     "noTestSessions": "Tidak ada sesi tes yang tersedia saat ini",
-    "wantHostSession": "Ingin mengadakan sesi ujian ₿-CERT di hub lokal Anda?"
+    "wantHostSession": "Ingin mengadakan sesi ujian ₿-CERT di hub lokal Anda?",
+    "certificates": "Sertifikat",
+    "chooseCourse": "Pilih kursus",
+    "noDiplomasAvailable": "Belum ada progam diploma yang tersedia"
   },
   "bet": {
     "contributeButton": "Bantu & kontribusi",
@@ -2279,5 +2283,8 @@
       "youtube": "Youtube",
       "pears": "Pir 🍐"
     }
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Konten Terbuka"
   }
 }
