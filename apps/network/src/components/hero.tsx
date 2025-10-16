@@ -1,12 +1,10 @@
 import { cn } from '@blms/ui';
 import type React from 'react';
-import PageBlock from './page-block.tsx';
 
 interface HeroProps {
   titleElement: React.ReactNode;
   subtitle: string;
   imageUrl: string;
-  className?: string;
   titleClassName?: string;
   subtitleClassName?: string;
   subtitleUnderImage?: boolean;
@@ -16,23 +14,23 @@ export const Hero = ({
   titleElement,
   subtitle,
   imageUrl,
-  className = '',
   titleClassName = 'max-w-[700px]',
   subtitleClassName = 'max-w-[50%]',
   subtitleUnderImage = false,
 }: HeroProps) => {
   return (
-    <PageBlock className="max-lg:mt-20 max-w-[1700px]">
-      <div
-        className={cn(
-          'relative flex flex-col tracking-[-0.4px] lg:mx-10',
-          className,
-        )}
-      >
-        <div className="lg:absolute left-2 flex flex-col gap-8 xl:gap-32 h-full">
+    <div className={cn('relative flex justify-center mx-auto')}>
+      <div>
+        <div
+          className={cn(
+            'max-w-[1000px] mx-auto absolute z-10 inset-0 flex flex-col',
+            'gap-8 xl:gap-16 tracking-[-0.4px]',
+            'max-2xl:pl-6',
+          )}
+        >
           <h1
             className={cn(
-              'lg:mt-12 text-5xl lg:text-6xl xl:text-8xl lg:leading-16 xl:leading-24 font-light text-left',
+              'text-5xl lg:text-6xl xl:text-8xl lg:leading-16 xl:leading-24 font-light z-20 mt-10 lg:mt-30',
               titleClassName,
             )}
           >
@@ -44,17 +42,13 @@ export const Hero = ({
             </p>
           )}
         </div>
+        <div className="absolute inset-0 bg w-full h-full bg-network-hero" />
         <img
           src={imageUrl}
           alt="Hero background"
-          className="max-lg:mt-6  lg:h-[1000px] object-cover"
+          className="w-full h-[600px] lg:h-[827px] object-cover"
         />
-        {subtitleUnderImage ? (
-          <p className={cn('title-small lg:title-base', subtitleClassName)}>
-            {subtitle}
-          </p>
-        ) : null}
       </div>
-    </PageBlock>
+    </div>
   );
 };

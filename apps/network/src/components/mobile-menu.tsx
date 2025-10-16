@@ -69,7 +69,9 @@ export const MobileMenu = ({
   return (
     <div
       className={cn(
-        'text-black fixed top-0 w-full z-50 bg-black transition-transform duration-300 transform lg:hidden',
+        'sticky top-0 z-50',
+        'text-black bg-black lg:hidden',
+        'transition-transform duration-300 transform',
         isMobileMenuOpen ? 'translate-y-0' : '',
         !isMobileMenuOpen && !isMenuVisible && '-translate-y-full',
       )}

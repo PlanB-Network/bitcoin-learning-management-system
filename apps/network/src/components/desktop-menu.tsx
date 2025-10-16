@@ -32,7 +32,9 @@ export default function DesktopMenu() {
   return (
     <div
       className={cn(
-        'max-lg:hidden pox-4 py-10 px-4 sticky top-0 z-50 bg-black flex flex-row justify-between gap-2 display-extra-small',
+        'sticky top-0 z-50',
+        'flex flex-row justify-between gap-2 display-extra-small',
+        'py-10 px-4  bg-black max-lg:hidden',
         'transition-transform duration-300 transform ',
         isMenuVisible ? 'translate-y-0' : '',
         !isMenuVisible && !isMenuVisible && '-translate-y-full',
