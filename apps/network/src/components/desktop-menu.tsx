@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Logo from '#src/assets/logo.png?no-inline';
 
+const activeLinkProps = { className: 'text-orange-500' };
+const linkClassName = 'hover:font-bold';
+
 export default function DesktopMenu() {
   const { t } = useTranslation();
 
-  const linkClassName = 'hover:font-bold';
   const [isMenuVisible, setIsMenuVisible] = useState(true);
   const lastScrollY = useRef(0);
 
@@ -32,9 +34,9 @@ export default function DesktopMenu() {
   return (
     <div
       className={cn(
-        'sticky top-0 z-50',
+        'sticky top-0 z-50 max-w-[1440px] mx-auto',
         'flex flex-row justify-between gap-2 display-extra-small',
-        'py-10 px-4  bg-black max-lg:hidden',
+        'py-8 px-10  bg-black max-lg:hidden',
         'transition-transform duration-300 transform ',
         isMenuVisible ? 'translate-y-0' : '',
         !isMenuVisible && !isMenuVisible && '-translate-y-full',
@@ -44,22 +46,42 @@ export default function DesktopMenu() {
         <img className="" src={Logo} alt="" loading="lazy" />
       </Link>
       <div className="flex flex-row gap-16">
-        <Link to="/academy" className={linkClassName}>
+        <Link
+          to="/academy"
+          className={linkClassName}
+          activeProps={activeLinkProps}
+        >
           {t('menu.academy')}
         </Link>
-        <Link to="/hubs" className={linkClassName}>
+        <Link
+          to="/hubs"
+          className={linkClassName}
+          activeProps={activeLinkProps}
+        >
           {t('menu.hubs')}
         </Link>
-        <Link to="/funds" className={linkClassName}>
+        <Link
+          to="/funds"
+          className={linkClassName}
+          activeProps={activeLinkProps}
+        >
           {t('menu.funds')}
         </Link>
       </div>
-      <div className="flex flex-row gap-16 text-gray-200">
-        <Link to="/about" className={linkClassName}>
-          {t('menu.about')}
-        </Link>
-        <Link to="/news" className={linkClassName}>
+      <div className="flex flex-row gap-16">
+        <Link
+          to="/news"
+          className={linkClassName}
+          activeProps={activeLinkProps}
+        >
           {t('menu.news')}
+        </Link>
+        <Link
+          to="/about"
+          className={linkClassName}
+          activeProps={activeLinkProps}
+        >
+          {t('menu.about')}
         </Link>
       </div>
     </div>

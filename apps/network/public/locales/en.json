@@ -155,7 +155,47 @@
     "title": "<0>Building</0> the future together"
   },
   "home": {
-    "title": "Scaling Bitcoin adoption"
+    "title": "Scaling Bitcoin adoption",
+    "subtitle": "Turning the world orange",
+    "media1": {
+      "title": "Plan ₿ Academy ",
+      "subtitle": "We’re building a world where everyone can learn Bitcoin — openly, globally, in every language and with purpose. From individuals to institutions, our custom and open-source programs help grow real understanding and adoption of Bitcoin everywhere",
+      "button": "Explore Plan ₿ Academy",
+      "card1Title": "E-learning platform",
+      "card1Subtitle": "Learn Bitcoin anytime, anywhere with our interactive online learning environment.",
+      "card2Title": "Certified courses",
+      "card2Subtitle": "Gain recognized qualifications through expert-led live or online classes tailored to real-world skills.",
+      "card3Title": "Educational database",
+      "card3Subtitle": "Explore an extensive library of resources, research materials, and learning tools to enhance learning",
+      "card4Title": "University programs",
+      "card4Subtitle": "Build tailored academic tracks and full curricula with our ready-to-use content and expert support.",
+      "card5Title": "Corporate seminars",
+      "card5Subtitle": "Empower your team with customized training sessions designed around your company’s goals.",
+      "card6Title": "Live classes",
+      "card6Subtitle": "Join hands-on sessions and engage directly with instructors in your local community."
+    },
+    "media2": {
+      "title": "Plan ₿ Hubs",
+      "subtitle": "We’re making Bitcoin understanding thrive through events, meetups, and shared learning in local hubs and communities. Together, we create safe and dynamic spaces where people can connect, collaborate, and grow understanding through real human relationships.",
+      "button": "Explore Plan ₿ Hubs",
+      "card1Title": "Hubs activities",
+      "card1Subtitle": "Support local Bitcoin hubs with events, meetups and seminars to encourage Bitcoin adoption.",
+      "card2Title": "Lugano bitcoin city",
+      "card2Subtitle": "Lead the way in one of the world’s most vibrant Bitcoin ecosystems, shaping innovation and community in Lugano, Switzerland.",
+      "card3Title": "Communities tools",
+      "card3Subtitle": "Empower local groups with open-source resources and practical tools to grow and share Bitcoin education."
+    },
+    "media3": {
+      "title": "Plan ₿ Funds",
+      "subtitle": "We’re investing in the future of Bitcoin by supporting companies and startups that drive industry growth. With dedicated funds and an incubator program, we help transform innovative ideas into lasting impact.",
+      "button": "Explore Plan ₿ Funds",
+      "card1Title": "The cyphertank",
+      "card1Subtitle": "Pitch your Bitcoin project to leading investors and secure funding to bring your vision to life.",
+      "card2Title": "Plan ₿ VC fund",
+      "card2Subtitle": "Invest in the future of Bitcoin by supporting companies and technologies driving global adoption.",
+      "card3Title": "Plan ₿ incubator",
+      "card3Subtitle": "Grow your startup with expert mentorship, resources, and connections within the Bitcoin ecosystem."
+    }
   },
   "hubs": {
     "ark": {
