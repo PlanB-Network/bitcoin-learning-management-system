@@ -40,10 +40,8 @@ export default function MediaCard({
   return (
     <PageBlock
       withYPadding={false}
-      withXPadding={false}
       className={cn(
-        'lg:px-10',
-        'shadow-lg rounded-[68px]',
+        'shadow-lg rounded-[48px]',
         className,
         BackgroundColor === 'dark' ? 'lg:bg-gradient-network-bt-dark' : '',
         BackgroundColor === 'light' ? 'lg:bg-gradient-network-bt' : '',
@@ -51,15 +49,13 @@ export default function MediaCard({
       )}
     >
       {!isMobile && TopElement ? (
-        <>
-          {/* {isMobile ? <div className="max-lg:h-4" /> : null} */}
-          {TopElement}
-        </>
+        // biome-ignore lint/complexity/noUselessFragments: useful
+        <>{TopElement}</>
       ) : null}
       <fieldset
         aria-labelledby="media-card-title"
         className={[
-          'relative w-full rounded-[68px]',
+          'relative w-full rounded-2xl  ',
           'flex flex-col lg:flex-col ',
           BackgroundColor === 'dark'
             ? 'max-lg:bg-gradient-network-bottom-and-top-dark'
@@ -71,16 +67,10 @@ export default function MediaCard({
           BackgroundColor === 'border-dark' ? 'max-lg:bg-network-cards' : '',
         ].join(' ')}
       >
-        {isMobile && TopElement ? (
-          <div className="mt-4">
-            {/* {isMobile ? <div className="max-lg:h-4" /> : null} */}
-            {TopElement}
-          </div>
-        ) : null}
         <div
           className={cn(
-            'lg:absolute h-full z-10 p-5 lg:pt-10 flex flex-col justify-between lg:pb-10',
-            'max-lg:px-4 bg-blue-',
+            'h-full z-10 p-5 lg:mt-4 flex flex-col gap-15 lg:pb-10',
+            'max-lg:px-4',
             !isLeft ? ' lg:items-end lg:self-end' : '',
           )}
         >
@@ -96,6 +86,7 @@ export default function MediaCard({
               {title}
             </h3>
           ) : null}
+
           {subtitleUnderImage && isMobile ? null : (
             <BottomStuff
               bottomElement={BottomElement}
@@ -105,17 +96,21 @@ export default function MediaCard({
             />
           )}
         </div>
+
         <img
           src={imageUrl}
           alt={alt}
           className={[
-            'object-cover self-center max-lg:-mt-8 w-full h-full max-lg:mb-4',
+            'lg:absolute object-cover self-center max-lg:-mt-8 w-full h-full max-lg:mb-4',
             'rounded-2xl',
             subtitleUnderImage ? 'max-lg:-mt-28' : '',
             isLeft ? 'lg:self-end' : 'lg:self-start',
             imageClassName,
           ].join(' ')}
         />
+        {isMobile && TopElement ? (
+          <div className="mt-4">{TopElement}</div>
+        ) : null}
         {subtitleUnderImage && isMobile ? (
           <BottomStuff
             bottomElement={BottomElement}

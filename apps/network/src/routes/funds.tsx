@@ -8,9 +8,9 @@ import media2Image from '#src/assets/funds/media-2.png';
 import media2MobileImage from '#src/assets/funds/media-2-mobile.png';
 import media3Image from '#src/assets/funds/media-3.png';
 import media3MobileImage from '#src/assets/funds/media-3-mobile.png';
-import dollarIcon from '#src/assets/icons/dollar.png';
-import personIcon from '#src/assets/icons/person.png';
-import worldIcon from '#src/assets/icons/world.png';
+import dollarIcon from '#src/assets/icons/dollar.svg';
+import personIcon from '#src/assets/icons/person.svg';
+import worldIcon from '#src/assets/icons/world.svg';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import { NetworkButton } from '#src/components/network-button.tsx';
@@ -54,17 +54,17 @@ function RouteComponent() {
         orientation="left"
         BackgroundColor="border-dark"
         BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
+          <div className="flex flex-col gap-1 lg:gap-4">
             <NetworkListItem
-              img={personIcon}
+              icon={personIcon}
               text={t('funds.cyphertankPitch1')}
             />
             <NetworkListItem
-              img={dollarIcon}
+              icon={dollarIcon}
               text={t('funds.cyphertankPitch2')}
             />
             <NetworkListItem
-              img={worldIcon}
+              icon={worldIcon}
               text={t('funds.cyphertankPitch3')}
             />
           </div>

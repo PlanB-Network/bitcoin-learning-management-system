@@ -21,7 +21,7 @@ export default function PageBlock({
       className={cn(
         withXMargin ? 'max-w-[1320px] mx-auto' : '',
         withXPadding ? 'px-5 md:px-8 lg:px-12' : '',
-        withYPadding ? 'py-30' : '',
+        withYPadding ? 'py-10 lg:py-30' : '',
         className,
       )}
     >

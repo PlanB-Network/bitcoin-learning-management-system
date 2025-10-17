@@ -13,6 +13,7 @@ import luganoLogo from '#src/assets/hubs/lugano-planb-logo.png';
 import spritzLogoImage from '#src/assets/hubs/spritz-logo.png';
 import locationImage from '#src/assets/icons/location.svg';
 import BlockTitle from '#src/components/block-title.tsx';
+import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard2 from '#src/components/media-card2.tsx';
 import PageBlock from '#src/components/page-block.tsx';
@@ -70,7 +71,7 @@ function RouteComponent() {
       <div
         className={cn(
           'relative py-0 lg:py-20 bg-lugano-section mt-40',
-          'rounded-tl-[88px] rounded-br-[88px]',
+          'rounded-tl-[68px] rounded-br-[68px]',
           'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
         )}
       >
@@ -80,7 +81,7 @@ function RouteComponent() {
           className={cn(
             'border-4 border-newBlue-1 absolute inset-0',
             'h-full w-full opacity-23 object-cover z-0',
-            'rounded-tl-[88px] rounded-br-[88px]',
+            'rounded-tl-[68px] rounded-br-[68px]',
             'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
           )}
         />
@@ -95,7 +96,7 @@ function RouteComponent() {
           tagText={t('hubs.lugano.tag')}
           imageUrl={luganoLogo}
           alt=""
-          className="mt-24 z-10 relative"
+          className="mt-10 lg:mt-20 z-10 relative"
           subtitleClassName="!text-gray-100"
           orientation="left"
         />
@@ -128,9 +129,13 @@ function RouteComponent() {
           className="mt-24"
           orientation="right"
         />
+
+        <ContactUs text={t('hubs.contactText')} email="rogzy@planb.network" />
       </div>
 
-      <ToolsForCommunities />
+      <PageBlock withXMargin={false}>
+        <ToolsForCommunities />
+      </PageBlock>
     </>
   );
 }

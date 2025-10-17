@@ -16,7 +16,7 @@ export default function BlockTitle({
 }: BlockTitleProps) {
   return (
     <div className={cn('flex flex-col w-full items-center', className)}>
-      <div className={cn('mt-12 text-center z-10 flex flex-col items-center')}>
+      <div className={cn('text-center z-10 flex flex-col items-center')}>
         <h2
           className={cn(
             'display-medium lg:text-[80px] font-semibold max-lg:!font-semibold max-w-[1100px]',
@@ -25,7 +25,7 @@ export default function BlockTitle({
         >
           {text}
         </h2>
-        <h2 className="max-lg:px-8 body-large lg:title-medium mt-6 mb-12 max-w-[800px] text-gray-100 px-4 ">
+        <h2 className="px-8 lg:px-4 mt-6 body-large lg:title-medium max-w-[800px] text-gray-100">
           {subtext}
         </h2>
       </div>

@@ -19,20 +19,19 @@ import media8Image from '#src/assets/academy/media-8.png';
 import polytecnicoLogo from '#src/assets/academy/polytecnico-logo.svg';
 import salvadorImage from '#src/assets/academy/salvador.png';
 import taipeiLogo from '#src/assets/academy/taipei-logo.svg';
-import barChartIcon from '#src/assets/icons/bar-chart.png';
-import barChartDarkIcon from '#src/assets/icons/bar-chart-dark.svg';
-import bookOpenIcon from '#src/assets/icons/book-open.png';
-import bookOpenDarkIcon from '#src/assets/icons/book-open-dark.svg';
-import bookOpen2Icon from '#src/assets/icons/book-open2.png';
+import barChartIcon from '#src/assets/icons/bar-chart.svg';
+import bookOpenIcon from '#src/assets/icons/book-open.svg';
+import bookOpen2Icon from '#src/assets/icons/book-open-2.svg';
+import bookOpenOrangeIcon from '#src/assets/icons/book-open-orange.svg';
 import calendarIcon from '#src/assets/icons/calendar.svg';
-import calendarDarkIcon from '#src/assets/icons/calendar-dark.svg';
 import certificationIcon from '#src/assets/icons/certification.png';
 import locationIcon from '#src/assets/icons/location.svg';
-import luggageIcon from '#src/assets/icons/luggage.png';
-import personIcon from '#src/assets/icons/person.png';
-import personDarkIcon from '#src/assets/icons/person-dark.svg';
+import luggageIcon from '#src/assets/icons/luggage.svg';
+import luggageOrangeIcon from '#src/assets/icons/luggage-orange.svg';
+import personIcon from '#src/assets/icons/person.svg';
 import replayIcon from '#src/assets/icons/replay.png';
-import ticketIcon from '#src/assets/icons/ticket.png';
+import ticketIcon from '#src/assets/icons/ticket.svg';
+import toolsIcon from '#src/assets/icons/tools.svg';
 import tvIcon from '#src/assets/icons/tv.svg';
 import BlockTitle from '#src/components/block-title.tsx';
 import { ContactUs } from '#src/components/contact-us.tsx';
@@ -97,7 +96,7 @@ function RouteComponent() {
 
       <PageBlock
         withXMargin={false}
-        className="rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-academy-section1"
+        className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-academy-section1"
       >
         <BlockTitle
           text={t('academy.blockTitle1Text')}
@@ -108,11 +107,11 @@ function RouteComponent() {
           subtext={t('academy.learnOnline.subtitle')}
           imageUrl={isMobile ? media2MobileImage : media2Image}
           alt="Scenic mountain lake"
+          className="mt-10 lg:mt-20"
           titleClassName={'lg:max-w-[53%]'}
           subtitleClassName={
             'lg:max-w-[60%] xl:max-w-[52%] max-xl:!text-lg text-gray-300'
           }
-          imageClassName=""
           subtitleUnderImage={true}
           BackgroundColor="border-dark"
           orientation="left"
@@ -120,19 +119,19 @@ function RouteComponent() {
             <>
               <div className="max-lg:self-center  flex flex-col gap-1 xl:gap-2">
                 <NetworkListItem
-                  img={bookOpenIcon}
+                  icon={bookOpenIcon}
                   text={t('academy.learnOnline.list1')}
                 />
                 <NetworkListItem
-                  img={personIcon}
+                  icon={personIcon}
                   text={t('academy.learnOnline.list2')}
                 />
                 <NetworkListItem
-                  img={barChartIcon}
+                  icon={barChartIcon}
                   text={t('academy.learnOnline.list3')}
                 />
                 <NetworkListItem
-                  img={ticketIcon}
+                  icon={ticketIcon}
                   text={t('academy.learnOnline.list5')}
                 />
               </div>
@@ -159,22 +158,22 @@ function RouteComponent() {
             <>
               <div className="max-lg:self-center flex flex-col gap-1 xl:gap-2">
                 <NetworkListItem
-                  img={bookOpenIcon}
+                  icon={bookOpenIcon}
                   text={t('academy.learnLive.list1')}
                   orientation="right"
                 />
                 <NetworkListItem
-                  img={personIcon}
+                  icon={personIcon}
                   text={t('academy.learnLive.list2')}
                   orientation="right"
                 />
                 <NetworkListItem
-                  img={barChartIcon}
+                  icon={barChartIcon}
                   text={t('academy.learnLive.list3')}
                   orientation="right"
                 />
                 <NetworkListItem
-                  img={bookOpen2Icon}
+                  icon={bookOpen2Icon}
                   text={t('academy.learnLive.list4')}
                   orientation="right"
                 />
@@ -277,42 +276,45 @@ function RouteComponent() {
         </PageBlock>
       </PageBlock>
 
-      <div className="px-4 py-0 lg:py-16 rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px]">
+      <PageBlock
+        withXMargin={false}
+        className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px]"
+      >
         <BlockTitle
           text={t('academy.blockTitle2Text')}
           subtext={t('academy.blockTitle2Subtext')}
           titleClassName="text-orange-500"
         />
 
-        <div className="max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-[68px]">
+        <div className="max-w-[1320px] mx-auto mt-10 lg:mt-20 border-[1px] border-gray-600 rounded-[68px]">
           <MediaCard
             title={t('academy.career.title')}
             subtext={t('academy.career.subtitle')}
             imageUrl={isMobile ? media4MobileImage : media4Image}
             alt="Scenic mountain lake"
+            className="!px-0"
             titleClassName={'lg:max-w-[53%]'}
             subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
-            imageClassName="max-md:-mt-38 max-lg:-mt-28"
+            imageClassName="max-md:-mt-[14px] max-lg:-mt-28 rounded-[68px]"
             subtitleUnderImage={true}
             orientation="left"
             BottomElement={
               <div className="max-lg:self-center flex flex-col gap-1 xl:gap-4">
                 <NetworkListItem
-                  img={bookOpenIcon}
+                  icon={bookOpenIcon}
                   text={t('academy.career.list1')}
                 />
                 <NetworkListItem
-                  img={personIcon}
+                  icon={personIcon}
                   text={t('academy.career.list2')}
                 />
                 <NetworkListItem
-                  img={barChartIcon}
+                  icon={barChartIcon}
                   text={t('academy.career.list3')}
                 />
               </div>
             }
           />
-
           <PageBlock
             className="rounded-[68px] pb-5 lg:pb-10"
             withYPadding={false}
@@ -327,7 +329,7 @@ function RouteComponent() {
                 subtext={t('academy.career.item1Subtitle')}
               />
               <NetworkCard
-                img={luggageIcon}
+                img={luggageOrangeIcon}
                 text={t('academy.career.item2Title')}
                 subtext={t('academy.career.item2Subtitle')}
               />
@@ -358,6 +360,7 @@ function RouteComponent() {
               subtext={t('academy.companies.subtitle')}
               imageUrl={isMobile ? media5MobileImage : media5Image}
               alt="Scenic mountain lake"
+              className="!px-0"
               titleClassName={'max-w-[500px]'}
               subtitleClassName={
                 'lg:max-w-[420px] max-xl:!text-lg text-gray-300'
@@ -382,20 +385,23 @@ function RouteComponent() {
               subtext={t('academy.companies.item1Subtitle')}
             />
             <NetworkCard
-              img={luggageIcon}
+              img={bookOpenOrangeIcon}
               text={t('academy.companies.item2Title')}
               subtext={t('academy.companies.item2Subtitle')}
             />
             <NetworkCard
-              img={certificationIcon}
+              img={toolsIcon}
               text={t('academy.companies.item3Title')}
               subtext={t('academy.companies.item3Subtitle')}
             />
           </div>
         </div>
-      </div>
+      </PageBlock>
 
-      <div className="px-4 py-0 lg:py-30 rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-academy-section2">
+      <PageBlock
+        withXMargin={false}
+        className=" bg-academy-section2 rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px]"
+      >
         <BlockTitle
           text={t('academy.blockTitle3Text')}
           subtext={t('academy.blockTitle3Subtext')}
@@ -408,7 +414,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="lg:max-w-[40%]"
-          className="mt-12 pb-12 pt-10"
+          className="mt-10 lg:mt-20 pb-12 pt-10"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={
@@ -422,19 +428,19 @@ function RouteComponent() {
           BottomElement={
             <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
               <NetworkListItem
-                img={locationIcon}
+                icon={locationIcon}
                 text={t('academy.salvador.list1')}
               />
               <NetworkListItem
-                img={personIcon}
+                icon={personIcon}
                 text={t('academy.salvador.list2')}
               />
               <NetworkListItem
-                img={luggageIcon}
+                icon={luggageIcon}
                 text={t('academy.salvador.list3')}
               />
               <NetworkListItem
-                img={calendarIcon}
+                icon={calendarIcon}
                 text={t('academy.salvador.list4')}
               />
             </div>
@@ -462,22 +468,22 @@ function RouteComponent() {
           BottomElement={
             <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
               <NetworkListItem
-                img={barChartDarkIcon}
+                icon={barChartIcon}
                 text={t('academy.taipei.list1')}
                 orientation="right"
               />
               <NetworkListItem
-                img={personDarkIcon}
+                icon={personIcon}
                 text={t('academy.taipei.list2')}
                 orientation="right"
               />
               <NetworkListItem
-                img={bookOpenDarkIcon}
+                icon={bookOpenIcon}
                 text={t('academy.taipei.list3')}
                 orientation="right"
               />
               <NetworkListItem
-                img={calendarDarkIcon}
+                icon={calendarIcon}
                 text={t('academy.taipei.list4')}
                 orientation="right"
               />
@@ -506,15 +512,15 @@ function RouteComponent() {
           BottomElement={
             <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
               <NetworkListItem
-                img={personIcon}
+                icon={personIcon}
                 text={t('academy.polytecnico.list1')}
               />
               <NetworkListItem
-                img={tvIcon}
+                icon={tvIcon}
                 text={t('academy.polytecnico.list2')}
               />
               <NetworkListItem
-                img={calendarIcon}
+                icon={calendarIcon}
                 text={t('academy.polytecnico.list3')}
               />
               <Link
@@ -525,7 +531,7 @@ function RouteComponent() {
                 rel="noopener noreferrer"
               >
                 <NetworkListItem
-                  img={calendarIcon}
+                  icon={calendarIcon}
                   text={t('academy.polytecnico.list4')}
                 />
               </Link>
@@ -533,12 +539,18 @@ function RouteComponent() {
           }
         />
 
-        <ContactUs text={t('academy.contactText')} email="toto@toto.com" />
-      </div>
+        <ContactUs
+          text={t('academy.contactText')}
+          email="rogzy@planb.network"
+        />
+      </PageBlock>
 
-      <div className="py-30 rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-black border-t-[6px] border-orange-500">
+      <PageBlock
+        withXMargin={false}
+        className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px] border-t-[6px] border-orange-500"
+      >
         <ToolsForCommunities />
-      </div>
+      </PageBlock>
     </>
   );
 }

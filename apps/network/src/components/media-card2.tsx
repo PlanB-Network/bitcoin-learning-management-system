@@ -34,6 +34,7 @@ export default function MediaCard2({
 
   return (
     <PageBlock
+      withYPadding={false}
       className={cn(
         'shadow-lg h-full border-white max-lg:mx-8 lg:border-[1px] rounded-[60px]',
         className,
@@ -54,12 +55,13 @@ export default function MediaCard2({
         >
           {tagText ? (
             <NetworkButton
+              size={'s'}
               className={cn(
                 'max-lg:hidden',
-
                 isLeft ? 'lg:self-start' : 'lg:self-end',
               )}
               variant={'tag'}
+              disabled
             >
               {tagText}
             </NetworkButton>

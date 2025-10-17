@@ -1,18 +1,23 @@
 import { cn } from '@blms/ui';
+import type { IconType } from 'react-icons';
 
 type NetworkListItemProps = {
   text: string;
-  img: string;
+  icon: string | IconType;
   orientation?: 'left' | 'right';
   className?: string;
 };
 
 export default function NetworkListItem({
   text,
-  img,
+  icon,
   orientation = 'left',
   className,
 }: NetworkListItemProps) {
+  const Icon = icon;
+
+  console.log(typeof icon);
+
   return (
     <div
       className={cn(
@@ -21,7 +26,13 @@ export default function NetworkListItem({
         className,
       )}
     >
-      <img className={cn('size-8')} src={img} alt="World icon" />
+      {typeof icon === 'string' ? (
+        <div>
+          <img className="w-8 text-blue-300 fill-blue-100" src={icon} alt="" />
+        </div>
+      ) : (
+        <Icon className="size-8" />
+      )}
       <span className="title-base xl:title-medium mx-2">{text}</span>
     </div>
   );
