@@ -39,6 +39,14 @@ services:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '5432']
 
+  imaginary:
+    image: h2non/imaginary:latest
+    command: -enable-url-source -mount /var/www
+    ports:
+      - 9000:9000
+    volumes:
+      - cdn:/var/www/cdn:ro
+
   cdn:
     <<: *defaults
     image: nginx:1.29.1-alpine
@@ -47,6 +55,8 @@ services:
     volumes:
       - ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf
       - cdn:/var/www/cdn
+    depends_on:
+      - imaginary
 
   api:
     <<: [*defaults, *base]
@@ -147,31 +157,31 @@ services:
     volumes:
       - typesense:/usr/share/typesense/data
 
-  # ONLYOFFICE Document Server for rich PPTX editing
-  onlyoffice:
-    <<: *defaults
-    image: onlyoffice/documentserver:9.0
-    ports:
-      - 80:80
-    environment:
-      - ONLYOFFICE_HTTPS_HSTS_ENABLED=false
-      - ONLYOFFICE_HTTPS_HSTS_MAXAGE=31536000
-      - JWT_ENABLED=false
-      - JWT_SECRET=
-      - JWT_HEADER=Authorization
-      - JWT_IN_BODY=true
-      - WOPI_ENABLED=false
-      - USE_UNAUTHORIZED_STORAGE=true
-      - ONLYOFFICE_DEFAULT_FORMATS=docx;xlsx;pptx
-      - ALLOW_PRIVATE_IP_ADDRESS=true
-      - ALLOW_HTTP_REQUEST_TO_EDIT_DOCUMENT=true
-      - ALLOW_META_IP_ADDRESS=true
-      - DENY_EMBEDDED_FONTS=false
-      - ONLYOFFICE_TIMEOUT_DOWNLOAD=120000
-      - ONLYOFFICE_MAX_PROCESSES=10
-      - ONLYOFFICE_TIMEOUT_CONVERSION=120000
-      - ONLYOFFICE_MAX_FILE_SIZE=104857600
-      - ONLYOFFICE_MAX_TEMPLATE_SIZE=104857600
+  # # ONLYOFFICE Document Server for rich PPTX editing
+  # onlyoffice:
+  #   <<: *defaults
+  #   image: onlyoffice/documentserver:9.0
+  #   ports:
+  #     - 80:80
+  #   environment:
+  #     - ONLYOFFICE_HTTPS_HSTS_ENABLED=false
+  #     - ONLYOFFICE_HTTPS_HSTS_MAXAGE=31536000
+  #     - JWT_ENABLED=false
+  #     - JWT_SECRET=
+  #     - JWT_HEADER=Authorization
+  #     - JWT_IN_BODY=true
+  #     - WOPI_ENABLED=false
+  #     - USE_UNAUTHORIZED_STORAGE=true
+  #     - ONLYOFFICE_DEFAULT_FORMATS=docx;xlsx;pptx
+  #     - ALLOW_PRIVATE_IP_ADDRESS=true
+  #     - ALLOW_HTTP_REQUEST_TO_EDIT_DOCUMENT=true
+  #     - ALLOW_META_IP_ADDRESS=true
+  #     - DENY_EMBEDDED_FONTS=false
+  #     - ONLYOFFICE_TIMEOUT_DOWNLOAD=120000
+  #     - ONLYOFFICE_MAX_PROCESSES=10
+  #     - ONLYOFFICE_TIMEOUT_CONVERSION=120000
+  #     - ONLYOFFICE_MAX_FILE_SIZE=104857600
+  #     - ONLYOFFICE_MAX_TEMPLATE_SIZE=104857600
 
     extra_hosts:
       - "host.docker.internal:host-gateway"

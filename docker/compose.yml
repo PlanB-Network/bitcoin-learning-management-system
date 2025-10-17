@@ -57,12 +57,20 @@ services:
     depends_on:
       - postgres
 
+  imaginary:
+    image: h2non/imaginary:latest
+    command: -enable-url-source -mount /var/www
+    volumes:
+      - ./data/cdn:/var/www/cdn:ro
+
   cdn:
     <<: *defaults
     image: nginx:latest
     volumes:
       - ./cdn/nginx.conf:/etc/nginx/nginx.conf
       - ./data/cdn:/var/www/cdn
+    depends_on:
+      - imaginary
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-cdn-${ENV}.rule=((Host(`${DOMAIN_NETWORK}`) || Host(`${DOMAIN_ACADEMY}`) || Host(`contribute.${DOMAIN_ACADEMY}`)) && PathPrefix(`/cdn`))
