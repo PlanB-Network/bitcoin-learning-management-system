@@ -79,7 +79,7 @@ export const PageLayout = ({
         </div>
         {actionButtons && actionButtons.length > 0 ? (
           <div
-            className="flex items-center gap-1 ml-auto p-2"
+            className="flex items-center gap-1 ml-auto py-2 px-6"
             style={{ marginTop: navbarHeight }}
           >
             {actionButtons.map((button, index) => {

@@ -66,7 +66,7 @@ export const Footer = () => {
           <SocialNetworksDesktop />
           <PartPlanBNetwork />
           <DividerSimple />
-          <div className="flex items-center py-4 px-2 justify-between gap-4 flex-wrap">
+          <div className="flex items-center py-8 px-2 justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-2.5 text-neutral-400">
               <span className="body-small truncate">
                 Plan ₿ Academy • {new Date().getFullYear()} –{' '}
@@ -230,7 +230,7 @@ const PartPlanBNetwork = () => {
       <Trans i18nKey="footer.proudlyPartOf">
         <a
           href="https://planb.network/"
-          className="text-black body-small md:body-small-bold"
+          className="text-newBlack-5 body-small md:body-small-bold"
           target="_blank"
           rel="noreferrer"
         >
