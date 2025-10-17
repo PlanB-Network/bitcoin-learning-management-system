@@ -90,10 +90,12 @@ const BCertCard = ({
 }) => {
   const dateString = exam
     ? formatDate(exam.date)
-    : formatDate(examTicket!.date);
+    : formatDate(examTicket!.date, examTicket!.timezone || 'UTC');
   const timeString = exam
     ? formatTime(exam.date)
-    : formatTime(examTicket!.date);
+    : `${formatTime(examTicket!.date, examTicket!.timezone || 'UTC')} (${
+        examTicket!.timezone || 'UTC'
+      })`;
   const location = exam ? exam.location : examTicket!.location;
   const address = [examTicket?.addressLine2, examTicket?.addressLine3]
     .filter(Boolean)
