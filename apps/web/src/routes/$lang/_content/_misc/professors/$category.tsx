@@ -80,7 +80,7 @@ export function ProfessorCategoryPage() {
   );
 
   return (
-    <PageLayout title={t('professors.pageTitle')} layoutSize="max">
+    <PageLayout title={t('professors.pageTitle')} layoutSize="wide">
       <SegmentedControl
         variant="outline"
         value={activeItem?.id ?? professorTabs[0].id}
