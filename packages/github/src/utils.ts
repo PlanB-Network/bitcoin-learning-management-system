@@ -2,6 +2,7 @@ import { copyFileSync, existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
 import { readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { ChangedAsset, ChangedFile, GitHubSyncConfig } from '@blms/types';
+import sharp from 'sharp';
 import type { SimpleGit } from 'simple-git';
 import { ResetMode, simpleGit } from 'simple-git';
 
@@ -364,7 +365,33 @@ export const createSyncCdnRepository = (cdnPath: string) => {
 
         // Copy the file to the CDN directory
         const absolutePath = path.join(repositoryDirectory, asset.path);
-        copyFileSync(absolutePath, computedCdnPath);
+
+        // Resize webp images to be max 1280px width
+        if (asset.path.endsWith('.webp')) {
+          try {
+            const image = sharp(absolutePath);
+
+            await image
+              .resize(1280, null, {
+                withoutEnlargement: true, // Do not enlarge smaller images
+                fit: 'inside', // Keep aspect ratio
+              })
+              .webp({
+                quality: 90, // WebP quality
+                effort: 4, // Balance quality/speed (0-6, default: 4)
+              })
+              .toFile(computedCdnPath);
+          } catch (error) {
+            console.error(
+              `[sync] Failed to process image ${absolutePath}:`,
+              error,
+            );
+            copyFileSync(absolutePath, computedCdnPath);
+          }
+        } else {
+          copyFileSync(absolutePath, computedCdnPath);
+        }
+
         copyCount += 1;
       }
 
