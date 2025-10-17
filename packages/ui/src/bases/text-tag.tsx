@@ -21,7 +21,7 @@ const textTagVariants = cva(
       },
       size: {
         base: 'px-3 py-2 body-small-bold rounded-full',
-        small: 'p-1 body-extra-small-bold rounded-full',
+        small: 'px-2 py-1 body-extra-small-bold rounded-full',
       },
       variant: {
         darkMaroon:
