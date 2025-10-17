@@ -26,7 +26,7 @@ export default function MediaCard3({
           className={cn(
             'mx-auto absolute z-10 inset-0 flex flex-col',
             'gap-8 xl:gap-16 tracking-[-0.4px]',
-            'pt-8 max-2xl:pl-6 text-left',
+            'pt-8 text-left',
           )}
         >
           <h1

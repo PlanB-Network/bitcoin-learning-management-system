@@ -1,3 +1,4 @@
+import { cn } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import {
@@ -28,8 +29,7 @@ export const Route = createFileRoute('/')({
 
 function IndexComponent() {
   const { t } = useTranslation();
-  const cardsDivClassName =
-    '-translate-y-45 flex flex-wrap gap-10 max-w-[1300px]';
+  const cardsDivClassName = 'flex flex-wrap gap-4 gap-10 max-w-[1300px]';
   return (
     <div className="text-center">
       <PageBlock className="mt-8">
@@ -46,6 +46,7 @@ function IndexComponent() {
           autoPlay
           muted
           preload="auto"
+          aria-label="Bitcoin network animation"
         />
       </PageBlock>
 
@@ -57,7 +58,7 @@ function IndexComponent() {
           imageUrl={media1Img}
         />
 
-        <div className={cardsDivClassName}>
+        <div className={cn(cardsDivClassName, '-translate-y-45')}>
           <NetworkCard2
             icon={bitcoinIcon}
             text={t('home.media1.card1Title')}
@@ -99,7 +100,7 @@ function IndexComponent() {
           imageUrl={media2Img}
         />
 
-        <div className={cardsDivClassName}>
+        <div className={cn(cardsDivClassName, '-translate-y-35')}>
           <NetworkCard2
             icon={TbTie}
             text={t('home.media2.card1Title')}
@@ -126,7 +127,7 @@ function IndexComponent() {
           imageUrl={media3Img}
         />
 
-        <div className={cardsDivClassName}>
+        <div className={cn(cardsDivClassName, '-translate-y-50')}>
           <NetworkCard2
             icon={TbSpeakerphone}
             text={t('home.media3.card1Title')}
