@@ -142,7 +142,7 @@ export const RESOURCES_TYPES = [
   'projects',
   'books',
   'podcasts',
-  'youtube-channels',
+  'channels',
   'lecture-replays',
   'conference-replays',
   'newsletters',

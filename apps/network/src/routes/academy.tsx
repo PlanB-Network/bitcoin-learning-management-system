@@ -544,7 +544,7 @@ function RouteComponent() {
 
       <PageBlock
         withXMargin={false}
-        className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px] border-t-[6px] border-orange-500"
+        className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px]"
       >
         <ToolsForCommunities />
       </PageBlock>
