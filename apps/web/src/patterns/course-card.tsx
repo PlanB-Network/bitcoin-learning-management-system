@@ -35,15 +35,18 @@ export const CourseCard = ({
   course,
   mode = 'light',
   className,
+  openInNewTab = false,
 }: {
   course: JoinedCourse | CourseResponse;
   mode?: 'light' | 'dark';
   className?: string;
+  openInNewTab?: boolean;
 }) => {
   return (
     <Link
       key={course.id}
       to={`/courses/${formatNameForURL(course.name)}-${course.id}`}
+      target={openInNewTab ? '_blank' : undefined}
       className={cn('flex w-full max-md:mx-auto md:w-[256px]', className)}
     >
       <article
@@ -165,9 +168,11 @@ export const CourseCard = ({
 export const HorizontalCourseCardDesktop = ({
   course,
   className,
+  openInNewTab = false,
 }: {
   course: JoinedCourse | CourseResponse;
   className?: string;
+  openInNewTab?: boolean;
 }) => {
   const { data: reviews } = useQuery(
     trpc.content.getPublicCourseReviews.queryOptions(
@@ -188,6 +193,7 @@ export const HorizontalCourseCardDesktop = ({
         'flex w-full gap-2 border border-neutral-100 rounded-2xl text-black hover:bg-neutral-50',
         className,
       )}
+      target={openInNewTab ? '_blank' : undefined}
     >
       <Image
         src={assetUrl(

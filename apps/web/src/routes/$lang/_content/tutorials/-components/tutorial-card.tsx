@@ -9,10 +9,12 @@ export const TutorialCard = ({
   tutorial,
   addMargin,
   addBorder,
+  openInNewTab,
 }: {
   tutorial: JoinedTutorialLight;
   addMargin?: boolean;
   addBorder?: boolean;
+  openInNewTab?: boolean;
 }) => {
   return (
     <Link
@@ -23,6 +25,7 @@ export const TutorialCard = ({
         addMargin && 'my-2',
         addBorder && 'border border-neutral-100',
       )}
+      target={openInNewTab ? '_blank' : undefined}
     >
       <div className="flex gap-6 items-center">
         <Image

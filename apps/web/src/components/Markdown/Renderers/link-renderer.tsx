@@ -41,16 +41,24 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
   if (href && children === href) {
     const tutorial = getTutorial(href, tutorials ?? []);
     if (tutorial) {
-      return <TutorialCard tutorial={tutorial} addMargin addBorder />;
+      return (
+        <TutorialCard tutorial={tutorial} addMargin addBorder openInNewTab />
+      );
     }
     const course = getCourse(href, courses ?? []);
     if (course) {
       return (
         <div className="w-full py-2 md:py-1">
-          <CourseCard course={course} mode="light" className="md:hidden" />
+          <CourseCard
+            course={course}
+            mode="light"
+            className="md:hidden"
+            openInNewTab
+          />
           <HorizontalCourseCardDesktop
             course={course}
             className="max-md:hidden"
+            openInNewTab
           />
         </div>
       );
