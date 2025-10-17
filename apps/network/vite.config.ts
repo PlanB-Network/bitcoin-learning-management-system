@@ -38,7 +38,6 @@ export default defineConfig({
     proxy: {
       '/api': `http://${process.env.DOCKER ? 'api' : 'localhost'}:3000`,
       '/cdn': {
-        rewrite: (path) => path.replace(/^\/cdn/, ''),
         target: `http://${process.env.DOCKER ? 'cdn:80' : 'localhost:8080'}`,
       },
     },

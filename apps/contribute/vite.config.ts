@@ -48,7 +48,6 @@ export default defineConfig({
       '/api': `http://${process.env.DOCKER ? 'api' : 'localhost'}:3000`,
       '/cdn': {
         target: `http://${process.env.DOCKER ? 'cdn:80' : 'localhost:8080'}`,
-        rewrite: (path) => path.replace(/^\/cdn/, ''),
       },
 
       // ONLYOFFICE Document Server static assets
