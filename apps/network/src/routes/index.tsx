@@ -99,7 +99,7 @@ function IndexComponent() {
           subtitle={t('home.media2.subtitle')}
           buttonText={t('home.media2.button')}
           imageUrl={media2Img}
-          orientation="right"
+          orientation="left"
           bottomElement={
             <div className={cn(cardsDivClassName)}>
               <NetworkCard2
