@@ -80,7 +80,7 @@ export function ProfessorCategoryPage() {
   );
 
   return (
-    <PageLayout title={t('professors.pageTitle')} layoutSize="wide">
+    <PageLayout title={t('professors.pageTitle')} layoutSize="max">
       <SegmentedControl
         variant="outline"
         value={activeItem?.id ?? professorTabs[0].id}
@@ -112,7 +112,7 @@ export function ProfessorCategoryPage() {
         </CategorySwitcherBar>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2 lg:gap-3 w-full">
+      <div className="flex flex-wrap gap-4 lg:gap-8 mx-auto justify-center">
         {!isFetched && <Loader size={'s'} />}
         {sortedProfessors?.map((professor) => (
           <ProfessorCard
